@@ -1,0 +1,82 @@
+Number of problems: 8215 
+
+Minimum problem statement length: 101
+Maximum problem statement length: 3780
+Mean problem statement length: 860.9577601947657
+
+Minimum problem solution length: 146
+Maximum problem solution length: 30609
+Mean problem solution length: 2233.3506999391357
+
+Number of difficulty classes: 28
+
+Difficulty distribution:
+800: 729
+1600: 465
+1900: 458
+1700: 457
+2000: 422
+1500: 398
+1800: 390
+2400: 367
+1300: 365
+2100: 359
+2200: 355
+1200: 337
+1400: 336
+2300: 328
+1100: 318
+2500: 312
+1000: 293
+900: 259
+2600: 242
+2700: 207
+2800: 164
+2900: 139
+3000: 125
+3500: 98
+3100: 90
+3200: 77
+3300: 69
+3400: 56
+
+Number of tags: 36
+
+Tag distribution:
+greedy: 2545
+math: 2509
+implementation: 2324
+dp: 1890
+data structures: 1542
+constructive algorithms: 1526
+brute force: 1467
+graphs: 966
+binary search: 946
+sortings: 942
+dfs and similar: 831
+trees: 704
+number theory: 678
+strings: 644
+combinatorics: 605
+two pointers: 503
+bitmasks: 497
+geometry: 308
+dsu: 306
+shortest paths: 252
+divide and conquer: 234
+probabilities: 193
+games: 187
+interactive: 177
+hashing: 175
+flows: 101
+matrices: 99
+string suffix structures: 74
+fft: 73
+graph matchings: 72
+ternary search: 52
+meet-in-the-middle: 39
+2-sat: 34
+expression parsing: 22
+chinese remainder theorem: 15
+schedules: 8
+
