@@ -1,1 +1,96 @@
-{"link": "https://codeforces.com//contest/139/problem/A", "problemId": "727", "problem_idx": "A", "shortId": "139A", "contest_number": "139", "problem_submissions": {"E": [980042, 1355508, 989840], "D": [978407, 979258, 981500, 981141, 981629, 981112, 981003, 978361, 980314, 982438], "C": [976486, 980221, 979576, 975661, 979182, 978241, 976343, 980246, 977234, 977300, 980151, 975292, 976905, 979088, 978354, 975803], "B": [975799, 976102, 976580, 980368, 976461, 976842, 977973, 977389, 975833, 975600, 976651, 976089, 975820, 976583, 976416, 977370], "A": [974412, 974563, 974849, 979612, 974810, 975009, 974390, 974654, 984067, 974272, 974267, 976572, 974588, 974309, 974688, 974303, 977612]}, "name": "A. Petr and Book", "statement": "One Sunday Petr went to a bookshop and bought a new book on sports\r\nprogramming. The book had exactly pages.Petr decided to start reading it\r\nstarting from the next day, that is, from Monday. Petr\u2019s got a very\r\ntight schedule and for each day of the week he knows how many pages he\r\nwill be able to read on that day. Some days are so busy that Petr will\r\nhave no time to read whatsoever. However, we know that he will be able\r\nto read at least one page a week.Assuming that Petr will not skip days\r\nand will read as much as he can every day, determine on which day of the\r\nweek he will read the last page of the book.\r\n", "solutions": ["#include <vector>\n#include <string>\n#include <iostream>\n#include <algorithm>\n#include <queue>\n#include <set>\n#include <map>\n#include <sstream>\n#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cmath>\nusing namespace std;\ntypedef long long ll;\n#define pb push_back\n#define mp make_pair\n#define fi first\n#define se second\n#define FOR(i, s, t) for(i = (s); i < (t); i++)\n#define RFOR(i, s, t) for(i = (s)-1; i >= (t); i--)\n\nint a[7];\n\nint main()\n{\n  #ifdef __FIO\n  freopen(\"input.txt\", \"r\", stdin);\n  freopen(\"output.txt\", \"w\", stdout);\n  #endif\n  int n;\n  int i;\n  scanf(\"%d\", &n);\n  for(i = 0; i < 7; i++)\n    cin>>a[i];\n  i = 0;\n  while(n)\n  {\n    i %= 7;\n    n -= a[i];\n    n = max(n, 0);\n    i++;\n  }\n  printf(\"%d\\n\", i);\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["implementation"], "dificulty": "1000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/139/problem/A",
+    "problemId": "727",
+    "problem_idx": "A",
+    "shortId": "139A",
+    "contest_number": "139",
+    "problem_submissions": {
+        "E": [
+            980042,
+            1355508,
+            989840
+        ],
+        "D": [
+            978407,
+            979258,
+            981500,
+            981141,
+            981629,
+            981112,
+            981003,
+            978361,
+            980314,
+            982438
+        ],
+        "C": [
+            976486,
+            980221,
+            979576,
+            975661,
+            979182,
+            978241,
+            976343,
+            980246,
+            977234,
+            977300,
+            980151,
+            975292,
+            976905,
+            979088,
+            978354,
+            975803
+        ],
+        "B": [
+            975799,
+            976102,
+            976580,
+            980368,
+            976461,
+            976842,
+            977973,
+            977389,
+            975833,
+            975600,
+            976651,
+            976089,
+            975820,
+            976583,
+            976416,
+            977370
+        ],
+        "A": [
+            974412,
+            974563,
+            974849,
+            979612,
+            974810,
+            975009,
+            974390,
+            974654,
+            984067,
+            974272,
+            974267,
+            976572,
+            974588,
+            974309,
+            974688,
+            974303,
+            977612
+        ]
+    },
+    "name": "A. Petr and Book",
+    "statement": "One Sunday Petr went to a bookshop and bought a new book on sports\r\nprogramming. The book had exactly pages.Petr decided to start reading it\r\nstarting from the next day, that is, from Monday. Petr\u2019s got a very\r\ntight schedule and for each day of the week he knows how many pages he\r\nwill be able to read on that day. Some days are so busy that Petr will\r\nhave no time to read whatsoever. However, we know that he will be able\r\nto read at least one page a week.Assuming that Petr will not skip days\r\nand will read as much as he can every day, determine on which day of the\r\nweek he will read the last page of the book.\r\n",
+    "solutions": [
+        "#include <vector>\n#include <string>\n#include <iostream>\n#include <algorithm>\n#include <queue>\n#include <set>\n#include <map>\n#include <sstream>\n#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cmath>\nusing namespace std;\ntypedef long long ll;\n#define pb push_back\n#define mp make_pair\n#define fi first\n#define se second\n#define FOR(i, s, t) for(i = (s); i < (t); i++)\n#define RFOR(i, s, t) for(i = (s)-1; i >= (t); i--)\n\nint a[7];\n\nint main()\n{\n  #ifdef __FIO\n  freopen(\"input.txt\", \"r\", stdin);\n  freopen(\"output.txt\", \"w\", stdout);\n  #endif\n  int n;\n  int i;\n  scanf(\"%d\", &n);\n  for(i = 0; i < 7; i++)\n    cin>>a[i];\n  i = 0;\n  while(n)\n  {\n    i %= 7;\n    n -= a[i];\n    n = max(n, 0);\n    i++;\n  }\n  printf(\"%d\\n\", i);\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation"
+    ],
+    "dificulty": "1000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Petr and Book.json",
+    "editorial_link": "https://codeforces.com//blog/entry/3462",
+    "editorial": "If the total number of pages doesn't exceed the number of pages for Monday, the answer is Monday. Otherwise we can substract the Monday number from total and go on to Tuesday. If Tuesday isn't enough, we subtract and continue to Wednesday, and so on. We are sure that no more than N weeks will pass, as at least one page is read every week. Complexity - O(N)."
+}

@@ -1,1 +1,107 @@
-{"link": "https://codeforces.com//contest/226/problem/B", "problemId": "1850", "problem_idx": "B", "shortId": "226B", "contest_number": "226", "problem_submissions": {"D": [2242483, 2240843, 2242697, 2239811, 2241181, 2240471, 2243151, 2239681, 2243648, 2243129, 2242567, 2244564, 2243396, 2244004, 2242755, 2240654, 2242232, 2243688], "C": [2240518, 2242095, 2241935, 2242212, 2245368, 2243264, 2242355, 2244421, 2245094, 2240401, 2245716, 2240548, 2245297, 2273600, 2246168, 2251858], "B": [2238162, 2238317, 2238835, 2237653, 2238869, 2244282, 2240573, 2241479, 2239690, 2239960, 2240247, 2244047, 2239779, 2243326, 2239668, 2238560, 2240587, 2244817], "A": [2237392, 2237493, 2237370, 2238271, 2237948, 2237516, 2239157, 2243302, 2237640, 2237633, 2237332, 2273554, 2237740, 2237340, 2237663, 2237380, 2241341, 2242419], "E": [3877418, 2263890, 2247800]}, "name": "B. Naughty Stone Piles", "statement": "There are piles of stones of sizes lying on the table in front of\r\nyou.During one move you can take one pile and add it to the other. As\r\nyou add pile to pile , the size of pile increases by the current size of\r\npile , and pile stops existing. The cost of the adding operation equals\r\nthe size of the added pile.Your task is to determine the minimum cost at\r\nwhich you can gather all stones in one pile. To add some challenge, the\r\nstone piles built up conspiracy and decided that each pile will let you\r\nadd to it not more than times (after that it can only be added to\r\nanother pile). Moreover, the piles decided to puzzle you completely and\r\ntold you variants (not necessarily distinct) of what might equal. Your\r\ntask is to find the minimum cost for each of variants.\r\n", "solutions": ["// @author peter50216\n// #includes {{{\n#include<stdio.h>\n#include<stdlib.h>\n#include<string.h>\n#include<math.h>\n#include<assert.h>\n#include<stdarg.h>\n#include<time.h>\n#include<limits.h>\n#include<ctype.h>\n#include<string>\n#include<map>\n#include<set>\n#include<queue>\n#include<algorithm>\n#include<vector>\n#include<iostream>\nusing namespace std;\n// }}}\n// #defines {{{\n#define FOR(i,c) for(__typeof((c).begin()) i=(c).begin();i!=(c).end();i++)\n#define SZ(x) ((int)(x).size())\n#define REP(i,n) for(int i=0;i<(n);i++)\n#define REP1(i,a,b) for(int i=(a);i<=(b);i++)\n#define PER(i,n) for(int i=(n)-1;i>=0;i--)\n#define PER1(i,a,b) for(int i=(b);i>=(a);i--)\n#define RI(x) scanf(\"%d\",&x)\n#define DRI(x) int x;RI(x)\n#define RII(x,y) scanf(\"%d%d\",&x,&y)\n#define DRII(x,y) int x,y;RII(x,y);\n#define RIII(x,y,z) scanf(\"%d%d\",&x,&y,&z)\n#define DRIII(x,y,z) int x,y,z;RIII(x,y,z);\n#define CASET int ___T,cas=1;scanf(\"%d\",&___T);while(___T--)\n#define CASEN0(n) int cas=1;while(scanf(\"%d\",&n)!=EOF&&n)\n#define CASEN(n) int cas=1;while(scanf(\"%d\",&n)!=EOF)\n#define MP make_pair\n#define PB push_back\n#define MS0(x) memset(x,0,sizeof(x))\n#define MS1(x) memset(x,-1,sizeof(x))\n#define SEP(x) ((x)?'\\n':' ')\n#define F first\n#define S second\ntypedef pair<int,int> PII;\ntypedef long long LL;\n// }}}\n\nint in[101000];\nlong long sum[101000];\nbool cmp(int a,int b){return a>b;}\nint main(){\n    DRI(n);\n    REP(i,n)RI(in[i]);\n    sort(in,in+n,cmp);\n    DRI(q);\n    sum[0]=0;\n    REP(i,n)sum[i+1]=sum[i]+in[i];\n    long long a1=0;\n    REP1(i,1,n-1)a1+=i*1LL*in[i];\n    while(q--){\n        DRI(k);\n        if(k==1)printf(\"%I64d\",a1);\n        else{\n            int np=1;\n            long long s=k,ans=0;\n            int cnt=1;\n            while(np<n){\n                long long tnp=np+s;\n                if(tnp>n)tnp=n;\n                ans+=cnt*(sum[tnp]-sum[np]);\n                np=tnp;\n                s*=k;\n                cnt++;\n            }\n            printf(\"%I64d\",ans);\n        }\n        printf(\"%c\",SEP(!q));\n    }\n}\n// vim: fdm=marker:commentstring=\\ \\\"\\ %s:nowrap:autoread\n\n"], "input": "", "output": "", "tags": ["greedy"], "dificulty": "1900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/226/problem/B",
+    "problemId": "1850",
+    "problem_idx": "B",
+    "shortId": "226B",
+    "contest_number": "226",
+    "problem_submissions": {
+        "D": [
+            2242483,
+            2240843,
+            2242697,
+            2239811,
+            2241181,
+            2240471,
+            2243151,
+            2239681,
+            2243648,
+            2243129,
+            2242567,
+            2244564,
+            2243396,
+            2244004,
+            2242755,
+            2240654,
+            2242232,
+            2243688
+        ],
+        "C": [
+            2240518,
+            2242095,
+            2241935,
+            2242212,
+            2245368,
+            2243264,
+            2242355,
+            2244421,
+            2245094,
+            2240401,
+            2245716,
+            2240548,
+            2245297,
+            2273600,
+            2246168,
+            2251858
+        ],
+        "B": [
+            2238162,
+            2238317,
+            2238835,
+            2237653,
+            2238869,
+            2244282,
+            2240573,
+            2241479,
+            2239690,
+            2239960,
+            2240247,
+            2244047,
+            2239779,
+            2243326,
+            2239668,
+            2238560,
+            2240587,
+            2244817
+        ],
+        "A": [
+            2237392,
+            2237493,
+            2237370,
+            2238271,
+            2237948,
+            2237516,
+            2239157,
+            2243302,
+            2237640,
+            2237633,
+            2237332,
+            2273554,
+            2237740,
+            2237340,
+            2237663,
+            2237380,
+            2241341,
+            2242419
+        ],
+        "E": [
+            3877418,
+            2263890,
+            2247800
+        ]
+    },
+    "name": "B. Naughty Stone Piles",
+    "statement": "There are piles of stones of sizes lying on the table in front of\r\nyou.During one move you can take one pile and add it to the other. As\r\nyou add pile to pile , the size of pile increases by the current size of\r\npile , and pile stops existing. The cost of the adding operation equals\r\nthe size of the added pile.Your task is to determine the minimum cost at\r\nwhich you can gather all stones in one pile. To add some challenge, the\r\nstone piles built up conspiracy and decided that each pile will let you\r\nadd to it not more than times (after that it can only be added to\r\nanother pile). Moreover, the piles decided to puzzle you completely and\r\ntold you variants (not necessarily distinct) of what might equal. Your\r\ntask is to find the minimum cost for each of variants.\r\n",
+    "solutions": [
+        "// @author peter50216\n// #includes {{{\n#include<stdio.h>\n#include<stdlib.h>\n#include<string.h>\n#include<math.h>\n#include<assert.h>\n#include<stdarg.h>\n#include<time.h>\n#include<limits.h>\n#include<ctype.h>\n#include<string>\n#include<map>\n#include<set>\n#include<queue>\n#include<algorithm>\n#include<vector>\n#include<iostream>\nusing namespace std;\n// }}}\n// #defines {{{\n#define FOR(i,c) for(__typeof((c).begin()) i=(c).begin();i!=(c).end();i++)\n#define SZ(x) ((int)(x).size())\n#define REP(i,n) for(int i=0;i<(n);i++)\n#define REP1(i,a,b) for(int i=(a);i<=(b);i++)\n#define PER(i,n) for(int i=(n)-1;i>=0;i--)\n#define PER1(i,a,b) for(int i=(b);i>=(a);i--)\n#define RI(x) scanf(\"%d\",&x)\n#define DRI(x) int x;RI(x)\n#define RII(x,y) scanf(\"%d%d\",&x,&y)\n#define DRII(x,y) int x,y;RII(x,y);\n#define RIII(x,y,z) scanf(\"%d%d\",&x,&y,&z)\n#define DRIII(x,y,z) int x,y,z;RIII(x,y,z);\n#define CASET int ___T,cas=1;scanf(\"%d\",&___T);while(___T--)\n#define CASEN0(n) int cas=1;while(scanf(\"%d\",&n)!=EOF&&n)\n#define CASEN(n) int cas=1;while(scanf(\"%d\",&n)!=EOF)\n#define MP make_pair\n#define PB push_back\n#define MS0(x) memset(x,0,sizeof(x))\n#define MS1(x) memset(x,-1,sizeof(x))\n#define SEP(x) ((x)?'\\n':' ')\n#define F first\n#define S second\ntypedef pair<int,int> PII;\ntypedef long long LL;\n// }}}\n\nint in[101000];\nlong long sum[101000];\nbool cmp(int a,int b){return a>b;}\nint main(){\n    DRI(n);\n    REP(i,n)RI(in[i]);\n    sort(in,in+n,cmp);\n    DRI(q);\n    sum[0]=0;\n    REP(i,n)sum[i+1]=sum[i]+in[i];\n    long long a1=0;\n    REP1(i,1,n-1)a1+=i*1LL*in[i];\n    while(q--){\n        DRI(k);\n        if(k==1)printf(\"%I64d\",a1);\n        else{\n            int np=1;\n            long long s=k,ans=0;\n            int cnt=1;\n            while(np<n){\n                long long tnp=np+s;\n                if(tnp>n)tnp=n;\n                ans+=cnt*(sum[tnp]-sum[np]);\n                np=tnp;\n                s*=k;\n                cnt++;\n            }\n            printf(\"%I64d\",ans);\n        }\n        printf(\"%c\",SEP(!q));\n    }\n}\n// vim: fdm=marker:commentstring=\\ \\\"\\ %s:nowrap:autoread\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "greedy"
+    ],
+    "dificulty": "1900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Naughty Stone Piles.json",
+    "editorial_link": "https://codeforces.com/blog/entry/5378",
+    "editorial": "Consider the following interpretation of the problem: stone piles are graph vertices. Operation \"add pile a to pile b\" changes to operation of suspencion of subtree of vertice b to vertice a. Numbers, written on vertices, \u0097 piles' sizes. Your task is to get such tree configuration, that each vertice has no more than k subtrees suspended to it, and sum of the products of numbers, written on vertices, and vertices' depth (where root's depth is 0) is minimal. In order to minimize the sum, at first, vertice with a larger number must be not deeply than vertice with smaller number (otherwise it's possible to change them and to get less sum), at second, each inner vertice, besides, maybe, one, has exactly k successors (the second condition is also proved using proof by contradiction). Now you are to learn how to calculate sum (described above) for this configuration quickly. In order do to it, let's sort piles' size array, and then let's do the following: at first, let's add to answer sum of sizes of piles from 1st to kth (in 0-indexed array, sorted in non-increasing order), multiplied by 1; then sum of sizes of next k2 piles, multiplied by 2; and so on till the end of array. In order to answer for the query about the sum of segment, precalculate sums of prefixes immediately after array sorting. Now in the case k?>?1 we can find answer in O(log n). If you follow the same considerations for k?=?1, answer for query will get O(n) operations that's why solution will get TL, if k is equal to 1 in most of the queries. So you should calculate the answer for k?=?1 beforehand and memorize it, in order to response such queries in O(1)."
+}

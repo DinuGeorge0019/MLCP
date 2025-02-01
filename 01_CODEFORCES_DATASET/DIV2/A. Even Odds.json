@@ -1,1 +1,92 @@
-{"link": "https://codeforces.com//contest/318/problem/A", "problemId": "3161", "problem_idx": "A", "shortId": "318A", "contest_number": "318", "problem_submissions": {"D": [3889771, 3891598, 3890931, 3895120, 3889991, 3892582, 3894118, 3895024, 3894070, 3893665, 3894800, 3895558, 3894762, 3894398, 3891169], "C": [3886193, 3886712, 3888993, 3887980, 3890359, 3888216, 3888258, 3890410, 4099870, 3891425, 3888553, 3888908, 3889856, 3895067], "B": [3885067, 3886676, 3887330, 3885863, 3887527, 3886640, 3886280, 3886107, 3888159, 4094214, 4094197, 3886069, 3886337, 3887281, 3887448, 3886826], "A": [3883842, 3885636, 3884050, 3884161, 3887877, 3884428, 3884162, 3884552, 3885363, 4093985, 3884118, 3885191, 3884387, 3884475, 3883975]}, "name": "A. Even Odds", "statement": "Being a nonconformist, Volodya is displeased with the current state of\r\nthings, particularly with the order of natural numbers (natural number\r\nis positive integer number). He is determined to rearrange them. But\r\nthere are too many natural numbers, so Volodya decided to start with the\r\nfirst . He writes down the following sequence of numbers: firstly all\r\nodd integers from to (in ascending order), then all even integers from\r\nto (also in ascending order). Help our hero to find out which number\r\nwill stand at the position number .\r\n", "solutions": ["#include <iostream>\n#include <cstdio>\n#include <cstring>\n#include <algorithm>\nusing namespace std;\n\nint main()\n{\n\tlong long n,m;\n\tcin >> n >> m;\n\tlong long odd = (n + 1) / 2;\n\tif(odd >= m) cout << 2LL * m - 1 << endl;\n\telse {\n\t\tm -= odd;\n\t\tcout << 2 * m << endl;\n\t}\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["math"], "dificulty": "900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/318/problem/A",
+    "problemId": "3161",
+    "problem_idx": "A",
+    "shortId": "318A",
+    "contest_number": "318",
+    "problem_submissions": {
+        "D": [
+            3889771,
+            3891598,
+            3890931,
+            3895120,
+            3889991,
+            3892582,
+            3894118,
+            3895024,
+            3894070,
+            3893665,
+            3894800,
+            3895558,
+            3894762,
+            3894398,
+            3891169
+        ],
+        "C": [
+            3886193,
+            3886712,
+            3888993,
+            3887980,
+            3890359,
+            3888216,
+            3888258,
+            3890410,
+            4099870,
+            3891425,
+            3888553,
+            3888908,
+            3889856,
+            3895067
+        ],
+        "B": [
+            3885067,
+            3886676,
+            3887330,
+            3885863,
+            3887527,
+            3886640,
+            3886280,
+            3886107,
+            3888159,
+            4094214,
+            4094197,
+            3886069,
+            3886337,
+            3887281,
+            3887448,
+            3886826
+        ],
+        "A": [
+            3883842,
+            3885636,
+            3884050,
+            3884161,
+            3887877,
+            3884428,
+            3884162,
+            3884552,
+            3885363,
+            4093985,
+            3884118,
+            3885191,
+            3884387,
+            3884475,
+            3883975
+        ]
+    },
+    "name": "A. Even Odds",
+    "statement": "Being a nonconformist, Volodya is displeased with the current state of\r\nthings, particularly with the order of natural numbers (natural number\r\nis positive integer number). He is determined to rearrange them. But\r\nthere are too many natural numbers, so Volodya decided to start with the\r\nfirst . He writes down the following sequence of numbers: firstly all\r\nodd integers from to (in ascending order), then all even integers from\r\nto (also in ascending order). Help our hero to find out which number\r\nwill stand at the position number .\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <cstdio>\n#include <cstring>\n#include <algorithm>\nusing namespace std;\n\nint main()\n{\n\tlong long n,m;\n\tcin >> n >> m;\n\tlong long odd = (n + 1) / 2;\n\tif(odd >= m) cout << 2LL * m - 1 << endl;\n\telse {\n\t\tm -= odd;\n\t\tcout << 2 * m << endl;\n\t}\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "math"
+    ],
+    "dificulty": "900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Even Odds.json",
+    "editorial_link": "https://codeforces.com/blog/entry/7956",
+    "editorial": "In this problem we need to understand how exactly numbers from to\r\nrearrange when we write firstly all odd numbers and after them all even\r\nnumbers. To find out which number stands at position one needs to find\r\nthe position where even numbers start and output either the position of\r\nthe odd number from the first half of the sequence or for the even\r\nnumber from the second half of the sequence.\r\n"
+}

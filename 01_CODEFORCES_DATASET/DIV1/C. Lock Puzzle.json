@@ -1,1 +1,105 @@
-{"link": "https://codeforces.com//contest/936/problem/C", "problemId": "159978", "problem_idx": "C", "shortId": "936C", "contest_number": "936", "problem_submissions": {"E": [35712266, 35727991, 35725013, 35707211, 35770218], "D": [35700007, 35702585, 35703968, 35704322, 35707565, 35707992, 35703995, 35707242, 35706026, 35706184, 35705316], "C": [35693639, 35697250, 35695166, 35695586, 35697018, 35695913, 35698664, 35705647, 35697865, 35699503, 35697044, 35700894, 35699052, 35698193, 35698295, 35698757, 35697398, 35701177], "B": [35691090, 35691407, 35691792, 35691438, 35690313, 35691314, 35691290, 35690630, 35698924, 35693457, 35691128, 35693732, 35690660, 35690004, 35694559, 35691031, 35692920], "A": [35689192, 35689253, 35688351, 35690016, 35688869, 35688655, 35688920, 35688825, 35690115, 35690230, 35697676, 35690493, 35688221, 35691287, 35688663, 35690989, 35689298, 35689878]}, "name": "C. Lock Puzzle", "statement": "Welcome to another task about breaking the code lock! Explorers\r\nWhitfield and Martin came across an unusual safe, inside of which,\r\naccording to rumors, there are untold riches, among which one can find\r\nthe solution of the problem of discrete logarithm!Of course, there is a\r\ncode lock is installed on the safe. The lock has a screen that displays\r\na string of lowercase Latin letters. Initially, the screen displays\r\nstring . Whitfield and Martin found out that the safe will open when\r\nstring will be displayed on the screen.The string on the screen can be\r\nchanged using the operation . In order to apply this operation,\r\nexplorers choose an integer from 0 to inclusive. After that, the current\r\nstring changes to , where the length of is , and the length of is . In\r\nother words, the suffix of the length of string is reversed and moved to\r\nthe beginning of the string. For example, after the operation the string\r\nwill be changed with string , since , , .Explorers are afraid that if\r\nthey apply too many operations , the lock will be locked forever. They\r\nask you to find a way to get the string on the screen, using no more\r\nthan operations.\r\n", "solutions": ["#include <bits/stdc++.h>\n\nusing namespace std;\n#define PB push_back\n#define MP make_pair\n#define LL long long\n#define int LL\n#define FOR(i,a,b) for(int i = (a); i <= (b); i++)\n#define RE(i,n) FOR(i,1,n)\n#define REP(i,n) FOR(i,0,(int)(n)-1)\n#define R(i,n) REP(i,n)\n#define VI vector<int>\n#define PII pair<int,int>\n#define LD long double\n#define FI first\n#define SE second\n#define st FI\n#define nd SE\n#define ALL(x) (x).begin(), (x).end()\n#define SZ(x) ((int)(x).size())\n\ntemplate<class C> void mini(C &a4, C b4) { a4 = min(a4, b4); }\ntemplate<class C> void maxi(C &a4, C b4) { a4 = max(a4, b4); }\n\ntemplate<class TH> void _dbg(const char *sdbg, TH h){ cerr<<sdbg<<'='<<h<<endl; }\ntemplate<class TH, class... TA> void _dbg(const char *sdbg, TH h, TA... a) {\n  while(*sdbg!=',')cerr<<*sdbg++;\n  cerr<<'='<<h<<','; _dbg(sdbg+1, a...);\n}\n\ntemplate<class T> ostream &operator<<(ostream& os, vector<T> V) {\n  os << \"[\"; for (auto vv : V) os << vv << \",\"; return os << \"]\";\n}\ntemplate<class L, class R> ostream &operator<<(ostream &os, pair<L,R> P) {\n  return os << \"(\" << P.st << \",\" << P.nd << \")\";\n}\n\n#ifdef LOCAL\n#define debug(...) _dbg(#__VA_ARGS__, __VA_ARGS__)\n#else\n#define debug(...) (__VA_ARGS__)\n#define cerr if(0)cout\n#endif\n\n\nint32_t main() {\n  ios_base::sync_with_stdio(0);\n  cin.tie(0);\n  cout << fixed << setprecision(11);\n  cerr << fixed << setprecision(6);\n\n  int N;\n  cin >> N;\n\n  string s, t;\n  cin >> s >> t;\n\n  vector<int> Ops;\n\n  auto doOp = [&](int x) {\n    s = s.substr(N - x) + s.substr(0, N - x);\n    reverse(s.begin(), s.begin() + x);\n    Ops.PB(x);\n  };\n\n  int NumOK = 0;\n  while (s != t) {\n    char What = t[NumOK];\n    int Loc = -1;\n    for (int i = 0; i < N - NumOK; ++i)\n      if (s[i] == What) {\n        Loc = i;\n        break;\n      }\n\n    if (Loc == -1) {\n      cout << \"-1\\n\";\n      return 0;\n    }\n\n    int a = Loc,\n        b = N - Loc - NumOK - 1,\n        u = NumOK;\n\n    doOp(b + u);\n    doOp(1);\n    doOp(a + b + u);\n\n    ++NumOK;\n    debug(s, t, NumOK);\n  }\n\n  cout << SZ(Ops) << \"\\n\";\n  for (int v : Ops) { cout << v << \" \"; }\n  cout << \"\\n\";\n}\n\n"], "input": "", "output": "", "tags": ["constructive algorithms", "implementation", "strings"], "dificulty": "2300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/936/problem/C",
+    "problemId": "159978",
+    "problem_idx": "C",
+    "shortId": "936C",
+    "contest_number": "936",
+    "problem_submissions": {
+        "E": [
+            35712266,
+            35727991,
+            35725013,
+            35707211,
+            35770218
+        ],
+        "D": [
+            35700007,
+            35702585,
+            35703968,
+            35704322,
+            35707565,
+            35707992,
+            35703995,
+            35707242,
+            35706026,
+            35706184,
+            35705316
+        ],
+        "C": [
+            35693639,
+            35697250,
+            35695166,
+            35695586,
+            35697018,
+            35695913,
+            35698664,
+            35705647,
+            35697865,
+            35699503,
+            35697044,
+            35700894,
+            35699052,
+            35698193,
+            35698295,
+            35698757,
+            35697398,
+            35701177
+        ],
+        "B": [
+            35691090,
+            35691407,
+            35691792,
+            35691438,
+            35690313,
+            35691314,
+            35691290,
+            35690630,
+            35698924,
+            35693457,
+            35691128,
+            35693732,
+            35690660,
+            35690004,
+            35694559,
+            35691031,
+            35692920
+        ],
+        "A": [
+            35689192,
+            35689253,
+            35688351,
+            35690016,
+            35688869,
+            35688655,
+            35688920,
+            35688825,
+            35690115,
+            35690230,
+            35697676,
+            35690493,
+            35688221,
+            35691287,
+            35688663,
+            35690989,
+            35689298,
+            35689878
+        ]
+    },
+    "name": "C. Lock Puzzle",
+    "statement": "Welcome to another task about breaking the code lock! Explorers\r\nWhitfield and Martin came across an unusual safe, inside of which,\r\naccording to rumors, there are untold riches, among which one can find\r\nthe solution of the problem of discrete logarithm!Of course, there is a\r\ncode lock is installed on the safe. The lock has a screen that displays\r\na string of lowercase Latin letters. Initially, the screen displays\r\nstring . Whitfield and Martin found out that the safe will open when\r\nstring will be displayed on the screen.The string on the screen can be\r\nchanged using the operation . In order to apply this operation,\r\nexplorers choose an integer from 0 to inclusive. After that, the current\r\nstring changes to , where the length of is , and the length of is . In\r\nother words, the suffix of the length of string is reversed and moved to\r\nthe beginning of the string. For example, after the operation the string\r\nwill be changed with string , since , , .Explorers are afraid that if\r\nthey apply too many operations , the lock will be locked forever. They\r\nask you to find a way to get the string on the screen, using no more\r\nthan operations.\r\n",
+    "solutions": [
+        "#include <bits/stdc++.h>\n\nusing namespace std;\n#define PB push_back\n#define MP make_pair\n#define LL long long\n#define int LL\n#define FOR(i,a,b) for(int i = (a); i <= (b); i++)\n#define RE(i,n) FOR(i,1,n)\n#define REP(i,n) FOR(i,0,(int)(n)-1)\n#define R(i,n) REP(i,n)\n#define VI vector<int>\n#define PII pair<int,int>\n#define LD long double\n#define FI first\n#define SE second\n#define st FI\n#define nd SE\n#define ALL(x) (x).begin(), (x).end()\n#define SZ(x) ((int)(x).size())\n\ntemplate<class C> void mini(C &a4, C b4) { a4 = min(a4, b4); }\ntemplate<class C> void maxi(C &a4, C b4) { a4 = max(a4, b4); }\n\ntemplate<class TH> void _dbg(const char *sdbg, TH h){ cerr<<sdbg<<'='<<h<<endl; }\ntemplate<class TH, class... TA> void _dbg(const char *sdbg, TH h, TA... a) {\n  while(*sdbg!=',')cerr<<*sdbg++;\n  cerr<<'='<<h<<','; _dbg(sdbg+1, a...);\n}\n\ntemplate<class T> ostream &operator<<(ostream& os, vector<T> V) {\n  os << \"[\"; for (auto vv : V) os << vv << \",\"; return os << \"]\";\n}\ntemplate<class L, class R> ostream &operator<<(ostream &os, pair<L,R> P) {\n  return os << \"(\" << P.st << \",\" << P.nd << \")\";\n}\n\n#ifdef LOCAL\n#define debug(...) _dbg(#__VA_ARGS__, __VA_ARGS__)\n#else\n#define debug(...) (__VA_ARGS__)\n#define cerr if(0)cout\n#endif\n\n\nint32_t main() {\n  ios_base::sync_with_stdio(0);\n  cin.tie(0);\n  cout << fixed << setprecision(11);\n  cerr << fixed << setprecision(6);\n\n  int N;\n  cin >> N;\n\n  string s, t;\n  cin >> s >> t;\n\n  vector<int> Ops;\n\n  auto doOp = [&](int x) {\n    s = s.substr(N - x) + s.substr(0, N - x);\n    reverse(s.begin(), s.begin() + x);\n    Ops.PB(x);\n  };\n\n  int NumOK = 0;\n  while (s != t) {\n    char What = t[NumOK];\n    int Loc = -1;\n    for (int i = 0; i < N - NumOK; ++i)\n      if (s[i] == What) {\n        Loc = i;\n        break;\n      }\n\n    if (Loc == -1) {\n      cout << \"-1\\n\";\n      return 0;\n    }\n\n    int a = Loc,\n        b = N - Loc - NumOK - 1,\n        u = NumOK;\n\n    doOp(b + u);\n    doOp(1);\n    doOp(a + b + u);\n\n    ++NumOK;\n    debug(s, t, NumOK);\n  }\n\n  cout << SZ(Ops) << \"\\n\";\n  for (int v : Ops) { cout << v << \" \"; }\n  cout << \"\\n\";\n}\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "implementation",
+        "strings"
+    ],
+    "dificulty": "2300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Lock Puzzle.json",
+    "editorial_link": "https://codeforces.com//blog/entry/58056",
+    "editorial": "The answer is only in the case when multisets of letters in and differ.\r\nIn all other cases there is a solution.Let\u00e2\u0080\u0099s construct the solution uses\r\noperations. To do that, you need to add two symbols to current already\r\nbuilt substring using five operations. You can do it, for example, using\r\nthe following method (the underlined string is chosen as ): If we had as\r\nsuffix, after these operations, we get , which is two symbols longer.\r\nChoosing and accordingly, we can maintain maintain the invariant, that\r\nthe suffix of current string always contains monotone (increasing or\r\ndecreasing) sequence. After we make this sequence have length , the\r\nentire string is either a cyclic shift or a reversed cyclic shift of .\r\nYou can do cyclic shift by in three operations: , , . This way, we get a\r\nsolution.\r\n"
+}

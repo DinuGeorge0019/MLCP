@@ -1,1 +1,105 @@
-{"link": "https://codeforces.com//contest/867/problem/A", "problemId": "125347", "problem_idx": "A", "shortId": "867A", "contest_number": "867", "problem_submissions": {"D": [30884718, 30969715, 30908906], "E": [30880295, 30879986, 30881111, 30877764, 30881335, 30882295, 30883343, 30879932, 30880853, 30885039, 30883442, 30879026, 30879346, 30878760, 30879361, 30879208, 30881707, 30881486, 30883064], "C": [30879669, 30878960, 30878088, 30883610, 30879422, 30877573, 30877883, 30885041, 30885195, 30880421, 30881172], "B": [30876237, 30876507, 30875069, 30876283, 30877011, 30875260, 30875540, 30874844, 30874882, 30876892, 30881931, 30874579, 30875739, 30876833, 30876524, 30876752, 30874913, 30878747, 30875046], "A": [30873015, 30872603, 30873110, 30873218, 30872680, 30873140, 30873066, 30873137, 30873548, 30875168, 30873452, 30872738, 30874021, 30872548, 30873686, 30873869, 30872699, 30874649, 30873108]}, "name": "A. Between the Offices", "statement": "As you may know, MemSQL has American offices in both San Francisco and\r\nSeattle. Being a manager in the company, you travel a lot between the\r\ntwo cities, always by plane.You prefer flying from Seattle to San\r\nFrancisco than in the other direction, because it\u2019s warmer in San\r\nFrancisco. You are so busy that you don\u2019t remember the number of flights\r\nyou have made in either direction. However, for each of the last days\r\nyou know whether you were in San Francisco office or in Seattle office.\r\nYou always fly at nights, so you never were at both offices on the same\r\nday. Given this information, determine if you flew more times from\r\nSeattle to San Francisco during the last days, or not.\r\n", "solutions": ["#define _CRT_SECURE_NO_WARNINGS\n#include <iostream>\n#include <algorithm>\n#include <vector>\n#include <queue>\n#include <cstdio>\n#include <cmath>\n#include <map>\n#include <set>\n#include <utility>\n#include <stack>\n#include <cstring>\n#include <bitset>\n#include <deque>\n#include <string>\n#include <list>\n#include <cstdlib>\nusing namespace std;\nconst int inf = 0x3f3f3f3f;\nconst int maxn = 100000 + 100;\ntypedef long long ll;\ntypedef long double ld;\n\nint main()\n{\n\tstring s;\n\tint n;\n\twhile (cin >> n >> s)\n\t{\n\tint sf = 0, fs = 0;\n\t\tfor (int i = 1; i < n; i++)\n\t\t{\n\t\t\tif (s[i] == 'S' && s[i - 1] == 'F')\n\t\t\t{\n\t\t\t\tfs++;\n\t\t\t}\n\t\t\telse if (s[i] == 'F' && s[i-1] == 'S')\n\t\t\t{\n\t\t\t\tsf++;\n\t\t\t}\n\t\t}\n\t\tif (sf > fs)\n\t\t{\n\t\t\tcout << \"YES\\n\";\n\t\t}\n\t\telse\n\t\t{\n\t\t\tcout << \"NO\\n\";\n\t\t}\n\t}\n}"], "input": "", "output": "", "tags": ["implementation"], "dificulty": "800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/867/problem/A",
+    "problemId": "125347",
+    "problem_idx": "A",
+    "shortId": "867A",
+    "contest_number": "867",
+    "problem_submissions": {
+        "D": [
+            30884718,
+            30969715,
+            30908906
+        ],
+        "E": [
+            30880295,
+            30879986,
+            30881111,
+            30877764,
+            30881335,
+            30882295,
+            30883343,
+            30879932,
+            30880853,
+            30885039,
+            30883442,
+            30879026,
+            30879346,
+            30878760,
+            30879361,
+            30879208,
+            30881707,
+            30881486,
+            30883064
+        ],
+        "C": [
+            30879669,
+            30878960,
+            30878088,
+            30883610,
+            30879422,
+            30877573,
+            30877883,
+            30885041,
+            30885195,
+            30880421,
+            30881172
+        ],
+        "B": [
+            30876237,
+            30876507,
+            30875069,
+            30876283,
+            30877011,
+            30875260,
+            30875540,
+            30874844,
+            30874882,
+            30876892,
+            30881931,
+            30874579,
+            30875739,
+            30876833,
+            30876524,
+            30876752,
+            30874913,
+            30878747,
+            30875046
+        ],
+        "A": [
+            30873015,
+            30872603,
+            30873110,
+            30873218,
+            30872680,
+            30873140,
+            30873066,
+            30873137,
+            30873548,
+            30875168,
+            30873452,
+            30872738,
+            30874021,
+            30872548,
+            30873686,
+            30873869,
+            30872699,
+            30874649,
+            30873108
+        ]
+    },
+    "name": "A. Between the Offices",
+    "statement": "As you may know, MemSQL has American offices in both San Francisco and\r\nSeattle. Being a manager in the company, you travel a lot between the\r\ntwo cities, always by plane.You prefer flying from Seattle to San\r\nFrancisco than in the other direction, because it\u2019s warmer in San\r\nFrancisco. You are so busy that you don\u2019t remember the number of flights\r\nyou have made in either direction. However, for each of the last days\r\nyou know whether you were in San Francisco office or in Seattle office.\r\nYou always fly at nights, so you never were at both offices on the same\r\nday. Given this information, determine if you flew more times from\r\nSeattle to San Francisco during the last days, or not.\r\n",
+    "solutions": [
+        "#define _CRT_SECURE_NO_WARNINGS\n#include <iostream>\n#include <algorithm>\n#include <vector>\n#include <queue>\n#include <cstdio>\n#include <cmath>\n#include <map>\n#include <set>\n#include <utility>\n#include <stack>\n#include <cstring>\n#include <bitset>\n#include <deque>\n#include <string>\n#include <list>\n#include <cstdlib>\nusing namespace std;\nconst int inf = 0x3f3f3f3f;\nconst int maxn = 100000 + 100;\ntypedef long long ll;\ntypedef long double ld;\n\nint main()\n{\n\tstring s;\n\tint n;\n\twhile (cin >> n >> s)\n\t{\n\tint sf = 0, fs = 0;\n\t\tfor (int i = 1; i < n; i++)\n\t\t{\n\t\t\tif (s[i] == 'S' && s[i - 1] == 'F')\n\t\t\t{\n\t\t\t\tfs++;\n\t\t\t}\n\t\t\telse if (s[i] == 'F' && s[i-1] == 'S')\n\t\t\t{\n\t\t\t\tsf++;\n\t\t\t}\n\t\t}\n\t\tif (sf > fs)\n\t\t{\n\t\t\tcout << \"YES\\n\";\n\t\t}\n\t\telse\n\t\t{\n\t\t\tcout << \"NO\\n\";\n\t\t}\n\t}\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation"
+    ],
+    "dificulty": "800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Between the Offices.json",
+    "editorial_link": "https://codeforces.com//blog/entry/54888",
+    "editorial": "The answer is \"\" if the first character of the given string is \u00e2\u0080\u009d and the\r\nlast character is \u00e2\u0080\u009d, otherwise it\u00e2\u0080\u0099s \"\".\r\n"
+}

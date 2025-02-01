@@ -1,1 +1,94 @@
-{"link": "https://codeforces.com//contest/360/problem/C", "problemId": "3930", "problem_idx": "C", "shortId": "360C", "contest_number": "360", "problem_submissions": {"E": [5052621, 5051976, 5053848, 5054838], "C": [5051326, 5048345, 5049493, 5049490, 5050865, 5049536, 5050632, 5051192, 5051833, 5051566, 5051768, 5048366, 5049736], "D": [5050607, 5051524, 5050936, 5051425, 5048585, 5050472, 5056022, 5052000], "B": [5045795, 5044973, 5048544, 5051998, 5045747, 5046168, 5051455, 5046964, 5045609, 5046677, 5046979, 5047362, 5047061, 5045936, 5047748, 5047100, 5046972, 5046544], "A": [5044762, 5051854, 5044798, 5045200, 5044446, 5044824, 5045696, 5044827, 5045266, 5045205, 5044960, 5045344, 5047058, 5045224, 5045590, 5054975]}, "name": "C. Levko and Strings", "statement": "Levko loves strings of length , consisting of lowercase English letters,\r\nvery much. He has one such string . For each string of length , Levko\r\ndefines its beauty relative to as the number of pairs of indexes , ,\r\nsuch that substring .The boy wondered how many strings are there, such\r\nthat their beauty relative to equals exactly . Help him, find the\r\nremainder after division this number by .A substring of string is string\r\n.String is lexicographically larger than string , if there is such\r\nnumber (), that and . The string characters are compared by their ASCII\r\ncodes.\r\n", "solutions": ["//#include <iostream>\n#include <fstream>\n#include <vector>\n#include <set>\n#include <map>\n#include <cstring>\n#include <string>\n#include <cmath>\n#include <cassert>\n#include <ctime>\n#include <algorithm>\n#include <sstream>\n#include <list>\n#include <queue>\n#include <deque>\n#include <stack>\n#include <cstdlib>\n#include <cstdio>\n#include <iterator>\n#include <functional>\n#include <bitset>\n#define mp make_pair\n#define pb push_back\n\n#ifdef LOCAL\n#define eprintf(...) fprintf(stderr,__VA_ARGS__)\n#else\n#define eprintf(...)\n#endif\n\n#define TIMESTAMP(x) eprintf(\"[\"#x\"] Time : %.3lf s.\\n\", clock()*1.0/CLOCKS_PER_SEC)\n#define TIMESTAMPf(x,...) eprintf(\"[\" x \"] Time : %.3lf s.\\n\", __VA_ARGS__, clock()*1.0/CLOCKS_PER_SEC)\n\n#if ( _WIN32 || __WIN32__ )\n    #define LLD \"%I64d\"\n#else\n    #define LLD \"%lld\"\n#endif\n\nusing namespace std;\n\n#define TASKNAME \"C\"\n\n#ifdef LOCAL\nstatic struct __timestamper {\n    ~__timestamper(){\n        TIMESTAMP(end);\n    }\n} __TIMESTAMPER;\n#endif\n\ntypedef long long ll;\ntypedef long double ld;\n\n\nconst int MOD = 1000000007;\nconst int MAXN = 2010;\n\nint dp[MAXN][MAXN];\nint sum[MAXN][MAXN];\nchar s[MAXN];\n\n\nint main(){\n  #ifdef LOCAL\n    freopen(TASKNAME\".in\",\"r\",stdin);\n    freopen(TASKNAME\".out\",\"w\",stdout);\n  #endif\n\n    int n,k;\n    while (scanf(\"%d%d%s\",&n,&k,s) == 3){\n        memset(dp, 0, sizeof(dp));\n        dp[n][0] = 1;\n\n        for (int i = n-1; i >= 0; i--){\n            for (int j = 0; j <= k; j++){\n                sum[i][j] = (sum[i+1][j] + (s[i] - 'a') * 1LL* dp[i+1][j]) % MOD;\n                dp[i][j] = sum[i][j];\n                int last = -1;\n                for (int ne = i; ne < n; ne++){\n                   last = ne;\n                   int diff = (ne - i + 1) * (n - ne);\n                   if (j - diff >= 0)\n                       dp[i][j] = (dp[i][j] + (25 - (s[ne] - 'a')) * 1LL * dp[ne+1][j - diff]) % MOD;\n                   else \n                       break;\n                }\n                assert(last != -1);\n                for (int ne = n-1; ne > last; ne--){\n                   int diff = (ne - i + 1) * (n - ne);\n                   if (j - diff >= 0)\n                       dp[i][j] = (dp[i][j] + (25 - (s[ne] - 'a')) * 1LL * dp[ne+1][j - diff]) % MOD;\n                   else \n                       break;\n                }\n            }\n            dp[i][0] += 1;\n        }\n\n        printf(\"%d\\n\", dp[0][k]);\n    }   \n    return 0;\n}"], "input": "", "output": "", "tags": ["combinatorics", "dp"], "dificulty": "2500", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/360/problem/C",
+    "problemId": "3930",
+    "problem_idx": "C",
+    "shortId": "360C",
+    "contest_number": "360",
+    "problem_submissions": {
+        "E": [
+            5052621,
+            5051976,
+            5053848,
+            5054838
+        ],
+        "C": [
+            5051326,
+            5048345,
+            5049493,
+            5049490,
+            5050865,
+            5049536,
+            5050632,
+            5051192,
+            5051833,
+            5051566,
+            5051768,
+            5048366,
+            5049736
+        ],
+        "D": [
+            5050607,
+            5051524,
+            5050936,
+            5051425,
+            5048585,
+            5050472,
+            5056022,
+            5052000
+        ],
+        "B": [
+            5045795,
+            5044973,
+            5048544,
+            5051998,
+            5045747,
+            5046168,
+            5051455,
+            5046964,
+            5045609,
+            5046677,
+            5046979,
+            5047362,
+            5047061,
+            5045936,
+            5047748,
+            5047100,
+            5046972,
+            5046544
+        ],
+        "A": [
+            5044762,
+            5051854,
+            5044798,
+            5045200,
+            5044446,
+            5044824,
+            5045696,
+            5044827,
+            5045266,
+            5045205,
+            5044960,
+            5045344,
+            5047058,
+            5045224,
+            5045590,
+            5054975
+        ]
+    },
+    "name": "C. Levko and Strings",
+    "statement": "Levko loves strings of length , consisting of lowercase English letters,\r\nvery much. He has one such string . For each string of length , Levko\r\ndefines its beauty relative to as the number of pairs of indexes , ,\r\nsuch that substring .The boy wondered how many strings are there, such\r\nthat their beauty relative to equals exactly . Help him, find the\r\nremainder after division this number by .A substring of string is string\r\n.String is lexicographically larger than string , if there is such\r\nnumber (), that and . The string characters are compared by their ASCII\r\ncodes.\r\n",
+    "solutions": [
+        "//#include <iostream>\n#include <fstream>\n#include <vector>\n#include <set>\n#include <map>\n#include <cstring>\n#include <string>\n#include <cmath>\n#include <cassert>\n#include <ctime>\n#include <algorithm>\n#include <sstream>\n#include <list>\n#include <queue>\n#include <deque>\n#include <stack>\n#include <cstdlib>\n#include <cstdio>\n#include <iterator>\n#include <functional>\n#include <bitset>\n#define mp make_pair\n#define pb push_back\n\n#ifdef LOCAL\n#define eprintf(...) fprintf(stderr,__VA_ARGS__)\n#else\n#define eprintf(...)\n#endif\n\n#define TIMESTAMP(x) eprintf(\"[\"#x\"] Time : %.3lf s.\\n\", clock()*1.0/CLOCKS_PER_SEC)\n#define TIMESTAMPf(x,...) eprintf(\"[\" x \"] Time : %.3lf s.\\n\", __VA_ARGS__, clock()*1.0/CLOCKS_PER_SEC)\n\n#if ( _WIN32 || __WIN32__ )\n    #define LLD \"%I64d\"\n#else\n    #define LLD \"%lld\"\n#endif\n\nusing namespace std;\n\n#define TASKNAME \"C\"\n\n#ifdef LOCAL\nstatic struct __timestamper {\n    ~__timestamper(){\n        TIMESTAMP(end);\n    }\n} __TIMESTAMPER;\n#endif\n\ntypedef long long ll;\ntypedef long double ld;\n\n\nconst int MOD = 1000000007;\nconst int MAXN = 2010;\n\nint dp[MAXN][MAXN];\nint sum[MAXN][MAXN];\nchar s[MAXN];\n\n\nint main(){\n  #ifdef LOCAL\n    freopen(TASKNAME\".in\",\"r\",stdin);\n    freopen(TASKNAME\".out\",\"w\",stdout);\n  #endif\n\n    int n,k;\n    while (scanf(\"%d%d%s\",&n,&k,s) == 3){\n        memset(dp, 0, sizeof(dp));\n        dp[n][0] = 1;\n\n        for (int i = n-1; i >= 0; i--){\n            for (int j = 0; j <= k; j++){\n                sum[i][j] = (sum[i+1][j] + (s[i] - 'a') * 1LL* dp[i+1][j]) % MOD;\n                dp[i][j] = sum[i][j];\n                int last = -1;\n                for (int ne = i; ne < n; ne++){\n                   last = ne;\n                   int diff = (ne - i + 1) * (n - ne);\n                   if (j - diff >= 0)\n                       dp[i][j] = (dp[i][j] + (25 - (s[ne] - 'a')) * 1LL * dp[ne+1][j - diff]) % MOD;\n                   else \n                       break;\n                }\n                assert(last != -1);\n                for (int ne = n-1; ne > last; ne--){\n                   int diff = (ne - i + 1) * (n - ne);\n                   if (j - diff >= 0)\n                       dp[i][j] = (dp[i][j] + (25 - (s[ne] - 'a')) * 1LL * dp[ne+1][j - diff]) % MOD;\n                   else \n                       break;\n                }\n            }\n            dp[i][0] += 1;\n        }\n\n        printf(\"%d\\n\", dp[0][k]);\n    }   \n    return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "combinatorics",
+        "dp"
+    ],
+    "dificulty": "2500",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Levko and Strings.json",
+    "editorial_link": "https://codeforces.com//blog/entry/9529",
+    "editorial": "Let\u00e2\u0080\u0099s count amount of such substrings of that are bigger than\r\ncorresponding substring of and begin at the position . If , this amount\r\nequals . If , this amount equals . If , then let\u00e2\u0080\u0099s find such nearest\r\nposition , that . If , needed amount of substrings will be . If , needed\r\namount of substrings will be . We can rephrase this: If , it will be new\r\nsubstrings, where means how many last elements in and is equal. Let\u00e2\u0080\u0099s\r\nmake dp. means that we viewed positions, have needed substrings and .\r\nLets iterate their common prefix . If , we can count this value using\r\npartial sums. If , . Let\u00e2\u0080\u0099s iterate . Let\u00e2\u0080\u0099s note that , so and . This\r\nmeans that third cycle will make at most iterations when we find value\r\nof . Let\u00e2\u0080\u0099s count total number of iterations: .\r\n"
+}

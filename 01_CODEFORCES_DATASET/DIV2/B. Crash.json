@@ -1,1 +1,97 @@
-{"link": "https://codeforces.com//contest/417/problem/B", "problemId": "8546", "problem_idx": "B", "shortId": "417B", "contest_number": "417", "problem_submissions": {"C": [6398702, 6388645, 6386983, 6388235, 6388172, 6388065, 6390311, 6388936, 6388414, 6388018, 6388881, 6390243, 6386639, 7197952, 7197941, 6390870, 6387760, 6389469], "E": [6392802, 6390375, 6395565, 6393646], "D": [6391828, 6391234, 6393565, 6391187, 6396253, 6392305, 6391849, 6393303, 6391006, 6392955, 14306967], "B": [6387304, 6386532, 6391356, 6387301, 6387066, 6388262, 6387600, 6387683, 6388782, 6385736, 6387148, 6388492, 6397900, 6388119, 6386069, 6387510], "A": [6386106, 6395271, 6385866, 6394732, 6393467, 6394476, 6394633, 6385961, 6387340, 6385886, 6386091, 6395406, 6386306, 6386019]}, "name": "B. Crash", "statement": "During the \"Russian Code Cup\" programming competition, the testing\r\nsystem stores all sent solutions for each participant. We know that many\r\nparticipants use random numbers in their programs and are often sent\r\nseveral solutions with the same source code to check.Each participant is\r\nidentified by some unique positive integer , and each sent solution is\r\ncharacterized by two numbers: the number of different solutions that are\r\nsent before the first solution identical to , and the number of the\r\nparticipant, who is the author of the solution. Consequently, all\r\nidentical solutions have the same .It is known that the data in the\r\ntesting system are stored in the chronological order, that is, if the\r\ntesting system has a solution with number of the participant with number\r\n, then the testing system has a solution with number of the same\r\nparticipant stored somewhere before.During the competition the checking\r\nsystem crashed, but then the data of the submissions of all participants\r\nhave been restored. Now the jury wants to verify that the recovered data\r\nis in chronological order. Help the jury to do so.\r\n", "solutions": ["#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <algorithm>\n#include <cmath>\n#include <set>\n\nusing namespace std;\nint m[110000];\n\nint main() {\n    int n;\n    cin >> n;\n    for (int i = 0; i < n; i++) {\n        int x, k;\n        cin >> x >> k;\n        x++;\n        if (x <= m[k])\n            continue;\n        if (x != m[k] + 1) {\n            cout << \"NO\" << endl;\n            return 0;\n        }\n        m[k] = x;\n    }\n    cout << \"YES\" << endl;\n\n    return 0;\n}"], "input": "", "output": "", "tags": ["implementation"], "dificulty": "1400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/417/problem/B",
+    "problemId": "8546",
+    "problem_idx": "B",
+    "shortId": "417B",
+    "contest_number": "417",
+    "problem_submissions": {
+        "C": [
+            6398702,
+            6388645,
+            6386983,
+            6388235,
+            6388172,
+            6388065,
+            6390311,
+            6388936,
+            6388414,
+            6388018,
+            6388881,
+            6390243,
+            6386639,
+            7197952,
+            7197941,
+            6390870,
+            6387760,
+            6389469
+        ],
+        "E": [
+            6392802,
+            6390375,
+            6395565,
+            6393646
+        ],
+        "D": [
+            6391828,
+            6391234,
+            6393565,
+            6391187,
+            6396253,
+            6392305,
+            6391849,
+            6393303,
+            6391006,
+            6392955,
+            14306967
+        ],
+        "B": [
+            6387304,
+            6386532,
+            6391356,
+            6387301,
+            6387066,
+            6388262,
+            6387600,
+            6387683,
+            6388782,
+            6385736,
+            6387148,
+            6388492,
+            6397900,
+            6388119,
+            6386069,
+            6387510
+        ],
+        "A": [
+            6386106,
+            6395271,
+            6385866,
+            6394732,
+            6393467,
+            6394476,
+            6394633,
+            6385961,
+            6387340,
+            6385886,
+            6386091,
+            6395406,
+            6386306,
+            6386019
+        ]
+    },
+    "name": "B. Crash",
+    "statement": "During the \"Russian Code Cup\" programming competition, the testing\r\nsystem stores all sent solutions for each participant. We know that many\r\nparticipants use random numbers in their programs and are often sent\r\nseveral solutions with the same source code to check.Each participant is\r\nidentified by some unique positive integer , and each sent solution is\r\ncharacterized by two numbers: the number of different solutions that are\r\nsent before the first solution identical to , and the number of the\r\nparticipant, who is the author of the solution. Consequently, all\r\nidentical solutions have the same .It is known that the data in the\r\ntesting system are stored in the chronological order, that is, if the\r\ntesting system has a solution with number of the participant with number\r\n, then the testing system has a solution with number of the same\r\nparticipant stored somewhere before.During the competition the checking\r\nsystem crashed, but then the data of the submissions of all participants\r\nhave been restored. Now the jury wants to verify that the recovered data\r\nis in chronological order. Help the jury to do so.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <algorithm>\n#include <cmath>\n#include <set>\n\nusing namespace std;\nint m[110000];\n\nint main() {\n    int n;\n    cin >> n;\n    for (int i = 0; i < n; i++) {\n        int x, k;\n        cin >> x >> k;\n        x++;\n        if (x <= m[k])\n            continue;\n        if (x != m[k] + 1) {\n            cout << \"NO\" << endl;\n            return 0;\n        }\n        m[k] = x;\n    }\n    cout << \"YES\" << endl;\n\n    return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation"
+    ],
+    "dificulty": "1400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Crash.json",
+    "editorial_link": "https://codeforces.com//blog/entry/11730",
+    "editorial": "Let us create array with elements, which is filled with . In the cell we\r\nwill contain the maximal number of the submissions of the participant\r\nwith identifier . We will process submissions in the given order. Let us\r\nprocess submission . If , then the answer is NO, else we will update\r\narray : . Solution: 6396297\r\n"
+}

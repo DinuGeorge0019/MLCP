@@ -1,1 +1,116 @@
-{"link": "https://codeforces.com//contest/1730/problem/A", "problemId": "1555169", "problem_idx": "A", "shortId": "1730A", "contest_number": "1730", "problem_submissions": {"F": [173481312, 173482867, 173478875, 173582676], "D": [173464501, 173463845, 173492235, 173460042, 173462224, 173461894, 173462011, 173463683, 173464123, 173466252, 173465903, 173465820, 173472784, 173476685, 173475004, 173471558, 173472223], "C": [173450456, 173450157, 173457042, 173452649, 173450776, 173453445, 173454802, 173455629, 173456866, 173446752, 173444646, 173455631, 173457312, 173447641, 173447077, 173451017, 173452623, 173453329], "B": [173445492, 173444904, 173458756, 173449524, 173445632, 173448108, 173451808, 173449142, 173453555, 173457120, 173455134, 173451905, 173454521, 173452227, 173444715, 173446889, 173447944, 173446921], "A": [173439407, 173438936, 173438879, 173443820, 173439220, 173439980, 173443156, 173443507, 173445064, 173455369, 173446952, 173439340, 173447666, 173440064, 173438737, 173441530, 173439874, 173440797], "E": [173564584, 173477480, 173568880]}, "name": "A. Planets", "statement": "One day, Vogons wanted to build a new hyperspace highway through a\r\ndistant system with n planets. The i-th planet is on the orbit a_i,\r\nthere could be multiple planets on the same orbit. It\u2019s a pity that all\r\nthe planets are on the way and need to be destructed.Vogons have two\r\nmachines to do that. The first machine in one operation can destroy any\r\nplanet at cost of 1 Triganic Pu. The second machine in one operation can\r\ndestroy all planets on a single orbit in this system at the cost of c\r\nTriganic Pus. Vogons can use each machine as many times as they\r\nwant.Vogons are very greedy, so they want to destroy all planets with\r\nminimum amount of money spent. Can you help them to know the minimum\r\ncost of this project?\r\n", "solutions": ["#pragma GCC optimize(\"Ofast\",\"unroll-loops\",\"omit-frame-pointer\",\"inline\") //Optimization flags\n#pragma GCC option(\"arch=native\",\"tune=native\",\"no-zero-upper\") //Enable AVX\n#pragma GCC target(\"sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2\")\n#include<bits/stdc++.h>\n//#include<ext/pb_ds/assoc_container.hpp>\nusing namespace std;\n//using namespace __gnu_pbds;\nconst int inf=0x3f3f3f3f;\nconst double eps=1e-6;\nconst int mod=1e9+7;\ntypedef long long ll;\n#ifndef LOCAL\n#define cerr if(0)cout\n#define eprintf(...) 0\n#else\n#define eprintf(...) fprintf(stderr, __VA_ARGS__)\n#endif\ninline string getstr(string &s,int l,int r){string ret=\"\";for(int i=l;i<=r;i++)ret.push_back(s[i]);return ret;}\nint modpow(int x,int y,int md=mod){int ret=1;do{if(y&1)ret=(ll)ret*x%md;x=(ll)x*x%md;}while(y>>=1);return ret;}\ninline int Rand(){return rand()*32768+rand();}\nint t,n,c,a[105]; \nint main(){\n\tcin>>t;\n\twhile(t--){\n\t\tcin>>n>>c;\n\t\tmap<int,int>cnt;\n\t\tfor(int i=1;i<=n;i++){\n\t\t\tcin>>a[i];cnt[a[i]]++;\n\t\t}\n\t\tint ans=0;\n\t\tfor(auto p:cnt)ans+=min(c,p.second);\n\t\tcout<<ans<<endl;\n\t}\n\treturn 0;\n}"], "input": "", "output": "", "tags": ["data structures", "greedy", "sortings"], "dificulty": "800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/1730/problem/A",
+    "problemId": "1555169",
+    "problem_idx": "A",
+    "shortId": "1730A",
+    "contest_number": "1730",
+    "problem_submissions": {
+        "F": [
+            173481312,
+            173482867,
+            173478875,
+            173582676
+        ],
+        "D": [
+            173464501,
+            173463845,
+            173492235,
+            173460042,
+            173462224,
+            173461894,
+            173462011,
+            173463683,
+            173464123,
+            173466252,
+            173465903,
+            173465820,
+            173472784,
+            173476685,
+            173475004,
+            173471558,
+            173472223
+        ],
+        "C": [
+            173450456,
+            173450157,
+            173457042,
+            173452649,
+            173450776,
+            173453445,
+            173454802,
+            173455629,
+            173456866,
+            173446752,
+            173444646,
+            173455631,
+            173457312,
+            173447641,
+            173447077,
+            173451017,
+            173452623,
+            173453329
+        ],
+        "B": [
+            173445492,
+            173444904,
+            173458756,
+            173449524,
+            173445632,
+            173448108,
+            173451808,
+            173449142,
+            173453555,
+            173457120,
+            173455134,
+            173451905,
+            173454521,
+            173452227,
+            173444715,
+            173446889,
+            173447944,
+            173446921
+        ],
+        "A": [
+            173439407,
+            173438936,
+            173438879,
+            173443820,
+            173439220,
+            173439980,
+            173443156,
+            173443507,
+            173445064,
+            173455369,
+            173446952,
+            173439340,
+            173447666,
+            173440064,
+            173438737,
+            173441530,
+            173439874,
+            173440797
+        ],
+        "E": [
+            173564584,
+            173477480,
+            173568880
+        ]
+    },
+    "name": "A. Planets",
+    "statement": "One day, Vogons wanted to build a new hyperspace highway through a\r\ndistant system with n planets. The i-th planet is on the orbit a_i,\r\nthere could be multiple planets on the same orbit. It\u2019s a pity that all\r\nthe planets are on the way and need to be destructed.Vogons have two\r\nmachines to do that. The first machine in one operation can destroy any\r\nplanet at cost of 1 Triganic Pu. The second machine in one operation can\r\ndestroy all planets on a single orbit in this system at the cost of c\r\nTriganic Pus. Vogons can use each machine as many times as they\r\nwant.Vogons are very greedy, so they want to destroy all planets with\r\nminimum amount of money spent. Can you help them to know the minimum\r\ncost of this project?\r\n",
+    "solutions": [
+        "#pragma GCC optimize(\"Ofast\",\"unroll-loops\",\"omit-frame-pointer\",\"inline\") //Optimization flags\n#pragma GCC option(\"arch=native\",\"tune=native\",\"no-zero-upper\") //Enable AVX\n#pragma GCC target(\"sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2\")\n#include<bits/stdc++.h>\n//#include<ext/pb_ds/assoc_container.hpp>\nusing namespace std;\n//using namespace __gnu_pbds;\nconst int inf=0x3f3f3f3f;\nconst double eps=1e-6;\nconst int mod=1e9+7;\ntypedef long long ll;\n#ifndef LOCAL\n#define cerr if(0)cout\n#define eprintf(...) 0\n#else\n#define eprintf(...) fprintf(stderr, __VA_ARGS__)\n#endif\ninline string getstr(string &s,int l,int r){string ret=\"\";for(int i=l;i<=r;i++)ret.push_back(s[i]);return ret;}\nint modpow(int x,int y,int md=mod){int ret=1;do{if(y&1)ret=(ll)ret*x%md;x=(ll)x*x%md;}while(y>>=1);return ret;}\ninline int Rand(){return rand()*32768+rand();}\nint t,n,c,a[105]; \nint main(){\n\tcin>>t;\n\twhile(t--){\n\t\tcin>>n>>c;\n\t\tmap<int,int>cnt;\n\t\tfor(int i=1;i<=n;i++){\n\t\t\tcin>>a[i];cnt[a[i]]++;\n\t\t}\n\t\tint ans=0;\n\t\tfor(auto p:cnt)ans+=min(c,p.second);\n\t\tcout<<ans<<endl;\n\t}\n\treturn 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "data structures",
+        "greedy",
+        "sortings"
+    ],
+    "dificulty": "800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Planets.json",
+    "editorial_link": "https://codeforces.com//blog/entry/107293",
+    "editorial": "To solve the problem, it was enough to count the number of planets with\r\nthe same orbits and sum up the answers for the orbits separately. For\r\none orbit, it is advantageous either to use the second machine once and\r\nget the cost , or to use only the first one and get the cost equal to .\r\n"
+}

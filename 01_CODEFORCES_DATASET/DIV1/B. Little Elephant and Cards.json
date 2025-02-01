@@ -1,1 +1,103 @@
-{"link": "https://codeforces.com//contest/204/problem/B", "problemId": "1543", "problem_idx": "B", "shortId": "204B", "contest_number": "204", "problem_submissions": {"D": [1890391, 1887471, 1890599, 1889369, 1889690, 1887786, 1890524, 1888787, 1890893, 1890291, 1889544, 1889099, 1890138, 1888234], "C": [1887005, 1885936, 1886676, 1884378, 1886948, 1886445, 1888022, 1890493, 1887876, 1887950, 1890335, 1891041, 1888850, 1891535], "B": [1885016, 1884494, 1884426, 1885084, 1884105, 1885072, 1886343, 1886124, 1885617, 1886009, 1886808, 1885527, 1884342, 1885170], "A": [1884472, 1883818, 1883786, 1886039, 1884808, 1892033, 1884885, 1884244, 1884597, 1885114, 1886281, 1884488, 1890685, 1884595], "E": [1922274, 1922268, 1922264, 1922262, 1922224, 1922202, 1922184, 1922174, 1922170, 1922131, 1922121, 1892756]}, "name": "B. Little Elephant and Cards", "statement": "The Little Elephant loves to play with color cards.He has cards, each\r\nhas exactly two colors (the color of the front side and the color of the\r\nback side). Initially, all the cards lay on the table with the front\r\nside up. In one move the Little Elephant can turn any card to the other\r\nside. The Little Elephant thinks that a set of cards on the table is\r\nfunny if at least half of the cards have the same color (for each card\r\nthe color of the upper side is considered).Help the Little Elephant to\r\nfind the minimum number of moves needed to make the set of cards funny.\r\n", "solutions": ["#pragma comment(linker, \"/STACK:65777216\")\n\n#include <algorithm>\n#include <iostream>\n#include <string>\n#include<sstream>\n#include<string.h>\n#include <cstdio>\n#include <cassert>\n#include <complex>\n#include <vector>\n#include <bitset>\n#include <cmath>\n#include <queue>\n#include<stack>\n#include <set>\n#include <map>\n#include<ctime>\n#include<list>\n\nusing namespace std;\n \ntypedef long long ll;\ntypedef vector<int> vi;\t \ntypedef pair<int,int> pii;\ntypedef pair<double,double> pdd;\ntypedef unsigned long long ull;\n \n#define FOR(i,a,b) for (int i(a); i < (b); i++)\n#define REP(i,n) FOR(i,0,n)\n#define SORT(v) sort((v).begin(),(v).end())\n#define UN(v) sort((v).begin(),(v).end()),v.erase(unique(v.begin(),v.end()),v.end())\n#define CL(a,b) memset(a,b,sizeof(a))\n#define pb push_back\n\nint x[111111];\nint y[111111];\nmap<int,int> m,w;\nset<int> s;\n\nint main(){\n#ifdef LocalHost\n    freopen(\"input.txt\",\"r\",stdin);\n\t//freopen(\"output.txt\",\"w\",stdout);\n#endif\n\n\tint n;\n\tcin>>n;\n\tREP(i,n){\n\t\tscanf(\"%d %d\",&x[i],&y[i]);\n\t\tm[x[i]]++;\n\t\ts.insert(x[i]);\n\t\tif(x[i]!=y[i]){\n\t\t\tw[y[i]]++;\n\t\t\ts.insert(y[i]);\n\t\t}\n\t}\n\tint best = -1;\n\n\tfor(set<int>::iterator it = s.begin();it!=s.end();it++){\n\t\tint val = *it;\n\t\tif(m[val] + w[val] >= (n+1)/2){\n\t\t\tint need = (n+1)/2 - m[val];\n\t\t\tneed = max(need, 0);\n\t\t\tif(best==-1 || best > need) best = need;\n\t\t}\n\t}\n\n\tcout<<best<<endl;\n\n#ifdef LocalHost\n\tcerr<<endl<<endl<<\"TIME: \"<<clock()<<endl;\n#endif\n    return 0;\n}"], "input": "", "output": "", "tags": ["binary search", "data structures"], "dificulty": "1500", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/204/problem/B",
+    "problemId": "1543",
+    "problem_idx": "B",
+    "shortId": "204B",
+    "contest_number": "204",
+    "problem_submissions": {
+        "D": [
+            1890391,
+            1887471,
+            1890599,
+            1889369,
+            1889690,
+            1887786,
+            1890524,
+            1888787,
+            1890893,
+            1890291,
+            1889544,
+            1889099,
+            1890138,
+            1888234
+        ],
+        "C": [
+            1887005,
+            1885936,
+            1886676,
+            1884378,
+            1886948,
+            1886445,
+            1888022,
+            1890493,
+            1887876,
+            1887950,
+            1890335,
+            1891041,
+            1888850,
+            1891535
+        ],
+        "B": [
+            1885016,
+            1884494,
+            1884426,
+            1885084,
+            1884105,
+            1885072,
+            1886343,
+            1886124,
+            1885617,
+            1886009,
+            1886808,
+            1885527,
+            1884342,
+            1885170
+        ],
+        "A": [
+            1884472,
+            1883818,
+            1883786,
+            1886039,
+            1884808,
+            1892033,
+            1884885,
+            1884244,
+            1884597,
+            1885114,
+            1886281,
+            1884488,
+            1890685,
+            1884595
+        ],
+        "E": [
+            1922274,
+            1922268,
+            1922264,
+            1922262,
+            1922224,
+            1922202,
+            1922184,
+            1922174,
+            1922170,
+            1922131,
+            1922121,
+            1892756
+        ]
+    },
+    "name": "B. Little Elephant and Cards",
+    "statement": "The Little Elephant loves to play with color cards.He has cards, each\r\nhas exactly two colors (the color of the front side and the color of the\r\nback side). Initially, all the cards lay on the table with the front\r\nside up. In one move the Little Elephant can turn any card to the other\r\nside. The Little Elephant thinks that a set of cards on the table is\r\nfunny if at least half of the cards have the same color (for each card\r\nthe color of the upper side is considered).Help the Little Elephant to\r\nfind the minimum number of moves needed to make the set of cards funny.\r\n",
+    "solutions": [
+        "#pragma comment(linker, \"/STACK:65777216\")\n\n#include <algorithm>\n#include <iostream>\n#include <string>\n#include<sstream>\n#include<string.h>\n#include <cstdio>\n#include <cassert>\n#include <complex>\n#include <vector>\n#include <bitset>\n#include <cmath>\n#include <queue>\n#include<stack>\n#include <set>\n#include <map>\n#include<ctime>\n#include<list>\n\nusing namespace std;\n \ntypedef long long ll;\ntypedef vector<int> vi;\t \ntypedef pair<int,int> pii;\ntypedef pair<double,double> pdd;\ntypedef unsigned long long ull;\n \n#define FOR(i,a,b) for (int i(a); i < (b); i++)\n#define REP(i,n) FOR(i,0,n)\n#define SORT(v) sort((v).begin(),(v).end())\n#define UN(v) sort((v).begin(),(v).end()),v.erase(unique(v.begin(),v.end()),v.end())\n#define CL(a,b) memset(a,b,sizeof(a))\n#define pb push_back\n\nint x[111111];\nint y[111111];\nmap<int,int> m,w;\nset<int> s;\n\nint main(){\n#ifdef LocalHost\n    freopen(\"input.txt\",\"r\",stdin);\n\t//freopen(\"output.txt\",\"w\",stdout);\n#endif\n\n\tint n;\n\tcin>>n;\n\tREP(i,n){\n\t\tscanf(\"%d %d\",&x[i],&y[i]);\n\t\tm[x[i]]++;\n\t\ts.insert(x[i]);\n\t\tif(x[i]!=y[i]){\n\t\t\tw[y[i]]++;\n\t\t\ts.insert(y[i]);\n\t\t}\n\t}\n\tint best = -1;\n\n\tfor(set<int>::iterator it = s.begin();it!=s.end();it++){\n\t\tint val = *it;\n\t\tif(m[val] + w[val] >= (n+1)/2){\n\t\t\tint need = (n+1)/2 - m[val];\n\t\t\tneed = max(need, 0);\n\t\t\tif(best==-1 || best > need) best = need;\n\t\t}\n\t}\n\n\tcout<<best<<endl;\n\n#ifdef LocalHost\n\tcerr<<endl<<endl<<\"TIME: \"<<clock()<<endl;\n#endif\n    return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "binary search",
+        "data structures"
+    ],
+    "dificulty": "1500",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Little Elephant and Cards.json",
+    "editorial_link": "https://codeforces.com/blog/entry/4849",
+    "editorial": "It is nice to use the map structure in this problem, but you can solve it without map (using sorting and binary serach). Lets iterate through all possible colors that we have and suppose that this currect color is the one that will make our set funny. The minimal number through all this will be the answer. To find the minimal number of turns to make our set funny using current color we need to know two numbers: the number of cards with current color on the front side and the number of cards with the current color on back side (but not at the same time). Let it be integers a and b. Let m?=?(n?+?1)?/?2 \u0097 the minimal number of the same cards required to get the funny set. Then if a?+?b?<?m it is impossible to make set funny using current color at all. If a???m then the answer is 0, otherwise the answer is m?-?a."
+}

@@ -1,1 +1,93 @@
-{"link": "https://codeforces.com//contest/625/problem/E", "problemId": "47622", "problem_idx": "E", "shortId": "625E", "contest_number": "625", "problem_submissions": {"A": [15862532, 15857947, 15876571, 15855439, 15854968, 15864094, 15858424, 15856023, 15854593, 15857451, 15867390, 15864910, 15864145, 15855670, 15865351, 15855909, 15858985], "C": [15859987, 15860059, 15859028, 15858635, 15856468, 15855858, 15864305, 15859115, 15858835, 15863377, 15856997, 15861752, 15860335, 15862294, 15863440, 15856688, 15859967, 15861999], "B": [15857885, 15855922, 15856205, 15856539, 15855506, 15859381, 15862061, 15857417, 15856976, 15860050, 15856065, 15859652, 15858256, 15862446, 15861157, 15858168, 15860072], "D": [15870519, 15868010, 15870886, 15874880, 15984533], "E": [15983411]}, "name": "E. Frog Fights", "statement": "Ostap Bender recently visited frog farm and was inspired to create his\r\nown frog game.Number of frogs are places on a cyclic gameboard, divided\r\ninto cells. Cells are numbered from to , but the board is cyclic, so\r\ncell number goes right after the cell number in the direction of\r\nmovement. -th frog during its turn can jump for cells.Frogs move in\r\nturns, game starts with a move by frog . On its turn -th frog moves\r\ncells forward, knocking out all the frogs on its way. If there is a frog\r\nin the last cell of the path of the -th frog, that frog is also knocked\r\nout. After this the value is decreased by the number of frogs that were\r\nknocked out during this turn. If is zero or goes negative, then -th frog\r\ndoesn\u2019t make moves anymore.After frog number finishes its turn, frog\r\nnumber starts to move, then frog number and so on. After the frog number\r\nmakes its move, frog starts to move again, then frog and so on this\r\nprocess goes forever. If some frog was already knocked out from the\r\nboard, we consider that it skips all its moves.Help Ostap to identify,\r\nwhat frogs will stay on the board at the end of a game?\r\n", "solutions": ["#include <bits/stdc++.h>\nusing namespace std;\n#define vi vector<int>\n#define pii pair<int,int>\n#define x first\n#define y second\n#define pb push_back\n#define mp make_pair\n#define all(x) x.begin(),x.end()\n#define ll long long \n#define inf 1000000007\n#define mod 1000000007\n#define N 100005\n#define DBG(x) cerr<<(#x)<<\"=\"<<x<<endl;\n#define FOREACH(it,x) for(__typeof(x.begin()) it=x.begin();it!=x.end();it++)\n\ntemplate <class T> inline void Max(T &a,T b){if(a<b)a=b;}\ntemplate <class T> inline void Min(T &a,T b){if(a>b)a=b;}\n\ninline void add(int &a,int b){a+=b;while(a>=mod)a-=mod;}\n\nint pow(int a,int b){\n    int ans=1;\n    while(b){\n        if(b&1)ans=1LL*ans*a%mod;\n        a=1LL*a*a%mod;b>>=1;\n    }\n    return ans;\n}\nint ne[N],pr[N],dead[N],p[N],a[N],z[N],m,val[N],p1[N];\npii b[N];\npriority_queue<pii>q;\nvoid check(int u,int v){\n    int dist=p[v]-p[u];\n    if(dist<0)dist+=m;\n    if(dist<=a[u]&&u<v)val[u]=1;\n    else if(a[u]<=a[v])val[u]=inf;\n    else if(u>v){\n        int k=dist/(a[u]-a[v]);\n        if(dist%(a[u]-a[v]))k++;\n        val[u]=k;\n    }\n    else{\n        int k=1;dist-=a[u];\n        k+=dist/(a[u]-a[v]);\n        if(dist%(a[u]-a[v]))k++;\n        val[u]=k;\n    }\n    q.push(mp(-val[u],-u));\n}\nbool check2(int u,int v,int k){\n    ll pos1=z[u]*m+p[u]+1LL*a[u]*k;\n    ll pos2=z[v]*m+p[v]+1LL*a[v]*(k-1);\n    if(u>v)pos2+=a[v];\n    if(p1[u]>p1[v])pos2+=m;\n    return pos1>=pos2;\n}\nint main(){\n    int n,i,j,k;\n    scanf(\"%d%d\",&n,&m);\n    for(i=0;i<n;i++){\n        scanf(\"%d%d\",&p[i],&a[i]);\n        p[i]--;\n        p1[i]=p[i];\n        b[i]=mp(p[i],i);\n    }\n    sort(b,b+n);\n    b[n]=b[0];\n    for(i=0;i<n;i++){\n        j=b[i].y,k=b[i+1].y;\n        ne[j]=k;\n        pr[k]=j;\n        check(j,k);\n    }\n    int ans=n;\n    while(!q.empty()){\n        int u=-q.top().y;\n        int t=-q.top().x;\n        q.pop();\n        if(dead[u])continue;\n        if(t==inf)break;\n        int v=ne[u];\n        bool ok=true;\n        while(check2(u,v,t)){\n            ok=false;\n            dead[v]=true;\n            ans--;\n            if(ans==1)break;\n            v=ne[v];\n            ne[u]=v,pr[v]=u;\n            if(a[u]){\n                a[u]--;\n                p[u]+=t;\n                z[u]+=p[u]/m;\n                p[u]%=m;\n            }\n        }\n        if(ans==1)break;\n        if(ok)continue;\n        check(u,ne[u]);\n        check(pr[u],u);\n    }\n    printf(\"%d\\n\",ans);\n    for(i=0;i<n;i++)if(!dead[i])printf(\"%d \",i+1);puts(\"\");\n    return 0;\n}\n\n"], "input": "", "output": "", "tags": ["data structures", "greedy"], "dificulty": "2800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/625/problem/E",
+    "problemId": "47622",
+    "problem_idx": "E",
+    "shortId": "625E",
+    "contest_number": "625",
+    "problem_submissions": {
+        "A": [
+            15862532,
+            15857947,
+            15876571,
+            15855439,
+            15854968,
+            15864094,
+            15858424,
+            15856023,
+            15854593,
+            15857451,
+            15867390,
+            15864910,
+            15864145,
+            15855670,
+            15865351,
+            15855909,
+            15858985
+        ],
+        "C": [
+            15859987,
+            15860059,
+            15859028,
+            15858635,
+            15856468,
+            15855858,
+            15864305,
+            15859115,
+            15858835,
+            15863377,
+            15856997,
+            15861752,
+            15860335,
+            15862294,
+            15863440,
+            15856688,
+            15859967,
+            15861999
+        ],
+        "B": [
+            15857885,
+            15855922,
+            15856205,
+            15856539,
+            15855506,
+            15859381,
+            15862061,
+            15857417,
+            15856976,
+            15860050,
+            15856065,
+            15859652,
+            15858256,
+            15862446,
+            15861157,
+            15858168,
+            15860072
+        ],
+        "D": [
+            15870519,
+            15868010,
+            15870886,
+            15874880,
+            15984533
+        ],
+        "E": [
+            15983411
+        ]
+    },
+    "name": "E. Frog Fights",
+    "statement": "Ostap Bender recently visited frog farm and was inspired to create his\r\nown frog game.Number of frogs are places on a cyclic gameboard, divided\r\ninto cells. Cells are numbered from to , but the board is cyclic, so\r\ncell number goes right after the cell number in the direction of\r\nmovement. -th frog during its turn can jump for cells.Frogs move in\r\nturns, game starts with a move by frog . On its turn -th frog moves\r\ncells forward, knocking out all the frogs on its way. If there is a frog\r\nin the last cell of the path of the -th frog, that frog is also knocked\r\nout. After this the value is decreased by the number of frogs that were\r\nknocked out during this turn. If is zero or goes negative, then -th frog\r\ndoesn\u2019t make moves anymore.After frog number finishes its turn, frog\r\nnumber starts to move, then frog number and so on. After the frog number\r\nmakes its move, frog starts to move again, then frog and so on this\r\nprocess goes forever. If some frog was already knocked out from the\r\nboard, we consider that it skips all its moves.Help Ostap to identify,\r\nwhat frogs will stay on the board at the end of a game?\r\n",
+    "solutions": [
+        "#include <bits/stdc++.h>\nusing namespace std;\n#define vi vector<int>\n#define pii pair<int,int>\n#define x first\n#define y second\n#define pb push_back\n#define mp make_pair\n#define all(x) x.begin(),x.end()\n#define ll long long \n#define inf 1000000007\n#define mod 1000000007\n#define N 100005\n#define DBG(x) cerr<<(#x)<<\"=\"<<x<<endl;\n#define FOREACH(it,x) for(__typeof(x.begin()) it=x.begin();it!=x.end();it++)\n\ntemplate <class T> inline void Max(T &a,T b){if(a<b)a=b;}\ntemplate <class T> inline void Min(T &a,T b){if(a>b)a=b;}\n\ninline void add(int &a,int b){a+=b;while(a>=mod)a-=mod;}\n\nint pow(int a,int b){\n    int ans=1;\n    while(b){\n        if(b&1)ans=1LL*ans*a%mod;\n        a=1LL*a*a%mod;b>>=1;\n    }\n    return ans;\n}\nint ne[N],pr[N],dead[N],p[N],a[N],z[N],m,val[N],p1[N];\npii b[N];\npriority_queue<pii>q;\nvoid check(int u,int v){\n    int dist=p[v]-p[u];\n    if(dist<0)dist+=m;\n    if(dist<=a[u]&&u<v)val[u]=1;\n    else if(a[u]<=a[v])val[u]=inf;\n    else if(u>v){\n        int k=dist/(a[u]-a[v]);\n        if(dist%(a[u]-a[v]))k++;\n        val[u]=k;\n    }\n    else{\n        int k=1;dist-=a[u];\n        k+=dist/(a[u]-a[v]);\n        if(dist%(a[u]-a[v]))k++;\n        val[u]=k;\n    }\n    q.push(mp(-val[u],-u));\n}\nbool check2(int u,int v,int k){\n    ll pos1=z[u]*m+p[u]+1LL*a[u]*k;\n    ll pos2=z[v]*m+p[v]+1LL*a[v]*(k-1);\n    if(u>v)pos2+=a[v];\n    if(p1[u]>p1[v])pos2+=m;\n    return pos1>=pos2;\n}\nint main(){\n    int n,i,j,k;\n    scanf(\"%d%d\",&n,&m);\n    for(i=0;i<n;i++){\n        scanf(\"%d%d\",&p[i],&a[i]);\n        p[i]--;\n        p1[i]=p[i];\n        b[i]=mp(p[i],i);\n    }\n    sort(b,b+n);\n    b[n]=b[0];\n    for(i=0;i<n;i++){\n        j=b[i].y,k=b[i+1].y;\n        ne[j]=k;\n        pr[k]=j;\n        check(j,k);\n    }\n    int ans=n;\n    while(!q.empty()){\n        int u=-q.top().y;\n        int t=-q.top().x;\n        q.pop();\n        if(dead[u])continue;\n        if(t==inf)break;\n        int v=ne[u];\n        bool ok=true;\n        while(check2(u,v,t)){\n            ok=false;\n            dead[v]=true;\n            ans--;\n            if(ans==1)break;\n            v=ne[v];\n            ne[u]=v,pr[v]=u;\n            if(a[u]){\n                a[u]--;\n                p[u]+=t;\n                z[u]+=p[u]/m;\n                p[u]%=m;\n            }\n        }\n        if(ans==1)break;\n        if(ok)continue;\n        check(u,ne[u]);\n        check(pr[u],u);\n    }\n    printf(\"%d\\n\",ans);\n    for(i=0;i<n;i++)if(!dead[i])printf(\"%d \",i+1);puts(\"\");\n    return 0;\n}\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "data structures",
+        "greedy"
+    ],
+    "dificulty": "2800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Frog Fights.json",
+    "editorial_link": "https://codeforces.com//blog/entry/23342",
+    "editorial": "We want to\nefficiently simulate the process from the problem statement. Lets have a\ndata structure with times of key events that could\u00e2\u0080\u0099ve happened during\nsimulation (some frog removed other frog from the board). Lets remove\nearliest event from our data structure and apply it to the board, make a\ncritical jump. After that the speed of the first frog will decrease and\nwe will be forced to recount times of collision of this frog this its 2\nneighbors. This data structure could be set from C++, TreeSet from Java\nor self-written Segment Tree. To quickly find out who are we gonna\nremove from the board after the jump lets store double-linked list of\nall frogs sorted by their positions. Technical part is to calculate time\nof the collision, but it can be easily done with the simple notion of\nlinear movement of two points on a line. There could be at max\ncollisions, so whole solution will be .\n"
+}

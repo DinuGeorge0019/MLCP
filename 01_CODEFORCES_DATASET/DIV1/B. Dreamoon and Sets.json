@@ -1,1 +1,86 @@
-{"link": "https://codeforces.com//contest/477/problem/B", "problemId": "15279", "problem_idx": "B", "shortId": "477B", "contest_number": "477", "problem_submissions": {"D": [8200841, 8203169, 8197414, 8204683, 8206684, 8205105, 8207492, 8206274, 8205809, 8206768, 8203061, 8205051, 8208476, 8208899], "C": [8191711, 8205302, 8186637, 8208553, 8191198, 8196924, 8190967, 8195898, 8200421, 8196082, 8187240, 8197260, 8188810, 8187634, 8193728], "B": [8186292, 8188466, 8199414, 8185859, 8186714, 8196554, 8188210, 8195812, 8186799, 8186875, 8185236, 8186230], "A": [8186868, 8202132, 8184242, 8184819, 8187501, 8185797, 8186266, 8208304, 8189113, 8188194, 8193817, 8188659, 8184715]}, "name": "B. Dreamoon and Sets", "statement": "Dreamoon likes to play with sets, integers and . is defined as the\r\nlargest positive integer that divides both and .Let be a set of exactly\r\nfour distinct integers greater than . Define to be of rank if and only\r\nif for all pairs of distinct elements , from , .Given and , Dreamoon\r\nwants to make up sets of rank using integers from to such that no\r\ninteger is used in two different sets (of course you can leave some\r\nintegers without use). Calculate the minimum that makes it possible and\r\nprint one possible solution.\r\n", "solutions": ["#include <bits/stdc++.h>\nusing namespace std;\n#define rep(i,a,n) for (int i=a;i<n;i++)\n#define per(i,a,n) for (int i=n-1;i>=a;i--)\n#define pb push_back\n#define mp make_pair\n#define all(x) (x).begin(),(x).end()\n#define SZ(x) ((int)(x).size())\n#define fi first\n#define se second\ntypedef vector<int> VI;\ntypedef long long ll;\ntypedef pair<int,int> PII;\nconst ll mod=1000000007;\nll powmod(ll a,ll b) {ll res=1;a%=mod;for(;b;b>>=1){if(b&1)res=res*a%mod;a=a*a%mod;}return res;}\n// head\n\nint n,k;\nint main() {\n\tscanf(\"%d%d\",&n,&k);\n\tprintf(\"%d\\n\",(6*n-1)*k);\n\trep(i,0,n) {\n\t\tprintf(\"%d %d %d %d\\n\",(6*i+1)*k,(6*i+2)*k,(6*i+3)*k,(6*i+5)*k);\n\t}\n}\n"], "input": "", "output": "", "tags": ["math"], "dificulty": "1900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/477/problem/B",
+    "problemId": "15279",
+    "problem_idx": "B",
+    "shortId": "477B",
+    "contest_number": "477",
+    "problem_submissions": {
+        "D": [
+            8200841,
+            8203169,
+            8197414,
+            8204683,
+            8206684,
+            8205105,
+            8207492,
+            8206274,
+            8205809,
+            8206768,
+            8203061,
+            8205051,
+            8208476,
+            8208899
+        ],
+        "C": [
+            8191711,
+            8205302,
+            8186637,
+            8208553,
+            8191198,
+            8196924,
+            8190967,
+            8195898,
+            8200421,
+            8196082,
+            8187240,
+            8197260,
+            8188810,
+            8187634,
+            8193728
+        ],
+        "B": [
+            8186292,
+            8188466,
+            8199414,
+            8185859,
+            8186714,
+            8196554,
+            8188210,
+            8195812,
+            8186799,
+            8186875,
+            8185236,
+            8186230
+        ],
+        "A": [
+            8186868,
+            8202132,
+            8184242,
+            8184819,
+            8187501,
+            8185797,
+            8186266,
+            8208304,
+            8189113,
+            8188194,
+            8193817,
+            8188659,
+            8184715
+        ]
+    },
+    "name": "B. Dreamoon and Sets",
+    "statement": "Dreamoon likes to play with sets, integers and . is defined as the\r\nlargest positive integer that divides both and .Let be a set of exactly\r\nfour distinct integers greater than . Define to be of rank if and only\r\nif for all pairs of distinct elements , from , .Given and , Dreamoon\r\nwants to make up sets of rank using integers from to such that no\r\ninteger is used in two different sets (of course you can leave some\r\nintegers without use). Calculate the minimum that makes it possible and\r\nprint one possible solution.\r\n",
+    "solutions": [
+        "#include <bits/stdc++.h>\nusing namespace std;\n#define rep(i,a,n) for (int i=a;i<n;i++)\n#define per(i,a,n) for (int i=n-1;i>=a;i--)\n#define pb push_back\n#define mp make_pair\n#define all(x) (x).begin(),(x).end()\n#define SZ(x) ((int)(x).size())\n#define fi first\n#define se second\ntypedef vector<int> VI;\ntypedef long long ll;\ntypedef pair<int,int> PII;\nconst ll mod=1000000007;\nll powmod(ll a,ll b) {ll res=1;a%=mod;for(;b;b>>=1){if(b&1)res=res*a%mod;a=a*a%mod;}return res;}\n// head\n\nint n,k;\nint main() {\n\tscanf(\"%d%d\",&n,&k);\n\tprintf(\"%d\\n\",(6*n-1)*k);\n\trep(i,0,n) {\n\t\tprintf(\"%d %d %d %d\\n\",(6*i+1)*k,(6*i+2)*k,(6*i+3)*k,(6*i+5)*k);\n\t}\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "math"
+    ],
+    "dificulty": "1900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Dreamoon and Sets.json",
+    "editorial_link": "https://codeforces.com/blog/entry/14256",
+    "editorial": "The first observation is that if we divide each number in a set by k, than the set would be rank 1. So we could find n sets of rank 1 then multiple every number by k.\nFor how to find n sets of rank 1, we can use {6a?+?1,?6a?+?2,?6a?+?3,?6a?+?5} as a valid rank 1 set and take a?=?0 to n?-?1 to form n sets and thus m?=?(6n?-?1)?*?k.\nThe proof that m is minimal can be shown by the fact that we take three consecutive odd numbers in each set. If we take less odd numbers there will be more than 1 even number in a set which their gcd is obviously a multiple of 2. And if we take more odd numbers m would be larger."
+}

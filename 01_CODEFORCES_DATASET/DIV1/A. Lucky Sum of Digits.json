@@ -1,1 +1,100 @@
-{"link": "https://codeforces.com//contest/109/problem/A", "problemId": "572", "problem_idx": "A", "shortId": "109A", "contest_number": "109", "problem_submissions": {"E": [648441], "D": [646409, 647170, 646652, 646695, 646352, 645873, 645392, 646870, 646386, 646289, 645803, 647324, 646355, 647745, 646444, 645672], "B": [644873, 644785, 645061, 644222, 644364, 643745, 643698, 644283, 643725, 646460, 646874, 647648, 646835, 644816, 646998, 647078], "C": [643742, 645980, 645707, 645639, 645273, 644937, 644325, 645865, 644801, 645032, 644836, 644580, 644697, 646773, 644867, 646558], "A": [642201, 642453, 642373, 642819, 642224, 642165, 642161, 642217, 642304, 642733, 643129, 642289, 642251, 642497, 642687, 647423]}, "name": "A. Lucky Sum of Digits", "statement": "Petya wonders eagerly what minimum lucky number has the sum of digits\r\nequal to . Help him cope with the task.\r\n", "solutions": ["#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <set>\n#include <map>\n#include <algorithm>\n#include <functional>\n#include <utility>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstdio>\n\nusing namespace std;\n\n#define REP(i,n) for((i)=0;(i)<(int)(n);(i)++)\n#define foreach(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n\nint main(void){\n    int N,i,j;\n    \n    cin >> N;\n    \n    REP(i,7){\n        int M = N - 4*i;\n        if(M >= 0 && M%7 == 0){\n            string ans;\n            REP(j,i) ans += '4';\n            REP(j,M/7) ans += '7';\n            printf(\"%s\\n\",ans.c_str());\n            return 0;\n        }\n    }\n    \n    cout << \"-1\" << endl;\n    \n    return 0;\n}\n"], "input": "", "output": "", "tags": ["brute force", "implementation"], "dificulty": "1000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/109/problem/A",
+    "problemId": "572",
+    "problem_idx": "A",
+    "shortId": "109A",
+    "contest_number": "109",
+    "problem_submissions": {
+        "E": [
+            648441
+        ],
+        "D": [
+            646409,
+            647170,
+            646652,
+            646695,
+            646352,
+            645873,
+            645392,
+            646870,
+            646386,
+            646289,
+            645803,
+            647324,
+            646355,
+            647745,
+            646444,
+            645672
+        ],
+        "B": [
+            644873,
+            644785,
+            645061,
+            644222,
+            644364,
+            643745,
+            643698,
+            644283,
+            643725,
+            646460,
+            646874,
+            647648,
+            646835,
+            644816,
+            646998,
+            647078
+        ],
+        "C": [
+            643742,
+            645980,
+            645707,
+            645639,
+            645273,
+            644937,
+            644325,
+            645865,
+            644801,
+            645032,
+            644836,
+            644580,
+            644697,
+            646773,
+            644867,
+            646558
+        ],
+        "A": [
+            642201,
+            642453,
+            642373,
+            642819,
+            642224,
+            642165,
+            642161,
+            642217,
+            642304,
+            642733,
+            643129,
+            642289,
+            642251,
+            642497,
+            642687,
+            647423
+        ]
+    },
+    "name": "A. Lucky Sum of Digits",
+    "statement": "Petya wonders eagerly what minimum lucky number has the sum of digits\r\nequal to . Help him cope with the task.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <set>\n#include <map>\n#include <algorithm>\n#include <functional>\n#include <utility>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstdio>\n\nusing namespace std;\n\n#define REP(i,n) for((i)=0;(i)<(int)(n);(i)++)\n#define foreach(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n\nint main(void){\n    int N,i,j;\n    \n    cin >> N;\n    \n    REP(i,7){\n        int M = N - 4*i;\n        if(M >= 0 && M%7 == 0){\n            string ans;\n            REP(j,i) ans += '4';\n            REP(j,M/7) ans += '7';\n            printf(\"%s\\n\",ans.c_str());\n            return 0;\n        }\n    }\n    \n    cout << \"-1\" << endl;\n    \n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "implementation"
+    ],
+    "dificulty": "1000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Lucky Sum of Digits.json",
+    "editorial_link": "https://codeforces.com/blog/entry/2547",
+    "editorial": "Let result number contains a digits 4 and b digits 7. Obviously, that a?*?4?+?b?*?7?=?n. Loop through all values of b. If we know b, we can calculate a, . Among all pairs (a;b) we need to choose one with a?+?b minimum. Among all that pairs we need to choose one with b minimum. Output will be an integer 444...444777...777, here number of digits 4 equal to a, number of digits 7 equal to b."
+}

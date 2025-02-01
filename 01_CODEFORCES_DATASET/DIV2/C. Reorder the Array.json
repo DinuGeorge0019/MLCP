@@ -1,1 +1,107 @@
-{"link": "https://codeforces.com//contest/1008/problem/C", "problemId": "197243", "problem_idx": "C", "shortId": "1008C", "contest_number": "1008", "problem_submissions": {"D": [40283176, 40304075, 40285530, 40289432, 40287858, 40290282, 40291419, 40292139, 40289234, 40292105, 40291968, 40292103, 40289227, 40287896, 40292087], "C": [40272037, 40267107, 40273008, 40273757, 40269648, 40274054, 40271173, 40277109, 40273591, 40270468, 40272935, 40267803, 40275746, 40278272, 40272326, 40272797, 40275856, 40277241, 40267762], "B": [40266520, 40265026, 40265372, 40272480, 40271420, 40270433, 40267759, 40271441, 40271164, 40267957, 40266971, 40265327, 40266220, 40270724, 40267782, 40268761, 40268877, 40267898, 40277665], "A": [40264823, 40272360, 40264627, 40271368, 40267179, 40267768, 40265278, 40266944, 40268824, 40265533, 40264950, 40264661, 40267139, 40267314, 40265410, 40275824, 40265063, 40276493], "E": [40301609]}, "name": "C. Reorder the Array", "statement": "You are given an array of integers. Vasya can permute (change order) its\r\nintegers. He wants to do it so that as many as possible integers will\r\nbecome on a place where a smaller integer used to stand. Help Vasya find\r\nthe maximal number of such integers.For instance, if we are given an\r\narray [10, 20, 30, 40], we can permute it so that it becomes [20, 40,\r\n10, 30]. Then on the first and the second positions the integers became\r\nlarger (20>10, 40>20) and did not on the third and the fourth, so for\r\nthis permutation, the number that Vasya wants to maximize equals 2. Read\r\nthe note for the first example, there is one more demonstrative test\r\ncase.Help Vasya to permute integers in such way that the number of\r\npositions in a new array, where integers are greater than in the\r\noriginal one, is maximal.\r\n", "solutions": ["#include<bits/stdc++.h>\nusing namespace std;\ntypedef long long int uli;\nint main(){\n  int n;\n  scanf(\"%d\",&n);\n  vector<pair<int,int> >a(n);\n  multiset<int>all;\n  for(int i=0;i<n;i++){\n    int ai;\n    scanf(\"%d\",&ai);\n    a[i]={ai,i};\n    all.insert(ai);\n  }\n  sort(a.begin(),a.end());\n  int ans=0;\n  for(int i=n-1;i>=0;i--){\n    int v=a[i].first;\n    int maxi=*all.rbegin();\n    if(maxi>v){\n      ans++;\n      all.erase(all.find(*all.rbegin()));\n    }\n    else{\n      all.erase(all.find(*all.begin()));\n    }\n  }\n  printf(\"%d\\n\",ans);\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["combinatorics", "math"], "dificulty": "1300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/1008/problem/C",
+    "problemId": "197243",
+    "problem_idx": "C",
+    "shortId": "1008C",
+    "contest_number": "1008",
+    "problem_submissions": {
+        "D": [
+            40283176,
+            40304075,
+            40285530,
+            40289432,
+            40287858,
+            40290282,
+            40291419,
+            40292139,
+            40289234,
+            40292105,
+            40291968,
+            40292103,
+            40289227,
+            40287896,
+            40292087
+        ],
+        "C": [
+            40272037,
+            40267107,
+            40273008,
+            40273757,
+            40269648,
+            40274054,
+            40271173,
+            40277109,
+            40273591,
+            40270468,
+            40272935,
+            40267803,
+            40275746,
+            40278272,
+            40272326,
+            40272797,
+            40275856,
+            40277241,
+            40267762
+        ],
+        "B": [
+            40266520,
+            40265026,
+            40265372,
+            40272480,
+            40271420,
+            40270433,
+            40267759,
+            40271441,
+            40271164,
+            40267957,
+            40266971,
+            40265327,
+            40266220,
+            40270724,
+            40267782,
+            40268761,
+            40268877,
+            40267898,
+            40277665
+        ],
+        "A": [
+            40264823,
+            40272360,
+            40264627,
+            40271368,
+            40267179,
+            40267768,
+            40265278,
+            40266944,
+            40268824,
+            40265533,
+            40264950,
+            40264661,
+            40267139,
+            40267314,
+            40265410,
+            40275824,
+            40265063,
+            40276493
+        ],
+        "E": [
+            40301609
+        ]
+    },
+    "name": "C. Reorder the Array",
+    "statement": "You are given an array of integers. Vasya can permute (change order) its\r\nintegers. He wants to do it so that as many as possible integers will\r\nbecome on a place where a smaller integer used to stand. Help Vasya find\r\nthe maximal number of such integers.For instance, if we are given an\r\narray [10, 20, 30, 40], we can permute it so that it becomes [20, 40,\r\n10, 30]. Then on the first and the second positions the integers became\r\nlarger (20>10, 40>20) and did not on the third and the fourth, so for\r\nthis permutation, the number that Vasya wants to maximize equals 2. Read\r\nthe note for the first example, there is one more demonstrative test\r\ncase.Help Vasya to permute integers in such way that the number of\r\npositions in a new array, where integers are greater than in the\r\noriginal one, is maximal.\r\n",
+    "solutions": [
+        "#include<bits/stdc++.h>\nusing namespace std;\ntypedef long long int uli;\nint main(){\n  int n;\n  scanf(\"%d\",&n);\n  vector<pair<int,int> >a(n);\n  multiset<int>all;\n  for(int i=0;i<n;i++){\n    int ai;\n    scanf(\"%d\",&ai);\n    a[i]={ai,i};\n    all.insert(ai);\n  }\n  sort(a.begin(),a.end());\n  int ans=0;\n  for(int i=n-1;i>=0;i--){\n    int v=a[i].first;\n    int maxi=*all.rbegin();\n    if(maxi>v){\n      ans++;\n      all.erase(all.find(*all.rbegin()));\n    }\n    else{\n      all.erase(all.find(*all.begin()));\n    }\n  }\n  printf(\"%d\\n\",ans);\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "combinatorics",
+        "math"
+    ],
+    "dificulty": "1300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Reorder the Array.json",
+    "editorial_link": "https://codeforces.com//blog/entry/60572",
+    "editorial": "The answer is n\n minus maximal number of equal elements.\n\nLet the maximal number of equals be x\n. Let's proove that n?x\n is reachable. It's clear that for every permutation of the array the answer will be the same, so let's sort the array in non-decreasing order. Now we should just make a left shift on x\n. After it the n?x\n right elements will move to a position of a smaller element.\n\nNow let's proove that the answer is no more than n?x\n. Let's consider some permutation. It's known that every permutation breaks into cycles. Let's look at two occurences of the same number in the same cycle. Then there is at least one number between them which will move on a postion of a non-smaller element. Even if it the same occurence and even if the length of the cycle is 1\n, we can say that for every occurence of this number there is at least one number which moves on a postion of a non-smaller one. So if some number occurs x\n times, there are at least x\n bad positions and therefore no more than n?x\n good positions.\n\nTo count the number of equals you can, for instance, use std::map."
+}

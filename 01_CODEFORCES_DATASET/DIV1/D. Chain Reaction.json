@@ -1,1 +1,102 @@
-{"link": "https://codeforces.com//contest/666/problem/D", "problemId": "57416", "problem_idx": "D", "shortId": "666D", "contest_number": "666", "problem_submissions": {"E": [17594948, 17581972, 17586090, 59816920, 60238846], "D": [17582206, 17581333, 17682266, 17585111, 17578532, 17682483, 17593764, 17580882], "C": [17576782, 17576849, 17576800, 17578215, 17578937, 17578155, 17577254, 17578057, 17578881, 17579042, 17579726, 17577922, 17578916, 17579778, 17580460, 17580072], "B": [17573525, 17573061, 17576637, 17573442, 17574093, 17572951, 17573669, 17574447, 17576416, 17574060, 17574231, 17575134, 17573766, 17575544, 17576709, 17573819, 17575438, 17575919, 17575656], "A": [17569955, 17569857, 17570262, 17570541, 17570429, 17570371, 17570641, 17570192, 17570791, 17570963, 17571866, 17570753, 17570879, 17571604, 17570261, 17571058, 17570440, 17570884, 17570485]}, "name": "D. Chain Reaction", "statement": "Group of Berland scientists, with whom you have a close business\r\nrelationship, makes a research in the area of peaceful nuclear energy.\r\nIn particular, they found that a group of four nanobots, placed on a\r\nsurface of a plate, can run a powerful chain reaction under certain\r\nconditions. To be precise, researchers introduced a rectangular\r\nCartesian coordinate system on a flat plate and selected four distinct\r\npoints with integer coordinates where bots will be placed initially.\r\nNext each bot will be assigned with one of the four directions (up,\r\ndown, left or right) parallel to the coordinate axes. After that, each\r\nbot is shifted by an integer distance (which may be different for\r\ndifferent bots) along its direction. The chain reaction starts, if the\r\nbots are in the corners of a square with with sides parallel to the\r\ncoordinate axes. This reaction will be stronger, if bots spend less time\r\nto move. We can assume that bots move with unit speed. In other words,\r\nthe lesser is the maximum length traveled by bot, the stronger is\r\nreaction.Scientists have prepared a set of plates and selected starting\r\nposition for the bots for each plate. Now they ask you to assign the\r\ndirection for each bot to move after such that the maximum length\r\ntraveled by bot is as small as possible.\r\n", "solutions": ["#include <bits/stdc++.h>\n\n#define FO(i,a,b) for (int i = (a); i < (b); i++)\n#define sz(v) int(v.size())\n\nusing namespace std;\n\nstruct ls {\n    int xs, xe, ys, ye;\n    int i;\n\n    bool operator<(const ls &o) const {\n        return i < o.i;\n    }\n    bool operator==(const ls &o) const {\n        return vector<int>({xs,xe,ys,ye}) == vector<int>({o.xs,o.xe,o.ys,o.ye});\n    }\n};\n\nbool bad;\n\n/*\nvoid hadj(ls &a, ls &b) {\n    if (a.ys == a.ye) {\n        if (b.ys > a.ys || b.ye < a.ys) bad = true;\n        b.ys = b.ye = a.ys;\n    }\n    swap(a,b);\n    if (a.ys == a.ye) {\n        if (b.ys > a.ys || b.ye < a.ys) bad = true;\n        b.ys = b.ye = a.ys;\n    }\n    swap(a,b);\n}\n\nvoid vadj(ls &a, ls &b) {\n    if (a.xs == a.xe) {\n        if (b.xs > a.xs || b.xe < a.xs) bad = true;\n        b.xs = b.xe = a.xs;\n    }\n    swap(a,b);\n    if (a.xs == a.xe) {\n        if (b.xs > a.xs || b.xe < a.xs) bad = true;\n        b.xs = b.xe = a.xs;\n    }\n    swap(a,b);\n}\n*/\n\nls l[4];\n\nvoid solve() {\n    /*FO(z,0,10) {\n        FO(i,0,4) {\n            if (i % 2 == 0) {\n                hadj(l[i], l[(i+1)%4]);\n            } else {\n                vadj(l[i], l[(i+1)%4]);\n            }\n        }\n    }\n    if (bad) return;*/\n    //FO(i,0,4) printf(\"x:[%d,%d] y:[%d,%d]\\n\", l[i].xs, l[i].xe, l[i].ys, l[i].ye);\n    //printf(\"--\\n\");\n    FO(z,0,20) {\n        FO(i,0,4) {\n            ls &a = l[i], &b = l[(i+1)%4];\n            if (i % 2 == 0) {\n                int ly = max(a.ys,b.ys);\n                int ry = min(a.ye,b.ye);\n                if (ly > ry) bad = true;\n                a.ys = b.ys = ly;\n                a.ye = b.ye = ry;\n            } else {\n                int lx = max(a.xs,b.xs);\n                int rx = min(a.xe,b.xe);\n                if (lx > rx) bad = true;\n                a.xs = b.xs = lx;\n                a.xe = b.xe = rx;\n            }\n        }\n        if (bad) return;\n        if (z >= 10) {\n            // all are same orientation\n            FO(i,0,2) {\n                ls &a = l[i], &b = l[(i+2)%4];\n                if (i == 0) {\n                    int lxpy = max(a.xs+a.ys, b.xs+b.ys);\n                    int rxpy = min(a.xe+a.ye, b.xe+b.ye);\n                    if (lxpy > rxpy) bad = true;\n\n                    a.xs = min(a.xe, lxpy-a.ys);\n                    a.ys = min(a.ye, lxpy-a.xs);\n                    b.xs = min(b.xe, lxpy-b.ys);\n                    b.ys = min(b.ye, lxpy-b.xs);\n\n                    a.xe = max(a.xs, rxpy-a.ye);\n                    a.ye = max(a.ys, rxpy-a.xe);\n                    b.xe = max(b.xs, rxpy-b.ye);\n                    b.ye = max(b.ys, rxpy-b.xe);\n                } else {\n                    int lxmy = max(a.xs-a.ye, b.xs-b.ye);\n                    int rxmy = min(a.xe-a.ys, b.xe-b.ys);\n                    if (lxmy > rxmy) bad = true;\n\n                    a.xs = min(a.xe, lxmy+a.ye);\n                    a.ye = max(a.ys, a.xs-lxmy);\n                    b.xs = min(b.xe, lxmy+b.ye);\n                    b.ye = max(b.ys, b.xs-lxmy);\n\n                    a.xe = max(a.xs, rxmy+a.ys);\n                    a.ys = min(a.ye, a.xe-rxmy);\n                    b.xe = max(b.xs, rxmy+b.ys);\n                    b.ys = min(b.ye, b.xe-rxmy);\n                }\n            }\n        }\n    }\n    if (l[0] == l[1]) bad = true;\n    if (bad) return;\n}\n\nls op[4];\nls cl[4];\n\nint main() {\n    int t; scanf(\"%d\", &t);\n    FO(z,0,t) {\n        FO(i,0,4) scanf(\"%d %d\", &op[i].xs, &op[i].ys);\n        int s = 0, e = 1e9, bst = -1;\n        while (s <= e) {\n            int md = (s+e)/2;\n            bad = true;\n            FO(b,0,1<<4) {\n                FO(i,0,4) {\n                    cl[i].i = i;\n                    if (b&(1<<i)) {\n                        cl[i].xs = op[i].xs-md;\n                        cl[i].xe = op[i].xs+md;\n                        cl[i].ys = op[i].ys;\n                        cl[i].ye = op[i].ys;\n                    } else {\n                        cl[i].xs = op[i].xs;\n                        cl[i].xe = op[i].xs;\n                        cl[i].ys = op[i].ys-md;\n                        cl[i].ye = op[i].ys+md;\n                    }\n                }\n                do {\n                    FO(i,0,4) l[i] = cl[i];\n                    bad = false;\n                    solve();\n                    if (!bad) {\n                        break;\n                    }\n                } while (next_permutation(cl,cl+4));\n                if (!bad) break;\n            }\n            if (!bad) {\n                bst = md;\n                e = md-1;\n            } else {\n                s = md+1;\n            }\n        }\n        printf(\"%d\\n\", bst);\n        if (bst != -1) {\n            int md = bst;\n            FO(b,0,1<<4) {\n                FO(i,0,4) {\n                    cl[i].i = i;\n                    if (b&(1<<i)) {\n                        cl[i].xs = op[i].xs-md;\n                        cl[i].xe = op[i].xs+md;\n                        cl[i].ys = op[i].ys;\n                        cl[i].ye = op[i].ys;\n                    } else {\n                        cl[i].xs = op[i].xs;\n                        cl[i].xe = op[i].xs;\n                        cl[i].ys = op[i].ys-md;\n                        cl[i].ye = op[i].ys+md;\n                    }\n                }\n                do {\n                    FO(i,0,4) l[i] = cl[i];\n                    bad = false;\n                    solve();\n                    if (!bad) {\n                        break;\n                    }\n                } while (next_permutation(cl,cl+4));\n                if (!bad) break;\n            }\n            assert(!bad);\n            l[0].xs = l[0].xe;\n            l[0].ys = l[0].ye;\n            solve();\n            assert(!bad);\n            sort(l,l+4);\n            FO(i,0,4) printf(\"%d %d\\n\", l[i].xs, l[i].ys);\n        }\n    }\n}\n\n"], "input": "", "output": "", "tags": ["brute force", "geometry"], "dificulty": "3000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/666/problem/D",
+    "problemId": "57416",
+    "problem_idx": "D",
+    "shortId": "666D",
+    "contest_number": "666",
+    "problem_submissions": {
+        "E": [
+            17594948,
+            17581972,
+            17586090,
+            59816920,
+            60238846
+        ],
+        "D": [
+            17582206,
+            17581333,
+            17682266,
+            17585111,
+            17578532,
+            17682483,
+            17593764,
+            17580882
+        ],
+        "C": [
+            17576782,
+            17576849,
+            17576800,
+            17578215,
+            17578937,
+            17578155,
+            17577254,
+            17578057,
+            17578881,
+            17579042,
+            17579726,
+            17577922,
+            17578916,
+            17579778,
+            17580460,
+            17580072
+        ],
+        "B": [
+            17573525,
+            17573061,
+            17576637,
+            17573442,
+            17574093,
+            17572951,
+            17573669,
+            17574447,
+            17576416,
+            17574060,
+            17574231,
+            17575134,
+            17573766,
+            17575544,
+            17576709,
+            17573819,
+            17575438,
+            17575919,
+            17575656
+        ],
+        "A": [
+            17569955,
+            17569857,
+            17570262,
+            17570541,
+            17570429,
+            17570371,
+            17570641,
+            17570192,
+            17570791,
+            17570963,
+            17571866,
+            17570753,
+            17570879,
+            17571604,
+            17570261,
+            17571058,
+            17570440,
+            17570884,
+            17570485
+        ]
+    },
+    "name": "D. Chain Reaction",
+    "statement": "Group of Berland scientists, with whom you have a close business\r\nrelationship, makes a research in the area of peaceful nuclear energy.\r\nIn particular, they found that a group of four nanobots, placed on a\r\nsurface of a plate, can run a powerful chain reaction under certain\r\nconditions. To be precise, researchers introduced a rectangular\r\nCartesian coordinate system on a flat plate and selected four distinct\r\npoints with integer coordinates where bots will be placed initially.\r\nNext each bot will be assigned with one of the four directions (up,\r\ndown, left or right) parallel to the coordinate axes. After that, each\r\nbot is shifted by an integer distance (which may be different for\r\ndifferent bots) along its direction. The chain reaction starts, if the\r\nbots are in the corners of a square with with sides parallel to the\r\ncoordinate axes. This reaction will be stronger, if bots spend less time\r\nto move. We can assume that bots move with unit speed. In other words,\r\nthe lesser is the maximum length traveled by bot, the stronger is\r\nreaction.Scientists have prepared a set of plates and selected starting\r\nposition for the bots for each plate. Now they ask you to assign the\r\ndirection for each bot to move after such that the maximum length\r\ntraveled by bot is as small as possible.\r\n",
+    "solutions": [
+        "#include <bits/stdc++.h>\n\n#define FO(i,a,b) for (int i = (a); i < (b); i++)\n#define sz(v) int(v.size())\n\nusing namespace std;\n\nstruct ls {\n    int xs, xe, ys, ye;\n    int i;\n\n    bool operator<(const ls &o) const {\n        return i < o.i;\n    }\n    bool operator==(const ls &o) const {\n        return vector<int>({xs,xe,ys,ye}) == vector<int>({o.xs,o.xe,o.ys,o.ye});\n    }\n};\n\nbool bad;\n\n/*\nvoid hadj(ls &a, ls &b) {\n    if (a.ys == a.ye) {\n        if (b.ys > a.ys || b.ye < a.ys) bad = true;\n        b.ys = b.ye = a.ys;\n    }\n    swap(a,b);\n    if (a.ys == a.ye) {\n        if (b.ys > a.ys || b.ye < a.ys) bad = true;\n        b.ys = b.ye = a.ys;\n    }\n    swap(a,b);\n}\n\nvoid vadj(ls &a, ls &b) {\n    if (a.xs == a.xe) {\n        if (b.xs > a.xs || b.xe < a.xs) bad = true;\n        b.xs = b.xe = a.xs;\n    }\n    swap(a,b);\n    if (a.xs == a.xe) {\n        if (b.xs > a.xs || b.xe < a.xs) bad = true;\n        b.xs = b.xe = a.xs;\n    }\n    swap(a,b);\n}\n*/\n\nls l[4];\n\nvoid solve() {\n    /*FO(z,0,10) {\n        FO(i,0,4) {\n            if (i % 2 == 0) {\n                hadj(l[i], l[(i+1)%4]);\n            } else {\n                vadj(l[i], l[(i+1)%4]);\n            }\n        }\n    }\n    if (bad) return;*/\n    //FO(i,0,4) printf(\"x:[%d,%d] y:[%d,%d]\\n\", l[i].xs, l[i].xe, l[i].ys, l[i].ye);\n    //printf(\"--\\n\");\n    FO(z,0,20) {\n        FO(i,0,4) {\n            ls &a = l[i], &b = l[(i+1)%4];\n            if (i % 2 == 0) {\n                int ly = max(a.ys,b.ys);\n                int ry = min(a.ye,b.ye);\n                if (ly > ry) bad = true;\n                a.ys = b.ys = ly;\n                a.ye = b.ye = ry;\n            } else {\n                int lx = max(a.xs,b.xs);\n                int rx = min(a.xe,b.xe);\n                if (lx > rx) bad = true;\n                a.xs = b.xs = lx;\n                a.xe = b.xe = rx;\n            }\n        }\n        if (bad) return;\n        if (z >= 10) {\n            // all are same orientation\n            FO(i,0,2) {\n                ls &a = l[i], &b = l[(i+2)%4];\n                if (i == 0) {\n                    int lxpy = max(a.xs+a.ys, b.xs+b.ys);\n                    int rxpy = min(a.xe+a.ye, b.xe+b.ye);\n                    if (lxpy > rxpy) bad = true;\n\n                    a.xs = min(a.xe, lxpy-a.ys);\n                    a.ys = min(a.ye, lxpy-a.xs);\n                    b.xs = min(b.xe, lxpy-b.ys);\n                    b.ys = min(b.ye, lxpy-b.xs);\n\n                    a.xe = max(a.xs, rxpy-a.ye);\n                    a.ye = max(a.ys, rxpy-a.xe);\n                    b.xe = max(b.xs, rxpy-b.ye);\n                    b.ye = max(b.ys, rxpy-b.xe);\n                } else {\n                    int lxmy = max(a.xs-a.ye, b.xs-b.ye);\n                    int rxmy = min(a.xe-a.ys, b.xe-b.ys);\n                    if (lxmy > rxmy) bad = true;\n\n                    a.xs = min(a.xe, lxmy+a.ye);\n                    a.ye = max(a.ys, a.xs-lxmy);\n                    b.xs = min(b.xe, lxmy+b.ye);\n                    b.ye = max(b.ys, b.xs-lxmy);\n\n                    a.xe = max(a.xs, rxmy+a.ys);\n                    a.ys = min(a.ye, a.xe-rxmy);\n                    b.xe = max(b.xs, rxmy+b.ys);\n                    b.ys = min(b.ye, b.xe-rxmy);\n                }\n            }\n        }\n    }\n    if (l[0] == l[1]) bad = true;\n    if (bad) return;\n}\n\nls op[4];\nls cl[4];\n\nint main() {\n    int t; scanf(\"%d\", &t);\n    FO(z,0,t) {\n        FO(i,0,4) scanf(\"%d %d\", &op[i].xs, &op[i].ys);\n        int s = 0, e = 1e9, bst = -1;\n        while (s <= e) {\n            int md = (s+e)/2;\n            bad = true;\n            FO(b,0,1<<4) {\n                FO(i,0,4) {\n                    cl[i].i = i;\n                    if (b&(1<<i)) {\n                        cl[i].xs = op[i].xs-md;\n                        cl[i].xe = op[i].xs+md;\n                        cl[i].ys = op[i].ys;\n                        cl[i].ye = op[i].ys;\n                    } else {\n                        cl[i].xs = op[i].xs;\n                        cl[i].xe = op[i].xs;\n                        cl[i].ys = op[i].ys-md;\n                        cl[i].ye = op[i].ys+md;\n                    }\n                }\n                do {\n                    FO(i,0,4) l[i] = cl[i];\n                    bad = false;\n                    solve();\n                    if (!bad) {\n                        break;\n                    }\n                } while (next_permutation(cl,cl+4));\n                if (!bad) break;\n            }\n            if (!bad) {\n                bst = md;\n                e = md-1;\n            } else {\n                s = md+1;\n            }\n        }\n        printf(\"%d\\n\", bst);\n        if (bst != -1) {\n            int md = bst;\n            FO(b,0,1<<4) {\n                FO(i,0,4) {\n                    cl[i].i = i;\n                    if (b&(1<<i)) {\n                        cl[i].xs = op[i].xs-md;\n                        cl[i].xe = op[i].xs+md;\n                        cl[i].ys = op[i].ys;\n                        cl[i].ye = op[i].ys;\n                    } else {\n                        cl[i].xs = op[i].xs;\n                        cl[i].xe = op[i].xs;\n                        cl[i].ys = op[i].ys-md;\n                        cl[i].ye = op[i].ys+md;\n                    }\n                }\n                do {\n                    FO(i,0,4) l[i] = cl[i];\n                    bad = false;\n                    solve();\n                    if (!bad) {\n                        break;\n                    }\n                } while (next_permutation(cl,cl+4));\n                if (!bad) break;\n            }\n            assert(!bad);\n            l[0].xs = l[0].xe;\n            l[0].ys = l[0].ye;\n            solve();\n            assert(!bad);\n            sort(l,l+4);\n            FO(i,0,4) printf(\"%d %d\\n\", l[i].xs, l[i].ys);\n        }\n    }\n}\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "geometry"
+    ],
+    "dificulty": "3000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Chain Reaction.json",
+    "editorial_link": "https://codeforces.com//blog/entry/44622",
+    "editorial": "You are given four points on the plain. You should move each of them up,\r\ndown, left, or right, such that the new configuration is a square with\r\npositive integer sides parallel to coordinate axes. Choose some , length\r\nof the square side, and , the position of the bottom-left point. A set\r\nfrom where to choose will be constructed later. Then fix one of 24\r\npermutations of initial points: first goes to the bottom-left point of\r\nthe square, second goes to the bottom-right, etc. Having it fixed it is\r\neasy to check if this configuration is valid and relax the answer if\r\nneeded. The only question is where to look for , and . First we deal\r\nwith . You can see that there are always two points which move among\r\nparallel but not the same lines. In this case is the distance between\r\nthese lines, i.e. one of or . This is the set from where will be chosen.\r\nNow fix from the overmentioned set and look at two cases. By the way,\r\nthe 10th test (and the first test after pretests) was case 2; it was\r\nintentionally not included in pretests. Why does it work fast? Let and\r\nbe the sizes of corresponding lookup sets. . Now for each there are\r\ncoordinates in the first case and no more than in the second. Thus . The\r\nmain part works in ; however, it is impossible to build a test where all\r\npermutations in the second case give a valid position, so you can reduce\r\nthis number. Actually, the model solution solves 50 testcases in 10ms\r\nwithout any kind of pruning.\r\n"
+}

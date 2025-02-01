@@ -1,1 +1,97 @@
-{"link": "https://codeforces.com//contest/989/problem/B", "problemId": "189259", "problem_idx": "B", "shortId": "989B", "contest_number": "989", "problem_submissions": {"D": [39163269, 39163112, 39165857, 39164842, 39165262, 39167503, 39166865, 39167541, 39164863, 39166255, 39166513, 40225602, 39224097], "B": [39154764, 39151093, 39155556, 39151132, 39151653, 39153849, 39153122, 39159658, 39153374, 39150884, 39150337, 39152210, 39152914, 39153499, 39150661], "C": [39153682, 39156523, 39156042, 39159828, 39156893, 39155516, 39158583, 39155306, 39156082, 39158096, 39162808, 39159449, 39155362, 39156561, 39157709, 39159630], "A": [39148137, 39147995, 39148129, 39148199, 39148053, 39152704, 39150073, 39152107, 39149919, 39149579, 39158576, 39147965, 39148111, 39149222, 39149475, 39148105], "E": [39193583, 39193088]}, "name": "B. A Tide of Riverscape", "statement": "The records are expressed as a string s of characters \u201d, \u201d and \u201d, where\r\n\u201d denotes a low tide, \u201d denotes a high tide, and \u201d denotes an unknown\r\none (either high or low).You are to help Mino determine whether it\u2019s\r\npossible that after replacing each \u201d independently with \u201d or \u201d, a given\r\ninteger p is a period of the resulting string. In case the answer is\r\nyes, please also show such a replacement to Mino.In this problem, a\r\npositive integer p is considered a period of string s, if for all 1\r\nleq i\r\nleq\r\nlvert s\r\nrvert - p, the i-th and (i + p)-th characters of s are the same. Here\r\nlvert s\r\nrvert is the length of s.\r\n", "solutions": ["#include \"iostream\"\n#include \"climits\"\n#include \"list\"\n#include \"queue\"\n#include \"stack\"\n#include \"set\"\n#include \"functional\"\n#include \"algorithm\"\n#include \"string\"\n#include \"map\"\n#include \"unordered_map\"\n#include \"unordered_set\"\n#include \"iomanip\"\n#include \"cmath\"\n#include \"random\"\n#include \"bitset\"\n#include \"cstdio\"\n\nusing namespace std;\n\nconst long long int MOD = 1000000007;\n\nlong long int N, M, K, H, W, L, R;\n\nint main() {\n\tios::sync_with_stdio(false);\n\tcin.tie(0);\n\n\tcin >> N >> M;\n\tstring s;\n\tcin >> s;\n\tfor (int i = 0; i < N; i++) {\n\t\tif (i + M >= N)break;\n\t\tif (s[i] == '.'&&s[i + M] == '.') {\n\t\t\ts[i] = '0';\n\t\t\ts[i + M] = '1';\n\t\t}\n\t\telse if (s[i] == '.') {\n\t\t\ts[i] = '0';\n\t\t\tif (s[i + M] == '0') {\n\t\t\t\ts[i] = '1';\n\t\t\t}\n\t\t}\n\t\telse if (s[i + M] == '.') {\n\t\t\ts[i + M] = '0';\n\t\t\tif (s[i] == '0') {\n\t\t\t\ts[i + M] = '1';\n\t\t\t}\n\t\t}\n\t}\n\tfor (int i = 0; i < N; i++) {\n\t\tif (s[i] == '.')s[i] = '0';\n\t}\n\tfor (int i = 0; i < N; i++) {\n\t\tif (i + M >= N)break;\n\t\tif (s[i] != s[i + M]) {\n\t\t\tcout << s << endl;\n\t\t\treturn 0;\n\t\t}\n\t}\n\tcout << \"NO\\n\";\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["constructive algorithms", "strings"], "dificulty": "1200", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/989/problem/B",
+    "problemId": "189259",
+    "problem_idx": "B",
+    "shortId": "989B",
+    "contest_number": "989",
+    "problem_submissions": {
+        "D": [
+            39163269,
+            39163112,
+            39165857,
+            39164842,
+            39165262,
+            39167503,
+            39166865,
+            39167541,
+            39164863,
+            39166255,
+            39166513,
+            40225602,
+            39224097
+        ],
+        "B": [
+            39154764,
+            39151093,
+            39155556,
+            39151132,
+            39151653,
+            39153849,
+            39153122,
+            39159658,
+            39153374,
+            39150884,
+            39150337,
+            39152210,
+            39152914,
+            39153499,
+            39150661
+        ],
+        "C": [
+            39153682,
+            39156523,
+            39156042,
+            39159828,
+            39156893,
+            39155516,
+            39158583,
+            39155306,
+            39156082,
+            39158096,
+            39162808,
+            39159449,
+            39155362,
+            39156561,
+            39157709,
+            39159630
+        ],
+        "A": [
+            39148137,
+            39147995,
+            39148129,
+            39148199,
+            39148053,
+            39152704,
+            39150073,
+            39152107,
+            39149919,
+            39149579,
+            39158576,
+            39147965,
+            39148111,
+            39149222,
+            39149475,
+            39148105
+        ],
+        "E": [
+            39193583,
+            39193088
+        ]
+    },
+    "name": "B. A Tide of Riverscape",
+    "statement": "The records are expressed as a string s of characters \u201d, \u201d and \u201d, where\r\n\u201d denotes a low tide, \u201d denotes a high tide, and \u201d denotes an unknown\r\none (either high or low).You are to help Mino determine whether it\u2019s\r\npossible that after replacing each \u201d independently with \u201d or \u201d, a given\r\ninteger p is a period of the resulting string. In case the answer is\r\nyes, please also show such a replacement to Mino.In this problem, a\r\npositive integer p is considered a period of string s, if for all 1\r\nleq i\r\nleq\r\nlvert s\r\nrvert - p, the i-th and (i + p)-th characters of s are the same. Here\r\nlvert s\r\nrvert is the length of s.\r\n",
+    "solutions": [
+        "#include \"iostream\"\n#include \"climits\"\n#include \"list\"\n#include \"queue\"\n#include \"stack\"\n#include \"set\"\n#include \"functional\"\n#include \"algorithm\"\n#include \"string\"\n#include \"map\"\n#include \"unordered_map\"\n#include \"unordered_set\"\n#include \"iomanip\"\n#include \"cmath\"\n#include \"random\"\n#include \"bitset\"\n#include \"cstdio\"\n\nusing namespace std;\n\nconst long long int MOD = 1000000007;\n\nlong long int N, M, K, H, W, L, R;\n\nint main() {\n\tios::sync_with_stdio(false);\n\tcin.tie(0);\n\n\tcin >> N >> M;\n\tstring s;\n\tcin >> s;\n\tfor (int i = 0; i < N; i++) {\n\t\tif (i + M >= N)break;\n\t\tif (s[i] == '.'&&s[i + M] == '.') {\n\t\t\ts[i] = '0';\n\t\t\ts[i + M] = '1';\n\t\t}\n\t\telse if (s[i] == '.') {\n\t\t\ts[i] = '0';\n\t\t\tif (s[i + M] == '0') {\n\t\t\t\ts[i] = '1';\n\t\t\t}\n\t\t}\n\t\telse if (s[i + M] == '.') {\n\t\t\ts[i + M] = '0';\n\t\t\tif (s[i] == '0') {\n\t\t\t\ts[i + M] = '1';\n\t\t\t}\n\t\t}\n\t}\n\tfor (int i = 0; i < N; i++) {\n\t\tif (s[i] == '.')s[i] = '0';\n\t}\n\tfor (int i = 0; i < N; i++) {\n\t\tif (i + M >= N)break;\n\t\tif (s[i] != s[i + M]) {\n\t\t\tcout << s << endl;\n\t\t\treturn 0;\n\t\t}\n\t}\n\tcout << \"NO\\n\";\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "strings"
+    ],
+    "dificulty": "1200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. A Tide of Riverscape.json",
+    "editorial_link": "https://codeforces.com//blog/entry/59968",
+    "editorial": "Our very first observation is that when , the answer can never be\r\n\"No\".Under this case, find any dot . At least one of and exists because\r\nand . We want to make different from this character. In case this\r\ncharacter is or , replace the dot the other way round. In case it\u00e2\u0080\u0099s a\r\ndot, replace the two dots differently with and . After that, fill the\r\nremaining dots arbitrarily, and we obtain a valid answer.If , we\u00e2\u0080\u0099d like\r\nto find a dot with a similiar property. That is, , and or exists. Go\r\nover all dots, try find one, and carry out the same operation as above.\r\nIf no such dot exists, the answer is \"No\". Prove the time complexity of\r\nthe seemingly-brute-force solution below. In case the answer is \"Yes\",\r\nfind the lexicographically smallest string that fulfill the\r\nrequirements. Solve the bonus challenge with . (Estimated difficulty:\r\nDiv. 2 C)\r\n"
+}

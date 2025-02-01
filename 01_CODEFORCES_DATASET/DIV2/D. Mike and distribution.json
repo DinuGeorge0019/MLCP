@@ -1,1 +1,105 @@
-{"link": "https://codeforces.com//contest/798/problem/D", "problemId": "103643", "problem_idx": "D", "shortId": "798D", "contest_number": "798", "problem_submissions": {"D": [26563361, 26555687, 26556558, 26548301, 26556247, 26549650, 26559045, 26559072, 26562479, 26559512, 26557370, 26565613, 26560823, 26560731, 26560614, 26557462, 26562930], "C": [26558945, 26549095, 26548532, 26556590, 26548339, 26561843, 26551518, 26554123, 26550774, 26560992, 26554844, 26558176, 26554570, 26556784, 26555580, 26562658, 26554462], "E": [26558449, 26556461], "A": [26551397, 26540062, 26540758, 26542419, 26540657, 26540976, 26540919, 26543392, 26540558, 26556942, 26542590, 26540075, 26542212, 26540478, 26550484, 26540647, 26543658], "B": [26542968, 26545085, 26543813, 26543222, 26543887, 26545396, 26544929, 26543829, 26543862, 26557828, 26543387, 26544400, 26546204, 26542828, 26550157, 26544256, 26545856]}, "name": "D. Mike and distribution", "statement": "Mike has always been thinking about the harshness of social inequality.\r\nHe\u2019s so obsessed with it that sometimes it even affects him while\r\nsolving problems. At the moment, Mike has two sequences of positive\r\nintegers and of length each which he uses to ask people some quite\r\npeculiar questions.To test you on how good are you at spotting\r\ninequality in life, he wants you to find an subset of the original\r\nsequence. To be more precise, he wants you to select numbers such that\r\nfor and elements in are distinct. Sequence will represent indices of\r\nelements that you\u2019ll select from both sequences. He calls such a subset\r\nif and only if the following conditions are satisfied: is than the sum\r\nof all elements from sequence , and is than the sum of all elements from\r\nthe sequence . Also, should be smaller or equal to because it will be to\r\neasy to find sequence if he allowed you to select too many elements!Mike\r\nguarantees you that a solution will always exist given the conditions\r\ndescribed above, so please help him satisfy his curiosity!\r\n", "solutions": ["#include<iostream>\n#include<algorithm>\n#include<cstdio>\n#include<cstring>\n#include<cmath>\n#include<cstdlib>\n#include<set>\nusing namespace std;\ntypedef long long ll;\ntypedef long double ld;\ntypedef pair<int,int> pr;\nconst double pi=acos(-1);\n#define rep(i,a,n) for(int i=a;i<=n;i++)\n#define per(i,n,a) for(int i=n;i>=a;i--)\n#define Rep(i,u) for(int i=head[u];i;i=Next[i])\n#define clr(a) memset(a,0,sizeof a)\n#define pb push_back\n#define mp make_pair\n#define putk() putchar(' ')\nld eps=1e-9;\nll pp=1000000007;\nll mo(ll a,ll pp){if(a>=0 && a<pp)return a;a%=pp;if(a<0)a+=pp;return a;}\nll powmod(ll a,ll b,ll pp){ll ans=1;for(;b;b>>=1,a=mo(a*a,pp))if(b&1)ans=mo(ans*a,pp);return ans;}\nll gcd(ll a,ll b){return (!b)?a:gcd(b,a%b);}\nll read(){\n\tll ans=0;\n\tchar last=' ',ch=getchar();\n\twhile(ch<'0' || ch>'9')last=ch,ch=getchar();\n\twhile(ch>='0' && ch<='9')ans=ans*10+ch-'0',ch=getchar();\n\tif(last=='-')ans=-ans;\n\treturn ans;\n}\nvoid put(ll a){\n\tif(a<0)putchar('-'),a=-a;\n\tint top=0,q[20];\n\twhile(a)q[++top]=a%10,a/=10;\n\ttop=max(top,1);\n\twhile(top--)putchar('0'+q[top+1]);\n}\n//head\n#define N 110000\nint n,ans[N];\nstruct node{\n\tint x,y,id;\n}a[N];\nll s1,s2,t1,t2;\nbool cmp(node a,node b){\n\treturn a.x>b.x;\n}\nbool operator <(node a,node b){\n\treturn (a.y<b.y)||(a.y==b.y && a.x<b.x);\n}\nbool operator >(node a,node b){\n\treturn (a.y>b.y)||(a.y==b.y && a.x>b.x);\n}\nset<node>q;\nset<node>::iterator it;\nint main(){\n//\tfreopen(\"1.in\",\"r\",stdin);\n\tn=read();\n\trep(i,1,n)a[i].x=read(),s1+=a[i].x;\n\trep(i,1,n)a[i].y=read(),s2+=a[i].y;\n\trep(i,1,n)a[i].id=i;\n\tsort(a+1,a+n+1,cmp);\n\tint lim=n/2+1;\n\tfor(int i=1+n%2;i<=n;i+=2)\n\t\tif(a[i].y>a[i+1].y)\n\t\t\tans[a[i].id]=1;\n\t\telse ans[a[i+1].id]=1;\n\trep(i,1,n)\n\t\tif(!ans[a[i].id]){\n\t\t\tans[a[i].id]=1;\n\t\t\tbreak;\n\t\t}\n\t\tcout<<lim<<endl;\n\trep(i,1,n)\n\t\tif(ans[i])printf(\"%d \",i);\n\treturn 0;\n}"], "input": "", "output": "", "tags": ["constructive algorithms", "sortings"], "dificulty": "2400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/798/problem/D",
+    "problemId": "103643",
+    "problem_idx": "D",
+    "shortId": "798D",
+    "contest_number": "798",
+    "problem_submissions": {
+        "D": [
+            26563361,
+            26555687,
+            26556558,
+            26548301,
+            26556247,
+            26549650,
+            26559045,
+            26559072,
+            26562479,
+            26559512,
+            26557370,
+            26565613,
+            26560823,
+            26560731,
+            26560614,
+            26557462,
+            26562930
+        ],
+        "C": [
+            26558945,
+            26549095,
+            26548532,
+            26556590,
+            26548339,
+            26561843,
+            26551518,
+            26554123,
+            26550774,
+            26560992,
+            26554844,
+            26558176,
+            26554570,
+            26556784,
+            26555580,
+            26562658,
+            26554462
+        ],
+        "E": [
+            26558449,
+            26556461
+        ],
+        "A": [
+            26551397,
+            26540062,
+            26540758,
+            26542419,
+            26540657,
+            26540976,
+            26540919,
+            26543392,
+            26540558,
+            26556942,
+            26542590,
+            26540075,
+            26542212,
+            26540478,
+            26550484,
+            26540647,
+            26543658
+        ],
+        "B": [
+            26542968,
+            26545085,
+            26543813,
+            26543222,
+            26543887,
+            26545396,
+            26544929,
+            26543829,
+            26543862,
+            26557828,
+            26543387,
+            26544400,
+            26546204,
+            26542828,
+            26550157,
+            26544256,
+            26545856
+        ]
+    },
+    "name": "D. Mike and distribution",
+    "statement": "Mike has always been thinking about the harshness of social inequality.\r\nHe\u2019s so obsessed with it that sometimes it even affects him while\r\nsolving problems. At the moment, Mike has two sequences of positive\r\nintegers and of length each which he uses to ask people some quite\r\npeculiar questions.To test you on how good are you at spotting\r\ninequality in life, he wants you to find an subset of the original\r\nsequence. To be more precise, he wants you to select numbers such that\r\nfor and elements in are distinct. Sequence will represent indices of\r\nelements that you\u2019ll select from both sequences. He calls such a subset\r\nif and only if the following conditions are satisfied: is than the sum\r\nof all elements from sequence , and is than the sum of all elements from\r\nthe sequence . Also, should be smaller or equal to because it will be to\r\neasy to find sequence if he allowed you to select too many elements!Mike\r\nguarantees you that a solution will always exist given the conditions\r\ndescribed above, so please help him satisfy his curiosity!\r\n",
+    "solutions": [
+        "#include<iostream>\n#include<algorithm>\n#include<cstdio>\n#include<cstring>\n#include<cmath>\n#include<cstdlib>\n#include<set>\nusing namespace std;\ntypedef long long ll;\ntypedef long double ld;\ntypedef pair<int,int> pr;\nconst double pi=acos(-1);\n#define rep(i,a,n) for(int i=a;i<=n;i++)\n#define per(i,n,a) for(int i=n;i>=a;i--)\n#define Rep(i,u) for(int i=head[u];i;i=Next[i])\n#define clr(a) memset(a,0,sizeof a)\n#define pb push_back\n#define mp make_pair\n#define putk() putchar(' ')\nld eps=1e-9;\nll pp=1000000007;\nll mo(ll a,ll pp){if(a>=0 && a<pp)return a;a%=pp;if(a<0)a+=pp;return a;}\nll powmod(ll a,ll b,ll pp){ll ans=1;for(;b;b>>=1,a=mo(a*a,pp))if(b&1)ans=mo(ans*a,pp);return ans;}\nll gcd(ll a,ll b){return (!b)?a:gcd(b,a%b);}\nll read(){\n\tll ans=0;\n\tchar last=' ',ch=getchar();\n\twhile(ch<'0' || ch>'9')last=ch,ch=getchar();\n\twhile(ch>='0' && ch<='9')ans=ans*10+ch-'0',ch=getchar();\n\tif(last=='-')ans=-ans;\n\treturn ans;\n}\nvoid put(ll a){\n\tif(a<0)putchar('-'),a=-a;\n\tint top=0,q[20];\n\twhile(a)q[++top]=a%10,a/=10;\n\ttop=max(top,1);\n\twhile(top--)putchar('0'+q[top+1]);\n}\n//head\n#define N 110000\nint n,ans[N];\nstruct node{\n\tint x,y,id;\n}a[N];\nll s1,s2,t1,t2;\nbool cmp(node a,node b){\n\treturn a.x>b.x;\n}\nbool operator <(node a,node b){\n\treturn (a.y<b.y)||(a.y==b.y && a.x<b.x);\n}\nbool operator >(node a,node b){\n\treturn (a.y>b.y)||(a.y==b.y && a.x>b.x);\n}\nset<node>q;\nset<node>::iterator it;\nint main(){\n//\tfreopen(\"1.in\",\"r\",stdin);\n\tn=read();\n\trep(i,1,n)a[i].x=read(),s1+=a[i].x;\n\trep(i,1,n)a[i].y=read(),s2+=a[i].y;\n\trep(i,1,n)a[i].id=i;\n\tsort(a+1,a+n+1,cmp);\n\tint lim=n/2+1;\n\tfor(int i=1+n%2;i<=n;i+=2)\n\t\tif(a[i].y>a[i+1].y)\n\t\t\tans[a[i].id]=1;\n\t\telse ans[a[i+1].id]=1;\n\trep(i,1,n)\n\t\tif(!ans[a[i].id]){\n\t\t\tans[a[i].id]=1;\n\t\t\tbreak;\n\t\t}\n\t\tcout<<lim<<endl;\n\trep(i,1,n)\n\t\tif(ans[i])printf(\"%d \",i);\n\treturn 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "sortings"
+    ],
+    "dificulty": "2400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Mike and distribution.json",
+    "editorial_link": "https://codeforces.com//blog/entry/51652",
+    "editorial": "In the beginning, it\u00e2\u0080\u0099s quite easy to notice that the condition \" is\r\ngreater than the sum of all elements in \" is equivalent to \" is greater\r\nthan the sum of the remaining elements in \". Now, let\u00e2\u0080\u0099s store an array\r\nof indices with and then sort it in decreasing order according to array\r\n, that is we must have . Our answer will always have size . First\r\nsuppose that is odd. Add the first index to our set, that is make . Now,\r\nfor the remaining elements, we will consider them consecutively in\r\npairs. Suppose we are at the moment inspecting and . If we make , else\r\nwe make . Why does this subset work? Well, it satisfies the condition\r\nfor because each time for consecutive non-intersecting pairs of elements\r\nwe select the bigger one, and we also add to the set, so in the end the\r\nsum of the selected elements will be bigger than the sum of the\r\nremaining ones. It also satisfies the condition for , because is equal\r\nor greater than the complement element of (that is the index which we\r\ncould\u00e2\u0080\u0099ve selected instead of from the above procedure if we selected\r\nthen it would be and vice-versa). Similarly is greater than the\r\ncomplement of and so on. In the end we also add the last element from\r\nthe last pair and this makes the sum of the chosen subset strictly\r\nbigger than the sum of the remaining elements. The case when is even can\r\nbe done exactly the same as when is odd, we just pick the last remaining\r\nindex in the end. The complexity is . Solution: Link Let\u00e2\u0080\u0099s consider\r\ninstead of . Let\u00e2\u0080\u0099s also define the sequence , where such that or if\r\nthere is no such . Lets make a directed graph with vertices be the\r\nindices of the permutation with edges of type representing that . If we\r\ntopologically sort this graph then we can come up with a possible\r\npermutation: if is the topologically sorted graph then we can assign to\r\nnumber . In this problem we will use this implementation of topological\r\nsort. But how we can find the edges? First of all there are edges of the\r\nform if .For a vertex he visited all the unmarked vertices and you know\r\nfor sure that for all these . But how we can check if was already\r\nmarked? The vertex will become marked after turn of vertex or will never\r\nbecome unmarked if . So there is a direct edge from to if or and .\r\nSuppose we already visited a set of vertices and for every visited\r\nvertex we assigned to value (for simplicity just to forget about all\r\nvisited vertices) and now we want to find quickly for a fixed vertex an\r\nunvisited vertex with condition that there is edge or say it there isn\u00e2\u0080\u0099t\r\nsuch , if we can do that in subquadratic time then the task is solved.\r\nAs stated above the first condition is if , this condition is easy to\r\ncheck. The second condition is and , now consider vertices with indices\r\nfrom interval and take with maximal . If we found edge otherwise there\r\nare no remaining edges. We can find such vertex using segment tree and\r\nupdating values while we visit a new vertex. In total we will visit\r\nvertices and query the segment tree at most times ( for every new vertex\r\nand for finding that there aren\u00e2\u0080\u0099t remaining edges). Complexity and\r\nmemory are and . Solution: Link\r\n"
+}

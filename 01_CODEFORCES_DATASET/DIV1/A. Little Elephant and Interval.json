@@ -1,1 +1,104 @@
-{"link": "https://codeforces.com//contest/204/problem/A", "problemId": "1542", "problem_idx": "A", "shortId": "204A", "contest_number": "204", "problem_submissions": {"D": [1890391, 1887471, 1890599, 1889369, 1889690, 1887786, 1890524, 1888787, 1890893, 1890291, 1889544, 1889099, 1890138, 1888234], "C": [1887005, 1885936, 1886676, 1884378, 1886948, 1886445, 1888022, 1890493, 1887876, 1887950, 1890335, 1891041, 1888850, 1891535], "B": [1885016, 1884494, 1884426, 1885084, 1884105, 1885072, 1886343, 1886124, 1885617, 1886009, 1886808, 1885527, 1884342, 1885170], "A": [1884472, 1883818, 1883786, 1886039, 1884808, 1892033, 1884885, 1884244, 1884597, 1885114, 1886281, 1884488, 1890685, 1884595], "E": [1922274, 1922268, 1922264, 1922262, 1922224, 1922202, 1922184, 1922174, 1922170, 1922131, 1922121, 1892756]}, "name": "A. Little Elephant and Interval", "statement": "The Little Elephant very much loves sums on intervals.This time he has a\r\npair of integers and . The Little Elephant has to find the number of\r\nsuch integers , that the first digit of integer equals the last one (in\r\ndecimal notation). For example, such numbers as , or will be included in\r\nthe answer and , or will not.Help him and count the number of described\r\nnumbers for a given pair and .\r\n", "solutions": ["#pragma comment(linker, \"/STACK:65777216\")\n\n#include <algorithm>\n#include <iostream>\n#include <string>\n#include<sstream>\n#include<string.h>\n#include <cstdio>\n#include <cassert>\n#include <complex>\n#include <vector>\n#include <bitset>\n#include <cmath>\n#include <queue>\n#include<stack>\n#include <set>\n#include <map>\n#include<ctime>\n#include<list>\n\nusing namespace std;\n \ntypedef long long ll;\ntypedef vector<int> vi;\t \ntypedef pair<int,int> pii;\ntypedef pair<double,double> pdd;\ntypedef unsigned long long ull;\n \n#define FOR(i,a,b) for (int i(a); i < (b); i++)\n#define REP(i,n) FOR(i,0,n)\n#define SORT(v) sort((v).begin(),(v).end())\n#define UN(v) sort((v).begin(),(v).end()),v.erase(unique(v.begin(),v.end()),v.end())\n#define CL(a,b) memset(a,b,sizeof(a))\n#define pb push_back\n\nll p[22];\nll f(ll n){\n\tstringstream ss;\n\tss<<n;\n\tstring s = ss.str();\n\tll res =  0;\n\tFOR(i,1,s.size()){\n\t\tint len = i;\n\t\tlen -= 2;\n\t\tif(len<0) len = 0;\n\t\tres += p[len]*9;\n\t}\n\tstring t = s;\n\tFOR(i,1,10){\n\t\tif(s[0]-'0' < i) break;\n\t\tif(s[0]-'0' == i){\n\t\t\tll val = 0;\n\t\t\tFOR(j,1,s.size()-1) val = 10 * val + s[j]-'0';\n\t\t\tval ++;\n\t\t\tif(s[s.size()-1]-'0' < i) val--;\n\t\t\tres += val;\n\t\t}else res += p[max(0,(int)s.size()-2)];\n\t}\n\treturn res;\n}\n\nbool good(ll n){\n\tstringstream ss;\n\tss<<n;\n\tstring s = ss.str();\n\treturn s[0]==s[s.size()-1];\n}\nll stupid(ll l,ll r){\n\tll res = 0;\n\tfor(ll i = l;i<=r;i++)\n\t\tif(good(i)) res++;\n\treturn res;\n}\n\nint main(){\n#ifdef LocalHost\n    freopen(\"input.txt\",\"r\",stdin);\n\t//freopen(\"output.txt\",\"w\",stdout);\n#endif\n\n\tp[0]=1;\n\tFOR(i,1,20) p[i]=p[i-1]*10;\n\tll l,r;\n\tcin>>l>>r;\n\tif(l>r) swap(l,r);\n\tcout<<f(r)-f(l-1)<<endl;\n//\tcout<<f(r)<<' '<<f(l-1)<<endl;\n//\tcout<<stupid(l,r)<<endl;\n\t//if(f(r)-f(l-1)==stupid(l,r)) goto start;\n\n#ifdef LocalHost\n\tcerr<<endl<<endl<<\"TIME: \"<<clock()<<endl;\n#endif\n    return 0;\n}"], "input": "", "output": "", "tags": ["binary search", "combinatorics", "dp"], "dificulty": "1500", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/204/problem/A",
+    "problemId": "1542",
+    "problem_idx": "A",
+    "shortId": "204A",
+    "contest_number": "204",
+    "problem_submissions": {
+        "D": [
+            1890391,
+            1887471,
+            1890599,
+            1889369,
+            1889690,
+            1887786,
+            1890524,
+            1888787,
+            1890893,
+            1890291,
+            1889544,
+            1889099,
+            1890138,
+            1888234
+        ],
+        "C": [
+            1887005,
+            1885936,
+            1886676,
+            1884378,
+            1886948,
+            1886445,
+            1888022,
+            1890493,
+            1887876,
+            1887950,
+            1890335,
+            1891041,
+            1888850,
+            1891535
+        ],
+        "B": [
+            1885016,
+            1884494,
+            1884426,
+            1885084,
+            1884105,
+            1885072,
+            1886343,
+            1886124,
+            1885617,
+            1886009,
+            1886808,
+            1885527,
+            1884342,
+            1885170
+        ],
+        "A": [
+            1884472,
+            1883818,
+            1883786,
+            1886039,
+            1884808,
+            1892033,
+            1884885,
+            1884244,
+            1884597,
+            1885114,
+            1886281,
+            1884488,
+            1890685,
+            1884595
+        ],
+        "E": [
+            1922274,
+            1922268,
+            1922264,
+            1922262,
+            1922224,
+            1922202,
+            1922184,
+            1922174,
+            1922170,
+            1922131,
+            1922121,
+            1892756
+        ]
+    },
+    "name": "A. Little Elephant and Interval",
+    "statement": "The Little Elephant very much loves sums on intervals.This time he has a\r\npair of integers and . The Little Elephant has to find the number of\r\nsuch integers , that the first digit of integer equals the last one (in\r\ndecimal notation). For example, such numbers as , or will be included in\r\nthe answer and , or will not.Help him and count the number of described\r\nnumbers for a given pair and .\r\n",
+    "solutions": [
+        "#pragma comment(linker, \"/STACK:65777216\")\n\n#include <algorithm>\n#include <iostream>\n#include <string>\n#include<sstream>\n#include<string.h>\n#include <cstdio>\n#include <cassert>\n#include <complex>\n#include <vector>\n#include <bitset>\n#include <cmath>\n#include <queue>\n#include<stack>\n#include <set>\n#include <map>\n#include<ctime>\n#include<list>\n\nusing namespace std;\n \ntypedef long long ll;\ntypedef vector<int> vi;\t \ntypedef pair<int,int> pii;\ntypedef pair<double,double> pdd;\ntypedef unsigned long long ull;\n \n#define FOR(i,a,b) for (int i(a); i < (b); i++)\n#define REP(i,n) FOR(i,0,n)\n#define SORT(v) sort((v).begin(),(v).end())\n#define UN(v) sort((v).begin(),(v).end()),v.erase(unique(v.begin(),v.end()),v.end())\n#define CL(a,b) memset(a,b,sizeof(a))\n#define pb push_back\n\nll p[22];\nll f(ll n){\n\tstringstream ss;\n\tss<<n;\n\tstring s = ss.str();\n\tll res =  0;\n\tFOR(i,1,s.size()){\n\t\tint len = i;\n\t\tlen -= 2;\n\t\tif(len<0) len = 0;\n\t\tres += p[len]*9;\n\t}\n\tstring t = s;\n\tFOR(i,1,10){\n\t\tif(s[0]-'0' < i) break;\n\t\tif(s[0]-'0' == i){\n\t\t\tll val = 0;\n\t\t\tFOR(j,1,s.size()-1) val = 10 * val + s[j]-'0';\n\t\t\tval ++;\n\t\t\tif(s[s.size()-1]-'0' < i) val--;\n\t\t\tres += val;\n\t\t}else res += p[max(0,(int)s.size()-2)];\n\t}\n\treturn res;\n}\n\nbool good(ll n){\n\tstringstream ss;\n\tss<<n;\n\tstring s = ss.str();\n\treturn s[0]==s[s.size()-1];\n}\nll stupid(ll l,ll r){\n\tll res = 0;\n\tfor(ll i = l;i<=r;i++)\n\t\tif(good(i)) res++;\n\treturn res;\n}\n\nint main(){\n#ifdef LocalHost\n    freopen(\"input.txt\",\"r\",stdin);\n\t//freopen(\"output.txt\",\"w\",stdout);\n#endif\n\n\tp[0]=1;\n\tFOR(i,1,20) p[i]=p[i-1]*10;\n\tll l,r;\n\tcin>>l>>r;\n\tif(l>r) swap(l,r);\n\tcout<<f(r)-f(l-1)<<endl;\n//\tcout<<f(r)<<' '<<f(l-1)<<endl;\n//\tcout<<stupid(l,r)<<endl;\n\t//if(f(r)-f(l-1)==stupid(l,r)) goto start;\n\n#ifdef LocalHost\n\tcerr<<endl<<endl<<\"TIME: \"<<clock()<<endl;\n#endif\n    return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "binary search",
+        "combinatorics",
+        "dp"
+    ],
+    "dificulty": "1500",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Little Elephant and Interval.json",
+    "editorial_link": "https://codeforces.com/blog/entry/4849",
+    "editorial": "It is well-known that for such problem you need to write function F(x) which solves the problem for the interval 0..x, and the answer then is F(r)?-?F(l?-?1).\n\nNow you need to write F(x) function. If x?<?10, then answer is, of course, equal to x. Otherwise, let len be the length of x, x' \u0097 the integer x but without first and last digits, xi \u0097 the i-th digit of integer x (from left to right, starting from 0). Interate through all possible first digit d (which is the last at the same time) and through the length i of the number. Then if i?<?len?-?2 or (i?=?len?-?2 and d?<?x0) you need to add 10i to the answer. Otherwise, if i?=?len?-?2 and d?=?x0 you need to add x' to the answer. Finally, if i?=?len?-?2 and d?=?x0 and xlen?-?1???d add 1 to the answer.\n\nThis problems also can be solved using DP."
+}

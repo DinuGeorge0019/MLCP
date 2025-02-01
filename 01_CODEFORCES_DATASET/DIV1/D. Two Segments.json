@@ -1,1 +1,84 @@
-{"link": "https://codeforces.com//contest/193/problem/D", "problemId": "1407", "problem_idx": "D", "shortId": "193D", "contest_number": "193", "problem_submissions": {"E": [1760964, 1761121, 1761512], "D": [1760240, 1762133], "C": [1758660, 1761664, 1756861, 1760385, 1757547, 1757786, 1758601, 1759415, 1759294, 1758335, 1759388, 1758973, 1758915, 1759895, 1758129, 1758643], "B": [1755241, 1755126, 1757246, 1755771, 1756101, 1755179, 1755123, 1755569, 1759901, 1755152, 1756669, 1756100, 1755910, 1760390, 1760344], "A": [1754055, 1754254, 1754686, 1754344, 1754275, 1758932, 1756481, 1757287, 1754744, 1756492, 1755198, 1754933, 1754369, 1755466]}, "name": "D. Two Segments", "statement": "Nick has some permutation consisting of integers from to . A segment ()\r\nis a set of elements satisfying .Nick calls a pair of segments and ()\r\ngood if all their elements, when sorted in ascending order, form an\r\narithmetic progression with a difference of . That is, when they sorted\r\nin ascending order, the elements are in the form , for some and .Your\r\ntask is to find the number of distinct pairs of good segments in the\r\ngiven permutation. Two pairs of segments are considered distinct if the\r\nsets of elements contained in these pairs of segments are distinct. For\r\nexample, any segment can be represented as a pair of segments, as and\r\n(). As all these pairs consist of the same set of elements, they are\r\nconsidered identical.See the notes accompanying the sample tests for\r\nclarification.\r\n", "solutions": ["#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cmath>\n#include <cassert>\n#include <algorithm>\n#include <string>\n#include <vector>\n\nusing namespace std;\n\n#define eprintf(...) fprintf(stderr, __VA_ARGS__)\n#define pb push_back\n#define mp make_pair\n#define sz(x) ((int)(x).size())\n\ntypedef long long ll;\ntypedef vector<ll> vll;\ntypedef vector<int> vi;\ntypedef vector<vi> vvi;\ntypedef vector<bool> vb;\ntypedef vector<vb> vvb;\ntypedef pair<int, int> pii;\n\nconst int INF = 1e9;\nclass Solver {\n  struct Data {\n    pii vals[3];\n\n    Data() { for (int i = 0; i < 3; i++) vals[i] = mp(INF, 0); }\n    Data(int x) { for (int i = 1; i < 3; i++) vals[i] = mp(INF, 0); vals[0] = mp(x, 1); }\n    void operator+=(const Data &d2) {\n      int p1 = 0, p2 = 0;\n      pii vals2[3];\n\n      for (int p3 = 0; p3 < 3; p3++) {\n        assert(p1 < 3 && p2 < 3);\n        int cmp = vals[p1].first - d2.vals[p2].first;\n        if (cmp < 0) vals2[p3] = vals[p1++];\n        else if (cmp > 0) vals2[p3] = d2.vals[p2++];\n        else {\n          vals2[p3] = mp(vals[p1].first, vals[p1].second + d2.vals[p2].second);\n          p1++; p2++;\n        }\n      }\n      for (int i = 0; i < 3; i++) vals[i] = vals2[i];\n    }\n  };\n\n  vector<Data> tr;\n  vi tradd;\n  int off;\n\n  void norm(int v) {\n    if (!tradd[v]) return;\n    if (v < off) {\n      tradd[2 * v] += tradd[v];\n      tradd[2 * v + 1] += tradd[v];\n    }\n    for (int i = 0; i < 3; i++) tr[v].vals[i].first += tradd[v];\n    tradd[v] = 0;\n  }\n\n  int lr, rr, vr;\n  void _add(int v, int lt, int rt) {\n    if (rt < lr || rr < lt) return;\n    if (lr <= lt && rt <= rr) {\n      tradd[v] += vr;\n      return;\n    }\n    norm(v);\n    int mt = (lt + rt) / 2;\n    _add(2 * v, lt, mt); norm(2 * v);\n    _add(2 * v + 1, mt + 1, rt); norm(2 * v + 1);\n    tr[v] = tr[2 * v];\n    tr[v] += tr[2 * v + 1];\n  }\n\n  public:\n  Solver(int n) {\n    off = 1; while (off < n) off <<= 1;\n    tr = vector<Data>(2 * off);\n    tradd = vi(2 * off, 0);\n\n    for (int i = 0; i < n; i++) {\n      tr[off + i] = 0;\n    }\n    for (int i = off - 1; i >= 1; i--) {\n      tr[i] = tr[2 * i];\n      tr[i] += tr[2 * i + 1];\n    }\n  }\n  int calc() {\n    norm(1);\n    int ans = 0;\n    for (int i = 0; i < 3; i++) {\n      assert(tr[1].vals[i].first >= 0);\n      assert(tr[1].vals[i].second >= 0);\n      if (tr[1].vals[i].first <= 2)\n        ans += tr[1].vals[i].second;\n    }\n    return ans;\n  }\n  void add(int l, int r, int v) {\n    lr = l; rr = r; vr = v;\n    return _add(1, 0, off - 1);\n  }\n};\n\nconst int MAXN = 3e5 + 1e3;\nint n;\nint as[MAXN], pos[MAXN];\n\ninline int calcNeigh(int x, int l) {\n  int cp = pos[x];\n  int ans = 0;\n  if (cp > 0) ans += as[cp - 1] >= l && as[cp - 1] < as[cp];\n  if (cp + 1 < n) ans += as[cp + 1] >= l && as[cp + 1] < as[cp];\n  return ans;\n}\n\nint main() {\n  #ifdef DEBUG\n  freopen(\"std.in\", \"r\", stdin);\n  freopen(\"std.out\", \"w\", stdout);\n  #endif\n\n  while (scanf(\"%d\", &n) >= 1) {\n    for (int i = 0; i < n; i++)\n      scanf(\"%d\", &as[i]), pos[--as[i]] = i;\n\n    ll ans = 0;\n    Solver s(n);\n    {\n      for (int r = 0; r < n; r++)\n        s.add(r, n - 1, -calcNeigh(r, 0) + 1);\n    }\n    for (int l = 0; l < n; l++) {\n      ans += s.calc() - 1 - l;\n      s.add(l, n - 1, calcNeigh(l, l) - 1);\n\n      for (int x = max(0, pos[l] - 1); x < n && x <= pos[l] + 1; x++) if (as[x] != l) {\n        int r = as[x];\n        int oval = -calcNeigh(r, l) + 1;\n        int nval = -calcNeigh(r, l + 1) + 1;\n        s.add(r, n - 1, nval - oval);\n      }\n    }\n    printf(\"%I64d\\n\", ans);\n  }\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["data structures"], "dificulty": "2900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/193/problem/D",
+    "problemId": "1407",
+    "problem_idx": "D",
+    "shortId": "193D",
+    "contest_number": "193",
+    "problem_submissions": {
+        "E": [
+            1760964,
+            1761121,
+            1761512
+        ],
+        "D": [
+            1760240,
+            1762133
+        ],
+        "C": [
+            1758660,
+            1761664,
+            1756861,
+            1760385,
+            1757547,
+            1757786,
+            1758601,
+            1759415,
+            1759294,
+            1758335,
+            1759388,
+            1758973,
+            1758915,
+            1759895,
+            1758129,
+            1758643
+        ],
+        "B": [
+            1755241,
+            1755126,
+            1757246,
+            1755771,
+            1756101,
+            1755179,
+            1755123,
+            1755569,
+            1759901,
+            1755152,
+            1756669,
+            1756100,
+            1755910,
+            1760390,
+            1760344
+        ],
+        "A": [
+            1754055,
+            1754254,
+            1754686,
+            1754344,
+            1754275,
+            1758932,
+            1756481,
+            1757287,
+            1754744,
+            1756492,
+            1755198,
+            1754933,
+            1754369,
+            1755466
+        ]
+    },
+    "name": "D. Two Segments",
+    "statement": "Nick has some permutation consisting of integers from to . A segment ()\r\nis a set of elements satisfying .Nick calls a pair of segments and ()\r\ngood if all their elements, when sorted in ascending order, form an\r\narithmetic progression with a difference of . That is, when they sorted\r\nin ascending order, the elements are in the form , for some and .Your\r\ntask is to find the number of distinct pairs of good segments in the\r\ngiven permutation. Two pairs of segments are considered distinct if the\r\nsets of elements contained in these pairs of segments are distinct. For\r\nexample, any segment can be represented as a pair of segments, as and\r\n(). As all these pairs consist of the same set of elements, they are\r\nconsidered identical.See the notes accompanying the sample tests for\r\nclarification.\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cmath>\n#include <cassert>\n#include <algorithm>\n#include <string>\n#include <vector>\n\nusing namespace std;\n\n#define eprintf(...) fprintf(stderr, __VA_ARGS__)\n#define pb push_back\n#define mp make_pair\n#define sz(x) ((int)(x).size())\n\ntypedef long long ll;\ntypedef vector<ll> vll;\ntypedef vector<int> vi;\ntypedef vector<vi> vvi;\ntypedef vector<bool> vb;\ntypedef vector<vb> vvb;\ntypedef pair<int, int> pii;\n\nconst int INF = 1e9;\nclass Solver {\n  struct Data {\n    pii vals[3];\n\n    Data() { for (int i = 0; i < 3; i++) vals[i] = mp(INF, 0); }\n    Data(int x) { for (int i = 1; i < 3; i++) vals[i] = mp(INF, 0); vals[0] = mp(x, 1); }\n    void operator+=(const Data &d2) {\n      int p1 = 0, p2 = 0;\n      pii vals2[3];\n\n      for (int p3 = 0; p3 < 3; p3++) {\n        assert(p1 < 3 && p2 < 3);\n        int cmp = vals[p1].first - d2.vals[p2].first;\n        if (cmp < 0) vals2[p3] = vals[p1++];\n        else if (cmp > 0) vals2[p3] = d2.vals[p2++];\n        else {\n          vals2[p3] = mp(vals[p1].first, vals[p1].second + d2.vals[p2].second);\n          p1++; p2++;\n        }\n      }\n      for (int i = 0; i < 3; i++) vals[i] = vals2[i];\n    }\n  };\n\n  vector<Data> tr;\n  vi tradd;\n  int off;\n\n  void norm(int v) {\n    if (!tradd[v]) return;\n    if (v < off) {\n      tradd[2 * v] += tradd[v];\n      tradd[2 * v + 1] += tradd[v];\n    }\n    for (int i = 0; i < 3; i++) tr[v].vals[i].first += tradd[v];\n    tradd[v] = 0;\n  }\n\n  int lr, rr, vr;\n  void _add(int v, int lt, int rt) {\n    if (rt < lr || rr < lt) return;\n    if (lr <= lt && rt <= rr) {\n      tradd[v] += vr;\n      return;\n    }\n    norm(v);\n    int mt = (lt + rt) / 2;\n    _add(2 * v, lt, mt); norm(2 * v);\n    _add(2 * v + 1, mt + 1, rt); norm(2 * v + 1);\n    tr[v] = tr[2 * v];\n    tr[v] += tr[2 * v + 1];\n  }\n\n  public:\n  Solver(int n) {\n    off = 1; while (off < n) off <<= 1;\n    tr = vector<Data>(2 * off);\n    tradd = vi(2 * off, 0);\n\n    for (int i = 0; i < n; i++) {\n      tr[off + i] = 0;\n    }\n    for (int i = off - 1; i >= 1; i--) {\n      tr[i] = tr[2 * i];\n      tr[i] += tr[2 * i + 1];\n    }\n  }\n  int calc() {\n    norm(1);\n    int ans = 0;\n    for (int i = 0; i < 3; i++) {\n      assert(tr[1].vals[i].first >= 0);\n      assert(tr[1].vals[i].second >= 0);\n      if (tr[1].vals[i].first <= 2)\n        ans += tr[1].vals[i].second;\n    }\n    return ans;\n  }\n  void add(int l, int r, int v) {\n    lr = l; rr = r; vr = v;\n    return _add(1, 0, off - 1);\n  }\n};\n\nconst int MAXN = 3e5 + 1e3;\nint n;\nint as[MAXN], pos[MAXN];\n\ninline int calcNeigh(int x, int l) {\n  int cp = pos[x];\n  int ans = 0;\n  if (cp > 0) ans += as[cp - 1] >= l && as[cp - 1] < as[cp];\n  if (cp + 1 < n) ans += as[cp + 1] >= l && as[cp + 1] < as[cp];\n  return ans;\n}\n\nint main() {\n  #ifdef DEBUG\n  freopen(\"std.in\", \"r\", stdin);\n  freopen(\"std.out\", \"w\", stdout);\n  #endif\n\n  while (scanf(\"%d\", &n) >= 1) {\n    for (int i = 0; i < n; i++)\n      scanf(\"%d\", &as[i]), pos[--as[i]] = i;\n\n    ll ans = 0;\n    Solver s(n);\n    {\n      for (int r = 0; r < n; r++)\n        s.add(r, n - 1, -calcNeigh(r, 0) + 1);\n    }\n    for (int l = 0; l < n; l++) {\n      ans += s.calc() - 1 - l;\n      s.add(l, n - 1, calcNeigh(l, l) - 1);\n\n      for (int x = max(0, pos[l] - 1); x < n && x <= pos[l] + 1; x++) if (as[x] != l) {\n        int r = as[x];\n        int oval = -calcNeigh(r, l) + 1;\n        int nval = -calcNeigh(r, l + 1) + 1;\n        s.add(r, n - 1, nval - oval);\n      }\n    }\n    printf(\"%I64d\\n\", ans);\n  }\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "data structures"
+    ],
+    "dificulty": "2900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Two Segments.json",
+    "editorial_link": "https://codeforces.com//blog/entry/4673",
+    "editorial": "Main idea: inverse the permutation and solve simplified problem (see below), consider function \"quantity of segments of permutation that form the given segment of natural series\".\n\nIn order to solve this problem, we suggest solve another: <<we have a permutation pn, we have to calculate the count of segments such that their elements form one or two segments of natural series>>.\n\nIf we solve the inverse problem for some permutation qn such that , we shall get the answer for the initial problem and initial permutation pi.\n\nStraight-forward algo: let's bruteforce the segment of permutation and mark its elements in a boolean array. Check that in that array there is not more than two marked segments. This algo has complexity O(n3).\n\nLet's notice that during the changeover from [l,?r] to [l,?r?+?1] the quantity of segments changes in some predictable way. Let s([a,?b]) be quantity of segments that form segment [a,?b] of permutation. There are three cases (see picture below):\n\nIf the new element pr?+?1 is between two marked elements (that is, both elements with values pr?+?1?-?1 and pr?+?1?+?1 belong to segment [l,?r]), then s([l,?r?+?1])?=?s([l,?r])?-?1. The new element will <> the segments near it.\nIf the new element pr?+?1 has only one neighbor with value belonging to [l,?r], then s([l,?r?+?1])?=?s([l,?r]). The new element will lengthen one of existing segments.\nIf there are no marked elements near pr?+?1 the new element forms a new segment, s([l,?r?+?1])?=?s([l,?r])?+?1.\n \n\nThe new element is red, elements that are marked to this moment are black.\n\nImproved algo: Let's bruteforce position of the left border and for each instance move the right border from left to right. During each move we shall recount the actual quantity of segments forming the current segment of permutation (s([l,?r])). Now we have a solution in complexity O(n2). It works fast enough even when n?=?20000. Obviously, that is not enough to get AC.\n\nMove on full solution. It is based on previous. Now we can calc s([l,?r]) using s([l,?r?-?1]). Now we should look at way of changing s([l?-?1,?r]) as compared with s([l,?r]). Let's move left border of segment from the right to left and support some data structure with s([l,?i]) for every i satisfying l?<?i???n and current l. This structure should answer queries \"count numbers 1 and 2 in structure\", that is count segments [l,?i] that generates one or two segments in the original permutaton.\n\nLet ?i be s([l?-?1,?i])?-?s([l,?i]). ?l will be equal to 1 because one element form one segment in permutation (notice that in final answer we must not consider 1-element segments, that's why we must subtract n from answer in the end of solution).\n\n?i determined by the number of neighbors of element l?-?1 in the segment [l?-?1,?i]. Neighbors of l?-?1 is elements pl?-?1?+?1 and pl?-?1?-?1 if they're exist.\n\nIf l?-?1 hasn't neighbors in this segment, ?i?=?1, because l?-?1 froms new 1-element segment.\nIf l?-?1 has one neighbor in this segment ?i?=?0, because l?-?1 join to existing segment of its neighbor.\nIf l?-?1 has two neighbors in this segment ?i?=??-?1, because l?-?1 connect segments of its neighbors.\nNumber of neighbors in segment [l?-?1,?i] non-decreasing with increasing i. That's why ?i non-decreasing with increasing i. That means that there are only three segments of equivalence of ?i. We are interested only in neighbors of l?-?1 which positions are right than l?-?1. Let a is position of first neighbor, b is position of second neighbor, without loss of generality a?<?b. Then , , . (elements of permutation are numbered from 0). If a and b aren't exist, for all  ?i?=?1. If only b isn't exist for , for .\n\n \n\nLook at example to clear your understanding. (?i is in top right corners, l?=?3,?pl?=?5)\n\nUsing this facts we can code data structure support following operations:\n\nAdd +1 or -1 on segment\nCalc number of 1 and 2 in the structure.\nSum of answers of structure in every iteration (for every l) is answer to problem.\n\nLet's notice that all numbers in structure will be positive. That's why elements 1 and 2 will be minimal of pre-minimal in the structure. Using this fact we can code segment tree, supports these operations."
+}

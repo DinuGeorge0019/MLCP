@@ -1,1 +1,96 @@
-{"link": "https://codeforces.com//contest/252/problem/A", "problemId": "2350", "problem_idx": "A", "shortId": "252A", "contest_number": "252", "problem_submissions": {"B": [2710060, 2706628, 2708313, 2705063, 2702778, 2703423, 2715482, 2706557, 2703833, 2705102], "D": [2707052, 2709984, 2706767, 2709595, 2711529, 2710054, 2708487, 2707438, 2708692, 2709215, 2706501, 2709216], "C": [2702661, 2701836, 2705668, 2703665, 2707566, 2704785, 2705259, 2705065, 2702929, 2704890, 2702757, 2705646, 2704360, 2708601, 2705908, 2703255, 2704699, 2702535], "A": [2701161, 2709874, 2701848, 2700918, 2701349, 2700912, 2701131, 2701230, 2700948, 2701753, 2703055, 2700974, 2713381, 2703052, 2702820, 2702346, 2700994, 2701240, 2701290], "E": [2709470, 2708307]}, "name": "A. Little Xor", "statement": "Little Petya likes arrays that consist of non-negative integers a lot.\r\nRecently his mom has presented him one such array consisting of\r\nelements. Petya immediately decided to find there a segment of\r\nconsecutive elements, such that the of all numbers from this segment was\r\nmaximal possible. Help him with that.The operation is the bitwise\r\nexclusive \"\", that is denoted as \"\" in Pascal and \"\" in C/C++/Java.\r\n", "solutions": ["#include<iostream>\n#include<map>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<string.h>\n#include<cstdio>\n#include<queue>\n#include<algorithm>\n#include<sstream>\n#define all(X) (X).begin(),(X).end()\n#define mem(X) memset(X,0,sizeof(X))\n#define debug_v(v) for(int db=0;db<(v).size();db++)cout<<v[db]<<','<<;cout<<endl;\n#define pqpush(pq,x,cmp) (pq).push_back(x);push_heap((pq).begin(),(pq).end(),cmp);\n#define pqpop(pq,cmp) pop_heap((pq).begin(),(pq).end(),cmp);(pq).pop_back();\n#define PB(x) push_back(x)\nusing namespace std;\ntypedef long long ll;\ntypedef vector<int>::iterator iv;\ntypedef map<string,int>::iterator msii;\ntypedef map<int,int>::iterator miii;\ntypedef map<int,bool>::iterator mibi;\ntypedef map<string,bool>::iterator msbi;\ntypedef map<string,int> msi;\ntypedef map<int,int> mii;\ntypedef map<int,bool> mib;\ntypedef map<string,bool> msb;\ntypedef vector<int> vi;\ntypedef vector<string> vs;\n\nint n,mx,t,h1,h2,m1[101],h3;\n\nint main(){\n    while(~scanf(\"%d\",&n))\n    {\n        mx = 0;\n        for(h1=0;h1<n;h1++)\n        {\n            scanf(\"%d\",&m1[h1]);\n            for(h2=0;h2<=h1;h2++)\n            {\n                t = 0;\n                for(h3=h2;h3<=h1;h3++)\n                    t ^= m1[h3];\n                mx = max(mx ,t);\n            }\n        }\n        cout<<mx<<endl;\n        \n        \n    }\n}\n"], "input": "", "output": "", "tags": ["brute force", "implementation"], "dificulty": "1100", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/252/problem/A",
+    "problemId": "2350",
+    "problem_idx": "A",
+    "shortId": "252A",
+    "contest_number": "252",
+    "problem_submissions": {
+        "B": [
+            2710060,
+            2706628,
+            2708313,
+            2705063,
+            2702778,
+            2703423,
+            2715482,
+            2706557,
+            2703833,
+            2705102
+        ],
+        "D": [
+            2707052,
+            2709984,
+            2706767,
+            2709595,
+            2711529,
+            2710054,
+            2708487,
+            2707438,
+            2708692,
+            2709215,
+            2706501,
+            2709216
+        ],
+        "C": [
+            2702661,
+            2701836,
+            2705668,
+            2703665,
+            2707566,
+            2704785,
+            2705259,
+            2705065,
+            2702929,
+            2704890,
+            2702757,
+            2705646,
+            2704360,
+            2708601,
+            2705908,
+            2703255,
+            2704699,
+            2702535
+        ],
+        "A": [
+            2701161,
+            2709874,
+            2701848,
+            2700918,
+            2701349,
+            2700912,
+            2701131,
+            2701230,
+            2700948,
+            2701753,
+            2703055,
+            2700974,
+            2713381,
+            2703052,
+            2702820,
+            2702346,
+            2700994,
+            2701240,
+            2701290
+        ],
+        "E": [
+            2709470,
+            2708307
+        ]
+    },
+    "name": "A. Little Xor",
+    "statement": "Little Petya likes arrays that consist of non-negative integers a lot.\r\nRecently his mom has presented him one such array consisting of\r\nelements. Petya immediately decided to find there a segment of\r\nconsecutive elements, such that the of all numbers from this segment was\r\nmaximal possible. Help him with that.The operation is the bitwise\r\nexclusive \"\", that is denoted as \"\" in Pascal and \"\" in C/C++/Java.\r\n",
+    "solutions": [
+        "#include<iostream>\n#include<map>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<string.h>\n#include<cstdio>\n#include<queue>\n#include<algorithm>\n#include<sstream>\n#define all(X) (X).begin(),(X).end()\n#define mem(X) memset(X,0,sizeof(X))\n#define debug_v(v) for(int db=0;db<(v).size();db++)cout<<v[db]<<','<<;cout<<endl;\n#define pqpush(pq,x,cmp) (pq).push_back(x);push_heap((pq).begin(),(pq).end(),cmp);\n#define pqpop(pq,cmp) pop_heap((pq).begin(),(pq).end(),cmp);(pq).pop_back();\n#define PB(x) push_back(x)\nusing namespace std;\ntypedef long long ll;\ntypedef vector<int>::iterator iv;\ntypedef map<string,int>::iterator msii;\ntypedef map<int,int>::iterator miii;\ntypedef map<int,bool>::iterator mibi;\ntypedef map<string,bool>::iterator msbi;\ntypedef map<string,int> msi;\ntypedef map<int,int> mii;\ntypedef map<int,bool> mib;\ntypedef map<string,bool> msb;\ntypedef vector<int> vi;\ntypedef vector<string> vs;\n\nint n,mx,t,h1,h2,m1[101],h3;\n\nint main(){\n    while(~scanf(\"%d\",&n))\n    {\n        mx = 0;\n        for(h1=0;h1<n;h1++)\n        {\n            scanf(\"%d\",&m1[h1]);\n            for(h2=0;h2<=h1;h2++)\n            {\n                t = 0;\n                for(h3=h2;h3<=h1;h3++)\n                    t ^= m1[h3];\n                mx = max(mx ,t);\n            }\n        }\n        cout<<mx<<endl;\n        \n        \n    }\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "implementation"
+    ],
+    "dificulty": "1100",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Little Xor.json",
+    "editorial_link": "https://codeforces.com//blog/entry/6054",
+    "editorial": "Let\u00e2\u0080\u0099s iterate over all segments in our array. For each of them we\u00e2\u0080\u0099ll\r\nfind the of all its elements. Then we need to output the maximal we\u00e2\u0080\u0099ve\r\nseen.\r\n"
+}

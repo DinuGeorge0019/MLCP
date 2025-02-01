@@ -1,1 +1,106 @@
-{"link": "https://codeforces.com//contest/91/problem/C", "problemId": "479", "problem_idx": "C", "shortId": "91C", "contest_number": "91", "problem_submissions": {"E": [503728, 502526, 502324, 502390, 507083, 507754, 507742, 507704, 503634, 502642, 504726, 503639, 504548, 503486, 503083], "D": [502276, 503817, 503388, 504083, 503790, 503692, 503693, 502719, 503528], "C": [500481, 501267, 503127, 500359, 500890, 501727, 501793, 501879, 501823, 691241, 500724], "B": [500029, 500306, 499798, 499713, 500770, 500316, 500169, 500955, 501299, 500855, 500308, 500853, 500345, 500259, 501038, 510135, 501272, 500210], "A": [499372, 499587, 499153, 501187, 499642, 499614, 500028, 500088, 499525, 499582, 499555, 499393, 499483, 499408, 510127, 499780, 499366]}, "name": "C. Ski Base", "statement": "A ski base is planned to be built in Walrusland. Recently, however, the\r\nproject is still in the constructing phase. A large land lot was chosen\r\nfor the construction. It contains ski junctions, numbered from to .\r\nInitially the junctions aren\u2019t connected in any way.In the constructing\r\nprocess bidirectional ski roads will be built. The roads are built one\r\nafter another: first the road number will be built, then the road number\r\n, and so on. The -th road connects the junctions with numbers and . is\r\nthe route with the following properties: The route is closed, that is,\r\nit begins and ends in one and the same junction. The route contains at\r\nleast one road. The route doesn\u2019t go on one road more than once, however\r\nit can visit any junction any number of times. Let\u2019s consider the as a\r\nnon-empty set of roads that can be divided into one or more tracks so\r\nthat exactly one track went along each road of the chosen set. Besides,\r\neach track can consist only of roads from the chosen set. Ski base\r\ndoesn\u2019t have to be connected.Two ski bases are considered different if\r\nthey consist of different road sets.After building each new road the\r\nWalrusland government wants to know the number of variants of choosing a\r\nski base based on some subset of the already built roads. The government\r\nasks you to help them solve the given problem.\r\n", "solutions": ["#pragma comment(linker, \"/STACK:60000000\")\n#define _CRT_SECURE_NO_WARNINGS\n\n#include <cstdio>\n#include <iostream>\n#include <vector>\n#include <cmath>\n#include <algorithm>\n#include <string>\n#include <set>\n#include <map>\n#include <ctime>\n#include <cstring>\n#include <cassert>\n#include <sstream>\n#include <iomanip>\n#include <complex>\n#include <queue>\n#include <functional>\n\nusing namespace std;\n\n#define forn(i, n) for(int i = 0; i < (int)(n); i++)\n#define ford(i, n) for(int i = (int)(n) - 1; i >= 0; i--)\n#define pb push_back\n#define mp make_pair\n#define fs first\n#define sc second\n#define last(a) int(a.size() - 1)\n#define all(a) a.begin(), a.end()\n#define seta(a,x) memset (a, x, sizeof (a))\n#define I (int)\n\ntypedef long long int64;\ntypedef pair <int, int> pii;\ntypedef long double ldb;\n\nconst long double eps = 1e-9;\nconst int inf = (1 << 30) - 1;\nconst int64 inf64 = ((int64)1 << 62) - 1;\nconst long double pi = 3.1415926535897932384626433832795;\n\ntemplate <class T> T sqr (T x) {return x * x;}\n\nint n, m, k;\nint l[100000];\n\nint leader (int v) {\n\tif (l[v] != v)\n\t\tl[v] = leader (l[v]);\n\treturn l[v];\n}\n\nvoid unite (int x, int y) {\n\tx = leader (x);\n\ty = leader (y);\n\tl[y] = x;\n}\n\nint power[1000000];\nconst int P = 1000000009;\n\nint main ()\n{\n//\tfreopen (\"input.txt\", \"r\", stdin);\n//\tfreopen (\"output.txt\", \"w\", stdout);\n\tscanf (\"%d%d\", &n, &m);\n\tpower[0] = 1;\n\tfor (int i = 1; i < 1000000; i ++)\n\t\tpower[i] = (power[i-1] * 2) % P;\t\n\tforn (i, n)\n\t\tl[i] = i;\n\tk = 0;\n\tforn (i, m) {\n\t\tint x, y;\n\t\tscanf (\"%d%d\", &x, &y);\n\t\tif (leader (x) != leader (y)) \n\t\t\tunite (x, y);\n\t\telse\n\t\t\tk ++;\n\t\tprintf (\"%d\\n\", (power[k] + P - 1) % P);\n\t}\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["combinatorics", "dsu", "graphs"], "dificulty": "2300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/91/problem/C",
+    "problemId": "479",
+    "problem_idx": "C",
+    "shortId": "91C",
+    "contest_number": "91",
+    "problem_submissions": {
+        "E": [
+            503728,
+            502526,
+            502324,
+            502390,
+            507083,
+            507754,
+            507742,
+            507704,
+            503634,
+            502642,
+            504726,
+            503639,
+            504548,
+            503486,
+            503083
+        ],
+        "D": [
+            502276,
+            503817,
+            503388,
+            504083,
+            503790,
+            503692,
+            503693,
+            502719,
+            503528
+        ],
+        "C": [
+            500481,
+            501267,
+            503127,
+            500359,
+            500890,
+            501727,
+            501793,
+            501879,
+            501823,
+            691241,
+            500724
+        ],
+        "B": [
+            500029,
+            500306,
+            499798,
+            499713,
+            500770,
+            500316,
+            500169,
+            500955,
+            501299,
+            500855,
+            500308,
+            500853,
+            500345,
+            500259,
+            501038,
+            510135,
+            501272,
+            500210
+        ],
+        "A": [
+            499372,
+            499587,
+            499153,
+            501187,
+            499642,
+            499614,
+            500028,
+            500088,
+            499525,
+            499582,
+            499555,
+            499393,
+            499483,
+            499408,
+            510127,
+            499780,
+            499366
+        ]
+    },
+    "name": "C. Ski Base",
+    "statement": "A ski base is planned to be built in Walrusland. Recently, however, the\r\nproject is still in the constructing phase. A large land lot was chosen\r\nfor the construction. It contains ski junctions, numbered from to .\r\nInitially the junctions aren\u2019t connected in any way.In the constructing\r\nprocess bidirectional ski roads will be built. The roads are built one\r\nafter another: first the road number will be built, then the road number\r\n, and so on. The -th road connects the junctions with numbers and . is\r\nthe route with the following properties: The route is closed, that is,\r\nit begins and ends in one and the same junction. The route contains at\r\nleast one road. The route doesn\u2019t go on one road more than once, however\r\nit can visit any junction any number of times. Let\u2019s consider the as a\r\nnon-empty set of roads that can be divided into one or more tracks so\r\nthat exactly one track went along each road of the chosen set. Besides,\r\neach track can consist only of roads from the chosen set. Ski base\r\ndoesn\u2019t have to be connected.Two ski bases are considered different if\r\nthey consist of different road sets.After building each new road the\r\nWalrusland government wants to know the number of variants of choosing a\r\nski base based on some subset of the already built roads. The government\r\nasks you to help them solve the given problem.\r\n",
+    "solutions": [
+        "#pragma comment(linker, \"/STACK:60000000\")\n#define _CRT_SECURE_NO_WARNINGS\n\n#include <cstdio>\n#include <iostream>\n#include <vector>\n#include <cmath>\n#include <algorithm>\n#include <string>\n#include <set>\n#include <map>\n#include <ctime>\n#include <cstring>\n#include <cassert>\n#include <sstream>\n#include <iomanip>\n#include <complex>\n#include <queue>\n#include <functional>\n\nusing namespace std;\n\n#define forn(i, n) for(int i = 0; i < (int)(n); i++)\n#define ford(i, n) for(int i = (int)(n) - 1; i >= 0; i--)\n#define pb push_back\n#define mp make_pair\n#define fs first\n#define sc second\n#define last(a) int(a.size() - 1)\n#define all(a) a.begin(), a.end()\n#define seta(a,x) memset (a, x, sizeof (a))\n#define I (int)\n\ntypedef long long int64;\ntypedef pair <int, int> pii;\ntypedef long double ldb;\n\nconst long double eps = 1e-9;\nconst int inf = (1 << 30) - 1;\nconst int64 inf64 = ((int64)1 << 62) - 1;\nconst long double pi = 3.1415926535897932384626433832795;\n\ntemplate <class T> T sqr (T x) {return x * x;}\n\nint n, m, k;\nint l[100000];\n\nint leader (int v) {\n\tif (l[v] != v)\n\t\tl[v] = leader (l[v]);\n\treturn l[v];\n}\n\nvoid unite (int x, int y) {\n\tx = leader (x);\n\ty = leader (y);\n\tl[y] = x;\n}\n\nint power[1000000];\nconst int P = 1000000009;\n\nint main ()\n{\n//\tfreopen (\"input.txt\", \"r\", stdin);\n//\tfreopen (\"output.txt\", \"w\", stdout);\n\tscanf (\"%d%d\", &n, &m);\n\tpower[0] = 1;\n\tfor (int i = 1; i < 1000000; i ++)\n\t\tpower[i] = (power[i-1] * 2) % P;\t\n\tforn (i, n)\n\t\tl[i] = i;\n\tk = 0;\n\tforn (i, m) {\n\t\tint x, y;\n\t\tscanf (\"%d%d\", &x, &y);\n\t\tif (leader (x) != leader (y)) \n\t\t\tunite (x, y);\n\t\telse\n\t\t\tk ++;\n\t\tprintf (\"%d\\n\", (power[k] + P - 1) % P);\n\t}\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "combinatorics",
+        "dsu",
+        "graphs"
+    ],
+    "dificulty": "2300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Ski Base.json",
+    "editorial_link": "https://codeforces.com//blog/entry/2182",
+    "editorial": "We will count the number of ski bases including the base consisted of empty subset of edges (before printing just subtract one). In the beginning the number of bases is equal to 1. If we connect vertexes in the same connected components then the result should be multiplied by 2 else do nothing. You should use DJS data structure to know information about connected components where vertexes are and to unite them.\n\nWhy is it correct?\nTo prove it we will use the matrix of incidence I, rows in it will be edges and columns will be vertexes. Let's define xor of two rows. Xor of two rows a ? b will be row c such that ci?=?ai xor bi. Notice if  xor of some subset of rows is equal to a zero row then this subset form the ski base. It's correct because, the degree of contiguity of every vertex is even, so we can form an Euler cycle in every connected component. The answer is  2(m?-?rank(I)). \n\nWhy it is correct? Let's write the number of edge from the right of each row which suit this row. While finding the matrix rank using gauss method with xor operation, we will xor the subsets from the right of the strings. In the end the subsets of edges written from the right of the zero rows will form the basis of the linear space. Thats why we can take any subset of vectors from basis and make up a new ski base. The number of these subsets is equal to 2k = 2(m?-?rank(I)), where k is the number of zero rows.\n\n\nThe last thing we should notice that the adding row is liner depended if and only if there is exist a way between the vertexes a and b (a and b are the ends of the adding edge)."
+}

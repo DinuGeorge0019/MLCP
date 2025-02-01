@@ -1,1 +1,89 @@
-{"link": "https://codeforces.com//contest/1007/problem/C", "problemId": "197248", "problem_idx": "C", "shortId": "1007C", "contest_number": "1007", "problem_submissions": {"C": [40289014, 40311007, 40303376, 40289853, 40282836, 40298460, 40292416, 40291392, 40315809, 40295182, 43029830], "B": [40273384, 40274250, 40291551, 40287008, 40280350, 40301243, 40277597, 40277856, 40278440, 40276236, 40280080, 40280290, 40278003, 40280632, 40280737, 40278002], "A": [40264928, 40264790, 40264714, 40264612, 40266456, 40265453, 40267936, 40264621, 40264617, 40264727, 40264905, 40264738, 40265555, 40264686, 40264608, 40264865, 40264835, 40265293], "D": [40284510, 40287759, 40291268, 62534541, 40294556, 40301360], "E": [54819990, 54819956, 47314793]}, "name": "C. Guess two numbers", "statement": "Vasya and Vitya play a game. Vasya thought of two integers a and b from\r\n1 to n and Vitya tries to guess them. Each round he tells Vasya two\r\nnumbers x and y from 1 to n. If both x=a and y=b then Vitya wins. Else\r\nVasya must say one of the three phrases: x is less than a; y is less\r\nthan b; x is greater than a or y is greater than b. Vasya can\u2019t lie, but\r\nif multiple phrases are true, he may choose any of them. For example, if\r\nVasya thought of numbers 2 and 4, then he answers with the phrase 3 to a\r\nquery (3, 4), and he can answer with the phrase 1 or phrase 3 to a query\r\n(1, 5).Help Vitya win in no more than 600 rounds.\r\n", "solutions": ["#include <bits/stdc++.h>\n\nusing namespace std;\nusing uint = unsigned int;\nusing ll = long long;\nusing ull = unsigned long long;\nconstexpr ll TEN(int n) { return (n==0) ? 1 : 10*TEN(n-1); }\ntemplate<class T> using V = vector<T>;\ntemplate<class T> using VV = V<V<T>>;\n\ntemplate<class T> ostream& operator<<(ostream& os, const V<T> &v) {\n    cout << \"[\";\n    for (auto p: v) cout << p << \", \";\n    cout << \"]\";\n    return os;\n}\n\nll rand_int(ll l, ll r) { // [l, r]\n    using D = uniform_int_distribution<ll>;\n    static random_device rd;\n    static mt19937 gen(rd());\n    return D(l, r)(gen);\n}\n\n\nconst bool DEB = false;\nll n;\nll deb_x, deb_y;\nvoid init() {\n    if (DEB) {\n        n = TEN(18) - 1919;\n//        n = rand_int(1, TEN(18));\n        deb_x = rand_int(1, n);\n        deb_y = rand_int(1, n);\n    } else {\n        cin >> n;\n    }\n}\n\n\nint query(ll x, ll y) {\n    assert(1 <= x && x <= n);\n    assert(1 <= y && y <= n);\n    if (DEB) {\n        static int gc = 0;\n        gc++;\n        V<int> pred;\n        if (deb_x < x || deb_y < y) pred.push_back(3);\n        if (x < deb_x) pred.push_back(1);\n        if (y < deb_y) pred.push_back(2);\n        int c = int(pred.size());\n        if (c) return pred[rand_int(0, c-1)];\n        cout << \"CONGRAT! : \" << gc << \" \" << deb_x << \" \" << deb_y << endl;\n        assert(deb_x == x && deb_y == y);\n        exit(0);\n    } else {\n        cout << x << \" \" << y << endl;\n        int ty;\n        cin >> ty;\n        if (ty == 0) exit(0);\n        return ty;\n    }\n}\n\nvoid solve(ll la, ll lb, ll ua, ll ub);\n\n// [la, ua], [lb, ub], query(ma, mb) == 3\nvoid solve(ll la, ll lb, ll ua, ll ub, ll ma, ll mb) {\n    if (ma == la) {\n        solve(la, lb, ua, mb-1);\n        assert(false);\n    }\n    if (mb == lb) {\n        solve(la, lb, ma-1, ub);\n        assert(false);\n    }\n\n    ll da = ma - la + 1;\n    ll db = mb - lb + 1;\n    if (da > db) {\n        ll xa = (ma + la) / 2;\n        int ty1 = query(xa, mb);\n        if (ty1 == 1) {\n            solve(xa+1, lb, ua, ub, ma, mb);\n            assert(false);\n        }\n        if (ty1 == 2) {\n            solve(la, mb+1, ma-1, ub);\n            assert(false);\n        }\n        solve(la, lb, ua, ub, xa, mb);\n    } else {\n        ll xb = (mb + lb) / 2;\n        int ty1 = query(ma, xb);\n        if (ty1 == 2) {\n            solve(la, xb+1, ua, ub, ma, mb);\n            assert(false);\n        }\n        if (ty1 == 1) {\n            solve(ma+1, lb, ua, mb-1);\n            assert(false);\n        }\n        solve(la, lb, ua, ub, ma, xb);\n    }\n    assert(false);\n}\n\n// [la, ua], [lb, ub]\nvoid solve(ll la, ll lb, ll ua, ll ub) {\n    if (la == ua && lb == ub) query(la, lb);\n    ll ma = (3 * la + ua) / 4;\n    ll mb = (3 * lb + ub) / 4;\n    int ty = query(ma, mb);\n    if (ty == 1) {\n        // ma < true_a\n        solve(ma+1, lb, ua, ub);\n        assert(false);\n    }\n    if (ty == 2) {\n        // mb < true_b\n        solve(la, mb+1, ua, ub);\n        assert(false);\n    }\n    solve(la, lb, ua, ub, ma, mb);\n}\n\nint main() {\n    init();\n    solve(1, 1, n, n);\n\n    assert(false);\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["binary search", "interactive"], "dificulty": "3000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/1007/problem/C",
+    "problemId": "197248",
+    "problem_idx": "C",
+    "shortId": "1007C",
+    "contest_number": "1007",
+    "problem_submissions": {
+        "C": [
+            40289014,
+            40311007,
+            40303376,
+            40289853,
+            40282836,
+            40298460,
+            40292416,
+            40291392,
+            40315809,
+            40295182,
+            43029830
+        ],
+        "B": [
+            40273384,
+            40274250,
+            40291551,
+            40287008,
+            40280350,
+            40301243,
+            40277597,
+            40277856,
+            40278440,
+            40276236,
+            40280080,
+            40280290,
+            40278003,
+            40280632,
+            40280737,
+            40278002
+        ],
+        "A": [
+            40264928,
+            40264790,
+            40264714,
+            40264612,
+            40266456,
+            40265453,
+            40267936,
+            40264621,
+            40264617,
+            40264727,
+            40264905,
+            40264738,
+            40265555,
+            40264686,
+            40264608,
+            40264865,
+            40264835,
+            40265293
+        ],
+        "D": [
+            40284510,
+            40287759,
+            40291268,
+            62534541,
+            40294556,
+            40301360
+        ],
+        "E": [
+            54819990,
+            54819956,
+            47314793
+        ]
+    },
+    "name": "C. Guess two numbers",
+    "statement": "Vasya and Vitya play a game. Vasya thought of two integers a and b from\r\n1 to n and Vitya tries to guess them. Each round he tells Vasya two\r\nnumbers x and y from 1 to n. If both x=a and y=b then Vitya wins. Else\r\nVasya must say one of the three phrases: x is less than a; y is less\r\nthan b; x is greater than a or y is greater than b. Vasya can\u2019t lie, but\r\nif multiple phrases are true, he may choose any of them. For example, if\r\nVasya thought of numbers 2 and 4, then he answers with the phrase 3 to a\r\nquery (3, 4), and he can answer with the phrase 1 or phrase 3 to a query\r\n(1, 5).Help Vitya win in no more than 600 rounds.\r\n",
+    "solutions": [
+        "#include <bits/stdc++.h>\n\nusing namespace std;\nusing uint = unsigned int;\nusing ll = long long;\nusing ull = unsigned long long;\nconstexpr ll TEN(int n) { return (n==0) ? 1 : 10*TEN(n-1); }\ntemplate<class T> using V = vector<T>;\ntemplate<class T> using VV = V<V<T>>;\n\ntemplate<class T> ostream& operator<<(ostream& os, const V<T> &v) {\n    cout << \"[\";\n    for (auto p: v) cout << p << \", \";\n    cout << \"]\";\n    return os;\n}\n\nll rand_int(ll l, ll r) { // [l, r]\n    using D = uniform_int_distribution<ll>;\n    static random_device rd;\n    static mt19937 gen(rd());\n    return D(l, r)(gen);\n}\n\n\nconst bool DEB = false;\nll n;\nll deb_x, deb_y;\nvoid init() {\n    if (DEB) {\n        n = TEN(18) - 1919;\n//        n = rand_int(1, TEN(18));\n        deb_x = rand_int(1, n);\n        deb_y = rand_int(1, n);\n    } else {\n        cin >> n;\n    }\n}\n\n\nint query(ll x, ll y) {\n    assert(1 <= x && x <= n);\n    assert(1 <= y && y <= n);\n    if (DEB) {\n        static int gc = 0;\n        gc++;\n        V<int> pred;\n        if (deb_x < x || deb_y < y) pred.push_back(3);\n        if (x < deb_x) pred.push_back(1);\n        if (y < deb_y) pred.push_back(2);\n        int c = int(pred.size());\n        if (c) return pred[rand_int(0, c-1)];\n        cout << \"CONGRAT! : \" << gc << \" \" << deb_x << \" \" << deb_y << endl;\n        assert(deb_x == x && deb_y == y);\n        exit(0);\n    } else {\n        cout << x << \" \" << y << endl;\n        int ty;\n        cin >> ty;\n        if (ty == 0) exit(0);\n        return ty;\n    }\n}\n\nvoid solve(ll la, ll lb, ll ua, ll ub);\n\n// [la, ua], [lb, ub], query(ma, mb) == 3\nvoid solve(ll la, ll lb, ll ua, ll ub, ll ma, ll mb) {\n    if (ma == la) {\n        solve(la, lb, ua, mb-1);\n        assert(false);\n    }\n    if (mb == lb) {\n        solve(la, lb, ma-1, ub);\n        assert(false);\n    }\n\n    ll da = ma - la + 1;\n    ll db = mb - lb + 1;\n    if (da > db) {\n        ll xa = (ma + la) / 2;\n        int ty1 = query(xa, mb);\n        if (ty1 == 1) {\n            solve(xa+1, lb, ua, ub, ma, mb);\n            assert(false);\n        }\n        if (ty1 == 2) {\n            solve(la, mb+1, ma-1, ub);\n            assert(false);\n        }\n        solve(la, lb, ua, ub, xa, mb);\n    } else {\n        ll xb = (mb + lb) / 2;\n        int ty1 = query(ma, xb);\n        if (ty1 == 2) {\n            solve(la, xb+1, ua, ub, ma, mb);\n            assert(false);\n        }\n        if (ty1 == 1) {\n            solve(ma+1, lb, ua, mb-1);\n            assert(false);\n        }\n        solve(la, lb, ua, ub, ma, xb);\n    }\n    assert(false);\n}\n\n// [la, ua], [lb, ub]\nvoid solve(ll la, ll lb, ll ua, ll ub) {\n    if (la == ua && lb == ub) query(la, lb);\n    ll ma = (3 * la + ua) / 4;\n    ll mb = (3 * lb + ub) / 4;\n    int ty = query(ma, mb);\n    if (ty == 1) {\n        // ma < true_a\n        solve(ma+1, lb, ua, ub);\n        assert(false);\n    }\n    if (ty == 2) {\n        // mb < true_b\n        solve(la, mb+1, ua, ub);\n        assert(false);\n    }\n    solve(la, lb, ua, ub, ma, mb);\n}\n\nint main() {\n    init();\n    solve(1, 1, n, n);\n\n    assert(false);\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "binary search",
+        "interactive"
+    ],
+    "dificulty": "3000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Guess two numbers.json",
+    "editorial_link": "https://codeforces.com//blog/entry/60572",
+    "editorial": "Let\u00e2\u0080\u0099s keep the set of possible answers as a union of three rectangles\r\nforming an angle: , and , where and . Let , and be their areas. We will\r\ndenote such state as . The initial state is .Now there are three cases.\r\nand , then we will make a query . If , we will make a query . Finally,\r\nif , we will make a query . In case of every response to every query,\r\nthe new set of possible answers will also form an angle.Now we want to\r\nprove that the area of the angle decreases at least by a quarter every\r\ntwo requests.In case (1) if the answer is , then we move to a state . We\r\ncut off at least half of and at least half of . But . I.e. We have cut\r\noff at least a quarter already within just one request. If the answer is\r\n, the situation is similar. Finally, if the answer is , then we move to\r\na state . We cut off at least quarter of , at least half of and at least\r\nhalf of . But . We also have cut off at least a quarter within just one\r\nrequest. Thus in case (1) we cut off at least a quarter within one\r\nrequest.In case (2) if the answer is , then we move to a state . We cut\r\noff at least half of and at least half of . But . We have cut off at\r\nleast a quarter within just one request. If the answer is , then we move\r\nto a state . But then if will be case (1), thus we will cut off at least\r\na quarter with the next request. Finally, if the answer is , then we\r\nmove to a state . We cut off at at least half of . But . We also have\r\ncut off at least a quarter within just one request.Case (3) is similar\r\nto case (2).Thus the maximal number of requests will be no more than\r\n.Let\u00e2\u0080\u0099s keep the set of possible answers in form of a ladder . Then lets\r\nfind minimal such that . And lets find minimal such that . Then I.e. we\r\ncut off at least third of the area of the ladder on each request.Thus\r\nthe maximal number of requests will be no more than .\r\n"
+}

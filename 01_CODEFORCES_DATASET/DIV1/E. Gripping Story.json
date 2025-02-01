@@ -1,1 +1,100 @@
-{"link": "https://codeforces.com//contest/198/problem/E", "problemId": "1449", "problem_idx": "E", "shortId": "198E", "contest_number": "198", "problem_submissions": {"E": [1817442, 1818751, 1818461, 1820730, 1819267, 1821471, 1819987, 1819731, 1818122, 1819919, 1819588, 1819229, 1819125, 1819917, 2420309, 1817542, 1817874, 1820376, 1835182, 1819847, 1819258], "A": [1819310, 1813993, 1814854, 1820599, 1815833, 1816813, 1813956, 1814317, 1814982, 1815662, 1815174, 1814496, 1814482, 1814086, 1815782, 1816889], "C": [1817120, 1818867, 1817644, 1821444, 1817692, 1819000, 1822292, 1816526, 1821976], "B": [1815258, 1814636, 1815561, 1815178, 1815418, 1816320, 1814734, 1814896, 1816104, 1816217, 1816891, 1816230, 1815769, 1815481, 1815083, 1816661, 1816543], "D": [1819062]}, "name": "E. Gripping Story", "statement": "One day Qwerty the Ranger witnessed two transport ships collide with\r\neach other. As a result, all contents of their cargo holds scattered\r\naround the space. And now Qwerty wants to pick as many lost items as\r\npossible to sell them later.The thing is, both ships had lots of new\r\ngravitational grippers, transported to sale. A gripper is a device that\r\ncan be installed on a spaceship and than draw items in space to itself\r\n(\"grip\") and transport them to the ship\u2019s cargo hold. Overall the\r\ncrashed ships lost gravitational grippers: the -th gripper is located at\r\na point with coordinates . Each gripper has two features (the power) and\r\n(the action radius) and can grip any items with mass of no more than at\r\ndistance no more than . A gripper itself is an item, too and it has its\r\nmass of .Qwerty\u2019s ship is located at point and has an old magnetic\r\ngripper installed, its characteristics are and . There are no other\r\ngrippers in the ship\u2019s cargo holds.Find the largest number of grippers\r\nQwerty can get hold of. As he picks the items, he can arbitrarily\r\ninstall any gripper in the cargo hold of the ship, including the gripper\r\nhe has just picked. At any moment of time the ship can have only one\r\nactive gripper installed. We consider all items and the Qwerty\u2019s ship\r\nimmobile when the ranger picks the items, except for when the gripper\r\nmoves an item then the item moves to the cargo holds and the ship still\r\nremains immobile. We can assume that the ship\u2019s cargo holds have enough\r\nroom for all grippers. Qwerty can use any gripper he finds or the\r\ninitial gripper an arbitrary number of times.\r\n", "solutions": ["#include <algorithm>\n#include <set>\n#include <cstdio>\n#include <vector>\n\nusing namespace std;\n\ntypedef long long ll;\n\nint main() {\n  vector<int> x(1);\n  vector<int> y(1);\n  vector<int> p(1);\n  vector<int> r(1);\n  int n;\n  scanf(\"%d\", &(x[0]));\n  scanf(\"%d\", &(y[0]));\n  scanf(\"%d\", &(p[0]));\n  scanf(\"%d\", &(r[0]));\n  scanf(\"%d\", &n);\n  x.resize(n + 1);\n  y.resize(n + 1);\n  p.resize(n + 1);\n  r.resize(n + 1);\n  vector<int> m(n + 1);\n  for (int i = 1; i <= n; ++i) {\n    scanf(\"%d\", &(x[i]));\n    scanf(\"%d\", &(y[i]));\n    scanf(\"%d\", &(m[i]));\n    scanf(\"%d\", &(p[i]));\n    scanf(\"%d\", &(r[i]));\n    x[i] -= x[0];\n    y[i] -= y[0];\n  } \n  x[0] = 0;\n  y[0] = 0;\n  ++n;\n  /*int n = 250001;\n  vector<int> x(n);\n  for (int i = 0; i < n; ++i) x[i] = rand() % 10000000;\n  vector<int> y(n);\n  for (int i = 0; i < n; ++i) y[i] = rand() % 10000000;\n  vector<int> p(n);\n  for (int i = 0; i < n; ++i) p[i] = 10000000;\n  vector<int> r(n);\n  for (int i = 0; i < n; ++i) r[i] = 20000000;\n  vector<int> m(n);\n  for (int i = 0; i < n; ++i) m[i] = rand() % 10000000;*/\n\n  vector<ll> alldist(2 * n);\n  for (int i = 0; i < n; ++i) {\n    alldist[2 * i] = x[i] * (ll) x[i] + y[i] * (ll) y[i];\n    alldist[2 * i + 1] = r[i] * (ll) r[i];\n  }\n  sort(alldist.begin(), alldist.end());\n  int dcnt = 0;\n  for (int i = 0; i < alldist.size(); ++i) {\n    if (i == 0 || alldist[i] > alldist[i - 1])\n      alldist[dcnt++] = alldist[i];\n  }\n  vector<int> dist(n);\n  for (int i = 0; i < n; ++i) {\n    int left = -1;\n    int right = dcnt;\n    ll need = x[i] * (ll) x[i] + y[i] * (ll) y[i];\n    while (right - left > 1) {\n      int mid = (left + right) / 2;\n      if (alldist[mid] == need) {\n        dist[i] = mid;\n\tbreak;\n      } else if (alldist[mid] < need) {\n        left = mid; \n      } else {\n        right = mid;\n      }\n    }\n    if (right - left <= 1) {\n      printf(\"BUG!1\\n\");\n      return 1;\n    }\n    need = r[i] * (ll) r[i];\n    left = -1;\n    right = dcnt;\n    while (right - left > 1) {\n      int mid = (left + right) / 2;\n      if (alldist[mid] == need) {\n        r[i] = mid;\n\tbreak;\n      } else if (alldist[mid] < need) {\n        left = mid; \n      } else {\n        right = mid;\n      }\n    }\n    if (right - left <= 1) {\n      printf(\"BUG!2\\n\");\n      return 1;\n    }\n  }\n\n  vector<int> allpow(2 * n);\n  for (int i = 0; i < n; ++i) {\n    allpow[2 * i] = p[i];\n    allpow[2 * i + 1] = m[i];\n  }\n  sort(allpow.begin(), allpow.end());\n  int pcnt = 0;\n  for (int i = 0; i < allpow.size(); ++i) {\n    if (i == 0 || allpow[i] > allpow[i - 1])\n      allpow[pcnt++] = allpow[i];\n  }\n  for (int i = 0; i < n; ++i) {\n    int left = -1;\n    int right = pcnt;\n    int need = p[i];\n    while (right - left > 1) {\n      int mid = (left + right) / 2;\n      if (allpow[mid] == need) {\n        p[i] = mid;\n\tbreak;\n      } else if (allpow[mid] < need) {\n        left = mid; \n      } else {\n        right = mid;\n      }\n    }\n    if (right - left <= 1) {\n      printf(\"BUG!!\\n\");\n      return 1;\n    }\n    need = m[i];\n    left = -1;\n    right = pcnt;\n    while (right - left > 1) {\n      int mid = (left + right) / 2;\n      if (allpow[mid] == need) {\n        m[i] = mid;\n\tbreak;\n      } else if (allpow[mid] < need) {\n        left = mid; \n      } else {\n        right = mid;\n      }\n    }\n    if (right - left <= 1) {\n      printf(\"BUG!!\\n\");\n      return 1;\n    }\n  }\n  \n\n  vector<set<pair<int, int> > > fenwick(dcnt);\n  for (int i = 1; i < n; ++i) {\n    int dcoord = dist[i];\n    int pcoord = m[i];\n    while (dcoord < dcnt) {\n      fenwick[dcoord].insert(make_pair(pcoord, i));\n      dcoord |= (dcoord + 1);\n    }\n  }\n  vector<int> queue(n);\n  int qt = 0;\n  int qh = 1;\n  int res = 0;\n  while (qt < qh) {\n    int cur = queue[qt++];\n    int dbound = r[cur];\n    int pbound = p[cur];\n    while (dbound >= 0) {\n      while (!fenwick[dbound].empty() && fenwick[dbound].begin()->first <= pbound) {\n        int kill = fenwick[dbound].begin()->second;\n\tint dcoord = dist[kill];\n\tint pcoord = m[kill];\n\twhile (dcoord < dcnt) {\n\t  fenwick[dcoord].erase(make_pair(pcoord, kill));\n\t  dcoord |= (dcoord + 1);\n\t}\n\tqueue[qh++] = kill;\n\t++res;\n      }\n      dbound = (dbound & (dbound + 1)) - 1;\n    }\n  }\n  printf(\"%d\\n\", res);\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["binary search", "data structures", "sortings"], "dificulty": "2400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/198/problem/E",
+    "problemId": "1449",
+    "problem_idx": "E",
+    "shortId": "198E",
+    "contest_number": "198",
+    "problem_submissions": {
+        "E": [
+            1817442,
+            1818751,
+            1818461,
+            1820730,
+            1819267,
+            1821471,
+            1819987,
+            1819731,
+            1818122,
+            1819919,
+            1819588,
+            1819229,
+            1819125,
+            1819917,
+            2420309,
+            1817542,
+            1817874,
+            1820376,
+            1835182,
+            1819847,
+            1819258
+        ],
+        "A": [
+            1819310,
+            1813993,
+            1814854,
+            1820599,
+            1815833,
+            1816813,
+            1813956,
+            1814317,
+            1814982,
+            1815662,
+            1815174,
+            1814496,
+            1814482,
+            1814086,
+            1815782,
+            1816889
+        ],
+        "C": [
+            1817120,
+            1818867,
+            1817644,
+            1821444,
+            1817692,
+            1819000,
+            1822292,
+            1816526,
+            1821976
+        ],
+        "B": [
+            1815258,
+            1814636,
+            1815561,
+            1815178,
+            1815418,
+            1816320,
+            1814734,
+            1814896,
+            1816104,
+            1816217,
+            1816891,
+            1816230,
+            1815769,
+            1815481,
+            1815083,
+            1816661,
+            1816543
+        ],
+        "D": [
+            1819062
+        ]
+    },
+    "name": "E. Gripping Story",
+    "statement": "One day Qwerty the Ranger witnessed two transport ships collide with\r\neach other. As a result, all contents of their cargo holds scattered\r\naround the space. And now Qwerty wants to pick as many lost items as\r\npossible to sell them later.The thing is, both ships had lots of new\r\ngravitational grippers, transported to sale. A gripper is a device that\r\ncan be installed on a spaceship and than draw items in space to itself\r\n(\"grip\") and transport them to the ship\u2019s cargo hold. Overall the\r\ncrashed ships lost gravitational grippers: the -th gripper is located at\r\na point with coordinates . Each gripper has two features (the power) and\r\n(the action radius) and can grip any items with mass of no more than at\r\ndistance no more than . A gripper itself is an item, too and it has its\r\nmass of .Qwerty\u2019s ship is located at point and has an old magnetic\r\ngripper installed, its characteristics are and . There are no other\r\ngrippers in the ship\u2019s cargo holds.Find the largest number of grippers\r\nQwerty can get hold of. As he picks the items, he can arbitrarily\r\ninstall any gripper in the cargo hold of the ship, including the gripper\r\nhe has just picked. At any moment of time the ship can have only one\r\nactive gripper installed. We consider all items and the Qwerty\u2019s ship\r\nimmobile when the ranger picks the items, except for when the gripper\r\nmoves an item then the item moves to the cargo holds and the ship still\r\nremains immobile. We can assume that the ship\u2019s cargo holds have enough\r\nroom for all grippers. Qwerty can use any gripper he finds or the\r\ninitial gripper an arbitrary number of times.\r\n",
+    "solutions": [
+        "#include <algorithm>\n#include <set>\n#include <cstdio>\n#include <vector>\n\nusing namespace std;\n\ntypedef long long ll;\n\nint main() {\n  vector<int> x(1);\n  vector<int> y(1);\n  vector<int> p(1);\n  vector<int> r(1);\n  int n;\n  scanf(\"%d\", &(x[0]));\n  scanf(\"%d\", &(y[0]));\n  scanf(\"%d\", &(p[0]));\n  scanf(\"%d\", &(r[0]));\n  scanf(\"%d\", &n);\n  x.resize(n + 1);\n  y.resize(n + 1);\n  p.resize(n + 1);\n  r.resize(n + 1);\n  vector<int> m(n + 1);\n  for (int i = 1; i <= n; ++i) {\n    scanf(\"%d\", &(x[i]));\n    scanf(\"%d\", &(y[i]));\n    scanf(\"%d\", &(m[i]));\n    scanf(\"%d\", &(p[i]));\n    scanf(\"%d\", &(r[i]));\n    x[i] -= x[0];\n    y[i] -= y[0];\n  } \n  x[0] = 0;\n  y[0] = 0;\n  ++n;\n  /*int n = 250001;\n  vector<int> x(n);\n  for (int i = 0; i < n; ++i) x[i] = rand() % 10000000;\n  vector<int> y(n);\n  for (int i = 0; i < n; ++i) y[i] = rand() % 10000000;\n  vector<int> p(n);\n  for (int i = 0; i < n; ++i) p[i] = 10000000;\n  vector<int> r(n);\n  for (int i = 0; i < n; ++i) r[i] = 20000000;\n  vector<int> m(n);\n  for (int i = 0; i < n; ++i) m[i] = rand() % 10000000;*/\n\n  vector<ll> alldist(2 * n);\n  for (int i = 0; i < n; ++i) {\n    alldist[2 * i] = x[i] * (ll) x[i] + y[i] * (ll) y[i];\n    alldist[2 * i + 1] = r[i] * (ll) r[i];\n  }\n  sort(alldist.begin(), alldist.end());\n  int dcnt = 0;\n  for (int i = 0; i < alldist.size(); ++i) {\n    if (i == 0 || alldist[i] > alldist[i - 1])\n      alldist[dcnt++] = alldist[i];\n  }\n  vector<int> dist(n);\n  for (int i = 0; i < n; ++i) {\n    int left = -1;\n    int right = dcnt;\n    ll need = x[i] * (ll) x[i] + y[i] * (ll) y[i];\n    while (right - left > 1) {\n      int mid = (left + right) / 2;\n      if (alldist[mid] == need) {\n        dist[i] = mid;\n\tbreak;\n      } else if (alldist[mid] < need) {\n        left = mid; \n      } else {\n        right = mid;\n      }\n    }\n    if (right - left <= 1) {\n      printf(\"BUG!1\\n\");\n      return 1;\n    }\n    need = r[i] * (ll) r[i];\n    left = -1;\n    right = dcnt;\n    while (right - left > 1) {\n      int mid = (left + right) / 2;\n      if (alldist[mid] == need) {\n        r[i] = mid;\n\tbreak;\n      } else if (alldist[mid] < need) {\n        left = mid; \n      } else {\n        right = mid;\n      }\n    }\n    if (right - left <= 1) {\n      printf(\"BUG!2\\n\");\n      return 1;\n    }\n  }\n\n  vector<int> allpow(2 * n);\n  for (int i = 0; i < n; ++i) {\n    allpow[2 * i] = p[i];\n    allpow[2 * i + 1] = m[i];\n  }\n  sort(allpow.begin(), allpow.end());\n  int pcnt = 0;\n  for (int i = 0; i < allpow.size(); ++i) {\n    if (i == 0 || allpow[i] > allpow[i - 1])\n      allpow[pcnt++] = allpow[i];\n  }\n  for (int i = 0; i < n; ++i) {\n    int left = -1;\n    int right = pcnt;\n    int need = p[i];\n    while (right - left > 1) {\n      int mid = (left + right) / 2;\n      if (allpow[mid] == need) {\n        p[i] = mid;\n\tbreak;\n      } else if (allpow[mid] < need) {\n        left = mid; \n      } else {\n        right = mid;\n      }\n    }\n    if (right - left <= 1) {\n      printf(\"BUG!!\\n\");\n      return 1;\n    }\n    need = m[i];\n    left = -1;\n    right = pcnt;\n    while (right - left > 1) {\n      int mid = (left + right) / 2;\n      if (allpow[mid] == need) {\n        m[i] = mid;\n\tbreak;\n      } else if (allpow[mid] < need) {\n        left = mid; \n      } else {\n        right = mid;\n      }\n    }\n    if (right - left <= 1) {\n      printf(\"BUG!!\\n\");\n      return 1;\n    }\n  }\n  \n\n  vector<set<pair<int, int> > > fenwick(dcnt);\n  for (int i = 1; i < n; ++i) {\n    int dcoord = dist[i];\n    int pcoord = m[i];\n    while (dcoord < dcnt) {\n      fenwick[dcoord].insert(make_pair(pcoord, i));\n      dcoord |= (dcoord + 1);\n    }\n  }\n  vector<int> queue(n);\n  int qt = 0;\n  int qh = 1;\n  int res = 0;\n  while (qt < qh) {\n    int cur = queue[qt++];\n    int dbound = r[cur];\n    int pbound = p[cur];\n    while (dbound >= 0) {\n      while (!fenwick[dbound].empty() && fenwick[dbound].begin()->first <= pbound) {\n        int kill = fenwick[dbound].begin()->second;\n\tint dcoord = dist[kill];\n\tint pcoord = m[kill];\n\twhile (dcoord < dcnt) {\n\t  fenwick[dcoord].erase(make_pair(pcoord, kill));\n\t  dcoord |= (dcoord + 1);\n\t}\n\tqueue[qh++] = kill;\n\t++res;\n      }\n      dbound = (dbound & (dbound + 1)) - 1;\n    }\n  }\n  printf(\"%d\\n\", res);\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "binary search",
+        "data structures",
+        "sortings"
+    ],
+    "dificulty": "2400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\E. Gripping Story.json",
+    "editorial_link": "https://codeforces.com//blog/entry/4764",
+    "editorial": "You can allocate all grippers as points on plane with coordinates (distance, mass). So, when you use some gripper, you are collecting grippers inside some rectangle with corner in origin. Let us collect grippers and put them into queue. For current gripper you should take all grippers from rectangle and store them into queue. Then you should take next gripper from queue and do some manipulations with them and so on. Well, now you need do it fast.\n\nLet us create segment tree (for example, there you can use Fenwick tree) for dimention \"distance\". In every vertex of that tree you should store stack of points ordered by \"mass\". More details: every vertex of segment tree is some range of coordinates, and you should store in thet vertex points only from this range. At the top of every stack should be point with minimal mass. Well, let us put all points into tree. Every position is covered by no more then?  segmetns, therefore all tree will require  of memory.\n\nWhen you process query, you should extract points from some stacks and put them into queue. You can see that you may put some points into queue twice. To avoid this you should also put number of point into stack. So, when you are extracting point from stack you can check that it is the first extract using some array of flags."
+}

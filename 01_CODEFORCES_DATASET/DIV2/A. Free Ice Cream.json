@@ -1,1 +1,102 @@
-{"link": "https://codeforces.com//contest/686/problem/A", "problemId": "63497", "problem_idx": "A", "shortId": "686A", "contest_number": "686", "problem_submissions": {"E": [18753113], "D": [18677363, 18676926, 18680203, 18677096, 18680500, 18679262, 18679726, 18681134, 18679340, 18681235, 18679151, 18677262, 18680852, 18682604, 18679420, 18683508, 18682836, 18677654], "C": [18674350, 18674219, 18675996, 18670680, 18674843, 18676354, 18677317, 18674277, 18676911, 18677370, 18678038, 18675789, 18677870, 18675610, 18676923, 18681967], "B": [18671047, 18668588, 18669725, 18672830, 18672620, 18669882, 18671172, 18668900, 18674893, 18677911, 18672621, 18670139, 18676902, 18670149, 18671650, 18671701], "A": [18669150, 18667513, 18667542, 18673623, 18668163, 18667514, 18669093, 18667603, 18674115, 18677610, 18668549, 18667772, 18667638, 18667507, 18667916, 18669148]}, "name": "A. Free Ice Cream", "statement": "After their adventure with the magic mirror Kay and Gerda have returned\r\nhome and sometimes give free ice cream to kids in the summer.At the\r\nstart of the day they have ice cream packs. Since the ice cream is free,\r\npeople start standing in the queue before Kay and Gerda\u2019s house even in\r\nthe night. Each person in the queue wants either to take several ice\r\ncream packs for himself and his friends or to give several ice cream\r\npacks to Kay and Gerda (carriers that bring ice cream have to stand in\r\nthe same queue).If a carrier with ice cream packs comes to the house,\r\nthen Kay and Gerda take all his packs. If a child who wants to take ice\r\ncream packs comes to the house, then Kay and Gerda will give him packs\r\nif they have enough ice cream, otherwise the child will get no ice cream\r\nat all and will leave in distress.Kay wants to find the amount of ice\r\ncream they will have after all people will leave from the queue, and\r\nGerda wants to find the number of distressed kids.\r\n", "solutions": ["#include<bits/stdc++.h>\nusing namespace std;\nconst double eps(1e-8);\nconst double pi(3.14159265358979);\nint n;\nlong long x;\nint main()\n{\t\n\tcin>>n>>x;\n\tchar ch;\n\tlong long d;\n\tint tot=0;\n\tfor(int i=1;i<=n;++i)\n\t{\n\t\tcin>>ch>>d;\n\t\tif(ch=='+')\n\t\t\tx+=d;\n\t\telse\n\t\t\tif(x<d)\n\t\t\t\t++tot;\n\t\t\telse\n\t\t\t\tx-=d;\n\t}\n\tcout<<x<<' '<<tot<<endl;\n\treturn 0;\n}"], "input": "", "output": "", "tags": ["constructive algorithms", "implementation"], "dificulty": "800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/686/problem/A",
+    "problemId": "63497",
+    "problem_idx": "A",
+    "shortId": "686A",
+    "contest_number": "686",
+    "problem_submissions": {
+        "E": [
+            18753113
+        ],
+        "D": [
+            18677363,
+            18676926,
+            18680203,
+            18677096,
+            18680500,
+            18679262,
+            18679726,
+            18681134,
+            18679340,
+            18681235,
+            18679151,
+            18677262,
+            18680852,
+            18682604,
+            18679420,
+            18683508,
+            18682836,
+            18677654
+        ],
+        "C": [
+            18674350,
+            18674219,
+            18675996,
+            18670680,
+            18674843,
+            18676354,
+            18677317,
+            18674277,
+            18676911,
+            18677370,
+            18678038,
+            18675789,
+            18677870,
+            18675610,
+            18676923,
+            18681967
+        ],
+        "B": [
+            18671047,
+            18668588,
+            18669725,
+            18672830,
+            18672620,
+            18669882,
+            18671172,
+            18668900,
+            18674893,
+            18677911,
+            18672621,
+            18670139,
+            18676902,
+            18670149,
+            18671650,
+            18671701
+        ],
+        "A": [
+            18669150,
+            18667513,
+            18667542,
+            18673623,
+            18668163,
+            18667514,
+            18669093,
+            18667603,
+            18674115,
+            18677610,
+            18668549,
+            18667772,
+            18667638,
+            18667507,
+            18667916,
+            18669148
+        ]
+    },
+    "name": "A. Free Ice Cream",
+    "statement": "After their adventure with the magic mirror Kay and Gerda have returned\r\nhome and sometimes give free ice cream to kids in the summer.At the\r\nstart of the day they have ice cream packs. Since the ice cream is free,\r\npeople start standing in the queue before Kay and Gerda\u2019s house even in\r\nthe night. Each person in the queue wants either to take several ice\r\ncream packs for himself and his friends or to give several ice cream\r\npacks to Kay and Gerda (carriers that bring ice cream have to stand in\r\nthe same queue).If a carrier with ice cream packs comes to the house,\r\nthen Kay and Gerda take all his packs. If a child who wants to take ice\r\ncream packs comes to the house, then Kay and Gerda will give him packs\r\nif they have enough ice cream, otherwise the child will get no ice cream\r\nat all and will leave in distress.Kay wants to find the amount of ice\r\ncream they will have after all people will leave from the queue, and\r\nGerda wants to find the number of distressed kids.\r\n",
+    "solutions": [
+        "#include<bits/stdc++.h>\nusing namespace std;\nconst double eps(1e-8);\nconst double pi(3.14159265358979);\nint n;\nlong long x;\nint main()\n{\t\n\tcin>>n>>x;\n\tchar ch;\n\tlong long d;\n\tint tot=0;\n\tfor(int i=1;i<=n;++i)\n\t{\n\t\tcin>>ch>>d;\n\t\tif(ch=='+')\n\t\t\tx+=d;\n\t\telse\n\t\t\tif(x<d)\n\t\t\t\t++tot;\n\t\t\telse\n\t\t\t\tx-=d;\n\t}\n\tcout<<x<<' '<<tot<<endl;\n\treturn 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "implementation"
+    ],
+    "dificulty": "800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Free Ice Cream.json",
+    "editorial_link": "https://codeforces.com//blog/entry/45558",
+    "editorial": "You just needed to implement the actions described in statement.\n\nIf you solution failed, then you probably forgot to use 64-bit integers or made some small mistake."
+}

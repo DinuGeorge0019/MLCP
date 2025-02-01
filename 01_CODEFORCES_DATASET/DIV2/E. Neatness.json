@@ -1,1 +1,105 @@
-{"link": "https://codeforces.com//contest/359/problem/E", "problemId": "3900", "problem_idx": "E", "shortId": "359E", "contest_number": "359", "problem_submissions": {"E": [4966366, 4965901, 4965165, 4968971, 4968031, 5030475, 5030447, 5030443], "D": [4963797, 4964306, 4968709, 4966296, 4964708, 4965929, 4967215, 4966606, 4965405, 4965253, 4966594, 4966662, 4966795, 4967604, 4966152, 4967077], "C": [4963211, 4971196, 4966025, 4963647, 4966280, 4964475, 4964256, 4964574, 4963690, 4965973, 4965008, 4965354, 4964698, 4965004, 4964990, 4964922], "B": [4961725, 4962522, 4962983, 4962414, 4961846, 4962396, 4964001, 4966184, 4962445, 4962650, 4963163, 4962642, 4962226, 4962488, 4962708], "A": [4961217, 4961382, 4961759, 4961310, 4961187, 4961559, 4961723, 4962044, 4961592, 4961515, 4962109, 4961860, 4961456, 4962020, 4961421]}, "name": "E. Neatness", "statement": "Simon loves neatness. So before he goes to bed, Simon wants to complete\r\nall chores in the house.Simon\u2019s house looks like a rectangular table\r\nconsisting of rows and columns from above. All rows of the table are\r\nnumbered from to from top to bottom. All columns of the table are\r\nnumbered from to from left to right. Each cell of the table is a room.\r\nPair denotes the room, located at the intersection of the -th row and\r\nthe -th column. For each room we know if the light is on or not\r\nthere.Initially Simon is in room . He wants to turn off the lights in\r\nall the rooms in the house, and then return to room . Suppose that at\r\nthe current moment Simon is in the room . To reach the desired result,\r\nhe can perform the following steps: The format of the action is \"\". The\r\naction is to turn on the light in room . Simon cannot do it if the room\r\nalready has light on. The format of the action is \"\". The action is to\r\nturn off the light in room . Simon cannot do it if the room already has\r\nlight off. The format of the action is \"\" ( is a character). The action\r\nis to move to a side-adjacent room in direction . The direction can be\r\nleft, right, up or down (the corresponding dir is , , or ).\r\nAdditionally, Simon can move only if he see a light in the direction .\r\nMore formally, if we represent the room, Simon wants to go, as , there\r\nshold be an integer , that room has a light. Of course, Simon cannot\r\nmove out of his house. Help Simon, find the sequence of actions that\r\nlets him achieve the desired result.\r\n", "solutions": ["#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <algorithm>\n\nusing namespace std;\n\nconst int kMaxN = 500;\nconst int kFx[4] = {-1, 1, 0, 0};\nconst int kFy[4] = {0, 0, -1, 1};\nint n, x0, y0, a[kMaxN + 1][kMaxN + 1];\nbool reachable[kMaxN + 1][kMaxN + 1];\nint q[kMaxN * kMaxN], qh, qt;\n\n#define LB(x) ((x) & (-(x)))\n\nstruct IndexTree {\n    int node[kMaxN + 1];\n    void add(int i, int d) {\n        for ( ; i <= n; i += LB(i))\n            node[i] += d;\n    }\n    int sum(int i) {\n        int res = 0;\n        for ( ; i; i -= LB(i))\n            res += node[i];\n        return res;\n    }\n} row_s[kMaxN + 1], col_s[kMaxN + 1];\n\nvoid turn_on(int i, int j) {\n    if (a[i][j] == 1) return;\n    putchar('1');\n    row_s[i].add(j, 1);\n    col_s[j].add(i, 1);\n    a[i][j] = 1;\n}\n\nvoid turn_off(int i, int j) {\n    if (a[i][j] == 0) return;\n    putchar('2');\n    row_s[i].add(j, -1);\n    col_s[j].add(i, -1);\n    a[i][j] = 0;\n}\n\nbool check() {\n    reachable[x0][y0] = true;\n    q[qt ++] = x0 * (n + 1) + y0;\n    while (qh != qt) {\n        int x = q[qh] / (n + 1);\n        int y = q[qh] % (n + 1);\n        ++ qh;\n        for (int d = 0; d < 4; ++ d) {\n            bool can = false;\n            int vx = x + kFx[d], vy = y + kFy[d];\n            if (vx >= 1 && vx <= n && vy >= 1 && vy <= n && !reachable[vx][vy]) {\n                if (d == 0) {\n                    int nx = 1;\n                    int s = col_s[y].sum(x - 1) - col_s[y].sum(nx - 1);\n                    if (s) can = true;\n                }\n                else if (d == 1) {\n                    int nx = n;\n                    int s = col_s[y].sum(nx) - col_s[y].sum(x);\n                    if (s) can = true;\n                }\n                else if (d == 2) {\n                    int ny = 1;\n                    int s = row_s[x].sum(y - 1) - row_s[x].sum(ny - 1);\n                    if (s) can = true;\n                }\n                else {\n                    int ny = n;\n                    int s = row_s[x].sum(ny) - row_s[x].sum(y);\n                    if (s) can = true;\n                }\n                if (can) {\n                    q[qt ++] = vx * (n + 1) + vy;\n                    reachable[vx][vy] = true;\n                }\n            }\n        }\n    }\n    for (int i = 1; i <= n; ++ i)\n        for (int j = 1; j <= n; ++ j)\n            if (a[i][j] && !reachable[i][j]) return false;\n    return true;\n}\n\nbool marked[kMaxN][kMaxN];\n\nvoid dfs(int x, int y) {\n    marked[x][y] = true;\n    turn_on(x, y);\n    for (int d = 0; d < 4; ++ d) {\n        int nx = x, ny = y;\n        int vx = x + kFx[d], vy = y + kFy[d];\n        if (vx >= 1 && vx <= n && vy >= 1 && vy <= n && !marked[vx][vy]) {\n            if (d == 0) {\n                nx = 1;\n                int s = col_s[y].sum(x - 1) - col_s[y].sum(nx - 1);\n                if (s) {\n                    putchar('U');\n                    dfs(vx, vy);\n                    putchar('D');\n                }\n            }\n            else if (d == 1) {\n                nx = n;\n                int s = col_s[y].sum(nx) - col_s[y].sum(x);\n                if (s) {\n                    putchar('D');\n                    dfs(vx, vy);\n                    putchar('U');\n                }\n            }\n            else if (d == 2) {\n                ny = 1;\n                int s = row_s[x].sum(y - 1) - row_s[x].sum(ny - 1);\n                if (s) {\n                    putchar('L');\n                    dfs(vx, vy);\n                    putchar('R');\n                }\n            }\n            else {\n                ny = n;\n                int s = row_s[x].sum(ny) - row_s[x].sum(y);\n                if (s) {\n                    putchar('R');\n                    dfs(vx, vy);\n                    putchar('L');\n                }\n            }\n        }\n    }\n    turn_off(x, y);\n}\n\nint main() {\n    scanf(\"%d%d%d\", &n, &x0, &y0);\n    for (int i = 1; i <= n; ++ i)\n        for (int j = 1; j <= n; ++ j) {\n            scanf(\"%d\", &a[i][j]);\n            if (a[i][j]) {\n                row_s[i].add(j, 1);\n                col_s[j].add(i, 1);\n            }\n        }\n    if (!check()) {\n        puts(\"NO\");\n        return 0;\n    }\n    puts(\"YES\");\n    dfs(x0, y0);\n    puts(\"\");\n    return 0;\n}"], "input": "", "output": "", "tags": ["constructive algorithms", "dfs and similar"], "dificulty": "2400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/359/problem/E",
+    "problemId": "3900",
+    "problem_idx": "E",
+    "shortId": "359E",
+    "contest_number": "359",
+    "problem_submissions": {
+        "E": [
+            4966366,
+            4965901,
+            4965165,
+            4968971,
+            4968031,
+            5030475,
+            5030447,
+            5030443
+        ],
+        "D": [
+            4963797,
+            4964306,
+            4968709,
+            4966296,
+            4964708,
+            4965929,
+            4967215,
+            4966606,
+            4965405,
+            4965253,
+            4966594,
+            4966662,
+            4966795,
+            4967604,
+            4966152,
+            4967077
+        ],
+        "C": [
+            4963211,
+            4971196,
+            4966025,
+            4963647,
+            4966280,
+            4964475,
+            4964256,
+            4964574,
+            4963690,
+            4965973,
+            4965008,
+            4965354,
+            4964698,
+            4965004,
+            4964990,
+            4964922
+        ],
+        "B": [
+            4961725,
+            4962522,
+            4962983,
+            4962414,
+            4961846,
+            4962396,
+            4964001,
+            4966184,
+            4962445,
+            4962650,
+            4963163,
+            4962642,
+            4962226,
+            4962488,
+            4962708
+        ],
+        "A": [
+            4961217,
+            4961382,
+            4961759,
+            4961310,
+            4961187,
+            4961559,
+            4961723,
+            4962044,
+            4961592,
+            4961515,
+            4962109,
+            4961860,
+            4961456,
+            4962020,
+            4961421
+        ]
+    },
+    "name": "E. Neatness",
+    "statement": "Simon loves neatness. So before he goes to bed, Simon wants to complete\r\nall chores in the house.Simon\u2019s house looks like a rectangular table\r\nconsisting of rows and columns from above. All rows of the table are\r\nnumbered from to from top to bottom. All columns of the table are\r\nnumbered from to from left to right. Each cell of the table is a room.\r\nPair denotes the room, located at the intersection of the -th row and\r\nthe -th column. For each room we know if the light is on or not\r\nthere.Initially Simon is in room . He wants to turn off the lights in\r\nall the rooms in the house, and then return to room . Suppose that at\r\nthe current moment Simon is in the room . To reach the desired result,\r\nhe can perform the following steps: The format of the action is \"\". The\r\naction is to turn on the light in room . Simon cannot do it if the room\r\nalready has light on. The format of the action is \"\". The action is to\r\nturn off the light in room . Simon cannot do it if the room already has\r\nlight off. The format of the action is \"\" ( is a character). The action\r\nis to move to a side-adjacent room in direction . The direction can be\r\nleft, right, up or down (the corresponding dir is , , or ).\r\nAdditionally, Simon can move only if he see a light in the direction .\r\nMore formally, if we represent the room, Simon wants to go, as , there\r\nshold be an integer , that room has a light. Of course, Simon cannot\r\nmove out of his house. Help Simon, find the sequence of actions that\r\nlets him achieve the desired result.\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <algorithm>\n\nusing namespace std;\n\nconst int kMaxN = 500;\nconst int kFx[4] = {-1, 1, 0, 0};\nconst int kFy[4] = {0, 0, -1, 1};\nint n, x0, y0, a[kMaxN + 1][kMaxN + 1];\nbool reachable[kMaxN + 1][kMaxN + 1];\nint q[kMaxN * kMaxN], qh, qt;\n\n#define LB(x) ((x) & (-(x)))\n\nstruct IndexTree {\n    int node[kMaxN + 1];\n    void add(int i, int d) {\n        for ( ; i <= n; i += LB(i))\n            node[i] += d;\n    }\n    int sum(int i) {\n        int res = 0;\n        for ( ; i; i -= LB(i))\n            res += node[i];\n        return res;\n    }\n} row_s[kMaxN + 1], col_s[kMaxN + 1];\n\nvoid turn_on(int i, int j) {\n    if (a[i][j] == 1) return;\n    putchar('1');\n    row_s[i].add(j, 1);\n    col_s[j].add(i, 1);\n    a[i][j] = 1;\n}\n\nvoid turn_off(int i, int j) {\n    if (a[i][j] == 0) return;\n    putchar('2');\n    row_s[i].add(j, -1);\n    col_s[j].add(i, -1);\n    a[i][j] = 0;\n}\n\nbool check() {\n    reachable[x0][y0] = true;\n    q[qt ++] = x0 * (n + 1) + y0;\n    while (qh != qt) {\n        int x = q[qh] / (n + 1);\n        int y = q[qh] % (n + 1);\n        ++ qh;\n        for (int d = 0; d < 4; ++ d) {\n            bool can = false;\n            int vx = x + kFx[d], vy = y + kFy[d];\n            if (vx >= 1 && vx <= n && vy >= 1 && vy <= n && !reachable[vx][vy]) {\n                if (d == 0) {\n                    int nx = 1;\n                    int s = col_s[y].sum(x - 1) - col_s[y].sum(nx - 1);\n                    if (s) can = true;\n                }\n                else if (d == 1) {\n                    int nx = n;\n                    int s = col_s[y].sum(nx) - col_s[y].sum(x);\n                    if (s) can = true;\n                }\n                else if (d == 2) {\n                    int ny = 1;\n                    int s = row_s[x].sum(y - 1) - row_s[x].sum(ny - 1);\n                    if (s) can = true;\n                }\n                else {\n                    int ny = n;\n                    int s = row_s[x].sum(ny) - row_s[x].sum(y);\n                    if (s) can = true;\n                }\n                if (can) {\n                    q[qt ++] = vx * (n + 1) + vy;\n                    reachable[vx][vy] = true;\n                }\n            }\n        }\n    }\n    for (int i = 1; i <= n; ++ i)\n        for (int j = 1; j <= n; ++ j)\n            if (a[i][j] && !reachable[i][j]) return false;\n    return true;\n}\n\nbool marked[kMaxN][kMaxN];\n\nvoid dfs(int x, int y) {\n    marked[x][y] = true;\n    turn_on(x, y);\n    for (int d = 0; d < 4; ++ d) {\n        int nx = x, ny = y;\n        int vx = x + kFx[d], vy = y + kFy[d];\n        if (vx >= 1 && vx <= n && vy >= 1 && vy <= n && !marked[vx][vy]) {\n            if (d == 0) {\n                nx = 1;\n                int s = col_s[y].sum(x - 1) - col_s[y].sum(nx - 1);\n                if (s) {\n                    putchar('U');\n                    dfs(vx, vy);\n                    putchar('D');\n                }\n            }\n            else if (d == 1) {\n                nx = n;\n                int s = col_s[y].sum(nx) - col_s[y].sum(x);\n                if (s) {\n                    putchar('D');\n                    dfs(vx, vy);\n                    putchar('U');\n                }\n            }\n            else if (d == 2) {\n                ny = 1;\n                int s = row_s[x].sum(y - 1) - row_s[x].sum(ny - 1);\n                if (s) {\n                    putchar('L');\n                    dfs(vx, vy);\n                    putchar('R');\n                }\n            }\n            else {\n                ny = n;\n                int s = row_s[x].sum(ny) - row_s[x].sum(y);\n                if (s) {\n                    putchar('R');\n                    dfs(vx, vy);\n                    putchar('L');\n                }\n            }\n        }\n    }\n    turn_off(x, y);\n}\n\nint main() {\n    scanf(\"%d%d%d\", &n, &x0, &y0);\n    for (int i = 1; i <= n; ++ i)\n        for (int j = 1; j <= n; ++ j) {\n            scanf(\"%d\", &a[i][j]);\n            if (a[i][j]) {\n                row_s[i].add(j, 1);\n                col_s[j].add(i, 1);\n            }\n        }\n    if (!check()) {\n        puts(\"NO\");\n        return 0;\n    }\n    puts(\"YES\");\n    dfs(x0, y0);\n    puts(\"\");\n    return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "dfs and similar"
+    ],
+    "dificulty": "2400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Neatness.json",
+    "editorial_link": "https://codeforces.com//blog/entry/9425",
+    "editorial": "You should write recursive function, that will turn on the light in all\r\nrooms, where it\u00e2\u0080\u0099s possible. Also this function will visit all rooms,\r\nwhich it may visit. Let this function is called paint(x, y), where x, y\r\nis the current room. will use following idea: Let\u00e2\u0080\u0099s look at all\r\nneighbors. If there is a light in the current direction (rule from the\r\nstatement), and the room (current neighbor) has not yet visited, we will\r\ncall our recursive function from . Also, we will turn on the light in\r\nall rooms, were we were. If some room is not visited by and lights is on\r\nin this room, the answer is \"NO\". Otherwise, the answer is \"YES\". After\r\nthat let\u00e2\u0080\u0099s calculate value by using bfs. is a minimal possible distance\r\nfrom the start to the current position . It\u00e2\u0080\u0099s possible to use in our bfs\r\nonly rooms, where lights is on. After that we will write the same\r\nfunction . will use following idea: Let\u00e2\u0080\u0099s look at all neighbors. If\r\nthere is a light in the current neighbor and ( current room), let\u00e2\u0080\u0099s call\r\nour recursive function from .After that we will come back to room . If\r\nthere is no such neigbor , turn off the light in the room . Also you\r\nshould look at my solution for more details. : 4968657\r\n"
+}

@@ -1,1 +1,100 @@
-{"link": "https://codeforces.com//contest/71/problem/C", "problemId": "382", "problem_idx": "C", "shortId": "71C", "contest_number": "71", "problem_submissions": {"E": [364940, 364561, 364869, 367554, 364877, 365341, 366959], "D": [364121, 370659, 364672, 364797, 364478, 365171, 365496, 365374, 365026], "C": [362958, 363113, 363174, 362960, 363170, 363249, 363364, 363672, 362819, 363791, 363858, 363105, 363379, 363017, 363030, 364051], "B": [362471, 362684, 362612, 362536, 362613, 362856, 362438, 362761, 362270, 362469, 362902, 365732, 362795, 362402, 362273, 362966], "A": [362169, 361901, 361819, 361870, 361938, 362121, 362009, 362162, 361786, 362024, 361769, 361943, 362014, 361863, 361998, 362420]}, "name": "C. Round Table Knights", "statement": "There are knights sitting at the Round Table at an equal distance from\r\neach other. Each of them is either in a good or in a bad mood.Merlin,\r\nthe wizard predicted to King Arthur that the next month will turn out to\r\nbe particularly fortunate if the polygon can be found. On all vertices\r\nof the polygon knights in a good mood should be located. Otherwise, the\r\nnext month will bring misfortunes.A convex polygon is regular if all its\r\nsides have same length and all his angles are equal. In this problem we\r\nconsider only regular polygons with at least 3 vertices, i. e. only\r\nnondegenerated.On a picture below some examples of such polygons are\r\npresent. Green points mean knights in a good mood. Red points mean ones\r\nin a bad mood. King Arthur knows the knights\u2019 moods. Help him find out\r\nif the next month will be fortunate or not.\r\n", "solutions": ["#include <iostream>\n#include <cstring>\n#include <cstdio>\nusing namespace std;\n\nint prime[100100];\nint a[100100];\n\nmain(){\n\tint i, j, k, step;\n\tint n;\n\t\n\tmemset( prime, 0, sizeof ( prime ) );\n\tfor ( i = 2; i < 100100; i ++ )\n\t\tif ( !prime[i] )\n\t\t\tfor ( j = i + i; j < 100100; j += i )\n\t\t\t\tprime[j] = 1;\n\tprime[1] = prime[2] = 1;\n\tprime[4] = 0;\n\tscanf ( \"%d\", &n );\n\tfor ( i = 0; i < n; i ++ )\n\t\tscanf ( \"%d\", a + i );\n\tfor ( i = 3; i <= n; i ++ )\n\t\tif ( n % i == 0 && prime[i] == 0 ){\n\t\t\tstep = n / i;\n\t\t\tfor ( j = 0; j < step; j ++ ){\n\t\t\t\tfor ( k = j; k < n; k += step )\n\t\t\t\t\tif ( a[k] == 0 )\n\t\t\t\t\t\tbreak;\n\t\t\t\tif ( k >= n )\n\t\t\t\t\tbreak;\n\t\t\t}\n\t\t\tif ( j != step )\n\t\t\t\tbreak;\n\t\t}\n\tif ( i <= n )\n\t\tprintf( \"YES\\n\" );\n\telse\n\t\tprintf( \"NO\\n\" );\n\t\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["dp", "math", "number theory"], "dificulty": "1600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/71/problem/C",
+    "problemId": "382",
+    "problem_idx": "C",
+    "shortId": "71C",
+    "contest_number": "71",
+    "problem_submissions": {
+        "E": [
+            364940,
+            364561,
+            364869,
+            367554,
+            364877,
+            365341,
+            366959
+        ],
+        "D": [
+            364121,
+            370659,
+            364672,
+            364797,
+            364478,
+            365171,
+            365496,
+            365374,
+            365026
+        ],
+        "C": [
+            362958,
+            363113,
+            363174,
+            362960,
+            363170,
+            363249,
+            363364,
+            363672,
+            362819,
+            363791,
+            363858,
+            363105,
+            363379,
+            363017,
+            363030,
+            364051
+        ],
+        "B": [
+            362471,
+            362684,
+            362612,
+            362536,
+            362613,
+            362856,
+            362438,
+            362761,
+            362270,
+            362469,
+            362902,
+            365732,
+            362795,
+            362402,
+            362273,
+            362966
+        ],
+        "A": [
+            362169,
+            361901,
+            361819,
+            361870,
+            361938,
+            362121,
+            362009,
+            362162,
+            361786,
+            362024,
+            361769,
+            361943,
+            362014,
+            361863,
+            361998,
+            362420
+        ]
+    },
+    "name": "C. Round Table Knights",
+    "statement": "There are knights sitting at the Round Table at an equal distance from\r\neach other. Each of them is either in a good or in a bad mood.Merlin,\r\nthe wizard predicted to King Arthur that the next month will turn out to\r\nbe particularly fortunate if the polygon can be found. On all vertices\r\nof the polygon knights in a good mood should be located. Otherwise, the\r\nnext month will bring misfortunes.A convex polygon is regular if all its\r\nsides have same length and all his angles are equal. In this problem we\r\nconsider only regular polygons with at least 3 vertices, i. e. only\r\nnondegenerated.On a picture below some examples of such polygons are\r\npresent. Green points mean knights in a good mood. Red points mean ones\r\nin a bad mood. King Arthur knows the knights\u2019 moods. Help him find out\r\nif the next month will be fortunate or not.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <cstring>\n#include <cstdio>\nusing namespace std;\n\nint prime[100100];\nint a[100100];\n\nmain(){\n\tint i, j, k, step;\n\tint n;\n\t\n\tmemset( prime, 0, sizeof ( prime ) );\n\tfor ( i = 2; i < 100100; i ++ )\n\t\tif ( !prime[i] )\n\t\t\tfor ( j = i + i; j < 100100; j += i )\n\t\t\t\tprime[j] = 1;\n\tprime[1] = prime[2] = 1;\n\tprime[4] = 0;\n\tscanf ( \"%d\", &n );\n\tfor ( i = 0; i < n; i ++ )\n\t\tscanf ( \"%d\", a + i );\n\tfor ( i = 3; i <= n; i ++ )\n\t\tif ( n % i == 0 && prime[i] == 0 ){\n\t\t\tstep = n / i;\n\t\t\tfor ( j = 0; j < step; j ++ ){\n\t\t\t\tfor ( k = j; k < n; k += step )\n\t\t\t\t\tif ( a[k] == 0 )\n\t\t\t\t\t\tbreak;\n\t\t\t\tif ( k >= n )\n\t\t\t\t\tbreak;\n\t\t\t}\n\t\t\tif ( j != step )\n\t\t\t\tbreak;\n\t\t}\n\tif ( i <= n )\n\t\tprintf( \"YES\\n\" );\n\telse\n\t\tprintf( \"NO\\n\" );\n\t\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp",
+        "math",
+        "number theory"
+    ],
+    "dificulty": "1600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Round Table Knights.json",
+    "editorial_link": "https://codeforces.com//blog/entry/1624",
+    "editorial": "Define an good polygon as a regular polygon which has a knight in a good mood in every of its vertex. Side of polygon we will measure in arcs which is obtained by dividing border of round table with knights.\n\nFreeze the length of the side. Let this length equals k. Observe that the regular polygon with such length of side exists only if k divides n. We have exactly k of such polygons. Every of them has exactly n?/?k vertices. Check every of the polygons for goodness by review all of its vertices.\n\nIf sum of vertices with knight in a good mood equals to n?/?k, this polygon is good. Checking of all polygons with some frozen length of side works in an O(n).\n\nNow observe that n has  of divisors. Really, all divisors (may be except only one) we can divide into pairs (for i corresponds n?/?i, for i?=?n?/?i there is no pair). One of divisors in every pair less than . It means thah number of pairs no more than  and number of divisors no more than .\n\nIt gives solution - iterate over all divisors of n and for every of them check existence of good polygon with length side equals this divisor. Solution has an  time.\n\nIn reality for big n is has  divisors. So solution actually has O(n4?/?3)-complexity. For all numbers less than 105 maximal number of divisors is 128.\n\nUPD. There was found an  solution by some participants. This solution uses following idea. If we have a good polygon with xy vertices, we also have a good polygon with x vertices. So we can check only prime divisors of n (except 2 - here we must check 4)."
+}

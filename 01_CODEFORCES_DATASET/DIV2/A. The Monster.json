@@ -1,1 +1,106 @@
-{"link": "https://codeforces.com//contest/787/problem/A", "problemId": "99622", "problem_idx": "A", "shortId": "787A", "contest_number": "787", "problem_submissions": {"E": [25747805, 25769219, 25744553, 26717332, 25755415, 25762542], "B": [25745774, 25737596, 25738540, 25745875, 25737776, 25744359, 25738056, 25737770, 25738864, 25741107, 25738246, 25737616, 25739109, 25738592, 25739173, 25738726, 25737800, 25737780, 25738984, 25738382], "D": [25744630, 25741896, 25745115, 25749718, 25746276, 25756806, 25761778, 25761748], "C": [25741086, 25747033, 25750675, 25741659, 25745560, 25745890, 25749024, 25741922, 25743935, 25744643, 25745202, 25745392, 25745995, 25746453, 25745702, 25745999, 25746587], "A": [25736581, 25736552, 25743791, 25736575, 25739966, 25736705, 25736522, 25736956, 25738154, 25736876, 25736540, 25736830, 25737058, 25737179, 25737189, 25736539, 25736641, 25737439, 25736572]}, "name": "A. The Monster", "statement": "A monster is chasing after Rick and Morty on another planet. They\u2019re so\r\nfrightened that sometimes they scream. More accurately, Rick screams at\r\ntimes and Morty screams at times . The Monster will catch them if at any\r\npoint they scream at the same time, so it wants to know when it will\r\ncatch them (the first time they scream at the same time) or that they\r\nwill never scream at the same time.\r\n", "solutions": ["#include <stdio.h>\n#include <string.h>\n#include <stdlib.h>\n#include <iostream>\n#include <algorithm>\nusing namespace std;\nconst int MAXN = 101010;\nint a, b, c, d, f[MAXN];\nint main()\n{\n\tmemset(f, 0, sizeof(f));\n\tscanf(\"%d%d%d%d\", &a, &b, &c, &d);\n\tfor(int i = b; i < MAXN; i += a)\n\t\tf[i] |= 1;\n\tfor(int i = d; i < MAXN; i += c)\n\t\tf[i] |= 2;\n\tfor(int i = 0; i < MAXN; i++)\n\t\tif(f[i] == 3)\n\t\t{\n\t\t\tprintf(\"%d\\n\", i);\n\t\t\treturn 0;\n\t\t}\n\tprintf(\"-1\\n\");\n\treturn 0;\n}\n\n"], "input": "", "output": "", "tags": ["brute force", "math", "number theory"], "dificulty": "1200", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/787/problem/A",
+    "problemId": "99622",
+    "problem_idx": "A",
+    "shortId": "787A",
+    "contest_number": "787",
+    "problem_submissions": {
+        "E": [
+            25747805,
+            25769219,
+            25744553,
+            26717332,
+            25755415,
+            25762542
+        ],
+        "B": [
+            25745774,
+            25737596,
+            25738540,
+            25745875,
+            25737776,
+            25744359,
+            25738056,
+            25737770,
+            25738864,
+            25741107,
+            25738246,
+            25737616,
+            25739109,
+            25738592,
+            25739173,
+            25738726,
+            25737800,
+            25737780,
+            25738984,
+            25738382
+        ],
+        "D": [
+            25744630,
+            25741896,
+            25745115,
+            25749718,
+            25746276,
+            25756806,
+            25761778,
+            25761748
+        ],
+        "C": [
+            25741086,
+            25747033,
+            25750675,
+            25741659,
+            25745560,
+            25745890,
+            25749024,
+            25741922,
+            25743935,
+            25744643,
+            25745202,
+            25745392,
+            25745995,
+            25746453,
+            25745702,
+            25745999,
+            25746587
+        ],
+        "A": [
+            25736581,
+            25736552,
+            25743791,
+            25736575,
+            25739966,
+            25736705,
+            25736522,
+            25736956,
+            25738154,
+            25736876,
+            25736540,
+            25736830,
+            25737058,
+            25737179,
+            25737189,
+            25736539,
+            25736641,
+            25737439,
+            25736572
+        ]
+    },
+    "name": "A. The Monster",
+    "statement": "A monster is chasing after Rick and Morty on another planet. They\u2019re so\r\nfrightened that sometimes they scream. More accurately, Rick screams at\r\ntimes and Morty screams at times . The Monster will catch them if at any\r\npoint they scream at the same time, so it wants to know when it will\r\ncatch them (the first time they scream at the same time) or that they\r\nwill never scream at the same time.\r\n",
+    "solutions": [
+        "#include <stdio.h>\n#include <string.h>\n#include <stdlib.h>\n#include <iostream>\n#include <algorithm>\nusing namespace std;\nconst int MAXN = 101010;\nint a, b, c, d, f[MAXN];\nint main()\n{\n\tmemset(f, 0, sizeof(f));\n\tscanf(\"%d%d%d%d\", &a, &b, &c, &d);\n\tfor(int i = b; i < MAXN; i += a)\n\t\tf[i] |= 1;\n\tfor(int i = d; i < MAXN; i += c)\n\t\tf[i] |= 2;\n\tfor(int i = 0; i < MAXN; i++)\n\t\tif(f[i] == 3)\n\t\t{\n\t\t\tprintf(\"%d\\n\", i);\n\t\t\treturn 0;\n\t\t}\n\tprintf(\"-1\\n\");\n\treturn 0;\n}\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "math",
+        "number theory"
+    ],
+    "dificulty": "1200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. The Monster.json",
+    "editorial_link": "https://codeforces.com//blog/entry/51163",
+    "editorial": "You need to find out if there are non-negative integers like and such\r\nand or (or both) is minimized. It\u00e2\u0080\u0099s easy to show that if , and such and\r\nexist, then , so you can iterate over and check if such exists. Time\r\ncomplexity:\r\n"
+}

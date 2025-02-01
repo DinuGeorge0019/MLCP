@@ -1,1 +1,103 @@
-{"link": "https://codeforces.com//contest/879/problem/A", "problemId": "130662", "problem_idx": "A", "shortId": "879A", "contest_number": "879", "problem_submissions": {"B": [31786634, 31744953, 31748945, 31742935, 31751951, 31745920, 31746158, 31746124, 31745152, 31764273, 31744717, 31744550, 31745384, 31763271, 31741598, 31746257, 31743148], "A": [31786593, 31741274, 31744372, 31740794, 31748255, 31750502, 31742905, 31741390, 31742237, 31742563, 31740788, 31746610, 31740545, 31741102, 31761806, 31740453, 31741697, 31740818], "D": [31759010, 31759775, 31758676, 31760218, 31759988, 31764440, 31763303, 31762884, 31765337, 31764418, 31762268, 31761524, 31759749], "C": [31750102, 31754233, 31749363, 31750196, 31754099, 31751776, 31751991, 31753220, 31750527, 31755686, 31753418, 31760006, 31750929, 31761404, 31749686, 31756675, 31751331], "E": [31870640, 31870635, 31869262, 31868808]}, "name": "A. Borya s Diagnosis", "statement": "It seems that Borya is seriously sick. He is going visit doctors to find\r\nout the exact diagnosis. Each of the doctors needs the information about\r\nall previous visits, so Borya has to visit them in the prescribed order\r\n(i.e. Borya should first visit doctor , then doctor , then doctor and so\r\non). Borya will get the information about his health from the last\r\ndoctor.Doctors have a strange working schedule. The doctor goes to work\r\non the -th day and works every day. So, he works on days .The doctor\u2019s\r\nappointment takes quite a long time, so Borya can not see more than one\r\ndoctor per day. What is the minimum time he needs to visit all doctors?\r\n", "solutions": ["#include <cstdio>\nusing namespace std;\n#define REP(i,n) for(int i=0;i<(n);++i)\n#define FORE(i,c) for(__typeof((c).begin())i=(c).begin();i!=(c).end();++i)\n\nint n,s,d;\n\nint main() {\n  scanf(\"%d\",&n);\n  int t = 0;\n  REP(i,n) {\n    scanf(\"%d%d\",&s,&d);\n    int p = s;\n    while (p <= t) { p += d; }\n    t = p;\n  }\n  printf(\"%d\\n\", t);\n}\n"], "input": "", "output": "", "tags": ["implementation"], "dificulty": "900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/879/problem/A",
+    "problemId": "130662",
+    "problem_idx": "A",
+    "shortId": "879A",
+    "contest_number": "879",
+    "problem_submissions": {
+        "B": [
+            31786634,
+            31744953,
+            31748945,
+            31742935,
+            31751951,
+            31745920,
+            31746158,
+            31746124,
+            31745152,
+            31764273,
+            31744717,
+            31744550,
+            31745384,
+            31763271,
+            31741598,
+            31746257,
+            31743148
+        ],
+        "A": [
+            31786593,
+            31741274,
+            31744372,
+            31740794,
+            31748255,
+            31750502,
+            31742905,
+            31741390,
+            31742237,
+            31742563,
+            31740788,
+            31746610,
+            31740545,
+            31741102,
+            31761806,
+            31740453,
+            31741697,
+            31740818
+        ],
+        "D": [
+            31759010,
+            31759775,
+            31758676,
+            31760218,
+            31759988,
+            31764440,
+            31763303,
+            31762884,
+            31765337,
+            31764418,
+            31762268,
+            31761524,
+            31759749
+        ],
+        "C": [
+            31750102,
+            31754233,
+            31749363,
+            31750196,
+            31754099,
+            31751776,
+            31751991,
+            31753220,
+            31750527,
+            31755686,
+            31753418,
+            31760006,
+            31750929,
+            31761404,
+            31749686,
+            31756675,
+            31751331
+        ],
+        "E": [
+            31870640,
+            31870635,
+            31869262,
+            31868808
+        ]
+    },
+    "name": "A. Borya s Diagnosis",
+    "statement": "It seems that Borya is seriously sick. He is going visit doctors to find\r\nout the exact diagnosis. Each of the doctors needs the information about\r\nall previous visits, so Borya has to visit them in the prescribed order\r\n(i.e. Borya should first visit doctor , then doctor , then doctor and so\r\non). Borya will get the information about his health from the last\r\ndoctor.Doctors have a strange working schedule. The doctor goes to work\r\non the -th day and works every day. So, he works on days .The doctor\u2019s\r\nappointment takes quite a long time, so Borya can not see more than one\r\ndoctor per day. What is the minimum time he needs to visit all doctors?\r\n",
+    "solutions": [
+        "#include <cstdio>\nusing namespace std;\n#define REP(i,n) for(int i=0;i<(n);++i)\n#define FORE(i,c) for(__typeof((c).begin())i=(c).begin();i!=(c).end();++i)\n\nint n,s,d;\n\nint main() {\n  scanf(\"%d\",&n);\n  int t = 0;\n  REP(i,n) {\n    scanf(\"%d%d\",&s,&d);\n    int p = s;\n    while (p <= t) { p += d; }\n    t = p;\n  }\n  printf(\"%d\\n\", t);\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation"
+    ],
+    "dificulty": "900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Borya s Diagnosis.json",
+    "editorial_link": "https://codeforces.com//blog/entry/55435",
+    "editorial": "Note that Borya can use a greedy algorithm. He will visit each doctor as\r\nsoon as possible. We only need to find the earliest day when he can do\r\nit. Constraints are pretty low, so we can use almost any reasonable\r\nway.For example, we can just go through all the days, starting from the\r\ncurrent one, and check if the doctor is working on that day. At the step\r\nwe need to go through at most days.There is a more efficient way. We can\r\nfind the smallest that is greater than the current day, such that , in .\r\nIf , Borya will visit a doctor on day , otherwise on day . This solution\r\nis .\r\n"
+}

@@ -1,1 +1,104 @@
-{"link": "https://codeforces.com//contest/955/problem/E", "problemId": "167747", "problem_idx": "E", "shortId": "955E", "contest_number": "955", "problem_submissions": {"E": [36552751], "D": [36547766, 36561781, 36687646, 72294185], "C": [36544337, 36544697, 36542762, 36552120, 36546618, 36544122, 36549891, 36544109, 36541691, 36576017, 36575027, 36548324, 36546617, 36544127, 36541601, 36543835, 36543719, 36546626, 36545136, 36544045, 36543760, 36541102], "B": [36538238, 36537135, 36537612, 36562998, 36539430, 36538683, 36540472, 36537286, 36537082, 36538951, 36538215, 36537949, 36537216, 36540793, 36539603, 36539538, 36538461, 36538576, 36537767, 36537306], "A": [36536991, 36539709, 36536867, 36548240, 36538150, 36537171, 36538851, 36536810, 36543232, 36537420, 36540571, 36537312, 36546633, 36537606, 36537598, 36537548, 36537069, 36537405, 36537023, 36550641], "F": [36545987, 36553463, 36668304]}, "name": "E. Icicles", "statement": "Andrew\u2019s favourite Krakozyabra has recenly fled away and now he\u2019s eager\r\nto bring it back!At the moment the refugee is inside an icy cave with\r\nicicles dangling from the ceiling located in integer coordinates\r\nnumbered from to . The distance between floor and the -th icicle is\r\nequal to .Andrew is free to choose an arbitrary integer point in range\r\nfrom to inclusive and at time instant launch a sound wave spreading into\r\nboth sides (left and right) at the speed of one point per second. Any\r\nicicle touched by the wave starts falling at the same speed (that means\r\nthat in a second the distance from floor to icicle decreases by one but\r\ncannot become less that zero). While distance from icicle to floor is\r\nmore than zero, it is considered passable; as soon as it becomes zero,\r\nthe icicle blocks the path and prohibits passing.Krakozyabra is\r\ninitially (i.e. at time instant ) is located at point and starts running\r\nin the right direction at the speed of one point per second. You can\r\nassume that events in a single second happen in the following order:\r\nfirst Krakozyabra changes its position, and only then the sound spreads\r\nand icicles fall; in particular, that means that if Krakozyabra is\r\ncurrently at point and the falling (i.e. already touched by the sound\r\nwave) icicle at point is point from the floor, then Krakozyabra will\r\npass it and find itself at and only after that the icicle will finally\r\nfall and block the path.Krakozyabra is considered entrapped if there are\r\nfallen (i.e. with ) icicles both to the left and to the right of its\r\ncurrent position. Help Andrew find the minimum possible time it takes to\r\nentrap Krakozyabra by choosing the optimal value of or report that this\r\nmission is impossible.\r\n", "solutions": ["#include<bits/stdc++.h>\nusing namespace std;\nconst int maxn=100011;\nint mn[maxn][20],mn1[maxn][20],mn2[maxn][20];\nint n,a[maxn],ss[maxn],sss[maxn],Log2[maxn];\ninline int Query(int a,int b){\n\tif (a>b) return INT_MAX;\n\tint Len=Log2[b-a+1];\n\treturn min(mn[a][Len],mn[b-(1<<Len)+1][Len]);\n}\ninline int Query1(int a,int b){\n\tif (a>b) return INT_MAX;\n\tint Len=Log2[b-a+1];\n\treturn min(mn1[a][Len],mn1[b-(1<<Len)+1][Len]);\n}\ninline int Query2(int a,int b){\n\tif (a>b) return INT_MAX;\n\tint Len=Log2[b-a+1];\n\treturn min(mn2[a][Len],mn2[b-(1<<Len)+1][Len]);\n}\nint main(){\n\tscanf(\"%d\",&n); for (int i=1;i<=n;++i) scanf(\"%d\",a+i); int rans=INT_MAX;\n\tLog2[1]=0; for (int i=2;i<=n;++i) Log2[i]=Log2[i>>1]+1;\n\tfor (int i=1;i<=n;++i) mn[i][0]=a[i];\n\tfor (int i=n;i>=1;--i) for (int j=1;i+(1<<j)-1<=n;++j)\n\t\tmn[i][j]=min(mn[i][j-1],mn[i+(1<<(j-1))][j-1]);\n\t\t\n\tfor (int i=1;i<=n;++i) mn1[i][0]=a[i]+i;\n\tfor (int i=n;i>=1;--i) for (int j=1;i+(1<<j)-1<=n;++j)\n\t\tmn1[i][j]=min(mn1[i][j-1],mn1[i+(1<<(j-1))][j-1]);\n\t\t\n\tfor (int i=1;i<=n;++i) mn2[i][0]=a[i]-i;\n\tfor (int i=n;i>=1;--i) for (int j=1;i+(1<<j)-1<=n;++j)\n\t\tmn2[i][j]=min(mn2[i][j-1],mn2[i+(1<<(j-1))][j-1]);\n\tss[0]=INT_MAX; for (int i=1;i<=n;++i) ss[i]=min(ss[i-1],a[i]-2*i); // a[i]-2i\n\tsss[0]=INT_MAX; for (int i=1;i<=n;++i) sss[i]=min(sss[i-1],a[i]-i); // a[i]-i\n\tfor (int w=1;w<=n;++w){\n\t\tif (ss[w]>=-w){\n\t\t\tint l=w+1,r=n;\n\t\t\twhile (l<=r){\n\t\t\t\tint mid=(l+r)>>1;\n\t\t\t\tif (Query(w+1,mid)<w) r=mid-1;\n\t\t\t\telse l=mid+1;\n\t\t\t}\n\t\t\tint x=r+1;\n\t\t\tif (x>n) continue;\n//\t\t\tcerr<<\" F \"<<w<<' '<<x<<endl;\n\t\t\tint ans=max(Query1(x,n)-w,min(Query1(w+1,x-1)-w,sss[w]+w)); // Query1 a[i]+i\n\t\t\trans=min(rans,ans);\n\t\t}else{\n\t\t\tint l=1,r=w;\n\t\t\twhile (l<=r){\n\t\t\t\tint mid=(l+r)>>1;\n\t\t\t\tif (ss[mid]<-w) r=mid-1;\n\t\t\t\telse l=mid+1;\n\t\t\t}\n\t\t\tint x=r+1;\n//\t\t\tcerr<<\" Q \"<<w<<' '<<x<<endl;\n\t\t\tint ans=max(min(Query1(w+1,n)-w,Query2(x,w)+w),sss[x-1]+w); // Query2 a[i]-i\n\t\t\trans=min(rans,ans);\n\t\t}\n\t}\n\tprintf(\"%d\\n\",rans>1e7?-1:rans);\n}"], "input": "", "output": "", "tags": [], "dificulty": "2900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/955/problem/E",
+    "problemId": "167747",
+    "problem_idx": "E",
+    "shortId": "955E",
+    "contest_number": "955",
+    "problem_submissions": {
+        "E": [
+            36552751
+        ],
+        "D": [
+            36547766,
+            36561781,
+            36687646,
+            72294185
+        ],
+        "C": [
+            36544337,
+            36544697,
+            36542762,
+            36552120,
+            36546618,
+            36544122,
+            36549891,
+            36544109,
+            36541691,
+            36576017,
+            36575027,
+            36548324,
+            36546617,
+            36544127,
+            36541601,
+            36543835,
+            36543719,
+            36546626,
+            36545136,
+            36544045,
+            36543760,
+            36541102
+        ],
+        "B": [
+            36538238,
+            36537135,
+            36537612,
+            36562998,
+            36539430,
+            36538683,
+            36540472,
+            36537286,
+            36537082,
+            36538951,
+            36538215,
+            36537949,
+            36537216,
+            36540793,
+            36539603,
+            36539538,
+            36538461,
+            36538576,
+            36537767,
+            36537306
+        ],
+        "A": [
+            36536991,
+            36539709,
+            36536867,
+            36548240,
+            36538150,
+            36537171,
+            36538851,
+            36536810,
+            36543232,
+            36537420,
+            36540571,
+            36537312,
+            36546633,
+            36537606,
+            36537598,
+            36537548,
+            36537069,
+            36537405,
+            36537023,
+            36550641
+        ],
+        "F": [
+            36545987,
+            36553463,
+            36668304
+        ]
+    },
+    "name": "E. Icicles",
+    "statement": "Andrew’s favourite Krakozyabra has recenly fled away and now he’s eager\r\nto bring it back!At the moment the refugee is inside an icy cave with\r\nicicles dangling from the ceiling located in integer coordinates\r\nnumbered from to . The distance between floor and the -th icicle is\r\nequal to .Andrew is free to choose an arbitrary integer point in range\r\nfrom to inclusive and at time instant launch a sound wave spreading into\r\nboth sides (left and right) at the speed of one point per second. Any\r\nicicle touched by the wave starts falling at the same speed (that means\r\nthat in a second the distance from floor to icicle decreases by one but\r\ncannot become less that zero). While distance from icicle to floor is\r\nmore than zero, it is considered passable; as soon as it becomes zero,\r\nthe icicle blocks the path and prohibits passing.Krakozyabra is\r\ninitially (i.e. at time instant ) is located at point and starts running\r\nin the right direction at the speed of one point per second. You can\r\nassume that events in a single second happen in the following order:\r\nfirst Krakozyabra changes its position, and only then the sound spreads\r\nand icicles fall; in particular, that means that if Krakozyabra is\r\ncurrently at point and the falling (i.e. already touched by the sound\r\nwave) icicle at point is point from the floor, then Krakozyabra will\r\npass it and find itself at and only after that the icicle will finally\r\nfall and block the path.Krakozyabra is considered entrapped if there are\r\nfallen (i.e. with ) icicles both to the left and to the right of its\r\ncurrent position. Help Andrew find the minimum possible time it takes to\r\nentrap Krakozyabra by choosing the optimal value of or report that this\r\nmission is impossible.\r\n",
+    "solutions": [
+        "#include<bits/stdc++.h>\nusing namespace std;\nconst int maxn=100011;\nint mn[maxn][20],mn1[maxn][20],mn2[maxn][20];\nint n,a[maxn],ss[maxn],sss[maxn],Log2[maxn];\ninline int Query(int a,int b){\n\tif (a>b) return INT_MAX;\n\tint Len=Log2[b-a+1];\n\treturn min(mn[a][Len],mn[b-(1<<Len)+1][Len]);\n}\ninline int Query1(int a,int b){\n\tif (a>b) return INT_MAX;\n\tint Len=Log2[b-a+1];\n\treturn min(mn1[a][Len],mn1[b-(1<<Len)+1][Len]);\n}\ninline int Query2(int a,int b){\n\tif (a>b) return INT_MAX;\n\tint Len=Log2[b-a+1];\n\treturn min(mn2[a][Len],mn2[b-(1<<Len)+1][Len]);\n}\nint main(){\n\tscanf(\"%d\",&n); for (int i=1;i<=n;++i) scanf(\"%d\",a+i); int rans=INT_MAX;\n\tLog2[1]=0; for (int i=2;i<=n;++i) Log2[i]=Log2[i>>1]+1;\n\tfor (int i=1;i<=n;++i) mn[i][0]=a[i];\n\tfor (int i=n;i>=1;--i) for (int j=1;i+(1<<j)-1<=n;++j)\n\t\tmn[i][j]=min(mn[i][j-1],mn[i+(1<<(j-1))][j-1]);\n\t\t\n\tfor (int i=1;i<=n;++i) mn1[i][0]=a[i]+i;\n\tfor (int i=n;i>=1;--i) for (int j=1;i+(1<<j)-1<=n;++j)\n\t\tmn1[i][j]=min(mn1[i][j-1],mn1[i+(1<<(j-1))][j-1]);\n\t\t\n\tfor (int i=1;i<=n;++i) mn2[i][0]=a[i]-i;\n\tfor (int i=n;i>=1;--i) for (int j=1;i+(1<<j)-1<=n;++j)\n\t\tmn2[i][j]=min(mn2[i][j-1],mn2[i+(1<<(j-1))][j-1]);\n\tss[0]=INT_MAX; for (int i=1;i<=n;++i) ss[i]=min(ss[i-1],a[i]-2*i); // a[i]-2i\n\tsss[0]=INT_MAX; for (int i=1;i<=n;++i) sss[i]=min(sss[i-1],a[i]-i); // a[i]-i\n\tfor (int w=1;w<=n;++w){\n\t\tif (ss[w]>=-w){\n\t\t\tint l=w+1,r=n;\n\t\t\twhile (l<=r){\n\t\t\t\tint mid=(l+r)>>1;\n\t\t\t\tif (Query(w+1,mid)<w) r=mid-1;\n\t\t\t\telse l=mid+1;\n\t\t\t}\n\t\t\tint x=r+1;\n\t\t\tif (x>n) continue;\n//\t\t\tcerr<<\" F \"<<w<<' '<<x<<endl;\n\t\t\tint ans=max(Query1(x,n)-w,min(Query1(w+1,x-1)-w,sss[w]+w)); // Query1 a[i]+i\n\t\t\trans=min(rans,ans);\n\t\t}else{\n\t\t\tint l=1,r=w;\n\t\t\twhile (l<=r){\n\t\t\t\tint mid=(l+r)>>1;\n\t\t\t\tif (ss[mid]<-w) r=mid-1;\n\t\t\t\telse l=mid+1;\n\t\t\t}\n\t\t\tint x=r+1;\n//\t\t\tcerr<<\" Q \"<<w<<' '<<x<<endl;\n\t\t\tint ans=max(min(Query1(w+1,n)-w,Query2(x,w)+w),sss[x-1]+w); // Query2 a[i]-i\n\t\t\trans=min(rans,ans);\n\t\t}\n\t}\n\tprintf(\"%d\\n\",rans>1e7?-1:rans);\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [],
+    "dificulty": "2900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Icicles.json",
+    "editorial_link": "https://codeforces.com//blog/entry/58547",
+    "editorial": "Fix some point and launch the wave. Icicle at will reach the floor in\r\nseconds. Krakozyabra will definitely stop at minimum icicle such that\r\nand wait for something to the left of it to fall. Note that some icicle\r\nto the right of might also fall earlier than itself. So the answer for\r\nthis fixed is . This approach gives us a solution.How to speed this up?\r\nLet’s get rid of the absolute value. For absolute value is unfolded as\r\nand for as .Rewrite the inequality according to the observations above.\r\nIt’s easy to see that for it is equal to and for . Build some range\r\nmax/min structure and find assuming , and if unsuccessfully assuming\r\nwith respect to the given inequalities. The only thing left is to\r\ncarefully find minimums on suffix/prefix.: .\r\n"
+}

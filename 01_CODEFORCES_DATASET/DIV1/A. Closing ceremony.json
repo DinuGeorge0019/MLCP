@@ -1,1 +1,71 @@
-{"link": "https://codeforces.com//contest/720/problem/A", "problemId": "71820", "problem_idx": "A", "shortId": "720A", "contest_number": "720", "problem_submissions": {"B": [20732895, 20733800, 20733490, 20734883, 20733806, 20735016, 20734473, 20736053, 20735203, 20733945, 20734910, 20734765, 20735023, 20736385, 20736333, 20736307, 20746163], "A": [20732151, 20732346, 20732312, 20732893, 20731988, 20732883, 20733527, 20732353, 20739206, 20739180, 20736161, 20734380, 20733685, 20732779, 20733015, 20731953, 20732084, 20732115, 20732391, 20732589, 20732757, 20732925], "D": [20735659, 21258097]}, "name": "A. Closing ceremony", "statement": "The closing ceremony of Squanch Code Cup is held in the big hall with\r\nseats, arranged in rows, seats in a row. Each seat has two coordinates\r\n(, ). There are two queues of people waiting to enter the hall: people\r\nare standing at and people are standing at . Each person should have a\r\nticket for a specific seat. If person at has ticket for seat then he\r\nshould walk to get to his seat.Each person has a stamina the maximum\r\ndistance, that the person agrees to walk. You should find out if this is\r\npossible to distribute all tickets in such a way that each person has\r\nenough stamina to get to their seat.\r\n", "solutions": ["#include <bits/stdc++.h>\n#define SZ(X) ((int)(X).size())\n#define ALL(X) (X).begin(), (X).end()\n#define REP(I, N) for (int I = 0; I < (N); ++I)\n#define REPP(I, A, B) for (int I = (A); I < (B); ++I)\n#define RI(X) scanf(\"%d\", &(X))\n#define RII(X, Y) scanf(\"%d%d\", &(X), &(Y))\n#define RIII(X, Y, Z) scanf(\"%d%d%d\", &(X), &(Y), &(Z))\n#define DRI(X) int (X); scanf(\"%d\", &X)\n#define DRII(X, Y) int X, Y; scanf(\"%d%d\", &X, &Y)\n#define DRIII(X, Y, Z) int X, Y, Z; scanf(\"%d%d%d\", &X, &Y, &Z)\n#define RS(X) scanf(\"%s\", (X))\n#define CASET int ___T, case_n = 1; scanf(\"%d \", &___T); while (___T-- > 0)\n#define MP make_pair\n#define PB push_back\n#define MS0(X) memset((X), 0, sizeof((X)))\n#define MS1(X) memset((X), -1, sizeof((X)))\n#define LEN(X) strlen(X)\n#define PII pair<int,int>\n#define VI vector<int>\n#define VPII vector<pair<int,int> >\n#define PLL pair<long long,long long>\n#define VPLL vector<pair<long long,long long> >\n#define F first\n#define S second\ntypedef long long LL;\nusing namespace std;\nconst int MOD = 1e9+7;\nconst int SIZE = 1e4+10;\nint cnt[2][SIZE];\nbool used[SIZE];\nVI v[2][SIZE];\nint main(){\n    DRII(n,m);\n    int nm=n*m+1;\n    VI d[2];\n    DRI(K);\n    REP(i,K){\n        DRI(x);\n        cnt[0][x]++;\n    }\n    RI(K);\n    REP(i,K){\n        DRI(x);\n        cnt[1][x]++;\n    }\n    REPP(i,1,n+1)REPP(j,1,m+1){\n        v[0][i+j].PB((i-1)*m+(j-1));\n        v[1][i+m+1-j].PB((i-1)*m+(j-1));\n    }\n    int base=0,base2=0;\n    REP(i,nm){\n        base+=cnt[0][i];\n        REP(j,SZ(v[0][i])){\n            if(!used[v[0][i][j]]){\n                used[v[0][i][j]]=1;\n                base2++;\n            }\n        }\n        int now=base,now2=base2;\n        REP(j,nm){\n            now+=cnt[1][j];\n            REP(r,SZ(v[1][j])){\n                if(!used[v[1][j][r]])now2++;\n            }\n            if(now>now2){\n                return 0*puts(\"NO\");\n            }\n        }\n    }\n    puts(\"YES\");\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["greedy"], "dificulty": "2000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/720/problem/A",
+    "problemId": "71820",
+    "problem_idx": "A",
+    "shortId": "720A",
+    "contest_number": "720",
+    "problem_submissions": {
+        "B": [
+            20732895,
+            20733800,
+            20733490,
+            20734883,
+            20733806,
+            20735016,
+            20734473,
+            20736053,
+            20735203,
+            20733945,
+            20734910,
+            20734765,
+            20735023,
+            20736385,
+            20736333,
+            20736307,
+            20746163
+        ],
+        "A": [
+            20732151,
+            20732346,
+            20732312,
+            20732893,
+            20731988,
+            20732883,
+            20733527,
+            20732353,
+            20739206,
+            20739180,
+            20736161,
+            20734380,
+            20733685,
+            20732779,
+            20733015,
+            20731953,
+            20732084,
+            20732115,
+            20732391,
+            20732589,
+            20732757,
+            20732925
+        ],
+        "D": [
+            20735659,
+            21258097
+        ]
+    },
+    "name": "A. Closing ceremony",
+    "statement": "The closing ceremony of Squanch Code Cup is held in the big hall with\r\nseats, arranged in rows, seats in a row. Each seat has two coordinates\r\n(, ). There are two queues of people waiting to enter the hall: people\r\nare standing at and people are standing at . Each person should have a\r\nticket for a specific seat. If person at has ticket for seat then he\r\nshould walk to get to his seat.Each person has a stamina the maximum\r\ndistance, that the person agrees to walk. You should find out if this is\r\npossible to distribute all tickets in such a way that each person has\r\nenough stamina to get to their seat.\r\n",
+    "solutions": [
+        "#include <bits/stdc++.h>\n#define SZ(X) ((int)(X).size())\n#define ALL(X) (X).begin(), (X).end()\n#define REP(I, N) for (int I = 0; I < (N); ++I)\n#define REPP(I, A, B) for (int I = (A); I < (B); ++I)\n#define RI(X) scanf(\"%d\", &(X))\n#define RII(X, Y) scanf(\"%d%d\", &(X), &(Y))\n#define RIII(X, Y, Z) scanf(\"%d%d%d\", &(X), &(Y), &(Z))\n#define DRI(X) int (X); scanf(\"%d\", &X)\n#define DRII(X, Y) int X, Y; scanf(\"%d%d\", &X, &Y)\n#define DRIII(X, Y, Z) int X, Y, Z; scanf(\"%d%d%d\", &X, &Y, &Z)\n#define RS(X) scanf(\"%s\", (X))\n#define CASET int ___T, case_n = 1; scanf(\"%d \", &___T); while (___T-- > 0)\n#define MP make_pair\n#define PB push_back\n#define MS0(X) memset((X), 0, sizeof((X)))\n#define MS1(X) memset((X), -1, sizeof((X)))\n#define LEN(X) strlen(X)\n#define PII pair<int,int>\n#define VI vector<int>\n#define VPII vector<pair<int,int> >\n#define PLL pair<long long,long long>\n#define VPLL vector<pair<long long,long long> >\n#define F first\n#define S second\ntypedef long long LL;\nusing namespace std;\nconst int MOD = 1e9+7;\nconst int SIZE = 1e4+10;\nint cnt[2][SIZE];\nbool used[SIZE];\nVI v[2][SIZE];\nint main(){\n    DRII(n,m);\n    int nm=n*m+1;\n    VI d[2];\n    DRI(K);\n    REP(i,K){\n        DRI(x);\n        cnt[0][x]++;\n    }\n    RI(K);\n    REP(i,K){\n        DRI(x);\n        cnt[1][x]++;\n    }\n    REPP(i,1,n+1)REPP(j,1,m+1){\n        v[0][i+j].PB((i-1)*m+(j-1));\n        v[1][i+m+1-j].PB((i-1)*m+(j-1));\n    }\n    int base=0,base2=0;\n    REP(i,nm){\n        base+=cnt[0][i];\n        REP(j,SZ(v[0][i])){\n            if(!used[v[0][i][j]]){\n                used[v[0][i][j]]=1;\n                base2++;\n            }\n        }\n        int now=base,now2=base2;\n        REP(j,nm){\n            now+=cnt[1][j];\n            REP(r,SZ(v[1][j])){\n                if(!used[v[1][j][r]])now2++;\n            }\n            if(now>now2){\n                return 0*puts(\"NO\");\n            }\n        }\n    }\n    puts(\"YES\");\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "greedy"
+    ],
+    "dificulty": "2000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Closing ceremony.json",
+    "editorial_link": "https://codeforces.com//blog/entry/47183",
+    "editorial": "Probably the easiest way to solve the problem is greedy. Sort people from the first line by increasing of their stamina. Give them tickets in this order, each time using the place which is furthest away from the other line. After that try to assign people from the second line to the remaining seats by sorting people by stamina and seats by the distance.\n\nThe time complexity of your solution must not exceed O((nm)2), however using std::set one can get a solution with complexity of O(nm?log(nm))."
+}

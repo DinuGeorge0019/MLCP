@@ -1,1 +1,97 @@
-{"link": "https://codeforces.com//contest/303/problem/B", "problemId": "2984", "problem_idx": "B", "shortId": "303B", "contest_number": "303", "problem_submissions": {"D": [3709553, 3709363, 3711716, 3706959, 3711238, 3710228, 3710306, 3708941, 3711129, 3709516], "C": [3708423, 3712044, 3708743, 3711908, 3708382, 3713447, 3708443, 3708735, 3709727, 3721641, 3721639, 3708625, 9135696, 3709288, 3710050, 3710908, 3710008], "B": [3707219, 3707849, 3707392, 3708158, 3707654, 3707136, 3707080, 3707477, 3707196, 3707562, 3707548, 3709279, 3718742, 3707141, 3707469, 3706781, 3708750, 3708294], "A": [3706160, 3706280, 3706779, 3706051, 3706066, 3706259, 3706288, 3706277, 3707619, 3706249, 3706193, 3706655, 3706132, 3706057, 3706549, 3706144, 3707218, 3706263, 3706997]}, "name": "B. Rectangle Puzzle II", "statement": "You are given a rectangle grid. That grid\u2019s size is . Let\u2019s denote the\r\ncoordinate system on the grid. So, each point on the grid will have\r\ncoordinates a pair of integers .Your task is to find a maximum\r\nsub-rectangle on the grid so that it contains the given point , and its\r\nlength-width ratio is exactly . In other words the following conditions\r\nmust hold: , , .The sides of this sub-rectangle should be parallel to\r\nthe axes. And values should be integers. If there are multiple\r\nsolutions, find the rectangle which is closest to . Here \"closest\" means\r\nthe Euclid distance between and the center of the rectangle is as small\r\nas possible. If there are still multiple solutions, find the\r\nlexicographically minimum one. Here \"lexicographically minimum\" means\r\nthat we should consider the sub-rectangle as sequence of integers , so\r\nwe can choose the lexicographically minimum one.\r\n", "solutions": ["#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <queue>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstring>\n#include <cassert>\n\nusing namespace std;\n\ntypedef long long LL;\ntypedef pair<int, int> PII;\n#define MP make_pair\n#define FOR(v,p,k) for(int v=p;v<=k;++v)\n#define FORD(v,p,k) for(int v=p;v>=k;--v)\n#define REP(i,n) for(int i=0;i<(n);++i)\n#define VAR(v,i) __typeof(i) v=(i)\n#define FORE(i,c) for(__typeof(c.begin()) i=(c.begin());i!=(c).end();++i)\n#define PB push_back\n#define ST first\n#define ND second\n#define SZ(x) (int)(x).size()\n#define ALL(c) c.begin(),c.end()\n#define ZERO(x) memset(x,0,sizeof(x))\n\nint gcd(int a, int b) {\n    while (a && b) {\n        a > b ? a %= b : b %= a;\n    }\n    return a + b;\n}\n\nint n, m, x, y;\nint sx, sy;\n\nLL dist(int x1, int y1) {\n    LL dx = 2 * (LL) x1 + (LL) sx - 2 * (LL) x;\n    LL dy = 2 * (LL) y1 + (LL) sy - 2 * (LL) y;\n    return dx * dx + dy * dy;\n}\n\nbool check(int x1, int y1) {\n    return x1 <= x && x1 + sx >= x && y1 <= y && y1 + sy >= y && x1 + sx <= n && y1 + sy <= m && x1 >= 0 && y1 >= 0;\n}\n\nint main() {\n    ios_base::sync_with_stdio(false);\n    int a, b;\n    cin >> n >> m >> x >> y >> a >> b;\n    int g = gcd(a, b);\n    a /= g;\n    b /= g;\n    int coef = min(n / a, m / b);\n    sx = coef * a;\n    sy = coef * b;\n    pair<LL, PII> res = MP((LL) ((1ULL << 63) - 1), MP(0, 0));\n    vector<PII> options;\n    vector<int> xs;\n    xs.PB(0);\n    xs.PB(n - sx);\n    xs.PB(x - sx / 2);\n    xs.PB(x - sx / 2 - 1);\n    vector<int> ys;\n    ys.PB(0);\n    ys.PB(m - sy);\n    ys.PB(y - sy / 2);\n    ys.PB(y - sy / 2 - 1);\n    FORE (it, xs) {\n        FORE (jt, ys) {\n            if (check(*it, *jt)) {\n                res = min(res, MP(dist(*it, *jt), MP(*it, *jt)));\n            }\n        }\n    }\n    cout << res.ND.ST << \" \" << res.ND.ND << \" \" << res.ND.ST + sx << \" \" << res.ND.ND + sy << endl;\n}\n"], "input": "", "output": "", "tags": ["implementation", "math"], "dificulty": "1700", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/303/problem/B",
+    "problemId": "2984",
+    "problem_idx": "B",
+    "shortId": "303B",
+    "contest_number": "303",
+    "problem_submissions": {
+        "D": [
+            3709553,
+            3709363,
+            3711716,
+            3706959,
+            3711238,
+            3710228,
+            3710306,
+            3708941,
+            3711129,
+            3709516
+        ],
+        "C": [
+            3708423,
+            3712044,
+            3708743,
+            3711908,
+            3708382,
+            3713447,
+            3708443,
+            3708735,
+            3709727,
+            3721641,
+            3721639,
+            3708625,
+            9135696,
+            3709288,
+            3710050,
+            3710908,
+            3710008
+        ],
+        "B": [
+            3707219,
+            3707849,
+            3707392,
+            3708158,
+            3707654,
+            3707136,
+            3707080,
+            3707477,
+            3707196,
+            3707562,
+            3707548,
+            3709279,
+            3718742,
+            3707141,
+            3707469,
+            3706781,
+            3708750,
+            3708294
+        ],
+        "A": [
+            3706160,
+            3706280,
+            3706779,
+            3706051,
+            3706066,
+            3706259,
+            3706288,
+            3706277,
+            3707619,
+            3706249,
+            3706193,
+            3706655,
+            3706132,
+            3706057,
+            3706549,
+            3706144,
+            3707218,
+            3706263,
+            3706997
+        ]
+    },
+    "name": "B. Rectangle Puzzle II",
+    "statement": "You are given a rectangle grid. That grid\u2019s size is . Let\u2019s denote the\r\ncoordinate system on the grid. So, each point on the grid will have\r\ncoordinates a pair of integers .Your task is to find a maximum\r\nsub-rectangle on the grid so that it contains the given point , and its\r\nlength-width ratio is exactly . In other words the following conditions\r\nmust hold: , , .The sides of this sub-rectangle should be parallel to\r\nthe axes. And values should be integers. If there are multiple\r\nsolutions, find the rectangle which is closest to . Here \"closest\" means\r\nthe Euclid distance between and the center of the rectangle is as small\r\nas possible. If there are still multiple solutions, find the\r\nlexicographically minimum one. Here \"lexicographically minimum\" means\r\nthat we should consider the sub-rectangle as sequence of integers , so\r\nwe can choose the lexicographically minimum one.\r\n",
+    "solutions": [
+        "#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <queue>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstring>\n#include <cassert>\n\nusing namespace std;\n\ntypedef long long LL;\ntypedef pair<int, int> PII;\n#define MP make_pair\n#define FOR(v,p,k) for(int v=p;v<=k;++v)\n#define FORD(v,p,k) for(int v=p;v>=k;--v)\n#define REP(i,n) for(int i=0;i<(n);++i)\n#define VAR(v,i) __typeof(i) v=(i)\n#define FORE(i,c) for(__typeof(c.begin()) i=(c.begin());i!=(c).end();++i)\n#define PB push_back\n#define ST first\n#define ND second\n#define SZ(x) (int)(x).size()\n#define ALL(c) c.begin(),c.end()\n#define ZERO(x) memset(x,0,sizeof(x))\n\nint gcd(int a, int b) {\n    while (a && b) {\n        a > b ? a %= b : b %= a;\n    }\n    return a + b;\n}\n\nint n, m, x, y;\nint sx, sy;\n\nLL dist(int x1, int y1) {\n    LL dx = 2 * (LL) x1 + (LL) sx - 2 * (LL) x;\n    LL dy = 2 * (LL) y1 + (LL) sy - 2 * (LL) y;\n    return dx * dx + dy * dy;\n}\n\nbool check(int x1, int y1) {\n    return x1 <= x && x1 + sx >= x && y1 <= y && y1 + sy >= y && x1 + sx <= n && y1 + sy <= m && x1 >= 0 && y1 >= 0;\n}\n\nint main() {\n    ios_base::sync_with_stdio(false);\n    int a, b;\n    cin >> n >> m >> x >> y >> a >> b;\n    int g = gcd(a, b);\n    a /= g;\n    b /= g;\n    int coef = min(n / a, m / b);\n    sx = coef * a;\n    sy = coef * b;\n    pair<LL, PII> res = MP((LL) ((1ULL << 63) - 1), MP(0, 0));\n    vector<PII> options;\n    vector<int> xs;\n    xs.PB(0);\n    xs.PB(n - sx);\n    xs.PB(x - sx / 2);\n    xs.PB(x - sx / 2 - 1);\n    vector<int> ys;\n    ys.PB(0);\n    ys.PB(m - sy);\n    ys.PB(y - sy / 2);\n    ys.PB(y - sy / 2 - 1);\n    FORE (it, xs) {\n        FORE (jt, ys) {\n            if (check(*it, *jt)) {\n                res = min(res, MP(dist(*it, *jt), MP(*it, *jt)));\n            }\n        }\n    }\n    cout << res.ND.ST << \" \" << res.ND.ND << \" \" << res.ND.ST + sx << \" \" << res.ND.ND + sy << endl;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation",
+        "math"
+    ],
+    "dificulty": "1700",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Rectangle Puzzle II.json",
+    "editorial_link": "https://codeforces.com//blog/entry/7641",
+    "editorial": "Math, Geometry\n\nGive you n, m, x, y, a, b.\n\nFind a maximum sub-rectangle within (0, 0) \u0097 (n, m), so that it contains the given point(x, y) and its length-width radio is exactly (a, b). If there are multiple solutions, find the rectangle which is closest to (x, y). If there are still multiple solutions, find the lexicographically minimum one.\n\nSplit the problem into x-axis and y-axis. Then you can solve the sub tasks in O(1).\n\nd = gcd(a,b)\na /= d\nb /= d\nt = min(n/a, m/b)\na *= t\nb *= t\nBe careful, when the length is outside the original rectangle."
+}

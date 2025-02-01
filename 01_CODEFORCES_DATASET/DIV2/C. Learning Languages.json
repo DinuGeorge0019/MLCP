@@ -1,1 +1,83 @@
-{"link": "https://codeforces.com//contest/278/problem/C", "problemId": "2664", "problem_idx": "C", "shortId": "278C", "contest_number": "278", "problem_submissions": {"E": [3219867, 3221986], "D": [3213238, 3215279, 3216086, 3217208, 3217668], "C": [3211852, 3213120, 3213066, 3214325, 3215111, 3212693, 3210225, 3210914, 3210903, 3213534, 3212483, 3211475, 3213044, 3211593], "B": [3210694, 3210904, 3211477, 3211274, 3210417, 3210722, 3209006, 3209446, 3209860, 3210543, 3209941, 3210339, 3210819, 3210425], "A": [3208889, 3209118, 3208502, 3208248, 3208401, 3209996, 3208190, 3208215, 3208219, 3208450, 3208293, 3208373, 3208970, 3208304]}, "name": "C. Learning Languages", "statement": "The \"BerCorp\" company has got employees. These employees can use\r\napproved official languages for the formal correspondence. The languages\r\nare numbered with integers from to . For each employee we have the list\r\nof languages, which he knows. This list could be empty, i. e. an\r\nemployee may know no official languages. But the employees are willing\r\nto learn any number of official languages, as long as the company pays\r\ntheir lessons. A study course in one language for one employee costs\r\nberdollar.Find the minimum sum of money the company needs to spend so as\r\nany employee could correspond to any other one (their correspondence can\r\nbe indirect, i. e. other employees can help out translating).\r\n", "solutions": ["#include <vector>\n#include <string>\n#include <algorithm>\n#include <list>\n#include <set>\n#include <queue>\n#include <stack>\n#include <sstream>\n#include <numeric>\n#include <functional>\n#include <utility>\n#include <bitset>\n#include <iostream>\n#include <cmath>\n#include <map>\n#include <cstring>\n#include <cstdio>\n#include <stdint.h>\n#include <cstdarg>\n#include <cstdio>\n#include <cassert>\nusing namespace std;\n\nint n, m;\nbool a[200][200], s[200][200], flag[200], ff = 0;\n\nint main()\n{\n    memset(s, 0, sizeof(s));\n    memset(a, 0, sizeof(a));\n    memset(flag, 0, sizeof(flag));\n    scanf(\"%d %d\", & n, & m);\n    for (int i = 1; i <= n; ++ i)\n    {\n        int tt;\n        scanf(\"%d\", & tt);\n        if (tt)\n            ff = 1;\n        for (int j = 0; j < tt; ++ j)\n        {\n            int tmp;\n            scanf(\"%d\", & tmp);\n            a[i][tmp] = 1;\n        }\n    }\n    for (int k = 1; k <= m; ++ k)\n        for (int j = 1; j <= n; ++ j)\n            for (int i = 1; i <= n; ++ i)\n                if (a[i][k] && a[j][k])\n                    s[i][j] = 1;\n    for (int i = 1; i <= n; ++ i)\n        s[i][i] = 1;\n    for (int k = 1; k <= n; ++ k)\n        for (int j = 1; j <= n; ++ j)\n            for (int i = 1; i <= n; ++ i)\n                if (s[i][k] && s[k][j])\n                    s[i][j] = 1;\n    int tot = 0;\n    for (int i = 1; i <= n; ++ i)\n        if (! flag[i])\n        {\n            ++ tot;\n            for (int j = 1; j <= n; ++ j)\n                if (s[i][j])\n                    flag[j] = 1;\n        }\n    if (ff)\n        printf(\"%d\\n\", tot - 1);\n    else\n        printf(\"%d\\n\", n);\n}\n\n\n"], "input": "", "output": "", "tags": ["dsu"], "dificulty": "1400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/278/problem/C",
+    "problemId": "2664",
+    "problem_idx": "C",
+    "shortId": "278C",
+    "contest_number": "278",
+    "problem_submissions": {
+        "E": [
+            3219867,
+            3221986
+        ],
+        "D": [
+            3213238,
+            3215279,
+            3216086,
+            3217208,
+            3217668
+        ],
+        "C": [
+            3211852,
+            3213120,
+            3213066,
+            3214325,
+            3215111,
+            3212693,
+            3210225,
+            3210914,
+            3210903,
+            3213534,
+            3212483,
+            3211475,
+            3213044,
+            3211593
+        ],
+        "B": [
+            3210694,
+            3210904,
+            3211477,
+            3211274,
+            3210417,
+            3210722,
+            3209006,
+            3209446,
+            3209860,
+            3210543,
+            3209941,
+            3210339,
+            3210819,
+            3210425
+        ],
+        "A": [
+            3208889,
+            3209118,
+            3208502,
+            3208248,
+            3208401,
+            3209996,
+            3208190,
+            3208215,
+            3208219,
+            3208450,
+            3208293,
+            3208373,
+            3208970,
+            3208304
+        ]
+    },
+    "name": "C. Learning Languages",
+    "statement": "The \"BerCorp\" company has got employees. These employees can use\r\napproved official languages for the formal correspondence. The languages\r\nare numbered with integers from to . For each employee we have the list\r\nof languages, which he knows. This list could be empty, i. e. an\r\nemployee may know no official languages. But the employees are willing\r\nto learn any number of official languages, as long as the company pays\r\ntheir lessons. A study course in one language for one employee costs\r\nberdollar.Find the minimum sum of money the company needs to spend so as\r\nany employee could correspond to any other one (their correspondence can\r\nbe indirect, i. e. other employees can help out translating).\r\n",
+    "solutions": [
+        "#include <vector>\n#include <string>\n#include <algorithm>\n#include <list>\n#include <set>\n#include <queue>\n#include <stack>\n#include <sstream>\n#include <numeric>\n#include <functional>\n#include <utility>\n#include <bitset>\n#include <iostream>\n#include <cmath>\n#include <map>\n#include <cstring>\n#include <cstdio>\n#include <stdint.h>\n#include <cstdarg>\n#include <cstdio>\n#include <cassert>\nusing namespace std;\n\nint n, m;\nbool a[200][200], s[200][200], flag[200], ff = 0;\n\nint main()\n{\n    memset(s, 0, sizeof(s));\n    memset(a, 0, sizeof(a));\n    memset(flag, 0, sizeof(flag));\n    scanf(\"%d %d\", & n, & m);\n    for (int i = 1; i <= n; ++ i)\n    {\n        int tt;\n        scanf(\"%d\", & tt);\n        if (tt)\n            ff = 1;\n        for (int j = 0; j < tt; ++ j)\n        {\n            int tmp;\n            scanf(\"%d\", & tmp);\n            a[i][tmp] = 1;\n        }\n    }\n    for (int k = 1; k <= m; ++ k)\n        for (int j = 1; j <= n; ++ j)\n            for (int i = 1; i <= n; ++ i)\n                if (a[i][k] && a[j][k])\n                    s[i][j] = 1;\n    for (int i = 1; i <= n; ++ i)\n        s[i][i] = 1;\n    for (int k = 1; k <= n; ++ k)\n        for (int j = 1; j <= n; ++ j)\n            for (int i = 1; i <= n; ++ i)\n                if (s[i][k] && s[k][j])\n                    s[i][j] = 1;\n    int tot = 0;\n    for (int i = 1; i <= n; ++ i)\n        if (! flag[i])\n        {\n            ++ tot;\n            for (int j = 1; j <= n; ++ j)\n                if (s[i][j])\n                    flag[j] = 1;\n        }\n    if (ff)\n        printf(\"%d\\n\", tot - 1);\n    else\n        printf(\"%d\\n\", n);\n}\n\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dsu"
+    ],
+    "dificulty": "1400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Learning Languages.json",
+    "editorial_link": "https://codeforces.com//blog/entry/6815",
+    "editorial": "Build bipartite graph with n nodes for employees and m nodes for languages. If an employee initially knows a language, than there will be an edge between corresponding nodes. Now the problem is simple: add the minimal number of edges in such a way, that all the n employees will be in the same connected component. Obviously, this number equals to the number of initially connected components, containing at least one employee, minus one. But there is one exception (pretest #4): if initially everyone knows no languages, we'll have to add n edges, because we can't add the edges between employees (remember that the graph is bipartite)."
+}

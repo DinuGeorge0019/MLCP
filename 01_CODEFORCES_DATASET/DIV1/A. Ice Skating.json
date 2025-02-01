@@ -1,1 +1,90 @@
-{"link": "https://codeforces.com//contest/217/problem/A", "problemId": "1607", "problem_idx": "A", "shortId": "217A", "contest_number": "217", "problem_submissions": {"C": [2030323, 2028224, 2030324, 2028180, 2030572, 2027991, 2028080, 2028735, 2028870, 2028963, 6055918, 2033098, 2028984, 2030292, 2029555, 2029656, 2045302], "D": [2027935, 2028420, 2028882], "B": [2025442, 2028904, 2025653, 2028314, 2029281, 2032858, 2030094, 2032869, 2032838, 2027553, 2026258], "A": [2023511, 2023579, 2023545, 2023525, 2023509, 2024047, 2023513, 2023838, 2024026, 2023574, 2023601, 2023618, 2024082, 2023647, 2023532, 2023666, 2023680], "E": [2028007, 2029369, 2033123, 2070623, 2070617]}, "name": "A. Ice Skating", "statement": "Bajtek is learning to skate on ice. He\u2019s a beginner, so his only mode of\r\ntransportation is pushing off from a snow drift to the north, east,\r\nsouth or west and sliding until he lands in another snow drift. He has\r\nnoticed that in this way it\u2019s impossible to get from some snow drifts to\r\nsome other by any sequence of moves. He now wants to heap up some\r\nadditional snow drifts, so that he can get from any snow drift to any\r\nother one. He asked you to find the minimal number of snow drifts that\r\nneed to be created.We assume that Bajtek can only heap up snow drifts at\r\ninteger coordinates.\r\n", "solutions": ["#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <set>\n#include <map>\n#include <algorithm>\n#include <functional>\n#include <utility>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstdio>\n\nusing namespace std;\n\n#define REP(i,n) for((i)=0;(i)<(int)(n);(i)++)\n#define foreach(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n\nint x[110],y[110];\nbool graph[110][110];\n\nint main(void){\n    int N,i,j,k;\n    \n    cin >> N;\n    REP(i,N) cin >> x[i] >> y[i];\n    \n    REP(i,N) graph[i][i] = true;\n    REP(i,N) REP(j,N) if(x[i] == x[j] || y[i] == y[j]) graph[i][j] = graph[j][i] = true;\n    REP(k,N) REP(i,N) REP(j,N) if(graph[i][k] && graph[k][j]) graph[i][j] = true;\n    \n    int comp = 0;\n    REP(i,N){\n        bool root = true;\n        REP(j,i) if(graph[i][j]) root = false;\n        if(root) comp++;\n    }\n    \n    cout << comp - 1 << endl;\n    \n    return 0;\n}\n"], "input": "", "output": "", "tags": ["brute force", "dfs and similar", "dsu", "graphs"], "dificulty": "1200", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/217/problem/A",
+    "problemId": "1607",
+    "problem_idx": "A",
+    "shortId": "217A",
+    "contest_number": "217",
+    "problem_submissions": {
+        "C": [
+            2030323,
+            2028224,
+            2030324,
+            2028180,
+            2030572,
+            2027991,
+            2028080,
+            2028735,
+            2028870,
+            2028963,
+            6055918,
+            2033098,
+            2028984,
+            2030292,
+            2029555,
+            2029656,
+            2045302
+        ],
+        "D": [
+            2027935,
+            2028420,
+            2028882
+        ],
+        "B": [
+            2025442,
+            2028904,
+            2025653,
+            2028314,
+            2029281,
+            2032858,
+            2030094,
+            2032869,
+            2032838,
+            2027553,
+            2026258
+        ],
+        "A": [
+            2023511,
+            2023579,
+            2023545,
+            2023525,
+            2023509,
+            2024047,
+            2023513,
+            2023838,
+            2024026,
+            2023574,
+            2023601,
+            2023618,
+            2024082,
+            2023647,
+            2023532,
+            2023666,
+            2023680
+        ],
+        "E": [
+            2028007,
+            2029369,
+            2033123,
+            2070623,
+            2070617
+        ]
+    },
+    "name": "A. Ice Skating",
+    "statement": "Bajtek is learning to skate on ice. He\u2019s a beginner, so his only mode of\r\ntransportation is pushing off from a snow drift to the north, east,\r\nsouth or west and sliding until he lands in another snow drift. He has\r\nnoticed that in this way it\u2019s impossible to get from some snow drifts to\r\nsome other by any sequence of moves. He now wants to heap up some\r\nadditional snow drifts, so that he can get from any snow drift to any\r\nother one. He asked you to find the minimal number of snow drifts that\r\nneed to be created.We assume that Bajtek can only heap up snow drifts at\r\ninteger coordinates.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <set>\n#include <map>\n#include <algorithm>\n#include <functional>\n#include <utility>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstdio>\n\nusing namespace std;\n\n#define REP(i,n) for((i)=0;(i)<(int)(n);(i)++)\n#define foreach(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n\nint x[110],y[110];\nbool graph[110][110];\n\nint main(void){\n    int N,i,j,k;\n    \n    cin >> N;\n    REP(i,N) cin >> x[i] >> y[i];\n    \n    REP(i,N) graph[i][i] = true;\n    REP(i,N) REP(j,N) if(x[i] == x[j] || y[i] == y[j]) graph[i][j] = graph[j][i] = true;\n    REP(k,N) REP(i,N) REP(j,N) if(graph[i][k] && graph[k][j]) graph[i][j] = true;\n    \n    int comp = 0;\n    REP(i,N){\n        bool root = true;\n        REP(j,i) if(graph[i][j]) root = false;\n        if(root) comp++;\n    }\n    \n    cout << comp - 1 << endl;\n    \n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "dfs and similar",
+        "dsu",
+        "graphs"
+    ],
+    "dificulty": "1200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Ice Skating.json",
+    "editorial_link": "https://codeforces.com//blog/entry/5285",
+    "editorial": "Notice that the existence of a snow drift at the point (x,?y) implies that \"if I'm on the horizontal line at y then I am certainly able to get to the vertical line at x, and vice versa\". Thus, the snow drifts are the edges of a bipartite graph between x- and y- coordinates. The number of snow drifts that need to be added to make this (as well as the original) graph connected is the number of its connected components reduced by one."
+}

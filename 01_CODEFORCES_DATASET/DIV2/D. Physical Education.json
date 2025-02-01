@@ -1,1 +1,89 @@
-{"link": "https://codeforces.com//contest/53/problem/D", "problemId": "280", "problem_idx": "D", "shortId": "53D", "contest_number": "53", "problem_submissions": {"D": [239021, 239193, 238722, 239346, 239182, 239848, 239737, 238790, 238737, 238732, 238838, 238854, 238943, 239423], "C": [238660, 238284, 238456, 239097, 238366, 238317, 238648, 238222, 238274, 238168, 238487, 238198, 238286, 238820], "B": [238516, 238801, 239508, 238926, 239954, 239467, 238856, 240487, 241511, 239803], "A": [237956, 237921, 237848, 238380, 239531, 242667, 237923, 237920, 237851, 237863, 237845, 237871, 237932, 237861, 237905], "E": [267303, 243881]}, "name": "D. Physical Education", "statement": "Vasya is a school PE teacher. Unlike other PE teachers, Vasya doesn\u2019t\r\nlike it when the students stand in line according to their height.\r\nInstead, he demands that the children stand in the following order: ,\r\nwhere is the height of the -th student in the line and is the number of\r\nstudents in the line. The children find it hard to keep in mind this\r\nstrange arrangement, and today they formed the line in the following\r\norder: , which upset Vasya immensely. Now Vasya wants to rearrange the\r\nchildren so that the resulting order is like this: . During each move\r\nVasya can swap two people who stand next to each other in the line. Help\r\nVasya, find the sequence of swaps leading to the arrangement Vasya\r\nneeds. It is not required to minimize the number of moves.\r\n", "solutions": ["#pragma comment(linker,\"/stack:67108864\")\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <sstream>\n#include <fstream>\n#include <climits>\n#include <cfloat>\n#include <functional>\n#include <ctime>\n#include <numeric>\n#include <cstdlib>\n#include <cctype>\n#include <cmath>\n#include <algorithm>\n#include <cstring>\n#include <utility>\n#include <bitset>\n#include <string>\n#include <list>\n#include <stack>\n#include <vector>\n#include <queue>\n#include <deque>\n#include <map>\n#include <set>\n#include <typeinfo>\n#include <cassert>\n#include <ctime>\n\nusing namespace std;\n\n#define forn(i,n) for(int i=0;i<int(n);++i)\n#define forn1(i,n) for(int i=1;i<=int(n);++i)\n#define ford(i,n) for(int i=int(n)-1;i>=0;--i)\n#define ford1(i,n) for(int i=int(n);i>0;--i)\n#define foran(i,l,r) for(int i=int(l);i<int(r);++i)\n#define forand(i,r,l) for(int i=int(r);i>int(l);--i)\n\n#define X first\n#define Y second\n#define mp make_pair\n#define pb push_back\n#define sqr(x) (x)*(x)\n#define all(v) (v).begin(),(v).end()\n\ntypedef long double ld;\ntypedef long long ll;\ntypedef pair <ld ,ld > pt;\n\nconst ld EPS=1e-9;\nconst ld PI=3.1415926535897932384626433832795;\n\nconst int INF=1000*1000*1000;\nconst int CF=1;\n\nint main()\n{\n    if(!CF) freopen(\"input.txt\",\"r\",stdin);\n    //freopen(\"output.txt\",\"w\",stdout);\n    int n;\n    cin >>n;\n    vector <ll> a(n);\n    vector <ll> b(n);\n    forn(i,n) cin >>a[i];\n    forn(i,n) cin >>b[i];\n    vector <pair<int,int> > ans;\n    forn(i,n)\n    {\n        int j=i;\n        while(a[i]!=b[j])\n        {\n            j++;\n        }\n        forand(k,j,i)\n        {\n            ans.push_back(mp(k,k+1));\n            swap(b[k],b[k-1]);\n        }\n    }\n    cout <<ans.size()<<endl;\n    forn(i,ans.size())\n    {\n        cout <<ans[i].first <<\" \"<<ans[i].second<<endl;\n    }\n    return 0;\n}"], "input": "", "output": "", "tags": ["sortings"], "dificulty": "1500", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/53/problem/D",
+    "problemId": "280",
+    "problem_idx": "D",
+    "shortId": "53D",
+    "contest_number": "53",
+    "problem_submissions": {
+        "D": [
+            239021,
+            239193,
+            238722,
+            239346,
+            239182,
+            239848,
+            239737,
+            238790,
+            238737,
+            238732,
+            238838,
+            238854,
+            238943,
+            239423
+        ],
+        "C": [
+            238660,
+            238284,
+            238456,
+            239097,
+            238366,
+            238317,
+            238648,
+            238222,
+            238274,
+            238168,
+            238487,
+            238198,
+            238286,
+            238820
+        ],
+        "B": [
+            238516,
+            238801,
+            239508,
+            238926,
+            239954,
+            239467,
+            238856,
+            240487,
+            241511,
+            239803
+        ],
+        "A": [
+            237956,
+            237921,
+            237848,
+            238380,
+            239531,
+            242667,
+            237923,
+            237920,
+            237851,
+            237863,
+            237845,
+            237871,
+            237932,
+            237861,
+            237905
+        ],
+        "E": [
+            267303,
+            243881
+        ]
+    },
+    "name": "D. Physical Education",
+    "statement": "Vasya is a school PE teacher. Unlike other PE teachers, Vasya doesn\u2019t\r\nlike it when the students stand in line according to their height.\r\nInstead, he demands that the children stand in the following order: ,\r\nwhere is the height of the -th student in the line and is the number of\r\nstudents in the line. The children find it hard to keep in mind this\r\nstrange arrangement, and today they formed the line in the following\r\norder: , which upset Vasya immensely. Now Vasya wants to rearrange the\r\nchildren so that the resulting order is like this: . During each move\r\nVasya can swap two people who stand next to each other in the line. Help\r\nVasya, find the sequence of swaps leading to the arrangement Vasya\r\nneeds. It is not required to minimize the number of moves.\r\n",
+    "solutions": [
+        "#pragma comment(linker,\"/stack:67108864\")\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <sstream>\n#include <fstream>\n#include <climits>\n#include <cfloat>\n#include <functional>\n#include <ctime>\n#include <numeric>\n#include <cstdlib>\n#include <cctype>\n#include <cmath>\n#include <algorithm>\n#include <cstring>\n#include <utility>\n#include <bitset>\n#include <string>\n#include <list>\n#include <stack>\n#include <vector>\n#include <queue>\n#include <deque>\n#include <map>\n#include <set>\n#include <typeinfo>\n#include <cassert>\n#include <ctime>\n\nusing namespace std;\n\n#define forn(i,n) for(int i=0;i<int(n);++i)\n#define forn1(i,n) for(int i=1;i<=int(n);++i)\n#define ford(i,n) for(int i=int(n)-1;i>=0;--i)\n#define ford1(i,n) for(int i=int(n);i>0;--i)\n#define foran(i,l,r) for(int i=int(l);i<int(r);++i)\n#define forand(i,r,l) for(int i=int(r);i>int(l);--i)\n\n#define X first\n#define Y second\n#define mp make_pair\n#define pb push_back\n#define sqr(x) (x)*(x)\n#define all(v) (v).begin(),(v).end()\n\ntypedef long double ld;\ntypedef long long ll;\ntypedef pair <ld ,ld > pt;\n\nconst ld EPS=1e-9;\nconst ld PI=3.1415926535897932384626433832795;\n\nconst int INF=1000*1000*1000;\nconst int CF=1;\n\nint main()\n{\n    if(!CF) freopen(\"input.txt\",\"r\",stdin);\n    //freopen(\"output.txt\",\"w\",stdout);\n    int n;\n    cin >>n;\n    vector <ll> a(n);\n    vector <ll> b(n);\n    forn(i,n) cin >>a[i];\n    forn(i,n) cin >>b[i];\n    vector <pair<int,int> > ans;\n    forn(i,n)\n    {\n        int j=i;\n        while(a[i]!=b[j])\n        {\n            j++;\n        }\n        forand(k,j,i)\n        {\n            ans.push_back(mp(k,k+1));\n            swap(b[k],b[k-1]);\n        }\n    }\n    cout <<ans.size()<<endl;\n    forn(i,ans.size())\n    {\n        cout <<ans[i].first <<\" \"<<ans[i].second<<endl;\n    }\n    return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "sortings"
+    ],
+    "dificulty": "1500",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Physical Education.json",
+    "editorial_link": "https://codeforces.com//blog/entry/1065",
+    "editorial": "This problem is also very easy. The first thing we should learn is moving element from position x to position y (y < x). Let's move x to position x - 1 with one oblivious swap. Then to position x -2. And so on.\nNow we want to make a1=b1. Find in b element, that equals a1 and move it to the first position. Similarly we can make a2=b2. So, we have n steps and at every step we do n - 1 swaps at the most. n<=300, so n(n-1)<=89700<106."
+}

@@ -1,1 +1,93 @@
-{"link": "https://codeforces.com//contest/361/problem/C", "problemId": "3925", "problem_idx": "C", "shortId": "361C", "contest_number": "361", "problem_submissions": {"D": [5049570, 5052330], "C": [5047571, 5053670, 5050883, 5048019, 5047769, 5048027, 5047841, 5047707, 5048418, 5047887, 5048463, 5048606, 5049754, 5049540, 5048783, 5048302, 5049619, 5048422], "B": [5044449, 5044711, 5051123, 5045001, 5045542, 5045424, 5045674, 5046005, 5045458, 5045942, 5045765, 5046310, 5045032, 5045644, 5045632, 5045669, 5046351, 5045701], "A": [5043955, 5044015, 5044078, 5044002, 5044057, 5044305, 5043924, 5044167, 5044499, 5044289, 5044756, 5044266, 5043952, 5044618, 5043976, 5044519, 5044413, 5043956], "E": [5051035]}, "name": "C. Levko and Array Recovery", "statement": "Levko loves array , consisting of integers, very much. That is why Levko\r\nis playing with array , performing all sorts of operations with it. Each\r\noperation Levko performs is of one of two types: Increase all elements\r\nfrom to by . In other words, perform assignments for all that meet the\r\ninequation . Find the maximum of elements from to . That is, calculate\r\nthe value . Sadly, Levko has recently lost his array. Fortunately, Levko\r\nhas records of all operations he has performed on array . Help Levko,\r\ngiven the operation records, find at least one suitable array. The\r\nresults of all operations for the given array must coincide with the\r\nrecord results. Levko clearly remembers that all numbers in his array\r\ndidn\u2019t exceed in their absolute value, so he asks you to find such an\r\narray.\r\n", "solutions": ["#include <iostream>\n#include <algorithm>\n#include <vector>\n#include <cmath>\n#include <memory.h>\n#include <time.h>\n#include <set>\n#include <map>\n#include <deque>\n#include <queue>\n#include <cstdlib>\n#include <cstdio>\n#include <string>\n#include <fstream>\n\nusing namespace std;\n\nlong long flag[222222],l[222222],r[222222],answer[222222],ans2[222222],ans[222222];\n\nint main(){\n    //freopen(\"input.txt\",\"r\",stdin);\n    //freopen(\"output.txt\",\"w\",stdout);\n    ios_base::sync_with_stdio(0);\n    int n,m;\n    cin >> n >> m;\n   for (int i = 1; i<=m; i++)\n     cin >> flag[i] >> l[i] >> r[i] >> answer[i];\n    for (int i = 1; i<=n; i++) ans[i]=round(1e18);\n    for (int i = m; i>=1; i--)\n        {\n            if (flag[i]==1)\n                {\n                    for (long long j = l[i]; j<=r[i]; j++)\n                       ans[j]=ans[j]-answer[i];\n\n                } else\n                {\n                    for (long long j = l[i]; j<=r[i]; j++)\n                       if (ans[j]>answer[i]) ans[j]=answer[i];\n                }\n           // for (int i = 1; i<=n; i++) cout << ans[i] << \" \"; cout << endl;\n        }\n    for (int i = 1; i<=n; i++) if (ans[i]>1000000000)\n     ans[i]=1000000000;\n    for (int i = 1; i<=n; i++) ans2[i]=ans[i];\n    for (int i = 1; i<=m; i++)\n        {\n            if (flag[i]==1)\n                {\n                    for (long long j = l[i]; j<=r[i]; j++)\n                     ans2[j]=ans2[j]+answer[i];\n                } else\n                {\n                    long long max = - round(1e18);\n                    for (long long j = l[i]; j<=r[i]; j++)\n                     if (ans2[j]>max) max = ans2[j];\n                    if (answer[i]!=max)\n                        {\n                            cout << \"NO\" << endl;\n                            return 0;\n                        }\n                }\n        }\n        cout << \"YES\" << endl;\n        for (int i = 1; i<=n; i++) cout << ans[i] << \" \";\n        cout << endl;\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["brute force", "constructive algorithms", "greedy"], "dificulty": "1700", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/361/problem/C",
+    "problemId": "3925",
+    "problem_idx": "C",
+    "shortId": "361C",
+    "contest_number": "361",
+    "problem_submissions": {
+        "D": [
+            5049570,
+            5052330
+        ],
+        "C": [
+            5047571,
+            5053670,
+            5050883,
+            5048019,
+            5047769,
+            5048027,
+            5047841,
+            5047707,
+            5048418,
+            5047887,
+            5048463,
+            5048606,
+            5049754,
+            5049540,
+            5048783,
+            5048302,
+            5049619,
+            5048422
+        ],
+        "B": [
+            5044449,
+            5044711,
+            5051123,
+            5045001,
+            5045542,
+            5045424,
+            5045674,
+            5046005,
+            5045458,
+            5045942,
+            5045765,
+            5046310,
+            5045032,
+            5045644,
+            5045632,
+            5045669,
+            5046351,
+            5045701
+        ],
+        "A": [
+            5043955,
+            5044015,
+            5044078,
+            5044002,
+            5044057,
+            5044305,
+            5043924,
+            5044167,
+            5044499,
+            5044289,
+            5044756,
+            5044266,
+            5043952,
+            5044618,
+            5043976,
+            5044519,
+            5044413,
+            5043956
+        ],
+        "E": [
+            5051035
+        ]
+    },
+    "name": "C. Levko and Array Recovery",
+    "statement": "Levko loves array , consisting of integers, very much. That is why Levko\r\nis playing with array , performing all sorts of operations with it. Each\r\noperation Levko performs is of one of two types: Increase all elements\r\nfrom to by . In other words, perform assignments for all that meet the\r\ninequation . Find the maximum of elements from to . That is, calculate\r\nthe value . Sadly, Levko has recently lost his array. Fortunately, Levko\r\nhas records of all operations he has performed on array . Help Levko,\r\ngiven the operation records, find at least one suitable array. The\r\nresults of all operations for the given array must coincide with the\r\nrecord results. Levko clearly remembers that all numbers in his array\r\ndidn\u2019t exceed in their absolute value, so he asks you to find such an\r\narray.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <algorithm>\n#include <vector>\n#include <cmath>\n#include <memory.h>\n#include <time.h>\n#include <set>\n#include <map>\n#include <deque>\n#include <queue>\n#include <cstdlib>\n#include <cstdio>\n#include <string>\n#include <fstream>\n\nusing namespace std;\n\nlong long flag[222222],l[222222],r[222222],answer[222222],ans2[222222],ans[222222];\n\nint main(){\n    //freopen(\"input.txt\",\"r\",stdin);\n    //freopen(\"output.txt\",\"w\",stdout);\n    ios_base::sync_with_stdio(0);\n    int n,m;\n    cin >> n >> m;\n   for (int i = 1; i<=m; i++)\n     cin >> flag[i] >> l[i] >> r[i] >> answer[i];\n    for (int i = 1; i<=n; i++) ans[i]=round(1e18);\n    for (int i = m; i>=1; i--)\n        {\n            if (flag[i]==1)\n                {\n                    for (long long j = l[i]; j<=r[i]; j++)\n                       ans[j]=ans[j]-answer[i];\n\n                } else\n                {\n                    for (long long j = l[i]; j<=r[i]; j++)\n                       if (ans[j]>answer[i]) ans[j]=answer[i];\n                }\n           // for (int i = 1; i<=n; i++) cout << ans[i] << \" \"; cout << endl;\n        }\n    for (int i = 1; i<=n; i++) if (ans[i]>1000000000)\n     ans[i]=1000000000;\n    for (int i = 1; i<=n; i++) ans2[i]=ans[i];\n    for (int i = 1; i<=m; i++)\n        {\n            if (flag[i]==1)\n                {\n                    for (long long j = l[i]; j<=r[i]; j++)\n                     ans2[j]=ans2[j]+answer[i];\n                } else\n                {\n                    long long max = - round(1e18);\n                    for (long long j = l[i]; j<=r[i]; j++)\n                     if (ans2[j]>max) max = ans2[j];\n                    if (answer[i]!=max)\n                        {\n                            cout << \"NO\" << endl;\n                            return 0;\n                        }\n                }\n        }\n        cout << \"YES\" << endl;\n        for (int i = 1; i<=n; i++) cout << ans[i] << \" \";\n        cout << endl;\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "constructive algorithms",
+        "greedy"
+    ],
+    "dificulty": "1700",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Levko and Array Recovery.json",
+    "editorial_link": "https://codeforces.com//blog/entry/9529",
+    "editorial": "Let's find such value b[i] that a[i]???b[i] for all indeces i. Let's simulate all operations and diff[i] will be the difference between current value of i-th element and its initial value. If we have operation of first type, we change values of diff[i]. If we have operation of second type, we know that a[i]?+?diff[i]???m[i], so a[i]???m[i]?-?diff[i]. We will get array b when we union all this inequalities.\n\nLet's prove that either b satisfied all conditions or there is no such array. It can be two cases, why b does not suit:\n\n \u0097 it's impossible due to construction of array b.\n\n \u0097 b[i] is a maximal possible value of a[i], so  can't be bigger."
+}

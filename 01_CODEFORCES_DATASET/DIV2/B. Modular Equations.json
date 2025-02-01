@@ -1,1 +1,87 @@
-{"link": "https://codeforces.com//contest/495/problem/B", "problemId": "19370", "problem_idx": "B", "shortId": "495B", "contest_number": "495", "problem_submissions": {"D": [9112852, 9115986, 9117140, 9117503, 9123190, 9119753], "C": [9107534, 9109560, 9109503, 9108459, 9106667, 9110323, 9118258, 9115754, 9108222, 9112671, 9111689, 9109335, 9111765, 9108306, 9110442, 9106049], "B": [9104748, 9107046, 9106767, 9105605, 9110931, 9106856, 9105868, 9113914, 9105045, 9109777, 9108695, 9106960, 9107128, 9106063, 9106299, 9107851], "A": [9104037, 9104189, 9104218, 9111853, 9108412, 9113154, 9103998, 9107038, 9103963, 9104475, 9104127, 9105245, 9105093, 9104487, 9104429, 9110186]}, "name": "B. Modular Equations", "statement": "Last week, Hamed learned about a new type of equations in his math class\r\ncalled Modular Equations. Lets define modulo as the remainder of\r\ndivision of by and denote it by . A Modular Equation, as Hamed\u2019s teacher\r\ndescribed, is an equation of the form in which and are two non-negative\r\nintegers and is a variable. We call a positive integer for which a of\r\nour equation.Hamed didn\u2019t pay much attention to the class since he was\r\nwatching a movie. He only managed to understand the definitions of these\r\nequations.Now he wants to write his math exercises but since he has no\r\nidea how to do that, he asked you for help. He has told you all he knows\r\nabout Modular Equations and asked you to write a program which given two\r\nnumbers and determines how many answers the Modular Equation has.\r\n", "solutions": ["#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <string>\nint a,b,ans=0;\nint main()\n{\n    scanf(\"%d%d\",&a,&b);\n    if(a==b)\n    {\n        printf(\"infinity\\n\");\n        return 0;\n    }\n    a-=b;\n    //The answer is bigger than b\n    for(int i=1;i*i<=a;i++) if(!(a%i))\n    {\n        if(i*i==a) ans+=(i>b);\n        else ans+=(i>b)+(a/i>b);\n    }\n    printf(\"%d\\n\",ans);\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["math", "number theory"], "dificulty": "1600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/495/problem/B",
+    "problemId": "19370",
+    "problem_idx": "B",
+    "shortId": "495B",
+    "contest_number": "495",
+    "problem_submissions": {
+        "D": [
+            9112852,
+            9115986,
+            9117140,
+            9117503,
+            9123190,
+            9119753
+        ],
+        "C": [
+            9107534,
+            9109560,
+            9109503,
+            9108459,
+            9106667,
+            9110323,
+            9118258,
+            9115754,
+            9108222,
+            9112671,
+            9111689,
+            9109335,
+            9111765,
+            9108306,
+            9110442,
+            9106049
+        ],
+        "B": [
+            9104748,
+            9107046,
+            9106767,
+            9105605,
+            9110931,
+            9106856,
+            9105868,
+            9113914,
+            9105045,
+            9109777,
+            9108695,
+            9106960,
+            9107128,
+            9106063,
+            9106299,
+            9107851
+        ],
+        "A": [
+            9104037,
+            9104189,
+            9104218,
+            9111853,
+            9108412,
+            9113154,
+            9103998,
+            9107038,
+            9103963,
+            9104475,
+            9104127,
+            9105245,
+            9105093,
+            9104487,
+            9104429,
+            9110186
+        ]
+    },
+    "name": "B. Modular Equations",
+    "statement": "Last week, Hamed learned about a new type of equations in his math class\r\ncalled Modular Equations. Lets define modulo as the remainder of\r\ndivision of by and denote it by . A Modular Equation, as Hamed\u2019s teacher\r\ndescribed, is an equation of the form in which and are two non-negative\r\nintegers and is a variable. We call a positive integer for which a of\r\nour equation.Hamed didn\u2019t pay much attention to the class since he was\r\nwatching a movie. He only managed to understand the definitions of these\r\nequations.Now he wants to write his math exercises but since he has no\r\nidea how to do that, he asked you for help. He has told you all he knows\r\nabout Modular Equations and asked you to write a program which given two\r\nnumbers and determines how many answers the Modular Equation has.\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <string>\nint a,b,ans=0;\nint main()\n{\n    scanf(\"%d%d\",&a,&b);\n    if(a==b)\n    {\n        printf(\"infinity\\n\");\n        return 0;\n    }\n    a-=b;\n    //The answer is bigger than b\n    for(int i=1;i*i<=a;i++) if(!(a%i))\n    {\n        if(i*i==a) ans+=(i>b);\n        else ans+=(i>b)+(a/i>b);\n    }\n    printf(\"%d\\n\",ans);\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "math",
+        "number theory"
+    ],
+    "dificulty": "1600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Modular Equations.json",
+    "editorial_link": "https://codeforces.com//blog/entry/15148",
+    "editorial": "If a?<?b then there is no answer since .\nIf a?=?b then x can be any integer larger than a. so there are infinite number of answers to the equation.\nThe only remaining case is when a?>?b. Suppose x is an answer to our equation. Then x|a?-?b. Also since  then b?<?x. These conditions are necessary and sufficient as well. So the answer is number of divisors of a?-?b which are strictly greater than b which can be solved in ."
+}

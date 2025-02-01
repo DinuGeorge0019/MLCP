@@ -1,1 +1,96 @@
-{"link": "https://codeforces.com//contest/464/problem/C", "problemId": "13526", "problem_idx": "C", "shortId": "464C", "contest_number": "464", "problem_submissions": {"D": [7709708, 7703672, 7707768, 7709029, 7710992, 7714718, 7711118, 7710774, 7711609, 7712288, 7712591, 7712787, 7710684, 7706753], "B": [7707364, 7708530, 7705479, 7704768, 7708864, 7707171, 7708559, 7708825, 7709917, 7707346, 7709741, 7707538, 8183505, 7706050, 7707819, 7709775], "C": [7704070, 7705447, 7708594, 7706019, 7703932, 7708284, 7708480, 7706511, 7704666, 7709574, 7707010, 7705245, 7706182, 7708374, 7703721, 7711028, 7703271], "A": [7701335, 7709425, 7702860, 7710099, 7708555, 7702605, 7703010, 7704248, 7702307, 7705030, 7704432, 7701212, 7711093, 7707511, 7702270, 7703295, 7705744]}, "name": "C. Substitutes in Number", "statement": "Andrew and Eugene are playing a game. Initially, Andrew has string ,\r\nconsisting of digits. Eugene sends Andrew multiple queries of type \"\",\r\nthat means \"replace all digits in string with substrings equal to \". For\r\nexample, if , then query \"\" transforms to , and query \"\" (\"replace 3 by\r\nan empty string\") transforms it to . After all the queries Eugene asks\r\nAndrew to find the remainder after division of number with decimal\r\nrepresentation equal to by . When you represent as a decimal number,\r\nplease ignore the leading zeroes; also if is an empty string, then it\u2019s\r\nassumed that the number equals to zero.Andrew got tired of processing\r\nEugene\u2019s requests manually and he asked you to write a program for that.\r\nHelp him!\r\n", "solutions": ["#include <cstring>\n#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <memory.h>\n#include <cassert>\n\nusing namespace std;\n\nconst int md = 1000000007;\n\ninline void add(int &a, int b) {\n  a += b;\n  if (a >= md) {\n    a -= md;\n  }\n}\n\ninline int mul(int a, int b) {\n  return (long long)a * b % md;\n}\n\nconst int N = 400010;\n\nchar s[N];\n\nchar foo[N];\n\nchar dig[N];\nvector <char> to[N];\n\nint pw[N], val[N];\n\nint main() {\n  scanf(\"%s\", s);\n  int n = strlen(s);\n  int m;\n  scanf(\"%d\", &m);\n  for (int i = 0; i < m; i++) {\n    scanf(\"%s\", foo);\n    dig[i] = foo[0];\n    to[i].clear();\n    for (int j = 3; foo[j]; j++) {\n      to[i].push_back(foo[j]);\n    }\n  }\n  for (int d = 0; d < 10; d++) {\n    pw[d] = 10;\n    val[d] = d;\n  }\n  for (int i = m - 1; i >= 0; i--) {\n    int d = dig[i] - '0';\n    int n_pw = 1;\n    int n_val = 0;\n    int sz = to[i].size();\n    for (int j = 0; j < sz; j++) {\n      int t = to[i][j] - '0';\n      n_val = mul(n_val, pw[t]);\n      add(n_val, val[t]);\n      n_pw = mul(n_pw, pw[t]);\n    }\n    pw[d] = n_pw;\n    val[d] = n_val;\n  }\n  int res = 0;\n  for (int i = 0; i < n; i++) {\n    int t = s[i] - '0';\n    res = mul(res, pw[t]);\n    add(res, val[t]);\n  }\n  printf(\"%d\\n\", res);\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["dp"], "dificulty": "2100", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/464/problem/C",
+    "problemId": "13526",
+    "problem_idx": "C",
+    "shortId": "464C",
+    "contest_number": "464",
+    "problem_submissions": {
+        "D": [
+            7709708,
+            7703672,
+            7707768,
+            7709029,
+            7710992,
+            7714718,
+            7711118,
+            7710774,
+            7711609,
+            7712288,
+            7712591,
+            7712787,
+            7710684,
+            7706753
+        ],
+        "B": [
+            7707364,
+            7708530,
+            7705479,
+            7704768,
+            7708864,
+            7707171,
+            7708559,
+            7708825,
+            7709917,
+            7707346,
+            7709741,
+            7707538,
+            8183505,
+            7706050,
+            7707819,
+            7709775
+        ],
+        "C": [
+            7704070,
+            7705447,
+            7708594,
+            7706019,
+            7703932,
+            7708284,
+            7708480,
+            7706511,
+            7704666,
+            7709574,
+            7707010,
+            7705245,
+            7706182,
+            7708374,
+            7703721,
+            7711028,
+            7703271
+        ],
+        "A": [
+            7701335,
+            7709425,
+            7702860,
+            7710099,
+            7708555,
+            7702605,
+            7703010,
+            7704248,
+            7702307,
+            7705030,
+            7704432,
+            7701212,
+            7711093,
+            7707511,
+            7702270,
+            7703295,
+            7705744
+        ]
+    },
+    "name": "C. Substitutes in Number",
+    "statement": "Andrew and Eugene are playing a game. Initially, Andrew has string ,\r\nconsisting of digits. Eugene sends Andrew multiple queries of type \"\",\r\nthat means \"replace all digits in string with substrings equal to \". For\r\nexample, if , then query \"\" transforms to , and query \"\" (\"replace 3 by\r\nan empty string\") transforms it to . After all the queries Eugene asks\r\nAndrew to find the remainder after division of number with decimal\r\nrepresentation equal to by . When you represent as a decimal number,\r\nplease ignore the leading zeroes; also if is an empty string, then it\u2019s\r\nassumed that the number equals to zero.Andrew got tired of processing\r\nEugene\u2019s requests manually and he asked you to write a program for that.\r\nHelp him!\r\n",
+    "solutions": [
+        "#include <cstring>\n#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <memory.h>\n#include <cassert>\n\nusing namespace std;\n\nconst int md = 1000000007;\n\ninline void add(int &a, int b) {\n  a += b;\n  if (a >= md) {\n    a -= md;\n  }\n}\n\ninline int mul(int a, int b) {\n  return (long long)a * b % md;\n}\n\nconst int N = 400010;\n\nchar s[N];\n\nchar foo[N];\n\nchar dig[N];\nvector <char> to[N];\n\nint pw[N], val[N];\n\nint main() {\n  scanf(\"%s\", s);\n  int n = strlen(s);\n  int m;\n  scanf(\"%d\", &m);\n  for (int i = 0; i < m; i++) {\n    scanf(\"%s\", foo);\n    dig[i] = foo[0];\n    to[i].clear();\n    for (int j = 3; foo[j]; j++) {\n      to[i].push_back(foo[j]);\n    }\n  }\n  for (int d = 0; d < 10; d++) {\n    pw[d] = 10;\n    val[d] = d;\n  }\n  for (int i = m - 1; i >= 0; i--) {\n    int d = dig[i] - '0';\n    int n_pw = 1;\n    int n_val = 0;\n    int sz = to[i].size();\n    for (int j = 0; j < sz; j++) {\n      int t = to[i][j] - '0';\n      n_val = mul(n_val, pw[t]);\n      add(n_val, val[t]);\n      n_pw = mul(n_pw, pw[t]);\n    }\n    pw[d] = n_pw;\n    val[d] = n_val;\n  }\n  int res = 0;\n  for (int i = 0; i < n; i++) {\n    int t = s[i] - '0';\n    res = mul(res, pw[t]);\n    add(res, val[t]);\n  }\n  printf(\"%d\\n\", res);\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp"
+    ],
+    "dificulty": "2100",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Substitutes in Number.json",
+    "editorial_link": "https://codeforces.com//blog/entry/13694",
+    "editorial": "It is quite diffcult to store the whole string after each query as its\r\nlength grows exponentially and queries may change it dramatically. The\r\ngood advice is: if you can\u00e2\u0080\u0099t come up with a solution for a problem, try\r\nsolving it from the other end. =) Suppose we know for some sequence of\r\nqueries that digit will turn into string for every digit. Then string\r\nwill turn into (+ for concatenation). Denote numeric value of . Then can\r\nbe expressed as . So can be computed if we know and for all . As we need\r\nanswer modulo we can store these numbers modulo . Now prepend some new\r\nquery to given sequence. How will and change? Clearly, for all these\r\nnumbers won\u00e2\u0080\u0099t change, and for they can be computed according to the rule\r\nabove. This recounting is done in time. After adding all queries, find\r\nanswer for using the same procedure in time. Finally, our time\r\ncomplexity is . The code for this problem pretty much consists of the\r\nabove formula, so implementation is as easy as it gets once you grasp\r\nthe idea. =) Optimized simple solutions which just replaced substrings\r\ncould manage to pass pretests. Sorry for that. A challenge: this problem\r\nhas a natural modification when you have to give an answer after each\r\nquery. Using algorithm described above it can be solved offline in time.\r\nCan we do better than this? What if we are limited to answer online?\r\n"
+}

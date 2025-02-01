@@ -1,1 +1,86 @@
-{"link": "https://codeforces.com//contest/477/problem/A", "problemId": "15278", "problem_idx": "A", "shortId": "477A", "contest_number": "477", "problem_submissions": {"D": [8200841, 8203169, 8197414, 8204683, 8206684, 8205105, 8207492, 8206274, 8205809, 8206768, 8203061, 8205051, 8208476, 8208899], "C": [8191711, 8205302, 8186637, 8208553, 8191198, 8196924, 8190967, 8195898, 8200421, 8196082, 8187240, 8197260, 8188810, 8187634, 8193728], "B": [8186292, 8188466, 8199414, 8185859, 8186714, 8196554, 8188210, 8195812, 8186799, 8186875, 8185236, 8186230], "A": [8186868, 8202132, 8184242, 8184819, 8187501, 8185797, 8186266, 8208304, 8189113, 8188194, 8193817, 8188659, 8184715]}, "name": "A. Dreamoon and Sums", "statement": "Dreamoon loves summing up something for no reason. One day he obtains\r\ntwo integers and occasionally. He wants to calculate the sum of all\r\nintegers. Positive integer is called if and , where is some number in\r\nrange .By we denote the of integer division of and . By we denote the of\r\ninteger division of and . You can read more about these operations here:\r\n.The answer may be large, so please print its remainder modulo (). Can\r\nyou compute it faster than Dreamoon?\r\n", "solutions": ["#include <cstdio>\n\n#define MOD 1000000007\n\nint main() {\n//  freopen(\"in.txt\", \"r\", stdin);\n//  freopen(\"out.txt\", \"w\", stdout);\n    \n    long long a, b, rlt;\n    \n    scanf(\"%I64d%I64d\", &a, &b);\n    rlt = (b * (b - 1) / 2) % MOD;\n    rlt = rlt * a % MOD * ((a * b + b + 2) % MOD) % MOD;\n    if (rlt & 1) rlt += MOD;\n    rlt /= 2;\n    printf(\"%I64d\\n\", rlt % MOD);\n    return 0;\n}"], "input": "", "output": "", "tags": ["math"], "dificulty": "1600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/477/problem/A",
+    "problemId": "15278",
+    "problem_idx": "A",
+    "shortId": "477A",
+    "contest_number": "477",
+    "problem_submissions": {
+        "D": [
+            8200841,
+            8203169,
+            8197414,
+            8204683,
+            8206684,
+            8205105,
+            8207492,
+            8206274,
+            8205809,
+            8206768,
+            8203061,
+            8205051,
+            8208476,
+            8208899
+        ],
+        "C": [
+            8191711,
+            8205302,
+            8186637,
+            8208553,
+            8191198,
+            8196924,
+            8190967,
+            8195898,
+            8200421,
+            8196082,
+            8187240,
+            8197260,
+            8188810,
+            8187634,
+            8193728
+        ],
+        "B": [
+            8186292,
+            8188466,
+            8199414,
+            8185859,
+            8186714,
+            8196554,
+            8188210,
+            8195812,
+            8186799,
+            8186875,
+            8185236,
+            8186230
+        ],
+        "A": [
+            8186868,
+            8202132,
+            8184242,
+            8184819,
+            8187501,
+            8185797,
+            8186266,
+            8208304,
+            8189113,
+            8188194,
+            8193817,
+            8188659,
+            8184715
+        ]
+    },
+    "name": "A. Dreamoon and Sums",
+    "statement": "Dreamoon loves summing up something for no reason. One day he obtains\r\ntwo integers and occasionally. He wants to calculate the sum of all\r\nintegers. Positive integer is called if and , where is some number in\r\nrange .By we denote the of integer division of and . By we denote the of\r\ninteger division of and . You can read more about these operations here:\r\n.The answer may be large, so please print its remainder modulo (). Can\r\nyou compute it faster than Dreamoon?\r\n",
+    "solutions": [
+        "#include <cstdio>\n\n#define MOD 1000000007\n\nint main() {\n//  freopen(\"in.txt\", \"r\", stdin);\n//  freopen(\"out.txt\", \"w\", stdout);\n    \n    long long a, b, rlt;\n    \n    scanf(\"%I64d%I64d\", &a, &b);\n    rlt = (b * (b - 1) / 2) % MOD;\n    rlt = rlt * a % MOD * ((a * b + b + 2) % MOD) % MOD;\n    if (rlt & 1) rlt += MOD;\n    rlt /= 2;\n    printf(\"%I64d\\n\", rlt % MOD);\n    return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "math"
+    ],
+    "dificulty": "1600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Dreamoon and Sums.json",
+    "editorial_link": "https://codeforces.com/blog/entry/14256",
+    "editorial": "If we fix the value of k, and let d?=?div(x,?b), m?=?mod(x,?b), we have :\nd?=?mk\nx?=?db?+?m\nSo we have x?=?mkb?+?m?=?(kb?+?1)?*?m.\nAnd we know m would be in range [1,?b?-?1] because it's a remainder and x is positive, so the sum of x of that fixed k would be .\nNext we should notice that if an integer x is nice it can only be nice for a single particular k because a given x uniquely defines div(x,?b) and mod(x,?b).\nThus the final answer would be sum up for all individual k:  which can be calculated in O(a) and will pass the time limit of 1.5 seconds.\nAlso the formula above can be expanded to . Dreamoon says he's too lazy to do this part, so if you use O(1) solution you just computed the answer faster than Dreamoon!!!\nNote that no matter which approach one should be very careful of overflowing of the integer data type of the used language. For example one should do a module after every multiplication if using 64-bit integer type. And pay attention to precedence of operations: take c++ for example a+b%c would be executed as a+(b%c) instead of (a+b)%c, another c++ example a*(b*c)%m would be executed as (a*(b*c))%m instead of a*((b*c)%m).\nThanks saurabhsuniljain for pointing out the preceding problem and examples in the comment!\ntime complexity: O(1)"
+}

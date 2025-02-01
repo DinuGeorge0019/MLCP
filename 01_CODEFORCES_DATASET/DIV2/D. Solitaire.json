@@ -1,1 +1,99 @@
-{"link": "https://codeforces.com//contest/71/problem/D", "problemId": "383", "problem_idx": "D", "shortId": "71D", "contest_number": "71", "problem_submissions": {"E": [364940, 364561, 364869, 367554, 364877, 365341, 366959], "D": [364121, 370659, 364672, 364797, 364478, 365171, 365496, 365374, 365026], "C": [362958, 363113, 363174, 362960, 363170, 363249, 363364, 363672, 362819, 363791, 363858, 363105, 363379, 363017, 363030, 364051], "B": [362471, 362684, 362612, 362536, 362613, 362856, 362438, 362761, 362270, 362469, 362902, 365732, 362795, 362402, 362273, 362966], "A": [362169, 361901, 361819, 361870, 361938, 362121, 362009, 362162, 361786, 362024, 361769, 361943, 362014, 361863, 361998, 362420]}, "name": "D. Solitaire", "statement": "Vasya has a pack of cards ( standard cards and distinct jokers). That is\r\nall he has at the moment. Not to die from boredom, Vasya plays Solitaire\r\nwith them.Vasya lays out cards as a rectangle . If there are jokers\r\namong them, then Vasya should change them with some of the rest of cards\r\n(which are not layed out) so that there were no jokers left. Vasya can\r\npick the cards to replace the jokers arbitrarily. Remember, that each\r\ncard presents in pack exactly once (i. e. ). Vasya tries to perform the\r\nreplacements so that the solitaire was .Vasya thinks that the solitaire\r\nis solved if after the jokers are replaced, there exist two\r\nnon-overlapping squares , inside each of which all the cards either have\r\nthe same suit, or pairwise different ranks.Determine by the initial\r\nposition whether the solitaire can be solved or not. If it can be\r\nsolved, show the way in which it is possible.\r\n", "solutions": ["#include <algorithm>\n#include <iostream>\n#include <cstring>\n#include <cstdio>\nusing namespace std;\n\nint a[20][20];\nint Color[257];\nint value[257];\nint Num[257];\nint all[100];\n\nmain(){\n\tvalue['A'] = 0;\n\tvalue['2'] = 1;\n\tvalue['3'] = 2;\n\tvalue['4'] = 3;\n\tvalue['5'] = 4;\n\tvalue['6'] = 5;\n\tvalue['7'] = 6;\n\tvalue['8'] = 7;\n\tvalue['9'] = 8;\n\tvalue['T'] = 9;\n\tvalue['J'] = 10;\n\tvalue['Q'] = 11;\n\tvalue['K'] = 12;\n\tvalue['H'] = 0;\n\tvalue['D'] = 1;\n\tvalue['C'] = 2;\n\tvalue['S'] = 3;\n\tNum[0] = 'A';\n\tNum[1] = '2';\n\tNum[2] = '3';\n\tNum[3] = '4';\n\tNum[4] = '5';\n\tNum[5] = '6';\n\tNum[6] = '7';\n\tNum[7] = '8';\n\tNum[8] = '9';\n\tNum[9] = 'T';\n\tNum[10] = 'J';\n\tNum[11] = 'Q';\n\tNum[12] = 'K';\n\tColor[0] = 'H';\n\tColor[1] = 'D';\n\tColor[2] = 'C';\n\tColor[3] = 'S';\n\t\n\tint n, m, i, j, J1, J2, R1, R2, C1, C2;\n\tint mark, color;\n\tchar readin[9];\n\t\n\tmemset ( all, 0, sizeof ( all ) );\n\tscanf ( \"%d %d\", &n, &m );\n\tfor ( i = 0; i < n; i ++ )\n\t\tfor ( j = 0; j < m; j ++ ){\n\t\t\tscanf ( \"%s\", readin );\n\t\t\tif ( readin[1] == '1' )\n\t\t\t\ta[i][j] = 52;\n\t\t\telse if ( readin[1] == '2' )\n\t\t\t\ta[i][j] = 53;\n\t\t\telse\n\t\t\t\ta[i][j] = value[readin[0]] + value[readin[1]] * 13;\n\t\t\tall[ a[i][j] ] = 1;\n\t\t}\n\tfor ( J1 = 0; J1 < 53; J1 ++ )\n\t\tif ( ( all[52] == 1 && J1 == 52 ) || ( all[52] == 0 && J1 != 52 ) || ( all[52] == 1 && all[J1] == 1 ) )\n\t\t\tcontinue;\n\t\telse\n\tfor ( J2 = 0; J2 < 54; J2 ++ )\n\t\tif ( ( all[53] == 1 && J2 >= 52 ) || ( all[53] == 0 && J2 != 53 ) || ( all[53] == 1 && all[J2] == 1 ) || J1 == J2 )\n\t\t\tcontinue;\n\t\telse{\n\t\t\tfor ( i = 0; i < n; i ++ )\n\t\t\t\tfor ( j = 0; j < m; j ++ ){\n\t\t\t\t\tif ( a[i][j] == 52 )\ta[i][j] = J1;\n\t\t\t\t\tif ( a[i][j] == 53 )\ta[i][j] = J2;\n\t\t\t\t}\n\t\t\tfor ( R1 = 0; R1 + 3 <= n; R1 ++ )\n\t\t\tfor ( C1 = 0; C1 + 3 <= m; C1 ++ )\n\t\t\tfor ( R2 = 0; R2 + 3 <= n; R2 ++ )\n\t\t\tfor ( C2 = 0; C2 + 3 <= m; C2 ++ ){\n\t\t\t\tif ( abs( R1 - R2 ) < 3 && abs( C1 - C2 ) < 3 )\n\t\t\t\t\tcontinue;\n\t\t\t\tmark = 0;\n\t\t\t\tcolor = a[R1][C1] / 13;\n\t\t\t\tfor ( i = 0; i < 3; i ++ )\n\t\t\t\t\tfor ( j = 0; j < 3; j ++ ){\n\t\t\t\t\t\tif ( color != a[R1+i][C1+j] / 13 )\n\t\t\t\t\t\t\tcolor = -1;\n\t\t\t\t\t\tif ( mark & ( 1 << ( a[R1+i][C1+j] % 13 ) ) )\n\t\t\t\t\t\t\tmark = -1;\n\t\t\t\t\t\telse\n\t\t\t\t\t\t\tmark |= ( 1 << ( a[R1+i][C1+j] % 13 ) );\n\t\t\t\t\t}\n\t\t\t\tif ( mark == -1 && color == -1 )\n\t\t\t\t\tcontinue;\n\t\t\t\tmark = 0;\n\t\t\t\tcolor = a[R2][C2] / 13;\n\t\t\t\tfor ( i = 0; i < 3; i ++ )\n\t\t\t\t\tfor ( j = 0; j < 3; j ++ ){\n\t\t\t\t\t\tif ( color != a[R2+i][C2+j] / 13 )\n\t\t\t\t\t\t\tcolor = -1;\n\t\t\t\t\t\tif ( mark & ( 1 << ( a[R2+i][C2+j] % 13 ) ) )\n\t\t\t\t\t\t\tmark = -1;\n\t\t\t\t\t\telse\n\t\t\t\t\t\t\tmark |= ( 1 << ( a[R2+i][C2+j] % 13 ) );\n\t\t\t\t\t}\n\t\t\t\tif ( mark == -1 && color == -1 )\n\t\t\t\t\tcontinue;\n\t\t\t\tprintf( \"Solution exists.\\n\" );\n\t\t\t\tif ( J1 == 52 && J2 == 53 )\n\t\t\t\t\tprintf( \"There are no jokers.\\n\" );\n\t\t\t\telse\n\t\t\t\t\tif ( J1 == 52 )\n\t\t\t\t\t\tprintf( \"Replace J2 with %c%c.\\n\", Num[J2%13], Color[J2/13] );\n\t\t\t\t\telse\n\t\t\t\t\t\tif ( J2 == 53 )\n\t\t\t\t\t\t\tprintf( \"Replace J1 with %c%c.\\n\", Num[J1%13], Color[J1/13] );\n\t\t\t\t\t\telse\n\t\t\t\t\t\t\tprintf( \"Replace J1 with %c%c and J2 with %c%c.\\n\", Num[J1%13], Color[J1/13], Num[J2%13], Color[J2/13] );\n\t\t\t\tprintf( \"Put the first square to (%d, %d).\\n\", R1 + 1, C1 + 1 );\n\t\t\t\tprintf( \"Put the second square to (%d, %d).\\n\", R2 + 1, C2 + 1 );\n//\t\t\t\tcin >> i;\n\t\t\t\treturn 0;\n\t\t\t}\n\t\t\tfor ( i = 0; i < n; i ++ )\n\t\t\t\tfor ( j = 0; j < m; j ++ ){\n\t\t\t\t\tif ( a[i][j] == J1 )\ta[i][j] = 52;\n\t\t\t\t\tif ( a[i][j] == J2 )\ta[i][j] = 53;\n\t\t\t\t}\n\t\t}\n\tprintf( \"No solution.\\n\" );\n//\tcin >> i;\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["brute force", "implementation"], "dificulty": "2200", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/71/problem/D",
+    "problemId": "383",
+    "problem_idx": "D",
+    "shortId": "71D",
+    "contest_number": "71",
+    "problem_submissions": {
+        "E": [
+            364940,
+            364561,
+            364869,
+            367554,
+            364877,
+            365341,
+            366959
+        ],
+        "D": [
+            364121,
+            370659,
+            364672,
+            364797,
+            364478,
+            365171,
+            365496,
+            365374,
+            365026
+        ],
+        "C": [
+            362958,
+            363113,
+            363174,
+            362960,
+            363170,
+            363249,
+            363364,
+            363672,
+            362819,
+            363791,
+            363858,
+            363105,
+            363379,
+            363017,
+            363030,
+            364051
+        ],
+        "B": [
+            362471,
+            362684,
+            362612,
+            362536,
+            362613,
+            362856,
+            362438,
+            362761,
+            362270,
+            362469,
+            362902,
+            365732,
+            362795,
+            362402,
+            362273,
+            362966
+        ],
+        "A": [
+            362169,
+            361901,
+            361819,
+            361870,
+            361938,
+            362121,
+            362009,
+            362162,
+            361786,
+            362024,
+            361769,
+            361943,
+            362014,
+            361863,
+            361998,
+            362420
+        ]
+    },
+    "name": "D. Solitaire",
+    "statement": "Vasya has a pack of cards ( standard cards and distinct jokers). That is\r\nall he has at the moment. Not to die from boredom, Vasya plays Solitaire\r\nwith them.Vasya lays out cards as a rectangle . If there are jokers\r\namong them, then Vasya should change them with some of the rest of cards\r\n(which are not layed out) so that there were no jokers left. Vasya can\r\npick the cards to replace the jokers arbitrarily. Remember, that each\r\ncard presents in pack exactly once (i. e. ). Vasya tries to perform the\r\nreplacements so that the solitaire was .Vasya thinks that the solitaire\r\nis solved if after the jokers are replaced, there exist two\r\nnon-overlapping squares , inside each of which all the cards either have\r\nthe same suit, or pairwise different ranks.Determine by the initial\r\nposition whether the solitaire can be solved or not. If it can be\r\nsolved, show the way in which it is possible.\r\n",
+    "solutions": [
+        "#include <algorithm>\n#include <iostream>\n#include <cstring>\n#include <cstdio>\nusing namespace std;\n\nint a[20][20];\nint Color[257];\nint value[257];\nint Num[257];\nint all[100];\n\nmain(){\n\tvalue['A'] = 0;\n\tvalue['2'] = 1;\n\tvalue['3'] = 2;\n\tvalue['4'] = 3;\n\tvalue['5'] = 4;\n\tvalue['6'] = 5;\n\tvalue['7'] = 6;\n\tvalue['8'] = 7;\n\tvalue['9'] = 8;\n\tvalue['T'] = 9;\n\tvalue['J'] = 10;\n\tvalue['Q'] = 11;\n\tvalue['K'] = 12;\n\tvalue['H'] = 0;\n\tvalue['D'] = 1;\n\tvalue['C'] = 2;\n\tvalue['S'] = 3;\n\tNum[0] = 'A';\n\tNum[1] = '2';\n\tNum[2] = '3';\n\tNum[3] = '4';\n\tNum[4] = '5';\n\tNum[5] = '6';\n\tNum[6] = '7';\n\tNum[7] = '8';\n\tNum[8] = '9';\n\tNum[9] = 'T';\n\tNum[10] = 'J';\n\tNum[11] = 'Q';\n\tNum[12] = 'K';\n\tColor[0] = 'H';\n\tColor[1] = 'D';\n\tColor[2] = 'C';\n\tColor[3] = 'S';\n\t\n\tint n, m, i, j, J1, J2, R1, R2, C1, C2;\n\tint mark, color;\n\tchar readin[9];\n\t\n\tmemset ( all, 0, sizeof ( all ) );\n\tscanf ( \"%d %d\", &n, &m );\n\tfor ( i = 0; i < n; i ++ )\n\t\tfor ( j = 0; j < m; j ++ ){\n\t\t\tscanf ( \"%s\", readin );\n\t\t\tif ( readin[1] == '1' )\n\t\t\t\ta[i][j] = 52;\n\t\t\telse if ( readin[1] == '2' )\n\t\t\t\ta[i][j] = 53;\n\t\t\telse\n\t\t\t\ta[i][j] = value[readin[0]] + value[readin[1]] * 13;\n\t\t\tall[ a[i][j] ] = 1;\n\t\t}\n\tfor ( J1 = 0; J1 < 53; J1 ++ )\n\t\tif ( ( all[52] == 1 && J1 == 52 ) || ( all[52] == 0 && J1 != 52 ) || ( all[52] == 1 && all[J1] == 1 ) )\n\t\t\tcontinue;\n\t\telse\n\tfor ( J2 = 0; J2 < 54; J2 ++ )\n\t\tif ( ( all[53] == 1 && J2 >= 52 ) || ( all[53] == 0 && J2 != 53 ) || ( all[53] == 1 && all[J2] == 1 ) || J1 == J2 )\n\t\t\tcontinue;\n\t\telse{\n\t\t\tfor ( i = 0; i < n; i ++ )\n\t\t\t\tfor ( j = 0; j < m; j ++ ){\n\t\t\t\t\tif ( a[i][j] == 52 )\ta[i][j] = J1;\n\t\t\t\t\tif ( a[i][j] == 53 )\ta[i][j] = J2;\n\t\t\t\t}\n\t\t\tfor ( R1 = 0; R1 + 3 <= n; R1 ++ )\n\t\t\tfor ( C1 = 0; C1 + 3 <= m; C1 ++ )\n\t\t\tfor ( R2 = 0; R2 + 3 <= n; R2 ++ )\n\t\t\tfor ( C2 = 0; C2 + 3 <= m; C2 ++ ){\n\t\t\t\tif ( abs( R1 - R2 ) < 3 && abs( C1 - C2 ) < 3 )\n\t\t\t\t\tcontinue;\n\t\t\t\tmark = 0;\n\t\t\t\tcolor = a[R1][C1] / 13;\n\t\t\t\tfor ( i = 0; i < 3; i ++ )\n\t\t\t\t\tfor ( j = 0; j < 3; j ++ ){\n\t\t\t\t\t\tif ( color != a[R1+i][C1+j] / 13 )\n\t\t\t\t\t\t\tcolor = -1;\n\t\t\t\t\t\tif ( mark & ( 1 << ( a[R1+i][C1+j] % 13 ) ) )\n\t\t\t\t\t\t\tmark = -1;\n\t\t\t\t\t\telse\n\t\t\t\t\t\t\tmark |= ( 1 << ( a[R1+i][C1+j] % 13 ) );\n\t\t\t\t\t}\n\t\t\t\tif ( mark == -1 && color == -1 )\n\t\t\t\t\tcontinue;\n\t\t\t\tmark = 0;\n\t\t\t\tcolor = a[R2][C2] / 13;\n\t\t\t\tfor ( i = 0; i < 3; i ++ )\n\t\t\t\t\tfor ( j = 0; j < 3; j ++ ){\n\t\t\t\t\t\tif ( color != a[R2+i][C2+j] / 13 )\n\t\t\t\t\t\t\tcolor = -1;\n\t\t\t\t\t\tif ( mark & ( 1 << ( a[R2+i][C2+j] % 13 ) ) )\n\t\t\t\t\t\t\tmark = -1;\n\t\t\t\t\t\telse\n\t\t\t\t\t\t\tmark |= ( 1 << ( a[R2+i][C2+j] % 13 ) );\n\t\t\t\t\t}\n\t\t\t\tif ( mark == -1 && color == -1 )\n\t\t\t\t\tcontinue;\n\t\t\t\tprintf( \"Solution exists.\\n\" );\n\t\t\t\tif ( J1 == 52 && J2 == 53 )\n\t\t\t\t\tprintf( \"There are no jokers.\\n\" );\n\t\t\t\telse\n\t\t\t\t\tif ( J1 == 52 )\n\t\t\t\t\t\tprintf( \"Replace J2 with %c%c.\\n\", Num[J2%13], Color[J2/13] );\n\t\t\t\t\telse\n\t\t\t\t\t\tif ( J2 == 53 )\n\t\t\t\t\t\t\tprintf( \"Replace J1 with %c%c.\\n\", Num[J1%13], Color[J1/13] );\n\t\t\t\t\t\telse\n\t\t\t\t\t\t\tprintf( \"Replace J1 with %c%c and J2 with %c%c.\\n\", Num[J1%13], Color[J1/13], Num[J2%13], Color[J2/13] );\n\t\t\t\tprintf( \"Put the first square to (%d, %d).\\n\", R1 + 1, C1 + 1 );\n\t\t\t\tprintf( \"Put the second square to (%d, %d).\\n\", R2 + 1, C2 + 1 );\n//\t\t\t\tcin >> i;\n\t\t\t\treturn 0;\n\t\t\t}\n\t\t\tfor ( i = 0; i < n; i ++ )\n\t\t\t\tfor ( j = 0; j < m; j ++ ){\n\t\t\t\t\tif ( a[i][j] == J1 )\ta[i][j] = 52;\n\t\t\t\t\tif ( a[i][j] == J2 )\ta[i][j] = 53;\n\t\t\t\t}\n\t\t}\n\tprintf( \"No solution.\\n\" );\n//\tcin >> i;\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "implementation"
+    ],
+    "dificulty": "2200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Solitaire.json",
+    "editorial_link": "https://codeforces.com//blog/entry/1624",
+    "editorial": "This problem can be divided into some subproblems.\n Author's solution means following ones:\n\n1. Check validness of square 3?\u00d7?3. Square is valid if all cards in it has equal suit or different rank. You may not check equal suit because equal suits imply different ranks.\n\n2. Find 2 valid noninetsect squares 3?\u00d7?3 or return thah there are no ones. You can check all pairs of squares for inetsection. If some pair has no intersections check them with solution of subproblem 1.\n\n3. Build set of cards which can be replaced with jokers. Generate full deck without jokers and drop from it all cards which in rectangle n?\u00d7?m are present.\n\n4. Find number of jokers and its positions in rectangle.\n\n5. Main subproblem. At first, solve subproblems 3 and 4. Now replace jokers in rectangle with cards from deck from subproblem 3 by all possible ways. For every replace solve subproblem 2. Arter all of variants of replacement just output answer."
+}

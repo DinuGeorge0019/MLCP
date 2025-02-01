@@ -1,1 +1,74 @@
-{"link": "https://codeforces.com//contest/720/problem/D", "problemId": "71823", "problem_idx": "D", "shortId": "720D", "contest_number": "720", "problem_submissions": {"B": [20732895, 20733800, 20733490, 20734883, 20733806, 20735016, 20734473, 20736053, 20735203, 20733945, 20734910, 20734765, 20735023, 20736385, 20736333, 20736307, 20746163], "A": [20732151, 20732346, 20732312, 20732893, 20731988, 20732883, 20733527, 20732353, 20739206, 20739180, 20736161, 20734380, 20733685, 20732779, 20733015, 20731953, 20732084, 20732115, 20732391, 20732589, 20732757, 20732925], "D": [20735659, 21258097], "C": []}, "name": "D. Slalom", "statement": "Little girl Masha likes winter sports, today she\u2019s planning to take part\r\nin slalom skiing.The track is represented as a grid composed of squares.\r\nThere are rectangular obstacles at the track, composed of grid squares.\r\nMasha must get from the square to the square . She can move from a\r\nsquare to adjacent square: either to the right, or upwards. If the\r\nsquare is occupied by an obstacle, it is not allowed to move to that\r\nsquare.One can see that each obstacle can actually be passed in two\r\nways: either it is to the right of Masha\u2019s path, or to the left. Masha\r\nlikes to try all ways to do things, so she would like to know how many\r\nways are there to pass the track. Two ways are considered different if\r\nthere is an obstacle such that it is to the right of the path in one\r\nway, and to the left of the path in the other way.Help Masha to find the\r\nnumber of ways to pass the track. The number of ways can be quite big,\r\nso Masha would like to know it modulo .The pictures below show different\r\nways to pass the track in sample tests.\r\n", "solutions": ["#include <iostream>\n#include <fstream>\n#include <set>\n#include <map>\n#include <string>\n#include <vector>\n#include <bitset>\n#include <algorithm>\n#include <cstring>\n#include <cstdlib>\n#include <cmath>\n#include <cassert>\n#include <queue>\n\n#define mp make_pair\n#define pb push_back\n\n\ntypedef long long ll;\ntypedef long double ld;\n\nusing namespace std;\nconst int MAXN = 1000010;\nconst ll MOD = 1e9 + 7;\n\nset<pair<int, int> > ss;\n\nint ps[MAXN * 4];\nll sp[MAXN * 4];\nll rmq[MAXN * 4];\nint n, m;\nvector<pair<int, int> > op[MAXN];\nvector<pair<int, int> > cl[MAXN];\n\nvoid push(int v, int tl, int tr) {\n\tif (!ps[v])\n\t\treturn;\n\tps[v] = 0;\n\tps[v * 2 + 1] = 1;\n\tps[v * 2 + 2] = 1;\n\tsp[v * 2 + 1] = sp[v];\n\tsp[v * 2 + 2] = sp[v];\n\tint m = (tl + tr) >> 1;\n\trmq[v * 2 + 1] = ((m - tl) * sp[v]) % MOD;\n\trmq[v * 2 + 2] = ((tr - m) * sp[v]) % MOD;\n}\n\nvoid st(int v, int tl, int tr, int l, int r, ll x) {\n\tif (r <= tl || tr <= l)\n\t\treturn;\n\tif (l <= tl && tr <= r) {\n\t\tps[v] = 1;\n\t\tsp[v] = x;\n\t\trmq[v] = (x * (tr - tl)) % MOD;\n\t\treturn;\n\t}\n\tpush(v, tl, tr);\n\tint m = (tl + tr) >> 1;\n\tst(v * 2 + 1, tl, m, l, r, x);\n\tst(v * 2 + 2, m, tr, l, r, x);\n\trmq[v] = (rmq[v * 2 + 1] + rmq[v * 2 + 2]) % MOD;\n}\n\nll get(int v, int tl, int tr, int l, int r) {\n\tif (r <= tl || tr <= l)\n\t\treturn 0;\n\tif (l <= tl && tr <= r) {\n\t\treturn rmq[v];\n\t}\n\tpush(v, tl, tr);\n\tint m = (tl + tr) >> 1;\n\treturn (get(v * 2 + 1, tl, m, l, r) + get(v * 2 + 2, m, tr, l, r)) % MOD;\n}\n\n\n\nint main() {\n\tint k;\n\tscanf(\"%d%d%d\", &n, &m, &k);\n\tfor (int i = 0; i < k; ++i) {\n\t\tint x1, x2, y1, y2;\n\t\tscanf(\"%d%d%d%d\", &x1, &y1, &x2, &y2);\n\t\t--x1, --y1;\n\t\top[x1].push_back(make_pair(y1, y2));\n\t\tcl[x2].push_back(make_pair(y1, y2));\n\t}\n\tst(0, 0, m, 0, 1, 1);\n\tfor (auto j: op[0])\n\t\tss.insert(j);\n\tfor (int i = 1; i < n; ++i) {\n\t\tsort(op[i].begin(), op[i].end());\n\t\treverse(op[i].begin(), op[i].end());\n\t\tfor (auto j: op[i]) {\n\t\t\tauto it = ss.lower_bound(make_pair(j.second + 1, 0));\n\t\t\tint lb = 0;\n\t\t\tif (it != ss.begin()) {\n\t\t\t\t--it;\n\t\t\t\tlb = it->second;\n\t\t\t}\n\t\t\tll cc = get(0, 0, m, lb, j.second + 1);\n\t\t\tst(0, 0, m, j.second, j.second + 1, cc);\n\t\t}\n\t\tfor (auto j: cl[i])\n\t\t\tss.erase(j);\n\t\tfor (auto j: op[i]) {\n\t\t\tst(0, 0, m, j.first, j.second, 0);\n\t\t\tss.insert(j);\n\t\t}\n\t}\n\tfor (auto j: ss)\n\t\tst(0, 0, m, 0, j.second, 0);\n\tcout << get(0, 0, m, 0, m) << \"\\n\";\n\treturn 0;\n}\n\n\n"], "input": "", "output": "", "tags": ["data structures", "dp", "sortings"], "dificulty": "3100", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/720/problem/D",
+    "problemId": "71823",
+    "problem_idx": "D",
+    "shortId": "720D",
+    "contest_number": "720",
+    "problem_submissions": {
+        "B": [
+            20732895,
+            20733800,
+            20733490,
+            20734883,
+            20733806,
+            20735016,
+            20734473,
+            20736053,
+            20735203,
+            20733945,
+            20734910,
+            20734765,
+            20735023,
+            20736385,
+            20736333,
+            20736307,
+            20746163
+        ],
+        "A": [
+            20732151,
+            20732346,
+            20732312,
+            20732893,
+            20731988,
+            20732883,
+            20733527,
+            20732353,
+            20739206,
+            20739180,
+            20736161,
+            20734380,
+            20733685,
+            20732779,
+            20733015,
+            20731953,
+            20732084,
+            20732115,
+            20732391,
+            20732589,
+            20732757,
+            20732925
+        ],
+        "D": [
+            20735659,
+            21258097
+        ],
+        "C": []
+    },
+    "name": "D. Slalom",
+    "statement": "Little girl Masha likes winter sports, today she\u2019s planning to take part\r\nin slalom skiing.The track is represented as a grid composed of squares.\r\nThere are rectangular obstacles at the track, composed of grid squares.\r\nMasha must get from the square to the square . She can move from a\r\nsquare to adjacent square: either to the right, or upwards. If the\r\nsquare is occupied by an obstacle, it is not allowed to move to that\r\nsquare.One can see that each obstacle can actually be passed in two\r\nways: either it is to the right of Masha\u2019s path, or to the left. Masha\r\nlikes to try all ways to do things, so she would like to know how many\r\nways are there to pass the track. Two ways are considered different if\r\nthere is an obstacle such that it is to the right of the path in one\r\nway, and to the left of the path in the other way.Help Masha to find the\r\nnumber of ways to pass the track. The number of ways can be quite big,\r\nso Masha would like to know it modulo .The pictures below show different\r\nways to pass the track in sample tests.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <fstream>\n#include <set>\n#include <map>\n#include <string>\n#include <vector>\n#include <bitset>\n#include <algorithm>\n#include <cstring>\n#include <cstdlib>\n#include <cmath>\n#include <cassert>\n#include <queue>\n\n#define mp make_pair\n#define pb push_back\n\n\ntypedef long long ll;\ntypedef long double ld;\n\nusing namespace std;\nconst int MAXN = 1000010;\nconst ll MOD = 1e9 + 7;\n\nset<pair<int, int> > ss;\n\nint ps[MAXN * 4];\nll sp[MAXN * 4];\nll rmq[MAXN * 4];\nint n, m;\nvector<pair<int, int> > op[MAXN];\nvector<pair<int, int> > cl[MAXN];\n\nvoid push(int v, int tl, int tr) {\n\tif (!ps[v])\n\t\treturn;\n\tps[v] = 0;\n\tps[v * 2 + 1] = 1;\n\tps[v * 2 + 2] = 1;\n\tsp[v * 2 + 1] = sp[v];\n\tsp[v * 2 + 2] = sp[v];\n\tint m = (tl + tr) >> 1;\n\trmq[v * 2 + 1] = ((m - tl) * sp[v]) % MOD;\n\trmq[v * 2 + 2] = ((tr - m) * sp[v]) % MOD;\n}\n\nvoid st(int v, int tl, int tr, int l, int r, ll x) {\n\tif (r <= tl || tr <= l)\n\t\treturn;\n\tif (l <= tl && tr <= r) {\n\t\tps[v] = 1;\n\t\tsp[v] = x;\n\t\trmq[v] = (x * (tr - tl)) % MOD;\n\t\treturn;\n\t}\n\tpush(v, tl, tr);\n\tint m = (tl + tr) >> 1;\n\tst(v * 2 + 1, tl, m, l, r, x);\n\tst(v * 2 + 2, m, tr, l, r, x);\n\trmq[v] = (rmq[v * 2 + 1] + rmq[v * 2 + 2]) % MOD;\n}\n\nll get(int v, int tl, int tr, int l, int r) {\n\tif (r <= tl || tr <= l)\n\t\treturn 0;\n\tif (l <= tl && tr <= r) {\n\t\treturn rmq[v];\n\t}\n\tpush(v, tl, tr);\n\tint m = (tl + tr) >> 1;\n\treturn (get(v * 2 + 1, tl, m, l, r) + get(v * 2 + 2, m, tr, l, r)) % MOD;\n}\n\n\n\nint main() {\n\tint k;\n\tscanf(\"%d%d%d\", &n, &m, &k);\n\tfor (int i = 0; i < k; ++i) {\n\t\tint x1, x2, y1, y2;\n\t\tscanf(\"%d%d%d%d\", &x1, &y1, &x2, &y2);\n\t\t--x1, --y1;\n\t\top[x1].push_back(make_pair(y1, y2));\n\t\tcl[x2].push_back(make_pair(y1, y2));\n\t}\n\tst(0, 0, m, 0, 1, 1);\n\tfor (auto j: op[0])\n\t\tss.insert(j);\n\tfor (int i = 1; i < n; ++i) {\n\t\tsort(op[i].begin(), op[i].end());\n\t\treverse(op[i].begin(), op[i].end());\n\t\tfor (auto j: op[i]) {\n\t\t\tauto it = ss.lower_bound(make_pair(j.second + 1, 0));\n\t\t\tint lb = 0;\n\t\t\tif (it != ss.begin()) {\n\t\t\t\t--it;\n\t\t\t\tlb = it->second;\n\t\t\t}\n\t\t\tll cc = get(0, 0, m, lb, j.second + 1);\n\t\t\tst(0, 0, m, j.second, j.second + 1, cc);\n\t\t}\n\t\tfor (auto j: cl[i])\n\t\t\tss.erase(j);\n\t\tfor (auto j: op[i]) {\n\t\t\tst(0, 0, m, j.first, j.second, 0);\n\t\t\tss.insert(j);\n\t\t}\n\t}\n\tfor (auto j: ss)\n\t\tst(0, 0, m, 0, j.second, 0);\n\tcout << get(0, 0, m, 0, m) << \"\\n\";\n\treturn 0;\n}\n\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "data structures",
+        "dp",
+        "sortings"
+    ],
+    "dificulty": "3100",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Slalom.json",
+    "editorial_link": "https://codeforces.com//blog/entry/47183",
+    "editorial": "First let us consider all paths from the starting square to the finish one. Let us say that two paths are equivalent, if each obstacle is at the same side for both paths. For each class of equivalence let us choose the representative path \u0097 the one that tries to go as low as possible, lexicographically minimum.\n\nLet us use dynamic programming. For each square let us count the number of representative paths that go from the starting square to this one. When the obstacle starts, some paths can now separate. The new representatives will pass this obstacle from above (it will be to the right of them). So we add the sum of values for squares below it, but above any other lower obstacle, to the value for the square right above the obstacle.\n\nTo overcome the time and memory limits that the naive solution with O(nm) memory and O(nm2) time complexity, we use segment tree for range sum queries with mass update, running scanline and events \"start of an obstacle\", \"end of an obstacle\". This leads to the solution with O(m) memory and O(n?log?m) time complexity."
+}

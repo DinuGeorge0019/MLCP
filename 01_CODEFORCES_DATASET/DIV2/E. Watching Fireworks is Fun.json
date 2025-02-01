@@ -1,1 +1,97 @@
-{"link": "https://codeforces.com//contest/373/problem/E", "problemId": "4181", "problem_idx": "E", "shortId": "373E", "contest_number": "373", "problem_submissions": {"B": [5429569, 5424746, 5426227, 5425475, 5422342, 5425081, 5426099, 5425032, 5425412, 5436342, 5426611, 5423163, 5423178, 5425228], "A": [5424943, 5421235, 5422611, 5422595, 5433909, 5421126, 5421160, 5429834, 5421622, 5425841, 5421003, 5421386, 5421391, 5421143, 5421194, 5421261, 5421350], "C": [5424210, 5422375, 5423370, 5427068, 5424824, 5427055, 5423334, 5430375, 5422559, 5425280, 5426953, 5423867, 5424356, 5424874, 5424522, 5427759, 5426510, 5427253], "D": [5423101, 5430116, 5431564, 5429533, 5429205, 5429913, 5431205, 5429336, 5429567], "E": [5431047, 5431253, 5445684, 5431420, 5431441]}, "name": "E. Watching Fireworks is Fun", "statement": "A festival will be held in a town\u2019s main street. There are sections in\r\nthe main street. The sections are numbered through from left to right.\r\nThe distance between each adjacent sections is .In the festival\r\nfireworks will be launched. The -th () launching is on time at section .\r\nIf you are at section () at the time of -th launching, you\u2019ll gain\r\nhappiness value (note that the happiness value might be a negative\r\nvalue).You can move up to length units in a unit time interval, but it\u2019s\r\nprohibited to go out of the main street. Also you can be in an arbitrary\r\nsection at initial time moment (time equals to ), and want to maximize\r\nthe sum of happiness that can be gained from watching fireworks. Find\r\nthe maximum total happiness.Note that two or more fireworks can be\r\nlaunched at the same time.\r\n", "solutions": ["#include <cstdio>\n#include <cstring>\n#include <algorithm>\n#include <vector>\n#include <deque>\nusing namespace std;\ntypedef __int64 lld;\nconst int N = 150010;\nint n,m,d,cur,nex,pretime,passtime;\nlld dp[2][N];\nvector <int> bag;\ndeque <int> que;\nvoid trans() {\n    while (!que.empty()) que.pop_front();\n    for (int i = 1; i <= n; i ++) {\n        while (!que.empty() && i-que.front()>(lld)passtime*d) que.pop_front();\n        while (!que.empty() && dp[cur][que.back()]<=dp[cur][i]) que.pop_back();\n        que.push_back(i);\n        int pos = que.front();\n        lld tmp = dp[cur][pos];\n        for (int j = 0; j < bag.size(); j ++) {\n            tmp -= abs(i-bag[j]);\n        }\n        dp[nex][i] = tmp;\n    }\n    while (!que.empty()) que.pop_front();\n    for (int i = n; i >= 1; i --) {\n        while (!que.empty() && que.front()-i>(lld)passtime*d) que.pop_front();\n        while (!que.empty() && dp[cur][que.back()]<=dp[cur][i]) que.pop_back();\n        que.push_back(i);\n        int pos = que.front();\n        lld tmp = dp[cur][pos];\n        for (int j = 0; j < bag.size(); j ++) {\n            tmp -= abs(i-bag[j]);\n        }\n        dp[nex][i] = max(dp[nex][i],tmp);\n    }\n    swap(cur,nex);\n}\nlld work() {\n    cur = 0; nex = 1;\n    lld sum = 0;\n    passtime = N;\n    for (int i = 0; i < m; i ++) {\n        int a,b,t;\n        scanf(\"%d%d%d\",&a,&b,&t);\n        sum += b;\n        if (!i || pretime==t) {\n            bag.push_back(a);\n            pretime = t;\n            continue;\n        } else {\n            trans();\n            passtime = t-pretime;\n            bag.clear();\n            pretime = t;\n            bag.push_back(a);\n        }\n    }\n    trans();\n    lld ret = (lld)-1e30;\n    for (int i = 1; i <= n; i ++) ret = max(ret,dp[cur][i]);\n    return ret+sum;\n}\nint main() {\n    scanf(\"%d%d%d\",&n,&m,&d);\n    printf(\"%I64d\\n\",work());\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["dp"], "dificulty": "2100", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/373/problem/E",
+    "problemId": "4181",
+    "problem_idx": "E",
+    "shortId": "373E",
+    "contest_number": "373",
+    "problem_submissions": {
+        "B": [
+            5429569,
+            5424746,
+            5426227,
+            5425475,
+            5422342,
+            5425081,
+            5426099,
+            5425032,
+            5425412,
+            5436342,
+            5426611,
+            5423163,
+            5423178,
+            5425228
+        ],
+        "A": [
+            5424943,
+            5421235,
+            5422611,
+            5422595,
+            5433909,
+            5421126,
+            5421160,
+            5429834,
+            5421622,
+            5425841,
+            5421003,
+            5421386,
+            5421391,
+            5421143,
+            5421194,
+            5421261,
+            5421350
+        ],
+        "C": [
+            5424210,
+            5422375,
+            5423370,
+            5427068,
+            5424824,
+            5427055,
+            5423334,
+            5430375,
+            5422559,
+            5425280,
+            5426953,
+            5423867,
+            5424356,
+            5424874,
+            5424522,
+            5427759,
+            5426510,
+            5427253
+        ],
+        "D": [
+            5423101,
+            5430116,
+            5431564,
+            5429533,
+            5429205,
+            5429913,
+            5431205,
+            5429336,
+            5429567
+        ],
+        "E": [
+            5431047,
+            5431253,
+            5445684,
+            5431420,
+            5431441
+        ]
+    },
+    "name": "E. Watching Fireworks is Fun",
+    "statement": "A festival will be held in a town\u2019s main street. There are sections in\r\nthe main street. The sections are numbered through from left to right.\r\nThe distance between each adjacent sections is .In the festival\r\nfireworks will be launched. The -th () launching is on time at section .\r\nIf you are at section () at the time of -th launching, you\u2019ll gain\r\nhappiness value (note that the happiness value might be a negative\r\nvalue).You can move up to length units in a unit time interval, but it\u2019s\r\nprohibited to go out of the main street. Also you can be in an arbitrary\r\nsection at initial time moment (time equals to ), and want to maximize\r\nthe sum of happiness that can be gained from watching fireworks. Find\r\nthe maximum total happiness.Note that two or more fireworks can be\r\nlaunched at the same time.\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <cstring>\n#include <algorithm>\n#include <vector>\n#include <deque>\nusing namespace std;\ntypedef __int64 lld;\nconst int N = 150010;\nint n,m,d,cur,nex,pretime,passtime;\nlld dp[2][N];\nvector <int> bag;\ndeque <int> que;\nvoid trans() {\n    while (!que.empty()) que.pop_front();\n    for (int i = 1; i <= n; i ++) {\n        while (!que.empty() && i-que.front()>(lld)passtime*d) que.pop_front();\n        while (!que.empty() && dp[cur][que.back()]<=dp[cur][i]) que.pop_back();\n        que.push_back(i);\n        int pos = que.front();\n        lld tmp = dp[cur][pos];\n        for (int j = 0; j < bag.size(); j ++) {\n            tmp -= abs(i-bag[j]);\n        }\n        dp[nex][i] = tmp;\n    }\n    while (!que.empty()) que.pop_front();\n    for (int i = n; i >= 1; i --) {\n        while (!que.empty() && que.front()-i>(lld)passtime*d) que.pop_front();\n        while (!que.empty() && dp[cur][que.back()]<=dp[cur][i]) que.pop_back();\n        que.push_back(i);\n        int pos = que.front();\n        lld tmp = dp[cur][pos];\n        for (int j = 0; j < bag.size(); j ++) {\n            tmp -= abs(i-bag[j]);\n        }\n        dp[nex][i] = max(dp[nex][i],tmp);\n    }\n    swap(cur,nex);\n}\nlld work() {\n    cur = 0; nex = 1;\n    lld sum = 0;\n    passtime = N;\n    for (int i = 0; i < m; i ++) {\n        int a,b,t;\n        scanf(\"%d%d%d\",&a,&b,&t);\n        sum += b;\n        if (!i || pretime==t) {\n            bag.push_back(a);\n            pretime = t;\n            continue;\n        } else {\n            trans();\n            passtime = t-pretime;\n            bag.clear();\n            pretime = t;\n            bag.push_back(a);\n        }\n    }\n    trans();\n    lld ret = (lld)-1e30;\n    for (int i = 1; i <= n; i ++) ret = max(ret,dp[cur][i]);\n    return ret+sum;\n}\nint main() {\n    scanf(\"%d%d%d\",&n,&m,&d);\n    printf(\"%I64d\\n\",work());\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp"
+    ],
+    "dificulty": "2100",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Watching Fireworks is Fun.json",
+    "editorial_link": "https://codeforces.com//blog/entry/9944",
+    "editorial": "I think most of the participants came up with simple DP algorithm :\r\ndp[i][j] := the maximum happiness value that you can gain when you\u00e2\u0080\u0099re on\r\npoisition j at i th launching. Each value in table can be calculated by\r\nthis formula : where . If you look up for all k, since the table\u00e2\u0080\u0099s size\r\nis O(mn), the overall complexity will be O(mn^2), and its too slow to\r\nsolve the problem. Now, We\u00e2\u0080\u0099re going to make this algorithm faster. Since\r\nthe second term in the DP formula doesn\u00e2\u0080\u0099t depend on k, you have to find\r\nmaximum value of dp[i 1][j + k] faster. Using segment tree or sparse\r\ntable can fasten finding from O(n) to O(log n), but the overall\r\ncomplexity is still O(mn log n), and the solution will get time limit\r\nexceeded. Intended solution uses sliding window maximum (see this page\r\nhttp://people.cs.uct.ac.za/\u00c2\u00a0ksmith/articles/sliding_window_minimum.html)\r\nfor some information), since the interval is independent for all the\r\nfireworks. It can be implemented by simple array or deque. This will\r\nspeed up to calculate formula, and overall complexity will be O(mn).\r\nkcm1700 has submitted faster solution than our intended one during\r\ncontest! It\u00e2\u0080\u0099s complexity is O(m^2). Please read his comment\r\n(http://codeforces.com/blog/entry/9907comment-153963) for further\r\ninformation. My solution : http://ideone.com/Unrfaa kcm1700\u00e2\u0080\u0099s solution :\r\nhttp://codeforces.com/contest/372/submission/5431649\r\n"
+}

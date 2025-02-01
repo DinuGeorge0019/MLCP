@@ -1,1 +1,104 @@
-{"link": "https://codeforces.com//contest/582/problem/E", "problemId": "37189", "problem_idx": "E", "shortId": "582E", "contest_number": "582", "problem_submissions": {"E": [13382538, 13381116, 13378028, 13383504, 13383506, 13383917, 13383602, 145895898], "C": [13373394, 13375255, 13380779, 13374298, 13373776, 13372716, 13377174, 13375147, 13375206, 13375348, 13372216, 13373000, 13376950, 13374416, 13374597, 13371567, 13392220, 13380106, 13374816, 13375408], "B": [13370935, 13371321, 13372509, 13370999, 13368381, 13369232, 13374738, 13371115, 13372424, 13370249, 13368449, 13368172, 13372435, 13368862, 13369702, 13365121, 13392237, 13392226, 13370380, 13369378, 13369857], "A": [13366333, 13368173, 13364878, 13363160, 13374636, 13383874, 13368333, 13365806, 13366818, 13363090, 13364145, 13365273, 13365002, 13363636, 13374162, 13365145, 13364246, 13363367], "D": [13463010]}, "name": "E. Boolean Function", "statement": "In this problem we consider Boolean functions of four variables .\r\nVariables and are logical and can take values 0 or 1. We will define a\r\nfunction using the following grammar:Here large letters represent\r\nvariables, and small letters represent their negations. For example, if\r\n, then character corresponds to value 1, and value character corresponds\r\nto value 0. Here character \u2019&\u2019 corresponds to the operation of logical\r\nAND, character \u2019|\u2019 corresponds to the operation of logical OR.You are\r\ngiven expression , defining function , where some operations and\r\nvariables are missing. Also you know the values of the function for some\r\ndistinct sets of variable values. Count the number of ways to restore\r\nthe elements that are missing in the expression so that the resulting\r\nexpression corresponded to the given information about function in the\r\ngiven variable sets. As the value of the result can be rather large,\r\nprint its remainder modulo .\r\n", "solutions": ["#include<bits/stdc++.h>\nusing namespace std;\n\ntypedef long long ll;\n\nconst int MOD = 1e9 + 7;\n\nconst int V = 4;\n\nint L;\nchar S[600];\n// stored by a\nint dp[510][(1 << 16) + 10];\n\nint tmp[(1 << 16) + 10];\n\n// [a,b]\nvoid dfs(int a, int b) {\n\t// S[a,b] is a valid expression\n\tassert(a <= b);\n\tif(a == b) {\n\t\tassert(S[a] == '?' || ('A' <= S[a] && S[a] <= 'D') || ('a' <= S[a] && S[a] <= 'd'));\n\t\tif(S[a] == 'A' || S[a] == '?') dp[a][0b1111111100000000] = 1;\n\t\tif(S[a] == 'B' || S[a] == '?') dp[a][0b1111000011110000] = 1;\n\t\tif(S[a] == 'C' || S[a] == '?') dp[a][0b1100110011001100] = 1;\n\t\tif(S[a] == 'D' || S[a] == '?') dp[a][0b1010101010101010] = 1;\n\t\tif(S[a] == 'a' || S[a] == '?') dp[a][0b0000000011111111] = 1;\n\t\tif(S[a] == 'b' || S[a] == '?') dp[a][0b0000111100001111] = 1;\n\t\tif(S[a] == 'c' || S[a] == '?') dp[a][0b0011001100110011] = 1;\n\t\tif(S[a] == 'd' || S[a] == '?') dp[a][0b0101010101010101] = 1;\n\t} else {\n\t\t// dfs\n\t\tint m = a;\n\t\tfor(int i = 0; true; m++) {\n\t\t\tif(S[m] == '(') i++;\n\t\t\telse if(S[m] == ')') i--;\n\t\t\telse if(i == 0) break;\n\t\t}\n\t\tassert(S[m] == '?' || S[m] == '&' || S[m] == '|');\n\t\tdfs(a + 1, m - 2);\n\t\tdfs(m + 2, b - 1);\n\t\tint l = a + 1, r = m + 2;\n\t\tif(S[m] == '&' || S[m] == '?') {\n\t\t\tfor(int i = 0; i < 16; i++) {\n\t\t\t\tfor(int s = 0; s < (1 << 16); s++) {\n\t\t\t\t\tif(!(s & (1 << i))) {\n\t\t\t\t\t\tdp[l][s] += dp[l][s + (1 << i)];\n\t\t\t\t\t\tdp[l][s] %= MOD;\n\t\t\t\t\t\tdp[r][s] += dp[r][s + (1 << i)];\n\t\t\t\t\t\tdp[r][s] %= MOD;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tfor(int s = 0; s < (1 << 16); s++) {\n\t\t\t\ttmp[s] = (ll(dp[l][s]) * ll(dp[r][s])) % MOD;\n\t\t\t}\n\t\t\tfor(int i = 0; i < 16; i++) {\n\t\t\t\tfor(int s = 0; s < (1 << 16); s++) {\n\t\t\t\t\tif(!(s & (1 << i))) {\n\t\t\t\t\t\ttmp[s] -= tmp[s + (1 << i)];\n\t\t\t\t\t\ttmp[s] %= MOD;\n\t\t\t\t\t\tdp[l][s] -= dp[l][s + (1 << i)];\n\t\t\t\t\t\tdp[l][s] %= MOD;\n\t\t\t\t\t\tdp[r][s] -= dp[r][s + (1 << i)];\n\t\t\t\t\t\tdp[r][s] %= MOD;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tfor(int s = 0; s < (1 << 16); s++) {\n\t\t\t\tdp[a][s] += tmp[s];\n\t\t\t}\n\t\t}\n\t\tif(S[m] == '|' || S[m] == '?') {\n\t\t\tfor(int i = 0; i < 16; i++) {\n\t\t\t\tfor(int s = 0; s < (1 << 16); s++) {\n\t\t\t\t\tif(s & (1 << i)) {\n\t\t\t\t\t\tdp[l][s] += dp[l][s - (1 << i)];\n\t\t\t\t\t\tdp[l][s] %= MOD;\n\t\t\t\t\t\tdp[r][s] += dp[r][s - (1 << i)];\n\t\t\t\t\t\tdp[r][s] %= MOD;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tfor(int s = 0; s < (1 << 16); s++) {\n\t\t\t\ttmp[s] = (ll(dp[l][s]) * ll(dp[r][s])) % MOD;\n\t\t\t}\n\t\t\tfor(int i = 0; i < 16; i++) {\n\t\t\t\tfor(int s = 0; s < (1 << 16); s++) {\n\t\t\t\t\tif(s & (1 << i)) {\n\t\t\t\t\t\ttmp[s] -= tmp[s - (1 << i)];\n\t\t\t\t\t\ttmp[s] %= MOD;\n\t\t\t\t\t\tdp[l][s] -= dp[l][s - (1 << i)];\n\t\t\t\t\t\tdp[l][s] %= MOD;\n\t\t\t\t\t\tdp[r][s] -= dp[r][s - (1 << i)];\n\t\t\t\t\t\tdp[r][s] %= MOD;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tfor(int s = 0; s < (1 << 16); s++) {\n\t\t\t\tdp[a][s] += tmp[s];\n\t\t\t}\n\t\t}\n\t\tfor(int s = 0; s < (1 << 16); s++) {\n\t\t\tdp[a][s] %= MOD;\n\t\t\tif(dp[a][s] < 0) dp[a][s] += MOD;\n\t\t}\n\t}\n}\n\nint main() {\n\tios_base::sync_with_stdio(0);\n\tcin >> S;\n\tL = int(strlen(S));\n\n\tdfs(0, L - 1);\n\tint N; cin >> N;\n\tint msk = 0;\n\tint val = 0;\n\tfor(int i = 0; i < N; i++) {\n\t\tint a, b, c, d, v;\n\t\tcin >> a >> b >> c >> d >> v;\n\t\tmsk |= (1 << (8 * a + 4 * b + 2 * c + d));\n\t\tval |= (v << (8 * a + 4 * b + 2 * c + d));\n\t}\n\tll res = 0;\n\tfor(int v = 0; v < (1 << 16); v++) {\n\t\tif((v & msk) == val) {\n\t\t\tres += dp[0][v];\n\t\t}\n\t}\n\tres %= MOD;\n\tif(res < 0) res += MOD;\n\tcout << res << '\\n';\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["bitmasks", "dp", "expression parsing"], "dificulty": "3000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/582/problem/E",
+    "problemId": "37189",
+    "problem_idx": "E",
+    "shortId": "582E",
+    "contest_number": "582",
+    "problem_submissions": {
+        "E": [
+            13382538,
+            13381116,
+            13378028,
+            13383504,
+            13383506,
+            13383917,
+            13383602,
+            145895898
+        ],
+        "C": [
+            13373394,
+            13375255,
+            13380779,
+            13374298,
+            13373776,
+            13372716,
+            13377174,
+            13375147,
+            13375206,
+            13375348,
+            13372216,
+            13373000,
+            13376950,
+            13374416,
+            13374597,
+            13371567,
+            13392220,
+            13380106,
+            13374816,
+            13375408
+        ],
+        "B": [
+            13370935,
+            13371321,
+            13372509,
+            13370999,
+            13368381,
+            13369232,
+            13374738,
+            13371115,
+            13372424,
+            13370249,
+            13368449,
+            13368172,
+            13372435,
+            13368862,
+            13369702,
+            13365121,
+            13392237,
+            13392226,
+            13370380,
+            13369378,
+            13369857
+        ],
+        "A": [
+            13366333,
+            13368173,
+            13364878,
+            13363160,
+            13374636,
+            13383874,
+            13368333,
+            13365806,
+            13366818,
+            13363090,
+            13364145,
+            13365273,
+            13365002,
+            13363636,
+            13374162,
+            13365145,
+            13364246,
+            13363367
+        ],
+        "D": [
+            13463010
+        ]
+    },
+    "name": "E. Boolean Function",
+    "statement": "In this problem we consider Boolean functions of four variables .\r\nVariables and are logical and can take values 0 or 1. We will define a\r\nfunction using the following grammar:Here large letters represent\r\nvariables, and small letters represent their negations. For example, if\r\n, then character corresponds to value 1, and value character corresponds\r\nto value 0. Here character \u2019&\u2019 corresponds to the operation of logical\r\nAND, character \u2019|\u2019 corresponds to the operation of logical OR.You are\r\ngiven expression , defining function , where some operations and\r\nvariables are missing. Also you know the values of the function for some\r\ndistinct sets of variable values. Count the number of ways to restore\r\nthe elements that are missing in the expression so that the resulting\r\nexpression corresponded to the given information about function in the\r\ngiven variable sets. As the value of the result can be rather large,\r\nprint its remainder modulo .\r\n",
+    "solutions": [
+        "#include<bits/stdc++.h>\nusing namespace std;\n\ntypedef long long ll;\n\nconst int MOD = 1e9 + 7;\n\nconst int V = 4;\n\nint L;\nchar S[600];\n// stored by a\nint dp[510][(1 << 16) + 10];\n\nint tmp[(1 << 16) + 10];\n\n// [a,b]\nvoid dfs(int a, int b) {\n\t// S[a,b] is a valid expression\n\tassert(a <= b);\n\tif(a == b) {\n\t\tassert(S[a] == '?' || ('A' <= S[a] && S[a] <= 'D') || ('a' <= S[a] && S[a] <= 'd'));\n\t\tif(S[a] == 'A' || S[a] == '?') dp[a][0b1111111100000000] = 1;\n\t\tif(S[a] == 'B' || S[a] == '?') dp[a][0b1111000011110000] = 1;\n\t\tif(S[a] == 'C' || S[a] == '?') dp[a][0b1100110011001100] = 1;\n\t\tif(S[a] == 'D' || S[a] == '?') dp[a][0b1010101010101010] = 1;\n\t\tif(S[a] == 'a' || S[a] == '?') dp[a][0b0000000011111111] = 1;\n\t\tif(S[a] == 'b' || S[a] == '?') dp[a][0b0000111100001111] = 1;\n\t\tif(S[a] == 'c' || S[a] == '?') dp[a][0b0011001100110011] = 1;\n\t\tif(S[a] == 'd' || S[a] == '?') dp[a][0b0101010101010101] = 1;\n\t} else {\n\t\t// dfs\n\t\tint m = a;\n\t\tfor(int i = 0; true; m++) {\n\t\t\tif(S[m] == '(') i++;\n\t\t\telse if(S[m] == ')') i--;\n\t\t\telse if(i == 0) break;\n\t\t}\n\t\tassert(S[m] == '?' || S[m] == '&' || S[m] == '|');\n\t\tdfs(a + 1, m - 2);\n\t\tdfs(m + 2, b - 1);\n\t\tint l = a + 1, r = m + 2;\n\t\tif(S[m] == '&' || S[m] == '?') {\n\t\t\tfor(int i = 0; i < 16; i++) {\n\t\t\t\tfor(int s = 0; s < (1 << 16); s++) {\n\t\t\t\t\tif(!(s & (1 << i))) {\n\t\t\t\t\t\tdp[l][s] += dp[l][s + (1 << i)];\n\t\t\t\t\t\tdp[l][s] %= MOD;\n\t\t\t\t\t\tdp[r][s] += dp[r][s + (1 << i)];\n\t\t\t\t\t\tdp[r][s] %= MOD;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tfor(int s = 0; s < (1 << 16); s++) {\n\t\t\t\ttmp[s] = (ll(dp[l][s]) * ll(dp[r][s])) % MOD;\n\t\t\t}\n\t\t\tfor(int i = 0; i < 16; i++) {\n\t\t\t\tfor(int s = 0; s < (1 << 16); s++) {\n\t\t\t\t\tif(!(s & (1 << i))) {\n\t\t\t\t\t\ttmp[s] -= tmp[s + (1 << i)];\n\t\t\t\t\t\ttmp[s] %= MOD;\n\t\t\t\t\t\tdp[l][s] -= dp[l][s + (1 << i)];\n\t\t\t\t\t\tdp[l][s] %= MOD;\n\t\t\t\t\t\tdp[r][s] -= dp[r][s + (1 << i)];\n\t\t\t\t\t\tdp[r][s] %= MOD;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tfor(int s = 0; s < (1 << 16); s++) {\n\t\t\t\tdp[a][s] += tmp[s];\n\t\t\t}\n\t\t}\n\t\tif(S[m] == '|' || S[m] == '?') {\n\t\t\tfor(int i = 0; i < 16; i++) {\n\t\t\t\tfor(int s = 0; s < (1 << 16); s++) {\n\t\t\t\t\tif(s & (1 << i)) {\n\t\t\t\t\t\tdp[l][s] += dp[l][s - (1 << i)];\n\t\t\t\t\t\tdp[l][s] %= MOD;\n\t\t\t\t\t\tdp[r][s] += dp[r][s - (1 << i)];\n\t\t\t\t\t\tdp[r][s] %= MOD;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tfor(int s = 0; s < (1 << 16); s++) {\n\t\t\t\ttmp[s] = (ll(dp[l][s]) * ll(dp[r][s])) % MOD;\n\t\t\t}\n\t\t\tfor(int i = 0; i < 16; i++) {\n\t\t\t\tfor(int s = 0; s < (1 << 16); s++) {\n\t\t\t\t\tif(s & (1 << i)) {\n\t\t\t\t\t\ttmp[s] -= tmp[s - (1 << i)];\n\t\t\t\t\t\ttmp[s] %= MOD;\n\t\t\t\t\t\tdp[l][s] -= dp[l][s - (1 << i)];\n\t\t\t\t\t\tdp[l][s] %= MOD;\n\t\t\t\t\t\tdp[r][s] -= dp[r][s - (1 << i)];\n\t\t\t\t\t\tdp[r][s] %= MOD;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tfor(int s = 0; s < (1 << 16); s++) {\n\t\t\t\tdp[a][s] += tmp[s];\n\t\t\t}\n\t\t}\n\t\tfor(int s = 0; s < (1 << 16); s++) {\n\t\t\tdp[a][s] %= MOD;\n\t\t\tif(dp[a][s] < 0) dp[a][s] += MOD;\n\t\t}\n\t}\n}\n\nint main() {\n\tios_base::sync_with_stdio(0);\n\tcin >> S;\n\tL = int(strlen(S));\n\n\tdfs(0, L - 1);\n\tint N; cin >> N;\n\tint msk = 0;\n\tint val = 0;\n\tfor(int i = 0; i < N; i++) {\n\t\tint a, b, c, d, v;\n\t\tcin >> a >> b >> c >> d >> v;\n\t\tmsk |= (1 << (8 * a + 4 * b + 2 * c + d));\n\t\tval |= (v << (8 * a + 4 * b + 2 * c + d));\n\t}\n\tll res = 0;\n\tfor(int v = 0; v < (1 << 16); v++) {\n\t\tif((v & msk) == val) {\n\t\t\tres += dp[0][v];\n\t\t}\n\t}\n\tres %= MOD;\n\tif(res < 0) res += MOD;\n\tcout << res << '\\n';\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "bitmasks",
+        "dp",
+        "expression parsing"
+    ],
+    "dificulty": "3000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\E. Boolean Function.json",
+    "editorial_link": "https://codeforces.com//blog/entry/20692",
+    "editorial": "One could prove that the number of binary functions on 4 variables is equal to 224, and can be coded by storing a 24-bit binary mask, in which every bit is storing function value for corresponding variable set. It is true, that if maskf and maskg are correspond to functions f(A,?B,?C,?D) and g(A,?B,?C,?D), then function (f&g)(A,?B,?C,?D) corresponds to maskf&maskg bitmask.\n\nNow, we could parse expression given input into binary tree. I should notice that the number of non-list nodes of such tree is about . Now, let's calculate dynamic programming on every vertex v \u0097 dp[v][mask] is the number of ways to place symbols in expression in the way that subtree of vertex v will correspond to function representing by mask. For list nodes such dynamic is calculated pretty straightforward by considering all possible mask values and matching it with the variable. One could easily recalculate it for one node using calculated answers for left and right subtree in 416 operations: dp[v][lmask|rmask]?+??=?dp[l][lmask]?*?dp[r][rmask].\n\nBut all the task is how to make it faster. One could calculate s[mask], where s[mask] is equal to sum of all its submasks (the masks containing 1-bits only in positions where mask contains 1-bits) in 24\u00b7224 operations using following code:\n\nfor (int mask = 0; mask < (1 << 16); ++mask) s[mask] = dp[x][mask];\nfor (int i = 0; i < 16; ++i)\n    for (int mask = 0; mask < (1 << 16); ++mask)\n        if (!(mask & (1 << i))) s[mask ^ (1 << i)] += s[mask];\nLet's calculate sl[mask] and sr[mask] for dp[l][mask] and dp[r][mask] respectively. If we will find s[mask]?=?sl[mask]?*?sr[mask], s[mask] will contain multiplications of values of pairs of masks from left and right dp's, which are submasks of mask. As soon as we need pairs, which in bitwise OR will give us exactly mask, we should exclude pairs, which in bitwise OR gives a submask of mask, not equal to mask. This gives us exclusion-inclusion principle idea. The formula of this will be\n\n, where p is the parity of number of bits in mask^submask.\n\nSuch sum could be calculated with approach above, but subtracting instead of adding\n\nfor (int mask = 0; mask < (1 << 16); ++mask) s[mask] = sl[mask] * sr[mask];\nfor (int i = 0; i < 16; ++i)\n    for (int mask = 0; mask < (1 << 16); ++mask)\n        if (!(mask & (1 << i))) s[mask ^ (1 << i)] -= s[mask];\nIn such way we will recalculate dynamic for one vertex in about 3\u00b724\u00b7216 operations."
+}

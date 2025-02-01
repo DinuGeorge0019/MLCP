@@ -1,1 +1,105 @@
-{"link": "https://codeforces.com//contest/227/problem/A", "problemId": "1845", "problem_idx": "A", "shortId": "227A", "contest_number": "227", "problem_submissions": {"E": [2244819], "D": [2241285, 2242789, 2243651, 2244494, 2243976, 2245494, 2243333, 2241816, 2243438, 2243253, 2243591, 2242751, 2243506, 2242179, 2244374, 2241750, 2242474], "C": [2239263, 2240482, 2239762, 2242318, 2239042, 2240039, 2244041, 2239823, 2241928, 2239774, 2240494, 2241415, 2240378, 2239721, 2241369, 2239346, 2243306, 2238534], "B": [2238261, 2239265, 2238668, 2237700, 2237709, 2238241, 2238220, 2238145, 2238505, 2238087, 2238895, 2238677, 2239004, 2238928, 2237401, 2238043, 2239611, 2237944], "A": [2237402, 2238048, 2237808, 2237346, 2237343, 2240757, 2237508, 2237496, 2237858, 2237476, 2237431, 2237540, 2237592, 2241472, 2243917, 2237478, 2237575]}, "name": "A. Where do I Turn ", "statement": "Trouble came from the overseas lands: a three-headed dragon Gorynych\r\narrived. The dragon settled at point and began to terrorize the\r\nresidents of the surrounding villages.A brave hero decided to put an end\r\nto the dragon. He moved from point to fight with Gorynych. The hero rode\r\nfrom point along a straight road and met point on his way. The hero\r\nknows that in this land for every pair of roads it is true that they are\r\neither parallel to each other, or lie on a straight line, or are\r\nperpendicular to each other. He also knows well that points and are\r\nconnected by a road. So the hero must either turn 90 degrees to the left\r\nor continue riding straight ahead or turn 90 degrees to the right. But\r\nhe forgot where the point is located.Fortunately, a Brave Falcon flew\r\nright by. It can see all three points from the sky. The hero asked him\r\nwhat way to go to get to the dragon\u2019s lair.If you have not got it, you\r\nare the falcon. Help the hero and tell him how to get him to point :\r\nturn left, go straight or turn right.At this moment the hero is believed\r\nto stand at point , turning his back to point .\r\n", "solutions": ["#include<iostream>\n\nusing namespace std;\n\nlong long xa,xb,ya,yb,xc,yc,t;\n\nlong long cp(long long x1,long long x2,long long y1,long long y2)\n{\n    return x1*y2-x2*y1;\n}\nint main()\n{\n    cin>>xa>>ya>>xb>>yb>>xc>>yc;\n    t=cp(xc-xa,xb-xa,yc-ya,yb-ya);\n    if (t==0)\n    {\n        cout<<\"TOWARDS\"<<endl;\n    }\n    if (t<0)\n    {\n        cout<<\"LEFT\"<<endl;\n    }\n    if (t>0)\n    {\n        cout<<\"RIGHT\"<<endl;\n    }\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["geometry"], "dificulty": "1300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/227/problem/A",
+    "problemId": "1845",
+    "problem_idx": "A",
+    "shortId": "227A",
+    "contest_number": "227",
+    "problem_submissions": {
+        "E": [
+            2244819
+        ],
+        "D": [
+            2241285,
+            2242789,
+            2243651,
+            2244494,
+            2243976,
+            2245494,
+            2243333,
+            2241816,
+            2243438,
+            2243253,
+            2243591,
+            2242751,
+            2243506,
+            2242179,
+            2244374,
+            2241750,
+            2242474
+        ],
+        "C": [
+            2239263,
+            2240482,
+            2239762,
+            2242318,
+            2239042,
+            2240039,
+            2244041,
+            2239823,
+            2241928,
+            2239774,
+            2240494,
+            2241415,
+            2240378,
+            2239721,
+            2241369,
+            2239346,
+            2243306,
+            2238534
+        ],
+        "B": [
+            2238261,
+            2239265,
+            2238668,
+            2237700,
+            2237709,
+            2238241,
+            2238220,
+            2238145,
+            2238505,
+            2238087,
+            2238895,
+            2238677,
+            2239004,
+            2238928,
+            2237401,
+            2238043,
+            2239611,
+            2237944
+        ],
+        "A": [
+            2237402,
+            2238048,
+            2237808,
+            2237346,
+            2237343,
+            2240757,
+            2237508,
+            2237496,
+            2237858,
+            2237476,
+            2237431,
+            2237540,
+            2237592,
+            2241472,
+            2243917,
+            2237478,
+            2237575
+        ]
+    },
+    "name": "A. Where do I Turn ",
+    "statement": "Trouble came from the overseas lands: a three-headed dragon Gorynych\r\narrived. The dragon settled at point and began to terrorize the\r\nresidents of the surrounding villages.A brave hero decided to put an end\r\nto the dragon. He moved from point to fight with Gorynych. The hero rode\r\nfrom point along a straight road and met point on his way. The hero\r\nknows that in this land for every pair of roads it is true that they are\r\neither parallel to each other, or lie on a straight line, or are\r\nperpendicular to each other. He also knows well that points and are\r\nconnected by a road. So the hero must either turn 90 degrees to the left\r\nor continue riding straight ahead or turn 90 degrees to the right. But\r\nhe forgot where the point is located.Fortunately, a Brave Falcon flew\r\nright by. It can see all three points from the sky. The hero asked him\r\nwhat way to go to get to the dragon\u2019s lair.If you have not got it, you\r\nare the falcon. Help the hero and tell him how to get him to point :\r\nturn left, go straight or turn right.At this moment the hero is believed\r\nto stand at point , turning his back to point .\r\n",
+    "solutions": [
+        "#include<iostream>\n\nusing namespace std;\n\nlong long xa,xb,ya,yb,xc,yc,t;\n\nlong long cp(long long x1,long long x2,long long y1,long long y2)\n{\n    return x1*y2-x2*y1;\n}\nint main()\n{\n    cin>>xa>>ya>>xb>>yb>>xc>>yc;\n    t=cp(xc-xa,xb-xa,yc-ya,yb-ya);\n    if (t==0)\n    {\n        cout<<\"TOWARDS\"<<endl;\n    }\n    if (t<0)\n    {\n        cout<<\"LEFT\"<<endl;\n    }\n    if (t>0)\n    {\n        cout<<\"RIGHT\"<<endl;\n    }\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "geometry"
+    ],
+    "dificulty": "1300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Where do I Turn .json",
+    "editorial_link": "https://codeforces.com/blog/entry/5378",
+    "editorial": "Let\u00e2\u0080\u0099s consider cross product of vectors and , which is equal to . Sign\r\nof cross product defines sign of a sine of oriented angle between\r\nvectors (because cross product is also equal to ), and that sign leads\r\nus to the correct answer. If cross product is equal to zero, then and\r\nlay on the same straight line. So the answer is <>. If cross product is\r\nmore than zero, then answer is <>. And, at last, if it\u00e2\u0080\u0099s less than zero,\r\nthe answer is <>. Also you should notice that the value of cross product\r\ndoesn\u00e2\u0080\u0099t fit 32-bit type, so you have to use 64-bit type in order to\r\navoid integer overflow. Implementation\r\n"
+}

@@ -1,1 +1,104 @@
-{"link": "https://codeforces.com//contest/298/problem/B", "problemId": "2855", "problem_idx": "B", "shortId": "298B", "contest_number": "298", "problem_submissions": {"C": [3570158, 3568738, 3569545, 3567890, 3567795, 3569019, 3570396, 3567853, 3569346, 3568955, 3569646, 3569940, 3571985, 3569198, 3566584, 3569693], "D": [3568096, 3570657, 3570524, 3570016, 3570399, 3570578, 3572279, 3569208, 3571015, 3570830, 3571239, 3572221, 3569761, 3572179, 3572808, 3571486], "B": [3566471, 3567469, 3566658, 3566618, 3566674, 3566985, 3566799, 3566534, 3567818, 3567371, 3567342, 3568432, 3567391, 3566870, 3566974, 3567848], "A": [3565924, 3565788, 3565272, 3565138, 3565194, 3565362, 3565614, 3565531, 3565855, 3565619, 3565475, 3565918, 3565883, 3565243, 3569485, 3566160], "E": [3577571, 3618894, 4783067, 3641979]}, "name": "B. Sail", "statement": "The polar bears are going fishing. They plan to sail from to . However,\r\nthe boat can only sail by wind. At each second, the wind blows in one of\r\nthese directions: east, south, west or north. Assume the boat is\r\ncurrently at . If the wind blows to the east, the boat will move to . If\r\nthe wind blows to the south, the boat will move to . If the wind blows\r\nto the west, the boat will move to . If the wind blows to the north, the\r\nboat will move to . Alternatively, they can hold the boat by the anchor.\r\nIn this case, the boat stays at . Given the wind direction for seconds,\r\nwhat is the earliest time they sail to ?\r\n", "solutions": ["//In the Name of GOD\n#include <iostream>\n#include <vector>\n#include <cmath>\n#include <cstring>\n#include <algorithm>\n#define MOD 1000000007ll\n\nusing namespace std;\n\n\n\n\nint main()\n{\n\tlong long n,x,y,a,b;\n\tcin>>n>>x>>y>>a>>b;\n\tfor(int i=0;i<n;i++)\n\t{\n\t\tchar ch;\n\t\tcin>>ch;\n\t\tif(ch=='S')\n\t\t{\n\t\t\tif(y>b)\n\t\t\t\ty--;\n\t\t}\n\t\tif(ch=='N')\n\t\t{\n\t\t\tif(y<b)\n\t\t\t\ty++;\n\t\t}\n\t\tif(ch=='E')\n\t\t\tif(x<a)\n\t\t\t\tx++;\n\t\tif(ch=='W')\n\t\t\tif(x>a)\n\t\t\t\tx--;\n\t\tif(x==a and y==b)\n\t\t{\n\t\t\tcout<<i+1;\n\t\t\treturn 0;\n\t\t}\n\t}\n\tcout<<-1;\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["brute force", "greedy", "implementation"], "dificulty": "1200", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/298/problem/B",
+    "problemId": "2855",
+    "problem_idx": "B",
+    "shortId": "298B",
+    "contest_number": "298",
+    "problem_submissions": {
+        "C": [
+            3570158,
+            3568738,
+            3569545,
+            3567890,
+            3567795,
+            3569019,
+            3570396,
+            3567853,
+            3569346,
+            3568955,
+            3569646,
+            3569940,
+            3571985,
+            3569198,
+            3566584,
+            3569693
+        ],
+        "D": [
+            3568096,
+            3570657,
+            3570524,
+            3570016,
+            3570399,
+            3570578,
+            3572279,
+            3569208,
+            3571015,
+            3570830,
+            3571239,
+            3572221,
+            3569761,
+            3572179,
+            3572808,
+            3571486
+        ],
+        "B": [
+            3566471,
+            3567469,
+            3566658,
+            3566618,
+            3566674,
+            3566985,
+            3566799,
+            3566534,
+            3567818,
+            3567371,
+            3567342,
+            3568432,
+            3567391,
+            3566870,
+            3566974,
+            3567848
+        ],
+        "A": [
+            3565924,
+            3565788,
+            3565272,
+            3565138,
+            3565194,
+            3565362,
+            3565614,
+            3565531,
+            3565855,
+            3565619,
+            3565475,
+            3565918,
+            3565883,
+            3565243,
+            3569485,
+            3566160
+        ],
+        "E": [
+            3577571,
+            3618894,
+            4783067,
+            3641979
+        ]
+    },
+    "name": "B. Sail",
+    "statement": "The polar bears are going fishing. They plan to sail from to . However,\r\nthe boat can only sail by wind. At each second, the wind blows in one of\r\nthese directions: east, south, west or north. Assume the boat is\r\ncurrently at . If the wind blows to the east, the boat will move to . If\r\nthe wind blows to the south, the boat will move to . If the wind blows\r\nto the west, the boat will move to . If the wind blows to the north, the\r\nboat will move to . Alternatively, they can hold the boat by the anchor.\r\nIn this case, the boat stays at . Given the wind direction for seconds,\r\nwhat is the earliest time they sail to ?\r\n",
+    "solutions": [
+        "//In the Name of GOD\n#include <iostream>\n#include <vector>\n#include <cmath>\n#include <cstring>\n#include <algorithm>\n#define MOD 1000000007ll\n\nusing namespace std;\n\n\n\n\nint main()\n{\n\tlong long n,x,y,a,b;\n\tcin>>n>>x>>y>>a>>b;\n\tfor(int i=0;i<n;i++)\n\t{\n\t\tchar ch;\n\t\tcin>>ch;\n\t\tif(ch=='S')\n\t\t{\n\t\t\tif(y>b)\n\t\t\t\ty--;\n\t\t}\n\t\tif(ch=='N')\n\t\t{\n\t\t\tif(y<b)\n\t\t\t\ty++;\n\t\t}\n\t\tif(ch=='E')\n\t\t\tif(x<a)\n\t\t\t\tx++;\n\t\tif(ch=='W')\n\t\t\tif(x>a)\n\t\t\t\tx--;\n\t\tif(x==a and y==b)\n\t\t{\n\t\t\tcout<<i+1;\n\t\t\treturn 0;\n\t\t}\n\t}\n\tcout<<-1;\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "greedy",
+        "implementation"
+    ],
+    "dificulty": "1200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Sail.json",
+    "editorial_link": "https://codeforces.com//blog/entry/7437",
+    "editorial": "We can simply move by greedy method only moves when it takes the boat\r\ncloser to the destination.\r\n"
+}

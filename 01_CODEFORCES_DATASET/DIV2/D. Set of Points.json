@@ -1,1 +1,84 @@
-{"link": "https://codeforces.com//contest/278/problem/D", "problemId": "2665", "problem_idx": "D", "shortId": "278D", "contest_number": "278", "problem_submissions": {"E": [3219867, 3221986], "D": [3213238, 3215279, 3216086, 3217208, 3217668], "C": [3211852, 3213120, 3213066, 3214325, 3215111, 3212693, 3210225, 3210914, 3210903, 3213534, 3212483, 3211475, 3213044, 3211593], "B": [3210694, 3210904, 3211477, 3211274, 3210417, 3210722, 3209006, 3209446, 3209860, 3210543, 3209941, 3210339, 3210819, 3210425], "A": [3208889, 3209118, 3208502, 3208248, 3208401, 3209996, 3208190, 3208215, 3208219, 3208450, 3208293, 3208373, 3208970, 3208304]}, "name": "D. Set of Points", "statement": "Convexity of a set of points on the plane is the size of the largest\r\nsubset of points that form a convex polygon. Your task is to build a set\r\nof points with the convexity of exactly . Your set of points should not\r\ncontain three points that lie on a straight line.\r\n", "solutions": ["#include <vector>\n#include <string>\n#include <algorithm>\n#include <list>\n#include <set>\n#include <queue>\n#include <stack>\n#include <sstream>\n#include <numeric>\n#include <functional>\n#include <utility>\n#include <bitset>\n#include <iostream>\n#include <cmath>\n#include <map>\n#include <cstring>\n#include <cstdio>\n#include <stdint.h>\n#include <cstdarg>\n#include <cstdio>\n#include <cassert>\nusing namespace std;\n\nint n, m;\n\nint main()\n{\n    scanf(\"%d %d\", & n, & m);\n    if (m == 3)\n    {\n        if (n == 3)\n        {\n            printf(\"0 0\\n0 1\\n1 0\\n\");\n            return 0;\n        }\n        if (n == 4)\n        {\n            printf(\"0 0\\n0 10\\n10 0\\n1 1\\n\");\n            return 0;\n        }\n        printf(\"-1\\n\");\n        return 0;\n    }\n    for (int i = 1; i <= m; ++ i)\n        printf(\"%d %d\\n\", i, - (n - i) * (n - i));\n    for (int i = 1; i <= n - m; ++ i)\n        printf(\"%d %d\\n\", - i, (n - i) * (n - i));\n}\n\n\n"], "input": "", "output": "", "tags": ["constructive algorithms", "geometry"], "dificulty": "2300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/278/problem/D",
+    "problemId": "2665",
+    "problem_idx": "D",
+    "shortId": "278D",
+    "contest_number": "278",
+    "problem_submissions": {
+        "E": [
+            3219867,
+            3221986
+        ],
+        "D": [
+            3213238,
+            3215279,
+            3216086,
+            3217208,
+            3217668
+        ],
+        "C": [
+            3211852,
+            3213120,
+            3213066,
+            3214325,
+            3215111,
+            3212693,
+            3210225,
+            3210914,
+            3210903,
+            3213534,
+            3212483,
+            3211475,
+            3213044,
+            3211593
+        ],
+        "B": [
+            3210694,
+            3210904,
+            3211477,
+            3211274,
+            3210417,
+            3210722,
+            3209006,
+            3209446,
+            3209860,
+            3210543,
+            3209941,
+            3210339,
+            3210819,
+            3210425
+        ],
+        "A": [
+            3208889,
+            3209118,
+            3208502,
+            3208248,
+            3208401,
+            3209996,
+            3208190,
+            3208215,
+            3208219,
+            3208450,
+            3208293,
+            3208373,
+            3208970,
+            3208304
+        ]
+    },
+    "name": "D. Set of Points",
+    "statement": "Convexity of a set of points on the plane is the size of the largest\r\nsubset of points that form a convex polygon. Your task is to build a set\r\nof points with the convexity of exactly . Your set of points should not\r\ncontain three points that lie on a straight line.\r\n",
+    "solutions": [
+        "#include <vector>\n#include <string>\n#include <algorithm>\n#include <list>\n#include <set>\n#include <queue>\n#include <stack>\n#include <sstream>\n#include <numeric>\n#include <functional>\n#include <utility>\n#include <bitset>\n#include <iostream>\n#include <cmath>\n#include <map>\n#include <cstring>\n#include <cstdio>\n#include <stdint.h>\n#include <cstdarg>\n#include <cstdio>\n#include <cassert>\nusing namespace std;\n\nint n, m;\n\nint main()\n{\n    scanf(\"%d %d\", & n, & m);\n    if (m == 3)\n    {\n        if (n == 3)\n        {\n            printf(\"0 0\\n0 1\\n1 0\\n\");\n            return 0;\n        }\n        if (n == 4)\n        {\n            printf(\"0 0\\n0 10\\n10 0\\n1 1\\n\");\n            return 0;\n        }\n        printf(\"-1\\n\");\n        return 0;\n    }\n    for (int i = 1; i <= m; ++ i)\n        printf(\"%d %d\\n\", i, - (n - i) * (n - i));\n    for (int i = 1; i <= n - m; ++ i)\n        printf(\"%d %d\\n\", - i, (n - i) * (n - i));\n}\n\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "geometry"
+    ],
+    "dificulty": "2300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Set of Points.json",
+    "editorial_link": "https://codeforces.com//blog/entry/6815",
+    "editorial": "For m?=?3,?n?=?5 and m?=?3,?n?=?6 there is no solution.\n\nLet's learn how to construct the solution for n?=?2m, where m???5 and is odd. Set up m points on a circle of sufficiently large radius. This will be the inner polygon. The outer polygon will be the inner polygon multiplied by 2. More precisely (1???i???m):\n\n\n\n\n\n\n\n\n\nIf m is even, construct the solution for m?+?1 and then delete one point from each polygon. If n?<?2m, delete 2m?-?n points from the inner polygon.\n\nUnfortunately, this solution doesn't work for m?=?4,?n?=?7 and m?=?4,?n?=?8.\n\nAnother approach is to set up m points on a convex function (for example, y?=?x2?+?107), and set up the rest n?-?m points on a concave function (for example, y?=??-?x2?-?107)."
+}

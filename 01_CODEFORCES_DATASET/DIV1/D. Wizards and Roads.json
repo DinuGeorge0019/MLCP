@@ -1,1 +1,100 @@
-{"link": "https://codeforces.com//contest/167/problem/D", "problemId": "1063", "problem_idx": "D", "shortId": "167D", "contest_number": "167", "problem_submissions": {"E": [1429386, 1431660, 1430538, 1430207, 1479431, 1430621, 1507864, 1489249], "A": [1426561, 1425295, 1423883, 1423692, 1423784, 1423907, 1423753, 1427774, 1424703, 1425193, 1423661, 1424092, 1424249, 1423770, 1424171, 1423924], "B": [1425782, 1424634, 1425254, 1432486, 1425184, 1425747, 1425398, 1426194, 1432748, 1426937, 1424930, 1425807, 1425826, 1425888, 1426390, 1425899], "C": [1424483, 1428090, 1428465, 1428006, 1427996, 1428587, 1429943, 1429298, 1431073, 1428990, 1428193, 1428363, 1428419, 1429448, 1428344, 1428582], "D": [1430967, 2861371, 1479835, 1433356, 1432586, 1508890]}, "name": "D. Wizards and Roads", "statement": "In some country live wizards. They love to build cities and roads.The\r\ncountry used to have cities, the -th city () was located at a point (,\r\n). It was decided to create another cities. And the -th one () was\r\ncreated at a point with coordinates (, ): Here , , , are primes. Also,\r\n.After the construction of all cities, the wizards have noticed\r\nsomething surprising. It turned out that for every two different cities\r\nand , and holds.The cities are built, it\u2019s time to build roads! It was\r\ndecided to use the most difficult (and, of course, the most powerful)\r\nspell for the construction of roads. Using this spell creates a road\r\nbetween the towns of , ( > ) if and only if for any city which lies\r\nstrictly inside the corner at the point , (see below), there is a city\r\nthat does not lie in the corner, which is located along the -coordinate\r\nstrictly between and and simultaneously .A on the points (, ), (, ) ()\r\nis the set of points (), for which at least one of the two conditions is\r\nfulfilled: and and In order to test the spell, the wizards will apply it\r\nto all the cities that lie on the -coordinate in the interval . After\r\nthe construction of roads the national government wants to choose the\r\nmaximum number of pairs of cities connected by the road, so that no city\r\noccurs in two or more pairs. Your task is for each offered variants of\r\nvalues , to calculate the maximum number of such pairs after the\r\nconstruction of the roads. Please note that the cities that do not lie\r\nin the interval on the -coordinate, do not affect the construction of\r\nroads in any way.\r\n", "solutions": ["#include <iostream>\n#include <vector>\n#include <cmath>\n#include <cstdio>\n#include <set>\n#include <map>\n#include <fstream>\n#include <cstdlib>\n#include <string>\n#include <cstring>\n#include <algorithm>\n\nusing namespace std;\n\n#ifdef ONLINE_JUDGE\n\n#define fin cin\n#define fout cout\n\n#else\n\nfstream fin(\"input.txt\", fstream::in);\nfstream fout(\"output.txt\", fstream::out);\n\n#endif\n\nstruct TCartNode {\n\tint x, y;\n\tint w;\n\tTCartNode *left, *right;\n\tint used, nused;\n\n\tTCartNode(int _x, int _y);\n};\n\nTCartNode *null;\n\nTCartNode::TCartNode(int _x, int _y)\n\t: x(_x)\n\t, y(_y)\n\t, w(1)\n\t, left(null)\n\t, right(null)\n\t, used(0)\n\t, nused(0)\n{\n}\n\nvoid relax(TCartNode *node) {\n\tif (node == null) {\n\t\treturn;\n\t}\n\n\tnode->w = 1 + node->left->w + node->right->w;\n\tnode->used = node->left->nused + node->right->nused;\n\tnode->nused = max(node->used, 1 + max(node->left->used + node->right->nused, node->left->nused + node->right->used));\n}\n\nvoid split(TCartNode *node, int x, TCartNode **left, TCartNode **right) {\n\tif (node == null) {\n\t\t*left = *right = null;\n\t\treturn;\n\t}\n\n\tif (node->x > x) {\n\t\tsplit(node->left, x, left, right);\n\t\tnode->left = *right;\n\t\t*right = node;\n\t} else {\n\t\tsplit(node->right, x, left, right);\n\t\tnode->right = *left;\n\t\t*left = node;\n\t}\n\trelax(node);\n}\n\nTCartNode *merge(TCartNode *left, TCartNode *right) {\n\tif (left == null) {\n\t\treturn right;\n\t}\n\tif (right == null) {\n\t\treturn left;\n\t}\n\n\tif (left->y > right->y) {\n\t\tleft->right = merge(left->right, right);\n\t\trelax(left);\n\t\treturn left;\n\t} else {\n\t\tright->left = merge(left, right->left);\n\t\trelax(right);\n\t\treturn right;\n\t}\n}\n\nTCartNode *insert(TCartNode\t*root, TCartNode *node) {\n\tTCartNode *left, *right;\n\tsplit(root, node->x, &left, &right);\n\treturn merge(left, merge(node, right));\n}\n\nconst long long P = 1000000000 + 9;\n\nint main() {\n\tfout.precision(10);\n\tfout << fixed;\n\n\tnull = new TCartNode(0, 0);\n\tnull->w = 0;\n\tnull->left = null->right = null;\n\tnull->used = -1;\n\tnull->nused = 0;\n\n\tint N, K;\n\tfin >> N >> K;\n\tlong long x, y;\n\tlong long a, b, c, d;\n\n\tvector<TCartNode *> nodes(N);\n\tTCartNode *root = null;\n\n\tfor (int i = 0; i < K; ++i) {\n\t\tfin >> x >> y;\n\t\tnodes[i] = new TCartNode(x, y);\n\t\troot = insert(root, nodes[i]);\n\t}\n\t\n\tfin >> a >> b >> c >> d;\n\tfor (int i = K; i < N; ++i) {\n\t\tx = (a * x + b) % P;\n\t\ty = (c * y + d) % P;\n\t\tnodes[i] = new TCartNode(x, y);\n\t\troot = insert(root, nodes[i]);\n\t}\n\n\tint M;\n\tfin >> M;\n\tfor (int i = 0; i < M; ++i) {\n\t\tint l, r;\n\t\tfin >> l >> r;\n\t\tTCartNode *left, *middle, *right;\n\t\tsplit(root, l - 1, &left, &middle);\n\t\tsplit(middle, r, &middle, &right);\n\t\tfout << middle->nused << '\\n';\n\t\troot = merge(left, merge(middle, right));\n\t}\n\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["data structures", "divide and conquer", "graph matchings", "graphs", "greedy"], "dificulty": "3000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/167/problem/D",
+    "problemId": "1063",
+    "problem_idx": "D",
+    "shortId": "167D",
+    "contest_number": "167",
+    "problem_submissions": {
+        "E": [
+            1429386,
+            1431660,
+            1430538,
+            1430207,
+            1479431,
+            1430621,
+            1507864,
+            1489249
+        ],
+        "A": [
+            1426561,
+            1425295,
+            1423883,
+            1423692,
+            1423784,
+            1423907,
+            1423753,
+            1427774,
+            1424703,
+            1425193,
+            1423661,
+            1424092,
+            1424249,
+            1423770,
+            1424171,
+            1423924
+        ],
+        "B": [
+            1425782,
+            1424634,
+            1425254,
+            1432486,
+            1425184,
+            1425747,
+            1425398,
+            1426194,
+            1432748,
+            1426937,
+            1424930,
+            1425807,
+            1425826,
+            1425888,
+            1426390,
+            1425899
+        ],
+        "C": [
+            1424483,
+            1428090,
+            1428465,
+            1428006,
+            1427996,
+            1428587,
+            1429943,
+            1429298,
+            1431073,
+            1428990,
+            1428193,
+            1428363,
+            1428419,
+            1429448,
+            1428344,
+            1428582
+        ],
+        "D": [
+            1430967,
+            2861371,
+            1479835,
+            1433356,
+            1432586,
+            1508890
+        ]
+    },
+    "name": "D. Wizards and Roads",
+    "statement": "In some country live wizards. They love to build cities and roads.The\r\ncountry used to have cities, the -th city () was located at a point (,\r\n). It was decided to create another cities. And the -th one () was\r\ncreated at a point with coordinates (, ): Here , , , are primes. Also,\r\n.After the construction of all cities, the wizards have noticed\r\nsomething surprising. It turned out that for every two different cities\r\nand , and holds.The cities are built, it\u2019s time to build roads! It was\r\ndecided to use the most difficult (and, of course, the most powerful)\r\nspell for the construction of roads. Using this spell creates a road\r\nbetween the towns of , ( > ) if and only if for any city which lies\r\nstrictly inside the corner at the point , (see below), there is a city\r\nthat does not lie in the corner, which is located along the -coordinate\r\nstrictly between and and simultaneously .A on the points (, ), (, ) ()\r\nis the set of points (), for which at least one of the two conditions is\r\nfulfilled: and and In order to test the spell, the wizards will apply it\r\nto all the cities that lie on the -coordinate in the interval . After\r\nthe construction of roads the national government wants to choose the\r\nmaximum number of pairs of cities connected by the road, so that no city\r\noccurs in two or more pairs. Your task is for each offered variants of\r\nvalues , to calculate the maximum number of such pairs after the\r\nconstruction of the roads. Please note that the cities that do not lie\r\nin the interval on the -coordinate, do not affect the construction of\r\nroads in any way.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <vector>\n#include <cmath>\n#include <cstdio>\n#include <set>\n#include <map>\n#include <fstream>\n#include <cstdlib>\n#include <string>\n#include <cstring>\n#include <algorithm>\n\nusing namespace std;\n\n#ifdef ONLINE_JUDGE\n\n#define fin cin\n#define fout cout\n\n#else\n\nfstream fin(\"input.txt\", fstream::in);\nfstream fout(\"output.txt\", fstream::out);\n\n#endif\n\nstruct TCartNode {\n\tint x, y;\n\tint w;\n\tTCartNode *left, *right;\n\tint used, nused;\n\n\tTCartNode(int _x, int _y);\n};\n\nTCartNode *null;\n\nTCartNode::TCartNode(int _x, int _y)\n\t: x(_x)\n\t, y(_y)\n\t, w(1)\n\t, left(null)\n\t, right(null)\n\t, used(0)\n\t, nused(0)\n{\n}\n\nvoid relax(TCartNode *node) {\n\tif (node == null) {\n\t\treturn;\n\t}\n\n\tnode->w = 1 + node->left->w + node->right->w;\n\tnode->used = node->left->nused + node->right->nused;\n\tnode->nused = max(node->used, 1 + max(node->left->used + node->right->nused, node->left->nused + node->right->used));\n}\n\nvoid split(TCartNode *node, int x, TCartNode **left, TCartNode **right) {\n\tif (node == null) {\n\t\t*left = *right = null;\n\t\treturn;\n\t}\n\n\tif (node->x > x) {\n\t\tsplit(node->left, x, left, right);\n\t\tnode->left = *right;\n\t\t*right = node;\n\t} else {\n\t\tsplit(node->right, x, left, right);\n\t\tnode->right = *left;\n\t\t*left = node;\n\t}\n\trelax(node);\n}\n\nTCartNode *merge(TCartNode *left, TCartNode *right) {\n\tif (left == null) {\n\t\treturn right;\n\t}\n\tif (right == null) {\n\t\treturn left;\n\t}\n\n\tif (left->y > right->y) {\n\t\tleft->right = merge(left->right, right);\n\t\trelax(left);\n\t\treturn left;\n\t} else {\n\t\tright->left = merge(left, right->left);\n\t\trelax(right);\n\t\treturn right;\n\t}\n}\n\nTCartNode *insert(TCartNode\t*root, TCartNode *node) {\n\tTCartNode *left, *right;\n\tsplit(root, node->x, &left, &right);\n\treturn merge(left, merge(node, right));\n}\n\nconst long long P = 1000000000 + 9;\n\nint main() {\n\tfout.precision(10);\n\tfout << fixed;\n\n\tnull = new TCartNode(0, 0);\n\tnull->w = 0;\n\tnull->left = null->right = null;\n\tnull->used = -1;\n\tnull->nused = 0;\n\n\tint N, K;\n\tfin >> N >> K;\n\tlong long x, y;\n\tlong long a, b, c, d;\n\n\tvector<TCartNode *> nodes(N);\n\tTCartNode *root = null;\n\n\tfor (int i = 0; i < K; ++i) {\n\t\tfin >> x >> y;\n\t\tnodes[i] = new TCartNode(x, y);\n\t\troot = insert(root, nodes[i]);\n\t}\n\t\n\tfin >> a >> b >> c >> d;\n\tfor (int i = K; i < N; ++i) {\n\t\tx = (a * x + b) % P;\n\t\ty = (c * y + d) % P;\n\t\tnodes[i] = new TCartNode(x, y);\n\t\troot = insert(root, nodes[i]);\n\t}\n\n\tint M;\n\tfin >> M;\n\tfor (int i = 0; i < M; ++i) {\n\t\tint l, r;\n\t\tfin >> l >> r;\n\t\tTCartNode *left, *middle, *right;\n\t\tsplit(root, l - 1, &left, &middle);\n\t\tsplit(middle, r, &middle, &right);\n\t\tfout << middle->nused << '\\n';\n\t\troot = merge(left, merge(middle, right));\n\t}\n\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "data structures",
+        "divide and conquer",
+        "graph matchings",
+        "graphs",
+        "greedy"
+    ],
+    "dificulty": "3000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Wizards and Roads.json",
+    "editorial_link": "https://codeforces.com//blog/entry/4214",
+    "editorial": "This was the first really hard problem in the contest. One of the\r\nchallenges was to understand the statement. I hope that we had written\r\nthe statement as clear as it possible in this problem. Consider this\r\ngraph. In particular, we consider more closely the point with the\r\nlargest y. 1) It is connected with the highest points on the left and\r\nright of it. 2) It is not connected to all other points. 3) It is inside\r\nall corners on points from different sides of it. All three of these\r\nproperties are seen quite clearly in the pictures. So, 1) Building roads\r\non the left and right sides are independent. 2) The graph is a tree.\r\nOnce a graph is a tree, the maximum matching in it can be found greedy,\r\nor with a simple dynamic. But it works in linear time, which clearly is\r\nnot enough to answer all of queries. But this is not just a tree! Those\r\nwho know what it is probably already noticed, that it is Cartesian tree\r\n(also known as treep). This allows to get a tree for the subsegments in\r\ntime which is , counting all the necessary dynamics, where h is the\r\nheight of the tree. Well, since the city built at random points (the\r\nmethod for the construction of cities guarantees this), the height of\r\nthe tree .\r\n"
+}

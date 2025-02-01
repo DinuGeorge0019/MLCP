@@ -1,1 +1,81 @@
-{"link": "https://codeforces.com//contest/595/problem/A", "problemId": "40374", "problem_idx": "A", "shortId": "595A", "contest_number": "595", "problem_submissions": {"C": [14183245, 14174366, 14176948, 14185132, 14199391], "E": [14154107, 14157574, 14160562, 14158642], "B": [14147982, 14150411, 14148010, 14147720, 14155014, 14149149, 14148880, 14150127, 14148035, 14147384, 14147369, 14149951, 14147539, 14148771, 14147615], "A": [14144272, 14144928, 14145367, 14144629, 14144372, 14144556, 14144252, 14144455, 14146378, 14144766, 14145785, 14144276, 14144350, 14144811, 14144491, 14144489, 14144288], "D": [14159968, 14156852, 14157577, 14154481, 14163683]}, "name": "A. Vitaly and Night", "statement": "One day Vitaly was going home late at night and wondering: how many\r\npeople aren\u2019t sleeping at that moment? To estimate, Vitaly decided to\r\nlook which windows are lit in the house he was passing by at that\r\nmoment.Vitaly sees a building of floors and windows on each floor. On\r\neach floor there are flats numbered from to , and two consecutive\r\nwindows correspond to each flat. If we number the windows from to from\r\nleft to right, then the -th flat of the -th floor has windows and in the\r\ncorresponding row of windows (as usual, floors are enumerated from the\r\nbottom). Vitaly thinks that people in the flat aren\u2019t sleeping at that\r\nmoment if of the windows corresponding to this flat has lights on.Given\r\nthe information about the windows of the given house, your task is to\r\ncalculate the number of flats where, according to Vitaly, people aren\u2019t\r\nsleeping.\r\n", "solutions": ["#include <iostream>\n#include <fstream>\n#include <string>\n#include <map>\n#include <vector>\n#include <cmath>\n#include <iomanip>\n#include <algorithm>\n\nusing namespace std;\n\nint main(int argc, const char * argv[]) {\n    std::ios::sync_with_stdio(false);\n\n    int n, m, a, b, res = 0;\n    cin >> n >> m;\n    for(int i = 0; i < n; ++i) {\n        for (int j = 0; j < m; ++j) {\n            cin >> a >> b;\n            if (a + b > 0) {\n                ++res;\n            }\n        }\n    }\n    \n    cout << res;\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["constructive algorithms", "implementation"], "dificulty": "800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/595/problem/A",
+    "problemId": "40374",
+    "problem_idx": "A",
+    "shortId": "595A",
+    "contest_number": "595",
+    "problem_submissions": {
+        "C": [
+            14183245,
+            14174366,
+            14176948,
+            14185132,
+            14199391
+        ],
+        "E": [
+            14154107,
+            14157574,
+            14160562,
+            14158642
+        ],
+        "B": [
+            14147982,
+            14150411,
+            14148010,
+            14147720,
+            14155014,
+            14149149,
+            14148880,
+            14150127,
+            14148035,
+            14147384,
+            14147369,
+            14149951,
+            14147539,
+            14148771,
+            14147615
+        ],
+        "A": [
+            14144272,
+            14144928,
+            14145367,
+            14144629,
+            14144372,
+            14144556,
+            14144252,
+            14144455,
+            14146378,
+            14144766,
+            14145785,
+            14144276,
+            14144350,
+            14144811,
+            14144491,
+            14144489,
+            14144288
+        ],
+        "D": [
+            14159968,
+            14156852,
+            14157577,
+            14154481,
+            14163683
+        ]
+    },
+    "name": "A. Vitaly and Night",
+    "statement": "One day Vitaly was going home late at night and wondering: how many\r\npeople aren\u2019t sleeping at that moment? To estimate, Vitaly decided to\r\nlook which windows are lit in the house he was passing by at that\r\nmoment.Vitaly sees a building of floors and windows on each floor. On\r\neach floor there are flats numbered from to , and two consecutive\r\nwindows correspond to each flat. If we number the windows from to from\r\nleft to right, then the -th flat of the -th floor has windows and in the\r\ncorresponding row of windows (as usual, floors are enumerated from the\r\nbottom). Vitaly thinks that people in the flat aren\u2019t sleeping at that\r\nmoment if of the windows corresponding to this flat has lights on.Given\r\nthe information about the windows of the given house, your task is to\r\ncalculate the number of flats where, according to Vitaly, people aren\u2019t\r\nsleeping.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <fstream>\n#include <string>\n#include <map>\n#include <vector>\n#include <cmath>\n#include <iomanip>\n#include <algorithm>\n\nusing namespace std;\n\nint main(int argc, const char * argv[]) {\n    std::ios::sync_with_stdio(false);\n\n    int n, m, a, b, res = 0;\n    cin >> n >> m;\n    for(int i = 0; i < n; ++i) {\n        for (int j = 0; j < m; ++j) {\n            cin >> a >> b;\n            if (a + b > 0) {\n                ++res;\n            }\n        }\n    }\n    \n    cout << res;\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "implementation"
+    ],
+    "dificulty": "800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Vitaly and Night.json",
+    "editorial_link": "https://codeforces.com//blog/entry/21487",
+    "editorial": "It was easy realization problem. Let's increase the variable i from 1 to n, and inside let's increase the variable j from 1 to 2\u00b7m. On every iteration we will increase the variable j on 2. If on current iteration a[i][j]?=?'1' or a[i][j?+?1]?=?'1' let's increase the answer on one.\n"
+}

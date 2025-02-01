@@ -1,1 +1,90 @@
-{"link": "https://codeforces.com//contest/233/problem/B", "problemId": "1940", "problem_idx": "B", "shortId": "233B", "contest_number": "233", "problem_submissions": {"C": [2346859, 2344265, 2342707, 2344177, 2343973, 2342173, 2344328, 2344647, 2342871, 2344423, 2344277, 2344895, 2344437, 2344831], "D": [2344169, 2347773, 2353161, 2345620, 2345453, 2350406, 2348259], "B": [2341415, 2341779, 2341195, 2341568, 2342153, 2341110, 2340678, 2344879, 2341721, 2341416, 2343525, 2342567, 2341910, 2341340, 2342312, 2341746], "A": [2340511, 2340225, 2340024, 2340020, 2339946, 2339887, 2339899, 2339797, 2339994, 2339889, 2339746, 2339913, 2340577, 2339981, 2340518, 2339939], "E": [2388521]}, "name": "B. Non-square Equation", "statement": "Let\u2019s consider equation: where are positive integers, is the function,\r\nequal to the sum of digits of number in the decimal number system.You\r\nare given an integer , find the smallest positive integer root of\r\nequation , or else determine that there are no such roots.\r\n", "solutions": ["#include<cstdio>\n#include<cmath>\n#include<iostream>\n#include<algorithm>\nusing namespace std;\n\nlong long n;\n\nint getsum(long long x)\n{\n\tint sum=0;\n\twhile (x)\tsum+=x%10,x/=10;\n\treturn sum;\n}\n\nint main()\n{\n\tcin>>n;\n\tint temp=int(sqrt(n)),start;\n\tif (temp<5000) start=1;else start=temp-5000;\n\tfor (int i=start;i<=temp;i++)\n\t\tif (n%i==0)\n\t\t\tif (getsum(i)+i==n/i)\n\t\t\t{\n\t\t\t\tcout<<i<<endl;\n\t\t\t\treturn 0;\n\t\t\t}\n\tcout<<-1<<endl;\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["binary search", "brute force", "math"], "dificulty": "1400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/233/problem/B",
+    "problemId": "1940",
+    "problem_idx": "B",
+    "shortId": "233B",
+    "contest_number": "233",
+    "problem_submissions": {
+        "C": [
+            2346859,
+            2344265,
+            2342707,
+            2344177,
+            2343973,
+            2342173,
+            2344328,
+            2344647,
+            2342871,
+            2344423,
+            2344277,
+            2344895,
+            2344437,
+            2344831
+        ],
+        "D": [
+            2344169,
+            2347773,
+            2353161,
+            2345620,
+            2345453,
+            2350406,
+            2348259
+        ],
+        "B": [
+            2341415,
+            2341779,
+            2341195,
+            2341568,
+            2342153,
+            2341110,
+            2340678,
+            2344879,
+            2341721,
+            2341416,
+            2343525,
+            2342567,
+            2341910,
+            2341340,
+            2342312,
+            2341746
+        ],
+        "A": [
+            2340511,
+            2340225,
+            2340024,
+            2340020,
+            2339946,
+            2339887,
+            2339899,
+            2339797,
+            2339994,
+            2339889,
+            2339746,
+            2339913,
+            2340577,
+            2339981,
+            2340518,
+            2339939
+        ],
+        "E": [
+            2388521
+        ]
+    },
+    "name": "B. Non-square Equation",
+    "statement": "Let\u2019s consider equation: where are positive integers, is the function,\r\nequal to the sum of digits of number in the decimal number system.You\r\nare given an integer , find the smallest positive integer root of\r\nequation , or else determine that there are no such roots.\r\n",
+    "solutions": [
+        "#include<cstdio>\n#include<cmath>\n#include<iostream>\n#include<algorithm>\nusing namespace std;\n\nlong long n;\n\nint getsum(long long x)\n{\n\tint sum=0;\n\twhile (x)\tsum+=x%10,x/=10;\n\treturn sum;\n}\n\nint main()\n{\n\tcin>>n;\n\tint temp=int(sqrt(n)),start;\n\tif (temp<5000) start=1;else start=temp-5000;\n\tfor (int i=start;i<=temp;i++)\n\t\tif (n%i==0)\n\t\t\tif (getsum(i)+i==n/i)\n\t\t\t{\n\t\t\t\tcout<<i<<endl;\n\t\t\t\treturn 0;\n\t\t\t}\n\tcout<<-1<<endl;\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "binary search",
+        "brute force",
+        "math"
+    ],
+    "dificulty": "1400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Non-square Equation.json",
+    "editorial_link": "https://codeforces.com//blog/entry/5514",
+    "editorial": "Firstly let's find the interval of possible values of s(x). Hence x2???n and n???1018, x???109. In other words, for every considerable solution x the decimal length of x does not extend 10 digits. So smax???s(9999999999)?=?10\u00b79?=?90.\n\nLet's bruteforce the value of s(x) (0???s(x)???90). Now we have an ordinary square equation. The deal is to solve it and to check that the current bruteforced value of s(x) is equal to sum of digits of the solution. If the solution exists and the equality holds, we should relax the answer.\n\nIt seems that the most error-generating part of this problem is solving the equation.\n\nKnowing arrays is not neccessary to solve these two problems."
+}

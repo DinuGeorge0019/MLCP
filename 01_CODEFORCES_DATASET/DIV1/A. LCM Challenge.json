@@ -1,1 +1,75 @@
-{"link": "https://codeforces.com//contest/235/problem/A", "problemId": "1999", "problem_idx": "A", "shortId": "235A", "contest_number": "235", "problem_submissions": {"D": [3042109], "C": [2417778, 2401429, 2402641], "E": [2402112, 2401617, 2400848, 2421152, 2421132, 120142495, 120140982, 2406375], "A": [2397139, 2395807, 2396602, 2395919, 2397439, 2396282, 2397676, 2397630, 2396710, 2396092, 2396146, 2396812, 2396212, 2397021, 2396581], "B": [2395952, 2396750, 2397121, 2396950, 2397083, 2398248, 2396164, 2401830, 2396720, 2397471, 2402358, 2399645, 2400107, 2397813]}, "name": "A. LCM Challenge", "statement": "Some days ago, I learned the concept of LCM (least common multiple).\r\nI\u2019ve played with it for several times and I want to make a big number\r\nwith it.But I also don\u2019t want to use many numbers, so I\u2019ll choose three\r\npositive integers (they don\u2019t have to be distinct) which are not greater\r\nthan . Can you help me to find the maximum possible least common\r\nmultiple of these three integers?\r\n", "solutions": ["#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <set>\n#include <map>\n#include <algorithm>\n#include <functional>\n#include <utility>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstdio>\n\nusing namespace std;\n\n#define REP(i,n) for((i)=0;(i)<(int)(n);(i)++)\n#define foreach(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n\ntypedef long long ll;\n\nll gcd(ll x, ll y){\n    return x ? gcd(y%x,x) : y;\n}\n\nint main(void){\n    ll N;\n    cin >> N;\n    \n    ll x,y,z;\n    ll ans = 0;\n    \n    for(x=N;x*x*x>ans;x--) for(y=x;x*y*y>ans;y--) for(z=y;x*y*z>ans;z--){\n        if(gcd(x,y) == 1 && gcd(x,z) == 1 && gcd(y,z) == 1) ans = x*y*z;\n    }\n    \n    cout << ans << endl;\n    \n    return 0;\n}\n"], "input": "", "output": "", "tags": ["number theory"], "dificulty": "1600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/235/problem/A",
+    "problemId": "1999",
+    "problem_idx": "A",
+    "shortId": "235A",
+    "contest_number": "235",
+    "problem_submissions": {
+        "D": [
+            3042109
+        ],
+        "C": [
+            2417778,
+            2401429,
+            2402641
+        ],
+        "E": [
+            2402112,
+            2401617,
+            2400848,
+            2421152,
+            2421132,
+            120142495,
+            120140982,
+            2406375
+        ],
+        "A": [
+            2397139,
+            2395807,
+            2396602,
+            2395919,
+            2397439,
+            2396282,
+            2397676,
+            2397630,
+            2396710,
+            2396092,
+            2396146,
+            2396812,
+            2396212,
+            2397021,
+            2396581
+        ],
+        "B": [
+            2395952,
+            2396750,
+            2397121,
+            2396950,
+            2397083,
+            2398248,
+            2396164,
+            2401830,
+            2396720,
+            2397471,
+            2402358,
+            2399645,
+            2400107,
+            2397813
+        ]
+    },
+    "name": "A. LCM Challenge",
+    "statement": "Some days ago, I learned the concept of LCM (least common multiple).\r\nI\u2019ve played with it for several times and I want to make a big number\r\nwith it.But I also don\u2019t want to use many numbers, so I\u2019ll choose three\r\npositive integers (they don\u2019t have to be distinct) which are not greater\r\nthan . Can you help me to find the maximum possible least common\r\nmultiple of these three integers?\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <set>\n#include <map>\n#include <algorithm>\n#include <functional>\n#include <utility>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstdio>\n\nusing namespace std;\n\n#define REP(i,n) for((i)=0;(i)<(int)(n);(i)++)\n#define foreach(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n\ntypedef long long ll;\n\nll gcd(ll x, ll y){\n    return x ? gcd(y%x,x) : y;\n}\n\nint main(void){\n    ll N;\n    cin >> N;\n    \n    ll x,y,z;\n    ll ans = 0;\n    \n    for(x=N;x*x*x>ans;x--) for(y=x;x*y*y>ans;y--) for(z=y;x*y*z>ans;z--){\n        if(gcd(x,y) == 1 && gcd(x,z) == 1 && gcd(y,z) == 1) ans = x*y*z;\n    }\n    \n    cout << ans << endl;\n    \n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "number theory"
+    ],
+    "dificulty": "1600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. LCM Challenge.json",
+    "editorial_link": "https://codeforces.com//blog/entry/5592",
+    "editorial": "It is a simple problem, but many competitors used some wrong guesses and\r\nfailed. First of all, we should check if n is at most 3 and then we can\r\nsimply output 1,2,6. Now there are two cases: When n is odd, the answer\r\nis obviously n(n-1)(n-2). When n is even, we can still get at least\r\n(n-1)(n-2)(n-3), so these three numbers in the optimal answer would not\r\nbe very small compared to n. So we can just iterate every 3 number\r\ntriple in [n-50,n] and update the answer.\r\n"
+}

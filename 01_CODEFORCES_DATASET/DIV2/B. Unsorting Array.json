@@ -1,1 +1,96 @@
-{"link": "https://codeforces.com//contest/252/problem/B", "problemId": "2351", "problem_idx": "B", "shortId": "252B", "contest_number": "252", "problem_submissions": {"B": [2710060, 2706628, 2708313, 2705063, 2702778, 2703423, 2715482, 2706557, 2703833, 2705102], "D": [2707052, 2709984, 2706767, 2709595, 2711529, 2710054, 2708487, 2707438, 2708692, 2709215, 2706501, 2709216], "C": [2702661, 2701836, 2705668, 2703665, 2707566, 2704785, 2705259, 2705065, 2702929, 2704890, 2702757, 2705646, 2704360, 2708601, 2705908, 2703255, 2704699, 2702535], "A": [2701161, 2709874, 2701848, 2700918, 2701349, 2700912, 2701131, 2701230, 2700948, 2701753, 2703055, 2700974, 2713381, 2703052, 2702820, 2702346, 2700994, 2701240, 2701290], "E": [2709470, 2708307]}, "name": "B. Unsorting Array", "statement": "Little Petya likes arrays of integers a lot. Recently his mother has\r\npresented him one such array consisting of elements. Petya is now\r\nwondering whether he can swap any two distinct integers in the array so\r\nthat the array got unsorted. Please note that Petya can not swap equal\r\nintegers even if they are in distinct positions in the array. Also note\r\nthat Petya swap some two integers even if the original array meets all\r\nrequirements.Array (the array elements are indexed from 1) consisting of\r\nelements is called sorted if it meets at least one of the following two\r\nconditions: ; . Help Petya find the two required positions to swap or\r\nelse say that they do not exist.\r\n", "solutions": ["#include<iostream>\n#include<map>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<string.h>\n#include<cstdio>\n#include<queue>\n#include<algorithm>\n#include<sstream>\n#define all(X) (X).begin(),(X).end()\n#define mem(X) memset(X,0,sizeof(X))\n#define debug_v(v) for(int db=0;db<(v).size();db++)cout<<v[db]<<','<<;cout<<endl;\n#define pqpush(pq,x,cmp) (pq).push_back(x);push_heap((pq).begin(),(pq).end(),cmp);\n#define pqpop(pq,cmp) pop_heap((pq).begin(),(pq).end(),cmp);(pq).pop_back();\n#define PB(x) push_back(x)\nusing namespace std;\ntypedef long long ll;\ntypedef vector<int>::iterator iv;\ntypedef map<string,int>::iterator msii;\ntypedef map<int,int>::iterator miii;\ntypedef map<int,bool>::iterator mibi;\ntypedef map<string,bool>::iterator msbi;\ntypedef map<string,int> msi;\ntypedef map<int,int> mii;\ntypedef map<int,bool> mib;\ntypedef map<string,bool> msb;\ntypedef vector<int> vi;\ntypedef vector<string> vs;\n\nint m1[100001],n,xx,yy,h1;\n\nbool ck(vi& x)\n{\n    bool det = 0, xx=0;\n    //for(int fh1=0;fh1<x.size();fh1++)\n//      cout<<x[fh1]<<' ';\n    //cout<<endl;\n    for(int fh1=1;fh1<x.size();fh1++)\n        if(x[fh1]!=x[fh1-1])\n        {\n            if(!det)det = 1,xx = x[fh1]<x[fh1-1];\n            else if(xx != (x[fh1]<x[fh1-1]))\n            {\n                //cout<<\"false\"<<endl;\n                return 0;\n            }\n        }\n        //cout<<\"true\"<<endl;\n    return 1;\n}\n\nmii mp;\n\nint main(){\n    while(~scanf(\"%d\",&n))\n    {\n        mp.clear();\n        for(h1=0;h1<n;h1++)\n        {\n            scanf(\"%d\",&m1[h1]);\n            mp[m1[h1]]=h1;\n        }\n        \n        if(mp.size()<=1)\n        {\n            cout<<-1<<endl;\n        }\n        else if(mp.size()==2)\n        {\n            \n            vector<int> v(m1,m1+n);\n            vector<pair<int,int> > vv(all(mp));\n            \n            int r = 10;\n            xx = vv[0].second; yy=0;\n            //cout<<xx<<endl;\n            \n            for(h1=1;h1<n;h1++)\n            {\n                if(v[h1]!=v[xx])\n                {\n                    if(0>=(r--))break;\n                    yy = h1;\n                    swap(v[xx],v[yy]);\n                    if(!ck(v))break;\n                    swap(v[xx],v[yy]);\n                }\n            }\n            \n            if(r<=0||h1==n)\n            {\n                r = 10;\n                xx = vv[1].second; yy=0;\n                //cout<<xx<<endl;\n                \n                for(h1=1;h1<n;h1++)\n                {\n                    if(v[h1]!=v[xx])\n                    {\n                        if(0>=(r--))break;\n                        yy = h1;\n                        swap(v[xx],v[yy]);\n                        if(!ck(v))break;\n                        swap(v[xx],v[yy]);\n                    }\n                }\n                if(r<=0||h1==n)cout<<-1<<endl;\n                else cout<<min(xx+1,yy+1)<<' '<<max(xx+1,yy+1)<<endl;\n            }\n            else\n            {\n                cout<<min(xx+1,yy+1)<<' '<<max(xx+1,yy+1)<<endl;\n            }\n            \n        }\n        else\n        {\n            vector<pair<int,int> > vv(all(mp));\n            \n            vector<int> v(m1,m1+n);\n            \n            xx = vv[0].second; yy = vv[1].second;\n            \n            swap(v[xx],v[yy]);\n            if(ck(v))\n            {\n                cout<<min(vv[0].second+1,vv[2].second+1)<<' '<<max(vv[0].second+1,vv[2].second+1)<<endl;\n            }\n            else cout<<min(xx+1,yy+1)<<' '<<max(xx+1,yy+1)<<endl;\n            \n            \n        }\n    }\n}\n"], "input": "", "output": "", "tags": ["brute force", "sortings"], "dificulty": "1800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/252/problem/B",
+    "problemId": "2351",
+    "problem_idx": "B",
+    "shortId": "252B",
+    "contest_number": "252",
+    "problem_submissions": {
+        "B": [
+            2710060,
+            2706628,
+            2708313,
+            2705063,
+            2702778,
+            2703423,
+            2715482,
+            2706557,
+            2703833,
+            2705102
+        ],
+        "D": [
+            2707052,
+            2709984,
+            2706767,
+            2709595,
+            2711529,
+            2710054,
+            2708487,
+            2707438,
+            2708692,
+            2709215,
+            2706501,
+            2709216
+        ],
+        "C": [
+            2702661,
+            2701836,
+            2705668,
+            2703665,
+            2707566,
+            2704785,
+            2705259,
+            2705065,
+            2702929,
+            2704890,
+            2702757,
+            2705646,
+            2704360,
+            2708601,
+            2705908,
+            2703255,
+            2704699,
+            2702535
+        ],
+        "A": [
+            2701161,
+            2709874,
+            2701848,
+            2700918,
+            2701349,
+            2700912,
+            2701131,
+            2701230,
+            2700948,
+            2701753,
+            2703055,
+            2700974,
+            2713381,
+            2703052,
+            2702820,
+            2702346,
+            2700994,
+            2701240,
+            2701290
+        ],
+        "E": [
+            2709470,
+            2708307
+        ]
+    },
+    "name": "B. Unsorting Array",
+    "statement": "Little Petya likes arrays of integers a lot. Recently his mother has\r\npresented him one such array consisting of elements. Petya is now\r\nwondering whether he can swap any two distinct integers in the array so\r\nthat the array got unsorted. Please note that Petya can not swap equal\r\nintegers even if they are in distinct positions in the array. Also note\r\nthat Petya swap some two integers even if the original array meets all\r\nrequirements.Array (the array elements are indexed from 1) consisting of\r\nelements is called sorted if it meets at least one of the following two\r\nconditions: ; . Help Petya find the two required positions to swap or\r\nelse say that they do not exist.\r\n",
+    "solutions": [
+        "#include<iostream>\n#include<map>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<string.h>\n#include<cstdio>\n#include<queue>\n#include<algorithm>\n#include<sstream>\n#define all(X) (X).begin(),(X).end()\n#define mem(X) memset(X,0,sizeof(X))\n#define debug_v(v) for(int db=0;db<(v).size();db++)cout<<v[db]<<','<<;cout<<endl;\n#define pqpush(pq,x,cmp) (pq).push_back(x);push_heap((pq).begin(),(pq).end(),cmp);\n#define pqpop(pq,cmp) pop_heap((pq).begin(),(pq).end(),cmp);(pq).pop_back();\n#define PB(x) push_back(x)\nusing namespace std;\ntypedef long long ll;\ntypedef vector<int>::iterator iv;\ntypedef map<string,int>::iterator msii;\ntypedef map<int,int>::iterator miii;\ntypedef map<int,bool>::iterator mibi;\ntypedef map<string,bool>::iterator msbi;\ntypedef map<string,int> msi;\ntypedef map<int,int> mii;\ntypedef map<int,bool> mib;\ntypedef map<string,bool> msb;\ntypedef vector<int> vi;\ntypedef vector<string> vs;\n\nint m1[100001],n,xx,yy,h1;\n\nbool ck(vi& x)\n{\n    bool det = 0, xx=0;\n    //for(int fh1=0;fh1<x.size();fh1++)\n//      cout<<x[fh1]<<' ';\n    //cout<<endl;\n    for(int fh1=1;fh1<x.size();fh1++)\n        if(x[fh1]!=x[fh1-1])\n        {\n            if(!det)det = 1,xx = x[fh1]<x[fh1-1];\n            else if(xx != (x[fh1]<x[fh1-1]))\n            {\n                //cout<<\"false\"<<endl;\n                return 0;\n            }\n        }\n        //cout<<\"true\"<<endl;\n    return 1;\n}\n\nmii mp;\n\nint main(){\n    while(~scanf(\"%d\",&n))\n    {\n        mp.clear();\n        for(h1=0;h1<n;h1++)\n        {\n            scanf(\"%d\",&m1[h1]);\n            mp[m1[h1]]=h1;\n        }\n        \n        if(mp.size()<=1)\n        {\n            cout<<-1<<endl;\n        }\n        else if(mp.size()==2)\n        {\n            \n            vector<int> v(m1,m1+n);\n            vector<pair<int,int> > vv(all(mp));\n            \n            int r = 10;\n            xx = vv[0].second; yy=0;\n            //cout<<xx<<endl;\n            \n            for(h1=1;h1<n;h1++)\n            {\n                if(v[h1]!=v[xx])\n                {\n                    if(0>=(r--))break;\n                    yy = h1;\n                    swap(v[xx],v[yy]);\n                    if(!ck(v))break;\n                    swap(v[xx],v[yy]);\n                }\n            }\n            \n            if(r<=0||h1==n)\n            {\n                r = 10;\n                xx = vv[1].second; yy=0;\n                //cout<<xx<<endl;\n                \n                for(h1=1;h1<n;h1++)\n                {\n                    if(v[h1]!=v[xx])\n                    {\n                        if(0>=(r--))break;\n                        yy = h1;\n                        swap(v[xx],v[yy]);\n                        if(!ck(v))break;\n                        swap(v[xx],v[yy]);\n                    }\n                }\n                if(r<=0||h1==n)cout<<-1<<endl;\n                else cout<<min(xx+1,yy+1)<<' '<<max(xx+1,yy+1)<<endl;\n            }\n            else\n            {\n                cout<<min(xx+1,yy+1)<<' '<<max(xx+1,yy+1)<<endl;\n            }\n            \n        }\n        else\n        {\n            vector<pair<int,int> > vv(all(mp));\n            \n            vector<int> v(m1,m1+n);\n            \n            xx = vv[0].second; yy = vv[1].second;\n            \n            swap(v[xx],v[yy]);\n            if(ck(v))\n            {\n                cout<<min(vv[0].second+1,vv[2].second+1)<<' '<<max(vv[0].second+1,vv[2].second+1)<<endl;\n            }\n            else cout<<min(xx+1,yy+1)<<' '<<max(xx+1,yy+1)<<endl;\n            \n            \n        }\n    }\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "sortings"
+    ],
+    "dificulty": "1800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Unsorting Array.json",
+    "editorial_link": "https://codeforces.com//blog/entry/6054",
+    "editorial": "If all elements in the array are equal then there\u00e2\u0080\u0099s no pair of numbers\r\nwe are looking for. Now we can assume that there exist at least 2\r\ndifferent numbers in the array. Let\u00e2\u0080\u0099s iterate over all pairs of\r\ndifferent numbers in the array and for each such pair we\u00e2\u0080\u0099ll check if it\r\ncan be the answer. If some pair indeed can be the answer, we\u00e2\u0080\u0099ll output\r\nit and terminate the program. Otherwise, there is no pair of numbers we\r\nare looking for, so we need to output -1. It may seem that the\r\ncomplexity of described algorithm is . Actually it\u00e2\u0080\u0099s not true and the\r\nreal complexity is . One may notice that in every array of length\r\ngreater than 3 there are at least 3 pairs of different numbers (remember\r\nwe assumed that there exist at least one pair of different numbers in\r\nthe array). Note that these 3 pairs lead to 3 different resulting\r\narrays. On the other hand, there are only 2 possible sorted arrays.\r\nAccording to the pigeonhole principle one of these 3 resulting arrays is\r\nunsorted.\r\n"
+}

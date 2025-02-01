@@ -1,1 +1,87 @@
-{"link": "https://codeforces.com//contest/90/problem/E", "problemId": "476", "problem_idx": "E", "shortId": "90E", "contest_number": "90", "problem_submissions": {"D": [493304, 492173, 495112], "E": [491947, 491395, 492859, 493324, 492706, 491386, 492076, 492909], "C": [490592, 490305, 490472, 490789, 491674, 491498, 490958, 490747, 493104, 491269, 491109, 491086, 492585], "A": [489446, 490943, 489486, 489158, 489519, 489735, 489052, 489077, 489315, 495095, 489065, 489180, 489120, 489179, 489552], "B": [489045, 490681, 489097, 490102, 490088, 490248, 489492, 489514, 490023, 489439, 489372, 489797, 489627, 489746, 4597999, 490550]}, "name": "E. Chip Play", "statement": "Let\u2019s consider the following game. We have a rectangular field in size.\r\nSome squares of the field contain chips.Each chip has an arrow painted\r\non it. Thus, each chip on the field points in one of the following\r\ndirections: up, down, left or right.The player may choose a chip and\r\nmake a move with it.The move is the following sequence of actions. The\r\nchosen chip is marked as the current one. After that the player checks\r\nwhether there are more chips in the same row (or in the same column)\r\nwith the current one that are pointed by the arrow on the current chip.\r\nIf there is at least one chip then the closest of them is marked as the\r\nnew current chip and the former current chip is removed from the field.\r\nAfter that the check is repeated. This process can be repeated several\r\ntimes. If a new chip is not found, then the current chip is removed from\r\nthe field and the player\u2019s move ends.By the end of a move the player\r\nreceives several points equal to the number of the deleted chips.By the\r\ngiven initial chip arrangement determine the maximum number of points\r\nthat a player can receive during one move. Also determine the number of\r\nsuch moves.\r\n", "solutions": ["#include <algorithm>\n#include <cctype>\n#include <cmath>\n#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <deque>\n#include <iostream>\n#include <map>\n#include <queue>\n#include <set>\n#include <sstream>\n#include <stack>\n#include <string>\n#include <utility>\n#include <vector>\nusing namespace std;\n\n#define size(x) int((x).size())\n#define foreach(i,c) for(typeof((c).begin()) i=(c).begin();i!=(c).end();i++)\ntypedef long long I64; typedef unsigned long long U64;\nconst double EPS=1e-12;\nconst int INF=999999999;\ntypedef vector<int> VI;\ntypedef vector<string> VS;\n\nint m,n,tot;\nchar g0[5000],g[5000];\nshort f0[5000][4],f[5000][4];\n\nint Id(char c) {\n  switch(c) {\n    case'U': return 0;\n    case'R': return 1;\n    case'D': return 2;\n    case'L': return 3;\n  }\n  return -1;\n}\n\nvoid Read() {\n  char buf[5001];\n\n  scanf(\"%d%d\",&m,&n);\n  for(int i=0;i<m;++i) {\n    scanf(\"%s\",buf);\n    for(int j=0;j<n;++j) g0[i*n+j]=Id(buf[j]);\n  }\n  tot=m*n;\n\n  for(int i=0;i<tot;++i) {\n    f0[i][0]=i;\n    if(i>=n && g0[i]==-1) f0[i][0]=i-n;\n    f0[i][3]=i;\n    if(i%n!=0 && g0[i]==-1) f0[i][3]=i-1;\n  }\n  for(int i=tot-1;i>=0;--i) {\n    f0[i][2]=i;\n    if(i<tot-n && g0[i]==-1) f0[i][2]=i+n;\n    f0[i][1]=i;\n    if((i+1)%n!=0 && g0[i]==-1) f0[i][1]=i+1;\n  }\n}\n\nvoid Remove(int i) {\n  g[i]=-1;\n  if(i>=n) f[i][0]=i-n;\n  if(i%n!=0) f[i][3]=i-1;\n  if(i<tot-n) f[i][2]=i+n;\n  if((i+1)%n!=0) f[i][1]=i+1;\n}\n\nint Find(int i,int d) {\n  if(f[i][d]==i) return i;\n  return f[i][d]=Find(f[i][d],d);\n}\n\nint Com(int i) {\n  memcpy(g,g0,sizeof(g));\n  memcpy(f,f0,sizeof(f));\n  \n  int res=0;\n  while(1) {\n    ++res;\n    int d=g[i];\n    Remove(i);\n    int next=Find(i,d);\n    if(g[next]==-1) break;\n\n    i=next;\n  }\n\n  return res;\n}\n\nvoid Solve() {\n  int res=0;\n  int count=0;\n\n  for(int i=0;i<tot;++i) if(g0[i]!=-1) {\n    int w=Com(i);\n    if(w>res) {res=w;count=0;}\n    if(w==res) ++count;\n  }\n\n  printf(\"%d %d\\n\",res,count);\n}\n\nint main() {\n  Read();\n  Solve();\n\n  return 0;\n}\n"], "input": "", "output": "", "tags": [], "dificulty": "2300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/90/problem/E",
+    "problemId": "476",
+    "problem_idx": "E",
+    "shortId": "90E",
+    "contest_number": "90",
+    "problem_submissions": {
+        "D": [
+            493304,
+            492173,
+            495112
+        ],
+        "E": [
+            491947,
+            491395,
+            492859,
+            493324,
+            492706,
+            491386,
+            492076,
+            492909
+        ],
+        "C": [
+            490592,
+            490305,
+            490472,
+            490789,
+            491674,
+            491498,
+            490958,
+            490747,
+            493104,
+            491269,
+            491109,
+            491086,
+            492585
+        ],
+        "A": [
+            489446,
+            490943,
+            489486,
+            489158,
+            489519,
+            489735,
+            489052,
+            489077,
+            489315,
+            495095,
+            489065,
+            489180,
+            489120,
+            489179,
+            489552
+        ],
+        "B": [
+            489045,
+            490681,
+            489097,
+            490102,
+            490088,
+            490248,
+            489492,
+            489514,
+            490023,
+            489439,
+            489372,
+            489797,
+            489627,
+            489746,
+            4597999,
+            490550
+        ]
+    },
+    "name": "E. Chip Play",
+    "statement": "Let’s consider the following game. We have a rectangular field in size.\r\nSome squares of the field contain chips.Each chip has an arrow painted\r\non it. Thus, each chip on the field points in one of the following\r\ndirections: up, down, left or right.The player may choose a chip and\r\nmake a move with it.The move is the following sequence of actions. The\r\nchosen chip is marked as the current one. After that the player checks\r\nwhether there are more chips in the same row (or in the same column)\r\nwith the current one that are pointed by the arrow on the current chip.\r\nIf there is at least one chip then the closest of them is marked as the\r\nnew current chip and the former current chip is removed from the field.\r\nAfter that the check is repeated. This process can be repeated several\r\ntimes. If a new chip is not found, then the current chip is removed from\r\nthe field and the player’s move ends.By the end of a move the player\r\nreceives several points equal to the number of the deleted chips.By the\r\ngiven initial chip arrangement determine the maximum number of points\r\nthat a player can receive during one move. Also determine the number of\r\nsuch moves.\r\n",
+    "solutions": [
+        "#include <algorithm>\n#include <cctype>\n#include <cmath>\n#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <deque>\n#include <iostream>\n#include <map>\n#include <queue>\n#include <set>\n#include <sstream>\n#include <stack>\n#include <string>\n#include <utility>\n#include <vector>\nusing namespace std;\n\n#define size(x) int((x).size())\n#define foreach(i,c) for(typeof((c).begin()) i=(c).begin();i!=(c).end();i++)\ntypedef long long I64; typedef unsigned long long U64;\nconst double EPS=1e-12;\nconst int INF=999999999;\ntypedef vector<int> VI;\ntypedef vector<string> VS;\n\nint m,n,tot;\nchar g0[5000],g[5000];\nshort f0[5000][4],f[5000][4];\n\nint Id(char c) {\n  switch(c) {\n    case'U': return 0;\n    case'R': return 1;\n    case'D': return 2;\n    case'L': return 3;\n  }\n  return -1;\n}\n\nvoid Read() {\n  char buf[5001];\n\n  scanf(\"%d%d\",&m,&n);\n  for(int i=0;i<m;++i) {\n    scanf(\"%s\",buf);\n    for(int j=0;j<n;++j) g0[i*n+j]=Id(buf[j]);\n  }\n  tot=m*n;\n\n  for(int i=0;i<tot;++i) {\n    f0[i][0]=i;\n    if(i>=n && g0[i]==-1) f0[i][0]=i-n;\n    f0[i][3]=i;\n    if(i%n!=0 && g0[i]==-1) f0[i][3]=i-1;\n  }\n  for(int i=tot-1;i>=0;--i) {\n    f0[i][2]=i;\n    if(i<tot-n && g0[i]==-1) f0[i][2]=i+n;\n    f0[i][1]=i;\n    if((i+1)%n!=0 && g0[i]==-1) f0[i][1]=i+1;\n  }\n}\n\nvoid Remove(int i) {\n  g[i]=-1;\n  if(i>=n) f[i][0]=i-n;\n  if(i%n!=0) f[i][3]=i-1;\n  if(i<tot-n) f[i][2]=i+n;\n  if((i+1)%n!=0) f[i][1]=i+1;\n}\n\nint Find(int i,int d) {\n  if(f[i][d]==i) return i;\n  return f[i][d]=Find(f[i][d],d);\n}\n\nint Com(int i) {\n  memcpy(g,g0,sizeof(g));\n  memcpy(f,f0,sizeof(f));\n  \n  int res=0;\n  while(1) {\n    ++res;\n    int d=g[i];\n    Remove(i);\n    int next=Find(i,d);\n    if(g[next]==-1) break;\n\n    i=next;\n  }\n\n  return res;\n}\n\nvoid Solve() {\n  int res=0;\n  int count=0;\n\n  for(int i=0;i<tot;++i) if(g0[i]!=-1) {\n    int w=Com(i);\n    if(w>res) {res=w;count=0;}\n    if(w==res) ++count;\n  }\n\n  printf(\"%d %d\\n\",res,count);\n}\n\nint main() {\n  Read();\n  Solve();\n\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [],
+    "dificulty": "2300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Chip Play.json",
+    "editorial_link": "https://codeforces.com//blog/entry/2162",
+    "editorial": null
+}

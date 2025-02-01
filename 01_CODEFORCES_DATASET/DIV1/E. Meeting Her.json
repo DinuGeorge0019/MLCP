@@ -1,1 +1,99 @@
-{"link": "https://codeforces.com//contest/238/problem/E", "problemId": "2115", "problem_idx": "E", "shortId": "238E", "contest_number": "238", "problem_submissions": {"E": [2504243, 2503858, 2509891, 2694210, 2552413], "B": [2501797, 2504771, 2501096, 2501711, 2501715, 2500046, 2500118, 2500703, 2501297, 2500963, 2500837, 2501321, 2500477, 2500698, 2502278, 2501139, 2500966, 2501060, 2501238], "C": [2500671, 2502160, 2502349, 2502372, 2500466, 2501719, 2501950, 2502275, 2502065, 2502329, 2502087, 2502235, 2501641, 2502453, 2501221, 2502604, 2502443, 2502751, 2503154], "A": [2498142, 2498095, 2498716, 2498060, 2498106, 2498185, 2498628, 2498741, 2498627, 2498605, 2499081, 2498586, 2498140, 2501538, 2498125, 2498688, 2499407, 2498390], "D": [2556123, 2505008]}, "name": "E. Meeting Her", "statement": "Urpal lives in a big city. He has planned to meet his lover tonight. The\r\ncity has junctions numbered from to . The junctions are connected by\r\ndirected streets, all the roads have equal length. Urpal lives in\r\njunction and the date is planned in a restaurant in junction . He wants\r\nto use public transportation to get to junction . There are bus\r\ntransportation companies. At the beginning of every second, a bus from\r\nthe -th company chooses a random shortest path between junction and\r\njunction and passes through it. There might be no path from to . In that\r\ncase no bus will leave from to . If a bus passes through a junction\r\nwhere Urpal stands, he can get on the bus. He can also get o ff the bus\r\nat any junction along the path. Now Urpal wants to know if it\u2019s possible\r\nto go to the date using public transportation in a finite amount of time\r\n(the time of travel is the sum of length of the traveled roads) and what\r\nis the minimum number of buses he should take in the worst case.Note\r\nthat Urpal doesn\u2019t know buses velocity.\r\n", "solutions": ["#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <memory.h>\n\nusing namespace std;\n\nconst int N = 111;\n\nint st, fin, n, m, i, j, k, q, kt;\nint a[N][N], b[N][N][N], g[N][N], ta[N], tb[N], ans[N], v[N];\nvector <int> u[N][N];\n\nint main() {\n//  freopen(\"in\", \"r\", stdin);\n//  freopen(\"out\", \"w\", stdout);\n  scanf(\"%d %d %d %d\", &n, &m, &st, &fin);\n  st--; fin--;\n  memset(a, 0, sizeof(a));\n  for (i=0;i<m;i++) {\n    int qs, qf;\n    scanf(\"%d %d\", &qs, &qf);\n    qs--; qf--;\n    a[qs][qf] = 1;\n  }\n  for (i=0;i<n;i++)\n    for (j=0;j<n;j++)\n      if (i == j) g[i][j] = 0; else\n      if (a[i][j]) g[i][j] = 1;\n      else g[i][j] = 424242;\n  for (k=0;k<n;k++)\n    for (i=0;i<n;i++)\n      for (j=0;j<n;j++)\n        if (g[i][k]+g[k][j] < g[i][j]) g[i][j] = g[i][k]+g[k][j];\n  scanf(\"%d\", &kt);\n  for (i=0;i<kt;i++) {\n    scanf(\"%d %d\", ta+i, tb+i);\n    ta[i]--; tb[i]--;\n    if (g[ta[i]][tb[i]] < 4242) {\n      for (j=0;j<=g[ta[i]][tb[i]];j++) {\n        u[i][j].clear();\n        for (k=0;k<n;k++)\n          if (g[ta[i]][k] == j && g[k][tb[i]] == g[ta[i]][tb[i]]-j) {\n            u[i][j].push_back(k);\n            b[i][j][k] = 1;\n          }\n      }\n    }\n  }\n  for (i=0;i<n;i++) ans[i] = 4242;\n  ans[fin] = 0;\n  int dd = 1, it = 0;\n  while (dd) {\n    dd = 0;\n    it++;\n    for (i=0;i<kt;i++) {\n      if (g[ta[i]][tb[i]] > 4242) continue;\n      v[tb[i]] = ans[tb[i]];\n      for (j=g[ta[i]][tb[i]]-1;j>=0;j--) {\n        int sz = u[i][j].size();\n        for (k=0;k<sz;k++) {\n          int w = u[i][j][k];\n          v[w] = 0;\n          for (q=0;q<n;q++)\n            if (a[w][q] && b[i][j+1][q])\n              if (v[q] > v[w]) v[w] = v[q];\n          if (ans[w] < v[w]) v[w] = ans[w];\n        }\n        if (sz == 1) {\n          int w = u[i][j][0];\n          if (ans[w] == 4242 && v[w] < it) {\n            ans[w] = it;\n            dd = 1;\n          }\n        }\n      }\n    }\n  }\n  printf(\"%d\\n\", (ans[st] < 4242) ? (ans[st]) : (-1));\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["dp", "graphs", "shortest paths"], "dificulty": "2600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/238/problem/E",
+    "problemId": "2115",
+    "problem_idx": "E",
+    "shortId": "238E",
+    "contest_number": "238",
+    "problem_submissions": {
+        "E": [
+            2504243,
+            2503858,
+            2509891,
+            2694210,
+            2552413
+        ],
+        "B": [
+            2501797,
+            2504771,
+            2501096,
+            2501711,
+            2501715,
+            2500046,
+            2500118,
+            2500703,
+            2501297,
+            2500963,
+            2500837,
+            2501321,
+            2500477,
+            2500698,
+            2502278,
+            2501139,
+            2500966,
+            2501060,
+            2501238
+        ],
+        "C": [
+            2500671,
+            2502160,
+            2502349,
+            2502372,
+            2500466,
+            2501719,
+            2501950,
+            2502275,
+            2502065,
+            2502329,
+            2502087,
+            2502235,
+            2501641,
+            2502453,
+            2501221,
+            2502604,
+            2502443,
+            2502751,
+            2503154
+        ],
+        "A": [
+            2498142,
+            2498095,
+            2498716,
+            2498060,
+            2498106,
+            2498185,
+            2498628,
+            2498741,
+            2498627,
+            2498605,
+            2499081,
+            2498586,
+            2498140,
+            2501538,
+            2498125,
+            2498688,
+            2499407,
+            2498390
+        ],
+        "D": [
+            2556123,
+            2505008
+        ]
+    },
+    "name": "E. Meeting Her",
+    "statement": "Urpal lives in a big city. He has planned to meet his lover tonight. The\r\ncity has junctions numbered from to . The junctions are connected by\r\ndirected streets, all the roads have equal length. Urpal lives in\r\njunction and the date is planned in a restaurant in junction . He wants\r\nto use public transportation to get to junction . There are bus\r\ntransportation companies. At the beginning of every second, a bus from\r\nthe -th company chooses a random shortest path between junction and\r\njunction and passes through it. There might be no path from to . In that\r\ncase no bus will leave from to . If a bus passes through a junction\r\nwhere Urpal stands, he can get on the bus. He can also get o ff the bus\r\nat any junction along the path. Now Urpal wants to know if it\u2019s possible\r\nto go to the date using public transportation in a finite amount of time\r\n(the time of travel is the sum of length of the traveled roads) and what\r\nis the minimum number of buses he should take in the worst case.Note\r\nthat Urpal doesn\u2019t know buses velocity.\r\n",
+    "solutions": [
+        "#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <memory.h>\n\nusing namespace std;\n\nconst int N = 111;\n\nint st, fin, n, m, i, j, k, q, kt;\nint a[N][N], b[N][N][N], g[N][N], ta[N], tb[N], ans[N], v[N];\nvector <int> u[N][N];\n\nint main() {\n//  freopen(\"in\", \"r\", stdin);\n//  freopen(\"out\", \"w\", stdout);\n  scanf(\"%d %d %d %d\", &n, &m, &st, &fin);\n  st--; fin--;\n  memset(a, 0, sizeof(a));\n  for (i=0;i<m;i++) {\n    int qs, qf;\n    scanf(\"%d %d\", &qs, &qf);\n    qs--; qf--;\n    a[qs][qf] = 1;\n  }\n  for (i=0;i<n;i++)\n    for (j=0;j<n;j++)\n      if (i == j) g[i][j] = 0; else\n      if (a[i][j]) g[i][j] = 1;\n      else g[i][j] = 424242;\n  for (k=0;k<n;k++)\n    for (i=0;i<n;i++)\n      for (j=0;j<n;j++)\n        if (g[i][k]+g[k][j] < g[i][j]) g[i][j] = g[i][k]+g[k][j];\n  scanf(\"%d\", &kt);\n  for (i=0;i<kt;i++) {\n    scanf(\"%d %d\", ta+i, tb+i);\n    ta[i]--; tb[i]--;\n    if (g[ta[i]][tb[i]] < 4242) {\n      for (j=0;j<=g[ta[i]][tb[i]];j++) {\n        u[i][j].clear();\n        for (k=0;k<n;k++)\n          if (g[ta[i]][k] == j && g[k][tb[i]] == g[ta[i]][tb[i]]-j) {\n            u[i][j].push_back(k);\n            b[i][j][k] = 1;\n          }\n      }\n    }\n  }\n  for (i=0;i<n;i++) ans[i] = 4242;\n  ans[fin] = 0;\n  int dd = 1, it = 0;\n  while (dd) {\n    dd = 0;\n    it++;\n    for (i=0;i<kt;i++) {\n      if (g[ta[i]][tb[i]] > 4242) continue;\n      v[tb[i]] = ans[tb[i]];\n      for (j=g[ta[i]][tb[i]]-1;j>=0;j--) {\n        int sz = u[i][j].size();\n        for (k=0;k<sz;k++) {\n          int w = u[i][j][k];\n          v[w] = 0;\n          for (q=0;q<n;q++)\n            if (a[w][q] && b[i][j+1][q])\n              if (v[q] > v[w]) v[w] = v[q];\n          if (ans[w] < v[w]) v[w] = ans[w];\n        }\n        if (sz == 1) {\n          int w = u[i][j][0];\n          if (ans[w] == 4242 && v[w] < it) {\n            ans[w] = it;\n            dd = 1;\n          }\n        }\n      }\n    }\n  }\n  printf(\"%d\\n\", (ans[st] < 4242) ? (ans[st]) : (-1));\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp",
+        "graphs",
+        "shortest paths"
+    ],
+    "dificulty": "2600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\E. Meeting Her.json",
+    "editorial_link": "https://codeforces.com//blog/entry/5765",
+    "editorial": "Consider a bus passing a shortest path from si to ti. There are some points that are necessary to pass in order to obtain a shortest path. Firstly we compute them. This can be done in O(n3) with Floyd-Warshall and some processing after that. Urpal is sure that a bus from i-th company always passes such vertices on his path from si to ti. So he can get on a bus from i-th company only at vertices the bus surely passes.\n\nAt any moment Urpal's status can be uniquely determined by his position on the map and the bus he's traveling with. So we have nk states (position,?bus).\n\nOur goal is to reach some (b,?...) state from a (a,?v) state which bus v surely passes a (source states). So let's find all states that can reach a goal state. We call such states good states.\n\nConsider Urpal is at junction x and he's traveling with a bus of type y. Let v1,?v2,?...,?vw be the list of junctions the bus might go on its shortest path from sy to ty. And let c1,?c2,?...,?cl be the list of companies that their bus surely passes junction x, excluding y-th company. For state (x,?y) we know we can reach junction b (it's a good state) if one of the following is true:\n\nx?=?b, the minimum cost of solving the problem will be 0.\nAll states (v1,?y), (v2,?y), ... and (vw,?y) are good states, the minimum cost of solving the problem will be the maximum of all these states.\nAt least one of states (x,?c1), (x,?c2), ... or (x,?cl) is a good state, the minimum cost of solving the problem will be the minimum the good ones plus one.\nAt first the only good states we know are states with junction b, (b,?...). Now some new states might have become good states. So we add those states to the list of known good states. We do this until no state becomes good anymore.\n\nAt the end we print the minimum cost of source states which are good, and if they don't exist we print -1."
+}

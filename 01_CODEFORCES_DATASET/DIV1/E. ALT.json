@@ -1,1 +1,106 @@
-{"link": "https://codeforces.com//contest/786/problem/E", "problemId": "99631", "problem_idx": "E", "shortId": "786E", "contest_number": "786", "problem_submissions": {"E": [25753975, 25749618, 25751063, 25750167, 25750928, 25751180, 26105577, 25800132], "D": [25746644, 25778480], "C": [25742197, 25745538, 25743345, 25745842, 25739155, 25745929, 25742960, 25745796, 25744579, 25746028, 25746972, 25743401, 25747247, 25747535, 25746531, 25744441, 25746633, 25742165, 25747374, 25744720], "B": [25740468, 25741179, 25741185, 25743380, 25745478, 25745982, 25742716, 25741370, 25741364, 25742235, 25746446, 25742809, 25743016, 25744432, 25748452, 25743844, 25745002, 25744286, 25740598], "A": [25737862, 25737692, 25737872, 25738672, 25742192, 25738355, 25739309, 25738230, 25737832, 25738120, 25738474, 25738969, 25738916, 25738225, 25737834, 25738628, 25738638, 25747228, 25739393, 25749219]}, "name": "E. ALT", "statement": "ALT is a planet in a galaxy called \"Encore\". Humans rule this planet but\r\nfor some reason there\u2019s no dog in their planet, so the people there are\r\nsad and depressed. Rick and Morty are universal philanthropists and they\r\nwant to make people in ALT happy. ALT has cities numbered from to and\r\nbidirectional roads numbered from to . One can go from any city to any\r\nother city using these roads.There are two types of people in ALT:\r\nGuardians. A guardian lives in a house alongside a road and guards the\r\nroad. Citizens. A citizen lives in a house inside a city and works in an\r\noffice in another city. Every person on ALT is either a guardian or a\r\ncitizen and there\u2019s exactly one guardian alongside each road. Rick and\r\nMorty talked to all the people in ALT, and here\u2019s what they got: There\r\nare citizens living in ALT. Citizen number lives in city number and\r\nworks in city number . Every day each citizen will go through all roads\r\nalong the shortest path from his home to his work. A citizen will be\r\nhappy if and only if either he himself has a puppy himself or all of\r\nguardians along his path to his work has a puppy (he sees the guardian\u2019s\r\npuppy in each road and will be happy). A guardian is always happy. You\r\nneed to tell Rick and Morty the minimum number of puppies they need in\r\norder to make all people in ALT happy, and also provide an optimal way\r\nto distribute these puppies.\r\n", "solutions": ["#include <cstdio>\n#include <cstring>\n#include <cmath>\n#include <algorithm>\n#include <vector>\n#include <string>\n#include <map>\n#include <set>\n#include <cassert>\nusing namespace std;\n#define rep(i,a,n) for (int i=a;i<n;i++)\n#define per(i,a,n) for (int i=n-1;i>=a;i--)\n#define pb push_back\n#define mp make_pair\n#define all(x) (x).begin(),(x).end()\n#define fi first\n#define se second\n#define SZ(x) ((int)(x).size())\ntypedef vector<int> VI;\ntypedef long long ll;\ntypedef pair<int,int> PII;\nconst ll mod=1000000007;\nll powmod(ll a,ll b) {ll res=1;a%=mod; assert(b>=0); for(;b;b>>=1){if(b&1)res=res*a%mod;a=a*a%mod;}return res;}\n// head\n\nconst int N=100100;\nVI e[N];\nmap<int,int> id[N];\nint dep[N],p[N][20],g[N][20],n,m,u,v,tot;\n#define LOGN 17\nint lca(int u,int v) {\n\tif (dep[u]>dep[v]) swap(u,v);\n\tper(i,0,LOGN) if (dep[p[v][i]]>=dep[u]) v=p[v][i];\n\tif (u==v) return u;\n\tper(i,0,LOGN) if (p[v][i]!=p[u][i]) u=p[u][i],v=p[v][i];\n\treturn p[u][0];\n}\n\nconst int inf=0x20202020;\nint vis[N*20];\ntypedef int flowt;\nnamespace flow {\n\tconst int M=2010000,N=2010000;\n\tint y[M],nxt[M],gap[N],fst[N],c[N],pre[N],q[N],dis[N];\n\tflowt f[M];\n\tint S,T,tot,Tn;\n\tvoid init(int s,int t,int tn) {\n\t\ttot=1; assert(tn<N);\n\t\trep(i,0,tn) fst[i]=0;\n\t\tS=s;T=t;Tn=tn;\n\t}\n\tvoid add(int u,int v,flowt c1,flowt c2=0) {\n\t\ttot++;y[tot]=v;f[tot]=c1;nxt[tot]=fst[u];fst[u]=tot;\n\t\ttot++;y[tot]=u;f[tot]=c2;nxt[tot]=fst[v];fst[v]=tot;\n\t}\n\tflowt sap() {\n\t\tint u=S,t=1;flowt flow=0;\n\t\trep(i,0,Tn) c[i]=fst[i],dis[i]=Tn,gap[i]=0;\n\t\tq[0]=T;dis[T]=0;pre[S]=0;\n\t\trep(i,0,t) {\n\t\t\tint u=q[i];\n\t\t\tfor (int j=fst[u];j;j=nxt[j]) if (dis[y[j]]>dis[u]+1&&f[j^1]) \n\t\t\t\tq[t++]=y[j],dis[y[j]]=dis[u]+1;\n\t\t}\n\t\trep(i,0,Tn) gap[dis[i]]++;\n\t\twhile (dis[S]<=Tn) {\n\t\t\twhile (c[u]&&(!f[c[u]]||dis[y[c[u]]]+1!=dis[u])) c[u]=nxt[c[u]];\n\t\t\tif (c[u]) {\n\t\t\t\tpre[y[c[u]]]=c[u]^1;\n\t\t\t\tu=y[c[u]];\n\t\t\t\tif (u==T) {\n\t\t\t\t\tflowt minf=inf;\n\t\t\t\t\tfor (int p=pre[T];p;p=pre[y[p]]) minf=min(minf,f[p^1]);\n\t\t\t\t\tfor (int p=pre[T];p;p=pre[y[p]]) f[p^1]-=minf,f[p]+=minf;\n\t\t\t\t\tflow+=minf;u=S;\n\t\t\t\t}\n\t\t\t} else {\n\t\t\t\tif (!(--gap[dis[u]])) break;\n\t\t\t\tint mind=Tn;\n\t\t\t\tc[u]=fst[u];\n\t\t\t\tfor (int j=fst[u];j;j=nxt[j]) if (f[j]&&dis[y[j]]<mind) \n\t\t\t\t\tmind=dis[y[j]],c[u]=j;\n\t\t\t\tdis[u]=mind+1;\n\t\t\t\tgap[dis[u]]++;\n\t\t\t\tif (u!=S) u=y[pre[u]];\n\t\t\t}\n\t\t}\n\t\tq[0]=T; vis[T]=1; t=1;\n\t\trep(i,0,t) {\n\t\t\tint u=q[i];\n\t\t\tfor (int j=fst[u];j;j=nxt[j]) if (!vis[y[j]]&&f[j^1]) q[t++]=y[j],vis[y[j]]=1;\n\t\t}\n\t\treturn flow;\n\t}\n};\n\nvoid dfs(int u,int f) {\n\tp[u][0]=f; dep[u]=dep[f]+1;\n\tif (f) {\n\t\tg[u][0]=id[f][u];\n\t}\n\trep(i,1,LOGN) {\n\t\tp[u][i]=p[p[u][i-1]][i-1];\n\t\tif (p[u][i]!=0) {\n\t\t\tg[u][i]=tot++;\n\t\t\tflow::add(g[u][i],g[u][i-1],inf);\n\t\t\tflow::add(g[u][i],g[p[u][i-1]][i-1],inf);\n\t\t}\n\t}\n\tfor (auto v:e[u]) if (v!=f) {\n\t\tdfs(v,u);\n\t}\n}\nvoid add(int u,int w,int c) {\n\tint x=dep[u]-dep[w];\n\tper(i,0,LOGN) if ((1<<i)<=x) {\n\t\tflow::add(c,g[u][i],inf);\n\t\tint d=x-(1<<i);\n\t\tper(j,0,LOGN) if (d&(1<<j)) u=p[u][j];\n\t\tflow::add(c,g[u][i],inf);\n\t\tbreak;\n\t}\n}\nint main() {\n\tscanf(\"%d%d\",&n,&m);\n\tflow::init(0,0,0);\n\trep(i,1,n) {\n\t\tscanf(\"%d%d\",&u,&v);\n\t\te[u].pb(v); e[v].pb(u);\n\t\tid[u][v]=id[v][u]=m+i;\n\t}\n\ttot=m+n;\n\tdfs(1,0);\n\tflow::T=tot; flow::Tn=tot+1;\n\trep(i,1,n) flow::add(m+i,tot,1);\n\trep(i,0,m) {\n\t\tscanf(\"%d%d\",&u,&v);\n\t\tflow::add(0,i+1,1);\n\t\tint w=lca(u,v);\n\t\tadd(u,w,i+1); add(v,w,i+1);\n\t}\n\tprintf(\"%d\\n\",flow::sap());\n\tVI r;\n\trep(i,1,m+1) if (vis[i]) r.pb(i);\n\tprintf(\"%d\",SZ(r)); for (auto u:r) printf(\" %d\",u); puts(\"\");\n\tr.clear();\n\trep(i,1,n) if (!vis[m+i]) r.pb(i);\n\tprintf(\"%d\",SZ(r)); for (auto u:r) printf(\" %d\",u); puts(\"\");\n}\n"], "input": "", "output": "", "tags": ["data structures", "flows", "graphs", "trees"], "dificulty": "3200", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/786/problem/E",
+    "problemId": "99631",
+    "problem_idx": "E",
+    "shortId": "786E",
+    "contest_number": "786",
+    "problem_submissions": {
+        "E": [
+            25753975,
+            25749618,
+            25751063,
+            25750167,
+            25750928,
+            25751180,
+            26105577,
+            25800132
+        ],
+        "D": [
+            25746644,
+            25778480
+        ],
+        "C": [
+            25742197,
+            25745538,
+            25743345,
+            25745842,
+            25739155,
+            25745929,
+            25742960,
+            25745796,
+            25744579,
+            25746028,
+            25746972,
+            25743401,
+            25747247,
+            25747535,
+            25746531,
+            25744441,
+            25746633,
+            25742165,
+            25747374,
+            25744720
+        ],
+        "B": [
+            25740468,
+            25741179,
+            25741185,
+            25743380,
+            25745478,
+            25745982,
+            25742716,
+            25741370,
+            25741364,
+            25742235,
+            25746446,
+            25742809,
+            25743016,
+            25744432,
+            25748452,
+            25743844,
+            25745002,
+            25744286,
+            25740598
+        ],
+        "A": [
+            25737862,
+            25737692,
+            25737872,
+            25738672,
+            25742192,
+            25738355,
+            25739309,
+            25738230,
+            25737832,
+            25738120,
+            25738474,
+            25738969,
+            25738916,
+            25738225,
+            25737834,
+            25738628,
+            25738638,
+            25747228,
+            25739393,
+            25749219
+        ]
+    },
+    "name": "E. ALT",
+    "statement": "ALT is a planet in a galaxy called \"Encore\". Humans rule this planet but\r\nfor some reason there\u2019s no dog in their planet, so the people there are\r\nsad and depressed. Rick and Morty are universal philanthropists and they\r\nwant to make people in ALT happy. ALT has cities numbered from to and\r\nbidirectional roads numbered from to . One can go from any city to any\r\nother city using these roads.There are two types of people in ALT:\r\nGuardians. A guardian lives in a house alongside a road and guards the\r\nroad. Citizens. A citizen lives in a house inside a city and works in an\r\noffice in another city. Every person on ALT is either a guardian or a\r\ncitizen and there\u2019s exactly one guardian alongside each road. Rick and\r\nMorty talked to all the people in ALT, and here\u2019s what they got: There\r\nare citizens living in ALT. Citizen number lives in city number and\r\nworks in city number . Every day each citizen will go through all roads\r\nalong the shortest path from his home to his work. A citizen will be\r\nhappy if and only if either he himself has a puppy himself or all of\r\nguardians along his path to his work has a puppy (he sees the guardian\u2019s\r\npuppy in each road and will be happy). A guardian is always happy. You\r\nneed to tell Rick and Morty the minimum number of puppies they need in\r\norder to make all people in ALT happy, and also provide an optimal way\r\nto distribute these puppies.\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <cstring>\n#include <cmath>\n#include <algorithm>\n#include <vector>\n#include <string>\n#include <map>\n#include <set>\n#include <cassert>\nusing namespace std;\n#define rep(i,a,n) for (int i=a;i<n;i++)\n#define per(i,a,n) for (int i=n-1;i>=a;i--)\n#define pb push_back\n#define mp make_pair\n#define all(x) (x).begin(),(x).end()\n#define fi first\n#define se second\n#define SZ(x) ((int)(x).size())\ntypedef vector<int> VI;\ntypedef long long ll;\ntypedef pair<int,int> PII;\nconst ll mod=1000000007;\nll powmod(ll a,ll b) {ll res=1;a%=mod; assert(b>=0); for(;b;b>>=1){if(b&1)res=res*a%mod;a=a*a%mod;}return res;}\n// head\n\nconst int N=100100;\nVI e[N];\nmap<int,int> id[N];\nint dep[N],p[N][20],g[N][20],n,m,u,v,tot;\n#define LOGN 17\nint lca(int u,int v) {\n\tif (dep[u]>dep[v]) swap(u,v);\n\tper(i,0,LOGN) if (dep[p[v][i]]>=dep[u]) v=p[v][i];\n\tif (u==v) return u;\n\tper(i,0,LOGN) if (p[v][i]!=p[u][i]) u=p[u][i],v=p[v][i];\n\treturn p[u][0];\n}\n\nconst int inf=0x20202020;\nint vis[N*20];\ntypedef int flowt;\nnamespace flow {\n\tconst int M=2010000,N=2010000;\n\tint y[M],nxt[M],gap[N],fst[N],c[N],pre[N],q[N],dis[N];\n\tflowt f[M];\n\tint S,T,tot,Tn;\n\tvoid init(int s,int t,int tn) {\n\t\ttot=1; assert(tn<N);\n\t\trep(i,0,tn) fst[i]=0;\n\t\tS=s;T=t;Tn=tn;\n\t}\n\tvoid add(int u,int v,flowt c1,flowt c2=0) {\n\t\ttot++;y[tot]=v;f[tot]=c1;nxt[tot]=fst[u];fst[u]=tot;\n\t\ttot++;y[tot]=u;f[tot]=c2;nxt[tot]=fst[v];fst[v]=tot;\n\t}\n\tflowt sap() {\n\t\tint u=S,t=1;flowt flow=0;\n\t\trep(i,0,Tn) c[i]=fst[i],dis[i]=Tn,gap[i]=0;\n\t\tq[0]=T;dis[T]=0;pre[S]=0;\n\t\trep(i,0,t) {\n\t\t\tint u=q[i];\n\t\t\tfor (int j=fst[u];j;j=nxt[j]) if (dis[y[j]]>dis[u]+1&&f[j^1]) \n\t\t\t\tq[t++]=y[j],dis[y[j]]=dis[u]+1;\n\t\t}\n\t\trep(i,0,Tn) gap[dis[i]]++;\n\t\twhile (dis[S]<=Tn) {\n\t\t\twhile (c[u]&&(!f[c[u]]||dis[y[c[u]]]+1!=dis[u])) c[u]=nxt[c[u]];\n\t\t\tif (c[u]) {\n\t\t\t\tpre[y[c[u]]]=c[u]^1;\n\t\t\t\tu=y[c[u]];\n\t\t\t\tif (u==T) {\n\t\t\t\t\tflowt minf=inf;\n\t\t\t\t\tfor (int p=pre[T];p;p=pre[y[p]]) minf=min(minf,f[p^1]);\n\t\t\t\t\tfor (int p=pre[T];p;p=pre[y[p]]) f[p^1]-=minf,f[p]+=minf;\n\t\t\t\t\tflow+=minf;u=S;\n\t\t\t\t}\n\t\t\t} else {\n\t\t\t\tif (!(--gap[dis[u]])) break;\n\t\t\t\tint mind=Tn;\n\t\t\t\tc[u]=fst[u];\n\t\t\t\tfor (int j=fst[u];j;j=nxt[j]) if (f[j]&&dis[y[j]]<mind) \n\t\t\t\t\tmind=dis[y[j]],c[u]=j;\n\t\t\t\tdis[u]=mind+1;\n\t\t\t\tgap[dis[u]]++;\n\t\t\t\tif (u!=S) u=y[pre[u]];\n\t\t\t}\n\t\t}\n\t\tq[0]=T; vis[T]=1; t=1;\n\t\trep(i,0,t) {\n\t\t\tint u=q[i];\n\t\t\tfor (int j=fst[u];j;j=nxt[j]) if (!vis[y[j]]&&f[j^1]) q[t++]=y[j],vis[y[j]]=1;\n\t\t}\n\t\treturn flow;\n\t}\n};\n\nvoid dfs(int u,int f) {\n\tp[u][0]=f; dep[u]=dep[f]+1;\n\tif (f) {\n\t\tg[u][0]=id[f][u];\n\t}\n\trep(i,1,LOGN) {\n\t\tp[u][i]=p[p[u][i-1]][i-1];\n\t\tif (p[u][i]!=0) {\n\t\t\tg[u][i]=tot++;\n\t\t\tflow::add(g[u][i],g[u][i-1],inf);\n\t\t\tflow::add(g[u][i],g[p[u][i-1]][i-1],inf);\n\t\t}\n\t}\n\tfor (auto v:e[u]) if (v!=f) {\n\t\tdfs(v,u);\n\t}\n}\nvoid add(int u,int w,int c) {\n\tint x=dep[u]-dep[w];\n\tper(i,0,LOGN) if ((1<<i)<=x) {\n\t\tflow::add(c,g[u][i],inf);\n\t\tint d=x-(1<<i);\n\t\tper(j,0,LOGN) if (d&(1<<j)) u=p[u][j];\n\t\tflow::add(c,g[u][i],inf);\n\t\tbreak;\n\t}\n}\nint main() {\n\tscanf(\"%d%d\",&n,&m);\n\tflow::init(0,0,0);\n\trep(i,1,n) {\n\t\tscanf(\"%d%d\",&u,&v);\n\t\te[u].pb(v); e[v].pb(u);\n\t\tid[u][v]=id[v][u]=m+i;\n\t}\n\ttot=m+n;\n\tdfs(1,0);\n\tflow::T=tot; flow::Tn=tot+1;\n\trep(i,1,n) flow::add(m+i,tot,1);\n\trep(i,0,m) {\n\t\tscanf(\"%d%d\",&u,&v);\n\t\tflow::add(0,i+1,1);\n\t\tint w=lca(u,v);\n\t\tadd(u,w,i+1); add(v,w,i+1);\n\t}\n\tprintf(\"%d\\n\",flow::sap());\n\tVI r;\n\trep(i,1,m+1) if (vis[i]) r.pb(i);\n\tprintf(\"%d\",SZ(r)); for (auto u:r) printf(\" %d\",u); puts(\"\");\n\tr.clear();\n\trep(i,1,n) if (!vis[m+i]) r.pb(i);\n\tprintf(\"%d\",SZ(r)); for (auto u:r) printf(\" %d\",u); puts(\"\");\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "data structures",
+        "flows",
+        "graphs",
+        "trees"
+    ],
+    "dificulty": "3200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\E. ALT.json",
+    "editorial_link": "https://codeforces.com//blog/entry/51163",
+    "editorial": "If and were smaller: We construct a bipartite graph. For each citizen we\r\nconsider a vertex in the first part, and for each guardian in the tree\r\nwe consider a vertex in the second part. We put an edge between vertex\r\nfrom first part and from second part if and only if path to contains\r\nedge . Answer to the problem is vertex cover of this graph. Time\r\ncomplexity: But now that and are great, we can\u00e2\u0080\u0099t use this approach.We\r\nwill instead build a DAG. Like above, For each citizen we consider a\r\nvertex in the first part, and for each guardian in the tree we consider\r\na vertex in the second part. Consider the data structure that is used to\r\nfind LCA of two vertices in the tree (keeping -th ancestor of each\r\nvertex for each ). We will use that to build the graph. For each vertex\r\nin the tree and (), we consider a vertex in the tree, this vertex is .\r\nWe\u00e2\u0080\u0099ll build a flow network. For each , we put an edge from to the vertex\r\ncorresponding to edge (guardian) connecting and its parent (with\r\ncapacity = ). For each , we put an edge from to with capacity = and one\r\nto with capacity = . Then for each citizen, like the algorithm we used\r\nto find the LCA of and , when we\u00e2\u0080\u0099re going up from a vertex to its -th\r\nparent, we put an edge from vertex corresponding to citizen to with\r\ncapacity = .Finally we consider a vertex as source and and sink. For\r\neach citizen , we put an edge from to vertex corresponding to him/her\r\nwith capacity = . And for each guardian put an edge from vertex\r\ncorresponding to this edge to with capacity = .It can be shown that the\r\nanswer to the original problem is maximum flow of this network. Also\r\ncertificate can be found using a DFS (it\u00e2\u0080\u0099s exactly like finding a\r\ncertificate(vertex cover) in maximum-matching approach).Since the\r\nnetwork contains levels(cuts) from to with all edges with capacity equal\r\nto , the total time complexity is where is the number of edges in the\r\nnetwork which is , so:Time complexity:\r\n"
+}

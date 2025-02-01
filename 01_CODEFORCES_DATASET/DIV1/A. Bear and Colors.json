@@ -1,1 +1,122 @@
-{"link": "https://codeforces.com//contest/674/problem/A", "problemId": "59812", "problem_idx": "A", "shortId": "674A", "contest_number": "674", "problem_submissions": {"F": [17795703, 17796640, 17795248, 17796731, 17795284, 17786875, 17793312, 17799447, 17799059, 17796927, 17809648], "E": [17791802, 17792589, 17793136, 17792993, 17792579, 17790993, 17797689, 17793850, 17793986, 17790505, 17793423, 17807249, 17795195, 17795763, 17827053, 17796913], "C": [17789698, 17787708, 17787067, 17789946, 17787511, 17796571, 17795757, 17788550, 17790663, 17794959, 17792670, 17795899, 17791267, 17793511, 17791551, 17791808], "B": [17783364, 17783002, 17794015, 17783259, 17783884, 17783532, 17788831, 17784932, 17787141, 17784301, 17785005, 17785023, 17784292, 17783013, 17783128, 17786182, 17784522], "A": [17780055, 17780264, 17780741, 17780847, 17780248, 17780121, 17787726, 17781230, 17780294, 17782551, 17782250, 17781088, 17780155, 17780065, 17780569, 17780629, 17781843], "D": [17798492, 17808237], "G": [17818293, 17796240, 17798313]}, "name": "A. Bear and Colors", "statement": "Bear Limak has colored balls, arranged in one long row. Balls are\r\nnumbered through , from left to right. There are possible colors, also\r\nnumbered through . The -th ball has color .For a fixed interval (set of\r\nconsecutive elements) of balls we can define a color. It\u2019s a color\r\noccurring the biggest number of times in the interval. In case of a tie\r\nbetween some colors, the one with the smallest number (index) is chosen\r\nas dominant.There are non-empty intervals in total. For each color, your\r\ntask is to count the number of intervals in which this color is\r\ndominant.\r\n", "solutions": ["#include <iostream>\n#include <tuple>\n#include <sstream>\n#include <vector>\n#include <cmath>\n#include <ctime>\n#include <cassert>\n#include <cstdio>\n#include <queue>\n#include <set>\n#include <map>\n#include <fstream>\n#include <cstdlib>\n#include <string>\n#include <cstring>\n#include <algorithm>\n#include <numeric>\n\n#define mp make_pair\n#define mt make_tuple\n#define fi first\n#define se second\n#define pb push_back\n#define all(x) (x).begin(), (x).end()\n#define rall(x) (x).rbegin(), (x).rend()\n#define forn(i, n) for (int i = 0; i < (int)(n); ++i)\n#define for1(i, n) for (int i = 1; i <= (int)(n); ++i)\n#define ford(i, n) for (int i = (int)(n) - 1; i >= 0; --i)\n#define fore(i, a, b) for (int i = (int)(a); i <= (int)(b); ++i)\n\nusing namespace std;\n\ntypedef pair<int, int> pii;\ntypedef vector<int> vi;\ntypedef vector<pii> vpi;\ntypedef vector<vi> vvi;\ntypedef long long i64;\ntypedef vector<i64> vi64;\ntypedef vector<vi64> vvi64;\ntypedef pair<i64, i64> pi64;\ntypedef double ld;\n\ntemplate<class T> bool uin(T &a, T b) { return a > b ? (a = b, true) : false; }\ntemplate<class T> bool uax(T &a, T b) { return a < b ? (a = b, true) : false; }\n\nconst int maxn = 5100;\nint cnt[maxn], ans[maxn];\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    cout.precision(10);\n    cout << fixed;\n#ifdef LOCAL_DEFINE\n    freopen(\"input.txt\", \"rt\", stdin);\n#endif\n\n    int n;\n    cin >> n;\n    vi a(n);\n    forn(i, n) cin >> a[i], --a[i];\n    forn(i, n) {\n        forn(j, n) cnt[j] = 0;\n        pii p = mp(-1e9, -1e9);\n        for (int j = i; j < n; ++j) {\n            ++cnt[a[j]];\n            uax(p, mp(cnt[a[j]], -a[j]));\n            ++ans[-p.se];\n        }\n    }\n    forn(i, n) cout << ans[i] << ' ';\n    cout << '\\n';\n\n#ifdef LOCAL_DEFINE\n    cerr << \"Time elapsed: \" << 1.0 * clock() / CLOCKS_PER_SEC << \" s.\\n\";\n#endif\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["brute force", "data structures", "implementation"], "dificulty": "1500", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/674/problem/A",
+    "problemId": "59812",
+    "problem_idx": "A",
+    "shortId": "674A",
+    "contest_number": "674",
+    "problem_submissions": {
+        "F": [
+            17795703,
+            17796640,
+            17795248,
+            17796731,
+            17795284,
+            17786875,
+            17793312,
+            17799447,
+            17799059,
+            17796927,
+            17809648
+        ],
+        "E": [
+            17791802,
+            17792589,
+            17793136,
+            17792993,
+            17792579,
+            17790993,
+            17797689,
+            17793850,
+            17793986,
+            17790505,
+            17793423,
+            17807249,
+            17795195,
+            17795763,
+            17827053,
+            17796913
+        ],
+        "C": [
+            17789698,
+            17787708,
+            17787067,
+            17789946,
+            17787511,
+            17796571,
+            17795757,
+            17788550,
+            17790663,
+            17794959,
+            17792670,
+            17795899,
+            17791267,
+            17793511,
+            17791551,
+            17791808
+        ],
+        "B": [
+            17783364,
+            17783002,
+            17794015,
+            17783259,
+            17783884,
+            17783532,
+            17788831,
+            17784932,
+            17787141,
+            17784301,
+            17785005,
+            17785023,
+            17784292,
+            17783013,
+            17783128,
+            17786182,
+            17784522
+        ],
+        "A": [
+            17780055,
+            17780264,
+            17780741,
+            17780847,
+            17780248,
+            17780121,
+            17787726,
+            17781230,
+            17780294,
+            17782551,
+            17782250,
+            17781088,
+            17780155,
+            17780065,
+            17780569,
+            17780629,
+            17781843
+        ],
+        "D": [
+            17798492,
+            17808237
+        ],
+        "G": [
+            17818293,
+            17796240,
+            17798313
+        ]
+    },
+    "name": "A. Bear and Colors",
+    "statement": "Bear Limak has colored balls, arranged in one long row. Balls are\r\nnumbered through , from left to right. There are possible colors, also\r\nnumbered through . The -th ball has color .For a fixed interval (set of\r\nconsecutive elements) of balls we can define a color. It\u2019s a color\r\noccurring the biggest number of times in the interval. In case of a tie\r\nbetween some colors, the one with the smallest number (index) is chosen\r\nas dominant.There are non-empty intervals in total. For each color, your\r\ntask is to count the number of intervals in which this color is\r\ndominant.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <tuple>\n#include <sstream>\n#include <vector>\n#include <cmath>\n#include <ctime>\n#include <cassert>\n#include <cstdio>\n#include <queue>\n#include <set>\n#include <map>\n#include <fstream>\n#include <cstdlib>\n#include <string>\n#include <cstring>\n#include <algorithm>\n#include <numeric>\n\n#define mp make_pair\n#define mt make_tuple\n#define fi first\n#define se second\n#define pb push_back\n#define all(x) (x).begin(), (x).end()\n#define rall(x) (x).rbegin(), (x).rend()\n#define forn(i, n) for (int i = 0; i < (int)(n); ++i)\n#define for1(i, n) for (int i = 1; i <= (int)(n); ++i)\n#define ford(i, n) for (int i = (int)(n) - 1; i >= 0; --i)\n#define fore(i, a, b) for (int i = (int)(a); i <= (int)(b); ++i)\n\nusing namespace std;\n\ntypedef pair<int, int> pii;\ntypedef vector<int> vi;\ntypedef vector<pii> vpi;\ntypedef vector<vi> vvi;\ntypedef long long i64;\ntypedef vector<i64> vi64;\ntypedef vector<vi64> vvi64;\ntypedef pair<i64, i64> pi64;\ntypedef double ld;\n\ntemplate<class T> bool uin(T &a, T b) { return a > b ? (a = b, true) : false; }\ntemplate<class T> bool uax(T &a, T b) { return a < b ? (a = b, true) : false; }\n\nconst int maxn = 5100;\nint cnt[maxn], ans[maxn];\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    cout.precision(10);\n    cout << fixed;\n#ifdef LOCAL_DEFINE\n    freopen(\"input.txt\", \"rt\", stdin);\n#endif\n\n    int n;\n    cin >> n;\n    vi a(n);\n    forn(i, n) cin >> a[i], --a[i];\n    forn(i, n) {\n        forn(j, n) cnt[j] = 0;\n        pii p = mp(-1e9, -1e9);\n        for (int j = i; j < n; ++j) {\n            ++cnt[a[j]];\n            uax(p, mp(cnt[a[j]], -a[j]));\n            ++ans[-p.se];\n        }\n    }\n    forn(i, n) cout << ans[i] << ' ';\n    cout << '\\n';\n\n#ifdef LOCAL_DEFINE\n    cerr << \"Time elapsed: \" << 1.0 * clock() / CLOCKS_PER_SEC << \" s.\\n\";\n#endif\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "data structures",
+        "implementation"
+    ],
+    "dificulty": "1500",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Bear and Colors.json",
+    "editorial_link": "https://codeforces.com//blog/entry/44754",
+    "editorial": "We are going to iterate over all intervals. Let's first fix the left end of the interval and denote it by i. Now, we iterate over the right end j. When we go from j to j?+?1 then we get one extra ball with color cj?+?1. In one global array cnt[n] we can keep the number of occurrences of each color (we can clear the array for each new i). We should increase by one cnt[cj?+?1] and then check whether cj?+?1 becomes a new dominant color. But how to do it?\n\nAdditionally, let's keep one variable best with the current dominant color. When we go to j?+?1 then we should whether cnt[cj?+?1]?>?cnt[best] or (cnt[cj?+?1]?=??=?cnt[best] and cj?+?1?<?best). The second condition checks which color has smaller index (in case of a tie). And we must increase answer[best] by one then because we know that best is dominant for the current interval. At the end, print values answer[1],?answer[2],?...,?answer[n]."
+}

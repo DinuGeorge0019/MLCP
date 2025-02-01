@@ -1,1 +1,107 @@
-{"link": "https://codeforces.com//contest/955/problem/A", "problemId": "167743", "problem_idx": "A", "shortId": "955A", "contest_number": "955", "problem_submissions": {"E": [36552751], "D": [36547766, 36561781, 36687646, 72294185], "C": [36544337, 36544697, 36542762, 36552120, 36546618, 36544122, 36549891, 36544109, 36541691, 36576017, 36575027, 36548324, 36546617, 36544127, 36541601, 36543835, 36543719, 36546626, 36545136, 36544045, 36543760, 36541102], "B": [36538238, 36537135, 36537612, 36562998, 36539430, 36538683, 36540472, 36537286, 36537082, 36538951, 36538215, 36537949, 36537216, 36540793, 36539603, 36539538, 36538461, 36538576, 36537767, 36537306], "A": [36536991, 36539709, 36536867, 36548240, 36538150, 36537171, 36538851, 36536810, 36543232, 36537420, 36540571, 36537312, 36546633, 36537606, 36537598, 36537548, 36537069, 36537405, 36537023, 36550641], "F": [36545987, 36553463, 36668304]}, "name": "A. Feed the cat", "statement": "After waking up at :, Andrew realised that he had forgotten to feed his\r\nonly cat for yet another time (guess why there\u2019s only one cat). The\r\ncat\u2019s current hunger level is points, moreover each minute without food\r\nincreases his hunger by points.At any time Andrew can visit the store\r\nwhere tasty buns are sold (you can assume that is doesn\u2019t take time to\r\nget to the store and back). One such bun costs roubles and decreases\r\nhunger by points. Since the demand for bakery drops heavily in the\r\nevening, there is a special discount for buns starting from : (note that\r\nthe cost might become rational). Of course, buns cannot be sold by\r\nparts.Determine the minimum amount of money Andrew has to spend in order\r\nto feed his cat. The cat is considered fed if its hunger level is less\r\nthan or equal to zero.\r\n", "solutions": ["#include<bits/stdc++.h>\nusing namespace std;\nint main() {\n\tint hh,mm,h,d,c,n; scanf(\"%d%d%d%d%d%d\",&hh,&mm,&h,&d,&c,&n);\n\tdouble ans;\n\tif(hh>=20)ans=(h+n-1)/n*c*0.8;\n\telse{\n\t\tans=(h+n-1)/n*c; int m=(19-hh)*60+(60-mm);\n\t\tans=min(ans,(h+m*d+n-1)/n*c*0.8);\n\t}\n\tprintf(\"%.9f\\n\",ans); return 0;\n}"], "input": "", "output": "", "tags": ["greedy", "math"], "dificulty": "1100", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/955/problem/A",
+    "problemId": "167743",
+    "problem_idx": "A",
+    "shortId": "955A",
+    "contest_number": "955",
+    "problem_submissions": {
+        "E": [
+            36552751
+        ],
+        "D": [
+            36547766,
+            36561781,
+            36687646,
+            72294185
+        ],
+        "C": [
+            36544337,
+            36544697,
+            36542762,
+            36552120,
+            36546618,
+            36544122,
+            36549891,
+            36544109,
+            36541691,
+            36576017,
+            36575027,
+            36548324,
+            36546617,
+            36544127,
+            36541601,
+            36543835,
+            36543719,
+            36546626,
+            36545136,
+            36544045,
+            36543760,
+            36541102
+        ],
+        "B": [
+            36538238,
+            36537135,
+            36537612,
+            36562998,
+            36539430,
+            36538683,
+            36540472,
+            36537286,
+            36537082,
+            36538951,
+            36538215,
+            36537949,
+            36537216,
+            36540793,
+            36539603,
+            36539538,
+            36538461,
+            36538576,
+            36537767,
+            36537306
+        ],
+        "A": [
+            36536991,
+            36539709,
+            36536867,
+            36548240,
+            36538150,
+            36537171,
+            36538851,
+            36536810,
+            36543232,
+            36537420,
+            36540571,
+            36537312,
+            36546633,
+            36537606,
+            36537598,
+            36537548,
+            36537069,
+            36537405,
+            36537023,
+            36550641
+        ],
+        "F": [
+            36545987,
+            36553463,
+            36668304
+        ]
+    },
+    "name": "A. Feed the cat",
+    "statement": "After waking up at :, Andrew realised that he had forgotten to feed his\r\nonly cat for yet another time (guess why there\u2019s only one cat). The\r\ncat\u2019s current hunger level is points, moreover each minute without food\r\nincreases his hunger by points.At any time Andrew can visit the store\r\nwhere tasty buns are sold (you can assume that is doesn\u2019t take time to\r\nget to the store and back). One such bun costs roubles and decreases\r\nhunger by points. Since the demand for bakery drops heavily in the\r\nevening, there is a special discount for buns starting from : (note that\r\nthe cost might become rational). Of course, buns cannot be sold by\r\nparts.Determine the minimum amount of money Andrew has to spend in order\r\nto feed his cat. The cat is considered fed if its hunger level is less\r\nthan or equal to zero.\r\n",
+    "solutions": [
+        "#include<bits/stdc++.h>\nusing namespace std;\nint main() {\n\tint hh,mm,h,d,c,n; scanf(\"%d%d%d%d%d%d\",&hh,&mm,&h,&d,&c,&n);\n\tdouble ans;\n\tif(hh>=20)ans=(h+n-1)/n*c*0.8;\n\telse{\n\t\tans=(h+n-1)/n*c; int m=(19-hh)*60+(60-mm);\n\t\tans=min(ans,(h+m*d+n-1)/n*c*0.8);\n\t}\n\tprintf(\"%.9f\\n\",ans); return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "greedy",
+        "math"
+    ],
+    "dificulty": "1100",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Feed the cat.json",
+    "editorial_link": "https://codeforces.com//blog/entry/58547",
+    "editorial": "It\u00e2\u0080\u0099s optimal to buy buns either right after waking up or at : (if\r\npossible) because between the awakening and : cost doesn\u00e2\u0080\u0099t change but\r\ncat\u00e2\u0080\u0099s hunger does. There was one extra case when Andrew wakes up after :\r\nand has only one possible option of buying everything since he cannot\r\nturn back time.\r\n"
+}

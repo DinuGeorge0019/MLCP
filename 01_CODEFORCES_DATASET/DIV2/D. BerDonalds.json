@@ -1,1 +1,89 @@
-{"link": "https://codeforces.com//contest/266/problem/D", "problemId": "2552", "problem_idx": "D", "shortId": "266D", "contest_number": "266", "problem_submissions": {"C": [2989194, 2989322, 2989384, 2989374, 2990143, 2990040, 2989950, 2990381, 2989426, 2990294, 2990289, 2990276, 2990477, 2990536, 2990530, 2990542, 2990578, 2990675], "B": [2985804, 2985949, 2985263, 2986112, 2986385, 2986429, 2986401, 2986077, 2989758, 2987333, 2987763, 2987236, 2986921, 2986571, 2986945, 2986418, 2987432], "A": [2984619, 2984631, 2984505, 2985937, 2984987, 2984610, 2984803, 2984855, 2985014, 2985823, 2985798, 2985353, 2984968, 2985697, 2985287, 2985009, 2986181], "D": [2992984, 3412192, 3756396]}, "name": "D. BerDonalds", "statement": "BerDonalds, a well-known fast food restaurant, is going to open a cafe\r\nin Bertown. The important thing is to choose the new restaurant\u2019s\r\nlocation so that it would be easy to get there. The Bertown road system\r\nis represented by junctions, connected by bidirectional roads. For each\r\nroad we know its length. We also know that we can get from any junction\r\nto any other one, moving along the roads.Your task is to find such\r\nlocation of the restaurant, that the shortest distance along the roads\r\nfrom the cafe to the farthest junction would be minimum. Note that the\r\nrestaurant can be located not only on the junction, but at any point of\r\nany road.\r\n", "solutions": ["#include <stdio.h>\n#include <string.h>\n#include <math.h>\n#include <set>\n#include <queue>\n#include <map>\n#include <algorithm>\nusing namespace std;\ndouble anss;\nint hh[210],ecnt;\nint n;\nint in[210],dis[210][210];\nint tdis1[210],tdis2[210];\ndouble cal(double l,double w)\n{\n    double anss=0;\n    for (int i=1; i<=n; i++)\n    {\n        if (tdis1[i]==-1) anss=max(anss,w-l+tdis2[i]);\n        else if (tdis2[i]==-1) anss=max(anss,l+tdis1[i]);\n        else anss=max(anss,min(w-l+tdis2[i],l+tdis1[i]));\n    }\n    return anss;\n}\nint uu[40010],vv[40010],ww[40010];\nstruct node\n{\n    double l,r;\n};\nnode p[210];\nint sgn(double x)\n{\n    if (fabs(x)<1e-10) return 0;\n    return x>0?1:-1;\n}\nbool cmp(const node &a,const node &b)\n{\n    if (sgn(a.l-b.l)!=0) return a.l<b.l;\n    return a.r>b.r;\n}\nint main()\n{\n    int m;\n    scanf(\"%d%d\",&n,&m);\n    memset(dis,-1,sizeof(dis));\n    for (int i=0; i<m; i++)\n    {\n        scanf(\"%d%d%d\",&uu[i],&vv[i],&ww[i]);\n        int u=uu[i],v=vv[i],w=ww[i];\n        if (dis[u][v]==-1||dis[u][v]>w)\n            dis[u][v]=dis[v][u]=w;\n    }\n    anss=-100;\n    for (int i=1; i<=n; i++)\n        dis[i][i]=0;\n    for (int k=1; k<=n; k++)\n        for (int i=1; i<=n; i++)\n            for (int j=1; j<=n; j++)\n            {\n                if (dis[i][k]==-1) continue;\n                if (dis[k][j]==-1) continue;\n                if (dis[i][j]==-1||dis[i][j]>dis[i][k]+dis[k][j])\n                    dis[i][j]=dis[i][k]+dis[k][j];\n            }\n    int maxx=0;\n    for (int s=1; s<=n; s++)\n    {\n        for (int i=1; i<=n; i++)\n            maxx=max(maxx,dis[s][i]);\n        if (anss<-50) anss=maxx*1.0;\n        else anss=min(anss,maxx*1.0);\n    }\n    double L=0;\n    double R=anss;\n    for (int i=0; i<m; i++)\n    {\n        int u=uu[i],v=vv[i],w=ww[i];\n        for (int k=1; k<=n; k++)\n            tdis1[k]=tdis2[k]=-1;\n        bool ck=true;\n        int maxx=0;\n        for (int k=1; k<=n; k++)\n        {\n            if (dis[v][k]+w>dis[u][k])\n                tdis1[k]=dis[u][k];\n            if (dis[u][k]+w>dis[v][k])\n                tdis2[k]=dis[v][k];\n            int minn=tdis1[k];\n            if (minn==-1||(tdis2[k]!=-1&&minn>tdis2[k])) minn=tdis2[k];\n            maxx=max(maxx,minn);\n            if (minn>R)\n            {\n                ck=false;\n                break;\n            }\n        }\n        if (!ck) continue;\n        L=maxx;\n        while (fabs(L-R)>1e-9)\n        {\n            double mid=(L+R)/2.0;\n            for (int j=1;j<=n;j++)\n            {\n                p[j-1].l=min(w*1.0,mid-dis[u][j]);\n                p[j-1].r=w-min(w*1.0,mid-dis[v][j]);\n                p[j-1].l=max(p[j-1].l,0.0);\n                p[j-1].r=min(p[j-1].r,w*1.0);\n            }\n            sort(p,p+n,cmp);\n            double ll=0,rr=0;\n            bool ok=false;\n            for (int j=0;j<n;j++)\n            {\n                if (sgn(rr-w)==0) break;\n                if (sgn(p[j].l-rr)>0)\n                {\n                    ok=true;\n                    break;\n                }\n                else rr=max(p[j].r,rr);\n            }\n            if (sgn(rr-w)<0) ok=true;\n            if (ok) R=mid;\n            else L=mid;\n        }\n        anss=min(anss,L);\n    }\n    printf(\"%.15f\\n\",anss);\n}\n"], "input": "", "output": "", "tags": ["graphs", "math", "shortest paths"], "dificulty": "2400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/266/problem/D",
+    "problemId": "2552",
+    "problem_idx": "D",
+    "shortId": "266D",
+    "contest_number": "266",
+    "problem_submissions": {
+        "C": [
+            2989194,
+            2989322,
+            2989384,
+            2989374,
+            2990143,
+            2990040,
+            2989950,
+            2990381,
+            2989426,
+            2990294,
+            2990289,
+            2990276,
+            2990477,
+            2990536,
+            2990530,
+            2990542,
+            2990578,
+            2990675
+        ],
+        "B": [
+            2985804,
+            2985949,
+            2985263,
+            2986112,
+            2986385,
+            2986429,
+            2986401,
+            2986077,
+            2989758,
+            2987333,
+            2987763,
+            2987236,
+            2986921,
+            2986571,
+            2986945,
+            2986418,
+            2987432
+        ],
+        "A": [
+            2984619,
+            2984631,
+            2984505,
+            2985937,
+            2984987,
+            2984610,
+            2984803,
+            2984855,
+            2985014,
+            2985823,
+            2985798,
+            2985353,
+            2984968,
+            2985697,
+            2985287,
+            2985009,
+            2986181
+        ],
+        "D": [
+            2992984,
+            3412192,
+            3756396
+        ]
+    },
+    "name": "D. BerDonalds",
+    "statement": "BerDonalds, a well-known fast food restaurant, is going to open a cafe\r\nin Bertown. The important thing is to choose the new restaurant\u2019s\r\nlocation so that it would be easy to get there. The Bertown road system\r\nis represented by junctions, connected by bidirectional roads. For each\r\nroad we know its length. We also know that we can get from any junction\r\nto any other one, moving along the roads.Your task is to find such\r\nlocation of the restaurant, that the shortest distance along the roads\r\nfrom the cafe to the farthest junction would be minimum. Note that the\r\nrestaurant can be located not only on the junction, but at any point of\r\nany road.\r\n",
+    "solutions": [
+        "#include <stdio.h>\n#include <string.h>\n#include <math.h>\n#include <set>\n#include <queue>\n#include <map>\n#include <algorithm>\nusing namespace std;\ndouble anss;\nint hh[210],ecnt;\nint n;\nint in[210],dis[210][210];\nint tdis1[210],tdis2[210];\ndouble cal(double l,double w)\n{\n    double anss=0;\n    for (int i=1; i<=n; i++)\n    {\n        if (tdis1[i]==-1) anss=max(anss,w-l+tdis2[i]);\n        else if (tdis2[i]==-1) anss=max(anss,l+tdis1[i]);\n        else anss=max(anss,min(w-l+tdis2[i],l+tdis1[i]));\n    }\n    return anss;\n}\nint uu[40010],vv[40010],ww[40010];\nstruct node\n{\n    double l,r;\n};\nnode p[210];\nint sgn(double x)\n{\n    if (fabs(x)<1e-10) return 0;\n    return x>0?1:-1;\n}\nbool cmp(const node &a,const node &b)\n{\n    if (sgn(a.l-b.l)!=0) return a.l<b.l;\n    return a.r>b.r;\n}\nint main()\n{\n    int m;\n    scanf(\"%d%d\",&n,&m);\n    memset(dis,-1,sizeof(dis));\n    for (int i=0; i<m; i++)\n    {\n        scanf(\"%d%d%d\",&uu[i],&vv[i],&ww[i]);\n        int u=uu[i],v=vv[i],w=ww[i];\n        if (dis[u][v]==-1||dis[u][v]>w)\n            dis[u][v]=dis[v][u]=w;\n    }\n    anss=-100;\n    for (int i=1; i<=n; i++)\n        dis[i][i]=0;\n    for (int k=1; k<=n; k++)\n        for (int i=1; i<=n; i++)\n            for (int j=1; j<=n; j++)\n            {\n                if (dis[i][k]==-1) continue;\n                if (dis[k][j]==-1) continue;\n                if (dis[i][j]==-1||dis[i][j]>dis[i][k]+dis[k][j])\n                    dis[i][j]=dis[i][k]+dis[k][j];\n            }\n    int maxx=0;\n    for (int s=1; s<=n; s++)\n    {\n        for (int i=1; i<=n; i++)\n            maxx=max(maxx,dis[s][i]);\n        if (anss<-50) anss=maxx*1.0;\n        else anss=min(anss,maxx*1.0);\n    }\n    double L=0;\n    double R=anss;\n    for (int i=0; i<m; i++)\n    {\n        int u=uu[i],v=vv[i],w=ww[i];\n        for (int k=1; k<=n; k++)\n            tdis1[k]=tdis2[k]=-1;\n        bool ck=true;\n        int maxx=0;\n        for (int k=1; k<=n; k++)\n        {\n            if (dis[v][k]+w>dis[u][k])\n                tdis1[k]=dis[u][k];\n            if (dis[u][k]+w>dis[v][k])\n                tdis2[k]=dis[v][k];\n            int minn=tdis1[k];\n            if (minn==-1||(tdis2[k]!=-1&&minn>tdis2[k])) minn=tdis2[k];\n            maxx=max(maxx,minn);\n            if (minn>R)\n            {\n                ck=false;\n                break;\n            }\n        }\n        if (!ck) continue;\n        L=maxx;\n        while (fabs(L-R)>1e-9)\n        {\n            double mid=(L+R)/2.0;\n            for (int j=1;j<=n;j++)\n            {\n                p[j-1].l=min(w*1.0,mid-dis[u][j]);\n                p[j-1].r=w-min(w*1.0,mid-dis[v][j]);\n                p[j-1].l=max(p[j-1].l,0.0);\n                p[j-1].r=min(p[j-1].r,w*1.0);\n            }\n            sort(p,p+n,cmp);\n            double ll=0,rr=0;\n            bool ok=false;\n            for (int j=0;j<n;j++)\n            {\n                if (sgn(rr-w)==0) break;\n                if (sgn(p[j].l-rr)>0)\n                {\n                    ok=true;\n                    break;\n                }\n                else rr=max(p[j].r,rr);\n            }\n            if (sgn(rr-w)<0) ok=true;\n            if (ok) R=mid;\n            else L=mid;\n        }\n        anss=min(anss,L);\n    }\n    printf(\"%.15f\\n\",anss);\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "graphs",
+        "math",
+        "shortest paths"
+    ],
+    "dificulty": "2400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. BerDonalds.json",
+    "editorial_link": "https://codeforces.com//blog/entry/6499",
+    "editorial": "I\u00e2\u0080\u0099ll tell a few ideas how to solve this problem. Firstly, describe the\r\nsolution with time . Consider every edge of length where could be the\r\nanswer point. Let this point lie at a distance from vertex . So, the\r\ndistance from this point to vertex would be , where distance between\r\nvertices and . Equate these values and get the critical value for vertex\r\n, . It follows that the answer to the problem is half-integer. So, for\r\nevery edge and every other vertex we get set of critical points. We\r\nshould check them all include the vertices of the graph (ends of the\r\nsegments). This solution may probably pass with some optimizations.\r\nAnother solution with complexity . Multiply all weights by . Consider\r\nevery edge where should be the answer and make binary search for the\r\nanswer (in integers). To check some current value you should consider\r\nevery vertex and assume that the answer is achieved in this vertex. In\r\nthis case, the answer point must lie on this edge <= some value or >=\r\nsome value . This subproblem is solved using offline algorithm using\r\nsorting events and maintaining the balance. Also, you can use ternary\r\nsearch on every edge of the graph. But you should divide every edge on\r\nseveral segments and find the answer on every segment, because the\r\nternary search is incorrect in this problem. The last two solutions can\r\nprovide accepted, if you realize them carefully. Also note, that there\r\nis the solution with complexity by the author RAD.\r\n"
+}

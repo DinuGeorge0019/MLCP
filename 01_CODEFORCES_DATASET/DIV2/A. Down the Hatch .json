@@ -1,1 +1,88 @@
-{"link": "https://codeforces.com//contest/332/problem/A", "problemId": "3359", "problem_idx": "A", "shortId": "332A", "contest_number": "332", "problem_submissions": {"C": [4155522, 4156354, 4153132, 4153078, 4154819, 4153485, 4154446, 4155481, 4155178, 4155623, 4155730, 4154794, 4156773, 4155378, 4156846, 4154112], "E": [4153414, 4232674, 4158374], "B": [4150245, 4150553, 4152758, 4151567, 4149063, 4150850, 4150633, 4148733, 4149973, 4149574, 4149995, 4149281, 4152409, 4149688, 4152014, 4150178, 4149649], "A": [4152890, 4148247, 4148387, 4148367, 4148085, 4148922, 4150814, 4148615, 4148406, 4149253, 4148257, 4148663, 4148588, 4148447], "D": [4150491, 4155596, 4158402, 4155100]}, "name": "A. Down the Hatch ", "statement": "Everybody knows that the Berland citizens are keen on health, especially\r\nstudents. Berland students are so tough that all they drink is orange\r\njuice!Yesterday one student, Vasya and his mates made some barbecue and\r\nthey drank this healthy drink only. After they ran out of the first\r\nbarrel of juice, they decided to play a simple game. All people who came\r\nto the barbecue sat in a circle (thus each person received a unique\r\nindex from 0 to ). The person number 0 started the game (this time it\r\nwas Vasya). All turns in the game were numbered by integers starting\r\nfrom 1. If the -th turn was made by the person with index , then this\r\nperson acted like that: he pointed at the person with index either with\r\nan elbow or with a nod ( is the remainder after dividing by ); if and\r\nthe players who had turns number , , , made during their turns the same\r\nmoves as player on the current turn, then he had drunk a glass of juice;\r\nthe turn went to person number . The person who was pointed on the last\r\nturn did not make any actions.The problem was, Vasya\u2019s drunk too much\r\njuice and can\u2019t remember the goal of the game. However, Vasya\u2019s got the\r\nrecorded sequence of all the participants\u2019 actions (including himself).\r\nNow Vasya wants to find out the maximum amount of juice he could drink\r\nif he played optimally well (the other players\u2019 actions do not change).\r\nHelp him.You can assume that in any scenario, there is enough juice for\r\neverybody.\r\n", "solutions": ["#include <iostream>\n#include <cstring>\n#include <cstdio>\n#include <cmath>\n#include <algorithm>\n#include <queue>\n#include <string>\n#include <vector>\n#include <set>\n#include <map>\n\n#define  MP(x,y) make_pair((x),(y))\n\nusing namespace std;\n\nconst int Maxn=2010;\nint n;\nchar str[Maxn];\n\nint main()\n{\n    int i,j;\n    while(~scanf(\"%d\",&n))\n    {\n        int cnt=0;\n        scanf(\"%s\",str);\n        int len=strlen(str);\n        for(i=n;i<len;i+=n)\n        {\n            if(str[i-1]==str[i-2] && str[i-2]==str[i-3])\n            cnt++;\n        }\n        printf(\"%d\\n\",cnt);\n    }\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["implementation"], "dificulty": "1300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/332/problem/A",
+    "problemId": "3359",
+    "problem_idx": "A",
+    "shortId": "332A",
+    "contest_number": "332",
+    "problem_submissions": {
+        "C": [
+            4155522,
+            4156354,
+            4153132,
+            4153078,
+            4154819,
+            4153485,
+            4154446,
+            4155481,
+            4155178,
+            4155623,
+            4155730,
+            4154794,
+            4156773,
+            4155378,
+            4156846,
+            4154112
+        ],
+        "E": [
+            4153414,
+            4232674,
+            4158374
+        ],
+        "B": [
+            4150245,
+            4150553,
+            4152758,
+            4151567,
+            4149063,
+            4150850,
+            4150633,
+            4148733,
+            4149973,
+            4149574,
+            4149995,
+            4149281,
+            4152409,
+            4149688,
+            4152014,
+            4150178,
+            4149649
+        ],
+        "A": [
+            4152890,
+            4148247,
+            4148387,
+            4148367,
+            4148085,
+            4148922,
+            4150814,
+            4148615,
+            4148406,
+            4149253,
+            4148257,
+            4148663,
+            4148588,
+            4148447
+        ],
+        "D": [
+            4150491,
+            4155596,
+            4158402,
+            4155100
+        ]
+    },
+    "name": "A. Down the Hatch ",
+    "statement": "Everybody knows that the Berland citizens are keen on health, especially\r\nstudents. Berland students are so tough that all they drink is orange\r\njuice!Yesterday one student, Vasya and his mates made some barbecue and\r\nthey drank this healthy drink only. After they ran out of the first\r\nbarrel of juice, they decided to play a simple game. All people who came\r\nto the barbecue sat in a circle (thus each person received a unique\r\nindex from 0 to ). The person number 0 started the game (this time it\r\nwas Vasya). All turns in the game were numbered by integers starting\r\nfrom 1. If the -th turn was made by the person with index , then this\r\nperson acted like that: he pointed at the person with index either with\r\nan elbow or with a nod ( is the remainder after dividing by ); if and\r\nthe players who had turns number , , , made during their turns the same\r\nmoves as player on the current turn, then he had drunk a glass of juice;\r\nthe turn went to person number . The person who was pointed on the last\r\nturn did not make any actions.The problem was, Vasya\u2019s drunk too much\r\njuice and can\u2019t remember the goal of the game. However, Vasya\u2019s got the\r\nrecorded sequence of all the participants\u2019 actions (including himself).\r\nNow Vasya wants to find out the maximum amount of juice he could drink\r\nif he played optimally well (the other players\u2019 actions do not change).\r\nHelp him.You can assume that in any scenario, there is enough juice for\r\neverybody.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <cstring>\n#include <cstdio>\n#include <cmath>\n#include <algorithm>\n#include <queue>\n#include <string>\n#include <vector>\n#include <set>\n#include <map>\n\n#define  MP(x,y) make_pair((x),(y))\n\nusing namespace std;\n\nconst int Maxn=2010;\nint n;\nchar str[Maxn];\n\nint main()\n{\n    int i,j;\n    while(~scanf(\"%d\",&n))\n    {\n        int cnt=0;\n        scanf(\"%s\",str);\n        int len=strlen(str);\n        for(i=n;i<len;i+=n)\n        {\n            if(str[i-1]==str[i-2] && str[i-2]==str[i-3])\n            cnt++;\n        }\n        printf(\"%d\\n\",cnt);\n    }\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation"
+    ],
+    "dificulty": "1300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Down the Hatch .json",
+    "editorial_link": "https://codeforces.com/blog/entry/8447",
+    "editorial": "Since , one Vasya s turn does not affect his other turns. Consequently,\r\nyou should find just the number of positions (0-indexed) in the given\r\nstring, which indexes are multiples of and before which there are at\r\nleast three same symbols. Asymptotics of the solution Code\r\n"
+}

@@ -1,1 +1,107 @@
-{"link": "https://codeforces.com//contest/187/problem/D", "problemId": "1324", "problem_idx": "D", "shortId": "187D", "contest_number": "187", "problem_submissions": {"B": [1679215, 1673469, 1673732, 1673153, 1675030, 1674956, 1675111, 1673806, 1679398, 1676105, 1674092, 1674719, 1674215, 1676107, 1674271, 1673982, 1674600, 1674313, 1673997, 1674141], "E": [1678609, 1679989], "D": [1676469, 1678199, 1678043, 2407052, 1678555, 1679755, 1678435, 1704251, 1703901, 1680981, 1679861, 1687546, 1679340], "C": [1674683, 1675935, 1675188, 1676560, 1676489, 1677858, 1674899, 1676989, 1677275, 1675430, 1676217, 1675632, 1674653, 1675726, 1676281, 1676115, 1676408, 1676632, 1676653], "A": [1672823, 1672616, 1673643, 1673994, 1673278, 1672815, 1672696, 1672795, 1675020, 1673285, 1673012, 1672803, 1672821, 1672657, 1672773, 1673154, 1672871, 1672576, 1672702]}, "name": "D. BRT Contract ", "statement": "In the last war of PMP, he defeated all his opponents and advanced to\r\nthe final round. But after the end of semi-final round evil attacked him\r\nfrom behind and killed him! God bless him. Before his death, PMP signed\r\na contract with the bus rapid transit (BRT) that improves public\r\ntransportations by optimizing time of travel estimation. You should help\r\nPMP finish his last contract.Each BRT line is straight line that passes\r\nintersecting on its ways. At each intersection there is traffic light\r\nthat periodically cycles between green and red. It starts illuminating\r\ngreen at time zero. During the green phase which lasts for seconds,\r\ntraffic is allowed to proceed. After the green phase the light changes\r\nto red and remains in this color for seconds. During the red phase\r\ntraffic is prohibited from proceeding. If a vehicle reaches the\r\nintersection exactly at a time when the light changes to red, it should\r\nstop, but the vehicle is clear to proceed if the light has just changed\r\nto green. All traffic lights have the same timing and are synchronized.\r\nIn other words the period of red (and green) phase is the same for all\r\nof traffic lights and they all start illuminating green at time zero.The\r\nBRT Company has calculated the time that a bus requires to pass each\r\nroad segment. A road segment is the distance between two consecutive\r\ntraffic lights or between a traffic light and source (or destination)\r\nstation. More precisely BRT specialists provide positive integers , the\r\ntime in seconds that a bus needs to traverse -th road segment in the\r\npath from source to destination. The value denotes the time that a bus\r\nneeds to pass the distance between source and the first intersection.\r\nThe value denotes the time between the last intersection and\r\ndestination.In one day buses leave the source station. The -th bus\r\nstarts from source at time (in seconds). Decision makers of BRT Company\r\nwant to know what time a bus gets to destination?The bus is considered\r\nas point. A bus will always move if it can. The buses do not interfere\r\nwith each other.\r\n", "solutions": ["#include<stdio.h>\n#include<stdlib.h>\n#include<string.h>\n#include<math.h>\n#include<assert.h>\n#include<stdarg.h>\n#include<time.h>\n#include<string>\n#include<map>\n#include<set>\n#include<algorithm>\n#include<vector>\nusing namespace std;\nint n;\nint q;\nlong long g,r;\nlong long gr;\nlong long li[101000];\nlong long sl[101000];\nlong long qu[101000];\nlong long ans[101000];\nlong long dp[101000];\nlong long ev[201000];\ninline long long mod(long long a,long long b){\n    a%=b;\n    if(a<0)a+=b;\n    return a;\n}\nlong long tre[1010000];\ninline void down(int np){\n    if(tre[np]!=-1){\n        tre[np*2]=tre[np*2+1]=tre[np];\n        tre[np]=-1;\n    }\n}\ninline void add(int np,int l,int r,int x,int y,int c){\n//    printf(\"add %d %d %d %d %d %d\\n\",np,l,r,x,y,c);\n    if(x==y)return;\n    if(l==x&&r==y){\n        tre[np]=c;\n        return;\n    }\n    down(np);\n    int m=(l+r)/2;\n    if(x<=m&&y>=m){\n        add(np*2,l,m,x,m,c);\n        add(np*2+1,m,r,m,y,c);\n    }else if(x>=m){\n        add(np*2+1,m,r,x,y,c);\n    }else{\n        add(np*2,l,m,x,y,c);\n    }\n}\ninline int que(int np,int l,int r,int x){\n    if(tre[np]!=-1)return tre[np];\n    if(r==l+1)return tre[np];\n    down(np);\n    int m=(l+r)/2;\n    if(x>=m)return que(np*2+1,m,r,x);\n    else return que(np*2,l,m,x);\n}\nint evc;\ninline int lshua(int x){\n    return upper_bound(ev,ev+evc,x)-ev-1;\n}\ninline void build(){\n    int i;\n    memset(tre,-1,sizeof(tre));\n    evc=0;\n    ev[evc++]=0;\n    for(i=0;i<n;i++){\n        ev[evc++]=mod(g-sl[i],gr);\n        ev[evc++]=mod(g+r-sl[i],gr);\n    }\n    sort(ev,ev+evc);\n    evc=unique(ev,ev+evc)-ev;\n    //printf(\"evc=%d\\n\",evc);\n    //for(i=0;i<evc;i++)printf(\"%d \",ev[i]);puts(\"\");\n    dp[n]=0;\n    for(i=n-1;i>=0;i--){\n        long long sp=mod(0-sl[i],gr);\n        int k=que(1,0,evc,lshua(sp));\n        if(k==-1)dp[i]=sl[n]-sl[i];\n        else{\n            long long qq=sl[k]-sl[i];\n            qq=(qq/gr+1)*gr;\n            qq+=dp[k];\n            dp[i]=qq;\n        }\n        //printf(\"dp[%d]=%d\\n\",i,dp[i]);\n        long long e1=mod(g-sl[i],gr);\n        long long e2=mod(g+r-sl[i],gr);\n        int ee1=lshua(e1);\n        int ee2=lshua(e2);\n        if(ee1<ee2)add(1,0,evc,ee1,ee2,i);\n        else{\n            add(1,0,evc,ee1,evc,i);\n            add(1,0,evc,0,ee2,i);\n        }\n    }\n}\ninline void solve(){\n    int i;\n    build();\n    for(i=0;i<q;i++){\n        long long qq=qu[i];\n        long long rr=qq/gr;\n        qq%=gr;\n        int qqq=lshua(qq);\n        int k=que(1,0,evc,qqq);\n        //printf(\"qq=%I64d qqq=%d k=%d\\n\",qq,qqq,k);\n        if(k==-1)ans[i]=qu[i]+sl[n];\n        else{\n            qq+=sl[k];\n            qq=(qq/gr+1)*gr;\n            qq+=dp[k];\n            ans[i]=qq+rr*gr;\n        }\n    }\n}\nint main(){\n    int i;\n    scanf(\"%d%I64d%I64d\",&n,&g,&r);\n    gr=g+r;\n    for(i=0;i<=n;i++){\n        scanf(\"%I64d\",&li[i]);\n        sl[i]=li[i];\n        if(i)sl[i]+=sl[i-1];\n    }\n    scanf(\"%d\",&q);\n    for(i=0;i<q;i++)scanf(\"%I64d\",&qu[i]);\n    solve();\n    for(i=0;i<q;i++)printf(\"%I64d\\n\",ans[i]);\n}\n\n"], "input": "", "output": "", "tags": ["data structures"], "dificulty": "2800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/187/problem/D",
+    "problemId": "1324",
+    "problem_idx": "D",
+    "shortId": "187D",
+    "contest_number": "187",
+    "problem_submissions": {
+        "B": [
+            1679215,
+            1673469,
+            1673732,
+            1673153,
+            1675030,
+            1674956,
+            1675111,
+            1673806,
+            1679398,
+            1676105,
+            1674092,
+            1674719,
+            1674215,
+            1676107,
+            1674271,
+            1673982,
+            1674600,
+            1674313,
+            1673997,
+            1674141
+        ],
+        "E": [
+            1678609,
+            1679989
+        ],
+        "D": [
+            1676469,
+            1678199,
+            1678043,
+            2407052,
+            1678555,
+            1679755,
+            1678435,
+            1704251,
+            1703901,
+            1680981,
+            1679861,
+            1687546,
+            1679340
+        ],
+        "C": [
+            1674683,
+            1675935,
+            1675188,
+            1676560,
+            1676489,
+            1677858,
+            1674899,
+            1676989,
+            1677275,
+            1675430,
+            1676217,
+            1675632,
+            1674653,
+            1675726,
+            1676281,
+            1676115,
+            1676408,
+            1676632,
+            1676653
+        ],
+        "A": [
+            1672823,
+            1672616,
+            1673643,
+            1673994,
+            1673278,
+            1672815,
+            1672696,
+            1672795,
+            1675020,
+            1673285,
+            1673012,
+            1672803,
+            1672821,
+            1672657,
+            1672773,
+            1673154,
+            1672871,
+            1672576,
+            1672702
+        ]
+    },
+    "name": "D. BRT Contract ",
+    "statement": "In the last war of PMP, he defeated all his opponents and advanced to\r\nthe final round. But after the end of semi-final round evil attacked him\r\nfrom behind and killed him! God bless him. Before his death, PMP signed\r\na contract with the bus rapid transit (BRT) that improves public\r\ntransportations by optimizing time of travel estimation. You should help\r\nPMP finish his last contract.Each BRT line is straight line that passes\r\nintersecting on its ways. At each intersection there is traffic light\r\nthat periodically cycles between green and red. It starts illuminating\r\ngreen at time zero. During the green phase which lasts for seconds,\r\ntraffic is allowed to proceed. After the green phase the light changes\r\nto red and remains in this color for seconds. During the red phase\r\ntraffic is prohibited from proceeding. If a vehicle reaches the\r\nintersection exactly at a time when the light changes to red, it should\r\nstop, but the vehicle is clear to proceed if the light has just changed\r\nto green. All traffic lights have the same timing and are synchronized.\r\nIn other words the period of red (and green) phase is the same for all\r\nof traffic lights and they all start illuminating green at time zero.The\r\nBRT Company has calculated the time that a bus requires to pass each\r\nroad segment. A road segment is the distance between two consecutive\r\ntraffic lights or between a traffic light and source (or destination)\r\nstation. More precisely BRT specialists provide positive integers , the\r\ntime in seconds that a bus needs to traverse -th road segment in the\r\npath from source to destination. The value denotes the time that a bus\r\nneeds to pass the distance between source and the first intersection.\r\nThe value denotes the time between the last intersection and\r\ndestination.In one day buses leave the source station. The -th bus\r\nstarts from source at time (in seconds). Decision makers of BRT Company\r\nwant to know what time a bus gets to destination?The bus is considered\r\nas point. A bus will always move if it can. The buses do not interfere\r\nwith each other.\r\n",
+    "solutions": [
+        "#include<stdio.h>\n#include<stdlib.h>\n#include<string.h>\n#include<math.h>\n#include<assert.h>\n#include<stdarg.h>\n#include<time.h>\n#include<string>\n#include<map>\n#include<set>\n#include<algorithm>\n#include<vector>\nusing namespace std;\nint n;\nint q;\nlong long g,r;\nlong long gr;\nlong long li[101000];\nlong long sl[101000];\nlong long qu[101000];\nlong long ans[101000];\nlong long dp[101000];\nlong long ev[201000];\ninline long long mod(long long a,long long b){\n    a%=b;\n    if(a<0)a+=b;\n    return a;\n}\nlong long tre[1010000];\ninline void down(int np){\n    if(tre[np]!=-1){\n        tre[np*2]=tre[np*2+1]=tre[np];\n        tre[np]=-1;\n    }\n}\ninline void add(int np,int l,int r,int x,int y,int c){\n//    printf(\"add %d %d %d %d %d %d\\n\",np,l,r,x,y,c);\n    if(x==y)return;\n    if(l==x&&r==y){\n        tre[np]=c;\n        return;\n    }\n    down(np);\n    int m=(l+r)/2;\n    if(x<=m&&y>=m){\n        add(np*2,l,m,x,m,c);\n        add(np*2+1,m,r,m,y,c);\n    }else if(x>=m){\n        add(np*2+1,m,r,x,y,c);\n    }else{\n        add(np*2,l,m,x,y,c);\n    }\n}\ninline int que(int np,int l,int r,int x){\n    if(tre[np]!=-1)return tre[np];\n    if(r==l+1)return tre[np];\n    down(np);\n    int m=(l+r)/2;\n    if(x>=m)return que(np*2+1,m,r,x);\n    else return que(np*2,l,m,x);\n}\nint evc;\ninline int lshua(int x){\n    return upper_bound(ev,ev+evc,x)-ev-1;\n}\ninline void build(){\n    int i;\n    memset(tre,-1,sizeof(tre));\n    evc=0;\n    ev[evc++]=0;\n    for(i=0;i<n;i++){\n        ev[evc++]=mod(g-sl[i],gr);\n        ev[evc++]=mod(g+r-sl[i],gr);\n    }\n    sort(ev,ev+evc);\n    evc=unique(ev,ev+evc)-ev;\n    //printf(\"evc=%d\\n\",evc);\n    //for(i=0;i<evc;i++)printf(\"%d \",ev[i]);puts(\"\");\n    dp[n]=0;\n    for(i=n-1;i>=0;i--){\n        long long sp=mod(0-sl[i],gr);\n        int k=que(1,0,evc,lshua(sp));\n        if(k==-1)dp[i]=sl[n]-sl[i];\n        else{\n            long long qq=sl[k]-sl[i];\n            qq=(qq/gr+1)*gr;\n            qq+=dp[k];\n            dp[i]=qq;\n        }\n        //printf(\"dp[%d]=%d\\n\",i,dp[i]);\n        long long e1=mod(g-sl[i],gr);\n        long long e2=mod(g+r-sl[i],gr);\n        int ee1=lshua(e1);\n        int ee2=lshua(e2);\n        if(ee1<ee2)add(1,0,evc,ee1,ee2,i);\n        else{\n            add(1,0,evc,ee1,evc,i);\n            add(1,0,evc,0,ee2,i);\n        }\n    }\n}\ninline void solve(){\n    int i;\n    build();\n    for(i=0;i<q;i++){\n        long long qq=qu[i];\n        long long rr=qq/gr;\n        qq%=gr;\n        int qqq=lshua(qq);\n        int k=que(1,0,evc,qqq);\n        //printf(\"qq=%I64d qqq=%d k=%d\\n\",qq,qqq,k);\n        if(k==-1)ans[i]=qu[i]+sl[n];\n        else{\n            qq+=sl[k];\n            qq=(qq/gr+1)*gr;\n            qq+=dp[k];\n            ans[i]=qq+rr*gr;\n        }\n    }\n}\nint main(){\n    int i;\n    scanf(\"%d%I64d%I64d\",&n,&g,&r);\n    gr=g+r;\n    for(i=0;i<=n;i++){\n        scanf(\"%I64d\",&li[i]);\n        sl[i]=li[i];\n        if(i)sl[i]+=sl[i-1];\n    }\n    scanf(\"%d\",&q);\n    for(i=0;i<q;i++)scanf(\"%I64d\",&qu[i]);\n    solve();\n    for(i=0;i<q;i++)printf(\"%I64d\\n\",ans[i]);\n}\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "data structures"
+    ],
+    "dificulty": "2800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. BRT Contract .json",
+    "editorial_link": "https://codeforces.com/blog/entry/4540",
+    "editorial": "We define ti as follows: assume a bus starts moving from i-th intersection exactly at the time when the light changes to green. The time it takes for the bus to get the final station is ti. We call the times when a green interval begins t0 (so every g+r seconds t0 occurs once)\n\nIf a bus gets to i-th intersection during the red phase, it should wait and then start moving at t0. So considering the fact that all lights are synchronized (and length of segments are fixed) if we have ti for i-th intersection, we can compute the time for the bus to get final station.\n\nClearly tn is the length of the last segments. For computing ti we should find the smallest j such that if a bus starts at t0 from i-th intersection, it gets to j-th intersection during the red phase. So we have:\n\nti=tj+d(i,j)+w\n\nwhere d(i,j) is the distance between i-th and j-th intersections and w is the time that the bus should wait behind the red light at j-th intersection. The later value can be computed easily.\n\nThe only problem that remains is to find j for i-th intersection. So we start iterating over i for (n-1)-th intersection backwards and we compute ti for all intersections. Assume p=g+r and ta=d(i,j)%p. Now if the bus starts from i-th intersection at time t0 and we have ta>=g, in this case we are in red phase at j-th intersection. Actually ta should be in interval [_g, g+r_).\n\nHere we can use segment trees. That is for all intersections from i+1 to n, we store some values in the tree that helps us find the smallest j. But we should note the value of ta depends on d(i,j) which changes as i changes. Thus we cannot use ta in the tree. Instead, we define si the be the distance of i-th intersection to the destination. So we have d(i,j)=si-sj and we use the value of sj with storing \u0096sj%p in the segment tree as the key and the value would be j itself. In other words for each intersection we store the key-value pair (-sj%p, j) in the tree. According to what we said so far, to be in the red phase at j-th intersection we should have:\n\nta=(d(i,j)%p)=((si-sj)%p)?[g,g+r) => -sj%p ? [(g-si)%p, (g+r-si)%p)\n\nAs we stored \u0096sj%p in the tree, we can retrieve the smallest j in the above interval with a query in the segment tree.\n\nThis way we can compute ti for all intersections. Answering to each query in the problem can be solve in exactly the same way. So the overall complexity would be O((n+q)logn)."
+}

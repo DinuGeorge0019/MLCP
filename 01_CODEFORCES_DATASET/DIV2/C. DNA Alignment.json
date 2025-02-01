@@ -1,1 +1,107 @@
-{"link": "https://codeforces.com//contest/520/problem/C", "problemId": "23435", "problem_idx": "C", "shortId": "520C", "contest_number": "520", "problem_submissions": {"D": [10119858, 10114121, 10111852, 10111632, 10111622, 10170455, 10121530, 10118171, 10118084, 10122862, 10134966], "E": [10114178, 10113899, 10113814, 10152648, 10109379, 10113966], "C": [10108152, 10109805, 10109410, 10108517, 10109427, 10114253, 10113273, 10113527, 10112592, 10107996, 10108589, 10108504, 10107807, 10108758, 10108493, 10109002, 10108917, 10110247, 10109125], "B": [10106931, 10107333, 10110028, 10106418, 10116733, 10106156, 10110029, 10112900, 10113188, 10106429, 10105522, 10105854, 10105873, 10105925, 10106498, 10106225, 10106816, 10106938], "A": [10105356, 10105380, 10105204, 10104484, 10110338, 10105073, 10105335, 10111915, 10112806, 10104426, 10104489, 10104959, 10104609, 10104534, 10104623, 10104731, 10104535, 10105461]}, "name": "C. DNA Alignment", "statement": "Vasya became interested in bioinformatics. He\u2019s going to write an\r\narticle about similar cyclic DNA sequences, so he invented a new method\r\nfor determining the similarity of cyclic sequences.Let\u2019s assume that\r\nstrings and have the same length , then the function is defined as the\r\nnumber of positions in which the respective symbols of and are .\r\nFunction can be used to define the function of Vasya distance : where is\r\nobtained from string , by applying left circular shift times. For\r\nexample, Vasya found a string of length on the Internet. Now he wants to\r\ncount how many strings there are such that the Vasya distance from the\r\nstring attains maximum possible value. Formally speaking, must satisfy\r\nthe equation: .Vasya could not try all possible strings to find an\r\nanswer, so he needs your help. As the answer may be very large, count\r\nthe number of such strings modulo .\r\n", "solutions": ["#include<stdio.h>\n#define P 1000000007\nusing namespace std;\ninline long long quick(int o,int p)\n{\n    long long oo=o*1ll,pp=p*1ll,ans=1;\n    while (pp)\n    {\n        if (pp&1)\n        ans=(ans*oo)%P;\n        pp/=2;oo=(oo*oo)%P;\n    }\n    return ans;\n}\nint i,j,k,l,s,m,n,f[100005];\nint main()\n{\n    scanf(\"%d\",&n);\n    for (i=1;i<=n;i++)\n    {\n        char c=getchar();\n        while (c!='A'&&c!='C'&&c!='G'&&c!='T')\n        c=getchar();\n        if (c=='A')\n        f[1]++;\n        if (c=='C')\n        f[2]++;\n        if (c=='G')\n        f[3]++;\n        if (c=='T')\n        f[4]++;\n    }\n    int mm=0,tt=0;\n    for (i=1;i<=4;i++)\n    {\n        if (f[i]>mm)\n        {\n            mm=f[i];\n            tt=1;\n        }\n        else\n        if (f[i]==mm)\n        tt++;\n    }\n    printf(\"%I64d\\n\",quick(tt,n));\n}"], "input": "", "output": "", "tags": ["math", "strings"], "dificulty": "1500", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/520/problem/C",
+    "problemId": "23435",
+    "problem_idx": "C",
+    "shortId": "520C",
+    "contest_number": "520",
+    "problem_submissions": {
+        "D": [
+            10119858,
+            10114121,
+            10111852,
+            10111632,
+            10111622,
+            10170455,
+            10121530,
+            10118171,
+            10118084,
+            10122862,
+            10134966
+        ],
+        "E": [
+            10114178,
+            10113899,
+            10113814,
+            10152648,
+            10109379,
+            10113966
+        ],
+        "C": [
+            10108152,
+            10109805,
+            10109410,
+            10108517,
+            10109427,
+            10114253,
+            10113273,
+            10113527,
+            10112592,
+            10107996,
+            10108589,
+            10108504,
+            10107807,
+            10108758,
+            10108493,
+            10109002,
+            10108917,
+            10110247,
+            10109125
+        ],
+        "B": [
+            10106931,
+            10107333,
+            10110028,
+            10106418,
+            10116733,
+            10106156,
+            10110029,
+            10112900,
+            10113188,
+            10106429,
+            10105522,
+            10105854,
+            10105873,
+            10105925,
+            10106498,
+            10106225,
+            10106816,
+            10106938
+        ],
+        "A": [
+            10105356,
+            10105380,
+            10105204,
+            10104484,
+            10110338,
+            10105073,
+            10105335,
+            10111915,
+            10112806,
+            10104426,
+            10104489,
+            10104959,
+            10104609,
+            10104534,
+            10104623,
+            10104731,
+            10104535,
+            10105461
+        ]
+    },
+    "name": "C. DNA Alignment",
+    "statement": "Vasya became interested in bioinformatics. He\u2019s going to write an\r\narticle about similar cyclic DNA sequences, so he invented a new method\r\nfor determining the similarity of cyclic sequences.Let\u2019s assume that\r\nstrings and have the same length , then the function is defined as the\r\nnumber of positions in which the respective symbols of and are .\r\nFunction can be used to define the function of Vasya distance : where is\r\nobtained from string , by applying left circular shift times. For\r\nexample, Vasya found a string of length on the Internet. Now he wants to\r\ncount how many strings there are such that the Vasya distance from the\r\nstring attains maximum possible value. Formally speaking, must satisfy\r\nthe equation: .Vasya could not try all possible strings to find an\r\nanswer, so he needs your help. As the answer may be very large, count\r\nthe number of such strings modulo .\r\n",
+    "solutions": [
+        "#include<stdio.h>\n#define P 1000000007\nusing namespace std;\ninline long long quick(int o,int p)\n{\n    long long oo=o*1ll,pp=p*1ll,ans=1;\n    while (pp)\n    {\n        if (pp&1)\n        ans=(ans*oo)%P;\n        pp/=2;oo=(oo*oo)%P;\n    }\n    return ans;\n}\nint i,j,k,l,s,m,n,f[100005];\nint main()\n{\n    scanf(\"%d\",&n);\n    for (i=1;i<=n;i++)\n    {\n        char c=getchar();\n        while (c!='A'&&c!='C'&&c!='G'&&c!='T')\n        c=getchar();\n        if (c=='A')\n        f[1]++;\n        if (c=='C')\n        f[2]++;\n        if (c=='G')\n        f[3]++;\n        if (c=='T')\n        f[4]++;\n    }\n    int mm=0,tt=0;\n    for (i=1;i<=4;i++)\n    {\n        if (f[i]>mm)\n        {\n            mm=f[i];\n            tt=1;\n        }\n        else\n        if (f[i]==mm)\n        tt++;\n    }\n    printf(\"%I64d\\n\",quick(tt,n));\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "math",
+        "strings"
+    ],
+    "dificulty": "1500",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. DNA Alignment.json",
+    "editorial_link": "https://codeforces.com//blog/entry/16736",
+    "editorial": "What is ?(s,?t) equal to? For every character of s and every character of t there is a unique cyclic shift of t that superposes these characters (indeed, after 0, ..., n?-?1 shifts the character in t occupies different positions, and one of them matches the one of the character of s); therefore, there exist n cyclic shifts of s and t that superpose these characters (the situation is symmetrical for every position of the character of s). It follows that the input in ? from a single character ti is equal to n?\u00d7?(the number of characters in s equal to ti). Therefore, ?(s,?t) is maximal when every character of t occurs the maximal possible number of times in s. Simply count the number of occurences for every type of characters; the answer is Kn, where K is the number of character types that occur in s most frequently. This is an O(n) solution."
+}

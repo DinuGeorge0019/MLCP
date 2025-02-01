@@ -1,1 +1,96 @@
-{"link": "https://codeforces.com//contest/569/problem/B", "problemId": "32819", "problem_idx": "B", "shortId": "569B", "contest_number": "569", "problem_submissions": {"D": [12451165, 12450616, 12452619, 12451748, 12454058, 12454055, 12450824, 12453344, 12454125, 12453492, 12454982, 12450355, 12453319, 12453118, 12454807, 12450557], "C": [12447555, 12447440, 12446286, 12450609, 12448754, 12448371, 12453497, 12447557, 12449573, 12449507, 12448199, 12455359, 12451752, 12451437, 12449926, 12443375], "B": [12442888, 12442303, 12443400, 12442960, 12443569, 12443790, 12444489, 12442625, 12444998, 12444217, 12444002, 12441907, 12445343, 12445895, 12447002, 12451661], "A": [12441876, 12443235, 12441599, 12441719, 12442173, 12441720, 12442545, 12449386, 12443416, 12441622, 12442046, 12443321, 12443414, 12441491, 12442970]}, "name": "B. Inventory", "statement": "Companies always have a lot of equipment, furniture and other things.\r\nAll of them should be tracked. To do this, there is an inventory number\r\nassigned with each item. It is much easier to create a database by using\r\nthose numbers and keep the track of everything.During an audit, you were\r\nsurprised to find out that the items are not numbered sequentially, and\r\nsome items even share the same inventory number! There is an urgent need\r\nto fix it. You have chosen to make the numbers of the items sequential,\r\nstarting with . Changing a number is quite a time-consuming process, and\r\nyou would like to make maximum use of the current numbering.You have\r\nbeen given information on current inventory numbers for items in the\r\ncompany. Renumber items so that their inventory numbers form a of\r\nnumbers from to by changing the number of as few items as possible. Let\r\nus remind you that a set of numbers forms a if all the numbers are in\r\nthe range from to , and no two numbers are equal.\r\n", "solutions": ["/* In the name of Allah */\n\n#include<bits/stdc++.h>\n\nusing namespace std;\n\nconst int max_n=1e5+5;\nint a[max_n];\nint mark[max_n];\nint main()\n{\n    int n;\n    cin >> n;\n    for(int i=0;i<n;i++)\n    {\n        cin>> a[i];\n        mark[a[i]]++;\n    }\n    int po=1;\n    for(int i=0;i<n;i++)\n    {\n        if(mark[a[i]]==1&& a[i]<=n)\n            cout<< a[i]<< ' ';\n        else\n        {\n            mark[a[i]]--;\n            while(mark[po]!=0)\n                po++;\n            cout<< po<<' ';\n            mark[po]++;\n        }\n    }\n}\n"], "input": "", "output": "", "tags": ["greedy", "math"], "dificulty": "1200", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/569/problem/B",
+    "problemId": "32819",
+    "problem_idx": "B",
+    "shortId": "569B",
+    "contest_number": "569",
+    "problem_submissions": {
+        "D": [
+            12451165,
+            12450616,
+            12452619,
+            12451748,
+            12454058,
+            12454055,
+            12450824,
+            12453344,
+            12454125,
+            12453492,
+            12454982,
+            12450355,
+            12453319,
+            12453118,
+            12454807,
+            12450557
+        ],
+        "C": [
+            12447555,
+            12447440,
+            12446286,
+            12450609,
+            12448754,
+            12448371,
+            12453497,
+            12447557,
+            12449573,
+            12449507,
+            12448199,
+            12455359,
+            12451752,
+            12451437,
+            12449926,
+            12443375
+        ],
+        "B": [
+            12442888,
+            12442303,
+            12443400,
+            12442960,
+            12443569,
+            12443790,
+            12444489,
+            12442625,
+            12444998,
+            12444217,
+            12444002,
+            12441907,
+            12445343,
+            12445895,
+            12447002,
+            12451661
+        ],
+        "A": [
+            12441876,
+            12443235,
+            12441599,
+            12441719,
+            12442173,
+            12441720,
+            12442545,
+            12449386,
+            12443416,
+            12441622,
+            12442046,
+            12443321,
+            12443414,
+            12441491,
+            12442970
+        ]
+    },
+    "name": "B. Inventory",
+    "statement": "Companies always have a lot of equipment, furniture and other things.\r\nAll of them should be tracked. To do this, there is an inventory number\r\nassigned with each item. It is much easier to create a database by using\r\nthose numbers and keep the track of everything.During an audit, you were\r\nsurprised to find out that the items are not numbered sequentially, and\r\nsome items even share the same inventory number! There is an urgent need\r\nto fix it. You have chosen to make the numbers of the items sequential,\r\nstarting with . Changing a number is quite a time-consuming process, and\r\nyou would like to make maximum use of the current numbering.You have\r\nbeen given information on current inventory numbers for items in the\r\ncompany. Renumber items so that their inventory numbers form a of\r\nnumbers from to by changing the number of as few items as possible. Let\r\nus remind you that a set of numbers forms a if all the numbers are in\r\nthe range from to , and no two numbers are equal.\r\n",
+    "solutions": [
+        "/* In the name of Allah */\n\n#include<bits/stdc++.h>\n\nusing namespace std;\n\nconst int max_n=1e5+5;\nint a[max_n];\nint mark[max_n];\nint main()\n{\n    int n;\n    cin >> n;\n    for(int i=0;i<n;i++)\n    {\n        cin>> a[i];\n        mark[a[i]]++;\n    }\n    int po=1;\n    for(int i=0;i<n;i++)\n    {\n        if(mark[a[i]]==1&& a[i]<=n)\n            cout<< a[i]<< ' ';\n        else\n        {\n            mark[a[i]]--;\n            while(mark[po]!=0)\n                po++;\n            cout<< po<<' ';\n            mark[po]++;\n        }\n    }\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "greedy",
+        "math"
+    ],
+    "dificulty": "1200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Inventory.json",
+    "editorial_link": "https://codeforces.com//blog/entry/19705",
+    "editorial": "Let\u00e2\u0080\u0099s look at the problem from another side: how many numbers can we\r\nleave unchanged to get permutation? It is obvious: these numbers must be\r\nfrom to and they are must be pairwise distinct. This condition is\r\nnecessary and sufficient. This problem can be solved with greedy\r\nalgorithm. If me meet the number we have never met before and this\r\nnumber is between and , we will leave this number unchanged. To\r\nimplement this we can use array where we will mark used numbers. After\r\nthat we will look over the array again and allocate numbers that weren\u00e2\u0080\u0099t\r\nused. Complexity .\r\n"
+}

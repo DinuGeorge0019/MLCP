@@ -1,1 +1,105 @@
-{"link": "https://codeforces.com//contest/521/problem/A", "problemId": "23438", "problem_idx": "A", "shortId": "521A", "contest_number": "521", "problem_submissions": {"D": [10114323, 10113689, 10119859, 10119855, 10119796, 10113492, 10113596, 10116089, 10113726, 10114226, 10114023, 10114948, 10114997, 10118008, 10116808, 10115969, 10115919, 115640381], "B": [10109892, 10107901, 10108581, 10107819, 10114473, 10108104, 10108433, 10109077, 10107764, 10108790, 10107608, 10107745, 10107578, 10110313, 10108219, 10110179, 10111006], "C": [10109219, 10110415, 10110107, 10111080, 10109986, 10110836, 10111159, 10109138, 10106797, 10109327, 10109438, 10109146, 10106442, 10110202, 10108389, 10108555], "A": [10105003, 10105742, 10105267, 10111233, 10104462, 10105194, 10105511, 10104861, 10104854, 10104826, 10105033, 10104516, 10107256, 10104819, 10105232, 10104822], "E": [10113230, 10117526, 249300397]}, "name": "A. DNA Alignment", "statement": "Vasya became interested in bioinformatics. He\u2019s going to write an\r\narticle about similar cyclic DNA sequences, so he invented a new method\r\nfor determining the similarity of cyclic sequences.Let\u2019s assume that\r\nstrings and have the same length , then the function is defined as the\r\nnumber of positions in which the respective symbols of and are .\r\nFunction can be used to define the function of Vasya distance : where is\r\nobtained from string , by applying left circular shift times. For\r\nexample, Vasya found a string of length on the Internet. Now he wants to\r\ncount how many strings there are such that the Vasya distance from the\r\nstring attains maximum possible value. Formally speaking, must satisfy\r\nthe equation: .Vasya could not try all possible strings to find an\r\nanswer, so he needs your help. As the answer may be very large, count\r\nthe number of such strings modulo .\r\n", "solutions": ["#include<iostream>\n#include<cmath>\n#include<cstring>\n#include<algorithm>\n#include<cstdio>\nusing namespace std;\nchar ch[110000];\nint n,w,mo=1e9+7,num;\nint quick(int k1,int k2){\n\tint k3=1;\n\twhile (k2){\n\t\tif (k2&1) k3=1ll*k3*k1%mo; k1=1ll*k1*k1%mo; k2>>=1;\n\t}\n\treturn k3;\n}\nint main(){\n\tscanf(\"%d\",&n); int ans=0;\n\tscanf(\"%s\",ch+1);\n\tnum=0; w=0;\n\tfor (int i=1;i<=n;i++) if (ch[i]=='A') num++; \n\tif (ans<num){ans=num; w=1;} else if (ans==num) w++;\n\tnum=0;\n\tfor (int i=1;i<=n;i++) if (ch[i]=='C') num++; \n\tif (ans<num){ans=num; w=1;} else if (ans==num) w++; \n\tnum=0;\n\tfor (int i=1;i<=n;i++) if (ch[i]=='G') num++;\n\tif (ans<num){ans=num; w=1;} else if (ans==num) w++;\n\tnum=0;\n\tfor (int i=1;i<=n;i++) if (ch[i]=='T') num++; \n\tif (ans<num){ans=num; w=1;} else if (ans==num) w++;\n\tcout<<quick(w,n)<<endl;\n\treturn 0;\n}"], "input": "", "output": "", "tags": ["greedy", "math"], "dificulty": "1500", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/521/problem/A",
+    "problemId": "23438",
+    "problem_idx": "A",
+    "shortId": "521A",
+    "contest_number": "521",
+    "problem_submissions": {
+        "D": [
+            10114323,
+            10113689,
+            10119859,
+            10119855,
+            10119796,
+            10113492,
+            10113596,
+            10116089,
+            10113726,
+            10114226,
+            10114023,
+            10114948,
+            10114997,
+            10118008,
+            10116808,
+            10115969,
+            10115919,
+            115640381
+        ],
+        "B": [
+            10109892,
+            10107901,
+            10108581,
+            10107819,
+            10114473,
+            10108104,
+            10108433,
+            10109077,
+            10107764,
+            10108790,
+            10107608,
+            10107745,
+            10107578,
+            10110313,
+            10108219,
+            10110179,
+            10111006
+        ],
+        "C": [
+            10109219,
+            10110415,
+            10110107,
+            10111080,
+            10109986,
+            10110836,
+            10111159,
+            10109138,
+            10106797,
+            10109327,
+            10109438,
+            10109146,
+            10106442,
+            10110202,
+            10108389,
+            10108555
+        ],
+        "A": [
+            10105003,
+            10105742,
+            10105267,
+            10111233,
+            10104462,
+            10105194,
+            10105511,
+            10104861,
+            10104854,
+            10104826,
+            10105033,
+            10104516,
+            10107256,
+            10104819,
+            10105232,
+            10104822
+        ],
+        "E": [
+            10113230,
+            10117526,
+            249300397
+        ]
+    },
+    "name": "A. DNA Alignment",
+    "statement": "Vasya became interested in bioinformatics. He\u2019s going to write an\r\narticle about similar cyclic DNA sequences, so he invented a new method\r\nfor determining the similarity of cyclic sequences.Let\u2019s assume that\r\nstrings and have the same length , then the function is defined as the\r\nnumber of positions in which the respective symbols of and are .\r\nFunction can be used to define the function of Vasya distance : where is\r\nobtained from string , by applying left circular shift times. For\r\nexample, Vasya found a string of length on the Internet. Now he wants to\r\ncount how many strings there are such that the Vasya distance from the\r\nstring attains maximum possible value. Formally speaking, must satisfy\r\nthe equation: .Vasya could not try all possible strings to find an\r\nanswer, so he needs your help. As the answer may be very large, count\r\nthe number of such strings modulo .\r\n",
+    "solutions": [
+        "#include<iostream>\n#include<cmath>\n#include<cstring>\n#include<algorithm>\n#include<cstdio>\nusing namespace std;\nchar ch[110000];\nint n,w,mo=1e9+7,num;\nint quick(int k1,int k2){\n\tint k3=1;\n\twhile (k2){\n\t\tif (k2&1) k3=1ll*k3*k1%mo; k1=1ll*k1*k1%mo; k2>>=1;\n\t}\n\treturn k3;\n}\nint main(){\n\tscanf(\"%d\",&n); int ans=0;\n\tscanf(\"%s\",ch+1);\n\tnum=0; w=0;\n\tfor (int i=1;i<=n;i++) if (ch[i]=='A') num++; \n\tif (ans<num){ans=num; w=1;} else if (ans==num) w++;\n\tnum=0;\n\tfor (int i=1;i<=n;i++) if (ch[i]=='C') num++; \n\tif (ans<num){ans=num; w=1;} else if (ans==num) w++; \n\tnum=0;\n\tfor (int i=1;i<=n;i++) if (ch[i]=='G') num++;\n\tif (ans<num){ans=num; w=1;} else if (ans==num) w++;\n\tnum=0;\n\tfor (int i=1;i<=n;i++) if (ch[i]=='T') num++; \n\tif (ans<num){ans=num; w=1;} else if (ans==num) w++;\n\tcout<<quick(w,n)<<endl;\n\treturn 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "greedy",
+        "math"
+    ],
+    "dificulty": "1500",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. DNA Alignment.json",
+    "editorial_link": "https://codeforces.com//blog/entry/16736",
+    "editorial": "What is ?(s,?t) equal to? For every character of s and every character of t there is a unique cyclic shift of t that superposes these characters (indeed, after 0, ..., n?-?1 shifts the character in t occupies different positions, and one of them matches the one of the character of s); therefore, there exist n cyclic shifts of s and t that superpose these characters (the situation is symmetrical for every position of the character of s). It follows that the input in ? from a single character ti is equal to n?\u00d7?(the number of characters in s equal to ti). Therefore, ?(s,?t) is maximal when every character of t occurs the maximal possible number of times in s. Simply count the number of occurences for every type of characters; the answer is Kn, where K is the number of character types that occur in s most frequently. This is an O(n) solution.\n\nChallenge: we know that ?max(s)?=?n2\u00b7C(s), where C(s) is the maximal number that any character occurs in s. How many strings s of length n with characters from an alphabet of size k have C(s)?=?m? Can you find an O(kn2) solution? An  solution? An  solution? Maybe even better? (Hint: the modulo should be an appropriately chosen prime number for a fast solution =))."
+}

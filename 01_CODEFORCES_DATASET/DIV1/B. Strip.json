@@ -1,1 +1,91 @@
-{"link": "https://codeforces.com//contest/487/problem/B", "problemId": "17748", "problem_idx": "B", "shortId": "487B", "contest_number": "487", "problem_submissions": {"D": [8785170, 8785802, 8789803, 8787371, 8788023, 8786843, 8786047, 8788953, 8789614, 8788601, 8788287, 8809646], "C": [8782578, 8779214, 8784203, 8781731, 8783945, 8788058, 8788160, 8784014, 8785214, 8790866, 8785252, 8787004, 8781669, 8783114], "B": [8779947, 8781687, 8783062, 8780136, 8781381, 8780441, 8781611, 8782195, 8783872, 8781857, 8781107, 8781244, 8782491, 8780482, 8784680, 8788899], "A": [8777348, 8787397, 8780501, 8784128, 8783081, 8782652, 8779644, 8779577, 8777743, 8778427, 8792035, 8778269, 8785641, 8784172]}, "name": "B. Strip", "statement": "Alexandra has a paper strip with numbers on it. Let\u2019s call them from\r\nleft to right.Now Alexandra wants to split it into some pieces (possibly\r\n). For each piece of strip, it must satisfy: Each piece should contain\r\nat least numbers. The difference between the maximal and the minimal\r\nnumber on the piece should be at most .Please help Alexandra to find the\r\nminimal number of pieces meeting the condition above.\r\n", "solutions": ["#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <queue>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <cctype>\n#include <string>\n#include <cstring>\n#include <ctime>\n#include <string.h>\n\nusing namespace std;\n\ntypedef long long int64;\ntypedef unsigned long long uint64;\n#define two(X) (1<<(X))\n#define twoL(X) (((int64)(1))<<(X))\n#define contain(S,X) (((S)&two(X))!=0)\n#define containL(S,X) (((S)&twoL(X))!=0)\nconst double pi=acos(-1.0);\nconst double eps=1e-11;\ntemplate<class T> inline void checkmin(T &a,T b){if(b<a) a=b;}\ntemplate<class T> inline void checkmax(T &a,T b){if(b>a) a=b;}\ntemplate<class T> inline T sqr(T x){return x*x;}\ntypedef pair<int,int> ipair;\n#define SIZE(A) ((int)A.size())\n#define LENGTH(A) ((int)A.length())\n#define MP(A,B) make_pair(A,B)\n#define PB(X) push_back(X)\n\nconst int maxn=200000+10;\nconst int INF=100000000;\n\nint n,l,d;\nint a[maxn];\nint p[maxn];\nint f[maxn];\n\nint main()\n{\n#ifdef _MSC_VER\n\tfreopen(\"input.txt\",\"r\",stdin);\n#endif\n\tscanf(\"%d%d%d\",&n,&d,&l);\n\tfor (int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n\tmultiset<int> S;\n\tfor (int k=0,i=0;i<n;i++)\n\t{\n\t\tfor (;!S.empty();)\n\t\t{\n\t\t\tint v1=*S.begin();\n\t\t\tint v2=*(--S.end());\n\t\t\tif (abs(v1-a[i])<=d && abs(v2-a[i])<=d) break;\n\t\t\tS.erase(S.lower_bound(a[k]));\n\t\t\tk++;\n\t\t}\n\t\tp[i]=k;\n\t\tS.insert(a[i]);\n\t}\n\tS.clear();\n\tf[0]=0;\n\tfor (int k=0,i=1;i<=n;i++)\n\t{\n\t\tif (i-l>=0) S.insert(f[i-l]);\n\t\tfor (;k<=i-l && k<p[i-1];k++) S.erase(S.lower_bound(f[k]));\n\t\tf[i]=(S.empty()?INF:((*S.begin())+1));\n\t}\n\tif (f[n]>=INF) f[n]=-1;\n\tprintf(\"%d\\n\",f[n]);\n\treturn 0;\n}\n\n"], "input": "", "output": "", "tags": ["binary search", "data structures", "dp", "two pointers"], "dificulty": "2000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/487/problem/B",
+    "problemId": "17748",
+    "problem_idx": "B",
+    "shortId": "487B",
+    "contest_number": "487",
+    "problem_submissions": {
+        "D": [
+            8785170,
+            8785802,
+            8789803,
+            8787371,
+            8788023,
+            8786843,
+            8786047,
+            8788953,
+            8789614,
+            8788601,
+            8788287,
+            8809646
+        ],
+        "C": [
+            8782578,
+            8779214,
+            8784203,
+            8781731,
+            8783945,
+            8788058,
+            8788160,
+            8784014,
+            8785214,
+            8790866,
+            8785252,
+            8787004,
+            8781669,
+            8783114
+        ],
+        "B": [
+            8779947,
+            8781687,
+            8783062,
+            8780136,
+            8781381,
+            8780441,
+            8781611,
+            8782195,
+            8783872,
+            8781857,
+            8781107,
+            8781244,
+            8782491,
+            8780482,
+            8784680,
+            8788899
+        ],
+        "A": [
+            8777348,
+            8787397,
+            8780501,
+            8784128,
+            8783081,
+            8782652,
+            8779644,
+            8779577,
+            8777743,
+            8778427,
+            8792035,
+            8778269,
+            8785641,
+            8784172
+        ]
+    },
+    "name": "B. Strip",
+    "statement": "Alexandra has a paper strip with numbers on it. Let\u2019s call them from\r\nleft to right.Now Alexandra wants to split it into some pieces (possibly\r\n). For each piece of strip, it must satisfy: Each piece should contain\r\nat least numbers. The difference between the maximal and the minimal\r\nnumber on the piece should be at most .Please help Alexandra to find the\r\nminimal number of pieces meeting the condition above.\r\n",
+    "solutions": [
+        "#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <queue>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <cctype>\n#include <string>\n#include <cstring>\n#include <ctime>\n#include <string.h>\n\nusing namespace std;\n\ntypedef long long int64;\ntypedef unsigned long long uint64;\n#define two(X) (1<<(X))\n#define twoL(X) (((int64)(1))<<(X))\n#define contain(S,X) (((S)&two(X))!=0)\n#define containL(S,X) (((S)&twoL(X))!=0)\nconst double pi=acos(-1.0);\nconst double eps=1e-11;\ntemplate<class T> inline void checkmin(T &a,T b){if(b<a) a=b;}\ntemplate<class T> inline void checkmax(T &a,T b){if(b>a) a=b;}\ntemplate<class T> inline T sqr(T x){return x*x;}\ntypedef pair<int,int> ipair;\n#define SIZE(A) ((int)A.size())\n#define LENGTH(A) ((int)A.length())\n#define MP(A,B) make_pair(A,B)\n#define PB(X) push_back(X)\n\nconst int maxn=200000+10;\nconst int INF=100000000;\n\nint n,l,d;\nint a[maxn];\nint p[maxn];\nint f[maxn];\n\nint main()\n{\n#ifdef _MSC_VER\n\tfreopen(\"input.txt\",\"r\",stdin);\n#endif\n\tscanf(\"%d%d%d\",&n,&d,&l);\n\tfor (int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n\tmultiset<int> S;\n\tfor (int k=0,i=0;i<n;i++)\n\t{\n\t\tfor (;!S.empty();)\n\t\t{\n\t\t\tint v1=*S.begin();\n\t\t\tint v2=*(--S.end());\n\t\t\tif (abs(v1-a[i])<=d && abs(v2-a[i])<=d) break;\n\t\t\tS.erase(S.lower_bound(a[k]));\n\t\t\tk++;\n\t\t}\n\t\tp[i]=k;\n\t\tS.insert(a[i]);\n\t}\n\tS.clear();\n\tf[0]=0;\n\tfor (int k=0,i=1;i<=n;i++)\n\t{\n\t\tif (i-l>=0) S.insert(f[i-l]);\n\t\tfor (;k<=i-l && k<p[i-1];k++) S.erase(S.lower_bound(f[k]));\n\t\tf[i]=(S.empty()?INF:((*S.begin())+1));\n\t}\n\tif (f[n]>=INF) f[n]=-1;\n\tprintf(\"%d\\n\",f[n]);\n\treturn 0;\n}\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "binary search",
+        "data structures",
+        "dp",
+        "two pointers"
+    ],
+    "dificulty": "2000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Strip.json",
+    "editorial_link": "https://codeforces.com/blog/entry/14832",
+    "editorial": "We can use dynamic programming to solve this problem. Let denote the\r\nminimal number of pieces that the first numbers can be split into.\r\ndenote the maximal length of substrip whose right border is (included)\r\nand it satisfy the condition. Then , where . We can use monotonic queue\r\nto calculate g[i] and f[i]. And this can be implemented in We can also\r\nuse sparse table or segment tree to solve the problem, the time\r\ncomplexity is or (It should be well-implemented). For more details about\r\nmonotonic queue, you can see here\r\n"
+}

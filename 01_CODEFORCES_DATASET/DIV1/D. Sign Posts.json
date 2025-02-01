@@ -1,1 +1,104 @@
-{"link": "https://codeforces.com//contest/568/problem/D", "problemId": "32826", "problem_idx": "D", "shortId": "568D", "contest_number": "568", "problem_submissions": {"D": [12452919, 12452362, 12448661, 12453325, 12468492, 12468486, 12468483, 12451032, 12452255, 12452694, 12453501, 12453811, 12453450, 13003096, 12455889], "C": [12448571, 12455832, 12453103, 12456355, 12447177, 12448310, 12449857, 12450803, 12450475, 12451591, 12452278, 12452058, 12451086], "A": [12443004, 12441468, 12444210, 12441815, 12441971, 12443645, 12441974, 12441386, 12441504, 12441798, 12442012, 12441477, 12441565, 12442145, 12441398, 12441404, 12441967, 12457494, 12441406, 12441749], "B": [12441764, 12442322, 12442609, 12444738, 12444997, 12441522, 12443756, 12443073, 12442780, 12445676, 12444555, 12442448, 12443842, 12443319, 12443252, 12442442, 12442637, 12443546, 12444321], "E": [12455650]}, "name": "D. Sign Posts", "statement": "One Khanate had a lot of roads and very little wood. Riding along the\r\nroads was inconvenient, because the roads did not have road signs\r\nindicating the direction to important cities.The Han decided that it\u2019s\r\ntime to fix the issue, and ordered to put signs on every road. The\r\nMinister of Transport has to do that, but he has only signs. Help the\r\nminister to solve his problem, otherwise the poor guy can lose not only\r\nhis position, but also his head.More formally, every road in the Khanate\r\nis a line on the plane, given by an equation of the form ( and are not\r\nequal to 0 at the same time). You are required to determine whether you\r\ncan put signs in at most points so that each road had at least one sign\r\ninstalled.\r\n", "solutions": ["#include <iostream>\n#include <algorithm>\n#include <cmath>\n#include <cstring>\n#include <cstdlib>\n#include <string>\n#include <vector>\n#include <cstdio>\n#include <cassert>\n#include <ctime>\n\nusing namespace std;\n\ntypedef long long ll;\ntypedef long double ld;\n\n#ifdef WIN32\n\t#define LLD \"%I64d\"\n#else\n\t#define LLD \"%lld\"\n#endif\n\n#define pb push_back\n#define all(x) begin(x), end(x)\n\nconst int MAXIT[6] = {0, 1, 6, 13, 20, 25};\n\nstruct line\n{\n    int a, b, c;\n    int id;\n};\n\nvector<line> l;\nint n, k;\nvector<pair<int, int>> answer;\n\nvoid solve(vector<line> &l, int k)\n{\n    int n = l.size();\n    if (k >= (int)n)\n    {\n        for (int i = 0; i < (int)n; i++) answer.pb({l[i].id, -2});\n        printf(\"YES\\n\");\n        printf(\"%d\\n\", answer.size());\n        for (auto t : answer) printf(\"%d %d\\n\", t.first + 1, t.second + 1);\n        exit(0);\n    }\n    if (k == 0) return;\n    for (int IT = 0; IT < MAXIT[k]; IT++)\n    {\n        int wh1 = rand() % n;\n        int wh2 = rand() % (n - 1);\n        if (wh2 >= wh1) wh2++;\n        auto &l1 = l[wh1];\n        auto &l2 = l[wh2];\n        if ((ll)l1.a * l2.b == (ll)l2.a * l1.b) continue;\n        vector<line> next;\n        for (auto &t : l) if ((ll)l1.a * l2.b * t.c + (ll)l1.b * l2.c * t.a + (ll)l1.c * l2.a * t.b !=\n                             (ll)l1.c * l2.b * t.a + (ll)l1.b * l2.a * t.c + (ll)l1.a * l2.c * t.b) next.pb(t);\n        if ((int)next.size() > max((double)k - 1, n * (1.0 - 1.0 / (2 * k)))) continue;\n        answer.pb({l1.id, l2.id});\n        solve(next, k - 1);\n        answer.pop_back();\n    }\n}\n\nint main()\n{\n    scanf(\"%d%d\", &n, &k);\n    l.resize(n);\n    for (int i = 0; i < n; i++)\n    {\n        scanf(\"%d%d%d\", &l[i].a, &l[i].b, &l[i].c);\n        l[i].id = i;\n    }\n    solve(l, k);\n    printf(\"NO\\n\");\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["brute force", "geometry", "math"], "dificulty": "2800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/568/problem/D",
+    "problemId": "32826",
+    "problem_idx": "D",
+    "shortId": "568D",
+    "contest_number": "568",
+    "problem_submissions": {
+        "D": [
+            12452919,
+            12452362,
+            12448661,
+            12453325,
+            12468492,
+            12468486,
+            12468483,
+            12451032,
+            12452255,
+            12452694,
+            12453501,
+            12453811,
+            12453450,
+            13003096,
+            12455889
+        ],
+        "C": [
+            12448571,
+            12455832,
+            12453103,
+            12456355,
+            12447177,
+            12448310,
+            12449857,
+            12450803,
+            12450475,
+            12451591,
+            12452278,
+            12452058,
+            12451086
+        ],
+        "A": [
+            12443004,
+            12441468,
+            12444210,
+            12441815,
+            12441971,
+            12443645,
+            12441974,
+            12441386,
+            12441504,
+            12441798,
+            12442012,
+            12441477,
+            12441565,
+            12442145,
+            12441398,
+            12441404,
+            12441967,
+            12457494,
+            12441406,
+            12441749
+        ],
+        "B": [
+            12441764,
+            12442322,
+            12442609,
+            12444738,
+            12444997,
+            12441522,
+            12443756,
+            12443073,
+            12442780,
+            12445676,
+            12444555,
+            12442448,
+            12443842,
+            12443319,
+            12443252,
+            12442442,
+            12442637,
+            12443546,
+            12444321
+        ],
+        "E": [
+            12455650
+        ]
+    },
+    "name": "D. Sign Posts",
+    "statement": "One Khanate had a lot of roads and very little wood. Riding along the\r\nroads was inconvenient, because the roads did not have road signs\r\nindicating the direction to important cities.The Han decided that it\u2019s\r\ntime to fix the issue, and ordered to put signs on every road. The\r\nMinister of Transport has to do that, but he has only signs. Help the\r\nminister to solve his problem, otherwise the poor guy can lose not only\r\nhis position, but also his head.More formally, every road in the Khanate\r\nis a line on the plane, given by an equation of the form ( and are not\r\nequal to 0 at the same time). You are required to determine whether you\r\ncan put signs in at most points so that each road had at least one sign\r\ninstalled.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <algorithm>\n#include <cmath>\n#include <cstring>\n#include <cstdlib>\n#include <string>\n#include <vector>\n#include <cstdio>\n#include <cassert>\n#include <ctime>\n\nusing namespace std;\n\ntypedef long long ll;\ntypedef long double ld;\n\n#ifdef WIN32\n\t#define LLD \"%I64d\"\n#else\n\t#define LLD \"%lld\"\n#endif\n\n#define pb push_back\n#define all(x) begin(x), end(x)\n\nconst int MAXIT[6] = {0, 1, 6, 13, 20, 25};\n\nstruct line\n{\n    int a, b, c;\n    int id;\n};\n\nvector<line> l;\nint n, k;\nvector<pair<int, int>> answer;\n\nvoid solve(vector<line> &l, int k)\n{\n    int n = l.size();\n    if (k >= (int)n)\n    {\n        for (int i = 0; i < (int)n; i++) answer.pb({l[i].id, -2});\n        printf(\"YES\\n\");\n        printf(\"%d\\n\", answer.size());\n        for (auto t : answer) printf(\"%d %d\\n\", t.first + 1, t.second + 1);\n        exit(0);\n    }\n    if (k == 0) return;\n    for (int IT = 0; IT < MAXIT[k]; IT++)\n    {\n        int wh1 = rand() % n;\n        int wh2 = rand() % (n - 1);\n        if (wh2 >= wh1) wh2++;\n        auto &l1 = l[wh1];\n        auto &l2 = l[wh2];\n        if ((ll)l1.a * l2.b == (ll)l2.a * l1.b) continue;\n        vector<line> next;\n        for (auto &t : l) if ((ll)l1.a * l2.b * t.c + (ll)l1.b * l2.c * t.a + (ll)l1.c * l2.a * t.b !=\n                             (ll)l1.c * l2.b * t.a + (ll)l1.b * l2.a * t.c + (ll)l1.a * l2.c * t.b) next.pb(t);\n        if ((int)next.size() > max((double)k - 1, n * (1.0 - 1.0 / (2 * k)))) continue;\n        answer.pb({l1.id, l2.id});\n        solve(next, k - 1);\n        answer.pop_back();\n    }\n}\n\nint main()\n{\n    scanf(\"%d%d\", &n, &k);\n    l.resize(n);\n    for (int i = 0; i < n; i++)\n    {\n        scanf(\"%d%d%d\", &l[i].a, &l[i].b, &l[i].c);\n        l[i].id = i;\n    }\n    solve(l, k);\n    printf(\"NO\\n\");\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "geometry",
+        "math"
+    ],
+    "dificulty": "2800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Sign Posts.json",
+    "editorial_link": "https://codeforces.com//blog/entry/19705",
+    "editorial": "Suppose, that solution exist. In case we can put one signpost on each\r\nroad. In other case let\u00e2\u0080\u0099s choose any roads. By the Dirichlet\u00e2\u0080\u0099s principle\r\nthere are at least two roads among selected, which have common signpost.\r\nLet\u00e2\u0080\u0099s simple iterate over all variants with different two roads. After\r\nchoosing roads and , we will remove all roads, intersecting with and in\r\ncommon points and reduce in our problem. This recursive process solves\r\nthe problem (if solution exist). Complexity of this solution . If\r\nimplement this solution carefully you will get AC =) But in case of TL\r\nwe can add one improvement to our solution. Note, that if we find point,\r\nwhich belongs to or more roads, then we must include this point to out\r\nanswer. For sufficiently large (for example, if ) this point always\r\nexist and we can find it using randomize algorithm. If solution exist,\r\nprobability that two arbitrary roads are intersects in such a point not\r\nless than . Because of it, if we times pick two random roads, then with\r\nprobability such a point will be found and we can decrease . All\r\noperations better to do in integers. Complexity .\r\n"
+}

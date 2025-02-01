@@ -1,1 +1,107 @@
-{"link": "https://codeforces.com//contest/225/problem/D", "problemId": "1831", "problem_idx": "D", "shortId": "225D", "contest_number": "225", "problem_submissions": {"A": [2221105, 2214162, 2213024, 2213181, 2218269, 2215390, 2213087, 2213131, 2213045, 2213399, 2218254, 2213449, 2215635, 2213022, 2219451, 2214235, 2218861, 2213502], "D": [2218238, 2217449, 2217706, 2290695, 2219111, 2226502, 2219345, 2221170], "C": [2217175, 2219527, 2217380, 2214633, 2213571, 2214672, 2216972, 2213976, 2217628, 2215057, 2215884, 2217221, 2216137, 2214774, 2219743], "B": [2215089, 2214635, 2214157, 2213471, 2217514, 2216657, 2214710, 2214892, 2219487, 2217944, 2217204, 2220412, 2220302, 2217349, 2217093, 2216495], "E": [2219166, 2216024, 2218518, 2218635, 2218425, 2270284, 2216885, 2219080, 2218848, 2218491, 2218490, 2218734, 2217815]}, "name": "D. Snake", "statement": "Let us remind you the rules of a very popular game called \"Snake\" (or\r\nsometimes \"Boa\", \"Python\" or \"Worm\").The game field is represented by an\r\nrectangular table. Some squares of the field are considered impassable\r\n(walls), all other squares of the fields are passable.You control a\r\nsnake, the snake consists of segments. Each segment takes up exactly one\r\npassable square of the field, but any passable square contains at most\r\none segment. All segments are indexed by integers from to , where is the\r\nsnake\u2019s length. The -th segment is the head and the -th segment is the\r\ntail. For any (), segments with indexes and are located in the adjacent\r\nsquares of the field, that is, these squares share a common side.One of\r\nthe passable field squares contains an apple. The snake\u2019s aim is to\r\nreach the apple and eat it (that is, to position its head in the square\r\nwith the apple).The snake moves throughout the game. During one move the\r\nsnake can move its head to an adjacent field square. All other segments\r\nfollow the head. That is, each segment number moves to the square that\r\nhas just had segment number . Consider that all segments including the\r\nhead move simultaneously (see the second test sample). If the snake\u2019s\r\nhead moves to an unpassable square or to the square, occupied by its\r\nother segment, the snake dies. That\u2019s why we will consider such moves\r\nunvalid.Your task is to determine the minimum number of valid moves that\r\nthe snake needs to reach the apple.\r\n", "solutions": ["#include<cstdio>\n#include<cstring>\n#include <cstdlib>\nint T,n,m,l,r;\nconst int dx[]={0,0,1,-1};\nconst int dy[]={1,-1,0,0};\nchar diy[25][25];\nbool map[25][25];\nint dis[21][21][16400];\nint sx[20],sy[20];\nint edx,edy;\nstruct Q\n{int nowkey,nowx[20],nowy[20];}q[100010];\nint h,t;\ninline int get(int *x,int *y)\n{\n\tint res=0;\n\tfor(int i=1;i<=l-1;i++)\n\t\tfor(int j=0;j<4;j++)\n\t\t\tif(x[i+1]==x[i]+dx[j]&&y[i+1]==y[i]+dy[j])\n\t\t\t\tres=res*4+j;\n\treturn res;\n}\ninline void bfs()\n{\n\tint key=get(sx,sy);\n\tmemcpy(q[1].nowx,sx,sizeof sx);\n\tmemcpy(q[1].nowy,sy,sizeof sy);\n\tq[1].nowkey=key;\n\th=1;t=2;\n\tmemset(dis,-1,sizeof dis);\n\tdis[sx[1]][sy[1]][key]=0;\n\twhile(h!=t)\n\t{\n\t\tQ sta=q[h++];\n\t\tif(h==100001) h=0;\n\t\tif(sta.nowx[1]==edx&&sta.nowy[1]==edy) break;\n\t\tfor(int i=0;i<4;i++)\n\t\t{\n\t\t\tint newx=sta.nowx[1]+dx[i],newy=sta.nowy[1]+dy[i],newnowx[10],newnowy[10];\n\t\t\tif(newx<1||newx>n||newy<1||newy>m||map[newx][newy]) continue;\n\t\t\tbool ok=true;\n\t\t\tfor(int j=1;j<l;j++)\n\t\t\t\tif(newx==sta.nowx[j]&&newy==sta.nowy[j])\n\t\t\t\t{\n\t\t\t\t\tok=false;\n\t\t\t\t\tbreak;\n\t\t\t\t}\n\t\t\tif(!ok) continue;\n\t\t\tnewnowx[1]=newx;newnowy[1]=newy;\n\t\t\tfor(int j=2;j<=l;j++)\n\t\t\t{\n\t\t\t\tnewnowx[j]=sta.nowx[j-1];\n\t\t\t\tnewnowy[j]=sta.nowy[j-1];\n\t\t\t}\n\t\t\tint key=get(newnowx,newnowy);\n\t\t\tif(dis[newx][newy][key]!=-1) continue;\n\t\t\tdis[newx][newy][key]=dis[sta.nowx[1]][sta.nowy[1]][sta.nowkey]+1;\n\t\t\tmemcpy(q[t].nowx,newnowx,sizeof newnowx);\n\t\t\tmemcpy(q[t].nowy,newnowy,sizeof newnowy);\n\t\t\tq[t].nowkey=key;\n\t\t\tt++;\n\t\t\tif(t==100001) t=0;\n\t\t}\n\t}\n}\nint main()\n{\n\tscanf(\"%d%d\",&n,&m);\n\tfor(int i=1;i<=n;i++)\n\t\tscanf(\"%s\",diy[i]+1);\n\tfor(int i=1;i<=n;i++)\n\t\tfor(int j=1;j<=m;j++)\n\t\t{\n\t\t\tif(diy[i][j]=='#') map[i][j]=1;\n\t\t\telse if(diy[i][j]=='.') map[i][j]=0;\n\t\t\telse if(diy[i][j]=='@') edx=i,edy=j;\n\t\t\telse l++,sx[diy[i][j]-'0']=i,sy[diy[i][j]-'0']=j;\n\t\t}\n\tbfs();\n\tprintf(\"%d\\n\",dis[edx][edy][q[h-1].nowkey]);\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["bitmasks", "dfs and similar", "graphs", "implementation"], "dificulty": "2200", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/225/problem/D",
+    "problemId": "1831",
+    "problem_idx": "D",
+    "shortId": "225D",
+    "contest_number": "225",
+    "problem_submissions": {
+        "A": [
+            2221105,
+            2214162,
+            2213024,
+            2213181,
+            2218269,
+            2215390,
+            2213087,
+            2213131,
+            2213045,
+            2213399,
+            2218254,
+            2213449,
+            2215635,
+            2213022,
+            2219451,
+            2214235,
+            2218861,
+            2213502
+        ],
+        "D": [
+            2218238,
+            2217449,
+            2217706,
+            2290695,
+            2219111,
+            2226502,
+            2219345,
+            2221170
+        ],
+        "C": [
+            2217175,
+            2219527,
+            2217380,
+            2214633,
+            2213571,
+            2214672,
+            2216972,
+            2213976,
+            2217628,
+            2215057,
+            2215884,
+            2217221,
+            2216137,
+            2214774,
+            2219743
+        ],
+        "B": [
+            2215089,
+            2214635,
+            2214157,
+            2213471,
+            2217514,
+            2216657,
+            2214710,
+            2214892,
+            2219487,
+            2217944,
+            2217204,
+            2220412,
+            2220302,
+            2217349,
+            2217093,
+            2216495
+        ],
+        "E": [
+            2219166,
+            2216024,
+            2218518,
+            2218635,
+            2218425,
+            2270284,
+            2216885,
+            2219080,
+            2218848,
+            2218491,
+            2218490,
+            2218734,
+            2217815
+        ]
+    },
+    "name": "D. Snake",
+    "statement": "Let us remind you the rules of a very popular game called \"Snake\" (or\r\nsometimes \"Boa\", \"Python\" or \"Worm\").The game field is represented by an\r\nrectangular table. Some squares of the field are considered impassable\r\n(walls), all other squares of the fields are passable.You control a\r\nsnake, the snake consists of segments. Each segment takes up exactly one\r\npassable square of the field, but any passable square contains at most\r\none segment. All segments are indexed by integers from to , where is the\r\nsnake\u2019s length. The -th segment is the head and the -th segment is the\r\ntail. For any (), segments with indexes and are located in the adjacent\r\nsquares of the field, that is, these squares share a common side.One of\r\nthe passable field squares contains an apple. The snake\u2019s aim is to\r\nreach the apple and eat it (that is, to position its head in the square\r\nwith the apple).The snake moves throughout the game. During one move the\r\nsnake can move its head to an adjacent field square. All other segments\r\nfollow the head. That is, each segment number moves to the square that\r\nhas just had segment number . Consider that all segments including the\r\nhead move simultaneously (see the second test sample). If the snake\u2019s\r\nhead moves to an unpassable square or to the square, occupied by its\r\nother segment, the snake dies. That\u2019s why we will consider such moves\r\nunvalid.Your task is to determine the minimum number of valid moves that\r\nthe snake needs to reach the apple.\r\n",
+    "solutions": [
+        "#include<cstdio>\n#include<cstring>\n#include <cstdlib>\nint T,n,m,l,r;\nconst int dx[]={0,0,1,-1};\nconst int dy[]={1,-1,0,0};\nchar diy[25][25];\nbool map[25][25];\nint dis[21][21][16400];\nint sx[20],sy[20];\nint edx,edy;\nstruct Q\n{int nowkey,nowx[20],nowy[20];}q[100010];\nint h,t;\ninline int get(int *x,int *y)\n{\n\tint res=0;\n\tfor(int i=1;i<=l-1;i++)\n\t\tfor(int j=0;j<4;j++)\n\t\t\tif(x[i+1]==x[i]+dx[j]&&y[i+1]==y[i]+dy[j])\n\t\t\t\tres=res*4+j;\n\treturn res;\n}\ninline void bfs()\n{\n\tint key=get(sx,sy);\n\tmemcpy(q[1].nowx,sx,sizeof sx);\n\tmemcpy(q[1].nowy,sy,sizeof sy);\n\tq[1].nowkey=key;\n\th=1;t=2;\n\tmemset(dis,-1,sizeof dis);\n\tdis[sx[1]][sy[1]][key]=0;\n\twhile(h!=t)\n\t{\n\t\tQ sta=q[h++];\n\t\tif(h==100001) h=0;\n\t\tif(sta.nowx[1]==edx&&sta.nowy[1]==edy) break;\n\t\tfor(int i=0;i<4;i++)\n\t\t{\n\t\t\tint newx=sta.nowx[1]+dx[i],newy=sta.nowy[1]+dy[i],newnowx[10],newnowy[10];\n\t\t\tif(newx<1||newx>n||newy<1||newy>m||map[newx][newy]) continue;\n\t\t\tbool ok=true;\n\t\t\tfor(int j=1;j<l;j++)\n\t\t\t\tif(newx==sta.nowx[j]&&newy==sta.nowy[j])\n\t\t\t\t{\n\t\t\t\t\tok=false;\n\t\t\t\t\tbreak;\n\t\t\t\t}\n\t\t\tif(!ok) continue;\n\t\t\tnewnowx[1]=newx;newnowy[1]=newy;\n\t\t\tfor(int j=2;j<=l;j++)\n\t\t\t{\n\t\t\t\tnewnowx[j]=sta.nowx[j-1];\n\t\t\t\tnewnowy[j]=sta.nowy[j-1];\n\t\t\t}\n\t\t\tint key=get(newnowx,newnowy);\n\t\t\tif(dis[newx][newy][key]!=-1) continue;\n\t\t\tdis[newx][newy][key]=dis[sta.nowx[1]][sta.nowy[1]][sta.nowkey]+1;\n\t\t\tmemcpy(q[t].nowx,newnowx,sizeof newnowx);\n\t\t\tmemcpy(q[t].nowy,newnowy,sizeof newnowy);\n\t\t\tq[t].nowkey=key;\n\t\t\tt++;\n\t\t\tif(t==100001) t=0;\n\t\t}\n\t}\n}\nint main()\n{\n\tscanf(\"%d%d\",&n,&m);\n\tfor(int i=1;i<=n;i++)\n\t\tscanf(\"%s\",diy[i]+1);\n\tfor(int i=1;i<=n;i++)\n\t\tfor(int j=1;j<=m;j++)\n\t\t{\n\t\t\tif(diy[i][j]=='#') map[i][j]=1;\n\t\t\telse if(diy[i][j]=='.') map[i][j]=0;\n\t\t\telse if(diy[i][j]=='@') edx=i,edy=j;\n\t\t\telse l++,sx[diy[i][j]-'0']=i,sy[diy[i][j]-'0']=j;\n\t\t}\n\tbfs();\n\tprintf(\"%d\\n\",dis[edx][edy][q[h-1].nowkey]);\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "bitmasks",
+        "dfs and similar",
+        "graphs",
+        "implementation"
+    ],
+    "dificulty": "2200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Snake.json",
+    "editorial_link": "https://codeforces.com//blog/entry/5322",
+    "editorial": "There is just BFS. State is head place and mask that store place of tail: using 2 bits you can code position of every segment in relation to previous segment. Mask will contain no more than 16 bits, and number of all states will be no more than 48?\u00d7?15?\u00d7?15 (also you can try understand that number of states no more than 38?\u00d7?15?\u00d7?15)."
+}

@@ -1,1 +1,91 @@
-{"link": "https://codeforces.com//contest/890/problem/D", "problemId": "133726", "problem_idx": "D", "shortId": "890D", "contest_number": "890", "problem_submissions": {"F": [32289917], "E": [32261274, 32675605, 32429167, 32262692], "D": [32257865, 32268886, 32258866, 32260610, 32261085, 32262116, 32262769, 32262040, 32269184, 32261804, 32261588, 32261452], "C": [32252742, 32258377, 32261755, 32255078, 32253602, 32254200, 32254499, 32258466, 32256926, 32255088, 32253307, 32258191], "B": [32249690, 32252382, 32249585, 32250216, 32249706, 32250555, 32251083, 32253080, 32251617, 32251074, 32250730, 32251426], "A": [32248474, 32263812, 32248207, 32248333, 32248364, 32248924, 32248328, 32250186, 32248109, 32248687, 32248286, 32248149]}, "name": "D. Restoration of string", "statement": "A substring of some string is called the most frequent, if the number of\r\nits occurrences is not less than number of occurrences of any other\r\nsubstring.You are given a set of strings. A string (not necessarily from\r\nthis set) is called good if all elements of the set are the most\r\nfrequent substrings of this string. Restore the non-empty good string\r\nwith minimum length. If several such strings exist, restore\r\nlexicographically minimum string. If there are no good strings, print \"\"\r\n(without quotes).A substring of a string is a contiguous subsequence of\r\nletters in the string. For example, \"\", \"\", \"\" are substrings of string\r\n\"\", while \"\" is not a substring of that string.The number of occurrences\r\nof a substring in a string is the number of starting positions in the\r\nstring where the substring occurs. These occurrences could\r\noverlap.String is lexicographically smaller than string , if is a prefix\r\nof , or has a smaller letter at the first position where and differ.\r\n", "solutions": ["#include <iostream>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\n#define DEB 1\n#define dbg_tab(x,l) if(DEB) { cerr << #x << \":\"; for(int i=0;i<l;i++) cerr << \" \" << x[i]; cerr << endl; }\n#define dbg_vec(x) if(DEB) { cerr << #x << \":\"; for(auto y:x) cerr << \" \" << y; cerr << endl; }\n\nvector <string> T;\nint n;\nint ile[26];\n\nbool ok = 1;\n\nchar spo[200007];\n\nvoid ogarnij(char x) {\n    vector <string> pom;\n    vector <string> wor;\n    for(auto u : T) {\n        int ile = 0;\n        for(int i = 0; i < (int) u.length(); ++i) if(u[i] == x) ile++;\n        if(ile == 1) wor.push_back(u);\n        else if(ile > 1) ok = 0;\n        else pom.push_back(u);\n    }\n    \n    int mpoz = 0;\n    int mlen = 0;\n    for(auto u : wor) {\n        int poz = 0;\n        for(int i = 0; i < (int) u.length(); ++i) if(u[i] == x) poz = i;\n        mpoz = max(mpoz, poz);\n        mlen = max(mlen, (int) u.length());\n    }\n    \n    for(int i = 0; i <= mpoz + mlen; ++i) spo[i] = 0;\n    for(auto u : wor) {\n        int poz = 0;\n        for(int i = 0; i < (int) u.length(); ++i) if(u[i] == x) poz = i;\n        for(int i = 0; i < (int) u.length(); ++i) {\n            if(spo[i + mpoz - poz] && spo[i + mpoz - poz] != u[i]) ok = 0;\n            else spo[i + mpoz - poz] = u[i];\n        }\n    }\n    \n    string rr;\n    for(int i = 0; spo[i]; ++i) rr = rr + spo[i];\n    if(spo[0]) pom.push_back(rr);\n    T.swap(pom);\n}\n\nint main() {\n    ios_base::sync_with_stdio(0);\n    cin >> n;\n    T.resize(n);\n    for(int i = 0; i < n; ++i) cin >> T[i];\n    \n    for(int c = 0; c < 26; ++c) ogarnij('a' + c);\n    if(!ok) {\n        cout << \"NO\\n\";\n        return 0;\n    }\n    \n    sort(T.begin(), T.end());\n    for(auto u : T) cout << u;\n    cout << endl;\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["graphs", "greedy", "strings"], "dificulty": "2000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/890/problem/D",
+    "problemId": "133726",
+    "problem_idx": "D",
+    "shortId": "890D",
+    "contest_number": "890",
+    "problem_submissions": {
+        "F": [
+            32289917
+        ],
+        "E": [
+            32261274,
+            32675605,
+            32429167,
+            32262692
+        ],
+        "D": [
+            32257865,
+            32268886,
+            32258866,
+            32260610,
+            32261085,
+            32262116,
+            32262769,
+            32262040,
+            32269184,
+            32261804,
+            32261588,
+            32261452
+        ],
+        "C": [
+            32252742,
+            32258377,
+            32261755,
+            32255078,
+            32253602,
+            32254200,
+            32254499,
+            32258466,
+            32256926,
+            32255088,
+            32253307,
+            32258191
+        ],
+        "B": [
+            32249690,
+            32252382,
+            32249585,
+            32250216,
+            32249706,
+            32250555,
+            32251083,
+            32253080,
+            32251617,
+            32251074,
+            32250730,
+            32251426
+        ],
+        "A": [
+            32248474,
+            32263812,
+            32248207,
+            32248333,
+            32248364,
+            32248924,
+            32248328,
+            32250186,
+            32248109,
+            32248687,
+            32248286,
+            32248149
+        ]
+    },
+    "name": "D. Restoration of string",
+    "statement": "A substring of some string is called the most frequent, if the number of\r\nits occurrences is not less than number of occurrences of any other\r\nsubstring.You are given a set of strings. A string (not necessarily from\r\nthis set) is called good if all elements of the set are the most\r\nfrequent substrings of this string. Restore the non-empty good string\r\nwith minimum length. If several such strings exist, restore\r\nlexicographically minimum string. If there are no good strings, print \"\"\r\n(without quotes).A substring of a string is a contiguous subsequence of\r\nletters in the string. For example, \"\", \"\", \"\" are substrings of string\r\n\"\", while \"\" is not a substring of that string.The number of occurrences\r\nof a substring in a string is the number of starting positions in the\r\nstring where the substring occurs. These occurrences could\r\noverlap.String is lexicographically smaller than string , if is a prefix\r\nof , or has a smaller letter at the first position where and differ.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\n#define DEB 1\n#define dbg_tab(x,l) if(DEB) { cerr << #x << \":\"; for(int i=0;i<l;i++) cerr << \" \" << x[i]; cerr << endl; }\n#define dbg_vec(x) if(DEB) { cerr << #x << \":\"; for(auto y:x) cerr << \" \" << y; cerr << endl; }\n\nvector <string> T;\nint n;\nint ile[26];\n\nbool ok = 1;\n\nchar spo[200007];\n\nvoid ogarnij(char x) {\n    vector <string> pom;\n    vector <string> wor;\n    for(auto u : T) {\n        int ile = 0;\n        for(int i = 0; i < (int) u.length(); ++i) if(u[i] == x) ile++;\n        if(ile == 1) wor.push_back(u);\n        else if(ile > 1) ok = 0;\n        else pom.push_back(u);\n    }\n    \n    int mpoz = 0;\n    int mlen = 0;\n    for(auto u : wor) {\n        int poz = 0;\n        for(int i = 0; i < (int) u.length(); ++i) if(u[i] == x) poz = i;\n        mpoz = max(mpoz, poz);\n        mlen = max(mlen, (int) u.length());\n    }\n    \n    for(int i = 0; i <= mpoz + mlen; ++i) spo[i] = 0;\n    for(auto u : wor) {\n        int poz = 0;\n        for(int i = 0; i < (int) u.length(); ++i) if(u[i] == x) poz = i;\n        for(int i = 0; i < (int) u.length(); ++i) {\n            if(spo[i + mpoz - poz] && spo[i + mpoz - poz] != u[i]) ok = 0;\n            else spo[i + mpoz - poz] = u[i];\n        }\n    }\n    \n    string rr;\n    for(int i = 0; spo[i]; ++i) rr = rr + spo[i];\n    if(spo[0]) pom.push_back(rr);\n    T.swap(pom);\n}\n\nint main() {\n    ios_base::sync_with_stdio(0);\n    cin >> n;\n    T.resize(n);\n    for(int i = 0; i < n; ++i) cin >> T[i];\n    \n    for(int c = 0; c < 26; ++c) ogarnij('a' + c);\n    if(!ok) {\n        cout << \"NO\\n\";\n        return 0;\n    }\n    \n    sort(T.begin(), T.end());\n    for(auto u : T) cout << u;\n    cout << endl;\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "graphs",
+        "greedy",
+        "strings"
+    ],
+    "dificulty": "2000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Restoration of string.json",
+    "editorial_link": "https://codeforces.com//blog/entry/55734",
+    "editorial": "If some string is the most frequent then all its substrings are the most frequent too.\nIf string ab or similar is the most frequent then letter a is always followed by letter b and b always follow a.\nLet's consider directed graph on letters where edge a???b exists only if ab is the most frequent. If there is cycle in such graph then good string doesn't exist.\nSo such graph can be represented as several non-intersecting paths. All strings which correspond to paths must occur in non-empty good string. So if we print them in lexicographical order then we will get the answer."
+}

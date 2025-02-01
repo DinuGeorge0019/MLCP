@@ -1,1 +1,88 @@
-{"link": "https://codeforces.com//contest/232/problem/B", "problemId": "1945", "problem_idx": "B", "shortId": "232B", "contest_number": "232", "problem_submissions": {"D": [2346447, 2453840, 2673464, 2351686, 2351635, 2361185, 2356801, 2386026], "A": [2343160, 2344433, 2341097, 2341781, 2340598, 2342868, 2342498, 2340984, 2340712, 2356088, 2341364, 2341135, 2343044, 2341523, 2341326, 2341345, 2341452], "B": [2340867, 2340703, 2342538, 2341256, 2342019, 2341112, 2341451, 2342353, 2341669, 2342315, 2342610, 2342080, 2342975, 2343085, 2343108, 2343200], "E": [2564230, 3726445, 2360898, 2389163, 2349135, 2349124], "C": [2348750, 2348392, 2352824, 2348892]}, "name": "B. Table", "statement": "John Doe has an table. John Doe can paint points in some table cells,\r\nnot more than one point in one table cell. John Doe wants to use such\r\noperations to make each square subtable of size have exactly points.John\r\nDoe wondered, how many distinct ways to fill the table with points are\r\nthere, provided that the condition must hold. As this number can be\r\nrather large, John Doe asks to find its remainder after dividing by .You\r\nshould assume that John always paints a point exactly in the center of\r\nsome cell. Two ways to fill a table are considered distinct, if there\r\nexists a table cell, that has a point in one way and doesn\u2019t have it in\r\nthe other.\r\n", "solutions": ["#include <iostream>\n#include <iomanip>\n#include <stdio.h>\n#include <set>\n#include <vector>\n#include <map>\n#include <cmath>\n#include <algorithm>\n#include <memory.h>\n#include <string>\n#include <sstream>\n\nusing namespace std;\n\nconst int md = 1000000007;\n\nint pw(int a, long long b) {\n  long long step = 1LL << 61;\n  int x = 1;\n  while (step) {\n    x = (long long)x*x % md;\n    if (step & b) x = (long long)x*a % md;\n    step >>= 1;\n  }\n  return x;\n}\n\nint n, k, i, j;\nlong long m;\nint d[111], e[111];\nint c[111][111];\nint f[111][11111];\n\nint main() {\n//  freopen(\"in\",\"r\",stdin);\n//  freopen(\"out\",\"w\",stdout);\n  cin >> n >> m >> k;\n  memset(c,0,sizeof(c));\n  for (i=0;i<=n;i++) c[i][0] = 1;\n  for (i=1;i<=n;i++)\n    for (j=1;j<=i;j++) c[i][j] = (c[i-1][j-1]+c[i-1][j]) % md;\n  for (j=0;j<=n;j++) {\n    d[j] = pw(c[n][j], m/n);\n    e[j] = pw(c[n][j], m/n+1);\n  }\n  int mm = m % n;\n  memset(f,0,sizeof(f));\n  f[0][0] = 1;\n  for (i=0;i<n;i++)\n    for (j=0;j<=k;j++)\n      if (f[i][j]) {\n        for (int q=0;q<=n;q++) {\n          int ft;\n          if (i < mm) ft = e[q];\n          else ft = d[q];\n          f[i+1][j+q] = (f[i+1][j+q]+(long long)ft*f[i][j]) % md;\n        }\n      }\n  cout << f[n][k] << endl;\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["bitmasks", "combinatorics", "dp", "math"], "dificulty": "1900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/232/problem/B",
+    "problemId": "1945",
+    "problem_idx": "B",
+    "shortId": "232B",
+    "contest_number": "232",
+    "problem_submissions": {
+        "D": [
+            2346447,
+            2453840,
+            2673464,
+            2351686,
+            2351635,
+            2361185,
+            2356801,
+            2386026
+        ],
+        "A": [
+            2343160,
+            2344433,
+            2341097,
+            2341781,
+            2340598,
+            2342868,
+            2342498,
+            2340984,
+            2340712,
+            2356088,
+            2341364,
+            2341135,
+            2343044,
+            2341523,
+            2341326,
+            2341345,
+            2341452
+        ],
+        "B": [
+            2340867,
+            2340703,
+            2342538,
+            2341256,
+            2342019,
+            2341112,
+            2341451,
+            2342353,
+            2341669,
+            2342315,
+            2342610,
+            2342080,
+            2342975,
+            2343085,
+            2343108,
+            2343200
+        ],
+        "E": [
+            2564230,
+            3726445,
+            2360898,
+            2389163,
+            2349135,
+            2349124
+        ],
+        "C": [
+            2348750,
+            2348392,
+            2352824,
+            2348892
+        ]
+    },
+    "name": "B. Table",
+    "statement": "John Doe has an table. John Doe can paint points in some table cells,\r\nnot more than one point in one table cell. John Doe wants to use such\r\noperations to make each square subtable of size have exactly points.John\r\nDoe wondered, how many distinct ways to fill the table with points are\r\nthere, provided that the condition must hold. As this number can be\r\nrather large, John Doe asks to find its remainder after dividing by .You\r\nshould assume that John always paints a point exactly in the center of\r\nsome cell. Two ways to fill a table are considered distinct, if there\r\nexists a table cell, that has a point in one way and doesn\u2019t have it in\r\nthe other.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <iomanip>\n#include <stdio.h>\n#include <set>\n#include <vector>\n#include <map>\n#include <cmath>\n#include <algorithm>\n#include <memory.h>\n#include <string>\n#include <sstream>\n\nusing namespace std;\n\nconst int md = 1000000007;\n\nint pw(int a, long long b) {\n  long long step = 1LL << 61;\n  int x = 1;\n  while (step) {\n    x = (long long)x*x % md;\n    if (step & b) x = (long long)x*a % md;\n    step >>= 1;\n  }\n  return x;\n}\n\nint n, k, i, j;\nlong long m;\nint d[111], e[111];\nint c[111][111];\nint f[111][11111];\n\nint main() {\n//  freopen(\"in\",\"r\",stdin);\n//  freopen(\"out\",\"w\",stdout);\n  cin >> n >> m >> k;\n  memset(c,0,sizeof(c));\n  for (i=0;i<=n;i++) c[i][0] = 1;\n  for (i=1;i<=n;i++)\n    for (j=1;j<=i;j++) c[i][j] = (c[i-1][j-1]+c[i-1][j]) % md;\n  for (j=0;j<=n;j++) {\n    d[j] = pw(c[n][j], m/n);\n    e[j] = pw(c[n][j], m/n+1);\n  }\n  int mm = m % n;\n  memset(f,0,sizeof(f));\n  f[0][0] = 1;\n  for (i=0;i<n;i++)\n    for (j=0;j<=k;j++)\n      if (f[i][j]) {\n        for (int q=0;q<=n;q++) {\n          int ft;\n          if (i < mm) ft = e[q];\n          else ft = d[q];\n          f[i+1][j+q] = (f[i+1][j+q]+(long long)ft*f[i][j]) % md;\n        }\n      }\n  cout << f[n][k] << endl;\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "bitmasks",
+        "combinatorics",
+        "dp",
+        "math"
+    ],
+    "dificulty": "1900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Table.json",
+    "editorial_link": "https://codeforces.com//blog/entry/5514",
+    "editorial": "Let si number of points in the column i.\n \n\nTwo neighboring squares are drawn at this picture, A is the number of point it the left area (it is one column), B is the number of points in the middle area and C is the number of points in the right area (it is one column too). That's why by definition we have:\n\nTherefore A?=?C.\nThat's why \nDivide all columns by equivalence classes on the basis of . For all a and b from one class sa?=?sb.\ncnta is number of columns in class with .\nThere are (Cnk)cnta ways to draw k points in the each of columns in the class a independendently of the other classes.\ndp[i][j] is number of ways to fill all columns in classes 1,?... i in such way that . \ncnti take only two values  and . Let's calc (Cna)cnti for all a and cnti and use it to calc our dp. We have O(n2\u00b7k) complexity."
+}

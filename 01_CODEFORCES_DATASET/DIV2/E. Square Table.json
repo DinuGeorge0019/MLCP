@@ -1,1 +1,99 @@
-{"link": "https://codeforces.com//contest/417/problem/E", "problemId": "8549", "problem_idx": "E", "shortId": "417E", "contest_number": "417", "problem_submissions": {"C": [6398702, 6388645, 6386983, 6388235, 6388172, 6388065, 6390311, 6388936, 6388414, 6388018, 6388881, 6390243, 6386639, 7197952, 7197941, 6390870, 6387760, 6389469], "E": [6392802, 6390375, 6395565, 6393646], "D": [6391828, 6391234, 6393565, 6391187, 6396253, 6392305, 6391849, 6393303, 6391006, 6392955, 14306967], "B": [6387304, 6386532, 6391356, 6387301, 6387066, 6388262, 6387600, 6387683, 6388782, 6385736, 6387148, 6388492, 6397900, 6388119, 6386069, 6387510], "A": [6386106, 6395271, 6385866, 6394732, 6393467, 6394476, 6394633, 6385961, 6387340, 6385886, 6386091, 6395406, 6386306, 6386019]}, "name": "E. Square Table", "statement": "While resting on the ship after the \"Russian Code Cup\" a boy named Misha\r\ninvented an interesting game. He promised to give his quadrocopter to\r\nwhoever will be the first one to make a rectangular table of size ,\r\nconsisting of positive integers such that the sum of the squares of\r\nnumbers for each row and each column was also a square.Since checking\r\nthe correctness of the table manually is difficult, Misha asks you to\r\nmake each number in the table to not exceed .\r\n", "solutions": ["#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <algorithm>\n#include <cmath>\n#include <set>\n\nusing namespace std;\n\nint n;\nint f[110][1000];\n\nbool dfs(int d, int i) {\n\tif (d == n) {\n\t\tint tot = 0;\n\t\tfor (int i = 0; i < n; i++)\n\t\t\ttot += f[n][i] * f[n][i];\n\t\tint a = sqrt(tot);\n\t\tif (a * a != tot)\n\t\t\treturn false;\n\t\treturn true;\n\t}\n\tfor (; i <= 4; i++) {\n\t\tf[n][d] = i;\n\t\tif (dfs(d + 1, i))\n\t\t\treturn true;;\n\t}\n\treturn false;\n}\n\nvoid foo() {\n\tif (!dfs(0, 1))\n\t\tcout << \"no\" << endl;\n}\n\nint main() {\n\tfor (int i = 1; i <= 100; i++) {\n\t\tn = i;\n\t\tfoo();\n\t}\n\tint x, y;\n\tcin >> x >> y;\n\tfor (int i = 0; i < x; i++) {\n\t\tfor (int j = 0; j < y; j++) {\n\t\t\tif (j)\n\t\t\t\tcout << \" \";\n\t\t\tcout << f[x][i] * f[y][j];\n\t\t}\n\t\tcout << endl;\n\t}\n\treturn 0;\n}"], "input": "", "output": "", "tags": ["constructive algorithms", "math", "probabilities"], "dificulty": "2400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/417/problem/E",
+    "problemId": "8549",
+    "problem_idx": "E",
+    "shortId": "417E",
+    "contest_number": "417",
+    "problem_submissions": {
+        "C": [
+            6398702,
+            6388645,
+            6386983,
+            6388235,
+            6388172,
+            6388065,
+            6390311,
+            6388936,
+            6388414,
+            6388018,
+            6388881,
+            6390243,
+            6386639,
+            7197952,
+            7197941,
+            6390870,
+            6387760,
+            6389469
+        ],
+        "E": [
+            6392802,
+            6390375,
+            6395565,
+            6393646
+        ],
+        "D": [
+            6391828,
+            6391234,
+            6393565,
+            6391187,
+            6396253,
+            6392305,
+            6391849,
+            6393303,
+            6391006,
+            6392955,
+            14306967
+        ],
+        "B": [
+            6387304,
+            6386532,
+            6391356,
+            6387301,
+            6387066,
+            6388262,
+            6387600,
+            6387683,
+            6388782,
+            6385736,
+            6387148,
+            6388492,
+            6397900,
+            6388119,
+            6386069,
+            6387510
+        ],
+        "A": [
+            6386106,
+            6395271,
+            6385866,
+            6394732,
+            6393467,
+            6394476,
+            6394633,
+            6385961,
+            6387340,
+            6385886,
+            6386091,
+            6395406,
+            6386306,
+            6386019
+        ]
+    },
+    "name": "E. Square Table",
+    "statement": "While resting on the ship after the \"Russian Code Cup\" a boy named Misha\r\ninvented an interesting game. He promised to give his quadrocopter to\r\nwhoever will be the first one to make a rectangular table of size ,\r\nconsisting of positive integers such that the sum of the squares of\r\nnumbers for each row and each column was also a square.Since checking\r\nthe correctness of the table manually is difficult, Misha asks you to\r\nmake each number in the table to not exceed .\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <algorithm>\n#include <cmath>\n#include <set>\n\nusing namespace std;\n\nint n;\nint f[110][1000];\n\nbool dfs(int d, int i) {\n\tif (d == n) {\n\t\tint tot = 0;\n\t\tfor (int i = 0; i < n; i++)\n\t\t\ttot += f[n][i] * f[n][i];\n\t\tint a = sqrt(tot);\n\t\tif (a * a != tot)\n\t\t\treturn false;\n\t\treturn true;\n\t}\n\tfor (; i <= 4; i++) {\n\t\tf[n][d] = i;\n\t\tif (dfs(d + 1, i))\n\t\t\treturn true;;\n\t}\n\treturn false;\n}\n\nvoid foo() {\n\tif (!dfs(0, 1))\n\t\tcout << \"no\" << endl;\n}\n\nint main() {\n\tfor (int i = 1; i <= 100; i++) {\n\t\tn = i;\n\t\tfoo();\n\t}\n\tint x, y;\n\tcin >> x >> y;\n\tfor (int i = 0; i < x; i++) {\n\t\tfor (int j = 0; j < y; j++) {\n\t\t\tif (j)\n\t\t\t\tcout << \" \";\n\t\t\tcout << f[x][i] * f[y][j];\n\t\t}\n\t\tcout << endl;\n\t}\n\treturn 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "math",
+        "probabilities"
+    ],
+    "dificulty": "2400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Square Table.json",
+    "editorial_link": "https://codeforces.com//blog/entry/11730",
+    "editorial": "Let's build array of the length n for each n, that the sum of the squares of its elements is the square:\n\nIf n?=?1, then take [1].\nIf n?=?2, then take [3,?4].\nIf n is even, then take .\nIf n is odd, then take .\nWe are given two numbers n and m. Let array a corresponds to n, and array b corresponds to m. The we will build the answer array c as follows cij?=?ai\u00b7bj."
+}

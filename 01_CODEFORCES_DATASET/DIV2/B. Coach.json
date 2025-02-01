@@ -1,1 +1,95 @@
-{"link": "https://codeforces.com//contest/300/problem/B", "problemId": "2922", "problem_idx": "B", "shortId": "300B", "contest_number": "300", "problem_submissions": {"E": [3626829, 3626078, 3626827, 3626906, 3628233, 3629109, 3629044, 3629132, 3628382, 3629855, 3627387], "D": [3624414, 37352127, 166085445], "C": [3622911, 3623906, 3623231, 3623852, 3624071, 3623911, 3624938, 3627160, 3625349, 3624808, 3623930, 3623466, 3623151, 3624115, 3624977], "A": [3621358, 3621544, 3621961, 3621419, 3622220, 3621400, 3621539, 3627980, 3621595, 3622614, 3621461, 3623870, 3621695, 3622433, 3621766], "B": [3622857, 3624197, 3622464, 3628078, 3624506, 3622936, 3628606, 7721187, 3623708, 3623701, 3623040, 3622630, 3624370, 3625890, 3622982]}, "name": "B. Coach", "statement": "A programming coach has students to teach. We know that is divisible by\r\n. Let\u2019s assume that all students are numbered from to , inclusive.Before\r\nthe university programming championship the coach wants to split all\r\nstudents into groups of three. For some pairs of students we know that\r\nthey want to be on the same team. Besides, if the -th student wants to\r\nbe on the same team with the -th one, then the -th student wants to be\r\non the same team with the -th one. The coach wants the teams to show\r\ngood results, so he wants the following condition to hold: if the -th\r\nstudent wants to be on the same team with the -th, then the -th and the\r\n-th students must be on the same team. Also, it is obvious that each\r\nstudent must be on exactly one team.Help the coach and divide the teams\r\nthe way he wants.\r\n", "solutions": ["#include<iostream>\n#include<vector>\n#include<algorithm>\n\nusing namespace std;\n\nvector<int> graph[1005];\nvector<vector<int> > one, two, three;\nvector<int> st;\nint vis[1005];\n\nvoid dfs(int x){\n  vis[x] = 1;\n  st.push_back(x);\n  for(int i = 0; i < graph[x].size(); ++i)\n    if(!vis[graph[x][i]])\n      dfs(graph[x][i]);\n}\n\nint main(){\n  int n, m;\n  cin >> n >> m;\n\n  for(int i = 1; i <= m; ++i){\n    int x, y;\n    cin >> x >> y;\n    graph[x].push_back(y);\n    graph[y].push_back(x);\n  }\n\n  for(int i = 1; i <= n; ++i)\n    if(!vis[i]){\n      st.clear();\n      dfs(i);\n      if(st.size() > 3){\n        cout << \"-1\";\n        return 0;\n      }\n      if(st.size() == 3)\n        three.push_back(st);\n      else if(st.size() == 2)\n        two.push_back(st);\n      else\n        one.push_back(st);\n    }\n\n  if(one.size() < two.size()){\n    cout << \"-1\";\n    return 0;\n  }\n\n  vector<vector<int> > ans;\n\n  while(one.size() > two.size()){\n    vector<int> x;\n    x.push_back(one.back().back());\n    one.pop_back();\n    x.push_back(one.back().back());\n    one.pop_back();\n    x.push_back(one.back().back());\n    one.pop_back();\n    ans.push_back(x);\n  }\n\n  for(int i = 0; i < one.size(); ++i){\n    vector<int> x;\n    x.push_back(one[i][0]);\n    x.push_back(two[i][0]);\n    x.push_back(two[i][1]);\n    ans.push_back(x);\n  }\n\n  for(int i = 0; i < three.size(); ++i)\n    ans.push_back(three[i]);\n\n  for(int i = 0; i < ans.size(); ++i)\n    cout << ans[i][0] << \" \" << ans[i][1] << \" \" << ans[i][2] << \"\\n\";\n\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["brute force", "dfs and similar", "graphs"], "dificulty": "1500", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/300/problem/B",
+    "problemId": "2922",
+    "problem_idx": "B",
+    "shortId": "300B",
+    "contest_number": "300",
+    "problem_submissions": {
+        "E": [
+            3626829,
+            3626078,
+            3626827,
+            3626906,
+            3628233,
+            3629109,
+            3629044,
+            3629132,
+            3628382,
+            3629855,
+            3627387
+        ],
+        "D": [
+            3624414,
+            37352127,
+            166085445
+        ],
+        "C": [
+            3622911,
+            3623906,
+            3623231,
+            3623852,
+            3624071,
+            3623911,
+            3624938,
+            3627160,
+            3625349,
+            3624808,
+            3623930,
+            3623466,
+            3623151,
+            3624115,
+            3624977
+        ],
+        "A": [
+            3621358,
+            3621544,
+            3621961,
+            3621419,
+            3622220,
+            3621400,
+            3621539,
+            3627980,
+            3621595,
+            3622614,
+            3621461,
+            3623870,
+            3621695,
+            3622433,
+            3621766
+        ],
+        "B": [
+            3622857,
+            3624197,
+            3622464,
+            3628078,
+            3624506,
+            3622936,
+            3628606,
+            7721187,
+            3623708,
+            3623701,
+            3623040,
+            3622630,
+            3624370,
+            3625890,
+            3622982
+        ]
+    },
+    "name": "B. Coach",
+    "statement": "A programming coach has students to teach. We know that is divisible by\r\n. Let\u2019s assume that all students are numbered from to , inclusive.Before\r\nthe university programming championship the coach wants to split all\r\nstudents into groups of three. For some pairs of students we know that\r\nthey want to be on the same team. Besides, if the -th student wants to\r\nbe on the same team with the -th one, then the -th student wants to be\r\non the same team with the -th one. The coach wants the teams to show\r\ngood results, so he wants the following condition to hold: if the -th\r\nstudent wants to be on the same team with the -th, then the -th and the\r\n-th students must be on the same team. Also, it is obvious that each\r\nstudent must be on exactly one team.Help the coach and divide the teams\r\nthe way he wants.\r\n",
+    "solutions": [
+        "#include<iostream>\n#include<vector>\n#include<algorithm>\n\nusing namespace std;\n\nvector<int> graph[1005];\nvector<vector<int> > one, two, three;\nvector<int> st;\nint vis[1005];\n\nvoid dfs(int x){\n  vis[x] = 1;\n  st.push_back(x);\n  for(int i = 0; i < graph[x].size(); ++i)\n    if(!vis[graph[x][i]])\n      dfs(graph[x][i]);\n}\n\nint main(){\n  int n, m;\n  cin >> n >> m;\n\n  for(int i = 1; i <= m; ++i){\n    int x, y;\n    cin >> x >> y;\n    graph[x].push_back(y);\n    graph[y].push_back(x);\n  }\n\n  for(int i = 1; i <= n; ++i)\n    if(!vis[i]){\n      st.clear();\n      dfs(i);\n      if(st.size() > 3){\n        cout << \"-1\";\n        return 0;\n      }\n      if(st.size() == 3)\n        three.push_back(st);\n      else if(st.size() == 2)\n        two.push_back(st);\n      else\n        one.push_back(st);\n    }\n\n  if(one.size() < two.size()){\n    cout << \"-1\";\n    return 0;\n  }\n\n  vector<vector<int> > ans;\n\n  while(one.size() > two.size()){\n    vector<int> x;\n    x.push_back(one.back().back());\n    one.pop_back();\n    x.push_back(one.back().back());\n    one.pop_back();\n    x.push_back(one.back().back());\n    one.pop_back();\n    ans.push_back(x);\n  }\n\n  for(int i = 0; i < one.size(); ++i){\n    vector<int> x;\n    x.push_back(one[i][0]);\n    x.push_back(two[i][0]);\n    x.push_back(two[i][1]);\n    ans.push_back(x);\n  }\n\n  for(int i = 0; i < three.size(); ++i)\n    ans.push_back(three[i]);\n\n  for(int i = 0; i < ans.size(); ++i)\n    cout << ans[i][0] << \" \" << ans[i][1] << \" \" << ans[i][2] << \"\\n\";\n\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "dfs and similar",
+        "graphs"
+    ],
+    "dificulty": "1500",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Coach.json",
+    "editorial_link": "https://codeforces.com//blog/entry/7497",
+    "editorial": "Input data represents a graph. If there is a connected component with at\r\nleast vertexes, then answer is . Every connected component with vertexes\r\nis a complete team. Other teams are made from or -vertex components. If\r\namount of -vertex components is greater than -vertex answer is .\r\nOtherwise match -vertex components with -vertex. If there are some\r\n-vertex components left then split them into groups of three. This\r\nalgorithm works in . Also you could implement solution. uthor\u00e2\u0080\u0099s solution\r\n"
+}

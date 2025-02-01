@@ -1,1 +1,100 @@
-{"link": "https://codeforces.com//contest/453/problem/A", "problemId": "11933", "problem_idx": "A", "shortId": "453A", "contest_number": "453", "problem_submissions": {"D": [7318525, 7321381, 7319937, 7313076, 7316122, 11122936], "C": [7314789, 7312823, 7323051, 7318282, 7319034, 7312696, 7313901, 7313477, 7314695, 7314310, 7314103, 7314216, 7311079, 7314796, 7314374, 7314951, 7314159, 7314941], "B": [7311773, 7310412, 7316305, 7319850, 7314250, 7310826, 7311570, 7321252, 7320392, 7320316, 7312680, 7310934, 7311494, 7312013, 7315911, 7311404, 7312306, 7313238, 7312326, 7313318], "A": [7308671, 7308664, 7309073, 7318976, 7309345, 7308656, 7308757, 7321161, 7309462, 7308797, 7309148, 7308775, 7313516, 7309054, 7309188, 7308988, 7311729, 7309495], "E": [7318455, 7321485, 7325631, 7343757]}, "name": "A. Little Pony and Expected Maximum", "statement": "Twilight Sparkle was playing Ludo with her friends Rainbow Dash, Apple\r\nJack and Flutter Shy. But she kept losing. Having returned to the\r\ncastle, Twilight Sparkle became interested in the dice that were used in\r\nthe game.The dice has faces: the first face of the dice contains a dot,\r\nthe second one contains two dots, and so on, the -th face contains dots.\r\nTwilight Sparkle is sure that when the dice is tossed, each face appears\r\nwith probability . Also she knows that each toss is independent from\r\nothers. Help her to calculate the expected maximum number of dots she\r\ncould get after tossing the dice times.\r\n", "solutions": ["#include <bits/stdc++.h>\n#include <cmath>\n#include <cstdio>\n\nusing namespace std;\n\nint main() {\n  int M, N;\n  cin >> M >> N;\n\n  double p = 0;\n  double res = 0;\n  for(int i = 1; i <= M; i++) {\n    double np = pow(1.0 * i / M, N);\n    res += i * (np - p);\n    p = np;\n  }\n  printf(\"%.12f\\n\", res);\n}\n"], "input": "", "output": "", "tags": ["probabilities"], "dificulty": "1600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/453/problem/A",
+    "problemId": "11933",
+    "problem_idx": "A",
+    "shortId": "453A",
+    "contest_number": "453",
+    "problem_submissions": {
+        "D": [
+            7318525,
+            7321381,
+            7319937,
+            7313076,
+            7316122,
+            11122936
+        ],
+        "C": [
+            7314789,
+            7312823,
+            7323051,
+            7318282,
+            7319034,
+            7312696,
+            7313901,
+            7313477,
+            7314695,
+            7314310,
+            7314103,
+            7314216,
+            7311079,
+            7314796,
+            7314374,
+            7314951,
+            7314159,
+            7314941
+        ],
+        "B": [
+            7311773,
+            7310412,
+            7316305,
+            7319850,
+            7314250,
+            7310826,
+            7311570,
+            7321252,
+            7320392,
+            7320316,
+            7312680,
+            7310934,
+            7311494,
+            7312013,
+            7315911,
+            7311404,
+            7312306,
+            7313238,
+            7312326,
+            7313318
+        ],
+        "A": [
+            7308671,
+            7308664,
+            7309073,
+            7318976,
+            7309345,
+            7308656,
+            7308757,
+            7321161,
+            7309462,
+            7308797,
+            7309148,
+            7308775,
+            7313516,
+            7309054,
+            7309188,
+            7308988,
+            7311729,
+            7309495
+        ],
+        "E": [
+            7318455,
+            7321485,
+            7325631,
+            7343757
+        ]
+    },
+    "name": "A. Little Pony and Expected Maximum",
+    "statement": "Twilight Sparkle was playing Ludo with her friends Rainbow Dash, Apple\r\nJack and Flutter Shy. But she kept losing. Having returned to the\r\ncastle, Twilight Sparkle became interested in the dice that were used in\r\nthe game.The dice has faces: the first face of the dice contains a dot,\r\nthe second one contains two dots, and so on, the -th face contains dots.\r\nTwilight Sparkle is sure that when the dice is tossed, each face appears\r\nwith probability . Also she knows that each toss is independent from\r\nothers. Help her to calculate the expected maximum number of dots she\r\ncould get after tossing the dice times.\r\n",
+    "solutions": [
+        "#include <bits/stdc++.h>\n#include <cmath>\n#include <cstdio>\n\nusing namespace std;\n\nint main() {\n  int M, N;\n  cin >> M >> N;\n\n  double p = 0;\n  double res = 0;\n  for(int i = 1; i <= M; i++) {\n    double np = pow(1.0 * i / M, N);\n    res += i * (np - p);\n    p = np;\n  }\n  printf(\"%.12f\\n\", res);\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "probabilities"
+    ],
+    "dificulty": "1600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Little Pony and Expected Maximum.json",
+    "editorial_link": "https://codeforces.com//blog/entry/13190",
+    "editorial": "Calculate the expected maximum number after tossing a m faces dice n times.\n\nAnalysis:\nTake m = 6, n = 2 as a instance.\n\n6 6 6 6 6 6\n5 5 5 5 5 6\n4 4 4 4 5 6\n3 3 3 4 5 6\n2 2 3 4 5 6\n1 2 3 4 5 6\nEnumerate the maximum number, the distribution will be a n-dimensional super-cube with m-length-side. Each layer will be a large cube minus a smaller cube. So we have:\n\n\nCalculate in may cause overflow, we could move the divisor into the sum and calculate (i?/?m)n instead."
+}

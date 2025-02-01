@@ -1,1 +1,90 @@
-{"link": "https://codeforces.com//contest/614/problem/D", "problemId": "45529", "problem_idx": "D", "shortId": "614D", "contest_number": "614", "problem_submissions": {"B": [15353969, 15350260, 15350615, 15350680, 15348454, 15350100, 15350974, 15353463, 15352422, 15357694, 15351731, 15351010, 15355162, 15361196, 15359446, 15372090, 15355813], "D": [15367152, 15366645, 15367844, 15371803, 15371151, 15372297, 15371070, 15371375, 15373375, 15370561], "C": [15353832, 15359347, 15364158, 15355108, 15361144, 15358460, 15370476, 15360373, 15359826, 15363428, 15360933, 15363074, 15366533], "A": [15347068, 15347426, 15347654, 15414018, 15347337, 15348138, 15348507, 15347653, 15355380, 15364322, 15353145, 15361803, 15348451], "E": [15380705]}, "name": "D. Skills", "statement": "Lesha plays the recently published new version of the legendary game\r\nhacknet. In this version character skill mechanism was introduced. Now,\r\neach player character has exactly skills. Each skill is represented by a\r\nnon-negative integer the current skill level. All skills have the same\r\nmaximum level .Along with the skills, global ranking of all players was\r\nadded. Players are ranked according to the so-called Force. The of a\r\nplayer is the sum of the following values: The number of skills that a\r\ncharacter has perfected (i.e., such that ), multiplied by coefficient .\r\nThe minimum skill level among all skills (), multiplied by coefficient .\r\nNow Lesha has hacknetian currency units, which he is willing to spend.\r\nEach currency unit can increase the current level of any skill by (if\r\nit\u2019s not equal to yet). Help him spend his money in order to achieve the\r\nmaximum possible value of the Force.\r\n", "solutions": ["#include<bits/stdc++.h>\nusing namespace std;\ntypedef long long LL;\ntypedef pair<int,int> PII;\n#define MP make_pair\n#define PB push_back\n#define AA first\n#define BB second\n#define OP begin()\n#define ED end()\n#define SZ size()\n#define cmin(x,y) x=min(x,y)\n#define cmax(x,y) x=max(x,y)\n#define NAME \"\"\n#define UsingFile 0\nconst LL MOD = 1000000007;\nLL n,A,cf,cm,m;\npair<LL,int> a[100005];\nint b[100005];\nLL S[100005];\nvoid build(LL e,int id){\n\tint i;\n\tfor(i=id;i<n;i++)b[a[i].BB]=A;\n\tfor(i=0;i<id;i++){\n\t\tif(a[i].AA<e)b[a[i].BB]=e;\n\t\telse b[a[i].BB]=a[i].AA;\n\t}\n}\nint main(){\n    if(UsingFile)freopen(NAME\".in\",\"r\",stdin);\n    if(UsingFile)freopen(NAME\".out\",\"w\",stdout);\n    int i,j,k,_T;\n    while(cin>>n>>A>>cf>>cm>>m){\n    \tfor(i=0;i<n;i++)\n    \t\tcin>>a[i].AA,a[i].BB=i;\n    \tsort(a,a+n);\n    \tS[0]=a[0].AA;\n    \tfor(i=1;i<n;i++)\n    \t\tS[i]=S[i-1]+a[i].AA;\n    \tLL rem=m;\n    \tLL ans=-1,_g=0,_i=n;\n    \tfor(i=n;i>=0;i--){\n    \t\tif(i<n)rem-=A-a[i].AA;\n    \t\tif(rem<0)break;\n    \t\tLL le=0,re=i-1,be=-1;\n    \t\twhile(re>=le){\n    \t\t\tif(re-le<=1){\n    \t\t\t\tif(a[re].AA*(re+1)-S[re]<=rem)be=re;\n    \t\t\t\telse be=le;\n    \t\t\t\tbreak;\n    \t\t\t}\n    \t\t\tLL me=(le+re)>>1;\n    \t\t\tif(a[me].AA*(me+1)-S[me]<=rem)le=me;\n    \t\t\telse re=me;\n    \t\t}\n    \t\tLL ge;\n    \t\tif(~be)ge=a[be].AA+(rem-(a[be].AA*(be+1)-S[be]))/(be+1);\n    \t\telse ge=A;\n    \t\tcmin(ge,A);\n    \t\tLL force=cm*ge+cf*(n-i);\n    \t\tif(force>ans)ans=force,_g=ge,_i=i;\n    \t}\n    \tbuild(_g,_i);\n    \tcout<<ans<<\"\\n\";\n    \tfor(i=0;i<n;i++)cout<<b[i]<<\" \";cout<<\"\\n\";\n    }\n    return 0;\n}"], "input": "", "output": "", "tags": ["dp", "greedy", "sortings"], "dificulty": "1900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/614/problem/D",
+    "problemId": "45529",
+    "problem_idx": "D",
+    "shortId": "614D",
+    "contest_number": "614",
+    "problem_submissions": {
+        "B": [
+            15353969,
+            15350260,
+            15350615,
+            15350680,
+            15348454,
+            15350100,
+            15350974,
+            15353463,
+            15352422,
+            15357694,
+            15351731,
+            15351010,
+            15355162,
+            15361196,
+            15359446,
+            15372090,
+            15355813
+        ],
+        "D": [
+            15367152,
+            15366645,
+            15367844,
+            15371803,
+            15371151,
+            15372297,
+            15371070,
+            15371375,
+            15373375,
+            15370561
+        ],
+        "C": [
+            15353832,
+            15359347,
+            15364158,
+            15355108,
+            15361144,
+            15358460,
+            15370476,
+            15360373,
+            15359826,
+            15363428,
+            15360933,
+            15363074,
+            15366533
+        ],
+        "A": [
+            15347068,
+            15347426,
+            15347654,
+            15414018,
+            15347337,
+            15348138,
+            15348507,
+            15347653,
+            15355380,
+            15364322,
+            15353145,
+            15361803,
+            15348451
+        ],
+        "E": [
+            15380705
+        ]
+    },
+    "name": "D. Skills",
+    "statement": "Lesha plays the recently published new version of the legendary game\r\nhacknet. In this version character skill mechanism was introduced. Now,\r\neach player character has exactly skills. Each skill is represented by a\r\nnon-negative integer the current skill level. All skills have the same\r\nmaximum level .Along with the skills, global ranking of all players was\r\nadded. Players are ranked according to the so-called Force. The of a\r\nplayer is the sum of the following values: The number of skills that a\r\ncharacter has perfected (i.e., such that ), multiplied by coefficient .\r\nThe minimum skill level among all skills (), multiplied by coefficient .\r\nNow Lesha has hacknetian currency units, which he is willing to spend.\r\nEach currency unit can increase the current level of any skill by (if\r\nit\u2019s not equal to yet). Help him spend his money in order to achieve the\r\nmaximum possible value of the Force.\r\n",
+    "solutions": [
+        "#include<bits/stdc++.h>\nusing namespace std;\ntypedef long long LL;\ntypedef pair<int,int> PII;\n#define MP make_pair\n#define PB push_back\n#define AA first\n#define BB second\n#define OP begin()\n#define ED end()\n#define SZ size()\n#define cmin(x,y) x=min(x,y)\n#define cmax(x,y) x=max(x,y)\n#define NAME \"\"\n#define UsingFile 0\nconst LL MOD = 1000000007;\nLL n,A,cf,cm,m;\npair<LL,int> a[100005];\nint b[100005];\nLL S[100005];\nvoid build(LL e,int id){\n\tint i;\n\tfor(i=id;i<n;i++)b[a[i].BB]=A;\n\tfor(i=0;i<id;i++){\n\t\tif(a[i].AA<e)b[a[i].BB]=e;\n\t\telse b[a[i].BB]=a[i].AA;\n\t}\n}\nint main(){\n    if(UsingFile)freopen(NAME\".in\",\"r\",stdin);\n    if(UsingFile)freopen(NAME\".out\",\"w\",stdout);\n    int i,j,k,_T;\n    while(cin>>n>>A>>cf>>cm>>m){\n    \tfor(i=0;i<n;i++)\n    \t\tcin>>a[i].AA,a[i].BB=i;\n    \tsort(a,a+n);\n    \tS[0]=a[0].AA;\n    \tfor(i=1;i<n;i++)\n    \t\tS[i]=S[i-1]+a[i].AA;\n    \tLL rem=m;\n    \tLL ans=-1,_g=0,_i=n;\n    \tfor(i=n;i>=0;i--){\n    \t\tif(i<n)rem-=A-a[i].AA;\n    \t\tif(rem<0)break;\n    \t\tLL le=0,re=i-1,be=-1;\n    \t\twhile(re>=le){\n    \t\t\tif(re-le<=1){\n    \t\t\t\tif(a[re].AA*(re+1)-S[re]<=rem)be=re;\n    \t\t\t\telse be=le;\n    \t\t\t\tbreak;\n    \t\t\t}\n    \t\t\tLL me=(le+re)>>1;\n    \t\t\tif(a[me].AA*(me+1)-S[me]<=rem)le=me;\n    \t\t\telse re=me;\n    \t\t}\n    \t\tLL ge;\n    \t\tif(~be)ge=a[be].AA+(rem-(a[be].AA*(be+1)-S[be]))/(be+1);\n    \t\telse ge=A;\n    \t\tcmin(ge,A);\n    \t\tLL force=cm*ge+cf*(n-i);\n    \t\tif(force>ans)ans=force,_g=ge,_i=i;\n    \t}\n    \tbuild(_g,_i);\n    \tcout<<ans<<\"\\n\";\n    \tfor(i=0;i<n;i++)cout<<b[i]<<\" \";cout<<\"\\n\";\n    }\n    return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp",
+        "greedy",
+        "sortings"
+    ],
+    "dificulty": "1900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Skills.json",
+    "editorial_link": "https://codeforces.com//blog/entry/22832",
+    "editorial": "Let's save the original positions of skills and then sort the skills in non-increasing order (almost decreasing) by current level. We can always restore original order after.\n\nImagine that we have decided that we want to use the minimum level X and now we're choosing which skills we should bring to the maximum.\n\nAt first, let's rise all skills below X to level X, this will set some tail of array to X. But the original array was sorted, and this new change will not break the sort! So our array is still sorted.\n\nObviously, the skills we want to take to the maximum are the ones with highest current level. They are in the prefix of array. It is easy to show that any other selection is no better than this greedy one.\n\nNow we have shown that the optimal strategy is to max out the skills in some prefix. Now let's solve the problem.\n\nLet's iterate over prefix to max out, now on each iteration we need to know the highest minimum we can achieve, let's store the index of the first element outside the prefix such that it is possible to reach the minimum level ???arrindex.\n\nIt is easy to recalc this index, it slightly moves forward each turn and, after precalcing the sum of all array's tails, you can update it easily (just move it forward until the invariant above holds). And knowing this index is enough to calc the current highest possible minimum level (min(A,?arrindex?+?? sparemoney?/?(n?-?index)?).\n\nHow to restore the answer? Actually, all you need to know is the count of maximums to take and minimum level to reach."
+}

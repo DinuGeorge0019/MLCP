@@ -1,1 +1,112 @@
-{"link": "https://codeforces.com//contest/518/problem/B", "problemId": "22987", "problem_idx": "B", "shortId": "518B", "contest_number": "518", "problem_submissions": {"C": [9988883, 9986333, 9990862, 9987399, 9998129, 9989956, 9985416, 9991301, 9988773, 9987777, 9986792, 9990874, 9996855, 9993083, 9991646, 9993492, 9989796], "B": [9986603, 9991969, 9985412, 9984010, 9991935, 9983836, 9985675, 9984464, 9984814, 9987730, 9987512, 9987182, 9990867, 9988157, 9985156, 9986048], "D": [9984146, 9987656, 9983589, 9996581, 9988389, 9983991, 10019512, 9994388, 9990798, 9998733, 9989910, 9992602, 9994055, 9988668, 9997395, 9994329, 10003029], "A": [9982691, 9984919, 9983532, 9982857, 9984890, 9982599, 9983377, 9983139, 9982876, 10006211, 9984273, 10016035, 9996459, 9986695, 9983905], "F": [9995207, 10007934], "E": [10000287, 10002761, 10005947, 10001378, 9999399, 10002023, 10011774]}, "name": "B. Tanya and Postcard", "statement": "Little Tanya decided to present her dad a postcard on his Birthday. She\r\nhas already created a message string of length , consisting of uppercase\r\nand lowercase English letters. Tanya can\u2019t write yet, so she found a\r\nnewspaper and decided to cut out the letters and glue them into the\r\npostcard to achieve string . The newspaper contains string , consisting\r\nof uppercase and lowercase English letters. We know that the length of\r\nstring greater or equal to the length of the string .The newspaper may\r\npossibly have too few of some letters needed to make the text and too\r\nmany of some other letters. That\u2019s why Tanya wants to cut some letters\r\nout of the newspaper and make a message of length exactly , so that it\r\nlooked as much as possible like . If the letter in some position has\r\ncorrect value and correct letter case (in the string and in the string\r\nthat Tanya will make), then she shouts joyfully \"\", and if the letter in\r\nthe given position has only the correct value but it is in the wrong\r\ncase, then the girl says \"\".Tanya wants to make such message that lets\r\nher shout \"\" as much as possible. If there are multiple ways to do this,\r\nthen her second priority is to maximize the number of times she says \"\".\r\nYour task is to help Tanya make the message.\r\n", "solutions": ["#include<vector>\n#include<list>\n#include<map>\n#include<set>\n#include<deque>\n#include<queue>\n#include<stack>\n#include<bitset>\n#include<algorithm>\n#include<functional>\n#include<numeric>\n#include<utility>\n#include<iostream>\n#include<sstream>\n#include<iomanip>\n#include<cmath>\n#include<cstdlib>\n#include<cctype>\n#include<string>\n#include<cstring>\n#include<cstdio>\n#include<ctime>\n#include<climits>\n#include<complex>\n#include<cassert>\n#define mp make_pair\n#define pb push_back\n#define fi first\n#define se second\n#define sz(x) (int)((x).size())\n#define all(x) x.begin(),x.end()\n#define clr(x) memset((x),0,sizeof(x))\n#define cdp(x) memset((x),-1,sizeof(x))\n#define rep(i,n) for (i=0;i<n;i++)\n#define Rep(i,a,b) for (i=a;i<=b;i++)\n#define ff(i,x) for (i=start[x];i!=-1;i=a[i].next)\n#define foreach(e,x) for(__typeof(x.begin()) e=x.begin();e!=x.end();++e)\nusing namespace std;\nconst double eps=1e-8;\nconst double pi=acos(-1.0);\nint dblcmp(double d){if (fabs(d)<eps)return 0;return d>eps?1:-1;}\ntypedef long long ll;\ntypedef vector<int> vi;\ntypedef vector<ll> vl;\ntypedef vector<string> vs;\ntypedef pair<int,int> pii;\ntypedef vector<pii> vpi;\nchar op(char c)\n{\n    if (islower(c))return toupper(c);\n    return tolower(c);\n}\nint c[211]={0},o[555555]={0};\nint main()\n{\n    int i,j,k;\n    string s,t;\n    cin>>s>>t;\n    for (i=0;i<sz(t);i++)\n    {\n        c[t[i]]++;\n    }\n    int a=0,b=0;\n    for (i=0;i<sz(s);i++)\n    {\n        if (c[s[i]])\n        {\n            o[i]=1;\n            --c[s[i]];\n            ++a;\n        }\n    }\n    for (i=0;i<sz(s);i++)if (o[i]==0)\n    {\n        if (c[op(s[i])])\n        {\n            --c[op(s[i])];\n            ++b;\n        }\n    }\n    printf(\"%d %d\\n\",a,b);\n    return 0;\n}\n            "], "input": "", "output": "", "tags": ["greedy", "implementation", "strings"], "dificulty": "1400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/518/problem/B",
+    "problemId": "22987",
+    "problem_idx": "B",
+    "shortId": "518B",
+    "contest_number": "518",
+    "problem_submissions": {
+        "C": [
+            9988883,
+            9986333,
+            9990862,
+            9987399,
+            9998129,
+            9989956,
+            9985416,
+            9991301,
+            9988773,
+            9987777,
+            9986792,
+            9990874,
+            9996855,
+            9993083,
+            9991646,
+            9993492,
+            9989796
+        ],
+        "B": [
+            9986603,
+            9991969,
+            9985412,
+            9984010,
+            9991935,
+            9983836,
+            9985675,
+            9984464,
+            9984814,
+            9987730,
+            9987512,
+            9987182,
+            9990867,
+            9988157,
+            9985156,
+            9986048
+        ],
+        "D": [
+            9984146,
+            9987656,
+            9983589,
+            9996581,
+            9988389,
+            9983991,
+            10019512,
+            9994388,
+            9990798,
+            9998733,
+            9989910,
+            9992602,
+            9994055,
+            9988668,
+            9997395,
+            9994329,
+            10003029
+        ],
+        "A": [
+            9982691,
+            9984919,
+            9983532,
+            9982857,
+            9984890,
+            9982599,
+            9983377,
+            9983139,
+            9982876,
+            10006211,
+            9984273,
+            10016035,
+            9996459,
+            9986695,
+            9983905
+        ],
+        "F": [
+            9995207,
+            10007934
+        ],
+        "E": [
+            10000287,
+            10002761,
+            10005947,
+            10001378,
+            9999399,
+            10002023,
+            10011774
+        ]
+    },
+    "name": "B. Tanya and Postcard",
+    "statement": "Little Tanya decided to present her dad a postcard on his Birthday. She\r\nhas already created a message string of length , consisting of uppercase\r\nand lowercase English letters. Tanya can\u2019t write yet, so she found a\r\nnewspaper and decided to cut out the letters and glue them into the\r\npostcard to achieve string . The newspaper contains string , consisting\r\nof uppercase and lowercase English letters. We know that the length of\r\nstring greater or equal to the length of the string .The newspaper may\r\npossibly have too few of some letters needed to make the text and too\r\nmany of some other letters. That\u2019s why Tanya wants to cut some letters\r\nout of the newspaper and make a message of length exactly , so that it\r\nlooked as much as possible like . If the letter in some position has\r\ncorrect value and correct letter case (in the string and in the string\r\nthat Tanya will make), then she shouts joyfully \"\", and if the letter in\r\nthe given position has only the correct value but it is in the wrong\r\ncase, then the girl says \"\".Tanya wants to make such message that lets\r\nher shout \"\" as much as possible. If there are multiple ways to do this,\r\nthen her second priority is to maximize the number of times she says \"\".\r\nYour task is to help Tanya make the message.\r\n",
+    "solutions": [
+        "#include<vector>\n#include<list>\n#include<map>\n#include<set>\n#include<deque>\n#include<queue>\n#include<stack>\n#include<bitset>\n#include<algorithm>\n#include<functional>\n#include<numeric>\n#include<utility>\n#include<iostream>\n#include<sstream>\n#include<iomanip>\n#include<cmath>\n#include<cstdlib>\n#include<cctype>\n#include<string>\n#include<cstring>\n#include<cstdio>\n#include<ctime>\n#include<climits>\n#include<complex>\n#include<cassert>\n#define mp make_pair\n#define pb push_back\n#define fi first\n#define se second\n#define sz(x) (int)((x).size())\n#define all(x) x.begin(),x.end()\n#define clr(x) memset((x),0,sizeof(x))\n#define cdp(x) memset((x),-1,sizeof(x))\n#define rep(i,n) for (i=0;i<n;i++)\n#define Rep(i,a,b) for (i=a;i<=b;i++)\n#define ff(i,x) for (i=start[x];i!=-1;i=a[i].next)\n#define foreach(e,x) for(__typeof(x.begin()) e=x.begin();e!=x.end();++e)\nusing namespace std;\nconst double eps=1e-8;\nconst double pi=acos(-1.0);\nint dblcmp(double d){if (fabs(d)<eps)return 0;return d>eps?1:-1;}\ntypedef long long ll;\ntypedef vector<int> vi;\ntypedef vector<ll> vl;\ntypedef vector<string> vs;\ntypedef pair<int,int> pii;\ntypedef vector<pii> vpi;\nchar op(char c)\n{\n    if (islower(c))return toupper(c);\n    return tolower(c);\n}\nint c[211]={0},o[555555]={0};\nint main()\n{\n    int i,j,k;\n    string s,t;\n    cin>>s>>t;\n    for (i=0;i<sz(t);i++)\n    {\n        c[t[i]]++;\n    }\n    int a=0,b=0;\n    for (i=0;i<sz(s);i++)\n    {\n        if (c[s[i]])\n        {\n            o[i]=1;\n            --c[s[i]];\n            ++a;\n        }\n    }\n    for (i=0;i<sz(s);i++)if (o[i]==0)\n    {\n        if (c[op(s[i])])\n        {\n            --c[op(s[i])];\n            ++b;\n        }\n    }\n    printf(\"%d %d\\n\",a,b);\n    return 0;\n}\n            "
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "greedy",
+        "implementation",
+        "strings"
+    ],
+    "dificulty": "1400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Tanya and Postcard.json",
+    "editorial_link": "https://codeforces.com//blog/entry/16598",
+    "editorial": "To solve this problem at first will count array cnt[], where cnt[c] \u0097 how many times letter c found in string t. We will count two numbers ans1 and ans2 \u0097 how many times Tanya will shouts joyfully YAY! and how many times Tanya will says WHOOPS.\n\nLet's iterate on string s and if cnt[s[i]]?>?0, then increase ans1 on one and decrease cnt[s[i]] on one.\n\nThen let's again iterate on string s. Let c is letter which equal to s[i],but in the opposite case for it. I. e. if s[i]?=?'w', then c?=?'W'. Now, if cnt[c]?>?0, then increase ans2 on one and decrease cnt[?] on one.\n\nNow, print two numbers \u0097 ans1 and ans2.\n\nAsymptotic behavior of this solution \u0097 O(|s|?+?|t|), where |s| \u0097 length of string s and |t| \u0097 length of string t."
+}

@@ -1,1 +1,94 @@
-{"link": "https://codeforces.com//contest/548/problem/A", "problemId": "28334", "problem_idx": "A", "shortId": "548A", "contest_number": "548", "problem_submissions": {"E": [11306177, 11300638, 11307838, 11312023, 12063940], "D": [11287347, 11284454, 11307050, 11295837, 11293058, 11292109, 11291768, 11293958, 11295314, 11296359, 11296862, 11312125, 11312114, 11295294, 11299561, 11298190, 11299140], "B": [11283910, 11292107, 11285437, 11284167, 11285339, 11282855, 11284031, 11284968, 11283769, 11283694, 11284532, 11281775, 11284852, 11283998, 11287449, 11285797], "A": [11281793, 11288525, 11281865, 11282109, 11282041, 11281571, 11281901, 11282199, 11281600, 11281849, 11281629, 11283057, 11282079, 11281644, 11282404, 11282517], "C": [11331087, 11335466, 11312098, 11299604]}, "name": "A. Mike and Fax", "statement": "While Mike was walking in the subway, all the stuff in his back-bag\r\ndropped on the ground. There were several fax messages among them. He\r\nconcatenated these strings in some order and now he has string . He is\r\nnot sure if this is his own back-bag or someone else\u2019s. He remembered\r\nthat there were exactly messages in his own bag, each was a string and\r\nall those strings had the same length.He asked you to help him and tell\r\nhim if he has worn his own back-bag. Check if the given string is a\r\nconcatenation of of the same length.\r\n", "solutions": ["#include <bits/stdc++.h>\n#include <ext/algorithm>\n#include <ext/numeric>\n\nusing namespace std;\nusing namespace __gnu_cxx;\n\n#define ALL(c) c.begin(), c.end()\n#define SZ(x) ((int)(x).size())\n#define PB push_back\n#define MP make_pair\n#define DB(a) cerr << #a << \" = \" << (a) << endl;\n#define OUT( a , n ) for( int J = 0; J < (n); J++ )cout<< (a)[J] << \" \\n\"[J == (n) - 1 ]\n#define WAIT cout << flush , system(\"PAUSE\");\n#define lowbit(x) ((x) & (-x))\n#define CONTAINS(a, x) ((a).find(x) != (a).end())\n#define endl '\\n'\n\n\ntypedef long long ll;\ntypedef pair<int, int> pii;\n\nconst int MAXN = 2000;\nchar s[ MAXN ];\nint rad[ 2 * MAXN ];\n\nvoid Manacher()\n{\n   int size = strlen( s );\n   /* Manacher's Algorithm */\n\n   int i , j , k;\n\n    for ( i = j = 0; i < 2 * size - 1; i += k ) {\n\n      while ( i - j >= 0 && i + j + 1 < 2 * size &&\n              s[ ( i - j ) / 2 ] == s[ ( i + j + 1 ) / 2 ] )\n                j++;\n\n      rad[i] = j;\n      for ( k = 1; k <= rad[i] && rad[ i - k ] != rad[i] - k; k++ )\n        rad[ i + k ] = min( rad[ i - k ], rad[i] - k );\n\n      j = max( j - k, 0 );\n    }\n}\n\nbool isPal(int i , int j ) \n{\n    return rad[i + j] >= j - i + 1;\n}\n\nint k;\n\nint main()\n{\n    ios::sync_with_stdio( 0 );\n    cin.tie( 0 );\n    \n    cin >> s;\n    int len = strlen(s);\n    \n    Manacher();\n    cin >> k;\n    \n    if(len % k != 0)\n    {\n        cout << \"NO\\n\";\n        return 0;\n    }\n    \n    \n    \n    int sz = len / k;\n    \n    int ini = 0;\n    for( int i = 0; i < k; i++ )\n    {\n        //cout << ini << \" \" << ini + sz - 1 << endl;;\n        if( !isPal(ini , ini + sz - 1))\n        {\n            cout << \"NO\\n\";\n            return 0;\n        }\n        ini += sz;  \n    }\n    \n    cout << \"YES\\n\";\n    return 0;\n        \n    \n}\n"], "input": "", "output": "", "tags": ["brute force", "implementation", "strings"], "dificulty": "1100", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/548/problem/A",
+    "problemId": "28334",
+    "problem_idx": "A",
+    "shortId": "548A",
+    "contest_number": "548",
+    "problem_submissions": {
+        "E": [
+            11306177,
+            11300638,
+            11307838,
+            11312023,
+            12063940
+        ],
+        "D": [
+            11287347,
+            11284454,
+            11307050,
+            11295837,
+            11293058,
+            11292109,
+            11291768,
+            11293958,
+            11295314,
+            11296359,
+            11296862,
+            11312125,
+            11312114,
+            11295294,
+            11299561,
+            11298190,
+            11299140
+        ],
+        "B": [
+            11283910,
+            11292107,
+            11285437,
+            11284167,
+            11285339,
+            11282855,
+            11284031,
+            11284968,
+            11283769,
+            11283694,
+            11284532,
+            11281775,
+            11284852,
+            11283998,
+            11287449,
+            11285797
+        ],
+        "A": [
+            11281793,
+            11288525,
+            11281865,
+            11282109,
+            11282041,
+            11281571,
+            11281901,
+            11282199,
+            11281600,
+            11281849,
+            11281629,
+            11283057,
+            11282079,
+            11281644,
+            11282404,
+            11282517
+        ],
+        "C": [
+            11331087,
+            11335466,
+            11312098,
+            11299604
+        ]
+    },
+    "name": "A. Mike and Fax",
+    "statement": "While Mike was walking in the subway, all the stuff in his back-bag\r\ndropped on the ground. There were several fax messages among them. He\r\nconcatenated these strings in some order and now he has string . He is\r\nnot sure if this is his own back-bag or someone else\u2019s. He remembered\r\nthat there were exactly messages in his own bag, each was a string and\r\nall those strings had the same length.He asked you to help him and tell\r\nhim if he has worn his own back-bag. Check if the given string is a\r\nconcatenation of of the same length.\r\n",
+    "solutions": [
+        "#include <bits/stdc++.h>\n#include <ext/algorithm>\n#include <ext/numeric>\n\nusing namespace std;\nusing namespace __gnu_cxx;\n\n#define ALL(c) c.begin(), c.end()\n#define SZ(x) ((int)(x).size())\n#define PB push_back\n#define MP make_pair\n#define DB(a) cerr << #a << \" = \" << (a) << endl;\n#define OUT( a , n ) for( int J = 0; J < (n); J++ )cout<< (a)[J] << \" \\n\"[J == (n) - 1 ]\n#define WAIT cout << flush , system(\"PAUSE\");\n#define lowbit(x) ((x) & (-x))\n#define CONTAINS(a, x) ((a).find(x) != (a).end())\n#define endl '\\n'\n\n\ntypedef long long ll;\ntypedef pair<int, int> pii;\n\nconst int MAXN = 2000;\nchar s[ MAXN ];\nint rad[ 2 * MAXN ];\n\nvoid Manacher()\n{\n   int size = strlen( s );\n   /* Manacher's Algorithm */\n\n   int i , j , k;\n\n    for ( i = j = 0; i < 2 * size - 1; i += k ) {\n\n      while ( i - j >= 0 && i + j + 1 < 2 * size &&\n              s[ ( i - j ) / 2 ] == s[ ( i + j + 1 ) / 2 ] )\n                j++;\n\n      rad[i] = j;\n      for ( k = 1; k <= rad[i] && rad[ i - k ] != rad[i] - k; k++ )\n        rad[ i + k ] = min( rad[ i - k ], rad[i] - k );\n\n      j = max( j - k, 0 );\n    }\n}\n\nbool isPal(int i , int j ) \n{\n    return rad[i + j] >= j - i + 1;\n}\n\nint k;\n\nint main()\n{\n    ios::sync_with_stdio( 0 );\n    cin.tie( 0 );\n    \n    cin >> s;\n    int len = strlen(s);\n    \n    Manacher();\n    cin >> k;\n    \n    if(len % k != 0)\n    {\n        cout << \"NO\\n\";\n        return 0;\n    }\n    \n    \n    \n    int sz = len / k;\n    \n    int ini = 0;\n    for( int i = 0; i < k; i++ )\n    {\n        //cout << ini << \" \" << ini + sz - 1 << endl;;\n        if( !isPal(ini , ini + sz - 1))\n        {\n            cout << \"NO\\n\";\n            return 0;\n        }\n        ini += sz;  \n    }\n    \n    cout << \"YES\\n\";\n    return 0;\n        \n    \n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "implementation",
+        "strings"
+    ],
+    "dificulty": "1100",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Mike and Fax.json",
+    "editorial_link": "https://codeforces.com//blog/entry/18126",
+    "editorial": "Consider characters of this string are number 0-based from left to\r\nright. If is not a multiply of , then answer is \"NO\". Otherwise, let .\r\nThen answer is \"Yes\" if and only if for each that , where is the\r\nremainder of dividing by . Time complexity: . C++ Code by PrinceOfPersia\r\nPython Code by Haghani Python Code by Zlobober\r\n"
+}

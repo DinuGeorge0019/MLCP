@@ -1,1 +1,106 @@
-{"link": "https://codeforces.com//contest/798/problem/B", "problemId": "103600", "problem_idx": "B", "shortId": "798B", "contest_number": "798", "problem_submissions": {"D": [26563361, 26555687, 26556558, 26548301, 26556247, 26549650, 26559045, 26559072, 26562479, 26559512, 26557370, 26565613, 26560823, 26560731, 26560614, 26557462, 26562930], "C": [26558945, 26549095, 26548532, 26556590, 26548339, 26561843, 26551518, 26554123, 26550774, 26560992, 26554844, 26558176, 26554570, 26556784, 26555580, 26562658, 26554462], "E": [26558449, 26556461], "A": [26551397, 26540062, 26540758, 26542419, 26540657, 26540976, 26540919, 26543392, 26540558, 26556942, 26542590, 26540075, 26542212, 26540478, 26550484, 26540647, 26543658], "B": [26542968, 26545085, 26543813, 26543222, 26543887, 26545396, 26544929, 26543829, 26543862, 26557828, 26543387, 26544400, 26546204, 26542828, 26550157, 26544256, 26545856]}, "name": "B. Mike and strings", "statement": "Mike has strings each consisting of lowercase English letters. In one\r\nmove he can choose a string , erase the first character and append it to\r\nthe end of the string. For example, if he has the string \"\", in one move\r\nhe can transform it into the string \"\".Now Mike asks himself: what is\r\nminimal number of moves that he needs to do in order to make all the\r\nstrings equal?\r\n", "solutions": ["#include<iostream>\n#include<algorithm>\n#include<cstdio>\n#include<cstring>\n#include<cmath>\n#include<cstdlib>\nusing namespace std;\ntypedef long long ll;\ntypedef long double ld;\ntypedef pair<int,int> pr;\nconst double pi=acos(-1);\n#define rep(i,a,n) for(int i=a;i<=n;i++)\n#define per(i,n,a) for(int i=n;i>=a;i--)\n#define Rep(i,u) for(int i=head[u];i;i=Next[i])\n#define clr(a) memset(a,0,sizeof a)\n#define pb push_back\n#define mp make_pair\n#define putk() putchar(' ')\nld eps=1e-9;\nll pp=1000000007;\nll mo(ll a,ll pp){if(a>=0 && a<pp)return a;a%=pp;if(a<0)a+=pp;return a;}\nll powmod(ll a,ll b,ll pp){ll ans=1;for(;b;b>>=1,a=mo(a*a,pp))if(b&1)ans=mo(ans*a,pp);return ans;}\nll gcd(ll a,ll b){return (!b)?a:gcd(b,a%b);}\nll read(){\n\tll ans=0;\n\tchar last=' ',ch=getchar();\n\twhile(ch<'0' || ch>'9')last=ch,ch=getchar();\n\twhile(ch>='0' && ch<='9')ans=ans*10+ch-'0',ch=getchar();\n\tif(last=='-')ans=-ans;\n\treturn ans;\n}\nvoid put(ll a){\n\tif(a<0)putchar('-'),a=-a;\n\tint top=0,q[20];\n\twhile(a)q[++top]=a%10,a/=10;\n\ttop=max(top,1);\n\twhile(top--)putchar('0'+q[top+1]);\n}\n//head\nchar str[100][100];\nint len[100];\nint n,m;\nint find(int t,int w){\n\trep(i,0,m-1){\n\t\tint pf=1;\n\t\trep(j,1,m)\n\t\t\tif(str[t][i+j]!=str[1][w+j]){\n\t\t\t\tpf=0;\n\t\t\t\tbreak;\n\t\t\t}\n\t\tif(pf)return i;\n\t}\n\treturn 1000000;\n}\nint main(){\n//\tfreopen(\"1.in\",\"r\",stdin);\n\tn=read();\n\trep(i,1,n){\n\t\tscanf(\"%s\",str[i]+1);\n\t\tlen[i]=strlen(str[i]+1);\n\t\trep(j,1,len[i])str[i][len[i]+j]=str[i][j];\n\t}\n\trep(i,2,n)\n\t\tif(len[i]!=len[1]){\n\t\t\tputs(\"-1\");\n\t\t\treturn 0;\n\t\t}\n\tm=len[1];\n\tint ans=1000000000;\n\trep(i,0,m-1){\n\t\tint tot=i;\n\t\trep(j,2,n)\n\t\t\ttot+=find(j,i);\n\t\tans=min(ans,tot);\n\t}\n\tif(ans<10000)cout<<ans<<endl;\n\telse cout<<-1<<endl;\n}"], "input": "", "output": "", "tags": ["brute force", "dp", "strings"], "dificulty": "1300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/798/problem/B",
+    "problemId": "103600",
+    "problem_idx": "B",
+    "shortId": "798B",
+    "contest_number": "798",
+    "problem_submissions": {
+        "D": [
+            26563361,
+            26555687,
+            26556558,
+            26548301,
+            26556247,
+            26549650,
+            26559045,
+            26559072,
+            26562479,
+            26559512,
+            26557370,
+            26565613,
+            26560823,
+            26560731,
+            26560614,
+            26557462,
+            26562930
+        ],
+        "C": [
+            26558945,
+            26549095,
+            26548532,
+            26556590,
+            26548339,
+            26561843,
+            26551518,
+            26554123,
+            26550774,
+            26560992,
+            26554844,
+            26558176,
+            26554570,
+            26556784,
+            26555580,
+            26562658,
+            26554462
+        ],
+        "E": [
+            26558449,
+            26556461
+        ],
+        "A": [
+            26551397,
+            26540062,
+            26540758,
+            26542419,
+            26540657,
+            26540976,
+            26540919,
+            26543392,
+            26540558,
+            26556942,
+            26542590,
+            26540075,
+            26542212,
+            26540478,
+            26550484,
+            26540647,
+            26543658
+        ],
+        "B": [
+            26542968,
+            26545085,
+            26543813,
+            26543222,
+            26543887,
+            26545396,
+            26544929,
+            26543829,
+            26543862,
+            26557828,
+            26543387,
+            26544400,
+            26546204,
+            26542828,
+            26550157,
+            26544256,
+            26545856
+        ]
+    },
+    "name": "B. Mike and strings",
+    "statement": "Mike has strings each consisting of lowercase English letters. In one\r\nmove he can choose a string , erase the first character and append it to\r\nthe end of the string. For example, if he has the string \"\", in one move\r\nhe can transform it into the string \"\".Now Mike asks himself: what is\r\nminimal number of moves that he needs to do in order to make all the\r\nstrings equal?\r\n",
+    "solutions": [
+        "#include<iostream>\n#include<algorithm>\n#include<cstdio>\n#include<cstring>\n#include<cmath>\n#include<cstdlib>\nusing namespace std;\ntypedef long long ll;\ntypedef long double ld;\ntypedef pair<int,int> pr;\nconst double pi=acos(-1);\n#define rep(i,a,n) for(int i=a;i<=n;i++)\n#define per(i,n,a) for(int i=n;i>=a;i--)\n#define Rep(i,u) for(int i=head[u];i;i=Next[i])\n#define clr(a) memset(a,0,sizeof a)\n#define pb push_back\n#define mp make_pair\n#define putk() putchar(' ')\nld eps=1e-9;\nll pp=1000000007;\nll mo(ll a,ll pp){if(a>=0 && a<pp)return a;a%=pp;if(a<0)a+=pp;return a;}\nll powmod(ll a,ll b,ll pp){ll ans=1;for(;b;b>>=1,a=mo(a*a,pp))if(b&1)ans=mo(ans*a,pp);return ans;}\nll gcd(ll a,ll b){return (!b)?a:gcd(b,a%b);}\nll read(){\n\tll ans=0;\n\tchar last=' ',ch=getchar();\n\twhile(ch<'0' || ch>'9')last=ch,ch=getchar();\n\twhile(ch>='0' && ch<='9')ans=ans*10+ch-'0',ch=getchar();\n\tif(last=='-')ans=-ans;\n\treturn ans;\n}\nvoid put(ll a){\n\tif(a<0)putchar('-'),a=-a;\n\tint top=0,q[20];\n\twhile(a)q[++top]=a%10,a/=10;\n\ttop=max(top,1);\n\twhile(top--)putchar('0'+q[top+1]);\n}\n//head\nchar str[100][100];\nint len[100];\nint n,m;\nint find(int t,int w){\n\trep(i,0,m-1){\n\t\tint pf=1;\n\t\trep(j,1,m)\n\t\t\tif(str[t][i+j]!=str[1][w+j]){\n\t\t\t\tpf=0;\n\t\t\t\tbreak;\n\t\t\t}\n\t\tif(pf)return i;\n\t}\n\treturn 1000000;\n}\nint main(){\n//\tfreopen(\"1.in\",\"r\",stdin);\n\tn=read();\n\trep(i,1,n){\n\t\tscanf(\"%s\",str[i]+1);\n\t\tlen[i]=strlen(str[i]+1);\n\t\trep(j,1,len[i])str[i][len[i]+j]=str[i][j];\n\t}\n\trep(i,2,n)\n\t\tif(len[i]!=len[1]){\n\t\t\tputs(\"-1\");\n\t\t\treturn 0;\n\t\t}\n\tm=len[1];\n\tint ans=1000000000;\n\trep(i,0,m-1){\n\t\tint tot=i;\n\t\trep(j,2,n)\n\t\t\ttot+=find(j,i);\n\t\tans=min(ans,tot);\n\t}\n\tif(ans<10000)cout<<ans<<endl;\n\telse cout<<-1<<endl;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "dp",
+        "strings"
+    ],
+    "dificulty": "1300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Mike and strings.json",
+    "editorial_link": "https://codeforces.com//blog/entry/51652",
+    "editorial": "First of all, you must notice that the operation of removing the first\r\ncharacter and appending it to the left is equivalent to cyclically\r\nshifting the string one position to the left. Let\u00e2\u0080\u0099s denote by the\r\nsmallest number of operations for making the first strings equal to\r\nstring moved times. Let be the the string moved times,then . The answer\r\nis . The complexity is . Solution: Link First of all, the answer is\r\nalways YES. If then the answer is . Now suppose that the gcd of the\r\nsequence is . After we perform one operation on and , the new gcd must\r\nsatisfy and and . Similarly, because is the gcd of the new sequence, it\r\nmust satisfy . Using the above observations we can conclude that , so\r\nthe gcd of the sequence can become at most times bigger after an\r\noperation. This means that in order to make the gcd of the sequence\r\nbigger than we need to make all numbers even. Now the problem is reduced\r\nto the following problem: Given a sequence of zero or one,in one move we\r\ncan change numbers with numbers equal to . Find the minimal number of\r\nmoves to make the whole sequence equal to . It can be proved that it is\r\noptimal to solve the task for consecutive ones independently so we\r\ndivide the array into the minimal number of subarrays full of ones, if\r\ntheir lengths are ,the answer is . Complexity is . Solution: Link In the\r\nbeginning, it\u00e2\u0080\u0099s quite easy to notice that the condition \" is greater\r\nthan the sum of all elements in \" is equivalent to \" is greater than the\r\nsum of the remaining elements in \". Now, let\u00e2\u0080\u0099s store an array of indices\r\nwith and then sort it in decreasing order according to array , that is\r\nwe must have . Our answer will always have size . First suppose that is\r\nodd. Add the first index to our set, that is make . Now, for the\r\nremaining elements, we will consider them consecutively in pairs.\r\nSuppose we are at the moment inspecting and . If we make , else we make\r\n. Why does this subset work? Well, it satisfies the condition for\r\nbecause each time for consecutive non-intersecting pairs of elements we\r\nselect the bigger one, and we also add to the set, so in the end the sum\r\nof the selected elements will be bigger than the sum of the remaining\r\nones. It also satisfies the condition for , because is equal or greater\r\nthan the complement element of (that is the index which we could\u00e2\u0080\u0099ve\r\nselected instead of from the above procedure if we selected then it\r\nwould be and vice-versa). Similarly is greater than the complement of\r\nand so on. In the end we also add the last element from the last pair\r\nand this makes the sum of the chosen subset strictly bigger than the sum\r\nof the remaining elements. The case when is even can be done exactly the\r\nsame as when is odd, we just pick the last remaining index in the end.\r\nThe complexity is . Solution: Link Let\u00e2\u0080\u0099s consider instead of . Let\u00e2\u0080\u0099s\r\nalso define the sequence , where such that or if there is no such . Lets\r\nmake a directed graph with vertices be the indices of the permutation\r\nwith edges of type representing that . If we topologically sort this\r\ngraph then we can come up with a possible permutation: if is the\r\ntopologically sorted graph then we can assign to number . In this\r\nproblem we will use this implementation of topological sort. But how we\r\ncan find the edges? First of all there are edges of the form if .For a\r\nvertex he visited all the unmarked vertices and you know for sure that\r\nfor all these . But how we can check if was already marked? The vertex\r\nwill become marked after turn of vertex or will never become unmarked if\r\n. So there is a direct edge from to if or and . Suppose we already\r\nvisited a set of vertices and for every visited vertex we assigned to\r\nvalue (for simplicity just to forget about all visited vertices) and now\r\nwe want to find quickly for a fixed vertex an unvisited vertex with\r\ncondition that there is edge or say it there isn\u00e2\u0080\u0099t such , if we can do\r\nthat in subquadratic time then the task is solved. As stated above the\r\nfirst condition is if , this condition is easy to check. The second\r\ncondition is and , now consider vertices with indices from interval and\r\ntake with maximal . If we found edge otherwise there are no remaining\r\nedges. We can find such vertex using segment tree and updating values\r\nwhile we visit a new vertex. In total we will visit vertices and query\r\nthe segment tree at most times ( for every new vertex and for finding\r\nthat there aren\u00e2\u0080\u0099t remaining edges). Complexity and memory are and .\r\nSolution: Link\r\n"
+}

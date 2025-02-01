@@ -1,1 +1,107 @@
-{"link": "https://codeforces.com//contest/462/problem/B", "problemId": "13276", "problem_idx": "B", "shortId": "462B", "contest_number": "462", "problem_submissions": {"E": [7594261, 7594537, 7595329, 7596263, 7601568, 7614755, 7600139], "D": [7587651, 7592446, 7593867, 9735296, 7591253, 7591277, 7590693, 7593546, 7595882, 7588189, 7590576, 7594402], "C": [7584650, 7583622, 7585970, 7584580, 7589189, 7588238, 7586119, 7587122, 7584030, 7587692, 7584278, 7582519, 7583178, 7592841, 7585619, 7586022, 7585539, 7584913], "B": [7582226, 7582283, 7585916, 7581332, 7597800, 7584599, 7589421, 7583929, 7584799, 7581360, 7581775, 7584268, 7581390, 7583901, 7581652, 7589229, 7583119, 7583099], "A": [7580498, 7581131, 7581040, 7580428, 7581889, 7585911, 7581699, 7582020, 7580434, 7580645, 7580474, 7580598, 7580445, 7581189, 7580430, 7582430, 7580924, 7581116]}, "name": "B. Appleman and Card Game", "statement": "Appleman has cards. Each card has an uppercase letter written on it.\r\nToastman must choose cards from Appleman\u2019s cards. Then Appleman should\r\ngive Toastman some coins depending on the chosen cards. Formally, for\r\neach Toastman\u2019s card you should calculate how much Toastman\u2019s cards have\r\nthe letter equal to letter on th, then sum up all these quantities, such\r\na number of coins Appleman should give to Toastman.Given the description\r\nof Appleman\u2019s cards. What is the maximum number of coins Toastman can\r\nget?\r\n", "solutions": ["#include <algorithm>\n#include <cstdio>\n#include <functional>\n#ifdef _WIN32\n#define LLFORMAT \"%I64\"\n#else\n#define LLFORMAT \"%ll\"\n#endif\nconst int MAXN=100005;\nint n,k;\nint s[26];\nvoid init()\n{\n\tstatic char a[MAXN];\n\tscanf(\"%d%d%s\",&n,&k,a);\n\tfor (int i=0;i<n;++i) ++s[a[i]-'A'];\n}\nvoid solve()\n{\n\tlong long ans=0;\n\tstd::sort(s,s+26,std::greater<int>());\n\tfor (int i=0;i<26;++i)\n\t\tif (k>s[i])\n\t\t{\n\t\t\tans+=(long long)s[i]*s[i];\n\t\t\tk-=s[i];\n\t\t}\n\t\telse\n\t\t{\n\t\t\tans+=(long long)k*k;\n\t\t\tbreak;\n\t\t}\n\tprintf(LLFORMAT\"d\\n\",ans);\n}\nint main()\n{\n#ifndef ONLINE_JUDGE\n\tfreopen(\"B.in\",\"r\",stdin);\n\tfreopen(\"B.out\",\"w\",stdout);\n#endif\n\tinit();\n\tsolve();\n#ifndef ONLINE_JUDGE\n\tfclose(stdin);fclose(stdout);\n#endif\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["greedy"], "dificulty": "1300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/462/problem/B",
+    "problemId": "13276",
+    "problem_idx": "B",
+    "shortId": "462B",
+    "contest_number": "462",
+    "problem_submissions": {
+        "E": [
+            7594261,
+            7594537,
+            7595329,
+            7596263,
+            7601568,
+            7614755,
+            7600139
+        ],
+        "D": [
+            7587651,
+            7592446,
+            7593867,
+            9735296,
+            7591253,
+            7591277,
+            7590693,
+            7593546,
+            7595882,
+            7588189,
+            7590576,
+            7594402
+        ],
+        "C": [
+            7584650,
+            7583622,
+            7585970,
+            7584580,
+            7589189,
+            7588238,
+            7586119,
+            7587122,
+            7584030,
+            7587692,
+            7584278,
+            7582519,
+            7583178,
+            7592841,
+            7585619,
+            7586022,
+            7585539,
+            7584913
+        ],
+        "B": [
+            7582226,
+            7582283,
+            7585916,
+            7581332,
+            7597800,
+            7584599,
+            7589421,
+            7583929,
+            7584799,
+            7581360,
+            7581775,
+            7584268,
+            7581390,
+            7583901,
+            7581652,
+            7589229,
+            7583119,
+            7583099
+        ],
+        "A": [
+            7580498,
+            7581131,
+            7581040,
+            7580428,
+            7581889,
+            7585911,
+            7581699,
+            7582020,
+            7580434,
+            7580645,
+            7580474,
+            7580598,
+            7580445,
+            7581189,
+            7580430,
+            7582430,
+            7580924,
+            7581116
+        ]
+    },
+    "name": "B. Appleman and Card Game",
+    "statement": "Appleman has cards. Each card has an uppercase letter written on it.\r\nToastman must choose cards from Appleman\u2019s cards. Then Appleman should\r\ngive Toastman some coins depending on the chosen cards. Formally, for\r\neach Toastman\u2019s card you should calculate how much Toastman\u2019s cards have\r\nthe letter equal to letter on th, then sum up all these quantities, such\r\na number of coins Appleman should give to Toastman.Given the description\r\nof Appleman\u2019s cards. What is the maximum number of coins Toastman can\r\nget?\r\n",
+    "solutions": [
+        "#include <algorithm>\n#include <cstdio>\n#include <functional>\n#ifdef _WIN32\n#define LLFORMAT \"%I64\"\n#else\n#define LLFORMAT \"%ll\"\n#endif\nconst int MAXN=100005;\nint n,k;\nint s[26];\nvoid init()\n{\n\tstatic char a[MAXN];\n\tscanf(\"%d%d%s\",&n,&k,a);\n\tfor (int i=0;i<n;++i) ++s[a[i]-'A'];\n}\nvoid solve()\n{\n\tlong long ans=0;\n\tstd::sort(s,s+26,std::greater<int>());\n\tfor (int i=0;i<26;++i)\n\t\tif (k>s[i])\n\t\t{\n\t\t\tans+=(long long)s[i]*s[i];\n\t\t\tk-=s[i];\n\t\t}\n\t\telse\n\t\t{\n\t\t\tans+=(long long)k*k;\n\t\t\tbreak;\n\t\t}\n\tprintf(LLFORMAT\"d\\n\",ans);\n}\nint main()\n{\n#ifndef ONLINE_JUDGE\n\tfreopen(\"B.in\",\"r\",stdin);\n\tfreopen(\"B.out\",\"w\",stdout);\n#endif\n\tinit();\n\tsolve();\n#ifndef ONLINE_JUDGE\n\tfclose(stdin);fclose(stdout);\n#endif\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "greedy"
+    ],
+    "dificulty": "1300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Appleman and Card Game.json",
+    "editorial_link": "https://codeforces.com/blog/entry/13568",
+    "editorial": "This is simple greedy problem, but it seemed to be reading-hard. The\r\nstatement says, \"Choose K cards from N cards, the score of each card is\r\n(the number of cards which has the same character in K cards. (not in N\r\ncards)\" It is clear that this total score is (the number of \u00e2\u0080\u0099A\u00e2\u0080\u0099 in K\r\ncards)^2 + (the number of \u00e2\u0080\u0099B\u00e2\u0080\u0099 in K cards)^2 + ... + (the number of \u00e2\u0080\u0099Z\u00e2\u0080\u0099\r\nin K cards)^2 This value will be maximized by the simple greedy\r\nalgorithm, take K cards from most appearred character in N cards, the\r\nsecond most appearred character in N cards, and so on.\r\n"
+}

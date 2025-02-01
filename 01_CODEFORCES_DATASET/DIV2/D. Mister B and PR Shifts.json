@@ -1,1 +1,98 @@
-{"link": "https://codeforces.com//contest/820/problem/D", "problemId": "112031", "problem_idx": "D", "shortId": "820D", "contest_number": "820", "problem_submissions": {"D": [28090049, 28137649, 28088664, 28094955, 28089529, 28089527, 28090859, 28089173, 28091024, 28094638, 28089824, 28091652, 28090283, 28091750, 28092540, 28091733, 28092897, 28093521, 28094268], "B": [28083049, 28106071, 28082021, 28080745, 28083623, 28081407, 28080513, 28081950, 28082191, 28081439, 28083924, 28081732, 28083872, 28083485, 28080808, 28085943, 28080448, 28082955, 28081466], "A": [28080531, 28105895, 28079641, 28078276, 28078539, 28078543, 28078629, 28078567, 28078870, 28078269, 28078946, 28078387, 28078624, 28079616, 28078334, 28079395, 28078375, 28078673, 28078593], "C": [28113571, 28113484, 28106533, 143980051], "E": [28279885, 28136857]}, "name": "D. Mister B and PR Shifts", "statement": "Some time ago Mister B detected a strange signal from the space, which\r\nhe started to study.After some transformation the signal turned out to\r\nbe a permutation of length or its cyclic shift. For the further\r\ninvestigation Mister B need some basis, that\u2019s why he decided to choose\r\ncyclic shift of this permutation which has the minimum possible\r\ndeviation.Let\u2019s define the deviation of a permutation as .Find a cyclic\r\nshift of permutation with minimum possible deviation. If there are\r\nmultiple solutions, print any of them.Let\u2019s denote id () of a cyclic\r\nshift of permutation as the number of right shifts needed to reach this\r\nshift, for example: : shift , : shift , ..., : shift .\r\n", "solutions": ["#include<cstdio>\n#define ll long long\ninline int read()\n{\n\tint x;char c;\n\twhile((c=getchar())<'0'||c>'9');\n\tfor(x=c-'0';(c=getchar())>='0'&&c<='9';)x=x*10+c-'0';\n\treturn x;\n}\n#define MN 1000000\nll c[MN+5];\nvoid add(int l,int r,int a,int b)\n{\n\tc[l]+=a;\n\tc[l+1]+=b-a;\n\tc[r+1]-=a+1LL*(r-l+1)*b;\n\tc[r+2]+=a+1LL*(r-l)*b;\n}\nint main()\n{\n\tint n=read(),i,x;ll mn=0;\n\tfor(i=1;i<=n;++i)\n\t{\n\t\tx=read();\n\t\tif(x>=i)\n\t\t{\n\t\t\tadd(0,x-i,x-i,-1);\n\t\t\tadd(x-i,n-i,0,1);\n\t\t\tadd(n-i+1,n-1,x-1,-1);\n\t\t}\n\t\telse\n\t\t{\n\t\t\tadd(0,n-i,i-x,1);\n\t\t\tadd(n-i+1,n-i+x,x-1,-1);\n\t\t\tadd(n-i+x,n-1,0,1);\n\t\t}\n\t}\n\tfor(i=1;i<n;++i)c[i]+=c[i-1];\n\tfor(i=1;i<n;++i)if((c[i]+=c[i-1])<c[mn])mn=i;\n\tprintf(\"%I64d %d\",c[mn],mn);\n}"], "input": "", "output": "", "tags": ["implementation", "math"], "dificulty": "1900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/820/problem/D",
+    "problemId": "112031",
+    "problem_idx": "D",
+    "shortId": "820D",
+    "contest_number": "820",
+    "problem_submissions": {
+        "D": [
+            28090049,
+            28137649,
+            28088664,
+            28094955,
+            28089529,
+            28089527,
+            28090859,
+            28089173,
+            28091024,
+            28094638,
+            28089824,
+            28091652,
+            28090283,
+            28091750,
+            28092540,
+            28091733,
+            28092897,
+            28093521,
+            28094268
+        ],
+        "B": [
+            28083049,
+            28106071,
+            28082021,
+            28080745,
+            28083623,
+            28081407,
+            28080513,
+            28081950,
+            28082191,
+            28081439,
+            28083924,
+            28081732,
+            28083872,
+            28083485,
+            28080808,
+            28085943,
+            28080448,
+            28082955,
+            28081466
+        ],
+        "A": [
+            28080531,
+            28105895,
+            28079641,
+            28078276,
+            28078539,
+            28078543,
+            28078629,
+            28078567,
+            28078870,
+            28078269,
+            28078946,
+            28078387,
+            28078624,
+            28079616,
+            28078334,
+            28079395,
+            28078375,
+            28078673,
+            28078593
+        ],
+        "C": [
+            28113571,
+            28113484,
+            28106533,
+            143980051
+        ],
+        "E": [
+            28279885,
+            28136857
+        ]
+    },
+    "name": "D. Mister B and PR Shifts",
+    "statement": "Some time ago Mister B detected a strange signal from the space, which\r\nhe started to study.After some transformation the signal turned out to\r\nbe a permutation of length or its cyclic shift. For the further\r\ninvestigation Mister B need some basis, that\u2019s why he decided to choose\r\ncyclic shift of this permutation which has the minimum possible\r\ndeviation.Let\u2019s define the deviation of a permutation as .Find a cyclic\r\nshift of permutation with minimum possible deviation. If there are\r\nmultiple solutions, print any of them.Let\u2019s denote id () of a cyclic\r\nshift of permutation as the number of right shifts needed to reach this\r\nshift, for example: : shift , : shift , ..., : shift .\r\n",
+    "solutions": [
+        "#include<cstdio>\n#define ll long long\ninline int read()\n{\n\tint x;char c;\n\twhile((c=getchar())<'0'||c>'9');\n\tfor(x=c-'0';(c=getchar())>='0'&&c<='9';)x=x*10+c-'0';\n\treturn x;\n}\n#define MN 1000000\nll c[MN+5];\nvoid add(int l,int r,int a,int b)\n{\n\tc[l]+=a;\n\tc[l+1]+=b-a;\n\tc[r+1]-=a+1LL*(r-l+1)*b;\n\tc[r+2]+=a+1LL*(r-l)*b;\n}\nint main()\n{\n\tint n=read(),i,x;ll mn=0;\n\tfor(i=1;i<=n;++i)\n\t{\n\t\tx=read();\n\t\tif(x>=i)\n\t\t{\n\t\t\tadd(0,x-i,x-i,-1);\n\t\t\tadd(x-i,n-i,0,1);\n\t\t\tadd(n-i+1,n-1,x-1,-1);\n\t\t}\n\t\telse\n\t\t{\n\t\t\tadd(0,n-i,i-x,1);\n\t\t\tadd(n-i+1,n-i+x,x-1,-1);\n\t\t\tadd(n-i+x,n-1,0,1);\n\t\t}\n\t}\n\tfor(i=1;i<n;++i)c[i]+=c[i-1];\n\tfor(i=1;i<n;++i)if((c[i]+=c[i-1])<c[mn])mn=i;\n\tprintf(\"%I64d %d\",c[mn],mn);\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation",
+        "math"
+    ],
+    "dificulty": "1900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Mister B and PR Shifts.json",
+    "editorial_link": "https://codeforces.com//blog/entry/52946",
+    "editorial": "Let's see, how pk (1???k???n) affects different shifts.\n\nLet's denote di is deviation of the i?-?th shift. At first all di?=?0.\n\nThen pk affects it in following way:\n\nd0?+??=?|pk?-?k|,\nd1?+??=?|pk?-?(k?+?1)|,\n...\ndn?-?k?+??=?|pk?-?n|,\ndn?-?k?+?1?+??=?|pk?-?1|,\n...\ndn?-?1?+??=?|pk?-?(k?-?1)|.\nThen there are 2 cases: pk???k or not.\n\nIf pk???k after removing modules we will get 3 query:\n\nto add pk?-?(k?+?i) to di where 0???i???pk?-?k,\nto add (k?+?i)?-?pk to di where pk?-?k?<?i???n?-?k and\nto add pk?-?i to dn?-?k?+?i where 0?<?i?<?k.\nElse if pk?<?k we need to perform next operation:\n\nto add (k?+?i)?-?pk to di where 0???i???n?-?k,\nto add pk?-?i to dn?-?k?+?i where 1???i???pk and\nto add i?-?pk to dn?-?k?+?i where pk?<?i?<?k.\nBut in both cases we must add 3 arithmetic progression to the segment of array d. Or make operation of adding k\u00b7(x?-?l)?+?b to segment [l,?r]. Its known task, which can be done by adding/subtracting values in start and end of segment offline.\n\nTo make such operation we need to remember, how to add value b to segment [l,?r] of array d offline. We can just do next operations: d[l]?+??=?b and d[r?+?1]?-??=?b. Now value in position i .\n\nSo what is adding progression with coef k? it's only adding to array d value k to all positions in segment [l,?r]. That's why we need other array, for example df and making df[l]?+??=?k and df[r?+?1]?-??=?k. In result, .\n\nSo algorithm to add k\u00b7(x?-?l)?+?b to segment [l,?r] is next:\n\nd[l]?+??=?b,\nd[r?+?1]?-??=?k\u00b7(r?-?l?+?1),\ndf[l]?+??=?k,\ndf[r?+?1]?-??=?k.\nAfter all queries we need recover array d with formula . And after that get answer with formula ."
+}

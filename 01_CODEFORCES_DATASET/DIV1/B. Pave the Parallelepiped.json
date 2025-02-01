@@ -1,1 +1,92 @@
-{"link": "https://codeforces.com//contest/1007/problem/B", "problemId": "197247", "problem_idx": "B", "shortId": "1007B", "contest_number": "1007", "problem_submissions": {"C": [40289014, 40311007, 40303376, 40289853, 40282836, 40298460, 40292416, 40291392, 40315809, 40295182, 43029830], "B": [40273384, 40274250, 40291551, 40287008, 40280350, 40301243, 40277597, 40277856, 40278440, 40276236, 40280080, 40280290, 40278003, 40280632, 40280737, 40278002], "A": [40264928, 40264790, 40264714, 40264612, 40266456, 40265453, 40267936, 40264621, 40264617, 40264727, 40264905, 40264738, 40265555, 40264686, 40264608, 40264865, 40264835, 40265293], "D": [40284510, 40287759, 40291268, 62534541, 40294556, 40301360], "E": [54819990, 54819956, 47314793]}, "name": "B. Pave the Parallelepiped", "statement": "You are given a rectangular parallelepiped with sides of positive\r\ninteger lengths A, B and C. Find the number of different groups of three\r\nintegers (a, b, c) such that 1\r\nleq a\r\nleq b\r\nleq c and parallelepiped A\r\ntimes B\r\ntimes C can be paved with parallelepipeds a\r\ntimes b\r\ntimes c. Note, that all small parallelepipeds .For example,\r\nparallelepiped 1\r\ntimes 5\r\ntimes 6 can be divided into parallelepipeds 1\r\ntimes 3\r\ntimes 5, but can not be divided into parallelepipeds 1\r\ntimes 2\r\ntimes 3.\r\n", "solutions": ["#include <bits/stdc++.h>\n\nusing namespace std;\nusing uint = unsigned int;\nusing ll = long long;\nusing ull = unsigned long long;\nconstexpr ll TEN(int n) { return (n==0) ? 1 : 10*TEN(n-1); }\ntemplate<class T> using V = vector<T>;\ntemplate<class T> using VV = V<V<T>>;\n\ntemplate<class T> ostream& operator<<(ostream& os, const V<T> &v) {\n    cout << \"[\";\n    for (auto p: v) cout << p << \", \";\n    cout << \"]\";\n    return os;\n}\n\nconst int MN = 100100;\nV<int> fac[MN];\n\nvoid first() {\n    for (int i = 1; i < MN; i++) {\n        for (int j = i; j < MN; j += i) {\n            fac[j].push_back(i);\n        }\n    }\n}\n\nvoid calc() {\n    int a, b, c;\n    cin >> a >> b >> c;\n    V<int> res_ab, res;\n    merge(begin(fac[a]), end(fac[a]), begin(fac[b]), end(fac[b]), back_inserter(res_ab));\n    merge(begin(res_ab), end(res_ab), begin(fac[c]), end(fac[c]), back_inserter(res));\n    res.erase(unique(begin(res), end(res)), end(res));\n\n    ll cnt[8] = {};\n    for (int d: res) {\n        int f = 0;\n        if (a % d == 0) f += 1;\n        if (b % d == 0) f += 2;\n        if (c % d == 0) f += 4;\n        assert(f);\n        cnt[f]++;\n    }\n    ll ans = 0;\n    for (int i = 1; i <= 7; i++) {\n        for (int j = i; j <= 7; j++) {\n            for (int k = j; k <= 7; k++) {\n                if ((i | j | k) != 7) continue;\n                if ((i == j || j == k) && (j == 1 || j == 2 || j == 4)) continue;\n\n                ll z = cnt[j];\n                if (i == j && j == k) {\n                    ans += z * (z+1) * (z+2) / 6;\n                    continue;\n                }\n                if (i == j) {\n                    ans += z * (z+1) * cnt[k] / 2;\n                    continue;\n                }\n                if (j == k) {\n                    ans += z * (z+1) * cnt[i] / 2;\n                    continue;                    \n                }\n                ans += cnt[i] * cnt[j] * cnt[k];\n            }\n        }\n    }\n    cout << ans << endl;\n}\n\nint main() {\n    cin.tie(0);\n    ios::sync_with_stdio(false);\n    cout << setprecision(20) << fixed;\n    first();\n    int t;\n    cin >> t;\n    for (int i = 0; i < t; i++) {\n        calc();\n    }\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["bitmasks", "brute force", "combinatorics", "math", "number theory"], "dificulty": "2400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/1007/problem/B",
+    "problemId": "197247",
+    "problem_idx": "B",
+    "shortId": "1007B",
+    "contest_number": "1007",
+    "problem_submissions": {
+        "C": [
+            40289014,
+            40311007,
+            40303376,
+            40289853,
+            40282836,
+            40298460,
+            40292416,
+            40291392,
+            40315809,
+            40295182,
+            43029830
+        ],
+        "B": [
+            40273384,
+            40274250,
+            40291551,
+            40287008,
+            40280350,
+            40301243,
+            40277597,
+            40277856,
+            40278440,
+            40276236,
+            40280080,
+            40280290,
+            40278003,
+            40280632,
+            40280737,
+            40278002
+        ],
+        "A": [
+            40264928,
+            40264790,
+            40264714,
+            40264612,
+            40266456,
+            40265453,
+            40267936,
+            40264621,
+            40264617,
+            40264727,
+            40264905,
+            40264738,
+            40265555,
+            40264686,
+            40264608,
+            40264865,
+            40264835,
+            40265293
+        ],
+        "D": [
+            40284510,
+            40287759,
+            40291268,
+            62534541,
+            40294556,
+            40301360
+        ],
+        "E": [
+            54819990,
+            54819956,
+            47314793
+        ]
+    },
+    "name": "B. Pave the Parallelepiped",
+    "statement": "You are given a rectangular parallelepiped with sides of positive\r\ninteger lengths A, B and C. Find the number of different groups of three\r\nintegers (a, b, c) such that 1\r\nleq a\r\nleq b\r\nleq c and parallelepiped A\r\ntimes B\r\ntimes C can be paved with parallelepipeds a\r\ntimes b\r\ntimes c. Note, that all small parallelepipeds .For example,\r\nparallelepiped 1\r\ntimes 5\r\ntimes 6 can be divided into parallelepipeds 1\r\ntimes 3\r\ntimes 5, but can not be divided into parallelepipeds 1\r\ntimes 2\r\ntimes 3.\r\n",
+    "solutions": [
+        "#include <bits/stdc++.h>\n\nusing namespace std;\nusing uint = unsigned int;\nusing ll = long long;\nusing ull = unsigned long long;\nconstexpr ll TEN(int n) { return (n==0) ? 1 : 10*TEN(n-1); }\ntemplate<class T> using V = vector<T>;\ntemplate<class T> using VV = V<V<T>>;\n\ntemplate<class T> ostream& operator<<(ostream& os, const V<T> &v) {\n    cout << \"[\";\n    for (auto p: v) cout << p << \", \";\n    cout << \"]\";\n    return os;\n}\n\nconst int MN = 100100;\nV<int> fac[MN];\n\nvoid first() {\n    for (int i = 1; i < MN; i++) {\n        for (int j = i; j < MN; j += i) {\n            fac[j].push_back(i);\n        }\n    }\n}\n\nvoid calc() {\n    int a, b, c;\n    cin >> a >> b >> c;\n    V<int> res_ab, res;\n    merge(begin(fac[a]), end(fac[a]), begin(fac[b]), end(fac[b]), back_inserter(res_ab));\n    merge(begin(res_ab), end(res_ab), begin(fac[c]), end(fac[c]), back_inserter(res));\n    res.erase(unique(begin(res), end(res)), end(res));\n\n    ll cnt[8] = {};\n    for (int d: res) {\n        int f = 0;\n        if (a % d == 0) f += 1;\n        if (b % d == 0) f += 2;\n        if (c % d == 0) f += 4;\n        assert(f);\n        cnt[f]++;\n    }\n    ll ans = 0;\n    for (int i = 1; i <= 7; i++) {\n        for (int j = i; j <= 7; j++) {\n            for (int k = j; k <= 7; k++) {\n                if ((i | j | k) != 7) continue;\n                if ((i == j || j == k) && (j == 1 || j == 2 || j == 4)) continue;\n\n                ll z = cnt[j];\n                if (i == j && j == k) {\n                    ans += z * (z+1) * (z+2) / 6;\n                    continue;\n                }\n                if (i == j) {\n                    ans += z * (z+1) * cnt[k] / 2;\n                    continue;\n                }\n                if (j == k) {\n                    ans += z * (z+1) * cnt[i] / 2;\n                    continue;                    \n                }\n                ans += cnt[i] * cnt[j] * cnt[k];\n            }\n        }\n    }\n    cout << ans << endl;\n}\n\nint main() {\n    cin.tie(0);\n    ios::sync_with_stdio(false);\n    cout << setprecision(20) << fixed;\n    first();\n    int t;\n    cin >> t;\n    for (int i = 0; i < t; i++) {\n        calc();\n    }\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "bitmasks",
+        "brute force",
+        "combinatorics",
+        "math",
+        "number theory"
+    ],
+    "dificulty": "2400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Pave the Parallelepiped.json",
+    "editorial_link": "https://codeforces.com//blog/entry/60572",
+    "editorial": "First, for every natural number up to we count its number of divisors in\r\n. Also for every unordered set of masks of length we check if there is\r\nway to enumerate them in such a way that , and . We will call such sets\r\n.Now let\u00e2\u0080\u0099s consider two parallelepipeds. For each dimension of the\r\nsecond parallelepiped let\u00e2\u0080\u0099s construct a mask of length which contains\r\nthe numbers of the dimensions of the first parallelepiped for which the\r\nlength of the first parallelepiped along this dimension is divisible by\r\nthe length of the second parallelepiped along the chosen dimension. Now\r\nthese three masks form an acceptable set iff we can pave the first\r\nparallelepiped with the second one.Now for a given parallelepiped let\u00e2\u0080\u0099s\r\ncalculate for every mask of length the number of possible lengths of the\r\nsecond parallelepiped which would produce this mask. We can do this by\r\ntaking the GCD of the lengths of the first parallelepiped along the\r\ndimensions whose numbers are in the mask, and subtracting from it the\r\ncalculated numbers for every submask.Now let\u00e2\u0080\u0099s iterate over acceptable\r\nsets of masks. For each different mask from the set which is included\r\ninto the set times we need to calculate the number of ways to take\r\nunordered lengths which produce this mask, and multiply these numbers.\r\nThe sum of these numbers is the answers to the query.So for every query\r\nwe need operations, where is the number of dimensions of the\r\nparallelepiped.First, for every natural number up to we count its number\r\nof divisors in .Then for every query for every subset of numbers in it\r\nwe keep their GCD and the number of its divisors. So for every subset of\r\nthis three numbers we know the number of their common divisors.Let\u00e2\u0080\u0099s\r\nlook at the parallelepiped . The way we orient it with respect to the\r\nlarge parallelepiped is determined by a permutation of size that is,\r\nwhich dimension would correspond to every dimension in the large one.\r\nUsing the inclusion-exclusion principle on this permutations we can\r\ncount how many there are such parallelepipeds (considering the\r\norientation) that we can orient some way to then pave the large\r\nparallelepiped with it. Namely, we fix the set of permutations for which\r\nour parallelepiped shall satisfy. Then for every side of the small\r\nparallelepiped we know which sides of the large one it shall divide. To\r\nfind the number of such sides of the small one we shall take the number\r\nof common divisors of the corresponding sides of the large one. Now to\r\nfind the number of such small parallelepipeds we must multiply the three\r\nresultant numbers.In such way every satisfying this criteria\r\nparallelepiped (not considering the orientation) with three different\r\nside lengths was counted times, with two different lengths was counted\r\ntimes, with one different length was counted time. But it won\u00e2\u0080\u0099t be\r\ndifficult for us to use the same approach in counting such\r\nparallelepipeds, but with no less than two same side lengths: let\u00e2\u0080\u0099s say\r\nthe first and the second. To do this when we fix which permutations this\r\nparallelepiped shall satisfy we should just add the condition that its\r\nfirst and second side lengths must be equal, this means they both must\r\ndivide both of the sets corresponding to them, so instead of this two\r\nsets we must take their union.Let\u00e2\u0080\u0099s add the resultant number multiplied\r\nby three to the answer. Now every parallelepiped with three different\r\nside length is still counted times, with two different is now counted\r\nalso times, and with one different is counted times. The number of\r\nsatisfying parallelepipeds with equal sides is just the number of common\r\ndivisors of all the sides of the large parallelepiped. Let\u00e2\u0080\u0099s add it\r\nmultiplied by two, and now every needed parallelepiped is counted times.\r\nWe divide this number by and get the answer.So for every query we need\r\noperations, where is the number of partitions of , and is the number of\r\ndimensions of the parallelepiped.\r\n"
+}

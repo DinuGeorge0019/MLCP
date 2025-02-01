@@ -1,0 +1,50 @@
+{
+    "link": "https://codeforces.com//contest/1302/problem/B",
+    "problemId": "530372",
+    "problem_idx": "B",
+    "shortId": "1302B",
+    "contest_number": "1302",
+    "problem_submissions": {
+        "G": [
+            70178308,
+            70181430
+        ],
+        "F": [
+            70174410,
+            70180942
+        ],
+        "B": [
+            70169462,
+            70166865
+        ],
+        "C": [
+            70167717,
+            70168002
+        ],
+        "A": [
+            70167198,
+            70167522
+        ],
+        "J": [
+            70183433
+        ],
+        "D": [
+            70170852
+        ]
+    },
+    "editorial_link": "https://codeforces.com//blog/entry/73599",
+    "editorial": "To solve this problem one can update a bitset of all reachable vertices\r\nfrom every vertex in the topological sorted order and then calculate the\r\nsum of . The bug was, maybe, less obvious than in the previous problem,\r\nbut still quite common (at least we thought so): instead of creating an\r\nedge we created edges . Again, the first two samples contained a path\r\nand a set of isolated edges, while the third one has an incorrect\r\nanswer.However, bitset sometimes doesn’t fit into memory, so one can,\r\nfor example, calculate times for each vertex the number of reachable\r\nvertices with indices from to and then sum up all the reachable counts.\r\n",
+    "name": "B. DAG",
+    "statement": "You are given a directed acyclic graph G with n vertices and m edges.\r\nDenote by R(v) the set of all vertices u reachable from v by moving\r\nalong the edges of G. Find\r\nsum\r\nlimits_{v=1}^n |R(v)|^2.\r\n",
+    "solutions": [
+        "#include <bits/stdc++.h> using i64 = long long; int main() {    std::ios::sync_with_stdio(false);    std::cin.tie(nullptr);        int n;    std::cin >> n;        std::vector<int> a(n);    for (int i = 0; i < n; i++) {        std::cin >> a[i];    }        std::vector<std::vector<int>> adj(n);        for (int i = 1; i < n; i++) {        int u, v;        std::cin >> u >> v;        u--, v--;        adj[u].push_back(v);        adj[v].push_back(u);    }        std::vector<int> dp(n), t(n);    std::vector<std::set<int>> s(n);    std::function<void(int, int)> dfs = [&](int x, int p) {        std::map<int, int> cnt;        if (adj[x].size() == 1 && x) {            s[x].insert(0);            dp[x] = 1;        }        for (auto y : adj[x]) {            if (y == p) {                continue;            }            dfs(y, x);            dp[x] += dp[y] + 1;            if (s[x].size() < s[y].size()) {                std::swap(s[x], s[y]);                std::swap(t[x], t[y]);            }            for (auto z : s[y]) {                z ^= t[x] ^ t[y];                if (s[x].count(z)) {                    cnt[z ^ t[x]]++;                } else {                    s[x].insert(z);                }            }        }        if (!cnt.empty()) {            int mx = 0;            for (auto [_, v] : cnt) {                mx = std::max(mx, v);            }            dp[x] -= mx + 1;            s[x].clear();            t[x] = a[x];            for (auto [z, v] : cnt) {                if (v == mx) {                    s[x].insert(z);                }            }        } else {            dp[x] -= 1;            t[x] ^= a[x];        }    };    dfs(0, -1);        int ans = dp[0] + !s[0].count(t[0]);    std::cout << ans << \"\\n\";        return 0;}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms"
+    ],
+    "dificulty": "",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. DAG.json"
+}

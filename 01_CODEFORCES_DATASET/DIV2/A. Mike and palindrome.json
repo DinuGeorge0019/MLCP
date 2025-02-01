@@ -1,1 +1,106 @@
-{"link": "https://codeforces.com//contest/798/problem/A", "problemId": "103599", "problem_idx": "A", "shortId": "798A", "contest_number": "798", "problem_submissions": {"D": [26563361, 26555687, 26556558, 26548301, 26556247, 26549650, 26559045, 26559072, 26562479, 26559512, 26557370, 26565613, 26560823, 26560731, 26560614, 26557462, 26562930], "C": [26558945, 26549095, 26548532, 26556590, 26548339, 26561843, 26551518, 26554123, 26550774, 26560992, 26554844, 26558176, 26554570, 26556784, 26555580, 26562658, 26554462], "E": [26558449, 26556461], "A": [26551397, 26540062, 26540758, 26542419, 26540657, 26540976, 26540919, 26543392, 26540558, 26556942, 26542590, 26540075, 26542212, 26540478, 26550484, 26540647, 26543658], "B": [26542968, 26545085, 26543813, 26543222, 26543887, 26545396, 26544929, 26543829, 26543862, 26557828, 26543387, 26544400, 26546204, 26542828, 26550157, 26544256, 26545856]}, "name": "A. Mike and palindrome", "statement": "Mike has a string consisting of only lowercase English letters. He wants\r\nto character from the string so that the resulting one is a palindrome.\r\nA palindrome is a string that reads the same backward as forward, for\r\nexample strings \"\", \"\", \"\", \"\" are palindromes, but strings \"\", \"\", \"\"\r\nare not.\r\n", "solutions": ["#include<iostream>\n#include<algorithm>\n#include<cstdio>\n#include<cstring>\n#include<cmath>\n#include<cstdlib>\nusing namespace std;\ntypedef long long ll;\ntypedef long double ld;\ntypedef pair<int,int> pr;\nconst double pi=acos(-1);\n#define rep(i,a,n) for(int i=a;i<=n;i++)\n#define per(i,n,a) for(int i=n;i>=a;i--)\n#define Rep(i,u) for(int i=head[u];i;i=Next[i])\n#define clr(a) memset(a,0,sizeof a)\n#define pb push_back\n#define mp make_pair\n#define putk() putchar(' ')\nld eps=1e-9;\nll pp=1000000007;\nll mo(ll a,ll pp){if(a>=0 && a<pp)return a;a%=pp;if(a<0)a+=pp;return a;}\nll powmod(ll a,ll b,ll pp){ll ans=1;for(;b;b>>=1,a=mo(a*a,pp))if(b&1)ans=mo(ans*a,pp);return ans;}\nll gcd(ll a,ll b){return (!b)?a:gcd(b,a%b);}\nll read(){\n\tll ans=0;\n\tchar last=' ',ch=getchar();\n\twhile(ch<'0' || ch>'9')last=ch,ch=getchar();\n\twhile(ch>='0' && ch<='9')ans=ans*10+ch-'0',ch=getchar();\n\tif(last=='-')ans=-ans;\n\treturn ans;\n}\nvoid put(ll a){\n\tif(a<0)putchar('-'),a=-a;\n\tint top=0,q[20];\n\twhile(a)q[++top]=a%10,a/=10;\n\ttop=max(top,1);\n\twhile(top--)putchar('0'+q[top+1]);\n}\n//head\nchar str[1100000];\nint n;\nint main(){\n//\tfreopen(\"1.in\",\"r\",stdin);\n\tscanf(\"%s\",str+1);\n\tn=strlen(str+1);\n\tint ans=0;\n\trep(i,1,n/2)\n\t\tif(str[i]!=str[n+1-i])++ans;\n\tif(ans==1 || (ans==0 && n%2==1))puts(\"YES\");\n\telse puts(\"NO\");\n\treturn 0;\n}"], "input": "", "output": "", "tags": ["brute force", "constructive algorithms", "strings"], "dificulty": "1000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/798/problem/A",
+    "problemId": "103599",
+    "problem_idx": "A",
+    "shortId": "798A",
+    "contest_number": "798",
+    "problem_submissions": {
+        "D": [
+            26563361,
+            26555687,
+            26556558,
+            26548301,
+            26556247,
+            26549650,
+            26559045,
+            26559072,
+            26562479,
+            26559512,
+            26557370,
+            26565613,
+            26560823,
+            26560731,
+            26560614,
+            26557462,
+            26562930
+        ],
+        "C": [
+            26558945,
+            26549095,
+            26548532,
+            26556590,
+            26548339,
+            26561843,
+            26551518,
+            26554123,
+            26550774,
+            26560992,
+            26554844,
+            26558176,
+            26554570,
+            26556784,
+            26555580,
+            26562658,
+            26554462
+        ],
+        "E": [
+            26558449,
+            26556461
+        ],
+        "A": [
+            26551397,
+            26540062,
+            26540758,
+            26542419,
+            26540657,
+            26540976,
+            26540919,
+            26543392,
+            26540558,
+            26556942,
+            26542590,
+            26540075,
+            26542212,
+            26540478,
+            26550484,
+            26540647,
+            26543658
+        ],
+        "B": [
+            26542968,
+            26545085,
+            26543813,
+            26543222,
+            26543887,
+            26545396,
+            26544929,
+            26543829,
+            26543862,
+            26557828,
+            26543387,
+            26544400,
+            26546204,
+            26542828,
+            26550157,
+            26544256,
+            26545856
+        ]
+    },
+    "name": "A. Mike and palindrome",
+    "statement": "Mike has a string consisting of only lowercase English letters. He wants\r\nto character from the string so that the resulting one is a palindrome.\r\nA palindrome is a string that reads the same backward as forward, for\r\nexample strings \"\", \"\", \"\", \"\" are palindromes, but strings \"\", \"\", \"\"\r\nare not.\r\n",
+    "solutions": [
+        "#include<iostream>\n#include<algorithm>\n#include<cstdio>\n#include<cstring>\n#include<cmath>\n#include<cstdlib>\nusing namespace std;\ntypedef long long ll;\ntypedef long double ld;\ntypedef pair<int,int> pr;\nconst double pi=acos(-1);\n#define rep(i,a,n) for(int i=a;i<=n;i++)\n#define per(i,n,a) for(int i=n;i>=a;i--)\n#define Rep(i,u) for(int i=head[u];i;i=Next[i])\n#define clr(a) memset(a,0,sizeof a)\n#define pb push_back\n#define mp make_pair\n#define putk() putchar(' ')\nld eps=1e-9;\nll pp=1000000007;\nll mo(ll a,ll pp){if(a>=0 && a<pp)return a;a%=pp;if(a<0)a+=pp;return a;}\nll powmod(ll a,ll b,ll pp){ll ans=1;for(;b;b>>=1,a=mo(a*a,pp))if(b&1)ans=mo(ans*a,pp);return ans;}\nll gcd(ll a,ll b){return (!b)?a:gcd(b,a%b);}\nll read(){\n\tll ans=0;\n\tchar last=' ',ch=getchar();\n\twhile(ch<'0' || ch>'9')last=ch,ch=getchar();\n\twhile(ch>='0' && ch<='9')ans=ans*10+ch-'0',ch=getchar();\n\tif(last=='-')ans=-ans;\n\treturn ans;\n}\nvoid put(ll a){\n\tif(a<0)putchar('-'),a=-a;\n\tint top=0,q[20];\n\twhile(a)q[++top]=a%10,a/=10;\n\ttop=max(top,1);\n\twhile(top--)putchar('0'+q[top+1]);\n}\n//head\nchar str[1100000];\nint n;\nint main(){\n//\tfreopen(\"1.in\",\"r\",stdin);\n\tscanf(\"%s\",str+1);\n\tn=strlen(str+1);\n\tint ans=0;\n\trep(i,1,n/2)\n\t\tif(str[i]!=str[n+1-i])++ans;\n\tif(ans==1 || (ans==0 && n%2==1))puts(\"YES\");\n\telse puts(\"NO\");\n\treturn 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "constructive algorithms",
+        "strings"
+    ],
+    "dificulty": "1000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Mike and palindrome.json",
+    "editorial_link": "https://codeforces.com//blog/entry/51652",
+    "editorial": "Let be the number of such that . If then the answer is NO since we must\r\nchange more than 1 character. If then the answer is YES. If and is odd\r\nanswer is YES since we can change the character in the middle, otherwise\r\nif is even the answer is NO because we must change at least one\r\ncharacter. Complexity is . Solution: Link First of all, you must notice\r\nthat the operation of removing the first character and appending it to\r\nthe left is equivalent to cyclically shifting the string one position to\r\nthe left. Let\u00e2\u0080\u0099s denote by the smallest number of operations for making\r\nthe first strings equal to string moved times. Let be the the string\r\nmoved times,then . The answer is . The complexity is . Solution: Link\r\nFirst of all, the answer is always YES. If then the answer is . Now\r\nsuppose that the gcd of the sequence is . After we perform one operation\r\non and , the new gcd must satisfy and and . Similarly, because is the\r\ngcd of the new sequence, it must satisfy . Using the above observations\r\nwe can conclude that , so the gcd of the sequence can become at most\r\ntimes bigger after an operation. This means that in order to make the\r\ngcd of the sequence bigger than we need to make all numbers even. Now\r\nthe problem is reduced to the following problem: Given a sequence of\r\nzero or one,in one move we can change numbers with numbers equal to .\r\nFind the minimal number of moves to make the whole sequence equal to .\r\nIt can be proved that it is optimal to solve the task for consecutive\r\nones independently so we divide the array into the minimal number of\r\nsubarrays full of ones, if their lengths are ,the answer is . Complexity\r\nis . Solution: Link In the beginning, it\u00e2\u0080\u0099s quite easy to notice that the\r\ncondition \" is greater than the sum of all elements in \" is equivalent\r\nto \" is greater than the sum of the remaining elements in \". Now, let\u00e2\u0080\u0099s\r\nstore an array of indices with and then sort it in decreasing order\r\naccording to array , that is we must have . Our answer will always have\r\nsize . First suppose that is odd. Add the first index to our set, that\r\nis make . Now, for the remaining elements, we will consider them\r\nconsecutively in pairs. Suppose we are at the moment inspecting and . If\r\nwe make , else we make . Why does this subset work? Well, it satisfies\r\nthe condition for because each time for consecutive non-intersecting\r\npairs of elements we select the bigger one, and we also add to the set,\r\nso in the end the sum of the selected elements will be bigger than the\r\nsum of the remaining ones. It also satisfies the condition for , because\r\nis equal or greater than the complement element of (that is the index\r\nwhich we could\u00e2\u0080\u0099ve selected instead of from the above procedure if we\r\nselected then it would be and vice-versa). Similarly is greater than the\r\ncomplement of and so on. In the end we also add the last element from\r\nthe last pair and this makes the sum of the chosen subset strictly\r\nbigger than the sum of the remaining elements. The case when is even can\r\nbe done exactly the same as when is odd, we just pick the last remaining\r\nindex in the end. The complexity is . Solution: Link Let\u00e2\u0080\u0099s consider\r\ninstead of . Let\u00e2\u0080\u0099s also define the sequence , where such that or if\r\nthere is no such . Lets make a directed graph with vertices be the\r\nindices of the permutation with edges of type representing that . If we\r\ntopologically sort this graph then we can come up with a possible\r\npermutation: if is the topologically sorted graph then we can assign to\r\nnumber . In this problem we will use this implementation of topological\r\nsort. But how we can find the edges? First of all there are edges of the\r\nform if .For a vertex he visited all the unmarked vertices and you know\r\nfor sure that for all these . But how we can check if was already\r\nmarked? The vertex will become marked after turn of vertex or will never\r\nbecome unmarked if . So there is a direct edge from to if or and .\r\nSuppose we already visited a set of vertices and for every visited\r\nvertex we assigned to value (for simplicity just to forget about all\r\nvisited vertices) and now we want to find quickly for a fixed vertex an\r\nunvisited vertex with condition that there is edge or say it there isn\u00e2\u0080\u0099t\r\nsuch , if we can do that in subquadratic time then the task is solved.\r\nAs stated above the first condition is if , this condition is easy to\r\ncheck. The second condition is and , now consider vertices with indices\r\nfrom interval and take with maximal . If we found edge otherwise there\r\nare no remaining edges. We can find such vertex using segment tree and\r\nupdating values while we visit a new vertex. In total we will visit\r\nvertices and query the segment tree at most times ( for every new vertex\r\nand for finding that there aren\u00e2\u0080\u0099t remaining edges). Complexity and\r\nmemory are and . Solution: Link\r\n"
+}

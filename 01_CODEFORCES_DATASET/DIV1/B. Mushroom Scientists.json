@@ -1,1 +1,80 @@
-{"link": "https://codeforces.com//contest/185/problem/B", "problemId": "1296", "problem_idx": "B", "shortId": "185B", "contest_number": "185", "problem_submissions": {"D": [1656258, 1657906, 1659029, 1659582, 1660143, 1660140, 1660650, 1660397, 1660794, 1660341, 1662000, 1661960, 1662031], "B": [1654760, 1653010, 1654904, 1655366, 1655062, 1655668, 1653656, 1655096, 1656068, 1655208, 1655477, 1655121, 1654374, 1656299, 1655431, 1655895], "A": [1652795, 1653595, 1652830, 1652854, 1654056, 1653415, 1652909, 1653006, 1653418, 1653729, 1653004, 1653330, 1652743, 1653797, 1652848, 1652763], "E": [1660675, 140398754]}, "name": "B. Mushroom Scientists", "statement": "As you very well know, the whole Universe traditionally uses\r\nthree-dimensional Cartesian system of coordinates. In this system each\r\npoint corresponds to three real coordinates . In this coordinate system,\r\nthe distance between the center of the Universe and the point is\r\ncalculated by the following formula: . Mushroom scientists that work for\r\nthe Great Mushroom King think that the Universe isn\u2019t exactly right and\r\nthe distance from the center of the Universe to a point equals .To test\r\nthe metric of mushroom scientists, the usual scientists offered them a\r\ntask: find such , that the distance between the center of the Universe\r\nand the point is maximum possible in the metric of mushroom scientists.\r\nThe mushroom scientists aren\u2019t good at maths, so they commissioned you\r\nto do the task.Note that in this problem, it is considered that .\r\n", "solutions": ["#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <set>\n#include <map>\n#include <algorithm>\n#include <functional>\n#include <utility>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstdio>\n\nusing namespace std;\n\n#define REP(i,n) for((i)=0;(i)<(int)(n);(i)++)\n#define foreach(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n\nint main(void){\n    int S,a,b,c;\n    \n    cin >> S >> a >> b >> c;\n    \n    if(a == 0 && b == 0 && c == 0){\n        printf(\"0.0 0.0 0.0\\n\");\n        return 0;\n    }\n    \n    double x = a / (double)(a + b + c) * S;\n    double y = b / (double)(a + b + c) * S;\n    double z = c / (double)(a + b + c) * S;\n    printf(\"%.20f %.20f %.20f\\n\", x, y, z);\n    \n    return 0;\n}\n"], "input": "", "output": "", "tags": ["math", "ternary search"], "dificulty": "1800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/185/problem/B",
+    "problemId": "1296",
+    "problem_idx": "B",
+    "shortId": "185B",
+    "contest_number": "185",
+    "problem_submissions": {
+        "D": [
+            1656258,
+            1657906,
+            1659029,
+            1659582,
+            1660143,
+            1660140,
+            1660650,
+            1660397,
+            1660794,
+            1660341,
+            1662000,
+            1661960,
+            1662031
+        ],
+        "B": [
+            1654760,
+            1653010,
+            1654904,
+            1655366,
+            1655062,
+            1655668,
+            1653656,
+            1655096,
+            1656068,
+            1655208,
+            1655477,
+            1655121,
+            1654374,
+            1656299,
+            1655431,
+            1655895
+        ],
+        "A": [
+            1652795,
+            1653595,
+            1652830,
+            1652854,
+            1654056,
+            1653415,
+            1652909,
+            1653006,
+            1653418,
+            1653729,
+            1653004,
+            1653330,
+            1652743,
+            1653797,
+            1652848,
+            1652763
+        ],
+        "E": [
+            1660675,
+            140398754
+        ]
+    },
+    "name": "B. Mushroom Scientists",
+    "statement": "As you very well know, the whole Universe traditionally uses\r\nthree-dimensional Cartesian system of coordinates. In this system each\r\npoint corresponds to three real coordinates . In this coordinate system,\r\nthe distance between the center of the Universe and the point is\r\ncalculated by the following formula: . Mushroom scientists that work for\r\nthe Great Mushroom King think that the Universe isn\u2019t exactly right and\r\nthe distance from the center of the Universe to a point equals .To test\r\nthe metric of mushroom scientists, the usual scientists offered them a\r\ntask: find such , that the distance between the center of the Universe\r\nand the point is maximum possible in the metric of mushroom scientists.\r\nThe mushroom scientists aren\u2019t good at maths, so they commissioned you\r\nto do the task.Note that in this problem, it is considered that .\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <set>\n#include <map>\n#include <algorithm>\n#include <functional>\n#include <utility>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstdio>\n\nusing namespace std;\n\n#define REP(i,n) for((i)=0;(i)<(int)(n);(i)++)\n#define foreach(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n\nint main(void){\n    int S,a,b,c;\n    \n    cin >> S >> a >> b >> c;\n    \n    if(a == 0 && b == 0 && c == 0){\n        printf(\"0.0 0.0 0.0\\n\");\n        return 0;\n    }\n    \n    double x = a / (double)(a + b + c) * S;\n    double y = b / (double)(a + b + c) * S;\n    double z = c / (double)(a + b + c) * S;\n    printf(\"%.20f %.20f %.20f\\n\", x, y, z);\n    \n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "math",
+        "ternary search"
+    ],
+    "dificulty": "1800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Mushroom Scientists.json",
+    "editorial_link": "https://codeforces.com/blog/entry/4488",
+    "editorial": "The answer for this problem is .\n\nProve: . (This is AM-GM inequality. Link for whom don't know it.)\n\nThe equality becomes only, when .\n\nAnd you should check on zeroes. If a?=?b?=?c?=?0 \u0097 you can choose any good answer \u0097 x?+?y?+?z???S."
+}

@@ -1,1 +1,106 @@
-{"link": "https://codeforces.com//contest/476/problem/D", "problemId": "15276", "problem_idx": "D", "shortId": "476D", "contest_number": "476", "problem_submissions": {"E": [8204672, 8203397, 8207038, 8211617], "D": [8197947, 8191751, 8202943, 8195927, 8196039, 8197811, 8197369, 8217545, 8199329, 8200501, 8205151, 8199419, 8198018, 8200566, 8201223, 8198122, 8201729], "C": [8188264, 8188407, 8188998, 8189052, 8201842, 8185141, 8195789, 8189091, 8193525, 8196914, 8196369, 8196594, 8195818, 8195843, 8196937, 8193815], "B": [8185985, 8208310, 8204785, 8187126, 8185874, 8187135, 8188697, 8188022, 8185704, 8186819, 8186804, 8188777, 8187192, 8187477, 8187062, 8187450, 8187242], "A": [8184534, 8184021, 8184248, 8184018, 8184166, 8186376, 8185191, 8184038, 8184338, 8184268, 8185458, 8184887, 8184306, 8184110, 8184903, 8184310]}, "name": "D. Dreamoon and Sets", "statement": "Dreamoon likes to play with sets, integers and . is defined as the\r\nlargest positive integer that divides both and .Let be a set of exactly\r\nfour distinct integers greater than . Define to be of rank if and only\r\nif for all pairs of distinct elements , from , .Given and , Dreamoon\r\nwants to make up sets of rank using integers from to such that no\r\ninteger is used in two different sets (of course you can leave some\r\nintegers without use). Calculate the minimum that makes it possible and\r\nprint one possible solution.\r\n", "solutions": ["//BISM ILLAHHIRRAHMANNI RRAHIM\n\n#include <cassert>\n#include <cctype>\n#include <climits>\n#include <cmath>\n#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <iostream>\n#include <sstream>\n#include <iomanip>\n#include <string>\n#include <vector>\n#include <list>\n#include <set>\n#include <map>\n#include <stack>\n#include <queue>\n#include <algorithm>\n#include <iterator>\n#include <utility>\nusing namespace std;\n\ntemplate< class T > T _abs(T n) { return (n < 0 ? -n : n); }\ntemplate< class T > T _max(T a, T b) { return (!(a < b) ? a : b); }\ntemplate< class T > T _min(T a, T b) { return (a < b ? a : b); }\ntemplate< class T > T sq(T x) { return x * x; }\n\n#define ALL(p) p.begin(),p.end()\n#define MP(x, y) make_pair(x, y)\n#define SET(p) memset(p, -1, sizeof(p))\n#define CLR(p) memset(p, 0, sizeof(p))\n#define MEM(p, v) memset(p, v, sizeof(p))\n#define CPY(d, s) memcpy(d, s, sizeof(s))\n#define READ(f) freopen(f, \"r\", stdin)\n#define WRITE(f) freopen(f, \"w\", stdout)\n#define SZ(c) (int)c.size()\n#define PB(x) push_back(x)\n#define ff first\n#define ss second\n#define i64 long long\n#define ld long double\n#define pii pair< int, int >\n#define psi pair< string, int >\n#define vi vector< int >\n\nconst double EPS = 1e-9;\nconst int INF = 0x7f7f7f7f;\n\n\nint main() {\n    //READ(\"in.txt\");\n    //WRITE(\"out.txt\");\n    int n,k,i,j;\n    cin>>n>>k;\n    cout<<(5+(n-1)*6)*k<<'\\n';\n    for(i=1,j=0;i<=n;i++,j+=6) {\n        printf(\"%d %d %d %d\\n\",k+k*j,k*(2+j),k*(3+j),k*(5+j));\n    }\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["constructive algorithms", "greedy", "math"], "dificulty": "1900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/476/problem/D",
+    "problemId": "15276",
+    "problem_idx": "D",
+    "shortId": "476D",
+    "contest_number": "476",
+    "problem_submissions": {
+        "E": [
+            8204672,
+            8203397,
+            8207038,
+            8211617
+        ],
+        "D": [
+            8197947,
+            8191751,
+            8202943,
+            8195927,
+            8196039,
+            8197811,
+            8197369,
+            8217545,
+            8199329,
+            8200501,
+            8205151,
+            8199419,
+            8198018,
+            8200566,
+            8201223,
+            8198122,
+            8201729
+        ],
+        "C": [
+            8188264,
+            8188407,
+            8188998,
+            8189052,
+            8201842,
+            8185141,
+            8195789,
+            8189091,
+            8193525,
+            8196914,
+            8196369,
+            8196594,
+            8195818,
+            8195843,
+            8196937,
+            8193815
+        ],
+        "B": [
+            8185985,
+            8208310,
+            8204785,
+            8187126,
+            8185874,
+            8187135,
+            8188697,
+            8188022,
+            8185704,
+            8186819,
+            8186804,
+            8188777,
+            8187192,
+            8187477,
+            8187062,
+            8187450,
+            8187242
+        ],
+        "A": [
+            8184534,
+            8184021,
+            8184248,
+            8184018,
+            8184166,
+            8186376,
+            8185191,
+            8184038,
+            8184338,
+            8184268,
+            8185458,
+            8184887,
+            8184306,
+            8184110,
+            8184903,
+            8184310
+        ]
+    },
+    "name": "D. Dreamoon and Sets",
+    "statement": "Dreamoon likes to play with sets, integers and . is defined as the\r\nlargest positive integer that divides both and .Let be a set of exactly\r\nfour distinct integers greater than . Define to be of rank if and only\r\nif for all pairs of distinct elements , from , .Given and , Dreamoon\r\nwants to make up sets of rank using integers from to such that no\r\ninteger is used in two different sets (of course you can leave some\r\nintegers without use). Calculate the minimum that makes it possible and\r\nprint one possible solution.\r\n",
+    "solutions": [
+        "//BISM ILLAHHIRRAHMANNI RRAHIM\n\n#include <cassert>\n#include <cctype>\n#include <climits>\n#include <cmath>\n#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <iostream>\n#include <sstream>\n#include <iomanip>\n#include <string>\n#include <vector>\n#include <list>\n#include <set>\n#include <map>\n#include <stack>\n#include <queue>\n#include <algorithm>\n#include <iterator>\n#include <utility>\nusing namespace std;\n\ntemplate< class T > T _abs(T n) { return (n < 0 ? -n : n); }\ntemplate< class T > T _max(T a, T b) { return (!(a < b) ? a : b); }\ntemplate< class T > T _min(T a, T b) { return (a < b ? a : b); }\ntemplate< class T > T sq(T x) { return x * x; }\n\n#define ALL(p) p.begin(),p.end()\n#define MP(x, y) make_pair(x, y)\n#define SET(p) memset(p, -1, sizeof(p))\n#define CLR(p) memset(p, 0, sizeof(p))\n#define MEM(p, v) memset(p, v, sizeof(p))\n#define CPY(d, s) memcpy(d, s, sizeof(s))\n#define READ(f) freopen(f, \"r\", stdin)\n#define WRITE(f) freopen(f, \"w\", stdout)\n#define SZ(c) (int)c.size()\n#define PB(x) push_back(x)\n#define ff first\n#define ss second\n#define i64 long long\n#define ld long double\n#define pii pair< int, int >\n#define psi pair< string, int >\n#define vi vector< int >\n\nconst double EPS = 1e-9;\nconst int INF = 0x7f7f7f7f;\n\n\nint main() {\n    //READ(\"in.txt\");\n    //WRITE(\"out.txt\");\n    int n,k,i,j;\n    cin>>n>>k;\n    cout<<(5+(n-1)*6)*k<<'\\n';\n    for(i=1,j=0;i<=n;i++,j+=6) {\n        printf(\"%d %d %d %d\\n\",k+k*j,k*(2+j),k*(3+j),k*(5+j));\n    }\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "greedy",
+        "math"
+    ],
+    "dificulty": "1900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Dreamoon and Sets.json",
+    "editorial_link": "https://codeforces.com//blog/entry/14256",
+    "editorial": "The first observation is that if we divide each number in a set by k, than the set would be rank 1. So we could find n sets of rank 1 then multiple every number by k.\nFor how to find n sets of rank 1, we can use {6a?+?1,?6a?+?2,?6a?+?3,?6a?+?5} as a valid rank 1 set and take a?=?0 to n?-?1 to form n sets and thus m?=?(6n?-?1)?*?k.\nThe proof that m is minimal can be shown by the fact that we take three consecutive odd numbers in each set. If we take less odd numbers there will be more than 1 even number in a set which their gcd is obviously a multiple of 2. And if we take more odd numbers m would be larger.\nThe output method is straight forward. Overall time complexity is O(n)."
+}

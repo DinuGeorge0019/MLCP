@@ -1,1 +1,104 @@
-{"link": "https://codeforces.com//contest/337/problem/A", "problemId": "3391", "problem_idx": "A", "shortId": "337A", "contest_number": "337", "problem_submissions": {"A": [12299505, 4287779, 4294787, 4288908, 4287593, 4287655, 4288715, 4287767, 4287597, 4289361, 4292228, 4297873, 4287659, 4288000, 4287546, 4288581, 4287692, 4288502], "E": [4297308, 4294426, 4299642, 7151846, 4296911, 4298400], "D": [4293164, 4295622, 4296185, 4297268, 4295484, 4297391, 4293932, 4295013, 4295647, 4297089, 4306458, 4315672, 4296531], "C": [4291413, 4292827, 4290434, 4291634, 4291820, 4293004, 4295602, 4293040, 4292436, 4290283, 4292545, 4293113, 4292103, 4291206, 4293573, 4292596], "B": [4289325, 4294106, 4292267, 4289473, 4288898, 4289573, 4288545, 4289624, 4292085, 4290934, 4289760, 4289731, 4290149, 4289634, 4289994, 4289149, 4302088]}, "name": "A. Puzzles", "statement": "The end of the school year is near and Ms. Manana, the teacher, will\r\nsoon have to say goodbye to a yet another class. She decided to prepare\r\na goodbye present for her students and give each of them a jigsaw puzzle\r\n(which, as wikipedia states, is a tiling puzzle that requires the\r\nassembly of numerous small, often oddly shaped, interlocking and\r\ntessellating pieces).The shop assistant told the teacher that there are\r\npuzzles in the shop, but they might differ in difficulty and size.\r\nSpecifically, the first jigsaw puzzle consists of pieces, the second one\r\nconsists of pieces and so on.Ms. Manana doesn\u2019t want to upset the\r\nchildren, so she decided that the difference between the numbers of\r\npieces in her presents must be as small as possible. Let be the number\r\nof pieces in the largest puzzle that the teacher buys and be the number\r\nof pieces in the smallest such puzzle. She wants to choose such puzzles\r\nthat is minimum possible. Help the teacher and find the least possible\r\nvalue of .\r\n", "solutions": ["#include<algorithm>\n#include<cstring>\n#include<cstdio>\n#include<cstdlib>\nusing namespace std;\nint n,m,Min,i,j,t,b[100],a[100];\nint main(){\n\tscanf(\"%d\",&n);\n\tscanf(\"%d\",&m);\n\tfor(i=1;i<=m;i++){\n\t\tscanf(\"%d\",&a[i]);\n\t}\n\tfor(i=1;i<=m;i++){\n\t\tfor(j=m;j>i;j--){\n\t\t\tif(a[i]>a[j]){ \n\t\t\tt=a[i];\n\t\t\ta[i]=a[j];\n\t\t\ta[j]=t;\n\t\t\t} \n\t\t}\n\t}\n\tfor(i=1;i<=m-n+1;i++){\n\t\tb[i]=a[i+n-1]-a[i];\n\t}\n\tMin=1000;\n\tfor(i=1;i<=m-n+1;i++){\n\t\tif(Min>b[i])\n\t\tMin=b[i];\n\t}\n\tprintf(\"%d\",Min);\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["greedy"], "dificulty": "900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/337/problem/A",
+    "problemId": "3391",
+    "problem_idx": "A",
+    "shortId": "337A",
+    "contest_number": "337",
+    "problem_submissions": {
+        "A": [
+            12299505,
+            4287779,
+            4294787,
+            4288908,
+            4287593,
+            4287655,
+            4288715,
+            4287767,
+            4287597,
+            4289361,
+            4292228,
+            4297873,
+            4287659,
+            4288000,
+            4287546,
+            4288581,
+            4287692,
+            4288502
+        ],
+        "E": [
+            4297308,
+            4294426,
+            4299642,
+            7151846,
+            4296911,
+            4298400
+        ],
+        "D": [
+            4293164,
+            4295622,
+            4296185,
+            4297268,
+            4295484,
+            4297391,
+            4293932,
+            4295013,
+            4295647,
+            4297089,
+            4306458,
+            4315672,
+            4296531
+        ],
+        "C": [
+            4291413,
+            4292827,
+            4290434,
+            4291634,
+            4291820,
+            4293004,
+            4295602,
+            4293040,
+            4292436,
+            4290283,
+            4292545,
+            4293113,
+            4292103,
+            4291206,
+            4293573,
+            4292596
+        ],
+        "B": [
+            4289325,
+            4294106,
+            4292267,
+            4289473,
+            4288898,
+            4289573,
+            4288545,
+            4289624,
+            4292085,
+            4290934,
+            4289760,
+            4289731,
+            4290149,
+            4289634,
+            4289994,
+            4289149,
+            4302088
+        ]
+    },
+    "name": "A. Puzzles",
+    "statement": "The end of the school year is near and Ms. Manana, the teacher, will\r\nsoon have to say goodbye to a yet another class. She decided to prepare\r\na goodbye present for her students and give each of them a jigsaw puzzle\r\n(which, as wikipedia states, is a tiling puzzle that requires the\r\nassembly of numerous small, often oddly shaped, interlocking and\r\ntessellating pieces).The shop assistant told the teacher that there are\r\npuzzles in the shop, but they might differ in difficulty and size.\r\nSpecifically, the first jigsaw puzzle consists of pieces, the second one\r\nconsists of pieces and so on.Ms. Manana doesn\u2019t want to upset the\r\nchildren, so she decided that the difference between the numbers of\r\npieces in her presents must be as small as possible. Let be the number\r\nof pieces in the largest puzzle that the teacher buys and be the number\r\nof pieces in the smallest such puzzle. She wants to choose such puzzles\r\nthat is minimum possible. Help the teacher and find the least possible\r\nvalue of .\r\n",
+    "solutions": [
+        "#include<algorithm>\n#include<cstring>\n#include<cstdio>\n#include<cstdlib>\nusing namespace std;\nint n,m,Min,i,j,t,b[100],a[100];\nint main(){\n\tscanf(\"%d\",&n);\n\tscanf(\"%d\",&m);\n\tfor(i=1;i<=m;i++){\n\t\tscanf(\"%d\",&a[i]);\n\t}\n\tfor(i=1;i<=m;i++){\n\t\tfor(j=m;j>i;j--){\n\t\t\tif(a[i]>a[j]){ \n\t\t\tt=a[i];\n\t\t\ta[i]=a[j];\n\t\t\ta[j]=t;\n\t\t\t} \n\t\t}\n\t}\n\tfor(i=1;i<=m-n+1;i++){\n\t\tb[i]=a[i+n-1]-a[i];\n\t}\n\tMin=1000;\n\tfor(i=1;i<=m-n+1;i++){\n\t\tif(Min>b[i])\n\t\tMin=b[i];\n\t}\n\tprintf(\"%d\",Min);\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "greedy"
+    ],
+    "dificulty": "900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Puzzles.json",
+    "editorial_link": "https://codeforces.com//blog/entry/8629",
+    "editorial": "First, let\u00e2\u0080\u0099s sort the numbers f[i] in ascending order. Now assume that\r\nthe smallest jigsaw puzzle which the teacher purchases consists of f[k]\r\npieces. Obviously, she should buy the smallest n puzzles which are of\r\nsize f[k] or greater to minimize the difference. These are the puzzles\r\nf[k], f[k+1], ..., f[k+n-1] (this is not correct when f[i] are not\r\ndistinct and f[k]=f[k-1], but such cases can be skipped). The difference\r\nbetween the greatest and the least size of the puzzles in such set is\r\nf[k+n-1]-f[k]. To choose the optimal f[k], we can test every k between 1\r\nand m-n and pick the one producing the least difference. The full\r\nalgorithm is as follows:\r\n"
+}

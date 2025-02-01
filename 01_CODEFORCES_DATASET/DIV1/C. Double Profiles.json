@@ -1,1 +1,105 @@
-{"link": "https://codeforces.com//contest/154/problem/C", "problemId": "956", "problem_idx": "C", "shortId": "154C", "contest_number": "154", "problem_submissions": {"E": [1231038, 1230512, 1358194], "D": [1225676, 1226429, 1228394, 1228749, 1229408, 1228702, 1229077, 1223939, 1227964, 1479286, 1228630, 1225612, 1229806, 1227500, 1227060], "C": [1223619, 1223667, 1223145, 1226138, 1224320, 1226736, 1226231, 1230453, 1229461, 1479267, 1226553, 1226465, 1225747, 1230469, 1224292, 1224323], "B": [1222804, 1227642, 1224517, 1223990, 1223294, 1225469, 1223473, 1226506, 1224622, 1479175, 1224138, 1223064, 1223792, 1223935, 1223500, 1223955, 1223146, 1223079], "A": [1221382, 1221463, 1226241, 1221946, 1222395, 1223447, 1221860, 1224559, 1222303, 1479137, 1222840, 1221809, 1230571, 1221518, 1221796, 1222615, 1221718]}, "name": "C. Double Profiles", "statement": "You have been offered a job in a company developing a large social\r\nnetwork. Your first task is connected with searching profiles that most\r\nprobably belong to the same user.The social network contains registered\r\nprofiles, numbered from to . Some pairs there are friends (the\r\n\"friendship\" relationship is mutual, that is, if is friends with , then\r\nis also friends with ). Let\u2019s say that profiles and () are , if for any\r\nprofile (, ) one of the two statements is true: either is friends with\r\nand , or isn\u2019t friends with either of them. Also, and can be friends or\r\nnot be friends.Your task is to count the number of different unordered\r\npairs (), such that the profiles and are doubles. Note that the pairs\r\nare unordered, that is, pairs () and () are considered identical.\r\n", "solutions": ["#include<stdio.h>\n#include<map>\n#include<algorithm>\nusing namespace std;\nint in[1010000][2];\nlong long ha[1010000];\nlong long pow[1010000];\nmap<long long,int> XD;\nint main(){\n    int n,m,i,j;\n    scanf(\"%d%d\",&n,&m);\n    long long ans=0;\n    pow[0]=1;\n    XD[1]=1;\n    const int p=29;\n    for(i=1;i<=n;i++){\n        pow[i]=pow[i-1]*p;\n    }\n    for(i=0;i<m;i++){\n        int a,b;\n        scanf(\"%d%d\",&a,&b);\n        a--;b--;\n        in[i][0]=a;in[i][1]=b;\n        ha[a]+=pow[b];\n        ha[b]+=pow[a];\n    }\n    for(i=0;i<m;i++){\n        int a=in[i][0],b=in[i][1];\n        if(ha[a]+pow[a]==ha[b]+pow[b])ans++;\n    }\n    sort(ha,ha+n);\n    for(i=0;i<n;i=j){\n        for(j=i;j<n&&ha[i]==ha[j];j++);\n        ans+=((long long)j-i)*((long long)j-i-1ll)/2;\n    }\n    printf(\"%I64d\\n\",ans);\n}\n"], "input": "", "output": "", "tags": ["graphs", "hashing", "sortings"], "dificulty": "2300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/154/problem/C",
+    "problemId": "956",
+    "problem_idx": "C",
+    "shortId": "154C",
+    "contest_number": "154",
+    "problem_submissions": {
+        "E": [
+            1231038,
+            1230512,
+            1358194
+        ],
+        "D": [
+            1225676,
+            1226429,
+            1228394,
+            1228749,
+            1229408,
+            1228702,
+            1229077,
+            1223939,
+            1227964,
+            1479286,
+            1228630,
+            1225612,
+            1229806,
+            1227500,
+            1227060
+        ],
+        "C": [
+            1223619,
+            1223667,
+            1223145,
+            1226138,
+            1224320,
+            1226736,
+            1226231,
+            1230453,
+            1229461,
+            1479267,
+            1226553,
+            1226465,
+            1225747,
+            1230469,
+            1224292,
+            1224323
+        ],
+        "B": [
+            1222804,
+            1227642,
+            1224517,
+            1223990,
+            1223294,
+            1225469,
+            1223473,
+            1226506,
+            1224622,
+            1479175,
+            1224138,
+            1223064,
+            1223792,
+            1223935,
+            1223500,
+            1223955,
+            1223146,
+            1223079
+        ],
+        "A": [
+            1221382,
+            1221463,
+            1226241,
+            1221946,
+            1222395,
+            1223447,
+            1221860,
+            1224559,
+            1222303,
+            1479137,
+            1222840,
+            1221809,
+            1230571,
+            1221518,
+            1221796,
+            1222615,
+            1221718
+        ]
+    },
+    "name": "C. Double Profiles",
+    "statement": "You have been offered a job in a company developing a large social\r\nnetwork. Your first task is connected with searching profiles that most\r\nprobably belong to the same user.The social network contains registered\r\nprofiles, numbered from to . Some pairs there are friends (the\r\n\"friendship\" relationship is mutual, that is, if is friends with , then\r\nis also friends with ). Let\u2019s say that profiles and () are , if for any\r\nprofile (, ) one of the two statements is true: either is friends with\r\nand , or isn\u2019t friends with either of them. Also, and can be friends or\r\nnot be friends.Your task is to count the number of different unordered\r\npairs (), such that the profiles and are doubles. Note that the pairs\r\nare unordered, that is, pairs () and () are considered identical.\r\n",
+    "solutions": [
+        "#include<stdio.h>\n#include<map>\n#include<algorithm>\nusing namespace std;\nint in[1010000][2];\nlong long ha[1010000];\nlong long pow[1010000];\nmap<long long,int> XD;\nint main(){\n    int n,m,i,j;\n    scanf(\"%d%d\",&n,&m);\n    long long ans=0;\n    pow[0]=1;\n    XD[1]=1;\n    const int p=29;\n    for(i=1;i<=n;i++){\n        pow[i]=pow[i-1]*p;\n    }\n    for(i=0;i<m;i++){\n        int a,b;\n        scanf(\"%d%d\",&a,&b);\n        a--;b--;\n        in[i][0]=a;in[i][1]=b;\n        ha[a]+=pow[b];\n        ha[b]+=pow[a];\n    }\n    for(i=0;i<m;i++){\n        int a=in[i][0],b=in[i][1];\n        if(ha[a]+pow[a]==ha[b]+pow[b])ans++;\n    }\n    sort(ha,ha+n);\n    for(i=0;i<n;i=j){\n        for(j=i;j<n&&ha[i]==ha[j];j++);\n        ans+=((long long)j-i)*((long long)j-i-1ll)/2;\n    }\n    printf(\"%I64d\\n\",ans);\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "graphs",
+        "hashing",
+        "sortings"
+    ],
+    "dificulty": "2300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Double Profiles.json",
+    "editorial_link": "https://codeforces.com//blog/entry/3969",
+    "editorial": "We want to count the number of pairs of vertices in a undirected graph\r\nwhich neighbours\u00e2\u0080\u0099 sets are equal up to these vertices. To count the\r\npairs which sets of neighbours are equal we can hash these sets (for\r\ninstance, count the polynomial hash of adjacency matrix row) and sort\r\nthe hashes. Than we have to add the pairs of doubles which have an edge\r\nbetween them. We can note that there are no more such pairs than there\r\nare edges in the graph. So we can iterate through edges and check hashes\r\nfor equivalence considering the presence of the edge (in case of\r\npolynomial hash we just add some degrees to them and then compare them).\r\nOther solution was to count another version of the previous hash, now\r\nadding a loop to each vertex, and to count the number of pairs just like\r\nin the previous case. Moreover, we could try and sort the whole lists of\r\nadjacencies (which previuosly should be sorted too). As their total size\r\nis 2M, this works fine too, but needs an accurate realization. Hash\r\nsolution complexity O(N log N + M).\r\n"
+}

@@ -1,1 +1,89 @@
-{"link": "https://codeforces.com//contest/22/problem/A", "problemId": "99", "problem_idx": "A", "shortId": "22A", "contest_number": "22", "problem_submissions": {"E": [95075, 339772], "D": [94674, 94317, 94288, 94253, 94410, 94089, 94399, 94885, 94131, 94729, 94450, 93950, 94649], "C": [94316, 94019, 94074, 94097, 94060, 94297, 94096, 94518, 94472, 94134, 94320, 94611, 94048], "B": [93968, 93767, 93718, 93851, 93760, 93791, 93790, 93866, 93966, 93778, 94454, 94133, 94258, 93853], "A": [93542, 93511, 93475, 93559, 93491, 93518, 93660, 93794, 93555, 93524, 93810, 93535, 93618]}, "name": "A. Second Order Statistics", "statement": "Once Bob needed to find the second order statistics of a sequence of\r\ninteger numbers. Lets choose each number from the sequence exactly once\r\nand sort them. The value on the second position is the second order\r\nstatistics of the given sequence. In other words it is the smallest\r\nelement strictly greater than the minimum. Help Bob solve this problem.\r\n", "solutions": ["#include <iostream>\n#include <algorithm>\nusing namespace std;\n\n\nint main(){\n   \n    int n;\n    cin>>n;\n    int a[1000];\n    for(int i=0; i<n; i++){\n        cin>>a[i];\n    }\n    sort(a,a+n);\n    for(int i=1; i<n; i++){\n        if(a[i]!=a[i-1]){\n            cout<<a[i]<<endl;\n            return 0;\n        }\n    }\n    cout<<\"NO\";\n    return 0;\n}"], "input": "", "output": "", "tags": ["brute force"], "dificulty": "800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/22/problem/A",
+    "problemId": "99",
+    "problem_idx": "A",
+    "shortId": "22A",
+    "contest_number": "22",
+    "problem_submissions": {
+        "E": [
+            95075,
+            339772
+        ],
+        "D": [
+            94674,
+            94317,
+            94288,
+            94253,
+            94410,
+            94089,
+            94399,
+            94885,
+            94131,
+            94729,
+            94450,
+            93950,
+            94649
+        ],
+        "C": [
+            94316,
+            94019,
+            94074,
+            94097,
+            94060,
+            94297,
+            94096,
+            94518,
+            94472,
+            94134,
+            94320,
+            94611,
+            94048
+        ],
+        "B": [
+            93968,
+            93767,
+            93718,
+            93851,
+            93760,
+            93791,
+            93790,
+            93866,
+            93966,
+            93778,
+            94454,
+            94133,
+            94258,
+            93853
+        ],
+        "A": [
+            93542,
+            93511,
+            93475,
+            93559,
+            93491,
+            93518,
+            93660,
+            93794,
+            93555,
+            93524,
+            93810,
+            93535,
+            93618
+        ]
+    },
+    "name": "A. Second Order Statistics",
+    "statement": "Once Bob needed to find the second order statistics of a sequence of\r\ninteger numbers. Lets choose each number from the sequence exactly once\r\nand sort them. The value on the second position is the second order\r\nstatistics of the given sequence. In other words it is the smallest\r\nelement strictly greater than the minimum. Help Bob solve this problem.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <algorithm>\nusing namespace std;\n\n\nint main(){\n   \n    int n;\n    cin>>n;\n    int a[1000];\n    for(int i=0; i<n; i++){\n        cin>>a[i];\n    }\n    sort(a,a+n);\n    for(int i=1; i<n; i++){\n        if(a[i]!=a[i-1]){\n            cout<<a[i]<<endl;\n            return 0;\n        }\n    }\n    cout<<\"NO\";\n    return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force"
+    ],
+    "dificulty": "800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Second Order Statistics.json",
+    "editorial_link": "https://codeforces.com//blog/entry/507",
+    "editorial": "In this problem one should find a minimal element from all elements, that are strictly greater, then the minimal one or report that it doesn't exist. Of course, there can be a lot of different solutions, but one of the simplest - to sort the given sequence and print the first element, that's not equal to the previous. If all elements are equal, then the required element doesn't exist."
+}

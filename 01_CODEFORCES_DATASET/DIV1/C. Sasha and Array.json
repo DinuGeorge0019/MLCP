@@ -1,1 +1,86 @@
-{"link": "https://codeforces.com//contest/718/problem/C", "problemId": "72542", "problem_idx": "C", "shortId": "718C", "contest_number": "718", "problem_submissions": {"C": [22302962, 22302941, 22302889, 22302852, 22302731, 22302692, 20846565, 20849386, 20847435, 20859089, 20848615, 20840892, 20856665, 20846554, 20847508, 20848199, 20847949, 20848925, 20849628, 20854862, 20850773, 20851572, 20861188, 20850610], "D": [20853333, 20864854, 20856011, 20861286, 21246935, 21246860, 20864386], "A": [20842439, 20877357, 20843102, 20840207, 20845729, 20843895, 20841441, 20841738, 20840153, 20842838, 20841757, 20842345, 20848915, 20842908, 20843212, 20840112, 20842542, 20845574], "E": [20878493, 21383093, 33904537]}, "name": "C. Sasha and Array", "statement": "Sasha has an array of integers . You have to perform queries. There\r\nmight be queries of two types: increase all integers on the segment from\r\nto by values ; find , where is the -th Fibonacci number. As this number\r\nmay be large, you only have to find it modulo . In this problem we\r\ndefine Fibonacci numbers as follows: , , for all .Sasha is a very\r\ntalented boy and he managed to perform all queries in five seconds. Will\r\nyou be able to write the program that performs as well as Sasha?\r\n", "solutions": ["/**\n *    author:  SPb ITMO University 1\n *    created: 18.11.2016 11:23:03       \n**/\n#define __USE_MINGW_ANSI_STDIO 0\n#include <bits/stdc++.h>\n\n#define F first\n#define S second\n#define pb push_back\n#define forn(i, n) for(int i = 0 ; (i) < (n) ; ++i)\n#define eprintf(...) fprintf(stderr, __VA_ARGS__),fflush(stderr)\n#define sz(a) ((int)(a).size())\n#define all(a) (a).begin(),a.end()\n#define pw(x) (1LL<<(x))\n\nusing namespace std;\n\ntypedef long long ll;\ntypedef double dbl;\ntypedef vector<int> vi;\ntypedef pair<int, int> pi;\n\nconst int inf = 1.01e9;\nconst dbl eps = 1e-9;\n\n/* --- main part --- */\n\nconst int mod = 1e9 + 7;\n\n\nconst int SZ = 2;\nstruct matrix\n{\n    int a[SZ][SZ];\n    matrix()\n    {\n        memset(a, 0, sizeof a);\n    }\n    matrix(int x)\n    {\n        memset(a, 0, sizeof a);\n        forn(i, SZ) a[i][i] = (x % mod + mod) % mod;\n    }\n    inline int* operator [] (int i)\n    {\n        return a[i];\n    }\n};\n\ninline matrix operator * (matrix &a, matrix &b)\n{\n    matrix r;\n    forn(i, SZ) forn(j, SZ) forn(k, SZ) r[i][j] = (r[i][j] + a[i][k] * (ll)b[k][j]) % mod;\n    return r;\n}\n\ninline matrix operator + (matrix &a, matrix &b)\n{\n    matrix r;\n    forn(i, SZ) forn(j, SZ) r[i][j] = (a[i][j] + b[i][j]) % mod;\n    return r;\n}\n\ninline void operator += (matrix &a, matrix &b)\n{\n    forn(i, SZ) forn(j, SZ) a[i][j] = (a[i][j] + b[i][j]) % mod;\n}\n\n    \ninline matrix mpow(matrix A, ll b)\n{\n    matrix R(1);\n    while (b)\n    {\n        if (b & 1) R = R * A;\n        A = A * A;\n        b >>= 1;\n    }\n    return R;\n}\n\ninline matrix fib(ll b)\n{\n    matrix A;\n    A[0][0] = 1;\n    A[0][1] = 1;\n    A[1][0] = 1;\n    return mpow(A, b);\n}\n\nconst int N = 1 << 17;\n\nmatrix t[N * 2];\nmatrix s[N * 2];\n\nvoid push(int x)\n{\n    t[2 * x] = t[2 * x] * t[x];\n    t[2 * x + 1] = t[2 * x + 1] * t[x];\n    s[2 * x] = s[2 * x] * t[x];\n    s[2 * x + 1] = s[2 * x + 1] * t[x];\n    t[x] = matrix(1);\n}\n\n\n\nvoid upd(int x, int l, int r, int lq, int rq, matrix VAL)\n{\n    if (lq <= l && r <= rq)\n    {\n        t[x] = t[x] * VAL;\n        s[x] = s[x] * VAL;\n        return;\n    }\n    if (l >= rq || lq >= r) return;\n    push(x);\n    int m = (l + r) >> 1;\n    upd(2 * x, l, m, lq, rq, VAL);\n    upd(2 * x + 1, m, r, lq, rq, VAL);\n    s[x] = s[2 * x] + s[2 * x + 1];\n}\n\nmatrix R;\n\nvoid sum(int x, int l, int r, int lq, int rq)\n{\n    if (lq <= l && r <= rq)\n    {\n        R += s[x];\n        return;\n    }\n    if (l >= rq || lq >= r) return;\n    push(x);\n    int m = (l + r) >> 1;\n    sum(2 * x, l, m, lq, rq);\n    sum(2 * x + 1, m, r, lq, rq);\n}\n\nint main()\n{\n    #ifdef home\n        assert(freopen(\"1.in\", \"r\", stdin));\n        assert(freopen(\"1.out\", \"w\", stdout));\n    #endif\n    int n, m;\n    scanf(\"%d%d\", &n, &m);\n    forn(i, 2 * N) t[i] = matrix(1);\n    forn(i, n)\n    {\n        int x;\n        scanf(\"%d\", &x);\n        s[i + N] = fib(x);\n    }\n    #ifdef home\n        eprintf(\"time = %d ms\\n\", (int)(clock() * 1000. / CLOCKS_PER_SEC));\n    #endif\n    for (int i = N - 1; i >= 0; --i) s[i] = s[2 * i] + s[2 * i + 1];\n    forn(i, m)\n    {\n        int tp;\n        scanf(\"%d\", &tp);\n        if (tp == 1)\n        {\n            int l, r, x;\n            scanf(\"%d%d%d\", &l, &r, &x);\n            //VAL = fib(x);\n            upd(1, 0, N, l - 1, r, fib(x));\n        }\n        else\n        {\n            int l, r;\n            scanf(\"%d%d\", &l, &r);\n            R = matrix();\n            sum(1, 0, N, l - 1, r);\n            //matrix R = sum(1, 0, N, l - 1, r);\n            printf(\"%d\\n\", R[0][1]);\n        }\n    }\n    \n    #ifdef home\n        eprintf(\"time = %d ms\\n\", (int)(clock() * 1000. / CLOCKS_PER_SEC));\n    #endif\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["data structures", "math", "matrices"], "dificulty": "2300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/718/problem/C",
+    "problemId": "72542",
+    "problem_idx": "C",
+    "shortId": "718C",
+    "contest_number": "718",
+    "problem_submissions": {
+        "C": [
+            22302962,
+            22302941,
+            22302889,
+            22302852,
+            22302731,
+            22302692,
+            20846565,
+            20849386,
+            20847435,
+            20859089,
+            20848615,
+            20840892,
+            20856665,
+            20846554,
+            20847508,
+            20848199,
+            20847949,
+            20848925,
+            20849628,
+            20854862,
+            20850773,
+            20851572,
+            20861188,
+            20850610
+        ],
+        "D": [
+            20853333,
+            20864854,
+            20856011,
+            20861286,
+            21246935,
+            21246860,
+            20864386
+        ],
+        "A": [
+            20842439,
+            20877357,
+            20843102,
+            20840207,
+            20845729,
+            20843895,
+            20841441,
+            20841738,
+            20840153,
+            20842838,
+            20841757,
+            20842345,
+            20848915,
+            20842908,
+            20843212,
+            20840112,
+            20842542,
+            20845574
+        ],
+        "E": [
+            20878493,
+            21383093,
+            33904537
+        ]
+    },
+    "name": "C. Sasha and Array",
+    "statement": "Sasha has an array of integers . You have to perform queries. There\r\nmight be queries of two types: increase all integers on the segment from\r\nto by values ; find , where is the -th Fibonacci number. As this number\r\nmay be large, you only have to find it modulo . In this problem we\r\ndefine Fibonacci numbers as follows: , , for all .Sasha is a very\r\ntalented boy and he managed to perform all queries in five seconds. Will\r\nyou be able to write the program that performs as well as Sasha?\r\n",
+    "solutions": [
+        "/**\n *    author:  SPb ITMO University 1\n *    created: 18.11.2016 11:23:03       \n**/\n#define __USE_MINGW_ANSI_STDIO 0\n#include <bits/stdc++.h>\n\n#define F first\n#define S second\n#define pb push_back\n#define forn(i, n) for(int i = 0 ; (i) < (n) ; ++i)\n#define eprintf(...) fprintf(stderr, __VA_ARGS__),fflush(stderr)\n#define sz(a) ((int)(a).size())\n#define all(a) (a).begin(),a.end()\n#define pw(x) (1LL<<(x))\n\nusing namespace std;\n\ntypedef long long ll;\ntypedef double dbl;\ntypedef vector<int> vi;\ntypedef pair<int, int> pi;\n\nconst int inf = 1.01e9;\nconst dbl eps = 1e-9;\n\n/* --- main part --- */\n\nconst int mod = 1e9 + 7;\n\n\nconst int SZ = 2;\nstruct matrix\n{\n    int a[SZ][SZ];\n    matrix()\n    {\n        memset(a, 0, sizeof a);\n    }\n    matrix(int x)\n    {\n        memset(a, 0, sizeof a);\n        forn(i, SZ) a[i][i] = (x % mod + mod) % mod;\n    }\n    inline int* operator [] (int i)\n    {\n        return a[i];\n    }\n};\n\ninline matrix operator * (matrix &a, matrix &b)\n{\n    matrix r;\n    forn(i, SZ) forn(j, SZ) forn(k, SZ) r[i][j] = (r[i][j] + a[i][k] * (ll)b[k][j]) % mod;\n    return r;\n}\n\ninline matrix operator + (matrix &a, matrix &b)\n{\n    matrix r;\n    forn(i, SZ) forn(j, SZ) r[i][j] = (a[i][j] + b[i][j]) % mod;\n    return r;\n}\n\ninline void operator += (matrix &a, matrix &b)\n{\n    forn(i, SZ) forn(j, SZ) a[i][j] = (a[i][j] + b[i][j]) % mod;\n}\n\n    \ninline matrix mpow(matrix A, ll b)\n{\n    matrix R(1);\n    while (b)\n    {\n        if (b & 1) R = R * A;\n        A = A * A;\n        b >>= 1;\n    }\n    return R;\n}\n\ninline matrix fib(ll b)\n{\n    matrix A;\n    A[0][0] = 1;\n    A[0][1] = 1;\n    A[1][0] = 1;\n    return mpow(A, b);\n}\n\nconst int N = 1 << 17;\n\nmatrix t[N * 2];\nmatrix s[N * 2];\n\nvoid push(int x)\n{\n    t[2 * x] = t[2 * x] * t[x];\n    t[2 * x + 1] = t[2 * x + 1] * t[x];\n    s[2 * x] = s[2 * x] * t[x];\n    s[2 * x + 1] = s[2 * x + 1] * t[x];\n    t[x] = matrix(1);\n}\n\n\n\nvoid upd(int x, int l, int r, int lq, int rq, matrix VAL)\n{\n    if (lq <= l && r <= rq)\n    {\n        t[x] = t[x] * VAL;\n        s[x] = s[x] * VAL;\n        return;\n    }\n    if (l >= rq || lq >= r) return;\n    push(x);\n    int m = (l + r) >> 1;\n    upd(2 * x, l, m, lq, rq, VAL);\n    upd(2 * x + 1, m, r, lq, rq, VAL);\n    s[x] = s[2 * x] + s[2 * x + 1];\n}\n\nmatrix R;\n\nvoid sum(int x, int l, int r, int lq, int rq)\n{\n    if (lq <= l && r <= rq)\n    {\n        R += s[x];\n        return;\n    }\n    if (l >= rq || lq >= r) return;\n    push(x);\n    int m = (l + r) >> 1;\n    sum(2 * x, l, m, lq, rq);\n    sum(2 * x + 1, m, r, lq, rq);\n}\n\nint main()\n{\n    #ifdef home\n        assert(freopen(\"1.in\", \"r\", stdin));\n        assert(freopen(\"1.out\", \"w\", stdout));\n    #endif\n    int n, m;\n    scanf(\"%d%d\", &n, &m);\n    forn(i, 2 * N) t[i] = matrix(1);\n    forn(i, n)\n    {\n        int x;\n        scanf(\"%d\", &x);\n        s[i + N] = fib(x);\n    }\n    #ifdef home\n        eprintf(\"time = %d ms\\n\", (int)(clock() * 1000. / CLOCKS_PER_SEC));\n    #endif\n    for (int i = N - 1; i >= 0; --i) s[i] = s[2 * i] + s[2 * i + 1];\n    forn(i, m)\n    {\n        int tp;\n        scanf(\"%d\", &tp);\n        if (tp == 1)\n        {\n            int l, r, x;\n            scanf(\"%d%d%d\", &l, &r, &x);\n            //VAL = fib(x);\n            upd(1, 0, N, l - 1, r, fib(x));\n        }\n        else\n        {\n            int l, r;\n            scanf(\"%d%d\", &l, &r);\n            R = matrix();\n            sum(1, 0, N, l - 1, r);\n            //matrix R = sum(1, 0, N, l - 1, r);\n            printf(\"%d\\n\", R[0][1]);\n        }\n    }\n    \n    #ifdef home\n        eprintf(\"time = %d ms\\n\", (int)(clock() * 1000. / CLOCKS_PER_SEC));\n    #endif\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "data structures",
+        "math",
+        "matrices"
+    ],
+    "dificulty": "2300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Sasha and Array.json",
+    "editorial_link": "https://codeforces.com//blog/entry/47314",
+    "editorial": "Let's denote\n \n\nLet's recall how we can quickly find n-th Fibonacci number. To do this we need to find a matrix product .\n\nIn order to solve our problem let's create the following segments tree: in each leaf which corresponds to the element i we will store a vector  and in all other nodes we will store the sums of all the vectors that correspond to a given segment.\n\nNow, to perform the first request we should multiply all the vectors in a segment [l..r] by  and to get an answer to the second request we have to find a sum in a segment [l..r]."
+}

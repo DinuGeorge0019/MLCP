@@ -1,1 +1,99 @@
-{"link": "https://codeforces.com//contest/663/problem/C", "problemId": "55354", "problem_idx": "C", "shortId": "663C", "contest_number": "663", "problem_submissions": {"E": [17350327, 17349864, 17353803, 17353745, 17350870, 17351032, 17350940, 17349799, 17351986, 17351243, 17350710, 17347131, 17352995, 17350415, 17349363, 17351067, 17353219, 17353206, 17350737], "C": [17347790, 17347307, 17349302, 17348183, 17352062, 17347576, 17351577, 17349777, 17347691, 17348798, 17348588, 17350481, 17349299, 17347750, 17349697, 17348180, 17348352], "B": [17346317, 17346919, 17351687, 17347488, 17350797, 17352612, 17346896, 17352716, 17346251, 17346169], "A": [17345568, 17345670, 17345320, 17345148, 17345271, 17344956, 17347728, 17345255, 17346364, 17352110, 17345277, 17344920, 17352735, 17344992, 17345337], "D": [17350825, 17611100, 17366417]}, "name": "C. Graph Coloring", "statement": "You are given an undirected graph that consists of vertices and edges.\r\nInitially, each edge is colored either red or blue. Each turn a player\r\npicks a single vertex and switches the color of edges incident to it.\r\nThat is, all red edges with an endpoint in this vertex change the color\r\nto blue, while all blue edges with an endpoint in this vertex change the\r\ncolor to red.Find the minimum possible number of moves required to make\r\nthe colors of all edges equal.\r\n", "solutions": ["#include<bits/stdc++.h>\n#include<unistd.h>\nusing namespace std;\n#define FZ(n) memset((n),0,sizeof(n))\n#define FMO(n) memset((n),-1,sizeof(n))\n#define F first\n#define S second\n#define PB push_back\n#define ALL(x) begin(x),end(x)\n#define SZ(x) ((int)(x).size())\n#define IOS ios_base::sync_with_stdio(0); cin.tie(0)\ntemplate<typename A, typename B>\nostream& operator <<(ostream &s, const pair<A,B> &p) {\n  return s<<\"(\"<<p.first<<\",\"<<p.second<<\")\";\n}\ntemplate<typename T>\nostream& operator <<(ostream &s, const vector<T> &c) {\n  s<<\"[ \";\n  for (auto it : c) s << it << \" \";\n  s<<\"]\";\n  return s;\n}\n// Let's Fight!\n\ntypedef pair<int, char> pic;\n\nconst int MAXN = 101010;\nconst int INF = 1029384756;\n\nint N, M;\nbool ans[MAXN];\nvector<pic> edge[MAXN];\nint abest;\nint vis[MAXN];\nint good, bad;\nvector<int> vlast;\n\nbool dfs(int v, int p, int c, char cc)\n{\n  if(vis[v] != -1)\n    return vis[v] == c;\n  vis[v] = c;\n  if(c) bad++;\n  else good++;\n  vlast.PB(v);\n\n  for(auto e: edge[v])\n  {\n    int u = e.F;\n    int dif = (e.S != cc);\n    if(u == p) continue;\n    if(!dfs(u, v, c ^ dif, cc)) return false;\n  }\n\n  return true;\n}\n\nvoid calc2(char cc)\n{\n  for(int i=0; i<N; i++)\n    vis[i] = -1;\n\n  for(int i=0; i<N; i++)\n  {\n    if(vis[i] != -1) continue;\n    good = bad = 0;\n    vlast.clear();\n    bool res = dfs(i, -1, 0, cc);\n    if(!res) return;\n    if(bad > good)\n    {\n      for(auto v: vlast)\n        vis[v] ^= 1;\n    }\n  }\n\n  int total = 0;\n  for(int i=0; i<N; i++)\n    total += vis[i];\n\n  if(total < abest)\n  {\n    abest = total;\n    for(int i=0; i<N; i++)\n      ans[i] = vis[i];\n  }\n}\n\nvoid calc()\n{\n  abest = INF;\n\n  calc2('R');\n  calc2('B');\n}\n\nint main() {\n  IOS;\n  cin>>N>>M;\n  for(int i=0; i<M; i++)\n  {\n    int u, v;\n    char c;\n    cin>>u>>v>>c;\n    u--;\n    v--;\n    edge[u].PB({v, c});\n    edge[v].PB({u, c});\n  }\n\n  calc();\n  if(abest == INF) cout<<-1<<endl;\n  else\n  {\n    cout<<abest<<endl;\n    for(int i=0; i<N; i++)\n      if(ans[i])\n        cout<<i+1<<\" \";\n    cout<<endl;\n  }\n\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["dfs and similar", "graphs"], "dificulty": "2200", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/663/problem/C",
+    "problemId": "55354",
+    "problem_idx": "C",
+    "shortId": "663C",
+    "contest_number": "663",
+    "problem_submissions": {
+        "E": [
+            17350327,
+            17349864,
+            17353803,
+            17353745,
+            17350870,
+            17351032,
+            17350940,
+            17349799,
+            17351986,
+            17351243,
+            17350710,
+            17347131,
+            17352995,
+            17350415,
+            17349363,
+            17351067,
+            17353219,
+            17353206,
+            17350737
+        ],
+        "C": [
+            17347790,
+            17347307,
+            17349302,
+            17348183,
+            17352062,
+            17347576,
+            17351577,
+            17349777,
+            17347691,
+            17348798,
+            17348588,
+            17350481,
+            17349299,
+            17347750,
+            17349697,
+            17348180,
+            17348352
+        ],
+        "B": [
+            17346317,
+            17346919,
+            17351687,
+            17347488,
+            17350797,
+            17352612,
+            17346896,
+            17352716,
+            17346251,
+            17346169
+        ],
+        "A": [
+            17345568,
+            17345670,
+            17345320,
+            17345148,
+            17345271,
+            17344956,
+            17347728,
+            17345255,
+            17346364,
+            17352110,
+            17345277,
+            17344920,
+            17352735,
+            17344992,
+            17345337
+        ],
+        "D": [
+            17350825,
+            17611100,
+            17366417
+        ]
+    },
+    "name": "C. Graph Coloring",
+    "statement": "You are given an undirected graph that consists of vertices and edges.\r\nInitially, each edge is colored either red or blue. Each turn a player\r\npicks a single vertex and switches the color of edges incident to it.\r\nThat is, all red edges with an endpoint in this vertex change the color\r\nto blue, while all blue edges with an endpoint in this vertex change the\r\ncolor to red.Find the minimum possible number of moves required to make\r\nthe colors of all edges equal.\r\n",
+    "solutions": [
+        "#include<bits/stdc++.h>\n#include<unistd.h>\nusing namespace std;\n#define FZ(n) memset((n),0,sizeof(n))\n#define FMO(n) memset((n),-1,sizeof(n))\n#define F first\n#define S second\n#define PB push_back\n#define ALL(x) begin(x),end(x)\n#define SZ(x) ((int)(x).size())\n#define IOS ios_base::sync_with_stdio(0); cin.tie(0)\ntemplate<typename A, typename B>\nostream& operator <<(ostream &s, const pair<A,B> &p) {\n  return s<<\"(\"<<p.first<<\",\"<<p.second<<\")\";\n}\ntemplate<typename T>\nostream& operator <<(ostream &s, const vector<T> &c) {\n  s<<\"[ \";\n  for (auto it : c) s << it << \" \";\n  s<<\"]\";\n  return s;\n}\n// Let's Fight!\n\ntypedef pair<int, char> pic;\n\nconst int MAXN = 101010;\nconst int INF = 1029384756;\n\nint N, M;\nbool ans[MAXN];\nvector<pic> edge[MAXN];\nint abest;\nint vis[MAXN];\nint good, bad;\nvector<int> vlast;\n\nbool dfs(int v, int p, int c, char cc)\n{\n  if(vis[v] != -1)\n    return vis[v] == c;\n  vis[v] = c;\n  if(c) bad++;\n  else good++;\n  vlast.PB(v);\n\n  for(auto e: edge[v])\n  {\n    int u = e.F;\n    int dif = (e.S != cc);\n    if(u == p) continue;\n    if(!dfs(u, v, c ^ dif, cc)) return false;\n  }\n\n  return true;\n}\n\nvoid calc2(char cc)\n{\n  for(int i=0; i<N; i++)\n    vis[i] = -1;\n\n  for(int i=0; i<N; i++)\n  {\n    if(vis[i] != -1) continue;\n    good = bad = 0;\n    vlast.clear();\n    bool res = dfs(i, -1, 0, cc);\n    if(!res) return;\n    if(bad > good)\n    {\n      for(auto v: vlast)\n        vis[v] ^= 1;\n    }\n  }\n\n  int total = 0;\n  for(int i=0; i<N; i++)\n    total += vis[i];\n\n  if(total < abest)\n  {\n    abest = total;\n    for(int i=0; i<N; i++)\n      ans[i] = vis[i];\n  }\n}\n\nvoid calc()\n{\n  abest = INF;\n\n  calc2('R');\n  calc2('B');\n}\n\nint main() {\n  IOS;\n  cin>>N>>M;\n  for(int i=0; i<M; i++)\n  {\n    int u, v;\n    char c;\n    cin>>u>>v>>c;\n    u--;\n    v--;\n    edge[u].PB({v, c});\n    edge[v].PB({u, c});\n  }\n\n  calc();\n  if(abest == INF) cout<<-1<<endl;\n  else\n  {\n    cout<<abest<<endl;\n    for(int i=0; i<N; i++)\n      if(ans[i])\n        cout<<i+1<<\" \";\n    cout<<endl;\n  }\n\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dfs and similar",
+        "graphs"
+    ],
+    "dificulty": "2200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Graph Coloring.json",
+    "editorial_link": "https://codeforces.com//blog/entry/44408",
+    "editorial": "Examine the two choices for the final color separately, and pick the best option afterwards. Now suppose we want to color the edges red.\n\nEach vertex should be recolored at most once, since choosing a vertex two times changes nothing (even if the moves are not consecutive). Thus we need to split the vertices into two sets S and T, the vertices that are recolored and the vertices that are not affected, respectively. Let u and v be two vertices connected by a red edge. Then for the color to remain red, both u and v should belong to the same set (either S or T). On the other hand, if u and v are connected by a blue edge, then exactly one of the vertices should be recolored. In that case u and v should belong to different sets (one to S and the other to T).\n\nThis problem reduces to 0-1 graph coloring, which can be solved by either DFS or BFS. As the graph may be disconnected, we need to process the components separately. If any component does not have a 0-1 coloring, there is no solution. Otherwise we need to add the smallest of the two partite sets of the 0-1 coloring of this component to S, as we require S to be of minimum size."
+}

@@ -1,1 +1,107 @@
-{"link": "https://codeforces.com//contest/337/problem/D", "problemId": "3394", "problem_idx": "D", "shortId": "337D", "contest_number": "337", "problem_submissions": {"A": [12299505, 4287779, 4294787, 4288908, 4287593, 4287655, 4288715, 4287767, 4287597, 4289361, 4292228, 4297873, 4287659, 4288000, 4287546, 4288581, 4287692, 4288502], "E": [4297308, 4294426, 4299642, 7151846, 4296911, 4298400], "D": [4293164, 4295622, 4296185, 4297268, 4295484, 4297391, 4293932, 4295013, 4295647, 4297089, 4306458, 4315672, 4296531], "C": [4291413, 4292827, 4290434, 4291634, 4291820, 4293004, 4295602, 4293040, 4292436, 4290283, 4292545, 4293113, 4292103, 4291206, 4293573, 4292596], "B": [4289325, 4294106, 4292267, 4289473, 4288898, 4289573, 4288545, 4289624, 4292085, 4290934, 4289760, 4289731, 4290149, 4289634, 4289994, 4289149, 4302088]}, "name": "D. Book of Evil", "statement": "Paladin Manao caught the trail of the ancient Book of Evil in a swampy\r\narea. This area contains settlements numbered from 1 to . Moving through\r\nthe swamp is very difficult, so people tramped exactly paths. Each of\r\nthese paths connects some pair of settlements and is bidirectional.\r\nMoreover, it is possible to reach any settlement from any other one by\r\ntraversing one or several paths.The between two settlements is the\r\nminimum number of paths that have to be crossed to get from one\r\nsettlement to the other one. Manao knows that the Book of Evil has got a\r\ndamage range . This means that if the Book of Evil is located in some\r\nsettlement, its damage (for example, emergence of ghosts and werewolves)\r\naffects other settlements at distance or less from the settlement where\r\nthe Book resides.Manao has heard of settlements affected by the Book of\r\nEvil. Their numbers are . Note that the Book may be affecting other\r\nsettlements as well, but this has not been detected yet. Manao wants to\r\ndetermine which settlements may contain the Book. Help him with this\r\ndifficult task.\r\n", "solutions": ["#include <algorithm>\n#include <cstring>\n#include <cstdlib>\n#include <cstdio>\n#define N 100010\n#define For(i,x,y) for (i=x;i<=y;i++)\nusing namespace std;\nint i,j,k,n,m,d,t,an,x,y;\nint ff[N],head[N],a[N*2],next[N*2],g[N],fa[N],dep[N];\ninline void add(int x,int y) {\n    a[++t]=y,next[t]=head[x],head[x]=t;\n    a[++t]=x,next[t]=head[y],head[y]=t;\n}\ninline void bfs() {\n    int l,v;\n    g[*g=l=1]=1;\n    for (;l<=*g;l++)\n    for (v=head[g[l]];v;v=next[v])\n    if (a[v]!=fa[g[l]]) {\n        g[++*g]=a[v]; fa[a[v]]=g[l];\n    }\n    memset(dep,130,sizeof(dep));\n    for (l--;l;l--) {\n        k=g[l];\n        if (ff[k]) dep[k]=0;\n        for (v=head[k];v;v=next[v])\n        if (a[v]!=fa[k]) dep[k]=max(dep[k],dep[a[v]]+1);\n    }\n}\nvoid dfs(int x,int y) {\n    if (max(dep[x],y)<=d) an++;\n    int v,ma,maa;\n    ma=maa=-N; if (ff[x]) y=max(y,0);\n    for (v=head[x];v;v=next[v])\n    if (a[v]!=fa[x]) {\n        if (dep[a[v]]>ma) maa=ma,ma=dep[a[v]];\n        else maa=max(maa,dep[a[v]]);\n    }\n    for (v=head[x];v;v=next[v])\n    if (a[v]!=fa[x]) {\n        int A=dep[a[v]]==ma?maa:ma;\n        dfs(a[v],max(y,A+1)+1);\n    }\n}\nint main() {\n    scanf(\"%d%d%d\",&n,&m,&d);\n    For(i,1,m) scanf(\"%d\",&k),ff[k]=1;\n    For(i,1,n-1) {\n        scanf(\"%d%d\",&x,&y); add(x,y);\n    }\n    bfs();\n    dfs(1,-N);\n    printf(\"%d\\n\",an);\n    return 0;\n}"], "input": "", "output": "", "tags": ["dfs and similar", "divide and conquer", "dp", "trees"], "dificulty": "2000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/337/problem/D",
+    "problemId": "3394",
+    "problem_idx": "D",
+    "shortId": "337D",
+    "contest_number": "337",
+    "problem_submissions": {
+        "A": [
+            12299505,
+            4287779,
+            4294787,
+            4288908,
+            4287593,
+            4287655,
+            4288715,
+            4287767,
+            4287597,
+            4289361,
+            4292228,
+            4297873,
+            4287659,
+            4288000,
+            4287546,
+            4288581,
+            4287692,
+            4288502
+        ],
+        "E": [
+            4297308,
+            4294426,
+            4299642,
+            7151846,
+            4296911,
+            4298400
+        ],
+        "D": [
+            4293164,
+            4295622,
+            4296185,
+            4297268,
+            4295484,
+            4297391,
+            4293932,
+            4295013,
+            4295647,
+            4297089,
+            4306458,
+            4315672,
+            4296531
+        ],
+        "C": [
+            4291413,
+            4292827,
+            4290434,
+            4291634,
+            4291820,
+            4293004,
+            4295602,
+            4293040,
+            4292436,
+            4290283,
+            4292545,
+            4293113,
+            4292103,
+            4291206,
+            4293573,
+            4292596
+        ],
+        "B": [
+            4289325,
+            4294106,
+            4292267,
+            4289473,
+            4288898,
+            4289573,
+            4288545,
+            4289624,
+            4292085,
+            4290934,
+            4289760,
+            4289731,
+            4290149,
+            4289634,
+            4289994,
+            4289149,
+            4302088
+        ]
+    },
+    "name": "D. Book of Evil",
+    "statement": "Paladin Manao caught the trail of the ancient Book of Evil in a swampy\r\narea. This area contains settlements numbered from 1 to . Moving through\r\nthe swamp is very difficult, so people tramped exactly paths. Each of\r\nthese paths connects some pair of settlements and is bidirectional.\r\nMoreover, it is possible to reach any settlement from any other one by\r\ntraversing one or several paths.The between two settlements is the\r\nminimum number of paths that have to be crossed to get from one\r\nsettlement to the other one. Manao knows that the Book of Evil has got a\r\ndamage range . This means that if the Book of Evil is located in some\r\nsettlement, its damage (for example, emergence of ghosts and werewolves)\r\naffects other settlements at distance or less from the settlement where\r\nthe Book resides.Manao has heard of settlements affected by the Book of\r\nEvil. Their numbers are . Note that the Book may be affecting other\r\nsettlements as well, but this has not been detected yet. Manao wants to\r\ndetermine which settlements may contain the Book. Help him with this\r\ndifficult task.\r\n",
+    "solutions": [
+        "#include <algorithm>\n#include <cstring>\n#include <cstdlib>\n#include <cstdio>\n#define N 100010\n#define For(i,x,y) for (i=x;i<=y;i++)\nusing namespace std;\nint i,j,k,n,m,d,t,an,x,y;\nint ff[N],head[N],a[N*2],next[N*2],g[N],fa[N],dep[N];\ninline void add(int x,int y) {\n    a[++t]=y,next[t]=head[x],head[x]=t;\n    a[++t]=x,next[t]=head[y],head[y]=t;\n}\ninline void bfs() {\n    int l,v;\n    g[*g=l=1]=1;\n    for (;l<=*g;l++)\n    for (v=head[g[l]];v;v=next[v])\n    if (a[v]!=fa[g[l]]) {\n        g[++*g]=a[v]; fa[a[v]]=g[l];\n    }\n    memset(dep,130,sizeof(dep));\n    for (l--;l;l--) {\n        k=g[l];\n        if (ff[k]) dep[k]=0;\n        for (v=head[k];v;v=next[v])\n        if (a[v]!=fa[k]) dep[k]=max(dep[k],dep[a[v]]+1);\n    }\n}\nvoid dfs(int x,int y) {\n    if (max(dep[x],y)<=d) an++;\n    int v,ma,maa;\n    ma=maa=-N; if (ff[x]) y=max(y,0);\n    for (v=head[x];v;v=next[v])\n    if (a[v]!=fa[x]) {\n        if (dep[a[v]]>ma) maa=ma,ma=dep[a[v]];\n        else maa=max(maa,dep[a[v]]);\n    }\n    for (v=head[x];v;v=next[v])\n    if (a[v]!=fa[x]) {\n        int A=dep[a[v]]==ma?maa:ma;\n        dfs(a[v],max(y,A+1)+1);\n    }\n}\nint main() {\n    scanf(\"%d%d%d\",&n,&m,&d);\n    For(i,1,m) scanf(\"%d\",&k),ff[k]=1;\n    For(i,1,n-1) {\n        scanf(\"%d%d\",&x,&y); add(x,y);\n    }\n    bfs();\n    dfs(1,-N);\n    printf(\"%d\\n\",an);\n    return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dfs and similar",
+        "divide and conquer",
+        "dp",
+        "trees"
+    ],
+    "dificulty": "2000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Book of Evil.json",
+    "editorial_link": "https://codeforces.com//blog/entry/8629",
+    "editorial": "Obviously, in graph theory language our problem is: given a tree with n\r\nvertices, m of which are marked, find the number of vertices which are\r\nat most distance d apart from each of the marked vertices. Let us hang\r\nthe tree by some vertex r, that is, assume that it is a rooted tree with\r\nroot in vertex r. Let us also rephrase the condition imposed on sought\r\nvertices: we need to count such vertices v that the maximum distance\r\nfrom v to a marked vertex is at most d. For any inner vertex v, the\r\nmarked vertex which is the farthest from it is either in the subtree of\r\nv or outside it in the latter case the path from v to the farthest\r\nmarked vertex traverses the parent of v. Using this observation, we can\r\nrecompute the distances to the farthest marked vertices when transiting\r\nfrom a vertex to its child. First, we will compute the distance from\r\nevery vertex v to the farthest marked vertex within the subtree of v.\r\nLet us call this distance distDown[v]. The values of distDown[] can be\r\ncomputed in a single depth-first search: for each leaf of the tree this\r\ndistance is either 0 (when the leaf is marked) or nominal negative\r\ninfinity (when the leaf is not marked), and for each inner vertex v\r\ndistDown[v]=max(distDown[child1], distDown[child2], ...,\r\ndistDown[childK])+1, where childi are the children of v. Now we will\r\ncompute the distances from each vertex to the farthest marked vertex\r\noutside its subtree. Let\u00e2\u0080\u0099s denote this distance with distUp[v]. We will\r\nuse DFS again to compute values of distUp[]. For the root, distUp[r] is\r\nequal to nominal negative infinity, and for any other vertex v there are\r\ntwo cases: either the farthest marked vertex is located in the subtree\r\nof v-s parent p, or it is even \"farther\", i.e., the path to it traverses\r\nvertex p-s parent. In the first case, the distance from v to such vertex\r\nis equal to max(distDown[sibling1], ..., distDown[siblingK])+2, where\r\nsiblingi are the brothers (other children of the parent) of vertex v. In\r\nthe second case, it is equal to distUp[p]+1. Thus, distUp[v] is equal to\r\nthe maximum of these two values. Note that you need to be clever to\r\nperform the computations in the first case in overall linear time. For\r\nthis, you can find the maximum max1 and second maximum max2 of values\r\ndistDown[sibling1], ..., distDown[siblingK]. After that, when\r\ndistDown[v] < max1, we have max(distDown[sibling1], ...,\r\ndistDown[siblingK])=max1, otherwise we have distDown[v] = max1 and\r\nmax(distDown[sibling1], ..., distDown[siblingK])=max2. After computing\r\ndistDown[] distUp[], it is easy to derive the answers: it is the count\r\nof such vertices v that distDown[v] <= d && distUp[v] <= d. You can\r\ncheck 4302127 for an implementation of the described approach.\r\n"
+}

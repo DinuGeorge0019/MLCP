@@ -1,1 +1,95 @@
-{"link": "https://codeforces.com//contest/311/problem/C", "problemId": "3070", "problem_idx": "C", "shortId": "311C", "contest_number": "311", "problem_submissions": {"D": [3779247, 3776962, 3778512, 3778294, 7187096, 3778596, 3778655, 3779595, 3782423, 3776852, 3786173, 3776817, 3777538, 3777530, 3777687, 3778930, 3778715, 3781988, 3781985, 3780451, 3778559], "C": [3778239, 3780359, 3778509, 3777340, 3780975], "A": [3773410, 3772638, 3772385, 3772049, 3772839, 3772053, 3772233, 3773330, 3772046, 3773286, 3772169, 3772655, 3772327, 3772092, 3778118, 3777958, 3772079, 3772167, 3778901], "B": [3779559, 3776732, 3776480, 3777959, 3776688, 3778706, 3777594, 3778546], "E": [3786260, 3786243, 3779354, 3780972, 3779369]}, "name": "C. Fetch the Treasure", "statement": "Rainbow built cells in a row that are numbered from 1 to from left to\r\nright. There are cells with treasure. We call each of these cells\r\n\"Treasure Cell\". The -th \"Treasure Cell\" is the -th cell and the value\r\nof treasure in it is dollars.Then, Freda went in the first cell. For\r\nnow, she can go just cells forward, or return to the first cell. That\r\nmeans Freda was able to reach the 1st, ()-th, ()-th, ()-th cells and so\r\non.Then Rainbow gave Freda operations. Each operation is one of the\r\nfollowing three types: Add another method : she can also go just cells\r\nforward at any moment. For example, initially she has only one method .\r\nIf at some moment she has methods then she can reach all the cells with\r\nnumber in form , where some non-negative integer. Reduce the value of\r\nthe treasure in the -th \"Treasure Cell\" by dollars. In other words, to\r\napply assignment . Ask the value of the most valuable treasure among the\r\ncells Freda can reach. If Freda cannot reach any cell with the treasure\r\nthen consider the value of the most valuable treasure equal to 0, and do\r\nnothing. Otherwise take the most valuable treasure away. If several\r\n\"Treasure Cells\" have the most valuable treasure, take the \"Treasure\r\nCell\" with the minimum number (not necessarily with the minimum number\r\nof cell). After that the total number of cells with a treasure is\r\ndecreased by one. As a programmer, you are asked by Freda to write a\r\nprogram to answer each query.\r\n", "solutions": ["#include<stdio.h>\n#include<iostream>\n#include<string.h>\n#include<stdlib.h>\n#include<algorithm>\n#include<vector>\n#include<queue>\n#include<set>\nusing namespace std;\n#define fr(i,n) for(int i=0;i<n;i++)\n#define fo(i,n) for(int i=1;i<=n;i++)\n#define fe(i,n) for(__typeof(n.begin()) i=n.begin();i!=n.end();i++)\ntypedef long long ll;\nint w[100020];\nll d[10020],p[100020];\nbool v[10020];\nstruct cmp{\n\tbool operator()(int a,int b)\n\t{\n\t\tif(w[a]!=w[b])\n\t\t\treturn w[a]>w[b];\n\t\treturn a<b;\n\t}\n};\nset<int,cmp>s;\nvector<ll>a;\nint k,n;\nvoid add(ll x)\n{\n\ta.push_back(x);\n\tpriority_queue<pair<ll,int>,vector<pair<ll,int> >,greater<pair<ll, int> > >q;\n\tmemset(d,0x3f,sizeof d);\n\tmemset(v,0,sizeof v);\n\td[0]=0;\n\tq.push(make_pair(0,0));\n\tfor(;q.size();)\n\t{\n\t\tint x=q.top().second;\n\t\tq.pop();\n\t\tif(v[x])\n\t\t\tcontinue;\n\t\tv[x]=true;\n\t\tfe(i,a)\n\t\t{\n\t\t\tint y=(x+*i)%k;\n\t\t\tif(d[x]+*i<d[y])\n\t\t\t{\n\t\t\t\td[y]=d[x]+*i;\n\t\t\t\tq.push(make_pair(d[y],y));\n\t\t\t}\n\t\t}\n\t}\n\ts.clear();\n\tfor(int i=1;i<=n;i++)\n\t\tif(p[i]>=d[p[i]%k])\n\t\t\ts.insert(i);\n}\nint main()\n{\n\tll q,m;\n\tcin>>q>>n>>m>>k;\n\tfor(int i=1;i<=n;i++)\n\t\tscanf(\"%I64d%d\",p+i,w+i),p[i]--;\n\tadd(0);\n\tfor(;m--;)\n\t{\n\t\tint o;\n\t\tscanf(\"%d\",&o);\n\t\tif(o==3)\n\t\t{\n\t\t\tif(s.empty())\n\t\t\t\tputs(\"0\");\n\t\t\telse\n\t\t\t{\n\t\t\t\tint x=*s.begin();\n\t\t\t\tcout<<w[x]<<endl;\n\t\t\t\ts.erase(x);\n\t\t\t\tw[x]=0;\n\t\t\t\ts.insert(x);\n\t\t\t}\n\t\t}\n\t\telse if(o==1)\n\t\t{\n\t\t\tll x;\n\t\t\tcin>>x;\n\t\t\tadd(x);\n\t\t}\n\t\telse\n\t\t{\n\t\t\tint x,y,b;\n\t\t\tcin>>x>>y;\n\t\t\tb=s.find(x)!=s.end();\n\t\t\tif(b)\n\t\t\t\ts.erase(x);\n\t\t\tw[x]-=y;\n\t\t\tif(b)\n\t\t\t\ts.insert(x);\n\t\t}\n\t}\n\treturn 0; \n}"], "input": "", "output": "", "tags": ["brute force", "data structures", "graphs", "shortest paths"], "dificulty": "2500", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/311/problem/C",
+    "problemId": "3070",
+    "problem_idx": "C",
+    "shortId": "311C",
+    "contest_number": "311",
+    "problem_submissions": {
+        "D": [
+            3779247,
+            3776962,
+            3778512,
+            3778294,
+            7187096,
+            3778596,
+            3778655,
+            3779595,
+            3782423,
+            3776852,
+            3786173,
+            3776817,
+            3777538,
+            3777530,
+            3777687,
+            3778930,
+            3778715,
+            3781988,
+            3781985,
+            3780451,
+            3778559
+        ],
+        "C": [
+            3778239,
+            3780359,
+            3778509,
+            3777340,
+            3780975
+        ],
+        "A": [
+            3773410,
+            3772638,
+            3772385,
+            3772049,
+            3772839,
+            3772053,
+            3772233,
+            3773330,
+            3772046,
+            3773286,
+            3772169,
+            3772655,
+            3772327,
+            3772092,
+            3778118,
+            3777958,
+            3772079,
+            3772167,
+            3778901
+        ],
+        "B": [
+            3779559,
+            3776732,
+            3776480,
+            3777959,
+            3776688,
+            3778706,
+            3777594,
+            3778546
+        ],
+        "E": [
+            3786260,
+            3786243,
+            3779354,
+            3780972,
+            3779369
+        ]
+    },
+    "name": "C. Fetch the Treasure",
+    "statement": "Rainbow built cells in a row that are numbered from 1 to from left to\r\nright. There are cells with treasure. We call each of these cells\r\n\"Treasure Cell\". The -th \"Treasure Cell\" is the -th cell and the value\r\nof treasure in it is dollars.Then, Freda went in the first cell. For\r\nnow, she can go just cells forward, or return to the first cell. That\r\nmeans Freda was able to reach the 1st, ()-th, ()-th, ()-th cells and so\r\non.Then Rainbow gave Freda operations. Each operation is one of the\r\nfollowing three types: Add another method : she can also go just cells\r\nforward at any moment. For example, initially she has only one method .\r\nIf at some moment she has methods then she can reach all the cells with\r\nnumber in form , where some non-negative integer. Reduce the value of\r\nthe treasure in the -th \"Treasure Cell\" by dollars. In other words, to\r\napply assignment . Ask the value of the most valuable treasure among the\r\ncells Freda can reach. If Freda cannot reach any cell with the treasure\r\nthen consider the value of the most valuable treasure equal to 0, and do\r\nnothing. Otherwise take the most valuable treasure away. If several\r\n\"Treasure Cells\" have the most valuable treasure, take the \"Treasure\r\nCell\" with the minimum number (not necessarily with the minimum number\r\nof cell). After that the total number of cells with a treasure is\r\ndecreased by one. As a programmer, you are asked by Freda to write a\r\nprogram to answer each query.\r\n",
+    "solutions": [
+        "#include<stdio.h>\n#include<iostream>\n#include<string.h>\n#include<stdlib.h>\n#include<algorithm>\n#include<vector>\n#include<queue>\n#include<set>\nusing namespace std;\n#define fr(i,n) for(int i=0;i<n;i++)\n#define fo(i,n) for(int i=1;i<=n;i++)\n#define fe(i,n) for(__typeof(n.begin()) i=n.begin();i!=n.end();i++)\ntypedef long long ll;\nint w[100020];\nll d[10020],p[100020];\nbool v[10020];\nstruct cmp{\n\tbool operator()(int a,int b)\n\t{\n\t\tif(w[a]!=w[b])\n\t\t\treturn w[a]>w[b];\n\t\treturn a<b;\n\t}\n};\nset<int,cmp>s;\nvector<ll>a;\nint k,n;\nvoid add(ll x)\n{\n\ta.push_back(x);\n\tpriority_queue<pair<ll,int>,vector<pair<ll,int> >,greater<pair<ll, int> > >q;\n\tmemset(d,0x3f,sizeof d);\n\tmemset(v,0,sizeof v);\n\td[0]=0;\n\tq.push(make_pair(0,0));\n\tfor(;q.size();)\n\t{\n\t\tint x=q.top().second;\n\t\tq.pop();\n\t\tif(v[x])\n\t\t\tcontinue;\n\t\tv[x]=true;\n\t\tfe(i,a)\n\t\t{\n\t\t\tint y=(x+*i)%k;\n\t\t\tif(d[x]+*i<d[y])\n\t\t\t{\n\t\t\t\td[y]=d[x]+*i;\n\t\t\t\tq.push(make_pair(d[y],y));\n\t\t\t}\n\t\t}\n\t}\n\ts.clear();\n\tfor(int i=1;i<=n;i++)\n\t\tif(p[i]>=d[p[i]%k])\n\t\t\ts.insert(i);\n}\nint main()\n{\n\tll q,m;\n\tcin>>q>>n>>m>>k;\n\tfor(int i=1;i<=n;i++)\n\t\tscanf(\"%I64d%d\",p+i,w+i),p[i]--;\n\tadd(0);\n\tfor(;m--;)\n\t{\n\t\tint o;\n\t\tscanf(\"%d\",&o);\n\t\tif(o==3)\n\t\t{\n\t\t\tif(s.empty())\n\t\t\t\tputs(\"0\");\n\t\t\telse\n\t\t\t{\n\t\t\t\tint x=*s.begin();\n\t\t\t\tcout<<w[x]<<endl;\n\t\t\t\ts.erase(x);\n\t\t\t\tw[x]=0;\n\t\t\t\ts.insert(x);\n\t\t\t}\n\t\t}\n\t\telse if(o==1)\n\t\t{\n\t\t\tll x;\n\t\t\tcin>>x;\n\t\t\tadd(x);\n\t\t}\n\t\telse\n\t\t{\n\t\t\tint x,y,b;\n\t\t\tcin>>x>>y;\n\t\t\tb=s.find(x)!=s.end();\n\t\t\tif(b)\n\t\t\t\ts.erase(x);\n\t\t\tw[x]-=y;\n\t\t\tif(b)\n\t\t\t\ts.insert(x);\n\t\t}\n\t}\n\treturn 0; \n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "data structures",
+        "graphs",
+        "shortest paths"
+    ],
+    "dificulty": "2500",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Fetch the Treasure.json",
+    "editorial_link": "https://codeforces.com//blog/entry/7785",
+    "editorial": "Firstly, we solve such a problem: if we can go exactly k,k1,k2 or kp\r\ncells forward each step, what cells can we reach? We divide the H cells\r\ninto k groups: Group 0,1 k-1. The i-th cell should be in Group (i mod\r\nk). Let D[i] be the minimum cell we can reach in Group i. Then we can\r\nreach all the cells which number are bigger then D[i] in Group i. Regard\r\nthe groups as points. Regard k,k1,k2 kp as edges. And use a\r\nShortest-Path Algorithm to calculate all D[i]. Notice that there are at\r\nmost 20 operations of type 1, we are able to run such an algorithm after\r\neach of these operations. The total time complexity is O(20*k*20*log(k))\r\nwith Dijkstra. Secondly, we build a binary-heap to solve operations of\r\ntype 2 and 3. These are basic operations of binary-heap. The time\r\ncomplexity is O(NlogN). In C++, you can also use priority_queue from STL\r\nand lazy-tags. So we can solve the whole problem in O(400klogk+NlogN).\r\n"
+}

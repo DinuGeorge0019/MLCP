@@ -1,1 +1,85 @@
-{"link": "https://codeforces.com//contest/418/problem/B", "problemId": "8551", "problem_idx": "B", "shortId": "418B", "contest_number": "418", "problem_submissions": {"D": [6394549, 6390597, 6393422, 6452946, 6395793], "C": [6387160, 6388719, 6391450, 6395992, 6388957, 6393584, 6389213, 6389069, 6390380, 6390081, 6390308, 6391447, 6393284, 6391833], "B": [6386136, 6387276, 6386703, 6387216, 6390504, 6387795, 6392656, 6386870, 6387421, 6390739, 6387737, 6388222, 6388434, 6387453, 6389931, 6386999], "A": [6385669, 6397608, 6397606, 6385690, 6385811, 6385631, 6385706, 6385677, 6385655, 6385954, 6388328, 6385939, 6385795, 6386073, 6385780, 6385770]}, "name": "B. Cunning Gena", "statement": "A boy named Gena really wants to get to the \"Russian Code Cup\" finals,\r\nor at least get a t-shirt. But the offered problems are too complex, so\r\nhe made an arrangement with his friends that they will solve the\r\nproblems for him.The participants are offered problems on the contest.\r\nFor each friend, Gena knows what problems he can solve. But Gena\u2019s\r\nfriends won\u2019t agree to help Gena for nothing: the -th friend asks Gena\r\nrubles for his help he can. Also, the friend agreed to write a code for\r\nGena only if Gena\u2019s computer is connected to at least monitors, each\r\nmonitor costs rubles.Gena is careful with money, so he wants to spend as\r\nlittle money as possible to solve all the problems. Help Gena, tell him\r\nhow to spend the smallest possible amount of money. Initially, there\u2019s\r\nno monitors connected to Gena\u2019s computer.\r\n", "solutions": ["#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <set>\n#include <vector>\n#include <map>\n#include <cmath>\n#include <algorithm>\n#include <memory.h>\n#include <string>\n#include <cstring>\n#include <sstream>\n#include <cstdlib>\n#include <ctime>\n#include <cassert>\n\nusing namespace std;\n\nconst long long inf = (long long)4e18;\n\nconst int N = 12345;\nconst int T = (1 << 21);\n\nint x[N], k[N], mask[N];\nlong long f[T];\n\nint main() {\n  int n, m, b;\n  scanf(\"%d %d %d\", &n, &m, &b);\n  for (int i = 0; i < n; i++) {\n    int foo;\n    scanf(\"%d %d %d\", x + i, k + i, &foo);\n    mask[i] = 0;\n    while (foo--) {\n      int bar;\n      scanf(\"%d\", &bar);\n      mask[i] |= (1 << (bar - 1));\n    }\n  }\n  for (int i = 0; i < n; i++)\n    for (int j = i + 1; j < n; j++)\n      if (k[i] > k[j]) {\n        swap(x[i], x[j]);\n        swap(k[i], k[j]);\n        swap(mask[i], mask[j]);\n      }\n  for (int i = 0; i < (1 << m); i++) f[i] = inf;\n  f[0] = 0;\n  long long ans = inf;\n  for (int i = 0; i < n; i++) {\n    for (int t = 0; t < (1 << m); t++)\n      if (f[t] + x[i] < f[t | mask[i]]) {\n        f[t | mask[i]] = f[t] + x[i];\n      }\n    long long cur = f[(1 << m) - 1];\n    cur += 1LL * k[i] * b;\n    if (cur < ans) ans = cur;\n  }\n  cout << (ans == inf ? -1 : ans) << endl;\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["bitmasks", "dp", "sortings"], "dificulty": "1900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/418/problem/B",
+    "problemId": "8551",
+    "problem_idx": "B",
+    "shortId": "418B",
+    "contest_number": "418",
+    "problem_submissions": {
+        "D": [
+            6394549,
+            6390597,
+            6393422,
+            6452946,
+            6395793
+        ],
+        "C": [
+            6387160,
+            6388719,
+            6391450,
+            6395992,
+            6388957,
+            6393584,
+            6389213,
+            6389069,
+            6390380,
+            6390081,
+            6390308,
+            6391447,
+            6393284,
+            6391833
+        ],
+        "B": [
+            6386136,
+            6387276,
+            6386703,
+            6387216,
+            6390504,
+            6387795,
+            6392656,
+            6386870,
+            6387421,
+            6390739,
+            6387737,
+            6388222,
+            6388434,
+            6387453,
+            6389931,
+            6386999
+        ],
+        "A": [
+            6385669,
+            6397608,
+            6397606,
+            6385690,
+            6385811,
+            6385631,
+            6385706,
+            6385677,
+            6385655,
+            6385954,
+            6388328,
+            6385939,
+            6385795,
+            6386073,
+            6385780,
+            6385770
+        ]
+    },
+    "name": "B. Cunning Gena",
+    "statement": "A boy named Gena really wants to get to the \"Russian Code Cup\" finals,\r\nor at least get a t-shirt. But the offered problems are too complex, so\r\nhe made an arrangement with his friends that they will solve the\r\nproblems for him.The participants are offered problems on the contest.\r\nFor each friend, Gena knows what problems he can solve. But Gena\u2019s\r\nfriends won\u2019t agree to help Gena for nothing: the -th friend asks Gena\r\nrubles for his help he can. Also, the friend agreed to write a code for\r\nGena only if Gena\u2019s computer is connected to at least monitors, each\r\nmonitor costs rubles.Gena is careful with money, so he wants to spend as\r\nlittle money as possible to solve all the problems. Help Gena, tell him\r\nhow to spend the smallest possible amount of money. Initially, there\u2019s\r\nno monitors connected to Gena\u2019s computer.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <set>\n#include <vector>\n#include <map>\n#include <cmath>\n#include <algorithm>\n#include <memory.h>\n#include <string>\n#include <cstring>\n#include <sstream>\n#include <cstdlib>\n#include <ctime>\n#include <cassert>\n\nusing namespace std;\n\nconst long long inf = (long long)4e18;\n\nconst int N = 12345;\nconst int T = (1 << 21);\n\nint x[N], k[N], mask[N];\nlong long f[T];\n\nint main() {\n  int n, m, b;\n  scanf(\"%d %d %d\", &n, &m, &b);\n  for (int i = 0; i < n; i++) {\n    int foo;\n    scanf(\"%d %d %d\", x + i, k + i, &foo);\n    mask[i] = 0;\n    while (foo--) {\n      int bar;\n      scanf(\"%d\", &bar);\n      mask[i] |= (1 << (bar - 1));\n    }\n  }\n  for (int i = 0; i < n; i++)\n    for (int j = i + 1; j < n; j++)\n      if (k[i] > k[j]) {\n        swap(x[i], x[j]);\n        swap(k[i], k[j]);\n        swap(mask[i], mask[j]);\n      }\n  for (int i = 0; i < (1 << m); i++) f[i] = inf;\n  f[0] = 0;\n  long long ans = inf;\n  for (int i = 0; i < n; i++) {\n    for (int t = 0; t < (1 << m); t++)\n      if (f[t] + x[i] < f[t | mask[i]]) {\n        f[t | mask[i]] = f[t] + x[i];\n      }\n    long long cur = f[(1 << m) - 1];\n    cur += 1LL * k[i] * b;\n    if (cur < ans) ans = cur;\n  }\n  cout << (ans == inf ? -1 : ans) << endl;\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "bitmasks",
+        "dp",
+        "sortings"
+    ],
+    "dificulty": "1900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Cunning Gena.json",
+    "editorial_link": "https://codeforces.com//blog/entry/11730",
+    "editorial": "Let us sort the friends by the number of the monitors in the increasing\r\norder. Afterwards we will calculate the dp on the masks: the minimal\r\namount of money Gena should spend to solve some subset of problems, if\r\nwe take first friends. Then the answer we should compare with the answer\r\nfor first friends plus the number of the monitors, which the -th friend\r\nneeds. Is is not hard to see, that if we consider the friends in this\r\norder consequently, then we can recalc dp like in the knapsack problem.\r\nThe running time of this algorithm is . Solution pashka: 6396347\r\n"
+}

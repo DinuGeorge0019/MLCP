@@ -1,1 +1,99 @@
-{"link": "https://codeforces.com//contest/294/problem/C", "problemId": "2808", "problem_idx": "C", "shortId": "294C", "contest_number": "294", "problem_submissions": {"D": [3489455, 3490392], "E": [3487299, 3487883, 3488957, 3485802, 3487525, 3494240, 3497332, 3493600, 3489972], "C": [3486147, 3485304, 3486088, 3488625, 3489289, 3484703, 3483687, 3487009, 3485239, 3485635, 3486050, 3485757, 3485793, 3486458, 3486345, 3485667, 3486505, 3486019], "A": [3482812, 3482475, 3482613, 3488228, 3482534, 3482882, 3482485, 3482654, 3482539, 3482697, 3482561, 3482633, 3483083, 3483097, 3483409, 3482585, 3483087, 3482816], "B": [3483440, 3483787, 3487702, 3490250, 3483629, 3484145, 3483917, 3483569, 3484549, 3484018, 3484016, 3483940, 3484588, 3484893, 3483567, 3484832, 3485008]}, "name": "C. Shaass and Lights", "statement": "There are lights aligned in a row. These lights are numbered to from\r\nleft to right. Initially some of the lights are switched on. Shaass\r\nwants to switch all the lights on. At each step he can switch a light on\r\n(this light should be switched off at that moment) if there\u2019s at least\r\none adjacent light which is already switched on. He knows the initial\r\nstate of lights and he\u2019s wondering how many different ways there exist\r\nto switch all the lights on. Please find the required number of ways\r\nmodulo .\r\n", "solutions": ["#include <cstdio>\n#include <cstring>\n#include <algorithm>\nusing namespace std;\n#define mod 1000000007\ntypedef long long LL;\nLL mod_exp(LL a,int b)\n{\n    LL res=1;\n    while(b){\n        if(b&1) res=res*a%mod;\n        a=a*a%mod;\n        b>>=1;\n    }\n    return res;\n}\nLL fac[10000],nfac[10000];\nint flag[1010];\nint a[1000];\nint main()\n{\n    int n, m;\n    fac[1]=nfac[1]=1;\n    fac[0]=nfac[0]=1;\n    for(int i=2;i<=1000;i++){\n        fac[i]=fac[i-1]*i%mod;\n        nfac[i]=mod_exp(fac[i],mod-2);\n    }\n    scanf(\"%d%d\", &n, &m);\n    for(int i=0;i<m;i++)\n        scanf(\"%d\", &a[i]);\n    sort(a, a + m);\n    long long ans = 1;\n    for (int i = 1; i < m; ++i)\n    {\n        if (a[i] > a[i - 1] + 1)\n            ans *= mod_exp(2, a[i] - a[i - 1] - 2);\n        ans %= mod;\n    }\n    for (int i = 1; i < m; ++i)\n        ans = ans * nfac[a[i] - a[i - 1] - 1] % mod;\n    ans = ans * nfac[a[0] - 1] % mod * nfac[n - a[m - 1]] % mod;\n    ans = ans * fac[n - m] % mod;\n    printf(\"%I64d\\n\", ans);\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["combinatorics", "number theory"], "dificulty": "1900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/294/problem/C",
+    "problemId": "2808",
+    "problem_idx": "C",
+    "shortId": "294C",
+    "contest_number": "294",
+    "problem_submissions": {
+        "D": [
+            3489455,
+            3490392
+        ],
+        "E": [
+            3487299,
+            3487883,
+            3488957,
+            3485802,
+            3487525,
+            3494240,
+            3497332,
+            3493600,
+            3489972
+        ],
+        "C": [
+            3486147,
+            3485304,
+            3486088,
+            3488625,
+            3489289,
+            3484703,
+            3483687,
+            3487009,
+            3485239,
+            3485635,
+            3486050,
+            3485757,
+            3485793,
+            3486458,
+            3486345,
+            3485667,
+            3486505,
+            3486019
+        ],
+        "A": [
+            3482812,
+            3482475,
+            3482613,
+            3488228,
+            3482534,
+            3482882,
+            3482485,
+            3482654,
+            3482539,
+            3482697,
+            3482561,
+            3482633,
+            3483083,
+            3483097,
+            3483409,
+            3482585,
+            3483087,
+            3482816
+        ],
+        "B": [
+            3483440,
+            3483787,
+            3487702,
+            3490250,
+            3483629,
+            3484145,
+            3483917,
+            3483569,
+            3484549,
+            3484018,
+            3484016,
+            3483940,
+            3484588,
+            3484893,
+            3483567,
+            3484832,
+            3485008
+        ]
+    },
+    "name": "C. Shaass and Lights",
+    "statement": "There are lights aligned in a row. These lights are numbered to from\r\nleft to right. Initially some of the lights are switched on. Shaass\r\nwants to switch all the lights on. At each step he can switch a light on\r\n(this light should be switched off at that moment) if there\u2019s at least\r\none adjacent light which is already switched on. He knows the initial\r\nstate of lights and he\u2019s wondering how many different ways there exist\r\nto switch all the lights on. Please find the required number of ways\r\nmodulo .\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <cstring>\n#include <algorithm>\nusing namespace std;\n#define mod 1000000007\ntypedef long long LL;\nLL mod_exp(LL a,int b)\n{\n    LL res=1;\n    while(b){\n        if(b&1) res=res*a%mod;\n        a=a*a%mod;\n        b>>=1;\n    }\n    return res;\n}\nLL fac[10000],nfac[10000];\nint flag[1010];\nint a[1000];\nint main()\n{\n    int n, m;\n    fac[1]=nfac[1]=1;\n    fac[0]=nfac[0]=1;\n    for(int i=2;i<=1000;i++){\n        fac[i]=fac[i-1]*i%mod;\n        nfac[i]=mod_exp(fac[i],mod-2);\n    }\n    scanf(\"%d%d\", &n, &m);\n    for(int i=0;i<m;i++)\n        scanf(\"%d\", &a[i]);\n    sort(a, a + m);\n    long long ans = 1;\n    for (int i = 1; i < m; ++i)\n    {\n        if (a[i] > a[i - 1] + 1)\n            ans *= mod_exp(2, a[i] - a[i - 1] - 2);\n        ans %= mod;\n    }\n    for (int i = 1; i < m; ++i)\n        ans = ans * nfac[a[i] - a[i - 1] - 1] % mod;\n    ans = ans * nfac[a[0] - 1] % mod * nfac[n - a[m - 1]] % mod;\n    ans = ans * fac[n - m] % mod;\n    printf(\"%I64d\\n\", ans);\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "combinatorics",
+        "number theory"
+    ],
+    "dificulty": "1900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Shaass and Lights.json",
+    "editorial_link": "https://codeforces.com//blog/entry/7287",
+    "editorial": "I just want to solve the third sample of this problem for you and you\r\ncan figure out the rest by yourself. :) The third sample is .........\r\nwhere is a switched on lamp and . is a switched off lamp. As you can see\r\nwe have three different types of lights. The first three lights (Type\r\nA), the 5th to 8th lights (Type B) and the last three lights (Type C).\r\nWe have to switch on the lights three times for each type of lights.\r\nAside from the order of moves for each type there are possible\r\npermutations of the string AAABBBCCC which tells us how to combine the\r\nsteps of different types. Switching on the lights is done uniquely for\r\ntypes 1 and 3. But for type 2 each time we have to possible options\r\nuntil we\u00e2\u0080\u0099re left with one off light. So there are ways to do this. So\r\nthe answer would be 1680*1*4*1 = 6720. The general solution would be to\r\nfind all groups off consecutive switched off lamps and calculate the\r\nnumber of ways to combine all these groups. Then for each group you\r\nshould calculate in how many ways it can be solved. The implementation\r\nneeds some standard combinatorial computations which you can see here:\r\n3485187\r\n"
+}

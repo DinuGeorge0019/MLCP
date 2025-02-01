@@ -1,1 +1,87 @@
-{"link": "https://codeforces.com//contest/664/problem/D", "problemId": "55349", "problem_idx": "D", "shortId": "664D", "contest_number": "664", "problem_submissions": {"D": [17349142, 17352169, 17350410, 17346952, 17351161, 17351836, 17349679], "C": [17346765, 17347784, 17351763, 17370299, 17348428, 17347472, 17348750, 17349368, 17349547, 17348404, 17348571, 17349155, 17347963, 17348761, 17350390], "B": [17345534, 17345705, 17346660, 17348399, 17356817, 17346262, 17346481, 17346720, 17346607, 17346168, 17346552, 17347640, 17350189, 17347184, 17347057], "A": [17343935, 17344370, 17346020, 17343725, 17343734, 17344399, 17343237, 17344590, 17343732, 17344241, 17343738, 17343162, 17343568, 17343578, 17343700]}, "name": "D. Graph Coloring", "statement": "You are given an undirected graph that consists of vertices and edges.\r\nInitially, each edge is colored either red or blue. Each turn a player\r\npicks a single vertex and switches the color of edges incident to it.\r\nThat is, all red edges with an endpoint in this vertex change the color\r\nto blue, while all blue edges with an endpoint in this vertex change the\r\ncolor to red.Find the minimum possible number of moves required to make\r\nthe colors of all edges equal.\r\n", "solutions": ["#include <stdio.h>\n#include <vector>\n#include <algorithm>\n#include <queue>\n#include <string.h>\nusing namespace std;\n\nvector<pair<int, char>> graph[100005];\n\nbool visited[100005];\nbool flip[100005];\nint n, m;\nchar tc;\n\npair<vector<int>, bool> bfs(int node)\n{\n\tqueue<int> que;\n\tvector<int> fliped, nofliped;\n\tflip[node] = true;\n\tfliped.push_back(node);\n\tvisited[node] = true;\n\tque.push(node);\n\n\twhile (que.empty() == false)\n\t{\n\t\tint t = que.front();\n\t\tque.pop();\n\n\t\tfor (auto &&e : graph[t])\n\t\t{\n\t\t\tif (visited[e.first])\n\t\t\t{\n\t\t\t\tif ((e.second == tc) == (flip[t] ^ flip[e.first]))\n\t\t\t\t\treturn {};\n\t\t\t\tcontinue;\n\t\t\t}\n\t\t\tif ((tc == e.second) ^ flip[t])\n\t\t\t{\n\t\t\t\tflip[e.first] = false;\n\t\t\t\tnofliped.push_back(e.first);\n\t\t\t}\n\t\t\telse\n\t\t\t{\n\t\t\t\tflip[e.first] = true;\n\t\t\t\tfliped.push_back(e.first);\n\t\t\t}\n\t\t\tvisited[e.first] = true;\n\t\t\tque.push(e.first);\n\t\t}\n\t}\n\n\tif (fliped.size() > nofliped.size()) swap(fliped, nofliped);\n\treturn{ move(fliped), true };\n}\n\npair<vector<int>, bool> process()\n{\n\tvector<int> answer;\n\n\tmemset(visited, 0, sizeof(visited));\n\tmemset(flip, 0, sizeof(flip));\n\tfor (int i = 1; i <= n; i++)\n\t{\n\t\tif (visited[i]) continue;\n\t\tauto ret = bfs(i);\n\t\tif (ret.second == false) return{};\n\t\tanswer.insert(answer.end(), ret.first.begin(), ret.first.end());\n\t}\n\n\treturn{ move(answer), true };\n}\n\nint main()\n{\n\tscanf(\"%d%d\", &n, &m);\n\n\tfor (int i = 0; i < m; i++)\n\t{\n\t\tint a, b; char ch;\n\t\tscanf(\"%d%d %c\", &a, &b, &ch);\n\t\tgraph[a].emplace_back(b, ch);\n\t\tgraph[b].emplace_back(a, ch);\n\t}\n\n\t// try blue first\n\ttc = 'B';\n\tauto ret = process();\n\ttc = 'R';\n\tauto ret2 = process();\n\n\tif (ret.second == false && ret2.second == false)\n\t{\n\t\tprintf(\"-1\\n\");\n\t\treturn 0;\n\t}\n\n\tvector<int> ans;\n\tif (ret.second == false) ans = move(ret2.first);\n\telse if (ret2.second == false) ans = move(ret.first);\n\telse\n\t{\n\t\tif (ret.first.size() > ret2.first.size()) ans = move(ret2.first);\n\t\telse ans = move(ret.first);\n\t}\n\n\tprintf(\"%d\\n\", (int)ans.size());\n\tfor (int i : ans)\n\t{\n\t\tprintf(\"%d \", i);\n\t}\n\tprintf(\"\\n\");\n}"], "input": "", "output": "", "tags": ["2-sat", "dfs and similar", "dsu", "graphs"], "dificulty": "2200", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/664/problem/D",
+    "problemId": "55349",
+    "problem_idx": "D",
+    "shortId": "664D",
+    "contest_number": "664",
+    "problem_submissions": {
+        "D": [
+            17349142,
+            17352169,
+            17350410,
+            17346952,
+            17351161,
+            17351836,
+            17349679
+        ],
+        "C": [
+            17346765,
+            17347784,
+            17351763,
+            17370299,
+            17348428,
+            17347472,
+            17348750,
+            17349368,
+            17349547,
+            17348404,
+            17348571,
+            17349155,
+            17347963,
+            17348761,
+            17350390
+        ],
+        "B": [
+            17345534,
+            17345705,
+            17346660,
+            17348399,
+            17356817,
+            17346262,
+            17346481,
+            17346720,
+            17346607,
+            17346168,
+            17346552,
+            17347640,
+            17350189,
+            17347184,
+            17347057
+        ],
+        "A": [
+            17343935,
+            17344370,
+            17346020,
+            17343725,
+            17343734,
+            17344399,
+            17343237,
+            17344590,
+            17343732,
+            17344241,
+            17343738,
+            17343162,
+            17343568,
+            17343578,
+            17343700
+        ]
+    },
+    "name": "D. Graph Coloring",
+    "statement": "You are given an undirected graph that consists of vertices and edges.\r\nInitially, each edge is colored either red or blue. Each turn a player\r\npicks a single vertex and switches the color of edges incident to it.\r\nThat is, all red edges with an endpoint in this vertex change the color\r\nto blue, while all blue edges with an endpoint in this vertex change the\r\ncolor to red.Find the minimum possible number of moves required to make\r\nthe colors of all edges equal.\r\n",
+    "solutions": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\n#include <queue>\n#include <string.h>\nusing namespace std;\n\nvector<pair<int, char>> graph[100005];\n\nbool visited[100005];\nbool flip[100005];\nint n, m;\nchar tc;\n\npair<vector<int>, bool> bfs(int node)\n{\n\tqueue<int> que;\n\tvector<int> fliped, nofliped;\n\tflip[node] = true;\n\tfliped.push_back(node);\n\tvisited[node] = true;\n\tque.push(node);\n\n\twhile (que.empty() == false)\n\t{\n\t\tint t = que.front();\n\t\tque.pop();\n\n\t\tfor (auto &&e : graph[t])\n\t\t{\n\t\t\tif (visited[e.first])\n\t\t\t{\n\t\t\t\tif ((e.second == tc) == (flip[t] ^ flip[e.first]))\n\t\t\t\t\treturn {};\n\t\t\t\tcontinue;\n\t\t\t}\n\t\t\tif ((tc == e.second) ^ flip[t])\n\t\t\t{\n\t\t\t\tflip[e.first] = false;\n\t\t\t\tnofliped.push_back(e.first);\n\t\t\t}\n\t\t\telse\n\t\t\t{\n\t\t\t\tflip[e.first] = true;\n\t\t\t\tfliped.push_back(e.first);\n\t\t\t}\n\t\t\tvisited[e.first] = true;\n\t\t\tque.push(e.first);\n\t\t}\n\t}\n\n\tif (fliped.size() > nofliped.size()) swap(fliped, nofliped);\n\treturn{ move(fliped), true };\n}\n\npair<vector<int>, bool> process()\n{\n\tvector<int> answer;\n\n\tmemset(visited, 0, sizeof(visited));\n\tmemset(flip, 0, sizeof(flip));\n\tfor (int i = 1; i <= n; i++)\n\t{\n\t\tif (visited[i]) continue;\n\t\tauto ret = bfs(i);\n\t\tif (ret.second == false) return{};\n\t\tanswer.insert(answer.end(), ret.first.begin(), ret.first.end());\n\t}\n\n\treturn{ move(answer), true };\n}\n\nint main()\n{\n\tscanf(\"%d%d\", &n, &m);\n\n\tfor (int i = 0; i < m; i++)\n\t{\n\t\tint a, b; char ch;\n\t\tscanf(\"%d%d %c\", &a, &b, &ch);\n\t\tgraph[a].emplace_back(b, ch);\n\t\tgraph[b].emplace_back(a, ch);\n\t}\n\n\t// try blue first\n\ttc = 'B';\n\tauto ret = process();\n\ttc = 'R';\n\tauto ret2 = process();\n\n\tif (ret.second == false && ret2.second == false)\n\t{\n\t\tprintf(\"-1\\n\");\n\t\treturn 0;\n\t}\n\n\tvector<int> ans;\n\tif (ret.second == false) ans = move(ret2.first);\n\telse if (ret2.second == false) ans = move(ret.first);\n\telse\n\t{\n\t\tif (ret.first.size() > ret2.first.size()) ans = move(ret2.first);\n\t\telse ans = move(ret.first);\n\t}\n\n\tprintf(\"%d\\n\", (int)ans.size());\n\tfor (int i : ans)\n\t{\n\t\tprintf(\"%d \", i);\n\t}\n\tprintf(\"\\n\");\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "2-sat",
+        "dfs and similar",
+        "dsu",
+        "graphs"
+    ],
+    "dificulty": "2200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Graph Coloring.json",
+    "editorial_link": "https://codeforces.com//blog/entry/44408",
+    "editorial": "Examine the two choices for the final color separately, and pick the best option afterwards. Now suppose we want to color the edges red.\n\nEach vertex should be recolored at most once, since choosing a vertex two times changes nothing (even if the moves are not consecutive). Thus we need to split the vertices into two sets S and T, the vertices that are recolored and the vertices that are not affected, respectively. Let u and v be two vertices connected by a red edge. Then for the color to remain red, both u and v should belong to the same set (either S or T). On the other hand, if u and v are connected by a blue edge, then exactly one of the vertices should be recolored. In that case u and v should belong to different sets (one to S and the other to T).\n\nThis problem reduces to 0-1 graph coloring, which can be solved by either DFS or BFS. As the graph may be disconnected, we need to process the components separately. If any component does not have a 0-1 coloring, there is no solution. Otherwise we need to add the smallest of the two partite sets of the 0-1 coloring of this component to S, as we require S to be of minimum size."
+}

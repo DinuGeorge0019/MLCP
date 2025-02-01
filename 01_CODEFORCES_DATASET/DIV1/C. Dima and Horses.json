@@ -1,1 +1,105 @@
-{"link": "https://codeforces.com//contest/273/problem/C", "problemId": "2629", "problem_idx": "C", "shortId": "273C", "contest_number": "273", "problem_submissions": {"E": [3122057, 3120720, 3116725, 3122040, 3119368, 3121838, 3121574, 3121579, 3125606, 3120011], "D": [3119497, 3117520, 3123565, 3124849, 3121281, 3120768, 3117933, 3118228, 3123569, 3119311, 3122877, 3126278], "C": [3115563, 3119236, 3114688, 3117048, 3114860, 3116598, 3116734, 3117277, 3123467, 3122916, 3115814, 3123127, 3120446, 3126351], "B": [3113600, 3113886, 3112899, 3112808, 3114287, 3114846, 3113647, 3114818, 3114980, 3115379, 3114362, 3114126, 3114530, 3115262, 3115087, 3115234, 3115233], "A": [3112248, 3112373, 3112176, 3115660, 3112665, 3115057, 3112184, 3113078, 3122087, 3114179, 3112232, 3112611, 3112527, 3114570, 3113385, 3113821, 3112715]}, "name": "C. Dima and Horses", "statement": "Dima came to the horse land. There are horses living in the land. Each\r\nhorse in the horse land has several enemies (enmity is a symmetric\r\nrelationship). The horse land isn\u2019t very hostile, so the number of\r\nenemies of each horse is at most 3.Right now the horse land is going\r\nthrough an election campaign. So the horses trusted Dima to split them\r\ninto two parts. At that the horses want the following condition to hold:\r\na horse shouldn\u2019t have more than one enemy in its party.Help Dima split\r\nthe horses into parties. Note that one of the parties can turn out to be\r\nempty.\r\n", "solutions": ["#include <cstdio>\n#include <cstring>\n#include <cmath>\n#include <algorithm>\n#include <vector>\nusing namespace std;\n\n#define FOR(it, c) for(__typeof((c).begin()) it = (c).begin(); it != (c).end(); it++)\n#define SZ(c) ((int)(c).size())\n\nconst int N = 300005;\nint a[N][3], na[N];\nint g[N];\nint active[N], acnt = 0;\nint stack[N], top=0, instack[N];\nint is_active(int x) {\n    int cnt=0;\n    for(int i=0;i<na[x];i++)\n        if(g[a[x][i]] == g[x]) ++cnt;\n    return cnt>1;\n}\nvoid unsetnode(int x) {\n    active[x] = 0;\n    for(int i=0;i<na[x];i++) active[a[x][i]] = 0;\n}\nvoid setnode(int x) {\n    for(int i=0;i<na[x];i++) if(is_active(a[x][i])) {\n        active[a[x][i]] = 1;\n        if(instack[a[x][i]]==0) {\n            stack[top++] = a[x][i];\n            instack[a[x][i]] = 1;\n        }\n    }\n}\nint main(void) {\n    int n, m;\n    scanf(\"%d%d\", &n, &m);\n    for(int i=0;i<m;i++) {\n        int x, y;\n        scanf(\"%d%d\", &x, &y);\n        a[x][na[x]++] = y;\n        a[y][na[y]++] = x;\n    }\n    for(int i=1;i<=n;i++) if(na[i]>1) {\n        stack[top++] = i;\n        instack[i] = 1;\n        active[i] = 1;\n        acnt++;\n    }\n    while(top) {\n        int x = stack[--top];\n        instack[x] = 0;\n        if(!active[x]) continue;\n        unsetnode(x);\n        g[x]^=1;\n        setnode(x);\n    }\n    for(int i=1;i<=n;i++) printf(\"%d\", g[i]);\n    puts(\"\");\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["graphs", "greedy"], "dificulty": "2200", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/273/problem/C",
+    "problemId": "2629",
+    "problem_idx": "C",
+    "shortId": "273C",
+    "contest_number": "273",
+    "problem_submissions": {
+        "E": [
+            3122057,
+            3120720,
+            3116725,
+            3122040,
+            3119368,
+            3121838,
+            3121574,
+            3121579,
+            3125606,
+            3120011
+        ],
+        "D": [
+            3119497,
+            3117520,
+            3123565,
+            3124849,
+            3121281,
+            3120768,
+            3117933,
+            3118228,
+            3123569,
+            3119311,
+            3122877,
+            3126278
+        ],
+        "C": [
+            3115563,
+            3119236,
+            3114688,
+            3117048,
+            3114860,
+            3116598,
+            3116734,
+            3117277,
+            3123467,
+            3122916,
+            3115814,
+            3123127,
+            3120446,
+            3126351
+        ],
+        "B": [
+            3113600,
+            3113886,
+            3112899,
+            3112808,
+            3114287,
+            3114846,
+            3113647,
+            3114818,
+            3114980,
+            3115379,
+            3114362,
+            3114126,
+            3114530,
+            3115262,
+            3115087,
+            3115234,
+            3115233
+        ],
+        "A": [
+            3112248,
+            3112373,
+            3112176,
+            3115660,
+            3112665,
+            3115057,
+            3112184,
+            3113078,
+            3122087,
+            3114179,
+            3112232,
+            3112611,
+            3112527,
+            3114570,
+            3113385,
+            3113821,
+            3112715
+        ]
+    },
+    "name": "C. Dima and Horses",
+    "statement": "Dima came to the horse land. There are horses living in the land. Each\r\nhorse in the horse land has several enemies (enmity is a symmetric\r\nrelationship). The horse land isn\u2019t very hostile, so the number of\r\nenemies of each horse is at most 3.Right now the horse land is going\r\nthrough an election campaign. So the horses trusted Dima to split them\r\ninto two parts. At that the horses want the following condition to hold:\r\na horse shouldn\u2019t have more than one enemy in its party.Help Dima split\r\nthe horses into parties. Note that one of the parties can turn out to be\r\nempty.\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <cstring>\n#include <cmath>\n#include <algorithm>\n#include <vector>\nusing namespace std;\n\n#define FOR(it, c) for(__typeof((c).begin()) it = (c).begin(); it != (c).end(); it++)\n#define SZ(c) ((int)(c).size())\n\nconst int N = 300005;\nint a[N][3], na[N];\nint g[N];\nint active[N], acnt = 0;\nint stack[N], top=0, instack[N];\nint is_active(int x) {\n    int cnt=0;\n    for(int i=0;i<na[x];i++)\n        if(g[a[x][i]] == g[x]) ++cnt;\n    return cnt>1;\n}\nvoid unsetnode(int x) {\n    active[x] = 0;\n    for(int i=0;i<na[x];i++) active[a[x][i]] = 0;\n}\nvoid setnode(int x) {\n    for(int i=0;i<na[x];i++) if(is_active(a[x][i])) {\n        active[a[x][i]] = 1;\n        if(instack[a[x][i]]==0) {\n            stack[top++] = a[x][i];\n            instack[a[x][i]] = 1;\n        }\n    }\n}\nint main(void) {\n    int n, m;\n    scanf(\"%d%d\", &n, &m);\n    for(int i=0;i<m;i++) {\n        int x, y;\n        scanf(\"%d%d\", &x, &y);\n        a[x][na[x]++] = y;\n        a[y][na[y]++] = x;\n    }\n    for(int i=1;i<=n;i++) if(na[i]>1) {\n        stack[top++] = i;\n        instack[i] = 1;\n        active[i] = 1;\n        acnt++;\n    }\n    while(top) {\n        int x = stack[--top];\n        instack[x] = 0;\n        if(!active[x]) continue;\n        unsetnode(x);\n        g[x]^=1;\n        setnode(x);\n    }\n    for(int i=1;i<=n;i++) printf(\"%d\", g[i]);\n    puts(\"\");\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "graphs",
+        "greedy"
+    ],
+    "dificulty": "2200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Dima and Horses.json",
+    "editorial_link": "https://codeforces.com/blog/entry/6625",
+    "editorial": "Not hard to understand that we have undirected graph. Lets color all vetexes in one color. Then we will find some vertex that is incorrect. We will change color of this vertex, and repeat our search, while it is possible. After every move number of bad edges will be decrease by 1 or 2, so our cycle will end in not more then M operations. So solutions always exists and we need to change some vertex not more then M times, so we will take queue of bad vertexes and simply make all operations of changes."
+}

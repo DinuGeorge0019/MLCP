@@ -1,1 +1,86 @@
-{"link": "https://codeforces.com//contest/223/problem/C", "problemId": "1798", "problem_idx": "C", "shortId": "223C", "contest_number": "223", "problem_submissions": {"D": [2201204, 2227460, 2224793], "B": [2192755, 2191107, 2190792, 2191517, 2191782, 2192823, 2191897, 2192037, 2190839, 2192321, 2191711, 2193472, 2192118, 2192281, 2191191], "C": [2191764, 2193929, 2191887, 2192482, 2192857, 2191011, 2194134, 2193589, 2192831, 2190279, 2193227, 2192079, 2193334, 2194145, 2192669], "A": [2189710, 2189450, 2189566, 2189994, 2190232, 2194735, 2190245, 2190504, 2195271, 2194162, 2190423, 2195205, 2191251, 2190814, 2195342], "E": [17753349, 2235305]}, "name": "C. Partial Sums", "statement": "You\u2019ve got an array , consisting of integers. The array elements are\r\nindexed from 1 to . Let\u2019s determine a two step operation like that:\r\nFirst we build by the array an array of partial sums, consisting of\r\nelements. Element number () of array equals . The operation means that\r\nwe take the remainder of the division of number by number . Then we\r\nwrite the contents of the array to the array . Element number () of the\r\narray becomes the -th element of the array (). You task is to find array\r\nafter exactly described operations are applied.\r\n", "solutions": ["// @author peter50216\n// #includes {{{\n#include<stdio.h>\n#include<stdlib.h>\n#include<string.h>\n#include<math.h>\n#include<assert.h>\n#include<stdarg.h>\n#include<time.h>\n#include<limits.h>\n#include<ctype.h>\n#include<string>\n#include<map>\n#include<set>\n#include<queue>\n#include<algorithm>\n#include<vector>\nusing namespace std;\n// }}}\n\nint c[2010];\nconst int mod=(int)1e9+7;\ninline int add(int a,int b){\n    a+=b;\n    if(a>=mod)a-=mod;\n    return a;\n}\ninline int mul(int a,int b){\n    return ((long long)a*(long long)b)%mod;\n}\nint in[2010];\ninline int rev(long long a,long long b){\n    if(a==1)return 1;\n    return (((1-rev(b%a,a)*b)/a)%b+b)%b;\n}\nint out[2010];\nint main(){\n    int n,k,i,j;\n    scanf(\"%d%d\",&n,&k);\n    for(i=0;i<n;i++)scanf(\"%d\",&in[i]);\n    if(k==0){\n        for(i=0;i<n;i++)out[i]=in[i];\n    }else{\n        k--;\n        c[0]=1;\n        for(i=1;i<n;i++){\n            c[i]=mul(mul(c[i-1],add(k,i)),rev(i,mod));\n        }\n        for(i=0;i<n;i++){\n            out[i]=0;\n            for(j=0;j<=i;j++)out[i]=add(out[i],mul(in[j],c[i-j]));\n        }\n    }\n    for(i=0;i<n;i++){\n        printf(\"%d%c\",out[i],(i==n-1?'\\n':' '));\n    }\n\n}\n// vim: fdm=marker:commentstring=\\ \\\"\\ %s:nowrap:autoread\n\n"], "input": "", "output": "", "tags": ["combinatorics", "math", "number theory"], "dificulty": "1900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/223/problem/C",
+    "problemId": "1798",
+    "problem_idx": "C",
+    "shortId": "223C",
+    "contest_number": "223",
+    "problem_submissions": {
+        "D": [
+            2201204,
+            2227460,
+            2224793
+        ],
+        "B": [
+            2192755,
+            2191107,
+            2190792,
+            2191517,
+            2191782,
+            2192823,
+            2191897,
+            2192037,
+            2190839,
+            2192321,
+            2191711,
+            2193472,
+            2192118,
+            2192281,
+            2191191
+        ],
+        "C": [
+            2191764,
+            2193929,
+            2191887,
+            2192482,
+            2192857,
+            2191011,
+            2194134,
+            2193589,
+            2192831,
+            2190279,
+            2193227,
+            2192079,
+            2193334,
+            2194145,
+            2192669
+        ],
+        "A": [
+            2189710,
+            2189450,
+            2189566,
+            2189994,
+            2190232,
+            2194735,
+            2190245,
+            2190504,
+            2195271,
+            2194162,
+            2190423,
+            2195205,
+            2191251,
+            2190814,
+            2195342
+        ],
+        "E": [
+            17753349,
+            2235305
+        ]
+    },
+    "name": "C. Partial Sums",
+    "statement": "You\u2019ve got an array , consisting of integers. The array elements are\r\nindexed from 1 to . Let\u2019s determine a two step operation like that:\r\nFirst we build by the array an array of partial sums, consisting of\r\nelements. Element number () of array equals . The operation means that\r\nwe take the remainder of the division of number by number . Then we\r\nwrite the contents of the array to the array . Element number () of the\r\narray becomes the -th element of the array (). You task is to find array\r\nafter exactly described operations are applied.\r\n",
+    "solutions": [
+        "// @author peter50216\n// #includes {{{\n#include<stdio.h>\n#include<stdlib.h>\n#include<string.h>\n#include<math.h>\n#include<assert.h>\n#include<stdarg.h>\n#include<time.h>\n#include<limits.h>\n#include<ctype.h>\n#include<string>\n#include<map>\n#include<set>\n#include<queue>\n#include<algorithm>\n#include<vector>\nusing namespace std;\n// }}}\n\nint c[2010];\nconst int mod=(int)1e9+7;\ninline int add(int a,int b){\n    a+=b;\n    if(a>=mod)a-=mod;\n    return a;\n}\ninline int mul(int a,int b){\n    return ((long long)a*(long long)b)%mod;\n}\nint in[2010];\ninline int rev(long long a,long long b){\n    if(a==1)return 1;\n    return (((1-rev(b%a,a)*b)/a)%b+b)%b;\n}\nint out[2010];\nint main(){\n    int n,k,i,j;\n    scanf(\"%d%d\",&n,&k);\n    for(i=0;i<n;i++)scanf(\"%d\",&in[i]);\n    if(k==0){\n        for(i=0;i<n;i++)out[i]=in[i];\n    }else{\n        k--;\n        c[0]=1;\n        for(i=1;i<n;i++){\n            c[i]=mul(mul(c[i-1],add(k,i)),rev(i,mod));\n        }\n        for(i=0;i<n;i++){\n            out[i]=0;\n            for(j=0;j<=i;j++)out[i]=add(out[i],mul(in[j],c[i-j]));\n        }\n    }\n    for(i=0;i<n;i++){\n        printf(\"%d%c\",out[i],(i==n-1?'\\n':' '));\n    }\n\n}\n// vim: fdm=marker:commentstring=\\ \\\"\\ %s:nowrap:autoread\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "combinatorics",
+        "math",
+        "number theory"
+    ],
+    "dificulty": "1900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Partial Sums.json",
+    "editorial_link": "https://codeforces.com//blog/entry/5301",
+    "editorial": "You were given an array a in this problem. You could replace a by the array of its partial sums by one step. You had to find the array after k such steps. All the calculations were modulo P?=?109?+?7.\n\nWrite partial sums in following way:\n\nwhere Bi,?j?=?1 if i???j and Bi,?j?=?0 if i?<?j, for each 1???i,?j???n. We can represent a and s as vector-columns, therefore one step corresponds to multiplying matrix B and vector-column a. Then the array a after k steps is equal to Bka. We can raise a matrix to a power for . It is not bad, but not fast enough.\n\nWe can notice, that  = , i.e. the elements of the matrix Bk on diagonals parallel to the main are the equal. It is easy to prove this fact using mathematical induction. You may prove it by yourself. Then we can determine the matrix by an array of numbers , equal to the elements of the first column. The elements of the first column of the product BkBl are equal . It is a straight consequence of formula of matrix product. The computing of one element requires O(n) time, there are n elements therefore we can multiply matri??s in O(n2) time. Then we can solve the problem in  time and this solution fits the consrtaints.\n\nThis problem can be solved faster. We can assure that . Let this formula be correct for some k. Prove that it is correct for k?+?1 either. Using the formula of product we get:\n\nUsing the formula Cnk?=?n!?/?k!(n?-?k)! we can obtain , so we can find all the coefficients b if we can divide modulo P. Therefore it is significant that P is prime. Inverse x modulo P is equal to  according to the Fermat little theorem. Therefore we get O(n2)solution."
+}

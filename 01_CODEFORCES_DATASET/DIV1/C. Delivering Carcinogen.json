@@ -1,1 +1,99 @@
-{"link": "https://codeforces.com//contest/198/problem/C", "problemId": "1447", "problem_idx": "C", "shortId": "198C", "contest_number": "198", "problem_submissions": {"E": [1817442, 1818751, 1818461, 1820730, 1819267, 1821471, 1819987, 1819731, 1818122, 1819919, 1819588, 1819229, 1819125, 1819917, 2420309, 1817542, 1817874, 1820376, 1835182, 1819847, 1819258], "A": [1819310, 1813993, 1814854, 1820599, 1815833, 1816813, 1813956, 1814317, 1814982, 1815662, 1815174, 1814496, 1814482, 1814086, 1815782, 1816889], "C": [1817120, 1818867, 1817644, 1821444, 1817692, 1819000, 1822292, 1816526, 1821976], "B": [1815258, 1814636, 1815561, 1815178, 1815418, 1816320, 1814734, 1814896, 1816104, 1816217, 1816891, 1816230, 1815769, 1815481, 1815083, 1816661, 1816543], "D": [1819062]}, "name": "C. Delivering Carcinogen", "statement": "Qwerty the Ranger arrived to the Diatar system with a very important\r\ntask. He should deliver a special carcinogen for scientific research to\r\nplanet Persephone. This is urgent, so Qwerty has to get to the planet as\r\nsoon as possible. A lost day may fail negotiations as nobody is going to\r\npay for an overdue carcinogen.You can consider Qwerty\u2019s ship, the planet\r\nPersephone and the star Diatar points on a plane. Diatar is located in\r\nthe origin of coordinate axes at point . Persephone goes round Diatar\r\nalong a circular orbit with radius in the counter-clockwise direction at\r\nconstant linear speed (thus, for instance, a full circle around the star\r\ntakes of time). At the initial moment of time Persephone is located at\r\npoint .At the initial moment of time Qwerty\u2019s ship is at point . Qwerty\r\ncan move in any direction at speed of at most (). The star Diatar is hot\r\n(as all stars), so Qwerty can\u2019t get too close to it. The ship\u2019s metal\r\nsheathing melts at distance () from the star.Find the minimum time\r\nQwerty needs to get the carcinogen to planet Persephone.\r\n", "solutions": ["#pragma comment(linker, \"/STACK:60000000\")\n#define _CRT_SECURE_NO_WARNINGS\n\n#include <cstdio>\n#include <iostream>\n#include <vector>\n#include <cmath>\n#include <algorithm>\n#include <string>\n#include <set>\n#include <map>\n#include <ctime>\n#include <cstring>\n#include <cassert>\n#include <sstream>\n#include <iomanip>\n#include <complex>\n#include <queue>\n#include <functional>\n\nusing namespace std;\n\n#define forn(i, n) for(int i = 0; i < (int)(n); i++)\n#define ford(i, n) for(int i = (int)(n) - 1; i >= 0; i--)\n#define pb push_back\n#define mp make_pair\n#define fs first\n#define sc second\n#define last(a) int(a.size() - 1)\n#define all(a) a.begin(), a.end()\n#define seta(a,x) memset (a, x, sizeof (a))\n#define I (int)\n#define next NEXTHUI\n#define prev PREVHUI\n#define y1 Y1HUI\n\ntypedef long long int64;\ntypedef pair <int, int> pii;\ntypedef long double ldb;\n\nconst long double eps = 1e-9;\nconst int inf = (1 << 30) - 1;\nconst int64 inf64 = ((int64)1 << 62) - 1;\nconst long double pi = 3.1415926535897932384626433832795;\n\ntemplate <class T> T sqr (T x) {return x * x;}\n\nlong double xp, yp, vp, R;\nlong double x, y, v, r;\n\nlong double dist (long double x1, long double y1, long double x2, long double y2) {\n\treturn sqrt (sqr (x1 - x2) + sqr (y1 - y2));\n}\n\nlong double prod (long double x1, long double y1, long double x2, long double y2) {\n\treturn x1 * x2 + y1 * y2;\n}\n\nlong double len (long double x, long double y) {\n\treturn dist (x, y, 0, 0);\n}\n\nlong double get_ang (long double x1, long double y1, long double x2, long double y2) {\n\treturn acos (prod (x1, y1, x2, y2)/len(x1,y1)/len(x2,y2));\n}\n\nbool check (long double t) {\n\tlong double ang0 = t * vp / R;\n\tlong double cx = xp * cos (ang0) - yp * sin (ang0);\n\tlong double cy = xp * sin (ang0) + yp * cos (ang0);\n\tif (dist (cx, cy, x, y) < eps)\n\t\treturn 1;\n\tbool per = 0;\n\tlong double A = y - cy;\n\tlong double B = cx - x;\n\tlong double C = - A * x - B * y;\n\tif (fabs (C) / sqrt (A * A + B * B) < r) \n\t\tif (prod (0 - cx, 0 - cy, x - cx, y - cy) > 0 &&\n\t\t\tprod (0 - x, 0 - y, cx - x, cy - y) > 0)\n\t\t\tper = 1;\n\tif (!per)\n\t\treturn dist (x, y, cx, cy) < t * v;\n\tlong double d = sqrt ((dist (0, 0, x, y) - r) * (dist (0, 0, x, y) + r));\n\tlong double cd = sqrt ((dist (0, 0, cx, cy) - r) * (dist (0, 0, cx, cy) + r));\n\tlong double ang = pi - get_ang (0-cx, 0-cy, x-cx, y-cy) - get_ang (0-x, 0-y, cx-x, cy-y);\n\tlong double ang1 = acos (r / len (x, y));\n\tlong double ang2 = acos (r / len (cx, cy));\n\tang -= ang1 + ang2;\n\tlong double D = d + cd + r * ang;\n\treturn D < t * v;\n}\n\nint main ()\n{\n//\tfreopen (\"input.txt\", \"r\", stdin);\n//\tfreopen (\"output.txt\", \"w\", stdout);\n\tcin >> xp >> yp >> vp;\n\tcin >> x >> y >> v >> r;\n\tR = sqrt (xp * xp + yp * yp);\n\tlong double l = 0;\n\tlong double r = 1e9;\n\tforn (i, 200) {\n\t\tlong double m = (l + r) / 2.;\n\t\tif (check (m))\n\t\t\tr = m;\n\t\telse\n\t\t\tl = m;\n\t}\n\tl = (l + r) / 2.;\n\tcout.precision (12);\n\tcout << fixed << l << endl;\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["binary search", "geometry"], "dificulty": "2400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/198/problem/C",
+    "problemId": "1447",
+    "problem_idx": "C",
+    "shortId": "198C",
+    "contest_number": "198",
+    "problem_submissions": {
+        "E": [
+            1817442,
+            1818751,
+            1818461,
+            1820730,
+            1819267,
+            1821471,
+            1819987,
+            1819731,
+            1818122,
+            1819919,
+            1819588,
+            1819229,
+            1819125,
+            1819917,
+            2420309,
+            1817542,
+            1817874,
+            1820376,
+            1835182,
+            1819847,
+            1819258
+        ],
+        "A": [
+            1819310,
+            1813993,
+            1814854,
+            1820599,
+            1815833,
+            1816813,
+            1813956,
+            1814317,
+            1814982,
+            1815662,
+            1815174,
+            1814496,
+            1814482,
+            1814086,
+            1815782,
+            1816889
+        ],
+        "C": [
+            1817120,
+            1818867,
+            1817644,
+            1821444,
+            1817692,
+            1819000,
+            1822292,
+            1816526,
+            1821976
+        ],
+        "B": [
+            1815258,
+            1814636,
+            1815561,
+            1815178,
+            1815418,
+            1816320,
+            1814734,
+            1814896,
+            1816104,
+            1816217,
+            1816891,
+            1816230,
+            1815769,
+            1815481,
+            1815083,
+            1816661,
+            1816543
+        ],
+        "D": [
+            1819062
+        ]
+    },
+    "name": "C. Delivering Carcinogen",
+    "statement": "Qwerty the Ranger arrived to the Diatar system with a very important\r\ntask. He should deliver a special carcinogen for scientific research to\r\nplanet Persephone. This is urgent, so Qwerty has to get to the planet as\r\nsoon as possible. A lost day may fail negotiations as nobody is going to\r\npay for an overdue carcinogen.You can consider Qwerty\u2019s ship, the planet\r\nPersephone and the star Diatar points on a plane. Diatar is located in\r\nthe origin of coordinate axes at point . Persephone goes round Diatar\r\nalong a circular orbit with radius in the counter-clockwise direction at\r\nconstant linear speed (thus, for instance, a full circle around the star\r\ntakes of time). At the initial moment of time Persephone is located at\r\npoint .At the initial moment of time Qwerty\u2019s ship is at point . Qwerty\r\ncan move in any direction at speed of at most (). The star Diatar is hot\r\n(as all stars), so Qwerty can\u2019t get too close to it. The ship\u2019s metal\r\nsheathing melts at distance () from the star.Find the minimum time\r\nQwerty needs to get the carcinogen to planet Persephone.\r\n",
+    "solutions": [
+        "#pragma comment(linker, \"/STACK:60000000\")\n#define _CRT_SECURE_NO_WARNINGS\n\n#include <cstdio>\n#include <iostream>\n#include <vector>\n#include <cmath>\n#include <algorithm>\n#include <string>\n#include <set>\n#include <map>\n#include <ctime>\n#include <cstring>\n#include <cassert>\n#include <sstream>\n#include <iomanip>\n#include <complex>\n#include <queue>\n#include <functional>\n\nusing namespace std;\n\n#define forn(i, n) for(int i = 0; i < (int)(n); i++)\n#define ford(i, n) for(int i = (int)(n) - 1; i >= 0; i--)\n#define pb push_back\n#define mp make_pair\n#define fs first\n#define sc second\n#define last(a) int(a.size() - 1)\n#define all(a) a.begin(), a.end()\n#define seta(a,x) memset (a, x, sizeof (a))\n#define I (int)\n#define next NEXTHUI\n#define prev PREVHUI\n#define y1 Y1HUI\n\ntypedef long long int64;\ntypedef pair <int, int> pii;\ntypedef long double ldb;\n\nconst long double eps = 1e-9;\nconst int inf = (1 << 30) - 1;\nconst int64 inf64 = ((int64)1 << 62) - 1;\nconst long double pi = 3.1415926535897932384626433832795;\n\ntemplate <class T> T sqr (T x) {return x * x;}\n\nlong double xp, yp, vp, R;\nlong double x, y, v, r;\n\nlong double dist (long double x1, long double y1, long double x2, long double y2) {\n\treturn sqrt (sqr (x1 - x2) + sqr (y1 - y2));\n}\n\nlong double prod (long double x1, long double y1, long double x2, long double y2) {\n\treturn x1 * x2 + y1 * y2;\n}\n\nlong double len (long double x, long double y) {\n\treturn dist (x, y, 0, 0);\n}\n\nlong double get_ang (long double x1, long double y1, long double x2, long double y2) {\n\treturn acos (prod (x1, y1, x2, y2)/len(x1,y1)/len(x2,y2));\n}\n\nbool check (long double t) {\n\tlong double ang0 = t * vp / R;\n\tlong double cx = xp * cos (ang0) - yp * sin (ang0);\n\tlong double cy = xp * sin (ang0) + yp * cos (ang0);\n\tif (dist (cx, cy, x, y) < eps)\n\t\treturn 1;\n\tbool per = 0;\n\tlong double A = y - cy;\n\tlong double B = cx - x;\n\tlong double C = - A * x - B * y;\n\tif (fabs (C) / sqrt (A * A + B * B) < r) \n\t\tif (prod (0 - cx, 0 - cy, x - cx, y - cy) > 0 &&\n\t\t\tprod (0 - x, 0 - y, cx - x, cy - y) > 0)\n\t\t\tper = 1;\n\tif (!per)\n\t\treturn dist (x, y, cx, cy) < t * v;\n\tlong double d = sqrt ((dist (0, 0, x, y) - r) * (dist (0, 0, x, y) + r));\n\tlong double cd = sqrt ((dist (0, 0, cx, cy) - r) * (dist (0, 0, cx, cy) + r));\n\tlong double ang = pi - get_ang (0-cx, 0-cy, x-cx, y-cy) - get_ang (0-x, 0-y, cx-x, cy-y);\n\tlong double ang1 = acos (r / len (x, y));\n\tlong double ang2 = acos (r / len (cx, cy));\n\tang -= ang1 + ang2;\n\tlong double D = d + cd + r * ang;\n\treturn D < t * v;\n}\n\nint main ()\n{\n//\tfreopen (\"input.txt\", \"r\", stdin);\n//\tfreopen (\"output.txt\", \"w\", stdout);\n\tcin >> xp >> yp >> vp;\n\tcin >> x >> y >> v >> r;\n\tR = sqrt (xp * xp + yp * yp);\n\tlong double l = 0;\n\tlong double r = 1e9;\n\tforn (i, 200) {\n\t\tlong double m = (l + r) / 2.;\n\t\tif (check (m))\n\t\t\tr = m;\n\t\telse\n\t\t\tl = m;\n\t}\n\tl = (l + r) / 2.;\n\tcout.precision (12);\n\tcout << fixed << l << endl;\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "binary search",
+        "geometry"
+    ],
+    "dificulty": "2400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Delivering Carcinogen.json",
+    "editorial_link": "https://codeforces.com//blog/entry/4764",
+    "editorial": " If you can reach the planet in time t, you also can reach one in any time greater then t (you can just reach planet in time t and then move along with planet). There exists some t0 for that for all t?>?t0 you can reach planet, and for all t?<?t0 you cannot do in. Let us find t0 using binary search.\n\nChecking every of t inside of binary search you can do following way. You should calculate place if planet after time t and find distance between ship's place and new planet place.\n\nSo, you have following \"classic\" problem: there are two points A and B and circle with center in O and radius R (points are outside of circle), you need find distance between points and you cannot moving inside of circle.\n\nThere are 2 cases:\n1. You can move direct way\n2. You should skirt the circle\n\nThe second case is performed iff two following conditions are performed:\na. Angles OAB and OBA are acute\nb. Height OH of triangle OAB less than R\nAll checks you can do in integers.\n\nWell, let's understand how to precess our cases:\n1. Obviously\n2. Let us C and D be tangency points (i.e. you are moving along line ACDB). Thiangles OAC and OBD are right and you can easily calculate all angles inside of them. Then you should find angle COD. After that you can find length of line ACDB. You can see that you don't need find places of points C and D."
+}

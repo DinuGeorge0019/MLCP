@@ -1,1 +1,116 @@
-{"link": "https://codeforces.com//contest/1730/problem/F", "problemId": "1555174", "problem_idx": "F", "shortId": "1730F", "contest_number": "1730", "problem_submissions": {"F": [173481312, 173482867, 173478875, 173582676], "D": [173464501, 173463845, 173492235, 173460042, 173462224, 173461894, 173462011, 173463683, 173464123, 173466252, 173465903, 173465820, 173472784, 173476685, 173475004, 173471558, 173472223], "C": [173450456, 173450157, 173457042, 173452649, 173450776, 173453445, 173454802, 173455629, 173456866, 173446752, 173444646, 173455631, 173457312, 173447641, 173447077, 173451017, 173452623, 173453329], "B": [173445492, 173444904, 173458756, 173449524, 173445632, 173448108, 173451808, 173449142, 173453555, 173457120, 173455134, 173451905, 173454521, 173452227, 173444715, 173446889, 173447944, 173446921], "A": [173439407, 173438936, 173438879, 173443820, 173439220, 173439980, 173443156, 173443507, 173445064, 173455369, 173446952, 173439340, 173447666, 173440064, 173438737, 173441530, 173439874, 173440797], "E": [173564584, 173477480, 173568880]}, "name": "F. Almost Sorted", "statement": "You are given a permutation p of length n and a positive integer k.\r\nConsider a permutation q of length n such that for any integers i and j,\r\nwhere 1\r\nle i < j\r\nle n, we have p_{q_i}\r\nle p_{q_j} + k.Find the minimum possible number of inversions in a\r\npermutation q.A permutation is an array consisting of n distinct\r\nintegers from 1 to n in arbitrary order. For example, [2,3,1,5,4] is a\r\npermutation, but [1,2,2] is not a permutation (2 appears twice in the\r\narray) and [1,3,4] is also not a permutation (n=3 but there is 4 in the\r\narray).An inversion in a permutation a is a pair of indices i and j (1\r\nle i, j\r\nle n) such that i < j, but a_i > a_j.\r\n", "solutions": ["#pragma GCC optimize(\"Ofast\",\"unroll-loops\",\"omit-frame-pointer\",\"inline\")//Optimization flags\n#pragma GCC option(\"arch=native\",\"tune=native\",\"no-zero-upper\")//Enable AVX\n#pragma GCC target(\"sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2\")\n#include<bits/stdc++.h>\n//#include<ext/pb_ds/assoc_container.hpp>\nusing namespace std;\n//using namespace __gnu_pbds;\nconst int inf=0x3f3f3f3f;\nconst double eps=1e-6;\nconst int mod=1e9+7;\ntypedef long long ll;\n#ifndef LOCAL\n#define cerr if(0)cout\n#define eprintf(...)0\n#else\n#define eprintf(...)fprintf(stderr,__VA_ARGS__)\n#endif\ninline string getstr(string&s,int l,int r){string ret=\"\";for(int i=l;i<=r;i++)ret.push_back(s[i]);return ret;}\nint modpow(int x,int y,int md=mod){int ret=1;do{if(y&1)ret=(ll)ret*x%md;x=(ll)x*x%md;}while(y>>=1);return ret;}\ninline int Rand(){return rand()*32768+rand();}\nint n,k,p[5555],dp[2][22][555],la,nw,suf[5005][5005],pos[5005],cc,cur;\nint in[22],cnt,nmsk,nj,np;\nvoid upd(int&x,int y){\n\tif(x > y)x=y;\n}\nint main(){\n\tscanf(\"%d%d\",&n,&k);\n\tfor(int i=1; i<=n; i++)scanf(\"%d\",&p[i]);\n\tnw=1;\n\tfor(int i=0; i<2; i++){\n\t\tfor(int j=0; j<=2*k+2; j++){\n\t\t\tfor(int h=0; h<(1<<k); h++)\n\t\t\t\t\t\tdp[i][j][h]=inf;\n\t\t}\n\t}\n\tfor(int i=1; i<=n; i++)pos[p[i]]=i;\n\tfor(int i=1; i<=n; i++){\n\t\tfor(int j=1; j<=n; j++)suf[i][j]=suf[i-1][j];\n\t\tfor(int j=1; j<=pos[i]; j++)suf[i][j]++;\n\t}\n\tdp[0][k+2][0]=0;\n\tfor(int i=1; i<=n; i++){\n\t\tfor(int j=0; j<=2*k+2; j++){\n\t\t\tfor(int h=0; h<(1<<k); h++)\n\t\t\t\t\t\tdp[nw][j][h]=inf;\n\t\t}\n\t\tfor(int j=0; j<=2*k+2; j++){\n\t\t\tfor(int h=0; h<(1<<k); h++){\n\t\t\t\tif(dp[la][j][h] > 1e8)continue;\n\t\t\t\tcc=i+j-k-2;\n\t\t\t\tcnt=0;\n\t\t\t\tfor(int p=0; p<8; p++){\n\t\t\t\t\tif(h&(1<<p))in[++cnt]=pos[cc+p+1];\n\t\t\t\t}\n\t\t\t\tfor(int p=0; p<8&& cc+p+1<=n; p++){\n\t\t\t\t\tif(h&(1<<p))continue;\n\t\t\t\t\tcur=suf[cc-1][pos[cc+p+1]];\n\t\t\t\t\tfor(int t=1; t<=cnt; t++)cur+=(pos[cc+p+1]<in[t]);\n\t\t\t\t\tif(j)upd(dp[nw][j-1][h |(1<<p)],dp[la][j][h]+cur);\n\t\t\t\t}\n\t\t\t\tcur=suf[cc-1][pos[cc]];\n\t\t\t\tfor(int t=1; t<=cnt;t++)cur+=(pos[cc]<in[t]);\n\t\t\t\tif(h==(1<<k)-1)np=k;else np=__builtin_ctz(~h);\n\t\t\t\tnj=j+np;\n\t\t\t\tif(nj<=(k<<1)+2){\n\t\t\t\t\tupd(dp[nw][nj][h >>(np+1)],dp[la][j][h]+cur);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tla^=1;\n\t\tnw^=1;\n\t}\n\tprintf(\"%d\\n\",dp[la][k+2][0]);\n\treturn 0;\n}"], "input": "", "output": "", "tags": ["bitmasks", "data structures", "dp"], "dificulty": "2700", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/1730/problem/F",
+    "problemId": "1555174",
+    "problem_idx": "F",
+    "shortId": "1730F",
+    "contest_number": "1730",
+    "problem_submissions": {
+        "F": [
+            173481312,
+            173482867,
+            173478875,
+            173582676
+        ],
+        "D": [
+            173464501,
+            173463845,
+            173492235,
+            173460042,
+            173462224,
+            173461894,
+            173462011,
+            173463683,
+            173464123,
+            173466252,
+            173465903,
+            173465820,
+            173472784,
+            173476685,
+            173475004,
+            173471558,
+            173472223
+        ],
+        "C": [
+            173450456,
+            173450157,
+            173457042,
+            173452649,
+            173450776,
+            173453445,
+            173454802,
+            173455629,
+            173456866,
+            173446752,
+            173444646,
+            173455631,
+            173457312,
+            173447641,
+            173447077,
+            173451017,
+            173452623,
+            173453329
+        ],
+        "B": [
+            173445492,
+            173444904,
+            173458756,
+            173449524,
+            173445632,
+            173448108,
+            173451808,
+            173449142,
+            173453555,
+            173457120,
+            173455134,
+            173451905,
+            173454521,
+            173452227,
+            173444715,
+            173446889,
+            173447944,
+            173446921
+        ],
+        "A": [
+            173439407,
+            173438936,
+            173438879,
+            173443820,
+            173439220,
+            173439980,
+            173443156,
+            173443507,
+            173445064,
+            173455369,
+            173446952,
+            173439340,
+            173447666,
+            173440064,
+            173438737,
+            173441530,
+            173439874,
+            173440797
+        ],
+        "E": [
+            173564584,
+            173477480,
+            173568880
+        ]
+    },
+    "name": "F. Almost Sorted",
+    "statement": "You are given a permutation p of length n and a positive integer k.\r\nConsider a permutation q of length n such that for any integers i and j,\r\nwhere 1\r\nle i < j\r\nle n, we have p_{q_i}\r\nle p_{q_j} + k.Find the minimum possible number of inversions in a\r\npermutation q.A permutation is an array consisting of n distinct\r\nintegers from 1 to n in arbitrary order. For example, [2,3,1,5,4] is a\r\npermutation, but [1,2,2] is not a permutation (2 appears twice in the\r\narray) and [1,3,4] is also not a permutation (n=3 but there is 4 in the\r\narray).An inversion in a permutation a is a pair of indices i and j (1\r\nle i, j\r\nle n) such that i < j, but a_i > a_j.\r\n",
+    "solutions": [
+        "#pragma GCC optimize(\"Ofast\",\"unroll-loops\",\"omit-frame-pointer\",\"inline\")//Optimization flags\n#pragma GCC option(\"arch=native\",\"tune=native\",\"no-zero-upper\")//Enable AVX\n#pragma GCC target(\"sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2\")\n#include<bits/stdc++.h>\n//#include<ext/pb_ds/assoc_container.hpp>\nusing namespace std;\n//using namespace __gnu_pbds;\nconst int inf=0x3f3f3f3f;\nconst double eps=1e-6;\nconst int mod=1e9+7;\ntypedef long long ll;\n#ifndef LOCAL\n#define cerr if(0)cout\n#define eprintf(...)0\n#else\n#define eprintf(...)fprintf(stderr,__VA_ARGS__)\n#endif\ninline string getstr(string&s,int l,int r){string ret=\"\";for(int i=l;i<=r;i++)ret.push_back(s[i]);return ret;}\nint modpow(int x,int y,int md=mod){int ret=1;do{if(y&1)ret=(ll)ret*x%md;x=(ll)x*x%md;}while(y>>=1);return ret;}\ninline int Rand(){return rand()*32768+rand();}\nint n,k,p[5555],dp[2][22][555],la,nw,suf[5005][5005],pos[5005],cc,cur;\nint in[22],cnt,nmsk,nj,np;\nvoid upd(int&x,int y){\n\tif(x > y)x=y;\n}\nint main(){\n\tscanf(\"%d%d\",&n,&k);\n\tfor(int i=1; i<=n; i++)scanf(\"%d\",&p[i]);\n\tnw=1;\n\tfor(int i=0; i<2; i++){\n\t\tfor(int j=0; j<=2*k+2; j++){\n\t\t\tfor(int h=0; h<(1<<k); h++)\n\t\t\t\t\t\tdp[i][j][h]=inf;\n\t\t}\n\t}\n\tfor(int i=1; i<=n; i++)pos[p[i]]=i;\n\tfor(int i=1; i<=n; i++){\n\t\tfor(int j=1; j<=n; j++)suf[i][j]=suf[i-1][j];\n\t\tfor(int j=1; j<=pos[i]; j++)suf[i][j]++;\n\t}\n\tdp[0][k+2][0]=0;\n\tfor(int i=1; i<=n; i++){\n\t\tfor(int j=0; j<=2*k+2; j++){\n\t\t\tfor(int h=0; h<(1<<k); h++)\n\t\t\t\t\t\tdp[nw][j][h]=inf;\n\t\t}\n\t\tfor(int j=0; j<=2*k+2; j++){\n\t\t\tfor(int h=0; h<(1<<k); h++){\n\t\t\t\tif(dp[la][j][h] > 1e8)continue;\n\t\t\t\tcc=i+j-k-2;\n\t\t\t\tcnt=0;\n\t\t\t\tfor(int p=0; p<8; p++){\n\t\t\t\t\tif(h&(1<<p))in[++cnt]=pos[cc+p+1];\n\t\t\t\t}\n\t\t\t\tfor(int p=0; p<8&& cc+p+1<=n; p++){\n\t\t\t\t\tif(h&(1<<p))continue;\n\t\t\t\t\tcur=suf[cc-1][pos[cc+p+1]];\n\t\t\t\t\tfor(int t=1; t<=cnt; t++)cur+=(pos[cc+p+1]<in[t]);\n\t\t\t\t\tif(j)upd(dp[nw][j-1][h |(1<<p)],dp[la][j][h]+cur);\n\t\t\t\t}\n\t\t\t\tcur=suf[cc-1][pos[cc]];\n\t\t\t\tfor(int t=1; t<=cnt;t++)cur+=(pos[cc]<in[t]);\n\t\t\t\tif(h==(1<<k)-1)np=k;else np=__builtin_ctz(~h);\n\t\t\t\tnj=j+np;\n\t\t\t\tif(nj<=(k<<1)+2){\n\t\t\t\t\tupd(dp[nw][nj][h >>(np+1)],dp[la][j][h]+cur);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tla^=1;\n\t\tnw^=1;\n\t}\n\tprintf(\"%d\\n\",dp[la][k+2][0]);\n\treturn 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "bitmasks",
+        "data structures",
+        "dp"
+    ],
+    "dificulty": "2700",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\F. Almost Sorted.json",
+    "editorial_link": "https://codeforces.com//blog/entry/107293",
+    "editorial": "Let\u00e2\u0080\u0099s build a permutation from left to right. If the current prefix\r\ncontains the number , let\u00e2\u0080\u0099s call the element used, otherwise unused.\r\nConsider the smallest unused element . All elements greater than must\r\nalso be unused, and all elements less than must be used. Then the\r\ncurrent state can be described by the number and the mask, -th bit of\r\nwhich indicates whether the element with the value is used. Let\u00e2\u0080\u0099s solve\r\nthe problem by dynamic programming: is the minimum number of inversions.\r\nWe can continue building a permutation by adding the number such that\r\nand hasn\u00e2\u0080\u0099t been used yet. New inversions can be divided into two types:\r\nthose formed with indices of elements less than (they can be counted\r\nusing Fenwick tree) and those formed with indices of elements less than\r\n(but their number is not more than ).The time complexity is .\r\n"
+}

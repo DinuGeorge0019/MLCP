@@ -1,1 +1,80 @@
-{"link": "https://codeforces.com//contest/595/problem/C", "problemId": "40383", "problem_idx": "C", "shortId": "595C", "contest_number": "595", "problem_submissions": {"C": [14183245, 14174366, 14176948, 14185132, 14199391], "E": [14154107, 14157574, 14160562, 14158642], "B": [14147982, 14150411, 14148010, 14147720, 14155014, 14149149, 14148880, 14150127, 14148035, 14147384, 14147369, 14149951, 14147539, 14148771, 14147615], "A": [14144272, 14144928, 14145367, 14144629, 14144372, 14144556, 14144252, 14144455, 14146378, 14144766, 14145785, 14144276, 14144350, 14144811, 14144491, 14144489, 14144288], "D": [14159968, 14156852, 14157577, 14154481, 14163683]}, "name": "C. Warrior and Archer", "statement": "Vova and Lesha are friends. They often meet at Vova\u2019s place and compete\r\nagainst each other in a computer game named The Ancient Papyri:\r\nSwordsink. Vova always chooses a warrior as his fighter and Leshac\r\nchooses an archer. After that they should choose initial positions for\r\ntheir characters and start the fight. A warrior is good at melee combat,\r\nso Vova will try to make the distance between fighters as small as\r\npossible. An archer prefers to keep the enemy at a distance, so Lesha\r\nwill try to make the initial distance as large as possible.There are (\r\nis always even) possible starting positions for characters marked along\r\nthe axis. The positions are given by their distinct coordinates , two\r\ncharacters cannot end up at the same position.Vova and Lesha take turns\r\nbanning available positions, Vova moves first. During each turn one of\r\nthe guys bans exactly one of the remaining positions. Banned positions\r\ncannot be used by Vova and Lesha. They continue to make moves until\r\nthere are only two possible positions remaining (thus, the total number\r\nof moves will be ). After that Vova\u2019s character takes the position with\r\nthe lesser coordinate and Lesha\u2019s character takes the position with the\r\nbigger coordinate and the guys start fighting.Vova and Lesha are already\r\ntired by the game of choosing positions, as they need to play it before\r\nevery fight, so they asked you (the developer of the The Ancient Papyri:\r\nSwordsink) to write a module that would automatically determine the\r\ndistance at which the warrior and the archer will start fighting if both\r\nVova and Lesha play optimally.\r\n", "solutions": ["#include <iostream>\n#include <fstream>\n#include <string>\n#include <map>\n#include <vector>\n#include <cmath>\n#include <iomanip>\n#include <algorithm>\n\nusing namespace std;\n\nint main(int argc, const char * argv[]) {\n    std::ios::sync_with_stdio(false);\n\n    int n;\n    cin >> n;\n    vector<int> x(n);\n    for (int i = 0; i < n; ++i) {\n        cin >> x[i];\n    }\n    \n    sort(x.begin(), x.end());\n    \n    int res = 1000000000;\n    \n    int d = (n - 2) / 2 + 1;\n    \n    for (int i = 0; i + d < n; ++i) {\n        res = min(res, x[i + d] - x[i]);\n    }\n    \n    cout << res;\n    \n    return 0;\n}"], "input": "", "output": "", "tags": ["games"], "dificulty": "2300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/595/problem/C",
+    "problemId": "40383",
+    "problem_idx": "C",
+    "shortId": "595C",
+    "contest_number": "595",
+    "problem_submissions": {
+        "C": [
+            14183245,
+            14174366,
+            14176948,
+            14185132,
+            14199391
+        ],
+        "E": [
+            14154107,
+            14157574,
+            14160562,
+            14158642
+        ],
+        "B": [
+            14147982,
+            14150411,
+            14148010,
+            14147720,
+            14155014,
+            14149149,
+            14148880,
+            14150127,
+            14148035,
+            14147384,
+            14147369,
+            14149951,
+            14147539,
+            14148771,
+            14147615
+        ],
+        "A": [
+            14144272,
+            14144928,
+            14145367,
+            14144629,
+            14144372,
+            14144556,
+            14144252,
+            14144455,
+            14146378,
+            14144766,
+            14145785,
+            14144276,
+            14144350,
+            14144811,
+            14144491,
+            14144489,
+            14144288
+        ],
+        "D": [
+            14159968,
+            14156852,
+            14157577,
+            14154481,
+            14163683
+        ]
+    },
+    "name": "C. Warrior and Archer",
+    "statement": "Vova and Lesha are friends. They often meet at Vova\u2019s place and compete\r\nagainst each other in a computer game named The Ancient Papyri:\r\nSwordsink. Vova always chooses a warrior as his fighter and Leshac\r\nchooses an archer. After that they should choose initial positions for\r\ntheir characters and start the fight. A warrior is good at melee combat,\r\nso Vova will try to make the distance between fighters as small as\r\npossible. An archer prefers to keep the enemy at a distance, so Lesha\r\nwill try to make the initial distance as large as possible.There are (\r\nis always even) possible starting positions for characters marked along\r\nthe axis. The positions are given by their distinct coordinates , two\r\ncharacters cannot end up at the same position.Vova and Lesha take turns\r\nbanning available positions, Vova moves first. During each turn one of\r\nthe guys bans exactly one of the remaining positions. Banned positions\r\ncannot be used by Vova and Lesha. They continue to make moves until\r\nthere are only two possible positions remaining (thus, the total number\r\nof moves will be ). After that Vova\u2019s character takes the position with\r\nthe lesser coordinate and Lesha\u2019s character takes the position with the\r\nbigger coordinate and the guys start fighting.Vova and Lesha are already\r\ntired by the game of choosing positions, as they need to play it before\r\nevery fight, so they asked you (the developer of the The Ancient Papyri:\r\nSwordsink) to write a module that would automatically determine the\r\ndistance at which the warrior and the archer will start fighting if both\r\nVova and Lesha play optimally.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <fstream>\n#include <string>\n#include <map>\n#include <vector>\n#include <cmath>\n#include <iomanip>\n#include <algorithm>\n\nusing namespace std;\n\nint main(int argc, const char * argv[]) {\n    std::ios::sync_with_stdio(false);\n\n    int n;\n    cin >> n;\n    vector<int> x(n);\n    for (int i = 0; i < n; ++i) {\n        cin >> x[i];\n    }\n    \n    sort(x.begin(), x.end());\n    \n    int res = 1000000000;\n    \n    int d = (n - 2) / 2 + 1;\n    \n    for (int i = 0; i + d < n; ++i) {\n        res = min(res, x[i + d] - x[i]);\n    }\n    \n    cout << res;\n    \n    return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "games"
+    ],
+    "dificulty": "2300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Warrior and Archer.json",
+    "editorial_link": "https://codeforces.com//blog/entry/21487",
+    "editorial": "Let's sort the points by increasing x coordinate and work with sorted points array next.\n\nLet's suppose that after optimal playing points numbered l and r (l?<?r) are left. It's true that the first player didn't ban any of the points numbered i l?<?i?<?r, otherwise he could change his corresponding move to point l or point r (one could prove it doesn't depend on second player optimal moves) and change the optimal answer. It turns out that all the  points banned by the first player have numbers outside of [l,?r] segment, therefore . We should notice that if the first player choosed any [l,?r] for , he could always make the final points numbers located inside this segment.\n\nThe second player wants to make  (he couldn't make less), what is equivalent if he always ban points inside final [l,?r] segment (numbered l?<?i?<?r). As soon as the second player doesn't know what segment first player have chosen after every of his moves, he must detect a point which satisfies him in every first player choice. It's true number of this point is the median of set of point numbers left (the odd number) after the first player move. The number of moves of the first player left is lesser by one than moves of the second player, so the first player later could ban some points from the left and some points from the right, except three middle points. Two of it (leftmost and rightmost ones) shouldn't be banned by the second player as soon as it could increase the size of banned points from the left (or from the right), but third middle point satisfies the second player in every first player choice. This way the second player always bans the point inside final point segment.\n\nThus the answer is the minimum between every of  values."
+}

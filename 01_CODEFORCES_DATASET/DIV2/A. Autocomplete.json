@@ -1,1 +1,89 @@
-{"link": "https://codeforces.com//contest/53/problem/A", "problemId": "278", "problem_idx": "A", "shortId": "53A", "contest_number": "53", "problem_submissions": {"D": [239021, 239193, 238722, 239346, 239182, 239848, 239737, 238790, 238737, 238732, 238838, 238854, 238943, 239423], "C": [238660, 238284, 238456, 239097, 238366, 238317, 238648, 238222, 238274, 238168, 238487, 238198, 238286, 238820], "B": [238516, 238801, 239508, 238926, 239954, 239467, 238856, 240487, 241511, 239803], "A": [237956, 237921, 237848, 238380, 239531, 242667, 237923, 237920, 237851, 237863, 237845, 237871, 237932, 237861, 237905], "E": [267303, 243881]}, "name": "A. Autocomplete", "statement": "Autocomplete is a program function that enables inputting the text (in\r\neditors, command line shells, browsers etc.) completing the text by its\r\ninputted part. Vasya is busy working on a new browser called \u2019BERowser\u2019.\r\nHe happens to be working on the autocomplete function in the address\r\nline at this very moment. A list consisting of last visited by the user\r\npages and the inputted part are known. Your task is to complete to make\r\nit an address of one of the pages from the list. You have to find the\r\nlexicographically smallest address having a prefix .\r\n", "solutions": ["#pragma comment(linker,\"/stack:67108864\")\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <sstream>\n#include <fstream>\n#include <climits>\n#include <cfloat>\n#include <functional>\n#include <ctime>\n#include <numeric>\n#include <cstdlib>\n#include <cctype>\n#include <cmath>\n#include <algorithm>\n#include <cstring>\n#include <utility>\n#include <bitset>\n#include <string>\n#include <list>\n#include <stack>\n#include <vector>\n#include <queue>\n#include <deque>\n#include <map>\n#include <set>\n#include <typeinfo>\n#include <cassert>\n#include <ctime>\n\nusing namespace std;\n\n#define forn(i,n) for(int i=0;i<int(n);++i)\n#define forn1(i,n) for(int i=1;i<=int(n);++i)\n#define ford(i,n) for(int i=int(n)-1;i>=0;--i)\n#define ford1(i,n) for(int i=int(n);i>0;--i)\n#define foran(i,l,r) for(int i=int(l);i<int(r);++i)\n\n#define X first\n#define Y second\n#define mp make_pair\n#define pb push_back\n#define sqr(x) (x)*(x)\n#define all(v) (v).begin(),(v).end()\n\ntypedef long double ld;\ntypedef long long ll;\ntypedef pair <ld ,ld > pt;\n\nconst ld EPS=1e-9;\nconst ld PI=3.1415926535897932384626433832795;\n\nconst int INF=1000*1000*1000;\nconst int CF=1;\n\nint main()\n{\n    if(!CF) freopen(\"input.txt\",\"r\",stdin);\n    //freopen(\"output.txt\",\"w\",stdout);\n    string t;\n    getline(cin,t);\n    int n;\n    cin >>n;    \n    vector <string> s(n);\n    if(n>0) getline(cin,s[0]);\n    forn(i,n)\n    {\n        cin >>s[i];\n    }\n    sort(all(s));\n    forn(i,n)\n    {\n        bool good=true;\n        forn(j,min(t.length(),s[i].length()))\n        {\n            if(t[j]!=s[i][j]) good=false;\n        }\n        if(s[i].length()<t.length()) good=false;\n        if(good) \n        {\n            cout<<s[i] <<endl;\n            return 0;\n        }\n    }\n    cout <<t<<endl;\n    return 0;\n}"], "input": "", "output": "", "tags": ["implementation"], "dificulty": "1100", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/53/problem/A",
+    "problemId": "278",
+    "problem_idx": "A",
+    "shortId": "53A",
+    "contest_number": "53",
+    "problem_submissions": {
+        "D": [
+            239021,
+            239193,
+            238722,
+            239346,
+            239182,
+            239848,
+            239737,
+            238790,
+            238737,
+            238732,
+            238838,
+            238854,
+            238943,
+            239423
+        ],
+        "C": [
+            238660,
+            238284,
+            238456,
+            239097,
+            238366,
+            238317,
+            238648,
+            238222,
+            238274,
+            238168,
+            238487,
+            238198,
+            238286,
+            238820
+        ],
+        "B": [
+            238516,
+            238801,
+            239508,
+            238926,
+            239954,
+            239467,
+            238856,
+            240487,
+            241511,
+            239803
+        ],
+        "A": [
+            237956,
+            237921,
+            237848,
+            238380,
+            239531,
+            242667,
+            237923,
+            237920,
+            237851,
+            237863,
+            237845,
+            237871,
+            237932,
+            237861,
+            237905
+        ],
+        "E": [
+            267303,
+            243881
+        ]
+    },
+    "name": "A. Autocomplete",
+    "statement": "Autocomplete is a program function that enables inputting the text (in\r\neditors, command line shells, browsers etc.) completing the text by its\r\ninputted part. Vasya is busy working on a new browser called \u2019BERowser\u2019.\r\nHe happens to be working on the autocomplete function in the address\r\nline at this very moment. A list consisting of last visited by the user\r\npages and the inputted part are known. Your task is to complete to make\r\nit an address of one of the pages from the list. You have to find the\r\nlexicographically smallest address having a prefix .\r\n",
+    "solutions": [
+        "#pragma comment(linker,\"/stack:67108864\")\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <sstream>\n#include <fstream>\n#include <climits>\n#include <cfloat>\n#include <functional>\n#include <ctime>\n#include <numeric>\n#include <cstdlib>\n#include <cctype>\n#include <cmath>\n#include <algorithm>\n#include <cstring>\n#include <utility>\n#include <bitset>\n#include <string>\n#include <list>\n#include <stack>\n#include <vector>\n#include <queue>\n#include <deque>\n#include <map>\n#include <set>\n#include <typeinfo>\n#include <cassert>\n#include <ctime>\n\nusing namespace std;\n\n#define forn(i,n) for(int i=0;i<int(n);++i)\n#define forn1(i,n) for(int i=1;i<=int(n);++i)\n#define ford(i,n) for(int i=int(n)-1;i>=0;--i)\n#define ford1(i,n) for(int i=int(n);i>0;--i)\n#define foran(i,l,r) for(int i=int(l);i<int(r);++i)\n\n#define X first\n#define Y second\n#define mp make_pair\n#define pb push_back\n#define sqr(x) (x)*(x)\n#define all(v) (v).begin(),(v).end()\n\ntypedef long double ld;\ntypedef long long ll;\ntypedef pair <ld ,ld > pt;\n\nconst ld EPS=1e-9;\nconst ld PI=3.1415926535897932384626433832795;\n\nconst int INF=1000*1000*1000;\nconst int CF=1;\n\nint main()\n{\n    if(!CF) freopen(\"input.txt\",\"r\",stdin);\n    //freopen(\"output.txt\",\"w\",stdout);\n    string t;\n    getline(cin,t);\n    int n;\n    cin >>n;    \n    vector <string> s(n);\n    if(n>0) getline(cin,s[0]);\n    forn(i,n)\n    {\n        cin >>s[i];\n    }\n    sort(all(s));\n    forn(i,n)\n    {\n        bool good=true;\n        forn(j,min(t.length(),s[i].length()))\n        {\n            if(t[j]!=s[i][j]) good=false;\n        }\n        if(s[i].length()<t.length()) good=false;\n        if(good) \n        {\n            cout<<s[i] <<endl;\n            return 0;\n        }\n    }\n    cout <<t<<endl;\n    return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation"
+    ],
+    "dificulty": "1100",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Autocomplete.json",
+    "editorial_link": "https://codeforces.com//blog/entry/1065",
+    "editorial": "In this problem you should read the statement and solve in any way. One of the most simple solutions is read string and last visited pages, sort (even bubble source - 1003 isn't a lot, 3rd power because we need 100 operations to compare two strings), and rundown pages. When we find good string, we should write it and exit.\nIf there are no such one, write source string. 'Goodness' of string is checking with one if (to check lengths and avoid RTE) and for."
+}

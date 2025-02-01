@@ -1,1 +1,94 @@
-{"link": "https://codeforces.com//contest/300/problem/C", "problemId": "2923", "problem_idx": "C", "shortId": "300C", "contest_number": "300", "problem_submissions": {"E": [3626829, 3626078, 3626827, 3626906, 3628233, 3629109, 3629044, 3629132, 3628382, 3629855, 3627387], "D": [3624414, 37352127, 166085445], "C": [3622911, 3623906, 3623231, 3623852, 3624071, 3623911, 3624938, 3627160, 3625349, 3624808, 3623930, 3623466, 3623151, 3624115, 3624977], "A": [3621358, 3621544, 3621961, 3621419, 3622220, 3621400, 3621539, 3627980, 3621595, 3622614, 3621461, 3623870, 3621695, 3622433, 3621766], "B": [3622857, 3624197, 3622464, 3628078, 3624506, 3622936, 3628606, 7721187, 3623708, 3623701, 3623040, 3622630, 3624370, 3625890, 3622982]}, "name": "C. Beautiful Numbers", "statement": "Vitaly is a very weird man. He\u2019s got two favorite digits and . Vitaly\r\ncalls a positive integer , if the decimal representation of this integer\r\nonly contains digits and . Vitaly calls a good number , if the sum of\r\nits digits is a good number.For example, let\u2019s say that Vitaly\u2019s\r\nfavourite digits are and , then number isn\u2019t good and numbers or are.\r\nAlso, number is excellent and number isn\u2019t. Now Vitaly is wondering, how\r\nmany excellent numbers of length exactly are there. As this number can\r\nbe rather large, he asks you to count the remainder after dividing it by\r\n.A number\u2019s length is the number of digits in its decimal representation\r\nwithout leading zeroes.\r\n", "solutions": ["//program 300-C\n\n#include<iostream>\n#include<cstdio>\n#include<cstdlib>\n#include<cstring>\n#include<algorithm>\n\nusing namespace std;\n\nint Get()\n{\n  char c;\n  while(c=getchar(),c<'0'||c>'9');\n  int X=0;\n  while(c>='0'&&c<='9')\n    {\n      X=X*10+c-48;\n      c=getchar();\n    }\n  return X;\n}\n\nconst int Mod=1000000007;\n\nlong long Fac[1000001],Rev[1000001];\n\nlong long Pow(long long A,long long B)\n{\n  if(!B)\n    return 1;\n  long long T=Pow(A*A%Mod,B/2);\n  if(B&1)\n    T=T*A%Mod;\n  return T;\n}\n\nbool Good(int S,int A,int B)\n{\n  if(!S)\n    return true;\n  if(S%10!=A&&S%10!=B)\n    return false;\n  return Good(S/10,A,B);\n}\n\nlong long C(int N,int M)\n{\n  return Fac[N]*Rev[M]%Mod*Rev[N-M]%Mod;\n}\n\nint main()\n{\n  int A=Get(),B=Get(),N=Get(),Ans=0;\n  Fac[0]=1;\n  for(int i=1;i<=N;i++)\n    Fac[i]=Fac[i-1]*i%Mod;\n  for(int i=0;i<=N;i++)\n    Rev[i]=Pow(Fac[i],Mod-2);\n  for(int i=0;i<=N;i++)\n    {\n      int Sum=i*A+(N-i)*B;\n      if(!Good(Sum,A,B))\n        continue;\n      Ans=(Ans+C(N,i))%Mod;\n    }\n  printf(\"%d\\n\",Ans);\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["brute force", "combinatorics"], "dificulty": "1800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/300/problem/C",
+    "problemId": "2923",
+    "problem_idx": "C",
+    "shortId": "300C",
+    "contest_number": "300",
+    "problem_submissions": {
+        "E": [
+            3626829,
+            3626078,
+            3626827,
+            3626906,
+            3628233,
+            3629109,
+            3629044,
+            3629132,
+            3628382,
+            3629855,
+            3627387
+        ],
+        "D": [
+            3624414,
+            37352127,
+            166085445
+        ],
+        "C": [
+            3622911,
+            3623906,
+            3623231,
+            3623852,
+            3624071,
+            3623911,
+            3624938,
+            3627160,
+            3625349,
+            3624808,
+            3623930,
+            3623466,
+            3623151,
+            3624115,
+            3624977
+        ],
+        "A": [
+            3621358,
+            3621544,
+            3621961,
+            3621419,
+            3622220,
+            3621400,
+            3621539,
+            3627980,
+            3621595,
+            3622614,
+            3621461,
+            3623870,
+            3621695,
+            3622433,
+            3621766
+        ],
+        "B": [
+            3622857,
+            3624197,
+            3622464,
+            3628078,
+            3624506,
+            3622936,
+            3628606,
+            7721187,
+            3623708,
+            3623701,
+            3623040,
+            3622630,
+            3624370,
+            3625890,
+            3622982
+        ]
+    },
+    "name": "C. Beautiful Numbers",
+    "statement": "Vitaly is a very weird man. He\u2019s got two favorite digits and . Vitaly\r\ncalls a positive integer , if the decimal representation of this integer\r\nonly contains digits and . Vitaly calls a good number , if the sum of\r\nits digits is a good number.For example, let\u2019s say that Vitaly\u2019s\r\nfavourite digits are and , then number isn\u2019t good and numbers or are.\r\nAlso, number is excellent and number isn\u2019t. Now Vitaly is wondering, how\r\nmany excellent numbers of length exactly are there. As this number can\r\nbe rather large, he asks you to count the remainder after dividing it by\r\n.A number\u2019s length is the number of digits in its decimal representation\r\nwithout leading zeroes.\r\n",
+    "solutions": [
+        "//program 300-C\n\n#include<iostream>\n#include<cstdio>\n#include<cstdlib>\n#include<cstring>\n#include<algorithm>\n\nusing namespace std;\n\nint Get()\n{\n  char c;\n  while(c=getchar(),c<'0'||c>'9');\n  int X=0;\n  while(c>='0'&&c<='9')\n    {\n      X=X*10+c-48;\n      c=getchar();\n    }\n  return X;\n}\n\nconst int Mod=1000000007;\n\nlong long Fac[1000001],Rev[1000001];\n\nlong long Pow(long long A,long long B)\n{\n  if(!B)\n    return 1;\n  long long T=Pow(A*A%Mod,B/2);\n  if(B&1)\n    T=T*A%Mod;\n  return T;\n}\n\nbool Good(int S,int A,int B)\n{\n  if(!S)\n    return true;\n  if(S%10!=A&&S%10!=B)\n    return false;\n  return Good(S/10,A,B);\n}\n\nlong long C(int N,int M)\n{\n  return Fac[N]*Rev[M]%Mod*Rev[N-M]%Mod;\n}\n\nint main()\n{\n  int A=Get(),B=Get(),N=Get(),Ans=0;\n  Fac[0]=1;\n  for(int i=1;i<=N;i++)\n    Fac[i]=Fac[i-1]*i%Mod;\n  for(int i=0;i<=N;i++)\n    Rev[i]=Pow(Fac[i],Mod-2);\n  for(int i=0;i<=N;i++)\n    {\n      int Sum=i*A+(N-i)*B;\n      if(!Good(Sum,A,B))\n        continue;\n      Ans=(Ans+C(N,i))%Mod;\n    }\n  printf(\"%d\\n\",Ans);\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "combinatorics"
+    ],
+    "dificulty": "1800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Beautiful Numbers.json",
+    "editorial_link": "https://codeforces.com//blog/entry/7497",
+    "editorial": "Let\u00e2\u0080\u0099s . Let\u00e2\u0080\u0099s precalc factorial values modulo . , . Let be an amount of\r\ndigits equal to in current excellent number. In this case we can find\r\nsum of digits in this number: . If is good, then add to answer. In this\r\nproblem it\u00e2\u0080\u0099s impossible to calculate binomial coefficients using\r\nPascal\u00e2\u0080\u0099s triangle, because of large . However it can be done this way .\r\nis multiplicative inverse element(modulo ). is a prime number, so .\r\nCalculating this values for each from to will give correct answer in .\r\nuthor\u00e2\u0080\u0099s solution\r\n"
+}

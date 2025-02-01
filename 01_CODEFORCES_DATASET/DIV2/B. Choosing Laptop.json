@@ -1,1 +1,96 @@
-{"link": "https://codeforces.com//contest/106/problem/B", "problemId": "558", "problem_idx": "B", "shortId": "106B", "contest_number": "106", "problem_submissions": {"E": [624494, 621382, 621302, 1028967], "B": [2851079, 616301, 616392, 616823, 616526, 615744, 616740, 616327, 616298, 616165, 616707, 616308, 616319, 616401, 616575], "D": [618542, 618462, 619420, 618678, 618906, 618952, 618136, 618460, 618603, 618015, 618966, 618832, 619376, 618535], "C": [617158, 617296, 617911, 617244, 617544, 617983, 617181, 617500, 617204, 619254, 617295, 617239, 617595, 617116], "A": [615823, 615814, 616171, 615840, 616585, 616009, 615802, 615745, 615738, 615793, 615640, 615790, 615820, 618361]}, "name": "B. Choosing Laptop", "statement": "Vasya is choosing a laptop. The shop has laptops to all tastes.Vasya is\r\ninterested in the following properties: processor speed, ram and hdd.\r\nVasya is a programmer and not a gamer which is why he is not interested\r\nin all other properties.If all three properties of a laptop are than\r\nthose properties of some other laptop, then the first laptop is\r\nconsidered outdated by Vasya. Among all laptops Vasya does not consider\r\noutdated, he chooses the cheapest one.There are very many laptops, which\r\nis why Vasya decided to write a program that chooses the suitable\r\nlaptop. However, Vasya doesn\u2019t have his own laptop yet and he asks you\r\nto help him.\r\n", "solutions": ["//yeah lets clear a page 2 problem first (successfully)\n\n#include <iostream> //ray, scott picks problem\n#include <cstdio> //steven, ok http://codeforces.com/problemset/page/2?order=BY_SOLVED_DESC\n#include <algorithm> // scott, http://www.codeforces.com/problemset/problem/106/B\n#include <cstring> //ray, richard get out\n\nusing namespace std; //steven\nconst int MAXN = 110; // scott\n\nint N; //ray, wtf\n//struct laptop { //steven, my bad\nstruct notlaptop { //scott ray li go\n    int speed, ram, hdd, cost; //ray, sorry comp is freezing\n    notlaptop(int a, int b, int c, int d) { // steven\n        speed = a; ram = b; hdd = c; cost = d; //scott\n    } //ray\n    notlaptop()<% %>//steven\n}//scott\n;//ray\n\nnotlaptop ar[MAXN]; //steven\n\nint main() //scott\n{ //ray\nscanf(\"%d\", &N); //steven\nfor (int i = 0; i < N; i++) //scott\n{ //ray, scott why you give me the boring lines gayboi, also lets race richard/travis/nathan after this;\nint a,b,c,d; //steven\ncin >> a >> b >> c >> d; //scott gogo ray li\nar[i] = notlaptop (a,b,c,d); //ray\n}//steven also can we code simultaneously on different lines\n\nint bcost = 1e9, res = -1; //scott this is the best cost found\n\nfor(int i=0; i<N; i++){ //ray\nbool outdated = false; //steven, rpeng gave us his stypi want to troll it if we're losing?\nfor (int j = 0; j < N; j++) { //scott we won't lose dude\n    if (ar[i].speed < ar[j].speed and ar[i].ram < ar[j].ram and ar[i].hdd < ar[j].hdd){ //ray\n        outdated = true; break; }  } //guys i was expecting scott to put another } not my fault\n//steven, http://www.youtube.com/watch?v=O1U4aiEvudY&feature=youtu.be\n\nif (!outdated){ //scott\n    if (ar[i].cost < bcost){ //ray\n           bcost = ar[i].cost, res = i + 1; //steven\n    } //scott ray you can do the other }\n} //ray, nig\n} //steven, niggaaa\n\ncout << res << \"\\n\"; //scott\n} //ray, dafuck are you talking about\n//steven nigga you need to return 0 holy shit\n//dude we compile error\n//ray, holy shit steven you are so bad scott gogogogogo\n"], "input": "", "output": "", "tags": ["brute force", "implementation"], "dificulty": "1000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/106/problem/B",
+    "problemId": "558",
+    "problem_idx": "B",
+    "shortId": "106B",
+    "contest_number": "106",
+    "problem_submissions": {
+        "E": [
+            624494,
+            621382,
+            621302,
+            1028967
+        ],
+        "B": [
+            2851079,
+            616301,
+            616392,
+            616823,
+            616526,
+            615744,
+            616740,
+            616327,
+            616298,
+            616165,
+            616707,
+            616308,
+            616319,
+            616401,
+            616575
+        ],
+        "D": [
+            618542,
+            618462,
+            619420,
+            618678,
+            618906,
+            618952,
+            618136,
+            618460,
+            618603,
+            618015,
+            618966,
+            618832,
+            619376,
+            618535
+        ],
+        "C": [
+            617158,
+            617296,
+            617911,
+            617244,
+            617544,
+            617983,
+            617181,
+            617500,
+            617204,
+            619254,
+            617295,
+            617239,
+            617595,
+            617116
+        ],
+        "A": [
+            615823,
+            615814,
+            616171,
+            615840,
+            616585,
+            616009,
+            615802,
+            615745,
+            615738,
+            615793,
+            615640,
+            615790,
+            615820,
+            618361
+        ]
+    },
+    "name": "B. Choosing Laptop",
+    "statement": "Vasya is choosing a laptop. The shop has laptops to all tastes.Vasya is\r\ninterested in the following properties: processor speed, ram and hdd.\r\nVasya is a programmer and not a gamer which is why he is not interested\r\nin all other properties.If all three properties of a laptop are than\r\nthose properties of some other laptop, then the first laptop is\r\nconsidered outdated by Vasya. Among all laptops Vasya does not consider\r\noutdated, he chooses the cheapest one.There are very many laptops, which\r\nis why Vasya decided to write a program that chooses the suitable\r\nlaptop. However, Vasya doesn\u2019t have his own laptop yet and he asks you\r\nto help him.\r\n",
+    "solutions": [
+        "//yeah lets clear a page 2 problem first (successfully)\n\n#include <iostream> //ray, scott picks problem\n#include <cstdio> //steven, ok http://codeforces.com/problemset/page/2?order=BY_SOLVED_DESC\n#include <algorithm> // scott, http://www.codeforces.com/problemset/problem/106/B\n#include <cstring> //ray, richard get out\n\nusing namespace std; //steven\nconst int MAXN = 110; // scott\n\nint N; //ray, wtf\n//struct laptop { //steven, my bad\nstruct notlaptop { //scott ray li go\n    int speed, ram, hdd, cost; //ray, sorry comp is freezing\n    notlaptop(int a, int b, int c, int d) { // steven\n        speed = a; ram = b; hdd = c; cost = d; //scott\n    } //ray\n    notlaptop()<% %>//steven\n}//scott\n;//ray\n\nnotlaptop ar[MAXN]; //steven\n\nint main() //scott\n{ //ray\nscanf(\"%d\", &N); //steven\nfor (int i = 0; i < N; i++) //scott\n{ //ray, scott why you give me the boring lines gayboi, also lets race richard/travis/nathan after this;\nint a,b,c,d; //steven\ncin >> a >> b >> c >> d; //scott gogo ray li\nar[i] = notlaptop (a,b,c,d); //ray\n}//steven also can we code simultaneously on different lines\n\nint bcost = 1e9, res = -1; //scott this is the best cost found\n\nfor(int i=0; i<N; i++){ //ray\nbool outdated = false; //steven, rpeng gave us his stypi want to troll it if we're losing?\nfor (int j = 0; j < N; j++) { //scott we won't lose dude\n    if (ar[i].speed < ar[j].speed and ar[i].ram < ar[j].ram and ar[i].hdd < ar[j].hdd){ //ray\n        outdated = true; break; }  } //guys i was expecting scott to put another } not my fault\n//steven, http://www.youtube.com/watch?v=O1U4aiEvudY&feature=youtu.be\n\nif (!outdated){ //scott\n    if (ar[i].cost < bcost){ //ray\n           bcost = ar[i].cost, res = i + 1; //steven\n    } //scott ray you can do the other }\n} //ray, nig\n} //steven, niggaaa\n\ncout << res << \"\\n\"; //scott\n} //ray, dafuck are you talking about\n//steven nigga you need to return 0 holy shit\n//dude we compile error\n//ray, holy shit steven you are so bad scott gogogogogo\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "implementation"
+    ],
+    "dificulty": "1000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Choosing Laptop.json",
+    "editorial_link": "https://codeforces.com//blog/entry/2493",
+    "editorial": "You can create array for all laptops where true for outdated laptop and false otherwise. Value of every cell of this array you can determine by iterating over all laptops and comparing all their parameters. At the end you should itarate over all laptops once again and choose cheapest one that is not outdated."
+}

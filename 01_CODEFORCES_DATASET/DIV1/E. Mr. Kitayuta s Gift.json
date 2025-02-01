@@ -1,1 +1,99 @@
-{"link": "https://codeforces.com//contest/506/problem/E", "problemId": "20824", "problem_idx": "E", "shortId": "506E", "contest_number": "506", "problem_submissions": {"C": [9464348, 9463979, 9557239, 9466208, 9514381], "D": [9461125, 9461876, 9460334, 9459573, 9458109, 9460700, 9459375, 9461634, 9460457, 9461910, 9458643, 9460232, 9462018, 9462258, 9460016, 9460009, 9459977, 9462409, 9460765], "B": [9459503, 9458315, 9457879, 9457557, 9459219, 9458249, 9461319, 9459208, 9457985, 9457950, 9462161, 9459453, 9458782, 9461373, 9462464, 9462819, 9459210, 9458536], "A": [9456602, 9456438, 9456462, 9456507, 9460135, 9456591, 9456641, 9456514, 9463082, 9456214, 9463955, 9457315, 9456528, 9457236, 9463962, 9457919, 9457204, 9456634, 9464389], "E": [9557214]}, "name": "E. Mr. Kitayuta s Gift", "statement": "Mr. Kitayuta has kindly given you a string consisting of lowercase\r\nEnglish letters. You are asked to insert exactly lowercase English\r\nletters into to make it a palindrome. (A is a string that reads the same\r\nforward and backward. For example, \"\", \"\" and \"\" are all palindromes,\r\nwhile \"\" and \"\" are not.) You can choose any lowercase English letters,\r\nand insert each of them to any position of , possibly to the beginning\r\nor the end of . You have to insert exactly letters even if it is\r\npossible to turn into a palindrome by inserting less than letters.Find\r\nthe number of the palindromes that can be obtained in this way, modulo .\r\n", "solutions": ["#include <algorithm>\n#include <cstring>\n#include <cstdlib>\n#include <cstdio>\n#include <vector>\n#include <ctime>\n#define fi first\n#define se second\n#define PA pair<int,int>\n#define VI vector<int>\n#define VP vector<PA >\n#define mk(x,y) make_pair(x,y)\n#define N 210\n#define M N*2\n#define mo 10007\n#define For(i,x,y) for (i=x;i<=y;i++)\nusing namespace std;\nint i,j,k,n,m,nn,an;\nint a[M][M],b[M][M],f[N][N][N];\nchar p[N];\ninline void mul(int a[M][M],int b[M][M]) {\n\tint i,j,k,c[M][M]={};\n\tFor(i,1,nn)For(j,i,nn)For(k,j,nn) c[i][k]=(a[i][j]*b[j][k]+c[i][k])%mo;\n\tFor(i,1,nn)For(j,i,nn) a[i][j]=c[i][j];\n}\ninline void S(int &x,int y) {\n\tx=(x+y)%mo;\n}\ninline void pre() {\n\tint i,j,k,u,x;\n\tf[1][m][0]=1;\n\tfor (i=m-1;i>=0;i--) For(j,1,m-i) For(k,0,m) {\n\t\tu=j+i;\n\t\tif ((x=f[j][u][k])>0) {\n\t\t\tif (p[j]==p[u]) S(f[j+1][u-1][k],x);\n\t\t\telse S(f[j+1][u][k+1],x),S(f[j][u-1][k+1],x);\n\t\t}\n\t}\n}\nint main() {\n\tscanf(\"%s%d\",p+1,&n);\n\tm=strlen(p+1);\n\tpre();\n\tn+=m;\n\tint flag=n&1;\n\tn/=2;\n\tint n24=m,n25=(m+1)/2,n26=n25+1;\n\tnn=n24+n25+n26;\n\tFor(i,1,n24+n25-1) a[i][i+1]=1;\n\tFor(i,0,n25) a[n24+i][nn-i]=1;\n\tFor(i,1,n24) a[i][i]=24;\n\tFor(i,1,n25) a[n24+i][n24+i]=25;\n\tFor(i,1,n26) a[n24+n25+i][n24+n25+i]=26;\n\tFor(i,1,nn) b[i][i]=1;\n\tfor (k=n;k;k/=2) {\n\t\tif (k&1) mul(b,a);\n\t\tmul(a,a);\n\t}\n\tFor(i,0,m) {\n\t\tint v24=i,v25=(m-i+1)/2,s=0;\n\t\tFor(j,1,m) S(s,f[j+1][j-1][i]),S(s,f[j][j-1][i]);\n\t\tan=(s*b[n24-v24+1][nn-v25]%mo*(flag?26:1)+an)%mo;\n\t\t\n\t\tif (flag&&(m-v24)%2==1) {\n\t\t\ts=0;\n\t\t\tFor(j,1,m) S(s,f[j][j][i]);\n\t\t\tan=(s*b[n24-v24+1][n24+v25]+an)%mo;\n\t\t}\n\t}\n\tprintf(\"%d\\n\",an);\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["combinatorics", "dp", "matrices", "strings"], "dificulty": "3000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/506/problem/E",
+    "problemId": "20824",
+    "problem_idx": "E",
+    "shortId": "506E",
+    "contest_number": "506",
+    "problem_submissions": {
+        "C": [
+            9464348,
+            9463979,
+            9557239,
+            9466208,
+            9514381
+        ],
+        "D": [
+            9461125,
+            9461876,
+            9460334,
+            9459573,
+            9458109,
+            9460700,
+            9459375,
+            9461634,
+            9460457,
+            9461910,
+            9458643,
+            9460232,
+            9462018,
+            9462258,
+            9460016,
+            9460009,
+            9459977,
+            9462409,
+            9460765
+        ],
+        "B": [
+            9459503,
+            9458315,
+            9457879,
+            9457557,
+            9459219,
+            9458249,
+            9461319,
+            9459208,
+            9457985,
+            9457950,
+            9462161,
+            9459453,
+            9458782,
+            9461373,
+            9462464,
+            9462819,
+            9459210,
+            9458536
+        ],
+        "A": [
+            9456602,
+            9456438,
+            9456462,
+            9456507,
+            9460135,
+            9456591,
+            9456641,
+            9456514,
+            9463082,
+            9456214,
+            9463955,
+            9457315,
+            9456528,
+            9457236,
+            9463962,
+            9457919,
+            9457204,
+            9456634,
+            9464389
+        ],
+        "E": [
+            9557214
+        ]
+    },
+    "name": "E. Mr. Kitayuta s Gift",
+    "statement": "Mr. Kitayuta has kindly given you a string consisting of lowercase\r\nEnglish letters. You are asked to insert exactly lowercase English\r\nletters into to make it a palindrome. (A is a string that reads the same\r\nforward and backward. For example, \"\", \"\" and \"\" are all palindromes,\r\nwhile \"\" and \"\" are not.) You can choose any lowercase English letters,\r\nand insert each of them to any position of , possibly to the beginning\r\nor the end of . You have to insert exactly letters even if it is\r\npossible to turn into a palindrome by inserting less than letters.Find\r\nthe number of the palindromes that can be obtained in this way, modulo .\r\n",
+    "solutions": [
+        "#include <algorithm>\n#include <cstring>\n#include <cstdlib>\n#include <cstdio>\n#include <vector>\n#include <ctime>\n#define fi first\n#define se second\n#define PA pair<int,int>\n#define VI vector<int>\n#define VP vector<PA >\n#define mk(x,y) make_pair(x,y)\n#define N 210\n#define M N*2\n#define mo 10007\n#define For(i,x,y) for (i=x;i<=y;i++)\nusing namespace std;\nint i,j,k,n,m,nn,an;\nint a[M][M],b[M][M],f[N][N][N];\nchar p[N];\ninline void mul(int a[M][M],int b[M][M]) {\n\tint i,j,k,c[M][M]={};\n\tFor(i,1,nn)For(j,i,nn)For(k,j,nn) c[i][k]=(a[i][j]*b[j][k]+c[i][k])%mo;\n\tFor(i,1,nn)For(j,i,nn) a[i][j]=c[i][j];\n}\ninline void S(int &x,int y) {\n\tx=(x+y)%mo;\n}\ninline void pre() {\n\tint i,j,k,u,x;\n\tf[1][m][0]=1;\n\tfor (i=m-1;i>=0;i--) For(j,1,m-i) For(k,0,m) {\n\t\tu=j+i;\n\t\tif ((x=f[j][u][k])>0) {\n\t\t\tif (p[j]==p[u]) S(f[j+1][u-1][k],x);\n\t\t\telse S(f[j+1][u][k+1],x),S(f[j][u-1][k+1],x);\n\t\t}\n\t}\n}\nint main() {\n\tscanf(\"%s%d\",p+1,&n);\n\tm=strlen(p+1);\n\tpre();\n\tn+=m;\n\tint flag=n&1;\n\tn/=2;\n\tint n24=m,n25=(m+1)/2,n26=n25+1;\n\tnn=n24+n25+n26;\n\tFor(i,1,n24+n25-1) a[i][i+1]=1;\n\tFor(i,0,n25) a[n24+i][nn-i]=1;\n\tFor(i,1,n24) a[i][i]=24;\n\tFor(i,1,n25) a[n24+i][n24+i]=25;\n\tFor(i,1,n26) a[n24+n25+i][n24+n25+i]=26;\n\tFor(i,1,nn) b[i][i]=1;\n\tfor (k=n;k;k/=2) {\n\t\tif (k&1) mul(b,a);\n\t\tmul(a,a);\n\t}\n\tFor(i,0,m) {\n\t\tint v24=i,v25=(m-i+1)/2,s=0;\n\t\tFor(j,1,m) S(s,f[j+1][j-1][i]),S(s,f[j][j-1][i]);\n\t\tan=(s*b[n24-v24+1][nn-v25]%mo*(flag?26:1)+an)%mo;\n\t\t\n\t\tif (flag&&(m-v24)%2==1) {\n\t\t\ts=0;\n\t\t\tFor(j,1,m) S(s,f[j][j][i]);\n\t\t\tan=(s*b[n24-v24+1][n24+v25]+an)%mo;\n\t\t}\n\t}\n\tprintf(\"%d\\n\",an);\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "combinatorics",
+        "dp",
+        "matrices",
+        "strings"
+    ],
+    "dificulty": "3000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\E. Mr. Kitayuta s Gift.json",
+    "editorial_link": "https://codeforces.com/blog/entry/15889",
+    "editorial": "[Problem] Given a string and an integer , find the number of the\r\npalindromes that can be obtained by inserting exactly letters into .\r\nNote: Div.2 A is a similar problem, where is fixed to . (Problem from\r\nevima) First of all, let us note that we are asked to count the\r\nresulting palindromes, not the ways to obtain them. For example, if we\r\nare to insert \"b\" into \"abba\", there are 5 possible positions, but only\r\n3 strings will be produced (\"babba\", \"abbba\" and \"abbab\"). Rather than\r\ntrying to count the ways of inserting a letter times and removing the\r\nduplicated results, we should directly count the resulting palindrome.\r\nTo do that, let us reformulate the problem: [Problem\u00e2\u0080\u0099] Given a string\r\nand an integer , find the number of the palindromes of length (let this\r\nnumber be ) that contains as a subsequence (not necessarily contiguous).\r\nConsider constructing a palindrome from both ends, and matching it to\r\nfrom both left and right. For example, let \"abaac\" and . Let us call the\r\nfinal resulting string . We first decide what letter to use as and (they\r\nmust be equal in order for to be a palindrome). Let us say \u00e2\u0080\u0099c\u00e2\u0080\u0099 is\r\nchosen. Now, we have to construct the remaining part of , that is, , so\r\nthat contains \"abaa\" as a substring (note that the \u00e2\u0080\u0099c\u00e2\u0080\u0099 at the end of is\r\ndiscarded). Again, we decide what letter to use as and . This time we\r\nchoose \u00e2\u0080\u0099a\u00e2\u0080\u0099. Then, we have to construct , so that it contains \"ba\" as a\r\nsubstring (this time the two \u00e2\u0080\u0099a\u00e2\u0080\u0099s at the both ends of are discarded). We\r\nchoose \u00e2\u0080\u0099c\u00e2\u0080\u0099. Next, we construct , so that it contains \"ba\" as a substring\r\n(this time remains unchanged). We choose \u00e2\u0080\u0099b\u00e2\u0080\u0099. Then, we construct , so\r\nthat it contains \"a\" as a substring. We choose \u00e2\u0080\u0099a\u00e2\u0080\u0099 (it is becoming\r\nrepetitive, isn\u00e2\u0080\u0099t it?). The last part of , that is, , has no restriction\r\n(this time we choose a letter for only one position of , not two). We\r\nchoose \u00e2\u0080\u0099d\u00e2\u0080\u0099, and we have obtained a palindrome \"cacbadabcac\" that\r\ncontains = \"abaac\" as a subsequence. This problem is mostly about\r\nanalyzing this process carefully. The most naive solution other than\r\nliterally enumerating all palindromes of length would be the following\r\nDynamic Programming: let be the number of the palindromes that can be\r\nobtained if you have already decided the leftmost and the rightmost\r\nletters ( in total), and the substring of remains unmatched. Each value\r\nin this table can be computed in time. Of course, since can be up to (),\r\nthis solution is far from our goal. Notice that the transitions from to\r\nare the same regardless of , thus we can calculate the table by matrix\r\nexponentiation. However, since there are possible pairs for , we will\r\nneed time, which is actually worse than the naive calculation\r\nconsidering that can be up to . This is where we need to observe the\r\nprocess which we have gone through at the beginning more carefully. Let\r\nus build a automaton corresponding to the process (the image below). A\r\nprocess of producing a palindrome of length that contains as a\r\nsubsequence corresponds to a path of length from the upper-right vertex\r\nto the lower-left vertex. Each red vertex has 24 self-loops since the\r\nletters at the both ends of the remaining part of is different, which\r\ncorrespond to two non-self-loop transitions. Similarly, each green\r\nvertex has 25 self-loops since the first letter and the last letter of\r\nthe remaining string is the same, and the blue vertex, the destination,\r\nhas 26 self-loops, as there are no more non-self-loop transitions\r\navailable. Here is an important fact: there are not so many possible\r\ncombination of , where and are the number of times a path from START to\r\nGOAL visits a red vertex (with 24 self-loops) and a green vertex (with\r\n25 self-loops), respectively. Why? Each time we leave a red vertex, the\r\nlength of the remaining unmatched part of decreases by 1, since exactly\r\none of the two letters at the ends of the remaining part is matched and\r\ndiscarded. Similarly, each time we leave a green vertex, the length of\r\nthe remaining string decreases by 2, since both of the two letters at\r\nthe ends are matched and discarded. There is a exception, however: if\r\nthe length of the remaining string is 1, then it will be a green vertex,\r\nbut in this case the length will decrease by 1. Thus, for any path from\r\nSTART to GOAL, will be equal to either or . If we fix , then will be\r\nuniquely determined by . Since can only take the value between and ,\r\nthere are at most possible pairs of . With this fact, we are ready to\r\ncount the paths: let us classify them by the value of . For each\r\npossible pair of , let us count the number of corresponding paths. To do\r\nthat, we divide each paths into two parts: first we count the number of\r\npaths from START to GOAL, using only non-self-loop transitions. Then, we\r\ncount the ways of inserting self-loop transitions into each of these\r\npaths. The product of these two numbers will be the number that we seek.\r\nThe first part is straightforward to solve: let be the number of paths\r\nfrom the vertex that corresponds to the substring , visiting exactly red\r\nvertices using only non-self-loop transitions. Each value of the table\r\ncan be found in time, thus the whole table can be computed in time,\r\nwhich is fast enough for the input size (). The main obstacle will be\r\nthe second part. For example, let us consider the case where \"abaac\", ,\r\nwhich corresponds to the example at the beginning. From the fact we\r\nfound earlier, . Thus, we have to insert self-loop transitions into this\r\npath (the image): The order in which red, green and blue vertices\r\nappears in this path does not affect the number of ways of insertion,\r\nand can be arbitrary. The number of ways to insert self-loop transitions\r\nwill be equal to the number of the path of length from START to GOAL in\r\nthis automaton (we have to take into account the non-self-loop\r\ntransitions in it), which can be calculated by matrix exponentiation.\r\nAre we done? No! Consider the case \"abbb..( times)..bb\". There are\r\npossible values of ( corresponds to the case where you match and discard\r\nthe \u00e2\u0080\u0099a\u00e2\u0080\u0099 first, and corresponds to the case where you keep the \u00e2\u0080\u0099a\u00e2\u0080\u0099 until\r\nbecomes \"ab\"). Thus, you need to perform matrix exponentiation times,\r\nwhich results in a total of time, which will be too much under the given\r\nconstraints. There is still hope, though, and here is the climax. Notice\r\nthat these automata are very similar to each other, and they differ only\r\nin the number of the red and green vertices. We can combine these\r\nautomata into one larger automaton like this (the image): By performing\r\nmatrix exponentiation on this automaton instead of many small automata,\r\nwe can find all the required value in time, which should be enough. We\r\nrecommend speeding up matrix multiplication by noticing that the matrix\r\nwill be upper triangular (6 times faster on paper), since the time limit\r\nis not so generous (in order to reject solutions). The problem is almost\r\nsolved, but there is one more challenge. When is odd, the situation\r\nbecomes a little complicated: as we have seen at the beginning, in the\r\nlast (-th) step of producing a palindrome we choose a letter for only\r\none position of the resulting string, that is, the center of that\r\nstring. In other words, the last transition in the path in the automaton\r\nwe have first built must not be one from a green vertex with a string of\r\nlength 2 (for example, \"aa\") to GOAL. Let us find the number of the\r\npaths that violates this condition and subtract it from the answer. As\r\npreviously mentioned, for each path will be equal to either or , and if\r\nwe fix the value of , will be uniquely determined by . If is odd, then\r\nit means that the last non-self-loop transition is one from a green\r\nvertex with a string of length 1, therefore in this case no path will\r\nviolate the condition. If is even, then the last non-self-loop\r\ntrantision is from a green vertex with a string of length 2, thus the\r\npaths that does not contain the self-loop from GOAL to itself violate\r\nthe condition. It will be equal to the number of the paths of length\r\nfrom START to the vertex just before GOAL, which can be found in a\r\nsimilar way to the second part of the solution. The journey has finally\r\ncome to an end. Actually, it is also possible to solve this problem in\r\ntime without matrix exponentiation, but this margin is too small to\r\nexplain it. I will just paste the link to the code. The writer\u00e2\u0080\u0099s code\r\n(matrix exponentiation, C++): 9501164The writer\u00e2\u0080\u0099s code (without matrix\r\nexponentiation, C++): 9501177 Congratulations again to Petr who was the\r\nonly participant to solve this problem in 108 minutes. Also, I would\r\nlike to give a special mention to rng_58, who was VERY close to solving\r\nit in only 63 minutes. He was just one byte away from getting AC\r\n(compare 9460984 and 9465440)! If you find a possible error, or have a\r\nquestion, please feel free to ask here. Alternative solutions are also\r\nwelcome.\r\n"
+}

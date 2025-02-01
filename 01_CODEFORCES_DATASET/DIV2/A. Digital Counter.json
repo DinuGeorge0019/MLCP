@@ -1,1 +1,86 @@
-{"link": "https://codeforces.com//contest/495/problem/A", "problemId": "19369", "problem_idx": "A", "shortId": "495A", "contest_number": "495", "problem_submissions": {"D": [9112852, 9115986, 9117140, 9117503, 9123190, 9119753], "C": [9107534, 9109560, 9109503, 9108459, 9106667, 9110323, 9118258, 9115754, 9108222, 9112671, 9111689, 9109335, 9111765, 9108306, 9110442, 9106049], "B": [9104748, 9107046, 9106767, 9105605, 9110931, 9106856, 9105868, 9113914, 9105045, 9109777, 9108695, 9106960, 9107128, 9106063, 9106299, 9107851], "A": [9104037, 9104189, 9104218, 9111853, 9108412, 9113154, 9103998, 9107038, 9103963, 9104475, 9104127, 9105245, 9105093, 9104487, 9104429, 9110186]}, "name": "A. Digital Counter", "statement": "Malek lives in an apartment block with floors numbered from to . The\r\napartment has an elevator with a digital counter showing the floor that\r\nthe elevator is currently on. The elevator shows each digit of a number\r\nwith light sticks by turning them on or off. The picture below shows how\r\nthe elevator shows each digit.One day when Malek wanted to go from floor\r\nto floor using the elevator he noticed that the counter shows number\r\ninstead of . Then when the elevator started moving the number on the\r\ncounter changed to . After a little thinking Malek came to the\r\nconclusion that there is only one explanation for this: One of the\r\nsticks of the counter was broken. Later that day Malek was thinking\r\nabout the broken stick and suddenly he came up with the following\r\nproblem.Suppose the digital counter is showing number . Malek calls an\r\ninteger () if it\u2019s possible that the digital counter was supposed to\r\nshow but because of some(possibly none) broken sticks it\u2019s showing\r\ninstead. Malek wants to know number of good integers for a specific . So\r\nyou must write a program that calculates this number. Please note that\r\nthe counter shows two digits.\r\n", "solutions": ["#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <string>\nint val[10]={127-2,16+64,127-8-64,127-8-32,127-1-4-32,127-16-32,127-16,1+16+64,127,127-32};\nint n;\nint main()\n{\n    scanf(\"%d\",&n);\n    int d1=(n/10),d2=(n%10),cnt1=0,cnt2=0;\n    for(int i=0;i<10;i++) if((val[d1]&val[i])==val[d1]) cnt1++;\n    for(int i=0;i<10;i++) if((val[d2]&val[i])==val[d2]) cnt2++;\n    printf(\"%d\\n\",cnt1*cnt2);\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["implementation"], "dificulty": "1100", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/495/problem/A",
+    "problemId": "19369",
+    "problem_idx": "A",
+    "shortId": "495A",
+    "contest_number": "495",
+    "problem_submissions": {
+        "D": [
+            9112852,
+            9115986,
+            9117140,
+            9117503,
+            9123190,
+            9119753
+        ],
+        "C": [
+            9107534,
+            9109560,
+            9109503,
+            9108459,
+            9106667,
+            9110323,
+            9118258,
+            9115754,
+            9108222,
+            9112671,
+            9111689,
+            9109335,
+            9111765,
+            9108306,
+            9110442,
+            9106049
+        ],
+        "B": [
+            9104748,
+            9107046,
+            9106767,
+            9105605,
+            9110931,
+            9106856,
+            9105868,
+            9113914,
+            9105045,
+            9109777,
+            9108695,
+            9106960,
+            9107128,
+            9106063,
+            9106299,
+            9107851
+        ],
+        "A": [
+            9104037,
+            9104189,
+            9104218,
+            9111853,
+            9108412,
+            9113154,
+            9103998,
+            9107038,
+            9103963,
+            9104475,
+            9104127,
+            9105245,
+            9105093,
+            9104487,
+            9104429,
+            9110186
+        ]
+    },
+    "name": "A. Digital Counter",
+    "statement": "Malek lives in an apartment block with floors numbered from to . The\r\napartment has an elevator with a digital counter showing the floor that\r\nthe elevator is currently on. The elevator shows each digit of a number\r\nwith light sticks by turning them on or off. The picture below shows how\r\nthe elevator shows each digit.One day when Malek wanted to go from floor\r\nto floor using the elevator he noticed that the counter shows number\r\ninstead of . Then when the elevator started moving the number on the\r\ncounter changed to . After a little thinking Malek came to the\r\nconclusion that there is only one explanation for this: One of the\r\nsticks of the counter was broken. Later that day Malek was thinking\r\nabout the broken stick and suddenly he came up with the following\r\nproblem.Suppose the digital counter is showing number . Malek calls an\r\ninteger () if it\u2019s possible that the digital counter was supposed to\r\nshow but because of some(possibly none) broken sticks it\u2019s showing\r\ninstead. Malek wants to know number of good integers for a specific . So\r\nyou must write a program that calculates this number. Please note that\r\nthe counter shows two digits.\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <string>\nint val[10]={127-2,16+64,127-8-64,127-8-32,127-1-4-32,127-16-32,127-16,1+16+64,127,127-32};\nint n;\nint main()\n{\n    scanf(\"%d\",&n);\n    int d1=(n/10),d2=(n%10),cnt1=0,cnt2=0;\n    for(int i=0;i<10;i++) if((val[d1]&val[i])==val[d1]) cnt1++;\n    for(int i=0;i<10;i++) if((val[d2]&val[i])==val[d2]) cnt2++;\n    printf(\"%d\\n\",cnt1*cnt2);\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation"
+    ],
+    "dificulty": "1100",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Digital Counter.json",
+    "editorial_link": "https://codeforces.com//blog/entry/15148",
+    "editorial": "For each digit you can count the number of digits that because of some\r\nbroken sticks is shown instead of by hand. for example when , can be ,\r\nand . Let\u00e2\u0080\u0099s denote this number by . Then if the input is (the first\r\ndigit shown in the counter is and the second is ) the answer will be .\r\n"
+}

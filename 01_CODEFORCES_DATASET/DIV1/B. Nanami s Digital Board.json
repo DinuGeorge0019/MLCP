@@ -1,1 +1,105 @@
-{"link": "https://codeforces.com//contest/434/problem/B", "problemId": "9713", "problem_idx": "B", "shortId": "434B", "contest_number": "434", "problem_submissions": {"D": [6699538, 6706635, 6706622, 6706591, 6706589, 6795823, 6704699, 6708335, 6707919], "C": [6697907, 6699177, 6698487, 6699311, 6699392, 6797515, 6797483, 6718935, 6697269, 6700102, 6699851, 6696039, 6700493, 6700403, 6700591, 6698358, 6698258, 6700561, 6698389], "B": [6695587, 6696287, 6694622, 6695678, 6696514, 6695797, 6699364, 6695860, 6695864, 6699676, 6699377, 6696715, 6697097, 6695263, 6696899, 6700084, 6700621, 6697368, 6695731], "A": [6692446, 6694191, 6692438, 6693456, 6692853, 6692909, 6693769, 6692709, 6691931, 6694014, 6700765, 6693088, 6694404, 6692737, 6695761, 6695148, 6698289, 6693859, 6708768], "E": [6711897]}, "name": "B. Nanami s Digital Board", "statement": "Nanami is an expert at playing games. This day, Nanami\u2019s good friend\r\nHajime invited her to watch a game of baseball. Unwilling as she was,\r\nshe followed him to the stadium. But Nanami had no interest in the game,\r\nso she looked around to see if there was something that might interest\r\nher. That\u2019s when she saw the digital board at one end of the stadium.The\r\ndigital board is pixels in height and pixels in width, every pixel is\r\neither light or dark. The pixels are described by its coordinate. The\r\n-th pixel of the -th line is pixel . The board displays messages by\r\nswitching a combination of pixels to light, and the rest to dark. Nanami\r\nnotices that the state of the pixels on the board changes from time to\r\ntime. At certain times, certain pixels on the board may switch from\r\nlight to dark, or from dark to light.Nanami wonders, what is the area of\r\nthe biggest light block such that a specific pixel is on its side. A\r\nlight block is a sub-rectangle of the board, in which all pixels are\r\nlight. Pixel belongs to a side of sub-rectangle with and as its\r\nupper-left and lower-right vertex if and only if it satisfies the\r\nlogical condition: (( or ) and ()) or (( or ) and ()).Nanami has all the\r\nhistory of changing pixels, also she has some questions of the described\r\ntype, can you answer them?\r\n", "solutions": ["#include <iostream>\n#include <cstdio>\n#include <algorithm>\n#include <cstring>\n#include <string>\nusing namespace std;\nint n, m, q;\nconst int MAX_N = 1000 + 10;\nint a[MAX_N][MAX_N];\n\nstruct TR {\n\tbool flip, swap;\n\tint n;\n\n\tTR() {\n\t}\n\n\tTR(bool f, bool s, int n) :\n\t\t\tflip(f), swap(s), n(n) {\n\t}\n\n\tvoid trans(int&r, int&c) {\n\t\tif (swap) {\n\t\t\tstd::swap(r, c);\n\t\t}\n\t\tif (flip) {\n\t\t\tr = n - 1 - r;\n\t\t}\n\t}\n};\n\nstruct Board {\n\tint a[MAX_N][MAX_N], n, m;\n\tint up[MAX_N][MAX_N]; //r,c\n\tTR tr;\n\n\tvoid init(int n, int m, TR tr) {\n\t\tthis->n = n, this->m = m;\n\t\tthis->tr = tr;\n\t}\n\n\tvoid set(int r, int c, int x) {\n\t\ttr.trans(r, c);\n\t\ta[r][c] = x;\n\t}\n\n\tvoid reset(int r, int c, int x) {\n\t\ttr.trans(r, c);\n\t\ta[r][c] = x;\n\t\tprocessCol(c);\n\t}\n\n\tvoid processCol(int c) {\n\t\tup[0][c] = a[0][c];\n\t\tfor (int r = 1; r < n; ++r) {\n\t\t\tif (a[r][c] == 1) {\n\t\t\t\tup[r][c] = up[r - 1][c] + 1;\n\t\t\t} else {\n\t\t\t\tup[r][c] = 0;\n\t\t\t}\n\t\t}\n\t}\n\n\tvoid doit() {\n\t\tfor (int c = 0; c < m; ++c) {\n\t\t\tprocessCol(c);\n\t\t}\n\t}\n\n\tint ask(int r, int c) {\n\t\ttr.trans(r, c);\n//\t\tcout << r << \" \" << c << endl;\n\t\t//at row r, above it ,contain column c\n\t\t//min at left\n\t\tstatic int what[MAX_N];\n\t\twhat[c] = up[r][c];\n\t\tfor (int i = c - 1; i >= 0; --i) {\n\t\t\twhat[i] = min(what[i + 1], up[r][i]);\n\t\t}\n\t\tfor (int i = c + 1; i < m; ++i) {\n\t\t\twhat[i] = min(what[i - 1], up[r][i]);\n\t\t}\n\n\t\tint ans = 0;\n\t\tint R = c;\n\t\tfor (int i = c; i >= 0; --i) {\n\t\t\twhile (R + 1 < m && what[R + 1] >= what[i])\n\t\t\t\t++R;\n\t\t\tans = max(ans, what[i] * (R - i + 1));\n\t\t}\n\t\tint L = c;\n\t\tfor (int i = c; i < m; ++i) {\n\t\t\twhile (L > 0 && what[L - 1] >= what[i])\n\t\t\t\t--L;\n\t\t\tans = max(ans, what[i] * (i - L + 1));\n\t\t}\n\t\treturn ans;\n\t}\n} D[4];\n\nint main() {\n\tcin >> n >> m >> q;\n\tfor (int i = 0; i < n; ++i) {\n\t\tfor (int j = 0; j < m; ++j) {\n\t\t\tscanf(\"%d\", a[i] + j);\n\t\t}\n\t}\n\tD[0].init(n, m, TR(false, false, n));\n\tD[1].init(n, m, TR(true, false, n));\n\tD[2].init(m, n, TR(false, true, m));\n\tD[3].init(m, n, TR(true, true, m));\n\n\tfor (int i = 0; i < 4; ++i) {\n\t\tfor (int r = 0; r < n; ++r) {\n\t\t\tfor (int c = 0; c < m; ++c) {\n\t\t\t\tD[i].set(r, c, a[r][c]);\n\t\t\t}\n\t\t}\n\t\tfor (int c = 0; c < D[i].m; ++c) {\n\t\t\tD[i].processCol(c);\n\t\t}\n\t}\n\n\twhile (q--) {\n\t\tint op;\n\t\tscanf(\"%d\", &op);\n\t\tif (op == 1) {\n\t\t\tint r, c;\n\t\t\tscanf(\"%d%d\", &r, &c), --r, --c;\n\t\t\tfor (int i = 0; i < 4; ++i) {\n\t\t\t\tD[i].reset(r, c, 1 - a[r][c]);\n\t\t\t}\n\t\t\ta[r][c] = 1 - a[r][c];\n\t\t} else {\n\t\t\tint r, c;\n\t\t\tscanf(\"%d%d\", &r, &c), --r, --c;\n\t\t\tint ans = 0;\n\t\t\tfor (int i = 0; i < 4; ++i) {\n\t\t\t\tans = max(ans, D[i].ask(r, c));\n\t\t\t}\n\t\t\tprintf(\"%d\\n\", ans);\n\t\t}\n\t}\n}\n"], "input": "", "output": "", "tags": ["divide and conquer", "dp", "dsu", "implementation", "two pointers"], "dificulty": "2000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/434/problem/B",
+    "problemId": "9713",
+    "problem_idx": "B",
+    "shortId": "434B",
+    "contest_number": "434",
+    "problem_submissions": {
+        "D": [
+            6699538,
+            6706635,
+            6706622,
+            6706591,
+            6706589,
+            6795823,
+            6704699,
+            6708335,
+            6707919
+        ],
+        "C": [
+            6697907,
+            6699177,
+            6698487,
+            6699311,
+            6699392,
+            6797515,
+            6797483,
+            6718935,
+            6697269,
+            6700102,
+            6699851,
+            6696039,
+            6700493,
+            6700403,
+            6700591,
+            6698358,
+            6698258,
+            6700561,
+            6698389
+        ],
+        "B": [
+            6695587,
+            6696287,
+            6694622,
+            6695678,
+            6696514,
+            6695797,
+            6699364,
+            6695860,
+            6695864,
+            6699676,
+            6699377,
+            6696715,
+            6697097,
+            6695263,
+            6696899,
+            6700084,
+            6700621,
+            6697368,
+            6695731
+        ],
+        "A": [
+            6692446,
+            6694191,
+            6692438,
+            6693456,
+            6692853,
+            6692909,
+            6693769,
+            6692709,
+            6691931,
+            6694014,
+            6700765,
+            6693088,
+            6694404,
+            6692737,
+            6695761,
+            6695148,
+            6698289,
+            6693859,
+            6708768
+        ],
+        "E": [
+            6711897
+        ]
+    },
+    "name": "B. Nanami s Digital Board",
+    "statement": "Nanami is an expert at playing games. This day, Nanami\u2019s good friend\r\nHajime invited her to watch a game of baseball. Unwilling as she was,\r\nshe followed him to the stadium. But Nanami had no interest in the game,\r\nso she looked around to see if there was something that might interest\r\nher. That\u2019s when she saw the digital board at one end of the stadium.The\r\ndigital board is pixels in height and pixels in width, every pixel is\r\neither light or dark. The pixels are described by its coordinate. The\r\n-th pixel of the -th line is pixel . The board displays messages by\r\nswitching a combination of pixels to light, and the rest to dark. Nanami\r\nnotices that the state of the pixels on the board changes from time to\r\ntime. At certain times, certain pixels on the board may switch from\r\nlight to dark, or from dark to light.Nanami wonders, what is the area of\r\nthe biggest light block such that a specific pixel is on its side. A\r\nlight block is a sub-rectangle of the board, in which all pixels are\r\nlight. Pixel belongs to a side of sub-rectangle with and as its\r\nupper-left and lower-right vertex if and only if it satisfies the\r\nlogical condition: (( or ) and ()) or (( or ) and ()).Nanami has all the\r\nhistory of changing pixels, also she has some questions of the described\r\ntype, can you answer them?\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <cstdio>\n#include <algorithm>\n#include <cstring>\n#include <string>\nusing namespace std;\nint n, m, q;\nconst int MAX_N = 1000 + 10;\nint a[MAX_N][MAX_N];\n\nstruct TR {\n\tbool flip, swap;\n\tint n;\n\n\tTR() {\n\t}\n\n\tTR(bool f, bool s, int n) :\n\t\t\tflip(f), swap(s), n(n) {\n\t}\n\n\tvoid trans(int&r, int&c) {\n\t\tif (swap) {\n\t\t\tstd::swap(r, c);\n\t\t}\n\t\tif (flip) {\n\t\t\tr = n - 1 - r;\n\t\t}\n\t}\n};\n\nstruct Board {\n\tint a[MAX_N][MAX_N], n, m;\n\tint up[MAX_N][MAX_N]; //r,c\n\tTR tr;\n\n\tvoid init(int n, int m, TR tr) {\n\t\tthis->n = n, this->m = m;\n\t\tthis->tr = tr;\n\t}\n\n\tvoid set(int r, int c, int x) {\n\t\ttr.trans(r, c);\n\t\ta[r][c] = x;\n\t}\n\n\tvoid reset(int r, int c, int x) {\n\t\ttr.trans(r, c);\n\t\ta[r][c] = x;\n\t\tprocessCol(c);\n\t}\n\n\tvoid processCol(int c) {\n\t\tup[0][c] = a[0][c];\n\t\tfor (int r = 1; r < n; ++r) {\n\t\t\tif (a[r][c] == 1) {\n\t\t\t\tup[r][c] = up[r - 1][c] + 1;\n\t\t\t} else {\n\t\t\t\tup[r][c] = 0;\n\t\t\t}\n\t\t}\n\t}\n\n\tvoid doit() {\n\t\tfor (int c = 0; c < m; ++c) {\n\t\t\tprocessCol(c);\n\t\t}\n\t}\n\n\tint ask(int r, int c) {\n\t\ttr.trans(r, c);\n//\t\tcout << r << \" \" << c << endl;\n\t\t//at row r, above it ,contain column c\n\t\t//min at left\n\t\tstatic int what[MAX_N];\n\t\twhat[c] = up[r][c];\n\t\tfor (int i = c - 1; i >= 0; --i) {\n\t\t\twhat[i] = min(what[i + 1], up[r][i]);\n\t\t}\n\t\tfor (int i = c + 1; i < m; ++i) {\n\t\t\twhat[i] = min(what[i - 1], up[r][i]);\n\t\t}\n\n\t\tint ans = 0;\n\t\tint R = c;\n\t\tfor (int i = c; i >= 0; --i) {\n\t\t\twhile (R + 1 < m && what[R + 1] >= what[i])\n\t\t\t\t++R;\n\t\t\tans = max(ans, what[i] * (R - i + 1));\n\t\t}\n\t\tint L = c;\n\t\tfor (int i = c; i < m; ++i) {\n\t\t\twhile (L > 0 && what[L - 1] >= what[i])\n\t\t\t\t--L;\n\t\t\tans = max(ans, what[i] * (i - L + 1));\n\t\t}\n\t\treturn ans;\n\t}\n} D[4];\n\nint main() {\n\tcin >> n >> m >> q;\n\tfor (int i = 0; i < n; ++i) {\n\t\tfor (int j = 0; j < m; ++j) {\n\t\t\tscanf(\"%d\", a[i] + j);\n\t\t}\n\t}\n\tD[0].init(n, m, TR(false, false, n));\n\tD[1].init(n, m, TR(true, false, n));\n\tD[2].init(m, n, TR(false, true, m));\n\tD[3].init(m, n, TR(true, true, m));\n\n\tfor (int i = 0; i < 4; ++i) {\n\t\tfor (int r = 0; r < n; ++r) {\n\t\t\tfor (int c = 0; c < m; ++c) {\n\t\t\t\tD[i].set(r, c, a[r][c]);\n\t\t\t}\n\t\t}\n\t\tfor (int c = 0; c < D[i].m; ++c) {\n\t\t\tD[i].processCol(c);\n\t\t}\n\t}\n\n\twhile (q--) {\n\t\tint op;\n\t\tscanf(\"%d\", &op);\n\t\tif (op == 1) {\n\t\t\tint r, c;\n\t\t\tscanf(\"%d%d\", &r, &c), --r, --c;\n\t\t\tfor (int i = 0; i < 4; ++i) {\n\t\t\t\tD[i].reset(r, c, 1 - a[r][c]);\n\t\t\t}\n\t\t\ta[r][c] = 1 - a[r][c];\n\t\t} else {\n\t\t\tint r, c;\n\t\t\tscanf(\"%d%d\", &r, &c), --r, --c;\n\t\t\tint ans = 0;\n\t\t\tfor (int i = 0; i < 4; ++i) {\n\t\t\t\tans = max(ans, D[i].ask(r, c));\n\t\t\t}\n\t\t\tprintf(\"%d\\n\", ans);\n\t\t}\n\t}\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "divide and conquer",
+        "dp",
+        "dsu",
+        "implementation",
+        "two pointers"
+    ],
+    "dificulty": "2000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Nanami s Digital Board.json",
+    "editorial_link": "https://codeforces.com//blog/entry/12397",
+    "editorial": "Consider a similar problem: find the maximum light-block of the whole\r\nboard. Constraints to this problem are the same as the original problem,\r\nbut with no further operations. A brute-force idea would be to enumerate\r\nall four edges of the block, checking can be done with two-dimensional\r\nprefix sums, so the time complexity is . Obviously it would receive a\r\nTLE verdict. Why should we enumerate all four edges? Let\u00e2\u0080\u0099s enumerate the\r\nlower- and upper-edge, and now our problem is only one-dimensional,\r\nwhich can be easily solved in time. Now our complexity is , still not\r\nfast enough. Let\u00e2\u0080\u0099s try to enumerate the lower-edge only, and now what we\r\nhave is an array , denoting the maximum \"height\" of each column. To be\r\nspecific, suppose the lower-edge is row , then is the maximum value such\r\nthat are all light. If we choose columns and as the left- and\r\nright-edge, then the area of the maximum light-block with these three\r\nsides fixed would be Let , what if we enumerate , and find the leftmost\r\nand the rightmost ? To be more specific, we enumerate a column , and let\r\nthe height of this column be the height of the block. Now we want to\r\n\"stretch\" the left and right sides of the block, so we\u00e2\u0080\u0099re looking for\r\nthe leftmost column such that . Similarly look for the rightmost column\r\n, then the maximum light block with its lower-edge and a point in the\r\nupper-edge fixed would be . This approach can be optimized with\r\ndisjoint-set unions (abbr. DSU). Imagine that initially the array is\r\nempty. Let\u00e2\u0080\u0099s add the elements of one by one, from the largest to the\r\nsmallest. Maintain two DSUs, and denote them as and .When we add an\r\nelement , set the father of as in , so that will be \"skipped\" during the\r\n\"find\" operation of DSU. Similarly set the father of as in . Simply find\r\nthe root of in and , and we would have and . Now this problem can be\r\nsolved in quasi-quadratic time. We can actually further optimize it to\r\nquadratic time using monotonic queues, but we\u00e2\u0080\u0099ll not talk about it here.\r\nLet\u00e2\u0080\u0099s go back to the original problem. Suppose there are no\r\nmodifications, operations only contain queries. Then we could simply\r\nmaintain the array of every row, and similarly maintain , and arrays.\r\nUse the approach described above to achieve quasi-linear time for the\r\nanswering of a query. Now consider modifications. Modification of a\r\nsingle pixel only changes the values of positions of the arrays. So\r\nmodifications can be handled in linear time. The total complexity for\r\nthe algorithm is , where is the inverse of the Ackermann function, which\r\nis often seen in the analysis of the time complexity of DSUs. Solution:\r\n6712937, 6713016\r\n"
+}

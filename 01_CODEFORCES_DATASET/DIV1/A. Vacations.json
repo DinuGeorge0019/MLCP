@@ -1,1 +1,100 @@
-{"link": "https://codeforces.com//contest/698/problem/A", "problemId": "65776", "problem_idx": "A", "shortId": "698A", "contest_number": "698", "problem_submissions": {"A": [19255240, 19238333, 19233487, 19233309, 19234715, 19232234, 19232460, 19232250, 19232256, 19233295, 19249652, 19232146, 19232208, 19232154, 19232533], "B": [19254561, 19237012, 19237862, 19236769, 19233173, 19239263, 19235681, 19237484, 19241788, 19236331, 19248894, 19236580, 19234441, 19235605, 19239046], "D": [19253572, 19249527, 19248444, 19246796, 19251047, 19251739], "C": [19248258, 19234132, 19243267, 19241700, 19248574, 19235387, 19239629, 19241130, 19239485, 19252239, 19235095, 19245084, 19242311, 19243465, 19252785], "F": [19242723, 19251904, 19301612, 19253678, 19251067, 19249915, 19278249, 19257429, 19255248], "E": [19254153, 19262072, 19250384, 19249636]}, "name": "A. Vacations", "statement": "Vasya has days of vacations! So he decided to improve his IT skills and\r\ndo sport. Vasya knows the following information about each of this days:\r\nwhether that gym opened and whether a contest was carried out in the\r\nInternet on that day. For the -th day there are four options: on this\r\nday the gym is closed and the contest is not carried out; on this day\r\nthe gym is closed and the contest is carried out; on this day the gym is\r\nopen and the contest is not carried out; on this day the gym is open and\r\nthe contest is carried out. On each of days Vasya can either have a rest\r\nor write the contest (if it is carried out on this day), or do sport (if\r\nthe gym is open on this day).Find the minimum number of days on which\r\nVasya will have a rest (it means, he will not do sport and write the\r\ncontest at the same time). The only limitation that Vasya has .\r\n", "solutions": ["#include <cstdio>\n#include <cstring>\n#include <cmath>\n#include <algorithm>\n#include <vector>\n#include <string>\n#include <map>\n#include <set>\n#include <cassert>\nusing namespace std;\n#define rep(i,a,n) for (int i=a;i<n;i++)\n#define per(i,a,n) for (int i=n-1;i>=a;i--)\n#define pb push_back\n#define mp make_pair\n#define all(x) (x).begin(),(x).end()\n#define fi first\n#define se second\n#define SZ(x) ((int)(x).size())\ntypedef vector<int> VI;\ntypedef long long ll;\ntypedef pair<int,int> PII;\nconst ll mod=1000000007;\nll powmod(ll a,ll b) {ll res=1;a%=mod; assert(b>=0); for(;b;b>>=1){if(b&1)res=res*a%mod;a=a*a%mod;}return res;}\n// head\n\nint n,v[1010],dp[1010][4];\nint main() {\n\tscanf(\"%d\",&n);\n\trep(i,1,n+1) scanf(\"%d\",v+i);\n\trep(i,1,n+1) {\n\t\tdp[i][0]=min(dp[i-1][0],min(dp[i-1][1],dp[i-1][2]))+1;\n\t\tif (v[i]==1||v[i]==3) dp[i][1]=min(dp[i-1][0],dp[i-1][2]);\n\t\telse dp[i][1]=1<<30;\n\t\tif (v[i]==2||v[i]==3) dp[i][2]=min(dp[i-1][0],dp[i-1][1]);\n\t\telse dp[i][2]=1<<30;\n\t}\n\tprintf(\"%d\\n\",min(dp[n][0],min(dp[n][1],dp[n][2])));\n}\n"], "input": "", "output": "", "tags": ["dp"], "dificulty": "1400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/698/problem/A",
+    "problemId": "65776",
+    "problem_idx": "A",
+    "shortId": "698A",
+    "contest_number": "698",
+    "problem_submissions": {
+        "A": [
+            19255240,
+            19238333,
+            19233487,
+            19233309,
+            19234715,
+            19232234,
+            19232460,
+            19232250,
+            19232256,
+            19233295,
+            19249652,
+            19232146,
+            19232208,
+            19232154,
+            19232533
+        ],
+        "B": [
+            19254561,
+            19237012,
+            19237862,
+            19236769,
+            19233173,
+            19239263,
+            19235681,
+            19237484,
+            19241788,
+            19236331,
+            19248894,
+            19236580,
+            19234441,
+            19235605,
+            19239046
+        ],
+        "D": [
+            19253572,
+            19249527,
+            19248444,
+            19246796,
+            19251047,
+            19251739
+        ],
+        "C": [
+            19248258,
+            19234132,
+            19243267,
+            19241700,
+            19248574,
+            19235387,
+            19239629,
+            19241130,
+            19239485,
+            19252239,
+            19235095,
+            19245084,
+            19242311,
+            19243465,
+            19252785
+        ],
+        "F": [
+            19242723,
+            19251904,
+            19301612,
+            19253678,
+            19251067,
+            19249915,
+            19278249,
+            19257429,
+            19255248
+        ],
+        "E": [
+            19254153,
+            19262072,
+            19250384,
+            19249636
+        ]
+    },
+    "name": "A. Vacations",
+    "statement": "Vasya has days of vacations! So he decided to improve his IT skills and\r\ndo sport. Vasya knows the following information about each of this days:\r\nwhether that gym opened and whether a contest was carried out in the\r\nInternet on that day. For the -th day there are four options: on this\r\nday the gym is closed and the contest is not carried out; on this day\r\nthe gym is closed and the contest is carried out; on this day the gym is\r\nopen and the contest is not carried out; on this day the gym is open and\r\nthe contest is carried out. On each of days Vasya can either have a rest\r\nor write the contest (if it is carried out on this day), or do sport (if\r\nthe gym is open on this day).Find the minimum number of days on which\r\nVasya will have a rest (it means, he will not do sport and write the\r\ncontest at the same time). The only limitation that Vasya has .\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <cstring>\n#include <cmath>\n#include <algorithm>\n#include <vector>\n#include <string>\n#include <map>\n#include <set>\n#include <cassert>\nusing namespace std;\n#define rep(i,a,n) for (int i=a;i<n;i++)\n#define per(i,a,n) for (int i=n-1;i>=a;i--)\n#define pb push_back\n#define mp make_pair\n#define all(x) (x).begin(),(x).end()\n#define fi first\n#define se second\n#define SZ(x) ((int)(x).size())\ntypedef vector<int> VI;\ntypedef long long ll;\ntypedef pair<int,int> PII;\nconst ll mod=1000000007;\nll powmod(ll a,ll b) {ll res=1;a%=mod; assert(b>=0); for(;b;b>>=1){if(b&1)res=res*a%mod;a=a*a%mod;}return res;}\n// head\n\nint n,v[1010],dp[1010][4];\nint main() {\n\tscanf(\"%d\",&n);\n\trep(i,1,n+1) scanf(\"%d\",v+i);\n\trep(i,1,n+1) {\n\t\tdp[i][0]=min(dp[i-1][0],min(dp[i-1][1],dp[i-1][2]))+1;\n\t\tif (v[i]==1||v[i]==3) dp[i][1]=min(dp[i-1][0],dp[i-1][2]);\n\t\telse dp[i][1]=1<<30;\n\t\tif (v[i]==2||v[i]==3) dp[i][2]=min(dp[i-1][0],dp[i-1][1]);\n\t\telse dp[i][2]=1<<30;\n\t}\n\tprintf(\"%d\\n\",min(dp[n][0],min(dp[n][1],dp[n][2])));\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp"
+    ],
+    "dificulty": "1400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Vacations.json",
+    "editorial_link": "https://codeforces.com//blog/entry/46148",
+    "editorial": "This problem can be solved with dynamic programming. Let's solve the opposite problem and find the maximum number of days which Vasya will not have a rest. We need o use two-dimensional array d, where d[i][j] equals to the maximum number of days, which Vasya will not have a rest, if i days passed and j equals to:\n\n0, if Vasya had a rest during the i-th day,\n1, if Vasya participated in the contest on the i-th day,\n2, if Vasya went to gym on the i-th day.\nThen the transitions for the day number i look like:\n\nd[i][0] must be updated with maximum value of the array d for the previous day;\nif there will be a contest on the i-th day (i. e. ai equals to 1 or 3), than we update d[i][1] with values d[i?-?1][0]?+?1 and d[i?-?1][2]?+?1;\nif the gym is open on the i-th day (i. e. ai equals to 2 or 3), than we update d[i][2] with values d[i?-?1][0]?+?1 and d[i?-?1][1]?+?1.\nAfter that we need to choose max from all values of the array d for the last day and print n?-?max."
+}

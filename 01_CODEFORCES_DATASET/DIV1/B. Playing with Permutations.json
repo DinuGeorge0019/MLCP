@@ -1,1 +1,87 @@
-{"link": "https://codeforces.com//contest/251/problem/B", "problemId": "2346", "problem_idx": "B", "shortId": "251B", "contest_number": "251", "problem_submissions": {"C": [2708116, 2703586, 2704109, 2703232, 2706506, 2702257, 2703703, 2703280, 2704115, 2703686, 2705486, 2704984, 2704534, 2705165, 2704884, 2705233], "D": [2706516, 2706940, 2707149, 2704789, 2714168, 2709244, 2963073], "B": [2702885, 2710707, 2702748, 2702944, 2703852, 2706610, 2702523, 2702863, 2704268, 2703034, 2702681, 2702420, 2702396, 2702786, 2702560], "A": [2700911, 2700969, 2701184, 2701021, 2701182, 2704236, 2701557, 2700957, 2701183, 2703855, 2701084, 2701446, 2701163, 2701237, 2701243, 2701186]}, "name": "B. Playing with Permutations", "statement": "Little Petya likes permutations a lot. Recently his mom has presented\r\nhim permutation of length .A of length is a sequence of integers , all\r\nintegers there are distinct. There is only one thing Petya likes more\r\nthan permutations: playing with little Masha. As it turns out, Masha\r\nalso has a permutation of length . Petya decided to get the same\r\npermutation, whatever the cost may be. For that, he devised a game with\r\nthe following rules: Before the beginning of the game Petya writes\r\npermutation on the blackboard. After that Petya makes exactly moves,\r\nwhich are described below. During a move Petya tosses a coin. If the\r\ncoin shows heads, he performs point 1, if the coin shows tails, he\r\nperforms point 2. Let\u2019s assume that the board contains permutation at\r\nthe given moment. Then Petya removes the written permutation from the\r\nboard and writes another one instead: . In other words, Petya applies\r\npermutation (which he has got from his mother) to permutation . All\r\nactions are similar to point 1, except that Petya writes permutation on\r\nthe board, such that: for all from 1 to . In other words, Petya applies\r\na permutation that is inverse to to permutation . We know that after the\r\n-th move the board contained Masha\u2019s permutation . Besides, we know that\r\nthroughout the game process Masha\u2019s permutation before the -th move.\r\nNote that the game has exactly moves, that is, throughout the game the\r\ncoin was tossed exactly times.Your task is to determine whether the\r\ndescribed situation is possible or else state that Petya was mistaken\r\nsomewhere. See samples and notes to them for a better understanding.\r\n", "solutions": ["#include <iostream>\n#include <iomanip>\n#include <stdio.h>\n#include <set>\n#include <vector>\n#include <map>\n#include <cmath>\n#include <algorithm>\n#include <memory.h>\n#include <string>\n#include <sstream>\n\nusing namespace std;\n\nconst int N = 11111;\n\nint n, k, i, z;\nint a[N], q[N], v[N], b[N], s[N];\n\nint main() {\n//  freopen(\"in\", \"r\", stdin);\n//  freopen(\"out\", \"w\", stdout);\n  scanf(\"%d %d\", &n, &k);\n  for (i=1;i<=n;i++) scanf(\"%d\", q+i);\n  for (i=1;i<=n;i++) v[q[i]] = i;\n  for (i=1;i<=n;i++) scanf(\"%d\", s+i);\n  int left = -k-1, right = k+1;\n  for (i=1;i<=n;i++) a[i] = i;\n  for (z=0;z<=k;z++) {\n    int ok = 1;\n    for (i=1;i<=n;i++)\n      if (a[i] != s[i]) ok = 0;\n    if (ok) {\n      right = z;\n      break;\n    }\n    for (i=1;i<=n;i++) b[i] = a[q[i]];\n    for (i=1;i<=n;i++) a[i] = b[i];\n  }\n  for (i=1;i<=n;i++) a[i] = i;\n  for (z=0;z>=-k;z--) {\n    int ok = 1;\n    for (i=1;i<=n;i++)\n      if (a[i] != s[i]) ok = 0;\n    if (ok) {\n      left = z;\n      break;\n    }\n    for (i=1;i<=n;i++) b[i] = a[v[i]];\n    for (i=1;i<=n;i++) a[i] = b[i];\n  }\n  if (left == 0 && right == 0) puts(\"NO\"); else\n  if (k == 1 && (left == -1 || right == 1)) puts(\"YES\"); else\n  if (left == -1 && right == 1) puts(\"NO\"); else\n  if ((k+left) % 2 == 0 || (k-right) % 2 == 0) puts(\"YES\");\n  else puts(\"NO\");\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["implementation", "math"], "dificulty": "1800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/251/problem/B",
+    "problemId": "2346",
+    "problem_idx": "B",
+    "shortId": "251B",
+    "contest_number": "251",
+    "problem_submissions": {
+        "C": [
+            2708116,
+            2703586,
+            2704109,
+            2703232,
+            2706506,
+            2702257,
+            2703703,
+            2703280,
+            2704115,
+            2703686,
+            2705486,
+            2704984,
+            2704534,
+            2705165,
+            2704884,
+            2705233
+        ],
+        "D": [
+            2706516,
+            2706940,
+            2707149,
+            2704789,
+            2714168,
+            2709244,
+            2963073
+        ],
+        "B": [
+            2702885,
+            2710707,
+            2702748,
+            2702944,
+            2703852,
+            2706610,
+            2702523,
+            2702863,
+            2704268,
+            2703034,
+            2702681,
+            2702420,
+            2702396,
+            2702786,
+            2702560
+        ],
+        "A": [
+            2700911,
+            2700969,
+            2701184,
+            2701021,
+            2701182,
+            2704236,
+            2701557,
+            2700957,
+            2701183,
+            2703855,
+            2701084,
+            2701446,
+            2701163,
+            2701237,
+            2701243,
+            2701186
+        ]
+    },
+    "name": "B. Playing with Permutations",
+    "statement": "Little Petya likes permutations a lot. Recently his mom has presented\r\nhim permutation of length .A of length is a sequence of integers , all\r\nintegers there are distinct. There is only one thing Petya likes more\r\nthan permutations: playing with little Masha. As it turns out, Masha\r\nalso has a permutation of length . Petya decided to get the same\r\npermutation, whatever the cost may be. For that, he devised a game with\r\nthe following rules: Before the beginning of the game Petya writes\r\npermutation on the blackboard. After that Petya makes exactly moves,\r\nwhich are described below. During a move Petya tosses a coin. If the\r\ncoin shows heads, he performs point 1, if the coin shows tails, he\r\nperforms point 2. Let\u2019s assume that the board contains permutation at\r\nthe given moment. Then Petya removes the written permutation from the\r\nboard and writes another one instead: . In other words, Petya applies\r\npermutation (which he has got from his mother) to permutation . All\r\nactions are similar to point 1, except that Petya writes permutation on\r\nthe board, such that: for all from 1 to . In other words, Petya applies\r\na permutation that is inverse to to permutation . We know that after the\r\n-th move the board contained Masha\u2019s permutation . Besides, we know that\r\nthroughout the game process Masha\u2019s permutation before the -th move.\r\nNote that the game has exactly moves, that is, throughout the game the\r\ncoin was tossed exactly times.Your task is to determine whether the\r\ndescribed situation is possible or else state that Petya was mistaken\r\nsomewhere. See samples and notes to them for a better understanding.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <iomanip>\n#include <stdio.h>\n#include <set>\n#include <vector>\n#include <map>\n#include <cmath>\n#include <algorithm>\n#include <memory.h>\n#include <string>\n#include <sstream>\n\nusing namespace std;\n\nconst int N = 11111;\n\nint n, k, i, z;\nint a[N], q[N], v[N], b[N], s[N];\n\nint main() {\n//  freopen(\"in\", \"r\", stdin);\n//  freopen(\"out\", \"w\", stdout);\n  scanf(\"%d %d\", &n, &k);\n  for (i=1;i<=n;i++) scanf(\"%d\", q+i);\n  for (i=1;i<=n;i++) v[q[i]] = i;\n  for (i=1;i<=n;i++) scanf(\"%d\", s+i);\n  int left = -k-1, right = k+1;\n  for (i=1;i<=n;i++) a[i] = i;\n  for (z=0;z<=k;z++) {\n    int ok = 1;\n    for (i=1;i<=n;i++)\n      if (a[i] != s[i]) ok = 0;\n    if (ok) {\n      right = z;\n      break;\n    }\n    for (i=1;i<=n;i++) b[i] = a[q[i]];\n    for (i=1;i<=n;i++) a[i] = b[i];\n  }\n  for (i=1;i<=n;i++) a[i] = i;\n  for (z=0;z>=-k;z--) {\n    int ok = 1;\n    for (i=1;i<=n;i++)\n      if (a[i] != s[i]) ok = 0;\n    if (ok) {\n      left = z;\n      break;\n    }\n    for (i=1;i<=n;i++) b[i] = a[v[i]];\n    for (i=1;i<=n;i++) a[i] = b[i];\n  }\n  if (left == 0 && right == 0) puts(\"NO\"); else\n  if (k == 1 && (left == -1 || right == 1)) puts(\"YES\"); else\n  if (left == -1 && right == 1) puts(\"NO\"); else\n  if ((k+left) % 2 == 0 || (k-right) % 2 == 0) puts(\"YES\");\n  else puts(\"NO\");\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation",
+        "math"
+    ],
+    "dificulty": "1800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Playing with Permutations.json",
+    "editorial_link": "https://codeforces.com//blog/entry/6054",
+    "editorial": "First, we need to theck whether permutation is the identity permutation.\r\nIf it is, then the answer is \"NO\". Now we\u00e2\u0080\u0099ll describe an algorithm which\r\nworks in all cases except for one. We\u00e2\u0080\u0099ll tell about this case later.\r\nLet\u00e2\u0080\u0099s apply our permutation until either the current permutation becomes\r\nequal to or we make exactly steps. If the current permutation is equal\r\nto and we\u00e2\u0080\u0099ve made steps before this happened, then we need to look at\r\nthe parity of . If this number is even, then we can select any two\r\nconsequent permutations in the sequence and apply times the following\r\ntwo permutations in this order: and , where is the inversed permutation\r\n. Actually, we don\u00e2\u0080\u0099t need to build the sequence itself, it\u00e2\u0080\u0099s enough to\r\ncheck only the parity of . So, if it is even, then the answer is \"YES\".\r\nAnalogically, we can replace with and repeat described process again. If\r\nwe still didn\u00e2\u0080\u0099t print \"YES\", then the answer is \"NO\". The algorithm\r\nwe\u00e2\u0080\u0099ve just described works for all cases except for one: when the\r\npermutation is equal to and at the same time is reachable within one\r\nstep. In this case the answer is \"YES\" iff . The complexity of described\r\nsolution is .\r\n"
+}

@@ -1,1 +1,103 @@
-{"link": "https://codeforces.com//contest/204/problem/C", "problemId": "1544", "problem_idx": "C", "shortId": "204C", "contest_number": "204", "problem_submissions": {"D": [1890391, 1887471, 1890599, 1889369, 1889690, 1887786, 1890524, 1888787, 1890893, 1890291, 1889544, 1889099, 1890138, 1888234], "C": [1887005, 1885936, 1886676, 1884378, 1886948, 1886445, 1888022, 1890493, 1887876, 1887950, 1890335, 1891041, 1888850, 1891535], "B": [1885016, 1884494, 1884426, 1885084, 1884105, 1885072, 1886343, 1886124, 1885617, 1886009, 1886808, 1885527, 1884342, 1885170], "A": [1884472, 1883818, 1883786, 1886039, 1884808, 1892033, 1884885, 1884244, 1884597, 1885114, 1886281, 1884488, 1890685, 1884595], "E": [1922274, 1922268, 1922264, 1922262, 1922224, 1922202, 1922184, 1922174, 1922170, 1922131, 1922121, 1892756]}, "name": "C. Little Elephant and Furik and Rubik", "statement": "Little Elephant loves Furik and Rubik, who he met in a small city\r\nKremenchug.The Little Elephant has two strings of equal length and ,\r\nconsisting only of uppercase English letters. The Little Elephant\r\nselects a pair of substrings of equal length the first one from string ,\r\nthe second one from string . The choice is equiprobable among all\r\npossible pairs. Let\u2019s denote the substring of as , and the substring of\r\nas . The Little Elephant gives string to Furik and string to Rubik.Let\u2019s\r\nassume that is the number of such positions of (), that (where is the\r\nlength of lines and , and , are the -th characters of strings and ,\r\ncorrespondingly). Help Furik and Rubik find the expected value of .\r\n", "solutions": ["#pragma comment(linker, \"/STACK:65777216\")\n\n#include <algorithm>\n#include <iostream>\n#include <string>\n#include<sstream>\n#include<string.h>\n#include <cstdio>\n#include <cassert>\n#include <complex>\n#include <vector>\n#include <bitset>\n#include <cmath>\n#include <queue>\n#include<stack>\n#include <set>\n#include <map>\n#include<ctime>\n#include<list>\n\nusing namespace std;\n \ntypedef double ll;\ntypedef double ull;\n\ntypedef vector<int> vi;\t \ntypedef pair<int,int> pii;\ntypedef pair<double,double> pdd;\n\n\n#define FOR(i,a,b) for (int i(a); i < (b); i++)\n#define REP(i,n) FOR(i,0,n)\n#define SORT(v) sort((v).begin(),(v).end())\n#define UN(v) sort((v).begin(),(v).end()),v.erase(unique(v.begin(),v.end()),v.end())\n#define CL(a,b) memset(a,b,sizeof(a))\n#define pb push_back\n\nchar a[222222];\nchar b[222222];\n\nvi v1[30];\nvi v2[30];\nint n;\nint u[222222];\nint now;\null same(vi v1,vi v2){\n\tull res = 0;\n\tnow++;\n\tREP(i,v1.size()) u[v1[i]]=now;\n\tREP(i,v2.size()) if(u[v2[i]]==now) res+=ull(v2[i]+1)*(n-v2[i]);\n\treturn res;\n}\n\null solve(vi v1,vi v2){\n\tull res = 0;\n\tull sum = 0;\n\tREP(i,v2.size()) sum += n - v2[i];\n\tint pos = 0;\n\tREP(i,v1.size()){\n\t\twhile(pos<v2.size() && v2[pos]<=v1[i]) sum -= (n - v2[pos]), pos++;\n\t\tres += sum * (v1[i] + 1);\n\t\t//cout<<\"add \"<<sum<<\"*\"<<(v1[i]+1)<<endl;\n\t}\n\treturn res;\n}\n\nint main(){\n#ifdef LocalHost\n    freopen(\"input.txt\",\"r\",stdin);\n\t//freopen(\"output.txt\",\"w\",stdout);\n#endif\n\n\tcin>>n;\n//\tn=200000;\n\n\tscanf(\" %s %s\",a,b);\n\t//REP(i,n) a[i]=b[i]='A';\n\n\tREP(i,n) v1[a[i]-'A'].pb(i);\n\tREP(i,n) v2[b[i]-'A'].pb(i);\n\n\tll num = 0;\n\tFOR(i,1,n+1){\n\t\tll t = n-i+1;\n\t\tnum += t*t;\n\t}\n\tull c = 0;\n\n\tREP(i,30) if(v1[i].size() && v2[i].size()){\n\t\tc += solve(v1[i], v2[i]);\n\t\tc += solve(v2[i], v1[i]);\n\t\tc += same(v1[i], v2[i]);\n\t}\n\n\tprintf(\"%.10lf\\n\",double(c)/num);\n//\tcout<<num<<endl;\n\t//cout<<c<<endl;\n\t//cout<<ll(1e18)<<endl;\n#ifdef LocalHost\n\tcerr<<endl<<endl<<\"TIME: \"<<clock()<<endl;\n#endif\n    return 0;\n}"], "input": "", "output": "", "tags": ["math", "probabilities"], "dificulty": "2000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/204/problem/C",
+    "problemId": "1544",
+    "problem_idx": "C",
+    "shortId": "204C",
+    "contest_number": "204",
+    "problem_submissions": {
+        "D": [
+            1890391,
+            1887471,
+            1890599,
+            1889369,
+            1889690,
+            1887786,
+            1890524,
+            1888787,
+            1890893,
+            1890291,
+            1889544,
+            1889099,
+            1890138,
+            1888234
+        ],
+        "C": [
+            1887005,
+            1885936,
+            1886676,
+            1884378,
+            1886948,
+            1886445,
+            1888022,
+            1890493,
+            1887876,
+            1887950,
+            1890335,
+            1891041,
+            1888850,
+            1891535
+        ],
+        "B": [
+            1885016,
+            1884494,
+            1884426,
+            1885084,
+            1884105,
+            1885072,
+            1886343,
+            1886124,
+            1885617,
+            1886009,
+            1886808,
+            1885527,
+            1884342,
+            1885170
+        ],
+        "A": [
+            1884472,
+            1883818,
+            1883786,
+            1886039,
+            1884808,
+            1892033,
+            1884885,
+            1884244,
+            1884597,
+            1885114,
+            1886281,
+            1884488,
+            1890685,
+            1884595
+        ],
+        "E": [
+            1922274,
+            1922268,
+            1922264,
+            1922262,
+            1922224,
+            1922202,
+            1922184,
+            1922174,
+            1922170,
+            1922131,
+            1922121,
+            1892756
+        ]
+    },
+    "name": "C. Little Elephant and Furik and Rubik",
+    "statement": "Little Elephant loves Furik and Rubik, who he met in a small city\r\nKremenchug.The Little Elephant has two strings of equal length and ,\r\nconsisting only of uppercase English letters. The Little Elephant\r\nselects a pair of substrings of equal length the first one from string ,\r\nthe second one from string . The choice is equiprobable among all\r\npossible pairs. Let\u2019s denote the substring of as , and the substring of\r\nas . The Little Elephant gives string to Furik and string to Rubik.Let\u2019s\r\nassume that is the number of such positions of (), that (where is the\r\nlength of lines and , and , are the -th characters of strings and ,\r\ncorrespondingly). Help Furik and Rubik find the expected value of .\r\n",
+    "solutions": [
+        "#pragma comment(linker, \"/STACK:65777216\")\n\n#include <algorithm>\n#include <iostream>\n#include <string>\n#include<sstream>\n#include<string.h>\n#include <cstdio>\n#include <cassert>\n#include <complex>\n#include <vector>\n#include <bitset>\n#include <cmath>\n#include <queue>\n#include<stack>\n#include <set>\n#include <map>\n#include<ctime>\n#include<list>\n\nusing namespace std;\n \ntypedef double ll;\ntypedef double ull;\n\ntypedef vector<int> vi;\t \ntypedef pair<int,int> pii;\ntypedef pair<double,double> pdd;\n\n\n#define FOR(i,a,b) for (int i(a); i < (b); i++)\n#define REP(i,n) FOR(i,0,n)\n#define SORT(v) sort((v).begin(),(v).end())\n#define UN(v) sort((v).begin(),(v).end()),v.erase(unique(v.begin(),v.end()),v.end())\n#define CL(a,b) memset(a,b,sizeof(a))\n#define pb push_back\n\nchar a[222222];\nchar b[222222];\n\nvi v1[30];\nvi v2[30];\nint n;\nint u[222222];\nint now;\null same(vi v1,vi v2){\n\tull res = 0;\n\tnow++;\n\tREP(i,v1.size()) u[v1[i]]=now;\n\tREP(i,v2.size()) if(u[v2[i]]==now) res+=ull(v2[i]+1)*(n-v2[i]);\n\treturn res;\n}\n\null solve(vi v1,vi v2){\n\tull res = 0;\n\tull sum = 0;\n\tREP(i,v2.size()) sum += n - v2[i];\n\tint pos = 0;\n\tREP(i,v1.size()){\n\t\twhile(pos<v2.size() && v2[pos]<=v1[i]) sum -= (n - v2[pos]), pos++;\n\t\tres += sum * (v1[i] + 1);\n\t\t//cout<<\"add \"<<sum<<\"*\"<<(v1[i]+1)<<endl;\n\t}\n\treturn res;\n}\n\nint main(){\n#ifdef LocalHost\n    freopen(\"input.txt\",\"r\",stdin);\n\t//freopen(\"output.txt\",\"w\",stdout);\n#endif\n\n\tcin>>n;\n//\tn=200000;\n\n\tscanf(\" %s %s\",a,b);\n\t//REP(i,n) a[i]=b[i]='A';\n\n\tREP(i,n) v1[a[i]-'A'].pb(i);\n\tREP(i,n) v2[b[i]-'A'].pb(i);\n\n\tll num = 0;\n\tFOR(i,1,n+1){\n\t\tll t = n-i+1;\n\t\tnum += t*t;\n\t}\n\tull c = 0;\n\n\tREP(i,30) if(v1[i].size() && v2[i].size()){\n\t\tc += solve(v1[i], v2[i]);\n\t\tc += solve(v2[i], v1[i]);\n\t\tc += same(v1[i], v2[i]);\n\t}\n\n\tprintf(\"%.10lf\\n\",double(c)/num);\n//\tcout<<num<<endl;\n\t//cout<<c<<endl;\n\t//cout<<ll(1e18)<<endl;\n#ifdef LocalHost\n\tcerr<<endl<<endl<<\"TIME: \"<<clock()<<endl;\n#endif\n    return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "math",
+        "probabilities"
+    ],
+    "dificulty": "2000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Little Elephant and Furik and Rubik.json",
+    "editorial_link": "https://codeforces.com/blog/entry/4849",
+    "editorial": "This problem is to find the expected value. Important fact here is the linearity of the expected value. This means that we can for each element of the first strings find the probability that exactly this element will me matched with some other (but, of course, equal) from the second string. The answer will be the sum of all such probabilities.\n\nLet the current character of the first string be the i-th character (1-based numeration). Firstly we try to solve problem in O(N2) time. Namely, as it was said above, we need to find the number of such pairs of substrings that i-th character (which is on probably some other position in substring) is the same as the corresponding character of the second substring. Iterate through all j (j???i) such that Ai?=?Bj. The number of such pairs of substrings that have match in that characters is j(n?-?i?+?1) (considering 1-based numeration). This is O(N2). And because we need to find the sum of such values for all possible j, we can rewrite it as Si(n?-?i?+?1), where Si equals to the sum of all integers j (j???i) that Ai?=?Bi. Array S can be simply computed in a linear time. Analogically you should process all indices to the right from i.\n\nAfter we know the number of pairs of substrings with the match with the i-th character (let it be count), the probability is count?/?total, where total is the total number of pair of substrings (it can be found by loop or with some simple formula)."
+}

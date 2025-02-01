@@ -1,1 +1,93 @@
-{"link": "https://codeforces.com//contest/572/problem/B", "problemId": "33727", "problem_idx": "B", "shortId": "572B", "contest_number": "572", "problem_submissions": {"D": [12661423, 12662726, 12657634, 12658797, 12659193, 12661149, 12682852, 12660518, 12661077, 12661845, 12661885, 12662406, 12660324, 12661622], "C": [12656905, 12657933, 12657142, 12652711, 12663957, 12658169, 12660739, 12660637], "B": [12651050, 12651633, 12649430, 12653737, 12651319, 12649594, 12648571, 12655826, 12650623, 12651808, 12652662, 12653428, 12652181, 12648689, 12652043, 12659743, 12651329, 12655202], "A": [12646110, 12645579, 12647332, 12646639, 12645543, 12645614, 12645277, 12645793, 12646587, 12648695, 12647518, 12646418, 12649127, 12645626, 12646054, 12646862, 12646572, 12646008]}, "name": "B. Order Book", "statement": "In this task you need to process a set of stock exchange orders and use\r\nthem to create .An is an instruction of some participant to buy or sell\r\nstocks on stock exchange. The order number has price , direction buy or\r\nsell, and integer . This means that the participant is ready to buy or\r\nsell stocks at price for one stock. A value is also known as a of an\r\norder.All orders with the same price and direction are merged into one\r\norder with price and direction . The volume of such order is a sum of\r\nvolumes of the initial orders.An order book is a list of aggregated\r\norders, the first part of which contains sell orders sorted by price in\r\ndescending order, the second contains buy orders also sorted by price in\r\ndescending order.An order book of depth contains best aggregated orders\r\nfor each direction. A buy order is better if it has higher price and a\r\nsell order is better if it has lower price. If there are less than\r\naggregated orders for some direction then all of them will be in the\r\nfinal order book.You are given stock exhange orders. Your task is to\r\nprint order book of depth for these orders.\r\n", "solutions": ["#include <iostream>\nusing namespace std;\ntypedef pair<int, int> pii;\n#include <queue>\npriority_queue<pii, vector<pii>, greater<pii> > sell;\npriority_queue<pii> buy;\nint n, s;\nchar bors;\npii sellbook[50];\npii buybook[50];\nint sellcount=-1;\nint buycount=-1;\nint main()\n{\n    cin >> n >> s;\n    int p, q;\n    for (int i=0; i<n; i++)\n        {\n            cin >> bors;\n            cin >> p >> q;\n            if (bors=='B') buy.push(pii (p, q));\n            else\n                sell.push(pii (p, q));\n        }\n    if (!sell.empty())\n    {\n        sellcount++;\n        sellbook[sellcount]=sell.top();\n        sell.pop();\n        while(!sell.empty())\n        {\n            if (sellbook[sellcount].first==sell.top().first)\n            {\n                sellbook[sellcount].second+=sell.top().second;\n                sell.pop();\n            }\n            else if (sellcount+1<s)\n            {\n                sellcount++;\n                sellbook[sellcount]=sell.top();\n                sell.pop();\n\n            }\n            else\n                break;\n        }\n    }\n    if (!buy.empty())\n    {\n        buycount++;\n        buybook[buycount]=buy.top();\n        buy.pop();\n        while(!buy.empty())\n        {\n            if (buybook[buycount].first==buy.top().first)\n            {\n                buybook[buycount].second+=buy.top().second;\n                buy.pop();\n            }\n            else if (buycount+1<s)\n            {\n                buycount++;\n                buybook[buycount]=buy.top();\n                buy.pop();\n\n            }\n            else\n                break;\n        }\n    }\n    for (int i=sellcount; i>=0; i--)\n    {\n        cout << \"S\" << \" \" << sellbook[i].first << \" \" << sellbook[i].second << endl;\n    }\n    for (int i=0; i<=buycount; i++)\n    {\n        cout << \"B\" << \" \" << buybook[i].first << \" \" << buybook[i].second << endl;\n    }\n}\n"], "input": "", "output": "", "tags": ["data structures", "greedy", "implementation", "sortings"], "dificulty": "1300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/572/problem/B",
+    "problemId": "33727",
+    "problem_idx": "B",
+    "shortId": "572B",
+    "contest_number": "572",
+    "problem_submissions": {
+        "D": [
+            12661423,
+            12662726,
+            12657634,
+            12658797,
+            12659193,
+            12661149,
+            12682852,
+            12660518,
+            12661077,
+            12661845,
+            12661885,
+            12662406,
+            12660324,
+            12661622
+        ],
+        "C": [
+            12656905,
+            12657933,
+            12657142,
+            12652711,
+            12663957,
+            12658169,
+            12660739,
+            12660637
+        ],
+        "B": [
+            12651050,
+            12651633,
+            12649430,
+            12653737,
+            12651319,
+            12649594,
+            12648571,
+            12655826,
+            12650623,
+            12651808,
+            12652662,
+            12653428,
+            12652181,
+            12648689,
+            12652043,
+            12659743,
+            12651329,
+            12655202
+        ],
+        "A": [
+            12646110,
+            12645579,
+            12647332,
+            12646639,
+            12645543,
+            12645614,
+            12645277,
+            12645793,
+            12646587,
+            12648695,
+            12647518,
+            12646418,
+            12649127,
+            12645626,
+            12646054,
+            12646862,
+            12646572,
+            12646008
+        ]
+    },
+    "name": "B. Order Book",
+    "statement": "In this task you need to process a set of stock exchange orders and use\r\nthem to create .An is an instruction of some participant to buy or sell\r\nstocks on stock exchange. The order number has price , direction buy or\r\nsell, and integer . This means that the participant is ready to buy or\r\nsell stocks at price for one stock. A value is also known as a of an\r\norder.All orders with the same price and direction are merged into one\r\norder with price and direction . The volume of such order is a sum of\r\nvolumes of the initial orders.An order book is a list of aggregated\r\norders, the first part of which contains sell orders sorted by price in\r\ndescending order, the second contains buy orders also sorted by price in\r\ndescending order.An order book of depth contains best aggregated orders\r\nfor each direction. A buy order is better if it has higher price and a\r\nsell order is better if it has lower price. If there are less than\r\naggregated orders for some direction then all of them will be in the\r\nfinal order book.You are given stock exhange orders. Your task is to\r\nprint order book of depth for these orders.\r\n",
+    "solutions": [
+        "#include <iostream>\nusing namespace std;\ntypedef pair<int, int> pii;\n#include <queue>\npriority_queue<pii, vector<pii>, greater<pii> > sell;\npriority_queue<pii> buy;\nint n, s;\nchar bors;\npii sellbook[50];\npii buybook[50];\nint sellcount=-1;\nint buycount=-1;\nint main()\n{\n    cin >> n >> s;\n    int p, q;\n    for (int i=0; i<n; i++)\n        {\n            cin >> bors;\n            cin >> p >> q;\n            if (bors=='B') buy.push(pii (p, q));\n            else\n                sell.push(pii (p, q));\n        }\n    if (!sell.empty())\n    {\n        sellcount++;\n        sellbook[sellcount]=sell.top();\n        sell.pop();\n        while(!sell.empty())\n        {\n            if (sellbook[sellcount].first==sell.top().first)\n            {\n                sellbook[sellcount].second+=sell.top().second;\n                sell.pop();\n            }\n            else if (sellcount+1<s)\n            {\n                sellcount++;\n                sellbook[sellcount]=sell.top();\n                sell.pop();\n\n            }\n            else\n                break;\n        }\n    }\n    if (!buy.empty())\n    {\n        buycount++;\n        buybook[buycount]=buy.top();\n        buy.pop();\n        while(!buy.empty())\n        {\n            if (buybook[buycount].first==buy.top().first)\n            {\n                buybook[buycount].second+=buy.top().second;\n                buy.pop();\n            }\n            else if (buycount+1<s)\n            {\n                buycount++;\n                buybook[buycount]=buy.top();\n                buy.pop();\n\n            }\n            else\n                break;\n        }\n    }\n    for (int i=sellcount; i>=0; i--)\n    {\n        cout << \"S\" << \" \" << sellbook[i].first << \" \" << sellbook[i].second << endl;\n    }\n    for (int i=0; i<=buycount; i++)\n    {\n        cout << \"B\" << \" \" << buybook[i].first << \" \" << buybook[i].second << endl;\n    }\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "data structures",
+        "greedy",
+        "implementation",
+        "sortings"
+    ],
+    "dificulty": "1300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Order Book.json",
+    "editorial_link": "https://codeforces.com//blog/entry/19923",
+    "editorial": "First of all the problem may be solved for buy orders and sell orders\r\nseparately. The easiest soultion is to use structure like std::map or\r\njava.lang.TreeMap. To aggregate orders we just add volume to the\r\ncorresponding map element: aggregated[price] += volume. After that we\r\nshould extract lowest (or largest) element from map times (or while it\u00e2\u0080\u0099s\r\nnot empty). Complexity of this solution is . It is also possible to\r\nsolve the problem without data structres other than an array. You should\r\njust maintain at most best orders in sorted order and when adding\r\nanother order you insert it in appropriate place and move worse elements\r\nin linear time of . Complexity of this solution is . Problem authors and\r\ndevelopers: ArtDitel, yarrr. Solution code: 12873385.\r\n"
+}

@@ -1,1 +1,107 @@
-{"link": "https://codeforces.com//contest/380/problem/D", "problemId": "5532", "problem_idx": "D", "shortId": "380D", "contest_number": "380", "problem_submissions": {"A": [5676030, 5677444, 5667291, 5667878, 5667181, 5667622, 5667888, 5676828, 5666938, 5673846, 5670879, 5671395, 5669327, 5667863, 5667948, 5667971], "B": [5675030, 5677446, 5675293, 5674969, 5675596, 5677558], "E": [5673042, 5677453, 5674068, 5676554, 5676509, 5676152, 5673443, 5674960, 5673247, 5668823, 5671385, 5675127, 5674081, 6260429, 6260427, 6260419, 6260414, 6260386, 6260376, 6260372], "C": [5670663, 5677450, 5668629, 5669869, 5669624, 5673114, 5670447, 5670550, 5670519, 5668457, 5669925, 5671669, 5675539, 5669908, 5671123], "D": [5669162, 5677451, 5672118, 5672469, 5675471, 5671822, 5674127, 5674948, 5672625, 5672722, 5676148, 5674145, 5674258, 5673843, 5674777]}, "name": "D. Sereja and Cinema", "statement": "The cinema theater hall in Sereja\u2019s city is seats lined up in front of\r\none large screen. There are slots for personal possessions to the left\r\nand to the right of each seat. Any two adjacent seats have exactly one\r\nshared slot. The figure below shows the arrangement of seats and slots\r\nfor . Today it\u2019s the premiere of a movie called \"Dry Hard\". The tickets\r\nfor all the seats have been sold. There is a very strict controller at\r\nthe entrance to the theater, so all people will come into the hall one\r\nby one. As soon as a person enters a cinema hall, he immediately\r\n(momentarily) takes his seat and occupies all empty slots to the left\r\nand to the right from him. If there are no empty slots, the man gets\r\nreally upset and leaves.People are not very constant, so it\u2019s hard to\r\npredict the order in which the viewers will enter the hall. For some\r\nseats, Sereja knows the number of the viewer (his number in the entering\r\nqueue of the viewers) that will come and take this seat. For others, it\r\ncan be any order. Being a programmer and a mathematician, Sereja\r\nwonders: how many ways are there for the people to enter the hall, such\r\nthat nobody gets upset? As the number can be quite large, print it\r\nmodulo .\r\n", "solutions": ["#include <iostream>\n#include <sstream>\n#include <fstream>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <stack>\n#include <set>\n#include <map>\n#include <algorithm>\n#include <functional>\n#include <utility>\n#include <bitset>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstdio>\n\nusing namespace std;\n\n#define REP(i,n) for((i)=0;(i)<(int)(n);(i)++)\n#define snuke(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n\ntypedef long long ll;\n#define MOD 1000000007ll\n\nint N;\nint a[100010];\nint sum[100010];\nll F[100010],inv[100010],Finv[100010];\n\nll comb(int X, int Y){\n    return F[X+Y] * Finv[X] % MOD * Finv[Y] % MOD;\n}\n\nll func(int L, int R){\n    int i;\n    \n    if(sum[L] == sum[R]){\n        ll two = 1;\n        REP(i,R-L-1) two = two * 2 % MOD;\n        return two;\n    }\n    \n    int p,q;\n    for(p=L;p<R;p++) if(a[p] != 0) break;\n    for(q=R-1;q>=L;q--) if(a[q] != 0) break;\n    \n    if(p == q && a[p] == 1) return comb(p-L, R-p-1);\n    \n    ll ans = 0;\n    \n    if(a[p] >= a[q]){\n        int L2 = p;\n        int R2 = L2 + a[p];\n        if(R2 > q && R2 <= R) ans += func(L2+1, R2) * comb(L2-L, R-R2);\n    }\n    \n    if(a[p] <= a[q]){\n        int R2 = q + 1;\n        int L2 = R2 - a[q];\n        if(L2 >= L && L2 <= p) ans += func(L2, R2-1) * comb(L2-L, R-R2);\n    }\n    \n    // cout << L << ' ' << R << ' ' << ans << endl;\n    \n    return ans % MOD;\n}\n\nint main(void){\n    int i;\n    \n    cin >> N;\n    REP(i,N) scanf(\"%d\", &a[i]);\n    \n    REP(i,N) sum[i+1] = sum[i] + ((a[i] == 0) ? 0 : 1);\n    inv[1] = 1;\n    for(i=2;i<100010;i++) inv[i] = (MOD - MOD/i) * inv[MOD%i] % MOD;\n    F[0] = Finv[0] = 1;\n    for(i=1;i<100010;i++){\n        F[i] = F[i-1] * i % MOD;\n        Finv[i] = Finv[i-1] * inv[i] % MOD;\n    }\n    \n    ll ans = func(0, N);\n    cout << ans << endl;\n    \n    return 0;\n}\n"], "input": "", "output": "", "tags": ["combinatorics", "math"], "dificulty": "2500", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/380/problem/D",
+    "problemId": "5532",
+    "problem_idx": "D",
+    "shortId": "380D",
+    "contest_number": "380",
+    "problem_submissions": {
+        "A": [
+            5676030,
+            5677444,
+            5667291,
+            5667878,
+            5667181,
+            5667622,
+            5667888,
+            5676828,
+            5666938,
+            5673846,
+            5670879,
+            5671395,
+            5669327,
+            5667863,
+            5667948,
+            5667971
+        ],
+        "B": [
+            5675030,
+            5677446,
+            5675293,
+            5674969,
+            5675596,
+            5677558
+        ],
+        "E": [
+            5673042,
+            5677453,
+            5674068,
+            5676554,
+            5676509,
+            5676152,
+            5673443,
+            5674960,
+            5673247,
+            5668823,
+            5671385,
+            5675127,
+            5674081,
+            6260429,
+            6260427,
+            6260419,
+            6260414,
+            6260386,
+            6260376,
+            6260372
+        ],
+        "C": [
+            5670663,
+            5677450,
+            5668629,
+            5669869,
+            5669624,
+            5673114,
+            5670447,
+            5670550,
+            5670519,
+            5668457,
+            5669925,
+            5671669,
+            5675539,
+            5669908,
+            5671123
+        ],
+        "D": [
+            5669162,
+            5677451,
+            5672118,
+            5672469,
+            5675471,
+            5671822,
+            5674127,
+            5674948,
+            5672625,
+            5672722,
+            5676148,
+            5674145,
+            5674258,
+            5673843,
+            5674777
+        ]
+    },
+    "name": "D. Sereja and Cinema",
+    "statement": "The cinema theater hall in Sereja\u2019s city is seats lined up in front of\r\none large screen. There are slots for personal possessions to the left\r\nand to the right of each seat. Any two adjacent seats have exactly one\r\nshared slot. The figure below shows the arrangement of seats and slots\r\nfor . Today it\u2019s the premiere of a movie called \"Dry Hard\". The tickets\r\nfor all the seats have been sold. There is a very strict controller at\r\nthe entrance to the theater, so all people will come into the hall one\r\nby one. As soon as a person enters a cinema hall, he immediately\r\n(momentarily) takes his seat and occupies all empty slots to the left\r\nand to the right from him. If there are no empty slots, the man gets\r\nreally upset and leaves.People are not very constant, so it\u2019s hard to\r\npredict the order in which the viewers will enter the hall. For some\r\nseats, Sereja knows the number of the viewer (his number in the entering\r\nqueue of the viewers) that will come and take this seat. For others, it\r\ncan be any order. Being a programmer and a mathematician, Sereja\r\nwonders: how many ways are there for the people to enter the hall, such\r\nthat nobody gets upset? As the number can be quite large, print it\r\nmodulo .\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <sstream>\n#include <fstream>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <stack>\n#include <set>\n#include <map>\n#include <algorithm>\n#include <functional>\n#include <utility>\n#include <bitset>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstdio>\n\nusing namespace std;\n\n#define REP(i,n) for((i)=0;(i)<(int)(n);(i)++)\n#define snuke(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n\ntypedef long long ll;\n#define MOD 1000000007ll\n\nint N;\nint a[100010];\nint sum[100010];\nll F[100010],inv[100010],Finv[100010];\n\nll comb(int X, int Y){\n    return F[X+Y] * Finv[X] % MOD * Finv[Y] % MOD;\n}\n\nll func(int L, int R){\n    int i;\n    \n    if(sum[L] == sum[R]){\n        ll two = 1;\n        REP(i,R-L-1) two = two * 2 % MOD;\n        return two;\n    }\n    \n    int p,q;\n    for(p=L;p<R;p++) if(a[p] != 0) break;\n    for(q=R-1;q>=L;q--) if(a[q] != 0) break;\n    \n    if(p == q && a[p] == 1) return comb(p-L, R-p-1);\n    \n    ll ans = 0;\n    \n    if(a[p] >= a[q]){\n        int L2 = p;\n        int R2 = L2 + a[p];\n        if(R2 > q && R2 <= R) ans += func(L2+1, R2) * comb(L2-L, R-R2);\n    }\n    \n    if(a[p] <= a[q]){\n        int R2 = q + 1;\n        int L2 = R2 - a[q];\n        if(L2 >= L && L2 <= p) ans += func(L2, R2-1) * comb(L2-L, R-R2);\n    }\n    \n    // cout << L << ' ' << R << ' ' << ans << endl;\n    \n    return ans % MOD;\n}\n\nint main(void){\n    int i;\n    \n    cin >> N;\n    REP(i,N) scanf(\"%d\", &a[i]);\n    \n    REP(i,N) sum[i+1] = sum[i] + ((a[i] == 0) ? 0 : 1);\n    inv[1] = 1;\n    for(i=2;i<100010;i++) inv[i] = (MOD - MOD/i) * inv[MOD%i] % MOD;\n    F[0] = Finv[0] = 1;\n    for(i=1;i<100010;i++){\n        F[i] = F[i-1] * i % MOD;\n        Finv[i] = Finv[i-1] * inv[i] % MOD;\n    }\n    \n    ll ans = func(0, N);\n    cout << ans << endl;\n    \n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "combinatorics",
+        "math"
+    ],
+    "dificulty": "2500",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Sereja and Cinema.json",
+    "editorial_link": "https://codeforces.com//blog/entry/10363",
+    "editorial": "In order that no one would be upset, every person except first should\r\nsitdown near someone else. Now when any human comes we know that for one\r\nside of him there will not be any people. Will use it. We will support\r\nthe interval exactly occupied seats. If the first person is not known,\r\nit is possible that we have 2 such intervals. Now only remains to\r\nconsider carefully all the cases that could be, because at each\r\niteration we know exactly how many people will sit on some certain\r\nplace.\r\n"
+}

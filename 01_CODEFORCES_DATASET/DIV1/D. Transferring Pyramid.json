@@ -1,1 +1,102 @@
-{"link": "https://codeforces.com//contest/354/problem/D", "problemId": "3669", "problem_idx": "D", "shortId": "354D", "contest_number": "354", "problem_submissions": {"D": [4777100, 138831224, 4787255], "B": [4773542, 4773611, 4776468, 4775805, 4775193, 4773708, 4777067, 4775769, 4772925, 4775400, 4771413, 4771906, 4774887, 4777860, 4778618], "E": [4771246, 4771315, 4769492, 4772059, 4772808, 4771657, 4773587, 4773533, 4773905, 4774625, 4774509, 4772823, 4772897, 4776755, 4773505, 4773556, 4773459], "A": [4769568, 4768918, 4772027, 4767693, 4768128, 4767864, 4767903, 4768032, 4777935, 4771459, 4769551, 4767761, 4767775, 4769653, 4768177, 4767934, 4771768], "C": [4768755, 4770072, 4771488, 4770801, 4770647, 4775263, 4770953, 4771621, 4770211, 4772507, 4775843, 4771271, 4771934, 4770241, 4775127, 4769346]}, "name": "D. Transferring Pyramid", "statement": "Vasya and Petya are using an interesting data storing structure: a\r\npyramid.The pyramid consists of rows, the -th row contains cells. Each\r\nrow is shifted half a cell to the left relative to the previous row. The\r\ncells are numbered by integers from 1 to as shown on the picture\r\nbelow.An example of a pyramid at is: This data structure can perform\r\noperations of two types: Change the value of a specific cell. It is\r\ndescribed by three integers: , where (the type of operation), the number\r\nof the cell to change and the value to assign to the cell. Change the\r\nvalue of some subpyramid. The picture shows a highlighted subpyramid\r\nwith the top in cell . It is described by numbers: , where , the number\r\nof the top cell of the pyramid, the size of the subpyramid (the number\r\nof cells it has), the value you should assign to the -th cell of the\r\nsubpyramid. Formally: a subpyramid with top at the -th cell of the -th\r\nrow (the -th cell is the second cell of the third row) will contain\r\ncells from rows from to , the -th row contains cells from the -th to the\r\n-th ().Vasya and Petya had two identical pyramids. Vasya changed some\r\ncells in his pyramid and he now wants to send his changes to Petya. For\r\nthat, he wants to find a sequence of operations at which Petya can\r\nrepeat all Vasya\u2019s changes. Among all possible sequences, Vasya has to\r\npick the minimum one (the one that contains the fewest numbers).You have\r\na pyramid of rows with changed cells. Find the sequence of operations\r\nwhich result in . Among all the possible sequences pick .\r\n", "solutions": ["#include <iostream>\n#include <sstream>\n#include <fstream>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <stack>\n#include <set>\n#include <map>\n#include <algorithm>\n#include <functional>\n#include <utility>\n#include <bitset>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstdio>\n\nusing namespace std;\n\n#define REP(i,n) for((i)=0;(i)<(int)(n);(i)++)\n#define snuke(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n\n#define INF (1<<29)\n#define Y 800\n\nint X;\nvector <int> v[100010];\n\nint all,all2;\nbool used[Y+10];\nint dp[Y+10],dp2[Y+10];\n\nvoid calc(int x){\n    int i;\n    \n    REP(i,Y) used[i] = false;\n    REP(i,v[x].size()) used[v[x][i]] = true;\n    \n    REP(i,Y) dp2[i] = INF;\n    \n    int cost = 0;\n    for(i=Y-1;i>=0;i--){\n        if(used[i]) cost += 3;\n        int tmp = cost + dp[max(i-1, 0)];\n        if(tmp < dp2[i]) dp2[i] = tmp;\n        if(i > 0) tmp += i * (i+1) / 2 + 2;\n        if(tmp < dp2[0]) dp2[0] = tmp;\n        \n    }\n    \n    // if(v[x].empty()) dp2[0] = dp[0];\n    \n    if(v[x].empty()) all2 = all;\n    \n    REP(i,Y) dp[i] = dp2[i];\n    REP(i,Y) dp[i+1] = min(dp[i+1], dp[i]);\n}\n\nint main(void){\n    int K,i,j,ans=0;\n    \n    cin >> X >> K;\n    \n    REP(i,K){\n        int r,c;\n        scanf(\"%d%d\", &r, &c);\n        int x = c-1;\n        int y = X-r;\n        if(y < Y) v[x].push_back(y); else ans += 3;\n    }\n    \n    for(i=X-1;i>=0;i--) calc(i);\n    \n    cout << dp[0] + ans << endl;\n    \n    return 0;\n}\n"], "input": "", "output": "", "tags": ["dp"], "dificulty": "2900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/354/problem/D",
+    "problemId": "3669",
+    "problem_idx": "D",
+    "shortId": "354D",
+    "contest_number": "354",
+    "problem_submissions": {
+        "D": [
+            4777100,
+            138831224,
+            4787255
+        ],
+        "B": [
+            4773542,
+            4773611,
+            4776468,
+            4775805,
+            4775193,
+            4773708,
+            4777067,
+            4775769,
+            4772925,
+            4775400,
+            4771413,
+            4771906,
+            4774887,
+            4777860,
+            4778618
+        ],
+        "E": [
+            4771246,
+            4771315,
+            4769492,
+            4772059,
+            4772808,
+            4771657,
+            4773587,
+            4773533,
+            4773905,
+            4774625,
+            4774509,
+            4772823,
+            4772897,
+            4776755,
+            4773505,
+            4773556,
+            4773459
+        ],
+        "A": [
+            4769568,
+            4768918,
+            4772027,
+            4767693,
+            4768128,
+            4767864,
+            4767903,
+            4768032,
+            4777935,
+            4771459,
+            4769551,
+            4767761,
+            4767775,
+            4769653,
+            4768177,
+            4767934,
+            4771768
+        ],
+        "C": [
+            4768755,
+            4770072,
+            4771488,
+            4770801,
+            4770647,
+            4775263,
+            4770953,
+            4771621,
+            4770211,
+            4772507,
+            4775843,
+            4771271,
+            4771934,
+            4770241,
+            4775127,
+            4769346
+        ]
+    },
+    "name": "D. Transferring Pyramid",
+    "statement": "Vasya and Petya are using an interesting data storing structure: a\r\npyramid.The pyramid consists of rows, the -th row contains cells. Each\r\nrow is shifted half a cell to the left relative to the previous row. The\r\ncells are numbered by integers from 1 to as shown on the picture\r\nbelow.An example of a pyramid at is: This data structure can perform\r\noperations of two types: Change the value of a specific cell. It is\r\ndescribed by three integers: , where (the type of operation), the number\r\nof the cell to change and the value to assign to the cell. Change the\r\nvalue of some subpyramid. The picture shows a highlighted subpyramid\r\nwith the top in cell . It is described by numbers: , where , the number\r\nof the top cell of the pyramid, the size of the subpyramid (the number\r\nof cells it has), the value you should assign to the -th cell of the\r\nsubpyramid. Formally: a subpyramid with top at the -th cell of the -th\r\nrow (the -th cell is the second cell of the third row) will contain\r\ncells from rows from to , the -th row contains cells from the -th to the\r\n-th ().Vasya and Petya had two identical pyramids. Vasya changed some\r\ncells in his pyramid and he now wants to send his changes to Petya. For\r\nthat, he wants to find a sequence of operations at which Petya can\r\nrepeat all Vasya\u2019s changes. Among all possible sequences, Vasya has to\r\npick the minimum one (the one that contains the fewest numbers).You have\r\na pyramid of rows with changed cells. Find the sequence of operations\r\nwhich result in . Among all the possible sequences pick .\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <sstream>\n#include <fstream>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <stack>\n#include <set>\n#include <map>\n#include <algorithm>\n#include <functional>\n#include <utility>\n#include <bitset>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstdio>\n\nusing namespace std;\n\n#define REP(i,n) for((i)=0;(i)<(int)(n);(i)++)\n#define snuke(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n\n#define INF (1<<29)\n#define Y 800\n\nint X;\nvector <int> v[100010];\n\nint all,all2;\nbool used[Y+10];\nint dp[Y+10],dp2[Y+10];\n\nvoid calc(int x){\n    int i;\n    \n    REP(i,Y) used[i] = false;\n    REP(i,v[x].size()) used[v[x][i]] = true;\n    \n    REP(i,Y) dp2[i] = INF;\n    \n    int cost = 0;\n    for(i=Y-1;i>=0;i--){\n        if(used[i]) cost += 3;\n        int tmp = cost + dp[max(i-1, 0)];\n        if(tmp < dp2[i]) dp2[i] = tmp;\n        if(i > 0) tmp += i * (i+1) / 2 + 2;\n        if(tmp < dp2[0]) dp2[0] = tmp;\n        \n    }\n    \n    // if(v[x].empty()) dp2[0] = dp[0];\n    \n    if(v[x].empty()) all2 = all;\n    \n    REP(i,Y) dp[i] = dp2[i];\n    REP(i,Y) dp[i+1] = min(dp[i+1], dp[i]);\n}\n\nint main(void){\n    int K,i,j,ans=0;\n    \n    cin >> X >> K;\n    \n    REP(i,K){\n        int r,c;\n        scanf(\"%d%d\", &r, &c);\n        int x = c-1;\n        int y = X-r;\n        if(y < Y) v[x].push_back(y); else ans += 3;\n    }\n    \n    for(i=X-1;i>=0;i--) calc(i);\n    \n    cout << dp[0] + ans << endl;\n    \n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp"
+    ],
+    "dificulty": "2900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Transferring Pyramid.json",
+    "editorial_link": "https://codeforces.com//blog/entry/8672",
+    "editorial": "This tasks is solvable with dynamic programming. First of all let\r\nconsider solution with complexity . Let be the answer for the\r\nhighlighted in blue part (minimal cost of transferring all special cells\r\nthat lies inside this area). Then will be the answer for our original\r\nproblem. How to recalculate such DP? It\u00e2\u0080\u0099s clear that in the leftmost\r\ncolumn (inside the blue area) we will choose at most one cell as the top\r\nof some subpyramid. If we choose two, then the smallest one will lie\r\nfully inside the biggest one (as the orange subpyramid lies inside the\r\nblue one). Now, let brute force the cell, which will be the top of\r\nsubpyramid in this column in time and we will obtain the following\r\ntransition: To simplify the formulas, let assume that . , where is the\r\nheight on which we will choose our top cell, or , if we don\u00e2\u0080\u0099t choose any\r\nsubpyramid in this column. count of special cells in the -th column at\r\nheight starting from , this cells we will have to transfer one by one,\r\nusing the first type operations. We can reduce the complexity by one ,\r\nif we will recalculate out DP in the following way: ; for all . The\r\nproof that this is correct is quite simple and is left to the reader. :)\r\nAlso, we can observe that it is not profitably to take some subpyramid\r\nwith height greater than , because for such subpyramid we will pay , but\r\nif we transfer all cells using the first type operations we will pay\r\nonly . So, the second dimension in out DP can be reduced to . Also, to\r\nreceive AC, you should store only last 2 layers of the DP, otherwise\r\nthere will be not enough memory. Time complexity: .\r\n"
+}

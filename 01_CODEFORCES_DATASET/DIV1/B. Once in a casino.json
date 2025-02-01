@@ -1,1 +1,112 @@
-{"link": "https://codeforces.com//contest/1120/problem/B", "problemId": "306942", "problem_idx": "B", "shortId": "1120B", "contest_number": "1120", "problem_submissions": {"E": [50758414, 50756395, 51349737], "F": [50755440, 50756775, 50756923, 50745238, 50757783, 50769406, 57326050], "D": [50750764, 50751956, 50743562, 50751566, 50752777, 50751884, 50753994, 50750618, 50751945, 50752229, 50752378, 50752892, 50753276, 50756304, 50749029, 50755638, 50755384, 50755602, 50754622], "C": [50742812, 50748170, 50742079, 50747757, 50746596, 50747930, 50749515, 50746554, 50746940, 50749954, 50748511, 50747866, 50749223, 50751278, 50750205, 50750042, 50750814, 50749510, 50744496], "B": [50741885, 50746393, 50748182, 50754599, 50753894, 50755398, 50768361, 50757846, 50749483, 57329791], "A": [50743197, 50749514, 50746437, 50743945, 50745821, 50745101, 50745374, 50743501, 50746721, 50745328, 50746455, 73355086, 50745671, 50745395, 50746139]}, "name": "B. Once in a casino", "statement": "One player came to a casino and found a slot machine where everything\r\ndepends only on how he plays. The rules follow.A positive integer a is\r\ninitially on the screen. The player can put a coin into the machine and\r\nthen add 1 to or subtract 1 from any two adjacent digits. All digits\r\nmust remain from 0 to 9 after this operation, and the leading digit must\r\nnot equal zero. In other words, it is forbidden to add 1 to 9, to\r\nsubtract 1 from 0 and to subtract 1 from the leading 1. Once the number\r\non the screen becomes equal to b, the player wins the jackpot. a and b\r\nhave the same number of digits.Help the player to determine the minimal\r\nnumber of coins he needs to spend in order to win the jackpot and tell\r\nhow to play.\r\n", "solutions": ["//~ while (clock()<=69*CLOCKS_PER_SEC)\n//~ #pragma comment(linker, \"/stack:200000000\")\n#pragma GCC optimize(\"O3\")\n//~ #pragma GCC optimize(\"Ofast\")\n//~ #pragma GCC target(\"sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native\")\n//~ #pragma GCC optimize(\"unroll-loops\")\n#include <bits/stdc++.h>\n#include <ext/pb_ds/assoc_container.hpp>\n#include <ext/pb_ds/tree_policy.hpp>\n\nusing namespace __gnu_pbds;\nusing namespace std;\n\ntemplate <typename T>\nusing ordered_set =\n    tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n#define sim template < class c\n#define ris return * this\n#define dor > debug & operator <<\n#define eni(x) sim > typename \\\n  enable_if<sizeof dud<c>(0) x 1, debug&>::type operator<<(c i) {\nsim > struct rge { c b, e; };\nsim > rge<c> range(c i, c j) { return rge<c>{i, j}; }\nsim > auto dud(c* x) -> decltype(cerr << *x, 0);\nsim > char dud(...);\nstruct debug {\n#ifdef LOCAL\n~debug() { cerr << endl; }\neni(!=) cerr << boolalpha << i; ris; }\neni(==) ris << range(begin(i), end(i)); }\nsim, class b dor(pair < b, c > d) {\n  ris << \"(\" << d.first << \", \" << d.second << \")\";\n}\nsim dor(rge<c> d) {\n  *this << \"[\";\n  for (auto it = d.b; it != d.e; ++it)\n    *this << \", \" + 2 * (it == d.b) << *it;\n  ris << \"]\";\n}\n#else\nsim dor(const c&) { ris; }\n#endif\n};\n#define imie(...) \" [\" << #__VA_ARGS__ \": \" << (__VA_ARGS__) << \"] \"\n\n#define shandom_ruffle random_shuffle\n\nusing ll=long long;\nusing pii=pair<int,int>;\nusing pll=pair<ll,ll>;\nusing vi=vector<int>;\nusing vll=vector<ll>;\nconst int nax=1000*1007;\n\nint n;\n\nchar wcz[nax];\n\nll a[nax];\nll b[nax];\n\nll tab[nax];\n\nll ile[nax];\n\nvoid nope()\n{\n\tprintf(\"-1\\n\");\n\texit(0);\n}\n\nint jesz=1e5;\n\nvoid dfs(int v)\n{\n\tif (!ile[v] || !v || v==n)\n\t\treturn;\n\tif (ile[v]>0)\n\t{\n\t\tif (a[v]>(v==1) && a[v+1]>0)\n\t\t{\n\t\t\ta[v]--;\n\t\t\ta[v+1]--;\n\t\t\tile[v]--;\n\t\t\tprintf(\"%d -1\\n\", v);\n\t\t\tjesz--;\n\t\t\tif (!jesz)\n\t\t\t\texit(0);\n\t\t\tdfs(v-1);\n\t\t\tdfs(v);\n\t\t\tdfs(v+1);\n\t\t}\n\t}\n\telse\n\t{\n\t\tif (a[v]<9 && a[v+1]<9)\n\t\t{\n\t\t\tile[v]++;\n\t\t\ta[v]++;\n\t\t\ta[v+1]++;\n\t\t\tprintf(\"%d 1\\n\", v);\n\t\t\tjesz--;\n\t\t\tif (!jesz)\n\t\t\t\texit(0);\n\t\t\tdfs(v-1);\n\t\t\tdfs(v);\n\t\t\tdfs(v+1);\n\t\t}\n\t}\n}\n\nint main()\n{\n\tscanf(\"%d\", &n);\n\tscanf(\"%s\", wcz+1);\n\tfor (int i=1; i<=n; i++)\n\t\ta[i]=wcz[i]-'0';\n\tscanf(\"%s\", wcz+1);\n\tfor (int i=1; i<=n; i++)\n\t\tb[i]=wcz[i]-'0';\n\tfor (int i=1; i<=n; i++)\n\t\ttab[i]=a[i];\n\tfor (int i=1; i<n; i++)\n\t{\n\t\tll x=tab[i]-b[i];\n\t\tile[i]=x;\n\t\ttab[i]-=x;\n\t\ttab[i+1]-=x;\n\t}\n\t//~ debug() << range(ile+1, ile+1+n);\n\tif (tab[n]!=b[n])\n\t\tnope();\n\tll wyn=0;\n\tfor (int i=1; i<n; i++)\n\t\twyn+=abs(ile[i]);\n\tprintf(\"%lld\\n\", wyn);\n\tfor (int i=1; i<n; i++)\n\t\tdfs(i);\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["constructive algorithms", "greedy", "implementation", "math"], "dificulty": "2700", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/1120/problem/B",
+    "problemId": "306942",
+    "problem_idx": "B",
+    "shortId": "1120B",
+    "contest_number": "1120",
+    "problem_submissions": {
+        "E": [
+            50758414,
+            50756395,
+            51349737
+        ],
+        "F": [
+            50755440,
+            50756775,
+            50756923,
+            50745238,
+            50757783,
+            50769406,
+            57326050
+        ],
+        "D": [
+            50750764,
+            50751956,
+            50743562,
+            50751566,
+            50752777,
+            50751884,
+            50753994,
+            50750618,
+            50751945,
+            50752229,
+            50752378,
+            50752892,
+            50753276,
+            50756304,
+            50749029,
+            50755638,
+            50755384,
+            50755602,
+            50754622
+        ],
+        "C": [
+            50742812,
+            50748170,
+            50742079,
+            50747757,
+            50746596,
+            50747930,
+            50749515,
+            50746554,
+            50746940,
+            50749954,
+            50748511,
+            50747866,
+            50749223,
+            50751278,
+            50750205,
+            50750042,
+            50750814,
+            50749510,
+            50744496
+        ],
+        "B": [
+            50741885,
+            50746393,
+            50748182,
+            50754599,
+            50753894,
+            50755398,
+            50768361,
+            50757846,
+            50749483,
+            57329791
+        ],
+        "A": [
+            50743197,
+            50749514,
+            50746437,
+            50743945,
+            50745821,
+            50745101,
+            50745374,
+            50743501,
+            50746721,
+            50745328,
+            50746455,
+            73355086,
+            50745671,
+            50745395,
+            50746139
+        ]
+    },
+    "name": "B. Once in a casino",
+    "statement": "One player came to a casino and found a slot machine where everything\r\ndepends only on how he plays. The rules follow.A positive integer a is\r\ninitially on the screen. The player can put a coin into the machine and\r\nthen add 1 to or subtract 1 from any two adjacent digits. All digits\r\nmust remain from 0 to 9 after this operation, and the leading digit must\r\nnot equal zero. In other words, it is forbidden to add 1 to 9, to\r\nsubtract 1 from 0 and to subtract 1 from the leading 1. Once the number\r\non the screen becomes equal to b, the player wins the jackpot. a and b\r\nhave the same number of digits.Help the player to determine the minimal\r\nnumber of coins he needs to spend in order to win the jackpot and tell\r\nhow to play.\r\n",
+    "solutions": [
+        "//~ while (clock()<=69*CLOCKS_PER_SEC)\n//~ #pragma comment(linker, \"/stack:200000000\")\n#pragma GCC optimize(\"O3\")\n//~ #pragma GCC optimize(\"Ofast\")\n//~ #pragma GCC target(\"sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native\")\n//~ #pragma GCC optimize(\"unroll-loops\")\n#include <bits/stdc++.h>\n#include <ext/pb_ds/assoc_container.hpp>\n#include <ext/pb_ds/tree_policy.hpp>\n\nusing namespace __gnu_pbds;\nusing namespace std;\n\ntemplate <typename T>\nusing ordered_set =\n    tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n#define sim template < class c\n#define ris return * this\n#define dor > debug & operator <<\n#define eni(x) sim > typename \\\n  enable_if<sizeof dud<c>(0) x 1, debug&>::type operator<<(c i) {\nsim > struct rge { c b, e; };\nsim > rge<c> range(c i, c j) { return rge<c>{i, j}; }\nsim > auto dud(c* x) -> decltype(cerr << *x, 0);\nsim > char dud(...);\nstruct debug {\n#ifdef LOCAL\n~debug() { cerr << endl; }\neni(!=) cerr << boolalpha << i; ris; }\neni(==) ris << range(begin(i), end(i)); }\nsim, class b dor(pair < b, c > d) {\n  ris << \"(\" << d.first << \", \" << d.second << \")\";\n}\nsim dor(rge<c> d) {\n  *this << \"[\";\n  for (auto it = d.b; it != d.e; ++it)\n    *this << \", \" + 2 * (it == d.b) << *it;\n  ris << \"]\";\n}\n#else\nsim dor(const c&) { ris; }\n#endif\n};\n#define imie(...) \" [\" << #__VA_ARGS__ \": \" << (__VA_ARGS__) << \"] \"\n\n#define shandom_ruffle random_shuffle\n\nusing ll=long long;\nusing pii=pair<int,int>;\nusing pll=pair<ll,ll>;\nusing vi=vector<int>;\nusing vll=vector<ll>;\nconst int nax=1000*1007;\n\nint n;\n\nchar wcz[nax];\n\nll a[nax];\nll b[nax];\n\nll tab[nax];\n\nll ile[nax];\n\nvoid nope()\n{\n\tprintf(\"-1\\n\");\n\texit(0);\n}\n\nint jesz=1e5;\n\nvoid dfs(int v)\n{\n\tif (!ile[v] || !v || v==n)\n\t\treturn;\n\tif (ile[v]>0)\n\t{\n\t\tif (a[v]>(v==1) && a[v+1]>0)\n\t\t{\n\t\t\ta[v]--;\n\t\t\ta[v+1]--;\n\t\t\tile[v]--;\n\t\t\tprintf(\"%d -1\\n\", v);\n\t\t\tjesz--;\n\t\t\tif (!jesz)\n\t\t\t\texit(0);\n\t\t\tdfs(v-1);\n\t\t\tdfs(v);\n\t\t\tdfs(v+1);\n\t\t}\n\t}\n\telse\n\t{\n\t\tif (a[v]<9 && a[v+1]<9)\n\t\t{\n\t\t\tile[v]++;\n\t\t\ta[v]++;\n\t\t\ta[v+1]++;\n\t\t\tprintf(\"%d 1\\n\", v);\n\t\t\tjesz--;\n\t\t\tif (!jesz)\n\t\t\t\texit(0);\n\t\t\tdfs(v-1);\n\t\t\tdfs(v);\n\t\t\tdfs(v+1);\n\t\t}\n\t}\n}\n\nint main()\n{\n\tscanf(\"%d\", &n);\n\tscanf(\"%s\", wcz+1);\n\tfor (int i=1; i<=n; i++)\n\t\ta[i]=wcz[i]-'0';\n\tscanf(\"%s\", wcz+1);\n\tfor (int i=1; i<=n; i++)\n\t\tb[i]=wcz[i]-'0';\n\tfor (int i=1; i<=n; i++)\n\t\ttab[i]=a[i];\n\tfor (int i=1; i<n; i++)\n\t{\n\t\tll x=tab[i]-b[i];\n\t\tile[i]=x;\n\t\ttab[i]-=x;\n\t\ttab[i+1]-=x;\n\t}\n\t//~ debug() << range(ile+1, ile+1+n);\n\tif (tab[n]!=b[n])\n\t\tnope();\n\tll wyn=0;\n\tfor (int i=1; i<n; i++)\n\t\twyn+=abs(ile[i]);\n\tprintf(\"%lld\\n\", wyn);\n\tfor (int i=1; i<n; i++)\n\t\tdfs(i);\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "greedy",
+        "implementation",
+        "math"
+    ],
+    "dificulty": "2700",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Once in a casino.json",
+    "editorial_link": "https://codeforces.com//blog/entry/65679",
+    "editorial": "Since each operation saves the alternating series of the digits, if it\u00e2\u0080\u0099s\r\ndifferent for and , then the answer is \u00e2\u0080\u0099-1\u00e2\u0080\u0099. Now we prove that otherwise\r\nit\u00e2\u0080\u0099s possible to win.Let\u00e2\u0080\u0099s imagine that digits can be negative or bigger\r\nthan 9 (that is, for example, number 19 can become the number with\r\ndigits 2 and 10). Denote by the -th digit of (and similarly for ). Now\r\nthere is no difference between any two orders of the same set of\r\noperations, so we can do allowed operations from left to right. After we\r\ndo all operations with first digit (there are at least such operations),\r\nwill become equal to . After we do all operations with and (there are at\r\nleast such operations), will be equal to , and so on. Thus we can\r\ncalculate the minimal total number of operations and find their set. The\r\ngoal is to prove that it\u00e2\u0080\u0099s possible to perform them in some order and\r\nnever break the rules about the correctness of intermediate\r\nnumbers.Indeed, let\u00e2\u0080\u0099s just perform these operations from left to right.\r\nAssume that we can\u00e2\u0080\u0099t perform the current operation. Without loss of\r\ngenerality assume that we can\u00e2\u0080\u0099t decrease two digits: one of and is 0\r\nnow. It\u00e2\u0080\u0099s easy to see that because after we perform the set of our\r\noperations ignoring the rules, will become , which is nonnegative. Hence\r\n. Then we must increase and at least once (again because we can ignore\r\nthe rules and get in the end). If we can do it then we do it and then\r\ndecrease and just as planned and then continue performing the\r\noperations. Otherwise, . Reasoning similarly, either we can decrease and\r\n, or , et cetera. As it can\u00e2\u0080\u0099t continue infinitely, we can perform some\r\noperations from our set and decrease and , so we can reach the goal\r\ndoing the minimal number of operations.\r\n"
+}

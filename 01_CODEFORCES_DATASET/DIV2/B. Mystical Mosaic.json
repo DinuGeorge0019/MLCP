@@ -1,1 +1,103 @@
-{"link": "https://codeforces.com//contest/957/problem/B", "problemId": "168086", "problem_idx": "B", "shortId": "957B", "contest_number": "957", "problem_submissions": {"E": [36592290, 36594963, 36599082, 36599897, 36599760], "D": [36588184, 36593316, 36590028, 36587926, 36594829, 36594512, 36589430, 36586974, 36587001, 36588810, 36587938, 36589206, 36583680, 36590716, 36594602, 36589094], "C": [36585096, 36587203, 36585622, 36583559, 36590242, 36589387, 36584971, 36584551, 36583605, 36586678, 36585992, 36585864, 36581121, 36584678, 36584664, 36585936], "B": [36581561, 36585463, 36583187, 36581534, 36588080, 36585487, 36582113, 36582013, 36588511, 36584549, 36582998, 36591084, 36582444, 36581251, 36582787], "A": [36579344, 36581086, 36579386, 36579567, 36585046, 36580860, 36579710, 36580098, 36579619, 36583249, 36579936, 36582081, 36579470, 36579595, 36579916]}, "name": "B. Mystical Mosaic", "statement": "There is a rectangular grid of rows of initially-white cells each.Arkady\r\nperformed a certain number (possibly zero) of operations on it. In the\r\n-th operation, a non-empty subset of rows and a non-empty subset of\r\ncolumns are chosen. For each row in and each column in , the\r\nintersection of row and column is coloured black.There\u2019s another\r\nconstraint: a row or a column can only be chosen at most once among all\r\noperations. In other words, it means that no pair of () exists such that\r\nor , where denotes intersection of sets, and denotes the empty set.You\r\nare to determine whether a valid sequence of operations exists that\r\nproduces a given final grid.\r\n", "solutions": ["#include<bits/stdc++.h>\nusing namespace std;\nchar c[55][55];\nint n,m;\nmain()\n{\n    scanf(\"%d%d\",&n,&m);\n    for(int i=1;i<=n;i++)scanf(\"%s\",c[i]+1);\n    for(int i=1;i<=n;i++)for(int j=i+1;j<=n;j++)\n    {\n        bool is=0;\n        for(int k=1;k<=m;k++)\n        {\n            if(c[i][k]=='#' && c[j][k]=='#')is=1;\n        }\n        if(is)\n        {\n            for(int k=1;k<=m;k++)\n        {\n            if(((c[i][k]=='#')^(c[j][k]=='#'))==1 && is)return 0*puts(\"No\");\n        }\n        }\n\n    }\n    puts(\"Yes\");\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["brute force", "greedy", "implementation"], "dificulty": "1300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/957/problem/B",
+    "problemId": "168086",
+    "problem_idx": "B",
+    "shortId": "957B",
+    "contest_number": "957",
+    "problem_submissions": {
+        "E": [
+            36592290,
+            36594963,
+            36599082,
+            36599897,
+            36599760
+        ],
+        "D": [
+            36588184,
+            36593316,
+            36590028,
+            36587926,
+            36594829,
+            36594512,
+            36589430,
+            36586974,
+            36587001,
+            36588810,
+            36587938,
+            36589206,
+            36583680,
+            36590716,
+            36594602,
+            36589094
+        ],
+        "C": [
+            36585096,
+            36587203,
+            36585622,
+            36583559,
+            36590242,
+            36589387,
+            36584971,
+            36584551,
+            36583605,
+            36586678,
+            36585992,
+            36585864,
+            36581121,
+            36584678,
+            36584664,
+            36585936
+        ],
+        "B": [
+            36581561,
+            36585463,
+            36583187,
+            36581534,
+            36588080,
+            36585487,
+            36582113,
+            36582013,
+            36588511,
+            36584549,
+            36582998,
+            36591084,
+            36582444,
+            36581251,
+            36582787
+        ],
+        "A": [
+            36579344,
+            36581086,
+            36579386,
+            36579567,
+            36585046,
+            36580860,
+            36579710,
+            36580098,
+            36579619,
+            36583249,
+            36579936,
+            36582081,
+            36579470,
+            36579595,
+            36579916
+        ]
+    },
+    "name": "B. Mystical Mosaic",
+    "statement": "There is a rectangular grid of rows of initially-white cells each.Arkady\r\nperformed a certain number (possibly zero) of operations on it. In the\r\n-th operation, a non-empty subset of rows and a non-empty subset of\r\ncolumns are chosen. For each row in and each column in , the\r\nintersection of row and column is coloured black.There\u2019s another\r\nconstraint: a row or a column can only be chosen at most once among all\r\noperations. In other words, it means that no pair of () exists such that\r\nor , where denotes intersection of sets, and denotes the empty set.You\r\nare to determine whether a valid sequence of operations exists that\r\nproduces a given final grid.\r\n",
+    "solutions": [
+        "#include<bits/stdc++.h>\nusing namespace std;\nchar c[55][55];\nint n,m;\nmain()\n{\n    scanf(\"%d%d\",&n,&m);\n    for(int i=1;i<=n;i++)scanf(\"%s\",c[i]+1);\n    for(int i=1;i<=n;i++)for(int j=i+1;j<=n;j++)\n    {\n        bool is=0;\n        for(int k=1;k<=m;k++)\n        {\n            if(c[i][k]=='#' && c[j][k]=='#')is=1;\n        }\n        if(is)\n        {\n            for(int k=1;k<=m;k++)\n        {\n            if(((c[i][k]=='#')^(c[j][k]=='#'))==1 && is)return 0*puts(\"No\");\n        }\n        }\n\n    }\n    puts(\"Yes\");\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "greedy",
+        "implementation"
+    ],
+    "dificulty": "1300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Mystical Mosaic.json",
+    "editorial_link": "https://codeforces.com//blog/entry/58544",
+    "editorial": "No row or column can be selected more than once, hence whenever a row r is selected in an operation, all cells in it uniquely determine the set of columns that need to be selected \u0097 let's call it Sr.\n\nLet's assume a valid set of operations exists. Take out any two rows, i and j. If rows i and j are selected in the same operation, we can deduce that Si?=?Sj; if they're in different operations, we get . Therefore, if Si???Sj and  hold for any pair of rows (i,?j), no valid operation sequence can be found.\n\nOtherwise (no pair violates the condition above), a valid sequence of operations can be constructed: group all rows with the same S's and carry out an operation with each group.\n\nThus, it's a necessary and sufficient condition for the answer to be \"Yes\", that for each pair of rows (i,?j), either Si?=?Sj or  holds.\n\nThe overall complexity is O(n2m). It can be divided by the system's word size if you're a bitset enthusiast, and a lot more if hashes and hash tables release their full power."
+}

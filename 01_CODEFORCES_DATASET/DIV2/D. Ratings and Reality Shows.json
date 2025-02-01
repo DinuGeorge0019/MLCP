@@ -1,1 +1,94 @@
-{"link": "https://codeforces.com//contest/887/problem/D", "problemId": "132443", "problem_idx": "D", "shortId": "887D", "contest_number": "887", "problem_submissions": {"C": [32030061, 32024027, 32022932, 32023971, 32025990, 32021759, 32021073, 32020948, 32028782, 32032620, 32021817, 32022156, 32018322, 32023053, 32031091, 32022430, 32023150, 32024864, 32025018], "B": [32016513, 32020265, 32016897, 32016065, 32014442, 32017172, 32016855, 32017293, 32018525, 32022079, 32017001, 32015887, 32019052, 32018896, 32016338, 32018006, 32019593, 32017984], "A": [32013350, 32013511, 32013972, 32013298, 32013094, 32016695, 32014256, 32015031, 32013109, 32016784, 32013650, 32021401, 32015546, 32014355, 32013271, 32013887, 32014116, 32014361], "D": [32032150, 32031487, 32031629, 32032905, 32031887, 32031366]}, "name": "D. Ratings and Reality Shows", "statement": "There are two main kinds of events in the life of top-model: fashion\r\nshows and photo shoots. Participating in any of these events affects the\r\nrating of appropriate top-model. After each photo shoot model\u2019s rating\r\nincreases by and after each fashion show decreases by (designers do too\r\nmany experiments nowadays). Moreover, sometimes top-models participates\r\nin talk shows. After participating in talk show model becomes more\r\npopular and increasing of her rating after photo shoots become and\r\ndecreasing of her rating after fashion show becomes .Izabella wants to\r\nparticipate in a talk show, but she wants to do it in such a way that\r\nher rating will never become negative. Help her to find a suitable\r\nmoment for participating in the talk show. Let\u2019s assume that model\u2019s\r\ncareer begins in moment 0. At that moment Izabella\u2019s rating was equal to\r\n. If talk show happens in moment if will affect all events in model\u2019s\r\nlife in interval of time (including and not including ), where is\r\nduration of influence.Izabella wants to participate in a talk show, but\r\nshe wants to do it in such a way that her rating will not become become\r\nnegative before talk show or during period of influence of talk show.\r\nHelp her to find a suitable moment for participating in the talk show.\r\n", "solutions": ["#define _CRT_SECURE_NO_WARNINGS\n#include <string>\n#include <iostream>\n#include <algorithm>\n#include <vector>\n\nusing namespace std;\n\nint n, splus, sminus, dplus, dminus, start, len;\nint *t, *q;\n\n__int64 *s;\n__int64 *ds;\n__int64 *ts, *tds;\n\n\nvoid build(__int64 *a, __int64 *t, int v, int tl, int tr) {\n\tif (tl == tr)\n\t\tt[v] = a[tl];\n\telse {\n\t\tint tm = (tl + tr) / 2;\n\t\tbuild(a, t, v * 2, tl, tm);\n\t\tbuild(a, t, v * 2 + 1, tm + 1, tr);\n\t\tt[v] = min(t[v * 2], t[v * 2 + 1]);\n\t}\n}\n\n__int64 minsum(__int64 *a, __int64 *t, int v, int tl, int tr, int l, int r) {\n\tif (l > r)\n\t\treturn 9223372036854775807i64;\n\tif (l == tl && r == tr)\n\t\treturn t[v];\n\tint tm = (tl + tr) / 2;\n\treturn min(minsum(a, t, v * 2, tl, tm, l, min(r, tm)),\n\t\tminsum(a, t, v * 2 + 1, tm + 1, tr, max(l, tm + 1), r));\n}\n\nint getLeft(int time, int *a, int l, int r)\n{\n\tif (a[l] >= time)\n\t{\n\t\treturn l;\n\t}\n\tif (a[r] < time)\n\t{\n\t\treturn -1;\n\t}\n\twhile (r - l > 1)\n\t{\n\t\tint middle = (r + l) / 2;\n\t\tif (a[middle] >= time)\n\t\t{\n\t\t\tr = middle;\n\t\t}\n\t\telse\n\t\t{\n\t\t\tl = middle;\n\t\t}\n\t}\n\treturn r;\n}\n\nint getRight(int time, int *a, int l, int r)\n{\n\tif (a[l] > time)\n\t{\n\t\treturn -1;\n\t}\n\tif (a[r] <= time)\n\t{\n\t\treturn r;\n\t}\n\twhile (r - l > 1)\n\t{\n\t\tint middle = (r + l) / 2;\n\t\tif (a[middle] <= time)\n\t\t{\n\t\t\tl = middle;\n\t\t}\n\t\telse\n\t\t{\n\t\t\tr = middle;\n\t\t}\n\t}\n\treturn l;\n}\n\nbool check(int time)\n{\n\tint l = getLeft(time, t, 0, n - 1);\n\tint r = getRight(time + len - 1, t, 0, n - 1);\n\n\tif (l == -1 || r == -1)\n\t{\n\t\treturn minsum(s, ts, 1, 0, n - 1, 0, n - 1) + start >= 0;\n\t}\n\n\t__int64 rate = start;\n\n\tif (l != 0)\n\t{\n\t\tint left = 0;\n\t\tint right = l - 1;\n\n\t\t__int64 diff = minsum(s, ts, 1, 0, n - 1, left, right);\n\n\t\tif (rate + diff < 0)\n\t\t{\n\t\t\treturn false;\n\t\t}\n\n\t\trate += s[right];\n\t}\n\n\t{\n\t\tint left = l;\n\t\tint right = r;\n\n\t\t__int64 diff = minsum(ds, tds, 1, 0, n - 1, left, right);\n\t\t\n\t\tif (left != 0)\n\t\t{\n\t\t\tdiff = diff - ds[left - 1];\n\t\t}\n\n\t\tif (rate + diff < 0)\n\t\t{\n\t\t\treturn false;\n\t\t}\n\n\t\trate += diff;\n\t}\n\n\treturn true;\n}\n\nint main()\n{\n\t//freopen(\"input.txt\", \"r\", stdin);\n\t//freopen(\"output.txt\", \"w\", stdout);\n\n\tcin >> n >> splus >> sminus >> dplus >> dminus >> start >> len;\n\n\tsminus *= -1;\n\tdminus *= -1;\n\n\tt = new int[n];\n\tq = new int[n];\n\ts = new __int64[n];\n\tds = new __int64[n];\n\n\tfor (int i = 0; i < n; i++)\n\t{\n\t\tcin >> t[i] >> q[i];\n\t}\n\n\ts[0] = q[0] == 1 ? splus : sminus;\n\tds[0] = q[0] == 1 ? dplus : dminus;\n\tfor (int i = 1; i < n; ++i)\n\t{\n\t\ts[i] = s[i - 1] + (q[i] == 1 ? splus : sminus);\n\t\tds[i] = ds[i - 1] + (q[i] == 1 ? dplus : dminus);\n\t}\n\n\tts = new __int64[(n + 1) * 4];\n\ttds = new __int64[(n + 1) * 4];\n\n\tbuild(s, ts, 1, 0, n - 1);\n\tbuild(ds, tds, 1, 0, n - 1);\n\t\n\tvector<int> times;\n\n\ttimes.push_back(0);\n\n\tfor (int i = 0; i < n; i++)\n\t{\n\t\ttimes.push_back(t[i] + 1);\n\t\ttimes.push_back(t[i] + 1 - len);\n\t}\n\n\tsort(times.begin(), times.end());\n\n\tfor (int i = 0; i < times.size(); ++i)\n\t{\n\t\tif (times[i] < 0)\n\t\t{\n\t\t\tcontinue;\n\t\t}\n\t\tif (check(times[i]))\n\t\t{\n\t\t\tcout << times[i];\n\t\t\treturn 0;\n\t\t}\n\t}\n\n\tcout << -1;\n\n\treturn 0;\n}"], "input": "", "output": "", "tags": ["data structures", "two pointers"], "dificulty": "2400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/887/problem/D",
+    "problemId": "132443",
+    "problem_idx": "D",
+    "shortId": "887D",
+    "contest_number": "887",
+    "problem_submissions": {
+        "C": [
+            32030061,
+            32024027,
+            32022932,
+            32023971,
+            32025990,
+            32021759,
+            32021073,
+            32020948,
+            32028782,
+            32032620,
+            32021817,
+            32022156,
+            32018322,
+            32023053,
+            32031091,
+            32022430,
+            32023150,
+            32024864,
+            32025018
+        ],
+        "B": [
+            32016513,
+            32020265,
+            32016897,
+            32016065,
+            32014442,
+            32017172,
+            32016855,
+            32017293,
+            32018525,
+            32022079,
+            32017001,
+            32015887,
+            32019052,
+            32018896,
+            32016338,
+            32018006,
+            32019593,
+            32017984
+        ],
+        "A": [
+            32013350,
+            32013511,
+            32013972,
+            32013298,
+            32013094,
+            32016695,
+            32014256,
+            32015031,
+            32013109,
+            32016784,
+            32013650,
+            32021401,
+            32015546,
+            32014355,
+            32013271,
+            32013887,
+            32014116,
+            32014361
+        ],
+        "D": [
+            32032150,
+            32031487,
+            32031629,
+            32032905,
+            32031887,
+            32031366
+        ]
+    },
+    "name": "D. Ratings and Reality Shows",
+    "statement": "There are two main kinds of events in the life of top-model: fashion\r\nshows and photo shoots. Participating in any of these events affects the\r\nrating of appropriate top-model. After each photo shoot model\u2019s rating\r\nincreases by and after each fashion show decreases by (designers do too\r\nmany experiments nowadays). Moreover, sometimes top-models participates\r\nin talk shows. After participating in talk show model becomes more\r\npopular and increasing of her rating after photo shoots become and\r\ndecreasing of her rating after fashion show becomes .Izabella wants to\r\nparticipate in a talk show, but she wants to do it in such a way that\r\nher rating will never become negative. Help her to find a suitable\r\nmoment for participating in the talk show. Let\u2019s assume that model\u2019s\r\ncareer begins in moment 0. At that moment Izabella\u2019s rating was equal to\r\n. If talk show happens in moment if will affect all events in model\u2019s\r\nlife in interval of time (including and not including ), where is\r\nduration of influence.Izabella wants to participate in a talk show, but\r\nshe wants to do it in such a way that her rating will not become become\r\nnegative before talk show or during period of influence of talk show.\r\nHelp her to find a suitable moment for participating in the talk show.\r\n",
+    "solutions": [
+        "#define _CRT_SECURE_NO_WARNINGS\n#include <string>\n#include <iostream>\n#include <algorithm>\n#include <vector>\n\nusing namespace std;\n\nint n, splus, sminus, dplus, dminus, start, len;\nint *t, *q;\n\n__int64 *s;\n__int64 *ds;\n__int64 *ts, *tds;\n\n\nvoid build(__int64 *a, __int64 *t, int v, int tl, int tr) {\n\tif (tl == tr)\n\t\tt[v] = a[tl];\n\telse {\n\t\tint tm = (tl + tr) / 2;\n\t\tbuild(a, t, v * 2, tl, tm);\n\t\tbuild(a, t, v * 2 + 1, tm + 1, tr);\n\t\tt[v] = min(t[v * 2], t[v * 2 + 1]);\n\t}\n}\n\n__int64 minsum(__int64 *a, __int64 *t, int v, int tl, int tr, int l, int r) {\n\tif (l > r)\n\t\treturn 9223372036854775807i64;\n\tif (l == tl && r == tr)\n\t\treturn t[v];\n\tint tm = (tl + tr) / 2;\n\treturn min(minsum(a, t, v * 2, tl, tm, l, min(r, tm)),\n\t\tminsum(a, t, v * 2 + 1, tm + 1, tr, max(l, tm + 1), r));\n}\n\nint getLeft(int time, int *a, int l, int r)\n{\n\tif (a[l] >= time)\n\t{\n\t\treturn l;\n\t}\n\tif (a[r] < time)\n\t{\n\t\treturn -1;\n\t}\n\twhile (r - l > 1)\n\t{\n\t\tint middle = (r + l) / 2;\n\t\tif (a[middle] >= time)\n\t\t{\n\t\t\tr = middle;\n\t\t}\n\t\telse\n\t\t{\n\t\t\tl = middle;\n\t\t}\n\t}\n\treturn r;\n}\n\nint getRight(int time, int *a, int l, int r)\n{\n\tif (a[l] > time)\n\t{\n\t\treturn -1;\n\t}\n\tif (a[r] <= time)\n\t{\n\t\treturn r;\n\t}\n\twhile (r - l > 1)\n\t{\n\t\tint middle = (r + l) / 2;\n\t\tif (a[middle] <= time)\n\t\t{\n\t\t\tl = middle;\n\t\t}\n\t\telse\n\t\t{\n\t\t\tr = middle;\n\t\t}\n\t}\n\treturn l;\n}\n\nbool check(int time)\n{\n\tint l = getLeft(time, t, 0, n - 1);\n\tint r = getRight(time + len - 1, t, 0, n - 1);\n\n\tif (l == -1 || r == -1)\n\t{\n\t\treturn minsum(s, ts, 1, 0, n - 1, 0, n - 1) + start >= 0;\n\t}\n\n\t__int64 rate = start;\n\n\tif (l != 0)\n\t{\n\t\tint left = 0;\n\t\tint right = l - 1;\n\n\t\t__int64 diff = minsum(s, ts, 1, 0, n - 1, left, right);\n\n\t\tif (rate + diff < 0)\n\t\t{\n\t\t\treturn false;\n\t\t}\n\n\t\trate += s[right];\n\t}\n\n\t{\n\t\tint left = l;\n\t\tint right = r;\n\n\t\t__int64 diff = minsum(ds, tds, 1, 0, n - 1, left, right);\n\t\t\n\t\tif (left != 0)\n\t\t{\n\t\t\tdiff = diff - ds[left - 1];\n\t\t}\n\n\t\tif (rate + diff < 0)\n\t\t{\n\t\t\treturn false;\n\t\t}\n\n\t\trate += diff;\n\t}\n\n\treturn true;\n}\n\nint main()\n{\n\t//freopen(\"input.txt\", \"r\", stdin);\n\t//freopen(\"output.txt\", \"w\", stdout);\n\n\tcin >> n >> splus >> sminus >> dplus >> dminus >> start >> len;\n\n\tsminus *= -1;\n\tdminus *= -1;\n\n\tt = new int[n];\n\tq = new int[n];\n\ts = new __int64[n];\n\tds = new __int64[n];\n\n\tfor (int i = 0; i < n; i++)\n\t{\n\t\tcin >> t[i] >> q[i];\n\t}\n\n\ts[0] = q[0] == 1 ? splus : sminus;\n\tds[0] = q[0] == 1 ? dplus : dminus;\n\tfor (int i = 1; i < n; ++i)\n\t{\n\t\ts[i] = s[i - 1] + (q[i] == 1 ? splus : sminus);\n\t\tds[i] = ds[i - 1] + (q[i] == 1 ? dplus : dminus);\n\t}\n\n\tts = new __int64[(n + 1) * 4];\n\ttds = new __int64[(n + 1) * 4];\n\n\tbuild(s, ts, 1, 0, n - 1);\n\tbuild(ds, tds, 1, 0, n - 1);\n\t\n\tvector<int> times;\n\n\ttimes.push_back(0);\n\n\tfor (int i = 0; i < n; i++)\n\t{\n\t\ttimes.push_back(t[i] + 1);\n\t\ttimes.push_back(t[i] + 1 - len);\n\t}\n\n\tsort(times.begin(), times.end());\n\n\tfor (int i = 0; i < times.size(); ++i)\n\t{\n\t\tif (times[i] < 0)\n\t\t{\n\t\t\tcontinue;\n\t\t}\n\t\tif (check(times[i]))\n\t\t{\n\t\t\tcout << times[i];\n\t\t\treturn 0;\n\t\t}\n\t}\n\n\tcout << -1;\n\n\treturn 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "data structures",
+        "two pointers"
+    ],
+    "dificulty": "2400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Ratings and Reality Shows.json",
+    "editorial_link": "https://codeforces.com//blog/entry/55584",
+    "editorial": "We can create two arrays of prefix sums of events given in input. The first one on values (a, b) and the second one on values (c, d). The answer is either 0 or the moment of time right after an event occured. Let's use the method of two pointers. One pointer will indicate an event V after which we want to participate in the talk show and the other one at the moment of time right after its influence ends. Then we can participate in the talk show if the minimum of prefix sums on values (c, d) from elements between pointers is not less than the difference of prefix sums on values (a, b) and (c, d) from element V. Also we must check that Izabella's rating doesn't become negative before participating in the talk show or during its peroid of influence.\n"
+}

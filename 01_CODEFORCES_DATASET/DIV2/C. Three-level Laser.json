@@ -1,1 +1,104 @@
-{"link": "https://codeforces.com//contest/957/problem/C", "problemId": "168087", "problem_idx": "C", "shortId": "957C", "contest_number": "957", "problem_submissions": {"E": [36592290, 36594963, 36599082, 36599897, 36599760], "D": [36588184, 36593316, 36590028, 36587926, 36594829, 36594512, 36589430, 36586974, 36587001, 36588810, 36587938, 36589206, 36583680, 36590716, 36594602, 36589094], "C": [36585096, 36587203, 36585622, 36583559, 36590242, 36589387, 36584971, 36584551, 36583605, 36586678, 36585992, 36585864, 36581121, 36584678, 36584664, 36585936], "B": [36581561, 36585463, 36583187, 36581534, 36588080, 36585487, 36582113, 36582013, 36588511, 36584549, 36582998, 36591084, 36582444, 36581251, 36582787], "A": [36579344, 36581086, 36579386, 36579567, 36585046, 36580860, 36579710, 36580098, 36579619, 36583249, 36579936, 36582081, 36579470, 36579595, 36579916]}, "name": "C. Three-level Laser", "statement": "An atom of element X can exist in distinct states with energies . Arkady\r\nwants to build a laser on this element, using a three-level scheme. Here\r\nis a simplified description of the scheme. Three distinct states , and\r\nare selected, where . After that the following process happens:\r\ninitially the atom is in the state , we spend energy to put the atom in\r\nthe state , the atom emits a photon with useful energy and changes its\r\nstate to the state , the atom spontaneously changes its state to the\r\nstate , losing energy , the process repeats from step 1. Let\u2019s define\r\nthe energy conversion efficiency as , i. e. the ration between the\r\nuseful energy of the photon and spent energy.Due to some limitations,\r\nArkady can only choose such three states that .Help Arkady to find such\r\nthe maximum possible energy conversion efficiency within the above\r\nconstraints.\r\n", "solutions": ["#include<bits/stdc++.h>\nusing namespace std;\n#define maxn 100010\nint n,u;\nint a[maxn];\nint pos[maxn];\nmain()\n{\n    scanf(\"%d%d\",&n,&u);\n    for(int i=1;i<=n;i++)scanf(\"%d\",&a[i]);\n    int cur=1;\n    for(int i=1;i<=n;i++)\n    {\n        while(cur<=n && a[cur]-a[i]<=u)cur++;\n        cur--;\n        pos[i]=cur;\n    }\n    //for(int i=1;i<=n;i++)printf(\"%d \",pos[i]);puts(\"\");\n    double f=20.0;\n    for(int i=1;i<=n-2;i++)\n        if(pos[i]>i+1)f=min(f,(double)(a[i+1]-a[i])/(double)(a[pos[i]]-a[i]));\n    if(f==20.0)puts(\"-1\");\n    else printf(\"%.10f\\n\",1-f);\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["binary search", "greedy", "math", "two pointers"], "dificulty": "1600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/957/problem/C",
+    "problemId": "168087",
+    "problem_idx": "C",
+    "shortId": "957C",
+    "contest_number": "957",
+    "problem_submissions": {
+        "E": [
+            36592290,
+            36594963,
+            36599082,
+            36599897,
+            36599760
+        ],
+        "D": [
+            36588184,
+            36593316,
+            36590028,
+            36587926,
+            36594829,
+            36594512,
+            36589430,
+            36586974,
+            36587001,
+            36588810,
+            36587938,
+            36589206,
+            36583680,
+            36590716,
+            36594602,
+            36589094
+        ],
+        "C": [
+            36585096,
+            36587203,
+            36585622,
+            36583559,
+            36590242,
+            36589387,
+            36584971,
+            36584551,
+            36583605,
+            36586678,
+            36585992,
+            36585864,
+            36581121,
+            36584678,
+            36584664,
+            36585936
+        ],
+        "B": [
+            36581561,
+            36585463,
+            36583187,
+            36581534,
+            36588080,
+            36585487,
+            36582113,
+            36582013,
+            36588511,
+            36584549,
+            36582998,
+            36591084,
+            36582444,
+            36581251,
+            36582787
+        ],
+        "A": [
+            36579344,
+            36581086,
+            36579386,
+            36579567,
+            36585046,
+            36580860,
+            36579710,
+            36580098,
+            36579619,
+            36583249,
+            36579936,
+            36582081,
+            36579470,
+            36579595,
+            36579916
+        ]
+    },
+    "name": "C. Three-level Laser",
+    "statement": "An atom of element X can exist in distinct states with energies . Arkady\r\nwants to build a laser on this element, using a three-level scheme. Here\r\nis a simplified description of the scheme. Three distinct states , and\r\nare selected, where . After that the following process happens:\r\ninitially the atom is in the state , we spend energy to put the atom in\r\nthe state , the atom emits a photon with useful energy and changes its\r\nstate to the state , the atom spontaneously changes its state to the\r\nstate , losing energy , the process repeats from step 1. Let\u2019s define\r\nthe energy conversion efficiency as , i. e. the ration between the\r\nuseful energy of the photon and spent energy.Due to some limitations,\r\nArkady can only choose such three states that .Help Arkady to find such\r\nthe maximum possible energy conversion efficiency within the above\r\nconstraints.\r\n",
+    "solutions": [
+        "#include<bits/stdc++.h>\nusing namespace std;\n#define maxn 100010\nint n,u;\nint a[maxn];\nint pos[maxn];\nmain()\n{\n    scanf(\"%d%d\",&n,&u);\n    for(int i=1;i<=n;i++)scanf(\"%d\",&a[i]);\n    int cur=1;\n    for(int i=1;i<=n;i++)\n    {\n        while(cur<=n && a[cur]-a[i]<=u)cur++;\n        cur--;\n        pos[i]=cur;\n    }\n    //for(int i=1;i<=n;i++)printf(\"%d \",pos[i]);puts(\"\");\n    double f=20.0;\n    for(int i=1;i<=n-2;i++)\n        if(pos[i]>i+1)f=min(f,(double)(a[i+1]-a[i])/(double)(a[pos[i]]-a[i]));\n    if(f==20.0)puts(\"-1\");\n    else printf(\"%.10f\\n\",1-f);\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "binary search",
+        "greedy",
+        "math",
+        "two pointers"
+    ],
+    "dificulty": "1600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Three-level Laser.json",
+    "editorial_link": "https://codeforces.com//blog/entry/58544",
+    "editorial": "First of all, you can note that for fixed i and k setting j?=?i?+?1 is always the best choice. Indeed, if X?>?Y, then  for positive B.\n\nThen, let's fix i. Then j?=?i?+?1, and what is the optimal k? We can define the energy loss as . As we need to minimize the loss, it's obvious that we should maximize Ek, so we should choose as large k as possible satisfying Ek?-?Ei???U. This is a classic problem that can be solved with two pointers approach, this leads to O(n) solution, or with binary search approach, this leads to  solution. Both are acceptable."
+}

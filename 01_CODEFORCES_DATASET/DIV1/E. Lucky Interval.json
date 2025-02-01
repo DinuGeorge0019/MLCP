@@ -1,1 +1,100 @@
-{"link": "https://codeforces.com//contest/109/problem/E", "problemId": "575", "problem_idx": "E", "shortId": "109E", "contest_number": "109", "problem_submissions": {"E": [648441], "D": [646409, 647170, 646652, 646695, 646352, 645873, 645392, 646870, 646386, 646289, 645803, 647324, 646355, 647745, 646444, 645672], "B": [644873, 644785, 645061, 644222, 644364, 643745, 643698, 644283, 643725, 646460, 646874, 647648, 646835, 644816, 646998, 647078], "C": [643742, 645980, 645707, 645639, 645273, 644937, 644325, 645865, 644801, 645032, 644836, 644580, 644697, 646773, 644867, 646558], "A": [642201, 642453, 642373, 642819, 642224, 642165, 642161, 642217, 642304, 642733, 643129, 642289, 642251, 642497, 642687, 647423]}, "name": "E. Lucky Interval", "statement": "One day Petya came across an interval of numbers . Let be the number of\r\nlucky digits of number . Find the minimum such, that = , = , ..., = .\r\n", "solutions": ["#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <set>\n#include <map>\n#include <algorithm>\n#include <functional>\n#include <utility>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstdio>\n\nusing namespace std;\n\n#define REP(i,n) for((i)=0;(i)<(int)(n);(i)++)\n#define foreach(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n\ntypedef long long ll;\n#define INF (1ll<<40)\n\nint lucky(ll x){\n    int ans = 0;\n    while(x > 0){\n        if(x%10 == 4 || x%10 == 7) ans++;\n        x /= 10;\n    }\n    return ans;\n}\n\nmap <pair <ll, int>, int> mp1;\n\nll func1(ll low, int x){\n    int i;\n    ll ans = INF;\n    \n    if(x < 0) return INF;\n    \n    pair <ll, int> st = make_pair(low,x);\n    if(mp1.find(st) != mp1.end()) return mp1[st];\n    \n    if(low <= 3){\n        if(x == 0) return low;\n        ans = 0;\n        REP(i,x) ans = ans * 10 + 4;\n        return mp1[st] = ans;\n    }\n    \n    REP(i,10){\n        if(i < low%10){\n            ll tmp = func1(low/10+1,x-lucky(i));\n            ans = min(ans,tmp*10+i);\n        } else {\n            ll tmp = func1(low/10,x-lucky(i));\n            ans = min(ans,tmp*10+i);\n        }\n    }\n    \n    return mp1[st] = ans;\n}\n\nll func2(ll low, int x, int y){\n    int i;\n    ll ans = INF;\n    \n    if(x < 0 || y < 0) return INF;\n    \n    REP(i,9) if(y - x == lucky(i+1) - lucky(i)){\n        if(i < low%10){\n            ll tmp = func1(low/10+1,x-lucky(i));\n            ans = min(ans,tmp*10+i);\n        } else {\n            ll tmp = func1(low/10,x-lucky(i));\n            ans = min(ans,tmp*10+i);\n        }\n    }\n    \n    return ans;\n}\n\nll func3(ll low, int x, int y){\n    ll ans = INF;\n    \n    int i;\n    for(i=0;;i++){\n        ll tmp = func2(low,x,y);\n        int j;\n        REP(j,i) tmp = min(tmp * 10 + 9, INF);\n        ans = min(ans,tmp);\n        \n        if(low == 0) return ans;\n        low /= 10;\n    }\n}\n\nll func(ll low, ll high){\n    if(high/10 - low/10 >= 2){\n        ll tmp = func(low/10,high/10);\n        return tmp * 10 + low % 10;\n    }\n    \n    ll ans = INF;\n    \n    int i,j,k;\n    \n    REP(i,10){\n        j = i + (int)(high - low);\n        if(j >= 20) continue;\n        \n        int x = lucky(low) - lucky(i);\n        int y = 0;\n        if(j >= 10) y = lucky(high) - lucky(j-10);\n        \n        bool failed = false;\n        for(k=i;k<=j;k++){\n            int tmp1 = lucky(low+k-i);\n            int tmp2 = ((k >= 10) ? (y + lucky(k-10)) : (x + lucky(k)));\n            if(tmp1 != tmp2){\n                failed = true;\n                break;\n            }\n        }\n        if(failed) continue;\n        \n        ll small = (low - i + 10) / 10;\n        if(j >= 10){\n            ll tmp = func3(small,x,y);\n            ans = min(ans,tmp*10+i);\n        } else {\n            ll tmp = func1(small,x);\n            ans = min(ans,tmp*10+i);\n        }\n    }\n    \n    return ans;\n}\n\nint main(void){\n    ll a,d;\n    cin >> a >> d;\n    ll ans = func(a,a+d-1);\n    cout << ans << endl;\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["brute force", "math"], "dificulty": "2700", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/109/problem/E",
+    "problemId": "575",
+    "problem_idx": "E",
+    "shortId": "109E",
+    "contest_number": "109",
+    "problem_submissions": {
+        "E": [
+            648441
+        ],
+        "D": [
+            646409,
+            647170,
+            646652,
+            646695,
+            646352,
+            645873,
+            645392,
+            646870,
+            646386,
+            646289,
+            645803,
+            647324,
+            646355,
+            647745,
+            646444,
+            645672
+        ],
+        "B": [
+            644873,
+            644785,
+            645061,
+            644222,
+            644364,
+            643745,
+            643698,
+            644283,
+            643725,
+            646460,
+            646874,
+            647648,
+            646835,
+            644816,
+            646998,
+            647078
+        ],
+        "C": [
+            643742,
+            645980,
+            645707,
+            645639,
+            645273,
+            644937,
+            644325,
+            645865,
+            644801,
+            645032,
+            644836,
+            644580,
+            644697,
+            646773,
+            644867,
+            646558
+        ],
+        "A": [
+            642201,
+            642453,
+            642373,
+            642819,
+            642224,
+            642165,
+            642161,
+            642217,
+            642304,
+            642733,
+            643129,
+            642289,
+            642251,
+            642497,
+            642687,
+            647423
+        ]
+    },
+    "name": "E. Lucky Interval",
+    "statement": "One day Petya came across an interval of numbers . Let be the number of\r\nlucky digits of number . Find the minimum such, that = , = , ..., = .\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <set>\n#include <map>\n#include <algorithm>\n#include <functional>\n#include <utility>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstdio>\n\nusing namespace std;\n\n#define REP(i,n) for((i)=0;(i)<(int)(n);(i)++)\n#define foreach(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n\ntypedef long long ll;\n#define INF (1ll<<40)\n\nint lucky(ll x){\n    int ans = 0;\n    while(x > 0){\n        if(x%10 == 4 || x%10 == 7) ans++;\n        x /= 10;\n    }\n    return ans;\n}\n\nmap <pair <ll, int>, int> mp1;\n\nll func1(ll low, int x){\n    int i;\n    ll ans = INF;\n    \n    if(x < 0) return INF;\n    \n    pair <ll, int> st = make_pair(low,x);\n    if(mp1.find(st) != mp1.end()) return mp1[st];\n    \n    if(low <= 3){\n        if(x == 0) return low;\n        ans = 0;\n        REP(i,x) ans = ans * 10 + 4;\n        return mp1[st] = ans;\n    }\n    \n    REP(i,10){\n        if(i < low%10){\n            ll tmp = func1(low/10+1,x-lucky(i));\n            ans = min(ans,tmp*10+i);\n        } else {\n            ll tmp = func1(low/10,x-lucky(i));\n            ans = min(ans,tmp*10+i);\n        }\n    }\n    \n    return mp1[st] = ans;\n}\n\nll func2(ll low, int x, int y){\n    int i;\n    ll ans = INF;\n    \n    if(x < 0 || y < 0) return INF;\n    \n    REP(i,9) if(y - x == lucky(i+1) - lucky(i)){\n        if(i < low%10){\n            ll tmp = func1(low/10+1,x-lucky(i));\n            ans = min(ans,tmp*10+i);\n        } else {\n            ll tmp = func1(low/10,x-lucky(i));\n            ans = min(ans,tmp*10+i);\n        }\n    }\n    \n    return ans;\n}\n\nll func3(ll low, int x, int y){\n    ll ans = INF;\n    \n    int i;\n    for(i=0;;i++){\n        ll tmp = func2(low,x,y);\n        int j;\n        REP(j,i) tmp = min(tmp * 10 + 9, INF);\n        ans = min(ans,tmp);\n        \n        if(low == 0) return ans;\n        low /= 10;\n    }\n}\n\nll func(ll low, ll high){\n    if(high/10 - low/10 >= 2){\n        ll tmp = func(low/10,high/10);\n        return tmp * 10 + low % 10;\n    }\n    \n    ll ans = INF;\n    \n    int i,j,k;\n    \n    REP(i,10){\n        j = i + (int)(high - low);\n        if(j >= 20) continue;\n        \n        int x = lucky(low) - lucky(i);\n        int y = 0;\n        if(j >= 10) y = lucky(high) - lucky(j-10);\n        \n        bool failed = false;\n        for(k=i;k<=j;k++){\n            int tmp1 = lucky(low+k-i);\n            int tmp2 = ((k >= 10) ? (y + lucky(k-10)) : (x + lucky(k)));\n            if(tmp1 != tmp2){\n                failed = true;\n                break;\n            }\n        }\n        if(failed) continue;\n        \n        ll small = (low - i + 10) / 10;\n        if(j >= 10){\n            ll tmp = func3(small,x,y);\n            ans = min(ans,tmp*10+i);\n        } else {\n            ll tmp = func1(small,x);\n            ans = min(ans,tmp*10+i);\n        }\n    }\n    \n    return ans;\n}\n\nint main(void){\n    ll a,d;\n    cin >> a >> d;\n    ll ans = func(a,a+d-1);\n    cout << ans << endl;\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "math"
+    ],
+    "dificulty": "2700",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\E. Lucky Interval.json",
+    "editorial_link": "https://codeforces.com/blog/entry/2547",
+    "editorial": "That is only onw variation of solution, there are diffrent other, which uses same thinking.\n\nWith constraints for a and b to 107 problem can be solved using KMP algorithm: consider a string F(1)F(2)F(3)F(4)...F(3?*?107). We need to find first occurrence after index a of string F(a)F(a?+?1)F(a?+?2)...F(a?+?l?-?1). Complexity of that algorithm is O(a?+?l), obviously, that fails on time and memory. Lets try to optimize this algorithm using some facts from \"Lucky numbers theory\".\n\nSplit all number interval on block with sizes 100: [0;99], [100;199] and so on. Introduce a concept \"class of block\". Class number of a block equals to F(i?/?100), where i - any number from that block. There are 8 different block classes. There are at most 6 consecutive blocks with same class. All that can be seen using brute force.\n\nNote #1: if l???1000, then .\n\nProof: consider a string F(100?*?k)F(100?*?k?+?1)...F(100?*?k?+?99). Number of different that strings is equal to number of different classes. For example, for first class that string looks like this:\n\n00001001000000100100000010010000001001001111211211000010010000001001001111211211\n00001001000000100100\n\nfor second:\n\n11112112111111211211111121121111112112112222322322111121121111112112112222322322\n11112112111111211211\n\nand so on. According to the structure of that strings, different block (by classes) can't intersect (there'll be no match). Hence, any sequence of of consecutive blocks which contain at least two blocks of different classes will match only with the same sequence, so shift will be multiple of 100. Since there is no more than 6 consecutive blocks with the same classes, if l???1000 then, obviously, this interval will contain at least two blocks with different classes.\n\nSo, problem with l???1000 can be solved using KMP with complexity O((a?+?l)?/?C), where C equals 100, let function that do that is named Solve(l,?r).\n\nNow we need to solve problem for l?<?1000. At first, let a' is minimal number that F(a')?=?F(a), F(a'?+?1)?=?F(a?+?1), ..., F(a'?+?l?-?1)?=?F(a?+?l?-?1), a'?/?100?=?a?/?100, that can be done using brute force. Then result is the minimum of next numbers:\n\n- r?=?Solve(a',?a'?+?l?-?1);\n- Minimum r', for which r?-?r'?<??=?1000, r'?>?a, F(r')?=?F(a), F(r'?+?1)?=?F(a?+?1), ..., F(r'?+?l?-?1)?=?F(a?+?l?-?1).\n- Minimum a'' for which a''?>?a, a''?-?a???1000 and F(a'')?=?F(a), F(a''?+?1)?=?F(a?+?1), ..., F(a''?+?l?-?1)?=?F(a?+?l?-?1).\n\nThat solves the problem of some non-100-multiple shifts, but that may be a doubt. Consider input interval is in just one block with class C. Then, probably, it is better to go to block with class C?+?1, for example (397;1)???(400;1). Actually, second point solves that problem, because if block with class C?+?1 is before C (and only in that case we will choose C?+?1), then next block after current have class C?+?1. To proof this we can use this note (which can be proofed using brute forces):\n\nNote #2: if there is two consecutive block, then absolute difference between they classes is not more then 1.\n\nHence, if after block C (in which input interval is) goes block with class C?-?1, then we will go to block C before C?+?1, otherwise we will choose it (C or C?+?1).\n\nThus, problems solves by accurate analysis all moments. Complexity of solution is O((A?+?L)?/?100), my solution works 1.5 sec. and use 250 mega bytes of memory.\n\nThere are also solution which decompose of blocks with sizes depentding on l, that one work faster."
+}

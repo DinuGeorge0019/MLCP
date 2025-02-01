@@ -1,1 +1,91 @@
-{"link": "https://codeforces.com//contest/32/problem/B", "problemId": "149", "problem_idx": "B", "shortId": "32B", "contest_number": "32", "problem_submissions": {"D": [138675, 138556, 138604, 138257, 138224, 138380, 138504, 138243, 138210, 138358, 138498, 138310, 138622], "C": [138369, 138391, 138007, 138117, 138443, 138155, 138237, 138506, 138488, 138330, 138272, 138169, 138601, 138447], "B": [138178, 137922, 137712, 137803, 137765, 137945, 137759, 137778, 137848, 138032, 138051, 137886, 137925], "A": [137893, 137679, 137547, 137553, 137536, 137786, 137586, 141335, 137528, 137522, 137671, 137989, 137716, 137643], "E": [139512, 139507]}, "name": "B. Borze", "statement": "Ternary numeric notation is quite popular in Berland. To telegraph the\r\nternary number the Borze alphabet is used. Digit 0 is transmitted as , 1\r\nas and 2 as . You are to decode the Borze code, i.e. to find out the\r\nternary number given its representation in Borze alphabet.\r\n", "solutions": ["#include <cstdio>\n#include <string>\nusing namespace std;\n\nint p = 0;\nchar s[300];\nstring str;\n\nvoid main() {\n\tgets(s);\n\tstr = s;\n\tfor(str = s; p != str.size(); ++p) {\n\t\tif(p == str.find(\"--\", p)) {\n\t\t\tputchar('2');\n\t\t\t++p;\n\t\t} else if(p == str.find(\"-.\", p)) {\n\t\t\tputchar('1');\n\t\t\t++p;\n\t\t} else {\n\t\t\tputchar('0');\n\t\t}\n\t}\n}"], "input": "", "output": "", "tags": ["expression parsing", "implementation"], "dificulty": "800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/32/problem/B",
+    "problemId": "149",
+    "problem_idx": "B",
+    "shortId": "32B",
+    "contest_number": "32",
+    "problem_submissions": {
+        "D": [
+            138675,
+            138556,
+            138604,
+            138257,
+            138224,
+            138380,
+            138504,
+            138243,
+            138210,
+            138358,
+            138498,
+            138310,
+            138622
+        ],
+        "C": [
+            138369,
+            138391,
+            138007,
+            138117,
+            138443,
+            138155,
+            138237,
+            138506,
+            138488,
+            138330,
+            138272,
+            138169,
+            138601,
+            138447
+        ],
+        "B": [
+            138178,
+            137922,
+            137712,
+            137803,
+            137765,
+            137945,
+            137759,
+            137778,
+            137848,
+            138032,
+            138051,
+            137886,
+            137925
+        ],
+        "A": [
+            137893,
+            137679,
+            137547,
+            137553,
+            137536,
+            137786,
+            137586,
+            141335,
+            137528,
+            137522,
+            137671,
+            137989,
+            137716,
+            137643
+        ],
+        "E": [
+            139512,
+            139507
+        ]
+    },
+    "name": "B. Borze",
+    "statement": "Ternary numeric notation is quite popular in Berland. To telegraph the\r\nternary number the Borze alphabet is used. Digit 0 is transmitted as , 1\r\nas and 2 as . You are to decode the Borze code, i.e. to find out the\r\nternary number given its representation in Borze alphabet.\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <string>\nusing namespace std;\n\nint p = 0;\nchar s[300];\nstring str;\n\nvoid main() {\n\tgets(s);\n\tstr = s;\n\tfor(str = s; p != str.size(); ++p) {\n\t\tif(p == str.find(\"--\", p)) {\n\t\t\tputchar('2');\n\t\t\t++p;\n\t\t} else if(p == str.find(\"-.\", p)) {\n\t\t\tputchar('1');\n\t\t\t++p;\n\t\t} else {\n\t\t\tputchar('0');\n\t\t}\n\t}\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "expression parsing",
+        "implementation"
+    ],
+    "dificulty": "800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Borze.json",
+    "editorial_link": "https://codeforces.com//blog/entry/720",
+    "editorial": "Replace all occurrences of '--' with '2', '-.' with '1' and '.' with '0'.\nInitially, there was some problem with the test cases but was rectified soon."
+}

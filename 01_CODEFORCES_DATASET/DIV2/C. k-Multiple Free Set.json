@@ -1,1 +1,106 @@
-{"link": "https://codeforces.com//contest/275/problem/C", "problemId": "2638", "problem_idx": "C", "shortId": "275C", "contest_number": "275", "problem_submissions": {"B": [3157455, 3154926, 3153875, 3154128, 3168618, 3157608, 3156503, 3154125, 3154230, 3157497, 3153507, 3154970, 3156558, 3164313, 3154711, 3160366], "D": [3155607, 3157854, 3158539, 3159163, 3159177, 3160578, 3159296, 3159635, 3159357, 3161717, 3160646, 3160630, 3156779, 3160587, 3157298, 3156905, 3156998, 3157339], "C": [3153198, 3153405, 3154890, 3156142, 3152561, 3153505, 3157377, 3155829, 3154047, 3155264, 3156869, 3157904, 3152045, 3156766, 3153753, 3155134, 3158671], "A": [3151085, 3151607, 3151113, 3151479, 3168404, 3151428, 3151540, 3151199, 3151322, 3154980, 3151175, 3151327, 3151992, 3151151, 3151487, 3151102, 3151305, 3160818], "E": [3164302]}, "name": "C. k-Multiple Free Set", "statement": "A -multiple free set is a set of integers where there is no pair of\r\nintegers where one is equal to another integer multiplied by . That is,\r\nthere are no two integers and from the set, such that .You\u2019re given a\r\nset of distinct positive integers. Your task is to find the size of it\u2019s\r\nlargest -multiple free subset.\r\n", "solutions": ["#include <iostream>\n#include <cstdio>\n#include <cstring>\n#include <algorithm>\n#include <cmath>\n#include <map>\n#include <queue>\n#include <vector>\n#include <cstdlib>\n#include <functional>\n#include <string>\n#define N 100010\nusing namespace std;\nint a[N];\nmap<int,int>vis;\nint main()\n{\n    int n,k;\n    scanf(\"%d%d\",&n,&k);\n    for(int i=1;i<=n;i++)\n     scanf(\"%d\",&a[i]);\n    sort(a+1,a+n+1);\n    int ans=0;\n    for(int i=1;i<=n;i++)\n    {\n        if(a[i]%k==0&&vis[a[i]/k])continue;\n        vis[a[i]]=1;\n        ans++;\n    }\n    printf(\"%d\\n\",ans);\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["binary search", "greedy", "sortings"], "dificulty": "1500", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/275/problem/C",
+    "problemId": "2638",
+    "problem_idx": "C",
+    "shortId": "275C",
+    "contest_number": "275",
+    "problem_submissions": {
+        "B": [
+            3157455,
+            3154926,
+            3153875,
+            3154128,
+            3168618,
+            3157608,
+            3156503,
+            3154125,
+            3154230,
+            3157497,
+            3153507,
+            3154970,
+            3156558,
+            3164313,
+            3154711,
+            3160366
+        ],
+        "D": [
+            3155607,
+            3157854,
+            3158539,
+            3159163,
+            3159177,
+            3160578,
+            3159296,
+            3159635,
+            3159357,
+            3161717,
+            3160646,
+            3160630,
+            3156779,
+            3160587,
+            3157298,
+            3156905,
+            3156998,
+            3157339
+        ],
+        "C": [
+            3153198,
+            3153405,
+            3154890,
+            3156142,
+            3152561,
+            3153505,
+            3157377,
+            3155829,
+            3154047,
+            3155264,
+            3156869,
+            3157904,
+            3152045,
+            3156766,
+            3153753,
+            3155134,
+            3158671
+        ],
+        "A": [
+            3151085,
+            3151607,
+            3151113,
+            3151479,
+            3168404,
+            3151428,
+            3151540,
+            3151199,
+            3151322,
+            3154980,
+            3151175,
+            3151327,
+            3151992,
+            3151151,
+            3151487,
+            3151102,
+            3151305,
+            3160818
+        ],
+        "E": [
+            3164302
+        ]
+    },
+    "name": "C. k-Multiple Free Set",
+    "statement": "A -multiple free set is a set of integers where there is no pair of\r\nintegers where one is equal to another integer multiplied by . That is,\r\nthere are no two integers and from the set, such that .You\u2019re given a\r\nset of distinct positive integers. Your task is to find the size of it\u2019s\r\nlargest -multiple free subset.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <cstdio>\n#include <cstring>\n#include <algorithm>\n#include <cmath>\n#include <map>\n#include <queue>\n#include <vector>\n#include <cstdlib>\n#include <functional>\n#include <string>\n#define N 100010\nusing namespace std;\nint a[N];\nmap<int,int>vis;\nint main()\n{\n    int n,k;\n    scanf(\"%d%d\",&n,&k);\n    for(int i=1;i<=n;i++)\n     scanf(\"%d\",&a[i]);\n    sort(a+1,a+n+1);\n    int ans=0;\n    for(int i=1;i<=n;i++)\n    {\n        if(a[i]%k==0&&vis[a[i]/k])continue;\n        vis[a[i]]=1;\n        ans++;\n    }\n    printf(\"%d\\n\",ans);\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "binary search",
+        "greedy",
+        "sortings"
+    ],
+    "dificulty": "1500",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. k-Multiple Free Set.json",
+    "editorial_link": "https://codeforces.com//blog/entry/6759",
+    "editorial": "Consider an integer x which is divisible by k. At most one of the integers x and x?/?k can appear in the maximum k-multiple free subset. Also for any integer y at most one of the numbers y and yk appears in the answer. If you look like this you can see the input as chains of numbers so that for each chain no two adjacent elements can appear in the output. For example, If k?=?2 then 6,?12,?24,?48,?96 forms a chain. It\u0092s easy to see that from a chain of length l we can choose at most (l?+?1)?/?2 elements in the answer. So the solution would be to compute the lengths of the chains and pick as much numbers as we can from each chain. You can sort all the numbers and do binary search or similar things to find the length of chains. Here\u0092s a cute greedy solution which picks numbers greedily from the chains:\n\nFirst sort all the numbers. Also consider an empty set of integers S, which represents the output. For each integer x in the sequence, If it\u0092s not divisible by k, just pick it and insert it into S. Otherwise if it\u0092s divisible by k check if x?/?k is in S or not. If it\u0092s not in S insert x into S otherwise skip x.\n\nI\u0092d also like to note that this problem comes from an old problem in UVa Online Judge, with the same the name."
+}

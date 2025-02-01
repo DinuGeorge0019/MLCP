@@ -1,1 +1,92 @@
-{"link": "https://codeforces.com//contest/126/problem/D", "problemId": "665", "problem_idx": "D", "shortId": "126D", "contest_number": "126", "problem_submissions": {"E": [854113, 853528, 853478], "D": [848548, 848806, 851249, 849307, 848628, 849555, 849207, 847738, 847195, 849847, 847564, 850037, 851976, 851517], "C": [845968, 846820, 845605, 845826, 846897, 846767, 847633, 846234, 847958, 848103, 849052, 847621, 847480, 852294, 848150], "B": [845264, 845888, 844695, 845238, 845702, 845923, 846711, 844555, 845924, 846945, 845744, 846359, 845914, 845709], "A": [844313, 845180, 853880, 880738, 852290, 845616, 850019, 845773, 850503, 845064, 844238]}, "name": "D. Fibonacci Sums", "statement": "Fibonacci numbers have the following form: Let\u2019s consider some non-empty\r\nset , consisting of Fibonacci numbers. Let\u2019s find the sum of values of\r\nthis set\u2019s elements:Let\u2019s call the set a number \u2019s . It\u2019s easy to see\r\nthat several numbers have several decompositions into Fibonacci sum. For\r\nexample, for we have three decompositions, and for : four\r\ndecompositions.By the given number determine the number of its possible\r\ndifferent decompositions into Fibonacci sum.\r\n", "solutions": ["#include<cstdio>\n#include<cstring>\n#include<iostream>\n#include<algorithm>\nusing namespace std;\ntypedef long long ll;\n#define W 91\nll a[W];bool v[W];ll f[W][3*3];\nint main()\n{\n    a[0]=1,a[1]=2;for(int i=2;i<W;i++)a[i]=a[i-1]+a[i-2];\n    int _;scanf(\"%d\",&_);\n    while(_--)\n    {\n        ll n;scanf(\"%I64d\",&n);\n        memset(v,0,sizeof v);\n        for(int i=W-1;i>=0;i--)\n            if(n>=a[i])n-=a[i],v[i]=1;\n        memset(f,0,sizeof f);\n        f[W-1][0]=1;\n        for(int i=W-1;i;i--)\n            for(int j=0;j<9;j++)if(f[i][j])\n            {\n                int x0=j/3,x1=j-x0*3;\n                for(int k=0;k<=x1;k++)\n                {\n                    if(x1-k>=2)continue;\n                    int y0=v[i-1]+k,y1=x0+k;\n                    if(y1>2||y0>2)continue;\n                    f[i-1][y0*3+y1]+=f[i][j];\n                }\n            }\n        ll S=0;\n        for(int j=0;j<9;j++)\n        {\n            int x0=j/3,x1=j-x0*3;\n            if(x0<2&&x1<2)S+=f[0][j];\n        }\n        printf(\"%I64d\\n\",S);\n    }\n    return 0;\n}"], "input": "", "output": "", "tags": ["dp", "math"], "dificulty": "2300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/126/problem/D",
+    "problemId": "665",
+    "problem_idx": "D",
+    "shortId": "126D",
+    "contest_number": "126",
+    "problem_submissions": {
+        "E": [
+            854113,
+            853528,
+            853478
+        ],
+        "D": [
+            848548,
+            848806,
+            851249,
+            849307,
+            848628,
+            849555,
+            849207,
+            847738,
+            847195,
+            849847,
+            847564,
+            850037,
+            851976,
+            851517
+        ],
+        "C": [
+            845968,
+            846820,
+            845605,
+            845826,
+            846897,
+            846767,
+            847633,
+            846234,
+            847958,
+            848103,
+            849052,
+            847621,
+            847480,
+            852294,
+            848150
+        ],
+        "B": [
+            845264,
+            845888,
+            844695,
+            845238,
+            845702,
+            845923,
+            846711,
+            844555,
+            845924,
+            846945,
+            845744,
+            846359,
+            845914,
+            845709
+        ],
+        "A": [
+            844313,
+            845180,
+            853880,
+            880738,
+            852290,
+            845616,
+            850019,
+            845773,
+            850503,
+            845064,
+            844238
+        ]
+    },
+    "name": "D. Fibonacci Sums",
+    "statement": "Fibonacci numbers have the following form: Let\u2019s consider some non-empty\r\nset , consisting of Fibonacci numbers. Let\u2019s find the sum of values of\r\nthis set\u2019s elements:Let\u2019s call the set a number \u2019s . It\u2019s easy to see\r\nthat several numbers have several decompositions into Fibonacci sum. For\r\nexample, for we have three decompositions, and for : four\r\ndecompositions.By the given number determine the number of its possible\r\ndifferent decompositions into Fibonacci sum.\r\n",
+    "solutions": [
+        "#include<cstdio>\n#include<cstring>\n#include<iostream>\n#include<algorithm>\nusing namespace std;\ntypedef long long ll;\n#define W 91\nll a[W];bool v[W];ll f[W][3*3];\nint main()\n{\n    a[0]=1,a[1]=2;for(int i=2;i<W;i++)a[i]=a[i-1]+a[i-2];\n    int _;scanf(\"%d\",&_);\n    while(_--)\n    {\n        ll n;scanf(\"%I64d\",&n);\n        memset(v,0,sizeof v);\n        for(int i=W-1;i>=0;i--)\n            if(n>=a[i])n-=a[i],v[i]=1;\n        memset(f,0,sizeof f);\n        f[W-1][0]=1;\n        for(int i=W-1;i;i--)\n            for(int j=0;j<9;j++)if(f[i][j])\n            {\n                int x0=j/3,x1=j-x0*3;\n                for(int k=0;k<=x1;k++)\n                {\n                    if(x1-k>=2)continue;\n                    int y0=v[i-1]+k,y1=x0+k;\n                    if(y1>2||y0>2)continue;\n                    f[i-1][y0*3+y1]+=f[i][j];\n                }\n            }\n        ll S=0;\n        for(int j=0;j<9;j++)\n        {\n            int x0=j/3,x1=j-x0*3;\n            if(x0<2&&x1<2)S+=f[0][j];\n        }\n        printf(\"%I64d\\n\",S);\n    }\n    return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp",
+        "math"
+    ],
+    "dificulty": "2300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Fibonacci Sums.json",
+    "editorial_link": "https://codeforces.com/blog/entry/3140",
+    "editorial": "Let us represent a number in the Fibonacci code. You can imagine Fibonacci coding by following way: i-th bit of number corresponds to the i-th Fibonacci number. For example, 16=13+3 will be written as 100100. You can represent into this code any positive integer, for that no two neighbouring 1-bit will be present. It is possible to do it by only one way (let's define this way as canonical). In the problem you should calculate a number of ways to represent some number into Fibonacci code in that two ones can be placed in the neighbour positions.\n\nYou can easily get the canonical representation if you generate several of Fibonacci numbers (about 90) and after that try to substract all of them in the decreasing order.\n\nYou should store positions of 1-bits of canonical representation into an array s in the increasing order. You can decompose any of them into two ones. It looks like that:\n\n1000000001 // starting number;\n0110000001 // there we decompose\n0101100001 // the first \"one\"\n0101011001 // using all\n0101010111 // possible ways\n\nAfter some number of such operations you will meet next 1-bit (or the end of number). This 1-bit also can be decomposed, but it can be \"shifted\" by only one bit.\n\nLet us dp1[i] is number of ways to represent a number that consists of i last 1-bits of our number in the case that the first of 1-bits are NOT decomposed. Also let us dp2[i] is number of ways to represent a number that consists of i last 1-bits of our number in the case that the first of 1-bits are decomposed.\n\nYou can easily recaclulate this dp following way\n\ndp1[0]?=?1,?dp2[0]?=?0\ndp1[i]?=?dp1[i?-?1]?+?dp2[i?-?1]\ndp2[i]?=?dp1[i?-?1]?*?[(s[i]?-?s[i?-?1]?-?1)?/?2]?+?dp2[i?-?1]?*?[(s[i]?-?s[i?-?1])?/?2]\nwhere [x] is rounding down.\n\nAnswer will be dp1[k]?+?dp2[k], where k is total number of 1-bits in the canonical representation. So, we have  solution for one test."
+}

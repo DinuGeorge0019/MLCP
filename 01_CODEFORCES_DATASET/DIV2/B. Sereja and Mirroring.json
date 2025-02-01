@@ -1,1 +1,97 @@
-{"link": "https://codeforces.com//contest/426/problem/B", "problemId": "8913", "problem_idx": "B", "shortId": "426B", "contest_number": "426", "problem_submissions": {"E": [6493538, 6491838, 6493027, 6494051, 6499920, 6504072], "D": [6491367, 6511214, 6496120, 6499841, 6499642], "C": [6488726, 6487305, 6488549, 6488977, 6490807, 6486792, 6488066, 6488017, 6488383, 6488717, 6486820, 6488841, 6488907, 6489033, 6488862, 6489617, 6488025, 6489534], "B": [6486631, 6485614, 6486926, 6487002, 6486070, 6488206, 6486378, 6487321, 6486952, 6486486, 6488476, 6486755, 6486672, 6486770, 6487441, 6489108, 6486423], "A": [6485786, 6485054, 6485467, 6485286, 6485150, 6488483, 6485397, 6485449, 6485299, 6485065, 6487774, 6485399, 6485100, 6485470, 6485640, 6485878, 6485186]}, "name": "B. Sereja and Mirroring", "statement": "Let\u2019s assume that we are given a matrix of size , let\u2019s determine the\r\noperation of mirroring matrix . The mirroring of matrix is a matrix\r\nwhich has the following properties: the upper half of matrix (rows with\r\nnumbers from to ) exactly matches ; the lower half of matrix (rows with\r\nnumbers from to ) is symmetric to the upper one; the symmetry line is\r\nthe line that separates two halves (the line that goes in the middle,\r\nbetween rows and ). Sereja has an matrix . He wants to find such matrix\r\n, that it can be transformed into matrix , if we\u2019ll perform on it\r\n(possibly zero) mirrorings. What minimum number of rows can such matrix\r\ncontain?\r\n", "solutions": ["#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <queue>\n\nusing namespace::std;\n\nint n,m;\nint a[1005][1005];\n\nint main(){\n    scanf(\"%d %d\",&n,&m);\n    for(int i=1;i<=n;i++){\n        for(int j=1;j<=m;j++)\n            scanf(\"%d\",&a[i][j]);\n    }\n    while(n%2==0){\n        int n1=n/2;\n        bool chk=true;\n        for(int i=1;i<=n1;i++){\n            int i1=n-i+1;\n            for(int j=1;j<=m;j++) chk&=a[i][j]==a[i1][j];\n        }\n        if(!chk) break;\n        n=n1;\n    }\n    printf(\"%d\",n);\n    return 0;\n}"], "input": "", "output": "", "tags": ["implementation"], "dificulty": "1300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/426/problem/B",
+    "problemId": "8913",
+    "problem_idx": "B",
+    "shortId": "426B",
+    "contest_number": "426",
+    "problem_submissions": {
+        "E": [
+            6493538,
+            6491838,
+            6493027,
+            6494051,
+            6499920,
+            6504072
+        ],
+        "D": [
+            6491367,
+            6511214,
+            6496120,
+            6499841,
+            6499642
+        ],
+        "C": [
+            6488726,
+            6487305,
+            6488549,
+            6488977,
+            6490807,
+            6486792,
+            6488066,
+            6488017,
+            6488383,
+            6488717,
+            6486820,
+            6488841,
+            6488907,
+            6489033,
+            6488862,
+            6489617,
+            6488025,
+            6489534
+        ],
+        "B": [
+            6486631,
+            6485614,
+            6486926,
+            6487002,
+            6486070,
+            6488206,
+            6486378,
+            6487321,
+            6486952,
+            6486486,
+            6488476,
+            6486755,
+            6486672,
+            6486770,
+            6487441,
+            6489108,
+            6486423
+        ],
+        "A": [
+            6485786,
+            6485054,
+            6485467,
+            6485286,
+            6485150,
+            6488483,
+            6485397,
+            6485449,
+            6485299,
+            6485065,
+            6487774,
+            6485399,
+            6485100,
+            6485470,
+            6485640,
+            6485878,
+            6485186
+        ]
+    },
+    "name": "B. Sereja and Mirroring",
+    "statement": "Let\u2019s assume that we are given a matrix of size , let\u2019s determine the\r\noperation of mirroring matrix . The mirroring of matrix is a matrix\r\nwhich has the following properties: the upper half of matrix (rows with\r\nnumbers from to ) exactly matches ; the lower half of matrix (rows with\r\nnumbers from to ) is symmetric to the upper one; the symmetry line is\r\nthe line that separates two halves (the line that goes in the middle,\r\nbetween rows and ). Sereja has an matrix . He wants to find such matrix\r\n, that it can be transformed into matrix , if we\u2019ll perform on it\r\n(possibly zero) mirrorings. What minimum number of rows can such matrix\r\ncontain?\r\n",
+    "solutions": [
+        "#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <queue>\n\nusing namespace::std;\n\nint n,m;\nint a[1005][1005];\n\nint main(){\n    scanf(\"%d %d\",&n,&m);\n    for(int i=1;i<=n;i++){\n        for(int j=1;j<=m;j++)\n            scanf(\"%d\",&a[i][j]);\n    }\n    while(n%2==0){\n        int n1=n/2;\n        bool chk=true;\n        for(int i=1;i<=n1;i++){\n            int i1=n-i+1;\n            for(int j=1;j<=m;j++) chk&=a[i][j]==a[i1][j];\n        }\n        if(!chk) break;\n        n=n1;\n    }\n    printf(\"%d\",n);\n    return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation"
+    ],
+    "dificulty": "1300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Sereja and Mirroring.json",
+    "editorial_link": "https://codeforces.com//blog/entry/11998",
+    "editorial": "Lets solve problem from another side. We will try to cut of matix as\r\nmany times as we can. Cut means operation, reversed to operation\r\ndescribed in statement. To check, can we cut matrix we need to check\r\nfollowing conditions:1). 2). for all .\r\n"
+}

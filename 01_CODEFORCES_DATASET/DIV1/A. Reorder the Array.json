@@ -1,1 +1,92 @@
-{"link": "https://codeforces.com//contest/1007/problem/A", "problemId": "197246", "problem_idx": "A", "shortId": "1007A", "contest_number": "1007", "problem_submissions": {"C": [40289014, 40311007, 40303376, 40289853, 40282836, 40298460, 40292416, 40291392, 40315809, 40295182, 43029830], "B": [40273384, 40274250, 40291551, 40287008, 40280350, 40301243, 40277597, 40277856, 40278440, 40276236, 40280080, 40280290, 40278003, 40280632, 40280737, 40278002], "A": [40264928, 40264790, 40264714, 40264612, 40266456, 40265453, 40267936, 40264621, 40264617, 40264727, 40264905, 40264738, 40265555, 40264686, 40264608, 40264865, 40264835, 40265293], "D": [40284510, 40287759, 40291268, 62534541, 40294556, 40301360], "E": [54819990, 54819956, 47314793]}, "name": "A. Reorder the Array", "statement": "You are given an array of integers. Vasya can permute (change order) its\r\nintegers. He wants to do it so that as many as possible integers will\r\nbecome on a place where a smaller integer used to stand. Help Vasya find\r\nthe maximal number of such integers.For instance, if we are given an\r\narray [10, 20, 30, 40], we can permute it so that it becomes [20, 40,\r\n10, 30]. Then on the first and the second positions the integers became\r\nlarger (20>10, 40>20) and did not on the third and the fourth, so for\r\nthis permutation, the number that Vasya wants to maximize equals 2. Read\r\nthe note for the first example, there is one more demonstrative test\r\ncase.Help Vasya to permute integers in such way that the number of\r\npositions in a new array, where integers are greater than in the\r\noriginal one, is maximal.\r\n", "solutions": ["#include <bits/stdc++.h>\n\nusing namespace std;\nusing uint = unsigned int;\nusing ll = long long;\nusing ull = unsigned long long;\nconstexpr ll TEN(int n) { return (n==0) ? 1 : 10*TEN(n-1); }\ntemplate<class T> using V = vector<T>;\ntemplate<class T> using VV = V<V<T>>;\n\ntemplate<class T> ostream& operator<<(ostream& os, const V<T> &v) {\n    cout << \"[\";\n    for (auto p: v) cout << p << \", \";\n    cout << \"]\";\n    return os;\n}\n\nint main() {\n    cin.tie(0);\n    ios::sync_with_stdio(false);\n    cout << setprecision(20) << fixed;\n\n    int n;\n    cin >> n;\n    V<int> v(n);\n    for (int i = 0; i < n; i++) cin >> v[i];\n    sort(begin(v), end(v));\n    V<int> w = v;\n\n    int ans = 0;\n    while (v.size()) {\n        int d = v.back(); v.pop_back();\n        while (w.size() && w.back() >= d) w.pop_back();\n        if (!w.size()) break;\n        ans++;\n        w.pop_back();\n    }\n    cout << ans << endl;\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["combinatorics", "data structures", "math", "sortings", "two pointers"], "dificulty": "1300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/1007/problem/A",
+    "problemId": "197246",
+    "problem_idx": "A",
+    "shortId": "1007A",
+    "contest_number": "1007",
+    "problem_submissions": {
+        "C": [
+            40289014,
+            40311007,
+            40303376,
+            40289853,
+            40282836,
+            40298460,
+            40292416,
+            40291392,
+            40315809,
+            40295182,
+            43029830
+        ],
+        "B": [
+            40273384,
+            40274250,
+            40291551,
+            40287008,
+            40280350,
+            40301243,
+            40277597,
+            40277856,
+            40278440,
+            40276236,
+            40280080,
+            40280290,
+            40278003,
+            40280632,
+            40280737,
+            40278002
+        ],
+        "A": [
+            40264928,
+            40264790,
+            40264714,
+            40264612,
+            40266456,
+            40265453,
+            40267936,
+            40264621,
+            40264617,
+            40264727,
+            40264905,
+            40264738,
+            40265555,
+            40264686,
+            40264608,
+            40264865,
+            40264835,
+            40265293
+        ],
+        "D": [
+            40284510,
+            40287759,
+            40291268,
+            62534541,
+            40294556,
+            40301360
+        ],
+        "E": [
+            54819990,
+            54819956,
+            47314793
+        ]
+    },
+    "name": "A. Reorder the Array",
+    "statement": "You are given an array of integers. Vasya can permute (change order) its\r\nintegers. He wants to do it so that as many as possible integers will\r\nbecome on a place where a smaller integer used to stand. Help Vasya find\r\nthe maximal number of such integers.For instance, if we are given an\r\narray [10, 20, 30, 40], we can permute it so that it becomes [20, 40,\r\n10, 30]. Then on the first and the second positions the integers became\r\nlarger (20>10, 40>20) and did not on the third and the fourth, so for\r\nthis permutation, the number that Vasya wants to maximize equals 2. Read\r\nthe note for the first example, there is one more demonstrative test\r\ncase.Help Vasya to permute integers in such way that the number of\r\npositions in a new array, where integers are greater than in the\r\noriginal one, is maximal.\r\n",
+    "solutions": [
+        "#include <bits/stdc++.h>\n\nusing namespace std;\nusing uint = unsigned int;\nusing ll = long long;\nusing ull = unsigned long long;\nconstexpr ll TEN(int n) { return (n==0) ? 1 : 10*TEN(n-1); }\ntemplate<class T> using V = vector<T>;\ntemplate<class T> using VV = V<V<T>>;\n\ntemplate<class T> ostream& operator<<(ostream& os, const V<T> &v) {\n    cout << \"[\";\n    for (auto p: v) cout << p << \", \";\n    cout << \"]\";\n    return os;\n}\n\nint main() {\n    cin.tie(0);\n    ios::sync_with_stdio(false);\n    cout << setprecision(20) << fixed;\n\n    int n;\n    cin >> n;\n    V<int> v(n);\n    for (int i = 0; i < n; i++) cin >> v[i];\n    sort(begin(v), end(v));\n    V<int> w = v;\n\n    int ans = 0;\n    while (v.size()) {\n        int d = v.back(); v.pop_back();\n        while (w.size() && w.back() >= d) w.pop_back();\n        if (!w.size()) break;\n        ans++;\n        w.pop_back();\n    }\n    cout << ans << endl;\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "combinatorics",
+        "data structures",
+        "math",
+        "sortings",
+        "two pointers"
+    ],
+    "dificulty": "1300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Reorder the Array.json",
+    "editorial_link": "https://codeforces.com//blog/entry/60572",
+    "editorial": "The answer is minus maximal number of equal elements.Let the maximal\r\nnumber of equals be . Let\u00e2\u0080\u0099s proove that is reachable. It\u00e2\u0080\u0099s clear that\r\nfor every permutation of the array the answer will be the same, so let\u00e2\u0080\u0099s\r\nsort the array in non-decreasing order. Now we should just make a left\r\nshift on . After it the right elements will move to a position of a\r\nsmaller element.Now let\u00e2\u0080\u0099s proove that the answer is no more than . Let\u00e2\u0080\u0099s\r\nconsider some permutation. It\u00e2\u0080\u0099s known that every permutation breaks into\r\ncycles. Let\u00e2\u0080\u0099s look at two occurences of the same number in the same\r\ncycle. Then there is at least one number between them which will move on\r\na postion of a non-smaller element. Even if it the same occurence and\r\neven if the length of the cycle is , we can say that for every occurence\r\nof this number there is at least one number which moves on a postion of\r\na non-smaller one. So if some number occurs times, there are at least\r\nbad positions and therefore no more than good positions.To count the\r\nnumber of equals you can, for instance, use .\r\n"
+}

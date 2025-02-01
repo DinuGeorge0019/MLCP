@@ -1,1 +1,103 @@
-{"link": "https://codeforces.com//contest/14/problem/B", "problemId": "63", "problem_idx": "B", "shortId": "14B", "contest_number": "14", "problem_submissions": {"E": [62192, 62594, 62287, 61971, 63187, 62768, 63056, 63225, 62267, 62557, 62780, 61993, 62626], "D": [61970, 62027, 62458, 62850, 62826, 62538, 62467, 62772, 62917, 62832, 63108, 62975, 63625, 62539], "C": [61574, 61559, 61851, 61582, 61766, 61317, 61719, 62215, 62454, 61795, 62487, 63175, 61560, 61903], "B": [61265, 61141, 61609, 61379, 61308, 61111, 61382, 61412, 61201, 61434, 62041, 61107, 61138, 61353], "A": [60974, 60976, 61243, 61277, 61025, 61008, 61112, 61102, 61052, 61126, 61656, 60978, 60966, 61057]}, "name": "B. Young Photographer", "statement": "Among other things, Bob is keen on photography. Especially he likes to\r\ntake pictures of sportsmen. That was the reason why he placed himself in\r\nposition of a long straight racetrack and got ready to take pictures.\r\nBut the problem was that not all the runners passed him. The total\r\namount of sportsmen, training at that racetrack, equals . And each of\r\nthem regularly runs distances within a particular segment of the\r\nracetrack, which is the same for each sportsman. For example, the first\r\nsportsman runs from position to position , the second from to What is\r\nthe minimum distance that Bob should move to have a chance to take\r\npictures of each sportsman? Bob can take a picture of a sportsman, if he\r\nstands within the segment that this sportsman covers on the racetrack.\r\n", "solutions": ["#include<algorithm>\n#include<iostream>\n#include<iomanip>\n#include<cstring>\n#include<vector>\n#include<string>\n#include<cmath>\nusing namespace std;\n\nint n , L[1001] , R[1001] , now;\n\nbool check(int t)\n{\n    for(int i = 1 ; i <= n ; i++)\n        if(L[i] > t || R[i] < t)\n            return false;\n    return true;\n}\n\nint main()\n{\n    ios::sync_with_stdio(false);\n    while(cin>>n>>now)\n    {\n        for(int i = 1 ; i <= n ; i++)\n        {\n            cin>>L[i]>>R[i];\n            if(L[i] > R[i])\n                swap(L[i] , R[i]);\n        }\n        int d = 10000;\n        for(int i = 0 ; i <= 1000 ; i++)\n            if(check(i))\n            {\n                d = min(d , abs(now - i));\n            }\n        if(d == 10000)\n            cout<<-1<<endl;\n        else\n            cout<<d<<endl;\n    }\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["implementation"], "dificulty": "1000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/14/problem/B",
+    "problemId": "63",
+    "problem_idx": "B",
+    "shortId": "14B",
+    "contest_number": "14",
+    "problem_submissions": {
+        "E": [
+            62192,
+            62594,
+            62287,
+            61971,
+            63187,
+            62768,
+            63056,
+            63225,
+            62267,
+            62557,
+            62780,
+            61993,
+            62626
+        ],
+        "D": [
+            61970,
+            62027,
+            62458,
+            62850,
+            62826,
+            62538,
+            62467,
+            62772,
+            62917,
+            62832,
+            63108,
+            62975,
+            63625,
+            62539
+        ],
+        "C": [
+            61574,
+            61559,
+            61851,
+            61582,
+            61766,
+            61317,
+            61719,
+            62215,
+            62454,
+            61795,
+            62487,
+            63175,
+            61560,
+            61903
+        ],
+        "B": [
+            61265,
+            61141,
+            61609,
+            61379,
+            61308,
+            61111,
+            61382,
+            61412,
+            61201,
+            61434,
+            62041,
+            61107,
+            61138,
+            61353
+        ],
+        "A": [
+            60974,
+            60976,
+            61243,
+            61277,
+            61025,
+            61008,
+            61112,
+            61102,
+            61052,
+            61126,
+            61656,
+            60978,
+            60966,
+            61057
+        ]
+    },
+    "name": "B. Young Photographer",
+    "statement": "Among other things, Bob is keen on photography. Especially he likes to\r\ntake pictures of sportsmen. That was the reason why he placed himself in\r\nposition of a long straight racetrack and got ready to take pictures.\r\nBut the problem was that not all the runners passed him. The total\r\namount of sportsmen, training at that racetrack, equals . And each of\r\nthem regularly runs distances within a particular segment of the\r\nracetrack, which is the same for each sportsman. For example, the first\r\nsportsman runs from position to position , the second from to What is\r\nthe minimum distance that Bob should move to have a chance to take\r\npictures of each sportsman? Bob can take a picture of a sportsman, if he\r\nstands within the segment that this sportsman covers on the racetrack.\r\n",
+    "solutions": [
+        "#include<algorithm>\n#include<iostream>\n#include<iomanip>\n#include<cstring>\n#include<vector>\n#include<string>\n#include<cmath>\nusing namespace std;\n\nint n , L[1001] , R[1001] , now;\n\nbool check(int t)\n{\n    for(int i = 1 ; i <= n ; i++)\n        if(L[i] > t || R[i] < t)\n            return false;\n    return true;\n}\n\nint main()\n{\n    ios::sync_with_stdio(false);\n    while(cin>>n>>now)\n    {\n        for(int i = 1 ; i <= n ; i++)\n        {\n            cin>>L[i]>>R[i];\n            if(L[i] > R[i])\n                swap(L[i] , R[i]);\n        }\n        int d = 10000;\n        for(int i = 0 ; i <= 1000 ; i++)\n            if(check(i))\n            {\n                d = min(d , abs(now - i));\n            }\n        if(d == 10000)\n            cout<<-1<<endl;\n        else\n            cout<<d<<endl;\n    }\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation"
+    ],
+    "dificulty": "1000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Young Photographer.json",
+    "editorial_link": "https://codeforces.com//blog/entry/389",
+    "editorial": "First we find the intersection of all segments. To do this, denote by m the rightmost of left ends of the segments and denote by M the leftmost of right ends of the segments. The intersection of the segments is [m,M] (or empty set if m>M). Now determine the nearest point from this segment. If x0?<?m, it's m, and the answer is m?-?x0. If x0?>?M, it's M, and the answer is x0?-?M. If , it's x0, and the answer is 0. If m>M, then the answer is -1."
+}

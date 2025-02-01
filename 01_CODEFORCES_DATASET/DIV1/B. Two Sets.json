@@ -1,1 +1,96 @@
-{"link": "https://codeforces.com//contest/468/problem/B", "problemId": "13935", "problem_idx": "B", "shortId": "468B", "contest_number": "468", "problem_submissions": {"B": [7871506, 7871511, 7872060, 7872742, 7871156, 7871190, 7873292, 7877835, 7874498, 7874530, 7873260, 7871798, 7873431, 7880646, 7874764, 7872991, 7872224, 7874914, 7872816, 7873434], "A": [7869312, 7868480, 7868920, 7869884, 7868194, 7868219, 7869275, 7872981, 7868801, 7869110, 7869014, 7868639, 7874076, 7868501, 7869672, 7868999, 7869364, 7868817, 7869566, 7868775], "C": [7874970, 7875437, 7876233, 7877737, 7878511, 7880116, 7875038, 7877328, 7876648, 7878979, 7879987, 7876686, 7878460, 7880319, 7881048, 7879895, 7881839], "D": [7884795, 7885524, 7879880]}, "name": "B. Two Sets", "statement": "Little X has distinct integers: . He wants to divide all of them into\r\ntwo sets and . The following two conditions must be satisfied: If number\r\nbelongs to set , then number must also belong to set . If number belongs\r\nto set , then number must also belong to set . Help Little X divide the\r\nnumbers into two sets or determine that it\u2019s impossible.\r\n", "solutions": ["//#include <iostream>\n#include <fstream>\n#include <vector>\n#include <set>\n#include <map>\n#include <cstring>\n#include <string>\n#include <cmath>\n#include <cassert>\n#include <ctime>\n#include <algorithm>\n#include <sstream>\n#include <list>\n#include <queue>\n#include <deque>\n#include <stack>\n#include <cstdlib>\n#include <cstdio>\n#include <iterator>\n#include <functional>\n#include <bitset>\n#define mp make_pair\n#define pb push_back\n\n#ifdef LOCAL\n#define eprintf(...) fprintf(stderr,__VA_ARGS__)\n#else\n#define eprintf(...)\n#endif\n\n#define TIMESTAMP(x) eprintf(\"[\"#x\"] Time : %.3lf s.\\n\", clock()*1.0/CLOCKS_PER_SEC)\n#define TIMESTAMPf(x,...) eprintf(\"[\" x \"] Time : %.3lf s.\\n\", __VA_ARGS__, clock()*1.0/CLOCKS_PER_SEC)\n\n#if ( ( _WIN32 || __WIN32__ ) && __cplusplus < 201103L)\n    #define LLD \"%I64d\"\n#else\n    #define LLD \"%lld\"\n#endif\n\nusing namespace std;\n\n#define TASKNAME \"B\"\n\n#ifdef LOCAL\nstatic struct __timestamper {\n    string what;\n    __timestamper(const char* what) : what(what){};\n    __timestamper(const string& what) : what(what){};\n    ~__timestamper(){\n        TIMESTAMPf(\"%s\", what.data());\n    }\n} __TIMESTAMPER(\"end\");\n#else \nstruct __timestamper {};\n#endif\n\ntypedef long long ll;\ntypedef long double ld;\n\n\n\nconst int MAXN = 110000;\nint p[MAXN];\nint can[2][MAXN];\n\nint get(int a) {\n    if (a == p[a]) return a;\n    return p[a] = get(p[a]);\n}\n\n\nvoid join(int a, int b) {\n    a = get(a);\n    b = get(b);\n    p[a] = b;\n    can[0][b] &= can[0][a];\n    can[1][b] &= can[1][a];\n}\n\n\nint main(){\n  #ifdef LOCAL\n    assert(freopen(TASKNAME\".in\",\"r\",stdin));\n    assert(freopen(TASKNAME\".out\",\"w\",stdout));\n  #endif\n    int n, a, b;\n    scanf(\"%d%d%d\",&n,&a,&b);\n    vector<pair<int,int>> v(n);\n    for (int i = 0; i < (int)v.size(); i++) \n        scanf(\"%d\",&v[i].first), v[i].second = i;\n\n    for (int i = 0; i < n; i++)\n        p[i] = i, can[0][i] = can[1][i] = 1;\n\n    sort(v.begin(), v.end());\n\n    for (int i = 0; i < (int)v.size(); i++) {\n        int x = v[i].first;\n        {\n        int id = lower_bound(v.begin(), v.end(), mp(a - x, -1)) - v.begin();\n        if (id < (int)v.size() && v[id].first == a - x)\n            join(v[i].second, v[id].second);\n        else\n            can[0][get(v[i].second)] = 0;\n        }\n        {\n        int id = lower_bound(v.begin(), v.end(), mp(b - x, -1))  - v.begin();\n        if (id < (int)v.size() && v[id].first == b - x)\n            join(v[i].second, v[id].second);\n        else\n            can[1][get(v[i].second)] = 0;\n        }\n    }\n\n    for (int i = 0; i < n; i++)\n        if (!can[0][i] && !can[1][i] && p[i] == i) {\n            printf(\"NO\\n\");\n            return 0;\n        }\n\n    printf(\"YES\\n\");\n    for (int i = 0; i < n; i++)\n        printf(\"%d%c\", can[1][get(i)], \" \\n\"[i==n-1]);\n\n      \n    return 0;\n}"], "input": "", "output": "", "tags": ["2-sat", "dfs and similar", "dsu", "graph matchings", "greedy"], "dificulty": "2000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/468/problem/B",
+    "problemId": "13935",
+    "problem_idx": "B",
+    "shortId": "468B",
+    "contest_number": "468",
+    "problem_submissions": {
+        "B": [
+            7871506,
+            7871511,
+            7872060,
+            7872742,
+            7871156,
+            7871190,
+            7873292,
+            7877835,
+            7874498,
+            7874530,
+            7873260,
+            7871798,
+            7873431,
+            7880646,
+            7874764,
+            7872991,
+            7872224,
+            7874914,
+            7872816,
+            7873434
+        ],
+        "A": [
+            7869312,
+            7868480,
+            7868920,
+            7869884,
+            7868194,
+            7868219,
+            7869275,
+            7872981,
+            7868801,
+            7869110,
+            7869014,
+            7868639,
+            7874076,
+            7868501,
+            7869672,
+            7868999,
+            7869364,
+            7868817,
+            7869566,
+            7868775
+        ],
+        "C": [
+            7874970,
+            7875437,
+            7876233,
+            7877737,
+            7878511,
+            7880116,
+            7875038,
+            7877328,
+            7876648,
+            7878979,
+            7879987,
+            7876686,
+            7878460,
+            7880319,
+            7881048,
+            7879895,
+            7881839
+        ],
+        "D": [
+            7884795,
+            7885524,
+            7879880
+        ]
+    },
+    "name": "B. Two Sets",
+    "statement": "Little X has distinct integers: . He wants to divide all of them into\r\ntwo sets and . The following two conditions must be satisfied: If number\r\nbelongs to set , then number must also belong to set . If number belongs\r\nto set , then number must also belong to set . Help Little X divide the\r\nnumbers into two sets or determine that it\u2019s impossible.\r\n",
+    "solutions": [
+        "//#include <iostream>\n#include <fstream>\n#include <vector>\n#include <set>\n#include <map>\n#include <cstring>\n#include <string>\n#include <cmath>\n#include <cassert>\n#include <ctime>\n#include <algorithm>\n#include <sstream>\n#include <list>\n#include <queue>\n#include <deque>\n#include <stack>\n#include <cstdlib>\n#include <cstdio>\n#include <iterator>\n#include <functional>\n#include <bitset>\n#define mp make_pair\n#define pb push_back\n\n#ifdef LOCAL\n#define eprintf(...) fprintf(stderr,__VA_ARGS__)\n#else\n#define eprintf(...)\n#endif\n\n#define TIMESTAMP(x) eprintf(\"[\"#x\"] Time : %.3lf s.\\n\", clock()*1.0/CLOCKS_PER_SEC)\n#define TIMESTAMPf(x,...) eprintf(\"[\" x \"] Time : %.3lf s.\\n\", __VA_ARGS__, clock()*1.0/CLOCKS_PER_SEC)\n\n#if ( ( _WIN32 || __WIN32__ ) && __cplusplus < 201103L)\n    #define LLD \"%I64d\"\n#else\n    #define LLD \"%lld\"\n#endif\n\nusing namespace std;\n\n#define TASKNAME \"B\"\n\n#ifdef LOCAL\nstatic struct __timestamper {\n    string what;\n    __timestamper(const char* what) : what(what){};\n    __timestamper(const string& what) : what(what){};\n    ~__timestamper(){\n        TIMESTAMPf(\"%s\", what.data());\n    }\n} __TIMESTAMPER(\"end\");\n#else \nstruct __timestamper {};\n#endif\n\ntypedef long long ll;\ntypedef long double ld;\n\n\n\nconst int MAXN = 110000;\nint p[MAXN];\nint can[2][MAXN];\n\nint get(int a) {\n    if (a == p[a]) return a;\n    return p[a] = get(p[a]);\n}\n\n\nvoid join(int a, int b) {\n    a = get(a);\n    b = get(b);\n    p[a] = b;\n    can[0][b] &= can[0][a];\n    can[1][b] &= can[1][a];\n}\n\n\nint main(){\n  #ifdef LOCAL\n    assert(freopen(TASKNAME\".in\",\"r\",stdin));\n    assert(freopen(TASKNAME\".out\",\"w\",stdout));\n  #endif\n    int n, a, b;\n    scanf(\"%d%d%d\",&n,&a,&b);\n    vector<pair<int,int>> v(n);\n    for (int i = 0; i < (int)v.size(); i++) \n        scanf(\"%d\",&v[i].first), v[i].second = i;\n\n    for (int i = 0; i < n; i++)\n        p[i] = i, can[0][i] = can[1][i] = 1;\n\n    sort(v.begin(), v.end());\n\n    for (int i = 0; i < (int)v.size(); i++) {\n        int x = v[i].first;\n        {\n        int id = lower_bound(v.begin(), v.end(), mp(a - x, -1)) - v.begin();\n        if (id < (int)v.size() && v[id].first == a - x)\n            join(v[i].second, v[id].second);\n        else\n            can[0][get(v[i].second)] = 0;\n        }\n        {\n        int id = lower_bound(v.begin(), v.end(), mp(b - x, -1))  - v.begin();\n        if (id < (int)v.size() && v[id].first == b - x)\n            join(v[i].second, v[id].second);\n        else\n            can[1][get(v[i].second)] = 0;\n        }\n    }\n\n    for (int i = 0; i < n; i++)\n        if (!can[0][i] && !can[1][i] && p[i] == i) {\n            printf(\"NO\\n\");\n            return 0;\n        }\n\n    printf(\"YES\\n\");\n    for (int i = 0; i < n; i++)\n        printf(\"%d%c\", can[1][get(i)], \" \\n\"[i==n-1]);\n\n      \n    return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "2-sat",
+        "dfs and similar",
+        "dsu",
+        "graph matchings",
+        "greedy"
+    ],
+    "dificulty": "2000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Two Sets.json",
+    "editorial_link": "https://codeforces.com/blog/entry/13896",
+    "editorial": "Solution 1: If we have number and , they should be in the same set. If ,\r\nit\u00e2\u0080\u0099s obvious that . The contraposition of it is , that means if , should\r\nin the set . Same as the number . So we can use Disjoint Set Union to\r\nmerge the number that should be in the same set. If doesn\u00e2\u0080\u0099t exist, can\r\nnot be in the set . If doesn\u00e2\u0080\u0099t exist, can not be in the set . Then check\r\nif there are any conflicts among numbers which should be in the same\r\nset. There are many other solutions to solve this problem based on the\r\nfact that should be in the same set, like greedy, BFS and 2-SAT. 7894313\r\nSolution 2: If , it\u00e2\u0080\u0099s easy to find the solution. We regards every number\r\nas a node. Every number links to number and number . The degree of every\r\nnode is at most . So this graph consists of a lot of chains and cycles,\r\nand some node may have self loop. We only need to check if the lengths\r\nof all the chains are even or the chain ends with a self loop. 7894323\r\nBonus: Prove there is no cycle in the graph described in the solution 2.\r\nDivided all the numbers from into two sets that have parameters . Can\r\nyou solved it in ?\r\n"
+}

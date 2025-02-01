@@ -1,1 +1,105 @@
-{"link": "https://codeforces.com//contest/298/problem/C", "problemId": "2856", "problem_idx": "C", "shortId": "298C", "contest_number": "298", "problem_submissions": {"C": [3570158, 3568738, 3569545, 3567890, 3567795, 3569019, 3570396, 3567853, 3569346, 3568955, 3569646, 3569940, 3571985, 3569198, 3566584, 3569693], "D": [3568096, 3570657, 3570524, 3570016, 3570399, 3570578, 3572279, 3569208, 3571015, 3570830, 3571239, 3572221, 3569761, 3572179, 3572808, 3571486], "B": [3566471, 3567469, 3566658, 3566618, 3566674, 3566985, 3566799, 3566534, 3567818, 3567371, 3567342, 3568432, 3567391, 3566870, 3566974, 3567848], "A": [3565924, 3565788, 3565272, 3565138, 3565194, 3565362, 3565614, 3565531, 3565855, 3565619, 3565475, 3565918, 3565883, 3565243, 3569485, 3566160], "E": [3577571, 3618894, 4783067, 3641979]}, "name": "C. Parity Game", "statement": "You are fishing with polar bears Alice and Bob. While waiting for the\r\nfish to bite, the polar bears get bored. They come up with a game. First\r\nAlice and Bob each writes a 01-string (strings that only contain\r\ncharacter \"\" and \"\") and . Then you try to turn into using two types of\r\noperations: Write to the end of . For example, . Remove the first\r\ncharacter of . For example, . You cannot perform this operation if is\r\nempty. You can use as many operations as you want. The problem is, is it\r\npossible to turn into ?The of a 01-string is if there is an odd number\r\nof \"\"s in the string, and otherwise.\r\n", "solutions": ["//In the Name of GOD\n#include <iostream>\n#include <vector>\n#include <cmath>\n#include <cstring>\n#include <algorithm>\n#define MOD 1000000007ll\n\nusing namespace std;\n\n\n\nint main()\n{\n\tstring s,t;\n\tint a=0,b=0;\n\tcin>>s>>t;\n\tfor(int i=0;i<s.size();i++)\n\t\tif(s[i]=='1')\n\t\t\ta++;\n\tfor(int i=0;i<t.size();i++)\n\t\tif(t[i]=='1')\n\t\t\tb++;\n\ta+=a%2;\n\tif(a>=b)\n\t\tcout<<\"YES\";\n\telse\n\t\tcout<<\"NO\";\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["combinatorics", "constructive algorithms", "math", "number theory"], "dificulty": "1700", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/298/problem/C",
+    "problemId": "2856",
+    "problem_idx": "C",
+    "shortId": "298C",
+    "contest_number": "298",
+    "problem_submissions": {
+        "C": [
+            3570158,
+            3568738,
+            3569545,
+            3567890,
+            3567795,
+            3569019,
+            3570396,
+            3567853,
+            3569346,
+            3568955,
+            3569646,
+            3569940,
+            3571985,
+            3569198,
+            3566584,
+            3569693
+        ],
+        "D": [
+            3568096,
+            3570657,
+            3570524,
+            3570016,
+            3570399,
+            3570578,
+            3572279,
+            3569208,
+            3571015,
+            3570830,
+            3571239,
+            3572221,
+            3569761,
+            3572179,
+            3572808,
+            3571486
+        ],
+        "B": [
+            3566471,
+            3567469,
+            3566658,
+            3566618,
+            3566674,
+            3566985,
+            3566799,
+            3566534,
+            3567818,
+            3567371,
+            3567342,
+            3568432,
+            3567391,
+            3566870,
+            3566974,
+            3567848
+        ],
+        "A": [
+            3565924,
+            3565788,
+            3565272,
+            3565138,
+            3565194,
+            3565362,
+            3565614,
+            3565531,
+            3565855,
+            3565619,
+            3565475,
+            3565918,
+            3565883,
+            3565243,
+            3569485,
+            3566160
+        ],
+        "E": [
+            3577571,
+            3618894,
+            4783067,
+            3641979
+        ]
+    },
+    "name": "C. Parity Game",
+    "statement": "You are fishing with polar bears Alice and Bob. While waiting for the\r\nfish to bite, the polar bears get bored. They come up with a game. First\r\nAlice and Bob each writes a 01-string (strings that only contain\r\ncharacter \"\" and \"\") and . Then you try to turn into using two types of\r\noperations: Write to the end of . For example, . Remove the first\r\ncharacter of . For example, . You cannot perform this operation if is\r\nempty. You can use as many operations as you want. The problem is, is it\r\npossible to turn into ?The of a 01-string is if there is an odd number\r\nof \"\"s in the string, and otherwise.\r\n",
+    "solutions": [
+        "//In the Name of GOD\n#include <iostream>\n#include <vector>\n#include <cmath>\n#include <cstring>\n#include <algorithm>\n#define MOD 1000000007ll\n\nusing namespace std;\n\n\n\nint main()\n{\n\tstring s,t;\n\tint a=0,b=0;\n\tcin>>s>>t;\n\tfor(int i=0;i<s.size();i++)\n\t\tif(s[i]=='1')\n\t\t\ta++;\n\tfor(int i=0;i<t.size();i++)\n\t\tif(t[i]=='1')\n\t\t\tb++;\n\ta+=a%2;\n\tif(a>=b)\n\t\tcout<<\"YES\";\n\telse\n\t\tcout<<\"NO\";\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "combinatorics",
+        "constructive algorithms",
+        "math",
+        "number theory"
+    ],
+    "dificulty": "1700",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Parity Game.json",
+    "editorial_link": "https://codeforces.com//blog/entry/7437",
+    "editorial": "Obv 1: If a has odd parity, we can apply operation 1 to increase its number of 1s by 1.\n\nObv 2: If a has even parity, its number of 1s cannot increase anymore.\n\nClaim: If the number of 1s in a is not fewer than those in b, we can always turn a to b\n\nThe idea is to make a copy of b at the right of a. Lets assume a starts with even parity. If we need a 0, simply apply operation 1. If we need a 1, keep remove from the head until we removed an 1. Notice that we never remove digits from 'new part' of a. Now the parity of a will be odd and we can apply operation 1. After that, the parity of a becomes even again, the number of 1 in the 'old part' of a decrease by 1 and we handle a 1 in b. Finally, remove the remaining old part of a and we get b.\n\nCombine all those facts, we can conclude that we can turn a into b if and only if\n\ncountOnes(a)?+?parity(countOnes(a))???countOnes(b)"
+}

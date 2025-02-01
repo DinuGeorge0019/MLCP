@@ -1,1 +1,106 @@
-{"link": "https://codeforces.com//contest/848/problem/A", "problemId": "120616", "problem_idx": "A", "shortId": "848A", "contest_number": "848", "problem_submissions": {"D": [29984461, 29984526, 29990531, 29990452, 29983235, 29986841, 30011180, 30054712, 29986436, 29991292, 29988130, 30025667], "C": [29981953, 29979998, 29991414, 29985145, 29986831, 29981161, 30023429, 30739183, 30739016, 29983074, 29985177, 29986148, 29992066, 29984922, 29985048, 30004311, 29986150, 29985850, 29985839, 29985353, 29988848], "B": [29977726, 29987077, 29983009, 29978119, 29977288, 29977302, 29978411, 29979022, 29978648, 29977708, 29980992, 29981154, 29978110, 29977941, 29980264, 29977663, 29981248, 29982355, 29978027], "A": [29975110, 29976090, 29975270, 29974910, 29974992, 29974976, 29975582, 29975367, 29976038, 29974917, 29976913, 29976388, 29974989, 29978589, 29977088, 29975038, 29977707, 29977980, 29974970], "E": [31234259]}, "name": "A. From Y to Y", "statement": "For a given unordered multiset of lowercase English letters (\"multi\"\r\nmeans that a letter may appear more than once), we treat all letters as\r\nstrings of length , and repeat the following operation times: Remove any\r\ntwo elements and from the set, and add their concatenation to the set.\r\nThe cost of such operation is defined to be , where denotes the number\r\nof times character appears in string .Given a non-negative integer ,\r\nconstruct any valid non-empty set of no more than letters, such that the\r\nminimum accumulative cost of the whole process is . It can be shown that\r\na solution always exists.\r\n", "solutions": ["#include <stdio.h>  \n#include <algorithm>  \n#include <assert.h>\n#include <bitset>\n#include <cmath>  \n#include <complex>  \n#include <deque>  \n#include <functional>  \n#include <iostream>  \n#include <limits.h>  \n#include <map>  \n#include <math.h>  \n#include <queue>  \n#include <set>  \n#include <stdlib.h>  \n#include <string.h>  \n#include <string>  \n#include <time.h>  \n#include <unordered_map>  \n#include <unordered_set>  \n#include <vector>\n\n#pragma warning(disable:4996)  \n#pragma comment(linker, \"/STACK:336777216\")  \nusing namespace std;\n\n#define mp make_pair  \n#define Fi first  \n#define Se second  \n#define pb(x) push_back(x)  \n#define szz(x) ((int)(x).size())  \n#define rep(i, n) for(int i=0;i<n;i++)  \n#define all(x) (x).begin(), (x).end()  \n#define ldb ldouble  \n\ntypedef tuple<int, int, int> t3;\ntypedef long long ll;\ntypedef unsigned long long ull;\ntypedef double db;\ntypedef long double ldb;\ntypedef pair <int, int> pii;\ntypedef pair <ll, ll> pll;\ntypedef pair <ll, int> pli;\ntypedef pair <db, db> pdd;\n\nint IT_MAX = 1 << 19;\nconst ll MOD = 1000000007;\nconst int INF = 0x3f3f3f3f;\nconst ll LL_INF = 0x3f3f3f3f3f3f3f3f;\nconst db PI = acos(-1);\nconst db ERR = 1e-10;\n\nint main() {\n\tint K, i, j;\n\tscanf(\"%d\", &K);\n\n\tif (K == 0) return !printf(\"a\\n\");\n\n\tfor (i = 0; i < 26 && K; i++) {\n\t\tfor (j = 1; j * (j - 1) / 2 <= K; j++);\n\t\tj--;\n\t\tfor (int k = 1; k <= j; k++) printf(\"%c\", 'a' + i);\n\t\tK -= j * (j - 1) / 2;\n\t}\n\treturn !printf(\"\\n\");\n}"], "input": "", "output": "", "tags": ["constructive algorithms"], "dificulty": "1600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/848/problem/A",
+    "problemId": "120616",
+    "problem_idx": "A",
+    "shortId": "848A",
+    "contest_number": "848",
+    "problem_submissions": {
+        "D": [
+            29984461,
+            29984526,
+            29990531,
+            29990452,
+            29983235,
+            29986841,
+            30011180,
+            30054712,
+            29986436,
+            29991292,
+            29988130,
+            30025667
+        ],
+        "C": [
+            29981953,
+            29979998,
+            29991414,
+            29985145,
+            29986831,
+            29981161,
+            30023429,
+            30739183,
+            30739016,
+            29983074,
+            29985177,
+            29986148,
+            29992066,
+            29984922,
+            29985048,
+            30004311,
+            29986150,
+            29985850,
+            29985839,
+            29985353,
+            29988848
+        ],
+        "B": [
+            29977726,
+            29987077,
+            29983009,
+            29978119,
+            29977288,
+            29977302,
+            29978411,
+            29979022,
+            29978648,
+            29977708,
+            29980992,
+            29981154,
+            29978110,
+            29977941,
+            29980264,
+            29977663,
+            29981248,
+            29982355,
+            29978027
+        ],
+        "A": [
+            29975110,
+            29976090,
+            29975270,
+            29974910,
+            29974992,
+            29974976,
+            29975582,
+            29975367,
+            29976038,
+            29974917,
+            29976913,
+            29976388,
+            29974989,
+            29978589,
+            29977088,
+            29975038,
+            29977707,
+            29977980,
+            29974970
+        ],
+        "E": [
+            31234259
+        ]
+    },
+    "name": "A. From Y to Y",
+    "statement": "For a given unordered multiset of lowercase English letters (\"multi\"\r\nmeans that a letter may appear more than once), we treat all letters as\r\nstrings of length , and repeat the following operation times: Remove any\r\ntwo elements and from the set, and add their concatenation to the set.\r\nThe cost of such operation is defined to be , where denotes the number\r\nof times character appears in string .Given a non-negative integer ,\r\nconstruct any valid non-empty set of no more than letters, such that the\r\nminimum accumulative cost of the whole process is . It can be shown that\r\na solution always exists.\r\n",
+    "solutions": [
+        "#include <stdio.h>  \n#include <algorithm>  \n#include <assert.h>\n#include <bitset>\n#include <cmath>  \n#include <complex>  \n#include <deque>  \n#include <functional>  \n#include <iostream>  \n#include <limits.h>  \n#include <map>  \n#include <math.h>  \n#include <queue>  \n#include <set>  \n#include <stdlib.h>  \n#include <string.h>  \n#include <string>  \n#include <time.h>  \n#include <unordered_map>  \n#include <unordered_set>  \n#include <vector>\n\n#pragma warning(disable:4996)  \n#pragma comment(linker, \"/STACK:336777216\")  \nusing namespace std;\n\n#define mp make_pair  \n#define Fi first  \n#define Se second  \n#define pb(x) push_back(x)  \n#define szz(x) ((int)(x).size())  \n#define rep(i, n) for(int i=0;i<n;i++)  \n#define all(x) (x).begin(), (x).end()  \n#define ldb ldouble  \n\ntypedef tuple<int, int, int> t3;\ntypedef long long ll;\ntypedef unsigned long long ull;\ntypedef double db;\ntypedef long double ldb;\ntypedef pair <int, int> pii;\ntypedef pair <ll, ll> pll;\ntypedef pair <ll, int> pli;\ntypedef pair <db, db> pdd;\n\nint IT_MAX = 1 << 19;\nconst ll MOD = 1000000007;\nconst int INF = 0x3f3f3f3f;\nconst ll LL_INF = 0x3f3f3f3f3f3f3f3f;\nconst db PI = acos(-1);\nconst db ERR = 1e-10;\n\nint main() {\n\tint K, i, j;\n\tscanf(\"%d\", &K);\n\n\tif (K == 0) return !printf(\"a\\n\");\n\n\tfor (i = 0; i < 26 && K; i++) {\n\t\tfor (j = 1; j * (j - 1) / 2 <= K; j++);\n\t\tj--;\n\t\tfor (int k = 1; k <= j; k++) printf(\"%c\", 'a' + i);\n\t\tK -= j * (j - 1) / 2;\n\t}\n\treturn !printf(\"\\n\");\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms"
+    ],
+    "dificulty": "1600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. From Y to Y.json",
+    "editorial_link": "https://codeforces.com//blog/entry/54233",
+    "editorial": "With several experiments, you may have found that the \"minimum cost\"\r\ndoesn\u00e2\u0080\u0099t make sense the cost is always the same no matter how the\r\ncharacters are concatenated. Precisely, the cost of the process for a\r\nmultiset of \u00e2\u0080\u0099s, \u00e2\u0080\u0099s, ... and \u00e2\u0080\u0099s, is . It\u00e2\u0080\u0099s in this form because every\r\npair of same characters will contribute to the total cost.Therefore we\r\nneed to find such so that . This can be done greedily and iteratively.\r\nEvery time we subtract the maximum possible from , and add same new\r\nletters to the set, until becomes . This can be solved by any reasonable\r\nway, say quadratic formula, binary search or brute force. Time\r\ncomplexity veries from to or any acceptable complexity, depending on the\r\nchoice of the method for finding .Of course, if a knapsack algorithm is\r\nused, it will use the minimum possible number of different letters, and\r\nworks in .\r\n"
+}

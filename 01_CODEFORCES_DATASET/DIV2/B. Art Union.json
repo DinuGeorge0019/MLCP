@@ -1,1 +1,101 @@
-{"link": "https://codeforces.com//contest/416/problem/B", "problemId": "8296", "problem_idx": "B", "shortId": "416B", "contest_number": "416", "problem_submissions": {"E": [6343446, 6342010, 6345905, 6345786, 6345780, 6345773], "D": [6339770, 6344331, 6341205, 6342895, 6343208, 6342314], "C": [6337298, 6337895, 6338062, 6340196, 6337743, 6338820, 6338400, 6338250, 6338293, 6337870, 6340982, 6339823, 6341497, 6338189, 6339580, 6337965, 6340260, 6340014], "B": [6336584, 6336919, 6336609, 6338408, 6338336, 6337856, 6337221, 6337301, 6340247, 6336851, 6339693, 6338067, 6337890, 6336878, 6337704, 6336869, 6338043, 6338578], "A": [6336344, 6336437, 6336373, 6336510, 6336806, 6336676, 6336386, 6337013, 6336347, 6337152, 6336694, 6336923, 6336396, 6336944, 6336382, 6336809, 6336583]}, "name": "B. Art Union", "statement": "A well-known art union called \"Kalevich is Alive!\" manufactures objects\r\nd\u2019art (pictures). The union consists of painters who decided to organize\r\ntheir work as follows.Each painter uses only the color that was assigned\r\nto him. The colors are distinct for all painters. Let\u2019s assume that the\r\nfirst painter uses color 1, the second one uses color 2, and so on. Each\r\npicture will contain all these colors. Adding the -th color to the -th\r\npicture takes the -th painter units of time.Order is important\r\neverywhere, so the painters\u2019 work is ordered by the following rules:\r\nEach picture is first painted by the first painter, then by the second\r\none, and so on. That is, after the -th painter finishes working on the\r\npicture, it must go to the -th painter (if ); each painter works on the\r\npictures in some order: first, he paints the first picture, then he\r\npaints the second picture and so on; each painter can simultaneously\r\nwork on at most one picture. However, the painters don\u2019t need any time\r\nto have a rest; as soon as the -th painter finishes his part of working\r\non the picture, the picture immediately becomes available to the next\r\npainter. Given that the painters start working at time 0, find for each\r\npicture the time when it is ready for sale.\r\n", "solutions": ["#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <vector>\n#include <iostream>\n#include <algorithm>\n\nusing namespace std;\n\n#define foreach(e,x) for(__typeof(x.begin()) e=x.begin(); e!=x.end(); ++e)\n\nconst int N = 100000;\n\nint n, m;\nint f[N][10];\nint g[N][10];\n\nvoid solve()\n{\n\tcin >> m >> n;\n\tfor(int i = 0; i < m; ++ i) {\n\t\tfor(int j = 0; j < n; ++ j) {\n\t\t\tscanf(\"%d\", &f[i][j]);\n\t\t}\n\t}\n\tfor(int i = 0; i < m; ++ i) {\n\t\tg[i + 1][0] = g[i][0] + f[i][0];\n\n\t\tfor(int j = 1; j < n; ++ j) {\n\t\t\tg[i + 1][j] = max(g[i + 1][j - 1] + f[i][j], g[i][j] + f[i][j]);\n\t\t}\n\n\t\tprintf(\"%d \", g[i + 1][n - 1]);\n\t}\n}\n\nint main()\n{\n\tsolve();\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["brute force", "dp", "implementation"], "dificulty": "1300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/416/problem/B",
+    "problemId": "8296",
+    "problem_idx": "B",
+    "shortId": "416B",
+    "contest_number": "416",
+    "problem_submissions": {
+        "E": [
+            6343446,
+            6342010,
+            6345905,
+            6345786,
+            6345780,
+            6345773
+        ],
+        "D": [
+            6339770,
+            6344331,
+            6341205,
+            6342895,
+            6343208,
+            6342314
+        ],
+        "C": [
+            6337298,
+            6337895,
+            6338062,
+            6340196,
+            6337743,
+            6338820,
+            6338400,
+            6338250,
+            6338293,
+            6337870,
+            6340982,
+            6339823,
+            6341497,
+            6338189,
+            6339580,
+            6337965,
+            6340260,
+            6340014
+        ],
+        "B": [
+            6336584,
+            6336919,
+            6336609,
+            6338408,
+            6338336,
+            6337856,
+            6337221,
+            6337301,
+            6340247,
+            6336851,
+            6339693,
+            6338067,
+            6337890,
+            6336878,
+            6337704,
+            6336869,
+            6338043,
+            6338578
+        ],
+        "A": [
+            6336344,
+            6336437,
+            6336373,
+            6336510,
+            6336806,
+            6336676,
+            6336386,
+            6337013,
+            6336347,
+            6337152,
+            6336694,
+            6336923,
+            6336396,
+            6336944,
+            6336382,
+            6336809,
+            6336583
+        ]
+    },
+    "name": "B. Art Union",
+    "statement": "A well-known art union called \"Kalevich is Alive!\" manufactures objects\r\nd\u2019art (pictures). The union consists of painters who decided to organize\r\ntheir work as follows.Each painter uses only the color that was assigned\r\nto him. The colors are distinct for all painters. Let\u2019s assume that the\r\nfirst painter uses color 1, the second one uses color 2, and so on. Each\r\npicture will contain all these colors. Adding the -th color to the -th\r\npicture takes the -th painter units of time.Order is important\r\neverywhere, so the painters\u2019 work is ordered by the following rules:\r\nEach picture is first painted by the first painter, then by the second\r\none, and so on. That is, after the -th painter finishes working on the\r\npicture, it must go to the -th painter (if ); each painter works on the\r\npictures in some order: first, he paints the first picture, then he\r\npaints the second picture and so on; each painter can simultaneously\r\nwork on at most one picture. However, the painters don\u2019t need any time\r\nto have a rest; as soon as the -th painter finishes his part of working\r\non the picture, the picture immediately becomes available to the next\r\npainter. Given that the painters start working at time 0, find for each\r\npicture the time when it is ready for sale.\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <vector>\n#include <iostream>\n#include <algorithm>\n\nusing namespace std;\n\n#define foreach(e,x) for(__typeof(x.begin()) e=x.begin(); e!=x.end(); ++e)\n\nconst int N = 100000;\n\nint n, m;\nint f[N][10];\nint g[N][10];\n\nvoid solve()\n{\n\tcin >> m >> n;\n\tfor(int i = 0; i < m; ++ i) {\n\t\tfor(int j = 0; j < n; ++ j) {\n\t\t\tscanf(\"%d\", &f[i][j]);\n\t\t}\n\t}\n\tfor(int i = 0; i < m; ++ i) {\n\t\tg[i + 1][0] = g[i][0] + f[i][0];\n\n\t\tfor(int j = 1; j < n; ++ j) {\n\t\t\tg[i + 1][j] = max(g[i + 1][j - 1] + f[i][j], g[i][j] + f[i][j]);\n\t\t}\n\n\t\tprintf(\"%d \", g[i + 1][n - 1]);\n\t}\n}\n\nint main()\n{\n\tsolve();\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "dp",
+        "implementation"
+    ],
+    "dificulty": "1300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Art Union.json",
+    "editorial_link": "https://codeforces.com//blog/entry/12277",
+    "editorial": "All we need is to iterate over all painters and for each painter to\r\niterate over all pictures. In the inner loop we also remember when the\r\npainter finished working on the picture to make sure that the next\r\npainter will not start working on it earlier. Submission: 6606994\r\n"
+}

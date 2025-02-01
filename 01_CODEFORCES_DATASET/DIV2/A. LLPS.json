@@ -1,1 +1,95 @@
-{"link": "https://codeforces.com//contest/202/problem/A", "problemId": "1460", "problem_idx": "A", "shortId": "202A", "contest_number": "202", "problem_submissions": {"D": [1844313, 1842311, 1841979, 1843395, 1842912, 1842950, 1842562, 1842138, 1840497, 1843444, 1843135], "E": [1843349, 1841002, 1841817, 1843089], "C": [1841155, 1839729, 1840113, 1840755, 1841271, 1841797, 1841819, 1842476, 1840829, 1842962, 1840554, 1841522, 1842232, 1841398, 1840867], "B": [1840403, 1843403, 1840044, 1839954, 1840486, 1839533, 1840191, 1840994, 1839874, 1842121], "A": [1838706, 1838919, 1839372, 1838770, 1838876, 1838669, 1839147, 1841443, 1839411, 1838689, 1838642, 1838754, 1838807, 1838635, 1838833, 1838650]}, "name": "A. LLPS", "statement": "You are given string consisting of lowercase English letters only. Find\r\nits lexicographically largest palindromic subsequence.We\u2019ll call a\r\nnon-empty string = ( ) a of string = , where is the length of string .\r\nFor example, strings \"\", \"\" and \"\" are subsequences of string \"\".String\r\n= is than string = if either > and , , ..., , or there exists such\r\nnumber (, ) that , , ..., and . Characters in the strings are compared\r\naccording to their ASCII codes. For example, string \"\" is\r\nlexicographically larger than string \"\" and string \"\" is\r\nlexicographically larger than string \"\".String = is a if it matches\r\nstring = . In other words, a string is a palindrome if it reads the same\r\nway from left to right and from right to left. For example, palindromic\r\nstrings are \"\", \"\" and \"\".\r\n", "solutions": ["#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cmath>\n#include <cctype>\n#include <ctime>\n#include <iostream>\n#include <sstream>\n#include <algorithm>\n#include <functional>\n#include <string>\n#include <vector>\n#include <queue>\n#include <stack>\n#include <map>\n#include <set>\n\nusing namespace std;\n\n#ifndef LEEWINGS_DEBUG\n#define LEEWINGS_DEBUG 0\n#endif\n\n#define debug(x) if (LEEWINGS_DEBUG) cerr << #x << \" = \" << (x) << endl\n\n#define debug_line(a, n) do {                                                \\\n    if (LEEWINGS_DEBUG) {                                                             \\\n        cerr << #a << \"[\" << #n << \"]:\" << endl;                             \\\n        for (int i = 0; i < (n); i++) cerr << (a)[i] << \" \";                 \\\n        cerr << endl;                                                        \\\n    }                                                                        \\\n} while (0)\n\n#define debug_mat(a, n, m) do {                                              \\\n    if (LEEWINGS_DEBUG) {                                                             \\\n        cerr << #a << \"[\" << #n << \"][\" << #m \"]:\" << endl;                  \\\n        for (int i = 0; i < (n); i++) {                                      \\\n            for (int j = 0; j < (m); j++) cerr << (a)[i][j] << \" \";          \\\n            cerr << endl;                                                    \\\n        }                                                                    \\\n    }                                                                        \\\n} while(0)\n\ntypedef pair<int, int> pii;\ntypedef vector<int>::const_iterator vci;\ntypedef map<int, int>::const_iterator mci;\n\nconst int INF = 0x3f3f3f3f;\nconst long long LLINF = 0x3f3f3f3f3f3f3f3fll;\nconst double DINF = 1.0/0.0f;\nconst double pi = acos(-1.0);\nconst double eps = 1e-8;\nconst int MOD = 1000000007;\n\ninline int LC(int x) { return x << 1; }\ninline int RC(int x) { return (x << 1) | 1; }\ninline bool eq0(double x) { return fabs(x) < eps; }\ninline bool eq(double x, double y) { return fabs(x - y) < eps; }\ninline bool ls(double x, double y) { return x + eps < y; }\ninline bool gr(double x, double y) { return x - eps > y; }\ninline bool greq(double x, double y) { return x + eps >= y; }\ninline bool lseq(double x, double y) { return x - eps <= y; }\ninline double fmax(double x, double y) { return gr(x, y) ? x : y; }\ninline double fmin(double x, double y) { return ls(x, y) ? x : y; }\n\ntemplate<class T> inline T sqr(T x) { return x * x; }\n\nint main()\n{\n    string s;\n    cin >> s;\n    char c = *max_element(s.begin(), s.end());\n    int cnt = count(s.begin(), s.end(), c);\n    while (cnt--) cout << c;\n    cout << endl;\n\n    return 0;\n}\n\n"], "input": "", "output": "", "tags": ["binary search", "bitmasks", "brute force", "greedy", "implementation", "strings"], "dificulty": "800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/202/problem/A",
+    "problemId": "1460",
+    "problem_idx": "A",
+    "shortId": "202A",
+    "contest_number": "202",
+    "problem_submissions": {
+        "D": [
+            1844313,
+            1842311,
+            1841979,
+            1843395,
+            1842912,
+            1842950,
+            1842562,
+            1842138,
+            1840497,
+            1843444,
+            1843135
+        ],
+        "E": [
+            1843349,
+            1841002,
+            1841817,
+            1843089
+        ],
+        "C": [
+            1841155,
+            1839729,
+            1840113,
+            1840755,
+            1841271,
+            1841797,
+            1841819,
+            1842476,
+            1840829,
+            1842962,
+            1840554,
+            1841522,
+            1842232,
+            1841398,
+            1840867
+        ],
+        "B": [
+            1840403,
+            1843403,
+            1840044,
+            1839954,
+            1840486,
+            1839533,
+            1840191,
+            1840994,
+            1839874,
+            1842121
+        ],
+        "A": [
+            1838706,
+            1838919,
+            1839372,
+            1838770,
+            1838876,
+            1838669,
+            1839147,
+            1841443,
+            1839411,
+            1838689,
+            1838642,
+            1838754,
+            1838807,
+            1838635,
+            1838833,
+            1838650
+        ]
+    },
+    "name": "A. LLPS",
+    "statement": "You are given string consisting of lowercase English letters only. Find\r\nits lexicographically largest palindromic subsequence.We\u2019ll call a\r\nnon-empty string = ( ) a of string = , where is the length of string .\r\nFor example, strings \"\", \"\" and \"\" are subsequences of string \"\".String\r\n= is than string = if either > and , , ..., , or there exists such\r\nnumber (, ) that , , ..., and . Characters in the strings are compared\r\naccording to their ASCII codes. For example, string \"\" is\r\nlexicographically larger than string \"\" and string \"\" is\r\nlexicographically larger than string \"\".String = is a if it matches\r\nstring = . In other words, a string is a palindrome if it reads the same\r\nway from left to right and from right to left. For example, palindromic\r\nstrings are \"\", \"\" and \"\".\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cmath>\n#include <cctype>\n#include <ctime>\n#include <iostream>\n#include <sstream>\n#include <algorithm>\n#include <functional>\n#include <string>\n#include <vector>\n#include <queue>\n#include <stack>\n#include <map>\n#include <set>\n\nusing namespace std;\n\n#ifndef LEEWINGS_DEBUG\n#define LEEWINGS_DEBUG 0\n#endif\n\n#define debug(x) if (LEEWINGS_DEBUG) cerr << #x << \" = \" << (x) << endl\n\n#define debug_line(a, n) do {                                                \\\n    if (LEEWINGS_DEBUG) {                                                             \\\n        cerr << #a << \"[\" << #n << \"]:\" << endl;                             \\\n        for (int i = 0; i < (n); i++) cerr << (a)[i] << \" \";                 \\\n        cerr << endl;                                                        \\\n    }                                                                        \\\n} while (0)\n\n#define debug_mat(a, n, m) do {                                              \\\n    if (LEEWINGS_DEBUG) {                                                             \\\n        cerr << #a << \"[\" << #n << \"][\" << #m \"]:\" << endl;                  \\\n        for (int i = 0; i < (n); i++) {                                      \\\n            for (int j = 0; j < (m); j++) cerr << (a)[i][j] << \" \";          \\\n            cerr << endl;                                                    \\\n        }                                                                    \\\n    }                                                                        \\\n} while(0)\n\ntypedef pair<int, int> pii;\ntypedef vector<int>::const_iterator vci;\ntypedef map<int, int>::const_iterator mci;\n\nconst int INF = 0x3f3f3f3f;\nconst long long LLINF = 0x3f3f3f3f3f3f3f3fll;\nconst double DINF = 1.0/0.0f;\nconst double pi = acos(-1.0);\nconst double eps = 1e-8;\nconst int MOD = 1000000007;\n\ninline int LC(int x) { return x << 1; }\ninline int RC(int x) { return (x << 1) | 1; }\ninline bool eq0(double x) { return fabs(x) < eps; }\ninline bool eq(double x, double y) { return fabs(x - y) < eps; }\ninline bool ls(double x, double y) { return x + eps < y; }\ninline bool gr(double x, double y) { return x - eps > y; }\ninline bool greq(double x, double y) { return x + eps >= y; }\ninline bool lseq(double x, double y) { return x - eps <= y; }\ninline double fmax(double x, double y) { return gr(x, y) ? x : y; }\ninline double fmin(double x, double y) { return ls(x, y) ? x : y; }\n\ntemplate<class T> inline T sqr(T x) { return x * x; }\n\nint main()\n{\n    string s;\n    cin >> s;\n    char c = *max_element(s.begin(), s.end());\n    int cnt = count(s.begin(), s.end(), c);\n    while (cnt--) cout << c;\n    cout << endl;\n\n    return 0;\n}\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "binary search",
+        "bitmasks",
+        "brute force",
+        "greedy",
+        "implementation",
+        "strings"
+    ],
+    "dificulty": "800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. LLPS.json",
+    "editorial_link": "https://codeforces.com/blog/entry/4808",
+    "editorial": "It's assumed that this problem can be solved just looking at the samples and without reading the statement itself :)\n\nLet's find the letter in the given string which comes last in the alphabet, denote this letter by z. If this letter occurs p times in the given string, then the answer is string a consisting of letter z repeated p times.\n\nWhy is it so? Using the definition of lexicographical comparison and the fact that z is the largest letter in the string it's easy to understand that if some other subsequence b of the given string is lexicographically larger than a, then string b should be longer than a and, moreover, a should be a prefix of b (that is, b should start with a). But string b must be a palindrome, therefore its last letter must be z. In this case string b must contain more occurrences of letter z than the original string s does, which is impossible as b is a subsequence of s.\n\nBesides that, the constraint on the length of the string was very low, so the problem could be solved using brute force. For every subsequence of the given string it's necessary to check whether it's a palindrome, and from all palindromic subsequences of s the lexicographically largest should be chosen as the answer. The complexity of such a solution is O(2n\u00b7n), where n is the length of the string (unlike the solution above with complexity O(n))."
+}

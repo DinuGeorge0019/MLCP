@@ -1,1 +1,84 @@
-{"link": "https://codeforces.com//contest/278/problem/B", "problemId": "2663", "problem_idx": "B", "shortId": "278B", "contest_number": "278", "problem_submissions": {"E": [3219867, 3221986], "D": [3213238, 3215279, 3216086, 3217208, 3217668], "C": [3211852, 3213120, 3213066, 3214325, 3215111, 3212693, 3210225, 3210914, 3210903, 3213534, 3212483, 3211475, 3213044, 3211593], "B": [3210694, 3210904, 3211477, 3211274, 3210417, 3210722, 3209006, 3209446, 3209860, 3210543, 3209941, 3210339, 3210819, 3210425], "A": [3208889, 3209118, 3208502, 3208248, 3208401, 3209996, 3208190, 3208215, 3208219, 3208450, 3208293, 3208373, 3208970, 3208304]}, "name": "B. New Problem", "statement": "Coming up with a new problem isn\u2019t as easy as many people think.\r\nSometimes it is hard enough to name it. We\u2019ll consider a title if it\r\ndoesn\u2019t occur as a substring in any titles of recent Codeforces\r\nproblems. You\u2019ve got the titles of last problems the strings, consisting\r\nof lowercase English letters. Your task is to find the shortest original\r\ntitle for the new problem. If there are multiple such titles, choose the\r\nlexicographically minimum one. Note, that title of the problem can\u2019t be\r\nan empty string.A of string (where is the length of string ) is string\r\n.String is than string , if either and , or there exists such number ,\r\nthat and . The string characters are compared by their ASCII codes.\r\n", "solutions": ["#include <vector>\n#include <string>\n#include <algorithm>\n#include <list>\n#include <set>\n#include <queue>\n#include <stack>\n#include <sstream>\n#include <numeric>\n#include <functional>\n#include <utility>\n#include <bitset>\n#include <iostream>\n#include <cmath>\n#include <map>\n#include <cstring>\n#include <cstdio>\n#include <stdint.h>\n#include <cstdarg>\n#include <cstdio>\n#include <cassert>\nusing namespace std;\n\nint n;\nchar s[100][100];\n\nbool check(char * t)\n{\n    int m = strlen(t);\n    for (int i = 0; i < n; ++ i)\n    {\n        char * tt = s[i];\n        int mm = strlen(tt);\n        for (int i = 0; i <= mm - m; ++ i)\n        {\n            bool flag = 1;\n            for (int j = 0; j < m; ++ j)\n            {\n                if (tt[i + j] != t[j])\n                    flag = 0;\n            }\n            if (flag)\n                return 0;\n        }\n    }\n    return 1;\n}\n\nint main()\n{\n    scanf(\"%d\\n\", & n);\n    for (int i = 0; i < n; ++ i)\n    {\n        scanf(\"%s\", s[i]);\n    }\n    char t[100] = {};\n    for (t[0] = 'a'; t[0] <= 'z'; ++ t[0])\n    {\n        if (check(t))\n        {\n            printf(\"%s\\n\", t);\n            return 0;\n        }\n    }\n    for (t[0] = 'a'; t[0] <= 'z'; ++ t[0])\n    for (t[1] = 'a'; t[1] <= 'z'; ++ t[1])\n    {\n        if (check(t))\n        {\n            printf(\"%s\\n\", t);\n            return 0;\n        }\n    }\n    for (t[0] = 'a'; t[0] <= 'z'; ++ t[0])\n    for (t[1] = 'a'; t[1] <= 'z'; ++ t[1])\n    for (t[2] = 'a'; t[2] <= 'z'; ++ t[2])\n    {\n        if (check(t))\n        {\n            printf(\"%s\\n\", t);\n            return 0;\n        }\n    }\n        \n}\n\n\n"], "input": "", "output": "", "tags": ["brute force", "strings"], "dificulty": "1500", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/278/problem/B",
+    "problemId": "2663",
+    "problem_idx": "B",
+    "shortId": "278B",
+    "contest_number": "278",
+    "problem_submissions": {
+        "E": [
+            3219867,
+            3221986
+        ],
+        "D": [
+            3213238,
+            3215279,
+            3216086,
+            3217208,
+            3217668
+        ],
+        "C": [
+            3211852,
+            3213120,
+            3213066,
+            3214325,
+            3215111,
+            3212693,
+            3210225,
+            3210914,
+            3210903,
+            3213534,
+            3212483,
+            3211475,
+            3213044,
+            3211593
+        ],
+        "B": [
+            3210694,
+            3210904,
+            3211477,
+            3211274,
+            3210417,
+            3210722,
+            3209006,
+            3209446,
+            3209860,
+            3210543,
+            3209941,
+            3210339,
+            3210819,
+            3210425
+        ],
+        "A": [
+            3208889,
+            3209118,
+            3208502,
+            3208248,
+            3208401,
+            3209996,
+            3208190,
+            3208215,
+            3208219,
+            3208450,
+            3208293,
+            3208373,
+            3208970,
+            3208304
+        ]
+    },
+    "name": "B. New Problem",
+    "statement": "Coming up with a new problem isn\u2019t as easy as many people think.\r\nSometimes it is hard enough to name it. We\u2019ll consider a title if it\r\ndoesn\u2019t occur as a substring in any titles of recent Codeforces\r\nproblems. You\u2019ve got the titles of last problems the strings, consisting\r\nof lowercase English letters. Your task is to find the shortest original\r\ntitle for the new problem. If there are multiple such titles, choose the\r\nlexicographically minimum one. Note, that title of the problem can\u2019t be\r\nan empty string.A of string (where is the length of string ) is string\r\n.String is than string , if either and , or there exists such number ,\r\nthat and . The string characters are compared by their ASCII codes.\r\n",
+    "solutions": [
+        "#include <vector>\n#include <string>\n#include <algorithm>\n#include <list>\n#include <set>\n#include <queue>\n#include <stack>\n#include <sstream>\n#include <numeric>\n#include <functional>\n#include <utility>\n#include <bitset>\n#include <iostream>\n#include <cmath>\n#include <map>\n#include <cstring>\n#include <cstdio>\n#include <stdint.h>\n#include <cstdarg>\n#include <cstdio>\n#include <cassert>\nusing namespace std;\n\nint n;\nchar s[100][100];\n\nbool check(char * t)\n{\n    int m = strlen(t);\n    for (int i = 0; i < n; ++ i)\n    {\n        char * tt = s[i];\n        int mm = strlen(tt);\n        for (int i = 0; i <= mm - m; ++ i)\n        {\n            bool flag = 1;\n            for (int j = 0; j < m; ++ j)\n            {\n                if (tt[i + j] != t[j])\n                    flag = 0;\n            }\n            if (flag)\n                return 0;\n        }\n    }\n    return 1;\n}\n\nint main()\n{\n    scanf(\"%d\\n\", & n);\n    for (int i = 0; i < n; ++ i)\n    {\n        scanf(\"%s\", s[i]);\n    }\n    char t[100] = {};\n    for (t[0] = 'a'; t[0] <= 'z'; ++ t[0])\n    {\n        if (check(t))\n        {\n            printf(\"%s\\n\", t);\n            return 0;\n        }\n    }\n    for (t[0] = 'a'; t[0] <= 'z'; ++ t[0])\n    for (t[1] = 'a'; t[1] <= 'z'; ++ t[1])\n    {\n        if (check(t))\n        {\n            printf(\"%s\\n\", t);\n            return 0;\n        }\n    }\n    for (t[0] = 'a'; t[0] <= 'z'; ++ t[0])\n    for (t[1] = 'a'; t[1] <= 'z'; ++ t[1])\n    for (t[2] = 'a'; t[2] <= 'z'; ++ t[2])\n    {\n        if (check(t))\n        {\n            printf(\"%s\\n\", t);\n            return 0;\n        }\n    }\n        \n}\n\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "strings"
+    ],
+    "dificulty": "1500",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. New Problem.json",
+    "editorial_link": "https://codeforces.com//blog/entry/6815",
+    "editorial": "The total number of different strings of 2 letters is , but the total\r\nlength of the input strings is no more than . It means that the length\r\nof answer is no more than 2. So just check all the strings of length 1\r\nand 2.\r\n"
+}

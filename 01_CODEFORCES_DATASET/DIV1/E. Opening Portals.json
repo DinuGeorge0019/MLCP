@@ -1,1 +1,99 @@
-{"link": "https://codeforces.com//contest/196/problem/E", "problemId": "1428", "problem_idx": "E", "shortId": "196E", "contest_number": "196", "problem_submissions": {"C": [1798703, 1791214, 1788606, 1793292, 1791199, 1789041, 1791625, 1799512, 1791088, 1791198, 1791178, 1796930, 1790873, 1791544], "E": [1795709, 1794289, 1790345, 1800573, 1800569, 1795140, 1795262, 1792160, 1794470, 1794856, 1794312, 1796014, 1797704], "D": [1795008, 1796853, 1794499, 2860569, 1792348, 1798254], "B": [1789001, 1792087, 1796669, 1789699, 1788889, 1792321, 1796356, 1793004, 1789434, 1789111, 1796367, 1788833, 1789314, 1789678], "A": [1787593, 1787638, 1787620, 1788588, 1787608, 1788006, 1789404, 1787655, 1787643, 1794879, 1787601, 1787960, 1787674, 1788094, 1787666, 1787769]}, "name": "E. Opening Portals", "statement": "Pavel plays a famous computer game. A player is responsible for a whole\r\ncountry and he can travel there freely, complete quests and earn\r\nexperience.This country has cities connected by bidirectional roads of\r\ndifferent lengths so that it is possible to get from any city to any\r\nother one. There are portals in of these cities. At the beginning of the\r\ngame all portals are closed. When a player visits a portal city, the\r\nportal opens. Strange as it is, one can teleport from an open portal to\r\nan open one. The teleportation takes no time and that enables the player\r\nto travel quickly between rather remote regions of the country.At the\r\nbeginning of the game Pavel is in city number . He wants to open all\r\nportals as quickly as possible. How much time will he need for that?\r\n", "solutions": ["#pragma comment(linker, \"/STACK:65777216\")\n\n#include <algorithm>\n#include <iostream>\n#include <string>\n#include<sstream>\n#include<string.h>\n#include <cstdio>\n#include <cassert>\n#include <complex>\n#include <vector>\n#include <bitset>\n#include <cmath>\n#include <queue>\n#include<stack>\n#include <set>\n#include <map>\n#include<ctime>\n#include<list>\n\nusing namespace std;\n \ntypedef long long ll;\ntypedef vector<int> vi;\t \ntypedef pair<int,int> pii;\ntypedef pair<double,double> pdd;\ntypedef unsigned long long ull;\n \n#define FOR(i,a,b) for (int i(a); i < (b); i++)\n#define REP(i,n) FOR(i,0,n)\n#define SORT(v) sort((v).begin(),(v).end())\n#define UN(v) sort((v).begin(),(v).end()),v.erase(unique(v.begin(),v.end()),v.end())\n#define CL(a,b) memset(a,b,sizeof(a))\n#define pb push_back\n\nint n,m;\nvector<pii> v[111111];\nint k;\nbool p[111111];\n\ntypedef pair<ll,ll> pl;\nll d[111111];\n\nll solve(){\n\tCL(d,-1);\n\td[0]=0;\n\tpriority_queue<pl> q;\n\tq.push(pl(0,0));\n\twhile(!q.empty()){\n\t\tint curr = q.top().second;\n\t\tll cost = -q.top().first;\n\t\tq.pop();\n\t\tif(p[curr]) return cost;\n\t\tif(d[curr]!=cost) continue;\n\t\tREP(i,v[curr].size()){\n\t\t\tll nc = cost + v[curr][i].second;\n\t\t\tint nw = v[curr][i].first;\n\t\t\tif(d[nw]==-1 || d[nw]>nc){\n\t\t\t\td[nw]=nc;\n\t\t\t\tq.push(pl(-nc,nw));\n\t\t\t}\n\t\t}\n\t}\n}\nbool vv[111111];\nll solve2(){\n\tint start = -1;\n\tREP(i,n)if(p[i]) start=i;\n\n\tll res = 0;\n\tCL(d,-1);\n\td[start]=0;\n\tpriority_queue<pl> q;\n\tq.push(pl(0,start));\n\twhile(!q.empty()){\n\t\tint curr = q.top().second;\n\t\tll cost = -q.top().first;\n\t\tq.pop();\n\t\tif(d[curr]>cost) continue;\n\t\tif(p[curr] && !vv[curr]){\n\t\t\tvv[curr]=1;\n\t\t\tres += cost;\n\t\t\td[curr]=0;\n\t\t\tq.push(pl(0,curr));\n\t\t\t//cout<<\"here \"<<curr<<' '<<cost<<endl;\n\t\t}\n\t\tREP(i,v[curr].size()){\n\t\t\tll nc = cost + v[curr][i].second;\n\t\t\tint nw = v[curr][i].first;\n\t\t\tif(d[nw]==-1 || d[nw]>nc){\n\t\t\t\td[nw]=nc;\n\t\t\t\tq.push(pl(-nc,nw));\n\t\t\t}\n\t\t}\n\t}\n\treturn res;\n}\n\nint main(){\n#ifdef LocalHost\n    freopen(\"input.txt\",\"r\",stdin);\n\t//freopen(\"output.txt\",\"w\",stdout);\n#endif\n\n\tcin>>n>>m;\n\tREP(i,m){\n\t\tint x,y,z;\n\t\tscanf(\"%d %d %d\",&x,&y,&z);\n\t\tx--,y--;\n\t\tv[x].pb(pii(y,z));\n\t\tv[y].pb(pii(x,z));\n\t}\n\tint k;\n\tcin>>k;\n\tREP(i,k){\n\t\tint x;\n\t\tscanf(\"%d\",&x);\n\t\tx--;\n\t\tp[x]=1;\n\t}\n\n\tcout<<solve()+solve2()<<endl;\n\t\n#ifdef LocalHost\n\tcerr<<endl<<endl<<\"TIME: \"<<clock()<<endl;\n#endif\n    return 0;\n}"], "input": "", "output": "", "tags": ["dsu", "graphs", "shortest paths"], "dificulty": "2600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/196/problem/E",
+    "problemId": "1428",
+    "problem_idx": "E",
+    "shortId": "196E",
+    "contest_number": "196",
+    "problem_submissions": {
+        "C": [
+            1798703,
+            1791214,
+            1788606,
+            1793292,
+            1791199,
+            1789041,
+            1791625,
+            1799512,
+            1791088,
+            1791198,
+            1791178,
+            1796930,
+            1790873,
+            1791544
+        ],
+        "E": [
+            1795709,
+            1794289,
+            1790345,
+            1800573,
+            1800569,
+            1795140,
+            1795262,
+            1792160,
+            1794470,
+            1794856,
+            1794312,
+            1796014,
+            1797704
+        ],
+        "D": [
+            1795008,
+            1796853,
+            1794499,
+            2860569,
+            1792348,
+            1798254
+        ],
+        "B": [
+            1789001,
+            1792087,
+            1796669,
+            1789699,
+            1788889,
+            1792321,
+            1796356,
+            1793004,
+            1789434,
+            1789111,
+            1796367,
+            1788833,
+            1789314,
+            1789678
+        ],
+        "A": [
+            1787593,
+            1787638,
+            1787620,
+            1788588,
+            1787608,
+            1788006,
+            1789404,
+            1787655,
+            1787643,
+            1794879,
+            1787601,
+            1787960,
+            1787674,
+            1788094,
+            1787666,
+            1787769
+        ]
+    },
+    "name": "E. Opening Portals",
+    "statement": "Pavel plays a famous computer game. A player is responsible for a whole\r\ncountry and he can travel there freely, complete quests and earn\r\nexperience.This country has cities connected by bidirectional roads of\r\ndifferent lengths so that it is possible to get from any city to any\r\nother one. There are portals in of these cities. At the beginning of the\r\ngame all portals are closed. When a player visits a portal city, the\r\nportal opens. Strange as it is, one can teleport from an open portal to\r\nan open one. The teleportation takes no time and that enables the player\r\nto travel quickly between rather remote regions of the country.At the\r\nbeginning of the game Pavel is in city number . He wants to open all\r\nportals as quickly as possible. How much time will he need for that?\r\n",
+    "solutions": [
+        "#pragma comment(linker, \"/STACK:65777216\")\n\n#include <algorithm>\n#include <iostream>\n#include <string>\n#include<sstream>\n#include<string.h>\n#include <cstdio>\n#include <cassert>\n#include <complex>\n#include <vector>\n#include <bitset>\n#include <cmath>\n#include <queue>\n#include<stack>\n#include <set>\n#include <map>\n#include<ctime>\n#include<list>\n\nusing namespace std;\n \ntypedef long long ll;\ntypedef vector<int> vi;\t \ntypedef pair<int,int> pii;\ntypedef pair<double,double> pdd;\ntypedef unsigned long long ull;\n \n#define FOR(i,a,b) for (int i(a); i < (b); i++)\n#define REP(i,n) FOR(i,0,n)\n#define SORT(v) sort((v).begin(),(v).end())\n#define UN(v) sort((v).begin(),(v).end()),v.erase(unique(v.begin(),v.end()),v.end())\n#define CL(a,b) memset(a,b,sizeof(a))\n#define pb push_back\n\nint n,m;\nvector<pii> v[111111];\nint k;\nbool p[111111];\n\ntypedef pair<ll,ll> pl;\nll d[111111];\n\nll solve(){\n\tCL(d,-1);\n\td[0]=0;\n\tpriority_queue<pl> q;\n\tq.push(pl(0,0));\n\twhile(!q.empty()){\n\t\tint curr = q.top().second;\n\t\tll cost = -q.top().first;\n\t\tq.pop();\n\t\tif(p[curr]) return cost;\n\t\tif(d[curr]!=cost) continue;\n\t\tREP(i,v[curr].size()){\n\t\t\tll nc = cost + v[curr][i].second;\n\t\t\tint nw = v[curr][i].first;\n\t\t\tif(d[nw]==-1 || d[nw]>nc){\n\t\t\t\td[nw]=nc;\n\t\t\t\tq.push(pl(-nc,nw));\n\t\t\t}\n\t\t}\n\t}\n}\nbool vv[111111];\nll solve2(){\n\tint start = -1;\n\tREP(i,n)if(p[i]) start=i;\n\n\tll res = 0;\n\tCL(d,-1);\n\td[start]=0;\n\tpriority_queue<pl> q;\n\tq.push(pl(0,start));\n\twhile(!q.empty()){\n\t\tint curr = q.top().second;\n\t\tll cost = -q.top().first;\n\t\tq.pop();\n\t\tif(d[curr]>cost) continue;\n\t\tif(p[curr] && !vv[curr]){\n\t\t\tvv[curr]=1;\n\t\t\tres += cost;\n\t\t\td[curr]=0;\n\t\t\tq.push(pl(0,curr));\n\t\t\t//cout<<\"here \"<<curr<<' '<<cost<<endl;\n\t\t}\n\t\tREP(i,v[curr].size()){\n\t\t\tll nc = cost + v[curr][i].second;\n\t\t\tint nw = v[curr][i].first;\n\t\t\tif(d[nw]==-1 || d[nw]>nc){\n\t\t\t\td[nw]=nc;\n\t\t\t\tq.push(pl(-nc,nw));\n\t\t\t}\n\t\t}\n\t}\n\treturn res;\n}\n\nint main(){\n#ifdef LocalHost\n    freopen(\"input.txt\",\"r\",stdin);\n\t//freopen(\"output.txt\",\"w\",stdout);\n#endif\n\n\tcin>>n>>m;\n\tREP(i,m){\n\t\tint x,y,z;\n\t\tscanf(\"%d %d %d\",&x,&y,&z);\n\t\tx--,y--;\n\t\tv[x].pb(pii(y,z));\n\t\tv[y].pb(pii(x,z));\n\t}\n\tint k;\n\tcin>>k;\n\tREP(i,k){\n\t\tint x;\n\t\tscanf(\"%d\",&x);\n\t\tx--;\n\t\tp[x]=1;\n\t}\n\n\tcout<<solve()+solve2()<<endl;\n\t\n#ifdef LocalHost\n\tcerr<<endl<<endl<<\"TIME: \"<<clock()<<endl;\n#endif\n    return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dsu",
+        "graphs",
+        "shortest paths"
+    ],
+    "dificulty": "2600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\E. Opening Portals.json",
+    "editorial_link": "https://codeforces.com//blog/entry/4717",
+    "editorial": "First of all, we can note that if each graph vertex is portal, the\r\nanswer will be a sum of all edges\u00e2\u0080\u0099 weights in MST (minimal spanning\r\ntree). We can find MST by using Kruskal\u00e2\u0080\u0099s algo. In this problem, not an\r\nevery vertex is portal. Let\u00e2\u0080\u0099s fix this. Start with a precalculation. Run\r\nDijkstra\u00e2\u0080\u0099s algo from all the portals, simultaneously. We will get a\r\ndistance between vertex and the nearest portal to vertex . Let\u00e2\u0080\u0099s trace\r\nKruskal\u00e2\u0080\u0099s algo on a graph of portals. On the first iteration, it will\r\nchoose the edge with the minimal cost, i.e. a shortest path between all\r\nthe portals in the original graph. Let the path leads from portal to\r\nportal . Note that there exists a path with the same length such as\r\nchanges only once through it. Indeed, , , i.e. changed on the path. If\r\nit happens on edge , , a path will not be longer than the path from to .\r\nAs and , we can see that the length of this path will be , where is the\r\nweight of edge . Kruskal\u00e2\u0080\u0099s algo will add this value to the answer and\r\nmerge portals and . The shortest-path trees of vertexes and will also be\r\nmerged. Note, that almost nothing changed. The next edge for Kruskal\u00e2\u0080\u0099s\r\nalgo can be find in a similar way . If this edge connects and again, DSU\r\nmakes us not to count this edge, otherwise this edge connects a\r\ndifferent pair of edges and will be counted in an answer. We can easily\r\nimplement this. Just create a new graph of portals, with an edge of\r\nweight for every edge of weight from original graph and run Kruskal\u00e2\u0080\u0099s\r\nalgo. Finally, note that if the starting vertex is not a portal, we\r\nshall add to the answer.\r\n"
+}

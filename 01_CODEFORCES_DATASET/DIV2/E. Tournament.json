@@ -1,1 +1,103 @@
-{"link": "https://codeforces.com//contest/879/problem/E", "problemId": "130666", "problem_idx": "E", "shortId": "879E", "contest_number": "879", "problem_submissions": {"B": [31786634, 31744953, 31748945, 31742935, 31751951, 31745920, 31746158, 31746124, 31745152, 31764273, 31744717, 31744550, 31745384, 31763271, 31741598, 31746257, 31743148], "A": [31786593, 31741274, 31744372, 31740794, 31748255, 31750502, 31742905, 31741390, 31742237, 31742563, 31740788, 31746610, 31740545, 31741102, 31761806, 31740453, 31741697, 31740818], "D": [31759010, 31759775, 31758676, 31760218, 31759988, 31764440, 31763303, 31762884, 31765337, 31764418, 31762268, 31761524, 31759749], "C": [31750102, 31754233, 31749363, 31750196, 31754099, 31751776, 31751991, 31753220, 31750527, 31755686, 31753418, 31760006, 31750929, 31761404, 31749686, 31756675, 31751331], "E": [31870640, 31870635, 31869262, 31868808]}, "name": "E. Tournament", "statement": "Recently a tournament in kinds of sports has begun in Berland. Vasya\r\nwants to make money on the bets.The scheme of the tournament is very\r\nmysterious and not fully disclosed. Competitions are held back to back,\r\neach of them involves two sportsmen who have not left the tournament\r\nyet. Each match can be held in any of the kinds of sport. Loser leaves\r\nthe tournament. The last remaining sportsman becomes the winner. Apart\r\nof this, the scheme can be arbitrary, it is not disclosed in\r\nadvance.Vasya knows powers of sportsmen in each kind of sport. He\r\nbelieves that the sportsmen with higher power always wins.The tournament\r\nis held every year, and each year one new participant joins it. In the\r\nfirst tournament, only one sportsman has participated, in the second\r\nthere were two sportsmen, and so on. Vasya has been watching the\r\ntournament for the last years. Help him to find the number of possible\r\nwinners for each of the tournaments.\r\n", "solutions": ["// Copyright 2017 <Ulyanich Michael>\n#include <iostream>\n#include <vector>\n#include <set>\n#include <algorithm>\n\n\nusing Sportsman = std::vector<int>;\n\nstruct Club {\n  size_t size;\n  Sportsman best, worst;\n\n  bool operator < (const Club &rhs) const {\n    for(size_t i = 0; i < best.size(); ++i)\n      if(worst[i] < rhs.best[i])\n        return false;\n    return true;\n  }\n};\n\n\n#define BINOP(binary_operator) \\\n  [](auto lhs, auto rhs){return binary_operator(lhs,rhs);}\n\n\nvoid Merge(const Club &nomnom, Club &consumer) {\n  consumer.size += nomnom.size;\n\n  std::transform(consumer.best.begin(), consumer.best.end(),\n                 nomnom.best.begin(), consumer.best.begin(),\n                 BINOP(std::max));\n\n  std::transform(consumer.worst.begin(), consumer.worst.end(),\n                 nomnom.worst.begin(), consumer.worst.begin(),\n                 BINOP(std::min));\n}\n\n\nint main() {\n#ifndef LOCAL\n  std::ios_base::sync_with_stdio(false);\n  std::cin.tie(nullptr);\n  std::cout.tie(nullptr);\n#endif // LOCAL\n\n  int n, k;\n  std::cin >> n >> k;\n\n  std::set<Club> clubs;\n\n  Sportsman man(k);\n  while(n--) {\n    for(auto &sport : man)\n      std::cin >> sport;\n\n    Club newbie = {1, man, man};\n    auto bounds = clubs.equal_range(newbie);\n\n    for(auto equal = bounds.first; equal != bounds.second; ++equal)\n      Merge(*equal, newbie);\n\n    clubs.erase(bounds.first, bounds.second);\n    clubs.insert(newbie);\n\n    std::cout << clubs.begin()->size << \"\\n\";\n  }\n\n  return 0;\n}\n\n// vim:sw=2\n"], "input": "", "output": "", "tags": ["data structures"], "dificulty": "2700", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/879/problem/E",
+    "problemId": "130666",
+    "problem_idx": "E",
+    "shortId": "879E",
+    "contest_number": "879",
+    "problem_submissions": {
+        "B": [
+            31786634,
+            31744953,
+            31748945,
+            31742935,
+            31751951,
+            31745920,
+            31746158,
+            31746124,
+            31745152,
+            31764273,
+            31744717,
+            31744550,
+            31745384,
+            31763271,
+            31741598,
+            31746257,
+            31743148
+        ],
+        "A": [
+            31786593,
+            31741274,
+            31744372,
+            31740794,
+            31748255,
+            31750502,
+            31742905,
+            31741390,
+            31742237,
+            31742563,
+            31740788,
+            31746610,
+            31740545,
+            31741102,
+            31761806,
+            31740453,
+            31741697,
+            31740818
+        ],
+        "D": [
+            31759010,
+            31759775,
+            31758676,
+            31760218,
+            31759988,
+            31764440,
+            31763303,
+            31762884,
+            31765337,
+            31764418,
+            31762268,
+            31761524,
+            31759749
+        ],
+        "C": [
+            31750102,
+            31754233,
+            31749363,
+            31750196,
+            31754099,
+            31751776,
+            31751991,
+            31753220,
+            31750527,
+            31755686,
+            31753418,
+            31760006,
+            31750929,
+            31761404,
+            31749686,
+            31756675,
+            31751331
+        ],
+        "E": [
+            31870640,
+            31870635,
+            31869262,
+            31868808
+        ]
+    },
+    "name": "E. Tournament",
+    "statement": "Recently a tournament in kinds of sports has begun in Berland. Vasya\r\nwants to make money on the bets.The scheme of the tournament is very\r\nmysterious and not fully disclosed. Competitions are held back to back,\r\neach of them involves two sportsmen who have not left the tournament\r\nyet. Each match can be held in any of the kinds of sport. Loser leaves\r\nthe tournament. The last remaining sportsman becomes the winner. Apart\r\nof this, the scheme can be arbitrary, it is not disclosed in\r\nadvance.Vasya knows powers of sportsmen in each kind of sport. He\r\nbelieves that the sportsmen with higher power always wins.The tournament\r\nis held every year, and each year one new participant joins it. In the\r\nfirst tournament, only one sportsman has participated, in the second\r\nthere were two sportsmen, and so on. Vasya has been watching the\r\ntournament for the last years. Help him to find the number of possible\r\nwinners for each of the tournaments.\r\n",
+    "solutions": [
+        "// Copyright 2017 <Ulyanich Michael>\n#include <iostream>\n#include <vector>\n#include <set>\n#include <algorithm>\n\n\nusing Sportsman = std::vector<int>;\n\nstruct Club {\n  size_t size;\n  Sportsman best, worst;\n\n  bool operator < (const Club &rhs) const {\n    for(size_t i = 0; i < best.size(); ++i)\n      if(worst[i] < rhs.best[i])\n        return false;\n    return true;\n  }\n};\n\n\n#define BINOP(binary_operator) \\\n  [](auto lhs, auto rhs){return binary_operator(lhs,rhs);}\n\n\nvoid Merge(const Club &nomnom, Club &consumer) {\n  consumer.size += nomnom.size;\n\n  std::transform(consumer.best.begin(), consumer.best.end(),\n                 nomnom.best.begin(), consumer.best.begin(),\n                 BINOP(std::max));\n\n  std::transform(consumer.worst.begin(), consumer.worst.end(),\n                 nomnom.worst.begin(), consumer.worst.begin(),\n                 BINOP(std::min));\n}\n\n\nint main() {\n#ifndef LOCAL\n  std::ios_base::sync_with_stdio(false);\n  std::cin.tie(nullptr);\n  std::cout.tie(nullptr);\n#endif // LOCAL\n\n  int n, k;\n  std::cin >> n >> k;\n\n  std::set<Club> clubs;\n\n  Sportsman man(k);\n  while(n--) {\n    for(auto &sport : man)\n      std::cin >> sport;\n\n    Club newbie = {1, man, man};\n    auto bounds = clubs.equal_range(newbie);\n\n    for(auto equal = bounds.first; equal != bounds.second; ++equal)\n      Merge(*equal, newbie);\n\n    clubs.erase(bounds.first, bounds.second);\n    clubs.insert(newbie);\n\n    std::cout << clubs.begin()->size << \"\\n\";\n  }\n\n  return 0;\n}\n\n// vim:sw=2\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "data structures"
+    ],
+    "dificulty": "2700",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Tournament.json",
+    "editorial_link": "https://codeforces.com//blog/entry/55435",
+    "editorial": "Imagine a directed graph, in which the vertices are participants, and the edge means that one participant can win the other in some kind of sports. A participant can win a tournament if there is a directed tree in this graph that contains all vertices, and this player is a root.\n\nConsider the condensation of this graph. Since for any two vertices there is an edge at least in one direction, condensation is a path. It is clear that the required tree exists if and only if the root lies in the first strongly connected component.\n\nWe will maintain these strongly connected components. For each of them we will store its size, the greatest power and the smallest power in each kind of sports.\n\nWhat happens when the new sportsman is added? He can defeat the component if in some kind of sports he is stronger than the minimum in this component. Similarly, he can lose to a component if in some kind of sports he is weaker than the maximum in this component. We need to find the weakest of those components that he can lose, and the strongest of those components that he can defeat. If the first component is stronger than the second, the new sportsman forms a new component. Otherwise, all the components between the first and the second merge into one, and the new sportsman joins it.\n\nHow to do it effectively? We will store the components in a some search tree and use the comparison by minimum in the first kind of sports as a comparator. It's easy to see that if you take any other sport or replace a minimum with a maximum, any two components will be compared in the same way. All we need is binsearch by one of the mentioned comparators: minimum or maximum for one of the kinds of sports.\n\nAt each step the number of operations with the tree is O(k) + k\u00b7 number of components merged into one. At each step at most one component can be added, so the amortized time of one step is .\n\nOverall time complexity is ."
+}

@@ -1,1 +1,102 @@
-{"link": "https://codeforces.com//contest/698/problem/D", "problemId": "65779", "problem_idx": "D", "shortId": "698D", "contest_number": "698", "problem_submissions": {"A": [19255240, 19238333, 19233487, 19233309, 19234715, 19232234, 19232460, 19232250, 19232256, 19233295, 19249652, 19232146, 19232208, 19232154, 19232533], "B": [19254561, 19237012, 19237862, 19236769, 19233173, 19239263, 19235681, 19237484, 19241788, 19236331, 19248894, 19236580, 19234441, 19235605, 19239046], "D": [19253572, 19249527, 19248444, 19246796, 19251047, 19251739], "C": [19248258, 19234132, 19243267, 19241700, 19248574, 19235387, 19239629, 19241130, 19239485, 19252239, 19235095, 19245084, 19242311, 19243465, 19252785], "F": [19242723, 19251904, 19301612, 19253678, 19251067, 19249915, 19278249, 19257429, 19255248], "E": [19254153, 19262072, 19250384, 19249636]}, "name": "D. Limak and Shooting Points", "statement": "Bearland is a dangerous place. Limak can t travel on foot. Instead, he\r\nhas magic teleportation stones. Each stone can be used . The -th stone\r\nallows to teleport to a point . Limak can use stones .There are monsters\r\nin Bearland. The -th of them stands at .The given points are pairwise\r\ndistinct.After each teleportation, Limak can shoot an arrow in some\r\ndirection. An arrow will hit the first monster in the chosen direction.\r\nThen, both an arrow and a monster disappear. It s dangerous to stay in\r\none place for long, so Limak can shoot only one arrow from one place.A\r\nmonster should be afraid if it s possible that Limak will hit it. How\r\nmany monsters should be afraid of Limak?\r\n", "solutions": ["#include <cstdio>\n#include <cstring>\n#include <cmath>\n#include <algorithm>\n#include <vector>\n#include <string>\n#include <map>\n#include <set>\n#include <cassert>\nusing namespace std;\n#define rep(i,a,n) for (int i=a;i<n;i++)\n#define per(i,a,n) for (int i=n-1;i>=a;i--)\n#define pb push_back\n#define mp make_pair\n#define all(x) (x).begin(),(x).end()\n#define fi first\n#define se second\n#define SZ(x) ((int)(x).size())\ntypedef vector<int> VI;\ntypedef long long ll;\ntypedef pair<int,int> PII;\nconst ll mod=1000000007;\nll powmod(ll a,ll b) {ll res=1;a%=mod; assert(b>=0); for(;b;b>>=1){if(b&1)res=res*a%mod;a=a*a%mod;}return res;}\n// head\n\nconst int N=1010;\nint k,n,ax[N],ay[N],px[N],py[N];\nvector<PII> vec[N];\nmap<PII,int> hs;\nVI pr[10][N];\nint sht[N],vis[N];\nint gcd(int x,int y) { return x?gcd(y%x,x):y; }\nbool dfs(int rm,VI c) {\n/*\tputs(\"-----state begin-----\");\n\tprintf(\"%d\\n\",rm);\n\tfor (auto v:c) printf(\"%d \",v); puts(\"\");\n\trep(i,0,n) printf(\"%d \",sht[i]); puts(\"\");\n\trep(i,0,k) printf(\"%d \",vis[i]); puts(\"\");\n\tputs(\"-----state end-----\");*/\n\tif (SZ(c)==0) return 1;\n\tif (SZ(c)>rm) return 0;\n\tfor (auto v:c) {\n\t\tsht[v]=1;\n\t\trep(j,0,k) if (!vis[j]&&SZ(pr[j][v])<=7) {\n\t\t\tvis[j]=1;\n\t\t\tbool val=1;\n\t\t\tset<int> d(all(c)); d.erase(v);\n\t\t\tfor (auto pp:pr[j][v]) {\n//\t\t\t\tprintf(\"%d %d %d\\n\",j,v,pp);\n\t\t\t\tif (sht[pp]) {\n\t\t\t\t\tval=0;\n\t\t\t\t\tbreak;\n\t\t\t\t}\n\t\t\t\td.insert(pp);\n\t\t\t\tif (SZ(d)>rm) {\n\t\t\t\t\tval=0; break;\n\t\t\t\t}\n\t\t\t}\n\t\t\tif (val) {\n\t\t\t\tif (dfs(rm-1,VI(all(d)))) return 1;\n\t\t\t}\n\t\t\tvis[j]=0;\n\t\t}\n\t\tsht[v]=0;\n\t}\n\treturn 0;\n}\nint main() {\n\tscanf(\"%d%d\",&k,&n);\n\trep(i,0,k) scanf(\"%d%d\",ax+i,ay+i);\n\trep(i,0,n) scanf(\"%d%d\",px+i,py+i);\n\trep(z,0,k) {\n\t\trep(j,0,n+1) vec[j].clear();\n\t\ths.clear();\n\t\tint tot=0;\n\t\trep(j,0,n) {\n\t\t\tint x=px[j]-ax[z];\n\t\t\tint y=py[j]-ay[z];\n\t\t\tint d=gcd(x,y);\n\t\t\td=abs(d);\n\t\t\tx/=d; y/=d;\n\t\t\tif (!hs.count(mp(x,y))) hs[mp(x,y)]=tot++;\n\t\t\tvec[hs[mp(x,y)]].pb(mp(d,j));\n\t\t}\n\t\trep(i,0,tot) {\n\t\t\tsort(all(vec[i]));\n\t\t\tVI v;\n\t\t\tfor (auto p:vec[i]) {\n\t\t\t\tpr[z][p.se]=v;\n//\t\t\t\tprintf(\"%d \",p.se);\n\t\t\t\tv.pb(p.se);\n\t\t\t}\n//\t\t\tputs(\"\");\n\t\t}\n//\t\tputs(\"----\");\n\t}\n\tint ret=0;\n\trep(i,0,n) {\n\t\tmemset(sht,0,sizeof(sht));\n\t\tmemset(vis,0,sizeof(vis));\n\t\tif (dfs(k,VI{i}))ret++;\n\t}\n\tprintf(\"%d\\n\",ret);\n}\n"], "input": "", "output": "", "tags": ["brute force", "geometry", "math"], "dificulty": "2600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/698/problem/D",
+    "problemId": "65779",
+    "problem_idx": "D",
+    "shortId": "698D",
+    "contest_number": "698",
+    "problem_submissions": {
+        "A": [
+            19255240,
+            19238333,
+            19233487,
+            19233309,
+            19234715,
+            19232234,
+            19232460,
+            19232250,
+            19232256,
+            19233295,
+            19249652,
+            19232146,
+            19232208,
+            19232154,
+            19232533
+        ],
+        "B": [
+            19254561,
+            19237012,
+            19237862,
+            19236769,
+            19233173,
+            19239263,
+            19235681,
+            19237484,
+            19241788,
+            19236331,
+            19248894,
+            19236580,
+            19234441,
+            19235605,
+            19239046
+        ],
+        "D": [
+            19253572,
+            19249527,
+            19248444,
+            19246796,
+            19251047,
+            19251739
+        ],
+        "C": [
+            19248258,
+            19234132,
+            19243267,
+            19241700,
+            19248574,
+            19235387,
+            19239629,
+            19241130,
+            19239485,
+            19252239,
+            19235095,
+            19245084,
+            19242311,
+            19243465,
+            19252785
+        ],
+        "F": [
+            19242723,
+            19251904,
+            19301612,
+            19253678,
+            19251067,
+            19249915,
+            19278249,
+            19257429,
+            19255248
+        ],
+        "E": [
+            19254153,
+            19262072,
+            19250384,
+            19249636
+        ]
+    },
+    "name": "D. Limak and Shooting Points",
+    "statement": "Bearland is a dangerous place. Limak can t travel on foot. Instead, he\r\nhas magic teleportation stones. Each stone can be used . The -th stone\r\nallows to teleport to a point . Limak can use stones .There are monsters\r\nin Bearland. The -th of them stands at .The given points are pairwise\r\ndistinct.After each teleportation, Limak can shoot an arrow in some\r\ndirection. An arrow will hit the first monster in the chosen direction.\r\nThen, both an arrow and a monster disappear. It s dangerous to stay in\r\none place for long, so Limak can shoot only one arrow from one place.A\r\nmonster should be afraid if it s possible that Limak will hit it. How\r\nmany monsters should be afraid of Limak?\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <cstring>\n#include <cmath>\n#include <algorithm>\n#include <vector>\n#include <string>\n#include <map>\n#include <set>\n#include <cassert>\nusing namespace std;\n#define rep(i,a,n) for (int i=a;i<n;i++)\n#define per(i,a,n) for (int i=n-1;i>=a;i--)\n#define pb push_back\n#define mp make_pair\n#define all(x) (x).begin(),(x).end()\n#define fi first\n#define se second\n#define SZ(x) ((int)(x).size())\ntypedef vector<int> VI;\ntypedef long long ll;\ntypedef pair<int,int> PII;\nconst ll mod=1000000007;\nll powmod(ll a,ll b) {ll res=1;a%=mod; assert(b>=0); for(;b;b>>=1){if(b&1)res=res*a%mod;a=a*a%mod;}return res;}\n// head\n\nconst int N=1010;\nint k,n,ax[N],ay[N],px[N],py[N];\nvector<PII> vec[N];\nmap<PII,int> hs;\nVI pr[10][N];\nint sht[N],vis[N];\nint gcd(int x,int y) { return x?gcd(y%x,x):y; }\nbool dfs(int rm,VI c) {\n/*\tputs(\"-----state begin-----\");\n\tprintf(\"%d\\n\",rm);\n\tfor (auto v:c) printf(\"%d \",v); puts(\"\");\n\trep(i,0,n) printf(\"%d \",sht[i]); puts(\"\");\n\trep(i,0,k) printf(\"%d \",vis[i]); puts(\"\");\n\tputs(\"-----state end-----\");*/\n\tif (SZ(c)==0) return 1;\n\tif (SZ(c)>rm) return 0;\n\tfor (auto v:c) {\n\t\tsht[v]=1;\n\t\trep(j,0,k) if (!vis[j]&&SZ(pr[j][v])<=7) {\n\t\t\tvis[j]=1;\n\t\t\tbool val=1;\n\t\t\tset<int> d(all(c)); d.erase(v);\n\t\t\tfor (auto pp:pr[j][v]) {\n//\t\t\t\tprintf(\"%d %d %d\\n\",j,v,pp);\n\t\t\t\tif (sht[pp]) {\n\t\t\t\t\tval=0;\n\t\t\t\t\tbreak;\n\t\t\t\t}\n\t\t\t\td.insert(pp);\n\t\t\t\tif (SZ(d)>rm) {\n\t\t\t\t\tval=0; break;\n\t\t\t\t}\n\t\t\t}\n\t\t\tif (val) {\n\t\t\t\tif (dfs(rm-1,VI(all(d)))) return 1;\n\t\t\t}\n\t\t\tvis[j]=0;\n\t\t}\n\t\tsht[v]=0;\n\t}\n\treturn 0;\n}\nint main() {\n\tscanf(\"%d%d\",&k,&n);\n\trep(i,0,k) scanf(\"%d%d\",ax+i,ay+i);\n\trep(i,0,n) scanf(\"%d%d\",px+i,py+i);\n\trep(z,0,k) {\n\t\trep(j,0,n+1) vec[j].clear();\n\t\ths.clear();\n\t\tint tot=0;\n\t\trep(j,0,n) {\n\t\t\tint x=px[j]-ax[z];\n\t\t\tint y=py[j]-ay[z];\n\t\t\tint d=gcd(x,y);\n\t\t\td=abs(d);\n\t\t\tx/=d; y/=d;\n\t\t\tif (!hs.count(mp(x,y))) hs[mp(x,y)]=tot++;\n\t\t\tvec[hs[mp(x,y)]].pb(mp(d,j));\n\t\t}\n\t\trep(i,0,tot) {\n\t\t\tsort(all(vec[i]));\n\t\t\tVI v;\n\t\t\tfor (auto p:vec[i]) {\n\t\t\t\tpr[z][p.se]=v;\n//\t\t\t\tprintf(\"%d \",p.se);\n\t\t\t\tv.pb(p.se);\n\t\t\t}\n//\t\t\tputs(\"\");\n\t\t}\n//\t\tputs(\"----\");\n\t}\n\tint ret=0;\n\trep(i,0,n) {\n\t\tmemset(sht,0,sizeof(sht));\n\t\tmemset(vis,0,sizeof(vis));\n\t\tif (dfs(k,VI{i}))ret++;\n\t}\n\tprintf(\"%d\\n\",ret);\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "geometry",
+        "math"
+    ],
+    "dificulty": "2600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Limak and Shooting Points.json",
+    "editorial_link": "https://codeforces.com//blog/entry/46148",
+    "editorial": "Spoiler There are places and monsters. For each of places let\u00e2\u0080\u0099s sort\nmonsters by angle. Thanks to that, for each pair (place, monster) we\nwill be able to know which monsters don\u00e2\u0080\u0099t allow us do directly hit this\nmonster from this place.Let\u00e2\u0080\u0099s iterate over monsters and for each of them\nindependently check if it can be hit. We want to get the complexity or\n.We fixed a monster . We want it to be hit in some moment. So, let\u00e2\u0080\u0099s\niterate over places considering which place will eventually hit a\nmonster .We fixed a place which will hit . Thanks to the preprocessing\n(sorting by angle at the beginning), we are able to check if the fixed\nplace can directly hit . While we can\u00e2\u0080\u0099t hit directly we find any\nblocking monster (it may be e.g. the first monster in this direction,\nlooking from the fixed place). Let\u00e2\u0080\u0099s call it . If we want to succeed\nthen some place must hit .Iterate over which place will hit . Again,\ncheck if it can directly hit now. If yes then mark this place as used\nand as killed (and go back to checking , but with monster killed and\nthus not blocking us anymore). Otherwise, find any monster in this\ndirection and again, iterate over a place to hit it in the future.While\nchecking if a monster may be directly hit by some place, remember that\nsome monsters may be already killed and thus they don\u00e2\u0080\u0099t block\nanything.The above should give you the rough understanding of the\nsolution. Let\u00e2\u0080\u0099s talk about the details and the implementation.Iterate\nover a monster to check and over permutations of places. Create a\nrecursive function rec(int monster_to_kill, list<int> & permutation).\nTake the first place from the list and remove it for ever from the list.\nThis will be a place to eventually kill monster_to_kill, maybe not now.\nWhile there are any alive monsters between the fixed place and\nmonster_to_kill , choose any of those alive monsters and run\nrec(that_monster, &permutation).Don\u00e2\u0080\u0099t treat permutation as the order of\nteleportation stones to use. It\u00e2\u0080\u0099s only the order in which we take them\nfrom some stack/list. It only allows us to nicely simulate iterating\nover a place from which we want to get rid of some blocking monster.Some\nwords about the correctness. Is it possible that the described solution\nisn\u00e2\u0080\u0099t able to find a way to kill a monster while there exists a way? In\nsuch a way there is some place from which Limak will hit the monster. We\nsimulated iterating over such a place. We can\u00e2\u0080\u0099t hit directly at the\nbeginning only if there are some blocking monsters between the place and\nthe monster. Each of them must be hit from some place. We don\u00e2\u0080\u0099t assume\nanything about the order of monsters or about the order of places from\nwhich we hit. In the \"optimal\" way, every monster initially blocking us\nmust be hit in some moment by some place so we can (and must) iterate\nover a place from which it will be hit. If there are some new blocking\nmonsters then again in the \"optimal\" way some place hits it and we\niterate over it.\n"
+}

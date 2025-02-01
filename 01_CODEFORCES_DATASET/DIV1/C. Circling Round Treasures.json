@@ -1,1 +1,107 @@
-{"link": "https://codeforces.com//contest/375/problem/C", "problemId": "4237", "problem_idx": "C", "shortId": "375C", "contest_number": "375", "problem_submissions": {"E": [5516578, 5543517, 7404743, 7404550], "D": [5508327, 5506241, 5508178, 5506936, 5508210, 5509728, 5509565, 5509786, 5510266, 5509657, 5507662, 5512033, 5510626, 5507997, 5508460, 5508656, 5508269, 5508332, 5508891], "C": [5505383, 5509032, 5505557, 5508883, 5509512, 5507599, 5508675, 5508564, 5508334, 5508031, 5521682, 5507298, 5515252], "B": [5503331, 5504049, 5503218, 5504342, 5504635, 5505593, 5504545, 5506014, 5505956, 5506155, 5504757, 5503899, 5502860, 5504310, 5504273, 5505401, 5504620, 5504706], "A": [5502699, 5502984, 5506272, 5503668, 5503511, 5502852, 5503508, 5504680, 5504651, 5505085, 5503979, 5502926, 5504511, 5503159, 5503448, 5504768, 5503302, 5503553]}, "name": "C. Circling Round Treasures", "statement": "You have a map as a rectangle table. Each cell of the table is either an\r\nobstacle, or a treasure with a certain price, or a bomb, or an empty\r\ncell. Your initial position is also given to you.You can go from one\r\ncell of the map to a side-adjacent one. At that, you are not allowed to\r\ngo beyond the borders of the map, enter the cells with treasures,\r\nobstacles and bombs. To pick the treasures, you need to build a closed\r\npath (starting and ending in the starting cell). The closed path mustn\u2019t\r\ncontain any cells with bombs inside. Let\u2019s assume that the sum of the\r\ntreasures\u2019 values that are located inside the closed path equals , and\r\nbesides, you\u2019ve made single moves (from one cell to another) while you\r\nwere going through the path, then such path brings you the profit of\r\nrubles.Your task is to build a closed path that doesn\u2019t contain any\r\nbombs and brings maximum profit.Note that the path can have\r\nself-intersections. In order to determine if a cell lies inside a path\r\nor not, use the following algorithm: Assume that the table cells are\r\npoints on the plane (the table cell on the intersection of the -th\r\ncolumn and the -th row is point ). And the given path is a closed\r\npolyline that goes through these points. You need to find out if the\r\npoint of the table that is not crossed by the polyline lies inside the\r\npolyline. Let\u2019s draw a ray that starts from point and does not intersect\r\nother points of the table (such ray must exist). Let\u2019s count the number\r\nof segments of the polyline that intersect the painted ray. If this\r\nnumber is odd, we assume that point (and consequently, the table cell)\r\nlie inside the polyline (path). Otherwise, we assume that it lies\r\noutside.\r\n", "solutions": ["#include <iostream>\n#include <cstdio>\n#include <algorithm>\n#include <cstring>\n#include <string>\n#include <queue>\nusing namespace std;\nconst int MAX_N = 20 + 10, MAX_M = 8;\nchar map[MAX_N][MAX_N];\nint n, m;\nint id[MAX_N][MAX_N], nT, nId, value[MAX_M];\n\nint dist[MAX_N][MAX_N][1 << MAX_M];\nint above[MAX_N][MAX_N];\n\nqueue<int> que;\n\nvoid relax(int r, int c, int mask, int d) {\n\tif (dist[r][c][mask] == -1) {\n\t\tdist[r][c][mask] = d;\n\t\tque.push(r), que.push(c), que.push(mask);\n\t}\n}\n\nbool inrange(int r, int c) {\n\treturn r >= 0 && r < n && c >= 0 && c < m;\n}\n\nint main() {\n\tcin >> n >> m;\n\tfor (int r = 0; r < n; ++r) {\n\t\tscanf(\"%s\", map[r]);\n\t}\n\tmemset(id, -1, sizeof id);\n\tfor (int r = 0; r < n; ++r) {\n\t\tfor (int c = 0; c < m; ++c) {\n\t\t\tif (map[r][c] >= '1' && map[r][c] <= '9') {\n\t\t\t\tid[r][c] = map[r][c] - '1';\n\t\t\t\tnId++;\n\t\t\t}\n\t\t}\n\t}\n\tnT = nId;\n\tfor (int i = 0; i < nT; ++i) {\n\t\tscanf(\"%d\", value + i);\n\t}\n\tfor (int r = 0; r < n; ++r) {\n\t\tfor (int c = 0; c < m; ++c) {\n\t\t\tif (map[r][c] == 'B') {\n\t\t\t\tid[r][c] = nId++;\n\t\t\t}\n\t\t}\n\t}\n\n\tfor (int r = 0; r < n; ++r) {\n\t\tfor (int c = 0; c < m; ++c) {\n\t\t\tif (r > 0)\n\t\t\t\tabove[r][c] = above[r - 1][c];\n\t\t\tif (id[r][c] != -1)\n\t\t\t\tabove[r][c] |= 1 << id[r][c];\n\t\t}\n\t}\n\n\tmemset(dist, -1, sizeof dist);\n\tint sr, sc;\n\n\tfor (int r = 0; r < n; ++r) {\n\t\tfor (int c = 0; c < m; ++c)\n\t\t\tif (map[r][c] == 'S') {\n\t\t\t\tsr = r, sc = c;\n\t\t\t\trelax(r, c, 0, 0);\n\t\t\t\tmap[r][c] = '.';\n\t\t\t}\n\t}\n\n\twhile (!que.empty()) {\n\t\tint r, c, mask, d;\n\t\tr = que.front(), que.pop(), c = que.front(), que.pop(), mask =\n\t\t\t\tque.front(), que.pop();\n\t\td = dist[r][c][mask];\n\t\tfor (int rr = r - 1; rr <= r + 1; ++rr) {\n\t\t\tfor (int cc = c - 1; cc <= c + 1; ++cc)\n\t\t\t\tif (r == rr ^ c == cc) {\n\t\t\t\t\tif (inrange(rr, cc) && (map[rr][cc] == '.')) {\n\t\t\t\t\t\t//up and down\n\t\t\t\t\t\tif (c == cc) {\n\t\t\t\t\t\t\trelax(rr, cc, mask, d + 1);\n\t\t\t\t\t\t} else if (cc < c) { //go left\n\t\t\t\t\t\t\trelax(rr, cc, mask ^ above[rr][cc], d + 1);\n\t\t\t\t\t\t} else { //go right\n\t\t\t\t\t\t\trelax(rr, cc, mask ^ above[r][c], d + 1);\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t}\n\t}\n\n\tint ret = 0;\n\n\tfor (int mask = 0; mask < (1 << nId); ++mask) {\n\t\tint step = dist[sr][sc][mask];\n\t\tif (step == -1)\n\t\t\tcontinue;\n\t\tbool chk = true;\n\t\tfor (int k = nT; k < nId; ++k)\n\t\t\tif (mask >> k & 1) {\n\t\t\t\tchk = false;\n\t\t\t}\n\t\tif (chk) {\n\t\t\tint ans = -step;\n\t\t\tfor (int k = 0; k < nT; ++k)\n\t\t\t\tif (mask >> k & 1) {\n\t\t\t\t\tans += value[k];\n\t\t\t\t}\n\t\t\tret = max(ret, ans);\n\t\t}\n\t}\n\tcout << ret << endl;\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["bitmasks", "shortest paths"], "dificulty": "2600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/375/problem/C",
+    "problemId": "4237",
+    "problem_idx": "C",
+    "shortId": "375C",
+    "contest_number": "375",
+    "problem_submissions": {
+        "E": [
+            5516578,
+            5543517,
+            7404743,
+            7404550
+        ],
+        "D": [
+            5508327,
+            5506241,
+            5508178,
+            5506936,
+            5508210,
+            5509728,
+            5509565,
+            5509786,
+            5510266,
+            5509657,
+            5507662,
+            5512033,
+            5510626,
+            5507997,
+            5508460,
+            5508656,
+            5508269,
+            5508332,
+            5508891
+        ],
+        "C": [
+            5505383,
+            5509032,
+            5505557,
+            5508883,
+            5509512,
+            5507599,
+            5508675,
+            5508564,
+            5508334,
+            5508031,
+            5521682,
+            5507298,
+            5515252
+        ],
+        "B": [
+            5503331,
+            5504049,
+            5503218,
+            5504342,
+            5504635,
+            5505593,
+            5504545,
+            5506014,
+            5505956,
+            5506155,
+            5504757,
+            5503899,
+            5502860,
+            5504310,
+            5504273,
+            5505401,
+            5504620,
+            5504706
+        ],
+        "A": [
+            5502699,
+            5502984,
+            5506272,
+            5503668,
+            5503511,
+            5502852,
+            5503508,
+            5504680,
+            5504651,
+            5505085,
+            5503979,
+            5502926,
+            5504511,
+            5503159,
+            5503448,
+            5504768,
+            5503302,
+            5503553
+        ]
+    },
+    "name": "C. Circling Round Treasures",
+    "statement": "You have a map as a rectangle table. Each cell of the table is either an\r\nobstacle, or a treasure with a certain price, or a bomb, or an empty\r\ncell. Your initial position is also given to you.You can go from one\r\ncell of the map to a side-adjacent one. At that, you are not allowed to\r\ngo beyond the borders of the map, enter the cells with treasures,\r\nobstacles and bombs. To pick the treasures, you need to build a closed\r\npath (starting and ending in the starting cell). The closed path mustn\u2019t\r\ncontain any cells with bombs inside. Let\u2019s assume that the sum of the\r\ntreasures\u2019 values that are located inside the closed path equals , and\r\nbesides, you\u2019ve made single moves (from one cell to another) while you\r\nwere going through the path, then such path brings you the profit of\r\nrubles.Your task is to build a closed path that doesn\u2019t contain any\r\nbombs and brings maximum profit.Note that the path can have\r\nself-intersections. In order to determine if a cell lies inside a path\r\nor not, use the following algorithm: Assume that the table cells are\r\npoints on the plane (the table cell on the intersection of the -th\r\ncolumn and the -th row is point ). And the given path is a closed\r\npolyline that goes through these points. You need to find out if the\r\npoint of the table that is not crossed by the polyline lies inside the\r\npolyline. Let\u2019s draw a ray that starts from point and does not intersect\r\nother points of the table (such ray must exist). Let\u2019s count the number\r\nof segments of the polyline that intersect the painted ray. If this\r\nnumber is odd, we assume that point (and consequently, the table cell)\r\nlie inside the polyline (path). Otherwise, we assume that it lies\r\noutside.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <cstdio>\n#include <algorithm>\n#include <cstring>\n#include <string>\n#include <queue>\nusing namespace std;\nconst int MAX_N = 20 + 10, MAX_M = 8;\nchar map[MAX_N][MAX_N];\nint n, m;\nint id[MAX_N][MAX_N], nT, nId, value[MAX_M];\n\nint dist[MAX_N][MAX_N][1 << MAX_M];\nint above[MAX_N][MAX_N];\n\nqueue<int> que;\n\nvoid relax(int r, int c, int mask, int d) {\n\tif (dist[r][c][mask] == -1) {\n\t\tdist[r][c][mask] = d;\n\t\tque.push(r), que.push(c), que.push(mask);\n\t}\n}\n\nbool inrange(int r, int c) {\n\treturn r >= 0 && r < n && c >= 0 && c < m;\n}\n\nint main() {\n\tcin >> n >> m;\n\tfor (int r = 0; r < n; ++r) {\n\t\tscanf(\"%s\", map[r]);\n\t}\n\tmemset(id, -1, sizeof id);\n\tfor (int r = 0; r < n; ++r) {\n\t\tfor (int c = 0; c < m; ++c) {\n\t\t\tif (map[r][c] >= '1' && map[r][c] <= '9') {\n\t\t\t\tid[r][c] = map[r][c] - '1';\n\t\t\t\tnId++;\n\t\t\t}\n\t\t}\n\t}\n\tnT = nId;\n\tfor (int i = 0; i < nT; ++i) {\n\t\tscanf(\"%d\", value + i);\n\t}\n\tfor (int r = 0; r < n; ++r) {\n\t\tfor (int c = 0; c < m; ++c) {\n\t\t\tif (map[r][c] == 'B') {\n\t\t\t\tid[r][c] = nId++;\n\t\t\t}\n\t\t}\n\t}\n\n\tfor (int r = 0; r < n; ++r) {\n\t\tfor (int c = 0; c < m; ++c) {\n\t\t\tif (r > 0)\n\t\t\t\tabove[r][c] = above[r - 1][c];\n\t\t\tif (id[r][c] != -1)\n\t\t\t\tabove[r][c] |= 1 << id[r][c];\n\t\t}\n\t}\n\n\tmemset(dist, -1, sizeof dist);\n\tint sr, sc;\n\n\tfor (int r = 0; r < n; ++r) {\n\t\tfor (int c = 0; c < m; ++c)\n\t\t\tif (map[r][c] == 'S') {\n\t\t\t\tsr = r, sc = c;\n\t\t\t\trelax(r, c, 0, 0);\n\t\t\t\tmap[r][c] = '.';\n\t\t\t}\n\t}\n\n\twhile (!que.empty()) {\n\t\tint r, c, mask, d;\n\t\tr = que.front(), que.pop(), c = que.front(), que.pop(), mask =\n\t\t\t\tque.front(), que.pop();\n\t\td = dist[r][c][mask];\n\t\tfor (int rr = r - 1; rr <= r + 1; ++rr) {\n\t\t\tfor (int cc = c - 1; cc <= c + 1; ++cc)\n\t\t\t\tif (r == rr ^ c == cc) {\n\t\t\t\t\tif (inrange(rr, cc) && (map[rr][cc] == '.')) {\n\t\t\t\t\t\t//up and down\n\t\t\t\t\t\tif (c == cc) {\n\t\t\t\t\t\t\trelax(rr, cc, mask, d + 1);\n\t\t\t\t\t\t} else if (cc < c) { //go left\n\t\t\t\t\t\t\trelax(rr, cc, mask ^ above[rr][cc], d + 1);\n\t\t\t\t\t\t} else { //go right\n\t\t\t\t\t\t\trelax(rr, cc, mask ^ above[r][c], d + 1);\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t}\n\t}\n\n\tint ret = 0;\n\n\tfor (int mask = 0; mask < (1 << nId); ++mask) {\n\t\tint step = dist[sr][sc][mask];\n\t\tif (step == -1)\n\t\t\tcontinue;\n\t\tbool chk = true;\n\t\tfor (int k = nT; k < nId; ++k)\n\t\t\tif (mask >> k & 1) {\n\t\t\t\tchk = false;\n\t\t\t}\n\t\tif (chk) {\n\t\t\tint ans = -step;\n\t\t\tfor (int k = 0; k < nT; ++k)\n\t\t\t\tif (mask >> k & 1) {\n\t\t\t\t\tans += value[k];\n\t\t\t\t}\n\t\t\tret = max(ret, ans);\n\t\t}\n\t}\n\tcout << ret << endl;\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "bitmasks",
+        "shortest paths"
+    ],
+    "dificulty": "2600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Circling Round Treasures.json",
+    "editorial_link": "https://codeforces.com//blog/entry/10084",
+    "editorial": " T = number of treasures, B = number of booms O(n*m*2^(T+B)):\nState(i, j, ts, bs) means: 1. You are at cell (i, j) 2. If the i-th bit\nof ts is 0 i-th treasure cross even edges of current path, otherwise odd\nedges. 3. If the i-th bit of bs is 0 i-th boom cross even edges of\ncurrent path, otherwise odd edges. Let dis[i][j][ts][bs] = min step to\ngo to reach state (i, j, ts, bs). Then we can use bfs algorithm to\ncalculate dis. The answer will be max{value(ts) dis[Si][Sj][ts][0]}\n"
+}

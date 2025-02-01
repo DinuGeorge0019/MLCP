@@ -1,1 +1,101 @@
-{"link": "https://codeforces.com//contest/744/problem/D", "problemId": "85242", "problem_idx": "D", "shortId": "744D", "contest_number": "744", "problem_submissions": {"D": [23172550, 23101161, 23068735, 23073667, 23132587, 23132570, 23072938], "B": [23071347, 23055547, 23056640, 23057482, 23055511, 23066941, 23058988, 23055885, 23055635, 23056110, 23057772, 23056735, 23057617, 23056511, 23062111, 23062274, 23057681, 23057651, 23056286], "C": [23071345, 23057499, 23060727, 23060442, 23060420, 23066137, 23056758, 23059869, 23060628, 23060184, 23060124, 23061291, 23060827, 23061807, 23057367, 23057447, 23062076, 23060867, 23062926], "E": [23071342, 23063797, 23070592, 23069714, 23064327], "A": [23071326, 23052903, 23053379, 23054137, 23053853, 23053406, 23053000, 23053710, 23053750, 23054145, 23053643, 23053798, 23058381, 23059184, 23053344, 23054382, 23053476]}, "name": "D. Hongcow Draws a Circle", "statement": "Hongcow really likes the color red. Hongcow doesn\u2019t like the color\r\nblue.Hongcow is standing in an infinite field where there are red points\r\nand blue points.Hongcow wants to draw a circle in the field such that\r\nthis circle contains at least one red point, and no blue points. Points\r\nthat line exactly on the boundary of the circle can be counted as either\r\ninside or outside.Compute the radius of the largest circle that\r\nsatisfies this condition. If this circle can have arbitrarily large\r\nsize, print . Otherwise, your answer will be accepted if it has relative\r\nor absolute error at most .\r\n", "solutions": ["#include <cmath>\n#include <cstdio>\n#include <ctime>\n#include <iostream>\n#include <algorithm>\n\nusing namespace std;\n\nconst double pi = acos(-1.0);\n\nconst int N = 1234;\n\nint xr[N], yr[N], xb[N], yb[N];\nint x[2 * N], y[2 * N];\ndouble d[2 * N][2 * N];\ndouble a[2 * N][2 * N];\npair <double, int> e[4 * N];\n\ninline double norm(double x) {\n  if (x < 0) x += 2 * pi;\n  if (x >= 2 * pi) x -= 2 * pi;\n  return x;\n}\n\nint main() {\n  int nr, nb;\n  scanf(\"%d %d\", &nr, &nb);\n  int n = nr + nb;\n  for (int i = 0; i < nr; i++) {\n    scanf(\"%d %d\", xr + i, yr + i);\n    x[i] = xr[i];\n    y[i] = yr[i];\n  }\n  for (int i = 0; i < nb; i++) {\n    scanf(\"%d %d\", xb + i, yb + i);\n    x[nr + i] = xb[i];\n    y[nr + i] = yb[i];\n  }\n  for (int i = 0; i < n; i++) {\n    for (int j = 0; j < n; j++) {\n      d[i][j] = sqrt((x[i] - x[j]) * (x[i] - x[j]) + (y[i] - y[j]) * (y[i] - y[j]));\n      if (i != j) {\n        a[i][j] = norm(atan2(y[j] - y[i], x[j] - x[i]));\n      }\n    }\n  }\n  double ans = 1.0;\n  for (int i = 0; i < n; i++) {\n    bool err = false;\n    double low = ans, high = 1e13;\n    for (int it = -1; it < 20; it++) {\n      double dd = (it == -1 ? ans : sqrt(low * high));\n      double qd = 1.0 / dd;\n      bool found = false;\n      int ne = 0;\n      int good = 0;\n      int bad = 0;\n      if (i < nr) {\n        good++;\n      }\n      for (int j = 0; j < n; j++) {\n        if (i == j || d[i][j] >= dd) {\n          continue;\n        }\n        double cs = d[i][j] * qd;\n        if (cs >= 1.0) {\n          continue;\n        }\n        double shift = acos(cs);\n        double from = norm(a[i][j] - shift);\n        double to = norm(a[i][j] + shift);\n        e[ne++] = make_pair(from, j < nr ? 2 : 1);\n        e[ne++] = make_pair(to, j < nr ? -2 : -1);\n        if (from > to) {\n          if (j < nr) {\n            good++;\n          } else {\n            bad++;\n          }\n        }\n      }\n      sort(e, e + ne);\n      for (int i = 0; i <= ne; i++) {\n        if (good > 0 && bad == 0) {\n          found = true;\n          break;\n        }\n        if (i == ne) {\n          break;\n        }\n        int type = e[i].second;\n        switch (type) {\n          case 1:  { bad++; break; }\n          case -1: { bad--; break; }\n          case 2:  { good++; break; }\n          case -2: { good--; break; }\n        }\n      }\n      if (it == -1 && !found) {\n        err = true;\n        break;\n      }\n      if (found) {\n        low = dd;\n      } else {\n        high = dd;\n      }\n    }\n    if (!err) {\n      ans = max(ans, sqrt(low * high));\n    }\n    if (ans > 9e12) {\n      break;\n    }\n  }\n  if (ans > 9e12) {\n    printf(\"%d\\n\", -1);\n  } else {\n    printf(\"%.15f\\n\", 0.5 * ans);\n  }\n  cerr << clock() << \" ms\" << endl;\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["geometry"], "dificulty": "3200", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/744/problem/D",
+    "problemId": "85242",
+    "problem_idx": "D",
+    "shortId": "744D",
+    "contest_number": "744",
+    "problem_submissions": {
+        "D": [
+            23172550,
+            23101161,
+            23068735,
+            23073667,
+            23132587,
+            23132570,
+            23072938
+        ],
+        "B": [
+            23071347,
+            23055547,
+            23056640,
+            23057482,
+            23055511,
+            23066941,
+            23058988,
+            23055885,
+            23055635,
+            23056110,
+            23057772,
+            23056735,
+            23057617,
+            23056511,
+            23062111,
+            23062274,
+            23057681,
+            23057651,
+            23056286
+        ],
+        "C": [
+            23071345,
+            23057499,
+            23060727,
+            23060442,
+            23060420,
+            23066137,
+            23056758,
+            23059869,
+            23060628,
+            23060184,
+            23060124,
+            23061291,
+            23060827,
+            23061807,
+            23057367,
+            23057447,
+            23062076,
+            23060867,
+            23062926
+        ],
+        "E": [
+            23071342,
+            23063797,
+            23070592,
+            23069714,
+            23064327
+        ],
+        "A": [
+            23071326,
+            23052903,
+            23053379,
+            23054137,
+            23053853,
+            23053406,
+            23053000,
+            23053710,
+            23053750,
+            23054145,
+            23053643,
+            23053798,
+            23058381,
+            23059184,
+            23053344,
+            23054382,
+            23053476
+        ]
+    },
+    "name": "D. Hongcow Draws a Circle",
+    "statement": "Hongcow really likes the color red. Hongcow doesn\u2019t like the color\r\nblue.Hongcow is standing in an infinite field where there are red points\r\nand blue points.Hongcow wants to draw a circle in the field such that\r\nthis circle contains at least one red point, and no blue points. Points\r\nthat line exactly on the boundary of the circle can be counted as either\r\ninside or outside.Compute the radius of the largest circle that\r\nsatisfies this condition. If this circle can have arbitrarily large\r\nsize, print . Otherwise, your answer will be accepted if it has relative\r\nor absolute error at most .\r\n",
+    "solutions": [
+        "#include <cmath>\n#include <cstdio>\n#include <ctime>\n#include <iostream>\n#include <algorithm>\n\nusing namespace std;\n\nconst double pi = acos(-1.0);\n\nconst int N = 1234;\n\nint xr[N], yr[N], xb[N], yb[N];\nint x[2 * N], y[2 * N];\ndouble d[2 * N][2 * N];\ndouble a[2 * N][2 * N];\npair <double, int> e[4 * N];\n\ninline double norm(double x) {\n  if (x < 0) x += 2 * pi;\n  if (x >= 2 * pi) x -= 2 * pi;\n  return x;\n}\n\nint main() {\n  int nr, nb;\n  scanf(\"%d %d\", &nr, &nb);\n  int n = nr + nb;\n  for (int i = 0; i < nr; i++) {\n    scanf(\"%d %d\", xr + i, yr + i);\n    x[i] = xr[i];\n    y[i] = yr[i];\n  }\n  for (int i = 0; i < nb; i++) {\n    scanf(\"%d %d\", xb + i, yb + i);\n    x[nr + i] = xb[i];\n    y[nr + i] = yb[i];\n  }\n  for (int i = 0; i < n; i++) {\n    for (int j = 0; j < n; j++) {\n      d[i][j] = sqrt((x[i] - x[j]) * (x[i] - x[j]) + (y[i] - y[j]) * (y[i] - y[j]));\n      if (i != j) {\n        a[i][j] = norm(atan2(y[j] - y[i], x[j] - x[i]));\n      }\n    }\n  }\n  double ans = 1.0;\n  for (int i = 0; i < n; i++) {\n    bool err = false;\n    double low = ans, high = 1e13;\n    for (int it = -1; it < 20; it++) {\n      double dd = (it == -1 ? ans : sqrt(low * high));\n      double qd = 1.0 / dd;\n      bool found = false;\n      int ne = 0;\n      int good = 0;\n      int bad = 0;\n      if (i < nr) {\n        good++;\n      }\n      for (int j = 0; j < n; j++) {\n        if (i == j || d[i][j] >= dd) {\n          continue;\n        }\n        double cs = d[i][j] * qd;\n        if (cs >= 1.0) {\n          continue;\n        }\n        double shift = acos(cs);\n        double from = norm(a[i][j] - shift);\n        double to = norm(a[i][j] + shift);\n        e[ne++] = make_pair(from, j < nr ? 2 : 1);\n        e[ne++] = make_pair(to, j < nr ? -2 : -1);\n        if (from > to) {\n          if (j < nr) {\n            good++;\n          } else {\n            bad++;\n          }\n        }\n      }\n      sort(e, e + ne);\n      for (int i = 0; i <= ne; i++) {\n        if (good > 0 && bad == 0) {\n          found = true;\n          break;\n        }\n        if (i == ne) {\n          break;\n        }\n        int type = e[i].second;\n        switch (type) {\n          case 1:  { bad++; break; }\n          case -1: { bad--; break; }\n          case 2:  { good++; break; }\n          case -2: { good--; break; }\n        }\n      }\n      if (it == -1 && !found) {\n        err = true;\n        break;\n      }\n      if (found) {\n        low = dd;\n      } else {\n        high = dd;\n      }\n    }\n    if (!err) {\n      ans = max(ans, sqrt(low * high));\n    }\n    if (ans > 9e12) {\n      break;\n    }\n  }\n  if (ans > 9e12) {\n    printf(\"%d\\n\", -1);\n  } else {\n    printf(\"%.15f\\n\", 0.5 * ans);\n  }\n  cerr << clock() << \" ms\" << endl;\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "geometry"
+    ],
+    "dificulty": "3200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Hongcow Draws a Circle.json",
+    "editorial_link": "https://codeforces.com//blog/entry/49126",
+    "editorial": "First to check if an answer can be arbitrarily large, we can see if\r\nthere is any red point that is on the convex hull of all our points. So\r\nfrom now on, we can assume the answer is finite. We can show that the\r\noptimal circle must touch a blue point. To see this, consider any\r\noptimal circle that doesn\u00e2\u0080\u0099t touch a blue point. We can make it slightly\r\nbigger so that it does touch one. So, let\u00e2\u0080\u0099s binary search for the\r\nanswer. However, you have to very careful and notice that the binary\r\nsearch isn\u00e2\u0080\u0099t monotonic if we only consider circles touching blue points.\r\nHowever, if we consider circles that touch either a red or blue point,\r\nthen the binary search is monontonic, so everything works out. To check\r\nif a radius works, we can do a angle sweep around our center point. We\r\nhave a fixed radius and fixed center, so each other point has at most\r\ntwo angles where it enters and exits the circle as we rotate it about\r\nthe center point. We can keep track of these events and find an interval\r\nwhere the circle only contains red points. code for binary search\r\n"
+}

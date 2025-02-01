@@ -1,1 +1,117 @@
-{"link": "https://codeforces.com//contest/907/problem/D", "problemId": "140852", "problem_idx": "D", "shortId": "907D", "contest_number": "907", "problem_submissions": {"A": [33575410, 33562373, 33540675, 33541958, 33569551, 33540657, 33540926, 33554400, 33543519, 33543455, 33545359, 33546723, 33543893, 33544746, 33541852, 33545259, 33542765, 33544738, 33545990], "E": [33569336, 33565777, 33581296, 33581269, 33579404, 33566284, 33569922, 33629468, 33568809, 33566385, 33570242, 33565403, 33570350], "D": [33565126, 33562641, 33581688, 33581260, 33565908, 33566346, 33568422, 33569754, 33570678], "C": [33549830, 33551329, 33554149, 33567015, 33549957, 33554343, 33567823, 33552808, 33554965, 33557383, 33556644, 33558626, 33561202, 33556067, 33558273, 33556336, 33558166, 33556124], "B": [33544318, 33546636, 33559945, 33562988, 33544727, 33549069, 33570043, 33548318, 33549618, 33552052, 33550884, 33550827, 33550979, 33551429, 33553199, 33549528, 33551065, 33549896], "F": [33567143, 33554423, 33558532, 40494408]}, "name": "D. Seating of Students", "statement": "Students went into a class to write a test and sat in some way. The\r\nteacher thought: \"Probably they sat in this order to copy works of each\r\nother. I need to rearrange them in such a way that students that were\r\nneighbors are not neighbors in a new seating.\"The class can be\r\nrepresented as a matrix with rows and columns with a student in each\r\ncell. Two students are neighbors if cells in which they sit have a\r\ncommon side.Let\u2019s enumerate students from to in order of rows. So a\r\nstudent who initially sits in the cell in row and column has a number .\r\nYou have to find a matrix with rows and columns in which all numbers\r\nfrom to appear exactly once and adjacent numbers in the original matrix\r\nare not adjacent in it, or determine that there is no such matrix.\r\n", "solutions": ["#include <bits/stdc++.h>\nusing namespace std;\n#define _USE_MATH_DEFINES\n\ntypedef long long ll;\ntypedef long double ld;\ntypedef pair<int,int> pii;\ntypedef complex<ld> pt;\ntypedef vector<pt> pol;\n#define nl '\\n'\n\n///* advent of code\ntypedef istringstream iss;\n#define pb push_back\n#define ins insert\n#define multiset mset\n#define getl(A) getline(cin, A)\n//*/\n\nconst ll INF = 0x3f3f3f3f;\nconst ll MOD = 1e9+7;\nconst ld EPS = 1e-9;\n\nint main() {\n\tios::sync_with_stdio(0);\n\tcin.tie(0); cout.tie(0);\n\n\tint n, m;\n\tcin >> n >> m;\n\n\tif (n == 1 && m == 1) {\n\t\tcout << \"YES\" << nl;\n\t\tcout << 1 << nl;\n\t\treturn 0;\n\t}\n\n\tbool transpose = false;\n\tint tr[n*m];\n\tif (m < n) {\n\t\ttranspose = true;\n\t\tfor (int i = 0; i < n; i++) {\n\t\t\tfor (int j = 0; j < m; j++) {\n\t\t\t\ttr[j*n+i] = i*m+j;\n\t\t\t}\n\t\t}\n\t\tswap(m,n);\n\t}\n\n\tint grid[n][m];\n\n\tif (n == 1 && m < 4) {\n\t\tcout << \"NO\" << nl;\n\t\treturn 0;\n\t} else if (n == 2 && m < 4) {\n\t\tcout << \"NO\" << nl;\n\t\treturn 0;\n\t} else if (n == 3 && m == 3) {\n\t\tcout << \"YES\" << nl;\n\t\tgrid[0][0] = 5-1;\n\t\tgrid[0][1] = 7-1;\n\t\tgrid[0][2] = 2-1;\n\t\tgrid[1][0] = 9-1;\n\t\tgrid[1][1] = 1-1;\n\t\tgrid[1][2] = 6-1;\n\t\tgrid[2][0] = 4-1;\n\t\tgrid[2][1] = 3-1;\n\t\tgrid[2][2] = 8-1;\n\t}\n\t\n\telse {\n\t\tcout << \"YES\" << nl;\n\t\tif (m % 2 == 0) {\n\t\t\tfor (int i = 0; i < n; i++) {\n\t\t\t\tint j = (i % 2) ? 0 : m-1;\n\t\t\t\tint d = (i % 2) ? 1 : -1;\n\t\t\t\tfor (int k = 1; k < m; k += 2) {\n\t\t\t\t\tgrid[i][j] = i*m + k;\n\t\t\t\t\tj += d;\n\t\t\t\t}\n\t\t\t\tfor (int k = 0; k < m; k += 2) {\n\t\t\t\t\tgrid[i][j] = i*m + k;\n\t\t\t\t\tj += d;\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\telse {\n\t\t\tfor (int i = 0; i < n; i++) {\n\t\t\t\tint j = 0;\n\t\t\t\tfor (int k = (i % 2) ? 0 : 1; k < m; k += 2)\n\t\t\t\t\tgrid[i][j++] = i*m + k;\n\t\t\t\tfor (int k = (i % 2) ? 1 : 0; k < m; k += 2)\n\t\t\t\t\tgrid[i][j++] = i*m + k;\n\t\t\t}\n\t\t}\n\t}\n\n\tif (transpose) {\n\t\tfor (int j = 0; j < m; j++) {\n\t\t\tfor (int i = 0; i < n; i++)\n\t\t\t\tcout << tr[grid[i][j]]+1 << \" \";\n\t\t\tcout << nl;\n\t\t}\n\t}\n\telse {\n\t\tfor (int i = 0; i < n; i++) {\n\t\t\tfor (int j = 0; j < m; j++)\n\t\t\t\tcout << grid[i][j]+1 << \" \";\n\t\t\tcout << nl;\n\t\t}\n\t}\n\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["constructive algorithms"], "dificulty": "2200", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/907/problem/D",
+    "problemId": "140852",
+    "problem_idx": "D",
+    "shortId": "907D",
+    "contest_number": "907",
+    "problem_submissions": {
+        "A": [
+            33575410,
+            33562373,
+            33540675,
+            33541958,
+            33569551,
+            33540657,
+            33540926,
+            33554400,
+            33543519,
+            33543455,
+            33545359,
+            33546723,
+            33543893,
+            33544746,
+            33541852,
+            33545259,
+            33542765,
+            33544738,
+            33545990
+        ],
+        "E": [
+            33569336,
+            33565777,
+            33581296,
+            33581269,
+            33579404,
+            33566284,
+            33569922,
+            33629468,
+            33568809,
+            33566385,
+            33570242,
+            33565403,
+            33570350
+        ],
+        "D": [
+            33565126,
+            33562641,
+            33581688,
+            33581260,
+            33565908,
+            33566346,
+            33568422,
+            33569754,
+            33570678
+        ],
+        "C": [
+            33549830,
+            33551329,
+            33554149,
+            33567015,
+            33549957,
+            33554343,
+            33567823,
+            33552808,
+            33554965,
+            33557383,
+            33556644,
+            33558626,
+            33561202,
+            33556067,
+            33558273,
+            33556336,
+            33558166,
+            33556124
+        ],
+        "B": [
+            33544318,
+            33546636,
+            33559945,
+            33562988,
+            33544727,
+            33549069,
+            33570043,
+            33548318,
+            33549618,
+            33552052,
+            33550884,
+            33550827,
+            33550979,
+            33551429,
+            33553199,
+            33549528,
+            33551065,
+            33549896
+        ],
+        "F": [
+            33567143,
+            33554423,
+            33558532,
+            40494408
+        ]
+    },
+    "name": "D. Seating of Students",
+    "statement": "Students went into a class to write a test and sat in some way. The\r\nteacher thought: \"Probably they sat in this order to copy works of each\r\nother. I need to rearrange them in such a way that students that were\r\nneighbors are not neighbors in a new seating.\"The class can be\r\nrepresented as a matrix with rows and columns with a student in each\r\ncell. Two students are neighbors if cells in which they sit have a\r\ncommon side.Let\u2019s enumerate students from to in order of rows. So a\r\nstudent who initially sits in the cell in row and column has a number .\r\nYou have to find a matrix with rows and columns in which all numbers\r\nfrom to appear exactly once and adjacent numbers in the original matrix\r\nare not adjacent in it, or determine that there is no such matrix.\r\n",
+    "solutions": [
+        "#include <bits/stdc++.h>\nusing namespace std;\n#define _USE_MATH_DEFINES\n\ntypedef long long ll;\ntypedef long double ld;\ntypedef pair<int,int> pii;\ntypedef complex<ld> pt;\ntypedef vector<pt> pol;\n#define nl '\\n'\n\n///* advent of code\ntypedef istringstream iss;\n#define pb push_back\n#define ins insert\n#define multiset mset\n#define getl(A) getline(cin, A)\n//*/\n\nconst ll INF = 0x3f3f3f3f;\nconst ll MOD = 1e9+7;\nconst ld EPS = 1e-9;\n\nint main() {\n\tios::sync_with_stdio(0);\n\tcin.tie(0); cout.tie(0);\n\n\tint n, m;\n\tcin >> n >> m;\n\n\tif (n == 1 && m == 1) {\n\t\tcout << \"YES\" << nl;\n\t\tcout << 1 << nl;\n\t\treturn 0;\n\t}\n\n\tbool transpose = false;\n\tint tr[n*m];\n\tif (m < n) {\n\t\ttranspose = true;\n\t\tfor (int i = 0; i < n; i++) {\n\t\t\tfor (int j = 0; j < m; j++) {\n\t\t\t\ttr[j*n+i] = i*m+j;\n\t\t\t}\n\t\t}\n\t\tswap(m,n);\n\t}\n\n\tint grid[n][m];\n\n\tif (n == 1 && m < 4) {\n\t\tcout << \"NO\" << nl;\n\t\treturn 0;\n\t} else if (n == 2 && m < 4) {\n\t\tcout << \"NO\" << nl;\n\t\treturn 0;\n\t} else if (n == 3 && m == 3) {\n\t\tcout << \"YES\" << nl;\n\t\tgrid[0][0] = 5-1;\n\t\tgrid[0][1] = 7-1;\n\t\tgrid[0][2] = 2-1;\n\t\tgrid[1][0] = 9-1;\n\t\tgrid[1][1] = 1-1;\n\t\tgrid[1][2] = 6-1;\n\t\tgrid[2][0] = 4-1;\n\t\tgrid[2][1] = 3-1;\n\t\tgrid[2][2] = 8-1;\n\t}\n\t\n\telse {\n\t\tcout << \"YES\" << nl;\n\t\tif (m % 2 == 0) {\n\t\t\tfor (int i = 0; i < n; i++) {\n\t\t\t\tint j = (i % 2) ? 0 : m-1;\n\t\t\t\tint d = (i % 2) ? 1 : -1;\n\t\t\t\tfor (int k = 1; k < m; k += 2) {\n\t\t\t\t\tgrid[i][j] = i*m + k;\n\t\t\t\t\tj += d;\n\t\t\t\t}\n\t\t\t\tfor (int k = 0; k < m; k += 2) {\n\t\t\t\t\tgrid[i][j] = i*m + k;\n\t\t\t\t\tj += d;\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\telse {\n\t\t\tfor (int i = 0; i < n; i++) {\n\t\t\t\tint j = 0;\n\t\t\t\tfor (int k = (i % 2) ? 0 : 1; k < m; k += 2)\n\t\t\t\t\tgrid[i][j++] = i*m + k;\n\t\t\t\tfor (int k = (i % 2) ? 1 : 0; k < m; k += 2)\n\t\t\t\t\tgrid[i][j++] = i*m + k;\n\t\t\t}\n\t\t}\n\t}\n\n\tif (transpose) {\n\t\tfor (int j = 0; j < m; j++) {\n\t\t\tfor (int i = 0; i < n; i++)\n\t\t\t\tcout << tr[grid[i][j]]+1 << \" \";\n\t\t\tcout << nl;\n\t\t}\n\t}\n\telse {\n\t\tfor (int i = 0; i < n; i++) {\n\t\t\tfor (int j = 0; j < m; j++)\n\t\t\t\tcout << grid[i][j]+1 << \" \";\n\t\t\tcout << nl;\n\t\t}\n\t}\n\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms"
+    ],
+    "dificulty": "2200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Seating of Students.json",
+    "editorial_link": "https://codeforces.com//blog/entry/56601",
+    "editorial": "Instead of dealing with a 2d grid, we can flatten out the grid. That is,\r\ninstead of having the grid , we could have the grid . Then, we know that\r\nsomething at position is adjacent to something at position iff and\r\nneither nor is at the end (i.e. neither of them are modulo ) OR if . We\r\ncan incrementally build the grid. First, we take an arbitrary number and\r\nadd it to a flattened grid. Say, we\u00e2\u0080\u0099re building a grid and our first\r\nnumber is . Now, we can find out that can\u00e2\u0080\u0099t be adjacent to adjacent to\r\n(using what we established in 1.) So once we chose our next arbitrary\r\nnumber, we have to make sure that the next number we chose can\u00e2\u0080\u0099t be . So\r\nif we do pick some of , pick another number, and so forth, until you\r\npick a valid number. Suppose we pick . Now, we have a grid . Pick\r\nanother random number. If our new random number is either (since that\u00e2\u0080\u0099s\r\nadjacent to ) or (since that\u00e2\u0080\u0099s adjacent to ), then we re-pick until we\r\nget a valid number. In this way, we continue, until we have fully built\r\nour grid. Just to formalize what\u00e2\u0080\u0099s in Suppose our incrementally build\r\narray is called ans. To check if the last element of ans violates any\r\nadjacency conditions, we just need to check two things (a) ans.size()\r\n"
+}

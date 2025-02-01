@@ -1,1 +1,99 @@
-{"link": "https://codeforces.com//contest/433/problem/A", "problemId": "9707", "problem_idx": "A", "shortId": "433A", "contest_number": "433", "problem_submissions": {"E": [6700632, 6733758, 6721505], "D": [6698331, 6698009, 6698968, 6697379, 6698650, 6715933, 6699612, 6703360, 6700792, 6700606, 6701919], "C": [6696171, 6695700, 6695492, 6694565, 6702743, 6693994, 6696132, 6697796, 6696959, 6725755, 6698054, 6719018, 6698571, 6698075, 6696805], "B": [6692744, 6692477, 6692926, 6692655, 6692933, 6693014, 6695266, 6693808, 6692887, 6694570, 6693057, 6692308, 6692432, 6694603, 6691962, 6693854, 6694164, 6696914], "A": [6691799, 6691577, 6691561, 6691897, 6692330, 6691645, 6695737, 6691837, 6691733, 6692882, 6691808, 6691593, 6691467, 6692751, 6692230, 6692129, 6691816]}, "name": "A. Kitahara Haruki s Gift", "statement": "Kitahara Haruki has bought apples for Touma Kazusa and Ogiso Setsuna.\r\nNow he wants to divide all the apples between the friends.Each apple\r\nweights 100 grams or 200 grams. Of course Kitahara Haruki doesn\u2019t want\r\nto offend any of his friend. Therefore the total weight of the apples\r\ngiven to Touma Kazusa must be equal to the total weight of the apples\r\ngiven to Ogiso Setsuna.But unfortunately Kitahara Haruki doesn\u2019t have a\r\nknife right now, so he cannot split any apple into some parts. Please,\r\ntell him: is it possible to divide all the apples in a fair way between\r\nhis friends?\r\n", "solutions": ["#include<cstdio>\n#include<cstring>\n\nint f[210], n;\n\nint main(){\n\tscanf(\"%d\", &n);\n\tf[0] = 1;\n\tint sum = 0;\n\tfor(int i = 1; i <= n; i ++){\n\t\tint v;\n\t\tscanf(\"%d\", &v);\n\t\tv /= 100;\n\t\tfor(int j = (n << 1); j >= 0; j --)\n\t\t\tif(f[j])\n\t\t\t\tf[j + v] = 1;\n\t\tsum += v;\n\t}\n\tif(sum & 1)\n\t\tfputs(\"NO\\n\", stdout);\n\telse if(f[sum >> 1])\n\t\tfputs(\"YES\\n\", stdout);\n\telse\n\t\tfputs(\"NO\\n\", stdout);\n\n\treturn 0;\n}\n\n\n\n"], "input": "", "output": "", "tags": ["brute force", "implementation"], "dificulty": "1100", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/433/problem/A",
+    "problemId": "9707",
+    "problem_idx": "A",
+    "shortId": "433A",
+    "contest_number": "433",
+    "problem_submissions": {
+        "E": [
+            6700632,
+            6733758,
+            6721505
+        ],
+        "D": [
+            6698331,
+            6698009,
+            6698968,
+            6697379,
+            6698650,
+            6715933,
+            6699612,
+            6703360,
+            6700792,
+            6700606,
+            6701919
+        ],
+        "C": [
+            6696171,
+            6695700,
+            6695492,
+            6694565,
+            6702743,
+            6693994,
+            6696132,
+            6697796,
+            6696959,
+            6725755,
+            6698054,
+            6719018,
+            6698571,
+            6698075,
+            6696805
+        ],
+        "B": [
+            6692744,
+            6692477,
+            6692926,
+            6692655,
+            6692933,
+            6693014,
+            6695266,
+            6693808,
+            6692887,
+            6694570,
+            6693057,
+            6692308,
+            6692432,
+            6694603,
+            6691962,
+            6693854,
+            6694164,
+            6696914
+        ],
+        "A": [
+            6691799,
+            6691577,
+            6691561,
+            6691897,
+            6692330,
+            6691645,
+            6695737,
+            6691837,
+            6691733,
+            6692882,
+            6691808,
+            6691593,
+            6691467,
+            6692751,
+            6692230,
+            6692129,
+            6691816
+        ]
+    },
+    "name": "A. Kitahara Haruki s Gift",
+    "statement": "Kitahara Haruki has bought apples for Touma Kazusa and Ogiso Setsuna.\r\nNow he wants to divide all the apples between the friends.Each apple\r\nweights 100 grams or 200 grams. Of course Kitahara Haruki doesn\u2019t want\r\nto offend any of his friend. Therefore the total weight of the apples\r\ngiven to Touma Kazusa must be equal to the total weight of the apples\r\ngiven to Ogiso Setsuna.But unfortunately Kitahara Haruki doesn\u2019t have a\r\nknife right now, so he cannot split any apple into some parts. Please,\r\ntell him: is it possible to divide all the apples in a fair way between\r\nhis friends?\r\n",
+    "solutions": [
+        "#include<cstdio>\n#include<cstring>\n\nint f[210], n;\n\nint main(){\n\tscanf(\"%d\", &n);\n\tf[0] = 1;\n\tint sum = 0;\n\tfor(int i = 1; i <= n; i ++){\n\t\tint v;\n\t\tscanf(\"%d\", &v);\n\t\tv /= 100;\n\t\tfor(int j = (n << 1); j >= 0; j --)\n\t\t\tif(f[j])\n\t\t\t\tf[j + v] = 1;\n\t\tsum += v;\n\t}\n\tif(sum & 1)\n\t\tfputs(\"NO\\n\", stdout);\n\telse if(f[sum >> 1])\n\t\tfputs(\"YES\\n\", stdout);\n\telse\n\t\tfputs(\"NO\\n\", stdout);\n\n\treturn 0;\n}\n\n\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "implementation"
+    ],
+    "dificulty": "1100",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Kitahara Haruki s Gift.json",
+    "editorial_link": "https://codeforces.com//blog/entry/12397",
+    "editorial": "Denote as the sum of the weight of the apples. If is not an even number,\r\nthen the answer is obviously \"NO\". Otherwise, we need to check if there\r\nis a way of choosing apples, so that the sum of the weight of the chosen\r\napples is exactly . A simple approach would be to enumerate how many\r\n200-gram apples do we choose, and check if we can fill the rest with\r\n100-gram apples. We can also solve this problem using a classic knapsack\r\nDP. Solution: 6712942\r\n"
+}

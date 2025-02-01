@@ -1,1 +1,82 @@
-{"link": "https://codeforces.com//contest/595/problem/E", "problemId": "40377", "problem_idx": "E", "shortId": "595E", "contest_number": "595", "problem_submissions": {"C": [14183245, 14174366, 14176948, 14185132, 14199391], "E": [14154107, 14157574, 14160562, 14158642], "B": [14147982, 14150411, 14148010, 14147720, 14155014, 14149149, 14148880, 14150127, 14148035, 14147384, 14147369, 14149951, 14147539, 14148771, 14147615], "A": [14144272, 14144928, 14145367, 14144629, 14144372, 14144556, 14144252, 14144455, 14146378, 14144766, 14145785, 14144276, 14144350, 14144811, 14144491, 14144489, 14144288], "D": [14159968, 14156852, 14157577, 14154481, 14163683]}, "name": "E. Edo and Magnets", "statement": "Edo has got a collection of refrigerator magnets!He decided to buy a\r\nrefrigerator and hang the magnets on the door. The shop can make the\r\nrefrigerator with any size of the door that meets the following\r\nrestrictions: the refrigerator door must be rectangle, and both the\r\nlength and the width of the door must be .Edo figured out how he wants\r\nto place the magnets on the refrigerator. He introduced a system of\r\ncoordinates on the plane, where each magnet is represented as a\r\nrectangle with sides parallel to the coordinate axes.Now he wants to\r\nremove no more than magnets (he may choose to keep all of them) and\r\nattach all remaining magnets to the refrigerator door, and the area of\r\nthe door should be as small as possible. A magnet is considered to be\r\nattached to the refrigerator door if lies on the door or on its\r\nboundary. The relative positions of all the remaining magnets must\r\ncorrespond to the plan.Let us explain the last two sentences. Let\u2019s\r\nsuppose we want to hang two magnets on the refrigerator. If the magnet\r\nin the plan has coordinates of the lower left corner (, ) and the upper\r\nright corner (, ), then its center is located at (, ) (may not be\r\nintegers). By saying the relative position should correspond to the plan\r\nwe mean that the only available operation is translation, i.e. the\r\nvector connecting the centers of two magnets in the original plan, must\r\nbe equal to the vector connecting the centers of these two magnets on\r\nthe refrigerator.\r\n", "solutions": ["#include <iostream>\n#include <fstream>\n#include <string>\n#include <map>\n#include <vector>\n#include <cmath>\n#include <iomanip>\n#include <algorithm>\n#include <set>\n\nusing namespace std;\n\nstruct str {\n    int x;\n    int y;\n    int id;\n    str(int xx = 0, int yy = 0, int idd = 0):\n    x(xx), y(yy), id(idd) {}\n};\n\nbool cmp1(str &a, str &b) {\n    return (a.x != b.x ? a.x < b.x : a.y < b.y);\n}\n\nbool cmp2(str &a, str &b) {\n    return (a.y != b.y ? a.y < b.y : a.x < b.x);\n}\n\nint main(int argc, const char * argv[]) {\n    std::ios::sync_with_stdio(false);\n    \n    int n, k;\n    cin >> n >> k;\n    \n    vector<str> c(n);\n    \n    int x1, y1, x2, y2;\n    for (int i = 0; i < n; ++i) {\n        cin >> x1 >> y1 >> x2 >> y2;\n        c[i] = str(x1 + x2, y1 + y2, i);\n    }\n    \n    vector<str> cx(c.begin(), c.end());\n    vector<str> cy(c.begin(), c.end());\n    sort(cx.begin(), cx.end(), cmp1);\n    sort(cy.begin(), cy.end(), cmp2);\n    \n    long long res = 1000000000;\n    res = res * res;\n    \n    for (int i = 0; i <= k; ++i) {\n        for (int j = 0; j <= k; ++j) {\n            for (int ii = 0; ii <= i; ++ii) {\n                for (int jj = 0; jj <= j; ++jj) {\n                    set <int> deleted;\n                    int lx = n - 1, ly = n - 1;\n                    int fx = 0, fy = 0;\n                    for (int kk = 0; kk < ii; ++kk) {\n                        deleted.insert(cx[kk].id);\n                        fx = kk + 1;\n                    }\n                    \n                    for (int kk = 0; kk + ii < i; ++kk) {\n                        deleted.insert(cx[n - 1 - kk].id);\n                        lx = n - 1 - kk - 1;\n                    }\n\n                    for (int kk = 0; kk < jj; ++kk) {\n                        deleted.insert(cy[kk].id);\n                        fy = kk + 1;\n                    }\n                    \n                    for (int kk = 0; kk + jj < j; ++kk) {\n                        deleted.insert(cy[n - 1 - kk].id);\n                        ly = n - 1 - kk - 1;\n                    }\n\n                    if (deleted.size() <= k) {\n                        long long xx = cx[lx].x - cx[fx].x;\n                        long long yy = cy[ly].y - cy[fy].y;\n\n                        yy = yy / 2 + yy % 2;\n                        if (xx == 0) {\n                            xx = 1;\n                        }\n                        xx = xx / 2 + xx % 2;\n                        if (yy == 0) {\n                            yy = 1;\n                        }\n                        res = min(res, xx * yy);\n                    }\n                }\n            }\n        }\n    }\n    cout << res;\n    \n    return 0;\n}\n"], "input": "", "output": "", "tags": ["brute force", "greedy", "implementation"], "dificulty": "2300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/595/problem/E",
+    "problemId": "40377",
+    "problem_idx": "E",
+    "shortId": "595E",
+    "contest_number": "595",
+    "problem_submissions": {
+        "C": [
+            14183245,
+            14174366,
+            14176948,
+            14185132,
+            14199391
+        ],
+        "E": [
+            14154107,
+            14157574,
+            14160562,
+            14158642
+        ],
+        "B": [
+            14147982,
+            14150411,
+            14148010,
+            14147720,
+            14155014,
+            14149149,
+            14148880,
+            14150127,
+            14148035,
+            14147384,
+            14147369,
+            14149951,
+            14147539,
+            14148771,
+            14147615
+        ],
+        "A": [
+            14144272,
+            14144928,
+            14145367,
+            14144629,
+            14144372,
+            14144556,
+            14144252,
+            14144455,
+            14146378,
+            14144766,
+            14145785,
+            14144276,
+            14144350,
+            14144811,
+            14144491,
+            14144489,
+            14144288
+        ],
+        "D": [
+            14159968,
+            14156852,
+            14157577,
+            14154481,
+            14163683
+        ]
+    },
+    "name": "E. Edo and Magnets",
+    "statement": "Edo has got a collection of refrigerator magnets!He decided to buy a\r\nrefrigerator and hang the magnets on the door. The shop can make the\r\nrefrigerator with any size of the door that meets the following\r\nrestrictions: the refrigerator door must be rectangle, and both the\r\nlength and the width of the door must be .Edo figured out how he wants\r\nto place the magnets on the refrigerator. He introduced a system of\r\ncoordinates on the plane, where each magnet is represented as a\r\nrectangle with sides parallel to the coordinate axes.Now he wants to\r\nremove no more than magnets (he may choose to keep all of them) and\r\nattach all remaining magnets to the refrigerator door, and the area of\r\nthe door should be as small as possible. A magnet is considered to be\r\nattached to the refrigerator door if lies on the door or on its\r\nboundary. The relative positions of all the remaining magnets must\r\ncorrespond to the plan.Let us explain the last two sentences. Let\u2019s\r\nsuppose we want to hang two magnets on the refrigerator. If the magnet\r\nin the plan has coordinates of the lower left corner (, ) and the upper\r\nright corner (, ), then its center is located at (, ) (may not be\r\nintegers). By saying the relative position should correspond to the plan\r\nwe mean that the only available operation is translation, i.e. the\r\nvector connecting the centers of two magnets in the original plan, must\r\nbe equal to the vector connecting the centers of these two magnets on\r\nthe refrigerator.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <fstream>\n#include <string>\n#include <map>\n#include <vector>\n#include <cmath>\n#include <iomanip>\n#include <algorithm>\n#include <set>\n\nusing namespace std;\n\nstruct str {\n    int x;\n    int y;\n    int id;\n    str(int xx = 0, int yy = 0, int idd = 0):\n    x(xx), y(yy), id(idd) {}\n};\n\nbool cmp1(str &a, str &b) {\n    return (a.x != b.x ? a.x < b.x : a.y < b.y);\n}\n\nbool cmp2(str &a, str &b) {\n    return (a.y != b.y ? a.y < b.y : a.x < b.x);\n}\n\nint main(int argc, const char * argv[]) {\n    std::ios::sync_with_stdio(false);\n    \n    int n, k;\n    cin >> n >> k;\n    \n    vector<str> c(n);\n    \n    int x1, y1, x2, y2;\n    for (int i = 0; i < n; ++i) {\n        cin >> x1 >> y1 >> x2 >> y2;\n        c[i] = str(x1 + x2, y1 + y2, i);\n    }\n    \n    vector<str> cx(c.begin(), c.end());\n    vector<str> cy(c.begin(), c.end());\n    sort(cx.begin(), cx.end(), cmp1);\n    sort(cy.begin(), cy.end(), cmp2);\n    \n    long long res = 1000000000;\n    res = res * res;\n    \n    for (int i = 0; i <= k; ++i) {\n        for (int j = 0; j <= k; ++j) {\n            for (int ii = 0; ii <= i; ++ii) {\n                for (int jj = 0; jj <= j; ++jj) {\n                    set <int> deleted;\n                    int lx = n - 1, ly = n - 1;\n                    int fx = 0, fy = 0;\n                    for (int kk = 0; kk < ii; ++kk) {\n                        deleted.insert(cx[kk].id);\n                        fx = kk + 1;\n                    }\n                    \n                    for (int kk = 0; kk + ii < i; ++kk) {\n                        deleted.insert(cx[n - 1 - kk].id);\n                        lx = n - 1 - kk - 1;\n                    }\n\n                    for (int kk = 0; kk < jj; ++kk) {\n                        deleted.insert(cy[kk].id);\n                        fy = kk + 1;\n                    }\n                    \n                    for (int kk = 0; kk + jj < j; ++kk) {\n                        deleted.insert(cy[n - 1 - kk].id);\n                        ly = n - 1 - kk - 1;\n                    }\n\n                    if (deleted.size() <= k) {\n                        long long xx = cx[lx].x - cx[fx].x;\n                        long long yy = cy[ly].y - cy[fy].y;\n\n                        yy = yy / 2 + yy % 2;\n                        if (xx == 0) {\n                            xx = 1;\n                        }\n                        xx = xx / 2 + xx % 2;\n                        if (yy == 0) {\n                            yy = 1;\n                        }\n                        res = min(res, xx * yy);\n                    }\n                }\n            }\n        }\n    }\n    cout << res;\n    \n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "greedy",
+        "implementation"
+    ],
+    "dificulty": "2300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Edo and Magnets.json",
+    "editorial_link": "https://codeforces.com//blog/entry/21487",
+    "editorial": "Let's find the centers of every rectangle and multiple them of 2 (to make all coordinates integers).Then we need to by the rectangle door, which contains all dots, but the lengths of the sides of this door must be rounded up to the nearest integers.\n\nNow, let's delete the magnets from the door one by one, gradually the door will decrease. Obviously every time optimal to delete only dots, which owned to the sides of the rectangle. Let's brute 4k ways, how we will do delete the magnets. We will do it with helps of recursion, every time we will delete point with minimum or maximum value of the coordinates. If we will store 4 arrays (or 2 deques) we can do it with asymptotic O(1). Such a solution works O(4k).\n\nIt can be easily shown that this algorithm delete always some number of the leftmost, rightmost, uppermost and lowermost points. So we can brute how k will distributed between this values and we can model the deleting with helps of 4 arrays. This solution has asymptotic behavior O(k4)."
+}

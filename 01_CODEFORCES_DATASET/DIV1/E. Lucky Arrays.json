@@ -1,1 +1,100 @@
-{"link": "https://codeforces.com//contest/256/problem/E", "problemId": "2404", "problem_idx": "E", "shortId": "256E", "contest_number": "256", "problem_submissions": {"B": [2781429, 2776681, 2779641, 2777927, 2779004, 2777545, 2777829, 2778651, 2777720, 2778451, 2776552, 2782245, 2781330, 2777533], "D": [2779473, 2779904, 2777535, 2782686, 2789193, 2781305], "E": [2777253, 2781852, 2779020, 2775034, 2779843, 2779937, 2778999, 2781729, 2780947, 2779725, 2804945, 2804943, 2781663, 2781905, 2777856, 2780182, 2777426, 2780269], "C": [2776456, 2777569, 2783097, 2779210, 2776586, 2776922, 2776660, 2779042, 2777560, 2782221, 2778280, 2780113, 2780104, 2777296], "A": [2774012, 2782979, 2775596, 2779786, 2774535, 2774925, 2776089, 2773923, 2775590, 2774961, 2782829, 2781660, 2781773, 2774247]}, "name": "E. Lucky Arrays", "statement": "Little Maxim loves interesting problems. He decided to share one such\r\nproblem with you. Initially there is an array , consisting of zeroes.\r\nThe elements of the array are indexed, starting from 1. Then follow\r\nqueries to change array . Each query is characterized by two integers .\r\nIn the answer to the query we should make the -th array element equal\r\n.Maxim thinks that some pairs of integers are good and some are not.\r\nMaxim thinks that array , consisting of integers, is lucky, if for all\r\ninteger , the pair of integers is good. Note that the order of numbers\r\nin the pairs is important, that is, specifically, .After each query to\r\nchange array Maxim wants to know, how many ways there are to replace all\r\nzeroes in array with integers from one to three so as to make the\r\nresulting array (without zeroes) lucky. Of course, distinct zeroes can\r\nbe replaced by distinct integers.Maxim told you the sequence of queries\r\nand all pairs of integers he considers lucky. Help Maxim, solve this\r\nproblem for him.\r\n", "solutions": ["/*\n * cd2.cpp\n *\n *  Created on: 2012-12-17\n *      Author: mac\n */\n#include <cstdio>\n#include <cstring>\n#include <algorithm>\n#include <iostream>\n#include <climits>\n#include <numeric>\n#define foreach(e,x) for(__typeof(x.begin()) e=x.begin();e!=x.end();++e)\n#define REP(i,n) for(int i=0;i<n;++i)\nusing namespace std;\nconst int MAX_N = 77777 + 10;\nconst int MOD = 777777777;\n\nint n, nQ;\nint w[3][3];\n\ntypedef long long int64;\n\nstruct Tree {\n\tint c[3][3];\n\tTree*pl, *pr;\n\tint l, r;\n\n\tvoid update() {\n\t\tfor (int i = 0; i < 3; ++i) {\n\t\t\tfor (int j = 0; j < 3; ++j) {\n\t\t\t\tint64 k = 0;\n\t\t\t\tfor (int pi = 0; pi < 3; ++pi) {\n\t\t\t\t\tfor (int pj = 0; pj < 3; ++pj)\n\t\t\t\t\t\tif (w[pi][pj]) {\n\t\t\t\t\t\t\tk += 1LL * pl->c[i][pi] * pr->c[pj][j];\n\t\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tc[i][j] = k % MOD;\n\t\t\t}\n\t\t}\n\t}\n\n\tTree(int l, int r) :\n\t\t\tl(l), r(r) {\n\t\tmemset(c, 0, sizeof c);\n\t\tif (l + 1 == r) {\n\t\t\tfor (int i = 0; i < 3; ++i) {\n\t\t\t\tc[i][i] = 1;\n\t\t\t}\n\t\t\treturn;\n\t\t}\n\t\tpl = new Tree(l, l + r >> 1);\n\t\tpr = new Tree(l + r >> 1, r);\n\t\tupdate();\n\t}\n\n\tvoid change(int i, int x) {\n\t\tif (i < l || i >= r)\n\t\t\treturn;\n\t\tif (l + 1 == r) {\n\t\t\tif (x == 0) {\n\t\t\t\tmemset(c, 0, sizeof c);\n\t\t\t\tfor (int j = 0; j < 3; ++j) {\n\t\t\t\t\tc[j][j] = 1;\n\t\t\t\t}\n\t\t\t} else {\n\t\t\t\tmemset(c, 0, sizeof c);\n\t\t\t\tc[x - 1][x - 1] = 1;\n\t\t\t}\n\t\t\treturn;\n\t\t}\n\t\tpl->change(i, x);\n\t\tpr->change(i, x);\n\t\tupdate();\n\t}\n}*root;\n\nint main() {\n\tcin >> n >> nQ;\n\tfor (int i = 0; i < 3; ++i) {\n\t\tfor (int j = 0; j < 3; ++j) {\n\t\t\tcin >> w[i][j];\n\t\t}\n\t}\n\troot = new Tree(0, n);\n\tfor (int i = 0; i < nQ; ++i) {\n\t\tint a, x;\n\t\tscanf(\"%d%d\", &a, &x);\n\t\t--a;\n\t\troot->change(a, x);\n\t\tint ans = 0;\n\t\tfor (int j = 0; j < 3; ++j) {\n\t\t\tfor (int k = 0; k < 3; ++k) {\n\t\t\t\tans += root->c[j][k];\n\t\t\t\tans %= MOD;\n\t\t\t}\n\t\t}\n\t\tprintf(\"%d\\n\", ans);\n\t}\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["data structures"], "dificulty": "2400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/256/problem/E",
+    "problemId": "2404",
+    "problem_idx": "E",
+    "shortId": "256E",
+    "contest_number": "256",
+    "problem_submissions": {
+        "B": [
+            2781429,
+            2776681,
+            2779641,
+            2777927,
+            2779004,
+            2777545,
+            2777829,
+            2778651,
+            2777720,
+            2778451,
+            2776552,
+            2782245,
+            2781330,
+            2777533
+        ],
+        "D": [
+            2779473,
+            2779904,
+            2777535,
+            2782686,
+            2789193,
+            2781305
+        ],
+        "E": [
+            2777253,
+            2781852,
+            2779020,
+            2775034,
+            2779843,
+            2779937,
+            2778999,
+            2781729,
+            2780947,
+            2779725,
+            2804945,
+            2804943,
+            2781663,
+            2781905,
+            2777856,
+            2780182,
+            2777426,
+            2780269
+        ],
+        "C": [
+            2776456,
+            2777569,
+            2783097,
+            2779210,
+            2776586,
+            2776922,
+            2776660,
+            2779042,
+            2777560,
+            2782221,
+            2778280,
+            2780113,
+            2780104,
+            2777296
+        ],
+        "A": [
+            2774012,
+            2782979,
+            2775596,
+            2779786,
+            2774535,
+            2774925,
+            2776089,
+            2773923,
+            2775590,
+            2774961,
+            2782829,
+            2781660,
+            2781773,
+            2774247
+        ]
+    },
+    "name": "E. Lucky Arrays",
+    "statement": "Little Maxim loves interesting problems. He decided to share one such\r\nproblem with you. Initially there is an array , consisting of zeroes.\r\nThe elements of the array are indexed, starting from 1. Then follow\r\nqueries to change array . Each query is characterized by two integers .\r\nIn the answer to the query we should make the -th array element equal\r\n.Maxim thinks that some pairs of integers are good and some are not.\r\nMaxim thinks that array , consisting of integers, is lucky, if for all\r\ninteger , the pair of integers is good. Note that the order of numbers\r\nin the pairs is important, that is, specifically, .After each query to\r\nchange array Maxim wants to know, how many ways there are to replace all\r\nzeroes in array with integers from one to three so as to make the\r\nresulting array (without zeroes) lucky. Of course, distinct zeroes can\r\nbe replaced by distinct integers.Maxim told you the sequence of queries\r\nand all pairs of integers he considers lucky. Help Maxim, solve this\r\nproblem for him.\r\n",
+    "solutions": [
+        "/*\n * cd2.cpp\n *\n *  Created on: 2012-12-17\n *      Author: mac\n */\n#include <cstdio>\n#include <cstring>\n#include <algorithm>\n#include <iostream>\n#include <climits>\n#include <numeric>\n#define foreach(e,x) for(__typeof(x.begin()) e=x.begin();e!=x.end();++e)\n#define REP(i,n) for(int i=0;i<n;++i)\nusing namespace std;\nconst int MAX_N = 77777 + 10;\nconst int MOD = 777777777;\n\nint n, nQ;\nint w[3][3];\n\ntypedef long long int64;\n\nstruct Tree {\n\tint c[3][3];\n\tTree*pl, *pr;\n\tint l, r;\n\n\tvoid update() {\n\t\tfor (int i = 0; i < 3; ++i) {\n\t\t\tfor (int j = 0; j < 3; ++j) {\n\t\t\t\tint64 k = 0;\n\t\t\t\tfor (int pi = 0; pi < 3; ++pi) {\n\t\t\t\t\tfor (int pj = 0; pj < 3; ++pj)\n\t\t\t\t\t\tif (w[pi][pj]) {\n\t\t\t\t\t\t\tk += 1LL * pl->c[i][pi] * pr->c[pj][j];\n\t\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tc[i][j] = k % MOD;\n\t\t\t}\n\t\t}\n\t}\n\n\tTree(int l, int r) :\n\t\t\tl(l), r(r) {\n\t\tmemset(c, 0, sizeof c);\n\t\tif (l + 1 == r) {\n\t\t\tfor (int i = 0; i < 3; ++i) {\n\t\t\t\tc[i][i] = 1;\n\t\t\t}\n\t\t\treturn;\n\t\t}\n\t\tpl = new Tree(l, l + r >> 1);\n\t\tpr = new Tree(l + r >> 1, r);\n\t\tupdate();\n\t}\n\n\tvoid change(int i, int x) {\n\t\tif (i < l || i >= r)\n\t\t\treturn;\n\t\tif (l + 1 == r) {\n\t\t\tif (x == 0) {\n\t\t\t\tmemset(c, 0, sizeof c);\n\t\t\t\tfor (int j = 0; j < 3; ++j) {\n\t\t\t\t\tc[j][j] = 1;\n\t\t\t\t}\n\t\t\t} else {\n\t\t\t\tmemset(c, 0, sizeof c);\n\t\t\t\tc[x - 1][x - 1] = 1;\n\t\t\t}\n\t\t\treturn;\n\t\t}\n\t\tpl->change(i, x);\n\t\tpr->change(i, x);\n\t\tupdate();\n\t}\n}*root;\n\nint main() {\n\tcin >> n >> nQ;\n\tfor (int i = 0; i < 3; ++i) {\n\t\tfor (int j = 0; j < 3; ++j) {\n\t\t\tcin >> w[i][j];\n\t\t}\n\t}\n\troot = new Tree(0, n);\n\tfor (int i = 0; i < nQ; ++i) {\n\t\tint a, x;\n\t\tscanf(\"%d%d\", &a, &x);\n\t\t--a;\n\t\troot->change(a, x);\n\t\tint ans = 0;\n\t\tfor (int j = 0; j < 3; ++j) {\n\t\t\tfor (int k = 0; k < 3; ++k) {\n\t\t\t\tans += root->c[j][k];\n\t\t\t\tans %= MOD;\n\t\t\t}\n\t\t}\n\t\tprintf(\"%d\\n\", ans);\n\t}\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "data structures"
+    ],
+    "dificulty": "2400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\E. Lucky Arrays.json",
+    "editorial_link": "https://codeforces.com//blog/entry/6161",
+    "editorial": "Solution is interval tree. We will save dynamic programming f[i,j] in\r\neach vertex, this dp means: in how many ways we can change all 0 to some\r\nnumbers on interval, such that it will be valid and first element will\r\nbe i and last will be j. With normal implementation its easy to pass\r\nsystem tests.\r\n"
+}

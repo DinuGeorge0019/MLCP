@@ -1,1 +1,105 @@
-{"link": "https://codeforces.com//contest/613/problem/E", "problemId": "45535", "problem_idx": "E", "shortId": "613E", "contest_number": "613", "problem_submissions": {"D": [15370174, 15369060, 15371636, 15370471, 15379384, 15362600, 15363979, 15354167, 15368389, 15426084, 15425641, 15365392, 15373098, 18779257, 15368296, 15377483, 15371351], "C": [15363274, 15363231, 15359913, 15359671, 15371545, 15371994, 15368974, 15427099, 15373779, 15500484, 15359086, 15366208, 15362711, 15361056, 15365561, 15365370], "B": [15355133, 15358358, 15354489, 15354211, 15353308, 15367695, 15366228, 15357588, 15366815, 15355551, 15352746, 15361105, 15353369, 15358156, 15356015, 15356798], "A": [15349386, 15350249, 15349384, 15362764, 15355920, 15349371, 15350969, 15352662, 15350106, 15372771, 15354161, 15348878, 15349502, 15352202, 15349256, 15352650], "E": [15391423, 16723541, 16067912, 16067870]}, "name": "E. Puzzle Lover", "statement": "Oleg Petrov loves crossword puzzles and every Thursday he buys his\r\nfavorite magazine with crosswords and other word puzzles. In the last\r\nmagazine Oleg found a curious puzzle, and the magazine promised a\r\nvaluable prize for it\u2019s solution. We give a formal description of the\r\nproblem below.The puzzle field consists of two rows, each row contains\r\ncells. Each cell contains exactly one small English letter. You also are\r\ngiven a word , which consists of small English letters. A of the puzzle\r\nis a sequence of field cells , , , such that: For all from to the letter\r\nwritten in the cell matches the letter ; All the cells in the sequence\r\nare pairwise distinct; For all from to cells and have a common side.Oleg\r\nPetrov quickly found a solution for the puzzle. Now he wonders, how many\r\ndistinct solutions are there for this puzzle. Oleg Petrov doesn\u2019t like\r\ntoo large numbers, so calculate the answer modulo .Two solutions and are\r\nconsidered distinct if the sequences of cells do not match in at least\r\none position, that is there is such in range from to , such that .\r\n", "solutions": ["#include <bits/stdc++.h>\n\nusing namespace std;\n\n#define REP(i, a, b) for (int i = (a), _end_ = (b); i < _end_; ++i)\n#define debug(...) fprintf(stderr, __VA_ARGS__)\n#define mp make_pair\n#define x first\n#define y second\n#define pb push_back\n#define SZ(x) (int((x).size()))\n#define ALL(x) (x).begin(), (x).end()\n\ntemplate<typename T> inline bool chkmin(T &a, const T &b) { return a > b ? a = b, 1 : 0; }\ntemplate<typename T> inline bool chkmax(T &a, const T &b) { return a < b ? a = b, 1 : 0; }\n\ntypedef long long LL;\n\nconst int Mod = 1e9 + 7;\n\nconst int maxn = 2000, maxm = 2000;\n\nint n, m;\nchar a[maxn + 5], b[maxn + 5], c[maxn + 5];\n\nint g[2][maxn + 5];\nint w[maxn + 5];\n\nbool ok_left[2][maxn + 5][maxm + 5];\nbool ok_right[2][maxn + 5][maxm + 5];\n\nint Max[2][maxn + 5][maxm + 5];\n\nint dp[2][maxn + 5][maxn + 5];\n\nint ans = 0;\n\ninline void update(int i, int j, int k, int val)\n{\n\tif (k == m || ok_right[i][j][k]) (ans += val) %= Mod;\n}\n\ninline void solve(bool ty)\n{\n\tmemset(ok_left, 0, sizeof ok_left);\n\tmemset(ok_right, 0, sizeof ok_right);\n\tmemset(Max, 0, sizeof Max);\n\tREP(i, 0, 2)\n\t{\n\t\tfor (int j = n - 1; j >= 0; --j) for (int k = m - 1; k >= 0; --k)\n\t\t\tif (g[i][j] == w[k]) Max[i][j][k] = Max[i][j + 1][k + 1] + 1;\n\t}\n\tREP(i, 0, 2)\n\t{\n\t\tREP(j, 0, n)\n\t\t{\n\t\t\tint k = j;\n\t\t\tint cur = 0;\n\t\t\twhile (k >= 0)\n\t\t\t{\n\t\t\t\tif (g[i][k] != w[cur++] || (cur << 1) > m) break;\n\t\t\t\tif (k != j) ok_left[!i][j + 1][cur << 1] = k + Max[!i][k][cur] > j;\n\t\t\t\t--k;\n\t\t\t}\n\t\t}\n\t\tfor (int j = n - 1; j >= 0; --j)\n\t\t{\n\t\t\tint k = j;\n\t\t\tint cur = m;\n\t\t\twhile (k < n)\n\t\t\t{\n\t\t\t\tif (g[i][k] != w[--cur] || (cur << 1) < m) break;\n\t\t\t\tif (j != k) ok_right[!i][j][(cur << 1) - m] = j + Max[!i][j][(cur << 1) - m] > k;\n\t\t\t\t++k;\n\t\t\t}\n\t\t}\n\t}\n\tmemset(dp, 0, sizeof dp);\n\tREP(j, 0, n + 1)\n\t{\n\t\tREP(i, 0, 2)\n\t\t\tREP(k, 0, m + 1)\n\t\t\t{\n\t\t\t\tif (!k || ok_left[i][j][k]) (++dp[i][j][k]) %= Mod;\n\t\t\t\tif (ty && k && k < m) update(i, j, k, dp[i][j][k]);\n\t\t\t\tif (dp[i][j][k])\n\t\t\t\t{\n\t\t\t\t\tif (j < n)\n\t\t\t\t\t{\n\t\t\t\t\t\tif (k < m && g[i][j] == w[k]) \n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t(dp[i][j + 1][k + 1] += dp[i][j][k]) %= Mod;\n\t\t\t\t\t\t\tif (ty && k && k + 1 == m) update(i, j + 1, k + 1, dp[i][j][k]);\n\t\t\t\t\t\t}\n\t\t\t\t\t\tif (k + 1 < m && g[i][j] == w[k] && g[!i][j] == w[k + 1]) \n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t(dp[!i][j + 1][k + 2] += dp[i][j][k]) %= Mod;\n\t\t\t\t\t\t\tif (ty && k && k + 2 == m) update(!i, j + 1, k + 2, dp[i][j][k]);\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\tif (!ty) update(i, j, k, dp[i][j][k]);\n\t\t\t\t}\n\t\t\t}\n\t}\n}\n\nint main()\n{\n#ifndef ONLINE_JUDGE\n\tfreopen(\"input.txt\", \"r\", stdin);\n\tfreopen(\"output.txt\", \"w\", stdout);\n#endif\n\tscanf(\"%s%s%s\", a, b, c);\n\tn = strlen(a), m = strlen(c);\n\tREP(i, 0, n) g[0][i] = a[i] - 'a', g[1][i] = b[i] - 'a';\n\tREP(i, 0, m) w[i] = c[i] - 'a';\n\tans = 0;\n\tsolve(0);\n\treverse(w, w + m);\n\tsolve(1);\n\t(ans += Mod) %= Mod;\n\tprintf(\"%d\\n\", ans);\n\treturn 0;\n}\n\n"], "input": "", "output": "", "tags": ["dp", "hashing", "strings"], "dificulty": "3200", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/613/problem/E",
+    "problemId": "45535",
+    "problem_idx": "E",
+    "shortId": "613E",
+    "contest_number": "613",
+    "problem_submissions": {
+        "D": [
+            15370174,
+            15369060,
+            15371636,
+            15370471,
+            15379384,
+            15362600,
+            15363979,
+            15354167,
+            15368389,
+            15426084,
+            15425641,
+            15365392,
+            15373098,
+            18779257,
+            15368296,
+            15377483,
+            15371351
+        ],
+        "C": [
+            15363274,
+            15363231,
+            15359913,
+            15359671,
+            15371545,
+            15371994,
+            15368974,
+            15427099,
+            15373779,
+            15500484,
+            15359086,
+            15366208,
+            15362711,
+            15361056,
+            15365561,
+            15365370
+        ],
+        "B": [
+            15355133,
+            15358358,
+            15354489,
+            15354211,
+            15353308,
+            15367695,
+            15366228,
+            15357588,
+            15366815,
+            15355551,
+            15352746,
+            15361105,
+            15353369,
+            15358156,
+            15356015,
+            15356798
+        ],
+        "A": [
+            15349386,
+            15350249,
+            15349384,
+            15362764,
+            15355920,
+            15349371,
+            15350969,
+            15352662,
+            15350106,
+            15372771,
+            15354161,
+            15348878,
+            15349502,
+            15352202,
+            15349256,
+            15352650
+        ],
+        "E": [
+            15391423,
+            16723541,
+            16067912,
+            16067870
+        ]
+    },
+    "name": "E. Puzzle Lover",
+    "statement": "Oleg Petrov loves crossword puzzles and every Thursday he buys his\r\nfavorite magazine with crosswords and other word puzzles. In the last\r\nmagazine Oleg found a curious puzzle, and the magazine promised a\r\nvaluable prize for it\u2019s solution. We give a formal description of the\r\nproblem below.The puzzle field consists of two rows, each row contains\r\ncells. Each cell contains exactly one small English letter. You also are\r\ngiven a word , which consists of small English letters. A of the puzzle\r\nis a sequence of field cells , , , such that: For all from to the letter\r\nwritten in the cell matches the letter ; All the cells in the sequence\r\nare pairwise distinct; For all from to cells and have a common side.Oleg\r\nPetrov quickly found a solution for the puzzle. Now he wonders, how many\r\ndistinct solutions are there for this puzzle. Oleg Petrov doesn\u2019t like\r\ntoo large numbers, so calculate the answer modulo .Two solutions and are\r\nconsidered distinct if the sequences of cells do not match in at least\r\none position, that is there is such in range from to , such that .\r\n",
+    "solutions": [
+        "#include <bits/stdc++.h>\n\nusing namespace std;\n\n#define REP(i, a, b) for (int i = (a), _end_ = (b); i < _end_; ++i)\n#define debug(...) fprintf(stderr, __VA_ARGS__)\n#define mp make_pair\n#define x first\n#define y second\n#define pb push_back\n#define SZ(x) (int((x).size()))\n#define ALL(x) (x).begin(), (x).end()\n\ntemplate<typename T> inline bool chkmin(T &a, const T &b) { return a > b ? a = b, 1 : 0; }\ntemplate<typename T> inline bool chkmax(T &a, const T &b) { return a < b ? a = b, 1 : 0; }\n\ntypedef long long LL;\n\nconst int Mod = 1e9 + 7;\n\nconst int maxn = 2000, maxm = 2000;\n\nint n, m;\nchar a[maxn + 5], b[maxn + 5], c[maxn + 5];\n\nint g[2][maxn + 5];\nint w[maxn + 5];\n\nbool ok_left[2][maxn + 5][maxm + 5];\nbool ok_right[2][maxn + 5][maxm + 5];\n\nint Max[2][maxn + 5][maxm + 5];\n\nint dp[2][maxn + 5][maxn + 5];\n\nint ans = 0;\n\ninline void update(int i, int j, int k, int val)\n{\n\tif (k == m || ok_right[i][j][k]) (ans += val) %= Mod;\n}\n\ninline void solve(bool ty)\n{\n\tmemset(ok_left, 0, sizeof ok_left);\n\tmemset(ok_right, 0, sizeof ok_right);\n\tmemset(Max, 0, sizeof Max);\n\tREP(i, 0, 2)\n\t{\n\t\tfor (int j = n - 1; j >= 0; --j) for (int k = m - 1; k >= 0; --k)\n\t\t\tif (g[i][j] == w[k]) Max[i][j][k] = Max[i][j + 1][k + 1] + 1;\n\t}\n\tREP(i, 0, 2)\n\t{\n\t\tREP(j, 0, n)\n\t\t{\n\t\t\tint k = j;\n\t\t\tint cur = 0;\n\t\t\twhile (k >= 0)\n\t\t\t{\n\t\t\t\tif (g[i][k] != w[cur++] || (cur << 1) > m) break;\n\t\t\t\tif (k != j) ok_left[!i][j + 1][cur << 1] = k + Max[!i][k][cur] > j;\n\t\t\t\t--k;\n\t\t\t}\n\t\t}\n\t\tfor (int j = n - 1; j >= 0; --j)\n\t\t{\n\t\t\tint k = j;\n\t\t\tint cur = m;\n\t\t\twhile (k < n)\n\t\t\t{\n\t\t\t\tif (g[i][k] != w[--cur] || (cur << 1) < m) break;\n\t\t\t\tif (j != k) ok_right[!i][j][(cur << 1) - m] = j + Max[!i][j][(cur << 1) - m] > k;\n\t\t\t\t++k;\n\t\t\t}\n\t\t}\n\t}\n\tmemset(dp, 0, sizeof dp);\n\tREP(j, 0, n + 1)\n\t{\n\t\tREP(i, 0, 2)\n\t\t\tREP(k, 0, m + 1)\n\t\t\t{\n\t\t\t\tif (!k || ok_left[i][j][k]) (++dp[i][j][k]) %= Mod;\n\t\t\t\tif (ty && k && k < m) update(i, j, k, dp[i][j][k]);\n\t\t\t\tif (dp[i][j][k])\n\t\t\t\t{\n\t\t\t\t\tif (j < n)\n\t\t\t\t\t{\n\t\t\t\t\t\tif (k < m && g[i][j] == w[k]) \n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t(dp[i][j + 1][k + 1] += dp[i][j][k]) %= Mod;\n\t\t\t\t\t\t\tif (ty && k && k + 1 == m) update(i, j + 1, k + 1, dp[i][j][k]);\n\t\t\t\t\t\t}\n\t\t\t\t\t\tif (k + 1 < m && g[i][j] == w[k] && g[!i][j] == w[k + 1]) \n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t(dp[!i][j + 1][k + 2] += dp[i][j][k]) %= Mod;\n\t\t\t\t\t\t\tif (ty && k && k + 2 == m) update(!i, j + 1, k + 2, dp[i][j][k]);\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\tif (!ty) update(i, j, k, dp[i][j][k]);\n\t\t\t\t}\n\t\t\t}\n\t}\n}\n\nint main()\n{\n#ifndef ONLINE_JUDGE\n\tfreopen(\"input.txt\", \"r\", stdin);\n\tfreopen(\"output.txt\", \"w\", stdout);\n#endif\n\tscanf(\"%s%s%s\", a, b, c);\n\tn = strlen(a), m = strlen(c);\n\tREP(i, 0, n) g[0][i] = a[i] - 'a', g[1][i] = b[i] - 'a';\n\tREP(i, 0, m) w[i] = c[i] - 'a';\n\tans = 0;\n\tsolve(0);\n\treverse(w, w + m);\n\tsolve(1);\n\t(ans += Mod) %= Mod;\n\tprintf(\"%d\\n\", ans);\n\treturn 0;\n}\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp",
+        "hashing",
+        "strings"
+    ],
+    "dificulty": "3200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\E. Puzzle Lover.json",
+    "editorial_link": "https://codeforces.com//blog/entry/22832",
+    "editorial": "The key observation: any way to cross out\nthe word looks roughly as follows: That is, there can be following\nparts: go back symbols in one row, then go forward symbols in the other\nrow (possibly ) go forward with arbitrarily up and down shifts in a\nsnake-like manner go forward symbols in one row, then go back in the\nother row (possibly ) Note that the \"forward\" direction can be either to\nthe left or to the right. It is convenient that for almost any such way\nwe can determine the \"direction\" as well as the places where different\n\"parts\" of the path (according to the above) start. To avoid ambiguity,\nwe will forbid or (since such parts can be included into the \"snake\").\nFix the direction. We will count the DP for the number of ways to cross\nout first letters of and finished at the cell while being inside the\nsnake part of the way. The transitions are fairly clear (since the snake\npart only moves forward). However, we have to manually handle the first\nand the last part. For each cell and each value of we can determine if\nthe \"go-back-then-go-forward\" maneuver with parameter can be performed\nwith the chosen cell as finish; this can be reduced to comparing of some\nsubstrings of field of rows and the word (and its reversed copy). In a\nsimilar way, for any state we can check if we can append the final\n\"go-forward-then-go-back\" part of the path to finally obtain a\nfull-fledged path. This DP has states and transitions. However, there\nare still some questions left. How do we perform the substring\ncomparisons? There is a whole arsenal of possible options: (carefully\nimplemented) hashes, suffix structures, etc. Probably the simplest way\nis to use Z-function for a solution that does precalc and answers each\nsubstring query in time (can you see how to do it?). Also, there are\npaths that we can consider more than once. More precisely, a path that\nconsists only of the \"go-forward-the-go-back\" part will be counted twice\n(for both directions), thus we have to subtract such paths explicitly.\nEvery other path is counted only once, thus we are done. (Note: this\ndoes not exactly work when is short, say, 4 symbols or less. The\nsimplest way is to implement straightforward brute-force for such\ncases.)\n"
+}

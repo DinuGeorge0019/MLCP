@@ -1,1 +1,100 @@
-{"link": "https://codeforces.com//contest/592/problem/A", "problemId": "39715", "problem_idx": "A", "shortId": "592A", "contest_number": "592", "problem_submissions": {"D": [13987439, 13982159, 13986627, 13986544, 13987382, 13988819, 13987375, 13987118, 13988148, 13987147, 13990565, 13986857, 13989994, 13991007, 13989203, 13989734, 13991375, 13989244], "C": [13982269, 13981200, 13983408, 13982994, 13981714, 13982661, 13983184, 13983906, 13982447, 13984910, 13983829], "B": [13977841, 13974476, 13978321, 13975713, 13975313, 13978246, 13976302, 13974264, 13976441, 13976404, 13977709, 13976428, 13978061, 13978476, 13979510, 13978971, 13977780, 13976576], "A": [13975304, 13993400, 13979938, 13974321, 13974175, 13975291, 13978651, 13978273, 13974604, 13988437, 13975687, 13974467, 13976335, 13976275, 13975414, 13976741, 13976354, 13981732], "E": [14029966]}, "name": "A. PawnChess", "statement": "Galois is one of the strongest chess players of Byteforces. He has even\r\ninvented a new variant of chess, which he named PawnChess .This new game\r\nis played on a board consisting of 8 rows and 8 columns. At the\r\nbeginning of every game some black and white pawns are placed on the\r\nboard. The number of black pawns placed is not necessarily equal to the\r\nnumber of white pawns placed. Lets enumerate rows and columns with\r\nintegers from 1 to 8. Rows are numbered from top to bottom, while\r\ncolumns are numbered from left to right. Now we denote as the cell\r\nlocated at the row and at the column .There are always two players A and\r\nB playing the game. Player A plays with white pawns, while player B\r\nplays with black ones. The goal of player A is to put any of his pawns\r\nto the row , while player B tries to put any of his pawns to the row .\r\nAs soon as any of the players completes his goal the game finishes\r\nimmediately and the succeeded player is declared a winner.Player A moves\r\nfirst and then they alternate turns. On his move player A must choose\r\nexactly one white pawn and move it one step upward and player B (at his\r\nturn) must choose exactly one black pawn and move it one step down. Any\r\nmove is possible only if the targeted cell is empty. It\u2019s guaranteed\r\nthat for any scenario of the game there will always be at least one move\r\navailable for any of the players.Moving upward means that the pawn\r\nlocated in will go to the cell , while moving down means the pawn\r\nlocated in will go to the cell . Again, the corresponding cell must be\r\nempty, i.e. not occupied by any other pawn of any color.Given the\r\ninitial disposition of the board, determine who wins the game if both\r\nplayers play optimally. Note that there will always be a winner due to\r\nthe restriction that for any game scenario both players will have some\r\nmoves available.\r\n", "solutions": ["#include <bits/stdc++.h>\nusing namespace std;\n\ntypedef long long ll;\ntypedef pair<int, int> pii;\n#define sz(x) ((int) (x).size())\n#define X first\n#define Y second\n\n#define MAX 11\nstring board[MAX];\n\nvoid smin(int &a, int b) {\n\tif (a > b) a = b;\n}\n\nint main() {\n\tios_base::sync_with_stdio(false); cin.tie(0);\n#ifdef _LOCAL\n\tfreopen(\"input.txt\", \"r\", stdin);\n#endif\n\tfor (int i = 0; i < 8; ++i) cin >> board[i];\n\tint min_a = 1234;\n\tint min_b = 1234;\n\tfor (int j = 0; j < 8; ++j) {\n\t\tint i;\n\t\tfor (i = 0; i < 8 && board[i][j] == '.'; ++i);\n\t\tif (i < 8 && board[i][j] == 'W') smin(min_a, i);\n\t\tfor (i = 7; i >= 0 && board[i][j] == '.'; --i);\n\t\tif (i >= 0 && board[i][j] == 'B') smin(min_b, 8 - i - 1);\n\t}\n\tcerr << min_a << ' ' << min_b << endl;\n\tif (min_a <= min_b) cout << \"A\" << endl;\n\telse cout << \"B\" << endl;\n\treturn 0;\n}\n\n/**\n*\t built in Contest Parser [Version 1.02]\n**/\n"], "input": "", "output": "", "tags": ["implementation"], "dificulty": "1200", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/592/problem/A",
+    "problemId": "39715",
+    "problem_idx": "A",
+    "shortId": "592A",
+    "contest_number": "592",
+    "problem_submissions": {
+        "D": [
+            13987439,
+            13982159,
+            13986627,
+            13986544,
+            13987382,
+            13988819,
+            13987375,
+            13987118,
+            13988148,
+            13987147,
+            13990565,
+            13986857,
+            13989994,
+            13991007,
+            13989203,
+            13989734,
+            13991375,
+            13989244
+        ],
+        "C": [
+            13982269,
+            13981200,
+            13983408,
+            13982994,
+            13981714,
+            13982661,
+            13983184,
+            13983906,
+            13982447,
+            13984910,
+            13983829
+        ],
+        "B": [
+            13977841,
+            13974476,
+            13978321,
+            13975713,
+            13975313,
+            13978246,
+            13976302,
+            13974264,
+            13976441,
+            13976404,
+            13977709,
+            13976428,
+            13978061,
+            13978476,
+            13979510,
+            13978971,
+            13977780,
+            13976576
+        ],
+        "A": [
+            13975304,
+            13993400,
+            13979938,
+            13974321,
+            13974175,
+            13975291,
+            13978651,
+            13978273,
+            13974604,
+            13988437,
+            13975687,
+            13974467,
+            13976335,
+            13976275,
+            13975414,
+            13976741,
+            13976354,
+            13981732
+        ],
+        "E": [
+            14029966
+        ]
+    },
+    "name": "A. PawnChess",
+    "statement": "Galois is one of the strongest chess players of Byteforces. He has even\r\ninvented a new variant of chess, which he named PawnChess .This new game\r\nis played on a board consisting of 8 rows and 8 columns. At the\r\nbeginning of every game some black and white pawns are placed on the\r\nboard. The number of black pawns placed is not necessarily equal to the\r\nnumber of white pawns placed. Lets enumerate rows and columns with\r\nintegers from 1 to 8. Rows are numbered from top to bottom, while\r\ncolumns are numbered from left to right. Now we denote as the cell\r\nlocated at the row and at the column .There are always two players A and\r\nB playing the game. Player A plays with white pawns, while player B\r\nplays with black ones. The goal of player A is to put any of his pawns\r\nto the row , while player B tries to put any of his pawns to the row .\r\nAs soon as any of the players completes his goal the game finishes\r\nimmediately and the succeeded player is declared a winner.Player A moves\r\nfirst and then they alternate turns. On his move player A must choose\r\nexactly one white pawn and move it one step upward and player B (at his\r\nturn) must choose exactly one black pawn and move it one step down. Any\r\nmove is possible only if the targeted cell is empty. It\u2019s guaranteed\r\nthat for any scenario of the game there will always be at least one move\r\navailable for any of the players.Moving upward means that the pawn\r\nlocated in will go to the cell , while moving down means the pawn\r\nlocated in will go to the cell . Again, the corresponding cell must be\r\nempty, i.e. not occupied by any other pawn of any color.Given the\r\ninitial disposition of the board, determine who wins the game if both\r\nplayers play optimally. Note that there will always be a winner due to\r\nthe restriction that for any game scenario both players will have some\r\nmoves available.\r\n",
+    "solutions": [
+        "#include <bits/stdc++.h>\nusing namespace std;\n\ntypedef long long ll;\ntypedef pair<int, int> pii;\n#define sz(x) ((int) (x).size())\n#define X first\n#define Y second\n\n#define MAX 11\nstring board[MAX];\n\nvoid smin(int &a, int b) {\n\tif (a > b) a = b;\n}\n\nint main() {\n\tios_base::sync_with_stdio(false); cin.tie(0);\n#ifdef _LOCAL\n\tfreopen(\"input.txt\", \"r\", stdin);\n#endif\n\tfor (int i = 0; i < 8; ++i) cin >> board[i];\n\tint min_a = 1234;\n\tint min_b = 1234;\n\tfor (int j = 0; j < 8; ++j) {\n\t\tint i;\n\t\tfor (i = 0; i < 8 && board[i][j] == '.'; ++i);\n\t\tif (i < 8 && board[i][j] == 'W') smin(min_a, i);\n\t\tfor (i = 7; i >= 0 && board[i][j] == '.'; --i);\n\t\tif (i >= 0 && board[i][j] == 'B') smin(min_b, 8 - i - 1);\n\t}\n\tcerr << min_a << ' ' << min_b << endl;\n\tif (min_a <= min_b) cout << \"A\" << endl;\n\telse cout << \"B\" << endl;\n\treturn 0;\n}\n\n/**\n*\t built in Contest Parser [Version 1.02]\n**/\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation"
+    ],
+    "dificulty": "1200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. PawnChess.json",
+    "editorial_link": "https://codeforces.com//blog/entry/21318",
+    "editorial": "Player A wins if the distance of his nearest pawn to the top of the board is less than or equal to the distance of the Player\u0092s B nearest pawn to the bottom of the board (Note that you should only consider pawns that are not blocked by another pawns)."
+}

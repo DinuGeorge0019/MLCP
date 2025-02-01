@@ -1,1 +1,107 @@
-{"link": "https://codeforces.com//contest/380/problem/C", "problemId": "5531", "problem_idx": "C", "shortId": "380C", "contest_number": "380", "problem_submissions": {"A": [5676030, 5677444, 5667291, 5667878, 5667181, 5667622, 5667888, 5676828, 5666938, 5673846, 5670879, 5671395, 5669327, 5667863, 5667948, 5667971], "B": [5675030, 5677446, 5675293, 5674969, 5675596, 5677558], "E": [5673042, 5677453, 5674068, 5676554, 5676509, 5676152, 5673443, 5674960, 5673247, 5668823, 5671385, 5675127, 5674081, 6260429, 6260427, 6260419, 6260414, 6260386, 6260376, 6260372], "C": [5670663, 5677450, 5668629, 5669869, 5669624, 5673114, 5670447, 5670550, 5670519, 5668457, 5669925, 5671669, 5675539, 5669908, 5671123], "D": [5669162, 5677451, 5672118, 5672469, 5675471, 5671822, 5674127, 5674948, 5672625, 5672722, 5676148, 5674145, 5674258, 5673843, 5674777]}, "name": "C. Sereja and Brackets", "statement": "Sereja has a bracket sequence , or, in other words, a string of length ,\r\nconsisting of characters \"\" and \"\".Sereja needs to answer queries, each\r\nof them is described by two integers . The answer to the -th query is\r\nthe length of the maximum correct bracket subsequence of sequence . Help\r\nSereja answer all queries.You can find the definitions for a subsequence\r\nand a correct bracket sequence in the notes.\r\n", "solutions": ["#include <iostream>\n#include <sstream>\n#include <fstream>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <stack>\n#include <set>\n#include <map>\n#include <algorithm>\n#include <functional>\n#include <utility>\n#include <bitset>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstdio>\n\nusing namespace std;\n\n#define REP(i,n) for((i)=0;(i)<(int)(n);(i)++)\n#define snuke(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n\n#define T (1<<20)\npair <int, int> tree[2*T];\n\nchar buf[1000010];\n\npair <int, int> merge(pair <int, int> &p, pair <int, int> &q){\n    pair <int, int> r = make_pair(p.first, q.second);\n    if(p.second > q.first) r.second += p.second - q.first;\n    else r.first += q.first - p.second;\n    return r;\n}\n\npair <int, int> func(int L, int R, int id = 1, int low = 0, int high = T){ // cout << L << ' ' << R << ' ' << low << ' ' << high << endl;\n    if(L <= low && R >= high) return tree[id];\n    int mid = (low + high) / 2;\n    if(R <= mid) return func(L, R, 2*id, low, mid);\n    if(L >= mid) return func(L, R, 2*id+1, mid, high);\n    pair <int, int> p1 = func(L, R, 2*id, low, mid);\n    pair <int, int> p2 = func(L, R, 2*id+1, mid, high);\n    return merge(p1, p2);\n}\n\nint main(void){\n    int Q,i;\n    \n    scanf(\"%s\", buf);\n    \n    REP(i,2*T) tree[i].first = tree[i].second = 0;\n    for(i=0;;i++){\n        if(buf[i] == '\\0') break;\n        if(buf[i] == '(') tree[T+i].second = 1; else tree[T+i].first = 1;\n    }\n    \n    for(i=T-1;i>=1;i--) tree[i] = merge(tree[2*i], tree[2*i+1]);\n    \n    cin >> Q;\n    REP(i,Q){\n        int L,R;\n        scanf(\"%d%d\", &L, &R);\n        L--;\n        pair <int, int> p = func(L, R);\n        int ans = (R - L - p.first - p.second);\n        printf(\"%d\\n\", ans);\n    }\n    \n    return 0;\n}\n"], "input": "", "output": "", "tags": ["data structures", "schedules"], "dificulty": "2000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/380/problem/C",
+    "problemId": "5531",
+    "problem_idx": "C",
+    "shortId": "380C",
+    "contest_number": "380",
+    "problem_submissions": {
+        "A": [
+            5676030,
+            5677444,
+            5667291,
+            5667878,
+            5667181,
+            5667622,
+            5667888,
+            5676828,
+            5666938,
+            5673846,
+            5670879,
+            5671395,
+            5669327,
+            5667863,
+            5667948,
+            5667971
+        ],
+        "B": [
+            5675030,
+            5677446,
+            5675293,
+            5674969,
+            5675596,
+            5677558
+        ],
+        "E": [
+            5673042,
+            5677453,
+            5674068,
+            5676554,
+            5676509,
+            5676152,
+            5673443,
+            5674960,
+            5673247,
+            5668823,
+            5671385,
+            5675127,
+            5674081,
+            6260429,
+            6260427,
+            6260419,
+            6260414,
+            6260386,
+            6260376,
+            6260372
+        ],
+        "C": [
+            5670663,
+            5677450,
+            5668629,
+            5669869,
+            5669624,
+            5673114,
+            5670447,
+            5670550,
+            5670519,
+            5668457,
+            5669925,
+            5671669,
+            5675539,
+            5669908,
+            5671123
+        ],
+        "D": [
+            5669162,
+            5677451,
+            5672118,
+            5672469,
+            5675471,
+            5671822,
+            5674127,
+            5674948,
+            5672625,
+            5672722,
+            5676148,
+            5674145,
+            5674258,
+            5673843,
+            5674777
+        ]
+    },
+    "name": "C. Sereja and Brackets",
+    "statement": "Sereja has a bracket sequence , or, in other words, a string of length ,\r\nconsisting of characters \"\" and \"\".Sereja needs to answer queries, each\r\nof them is described by two integers . The answer to the -th query is\r\nthe length of the maximum correct bracket subsequence of sequence . Help\r\nSereja answer all queries.You can find the definitions for a subsequence\r\nand a correct bracket sequence in the notes.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <sstream>\n#include <fstream>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <stack>\n#include <set>\n#include <map>\n#include <algorithm>\n#include <functional>\n#include <utility>\n#include <bitset>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstdio>\n\nusing namespace std;\n\n#define REP(i,n) for((i)=0;(i)<(int)(n);(i)++)\n#define snuke(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n\n#define T (1<<20)\npair <int, int> tree[2*T];\n\nchar buf[1000010];\n\npair <int, int> merge(pair <int, int> &p, pair <int, int> &q){\n    pair <int, int> r = make_pair(p.first, q.second);\n    if(p.second > q.first) r.second += p.second - q.first;\n    else r.first += q.first - p.second;\n    return r;\n}\n\npair <int, int> func(int L, int R, int id = 1, int low = 0, int high = T){ // cout << L << ' ' << R << ' ' << low << ' ' << high << endl;\n    if(L <= low && R >= high) return tree[id];\n    int mid = (low + high) / 2;\n    if(R <= mid) return func(L, R, 2*id, low, mid);\n    if(L >= mid) return func(L, R, 2*id+1, mid, high);\n    pair <int, int> p1 = func(L, R, 2*id, low, mid);\n    pair <int, int> p2 = func(L, R, 2*id+1, mid, high);\n    return merge(p1, p2);\n}\n\nint main(void){\n    int Q,i;\n    \n    scanf(\"%s\", buf);\n    \n    REP(i,2*T) tree[i].first = tree[i].second = 0;\n    for(i=0;;i++){\n        if(buf[i] == '\\0') break;\n        if(buf[i] == '(') tree[T+i].second = 1; else tree[T+i].first = 1;\n    }\n    \n    for(i=T-1;i>=1;i--) tree[i] = merge(tree[2*i], tree[2*i+1]);\n    \n    cin >> Q;\n    REP(i,Q){\n        int L,R;\n        scanf(\"%d%d\", &L, &R);\n        L--;\n        pair <int, int> p = func(L, R);\n        int ans = (R - L - p.first - p.second);\n        printf(\"%d\\n\", ans);\n    }\n    \n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "data structures",
+        "schedules"
+    ],
+    "dificulty": "2000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Sereja and Brackets.json",
+    "editorial_link": "https://codeforces.com//blog/entry/10363",
+    "editorial": "We will support the segments tree. At each vertex will be stored: the\r\nmaximum length of the bracket subsequence how many there it open\r\nbrackets that sequence doesn\u00e2\u0080\u0099t contain how many there it closed brackets\r\nthat sequence doesn\u00e2\u0080\u0099t containIf we want to combine two vertices with\r\nparameters and , we can use the following rules:\r\n"
+}

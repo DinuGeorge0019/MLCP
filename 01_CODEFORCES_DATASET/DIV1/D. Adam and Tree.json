@@ -1,1 +1,103 @@
-{"link": "https://codeforces.com//contest/442/problem/D", "problemId": "10514", "problem_idx": "D", "shortId": "442D", "contest_number": "442", "problem_submissions": {"E": [6921847, 6938403], "C": [6919336, 6917056, 6920953, 6916705, 6918582, 6918908, 6921923, 6921586, 6918715, 6919667, 6919614, 6925095, 6918272, 6918805, 6919118], "D": [6917753, 6918850, 6915556, 6918817, 6920381, 6944679, 6921502, 6920210, 6921312, 6921510, 6918431, 6923717, 6920981, 6920504, 6918960], "B": [6916976, 6915574, 6916305, 6915680, 6916666, 6917064, 6917904, 6915565, 6916220, 6916648, 6916245, 6918094, 6915819, 6916307, 6917195, 6916646, 6916658, 6921189], "A": [6914458, 6914295, 6918545, 6915241, 6915516, 6914863, 6915569, 6914808, 6914997, 6914852, 6914659, 6915403, 6914675, 6915467, 6916072, 6920156, 6915628, 6915075]}, "name": "D. Adam and Tree", "statement": "When Adam gets a rooted tree (connected non-directed graph without\r\ncycles), he immediately starts coloring it. More formally, he assigns a\r\ncolor to each edge of the tree so that it meets the following two\r\nconditions: There is no vertex that has more than two incident edges\r\npainted the same color. For any two vertexes that have incident edges\r\npainted the same color (say, ), the path between them consists of the\r\nedges of the color . Not all tree paintings are equally good for Adam.\r\nLet\u2019s consider the path from some vertex to the root. Let\u2019s call the\r\nnumber of distinct colors on this path the cost of the vertex. The cost\r\nof the tree\u2019s coloring will be the maximum cost among all the vertexes.\r\nHelp Adam determine the minimum possible cost of painting the tree.\r\nInitially, Adam\u2019s tree consists of a single vertex that has number one\r\nand is the root. In one move Adam adds a new vertex to the already\r\nexisting one, the new vertex gets the number equal to the minimum\r\npositive available integer. After each operation you need to calculate\r\nthe minimum cost of coloring the resulting tree.\r\n", "solutions": ["#include <cstring>\n#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <memory.h>\n#include <cassert>\n\nusing namespace std;\n\nconst int N = 1000010;\nconst int MAX = 25;\n\nint parent[N];\nint cnt[N][MAX];\nint ptr[N];\n\nint ans[N];\nint f[N];\nint pred[N], last[N];\n\nint main() {\n  int n;\n  scanf(\"%d\", &n);\n  n++;\n  for (int i = 1; i <= n; i++) {\n    last[i] = 0;\n  }\n  for (int i = 2; i <= n; i++) {\n    scanf(\"%d\", parent + i);\n    pred[i] = last[parent[i]];\n    last[parent[i]] = i;\n  }\n  for (int i = n; i >= 1; i--) {\n    for (int j = 0; j < MAX; j++) {\n      cnt[i][j] = 0;\n    }\n    int q = last[i];\n    while (q > 0) {\n      cnt[i][f[q]]++;\n      q = pred[q];\n    }\n    ptr[i] = MAX - 1;\n    while (ptr[i] > 0 && cnt[i][ptr[i]] == 0) {\n      ptr[i]--;\n    }\n    if (i == 1) {\n      f[i] = ptr[i];\n    } else {\n      if (cnt[i][ptr[i]] >= 2) {\n        f[i] = ptr[i] + 1;\n      } else {\n        f[i] = ptr[i];\n      }\n    }\n  }\n  ans[n] = 1 + f[1];\n  for (int i = n; i >= 3; i--) {\n    int v = i;\n    cnt[parent[v]][f[v]]--;\n    while (v > 1) {\n      int p = parent[v];\n      while (ptr[p] > 0 && cnt[p][ptr[p]] == 0) {\n        ptr[p]--;\n      }\n      int new_f;\n      if (p == 1) {\n        new_f = ptr[p];\n      } else {\n        if (cnt[p][ptr[p]] >= 2) {\n          new_f = ptr[p] + 1;\n        } else {\n          new_f = ptr[p];\n        }\n      }\n      if (new_f == f[p]) {\n        break;\n      }\n      if (p > 1) {\n        cnt[parent[p]][f[p]]--;\n        cnt[parent[p]][new_f]++;\n      }\n      f[p] = new_f;\n      v = p;\n    }\n    ans[i - 1] = 1 + f[1];\n  }\n  for (int i = 2; i < n; i++) printf(\"%d \", ans[i]);\n  printf(\"%d\\n\", ans[n]);\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["data structures", "trees"], "dificulty": "2600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/442/problem/D",
+    "problemId": "10514",
+    "problem_idx": "D",
+    "shortId": "442D",
+    "contest_number": "442",
+    "problem_submissions": {
+        "E": [
+            6921847,
+            6938403
+        ],
+        "C": [
+            6919336,
+            6917056,
+            6920953,
+            6916705,
+            6918582,
+            6918908,
+            6921923,
+            6921586,
+            6918715,
+            6919667,
+            6919614,
+            6925095,
+            6918272,
+            6918805,
+            6919118
+        ],
+        "D": [
+            6917753,
+            6918850,
+            6915556,
+            6918817,
+            6920381,
+            6944679,
+            6921502,
+            6920210,
+            6921312,
+            6921510,
+            6918431,
+            6923717,
+            6920981,
+            6920504,
+            6918960
+        ],
+        "B": [
+            6916976,
+            6915574,
+            6916305,
+            6915680,
+            6916666,
+            6917064,
+            6917904,
+            6915565,
+            6916220,
+            6916648,
+            6916245,
+            6918094,
+            6915819,
+            6916307,
+            6917195,
+            6916646,
+            6916658,
+            6921189
+        ],
+        "A": [
+            6914458,
+            6914295,
+            6918545,
+            6915241,
+            6915516,
+            6914863,
+            6915569,
+            6914808,
+            6914997,
+            6914852,
+            6914659,
+            6915403,
+            6914675,
+            6915467,
+            6916072,
+            6920156,
+            6915628,
+            6915075
+        ]
+    },
+    "name": "D. Adam and Tree",
+    "statement": "When Adam gets a rooted tree (connected non-directed graph without\r\ncycles), he immediately starts coloring it. More formally, he assigns a\r\ncolor to each edge of the tree so that it meets the following two\r\nconditions: There is no vertex that has more than two incident edges\r\npainted the same color. For any two vertexes that have incident edges\r\npainted the same color (say, ), the path between them consists of the\r\nedges of the color . Not all tree paintings are equally good for Adam.\r\nLet\u2019s consider the path from some vertex to the root. Let\u2019s call the\r\nnumber of distinct colors on this path the cost of the vertex. The cost\r\nof the tree\u2019s coloring will be the maximum cost among all the vertexes.\r\nHelp Adam determine the minimum possible cost of painting the tree.\r\nInitially, Adam\u2019s tree consists of a single vertex that has number one\r\nand is the root. In one move Adam adds a new vertex to the already\r\nexisting one, the new vertex gets the number equal to the minimum\r\npositive available integer. After each operation you need to calculate\r\nthe minimum cost of coloring the resulting tree.\r\n",
+    "solutions": [
+        "#include <cstring>\n#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <memory.h>\n#include <cassert>\n\nusing namespace std;\n\nconst int N = 1000010;\nconst int MAX = 25;\n\nint parent[N];\nint cnt[N][MAX];\nint ptr[N];\n\nint ans[N];\nint f[N];\nint pred[N], last[N];\n\nint main() {\n  int n;\n  scanf(\"%d\", &n);\n  n++;\n  for (int i = 1; i <= n; i++) {\n    last[i] = 0;\n  }\n  for (int i = 2; i <= n; i++) {\n    scanf(\"%d\", parent + i);\n    pred[i] = last[parent[i]];\n    last[parent[i]] = i;\n  }\n  for (int i = n; i >= 1; i--) {\n    for (int j = 0; j < MAX; j++) {\n      cnt[i][j] = 0;\n    }\n    int q = last[i];\n    while (q > 0) {\n      cnt[i][f[q]]++;\n      q = pred[q];\n    }\n    ptr[i] = MAX - 1;\n    while (ptr[i] > 0 && cnt[i][ptr[i]] == 0) {\n      ptr[i]--;\n    }\n    if (i == 1) {\n      f[i] = ptr[i];\n    } else {\n      if (cnt[i][ptr[i]] >= 2) {\n        f[i] = ptr[i] + 1;\n      } else {\n        f[i] = ptr[i];\n      }\n    }\n  }\n  ans[n] = 1 + f[1];\n  for (int i = n; i >= 3; i--) {\n    int v = i;\n    cnt[parent[v]][f[v]]--;\n    while (v > 1) {\n      int p = parent[v];\n      while (ptr[p] > 0 && cnt[p][ptr[p]] == 0) {\n        ptr[p]--;\n      }\n      int new_f;\n      if (p == 1) {\n        new_f = ptr[p];\n      } else {\n        if (cnt[p][ptr[p]] >= 2) {\n          new_f = ptr[p] + 1;\n        } else {\n          new_f = ptr[p];\n        }\n      }\n      if (new_f == f[p]) {\n        break;\n      }\n      if (p > 1) {\n        cnt[parent[p]][f[p]]--;\n        cnt[parent[p]][new_f]++;\n      }\n      f[p] = new_f;\n      v = p;\n    }\n    ans[i - 1] = 1 + f[1];\n  }\n  for (int i = 2; i < n; i++) printf(\"%d \", ans[i]);\n  printf(\"%d\\n\", ans[n]);\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "data structures",
+        "trees"
+    ],
+    "dificulty": "2600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Adam and Tree.json",
+    "editorial_link": "https://codeforces.com//blog/entry/12739",
+    "editorial": "First, let\u00e2\u0080\u0099s solve the task with already built tree. We can do it with\r\neasy dymanic programming. We will count the answer for subtree with an\r\nedge to the parent. If we can count it for all vertices we can calculate\r\nthe answer for the whole tree as maximum of answers for children of\r\nroot. How to calculate it for one vertex? Suppose we already know\r\nanswers for children of this vertex. We should color the edge to the\r\nparent in the same color as edge to the child with maximum answer. Let\r\ntwo maximum answers for child be and then the answer for this vertex\r\nwould be if . What changes when we can add new vertices? Nothing. We can\r\ncalculate the value of dynamic programming for new vertex (it always\r\nwould be 1) and recalculate value for its parent. If it doesn\u00e2\u0080\u0099t change\r\nwe should stop this process, in another case we continue recalculations\r\nof dynamic programming values: go to its parent and recalculate answer\r\nfor it and so on. If we maintain two maximums for each vertex in the\r\nasymptotic of the algorithm would be . To prove it we can use some facts\r\nabout Heavy-light decomposion. We can use the way Heavy-light\r\ndecomposion splits edges of tree as our decomposition. We know that\r\nanswer for such decomposition will be less than logarithm of the number\r\nof vertices. So each value of dynamic programming will be increased not\r\nmore than times.\r\n"
+}

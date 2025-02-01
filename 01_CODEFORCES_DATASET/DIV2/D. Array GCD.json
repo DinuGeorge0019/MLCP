@@ -1,1 +1,100 @@
-{"link": "https://codeforces.com//contest/624/problem/D", "problemId": "47309", "problem_idx": "D", "shortId": "624D", "contest_number": "624", "problem_submissions": {"D": [15806940, 15809834, 15815500, 15815488, 15808308, 15806499, 15822402, 15822389], "C": [15799916, 15800393, 15799101, 15798526, 15798053, 15812078, 15803640, 15799590, 15811141, 15805884, 15804773, 15807212, 15803919, 15798110, 15802924, 15800928, 15805592], "B": [15793209, 15795799, 15793505, 15792793, 15792808, 15793962, 15793304, 15801141, 15793770, 15794743, 15794904, 15792647, 15795417, 15795148, 15800662, 15793795, 15793891, 15802098], "A": [15791761, 15792375, 15792429, 15819369, 15791753, 15791811, 15792573, 15791726, 15792066, 15792762, 15792462, 15791748, 15792983, 15792030, 15791890, 15791871, 15791850, 15792535], "E": [15845804, 15845576, 15805460]}, "name": "D. Array GCD", "statement": "You are given array of length . You may consecutively apply two\r\noperations to this array: remove some subsegment (continuous\r\nsubsequence) of length and pay for it coins; change some elements of the\r\narray by at most , and pay coins for each change. Please note that each\r\nof operations may be applied at most once (and may be not applied at\r\nall) so you can remove only one segment and each number may be changed\r\n(increased or decreased) by at most . Also note, that you are not\r\nallowed to delete the whole array.Your goal is to calculate the minimum\r\nnumber of coins that you need to spend in order to make the greatest\r\ncommon divisor of the elements of the resulting array be greater than .\r\n", "solutions": ["#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstring>\nusing namespace std;\n\n\ntypedef long long ll;\nconst int maxn=1000000+1000;\nint n, x, y;\nint a[maxn];\nvector<int>prime;\nbool l1[maxn],r1[maxn];\nint l2[maxn], r2[maxn];\nconst ll inf = (ll)1e18;\nvoid factor(int x) {\n\tint v=x;\n\tfor (int i=2; 1ll * i * i <= x; i ++) \n\t\tif (v % i == 0) {\n\t\t\tprime.push_back(i);\n\t\t\twhile (v % i == 0) v /= i;\n\t\t}\n\tif (v>1) prime.push_back(v);\n}\nint main()  {\n\tscanf(\"%d%d%d\", &n, &x, &y);\n\tfor (int i=1;i<=n;i++) scanf(\"%d\", &a[i]);\n\n\tprime.clear();\n\tfactor(a[1]);\n\tfactor(a[1] - 1);\n\tfactor(a[1] + 1);\n\tfactor(a[n]);\n\tfactor(a[n]+1);\n\tfactor(a[n]-1);\n\tsort(prime.begin(), prime.end());\n\tll ans=inf;\n\tfor (int t = 0; t < (int)prime.size(); t ++)\n\t\tif (t == 0 || prime[t] != prime[t - 1]) {\n\t\t\tint g = prime[t];\n\t\t\tl1[0]=1;\n\t\t\tl2[0]=0;\n\t\t\tfor (int i=1;i<=n;i++) {\n\t\t\t\tl1[i] = l1[i - 1] && (a[i] % g == 0 || a[i] % g == g - 1 || a[i] % g == 1);\n\t\t\t\tl2[i] = l2[i - 1] + (a[i] % g == 0 ? 0 : 1);\n\t\t\t}\n\t\t\tr1[n+1]=1;\n\t\t\tr2[n+1]=0;\n\t\t\tfor (int i=n;i>0;i--) {\n\t\t\t\tr1[i]= r1[i+1] && (a[i] % g == 0 || a[i] % g == g - 1 || a[i] % g == 1);\n\t\t\t\tr2[i]=r2[i+1]+(a[i]%g==0?0:1);\n\t\t\t}\n\n\t\t\tll cur=inf;\n\t\t\t//not delete\n\t\t\tif (l1[n]) cur=min(cur,1ll * l2[n] * y);\n\t\t\tll lft=inf;\n\t\t\t//not delete a[1]\n\t\t\tfor (int j=1;j<=n;j ++){\n\t\t\t\t//i=j\n\t\t\t\tif (j>=2&&l1[j-1]) lft=min(lft,1ll*l2[j-1]*y-1ll*x*j);\n\t\t\t\tif (r1[j+1]) cur=min(cur, lft+1ll *(j+1)*x+1ll*r2[j+1]*y);\n\t\t\t}\n\t\t\t//delete a[1]\n\t\t\tfor (int j = 1; j < n; j ++) { //del [1,j]\n\t\t\t\tif (r1[j+1]) cur=min(cur, 1ll*r2[j+1]*y+1ll*j*x);\n\t\t\t}\n\t\t\tans=min(ans, cur);\n\t\t}\n\tcout <<ans<<endl;\n\treturn 0;\n}"], "input": "", "output": "", "tags": ["dp", "greedy", "number theory"], "dificulty": "2300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/624/problem/D",
+    "problemId": "47309",
+    "problem_idx": "D",
+    "shortId": "624D",
+    "contest_number": "624",
+    "problem_submissions": {
+        "D": [
+            15806940,
+            15809834,
+            15815500,
+            15815488,
+            15808308,
+            15806499,
+            15822402,
+            15822389
+        ],
+        "C": [
+            15799916,
+            15800393,
+            15799101,
+            15798526,
+            15798053,
+            15812078,
+            15803640,
+            15799590,
+            15811141,
+            15805884,
+            15804773,
+            15807212,
+            15803919,
+            15798110,
+            15802924,
+            15800928,
+            15805592
+        ],
+        "B": [
+            15793209,
+            15795799,
+            15793505,
+            15792793,
+            15792808,
+            15793962,
+            15793304,
+            15801141,
+            15793770,
+            15794743,
+            15794904,
+            15792647,
+            15795417,
+            15795148,
+            15800662,
+            15793795,
+            15793891,
+            15802098
+        ],
+        "A": [
+            15791761,
+            15792375,
+            15792429,
+            15819369,
+            15791753,
+            15791811,
+            15792573,
+            15791726,
+            15792066,
+            15792762,
+            15792462,
+            15791748,
+            15792983,
+            15792030,
+            15791890,
+            15791871,
+            15791850,
+            15792535
+        ],
+        "E": [
+            15845804,
+            15845576,
+            15805460
+        ]
+    },
+    "name": "D. Array GCD",
+    "statement": "You are given array of length . You may consecutively apply two\r\noperations to this array: remove some subsegment (continuous\r\nsubsequence) of length and pay for it coins; change some elements of the\r\narray by at most , and pay coins for each change. Please note that each\r\nof operations may be applied at most once (and may be not applied at\r\nall) so you can remove only one segment and each number may be changed\r\n(increased or decreased) by at most . Also note, that you are not\r\nallowed to delete the whole array.Your goal is to calculate the minimum\r\nnumber of coins that you need to spend in order to make the greatest\r\ncommon divisor of the elements of the resulting array be greater than .\r\n",
+    "solutions": [
+        "#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstring>\nusing namespace std;\n\n\ntypedef long long ll;\nconst int maxn=1000000+1000;\nint n, x, y;\nint a[maxn];\nvector<int>prime;\nbool l1[maxn],r1[maxn];\nint l2[maxn], r2[maxn];\nconst ll inf = (ll)1e18;\nvoid factor(int x) {\n\tint v=x;\n\tfor (int i=2; 1ll * i * i <= x; i ++) \n\t\tif (v % i == 0) {\n\t\t\tprime.push_back(i);\n\t\t\twhile (v % i == 0) v /= i;\n\t\t}\n\tif (v>1) prime.push_back(v);\n}\nint main()  {\n\tscanf(\"%d%d%d\", &n, &x, &y);\n\tfor (int i=1;i<=n;i++) scanf(\"%d\", &a[i]);\n\n\tprime.clear();\n\tfactor(a[1]);\n\tfactor(a[1] - 1);\n\tfactor(a[1] + 1);\n\tfactor(a[n]);\n\tfactor(a[n]+1);\n\tfactor(a[n]-1);\n\tsort(prime.begin(), prime.end());\n\tll ans=inf;\n\tfor (int t = 0; t < (int)prime.size(); t ++)\n\t\tif (t == 0 || prime[t] != prime[t - 1]) {\n\t\t\tint g = prime[t];\n\t\t\tl1[0]=1;\n\t\t\tl2[0]=0;\n\t\t\tfor (int i=1;i<=n;i++) {\n\t\t\t\tl1[i] = l1[i - 1] && (a[i] % g == 0 || a[i] % g == g - 1 || a[i] % g == 1);\n\t\t\t\tl2[i] = l2[i - 1] + (a[i] % g == 0 ? 0 : 1);\n\t\t\t}\n\t\t\tr1[n+1]=1;\n\t\t\tr2[n+1]=0;\n\t\t\tfor (int i=n;i>0;i--) {\n\t\t\t\tr1[i]= r1[i+1] && (a[i] % g == 0 || a[i] % g == g - 1 || a[i] % g == 1);\n\t\t\t\tr2[i]=r2[i+1]+(a[i]%g==0?0:1);\n\t\t\t}\n\n\t\t\tll cur=inf;\n\t\t\t//not delete\n\t\t\tif (l1[n]) cur=min(cur,1ll * l2[n] * y);\n\t\t\tll lft=inf;\n\t\t\t//not delete a[1]\n\t\t\tfor (int j=1;j<=n;j ++){\n\t\t\t\t//i=j\n\t\t\t\tif (j>=2&&l1[j-1]) lft=min(lft,1ll*l2[j-1]*y-1ll*x*j);\n\t\t\t\tif (r1[j+1]) cur=min(cur, lft+1ll *(j+1)*x+1ll*r2[j+1]*y);\n\t\t\t}\n\t\t\t//delete a[1]\n\t\t\tfor (int j = 1; j < n; j ++) { //del [1,j]\n\t\t\t\tif (r1[j+1]) cur=min(cur, 1ll*r2[j+1]*y+1ll*j*x);\n\t\t\t}\n\t\t\tans=min(ans, cur);\n\t\t}\n\tcout <<ans<<endl;\n\treturn 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp",
+        "greedy",
+        "number theory"
+    ],
+    "dificulty": "2300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Array GCD.json",
+    "editorial_link": "https://codeforces.com//blog/entry/23278",
+    "editorial": "At least one of ends (a1 or an) is changed by at most 1. It means that if gcd > 1 then it divides on of prime divisors of either a1?-?1, a1, a1?+?1, an?-?1, an or an?+?1. We will iterate over these primes.\n\nSuppose prime p is fixed. For each number we know that it's either divisible by p or we can pay b to fix it or it should be in the subarray to change for a\n\nWe can use dynamic programming dp[number of numbers considered][subarray to change not started/started/finished] = minimal cost\n\nComplexity is O(Nd)?=?O(Nlog(max(ai)), where d is the number of primes to check."
+}

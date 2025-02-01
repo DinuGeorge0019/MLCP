@@ -1,1 +1,90 @@
-{"link": "https://codeforces.com//contest/32/problem/D", "problemId": "152", "problem_idx": "D", "shortId": "32D", "contest_number": "32", "problem_submissions": {"D": [138675, 138556, 138604, 138257, 138224, 138380, 138504, 138243, 138210, 138358, 138498, 138310, 138622], "C": [138369, 138391, 138007, 138117, 138443, 138155, 138237, 138506, 138488, 138330, 138272, 138169, 138601, 138447], "B": [138178, 137922, 137712, 137803, 137765, 137945, 137759, 137778, 137848, 138032, 138051, 137886, 137925], "A": [137893, 137679, 137547, 137553, 137536, 137786, 137586, 141335, 137528, 137522, 137671, 137989, 137716, 137643], "E": [139512, 139507]}, "name": "D. Constellation", "statement": "A star map in Berland is a checked field squares. In each square there\r\nis or there is not a star. The favourite constellation of all Berland\u2019s\r\nastronomers is the constellation of the Cross. This constellation can be\r\nformed by any 5 stars so, that for some integer () the following is\r\ntrue: the 2nd is on the same vertical line as the 1st, but squares up\r\nthe 3rd is on the same vertical line as the 1st, but squares down the\r\n4th is on the same horizontal line as the 1st, but squares left the 5th\r\nis on the same horizontal line as the 1st, but squares right Such\r\nconstellations can be very numerous, that\u2019s why they are numbered with\r\nintegers from 1 on the following principle: when two constellations are\r\ncompared, the one with a smaller radius gets a smaller index; if their\r\nradii are equal the one, whose central star if higher than the central\r\nstar of the other one; if their central stars are at the same level the\r\none, whose central star is to the left of the central star of the other\r\none.Your task is to find the constellation with index by the given\r\nBerland\u2019s star map.\r\n", "solutions": ["#include <cstdio>\n\nint n, m, i, j, r, k, c = 0;\nchar maj[300][300];\n\nvoid main() {\n\tscanf(\"%d%d%d\", &n, &m, &k);\n\tfor(i = 0; i < n; ++i) {\n\t\tfor(getchar(), j = 0; j < m; maj[i][j++] = getchar()) { }\n\t}\n\tfor(r = 1; r * 2 < n && r * 2 < m; ++r) {\n\t\tfor(i = r; i < n - r; ++i) {\n\t\t\tfor(j = r; j < m - r; ++j) {\n\t\t\t\tif(maj[i][j] == '*' && maj[i - r][j] == '*' && maj[i + r][j] == '*'\n\t\t\t\t\t&& maj[i][j - r] == '*' && maj[i][j + r] == '*' && ++c == k) {\n\t\t\t\t\t\t++i, ++j;\n\t\t\t\t\t\tprintf(\"%d %d\\n%d %d\\n%d %d\\n%d %d\\n%d %d\\n\", i, j, i - r, j, i + r, j, i, j - r, i, j + r);\n\t\t\t\t\t\treturn ;\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\tputs(\"-1\");\n}"], "input": "", "output": "", "tags": ["implementation"], "dificulty": "1600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/32/problem/D",
+    "problemId": "152",
+    "problem_idx": "D",
+    "shortId": "32D",
+    "contest_number": "32",
+    "problem_submissions": {
+        "D": [
+            138675,
+            138556,
+            138604,
+            138257,
+            138224,
+            138380,
+            138504,
+            138243,
+            138210,
+            138358,
+            138498,
+            138310,
+            138622
+        ],
+        "C": [
+            138369,
+            138391,
+            138007,
+            138117,
+            138443,
+            138155,
+            138237,
+            138506,
+            138488,
+            138330,
+            138272,
+            138169,
+            138601,
+            138447
+        ],
+        "B": [
+            138178,
+            137922,
+            137712,
+            137803,
+            137765,
+            137945,
+            137759,
+            137778,
+            137848,
+            138032,
+            138051,
+            137886,
+            137925
+        ],
+        "A": [
+            137893,
+            137679,
+            137547,
+            137553,
+            137536,
+            137786,
+            137586,
+            141335,
+            137528,
+            137522,
+            137671,
+            137989,
+            137716,
+            137643
+        ],
+        "E": [
+            139512,
+            139507
+        ]
+    },
+    "name": "D. Constellation",
+    "statement": "A star map in Berland is a checked field squares. In each square there\r\nis or there is not a star. The favourite constellation of all Berland\u2019s\r\nastronomers is the constellation of the Cross. This constellation can be\r\nformed by any 5 stars so, that for some integer () the following is\r\ntrue: the 2nd is on the same vertical line as the 1st, but squares up\r\nthe 3rd is on the same vertical line as the 1st, but squares down the\r\n4th is on the same horizontal line as the 1st, but squares left the 5th\r\nis on the same horizontal line as the 1st, but squares right Such\r\nconstellations can be very numerous, that\u2019s why they are numbered with\r\nintegers from 1 on the following principle: when two constellations are\r\ncompared, the one with a smaller radius gets a smaller index; if their\r\nradii are equal the one, whose central star if higher than the central\r\nstar of the other one; if their central stars are at the same level the\r\none, whose central star is to the left of the central star of the other\r\none.Your task is to find the constellation with index by the given\r\nBerland\u2019s star map.\r\n",
+    "solutions": [
+        "#include <cstdio>\n\nint n, m, i, j, r, k, c = 0;\nchar maj[300][300];\n\nvoid main() {\n\tscanf(\"%d%d%d\", &n, &m, &k);\n\tfor(i = 0; i < n; ++i) {\n\t\tfor(getchar(), j = 0; j < m; maj[i][j++] = getchar()) { }\n\t}\n\tfor(r = 1; r * 2 < n && r * 2 < m; ++r) {\n\t\tfor(i = r; i < n - r; ++i) {\n\t\t\tfor(j = r; j < m - r; ++j) {\n\t\t\t\tif(maj[i][j] == '*' && maj[i - r][j] == '*' && maj[i + r][j] == '*'\n\t\t\t\t\t&& maj[i][j - r] == '*' && maj[i][j + r] == '*' && ++c == k) {\n\t\t\t\t\t\t++i, ++j;\n\t\t\t\t\t\tprintf(\"%d %d\\n%d %d\\n%d %d\\n%d %d\\n%d %d\\n\", i, j, i - r, j, i + r, j, i, j - r, i, j + r);\n\t\t\t\t\t\treturn ;\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\tputs(\"-1\");\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation"
+    ],
+    "dificulty": "1600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Constellation.json",
+    "editorial_link": "https://codeforces.com//blog/entry/720",
+    "editorial": "Simple approach was to start finding stars in order of their indexes.\nFor this, first try for stars with smaller radius, then for top and finally for left.\nFollowing code may explain it further."
+}

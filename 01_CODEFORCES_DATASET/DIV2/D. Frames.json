@@ -1,1 +1,98 @@
-{"link": "https://codeforces.com//contest/152/problem/D", "problemId": "942", "problem_idx": "D", "shortId": "152D", "contest_number": "152", "problem_submissions": {"B": [1212565, 1207677, 1207042, 1206882, 1206900, 1207302, 1207825, 1206753, 1207786, 1206733, 1206745, 1206774, 1207750, 1206760, 1207729, 1208102, 1207969, 1207121], "D": [1211886, 1212861, 1219761, 1213345, 1213307, 1213255], "E": [1211066, 1211301, 1211747, 1212613, 1212600, 1217294], "C": [1206348, 1207801, 1207657, 1206181, 1206349, 1208424, 1207196, 1206520, 1207288, 1207467, 1207400, 1207032, 1207706, 1207030, 1206886, 1207024, 1207629], "A": [1205923, 1205987, 1205997, 1205917, 1205971, 1205996, 1206021, 1205974, 1206016, 1205930, 1205981, 1205912, 1205927, 1206449, 1206138, 1206011, 1205963]}, "name": "D. Frames", "statement": "One day Vasya got hold of a sheet of checkered paper squares in size.\r\nOur Vasya adores geometrical figures, so he painted two rectangles on\r\nthe paper. The rectangles\u2019 sides are parallel to the coordinates\u2019 axes,\r\nalso the length of each side of each rectangle is no less than 3 squares\r\nand the sides are painted by the grid lines. The sides can also be part\r\nof the sheet of paper\u2019s edge. Then Vasya hatched all squares on the\r\nrectangles\u2019 .Let\u2019s define a rectangle\u2019s frame as the set of squares the\r\nrectangle that share at least one side with its border.A little later\r\nVasya found a sheet of paper of exactly the same size and couldn\u2019t guess\r\nwhether it is the same sheet of paper or a different one. So, he asked\r\nyou to check whether the sheet of paper he had found contains two\r\npainted frames and nothing besides them.Please note that the frames\r\npainted by Vasya can arbitrarily intersect, overlap or even completely\r\ncoincide.The coordinates on the sheet of paper are introduced in such a\r\nway that the axis goes from top to bottom, the coordinates of the\r\nsquares\u2019 numbers take values from to and the axis goes from the left to\r\nthe right and the coordinates of the squares\u2019 numbers take values from\r\nto .\r\n", "solutions": ["#include <vector>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <sstream>\n#include <iostream>\n#include <cstdio>\n#include <queue>\n#include <cmath>\n#include <cstdlib>\n#include <cstring>\n#include <ctime>\n#include <string>\n#include <cassert>\n\nusing namespace std;\n\n//----------------------zjut_DD for Topcoder-------------------------------\ntypedef long long LL;\ntypedef pair<int,int> PII;\ntypedef vector<int> VI;\ntypedef vector<string> VS;\n#define PB push_back\n#define MP make_pair\n#define ff first\n#define ss second\n#define sz(v) (int)v.size()\n#define all(c) c.begin(),c.end() \n#define clr(buf,val) memset(buf,val,sizeof(buf))\n#define rep(i,l,r) for(int i=(l);i<(r);i++)\n#define repv(i,v)  for(int i=0;i<(int)v.size();i++)\n#define repi(it,c) for(typeof(c.begin()) it=c.begin();it!=c.end();++it)\n//------------------------------------------------------------------------\n\n\nPII p[1100*1100];\nint n, m;\nchar mat[1100][1100];\nint sum[1100][1100];\n\nint get(int x0, int y0, int x1, int y1){\n\treturn sum[x1][y1]-sum[x1][y0-1]-sum[x0-1][y1]+sum[x0-1][y0-1];\n}\n\nbool canRec(int x0, int y0, int x1, int y1){\n\tif( x1<x0+2 || y1<y0+2 ) return false;\n\tif( get(x0, y0, x0, y1)!=(y1-y0+1) ) return false;\n\tif( get(x0, y0, x1, y0)!=(x1-x0+1) ) return false;\n\tif( get(x1, y0, x1, y1)!=(y1-y0+1) ) return false;\n\tif( get(x0, y1, x1, y1)!=(x1-x0+1) ) return false;\n\treturn true;\n}\nbool in(int x0, int y0, int x1, int y1, int x, int y){\n\tif( x>=x0 && x<=x1 && (y==y0 || y==y1) ) return true;\n\tif( y>=y0 && y<=y1 && (x==x0 || x==x1) ) return true;\n\treturn false;\n}\n\nint main(){\n\twhile( scanf(\"%d %d\", &n, &m)!=EOF ){\n\t\tint cnt=0;\n\t\trep(i, 1, n+1){\n\t\t\tscanf(\" %s\", mat[i]+1);\n\t\t\trep(j, 1, m+1){\n\t\t\t\tsum[i][j]=sum[i][j-1]+sum[i-1][j]-sum[i-1][j-1]+(mat[i][j]=='#');\n\t\t\t\tif( mat[i][j]=='#' ){\n\t\t\t\t\tp[cnt++]=MP(i, j);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tif( cnt>8100 ){\n\t\t\tputs(\"NO\");\n\t\t\tcontinue;\n\t\t}\n\t\tsort(p, p+cnt);\n\t\trep(i, 1, cnt){\n\t\t\tint x0=p[0].ff, y0=p[0].ss;\n\t\t\tint x1=p[i].ff, y1=p[i].ss;\n\t\t\tif( canRec(x0, y0, x1, y1)==false ) continue;\n\t\t\tset<int> stx, sty;\n\t\t\tstx.insert(x0);\n\t\t\tstx.insert(x1);\n\t\t\tsty.insert(y0);\n\t\t\tsty.insert(y1);\n\t\t\tint xma=0, xmi=10000, yma=xma, ymi=xmi;\n\t\t\tint num=0;\n\t\t\trep(j, 0, cnt) if( in(x0, y0, x1, y1, p[j].ff, p[j].ss)==false ){\n\t\t\t\txma=max(xma, p[j].ff);\n\t\t\t\txmi=min(xmi, p[j].ff);\n\t\t\t\tyma=max(yma, p[j].ss);\n\t\t\t\tymi=min(ymi, p[j].ss);\n\t\t\t\tnum++;\n\t\t\t}\n\t\t\tif( num==0 ){\n\t\t\t\tputs(\"YES\");\n\t\t\t\tprintf(\"%d %d %d %d\\n\", x0, y0, x1, y1);\n\t\t\t\tprintf(\"%d %d %d %d\\n\", x0, y0, x1, y1);\n\t\t\t\treturn 0;\n\t\t\t}\n\t\t\tstx.insert(xmi);\n\t\t\tif( xmi-1>0 ) stx.insert(xmi-1);\n\t\t\tstx.insert(xma);\n\t\t\tif( xma+1<=n) stx.insert(xma+1);\n\t\t\tsty.insert(ymi);\n\t\t\tif( ymi-1>0 ) sty.insert(ymi-1);\n\t\t\tsty.insert(yma);\n\t\t\tif( yma+1<=m) sty.insert(yma+1);\n\t\t\t\n\t\t\trepi(itx1, stx) repi(itx2, stx) {\n\t\t\t\tif( *itx1+2<=*itx2 ){\n\t\t\t\t\trepi(ity1, sty) repi(ity2, sty){\n\t\t\t\t\t\tif( *ity1+2<=*ity2 ){\n\t\t\t\t\t\t\tint _x0=*itx1, _y0=*ity1;\n\t\t\t\t\t\t\tint _x1=*itx2, _y1=*ity2;\n\t\t\t\t\t\t\tif( canRec(_x0, _y0, _x1, _y1)==false ) continue;\n\t\t\t\t\t\t\tbool suc=true;\n\t\t\t\t\t\t\trep(j, 0, cnt){\n\t\t\t\t\t\t\t\tif( in(x0, y0, x1, y1, p[j].ff, p[j].ss) ) continue;\n\t\t\t\t\t\t\t\tif( in(_x0, _y0, _x1, _y1, p[j].ff, p[j].ss) ) continue;\n\t\t\t\t\t\t\t\tsuc=false;\n\t\t\t\t\t\t\t\tbreak;\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\tif( suc ){\n\t\t\t\t\t\t\t\tputs(\"YES\");\n\t\t\t\t\t\t\t\tprintf(\"%d %d %d %d\\n\", x0, y0, x1, y1);\n\t\t\t\t\t\t\t\tprintf(\"%d %d %d %d\\n\", _x0, _y0, _x1, _y1);\n\t\t\t\t\t\t\t\treturn 0;\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tputs(\"NO\");\n\t}\n}\n/*\n4 5\n#####\n#...#\n#...#\n#####\n*/\n\n\n"], "input": "", "output": "", "tags": ["brute force"], "dificulty": "2600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/152/problem/D",
+    "problemId": "942",
+    "problem_idx": "D",
+    "shortId": "152D",
+    "contest_number": "152",
+    "problem_submissions": {
+        "B": [
+            1212565,
+            1207677,
+            1207042,
+            1206882,
+            1206900,
+            1207302,
+            1207825,
+            1206753,
+            1207786,
+            1206733,
+            1206745,
+            1206774,
+            1207750,
+            1206760,
+            1207729,
+            1208102,
+            1207969,
+            1207121
+        ],
+        "D": [
+            1211886,
+            1212861,
+            1219761,
+            1213345,
+            1213307,
+            1213255
+        ],
+        "E": [
+            1211066,
+            1211301,
+            1211747,
+            1212613,
+            1212600,
+            1217294
+        ],
+        "C": [
+            1206348,
+            1207801,
+            1207657,
+            1206181,
+            1206349,
+            1208424,
+            1207196,
+            1206520,
+            1207288,
+            1207467,
+            1207400,
+            1207032,
+            1207706,
+            1207030,
+            1206886,
+            1207024,
+            1207629
+        ],
+        "A": [
+            1205923,
+            1205987,
+            1205997,
+            1205917,
+            1205971,
+            1205996,
+            1206021,
+            1205974,
+            1206016,
+            1205930,
+            1205981,
+            1205912,
+            1205927,
+            1206449,
+            1206138,
+            1206011,
+            1205963
+        ]
+    },
+    "name": "D. Frames",
+    "statement": "One day Vasya got hold of a sheet of checkered paper squares in size.\r\nOur Vasya adores geometrical figures, so he painted two rectangles on\r\nthe paper. The rectangles\u2019 sides are parallel to the coordinates\u2019 axes,\r\nalso the length of each side of each rectangle is no less than 3 squares\r\nand the sides are painted by the grid lines. The sides can also be part\r\nof the sheet of paper\u2019s edge. Then Vasya hatched all squares on the\r\nrectangles\u2019 .Let\u2019s define a rectangle\u2019s frame as the set of squares the\r\nrectangle that share at least one side with its border.A little later\r\nVasya found a sheet of paper of exactly the same size and couldn\u2019t guess\r\nwhether it is the same sheet of paper or a different one. So, he asked\r\nyou to check whether the sheet of paper he had found contains two\r\npainted frames and nothing besides them.Please note that the frames\r\npainted by Vasya can arbitrarily intersect, overlap or even completely\r\ncoincide.The coordinates on the sheet of paper are introduced in such a\r\nway that the axis goes from top to bottom, the coordinates of the\r\nsquares\u2019 numbers take values from to and the axis goes from the left to\r\nthe right and the coordinates of the squares\u2019 numbers take values from\r\nto .\r\n",
+    "solutions": [
+        "#include <vector>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <sstream>\n#include <iostream>\n#include <cstdio>\n#include <queue>\n#include <cmath>\n#include <cstdlib>\n#include <cstring>\n#include <ctime>\n#include <string>\n#include <cassert>\n\nusing namespace std;\n\n//----------------------zjut_DD for Topcoder-------------------------------\ntypedef long long LL;\ntypedef pair<int,int> PII;\ntypedef vector<int> VI;\ntypedef vector<string> VS;\n#define PB push_back\n#define MP make_pair\n#define ff first\n#define ss second\n#define sz(v) (int)v.size()\n#define all(c) c.begin(),c.end() \n#define clr(buf,val) memset(buf,val,sizeof(buf))\n#define rep(i,l,r) for(int i=(l);i<(r);i++)\n#define repv(i,v)  for(int i=0;i<(int)v.size();i++)\n#define repi(it,c) for(typeof(c.begin()) it=c.begin();it!=c.end();++it)\n//------------------------------------------------------------------------\n\n\nPII p[1100*1100];\nint n, m;\nchar mat[1100][1100];\nint sum[1100][1100];\n\nint get(int x0, int y0, int x1, int y1){\n\treturn sum[x1][y1]-sum[x1][y0-1]-sum[x0-1][y1]+sum[x0-1][y0-1];\n}\n\nbool canRec(int x0, int y0, int x1, int y1){\n\tif( x1<x0+2 || y1<y0+2 ) return false;\n\tif( get(x0, y0, x0, y1)!=(y1-y0+1) ) return false;\n\tif( get(x0, y0, x1, y0)!=(x1-x0+1) ) return false;\n\tif( get(x1, y0, x1, y1)!=(y1-y0+1) ) return false;\n\tif( get(x0, y1, x1, y1)!=(x1-x0+1) ) return false;\n\treturn true;\n}\nbool in(int x0, int y0, int x1, int y1, int x, int y){\n\tif( x>=x0 && x<=x1 && (y==y0 || y==y1) ) return true;\n\tif( y>=y0 && y<=y1 && (x==x0 || x==x1) ) return true;\n\treturn false;\n}\n\nint main(){\n\twhile( scanf(\"%d %d\", &n, &m)!=EOF ){\n\t\tint cnt=0;\n\t\trep(i, 1, n+1){\n\t\t\tscanf(\" %s\", mat[i]+1);\n\t\t\trep(j, 1, m+1){\n\t\t\t\tsum[i][j]=sum[i][j-1]+sum[i-1][j]-sum[i-1][j-1]+(mat[i][j]=='#');\n\t\t\t\tif( mat[i][j]=='#' ){\n\t\t\t\t\tp[cnt++]=MP(i, j);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tif( cnt>8100 ){\n\t\t\tputs(\"NO\");\n\t\t\tcontinue;\n\t\t}\n\t\tsort(p, p+cnt);\n\t\trep(i, 1, cnt){\n\t\t\tint x0=p[0].ff, y0=p[0].ss;\n\t\t\tint x1=p[i].ff, y1=p[i].ss;\n\t\t\tif( canRec(x0, y0, x1, y1)==false ) continue;\n\t\t\tset<int> stx, sty;\n\t\t\tstx.insert(x0);\n\t\t\tstx.insert(x1);\n\t\t\tsty.insert(y0);\n\t\t\tsty.insert(y1);\n\t\t\tint xma=0, xmi=10000, yma=xma, ymi=xmi;\n\t\t\tint num=0;\n\t\t\trep(j, 0, cnt) if( in(x0, y0, x1, y1, p[j].ff, p[j].ss)==false ){\n\t\t\t\txma=max(xma, p[j].ff);\n\t\t\t\txmi=min(xmi, p[j].ff);\n\t\t\t\tyma=max(yma, p[j].ss);\n\t\t\t\tymi=min(ymi, p[j].ss);\n\t\t\t\tnum++;\n\t\t\t}\n\t\t\tif( num==0 ){\n\t\t\t\tputs(\"YES\");\n\t\t\t\tprintf(\"%d %d %d %d\\n\", x0, y0, x1, y1);\n\t\t\t\tprintf(\"%d %d %d %d\\n\", x0, y0, x1, y1);\n\t\t\t\treturn 0;\n\t\t\t}\n\t\t\tstx.insert(xmi);\n\t\t\tif( xmi-1>0 ) stx.insert(xmi-1);\n\t\t\tstx.insert(xma);\n\t\t\tif( xma+1<=n) stx.insert(xma+1);\n\t\t\tsty.insert(ymi);\n\t\t\tif( ymi-1>0 ) sty.insert(ymi-1);\n\t\t\tsty.insert(yma);\n\t\t\tif( yma+1<=m) sty.insert(yma+1);\n\t\t\t\n\t\t\trepi(itx1, stx) repi(itx2, stx) {\n\t\t\t\tif( *itx1+2<=*itx2 ){\n\t\t\t\t\trepi(ity1, sty) repi(ity2, sty){\n\t\t\t\t\t\tif( *ity1+2<=*ity2 ){\n\t\t\t\t\t\t\tint _x0=*itx1, _y0=*ity1;\n\t\t\t\t\t\t\tint _x1=*itx2, _y1=*ity2;\n\t\t\t\t\t\t\tif( canRec(_x0, _y0, _x1, _y1)==false ) continue;\n\t\t\t\t\t\t\tbool suc=true;\n\t\t\t\t\t\t\trep(j, 0, cnt){\n\t\t\t\t\t\t\t\tif( in(x0, y0, x1, y1, p[j].ff, p[j].ss) ) continue;\n\t\t\t\t\t\t\t\tif( in(_x0, _y0, _x1, _y1, p[j].ff, p[j].ss) ) continue;\n\t\t\t\t\t\t\t\tsuc=false;\n\t\t\t\t\t\t\t\tbreak;\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\tif( suc ){\n\t\t\t\t\t\t\t\tputs(\"YES\");\n\t\t\t\t\t\t\t\tprintf(\"%d %d %d %d\\n\", x0, y0, x1, y1);\n\t\t\t\t\t\t\t\tprintf(\"%d %d %d %d\\n\", _x0, _y0, _x1, _y1);\n\t\t\t\t\t\t\t\treturn 0;\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tputs(\"NO\");\n\t}\n}\n/*\n4 5\n#####\n#...#\n#...#\n#####\n*/\n\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force"
+    ],
+    "dificulty": "2600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Frames.json",
+    "editorial_link": "https://codeforces.com//blog/entry/3926",
+    "editorial": "It was necessary to understand if there are two borders or not. Let\u00e2\u0080\u0099s\r\ndistinguish those and -coordinates, in which there are at least\r\nconsecutive symbols \u00e2\u0080\u009d, becouse the length of each border is no less then\r\n. It is clear that the coordinates of the corners of borders should be\r\nchosen only from those selected and . In general, the various selected\r\nno more then and various selected no more then . Except that case when\r\nthe height or width of the first border is , and length of the second\r\nside of this border is more than , and one side of the second border\r\nfills a part of the inside first at least. For example: The first\r\nborder: The second border: There are different -coordinates in the\r\nexample. Carefully processed these cases separately, it is quite simple.\r\n(Let\u00e2\u0080\u0099s choose -coordinates: minimum, maximum, second minimum and second\r\nmaximum). Otherwise, if the amount selected and -coordinates no more\r\nthen , then let\u00e2\u0080\u0099s choose opposite corners of the first and second\r\nborders and verify that the selected borders the correct borders and\r\nthere are no other characters \u00e2\u0080\u009d. Checking is carried out at or (using\r\npartial sums).\r\n"
+}

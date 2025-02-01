@@ -1,1 +1,105 @@
-{"link": "https://codeforces.com//contest/225/problem/E", "problemId": "1832", "problem_idx": "E", "shortId": "225E", "contest_number": "225", "problem_submissions": {"A": [2221105, 2214162, 2213024, 2213181, 2218269, 2215390, 2213087, 2213131, 2213045, 2213399, 2218254, 2213449, 2215635, 2213022, 2219451, 2214235, 2218861, 2213502], "D": [2218238, 2217449, 2217706, 2290695, 2219111, 2226502, 2219345, 2221170], "C": [2217175, 2219527, 2217380, 2214633, 2213571, 2214672, 2216972, 2213976, 2217628, 2215057, 2215884, 2217221, 2216137, 2214774, 2219743], "B": [2215089, 2214635, 2214157, 2213471, 2217514, 2216657, 2214710, 2214892, 2219487, 2217944, 2217204, 2220412, 2220302, 2217349, 2217093, 2216495], "E": [2219166, 2216024, 2218518, 2218635, 2218425, 2270284, 2216885, 2219080, 2218848, 2218491, 2218490, 2218734, 2217815]}, "name": "E. Unsolvable", "statement": "Consider the following equation: where sign represents the integer part\r\nof number .Let\u2019s find all integer , for which this equation is in\r\npositive integers. The phrase \"unsolvable in positive integers\" means\r\nthat there are no such positive integers and , for which the given above\r\nequation holds.Let\u2019s write out all such in the increasing order: , and\r\nso on . Your task is: given the number , find the number .\r\n", "solutions": ["#include<cstdio>\n#include<cstring>\n#include<cstdlib>\n#include<cmath>\n#include<algorithm>\n#include<iostream>\nusing namespace std;\ntypedef long long LL;\nconst int P=1000000007;\nint ff[]={0,2,3,5,7,13,17,19,31,61,89,107,127,521,607,1279,2203,\n    2281,3217,4253,4423,9689,9941,11213,19937,21701,23209,\n    44497,86243,110503,132049,216091,756839,859433,1257787,\n    1398269,2976221,3021377,6972593,13466917,20996011,24036583};\nint Pow(int y)\n{\n    int ret=1,x=2;\n    while(y)\n    {\n        if(y&1)ret=(LL)ret*x%P;\n        x=(LL)x*x%P;y/=2;\n    }\n    ret--;\n    if(ret<0)ret+=P;\n    return ret;\n}\nint n;\nint main()\n{\n    while(~scanf(\"%d\",&n))\n    {\n        int ret=Pow(ff[n]-1);\n        printf(\"%d\\n\",ret);\n    }\n}\n"], "input": "", "output": "", "tags": ["math", "number theory"], "dificulty": "2100", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/225/problem/E",
+    "problemId": "1832",
+    "problem_idx": "E",
+    "shortId": "225E",
+    "contest_number": "225",
+    "problem_submissions": {
+        "A": [
+            2221105,
+            2214162,
+            2213024,
+            2213181,
+            2218269,
+            2215390,
+            2213087,
+            2213131,
+            2213045,
+            2213399,
+            2218254,
+            2213449,
+            2215635,
+            2213022,
+            2219451,
+            2214235,
+            2218861,
+            2213502
+        ],
+        "D": [
+            2218238,
+            2217449,
+            2217706,
+            2290695,
+            2219111,
+            2226502,
+            2219345,
+            2221170
+        ],
+        "C": [
+            2217175,
+            2219527,
+            2217380,
+            2214633,
+            2213571,
+            2214672,
+            2216972,
+            2213976,
+            2217628,
+            2215057,
+            2215884,
+            2217221,
+            2216137,
+            2214774,
+            2219743
+        ],
+        "B": [
+            2215089,
+            2214635,
+            2214157,
+            2213471,
+            2217514,
+            2216657,
+            2214710,
+            2214892,
+            2219487,
+            2217944,
+            2217204,
+            2220412,
+            2220302,
+            2217349,
+            2217093,
+            2216495
+        ],
+        "E": [
+            2219166,
+            2216024,
+            2218518,
+            2218635,
+            2218425,
+            2270284,
+            2216885,
+            2219080,
+            2218848,
+            2218491,
+            2218490,
+            2218734,
+            2217815
+        ]
+    },
+    "name": "E. Unsolvable",
+    "statement": "Consider the following equation: where sign represents the integer part\r\nof number .Let\u2019s find all integer , for which this equation is in\r\npositive integers. The phrase \"unsolvable in positive integers\" means\r\nthat there are no such positive integers and , for which the given above\r\nequation holds.Let\u2019s write out all such in the increasing order: , and\r\nso on . Your task is: given the number , find the number .\r\n",
+    "solutions": [
+        "#include<cstdio>\n#include<cstring>\n#include<cstdlib>\n#include<cmath>\n#include<algorithm>\n#include<iostream>\nusing namespace std;\ntypedef long long LL;\nconst int P=1000000007;\nint ff[]={0,2,3,5,7,13,17,19,31,61,89,107,127,521,607,1279,2203,\n    2281,3217,4253,4423,9689,9941,11213,19937,21701,23209,\n    44497,86243,110503,132049,216091,756839,859433,1257787,\n    1398269,2976221,3021377,6972593,13466917,20996011,24036583};\nint Pow(int y)\n{\n    int ret=1,x=2;\n    while(y)\n    {\n        if(y&1)ret=(LL)ret*x%P;\n        x=(LL)x*x%P;y/=2;\n    }\n    ret--;\n    if(ret<0)ret+=P;\n    return ret;\n}\nint n;\nint main()\n{\n    while(~scanf(\"%d\",&n))\n    {\n        int ret=Pow(ff[n]-1);\n        printf(\"%d\\n\",ret);\n    }\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "math",
+        "number theory"
+    ],
+    "dificulty": "2100",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Unsolvable.json",
+    "editorial_link": "https://codeforces.com//blog/entry/5322",
+    "editorial": "You have z?=?[x?/?2]?+?y?+?xy. That is equivalent to\n\nz?=?[2k?/?2]?+?y?+?2ky, where x?=?2k,?k?>?0\nor\nz?=?[(2k?+?1)?/?2]?+?y?+?(2k?+?1)y, where x?=?2k?+?1,?k???0.\n\nz?=?k?+?y?+?2ky,?k?>?0\nor\nz?=?k?+?y?+?(2k?+?1)y,?k???0.\n\nStill more steps:\n\n2z?+?1?=?2k?+?2y?+?4ky?+?1,?k?>?0\nor\nz?+?1?=?k?+?2y?+?2ky?+?1,?k???0.\n\n2z?+?1?=?(2k?+?1)(2y?+?1),?k?>?0\nor\nz?+?1?=?(2y?+?1)(k?+?1),?k???0.\n\nFrom the 2nd equation you can see than z should be 2t?-?1 because otherwise z?+?1 will have odd divisor and we can build solution. From the 1st equation you can see that 2t?+?1?-?1 should be prime, otherwise we also can build solution. If z?=?2t?-?1 and 2t?+?1?-?1 is prime, obliviously there are no solutions.\n\nPrime numbers like 2a?-?1 are Mersenne primes. Only about 46 such numbers are found now. Powers of 2 for the firts 40 numbers you can find for example here."
+}

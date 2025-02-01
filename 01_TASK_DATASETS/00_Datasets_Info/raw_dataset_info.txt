@@ -1,82 +1,86 @@
-Number of problems: 8215 
+Number of problems: 7185 
 
-Minimum problem statement length: 101
+Minimum problem statement length: 103
 Maximum problem statement length: 3780
-Mean problem statement length: 860.9577601947657
+Mean problem statement length: 845.0340988169798
+
+Minimum problem editorial length: 102
+Maximum problem editorial length: 20962
+Mean problem editorial length: 1125.8263048016702
 
 Minimum problem solution length: 146
-Maximum problem solution length: 30609
-Mean problem solution length: 2233.3506999391357
+Maximum problem solution length: 63059
+Mean problem solution length: 2347.7443284620736
 
 Number of difficulty classes: 28
 
 Difficulty distribution:
-800: 729
-1600: 465
-1900: 458
-1700: 457
-2000: 422
-1500: 398
-1800: 390
-2400: 367
-1300: 365
-2100: 359
-2200: 355
-1200: 337
-1400: 336
-2300: 328
-1100: 318
-2500: 312
-1000: 293
-900: 259
-2600: 242
-2700: 207
-2800: 164
-2900: 139
-3000: 125
-3500: 98
+800: 759
+1600: 364
+1900: 361
+1700: 353
+1500: 329
+1200: 328
+1300: 327
+2000: 318
+1100: 314
+1800: 302
+2400: 301
+1400: 301
+2200: 297
+2100: 288
+1000: 281
+2500: 269
+2300: 260
+900: 252
+2600: 200
+2700: 194
+2800: 140
+2900: 137
+3000: 109
+3500: 107
 3100: 90
 3200: 77
-3300: 69
+3300: 71
 3400: 56
 
 Number of tags: 36
 
 Tag distribution:
-greedy: 2545
-math: 2509
-implementation: 2324
-dp: 1890
-data structures: 1542
-constructive algorithms: 1526
-brute force: 1467
-graphs: 966
-binary search: 946
-sortings: 942
-dfs and similar: 831
-trees: 704
-number theory: 678
-strings: 644
-combinatorics: 605
-two pointers: 503
-bitmasks: 497
-geometry: 308
-dsu: 306
-shortest paths: 252
-divide and conquer: 234
-probabilities: 193
-games: 187
-interactive: 177
-hashing: 175
-flows: 101
-matrices: 99
-string suffix structures: 74
-fft: 73
-graph matchings: 72
-ternary search: 52
-meet-in-the-middle: 39
-2-sat: 34
-expression parsing: 22
+greedy: 2404
+math: 2327
+implementation: 2114
+dp: 1674
+data structures: 1400
+brute force: 1400
+constructive algorithms: 1390
+binary search: 873
+sortings: 871
+graphs: 811
+dfs and similar: 737
+trees: 640
+number theory: 624
+strings: 580
+combinatorics: 548
+two pointers: 478
+bitmasks: 474
+dsu: 288
+geometry: 250
+divide and conquer: 232
+shortest paths: 203
+games: 176
+probabilities: 163
+hashing: 162
+interactive: 158
+flows: 94
+matrices: 89
+fft: 68
+string suffix structures: 66
+graph matchings: 65
+ternary search: 51
+meet-in-the-middle: 35
+2-sat: 31
+expression parsing: 19
 chinese remainder theorem: 15
 schedules: 8
 

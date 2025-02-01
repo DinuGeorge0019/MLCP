@@ -13,7 +13,7 @@ import ast
 import string
 import re
 from sklearn.model_selection import train_test_split
-
+from time import sleep
 # local application/library specific imports
 from app_config import AppConfig
 
@@ -46,18 +46,6 @@ class DatasetFactory:
         """
 
         ignored_links = [
-            'https://codeforces.com//contest/1677/problem/F',
-            'https://codeforces.com//contest/1517/problem/H',
-            'https://codeforces.com//contest/1541/problem/A',
-            'https://codeforces.com//contest/1541/problem/B',
-            'https://codeforces.com//contest/1541/problem/C',
-            'https://codeforces.com//contest/1541/problem/D',
-            'https://codeforces.com//contest/1541/problem/E1',
-            'https://codeforces.com//contest/747/problem/F',
-            'https://codeforces.com//contest/1626/problem/D',
-            'https://codeforces.com//contest/1626/problem/F',
-            'https://codeforces.com//contest/1796/problem/F',
-            'https://codeforces.com//contest/1895/problem/G',
         ]
         
         print("\nReading corpus")
@@ -66,36 +54,106 @@ class DatasetFactory:
             folder_path = os.path.join(CONFIG['DATASET_DESTINATION'], folder_name)
             for file in tqdm(os.listdir(folder_path)):
                 file_path = os.path.join(folder_path, file)
-                input_file = open(file_path)
-                json_data = json.load(input_file)
+                with open(file_path, "r", encoding="utf-8") as input_file:
+                    json_data = json.load(input_file)
 
-                if json_data['link'] not in ignored_links:                
-                    raw_dataset.append([json_data['link'],
-                                        json_data['name'],
-                                        json_data['statement'],
-                                        json_data['solutions'],
-                                        json_data['tags'],
-                                        json_data['dificulty']])
-                input_file.close()
+                if 'file_name' in json_data:
+                    if json_data['link'] not in ignored_links:                
+                        raw_dataset.append([json_data['link'],
+                                            json_data['problemId'],
+                                            json_data['problem_idx'],
+                                            json_data['shortId'],
+                                            json_data['contest_number'],
+                                            json_data['name'],
+                                            json_data['statement'],
+                                            json_data['solutions'],
+                                            json_data['input'],
+                                            json_data['output'],
+                                            json_data['tags'],
+                                            json_data['dificulty'],
+                                            json_data['file_name'],
+                                            json_data['editorial_link'],
+                                            json_data['editorial']])
 
         # Create the raw dataset df of the
         raw_dataset_df = pd.DataFrame(
             raw_dataset,
             columns=['problem_link',
+                     'problem_id',
+                     'problem_idx',
+                     'short_id',
+                     'contest_number',
                      'problem_name',
                      'problem_statement',
                      'problem_solution',
-                     'tags',
-                     'dificulty'])
+                     'problem_input',
+                     'problem_output',   
+                     'problem_tags',
+                     'problem_dificulty',
+                     'file_name',
+                     'editorial_link',
+                     'problem_editorial'
+                     ])
         
         # Remove instances where tags are empty
-        raw_dataset_df = raw_dataset_df[(raw_dataset_df['tags'].str.len() > 0) &
-                                        (raw_dataset_df['problem_statement'].str.len() > 100) &
+        raw_dataset_df = raw_dataset_df[(raw_dataset_df['problem_statement'].str.strip().str.len() > 100) &
                                         (raw_dataset_df['problem_solution'].str.len() > 0) &
-                                        (raw_dataset_df['dificulty'].str.len() > 0)]
+                                        (raw_dataset_df['problem_tags'].str.len() > 0) &
+                                        (raw_dataset_df['problem_dificulty'].str.len() > 0) &
+                                        (raw_dataset_df['problem_editorial'].str.strip().str.len() > 100)
+                                        ]
 
+        # Check for duplicate problem statements
+        duplicate_problem_statements = raw_dataset_df[raw_dataset_df['problem_statement'].str.strip().duplicated(keep=False)]
+
+        if not duplicate_problem_statements.empty:
+            # Drop duplicates, keeping the first occurrence
+            raw_dataset_df = raw_dataset_df.drop_duplicates(subset='problem_statement', keep='first')
+            print("Duplicates removed. Remaining dataset:")
+            print(raw_dataset_df)
+        else:
+            print("All problem statements are unique.")
+        
         # Save the raw dataset to a CSV file
         raw_dataset_df.to_csv(CONFIG['RAW_DATASET_PATH'],  index=False)
+
+    def backward_update_json_files(self):
+        def remove_non_utf8_characters(text):
+            """
+            Removes invalid UTF-8 characters from the text.
+            """
+            if isinstance(text, str):
+                return text.encode('utf-8', 'replace').decode('utf-8')  # Replace invalid characters
+            return text  # Return as is if it's not a string
+        
+        raw_dataset_df = pd.read_csv(CONFIG['RAW_DATASET_PATH'], encoding="ISO-8859-1")        
+        for index, row in raw_dataset_df.iterrows():
+            file_path = row['file_name']
+            if pd.isna(row['problem_editorial']) or row['problem_editorial'].strip() == '':
+                # If the file exists, remove it
+                if os.path.exists(file_path):
+                    os.remove(file_path)
+            else:
+                # pass
+                problem_editorial_utf8 = remove_non_utf8_characters(row['problem_editorial'])
+                
+                if os.path.exists(file_path):
+    
+                    with open(file_path, 'r', encoding='utf-8', errors='ignore') as input_file:
+                        try:
+                            json_data = json.load(input_file)
+                        except json.JSONDecodeError:
+                            print(f"Skipping file due to JSON error: {file_path}")
+                            continue  # Skip files with JSON issues
+                            
+                    json_data['editorial'] = problem_editorial_utf8
+
+                            
+                    with open(file_path, 'w', encoding='utf-8') as json_file:
+                        json.dump(json_data, json_file, indent=4)  # Ensure non-ASCII characters are preserved
+                else:
+                    print(index)
+                    print(f"File not found: {file_path}")
 
     def generate_dataset_overview(self):
         # read the raw dataset
@@ -105,14 +163,14 @@ class DatasetFactory:
         number_of_problems = df.shape[0]
             
         # count the occurrences of each difficulty class
-        difficulty_classes = df['dificulty'].unique()
-        difficulty_counts = df['dificulty'].value_counts()
+        difficulty_classes = df['problem_dificulty'].unique()
+        difficulty_counts = df['problem_dificulty'].value_counts()
         
         # plot difficulty distribution information
         self.__plot_difficulty_distribution(difficulty_counts)
         
         # count the occurrences of each tag
-        tags = df['tags'].apply(lambda x: x.lstrip('[').rstrip(']').split(','))
+        tags = df['problem_tags'].apply(lambda x: x.lstrip('[').rstrip(']').split(','))
 
         # Initialize the counter for all tags
         tag_counts = defaultdict(int)
@@ -145,7 +203,16 @@ class DatasetFactory:
         output_file.write(f"Minimum problem statement length: {min_statement_length}\n")
         output_file.write(f"Maximum problem statement length: {max_statement_length}\n")
         output_file.write(f"Mean problem statement length: {mean_statement_length}\n\n")
+
+        # Get the minimum and maximum problem editorials lengths
+        min_editorial_length = df['problem_editorial'].apply(len).min()
+        max_editorial_length = df['problem_editorial'].apply(len).max()
+        mean_editorial_length = df['problem_editorial'].apply(len).mean()
         
+        output_file.write(f"Minimum problem editorial length: {min_editorial_length}\n")
+        output_file.write(f"Maximum problem editorial length: {max_editorial_length}\n")
+        output_file.write(f"Mean problem editorial length: {mean_editorial_length}\n\n")
+
         # Get the minimum and maximum problem solution lengths
         min_solution_length = df['problem_solution'].apply(len).min()
         max_solution_length = df['problem_solution'].apply(len).max()
@@ -207,11 +274,11 @@ class DatasetFactory:
         plt.savefig(CONFIG['DIFICULTY_DISTRIBUTION_PLOT_PATH'])
         plt.close()  # Close the plot to free up memory
     
-    def __search_unknown_symbols(self, df, print_symbols=False):
+    def __search_unknown_symbols(self, df, collumn_name, print_symbols=False):
         
         unknown_symbols_set = set()
         # search for unknown symbols inside the problem statements
-        for text in df['problem_statement'].values:
+        for text in df[collumn_name].values:
             for character in text:
                 if character not in string.printable:
                     unknown_symbols_set.add(character)
@@ -229,7 +296,7 @@ class DatasetFactory:
         print("\nPreprocessing problem statements")
 
         # remove unknown symbols
-        unknown_symbols = self.__search_unknown_symbols(self.filtered_df)
+        unknown_symbols = self.__search_unknown_symbols(self.filtered_df, collumn_name='problem_statement')
         if unknown_symbols:
             self.filtered_df.loc[:, 'problem_statement'] = self.filtered_df['problem_statement'].apply(lambda text: re.sub('[%s]' % re.escape(unknown_symbols), ' ', text))
         else:
@@ -248,6 +315,26 @@ class DatasetFactory:
         # Remove non relevant editorials / statements
         # df = df.drop(index=[325, 506, 722, 730, 736, 911])
 
+    def __preprocess_problem_editorials(self):
+        print("\nPreprocessing problem editorials")
+
+        # remove unknown symbols
+        unknown_symbols = self.__search_unknown_symbols(self.filtered_df, collumn_name='problem_editorial')
+        if unknown_symbols:
+            self.filtered_df.loc[:, 'problem_editorial'] = self.filtered_df['problem_editorial'].apply(lambda text: re.sub('[%s]' % re.escape(unknown_symbols), ' ', text))
+        else:
+            pass
+
+        # removing punctuations
+        self.filtered_df.loc[:, 'problem_editorial'] = self.filtered_df['problem_editorial'].apply(lambda text: re.sub('[%s]' % re.escape(string.punctuation), ' ', text))
+
+        # removing all unwanted spaces
+        self.filtered_df.loc[:, 'problem_editorial'] = self.filtered_df['problem_editorial'].apply(lambda text: re.sub('\s+', ' ', text))
+        
+        # Remove all duplicated sequences
+        duplicated_rows_bool = self.filtered_df['problem_editorial'].duplicated()
+        self.filtered_df = self.filtered_df[~duplicated_rows_bool]
+    
     def __preprocess_problem_solutions(self):
         pass
 
@@ -262,7 +349,7 @@ class DatasetFactory:
         df = pd.read_csv(CONFIG['RAW_DATASET_PATH'])
         
         # count the occurrences of each tag
-        tags = df['tags'].apply(lambda x: x.lstrip('[').rstrip(']').split(','))
+        tags = df['problem_tags'].apply(lambda x: x.lstrip('[').rstrip(']').split(','))
 
         # Initialize the counter for all tags
         tag_counts = defaultdict(int)
@@ -278,10 +365,13 @@ class DatasetFactory:
         top_tags = list(sorted_tag_counts.keys())[:top_n_tags]
                 
         # filter the dataset
-        self.filtered_df = df[df['tags'].apply(lambda x: bool(set(ast.literal_eval(x)) & set(top_tags)))]
+        self.filtered_df = df[df['problem_tags'].apply(lambda x: bool(set(ast.literal_eval(x)) & set(top_tags)))]
         
         # Preprocess the problem statements
         self.__preprocess_problem_statements()
+        
+        # Preprocess the problem editorials
+        self.__preprocess_problem_editorials()
         
         # Preprocess the problem solutions
         self.__preprocess_problem_solutions()
@@ -333,9 +423,9 @@ class DatasetFactory:
         self.df_val = pd.read_csv(CONFIG[f'TOP_{top_n_tags}_BASE_VALIDATION_DATASET_PATH'])
         
         # clean the datasets of unnecessary collumns
-        self.df_train = self.df_train.drop(columns=['problem_link', 'problem_name'])
-        self.df_test = self.df_test.drop(columns=['problem_link', 'problem_name'])
-        self.df_val = self.df_val.drop(columns=['problem_link', 'problem_name'])
+        self.df_train = self.df_train.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_input', 'problem_output', 'file_name', 'editorial_link'])
+        self.df_test = self.df_test.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_input', 'problem_output', 'file_name', 'editorial_link'])
+        self.df_val = self.df_val.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_input', 'problem_output', 'file_name', 'editorial_link'])
                 
         # for 5 classes ->  ['greedy', 'math', 'implementation', 'dp', 'data structures']
         # for 10 classes -> ['greedy', 'math', 'implementation', 'dp', 'data structures', 'constructive algorithms', 'brute force', 'graphs', 'binary search', 'sortings']
@@ -343,11 +433,12 @@ class DatasetFactory:
         # for 20 classes -> ['greedy', 'math', 'implementation', 'dp', 'data structures', 'constructive algorithms', 'brute force', 'graphs', 'binary search', 'sortings', 'dfs and similar', 'trees', 'number theory', 'strings', 'combinatorics', 'two pointers', 'bitmasks', 'geometry', 'dsu', 'shortest paths']
         
         # encode the tags to one hot encoding
-        self.df_train['tags'] = self.df_train['tags'].apply(lambda x: self.__create_binary_vector(x, unique_tags))
-        self.df_test['tags'] = self.df_test['tags'].apply(lambda x: self.__create_binary_vector(x, unique_tags))
-        self.df_val['tags'] = self.df_val['tags'].apply(lambda x: self.__create_binary_vector(x, unique_tags))
+        # self.df_train['tags'] = self.df_train['tags'].apply(lambda x: self.__create_binary_vector(x, unique_tags))
+        # self.df_test['tags'] = self.df_test['tags'].apply(lambda x: self.__create_binary_vector(x, unique_tags))
+        # self.df_val['tags'] = self.df_val['tags'].apply(lambda x: self.__create_binary_vector(x, unique_tags))
         
         #save the datasets
         self.df_train.to_csv(CONFIG[f'TOP_{top_n_tags}_TRAINING_DATASET_PATH'], index=False)
         self.df_test.to_csv(CONFIG[f'TOP_{top_n_tags}_TESTING_DATASET_PATH'], index=False)
         self.df_val.to_csv(CONFIG[f'TOP_{top_n_tags}_VALIDATION_DATASET_PATH'], index=False)
+    

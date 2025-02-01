@@ -1,1 +1,105 @@
-{"link": "https://codeforces.com//contest/275/problem/B", "problemId": "2637", "problem_idx": "B", "shortId": "275B", "contest_number": "275", "problem_submissions": {"B": [3157455, 3154926, 3153875, 3154128, 3168618, 3157608, 3156503, 3154125, 3154230, 3157497, 3153507, 3154970, 3156558, 3164313, 3154711, 3160366], "D": [3155607, 3157854, 3158539, 3159163, 3159177, 3160578, 3159296, 3159635, 3159357, 3161717, 3160646, 3160630, 3156779, 3160587, 3157298, 3156905, 3156998, 3157339], "C": [3153198, 3153405, 3154890, 3156142, 3152561, 3153505, 3157377, 3155829, 3154047, 3155264, 3156869, 3157904, 3152045, 3156766, 3153753, 3155134, 3158671], "A": [3151085, 3151607, 3151113, 3151479, 3168404, 3151428, 3151540, 3151199, 3151322, 3154980, 3151175, 3151327, 3151992, 3151151, 3151487, 3151102, 3151305, 3160818], "E": [3164302]}, "name": "B. Convex Shape", "statement": "Consider an grid. Initially all the cells of the grid are colored white.\r\nLenny has painted some of the cells (at least one) black. We call a\r\npainted grid if one can walk from black cell to black cell using a path\r\nof side-adjacent black cells changing his direction at most once during\r\nthe path. In the figure below, the left grid is convex while the right\r\none is not convex, because there exist two cells which need more than\r\none time to change direction in their path. You\u2019re given a painted grid\r\nin the input. Tell Lenny if the grid is convex or not.\r\n", "solutions": ["#include <iostream>\n#include <cstdio>\n#include <cstring>\n#include <algorithm>\n#include <cmath>\n#include <map>\n#include <queue>\n#include <vector>\n#include <cstdlib>\n#include <functional>\n#include <string>\n#define N 55\nusing namespace std;\nchar ch[N][N];\nint vis[N][N][4][2],f[N][N],st[N*N],top=0;\nint dx[4]={1,-1,0,0,},dy[4]={0,0,1,-1};\nint n,m;\nbool check(int x,int y)\n{\n    if(x<0||x>=n)return 0;\n    if(y<0||y>=m)return 0;\n    if(ch[x][y]=='W')return 0;\n    return 1;\n}\nvoid dfs(int x,int y,int k,int used)\n{\n    vis[x][y][k][used]=1;\n    f[x][y]=1;\n    int tx=x+dx[k],ty=y+dy[k];\n    if(check(tx,ty)&&!vis[tx][ty][k][used])dfs(tx,ty,k,used);\n    if(used)return;\n    for(int i=0;i<4;i++)\n    {\n        if(i==k)continue;\n        int tx=x+dx[i],ty=y+dy[i];\n        if(check(tx,ty)&&!vis[tx][ty][i][1])dfs(tx,ty,i,1);\n    }\n}\nint main()\n{\n\n    scanf(\"%d%d\",&n,&m);\n    for(int i=0;i<n;i++)\n     scanf(\"%s\",ch[i]);\n    for(int i=0;i<n;i++)\n     for(int j=0;j<m;j++)\n     if(ch[i][j]=='B')\n     {\n         int p=i*m+j;\n         st[top++]=p;\n     }\n    for(int i=0;i<top;i++)\n    {\n        memset(vis,0,sizeof(vis));\n        memset(f,0,sizeof(f));\n        int x=st[i]/m,y=st[i]%m;\n        for(int j=0;j<4;j++)\n        {\n            dfs(x,y,j,0);\n        }\n        for(int j=i;j<top;j++)\n        {\n            int xx=st[j]/m,yy=st[j]%m;\n            if(!f[xx][yy])\n            {\n                puts(\"NO\");\n                return 0;\n            }\n        }\n    }\n    puts(\"YES\");\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["constructive algorithms", "implementation"], "dificulty": "1700", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/275/problem/B",
+    "problemId": "2637",
+    "problem_idx": "B",
+    "shortId": "275B",
+    "contest_number": "275",
+    "problem_submissions": {
+        "B": [
+            3157455,
+            3154926,
+            3153875,
+            3154128,
+            3168618,
+            3157608,
+            3156503,
+            3154125,
+            3154230,
+            3157497,
+            3153507,
+            3154970,
+            3156558,
+            3164313,
+            3154711,
+            3160366
+        ],
+        "D": [
+            3155607,
+            3157854,
+            3158539,
+            3159163,
+            3159177,
+            3160578,
+            3159296,
+            3159635,
+            3159357,
+            3161717,
+            3160646,
+            3160630,
+            3156779,
+            3160587,
+            3157298,
+            3156905,
+            3156998,
+            3157339
+        ],
+        "C": [
+            3153198,
+            3153405,
+            3154890,
+            3156142,
+            3152561,
+            3153505,
+            3157377,
+            3155829,
+            3154047,
+            3155264,
+            3156869,
+            3157904,
+            3152045,
+            3156766,
+            3153753,
+            3155134,
+            3158671
+        ],
+        "A": [
+            3151085,
+            3151607,
+            3151113,
+            3151479,
+            3168404,
+            3151428,
+            3151540,
+            3151199,
+            3151322,
+            3154980,
+            3151175,
+            3151327,
+            3151992,
+            3151151,
+            3151487,
+            3151102,
+            3151305,
+            3160818
+        ],
+        "E": [
+            3164302
+        ]
+    },
+    "name": "B. Convex Shape",
+    "statement": "Consider an grid. Initially all the cells of the grid are colored white.\r\nLenny has painted some of the cells (at least one) black. We call a\r\npainted grid if one can walk from black cell to black cell using a path\r\nof side-adjacent black cells changing his direction at most once during\r\nthe path. In the figure below, the left grid is convex while the right\r\none is not convex, because there exist two cells which need more than\r\none time to change direction in their path. You\u2019re given a painted grid\r\nin the input. Tell Lenny if the grid is convex or not.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <cstdio>\n#include <cstring>\n#include <algorithm>\n#include <cmath>\n#include <map>\n#include <queue>\n#include <vector>\n#include <cstdlib>\n#include <functional>\n#include <string>\n#define N 55\nusing namespace std;\nchar ch[N][N];\nint vis[N][N][4][2],f[N][N],st[N*N],top=0;\nint dx[4]={1,-1,0,0,},dy[4]={0,0,1,-1};\nint n,m;\nbool check(int x,int y)\n{\n    if(x<0||x>=n)return 0;\n    if(y<0||y>=m)return 0;\n    if(ch[x][y]=='W')return 0;\n    return 1;\n}\nvoid dfs(int x,int y,int k,int used)\n{\n    vis[x][y][k][used]=1;\n    f[x][y]=1;\n    int tx=x+dx[k],ty=y+dy[k];\n    if(check(tx,ty)&&!vis[tx][ty][k][used])dfs(tx,ty,k,used);\n    if(used)return;\n    for(int i=0;i<4;i++)\n    {\n        if(i==k)continue;\n        int tx=x+dx[i],ty=y+dy[i];\n        if(check(tx,ty)&&!vis[tx][ty][i][1])dfs(tx,ty,i,1);\n    }\n}\nint main()\n{\n\n    scanf(\"%d%d\",&n,&m);\n    for(int i=0;i<n;i++)\n     scanf(\"%s\",ch[i]);\n    for(int i=0;i<n;i++)\n     for(int j=0;j<m;j++)\n     if(ch[i][j]=='B')\n     {\n         int p=i*m+j;\n         st[top++]=p;\n     }\n    for(int i=0;i<top;i++)\n    {\n        memset(vis,0,sizeof(vis));\n        memset(f,0,sizeof(f));\n        int x=st[i]/m,y=st[i]%m;\n        for(int j=0;j<4;j++)\n        {\n            dfs(x,y,j,0);\n        }\n        for(int j=i;j<top;j++)\n        {\n            int xx=st[j]/m,yy=st[j]%m;\n            if(!f[xx][yy])\n            {\n                puts(\"NO\");\n                return 0;\n            }\n        }\n    }\n    puts(\"YES\");\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "implementation"
+    ],
+    "dificulty": "1700",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Convex Shape.json",
+    "editorial_link": "https://codeforces.com//blog/entry/6759",
+    "editorial": "Consider a pair of black cells. There exist at most two different valid paths we can take between these two cells. The na\u00efve solution would be to check the existence of at least one of these paths for each pair of black cells. There are O(n2m2) such pairs and each pair can be checked in O(n?+?m). So the time complexity will be O(n2m2(n?+?m)) which is enough to get accepted.\n"
+}

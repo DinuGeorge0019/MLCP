@@ -1,1 +1,105 @@
-{"link": "https://codeforces.com//contest/260/problem/D", "problemId": "2468", "problem_idx": "D", "shortId": "260D", "contest_number": "260", "problem_submissions": {"E": [2841488], "B": [2838739, 2837191, 2837768, 2838150, 2837744, 2838786, 2837047, 2839010, 2837833, 2838337, 2844158, 2838983, 2837520, 2838783, 2837827, 2837919, 2837792], "C": [2837179, 2838563, 2839071, 2839576, 2840298, 2840963, 2838247, 2841633, 2838738, 2839728, 2840997, 2840780, 2840234, 2841680, 2838985, 2837535, 2840027, 2839622, 2839935], "A": [2836127, 2836200, 2836494, 2836347, 2836171, 2836837, 2836322, 2836732, 2836174, 2844801, 2836481, 2836407, 2837519, 2836145, 2836199, 2840135, 2836459, 2836219], "D": [2839564, 2841151, 2841269, 2843347, 2843581, 2843906, 2843880, 2840859, 2843218, 2849694, 2842890, 2847485]}, "name": "D. Black and White Tree", "statement": "The board has got a painted tree graph, consisting of nodes. Let us\r\nremind you that a non-directed graph is called a tree if it is connected\r\nand doesn\u2019t contain any cycles.Each node of the graph is painted black\r\nor white in such a manner that there aren\u2019t two nodes of the same color,\r\nconnected by an edge. Each edge contains its value written on it as a\r\nnon-negative integer.A bad boy Vasya came up to the board and wrote\r\nnumber near each node the sum of values of all edges that are incident\r\nto this node. Then Vasya removed the edges and their values from the\r\nboard.Your task is to restore the original tree by the node colors and\r\nnumbers .\r\n", "solutions": ["#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <queue>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstring>\n#include <cassert>\n#include <initializer_list>\n#include <unordered_map>\n#include <unordered_set>\n\nusing namespace std;\n\n#ifndef ONLINE_JUDGE\n#define DEBUG\n#endif\n\n#define oo 0x3F3F3F3F\n#ifdef DEBUG\n#define cvar(x) cerr << \"<\" << #x << \": \" << x << \">\"\n#define evar(x) cvar (x) << endl\ntemplate<class T> void DISP(const char *s, T x, int n) {cerr << \"[\" << s << \": \"; for (int i = 0; i < n; ++i) cerr << x[i] << \" \"; cerr << \"]\" << endl;}\n#define disp(x,n) DISP(#x \" to \" #n, x, n)\n#else\n#define cvar(...) ({})\n#define evar(...) ({})\n#define disp(...) ({})\n#endif\n#define fst first\n#define snd second\n#define PB push_back\n#define SZ(x) (int)((x).size())\n#define ALL(x) (x).begin(), (x).end()\n\ntypedef unsigned int uint;\ntypedef long long int64;\ntypedef unsigned long long uint64;\ntypedef long double real;\n\nint64 pow(int64 b, int64 e, int64 m) { int64 t = 1; for (; e; e >>= 1, b = b * b % m) e & 1 ? t = t * b % m : 0; return t; }\ntemplate<class T> inline bool chkmin(T &a, T b) {return a > b ? a = b, true : false;}\ntemplate<class T> inline bool chkmax(T &a, T b) {return a < b ? a = b, true : false;}\ntemplate<class T> inline T sqr(T x) {return x * x;}\ntemplate <typename T> T gcd(T x, T y) {for (T t; x; t = x, x = y % x, y = t); return y; }\n\ntemplate<class edge> struct Graph\n{\n  vector<vector<edge> > adj;\n  Graph(int n) {adj.clear (); adj.resize (n + 5);}\n  Graph() {adj.clear (); }\n  void resize(int n) {adj.resize (n + 5); }\n  void add(int s, edge e){adj[s].push_back (e);}\n  void del(int s, edge e) {adj[s].erase (find (iter (adj[s]), e)); }\n  vector<edge>& operator [](int t) {return adj[t];}\n};\n\nset<pair<int, int>, greater<pair<int, int>>> W, B;\n\nint main ()\n{\n#ifndef ONLINE_JUDGE\n\tfreopen(\"D.in\" , \"r\", stdin);\n\tfreopen(\"D.out\", \"w\", stdout);\n#endif\n\tios_base::sync_with_stdio (false);\n\n\tint n;\n\t\n\tcin >> n;\n\tfor (int i = 1, c, s; i <= n; ++i) {\n\t\tcin >> c >> s;\n\t\tif (c == 0) W.insert(make_pair(s, i));\n\t\telse B.insert(make_pair(s, i));\n\t}\n\tvector<pair<pair<int, int>, int>> ans;\n\n\tpair<int, int> disX, disY;\n\tfor (; !W.empty() && !B.empty(); ) {\n\t\tpair<int, int> x = *W.begin(), y = *B.begin();\n\t\tW.erase(x), B.erase(y);\n\t\t\n\t\tint v = min(x.fst, y.fst);\n\t\tans.push_back(make_pair(make_pair(x.snd, y.snd), v));\n\t\tx.fst -= v, y.fst -= v;\n\t\tif (y.fst || (!x.fst && !y.fst && SZ(W) > SZ(B)))\n\t\t\tB.insert(y), disY = y;\n\t\telse\n\t\t\tW.insert(x), disX = x;\n\t}\n\tfor (auto x : ans)\n\t\tcout << x.fst.fst << \" \" << x.fst.snd << \" \" << x.snd << endl;\n\n\treturn 0; \n}\n"], "input": "", "output": "", "tags": ["constructive algorithms", "dsu", "graphs", "greedy", "trees"], "dificulty": "2100", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/260/problem/D",
+    "problemId": "2468",
+    "problem_idx": "D",
+    "shortId": "260D",
+    "contest_number": "260",
+    "problem_submissions": {
+        "E": [
+            2841488
+        ],
+        "B": [
+            2838739,
+            2837191,
+            2837768,
+            2838150,
+            2837744,
+            2838786,
+            2837047,
+            2839010,
+            2837833,
+            2838337,
+            2844158,
+            2838983,
+            2837520,
+            2838783,
+            2837827,
+            2837919,
+            2837792
+        ],
+        "C": [
+            2837179,
+            2838563,
+            2839071,
+            2839576,
+            2840298,
+            2840963,
+            2838247,
+            2841633,
+            2838738,
+            2839728,
+            2840997,
+            2840780,
+            2840234,
+            2841680,
+            2838985,
+            2837535,
+            2840027,
+            2839622,
+            2839935
+        ],
+        "A": [
+            2836127,
+            2836200,
+            2836494,
+            2836347,
+            2836171,
+            2836837,
+            2836322,
+            2836732,
+            2836174,
+            2844801,
+            2836481,
+            2836407,
+            2837519,
+            2836145,
+            2836199,
+            2840135,
+            2836459,
+            2836219
+        ],
+        "D": [
+            2839564,
+            2841151,
+            2841269,
+            2843347,
+            2843581,
+            2843906,
+            2843880,
+            2840859,
+            2843218,
+            2849694,
+            2842890,
+            2847485
+        ]
+    },
+    "name": "D. Black and White Tree",
+    "statement": "The board has got a painted tree graph, consisting of nodes. Let us\r\nremind you that a non-directed graph is called a tree if it is connected\r\nand doesn\u2019t contain any cycles.Each node of the graph is painted black\r\nor white in such a manner that there aren\u2019t two nodes of the same color,\r\nconnected by an edge. Each edge contains its value written on it as a\r\nnon-negative integer.A bad boy Vasya came up to the board and wrote\r\nnumber near each node the sum of values of all edges that are incident\r\nto this node. Then Vasya removed the edges and their values from the\r\nboard.Your task is to restore the original tree by the node colors and\r\nnumbers .\r\n",
+    "solutions": [
+        "#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <queue>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstring>\n#include <cassert>\n#include <initializer_list>\n#include <unordered_map>\n#include <unordered_set>\n\nusing namespace std;\n\n#ifndef ONLINE_JUDGE\n#define DEBUG\n#endif\n\n#define oo 0x3F3F3F3F\n#ifdef DEBUG\n#define cvar(x) cerr << \"<\" << #x << \": \" << x << \">\"\n#define evar(x) cvar (x) << endl\ntemplate<class T> void DISP(const char *s, T x, int n) {cerr << \"[\" << s << \": \"; for (int i = 0; i < n; ++i) cerr << x[i] << \" \"; cerr << \"]\" << endl;}\n#define disp(x,n) DISP(#x \" to \" #n, x, n)\n#else\n#define cvar(...) ({})\n#define evar(...) ({})\n#define disp(...) ({})\n#endif\n#define fst first\n#define snd second\n#define PB push_back\n#define SZ(x) (int)((x).size())\n#define ALL(x) (x).begin(), (x).end()\n\ntypedef unsigned int uint;\ntypedef long long int64;\ntypedef unsigned long long uint64;\ntypedef long double real;\n\nint64 pow(int64 b, int64 e, int64 m) { int64 t = 1; for (; e; e >>= 1, b = b * b % m) e & 1 ? t = t * b % m : 0; return t; }\ntemplate<class T> inline bool chkmin(T &a, T b) {return a > b ? a = b, true : false;}\ntemplate<class T> inline bool chkmax(T &a, T b) {return a < b ? a = b, true : false;}\ntemplate<class T> inline T sqr(T x) {return x * x;}\ntemplate <typename T> T gcd(T x, T y) {for (T t; x; t = x, x = y % x, y = t); return y; }\n\ntemplate<class edge> struct Graph\n{\n  vector<vector<edge> > adj;\n  Graph(int n) {adj.clear (); adj.resize (n + 5);}\n  Graph() {adj.clear (); }\n  void resize(int n) {adj.resize (n + 5); }\n  void add(int s, edge e){adj[s].push_back (e);}\n  void del(int s, edge e) {adj[s].erase (find (iter (adj[s]), e)); }\n  vector<edge>& operator [](int t) {return adj[t];}\n};\n\nset<pair<int, int>, greater<pair<int, int>>> W, B;\n\nint main ()\n{\n#ifndef ONLINE_JUDGE\n\tfreopen(\"D.in\" , \"r\", stdin);\n\tfreopen(\"D.out\", \"w\", stdout);\n#endif\n\tios_base::sync_with_stdio (false);\n\n\tint n;\n\t\n\tcin >> n;\n\tfor (int i = 1, c, s; i <= n; ++i) {\n\t\tcin >> c >> s;\n\t\tif (c == 0) W.insert(make_pair(s, i));\n\t\telse B.insert(make_pair(s, i));\n\t}\n\tvector<pair<pair<int, int>, int>> ans;\n\n\tpair<int, int> disX, disY;\n\tfor (; !W.empty() && !B.empty(); ) {\n\t\tpair<int, int> x = *W.begin(), y = *B.begin();\n\t\tW.erase(x), B.erase(y);\n\t\t\n\t\tint v = min(x.fst, y.fst);\n\t\tans.push_back(make_pair(make_pair(x.snd, y.snd), v));\n\t\tx.fst -= v, y.fst -= v;\n\t\tif (y.fst || (!x.fst && !y.fst && SZ(W) > SZ(B)))\n\t\t\tB.insert(y), disY = y;\n\t\telse\n\t\t\tW.insert(x), disX = x;\n\t}\n\tfor (auto x : ans)\n\t\tcout << x.fst.fst << \" \" << x.fst.snd << \" \" << x.snd << endl;\n\n\treturn 0; \n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "dsu",
+        "graphs",
+        "greedy",
+        "trees"
+    ],
+    "dificulty": "2100",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Black and White Tree.json",
+    "editorial_link": "https://codeforces.com//blog/entry/6263",
+    "editorial": "The problem can be solved constructively maintaining the following\r\ninvariant (rule) the sum of the white vertices equals to the sum of the\r\nblack vertices. The tree is a bipartite graph, so we build bipartite\r\ngraph with no cycles, which will satisfy the conditions of the problem.\r\nParts of graph will be black and white vertices. On each step we will\r\nchoose vertex with minimum sum from white and black vertices. Then find\r\nany vertex of opposite color and add edge with weight , and subtract\r\nfrom sum of sum of , that is . After each step one vertex is deleted.\r\nThat s why there will be no cycles in constructed graph. When we delete\r\nlast vertex of one of colors, all other vertices can be joined in any\r\ncorrect way with edges of weight .\r\n"
+}

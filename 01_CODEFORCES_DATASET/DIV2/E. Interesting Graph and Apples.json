@@ -1,1 +1,105 @@
-{"link": "https://codeforces.com//contest/9/problem/E", "problemId": "41", "problem_idx": "E", "shortId": "9E", "contest_number": "9", "problem_submissions": {"E": [39868, 40035, 40397, 39920, 40525, 40255, 40364, 40918, 40916, 40907, 40905, 40903, 40902, 40887, 40883, 40881], "B": [39322, 39157, 39182, 39065, 39109, 39103, 39519, 39212, 39094, 39095, 39125, 39498, 39287], "D": [39225, 39357, 39494, 39241, 39384, 39662, 39771, 39508, 39555, 39543, 2827312, 39714, 38998, 39881], "C": [38999, 38924, 39161, 38963, 38893, 38846, 39594, 38953, 38868, 38709, 38839, 39133, 38862], "A": [38708, 38736, 38719, 38706, 38745, 38722, 39296, 38845, 38717, 38803, 38714, 39067, 38711]}, "name": "E. Interesting Graph and Apples", "statement": "Hexadecimal likes drawing. She has drawn many graphs already, both\r\ndirected and not. Recently she has started to work on a still-life\r\ninteresting graph and apples . An undirected graph is called\r\ninteresting, if each of its vertices belongs to one cycle only a funny\r\nring and does not belong to any other cycles. A funny ring is a cycle\r\nthat goes through all the vertices just once. Moreover, loops are funny\r\nrings too.She has already drawn the apples and some of the graph edges.\r\nBut now it is not clear, how to connect the rest of the vertices to get\r\nan interesting graph as a result. The answer should contain the minimal\r\namount of added edges. And furthermore, the answer should be the\r\nlexicographically smallest one. The set of edges , where , is\r\nlexicographically smaller than the set , where , provided that the\r\nsequence of integers is lexicographically smaller than the sequence . If\r\nyou do not cope, Hexadecimal will eat you. ...eat you alive.\r\n", "solutions": ["#include <iostream>\n#include <cmath>\n#include <algorithm>\n#include <cstdio>\n#include <string>\n#include <vector>\n\nusing namespace std;\n\nint pos[120] = {0};\n\nvector <pair <int, int> > paths;\nint f[1000];\n\nint alt(int x)\n{\n\tint p = pos[x];\n\treturn (paths[p].first + paths[p].second - x);\n}\n\npair <int, int> unite(pair <int, int> a, pair <int, int> b)\n{\n\tif (a.first == b.first) return make_pair(a.second, b.second);\n\tif (a.first == b.second) return make_pair(a.second, b.first);\n\tif (a.second == b.first) return make_pair(a.first, b.second);\n\treturn make_pair(a.first, b.first);\n}\n\nint main()\n{\n//\tfreopen(\"\", \"rt\", stdin);\n//\tfreopen(\"\", \"wt\", stdout);\n\tint n, m;\n\tcin >> n >> m;\t\n\tfor (int i = 0; i < n; ++i)\n\t{\n\t\tpos[i] = i;\n\t\tpaths.push_back(make_pair(i, i));\n\t\tf[i] = 1;\n\t}\n\tint q = n;\n\tfor (int i = 0; i < m; ++i)\n\t{\n\t\tint x, y;\n\t\tcin >> x >> y;\n\t\tx--; y--;\n\t\tif (pos[x] > pos[y]) swap(x, y);\n\t\tif (pos[x] == pos[y])\n\t\t\tif (q != 1)\n\t\t\t{\n\t\t\t\tcout << \"NO\";\n\t\t\t\treturn 0;\n\t\t\t}\n\t\t\telse if (i == m-1)\n\t\t\t{\n\t\t\t\tcout << \"YES\\n0\\n\";\n\t\t\t\treturn 0;\n\t\t\t}\n\t\t\telse\n\t\t\t{\n\t\t\t\tcout << \"NO\";\n\t\t\t\treturn 0;\n\t\t\t}\n\t\tif (pos[x] < 0 || pos[y] < 0)\n\t\t{\n\t\t\tcout << \"NO\";\n\t\t\treturn 0;\n\t\t}\n\t\tpaths.push_back(make_pair(alt(x), alt(y)));\n\t\tint fr = paths.size() - 1;\n\t\tf[pos[x]] = 0;\n\t\tf[pos[y]] = 0;\n\t\tf[fr] = 1;\n\t\tq--;\n\t\tif (x != alt(x))\n\t\t{\n\t\t\tpos[alt(x)] = fr;\n\t\t\tpos[x] = -1;\n\t\t}\n\t\telse pos[x] = fr;\n\t\tif (y != alt(y)) \n\t\t{\n\t\t\tpos[alt(y)] = fr;\n\t\t\tpos[y] = -1;\n\t\t}\n\t\telse pos[y] = fr;\n\t}\n\tvector <pair <int, int> > chains;\n\tfor (int i = 0; i < paths.size(); ++i)\n\t\tif (f[i])\n\t\t{\n\t\t\tif (paths[i].first > paths[i].second) swap(paths[i].first, paths[i].second);\n\t\t\tchains.push_back(paths[i]);\n\t\t}\t\n\tsort(chains.begin(), chains.end());\n\tcout << \"YES\\n\";\n\tcout << chains.size() << '\\n';\n\twhile (chains.size() > 1)\n\t{\n\t\tcout << chains[0].first + 1 << ' ' << chains[1].first + 1 << '\\n';\n\t\tchains[1].first = chains[0].second;\n\t\tif (chains[1].first > chains[1].second) swap(chains[1].first, chains[1].second);\n\t\tchains.erase(chains.begin());\n\t\tsort(chains.begin(), chains.end());\n\t}\n\tcout << chains[0].first + 1 << ' ' << chains[0].second + 1<< '\\n';\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["dfs and similar", "dsu", "graphs"], "dificulty": "2300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/9/problem/E",
+    "problemId": "41",
+    "problem_idx": "E",
+    "shortId": "9E",
+    "contest_number": "9",
+    "problem_submissions": {
+        "E": [
+            39868,
+            40035,
+            40397,
+            39920,
+            40525,
+            40255,
+            40364,
+            40918,
+            40916,
+            40907,
+            40905,
+            40903,
+            40902,
+            40887,
+            40883,
+            40881
+        ],
+        "B": [
+            39322,
+            39157,
+            39182,
+            39065,
+            39109,
+            39103,
+            39519,
+            39212,
+            39094,
+            39095,
+            39125,
+            39498,
+            39287
+        ],
+        "D": [
+            39225,
+            39357,
+            39494,
+            39241,
+            39384,
+            39662,
+            39771,
+            39508,
+            39555,
+            39543,
+            2827312,
+            39714,
+            38998,
+            39881
+        ],
+        "C": [
+            38999,
+            38924,
+            39161,
+            38963,
+            38893,
+            38846,
+            39594,
+            38953,
+            38868,
+            38709,
+            38839,
+            39133,
+            38862
+        ],
+        "A": [
+            38708,
+            38736,
+            38719,
+            38706,
+            38745,
+            38722,
+            39296,
+            38845,
+            38717,
+            38803,
+            38714,
+            39067,
+            38711
+        ]
+    },
+    "name": "E. Interesting Graph and Apples",
+    "statement": "Hexadecimal likes drawing. She has drawn many graphs already, both\r\ndirected and not. Recently she has started to work on a still-life\r\ninteresting graph and apples . An undirected graph is called\r\ninteresting, if each of its vertices belongs to one cycle only a funny\r\nring and does not belong to any other cycles. A funny ring is a cycle\r\nthat goes through all the vertices just once. Moreover, loops are funny\r\nrings too.She has already drawn the apples and some of the graph edges.\r\nBut now it is not clear, how to connect the rest of the vertices to get\r\nan interesting graph as a result. The answer should contain the minimal\r\namount of added edges. And furthermore, the answer should be the\r\nlexicographically smallest one. The set of edges , where , is\r\nlexicographically smaller than the set , where , provided that the\r\nsequence of integers is lexicographically smaller than the sequence . If\r\nyou do not cope, Hexadecimal will eat you. ...eat you alive.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <cmath>\n#include <algorithm>\n#include <cstdio>\n#include <string>\n#include <vector>\n\nusing namespace std;\n\nint pos[120] = {0};\n\nvector <pair <int, int> > paths;\nint f[1000];\n\nint alt(int x)\n{\n\tint p = pos[x];\n\treturn (paths[p].first + paths[p].second - x);\n}\n\npair <int, int> unite(pair <int, int> a, pair <int, int> b)\n{\n\tif (a.first == b.first) return make_pair(a.second, b.second);\n\tif (a.first == b.second) return make_pair(a.second, b.first);\n\tif (a.second == b.first) return make_pair(a.first, b.second);\n\treturn make_pair(a.first, b.first);\n}\n\nint main()\n{\n//\tfreopen(\"\", \"rt\", stdin);\n//\tfreopen(\"\", \"wt\", stdout);\n\tint n, m;\n\tcin >> n >> m;\t\n\tfor (int i = 0; i < n; ++i)\n\t{\n\t\tpos[i] = i;\n\t\tpaths.push_back(make_pair(i, i));\n\t\tf[i] = 1;\n\t}\n\tint q = n;\n\tfor (int i = 0; i < m; ++i)\n\t{\n\t\tint x, y;\n\t\tcin >> x >> y;\n\t\tx--; y--;\n\t\tif (pos[x] > pos[y]) swap(x, y);\n\t\tif (pos[x] == pos[y])\n\t\t\tif (q != 1)\n\t\t\t{\n\t\t\t\tcout << \"NO\";\n\t\t\t\treturn 0;\n\t\t\t}\n\t\t\telse if (i == m-1)\n\t\t\t{\n\t\t\t\tcout << \"YES\\n0\\n\";\n\t\t\t\treturn 0;\n\t\t\t}\n\t\t\telse\n\t\t\t{\n\t\t\t\tcout << \"NO\";\n\t\t\t\treturn 0;\n\t\t\t}\n\t\tif (pos[x] < 0 || pos[y] < 0)\n\t\t{\n\t\t\tcout << \"NO\";\n\t\t\treturn 0;\n\t\t}\n\t\tpaths.push_back(make_pair(alt(x), alt(y)));\n\t\tint fr = paths.size() - 1;\n\t\tf[pos[x]] = 0;\n\t\tf[pos[y]] = 0;\n\t\tf[fr] = 1;\n\t\tq--;\n\t\tif (x != alt(x))\n\t\t{\n\t\t\tpos[alt(x)] = fr;\n\t\t\tpos[x] = -1;\n\t\t}\n\t\telse pos[x] = fr;\n\t\tif (y != alt(y)) \n\t\t{\n\t\t\tpos[alt(y)] = fr;\n\t\t\tpos[y] = -1;\n\t\t}\n\t\telse pos[y] = fr;\n\t}\n\tvector <pair <int, int> > chains;\n\tfor (int i = 0; i < paths.size(); ++i)\n\t\tif (f[i])\n\t\t{\n\t\t\tif (paths[i].first > paths[i].second) swap(paths[i].first, paths[i].second);\n\t\t\tchains.push_back(paths[i]);\n\t\t}\t\n\tsort(chains.begin(), chains.end());\n\tcout << \"YES\\n\";\n\tcout << chains.size() << '\\n';\n\twhile (chains.size() > 1)\n\t{\n\t\tcout << chains[0].first + 1 << ' ' << chains[1].first + 1 << '\\n';\n\t\tchains[1].first = chains[0].second;\n\t\tif (chains[1].first > chains[1].second) swap(chains[1].first, chains[1].second);\n\t\tchains.erase(chains.begin());\n\t\tsort(chains.begin(), chains.end());\n\t}\n\tcout << chains[0].first + 1 << ' ' << chains[0].second + 1<< '\\n';\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dfs and similar",
+        "dsu",
+        "graphs"
+    ],
+    "dificulty": "2300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Interesting Graph and Apples.json",
+    "editorial_link": "https://codeforces.com//blog/entry/283",
+    "editorial": "The funny ring consists of n vertices and n edges. If there is another edge except for these n, then the vertices it connects belong to more than one cycle. So, an interesting graph is just a funny ring.\nA graph is a funny ring if and only if the following conditions hold:\nA1. The degree of each vertex equals 2.\nA2. The graph is connected.\n Now let's figure out when a graph is not yet a funny ring, but can be transformed into a funny ring by adding edges. There are obvious necessary conditions:\nB1. m < n.\nB2. There are no cycles.\nB3. The degree of each vertex is not more than 2.\n Let's add edges so that these conditions were preserved, and the sequence of edges was lexicographically minimal. So, we add an edge (i,j) such that:\n1. The degrees of i and j are less than 2. (Otherwise we would break B3).\n2. i and j belong to different connected components. (Otherwise we would break B2).\n3. The pair (i,j) is lexicographically minimal.\n Let's see what we have when we can't add edges anymore. Since there are no cycles, each connected component is a tree, and therefore has at least one vertex with degree less than 2. If there are two connected components, then they could be connected by an edge without breaking B1-B3. So the graph is connected, has no cycles, and the degree of each vertex is not more than 2. This means that the obtained graph is just a walk and we can connect its end points to obtain a funny ring.\n \n To summarize, the algorithm is the following:\n 1. Check if A1-A2 hold. If yes, output \"YES\" and 0.\n 2. Check if B1-B3 hold. If no, output \"NO\".\n 3. Output \"YES\" and n-m.\n 4. Add edges as described. When the edge (i,j) is added, output \"i j\".\n 5. Find the only vertices i and j with degree less than 2 (they can be equal if n=1). Output \"i j\"."
+}

@@ -1,1 +1,88 @@
-{"link": "https://codeforces.com//contest/487/problem/D", "problemId": "17750", "problem_idx": "D", "shortId": "487D", "contest_number": "487", "problem_submissions": {"D": [8785170, 8785802, 8789803, 8787371, 8788023, 8786843, 8786047, 8788953, 8789614, 8788601, 8788287, 8809646], "C": [8782578, 8779214, 8784203, 8781731, 8783945, 8788058, 8788160, 8784014, 8785214, 8790866, 8785252, 8787004, 8781669, 8783114], "B": [8779947, 8781687, 8783062, 8780136, 8781381, 8780441, 8781611, 8782195, 8783872, 8781857, 8781107, 8781244, 8782491, 8780482, 8784680, 8788899], "A": [8777348, 8787397, 8780501, 8784128, 8783081, 8782652, 8779644, 8779577, 8777743, 8778427, 8792035, 8778269, 8785641, 8784172]}, "name": "D. Conveyor Belts", "statement": "Automatic Bakery of Cyberland (ABC) recently bought an rectangle table.\r\nTo serve the diners, ABC placed seats around the table. The size of each\r\nseat is equal to a unit square, so there are seats in total.ABC placed\r\nconveyor belts on each unit square on the table. There are three types\r\nof conveyor belts: \"\", \"\" and \"\". A \"\" belt can bring things upwards. \"\"\r\ncan bring leftwards and \"\" can bring rightwards.Let\u2019s number the rows\r\nwith to from top to bottom, the columns with to from left to right. We\r\nconsider the seats above and below the top of the table are rows and\r\nrespectively. Also we define seats to the left of the table and to the\r\nright of the table to be column and . Due to the conveyor belts\r\ndirection restriction there are currently no way for a diner sitting in\r\nthe row to be served.Given the initial table, there will be events in\r\norder. There are two types of events: \"A \" means, a piece of bread will\r\nappear at row and column (we will denote such position as ). The bread\r\nwill follow the conveyor belt, until arriving at a seat of a diner. It\r\nis possible that the bread gets stuck in an infinite loop. Your task is\r\nto simulate the process, and output the final position of the bread, or\r\ndetermine that there will be an infinite loop. \"C \" means that the type\r\nof the conveyor belt at is changed to . Queries are performed separately\r\nmeaning that even if the bread got stuck in an infinite loop, it won\u2019t\r\naffect further queries.\r\n", "solutions": ["#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <queue>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <cctype>\n#include <string>\n#include <cstring>\n#include <ctime>\n#include <string.h>\n\nusing namespace std;\n\ntypedef long long int64;\ntypedef unsigned long long uint64;\n#define two(X) (1<<(X))\n#define twoL(X) (((int64)(1))<<(X))\n#define contain(S,X) (((S)&two(X))!=0)\n#define containL(S,X) (((S)&twoL(X))!=0)\nconst double pi=acos(-1.0);\nconst double eps=1e-11;\ntemplate<class T> inline void checkmin(T &a,T b){if(b<a) a=b;}\ntemplate<class T> inline void checkmax(T &a,T b){if(b>a) a=b;}\ntemplate<class T> inline T sqr(T x){return x*x;}\ntypedef pair<int,int> ipair;\n#define SIZE(A) ((int)A.size())\n#define LENGTH(A) ((int)A.length())\n#define MP(A,B) make_pair(A,B)\n#define PB(X) push_back(X)\n\nconst int maxn=200000+5;\n\nint n,m,q;\nchar a[maxn][10];\nint tree[1<<20][10];\nint b[maxn][10];\n\nvoid solveb(int p)\n{\n\tfor (int i=0;i<m;i++) b[p][i]=-1;\n\tfor (int i=0;i<m && a[p][i]=='<';i++) b[p][i]=1;\n\tfor (int i=m-1;i>=0 && a[p][i]=='>';i--) b[p][i]=2;\n}\nvoid combine(int p)\n{\n\tfor (int i=0;i<m;i++) tree[p][i]=(tree[p*2+2][i]<0)?-1:tree[p*2+1][tree[p*2+2][i]];\n}\nvoid bruteforce(int p,int s)\n{\n\tfor (int i=0;i<m;i++) tree[p][i]=-1;\n\tfor (int i=0;i<m;i++) if (a[s][i]=='^') tree[p][i]=i;\n\tfor (int i=0;i+1<m;i++) if (tree[p][i]>=0 && a[s][i+1]=='<') tree[p][i+1]=tree[p][i];\n\tfor (int i=m-1;i>0;i--) if (tree[p][i]>=0 && a[s][i-1]=='>') tree[p][i-1]=tree[p][i];\n}\nvoid init(int p,int s,int t)\n{\n\tif (s==t)\n\t{\n\t\tbruteforce(p,s);\n\t\treturn;\n\t}\n\tint m=(s+t)/2;\n\tinit(p*2+1,s,m);\n\tinit(p*2+2,m+1,t);\n\tcombine(p);\n}\nvoid update(int p,int s,int t,int key)\n{\n\tif (s==t)\n\t{\n\t\tbruteforce(p,s);\n\t\treturn;\n\t}\n\tint m=(s+t)/2;\n\tif (key<=m)\n\t\tupdate(p*2+1,s,m,key);\n\telse\n\t\tupdate(p*2+2,m+1,t,key);\n\tcombine(p);\t\n}\n\nvoid solve(int p,int s,int t,int &x,int &y)\n{\n\tif (x==t && tree[p][y]>=0)\n\t{\n\t\tx=s-1;\n\t\ty=tree[p][y];\n\t\treturn;\n\t}\n\tif (s==t) return;\n\tint m=(s+t)/2;\n\tif (x>m) solve(p*2+2,m+1,t,x,y);\n\tif (x<=m) solve(p*2+1,s,m,x,y);\n}\n\nint main()\n{\n#ifdef _MSC_VER\n\tfreopen(\"input.txt\",\"r\",stdin);\n#endif\n\tscanf(\"%d%d%d\",&n,&m,&q);\n\tfor (int i=0;i<n;i++)\n\t{\n\t\tchar s[32];\n\t\tscanf(\"%s\",s);\n\t\tfor (int j=0;j<m;j++) a[i][j]=s[j];\n\t}\n\tinit(0,0,n-1);\n\tfor (int i=0;i<n;i++) solveb(i);\n\tfor (;q>0;q--)\n\t{\n\t\tchar s[32];\n\t\tscanf(\"%s\",s);\n\t\tif (s[0]=='A')\n\t\t{\n\t\t\tint x,y;\n\t\t\tscanf(\"%d%d\",&x,&y);\n\t\t\tx--;\n\t\t\ty--;\n\t\t\tsolve(0,0,n-1,x,y);\n\t\t\tif (x>=0)\n\t\t\t\tif (b[x][y]>0)\n\t\t\t\t\ty=((b[x][y]==1)?0:m+1),x++;\n\t\t\t\telse\n\t\t\t\t\tx=y=-1;\n\t\t\telse\n\t\t\t\tx++,y++;\n\t\t\tprintf(\"%d %d\\n\",x,y);\n\t\t}\n\t\telse\n\t\t{\n\t\t\tint x,y;\n\t\t\tchar d[32];\n\t\t\tscanf(\"%d%d%s\",&x,&y,d);\n\t\t\tx--;\n\t\t\ty--;\n\t\t\ta[x][y]=d[0];\n\t\t\tsolveb(x);\n\t\t\tupdate(0,0,n-1,x);\n\t\t}\n\t}\n\treturn 0;\n}\n\n"], "input": "", "output": "", "tags": ["data structures"], "dificulty": "2700", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/487/problem/D",
+    "problemId": "17750",
+    "problem_idx": "D",
+    "shortId": "487D",
+    "contest_number": "487",
+    "problem_submissions": {
+        "D": [
+            8785170,
+            8785802,
+            8789803,
+            8787371,
+            8788023,
+            8786843,
+            8786047,
+            8788953,
+            8789614,
+            8788601,
+            8788287,
+            8809646
+        ],
+        "C": [
+            8782578,
+            8779214,
+            8784203,
+            8781731,
+            8783945,
+            8788058,
+            8788160,
+            8784014,
+            8785214,
+            8790866,
+            8785252,
+            8787004,
+            8781669,
+            8783114
+        ],
+        "B": [
+            8779947,
+            8781687,
+            8783062,
+            8780136,
+            8781381,
+            8780441,
+            8781611,
+            8782195,
+            8783872,
+            8781857,
+            8781107,
+            8781244,
+            8782491,
+            8780482,
+            8784680,
+            8788899
+        ],
+        "A": [
+            8777348,
+            8787397,
+            8780501,
+            8784128,
+            8783081,
+            8782652,
+            8779644,
+            8779577,
+            8777743,
+            8778427,
+            8792035,
+            8778269,
+            8785641,
+            8784172
+        ]
+    },
+    "name": "D. Conveyor Belts",
+    "statement": "Automatic Bakery of Cyberland (ABC) recently bought an rectangle table.\r\nTo serve the diners, ABC placed seats around the table. The size of each\r\nseat is equal to a unit square, so there are seats in total.ABC placed\r\nconveyor belts on each unit square on the table. There are three types\r\nof conveyor belts: \"\", \"\" and \"\". A \"\" belt can bring things upwards. \"\"\r\ncan bring leftwards and \"\" can bring rightwards.Let\u2019s number the rows\r\nwith to from top to bottom, the columns with to from left to right. We\r\nconsider the seats above and below the top of the table are rows and\r\nrespectively. Also we define seats to the left of the table and to the\r\nright of the table to be column and . Due to the conveyor belts\r\ndirection restriction there are currently no way for a diner sitting in\r\nthe row to be served.Given the initial table, there will be events in\r\norder. There are two types of events: \"A \" means, a piece of bread will\r\nappear at row and column (we will denote such position as ). The bread\r\nwill follow the conveyor belt, until arriving at a seat of a diner. It\r\nis possible that the bread gets stuck in an infinite loop. Your task is\r\nto simulate the process, and output the final position of the bread, or\r\ndetermine that there will be an infinite loop. \"C \" means that the type\r\nof the conveyor belt at is changed to . Queries are performed separately\r\nmeaning that even if the bread got stuck in an infinite loop, it won\u2019t\r\naffect further queries.\r\n",
+    "solutions": [
+        "#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <queue>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <cctype>\n#include <string>\n#include <cstring>\n#include <ctime>\n#include <string.h>\n\nusing namespace std;\n\ntypedef long long int64;\ntypedef unsigned long long uint64;\n#define two(X) (1<<(X))\n#define twoL(X) (((int64)(1))<<(X))\n#define contain(S,X) (((S)&two(X))!=0)\n#define containL(S,X) (((S)&twoL(X))!=0)\nconst double pi=acos(-1.0);\nconst double eps=1e-11;\ntemplate<class T> inline void checkmin(T &a,T b){if(b<a) a=b;}\ntemplate<class T> inline void checkmax(T &a,T b){if(b>a) a=b;}\ntemplate<class T> inline T sqr(T x){return x*x;}\ntypedef pair<int,int> ipair;\n#define SIZE(A) ((int)A.size())\n#define LENGTH(A) ((int)A.length())\n#define MP(A,B) make_pair(A,B)\n#define PB(X) push_back(X)\n\nconst int maxn=200000+5;\n\nint n,m,q;\nchar a[maxn][10];\nint tree[1<<20][10];\nint b[maxn][10];\n\nvoid solveb(int p)\n{\n\tfor (int i=0;i<m;i++) b[p][i]=-1;\n\tfor (int i=0;i<m && a[p][i]=='<';i++) b[p][i]=1;\n\tfor (int i=m-1;i>=0 && a[p][i]=='>';i--) b[p][i]=2;\n}\nvoid combine(int p)\n{\n\tfor (int i=0;i<m;i++) tree[p][i]=(tree[p*2+2][i]<0)?-1:tree[p*2+1][tree[p*2+2][i]];\n}\nvoid bruteforce(int p,int s)\n{\n\tfor (int i=0;i<m;i++) tree[p][i]=-1;\n\tfor (int i=0;i<m;i++) if (a[s][i]=='^') tree[p][i]=i;\n\tfor (int i=0;i+1<m;i++) if (tree[p][i]>=0 && a[s][i+1]=='<') tree[p][i+1]=tree[p][i];\n\tfor (int i=m-1;i>0;i--) if (tree[p][i]>=0 && a[s][i-1]=='>') tree[p][i-1]=tree[p][i];\n}\nvoid init(int p,int s,int t)\n{\n\tif (s==t)\n\t{\n\t\tbruteforce(p,s);\n\t\treturn;\n\t}\n\tint m=(s+t)/2;\n\tinit(p*2+1,s,m);\n\tinit(p*2+2,m+1,t);\n\tcombine(p);\n}\nvoid update(int p,int s,int t,int key)\n{\n\tif (s==t)\n\t{\n\t\tbruteforce(p,s);\n\t\treturn;\n\t}\n\tint m=(s+t)/2;\n\tif (key<=m)\n\t\tupdate(p*2+1,s,m,key);\n\telse\n\t\tupdate(p*2+2,m+1,t,key);\n\tcombine(p);\t\n}\n\nvoid solve(int p,int s,int t,int &x,int &y)\n{\n\tif (x==t && tree[p][y]>=0)\n\t{\n\t\tx=s-1;\n\t\ty=tree[p][y];\n\t\treturn;\n\t}\n\tif (s==t) return;\n\tint m=(s+t)/2;\n\tif (x>m) solve(p*2+2,m+1,t,x,y);\n\tif (x<=m) solve(p*2+1,s,m,x,y);\n}\n\nint main()\n{\n#ifdef _MSC_VER\n\tfreopen(\"input.txt\",\"r\",stdin);\n#endif\n\tscanf(\"%d%d%d\",&n,&m,&q);\n\tfor (int i=0;i<n;i++)\n\t{\n\t\tchar s[32];\n\t\tscanf(\"%s\",s);\n\t\tfor (int j=0;j<m;j++) a[i][j]=s[j];\n\t}\n\tinit(0,0,n-1);\n\tfor (int i=0;i<n;i++) solveb(i);\n\tfor (;q>0;q--)\n\t{\n\t\tchar s[32];\n\t\tscanf(\"%s\",s);\n\t\tif (s[0]=='A')\n\t\t{\n\t\t\tint x,y;\n\t\t\tscanf(\"%d%d\",&x,&y);\n\t\t\tx--;\n\t\t\ty--;\n\t\t\tsolve(0,0,n-1,x,y);\n\t\t\tif (x>=0)\n\t\t\t\tif (b[x][y]>0)\n\t\t\t\t\ty=((b[x][y]==1)?0:m+1),x++;\n\t\t\t\telse\n\t\t\t\t\tx=y=-1;\n\t\t\telse\n\t\t\t\tx++,y++;\n\t\t\tprintf(\"%d %d\\n\",x,y);\n\t\t}\n\t\telse\n\t\t{\n\t\t\tint x,y;\n\t\t\tchar d[32];\n\t\t\tscanf(\"%d%d%s\",&x,&y,d);\n\t\t\tx--;\n\t\t\ty--;\n\t\t\ta[x][y]=d[0];\n\t\t\tsolveb(x);\n\t\t\tupdate(0,0,n-1,x);\n\t\t}\n\t}\n\treturn 0;\n}\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "data structures"
+    ],
+    "dificulty": "2700",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Conveyor Belts.json",
+    "editorial_link": "https://codeforces.com/blog/entry/14832",
+    "editorial": "This problem can be solved by classic data structures. For example,\r\nlet\u00e2\u0080\u0099s try something like SQRT-decomposition. Let\u00e2\u0080\u0099s divide the map\r\nhorizontally into some blocks. For each grid, calculate its destination\r\nwhen going out the current block (or infinite loop before going out\r\ncurrent block). For each modification, recalculate the affected block by\r\nbrute force. For each query, we can just use the \"destination when going\r\nout the current block\" to speed up simulation. Let be the size of a\r\nblock, then the time for each modification is , for each query is ,\r\nsince at most blocks, and at most grid of each block are visited. The\r\ntotal time complexity is , where is the number of modifications. Let ,\r\nthe complexity can be the best: . This task can also be solve by segment\r\ntree. The time complexity is , or , depending on implementation.\r\n"
+}

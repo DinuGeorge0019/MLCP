@@ -1,1 +1,105 @@
-{"link": "https://codeforces.com//contest/1111/problem/A", "problemId": "292517", "problem_idx": "A", "shortId": "1111A", "contest_number": "1111", "problem_submissions": {"D": [49422912, 49426608, 49445983, 49428765, 49430406, 49429665, 49436958], "C": [49409497, 49410558, 49410163, 49418920, 49410172, 49413606, 49411915, 49417203, 49413501, 49413738, 49417020, 49443919, 49443886, 49417049, 49414103, 49415090, 49412459, 49414253, 49415380, 49421248, 49439899, 49413981], "B": [49406849, 49405440, 49407099, 49408763, 49406563, 49408463, 49406490, 49408964, 49408646, 49408980, 49405550, 49418102, 49454731, 49438417, 49408744, 49409042, 49407957, 49421603, 49407686, 49409374, 49409345], "A": [49402871, 49402831, 49403748, 49403927, 49403205, 49402975, 49402985, 49410269, 49405415, 49404207, 49402972, 49402894, 49402944, 49404497, 49403455, 49404512, 49404416, 49403696, 49403984], "E": [49501912]}, "name": "A. Superhero Transformation", "statement": "We all know that a superhero can transform to certain other superheroes.\r\nBut not all Superheroes can transform to any other superhero. A\r\nsuperhero with name s can transform to another superhero with name t if\r\ns can be made equal to t by changing any vowel in s to any other vowel\r\nand any consonant in s to any other consonant. Multiple changes can be\r\nmade., we consider the letters \u201d, \u201d, \u201d, \u201d and \u201d to be vowels and all the\r\nother letters to be consonants.Given the names of two superheroes,\r\ndetermine if the superhero with name s can be transformed to the\r\nSuperhero with name t.\r\n", "solutions": ["#include <bits/stdc++.h>\nusing namespace std;\n \n#define IOS ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);\n#define endl \"\\n\"\n#define ll long long\n\nint32_t main()\n{\n\tIOS;\n\tstring s, t;\n\tcin >> s >> t;\n\tint n=s.size();\n\tif(n!=t.size()) {\n\t\tcout << \"No\";\n\t\treturn 0;\n\t}\n\tfor(int i=0; i<n; ++i)\n\t\ts[i]=s[i]=='a'||s[i]=='e'||s[i]=='i'||s[i]=='o'||s[i]=='u';\n\tfor(int i=0; i<n; ++i)\n\t\tt[i]=t[i]=='a'||t[i]=='e'||t[i]=='i'||t[i]=='o'||t[i]=='u';\n\tfor(int i=0; i<n; ++i) {\n\t\tif(s[i]!=t[i]) {\n\t\t\tcout << \"No\";\n\t\t\treturn 0;\n\t\t}\n\t}\n\tcout << \"Yes\";\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["implementation", "strings"], "dificulty": "1000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/1111/problem/A",
+    "problemId": "292517",
+    "problem_idx": "A",
+    "shortId": "1111A",
+    "contest_number": "1111",
+    "problem_submissions": {
+        "D": [
+            49422912,
+            49426608,
+            49445983,
+            49428765,
+            49430406,
+            49429665,
+            49436958
+        ],
+        "C": [
+            49409497,
+            49410558,
+            49410163,
+            49418920,
+            49410172,
+            49413606,
+            49411915,
+            49417203,
+            49413501,
+            49413738,
+            49417020,
+            49443919,
+            49443886,
+            49417049,
+            49414103,
+            49415090,
+            49412459,
+            49414253,
+            49415380,
+            49421248,
+            49439899,
+            49413981
+        ],
+        "B": [
+            49406849,
+            49405440,
+            49407099,
+            49408763,
+            49406563,
+            49408463,
+            49406490,
+            49408964,
+            49408646,
+            49408980,
+            49405550,
+            49418102,
+            49454731,
+            49438417,
+            49408744,
+            49409042,
+            49407957,
+            49421603,
+            49407686,
+            49409374,
+            49409345
+        ],
+        "A": [
+            49402871,
+            49402831,
+            49403748,
+            49403927,
+            49403205,
+            49402975,
+            49402985,
+            49410269,
+            49405415,
+            49404207,
+            49402972,
+            49402894,
+            49402944,
+            49404497,
+            49403455,
+            49404512,
+            49404416,
+            49403696,
+            49403984
+        ],
+        "E": [
+            49501912
+        ]
+    },
+    "name": "A. Superhero Transformation",
+    "statement": "We all know that a superhero can transform to certain other superheroes.\r\nBut not all Superheroes can transform to any other superhero. A\r\nsuperhero with name s can transform to another superhero with name t if\r\ns can be made equal to t by changing any vowel in s to any other vowel\r\nand any consonant in s to any other consonant. Multiple changes can be\r\nmade., we consider the letters \u201d, \u201d, \u201d, \u201d and \u201d to be vowels and all the\r\nother letters to be consonants.Given the names of two superheroes,\r\ndetermine if the superhero with name s can be transformed to the\r\nSuperhero with name t.\r\n",
+    "solutions": [
+        "#include <bits/stdc++.h>\nusing namespace std;\n \n#define IOS ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);\n#define endl \"\\n\"\n#define ll long long\n\nint32_t main()\n{\n\tIOS;\n\tstring s, t;\n\tcin >> s >> t;\n\tint n=s.size();\n\tif(n!=t.size()) {\n\t\tcout << \"No\";\n\t\treturn 0;\n\t}\n\tfor(int i=0; i<n; ++i)\n\t\ts[i]=s[i]=='a'||s[i]=='e'||s[i]=='i'||s[i]=='o'||s[i]=='u';\n\tfor(int i=0; i<n; ++i)\n\t\tt[i]=t[i]=='a'||t[i]=='e'||t[i]=='i'||t[i]=='o'||t[i]=='u';\n\tfor(int i=0; i<n; ++i) {\n\t\tif(s[i]!=t[i]) {\n\t\t\tcout << \"No\";\n\t\t\treturn 0;\n\t\t}\n\t}\n\tcout << \"Yes\";\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation",
+        "strings"
+    ],
+    "dificulty": "1000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Superhero Transformation.json",
+    "editorial_link": "https://codeforces.com//blog/entry/64989",
+    "editorial": "Check lengths of and . If they are different, can never be converted to\r\nand answer is \"No\".If for all indexes either both and are vowels or both\r\nand are consonants, then answer is \"Yes\", else answer is \"No\".\r\n"
+}

@@ -1,1 +1,107 @@
-{"link": "https://codeforces.com//contest/897/problem/A", "problemId": "137064", "problem_idx": "A", "shortId": "897A", "contest_number": "897", "problem_submissions": {"D": [32869363, 32868967, 32870299, 32871420, 32871096, 32871069, 32872537, 32872235, 32873063, 32867675, 32899611, 32872434, 32870151, 32872540, 32868724, 32872412, 32871965, 32870305, 32870537], "C": [32866469, 32867357, 32867913, 32867474, 32867444, 32868703, 32867464, 32865520, 32867687, 32873999, 32867162, 32872564, 32869517, 32873487, 32868079, 32870223, 32867096, 32871838], "B": [32863081, 32866614, 32863458, 32862862, 32863043, 32864870, 32863155, 32862993, 32862870, 32864103, 32865012, 32863471, 32863794, 32862844, 32864643, 32865335, 32872101, 32864895], "A": [32860112, 32864431, 32860323, 32860778, 32862516, 32860290, 32860663, 32860439, 32860544, 32861554, 32860704, 32860360, 32860929, 32861796, 32861440, 32860719, 32861670], "E": [32893341]}, "name": "A. Scarborough Fair", "statement": "Willem is taking the girl to the highest building in island No.28,\r\nhowever, neither of them knows how to get there.Willem asks his friend,\r\nGrick for directions, Grick helped them, and gave them a task.Although\r\nthe girl wants to help, Willem insists on doing it by himself.Grick gave\r\nWillem a string of length .Willem needs to do operations, each operation\r\nhas four parameters , which means that all symbols in range (from -th to\r\n-th, including and ) are changed into . String is 1-indexed.Grick wants\r\nto know the final string after all the operations.\r\n", "solutions": ["#include <bits/stdc++.h>\nusing namespace std;\n\nint main()\n{\n    string s;\n    int n, m, a, b;\n    char c1, c2;\n\n    cin >> n >> m;\n    cin >> s;\n\n    while (m--) {\n        cin >> a >> b >> c1 >> c2;\n        for (int i(a - 1); i <= b - 1; i++)\n            if (s[i] == c1)\n                s[i] = c2;\n    }\n\n    cout << s;\n\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["implementation"], "dificulty": "800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/897/problem/A",
+    "problemId": "137064",
+    "problem_idx": "A",
+    "shortId": "897A",
+    "contest_number": "897",
+    "problem_submissions": {
+        "D": [
+            32869363,
+            32868967,
+            32870299,
+            32871420,
+            32871096,
+            32871069,
+            32872537,
+            32872235,
+            32873063,
+            32867675,
+            32899611,
+            32872434,
+            32870151,
+            32872540,
+            32868724,
+            32872412,
+            32871965,
+            32870305,
+            32870537
+        ],
+        "C": [
+            32866469,
+            32867357,
+            32867913,
+            32867474,
+            32867444,
+            32868703,
+            32867464,
+            32865520,
+            32867687,
+            32873999,
+            32867162,
+            32872564,
+            32869517,
+            32873487,
+            32868079,
+            32870223,
+            32867096,
+            32871838
+        ],
+        "B": [
+            32863081,
+            32866614,
+            32863458,
+            32862862,
+            32863043,
+            32864870,
+            32863155,
+            32862993,
+            32862870,
+            32864103,
+            32865012,
+            32863471,
+            32863794,
+            32862844,
+            32864643,
+            32865335,
+            32872101,
+            32864895
+        ],
+        "A": [
+            32860112,
+            32864431,
+            32860323,
+            32860778,
+            32862516,
+            32860290,
+            32860663,
+            32860439,
+            32860544,
+            32861554,
+            32860704,
+            32860360,
+            32860929,
+            32861796,
+            32861440,
+            32860719,
+            32861670
+        ],
+        "E": [
+            32893341
+        ]
+    },
+    "name": "A. Scarborough Fair",
+    "statement": "Willem is taking the girl to the highest building in island No.28,\r\nhowever, neither of them knows how to get there.Willem asks his friend,\r\nGrick for directions, Grick helped them, and gave them a task.Although\r\nthe girl wants to help, Willem insists on doing it by himself.Grick gave\r\nWillem a string of length .Willem needs to do operations, each operation\r\nhas four parameters , which means that all symbols in range (from -th to\r\n-th, including and ) are changed into . String is 1-indexed.Grick wants\r\nto know the final string after all the operations.\r\n",
+    "solutions": [
+        "#include <bits/stdc++.h>\nusing namespace std;\n\nint main()\n{\n    string s;\n    int n, m, a, b;\n    char c1, c2;\n\n    cin >> n >> m;\n    cin >> s;\n\n    while (m--) {\n        cin >> a >> b >> c1 >> c2;\n        for (int i(a - 1); i <= b - 1; i++)\n            if (s[i] == c1)\n                s[i] = c2;\n    }\n\n    cout << s;\n\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation"
+    ],
+    "dificulty": "800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Scarborough Fair.json",
+    "editorial_link": "https://codeforces.com//blog/entry/56135",
+    "editorial": "For every in range , if is then change it into ... Because are all very\r\nsmall, can easily pass it. PS. You can use binary search tree to solve\r\nit in time.\r\n"
+}

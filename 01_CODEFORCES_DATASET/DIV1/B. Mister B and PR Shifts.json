@@ -1,1 +1,96 @@
-{"link": "https://codeforces.com//contest/819/problem/B", "problemId": "112024", "problem_idx": "B", "shortId": "819B", "contest_number": "819", "problem_submissions": {"E": [28095868, 28093903, 28090933, 28090593, 28094491, 28097177, 28097247, 28091454, 28092476, 28096909, 28091607, 28092950, 28099143, 28090256, 28093515, 28093604, 28090845, 28094347], "D": [28094321, 28096368, 28099459, 28093095, 28099589, 28093948, 28092918, 28100416, 28094247, 28087916, 31892342, 28089013], "C": [28089679, 28092136, 28087482, 28107336, 28092204, 28092623, 28096714, 79507001, 28096230, 31884749], "B": [28083507, 28085088, 28080609, 28088461, 28084942, 31697997, 28085544, 28084735, 28088088, 28084884, 28083914, 127584112, 127584041, 28087562, 28081410, 28095682, 28086459, 28088790, 28094207, 28087593, 28085906], "A": []}, "name": "B. Mister B and PR Shifts", "statement": "Some time ago Mister B detected a strange signal from the space, which\r\nhe started to study.After some transformation the signal turned out to\r\nbe a permutation of length or its cyclic shift. For the further\r\ninvestigation Mister B need some basis, that\u2019s why he decided to choose\r\ncyclic shift of this permutation which has the minimum possible\r\ndeviation.Let\u2019s define the deviation of a permutation as .Find a cyclic\r\nshift of permutation with minimum possible deviation. If there are\r\nmultiple solutions, print any of them.Let\u2019s denote id () of a cyclic\r\nshift of permutation as the number of right shifts needed to reach this\r\nshift, for example: : shift , : shift , ..., : shift .\r\n", "solutions": ["#include<iostream>\n#include<cmath>\n#include<cstdio>\n#include<algorithm>\n#include<cstring>\nusing namespace std;\nconst int N=1e6+10;\nlong long A[N],B[N];\nint x[N];\nint n;\nvoid addin(int l,int r,int k,int b){\n\tA[l]+=b; B[l]+=k;\n\tA[r+1]-=b; B[r+1]-=k;\n}\nvoid add(int l,int r,int where,int w){\n\tif (l>r) return;\n\tint wherel=(l+where-1)%n+1,wherer=(r+where-1)%n+1;\n\tint wl=abs(wherel-w),wr=abs(wherer-w);\n\tif (wl<=wr) addin(l,r,wl-l,1);\n\telse addin(l,r,wl+l,-1);\n}\nint main(){\n\tscanf(\"%d\",&n);\n\tfor (int i=1;i<=n;i++) scanf(\"%d\",&x[i]);\n\tfor (int i=1;i<=n;i++){\n\t\tint k1=n-i,k2=(x[i]-i+n)%n;\n\t\tif (k1>k2) swap(k1,k2);\n\t\tadd(0,k1,i,x[i]);\n\t\tadd(k1+1,k2,i,x[i]);\n\t\tadd(k2+1,n-1,i,x[i]);\n\t}\n\tfor (int i=1;i<=n;i++) A[i]+=A[i-1],B[i]+=B[i-1];\n\tlong long ans=1e18;\n\tint where=0;\n\tfor (int i=0;i<n;i++){\n\t\tlong long w=1ll*A[i]*i+B[i];\n\t\tif (w<ans) ans=w,where=i;\n\t}\n\tcout<<ans<<\" \"<<where<<endl;\n\treturn 0;\n}"], "input": "", "output": "", "tags": ["data structures", "implementation", "math"], "dificulty": "1900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/819/problem/B",
+    "problemId": "112024",
+    "problem_idx": "B",
+    "shortId": "819B",
+    "contest_number": "819",
+    "problem_submissions": {
+        "E": [
+            28095868,
+            28093903,
+            28090933,
+            28090593,
+            28094491,
+            28097177,
+            28097247,
+            28091454,
+            28092476,
+            28096909,
+            28091607,
+            28092950,
+            28099143,
+            28090256,
+            28093515,
+            28093604,
+            28090845,
+            28094347
+        ],
+        "D": [
+            28094321,
+            28096368,
+            28099459,
+            28093095,
+            28099589,
+            28093948,
+            28092918,
+            28100416,
+            28094247,
+            28087916,
+            31892342,
+            28089013
+        ],
+        "C": [
+            28089679,
+            28092136,
+            28087482,
+            28107336,
+            28092204,
+            28092623,
+            28096714,
+            79507001,
+            28096230,
+            31884749
+        ],
+        "B": [
+            28083507,
+            28085088,
+            28080609,
+            28088461,
+            28084942,
+            31697997,
+            28085544,
+            28084735,
+            28088088,
+            28084884,
+            28083914,
+            127584112,
+            127584041,
+            28087562,
+            28081410,
+            28095682,
+            28086459,
+            28088790,
+            28094207,
+            28087593,
+            28085906
+        ],
+        "A": []
+    },
+    "name": "B. Mister B and PR Shifts",
+    "statement": "Some time ago Mister B detected a strange signal from the space, which\r\nhe started to study.After some transformation the signal turned out to\r\nbe a permutation of length or its cyclic shift. For the further\r\ninvestigation Mister B need some basis, that\u2019s why he decided to choose\r\ncyclic shift of this permutation which has the minimum possible\r\ndeviation.Let\u2019s define the deviation of a permutation as .Find a cyclic\r\nshift of permutation with minimum possible deviation. If there are\r\nmultiple solutions, print any of them.Let\u2019s denote id () of a cyclic\r\nshift of permutation as the number of right shifts needed to reach this\r\nshift, for example: : shift , : shift , ..., : shift .\r\n",
+    "solutions": [
+        "#include<iostream>\n#include<cmath>\n#include<cstdio>\n#include<algorithm>\n#include<cstring>\nusing namespace std;\nconst int N=1e6+10;\nlong long A[N],B[N];\nint x[N];\nint n;\nvoid addin(int l,int r,int k,int b){\n\tA[l]+=b; B[l]+=k;\n\tA[r+1]-=b; B[r+1]-=k;\n}\nvoid add(int l,int r,int where,int w){\n\tif (l>r) return;\n\tint wherel=(l+where-1)%n+1,wherer=(r+where-1)%n+1;\n\tint wl=abs(wherel-w),wr=abs(wherer-w);\n\tif (wl<=wr) addin(l,r,wl-l,1);\n\telse addin(l,r,wl+l,-1);\n}\nint main(){\n\tscanf(\"%d\",&n);\n\tfor (int i=1;i<=n;i++) scanf(\"%d\",&x[i]);\n\tfor (int i=1;i<=n;i++){\n\t\tint k1=n-i,k2=(x[i]-i+n)%n;\n\t\tif (k1>k2) swap(k1,k2);\n\t\tadd(0,k1,i,x[i]);\n\t\tadd(k1+1,k2,i,x[i]);\n\t\tadd(k2+1,n-1,i,x[i]);\n\t}\n\tfor (int i=1;i<=n;i++) A[i]+=A[i-1],B[i]+=B[i-1];\n\tlong long ans=1e18;\n\tint where=0;\n\tfor (int i=0;i<n;i++){\n\t\tlong long w=1ll*A[i]*i+B[i];\n\t\tif (w<ans) ans=w,where=i;\n\t}\n\tcout<<ans<<\" \"<<where<<endl;\n\treturn 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "data structures",
+        "implementation",
+        "math"
+    ],
+    "dificulty": "1900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Mister B and PR Shifts.json",
+    "editorial_link": "https://codeforces.com//blog/entry/52946",
+    "editorial": "Let\u00e2\u0080\u0099s see, how affects different shifts. Let\u00e2\u0080\u0099s denote is deviation of\r\nthe shift. At first all .Then affects it in following way: , , , , .\r\nThen there are 2 cases: or not.If after removing modules we will get 3\r\nquery: to add to where , to add to where and to add to where . Else if\r\nwe need to perform next operation: to add to where , to add to where and\r\nto add to where . But in both cases we must add 3 arithmetic progression\r\nto the segment of array . Or make operation of adding to segment . Its\r\nknown task, which can be done by adding/subtracting values in start and\r\nend of segment offline.To make such operation we need to remember, how\r\nto add value to segment of array offline. We can just do next\r\noperations: and . Now value in position .So what is adding progression\r\nwith coef ? it\u00e2\u0080\u0099s only adding to array value to all positions in segment\r\n. That\u00e2\u0080\u0099s why we need other array, for example and making and . In\r\nresult, .So algorithm to add to segment is next: , , , . After all\r\nqueries we need recover array with formula . And after that get answer\r\nwith formula .So complexity is .\r\n"
+}

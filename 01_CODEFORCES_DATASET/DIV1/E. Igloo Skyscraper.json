@@ -1,1 +1,105 @@
-{"link": "https://codeforces.com//contest/91/problem/E", "problemId": "481", "problem_idx": "E", "shortId": "91E", "contest_number": "91", "problem_submissions": {"E": [503728, 502526, 502324, 502390, 507083, 507754, 507742, 507704, 503634, 502642, 504726, 503639, 504548, 503486, 503083], "D": [502276, 503817, 503388, 504083, 503790, 503692, 503693, 502719, 503528], "C": [500481, 501267, 503127, 500359, 500890, 501727, 501793, 501879, 501823, 691241, 500724], "B": [500029, 500306, 499798, 499713, 500770, 500316, 500169, 500955, 501299, 500855, 500308, 500853, 500345, 500259, 501038, 510135, 501272, 500210], "A": [499372, 499587, 499153, 501187, 499642, 499614, 500028, 500088, 499525, 499582, 499555, 499393, 499483, 499408, 510127, 499780, 499366]}, "name": "E. Igloo Skyscraper", "statement": "Today the North Pole hosts an Olympiad in a sport called... toy igloo\r\nskyscrapers\u2019 building!There are walruses taking part in the contest.\r\nEach walrus is given a unique number from to . After start each walrus\r\nbegins to build his own igloo skyscraper. Initially, at the moment of\r\ntime equal to , the height of the skyscraper -th walrus is equal to .\r\nEach minute the -th walrus finishes building floors.The journalists that\r\nare reporting from the spot where the Olympiad is taking place, make\r\nqueries to the organizers. Each query is characterized by a group of\r\nthree numbers , , . The organizers respond to each query with a number ,\r\nsuch that:1. Number lies on the interval from to inclusive ().2. The\r\nskyscraper of the walrus number possesses the maximum height among the\r\nskyscrapers of all walruses from the interval at the moment of time .For\r\neach journalists\u2019 query print the number of the walrus that meets the\r\nabove-given criteria. If there are several possible answers, print any\r\nof them.\r\n", "solutions": ["#pragma comment(linker, \"/STACK:60000000\")\n#define _CRT_SECURE_NO_WARNINGS\n\n#include <cstdio>\n#include <iostream>\n#include <vector>\n#include <cmath>\n#include <algorithm>\n#include <string>\n#include <set>\n#include <map>\n#include <ctime>\n#include <cstring>\n#include <cassert>\n#include <sstream>\n#include <iomanip>\n#include <complex>\n#include <queue>\n#include <functional>\n\nusing namespace std;\n\n#define forn(i, n) for(int i = 0; i < (int)(n); i++)\n#define ford(i, n) for(int i = (int)(n) - 1; i >= 0; i--)\n#define pb push_back\n#define mp make_pair\n#define fs first\n#define sc second\n#define last(a) int(a.size() - 1)\n#define all(a) a.begin(), a.end()\n#define seta(a,x) memset (a, x, sizeof (a))\n#define I (int)\n\ntypedef long long int64;\ntypedef pair <int, int> pii;\ntypedef pair <int64, int64> pii64;\ntypedef long double ldb;\n\nconst long double eps = 1e-9;\nconst int inf = (1 << 30) - 1;\nconst int64 inf64 = ((int64)1 << 62) - 1;\nconst long double pi = 3.1415926535897932384626433832795;\n\ntemplate <class T> T sqr (T x) {return x * x;}\n\nconst int blocksize = 250;\n\nstruct block {\n\tint l, r;\n\tint size;\n\tint64 next_time;\n\tint pmax;\n};\n\nint n, k, m;\npii64 A[100000];\nblock blocks[500];\nint ans[100000];\nint L[100000], R[100000], T[100000];\nvector <pii> Q;\n\nbool myless (pii64 a, pii64 b, int64 tm) {\n\treturn a.fs + tm * a.sc < b.fs + tm * b.sc;\n}\n\nvoid process (int v, int64 tm) {\n\tint best = blocks[v].l;\n\tfor (int i = blocks[v].l; i <= blocks[v].r; i ++)\n\t\tif (myless (A[best], A[i], tm))\n\t\t\tbest = i;\n\tblocks[v].pmax = best;\n\tblocks[v].next_time = inf;\n\tpii64 cur = A[best];\n\tfor (int i = blocks[v].l; i <= blocks[v].r; i ++) {\n\t\tpii64 tmp = A[i];\n\t\tif (cur.sc < tmp.sc)\n\t\t\tblocks[v].next_time = min (blocks[v].next_time, (cur.fs - tmp.fs) / (tmp.sc - cur.sc) + 1);\n\t}\n}\n\nint main ()\n{\n//\tfreopen (\"input.txt\", \"r\", stdin);\n//\tfreopen (\"output.txt\", \"w\", stdout);\n\tscanf (\"%d%d\", &n, &k);\n\tforn (i, n) {\n\t\tint x, y;\n\t\tscanf (\"%d %d\", &x, &y);\n\t\tA[i] = mp ((int64)x, (int64)y);\n\t}\n\tQ.resize (k);\n\tforn (i, k) {\n\t\tscanf (\"%d%d%d\", &L[i], &R[i], &T[i]);\n\t\tL[i] --;\n\t\tR[i] --;\n\t\tQ[i] = mp (T[i], i);\n\t}\n\tsort (all (Q));\n\tint l = 0;\n\tint m = 0;\n\twhile (l < n) {\n\t\tint r = min (l + blocksize - 1, n-1);\n\t\tblocks[m].l = l;\n\t\tblocks[m].r = r;\n\t\tblocks[m].size = r - l + 1;\n\t\tl = r + 1;\n\t\tm ++;\n\t}\n\tforn (i, m) {\n\t\tblocks[i].pmax = blocks[i].l;\n\t\tblocks[i].next_time = -1;\n\t}\n\tforn (i, k) {\n\t\tint num = Q[i].sc;\n\t\tint best = L[num];\n\t\tint r1 = R[num];\n\t\tint l1 = L[num];\n\t\tforn (j, m) {\n\t\t\tif (T[num] >= blocks[j].next_time)\n\t\t\t\tprocess (j, T[num]);\n\t\t\tif (L[num] <= blocks[j].l && blocks[j].r <= R[num]) {\n\t\t\t\tif (myless (A[best], A[blocks[j].pmax], T[num]))\n\t\t\t\t\tbest = blocks[j].pmax;\n\t\t\t\tr1 = min (r1, blocks[j].l - 1);\n\t\t\t\tl1 = max (l1, blocks[j].r + 1);\n\t\t\t}\n\t\t}\n\t\tl1 = max (l1, r1 + 1);\n\t\tfor (int j = L[num]; j <= r1; j ++)\n\t\t\tif (myless (A[best], A[j], T[num]))\n\t\t\t\tbest = j;\n\t\tfor (int j = l1; j <= R[num]; j ++)\n\t\t\tif (myless (A[best], A[j], T[num]))\n\t\t\t\tbest = j;\n\t\tans[num] = best;\n\t}\n\tforn (i, k)\n\t\tprintf (\"%d\\n\", ans[i]+1);\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["data structures", "geometry"], "dificulty": "2500", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/91/problem/E",
+    "problemId": "481",
+    "problem_idx": "E",
+    "shortId": "91E",
+    "contest_number": "91",
+    "problem_submissions": {
+        "E": [
+            503728,
+            502526,
+            502324,
+            502390,
+            507083,
+            507754,
+            507742,
+            507704,
+            503634,
+            502642,
+            504726,
+            503639,
+            504548,
+            503486,
+            503083
+        ],
+        "D": [
+            502276,
+            503817,
+            503388,
+            504083,
+            503790,
+            503692,
+            503693,
+            502719,
+            503528
+        ],
+        "C": [
+            500481,
+            501267,
+            503127,
+            500359,
+            500890,
+            501727,
+            501793,
+            501879,
+            501823,
+            691241,
+            500724
+        ],
+        "B": [
+            500029,
+            500306,
+            499798,
+            499713,
+            500770,
+            500316,
+            500169,
+            500955,
+            501299,
+            500855,
+            500308,
+            500853,
+            500345,
+            500259,
+            501038,
+            510135,
+            501272,
+            500210
+        ],
+        "A": [
+            499372,
+            499587,
+            499153,
+            501187,
+            499642,
+            499614,
+            500028,
+            500088,
+            499525,
+            499582,
+            499555,
+            499393,
+            499483,
+            499408,
+            510127,
+            499780,
+            499366
+        ]
+    },
+    "name": "E. Igloo Skyscraper",
+    "statement": "Today the North Pole hosts an Olympiad in a sport called... toy igloo\r\nskyscrapers\u2019 building!There are walruses taking part in the contest.\r\nEach walrus is given a unique number from to . After start each walrus\r\nbegins to build his own igloo skyscraper. Initially, at the moment of\r\ntime equal to , the height of the skyscraper -th walrus is equal to .\r\nEach minute the -th walrus finishes building floors.The journalists that\r\nare reporting from the spot where the Olympiad is taking place, make\r\nqueries to the organizers. Each query is characterized by a group of\r\nthree numbers , , . The organizers respond to each query with a number ,\r\nsuch that:1. Number lies on the interval from to inclusive ().2. The\r\nskyscraper of the walrus number possesses the maximum height among the\r\nskyscrapers of all walruses from the interval at the moment of time .For\r\neach journalists\u2019 query print the number of the walrus that meets the\r\nabove-given criteria. If there are several possible answers, print any\r\nof them.\r\n",
+    "solutions": [
+        "#pragma comment(linker, \"/STACK:60000000\")\n#define _CRT_SECURE_NO_WARNINGS\n\n#include <cstdio>\n#include <iostream>\n#include <vector>\n#include <cmath>\n#include <algorithm>\n#include <string>\n#include <set>\n#include <map>\n#include <ctime>\n#include <cstring>\n#include <cassert>\n#include <sstream>\n#include <iomanip>\n#include <complex>\n#include <queue>\n#include <functional>\n\nusing namespace std;\n\n#define forn(i, n) for(int i = 0; i < (int)(n); i++)\n#define ford(i, n) for(int i = (int)(n) - 1; i >= 0; i--)\n#define pb push_back\n#define mp make_pair\n#define fs first\n#define sc second\n#define last(a) int(a.size() - 1)\n#define all(a) a.begin(), a.end()\n#define seta(a,x) memset (a, x, sizeof (a))\n#define I (int)\n\ntypedef long long int64;\ntypedef pair <int, int> pii;\ntypedef pair <int64, int64> pii64;\ntypedef long double ldb;\n\nconst long double eps = 1e-9;\nconst int inf = (1 << 30) - 1;\nconst int64 inf64 = ((int64)1 << 62) - 1;\nconst long double pi = 3.1415926535897932384626433832795;\n\ntemplate <class T> T sqr (T x) {return x * x;}\n\nconst int blocksize = 250;\n\nstruct block {\n\tint l, r;\n\tint size;\n\tint64 next_time;\n\tint pmax;\n};\n\nint n, k, m;\npii64 A[100000];\nblock blocks[500];\nint ans[100000];\nint L[100000], R[100000], T[100000];\nvector <pii> Q;\n\nbool myless (pii64 a, pii64 b, int64 tm) {\n\treturn a.fs + tm * a.sc < b.fs + tm * b.sc;\n}\n\nvoid process (int v, int64 tm) {\n\tint best = blocks[v].l;\n\tfor (int i = blocks[v].l; i <= blocks[v].r; i ++)\n\t\tif (myless (A[best], A[i], tm))\n\t\t\tbest = i;\n\tblocks[v].pmax = best;\n\tblocks[v].next_time = inf;\n\tpii64 cur = A[best];\n\tfor (int i = blocks[v].l; i <= blocks[v].r; i ++) {\n\t\tpii64 tmp = A[i];\n\t\tif (cur.sc < tmp.sc)\n\t\t\tblocks[v].next_time = min (blocks[v].next_time, (cur.fs - tmp.fs) / (tmp.sc - cur.sc) + 1);\n\t}\n}\n\nint main ()\n{\n//\tfreopen (\"input.txt\", \"r\", stdin);\n//\tfreopen (\"output.txt\", \"w\", stdout);\n\tscanf (\"%d%d\", &n, &k);\n\tforn (i, n) {\n\t\tint x, y;\n\t\tscanf (\"%d %d\", &x, &y);\n\t\tA[i] = mp ((int64)x, (int64)y);\n\t}\n\tQ.resize (k);\n\tforn (i, k) {\n\t\tscanf (\"%d%d%d\", &L[i], &R[i], &T[i]);\n\t\tL[i] --;\n\t\tR[i] --;\n\t\tQ[i] = mp (T[i], i);\n\t}\n\tsort (all (Q));\n\tint l = 0;\n\tint m = 0;\n\twhile (l < n) {\n\t\tint r = min (l + blocksize - 1, n-1);\n\t\tblocks[m].l = l;\n\t\tblocks[m].r = r;\n\t\tblocks[m].size = r - l + 1;\n\t\tl = r + 1;\n\t\tm ++;\n\t}\n\tforn (i, m) {\n\t\tblocks[i].pmax = blocks[i].l;\n\t\tblocks[i].next_time = -1;\n\t}\n\tforn (i, k) {\n\t\tint num = Q[i].sc;\n\t\tint best = L[num];\n\t\tint r1 = R[num];\n\t\tint l1 = L[num];\n\t\tforn (j, m) {\n\t\t\tif (T[num] >= blocks[j].next_time)\n\t\t\t\tprocess (j, T[num]);\n\t\t\tif (L[num] <= blocks[j].l && blocks[j].r <= R[num]) {\n\t\t\t\tif (myless (A[best], A[blocks[j].pmax], T[num]))\n\t\t\t\t\tbest = blocks[j].pmax;\n\t\t\t\tr1 = min (r1, blocks[j].l - 1);\n\t\t\t\tl1 = max (l1, blocks[j].r + 1);\n\t\t\t}\n\t\t}\n\t\tl1 = max (l1, r1 + 1);\n\t\tfor (int j = L[num]; j <= r1; j ++)\n\t\t\tif (myless (A[best], A[j], T[num]))\n\t\t\t\tbest = j;\n\t\tfor (int j = l1; j <= R[num]; j ++)\n\t\t\tif (myless (A[best], A[j], T[num]))\n\t\t\t\tbest = j;\n\t\tans[num] = best;\n\t}\n\tforn (i, k)\n\t\tprintf (\"%d\\n\", ans[i]+1);\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "data structures",
+        "geometry"
+    ],
+    "dificulty": "2500",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\E. Igloo Skyscraper.json",
+    "editorial_link": "https://codeforces.com//blog/entry/2182",
+    "editorial": "We are given the array where the value in each cell is described by the formula depends on T vali?=?ai?+?bi?*?T (in geometry mean it is a line equation). Lt's divide the array in blocks of size d ~ sqrt(n): [0;d), [d,?d?*?2), [d?*?2,?d?*?3), ..., [d?*?k,?n). Now let's precalculate for each block time moments when the leader of the block changes. So as we have line equation we can perform an intersection of half planes. On Oy axis values of the cells are marked and the time moments marked on Ox axis. we are interested on x coordinate of points of intersections  and number of leader after time x. So now we know time moment of leader changing for every block. For each block it takes O(d?*?log(d)) time. The number of blocks (k) is about n?/?d ~ n?/?sqrt(n) ~ sqrt(n) so all the process will take O(n?*?log(n)) time.\n\nLet's sort all queries by increasing ti. Now we should to perform queries one by one. Brute all blocks which lay into the query interval. For each such block we will keep up the leader for current time. For this let's process all the time moment of leader changing until ti inclusively and relax leader on the current block. The time moments which ware processed should be erased, they are not keep any useful information ,because all queries sorted by ti.  Let's process all cells which were not covered by the processed blocks but covered by the query and relax the leader for the query."
+}

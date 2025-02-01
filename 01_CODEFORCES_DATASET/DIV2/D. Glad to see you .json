@@ -1,1 +1,94 @@
-{"link": "https://codeforces.com//contest/810/problem/D", "problemId": "106948", "problem_idx": "D", "shortId": "810D", "contest_number": "810", "problem_submissions": {"D": [27248048, 27249498, 27249472, 27249003, 27249642, 27249714, 27250980, 27251631, 27251168, 27250685, 27250723, 27252106, 27251730, 27251070, 27251518], "C": [27242429, 27242671, 27243173, 27242346, 27243539, 27242128, 27243236, 27242338, 27243255, 27244082, 27244821, 27246801, 27244339, 27246022, 27245155, 27245852], "B": [27239444, 27240768, 27240407, 27241138, 27239711, 27239883, 27239928, 27240508, 27242864, 27240783, 27240973, 27240629, 27240838, 27241490, 27243521], "A": [27238742, 27238727, 27238904, 27239459, 27238783, 27238841, 27238731, 27239326, 27240489, 27239302, 27238712, 27238863, 27239075, 27239035, 27242418]}, "name": "D. Glad to see you ", "statement": "On Sunday Leha the hacker took Nura from the house where she lives and\r\nwent with her to one of the most luxurious restaurants in Vi kopolis.\r\nUpon arrival, they left the car in a huge parking lot near the\r\nrestaurant and hurried inside the building.In the restaurant a polite\r\nwaiter immediately brought the menu to Leha and Noora, consisting of\r\ndishes. It is interesting that all dishes in the menu are numbered with\r\nintegers from to . After a little thought, the girl ordered exactly\r\ndifferent dishes from available in the menu. To pass the waiting time\r\nwhile the chefs prepare ordered dishes, the girl invited the hacker to\r\nplay a game that will help them get to know each other better.The game\r\nitself is very simple: Noora wants Leha to guess any two dishes among\r\nall ordered. At the same time, she is ready to answer only one type of\r\nquestions. Leha can say two numbers and . After that Noora chooses some\r\ndish for the number such that, at first, is among the dishes Noora\r\nordered ( can be equal to ), and, secondly, the value is the minimum\r\npossible. By the same rules the girl chooses dish for . After that Noora\r\nsays to Leha, if , and otherwise. However, the restaurant is preparing\r\nquickly, so Leha has enough time to ask no more than questions. After\r\nthat he should name numbers of any two dishes Noora ordered.Help Leha to\r\nsolve this problem!\r\n", "solutions": ["#include <bits/stdc++.h>\nusing namespace std;\n#define int long long\n#define IOS ios::sync_with_stdio(0) , cin.tie(0) , cout.tie(0)\ninline int in(){int32_t x ; scanf(\"%d\",&x) ; return x ;}\ninline long long lin(){long long x ; scanf(\"%lld\",&x) ; return x;}\nconst int maxn = 1e6 + 200;\nconst int mod = 1e9 + 7;\nconst long long infll = 2e18 + 10;\nconst int inf = 1e9 + 10;\ntypedef pair<int,int> pii;\ntypedef long long ll;\ntypedef vector<int> vi;\nint positions[2];\ninline int ask(int a , int b)\n{\n    cout << 1 << \" \" << a + 1 << \" \" << b + 1 << \"\\n\";\n    fflush(stdout);\n    string result ; cin >> result;\n    if (result == \"TAK\") return 0; // l\n    else return 1; // r\n}\ninline void outPut(int a , int b)\n{\n    cout << 2 << \" \" << a + 1 << \" \" << b + 1 << \"\\n\";\n    fflush(stdout);\n    exit(0);\n}\nint A , B;\ninline int candidate(int l , int r)\n{\n    int low = l , hi = r;\n    /*\n    while(low + 1 < hi)\n    {\n        int mid = (low + hi ) >> 1;\n        int result = ask(low,hi);\n        if (result == 0)\n            hi = mid;\n        else low = mid;\n    }\n    if (low == hi || ask(low,hi) == 0) return low;\n     */\n    while (low + 1 < hi)\n    {\n        int mid = (low + hi) >> 1;\n        int result = ask(mid,mid+1);\n        if (result == 0 )\n            hi = mid;\n        else low = mid + 1;\n    }\n    if (low == hi || ask(low,hi) == 0 ) return low;\n    return hi;\n}\nint32_t main()\n{\n    int n = in() , k = in();\n    if (n == 2) outPut(0,1);\n    A = candidate(0, n-1);\n    if (A == 0) B = candidate(1,n-1);\n    else if (A == n - 1) B = candidate(0,n-2);\n    else{\n        int f = candidate(0,A-1) , s = candidate(A+1,n-1);\n        int result = ask(f,s);\n        if (result == 0 ) B = f;\n        else B = s;\n    }\n    outPut(A,B);\n}\n"], "input": "", "output": "", "tags": ["binary search", "interactive"], "dificulty": "2200", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/810/problem/D",
+    "problemId": "106948",
+    "problem_idx": "D",
+    "shortId": "810D",
+    "contest_number": "810",
+    "problem_submissions": {
+        "D": [
+            27248048,
+            27249498,
+            27249472,
+            27249003,
+            27249642,
+            27249714,
+            27250980,
+            27251631,
+            27251168,
+            27250685,
+            27250723,
+            27252106,
+            27251730,
+            27251070,
+            27251518
+        ],
+        "C": [
+            27242429,
+            27242671,
+            27243173,
+            27242346,
+            27243539,
+            27242128,
+            27243236,
+            27242338,
+            27243255,
+            27244082,
+            27244821,
+            27246801,
+            27244339,
+            27246022,
+            27245155,
+            27245852
+        ],
+        "B": [
+            27239444,
+            27240768,
+            27240407,
+            27241138,
+            27239711,
+            27239883,
+            27239928,
+            27240508,
+            27242864,
+            27240783,
+            27240973,
+            27240629,
+            27240838,
+            27241490,
+            27243521
+        ],
+        "A": [
+            27238742,
+            27238727,
+            27238904,
+            27239459,
+            27238783,
+            27238841,
+            27238731,
+            27239326,
+            27240489,
+            27239302,
+            27238712,
+            27238863,
+            27239075,
+            27239035,
+            27242418
+        ]
+    },
+    "name": "D. Glad to see you ",
+    "statement": "On Sunday Leha the hacker took Nura from the house where she lives and\r\nwent with her to one of the most luxurious restaurants in Vi kopolis.\r\nUpon arrival, they left the car in a huge parking lot near the\r\nrestaurant and hurried inside the building.In the restaurant a polite\r\nwaiter immediately brought the menu to Leha and Noora, consisting of\r\ndishes. It is interesting that all dishes in the menu are numbered with\r\nintegers from to . After a little thought, the girl ordered exactly\r\ndifferent dishes from available in the menu. To pass the waiting time\r\nwhile the chefs prepare ordered dishes, the girl invited the hacker to\r\nplay a game that will help them get to know each other better.The game\r\nitself is very simple: Noora wants Leha to guess any two dishes among\r\nall ordered. At the same time, she is ready to answer only one type of\r\nquestions. Leha can say two numbers and . After that Noora chooses some\r\ndish for the number such that, at first, is among the dishes Noora\r\nordered ( can be equal to ), and, secondly, the value is the minimum\r\npossible. By the same rules the girl chooses dish for . After that Noora\r\nsays to Leha, if , and otherwise. However, the restaurant is preparing\r\nquickly, so Leha has enough time to ask no more than questions. After\r\nthat he should name numbers of any two dishes Noora ordered.Help Leha to\r\nsolve this problem!\r\n",
+    "solutions": [
+        "#include <bits/stdc++.h>\nusing namespace std;\n#define int long long\n#define IOS ios::sync_with_stdio(0) , cin.tie(0) , cout.tie(0)\ninline int in(){int32_t x ; scanf(\"%d\",&x) ; return x ;}\ninline long long lin(){long long x ; scanf(\"%lld\",&x) ; return x;}\nconst int maxn = 1e6 + 200;\nconst int mod = 1e9 + 7;\nconst long long infll = 2e18 + 10;\nconst int inf = 1e9 + 10;\ntypedef pair<int,int> pii;\ntypedef long long ll;\ntypedef vector<int> vi;\nint positions[2];\ninline int ask(int a , int b)\n{\n    cout << 1 << \" \" << a + 1 << \" \" << b + 1 << \"\\n\";\n    fflush(stdout);\n    string result ; cin >> result;\n    if (result == \"TAK\") return 0; // l\n    else return 1; // r\n}\ninline void outPut(int a , int b)\n{\n    cout << 2 << \" \" << a + 1 << \" \" << b + 1 << \"\\n\";\n    fflush(stdout);\n    exit(0);\n}\nint A , B;\ninline int candidate(int l , int r)\n{\n    int low = l , hi = r;\n    /*\n    while(low + 1 < hi)\n    {\n        int mid = (low + hi ) >> 1;\n        int result = ask(low,hi);\n        if (result == 0)\n            hi = mid;\n        else low = mid;\n    }\n    if (low == hi || ask(low,hi) == 0) return low;\n     */\n    while (low + 1 < hi)\n    {\n        int mid = (low + hi) >> 1;\n        int result = ask(mid,mid+1);\n        if (result == 0 )\n            hi = mid;\n        else low = mid + 1;\n    }\n    if (low == hi || ask(low,hi) == 0 ) return low;\n    return hi;\n}\nint32_t main()\n{\n    int n = in() , k = in();\n    if (n == 2) outPut(0,1);\n    A = candidate(0, n-1);\n    if (A == 0) B = candidate(1,n-1);\n    else if (A == n - 1) B = candidate(0,n-2);\n    else{\n        int f = candidate(0,A-1) , s = candidate(A+1,n-1);\n        int result = ask(f,s);\n        if (result == 0 ) B = f;\n        else B = s;\n    }\n    outPut(A,B);\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "binary search",
+        "interactive"
+    ],
+    "dificulty": "2200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Glad to see you .json",
+    "editorial_link": "https://codeforces.com/blog/entry/52099",
+    "editorial": "Let's start with searching the first point. We can do it using this binary search: let's ask points mid and mid?+?1 each time, when we calculated the center of search interval. So we always know in which of the halves [l,?mid],?[mid?+?1,?r] exists at least one point. Since in the initial interval there is at least one point and any point in the interval of search is closer, than any point out of the interval, we will never lose this point out of the search.\n\nNow let's run two binsearches more, similarly for everything to the left and to the right of the first found point. Again, any point in the interval of search is closer, than any point out of the interval. Now it is not guaranteed that initially exist at least one point, so we have to check the found one using one query."
+}

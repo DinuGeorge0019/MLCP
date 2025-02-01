@@ -1,1 +1,107 @@
-{"link": "https://codeforces.com//contest/516/problem/A", "problemId": "22477", "problem_idx": "A", "shortId": "516A", "contest_number": "516", "problem_submissions": {"D": [9897778, 9901317, 9902316, 9902257, 9902926, 9899362, 9901747, 9900577, 9901753, 9900598, 9902022, 9902250, 9908234, 9907894, 9901637, 10134694], "C": [9894077, 9894988, 9894528, 9894592, 9890787, 9892570, 9894045, 9897863, 9902115, 9893633, 9897304, 9906453, 9890308, 9915358, 9897994, 9896924, 9895656, 9894595, 9895218], "A": [9891009, 9888069, 9891404, 9888532, 9886301, 9886680, 9886736, 9887016, 9887312, 9885451, 9885346, 9886088, 9885688, 9885877, 9886467], "B": [9888215, 9890996, 9889129, 9891841, 9894454, 9896886, 9901312, 9890721, 9898664, 9916236, 9895068, 9891776, 9889048, 9930005, 9890589, 9889796, 9891061, 9898651], "E": [9897098, 9919136]}, "name": "A. Drazil and Factorial", "statement": "Drazil is playing a math game with Varda.Let\u2019s define for positive\r\ninteger as a product of factorials of its digits. For example, .First,\r\nthey choose a decimal number consisting of digits that contains at least\r\none digit larger than . This number may possibly start with leading\r\nzeroes. Then they should find maximum positive number satisfying\r\nfollowing two conditions:1. doesn\u2019t contain neither digit nor digit .2.\r\n= .Help friends find such number.\r\n", "solutions": ["#include <iostream>\nusing namespace std;\nint p[10];\nvoid go(int x, int sign)\n{\n\tfor (int i = 2; i < 10; i++)\n\t\twhile (x % i == 0)\n\t\t{\n\t\t\tx /= i;\n\t\t\tp[i] += sign;\n\t\t}\n}\nint main()\n{\n\tios::sync_with_stdio(false);\n\tint n;\n\tcin >> n;\n\tfor (int i = 0; i < n; i++)\n\t{\n\t\tchar c;\n\t\tcin >> c;\n\t\tint val = 1;\n\t\tint f = c - '0';\n\t\tfor (int j = 1; j <= f; j++)\n\t\t\tval *= j;\n\t\tgo(val, 1);\n\t}\n\tstring ans = \"\";\n\tfor (int i = 9; i >= 2; i--)\n\t\twhile (p[i] > 0)\n\t\t{\n\t\t\tans += char(i + '0');\n\t\t\tint val = 1;\n\t\t\tfor (int j = 1; j <= i; j++)\n\t\t\t\tval *= j;\n\t\t\tgo(val, -1);\n\t\t}\n\tcout << ans << endl;\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["dp", "greedy", "implementation", "math"], "dificulty": "1400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/516/problem/A",
+    "problemId": "22477",
+    "problem_idx": "A",
+    "shortId": "516A",
+    "contest_number": "516",
+    "problem_submissions": {
+        "D": [
+            9897778,
+            9901317,
+            9902316,
+            9902257,
+            9902926,
+            9899362,
+            9901747,
+            9900577,
+            9901753,
+            9900598,
+            9902022,
+            9902250,
+            9908234,
+            9907894,
+            9901637,
+            10134694
+        ],
+        "C": [
+            9894077,
+            9894988,
+            9894528,
+            9894592,
+            9890787,
+            9892570,
+            9894045,
+            9897863,
+            9902115,
+            9893633,
+            9897304,
+            9906453,
+            9890308,
+            9915358,
+            9897994,
+            9896924,
+            9895656,
+            9894595,
+            9895218
+        ],
+        "A": [
+            9891009,
+            9888069,
+            9891404,
+            9888532,
+            9886301,
+            9886680,
+            9886736,
+            9887016,
+            9887312,
+            9885451,
+            9885346,
+            9886088,
+            9885688,
+            9885877,
+            9886467
+        ],
+        "B": [
+            9888215,
+            9890996,
+            9889129,
+            9891841,
+            9894454,
+            9896886,
+            9901312,
+            9890721,
+            9898664,
+            9916236,
+            9895068,
+            9891776,
+            9889048,
+            9930005,
+            9890589,
+            9889796,
+            9891061,
+            9898651
+        ],
+        "E": [
+            9897098,
+            9919136
+        ]
+    },
+    "name": "A. Drazil and Factorial",
+    "statement": "Drazil is playing a math game with Varda.Let\u2019s define for positive\r\ninteger as a product of factorials of its digits. For example, .First,\r\nthey choose a decimal number consisting of digits that contains at least\r\none digit larger than . This number may possibly start with leading\r\nzeroes. Then they should find maximum positive number satisfying\r\nfollowing two conditions:1. doesn\u2019t contain neither digit nor digit .2.\r\n= .Help friends find such number.\r\n",
+    "solutions": [
+        "#include <iostream>\nusing namespace std;\nint p[10];\nvoid go(int x, int sign)\n{\n\tfor (int i = 2; i < 10; i++)\n\t\twhile (x % i == 0)\n\t\t{\n\t\t\tx /= i;\n\t\t\tp[i] += sign;\n\t\t}\n}\nint main()\n{\n\tios::sync_with_stdio(false);\n\tint n;\n\tcin >> n;\n\tfor (int i = 0; i < n; i++)\n\t{\n\t\tchar c;\n\t\tcin >> c;\n\t\tint val = 1;\n\t\tint f = c - '0';\n\t\tfor (int j = 1; j <= f; j++)\n\t\t\tval *= j;\n\t\tgo(val, 1);\n\t}\n\tstring ans = \"\";\n\tfor (int i = 9; i >= 2; i--)\n\t\twhile (p[i] > 0)\n\t\t{\n\t\t\tans += char(i + '0');\n\t\t\tint val = 1;\n\t\t\tfor (int j = 1; j <= i; j++)\n\t\t\t\tval *= j;\n\t\t\tgo(val, -1);\n\t\t}\n\tcout << ans << endl;\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp",
+        "greedy",
+        "implementation",
+        "math"
+    ],
+    "dificulty": "1400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Drazil and Factorial.json",
+    "editorial_link": "https://codeforces.com/blog/entry/16468",
+    "editorial": "Conclusion first:\n\nFirst, we transform each digit of the original number as follows:\n\n0, 1 -> empty\n\n2 -> 2\n\n3 -> 3\n\n4 -> 322\n\n5 -> 5\n\n6 -> 53\n\n7 -> 7\n\n8 -> 7222\n\n9 -> 7332\n\nThen, sort all digits in decreasing order as a new number, then it will be the answer.\n\nProof:\n\nWe can observe that our answer won't contain digits 4,6,8,9, because we can always transform digits 4,6,8,9 to more digits as in the conclusion, and it makes the number larger.\n\nThen, how can we make sure that the result is the largest after this transformation?\n\nWe can prove the following lemma:\n\nFor any positive integer x, if it can be written as the form (2!)c2?*?(3!)c3?*?(5!)c5?*?(7!)c7, there will be only one unique way.\n\nSuppose that there exists two ways to write down x in this form, we can assume that the two ways are (2!)a2?*?(3!)a3?*?(5!)a5?*?(7!)a7 and (2!)b2?*?(3!)b3?*?(5!)b5?*?(7!)b7.\n\nWe find the largest i such that ai???bi, Then we know there exists at least one prime number whose factor is different in the two ways.\n\nBut according to the Fundamental Theorem of Arithmetic, there is only one prime factorization of each integer. So we get a contradiction.\n\nAfter getting the result, we don't need to worry about other numbers being larger than ours."
+}

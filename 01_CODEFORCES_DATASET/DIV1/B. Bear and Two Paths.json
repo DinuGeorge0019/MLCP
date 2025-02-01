@@ -1,1 +1,121 @@
-{"link": "https://codeforces.com//contest/674/problem/B", "problemId": "59813", "problem_idx": "B", "shortId": "674B", "contest_number": "674", "problem_submissions": {"F": [17795703, 17796640, 17795248, 17796731, 17795284, 17786875, 17793312, 17799447, 17799059, 17796927, 17809648], "E": [17791802, 17792589, 17793136, 17792993, 17792579, 17790993, 17797689, 17793850, 17793986, 17790505, 17793423, 17807249, 17795195, 17795763, 17827053, 17796913], "C": [17789698, 17787708, 17787067, 17789946, 17787511, 17796571, 17795757, 17788550, 17790663, 17794959, 17792670, 17795899, 17791267, 17793511, 17791551, 17791808], "B": [17783364, 17783002, 17794015, 17783259, 17783884, 17783532, 17788831, 17784932, 17787141, 17784301, 17785005, 17785023, 17784292, 17783013, 17783128, 17786182, 17784522], "A": [17780055, 17780264, 17780741, 17780847, 17780248, 17780121, 17787726, 17781230, 17780294, 17782551, 17782250, 17781088, 17780155, 17780065, 17780569, 17780629, 17781843], "D": [17798492, 17808237], "G": [17818293, 17796240, 17798313]}, "name": "B. Bear and Two Paths", "statement": "Bearland has cities, numbered through . Cities are connected via\r\nbidirectional roads. Each road connects two distinct cities. No two\r\nroads connect the same pair of cities.Bear Limak was once in a city and\r\nhe wanted to go to a city . There was no direct connection so he decided\r\nto take a long walk, visiting each city . Formally: There is no road\r\nbetween and . There exists a sequence (path) of distinct cities that ,\r\nand there is a road between and for . On the other day, the similar\r\nthing happened. Limak wanted to travel between a city and a city . There\r\nis no road between them but there exists a sequence of distinct cities\r\nthat , and there is a road between and for .Also, Limak thinks that\r\nthere are at most roads in Bearland. He wonders whether he remembers\r\neverything correctly.Given , and four distinct cities , , , , can you\r\nfind possible paths and to satisfy all the given conditions? Find any\r\nsolution or print if it\u2019s impossible.\r\n", "solutions": ["#include <iostream>\n#include <tuple>\n#include <sstream>\n#include <vector>\n#include <cmath>\n#include <ctime>\n#include <cassert>\n#include <cstdio>\n#include <queue>\n#include <set>\n#include <map>\n#include <fstream>\n#include <cstdlib>\n#include <string>\n#include <cstring>\n#include <algorithm>\n#include <numeric>\n\n#define mp make_pair\n#define mt make_tuple\n#define fi first\n#define se second\n#define pb push_back\n#define all(x) (x).begin(), (x).end()\n#define rall(x) (x).rbegin(), (x).rend()\n#define forn(i, n) for (int i = 0; i < (int)(n); ++i)\n#define for1(i, n) for (int i = 1; i <= (int)(n); ++i)\n#define ford(i, n) for (int i = (int)(n) - 1; i >= 0; --i)\n#define fore(i, a, b) for (int i = (int)(a); i <= (int)(b); ++i)\n\nusing namespace std;\n\ntypedef pair<int, int> pii;\ntypedef vector<int> vi;\ntypedef vector<pii> vpi;\ntypedef vector<vi> vvi;\ntypedef long long i64;\ntypedef vector<i64> vi64;\ntypedef vector<vi64> vvi64;\ntypedef pair<i64, i64> pi64;\ntypedef double ld;\n\ntemplate<class T> bool uin(T &a, T b) { return a > b ? (a = b, true) : false; }\ntemplate<class T> bool uax(T &a, T b) { return a < b ? (a = b, true) : false; }\n\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    cout.precision(10);\n    cout << fixed;\n#ifdef LOCAL_DEFINE\n    freopen(\"input.txt\", \"rt\", stdin);\n#endif\n\n    int n, k, a, b, c, d;\n    cin >> n >> k >> a >> b >> c >> d;\n    if (n == 4 || k < n + 1) {\n        cout << -1 << '\\n';\n        return 0;\n    }\n    vi p;\n    p.pb(a);\n    p.pb(c);\n    for1(i, n) {\n        if (i == a || i == b || i == c || i == d) continue;\n        p.pb(i);\n    }\n    p.pb(d);\n    p.pb(b);\n    forn(i, n) cout << p[i] << ' ';\n    cout << '\\n';\n    swap(p[0], p[1]);\n    swap(p[n - 2], p[n - 1]);\n    forn(i, n) cout << p[i] << ' ';\n    cout << '\\n';\n\n#ifdef LOCAL_DEFINE\n    cerr << \"Time elapsed: \" << 1.0 * clock() / CLOCKS_PER_SEC << \" s.\\n\";\n#endif\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["constructive algorithms", "graphs"], "dificulty": "1600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/674/problem/B",
+    "problemId": "59813",
+    "problem_idx": "B",
+    "shortId": "674B",
+    "contest_number": "674",
+    "problem_submissions": {
+        "F": [
+            17795703,
+            17796640,
+            17795248,
+            17796731,
+            17795284,
+            17786875,
+            17793312,
+            17799447,
+            17799059,
+            17796927,
+            17809648
+        ],
+        "E": [
+            17791802,
+            17792589,
+            17793136,
+            17792993,
+            17792579,
+            17790993,
+            17797689,
+            17793850,
+            17793986,
+            17790505,
+            17793423,
+            17807249,
+            17795195,
+            17795763,
+            17827053,
+            17796913
+        ],
+        "C": [
+            17789698,
+            17787708,
+            17787067,
+            17789946,
+            17787511,
+            17796571,
+            17795757,
+            17788550,
+            17790663,
+            17794959,
+            17792670,
+            17795899,
+            17791267,
+            17793511,
+            17791551,
+            17791808
+        ],
+        "B": [
+            17783364,
+            17783002,
+            17794015,
+            17783259,
+            17783884,
+            17783532,
+            17788831,
+            17784932,
+            17787141,
+            17784301,
+            17785005,
+            17785023,
+            17784292,
+            17783013,
+            17783128,
+            17786182,
+            17784522
+        ],
+        "A": [
+            17780055,
+            17780264,
+            17780741,
+            17780847,
+            17780248,
+            17780121,
+            17787726,
+            17781230,
+            17780294,
+            17782551,
+            17782250,
+            17781088,
+            17780155,
+            17780065,
+            17780569,
+            17780629,
+            17781843
+        ],
+        "D": [
+            17798492,
+            17808237
+        ],
+        "G": [
+            17818293,
+            17796240,
+            17798313
+        ]
+    },
+    "name": "B. Bear and Two Paths",
+    "statement": "Bearland has cities, numbered through . Cities are connected via\r\nbidirectional roads. Each road connects two distinct cities. No two\r\nroads connect the same pair of cities.Bear Limak was once in a city and\r\nhe wanted to go to a city . There was no direct connection so he decided\r\nto take a long walk, visiting each city . Formally: There is no road\r\nbetween and . There exists a sequence (path) of distinct cities that ,\r\nand there is a road between and for . On the other day, the similar\r\nthing happened. Limak wanted to travel between a city and a city . There\r\nis no road between them but there exists a sequence of distinct cities\r\nthat , and there is a road between and for .Also, Limak thinks that\r\nthere are at most roads in Bearland. He wonders whether he remembers\r\neverything correctly.Given , and four distinct cities , , , , can you\r\nfind possible paths and to satisfy all the given conditions? Find any\r\nsolution or print if it\u2019s impossible.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <tuple>\n#include <sstream>\n#include <vector>\n#include <cmath>\n#include <ctime>\n#include <cassert>\n#include <cstdio>\n#include <queue>\n#include <set>\n#include <map>\n#include <fstream>\n#include <cstdlib>\n#include <string>\n#include <cstring>\n#include <algorithm>\n#include <numeric>\n\n#define mp make_pair\n#define mt make_tuple\n#define fi first\n#define se second\n#define pb push_back\n#define all(x) (x).begin(), (x).end()\n#define rall(x) (x).rbegin(), (x).rend()\n#define forn(i, n) for (int i = 0; i < (int)(n); ++i)\n#define for1(i, n) for (int i = 1; i <= (int)(n); ++i)\n#define ford(i, n) for (int i = (int)(n) - 1; i >= 0; --i)\n#define fore(i, a, b) for (int i = (int)(a); i <= (int)(b); ++i)\n\nusing namespace std;\n\ntypedef pair<int, int> pii;\ntypedef vector<int> vi;\ntypedef vector<pii> vpi;\ntypedef vector<vi> vvi;\ntypedef long long i64;\ntypedef vector<i64> vi64;\ntypedef vector<vi64> vvi64;\ntypedef pair<i64, i64> pi64;\ntypedef double ld;\n\ntemplate<class T> bool uin(T &a, T b) { return a > b ? (a = b, true) : false; }\ntemplate<class T> bool uax(T &a, T b) { return a < b ? (a = b, true) : false; }\n\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    cout.precision(10);\n    cout << fixed;\n#ifdef LOCAL_DEFINE\n    freopen(\"input.txt\", \"rt\", stdin);\n#endif\n\n    int n, k, a, b, c, d;\n    cin >> n >> k >> a >> b >> c >> d;\n    if (n == 4 || k < n + 1) {\n        cout << -1 << '\\n';\n        return 0;\n    }\n    vi p;\n    p.pb(a);\n    p.pb(c);\n    for1(i, n) {\n        if (i == a || i == b || i == c || i == d) continue;\n        p.pb(i);\n    }\n    p.pb(d);\n    p.pb(b);\n    forn(i, n) cout << p[i] << ' ';\n    cout << '\\n';\n    swap(p[0], p[1]);\n    swap(p[n - 2], p[n - 1]);\n    forn(i, n) cout << p[i] << ' ';\n    cout << '\\n';\n\n#ifdef LOCAL_DEFINE\n    cerr << \"Time elapsed: \" << 1.0 * clock() / CLOCKS_PER_SEC << \" s.\\n\";\n#endif\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "graphs"
+    ],
+    "dificulty": "1600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Bear and Two Paths.json",
+    "editorial_link": "https://codeforces.com//blog/entry/44754",
+    "editorial": "There is no solution if n?=?4 or k???n. But for n???5 and k???n?+?1 you can construct the following graph:\n\n \n\nHere, cities (x1,?x2,?...,?xn?-?4) denote other cities in any order you choose (cities different than a,?b,?c,?d). You should print (a,?c,?x1,?x2,?...,?xn?-?4,?d,?b) in the first line, and (c,?a,?x1,?x2,?...,?xn?-?4,?b,?d) in the second line.\n\nTwo not very hard challenges for you. Are you able to prove that the answer doesn't exist for k?=?n? Can you solve the problem if the four given cities don't have to be distinct but it's guaranteed that a???b and c???d?"
+}

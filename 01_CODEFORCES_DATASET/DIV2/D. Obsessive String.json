@@ -1,1 +1,88 @@
-{"link": "https://codeforces.com//contest/495/problem/D", "problemId": "19372", "problem_idx": "D", "shortId": "495D", "contest_number": "495", "problem_submissions": {"D": [9112852, 9115986, 9117140, 9117503, 9123190, 9119753], "C": [9107534, 9109560, 9109503, 9108459, 9106667, 9110323, 9118258, 9115754, 9108222, 9112671, 9111689, 9109335, 9111765, 9108306, 9110442, 9106049], "B": [9104748, 9107046, 9106767, 9105605, 9110931, 9106856, 9105868, 9113914, 9105045, 9109777, 9108695, 9106960, 9107128, 9106063, 9106299, 9107851], "A": [9104037, 9104189, 9104218, 9111853, 9108412, 9113154, 9103998, 9107038, 9103963, 9104475, 9104127, 9105245, 9105093, 9104487, 9104429, 9110186]}, "name": "D. Obsessive String", "statement": "Hamed has recently found a string and suddenly became quite fond of it.\r\nHe spent several days trying to find all occurrences of in other strings\r\nhe had. Finally he became tired and started thinking about the following\r\nproblem. Given a string how many ways are there to extract\r\nnon-overlapping substrings from it such that each of them contains\r\nstring as a substring? More formally, you need to calculate the number\r\nof ways to choose two sequences and satisfying the following\r\nrequirements: is a substring of string (string is considered as\r\n-indexed). As the number of ways can be rather large print it modulo .\r\n", "solutions": ["#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <string>\n#include <algorithm>\n#define MASK 1000000007\n#define MAXL 100010\nchar s[MAXL],t[MAXL];\nint next[MAXL],occ[MAXL],n=0,lens,lent;\nlong long f[MAXL],g[MAXL];\nint main()\n{\n    scanf(\"%s%s\",s,t),lens=strlen(s),lent=strlen(t);\n    next[0]=next[1]=0;\n    for(int i=1,j;i<lent;i++)\n    {\n        j=next[i];\n        while(j&&t[i]!=t[j]) j=next[j];\n        next[i+1]=(t[i]==t[j]?j+1:0);\n    }\n//  for(int i=0;i<=lent;i++) printf(\"%d \",next[i]);\n//  printf(\"\\n\");\n    //Find matches\n    for(int i=0,cur=-1;i<lens;i++)\n    {\n        if(cur==-1&&s[i]==t[0]) cur=0;\n        else\n        {\n            while(cur>=0&&s[i]!=t[cur+1]) cur=next[cur+1]-1;\n            if(cur==-1&&s[i]==t[0]) cur=0;\n            else if(s[i]==t[cur+1]) cur++;\n        }\n        if(cur==lent-1) occ[n++]=i-lent+2,cur=next[cur+1]-1;\n    }\n//  for(int i=0;i<n;i++) printf(\"%d \",occ[i]);\n//  printf(\"\\n\");\n    f[0]=g[0]=1;\n    for(int i=1,last=0,cur=0;i<=lens;i++)\n    {\n        //cur: current inspecting to leave\n        if(cur<n&&occ[cur]+lent-1==i) last=i-lent+1,cur++;\n        //Find earliest passed in \n        f[i]=(f[i-1]+(last?g[last-1]:0))%MASK;\n        //Update g\n        g[i]=(g[i-1]+f[i])%MASK;\n    }\n    printf(\"%I64d\\n\",((f[lens]-1)%MASK+MASK)%MASK);\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["binary search", "dp", "strings"], "dificulty": "2000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/495/problem/D",
+    "problemId": "19372",
+    "problem_idx": "D",
+    "shortId": "495D",
+    "contest_number": "495",
+    "problem_submissions": {
+        "D": [
+            9112852,
+            9115986,
+            9117140,
+            9117503,
+            9123190,
+            9119753
+        ],
+        "C": [
+            9107534,
+            9109560,
+            9109503,
+            9108459,
+            9106667,
+            9110323,
+            9118258,
+            9115754,
+            9108222,
+            9112671,
+            9111689,
+            9109335,
+            9111765,
+            9108306,
+            9110442,
+            9106049
+        ],
+        "B": [
+            9104748,
+            9107046,
+            9106767,
+            9105605,
+            9110931,
+            9106856,
+            9105868,
+            9113914,
+            9105045,
+            9109777,
+            9108695,
+            9106960,
+            9107128,
+            9106063,
+            9106299,
+            9107851
+        ],
+        "A": [
+            9104037,
+            9104189,
+            9104218,
+            9111853,
+            9108412,
+            9113154,
+            9103998,
+            9107038,
+            9103963,
+            9104475,
+            9104127,
+            9105245,
+            9105093,
+            9104487,
+            9104429,
+            9110186
+        ]
+    },
+    "name": "D. Obsessive String",
+    "statement": "Hamed has recently found a string and suddenly became quite fond of it.\r\nHe spent several days trying to find all occurrences of in other strings\r\nhe had. Finally he became tired and started thinking about the following\r\nproblem. Given a string how many ways are there to extract\r\nnon-overlapping substrings from it such that each of them contains\r\nstring as a substring? More formally, you need to calculate the number\r\nof ways to choose two sequences and satisfying the following\r\nrequirements: is a substring of string (string is considered as\r\n-indexed). As the number of ways can be rather large print it modulo .\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <string>\n#include <algorithm>\n#define MASK 1000000007\n#define MAXL 100010\nchar s[MAXL],t[MAXL];\nint next[MAXL],occ[MAXL],n=0,lens,lent;\nlong long f[MAXL],g[MAXL];\nint main()\n{\n    scanf(\"%s%s\",s,t),lens=strlen(s),lent=strlen(t);\n    next[0]=next[1]=0;\n    for(int i=1,j;i<lent;i++)\n    {\n        j=next[i];\n        while(j&&t[i]!=t[j]) j=next[j];\n        next[i+1]=(t[i]==t[j]?j+1:0);\n    }\n//  for(int i=0;i<=lent;i++) printf(\"%d \",next[i]);\n//  printf(\"\\n\");\n    //Find matches\n    for(int i=0,cur=-1;i<lens;i++)\n    {\n        if(cur==-1&&s[i]==t[0]) cur=0;\n        else\n        {\n            while(cur>=0&&s[i]!=t[cur+1]) cur=next[cur+1]-1;\n            if(cur==-1&&s[i]==t[0]) cur=0;\n            else if(s[i]==t[cur+1]) cur++;\n        }\n        if(cur==lent-1) occ[n++]=i-lent+2,cur=next[cur+1]-1;\n    }\n//  for(int i=0;i<n;i++) printf(\"%d \",occ[i]);\n//  printf(\"\\n\");\n    f[0]=g[0]=1;\n    for(int i=1,last=0,cur=0;i<=lens;i++)\n    {\n        //cur: current inspecting to leave\n        if(cur<n&&occ[cur]+lent-1==i) last=i-lent+1,cur++;\n        //Find earliest passed in \n        f[i]=(f[i-1]+(last?g[last-1]:0))%MASK;\n        //Update g\n        g[i]=(g[i-1]+f[i])%MASK;\n    }\n    printf(\"%I64d\\n\",((f[lens]-1)%MASK+MASK)%MASK);\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "binary search",
+        "dp",
+        "strings"
+    ],
+    "dificulty": "2000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Obsessive String.json",
+    "editorial_link": "https://codeforces.com//blog/entry/15148",
+    "editorial": "We call an index i(1???i???|s|) good if t equals si?-?|t|?+?1si?-?|t|?+?2... si. To find all good indexes let's define qi as the length of longest prefix of t which is a suffix of s1s2... si. A good index is an index with qi?=?|t|. Calculating qi can be done using Knuth-Morris-Pratt algorithm.\n\nLet's define ai as the number of ways to choose some(at least one) non-overlapping substrings of the prefix of s with length i (s1s2... si) so t is a substring of each one of them and si is in one the chosen substrings(So it must actually be the last character of last chosen substring). Then the answer will be .\n\nAlso let's define two additional sequence q1 and q2 which will help us in calculating a.\n\n\n\n\n\nThe sequence a can then be calculated in O(n) as described below:\n\nIf i is not a good index ai?=?ai?-?1 since in each way counted in ai the substring containing si also contains si?-?1 so for each of these ways removing si from the substring containing it leads to a way counted in ai?-?1 and vice-versa thus these two numbers are equal. If i is a good index then ai?=?q2i?-?|t|?+?i?-?|t|?+?1. To prove this let's consider a way of choosing substring counted in ai. We call such a way valid. The substring containing si can be any of the substrings sjsj?+?1... si (1???j???i?-?|t|?+?1). There are i?-?|t|?+?1 valid ways in which this substring is the only substring we've chosen. Number of valid ways in which substring containing si starts at sj equals to q1j?-?1. So the total number of valid ways in which we've chosen at least two substrings are equal to  which is equal to q2j?-?1. So ai?=?q2i?-?|t|?+?i?-?|t|?+?1."
+}

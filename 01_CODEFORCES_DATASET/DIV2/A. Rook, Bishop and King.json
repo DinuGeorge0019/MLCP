@@ -1,1 +1,100 @@
-{"link": "https://codeforces.com//contest/370/problem/A", "problemId": "4143", "problem_idx": "A", "shortId": "370A", "contest_number": "370", "problem_submissions": {"C": [5370412, 5368730, 5371522, 5371990, 5370195, 5370131, 5371258, 5371358, 5372807, 5379034, 5368672], "D": [5369264, 5370401, 5370565, 5371357, 5372982, 5372779, 5373131, 5372520, 5372523, 5370570, 5370366, 5371915, 5371128, 5372843, 5372383, 5373802], "B": [5367928, 5367560, 5367818, 5367866, 5367916, 5368321, 5372838, 5370234, 5369841, 5368420, 5367832, 5368440, 5368950, 5372070, 5368698, 5369739, 5367644], "A": [5367394, 5369807, 5367525, 5367450, 5367389, 5367654, 5369021, 5369042, 5374280, 5368909, 5367810, 5367376, 5367612, 5368269, 5373074, 5367757, 5368835, 5367393], "E": [5372646, 5370095]}, "name": "A. Rook, Bishop and King", "statement": "Little Petya is learning to play chess. He has already learned how to\r\nmove a king, a rook and a bishop. Let us remind you the rules of moving\r\nchess pieces. A chessboard is 64 square fields organized into an table.\r\nA field is represented by a pair of integers the number of the row and\r\nthe number of the column (in a classical game the columns are\r\ntraditionally indexed by letters). Each chess piece takes up exactly one\r\nfield. To make a move is to move a chess piece, the pieces move by the\r\nfollowing rules: A rook moves any number of fields horizontally or\r\nvertically. A bishop moves any number of fields diagonally. A king moves\r\none field in any direction horizontally, vertically or diagonally. Petya\r\nis thinking about the following problem: what minimum number of moves is\r\nneeded for each of these pieces to move from field to field ? At that,\r\nwe assume that there are no more pieces besides this one on the board.\r\nHelp him solve this problem.\r\n", "solutions": ["#include <cstdio>\n#include <iostream>\n#include <cmath>\n#include <ctime>\n#include <vector>\n#include <map>\n#include <set>\n#include <algorithm>\nusing namespace std;\n\ntypedef long long ll;\ntypedef long double ld;\nconst ld eps = 1e-12;\nconst int inf = 1e9;\n#define pb push_back\n#define pob pop_back\n#define i1 first\n#define i2 second\n#define mp make_pair\n\n#define file \"\"\n#define N 100500\n       \nint main()\n{\n    //freopen(file\".in\", \"r\", stdin);\n    //freopen(file\".out\", \"w\", stdout);\n    int a, b, c, d;\n    cin >> a >> b >> c >> d;\n    if (a == c || b == d) cout << 1 << ' ';\n    else cout << 2 << ' ';\n    if (a + b == c + d || a - b == c - d) cout << 1 << ' ';\n    else if ((a + c + b + d) % 2 == 0) cout << 2 << ' ';\n    else cout << 0 << ' ';\n    int res = 0;\n    while (a != c || b != d)\n    {\n        if (a < c && b < d) a++, b++;\n        else if (a < c && b > d) a++, b--;\n        else if (a < c && b == d) a++;\n        else if (a == c && b < d) b++;\n        else if (a == c && b > d) b--;\n        else if (a > c && b < d) a--, b++;\n        else if (a > c && b == d) a--;\n        else if (a > c && b > d) a--, b--;\n        res++;\n    }   \n    cout << res << endl;\n\n    return 0;\n}"], "input": "", "output": "", "tags": ["graphs", "math", "shortest paths"], "dificulty": "1100", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/370/problem/A",
+    "problemId": "4143",
+    "problem_idx": "A",
+    "shortId": "370A",
+    "contest_number": "370",
+    "problem_submissions": {
+        "C": [
+            5370412,
+            5368730,
+            5371522,
+            5371990,
+            5370195,
+            5370131,
+            5371258,
+            5371358,
+            5372807,
+            5379034,
+            5368672
+        ],
+        "D": [
+            5369264,
+            5370401,
+            5370565,
+            5371357,
+            5372982,
+            5372779,
+            5373131,
+            5372520,
+            5372523,
+            5370570,
+            5370366,
+            5371915,
+            5371128,
+            5372843,
+            5372383,
+            5373802
+        ],
+        "B": [
+            5367928,
+            5367560,
+            5367818,
+            5367866,
+            5367916,
+            5368321,
+            5372838,
+            5370234,
+            5369841,
+            5368420,
+            5367832,
+            5368440,
+            5368950,
+            5372070,
+            5368698,
+            5369739,
+            5367644
+        ],
+        "A": [
+            5367394,
+            5369807,
+            5367525,
+            5367450,
+            5367389,
+            5367654,
+            5369021,
+            5369042,
+            5374280,
+            5368909,
+            5367810,
+            5367376,
+            5367612,
+            5368269,
+            5373074,
+            5367757,
+            5368835,
+            5367393
+        ],
+        "E": [
+            5372646,
+            5370095
+        ]
+    },
+    "name": "A. Rook, Bishop and King",
+    "statement": "Little Petya is learning to play chess. He has already learned how to\r\nmove a king, a rook and a bishop. Let us remind you the rules of moving\r\nchess pieces. A chessboard is 64 square fields organized into an table.\r\nA field is represented by a pair of integers the number of the row and\r\nthe number of the column (in a classical game the columns are\r\ntraditionally indexed by letters). Each chess piece takes up exactly one\r\nfield. To make a move is to move a chess piece, the pieces move by the\r\nfollowing rules: A rook moves any number of fields horizontally or\r\nvertically. A bishop moves any number of fields diagonally. A king moves\r\none field in any direction horizontally, vertically or diagonally. Petya\r\nis thinking about the following problem: what minimum number of moves is\r\nneeded for each of these pieces to move from field to field ? At that,\r\nwe assume that there are no more pieces besides this one on the board.\r\nHelp him solve this problem.\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <iostream>\n#include <cmath>\n#include <ctime>\n#include <vector>\n#include <map>\n#include <set>\n#include <algorithm>\nusing namespace std;\n\ntypedef long long ll;\ntypedef long double ld;\nconst ld eps = 1e-12;\nconst int inf = 1e9;\n#define pb push_back\n#define pob pop_back\n#define i1 first\n#define i2 second\n#define mp make_pair\n\n#define file \"\"\n#define N 100500\n       \nint main()\n{\n    //freopen(file\".in\", \"r\", stdin);\n    //freopen(file\".out\", \"w\", stdout);\n    int a, b, c, d;\n    cin >> a >> b >> c >> d;\n    if (a == c || b == d) cout << 1 << ' ';\n    else cout << 2 << ' ';\n    if (a + b == c + d || a - b == c - d) cout << 1 << ' ';\n    else if ((a + c + b + d) % 2 == 0) cout << 2 << ' ';\n    else cout << 0 << ' ';\n    int res = 0;\n    while (a != c || b != d)\n    {\n        if (a < c && b < d) a++, b++;\n        else if (a < c && b > d) a++, b--;\n        else if (a < c && b == d) a++;\n        else if (a == c && b < d) b++;\n        else if (a == c && b > d) b--;\n        else if (a > c && b < d) a--, b++;\n        else if (a > c && b == d) a--;\n        else if (a > c && b > d) a--, b--;\n        res++;\n    }   \n    cout << res << endl;\n\n    return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "graphs",
+        "math",
+        "shortest paths"
+    ],
+    "dificulty": "1100",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Rook, Bishop and King.json",
+    "editorial_link": "https://codeforces.com//blog/entry/9866",
+    "editorial": "There are two approaches to this task. The first is use BFS to find the\r\nshortest path three times. The second is to notice that:\r\n"
+}

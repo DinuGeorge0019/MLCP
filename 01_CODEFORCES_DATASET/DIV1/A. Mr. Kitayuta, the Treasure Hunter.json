@@ -1,1 +1,96 @@
-{"link": "https://codeforces.com//contest/506/problem/A", "problemId": "20820", "problem_idx": "A", "shortId": "506A", "contest_number": "506", "problem_submissions": {"C": [9464348, 9463979, 9557239, 9466208, 9514381], "D": [9461125, 9461876, 9460334, 9459573, 9458109, 9460700, 9459375, 9461634, 9460457, 9461910, 9458643, 9460232, 9462018, 9462258, 9460016, 9460009, 9459977, 9462409, 9460765], "B": [9459503, 9458315, 9457879, 9457557, 9459219, 9458249, 9461319, 9459208, 9457985, 9457950, 9462161, 9459453, 9458782, 9461373, 9462464, 9462819, 9459210, 9458536], "A": [9456602, 9456438, 9456462, 9456507, 9460135, 9456591, 9456641, 9456514, 9463082, 9456214, 9463955, 9457315, 9456528, 9457236, 9463962, 9457919, 9457204, 9456634, 9464389], "E": [9557214]}, "name": "A. Mr. Kitayuta, the Treasure Hunter", "statement": "The Shuseki Islands are an archipelago of small islands in the Yutampo\r\nSea. The islands are evenly spaced along a line, numbered from to from\r\nthe west to the east. These islands are known to contain many treasures.\r\nThere are gems in the Shuseki Islands in total, and the -th gem is\r\nlocated on island .Mr. Kitayuta has just arrived at island . With his\r\ngreat jumping ability, he will repeatedly perform jumps between islands\r\nto the east according to the following process: First, he will jump from\r\nisland to island . After that, he will continue jumping according to the\r\nfollowing rule. Let be the length of the previous jump, that is, if his\r\nprevious jump was from island to island , let . He will perform a jump\r\nof length , or to the east. That is, he will jump to island , or (if\r\nthey exist). The length of a jump must be positive, that is, he cannot\r\nperform a jump of length when . If there is no valid destination, he\r\nwill stop jumping. Mr. Kitayuta will collect the gems on the islands\r\nvisited during the process. Find the maximum number of gems that he can\r\ncollect.\r\n", "solutions": ["#include <cstdio>\n#include <map>\n#include <memory.h>\n#include <algorithm>\n#include <queue>\n#include <vector>\n\nusing namespace std;\n\nint n,d;\n\nint best[30001][500]; // base +250\nint gem[30001];\n\nint main(){\n\tscanf(\"%d%d\",&n,&d);\n\tfor (int i = 0; i < n; i++) {\n\t\tint p;\n\t\tscanf(\"%d\",&p);\n\t\tgem[p]++;\n\t}\n\tint ans = 1;\n\tbest[d][250] = gem[d] + 1;\n\tfor (int i = d; i <= 30000; i++) {\n\t\tfor (int j = 0; j < 500; j++) {\n\t\t\tif (best[i][j] == 0) continue;\n\t\t\tint jump = j-250+d;\n\t\t\tint val = best[i][j];\n\t\t\tans = max(ans, val);\n\t\t\tfor (int df = max(1, jump-1); df <= jump+1; df++) {\n\t\t\t\tint next = i + df;\n\t\t\t\tif (next <= 30000) {\n\t\t\t\t\tbest[next][df-d+250] = max(best[next][df-d+250], val + gem[next]);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\tprintf(\"%d\\n\",ans - 1);\n}"], "input": "", "output": "", "tags": ["dp"], "dificulty": "1900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/506/problem/A",
+    "problemId": "20820",
+    "problem_idx": "A",
+    "shortId": "506A",
+    "contest_number": "506",
+    "problem_submissions": {
+        "C": [
+            9464348,
+            9463979,
+            9557239,
+            9466208,
+            9514381
+        ],
+        "D": [
+            9461125,
+            9461876,
+            9460334,
+            9459573,
+            9458109,
+            9460700,
+            9459375,
+            9461634,
+            9460457,
+            9461910,
+            9458643,
+            9460232,
+            9462018,
+            9462258,
+            9460016,
+            9460009,
+            9459977,
+            9462409,
+            9460765
+        ],
+        "B": [
+            9459503,
+            9458315,
+            9457879,
+            9457557,
+            9459219,
+            9458249,
+            9461319,
+            9459208,
+            9457985,
+            9457950,
+            9462161,
+            9459453,
+            9458782,
+            9461373,
+            9462464,
+            9462819,
+            9459210,
+            9458536
+        ],
+        "A": [
+            9456602,
+            9456438,
+            9456462,
+            9456507,
+            9460135,
+            9456591,
+            9456641,
+            9456514,
+            9463082,
+            9456214,
+            9463955,
+            9457315,
+            9456528,
+            9457236,
+            9463962,
+            9457919,
+            9457204,
+            9456634,
+            9464389
+        ],
+        "E": [
+            9557214
+        ]
+    },
+    "name": "A. Mr. Kitayuta, the Treasure Hunter",
+    "statement": "The Shuseki Islands are an archipelago of small islands in the Yutampo\r\nSea. The islands are evenly spaced along a line, numbered from to from\r\nthe west to the east. These islands are known to contain many treasures.\r\nThere are gems in the Shuseki Islands in total, and the -th gem is\r\nlocated on island .Mr. Kitayuta has just arrived at island . With his\r\ngreat jumping ability, he will repeatedly perform jumps between islands\r\nto the east according to the following process: First, he will jump from\r\nisland to island . After that, he will continue jumping according to the\r\nfollowing rule. Let be the length of the previous jump, that is, if his\r\nprevious jump was from island to island , let . He will perform a jump\r\nof length , or to the east. That is, he will jump to island , or (if\r\nthey exist). The length of a jump must be positive, that is, he cannot\r\nperform a jump of length when . If there is no valid destination, he\r\nwill stop jumping. Mr. Kitayuta will collect the gems on the islands\r\nvisited during the process. Find the maximum number of gems that he can\r\ncollect.\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <map>\n#include <memory.h>\n#include <algorithm>\n#include <queue>\n#include <vector>\n\nusing namespace std;\n\nint n,d;\n\nint best[30001][500]; // base +250\nint gem[30001];\n\nint main(){\n\tscanf(\"%d%d\",&n,&d);\n\tfor (int i = 0; i < n; i++) {\n\t\tint p;\n\t\tscanf(\"%d\",&p);\n\t\tgem[p]++;\n\t}\n\tint ans = 1;\n\tbest[d][250] = gem[d] + 1;\n\tfor (int i = d; i <= 30000; i++) {\n\t\tfor (int j = 0; j < 500; j++) {\n\t\t\tif (best[i][j] == 0) continue;\n\t\t\tint jump = j-250+d;\n\t\t\tint val = best[i][j];\n\t\t\tans = max(ans, val);\n\t\t\tfor (int df = max(1, jump-1); df <= jump+1; df++) {\n\t\t\t\tint next = i + df;\n\t\t\t\tif (next <= 30000) {\n\t\t\t\t\tbest[next][df-d+250] = max(best[next][df-d+250], val + gem[next]);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\tprintf(\"%d\\n\",ans - 1);\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp"
+    ],
+    "dificulty": "1900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Mr. Kitayuta, the Treasure Hunter.json",
+    "editorial_link": "https://codeforces.com/blog/entry/15889",
+    "editorial": "Let m be the number of the islands (that is, 30001). First, let us describe a solution with time and memory complexity of O(m2).\n\nWe will apply Dynamic Programming. let dp[i][j] be the number of the gems that Mr. Kitayuta can collect after he jumps to island i, when the length of his previous jump is j (let us assume that he have not collect the gems on island i). Then, you can calculate the values of the table dp by the following:\n\ndp[i][j]?=?0, if i???m\n(actually these islands do not exist, but we can suppose that they exist and when Mr. Kitayuta jumps to these islands, he stops jumping)\ndp[i][j]?=? (the number of the gems on island i) ?+?max(dp[i?+?j][j],?dp[i?+?j?+?1][j?+?1]), if i?<?m,?j?=?1\n(he cannot perform a jump of length 0)\ndp[i][j]?=? (the number of the gems on island i) ?+?max(dp[i?+?j?-?1][j?-?1],?dp[i?+?j][j],?dp[i?+?j?+?1][j?+?1]), if i?<?m,?j???2\nThis solution is unfeasible in terms of both time and memory. However, the following observation makes it an Accepted solution: there are only 491 values of j that we have to consider, which are d?-?245,?d?-?244,?d?-?243,?...,?d?+?244 and d?+?245.\n\nWhy? First, let us find the upper bound of j. Suppose Mr. Kitayuta always performs the \"l?+?1\" jump (l: the length of the previous jump). Then, he will reach the end of the islands before he performs a jump of length d?+?246, because\nd?+?(d?+?1)?+?(d?+?2)?+?...?+?(d?+?245)???1?+?2?+?...?+?245?=?245\u00b7(245?+?1)?/?2?=?30135?>?30000. Thus, he will never be able to perform a jump of length d?+?246 or longer.\n\nNext, let us consider the lower bound of j in a similar way. If d???246, then obviously he will not be able to perform a jump of length d?-?246 or shorter, because the length of a jump must be positive. Suppose Mr. Kitayuta always performs the \"l?-?1\" jump, where d???247. Then, again he will reach the end of the islands before he performs a jump of length d?-?246, because\nd?+?(d?-?1)?+?(d?-?2)?+?...?+?(d?-?245)???245?+?244?+?...?+?1?=?245\u00b7(245?+?1)?/?2?=?30135?>?30000. Thus, he will never be able to perform a jump of length d?-?246 or shorter.\n\nTherefore, we have obtained a working solution: similar to the O(m2) one, but we will only consider the value of j between d?-?245 and d?+?245. The time and memory complexity of this solution will be O(m1.5), since the value \"245\" is slightly larger than .\n\nThis solution can be implemented by, for example, using a \"normal\" two dimensional array with a offset like this: dp[i][j - offset]. The time limit is set tight in order to fail most of naive solutions with search using std::map or something, so using hash maps (unordered_map) will be risky although the complexity will be the same as the described solution."
+}

@@ -1,1 +1,98 @@
-{"link": "https://codeforces.com//contest/494/problem/A", "problemId": "19363", "problem_idx": "A", "shortId": "494A", "contest_number": "494", "problem_submissions": {"D": [9118626, 9110497, 9186603, 9121795, 9113766, 9135685, 9135672, 9135646, 9135644, 9118440, 9118021, 9114872], "C": [9115660, 9117032, 9115729, 9112157, 9113416, 9118088, 9112989, 9113678, 9114840, 9114457, 9115024, 9116699, 9114578, 9115874, 9153533], "E": [9112090, 9123061, 9123029, 9114944, 9811638], "B": [9104681, 9106022, 9107594, 9107713, 9107377, 9105960, 9107410, 9107902, 9108808, 9108302, 9109468, 9108127, 9106911, 9107132, 9108038, 9109018], "A": [9103881, 9104046, 9103935, 9104128, 9103929, 9104036, 9104015, 9104004, 9104614, 9104250, 9104342, 9104831, 9104167, 9104248, 9104541, 9104804]}, "name": "A. Treasure", "statement": "Malek has recently found a treasure map. While he was looking for a\r\ntreasure he found a locked door. There was a string written on the door\r\nconsisting of characters \u201d, \u201d and \u201d. Below there was a manual on how to\r\nopen the door. After spending a long time Malek managed to decode the\r\nmanual and found out that the goal is to replace each \u201d with one or more\r\n\u201d characters so that the final string becomes . Below there was also\r\nwritten that a string is called if for each () there are no more \u201d\r\ncharacters than \u201d characters among the first characters of and also the\r\ntotal number of \u201d characters is equal to the total number of \u201d\r\ncharacters. Help Malek open the door by telling him for each \u201d character\r\nhow many \u201d characters he must replace it with.\r\n", "solutions": ["#include <cstring>\n#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <memory.h>\n#include <cassert>\n\nusing namespace std;\n\nchar s[1234567];\n\nint main() {\n  scanf(\"%s\", s);\n  int n = strlen(s);\n  int total = 0;\n  int pos = -1;\n  for (int i = 0; i < n; i++) {\n    total += (s[i] == '(' ? 1 : -1);\n    if (s[i] == '#') {\n      pos = i;\n    }\n  }\n  if (total < 0) {\n    printf(\"%d\\n\", -1);\n    return 0;\n  }\n  int last = 1 + total;\n  total = 0;\n  for (int i = 0; i < n; i++) {\n    total += (i == pos ? -last : (s[i] == '(' ? 1 : -1));\n    if (total < 0) {\n      printf(\"%d\\n\", -1);\n      return 0;\n    }\n  }\n  for (int i = 0; i < n; i++) {\n    if (s[i] == '#') {\n      if (i == pos) {\n        printf(\"%d\\n\", last);\n      } else {\n        printf(\"%d\\n\", 1);\n      }\n    }\n  }\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["greedy"], "dificulty": "1500", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/494/problem/A",
+    "problemId": "19363",
+    "problem_idx": "A",
+    "shortId": "494A",
+    "contest_number": "494",
+    "problem_submissions": {
+        "D": [
+            9118626,
+            9110497,
+            9186603,
+            9121795,
+            9113766,
+            9135685,
+            9135672,
+            9135646,
+            9135644,
+            9118440,
+            9118021,
+            9114872
+        ],
+        "C": [
+            9115660,
+            9117032,
+            9115729,
+            9112157,
+            9113416,
+            9118088,
+            9112989,
+            9113678,
+            9114840,
+            9114457,
+            9115024,
+            9116699,
+            9114578,
+            9115874,
+            9153533
+        ],
+        "E": [
+            9112090,
+            9123061,
+            9123029,
+            9114944,
+            9811638
+        ],
+        "B": [
+            9104681,
+            9106022,
+            9107594,
+            9107713,
+            9107377,
+            9105960,
+            9107410,
+            9107902,
+            9108808,
+            9108302,
+            9109468,
+            9108127,
+            9106911,
+            9107132,
+            9108038,
+            9109018
+        ],
+        "A": [
+            9103881,
+            9104046,
+            9103935,
+            9104128,
+            9103929,
+            9104036,
+            9104015,
+            9104004,
+            9104614,
+            9104250,
+            9104342,
+            9104831,
+            9104167,
+            9104248,
+            9104541,
+            9104804
+        ]
+    },
+    "name": "A. Treasure",
+    "statement": "Malek has recently found a treasure map. While he was looking for a\r\ntreasure he found a locked door. There was a string written on the door\r\nconsisting of characters \u201d, \u201d and \u201d. Below there was a manual on how to\r\nopen the door. After spending a long time Malek managed to decode the\r\nmanual and found out that the goal is to replace each \u201d with one or more\r\n\u201d characters so that the final string becomes . Below there was also\r\nwritten that a string is called if for each () there are no more \u201d\r\ncharacters than \u201d characters among the first characters of and also the\r\ntotal number of \u201d characters is equal to the total number of \u201d\r\ncharacters. Help Malek open the door by telling him for each \u201d character\r\nhow many \u201d characters he must replace it with.\r\n",
+    "solutions": [
+        "#include <cstring>\n#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <memory.h>\n#include <cassert>\n\nusing namespace std;\n\nchar s[1234567];\n\nint main() {\n  scanf(\"%s\", s);\n  int n = strlen(s);\n  int total = 0;\n  int pos = -1;\n  for (int i = 0; i < n; i++) {\n    total += (s[i] == '(' ? 1 : -1);\n    if (s[i] == '#') {\n      pos = i;\n    }\n  }\n  if (total < 0) {\n    printf(\"%d\\n\", -1);\n    return 0;\n  }\n  int last = 1 + total;\n  total = 0;\n  for (int i = 0; i < n; i++) {\n    total += (i == pos ? -last : (s[i] == '(' ? 1 : -1));\n    if (total < 0) {\n      printf(\"%d\\n\", -1);\n      return 0;\n    }\n  }\n  for (int i = 0; i < n; i++) {\n    if (s[i] == '#') {\n      if (i == pos) {\n        printf(\"%d\\n\", last);\n      } else {\n        printf(\"%d\\n\", 1);\n      }\n    }\n  }\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "greedy"
+    ],
+    "dificulty": "1500",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Treasure.json",
+    "editorial_link": "https://codeforces.com/blog/entry/15148",
+    "editorial": "Consider a string consisting of \u00e2\u0080\u0099(\u00e2\u0080\u0099 and \u00e2\u0080\u0099)\u00e2\u0080\u0099 characters. Let\u00e2\u0080\u0099s build the\r\nfollowing sequence from this string: for each if and otherwise. (The\r\nstring is considered as 1-based index). It can be proven that a string\r\nis beautiful if the following conditions are satisfied: for each . Using\r\nthe above fact we can prove that if in a beautiful string we remove a\r\n\u00e2\u0080\u0099)\u00e2\u0080\u0099 character and put it further toward the end of the string the\r\nresulting string is beautiful as well. These facts leads us to the\r\nfollowing fact: if we can move a \u00e2\u0080\u0099)\u00e2\u0080\u0099 character further toward the end of\r\nstring it is better if we\u00e2\u0080\u0099d do it. This yields the following greedy\r\nsolution: We\u00e2\u0080\u0099ll first put exactly one \u00e2\u0080\u0099)\u00e2\u0080\u0099 character at each \u00e2\u0080\u009d character.\r\nThen we\u00e2\u0080\u0099ll build the sequence we described above. if the first condition\r\nisn\u00e2\u0080\u0099t satisfied then there is no way that leads to a beautiful string.\r\nSo the answer is -1. Otherwise we must put exactly more \u00e2\u0080\u0099)\u00e2\u0080\u0099 characters\r\nin the place of last \u00e2\u0080\u009d character. Then if this string is beautiful we\u00e2\u0080\u0099ll\r\nprint it otherwise the answer is -1.\r\n"
+}

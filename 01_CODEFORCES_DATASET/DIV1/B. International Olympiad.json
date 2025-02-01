@@ -1,1 +1,101 @@
-{"link": "https://codeforces.com//contest/663/problem/B", "problemId": "55353", "problem_idx": "B", "shortId": "663B", "contest_number": "663", "problem_submissions": {"E": [17350327, 17349864, 17353803, 17353745, 17350870, 17351032, 17350940, 17349799, 17351986, 17351243, 17350710, 17347131, 17352995, 17350415, 17349363, 17351067, 17353219, 17353206, 17350737], "C": [17347790, 17347307, 17349302, 17348183, 17352062, 17347576, 17351577, 17349777, 17347691, 17348798, 17348588, 17350481, 17349299, 17347750, 17349697, 17348180, 17348352], "B": [17346317, 17346919, 17351687, 17347488, 17350797, 17352612, 17346896, 17352716, 17346251, 17346169], "A": [17345568, 17345670, 17345320, 17345148, 17345271, 17344956, 17347728, 17345255, 17346364, 17352110, 17345277, 17344920, 17352735, 17344992, 17345337], "D": [17350825, 17611100, 17366417]}, "name": "B. International Olympiad", "statement": "International Abbreviation Olympiad takes place annually starting from\r\n1989. Each year the competition receives an abbreviation of form , where\r\nstands for some number of consequent last digits of the current year.\r\nOrganizers always pick an abbreviation with non-empty string that has\r\nnever been used before. Among all such valid abbreviations they choose\r\nthe shortest one and announce it to be the abbreviation of this year\u2019s\r\ncompetition.For example, the first three Olympiads (years 1989, 1990 and\r\n1991, respectively) received the abbreviations , and , while the\r\ncompetition in 2015 received an abbreviation , as has been already used\r\nin 1995.You are given a list of abbreviations. For each of them\r\ndetermine the year it stands for.\r\n", "solutions": ["#include<bits/stdc++.h>\n#include<unistd.h>\nusing namespace std;\n#define FZ(n) memset((n),0,sizeof(n))\n#define FMO(n) memset((n),-1,sizeof(n))\n#define F first\n#define S second\n#define PB push_back\n#define ALL(x) begin(x),end(x)\n#define SZ(x) ((int)(x).size())\n#define IOS ios_base::sync_with_stdio(0); cin.tie(0)\ntemplate<typename A, typename B>\nostream& operator <<(ostream &s, const pair<A,B> &p) {\n  return s<<\"(\"<<p.first<<\",\"<<p.second<<\")\";\n}\ntemplate<typename T>\nostream& operator <<(ostream &s, const vector<T> &c) {\n  s<<\"[ \";\n  for (auto it : c) s << it << \" \";\n  s<<\"]\";\n  return s;\n}\n// Let's Fight!\n\ntypedef long long ll;\n\nstring s;\nset<ll> st;\n\nll cy(string x)\n{\n  int d = x.size();\n  ll p = 1;\n  for(int i=0; i<d; i++)\n    p *= 10;\n\n  ll cur = stoi(x.c_str());\n  while(cur < 1989 || st.count(cur))\n    cur += p;\n\n  st.insert(cur);\n  return cur;\n}\n\n\nll calc()\n{\n  st.clear();\n  int N = s.size();\n  ll ans = 0;\n  for(int i=N-1; i>=0; i--)\n    ans = cy(s.substr(i));\n\n  return ans;\n}\n\nint main() {\n  IOS;\n\n  int T;\n  cin>>T;\n  while(T--)\n  {\n    cin>>s;\n    s = s.substr(4);\n\n    ll ans = calc();\n    cout<<ans<<endl;\n  }\n\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["brute force", "constructive algorithms", "greedy", "strings"], "dificulty": "2000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/663/problem/B",
+    "problemId": "55353",
+    "problem_idx": "B",
+    "shortId": "663B",
+    "contest_number": "663",
+    "problem_submissions": {
+        "E": [
+            17350327,
+            17349864,
+            17353803,
+            17353745,
+            17350870,
+            17351032,
+            17350940,
+            17349799,
+            17351986,
+            17351243,
+            17350710,
+            17347131,
+            17352995,
+            17350415,
+            17349363,
+            17351067,
+            17353219,
+            17353206,
+            17350737
+        ],
+        "C": [
+            17347790,
+            17347307,
+            17349302,
+            17348183,
+            17352062,
+            17347576,
+            17351577,
+            17349777,
+            17347691,
+            17348798,
+            17348588,
+            17350481,
+            17349299,
+            17347750,
+            17349697,
+            17348180,
+            17348352
+        ],
+        "B": [
+            17346317,
+            17346919,
+            17351687,
+            17347488,
+            17350797,
+            17352612,
+            17346896,
+            17352716,
+            17346251,
+            17346169
+        ],
+        "A": [
+            17345568,
+            17345670,
+            17345320,
+            17345148,
+            17345271,
+            17344956,
+            17347728,
+            17345255,
+            17346364,
+            17352110,
+            17345277,
+            17344920,
+            17352735,
+            17344992,
+            17345337
+        ],
+        "D": [
+            17350825,
+            17611100,
+            17366417
+        ]
+    },
+    "name": "B. International Olympiad",
+    "statement": "International Abbreviation Olympiad takes place annually starting from\r\n1989. Each year the competition receives an abbreviation of form , where\r\nstands for some number of consequent last digits of the current year.\r\nOrganizers always pick an abbreviation with non-empty string that has\r\nnever been used before. Among all such valid abbreviations they choose\r\nthe shortest one and announce it to be the abbreviation of this year\u2019s\r\ncompetition.For example, the first three Olympiads (years 1989, 1990 and\r\n1991, respectively) received the abbreviations , and , while the\r\ncompetition in 2015 received an abbreviation , as has been already used\r\nin 1995.You are given a list of abbreviations. For each of them\r\ndetermine the year it stands for.\r\n",
+    "solutions": [
+        "#include<bits/stdc++.h>\n#include<unistd.h>\nusing namespace std;\n#define FZ(n) memset((n),0,sizeof(n))\n#define FMO(n) memset((n),-1,sizeof(n))\n#define F first\n#define S second\n#define PB push_back\n#define ALL(x) begin(x),end(x)\n#define SZ(x) ((int)(x).size())\n#define IOS ios_base::sync_with_stdio(0); cin.tie(0)\ntemplate<typename A, typename B>\nostream& operator <<(ostream &s, const pair<A,B> &p) {\n  return s<<\"(\"<<p.first<<\",\"<<p.second<<\")\";\n}\ntemplate<typename T>\nostream& operator <<(ostream &s, const vector<T> &c) {\n  s<<\"[ \";\n  for (auto it : c) s << it << \" \";\n  s<<\"]\";\n  return s;\n}\n// Let's Fight!\n\ntypedef long long ll;\n\nstring s;\nset<ll> st;\n\nll cy(string x)\n{\n  int d = x.size();\n  ll p = 1;\n  for(int i=0; i<d; i++)\n    p *= 10;\n\n  ll cur = stoi(x.c_str());\n  while(cur < 1989 || st.count(cur))\n    cur += p;\n\n  st.insert(cur);\n  return cur;\n}\n\n\nll calc()\n{\n  st.clear();\n  int N = s.size();\n  ll ans = 0;\n  for(int i=N-1; i>=0; i--)\n    ans = cy(s.substr(i));\n\n  return ans;\n}\n\nint main() {\n  IOS;\n\n  int T;\n  cin>>T;\n  while(T--)\n  {\n    cin>>s;\n    s = s.substr(4);\n\n    ll ans = calc();\n    cout<<ans<<endl;\n  }\n\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "constructive algorithms",
+        "greedy",
+        "strings"
+    ],
+    "dificulty": "2000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. International Olympiad.json",
+    "editorial_link": "https://codeforces.com//blog/entry/44408",
+    "editorial": "Consider the abbreviations that are given to the first Olympiads. The first 10 Olympiads (from year 1989 to year 1998) receive one-digit abbreviations (IAO'9,?IAO'0,?...,?IAO'8). The next 100 Olympiads (1999?-?2098) obtain two-digit abbreviations, because all one-digit abbreviations are already taken, but the last two digits of 100 consecutive integers are pairwise different. Similarly, the next 1000 Olympiads get three-digit abbreviations and so on.\n\nNow examine the inversed problem (extract the year from an abbreviation). Let the abbreviation have k digits, then we know that all Olympiads with abbreviations of lengths (k?-?1),?(k?-?2),?...,?1 have passed before this one. The number of such Olympiads is 10k?-?1?+?10k?-?2?+?...?+?101?=?F and the current Olympiad was one of the 10k of the following. Therefore this Olympiad was held in years between (1989?+?F) and (1989?+?F?+?10k?-?1). As this segment consists of exactly 10k consecutive natural numbers, it contains a single number with a k-digit suffix that matches the current abbreviation. It is also the corresponding year."
+}

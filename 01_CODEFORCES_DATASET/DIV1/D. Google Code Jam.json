@@ -1,1 +1,105 @@
-{"link": "https://codeforces.com//contest/277/problem/D", "problemId": "2670", "problem_idx": "D", "shortId": "277D", "contest_number": "277", "problem_submissions": {"E": [16290898, 3212642, 3214277, 3216560, 3217192, 3212882, 3213203, 3212293, 3216557, 3218831, 3213358, 3688854, 3214438, 3216817, 3212334, 3216978, 3215195, 3212023, 3214481], "C": [3217751, 3214405, 3212237, 3213774, 3214065, 3216032, 3215933, 3219588, 3213776, 3213602, 3234441, 3220825, 3214706, 3214937, 3218190], "D": [3215251, 3217272, 3218795, 3236907, 3258757], "A": [3211100, 3209085, 3208310, 3208691, 3208408, 3209073, 3209691, 3209304, 3209119, 3208608, 3209266, 3209939, 3210030, 3208575, 3209624, 3209909, 3208646, 3209846], "B": [3210150, 3226761, 3211703, 3216606, 3211138, 3211051, 3213290, 3212043, 3215513, 3212912, 3218799, 3212960, 3216246]}, "name": "D. Google Code Jam", "statement": "Many of you must be familiar with the Google Code Jam round rules. Let\r\nus remind you of some key moments that are crucial to solving this\r\nproblem. During the round, the participants are suggested to solve\r\nseveral problems, each divided into two subproblems: an easy one with\r\nsmall limits (Small input), and a hard one with large limits (Large\r\ninput). You can submit a solution for Large input only after you\u2019ve\r\nsolved the Small input for this problem. There are no other restrictions\r\non the order of solving inputs. In particular, the participant can first\r\nsolve the Small input, then switch to another problem, and then return\r\nto the Large input. Solving each input gives the participant some number\r\nof points (usually different for each problem). This takes into account\r\nonly complete solutions that work correctly on all tests of the input.\r\nThe participant gets the test result of a Small input right after he\r\nsubmits it, but the test result of a Large input are out only after the\r\nround\u2019s over. In the final results table the participants are sorted by\r\nnon-increasing of received points. If the points are equal, the\r\nparticipants are sorted by ascending of time penalty. By the Google Code\r\nJam rules the time penalty is the .Vasya decided to check out a new\r\ntactics on another round. As soon as the round begins, the boy quickly\r\nread all the problems and accurately evaluated the time it takes to\r\nsolve them. Specifically, for each one of the problems Vasya knows five\r\nvalues: Solving the Small input of the -th problem gives to the\r\nparticipant points, and solving the Large input gives more points. That\r\nis, the maximum number of points you can get for the -th problem equals\r\n. Writing the solution for the Small input of the -th problem takes\r\nexactly minutes for Vasya. Improving this code and turning it into the\r\nsolution of the Large input takes another minutes. Vasya\u2019s had much\r\npractice, so he solves all Small inputs from the first attempt. But it\u2019s\r\nnot so easy with the Large input: there is the probability that the\r\nsolution to the Large input will turn out to be wrong at the end of the\r\nround. Please keep in mind that these solutions do not affect the\r\nparticipants\u2019 points and the time penalty.A round lasts for minutes. The\r\ntime for reading problems and submitting solutions can be considered to\r\nequal zero. Vasya is allowed to submit a solution exactly at the moment\r\nwhen the round ends.Vasya wants to choose a set of inputs and the order\r\nof their solution so as to make the expectation of the total received\r\npoints maximum possible. If there are multiple ways to do this, he needs\r\nto minimize the expectation of the time penalty. Help Vasya to cope with\r\nthis problem.\r\n", "solutions": ["#include <iostream>\n#include <sstream>\n#include <fstream>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <stack>\n#include <set>\n#include <map>\n#include <algorithm>\n#include <functional>\n#include <utility>\n#include <bitset>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstdio>\n\nusing namespace std;\n\n#define REP(i,n) for((i)=0;(i)<(int)(n);(i)++)\n#define snuke(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n\ntypedef long long ll;\n\nstruct problem {int score1,score2; int time1,time2; double fail; ll expscore1,expscore2; double ratio;};\n\nint N,T;\nproblem P[1010];\n\nll dpscore[1010][1600];\ndouble dppenal[1010][1600];\n\nvoid update(int n, int t, ll score, double penal){\n    if(n <= N && t <= T && (score > dpscore[n][t] || (score == dpscore[n][t] && penal < dppenal[n][t]))){\n        dpscore[n][t] = score;\n        dppenal[n][t] = penal;\n    }\n}\n\nint main(void){\n    int i,j;\n    \n    cin >> N >> T;\n    REP(i,N){\n        cin >> P[i].score1 >> P[i].score2 >> P[i].time1 >> P[i].time2 >> P[i].fail;\n        P[i].expscore1 = (ll)P[i].score1 * (ll)1000000;\n        int tmp = (int)(P[i].fail * 1000000 + 0.5);\n        P[i].expscore2 = (ll)P[i].score2 * (ll)(1000000 - tmp);\n        P[i].ratio = ((tmp == 1000000) ? (1.0E+18) : (P[i].time2 * P[i].fail / (1.0 - P[i].fail)));\n    }\n    \n    REP(i,N+5) REP(j,N-1) if(P[j].ratio > P[j+1].ratio) swap(P[j], P[j+1]);\n    \n    REP(i,N+1) REP(j,T+1) dpscore[i][j] = -1;\n    dpscore[0][0] = 0;\n    \n    REP(i,N) REP(j,T+1) if(dpscore[i][j] != -1){\n        ll score = dpscore[i][j];\n        double penal = dppenal[i][j];\n        \n        // solve 0\n        update(i+1, j, score, penal);\n        \n        // solve 1\n        update(i+1, j + P[i].time1, score + P[i].expscore1, penal + P[i].time1);\n        \n        // solve 2\n        double fail_penalty = penal + P[i].time1;\n        double ac_penalty = j + P[i].time1 + P[i].time2;\n        update(i+1, j + P[i].time1 + P[i].time2, score + P[i].expscore1 + P[i].expscore2, fail_penalty * P[i].fail + ac_penalty * (1.0 - P[i].fail));\n    }\n    \n    ll score = 0;\n    double penal = 0.0;\n    REP(i,T+1){\n        ll score2 = dpscore[N][i];\n        double penal2 = dppenal[N][i];\n        if(score2 > score || (score2 == score && penal2 < penal)){\n            score = score2;\n            penal = penal2;\n        }\n    }\n    \n    printf(\"%.12f %.12f\\n\", score / 1000000.0, penal);\n    \n    return 0;\n}\n"], "input": "", "output": "", "tags": ["dp", "probabilities"], "dificulty": "2800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/277/problem/D",
+    "problemId": "2670",
+    "problem_idx": "D",
+    "shortId": "277D",
+    "contest_number": "277",
+    "problem_submissions": {
+        "E": [
+            16290898,
+            3212642,
+            3214277,
+            3216560,
+            3217192,
+            3212882,
+            3213203,
+            3212293,
+            3216557,
+            3218831,
+            3213358,
+            3688854,
+            3214438,
+            3216817,
+            3212334,
+            3216978,
+            3215195,
+            3212023,
+            3214481
+        ],
+        "C": [
+            3217751,
+            3214405,
+            3212237,
+            3213774,
+            3214065,
+            3216032,
+            3215933,
+            3219588,
+            3213776,
+            3213602,
+            3234441,
+            3220825,
+            3214706,
+            3214937,
+            3218190
+        ],
+        "D": [
+            3215251,
+            3217272,
+            3218795,
+            3236907,
+            3258757
+        ],
+        "A": [
+            3211100,
+            3209085,
+            3208310,
+            3208691,
+            3208408,
+            3209073,
+            3209691,
+            3209304,
+            3209119,
+            3208608,
+            3209266,
+            3209939,
+            3210030,
+            3208575,
+            3209624,
+            3209909,
+            3208646,
+            3209846
+        ],
+        "B": [
+            3210150,
+            3226761,
+            3211703,
+            3216606,
+            3211138,
+            3211051,
+            3213290,
+            3212043,
+            3215513,
+            3212912,
+            3218799,
+            3212960,
+            3216246
+        ]
+    },
+    "name": "D. Google Code Jam",
+    "statement": "Many of you must be familiar with the Google Code Jam round rules. Let\r\nus remind you of some key moments that are crucial to solving this\r\nproblem. During the round, the participants are suggested to solve\r\nseveral problems, each divided into two subproblems: an easy one with\r\nsmall limits (Small input), and a hard one with large limits (Large\r\ninput). You can submit a solution for Large input only after you\u2019ve\r\nsolved the Small input for this problem. There are no other restrictions\r\non the order of solving inputs. In particular, the participant can first\r\nsolve the Small input, then switch to another problem, and then return\r\nto the Large input. Solving each input gives the participant some number\r\nof points (usually different for each problem). This takes into account\r\nonly complete solutions that work correctly on all tests of the input.\r\nThe participant gets the test result of a Small input right after he\r\nsubmits it, but the test result of a Large input are out only after the\r\nround\u2019s over. In the final results table the participants are sorted by\r\nnon-increasing of received points. If the points are equal, the\r\nparticipants are sorted by ascending of time penalty. By the Google Code\r\nJam rules the time penalty is the .Vasya decided to check out a new\r\ntactics on another round. As soon as the round begins, the boy quickly\r\nread all the problems and accurately evaluated the time it takes to\r\nsolve them. Specifically, for each one of the problems Vasya knows five\r\nvalues: Solving the Small input of the -th problem gives to the\r\nparticipant points, and solving the Large input gives more points. That\r\nis, the maximum number of points you can get for the -th problem equals\r\n. Writing the solution for the Small input of the -th problem takes\r\nexactly minutes for Vasya. Improving this code and turning it into the\r\nsolution of the Large input takes another minutes. Vasya\u2019s had much\r\npractice, so he solves all Small inputs from the first attempt. But it\u2019s\r\nnot so easy with the Large input: there is the probability that the\r\nsolution to the Large input will turn out to be wrong at the end of the\r\nround. Please keep in mind that these solutions do not affect the\r\nparticipants\u2019 points and the time penalty.A round lasts for minutes. The\r\ntime for reading problems and submitting solutions can be considered to\r\nequal zero. Vasya is allowed to submit a solution exactly at the moment\r\nwhen the round ends.Vasya wants to choose a set of inputs and the order\r\nof their solution so as to make the expectation of the total received\r\npoints maximum possible. If there are multiple ways to do this, he needs\r\nto minimize the expectation of the time penalty. Help Vasya to cope with\r\nthis problem.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <sstream>\n#include <fstream>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <stack>\n#include <set>\n#include <map>\n#include <algorithm>\n#include <functional>\n#include <utility>\n#include <bitset>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstdio>\n\nusing namespace std;\n\n#define REP(i,n) for((i)=0;(i)<(int)(n);(i)++)\n#define snuke(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n\ntypedef long long ll;\n\nstruct problem {int score1,score2; int time1,time2; double fail; ll expscore1,expscore2; double ratio;};\n\nint N,T;\nproblem P[1010];\n\nll dpscore[1010][1600];\ndouble dppenal[1010][1600];\n\nvoid update(int n, int t, ll score, double penal){\n    if(n <= N && t <= T && (score > dpscore[n][t] || (score == dpscore[n][t] && penal < dppenal[n][t]))){\n        dpscore[n][t] = score;\n        dppenal[n][t] = penal;\n    }\n}\n\nint main(void){\n    int i,j;\n    \n    cin >> N >> T;\n    REP(i,N){\n        cin >> P[i].score1 >> P[i].score2 >> P[i].time1 >> P[i].time2 >> P[i].fail;\n        P[i].expscore1 = (ll)P[i].score1 * (ll)1000000;\n        int tmp = (int)(P[i].fail * 1000000 + 0.5);\n        P[i].expscore2 = (ll)P[i].score2 * (ll)(1000000 - tmp);\n        P[i].ratio = ((tmp == 1000000) ? (1.0E+18) : (P[i].time2 * P[i].fail / (1.0 - P[i].fail)));\n    }\n    \n    REP(i,N+5) REP(j,N-1) if(P[j].ratio > P[j+1].ratio) swap(P[j], P[j+1]);\n    \n    REP(i,N+1) REP(j,T+1) dpscore[i][j] = -1;\n    dpscore[0][0] = 0;\n    \n    REP(i,N) REP(j,T+1) if(dpscore[i][j] != -1){\n        ll score = dpscore[i][j];\n        double penal = dppenal[i][j];\n        \n        // solve 0\n        update(i+1, j, score, penal);\n        \n        // solve 1\n        update(i+1, j + P[i].time1, score + P[i].expscore1, penal + P[i].time1);\n        \n        // solve 2\n        double fail_penalty = penal + P[i].time1;\n        double ac_penalty = j + P[i].time1 + P[i].time2;\n        update(i+1, j + P[i].time1 + P[i].time2, score + P[i].expscore1 + P[i].expscore2, fail_penalty * P[i].fail + ac_penalty * (1.0 - P[i].fail));\n    }\n    \n    ll score = 0;\n    double penal = 0.0;\n    REP(i,T+1){\n        ll score2 = dpscore[N][i];\n        double penal2 = dppenal[N][i];\n        if(score2 > score || (score2 == score && penal2 < penal)){\n            score = score2;\n            penal = penal2;\n        }\n    }\n    \n    printf(\"%.12f %.12f\\n\", score / 1000000.0, penal);\n    \n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp",
+        "probabilities"
+    ],
+    "dificulty": "2800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Google Code Jam.json",
+    "editorial_link": "https://codeforces.com//blog/entry/6815",
+    "editorial": "Suppose we have fixed set of inputs that we have to solve. Let\u00e2\u0080\u0099s learn\r\nhow to determine the optimal order. Obviously, Small inputs (and Large\r\ninputs with ) won\u00e2\u0080\u0099t fail in any case. It means that our penalty time is\r\nno less than submission time of last such \u00e2\u0080\u009csafe\u00e2\u0080\u009d inputs. So we will\r\nsolve such inputs before all the others. Inputs with are just a waste of\r\ntime, we won\u00e2\u0080\u0099t solve such inputs. Now we have only inputs with . Let and\r\nbe two problems that we are going to solve consecutively at some moment.\r\nLet\u00e2\u0080\u0099s check, if it is optimal to solve them in order , , or in reversed\r\norder. We can discard all the other inputs, because they don\u00e2\u0080\u0099t affect on\r\nthe relative order of these two. Now we\u00e2\u0080\u0099ve got a comparator for sort,\r\nwhich will give us the optimal order. Note, that inputs with will be\r\nsorted by the comparator correctly as well, so it\u00e2\u0080\u0099s not a corner case.\r\nLet\u00e2\u0080\u0099s return to the initial problem. First of all, sort problems with\r\nthe optimal comparator (it\u00e2\u0080\u0099s clear that any other order won\u00e2\u0080\u0099t be optimal\r\nby time, and the score doesn\u00e2\u0080\u0099t depend on the order). Calculate the DP: =\r\npair of maximal expected total score and minimal expected penalty time\r\nwith this score, if we\u00e2\u0080\u0099ve already decided what to do with the first\r\nproblems, and we\u00e2\u0080\u0099ve spent real minutes from the contest\u00e2\u0080\u0099s start. There\r\nare 3 options for the -the problem: skip: update with the same expected\r\nvalues solve the Small input: update , the expected total score\r\nincreases by , and the expected penalty time increases by (we assume\r\nthat this input is solved in the very beggining of the contest) solve\r\nboth inputs: update , the expected total score increases by , and the\r\nexpected penalty time becomes , where is the expected penalty time from\r\nDP The resulting answer is the best of . The expected total score could\r\nbe a number around with 6 digits after decimal point. So it can\u00e2\u0080\u0099t be\r\nprecisely stored in double. And any (even small) error in calculating\r\nscore may lead to completely wrong expected time (pretest 7). For\r\nexample, you can multiply all the probabilities by and store the\r\nexpected score as integer number to avoid this error.\r\n"
+}

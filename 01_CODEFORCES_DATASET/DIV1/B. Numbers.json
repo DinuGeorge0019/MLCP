@@ -1,1 +1,96 @@
-{"link": "https://codeforces.com//contest/213/problem/B", "problemId": "1588", "problem_idx": "B", "shortId": "213B", "contest_number": "213", "problem_submissions": {"E": [1958173, 1969539, 1959873, 1958351, 1966588], "C": [1956984, 1956310, 1956134, 1954719, 1956966, 1955946, 1956887, 1958032, 1956545, 1956052, 1957958, 1958035, 1956906, 1958230, 1958332], "A": [1955875, 1954301, 1955345, 1958002, 1955539, 1958852, 1959099, 1957250, 1954723, 1954879, 1954628, 1955388, 1957376, 1958738], "B": [1955158, 1954754, 1954497, 1957206, 1954491, 1954655, 1955055, 1956017, 1960091, 1954587, 1956726, 1956267, 1958376, 1954707, 1954701], "D": [1958270, 1958148, 1956444, 1958920, 1958358, 1958527, 1958577, 1959892, 1960192, 1959820, 1960125, 1960223]}, "name": "B. Numbers", "statement": "Furik loves writing all sorts of problems, especially such that he can\u2019t\r\nsolve himself. You\u2019ve got one of his problems, the one Furik gave to\r\nRubik. And Rubik asks you to solve it.There is integer and array ,\r\nconsisting of ten integers, indexed by numbers from 0 to 9. Your task is\r\nto count the number of positive integers with the following properties:\r\nthe number\u2019s length does not exceed ; the number doesn\u2019t have leading\r\nzeroes; digit occurs in the number at least times.\r\n", "solutions": ["#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <queue>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <complex>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <cstring>\n#include <ctime>\n#include <cassert>\nusing namespace std;\n\nconst int MOD = 1000000007;\n\nconst int maxn = 128;\n\nlong long choose[maxn][maxn];\n\nint n;\nint a[10];\n\nlong long memo[11][maxn];\n\nbool atLeast1;\n\nlong long go(int pos, int len)\n{\n    if (len > n) {\n        return 0;\n    }\n    long long &ret = memo[pos][len];\n    if (~ret) {\n        return ret;\n    }\n    ret = 0;\n    if (pos == 10) {\n        return ret = atLeast1 && len == 0 ? 0 : 1;\n    }\n    for (int i = a[pos]; len + i <= n; i++) {\n        ret += go(pos + 1, len + i) * choose[len + i][i] % MOD;\n        ret %= MOD;\n    }\n    return ret;\n}\n\nint main()\n{\n    for (int i = 0; i < maxn; i++) {\n        choose[i][0] = choose[i][i] = 1;\n        for (int j = 1; j < i; j++) {\n            choose[i][j] = (choose[i-1][j-1] + choose[i-1][j]) % MOD;\n        }\n    }\n    scanf(\"%d\", &n);\n    for (int i = 0; i < 10; i++) {\n        scanf(\"%d\", a + i);\n    }\n    memset(memo, -1, sizeof(memo));\n    atLeast1 = true;\n    long long res = go(0, 0);\n    n --;\n    if (a[0] > 0) {\n        a[0] --;\n    }\n    memset(memo, -1, sizeof(memo));\n    atLeast1 = false;\n    res -= go(0, 0);\n    res %= MOD;\n    res += MOD;\n    res %= MOD;\n    cout << res << endl;\n}\n"], "input": "", "output": "", "tags": ["combinatorics", "dp"], "dificulty": "1900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/213/problem/B",
+    "problemId": "1588",
+    "problem_idx": "B",
+    "shortId": "213B",
+    "contest_number": "213",
+    "problem_submissions": {
+        "E": [
+            1958173,
+            1969539,
+            1959873,
+            1958351,
+            1966588
+        ],
+        "C": [
+            1956984,
+            1956310,
+            1956134,
+            1954719,
+            1956966,
+            1955946,
+            1956887,
+            1958032,
+            1956545,
+            1956052,
+            1957958,
+            1958035,
+            1956906,
+            1958230,
+            1958332
+        ],
+        "A": [
+            1955875,
+            1954301,
+            1955345,
+            1958002,
+            1955539,
+            1958852,
+            1959099,
+            1957250,
+            1954723,
+            1954879,
+            1954628,
+            1955388,
+            1957376,
+            1958738
+        ],
+        "B": [
+            1955158,
+            1954754,
+            1954497,
+            1957206,
+            1954491,
+            1954655,
+            1955055,
+            1956017,
+            1960091,
+            1954587,
+            1956726,
+            1956267,
+            1958376,
+            1954707,
+            1954701
+        ],
+        "D": [
+            1958270,
+            1958148,
+            1956444,
+            1958920,
+            1958358,
+            1958527,
+            1958577,
+            1959892,
+            1960192,
+            1959820,
+            1960125,
+            1960223
+        ]
+    },
+    "name": "B. Numbers",
+    "statement": "Furik loves writing all sorts of problems, especially such that he can\u2019t\r\nsolve himself. You\u2019ve got one of his problems, the one Furik gave to\r\nRubik. And Rubik asks you to solve it.There is integer and array ,\r\nconsisting of ten integers, indexed by numbers from 0 to 9. Your task is\r\nto count the number of positive integers with the following properties:\r\nthe number\u2019s length does not exceed ; the number doesn\u2019t have leading\r\nzeroes; digit occurs in the number at least times.\r\n",
+    "solutions": [
+        "#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <queue>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <complex>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <cstring>\n#include <ctime>\n#include <cassert>\nusing namespace std;\n\nconst int MOD = 1000000007;\n\nconst int maxn = 128;\n\nlong long choose[maxn][maxn];\n\nint n;\nint a[10];\n\nlong long memo[11][maxn];\n\nbool atLeast1;\n\nlong long go(int pos, int len)\n{\n    if (len > n) {\n        return 0;\n    }\n    long long &ret = memo[pos][len];\n    if (~ret) {\n        return ret;\n    }\n    ret = 0;\n    if (pos == 10) {\n        return ret = atLeast1 && len == 0 ? 0 : 1;\n    }\n    for (int i = a[pos]; len + i <= n; i++) {\n        ret += go(pos + 1, len + i) * choose[len + i][i] % MOD;\n        ret %= MOD;\n    }\n    return ret;\n}\n\nint main()\n{\n    for (int i = 0; i < maxn; i++) {\n        choose[i][0] = choose[i][i] = 1;\n        for (int j = 1; j < i; j++) {\n            choose[i][j] = (choose[i-1][j-1] + choose[i-1][j]) % MOD;\n        }\n    }\n    scanf(\"%d\", &n);\n    for (int i = 0; i < 10; i++) {\n        scanf(\"%d\", a + i);\n    }\n    memset(memo, -1, sizeof(memo));\n    atLeast1 = true;\n    long long res = go(0, 0);\n    n --;\n    if (a[0] > 0) {\n        a[0] --;\n    }\n    memset(memo, -1, sizeof(memo));\n    atLeast1 = false;\n    res -= go(0, 0);\n    res %= MOD;\n    res += MOD;\n    res %= MOD;\n    cout << res << endl;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "combinatorics",
+        "dp"
+    ],
+    "dificulty": "1900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Numbers.json",
+    "editorial_link": "https://codeforces.com//blog/entry/4982",
+    "editorial": "Solution dynamic programming.Look over for length of the number that we\r\nwill build. Further, we will use DP f(len,i) how many numbers with\r\nlength len we can make with digits i..9.Recount:- f(len,0) =\r\nsum(f(len-i,1)*C(len-1,i), i=a[0]..len);- f(len,j) =\r\nsum(f(len-i,j+1)*C(len,i), i=a[j]..len), 0<j<9;- f(len,9) = 1,\r\nlen>=a[9], 0 len<a[9].C(n,k) binomial coefficient.\r\n"
+}

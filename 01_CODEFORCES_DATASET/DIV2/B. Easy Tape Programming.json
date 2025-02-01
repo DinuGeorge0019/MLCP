@@ -1,1 +1,101 @@
-{"link": "https://codeforces.com//contest/239/problem/B", "problemId": "2117", "problem_idx": "B", "shortId": "239B", "contest_number": "239", "problem_submissions": {"E": [2503391, 2503636, 2508718, 2504091, 2504222, 2503009, 2503604, 2504097, 2504475, 2508764, 2503840], "B": [2500622, 2501438, 2500637, 2501733, 2500564, 2500710, 2504655, 2501496, 2501817, 2501834, 2508769], "C": [2500280, 2499958, 2501166, 2500529, 2502431, 2501910, 2500357, 2500775, 2504721, 2502212, 2502257, 2500194, 2502029, 2500713, 2500815, 2500443, 2501561, 2504348], "A": [2498489, 2501638, 2498087, 2498849, 2498385, 2498220, 2500674, 2498079, 2498264, 2499139, 2498265, 2498039, 2498269, 2498638, 2498174, 2499123, 2498500, 2499003], "D": [2504916, 2503214, 2503771, 2503245, 2503673, 2503846, 2504310, 2504271]}, "name": "B. Easy Tape Programming", "statement": "There is a programming language in which every program is a non-empty\r\nsequence of \"\" and \"\" signs and digits. Let\u2019s explain how the\r\ninterpreter of this programming language works. A program is interpreted\r\nusing movement of instruction pointer (IP) which consists of two parts.\r\nCurrent character pointer (CP); Direction pointer (DP) which can point\r\nleft or right; Initially CP points to the leftmost character of the\r\nsequence and DP points to the right.We repeat the following steps until\r\nthe first moment that CP points to somewhere outside the sequence. If CP\r\nis pointing to a digit the interpreter prints that digit then CP moves\r\none step according to the direction of DP. After that the value of the\r\nprinted digit in the sequence decreases by one. If the printed digit was\r\nthen it cannot be decreased therefore it\u2019s erased from the sequence and\r\nthe length of the sequence decreases by one. If CP is pointing to \"\" or\r\n\"\" then the direction of DP changes to \"left\" or \"right\"\r\ncorrespondingly. Then CP moves one step according to DP. If the new\r\ncharacter that CP is pointing to is \"\" or \"\" then the previous character\r\nwill be erased from the sequence. If at any moment the CP goes outside\r\nof the sequence the execution is terminated.It\u2019s obvious the every\r\nprogram in this language terminates after some steps.We have a sequence\r\nof \"\", \"\" and digits. You should answer queries. Each query gives you\r\nand and asks how many of each digit will be printed if we run the\r\nsequence as an independent program in this language.\r\n", "solutions": ["#include <iostream>\n#include <string>\n\nusing namespace std;\n\nint main()\n{\n\tstring s;\n\tint Len, Qry;\n\tcin >> Len >> Qry >> s;\n\twhile(Qry --)\n\t{\n\t\tint pL, pR;\n\t\tcin >> pL >> pR;\n\t\tstring t;\n\t\tt = s.substr(pL - 1, pR - pL + 1);\n\t\tint cp = 0, dp = 1;\n\t\tint Count[10] = {0};\n\t\twhile(cp >= 0 && cp < t.length())\n\t\t{\n\t\t\tif(t[cp] >= '0' && t[cp] <= '9')\n\t\t\t{\n\t\t\t\tCount[t[cp] - '0'] ++ ;\n\t\t\t\tif(t[cp] == '0')\n\t\t\t\t{\n\t\t\t\t\tt.erase(cp, 1);\n\t\t\t\t\tif(!dp)\n\t\t\t\t\t -- cp;\n\t\t\t\t}else\n\t\t\t\t{\n\t\t\t\t\tt[cp] --;\n\t\t\t\t\tcp += dp ? 1 : -1;\n\t\t\t\t}\n\t\t\t}else\n\t\t\t{\n\t\t\t\tif(t[cp] == '>')\n\t\t\t\t{\n\t\t\t\t\tdp = 1;\n\t\t\t\t\t++ cp;\n\t\t\t\t\tif(cp < t.length() && (t[cp] == '>' || t[cp] == '<'))\n\t\t\t\t\t\tt.erase(-- cp, 1);\n\t\t\t\t}else\n\t\t\t\t{\n\t\t\t\t\tdp = 0;\n\t\t\t\t\t-- cp;\n\t\t\t\t\tif(cp >= 0 && (t[cp ] == '>' || t[cp] == '<'))\n\t\t\t\t\t\tt.erase(cp + 1, 1);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tfor(int i(0); i < 10; ++ i)\n\t\t\tcout << Count[i] << \" \";\n\t\tcout << endl;\n\t}\n\treturn 0;\n}"], "input": "", "output": "", "tags": ["brute force", "implementation"], "dificulty": "1500", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/239/problem/B",
+    "problemId": "2117",
+    "problem_idx": "B",
+    "shortId": "239B",
+    "contest_number": "239",
+    "problem_submissions": {
+        "E": [
+            2503391,
+            2503636,
+            2508718,
+            2504091,
+            2504222,
+            2503009,
+            2503604,
+            2504097,
+            2504475,
+            2508764,
+            2503840
+        ],
+        "B": [
+            2500622,
+            2501438,
+            2500637,
+            2501733,
+            2500564,
+            2500710,
+            2504655,
+            2501496,
+            2501817,
+            2501834,
+            2508769
+        ],
+        "C": [
+            2500280,
+            2499958,
+            2501166,
+            2500529,
+            2502431,
+            2501910,
+            2500357,
+            2500775,
+            2504721,
+            2502212,
+            2502257,
+            2500194,
+            2502029,
+            2500713,
+            2500815,
+            2500443,
+            2501561,
+            2504348
+        ],
+        "A": [
+            2498489,
+            2501638,
+            2498087,
+            2498849,
+            2498385,
+            2498220,
+            2500674,
+            2498079,
+            2498264,
+            2499139,
+            2498265,
+            2498039,
+            2498269,
+            2498638,
+            2498174,
+            2499123,
+            2498500,
+            2499003
+        ],
+        "D": [
+            2504916,
+            2503214,
+            2503771,
+            2503245,
+            2503673,
+            2503846,
+            2504310,
+            2504271
+        ]
+    },
+    "name": "B. Easy Tape Programming",
+    "statement": "There is a programming language in which every program is a non-empty\r\nsequence of \"\" and \"\" signs and digits. Let\u2019s explain how the\r\ninterpreter of this programming language works. A program is interpreted\r\nusing movement of instruction pointer (IP) which consists of two parts.\r\nCurrent character pointer (CP); Direction pointer (DP) which can point\r\nleft or right; Initially CP points to the leftmost character of the\r\nsequence and DP points to the right.We repeat the following steps until\r\nthe first moment that CP points to somewhere outside the sequence. If CP\r\nis pointing to a digit the interpreter prints that digit then CP moves\r\none step according to the direction of DP. After that the value of the\r\nprinted digit in the sequence decreases by one. If the printed digit was\r\nthen it cannot be decreased therefore it\u2019s erased from the sequence and\r\nthe length of the sequence decreases by one. If CP is pointing to \"\" or\r\n\"\" then the direction of DP changes to \"left\" or \"right\"\r\ncorrespondingly. Then CP moves one step according to DP. If the new\r\ncharacter that CP is pointing to is \"\" or \"\" then the previous character\r\nwill be erased from the sequence. If at any moment the CP goes outside\r\nof the sequence the execution is terminated.It\u2019s obvious the every\r\nprogram in this language terminates after some steps.We have a sequence\r\nof \"\", \"\" and digits. You should answer queries. Each query gives you\r\nand and asks how many of each digit will be printed if we run the\r\nsequence as an independent program in this language.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <string>\n\nusing namespace std;\n\nint main()\n{\n\tstring s;\n\tint Len, Qry;\n\tcin >> Len >> Qry >> s;\n\twhile(Qry --)\n\t{\n\t\tint pL, pR;\n\t\tcin >> pL >> pR;\n\t\tstring t;\n\t\tt = s.substr(pL - 1, pR - pL + 1);\n\t\tint cp = 0, dp = 1;\n\t\tint Count[10] = {0};\n\t\twhile(cp >= 0 && cp < t.length())\n\t\t{\n\t\t\tif(t[cp] >= '0' && t[cp] <= '9')\n\t\t\t{\n\t\t\t\tCount[t[cp] - '0'] ++ ;\n\t\t\t\tif(t[cp] == '0')\n\t\t\t\t{\n\t\t\t\t\tt.erase(cp, 1);\n\t\t\t\t\tif(!dp)\n\t\t\t\t\t -- cp;\n\t\t\t\t}else\n\t\t\t\t{\n\t\t\t\t\tt[cp] --;\n\t\t\t\t\tcp += dp ? 1 : -1;\n\t\t\t\t}\n\t\t\t}else\n\t\t\t{\n\t\t\t\tif(t[cp] == '>')\n\t\t\t\t{\n\t\t\t\t\tdp = 1;\n\t\t\t\t\t++ cp;\n\t\t\t\t\tif(cp < t.length() && (t[cp] == '>' || t[cp] == '<'))\n\t\t\t\t\t\tt.erase(-- cp, 1);\n\t\t\t\t}else\n\t\t\t\t{\n\t\t\t\t\tdp = 0;\n\t\t\t\t\t-- cp;\n\t\t\t\t\tif(cp >= 0 && (t[cp ] == '>' || t[cp] == '<'))\n\t\t\t\t\t\tt.erase(cp + 1, 1);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tfor(int i(0); i < 10; ++ i)\n\t\t\tcout << Count[i] << \" \";\n\t\tcout << endl;\n\t}\n\treturn 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "implementation"
+    ],
+    "dificulty": "1500",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Easy Tape Programming.json",
+    "editorial_link": "https://codeforces.com//blog/entry/5765",
+    "editorial": "In this problem you just need to simulate every thing which is written in the statement step by step. "
+}

@@ -1,1 +1,103 @@
-{"link": "https://codeforces.com//contest/568/problem/C", "problemId": "32825", "problem_idx": "C", "shortId": "568C", "contest_number": "568", "problem_submissions": {"D": [12452919, 12452362, 12448661, 12453325, 12468492, 12468486, 12468483, 12451032, 12452255, 12452694, 12453501, 12453811, 12453450, 13003096, 12455889], "C": [12448571, 12455832, 12453103, 12456355, 12447177, 12448310, 12449857, 12450803, 12450475, 12451591, 12452278, 12452058, 12451086], "A": [12443004, 12441468, 12444210, 12441815, 12441971, 12443645, 12441974, 12441386, 12441504, 12441798, 12442012, 12441477, 12441565, 12442145, 12441398, 12441404, 12441967, 12457494, 12441406, 12441749], "B": [12441764, 12442322, 12442609, 12444738, 12444997, 12441522, 12443756, 12443073, 12442780, 12445676, 12444555, 12442448, 12443842, 12443319, 12443252, 12442442, 12442637, 12443546, 12444321], "E": [12455650]}, "name": "C. New Language", "statement": "Living in Byteland was good enough to begin with, but the good king\r\ndecided to please his subjects and to introduce a national language. He\r\ngathered the best of wise men, and sent an expedition to faraway\r\ncountries, so that they would find out all about how a language should\r\nbe designed.After some time, the wise men returned from the trip even\r\nwiser. They locked up for six months in the dining room, after which\r\nthey said to the king: \"there are a lot of different languages, but\r\nalmost all of them have letters that are divided into vowels and\r\nconsonants; in a word, vowels and consonants must be combined\r\ncorrectly.\"There are very many rules, all of them have exceptions, but\r\nour language will be deprived of such defects! We propose to introduce a\r\nset of formal rules of combining vowels and consonants, and include in\r\nthe language all the words that satisfy them.The rules of composing\r\nwords are: The letters are divided into vowels and consonants in some\r\ncertain way; All words have a length of exactly ; There are rules of the\r\nform (). Each rule is: if the position has a letter of type , then the\r\nposition has a letter of type .You are given some string of length , it\r\nis not necessarily a correct word of the new language. Among all the\r\nwords of the language that lexicographically not smaller than the string\r\n, find the minimal one in lexicographic order.\r\n", "solutions": ["#include <iostream>\n#include <algorithm>\n#include <cmath>\n#include <cstring>\n#include <cstdlib>\n#include <string>\n#include <vector>\n#include <cstdio>\n#include <cassert>\n#include <ctime>\n\nusing namespace std;\n\ntypedef long long ll;\ntypedef long double ld;\n\n#ifdef WIN32\n\t#define LLD \"%I64d\"\n#else\n\t#define LLD \"%lld\"\n#endif\n\n#define pb push_back\n#define all(x) begin(x), end(x)\n\nconst int maxn = 405;\n\nvector<int> gr[maxn], grr[maxn], gr2[maxn], grr2[maxn];\nbool vis[maxn];\nint c[maxn];\nbool was[maxn][2];\nchar s[maxn], answer[maxn];\nvector<int> order;\n\nchar types[maxn], type1[10], type2[10];\nint t[maxn];\nint L, n, m;\n\nvoid toorder(int cur)\n{\n    if (vis[cur]) return;\n    vis[cur] = true;\n    for (auto x : gr[cur]) toorder(x);\n    for (auto x : gr2[cur]) toorder(x);\n    order.pb(cur);\n}\n\nvoid mark(int cur, int curc)\n{\n    if (vis[cur]) return;\n    vis[cur] = true;\n    c[cur] = curc;\n    for (auto x : grr[cur]) mark(x, curc);\n    for (auto x : grr2[cur]) mark(x, curc);\n}\n\nbool poss()\n{\n//     cout << \"poss \" << endl;\n//     for (int i = 0; i < 2 * n; i++)\n//     {\n//         cout << i << \": \";\n//         for (auto x : gr[i]) cout << x << ' ';\n//         cout << \" and \";\n//         for (auto x : gr2[i]) cout << x << ' ';\n//         cout << endl;\n//     }\n    order.resize(0);\n    for (int i = 0; i < 2 * n; i++) vis[i] = false;\n    for (int i = 0; i < 2 * n; i++) if (!vis[i]) toorder(i);\n    for (int i = 0; i < 2 * n; i++) vis[i] = false;\n    int kcomp = 0;\n    for (int i = (int)order.size() - 1; i >= 0; i--) if (!vis[order[i]])\n    {\n        mark(order[i], kcomp++);\n    }\n    for (int i = 0; i < n; i++) if (c[i] == c[i + n]) return false;\n    return true;\n}\n\nvoid go(int cur, bool follow)\n{\n//     cout << \"go \" << cur << ' ' << follow << endl;\n    if (!poss()) return;\n    if (cur == n)\n    {\n        answer[n] = '\\0';\n        printf(\"%s\\n\", answer);\n        exit(0);\n    }\n    gr2[cur].clear();\n    gr2[cur + n].clear();\n    int start = 0;\n    if (follow)\n    {\n        int curt = t[s[cur] - 'a'];\n        gr2[cur + (1 - curt) * n].pb(cur + curt * n);\n        grr2[cur + curt * n].pb(cur + (1 - curt) * n);\n        answer[cur] = s[cur];\n        go(cur + 1, true);\n        gr2[cur + (1 - curt) * n].clear();\n        grr2[cur + curt * n].clear();\n        start = s[cur] - 'a' + 1;\n    }\n    was[cur][0] = false;\n    was[cur][1] = false;\n    for (int i = start; i < L; i++) if (!was[cur][t[i]])\n    {\n//         cout << cur << \" choose \" << i << endl;\n        answer[cur] = 'a' + i;\n        int curt = t[i];\n        gr2[cur + (1 - curt) * n].pb(cur + curt * n);\n        grr2[cur + curt * n].pb(cur + (1 - curt) * n);\n        go(cur + 1, false);\n        gr2[cur + (1 - curt) * n].clear();\n        grr2[cur + curt * n].clear();\n        was[cur][t[i]] = true;\n    }\n}\n\nint main()\n{\n    scanf(\"%s\", types);\n    L = strlen(types);\n    for (int i = 0; i < L; i++)\n    {\n        if (types[i] == 'V') t[i] = 0;\n        else t[i] = 1;\n    }\n    scanf(\"%d%d\", &n, &m);\n    for (int i = 0; i < m; i++)\n    {\n        int pos1, pos2, t1, t2;\n        scanf(\"%d%s%d%s\", &pos1, type1, &pos2, type2);\n        pos1--, pos2--;\n        t1 = (type1[0] == 'V' ? 0 : 1);\n        t2 = (type2[0] == 'V' ? 0 : 1);\n        gr[pos1 + n * t1].pb(pos2 + n * t2);\n        grr[pos2 + n * t2].pb(pos1 + n * t1);\n        gr[pos2 + n * (1 - t2)].pb(pos1 + n * (1 - t1));\n        grr[pos1 + n * (1 - t1)].pb(pos2 + n * (1 - t2));\n    }\n    scanf(\"%s\", s);\n    go(0, true);\n    cout << -1 << endl;\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["2-sat", "greedy"], "dificulty": "2600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/568/problem/C",
+    "problemId": "32825",
+    "problem_idx": "C",
+    "shortId": "568C",
+    "contest_number": "568",
+    "problem_submissions": {
+        "D": [
+            12452919,
+            12452362,
+            12448661,
+            12453325,
+            12468492,
+            12468486,
+            12468483,
+            12451032,
+            12452255,
+            12452694,
+            12453501,
+            12453811,
+            12453450,
+            13003096,
+            12455889
+        ],
+        "C": [
+            12448571,
+            12455832,
+            12453103,
+            12456355,
+            12447177,
+            12448310,
+            12449857,
+            12450803,
+            12450475,
+            12451591,
+            12452278,
+            12452058,
+            12451086
+        ],
+        "A": [
+            12443004,
+            12441468,
+            12444210,
+            12441815,
+            12441971,
+            12443645,
+            12441974,
+            12441386,
+            12441504,
+            12441798,
+            12442012,
+            12441477,
+            12441565,
+            12442145,
+            12441398,
+            12441404,
+            12441967,
+            12457494,
+            12441406,
+            12441749
+        ],
+        "B": [
+            12441764,
+            12442322,
+            12442609,
+            12444738,
+            12444997,
+            12441522,
+            12443756,
+            12443073,
+            12442780,
+            12445676,
+            12444555,
+            12442448,
+            12443842,
+            12443319,
+            12443252,
+            12442442,
+            12442637,
+            12443546,
+            12444321
+        ],
+        "E": [
+            12455650
+        ]
+    },
+    "name": "C. New Language",
+    "statement": "Living in Byteland was good enough to begin with, but the good king\r\ndecided to please his subjects and to introduce a national language. He\r\ngathered the best of wise men, and sent an expedition to faraway\r\ncountries, so that they would find out all about how a language should\r\nbe designed.After some time, the wise men returned from the trip even\r\nwiser. They locked up for six months in the dining room, after which\r\nthey said to the king: \"there are a lot of different languages, but\r\nalmost all of them have letters that are divided into vowels and\r\nconsonants; in a word, vowels and consonants must be combined\r\ncorrectly.\"There are very many rules, all of them have exceptions, but\r\nour language will be deprived of such defects! We propose to introduce a\r\nset of formal rules of combining vowels and consonants, and include in\r\nthe language all the words that satisfy them.The rules of composing\r\nwords are: The letters are divided into vowels and consonants in some\r\ncertain way; All words have a length of exactly ; There are rules of the\r\nform (). Each rule is: if the position has a letter of type , then the\r\nposition has a letter of type .You are given some string of length , it\r\nis not necessarily a correct word of the new language. Among all the\r\nwords of the language that lexicographically not smaller than the string\r\n, find the minimal one in lexicographic order.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <algorithm>\n#include <cmath>\n#include <cstring>\n#include <cstdlib>\n#include <string>\n#include <vector>\n#include <cstdio>\n#include <cassert>\n#include <ctime>\n\nusing namespace std;\n\ntypedef long long ll;\ntypedef long double ld;\n\n#ifdef WIN32\n\t#define LLD \"%I64d\"\n#else\n\t#define LLD \"%lld\"\n#endif\n\n#define pb push_back\n#define all(x) begin(x), end(x)\n\nconst int maxn = 405;\n\nvector<int> gr[maxn], grr[maxn], gr2[maxn], grr2[maxn];\nbool vis[maxn];\nint c[maxn];\nbool was[maxn][2];\nchar s[maxn], answer[maxn];\nvector<int> order;\n\nchar types[maxn], type1[10], type2[10];\nint t[maxn];\nint L, n, m;\n\nvoid toorder(int cur)\n{\n    if (vis[cur]) return;\n    vis[cur] = true;\n    for (auto x : gr[cur]) toorder(x);\n    for (auto x : gr2[cur]) toorder(x);\n    order.pb(cur);\n}\n\nvoid mark(int cur, int curc)\n{\n    if (vis[cur]) return;\n    vis[cur] = true;\n    c[cur] = curc;\n    for (auto x : grr[cur]) mark(x, curc);\n    for (auto x : grr2[cur]) mark(x, curc);\n}\n\nbool poss()\n{\n//     cout << \"poss \" << endl;\n//     for (int i = 0; i < 2 * n; i++)\n//     {\n//         cout << i << \": \";\n//         for (auto x : gr[i]) cout << x << ' ';\n//         cout << \" and \";\n//         for (auto x : gr2[i]) cout << x << ' ';\n//         cout << endl;\n//     }\n    order.resize(0);\n    for (int i = 0; i < 2 * n; i++) vis[i] = false;\n    for (int i = 0; i < 2 * n; i++) if (!vis[i]) toorder(i);\n    for (int i = 0; i < 2 * n; i++) vis[i] = false;\n    int kcomp = 0;\n    for (int i = (int)order.size() - 1; i >= 0; i--) if (!vis[order[i]])\n    {\n        mark(order[i], kcomp++);\n    }\n    for (int i = 0; i < n; i++) if (c[i] == c[i + n]) return false;\n    return true;\n}\n\nvoid go(int cur, bool follow)\n{\n//     cout << \"go \" << cur << ' ' << follow << endl;\n    if (!poss()) return;\n    if (cur == n)\n    {\n        answer[n] = '\\0';\n        printf(\"%s\\n\", answer);\n        exit(0);\n    }\n    gr2[cur].clear();\n    gr2[cur + n].clear();\n    int start = 0;\n    if (follow)\n    {\n        int curt = t[s[cur] - 'a'];\n        gr2[cur + (1 - curt) * n].pb(cur + curt * n);\n        grr2[cur + curt * n].pb(cur + (1 - curt) * n);\n        answer[cur] = s[cur];\n        go(cur + 1, true);\n        gr2[cur + (1 - curt) * n].clear();\n        grr2[cur + curt * n].clear();\n        start = s[cur] - 'a' + 1;\n    }\n    was[cur][0] = false;\n    was[cur][1] = false;\n    for (int i = start; i < L; i++) if (!was[cur][t[i]])\n    {\n//         cout << cur << \" choose \" << i << endl;\n        answer[cur] = 'a' + i;\n        int curt = t[i];\n        gr2[cur + (1 - curt) * n].pb(cur + curt * n);\n        grr2[cur + curt * n].pb(cur + (1 - curt) * n);\n        go(cur + 1, false);\n        gr2[cur + (1 - curt) * n].clear();\n        grr2[cur + curt * n].clear();\n        was[cur][t[i]] = true;\n    }\n}\n\nint main()\n{\n    scanf(\"%s\", types);\n    L = strlen(types);\n    for (int i = 0; i < L; i++)\n    {\n        if (types[i] == 'V') t[i] = 0;\n        else t[i] = 1;\n    }\n    scanf(\"%d%d\", &n, &m);\n    for (int i = 0; i < m; i++)\n    {\n        int pos1, pos2, t1, t2;\n        scanf(\"%d%s%d%s\", &pos1, type1, &pos2, type2);\n        pos1--, pos2--;\n        t1 = (type1[0] == 'V' ? 0 : 1);\n        t2 = (type2[0] == 'V' ? 0 : 1);\n        gr[pos1 + n * t1].pb(pos2 + n * t2);\n        grr[pos2 + n * t2].pb(pos1 + n * t1);\n        gr[pos2 + n * (1 - t2)].pb(pos1 + n * (1 - t1));\n        grr[pos1 + n * (1 - t1)].pb(pos2 + n * (1 - t2));\n    }\n    scanf(\"%s\", s);\n    go(0, true);\n    cout << -1 << endl;\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "2-sat",
+        "greedy"
+    ],
+    "dificulty": "2600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. New Language.json",
+    "editorial_link": "https://codeforces.com//blog/entry/19705",
+    "editorial": "Suppose we have fixed letters on some positions, how can we check is\r\nthere a way to select letters on other positions to build a word from\r\nthe language? The answer is 2-SAT. Let\u00e2\u0080\u0099s see: for every position there\r\nis two mutually exclusive options (vowel or consonant) and the rules are\r\nconsequences. Therefore we can do this check in time. Let\u00e2\u0080\u0099s decrease the\r\nlength of the prefix which will be the same as in . Then the next letter\r\nmust be strictly greater but all the next letters can be any. We can\r\niterate over all greater letters and then check if we can made this word\r\nthe word from the language (via 2-SAT). Once we have found such\r\npossibilty we have found the right prefix of the answer. After that we\r\ncan increase the length of the fixed prefix in a similar way. This\r\nsolution works in time. We can divide this by simply try not all the\r\nletter but only the smallest possible vowel and the smallest possible\r\nconsonant. And you should remember about the case when all the letters\r\nare vowel (or all the letters are consonant). Complexity\r\n"
+}

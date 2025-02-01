@@ -1,1 +1,94 @@
-{"link": "https://codeforces.com//contest/548/problem/D", "problemId": "28337", "problem_idx": "D", "shortId": "548D", "contest_number": "548", "problem_submissions": {"E": [11306177, 11300638, 11307838, 11312023, 12063940], "D": [11287347, 11284454, 11307050, 11295837, 11293058, 11292109, 11291768, 11293958, 11295314, 11296359, 11296862, 11312125, 11312114, 11295294, 11299561, 11298190, 11299140], "B": [11283910, 11292107, 11285437, 11284167, 11285339, 11282855, 11284031, 11284968, 11283769, 11283694, 11284532, 11281775, 11284852, 11283998, 11287449, 11285797], "A": [11281793, 11288525, 11281865, 11282109, 11282041, 11281571, 11281901, 11282199, 11281600, 11281849, 11281629, 11283057, 11282079, 11281644, 11282404, 11282517], "C": [11331087, 11335466, 11312098, 11299604]}, "name": "D. Mike and Feet", "statement": "Mike is the president of country What-The-Fatherland. There are bears\r\nliving in this country besides Mike. All of them are standing in a line\r\nand they are numbered from to from left to right. -th bear is exactly\r\nfeet high. A group of bears is a non-empty contiguous segment of the\r\nline. The of a group is the number of bears in that group. The of a\r\ngroup is the minimum height of the bear in that group.Mike is a curious\r\nto know for each such that the maximum strength among all groups of size\r\n.\r\n", "solutions": ["#include <bits/stdc++.h>\n#include <ext/algorithm>\n#include <ext/numeric>\n\nusing namespace std;\nusing namespace __gnu_cxx;\n\n#define ALL(c) c.begin(), c.end()\n#define SZ(x) ((int)(x).size())\n#define PB push_back\n#define MP make_pair\n#define DB(a) cerr << #a << \" = \" << (a) << endl;\n#define OUT( a , n ) for( int J = 0; J < (n); J++ )cout<< (a)[J] << \" \\n\"[J == (n) - 1 ]\n#define WAIT cout << flush , system(\"PAUSE\");\n#define lowbit(x) ((x) & (-x))\n#define CONTAINS(a, x) ((a).find(x) != (a).end())\n#define endl '\\n'\n\n\ntypedef long long ll;\ntypedef pair<int, int> pii;\n\nconst int MAXN = 2e5+10, oo = 2e9;\n\nint l[MAXN], r[MAXN], s[MAXN];\nint maxi[MAXN], n;\n\nint st[MAXN];\nint dp[MAXN];\nint main()\n{\n    ios::sync_with_stdio( 0 );\n    cin.tie( 0 );   \n    \n    cin >> n;\n    for(int i = 1; i <= n ; i++ ) cin >> s[i];\n    \n    \n    s[0] = -oo;\n    st[0] = 0;\n    \n    for( int i = 1, sp = 1; i <= n; i++ ) \n    {\n        while(s[i] <= s[st[sp-1]])\n            sp--;\n        l[i] = st[sp-1];\n        st[sp++] = i;\n    }\n    \n    st[0] = n + 1;\n    s[n+1] = -oo;\n    \n    for( int i = n, sp = 1; i >= 1; i-- ) \n    {\n        while(s[i] <= s[st[sp-1]])\n            sp--;\n        r[i] = st[sp-1];\n        st[sp++] = i;\n    }\n    \n    for( int i = 1; i <= n; i++ )\n    {\n        int range = r[i] - 1 - (l[i] + 1) + 1;\n        \n        dp[range] = max(dp[range], s[i]);\n    }\n    \n    \n    for( int i = n-1; i >= 1; i-- )\n    {\n        dp[i] = max(dp[i] , dp[i + 1]);\n    }\n    \n    OUT(dp + 1 , n);\n    \n    \n    \n    return 0;\n}\n\n"], "input": "", "output": "", "tags": ["binary search", "data structures", "dp"], "dificulty": "1900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/548/problem/D",
+    "problemId": "28337",
+    "problem_idx": "D",
+    "shortId": "548D",
+    "contest_number": "548",
+    "problem_submissions": {
+        "E": [
+            11306177,
+            11300638,
+            11307838,
+            11312023,
+            12063940
+        ],
+        "D": [
+            11287347,
+            11284454,
+            11307050,
+            11295837,
+            11293058,
+            11292109,
+            11291768,
+            11293958,
+            11295314,
+            11296359,
+            11296862,
+            11312125,
+            11312114,
+            11295294,
+            11299561,
+            11298190,
+            11299140
+        ],
+        "B": [
+            11283910,
+            11292107,
+            11285437,
+            11284167,
+            11285339,
+            11282855,
+            11284031,
+            11284968,
+            11283769,
+            11283694,
+            11284532,
+            11281775,
+            11284852,
+            11283998,
+            11287449,
+            11285797
+        ],
+        "A": [
+            11281793,
+            11288525,
+            11281865,
+            11282109,
+            11282041,
+            11281571,
+            11281901,
+            11282199,
+            11281600,
+            11281849,
+            11281629,
+            11283057,
+            11282079,
+            11281644,
+            11282404,
+            11282517
+        ],
+        "C": [
+            11331087,
+            11335466,
+            11312098,
+            11299604
+        ]
+    },
+    "name": "D. Mike and Feet",
+    "statement": "Mike is the president of country What-The-Fatherland. There are bears\r\nliving in this country besides Mike. All of them are standing in a line\r\nand they are numbered from to from left to right. -th bear is exactly\r\nfeet high. A group of bears is a non-empty contiguous segment of the\r\nline. The of a group is the number of bears in that group. The of a\r\ngroup is the minimum height of the bear in that group.Mike is a curious\r\nto know for each such that the maximum strength among all groups of size\r\n.\r\n",
+    "solutions": [
+        "#include <bits/stdc++.h>\n#include <ext/algorithm>\n#include <ext/numeric>\n\nusing namespace std;\nusing namespace __gnu_cxx;\n\n#define ALL(c) c.begin(), c.end()\n#define SZ(x) ((int)(x).size())\n#define PB push_back\n#define MP make_pair\n#define DB(a) cerr << #a << \" = \" << (a) << endl;\n#define OUT( a , n ) for( int J = 0; J < (n); J++ )cout<< (a)[J] << \" \\n\"[J == (n) - 1 ]\n#define WAIT cout << flush , system(\"PAUSE\");\n#define lowbit(x) ((x) & (-x))\n#define CONTAINS(a, x) ((a).find(x) != (a).end())\n#define endl '\\n'\n\n\ntypedef long long ll;\ntypedef pair<int, int> pii;\n\nconst int MAXN = 2e5+10, oo = 2e9;\n\nint l[MAXN], r[MAXN], s[MAXN];\nint maxi[MAXN], n;\n\nint st[MAXN];\nint dp[MAXN];\nint main()\n{\n    ios::sync_with_stdio( 0 );\n    cin.tie( 0 );   \n    \n    cin >> n;\n    for(int i = 1; i <= n ; i++ ) cin >> s[i];\n    \n    \n    s[0] = -oo;\n    st[0] = 0;\n    \n    for( int i = 1, sp = 1; i <= n; i++ ) \n    {\n        while(s[i] <= s[st[sp-1]])\n            sp--;\n        l[i] = st[sp-1];\n        st[sp++] = i;\n    }\n    \n    st[0] = n + 1;\n    s[n+1] = -oo;\n    \n    for( int i = n, sp = 1; i >= 1; i-- ) \n    {\n        while(s[i] <= s[st[sp-1]])\n            sp--;\n        r[i] = st[sp-1];\n        st[sp++] = i;\n    }\n    \n    for( int i = 1; i <= n; i++ )\n    {\n        int range = r[i] - 1 - (l[i] + 1) + 1;\n        \n        dp[range] = max(dp[range], s[i]);\n    }\n    \n    \n    for( int i = n-1; i >= 1; i-- )\n    {\n        dp[i] = max(dp[i] , dp[i + 1]);\n    }\n    \n    OUT(dp + 1 , n);\n    \n    \n    \n    return 0;\n}\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "binary search",
+        "data structures",
+        "dp"
+    ],
+    "dificulty": "1900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Mike and Feet.json",
+    "editorial_link": "https://codeforces.com//blog/entry/18126",
+    "editorial": "For each i, find the largest j that aj?<?ai and show it by li (if there is no such j, then li?=?0).\n\nAlso, find the smallest j that aj?<?ai and show it by ri (if there is no such j, then ri?=?n?+?1).\n\nThis can be done in O(n) with a stack. Pseudo code of the first part (second part is also like that) :\nConsider that you are asked to print n integers, ans1,?ans2,?...,?ansn. Obviously, ans1???ans2???...???ansn.\n\nFor each i, we know that ai can be minimum element in groups of size 1,?2,?...,?ri?-?li?-?1.\n\nSe we need a data structure for us to do this:\n\nWe have array ans1,?ans2,?...,?ansn and all its elements are initially equal to 0. Also, n queries. Each query gives x,?val and want us to perform ans1?=?max(ans1,?val),?ans2?=?max(ans2,?val),?...,?ansx?=?max(ansx,?val). We want the final array."
+}

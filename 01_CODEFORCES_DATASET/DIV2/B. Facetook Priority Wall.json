@@ -1,1 +1,99 @@
-{"link": "https://codeforces.com//contest/75/problem/B", "problemId": "398", "problem_idx": "B", "shortId": "75B", "contest_number": "75", "problem_submissions": {"D": [384982, 385991, 384525, 384834, 384839, 385091, 385312, 385411, 385305, 385211, 385417, 386039, 385176, 384867, 394964], "C": [384042, 383483, 383576, 384129, 383851, 384490, 383698, 383909, 384477, 383838, 383994, 384507, 384866, 384204, 386282, 384164], "B": [383618, 384106, 385087, 383734, 383356, 383597, 384237, 383641, 383456, 385358, 383400, 383978, 384400, 387215, 383552, 383723], "A": [383049, 382879, 382894, 382934, 382877, 382996, 383262, 382978, 383667, 382943, 382941, 383102, 383157, 382990, 383202], "E": [3910444]}, "name": "B. Facetook Priority Wall", "statement": "Facetook is a well known social network website, and it will launch a\r\nnew feature called Facetook Priority Wall. This feature will sort all\r\nposts from your friends according to the priority factor (it will be\r\ndescribed).This priority factor will be affected by three types of\r\nactions: 1. \"\" (15 points), 2. \"\" (10 points), 3. \"\" (5 points). and\r\nwill be two distinct names. And each action will increase the priority\r\nfactor between and (and vice versa) by the above value of points (the\r\npriority factor between and is the same as the priority factor between\r\nand ).You will be given actions with the above format (without the\r\naction number and the number of points), and you have to print all the\r\ndistinct names in these actions sorted according to the priority factor\r\nwith you.\r\n", "solutions": ["#include <iostream>\n#include <cstdio>\n#include <cmath>\n#include <algorithm>\n#include <vector>\n#include <string>\n#include <cstring>\n#include <map>\n#include <iomanip>\n\n\nusing namespace std;\n\n\n\nint main() {\n  //freopen (\"input.txt\", \"r\", stdin);\n  //freopen (\"output.txt\", \"w\", stdout);\n  string name;\n  string spam;\n  int n;\n  getline(cin, name);\n  cin >> n;\n  getline(cin, spam);\n  int points;\n  vector <pair <string, int>> aa;\n  for (int i = 0; i < n; ++i) {\n    getline(cin, spam);\n    string s1 = \"\";\n    string s2 = \"\";\n    int l = 0;\n    while (spam[l] != ' ') {\n      s1 += spam[l];\n      ++l;\n    }\n    ++l;\n    int p = 0;\n    if (spam[l] == 'p') {\n      points = 15;\n      while (spam[l] != ' ')\n       ++l;\n      ++l;\n      while (spam[l] != ' ')\n      ++l;\n      ++l;\n    } else\n      if (spam[l] == 'c') {\n        points = 10;\n        while (spam[l] != ' ')\n          ++l;\n        ++l;\n        while (spam[l] != ' ')\n          ++l;\n        ++l;\n      }\n      else\n      if (spam[l] == 'l') {\n        points = 5;\n        while (spam[l] != ' ')\n          ++l;\n        ++l;\n      }\n      while (spam[l] != '\\'') {\n        s2 += spam[l];\n        ++l;\n      }\n      if (s1 == name) {\n        aa.push_back(make_pair(s2, points));\n      } else {\n        if (s2 == name)\n          aa.push_back(make_pair(s1, points));\n        else {\n          aa.push_back(make_pair(s1, 0));\n          aa.push_back(make_pair(s2, 0));\n        }\n      }\n  }\n  sort(aa.begin(), aa.end());\n  int l = 0;\n  vector <pair<int, string>> res;\n  while (l != aa.size()) {\n    string ss = aa[l].first;\n    int pt = 0;\n    int r = l;\n    while (r != aa.size() && aa[l].first == aa[r].first) {\n      pt += aa[r].second;\n      ++r;\n    }\n    res.push_back(make_pair(pt, ss));\n    l = r;\n  }\n  sort(res.begin(), res.end());\n  int i = res.size() - 1;\n  while (i >= 0) {\n    int l = i;\n    while (l >= 0  && res[i].first == res[l].first)\n    --l;\n    for (int j = l + 1; j <= i; ++j)\n    cout << res[j].second << endl;\n    i = l;\n  }\n  return 0;\n}"], "input": "", "output": "", "tags": ["expression parsing", "implementation", "strings"], "dificulty": "1500", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/75/problem/B",
+    "problemId": "398",
+    "problem_idx": "B",
+    "shortId": "75B",
+    "contest_number": "75",
+    "problem_submissions": {
+        "D": [
+            384982,
+            385991,
+            384525,
+            384834,
+            384839,
+            385091,
+            385312,
+            385411,
+            385305,
+            385211,
+            385417,
+            386039,
+            385176,
+            384867,
+            394964
+        ],
+        "C": [
+            384042,
+            383483,
+            383576,
+            384129,
+            383851,
+            384490,
+            383698,
+            383909,
+            384477,
+            383838,
+            383994,
+            384507,
+            384866,
+            384204,
+            386282,
+            384164
+        ],
+        "B": [
+            383618,
+            384106,
+            385087,
+            383734,
+            383356,
+            383597,
+            384237,
+            383641,
+            383456,
+            385358,
+            383400,
+            383978,
+            384400,
+            387215,
+            383552,
+            383723
+        ],
+        "A": [
+            383049,
+            382879,
+            382894,
+            382934,
+            382877,
+            382996,
+            383262,
+            382978,
+            383667,
+            382943,
+            382941,
+            383102,
+            383157,
+            382990,
+            383202
+        ],
+        "E": [
+            3910444
+        ]
+    },
+    "name": "B. Facetook Priority Wall",
+    "statement": "Facetook is a well known social network website, and it will launch a\r\nnew feature called Facetook Priority Wall. This feature will sort all\r\nposts from your friends according to the priority factor (it will be\r\ndescribed).This priority factor will be affected by three types of\r\nactions: 1. \"\" (15 points), 2. \"\" (10 points), 3. \"\" (5 points). and\r\nwill be two distinct names. And each action will increase the priority\r\nfactor between and (and vice versa) by the above value of points (the\r\npriority factor between and is the same as the priority factor between\r\nand ).You will be given actions with the above format (without the\r\naction number and the number of points), and you have to print all the\r\ndistinct names in these actions sorted according to the priority factor\r\nwith you.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <cstdio>\n#include <cmath>\n#include <algorithm>\n#include <vector>\n#include <string>\n#include <cstring>\n#include <map>\n#include <iomanip>\n\n\nusing namespace std;\n\n\n\nint main() {\n  //freopen (\"input.txt\", \"r\", stdin);\n  //freopen (\"output.txt\", \"w\", stdout);\n  string name;\n  string spam;\n  int n;\n  getline(cin, name);\n  cin >> n;\n  getline(cin, spam);\n  int points;\n  vector <pair <string, int>> aa;\n  for (int i = 0; i < n; ++i) {\n    getline(cin, spam);\n    string s1 = \"\";\n    string s2 = \"\";\n    int l = 0;\n    while (spam[l] != ' ') {\n      s1 += spam[l];\n      ++l;\n    }\n    ++l;\n    int p = 0;\n    if (spam[l] == 'p') {\n      points = 15;\n      while (spam[l] != ' ')\n       ++l;\n      ++l;\n      while (spam[l] != ' ')\n      ++l;\n      ++l;\n    } else\n      if (spam[l] == 'c') {\n        points = 10;\n        while (spam[l] != ' ')\n          ++l;\n        ++l;\n        while (spam[l] != ' ')\n          ++l;\n        ++l;\n      }\n      else\n      if (spam[l] == 'l') {\n        points = 5;\n        while (spam[l] != ' ')\n          ++l;\n        ++l;\n      }\n      while (spam[l] != '\\'') {\n        s2 += spam[l];\n        ++l;\n      }\n      if (s1 == name) {\n        aa.push_back(make_pair(s2, points));\n      } else {\n        if (s2 == name)\n          aa.push_back(make_pair(s1, points));\n        else {\n          aa.push_back(make_pair(s1, 0));\n          aa.push_back(make_pair(s2, 0));\n        }\n      }\n  }\n  sort(aa.begin(), aa.end());\n  int l = 0;\n  vector <pair<int, string>> res;\n  while (l != aa.size()) {\n    string ss = aa[l].first;\n    int pt = 0;\n    int r = l;\n    while (r != aa.size() && aa[l].first == aa[r].first) {\n      pt += aa[r].second;\n      ++r;\n    }\n    res.push_back(make_pair(pt, ss));\n    l = r;\n  }\n  sort(res.begin(), res.end());\n  int i = res.size() - 1;\n  while (i >= 0) {\n    int l = i;\n    while (l >= 0  && res[i].first == res[l].first)\n    --l;\n    for (int j = l + 1; j <= i; ++j)\n    cout << res[j].second << endl;\n    i = l;\n  }\n  return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "expression parsing",
+        "implementation",
+        "strings"
+    ],
+    "dificulty": "1500",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Facetook Priority Wall.json",
+    "editorial_link": "https://codeforces.com//blog/entry/1715",
+    "editorial": "This problem is a direct simulation to the rules written in the problem statement.\nYou need to iterate over all actions and parse each one to know the type of the action, and the 2 names X and Y, and if your name is X or Y then update your priority factor with this person with the action corresponding value. And take care about some special names like \"post\", \"wall\", \"commented\" and \"on\".\nThen sort all names according to the sorting criteria mentioned in the statement.\nJust make sure to print all names which are mentioned in the input (excluding yourself), even if the priority factor with you is 0."
+}

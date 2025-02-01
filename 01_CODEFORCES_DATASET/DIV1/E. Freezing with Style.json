@@ -1,1 +1,93 @@
-{"link": "https://codeforces.com//contest/150/problem/E", "problemId": "933", "problem_idx": "E", "shortId": "150E", "contest_number": "150", "problem_submissions": {"D": [1194790, 1195710, 1196410, 1196643, 1195734, 1193495, 1197438, 1194800, 1193784, 1198921], "C": [1192372, 1192889, 1193569, 1192214, 1192135, 1196040, 1193366, 1195697, 1197378, 1191883, 1193918, 1192472, 1192349], "B": [1188186, 2541924, 1188277, 1188125, 1187707, 1188412, 1188356, 1188767, 1186964, 1188247, 1188294, 1188405, 1188647, 1194611, 1188404, 1188925], "A": [1187447, 1187836, 1187271, 1187190, 1197743, 1187054, 1187897, 1187519, 1187187, 1187884, 1187266, 1187565, 1187877, 1187293, 1188217], "E": [1201858, 1204781]}, "name": "E. Freezing with Style", "statement": "This winter is so... well, you\u2019ve got the idea :-) The Nvodsk road\r\nsystem can be represented as junctions connected with bidirectional\r\nroads so that there is a path between any two junctions. The organizers\r\nof some event want to choose a place to accommodate the participants\r\n(junction ), and the place to set up the contests (junction ). Besides,\r\nat the one hand, they want the participants to walk about the city and\r\nsee the neighbourhood (that\u2019s why the distance between and should be no\r\nless than ). On the other hand, they don\u2019t want the participants to\r\nfreeze (so the distance between and should be no more than ). Besides,\r\nfor every street we know its beauty some integer from to . Your task is\r\nto choose the path that fits in the length limits and has the largest\r\naverage beauty. We shall define the average beauty as a median of\r\nsequence of the beauties of all roads along the path.We can put it more\r\nformally like that: let there be a path with the length . Let be a\r\nnon-decreasing sequence that contains exactly elements. Each number\r\noccurs there exactly the number of times a road with such beauty occurs\r\nalong on path. We will represent the path median as number , assuming\r\nthat is used. is number , rounded down to the nearest integer.For\r\nexample, if , then the median equals to , and if , then the median is\r\nnumber .It is guaranteed that there will be at least one path with the\r\nsuitable quantity of roads.\r\n", "solutions": ["#include <cstdio>\n#include <cstring>\n#include <algorithm>\n#include <iostream>\n#include <climits>\n#include <numeric>\n#include <vector>\n#define foreach(e,x) for(__typeof(x.begin()) e=x.begin();e!=x.end();++e)\nusing namespace std;\nconst int MAX_N = 100000;\nconst int INF = ~0U >> 3;\nstruct Edge {\n\tint t, c;\n};\nvector<Edge> E[MAX_N];\nint n, pl, pr;\nbool del[MAX_N];\n\nint size[MAX_N], ord[MAX_N], cur, cnt[MAX_N], dep[MAX_N], fa[MAX_N];\nvoid dfs(int u, int par, int chk, int d, int c) {\n\tdep[u] = d, cnt[u] = c, size[u] = 1, ord[cur++] = u, fa[u] = par;\n\tforeach(e,E[u])\n\t\tif (!del[e->t] && e->t != par) {\n\t\t\tdfs(e->t, u, chk, d + 1, c + (e->c >= chk ? 1 : -1));\n\t\t\tsize[u] += size[e->t];\n\t\t}\n}\n\nint ansU, ansV, ans;\n\nint mx[MAX_N], who[MAX_N], maxd;\nint nmx[MAX_N], nwho[MAX_N], nmaxd;\n\nbool cmp(int a, int b) {\n\treturn size[a] < size[b];\n}\n\nint lstU, lstV;\n\nbool check() {\n\tstatic int que[MAX_N];\n\tint qh = 0, qt = 0;\n\tint l = maxd;\n\n\tfor (int i = 1; i <= nmaxd; ++i) {\n\t\twhile (l + i >= pl && l >= 0) {\n\t\t\twhile (qh < qt && mx[que[qt - 1]] <= mx[l])\n\t\t\t\t--qt;\n\t\t\tque[qt++] = l;\n\t\t\t--l;\n\t\t}\n\t\twhile (qh < qt && que[qh] + i > pr)\n\t\t\t++qh;\n\t\tif (qh < qt) {\n\t\t\tif (mx[que[qh]] + nmx[i] >= 0) {\n\t\t\t\tlstU = who[que[qh]];\n\t\t\t\tlstV = nwho[i];\n\t\t\t\treturn true;\n\t\t\t}\n\t\t}\n\t}\n\treturn false;\n}\n\nvoid solve(int rt) {\n\tcur = 0;\n\tdfs(rt, -1, -1, 0, 0);\n\tint mi = INF, sp;\n\tfor (int i = 0; i < cur; ++i) {\n\t\tint u = ord[i];\n\t\tint opt = size[rt] - size[u];\n\t\tforeach(e,E[u])\n\t\t\tif (!del[e->t] && e->t != fa[u])\n\t\t\t\topt = max(opt, size[e->t]);\n\t\tif (opt < mi)\n\t\t\tmi = opt, sp = u;\n\t}\n\n\trt = sp;\n\tcur = 0, dfs(rt, -1, -1, 0, 0);\n\t//cout << \"ROOT:\" << rt << endl;\n\tdel[rt] = true;\n\tstatic int ch[MAX_N];\n\tint nCh = 0;\n\tforeach(e,E[rt])\n\t\tif (!del[e->t])\n\t\t\tch[nCh++] = e->t;\n\tsort(ch, ch + nCh, cmp);\n\tint l = -1, r = 1e9 + 1;\n\tfor (;;) {\n\t\tint m = (l + r) >> 1;\n\t\tforeach(e,E[rt])\n\t\t\tif (!del[e->t])\n\t\t\t\tcnt[e->t] = e->c >= m ? 1 : -1;\n\t\tbool ok = false;\n\t\tmaxd = 0;\n\t\tmx[0] = 0, who[0] = rt;\n\t\tfor (int it = 0; it < nCh; ++it) {\n\t\t\tint u = ch[it];\n\t\t\tcur = 0, dfs(u, -1, m, 1, cnt[u]);\n\t\t\tnmaxd = 0;\n\t\t\tfor (int i = 0; i < cur; ++i) {\n\t\t\t\tnmaxd = max(nmaxd, dep[ord[i]]);\n\t\t\t}\n\t\t\tfor (int i = 0; i <= nmaxd; ++i) {\n\t\t\t\tnmx[i] = -INF;\n\t\t\t}\n\t\t\tfor (int i = 0; i < cur; ++i) {\n\t\t\t\tint v = ord[i];\n\t\t\t\tif (cnt[v] > nmx[dep[v]])\n\t\t\t\t\tnmx[dep[v]] = cnt[v], nwho[dep[v]] = v;\n\t\t\t}\n\t\t\tif (check()) {\n\t\t\t\tok = true;\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tfor (int i = 0; i <= nmaxd; ++i) {\n\t\t\t\tif (i > maxd || nmx[i] > mx[i])\n\t\t\t\t\tmx[i] = nmx[i], who[i] = nwho[i];\n\t\t\t}\n\t\t\tmaxd = max(maxd, nmaxd);\n\t\t}\n\t\tif (l + 1 == r)\n\t\t\tbreak;\n\t\tif (ok)\n\t\t\tl = m;\n\t\telse\n\t\t\tr = m;\n\t}\n\tif (l > ans)\n\t\tans = l, ansU = lstU, ansV = lstV;\n\tforeach(e,E[rt])\n\t\tif (!del[e->t])\n\t\t\tsolve(e->t);\n}\n\nint main() {\n\tcin >> n >> pl >> pr;\n\tfor (int i = 0; i < n - 1; ++i) {\n\t\tint a, b, c;\n\t\tscanf(\"%d%d%d\", &a, &b, &c), --a, --b;\n\t\tE[a].push_back((Edge) {b,c});\n\t\tE[b].push_back((Edge) {a,c});\n\t}\n\tans = -1;\n\tsolve(0);\n\tcout << ansU + 1 << \" \" << ansV + 1 << endl;\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["binary search", "data structures", "divide and conquer", "trees"], "dificulty": "3000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/150/problem/E",
+    "problemId": "933",
+    "problem_idx": "E",
+    "shortId": "150E",
+    "contest_number": "150",
+    "problem_submissions": {
+        "D": [
+            1194790,
+            1195710,
+            1196410,
+            1196643,
+            1195734,
+            1193495,
+            1197438,
+            1194800,
+            1193784,
+            1198921
+        ],
+        "C": [
+            1192372,
+            1192889,
+            1193569,
+            1192214,
+            1192135,
+            1196040,
+            1193366,
+            1195697,
+            1197378,
+            1191883,
+            1193918,
+            1192472,
+            1192349
+        ],
+        "B": [
+            1188186,
+            2541924,
+            1188277,
+            1188125,
+            1187707,
+            1188412,
+            1188356,
+            1188767,
+            1186964,
+            1188247,
+            1188294,
+            1188405,
+            1188647,
+            1194611,
+            1188404,
+            1188925
+        ],
+        "A": [
+            1187447,
+            1187836,
+            1187271,
+            1187190,
+            1197743,
+            1187054,
+            1187897,
+            1187519,
+            1187187,
+            1187884,
+            1187266,
+            1187565,
+            1187877,
+            1187293,
+            1188217
+        ],
+        "E": [
+            1201858,
+            1204781
+        ]
+    },
+    "name": "E. Freezing with Style",
+    "statement": "This winter is so... well, you\u2019ve got the idea :-) The Nvodsk road\r\nsystem can be represented as junctions connected with bidirectional\r\nroads so that there is a path between any two junctions. The organizers\r\nof some event want to choose a place to accommodate the participants\r\n(junction ), and the place to set up the contests (junction ). Besides,\r\nat the one hand, they want the participants to walk about the city and\r\nsee the neighbourhood (that\u2019s why the distance between and should be no\r\nless than ). On the other hand, they don\u2019t want the participants to\r\nfreeze (so the distance between and should be no more than ). Besides,\r\nfor every street we know its beauty some integer from to . Your task is\r\nto choose the path that fits in the length limits and has the largest\r\naverage beauty. We shall define the average beauty as a median of\r\nsequence of the beauties of all roads along the path.We can put it more\r\nformally like that: let there be a path with the length . Let be a\r\nnon-decreasing sequence that contains exactly elements. Each number\r\noccurs there exactly the number of times a road with such beauty occurs\r\nalong on path. We will represent the path median as number , assuming\r\nthat is used. is number , rounded down to the nearest integer.For\r\nexample, if , then the median equals to , and if , then the median is\r\nnumber .It is guaranteed that there will be at least one path with the\r\nsuitable quantity of roads.\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <cstring>\n#include <algorithm>\n#include <iostream>\n#include <climits>\n#include <numeric>\n#include <vector>\n#define foreach(e,x) for(__typeof(x.begin()) e=x.begin();e!=x.end();++e)\nusing namespace std;\nconst int MAX_N = 100000;\nconst int INF = ~0U >> 3;\nstruct Edge {\n\tint t, c;\n};\nvector<Edge> E[MAX_N];\nint n, pl, pr;\nbool del[MAX_N];\n\nint size[MAX_N], ord[MAX_N], cur, cnt[MAX_N], dep[MAX_N], fa[MAX_N];\nvoid dfs(int u, int par, int chk, int d, int c) {\n\tdep[u] = d, cnt[u] = c, size[u] = 1, ord[cur++] = u, fa[u] = par;\n\tforeach(e,E[u])\n\t\tif (!del[e->t] && e->t != par) {\n\t\t\tdfs(e->t, u, chk, d + 1, c + (e->c >= chk ? 1 : -1));\n\t\t\tsize[u] += size[e->t];\n\t\t}\n}\n\nint ansU, ansV, ans;\n\nint mx[MAX_N], who[MAX_N], maxd;\nint nmx[MAX_N], nwho[MAX_N], nmaxd;\n\nbool cmp(int a, int b) {\n\treturn size[a] < size[b];\n}\n\nint lstU, lstV;\n\nbool check() {\n\tstatic int que[MAX_N];\n\tint qh = 0, qt = 0;\n\tint l = maxd;\n\n\tfor (int i = 1; i <= nmaxd; ++i) {\n\t\twhile (l + i >= pl && l >= 0) {\n\t\t\twhile (qh < qt && mx[que[qt - 1]] <= mx[l])\n\t\t\t\t--qt;\n\t\t\tque[qt++] = l;\n\t\t\t--l;\n\t\t}\n\t\twhile (qh < qt && que[qh] + i > pr)\n\t\t\t++qh;\n\t\tif (qh < qt) {\n\t\t\tif (mx[que[qh]] + nmx[i] >= 0) {\n\t\t\t\tlstU = who[que[qh]];\n\t\t\t\tlstV = nwho[i];\n\t\t\t\treturn true;\n\t\t\t}\n\t\t}\n\t}\n\treturn false;\n}\n\nvoid solve(int rt) {\n\tcur = 0;\n\tdfs(rt, -1, -1, 0, 0);\n\tint mi = INF, sp;\n\tfor (int i = 0; i < cur; ++i) {\n\t\tint u = ord[i];\n\t\tint opt = size[rt] - size[u];\n\t\tforeach(e,E[u])\n\t\t\tif (!del[e->t] && e->t != fa[u])\n\t\t\t\topt = max(opt, size[e->t]);\n\t\tif (opt < mi)\n\t\t\tmi = opt, sp = u;\n\t}\n\n\trt = sp;\n\tcur = 0, dfs(rt, -1, -1, 0, 0);\n\t//cout << \"ROOT:\" << rt << endl;\n\tdel[rt] = true;\n\tstatic int ch[MAX_N];\n\tint nCh = 0;\n\tforeach(e,E[rt])\n\t\tif (!del[e->t])\n\t\t\tch[nCh++] = e->t;\n\tsort(ch, ch + nCh, cmp);\n\tint l = -1, r = 1e9 + 1;\n\tfor (;;) {\n\t\tint m = (l + r) >> 1;\n\t\tforeach(e,E[rt])\n\t\t\tif (!del[e->t])\n\t\t\t\tcnt[e->t] = e->c >= m ? 1 : -1;\n\t\tbool ok = false;\n\t\tmaxd = 0;\n\t\tmx[0] = 0, who[0] = rt;\n\t\tfor (int it = 0; it < nCh; ++it) {\n\t\t\tint u = ch[it];\n\t\t\tcur = 0, dfs(u, -1, m, 1, cnt[u]);\n\t\t\tnmaxd = 0;\n\t\t\tfor (int i = 0; i < cur; ++i) {\n\t\t\t\tnmaxd = max(nmaxd, dep[ord[i]]);\n\t\t\t}\n\t\t\tfor (int i = 0; i <= nmaxd; ++i) {\n\t\t\t\tnmx[i] = -INF;\n\t\t\t}\n\t\t\tfor (int i = 0; i < cur; ++i) {\n\t\t\t\tint v = ord[i];\n\t\t\t\tif (cnt[v] > nmx[dep[v]])\n\t\t\t\t\tnmx[dep[v]] = cnt[v], nwho[dep[v]] = v;\n\t\t\t}\n\t\t\tif (check()) {\n\t\t\t\tok = true;\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tfor (int i = 0; i <= nmaxd; ++i) {\n\t\t\t\tif (i > maxd || nmx[i] > mx[i])\n\t\t\t\t\tmx[i] = nmx[i], who[i] = nwho[i];\n\t\t\t}\n\t\t\tmaxd = max(maxd, nmaxd);\n\t\t}\n\t\tif (l + 1 == r)\n\t\t\tbreak;\n\t\tif (ok)\n\t\t\tl = m;\n\t\telse\n\t\t\tr = m;\n\t}\n\tif (l > ans)\n\t\tans = l, ansU = lstU, ansV = lstV;\n\tforeach(e,E[rt])\n\t\tif (!del[e->t])\n\t\t\tsolve(e->t);\n}\n\nint main() {\n\tcin >> n >> pl >> pr;\n\tfor (int i = 0; i < n - 1; ++i) {\n\t\tint a, b, c;\n\t\tscanf(\"%d%d%d\", &a, &b, &c), --a, --b;\n\t\tE[a].push_back((Edge) {b,c});\n\t\tE[b].push_back((Edge) {a,c});\n\t}\n\tans = -1;\n\tsolve(0);\n\tcout << ansU + 1 << \" \" << ansV + 1 << endl;\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "binary search",
+        "data structures",
+        "divide and conquer",
+        "trees"
+    ],
+    "dificulty": "3000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\E. Freezing with Style.json",
+    "editorial_link": "https://codeforces.com/blog/entry/3905?locale=en",
+    "editorial": "If there exists a path with the median , for some , then there exists a\r\npath with the median , for each . That means we can use binary search to\r\ncalculate the answer. So now the task is: is there any path with the\r\nmedian greater or equal to ? We will calc the edge as if it\u00e2\u0080\u0099s wight , or\r\nas in other case. Now we only need to check if there exists a path with\r\nlegal length and the sum greater than or equal to zero. Let\u00e2\u0080\u0099s denote\r\nsome node as a root. All paths can be divided into two types: that\r\ncontains , and that do not. Now we are to process all first-type paths\r\nand run the algorithm on all subtrees. That is so-called\r\ndivide-and-conquer strategy. We can trivially show that it is always\r\npossible to choose such vertex that all it\u00e2\u0080\u0099s subtrees will have size\r\nless than or equal to the size of the whole tree. That means that each\r\nnode will be proccessed in trees max. So, if we solve the task for one\r\nlevel of recursion in , we\u00e2\u0080\u0099ll solve it in time on the whole. First, lets\r\nget . For each node we shall calc it\u00e2\u0080\u0099s deepness, cost of the path to the\r\nroot ans the first edge (the number of the root\u00e2\u0080\u0099s subtree). It will be\r\nbetter now to use 2 and 0 as the edges costs, instead of -1 and 1. Now\r\nwe shall process root\u00e2\u0080\u0099s subtrees one by one. For each node we want to\r\nknow if there exists a node in any other subtree such that the Unable to\r\nparse markup [type=CF_TEX] To achieve an AC contestants were to write\r\nall code optimally, or to think of one more idea. It is possible to have\r\non one level of recursion and in total if you sort roots subtrees in\r\nnon-decreasing order and use any structure that can answer getmax query\r\non all segments of length and all prefixes and suffixes. Best of luck to\r\nyou in upsolving this problem!\r\n"
+}

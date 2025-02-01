@@ -1,1 +1,103 @@
-{"link": "https://codeforces.com//contest/59/problem/B", "problemId": "308", "problem_idx": "B", "shortId": "59B", "contest_number": "59", "problem_submissions": {"E": [280965, 279581, 281138, 281387, 280873, 283124, 283115, 283111, 283109, 283100, 283096, 283092, 283085, 283084, 281969, 7020454], "D": [280391, 284138, 281502, 281236, 281590, 282219, 282005, 282011, 281002], "C": [279741, 280383, 280157, 280215, 279940, 280089, 280651, 282540, 280526, 280047, 280179, 280617, 280421], "B": [279223, 280161, 279355, 279326, 279379, 279486, 283681, 280066, 279671, 279598, 279324, 279470, 279615, 279517, 280028], "A": [278986, 280065, 279027, 279062, 279003, 279074, 283673, 279299, 279346, 279565, 279059, 279097, 279211, 279043, 279837]}, "name": "B. Fortune Telling", "statement": "Marina loves Sasha. But she keeps wondering whether Sasha loves her. Of\r\ncourse, the best way to know it is fortune telling. There are many ways\r\nof telling fortune, but Marina has picked the easiest one. She takes in\r\nher hand one or several camomiles and tears off the petals one by one.\r\nAfter each petal she pronounces alternatively \"Loves\" and \"Doesn\u2019t\r\nlove\", at that Marina always starts with \"Loves\". There are camomiles\r\ngrowing in the field, possessing the numbers of petals equal to . Marina\r\nwants to pick a bouquet with the maximal possible total number of petals\r\nso that the result would still be \"Loves\". Help her do that; find the\r\nmaximal number of petals possible in the bouquet.\r\n", "solutions": ["#include <iostream>\n#include <algorithm>\nusing namespace std;\nint arr[256];\nint n;\nint main()\n{\n\tcin>>n;\n\tfor(int i=0; i<n; ++i) cin>>arr[i];\n\tint cnt=0;\n\tfor(int i=0; i<n; ++i) cnt += arr[i]&1;\n\tif (!cnt) {\n\t\tcout<<0<<'\\n';\n\t\treturn 0;\n\t}\n\tint r=0;\n\tsort(arr,arr+n);\n\tfor(int i=0; i<n; ++i) r+=arr[i];\n\tint a=0;\n\twhile(!(arr[a]&1)) ++a;\n\tif (!(cnt&1)) r -= arr[a];\n\tcout<<r<<'\\n';\n}\n"], "input": "", "output": "", "tags": ["implementation", "number theory"], "dificulty": "1200", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/59/problem/B",
+    "problemId": "308",
+    "problem_idx": "B",
+    "shortId": "59B",
+    "contest_number": "59",
+    "problem_submissions": {
+        "E": [
+            280965,
+            279581,
+            281138,
+            281387,
+            280873,
+            283124,
+            283115,
+            283111,
+            283109,
+            283100,
+            283096,
+            283092,
+            283085,
+            283084,
+            281969,
+            7020454
+        ],
+        "D": [
+            280391,
+            284138,
+            281502,
+            281236,
+            281590,
+            282219,
+            282005,
+            282011,
+            281002
+        ],
+        "C": [
+            279741,
+            280383,
+            280157,
+            280215,
+            279940,
+            280089,
+            280651,
+            282540,
+            280526,
+            280047,
+            280179,
+            280617,
+            280421
+        ],
+        "B": [
+            279223,
+            280161,
+            279355,
+            279326,
+            279379,
+            279486,
+            283681,
+            280066,
+            279671,
+            279598,
+            279324,
+            279470,
+            279615,
+            279517,
+            280028
+        ],
+        "A": [
+            278986,
+            280065,
+            279027,
+            279062,
+            279003,
+            279074,
+            283673,
+            279299,
+            279346,
+            279565,
+            279059,
+            279097,
+            279211,
+            279043,
+            279837
+        ]
+    },
+    "name": "B. Fortune Telling",
+    "statement": "Marina loves Sasha. But she keeps wondering whether Sasha loves her. Of\r\ncourse, the best way to know it is fortune telling. There are many ways\r\nof telling fortune, but Marina has picked the easiest one. She takes in\r\nher hand one or several camomiles and tears off the petals one by one.\r\nAfter each petal she pronounces alternatively \"Loves\" and \"Doesn\u2019t\r\nlove\", at that Marina always starts with \"Loves\". There are camomiles\r\ngrowing in the field, possessing the numbers of petals equal to . Marina\r\nwants to pick a bouquet with the maximal possible total number of petals\r\nso that the result would still be \"Loves\". Help her do that; find the\r\nmaximal number of petals possible in the bouquet.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <algorithm>\nusing namespace std;\nint arr[256];\nint n;\nint main()\n{\n\tcin>>n;\n\tfor(int i=0; i<n; ++i) cin>>arr[i];\n\tint cnt=0;\n\tfor(int i=0; i<n; ++i) cnt += arr[i]&1;\n\tif (!cnt) {\n\t\tcout<<0<<'\\n';\n\t\treturn 0;\n\t}\n\tint r=0;\n\tsort(arr,arr+n);\n\tfor(int i=0; i<n; ++i) r+=arr[i];\n\tint a=0;\n\twhile(!(arr[a]&1)) ++a;\n\tif (!(cnt&1)) r -= arr[a];\n\tcout<<r<<'\\n';\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation",
+        "number theory"
+    ],
+    "dificulty": "1200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Fortune Telling78150.json",
+    "editorial_link": "https://codeforces.com//blog/entry/1276",
+    "editorial": "For this problem all you need to do is store the smallest odd number of petals and also the sum of all the petals. It is quite obvious that only if the number of petals is odd the result would be \"Loves\". So if the sum is even print sum - smallest odd, otherwise print the sum."
+}

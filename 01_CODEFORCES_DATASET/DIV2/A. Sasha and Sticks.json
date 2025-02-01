@@ -1,1 +1,107 @@
-{"link": "https://codeforces.com//contest/832/problem/A", "problemId": "115517", "problem_idx": "A", "shortId": "832A", "contest_number": "832", "problem_submissions": {"C": [28850414, 28839556, 28849218, 28970707, 28860425, 28882532], "B": [28842559, 28832195, 28832637, 28833745, 28835678, 28833935, 28833416, 28838017, 28839620, 28834185, 28834397, 28835866, 28831820, 28836424, 28834235, 28834452, 28834561, 28834258], "E": [28840011, 28847209, 28846202, 28846322, 28851079, 28847674, 28848843, 28861574, 29694590], "D": [28833290, 28844072, 28839533, 28841064, 28839461, 28842570, 28835402, 28843358, 28835918, 28834140, 28836636, 28838484, 28838783, 28839031, 28841097, 28844392, 28841838, 28840397, 28840613, 28840691], "A": [28827596, 28827231, 28829917, 28828126, 28828610, 28830168, 28827850, 28827000, 28836168, 28827377, 28826850, 28827715, 28827016, 28827260, 28826966, 28827167, 28828034, 28826934, 28827600]}, "name": "A. Sasha and Sticks", "statement": "It\u2019s one more school day now. Sasha doesn\u2019t like classes and is always\r\nbored at them. So, each day he invents some game and plays in it alone\r\nor with friends.Today he invented one simple game to play with Lena,\r\nwith whom he shares a desk. The rules are simple. Sasha draws sticks in\r\na row. After that the players take turns crossing out exactly sticks\r\nfrom left or right in each turn. Sasha moves first, because he is the\r\ninventor of the game. If there are less than sticks on the paper before\r\nsome turn, the game ends. Sasha wins if he makes strictly more moves\r\nthan Lena. Sasha wants to know the result of the game before playing,\r\nyou are to help him.\r\n", "solutions": ["#include <iostream>\n\nusing namespace std;\n\nint main() {\n  cin.sync_with_stdio(false);\n  cin.tie(nullptr);\n  int64_t n, k;\n  cin >> n >> k;\n  if (n / k % 2 == 1) {\n    cout << \"YES\" << endl;\n  } else {\n    cout << \"NO\" << endl;\n  }\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["games", "math"], "dificulty": "800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/832/problem/A",
+    "problemId": "115517",
+    "problem_idx": "A",
+    "shortId": "832A",
+    "contest_number": "832",
+    "problem_submissions": {
+        "C": [
+            28850414,
+            28839556,
+            28849218,
+            28970707,
+            28860425,
+            28882532
+        ],
+        "B": [
+            28842559,
+            28832195,
+            28832637,
+            28833745,
+            28835678,
+            28833935,
+            28833416,
+            28838017,
+            28839620,
+            28834185,
+            28834397,
+            28835866,
+            28831820,
+            28836424,
+            28834235,
+            28834452,
+            28834561,
+            28834258
+        ],
+        "E": [
+            28840011,
+            28847209,
+            28846202,
+            28846322,
+            28851079,
+            28847674,
+            28848843,
+            28861574,
+            29694590
+        ],
+        "D": [
+            28833290,
+            28844072,
+            28839533,
+            28841064,
+            28839461,
+            28842570,
+            28835402,
+            28843358,
+            28835918,
+            28834140,
+            28836636,
+            28838484,
+            28838783,
+            28839031,
+            28841097,
+            28844392,
+            28841838,
+            28840397,
+            28840613,
+            28840691
+        ],
+        "A": [
+            28827596,
+            28827231,
+            28829917,
+            28828126,
+            28828610,
+            28830168,
+            28827850,
+            28827000,
+            28836168,
+            28827377,
+            28826850,
+            28827715,
+            28827016,
+            28827260,
+            28826966,
+            28827167,
+            28828034,
+            28826934,
+            28827600
+        ]
+    },
+    "name": "A. Sasha and Sticks",
+    "statement": "It\u2019s one more school day now. Sasha doesn\u2019t like classes and is always\r\nbored at them. So, each day he invents some game and plays in it alone\r\nor with friends.Today he invented one simple game to play with Lena,\r\nwith whom he shares a desk. The rules are simple. Sasha draws sticks in\r\na row. After that the players take turns crossing out exactly sticks\r\nfrom left or right in each turn. Sasha moves first, because he is the\r\ninventor of the game. If there are less than sticks on the paper before\r\nsome turn, the game ends. Sasha wins if he makes strictly more moves\r\nthan Lena. Sasha wants to know the result of the game before playing,\r\nyou are to help him.\r\n",
+    "solutions": [
+        "#include <iostream>\n\nusing namespace std;\n\nint main() {\n  cin.sync_with_stdio(false);\n  cin.tie(nullptr);\n  int64_t n, k;\n  cin >> n >> k;\n  if (n / k % 2 == 1) {\n    cout << \"YES\" << endl;\n  } else {\n    cout << \"NO\" << endl;\n  }\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "games",
+        "math"
+    ],
+    "dificulty": "800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Sasha and Sticks.json",
+    "editorial_link": "https://codeforces.com//blog/entry/53461",
+    "editorial": "Note, that it\u00e2\u0080\u0099s not important from which side sticks are being crossing\r\nout. Players will make summary turns. If this number is odd, Sasha made\r\nmore turn than Lena and won. Otherwise, Sasha and Lena made same number\r\nof turns and Sasha didn\u00e2\u0080\u0099t win.\r\n"
+}

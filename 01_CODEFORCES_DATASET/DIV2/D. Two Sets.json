@@ -1,1 +1,105 @@
-{"link": "https://codeforces.com//contest/469/problem/D", "problemId": "13932", "problem_idx": "D", "shortId": "469D", "contest_number": "469", "problem_submissions": {"D": [7876116, 7874956, 7877353, 7875879, 7876238, 7878696, 7880049, 7879604, 7880784, 7881781, 7881399, 7879768, 11704113], "A": [7871841, 7867973, 7872788, 7867411, 7867504, 7867568, 7867723, 7867280, 7868365, 7869367, 7868389, 7883163, 7867242, 7867290, 7867905, 7867413, 7867447], "B": [7871180, 7869550, 7871368, 7869737, 7871285, 7870565, 7869600, 7869418, 7872123, 7871421, 7871042, 7869770, 7869641, 7869782, 7869345, 7870155, 7872571, 7871201, 7870259], "C": [7869461, 7870930, 7869691, 7872021, 7872711, 7873725, 7871684, 7872545, 7873755, 7873123, 7873034, 7871464, 7873812, 7871462, 7872474, 7870758, 7873008, 7872626], "E": [7915862]}, "name": "D. Two Sets", "statement": "Little X has distinct integers: . He wants to divide all of them into\r\ntwo sets and . The following two conditions must be satisfied: If number\r\nbelongs to set , then number must also belong to set . If number belongs\r\nto set , then number must also belong to set . Help Little X divide the\r\nnumbers into two sets or determine that it\u2019s impossible.\r\n", "solutions": ["#include<cstdio>\n#include<cstring>\n#include<algorithm>\nusing namespace std;\nint n,A,B,a[110000],l,r,flagA[110000],flagB[110000],f[110000],fa[110000];\nint i,b[110000],ans[110000];\nint getfa(int x)\n{\n\tif(x==fa[x])return x;\n\treturn fa[x]=getfa(fa[x]);\n}\nvoid merge(int x,int y)\n{\n\tx=getfa(x);y=getfa(y);\n\tfa[x]=y;\n}\nbool cmp(int x,int y)\n{\n\treturn a[x]<a[y];\n}\nint main()\n{\n\tscanf(\"%d%d%d\",&n,&A,&B);\n\tfor(i=1;i<=n;i++)\n\t{\n\t\tscanf(\"%d\",&a[i]);\n\t\tb[i]=i;\n\t\tfa[i]=i;\n\t}\n\tsort(b+1,b+n+1,cmp);\n\tsort(a+1,a+n+1);\n\tfor(l=1,r=n;l<=r;l++)\n\t{\n\t\twhile(r>l&&a[l]+a[r]>A)r--;\n\t\tif(a[l]+a[r]==A){\n\t\t\tmerge(l,r);\n\t\t\tflagA[l]=1;\n\t\t\tflagA[r]=1;\n\t\t}\n\t}\n\tfor(l=1,r=n;l<=r;l++)\n\t{\n\t\twhile(r>l&&a[l]+a[r]>B)r--;\n\t\tif(a[l]+a[r]==B){\n\t\t\tmerge(l,r);\n\t\t\tflagB[l]=1;\n\t\t\tflagB[r]=1;\n\t\t}\n\t}\n\tfor(i=1;i<=n;i++)getfa(i);\n\tfor(i=1;i<=n;i++)\n\t{\n\t\tif(flagA[i]+flagB[i]==0)break;\n\t\tif(flagA[i]==0)\n\t\t{\n\t\t\tif(f[fa[i]]&&f[fa[i]]!=2)break;\n\t\t\tf[fa[i]]=2;\n\t\t}\n\t\tif(flagB[i]==0)\n\t\t{\n\t\t\tif(f[fa[i]]&&f[fa[i]]!=1)break;\n\t\t\tf[fa[i]]=1;\n\t\t}\n\t}\n\t\n\tif(i<=n)puts(\"NO\");\n\telse\n\t{\t\t\n\t\tputs(\"YES\");\n\t\tfor(i=1;i<=n;i++)if(f[i]==0)f[i]=1;\n\t\tfor(i=1;i<=n;i++)\n\t\t\tans[b[i]]=f[fa[i]]-1;\n\t\tfor(i=1;i<n;i++)\n\t\t\tprintf(\"%d \",ans[i]);\n\t\tprintf(\"%d\\n\",ans[n]);\n\t}\n}"], "input": "", "output": "", "tags": ["2-sat", "data structures", "graph matchings", "greedy"], "dificulty": "2000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/469/problem/D",
+    "problemId": "13932",
+    "problem_idx": "D",
+    "shortId": "469D",
+    "contest_number": "469",
+    "problem_submissions": {
+        "D": [
+            7876116,
+            7874956,
+            7877353,
+            7875879,
+            7876238,
+            7878696,
+            7880049,
+            7879604,
+            7880784,
+            7881781,
+            7881399,
+            7879768,
+            11704113
+        ],
+        "A": [
+            7871841,
+            7867973,
+            7872788,
+            7867411,
+            7867504,
+            7867568,
+            7867723,
+            7867280,
+            7868365,
+            7869367,
+            7868389,
+            7883163,
+            7867242,
+            7867290,
+            7867905,
+            7867413,
+            7867447
+        ],
+        "B": [
+            7871180,
+            7869550,
+            7871368,
+            7869737,
+            7871285,
+            7870565,
+            7869600,
+            7869418,
+            7872123,
+            7871421,
+            7871042,
+            7869770,
+            7869641,
+            7869782,
+            7869345,
+            7870155,
+            7872571,
+            7871201,
+            7870259
+        ],
+        "C": [
+            7869461,
+            7870930,
+            7869691,
+            7872021,
+            7872711,
+            7873725,
+            7871684,
+            7872545,
+            7873755,
+            7873123,
+            7873034,
+            7871464,
+            7873812,
+            7871462,
+            7872474,
+            7870758,
+            7873008,
+            7872626
+        ],
+        "E": [
+            7915862
+        ]
+    },
+    "name": "D. Two Sets",
+    "statement": "Little X has distinct integers: . He wants to divide all of them into\r\ntwo sets and . The following two conditions must be satisfied: If number\r\nbelongs to set , then number must also belong to set . If number belongs\r\nto set , then number must also belong to set . Help Little X divide the\r\nnumbers into two sets or determine that it\u2019s impossible.\r\n",
+    "solutions": [
+        "#include<cstdio>\n#include<cstring>\n#include<algorithm>\nusing namespace std;\nint n,A,B,a[110000],l,r,flagA[110000],flagB[110000],f[110000],fa[110000];\nint i,b[110000],ans[110000];\nint getfa(int x)\n{\n\tif(x==fa[x])return x;\n\treturn fa[x]=getfa(fa[x]);\n}\nvoid merge(int x,int y)\n{\n\tx=getfa(x);y=getfa(y);\n\tfa[x]=y;\n}\nbool cmp(int x,int y)\n{\n\treturn a[x]<a[y];\n}\nint main()\n{\n\tscanf(\"%d%d%d\",&n,&A,&B);\n\tfor(i=1;i<=n;i++)\n\t{\n\t\tscanf(\"%d\",&a[i]);\n\t\tb[i]=i;\n\t\tfa[i]=i;\n\t}\n\tsort(b+1,b+n+1,cmp);\n\tsort(a+1,a+n+1);\n\tfor(l=1,r=n;l<=r;l++)\n\t{\n\t\twhile(r>l&&a[l]+a[r]>A)r--;\n\t\tif(a[l]+a[r]==A){\n\t\t\tmerge(l,r);\n\t\t\tflagA[l]=1;\n\t\t\tflagA[r]=1;\n\t\t}\n\t}\n\tfor(l=1,r=n;l<=r;l++)\n\t{\n\t\twhile(r>l&&a[l]+a[r]>B)r--;\n\t\tif(a[l]+a[r]==B){\n\t\t\tmerge(l,r);\n\t\t\tflagB[l]=1;\n\t\t\tflagB[r]=1;\n\t\t}\n\t}\n\tfor(i=1;i<=n;i++)getfa(i);\n\tfor(i=1;i<=n;i++)\n\t{\n\t\tif(flagA[i]+flagB[i]==0)break;\n\t\tif(flagA[i]==0)\n\t\t{\n\t\t\tif(f[fa[i]]&&f[fa[i]]!=2)break;\n\t\t\tf[fa[i]]=2;\n\t\t}\n\t\tif(flagB[i]==0)\n\t\t{\n\t\t\tif(f[fa[i]]&&f[fa[i]]!=1)break;\n\t\t\tf[fa[i]]=1;\n\t\t}\n\t}\n\t\n\tif(i<=n)puts(\"NO\");\n\telse\n\t{\t\t\n\t\tputs(\"YES\");\n\t\tfor(i=1;i<=n;i++)if(f[i]==0)f[i]=1;\n\t\tfor(i=1;i<=n;i++)\n\t\t\tans[b[i]]=f[fa[i]]-1;\n\t\tfor(i=1;i<n;i++)\n\t\t\tprintf(\"%d \",ans[i]);\n\t\tprintf(\"%d\\n\",ans[n]);\n\t}\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "2-sat",
+        "data structures",
+        "graph matchings",
+        "greedy"
+    ],
+    "dificulty": "2000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Two Sets.json",
+    "editorial_link": "https://codeforces.com//blog/entry/13896",
+    "editorial": "If we have number x and a?-?x, they should be in the same set. If , it's obvious that . The contraposition of it is , that means if , a?-?x should in the set B. Same as the number x,?b?-?x.\n\nSo we can use Disjoint Set Union to merge the number that should be in the same set.\n\nIf a?-?x doesn't exist, x can not be in the set A. If b?-?x doesn't exist, b can not be in the set B.\n\nThen check if there are any conflicts among numbers which should be in the same set.\n\nThere are many other solutions to solve this problem based on the fact that x,?a?-?x,?b?-?x should be in the same set, like greedy, BFS and 2-SAT."
+}

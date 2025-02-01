@@ -1,1 +1,78 @@
-{"link": "https://codeforces.com//contest/312/problem/C", "problemId": "3075", "problem_idx": "C", "shortId": "312C", "contest_number": "312", "problem_submissions": {"E": [3778375], "C": [3774702, 3773864, 3774792, 3774689, 3776105, 3773907, 3773846, 3775050, 3773635, 3774279, 3774399, 3773754, 3775215, 3774292, 3774384], "B": [3773077, 3774557, 3779474, 3775117, 3773571, 3772833, 3772990, 3773895, 3772721, 3773544, 3773209, 3774498, 3773503, 3773699], "A": [3772354, 3772684, 3772223, 3772222, 3772433, 3772649, 3772082, 3772196, 3772425, 3772220, 3772483, 3773026], "D": [3778537, 3783020]}, "name": "C. The Closest Pair", "statement": "Currently Tiny is learning Computational Geometry. When trying to solve\r\na problem called \"The Closest Pair Of Points In The Plane\", he found\r\nthat a code which gave a wrong time complexity got Accepted instead of\r\nTime Limit Exceeded.The problem is the follows. Given points in the\r\nplane, find a pair of points between which the distance is minimized.\r\nDistance between and is .The pseudo code of the unexpected code is as\r\nfollows:input nfor i from 1 to n input the i-th point\u2019s coordinates into\r\np[i]sort array p[] by increasing of x coordinate first and increasing of\r\ny coordinate secondd=INF //here INF is a number big enoughtot=0for i\r\nfrom 1 to n for j from (i+1) to n ++tot if (p[j].x-p[i].x>=d) then break\r\n//notice that \"break\" is only to be //out of the loop \"for j\"\r\nd=min(d,distance(p[i],p[j]))output dHere, can be regarded as the running\r\ntime of the code. Due to the fact that a computer can only run a limited\r\nnumber of operations per second, should not be more than in order not to\r\nget Time Limit Exceeded.You are a great hacker. Would you please help\r\nTiny generate a test data and let the code get Time Limit Exceeded?\r\n", "solutions": ["#include<cstdio>\nint n,k;\nint main()\n{\n    scanf(\"%d%d\",&n,&k);\n    if (n==4 && k==3)\n    {\n        puts(\"0 0\\n0 1\\n1 0\\n1 1\");\n    }\n    else\n    if (k>=n*(n-1)>>1)\n    {\n        puts(\"no solution\");\n    }\n    else\n    {\n        for (int i=0;i<n;i++)\n            printf(\"12345 %d\\n\",12345+i);\n    }\n}\n"], "input": "", "output": "", "tags": ["constructive algorithms"], "dificulty": "1300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/312/problem/C",
+    "problemId": "3075",
+    "problem_idx": "C",
+    "shortId": "312C",
+    "contest_number": "312",
+    "problem_submissions": {
+        "E": [
+            3778375
+        ],
+        "C": [
+            3774702,
+            3773864,
+            3774792,
+            3774689,
+            3776105,
+            3773907,
+            3773846,
+            3775050,
+            3773635,
+            3774279,
+            3774399,
+            3773754,
+            3775215,
+            3774292,
+            3774384
+        ],
+        "B": [
+            3773077,
+            3774557,
+            3779474,
+            3775117,
+            3773571,
+            3772833,
+            3772990,
+            3773895,
+            3772721,
+            3773544,
+            3773209,
+            3774498,
+            3773503,
+            3773699
+        ],
+        "A": [
+            3772354,
+            3772684,
+            3772223,
+            3772222,
+            3772433,
+            3772649,
+            3772082,
+            3772196,
+            3772425,
+            3772220,
+            3772483,
+            3773026
+        ],
+        "D": [
+            3778537,
+            3783020
+        ]
+    },
+    "name": "C. The Closest Pair",
+    "statement": "Currently Tiny is learning Computational Geometry. When trying to solve\r\na problem called \"The Closest Pair Of Points In The Plane\", he found\r\nthat a code which gave a wrong time complexity got Accepted instead of\r\nTime Limit Exceeded.The problem is the follows. Given points in the\r\nplane, find a pair of points between which the distance is minimized.\r\nDistance between and is .The pseudo code of the unexpected code is as\r\nfollows:input nfor i from 1 to n input the i-th point\u2019s coordinates into\r\np[i]sort array p[] by increasing of x coordinate first and increasing of\r\ny coordinate secondd=INF //here INF is a number big enoughtot=0for i\r\nfrom 1 to n for j from (i+1) to n ++tot if (p[j].x-p[i].x>=d) then break\r\n//notice that \"break\" is only to be //out of the loop \"for j\"\r\nd=min(d,distance(p[i],p[j]))output dHere, can be regarded as the running\r\ntime of the code. Due to the fact that a computer can only run a limited\r\nnumber of operations per second, should not be more than in order not to\r\nget Time Limit Exceeded.You are a great hacker. Would you please help\r\nTiny generate a test data and let the code get Time Limit Exceeded?\r\n",
+    "solutions": [
+        "#include<cstdio>\nint n,k;\nint main()\n{\n    scanf(\"%d%d\",&n,&k);\n    if (n==4 && k==3)\n    {\n        puts(\"0 0\\n0 1\\n1 0\\n1 1\");\n    }\n    else\n    if (k>=n*(n-1)>>1)\n    {\n        puts(\"no solution\");\n    }\n    else\n    {\n        for (int i=0;i<n;i++)\n            printf(\"12345 %d\\n\",12345+i);\n    }\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms"
+    ],
+    "dificulty": "1300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. The Closest Pair.json",
+    "editorial_link": "https://codeforces.com//blog/entry/7785",
+    "editorial": "We read the pseudo code carefully. If we ignore \"break\", tot will be up to .\n\nConsider whether we can make such inequality d???p[j].x?-?p[i].x is always false. The obvious way is to make all points' x coordinates the same. And we can just choose n distinct numbers to be all points' y coordinate.\n"
+}

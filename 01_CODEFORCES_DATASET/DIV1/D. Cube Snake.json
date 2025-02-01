@@ -1,1 +1,98 @@
-{"link": "https://codeforces.com//contest/198/problem/D", "problemId": "1448", "problem_idx": "D", "shortId": "198D", "contest_number": "198", "problem_submissions": {"E": [1817442, 1818751, 1818461, 1820730, 1819267, 1821471, 1819987, 1819731, 1818122, 1819919, 1819588, 1819229, 1819125, 1819917, 2420309, 1817542, 1817874, 1820376, 1835182, 1819847, 1819258], "A": [1819310, 1813993, 1814854, 1820599, 1815833, 1816813, 1813956, 1814317, 1814982, 1815662, 1815174, 1814496, 1814482, 1814086, 1815782, 1816889], "C": [1817120, 1818867, 1817644, 1821444, 1817692, 1819000, 1822292, 1816526, 1821976], "B": [1815258, 1814636, 1815561, 1815178, 1815418, 1816320, 1814734, 1814896, 1816104, 1816217, 1816891, 1816230, 1815769, 1815481, 1815083, 1816661, 1816543], "D": [1819062]}, "name": "D. Cube Snake", "statement": "You\u2019ve got an cube, split into unit cubes. Your task is to number all\r\nunit cubes in this cube with positive integers from to so that: each\r\nnumber was used as a cube\u2019s number exactly once; for each , unit cubes\r\nwith numbers and were neighbouring (that is, shared a side); for each\r\nthere were at least two different subcubes with sizes , made from unit\r\ncubes, which are numbered with consecutive numbers. That is, there are\r\nsuch two numbers and , that the unit cubes of the first subcube are\r\nnumbered by numbers , , , , and the unit cubes of the second subcube are\r\nnumbered by numbers , , , . Find and print the required numeration of\r\nunit cubes of the cube.\r\n", "solutions": ["/*\nAuthor: elfness@UESTC\n*/\n#include<cstdio>\n#include<cstring>\n#include<cstdlib>\n#include<cmath>\n#include<algorithm>\n#include<iostream>\n#include<vector>\n#include<string>\nusing namespace std;\ntypedef long long LL;\nconst int V=53;\nint sqr(int x){return x*x;}\nint a[V][V][V][V],te[V][V][V];\nint n,i,j,k,nx,ny,nz,dr,d,ct;\nint main()\n{\n\ta[1][1][1][1]=1;\n\ta[2][1][1][1]=1;\n\ta[2][1][2][1]=4;\n\ta[2][2][1][1]=2;\n\ta[2][2][2][1]=3;\n\ta[2][1][1][2]=8;\n\ta[2][1][2][2]=5;\n\ta[2][2][1][2]=7;\n\ta[2][2][2][2]=6;\n\tfor(n=2;n<=50;n++)\n\t{\n\t\t//printf(\"%d\\n\",n);\n\t\td=sqr(n);\n\t\tfor(i=1;i<=n;i++)\n\t\tfor(j=1;j<=n;j++)\n\t\tfor(k=1;k<=n;k++)\n\t\ta[n+1][i][j][k+1]=a[n][i][j][k]+d;\n\t\tnx=1;ny=n;nz=1;dr=1;ct=1;\n\t\tif(n%2==0)\n\t\t{\n\t\t\twhile(1)\n\t\t\t{\n\t\t\t\tif(ny<1)break;\n\t\t\t\ta[n+1][nx][ny][nz]=ct;\n\t\t\t\tct++;\n\t\t\t\tif(nx+dr<1||nx+dr>n)\n\t\t\t\tdr*=-1,ny--;\n\t\t\t\telse nx+=dr;\n\t\t\t}\n\t\t}\n\t\telse\n\t\t{\n\t\t\twhile(1)\n\t\t\t{\n\t\t\t\tif(ny==n-1)break;\n\t\t\t\ta[n+1][nx][ny][nz]=ct;\n\t\t\t\tct++;\n\t\t\t\tif(nx+dr<1||nx+dr>n)\n\t\t\t\tdr*=-1,ny--;\n\t\t\t\telse nx+=dr;\n\t\t\t}\n\t\t\twhile(1)\n\t\t\t{\n\t\t\t\tif(nx<1)break;\n\t\t\t\ta[n+1][nx][ny][nz]=ct;\n\t\t\t\tct++;\n\t\t\t\tif(ny+dr<1||ny+dr>n-1)\n\t\t\t\tdr*=-1,nx--;\n\t\t\t\telse ny+=dr;\n\t\t\t}\n\t\t}\n\t\tfor(i=1;i<=n;i++)\n\t\tfor(j=1;j<=n;j++)\n\t\tfor(k=1;k<=n+1;k++)\n\t\tte[n+1-j][i][k]=a[n+1][i][j][k];\n\t\tfor(i=1;i<=n;i++)\n\t\tfor(j=1;j<=n;j++)\n\t\tfor(k=1;k<=n+1;k++)\n\t\ta[n+1][i][j][k]=te[i][j][k];\n\t\tct=n*n*n+d+1;\n\t\tnx=n+1;ny=1;nz=n+1;dr=-1;\n\t\twhile(1)\n\t\t{\n\t\t\tif(ny>n+1)break;\n\t\t\ta[n+1][nx][ny][nz]=ct;\n\t\t\tct++;\n\t\t\tif(nz+dr<1||nz+dr>n+1)\n\t\t\tdr*=-1,ny++;\n\t\t\telse nz+=dr;\n\t\t}\n\t\tny--;nx--;\n\t\twhile(1)\n\t\t{\n\t\t\tif(nx<1)break;\n\t\t\ta[n+1][nx][ny][nz]=ct;\n\t\t\tct++;\n\t\t\tif(nz+dr<1||nz+dr>n+1)\n\t\t\tdr*=-1,nx--;\n\t\t\telse nz+=dr;\n\t\t}\n\t\tfor(i=1;i<=n+1;i++)\n\t\tfor(j=1;j<=n+1;j++)\n\t\tfor(k=1;k<=n+1;k++)\n\t\tte[i][k][j]=a[n+1][i][j][k];\n\t\tfor(i=1;i<=n+1;i++)\n\t\tfor(j=1;j<=n+1;j++)\n\t\tfor(k=1;k<=n+1;k++)\n\t\ta[n+1][i][j][k]=te[i][j][k];\n\t}\n\twhile(~scanf(\"%d\",&n))\n\t{\n\t\tfor(i=1;i<=n;i++)\n\t\t{\n\t\t\tfor(j=1;j<=n;j++)\n\t\t\t{\n\t\t\t\tfor(k=1;k<=n;k++)\n\t\t\t\t{\n\t\t\t\t\tif(k!=1)printf(\" \");\n\t\t\t\t\tprintf(\"%d\",a[n][j][k][i]);\n\t\t\t\t}puts(\"\");\n\t\t\t}puts(\"\");\n\t\t}\n\t}\n}\n"], "input": "", "output": "", "tags": ["constructive algorithms"], "dificulty": "2700", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/198/problem/D",
+    "problemId": "1448",
+    "problem_idx": "D",
+    "shortId": "198D",
+    "contest_number": "198",
+    "problem_submissions": {
+        "E": [
+            1817442,
+            1818751,
+            1818461,
+            1820730,
+            1819267,
+            1821471,
+            1819987,
+            1819731,
+            1818122,
+            1819919,
+            1819588,
+            1819229,
+            1819125,
+            1819917,
+            2420309,
+            1817542,
+            1817874,
+            1820376,
+            1835182,
+            1819847,
+            1819258
+        ],
+        "A": [
+            1819310,
+            1813993,
+            1814854,
+            1820599,
+            1815833,
+            1816813,
+            1813956,
+            1814317,
+            1814982,
+            1815662,
+            1815174,
+            1814496,
+            1814482,
+            1814086,
+            1815782,
+            1816889
+        ],
+        "C": [
+            1817120,
+            1818867,
+            1817644,
+            1821444,
+            1817692,
+            1819000,
+            1822292,
+            1816526,
+            1821976
+        ],
+        "B": [
+            1815258,
+            1814636,
+            1815561,
+            1815178,
+            1815418,
+            1816320,
+            1814734,
+            1814896,
+            1816104,
+            1816217,
+            1816891,
+            1816230,
+            1815769,
+            1815481,
+            1815083,
+            1816661,
+            1816543
+        ],
+        "D": [
+            1819062
+        ]
+    },
+    "name": "D. Cube Snake",
+    "statement": "You\u2019ve got an cube, split into unit cubes. Your task is to number all\r\nunit cubes in this cube with positive integers from to so that: each\r\nnumber was used as a cube\u2019s number exactly once; for each , unit cubes\r\nwith numbers and were neighbouring (that is, shared a side); for each\r\nthere were at least two different subcubes with sizes , made from unit\r\ncubes, which are numbered with consecutive numbers. That is, there are\r\nsuch two numbers and , that the unit cubes of the first subcube are\r\nnumbered by numbers , , , , and the unit cubes of the second subcube are\r\nnumbered by numbers , , , . Find and print the required numeration of\r\nunit cubes of the cube.\r\n",
+    "solutions": [
+        "/*\nAuthor: elfness@UESTC\n*/\n#include<cstdio>\n#include<cstring>\n#include<cstdlib>\n#include<cmath>\n#include<algorithm>\n#include<iostream>\n#include<vector>\n#include<string>\nusing namespace std;\ntypedef long long LL;\nconst int V=53;\nint sqr(int x){return x*x;}\nint a[V][V][V][V],te[V][V][V];\nint n,i,j,k,nx,ny,nz,dr,d,ct;\nint main()\n{\n\ta[1][1][1][1]=1;\n\ta[2][1][1][1]=1;\n\ta[2][1][2][1]=4;\n\ta[2][2][1][1]=2;\n\ta[2][2][2][1]=3;\n\ta[2][1][1][2]=8;\n\ta[2][1][2][2]=5;\n\ta[2][2][1][2]=7;\n\ta[2][2][2][2]=6;\n\tfor(n=2;n<=50;n++)\n\t{\n\t\t//printf(\"%d\\n\",n);\n\t\td=sqr(n);\n\t\tfor(i=1;i<=n;i++)\n\t\tfor(j=1;j<=n;j++)\n\t\tfor(k=1;k<=n;k++)\n\t\ta[n+1][i][j][k+1]=a[n][i][j][k]+d;\n\t\tnx=1;ny=n;nz=1;dr=1;ct=1;\n\t\tif(n%2==0)\n\t\t{\n\t\t\twhile(1)\n\t\t\t{\n\t\t\t\tif(ny<1)break;\n\t\t\t\ta[n+1][nx][ny][nz]=ct;\n\t\t\t\tct++;\n\t\t\t\tif(nx+dr<1||nx+dr>n)\n\t\t\t\tdr*=-1,ny--;\n\t\t\t\telse nx+=dr;\n\t\t\t}\n\t\t}\n\t\telse\n\t\t{\n\t\t\twhile(1)\n\t\t\t{\n\t\t\t\tif(ny==n-1)break;\n\t\t\t\ta[n+1][nx][ny][nz]=ct;\n\t\t\t\tct++;\n\t\t\t\tif(nx+dr<1||nx+dr>n)\n\t\t\t\tdr*=-1,ny--;\n\t\t\t\telse nx+=dr;\n\t\t\t}\n\t\t\twhile(1)\n\t\t\t{\n\t\t\t\tif(nx<1)break;\n\t\t\t\ta[n+1][nx][ny][nz]=ct;\n\t\t\t\tct++;\n\t\t\t\tif(ny+dr<1||ny+dr>n-1)\n\t\t\t\tdr*=-1,nx--;\n\t\t\t\telse ny+=dr;\n\t\t\t}\n\t\t}\n\t\tfor(i=1;i<=n;i++)\n\t\tfor(j=1;j<=n;j++)\n\t\tfor(k=1;k<=n+1;k++)\n\t\tte[n+1-j][i][k]=a[n+1][i][j][k];\n\t\tfor(i=1;i<=n;i++)\n\t\tfor(j=1;j<=n;j++)\n\t\tfor(k=1;k<=n+1;k++)\n\t\ta[n+1][i][j][k]=te[i][j][k];\n\t\tct=n*n*n+d+1;\n\t\tnx=n+1;ny=1;nz=n+1;dr=-1;\n\t\twhile(1)\n\t\t{\n\t\t\tif(ny>n+1)break;\n\t\t\ta[n+1][nx][ny][nz]=ct;\n\t\t\tct++;\n\t\t\tif(nz+dr<1||nz+dr>n+1)\n\t\t\tdr*=-1,ny++;\n\t\t\telse nz+=dr;\n\t\t}\n\t\tny--;nx--;\n\t\twhile(1)\n\t\t{\n\t\t\tif(nx<1)break;\n\t\t\ta[n+1][nx][ny][nz]=ct;\n\t\t\tct++;\n\t\t\tif(nz+dr<1||nz+dr>n+1)\n\t\t\tdr*=-1,nx--;\n\t\t\telse nz+=dr;\n\t\t}\n\t\tfor(i=1;i<=n+1;i++)\n\t\tfor(j=1;j<=n+1;j++)\n\t\tfor(k=1;k<=n+1;k++)\n\t\tte[i][k][j]=a[n+1][i][j][k];\n\t\tfor(i=1;i<=n+1;i++)\n\t\tfor(j=1;j<=n+1;j++)\n\t\tfor(k=1;k<=n+1;k++)\n\t\ta[n+1][i][j][k]=te[i][j][k];\n\t}\n\twhile(~scanf(\"%d\",&n))\n\t{\n\t\tfor(i=1;i<=n;i++)\n\t\t{\n\t\t\tfor(j=1;j<=n;j++)\n\t\t\t{\n\t\t\t\tfor(k=1;k<=n;k++)\n\t\t\t\t{\n\t\t\t\t\tif(k!=1)printf(\" \");\n\t\t\t\t\tprintf(\"%d\",a[n][j][k][i]);\n\t\t\t\t}puts(\"\");\n\t\t\t}puts(\"\");\n\t\t}\n\t}\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms"
+    ],
+    "dificulty": "2700",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Cube Snake.json",
+    "editorial_link": "https://codeforces.com//blog/entry/4764",
+    "editorial": "We will construct solution recursively. For every k it is possible construct parallelepiped k?\u00d7?k?\u00d7?(k?+?1) that contains 2 cubes k?\u00d7?k?\u00d7?k. For k?=?2 solution is oblivious?. How to build solutions for k?>?2 is shown in following picture:\n\n \n\nRed and blue cubes are start and end of chain. Firstly you should build one floor over. Then you should build 2 layers on two opposite sides.\n\nFor every n you can build parallelepiped n?\u00d7?n?\u00d7?(n?+?1), and drop one layer for getting cube n?\u00d7?n?\u00d7?n."
+}

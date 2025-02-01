@@ -1,1 +1,102 @@
-{"link": "https://codeforces.com//contest/571/problem/E", "problemId": "33725", "problem_idx": "E", "shortId": "571E", "contest_number": "571", "problem_submissions": {"D": [12660141, 12662761, 146472300, 12667793, 12667782, 12667705, 12667665, 12977746, 12977742], "C": [12653738, 12650335, 12656737, 12656719, 12656852, 12658376, 12657879, 12657167, 12658357, 12667656, 12659401, 12658758, 12659293, 12657644, 12661004, 12659862, 12660042, 12658285, 12661048, 12660704], "B": [12648491, 12654015, 12650873, 12650680, 12651137, 12650734, 12651603, 12652409, 12652256, 12649494, 12651874, 12649612, 12648817, 12649026, 12653251, 12652866, 12650455, 12653013, 12651835], "A": [12646811, 12656074, 12648816, 12646668, 12647772, 12648996, 12648968, 12649621, 12647841, 12646486, 12649024, 12647834, 12659587, 12647059, 12649810, 12649525, 12660696, 12648257, 12647136], "E": [13830424]}, "name": "E. Geometric Progressions", "statement": "Geometric progression with the first element and common ratio is a\r\nsequence of numbers .You are given integer geometric progressions. Your\r\ntask is to find the smallest integer , that is the element of all the\r\ngiven progressions, or else state that such integer does not exist.\r\n", "solutions": ["#include <bits/stdc++.h>\n\n#define mp make_pair\n#define fs first\n#define sc second\n#define pb push_back\n#define eb emplace_back\n\n#define all(s) (s).begin(), (s).end()\n#define sz(s) ((int) ((s).size()))\n\ntypedef long long ll;\ntypedef long double ld;\n\nconst int INF = 1e9;\nconst ll lINF = 1e18;\nconst double EPS = 1e-12;\n\n#ifdef _WIN32\n#define LLD \"%I64d\"\n#else\n#define LLD \"%lld\"\n#endif\n\nusing namespace std;\n\nconst int N = 111;\nint n;\nint a[N], b[N];\nmap<int, ll> pa[N], pb[N];\nconst int MOD = 1e9 + 7;\n\nvoid makenotcollinear(int i, int p1, int p2) {\n    ll x1 = pa[0][p1], y1 = pa[0][p2];\n    ll dx1 = pb[0][p1], dy1 = pb[0][p2];\n    ll x2 = pa[i][p1], y2 = pa[i][p2];\n    ll dx2 = pb[i][p1], dy2 = pb[i][p2];\n    ll normx = -dy2, normy = dx2;\n    ll want = (x2 - x1) * normx + (y2 - y1) * normy;\n    ll step = dx1 * normx + dy1 * normy;\n    assert(step != 0);\n    ll mult = want / step;\n    for (auto j : pb[i]) {\n        pa[0][j.fs] += pb[0][j.fs] * mult;\n    }\n}\n\nint power(int a, ll p) {\n    int res = 1;\n    for (; p; p >>= 1) {\n        if (p & 1) {\n            res = (res * 1ll * a) % MOD;\n        }\n        a = (a * 1ll * a) % MOD;\n    }\n    return res;\n}\n\nll prod(ll a, ll b, ll curmod) {\n    ll res = 0;\n    bool flag = false;\n    if (b < 0) {\n        b = -b;\n        flag = true;\n    }\n    for (; b; b >>= 1) {\n        if (b & 1) {\n            res = (res + a) % curmod;\n        }\n        a = a * 2 % curmod;\n    }\n    if (flag) {\n        res = -res;\n    }\n    return res;\n}\n\nll gcdExt(ll a, ll b, ll & M, ll & N) {\n    if (b == 0) {\n        M = 1;\n        N = 0;\n        return a;\n    } else {\n        ll k = a / b;\n        ll res = gcdExt(b, a - k * b, M, N);\n        swap(M, N);\n        N -= k * M;\n        return res;\n    }\n}\n\nvoid solve() {\n    bool ok = true;\n    for (int i = 1; i < n && ok; i++) {\n        vector<int> primes;\n        for (auto j : pa[0]) {\n            primes.pb(j.fs);\n        }\n        for (auto j : pa[i]) {\n            primes.pb(j.fs);\n        }\n        for (auto j : pb[i]) {\n            primes.pb(j.fs);\n        }\n        ll mult = -1;\n        for (auto j : primes) {\n            ll want = pa[0][j];\n            ll have = pa[i][j];\n            if (pb[i][j] == 0) {\n                if (have != want) {\n                    ok = false;\n                    break;\n                }\n            } else {\n                if (mult != -1) {\n                    if (mult * pb[i][j] + have != want) {\n                        ok = false;\n                        break;\n                    }\n                } else {\n                    mult = (want - have) / pb[i][j];\n                    if (mult < 0 || mult * pb[i][j] + have != want) {\n                        ok = false;\n                        break;\n                    }\n                }\n            }\n        }\n    }\n    if (ok) {\n        int ans = 1;\n        for (auto i : pa[0]) {\n            ans = ans * 1ll * power(i.fs, i.sc) % MOD;\n        }\n        printf(\"%d\\n\", ans);\n    } else {\n        printf(\"-1\\n\");\n    }\n}\n\nint main()\n{\n#ifdef DEBUG\n    freopen(\"text.in\", \"r\", stdin);\n#endif\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d%d\", a + i, b + i);\n        if (b[i] != 1) {\n            swap(a[i], a[0]);\n            swap(b[i], b[0]);\n        }\n    }\n    for (int i = 0; i < n; i++) {\n        for (int j = 2; j * j <= a[i]; j++) {\n            while (a[i] % j == 0) {\n                a[i] /= j;\n                pa[i][j]++;\n            }\n        }\n        if (a[i] > 1) {\n            pa[i][a[i]]++;\n        }\n        for (int j = 2; j * j <= b[i]; j++) {\n            while (b[i] % j == 0) {\n                b[i] /= j;\n                pb[i][j]++;\n            }\n        }\n        if (b[i] > 1) {\n            pb[i][b[i]]++;\n        }\n    }\n    int p1 = 2, p1cnt = 0;\n    for (auto i : pb[0]) {\n        if (i.sc != 0) {\n            p1 = i.fs;\n            p1cnt = i.sc;\n        }\n    }\n    bool collinear = true;\n    for (int i = 1; i < n; i++) {\n        int cur = pb[i][p1];\n        for (auto j : pb[i]) {\n            if (pb[0][j.fs] * cur != j.sc * p1cnt) {\n                makenotcollinear(i, p1, j.fs);\n                collinear = false;\n            }\n        }\n        for (auto j : pb[0]) {\n            if (j.sc * cur != pb[i][j.fs] * p1cnt) {\n                makenotcollinear(i, p1, j.fs);\n                collinear = false;\n            }\n        }\n    }\n    if (!collinear) {\n        solve();\n    } else {\n        ll a = pa[0][p1];\n        ll b = pb[0][p1];\n        if (b == 0) {\n            solve();\n        } else {\n            a %= b;\n            bool ok = true;\n            for (int i = 1; i < n; i++) {\n                ll c = pb[i][p1];\n                if (c == 0) {\n                    if (a != pa[i][p1] % b) {\n                        ok = false;\n                        break;\n                    } else {\n                        a = pa[i][p1];\n                        continue;\n                    }\n                }\n                ll M, N;\n                ll g = gcdExt(b, c, M, N);\n                ll d = pa[i][p1];\n                if (a % g != d % g) {\n                    ok = false;\n                    break;\n                }\n                ll lcm = b / g * c;\n                ll na = prod(M, b, lcm);\n                na = prod(na, (d % c - a % c) / g, lcm);\n                na += a;\n                na %= lcm;\n                if (na < 0) {\n                    na += lcm;\n                }\n                a = na;\n                b = lcm;\n            }\n            if (!ok) {\n                printf(\"-1\\n\");\n            } else {\n                for (int i = 0; i < n; i++) {\n                    while (pa[i][p1] > a) {\n                        a += pb[i][p1];\n                    }\n                }\n                ll add = (a - pa[0][p1]) / pb[0][p1];\n                for (auto & i : pa[0]) {\n                    i.sc += pb[0][i.fs] * add;\n                }\n                solve();\n            }\n        }\n    }\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["math"], "dificulty": "3200", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/571/problem/E",
+    "problemId": "33725",
+    "problem_idx": "E",
+    "shortId": "571E",
+    "contest_number": "571",
+    "problem_submissions": {
+        "D": [
+            12660141,
+            12662761,
+            146472300,
+            12667793,
+            12667782,
+            12667705,
+            12667665,
+            12977746,
+            12977742
+        ],
+        "C": [
+            12653738,
+            12650335,
+            12656737,
+            12656719,
+            12656852,
+            12658376,
+            12657879,
+            12657167,
+            12658357,
+            12667656,
+            12659401,
+            12658758,
+            12659293,
+            12657644,
+            12661004,
+            12659862,
+            12660042,
+            12658285,
+            12661048,
+            12660704
+        ],
+        "B": [
+            12648491,
+            12654015,
+            12650873,
+            12650680,
+            12651137,
+            12650734,
+            12651603,
+            12652409,
+            12652256,
+            12649494,
+            12651874,
+            12649612,
+            12648817,
+            12649026,
+            12653251,
+            12652866,
+            12650455,
+            12653013,
+            12651835
+        ],
+        "A": [
+            12646811,
+            12656074,
+            12648816,
+            12646668,
+            12647772,
+            12648996,
+            12648968,
+            12649621,
+            12647841,
+            12646486,
+            12649024,
+            12647834,
+            12659587,
+            12647059,
+            12649810,
+            12649525,
+            12660696,
+            12648257,
+            12647136
+        ],
+        "E": [
+            13830424
+        ]
+    },
+    "name": "E. Geometric Progressions",
+    "statement": "Geometric progression with the first element and common ratio is a\r\nsequence of numbers .You are given integer geometric progressions. Your\r\ntask is to find the smallest integer , that is the element of all the\r\ngiven progressions, or else state that such integer does not exist.\r\n",
+    "solutions": [
+        "#include <bits/stdc++.h>\n\n#define mp make_pair\n#define fs first\n#define sc second\n#define pb push_back\n#define eb emplace_back\n\n#define all(s) (s).begin(), (s).end()\n#define sz(s) ((int) ((s).size()))\n\ntypedef long long ll;\ntypedef long double ld;\n\nconst int INF = 1e9;\nconst ll lINF = 1e18;\nconst double EPS = 1e-12;\n\n#ifdef _WIN32\n#define LLD \"%I64d\"\n#else\n#define LLD \"%lld\"\n#endif\n\nusing namespace std;\n\nconst int N = 111;\nint n;\nint a[N], b[N];\nmap<int, ll> pa[N], pb[N];\nconst int MOD = 1e9 + 7;\n\nvoid makenotcollinear(int i, int p1, int p2) {\n    ll x1 = pa[0][p1], y1 = pa[0][p2];\n    ll dx1 = pb[0][p1], dy1 = pb[0][p2];\n    ll x2 = pa[i][p1], y2 = pa[i][p2];\n    ll dx2 = pb[i][p1], dy2 = pb[i][p2];\n    ll normx = -dy2, normy = dx2;\n    ll want = (x2 - x1) * normx + (y2 - y1) * normy;\n    ll step = dx1 * normx + dy1 * normy;\n    assert(step != 0);\n    ll mult = want / step;\n    for (auto j : pb[i]) {\n        pa[0][j.fs] += pb[0][j.fs] * mult;\n    }\n}\n\nint power(int a, ll p) {\n    int res = 1;\n    for (; p; p >>= 1) {\n        if (p & 1) {\n            res = (res * 1ll * a) % MOD;\n        }\n        a = (a * 1ll * a) % MOD;\n    }\n    return res;\n}\n\nll prod(ll a, ll b, ll curmod) {\n    ll res = 0;\n    bool flag = false;\n    if (b < 0) {\n        b = -b;\n        flag = true;\n    }\n    for (; b; b >>= 1) {\n        if (b & 1) {\n            res = (res + a) % curmod;\n        }\n        a = a * 2 % curmod;\n    }\n    if (flag) {\n        res = -res;\n    }\n    return res;\n}\n\nll gcdExt(ll a, ll b, ll & M, ll & N) {\n    if (b == 0) {\n        M = 1;\n        N = 0;\n        return a;\n    } else {\n        ll k = a / b;\n        ll res = gcdExt(b, a - k * b, M, N);\n        swap(M, N);\n        N -= k * M;\n        return res;\n    }\n}\n\nvoid solve() {\n    bool ok = true;\n    for (int i = 1; i < n && ok; i++) {\n        vector<int> primes;\n        for (auto j : pa[0]) {\n            primes.pb(j.fs);\n        }\n        for (auto j : pa[i]) {\n            primes.pb(j.fs);\n        }\n        for (auto j : pb[i]) {\n            primes.pb(j.fs);\n        }\n        ll mult = -1;\n        for (auto j : primes) {\n            ll want = pa[0][j];\n            ll have = pa[i][j];\n            if (pb[i][j] == 0) {\n                if (have != want) {\n                    ok = false;\n                    break;\n                }\n            } else {\n                if (mult != -1) {\n                    if (mult * pb[i][j] + have != want) {\n                        ok = false;\n                        break;\n                    }\n                } else {\n                    mult = (want - have) / pb[i][j];\n                    if (mult < 0 || mult * pb[i][j] + have != want) {\n                        ok = false;\n                        break;\n                    }\n                }\n            }\n        }\n    }\n    if (ok) {\n        int ans = 1;\n        for (auto i : pa[0]) {\n            ans = ans * 1ll * power(i.fs, i.sc) % MOD;\n        }\n        printf(\"%d\\n\", ans);\n    } else {\n        printf(\"-1\\n\");\n    }\n}\n\nint main()\n{\n#ifdef DEBUG\n    freopen(\"text.in\", \"r\", stdin);\n#endif\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d%d\", a + i, b + i);\n        if (b[i] != 1) {\n            swap(a[i], a[0]);\n            swap(b[i], b[0]);\n        }\n    }\n    for (int i = 0; i < n; i++) {\n        for (int j = 2; j * j <= a[i]; j++) {\n            while (a[i] % j == 0) {\n                a[i] /= j;\n                pa[i][j]++;\n            }\n        }\n        if (a[i] > 1) {\n            pa[i][a[i]]++;\n        }\n        for (int j = 2; j * j <= b[i]; j++) {\n            while (b[i] % j == 0) {\n                b[i] /= j;\n                pb[i][j]++;\n            }\n        }\n        if (b[i] > 1) {\n            pb[i][b[i]]++;\n        }\n    }\n    int p1 = 2, p1cnt = 0;\n    for (auto i : pb[0]) {\n        if (i.sc != 0) {\n            p1 = i.fs;\n            p1cnt = i.sc;\n        }\n    }\n    bool collinear = true;\n    for (int i = 1; i < n; i++) {\n        int cur = pb[i][p1];\n        for (auto j : pb[i]) {\n            if (pb[0][j.fs] * cur != j.sc * p1cnt) {\n                makenotcollinear(i, p1, j.fs);\n                collinear = false;\n            }\n        }\n        for (auto j : pb[0]) {\n            if (j.sc * cur != pb[i][j.fs] * p1cnt) {\n                makenotcollinear(i, p1, j.fs);\n                collinear = false;\n            }\n        }\n    }\n    if (!collinear) {\n        solve();\n    } else {\n        ll a = pa[0][p1];\n        ll b = pb[0][p1];\n        if (b == 0) {\n            solve();\n        } else {\n            a %= b;\n            bool ok = true;\n            for (int i = 1; i < n; i++) {\n                ll c = pb[i][p1];\n                if (c == 0) {\n                    if (a != pa[i][p1] % b) {\n                        ok = false;\n                        break;\n                    } else {\n                        a = pa[i][p1];\n                        continue;\n                    }\n                }\n                ll M, N;\n                ll g = gcdExt(b, c, M, N);\n                ll d = pa[i][p1];\n                if (a % g != d % g) {\n                    ok = false;\n                    break;\n                }\n                ll lcm = b / g * c;\n                ll na = prod(M, b, lcm);\n                na = prod(na, (d % c - a % c) / g, lcm);\n                na += a;\n                na %= lcm;\n                if (na < 0) {\n                    na += lcm;\n                }\n                a = na;\n                b = lcm;\n            }\n            if (!ok) {\n                printf(\"-1\\n\");\n            } else {\n                for (int i = 0; i < n; i++) {\n                    while (pa[i][p1] > a) {\n                        a += pb[i][p1];\n                    }\n                }\n                ll add = (a - pa[0][p1]) / pb[0][p1];\n                for (auto & i : pa[0]) {\n                    i.sc += pb[0][i.fs] * add;\n                }\n                solve();\n            }\n        }\n    }\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "math"
+    ],
+    "dificulty": "3200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\E. Geometric Progressions.json",
+    "editorial_link": "https://codeforces.com//blog/entry/19923",
+    "editorial": "If intersection of two geometric progressions is not empty, set of\r\ncommon elements indexes forms arithmetic progression in each progression\r\nor consists of not more than one element. Let\u00e2\u0080\u0099s intersect first\r\nprogression with each other progression. If any of these intersections\r\nare empty then total intersection is empty. If some of these\r\nintersection consist of one element, then we could check only this\r\nelement. Otherwise one could intersect arithmetic progressions of first\r\nprogression indexes and take minimal element of this intersection. The\r\nremaining question is how intersect two geometric progression? Let\u00e2\u0080\u0099s\r\nfactorise all numbers in these two progressions and find set of\r\nappropriate indexes for every prime factor in both progressions. These\r\nprogressions one need intersect both by values and by indexes. Problem\r\nauthor: zeliboba. Problem developers: zeliboba, yarrr, gchebanov.\r\nSolution code: 12873480.\r\n"
+}

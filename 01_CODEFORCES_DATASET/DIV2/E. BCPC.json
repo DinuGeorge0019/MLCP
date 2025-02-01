@@ -1,1 +1,102 @@
-{"link": "https://codeforces.com//contest/592/problem/E", "problemId": "39719", "problem_idx": "E", "shortId": "592E", "contest_number": "592", "problem_submissions": {"D": [13987439, 13982159, 13986627, 13986544, 13987382, 13988819, 13987375, 13987118, 13988148, 13987147, 13990565, 13986857, 13989994, 13991007, 13989203, 13989734, 13991375, 13989244], "C": [13982269, 13981200, 13983408, 13982994, 13981714, 13982661, 13983184, 13983906, 13982447, 13984910, 13983829], "B": [13977841, 13974476, 13978321, 13975713, 13975313, 13978246, 13976302, 13974264, 13976441, 13976404, 13977709, 13976428, 13978061, 13978476, 13979510, 13978971, 13977780, 13976576], "A": [13975304, 13993400, 13979938, 13974321, 13974175, 13975291, 13978651, 13978273, 13974604, 13988437, 13975687, 13974467, 13976335, 13976275, 13975414, 13976741, 13976354, 13981732], "E": [14029966]}, "name": "E. BCPC", "statement": "BCPC stands for Byteforces Collegiate Programming Contest, and is the\r\nmost famous competition in Byteforces.BCPC is a team competition. Each\r\nteam is composed by a coach and three contestants. Blenda is the coach\r\nof the Bit State University(BSU), and she is very strict selecting the\r\nmembers of her team. In BSU there are students numbered from 1 to .\r\nSince all BSU students are infinitely smart, the only important\r\nparameters for Blenda are their reading and writing speed. After a\r\ncareful measuring, Blenda have found that the -th student have a speed\r\nequal to (words per minute), and a speed of (symbols per minute). Since\r\nBSU students are very smart, the measured speeds are sometimes very big\r\nand Blenda have decided to subtract some constant value from all the\r\nvalues of reading speed and some value from all the values of writing\r\nspeed. Therefore she considers and . The student is said to the student\r\nif and only if . Blenda doesn t like fights in teams, so she thinks that\r\na team consisting of three distinct students and is if overwhelms ,\r\noverwhelms , and overwhelms . Yes, the relation of overwhelming is not\r\ntransitive as it often happens in real life.Since Blenda is busy\r\npreparing a training camp in Codeforces, you are given a task to\r\ncalculate the number of different good teams in BSU. Two teams are\r\nconsidered to be different if there is at least one student that is\r\npresent in one team but is not present in the other. In other words, two\r\nteams are different if the sets of students that form these teams are\r\ndifferent.\r\n", "solutions": ["#include <functional>\n#include <algorithm>\n#include <stdexcept>\n#include <iostream>\n#include <sstream>\n#include <fstream>\n#include <numeric>\n#include <iomanip>\n#include <cstdlib>\n#include <cstring>\n#include <utility>\n#include <cctype>\n#include <vector>\n#include <string>\n#include <bitset>\n#include <cmath>\n#include <queue>\n#include <stdio.h>\n#include <stack>\n#include <ctime>\n#include <list>\n#include <map>\n#include <set>\n#include <assert.h>\n#include <complex>\n#define REP(i,n) for(int i=0;i<n;i++)\n#define TR(i,x) for(__typeof(x.begin()) i=x.begin();i!=x.end();i++)\n#define ALL(x) x.begin(),x.end()\n#define SORT(x) sort(ALL(x))\n#define CLEAR(x) memset(x,0,sizeof(x))\n#define FILL(x,c) memset(x,c,sizeof(x))\n\nusing namespace std;\n\nconst double eps = 1e-12;\nconst double pi = acos(-1);\n\n#define PB push_back\n#define MP make_pair\n\ntypedef map<int,int> MII;\ntypedef map<string,int> MSI;\ntypedef vector<int> VI;\ntypedef vector<string> VS;\ntypedef vector<long double> VD;\ntypedef pair<int,int> PII;\ntypedef long long int64;\ntypedef long long LL;\ntypedef unsigned int UI;\ntypedef long double LD;\ntypedef unsigned long long ULL;\n\nstruct Point {\n    long long x, y;\n    Point(long long x = 0, long long y = 0) : x(x), y(y) {}\n    Point operator + (const Point &o) const {\n        return Point(x + o.x, y + o.y);\n    }\n    Point operator - (const Point &o) const {\n        return Point(x - o.x, y - o.y);\n    }\n    Point operator * (const int k) const {\n        return Point(x * k, y * k);\n    }\n    void read() {\n        cin >> x >> y;\n    }\n\n    bool up() const {\n    \treturn y > 0 || y == 0 && x > 0;\n    }\n};\n\nlong long det(const Point &a, const Point &b) {\n    return a.x * b.y - a.y * b.x;\n}\n\nlong long dot(const Point &a, const Point &b) {\n    return a.x * b.x + a.y * b.y;\n}\n\nlong long vlen(const Point& a) {\n    return a.x * a.x + a.y * a.y;\n}\n\nbool cmp(const Point &a, const Point &b) {\n    if (a.up() ^ b.up()) return b.up();\n    if (det(a, b) != 0) {\n        return det(a, b) > 0;\n    }\n    return vlen(a) < vlen(b);\n}\n\nbool in_big_range(const Point& a, const Point& b) {\n    if (det(a, b) != 0) {\n        return det(a, b) > 0;\n    }\n    if (dot(a, b) < 0) {\n        return true;\n    }\n    return vlen(b) > vlen(a);\n}\n\nbool in_small_range(const Point& a, const Point& b) {\n    if (det(a, b) != 0) {\n        return det(a, b) > 0;\n    }\n    if (dot(a, b) < 0) {\n        return false;\n    }\n    return vlen(b) > vlen(a);\n}\n\nint main() {\n    int n, c, d;\n    cin >> n >> c >> d;\n    vector<Point> points(n);\n    REP(i, n) {\n        int u, v;\n        scanf(\"%d%d\", &u, &v);\n        u -= c; v -= d;\n        points[i].x = u;\n        points[i].y = v;\n    }\n\n    sort(ALL(points), cmp);\n    reverse(ALL(points));\n    REP(i, n) points.PB(points[i]);\n    int ptr_big = n, ptr_small = n;\n    while (ptr_big - 1 > 0 && in_big_range(points[0], points[ptr_big - 1])) {\n        --ptr_big;\n    }\n    while (ptr_small - 1 > 0 && in_small_range(points[0], points[ptr_small - 1])) {\n        --ptr_small;\n    }\n    long long ans = 0;\n    for (int i = n; i < 2 * n; ++i) {\n        ptr_small = max(ptr_small, i - n + 1);\n        ptr_big = max(ptr_big, i - n + 1);\n        while (ptr_small + 1 <= i && !in_small_range(points[i], points[ptr_small])) {\n            ++ptr_small;\n        }\n        while (ptr_big + 1 <= i && !in_big_range(points[i], points[ptr_big])) {\n            ++ptr_big;\n        }\n        LL len_big = i - ptr_big;\n        LL len_small = i - ptr_small;\n        // cout << \"ptr is \" << ptr << endl;\n        ans += len_small * (len_small - 1) / 2;\n        ans += len_small * (len_big - len_small);\n    }\n    // cout << \"ans = \" << ans << endl;\n    ans = n * (n - 1LL) * (n - 2LL) / 6 - ans;\n    cout << ans << endl;\n    return 0;\n}"], "input": "", "output": "", "tags": ["binary search", "geometry", "two pointers"], "dificulty": "2700", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/592/problem/E",
+    "problemId": "39719",
+    "problem_idx": "E",
+    "shortId": "592E",
+    "contest_number": "592",
+    "problem_submissions": {
+        "D": [
+            13987439,
+            13982159,
+            13986627,
+            13986544,
+            13987382,
+            13988819,
+            13987375,
+            13987118,
+            13988148,
+            13987147,
+            13990565,
+            13986857,
+            13989994,
+            13991007,
+            13989203,
+            13989734,
+            13991375,
+            13989244
+        ],
+        "C": [
+            13982269,
+            13981200,
+            13983408,
+            13982994,
+            13981714,
+            13982661,
+            13983184,
+            13983906,
+            13982447,
+            13984910,
+            13983829
+        ],
+        "B": [
+            13977841,
+            13974476,
+            13978321,
+            13975713,
+            13975313,
+            13978246,
+            13976302,
+            13974264,
+            13976441,
+            13976404,
+            13977709,
+            13976428,
+            13978061,
+            13978476,
+            13979510,
+            13978971,
+            13977780,
+            13976576
+        ],
+        "A": [
+            13975304,
+            13993400,
+            13979938,
+            13974321,
+            13974175,
+            13975291,
+            13978651,
+            13978273,
+            13974604,
+            13988437,
+            13975687,
+            13974467,
+            13976335,
+            13976275,
+            13975414,
+            13976741,
+            13976354,
+            13981732
+        ],
+        "E": [
+            14029966
+        ]
+    },
+    "name": "E. BCPC",
+    "statement": "BCPC stands for Byteforces Collegiate Programming Contest, and is the\r\nmost famous competition in Byteforces.BCPC is a team competition. Each\r\nteam is composed by a coach and three contestants. Blenda is the coach\r\nof the Bit State University(BSU), and she is very strict selecting the\r\nmembers of her team. In BSU there are students numbered from 1 to .\r\nSince all BSU students are infinitely smart, the only important\r\nparameters for Blenda are their reading and writing speed. After a\r\ncareful measuring, Blenda have found that the -th student have a speed\r\nequal to (words per minute), and a speed of (symbols per minute). Since\r\nBSU students are very smart, the measured speeds are sometimes very big\r\nand Blenda have decided to subtract some constant value from all the\r\nvalues of reading speed and some value from all the values of writing\r\nspeed. Therefore she considers and . The student is said to the student\r\nif and only if . Blenda doesn t like fights in teams, so she thinks that\r\na team consisting of three distinct students and is if overwhelms ,\r\noverwhelms , and overwhelms . Yes, the relation of overwhelming is not\r\ntransitive as it often happens in real life.Since Blenda is busy\r\npreparing a training camp in Codeforces, you are given a task to\r\ncalculate the number of different good teams in BSU. Two teams are\r\nconsidered to be different if there is at least one student that is\r\npresent in one team but is not present in the other. In other words, two\r\nteams are different if the sets of students that form these teams are\r\ndifferent.\r\n",
+    "solutions": [
+        "#include <functional>\n#include <algorithm>\n#include <stdexcept>\n#include <iostream>\n#include <sstream>\n#include <fstream>\n#include <numeric>\n#include <iomanip>\n#include <cstdlib>\n#include <cstring>\n#include <utility>\n#include <cctype>\n#include <vector>\n#include <string>\n#include <bitset>\n#include <cmath>\n#include <queue>\n#include <stdio.h>\n#include <stack>\n#include <ctime>\n#include <list>\n#include <map>\n#include <set>\n#include <assert.h>\n#include <complex>\n#define REP(i,n) for(int i=0;i<n;i++)\n#define TR(i,x) for(__typeof(x.begin()) i=x.begin();i!=x.end();i++)\n#define ALL(x) x.begin(),x.end()\n#define SORT(x) sort(ALL(x))\n#define CLEAR(x) memset(x,0,sizeof(x))\n#define FILL(x,c) memset(x,c,sizeof(x))\n\nusing namespace std;\n\nconst double eps = 1e-12;\nconst double pi = acos(-1);\n\n#define PB push_back\n#define MP make_pair\n\ntypedef map<int,int> MII;\ntypedef map<string,int> MSI;\ntypedef vector<int> VI;\ntypedef vector<string> VS;\ntypedef vector<long double> VD;\ntypedef pair<int,int> PII;\ntypedef long long int64;\ntypedef long long LL;\ntypedef unsigned int UI;\ntypedef long double LD;\ntypedef unsigned long long ULL;\n\nstruct Point {\n    long long x, y;\n    Point(long long x = 0, long long y = 0) : x(x), y(y) {}\n    Point operator + (const Point &o) const {\n        return Point(x + o.x, y + o.y);\n    }\n    Point operator - (const Point &o) const {\n        return Point(x - o.x, y - o.y);\n    }\n    Point operator * (const int k) const {\n        return Point(x * k, y * k);\n    }\n    void read() {\n        cin >> x >> y;\n    }\n\n    bool up() const {\n    \treturn y > 0 || y == 0 && x > 0;\n    }\n};\n\nlong long det(const Point &a, const Point &b) {\n    return a.x * b.y - a.y * b.x;\n}\n\nlong long dot(const Point &a, const Point &b) {\n    return a.x * b.x + a.y * b.y;\n}\n\nlong long vlen(const Point& a) {\n    return a.x * a.x + a.y * a.y;\n}\n\nbool cmp(const Point &a, const Point &b) {\n    if (a.up() ^ b.up()) return b.up();\n    if (det(a, b) != 0) {\n        return det(a, b) > 0;\n    }\n    return vlen(a) < vlen(b);\n}\n\nbool in_big_range(const Point& a, const Point& b) {\n    if (det(a, b) != 0) {\n        return det(a, b) > 0;\n    }\n    if (dot(a, b) < 0) {\n        return true;\n    }\n    return vlen(b) > vlen(a);\n}\n\nbool in_small_range(const Point& a, const Point& b) {\n    if (det(a, b) != 0) {\n        return det(a, b) > 0;\n    }\n    if (dot(a, b) < 0) {\n        return false;\n    }\n    return vlen(b) > vlen(a);\n}\n\nint main() {\n    int n, c, d;\n    cin >> n >> c >> d;\n    vector<Point> points(n);\n    REP(i, n) {\n        int u, v;\n        scanf(\"%d%d\", &u, &v);\n        u -= c; v -= d;\n        points[i].x = u;\n        points[i].y = v;\n    }\n\n    sort(ALL(points), cmp);\n    reverse(ALL(points));\n    REP(i, n) points.PB(points[i]);\n    int ptr_big = n, ptr_small = n;\n    while (ptr_big - 1 > 0 && in_big_range(points[0], points[ptr_big - 1])) {\n        --ptr_big;\n    }\n    while (ptr_small - 1 > 0 && in_small_range(points[0], points[ptr_small - 1])) {\n        --ptr_small;\n    }\n    long long ans = 0;\n    for (int i = n; i < 2 * n; ++i) {\n        ptr_small = max(ptr_small, i - n + 1);\n        ptr_big = max(ptr_big, i - n + 1);\n        while (ptr_small + 1 <= i && !in_small_range(points[i], points[ptr_small])) {\n            ++ptr_small;\n        }\n        while (ptr_big + 1 <= i && !in_big_range(points[i], points[ptr_big])) {\n            ++ptr_big;\n        }\n        LL len_big = i - ptr_big;\n        LL len_small = i - ptr_small;\n        // cout << \"ptr is \" << ptr << endl;\n        ans += len_small * (len_small - 1) / 2;\n        ans += len_small * (len_big - len_small);\n    }\n    // cout << \"ans = \" << ans << endl;\n    ans = n * (n - 1LL) * (n - 2LL) / 6 - ans;\n    cout << ans << endl;\n    return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "binary search",
+        "geometry",
+        "two pointers"
+    ],
+    "dificulty": "2700",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. BCPC.json",
+    "editorial_link": "https://codeforces.com//blog/entry/21318",
+    "editorial": "Let\u0092s represent the reading and writing speeds of the students as points in a plane. Two students i,?j are compatible if ri'\u00b7wj'?-?rj'\u00b7wi'?>?0 this equation is identical to the cross product: (ri',?wi')?\u00d7?(rj',?wj?)?>?0. Using this fact is easy to see that three students i,?j,?k are compatible if the triangle (ri,?wi),?(rj,?wj),?(rk,?wk) contains the point (x,?y). So the problem is reduced to count the number of triangles that contains the origin.\n\n \n\nLet\u0092s count the triangles that have two known vertices i and j (look at the picture above). It is easy to see that the third vertex should be inside the region S. So now we have to be able of counting points that are between two rays, that can be done using binary search (ordering the points first by slope and then by the distance to the origin).\n\n \n\nNow given a point i, let\u0092s count the triangles that have i as a vertex (look at the picture above again). We have to count the points that lie between the ray iO, and every other ray jO (the angle between iO and jO must be ???180).\n\nLet Sj denote the number points that are between the rays OR and jO, then the number of triangles that have i as a vertex are . This summation can be calculated if we pre-calculate the cumulative sums of Sj."
+}

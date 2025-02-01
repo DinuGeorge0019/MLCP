@@ -1,1 +1,91 @@
-{"link": "https://codeforces.com//contest/89/problem/B", "problemId": "470", "problem_idx": "B", "shortId": "89B", "contest_number": "89", "problem_submissions": {"D": [492261, 492054, 491644, 492548, 491919, 491966, 492524, 492023, 492270, 493211], "C": [491274, 491590, 494170, 491155, 494716, 494714, 493157, 493915, 493856, 491944, 492125, 491378, 493230, 494090, 494024, 492438], "B": [490604, 490688, 493051, 493381, 493248, 493828, 491678, 490992, 493466, 493681, 491186, 492876, 492435, 494470, 494439, 493776], "A": [489185, 489155, 490046, 490404, 490021, 489082, 490779, 489569, 490295, 489887, 489342, 493955, 489473, 496907]}, "name": "B. Widget Library", "statement": "Vasya writes his own library for building graphical user interface.\r\nVasya called his creation (). One of the interesting aspects of this\r\nlibrary is that widgets are packed in each other. A widget is some\r\nelement of graphical interface. Each widget has width and height, and\r\noccupies some rectangle on the screen. Any widget in Vasya\u2019s library is\r\nof type . For simplicity we will identify the widget and its type. Types\r\nand are derivatives of type , so they also are types . Widgets and are\r\nspecial. They can store other widgets. Both those widgets can use the\r\nmethod to pack directly in itself some other widget. Widgets of types\r\nand can store several other widgets, even several equal widgets they\r\nwill simply appear several times. As a result of using the method only\r\nthe link to the packed widget is saved, that is when the packed widget\r\nis changed, its image in the widget, into which it is packed, will also\r\nchange. We shall assume that the widget is packed in the widget if there\r\nexists a chain of widgets , , for which is packed directly to for any .\r\nIn Vasya\u2019s library the situation when the widget is packed in the widget\r\n(that is, in itself) is not allowed. If you try to pack the widgets into\r\neach other in this manner immediately results in an error.Also, the\r\nwidgets and have parameters and , which are determined by the methods\r\nand respectively. By default both of these options equal . The picture\r\nabove shows how the widgets are packed into and . At that and\r\nautomatically change their size depending on the size of packed widgets.\r\nAs for and , they only differ in that in the widgets are packed\r\nhorizontally and in vertically. The parameter sets the distance between\r\nadjacent widgets, and a frame around all packed widgets of the desired\r\nwidth. Packed widgets are placed exactly in the order in which the\r\nmethod was called for them. If within or there are no packed widgets,\r\ntheir sizes are equal to , regardless of the options and . The\r\nconstruction of all the widgets is performed using a scripting language\r\n. The description of the language can be found in the input data. For\r\nthe final verification of the code Vasya asks you to write a program\r\nthat calculates the sizes of all the widgets on the source code in the\r\nlanguage of .\r\n", "solutions": ["#include<stdio.h>\n#include<stdlib.h>\n#include<string.h>\n#include<string>\n#include<vector>\n#include<map>\nusing namespace std;\nchar in[10000],fir[10000],sec[10000];\nstruct widget{\n    long long x,y;\n    long long sp,bo;\n    int kind; //widget=0, hbox=1, vbox=2\n    widget(){x=-1;y=-1;sp=bo=0;}\n    vector<widget*> pack;\n    inline void calc(){\n\tif(x!=-1)return;\n\tif(pack.size()==0){\n\t    x=0;y=0;return;\n\t}\n\tif(kind==1){\n\t    long long maxy=0;\n\t    long long sumx=-sp;\n\t    for(int i=0;i<pack.size();i++){\n\t\tpack[i]->calc();\n\t\tmaxy=max(maxy,pack[i]->y);\n\t\tsumx+=pack[i]->x+sp;\n\t    }\n\t    x=sumx+2ll*bo;\n\t    y=maxy+2ll*bo;\n\t}else{\n\t    long long maxx=0;\n\t    long long sumy=-sp;\n\t    for(int i=0;i<pack.size();i++){\n\t\tpack[i]->calc();\n\t\tmaxx=max(maxx,pack[i]->x);\n\t\tsumy+=pack[i]->y+sp;\n\t    }\n\t    y=sumy+2ll*bo;\n\t    x=maxx+2ll*bo;\n\t}\n    }\n};\nmap<string,widget*> XD;\nint main(){\n    int q,i;\n    gets(in);\n    q=atoi(in);\n    while(q--){\n\tgets(in);\n\tint l=strlen(in);\n\tfor(i=0;i<l;i++)if(in[i]==' ')break;\n\tif(i<l){\n\t    sscanf(in,\"%s%s\",fir,sec);\n\t    widget* w=new widget;\n\t    if(strcmp(fir,\"Widget\")==0){\n\t\tstring ss=sec;\n\t\tstring na=ss.substr(0,ss.find(\"(\"));\n\t\tint x=atoi(ss.substr(ss.find(\"(\")+1).c_str());\n\t\tint y=atoi(ss.substr(ss.find(\",\")+1).c_str());\n\t\tw->x=x;\n\t\tw->y=y;\n\t\tw->kind=0;\n\t\tXD[na]=w;\n\t    }else if(strcmp(fir,\"HBox\")==0){\n\t\tw->kind=1;\n\t\tXD[sec]=w;\n\t    }else{\n\t\tw->kind=2;\n\t\tXD[sec]=w;\n\t\t\n\t    }\n\t}else{\n\t    string ss=in;\n\t    string na=ss.substr(0,ss.find(\".\"));\n\t    string cmd=ss.substr(ss.find(\".\")+1,ss.find(\"(\")-ss.find(\".\")-1);\n\t    string tar=ss.substr(ss.find(\"(\")+1,ss.find(\")\")-ss.find(\"(\")-1);\n\t    if(cmd==\"pack\"){\n\t\t(XD[na]->pack).push_back(XD[tar]);\n\t    }else if(cmd==\"set_border\"){\n\t\tXD[na]->bo=atoi(tar.c_str());\n\t    }else{\n\t\tXD[na]->sp=atoi(tar.c_str());\n\t    }\n\t}\n    }\n    for(map<string,widget*>::iterator it=XD.begin();it!=XD.end();it++){\n\tit->second->calc();\n\tprintf(\"%s %I64d %I64d\\n\",(it->first).c_str(),it->second->x,it->second->y);\n    }\n}\n"], "input": "", "output": "", "tags": ["dp", "expression parsing", "graphs", "implementation"], "dificulty": "2300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/89/problem/B",
+    "problemId": "470",
+    "problem_idx": "B",
+    "shortId": "89B",
+    "contest_number": "89",
+    "problem_submissions": {
+        "D": [
+            492261,
+            492054,
+            491644,
+            492548,
+            491919,
+            491966,
+            492524,
+            492023,
+            492270,
+            493211
+        ],
+        "C": [
+            491274,
+            491590,
+            494170,
+            491155,
+            494716,
+            494714,
+            493157,
+            493915,
+            493856,
+            491944,
+            492125,
+            491378,
+            493230,
+            494090,
+            494024,
+            492438
+        ],
+        "B": [
+            490604,
+            490688,
+            493051,
+            493381,
+            493248,
+            493828,
+            491678,
+            490992,
+            493466,
+            493681,
+            491186,
+            492876,
+            492435,
+            494470,
+            494439,
+            493776
+        ],
+        "A": [
+            489185,
+            489155,
+            490046,
+            490404,
+            490021,
+            489082,
+            490779,
+            489569,
+            490295,
+            489887,
+            489342,
+            493955,
+            489473,
+            496907
+        ]
+    },
+    "name": "B. Widget Library",
+    "statement": "Vasya writes his own library for building graphical user interface.\r\nVasya called his creation (). One of the interesting aspects of this\r\nlibrary is that widgets are packed in each other. A widget is some\r\nelement of graphical interface. Each widget has width and height, and\r\noccupies some rectangle on the screen. Any widget in Vasya\u2019s library is\r\nof type . For simplicity we will identify the widget and its type. Types\r\nand are derivatives of type , so they also are types . Widgets and are\r\nspecial. They can store other widgets. Both those widgets can use the\r\nmethod to pack directly in itself some other widget. Widgets of types\r\nand can store several other widgets, even several equal widgets they\r\nwill simply appear several times. As a result of using the method only\r\nthe link to the packed widget is saved, that is when the packed widget\r\nis changed, its image in the widget, into which it is packed, will also\r\nchange. We shall assume that the widget is packed in the widget if there\r\nexists a chain of widgets , , for which is packed directly to for any .\r\nIn Vasya\u2019s library the situation when the widget is packed in the widget\r\n(that is, in itself) is not allowed. If you try to pack the widgets into\r\neach other in this manner immediately results in an error.Also, the\r\nwidgets and have parameters and , which are determined by the methods\r\nand respectively. By default both of these options equal . The picture\r\nabove shows how the widgets are packed into and . At that and\r\nautomatically change their size depending on the size of packed widgets.\r\nAs for and , they only differ in that in the widgets are packed\r\nhorizontally and in vertically. The parameter sets the distance between\r\nadjacent widgets, and a frame around all packed widgets of the desired\r\nwidth. Packed widgets are placed exactly in the order in which the\r\nmethod was called for them. If within or there are no packed widgets,\r\ntheir sizes are equal to , regardless of the options and . The\r\nconstruction of all the widgets is performed using a scripting language\r\n. The description of the language can be found in the input data. For\r\nthe final verification of the code Vasya asks you to write a program\r\nthat calculates the sizes of all the widgets on the source code in the\r\nlanguage of .\r\n",
+    "solutions": [
+        "#include<stdio.h>\n#include<stdlib.h>\n#include<string.h>\n#include<string>\n#include<vector>\n#include<map>\nusing namespace std;\nchar in[10000],fir[10000],sec[10000];\nstruct widget{\n    long long x,y;\n    long long sp,bo;\n    int kind; //widget=0, hbox=1, vbox=2\n    widget(){x=-1;y=-1;sp=bo=0;}\n    vector<widget*> pack;\n    inline void calc(){\n\tif(x!=-1)return;\n\tif(pack.size()==0){\n\t    x=0;y=0;return;\n\t}\n\tif(kind==1){\n\t    long long maxy=0;\n\t    long long sumx=-sp;\n\t    for(int i=0;i<pack.size();i++){\n\t\tpack[i]->calc();\n\t\tmaxy=max(maxy,pack[i]->y);\n\t\tsumx+=pack[i]->x+sp;\n\t    }\n\t    x=sumx+2ll*bo;\n\t    y=maxy+2ll*bo;\n\t}else{\n\t    long long maxx=0;\n\t    long long sumy=-sp;\n\t    for(int i=0;i<pack.size();i++){\n\t\tpack[i]->calc();\n\t\tmaxx=max(maxx,pack[i]->x);\n\t\tsumy+=pack[i]->y+sp;\n\t    }\n\t    y=sumy+2ll*bo;\n\t    x=maxx+2ll*bo;\n\t}\n    }\n};\nmap<string,widget*> XD;\nint main(){\n    int q,i;\n    gets(in);\n    q=atoi(in);\n    while(q--){\n\tgets(in);\n\tint l=strlen(in);\n\tfor(i=0;i<l;i++)if(in[i]==' ')break;\n\tif(i<l){\n\t    sscanf(in,\"%s%s\",fir,sec);\n\t    widget* w=new widget;\n\t    if(strcmp(fir,\"Widget\")==0){\n\t\tstring ss=sec;\n\t\tstring na=ss.substr(0,ss.find(\"(\"));\n\t\tint x=atoi(ss.substr(ss.find(\"(\")+1).c_str());\n\t\tint y=atoi(ss.substr(ss.find(\",\")+1).c_str());\n\t\tw->x=x;\n\t\tw->y=y;\n\t\tw->kind=0;\n\t\tXD[na]=w;\n\t    }else if(strcmp(fir,\"HBox\")==0){\n\t\tw->kind=1;\n\t\tXD[sec]=w;\n\t    }else{\n\t\tw->kind=2;\n\t\tXD[sec]=w;\n\t\t\n\t    }\n\t}else{\n\t    string ss=in;\n\t    string na=ss.substr(0,ss.find(\".\"));\n\t    string cmd=ss.substr(ss.find(\".\")+1,ss.find(\"(\")-ss.find(\".\")-1);\n\t    string tar=ss.substr(ss.find(\"(\")+1,ss.find(\")\")-ss.find(\"(\")-1);\n\t    if(cmd==\"pack\"){\n\t\t(XD[na]->pack).push_back(XD[tar]);\n\t    }else if(cmd==\"set_border\"){\n\t\tXD[na]->bo=atoi(tar.c_str());\n\t    }else{\n\t\tXD[na]->sp=atoi(tar.c_str());\n\t    }\n\t}\n    }\n    for(map<string,widget*>::iterator it=XD.begin();it!=XD.end();it++){\n\tit->second->calc();\n\tprintf(\"%s %I64d %I64d\\n\",(it->first).c_str(),it->second->x,it->second->y);\n    }\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp",
+        "expression parsing",
+        "graphs",
+        "implementation"
+    ],
+    "dificulty": "2300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Widget Library.json",
+    "editorial_link": "https://codeforces.com//blog/entry/2162",
+    "editorial": "Here you can build some miltigraph in which nodes are widgets and edges are relationship of pack()-method. This graph is acyclic. Next, you should do topological sort of nodes. Sizes of widgets should be calculated in the obtained order. At the last, you should sort all nodes by thier names and output an answer.\n\nAbout implementation.\n\nParsing of instructions is very easy if you swap charachers '.', ',', '(', ')' by spaces. Now you can just split instructions into strings using spaces as separators.\n\nMultigraph can be saved into matrix. Cell M[i][j] contains integer number that means number of edges from node i to node j. Topological sort can be done by any stupid method. For example, you can choose k times node that has no outgoing edges to unselected nodes, where k is numder of nodes. Every check can be done in O(k2)."
+}

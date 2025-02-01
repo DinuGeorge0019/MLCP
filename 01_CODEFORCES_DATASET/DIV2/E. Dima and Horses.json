@@ -1,1 +1,103 @@
-{"link": "https://codeforces.com//contest/272/problem/E", "problemId": "2626", "problem_idx": "E", "shortId": "272E", "contest_number": "272", "problem_submissions": {"E": [3118319, 3118237, 3120547, 3121598, 3118047, 21764880, 3234980], "D": [3116079, 3119680, 3119390, 3118061, 3123255, 3116398, 3118778, 3119626, 3118105, 3119321, 3118815, 3120080, 3120415, 3120111, 3119541], "C": [3113880, 3114625, 3115575, 3120690, 3121462, 3114256, 3115381, 3116832, 3115695, 3116067, 3115638, 3116593, 3113387, 3116789, 3116062], "B": [3112843, 3112738, 3113998, 3114242, 3113384, 3112383, 3113900, 3114125, 3113347, 3113096, 3113583, 3113472, 3112484, 3113317, 3114065], "A": [3112197, 3112187, 3112490, 3114499, 3112321, 3112173, 3112427, 3112555, 3113875, 3112252, 3112599, 3112277, 3112185, 3114082, 3112780]}, "name": "E. Dima and Horses", "statement": "Dima came to the horse land. There are horses living in the land. Each\r\nhorse in the horse land has several enemies (enmity is a symmetric\r\nrelationship). The horse land isn\u2019t very hostile, so the number of\r\nenemies of each horse is at most 3.Right now the horse land is going\r\nthrough an election campaign. So the horses trusted Dima to split them\r\ninto two parts. At that the horses want the following condition to hold:\r\na horse shouldn\u2019t have more than one enemy in its party.Help Dima split\r\nthe horses into parties. Note that one of the parties can turn out to be\r\nempty.\r\n", "solutions": ["#include<cstdio>\n#include<iostream>\n#include<cmath>\n#include<cstring>\n#include<cstdlib>\n#include<string>\n#include<vector>\n#include<map>\n#include<set>\n#include<queue>\n#include<algorithm>\n#include<cassert>\n#include<ctime>\nusing namespace std;\n\n#define rep(i,n) for(int i = 0; i < (int)n; i++)\n#define FOR(i,n,m) for(int i = (int)n; i <= (int)m; i++)\n#define FOD(i,n,m) for(int i = (int)n; i >= (int)m; i--)\n\ntypedef long long i64;\ntypedef pair<int, int> PI;\n\n#define sz(v) ((i64)(v).size())\n#define all(v) (v).begin(),(v).end()\n#define bit(n) (1LL<<(i64)(n))\n#define each(i,v) for(__typeof((v).begin()) i = (v).begin(); i != (v).end(); i++)\n\n#define PB push_back\n#define MP make_pair\n#define X first\n#define Y second\n\ntemplate<class T> void fmax(T &a, T b) { if (a < b) a = b; }\ntemplate<class T> void fmin(T &a, T b) { if (a > b) a = b; }\n\nconst int N = 1e5 * 3 + 10;\n\nint a[N][3], c[N], n, m, w[N];\nqueue<int> Q;\n\nint main() {\n\tcin >> n >> m;\n\tFOR(i, 1, n) w[i] = -1;\n\trep(i, m) {\n\t\tint x, y;\n\t\tcin >> x >> y;\n\t\ta[x][c[x]++] = y;\n\t\ta[y][c[y]++] = x;\n\t}\n\tFOR(z, 1, n) if (-1 == w[z]) {\n\t\tQ.push(z);\n\t\tint cnt = 0;\n\t\twhile (!Q.empty()) {\n\t\t\tcnt++;\n\t\t\tif (cnt > n * 20) {\n\t\t\t\tcout << -1 << endl;\n\t\t\t\treturn 0;\n\t\t\t}\n\t\t\tint i = Q.front();\n\t\t\tQ.pop();\n\t\t\tint t[2] = {0, 0};\n\t\t\trep(j, c[i]) if (-1 != w[a[i][j]]) t[w[a[i][j]]]++;\n\t\t\tif (w[i] == (t[0] > t[1])) continue;\n\t\t\tw[i] = (t[0] > t[1]);\n\t\t\trep(j, c[i]) Q.push(a[i][j]);\n\t\t}\n\t}\n\tFOR(i, 1, n) cout << w[i];\n\tcout << endl;\n}\n\n"], "input": "", "output": "", "tags": ["combinatorics", "constructive algorithms", "graphs"], "dificulty": "2200", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/272/problem/E",
+    "problemId": "2626",
+    "problem_idx": "E",
+    "shortId": "272E",
+    "contest_number": "272",
+    "problem_submissions": {
+        "E": [
+            3118319,
+            3118237,
+            3120547,
+            3121598,
+            3118047,
+            21764880,
+            3234980
+        ],
+        "D": [
+            3116079,
+            3119680,
+            3119390,
+            3118061,
+            3123255,
+            3116398,
+            3118778,
+            3119626,
+            3118105,
+            3119321,
+            3118815,
+            3120080,
+            3120415,
+            3120111,
+            3119541
+        ],
+        "C": [
+            3113880,
+            3114625,
+            3115575,
+            3120690,
+            3121462,
+            3114256,
+            3115381,
+            3116832,
+            3115695,
+            3116067,
+            3115638,
+            3116593,
+            3113387,
+            3116789,
+            3116062
+        ],
+        "B": [
+            3112843,
+            3112738,
+            3113998,
+            3114242,
+            3113384,
+            3112383,
+            3113900,
+            3114125,
+            3113347,
+            3113096,
+            3113583,
+            3113472,
+            3112484,
+            3113317,
+            3114065
+        ],
+        "A": [
+            3112197,
+            3112187,
+            3112490,
+            3114499,
+            3112321,
+            3112173,
+            3112427,
+            3112555,
+            3113875,
+            3112252,
+            3112599,
+            3112277,
+            3112185,
+            3114082,
+            3112780
+        ]
+    },
+    "name": "E. Dima and Horses",
+    "statement": "Dima came to the horse land. There are horses living in the land. Each\r\nhorse in the horse land has several enemies (enmity is a symmetric\r\nrelationship). The horse land isn\u2019t very hostile, so the number of\r\nenemies of each horse is at most 3.Right now the horse land is going\r\nthrough an election campaign. So the horses trusted Dima to split them\r\ninto two parts. At that the horses want the following condition to hold:\r\na horse shouldn\u2019t have more than one enemy in its party.Help Dima split\r\nthe horses into parties. Note that one of the parties can turn out to be\r\nempty.\r\n",
+    "solutions": [
+        "#include<cstdio>\n#include<iostream>\n#include<cmath>\n#include<cstring>\n#include<cstdlib>\n#include<string>\n#include<vector>\n#include<map>\n#include<set>\n#include<queue>\n#include<algorithm>\n#include<cassert>\n#include<ctime>\nusing namespace std;\n\n#define rep(i,n) for(int i = 0; i < (int)n; i++)\n#define FOR(i,n,m) for(int i = (int)n; i <= (int)m; i++)\n#define FOD(i,n,m) for(int i = (int)n; i >= (int)m; i--)\n\ntypedef long long i64;\ntypedef pair<int, int> PI;\n\n#define sz(v) ((i64)(v).size())\n#define all(v) (v).begin(),(v).end()\n#define bit(n) (1LL<<(i64)(n))\n#define each(i,v) for(__typeof((v).begin()) i = (v).begin(); i != (v).end(); i++)\n\n#define PB push_back\n#define MP make_pair\n#define X first\n#define Y second\n\ntemplate<class T> void fmax(T &a, T b) { if (a < b) a = b; }\ntemplate<class T> void fmin(T &a, T b) { if (a > b) a = b; }\n\nconst int N = 1e5 * 3 + 10;\n\nint a[N][3], c[N], n, m, w[N];\nqueue<int> Q;\n\nint main() {\n\tcin >> n >> m;\n\tFOR(i, 1, n) w[i] = -1;\n\trep(i, m) {\n\t\tint x, y;\n\t\tcin >> x >> y;\n\t\ta[x][c[x]++] = y;\n\t\ta[y][c[y]++] = x;\n\t}\n\tFOR(z, 1, n) if (-1 == w[z]) {\n\t\tQ.push(z);\n\t\tint cnt = 0;\n\t\twhile (!Q.empty()) {\n\t\t\tcnt++;\n\t\t\tif (cnt > n * 20) {\n\t\t\t\tcout << -1 << endl;\n\t\t\t\treturn 0;\n\t\t\t}\n\t\t\tint i = Q.front();\n\t\t\tQ.pop();\n\t\t\tint t[2] = {0, 0};\n\t\t\trep(j, c[i]) if (-1 != w[a[i][j]]) t[w[a[i][j]]]++;\n\t\t\tif (w[i] == (t[0] > t[1])) continue;\n\t\t\tw[i] = (t[0] > t[1]);\n\t\t\trep(j, c[i]) Q.push(a[i][j]);\n\t\t}\n\t}\n\tFOR(i, 1, n) cout << w[i];\n\tcout << endl;\n}\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "combinatorics",
+        "constructive algorithms",
+        "graphs"
+    ],
+    "dificulty": "2200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Dima and Horses.json",
+    "editorial_link": "https://codeforces.com//blog/entry/6625",
+    "editorial": "Not hard to understand that we have undirected graph. Lets color all vetexes in one color. Then we will find some vertex that is incorrect. We will change color of this vertex, and repeat our search, while it is possible. After every move number of bad edges will be decrease by 1 or 2, so our cycle will end in not more then M operations. So solutions always exists and we need to change some vertex not more then M times, so we will take queue of bad vertexes and simply make all operations of changes.\n"
+}

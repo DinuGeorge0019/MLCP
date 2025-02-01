@@ -1,1 +1,92 @@
-{"link": "https://codeforces.com//contest/126/problem/E", "problemId": "666", "problem_idx": "E", "shortId": "126E", "contest_number": "126", "problem_submissions": {"E": [854113, 853528, 853478], "D": [848548, 848806, 851249, 849307, 848628, 849555, 849207, 847738, 847195, 849847, 847564, 850037, 851976, 851517], "C": [845968, 846820, 845605, 845826, 846897, 846767, 847633, 846234, 847958, 848103, 849052, 847621, 847480, 852294, 848150], "B": [845264, 845888, 844695, 845238, 845702, 845923, 846711, 844555, 845924, 846945, 845744, 846359, 845914, 845709], "A": [844313, 845180, 853880, 880738, 852290, 845616, 850019, 845773, 850503, 845064, 844238]}, "name": "E. Pills", "statement": "Doctor prescribed medicine to his patient. The medicine is represented\r\nby pills. Each pill consists of a shell and healing powder. The shell\r\nconsists of two halves; each half has one of four colors blue, red,\r\nwhite or yellow.The doctor wants to put pills in a rectangular box in\r\nsize. Besides, each pill occupies exactly two neighboring cells and any\r\ncell contains exactly one half of a pill. Thus, the result is a four\r\ncolored picture in size.The doctor thinks that a patient will recover\r\nsooner if the picture made by the pills will be special. Unfortunately,\r\nputting the pills in the box so as to get the required picture is not a\r\nvery easy task. That\u2019s why doctor asks you to help. Doctor has some\r\namount of pills of each of painting types. They all contain the same\r\nmedicine, that\u2019s why it doesn\u2019t matter which of them will be stored\r\ninside the box.Place the pills in the box so that the required picture\r\nwas formed. If it is impossible to place the pills in the required\r\nmanner, then place them so that the number of matching colors in all\r\ncells in the final arrangement and the doctor\u2019s picture were maximum.\r\n", "solutions": ["#include<cstdio>\n#include<cstring>\n#include<set>\n#include<algorithm>\nusing namespace std;\nconst int le=20,ri=21;char z[]=\"BRWY\";\nset<int> U;int a[7][8],P[4][4],L[10],R[10],A[10],B[10],T=-1,p[22][22];bool v[7][8],w[10][10],r2[7][8],d2[7][8],u[22];char s[13][15],S[13][15];\nvoid add(int x,int y)\n{\n    static int t=0;\n    P[x][y]=P[y][x]=t,L[t]=x,R[t]=y,t++;\n}\nbool f2(int x)\n{\n    if(x==ri)return 1;u[x]=1;\n    for(int i=21;i>=0;i--)\n        if(p[x][i]&&!u[i]&&f2(i)){p[x][i]--,p[i][x]++;return 1;}\n    return 0;\n}\nvoid gg()\n{\n    int c[10],D[10][10],t=0;\n    int h=0;for(int i=0;i<10;i++)h*=1000000007,h+=B[i];\n    if(U.find(h)!=U.end())return;U.insert(h);\n    memcpy(c,A,sizeof c),\n    memset(D,0,sizeof D);\n    for(int i=0;i<10;i++)\n        D[i][i]=min(A[i],B[i]),t+=D[i][i]*2;\n    if(28+t/2<=T)return;\n    memset(p,0,sizeof p);\n    for(int i=0;i<10;i++)\n        if(A[i]>B[i])p[le][i]=A[i]-B[i];else\n        if(A[i]<B[i])p[i+10][ri]=B[i]-A[i];\n    for(int i=0;i<10;i++)\n        for(int j=0;j<10;j++)if(w[i][j])\n        {\n            int u=min(p[le][i],p[j+10][ri]);\n            p[le][i]-=u,p[j+10][ri]-=u,p[i][j+10]=28,t+=u,D[i][j]+=u;\n        }\n    for(;memset(u,0,sizeof u),f2(le);t++);\n    if(t<=T)return;T=t;\n    for(int i=0;i<10;i++)\n        for(int j=0;j<10;j++)D[i][j]+=p[j+10][i];\n    for(int i=0;i<7;i++)\n        for(int j=0;j<8;j++)s[i*2][j*2]='.';\n    for(int i=0;i<7;i++)\n        for(int j=0;j<8;j++)if(r2[i][j])\n        {\n            int o=P[a[i][j]][a[i][j+1]];\n            for(int k=0;k<10;k++)if(D[k][o])\n            {\n                D[k][o]--,c[k]--;\n                if(a[i][j]==R[k]||a[i][j+1]==L[k])swap(L[k],R[k]);\n                s[i*2][j*2]=z[L[k]],s[i*2][j*2+2]=z[R[k]];\n                break;\n            }\n        }\n    for(int i=0;i<7;i++)\n        for(int j=0;j<8;j++)if(d2[i][j])\n        {\n            int o=P[a[i][j]][a[i+1][j]];\n            for(int k=0;k<10;k++)if(D[k][o])\n            {\n                D[k][o]--,c[k]--;\n                if(a[i][j]==R[k]||a[i+1][j]==L[k])swap(L[k],R[k]);\n                s[i*2][j*2]=z[L[k]],s[i*2+2][j*2]=z[R[k]];\n                break;\n            }\n        }\n    for(int i=0;i<7;i++)\n        for(int j=0;j<8;j++)if(s[i*2][j*2]=='.'&&r2[i][j])\n            for(int k=0;k<10;k++)if(c[k])\n                {c[k]--,s[i*2][j*2]=z[L[k]],s[i*2][j*2+2]=z[R[k]];break;}\n    for(int i=0;i<7;i++)\n        for(int j=0;j<8;j++)if(s[i*2][j*2]=='.'&&d2[i][j])\n            for(int k=0;k<10;k++)if(c[k])\n                {c[k]--,s[i*2][j*2]=z[L[k]],s[i*2+2][j*2]=z[R[k]];break;}\n    memcpy(S,s,sizeof s);\n}\nvoid ff(int x,int y)\n{\n    if(x==7){gg();return;}\n    if(y==8){ff(x+1,0);return;}\n    if(v[x][y]){ff(x,y+1);return;}\n    if(y<7&&!v[x][y+1])\n        v[x][y]=v[x][y+1]=1,\n        B[P[a[x][y]][a[x][y+1]]]++,\n        s[x*2][y*2+1]='-',r2[x][y]=1,\n        ff(x,y+1),\n        v[x][y]=v[x][y+1]=0,\n        B[P[a[x][y]][a[x][y+1]]]--,\n        s[x*2][y*2+1]='.',r2[x][y]=0;\n    if(x<6&&!v[x+1][y])\n        v[x][y]=v[x+1][y]=1,\n        B[P[a[x][y]][a[x+1][y]]]++,\n        s[x*2+1][y*2]='|',d2[x][y]=1,\n        ff(x,y+1),\n        v[x][y]=v[x+1][y]=0,\n        B[P[a[x][y]][a[x+1][y]]]--,\n        s[x*2+1][y*2]='.',d2[x][y]=0;\n}\nint main()\n{\n    for(int i=0;i<7;i++)\n    {\n        char s[100];scanf(\"%s\",s);\n        for(int j=0;j<8;j++)\n            if(s[j]=='B')a[i][j]=0;else\n            if(s[j]=='R')a[i][j]=1;else\n            if(s[j]=='W')a[i][j]=2;else\n            if(s[j]=='Y')a[i][j]=3;\n    }\n    add(0,3),add(0,2),add(0,1),add(0,0),\n    add(1,3),add(1,2),add(1,1),\n    add(2,3),add(2,2),add(3,3);\n    for(int i=0;i<10;i++)\n        for(int j=0;j<10;j++)\n            if(L[i]==L[j]||L[i]==R[j]||R[i]==L[j]||R[i]==R[j])w[i][j]=1;\n    for(int i=0;i<10;i++)scanf(\"%d\",A+i);\n    memset(s,'.',sizeof s),ff(0,0);\n    printf(\"%d\\n\",T);\n    for(int i=0;i<13;puts(\"\"),i++)\n        for(int j=0;j<15;j++)putchar(S[i][j]);\n    return 0;\n}"], "input": "", "output": "", "tags": ["brute force", "flows"], "dificulty": "2900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/126/problem/E",
+    "problemId": "666",
+    "problem_idx": "E",
+    "shortId": "126E",
+    "contest_number": "126",
+    "problem_submissions": {
+        "E": [
+            854113,
+            853528,
+            853478
+        ],
+        "D": [
+            848548,
+            848806,
+            851249,
+            849307,
+            848628,
+            849555,
+            849207,
+            847738,
+            847195,
+            849847,
+            847564,
+            850037,
+            851976,
+            851517
+        ],
+        "C": [
+            845968,
+            846820,
+            845605,
+            845826,
+            846897,
+            846767,
+            847633,
+            846234,
+            847958,
+            848103,
+            849052,
+            847621,
+            847480,
+            852294,
+            848150
+        ],
+        "B": [
+            845264,
+            845888,
+            844695,
+            845238,
+            845702,
+            845923,
+            846711,
+            844555,
+            845924,
+            846945,
+            845744,
+            846359,
+            845914,
+            845709
+        ],
+        "A": [
+            844313,
+            845180,
+            853880,
+            880738,
+            852290,
+            845616,
+            850019,
+            845773,
+            850503,
+            845064,
+            844238
+        ]
+    },
+    "name": "E. Pills",
+    "statement": "Doctor prescribed medicine to his patient. The medicine is represented\r\nby pills. Each pill consists of a shell and healing powder. The shell\r\nconsists of two halves; each half has one of four colors blue, red,\r\nwhite or yellow.The doctor wants to put pills in a rectangular box in\r\nsize. Besides, each pill occupies exactly two neighboring cells and any\r\ncell contains exactly one half of a pill. Thus, the result is a four\r\ncolored picture in size.The doctor thinks that a patient will recover\r\nsooner if the picture made by the pills will be special. Unfortunately,\r\nputting the pills in the box so as to get the required picture is not a\r\nvery easy task. That\u2019s why doctor asks you to help. Doctor has some\r\namount of pills of each of painting types. They all contain the same\r\nmedicine, that\u2019s why it doesn\u2019t matter which of them will be stored\r\ninside the box.Place the pills in the box so that the required picture\r\nwas formed. If it is impossible to place the pills in the required\r\nmanner, then place them so that the number of matching colors in all\r\ncells in the final arrangement and the doctor\u2019s picture were maximum.\r\n",
+    "solutions": [
+        "#include<cstdio>\n#include<cstring>\n#include<set>\n#include<algorithm>\nusing namespace std;\nconst int le=20,ri=21;char z[]=\"BRWY\";\nset<int> U;int a[7][8],P[4][4],L[10],R[10],A[10],B[10],T=-1,p[22][22];bool v[7][8],w[10][10],r2[7][8],d2[7][8],u[22];char s[13][15],S[13][15];\nvoid add(int x,int y)\n{\n    static int t=0;\n    P[x][y]=P[y][x]=t,L[t]=x,R[t]=y,t++;\n}\nbool f2(int x)\n{\n    if(x==ri)return 1;u[x]=1;\n    for(int i=21;i>=0;i--)\n        if(p[x][i]&&!u[i]&&f2(i)){p[x][i]--,p[i][x]++;return 1;}\n    return 0;\n}\nvoid gg()\n{\n    int c[10],D[10][10],t=0;\n    int h=0;for(int i=0;i<10;i++)h*=1000000007,h+=B[i];\n    if(U.find(h)!=U.end())return;U.insert(h);\n    memcpy(c,A,sizeof c),\n    memset(D,0,sizeof D);\n    for(int i=0;i<10;i++)\n        D[i][i]=min(A[i],B[i]),t+=D[i][i]*2;\n    if(28+t/2<=T)return;\n    memset(p,0,sizeof p);\n    for(int i=0;i<10;i++)\n        if(A[i]>B[i])p[le][i]=A[i]-B[i];else\n        if(A[i]<B[i])p[i+10][ri]=B[i]-A[i];\n    for(int i=0;i<10;i++)\n        for(int j=0;j<10;j++)if(w[i][j])\n        {\n            int u=min(p[le][i],p[j+10][ri]);\n            p[le][i]-=u,p[j+10][ri]-=u,p[i][j+10]=28,t+=u,D[i][j]+=u;\n        }\n    for(;memset(u,0,sizeof u),f2(le);t++);\n    if(t<=T)return;T=t;\n    for(int i=0;i<10;i++)\n        for(int j=0;j<10;j++)D[i][j]+=p[j+10][i];\n    for(int i=0;i<7;i++)\n        for(int j=0;j<8;j++)s[i*2][j*2]='.';\n    for(int i=0;i<7;i++)\n        for(int j=0;j<8;j++)if(r2[i][j])\n        {\n            int o=P[a[i][j]][a[i][j+1]];\n            for(int k=0;k<10;k++)if(D[k][o])\n            {\n                D[k][o]--,c[k]--;\n                if(a[i][j]==R[k]||a[i][j+1]==L[k])swap(L[k],R[k]);\n                s[i*2][j*2]=z[L[k]],s[i*2][j*2+2]=z[R[k]];\n                break;\n            }\n        }\n    for(int i=0;i<7;i++)\n        for(int j=0;j<8;j++)if(d2[i][j])\n        {\n            int o=P[a[i][j]][a[i+1][j]];\n            for(int k=0;k<10;k++)if(D[k][o])\n            {\n                D[k][o]--,c[k]--;\n                if(a[i][j]==R[k]||a[i+1][j]==L[k])swap(L[k],R[k]);\n                s[i*2][j*2]=z[L[k]],s[i*2+2][j*2]=z[R[k]];\n                break;\n            }\n        }\n    for(int i=0;i<7;i++)\n        for(int j=0;j<8;j++)if(s[i*2][j*2]=='.'&&r2[i][j])\n            for(int k=0;k<10;k++)if(c[k])\n                {c[k]--,s[i*2][j*2]=z[L[k]],s[i*2][j*2+2]=z[R[k]];break;}\n    for(int i=0;i<7;i++)\n        for(int j=0;j<8;j++)if(s[i*2][j*2]=='.'&&d2[i][j])\n            for(int k=0;k<10;k++)if(c[k])\n                {c[k]--,s[i*2][j*2]=z[L[k]],s[i*2+2][j*2]=z[R[k]];break;}\n    memcpy(S,s,sizeof s);\n}\nvoid ff(int x,int y)\n{\n    if(x==7){gg();return;}\n    if(y==8){ff(x+1,0);return;}\n    if(v[x][y]){ff(x,y+1);return;}\n    if(y<7&&!v[x][y+1])\n        v[x][y]=v[x][y+1]=1,\n        B[P[a[x][y]][a[x][y+1]]]++,\n        s[x*2][y*2+1]='-',r2[x][y]=1,\n        ff(x,y+1),\n        v[x][y]=v[x][y+1]=0,\n        B[P[a[x][y]][a[x][y+1]]]--,\n        s[x*2][y*2+1]='.',r2[x][y]=0;\n    if(x<6&&!v[x+1][y])\n        v[x][y]=v[x+1][y]=1,\n        B[P[a[x][y]][a[x+1][y]]]++,\n        s[x*2+1][y*2]='|',d2[x][y]=1,\n        ff(x,y+1),\n        v[x][y]=v[x+1][y]=0,\n        B[P[a[x][y]][a[x+1][y]]]--,\n        s[x*2+1][y*2]='.',d2[x][y]=0;\n}\nint main()\n{\n    for(int i=0;i<7;i++)\n    {\n        char s[100];scanf(\"%s\",s);\n        for(int j=0;j<8;j++)\n            if(s[j]=='B')a[i][j]=0;else\n            if(s[j]=='R')a[i][j]=1;else\n            if(s[j]=='W')a[i][j]=2;else\n            if(s[j]=='Y')a[i][j]=3;\n    }\n    add(0,3),add(0,2),add(0,1),add(0,0),\n    add(1,3),add(1,2),add(1,1),\n    add(2,3),add(2,2),add(3,3);\n    for(int i=0;i<10;i++)\n        for(int j=0;j<10;j++)\n            if(L[i]==L[j]||L[i]==R[j]||R[i]==L[j]||R[i]==R[j])w[i][j]=1;\n    for(int i=0;i<10;i++)scanf(\"%d\",A+i);\n    memset(s,'.',sizeof s),ff(0,0);\n    printf(\"%d\\n\",T);\n    for(int i=0;i<13;puts(\"\"),i++)\n        for(int j=0;j<15;j++)putchar(S[i][j]);\n    return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "flows"
+    ],
+    "dificulty": "2900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\E. Pills.json",
+    "editorial_link": "https://codeforces.com/blog/entry/3140",
+    "editorial": "Consider all partitions of 7?\u00d7?8 board into dominoes. There is only 12988816 of them (you can get this number using some simple bruteforce algorithm)\n\nAlso, consider all \"paintings\" of 7?\u00d7?8 board (i.e. number of cells of every color) and find number of patritions into set of pills of 10 types for every of them. In the worst case you will get 43044 partitions (this number you can get using another bruteforce algo).\n\nIn the first part of solution you should iterate over all partitions of board into dominoes and find all sets of pills that you will get. You will have no more than 43044 of them.\n\nIn the second part of solution you should try to distribute all available pills for every of sets that you recieved in the first part. You should distribute them in such way that maximal number of colors match.\n\nYou should build a graph that composed from 4 parts - source, the first part of 10 nodes, the second part of 10 nodes and sink. There are edges between all pairs of nodes from neighbour parts. From source to the first part you should set capacities of edges equal to numbers of available pills of every type. From the second part to sink you should set capacities of edges equal to numbers of pills in the current partition. From the first part to the second part you should use infty capacities and set costs equal to number of MISmatched colors in the types of pills (it is some numbers in range from 0 to 2). At the end, you should find maximal flow of minimal cost (MCMF) if this graph and save a flow that gets minimal cost.\n\nIn the third part of solution you should restore answer from optimal flow.\n\nIn the second part of solution you can replace MCMF by usual maxflow. You can see that at the beginning MCMF will fill edges of cost 0. So, you can fill them by hand. After that you can drop all edges of cost 0 and 2 and just find maxflow.\n\nComplexity of solution is difficult, but it is clear that this solution fits into limits. The first jury solution in C++ that was written carelessly works in 1 sec. Some more clever solutions works in 0.4 sec, but you can write something more faster."
+}

@@ -1,1 +1,94 @@
-{"link": "https://codeforces.com//contest/819/problem/C", "problemId": "112025", "problem_idx": "C", "shortId": "819C", "contest_number": "819", "problem_submissions": {"E": [28095868, 28093903, 28090933, 28090593, 28094491, 28097177, 28097247, 28091454, 28092476, 28096909, 28091607, 28092950, 28099143, 28090256, 28093515, 28093604, 28090845, 28094347], "D": [28094321, 28096368, 28099459, 28093095, 28099589, 28093948, 28092918, 28100416, 28094247, 28087916, 31892342, 28089013], "C": [28089679, 28092136, 28087482, 28107336, 28092204, 28092623, 28096714, 79507001, 28096230, 31884749], "B": [28083507, 28085088, 28080609, 28088461, 28084942, 31697997, 28085544, 28084735, 28088088, 28084884, 28083914, 127584112, 127584041, 28087562, 28081410, 28095682, 28086459, 28088790, 28094207, 28087593, 28085906], "A": []}, "name": "C. Mister B and Beacons on Field", "statement": "Mister B has a house in the middle of a giant plain field, which\r\nattracted aliens life. For convenience, aliens specified the Cartesian\r\ncoordinate system on the field in such a way that Mister B\u2019s house has\r\ncoordinates . After that they sent three beacons to the field, but\r\nsomething went wrong. One beacon was completely destroyed, while the\r\nother two landed in positions with coordinates and , respectively, but\r\nshut down.Mister B was interested in this devices, so he decided to take\r\nthem home. He came to the first beacon, placed at , lifted it up and\r\ncarried the beacon home choosing the shortest path. After that he came\r\nto the other beacon, placed at , and also carried it home choosing the\r\nshortest path. When first beacon was lifted up, the navigation system of\r\nthe beacons was activated.Partially destroyed navigation system started\r\nto work in following way.At time moments when both survived beacons are\r\nat points with integer coordinates the system tries to find a location\r\nfor the third beacon. It succeeds if and only if there is a point with\r\ninteger coordinates such that the area of the triangle formed by the two\r\nsurvived beacons and this point is equal to . In this case the system\r\nsends a packet of information with beacon positions to aliens, otherwise\r\nit doesn\u2019t.Compute how many packets of information system sent while\r\nMister B was moving the beacons.\r\n", "solutions": ["#include<iostream>\n#include<cmath>\n#include<cstdio>\n#include<algorithm>\n#include<cstring>\n#include<map>\nusing namespace std;\nint n1,n2,n3,m1,m2,m3,s1,s2,s3;\nmap<int,int>M;\nint w[110000][3],len,f[110000];\nlong long ans[110000][110];\nvoid add(int k1,int k2,int k3){\n\tint where=M[k1];// cout<<\"add \"<<k1<<\" \"<<k2<<\" \"<<k3<<endl;\n\tif (where==0) M[k1]=++len,where=len,w[len][0]=w[len][1]=w[len][2]=0,f[len]=k1;\n\tw[where][k3]+=k2;\n}\nvoid insert(int k1,int k2){\n\tfor (int i=2;i*i<=k1;i++)\n\t\tif (k1%i==0){\n\t\t\tint num=0;\n\t\t\twhile (k1%i==0) num++,k1/=i;\n\t\t\tadd(i,num,k2);\n\t\t}\n\tif (k1>1) add(k1,1,k2);\n}\nlong long pre[1100000];\nlong long an,m,n,s;\nvoid calc(int k){\n\tfor (int i=0;i<=w[k][0];i++){\n\t\tans[k][i]=0;\n\t\tfor (int j=0;j<=min(i,w[k][2]);j++)\n\t\t\tif (i-j==0) ans[k][i]++; else if (i-j==1) ans[k][i]--;\n\t}\n}\nvoid calc(int k1,long long k2,int k3){\n\tif (k3==0) return;\n\tif (k1>len){\n\t\tan+=(m/k2)*k3; return;\n\t}\n\tfor (int i=0;i<=w[k1][0];i++){\n\t\tcalc(k1+1,k2,k3*ans[k1][i]);\n\t\tif (i!=w[k1][0]) k2*=f[k1];\n\t}\n}\nvoid calc2(int k1,long long k2){\n\tif (k2>n) return;\n\tif (k1>len){\n\t\tan++; return;\n\t}\n\tfor (int i=0;i<=w[k1][2];i++){\n\t\tcalc2(k1+1,k2);\n\t\tif (i!=w[k1][2]) k2*=f[k1];\n\t}\n}\nvoid solve(){\n\tscanf(\"%d%d%d\",&n1,&n2,&n3); len=0; an=0;\n\tscanf(\"%d%d%d\",&m1,&m2,&m3); m=1ll*m1*m2*m3;\n\tscanf(\"%d%d%d\",&s1,&s2,&s3); n=1ll*n1*n2*n3;\n\tM.clear(); s1*=2; s=1ll*s1*s2*s3;\n\tinsert(n1,0); insert(n2,0); insert(n3,0);\n\tinsert(m1,1); insert(m2,1); insert(m3,1);\n\tinsert(s1,2); insert(s2,2); insert(s3,2);\n\tfor (int i=1;i<=len;i++) calc(i);\n\tcalc(1,1,1); //cout<<an<<endl;\n//\tint ww=0;\n//\tfor (int i=1;i<=m;i++) if (s%__gcd((int)n,i)==0) ww++;\n//\tcout<<ww<<endl;\n\t//for (int i=1;i<=len;i++) cout<<f[i]<<\" \"<<w[i][0]<<\" \"<<w[i][1]<<\" \"<<w[i][2]<<endl; \n\tcalc2(1,1);\n\tprintf(\"%I64d\\n\",an);\n}\nint main(){\n\tint t; scanf(\"%d\",&t);\n\tfor (;t;t--) solve();\n\treturn 0;\n}"], "input": "", "output": "", "tags": ["number theory"], "dificulty": "2900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/819/problem/C",
+    "problemId": "112025",
+    "problem_idx": "C",
+    "shortId": "819C",
+    "contest_number": "819",
+    "problem_submissions": {
+        "E": [
+            28095868,
+            28093903,
+            28090933,
+            28090593,
+            28094491,
+            28097177,
+            28097247,
+            28091454,
+            28092476,
+            28096909,
+            28091607,
+            28092950,
+            28099143,
+            28090256,
+            28093515,
+            28093604,
+            28090845,
+            28094347
+        ],
+        "D": [
+            28094321,
+            28096368,
+            28099459,
+            28093095,
+            28099589,
+            28093948,
+            28092918,
+            28100416,
+            28094247,
+            28087916,
+            31892342,
+            28089013
+        ],
+        "C": [
+            28089679,
+            28092136,
+            28087482,
+            28107336,
+            28092204,
+            28092623,
+            28096714,
+            79507001,
+            28096230,
+            31884749
+        ],
+        "B": [
+            28083507,
+            28085088,
+            28080609,
+            28088461,
+            28084942,
+            31697997,
+            28085544,
+            28084735,
+            28088088,
+            28084884,
+            28083914,
+            127584112,
+            127584041,
+            28087562,
+            28081410,
+            28095682,
+            28086459,
+            28088790,
+            28094207,
+            28087593,
+            28085906
+        ],
+        "A": []
+    },
+    "name": "C. Mister B and Beacons on Field",
+    "statement": "Mister B has a house in the middle of a giant plain field, which\r\nattracted aliens life. For convenience, aliens specified the Cartesian\r\ncoordinate system on the field in such a way that Mister B\u2019s house has\r\ncoordinates . After that they sent three beacons to the field, but\r\nsomething went wrong. One beacon was completely destroyed, while the\r\nother two landed in positions with coordinates and , respectively, but\r\nshut down.Mister B was interested in this devices, so he decided to take\r\nthem home. He came to the first beacon, placed at , lifted it up and\r\ncarried the beacon home choosing the shortest path. After that he came\r\nto the other beacon, placed at , and also carried it home choosing the\r\nshortest path. When first beacon was lifted up, the navigation system of\r\nthe beacons was activated.Partially destroyed navigation system started\r\nto work in following way.At time moments when both survived beacons are\r\nat points with integer coordinates the system tries to find a location\r\nfor the third beacon. It succeeds if and only if there is a point with\r\ninteger coordinates such that the area of the triangle formed by the two\r\nsurvived beacons and this point is equal to . In this case the system\r\nsends a packet of information with beacon positions to aliens, otherwise\r\nit doesn\u2019t.Compute how many packets of information system sent while\r\nMister B was moving the beacons.\r\n",
+    "solutions": [
+        "#include<iostream>\n#include<cmath>\n#include<cstdio>\n#include<algorithm>\n#include<cstring>\n#include<map>\nusing namespace std;\nint n1,n2,n3,m1,m2,m3,s1,s2,s3;\nmap<int,int>M;\nint w[110000][3],len,f[110000];\nlong long ans[110000][110];\nvoid add(int k1,int k2,int k3){\n\tint where=M[k1];// cout<<\"add \"<<k1<<\" \"<<k2<<\" \"<<k3<<endl;\n\tif (where==0) M[k1]=++len,where=len,w[len][0]=w[len][1]=w[len][2]=0,f[len]=k1;\n\tw[where][k3]+=k2;\n}\nvoid insert(int k1,int k2){\n\tfor (int i=2;i*i<=k1;i++)\n\t\tif (k1%i==0){\n\t\t\tint num=0;\n\t\t\twhile (k1%i==0) num++,k1/=i;\n\t\t\tadd(i,num,k2);\n\t\t}\n\tif (k1>1) add(k1,1,k2);\n}\nlong long pre[1100000];\nlong long an,m,n,s;\nvoid calc(int k){\n\tfor (int i=0;i<=w[k][0];i++){\n\t\tans[k][i]=0;\n\t\tfor (int j=0;j<=min(i,w[k][2]);j++)\n\t\t\tif (i-j==0) ans[k][i]++; else if (i-j==1) ans[k][i]--;\n\t}\n}\nvoid calc(int k1,long long k2,int k3){\n\tif (k3==0) return;\n\tif (k1>len){\n\t\tan+=(m/k2)*k3; return;\n\t}\n\tfor (int i=0;i<=w[k1][0];i++){\n\t\tcalc(k1+1,k2,k3*ans[k1][i]);\n\t\tif (i!=w[k1][0]) k2*=f[k1];\n\t}\n}\nvoid calc2(int k1,long long k2){\n\tif (k2>n) return;\n\tif (k1>len){\n\t\tan++; return;\n\t}\n\tfor (int i=0;i<=w[k1][2];i++){\n\t\tcalc2(k1+1,k2);\n\t\tif (i!=w[k1][2]) k2*=f[k1];\n\t}\n}\nvoid solve(){\n\tscanf(\"%d%d%d\",&n1,&n2,&n3); len=0; an=0;\n\tscanf(\"%d%d%d\",&m1,&m2,&m3); m=1ll*m1*m2*m3;\n\tscanf(\"%d%d%d\",&s1,&s2,&s3); n=1ll*n1*n2*n3;\n\tM.clear(); s1*=2; s=1ll*s1*s2*s3;\n\tinsert(n1,0); insert(n2,0); insert(n3,0);\n\tinsert(m1,1); insert(m2,1); insert(m3,1);\n\tinsert(s1,2); insert(s2,2); insert(s3,2);\n\tfor (int i=1;i<=len;i++) calc(i);\n\tcalc(1,1,1); //cout<<an<<endl;\n//\tint ww=0;\n//\tfor (int i=1;i<=m;i++) if (s%__gcd((int)n,i)==0) ww++;\n//\tcout<<ww<<endl;\n\t//for (int i=1;i<=len;i++) cout<<f[i]<<\" \"<<w[i][0]<<\" \"<<w[i][1]<<\" \"<<w[i][2]<<endl; \n\tcalc2(1,1);\n\tprintf(\"%I64d\\n\",an);\n}\nint main(){\n\tint t; scanf(\"%d\",&t);\n\tfor (;t;t--) solve();\n\treturn 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "number theory"
+    ],
+    "dificulty": "2900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Mister B and Beacons on Field.json",
+    "editorial_link": "https://codeforces.com//blog/entry/52946",
+    "editorial": "There 2 stages in this task: moving of first beacon and moving of\r\nsecond.But at first we need factorization of and . Since and are product\r\nof integers , it can be done in time by \"Sieve of Eratosthenes\".Start\r\nfrom , when second beacon is moving:Position of beacons will look like\r\npair of points: , , where . We need to check existing of point such,\r\nthat area of triangle , , equals to . Using cross product . After\r\nsimplifying we get where .So we can iterate all divisors of , using\r\nfactorization of and recursive algorithm.Complexity of second stage is ,\r\nwhere number of divisors of and for .In the we have such points: , ,\r\nwhere .We need to check existing of point such, that area of triangle ,\r\n, equals to . Using cross product we can get next equation: . Then\r\nsolution exists iff .And we need to calculate how many such, that .We\r\nwill solve it in next way: let\u00e2\u0080\u0099s and .Look at all , that . It\u00e2\u0080\u0099s obvious,\r\nthat if is divisor of , then doesn\u00e2\u0080\u0099t divide at .In result, we have some\r\nconstrains on , like doesn\u00e2\u0080\u0099t divide at .Finally, we have next task:\r\ncalculate number of such, that doesn\u00e2\u0080\u0099t divide any of . It can be done\r\nwith inclusion-exclusion principle, where number of which divides , ...\r\nis .Complexity of first stage is , where number of prime divisors of ,\r\nfor integers up to .Result complexity is per test.\r\n"
+}

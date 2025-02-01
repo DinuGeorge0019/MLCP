@@ -1,1 +1,105 @@
-{"link": "https://codeforces.com//contest/244/problem/C", "problemId": "2193", "problem_idx": "C", "shortId": "244C", "contest_number": "244", "problem_submissions": {"D": [2571247, 2570676, 2575346, 2576494, 2682903, 2585837, 2585755, 2572212, 2572142, 2579013, 3418813, 2572107, 2574421], "C": [2569289, 2572891, 2570409, 2570513, 2641304, 2570920, 2572105, 2569437, 2570373, 2571030, 2570901, 2571143, 2571722, 2571723, 3289288, 2571234, 2571110], "B": [2568269, 2572132, 2568654, 2569576, 19961131, 2568814, 2570231, 2570819, 2569055, 2570885, 2568719, 2569755, 2569459, 2569334, 2568410, 2569135, 2570454, 2569964, 2569449], "A": [2567788, 2570624, 2567790, 2568110, 2567940, 2568024, 2569710, 2567812, 2568427, 2567980, 2568379, 2567844, 2567847, 2569075, 2567791, 2567881, 2567930, 2567996], "E": [2585587, 2630732]}, "name": "C. The Brand New Function", "statement": "Polycarpus has a sequence, consisting of non-negative integers: .Let\u2019s\r\ndefine function ( are integer, ) for sequence as an operation of bitwise\r\nOR of all the sequence elements with indexes from to . Formally: .\r\nPolycarpus took a piece of paper and wrote out the values of function\r\nfor all ( are integer, ). Now he wants to know, how many values he\u2019s got\r\nin the end. Help Polycarpus, count the number of distinct values of\r\nfunction for the given sequence .Expression means applying the operation\r\nof bitwise OR to numbers and . This operation exists in all modern\r\nprogramming languages, for example, in language and it is marked as \"\",\r\nin as \"\".\r\n", "solutions": ["#include <stdio.h>\n#include <algorithm>\nusing namespace std;\nint a[100010], next[100010][20];\nint u[1<<20];\nstruct abc{\n    int x, p;\n    bool operator < (const abc &a) const{\n        return p < a.p;\n    }\n}c[30];\nint main(){\n    int n, i, j, t;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++){\n        scanf(\"%d\", &a[i]);\n        u[a[i]] = 1;\n    }\n    for (j = 0; j < 20; j++){\n        if (a[n - 1] & (1<<j)) next[n - 1][j] = n - 1;\n        else next[n - 1][j] = n;\n        for (i = n - 2; i >= 0; i--){\n            if (a[i] & (1<<j)) next[i][j] = i;\n            else next[i][j] = next[i + 1][j];\n        }\n    }\n    for (i = 0; i < n; i++){\n        for (j = 0; j < 20; j++){\n            c[j].x = j;\n            c[j].p = next[i][j];\n        }\n        sort(c, c + 20);\n        t = 0;\n        for (j = 0; j < 20 && c[j].p != n; j++){\n            t |= 1<<c[j].x;\n            while (j < 19 && c[j + 1].p == c[j].p){\n                j++;\n                t |= 1<<c[j].x;\n            }\n            u[t] = 1;\n        }\n    }\n    t = 0;\n    for (i = 0; i < (1<<20); i++){\n        if (u[i]) t++;\n    }\n    printf(\"%d\\n\", t);\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["bitmasks", "divide and conquer", "math"], "dificulty": "1600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/244/problem/C",
+    "problemId": "2193",
+    "problem_idx": "C",
+    "shortId": "244C",
+    "contest_number": "244",
+    "problem_submissions": {
+        "D": [
+            2571247,
+            2570676,
+            2575346,
+            2576494,
+            2682903,
+            2585837,
+            2585755,
+            2572212,
+            2572142,
+            2579013,
+            3418813,
+            2572107,
+            2574421
+        ],
+        "C": [
+            2569289,
+            2572891,
+            2570409,
+            2570513,
+            2641304,
+            2570920,
+            2572105,
+            2569437,
+            2570373,
+            2571030,
+            2570901,
+            2571143,
+            2571722,
+            2571723,
+            3289288,
+            2571234,
+            2571110
+        ],
+        "B": [
+            2568269,
+            2572132,
+            2568654,
+            2569576,
+            19961131,
+            2568814,
+            2570231,
+            2570819,
+            2569055,
+            2570885,
+            2568719,
+            2569755,
+            2569459,
+            2569334,
+            2568410,
+            2569135,
+            2570454,
+            2569964,
+            2569449
+        ],
+        "A": [
+            2567788,
+            2570624,
+            2567790,
+            2568110,
+            2567940,
+            2568024,
+            2569710,
+            2567812,
+            2568427,
+            2567980,
+            2568379,
+            2567844,
+            2567847,
+            2569075,
+            2567791,
+            2567881,
+            2567930,
+            2567996
+        ],
+        "E": [
+            2585587,
+            2630732
+        ]
+    },
+    "name": "C. The Brand New Function",
+    "statement": "Polycarpus has a sequence, consisting of non-negative integers: .Let\u2019s\r\ndefine function ( are integer, ) for sequence as an operation of bitwise\r\nOR of all the sequence elements with indexes from to . Formally: .\r\nPolycarpus took a piece of paper and wrote out the values of function\r\nfor all ( are integer, ). Now he wants to know, how many values he\u2019s got\r\nin the end. Help Polycarpus, count the number of distinct values of\r\nfunction for the given sequence .Expression means applying the operation\r\nof bitwise OR to numbers and . This operation exists in all modern\r\nprogramming languages, for example, in language and it is marked as \"\",\r\nin as \"\".\r\n",
+    "solutions": [
+        "#include <stdio.h>\n#include <algorithm>\nusing namespace std;\nint a[100010], next[100010][20];\nint u[1<<20];\nstruct abc{\n    int x, p;\n    bool operator < (const abc &a) const{\n        return p < a.p;\n    }\n}c[30];\nint main(){\n    int n, i, j, t;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++){\n        scanf(\"%d\", &a[i]);\n        u[a[i]] = 1;\n    }\n    for (j = 0; j < 20; j++){\n        if (a[n - 1] & (1<<j)) next[n - 1][j] = n - 1;\n        else next[n - 1][j] = n;\n        for (i = n - 2; i >= 0; i--){\n            if (a[i] & (1<<j)) next[i][j] = i;\n            else next[i][j] = next[i + 1][j];\n        }\n    }\n    for (i = 0; i < n; i++){\n        for (j = 0; j < 20; j++){\n            c[j].x = j;\n            c[j].p = next[i][j];\n        }\n        sort(c, c + 20);\n        t = 0;\n        for (j = 0; j < 20 && c[j].p != n; j++){\n            t |= 1<<c[j].x;\n            while (j < 19 && c[j + 1].p == c[j].p){\n                j++;\n                t |= 1<<c[j].x;\n            }\n            u[t] = 1;\n        }\n    }\n    t = 0;\n    for (i = 0; i < (1<<20); i++){\n        if (u[i]) t++;\n    }\n    printf(\"%d\\n\", t);\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "bitmasks",
+        "divide and conquer",
+        "math"
+    ],
+    "dificulty": "1600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. The Brand New Function.json",
+    "editorial_link": "https://codeforces.com//blog/entry/5895",
+    "editorial": "Let's see how function f changes for all suffixes of sequence a. Values of f will increase when you will increase length of suffix. For every increase all 1-bits will stay 1-bits, but some 0-bits will be changed by 1-bits. So, you can see that no more than k increasing will be, where k number of bits (in this problem k = 20). Among all suffixes will be no more that k?+?1 values of function f.\n\nNow you can run over sequence a trom left to right and support an array m (or a set) of values of f for all subsegments that end in the current position. Size of m always no more than k?+?1. When you go from position i?-?1 into position i, you should replace m?=?{m1,?m2,?...,?mt} by m'?=?{ai,?m1|ai,?m2|ai,?... mt|ai}. After that you should remove from m repeated values (if you use set, set will do this dirty work itself). Then you should mark all numbers from m in some global array (or put them into some global set). At the end you should calculate answer from the global array (or set)."
+}

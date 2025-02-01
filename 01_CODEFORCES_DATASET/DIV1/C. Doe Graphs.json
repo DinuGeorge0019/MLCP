@@ -1,1 +1,89 @@
-{"link": "https://codeforces.com//contest/232/problem/C", "problemId": "1946", "problem_idx": "C", "shortId": "232C", "contest_number": "232", "problem_submissions": {"D": [2346447, 2453840, 2673464, 2351686, 2351635, 2361185, 2356801, 2386026], "A": [2343160, 2344433, 2341097, 2341781, 2340598, 2342868, 2342498, 2340984, 2340712, 2356088, 2341364, 2341135, 2343044, 2341523, 2341326, 2341345, 2341452], "B": [2340867, 2340703, 2342538, 2341256, 2342019, 2341112, 2341451, 2342353, 2341669, 2342315, 2342610, 2342080, 2342975, 2343085, 2343108, 2343200], "E": [2564230, 3726445, 2360898, 2389163, 2349135, 2349124], "C": [2348750, 2348392, 2352824, 2348892]}, "name": "C. Doe Graphs", "statement": "John Doe decided that some mathematical object must be named after him.\r\nSo he invented the Doe graphs. The Doe graphs are a family of undirected\r\ngraphs, each of them is characterized by a single non-negative number\r\nits order. We\u2019ll denote a graph of order as , and we\u2019ll denote the\r\nnumber of vertices in the graph as . Then let\u2019s define the Doe graphs as\r\nfollows: consists of a single vertex, that has number . consists of two\r\nvertices with numbers and , connected by an edge. for is obtained from\r\ngraphs and . and are joined in one graph, at that numbers of all\r\nvertices of graph increase by (for example, vertex number of graph\r\nbecomes vertex number ). After that two edges are added to the graph:\r\nthe first one goes between vertices with numbers and , the second one\r\ngoes between vertices with numbers and . Note that the definition of\r\ngraph implies, that is a connected graph, its vertices are numbered from\r\nto . John thinks that Doe graphs are that great because for them exists\r\na polynomial algorithm for the search of Hamiltonian path. However, your\r\ntask is to answer queries of finding the shortest-length path between\r\nthe vertices and in the graph .A path between a pair of vertices and in\r\nthe graph is a sequence of vertices , , , such, that , , and for any\r\nvertices and are connected by a graph edge. The length of path , , , is\r\nnumber .\r\n", "solutions": ["#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <set>\n#include <map>\n#include <algorithm>\n#include <functional>\n#include <utility>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstdio>\n\nusing namespace std;\n\n#define REP(i,n) for((i)=0;(i)<(int)(n);(i)++)\n#define foreach(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n\ntypedef long long ll;\n#define INF (1ll<<60)\n\nll fib[100];\nll First[100][2], Last[100][2];\n\nll first(int N, int type, ll x);\nll last(int N, int type, ll x);\n\nll first(int N, int type, ll x){\n    if(First[N][type] != -1) return First[N][type];\n    \n    if(N == 0) return First[N][type] = 0;\n    if(N == 1) return First[N][type] = ((x == 0) ? 0 : 1);\n    \n    ll big = fib[N-1];\n    \n    if(x < big){\n        ll d1 = first(N-1, type, x);\n        ll d2 = last(N-1, type, x) + 2;\n        return First[N][type] = min(d1,d2);\n    }\n    \n    return First[N][type] = first(N-2, type, x-big) + 1;\n}\n\nll last(int N, int type, ll x){\n    if(Last[N][type] != -1) return Last[N][type];\n    \n    if(N == 0) return Last[N][type] = 0;\n    if(N == 1) return Last[N][type] = ((x == 1) ? 0 : 1);\n    \n    ll big = fib[N-1];\n    \n    if(x < big){\n        ll N2 = N-2;\n        ll tmp = (N2 + 1) / 2;\n        ll d1 = first(N-1, type, x) + 1 + tmp;\n        ll d2 = last(N-1, type, x) + 1 + tmp;\n        return Last[N][type] = min(d1,d2);\n    }\n    \n    return Last[N][type] = last(N-2, type, x-big);\n}\n\nll dfs(int N, ll x, ll y){\n    if(N == 0) return 0;\n    if(N == 1) return ((x == y) ? 0 : 1);\n    \n    ll big = fib[N-1];\n    \n    if(x < big && y < big){\n        ll d1 = dfs(N-1, x, y);\n        ll d2 = first(N-1, 0, x) + last(N-1, 1, y) + 2;\n        ll d3 = first(N-1, 1, y) + last(N-1, 0, x) + 2;\n        return min(d1,min(d2,d3));\n    }\n    \n    if(x >= big && y >= big){\n        ll x2 = x - big, y2 = y - big;\n        ll d1 = dfs(N-2, x2, y2);\n        return d1;\n    }\n    \n    {\n        ll x2 = x, y2 = y - big;\n        ll d1 = first(N-1, 0, x2) + first(N-2, 1, y2) + 1;\n        ll d2 = last(N-1, 0, x2) + first(N-2, 1, y2) + 1;\n        return min(d1,d2);\n    }\n    \n    return -1;\n}\n\nll func(int N, ll x, ll y){\n    int i,j;\n    if(x > y) swap(x,y);\n    REP(i,N+1) REP(j,2) First[i][j] = Last[i][j] = -1;\n    ll ans = dfs(N, x, y);\n    return ans;\n}\n\nint main(void){\n    int i;\n    \n    fib[0] = 1;\n    fib[1] = 2;\n    for(i=2;i<=90;i++) fib[i] = fib[i-1] + fib[i-2];\n    \n    int Q,N;\n    cin >> Q >> N;\n    N = min(N,90);\n    \n    ll x,y;\n    REP(i,Q){\n        cin >> x >> y;\n        x--; y--;\n        ll ans = func(N,x,y);\n        cout << ans << endl;\n    }\n    \n    return 0;\n}\n"], "input": "", "output": "", "tags": ["constructive algorithms", "divide and conquer", "dp", "graphs", "shortest paths"], "dificulty": "2600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/232/problem/C",
+    "problemId": "1946",
+    "problem_idx": "C",
+    "shortId": "232C",
+    "contest_number": "232",
+    "problem_submissions": {
+        "D": [
+            2346447,
+            2453840,
+            2673464,
+            2351686,
+            2351635,
+            2361185,
+            2356801,
+            2386026
+        ],
+        "A": [
+            2343160,
+            2344433,
+            2341097,
+            2341781,
+            2340598,
+            2342868,
+            2342498,
+            2340984,
+            2340712,
+            2356088,
+            2341364,
+            2341135,
+            2343044,
+            2341523,
+            2341326,
+            2341345,
+            2341452
+        ],
+        "B": [
+            2340867,
+            2340703,
+            2342538,
+            2341256,
+            2342019,
+            2341112,
+            2341451,
+            2342353,
+            2341669,
+            2342315,
+            2342610,
+            2342080,
+            2342975,
+            2343085,
+            2343108,
+            2343200
+        ],
+        "E": [
+            2564230,
+            3726445,
+            2360898,
+            2389163,
+            2349135,
+            2349124
+        ],
+        "C": [
+            2348750,
+            2348392,
+            2352824,
+            2348892
+        ]
+    },
+    "name": "C. Doe Graphs",
+    "statement": "John Doe decided that some mathematical object must be named after him.\r\nSo he invented the Doe graphs. The Doe graphs are a family of undirected\r\ngraphs, each of them is characterized by a single non-negative number\r\nits order. We\u2019ll denote a graph of order as , and we\u2019ll denote the\r\nnumber of vertices in the graph as . Then let\u2019s define the Doe graphs as\r\nfollows: consists of a single vertex, that has number . consists of two\r\nvertices with numbers and , connected by an edge. for is obtained from\r\ngraphs and . and are joined in one graph, at that numbers of all\r\nvertices of graph increase by (for example, vertex number of graph\r\nbecomes vertex number ). After that two edges are added to the graph:\r\nthe first one goes between vertices with numbers and , the second one\r\ngoes between vertices with numbers and . Note that the definition of\r\ngraph implies, that is a connected graph, its vertices are numbered from\r\nto . John thinks that Doe graphs are that great because for them exists\r\na polynomial algorithm for the search of Hamiltonian path. However, your\r\ntask is to answer queries of finding the shortest-length path between\r\nthe vertices and in the graph .A path between a pair of vertices and in\r\nthe graph is a sequence of vertices , , , such, that , , and for any\r\nvertices and are connected by a graph edge. The length of path , , , is\r\nnumber .\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <set>\n#include <map>\n#include <algorithm>\n#include <functional>\n#include <utility>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstdio>\n\nusing namespace std;\n\n#define REP(i,n) for((i)=0;(i)<(int)(n);(i)++)\n#define foreach(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n\ntypedef long long ll;\n#define INF (1ll<<60)\n\nll fib[100];\nll First[100][2], Last[100][2];\n\nll first(int N, int type, ll x);\nll last(int N, int type, ll x);\n\nll first(int N, int type, ll x){\n    if(First[N][type] != -1) return First[N][type];\n    \n    if(N == 0) return First[N][type] = 0;\n    if(N == 1) return First[N][type] = ((x == 0) ? 0 : 1);\n    \n    ll big = fib[N-1];\n    \n    if(x < big){\n        ll d1 = first(N-1, type, x);\n        ll d2 = last(N-1, type, x) + 2;\n        return First[N][type] = min(d1,d2);\n    }\n    \n    return First[N][type] = first(N-2, type, x-big) + 1;\n}\n\nll last(int N, int type, ll x){\n    if(Last[N][type] != -1) return Last[N][type];\n    \n    if(N == 0) return Last[N][type] = 0;\n    if(N == 1) return Last[N][type] = ((x == 1) ? 0 : 1);\n    \n    ll big = fib[N-1];\n    \n    if(x < big){\n        ll N2 = N-2;\n        ll tmp = (N2 + 1) / 2;\n        ll d1 = first(N-1, type, x) + 1 + tmp;\n        ll d2 = last(N-1, type, x) + 1 + tmp;\n        return Last[N][type] = min(d1,d2);\n    }\n    \n    return Last[N][type] = last(N-2, type, x-big);\n}\n\nll dfs(int N, ll x, ll y){\n    if(N == 0) return 0;\n    if(N == 1) return ((x == y) ? 0 : 1);\n    \n    ll big = fib[N-1];\n    \n    if(x < big && y < big){\n        ll d1 = dfs(N-1, x, y);\n        ll d2 = first(N-1, 0, x) + last(N-1, 1, y) + 2;\n        ll d3 = first(N-1, 1, y) + last(N-1, 0, x) + 2;\n        return min(d1,min(d2,d3));\n    }\n    \n    if(x >= big && y >= big){\n        ll x2 = x - big, y2 = y - big;\n        ll d1 = dfs(N-2, x2, y2);\n        return d1;\n    }\n    \n    {\n        ll x2 = x, y2 = y - big;\n        ll d1 = first(N-1, 0, x2) + first(N-2, 1, y2) + 1;\n        ll d2 = last(N-1, 0, x2) + first(N-2, 1, y2) + 1;\n        return min(d1,d2);\n    }\n    \n    return -1;\n}\n\nll func(int N, ll x, ll y){\n    int i,j;\n    if(x > y) swap(x,y);\n    REP(i,N+1) REP(j,2) First[i][j] = Last[i][j] = -1;\n    ll ans = dfs(N, x, y);\n    return ans;\n}\n\nint main(void){\n    int i;\n    \n    fib[0] = 1;\n    fib[1] = 2;\n    for(i=2;i<=90;i++) fib[i] = fib[i-1] + fib[i-2];\n    \n    int Q,N;\n    cin >> Q >> N;\n    N = min(N,90);\n    \n    ll x,y;\n    REP(i,Q){\n        cin >> x >> y;\n        x--; y--;\n        ll ans = func(N,x,y);\n        cout << ans << endl;\n    }\n    \n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "divide and conquer",
+        "dp",
+        "graphs",
+        "shortest paths"
+    ],
+    "dificulty": "2600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Doe Graphs.json",
+    "editorial_link": "https://codeforces.com//blog/entry/5514",
+    "editorial": "Let's reduce the problem to the same problem for graphs with less orders. Vertex |D(n?-?1)|?+?1 is cutpoint (except cases n???2 but equations below is true for these cases).\n\nWithout loss of generality a?<?b.\n\nLet dist(a,?b,?n) \u0097 length of the shortest path in graph of order n.\n\nThe first case is a???|D(n?-?1)| and |D(n?-?1)|?+?1???b\n\ndist(a,?b,?n)?=?min(dist(a,?|D(n?-?1)|,?n?-?1),?dist(a,?1,?n?-?1))?+?dist(b?-?|D(n?-?1)|,?1,?n?-?2)?+?1\n \n\nEdges is marked in red, paths is marked in blue. This formula means that we can go from the vertex a by the path 1 to the vertex 1. Then we can go to the |D(n?-?1)|?+?1 by the edge and go to the vertex b by the path 3. Or we can go to the vertex |D(n?-?1)| by the path 2 and then go to the vertex |D(n?-?1)|?+?1 by the path 2 and then go to the vertex b by the path 3.\n\nThe second case is |D(n?-?1)|?+?1???a,?b.\n\ndist(a,?b,?n)?=?dist(a?-?|D(n?-?1)|,?b?-?|D(n?-?1)|,?n?-?2)\nThat's easy case.\n\nThe third case is a,?b???|D(n?-?1)|\n\ndist(a,?b,?n)?=?min(dist(a,?b,?n?-?1),?min(dist(1,?a,?n?-?1),?dist(|D(n?-?1)|,?a,?n?-?1))?+?min(dist(1,?b,?n?-?1),?dist(|D(n?-?1)|,?b,?n?-?1)?+?2)\n \n\nIf shortest path contains cutpoint (|D(n?-?1)|?+?1) we can go to the vertex 1 or |D(n?-?1)+1$ form the both of a and b. After that we can go to the cutpoint. Else we should consider path from a to b in D(n?-?1).\n\nLet's notice that for all of n will be no more than 4 distinct runnings of dist(i,?j,?n).\n\nIt can be prooved by the considering many cases of our actions.\n\nIn authors colution we cashed all dist(1,?i,?n) and dist(i,?|D(n)|,?n) for all achieveable i and n.\n\nWe have complexity  for one query. (it's log because |D(n)| grows like ?n)."
+}

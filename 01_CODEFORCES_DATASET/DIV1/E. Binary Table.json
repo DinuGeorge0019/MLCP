@@ -1,1 +1,100 @@
-{"link": "https://codeforces.com//contest/663/problem/E", "problemId": "55356", "problem_idx": "E", "shortId": "663E", "contest_number": "663", "problem_submissions": {"E": [17350327, 17349864, 17353803, 17353745, 17350870, 17351032, 17350940, 17349799, 17351986, 17351243, 17350710, 17347131, 17352995, 17350415, 17349363, 17351067, 17353219, 17353206, 17350737], "C": [17347790, 17347307, 17349302, 17348183, 17352062, 17347576, 17351577, 17349777, 17347691, 17348798, 17348588, 17350481, 17349299, 17347750, 17349697, 17348180, 17348352], "B": [17346317, 17346919, 17351687, 17347488, 17350797, 17352612, 17346896, 17352716, 17346251, 17346169], "A": [17345568, 17345670, 17345320, 17345148, 17345271, 17344956, 17347728, 17345255, 17346364, 17352110, 17345277, 17344920, 17352735, 17344992, 17345337], "D": [17350825, 17611100, 17366417]}, "name": "E. Binary Table", "statement": "You are given a table consisting of rows and columns. Each cell of the\r\ntable contains either or . In one move, you are allowed to pick any row\r\nor any column and invert all values, that is, replace by and vice\r\nversa.What is the minimum number of cells with value 1 you can get after\r\napplying some number of operations?\r\n", "solutions": ["#include <iostream>\n#include <cstdio>\n#include <algorithm>\n#include <queue>\n#include <vector>\n#include <set>\n#include <map>\n#include <cassert>\n#include <functional>\n#include <sstream>\n#include <cmath>\n#include <queue>\n#include <cstring>\n\nusing namespace std;\n\ntypedef pair<int, int> ii;\ntypedef long long int64;\ntypedef vector<int> vi;\n\n#define pb push_back\n#define mp make_pair\n\ntemplate<class T> T abs(T x) { return x >= 0 ? x : -x; }\ntemplate<class T> T sqr(T x) { return x * x; }\n\nconst int K = 13;\nconst int maxn = 20;\nconst int maxm = 110 * 1000;\n\nint n, m;\nint a[maxm];\nint d[1 << (maxn - K)][K + 1];\n\nint popc[1 << K];\n\nint main() {\n  for (int i = 0; i < (1 << K); ++i)\n    popc[i] = __builtin_popcount(i);\n  cin >> n >> m;\n  //n = 20;\n  //m = 100 * 1000;\n  memset(a, 0, sizeof(a));\n  char buf[maxm];\n  for (int i = 0; i < n; ++i) {\n    scanf(\"%s\", buf);\n    for (int j = 0; j < m; ++j)\n      if (buf[j] == '1')\n        a[j] |= (1 << i);\n    //for (int j = 0; j < m; ++j)\n    //  if (rand() % 2)\n    //    a[j] |= (1 << i);\n  }\n  int k = min(K, n);\n  int rem = n - k;\n  int filt = (1 << rem) - 1;\n  int pref = (1 << n) - 1;\n  pref ^= filt;\n  int res = 1000 * 1000 * 100;\n  for (int mask1 = 0; mask1 < (1 << k); ++mask1) {\n    int M = mask1 << rem;\n    memset(d, 0, sizeof(d));\n    for (int i = 0; i < m; ++i) {\n      int x = ((a[i] & pref) ^ M) >> rem;\n      d[a[i] & filt][popc[x]] += 1;//[__builtin_popcount(x)] += 1;\n    }\n\n    for (int mask2 = 0; mask2 < (1 << rem); ++mask2) {\n      int cur = 0;\n      for (int i = 0; i < (1 << rem); ++i) {\n        int cnt = popc[mask2 ^ i];//__builtin_popcount(mask2 ^ i);\n        for (int j = 0; j <= k; ++j) if (d[i][j]) {\n          int val = j + cnt;\n          if (val > n - val) val = n - val;\n          cur += val * d[i][j];\n        }\n      }\n//      cerr << mask1 << \" \" << mask2 << \" \" << cur << \"\\n\";\n      if (cur < res) res = cur;\n    }\n  }\n  cout << res << \"\\n\";\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["bitmasks", "divide and conquer", "dp"], "dificulty": "2600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/663/problem/E",
+    "problemId": "55356",
+    "problem_idx": "E",
+    "shortId": "663E",
+    "contest_number": "663",
+    "problem_submissions": {
+        "E": [
+            17350327,
+            17349864,
+            17353803,
+            17353745,
+            17350870,
+            17351032,
+            17350940,
+            17349799,
+            17351986,
+            17351243,
+            17350710,
+            17347131,
+            17352995,
+            17350415,
+            17349363,
+            17351067,
+            17353219,
+            17353206,
+            17350737
+        ],
+        "C": [
+            17347790,
+            17347307,
+            17349302,
+            17348183,
+            17352062,
+            17347576,
+            17351577,
+            17349777,
+            17347691,
+            17348798,
+            17348588,
+            17350481,
+            17349299,
+            17347750,
+            17349697,
+            17348180,
+            17348352
+        ],
+        "B": [
+            17346317,
+            17346919,
+            17351687,
+            17347488,
+            17350797,
+            17352612,
+            17346896,
+            17352716,
+            17346251,
+            17346169
+        ],
+        "A": [
+            17345568,
+            17345670,
+            17345320,
+            17345148,
+            17345271,
+            17344956,
+            17347728,
+            17345255,
+            17346364,
+            17352110,
+            17345277,
+            17344920,
+            17352735,
+            17344992,
+            17345337
+        ],
+        "D": [
+            17350825,
+            17611100,
+            17366417
+        ]
+    },
+    "name": "E. Binary Table",
+    "statement": "You are given a table consisting of rows and columns. Each cell of the\r\ntable contains either or . In one move, you are allowed to pick any row\r\nor any column and invert all values, that is, replace by and vice\r\nversa.What is the minimum number of cells with value 1 you can get after\r\napplying some number of operations?\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <cstdio>\n#include <algorithm>\n#include <queue>\n#include <vector>\n#include <set>\n#include <map>\n#include <cassert>\n#include <functional>\n#include <sstream>\n#include <cmath>\n#include <queue>\n#include <cstring>\n\nusing namespace std;\n\ntypedef pair<int, int> ii;\ntypedef long long int64;\ntypedef vector<int> vi;\n\n#define pb push_back\n#define mp make_pair\n\ntemplate<class T> T abs(T x) { return x >= 0 ? x : -x; }\ntemplate<class T> T sqr(T x) { return x * x; }\n\nconst int K = 13;\nconst int maxn = 20;\nconst int maxm = 110 * 1000;\n\nint n, m;\nint a[maxm];\nint d[1 << (maxn - K)][K + 1];\n\nint popc[1 << K];\n\nint main() {\n  for (int i = 0; i < (1 << K); ++i)\n    popc[i] = __builtin_popcount(i);\n  cin >> n >> m;\n  //n = 20;\n  //m = 100 * 1000;\n  memset(a, 0, sizeof(a));\n  char buf[maxm];\n  for (int i = 0; i < n; ++i) {\n    scanf(\"%s\", buf);\n    for (int j = 0; j < m; ++j)\n      if (buf[j] == '1')\n        a[j] |= (1 << i);\n    //for (int j = 0; j < m; ++j)\n    //  if (rand() % 2)\n    //    a[j] |= (1 << i);\n  }\n  int k = min(K, n);\n  int rem = n - k;\n  int filt = (1 << rem) - 1;\n  int pref = (1 << n) - 1;\n  pref ^= filt;\n  int res = 1000 * 1000 * 100;\n  for (int mask1 = 0; mask1 < (1 << k); ++mask1) {\n    int M = mask1 << rem;\n    memset(d, 0, sizeof(d));\n    for (int i = 0; i < m; ++i) {\n      int x = ((a[i] & pref) ^ M) >> rem;\n      d[a[i] & filt][popc[x]] += 1;//[__builtin_popcount(x)] += 1;\n    }\n\n    for (int mask2 = 0; mask2 < (1 << rem); ++mask2) {\n      int cur = 0;\n      for (int i = 0; i < (1 << rem); ++i) {\n        int cnt = popc[mask2 ^ i];//__builtin_popcount(mask2 ^ i);\n        for (int j = 0; j <= k; ++j) if (d[i][j]) {\n          int val = j + cnt;\n          if (val > n - val) val = n - val;\n          cur += val * d[i][j];\n        }\n      }\n//      cerr << mask1 << \" \" << mask2 << \" \" << cur << \"\\n\";\n      if (cur < res) res = cur;\n    }\n  }\n  cout << res << \"\\n\";\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "bitmasks",
+        "divide and conquer",
+        "dp"
+    ],
+    "dificulty": "2600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\E. Binary Table.json",
+    "editorial_link": "https://codeforces.com//blog/entry/44408",
+    "editorial": "First let's examine a slow solution that works in O(2n?\u00b7?m). Since each row can be either inverted or not, the set of options of how we can invert the rows may be encoded in a bitmask of length n, an integer from 0 to (2n?-?1), where the i-th bit is equal to 1 if and only if we invert the i-th row. Each column also represents a bitmask of length n (the bits correspond to the values of that row in each of the n rows). Let the bitmask of the i-th column be coli, and the bitmask of the inverted rows be mask. After inverting the rows the i-th column will become . Suppose that  contains  ones. Then we can obtain either k or (n?-?k) ones in this column, depending on whether we invert the i-th column itself. It follows that for a fixed bitmask mask the minimum possible number of ones that can be obtained is equal to .\n\nNow we want to calculate this sum faster than O(m). Note that we are not interested in the value of the mask  itself, but only in the number of ones it contains (from 0 to n). Therefore we may group the columns by the value of . Let dp[k][mask] be the number of such i that , then for a fixed bitmask mask we can calculate the sum in O(n) \u0097 .\n\nWhat remains is to calculate the value of dp[k][mask] in a quick way. As the name suggests, we can use dynamic programming for this purpose. The value of dp[0][mask] can be found in O(m) for all bitmasks mask: each column coli increases dp[0][coli] by 1. For k?>?0, coli and mask differ in exactly k bits. Suppose mask and coli differ in position p. Then coli and  differ in exactly (k?-?1) bits. The number of such columns is equal to , except we counted in also the number of columns coli that differ with  in bit p (thus, mask and coli have the same value in bit p). Thus we need to subtract dp[k?-?2][mask], but again, except the columns among these that differ with mask in bit p. Let ; by expanding this inclusion-exclusion type argument, we get that the number of masks we are interested in can be expressed as dp[k?-?1][next]?-?dp[k?-?2][mask]?+?dp[k?-?3][next]?-?dp[k?-?4][mask]?+?dp[k?-?5][next]?-?.... By summing all these expressions for each bit p from 0 to n, we get dp[k][mask]?\u00b7?k, since each column is counted in k times (for each of the bits p where the column differs from mask).\n\nTherefore, we are now able to count the values of dp[k][mask] in time O(2n?\u00b7?n3) using the following recurrence:\n\n\n\nThis is still a tad slow, but we can speed it up to O(2n?\u00b7?n2), for example, in a following fashion:"
+}

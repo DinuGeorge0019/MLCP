@@ -1,1 +1,80 @@
-{"link": "https://codeforces.com//contest/200/problem/B", "problemId": "1451", "problem_idx": "B", "shortId": "200B", "contest_number": "200", "problem_submissions": {"B": [1825841, 1826464, 1826083, 1826275, 1826382, 1825859, 1826268, 1825884, 1825868, 1825906, 1826093, 1825853, 1826140, 1826219, 1826016], "D": [1827953, 1827519, 1828417, 1827605, 1827984, 1827121, 1828276, 1828188, 1828202, 1828182, 1828229, 1828355, 1828376, 1828201], "C": [1827310, 1827007, 1827388, 1827250, 1827071, 1827751, 1827110, 1827499, 1827231, 1827512, 1827236, 1827297, 1827317, 1827455], "E": [1831278, 1831185, 1829707], "A": []}, "name": "B. Drinks", "statement": "Little Vasya loves orange juice very much. That\u2019s why any food and drink\r\nin his kitchen necessarily contains orange juice. There are drinks in\r\nhis fridge, the volume fraction of orange juice in the -th drink equals\r\npercent.One day Vasya decided to make himself an orange cocktail. He\r\ntook equal proportions of each of the drinks and mixed them. Then he\r\nwondered, how much orange juice the cocktail has.Find the volume\r\nfraction of orange juice in the final drink.\r\n", "solutions": ["#include <algorithm>\n#include <cassert>\n#include <cctype>\n#include <cmath>\n#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <map>\n#include <queue>\n#include <set>\n#include <string>\n#include <vector>\n\nusing namespace std;\ntypedef long long int lli;\n\nint gInt () {\n  int i;\n  scanf(\"%d\", &i);\n  return i;\n}\n\nlli gLong () {\n  lli i;\n  scanf(\"%lld\", &i);\n  return i;\n}\n\ndouble gDouble () {\n  double i;\n  scanf(\"%lf\", &i);\n  return i;\n}\n\nvoid quit () {\n  fflush(stdout);\n  exit(0);\n}\n\nint main (int argc, char ** argv) {\n  int num = gInt();\n  double sum = 0.0;\n  for (int count = 0; count < num; count ++)\n    sum += gDouble();\n  printf(\"%.13lf\\n\", sum / num);\n  quit();\n}"], "input": "", "output": "", "tags": ["implementation", "math"], "dificulty": "800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/200/problem/B",
+    "problemId": "1451",
+    "problem_idx": "B",
+    "shortId": "200B",
+    "contest_number": "200",
+    "problem_submissions": {
+        "B": [
+            1825841,
+            1826464,
+            1826083,
+            1826275,
+            1826382,
+            1825859,
+            1826268,
+            1825884,
+            1825868,
+            1825906,
+            1826093,
+            1825853,
+            1826140,
+            1826219,
+            1826016
+        ],
+        "D": [
+            1827953,
+            1827519,
+            1828417,
+            1827605,
+            1827984,
+            1827121,
+            1828276,
+            1828188,
+            1828202,
+            1828182,
+            1828229,
+            1828355,
+            1828376,
+            1828201
+        ],
+        "C": [
+            1827310,
+            1827007,
+            1827388,
+            1827250,
+            1827071,
+            1827751,
+            1827110,
+            1827499,
+            1827231,
+            1827512,
+            1827236,
+            1827297,
+            1827317,
+            1827455
+        ],
+        "E": [
+            1831278,
+            1831185,
+            1829707
+        ],
+        "A": []
+    },
+    "name": "B. Drinks",
+    "statement": "Little Vasya loves orange juice very much. That\u2019s why any food and drink\r\nin his kitchen necessarily contains orange juice. There are drinks in\r\nhis fridge, the volume fraction of orange juice in the -th drink equals\r\npercent.One day Vasya decided to make himself an orange cocktail. He\r\ntook equal proportions of each of the drinks and mixed them. Then he\r\nwondered, how much orange juice the cocktail has.Find the volume\r\nfraction of orange juice in the final drink.\r\n",
+    "solutions": [
+        "#include <algorithm>\n#include <cassert>\n#include <cctype>\n#include <cmath>\n#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <map>\n#include <queue>\n#include <set>\n#include <string>\n#include <vector>\n\nusing namespace std;\ntypedef long long int lli;\n\nint gInt () {\n  int i;\n  scanf(\"%d\", &i);\n  return i;\n}\n\nlli gLong () {\n  lli i;\n  scanf(\"%lld\", &i);\n  return i;\n}\n\ndouble gDouble () {\n  double i;\n  scanf(\"%lf\", &i);\n  return i;\n}\n\nvoid quit () {\n  fflush(stdout);\n  exit(0);\n}\n\nint main (int argc, char ** argv) {\n  int num = gInt();\n  double sum = 0.0;\n  for (int count = 0; count < num; count ++)\n    sum += gDouble();\n  printf(\"%.13lf\\n\", sum / num);\n  quit();\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation",
+        "math"
+    ],
+    "dificulty": "800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Drinks.json",
+    "editorial_link": "https://codeforces.com//blog/entry/4769",
+    "editorial": "This problem was the easiest problem of the contest. There you had to\r\nfind average of the given numbers. The most participants solved this\r\nproblem.\r\n"
+}

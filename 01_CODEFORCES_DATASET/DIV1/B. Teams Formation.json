@@ -1,1 +1,105 @@
-{"link": "https://codeforces.com//contest/878/problem/B", "problemId": "130658", "problem_idx": "B", "shortId": "878B", "contest_number": "878", "problem_submissions": {"E": [31763989, 31766344, 32084568], "D": [31756901, 31762689, 31754129, 31756452, 31772004, 31761487, 31761339, 31761633, 31767096, 31789313, 31769411, 31767240, 31764633, 31929002, 31911110, 31754793], "C": [31752735, 31757112, 31751479, 31747354, 31752922, 31752815, 31757860, 31761336, 31759682, 31761695, 31751021, 31760902, 31758288, 31764916, 31764825, 31755837], "B": [31745139, 31746290, 31753553, 31777437, 31754012, 31756298, 31752132, 31754987, 31751846, 31753351, 31760932, 31770059, 31750086, 31755233, 31753552, 31762144], "A": [31741277, 31741357, 31741777, 31741474, 31742096, 31741956, 31741731, 31741469, 31743565, 31743908, 31741393, 31741983, 31741174, 31745067, 31741499, 31745657, 31745328, 31741742, 31742765]}, "name": "B. Teams Formation", "statement": "This time the Berland Team Olympiad in Informatics is held in a remote\r\ncity that can only be reached by one small bus. Bus has passenger seats,\r\nseat can be occupied only by a participant from the city .Today the bus\r\nhas completed trips, each time bringing participants. The participants\r\nwere then aligned in one line in the order they arrived, with people\r\nfrom the same bus standing in the order of their seats (i. e. if we\r\nwrite down the cities where the participants came from, we get the\r\nsequence repeated times).After that some teams were formed, each\r\nconsisting of participants form the same city standing next to each\r\nother in the line. Once formed, teams left the line. The teams were\r\nformed until there were no neighboring participants from the same\r\ncity.Help the organizers determine how many participants have left in\r\nthe line after that process ended. We can prove that answer doesn\u2019t\r\ndepend on the order in which teams were selected.\r\n", "solutions": ["#include <stdio.h>  \n#include <algorithm>  \n#include <assert.h>\n#include <bitset>\n#include <cmath>  \n#include <complex>  \n#include <deque>  \n#include <functional>  \n#include <iostream>  \n#include <limits.h>  \n#include <map>  \n#include <math.h>  \n#include <queue>  \n#include <set>  \n#include <stdlib.h>  \n#include <string.h>  \n#include <string>  \n#include <time.h>  \n#include <unordered_map>  \n#include <unordered_set>  \n#include <vector>  \n\n#pragma warning(disable:4996)  \n#pragma comment(linker, \"/STACK:336777216\")  \nusing namespace std;\n\n#define mp make_pair  \n#define all(x) (x).begin(), (x).end()  \n#define ldb ldouble\n\ntypedef tuple<int, int, int> t3;\ntypedef long long ll;\ntypedef unsigned long long ull;\ntypedef double db;\ntypedef long double ldb;\ntypedef pair <int, int> pii;\ntypedef pair <ll, ll> pll;\ntypedef pair <ll, int> pli;\ntypedef pair <db, db> pdd;\n\nint IT_MAX = 1 << 17;\nconst ll MOD = 1000000009;\nconst int INF = 0x3f3f3f3f;\nconst ll LL_INF = 0x3f3f3f3f3f3f3f3f;\nconst db PI = acos(-1);\nconst db ERR = 1e-8;\n#define szz(x) (int)(x).size()\n#define rep(i, n) for(int i=0;i<n;i++)\n\nvector <pll> Vu;\nint main() {\n\tint N, K, M, i, j;\n\tscanf(\"%d %d %d\", &N, &K, &M);\n\tfor (i = 1; i <= N; i++) {\n\t\tint t;\n\t\tscanf(\"%d\", &t);\n\t\tif (!Vu.empty() && Vu.back().first == t) {\n\t\t\tVu.back().second++;\n\t\t\tif (Vu.back().second == K) Vu.pop_back();\n\t\t}\n\t\telse Vu.emplace_back(t, 1);\n\t}\n\n\tll s = 0;\n\tfor (auto it : Vu) s += it.second;\n\tif (M == 1 || s == 0) return !printf(\"%lld\\n\", s);\n\n\ts *= M;\n\tint st = 0, en = (int)Vu.size() - 1;\n\twhile (st < en) {\n\t\tif (Vu[st].first != Vu[en].first) return !printf(\"%lld\\n\", s);\n\t\tif (Vu[st].second + Vu[en].second == K) {\n\t\t\ts -= (ll)(M - 1) * K;\n\t\t\tst++, en--;\n\t\t\tcontinue;\n\t\t}\n\t\tif (Vu[st].second + Vu[en].second > K) s -= (ll)(M - 1)*K;\n\t\treturn !printf(\"%lld\\n\", s);\n\t}\n\tif (st > en) return !printf(\"0\\n\");\n\tif (st == en) {\n\t\tll x = Vu[st].second * M;\n\t\tif (x % K == 0) return !printf(\"0\\n\");\n\t\telse return !printf(\"%lld\\n\", s - (x / K)*K);\n\t}\n\treturn 0;\n}"], "input": "", "output": "", "tags": ["data structures", "implementation"], "dificulty": "2300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/878/problem/B",
+    "problemId": "130658",
+    "problem_idx": "B",
+    "shortId": "878B",
+    "contest_number": "878",
+    "problem_submissions": {
+        "E": [
+            31763989,
+            31766344,
+            32084568
+        ],
+        "D": [
+            31756901,
+            31762689,
+            31754129,
+            31756452,
+            31772004,
+            31761487,
+            31761339,
+            31761633,
+            31767096,
+            31789313,
+            31769411,
+            31767240,
+            31764633,
+            31929002,
+            31911110,
+            31754793
+        ],
+        "C": [
+            31752735,
+            31757112,
+            31751479,
+            31747354,
+            31752922,
+            31752815,
+            31757860,
+            31761336,
+            31759682,
+            31761695,
+            31751021,
+            31760902,
+            31758288,
+            31764916,
+            31764825,
+            31755837
+        ],
+        "B": [
+            31745139,
+            31746290,
+            31753553,
+            31777437,
+            31754012,
+            31756298,
+            31752132,
+            31754987,
+            31751846,
+            31753351,
+            31760932,
+            31770059,
+            31750086,
+            31755233,
+            31753552,
+            31762144
+        ],
+        "A": [
+            31741277,
+            31741357,
+            31741777,
+            31741474,
+            31742096,
+            31741956,
+            31741731,
+            31741469,
+            31743565,
+            31743908,
+            31741393,
+            31741983,
+            31741174,
+            31745067,
+            31741499,
+            31745657,
+            31745328,
+            31741742,
+            31742765
+        ]
+    },
+    "name": "B. Teams Formation",
+    "statement": "This time the Berland Team Olympiad in Informatics is held in a remote\r\ncity that can only be reached by one small bus. Bus has passenger seats,\r\nseat can be occupied only by a participant from the city .Today the bus\r\nhas completed trips, each time bringing participants. The participants\r\nwere then aligned in one line in the order they arrived, with people\r\nfrom the same bus standing in the order of their seats (i. e. if we\r\nwrite down the cities where the participants came from, we get the\r\nsequence repeated times).After that some teams were formed, each\r\nconsisting of participants form the same city standing next to each\r\nother in the line. Once formed, teams left the line. The teams were\r\nformed until there were no neighboring participants from the same\r\ncity.Help the organizers determine how many participants have left in\r\nthe line after that process ended. We can prove that answer doesn\u2019t\r\ndepend on the order in which teams were selected.\r\n",
+    "solutions": [
+        "#include <stdio.h>  \n#include <algorithm>  \n#include <assert.h>\n#include <bitset>\n#include <cmath>  \n#include <complex>  \n#include <deque>  \n#include <functional>  \n#include <iostream>  \n#include <limits.h>  \n#include <map>  \n#include <math.h>  \n#include <queue>  \n#include <set>  \n#include <stdlib.h>  \n#include <string.h>  \n#include <string>  \n#include <time.h>  \n#include <unordered_map>  \n#include <unordered_set>  \n#include <vector>  \n\n#pragma warning(disable:4996)  \n#pragma comment(linker, \"/STACK:336777216\")  \nusing namespace std;\n\n#define mp make_pair  \n#define all(x) (x).begin(), (x).end()  \n#define ldb ldouble\n\ntypedef tuple<int, int, int> t3;\ntypedef long long ll;\ntypedef unsigned long long ull;\ntypedef double db;\ntypedef long double ldb;\ntypedef pair <int, int> pii;\ntypedef pair <ll, ll> pll;\ntypedef pair <ll, int> pli;\ntypedef pair <db, db> pdd;\n\nint IT_MAX = 1 << 17;\nconst ll MOD = 1000000009;\nconst int INF = 0x3f3f3f3f;\nconst ll LL_INF = 0x3f3f3f3f3f3f3f3f;\nconst db PI = acos(-1);\nconst db ERR = 1e-8;\n#define szz(x) (int)(x).size()\n#define rep(i, n) for(int i=0;i<n;i++)\n\nvector <pll> Vu;\nint main() {\n\tint N, K, M, i, j;\n\tscanf(\"%d %d %d\", &N, &K, &M);\n\tfor (i = 1; i <= N; i++) {\n\t\tint t;\n\t\tscanf(\"%d\", &t);\n\t\tif (!Vu.empty() && Vu.back().first == t) {\n\t\t\tVu.back().second++;\n\t\t\tif (Vu.back().second == K) Vu.pop_back();\n\t\t}\n\t\telse Vu.emplace_back(t, 1);\n\t}\n\n\tll s = 0;\n\tfor (auto it : Vu) s += it.second;\n\tif (M == 1 || s == 0) return !printf(\"%lld\\n\", s);\n\n\ts *= M;\n\tint st = 0, en = (int)Vu.size() - 1;\n\twhile (st < en) {\n\t\tif (Vu[st].first != Vu[en].first) return !printf(\"%lld\\n\", s);\n\t\tif (Vu[st].second + Vu[en].second == K) {\n\t\t\ts -= (ll)(M - 1) * K;\n\t\t\tst++, en--;\n\t\t\tcontinue;\n\t\t}\n\t\tif (Vu[st].second + Vu[en].second > K) s -= (ll)(M - 1)*K;\n\t\treturn !printf(\"%lld\\n\", s);\n\t}\n\tif (st > en) return !printf(\"0\\n\");\n\tif (st == en) {\n\t\tll x = Vu[st].second * M;\n\t\tif (x % K == 0) return !printf(\"0\\n\");\n\t\telse return !printf(\"%lld\\n\", s - (x / K)*K);\n\t}\n\treturn 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "data structures",
+        "implementation"
+    ],
+    "dificulty": "2300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Teams Formation.json",
+    "editorial_link": "https://codeforces.com//blog/entry/55435",
+    "editorial": "First, let\u00e2\u0080\u0099s see what happens inside one bus. We can use a stack\r\ncontaining pairs (city, number of participants from it). When the number\r\nof participants reaches , we erase the pair.Suppose we build this stack.\r\nis its size, are pairs in it. Now consider the interaction of two such\r\nbuses. At the border, a team is formed, if and . If the inequality\r\nbecomes an equality, then another team can be formed from the second and\r\npenultimate groups, etc. Let\u00e2\u0080\u0099s find the greatest such that for each we\r\nhave and . Since the condition on is symmetric with respect to , if ,\r\nthen .Consider the case separately. This means that the two buses are\r\ncompletely divided into teams. If is even, answer is zero, otherwise\r\nanswer is the sum of .Also, consider the case when is odd and . In this\r\ncase, after removing all teams at the borders of the buses, the queue\r\nlooks like: left part of the first bus people from the city right part\r\nof the last bus. If the number of people in the middle is divisible by ,\r\nthen they will be divided into the commands, and the first half will\r\nunite with the last, and the answer is zero. If it doesn\u00e2\u0080\u0099t, then some\r\nteams will be formed in the middle, and the process will end\r\nthere.Finally, if is even smaller, it can be seen that after the\r\nformation of teams at the borders of buses the process will end.\r\n"
+}

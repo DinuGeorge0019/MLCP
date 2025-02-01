@@ -1,1 +1,82 @@
-{"link": "https://codeforces.com//contest/169/problem/D", "problemId": "1047", "problem_idx": "D", "shortId": "169D", "contest_number": "169", "problem_submissions": {"C": [1413568, 1418000, 1419729, 1418879, 1411538, 1411673, 1412236, 1411277, 1411560, 1412011, 1411811, 1412600], "D": [1412552, 1418074, 1411994, 1418637, 1418063, 1414034], "B": [1410183, 1409899, 1409611, 1409469, 1410004, 1410007, 1410220, 1409835, 1410058, 1410523, 1410902, 1409990, 1409805, 1410144], "A": [1409095, 1409256, 1409125, 1409053, 1409076, 1409189, 1409237, 1409183, 1409272, 1409331, 1409404, 1409425, 1409291, 1409388], "E": [1413634, 1413390, 1419771, 1414392]}, "name": "D. Lemmings", "statement": "As you know, lemmings like jumping. For the next spectacular group jump\r\nlemmings gathered near a high rock with comfortable ledges on it. The\r\nfirst ledge is situated at the height of meters, the second one is at\r\nthe height of meters, and so on (the -th ledge is at the height of\r\nmeters). The lemmings are going to jump at sunset, and there\u2019s not much\r\ntime left.Each lemming is characterized by its climbing speed of meters\r\nper minute and its weight . This means that the -th lemming can climb to\r\nthe -th ledge in minutes.To make the jump beautiful, heavier lemmings\r\nshould jump from higher ledges: if a lemming of weight jumps from ledge\r\n, and a lemming of weight jumps from ledge (for ), then the inequation\r\nshould be fulfilled.Since there are lemmings and only ledges (), the\r\nlemmings that will take part in the jump need to be chosen. The chosen\r\nlemmings should be distributed on the ledges from to , one lemming per\r\nledge. The lemmings are to be arranged in the order of non-decreasing\r\nweight with the increasing height of the ledge. In addition, each\r\nlemming should have enough time to get to his ledge, that is, the time\r\nof his climb should not exceed minutes. The lemmings climb to their\r\nledges all at the same time and they do not interfere with each\r\nother.Find the way to arrange the lemmings\u2019 jump so that time is\r\nminimized.\r\n", "solutions": ["#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <queue>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstring>\n\n//kAc\nconst double pi = acos(-1.0);\n#define ALL(x) x.begin(), x.end()\n#define foreach(x, E) for (__typeof(E.begin()) x = E.begin(); x != E.end(); x++)\n#define MP make_pair\n#define PB push_back\n#define FR first\n#define SC second\n#define ERR cerr << \"ERROR\" << endl\n#define LL long long\n#define LD long double\n#define ULL unsiged long long\n#define PII pair<int, int>\n#define PIII pair<PII, int>\n#define PDI pair<double, int>\n#define PID pair<int, double>\n#define SZ(a) (int)a.size()\n#define VEC vector\n#define STR string\nconst int dx[4] = {1, -1, 0, 0};\nconst int dy[4] = {0, 0, 1, -1};\n#define gmin(a, b) { if (b < a) a = b; }\n#define gmax(a, b) { if (b > a) a = b; }\nusing namespace std;\npair<PII, int> d[1000001];\nint n, k, h;\nbool ok(double t, bool F)\n{\n    int num = 1;\n    for (int i = 1; i <= n; i++){\n        if (!((double)num * h > t * d[i].FR.SC)){\n            ++num;\n            if (F) printf(\"%d \", d[i].SC);\n        if (num > k) return true;\n        }\n    }\n    return false;\n}\nint main()\n{\n    scanf(\"%d%d%d\", &n, &k, &h);scanf(\"\\n\");\n    int a=0;for(int i=0;i<=n;i++)++a;\n    for (int i = 1; i <= n; i++) scanf(\"%d\", &d[i].FR);\n    for (int i = 1; i <= n; i++) scanf(\"%d\", &d[i].FR.SC);\n    for (int i = 1; i <= n; i++) d[i].SC = i;\n    sort(d + 1, d + n + 1);\n    double l = 0, r = 1e9;\n    for (int i = 1; i <= 200; i++){\n        double m = (l + r) / 2;\n        if (ok(m, false)) r = m; else l = m;\n    }\n    ok(r, true); puts(\"\");\n}\n"], "input": "", "output": "", "tags": [], "dificulty": "2000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/169/problem/D",
+    "problemId": "1047",
+    "problem_idx": "D",
+    "shortId": "169D",
+    "contest_number": "169",
+    "problem_submissions": {
+        "C": [
+            1413568,
+            1418000,
+            1419729,
+            1418879,
+            1411538,
+            1411673,
+            1412236,
+            1411277,
+            1411560,
+            1412011,
+            1411811,
+            1412600
+        ],
+        "D": [
+            1412552,
+            1418074,
+            1411994,
+            1418637,
+            1418063,
+            1414034
+        ],
+        "B": [
+            1410183,
+            1409899,
+            1409611,
+            1409469,
+            1410004,
+            1410007,
+            1410220,
+            1409835,
+            1410058,
+            1410523,
+            1410902,
+            1409990,
+            1409805,
+            1410144
+        ],
+        "A": [
+            1409095,
+            1409256,
+            1409125,
+            1409053,
+            1409076,
+            1409189,
+            1409237,
+            1409183,
+            1409272,
+            1409331,
+            1409404,
+            1409425,
+            1409291,
+            1409388
+        ],
+        "E": [
+            1413634,
+            1413390,
+            1419771,
+            1414392
+        ]
+    },
+    "name": "D. Lemmings",
+    "statement": "As you know, lemmings like jumping. For the next spectacular group jump\r\nlemmings gathered near a high rock with comfortable ledges on it. The\r\nfirst ledge is situated at the height of meters, the second one is at\r\nthe height of meters, and so on (the -th ledge is at the height of\r\nmeters). The lemmings are going to jump at sunset, and there’s not much\r\ntime left.Each lemming is characterized by its climbing speed of meters\r\nper minute and its weight . This means that the -th lemming can climb to\r\nthe -th ledge in minutes.To make the jump beautiful, heavier lemmings\r\nshould jump from higher ledges: if a lemming of weight jumps from ledge\r\n, and a lemming of weight jumps from ledge (for ), then the inequation\r\nshould be fulfilled.Since there are lemmings and only ledges (), the\r\nlemmings that will take part in the jump need to be chosen. The chosen\r\nlemmings should be distributed on the ledges from to , one lemming per\r\nledge. The lemmings are to be arranged in the order of non-decreasing\r\nweight with the increasing height of the ledge. In addition, each\r\nlemming should have enough time to get to his ledge, that is, the time\r\nof his climb should not exceed minutes. The lemmings climb to their\r\nledges all at the same time and they do not interfere with each\r\nother.Find the way to arrange the lemmings’ jump so that time is\r\nminimized.\r\n",
+    "solutions": [
+        "#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <queue>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstring>\n\n//kAc\nconst double pi = acos(-1.0);\n#define ALL(x) x.begin(), x.end()\n#define foreach(x, E) for (__typeof(E.begin()) x = E.begin(); x != E.end(); x++)\n#define MP make_pair\n#define PB push_back\n#define FR first\n#define SC second\n#define ERR cerr << \"ERROR\" << endl\n#define LL long long\n#define LD long double\n#define ULL unsiged long long\n#define PII pair<int, int>\n#define PIII pair<PII, int>\n#define PDI pair<double, int>\n#define PID pair<int, double>\n#define SZ(a) (int)a.size()\n#define VEC vector\n#define STR string\nconst int dx[4] = {1, -1, 0, 0};\nconst int dy[4] = {0, 0, 1, -1};\n#define gmin(a, b) { if (b < a) a = b; }\n#define gmax(a, b) { if (b > a) a = b; }\nusing namespace std;\npair<PII, int> d[1000001];\nint n, k, h;\nbool ok(double t, bool F)\n{\n    int num = 1;\n    for (int i = 1; i <= n; i++){\n        if (!((double)num * h > t * d[i].FR.SC)){\n            ++num;\n            if (F) printf(\"%d \", d[i].SC);\n        if (num > k) return true;\n        }\n    }\n    return false;\n}\nint main()\n{\n    scanf(\"%d%d%d\", &n, &k, &h);scanf(\"\\n\");\n    int a=0;for(int i=0;i<=n;i++)++a;\n    for (int i = 1; i <= n; i++) scanf(\"%d\", &d[i].FR);\n    for (int i = 1; i <= n; i++) scanf(\"%d\", &d[i].FR.SC);\n    for (int i = 1; i <= n; i++) d[i].SC = i;\n    sort(d + 1, d + n + 1);\n    double l = 0, r = 1e9;\n    for (int i = 1; i <= 200; i++){\n        double m = (l + r) / 2;\n        if (ok(m, false)) r = m; else l = m;\n    }\n    ok(r, true); puts(\"\");\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [],
+    "dificulty": "2000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Lemmings.json",
+    "editorial_link": "https://codeforces.com//blog/entry/4187",
+    "editorial": null
+}

@@ -1,1 +1,102 @@
-{"link": "https://codeforces.com//contest/27/problem/D", "problemId": "127", "problem_idx": "D", "shortId": "27D", "contest_number": "27", "problem_submissions": {"C": [118523, 117811, 117814, 117821, 1202654, 117657, 117499, 119957, 117700, 119337, 118774, 118192, 117772, 118123], "E": [118273, 118684, 118448, 118559, 118059, 118536, 119960, 118988, 119040, 119271, 119970], "D": [117934, 118098, 118656, 118879, 117613, 118207, 119959, 118542, 118353, 118733, 121675, 118883], "B": [117350, 117487, 117442, 117491, 117370, 117796, 119955, 117513, 117473, 118282, 119741, 117496, 117464, 117783], "A": [117113, 117117, 117183, 117189, 117387, 117134, 117129, 119954, 117122, 117228, 117819, 117165, 117139, 117252]}, "name": "D. Ring Road 2", "statement": "It is well known that Berland has cities, which form the Silver ring\r\ncities and () are connected by a road, as well as the cities and . The\r\ngoverment have decided to build new roads. The list of the roads to\r\nbuild was prepared. Each road will connect two cities. Each road should\r\nbe a curve which lies inside or outside the ring. New roads will have no\r\ncommon points with the ring (except the endpoints of the road).Now the\r\ndesigners of the constructing plan wonder if it is possible to build the\r\nroads in such a way that no two roads intersect (note that the roads may\r\nintersect at their endpoints). If it is possible to do, which roads\r\nshould be inside the ring, and which should be outside?\r\n", "solutions": ["#include<iostream>\n#include<cstdio>\n#include<cstring>\n#include<cstdlib>\n#include<map>\n#include<vector>\n#include<list>\n#include<set>\n#include<queue>\n#include<cassert>\n#include<sstream>\n#include<string>\n#include<cmath>\n#include<algorithm>\nusing namespace std;\n\n#define LET(x,a) \t__typeof(a) x(a)\n#define IFOR(i,a,b) \tfor(LET(i,a);i!=(b);++i)\n#define EACH(it,v)  \tIFOR(it,v.begin(),v.end())\n#define FOR(i,a,b)  \tfor(int i=(int)(a) ; i < (int)(b);++i)\n#define REP(i,n) \tFOR(i,0,n)\n#define PB\t\tpush_back\n#define MP \t\tmake_pair\n#define EPS\t\t1e-9\n#define INF 2000000000\n\ntypedef vector<int>\tVI;\ntypedef long long\tLL;\ntypedef pair<int,int>\tPI;\n\nint visited[1000];\nint graph[500][500];\nbool valid;\nint n,m;\n\nvoid dfs(int ver,int side){\n\tvisited[ver] = side;\n\tREP(i,m)if(i!=ver && graph[ver][i]){\n\t\tif(visited[i]==-1)dfs(i,1-side);\n\t\telse if(visited[i]!=1-side)valid = false;\n\t}\n\treturn;\n}\n\nint main(){\n\tcin>>n>>m;\n\tint roads[m+1][2];\n\tmemset(graph,0,sizeof(graph));\n\tmemset(visited,-1,sizeof(visited));\n\tREP(i,m){\n\t\tcin>>roads[i][0]>>roads[i][1];\n\t\troads[i][0]--;\n\t\troads[i][1]--;\n\t\tif(roads[i][0] > roads[i][1])swap(roads[i][0],roads[i][1]);\n\t}\n\tREP(i,m)REP(j,m)if(i!=j){\n\t\tif((roads[j][0]>roads[i][0] && roads[j][0]<roads[i][1] && roads[j][1]>roads[i][1])){\n\t\t\tgraph[i][j]=1;\n\t\t\tgraph[j][i]=1;\n\t\t}\n\t}\n\t//check if the graph is bipartite\n\tvalid = true;\n\tREP(i,m)if(visited[i]==-1)dfs(i,0);\t\n\tif(!valid)puts(\"Impossible\");\n\telse {\n\t\tREP(i,m){\n\t\t\tif(!visited[i])printf(\"o\");\n\t\t\telse printf(\"i\");\n\t\t}\n\t\tcout<<endl;\n\t}\n}\n"], "input": "", "output": "", "tags": ["2-sat", "dfs and similar", "dsu", "graphs"], "dificulty": "2200", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/27/problem/D",
+    "problemId": "127",
+    "problem_idx": "D",
+    "shortId": "27D",
+    "contest_number": "27",
+    "problem_submissions": {
+        "C": [
+            118523,
+            117811,
+            117814,
+            117821,
+            1202654,
+            117657,
+            117499,
+            119957,
+            117700,
+            119337,
+            118774,
+            118192,
+            117772,
+            118123
+        ],
+        "E": [
+            118273,
+            118684,
+            118448,
+            118559,
+            118059,
+            118536,
+            119960,
+            118988,
+            119040,
+            119271,
+            119970
+        ],
+        "D": [
+            117934,
+            118098,
+            118656,
+            118879,
+            117613,
+            118207,
+            119959,
+            118542,
+            118353,
+            118733,
+            121675,
+            118883
+        ],
+        "B": [
+            117350,
+            117487,
+            117442,
+            117491,
+            117370,
+            117796,
+            119955,
+            117513,
+            117473,
+            118282,
+            119741,
+            117496,
+            117464,
+            117783
+        ],
+        "A": [
+            117113,
+            117117,
+            117183,
+            117189,
+            117387,
+            117134,
+            117129,
+            119954,
+            117122,
+            117228,
+            117819,
+            117165,
+            117139,
+            117252
+        ]
+    },
+    "name": "D. Ring Road 2",
+    "statement": "It is well known that Berland has cities, which form the Silver ring\r\ncities and () are connected by a road, as well as the cities and . The\r\ngoverment have decided to build new roads. The list of the roads to\r\nbuild was prepared. Each road will connect two cities. Each road should\r\nbe a curve which lies inside or outside the ring. New roads will have no\r\ncommon points with the ring (except the endpoints of the road).Now the\r\ndesigners of the constructing plan wonder if it is possible to build the\r\nroads in such a way that no two roads intersect (note that the roads may\r\nintersect at their endpoints). If it is possible to do, which roads\r\nshould be inside the ring, and which should be outside?\r\n",
+    "solutions": [
+        "#include<iostream>\n#include<cstdio>\n#include<cstring>\n#include<cstdlib>\n#include<map>\n#include<vector>\n#include<list>\n#include<set>\n#include<queue>\n#include<cassert>\n#include<sstream>\n#include<string>\n#include<cmath>\n#include<algorithm>\nusing namespace std;\n\n#define LET(x,a) \t__typeof(a) x(a)\n#define IFOR(i,a,b) \tfor(LET(i,a);i!=(b);++i)\n#define EACH(it,v)  \tIFOR(it,v.begin(),v.end())\n#define FOR(i,a,b)  \tfor(int i=(int)(a) ; i < (int)(b);++i)\n#define REP(i,n) \tFOR(i,0,n)\n#define PB\t\tpush_back\n#define MP \t\tmake_pair\n#define EPS\t\t1e-9\n#define INF 2000000000\n\ntypedef vector<int>\tVI;\ntypedef long long\tLL;\ntypedef pair<int,int>\tPI;\n\nint visited[1000];\nint graph[500][500];\nbool valid;\nint n,m;\n\nvoid dfs(int ver,int side){\n\tvisited[ver] = side;\n\tREP(i,m)if(i!=ver && graph[ver][i]){\n\t\tif(visited[i]==-1)dfs(i,1-side);\n\t\telse if(visited[i]!=1-side)valid = false;\n\t}\n\treturn;\n}\n\nint main(){\n\tcin>>n>>m;\n\tint roads[m+1][2];\n\tmemset(graph,0,sizeof(graph));\n\tmemset(visited,-1,sizeof(visited));\n\tREP(i,m){\n\t\tcin>>roads[i][0]>>roads[i][1];\n\t\troads[i][0]--;\n\t\troads[i][1]--;\n\t\tif(roads[i][0] > roads[i][1])swap(roads[i][0],roads[i][1]);\n\t}\n\tREP(i,m)REP(j,m)if(i!=j){\n\t\tif((roads[j][0]>roads[i][0] && roads[j][0]<roads[i][1] && roads[j][1]>roads[i][1])){\n\t\t\tgraph[i][j]=1;\n\t\t\tgraph[j][i]=1;\n\t\t}\n\t}\n\t//check if the graph is bipartite\n\tvalid = true;\n\tREP(i,m)if(visited[i]==-1)dfs(i,0);\t\n\tif(!valid)puts(\"Impossible\");\n\telse {\n\t\tREP(i,m){\n\t\t\tif(!visited[i])printf(\"o\");\n\t\t\telse printf(\"i\");\n\t\t}\n\t\tcout<<endl;\n\t}\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "2-sat",
+        "dfs and similar",
+        "dsu",
+        "graphs"
+    ],
+    "dificulty": "2200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Ring Road 2.json",
+    "editorial_link": "https://codeforces.com//blog/entry/653",
+    "editorial": "Consider all m given roads as segments on numeric axis. Road from town a to town b should correspond to segment [min(a, b), max(a, b)]. For each pair of segments there are three types of positions: both ends of one segment are inside of the other one, both ends of one segment are outside of the other one and only one end of one segment is inside of the other one. In the first two cases positions of corresponding roads(inside circle or outside) are independend. But in the third case this positions must be opposite\nLet's build the graph. Vertexes will correspond to segments/roads and edge between vertexes i and j will mean that positions of this roads should be opposite. Now we have another problem: for given undirected graph, we must paint all vertexes in 2 colours such that for each edge, corresponding vertexes will have different colours. This problem can be solved using DFS algorithm. First, we will paint all vertexes in -1 colour. Let's begin for-loop through vertexes. If loop finds -1-vertex, assing colour 0 to the vertex and run DFS from it. DFS from vertex V should look through all neighbor vertex. If neighbor has colour -1, than assing to that neighbor colour, opposite to the colour of V and run DFS from it. If neighbor already has non-negative colour, we should check whereas this colour is opposite, because if it is not, answer is \"Impossible\". Such DFS will either build the correct answer or prove that it is impossible."
+}

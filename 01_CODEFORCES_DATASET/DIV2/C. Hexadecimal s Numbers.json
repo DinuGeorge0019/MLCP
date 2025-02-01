@@ -1,1 +1,105 @@
-{"link": "https://codeforces.com//contest/9/problem/C", "problemId": "39", "problem_idx": "C", "shortId": "9C", "contest_number": "9", "problem_submissions": {"E": [39868, 40035, 40397, 39920, 40525, 40255, 40364, 40918, 40916, 40907, 40905, 40903, 40902, 40887, 40883, 40881], "B": [39322, 39157, 39182, 39065, 39109, 39103, 39519, 39212, 39094, 39095, 39125, 39498, 39287], "D": [39225, 39357, 39494, 39241, 39384, 39662, 39771, 39508, 39555, 39543, 2827312, 39714, 38998, 39881], "C": [38999, 38924, 39161, 38963, 38893, 38846, 39594, 38953, 38868, 38709, 38839, 39133, 38862], "A": [38708, 38736, 38719, 38706, 38745, 38722, 39296, 38845, 38717, 38803, 38714, 39067, 38711]}, "name": "C. Hexadecimal s Numbers", "statement": "One beautiful July morning a terrible thing happened in Mainframe: a\r\nmean virus Megabyte somehow got access to the memory of his not less\r\nmean sister Hexadecimal. He loaded there a huge amount of different\r\nnatural numbers from 1 to to obtain total control over her energy.But\r\nhis plan failed. The reason for this was very simple: Hexadecimal didn\u2019t\r\nperceive any information, apart from numbers written in binary format.\r\nThis means that if a number in a decimal representation contained\r\ncharacters apart from 0 and 1, it was not stored in the memory. Now\r\nMegabyte wants to know, how many numbers were loaded successfully.\r\n", "solutions": ["#include <iostream>\n#include <cmath>\n#include <algorithm>\n#include <cstdio>\n#include <string>\n\nusing namespace std;\n\nint bintodec(int x)\n{\n\tint ans = 0, p = 1;\n\twhile (x > 0)\n\t{\n\t\tans += (x%2) * p;\n\t\tx /= 2;\n\t\tp *= 10;\n\t}\n\treturn ans;\n}\n\nint main()\n{\n//\tfreopen(\"\", \"rt\", stdin);\n//\tfreopen(\"\", \"wt\", stdout);\n\tint n;\n\tcin >> n;\n\tint x = 1, ans = 0;\n\twhile (bintodec(x) <= n)\n\t{\n\t\tans++;\n\t\tx++;\n\t}\n\tcout << ans;\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["brute force", "implementation", "math"], "dificulty": "1200", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/9/problem/C",
+    "problemId": "39",
+    "problem_idx": "C",
+    "shortId": "9C",
+    "contest_number": "9",
+    "problem_submissions": {
+        "E": [
+            39868,
+            40035,
+            40397,
+            39920,
+            40525,
+            40255,
+            40364,
+            40918,
+            40916,
+            40907,
+            40905,
+            40903,
+            40902,
+            40887,
+            40883,
+            40881
+        ],
+        "B": [
+            39322,
+            39157,
+            39182,
+            39065,
+            39109,
+            39103,
+            39519,
+            39212,
+            39094,
+            39095,
+            39125,
+            39498,
+            39287
+        ],
+        "D": [
+            39225,
+            39357,
+            39494,
+            39241,
+            39384,
+            39662,
+            39771,
+            39508,
+            39555,
+            39543,
+            2827312,
+            39714,
+            38998,
+            39881
+        ],
+        "C": [
+            38999,
+            38924,
+            39161,
+            38963,
+            38893,
+            38846,
+            39594,
+            38953,
+            38868,
+            38709,
+            38839,
+            39133,
+            38862
+        ],
+        "A": [
+            38708,
+            38736,
+            38719,
+            38706,
+            38745,
+            38722,
+            39296,
+            38845,
+            38717,
+            38803,
+            38714,
+            39067,
+            38711
+        ]
+    },
+    "name": "C. Hexadecimal s Numbers",
+    "statement": "One beautiful July morning a terrible thing happened in Mainframe: a\r\nmean virus Megabyte somehow got access to the memory of his not less\r\nmean sister Hexadecimal. He loaded there a huge amount of different\r\nnatural numbers from 1 to to obtain total control over her energy.But\r\nhis plan failed. The reason for this was very simple: Hexadecimal didn\u2019t\r\nperceive any information, apart from numbers written in binary format.\r\nThis means that if a number in a decimal representation contained\r\ncharacters apart from 0 and 1, it was not stored in the memory. Now\r\nMegabyte wants to know, how many numbers were loaded successfully.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <cmath>\n#include <algorithm>\n#include <cstdio>\n#include <string>\n\nusing namespace std;\n\nint bintodec(int x)\n{\n\tint ans = 0, p = 1;\n\twhile (x > 0)\n\t{\n\t\tans += (x%2) * p;\n\t\tx /= 2;\n\t\tp *= 10;\n\t}\n\treturn ans;\n}\n\nint main()\n{\n//\tfreopen(\"\", \"rt\", stdin);\n//\tfreopen(\"\", \"wt\", stdout);\n\tint n;\n\tcin >> n;\n\tint x = 1, ans = 0;\n\twhile (bintodec(x) <= n)\n\t{\n\t\tans++;\n\t\tx++;\n\t}\n\tcout << ans;\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "implementation",
+        "math"
+    ],
+    "dificulty": "1200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Hexadecimal s Numbers.json",
+    "editorial_link": "https://codeforces.com//blog/entry/283",
+    "editorial": "Brute force solution, when you try each number from 1 to n, will not fit into the time limit.\nNote, however, that all good numbers have at most 10 digits, and each of the digits is 0 or 1. That is, there are at most 210 binary strings to check. Each of these strings is a number from 1 to 210?-?1 in binary representation. So the algorithm is the following: for each number from 1 to 210?-?1 write its binary  representation, read it as if it was decimal representation and compare the result to n."
+}

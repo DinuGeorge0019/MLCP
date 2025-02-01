@@ -1,1 +1,99 @@
-{"link": "https://codeforces.com//contest/66/problem/A", "problemId": "346", "problem_idx": "A", "shortId": "66A", "contest_number": "66", "problem_submissions": {"C": [325739, 327571, 324946, 325140, 326366, 326847, 325519, 325350, 326429, 326396, 326853, 325915, 529168, 325585], "E": [325379, 326033, 326058, 325948, 325798, 325317, 326222, 326357, 326861, 326864, 325631, 326306, 325725, 326990, 326457], "D": [324481, 325094, 324874, 325266, 325314, 325879, 326421, 325060, 326079, 324758], "B": [323886, 323924, 323929, 324358, 324393, 324432, 324043, 324939, 324073, 324145, 324109, 323877, 324237, 325527, 324082, 324195], "A": [323693, 324098, 323993, 323752, 323774, 327293, 323660, 323863, 323917]}, "name": "A. Petya and Java", "statement": "Little Petya has recently started attending a programming club.\r\nNaturally he is facing the problem of choosing a programming language.\r\nAfter long considerations he realized that Java is the best choice. The\r\nmain argument in favor of choosing Java was that it has a very large\r\ninteger data type, called BigInteger.But having attended several classes\r\nof the club, Petya realized that not all tasks require using the\r\nBigInteger type. It turned out that in some tasks it is much easier to\r\nuse small data types. That\u2019s why a question arises: \"Which integer type\r\nto use if one wants to store a positive integer ?\"Petya knows only 5\r\ninteger types:1) occupies 1 byte and allows you to store numbers from to\r\n2) occupies 2 bytes and allows you to store numbers from to 3) occupies\r\n4 bytes and allows you to store numbers from to 4) occupies 8 bytes and\r\nallows you to store numbers from to 5) can store any integer number, but\r\nat that it is not a primitive type, and operations with it are much\r\nslower.For all the types given above the boundary values are included in\r\nthe value range.From this list, Petya wants to choose the smallest type\r\nthat can store a positive integer . Since BigInteger works much slower,\r\nPeter regards it last. Help him.\r\n", "solutions": ["#include <iostream>\n#include <cstdio>\n#include <cstdlib>\n#include <algorithm>\n#include <vector>\n#include <set>\n#include <map>\n#include <cstring>\n#include <string>\n#include <ctime>\n\nusing namespace std;\n\n#define file \"a\"\n#define sqr(a) ((a)*(a))\n#define two(a) (1 << (a))\n\nstring n;\n\nvoid Load ()\n{\n    cin >> n;\n}\n\nbool operator < (const string &a, const string &b)\n{\n    if (a.size() < b.size()) return true;\n    if (b.size() < a.size()) return false;\n\n    for (int i = 0;i < a.size();i++)\n    {\n        if (a[i] < b[i]) return true;\n        if (b[i] < a[i]) return false;\n    }\n    return true;\n}\n\nvoid Solve ()\n{\n    string b = \"127\";\n    string s = \"32767\";\n    string i = \"2147483647\";\n    string l = \"9223372036854775807\";\n\n    if (n < b) cout << \"byte\";\n    else if (n < s) cout << \"short\";\n    else if (n < i) cout << \"int\";\n    else if (n < l) cout << \"long\";\n    else cout << \"BigInteger\";\n}\n\nint main ()\n{\n    //freopen (file\".in\", \"r\", stdin);\n    //freopen (file\".out\", \"w\", stdout);\n\n    Load();\n    Solve();\n\n    return 0;\n}"], "input": "", "output": "", "tags": ["implementation", "strings"], "dificulty": "1300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/66/problem/A",
+    "problemId": "346",
+    "problem_idx": "A",
+    "shortId": "66A",
+    "contest_number": "66",
+    "problem_submissions": {
+        "C": [
+            325739,
+            327571,
+            324946,
+            325140,
+            326366,
+            326847,
+            325519,
+            325350,
+            326429,
+            326396,
+            326853,
+            325915,
+            529168,
+            325585
+        ],
+        "E": [
+            325379,
+            326033,
+            326058,
+            325948,
+            325798,
+            325317,
+            326222,
+            326357,
+            326861,
+            326864,
+            325631,
+            326306,
+            325725,
+            326990,
+            326457
+        ],
+        "D": [
+            324481,
+            325094,
+            324874,
+            325266,
+            325314,
+            325879,
+            326421,
+            325060,
+            326079,
+            324758
+        ],
+        "B": [
+            323886,
+            323924,
+            323929,
+            324358,
+            324393,
+            324432,
+            324043,
+            324939,
+            324073,
+            324145,
+            324109,
+            323877,
+            324237,
+            325527,
+            324082,
+            324195
+        ],
+        "A": [
+            323693,
+            324098,
+            323993,
+            323752,
+            323774,
+            327293,
+            323660,
+            323863,
+            323917
+        ]
+    },
+    "name": "A. Petya and Java",
+    "statement": "Little Petya has recently started attending a programming club.\r\nNaturally he is facing the problem of choosing a programming language.\r\nAfter long considerations he realized that Java is the best choice. The\r\nmain argument in favor of choosing Java was that it has a very large\r\ninteger data type, called BigInteger.But having attended several classes\r\nof the club, Petya realized that not all tasks require using the\r\nBigInteger type. It turned out that in some tasks it is much easier to\r\nuse small data types. That\u2019s why a question arises: \"Which integer type\r\nto use if one wants to store a positive integer ?\"Petya knows only 5\r\ninteger types:1) occupies 1 byte and allows you to store numbers from to\r\n2) occupies 2 bytes and allows you to store numbers from to 3) occupies\r\n4 bytes and allows you to store numbers from to 4) occupies 8 bytes and\r\nallows you to store numbers from to 5) can store any integer number, but\r\nat that it is not a primitive type, and operations with it are much\r\nslower.For all the types given above the boundary values are included in\r\nthe value range.From this list, Petya wants to choose the smallest type\r\nthat can store a positive integer . Since BigInteger works much slower,\r\nPeter regards it last. Help him.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <cstdio>\n#include <cstdlib>\n#include <algorithm>\n#include <vector>\n#include <set>\n#include <map>\n#include <cstring>\n#include <string>\n#include <ctime>\n\nusing namespace std;\n\n#define file \"a\"\n#define sqr(a) ((a)*(a))\n#define two(a) (1 << (a))\n\nstring n;\n\nvoid Load ()\n{\n    cin >> n;\n}\n\nbool operator < (const string &a, const string &b)\n{\n    if (a.size() < b.size()) return true;\n    if (b.size() < a.size()) return false;\n\n    for (int i = 0;i < a.size();i++)\n    {\n        if (a[i] < b[i]) return true;\n        if (b[i] < a[i]) return false;\n    }\n    return true;\n}\n\nvoid Solve ()\n{\n    string b = \"127\";\n    string s = \"32767\";\n    string i = \"2147483647\";\n    string l = \"9223372036854775807\";\n\n    if (n < b) cout << \"byte\";\n    else if (n < s) cout << \"short\";\n    else if (n < i) cout << \"int\";\n    else if (n < l) cout << \"long\";\n    else cout << \"BigInteger\";\n}\n\nint main ()\n{\n    //freopen (file\".in\", \"r\", stdin);\n    //freopen (file\".out\", \"w\", stdout);\n\n    Load();\n    Solve();\n\n    return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation",
+        "strings"
+    ],
+    "dificulty": "1300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Petya and Java.json",
+    "editorial_link": "https://codeforces.com//blog/entry/1452",
+    "editorial": "In this problem you should answer to 4 questions:\n\n1)       Can we use type byte to store N?\n\n2)       Can we use type short to store N?\n\n3)       Can we use type int to store N?\n\n4)       Can we use type long to store N?\n\nWe should check these conditions in the given order. If all these conditions are wrong, the answer is BigInteger.\n\nThe simplest way to check these conditions is to store numbers as strings and write a function to compare such strings. In Java you can use type BigInteger."
+}

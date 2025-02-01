@@ -1,1 +1,107 @@
-{"link": "https://codeforces.com//contest/798/problem/E", "problemId": "103658", "problem_idx": "E", "shortId": "798E", "contest_number": "798", "problem_submissions": {"D": [26563361, 26555687, 26556558, 26548301, 26556247, 26549650, 26559045, 26559072, 26562479, 26559512, 26557370, 26565613, 26560823, 26560731, 26560614, 26557462, 26562930], "C": [26558945, 26549095, 26548532, 26556590, 26548339, 26561843, 26551518, 26554123, 26550774, 26560992, 26554844, 26558176, 26554570, 26556784, 26555580, 26562658, 26554462], "E": [26558449, 26556461], "A": [26551397, 26540062, 26540758, 26542419, 26540657, 26540976, 26540919, 26543392, 26540558, 26556942, 26542590, 26540075, 26542212, 26540478, 26550484, 26540647, 26543658], "B": [26542968, 26545085, 26543813, 26543222, 26543887, 26545396, 26544929, 26543829, 26543862, 26557828, 26543387, 26544400, 26546204, 26542828, 26550157, 26544256, 26545856]}, "name": "E. Mike and code of a permutation", "statement": "Mike has discovered a new way to encode permutations. If he has a\r\npermutation , he will encode it in the following way:Denote by a\r\nsequence of length which will represent the code of the permutation. For\r\neach from to sequentially, he will choose the smallest unmarked () such\r\nthat and will assign to the number (in other words he performs ) and\r\nwill mark . If there is no such , he\u2019ll assign to the number (he\r\nperforms ). Mike forgot his original permutation but he remembers its\r\ncode. Your task is simple: find permutation such that its code is the\r\nsame as the code of Mike\u2019s original permutation.You may assume that\r\nthere will always be at least one valid permutation.\r\n", "solutions": ["#include<iostream>\n#include<algorithm>\n#include<cstdio>\n#include<cstring>\n#include<cmath>\n#include<cstdlib>\nusing namespace std;\ntypedef long long ll;\ntypedef long double ld;\ntypedef pair<int,int> pr;\nconst double pi=acos(-1);\n#define rep(i,a,n) for(int i=a;i<=n;i++)\n#define per(i,n,a) for(int i=n;i>=a;i--)\n#define Rep(i,u) for(int i=head[u];i;i=Next[i])\n#define clr(a) memset(a,0,sizeof a)\n#define pb push_back\n#define mp make_pair\n#define putk() putchar(' ')\nld eps=1e-9;\nll pp=1000000007;\nll mo(ll a,ll pp){if(a>=0 && a<pp)return a;a%=pp;if(a<0)a+=pp;return a;}\nll powmod(ll a,ll b,ll pp){ll ans=1;for(;b;b>>=1,a=mo(a*a,pp))if(b&1)ans=mo(ans*a,pp);return ans;}\nll gcd(ll a,ll b){return (!b)?a:gcd(b,a%b);}\nll read(){\n\tll ans=0;\n\tchar last=' ',ch=getchar();\n\twhile(ch<'0' || ch>'9')last=ch,ch=getchar();\n\twhile(ch>='0' && ch<='9')ans=ans*10+ch-'0',ch=getchar();\n\tif(last=='-')ans=-ans;\n\treturn ans;\n}\nvoid put(ll a){\n\tif(a<0)putchar('-'),a=-a;\n\tint top=0,q[20];\n\twhile(a)q[++top]=a%10,a/=10;\n\ttop=max(top,1);\n\twhile(top--)putchar('0'+q[top+1]);\n}\n//head\n#define N 10000005\nint n,head[N],v[N*4],next[N*4],lson[N],rson[N],du[N],num,nn,a[N/10],root;\nbool b[N/10];\nvoid add(int x,int y){\n\tif(!x || !y)return;\n//\tcout<<x<<\" \"<<y<<endl;\n\tv[++num]=y;next[num]=head[x];head[x]=num;du[y]++;\n}\nvoid build(int &u,int v,int l,int r,int x){\n\tif(l==r){\n\t\tu=l;\n\t\treturn;\n\t}\n\tu=++nn;\n\tlson[u]=lson[v];\n\trson[u]=rson[v];\n\tint mid=(l+r)/2;\n\tif(x<=mid)build(lson[u],lson[v],l,mid,x);\n\telse build(rson[u],rson[v],mid+1,r,x);\n\tadd(lson[u],u);\n\tadd(rson[u],u);\n}\nvoid work(int u,int l,int r,int x,int y,int t){\n\tif(x<=l && y>=r){\n\t\tadd(u,t);\n\t\treturn;\n\t}\n\tif(x>r || y<l || u==0)return;\n\tint mid=(l+r)/2;\n\twork(lson[u],l,mid,x,y,t);\n\twork(rson[u],mid+1,r,x,y,t);\n}\nvoid work(int x,int y,int t){\n\tif(t<=y && t>=x){\n\t\tif(x<t)work(root,1,n,x,t-1,t);\n\t\tif(t<y)work(root,1,n,t+1,y,t);\n\t}\n\telse work(root,1,n,x,y,t);\n}\nint main(){\n//\tfreopen(\"1.in\",\"r\",stdin);\n\tn=read();\n\tnn=n;\n\trep(i,1,n){\n\t\ta[i]=read();\n\t\tif(a[i]!=-1)b[a[i]]=1;\n\t}\n\troot=0;\n\trep(i,1,n)\n\t\tif(b[i]==0)build(root,root,1,n,i);\n\tper(i,n,1){\n\t\tif(a[i]==-1)work(1,n,i);\n\t\telse work(1,a[i],i);\n\t\tif(a[i]!=-1){\n\t\t\tbuild(root,root,1,n,a[i]);\n\t\t\tadd(i,a[i]);\n\t\t}\n\t}\n\tint t=0,w=0;\n\trep(i,1,nn)\n\t\tif(du[i]==0)lson[++w]=i;\n\twhile(t<w){\n\t\tint u=lson[++t];\n\t\tfor(int i=head[u];i;i=next[i]){\n\t\t\tint t=v[i];\n\t\t\tdu[t]--;\n\t\t\tif(!du[t])lson[++w]=v[i];\n\t\t}\n\t}\n\tt=0;\n\trep(i,1,w)\n\t\tif(lson[i]<=n)rson[lson[i]]=++t;\n\trep(i,1,n-1)printf(\"%d \",rson[i]);\n\tprintf(\"%d\\n\",rson[n]);\n\treturn 0;\n}"], "input": "", "output": "", "tags": ["constructive algorithms", "data structures", "graphs", "sortings"], "dificulty": "3000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/798/problem/E",
+    "problemId": "103658",
+    "problem_idx": "E",
+    "shortId": "798E",
+    "contest_number": "798",
+    "problem_submissions": {
+        "D": [
+            26563361,
+            26555687,
+            26556558,
+            26548301,
+            26556247,
+            26549650,
+            26559045,
+            26559072,
+            26562479,
+            26559512,
+            26557370,
+            26565613,
+            26560823,
+            26560731,
+            26560614,
+            26557462,
+            26562930
+        ],
+        "C": [
+            26558945,
+            26549095,
+            26548532,
+            26556590,
+            26548339,
+            26561843,
+            26551518,
+            26554123,
+            26550774,
+            26560992,
+            26554844,
+            26558176,
+            26554570,
+            26556784,
+            26555580,
+            26562658,
+            26554462
+        ],
+        "E": [
+            26558449,
+            26556461
+        ],
+        "A": [
+            26551397,
+            26540062,
+            26540758,
+            26542419,
+            26540657,
+            26540976,
+            26540919,
+            26543392,
+            26540558,
+            26556942,
+            26542590,
+            26540075,
+            26542212,
+            26540478,
+            26550484,
+            26540647,
+            26543658
+        ],
+        "B": [
+            26542968,
+            26545085,
+            26543813,
+            26543222,
+            26543887,
+            26545396,
+            26544929,
+            26543829,
+            26543862,
+            26557828,
+            26543387,
+            26544400,
+            26546204,
+            26542828,
+            26550157,
+            26544256,
+            26545856
+        ]
+    },
+    "name": "E. Mike and code of a permutation",
+    "statement": "Mike has discovered a new way to encode permutations. If he has a\r\npermutation , he will encode it in the following way:Denote by a\r\nsequence of length which will represent the code of the permutation. For\r\neach from to sequentially, he will choose the smallest unmarked () such\r\nthat and will assign to the number (in other words he performs ) and\r\nwill mark . If there is no such , he\u2019ll assign to the number (he\r\nperforms ). Mike forgot his original permutation but he remembers its\r\ncode. Your task is simple: find permutation such that its code is the\r\nsame as the code of Mike\u2019s original permutation.You may assume that\r\nthere will always be at least one valid permutation.\r\n",
+    "solutions": [
+        "#include<iostream>\n#include<algorithm>\n#include<cstdio>\n#include<cstring>\n#include<cmath>\n#include<cstdlib>\nusing namespace std;\ntypedef long long ll;\ntypedef long double ld;\ntypedef pair<int,int> pr;\nconst double pi=acos(-1);\n#define rep(i,a,n) for(int i=a;i<=n;i++)\n#define per(i,n,a) for(int i=n;i>=a;i--)\n#define Rep(i,u) for(int i=head[u];i;i=Next[i])\n#define clr(a) memset(a,0,sizeof a)\n#define pb push_back\n#define mp make_pair\n#define putk() putchar(' ')\nld eps=1e-9;\nll pp=1000000007;\nll mo(ll a,ll pp){if(a>=0 && a<pp)return a;a%=pp;if(a<0)a+=pp;return a;}\nll powmod(ll a,ll b,ll pp){ll ans=1;for(;b;b>>=1,a=mo(a*a,pp))if(b&1)ans=mo(ans*a,pp);return ans;}\nll gcd(ll a,ll b){return (!b)?a:gcd(b,a%b);}\nll read(){\n\tll ans=0;\n\tchar last=' ',ch=getchar();\n\twhile(ch<'0' || ch>'9')last=ch,ch=getchar();\n\twhile(ch>='0' && ch<='9')ans=ans*10+ch-'0',ch=getchar();\n\tif(last=='-')ans=-ans;\n\treturn ans;\n}\nvoid put(ll a){\n\tif(a<0)putchar('-'),a=-a;\n\tint top=0,q[20];\n\twhile(a)q[++top]=a%10,a/=10;\n\ttop=max(top,1);\n\twhile(top--)putchar('0'+q[top+1]);\n}\n//head\n#define N 10000005\nint n,head[N],v[N*4],next[N*4],lson[N],rson[N],du[N],num,nn,a[N/10],root;\nbool b[N/10];\nvoid add(int x,int y){\n\tif(!x || !y)return;\n//\tcout<<x<<\" \"<<y<<endl;\n\tv[++num]=y;next[num]=head[x];head[x]=num;du[y]++;\n}\nvoid build(int &u,int v,int l,int r,int x){\n\tif(l==r){\n\t\tu=l;\n\t\treturn;\n\t}\n\tu=++nn;\n\tlson[u]=lson[v];\n\trson[u]=rson[v];\n\tint mid=(l+r)/2;\n\tif(x<=mid)build(lson[u],lson[v],l,mid,x);\n\telse build(rson[u],rson[v],mid+1,r,x);\n\tadd(lson[u],u);\n\tadd(rson[u],u);\n}\nvoid work(int u,int l,int r,int x,int y,int t){\n\tif(x<=l && y>=r){\n\t\tadd(u,t);\n\t\treturn;\n\t}\n\tif(x>r || y<l || u==0)return;\n\tint mid=(l+r)/2;\n\twork(lson[u],l,mid,x,y,t);\n\twork(rson[u],mid+1,r,x,y,t);\n}\nvoid work(int x,int y,int t){\n\tif(t<=y && t>=x){\n\t\tif(x<t)work(root,1,n,x,t-1,t);\n\t\tif(t<y)work(root,1,n,t+1,y,t);\n\t}\n\telse work(root,1,n,x,y,t);\n}\nint main(){\n//\tfreopen(\"1.in\",\"r\",stdin);\n\tn=read();\n\tnn=n;\n\trep(i,1,n){\n\t\ta[i]=read();\n\t\tif(a[i]!=-1)b[a[i]]=1;\n\t}\n\troot=0;\n\trep(i,1,n)\n\t\tif(b[i]==0)build(root,root,1,n,i);\n\tper(i,n,1){\n\t\tif(a[i]==-1)work(1,n,i);\n\t\telse work(1,a[i],i);\n\t\tif(a[i]!=-1){\n\t\t\tbuild(root,root,1,n,a[i]);\n\t\t\tadd(i,a[i]);\n\t\t}\n\t}\n\tint t=0,w=0;\n\trep(i,1,nn)\n\t\tif(du[i]==0)lson[++w]=i;\n\twhile(t<w){\n\t\tint u=lson[++t];\n\t\tfor(int i=head[u];i;i=next[i]){\n\t\t\tint t=v[i];\n\t\t\tdu[t]--;\n\t\t\tif(!du[t])lson[++w]=v[i];\n\t\t}\n\t}\n\tt=0;\n\trep(i,1,w)\n\t\tif(lson[i]<=n)rson[lson[i]]=++t;\n\trep(i,1,n-1)printf(\"%d \",rson[i]);\n\tprintf(\"%d\\n\",rson[n]);\n\treturn 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "data structures",
+        "graphs",
+        "sortings"
+    ],
+    "dificulty": "3000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Mike and code of a permutation.json",
+    "editorial_link": "https://codeforces.com//blog/entry/51652",
+    "editorial": "Let\u00e2\u0080\u0099s consider instead of . Let\u00e2\u0080\u0099s also define the sequence , where such\r\nthat or if there is no such . Lets make a directed graph with vertices\r\nbe the indices of the permutation with edges of type representing that .\r\nIf we topologically sort this graph then we can come up with a possible\r\npermutation: if is the topologically sorted graph then we can assign to\r\nnumber . In this problem we will use this implementation of topological\r\nsort. But how we can find the edges? First of all there are edges of the\r\nform if .For a vertex he visited all the unmarked vertices and you know\r\nfor sure that for all these . But how we can check if was already\r\nmarked? The vertex will become marked after turn of vertex or will never\r\nbecome unmarked if . So there is a direct edge from to if or and .\r\nSuppose we already visited a set of vertices and for every visited\r\nvertex we assigned to value (for simplicity just to forget about all\r\nvisited vertices) and now we want to find quickly for a fixed vertex an\r\nunvisited vertex with condition that there is edge or say it there isn\u00e2\u0080\u0099t\r\nsuch , if we can do that in subquadratic time then the task is solved.\r\nAs stated above the first condition is if , this condition is easy to\r\ncheck. The second condition is and , now consider vertices with indices\r\nfrom interval and take with maximal . If we found edge otherwise there\r\nare no remaining edges. We can find such vertex using segment tree and\r\nupdating values while we visit a new vertex. In total we will visit\r\nvertices and query the segment tree at most times ( for every new vertex\r\nand for finding that there aren\u00e2\u0080\u0099t remaining edges). Complexity and\r\nmemory are and . Solution: Link\r\n"
+}

@@ -1,0 +1,51 @@
+{
+    "link": "https://codeforces.com//contest/1302/problem/G",
+    "problemId": "530377",
+    "problem_idx": "G",
+    "shortId": "1302G",
+    "contest_number": "1302",
+    "problem_submissions": {
+        "G": [
+            70178308,
+            70181430
+        ],
+        "F": [
+            70174410,
+            70180942
+        ],
+        "B": [
+            70169462,
+            70166865
+        ],
+        "C": [
+            70167717,
+            70168002
+        ],
+        "A": [
+            70167198,
+            70167522
+        ],
+        "J": [
+            70183433
+        ],
+        "D": [
+            70170852
+        ],
+        "H": [],
+        "E": [],
+        "I": []
+    },
+    "editorial_link": "https://codeforces.com//blog/entry/73599",
+    "editorial": "Here bruteforce takes way too long to finish, so the idea here is\r\nmeet-in-the-middle: all operations are reversible, so if we iterate over\r\nall first-25-mix-up-masks and last-25-mix-up-masks, we can sort the\r\nobtained middle images and use a two-pointers technique to get the\r\nintersection. It may turn out that one test is not enough here (maybe\r\nbecause of somewhat similar to the birthdays paradox), so one should do\r\nmitm for a pair of tests, not for a single one.\r\n",
+    "name": "G. Keep talking and nobody explodes – medium",
+    "statement": "You have the safe lock which consists of 5 decimal digits. If you rotate\r\nsome digit, it increases by one, except 9 which becomes 0.Initially, the\r\nlock contains number x. To unlock the safe you must do the following\r\noperations in order (and be careful, don’t mix up if and else\r\nstatements).If sum of digits on positions 3 and 4 is greater than 10,\r\nrotate digit on position 2 by 9 times, else rotate digit on position 5\r\nby 4 times.If digit on position 3 is greater than digit on position 5,\r\nrotate digit on position 2 by 4 times, else rotate digit on position 4\r\nby 6 times.If digit on position 5 is greater than digit on position 3,\r\nrotate digit on position 2 by 1 times, else rotate digit on position 1\r\nby 7 times.If sum of digits on positions 4 and 1 is greater than 8,\r\nrotate digit on position 2 by 7 times, else rotate digit on position 3\r\nby 3 times.If digit on position 4 is greater than digit on position 1,\r\nrotate digit on position 2 by 3 times, else rotate digit on position 3\r\nby 2 times.If sum of digits on positions 1 and 2 is greater than 9,\r\nrotate digit on position 3 by 6 times, else rotate digit on position 5\r\nby 3 times.If digit on position 3 is greater than digit on position 2,\r\nrotate digit on position 1 by 2 times, else rotate digit on position 4\r\nby 5 times.If digit on position 5 is greater than digit on position 3,\r\nrotate digit on position 2 by 1 times, else rotate digit on position 4\r\nby 5 times.If sum of digits on positions 5 and 1 is greater than 10,\r\nrotate digit on position 4 by 7 times, else rotate digit on position 3\r\nby 5 times.If sum of digits on positions 5 and 4 is greater than 9,\r\nrotate digit on position 3 by 9 times, else rotate digit on position 2\r\nby 4 times.If sum of digits on positions 3 and 1 is greater than 8,\r\nrotate digit on position 2 by 8 times, else rotate digit on position 4\r\nby 4 times.If digit on position 5 is greater than digit on position 2,\r\nrotate digit on position 1 by 5 times, else rotate digit on position 3\r\nby 8 times.If sum of digits on positions 1 and 4 is greater than 10,\r\nrotate digit on position 3 by 4 times, else rotate digit on position 5\r\nby 1 times.If digit on position 3 is greater than digit on position 5,\r\nrotate digit on position 2 by 1 times, else rotate digit on position 1\r\nby 6 times.If sum of digits on positions 1 and 5 is greater than 9,\r\nrotate digit on position 3 by 3 times, else rotate digit on position 2\r\nby 1 times.If digit on position 5 is greater than digit on position 1,\r\nrotate digit on position 4 by 8 times, else rotate digit on position 2\r\nby 1 times.If digit on position 4 is greater than digit on position 1,\r\nrotate digit on position 3 by 4 times, else rotate digit on position 5\r\nby 4 times.If sum of digits on positions 3 and 1 is greater than 8,\r\nrotate digit on position 5 by 3 times, else rotate digit on position 2\r\nby 6 times.If digit on position 3 is greater than digit on position 4,\r\nrotate digit on position 2 by 3 times, else rotate digit on position 1\r\nby 5 times.If digit on position 5 is greater than digit on position 4,\r\nrotate digit on position 2 by 7 times, else rotate digit on position 3\r\nby 8 times.If digit on position 2 is greater than digit on position 4,\r\nrotate digit on position 5 by 9 times, else rotate digit on position 1\r\nby 4 times.If sum of digits on positions 3 and 5 is greater than 10,\r\nrotate digit on position 4 by 1 times, else rotate digit on position 2\r\nby 5 times.If digit on position 4 is greater than digit on position 1,\r\nrotate digit on position 3 by 9 times, else rotate digit on position 2\r\nby 9 times.If digit on position 5 is greater than digit on position 3,\r\nrotate digit on position 2 by 4 times, else rotate digit on position 1\r\nby 6 times.If sum of digits on positions 3 and 4 is greater than 9,\r\nrotate digit on position 5 by 8 times, else rotate digit on position 2\r\nby 5 times.If sum of digits on positions 3 and 4 is greater than 10,\r\nrotate digit on position 5 by 2 times, else rotate digit on position 1\r\nby 5 times.If sum of digits on positions 5 and 4 is greater than 9,\r\nrotate digit on position 3 by 3 times, else rotate digit on position 1\r\nby 8 times.If digit on position 5 is greater than digit on position 2,\r\nrotate digit on position 1 by 4 times, else rotate digit on position 3\r\nby 8 times.If digit on position 3 is greater than digit on position 1,\r\nrotate digit on position 5 by 6 times, else rotate digit on position 2\r\nby 6 times.If digit on position 4 is greater than digit on position 5,\r\nrotate digit on position 1 by 6 times, else rotate digit on position 3\r\nby 1 times.If sum of digits on positions 3 and 5 is greater than 10,\r\nrotate digit on position 2 by 5 times, else rotate digit on position 1\r\nby 7 times.If sum of digits on positions 5 and 2 is greater than 9,\r\nrotate digit on position 4 by 9 times, else rotate digit on position 3\r\nby 5 times.If sum of digits on positions 2 and 4 is greater than 10,\r\nrotate digit on position 3 by 1 times, else rotate digit on position 1\r\nby 2 times.If digit on position 3 is greater than digit on position 4,\r\nrotate digit on position 5 by 7 times, else rotate digit on position 2\r\nby 1 times.If digit on position 2 is greater than digit on position 5,\r\nrotate digit on position 1 by 6 times, else rotate digit on position 4\r\nby 2 times.If digit on position 2 is greater than digit on position 1,\r\nrotate digit on position 5 by 3 times, else rotate digit on position 4\r\nby 4 times.If digit on position 5 is greater than digit on position 4,\r\nrotate digit on position 3 by 9 times, else rotate digit on position 1\r\nby 9 times.If digit on position 1 is greater than digit on position 5,\r\nrotate digit on position 4 by 6 times, else rotate digit on position 2\r\nby 5 times.If sum of digits on positions 1 and 5 is greater than 10,\r\nrotate digit on position 3 by 7 times, else rotate digit on position 2\r\nby 4 times.If sum of digits on positions 2 and 1 is greater than 9,\r\nrotate digit on position 3 by 7 times, else rotate digit on position 5\r\nby 4 times.\r\n",
+    "solutions": [
+        "#include <bits/stdc++.h> using i64 = long long; int main() {    std::ios::sync_with_stdio(false);    std::cin.tie(nullptr);        int n;    std::cin >> n;        std::vector<int> a(n);    for (int i = 0; i < n; i++) {        std::cin >> a[i];    }        std::vector<std::vector<int>> adj(n);        for (int i = 1; i < n; i++) {        int u, v;        std::cin >> u >> v;        u--, v--;        adj[u].push_back(v);        adj[v].push_back(u);    }        std::vector<int> dp(n), t(n);    std::vector<std::set<int>> s(n);    std::function<void(int, int)> dfs = [&](int x, int p) {        std::map<int, int> cnt;        if (adj[x].size() == 1 && x) {            s[x].insert(0);            dp[x] = 1;        }        for (auto y : adj[x]) {            if (y == p) {                continue;            }            dfs(y, x);            dp[x] += dp[y] + 1;            if (s[x].size() < s[y].size()) {                std::swap(s[x], s[y]);                std::swap(t[x], t[y]);            }            for (auto z : s[y]) {                z ^= t[x] ^ t[y];                if (s[x].count(z)) {                    cnt[z ^ t[x]]++;                } else {                    s[x].insert(z);                }            }        }        if (!cnt.empty()) {            int mx = 0;            for (auto [_, v] : cnt) {                mx = std::max(mx, v);            }            dp[x] -= mx + 1;            s[x].clear();            t[x] = a[x];            for (auto [z, v] : cnt) {                if (v == mx) {                    s[x].insert(z);                }            }        } else {            dp[x] -= 1;            t[x] ^= a[x];        }    };    dfs(0, -1);        int ans = dp[0] + !s[0].count(t[0]);    std::cout << ans << \"\\n\";        return 0;}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [],
+    "dificulty": "",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\G. Keep talking and nobody explodes – medium.json"
+}

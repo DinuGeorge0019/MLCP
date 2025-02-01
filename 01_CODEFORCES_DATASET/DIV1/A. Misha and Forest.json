@@ -1,1 +1,95 @@
-{"link": "https://codeforces.com//contest/504/problem/A", "problemId": "20647", "problem_idx": "A", "shortId": "504A", "contest_number": "504", "problem_submissions": {"D": [9413857, 9415317, 9414618, 9414335, 9414712, 9421240, 9415227, 9413052, 9413088, 9412895], "C": [9411735, 9413692, 9412956, 9412560, 9412053, 9410886, 9412226, 9412435, 9412519, 9412154, 9424712], "B": [9410465, 9409352, 9409933, 9410329, 9408364, 9410523, 9413452, 9410100, 9409772, 9409410, 9413230, 9409855, 9410114, 9410231, 9410054], "A": [9407864, 9408933, 9408565, 9408075, 9409262, 9408270, 9407763, 9408138, 9407931, 9407399, 9408250, 9407650, 9407865, 9407661, 9408743], "E": [9443621, 9411256, 9413318, 9421624, 9456035, 9420369, 9420367]}, "name": "A. Misha and Forest", "statement": "Let\u2019s define a forest as a non-directed acyclic graph (also without\r\nloops and parallel edges). One day Misha played with the forest\r\nconsisting of vertices. For each vertex from to he wrote down two\r\nintegers, and , were the first integer is the number of vertices\r\nadjacent to vertex , and the second integer is the XOR sum of the\r\nnumbers of vertices adjacent to (if there were no adjacent vertices, he\r\nwrote down ). Next day Misha couldn\u2019t remember what graph he initially\r\nhad. Misha has values and left, though. Help him find the number of\r\nedges and the edges of the initial graph. It is guaranteed that there\r\nexists a forest that corresponds to the numbers written by Misha.\r\n", "solutions": ["#include<bits/stdc++.h>\nusing namespace std;\n\n#define REP(i,a,b) for(i=a;i<b;i++)\n#define rep(i,n) REP(i,0,n)\n\n#define READER_BUF_SIZE 1048576\n#define WRITER_BUF_SIZE 1048576\nint reader_pt=READER_BUF_SIZE,reader_last;char reader_buf[READER_BUF_SIZE];\nint writer_pt=0;char writer_buf[WRITER_BUF_SIZE];\n#define mygc(c) {if(reader_pt==READER_BUF_SIZE)reader_pt=0,reader_last=fread(reader_buf,sizeof(char),READER_BUF_SIZE,stdin);(c)=reader_buf[reader_pt++];}\n#define mypc(c) {if(writer_pt==WRITER_BUF_SIZE)writer_pt=0,fwrite(writer_buf,sizeof(char),WRITER_BUF_SIZE,stdout);writer_buf[writer_pt++]=(c);}\n#define myed {fwrite(writer_buf,sizeof(char),writer_pt,stdout);writer_pt=0;}\n\n#define ll long long\n#define ull unsigned ll\n\nvoid reader(int *x){int k,m=0;*x=0;for(;;){mygc(k);if(k=='-'){m=1;break;}if('0'<=k&&k<='9'){*x=k-'0';break;}}for(;;){mygc(k);if(k<'0'||k>'9')break;*x=(*x)*10+k-'0';}if(m)(*x)=-(*x);}\nvoid reader(ll *x){int k,m=0;*x=0;for(;;){mygc(k);if(k=='-'){m=1;break;}if('0'<=k&&k<='9'){*x=k-'0';break;}}for(;;){mygc(k);if(k<'0'||k>'9')break;*x=(*x)*10+k-'0';}if(m)(*x)=-(*x);}\nint reader(char c[]){int i,s=0;for(;;){mygc(i);if(i!=' '&&i!='\\n'&&i!='\\r'&&i!='\\t'&&i!=EOF) break;}c[s++]=i;for(;;){mygc(i);if(i==' '||i=='\\n'||i=='\\r'||i=='\\t'||i==EOF) break;c[s++]=i;}c[s]='\\0';return s;}\ntemplate <class T, class S> void reader(T *x, S *y){reader(x);reader(y);}\ntemplate <class T, class S, class U> void reader(T *x, S *y, U *z){reader(x);reader(y);reader(z);}\ntemplate <class T, class S, class U, class V> void reader(T *x, S *y, U *z, V *w){reader(x);reader(y);reader(z);reader(w);}\n\nvoid writer(int x, char c){int s=0,m=0;char f[10];if(x<0)m=1,x=-x;while(x)f[s++]=x%10,x/=10;if(!s)f[s++]=0;if(m)mypc('-');while(s--)mypc(f[s]+'0');mypc(c);}\nvoid writer(ll x, char c){int s=0,m=0;char f[20];if(x<0)m=1,x=-x;while(x)f[s++]=x%10,x/=10;if(!s)f[s++]=0;if(m)mypc('-');while(s--)mypc(f[s]+'0');mypc(c);}\nvoid writer(const char c[]){int i;for(i=0;c[i]!='\\0';i++)mypc(c[i]);}\nvoid writer(const char x[], char c){int i;for(i=0;x[i]!='\\0';i++)mypc(x[i]);mypc(c);}\ntemplate<class T> void writerLn(T x){writer(x,'\\n');}\ntemplate<class T, class S> void writerLn(T x, S y){writer(x,' ');writer(y,'\\n');}\ntemplate<class T, class S, class U> void writerLn(T x, S y, U z){writer(x,' ');writer(y,' ');writer(z,'\\n');}\ntemplate<class T> void writerArr(T x[], int n){int i;if(!n){mypc('\\n');return;}rep(i,n-1)writer(x[i],' ');writer(x[n-1],'\\n');}\n\nint N;\nint deg[1000000], s[1000000];\nint ress, res1[1000000], res2[1000000];\n\nint st[1000000], st_size;\n\nint main(){\n  int i, j, k;\n\n  reader(&N);\n  rep(i,N) reader(deg+i, s+i);\n\n  rep(i,N) if(deg[i]==1) st[st_size++] = i;\n  while(st_size){\n    k = st[--st_size];\n    if(deg[k] != 1) continue;\n\n    i = k; j = s[k];\n    res1[ress] = i;\n    res2[ress] = j;\n    ress++;\n\n    deg[i]--;\n    deg[j]--;\n    s[i] ^= j;\n    s[j] ^= i;\n    if(deg[j]==1) st[st_size++] = j;\n  }\n\n  writerLn(ress);\n  rep(i,ress) writerLn(res1[i],res2[i]);\n\n  myed;\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["constructive algorithms", "data structures", "graphs", "greedy"], "dificulty": "1500", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/504/problem/A",
+    "problemId": "20647",
+    "problem_idx": "A",
+    "shortId": "504A",
+    "contest_number": "504",
+    "problem_submissions": {
+        "D": [
+            9413857,
+            9415317,
+            9414618,
+            9414335,
+            9414712,
+            9421240,
+            9415227,
+            9413052,
+            9413088,
+            9412895
+        ],
+        "C": [
+            9411735,
+            9413692,
+            9412956,
+            9412560,
+            9412053,
+            9410886,
+            9412226,
+            9412435,
+            9412519,
+            9412154,
+            9424712
+        ],
+        "B": [
+            9410465,
+            9409352,
+            9409933,
+            9410329,
+            9408364,
+            9410523,
+            9413452,
+            9410100,
+            9409772,
+            9409410,
+            9413230,
+            9409855,
+            9410114,
+            9410231,
+            9410054
+        ],
+        "A": [
+            9407864,
+            9408933,
+            9408565,
+            9408075,
+            9409262,
+            9408270,
+            9407763,
+            9408138,
+            9407931,
+            9407399,
+            9408250,
+            9407650,
+            9407865,
+            9407661,
+            9408743
+        ],
+        "E": [
+            9443621,
+            9411256,
+            9413318,
+            9421624,
+            9456035,
+            9420369,
+            9420367
+        ]
+    },
+    "name": "A. Misha and Forest",
+    "statement": "Let\u2019s define a forest as a non-directed acyclic graph (also without\r\nloops and parallel edges). One day Misha played with the forest\r\nconsisting of vertices. For each vertex from to he wrote down two\r\nintegers, and , were the first integer is the number of vertices\r\nadjacent to vertex , and the second integer is the XOR sum of the\r\nnumbers of vertices adjacent to (if there were no adjacent vertices, he\r\nwrote down ). Next day Misha couldn\u2019t remember what graph he initially\r\nhad. Misha has values and left, though. Help him find the number of\r\nedges and the edges of the initial graph. It is guaranteed that there\r\nexists a forest that corresponds to the numbers written by Misha.\r\n",
+    "solutions": [
+        "#include<bits/stdc++.h>\nusing namespace std;\n\n#define REP(i,a,b) for(i=a;i<b;i++)\n#define rep(i,n) REP(i,0,n)\n\n#define READER_BUF_SIZE 1048576\n#define WRITER_BUF_SIZE 1048576\nint reader_pt=READER_BUF_SIZE,reader_last;char reader_buf[READER_BUF_SIZE];\nint writer_pt=0;char writer_buf[WRITER_BUF_SIZE];\n#define mygc(c) {if(reader_pt==READER_BUF_SIZE)reader_pt=0,reader_last=fread(reader_buf,sizeof(char),READER_BUF_SIZE,stdin);(c)=reader_buf[reader_pt++];}\n#define mypc(c) {if(writer_pt==WRITER_BUF_SIZE)writer_pt=0,fwrite(writer_buf,sizeof(char),WRITER_BUF_SIZE,stdout);writer_buf[writer_pt++]=(c);}\n#define myed {fwrite(writer_buf,sizeof(char),writer_pt,stdout);writer_pt=0;}\n\n#define ll long long\n#define ull unsigned ll\n\nvoid reader(int *x){int k,m=0;*x=0;for(;;){mygc(k);if(k=='-'){m=1;break;}if('0'<=k&&k<='9'){*x=k-'0';break;}}for(;;){mygc(k);if(k<'0'||k>'9')break;*x=(*x)*10+k-'0';}if(m)(*x)=-(*x);}\nvoid reader(ll *x){int k,m=0;*x=0;for(;;){mygc(k);if(k=='-'){m=1;break;}if('0'<=k&&k<='9'){*x=k-'0';break;}}for(;;){mygc(k);if(k<'0'||k>'9')break;*x=(*x)*10+k-'0';}if(m)(*x)=-(*x);}\nint reader(char c[]){int i,s=0;for(;;){mygc(i);if(i!=' '&&i!='\\n'&&i!='\\r'&&i!='\\t'&&i!=EOF) break;}c[s++]=i;for(;;){mygc(i);if(i==' '||i=='\\n'||i=='\\r'||i=='\\t'||i==EOF) break;c[s++]=i;}c[s]='\\0';return s;}\ntemplate <class T, class S> void reader(T *x, S *y){reader(x);reader(y);}\ntemplate <class T, class S, class U> void reader(T *x, S *y, U *z){reader(x);reader(y);reader(z);}\ntemplate <class T, class S, class U, class V> void reader(T *x, S *y, U *z, V *w){reader(x);reader(y);reader(z);reader(w);}\n\nvoid writer(int x, char c){int s=0,m=0;char f[10];if(x<0)m=1,x=-x;while(x)f[s++]=x%10,x/=10;if(!s)f[s++]=0;if(m)mypc('-');while(s--)mypc(f[s]+'0');mypc(c);}\nvoid writer(ll x, char c){int s=0,m=0;char f[20];if(x<0)m=1,x=-x;while(x)f[s++]=x%10,x/=10;if(!s)f[s++]=0;if(m)mypc('-');while(s--)mypc(f[s]+'0');mypc(c);}\nvoid writer(const char c[]){int i;for(i=0;c[i]!='\\0';i++)mypc(c[i]);}\nvoid writer(const char x[], char c){int i;for(i=0;x[i]!='\\0';i++)mypc(x[i]);mypc(c);}\ntemplate<class T> void writerLn(T x){writer(x,'\\n');}\ntemplate<class T, class S> void writerLn(T x, S y){writer(x,' ');writer(y,'\\n');}\ntemplate<class T, class S, class U> void writerLn(T x, S y, U z){writer(x,' ');writer(y,' ');writer(z,'\\n');}\ntemplate<class T> void writerArr(T x[], int n){int i;if(!n){mypc('\\n');return;}rep(i,n-1)writer(x[i],' ');writer(x[n-1],'\\n');}\n\nint N;\nint deg[1000000], s[1000000];\nint ress, res1[1000000], res2[1000000];\n\nint st[1000000], st_size;\n\nint main(){\n  int i, j, k;\n\n  reader(&N);\n  rep(i,N) reader(deg+i, s+i);\n\n  rep(i,N) if(deg[i]==1) st[st_size++] = i;\n  while(st_size){\n    k = st[--st_size];\n    if(deg[k] != 1) continue;\n\n    i = k; j = s[k];\n    res1[ress] = i;\n    res2[ress] = j;\n    ress++;\n\n    deg[i]--;\n    deg[j]--;\n    s[i] ^= j;\n    s[j] ^= i;\n    if(deg[j]==1) st[st_size++] = j;\n  }\n\n  writerLn(ress);\n  rep(i,ress) writerLn(res1[i],res2[i]);\n\n  myed;\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "data structures",
+        "graphs",
+        "greedy"
+    ],
+    "dificulty": "1500",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Misha and Forest.json",
+    "editorial_link": "https://codeforces.com//blog/entry/15743",
+    "editorial": "Note that every non-empty forest has a leaf(vertex of degree ). Let\u00e2\u0080\u0099s\r\nremove edges one by one and maintain actual values as long as graph is\r\nnot empty. To do so, we can maintain the queue(or stack) of the leaves.\r\nOn every iteration we dequeue vertex and remove edge and update values\r\nfor vertex : -= and ^= . If degree of vertex becomes equal to , we\r\nenqueue it. When dequeued vertex has zero degree, just ignore it because\r\nwe have already removed all edges of corresponding tree. You can see my\r\nsolution for details. Time complexity:\r\n"
+}

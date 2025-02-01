@@ -1,1 +1,104 @@
-{"link": "https://codeforces.com//contest/936/problem/D", "problemId": "159979", "problem_idx": "D", "shortId": "936D", "contest_number": "936", "problem_submissions": {"E": [35712266, 35727991, 35725013, 35707211, 35770218], "D": [35700007, 35702585, 35703968, 35704322, 35707565, 35707992, 35703995, 35707242, 35706026, 35706184, 35705316], "C": [35693639, 35697250, 35695166, 35695586, 35697018, 35695913, 35698664, 35705647, 35697865, 35699503, 35697044, 35700894, 35699052, 35698193, 35698295, 35698757, 35697398, 35701177], "B": [35691090, 35691407, 35691792, 35691438, 35690313, 35691314, 35691290, 35690630, 35698924, 35693457, 35691128, 35693732, 35690660, 35690004, 35694559, 35691031, 35692920], "A": [35689192, 35689253, 35688351, 35690016, 35688869, 35688655, 35688920, 35688825, 35690115, 35690230, 35697676, 35690493, 35688221, 35691287, 35688663, 35690989, 35689298, 35689878]}, "name": "D. World of Tank", "statement": "Vitya loves programming and problem solving, but sometimes, to distract\r\nhimself a little, he plays computer games. Once he found a new\r\ninteresting game about tanks, and he liked it so much that he went\r\nthrough almost all levels in one day. Remained only the last level,\r\nwhich was too tricky. Then Vitya remembered that he is a programmer, and\r\nwrote a program that helped him to pass this difficult level. Try do the\r\nsame.The game is organized as follows. There is a long road, two cells\r\nwide and cells long. Some cells have obstacles. You control a tank that\r\noccupies one cell. Initially, the tank is located before the start of\r\nthe road, in a cell with coordinates . Your task is to move the tank to\r\nthe end of the road, to the cell or . Every second the tank moves one\r\ncell to the right: the coordinate is increased by one. When you press\r\nthe up or down arrow keys, the tank instantly changes the lane, that is,\r\nthe coordinate. When you press the spacebar, the tank shoots, and the\r\nnearest obstacle along the lane in which the tank rides is instantly\r\ndestroyed. In order to load a gun, the tank needs seconds. Initially,\r\nthe gun is not loaded, that means, the first shot can be made only after\r\nseconds after the tank starts to move.If at some point the tank is in\r\nthe same cell with an obstacle not yet destroyed, it burns out. If you\r\npress the arrow exactly at the moment when the tank moves forward, the\r\ntank will first move forward, and then change the lane, so it will not\r\nbe possible to move diagonally.Your task is to find out whether it is\r\npossible to pass the level, and if possible, to find the order of\r\nactions the player need to make.\r\n", "solutions": ["#include <bits/stdc++.h>\n\nusing namespace std;\n#define PB push_back\n#define MP make_pair\n#define LL long long\n#define int LL\n#define FOR(i,a,b) for(int i = (a); i <= (b); i++)\n#define RE(i,n) FOR(i,1,n)\n#define REP(i,n) FOR(i,0,(int)(n)-1)\n#define R(i,n) REP(i,n)\n#define VI vector<int>\n#define PII pair<int,int>\n#define LD long double\n#define FI first\n#define SE second\n#define st FI\n#define nd SE\n#define ALL(x) (x).begin(), (x).end()\n#define SZ(x) ((int)(x).size())\n\ntemplate<class C> void mini(C &a4, C b4) { a4 = min(a4, b4); }\ntemplate<class C> void maxi(C &a4, C b4) { a4 = max(a4, b4); }\n\ntemplate<class TH> void _dbg(const char *sdbg, TH h){ cerr<<sdbg<<'='<<h<<endl; }\ntemplate<class TH, class... TA> void _dbg(const char *sdbg, TH h, TA... a) {\n  while(*sdbg!=',')cerr<<*sdbg++;\n  cerr<<'='<<h<<','; _dbg(sdbg+1, a...);\n}\n\ntemplate<class T> ostream &operator<<(ostream& os, vector<T> V) {\n  os << \"[\"; for (auto vv : V) os << vv << \",\"; return os << \"]\";\n}\ntemplate<class L, class R> ostream &operator<<(ostream &os, pair<L,R> P) {\n  return os << \"(\" << P.st << \",\" << P.nd << \")\";\n}\n\n#ifdef LOCAL\n#define debug(...) _dbg(#__VA_ARGS__, __VA_ARGS__)\n#else\n#define debug(...) (__VA_ARGS__)\n#define cerr if(0)cout\n#endif\n\nconst int MaxDp = 3e6 + 100;\n\nint N, M1, M2, T;\nvector<int> Important;\n\nint MaxTime[MaxDp][2];\nbool ChangeRow[MaxDp][2];\nbool Locked[MaxDp][2];\n\n\nint32_t main() {\n  ios_base::sync_with_stdio(0);\n  cin.tie(0);\n  cout << fixed << setprecision(11);\n  cerr << fixed << setprecision(6);\n\n  cin >> N >> M1 >> M2 >> T;\n  vector<vector<int>> Obstacles(2);\n  Obstacles[0].resize(M1);\n  Obstacles[1].resize(M2);\n\n  for (auto &V : Obstacles)\n    for (int &x : V)\n      cin >> x;\n\n  Important.reserve(3 * (M1 + M2) + 1);\n  Important.push_back(0);\n\n  auto addImportant = [&](int x) {\n    for (int t : {x - 1, x, x + 1}) {\n      if (SZ(Important) > 0 && Important.back() >= t) { continue; }\n      Important.push_back(t);\n    }\n  };\n\n  int Lptr = 0, Rptr = 0;\n  while (Lptr < M1 || Rptr < M2) {\n    bool TakeLeft = Rptr == M2;\n    if (Lptr < M1 && Rptr < M2)\n      TakeLeft |= Obstacles[0][Lptr] < Obstacles[1][Rptr];\n\n    if (TakeLeft)\n      addImportant(Obstacles[0][Lptr++]);\n    else\n      addImportant(Obstacles[1][Rptr++]);\n  }\n\n  debug(Important);\n  int S = SZ(Important);\n\n  const int Infty = 2e9;\n\n  MaxTime[0][0] = -T;\n  MaxTime[0][1] = -T;\n  ChangeRow[0][1] = true;\n\n  Lptr = 0; Rptr = 0;\n  for (int i = 1; i < S; ++i) {\n    int x = Important[i];\n    int dx = x - Important[i - 1];\n    bool LockedL = (Lptr < M1 && Obstacles[0][Lptr] == x);\n    bool LockedR = (Rptr < M2 && Obstacles[1][Rptr] == x);\n    if (LockedL) { ++Lptr; }\n    if (LockedR) { ++Rptr; }\n    Locked[i][0] = LockedL;\n    Locked[i][1] = LockedR;\n    debug(LockedL, LockedR);\n\n    // Row unchanged?\n    for (int b : {0, 1}) {\n      MaxTime[i][b] = MaxTime[i - 1][b] + dx;\n      if (Locked[i][b]) {\n        if (MaxTime[i][b] <= 0)\n          MaxTime[i][b] = -Infty;\n        else\n          MaxTime[i][b] -= T;\n      }\n    }\n\n    // Change rows?\n    for (int b : {0, 1}) {\n      if (Locked[i][b]) { continue; }\n      int tt = MaxTime[i][b ^ 1];\n      int NewT = min<LL>(tt, 0);\n      if (NewT > MaxTime[i][b]) {\n        MaxTime[i][b] = NewT;\n        ChangeRow[i][b] = true;\n      }\n    }\n\n    debug(i, MaxTime[i][0], MaxTime[i][1]);\n  }\n\n  auto checkWin = [&](int i, int b) {\n    if (MaxTime[i][b] < -T) { return; }\n    cout << \"Yes\\n\";\n    vector<int> Changes;\n    vector<PII> Shots;\n    int NumToShoot = 0;\n\n    auto settleShots = [&]() {\n      int x = Important[i];\n      int AmountWait = -MaxTime[i][b];\n      assert(AmountWait >= 0);\n      int FirstShot = x + AmountWait;\n      while (NumToShoot > 0) {\n        --NumToShoot;\n        Shots.emplace_back(FirstShot + NumToShoot * T, b + 1);\n      }\n    };\n\n    while (!(i == 0 && b == 0)) {\n      if (ChangeRow[i][b]) {\n        settleShots();\n        Changes.push_back(Important[i]);\n        b ^= 1;\n        NumToShoot = Locked[i][b];\n      } else {\n        --i;\n        NumToShoot += Locked[i][b];\n      }\n    }\n\n    settleShots();\n\n    cout << SZ(Changes) << \"\\n\";\n    reverse(ALL(Changes));\n    for (int v : Changes) { cout << v << \" \"; }\n    cout << \"\\n\";\n    cout << SZ(Shots) << \"\\n\";\n    reverse(ALL(Shots));\n    for (auto &P : Shots)\n      cout << P.first << \" \" << P.second << \"\\n\";\n\n\n    exit(0);\n  };\n\n  checkWin(S - 1, 0);\n  checkWin(S - 1, 1);\n\n  cout << \"No\\n\";\n}\n\n"], "input": "", "output": "", "tags": ["dp", "greedy"], "dificulty": "3000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/936/problem/D",
+    "problemId": "159979",
+    "problem_idx": "D",
+    "shortId": "936D",
+    "contest_number": "936",
+    "problem_submissions": {
+        "E": [
+            35712266,
+            35727991,
+            35725013,
+            35707211,
+            35770218
+        ],
+        "D": [
+            35700007,
+            35702585,
+            35703968,
+            35704322,
+            35707565,
+            35707992,
+            35703995,
+            35707242,
+            35706026,
+            35706184,
+            35705316
+        ],
+        "C": [
+            35693639,
+            35697250,
+            35695166,
+            35695586,
+            35697018,
+            35695913,
+            35698664,
+            35705647,
+            35697865,
+            35699503,
+            35697044,
+            35700894,
+            35699052,
+            35698193,
+            35698295,
+            35698757,
+            35697398,
+            35701177
+        ],
+        "B": [
+            35691090,
+            35691407,
+            35691792,
+            35691438,
+            35690313,
+            35691314,
+            35691290,
+            35690630,
+            35698924,
+            35693457,
+            35691128,
+            35693732,
+            35690660,
+            35690004,
+            35694559,
+            35691031,
+            35692920
+        ],
+        "A": [
+            35689192,
+            35689253,
+            35688351,
+            35690016,
+            35688869,
+            35688655,
+            35688920,
+            35688825,
+            35690115,
+            35690230,
+            35697676,
+            35690493,
+            35688221,
+            35691287,
+            35688663,
+            35690989,
+            35689298,
+            35689878
+        ]
+    },
+    "name": "D. World of Tank",
+    "statement": "Vitya loves programming and problem solving, but sometimes, to distract\r\nhimself a little, he plays computer games. Once he found a new\r\ninteresting game about tanks, and he liked it so much that he went\r\nthrough almost all levels in one day. Remained only the last level,\r\nwhich was too tricky. Then Vitya remembered that he is a programmer, and\r\nwrote a program that helped him to pass this difficult level. Try do the\r\nsame.The game is organized as follows. There is a long road, two cells\r\nwide and cells long. Some cells have obstacles. You control a tank that\r\noccupies one cell. Initially, the tank is located before the start of\r\nthe road, in a cell with coordinates . Your task is to move the tank to\r\nthe end of the road, to the cell or . Every second the tank moves one\r\ncell to the right: the coordinate is increased by one. When you press\r\nthe up or down arrow keys, the tank instantly changes the lane, that is,\r\nthe coordinate. When you press the spacebar, the tank shoots, and the\r\nnearest obstacle along the lane in which the tank rides is instantly\r\ndestroyed. In order to load a gun, the tank needs seconds. Initially,\r\nthe gun is not loaded, that means, the first shot can be made only after\r\nseconds after the tank starts to move.If at some point the tank is in\r\nthe same cell with an obstacle not yet destroyed, it burns out. If you\r\npress the arrow exactly at the moment when the tank moves forward, the\r\ntank will first move forward, and then change the lane, so it will not\r\nbe possible to move diagonally.Your task is to find out whether it is\r\npossible to pass the level, and if possible, to find the order of\r\nactions the player need to make.\r\n",
+    "solutions": [
+        "#include <bits/stdc++.h>\n\nusing namespace std;\n#define PB push_back\n#define MP make_pair\n#define LL long long\n#define int LL\n#define FOR(i,a,b) for(int i = (a); i <= (b); i++)\n#define RE(i,n) FOR(i,1,n)\n#define REP(i,n) FOR(i,0,(int)(n)-1)\n#define R(i,n) REP(i,n)\n#define VI vector<int>\n#define PII pair<int,int>\n#define LD long double\n#define FI first\n#define SE second\n#define st FI\n#define nd SE\n#define ALL(x) (x).begin(), (x).end()\n#define SZ(x) ((int)(x).size())\n\ntemplate<class C> void mini(C &a4, C b4) { a4 = min(a4, b4); }\ntemplate<class C> void maxi(C &a4, C b4) { a4 = max(a4, b4); }\n\ntemplate<class TH> void _dbg(const char *sdbg, TH h){ cerr<<sdbg<<'='<<h<<endl; }\ntemplate<class TH, class... TA> void _dbg(const char *sdbg, TH h, TA... a) {\n  while(*sdbg!=',')cerr<<*sdbg++;\n  cerr<<'='<<h<<','; _dbg(sdbg+1, a...);\n}\n\ntemplate<class T> ostream &operator<<(ostream& os, vector<T> V) {\n  os << \"[\"; for (auto vv : V) os << vv << \",\"; return os << \"]\";\n}\ntemplate<class L, class R> ostream &operator<<(ostream &os, pair<L,R> P) {\n  return os << \"(\" << P.st << \",\" << P.nd << \")\";\n}\n\n#ifdef LOCAL\n#define debug(...) _dbg(#__VA_ARGS__, __VA_ARGS__)\n#else\n#define debug(...) (__VA_ARGS__)\n#define cerr if(0)cout\n#endif\n\nconst int MaxDp = 3e6 + 100;\n\nint N, M1, M2, T;\nvector<int> Important;\n\nint MaxTime[MaxDp][2];\nbool ChangeRow[MaxDp][2];\nbool Locked[MaxDp][2];\n\n\nint32_t main() {\n  ios_base::sync_with_stdio(0);\n  cin.tie(0);\n  cout << fixed << setprecision(11);\n  cerr << fixed << setprecision(6);\n\n  cin >> N >> M1 >> M2 >> T;\n  vector<vector<int>> Obstacles(2);\n  Obstacles[0].resize(M1);\n  Obstacles[1].resize(M2);\n\n  for (auto &V : Obstacles)\n    for (int &x : V)\n      cin >> x;\n\n  Important.reserve(3 * (M1 + M2) + 1);\n  Important.push_back(0);\n\n  auto addImportant = [&](int x) {\n    for (int t : {x - 1, x, x + 1}) {\n      if (SZ(Important) > 0 && Important.back() >= t) { continue; }\n      Important.push_back(t);\n    }\n  };\n\n  int Lptr = 0, Rptr = 0;\n  while (Lptr < M1 || Rptr < M2) {\n    bool TakeLeft = Rptr == M2;\n    if (Lptr < M1 && Rptr < M2)\n      TakeLeft |= Obstacles[0][Lptr] < Obstacles[1][Rptr];\n\n    if (TakeLeft)\n      addImportant(Obstacles[0][Lptr++]);\n    else\n      addImportant(Obstacles[1][Rptr++]);\n  }\n\n  debug(Important);\n  int S = SZ(Important);\n\n  const int Infty = 2e9;\n\n  MaxTime[0][0] = -T;\n  MaxTime[0][1] = -T;\n  ChangeRow[0][1] = true;\n\n  Lptr = 0; Rptr = 0;\n  for (int i = 1; i < S; ++i) {\n    int x = Important[i];\n    int dx = x - Important[i - 1];\n    bool LockedL = (Lptr < M1 && Obstacles[0][Lptr] == x);\n    bool LockedR = (Rptr < M2 && Obstacles[1][Rptr] == x);\n    if (LockedL) { ++Lptr; }\n    if (LockedR) { ++Rptr; }\n    Locked[i][0] = LockedL;\n    Locked[i][1] = LockedR;\n    debug(LockedL, LockedR);\n\n    // Row unchanged?\n    for (int b : {0, 1}) {\n      MaxTime[i][b] = MaxTime[i - 1][b] + dx;\n      if (Locked[i][b]) {\n        if (MaxTime[i][b] <= 0)\n          MaxTime[i][b] = -Infty;\n        else\n          MaxTime[i][b] -= T;\n      }\n    }\n\n    // Change rows?\n    for (int b : {0, 1}) {\n      if (Locked[i][b]) { continue; }\n      int tt = MaxTime[i][b ^ 1];\n      int NewT = min<LL>(tt, 0);\n      if (NewT > MaxTime[i][b]) {\n        MaxTime[i][b] = NewT;\n        ChangeRow[i][b] = true;\n      }\n    }\n\n    debug(i, MaxTime[i][0], MaxTime[i][1]);\n  }\n\n  auto checkWin = [&](int i, int b) {\n    if (MaxTime[i][b] < -T) { return; }\n    cout << \"Yes\\n\";\n    vector<int> Changes;\n    vector<PII> Shots;\n    int NumToShoot = 0;\n\n    auto settleShots = [&]() {\n      int x = Important[i];\n      int AmountWait = -MaxTime[i][b];\n      assert(AmountWait >= 0);\n      int FirstShot = x + AmountWait;\n      while (NumToShoot > 0) {\n        --NumToShoot;\n        Shots.emplace_back(FirstShot + NumToShoot * T, b + 1);\n      }\n    };\n\n    while (!(i == 0 && b == 0)) {\n      if (ChangeRow[i][b]) {\n        settleShots();\n        Changes.push_back(Important[i]);\n        b ^= 1;\n        NumToShoot = Locked[i][b];\n      } else {\n        --i;\n        NumToShoot += Locked[i][b];\n      }\n    }\n\n    settleShots();\n\n    cout << SZ(Changes) << \"\\n\";\n    reverse(ALL(Changes));\n    for (int v : Changes) { cout << v << \" \"; }\n    cout << \"\\n\";\n    cout << SZ(Shots) << \"\\n\";\n    reverse(ALL(Shots));\n    for (auto &P : Shots)\n      cout << P.first << \" \" << P.second << \"\\n\";\n\n\n    exit(0);\n  };\n\n  checkWin(S - 1, 0);\n  checkWin(S - 1, 1);\n\n  cout << \"No\\n\";\n}\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp",
+        "greedy"
+    ],
+    "dificulty": "3000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. World of Tank.json",
+    "editorial_link": "https://codeforces.com//blog/entry/58056",
+    "editorial": "At first arrange a pair of facts: If there is a path which doesn\u00e2\u0080\u0099t\r\ncontain blowed cell you can easily convert it to path which does. So\r\nit\u00e2\u0080\u0099s enough to check such paths to determine answer. Tank can accumulate\r\nshots when it moves without turns. In other words: consider tank makes\r\n100 steps without turns and shots, so lets say that tank accumulate 100\r\nsteps. If equals to 3 tank was able to make 33 shots on that part of\r\npath. Accumulating steps is the same as deferred shots. Tank gains steps\r\nand when it\u00e2\u0080\u0099s necessary to make some shots we can choose position of\r\nshots on this straight part of path in such way that tank blows\r\nobstacles. But when the tank changes its row you should flush\r\naccumulated steps to minimum of and old value because accumulated steps\r\nhas sense only on hte straight line without shots because otherwise it\r\nmay be impossible to choose correct positions for shots.The second step\r\nis solution with asymptotics :Using dynamic programming: maximal number\r\nof accumulated step if tank is in cell with coordinates and -1 if it\u00e2\u0080\u0099s\r\nimpossible. You should update dynamic\u00e2\u0080\u0099s values from previous cell in the\r\nsame row or cell in another row but in the same column.Check that\r\n(otherwise tank can\u00e2\u0080\u0099t be in the cell) after that update value by if\r\nthere is no obstacle in cell and by otherwise.Before updating by cell in\r\nanother row you should update both of them ( and if rows numerated\r\nfrom 1) by cells in previous column and only after that you can update\r\nthem be each other.Store for each cell was it updated from or . Start\r\nfrom last column and iterate to the zero one to restore the path.When\r\nyou restore path you can easily calculate number of obstacles which\r\nshould be blowed for each part of path without shots. So now you have to\r\nchoose places for them.Consider any part of the path from any turn to\r\nthe next one. Let there are obstacles, so all of them must be destroyed\r\nby the tank. Let the first cell of this path\u00e2\u0080\u0099s part has coordinates and\r\nequal to , so the first shot on this part can be not earlier than , the\r\nnext one not earlier than and so on. Place shots in that position and\r\ntank will correctly blow up all obstacles. It obviously follows from\r\ndynamic programming\u00e2\u0080\u0099s definition. Complexity: .The third step is\r\nprooving that tank can turn only cells which are immediately after an\r\nobstacle (if obstacle is in cell with coordinates then tank turns to\r\ncell ).Consider any path which is one of soloutions. Consider the first\r\nturn in this path which doesn\u00e2\u0080\u0099t fit the constraint above. Then consider\r\nthe nearest obstacle in the same row as row where tank will be after\r\nturn, but with smaller number of a column. If tank turns to the cell\r\nwhich immediately after that obstacle then it can move along that row to\r\ncurrent position, eliminates unnecessary turns, so the considered turn\r\nwill be eliminated. Otherwise tank was in another row, so you can easily\r\nturn and do the same actions to eliminate such turn.Repeat this actions\r\nyou transform any path to path which has only turns to cells immediately\r\nafter obstacles.Sort obstacles in order of increasing their column\u00e2\u0080\u0099s\r\nnumber. So due to fact that tank can turn only in certain points it\r\nisn\u00e2\u0080\u0099t necessary calculates DP for all cells. Now cells enough. So\r\ncalculate the same DP for cells which are immediatel after obstacles,\r\nstrore for each point the point where it was updated from to restore\r\npath. Restore path and for each part without turns calculate number of\r\nobstacles to destroy and place shots.Complexity .\r\n"
+}

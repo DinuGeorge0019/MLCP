@@ -1,1 +1,105 @@
-{"link": "https://codeforces.com//contest/571/problem/D", "problemId": "33724", "problem_idx": "D", "shortId": "571D", "contest_number": "571", "problem_submissions": {"D": [12660141, 12662761, 146472300, 12667793, 12667782, 12667705, 12667665, 12977746, 12977742], "C": [12653738, 12650335, 12656737, 12656719, 12656852, 12658376, 12657879, 12657167, 12658357, 12667656, 12659401, 12658758, 12659293, 12657644, 12661004, 12659862, 12660042, 12658285, 12661048, 12660704], "B": [12648491, 12654015, 12650873, 12650680, 12651137, 12650734, 12651603, 12652409, 12652256, 12649494, 12651874, 12649612, 12648817, 12649026, 12653251, 12652866, 12650455, 12653013, 12651835], "A": [12646811, 12656074, 12648816, 12646668, 12647772, 12648996, 12648968, 12649621, 12647841, 12646486, 12649024, 12647834, 12659587, 12647059, 12649810, 12649525, 12660696, 12648257, 12647136], "E": [13830424]}, "name": "D. Campus", "statement": "Oscolcovo city has a campus consisting of student dormitories,\r\nuniversities and military offices. Initially, the -th dormitory belongs\r\nto the -th university and is assigned to the -th military office.Life\r\ngoes on and the campus is continuously going through some changes. The\r\nchanges can be of four types: University merges with university . After\r\nthat all the dormitories that belonged to university are assigned to to\r\nuniversity , and university disappears. Military office merges with\r\nmilitary office . After that all the dormitories that were assigned to\r\nmilitary office , are assigned to military office , and military office\r\ndisappears. Students of university move in dormitories. Lets is the\r\nnumber of dormitories that belong to this university at the time when\r\nthe students move in. Then the number of students in each dormitory of\r\nuniversity increases by (note that the more dormitories belong to the\r\nuniversity, the more students move in each dormitory of the university).\r\nMilitary office number conducts raids on all the dormitories assigned to\r\nit and takes all students from there. Thus, at each moment of time each\r\ndormitory is assigned to exactly one university and one military office.\r\nInitially, all the dormitory are empty.Your task is to process the\r\nchanges that take place in the campus and answer the queries, how many\r\npeople currently live in dormitory .\r\n", "solutions": ["#include<stdio.h>\n#include<iostream>\n#include<vector>\n#include<cmath>\n#include<algorithm>\n#include<memory.h>\n#include<map>\n#include<set>\n#include<queue>\n#include<list>\n#include<sstream>\n#include<cstring>\n#define mp make_pair\n#define pb push_back      \n#define F first\n#define S second\n#define SS stringstream\n#define sqr(x) ((x)*(x))\n#define m0(x) memset(x,0,sizeof(x))\n#define m1(x) memset(x,63,sizeof(x))\n#define CC(x) cout << (x) << endl\n#define pw(x) (1ll<<(x))\n#define buli(x) __builtin_popcountll(x)\n#define forn(i, n) for(int i = 0 ; (i) < (n) ; ++i)\n#define M 1000000007\n#define N 1511111\n\n#define TASK \"1\"\n\nusing namespace std;\ntypedef pair<int,int> pt;\n\nint n, m, V1, V2;\n\nchar type[N];\nint x[N], y[N];\n\nint in1[N], in2[N], out1[N], out2[N];\n\nint n1[N], n2[N];\n\nint par1[N], par2[N];\n\npair<int, int> chi1[N], chi2[N];\n\nlong long su[N], ans[N];\n\nvector<int> po[N];\n\nint T;\n\nint tz[N];\n\n\nvoid add(int x, int v) {\n\twhile (x < n) {\n\t\tsu[x] += v;\n\t\tx |= (x + 1);\t\t\n\t}\n}\n\nlong long fin(int x) {\n\tlong long r = 0;\n\twhile (x >= 0) {\n\t\tr += su[x];\n\t\tx = (x & (x + 1)) - 1;\n\t}\n\treturn r;\n}\n\n\n\nvoid go1(int x) {\n\tin1[x] = T;\n\tif (x < n) T++; else {\n\n\t\tgo1(chi1[x].F);\n\t\tgo1(chi1[x].S);\n\t}\t\t\n\n\tout1[x] = T - 1;\n}\n\nvoid go2(int x) {\n\tin2[x] = T;\n\tif (x < n) T++; else {\n\n\t\tgo2(chi2[x].F);       \n\t\tgo2(chi2[x].S);\n\t}\t\t\n\n\tout2[x] = T - 1;\n}\n\n\nint main(){\n//\tfreopen(TASK\".in\",\"r\",stdin);\t\n//\tfreopen(TASK\".out\",\"w\",stdout);\n\tscanf(\"%d%d\\n\", &n, &m);\n\n\n\tfor (int i = 0; i < m; i++) {\n\t\tscanf(\"%c\", &type[i]);\n\t\tif (type[i] == 'A' || type[i] == 'Z' || type[i] == 'Q') {\n\t\t\tscanf(\"%d\\n\", &x[i]);\n\t\t\tx[i]--;\n\t\t} else {\n\t\t\tscanf(\"%d%d\\n\", &x[i], &y[i]);\n\t\t\tx[i]--;\n\t\t\ty[i]--;\n\t\t}\n\t}\n\tV1 = V2 = n;\n\tfor (int i = 0; i < n; i++) {\n\t\tn1[i] = n2[i] = i;\n\t}\n\n\tfor (int i = 0; i < m; i++) {\n\t\tif (type[i] == 'U') {\n\t\t\tchi1[V1] = mp(n1[x[i]], n1[y[i]]);\n\n\t\t\tpar1[n1[x[i]]] = V1;\n\t\t\tpar1[n1[y[i]]] = V1;\n\t\t\tn1[x[i]] = V1;\n\t\t\tn1[y[i]] = V1;\n\t\t\tV1++;\n\t\t}\n\t\tif (type[i] == 'M') {\n\t\t\tchi2[V2] = mp(n2[x[i]], n2[y[i]]);\n\n\t\t\tpar2[n2[x[i]]] = V2;\n\t\t\tpar2[n2[y[i]]] = V2;\n\t\t\tn2[x[i]] = V2;\n\t\t\tn2[y[i]] = V2;\n\t\t\tV2++;\n\t\t}\n\t}\n\tT = 0;\n\tfor (int i = 0; i < V1; i++) if (par1[i] == 0) go1(i);\n\tT = 0;\n\tfor (int i = 0; i < V2; i++) if (par2[i] == 0) go2(i);\n\n\tfor (int i = 0; i < n; i++) {\n\t\tn2[i] = i;\n\t}\n\n\tfor (int i = 0; i < m; i++) {\n\t\tif (type[i] == 'M') {\n\t\t\tn2[x[i]] = par2[n2[x[i]]];\n\t\t\tn2[y[i]] = par2[n2[y[i]]];\n\t\t}\n\t\tif (type[i] == 'Z') {\n\t\t\ttz[i] = n2[x[i]];\n\t\t}\n\t}\n\tset<pair<int, int> > Q;\n\tset<pair<int, int> >::iterator it, it2;\n\tfor (int i = m - 1; i >= 0; i--) {\n\t\tif (type[i] == 'Q') {\n\t\t\tQ.insert(mp(in2[x[i]], i));\n\t\t}\n\t\tif (type[i] == 'Z') {\n\t\t\tint A = in2[tz[i]];\n\t\t\tint B = out2[tz[i]];\n\t\t\tit = Q.lower_bound(mp(A, 0));\n\t\t\twhile (it != Q.end() && (it -> F) <= B) {\n\t\t\t\tpo[i].pb(it -> S);\n\t\t\t\tit2 = it;\n\t\t\t\tit++;\n\t\t\t\tQ.erase(it2);\n\t\t\t}\n\t\t}\n\t}\n\tfor (int i = 0; i < n; i++) {\n\t\tn1[i] = i;\n\t}\n\n\tfor (int i = 0; i < m; i++) {\n\t\tif (type[i] == 'U') {\n\t\t\tn1[x[i]] = par1[n1[x[i]]];\n\t\t\tn1[y[i]] = par1[n1[y[i]]];\t\t\t\n\t\t}\n\t\tif (type[i] == 'A') {\n\t\t\tint sz = out1[n1[x[i]]] - in1[n1[x[i]]] + 1;\n\t\t\tadd(in1[n1[x[i]]], sz);\n\t\t\tadd(out1[n1[x[i]]] + 1, -sz);\n\t\t}\n\t\tfor (int j = 0; j < po[i].size(); j++) {\n\t\t\tint v = in1[x[po[i][j]]];\n\t\t\tans[po[i][j]] -= fin(v);\n\t\t}\n\t\tif (type[i] == 'Q') {\n\t\t\tint v = in1[x[i]];\n\t\t\tans[i] += fin(v);\n\t\t}\n\t}\n\tfor (int i = 0; i < m; i++) if (type[i] == 'Q') printf(\"%I64d\\n\", ans[i]);\n\n\treturn 0;\n}\n\n\n\n\n\n\n"], "input": "", "output": "", "tags": ["binary search", "data structures", "dsu", "trees"], "dificulty": "3100", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/571/problem/D",
+    "problemId": "33724",
+    "problem_idx": "D",
+    "shortId": "571D",
+    "contest_number": "571",
+    "problem_submissions": {
+        "D": [
+            12660141,
+            12662761,
+            146472300,
+            12667793,
+            12667782,
+            12667705,
+            12667665,
+            12977746,
+            12977742
+        ],
+        "C": [
+            12653738,
+            12650335,
+            12656737,
+            12656719,
+            12656852,
+            12658376,
+            12657879,
+            12657167,
+            12658357,
+            12667656,
+            12659401,
+            12658758,
+            12659293,
+            12657644,
+            12661004,
+            12659862,
+            12660042,
+            12658285,
+            12661048,
+            12660704
+        ],
+        "B": [
+            12648491,
+            12654015,
+            12650873,
+            12650680,
+            12651137,
+            12650734,
+            12651603,
+            12652409,
+            12652256,
+            12649494,
+            12651874,
+            12649612,
+            12648817,
+            12649026,
+            12653251,
+            12652866,
+            12650455,
+            12653013,
+            12651835
+        ],
+        "A": [
+            12646811,
+            12656074,
+            12648816,
+            12646668,
+            12647772,
+            12648996,
+            12648968,
+            12649621,
+            12647841,
+            12646486,
+            12649024,
+            12647834,
+            12659587,
+            12647059,
+            12649810,
+            12649525,
+            12660696,
+            12648257,
+            12647136
+        ],
+        "E": [
+            13830424
+        ]
+    },
+    "name": "D. Campus",
+    "statement": "Oscolcovo city has a campus consisting of student dormitories,\r\nuniversities and military offices. Initially, the -th dormitory belongs\r\nto the -th university and is assigned to the -th military office.Life\r\ngoes on and the campus is continuously going through some changes. The\r\nchanges can be of four types: University merges with university . After\r\nthat all the dormitories that belonged to university are assigned to to\r\nuniversity , and university disappears. Military office merges with\r\nmilitary office . After that all the dormitories that were assigned to\r\nmilitary office , are assigned to military office , and military office\r\ndisappears. Students of university move in dormitories. Lets is the\r\nnumber of dormitories that belong to this university at the time when\r\nthe students move in. Then the number of students in each dormitory of\r\nuniversity increases by (note that the more dormitories belong to the\r\nuniversity, the more students move in each dormitory of the university).\r\nMilitary office number conducts raids on all the dormitories assigned to\r\nit and takes all students from there. Thus, at each moment of time each\r\ndormitory is assigned to exactly one university and one military office.\r\nInitially, all the dormitory are empty.Your task is to process the\r\nchanges that take place in the campus and answer the queries, how many\r\npeople currently live in dormitory .\r\n",
+    "solutions": [
+        "#include<stdio.h>\n#include<iostream>\n#include<vector>\n#include<cmath>\n#include<algorithm>\n#include<memory.h>\n#include<map>\n#include<set>\n#include<queue>\n#include<list>\n#include<sstream>\n#include<cstring>\n#define mp make_pair\n#define pb push_back      \n#define F first\n#define S second\n#define SS stringstream\n#define sqr(x) ((x)*(x))\n#define m0(x) memset(x,0,sizeof(x))\n#define m1(x) memset(x,63,sizeof(x))\n#define CC(x) cout << (x) << endl\n#define pw(x) (1ll<<(x))\n#define buli(x) __builtin_popcountll(x)\n#define forn(i, n) for(int i = 0 ; (i) < (n) ; ++i)\n#define M 1000000007\n#define N 1511111\n\n#define TASK \"1\"\n\nusing namespace std;\ntypedef pair<int,int> pt;\n\nint n, m, V1, V2;\n\nchar type[N];\nint x[N], y[N];\n\nint in1[N], in2[N], out1[N], out2[N];\n\nint n1[N], n2[N];\n\nint par1[N], par2[N];\n\npair<int, int> chi1[N], chi2[N];\n\nlong long su[N], ans[N];\n\nvector<int> po[N];\n\nint T;\n\nint tz[N];\n\n\nvoid add(int x, int v) {\n\twhile (x < n) {\n\t\tsu[x] += v;\n\t\tx |= (x + 1);\t\t\n\t}\n}\n\nlong long fin(int x) {\n\tlong long r = 0;\n\twhile (x >= 0) {\n\t\tr += su[x];\n\t\tx = (x & (x + 1)) - 1;\n\t}\n\treturn r;\n}\n\n\n\nvoid go1(int x) {\n\tin1[x] = T;\n\tif (x < n) T++; else {\n\n\t\tgo1(chi1[x].F);\n\t\tgo1(chi1[x].S);\n\t}\t\t\n\n\tout1[x] = T - 1;\n}\n\nvoid go2(int x) {\n\tin2[x] = T;\n\tif (x < n) T++; else {\n\n\t\tgo2(chi2[x].F);       \n\t\tgo2(chi2[x].S);\n\t}\t\t\n\n\tout2[x] = T - 1;\n}\n\n\nint main(){\n//\tfreopen(TASK\".in\",\"r\",stdin);\t\n//\tfreopen(TASK\".out\",\"w\",stdout);\n\tscanf(\"%d%d\\n\", &n, &m);\n\n\n\tfor (int i = 0; i < m; i++) {\n\t\tscanf(\"%c\", &type[i]);\n\t\tif (type[i] == 'A' || type[i] == 'Z' || type[i] == 'Q') {\n\t\t\tscanf(\"%d\\n\", &x[i]);\n\t\t\tx[i]--;\n\t\t} else {\n\t\t\tscanf(\"%d%d\\n\", &x[i], &y[i]);\n\t\t\tx[i]--;\n\t\t\ty[i]--;\n\t\t}\n\t}\n\tV1 = V2 = n;\n\tfor (int i = 0; i < n; i++) {\n\t\tn1[i] = n2[i] = i;\n\t}\n\n\tfor (int i = 0; i < m; i++) {\n\t\tif (type[i] == 'U') {\n\t\t\tchi1[V1] = mp(n1[x[i]], n1[y[i]]);\n\n\t\t\tpar1[n1[x[i]]] = V1;\n\t\t\tpar1[n1[y[i]]] = V1;\n\t\t\tn1[x[i]] = V1;\n\t\t\tn1[y[i]] = V1;\n\t\t\tV1++;\n\t\t}\n\t\tif (type[i] == 'M') {\n\t\t\tchi2[V2] = mp(n2[x[i]], n2[y[i]]);\n\n\t\t\tpar2[n2[x[i]]] = V2;\n\t\t\tpar2[n2[y[i]]] = V2;\n\t\t\tn2[x[i]] = V2;\n\t\t\tn2[y[i]] = V2;\n\t\t\tV2++;\n\t\t}\n\t}\n\tT = 0;\n\tfor (int i = 0; i < V1; i++) if (par1[i] == 0) go1(i);\n\tT = 0;\n\tfor (int i = 0; i < V2; i++) if (par2[i] == 0) go2(i);\n\n\tfor (int i = 0; i < n; i++) {\n\t\tn2[i] = i;\n\t}\n\n\tfor (int i = 0; i < m; i++) {\n\t\tif (type[i] == 'M') {\n\t\t\tn2[x[i]] = par2[n2[x[i]]];\n\t\t\tn2[y[i]] = par2[n2[y[i]]];\n\t\t}\n\t\tif (type[i] == 'Z') {\n\t\t\ttz[i] = n2[x[i]];\n\t\t}\n\t}\n\tset<pair<int, int> > Q;\n\tset<pair<int, int> >::iterator it, it2;\n\tfor (int i = m - 1; i >= 0; i--) {\n\t\tif (type[i] == 'Q') {\n\t\t\tQ.insert(mp(in2[x[i]], i));\n\t\t}\n\t\tif (type[i] == 'Z') {\n\t\t\tint A = in2[tz[i]];\n\t\t\tint B = out2[tz[i]];\n\t\t\tit = Q.lower_bound(mp(A, 0));\n\t\t\twhile (it != Q.end() && (it -> F) <= B) {\n\t\t\t\tpo[i].pb(it -> S);\n\t\t\t\tit2 = it;\n\t\t\t\tit++;\n\t\t\t\tQ.erase(it2);\n\t\t\t}\n\t\t}\n\t}\n\tfor (int i = 0; i < n; i++) {\n\t\tn1[i] = i;\n\t}\n\n\tfor (int i = 0; i < m; i++) {\n\t\tif (type[i] == 'U') {\n\t\t\tn1[x[i]] = par1[n1[x[i]]];\n\t\t\tn1[y[i]] = par1[n1[y[i]]];\t\t\t\n\t\t}\n\t\tif (type[i] == 'A') {\n\t\t\tint sz = out1[n1[x[i]]] - in1[n1[x[i]]] + 1;\n\t\t\tadd(in1[n1[x[i]]], sz);\n\t\t\tadd(out1[n1[x[i]]] + 1, -sz);\n\t\t}\n\t\tfor (int j = 0; j < po[i].size(); j++) {\n\t\t\tint v = in1[x[po[i][j]]];\n\t\t\tans[po[i][j]] -= fin(v);\n\t\t}\n\t\tif (type[i] == 'Q') {\n\t\t\tint v = in1[x[i]];\n\t\t\tans[i] += fin(v);\n\t\t}\n\t}\n\tfor (int i = 0; i < m; i++) if (type[i] == 'Q') printf(\"%I64d\\n\", ans[i]);\n\n\treturn 0;\n}\n\n\n\n\n\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "binary search",
+        "data structures",
+        "dsu",
+        "trees"
+    ],
+    "dificulty": "3100",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Campus.json",
+    "editorial_link": "https://codeforces.com//blog/entry/19923",
+    "editorial": "Let\u00e2\u0080\u0099s suppose for each dormitory from query we already know the last\r\nraid moment. When task will be much easier: we can throw away and\r\nqueries and to get right answer we should subtract two values: people\r\ncount in dormitory right now and same count in a last raid moment. On\r\nthis basis, we have such plan: Let\u00e2\u0080\u0099s try to solve the first part. We\r\nwant to make such queries on disjoint sets: To solve this task we\u00e2\u0080\u0099ll use\r\na well-known technique: \"merge smaller set to bigger\". We\u00e2\u0080\u0099ll maintain\r\nsuch values: Let\u00e2\u0080\u0099s focus on value. It\u00e2\u0080\u0099s obvious that when we merge two\r\nsets each element can have a different last assign moment. But after\r\nfirst assignment all elements from any set will have the same value. So\r\nthe answer for query for element from set : If\r\nlast_set_update_time[s]=actual_time[i] then last_update_time[i] else\r\nlast_set_update_time[s] For each query you should just update array.\r\nIt\u00e2\u0080\u0099s easy to maintain this values when you merge two sets: Let\u00e2\u0080\u0099s suppose\r\nwe want to merge set to set . For each element from set we already know\r\nlast assign time. So just update with this value and is equal of last\r\nassign operation for set . The second part of the solution is the same\r\nas first one. time and memory. Problem author: ArtDitel. Problem\r\ndevelopers: yarrr, gchebanov, Kostroma. Solution codes: 12873477\r\n(solution, described in the editorail), 12873469 (solution with treaps).\r\n"
+}

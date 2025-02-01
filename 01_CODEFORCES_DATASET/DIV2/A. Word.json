@@ -1,1 +1,103 @@
-{"link": "https://codeforces.com//contest/59/problem/A", "problemId": "307", "problem_idx": "A", "shortId": "59A", "contest_number": "59", "problem_submissions": {"E": [280965, 279581, 281138, 281387, 280873, 283124, 283115, 283111, 283109, 283100, 283096, 283092, 283085, 283084, 281969, 7020454], "D": [280391, 284138, 281502, 281236, 281590, 282219, 282005, 282011, 281002], "C": [279741, 280383, 280157, 280215, 279940, 280089, 280651, 282540, 280526, 280047, 280179, 280617, 280421], "B": [279223, 280161, 279355, 279326, 279379, 279486, 283681, 280066, 279671, 279598, 279324, 279470, 279615, 279517, 280028], "A": [278986, 280065, 279027, 279062, 279003, 279074, 283673, 279299, 279346, 279565, 279059, 279097, 279211, 279043, 279837]}, "name": "A. Word", "statement": "Vasya is very upset that many people on the Net mix uppercase and\r\nlowercase letters in one word. That\u2019s why he decided to invent an\r\nextension for his favorite browser that would change the letters\u2019\r\nregister in every word so that it either only consisted of lowercase\r\nletters or, vice versa, only of uppercase ones. At that as little as\r\npossible letters should be changed in the word. For example, the word\r\nmust be replaced with , and the word with . If a word contains an equal\r\nnumber of uppercase and lowercase letters, you should replace all the\r\nletters with lowercase ones. For example, should be replaced by . Your\r\ntask is to use the given method on one given word.\r\n", "solutions": ["#include <iostream>\n#include <string>\nusing namespace std;\nint main()\n{\n\tstring s;\n\tcin>>s;\n\tint n = s.size();\n\tint low=0;\n\tfor(int i=0; i<n; ++i) low += !!islower(s[i]);\n\tint hi = n-low;\n\tfor(int i=0; i<n; ++i)\n\t\ts[i] = (low>=hi) ? tolower(s[i]) : toupper(s[i]);\n\tcout<<s<<'\\n';\n}\n"], "input": "", "output": "", "tags": ["implementation", "strings"], "dificulty": "800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/59/problem/A",
+    "problemId": "307",
+    "problem_idx": "A",
+    "shortId": "59A",
+    "contest_number": "59",
+    "problem_submissions": {
+        "E": [
+            280965,
+            279581,
+            281138,
+            281387,
+            280873,
+            283124,
+            283115,
+            283111,
+            283109,
+            283100,
+            283096,
+            283092,
+            283085,
+            283084,
+            281969,
+            7020454
+        ],
+        "D": [
+            280391,
+            284138,
+            281502,
+            281236,
+            281590,
+            282219,
+            282005,
+            282011,
+            281002
+        ],
+        "C": [
+            279741,
+            280383,
+            280157,
+            280215,
+            279940,
+            280089,
+            280651,
+            282540,
+            280526,
+            280047,
+            280179,
+            280617,
+            280421
+        ],
+        "B": [
+            279223,
+            280161,
+            279355,
+            279326,
+            279379,
+            279486,
+            283681,
+            280066,
+            279671,
+            279598,
+            279324,
+            279470,
+            279615,
+            279517,
+            280028
+        ],
+        "A": [
+            278986,
+            280065,
+            279027,
+            279062,
+            279003,
+            279074,
+            283673,
+            279299,
+            279346,
+            279565,
+            279059,
+            279097,
+            279211,
+            279043,
+            279837
+        ]
+    },
+    "name": "A. Word",
+    "statement": "Vasya is very upset that many people on the Net mix uppercase and\r\nlowercase letters in one word. That\u2019s why he decided to invent an\r\nextension for his favorite browser that would change the letters\u2019\r\nregister in every word so that it either only consisted of lowercase\r\nletters or, vice versa, only of uppercase ones. At that as little as\r\npossible letters should be changed in the word. For example, the word\r\nmust be replaced with , and the word with . If a word contains an equal\r\nnumber of uppercase and lowercase letters, you should replace all the\r\nletters with lowercase ones. For example, should be replaced by . Your\r\ntask is to use the given method on one given word.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <string>\nusing namespace std;\nint main()\n{\n\tstring s;\n\tcin>>s;\n\tint n = s.size();\n\tint low=0;\n\tfor(int i=0; i<n; ++i) low += !!islower(s[i]);\n\tint hi = n-low;\n\tfor(int i=0; i<n; ++i)\n\t\ts[i] = (low>=hi) ? tolower(s[i]) : toupper(s[i]);\n\tcout<<s<<'\\n';\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation",
+        "strings"
+    ],
+    "dificulty": "800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Word.json",
+    "editorial_link": "https://codeforces.com//blog/entry/1276",
+    "editorial": "This was an extremely simple problem. Simply count the number of upper case latin letters. If that is strictly greater than number of lower case letters convert the word to upper case other wise convert it to lower case. \nComplexity: O(wordlength)"
+}

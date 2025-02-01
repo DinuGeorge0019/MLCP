@@ -1,1 +1,106 @@
-{"link": "https://codeforces.com//contest/787/problem/B", "problemId": "99623", "problem_idx": "B", "shortId": "787B", "contest_number": "787", "problem_submissions": {"E": [25747805, 25769219, 25744553, 26717332, 25755415, 25762542], "B": [25745774, 25737596, 25738540, 25745875, 25737776, 25744359, 25738056, 25737770, 25738864, 25741107, 25738246, 25737616, 25739109, 25738592, 25739173, 25738726, 25737800, 25737780, 25738984, 25738382], "D": [25744630, 25741896, 25745115, 25749718, 25746276, 25756806, 25761778, 25761748], "C": [25741086, 25747033, 25750675, 25741659, 25745560, 25745890, 25749024, 25741922, 25743935, 25744643, 25745202, 25745392, 25745995, 25746453, 25745702, 25745999, 25746587], "A": [25736581, 25736552, 25743791, 25736575, 25739966, 25736705, 25736522, 25736956, 25738154, 25736876, 25736540, 25736830, 25737058, 25737179, 25737189, 25736539, 25736641, 25737439, 25736572]}, "name": "B. Not Afraid", "statement": "Since the giant heads have appeared in the sky all humanity is in\r\ndanger, so Ricks and Mortys from all parallel universes are gathering in\r\ngroups to find a solution to get rid of them. There are parallel\r\nuniverses participating in this event ( Ricks and Mortys). I. e. each of\r\nuniverses has one Rick and one Morty. They\u2019re gathering in groups. Each\r\nperson can be in many groups and a group can contain an arbitrary number\r\nof members.Ricks and Mortys have registered online in these groups. So,\r\na person can have joined a group more than once (developer of this\r\nwebsite hadn\u2019t considered this possibility). Summer from universe 1\r\nknows that in each parallel universe (including hers) exactly one of\r\nRick and Morty from that universe is a traitor and is loyal, but no one\r\nknows which one. She knows that we are doomed if there\u2019s a group such\r\nthat every member in that group is a traitor (they will plan and destroy\r\nthe world). Summer knows that if there\u2019s a possibility that world ends\r\n(there\u2019s a group where all members are traitors) she should immediately\r\ncancel this event. So she wants to know if she should cancel the event.\r\nYou have to tell her yes if and only if there\u2019s at least one scenario\r\n(among all possible scenarios, possible scenarios for who a traitor in\r\neach universe) such that in that scenario the world will end.\r\n", "solutions": ["#include <stdio.h>\n#include <string.h>\n#include <stdlib.h>\n#include <iostream>\n#include <algorithm>\nusing namespace std;\nconst int MAXN = 10101;\nint n, m;\nint visit[MAXN * 2];\nint main()\n{\n\tmemset(visit, 0, sizeof(visit));\n\tscanf(\"%d%d\", &n, &m);\n\tfor(int i = 1; i <= m; i++)\n\t{\n\t\tint k;\n\t\tscanf(\"%d\", &k);\n\t\tint tmp;\n\t\tbool flag = true;\n\t\tfor(int j = 1; j <= k; j++)\n\t\t{\n\t\t\tscanf(\"%d\", &tmp);\n\t\t\tif(tmp < 0)\n\t\t\t{\n\t\t\t\ttmp = n - tmp;\n\t\t\t\tif(visit[tmp - n] == i)\n\t\t\t\t\tflag = false;\n\t\t\t}\n\t\t\telse\n\t\t\t{\n\t\t\t\tif(visit[tmp + n] == i)\n\t\t\t\t\tflag = false;\n\t\t\t}\n\t\t\tvisit[tmp] = i;\n\t\t}\n\t\tif(flag)\n\t\t{\n\t\t\tprintf(\"YES\\n\");\n\t\t\treturn 0;\n\t\t}\n\t}\n\tprintf(\"NO\\n\");\n\treturn 0;\n}\n\n"], "input": "", "output": "", "tags": ["greedy", "implementation", "math"], "dificulty": "1300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/787/problem/B",
+    "problemId": "99623",
+    "problem_idx": "B",
+    "shortId": "787B",
+    "contest_number": "787",
+    "problem_submissions": {
+        "E": [
+            25747805,
+            25769219,
+            25744553,
+            26717332,
+            25755415,
+            25762542
+        ],
+        "B": [
+            25745774,
+            25737596,
+            25738540,
+            25745875,
+            25737776,
+            25744359,
+            25738056,
+            25737770,
+            25738864,
+            25741107,
+            25738246,
+            25737616,
+            25739109,
+            25738592,
+            25739173,
+            25738726,
+            25737800,
+            25737780,
+            25738984,
+            25738382
+        ],
+        "D": [
+            25744630,
+            25741896,
+            25745115,
+            25749718,
+            25746276,
+            25756806,
+            25761778,
+            25761748
+        ],
+        "C": [
+            25741086,
+            25747033,
+            25750675,
+            25741659,
+            25745560,
+            25745890,
+            25749024,
+            25741922,
+            25743935,
+            25744643,
+            25745202,
+            25745392,
+            25745995,
+            25746453,
+            25745702,
+            25745999,
+            25746587
+        ],
+        "A": [
+            25736581,
+            25736552,
+            25743791,
+            25736575,
+            25739966,
+            25736705,
+            25736522,
+            25736956,
+            25738154,
+            25736876,
+            25736540,
+            25736830,
+            25737058,
+            25737179,
+            25737189,
+            25736539,
+            25736641,
+            25737439,
+            25736572
+        ]
+    },
+    "name": "B. Not Afraid",
+    "statement": "Since the giant heads have appeared in the sky all humanity is in\r\ndanger, so Ricks and Mortys from all parallel universes are gathering in\r\ngroups to find a solution to get rid of them. There are parallel\r\nuniverses participating in this event ( Ricks and Mortys). I. e. each of\r\nuniverses has one Rick and one Morty. They\u2019re gathering in groups. Each\r\nperson can be in many groups and a group can contain an arbitrary number\r\nof members.Ricks and Mortys have registered online in these groups. So,\r\na person can have joined a group more than once (developer of this\r\nwebsite hadn\u2019t considered this possibility). Summer from universe 1\r\nknows that in each parallel universe (including hers) exactly one of\r\nRick and Morty from that universe is a traitor and is loyal, but no one\r\nknows which one. She knows that we are doomed if there\u2019s a group such\r\nthat every member in that group is a traitor (they will plan and destroy\r\nthe world). Summer knows that if there\u2019s a possibility that world ends\r\n(there\u2019s a group where all members are traitors) she should immediately\r\ncancel this event. So she wants to know if she should cancel the event.\r\nYou have to tell her yes if and only if there\u2019s at least one scenario\r\n(among all possible scenarios, possible scenarios for who a traitor in\r\neach universe) such that in that scenario the world will end.\r\n",
+    "solutions": [
+        "#include <stdio.h>\n#include <string.h>\n#include <stdlib.h>\n#include <iostream>\n#include <algorithm>\nusing namespace std;\nconst int MAXN = 10101;\nint n, m;\nint visit[MAXN * 2];\nint main()\n{\n\tmemset(visit, 0, sizeof(visit));\n\tscanf(\"%d%d\", &n, &m);\n\tfor(int i = 1; i <= m; i++)\n\t{\n\t\tint k;\n\t\tscanf(\"%d\", &k);\n\t\tint tmp;\n\t\tbool flag = true;\n\t\tfor(int j = 1; j <= k; j++)\n\t\t{\n\t\t\tscanf(\"%d\", &tmp);\n\t\t\tif(tmp < 0)\n\t\t\t{\n\t\t\t\ttmp = n - tmp;\n\t\t\t\tif(visit[tmp - n] == i)\n\t\t\t\t\tflag = false;\n\t\t\t}\n\t\t\telse\n\t\t\t{\n\t\t\t\tif(visit[tmp + n] == i)\n\t\t\t\t\tflag = false;\n\t\t\t}\n\t\t\tvisit[tmp] = i;\n\t\t}\n\t\tif(flag)\n\t\t{\n\t\t\tprintf(\"YES\\n\");\n\t\t\treturn 0;\n\t\t}\n\t}\n\tprintf(\"NO\\n\");\n\treturn 0;\n}\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "greedy",
+        "implementation",
+        "math"
+    ],
+    "dificulty": "1300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Not Afraid.json",
+    "editorial_link": "https://codeforces.com//blog/entry/51163",
+    "editorial": "The problem says given a CNF formula, check if we can set value of\r\nliterals such that the formula isn\u00e2\u0080\u0099t satisfied. Answer is yes if and\r\nonly if you can set values so that at least one clause isn\u00e2\u0080\u0099t satisfied.\r\nIt\u00e2\u0080\u0099s easy to show that answer is yes if and only if there\u00e2\u0080\u0099s at least one\r\nclause that for that clause there\u00e2\u0080\u0099s no such that and are both in it.\r\nThis can be easily implemented.Time complexity:\r\n"
+}

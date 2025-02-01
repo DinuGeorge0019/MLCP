@@ -1,1 +1,104 @@
-{"link": "https://codeforces.com//contest/686/problem/D", "problemId": "63500", "problem_idx": "D", "shortId": "686D", "contest_number": "686", "problem_submissions": {"E": [18753113], "D": [18677363, 18676926, 18680203, 18677096, 18680500, 18679262, 18679726, 18681134, 18679340, 18681235, 18679151, 18677262, 18680852, 18682604, 18679420, 18683508, 18682836, 18677654], "C": [18674350, 18674219, 18675996, 18670680, 18674843, 18676354, 18677317, 18674277, 18676911, 18677370, 18678038, 18675789, 18677870, 18675610, 18676923, 18681967], "B": [18671047, 18668588, 18669725, 18672830, 18672620, 18669882, 18671172, 18668900, 18674893, 18677911, 18672621, 18670139, 18676902, 18670149, 18671650, 18671701], "A": [18669150, 18667513, 18667542, 18673623, 18668163, 18667514, 18669093, 18667603, 18674115, 18677610, 18668549, 18667772, 18667638, 18667507, 18667916, 18669148]}, "name": "D. Kay and Snowflake", "statement": "After the piece of a devilish mirror hit the Kay\u2019s eye, he is no longer\r\ninterested in the beauty of the roses. Now he likes to watch\r\nsnowflakes.Once upon a time, he found a huge snowflake that has a form\r\nof the tree (connected acyclic graph) consisting of nodes. The root of\r\ntree has index . Kay is very interested in the structure of this\r\ntree.After doing some research he formed queries he is interested in.\r\nThe -th query asks to find a centroid of the subtree of the node . Your\r\ngoal is to answer all queries. of a node is a part of tree consisting of\r\nthis node and all it\u2019s descendants (direct or not). In other words,\r\nsubtree of node is formed by nodes , such that node is present on the\r\npath from to root. of a tree (or a subtree) is a node, such that if we\r\nerase it from the tree, the maximum size of the connected component will\r\nbe at least two times smaller than the size of the initial tree (or a\r\nsubtree).\r\n", "solutions": ["#include<bits/stdc++.h>\nusing namespace std;\nconst int N=300030;\nint last[N]={},next[N]={},end[N]={},total_edge=0;\nint n,q,p[N]={},cen[N]={},size[N]={},maxp[N]={};\nvoid add_edge(int u,int v)\n{\n\tnext[++total_edge]=last[u];\n\tlast[u]=total_edge;\n\tend[total_edge]=v;\n}\nvoid init()\n{\n\tscanf(\"%d%d\",&n,&q);\n\tfor(int i=2;i<=n;++i)\n\t{\n\t\tscanf(\"%d\",&p[i]);\n\t\tadd_edge(p[i],i);\n\t}\n}\nvoid dfs(int s)\n{\n\tsize[s]=1;\n\tmaxp[s]=0;\n\tfor(int i=last[s];i;i=next[i])\n\t{\n\t\tint j=end[i];\n\t\tdfs(j);\n\t\tsize[s]+=size[j];\n\t\tif(size[maxp[s]]<size[j])\n\t\t\tmaxp[s]=j;\n\t}\n\tif(size[maxp[s]]*2>size[s])\n\t{\n\t\tint now=cen[maxp[s]];\n\t\twhile(size[now]*2<=size[s])\n\t\t\tnow=p[now];\n\t\tcen[s]=now;\n\t}\n\telse\n\t\tcen[s]=s;\n\t//cout<<\"s=\"<<s<<\" maxp=\"<<maxp[s]<<\" size=\"<<size[s]<<\" cen=\"<<cen[s]<<endl;\n}\nvoid work()\n{\n\tdfs(1);\n\tfor(int i=1,x=0;i<=q;++i)\n\t{\n\t\tscanf(\"%d\",&x);\n\t\tprintf(\"%d\\n\",cen[x]);\n\t}\n}\nint main()\n{\t\n\tinit();\n\twork();\n\treturn 0;\n}"], "input": "", "output": "", "tags": ["data structures", "dfs and similar", "dp", "trees"], "dificulty": "1900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/686/problem/D",
+    "problemId": "63500",
+    "problem_idx": "D",
+    "shortId": "686D",
+    "contest_number": "686",
+    "problem_submissions": {
+        "E": [
+            18753113
+        ],
+        "D": [
+            18677363,
+            18676926,
+            18680203,
+            18677096,
+            18680500,
+            18679262,
+            18679726,
+            18681134,
+            18679340,
+            18681235,
+            18679151,
+            18677262,
+            18680852,
+            18682604,
+            18679420,
+            18683508,
+            18682836,
+            18677654
+        ],
+        "C": [
+            18674350,
+            18674219,
+            18675996,
+            18670680,
+            18674843,
+            18676354,
+            18677317,
+            18674277,
+            18676911,
+            18677370,
+            18678038,
+            18675789,
+            18677870,
+            18675610,
+            18676923,
+            18681967
+        ],
+        "B": [
+            18671047,
+            18668588,
+            18669725,
+            18672830,
+            18672620,
+            18669882,
+            18671172,
+            18668900,
+            18674893,
+            18677911,
+            18672621,
+            18670139,
+            18676902,
+            18670149,
+            18671650,
+            18671701
+        ],
+        "A": [
+            18669150,
+            18667513,
+            18667542,
+            18673623,
+            18668163,
+            18667514,
+            18669093,
+            18667603,
+            18674115,
+            18677610,
+            18668549,
+            18667772,
+            18667638,
+            18667507,
+            18667916,
+            18669148
+        ]
+    },
+    "name": "D. Kay and Snowflake",
+    "statement": "After the piece of a devilish mirror hit the Kay\u2019s eye, he is no longer\r\ninterested in the beauty of the roses. Now he likes to watch\r\nsnowflakes.Once upon a time, he found a huge snowflake that has a form\r\nof the tree (connected acyclic graph) consisting of nodes. The root of\r\ntree has index . Kay is very interested in the structure of this\r\ntree.After doing some research he formed queries he is interested in.\r\nThe -th query asks to find a centroid of the subtree of the node . Your\r\ngoal is to answer all queries. of a node is a part of tree consisting of\r\nthis node and all it\u2019s descendants (direct or not). In other words,\r\nsubtree of node is formed by nodes , such that node is present on the\r\npath from to root. of a tree (or a subtree) is a node, such that if we\r\nerase it from the tree, the maximum size of the connected component will\r\nbe at least two times smaller than the size of the initial tree (or a\r\nsubtree).\r\n",
+    "solutions": [
+        "#include<bits/stdc++.h>\nusing namespace std;\nconst int N=300030;\nint last[N]={},next[N]={},end[N]={},total_edge=0;\nint n,q,p[N]={},cen[N]={},size[N]={},maxp[N]={};\nvoid add_edge(int u,int v)\n{\n\tnext[++total_edge]=last[u];\n\tlast[u]=total_edge;\n\tend[total_edge]=v;\n}\nvoid init()\n{\n\tscanf(\"%d%d\",&n,&q);\n\tfor(int i=2;i<=n;++i)\n\t{\n\t\tscanf(\"%d\",&p[i]);\n\t\tadd_edge(p[i],i);\n\t}\n}\nvoid dfs(int s)\n{\n\tsize[s]=1;\n\tmaxp[s]=0;\n\tfor(int i=last[s];i;i=next[i])\n\t{\n\t\tint j=end[i];\n\t\tdfs(j);\n\t\tsize[s]+=size[j];\n\t\tif(size[maxp[s]]<size[j])\n\t\t\tmaxp[s]=j;\n\t}\n\tif(size[maxp[s]]*2>size[s])\n\t{\n\t\tint now=cen[maxp[s]];\n\t\twhile(size[now]*2<=size[s])\n\t\t\tnow=p[now];\n\t\tcen[s]=now;\n\t}\n\telse\n\t\tcen[s]=s;\n\t//cout<<\"s=\"<<s<<\" maxp=\"<<maxp[s]<<\" size=\"<<size[s]<<\" cen=\"<<cen[s]<<endl;\n}\nvoid work()\n{\n\tdfs(1);\n\tfor(int i=1,x=0;i<=q;++i)\n\t{\n\t\tscanf(\"%d\",&x);\n\t\tprintf(\"%d\\n\",cen[x]);\n\t}\n}\nint main()\n{\t\n\tinit();\n\twork();\n\treturn 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "data structures",
+        "dfs and similar",
+        "dp",
+        "trees"
+    ],
+    "dificulty": "1900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Kay and Snowflake.json",
+    "editorial_link": "https://codeforces.com//blog/entry/45558",
+    "editorial": "Look at the all candidates for the centroid of the vertices v subtree. The size of centroid subtree must be at least  of the vertex v subtree size. (If it isn't, then after cutting the upper part will have too big size)\n\nChoose the vertex with the smallest subtree size satisfying the constraint above. Let's prove, that this vertex is centroid indeed. If it isn't, then after cutting some part will have subtree size greater than  of subtree size of query vertex. It isn't upper part (because of constraint above), it is one of our sons. Ouch, it's subtree less than of selected vertex, and it's still greater than  of subtree size of query vertex. Contradiction.\n\nSo we find a centroid.\nWe write the euler tour of tree and we will use a 2D segment tree in order to search for a vertex quickly."
+}

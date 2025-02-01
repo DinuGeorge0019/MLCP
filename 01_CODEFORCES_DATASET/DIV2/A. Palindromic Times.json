@@ -1,1 +1,105 @@
-{"link": "https://codeforces.com//contest/108/problem/A", "problemId": "567", "problem_idx": "A", "shortId": "108A", "contest_number": "108", "problem_submissions": {"D": [631152, 630566, 631699, 633125, 632252, 630736, 631399, 630814, 631533, 630518, 631851, 632455, 631854, 632380, 632591, 632622], "C": [629180, 629868, 629472, 629971, 635740, 630685, 688399, 631427, 630137, 631303, 628693, 629432, 630403, 630647, 631107, 630964, 630765, 630940], "B": [628051, 628449, 68305499, 628675, 632122, 628702, 627917, 628889, 628448, 630178, 632188, 628860, 628600, 628771, 628618, 629621, 629072], "A": [627480, 627844, 627421, 627636, 631848, 627468, 627396, 627555, 627512, 629270, 627646, 627419, 627496, 627622, 632729, 627875, 627538], "E": [631664, 641028]}, "name": "A. Palindromic Times", "statement": "This is a well-known formula among Tattah\u2019s colleagues.On a Wednesday\r\nafternoon, Tattah was attending Professor HH\u2019s lecture. At , right\r\nbefore falling asleep, he was staring at the digital watch around\r\nSaher\u2019s wrist. He noticed that the digits on the clock were the same\r\nwhen read from both directions i.e. a palindrome.In his sleep, he\r\nstarted dreaming about such rare moments of the day when the time\r\ndisplayed on a digital clock is a palindrome. As soon as he woke up, he\r\nfelt destined to write a program that finds the next such\r\nmoment.However, he still hasn\u2019t mastered the skill of programming while\r\nsleeping, so your task is to help him.\r\n", "solutions": ["#include <iostream>\n#include <fstream>\n#include <vector>\n#include <algorithm>\n#include <string.h>\n#include <assert.h>\n#include <string>\n\nusing namespace std;\n\nint toInt(string s){\n    int h=(s[0]-'0')*10+(s[1]-'0');\n    int m=(s[3]-'0')*10+(s[4]-'0');\n    return h*60+m;\n}\n\nint ispal(int a){\n    int h=a/60, m=a%60;\n    return (m==(h%10)*10+(h/10));\n}\n\nstring tostring(int a){\n    string s=\"..:..\";\n    int h=a/60, m=a%60;\n    s[0]=(h/10)+'0';\n    s[1]=(h%10)+'0';\n    s[3]=(m/10)+'0';\n    s[4]=(m%10)+'0';\n    return s;\n}\n\nint main(){\n    string s;\n    cin >> s;\n    int a=toInt(s);\n    for(int i=1; i<24*60; i++){\n\tint cur=(a+i)%(24*60);\n\tif(ispal(cur)){\n\t    cout << tostring(cur) << endl;\n\t    break;\n\t}\n    }\n}\n"], "input": "", "output": "", "tags": ["implementation", "strings"], "dificulty": "1000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/108/problem/A",
+    "problemId": "567",
+    "problem_idx": "A",
+    "shortId": "108A",
+    "contest_number": "108",
+    "problem_submissions": {
+        "D": [
+            631152,
+            630566,
+            631699,
+            633125,
+            632252,
+            630736,
+            631399,
+            630814,
+            631533,
+            630518,
+            631851,
+            632455,
+            631854,
+            632380,
+            632591,
+            632622
+        ],
+        "C": [
+            629180,
+            629868,
+            629472,
+            629971,
+            635740,
+            630685,
+            688399,
+            631427,
+            630137,
+            631303,
+            628693,
+            629432,
+            630403,
+            630647,
+            631107,
+            630964,
+            630765,
+            630940
+        ],
+        "B": [
+            628051,
+            628449,
+            68305499,
+            628675,
+            632122,
+            628702,
+            627917,
+            628889,
+            628448,
+            630178,
+            632188,
+            628860,
+            628600,
+            628771,
+            628618,
+            629621,
+            629072
+        ],
+        "A": [
+            627480,
+            627844,
+            627421,
+            627636,
+            631848,
+            627468,
+            627396,
+            627555,
+            627512,
+            629270,
+            627646,
+            627419,
+            627496,
+            627622,
+            632729,
+            627875,
+            627538
+        ],
+        "E": [
+            631664,
+            641028
+        ]
+    },
+    "name": "A. Palindromic Times",
+    "statement": "This is a well-known formula among Tattah\u2019s colleagues.On a Wednesday\r\nafternoon, Tattah was attending Professor HH\u2019s lecture. At , right\r\nbefore falling asleep, he was staring at the digital watch around\r\nSaher\u2019s wrist. He noticed that the digits on the clock were the same\r\nwhen read from both directions i.e. a palindrome.In his sleep, he\r\nstarted dreaming about such rare moments of the day when the time\r\ndisplayed on a digital clock is a palindrome. As soon as he woke up, he\r\nfelt destined to write a program that finds the next such\r\nmoment.However, he still hasn\u2019t mastered the skill of programming while\r\nsleeping, so your task is to help him.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <fstream>\n#include <vector>\n#include <algorithm>\n#include <string.h>\n#include <assert.h>\n#include <string>\n\nusing namespace std;\n\nint toInt(string s){\n    int h=(s[0]-'0')*10+(s[1]-'0');\n    int m=(s[3]-'0')*10+(s[4]-'0');\n    return h*60+m;\n}\n\nint ispal(int a){\n    int h=a/60, m=a%60;\n    return (m==(h%10)*10+(h/10));\n}\n\nstring tostring(int a){\n    string s=\"..:..\";\n    int h=a/60, m=a%60;\n    s[0]=(h/10)+'0';\n    s[1]=(h%10)+'0';\n    s[3]=(m/10)+'0';\n    s[4]=(m%10)+'0';\n    return s;\n}\n\nint main(){\n    string s;\n    cin >> s;\n    int a=toInt(s);\n    for(int i=1; i<24*60; i++){\n\tint cur=(a+i)%(24*60);\n\tif(ispal(cur)){\n\t    cout << tostring(cur) << endl;\n\t    break;\n\t}\n    }\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation",
+        "strings"
+    ],
+    "dificulty": "1000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Palindromic Times.json",
+    "editorial_link": "https://codeforces.com//blog/entry/2514",
+    "editorial": "In this problem it was required to find next palindrome on a digital clock. Since the lowest unit of time used 1 minute, and there are only 24?*?60 minutes in a day, one could simply go through each minute starting from the time given in the input plus 1 minute, until finding a palindrome. If no palindrome is found till the end of the day 23:?59, the output should then be 00:?00."
+}

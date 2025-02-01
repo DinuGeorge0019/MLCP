@@ -1,1 +1,92 @@
-{"link": "https://codeforces.com//contest/443/problem/E", "problemId": "10510", "problem_idx": "E", "shortId": "443E", "contest_number": "443", "problem_submissions": {"D": [6920325, 6916566, 6917590, 6918097, 6920177, 6917285, 6920976, 6921353, 6922229, 6919679, 6920725, 6916330, 6920984, 6916768, 6918289], "C": [6916700, 6920227, 6920927, 6921420, 6918956, 6921762, 6918294, 6918027, 6919227, 6921621, 6920532, 6921893], "B": [6914810, 6917396, 6914725, 6915203, 6915357, 6915551, 6915724, 6915492, 6915913, 6916470, 6917359, 6917333, 6915305, 6915776, 6915944, 6915992], "A": [6913586, 6913341, 6913477, 6914120, 6913376, 6913571, 6913622, 6914280, 6913834, 6913392, 6914327, 6913573, 6919949, 6913342], "E": [6948171]}, "name": "E. Artem and Array ", "statement": "Artem has an array of positive integers. Artem decided to play with it.\r\nThe game consists of moves. Each move goes like this. Artem chooses some\r\nelement of the array and removes it. For that, he gets points, where and\r\nare numbers that were adjacent with the removed number. If the number\r\ndoesn\u2019t have an adjacent number to the left or right, Artem doesn\u2019t get\r\nany points. After the element is removed, the two parts of the array\r\nglue together resulting in the new array that Artem continues playing\r\nwith. Borya wondered what maximum total number of points Artem can get\r\nas he plays this game.\r\n", "solutions": ["#include <cstdio>\n#include <cstring>\n#include <algorithm>\nusing namespace std;\ntypedef long long ll;\ntypedef pair<int, int> pii;\nconst int INF = 1000000007;\nconst int N = 500010;\nint a[N], l[N], r[N];\npii p[N];\n\nint main() {\n    int n;\n    ll ans = 0;\n    scanf(\"%d\", &n);\n    for(int i = 1; i <= n; i ++) {\n        scanf(\"%d\", &a[i]);\n        p[i].first = a[i];\n        p[i].second = i;\n        l[i] = i-1;\n        r[i] = i+1;\n    }\n    sort(p + 1, p + n + 1);\n    int pl = 1, pr = n;\n    for(int i = 1; i <= n-2; i ++) {\n        int pos = p[i].second;\n        if (pos == pl) {\n            ans += a[pos];\n            pl = r[pl];\n        } else if (pos == pr) {\n            ans += a[pos];\n            pr = l[pr];\n        } else {\n            ans += (long long)min(a[l[pos]], a[r[pos]]);\n            l[r[pos]] = l[pos], r[l[pos]] = r[pos];\n        }\n    }\n    printf(\"%I64d\\n\", ans);\n    return 0;\n}"], "input": "", "output": "", "tags": ["greedy"], "dificulty": "2500", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/443/problem/E",
+    "problemId": "10510",
+    "problem_idx": "E",
+    "shortId": "443E",
+    "contest_number": "443",
+    "problem_submissions": {
+        "D": [
+            6920325,
+            6916566,
+            6917590,
+            6918097,
+            6920177,
+            6917285,
+            6920976,
+            6921353,
+            6922229,
+            6919679,
+            6920725,
+            6916330,
+            6920984,
+            6916768,
+            6918289
+        ],
+        "C": [
+            6916700,
+            6920227,
+            6920927,
+            6921420,
+            6918956,
+            6921762,
+            6918294,
+            6918027,
+            6919227,
+            6921621,
+            6920532,
+            6921893
+        ],
+        "B": [
+            6914810,
+            6917396,
+            6914725,
+            6915203,
+            6915357,
+            6915551,
+            6915724,
+            6915492,
+            6915913,
+            6916470,
+            6917359,
+            6917333,
+            6915305,
+            6915776,
+            6915944,
+            6915992
+        ],
+        "A": [
+            6913586,
+            6913341,
+            6913477,
+            6914120,
+            6913376,
+            6913571,
+            6913622,
+            6914280,
+            6913834,
+            6913392,
+            6914327,
+            6913573,
+            6919949,
+            6913342
+        ],
+        "E": [
+            6948171
+        ]
+    },
+    "name": "E. Artem and Array ",
+    "statement": "Artem has an array of positive integers. Artem decided to play with it.\r\nThe game consists of moves. Each move goes like this. Artem chooses some\r\nelement of the array and removes it. For that, he gets points, where and\r\nare numbers that were adjacent with the removed number. If the number\r\ndoesn\u2019t have an adjacent number to the left or right, Artem doesn\u2019t get\r\nany points. After the element is removed, the two parts of the array\r\nglue together resulting in the new array that Artem continues playing\r\nwith. Borya wondered what maximum total number of points Artem can get\r\nas he plays this game.\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <cstring>\n#include <algorithm>\nusing namespace std;\ntypedef long long ll;\ntypedef pair<int, int> pii;\nconst int INF = 1000000007;\nconst int N = 500010;\nint a[N], l[N], r[N];\npii p[N];\n\nint main() {\n    int n;\n    ll ans = 0;\n    scanf(\"%d\", &n);\n    for(int i = 1; i <= n; i ++) {\n        scanf(\"%d\", &a[i]);\n        p[i].first = a[i];\n        p[i].second = i;\n        l[i] = i-1;\n        r[i] = i+1;\n    }\n    sort(p + 1, p + n + 1);\n    int pl = 1, pr = n;\n    for(int i = 1; i <= n-2; i ++) {\n        int pos = p[i].second;\n        if (pos == pl) {\n            ans += a[pos];\n            pl = r[pl];\n        } else if (pos == pr) {\n            ans += a[pos];\n            pr = l[pr];\n        } else {\n            ans += (long long)min(a[l[pos]], a[r[pos]]);\n            l[r[pos]] = l[pos], r[l[pos]] = r[pos];\n        }\n    }\n    printf(\"%I64d\\n\", ans);\n    return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "greedy"
+    ],
+    "dificulty": "2500",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Artem and Array .json",
+    "editorial_link": "https://codeforces.com//blog/entry/12739",
+    "editorial": "It's obvious that we should never delete the first and last elements of array. Let's look at the minimum number. Let it be x and there are n elements in the array. We can subtract x from all elements and the answer for the problem will decrease on (n?-?2)\u00b7x, becouse we will do n?-?2 delitions of middle elements and each of this delitions will not give Artem exectly x more points.\n\nIf minimal element was the first or the last one, we can not to count it now (it equals to 0 now, so it will not affect the answer now). If it locates in the middle of array, we can prove that there is exist an optimal solution when Artem deletes this element on first move. We can prove it by contradaction. Let's look at the optimal answer where the minimal element is deleted on the minimal possible move (but not on first one). We can prove that we can delete it earlier. If move which is exactly before deleting minimum uses element of array which isn't a neighbour of minimual one we can swap this two delitions and it will not affect the answer. If those elements are neighbours we can write down the number of points which we obtain in both cases and understand that to delete minimum first is the best choice.\n\nSo, in this task we need to maintain a set of all not deleted elements and to find a smallest alive element. All of it we can do with built-in data structures in time O(nlogn)."
+}

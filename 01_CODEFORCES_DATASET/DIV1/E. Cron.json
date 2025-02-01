@@ -1,1 +1,98 @@
-{"link": "https://codeforces.com//contest/698/problem/E", "problemId": "65780", "problem_idx": "E", "shortId": "698E", "contest_number": "698", "problem_submissions": {"A": [19255240, 19238333, 19233487, 19233309, 19234715, 19232234, 19232460, 19232250, 19232256, 19233295, 19249652, 19232146, 19232208, 19232154, 19232533], "B": [19254561, 19237012, 19237862, 19236769, 19233173, 19239263, 19235681, 19237484, 19241788, 19236331, 19248894, 19236580, 19234441, 19235605, 19239046], "D": [19253572, 19249527, 19248444, 19246796, 19251047, 19251739], "C": [19248258, 19234132, 19243267, 19241700, 19248574, 19235387, 19239629, 19241130, 19239485, 19252239, 19235095, 19245084, 19242311, 19243465, 19252785], "F": [19242723, 19251904, 19301612, 19253678, 19251067, 19249915, 19278249, 19257429, 19255248], "E": [19254153, 19262072, 19250384, 19249636]}, "name": "E. Cron", "statement": "Sometime the classic solution are not powerful enough and we have to\r\ndesign our own. For the purpose of this problem you have to implement\r\nthe part of the system of task scheduling.Each task should be executed\r\nat some particular moments of time. In our system you may set the exact\r\nvalue for the second, minute, hour, day of the week, day and month, when\r\nthe task should be executed. Moreover, one can set a special value that\r\nmeans any value of this parameter is valid.For example, if the parameter\r\nstring is , the problem will be executed every day at 23:59:00,\r\n23:59:01, 23:59:02, ..., 23:59:59 ( times in total).Seconds, minutes and\r\nhours are numbered starting from zero, while day, months and days of the\r\nweek are numbered starting from one. The first day of the week is\r\nMonday.There is one special case that is treated separately. If both day\r\nof the week and day are given (i.e. differ from ) to execute the task\r\nonly one of these two (at least one, if both match this is fine too)\r\nparameters should match the current time (of course, all other\r\nparameters should match too). For example, the string of parameters\r\nmeans that the task will be executed both on Saturday, July 2nd, 2016\r\nand on Sunday, July 3rd, 2016 at noon.One should not forget about the\r\nexistence of the leap years. The year is leap if it\u2019s number is\r\ndivisible by , or is not divisible by , but is divisible by . Each leap\r\nyear has 366 days instead of usual 365, by extending February to 29 days\r\nrather than the common 28.The current time is represented as the number\r\nof seconds passed after 00:00:00 January 1st, 1970 (Thursday).You are\r\ngiven the string of six parameters, describing the moments of time the\r\ntask should be executed. You are also given a number of moments of time.\r\nFor each of them you have to find the first moment of time strictly\r\ngreater than the current when the task will be executed.\r\n", "solutions": ["#include <bits/stdc++.h>\nusing namespace std;\n\n#define rep(i, a, b) for(int i = (a); i < int(b); ++i)\n#define rrep(i, a, b) for(int i = (a) - 1; i >= int(b); --i)\n#define trav(it, v) for(typeof((v).begin()) it = (v).begin(); it != (v).end(); ++it)\n#define all(v) (v).begin(), (v).end()\n#define what_is(x) cerr << #x << \" is \" << x << endl;\n\ntypedef double fl;\ntypedef long long ll;\ntypedef pair<int, int> pii;\ntypedef vector<int> vi;\ntypedef vector<pii> vpi;\n\nint numLeapYears(int to){\n\tint ret = (to-1)/4-(to-1)/100+(to-1)/400;\n\treturn ret;\n}\n\nint numLeapYears(int from, int to){\n\treturn numLeapYears(to)-numLeapYears(from);\n}\n\nll year2Time(ll year){\n\treturn (year*365+numLeapYears(year))*86400;\n}\n\nll month2Time(int month, int year){\n\tint ret=0;\n\tif(month > 1)ret += 31;\n\tif(month > 2){\n\t\tif(numLeapYears(year+1)-numLeapYears(year) == 1)\n\t\t\tret += 29;\n\t\telse\n\t\t\tret += 28;\n\t}\n\tif(month > 3)ret += 31;\n\tif(month > 4)ret += 30;\n\tif(month > 5)ret += 31;\n\tif(month > 6)ret += 30;\n\tif(month > 7)ret += 31;\n\tif(month > 8)ret += 31;\n\tif(month > 9)ret += 30;\n\tif(month > 10)ret += 31;\n\tif(month > 11)ret += 30;\n\tif(month > 12)ret += 31;\n\treturn ret*86400;\n}\n\nstruct Date{\n\tint s, m, h, D, M, Y;\n\n\tDate(){\n\t\ts=0;\n\t\tm=0;\n\t\th=0;\n\t\tD=1;\n\t\tM=1;\n\t\tY=1970;\n\t}\n\n\tll toTime(){\n\t\tll ret=year2Time(Y);\n\t\tret += month2Time(M, Y);\n\t\tret += (D-1)*86400;\n\t\tret += h*3600;\n\t\tret += m*60;\n\t\tret += s;\n\t\treturn ret;\n\t}\n\n\tint getWeekday(){\n\t\tll t=toTime();\n\t\tll days=t/86400;\n\t\treturn ((days+6)%7)+1;\n\t}\n\n\tvoid removeD(){\n\t}\n\t\n\tvoid removeHour(){\n\t\t--h;\n\t\tif(h < 0){\n\t\t\th += 60;\n\t\t\tremoveD();\n\t\t}\n\t}\n\t\n\tvoid removeMinute(){\n\t\t--m;\n\t\tif(m < 0){\n\t\t\tm += 60;\n\t\t\tremoveHour();\n\t\t}\n\t}\n\n\tvoid removeSecond(){\n\t\t--s;\n\t\tif(s < 0){\n\t\t\ts += 60;\n\t\t\tremoveMinute();\n\t\t}\n\t}\n};\n\nint s, m, h, day, date, month;\n\nbool matches(Date d){\n\tif(s != -1 && s != d.s)\n\t\treturn 0;\n\tif(m != -1 && m != d.m)\n\t\treturn 0;\n\tif(h != -1 && h != d.h)\n\t\treturn 0;\n\tif(month != -1 && month != d.M)\n\t\treturn 0;\n\tbool dayMatches=(date == d.D);\n\tbool dateMatches=(day == d.getWeekday());\n\tif(dayMatches || dateMatches || (day == -1 && date == -1))\n\t\treturn 1;\n\treturn 0;\n}\n\nll solve(ll t){\n\tDate cur;\n\tt += cur.toTime();\n\tcur.Y=t/(366*86400);\n\twhile(cur.toTime()+86400*367 < t)\n\t\t++cur.Y;\n\tif(s == -1)\n\t\tcur.s=59;\n\telse\n\t\tcur.s=s;\n\tif(m == -1)\n\t\tcur.m=59;\n\telse\n\t\tcur.m=m;\n\tif(h == -1)\n\t\tcur.h=23;\n\telse\n\t\tcur.h=h;\n\twhile(true){\n\t\tll curT=cur.toTime();\n\t\tif(curT > t && matches(cur)){\n\t\t\tcur.s=0;\n\t\t\tcur.m=0;\n\t\t\tcur.h=0;\n\t\t\twhile(cur.toTime()+4000 < t)\n\t\t\t\t++cur.h;\n\t\t\twhile(true){\n\t\t\t\tcurT=cur.toTime();\n\t\t\t\tif(curT > t && matches(cur)){\n\t\t\t\t\treturn curT;\n\t\t\t\t}\n\t\t\t\t++cur.s;\n\t\t\t\tif(cur.s == 60){\n\t\t\t\t\tcur.s=0;\n\t\t\t\t\t++cur.m;\n\t\t\t\t}\n\t\t\t\tif(cur.m == 60){\n\t\t\t\t\tcur.m=0;\n\t\t\t\t\t++cur.h;\n\t\t\t\t}\n\t\t\t}\n\t\t\tassert(0);\n\t\t}\n\t\tcur.D++;\n\t\tDate nextMonth=cur;\n\t\tnextMonth.M++;\n\t\tnextMonth.D=1;\n\t\tif(nextMonth.toTime() == curT+86400){\n\t\t\tcur=nextMonth;\n\t\t\tif(nextMonth.M == 13){\n\t\t\t\tcur.M=1;\n\t\t\t\t++cur.Y;\n\t\t\t}\n\t\t}\n\t}\n}\n\nint main(){\n\tDate d;\n\t/*d.D=19;\n\td.M=7;\n\td.Y=2016;*/\n\tint tmp=d.getWeekday();\n\tll start=d.toTime();\n\tscanf(\"%d%d%d%d%d%d\", &s, &m, &h, &day, &date, &month);\n\tint n;\n\tscanf(\"%d\", &n);\n\twhile(n--){\n\t\tll t;\n\t\tscanf(\"%I64d\", &t);\n\t\tprintf(\"%I64d\\n\", (solve(t)-start));\n\t}\n}\n"], "input": "", "output": "", "tags": [], "dificulty": "2800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/698/problem/E",
+    "problemId": "65780",
+    "problem_idx": "E",
+    "shortId": "698E",
+    "contest_number": "698",
+    "problem_submissions": {
+        "A": [
+            19255240,
+            19238333,
+            19233487,
+            19233309,
+            19234715,
+            19232234,
+            19232460,
+            19232250,
+            19232256,
+            19233295,
+            19249652,
+            19232146,
+            19232208,
+            19232154,
+            19232533
+        ],
+        "B": [
+            19254561,
+            19237012,
+            19237862,
+            19236769,
+            19233173,
+            19239263,
+            19235681,
+            19237484,
+            19241788,
+            19236331,
+            19248894,
+            19236580,
+            19234441,
+            19235605,
+            19239046
+        ],
+        "D": [
+            19253572,
+            19249527,
+            19248444,
+            19246796,
+            19251047,
+            19251739
+        ],
+        "C": [
+            19248258,
+            19234132,
+            19243267,
+            19241700,
+            19248574,
+            19235387,
+            19239629,
+            19241130,
+            19239485,
+            19252239,
+            19235095,
+            19245084,
+            19242311,
+            19243465,
+            19252785
+        ],
+        "F": [
+            19242723,
+            19251904,
+            19301612,
+            19253678,
+            19251067,
+            19249915,
+            19278249,
+            19257429,
+            19255248
+        ],
+        "E": [
+            19254153,
+            19262072,
+            19250384,
+            19249636
+        ]
+    },
+    "name": "E. Cron",
+    "statement": "Sometime the classic solution are not powerful enough and we have to\r\ndesign our own. For the purpose of this problem you have to implement\r\nthe part of the system of task scheduling.Each task should be executed\r\nat some particular moments of time. In our system you may set the exact\r\nvalue for the second, minute, hour, day of the week, day and month, when\r\nthe task should be executed. Moreover, one can set a special value that\r\nmeans any value of this parameter is valid.For example, if the parameter\r\nstring is , the problem will be executed every day at 23:59:00,\r\n23:59:01, 23:59:02, ..., 23:59:59 ( times in total).Seconds, minutes and\r\nhours are numbered starting from zero, while day, months and days of the\r\nweek are numbered starting from one. The first day of the week is\r\nMonday.There is one special case that is treated separately. If both day\r\nof the week and day are given (i.e. differ from ) to execute the task\r\nonly one of these two (at least one, if both match this is fine too)\r\nparameters should match the current time (of course, all other\r\nparameters should match too). For example, the string of parameters\r\nmeans that the task will be executed both on Saturday, July 2nd, 2016\r\nand on Sunday, July 3rd, 2016 at noon.One should not forget about the\r\nexistence of the leap years. The year is leap if it’s number is\r\ndivisible by , or is not divisible by , but is divisible by . Each leap\r\nyear has 366 days instead of usual 365, by extending February to 29 days\r\nrather than the common 28.The current time is represented as the number\r\nof seconds passed after 00:00:00 January 1st, 1970 (Thursday).You are\r\ngiven the string of six parameters, describing the moments of time the\r\ntask should be executed. You are also given a number of moments of time.\r\nFor each of them you have to find the first moment of time strictly\r\ngreater than the current when the task will be executed.\r\n",
+    "solutions": [
+        "#include <bits/stdc++.h>\nusing namespace std;\n\n#define rep(i, a, b) for(int i = (a); i < int(b); ++i)\n#define rrep(i, a, b) for(int i = (a) - 1; i >= int(b); --i)\n#define trav(it, v) for(typeof((v).begin()) it = (v).begin(); it != (v).end(); ++it)\n#define all(v) (v).begin(), (v).end()\n#define what_is(x) cerr << #x << \" is \" << x << endl;\n\ntypedef double fl;\ntypedef long long ll;\ntypedef pair<int, int> pii;\ntypedef vector<int> vi;\ntypedef vector<pii> vpi;\n\nint numLeapYears(int to){\n\tint ret = (to-1)/4-(to-1)/100+(to-1)/400;\n\treturn ret;\n}\n\nint numLeapYears(int from, int to){\n\treturn numLeapYears(to)-numLeapYears(from);\n}\n\nll year2Time(ll year){\n\treturn (year*365+numLeapYears(year))*86400;\n}\n\nll month2Time(int month, int year){\n\tint ret=0;\n\tif(month > 1)ret += 31;\n\tif(month > 2){\n\t\tif(numLeapYears(year+1)-numLeapYears(year) == 1)\n\t\t\tret += 29;\n\t\telse\n\t\t\tret += 28;\n\t}\n\tif(month > 3)ret += 31;\n\tif(month > 4)ret += 30;\n\tif(month > 5)ret += 31;\n\tif(month > 6)ret += 30;\n\tif(month > 7)ret += 31;\n\tif(month > 8)ret += 31;\n\tif(month > 9)ret += 30;\n\tif(month > 10)ret += 31;\n\tif(month > 11)ret += 30;\n\tif(month > 12)ret += 31;\n\treturn ret*86400;\n}\n\nstruct Date{\n\tint s, m, h, D, M, Y;\n\n\tDate(){\n\t\ts=0;\n\t\tm=0;\n\t\th=0;\n\t\tD=1;\n\t\tM=1;\n\t\tY=1970;\n\t}\n\n\tll toTime(){\n\t\tll ret=year2Time(Y);\n\t\tret += month2Time(M, Y);\n\t\tret += (D-1)*86400;\n\t\tret += h*3600;\n\t\tret += m*60;\n\t\tret += s;\n\t\treturn ret;\n\t}\n\n\tint getWeekday(){\n\t\tll t=toTime();\n\t\tll days=t/86400;\n\t\treturn ((days+6)%7)+1;\n\t}\n\n\tvoid removeD(){\n\t}\n\t\n\tvoid removeHour(){\n\t\t--h;\n\t\tif(h < 0){\n\t\t\th += 60;\n\t\t\tremoveD();\n\t\t}\n\t}\n\t\n\tvoid removeMinute(){\n\t\t--m;\n\t\tif(m < 0){\n\t\t\tm += 60;\n\t\t\tremoveHour();\n\t\t}\n\t}\n\n\tvoid removeSecond(){\n\t\t--s;\n\t\tif(s < 0){\n\t\t\ts += 60;\n\t\t\tremoveMinute();\n\t\t}\n\t}\n};\n\nint s, m, h, day, date, month;\n\nbool matches(Date d){\n\tif(s != -1 && s != d.s)\n\t\treturn 0;\n\tif(m != -1 && m != d.m)\n\t\treturn 0;\n\tif(h != -1 && h != d.h)\n\t\treturn 0;\n\tif(month != -1 && month != d.M)\n\t\treturn 0;\n\tbool dayMatches=(date == d.D);\n\tbool dateMatches=(day == d.getWeekday());\n\tif(dayMatches || dateMatches || (day == -1 && date == -1))\n\t\treturn 1;\n\treturn 0;\n}\n\nll solve(ll t){\n\tDate cur;\n\tt += cur.toTime();\n\tcur.Y=t/(366*86400);\n\twhile(cur.toTime()+86400*367 < t)\n\t\t++cur.Y;\n\tif(s == -1)\n\t\tcur.s=59;\n\telse\n\t\tcur.s=s;\n\tif(m == -1)\n\t\tcur.m=59;\n\telse\n\t\tcur.m=m;\n\tif(h == -1)\n\t\tcur.h=23;\n\telse\n\t\tcur.h=h;\n\twhile(true){\n\t\tll curT=cur.toTime();\n\t\tif(curT > t && matches(cur)){\n\t\t\tcur.s=0;\n\t\t\tcur.m=0;\n\t\t\tcur.h=0;\n\t\t\twhile(cur.toTime()+4000 < t)\n\t\t\t\t++cur.h;\n\t\t\twhile(true){\n\t\t\t\tcurT=cur.toTime();\n\t\t\t\tif(curT > t && matches(cur)){\n\t\t\t\t\treturn curT;\n\t\t\t\t}\n\t\t\t\t++cur.s;\n\t\t\t\tif(cur.s == 60){\n\t\t\t\t\tcur.s=0;\n\t\t\t\t\t++cur.m;\n\t\t\t\t}\n\t\t\t\tif(cur.m == 60){\n\t\t\t\t\tcur.m=0;\n\t\t\t\t\t++cur.h;\n\t\t\t\t}\n\t\t\t}\n\t\t\tassert(0);\n\t\t}\n\t\tcur.D++;\n\t\tDate nextMonth=cur;\n\t\tnextMonth.M++;\n\t\tnextMonth.D=1;\n\t\tif(nextMonth.toTime() == curT+86400){\n\t\t\tcur=nextMonth;\n\t\t\tif(nextMonth.M == 13){\n\t\t\t\tcur.M=1;\n\t\t\t\t++cur.Y;\n\t\t\t}\n\t\t}\n\t}\n}\n\nint main(){\n\tDate d;\n\t/*d.D=19;\n\td.M=7;\n\td.Y=2016;*/\n\tint tmp=d.getWeekday();\n\tll start=d.toTime();\n\tscanf(\"%d%d%d%d%d%d\", &s, &m, &h, &day, &date, &month);\n\tint n;\n\tscanf(\"%d\", &n);\n\twhile(n--){\n\t\tll t;\n\t\tscanf(\"%I64d\", &t);\n\t\tprintf(\"%I64d\\n\", (solve(t)-start));\n\t}\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [],
+    "dificulty": "2800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\E. Cron.json",
+    "editorial_link": "https://codeforces.com//blog/entry/46148",
+    "editorial": "Tutorial is not available\r\n"
+}

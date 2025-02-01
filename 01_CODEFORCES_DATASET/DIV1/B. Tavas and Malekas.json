@@ -1,1 +1,101 @@
-{"link": "https://codeforces.com//contest/536/problem/B", "problemId": "26043", "problem_idx": "B", "shortId": "536B", "contest_number": "536", "problem_submissions": {"A": [10719921, 10706737, 10707689, 10711529, 10709676, 10707375, 10709573, 10707885, 10708720, 10706564, 10708318, 10709355, 10713459, 10725217, 10725216, 10725186, 10708292, 10706905, 10741377, 10713738], "B": [10718101, 10710644, 10709758, 10712675, 10707296, 10709351, 10713281, 10710208, 10710709, 10710095, 10711429, 10711411, 10707838, 10710289, 10713790, 10709325, 10709558], "E": [10716637, 10733077, 10733033, 10731562, 10741189], "C": [10709726, 10713480, 10715583, 10715941, 10717945, 10721487, 10717235, 10716651, 10717759, 10716150, 10716761, 10720841, 10718866], "D": [10717797, 10717420, 10719832, 10715603, 10716972, 10718818, 10719396, 10719946, 10724775, 10717671]}, "name": "B. Tavas and Malekas", "statement": "Today Tavas fell asleep in Malekas\u2019 place. While he was sleeping,\r\nMalekas did a little process on . Malekas has a favorite string . He\r\ndetermined all positions where matches . More formally, for each () he\r\ncondition is fullfilled.Then Malekas wrote down one of subsequences of\r\n(possibly, he didn\u2019t write anything) on a piece of paper. Here a\r\nsequence is a subsequence of sequence if and only if we can turn into by\r\nremoving some of its elements (maybe no one of them or all).After Tavas\r\nwoke up, Malekas told him everything. He couldn\u2019t remember string , but\r\nhe knew that both and only contains lowercase English letters and also\r\nhe had the subsequence he had written on that piece of paper.Tavas\r\nwonders, what is the number of possible values of ? He asked SaDDas, but\r\nhe wasn\u2019t smart enough to solve this. So, Tavas asked you to calculate\r\nthis number for him.Answer can be very large, so Tavas wants you to\r\nprint the answer modulo .\r\n", "solutions": ["#include<cstdio>\n#include<algorithm>\n#include<cstring>\n#include<iostream>\n#include<cstdlib>\n#include<vector>\n#include<string>\n#include<queue>\n#include<map>\ntypedef long long ll;\n#define mo 1000000007\n\n\nchar s[1111111];\nint n,m;\nint mark[1111111];\nint det[1111111];\nint l;\nint p[1111111];\nint ok[1111111];\nvoid kmp(int n){\n    int i,j;\n    p[1]=0;\n    for (i=2,j=0;i<=n;i++){\n        while(j && s[j+1]!=s[i])j=p[j];\n        if(s[j+1]==s[i])j++;\n        p[i]=j;\n    }\n    int v=n;\n    while(v){\n        ok[v]=1;\n        v=p[v];\n    }\n}\nint main()\n{\n    scanf(\"%d%d\",&n,&m);\n    scanf(\"%s\",s+1);\n    l=strlen(s+1);\n    while(m--){\n        int x;scanf(\"%d\",&x);\n        mark[x+l-1]=1;\n    }\n    kmp(l);\n    int las=0;\n    for (int i=1;i<=n;i++)if(mark[i]){\n        if(i-l+1>las){\n            for (int j=i-l+1;j<=i;j++)det[j]=1;\n        }else{\n            int le=las-(i-l+1)+1;\n            if(!ok[le]){\n                printf(\"0\\n\");\n                return 0;\n            }else{\n                for (int j=las+1;j<=i;j++)det[j]=1;\n            }\n        }\n        las=i;\n    }\n    int su=1;\n    for (int i=1;i<=n;i++)if(!det[i])su=1ll*su*26%mo;\n    printf(\"%d\\n\",su);\n    return 0;\n}\n\n"], "input": "", "output": "", "tags": ["hashing", "string suffix structures", "strings"], "dificulty": "1900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/536/problem/B",
+    "problemId": "26043",
+    "problem_idx": "B",
+    "shortId": "536B",
+    "contest_number": "536",
+    "problem_submissions": {
+        "A": [
+            10719921,
+            10706737,
+            10707689,
+            10711529,
+            10709676,
+            10707375,
+            10709573,
+            10707885,
+            10708720,
+            10706564,
+            10708318,
+            10709355,
+            10713459,
+            10725217,
+            10725216,
+            10725186,
+            10708292,
+            10706905,
+            10741377,
+            10713738
+        ],
+        "B": [
+            10718101,
+            10710644,
+            10709758,
+            10712675,
+            10707296,
+            10709351,
+            10713281,
+            10710208,
+            10710709,
+            10710095,
+            10711429,
+            10711411,
+            10707838,
+            10710289,
+            10713790,
+            10709325,
+            10709558
+        ],
+        "E": [
+            10716637,
+            10733077,
+            10733033,
+            10731562,
+            10741189
+        ],
+        "C": [
+            10709726,
+            10713480,
+            10715583,
+            10715941,
+            10717945,
+            10721487,
+            10717235,
+            10716651,
+            10717759,
+            10716150,
+            10716761,
+            10720841,
+            10718866
+        ],
+        "D": [
+            10717797,
+            10717420,
+            10719832,
+            10715603,
+            10716972,
+            10718818,
+            10719396,
+            10719946,
+            10724775,
+            10717671
+        ]
+    },
+    "name": "B. Tavas and Malekas",
+    "statement": "Today Tavas fell asleep in Malekas\u2019 place. While he was sleeping,\r\nMalekas did a little process on . Malekas has a favorite string . He\r\ndetermined all positions where matches . More formally, for each () he\r\ncondition is fullfilled.Then Malekas wrote down one of subsequences of\r\n(possibly, he didn\u2019t write anything) on a piece of paper. Here a\r\nsequence is a subsequence of sequence if and only if we can turn into by\r\nremoving some of its elements (maybe no one of them or all).After Tavas\r\nwoke up, Malekas told him everything. He couldn\u2019t remember string , but\r\nhe knew that both and only contains lowercase English letters and also\r\nhe had the subsequence he had written on that piece of paper.Tavas\r\nwonders, what is the number of possible values of ? He asked SaDDas, but\r\nhe wasn\u2019t smart enough to solve this. So, Tavas asked you to calculate\r\nthis number for him.Answer can be very large, so Tavas wants you to\r\nprint the answer modulo .\r\n",
+    "solutions": [
+        "#include<cstdio>\n#include<algorithm>\n#include<cstring>\n#include<iostream>\n#include<cstdlib>\n#include<vector>\n#include<string>\n#include<queue>\n#include<map>\ntypedef long long ll;\n#define mo 1000000007\n\n\nchar s[1111111];\nint n,m;\nint mark[1111111];\nint det[1111111];\nint l;\nint p[1111111];\nint ok[1111111];\nvoid kmp(int n){\n    int i,j;\n    p[1]=0;\n    for (i=2,j=0;i<=n;i++){\n        while(j && s[j+1]!=s[i])j=p[j];\n        if(s[j+1]==s[i])j++;\n        p[i]=j;\n    }\n    int v=n;\n    while(v){\n        ok[v]=1;\n        v=p[v];\n    }\n}\nint main()\n{\n    scanf(\"%d%d\",&n,&m);\n    scanf(\"%s\",s+1);\n    l=strlen(s+1);\n    while(m--){\n        int x;scanf(\"%d\",&x);\n        mark[x+l-1]=1;\n    }\n    kmp(l);\n    int las=0;\n    for (int i=1;i<=n;i++)if(mark[i]){\n        if(i-l+1>las){\n            for (int j=i-l+1;j<=i;j++)det[j]=1;\n        }else{\n            int le=las-(i-l+1)+1;\n            if(!ok[le]){\n                printf(\"0\\n\");\n                return 0;\n            }else{\n                for (int j=las+1;j<=i;j++)det[j]=1;\n            }\n        }\n        las=i;\n    }\n    int su=1;\n    for (int i=1;i<=n;i++)if(!det[i])su=1ll*su*26%mo;\n    printf(\"%d\\n\",su);\n    return 0;\n}\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "hashing",
+        "string suffix structures",
+        "strings"
+    ],
+    "dificulty": "1900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Tavas and Malekas.json",
+    "editorial_link": "https://codeforces.com//blog/entry/17401",
+    "editorial": "First of all you need to find uncovered positions in (because rest of\r\nthem will determine uniquely). If there is no parados in covered\r\npositions (a position should have more than one value), then the answer\r\nwill be , otherwise it s . To check this, you just need to check that no\r\ntwo consecutive matches in have parados. So, for this purpose, you need\r\nto check if a prefix of is equal to one of its suffixes in . You can\r\neasily check this with prefix function (or Z function). Time complexity:\r\nCode by PrinceOfPersia Another Code by Haghani Java Code by Zlobober\r\n"
+}

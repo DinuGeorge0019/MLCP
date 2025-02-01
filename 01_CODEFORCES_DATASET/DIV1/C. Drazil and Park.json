@@ -1,1 +1,104 @@
-{"link": "https://codeforces.com//contest/516/problem/C", "problemId": "22479", "problem_idx": "C", "shortId": "516C", "contest_number": "516", "problem_submissions": {"D": [9897778, 9901317, 9902316, 9902257, 9902926, 9899362, 9901747, 9900577, 9901753, 9900598, 9902022, 9902250, 9908234, 9907894, 9901637, 10134694], "C": [9894077, 9894988, 9894528, 9894592, 9890787, 9892570, 9894045, 9897863, 9902115, 9893633, 9897304, 9906453, 9890308, 9915358, 9897994, 9896924, 9895656, 9894595, 9895218], "A": [9891009, 9888069, 9891404, 9888532, 9886301, 9886680, 9886736, 9887016, 9887312, 9885451, 9885346, 9886088, 9885688, 9885877, 9886467], "B": [9888215, 9890996, 9889129, 9891841, 9894454, 9896886, 9901312, 9890721, 9898664, 9916236, 9895068, 9891776, 9889048, 9930005, 9890589, 9889796, 9891061, 9898651], "E": [9897098, 9919136]}, "name": "C. Drazil and Park", "statement": "Drazil is a monkey. He lives in a circular park. There are trees around\r\nthe park. The distance between the -th tree and ()-st trees is , the\r\ndistance between the -th tree and the first tree is . The height of the\r\n-th tree is .Drazil starts each day with the . The morning run consists\r\nof the following steps: Drazil chooses two different trees He starts\r\nwith climbing up the first tree Then he climbs down the first tree, runs\r\naround the park (in one of two possible directions) to the second tree,\r\nand climbs on it Then he finally climbs down the second tree. But there\r\nare always children playing around some consecutive trees. Drazil can\u2019t\r\nstand children, so he can\u2019t choose the trees close to children. He even\r\ncan\u2019t stay close to those trees.If the two trees Drazil chooses are -th\r\nand -th, we can estimate the energy the takes to him as . Since there\r\nare children on exactly one of two arcs connecting and , the distance\r\nbetween trees and is uniquely defined.Now, you know that on the -th day\r\nchildren play between -th tree and -th tree. More formally, if ,\r\nchildren play around the trees with indices from range , otherwise they\r\nplay around the trees with indices from .Please help Drazil to determine\r\nwhich two trees he should choose in order to consume the most energy\r\n(since he wants to become fit and cool-looking monkey) and report the\r\nresulting amount of energy for each day.\r\n", "solutions": ["#include <iostream>\nusing namespace std;\nconst int MAX = 200005;\nlong long h[MAX], d[MAX], sum[MAX], n;\nstruct node\n{\n\tlong long mx1, mx2, mx3;\n} seg[4 * MAX];\nnode merge(node x, node y)\n{\n\tnode ans;\n\tans.mx1 = max(x.mx1, y.mx1);\n\tans.mx2 = max(x.mx2, y.mx2);\n\tans.mx3 = max(x.mx3, y.mx3);\n\tans.mx3 = max(ans.mx3, x.mx1 + y.mx2);\n\treturn ans;\n}\nvoid build(int v = 1, int s = 0, int e = n)\n{\n\tif (e - s < 2)\n\t{\n\t\tseg[v].mx1 = 2 * h[s] - sum[s];\n\t\tseg[v].mx2 = 2 * h[s] + sum[s];\n\t\tseg[v].mx3 = -1000000000000000LL;\n\t\treturn;\n\t}\n\tint mid = (s + e) / 2;\n\tbuild(2 * v, s, mid);\n\tbuild(2 * v + 1, mid, e);\n\tseg[v] = merge(seg[2 * v], seg[2 * v + 1]);\n}\nnode get(int l, int r, int v = 1, int s = 0, int e = n)\n{\n\tif (l <= s && e <= r)\n\t\treturn seg[v];\n\tif (e <= l || r <= s)\n\t{\n\t\tnode x;\n\t\tx.mx1 = x.mx2 = x.mx3 = -1000000000000000LL;\n\t\treturn x;\n\t}\n\tint mid = (s + e) / 2;\n\tnode x = get(l, r, 2 * v, s, mid);\n\tnode y = get(l, r, 2 * v + 1, mid, e);\n\treturn merge(x, y);\n}\nint main()\n{\n\tios::sync_with_stdio(false);\n\tint n, q;\n\tcin >> n >> q;\n\t::n = 2 * n;\n\tfor (int i = 0; i < n; i++)\n\t\tcin >> d[i];\n\tfor (int i = 0; i < n; i++)\n\t\tcin >> h[i];\n\tfor (int i = n; i < 2 * n; i++)\n\t{\n\t\th[i] = h[i - n];\n\t\td[i] = d[i - n];\n\t}\n\tfor (int i = 1; i <= 2 * n; i++)\n\t\tsum[i] = sum[i - 1] + d[i - 1];\n\tbuild();\n\twhile (q--)\n\t{\n\t\tint l, r;\n\t\tcin >> l >> r;\n\t\tif (r < l)\n\t\t\tr += n;\n\t\tl--;\n\t\tint len = n - (r - l);\n\t\tcout << get(r, r + len).mx3 << \"\\n\";\n\t}\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["data structures"], "dificulty": "2300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/516/problem/C",
+    "problemId": "22479",
+    "problem_idx": "C",
+    "shortId": "516C",
+    "contest_number": "516",
+    "problem_submissions": {
+        "D": [
+            9897778,
+            9901317,
+            9902316,
+            9902257,
+            9902926,
+            9899362,
+            9901747,
+            9900577,
+            9901753,
+            9900598,
+            9902022,
+            9902250,
+            9908234,
+            9907894,
+            9901637,
+            10134694
+        ],
+        "C": [
+            9894077,
+            9894988,
+            9894528,
+            9894592,
+            9890787,
+            9892570,
+            9894045,
+            9897863,
+            9902115,
+            9893633,
+            9897304,
+            9906453,
+            9890308,
+            9915358,
+            9897994,
+            9896924,
+            9895656,
+            9894595,
+            9895218
+        ],
+        "A": [
+            9891009,
+            9888069,
+            9891404,
+            9888532,
+            9886301,
+            9886680,
+            9886736,
+            9887016,
+            9887312,
+            9885451,
+            9885346,
+            9886088,
+            9885688,
+            9885877,
+            9886467
+        ],
+        "B": [
+            9888215,
+            9890996,
+            9889129,
+            9891841,
+            9894454,
+            9896886,
+            9901312,
+            9890721,
+            9898664,
+            9916236,
+            9895068,
+            9891776,
+            9889048,
+            9930005,
+            9890589,
+            9889796,
+            9891061,
+            9898651
+        ],
+        "E": [
+            9897098,
+            9919136
+        ]
+    },
+    "name": "C. Drazil and Park",
+    "statement": "Drazil is a monkey. He lives in a circular park. There are trees around\r\nthe park. The distance between the -th tree and ()-st trees is , the\r\ndistance between the -th tree and the first tree is . The height of the\r\n-th tree is .Drazil starts each day with the . The morning run consists\r\nof the following steps: Drazil chooses two different trees He starts\r\nwith climbing up the first tree Then he climbs down the first tree, runs\r\naround the park (in one of two possible directions) to the second tree,\r\nand climbs on it Then he finally climbs down the second tree. But there\r\nare always children playing around some consecutive trees. Drazil can\u2019t\r\nstand children, so he can\u2019t choose the trees close to children. He even\r\ncan\u2019t stay close to those trees.If the two trees Drazil chooses are -th\r\nand -th, we can estimate the energy the takes to him as . Since there\r\nare children on exactly one of two arcs connecting and , the distance\r\nbetween trees and is uniquely defined.Now, you know that on the -th day\r\nchildren play between -th tree and -th tree. More formally, if ,\r\nchildren play around the trees with indices from range , otherwise they\r\nplay around the trees with indices from .Please help Drazil to determine\r\nwhich two trees he should choose in order to consume the most energy\r\n(since he wants to become fit and cool-looking monkey) and report the\r\nresulting amount of energy for each day.\r\n",
+    "solutions": [
+        "#include <iostream>\nusing namespace std;\nconst int MAX = 200005;\nlong long h[MAX], d[MAX], sum[MAX], n;\nstruct node\n{\n\tlong long mx1, mx2, mx3;\n} seg[4 * MAX];\nnode merge(node x, node y)\n{\n\tnode ans;\n\tans.mx1 = max(x.mx1, y.mx1);\n\tans.mx2 = max(x.mx2, y.mx2);\n\tans.mx3 = max(x.mx3, y.mx3);\n\tans.mx3 = max(ans.mx3, x.mx1 + y.mx2);\n\treturn ans;\n}\nvoid build(int v = 1, int s = 0, int e = n)\n{\n\tif (e - s < 2)\n\t{\n\t\tseg[v].mx1 = 2 * h[s] - sum[s];\n\t\tseg[v].mx2 = 2 * h[s] + sum[s];\n\t\tseg[v].mx3 = -1000000000000000LL;\n\t\treturn;\n\t}\n\tint mid = (s + e) / 2;\n\tbuild(2 * v, s, mid);\n\tbuild(2 * v + 1, mid, e);\n\tseg[v] = merge(seg[2 * v], seg[2 * v + 1]);\n}\nnode get(int l, int r, int v = 1, int s = 0, int e = n)\n{\n\tif (l <= s && e <= r)\n\t\treturn seg[v];\n\tif (e <= l || r <= s)\n\t{\n\t\tnode x;\n\t\tx.mx1 = x.mx2 = x.mx3 = -1000000000000000LL;\n\t\treturn x;\n\t}\n\tint mid = (s + e) / 2;\n\tnode x = get(l, r, 2 * v, s, mid);\n\tnode y = get(l, r, 2 * v + 1, mid, e);\n\treturn merge(x, y);\n}\nint main()\n{\n\tios::sync_with_stdio(false);\n\tint n, q;\n\tcin >> n >> q;\n\t::n = 2 * n;\n\tfor (int i = 0; i < n; i++)\n\t\tcin >> d[i];\n\tfor (int i = 0; i < n; i++)\n\t\tcin >> h[i];\n\tfor (int i = n; i < 2 * n; i++)\n\t{\n\t\th[i] = h[i - n];\n\t\td[i] = d[i - n];\n\t}\n\tfor (int i = 1; i <= 2 * n; i++)\n\t\tsum[i] = sum[i - 1] + d[i - 1];\n\tbuild();\n\twhile (q--)\n\t{\n\t\tint l, r;\n\t\tcin >> l >> r;\n\t\tif (r < l)\n\t\t\tr += n;\n\t\tl--;\n\t\tint len = n - (r - l);\n\t\tcout << get(r, r + len).mx3 << \"\\n\";\n\t}\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "data structures"
+    ],
+    "dificulty": "2300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Drazil and Park.json",
+    "editorial_link": "https://codeforces.com/blog/entry/16468",
+    "editorial": "There are many methods for this problem. I'll only explain the one that I used.\n\nLet's split a circle at some point (for example between 1 and n) and draw a picture twice (i. e. 1 2 3 ... n 1 2 3 ... n), thus changing the problem from a circle to a line.\n\nRemember that if two trees Drazil chooses are x and y, the energy he consumes is dx?+?dx?+?1?+?...?+?dy?-?1?+?2?*?(hx?+?hy).\n\nNow rewrite this formula to (d1?+?d2?+?...?+?dy?-?1?+?2?*?hy)?+?(2?*?hx?-?(d1?+?d2?+?...?+?dx?-?1))\n\nDenote (d1?+?d2?+?...?+?dk?-?1?+?2?*?hk) as Rk and denote (2?*?hk?-?(d1?+?d2?+?...?+?dk?-?1)) as Lk\n\nWhen a query about range [a,?b] comes (The range [a,?b] is where Drazil can choose, but not the range where the children are playing), it's equivalent to querying the maximum value of Lu?+?Rv, where u and v are in [a,?b] and u?<?v.\n\nAnother important thing is that Lu?+?Rv always bigger than Lv?+?Ru when u?<?v.\n\nSo we can almost solve the problem just by finding the maximum value of Lu and Rv by RMQ separately and sum them up.\n\nHowever, there is a special case: u?=?v, but we can handle it by making RMQ find the two maximum values.\n\nTime Complexity: O(n?+?m)."
+}

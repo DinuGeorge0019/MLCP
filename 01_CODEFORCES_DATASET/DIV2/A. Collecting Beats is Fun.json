@@ -1,1 +1,97 @@
-{"link": "https://codeforces.com//contest/373/problem/A", "problemId": "4177", "problem_idx": "A", "shortId": "373A", "contest_number": "373", "problem_submissions": {"B": [5429569, 5424746, 5426227, 5425475, 5422342, 5425081, 5426099, 5425032, 5425412, 5436342, 5426611, 5423163, 5423178, 5425228], "A": [5424943, 5421235, 5422611, 5422595, 5433909, 5421126, 5421160, 5429834, 5421622, 5425841, 5421003, 5421386, 5421391, 5421143, 5421194, 5421261, 5421350], "C": [5424210, 5422375, 5423370, 5427068, 5424824, 5427055, 5423334, 5430375, 5422559, 5425280, 5426953, 5423867, 5424356, 5424874, 5424522, 5427759, 5426510, 5427253], "D": [5423101, 5430116, 5431564, 5429533, 5429205, 5429913, 5431205, 5429336, 5429567], "E": [5431047, 5431253, 5445684, 5431420, 5431441]}, "name": "A. Collecting Beats is Fun", "statement": "Cucumber boy is fan of Kyubeat, a famous music game.Kyubeat has panels\r\nfor playing arranged in table. When a panel lights up, he has to press\r\nthat panel.Each panel has a to press (the preffered time when a player\r\nshould press it), and Cucumber boy is able to press at most panels in a\r\ntime with his one hand. Cucumber boy is trying to press all panels in\r\nperfect timing, that is he wants to press each panel exactly in its\r\npreffered time. If he cannot press the panels with his in perfect\r\ntiming, his challenge to press all the panels in perfect timing will\r\nfail.You are given one scene of Kyubeat\u2019s panel from the music Cucumber\r\nboy is trying. Tell him is he able to press all the panels in perfect\r\ntiming.\r\n", "solutions": ["#include <iostream>\n#include <cstdio>\n#include <cstring>\n#include <cmath>\n#include <string>\n#include <vector>\n\nusing namespace std;\n\ntypedef long long LL;\n\nconst int maxN = 10;\n\nint cnt[maxN];\nint K;\n\nint main()\n{\n\tscanf(\"%d\", &K);\n\tfor (int i = 0; i < 4; ++i) {\n\t\tchar s[5];\n\t\tscanf(\"%s\", s);\n\t\tfor (int j = 0; j < 4; ++j)\n\t\t\tif (s[j] == '.') ++cnt[0];\n\t\t\telse ++cnt[s[j] - '0'];\n\t}\n\tfor (int i = 1; i < 10; ++i)\n\t\tif (cnt[i] > 2 * K) {\n\t\t\tprintf(\"NO\\n\");\n\t\t\treturn 0;\n\t\t}\n\tprintf(\"YES\\n\");\n\treturn 0;\n}"], "input": "", "output": "", "tags": ["implementation"], "dificulty": "900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/373/problem/A",
+    "problemId": "4177",
+    "problem_idx": "A",
+    "shortId": "373A",
+    "contest_number": "373",
+    "problem_submissions": {
+        "B": [
+            5429569,
+            5424746,
+            5426227,
+            5425475,
+            5422342,
+            5425081,
+            5426099,
+            5425032,
+            5425412,
+            5436342,
+            5426611,
+            5423163,
+            5423178,
+            5425228
+        ],
+        "A": [
+            5424943,
+            5421235,
+            5422611,
+            5422595,
+            5433909,
+            5421126,
+            5421160,
+            5429834,
+            5421622,
+            5425841,
+            5421003,
+            5421386,
+            5421391,
+            5421143,
+            5421194,
+            5421261,
+            5421350
+        ],
+        "C": [
+            5424210,
+            5422375,
+            5423370,
+            5427068,
+            5424824,
+            5427055,
+            5423334,
+            5430375,
+            5422559,
+            5425280,
+            5426953,
+            5423867,
+            5424356,
+            5424874,
+            5424522,
+            5427759,
+            5426510,
+            5427253
+        ],
+        "D": [
+            5423101,
+            5430116,
+            5431564,
+            5429533,
+            5429205,
+            5429913,
+            5431205,
+            5429336,
+            5429567
+        ],
+        "E": [
+            5431047,
+            5431253,
+            5445684,
+            5431420,
+            5431441
+        ]
+    },
+    "name": "A. Collecting Beats is Fun",
+    "statement": "Cucumber boy is fan of Kyubeat, a famous music game.Kyubeat has panels\r\nfor playing arranged in table. When a panel lights up, he has to press\r\nthat panel.Each panel has a to press (the preffered time when a player\r\nshould press it), and Cucumber boy is able to press at most panels in a\r\ntime with his one hand. Cucumber boy is trying to press all panels in\r\nperfect timing, that is he wants to press each panel exactly in its\r\npreffered time. If he cannot press the panels with his in perfect\r\ntiming, his challenge to press all the panels in perfect timing will\r\nfail.You are given one scene of Kyubeat\u2019s panel from the music Cucumber\r\nboy is trying. Tell him is he able to press all the panels in perfect\r\ntiming.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <cstdio>\n#include <cstring>\n#include <cmath>\n#include <string>\n#include <vector>\n\nusing namespace std;\n\ntypedef long long LL;\n\nconst int maxN = 10;\n\nint cnt[maxN];\nint K;\n\nint main()\n{\n\tscanf(\"%d\", &K);\n\tfor (int i = 0; i < 4; ++i) {\n\t\tchar s[5];\n\t\tscanf(\"%s\", s);\n\t\tfor (int j = 0; j < 4; ++j)\n\t\t\tif (s[j] == '.') ++cnt[0];\n\t\t\telse ++cnt[s[j] - '0'];\n\t}\n\tfor (int i = 1; i < 10; ++i)\n\t\tif (cnt[i] > 2 * K) {\n\t\t\tprintf(\"NO\\n\");\n\t\t\treturn 0;\n\t\t}\n\tprintf(\"YES\\n\");\n\treturn 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation"
+    ],
+    "dificulty": "900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Collecting Beats is Fun.json",
+    "editorial_link": "https://codeforces.com//blog/entry/9944",
+    "editorial": "First, you need to count the occurence of each number (1 through 9). If\r\nnone of them are greater than 2 * k, Cucumber boy is able to press the\r\npanels in perfect timing. Complexity is O(1). My solution :\r\nhttp://ideone.com/CwQtBv\r\n"
+}

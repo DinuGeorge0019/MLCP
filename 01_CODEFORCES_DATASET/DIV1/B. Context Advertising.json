@@ -1,1 +1,95 @@
-{"link": "https://codeforces.com//contest/309/problem/B", "problemId": "3002", "problem_idx": "B", "shortId": "309B", "contest_number": "309", "problem_submissions": {"B": [3731099, 3730792, 3731042, 3731786, 3730550, 3730284, 3729908, 3730541, 3730449, 3730996, 3729978, 3731064, 3730199, 3730107], "D": [3730805, 3730544, 3730976, 3731589, 3734080, 3734069, 3734066, 3734061, 3734059, 3734056, 3734042, 3734033, 3730688], "E": [3730645], "A": [3729981, 3730417, 3729803, 3730204, 3729805, 3729780, 3729813, 3729791, 3729913, 3729965, 3729850, 3729792, 3729963, 3729911, 3731133], "C": [3729784, 3729949, 3730172, 3730228, 3729910, 3729943, 3730005, 3730049, 3730161, 3730116, 3730023, 3729795, 3729875, 3729810, 3730574, 3730818, 3729859]}, "name": "B. Context Advertising", "statement": "Advertising has become part of our routine. And now, in the era of\r\nprogressive technologies, we need your ideas to make advertising\r\nbetter!In this problem we\u2019ll look at a simplified version of context\r\nadvertising. You\u2019ve got a text, consisting of exactly words. A standard\r\nadvertising banner has exactly lines, each line can contain at most\r\ncharacters. The potential customer always likes it when they can see\r\nlots of advertising, so you should determine which maximum number of\r\nconsecutive words from the text can be written on the banner. Single\r\nwords in one line of the banner should be separated by spaces. You are\r\nallowed to insert more than one space at once. Note that you are not\r\nallowed to break the words, that is, each word in the text must occupy\r\nexactly one line in the banner. Besides, you cannot change the word\r\norder, that is, if you read the banner text consecutively, from top to\r\nbottom and from left to right, you should get some consecutive part of\r\nthe advertisement text.More formally, the statement can be written like\r\nthat. Let\u2019s say that all words are indexed from to in the order in which\r\nthey occur in the advertisement text. Then you have to choose all words,\r\nstarting from some -th one and ending with some -th one , so that all of\r\nthem could be written on the banner. There must be as many words as\r\npossible. See the samples for clarifications.\r\n", "solutions": ["#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cmath>\n#include <cassert>\n#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n#include <queue>\n#include <set>\n#include <map>\n#include <utility>\n#include <numeric>\n#include <algorithm>\n#include <bitset>\n#include <complex>\n\nusing namespace std;\n\ntypedef unsigned uint;\ntypedef long long Int;\ntypedef vector<int> vint;\ntypedef pair<int,int> pint;\n#define mp make_pair\n\ntemplate<class T> void pv(T a, T b) { for (T i = a; i != b; ++i) cout << *i << \" \"; cout << endl; }\ntemplate<class T> void chmin(T &t, T f) { if (t > f) t = f; }\ntemplate<class T> void chmax(T &t, T f) { if (t < f) t = f; }\nint in() { int x; scanf(\"%d\", &x); return x; }\n\n#define MAXN 1000010\n\nchar buf[6000010];\n\nint N, R, C;\nstring S[MAXN];\n\nint A[MAXN];\nint ASum[MAXN];\nint to[MAXN];\n\nint crt[MAXN], nxt[MAXN];\n\nvoid solve(int e) {\n\tint i;\n\tif (e == 0) {\n\t\tfor (i = 0; i <= N; ++i) {\n\t\t\tcrt[i] = i;\n\t\t}\n\t\treturn;\n\t}\n\tsolve(e / 2);\n\tfor (i = 0; i <= N; ++i) {\n\t\tnxt[i] = crt[crt[i]];\n\t}\n\tif (e % 2 != 0) {\n\t\tfor (i = 0; i <= N; ++i) {\n\t\t\tcrt[i] = to[nxt[i]];\n\t\t}\n\t} else {\n\t\tfor (i = 0; i <= N; ++i) {\n\t\t\tcrt[i] = nxt[i];\n\t\t}\n\t}\n}\n\nint main() {\n\tint i, j, r;\n\t\n\tfor (; ~scanf(\"%d%d%d\", &N, &R, &C); ) {\n\t\tfor (i = 0; i < N; ++i) {\n\t\t\tscanf(\"%s\", buf);\n\t\t\tS[i] = buf;\n\t\t}\n\t\tfor (i = 0; i < N; ++i) {\n\t\t\tA[i] = S[i].size() + 1;\n\t\t}\n\t\tfor (i = 0; i < N; ++i) {\n\t\t\tASum[i + 1] = ASum[i] + A[i];\n\t\t}\n\t\tfor (j = 0, i = 0; i <= N; ++i) {\n\t\t\tfor (; j <= N && ASum[j] - ASum[i] <= C + 1; ++j);\n\t\t\t--j;\n\t\t\tto[i] = j;\n\t\t}\n// cout<<\"to : \";pv(to,to+N+1);\n\t\tsolve(R);\n// cout<<\"crt : \";pv(crt,crt+N+1);\n\t\tint opt = -1;\n\t\tint im = -1;\n\t\tfor (i = 0; i <= N; ++i) {\n\t\t\tif (opt < crt[i] - i) {\n\t\t\t\topt = crt[i] - i;\n\t\t\t\tim = i;\n\t\t\t}\n\t\t}\n\t\tfor (r = 0; r < R; ++r) {\n\t\t\tif (im == to[im]) {\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tfor (i = im; i < to[im]; ++i) {\n\t\t\t\tif (i > im) printf(\" \");\n\t\t\t\tprintf(\"%s\", S[i].c_str());\n\t\t\t}\n\t\t\tputs(\"\");\n\t\t\tim = to[im];\n\t\t}\ncerr<<\"====\"<<endl;\n\t}\n\t\n\treturn 0;\n}\n\n"], "input": "", "output": "", "tags": ["dp", "two pointers"], "dificulty": "2100", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/309/problem/B",
+    "problemId": "3002",
+    "problem_idx": "B",
+    "shortId": "309B",
+    "contest_number": "309",
+    "problem_submissions": {
+        "B": [
+            3731099,
+            3730792,
+            3731042,
+            3731786,
+            3730550,
+            3730284,
+            3729908,
+            3730541,
+            3730449,
+            3730996,
+            3729978,
+            3731064,
+            3730199,
+            3730107
+        ],
+        "D": [
+            3730805,
+            3730544,
+            3730976,
+            3731589,
+            3734080,
+            3734069,
+            3734066,
+            3734061,
+            3734059,
+            3734056,
+            3734042,
+            3734033,
+            3730688
+        ],
+        "E": [
+            3730645
+        ],
+        "A": [
+            3729981,
+            3730417,
+            3729803,
+            3730204,
+            3729805,
+            3729780,
+            3729813,
+            3729791,
+            3729913,
+            3729965,
+            3729850,
+            3729792,
+            3729963,
+            3729911,
+            3731133
+        ],
+        "C": [
+            3729784,
+            3729949,
+            3730172,
+            3730228,
+            3729910,
+            3729943,
+            3730005,
+            3730049,
+            3730161,
+            3730116,
+            3730023,
+            3729795,
+            3729875,
+            3729810,
+            3730574,
+            3730818,
+            3729859
+        ]
+    },
+    "name": "B. Context Advertising",
+    "statement": "Advertising has become part of our routine. And now, in the era of\r\nprogressive technologies, we need your ideas to make advertising\r\nbetter!In this problem we\u2019ll look at a simplified version of context\r\nadvertising. You\u2019ve got a text, consisting of exactly words. A standard\r\nadvertising banner has exactly lines, each line can contain at most\r\ncharacters. The potential customer always likes it when they can see\r\nlots of advertising, so you should determine which maximum number of\r\nconsecutive words from the text can be written on the banner. Single\r\nwords in one line of the banner should be separated by spaces. You are\r\nallowed to insert more than one space at once. Note that you are not\r\nallowed to break the words, that is, each word in the text must occupy\r\nexactly one line in the banner. Besides, you cannot change the word\r\norder, that is, if you read the banner text consecutively, from top to\r\nbottom and from left to right, you should get some consecutive part of\r\nthe advertisement text.More formally, the statement can be written like\r\nthat. Let\u2019s say that all words are indexed from to in the order in which\r\nthey occur in the advertisement text. Then you have to choose all words,\r\nstarting from some -th one and ending with some -th one , so that all of\r\nthem could be written on the banner. There must be as many words as\r\npossible. See the samples for clarifications.\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cmath>\n#include <cassert>\n#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n#include <queue>\n#include <set>\n#include <map>\n#include <utility>\n#include <numeric>\n#include <algorithm>\n#include <bitset>\n#include <complex>\n\nusing namespace std;\n\ntypedef unsigned uint;\ntypedef long long Int;\ntypedef vector<int> vint;\ntypedef pair<int,int> pint;\n#define mp make_pair\n\ntemplate<class T> void pv(T a, T b) { for (T i = a; i != b; ++i) cout << *i << \" \"; cout << endl; }\ntemplate<class T> void chmin(T &t, T f) { if (t > f) t = f; }\ntemplate<class T> void chmax(T &t, T f) { if (t < f) t = f; }\nint in() { int x; scanf(\"%d\", &x); return x; }\n\n#define MAXN 1000010\n\nchar buf[6000010];\n\nint N, R, C;\nstring S[MAXN];\n\nint A[MAXN];\nint ASum[MAXN];\nint to[MAXN];\n\nint crt[MAXN], nxt[MAXN];\n\nvoid solve(int e) {\n\tint i;\n\tif (e == 0) {\n\t\tfor (i = 0; i <= N; ++i) {\n\t\t\tcrt[i] = i;\n\t\t}\n\t\treturn;\n\t}\n\tsolve(e / 2);\n\tfor (i = 0; i <= N; ++i) {\n\t\tnxt[i] = crt[crt[i]];\n\t}\n\tif (e % 2 != 0) {\n\t\tfor (i = 0; i <= N; ++i) {\n\t\t\tcrt[i] = to[nxt[i]];\n\t\t}\n\t} else {\n\t\tfor (i = 0; i <= N; ++i) {\n\t\t\tcrt[i] = nxt[i];\n\t\t}\n\t}\n}\n\nint main() {\n\tint i, j, r;\n\t\n\tfor (; ~scanf(\"%d%d%d\", &N, &R, &C); ) {\n\t\tfor (i = 0; i < N; ++i) {\n\t\t\tscanf(\"%s\", buf);\n\t\t\tS[i] = buf;\n\t\t}\n\t\tfor (i = 0; i < N; ++i) {\n\t\t\tA[i] = S[i].size() + 1;\n\t\t}\n\t\tfor (i = 0; i < N; ++i) {\n\t\t\tASum[i + 1] = ASum[i] + A[i];\n\t\t}\n\t\tfor (j = 0, i = 0; i <= N; ++i) {\n\t\t\tfor (; j <= N && ASum[j] - ASum[i] <= C + 1; ++j);\n\t\t\t--j;\n\t\t\tto[i] = j;\n\t\t}\n// cout<<\"to : \";pv(to,to+N+1);\n\t\tsolve(R);\n// cout<<\"crt : \";pv(crt,crt+N+1);\n\t\tint opt = -1;\n\t\tint im = -1;\n\t\tfor (i = 0; i <= N; ++i) {\n\t\t\tif (opt < crt[i] - i) {\n\t\t\t\topt = crt[i] - i;\n\t\t\t\tim = i;\n\t\t\t}\n\t\t}\n\t\tfor (r = 0; r < R; ++r) {\n\t\t\tif (im == to[im]) {\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tfor (i = im; i < to[im]; ++i) {\n\t\t\t\tif (i > im) printf(\" \");\n\t\t\t\tprintf(\"%s\", S[i].c_str());\n\t\t\t}\n\t\t\tputs(\"\");\n\t\t\tim = to[im];\n\t\t}\ncerr<<\"====\"<<endl;\n\t}\n\t\n\treturn 0;\n}\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp",
+        "two pointers"
+    ],
+    "dificulty": "2100",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Context Advertising.json",
+    "editorial_link": "https://codeforces.com//blog/entry/7749",
+    "editorial": "We were asked to find the maximal number of words we can fit into the block of size r?\u00d7?c. Let's first solve such problem: what is the maximal number of consecutive words which can fit in a row of lenth c, if the first word has index i. We can solve it using binary search or moving the pointer. Now let us build a graph, where vertices are the words and there is a directional edge between i and j, if words from i to j?-?1 fit in one row of length c, but words from i to j don't. The weight of the edge is j?-?i. The we have the following problem: we need to find the path of length k, which has the maximal weight. Easy to solve it with complexity  saving weights of all the paths with lengthes equal to the powers of two, or in O(n) time using dfs.\n\nThe other problems competitors faced \u0097 that we were asked to print the whole text, not only the length."
+}

@@ -1,1 +1,102 @@
-{"link": "https://codeforces.com//contest/416/problem/C", "problemId": "8297", "problem_idx": "C", "shortId": "416C", "contest_number": "416", "problem_submissions": {"E": [6343446, 6342010, 6345905, 6345786, 6345780, 6345773], "D": [6339770, 6344331, 6341205, 6342895, 6343208, 6342314], "C": [6337298, 6337895, 6338062, 6340196, 6337743, 6338820, 6338400, 6338250, 6338293, 6337870, 6340982, 6339823, 6341497, 6338189, 6339580, 6337965, 6340260, 6340014], "B": [6336584, 6336919, 6336609, 6338408, 6338336, 6337856, 6337221, 6337301, 6340247, 6336851, 6339693, 6338067, 6337890, 6336878, 6337704, 6336869, 6338043, 6338578], "A": [6336344, 6336437, 6336373, 6336510, 6336806, 6336676, 6336386, 6337013, 6336347, 6337152, 6336694, 6336923, 6336396, 6336944, 6336382, 6336809, 6336583]}, "name": "C. Booking System", "statement": "Innovation technologies are on a victorious march around the planet.\r\nThey integrate into all spheres of human activity!A restaurant called\r\n\"Dijkstra\u2019s Place\" has started thinking about optimizing the booking\r\nsystem. There are booking requests received by now. Each request is\r\ncharacterized by two numbers: and the size of the group of visitors who\r\nwill come via this request and the total sum of money they will spend in\r\nthe restaurant, correspondingly.We know that for each request, all\r\npeople want to sit at the same table and are going to spend the whole\r\nevening in the restaurant, from the opening moment at 18:00 to the\r\nclosing moment.Unfortunately, there only are tables in the restaurant.\r\nFor each table, we know the maximum number of people who can sit at it.\r\nA table can have only people from the same group sitting at it. If you\r\ncannot find a large enough table for the whole group, then all visitors\r\nleave and naturally, pay nothing.Your task is: given the tables and the\r\nrequests, decide which requests to accept and which requests to decline\r\nso that the money paid by the happy and full visitors was maximum.\r\n", "solutions": ["#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <vector>\n#include <iostream>\n#include <algorithm>\n\nusing namespace std;\n\n#define foreach(e,x) for(__typeof(x.begin()) e=x.begin(); e!=x.end(); ++e)\n\nconst int N = 1000 + 10;\n\nint n, k;\nint c[N], p[N], r[N];\nint vis[N];\npair<int, int> b[N];\npair< pair<int, int>, int> a[N];\n\nvoid solve()\n{\n\tcin >> n;\n\tfor(int i = 0; i < n; ++ i) {\n\t\tcin >> c[i] >> p[i];\n\t\ta[i] = make_pair(make_pair(p[i], - c[i]), i);\n\t}\n\tsort(a, a + n);\n\tcin >> k;\n\tfor(int i = 0; i < k; ++ i) {\n\t\tcin >> r[i];\n\t\tb[i] = make_pair(r[i], i);\n\t}\n\tsort(b, b + k);\n\n\tint ret = 0;\n\tvector< pair<int, int> > vec;\n\n\tfor(int i = n - 1; i >= 0; -- i) {\n\t\tint tmp = -a[i].first.second;\n\n\t\tfor(int j = 0; j < k; ++ j) {\n\t\t\tif (b[j].first >= tmp && ! vis[j]) {\n\t\t\t\tvis[j] = true;\n\t\t\t\tret += a[i].first.first;\n\t\t\t\tvec.push_back(make_pair(a[i].second + 1, b[j].second + 1));\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t}\n\tcout << vec.size() << ' ' << ret << endl;\n\tfor(int i = 0; i < vec.size(); ++ i) {\n\t\tcout << vec[i].first << ' ' << vec[i].second << endl;\n\t}\n}\n\nint main()\n{\n\tsolve();\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["binary search", "dp", "greedy", "implementation"], "dificulty": "1600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/416/problem/C",
+    "problemId": "8297",
+    "problem_idx": "C",
+    "shortId": "416C",
+    "contest_number": "416",
+    "problem_submissions": {
+        "E": [
+            6343446,
+            6342010,
+            6345905,
+            6345786,
+            6345780,
+            6345773
+        ],
+        "D": [
+            6339770,
+            6344331,
+            6341205,
+            6342895,
+            6343208,
+            6342314
+        ],
+        "C": [
+            6337298,
+            6337895,
+            6338062,
+            6340196,
+            6337743,
+            6338820,
+            6338400,
+            6338250,
+            6338293,
+            6337870,
+            6340982,
+            6339823,
+            6341497,
+            6338189,
+            6339580,
+            6337965,
+            6340260,
+            6340014
+        ],
+        "B": [
+            6336584,
+            6336919,
+            6336609,
+            6338408,
+            6338336,
+            6337856,
+            6337221,
+            6337301,
+            6340247,
+            6336851,
+            6339693,
+            6338067,
+            6337890,
+            6336878,
+            6337704,
+            6336869,
+            6338043,
+            6338578
+        ],
+        "A": [
+            6336344,
+            6336437,
+            6336373,
+            6336510,
+            6336806,
+            6336676,
+            6336386,
+            6337013,
+            6336347,
+            6337152,
+            6336694,
+            6336923,
+            6336396,
+            6336944,
+            6336382,
+            6336809,
+            6336583
+        ]
+    },
+    "name": "C. Booking System",
+    "statement": "Innovation technologies are on a victorious march around the planet.\r\nThey integrate into all spheres of human activity!A restaurant called\r\n\"Dijkstra\u2019s Place\" has started thinking about optimizing the booking\r\nsystem. There are booking requests received by now. Each request is\r\ncharacterized by two numbers: and the size of the group of visitors who\r\nwill come via this request and the total sum of money they will spend in\r\nthe restaurant, correspondingly.We know that for each request, all\r\npeople want to sit at the same table and are going to spend the whole\r\nevening in the restaurant, from the opening moment at 18:00 to the\r\nclosing moment.Unfortunately, there only are tables in the restaurant.\r\nFor each table, we know the maximum number of people who can sit at it.\r\nA table can have only people from the same group sitting at it. If you\r\ncannot find a large enough table for the whole group, then all visitors\r\nleave and naturally, pay nothing.Your task is: given the tables and the\r\nrequests, decide which requests to accept and which requests to decline\r\nso that the money paid by the happy and full visitors was maximum.\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <vector>\n#include <iostream>\n#include <algorithm>\n\nusing namespace std;\n\n#define foreach(e,x) for(__typeof(x.begin()) e=x.begin(); e!=x.end(); ++e)\n\nconst int N = 1000 + 10;\n\nint n, k;\nint c[N], p[N], r[N];\nint vis[N];\npair<int, int> b[N];\npair< pair<int, int>, int> a[N];\n\nvoid solve()\n{\n\tcin >> n;\n\tfor(int i = 0; i < n; ++ i) {\n\t\tcin >> c[i] >> p[i];\n\t\ta[i] = make_pair(make_pair(p[i], - c[i]), i);\n\t}\n\tsort(a, a + n);\n\tcin >> k;\n\tfor(int i = 0; i < k; ++ i) {\n\t\tcin >> r[i];\n\t\tb[i] = make_pair(r[i], i);\n\t}\n\tsort(b, b + k);\n\n\tint ret = 0;\n\tvector< pair<int, int> > vec;\n\n\tfor(int i = n - 1; i >= 0; -- i) {\n\t\tint tmp = -a[i].first.second;\n\n\t\tfor(int j = 0; j < k; ++ j) {\n\t\t\tif (b[j].first >= tmp && ! vis[j]) {\n\t\t\t\tvis[j] = true;\n\t\t\t\tret += a[i].first.first;\n\t\t\t\tvec.push_back(make_pair(a[i].second + 1, b[j].second + 1));\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t}\n\tcout << vec.size() << ' ' << ret << endl;\n\tfor(int i = 0; i < vec.size(); ++ i) {\n\t\tcout << vec[i].first << ' ' << vec[i].second << endl;\n\t}\n}\n\nint main()\n{\n\tsolve();\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "binary search",
+        "dp",
+        "greedy",
+        "implementation"
+    ],
+    "dificulty": "1600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Booking System.json",
+    "editorial_link": "https://codeforces.com//blog/entry/12277",
+    "editorial": "Let\u00e2\u0080\u0099s solve this one greedy. All we need to notice is that the optimal\r\nsolution will be to place first the groups with biggest sum which they\r\nare ready to pay. For each such group it will be optimal to allocate the\r\nsmallest matching table. The input limits allow to do a full search when\r\nlooking for a table. Submission: 6617198\r\n"
+}

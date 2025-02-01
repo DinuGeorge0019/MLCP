@@ -1,1 +1,117 @@
-{"link": "https://codeforces.com//contest/635/problem/D", "problemId": "49957", "problem_idx": "D", "shortId": "635D", "contest_number": "635", "problem_submissions": {"F": [16715109, 16429856], "E": [16413519, 16414980, 16415683, 16413671, 16416127, 16415965, 16412886, 16411309, 16414895, 16431030, 16415653, 16557734], "D": [16411390, 16412670, 16411204, 16413229, 16412878, 16413863, 16411883, 16412667, 16409842, 16411803, 16408893, 16411766, 16411437, 16412231, 16411782, 16413499, 16413108], "C": [16410177, 16409314, 16412788, 16419061, 16414730, 16411184, 16411076, 16417490, 16413342, 16420377, 16409924, 16410108, 16409728, 16410259, 16410185, 16410892], "A": [16409333, 16408548, 16407902, 16407920, 16407765, 16408000, 16407909, 16408814, 16407724, 16408398, 16412714, 16407922, 16407797, 16408056, 16414324, 16407823, 16407862], "B": [16408961, 16410486, 16409109, 16409265, 16408639, 16409212, 16408803, 16414234, 16408509, 16409385, 16408280, 16408866, 16408225, 16408994, 16407968, 16409084, 16408701]}, "name": "D. Factory Repairs", "statement": "A factory produces thimbles in bulk. Typically, it can produce up to\r\nthimbles a day. However, some of the machinery is defective, so it can\r\ncurrently only produce thimbles each day. The factory intends to choose\r\na -day period to do maintenance and construction; it cannot produce any\r\nthimbles during this time, but will be restored to its full production\r\nof thimbles per day after the days are complete.Initially, no orders are\r\npending. The factory receives updates of the form , , indicating that\r\nnew orders have been placed for the -th day. Each order requires a\r\nsingle thimble to be produced on precisely the specified day. The\r\nfactory may opt to fill as many or as few of the orders in a single\r\nbatch as it likes.As orders come in, the factory owner would like to\r\nknow the maximum number of orders he will be able to fill if he starts\r\nrepairs on a given day . Help the owner answer his questions.\r\n", "solutions": ["#include <iostream>\n#include <cstring>\n#include <cstdio>\n#include <algorithm>\nusing namespace std;\nconst int N = 2e5 + 5;\nint a[N], L[N], R[N], n;\nvoid add(int tree[], int x, int c)\n{\n\twhile (x <= n)\n\t{\n\t\ttree[x] += c;\n\t\tx += x & -x;\n\t}\n}\nint query(int tree[], int x)\n{\n\tint res = 0;\n\twhile (x)\n\t{\n\t\tres += tree[x];\n\t\tx -= x & -x;\n\t}\n\treturn res;\n}\nint main()\n{\n\tint k, A, B, q;\n\tscanf(\"%d%d%d%d%d\", &n, &k, &A, &B, &q);\n\tfor (int i = 1; i <= q; ++ i)\n\t{\n\t\tint type;\n\t\tscanf(\"%d\", &type);\n\t\tif (type == 1)\n\t\t{\n\t\t\tint x, c;\n\t\t\tscanf(\"%d%d\", &x, &c);\n\t\t\tint oa = a[x];\n\t\t\ta[x] += c;\n\t\t\tint dl = min(B, a[x]) - min(B, oa);\n\t\t\tint dr = min(A, a[x]) - min(A, oa);\n\t\t\tadd(L, x, dl);\n\t\t\tadd(R, n - x + 1, dr);\n\t\t}\n\t\telse\n\t\t{\n\t\t\tint p;\n\t\t\tscanf(\"%d\", &p);\n\t\t\tint ans = query(L, p - 1) + query(R, n - (p + k) + 1);\n\t\t\tprintf(\"%d\\n\", ans);\n\t\t}\n\t}\n}\n"], "input": "", "output": "", "tags": ["data structures"], "dificulty": "1700", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/635/problem/D",
+    "problemId": "49957",
+    "problem_idx": "D",
+    "shortId": "635D",
+    "contest_number": "635",
+    "problem_submissions": {
+        "F": [
+            16715109,
+            16429856
+        ],
+        "E": [
+            16413519,
+            16414980,
+            16415683,
+            16413671,
+            16416127,
+            16415965,
+            16412886,
+            16411309,
+            16414895,
+            16431030,
+            16415653,
+            16557734
+        ],
+        "D": [
+            16411390,
+            16412670,
+            16411204,
+            16413229,
+            16412878,
+            16413863,
+            16411883,
+            16412667,
+            16409842,
+            16411803,
+            16408893,
+            16411766,
+            16411437,
+            16412231,
+            16411782,
+            16413499,
+            16413108
+        ],
+        "C": [
+            16410177,
+            16409314,
+            16412788,
+            16419061,
+            16414730,
+            16411184,
+            16411076,
+            16417490,
+            16413342,
+            16420377,
+            16409924,
+            16410108,
+            16409728,
+            16410259,
+            16410185,
+            16410892
+        ],
+        "A": [
+            16409333,
+            16408548,
+            16407902,
+            16407920,
+            16407765,
+            16408000,
+            16407909,
+            16408814,
+            16407724,
+            16408398,
+            16412714,
+            16407922,
+            16407797,
+            16408056,
+            16414324,
+            16407823,
+            16407862
+        ],
+        "B": [
+            16408961,
+            16410486,
+            16409109,
+            16409265,
+            16408639,
+            16409212,
+            16408803,
+            16414234,
+            16408509,
+            16409385,
+            16408280,
+            16408866,
+            16408225,
+            16408994,
+            16407968,
+            16409084,
+            16408701
+        ]
+    },
+    "name": "D. Factory Repairs",
+    "statement": "A factory produces thimbles in bulk. Typically, it can produce up to\r\nthimbles a day. However, some of the machinery is defective, so it can\r\ncurrently only produce thimbles each day. The factory intends to choose\r\na -day period to do maintenance and construction; it cannot produce any\r\nthimbles during this time, but will be restored to its full production\r\nof thimbles per day after the days are complete.Initially, no orders are\r\npending. The factory receives updates of the form , , indicating that\r\nnew orders have been placed for the -th day. Each order requires a\r\nsingle thimble to be produced on precisely the specified day. The\r\nfactory may opt to fill as many or as few of the orders in a single\r\nbatch as it likes.As orders come in, the factory owner would like to\r\nknow the maximum number of orders he will be able to fill if he starts\r\nrepairs on a given day . Help the owner answer his questions.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <cstring>\n#include <cstdio>\n#include <algorithm>\nusing namespace std;\nconst int N = 2e5 + 5;\nint a[N], L[N], R[N], n;\nvoid add(int tree[], int x, int c)\n{\n\twhile (x <= n)\n\t{\n\t\ttree[x] += c;\n\t\tx += x & -x;\n\t}\n}\nint query(int tree[], int x)\n{\n\tint res = 0;\n\twhile (x)\n\t{\n\t\tres += tree[x];\n\t\tx -= x & -x;\n\t}\n\treturn res;\n}\nint main()\n{\n\tint k, A, B, q;\n\tscanf(\"%d%d%d%d%d\", &n, &k, &A, &B, &q);\n\tfor (int i = 1; i <= q; ++ i)\n\t{\n\t\tint type;\n\t\tscanf(\"%d\", &type);\n\t\tif (type == 1)\n\t\t{\n\t\t\tint x, c;\n\t\t\tscanf(\"%d%d\", &x, &c);\n\t\t\tint oa = a[x];\n\t\t\ta[x] += c;\n\t\t\tint dl = min(B, a[x]) - min(B, oa);\n\t\t\tint dr = min(A, a[x]) - min(A, oa);\n\t\t\tadd(L, x, dl);\n\t\t\tadd(R, n - x + 1, dr);\n\t\t}\n\t\telse\n\t\t{\n\t\t\tint p;\n\t\t\tscanf(\"%d\", &p);\n\t\t\tint ans = query(L, p - 1) + query(R, n - (p + k) + 1);\n\t\t\tprintf(\"%d\\n\", ans);\n\t\t}\n\t}\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "data structures"
+    ],
+    "dificulty": "1700",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Factory Repairs.json",
+    "editorial_link": "https://codeforces.com//blog/entry/43467",
+    "editorial": "Using two binary-indexed trees, we can maintain the prefix and suffix sums of the amounts we can produce with maximum production rates of B and A, respectively. Then we can just query the binary-indexed trees to find the maximum possible production given the start and end of the repairs."
+}

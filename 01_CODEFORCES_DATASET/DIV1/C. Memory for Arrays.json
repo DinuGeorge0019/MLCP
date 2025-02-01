@@ -1,1 +1,96 @@
-{"link": "https://codeforces.com//contest/309/problem/C", "problemId": "3003", "problem_idx": "C", "shortId": "309C", "contest_number": "309", "problem_submissions": {"B": [3731099, 3730792, 3731042, 3731786, 3730550, 3730284, 3729908, 3730541, 3730449, 3730996, 3729978, 3731064, 3730199, 3730107], "D": [3730805, 3730544, 3730976, 3731589, 3734080, 3734069, 3734066, 3734061, 3734059, 3734056, 3734042, 3734033, 3730688], "E": [3730645], "A": [3729981, 3730417, 3729803, 3730204, 3729805, 3729780, 3729813, 3729791, 3729913, 3729965, 3729850, 3729792, 3729963, 3729911, 3731133], "C": [3729784, 3729949, 3730172, 3730228, 3729910, 3729943, 3730005, 3730049, 3730161, 3730116, 3730023, 3729795, 3729875, 3729810, 3730574, 3730818, 3729859]}, "name": "C. Memory for Arrays", "statement": "You get to work and turn on the computer. You start coding and give\r\nlittle thought to the RAM role in the whole process. In this problem\r\nyour task is to solve one of the problems you encounter in your computer\r\nroutine.We\u2019ll consider the RAM as a sequence of cells that can contain\r\ndata. Some cells already contain some data, some are empty. The empty\r\ncells form the so-called . Thus, a memory cluster is a sequence of some\r\nconsecutive empty memory cells. You have exactly memory clusters, the\r\n-th cluster consists of cells. You need to find memory for arrays in\r\nyour program. The -th array takes consecutive memory cells. There\r\npossibly isn\u2019t enough memory for all arrays, so your task is to\r\ndetermine what maximum number of arrays can be located in the available\r\nmemory clusters. Of course, the arrays cannot be divided between the\r\nmemory clusters. Also, no cell can belong to two arrays.\r\n", "solutions": ["#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cmath>\n#include <cassert>\n#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n#include <queue>\n#include <set>\n#include <map>\n#include <utility>\n#include <numeric>\n#include <algorithm>\n#include <bitset>\n#include <complex>\n\nusing namespace std;\n\ntypedef unsigned uint;\ntypedef long long Int;\ntypedef vector<int> vint;\ntypedef pair<int,int> pint;\n#define mp make_pair\n\ntemplate<class T> void pv(T a, T b) { for (T i = a; i != b; ++i) cout << *i << \" \"; cout << endl; }\ntemplate<class T> void chmin(T &t, T f) { if (t > f) t = f; }\ntemplate<class T> void chmax(T &t, T f) { if (t < f) t = f; }\nint in() { int x; scanf(\"%d\", &x); return x; }\n\nconst int L = 30;\nint N, M;\nint A[1000010], B[1000010];\n\nint cnt[110];\n\nbool check(int m) {\n\tint i, j, l;\n\tmemset(cnt, 0, L * 4);\n\tfor (j = 0; j < m; ++j) {\n\t\t++cnt[B[j]];\n\t}\n\tfor (i = N; i--; ) {\n\t\tint a = A[i];\n\t\tfor (l = L; l--; ) {\n\t\t\tint tmp = min(cnt[l], a >> l);\n\t\t\tcnt[l] -= tmp;\n\t\t\ta -= tmp << l;\n\t\t}\n\t}\n\tfor (l = 0; l < L; ++l) {\n\t\tif (cnt[l] > 0) {\n\t\t\treturn 0;\n\t\t}\n\t}\n\treturn 1;\n}\n\nint main() {\n\tint i, j;\n\t\n\tfor (; ~scanf(\"%d%d\", &N, &M); ) {\n\t\tfor (i = 0; i < N; ++i) {\n\t\t\tA[i] = in();\n\t\t}\n\t\tfor (j = 0; j < M; ++j) {\n\t\t\tB[j] = in();\n\t\t}\n\t\tsort(A, A + N);\n\t\tsort(B, B + M);\n\t\tint lo = 0, ho = M + 1;\n\t\tfor (; lo + 1 < ho; ) {\n\t\t\tint mo = (lo + ho) / 2;\n\t\t\t(check(mo) ? lo : ho) = mo;\n\t\t}\n\t\tprintf(\"%d\\n\", lo);\n\t}\n\t\n\treturn 0;\n}\n\n"], "input": "", "output": "", "tags": ["binary search", "bitmasks", "greedy"], "dificulty": "1900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/309/problem/C",
+    "problemId": "3003",
+    "problem_idx": "C",
+    "shortId": "309C",
+    "contest_number": "309",
+    "problem_submissions": {
+        "B": [
+            3731099,
+            3730792,
+            3731042,
+            3731786,
+            3730550,
+            3730284,
+            3729908,
+            3730541,
+            3730449,
+            3730996,
+            3729978,
+            3731064,
+            3730199,
+            3730107
+        ],
+        "D": [
+            3730805,
+            3730544,
+            3730976,
+            3731589,
+            3734080,
+            3734069,
+            3734066,
+            3734061,
+            3734059,
+            3734056,
+            3734042,
+            3734033,
+            3730688
+        ],
+        "E": [
+            3730645
+        ],
+        "A": [
+            3729981,
+            3730417,
+            3729803,
+            3730204,
+            3729805,
+            3729780,
+            3729813,
+            3729791,
+            3729913,
+            3729965,
+            3729850,
+            3729792,
+            3729963,
+            3729911,
+            3731133
+        ],
+        "C": [
+            3729784,
+            3729949,
+            3730172,
+            3730228,
+            3729910,
+            3729943,
+            3730005,
+            3730049,
+            3730161,
+            3730116,
+            3730023,
+            3729795,
+            3729875,
+            3729810,
+            3730574,
+            3730818,
+            3729859
+        ]
+    },
+    "name": "C. Memory for Arrays",
+    "statement": "You get to work and turn on the computer. You start coding and give\r\nlittle thought to the RAM role in the whole process. In this problem\r\nyour task is to solve one of the problems you encounter in your computer\r\nroutine.We\u2019ll consider the RAM as a sequence of cells that can contain\r\ndata. Some cells already contain some data, some are empty. The empty\r\ncells form the so-called . Thus, a memory cluster is a sequence of some\r\nconsecutive empty memory cells. You have exactly memory clusters, the\r\n-th cluster consists of cells. You need to find memory for arrays in\r\nyour program. The -th array takes consecutive memory cells. There\r\npossibly isn\u2019t enough memory for all arrays, so your task is to\r\ndetermine what maximum number of arrays can be located in the available\r\nmemory clusters. Of course, the arrays cannot be divided between the\r\nmemory clusters. Also, no cell can belong to two arrays.\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cmath>\n#include <cassert>\n#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n#include <queue>\n#include <set>\n#include <map>\n#include <utility>\n#include <numeric>\n#include <algorithm>\n#include <bitset>\n#include <complex>\n\nusing namespace std;\n\ntypedef unsigned uint;\ntypedef long long Int;\ntypedef vector<int> vint;\ntypedef pair<int,int> pint;\n#define mp make_pair\n\ntemplate<class T> void pv(T a, T b) { for (T i = a; i != b; ++i) cout << *i << \" \"; cout << endl; }\ntemplate<class T> void chmin(T &t, T f) { if (t > f) t = f; }\ntemplate<class T> void chmax(T &t, T f) { if (t < f) t = f; }\nint in() { int x; scanf(\"%d\", &x); return x; }\n\nconst int L = 30;\nint N, M;\nint A[1000010], B[1000010];\n\nint cnt[110];\n\nbool check(int m) {\n\tint i, j, l;\n\tmemset(cnt, 0, L * 4);\n\tfor (j = 0; j < m; ++j) {\n\t\t++cnt[B[j]];\n\t}\n\tfor (i = N; i--; ) {\n\t\tint a = A[i];\n\t\tfor (l = L; l--; ) {\n\t\t\tint tmp = min(cnt[l], a >> l);\n\t\t\tcnt[l] -= tmp;\n\t\t\ta -= tmp << l;\n\t\t}\n\t}\n\tfor (l = 0; l < L; ++l) {\n\t\tif (cnt[l] > 0) {\n\t\t\treturn 0;\n\t\t}\n\t}\n\treturn 1;\n}\n\nint main() {\n\tint i, j;\n\t\n\tfor (; ~scanf(\"%d%d\", &N, &M); ) {\n\t\tfor (i = 0; i < N; ++i) {\n\t\t\tA[i] = in();\n\t\t}\n\t\tfor (j = 0; j < M; ++j) {\n\t\t\tB[j] = in();\n\t\t}\n\t\tsort(A, A + N);\n\t\tsort(B, B + M);\n\t\tint lo = 0, ho = M + 1;\n\t\tfor (; lo + 1 < ho; ) {\n\t\t\tint mo = (lo + ho) / 2;\n\t\t\t(check(mo) ? lo : ho) = mo;\n\t\t}\n\t\tprintf(\"%d\\n\", lo);\n\t}\n\t\n\treturn 0;\n}\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "binary search",
+        "bitmasks",
+        "greedy"
+    ],
+    "dificulty": "1900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Memory for Arrays.json",
+    "editorial_link": "https://codeforces.com//blog/entry/7749",
+    "editorial": "We were asked to find the maximal number of arrays we can fit into the memory. A small observation first, let the answer be k, then one of the optimal solutions fits the k smallest arrays into the memory. We can assume that we have arrays of size 1 and we want to arrange the memory for the maximal arrays as possible. Then if we have parts of memory of odd size, if we fit array of size 1 at this part we will obtain part of even size. From other hand, if we put arrays of bigger size we will not change the parity and if we don't fill it with arrays of size one and initially it's of odd size then in the end we will have at least one empty cell. So it's reasonable to put the arrays of size one into the memory of odd size. Let's do it until we can do it. We have three possible situations:\n\nWe don't have memory parts of odd size anymore.\n\nWe don't have arrays of size 1 anymore.\n\nWe don't have neither arrays of size 1 neither memory parts of size 1.\n\nLet us start from the first case. Suppose that there are some arrays of size 1 left, but there are no memory parts of odd size. Easy to see then in such case we need to group arrays of size 1 in pairs and then consider them as the same array. So we can divide every number by two and reduce the problem to the initial one.\n\nIn the second case if we divide every number by two we will obtain the same problem (and that cannot increase the answer).\n\nThe third case is similar to the second one.\n\nWhen implementing this we need to remember that first we have to fill the memory with arrays which are build from the maximal numbers of initial arrays."
+}

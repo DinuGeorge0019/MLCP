@@ -1,1 +1,96 @@
-{"link": "https://codeforces.com//contest/139/problem/D", "problemId": "730", "problem_idx": "D", "shortId": "139D", "contest_number": "139", "problem_submissions": {"E": [980042, 1355508, 989840], "D": [978407, 979258, 981500, 981141, 981629, 981112, 981003, 978361, 980314, 982438], "C": [976486, 980221, 979576, 975661, 979182, 978241, 976343, 980246, 977234, 977300, 980151, 975292, 976905, 979088, 978354, 975803], "B": [975799, 976102, 976580, 980368, 976461, 976842, 977973, 977389, 975833, 975600, 976651, 976089, 975820, 976583, 976416, 977370], "A": [974412, 974563, 974849, 979612, 974810, 975009, 974390, 974654, 984067, 974272, 974267, 976572, 974588, 974309, 974688, 974303, 977612]}, "name": "D. Digits Permutations", "statement": "Andrey\u2019s favourite number is . Andrey\u2019s friends gave him two identical\r\nnumbers as a New Year present. He hung them on a wall and watched them\r\nadoringly.Then Andrey got bored from looking at the same number and he\r\nstarted to swap digits first in one, then in the other number, then\r\nagain in the first number and so on (arbitrary number of changes could\r\nbe made in each number). At some point it turned out that if we sum the\r\nresulting numbers, then the number of zeroes with which the sum will end\r\nwould be maximum among the possible variants of digit permutations in\r\nthose numbers.Given number , can you find the two digit permutations\r\nthat have this property?\r\n", "solutions": ["#include <vector>\n#include <string>\n#include <iostream>\n#include <algorithm>\n#include <queue>\n#include <set>\n#include <map>\n#include <sstream>\n#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cmath>\nusing namespace std;\ntypedef long long ll;\n#define pb push_back\n#define mp make_pair\n#define fi first\n#define se second\n#define FOR(i, s, t) for(i = (s); i < (t); i++)\n#define RFOR(i, s, t) for(i = (s)-1; i >= (t); i--)\n\nchar s[1<<20];\nchar s1[1<<20], s2[1<<20];\nint num[10];\nint tnum1[10], tnum2[10];\n\nint main()\n{\n  #ifdef __FIO\n  freopen(\"in.txt\", \"r\", stdin);\n  freopen(\"out.txt\", \"w\", stdout);\n  #endif\n  int n;\n  int ans = 0, tans, ansi;\n  int i, j;\n  int cnt;\n  scanf(\"%s\", s);\n  n = strlen(s);\n  memset(num, 0, sizeof 0);\n  for(i = 0; i < n; i++)\n    num[s[i]-'0']++;\n  for(i = 1; i <= 5; i++)\n  {\n    for(j = 0; j < 10; j++)\n      tnum1[j] = tnum2[j] = num[j];\n    if(tnum1[i] == 0 || tnum2[10-i] == 0)\n      continue;\n    tnum1[i]--;\n    tnum2[10-i]--;\n    tans = 1;\n    for(j = 0; j <= 9; j++)\n    {\n      int t = min(tnum1[j], tnum2[9-j]);\n      tans += t;\n      tnum1[j] -= t;\n      tnum2[9-j] -= t;\n    }\n    tans += min(tnum1[0], tnum2[0]);\n    if(tans > ans)\n    {\n      ans = tans;\n      ansi = i;\n    }\n  }\n  cnt = n-1;\n  if(ans == 0)\n  {\n    sort(s, s+n, greater<char>());\n    printf(\"%s\\n%s\\n\", s, s);\n    return 0;\n  }\n  i = ansi;\n  for(j = 0; j < 10; j++)\n    tnum1[j] = tnum2[j] = num[j];\n  tnum1[i]--;\n  tnum2[10-i]--;\n  while(tnum1[0] > tnum2[9] && tnum2[0] > tnum1[9])\n  {\n    s1[cnt] = '0';\n    s2[cnt] = '0';\n    cnt--;\n    tnum1[0]--;\n    tnum2[0]--;\n  }\n  s1[cnt] = i+'0';\n  s2[cnt] = 10-i+'0';\n  cnt--;\n  for(j = 0; j <= 9; j++)\n  {\n    while(tnum1[j] && tnum2[9-j])\n    {\n      s1[cnt] = j+'0';\n      s2[cnt] = 9-j+'0';\n      cnt--;\n      tnum1[j]--;\n      tnum2[9-j]--;\n    }\n  }\n  i = cnt;\n  for(j = 0; j < 10; j++)\n    while(tnum1[j])\n    {\n      s1[cnt--] = j+'0';\n      tnum1[j]--;\n    }\n  cnt = i;\n  for(j = 0; j < 10; j++)\n    while(tnum2[j])\n    {\n      s2[cnt--] = j+'0';\n      tnum2[j]--;\n    }\n  s1[n] = s2[n] = '\\0';\n  printf(\"%s\\n%s\\n\", s1, s2);\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["implementation"], "dificulty": "1900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/139/problem/D",
+    "problemId": "730",
+    "problem_idx": "D",
+    "shortId": "139D",
+    "contest_number": "139",
+    "problem_submissions": {
+        "E": [
+            980042,
+            1355508,
+            989840
+        ],
+        "D": [
+            978407,
+            979258,
+            981500,
+            981141,
+            981629,
+            981112,
+            981003,
+            978361,
+            980314,
+            982438
+        ],
+        "C": [
+            976486,
+            980221,
+            979576,
+            975661,
+            979182,
+            978241,
+            976343,
+            980246,
+            977234,
+            977300,
+            980151,
+            975292,
+            976905,
+            979088,
+            978354,
+            975803
+        ],
+        "B": [
+            975799,
+            976102,
+            976580,
+            980368,
+            976461,
+            976842,
+            977973,
+            977389,
+            975833,
+            975600,
+            976651,
+            976089,
+            975820,
+            976583,
+            976416,
+            977370
+        ],
+        "A": [
+            974412,
+            974563,
+            974849,
+            979612,
+            974810,
+            975009,
+            974390,
+            974654,
+            984067,
+            974272,
+            974267,
+            976572,
+            974588,
+            974309,
+            974688,
+            974303,
+            977612
+        ]
+    },
+    "name": "D. Digits Permutations",
+    "statement": "Andrey\u2019s favourite number is . Andrey\u2019s friends gave him two identical\r\nnumbers as a New Year present. He hung them on a wall and watched them\r\nadoringly.Then Andrey got bored from looking at the same number and he\r\nstarted to swap digits first in one, then in the other number, then\r\nagain in the first number and so on (arbitrary number of changes could\r\nbe made in each number). At some point it turned out that if we sum the\r\nresulting numbers, then the number of zeroes with which the sum will end\r\nwould be maximum among the possible variants of digit permutations in\r\nthose numbers.Given number , can you find the two digit permutations\r\nthat have this property?\r\n",
+    "solutions": [
+        "#include <vector>\n#include <string>\n#include <iostream>\n#include <algorithm>\n#include <queue>\n#include <set>\n#include <map>\n#include <sstream>\n#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cmath>\nusing namespace std;\ntypedef long long ll;\n#define pb push_back\n#define mp make_pair\n#define fi first\n#define se second\n#define FOR(i, s, t) for(i = (s); i < (t); i++)\n#define RFOR(i, s, t) for(i = (s)-1; i >= (t); i--)\n\nchar s[1<<20];\nchar s1[1<<20], s2[1<<20];\nint num[10];\nint tnum1[10], tnum2[10];\n\nint main()\n{\n  #ifdef __FIO\n  freopen(\"in.txt\", \"r\", stdin);\n  freopen(\"out.txt\", \"w\", stdout);\n  #endif\n  int n;\n  int ans = 0, tans, ansi;\n  int i, j;\n  int cnt;\n  scanf(\"%s\", s);\n  n = strlen(s);\n  memset(num, 0, sizeof 0);\n  for(i = 0; i < n; i++)\n    num[s[i]-'0']++;\n  for(i = 1; i <= 5; i++)\n  {\n    for(j = 0; j < 10; j++)\n      tnum1[j] = tnum2[j] = num[j];\n    if(tnum1[i] == 0 || tnum2[10-i] == 0)\n      continue;\n    tnum1[i]--;\n    tnum2[10-i]--;\n    tans = 1;\n    for(j = 0; j <= 9; j++)\n    {\n      int t = min(tnum1[j], tnum2[9-j]);\n      tans += t;\n      tnum1[j] -= t;\n      tnum2[9-j] -= t;\n    }\n    tans += min(tnum1[0], tnum2[0]);\n    if(tans > ans)\n    {\n      ans = tans;\n      ansi = i;\n    }\n  }\n  cnt = n-1;\n  if(ans == 0)\n  {\n    sort(s, s+n, greater<char>());\n    printf(\"%s\\n%s\\n\", s, s);\n    return 0;\n  }\n  i = ansi;\n  for(j = 0; j < 10; j++)\n    tnum1[j] = tnum2[j] = num[j];\n  tnum1[i]--;\n  tnum2[10-i]--;\n  while(tnum1[0] > tnum2[9] && tnum2[0] > tnum1[9])\n  {\n    s1[cnt] = '0';\n    s2[cnt] = '0';\n    cnt--;\n    tnum1[0]--;\n    tnum2[0]--;\n  }\n  s1[cnt] = i+'0';\n  s2[cnt] = 10-i+'0';\n  cnt--;\n  for(j = 0; j <= 9; j++)\n  {\n    while(tnum1[j] && tnum2[9-j])\n    {\n      s1[cnt] = j+'0';\n      s2[cnt] = 9-j+'0';\n      cnt--;\n      tnum1[j]--;\n      tnum2[9-j]--;\n    }\n  }\n  i = cnt;\n  for(j = 0; j < 10; j++)\n    while(tnum1[j])\n    {\n      s1[cnt--] = j+'0';\n      tnum1[j]--;\n    }\n  cnt = i;\n  for(j = 0; j < 10; j++)\n    while(tnum2[j])\n    {\n      s2[cnt--] = j+'0';\n      tnum2[j]--;\n    }\n  s1[n] = s2[n] = '\\0';\n  printf(\"%s\\n%s\\n\", s1, s2);\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation"
+    ],
+    "dificulty": "1900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Digits Permutations.json",
+    "editorial_link": "https://codeforces.com//blog/entry/3462",
+    "editorial": "It turned out to be surprisingly hard, possibly because of lots of cases to think of.\n\nHow to determine the number of zeros at the end of the sum of two numbers? First we skip all the positions from the end where both numbers have zeros. If on the next position the sum of digits is not 10, that's it. If it is, we go on while the sum of digits is 9.\n\nNow we take two transitions of digits in N. Let's fix the number of common zeros at the end of both transitions. If, moreover, we fix the digits that sum up to 10 at the next positions, we can find the maximal number of zeros to get with the remaining digits as min(a0,?b9)?+?...?+?min(a9,?b0), where a0,?...,?a9 are the quantities of every remaining digit in the first transition after taking out the last zeroes and the digit for the 10-sum, and b0,?...,?b9 are the same numbers for second transition (initially these quantities are equal to quantities of digits in N).\n\nSo, if we store a0,?...,?a9 and b0,?...,?b9, and then run through the numbers of common zeros at the end and the 10-sum digits, we determine the maximal zeros number (and configuration giving that answer) in O(10 * 10 * N) = O(N) time. Getting the transitions now is easy - we build them from right to left according to the saved answer.\n\nThe most common mistake was to think that maximal number of zeros at the end gives the maximal answer. It was disproved by 4-th pretest - 1099. As we can see, the optimal configuration is 1901 + 1099, giving three zeros, which cannot be achieved by placing both zeros at the ends."
+}

@@ -1,1 +1,99 @@
-{"link": "https://codeforces.com//contest/66/problem/E", "problemId": "350", "problem_idx": "E", "shortId": "66E", "contest_number": "66", "problem_submissions": {"C": [325739, 327571, 324946, 325140, 326366, 326847, 325519, 325350, 326429, 326396, 326853, 325915, 529168, 325585], "E": [325379, 326033, 326058, 325948, 325798, 325317, 326222, 326357, 326861, 326864, 325631, 326306, 325725, 326990, 326457], "D": [324481, 325094, 324874, 325266, 325314, 325879, 326421, 325060, 326079, 324758], "B": [323886, 323924, 323929, 324358, 324393, 324432, 324043, 324939, 324073, 324145, 324109, 323877, 324237, 325527, 324082, 324195], "A": [323693, 324098, 323993, 323752, 323774, 327293, 323660, 323863, 323917]}, "name": "E. Petya and Post", "statement": "Little Vasya\u2019s uncle is a postman. The post offices are located on one\r\ncircular road. Besides, each post office has its own gas station located\r\nnext to it. Petya\u2019s uncle works as follows: in the morning he should\r\nleave the house and go to some post office. In the office he receives a\r\nportion of letters and a car. Then he must drive in the given car\r\nexactly one round along the circular road and return to the starting\r\npost office (the uncle can drive along the circle in any direction,\r\ncounterclockwise or clockwise). Besides, since the car belongs to the\r\ncity post, it should also be fuelled with gasoline only at the Post\r\nOffice stations. The total number of stations equals to . One can fuel\r\nthe car at the -th station with no more than liters of gasoline.\r\nBesides, one can fuel the car no more than once at each station. Also,\r\nthe distance between the -st and the -nd station is kilometers, the\r\ndistance between the -nd and the -rd one is kilometers, ..., between the\r\n-th and the -th ones the distance is kilometers and between the -th and\r\nthe -st one the distance is kilometers. Petya\u2019s uncle\u2019s high-tech car\r\nuses only one liter of gasoline per kilometer. It is known that the\r\nstations are located so that the sum of all is equal to the sum of all .\r\nThe -th gas station and -th post office are very close, so the distance\r\nbetween them is kilometers.Thus, it becomes clear that if we start from\r\nsome post offices, then it is not always possible to drive one round\r\nalong a circular road. The uncle faces the following problem: to what\r\nstations can he go in the morning to be able to ride exactly one circle\r\nalong the circular road and visit all the post offices that are on\r\nit?Petya, who used to attend programming classes, has volunteered to\r\nhelp his uncle, but his knowledge turned out to be not enough, so he\r\nasks you to help him write the program that will solve the posed\r\nproblem.\r\n", "solutions": ["#include <iostream>\n#include <cstdio>\n#include <cstdlib>\n#include <algorithm>\n#include <vector>\n#include <set>\n#include <map>\n#include <cstring>\n#include <string>\n#include <ctime>\n\nusing namespace std;\n\n#define file \"e\"\n#define sqr(a) ((a)*(a))\n#define two(a) (1 << (a))\n\nint N, a[100005], b[100005], good[100005];\n\nlong long s[200005];\n\nset <pair <long long, int> > st;\n\nvoid Load ()\n{\n    scanf (\"%d\", &N);\n\n    for (int i = 0;i < N;i++)\n        scanf (\"%d\", &a[i]);\n    for (int i = 0;i < N;i++)\n        scanf (\"%d\", &b[i]);\n}\n\nvoid go (bool rev)\n{\n    st.clear();\n    s[0] = a[0] - b[0];\n    for (int i = 1;i < 2 * N;i++)\n        s[i] = s[i - 1] + a[i%N] - b[i%N];\n\n    for (int i = 0;i < N;i++)\n        st.insert (make_pair (s[i], i));\n\n    for (int i = 0;i < N;i++)\n    {\n        int cur = (*st.begin()).second;\n        if (s[cur] - (i > 0 ? s[i - 1] : 0) >= 0)\n            good[rev ? N - (i % N) - 1 : (i % N)] = 1;\n\n        st.erase (make_pair (s[i], i));\n        st.insert (make_pair (s[i + N], i + N));\n    }\n}\n\nvoid Solve ()\n{\n    go (0);\n    reverse (a, a + N);\n    reverse (b, b + N);\n    int t = b[0];\n    for (int i = 0;i < N - 1;i++)\n        b[i] = b[i + 1];\n    b[N - 1] = t;\n    go (1);\n\n    int ans = 0;\n    for (int i = 0;i < N;i++)\n        if (good[i]) ans++;\n    cout << ans << endl;\n\n    for (int i = 0;i < N;i++)\n        if (good[i]) printf (\"%d \", i + 1);\n}\n\nint main ()\n{\n    //freopen (file\".in\", \"r\", stdin);\n    //freopen (file\".out\", \"w\", stdout);\n\n    Load();\n    Solve();\n\n    return 0;\n}"], "input": "", "output": "", "tags": ["data structures", "dp"], "dificulty": "2000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/66/problem/E",
+    "problemId": "350",
+    "problem_idx": "E",
+    "shortId": "66E",
+    "contest_number": "66",
+    "problem_submissions": {
+        "C": [
+            325739,
+            327571,
+            324946,
+            325140,
+            326366,
+            326847,
+            325519,
+            325350,
+            326429,
+            326396,
+            326853,
+            325915,
+            529168,
+            325585
+        ],
+        "E": [
+            325379,
+            326033,
+            326058,
+            325948,
+            325798,
+            325317,
+            326222,
+            326357,
+            326861,
+            326864,
+            325631,
+            326306,
+            325725,
+            326990,
+            326457
+        ],
+        "D": [
+            324481,
+            325094,
+            324874,
+            325266,
+            325314,
+            325879,
+            326421,
+            325060,
+            326079,
+            324758
+        ],
+        "B": [
+            323886,
+            323924,
+            323929,
+            324358,
+            324393,
+            324432,
+            324043,
+            324939,
+            324073,
+            324145,
+            324109,
+            323877,
+            324237,
+            325527,
+            324082,
+            324195
+        ],
+        "A": [
+            323693,
+            324098,
+            323993,
+            323752,
+            323774,
+            327293,
+            323660,
+            323863,
+            323917
+        ]
+    },
+    "name": "E. Petya and Post",
+    "statement": "Little Vasya\u2019s uncle is a postman. The post offices are located on one\r\ncircular road. Besides, each post office has its own gas station located\r\nnext to it. Petya\u2019s uncle works as follows: in the morning he should\r\nleave the house and go to some post office. In the office he receives a\r\nportion of letters and a car. Then he must drive in the given car\r\nexactly one round along the circular road and return to the starting\r\npost office (the uncle can drive along the circle in any direction,\r\ncounterclockwise or clockwise). Besides, since the car belongs to the\r\ncity post, it should also be fuelled with gasoline only at the Post\r\nOffice stations. The total number of stations equals to . One can fuel\r\nthe car at the -th station with no more than liters of gasoline.\r\nBesides, one can fuel the car no more than once at each station. Also,\r\nthe distance between the -st and the -nd station is kilometers, the\r\ndistance between the -nd and the -rd one is kilometers, ..., between the\r\n-th and the -th ones the distance is kilometers and between the -th and\r\nthe -st one the distance is kilometers. Petya\u2019s uncle\u2019s high-tech car\r\nuses only one liter of gasoline per kilometer. It is known that the\r\nstations are located so that the sum of all is equal to the sum of all .\r\nThe -th gas station and -th post office are very close, so the distance\r\nbetween them is kilometers.Thus, it becomes clear that if we start from\r\nsome post offices, then it is not always possible to drive one round\r\nalong a circular road. The uncle faces the following problem: to what\r\nstations can he go in the morning to be able to ride exactly one circle\r\nalong the circular road and visit all the post offices that are on\r\nit?Petya, who used to attend programming classes, has volunteered to\r\nhelp his uncle, but his knowledge turned out to be not enough, so he\r\nasks you to help him write the program that will solve the posed\r\nproblem.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <cstdio>\n#include <cstdlib>\n#include <algorithm>\n#include <vector>\n#include <set>\n#include <map>\n#include <cstring>\n#include <string>\n#include <ctime>\n\nusing namespace std;\n\n#define file \"e\"\n#define sqr(a) ((a)*(a))\n#define two(a) (1 << (a))\n\nint N, a[100005], b[100005], good[100005];\n\nlong long s[200005];\n\nset <pair <long long, int> > st;\n\nvoid Load ()\n{\n    scanf (\"%d\", &N);\n\n    for (int i = 0;i < N;i++)\n        scanf (\"%d\", &a[i]);\n    for (int i = 0;i < N;i++)\n        scanf (\"%d\", &b[i]);\n}\n\nvoid go (bool rev)\n{\n    st.clear();\n    s[0] = a[0] - b[0];\n    for (int i = 1;i < 2 * N;i++)\n        s[i] = s[i - 1] + a[i%N] - b[i%N];\n\n    for (int i = 0;i < N;i++)\n        st.insert (make_pair (s[i], i));\n\n    for (int i = 0;i < N;i++)\n    {\n        int cur = (*st.begin()).second;\n        if (s[cur] - (i > 0 ? s[i - 1] : 0) >= 0)\n            good[rev ? N - (i % N) - 1 : (i % N)] = 1;\n\n        st.erase (make_pair (s[i], i));\n        st.insert (make_pair (s[i + N], i + N));\n    }\n}\n\nvoid Solve ()\n{\n    go (0);\n    reverse (a, a + N);\n    reverse (b, b + N);\n    int t = b[0];\n    for (int i = 0;i < N - 1;i++)\n        b[i] = b[i + 1];\n    b[N - 1] = t;\n    go (1);\n\n    int ans = 0;\n    for (int i = 0;i < N;i++)\n        if (good[i]) ans++;\n    cout << ans << endl;\n\n    for (int i = 0;i < N;i++)\n        if (good[i]) printf (\"%d \", i + 1);\n}\n\nint main ()\n{\n    //freopen (file\".in\", \"r\", stdin);\n    //freopen (file\".out\", \"w\", stdout);\n\n    Load();\n    Solve();\n\n    return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "data structures",
+        "dp"
+    ],
+    "dificulty": "2000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Petya and Post.json",
+    "editorial_link": "https://codeforces.com//blog/entry/1452",
+    "editorial": "First of all we divide our problem into 2 parts: consider stations from which we can start if we are moving in the clockwise direction and stations from which we can start if we are moving in the counterclockwise direction.\n\nObviously, if we know the solution of one of these problems, we know the solution of another problem.\n\nSo, we may assume that stations are located in the counterclockwise order and we are moving in the counterclockwise direction.\n\nConsider the following differences:\n\nD1=a1-b1,\n\nD2=(a1+a2)-(b1+b2),\n\nD3=(a1+a2+a3)-(b1+b2+b3),\n\n\u0085\n\nDn=(a1+a2+\u0085+an)-(b1+b2+\u0085+bn);\n\nObviously if one of Di\u0092s is less than a zero, then we cannot drive one round along the road. Let D = min(Di) \u0096 we will use it later.\n\nObviously, if D<0 then the first station cannot be the start station.\n\nNow, we can check with complexity O(n) whether the first station can be used as the starting point. Next, we want to show how we can check this for the second station with complexity O(1).\nTo show this, consider:\n\nE1=D1-(a1-b1),\n\nE2=D2-(a1-b1),\n\n\u0085\n\nEn=Dn-(a1-b1).\n\nNext, substitute Di in these equalities. We get the following:\n\nE1=(a1-b1)-(a1-b1)=0=(a2+a3+\u0085+an+a1)-(b2+b3+\u0085+bn+b1) \u0096 (a1+\u0085+an=b1+\u0085+bn=X)\n\nE2=(a1+a2)-(b1+b2)-(a1-b1)=a2-b2\n\nE3=(a1+a2+a3)-(b1+b2+b3)-(a1-b1)=(a2+a3)-(b2+b3)\n\n\u0085\n\nEn=(a1+a2+\u0085+an)-(b1+b2+\u0085+bn)-(a1-b1)=(a2+\u0085+an)-(b2+\u0085+bn)\n\nBut it\u0092s easy to see that number E1 has the same meaning for the second station as number D1 for the first one. So, we just have to check min(Ei)>=0. But Ei=Di-(a1-b1), so we have to check min(Di-(a1-b1))>=0. Now, we can see that if min(Di)=Dk, then min(Di-(a1-b1))=Dk-(a1-b1). So, if we know Dk, that we can check whether the second station can be the starting point with complexity O(1). Similarly, we can check this for the third, the fourth, \u0085, the nth stations."
+}

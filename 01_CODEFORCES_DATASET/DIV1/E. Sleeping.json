@@ -1,1 +1,92 @@
-{"link": "https://codeforces.com//contest/113/problem/E", "problemId": "596", "problem_idx": "E", "shortId": "113E", "contest_number": "113", "problem_submissions": {"E": [680388, 685905, 681683], "A": [677908, 674619, 675479, 675233, 675507, 675322, 676300, 675702, 674929, 678313, 683346, 682046, 676172, 676056], "B": [676745, 676166, 676692, 677267, 676920, 677563, 678285, 678205, 675093, 677719, 677894, 677545, 677448, 686002, 685992], "C": [676712, 678207, 677682, 678634, 679430, 680369, 680061, 678147, 687235, 682210, 681538, 681511, 680322, 680720, 681415, 681728, 685898, 685870], "D": [681282, 682967, 682949, 681414, 728339, 728337]}, "name": "E. Sleeping", "statement": "One day Vasya was lying in bed watching his electronic clock to fall\r\nasleep quicker.Vasya lives in a strange country, where days have hours,\r\nand every hour has minutes. Clock shows time in decimal number system,\r\nin format , where the string always has a fixed length equal to the\r\nnumber of digits in the decimal representation of number . To achieve\r\nthis, leading zeros are added if necessary. The string has a similar\r\nformat, and its length is always equal to the number of digits in the\r\ndecimal representation of number . For example, if , , then time equal\r\nto 13 hours and 75 minutes will be displayed as \"\".Vasya had been\r\nwatching the clock from hours minutes to hours minutes inclusive, and\r\nthen he fell asleep. Now he asks you to count how many times he saw the\r\nmoment at which at least digits changed on the clock simultaneously.For\r\nexample, when switching 04:19 04:20 two digits change. When switching\r\n23:59 00:00, four digits change.Consider that Vasya has been watching\r\nthe clock for strictly less than one day. Note that the last time Vasya\r\nsaw on the clock before falling asleep was \"\". That is, Vasya the moment\r\nat which time \"\" switched to the next value.\r\n", "solutions": ["//  Codeforces Beta Round #86\n\n#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cmath>\n#include <cassert>\n#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n#include <queue>\n#include <set>\n#include <map>\n#include <utility>\n#include <numeric>\n#include <algorithm>\n#include <bitset>\n#include <complex>\n\nusing namespace std;\n\ntypedef unsigned uint;\ntypedef long long Int;\ntypedef vector<int> vint;\ntypedef pair<int,int> pint;\n#define mp make_pair\n\ntemplate<class T> void pv(T a, T b) { for (T i = a; i != b; ++i) cout << *i << \" \"; cout << endl; }\ntemplate<class T> void pvp(T a, T b) { for (T i = a; i != b; ++i) cout << \"(\" << i->first << \", \" << i->second << \") \"; cout << endl; }\ntemplate<class T> void chmin(T &t, T f) { if (t > f) t = f; }\ntemplate<class T> void chmax(T &t, T f) { if (t < f) t = f; }\nint in_c() { int c; for (; (c = getchar()) <= ' '; ) { if (!~c) throw ~0; } return c; }\nint in() { int x = 0, c; for (; (uint)((c = getchar()) - '0') >= 10; ) { if (c == '-') return -in(); if (!~c) throw ~0; } do { x = (x << 3) + (x << 1) + (c - '0'); } while ((uint)((c = getchar()) - '0') < 10); return x; }\nInt In() { Int x = 0, c; for (; (uint)((c = getchar()) - '0') >= 10; ) { if (c == '-') return -In(); if (!~c) throw ~0; } do { x = (x << 3) + (x << 1) + (c - '0'); } while ((uint)((c = getchar()) - '0') < 10); return x; }\n\nInt TEN[110];\n\nint changeTo0(Int x) {\n    ostringstream os;\n    os << x;\n    string s = os.str();\n    return s.size() - count(s.begin(), s.end(), '0');\n}\n\nInt A, B;\n\nInt solve(Int a, int k) {\n    Int ret = 0;\n    \n    if (k <= 0) {\n        return a;\n    }\n    \n    if (k <= 15) {\n        Int tmp;\n        tmp = a / TEN[k - 1];\n        ret += tmp;\n    }\n    \n    return ret;\n}\nInt solve(Int a, Int b, int k) {\n    Int ret = 0;\n    \n    if (k <= 0) {\n        return a * B + b;\n    }\n    \n    //  only B\n    if (k <= 15) {\n        Int tmp;\n        tmp = (B - 1) / TEN[k - 1];\n        ret += tmp * a;\n        tmp = b / TEN[k - 1];\n        ret += tmp;\n    }\n    \n    //  with A\n    int dk = changeTo0(B - 1);\n    ret += solve(a, k - dk);\n    \n//cout<<\"solve \"<<a<<\" \"<<b<<\" \"<<k<<\" : \"<<ret<<endl;\n    return ret;\n}\n\nint main() {\n    int K;\n    Int a0, b0;\n    Int a1, b1;\n    \n    int i;\n    TEN[0] = 1;\n    for (i = 1; i < 30; ++i) {\n        TEN[i] = TEN[i - 1] * 10;\n    }\n    \n    for (; cin >> A >> B >> K >> a0 >> b0 >> a1 >> b1; ) {\n        Int ans = 0;\n        if (a0 * B + b0 <= a1 * B + b1) {\n            ans += solve(a1, b1, K);\n            ans -= solve(a0, b0, K);\n        } else {\n            ans += solve(A - 1, B - 1, K);\n            ans -= solve(a0, b0, K);\n            ans += solve(a1, b1, K);\n            if (changeTo0(A - 1) + changeTo0(B - 1) >= K) {\n                ans += 1;\n            }\n        }\n        cout << ans << endl;\n    }\n    \n    return 0;\n}\n"], "input": "", "output": "", "tags": ["combinatorics", "implementation", "math"], "dificulty": "2700", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/113/problem/E",
+    "problemId": "596",
+    "problem_idx": "E",
+    "shortId": "113E",
+    "contest_number": "113",
+    "problem_submissions": {
+        "E": [
+            680388,
+            685905,
+            681683
+        ],
+        "A": [
+            677908,
+            674619,
+            675479,
+            675233,
+            675507,
+            675322,
+            676300,
+            675702,
+            674929,
+            678313,
+            683346,
+            682046,
+            676172,
+            676056
+        ],
+        "B": [
+            676745,
+            676166,
+            676692,
+            677267,
+            676920,
+            677563,
+            678285,
+            678205,
+            675093,
+            677719,
+            677894,
+            677545,
+            677448,
+            686002,
+            685992
+        ],
+        "C": [
+            676712,
+            678207,
+            677682,
+            678634,
+            679430,
+            680369,
+            680061,
+            678147,
+            687235,
+            682210,
+            681538,
+            681511,
+            680322,
+            680720,
+            681415,
+            681728,
+            685898,
+            685870
+        ],
+        "D": [
+            681282,
+            682967,
+            682949,
+            681414,
+            728339,
+            728337
+        ]
+    },
+    "name": "E. Sleeping",
+    "statement": "One day Vasya was lying in bed watching his electronic clock to fall\r\nasleep quicker.Vasya lives in a strange country, where days have hours,\r\nand every hour has minutes. Clock shows time in decimal number system,\r\nin format , where the string always has a fixed length equal to the\r\nnumber of digits in the decimal representation of number . To achieve\r\nthis, leading zeros are added if necessary. The string has a similar\r\nformat, and its length is always equal to the number of digits in the\r\ndecimal representation of number . For example, if , , then time equal\r\nto 13 hours and 75 minutes will be displayed as \"\".Vasya had been\r\nwatching the clock from hours minutes to hours minutes inclusive, and\r\nthen he fell asleep. Now he asks you to count how many times he saw the\r\nmoment at which at least digits changed on the clock simultaneously.For\r\nexample, when switching 04:19 04:20 two digits change. When switching\r\n23:59 00:00, four digits change.Consider that Vasya has been watching\r\nthe clock for strictly less than one day. Note that the last time Vasya\r\nsaw on the clock before falling asleep was \"\". That is, Vasya the moment\r\nat which time \"\" switched to the next value.\r\n",
+    "solutions": [
+        "//  Codeforces Beta Round #86\n\n#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cmath>\n#include <cassert>\n#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n#include <queue>\n#include <set>\n#include <map>\n#include <utility>\n#include <numeric>\n#include <algorithm>\n#include <bitset>\n#include <complex>\n\nusing namespace std;\n\ntypedef unsigned uint;\ntypedef long long Int;\ntypedef vector<int> vint;\ntypedef pair<int,int> pint;\n#define mp make_pair\n\ntemplate<class T> void pv(T a, T b) { for (T i = a; i != b; ++i) cout << *i << \" \"; cout << endl; }\ntemplate<class T> void pvp(T a, T b) { for (T i = a; i != b; ++i) cout << \"(\" << i->first << \", \" << i->second << \") \"; cout << endl; }\ntemplate<class T> void chmin(T &t, T f) { if (t > f) t = f; }\ntemplate<class T> void chmax(T &t, T f) { if (t < f) t = f; }\nint in_c() { int c; for (; (c = getchar()) <= ' '; ) { if (!~c) throw ~0; } return c; }\nint in() { int x = 0, c; for (; (uint)((c = getchar()) - '0') >= 10; ) { if (c == '-') return -in(); if (!~c) throw ~0; } do { x = (x << 3) + (x << 1) + (c - '0'); } while ((uint)((c = getchar()) - '0') < 10); return x; }\nInt In() { Int x = 0, c; for (; (uint)((c = getchar()) - '0') >= 10; ) { if (c == '-') return -In(); if (!~c) throw ~0; } do { x = (x << 3) + (x << 1) + (c - '0'); } while ((uint)((c = getchar()) - '0') < 10); return x; }\n\nInt TEN[110];\n\nint changeTo0(Int x) {\n    ostringstream os;\n    os << x;\n    string s = os.str();\n    return s.size() - count(s.begin(), s.end(), '0');\n}\n\nInt A, B;\n\nInt solve(Int a, int k) {\n    Int ret = 0;\n    \n    if (k <= 0) {\n        return a;\n    }\n    \n    if (k <= 15) {\n        Int tmp;\n        tmp = a / TEN[k - 1];\n        ret += tmp;\n    }\n    \n    return ret;\n}\nInt solve(Int a, Int b, int k) {\n    Int ret = 0;\n    \n    if (k <= 0) {\n        return a * B + b;\n    }\n    \n    //  only B\n    if (k <= 15) {\n        Int tmp;\n        tmp = (B - 1) / TEN[k - 1];\n        ret += tmp * a;\n        tmp = b / TEN[k - 1];\n        ret += tmp;\n    }\n    \n    //  with A\n    int dk = changeTo0(B - 1);\n    ret += solve(a, k - dk);\n    \n//cout<<\"solve \"<<a<<\" \"<<b<<\" \"<<k<<\" : \"<<ret<<endl;\n    return ret;\n}\n\nint main() {\n    int K;\n    Int a0, b0;\n    Int a1, b1;\n    \n    int i;\n    TEN[0] = 1;\n    for (i = 1; i < 30; ++i) {\n        TEN[i] = TEN[i - 1] * 10;\n    }\n    \n    for (; cin >> A >> B >> K >> a0 >> b0 >> a1 >> b1; ) {\n        Int ans = 0;\n        if (a0 * B + b0 <= a1 * B + b1) {\n            ans += solve(a1, b1, K);\n            ans -= solve(a0, b0, K);\n        } else {\n            ans += solve(A - 1, B - 1, K);\n            ans -= solve(a0, b0, K);\n            ans += solve(a1, b1, K);\n            if (changeTo0(A - 1) + changeTo0(B - 1) >= K) {\n                ans += 1;\n            }\n        }\n        cout << ans << endl;\n    }\n    \n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "combinatorics",
+        "implementation",
+        "math"
+    ],
+    "dificulty": "2700",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\E. Sleeping.json",
+    "editorial_link": "https://codeforces.com//blog/entry/2627",
+    "editorial": "Let's consider function F(x) (where x is some moment of time) ?\u0097? amount of moments from 0..00:00..00 up to x (and x doesn't switch to next moment ) when n k or more digits will be changed . The answer will be F(h2:?m2)?-?F(h1:?m1), also it's necessary not to forget that if h2:?m2?<?h1:?m1, then F(h2:?m2) will be enlarged by a day.\nNow we will learn how to calculate F(x). To start with, let's count amount of such numbers when hour will remain the same. As hour is not changing, then k or more digits have to be changed in minutes, but in this case we need our number of minutes to be of the following form:\na..a99...9, where a means any digit,and at the end we have k?-?1 nines. So k digits are changing every moment that is divisible by 10k?-?1.\nSo, the total amount of such moments (without changing an hour) is , wherehx ? mx are numbers of hour and minute in time moment x, and [] is integer part.\nNow let's deal with such moments when hour is changing. If this happens, then minute turns from m?-?1 to 0, and we have y different digits, where y is amount of non-zero digits of number m?-?1. Therefore we have to count for hours ( in similar way) amount of moments, when k?-?y or more digits will be changed. k?-?y digits are changing every moment that is divisible by 10max(0,?k?-?y?-?1), this means that total amount of such moments is . And the final value of F is ."
+}

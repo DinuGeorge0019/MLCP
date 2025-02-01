@@ -1,1 +1,75 @@
-{"link": "https://codeforces.com//contest/99/problem/B", "problemId": "518", "problem_idx": "B", "shortId": "99B", "contest_number": "99", "problem_submissions": {"A": [558451, 555523, 555493, 555645, 555572, 555694, 555884, 555663, 555583, 555977, 555531, 556191, 555540], "B": [557712, 556216, 556603, 556728, 556497, 558103, 556546, 556687, 556371, 556520, 556804, 557248, 556558, 556908, 557909], "C": [557268, 556724, 558556, 558050, 558208, 557191, 557830, 557791, 558074, 558035, 558343, 558125, 559134, 558348, 559705, 559122]}, "name": "B. Help Chef Gerasim", "statement": "In a far away kingdom young pages help to set the table for the King. As\r\nthey are terribly mischievous, one needs to keep an eye on the control\r\nwhether they have set everything correctly. This time the royal chef\r\nGerasim had the impression that the pages have played a prank again:\r\nthey had poured the juice from one cup to another. Now Gerasim wants to\r\ncheck his hypothesis. The good thing is that chef Gerasim always pour\r\nthe same number of milliliters of juice to all cups in the royal\r\nkitchen. Having thoroughly measured the juice in each cup, Gerasim asked\r\nyou to write a program that will determine from which cup juice was\r\npoured to which one; otherwise, the program should determine that this\r\ntime the pages set the table diligently.To simplify your task we shall\r\nconsider the cups to be bottomless so that the juice never overfills a\r\ncup and pours out, however much it can be. Besides, by some strange\r\nreason in a far away kingdom one can only pour to a cup or from one cup\r\nto another an integer number of milliliters of juice.\r\n", "solutions": ["#include <cstdlib>\n#include <cctype>\n#include <cstring>\n#include <cstdio>\n#include <cmath>\n#include <string>\n#include <iostream>\n#include <sstream>\n#include <map>\n#include <set>\n#include <queue>\n#include <stack>\n#include <fstream>\n#include <numeric>\n#include <bitset>\n#include <list>\n#include <stdexcept>\n#include <functional>\n#include <utility>\n#include <ctime>\n#include <algorithm>\nusing namespace std;\n\nint n, sum, a[21000];\nint main()\n{\n    scanf(\"%d\", &n);\n    sum = 0;\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", a + i);\n        sum += a[i];\n    }\n    if (sum % n == 0) {\n        sum /= n;\n        int cc = 0;\n        for (int i = 0; i < n; i++)\n            if (a[i] == sum)\n                cc++;\n        if (cc == n)\n            puts(\"Exemplary pages.\");\n        else if (cc == n - 2) {\n            int l, r;\n            for (int i = 0; i < n; i++)\n                if (a[i] > sum)\n                    l = i;\n            for (int i = 0; i < n; i++)\n                if (a[i] < sum)\n                    r = i;\n            printf(\"%d ml. from cup #%d to cup #%d.\\n\", a[l] - sum, r + 1, l + 1);\n        } else\n            puts(\"Unrecoverable configuration.\");\n    } else\n        puts(\"Unrecoverable configuration.\");\n}"], "input": "", "output": "", "tags": ["implementation", "sortings"], "dificulty": "1300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/99/problem/B",
+    "problemId": "518",
+    "problem_idx": "B",
+    "shortId": "99B",
+    "contest_number": "99",
+    "problem_submissions": {
+        "A": [
+            558451,
+            555523,
+            555493,
+            555645,
+            555572,
+            555694,
+            555884,
+            555663,
+            555583,
+            555977,
+            555531,
+            556191,
+            555540
+        ],
+        "B": [
+            557712,
+            556216,
+            556603,
+            556728,
+            556497,
+            558103,
+            556546,
+            556687,
+            556371,
+            556520,
+            556804,
+            557248,
+            556558,
+            556908,
+            557909
+        ],
+        "C": [
+            557268,
+            556724,
+            558556,
+            558050,
+            558208,
+            557191,
+            557830,
+            557791,
+            558074,
+            558035,
+            558343,
+            558125,
+            559134,
+            558348,
+            559705,
+            559122
+        ]
+    },
+    "name": "B. Help Chef Gerasim",
+    "statement": "In a far away kingdom young pages help to set the table for the King. As\r\nthey are terribly mischievous, one needs to keep an eye on the control\r\nwhether they have set everything correctly. This time the royal chef\r\nGerasim had the impression that the pages have played a prank again:\r\nthey had poured the juice from one cup to another. Now Gerasim wants to\r\ncheck his hypothesis. The good thing is that chef Gerasim always pour\r\nthe same number of milliliters of juice to all cups in the royal\r\nkitchen. Having thoroughly measured the juice in each cup, Gerasim asked\r\nyou to write a program that will determine from which cup juice was\r\npoured to which one; otherwise, the program should determine that this\r\ntime the pages set the table diligently.To simplify your task we shall\r\nconsider the cups to be bottomless so that the juice never overfills a\r\ncup and pours out, however much it can be. Besides, by some strange\r\nreason in a far away kingdom one can only pour to a cup or from one cup\r\nto another an integer number of milliliters of juice.\r\n",
+    "solutions": [
+        "#include <cstdlib>\n#include <cctype>\n#include <cstring>\n#include <cstdio>\n#include <cmath>\n#include <string>\n#include <iostream>\n#include <sstream>\n#include <map>\n#include <set>\n#include <queue>\n#include <stack>\n#include <fstream>\n#include <numeric>\n#include <bitset>\n#include <list>\n#include <stdexcept>\n#include <functional>\n#include <utility>\n#include <ctime>\n#include <algorithm>\nusing namespace std;\n\nint n, sum, a[21000];\nint main()\n{\n    scanf(\"%d\", &n);\n    sum = 0;\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", a + i);\n        sum += a[i];\n    }\n    if (sum % n == 0) {\n        sum /= n;\n        int cc = 0;\n        for (int i = 0; i < n; i++)\n            if (a[i] == sum)\n                cc++;\n        if (cc == n)\n            puts(\"Exemplary pages.\");\n        else if (cc == n - 2) {\n            int l, r;\n            for (int i = 0; i < n; i++)\n                if (a[i] > sum)\n                    l = i;\n            for (int i = 0; i < n; i++)\n                if (a[i] < sum)\n                    r = i;\n            printf(\"%d ml. from cup #%d to cup #%d.\\n\", a[l] - sum, r + 1, l + 1);\n        } else\n            puts(\"Unrecoverable configuration.\");\n    } else\n        puts(\"Unrecoverable configuration.\");\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation",
+        "sortings"
+    ],
+    "dificulty": "1300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Help Chef Gerasim.json",
+    "editorial_link": "https://codeforces.com//blog/entry/2326",
+    "editorial": "Problem B was easier considering the mathematical nature of the problem. There were a few cases to take care of and a score of 900+ was easily get able. On summing up the volumes if they don't divide equally among the n cups, then the answer is unrecoverable. If all of the values are equal to the average then the pages did not play any prank. On the other hand if more than 2 cups deviate from the average the answer is again unrecoverable. If the number of cups that deviate is 2. We can find the cups which were used for transfer and find the volume transferred by calculating the difference of the values from the mean."
+}

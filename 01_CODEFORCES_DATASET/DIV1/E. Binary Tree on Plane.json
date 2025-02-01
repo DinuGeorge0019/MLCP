@@ -1,1 +1,105 @@
-{"link": "https://codeforces.com//contest/277/problem/E", "problemId": "2671", "problem_idx": "E", "shortId": "277E", "contest_number": "277", "problem_submissions": {"E": [16290898, 3212642, 3214277, 3216560, 3217192, 3212882, 3213203, 3212293, 3216557, 3218831, 3213358, 3688854, 3214438, 3216817, 3212334, 3216978, 3215195, 3212023, 3214481], "C": [3217751, 3214405, 3212237, 3213774, 3214065, 3216032, 3215933, 3219588, 3213776, 3213602, 3234441, 3220825, 3214706, 3214937, 3218190], "D": [3215251, 3217272, 3218795, 3236907, 3258757], "A": [3211100, 3209085, 3208310, 3208691, 3208408, 3209073, 3209691, 3209304, 3209119, 3208608, 3209266, 3209939, 3210030, 3208575, 3209624, 3209909, 3208646, 3209846], "B": [3210150, 3226761, 3211703, 3216606, 3211138, 3211051, 3213290, 3212043, 3215513, 3212912, 3218799, 3212960, 3216246]}, "name": "E. Binary Tree on Plane", "statement": "A root tree is a directed acyclic graph that contains one node (root),\r\nfrom which there is exactly one path to any other node.A root tree is\r\nbinary if each node has at most two outgoing arcs.When a binary tree is\r\npainted on the plane, all arcs should be directed from top to bottom.\r\nThat is, each arc going from to must meet the condition .You\u2019ve been\r\ngiven the coordinates of all tree nodes. Your task is to connect these\r\nnodes by arcs so as to get the binary root tree and make the total\r\nlength of the arcs minimum. All arcs of the built tree must be directed\r\nfrom top to bottom.\r\n", "solutions": ["#include <iostream>\n#include <sstream>\n#include <fstream>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <stack>\n#include <set>\n#include <map>\n#include <algorithm>\n#include <functional>\n#include <utility>\n#include <bitset>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstdio>\n\nusing namespace std;\n\n#define REP(i,n) for((i)=0;(i)<(int)(n);(i)++)\n#define snuke(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n\n#define COST_INF 1.0E+9\n\ntemplate <typename T> class MinCostFlow{\n\tprivate:\n\t\n\tstruct edge{int to,cap; T cost; int rev;};\n\t\n\tint V;\n\tvector <vector <edge> > adj;\n\tvector <T> pot;\n\t\n\tpair <int, T> dijkstra(int s, int t, int FLOW_BOUND){\n\t\tint i;\n\t\t\n\t\tvector <int> used(V, 0);\n\t\tvector <T> dist(V, COST_INF);\n\t\tvector <pair <int, int> > path(V, make_pair(-1, -1));\n\t\t\n\t\tpriority_queue <pair <T, int> > q;\n\t\tdist[s] = 0;\n\t\tq.push(make_pair(0, s));\n\t\t\n\t\twhile(!q.empty()){\n\t\t\tint x = q.top().second;\n\t\t\tq.pop();\n\t\t\tif(used[x]) continue;\n\t\t\tused[x] = true;\n\t\t\t\n\t\t\tREP(i,adj[x].size()){\n\t\t\t\tedge e = adj[x][i];\n\t\t\t\tint y = e.to;\n\t\t\t\tif(e.cap > 0){\n\t\t\t\t\tT d = dist[x] + e.cost + pot[x] - pot[y];\n\t\t\t\t\tif(d < dist[y]){\n\t\t\t\t\t\tdist[y] = d;\n\t\t\t\t\t\tpath[y] = make_pair(x, i);\n\t\t\t\t\t\tq.push(make_pair(-d, y));\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\t\n\t\tREP(i,V) pot[i] += dist[i];\n\t\t\n\t\tif(dist[t] == COST_INF) return make_pair(0, 0);\n\t\t\n\t\tint f = FLOW_BOUND;\n\t\tT sum = 0;\n\t\t\n\t\tint x = t;\n\t\twhile(x != s){\n\t\t\tint y = path[x].first;\n\t\t\tint id = path[x].second;\n\t\t\tsum += adj[y][id].cost;\n\t\t\tf = min(f, adj[y][id].cap);\n\t\t\tx = y;\n\t\t}\n\t\t\n\t\tx = t;\n\t\twhile(x != s){\n\t\t\tint y = path[x].first;\n\t\t\tint id = path[x].second;\n\t\t\tadj[y][id].cap -= f;\n\t\t\tint id2 = adj[y][id].rev;\n\t\t\tadj[x][id2].cap += f;\n\t\t\tx = y;\n\t\t}\n\t\t\n\t\treturn make_pair(f, f * sum);\n\t}\n\t\n\tpublic:\n\t\n\tMinCostFlow(int n){\n\t\tV = n;\n\t\tadj.resize(V, vector <edge>(0));\n\t\tpot.resize(V, 0);\n\t}\n\t\n\tvoid add_edge(int s, int t, int f, T c){\n\t\tedge e1 = {t, f, c, adj[t].size()};\n\t\tedge e2 = {s, 0, -c, adj[s].size()};\n\t\tadj[s].push_back(e1);\n\t\tadj[t].push_back(e2);\n\t}\n\t\n\tpair <int, T> mincostflow(int s, int t, int FLOW_BOUND = (1<<29)){\n\t\tpair <int, T> ans = make_pair(0, 0);\n\t\t\n\t\twhile(FLOW_BOUND > 0){\n\t\t\tpair <int, T> tmp = dijkstra(s, t, FLOW_BOUND);\n\t\t\tif(tmp.first == 0) break;\n\t\t\tans.first += tmp.first;\n\t\t\tans.second += tmp.second;\n\t\t\tFLOW_BOUND -= tmp.first;\n\t\t}\n\t\t\n\t\treturn ans;\n\t}\n\t\n};\n\nint N;\nint x[410],y[410];\n\nint main(void){\n\tint i,j;\n\t\n\tcin >> N;\n\tREP(i,N) cin >> x[i] >> y[i];\n\t\n\tMinCostFlow <double> mcf(2*N+2);\n\t\n\tREP(i,N){\n\t\tbool found = false;\n\t\tREP(j,N) if(y[j] > y[i]){\n\t\t\tfound = true;\n\t\t\tdouble dx = x[i] - x[j];\n\t\t\tdouble dy = y[i] - y[j];\n\t\t\tdouble d = sqrt(dx * dx + dy * dy);\n\t\t\tmcf.add_edge(i, N+j, 1, d);\n\t\t}\n\t\t\n\t\tif(found) mcf.add_edge(2*N, i, 1, 0);\n\t\tmcf.add_edge(N+i, 2*N+1, 2, 0);\n\t}\n\t\n\tpair <int, double> p = mcf.mincostflow(2*N, 2*N+1);\n\tdouble ans = p.second;\n\tif(p.first != N-1) ans = -1;\n\t\n\tprintf(\"%.9f\\n\", ans);\n\t\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["flows", "trees"], "dificulty": "2400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/277/problem/E",
+    "problemId": "2671",
+    "problem_idx": "E",
+    "shortId": "277E",
+    "contest_number": "277",
+    "problem_submissions": {
+        "E": [
+            16290898,
+            3212642,
+            3214277,
+            3216560,
+            3217192,
+            3212882,
+            3213203,
+            3212293,
+            3216557,
+            3218831,
+            3213358,
+            3688854,
+            3214438,
+            3216817,
+            3212334,
+            3216978,
+            3215195,
+            3212023,
+            3214481
+        ],
+        "C": [
+            3217751,
+            3214405,
+            3212237,
+            3213774,
+            3214065,
+            3216032,
+            3215933,
+            3219588,
+            3213776,
+            3213602,
+            3234441,
+            3220825,
+            3214706,
+            3214937,
+            3218190
+        ],
+        "D": [
+            3215251,
+            3217272,
+            3218795,
+            3236907,
+            3258757
+        ],
+        "A": [
+            3211100,
+            3209085,
+            3208310,
+            3208691,
+            3208408,
+            3209073,
+            3209691,
+            3209304,
+            3209119,
+            3208608,
+            3209266,
+            3209939,
+            3210030,
+            3208575,
+            3209624,
+            3209909,
+            3208646,
+            3209846
+        ],
+        "B": [
+            3210150,
+            3226761,
+            3211703,
+            3216606,
+            3211138,
+            3211051,
+            3213290,
+            3212043,
+            3215513,
+            3212912,
+            3218799,
+            3212960,
+            3216246
+        ]
+    },
+    "name": "E. Binary Tree on Plane",
+    "statement": "A root tree is a directed acyclic graph that contains one node (root),\r\nfrom which there is exactly one path to any other node.A root tree is\r\nbinary if each node has at most two outgoing arcs.When a binary tree is\r\npainted on the plane, all arcs should be directed from top to bottom.\r\nThat is, each arc going from to must meet the condition .You\u2019ve been\r\ngiven the coordinates of all tree nodes. Your task is to connect these\r\nnodes by arcs so as to get the binary root tree and make the total\r\nlength of the arcs minimum. All arcs of the built tree must be directed\r\nfrom top to bottom.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <sstream>\n#include <fstream>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <stack>\n#include <set>\n#include <map>\n#include <algorithm>\n#include <functional>\n#include <utility>\n#include <bitset>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstdio>\n\nusing namespace std;\n\n#define REP(i,n) for((i)=0;(i)<(int)(n);(i)++)\n#define snuke(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n\n#define COST_INF 1.0E+9\n\ntemplate <typename T> class MinCostFlow{\n\tprivate:\n\t\n\tstruct edge{int to,cap; T cost; int rev;};\n\t\n\tint V;\n\tvector <vector <edge> > adj;\n\tvector <T> pot;\n\t\n\tpair <int, T> dijkstra(int s, int t, int FLOW_BOUND){\n\t\tint i;\n\t\t\n\t\tvector <int> used(V, 0);\n\t\tvector <T> dist(V, COST_INF);\n\t\tvector <pair <int, int> > path(V, make_pair(-1, -1));\n\t\t\n\t\tpriority_queue <pair <T, int> > q;\n\t\tdist[s] = 0;\n\t\tq.push(make_pair(0, s));\n\t\t\n\t\twhile(!q.empty()){\n\t\t\tint x = q.top().second;\n\t\t\tq.pop();\n\t\t\tif(used[x]) continue;\n\t\t\tused[x] = true;\n\t\t\t\n\t\t\tREP(i,adj[x].size()){\n\t\t\t\tedge e = adj[x][i];\n\t\t\t\tint y = e.to;\n\t\t\t\tif(e.cap > 0){\n\t\t\t\t\tT d = dist[x] + e.cost + pot[x] - pot[y];\n\t\t\t\t\tif(d < dist[y]){\n\t\t\t\t\t\tdist[y] = d;\n\t\t\t\t\t\tpath[y] = make_pair(x, i);\n\t\t\t\t\t\tq.push(make_pair(-d, y));\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\t\n\t\tREP(i,V) pot[i] += dist[i];\n\t\t\n\t\tif(dist[t] == COST_INF) return make_pair(0, 0);\n\t\t\n\t\tint f = FLOW_BOUND;\n\t\tT sum = 0;\n\t\t\n\t\tint x = t;\n\t\twhile(x != s){\n\t\t\tint y = path[x].first;\n\t\t\tint id = path[x].second;\n\t\t\tsum += adj[y][id].cost;\n\t\t\tf = min(f, adj[y][id].cap);\n\t\t\tx = y;\n\t\t}\n\t\t\n\t\tx = t;\n\t\twhile(x != s){\n\t\t\tint y = path[x].first;\n\t\t\tint id = path[x].second;\n\t\t\tadj[y][id].cap -= f;\n\t\t\tint id2 = adj[y][id].rev;\n\t\t\tadj[x][id2].cap += f;\n\t\t\tx = y;\n\t\t}\n\t\t\n\t\treturn make_pair(f, f * sum);\n\t}\n\t\n\tpublic:\n\t\n\tMinCostFlow(int n){\n\t\tV = n;\n\t\tadj.resize(V, vector <edge>(0));\n\t\tpot.resize(V, 0);\n\t}\n\t\n\tvoid add_edge(int s, int t, int f, T c){\n\t\tedge e1 = {t, f, c, adj[t].size()};\n\t\tedge e2 = {s, 0, -c, adj[s].size()};\n\t\tadj[s].push_back(e1);\n\t\tadj[t].push_back(e2);\n\t}\n\t\n\tpair <int, T> mincostflow(int s, int t, int FLOW_BOUND = (1<<29)){\n\t\tpair <int, T> ans = make_pair(0, 0);\n\t\t\n\t\twhile(FLOW_BOUND > 0){\n\t\t\tpair <int, T> tmp = dijkstra(s, t, FLOW_BOUND);\n\t\t\tif(tmp.first == 0) break;\n\t\t\tans.first += tmp.first;\n\t\t\tans.second += tmp.second;\n\t\t\tFLOW_BOUND -= tmp.first;\n\t\t}\n\t\t\n\t\treturn ans;\n\t}\n\t\n};\n\nint N;\nint x[410],y[410];\n\nint main(void){\n\tint i,j;\n\t\n\tcin >> N;\n\tREP(i,N) cin >> x[i] >> y[i];\n\t\n\tMinCostFlow <double> mcf(2*N+2);\n\t\n\tREP(i,N){\n\t\tbool found = false;\n\t\tREP(j,N) if(y[j] > y[i]){\n\t\t\tfound = true;\n\t\t\tdouble dx = x[i] - x[j];\n\t\t\tdouble dy = y[i] - y[j];\n\t\t\tdouble d = sqrt(dx * dx + dy * dy);\n\t\t\tmcf.add_edge(i, N+j, 1, d);\n\t\t}\n\t\t\n\t\tif(found) mcf.add_edge(2*N, i, 1, 0);\n\t\tmcf.add_edge(N+i, 2*N+1, 2, 0);\n\t}\n\t\n\tpair <int, double> p = mcf.mincostflow(2*N, 2*N+1);\n\tdouble ans = p.second;\n\tif(p.first != N-1) ans = -1;\n\t\n\tprintf(\"%.9f\\n\", ans);\n\t\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "flows",
+        "trees"
+    ],
+    "dificulty": "2400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\E. Binary Tree on Plane.json",
+    "editorial_link": "https://codeforces.com//blog/entry/6815",
+    "editorial": "If there is no \"binary\" restriction, the solution is simple greedy. Each\r\nnode of the tree (except the root) must have exactly 1 parent, and each\r\nnode could be parent for any number of nodes. Let\u00e2\u0080\u0099s assign for each node\r\n(except the root) such a node as a parent, so that and distance between\r\nand is minimal possible. Renumerate all the nodes in order of\r\nnon-increasing of . Now it\u00e2\u0080\u0099s clear that (). So we\u00e2\u0080\u0099ve just built a\r\ndirected tree with all the arcs going downwards. And it has minimal\r\npossible length. Let\u00e2\u0080\u0099s recall the \"binary\" restriction. And realize that\r\nit doesn\u00e2\u0080\u0099t really change anything: greedy transforms to\r\nmin-cost-max-flow on the same distance matrix as edge\u00e2\u0080\u0099s costs, but each\r\nnode must have no more than 2 incoming flow units.\r\n"
+}

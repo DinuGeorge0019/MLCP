@@ -1,1 +1,91 @@
-{"link": "https://codeforces.com//contest/450/problem/C", "problemId": "11562", "problem_idx": "C", "shortId": "450C", "contest_number": "450", "problem_submissions": {"D": [7172300, 7189969, 7168692, 7168762, 7167893, 7173883, 7186151, 7172954, 7166069, 7167002], "C": [7163293, 7165488, 7162708, 7162772, 7171630, 7164674, 7167537, 7166382, 7164102, 7164882, 7160663, 7166275], "B": [7158888, 7159995, 7159436, 7163539, 7160088, 7159602, 7162497, 7161041, 7159252, 7161370, 7160845, 7161199, 7162311, 7159103, 7162904], "A": [7157648, 7158191, 7157937, 7159395, 7157906, 7158093, 7157984, 7167878, 7158537, 7157963, 7160445, 7158752, 7157827, 7158223, 7157598, 7158189], "E": [7171266, 7172113, 7171025]}, "name": "C. Jzzhu and Chocolate", "statement": "Jzzhu has a big rectangular chocolate bar that consists of unit squares.\r\nHe wants to cut this bar exactly times. Each cut must meet the following\r\nrequirements: each cut should be straight (horizontal or vertical); each\r\ncut should go along edges of unit squares (it is prohibited to divide\r\nany unit chocolate square with cut); each cut should go inside the whole\r\nchocolate bar, and all cuts must be distinct. The picture below shows a\r\npossible way to cut a chocolate for times. Imagine Jzzhu have made cuts\r\nand the big chocolate is splitted into several pieces. Consider the\r\nsmallest (by area) piece of the chocolate, Jzzhu wants this piece to be\r\nas large as possible. What is the maximum possible area of smallest\r\npiece he can get with exactly cuts? The area of a chocolate piece is the\r\nnumber of unit squares in it.\r\n", "solutions": ["#include<set>\n#include<map>\n#include<list>\n#include<queue>\n#include<stack>\n#include<string>\n#include<math.h>\n#include<time.h>\n#include<vector>\n#include<bitset>\n#include<memory>\n#include<utility>\n#include<fstream>\n#include<stdio.h>\n#include<iostream>\n#include<stdlib.h>\n#include<string.h>\n#include<algorithm>\nusing namespace std;\nint main()\n{\n    #ifdef absi2011\n    freopen(\"input.txt\",\"r\",stdin);\n    freopen(\"output.txt\",\"w\",stdout);\n    #endif\n    int n,m,k;\n    cin>>n>>m>>k;\n    int i;\n    long long maxans=-1;\n    for (i=1;i*i<=n;i++)\n    {\n        int t=n/i;\n        int f=k-i+1;\n        if (f<0) f=0;\n        if (m>f) maxans=max(maxans,(long long)m/(f+1)*t);\n    }\n    for (i=1;i*i<=n;i++)\n    {\n        int t=i;\n        int f=k-n/t+1;\n        if (f<0) f=0;\n        if (m>f) maxans=max(maxans,(long long)m/(f+1)*t);\n    }\n    cout<<maxans<<endl;\n    return 0; \n}\n"], "input": "", "output": "", "tags": ["greedy", "implementation"], "dificulty": "1700", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/450/problem/C",
+    "problemId": "11562",
+    "problem_idx": "C",
+    "shortId": "450C",
+    "contest_number": "450",
+    "problem_submissions": {
+        "D": [
+            7172300,
+            7189969,
+            7168692,
+            7168762,
+            7167893,
+            7173883,
+            7186151,
+            7172954,
+            7166069,
+            7167002
+        ],
+        "C": [
+            7163293,
+            7165488,
+            7162708,
+            7162772,
+            7171630,
+            7164674,
+            7167537,
+            7166382,
+            7164102,
+            7164882,
+            7160663,
+            7166275
+        ],
+        "B": [
+            7158888,
+            7159995,
+            7159436,
+            7163539,
+            7160088,
+            7159602,
+            7162497,
+            7161041,
+            7159252,
+            7161370,
+            7160845,
+            7161199,
+            7162311,
+            7159103,
+            7162904
+        ],
+        "A": [
+            7157648,
+            7158191,
+            7157937,
+            7159395,
+            7157906,
+            7158093,
+            7157984,
+            7167878,
+            7158537,
+            7157963,
+            7160445,
+            7158752,
+            7157827,
+            7158223,
+            7157598,
+            7158189
+        ],
+        "E": [
+            7171266,
+            7172113,
+            7171025
+        ]
+    },
+    "name": "C. Jzzhu and Chocolate",
+    "statement": "Jzzhu has a big rectangular chocolate bar that consists of unit squares.\r\nHe wants to cut this bar exactly times. Each cut must meet the following\r\nrequirements: each cut should be straight (horizontal or vertical); each\r\ncut should go along edges of unit squares (it is prohibited to divide\r\nany unit chocolate square with cut); each cut should go inside the whole\r\nchocolate bar, and all cuts must be distinct. The picture below shows a\r\npossible way to cut a chocolate for times. Imagine Jzzhu have made cuts\r\nand the big chocolate is splitted into several pieces. Consider the\r\nsmallest (by area) piece of the chocolate, Jzzhu wants this piece to be\r\nas large as possible. What is the maximum possible area of smallest\r\npiece he can get with exactly cuts? The area of a chocolate piece is the\r\nnumber of unit squares in it.\r\n",
+    "solutions": [
+        "#include<set>\n#include<map>\n#include<list>\n#include<queue>\n#include<stack>\n#include<string>\n#include<math.h>\n#include<time.h>\n#include<vector>\n#include<bitset>\n#include<memory>\n#include<utility>\n#include<fstream>\n#include<stdio.h>\n#include<iostream>\n#include<stdlib.h>\n#include<string.h>\n#include<algorithm>\nusing namespace std;\nint main()\n{\n    #ifdef absi2011\n    freopen(\"input.txt\",\"r\",stdin);\n    freopen(\"output.txt\",\"w\",stdout);\n    #endif\n    int n,m,k;\n    cin>>n>>m>>k;\n    int i;\n    long long maxans=-1;\n    for (i=1;i*i<=n;i++)\n    {\n        int t=n/i;\n        int f=k-i+1;\n        if (f<0) f=0;\n        if (m>f) maxans=max(maxans,(long long)m/(f+1)*t);\n    }\n    for (i=1;i*i<=n;i++)\n    {\n        int t=i;\n        int f=k-n/t+1;\n        if (f<0) f=0;\n        if (m>f) maxans=max(maxans,(long long)m/(f+1)*t);\n    }\n    cout<<maxans<<endl;\n    return 0; \n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "greedy",
+        "implementation"
+    ],
+    "dificulty": "1700",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Jzzhu and Chocolate.json",
+    "editorial_link": "https://codeforces.com//blog/entry/13112",
+    "editorial": "We assume that (if , we can simply swap and ). If we finally cut the\r\nchocolate into rows and columns , we should maximize the narrowest row\r\nand maximize the narrowest column, so the answer will be . There are two\r\nalgorithms to find the optimal . Notice that if is smaller, the answer\r\nusually will be better. Then we can find that if , the optimal can only\r\nbe or . If , the optimal can only be . If , the optimal can only be ,\r\nbecause let , . has at most values, so we can enum it and choose the\r\nmaximum for each value.\r\n"
+}

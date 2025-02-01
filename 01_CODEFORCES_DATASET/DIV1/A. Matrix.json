@@ -1,1 +1,102 @@
-{"link": "https://codeforces.com//contest/364/problem/A", "problemId": "4041", "problem_idx": "A", "shortId": "364A", "contest_number": "364", "problem_submissions": {"E": [5182930, 5182917, 5182805, 5182789, 5182779, 5163338, 5192424, 5192315, 5285842], "C": [5159826, 5156914, 5156913, 5159036, 5158199, 5156857, 5160288, 5159437, 5160554, 5160938, 5160044, 5162865, 5159797, 5161370], "B": [5155945, 5152807, 5153694, 5154783, 5155872, 5158323, 5155584, 5154573, 5157525, 5158221, 5171150, 5155541, 5157687, 5162725, 5157104], "A": [5151035, 5151153, 5151193, 5150604, 5151593, 5151967, 5152019, 5151677, 5154003, 5153612, 5152606, 5154441, 5150915, 5155034], "D": [5159378, 5164152, 5164129, 5165101, 26468599, 26468582, 26468554, 5164765, 5178204, 5178186, 5165121, 5171056, 5929384, 5343038]}, "name": "A. Matrix", "statement": "You have a string of decimal digits . Let\u2019s define . Find in matrix the\r\nnumber of such rectangles that the sum for all cells that are the\r\nelements of the rectangle equals in each rectangle.A rectangle in a\r\nmatrix is a group of four integers . The elements of the rectangle are\r\nall cells such that .\r\n", "solutions": ["#include<stdio.h>\n#include<string>\n#include<math.h>\n#include<stdlib.h>\n#include<set>\n#include<bitset>\n#include<map>\n#include<vector>\n#include<string.h>\n#include<algorithm>\n#include<iostream>\n#include<queue>\n#define SZ(X) ((int)(X).size())\n#define ALL(X) (X).begin(), (X).end()\n#define REP(I, N) for (int I = 0; I < (N); ++I)\n#define REPP(I, A, B) for (int I = (A); I < (B); ++I)\n#define REPC(I, C) for (int I = 0; !(C); ++I)\n#define RI(X) scanf(\"%d\", &(X))\n#define RII(X, Y) scanf(\"%d%d\", &(X), &(Y))\n#define RIII(X, Y, Z) scanf(\"%d%d%d\", &(X), &(Y), &(Z))\n#define DRI(X) int (X); scanf(\"%d\", &X)\n#define DRII(X, Y) int X, Y; scanf(\"%d%d\", &X, &Y)\n#define DRIII(X, Y, Z) int X, Y, Z; scanf(\"%d%d%d\", &X, &Y, &Z)\n#define RS(X) scanf(\"%s\", (X))\n#define CASET int ___T, case_n = 1; scanf(\"%d \", &___T); while (___T-- > 0)\n#define MP make_pair\n#define PB push_back\n#define MS0(X) memset((X), 0, sizeof((X)))\n#define MS1(X) memset((X), -1, sizeof((X)))\n#define LEN(X) strlen(X)\n#define F first\n#define S second\nusing namespace std;\nconst int SIZE = 400000;\nchar s[SIZE];\nint cnt[SIZE];\nint main(){\n    int zero=0,non_zero=0;\n    DRI(a);\n    RS(s);\n    int n=LEN(s);\n    REP(i,n){\n        int now=0;\n        REPP(j,i,n){\n            now+=s[j]-'0';\n            cnt[now]++;\n            if(now==0)zero++;\n            else non_zero++;\n        }\n    }\n    if(a==0){\n        cout<<(long long)(zero+non_zero)*(zero+non_zero)-(long long)non_zero*non_zero<<endl;\n    }\n    else{\n        long long res=0;\n        for(int i=1;i<SIZE&&i<=a;i++){\n            if(!cnt[i])continue;\n            if(a%i==0&&a/i<SIZE){\n                res+=(long long)cnt[i]*cnt[a/i];\n            }\n        }\n        cout<<res<<endl;\n    }\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["combinatorics", "data structures", "implementation"], "dificulty": "1600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/364/problem/A",
+    "problemId": "4041",
+    "problem_idx": "A",
+    "shortId": "364A",
+    "contest_number": "364",
+    "problem_submissions": {
+        "E": [
+            5182930,
+            5182917,
+            5182805,
+            5182789,
+            5182779,
+            5163338,
+            5192424,
+            5192315,
+            5285842
+        ],
+        "C": [
+            5159826,
+            5156914,
+            5156913,
+            5159036,
+            5158199,
+            5156857,
+            5160288,
+            5159437,
+            5160554,
+            5160938,
+            5160044,
+            5162865,
+            5159797,
+            5161370
+        ],
+        "B": [
+            5155945,
+            5152807,
+            5153694,
+            5154783,
+            5155872,
+            5158323,
+            5155584,
+            5154573,
+            5157525,
+            5158221,
+            5171150,
+            5155541,
+            5157687,
+            5162725,
+            5157104
+        ],
+        "A": [
+            5151035,
+            5151153,
+            5151193,
+            5150604,
+            5151593,
+            5151967,
+            5152019,
+            5151677,
+            5154003,
+            5153612,
+            5152606,
+            5154441,
+            5150915,
+            5155034
+        ],
+        "D": [
+            5159378,
+            5164152,
+            5164129,
+            5165101,
+            26468599,
+            26468582,
+            26468554,
+            5164765,
+            5178204,
+            5178186,
+            5165121,
+            5171056,
+            5929384,
+            5343038
+        ]
+    },
+    "name": "A. Matrix",
+    "statement": "You have a string of decimal digits . Let\u2019s define . Find in matrix the\r\nnumber of such rectangles that the sum for all cells that are the\r\nelements of the rectangle equals in each rectangle.A rectangle in a\r\nmatrix is a group of four integers . The elements of the rectangle are\r\nall cells such that .\r\n",
+    "solutions": [
+        "#include<stdio.h>\n#include<string>\n#include<math.h>\n#include<stdlib.h>\n#include<set>\n#include<bitset>\n#include<map>\n#include<vector>\n#include<string.h>\n#include<algorithm>\n#include<iostream>\n#include<queue>\n#define SZ(X) ((int)(X).size())\n#define ALL(X) (X).begin(), (X).end()\n#define REP(I, N) for (int I = 0; I < (N); ++I)\n#define REPP(I, A, B) for (int I = (A); I < (B); ++I)\n#define REPC(I, C) for (int I = 0; !(C); ++I)\n#define RI(X) scanf(\"%d\", &(X))\n#define RII(X, Y) scanf(\"%d%d\", &(X), &(Y))\n#define RIII(X, Y, Z) scanf(\"%d%d%d\", &(X), &(Y), &(Z))\n#define DRI(X) int (X); scanf(\"%d\", &X)\n#define DRII(X, Y) int X, Y; scanf(\"%d%d\", &X, &Y)\n#define DRIII(X, Y, Z) int X, Y, Z; scanf(\"%d%d%d\", &X, &Y, &Z)\n#define RS(X) scanf(\"%s\", (X))\n#define CASET int ___T, case_n = 1; scanf(\"%d \", &___T); while (___T-- > 0)\n#define MP make_pair\n#define PB push_back\n#define MS0(X) memset((X), 0, sizeof((X)))\n#define MS1(X) memset((X), -1, sizeof((X)))\n#define LEN(X) strlen(X)\n#define F first\n#define S second\nusing namespace std;\nconst int SIZE = 400000;\nchar s[SIZE];\nint cnt[SIZE];\nint main(){\n    int zero=0,non_zero=0;\n    DRI(a);\n    RS(s);\n    int n=LEN(s);\n    REP(i,n){\n        int now=0;\n        REPP(j,i,n){\n            now+=s[j]-'0';\n            cnt[now]++;\n            if(now==0)zero++;\n            else non_zero++;\n        }\n    }\n    if(a==0){\n        cout<<(long long)(zero+non_zero)*(zero+non_zero)-(long long)non_zero*non_zero<<endl;\n    }\n    else{\n        long long res=0;\n        for(int i=1;i<SIZE&&i<=a;i++){\n            if(!cnt[i])continue;\n            if(a%i==0&&a/i<SIZE){\n                res+=(long long)cnt[i]*cnt[a/i];\n            }\n        }\n        cout<<res<<endl;\n    }\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "combinatorics",
+        "data structures",
+        "implementation"
+    ],
+    "dificulty": "1600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Matrix.json",
+    "editorial_link": "https://codeforces.com//blog/entry/9657",
+    "editorial": "Let's notice that sum in the rectangle (x1,?y1,?x2,?y2) is sum(x1,?x2)\u00b7sum(y1,?y2). Where sum(l,?r)?=?sl?+?sl?+?1?+?...?+?sr. Then, we have to calc sum(l,?r) for every pair (l,?r) and count how many segments give us sum x for any possible x (0???x???9\u00b7|s|). In the end we should enumerate sum on segemnt [x1,?x2] and find . There is corner case a?=?0."
+}

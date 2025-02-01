@@ -1,1 +1,94 @@
-{"link": "https://codeforces.com//contest/443/problem/B", "problemId": "10507", "problem_idx": "B", "shortId": "443B", "contest_number": "443", "problem_submissions": {"D": [6920325, 6916566, 6917590, 6918097, 6920177, 6917285, 6920976, 6921353, 6922229, 6919679, 6920725, 6916330, 6920984, 6916768, 6918289], "C": [6916700, 6920227, 6920927, 6921420, 6918956, 6921762, 6918294, 6918027, 6919227, 6921621, 6920532, 6921893], "B": [6914810, 6917396, 6914725, 6915203, 6915357, 6915551, 6915724, 6915492, 6915913, 6916470, 6917359, 6917333, 6915305, 6915776, 6915944, 6915992], "A": [6913586, 6913341, 6913477, 6914120, 6913376, 6913571, 6913622, 6914280, 6913834, 6913392, 6914327, 6913573, 6919949, 6913342], "E": [6948171]}, "name": "B. Kolya and Tandem Repeat", "statement": "Kolya got string for his birthday, the string consists of small English\r\nletters. He immediately added more characters to the right of the\r\nstring.Then Borya came and said that the new string contained a of\r\nlength as a substring. How large could be?See notes for definition of a\r\n.\r\n", "solutions": ["using namespace std;\n\n#include \"cstdio\"\n#include \"iostream\"\n#include \"algorithm\"\n#include \"vector\"\n#include \"string\"\n#include \"cctype\"\n#include \"set\"\n\ntypedef long long Long;\n\nint main()\n{\n    string line;\n    getline( cin, line );\n\n    int k;\n    cin >> k;\n\n    line += string( k, '?' );\n\n    int ans = 0;\n\n    for (int n = 1; 2 * n <= line.length(); n++) {\n\n        for (int i = 0; i + 2 * n <= line.length(); i++) {\n            bool ok = true;\n\n            for (int k = 0; k < n; k++) {\n                if ( line[i + k] == '?' ) continue;\n                if ( line[i + k + n] == '?' ) continue;\n                if ( line[i + k] == line[i + k + n] ) continue;\n\n                ok = false;\n                break;\n            }\n\n            if ( ok ) {\n                ans = max( ans, 2 * n );\n                break;\n            }\n        }\n    }\n\n    cout << ans << endl;\n\n    return 0;\n}"], "input": "", "output": "", "tags": ["brute force", "implementation", "strings"], "dificulty": "1500", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/443/problem/B",
+    "problemId": "10507",
+    "problem_idx": "B",
+    "shortId": "443B",
+    "contest_number": "443",
+    "problem_submissions": {
+        "D": [
+            6920325,
+            6916566,
+            6917590,
+            6918097,
+            6920177,
+            6917285,
+            6920976,
+            6921353,
+            6922229,
+            6919679,
+            6920725,
+            6916330,
+            6920984,
+            6916768,
+            6918289
+        ],
+        "C": [
+            6916700,
+            6920227,
+            6920927,
+            6921420,
+            6918956,
+            6921762,
+            6918294,
+            6918027,
+            6919227,
+            6921621,
+            6920532,
+            6921893
+        ],
+        "B": [
+            6914810,
+            6917396,
+            6914725,
+            6915203,
+            6915357,
+            6915551,
+            6915724,
+            6915492,
+            6915913,
+            6916470,
+            6917359,
+            6917333,
+            6915305,
+            6915776,
+            6915944,
+            6915992
+        ],
+        "A": [
+            6913586,
+            6913341,
+            6913477,
+            6914120,
+            6913376,
+            6913571,
+            6913622,
+            6914280,
+            6913834,
+            6913392,
+            6914327,
+            6913573,
+            6919949,
+            6913342
+        ],
+        "E": [
+            6948171
+        ]
+    },
+    "name": "B. Kolya and Tandem Repeat",
+    "statement": "Kolya got string for his birthday, the string consists of small English\r\nletters. He immediately added more characters to the right of the\r\nstring.Then Borya came and said that the new string contained a of\r\nlength as a substring. How large could be?See notes for definition of a\r\n.\r\n",
+    "solutions": [
+        "using namespace std;\n\n#include \"cstdio\"\n#include \"iostream\"\n#include \"algorithm\"\n#include \"vector\"\n#include \"string\"\n#include \"cctype\"\n#include \"set\"\n\ntypedef long long Long;\n\nint main()\n{\n    string line;\n    getline( cin, line );\n\n    int k;\n    cin >> k;\n\n    line += string( k, '?' );\n\n    int ans = 0;\n\n    for (int n = 1; 2 * n <= line.length(); n++) {\n\n        for (int i = 0; i + 2 * n <= line.length(); i++) {\n            bool ok = true;\n\n            for (int k = 0; k < n; k++) {\n                if ( line[i + k] == '?' ) continue;\n                if ( line[i + k + n] == '?' ) continue;\n                if ( line[i + k] == line[i + k + n] ) continue;\n\n                ok = false;\n                break;\n            }\n\n            if ( ok ) {\n                ans = max( ans, 2 * n );\n                break;\n            }\n        }\n    }\n\n    cout << ans << endl;\n\n    return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "implementation",
+        "strings"
+    ],
+    "dificulty": "1500",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Kolya and Tandem Repeat.json",
+    "editorial_link": "https://codeforces.com//blog/entry/12739",
+    "editorial": "Let\u00e2\u0080\u0099s add question marks to the string. Than we can check all possible\r\nstarting and ending positions of tandem repeat in a new string. We can\r\ncheck each of them in time . We only need to check that some symbols are\r\nequal (in our task question mark is equal to every symbol).\r\n"
+}

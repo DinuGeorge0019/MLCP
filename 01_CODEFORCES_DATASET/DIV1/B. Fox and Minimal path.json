@@ -1,1 +1,93 @@
-{"link": "https://codeforces.com//contest/388/problem/B", "problemId": "6406", "problem_idx": "B", "shortId": "388B", "contest_number": "388", "problem_submissions": {"D": [5881221, 5882916, 5884765, 5884166, 5884772, 5886438, 5886379, 5879628, 5881889, 5883814, 9006539], "A": [5878499, 5875213, 5874956, 5875207, 5875079, 5874857, 5875135, 5882241, 5886169, 5874693, 5875783, 5874826, 5874879, 5875011], "C": [5878094, 5879257, 5880482, 5882050, 5881780, 5878419, 5880247, 5886441, 5883025, 5884549, 5885115, 5881042, 5884063, 5878671], "B": [5877357, 5878081, 5878393, 5877933, 5879631, 5877363, 5877984, 5881618, 5885395, 5877991, 5880604, 5879253, 5880664, 5877570], "E": [5952727, 5888469]}, "name": "B. Fox and Minimal path", "statement": "Fox Ciel wants to write a task for a programming contest. The task is:\r\n\"You are given a simple undirected graph with vertexes. Each its edge\r\nhas unit length. You should calculate the number of shortest paths\r\nbetween vertex 1 and vertex 2.\"Same with some writers, she wants to make\r\nan example with some certain output: for example, her birthday or the\r\nnumber of her boyfriend. Can you help her to make a test case with\r\nanswer equal exactly to ?\r\n", "solutions": ["#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <memory.h>\n\nusing namespace std;\n\nchar g[2010][2010];\n\nint main() {\n  int k;\n  scanf(\"%d\", &k);\n  if (k == 1) {\n    puts(\"2\");\n    puts(\"NY\");\n    puts(\"YN\");\n    return 0;\n  }\n  int mx = 0;\n  for (int j = 0; j < 30; j++)\n    if (k & (1 << j)) {\n      mx = j;\n    }\n  memset(g, 'N', sizeof(g));\n  int n = 2;\n  int u = 1;\n  for (int j = 1; j <= mx; j++) {\n    n++;\n    g[u][n] = g[n][u] = 'Y';\n    int x = n;\n    n++;\n    g[u][n] = g[n][u] = 'Y';\n    int y = n;\n    int z;\n    if (j == mx) {\n      z = 2;\n    } else {\n      z = ++n;\n    }\n    g[x][z] = g[z][x] = 'Y';\n    g[y][z] = g[z][y] = 'Y';\n    u = z;\n  }\n  for (int j = mx - 1; j >= 0; j--) {\n    if (k & (1 << j)) {\n      int v = 3 * j + 2;\n      if (j == 0) v--;\n      int len = 2 * (mx - j);\n      for (int it = 0; it < len - 1; it++) {\n        n++;\n        g[v][n] = g[n][v] = 'Y';\n        v = n;\n      }\n      g[v][2] = g[2][v] = 'Y';\n    }\n  }\n  printf(\"%d\\n\", n);\n  for (int i = 1; i <= n; i++) {\n    for (int j = 1; j <= n; j++) putchar(g[i][j]);\n    putchar('\\n');\n  }\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["bitmasks", "constructive algorithms", "graphs", "implementation", "math"], "dificulty": "1900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/388/problem/B",
+    "problemId": "6406",
+    "problem_idx": "B",
+    "shortId": "388B",
+    "contest_number": "388",
+    "problem_submissions": {
+        "D": [
+            5881221,
+            5882916,
+            5884765,
+            5884166,
+            5884772,
+            5886438,
+            5886379,
+            5879628,
+            5881889,
+            5883814,
+            9006539
+        ],
+        "A": [
+            5878499,
+            5875213,
+            5874956,
+            5875207,
+            5875079,
+            5874857,
+            5875135,
+            5882241,
+            5886169,
+            5874693,
+            5875783,
+            5874826,
+            5874879,
+            5875011
+        ],
+        "C": [
+            5878094,
+            5879257,
+            5880482,
+            5882050,
+            5881780,
+            5878419,
+            5880247,
+            5886441,
+            5883025,
+            5884549,
+            5885115,
+            5881042,
+            5884063,
+            5878671
+        ],
+        "B": [
+            5877357,
+            5878081,
+            5878393,
+            5877933,
+            5879631,
+            5877363,
+            5877984,
+            5881618,
+            5885395,
+            5877991,
+            5880604,
+            5879253,
+            5880664,
+            5877570
+        ],
+        "E": [
+            5952727,
+            5888469
+        ]
+    },
+    "name": "B. Fox and Minimal path",
+    "statement": "Fox Ciel wants to write a task for a programming contest. The task is:\r\n\"You are given a simple undirected graph with vertexes. Each its edge\r\nhas unit length. You should calculate the number of shortest paths\r\nbetween vertex 1 and vertex 2.\"Same with some writers, she wants to make\r\nan example with some certain output: for example, her birthday or the\r\nnumber of her boyfriend. Can you help her to make a test case with\r\nanswer equal exactly to ?\r\n",
+    "solutions": [
+        "#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <memory.h>\n\nusing namespace std;\n\nchar g[2010][2010];\n\nint main() {\n  int k;\n  scanf(\"%d\", &k);\n  if (k == 1) {\n    puts(\"2\");\n    puts(\"NY\");\n    puts(\"YN\");\n    return 0;\n  }\n  int mx = 0;\n  for (int j = 0; j < 30; j++)\n    if (k & (1 << j)) {\n      mx = j;\n    }\n  memset(g, 'N', sizeof(g));\n  int n = 2;\n  int u = 1;\n  for (int j = 1; j <= mx; j++) {\n    n++;\n    g[u][n] = g[n][u] = 'Y';\n    int x = n;\n    n++;\n    g[u][n] = g[n][u] = 'Y';\n    int y = n;\n    int z;\n    if (j == mx) {\n      z = 2;\n    } else {\n      z = ++n;\n    }\n    g[x][z] = g[z][x] = 'Y';\n    g[y][z] = g[z][y] = 'Y';\n    u = z;\n  }\n  for (int j = mx - 1; j >= 0; j--) {\n    if (k & (1 << j)) {\n      int v = 3 * j + 2;\n      if (j == 0) v--;\n      int len = 2 * (mx - j);\n      for (int it = 0; it < len - 1; it++) {\n        n++;\n        g[v][n] = g[n][v] = 'Y';\n        v = n;\n      }\n      g[v][2] = g[2][v] = 'Y';\n    }\n  }\n  printf(\"%d\\n\", n);\n  for (int i = 1; i <= n; i++) {\n    for (int j = 1; j <= n; j++) putchar(g[i][j]);\n    putchar('\\n');\n  }\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "bitmasks",
+        "constructive algorithms",
+        "graphs",
+        "implementation",
+        "math"
+    ],
+    "dificulty": "1900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Fox and Minimal path.json",
+    "editorial_link": "https://codeforces.com//blog/entry/10629",
+    "editorial": "First we need to know how to calculate the number of different shortest\r\npaths from vertex 1 to vertex 2: it can be done by dp: dp[1] = 1, dp[v]\r\n= sum{dp[t] | dist(1,t) = dist(1,v) 1}, then dp[2] is our answer. We\r\nneed to do dp layer by layer. (first we consider vertexes have distance\r\n1 to node 1, then vertexes have distance 2 to node 1 and so on.) So we\r\ncan construct the graph layer by layer, and link edges to control the dp\r\nvalue of it. My solution is construct the answer by binary express: If k\r\nis 19, then we need some vertexes in previous layer such that the dp\r\nvalue is 16, 2 and 1. So we just need a way to construct layer with dp\r\nvalue equals to 2^k. In the first layer, it contains one node: 1, it has\r\nthe dp value 1. In the next layer, we can construct 2 nodes, with dp\r\nvalue equals to 1. (We use [1 1] to denote it). And the next layer is [1\r\n1 2], then [1 1 2 4], [1 1 2 4 8] and so on. So we need about 30 layers\r\nsuch that gets all 2^k where k < 30. It uses about 500 nodes.\r\n"
+}

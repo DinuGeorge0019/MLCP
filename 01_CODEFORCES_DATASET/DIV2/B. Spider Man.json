@@ -1,1 +1,93 @@
-{"link": "https://codeforces.com//contest/705/problem/B", "problemId": "67573", "problem_idx": "B", "shortId": "705B", "contest_number": "705", "problem_submissions": {"D": [19710317, 19709572, 19706603, 19723842, 19714113], "B": [19697015, 19695602, 19694872, 19691908, 19690813, 19690994, 19691365, 19692977, 19701184, 19690077, 19695542, 19693836, 19691432, 19691430, 19691201, 19691141, 19690981, 19690624], "C": [19695574, 19701038, 19703575, 19694988, 19695049, 19694120, 19694460, 19696131, 19693613, 19695194, 19694857, 19693954, 19699733, 19694740, 19697270, 19695964, 19694395, 19694550, 19694956], "A": [19689053, 19689391, 19688190, 19691873, 19687916, 19688114, 19688082, 19688059, 19695855, 19688080, 19688873, 19688894, 19689037, 19688592, 19688331, 19688091, 19688817, 19688188]}, "name": "B. Spider Man", "statement": "Peter Parker wants to play a game with Dr. Octopus. The game is about\r\ncycles. is a sequence of vertices, such that first one is connected with\r\nthe second, second is connected with third and so on, while the last one\r\nis connected with the first one again. Cycle may consist of a single\r\nisolated vertex.Initially there are cycles, -th of them consisting of\r\nexactly vertices. Players play alternatively. Peter goes first. On each\r\nturn a player must choose a cycle with at least vertices (for example,\r\nvertices) among all available cycles and replace it by two cycles with\r\nand vertices where is chosen by the player. The player who cannot make a\r\nmove loses the game (and his life!).Peter wants to test some\r\nconfigurations of initial cycle sets before he actually plays with Dr.\r\nOctopus. Initially he has an empty set. In the -th test he adds a cycle\r\nwith vertices to the set (this is actually a multiset because it can\r\ncontain two or more identical cycles). After each test, Peter wants to\r\nknow that if the players begin the game with the current set of cycles,\r\nwho wins? Peter is pretty good at math, but now he asks you to help.\r\n", "solutions": ["#include \"stdio.h\"\n\nint n;\nlong long ai,sum;\n\nint main(){\n\tscanf(\"%d\",&n);\n\tfor(int i = 0; i < n; i++){\n\t\tscanf(\"%I64d\",&ai);\n\t\tsum += ai-1;\n\t\tif(sum%2==1){\n\t\t\tprintf(\"1\\n\");\n\t\t}else{\n\t\t\tprintf(\"2\\n\");\n\t\t}\n\t}\n}"], "input": "", "output": "", "tags": ["games", "math"], "dificulty": "1100", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/705/problem/B",
+    "problemId": "67573",
+    "problem_idx": "B",
+    "shortId": "705B",
+    "contest_number": "705",
+    "problem_submissions": {
+        "D": [
+            19710317,
+            19709572,
+            19706603,
+            19723842,
+            19714113
+        ],
+        "B": [
+            19697015,
+            19695602,
+            19694872,
+            19691908,
+            19690813,
+            19690994,
+            19691365,
+            19692977,
+            19701184,
+            19690077,
+            19695542,
+            19693836,
+            19691432,
+            19691430,
+            19691201,
+            19691141,
+            19690981,
+            19690624
+        ],
+        "C": [
+            19695574,
+            19701038,
+            19703575,
+            19694988,
+            19695049,
+            19694120,
+            19694460,
+            19696131,
+            19693613,
+            19695194,
+            19694857,
+            19693954,
+            19699733,
+            19694740,
+            19697270,
+            19695964,
+            19694395,
+            19694550,
+            19694956
+        ],
+        "A": [
+            19689053,
+            19689391,
+            19688190,
+            19691873,
+            19687916,
+            19688114,
+            19688082,
+            19688059,
+            19695855,
+            19688080,
+            19688873,
+            19688894,
+            19689037,
+            19688592,
+            19688331,
+            19688091,
+            19688817,
+            19688188
+        ]
+    },
+    "name": "B. Spider Man",
+    "statement": "Peter Parker wants to play a game with Dr. Octopus. The game is about\r\ncycles. is a sequence of vertices, such that first one is connected with\r\nthe second, second is connected with third and so on, while the last one\r\nis connected with the first one again. Cycle may consist of a single\r\nisolated vertex.Initially there are cycles, -th of them consisting of\r\nexactly vertices. Players play alternatively. Peter goes first. On each\r\nturn a player must choose a cycle with at least vertices (for example,\r\nvertices) among all available cycles and replace it by two cycles with\r\nand vertices where is chosen by the player. The player who cannot make a\r\nmove loses the game (and his life!).Peter wants to test some\r\nconfigurations of initial cycle sets before he actually plays with Dr.\r\nOctopus. Initially he has an empty set. In the -th test he adds a cycle\r\nwith vertices to the set (this is actually a multiset because it can\r\ncontain two or more identical cycles). After each test, Peter wants to\r\nknow that if the players begin the game with the current set of cycles,\r\nwho wins? Peter is pretty good at math, but now he asks you to help.\r\n",
+    "solutions": [
+        "#include \"stdio.h\"\n\nint n;\nlong long ai,sum;\n\nint main(){\n\tscanf(\"%d\",&n);\n\tfor(int i = 0; i < n; i++){\n\t\tscanf(\"%I64d\",&ai);\n\t\tsum += ai-1;\n\t\tif(sum%2==1){\n\t\t\tprintf(\"1\\n\");\n\t\t}else{\n\t\t\tprintf(\"2\\n\");\n\t\t}\n\t}\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "games",
+        "math"
+    ],
+    "dificulty": "1100",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Spider Man.json",
+    "editorial_link": "https://codeforces.com//blog/entry/46450",
+    "editorial": "First of all, instead of cycles, imagine we have bamboos (paths). A valid move in the game is now taking a path and deleting an edge from it (to form two new paths). So, every player in his move can delete an edge in the graph (with components equal to paths). So, no matter how they play, winner is always determined by the parity of number of edges (because it decreases by 1 each time). Second player wins if and only if the number of edges is even. At first it's even (0). In a query that adds a cycle (bamboo) with an odd number of vertices, parity and so winner won't change. When a bamboo with even number of vertices (and so odd number of edges) is added, parity and so the winner will change.\n"
+}

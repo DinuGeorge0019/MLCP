@@ -1,1 +1,106 @@
-{"link": "https://codeforces.com//contest/317/problem/A", "problemId": "3166", "problem_idx": "A", "shortId": "317A", "contest_number": "317", "problem_submissions": {"B": [3893431, 3887094, 3885846, 3887031, 3886538, 3889909, 3893582, 3888615, 3887617, 3888413, 3888179, 3889453, 3887116, 3887888, 3894545, 3895617, 3886384, 3887572], "C": [3892027, 3893534, 3892980, 3892836, 3889579, 3894319, 3891793, 3887685, 3891002, 3893514, 3895626, 3891853, 3895456, 3895311, 3890113, 3891161, 3891706, 3890677], "D": [3888744, 3888593, 3888799, 3890273, 3892231, 3885265, 3887984, 3892250, 3893865, 3891338, 3894467, 3893215, 3890469, 3890547, 3891578, 3893589, 3896477, 3896297], "A": [3884031, 3884987, 3884002, 3884136, 3889852, 3886867, 3884602, 3891904, 3885568, 3884656, 3883909, 3885144, 3894966, 3884417, 3885139], "E": [3932317, 3896465, 3896429]}, "name": "A. Perfect Pair", "statement": "Let us call a pair of integer numbers , if at least one number in the\r\npair is greater than or equal to . Thus, the pairs (3, 3) and (0, 2) are\r\n2-perfect while the pair (-1, 1) is not.Two integers , are written on\r\nthe blackboard. It is allowed to erase one of them and replace it with\r\nthe sum of the numbers, .What is the minimum number of such operations\r\none has to perform in order to make the given pair of integers -perfect?\r\n", "solutions": ["#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <queue>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstring>\n#include <cassert>\n\nusing namespace std;\n\ntypedef long long LL;\ntypedef pair<int, int> PII;\n#define MP make_pair\n#define FOR(v,p,k) for(int v=p;v<=k;++v)\n#define FORD(v,p,k) for(int v=p;v>=k;--v)\n#define REP(i,n) for(int i=0;i<(n);++i)\n#define VAR(v,i) __typeof(i) v=(i)\n#define FORE(i,c) for(__typeof(c.begin()) i=(c.begin());i!=(c).end();++i)\n#define PB push_back\n#define ST first\n#define ND second\n#define SZ(x) (int)(x).size()\n#define ALL(c) c.begin(),c.end()\n#define ZERO(x) memset(x,0,sizeof(x))\n\nint main() {\n    ios_base::sync_with_stdio(false);\n    LL x, y, m;\n    cin >> x >> y >> m;\n    if (max(x, y) >= m) {\n        cout << 0 << endl;\n        return 0;\n    }\n    if (x > y) {\n        swap(x, y);\n    }\n    if (y <= 0) {\n        cout << -1 << endl;\n        return 0;\n    }\n    LL result = 0;\n    if (x < 0) {\n        result = (-x) / y;\n        x += result * y;\n    }\n    while (max(x, y) < m) {\n        x += y;\n        ++result;\n        if (x > y) {\n            swap(x, y);\n        }\n    }\n    cout << result << endl;\n}\n"], "input": "", "output": "", "tags": ["brute force"], "dificulty": "1600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/317/problem/A",
+    "problemId": "3166",
+    "problem_idx": "A",
+    "shortId": "317A",
+    "contest_number": "317",
+    "problem_submissions": {
+        "B": [
+            3893431,
+            3887094,
+            3885846,
+            3887031,
+            3886538,
+            3889909,
+            3893582,
+            3888615,
+            3887617,
+            3888413,
+            3888179,
+            3889453,
+            3887116,
+            3887888,
+            3894545,
+            3895617,
+            3886384,
+            3887572
+        ],
+        "C": [
+            3892027,
+            3893534,
+            3892980,
+            3892836,
+            3889579,
+            3894319,
+            3891793,
+            3887685,
+            3891002,
+            3893514,
+            3895626,
+            3891853,
+            3895456,
+            3895311,
+            3890113,
+            3891161,
+            3891706,
+            3890677
+        ],
+        "D": [
+            3888744,
+            3888593,
+            3888799,
+            3890273,
+            3892231,
+            3885265,
+            3887984,
+            3892250,
+            3893865,
+            3891338,
+            3894467,
+            3893215,
+            3890469,
+            3890547,
+            3891578,
+            3893589,
+            3896477,
+            3896297
+        ],
+        "A": [
+            3884031,
+            3884987,
+            3884002,
+            3884136,
+            3889852,
+            3886867,
+            3884602,
+            3891904,
+            3885568,
+            3884656,
+            3883909,
+            3885144,
+            3894966,
+            3884417,
+            3885139
+        ],
+        "E": [
+            3932317,
+            3896465,
+            3896429
+        ]
+    },
+    "name": "A. Perfect Pair",
+    "statement": "Let us call a pair of integer numbers , if at least one number in the\r\npair is greater than or equal to . Thus, the pairs (3, 3) and (0, 2) are\r\n2-perfect while the pair (-1, 1) is not.Two integers , are written on\r\nthe blackboard. It is allowed to erase one of them and replace it with\r\nthe sum of the numbers, .What is the minimum number of such operations\r\none has to perform in order to make the given pair of integers -perfect?\r\n",
+    "solutions": [
+        "#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <queue>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstring>\n#include <cassert>\n\nusing namespace std;\n\ntypedef long long LL;\ntypedef pair<int, int> PII;\n#define MP make_pair\n#define FOR(v,p,k) for(int v=p;v<=k;++v)\n#define FORD(v,p,k) for(int v=p;v>=k;--v)\n#define REP(i,n) for(int i=0;i<(n);++i)\n#define VAR(v,i) __typeof(i) v=(i)\n#define FORE(i,c) for(__typeof(c.begin()) i=(c.begin());i!=(c).end();++i)\n#define PB push_back\n#define ST first\n#define ND second\n#define SZ(x) (int)(x).size()\n#define ALL(c) c.begin(),c.end()\n#define ZERO(x) memset(x,0,sizeof(x))\n\nint main() {\n    ios_base::sync_with_stdio(false);\n    LL x, y, m;\n    cin >> x >> y >> m;\n    if (max(x, y) >= m) {\n        cout << 0 << endl;\n        return 0;\n    }\n    if (x > y) {\n        swap(x, y);\n    }\n    if (y <= 0) {\n        cout << -1 << endl;\n        return 0;\n    }\n    LL result = 0;\n    if (x < 0) {\n        result = (-x) / y;\n        x += result * y;\n    }\n    while (max(x, y) < m) {\n        x += y;\n        ++result;\n        if (x > y) {\n            swap(x, y);\n        }\n    }\n    cout << result << endl;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force"
+    ],
+    "dificulty": "1600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Perfect Pair.json",
+    "editorial_link": "https://codeforces.com//blog/entry/7956",
+    "editorial": "This problem were more about accuracy then about ideas or coding. It is important to not forget any cases here.\n\nOn each step we replace one of the numbers x, y by their sum x?+?y until the pair becomes m-perfect (id est one of them becomes not lesser than m). It is clear that one sould replace lesser number from the pair x, y. Indeed lets say the pair x1???y1 dominates the pair x2???y2, if y1???y2 and x1???y2. In this case if one can get m-perfect pair from x2, y2 by certain sequence of actions, then one can get m-perfect pair from x1, y1 by the same or shorter sequence of actions. If x???y, then the pair x?+?y, y dominates the pair x?+?y, x. Hence path from x?+?y, y to m-perfect is not longer than from x?+?y, x, and we may assume that we choose exactly this pair.\n\nConsider following cases:\n\nx???0, y???0 In this case our numbers do not increase in the process. Hence either the pair is alredy m-perfect or it will never be.\n\nx?>?0 and y?>?0 In this case for each m pair will after several steps become m-perfect. To count precise number of those steps one needs to launch emulation. If x?>?0 and y?>?0, then pair \"grows exponentionaly>> (more formally: easy to show that starting from secnd step sum x?+?y grows in at least 3?/?2 times each step) and emulation works pretty fast. However in the case x?<?0 and y?>?0 (or vice versa) pair might change very slowly. Most bright example is x?=??-?1018, y?=?1. Thus one needs to count number of steps until both numbers becomes positive before launching emulationt. For x?<?0 and y?>?0 number of those steps is exactly ."
+}

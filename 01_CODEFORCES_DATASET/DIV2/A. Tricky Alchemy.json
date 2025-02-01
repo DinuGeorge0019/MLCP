@@ -1,1 +1,104 @@
-{"link": "https://codeforces.com//contest/912/problem/A", "problemId": "144439", "problem_idx": "A", "shortId": "912A", "contest_number": "912", "problem_submissions": {"C": [33939960, 33939332], "E": [33937258, 33933701, 33945198, 33942310, 33943413, 33944965, 33944500, 33944708, 33947180, 33947146, 76791617, 33941858, 33941491], "D": [33929983, 33936192, 33941962, 33932459, 33932813, 33939373, 33937374, 33934352, 33940764, 33937493, 33943638, 33931105, 33939804, 33934462, 33942378, 33953796, 33937778, 33936199], "B": [33924135, 33925821, 33925186, 33924566, 33925991, 33928269, 33929796, 33936643, 33929453, 33927572, 33926977, 33926561, 33926317, 33935518, 33928188, 33928933, 33930630, 33931743], "A": [33923797, 33924106, 33923840, 33926847, 33924254, 33926307, 33927750, 33935324, 33926290, 33928561, 33923877, 33925336, 33924071, 33924047, 33923947, 33924293, 33926054, 33925244, 33930321]}, "name": "A. Tricky Alchemy", "statement": "During the winter holidays, the demand for Christmas balls is\r\nexceptionally high. Since it\u2019s already , the advances in alchemy allow\r\neasy and efficient ball creation by utilizing magic crystals.Grisha\r\nneeds to obtain some yellow, green and blue balls. It\u2019s known that to\r\nproduce a ball one needs two yellow crystals, one yellow and one blue,\r\nand for a ball, three blue crystals are enough.Right now there are\r\nyellow and blue crystals in Grisha\u2019s disposal. Find out how many\r\nadditional crystals he should acquire in order to produce the required\r\nnumber of balls.\r\n", "solutions": ["#include<cstdio>\n#include<algorithm>\nusing namespace std;\nlong long A, B, PA, PB;\nlong long x, y, z;\nint main() {\n\tscanf(\"%lld%lld%lld%lld%lld\", &A, &B, &x, &y, &z);\n\tPA = x * 2 + y, PB = y + z * 3;\n\tprintf(\"%lld\\n\", max(PA, A) - A+max(PB, B) - B);\n}"], "input": "", "output": "", "tags": ["implementation"], "dificulty": "800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/912/problem/A",
+    "problemId": "144439",
+    "problem_idx": "A",
+    "shortId": "912A",
+    "contest_number": "912",
+    "problem_submissions": {
+        "C": [
+            33939960,
+            33939332
+        ],
+        "E": [
+            33937258,
+            33933701,
+            33945198,
+            33942310,
+            33943413,
+            33944965,
+            33944500,
+            33944708,
+            33947180,
+            33947146,
+            76791617,
+            33941858,
+            33941491
+        ],
+        "D": [
+            33929983,
+            33936192,
+            33941962,
+            33932459,
+            33932813,
+            33939373,
+            33937374,
+            33934352,
+            33940764,
+            33937493,
+            33943638,
+            33931105,
+            33939804,
+            33934462,
+            33942378,
+            33953796,
+            33937778,
+            33936199
+        ],
+        "B": [
+            33924135,
+            33925821,
+            33925186,
+            33924566,
+            33925991,
+            33928269,
+            33929796,
+            33936643,
+            33929453,
+            33927572,
+            33926977,
+            33926561,
+            33926317,
+            33935518,
+            33928188,
+            33928933,
+            33930630,
+            33931743
+        ],
+        "A": [
+            33923797,
+            33924106,
+            33923840,
+            33926847,
+            33924254,
+            33926307,
+            33927750,
+            33935324,
+            33926290,
+            33928561,
+            33923877,
+            33925336,
+            33924071,
+            33924047,
+            33923947,
+            33924293,
+            33926054,
+            33925244,
+            33930321
+        ]
+    },
+    "name": "A. Tricky Alchemy",
+    "statement": "During the winter holidays, the demand for Christmas balls is\r\nexceptionally high. Since it\u2019s already , the advances in alchemy allow\r\neasy and efficient ball creation by utilizing magic crystals.Grisha\r\nneeds to obtain some yellow, green and blue balls. It\u2019s known that to\r\nproduce a ball one needs two yellow crystals, one yellow and one blue,\r\nand for a ball, three blue crystals are enough.Right now there are\r\nyellow and blue crystals in Grisha\u2019s disposal. Find out how many\r\nadditional crystals he should acquire in order to produce the required\r\nnumber of balls.\r\n",
+    "solutions": [
+        "#include<cstdio>\n#include<algorithm>\nusing namespace std;\nlong long A, B, PA, PB;\nlong long x, y, z;\nint main() {\n\tscanf(\"%lld%lld%lld%lld%lld\", &A, &B, &x, &y, &z);\n\tPA = x * 2 + y, PB = y + z * 3;\n\tprintf(\"%lld\\n\", max(PA, A) - A+max(PB, B) - B);\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation"
+    ],
+    "dificulty": "800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Tricky Alchemy.json",
+    "editorial_link": "https://codeforces.com//blog/entry/56920",
+    "editorial": "Note that the crystals of each color are bought independently. One needs\r\nyellow and blue crystals. The answer therefore is .\r\n"
+}

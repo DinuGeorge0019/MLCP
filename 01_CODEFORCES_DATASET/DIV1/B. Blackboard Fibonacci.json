@@ -1,1 +1,88 @@
-{"link": "https://codeforces.com//contest/217/problem/B", "problemId": "1608", "problem_idx": "B", "shortId": "217B", "contest_number": "217", "problem_submissions": {"C": [2030323, 2028224, 2030324, 2028180, 2030572, 2027991, 2028080, 2028735, 2028870, 2028963, 6055918, 2033098, 2028984, 2030292, 2029555, 2029656, 2045302], "D": [2027935, 2028420, 2028882], "B": [2025442, 2028904, 2025653, 2028314, 2029281, 2032858, 2030094, 2032869, 2032838, 2027553, 2026258], "A": [2023511, 2023579, 2023545, 2023525, 2023509, 2024047, 2023513, 2023838, 2024026, 2023574, 2023601, 2023618, 2024082, 2023647, 2023532, 2023666, 2023680], "E": [2028007, 2029369, 2033123, 2070623, 2070617]}, "name": "B. Blackboard Fibonacci", "statement": "Fibonacci numbers are the sequence of integers: , , , , , , , . So every\r\nnext number is the sum of the previous two.Bajtek has developed a nice\r\nway to compute Fibonacci numbers on a blackboard. First, he writes a 0.\r\nThen, below it, he writes a 1. Then he performs the following two\r\noperations: operation \"\": replace the top number with the sum of both\r\nnumbers; operation \"\": replace the bottom number with the sum of both\r\nnumbers. If he performs operations, starting with \"\" and then choosing\r\noperations alternately (so that the sequence of operations looks like\r\n\"\"), the last number written will be equal to .Unfortunately, Bajtek\r\nsometimes makes mistakes and repeats an operation two or more times in a\r\nrow. For example, if Bajtek wanted to compute , then he would want to do\r\noperations: \"\". If he instead performs the sequence of operations \"\",\r\nthen he will have made 3 mistakes, and he will incorrectly compute that\r\nthe seventh Fibonacci number is 10. The number of mistakes in the\r\nsequence of operations is the number of neighbouring equal operations (\r\nor ).You are given the number of operations that Bajtek has made in an\r\nattempt to compute and the number that is the result of his computations\r\n(that is last written number). Find the minimum possible number of\r\nmistakes that Bajtek must have made and any possible sequence of\r\noperations resulting in with that number of mistakes.Assume that Bajtek\r\nalways correctly starts with operation \"\".\r\n", "solutions": ["#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <set>\n#include <map>\n#include <algorithm>\n#include <functional>\n#include <utility>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstdio>\n\nusing namespace std;\n\n#define REP(i,n) for((i)=0;(i)<(int)(n);(i)++)\n#define foreach(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n\n#define INF (1<<29)\n\nchar buf[2000010];\n\nint func(int t, int b){\n    int ans = 0;\n    \n    while(t > 0 && b > 0){\n        if(t >= b){\n            ans += t/b;\n            t %= b;\n        } else {\n            ans += (b-1)/t;\n            b -= (b-1)/t*t;\n        }\n    }\n    \n    if(t == 0 && b == 1) return ans;\n    return -1;\n}\n\nint func2(int t, int b){\n    int i=0;\n    \n    while(t > 0 && b > 0){\n        if(t >= b){\n            buf[i] = 'T';\n            t -= b;\n            i++;\n        } else {\n            buf[i] = 'B';\n            b -= t;\n            i++;\n        }\n    }\n    \n    int len = i;\n    reverse(buf, buf+len);\n    \n    int mistake = 0;\n    REP(i,len-1) if(buf[i] == buf[i+1]) mistake++;\n    if(buf[0] != 'T') mistake = INF;\n    return mistake;\n}\n\nint main(void){\n    int n,r,i;\n    \n    cin >> n >> r;\n    \n    int x = -1, y = -1, best = INF;\n    \n    REP(i,r+1) if(func(r,i) == n){\n        int tmp = func2(r,i);\n        if(tmp < best){\n            best = tmp;\n            x = r; y = i;\n        }\n    }\n    \n    REP(i,r) if(func(i,r) == n){\n        int tmp = func2(i,r);\n        if(tmp < best){\n            best = tmp;\n            x = i; y = r;\n        }\n    }\n    \n    if(best == INF){\n        cout << \"IMPOSSIBLE\" << endl;\n    } else {\n        func2(x,y);\n        buf[n] = '\\0';\n        cout << best << endl;\n        printf(\"%s\\n\", buf);\n    }\n    \n    return 0;\n}\n"], "input": "", "output": "", "tags": ["brute force", "math"], "dificulty": "2100", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/217/problem/B",
+    "problemId": "1608",
+    "problem_idx": "B",
+    "shortId": "217B",
+    "contest_number": "217",
+    "problem_submissions": {
+        "C": [
+            2030323,
+            2028224,
+            2030324,
+            2028180,
+            2030572,
+            2027991,
+            2028080,
+            2028735,
+            2028870,
+            2028963,
+            6055918,
+            2033098,
+            2028984,
+            2030292,
+            2029555,
+            2029656,
+            2045302
+        ],
+        "D": [
+            2027935,
+            2028420,
+            2028882
+        ],
+        "B": [
+            2025442,
+            2028904,
+            2025653,
+            2028314,
+            2029281,
+            2032858,
+            2030094,
+            2032869,
+            2032838,
+            2027553,
+            2026258
+        ],
+        "A": [
+            2023511,
+            2023579,
+            2023545,
+            2023525,
+            2023509,
+            2024047,
+            2023513,
+            2023838,
+            2024026,
+            2023574,
+            2023601,
+            2023618,
+            2024082,
+            2023647,
+            2023532,
+            2023666,
+            2023680
+        ],
+        "E": [
+            2028007,
+            2029369,
+            2033123,
+            2070623,
+            2070617
+        ]
+    },
+    "name": "B. Blackboard Fibonacci",
+    "statement": "Fibonacci numbers are the sequence of integers: , , , , , , , . So every\r\nnext number is the sum of the previous two.Bajtek has developed a nice\r\nway to compute Fibonacci numbers on a blackboard. First, he writes a 0.\r\nThen, below it, he writes a 1. Then he performs the following two\r\noperations: operation \"\": replace the top number with the sum of both\r\nnumbers; operation \"\": replace the bottom number with the sum of both\r\nnumbers. If he performs operations, starting with \"\" and then choosing\r\noperations alternately (so that the sequence of operations looks like\r\n\"\"), the last number written will be equal to .Unfortunately, Bajtek\r\nsometimes makes mistakes and repeats an operation two or more times in a\r\nrow. For example, if Bajtek wanted to compute , then he would want to do\r\noperations: \"\". If he instead performs the sequence of operations \"\",\r\nthen he will have made 3 mistakes, and he will incorrectly compute that\r\nthe seventh Fibonacci number is 10. The number of mistakes in the\r\nsequence of operations is the number of neighbouring equal operations (\r\nor ).You are given the number of operations that Bajtek has made in an\r\nattempt to compute and the number that is the result of his computations\r\n(that is last written number). Find the minimum possible number of\r\nmistakes that Bajtek must have made and any possible sequence of\r\noperations resulting in with that number of mistakes.Assume that Bajtek\r\nalways correctly starts with operation \"\".\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <set>\n#include <map>\n#include <algorithm>\n#include <functional>\n#include <utility>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstdio>\n\nusing namespace std;\n\n#define REP(i,n) for((i)=0;(i)<(int)(n);(i)++)\n#define foreach(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n\n#define INF (1<<29)\n\nchar buf[2000010];\n\nint func(int t, int b){\n    int ans = 0;\n    \n    while(t > 0 && b > 0){\n        if(t >= b){\n            ans += t/b;\n            t %= b;\n        } else {\n            ans += (b-1)/t;\n            b -= (b-1)/t*t;\n        }\n    }\n    \n    if(t == 0 && b == 1) return ans;\n    return -1;\n}\n\nint func2(int t, int b){\n    int i=0;\n    \n    while(t > 0 && b > 0){\n        if(t >= b){\n            buf[i] = 'T';\n            t -= b;\n            i++;\n        } else {\n            buf[i] = 'B';\n            b -= t;\n            i++;\n        }\n    }\n    \n    int len = i;\n    reverse(buf, buf+len);\n    \n    int mistake = 0;\n    REP(i,len-1) if(buf[i] == buf[i+1]) mistake++;\n    if(buf[0] != 'T') mistake = INF;\n    return mistake;\n}\n\nint main(void){\n    int n,r,i;\n    \n    cin >> n >> r;\n    \n    int x = -1, y = -1, best = INF;\n    \n    REP(i,r+1) if(func(r,i) == n){\n        int tmp = func2(r,i);\n        if(tmp < best){\n            best = tmp;\n            x = r; y = i;\n        }\n    }\n    \n    REP(i,r) if(func(i,r) == n){\n        int tmp = func2(i,r);\n        if(tmp < best){\n            best = tmp;\n            x = i; y = r;\n        }\n    }\n    \n    if(best == INF){\n        cout << \"IMPOSSIBLE\" << endl;\n    } else {\n        func2(x,y);\n        buf[n] = '\\0';\n        cout << best << endl;\n        printf(\"%s\\n\", buf);\n    }\n    \n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "math"
+    ],
+    "dificulty": "2100",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Blackboard Fibonacci.json",
+    "editorial_link": "https://codeforces.com//blog/entry/5285",
+    "editorial": "If you look at the described process backwards, it resembles the Euclidean algorithm a lot. Indeed, if you rewinded a recording of Bajtek's actions, he always takes the larger out of two numbers (say\n\nUnable to parse markup [type=CF_TEX]\n\n) and replaces them by a?-?b,?b. Since we know one of the final numbers (r) we can simply check all numbers between 1 and r and run a faster version of Euclid's algorithm (one that replaces a,?b by ) for all possibilities for a total runtime of . This was one of the expected solutions.\nHowever, with some insight, it can be seen that this optimization is in fact not neccessary \u0097 we can simply simulate the reverse process as described (replacing a,?b by a?-?b,?b) for all candidates between 1 and r and the total runtime of our algorithm will remain . The proof of this fact is left to the reader."
+}

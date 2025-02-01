@@ -1,1 +1,99 @@
-{"link": "https://codeforces.com//contest/124/problem/C", "problemId": "659", "problem_idx": "C", "shortId": "124C", "contest_number": "124", "problem_submissions": {"D": [830516, 831052, 830260, 830876, 831073, 831039, 830521, 831685, 831637, 830707, 830117, 831656, 831924, 830160], "C": [829966, 828434, 832481, 830195, 830289, 830286, 831243, 829787, 830553, 831437, 830908, 830422, 830664, 830957], "B": [828282, 830142, 828624, 828524, 828126, 828773, 828303, 828596, 828124, 828824, 831632, 829528, 828350, 831819], "A": [826975, 827420, 827298, 826788, 826903, 827255, 826640, 827252, 826692, 827048, 828119, 827326, 826716, 828544], "E": [831333, 875691, 838710]}, "name": "C. Prime Permutation", "statement": "You are given a string , consisting of small Latin letters. Let\u2019s denote\r\nthe length of the string as . The characters in the string are numbered\r\nstarting from . Your task is to find out if it is possible to rearrange\r\ncharacters in string so that for any prime number and for any integer\r\nranging from to (inclusive) the following condition was fulfilled . If\r\nthe answer is positive, find one way to rearrange the characters.\r\n", "solutions": ["#include <iostream>\n#include <string>\nusing namespace std;\n\nint prime[1000];\nint num_prime = 0;\n\nvoid MakePrime() {\n  bool isPrime[1001];\n  for (int i = 0; i < 1000; ++i) {\n    isPrime[i] = true;\n  }\n  isPrime[0] = isPrime[1] = false;\n  for (int i = 0; i < 700; ++i) {\n    if (!isPrime[i]) {\n      continue;\n    }\n\n    int p = prime[num_prime++] = i;\n    for (int k = p * p; k < 1000; k += p) {\n      isPrime[k] = false;\n    }\n  }\n}\n\nvoid SplitChars(const string &str, string *same_str, string *diff_str) {\n  int count[256];\n  for (int i = 0; i < 256; ++i) {\n    count[i] = 0;\n  }\n  for (int i = 0; i < str.size(); ++i) {\n    ++count[str[i]];\n  }\n\n  int dup_char = 0, id_char = -1;\n  for (int i = 'a'; i <= 'z'; ++i) {\n    if (dup_char < count[i]) {\n      dup_char = count[i];\n      id_char = i;\n    }\n  }\n\n  for (int i = 0; i < str.size(); ++i) {\n    if (str[i] == id_char) {\n      *same_str += str[i];\n    } else {\n      *diff_str += str[i];\n    }\n  }\n}\n\nint CheckSame(const string &str, bool *same) {\n  for (int i = 0; i < str.size(); ++i) {\n    same[i] = false;\n  }\n\n  int num_dup = 0;\n  for (int i = 0; prime[i] <= str.size() / 2; ++i) {\n    const int p = prime[i];\n    for (int j = p; j <= str.size(); j += p) {\n      if (!same[j - 1]) {\n        same[j - 1] = true;\n        ++num_dup;\n      }\n    }\n  }\n\n  return num_dup;\n}\n\nint main(void) {\n  MakePrime();\n  for (string str; cin >> str; ) {\n    const int n = str.size();\n    string same_str, diff_str;\n    SplitChars(str, &same_str, &diff_str);\n    bool same[1001];\n    int num_dup = CheckSame(str, same);\n\n    if (num_dup > same_str.size()) {\n      cout << \"NO\\n\";\n      continue;\n    }\n\n    cout << \"YES\\n\";\n    int id_output = 0;\n    const char *pchar_same = same_str.c_str();\n    const char *pchar_diff = diff_str.c_str();\n    for (int i = 0; i < n; ++i) {\n      if (same[i]) {\n        str[i] = *pchar_same++;\n      } else if (*pchar_diff) {\n        str[i] = *pchar_diff++;\n      } else {\n        str[i] = *pchar_same++;\n      }\n    }\n    cout << str << \"\\n\";\n  }\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["constructive algorithms", "dfs and similar", "dsu", "greedy", "number theory", "sortings", "strings"], "dificulty": "1300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/124/problem/C",
+    "problemId": "659",
+    "problem_idx": "C",
+    "shortId": "124C",
+    "contest_number": "124",
+    "problem_submissions": {
+        "D": [
+            830516,
+            831052,
+            830260,
+            830876,
+            831073,
+            831039,
+            830521,
+            831685,
+            831637,
+            830707,
+            830117,
+            831656,
+            831924,
+            830160
+        ],
+        "C": [
+            829966,
+            828434,
+            832481,
+            830195,
+            830289,
+            830286,
+            831243,
+            829787,
+            830553,
+            831437,
+            830908,
+            830422,
+            830664,
+            830957
+        ],
+        "B": [
+            828282,
+            830142,
+            828624,
+            828524,
+            828126,
+            828773,
+            828303,
+            828596,
+            828124,
+            828824,
+            831632,
+            829528,
+            828350,
+            831819
+        ],
+        "A": [
+            826975,
+            827420,
+            827298,
+            826788,
+            826903,
+            827255,
+            826640,
+            827252,
+            826692,
+            827048,
+            828119,
+            827326,
+            826716,
+            828544
+        ],
+        "E": [
+            831333,
+            875691,
+            838710
+        ]
+    },
+    "name": "C. Prime Permutation",
+    "statement": "You are given a string , consisting of small Latin letters. Let\u2019s denote\r\nthe length of the string as . The characters in the string are numbered\r\nstarting from . Your task is to find out if it is possible to rearrange\r\ncharacters in string so that for any prime number and for any integer\r\nranging from to (inclusive) the following condition was fulfilled . If\r\nthe answer is positive, find one way to rearrange the characters.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <string>\nusing namespace std;\n\nint prime[1000];\nint num_prime = 0;\n\nvoid MakePrime() {\n  bool isPrime[1001];\n  for (int i = 0; i < 1000; ++i) {\n    isPrime[i] = true;\n  }\n  isPrime[0] = isPrime[1] = false;\n  for (int i = 0; i < 700; ++i) {\n    if (!isPrime[i]) {\n      continue;\n    }\n\n    int p = prime[num_prime++] = i;\n    for (int k = p * p; k < 1000; k += p) {\n      isPrime[k] = false;\n    }\n  }\n}\n\nvoid SplitChars(const string &str, string *same_str, string *diff_str) {\n  int count[256];\n  for (int i = 0; i < 256; ++i) {\n    count[i] = 0;\n  }\n  for (int i = 0; i < str.size(); ++i) {\n    ++count[str[i]];\n  }\n\n  int dup_char = 0, id_char = -1;\n  for (int i = 'a'; i <= 'z'; ++i) {\n    if (dup_char < count[i]) {\n      dup_char = count[i];\n      id_char = i;\n    }\n  }\n\n  for (int i = 0; i < str.size(); ++i) {\n    if (str[i] == id_char) {\n      *same_str += str[i];\n    } else {\n      *diff_str += str[i];\n    }\n  }\n}\n\nint CheckSame(const string &str, bool *same) {\n  for (int i = 0; i < str.size(); ++i) {\n    same[i] = false;\n  }\n\n  int num_dup = 0;\n  for (int i = 0; prime[i] <= str.size() / 2; ++i) {\n    const int p = prime[i];\n    for (int j = p; j <= str.size(); j += p) {\n      if (!same[j - 1]) {\n        same[j - 1] = true;\n        ++num_dup;\n      }\n    }\n  }\n\n  return num_dup;\n}\n\nint main(void) {\n  MakePrime();\n  for (string str; cin >> str; ) {\n    const int n = str.size();\n    string same_str, diff_str;\n    SplitChars(str, &same_str, &diff_str);\n    bool same[1001];\n    int num_dup = CheckSame(str, same);\n\n    if (num_dup > same_str.size()) {\n      cout << \"NO\\n\";\n      continue;\n    }\n\n    cout << \"YES\\n\";\n    int id_output = 0;\n    const char *pchar_same = same_str.c_str();\n    const char *pchar_diff = diff_str.c_str();\n    for (int i = 0; i < n; ++i) {\n      if (same[i]) {\n        str[i] = *pchar_same++;\n      } else if (*pchar_diff) {\n        str[i] = *pchar_diff++;\n      } else {\n        str[i] = *pchar_same++;\n      }\n    }\n    cout << str << \"\\n\";\n  }\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "dfs and similar",
+        "dsu",
+        "greedy",
+        "number theory",
+        "sortings",
+        "strings"
+    ],
+    "dificulty": "1300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Prime Permutation.json",
+    "editorial_link": "https://codeforces.com//blog/entry/3047",
+    "editorial": "All positions except the first and those whose number is a prime greater |s|?/?2 have to have the same symbol. Remaining positions can have any symbol. Consider positions that should be the same for p?=?2 is 2,4,6,8 ... Now let's take a position with the number x???|s|?/?2, this position should have the same character as the position of 2 as the symbol x must be equal to the character at position 2?*?x, which is equal to the character at position 2. Now consider the position whose number is more than |s|?/?2. If this position is not a prime then there is a prime number p to divide the number at our positions and p???|s|?/?2. So character at position p is equal the character at position 2 and so a symbol at our position is also consistent to the character at position 2. The remaining positions are not combined with any other positions so it does not matter which symbol is situated here.\nLet's find the symbol which occurs the most and try to place the symbol on the position in which the characters have to be equal. If this symbol for all positions is not enough then the answer will be \"NO\", otherwise arrange the remaining characters by any way at other positions."
+}

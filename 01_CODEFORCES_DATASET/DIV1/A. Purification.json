@@ -1,1 +1,102 @@
-{"link": "https://codeforces.com//contest/329/problem/A", "problemId": "3354", "problem_idx": "A", "shortId": "329A", "contest_number": "329", "problem_submissions": {"D": [4118984, 4120313, 4119660, 4116785, 4117605, 4120902, 4120215, 4118708, 4120010, 4137748, 4119968, 4119996, 4119672, 4121809], "C": [4117113, 4117558, 4116367, 4121523, 4143349, 4121550, 4117988, 4118184, 4122060, 4117812, 4137746, 4121987, 4121389, 4120201, 4115159, 4117962, 4119458, 4118596], "B": [4114305, 4114368, 4113665, 4115021, 4115525, 4115412, 4114479, 4114580, 4118395, 4137745, 4114685, 4117097, 4121085, 4123377, 4114997, 4115233, 4115579], "A": [4112796, 4112854, 4120598, 4113396, 4112888, 4113555, 4112601, 4113197, 4113479, 4137744, 4112411, 4113271, 4115572, 4112548, 4113837, 4113786, 4113898], "E": [4137719]}, "name": "A. Purification", "statement": "You are an adventurer currently journeying inside an evil temple. After\r\ndefeating a couple of weak zombies, you arrived at a square room\r\nconsisting of tiles forming an grid. The rows are numbered through from\r\ntop to bottom, and the columns are numbered through from left to right.\r\nAt the far side of the room lies a door locked with evil magical forces.\r\nThe following inscriptions are written on the door: Being a very senior\r\nadventurer, you immediately realize what this means. You notice that\r\nevery single cell in the grid are initially evil. You should purify all\r\nof these cells.The only method of tile purification known to you is by\r\ncasting the \"Purification\" spell. You cast this spell on a single tile\r\nthen, all cells that are located in the same row and all cells that are\r\nlocated in the same column as the selected tile become purified\r\n(including the selected tile)! It is allowed to purify a cell more than\r\nonce.You would like to purify all cells while minimizing the number of\r\ntimes you cast the \"Purification\" spell. This sounds very easy, but you\r\njust noticed that some tiles are particularly more evil than the other\r\ntiles. You cannot cast the \"Purification\" spell on those particularly\r\nmore evil tiles, not even after they have been purified. They can still\r\nbe purified if a cell sharing the same row or the same column gets\r\nselected by the \"Purification\" spell.Please find some way to purify all\r\nthe cells with the minimum number of spells cast. Print -1 if there is\r\nno such way.\r\n", "solutions": ["/*\nID: espr1t\nTASK: \nKEYWORDS: \n*/\n\n#include <cstdio>\n#include <cstring>\n#include <algorithm>\n#include <map>\n\nusing namespace std;\nFILE *in; FILE *out;\n\nconst int MAX = 128;\n\nint n;\nchar a[MAX][MAX];\n\nint main(void) {\n\tin = stdin; out = stdout;\n//\tin = fopen(\"A.in\", \"rt\"); out = fopen(\"A.out\", \"wt\");\n\t\n\tint n;\n\tfscanf(in, \"%d\", &n);\n\tfor (int i = 0; i < n; i++)\n\t    fscanf(in, \"%s\", a[i]);\n\t\n\t// Only rows\n\tmap < int, int > q;\n\tfor (int i = 0; i < n; i++) {\n\t    for (int c = 0; c < n; c++)\n\t        if (a[i][c] == '.') q[i] = c;\n\t}\n\tif ((int)q.size() == n) {\n\t    for (map <int, int> :: iterator it = q.begin(); it != q.end(); it++)\n\t        fprintf(out, \"%d %d\\n\", it->first + 1, it->second + 1);\n\t    return 0;\n\t}\n\t\n\t// Only columns\n\tq.clear();\n\tfor (int i = 0; i < n; i++) {\n\t    for (int c = 0; c < n; c++)\n\t        if (a[c][i] == '.') q[i] = c;\n\t}\n\tif ((int)q.size() == n) {\n\t    for (map <int, int> :: iterator it = q.begin(); it != q.end(); it++)\n\t        fprintf(out, \"%d %d\\n\", it->second + 1, it->first + 1);\n\t    return 0;\n\t}\n\tfprintf(out, \"-1\\n\");\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["constructive algorithms", "greedy"], "dificulty": "1500", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/329/problem/A",
+    "problemId": "3354",
+    "problem_idx": "A",
+    "shortId": "329A",
+    "contest_number": "329",
+    "problem_submissions": {
+        "D": [
+            4118984,
+            4120313,
+            4119660,
+            4116785,
+            4117605,
+            4120902,
+            4120215,
+            4118708,
+            4120010,
+            4137748,
+            4119968,
+            4119996,
+            4119672,
+            4121809
+        ],
+        "C": [
+            4117113,
+            4117558,
+            4116367,
+            4121523,
+            4143349,
+            4121550,
+            4117988,
+            4118184,
+            4122060,
+            4117812,
+            4137746,
+            4121987,
+            4121389,
+            4120201,
+            4115159,
+            4117962,
+            4119458,
+            4118596
+        ],
+        "B": [
+            4114305,
+            4114368,
+            4113665,
+            4115021,
+            4115525,
+            4115412,
+            4114479,
+            4114580,
+            4118395,
+            4137745,
+            4114685,
+            4117097,
+            4121085,
+            4123377,
+            4114997,
+            4115233,
+            4115579
+        ],
+        "A": [
+            4112796,
+            4112854,
+            4120598,
+            4113396,
+            4112888,
+            4113555,
+            4112601,
+            4113197,
+            4113479,
+            4137744,
+            4112411,
+            4113271,
+            4115572,
+            4112548,
+            4113837,
+            4113786,
+            4113898
+        ],
+        "E": [
+            4137719
+        ]
+    },
+    "name": "A. Purification",
+    "statement": "You are an adventurer currently journeying inside an evil temple. After\r\ndefeating a couple of weak zombies, you arrived at a square room\r\nconsisting of tiles forming an grid. The rows are numbered through from\r\ntop to bottom, and the columns are numbered through from left to right.\r\nAt the far side of the room lies a door locked with evil magical forces.\r\nThe following inscriptions are written on the door: Being a very senior\r\nadventurer, you immediately realize what this means. You notice that\r\nevery single cell in the grid are initially evil. You should purify all\r\nof these cells.The only method of tile purification known to you is by\r\ncasting the \"Purification\" spell. You cast this spell on a single tile\r\nthen, all cells that are located in the same row and all cells that are\r\nlocated in the same column as the selected tile become purified\r\n(including the selected tile)! It is allowed to purify a cell more than\r\nonce.You would like to purify all cells while minimizing the number of\r\ntimes you cast the \"Purification\" spell. This sounds very easy, but you\r\njust noticed that some tiles are particularly more evil than the other\r\ntiles. You cannot cast the \"Purification\" spell on those particularly\r\nmore evil tiles, not even after they have been purified. They can still\r\nbe purified if a cell sharing the same row or the same column gets\r\nselected by the \"Purification\" spell.Please find some way to purify all\r\nthe cells with the minimum number of spells cast. Print -1 if there is\r\nno such way.\r\n",
+    "solutions": [
+        "/*\nID: espr1t\nTASK: \nKEYWORDS: \n*/\n\n#include <cstdio>\n#include <cstring>\n#include <algorithm>\n#include <map>\n\nusing namespace std;\nFILE *in; FILE *out;\n\nconst int MAX = 128;\n\nint n;\nchar a[MAX][MAX];\n\nint main(void) {\n\tin = stdin; out = stdout;\n//\tin = fopen(\"A.in\", \"rt\"); out = fopen(\"A.out\", \"wt\");\n\t\n\tint n;\n\tfscanf(in, \"%d\", &n);\n\tfor (int i = 0; i < n; i++)\n\t    fscanf(in, \"%s\", a[i]);\n\t\n\t// Only rows\n\tmap < int, int > q;\n\tfor (int i = 0; i < n; i++) {\n\t    for (int c = 0; c < n; c++)\n\t        if (a[i][c] == '.') q[i] = c;\n\t}\n\tif ((int)q.size() == n) {\n\t    for (map <int, int> :: iterator it = q.begin(); it != q.end(); it++)\n\t        fprintf(out, \"%d %d\\n\", it->first + 1, it->second + 1);\n\t    return 0;\n\t}\n\t\n\t// Only columns\n\tq.clear();\n\tfor (int i = 0; i < n; i++) {\n\t    for (int c = 0; c < n; c++)\n\t        if (a[c][i] == '.') q[i] = c;\n\t}\n\tif ((int)q.size() == n) {\n\t    for (map <int, int> :: iterator it = q.begin(); it != q.end(); it++)\n\t        fprintf(out, \"%d %d\\n\", it->second + 1, it->first + 1);\n\t    return 0;\n\t}\n\tfprintf(out, \"-1\\n\");\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "greedy"
+    ],
+    "dificulty": "1500",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Purification.json",
+    "editorial_link": "https://codeforces.com//blog/entry/8417",
+    "editorial": "Obviously the minimum possible answer is n (why?). But is it always possible to purify all the cells with n spells?\nIf there exist a row consisting of entirely \"E\" cells and a column consisting of entirely \"E\" cells, then the answer is -1. This is since the cell with that row and that column cannot be purifed.\nOtherwise, without loss of generality let's suppose there is no row consisting entirely of \"E\". Then, for each row, find any \".\" cell. Purify it. The case with no column consisting entirely of \"E\" is similar."
+}

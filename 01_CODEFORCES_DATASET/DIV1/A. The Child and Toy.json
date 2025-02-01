@@ -1,1 +1,107 @@
-{"link": "https://codeforces.com//contest/438/problem/A", "problemId": "9963", "problem_idx": "A", "shortId": "438A", "contest_number": "438", "problem_submissions": {"D": [6770791, 6768533, 6771704, 6771558, 6772564, 6771497, 6770667, 6772913, 6771311, 6770765, 6771398, 6772501, 6771788, 6773163, 6773332, 6768886, 6769122], "C": [6769384, 6771772, 6770600, 6769986, 6769707, 6770322, 6773155, 6770624, 6772819, 6772764, 6772925, 6771300, 6773617, 6772385, 6771439, 6774162], "B": [6766623, 6766692, 6766851, 6766923, 6766505, 6769047, 6767842, 6768520, 6767461, 6766938, 6767311, 6768462, 6767303, 6769160, 6766952, 6767030, 6767555], "A": [6765683, 6765687, 6765701, 6765754, 6767149, 6765703, 6766656, 6766754, 6766105, 6765753, 6765896, 6765923, 6765796, 6768072, 6766138, 6765696, 6765784], "E": [6784450, 6784415, 39812196, 39812172, 6951957]}, "name": "A. The Child and Toy", "statement": "On Children\u2019s Day, the child got a toy from Delayyy as a present.\r\nHowever, the child is so naughty that he can\u2019t wait to destroy the\r\ntoy.The toy consists of parts and ropes. Each rope links two parts, but\r\nevery pair of parts is linked by at most one rope. To split the toy, the\r\nchild must remove all its parts. The child can remove a single part at a\r\ntime, and each remove consume an energy. Let\u2019s define an energy value of\r\npart as . The child spend energy for removing part where are the parts\r\nthat are directly connected to the -th and haven\u2019t been removed.Help the\r\nchild to find out, what is the minimum total energy he should spend to\r\nremove all parts.\r\n", "solutions": ["#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cassert>\n#include <ctime>\n#include <cmath>\n#include <algorithm>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <list>\n#include <set>\n#include <map>\n#include <iostream>\n\n#define pb push_back\n#define mp make_pair\n#define TASKNAME \"\"\n\n#ifdef LOCAL\n#define eprintf(...) fprintf(stderr,__VA_ARGS__)\n#else\n#define eprintf(...)\n#endif\n\n#define TIMESTAMP(x) eprintf(\"[\" #x \"] Time = %.3lfs\\n\",clock()*1.0/CLOCKS_PER_SEC)\n\n#ifdef linux\n#define LLD \"%lld\"\n#else\n#define LLD \"%I64d\"\n#endif\n\n#define sz(x) ((int)(x).size())\n\nusing namespace std;\n\ntypedef long double ld;\ntypedef long long ll;\ntypedef vector<ll> vll;\ntypedef vector<int> vi;\ntypedef vector<vi> vvi;\ntypedef vector<bool> vb;\ntypedef vector<vb> vvb;\ntypedef pair<int, int> pii;\ntypedef pair <ll, ll> pll;\ntypedef vector<pii> vpii;\n\nconst int inf = 1e9;\nconst double eps = 1e-9;\nconst double INF = inf;\nconst double EPS = eps;\n                         \nint V[2100];\n\nint main()\n{\n  int i, n, m, v1, v2, res=0;\n  #ifdef LOCAL\n  freopen(TASKNAME\".in\",\"r\",stdin);\n  freopen(TASKNAME\".out\",\"w\",stdout);\n  #endif\n  scanf(\"%d%d\", &n, &m);\n  for (i=0; i<n; i++)\n    scanf(\"%d\", &V[i]);\n  for (i=0; i<m; i++)\n    scanf(\"%d%d\", &v1, &v2), v1--, v2--, res+=min(V[v1],V[v2]);  \n  printf(\"%d\\n\", res);\n  TIMESTAMP(end);\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["greedy", "sortings"], "dificulty": "1400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/438/problem/A",
+    "problemId": "9963",
+    "problem_idx": "A",
+    "shortId": "438A",
+    "contest_number": "438",
+    "problem_submissions": {
+        "D": [
+            6770791,
+            6768533,
+            6771704,
+            6771558,
+            6772564,
+            6771497,
+            6770667,
+            6772913,
+            6771311,
+            6770765,
+            6771398,
+            6772501,
+            6771788,
+            6773163,
+            6773332,
+            6768886,
+            6769122
+        ],
+        "C": [
+            6769384,
+            6771772,
+            6770600,
+            6769986,
+            6769707,
+            6770322,
+            6773155,
+            6770624,
+            6772819,
+            6772764,
+            6772925,
+            6771300,
+            6773617,
+            6772385,
+            6771439,
+            6774162
+        ],
+        "B": [
+            6766623,
+            6766692,
+            6766851,
+            6766923,
+            6766505,
+            6769047,
+            6767842,
+            6768520,
+            6767461,
+            6766938,
+            6767311,
+            6768462,
+            6767303,
+            6769160,
+            6766952,
+            6767030,
+            6767555
+        ],
+        "A": [
+            6765683,
+            6765687,
+            6765701,
+            6765754,
+            6767149,
+            6765703,
+            6766656,
+            6766754,
+            6766105,
+            6765753,
+            6765896,
+            6765923,
+            6765796,
+            6768072,
+            6766138,
+            6765696,
+            6765784
+        ],
+        "E": [
+            6784450,
+            6784415,
+            39812196,
+            39812172,
+            6951957
+        ]
+    },
+    "name": "A. The Child and Toy",
+    "statement": "On Children\u2019s Day, the child got a toy from Delayyy as a present.\r\nHowever, the child is so naughty that he can\u2019t wait to destroy the\r\ntoy.The toy consists of parts and ropes. Each rope links two parts, but\r\nevery pair of parts is linked by at most one rope. To split the toy, the\r\nchild must remove all its parts. The child can remove a single part at a\r\ntime, and each remove consume an energy. Let\u2019s define an energy value of\r\npart as . The child spend energy for removing part where are the parts\r\nthat are directly connected to the -th and haven\u2019t been removed.Help the\r\nchild to find out, what is the minimum total energy he should spend to\r\nremove all parts.\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cassert>\n#include <ctime>\n#include <cmath>\n#include <algorithm>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <list>\n#include <set>\n#include <map>\n#include <iostream>\n\n#define pb push_back\n#define mp make_pair\n#define TASKNAME \"\"\n\n#ifdef LOCAL\n#define eprintf(...) fprintf(stderr,__VA_ARGS__)\n#else\n#define eprintf(...)\n#endif\n\n#define TIMESTAMP(x) eprintf(\"[\" #x \"] Time = %.3lfs\\n\",clock()*1.0/CLOCKS_PER_SEC)\n\n#ifdef linux\n#define LLD \"%lld\"\n#else\n#define LLD \"%I64d\"\n#endif\n\n#define sz(x) ((int)(x).size())\n\nusing namespace std;\n\ntypedef long double ld;\ntypedef long long ll;\ntypedef vector<ll> vll;\ntypedef vector<int> vi;\ntypedef vector<vi> vvi;\ntypedef vector<bool> vb;\ntypedef vector<vb> vvb;\ntypedef pair<int, int> pii;\ntypedef pair <ll, ll> pll;\ntypedef vector<pii> vpii;\n\nconst int inf = 1e9;\nconst double eps = 1e-9;\nconst double INF = inf;\nconst double EPS = eps;\n                         \nint V[2100];\n\nint main()\n{\n  int i, n, m, v1, v2, res=0;\n  #ifdef LOCAL\n  freopen(TASKNAME\".in\",\"r\",stdin);\n  freopen(TASKNAME\".out\",\"w\",stdout);\n  #endif\n  scanf(\"%d%d\", &n, &m);\n  for (i=0; i<n; i++)\n    scanf(\"%d\", &V[i]);\n  for (i=0; i<m; i++)\n    scanf(\"%d%d\", &v1, &v2), v1--, v2--, res+=min(V[v1],V[v2]);  \n  printf(\"%d\\n\", res);\n  TIMESTAMP(end);\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "greedy",
+        "sortings"
+    ],
+    "dificulty": "1400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. The Child and Toy.json",
+    "editorial_link": "https://codeforces.com/blog/entry/12513",
+    "editorial": "The best way to delete all n nodes is deleting them in decreasing order of their value.\n\nProof:\n\nConsider each edge (x,?y), it will contribute to the total cost vx or vy when it is deleted.\n\nIf we delete the vertices in decreasing order, then it will contribute only min(vx,?vy), so the total costs is the lowest."
+}

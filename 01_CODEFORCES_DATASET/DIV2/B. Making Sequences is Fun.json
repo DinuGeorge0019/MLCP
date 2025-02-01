@@ -1,1 +1,99 @@
-{"link": "https://codeforces.com//contest/373/problem/B", "problemId": "4178", "problem_idx": "B", "shortId": "373B", "contest_number": "373", "problem_submissions": {"B": [5429569, 5424746, 5426227, 5425475, 5422342, 5425081, 5426099, 5425032, 5425412, 5436342, 5426611, 5423163, 5423178, 5425228], "A": [5424943, 5421235, 5422611, 5422595, 5433909, 5421126, 5421160, 5429834, 5421622, 5425841, 5421003, 5421386, 5421391, 5421143, 5421194, 5421261, 5421350], "C": [5424210, 5422375, 5423370, 5427068, 5424824, 5427055, 5423334, 5430375, 5422559, 5425280, 5426953, 5423867, 5424356, 5424874, 5424522, 5427759, 5426510, 5427253], "D": [5423101, 5430116, 5431564, 5429533, 5429205, 5429913, 5431205, 5429336, 5429567], "E": [5431047, 5431253, 5445684, 5431420, 5431441]}, "name": "B. Making Sequences is Fun", "statement": "We\u2019ll define for positive integer as follows: the number of the \u2019s\r\ndigits in the decimal base. For example, , .You want to make a\r\nconsecutive integer sequence starting from number (). But you need to\r\npay to add the number to the sequence.You can spend a cost up to , and\r\nyou want to make the sequence as long as possible. Write a program that\r\ntells sequence\u2019s maximum length.\r\n", "solutions": ["#include <iostream>\n#include <cstdio>\n#include <cstring>\n#include <cmath>\n#include <string>\n#include <vector>\n\nusing namespace std;\n\ntypedef long long LL;\n\nconst LL INF = 100000000000000000LL;\n\nLL w, M, k;\nLL ans;\n\nLL calcS(LL x)\n{\n\tif (x < 10) return x;\n\tLL ret = 0;\n\tLL i = 1, bit = 1;\n\tfor (; i * 10 <= x; i *= 10, ++bit) ret += bit * i * 9;\n\tLL digit = x / i % 10;\n\tret += (digit - 1) * i * bit;\n\tret += (x % i + 1)* bit;\n\treturn ret;\n}\n\nint main()\n{\n\tcin >> w >> M >> k;\n\tfor (LL l = 0, r = INF - M; l <= r;) {\n\t\tLL m = (l + r) / 2;\n\t\tif ((calcS(M + m - 1) - calcS(M - 1)) <= w / k) ans = m, l = m + 1;\n\t\telse r = m - 1;\n\t}\n\tcout << ans << endl;\n\treturn 0;\n}"], "input": "", "output": "", "tags": ["binary search", "implementation", "math"], "dificulty": "1600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/373/problem/B",
+    "problemId": "4178",
+    "problem_idx": "B",
+    "shortId": "373B",
+    "contest_number": "373",
+    "problem_submissions": {
+        "B": [
+            5429569,
+            5424746,
+            5426227,
+            5425475,
+            5422342,
+            5425081,
+            5426099,
+            5425032,
+            5425412,
+            5436342,
+            5426611,
+            5423163,
+            5423178,
+            5425228
+        ],
+        "A": [
+            5424943,
+            5421235,
+            5422611,
+            5422595,
+            5433909,
+            5421126,
+            5421160,
+            5429834,
+            5421622,
+            5425841,
+            5421003,
+            5421386,
+            5421391,
+            5421143,
+            5421194,
+            5421261,
+            5421350
+        ],
+        "C": [
+            5424210,
+            5422375,
+            5423370,
+            5427068,
+            5424824,
+            5427055,
+            5423334,
+            5430375,
+            5422559,
+            5425280,
+            5426953,
+            5423867,
+            5424356,
+            5424874,
+            5424522,
+            5427759,
+            5426510,
+            5427253
+        ],
+        "D": [
+            5423101,
+            5430116,
+            5431564,
+            5429533,
+            5429205,
+            5429913,
+            5431205,
+            5429336,
+            5429567
+        ],
+        "E": [
+            5431047,
+            5431253,
+            5445684,
+            5431420,
+            5431441
+        ]
+    },
+    "name": "B. Making Sequences is Fun",
+    "statement": "We\u2019ll define for positive integer as follows: the number of the \u2019s\r\ndigits in the decimal base. For example, , .You want to make a\r\nconsecutive integer sequence starting from number (). But you need to\r\npay to add the number to the sequence.You can spend a cost up to , and\r\nyou want to make the sequence as long as possible. Write a program that\r\ntells sequence\u2019s maximum length.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <cstdio>\n#include <cstring>\n#include <cmath>\n#include <string>\n#include <vector>\n\nusing namespace std;\n\ntypedef long long LL;\n\nconst LL INF = 100000000000000000LL;\n\nLL w, M, k;\nLL ans;\n\nLL calcS(LL x)\n{\n\tif (x < 10) return x;\n\tLL ret = 0;\n\tLL i = 1, bit = 1;\n\tfor (; i * 10 <= x; i *= 10, ++bit) ret += bit * i * 9;\n\tLL digit = x / i % 10;\n\tret += (digit - 1) * i * bit;\n\tret += (x % i + 1)* bit;\n\treturn ret;\n}\n\nint main()\n{\n\tcin >> w >> M >> k;\n\tfor (LL l = 0, r = INF - M; l <= r;) {\n\t\tLL m = (l + r) / 2;\n\t\tif ((calcS(M + m - 1) - calcS(M - 1)) <= w / k) ans = m, l = m + 1;\n\t\telse r = m - 1;\n\t}\n\tcout << ans << endl;\n\treturn 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "binary search",
+        "implementation",
+        "math"
+    ],
+    "dificulty": "1600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Making Sequences is Fun.json",
+    "editorial_link": "https://codeforces.com//blog/entry/9944",
+    "editorial": "Naive simulation (subtracting S(i) * k from w while w >= 0) won\u00e2\u0080\u0099t finish\r\nin 2 seconds. At first, these two facts will make it easier to solve the\r\nproblem : 1. k doesn\u00e2\u0080\u0099t matter for solving this problem, so you can\r\nsimply divide w with k at the first point. 2. S(10^x) + S(10^x + 1) +\r\n... + S(10^(x+1) 1) = 9 * x * 10^x . There are many ways to solve this\r\nproblem, and I\u00e2\u0080\u0099ll show you 2 ways. Binary Search Let\u00e2\u0080\u0099s define f(n) as\r\nsum_{k=1}^{n} S(n). This problem can be solved by finding largest x that\r\nsatisfies f(x) f(m 1) <= w. If x satisfies the given inequation, also x\r\n1, x 2, ... satisfies inequation since S(x) is always positive. So it\r\ncan be solved by using binary search. By using fact2, you can quickly\r\nsimulate the value of f(n). The answer can be rather large, so be\r\ncareful not to cause overflow by too large upper bound. Overall\r\ncomplexity is O(log |upper_bound lower_bound|). Cumulative Sums Let\u00e2\u0080\u0099s\r\nthink to speed up naive solutions that I\u00e2\u0080\u0099ve written at first. If you use\r\nfact 2, the number of simulation will reduce from O(|answer|) to O(1).\r\nAlso, simulation will be much easier if you add S(1) + ... + S(m-1) to\r\nw. Please see my source code for further detail. DEGwer\u00e2\u0080\u0099s solution\r\n(Solution 1) : http://ideone.com/cU78oe My solution(Solution 2) :\r\nhttp://ideone.com/NjxlwP\r\n"
+}

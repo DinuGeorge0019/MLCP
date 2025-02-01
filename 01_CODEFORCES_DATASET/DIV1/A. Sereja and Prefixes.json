@@ -1,1 +1,107 @@
-{"link": "https://codeforces.com//contest/380/problem/A", "problemId": "5529", "problem_idx": "A", "shortId": "380A", "contest_number": "380", "problem_submissions": {"A": [5676030, 5677444, 5667291, 5667878, 5667181, 5667622, 5667888, 5676828, 5666938, 5673846, 5670879, 5671395, 5669327, 5667863, 5667948, 5667971], "B": [5675030, 5677446, 5675293, 5674969, 5675596, 5677558], "E": [5673042, 5677453, 5674068, 5676554, 5676509, 5676152, 5673443, 5674960, 5673247, 5668823, 5671385, 5675127, 5674081, 6260429, 6260427, 6260419, 6260414, 6260386, 6260376, 6260372], "C": [5670663, 5677450, 5668629, 5669869, 5669624, 5673114, 5670447, 5670550, 5670519, 5668457, 5669925, 5671669, 5675539, 5669908, 5671123], "D": [5669162, 5677451, 5672118, 5672469, 5675471, 5671822, 5674127, 5674948, 5672625, 5672722, 5676148, 5674145, 5674258, 5673843, 5674777]}, "name": "A. Sereja and Prefixes", "statement": "Sereja loves number sequences very much. That\u2019s why he decided to make\r\nhimself a new one following a certain algorithm.Sereja takes a blank\r\npiece of paper. Then he starts writing out the sequence in stages. Each\r\ntime he either adds a new number to the end of the sequence or takes\r\nfirst elements of the current sequence and adds them times to the end.\r\nMore formally, if we represent the current sequence as , then after we\r\napply the described operation, the sequence transforms into (the block\r\nin the square brackets must be repeated times). A day has passed and\r\nSereja has completed the sequence. He wonders what are the values of\r\nsome of its elements. Help Sereja.\r\n", "solutions": ["#include <iostream>\n#include <sstream>\n#include <fstream>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <stack>\n#include <set>\n#include <map>\n#include <algorithm>\n#include <functional>\n#include <utility>\n#include <bitset>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstdio>\n\nusing namespace std;\n\n#define REP(i,n) for((i)=0;(i)<(int)(n);(i)++)\n#define snuke(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n\ntypedef long long ll;\n\nint N;\nint type[100010],x[100010],len[100010],repeat[100010];\nint init[100010];\nll dp[100010];\n\nvoid pre(void){\n    int i,j,k;\n    \n    dp[0] = 0;\n    REP(i,N){\n        if(type[i] == 1){\n            dp[i+1] = dp[i] + 1;\n        } else {\n            dp[i+1] = dp[i] + (ll)len[i]* (ll)repeat[i];\n        }\n    }\n    \n    int n = 0;\n    REP(i,N){\n        if(type[i] == 1){\n            init[n] = x[i];\n            n++;\n            if(n == 100005) return;\n        } else {\n            REP(j,repeat[i]) REP(k,len[i]){\n                init[n] = init[k];\n                n++;\n                if(n == 100005) return;\n            }\n        }\n    }\n}\n\nint group = 0;\n\nint query(ll pos){\n    int i;\n    \n    pos--;\n    while(pos >= dp[group+1]) group++;\n    \n    if(type[group] == 1) return x[group];\n    \n    ll tmp = (pos - dp[group]) % len[group];\n    return init[(int)tmp];\n}\n\nint main(void){\n    int Q,i;\n    \n    cin >> N;\n    REP(i,N){\n        scanf(\"%d\", &type[i]);\n        if(type[i] == 1){\n            scanf(\"%d\", &x[i]);\n        } else {\n            scanf(\"%d%d\", &len[i], &repeat[i]);\n        }\n    }\n    \n    pre();\n    \n    cin >> Q;\n    REP(i,Q){\n        ll pos;\n        scanf(\"%I64d\", &pos);\n        ll ans = query(pos);\n        printf(\"%I64d\\n\", ans);\n        if(i == Q-1) printf(\"\\n\"); else printf(\" \");\n    }\n    \n    return 0;\n}\n"], "input": "", "output": "", "tags": ["binary search", "brute force"], "dificulty": "1600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/380/problem/A",
+    "problemId": "5529",
+    "problem_idx": "A",
+    "shortId": "380A",
+    "contest_number": "380",
+    "problem_submissions": {
+        "A": [
+            5676030,
+            5677444,
+            5667291,
+            5667878,
+            5667181,
+            5667622,
+            5667888,
+            5676828,
+            5666938,
+            5673846,
+            5670879,
+            5671395,
+            5669327,
+            5667863,
+            5667948,
+            5667971
+        ],
+        "B": [
+            5675030,
+            5677446,
+            5675293,
+            5674969,
+            5675596,
+            5677558
+        ],
+        "E": [
+            5673042,
+            5677453,
+            5674068,
+            5676554,
+            5676509,
+            5676152,
+            5673443,
+            5674960,
+            5673247,
+            5668823,
+            5671385,
+            5675127,
+            5674081,
+            6260429,
+            6260427,
+            6260419,
+            6260414,
+            6260386,
+            6260376,
+            6260372
+        ],
+        "C": [
+            5670663,
+            5677450,
+            5668629,
+            5669869,
+            5669624,
+            5673114,
+            5670447,
+            5670550,
+            5670519,
+            5668457,
+            5669925,
+            5671669,
+            5675539,
+            5669908,
+            5671123
+        ],
+        "D": [
+            5669162,
+            5677451,
+            5672118,
+            5672469,
+            5675471,
+            5671822,
+            5674127,
+            5674948,
+            5672625,
+            5672722,
+            5676148,
+            5674145,
+            5674258,
+            5673843,
+            5674777
+        ]
+    },
+    "name": "A. Sereja and Prefixes",
+    "statement": "Sereja loves number sequences very much. That\u2019s why he decided to make\r\nhimself a new one following a certain algorithm.Sereja takes a blank\r\npiece of paper. Then he starts writing out the sequence in stages. Each\r\ntime he either adds a new number to the end of the sequence or takes\r\nfirst elements of the current sequence and adds them times to the end.\r\nMore formally, if we represent the current sequence as , then after we\r\napply the described operation, the sequence transforms into (the block\r\nin the square brackets must be repeated times). A day has passed and\r\nSereja has completed the sequence. He wonders what are the values of\r\nsome of its elements. Help Sereja.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <sstream>\n#include <fstream>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <stack>\n#include <set>\n#include <map>\n#include <algorithm>\n#include <functional>\n#include <utility>\n#include <bitset>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstdio>\n\nusing namespace std;\n\n#define REP(i,n) for((i)=0;(i)<(int)(n);(i)++)\n#define snuke(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n\ntypedef long long ll;\n\nint N;\nint type[100010],x[100010],len[100010],repeat[100010];\nint init[100010];\nll dp[100010];\n\nvoid pre(void){\n    int i,j,k;\n    \n    dp[0] = 0;\n    REP(i,N){\n        if(type[i] == 1){\n            dp[i+1] = dp[i] + 1;\n        } else {\n            dp[i+1] = dp[i] + (ll)len[i]* (ll)repeat[i];\n        }\n    }\n    \n    int n = 0;\n    REP(i,N){\n        if(type[i] == 1){\n            init[n] = x[i];\n            n++;\n            if(n == 100005) return;\n        } else {\n            REP(j,repeat[i]) REP(k,len[i]){\n                init[n] = init[k];\n                n++;\n                if(n == 100005) return;\n            }\n        }\n    }\n}\n\nint group = 0;\n\nint query(ll pos){\n    int i;\n    \n    pos--;\n    while(pos >= dp[group+1]) group++;\n    \n    if(type[group] == 1) return x[group];\n    \n    ll tmp = (pos - dp[group]) % len[group];\n    return init[(int)tmp];\n}\n\nint main(void){\n    int Q,i;\n    \n    cin >> N;\n    REP(i,N){\n        scanf(\"%d\", &type[i]);\n        if(type[i] == 1){\n            scanf(\"%d\", &x[i]);\n        } else {\n            scanf(\"%d%d\", &len[i], &repeat[i]);\n        }\n    }\n    \n    pre();\n    \n    cin >> Q;\n    REP(i,Q){\n        ll pos;\n        scanf(\"%I64d\", &pos);\n        ll ans = query(pos);\n        printf(\"%I64d\\n\", ans);\n        if(i == Q-1) printf(\"\\n\"); else printf(\" \");\n    }\n    \n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "binary search",
+        "brute force"
+    ],
+    "dificulty": "1600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Sereja and Prefixes.json",
+    "editorial_link": "https://codeforces.com//blog/entry/10363",
+    "editorial": "Generate the first number 100000. Will in turn handle the requests, if\r\nthe request gets to the point of adding one number, just print it.\r\nOtherwise see what element will meet our and just print it from\r\nprecalculated array.\r\n"
+}

@@ -1,1 +1,103 @@
-{"link": "https://codeforces.com//contest/194/problem/E", "problemId": "1413", "problem_idx": "E", "shortId": "194E", "contest_number": "194", "problem_submissions": {"B": [1764935, 1755068, 1937285, 1754608, 1754131, 1755380, 1755240, 1754857, 1755369, 1755173, 1755703, 1755481, 1755578, 1755103, 1755650, 1756121, 1755226, 1755274, 1755017], "A": [1764930, 1754050, 1937280, 1937278, 1753889, 1753888, 1754404, 1754253, 1753991, 1754353, 1753971, 1753959, 1753901, 1754292, 1754000, 1754355, 1754106, 1754010, 1754049, 1753941], "E": [1760518, 1763067, 1760520], "D": [1758849, 1757587, 1845330, 1759194, 1759982, 1763977, 1760187, 1760559, 1765401, 1768899, 1759233], "C": [1756942, 1756172, 1756826, 1757346, 1758198, 1758195, 1758670, 3530327, 1758792, 1757336, 1757355, 1757313, 1758027, 1757904, 1757515, 1756672]}, "name": "E. Hamming Distance", "statement": "between strings and of equal length (denoted by ) is equal to the number\r\nof distinct integers , such that , where is the -th symbol of string ,\r\nis the -th symbol of string . For example, the Hamming distance between\r\nstrings \"\" and \"\" equals , they have different first symbols. For\r\nstrings \"\" and \"\" the Hamming distance equals .John Doe had a paper on\r\nwhich four strings of equal length , , and were written. Each string\r\nconsisted only of lowercase letters \"\" and \"\". John found the Hamming\r\ndistances between all pairs of strings he had. Then he lost the paper\r\nwith the strings but he didn\u2019t lose the Hamming distances between all\r\npairs.Help John restore the strings; find some four strings , , of equal\r\nlength that consist only of lowercase letters \"\" and \"\", such that the\r\npairwise Hamming distances between them are the same as between John\u2019s\r\nstrings. More formally, set must satisfy the condition . To make the\r\nstrings easier to put down on a piece of paper, you should choose among\r\nall suitable sets of strings the one that has strings of .\r\n", "solutions": ["#include<algorithm>\n#include<cstdio>\n#include<iostream>\n#include<string>\n#include<vector>\n\nusing namespace std;\n\ntypedef long long ll;\n\nint main() {\n  vector<int> h(6);\n  for(int i = 0; i < 6; ++i)\n    cin >> h[i];\n\n  vector<ll> x(7);\n  int maxi = (h[2]-h[0]+h[4]) / 2;\n  bool found = 0;\n\n  int best_len = 1e9;\n\n  for(int t = 0; t <= maxi; ++t)\n    {\n      int x0 = h[2]-h[0]+h[4]-2*t;\n      if(x0 % 2 || x0 < 0)\n        continue;\n \n      int x1 = h[5]-h[1]+h[2]-2*t;\n      if(x1 % 2 || x1 < 0)\n        continue;\n\n      int x2 = h[5]-h[3]+h[4]-2*t;\n      if(x2 % 2 || x2 < 0)\n        continue;\n \n      int x3 = h[0]-h[5]+h[1]-h[4] + 2*t;\n      if(x3 % 2 || x3 < 0)\n        continue;\n\n      int x4 = -h[2] + h[0] - h[5] + h[3] + 2*t;\n      if(x4 % 2 || x4 < 0)\n        continue;\n      \n      int x5 = -h[2] + h[3] + h[1] - h[4] + 2*t;\n      if(x5 % 2 || x5 < 0)\n        continue;\n\n      if((x0+x1+x2+x3+x4+x5)/2+t > best_len)\n        continue;\n\n      x[0] = x0 / 2;\n      x[1] = x1 / 2;\n      x[2] = x2 / 2;     \n      x[3] = x3 / 2;\n      x[4] = x4 / 2;     \n      x[5] = x5 / 2;           \n      x[6] = t;\n\n      found = true;\n      break;\n    }\n  \n  if(!found)\n    {\n      cout << -1 << endl;\n      return 0;\n    }\n\n  char s[7][5] = {\"aabb\", \"abab\", \"abba\", \"abbb\", \"abaa\", \"aaba\", \"aaab\"};\n  vector<string> results(4);\n  for(int i = 0; i < 7; ++i)\n    for(int j = 0; j < x[i]; ++j)\n      for(int k = 0; k < 4; ++k)\n        results[k] += s[i][k];\n  cout << results[0].size() << endl;\n  for(int i = 0; i < 4; ++i)\n    cout << results[i] << endl;\n}\n"], "input": "", "output": "", "tags": ["math"], "dificulty": "2400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/194/problem/E",
+    "problemId": "1413",
+    "problem_idx": "E",
+    "shortId": "194E",
+    "contest_number": "194",
+    "problem_submissions": {
+        "B": [
+            1764935,
+            1755068,
+            1937285,
+            1754608,
+            1754131,
+            1755380,
+            1755240,
+            1754857,
+            1755369,
+            1755173,
+            1755703,
+            1755481,
+            1755578,
+            1755103,
+            1755650,
+            1756121,
+            1755226,
+            1755274,
+            1755017
+        ],
+        "A": [
+            1764930,
+            1754050,
+            1937280,
+            1937278,
+            1753889,
+            1753888,
+            1754404,
+            1754253,
+            1753991,
+            1754353,
+            1753971,
+            1753959,
+            1753901,
+            1754292,
+            1754000,
+            1754355,
+            1754106,
+            1754010,
+            1754049,
+            1753941
+        ],
+        "E": [
+            1760518,
+            1763067,
+            1760520
+        ],
+        "D": [
+            1758849,
+            1757587,
+            1845330,
+            1759194,
+            1759982,
+            1763977,
+            1760187,
+            1760559,
+            1765401,
+            1768899,
+            1759233
+        ],
+        "C": [
+            1756942,
+            1756172,
+            1756826,
+            1757346,
+            1758198,
+            1758195,
+            1758670,
+            3530327,
+            1758792,
+            1757336,
+            1757355,
+            1757313,
+            1758027,
+            1757904,
+            1757515,
+            1756672
+        ]
+    },
+    "name": "E. Hamming Distance",
+    "statement": "between strings and of equal length (denoted by ) is equal to the number\r\nof distinct integers , such that , where is the -th symbol of string ,\r\nis the -th symbol of string . For example, the Hamming distance between\r\nstrings \"\" and \"\" equals , they have different first symbols. For\r\nstrings \"\" and \"\" the Hamming distance equals .John Doe had a paper on\r\nwhich four strings of equal length , , and were written. Each string\r\nconsisted only of lowercase letters \"\" and \"\". John found the Hamming\r\ndistances between all pairs of strings he had. Then he lost the paper\r\nwith the strings but he didn\u2019t lose the Hamming distances between all\r\npairs.Help John restore the strings; find some four strings , , of equal\r\nlength that consist only of lowercase letters \"\" and \"\", such that the\r\npairwise Hamming distances between them are the same as between John\u2019s\r\nstrings. More formally, set must satisfy the condition . To make the\r\nstrings easier to put down on a piece of paper, you should choose among\r\nall suitable sets of strings the one that has strings of .\r\n",
+    "solutions": [
+        "#include<algorithm>\n#include<cstdio>\n#include<iostream>\n#include<string>\n#include<vector>\n\nusing namespace std;\n\ntypedef long long ll;\n\nint main() {\n  vector<int> h(6);\n  for(int i = 0; i < 6; ++i)\n    cin >> h[i];\n\n  vector<ll> x(7);\n  int maxi = (h[2]-h[0]+h[4]) / 2;\n  bool found = 0;\n\n  int best_len = 1e9;\n\n  for(int t = 0; t <= maxi; ++t)\n    {\n      int x0 = h[2]-h[0]+h[4]-2*t;\n      if(x0 % 2 || x0 < 0)\n        continue;\n \n      int x1 = h[5]-h[1]+h[2]-2*t;\n      if(x1 % 2 || x1 < 0)\n        continue;\n\n      int x2 = h[5]-h[3]+h[4]-2*t;\n      if(x2 % 2 || x2 < 0)\n        continue;\n \n      int x3 = h[0]-h[5]+h[1]-h[4] + 2*t;\n      if(x3 % 2 || x3 < 0)\n        continue;\n\n      int x4 = -h[2] + h[0] - h[5] + h[3] + 2*t;\n      if(x4 % 2 || x4 < 0)\n        continue;\n      \n      int x5 = -h[2] + h[3] + h[1] - h[4] + 2*t;\n      if(x5 % 2 || x5 < 0)\n        continue;\n\n      if((x0+x1+x2+x3+x4+x5)/2+t > best_len)\n        continue;\n\n      x[0] = x0 / 2;\n      x[1] = x1 / 2;\n      x[2] = x2 / 2;     \n      x[3] = x3 / 2;\n      x[4] = x4 / 2;     \n      x[5] = x5 / 2;           \n      x[6] = t;\n\n      found = true;\n      break;\n    }\n  \n  if(!found)\n    {\n      cout << -1 << endl;\n      return 0;\n    }\n\n  char s[7][5] = {\"aabb\", \"abab\", \"abba\", \"abbb\", \"abaa\", \"aaba\", \"aaab\"};\n  vector<string> results(4);\n  for(int i = 0; i < 7; ++i)\n    for(int j = 0; j < x[i]; ++j)\n      for(int k = 0; k < 4; ++k)\n        results[k] += s[i][k];\n  cout << results[0].size() << endl;\n  for(int i = 0; i < 4; ++i)\n    cout << results[i] << endl;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "math"
+    ],
+    "dificulty": "2400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Hamming Distance.json",
+    "editorial_link": "https://codeforces.com//blog/entry/4673",
+    "editorial": "Main idea: reduction to system of linear equations and solving it using Gauss algorithm.\n\nLet's notice that order of columns in answer doesn't matter. That's why there is only one important thing \u0097 quantity of every type of column. There is only 24?=?16 different columns.\n\nLet's represent Hamming distance between every pair of strings as sum of quantities of types of columns. It's possible because every column adds to every distance between pairs 0 or 1.\n\nNow we have system of 6 linear equations with 16 variables. It's not good, let's decrease number of variables. First, some columns adds same values to every Hamming distance. For example strings \"abbb\" and \"baaa\". For every column q we can replace all letters \"a\" by letters \"b\" and all letters \"b\" by letters \"a\" and reach column that adds same values to every distance. We reduced number of variables to 8. We also can notice that columns \"aaaa\" and \"bbbb\" is useless and reduce number of variables to 7.\n\nThis system can be solved using Gauss algorithm. One variable steel be free. Let's fix it. It's value can't be more than maximum of h(si,?sj) because column adds positive value to one or more Hamming distance. For every fixed value we should check if all variables take non-negative integer value and choose the best answer.\n\nWe can solve system of equations in integers because coefficients of equation is little.\n\nComplexity of this solution if O(max(h(si,?sj))). If we solve it in rational numbers complexity will change to ."
+}

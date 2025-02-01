@@ -1,1 +1,90 @@
-{"link": "https://codeforces.com//contest/890/problem/E", "problemId": "133727", "problem_idx": "E", "shortId": "890E", "contest_number": "890", "problem_submissions": {"F": [32289917], "E": [32261274, 32675605, 32429167, 32262692], "D": [32257865, 32268886, 32258866, 32260610, 32261085, 32262116, 32262769, 32262040, 32269184, 32261804, 32261588, 32261452], "C": [32252742, 32258377, 32261755, 32255078, 32253602, 32254200, 32254499, 32258466, 32256926, 32255088, 32253307, 32258191], "B": [32249690, 32252382, 32249585, 32250216, 32249706, 32250555, 32251083, 32253080, 32251617, 32251074, 32250730, 32251426], "A": [32248474, 32263812, 32248207, 32248333, 32248364, 32248924, 32248328, 32250186, 32248109, 32248687, 32248286, 32248149]}, "name": "E. Maximum Element", "statement": "One day Petya was solving a very interesting problem. But although he\r\nused many optimization techniques, his solution still got Time limit\r\nexceeded verdict. Petya conducted a thorough analysis of his program and\r\nfound out that his function for finding maximum element in an array of\r\npositive integers was too slow. Desperate, Petya decided to use a\r\nsomewhat unexpected optimization using parameter , so now his function\r\ncontains the following code:int fast_max(int n, int a[]) { int ans = 0;\r\nint offset = 0; for (int i = 0; i < n; ++i) if (ans < a[i]) { ans =\r\na[i]; offset = 0; } else { offset = offset + 1; if (offset == k) return\r\nans; } return ans;}That way the function iteratively checks array\r\nelements, storing the intermediate maximum, and if after consecutive\r\niterations that maximum has not changed, it is returned as the\r\nanswer.Now Petya is interested in fault rate of his function. He asked\r\nyou to find the number of permutations of integers from to such that the\r\nreturn value of his function on those permutations is not equal to .\r\nSince this number could be very big, output the answer modulo .\r\n", "solutions": ["#include <iostream>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\n#define DEB 1\n#define dbg_tab(x,l) if(DEB) { cerr << #x << \":\"; for(int i=0;i<l;i++) cerr << \" \" << x[i]; cerr << endl; }\n#define dbg_vec(x) if(DEB) { cerr << #x << \":\"; for(auto y:x) cerr << \" \" << y; cerr << endl; }\n\nint n, k;\nconst int N = 1e6;\nint mod = 1e9 + 7;\nint sil[N + 7];\nint silr[N + 7];\nint dp[N + 7];\nint dppom[N + 7];\n\nint potmod(long long x, int m) {\n    long long res = 1;\n    while(m > 0) {\n        if(m & 1) {\n            res = (res * x) % mod;\n        }\n        x = (x * x) % mod;\n        m /= 2;\n    }\n    return res;\n}\n\nint main() {\n    ios_base::sync_with_stdio(0);\n    cin >> n >> k;\n    sil[0] = 1;\n    for(int i = 1; i <= n; ++i) sil[i] = ((long long) sil[i - 1] * i) % mod;\n    silr[n] = potmod(sil[n], mod - 2);\n    \n    for(int i = n - 1; i >= 0; --i) silr[i] = ((long long) silr[i + 1] * (i + 1)) % mod;\n    \n    long long sum = 0;\n    \n    for(int i = 1; i <= n; ++i) {\n        if(i >= k) {\n            sum += dppom[i - k];\n            sum %= mod;\n        }\n        dp[i] = (sum * sil[i]) % mod;\n        if(i + k <= n) {\n            long long rr = sil[i + k - 1];\n            rr *= silr[k + i];\n            rr %= mod;\n            rr *= silr[i - 1];\n            rr %= mod;\n            rr *= ((long long) sil[i - 1] + mod - dp[i - 1]);\n            rr %= mod;\n            dppom[i] = rr % mod;\n        }\n    }\n    \n    long long wynik = 0;\n    for(int i = 1; i <= n; ++i) {\n        long long res = dp[i - 1];\n        res *= sil[n - 1];\n        res %= mod;\n        res *= silr[i - 1];\n        res %= mod;\n        res *= silr[n - i];\n        res %= mod;\n        res *= sil[n - i];\n        res %= mod;\n        wynik += res;\n    }\n    wynik %= mod;\n    cout << wynik << endl;\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["dp", "math"], "dificulty": "2400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/890/problem/E",
+    "problemId": "133727",
+    "problem_idx": "E",
+    "shortId": "890E",
+    "contest_number": "890",
+    "problem_submissions": {
+        "F": [
+            32289917
+        ],
+        "E": [
+            32261274,
+            32675605,
+            32429167,
+            32262692
+        ],
+        "D": [
+            32257865,
+            32268886,
+            32258866,
+            32260610,
+            32261085,
+            32262116,
+            32262769,
+            32262040,
+            32269184,
+            32261804,
+            32261588,
+            32261452
+        ],
+        "C": [
+            32252742,
+            32258377,
+            32261755,
+            32255078,
+            32253602,
+            32254200,
+            32254499,
+            32258466,
+            32256926,
+            32255088,
+            32253307,
+            32258191
+        ],
+        "B": [
+            32249690,
+            32252382,
+            32249585,
+            32250216,
+            32249706,
+            32250555,
+            32251083,
+            32253080,
+            32251617,
+            32251074,
+            32250730,
+            32251426
+        ],
+        "A": [
+            32248474,
+            32263812,
+            32248207,
+            32248333,
+            32248364,
+            32248924,
+            32248328,
+            32250186,
+            32248109,
+            32248687,
+            32248286,
+            32248149
+        ]
+    },
+    "name": "E. Maximum Element",
+    "statement": "One day Petya was solving a very interesting problem. But although he\r\nused many optimization techniques, his solution still got Time limit\r\nexceeded verdict. Petya conducted a thorough analysis of his program and\r\nfound out that his function for finding maximum element in an array of\r\npositive integers was too slow. Desperate, Petya decided to use a\r\nsomewhat unexpected optimization using parameter , so now his function\r\ncontains the following code:int fast_max(int n, int a[]) { int ans = 0;\r\nint offset = 0; for (int i = 0; i < n; ++i) if (ans < a[i]) { ans =\r\na[i]; offset = 0; } else { offset = offset + 1; if (offset == k) return\r\nans; } return ans;}That way the function iteratively checks array\r\nelements, storing the intermediate maximum, and if after consecutive\r\niterations that maximum has not changed, it is returned as the\r\nanswer.Now Petya is interested in fault rate of his function. He asked\r\nyou to find the number of permutations of integers from to such that the\r\nreturn value of his function on those permutations is not equal to .\r\nSince this number could be very big, output the answer modulo .\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\n#define DEB 1\n#define dbg_tab(x,l) if(DEB) { cerr << #x << \":\"; for(int i=0;i<l;i++) cerr << \" \" << x[i]; cerr << endl; }\n#define dbg_vec(x) if(DEB) { cerr << #x << \":\"; for(auto y:x) cerr << \" \" << y; cerr << endl; }\n\nint n, k;\nconst int N = 1e6;\nint mod = 1e9 + 7;\nint sil[N + 7];\nint silr[N + 7];\nint dp[N + 7];\nint dppom[N + 7];\n\nint potmod(long long x, int m) {\n    long long res = 1;\n    while(m > 0) {\n        if(m & 1) {\n            res = (res * x) % mod;\n        }\n        x = (x * x) % mod;\n        m /= 2;\n    }\n    return res;\n}\n\nint main() {\n    ios_base::sync_with_stdio(0);\n    cin >> n >> k;\n    sil[0] = 1;\n    for(int i = 1; i <= n; ++i) sil[i] = ((long long) sil[i - 1] * i) % mod;\n    silr[n] = potmod(sil[n], mod - 2);\n    \n    for(int i = n - 1; i >= 0; --i) silr[i] = ((long long) silr[i + 1] * (i + 1)) % mod;\n    \n    long long sum = 0;\n    \n    for(int i = 1; i <= n; ++i) {\n        if(i >= k) {\n            sum += dppom[i - k];\n            sum %= mod;\n        }\n        dp[i] = (sum * sil[i]) % mod;\n        if(i + k <= n) {\n            long long rr = sil[i + k - 1];\n            rr *= silr[k + i];\n            rr %= mod;\n            rr *= silr[i - 1];\n            rr %= mod;\n            rr *= ((long long) sil[i - 1] + mod - dp[i - 1]);\n            rr %= mod;\n            dppom[i] = rr % mod;\n        }\n    }\n    \n    long long wynik = 0;\n    for(int i = 1; i <= n; ++i) {\n        long long res = dp[i - 1];\n        res *= sil[n - 1];\n        res %= mod;\n        res *= silr[i - 1];\n        res %= mod;\n        res *= silr[n - i];\n        res %= mod;\n        res *= sil[n - i];\n        res %= mod;\n        wynik += res;\n    }\n    wynik %= mod;\n    cout << wynik << endl;\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp",
+        "math"
+    ],
+    "dificulty": "2400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Maximum Element.json",
+    "editorial_link": "https://codeforces.com//blog/entry/55734",
+    "editorial": "You asked to find the number of permutations p of length n such that exists index i, such that pi???n, pi is greater than any pj for j in [1,?i?-?1] and greater then any pj for j in [i?+?1,?i?+?k]. We will call such permutations good.\n\nDefine D(n) as number of good permutations that have pn?=?n. Notice that if k???n, then D(n)?=?0. Let w be a permutations such that wn?=?n. If index of element n?-?1 is lesser than n?-?k, then w is good. Otherwise if n?-?1 index is j,?j???n?-?k, then because there are less then k elements between n?-?1 and n, w could be good only if i from the definition would be lesser than j. In that case permutation w1,?...,?wj would form a good permutation of length j of some numbers with wj being the maximum.\n\nTherefore the following equation is correct:\n\n\nWhich can be computed in O(n2), or in O(n) rewritten in the form\n\nand using prefix sums for values .\nThe answer is than calculated as follows:"
+}

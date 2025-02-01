@@ -1,1 +1,105 @@
-{"link": "https://codeforces.com//contest/225/problem/A", "problemId": "1828", "problem_idx": "A", "shortId": "225A", "contest_number": "225", "problem_submissions": {"A": [2221105, 2214162, 2213024, 2213181, 2218269, 2215390, 2213087, 2213131, 2213045, 2213399, 2218254, 2213449, 2215635, 2213022, 2219451, 2214235, 2218861, 2213502], "D": [2218238, 2217449, 2217706, 2290695, 2219111, 2226502, 2219345, 2221170], "C": [2217175, 2219527, 2217380, 2214633, 2213571, 2214672, 2216972, 2213976, 2217628, 2215057, 2215884, 2217221, 2216137, 2214774, 2219743], "B": [2215089, 2214635, 2214157, 2213471, 2217514, 2216657, 2214710, 2214892, 2219487, 2217944, 2217204, 2220412, 2220302, 2217349, 2217093, 2216495], "E": [2219166, 2216024, 2218518, 2218635, 2218425, 2270284, 2216885, 2219080, 2218848, 2218491, 2218490, 2218734, 2217815]}, "name": "A. Dice Tower", "statement": "A dice is a cube, its faces contain distinct integers from 1 to 6 as\r\nblack points. The sum of numbers at the opposite dice faces always\r\nequals 7. Please note that there are only two dice (these dices are\r\nmirror of each other) that satisfy the given constraints (both of them\r\nare shown on the picture on the left). Alice and Bob play dice. Alice\r\nhas built a tower from dice. We know that in this tower the adjacent\r\ndice contact with faces with distinct numbers. Bob wants to uniquely\r\nidentify the numbers written on the faces of all dice, from which the\r\ntower is built. Unfortunately, Bob is looking at the tower from the\r\nface, and so he does not see all the numbers on the faces. Bob sees the\r\nnumber on the top of the tower and the numbers on the two adjacent sides\r\n(on the right side of the picture shown what Bob sees).Help Bob, tell\r\nwhether it is possible to uniquely identify the numbers on the faces of\r\nall the dice in the tower, or not.\r\n", "solutions": ["#include <cstdio>\n#include <cstdlib>\nusing namespace std;\nbool ok[7];\nint n,x,p;\nint main()\n{\n\tscanf(\"%d%d\",&n,&x),ok[x]=1,p=x,ok[7-x]=1;\n\tfor(int i=1;i<=n;++i)\n\t{\n\t\tint a,b; scanf(\"%d%d\",&a,&b);\n\t\tif(a==x||b==x||a==7-x||b==7-x)\n\t\t{\n\t\t\tprintf(\"NO\\n\");\n\t\t\treturn 0;\n\t\t}\n\t}\n\tprintf(\"YES\\n\");\n//\tsystem(\"pause\");\n\treturn 0;\n}"], "input": "", "output": "", "tags": ["constructive algorithms", "greedy"], "dificulty": "1100", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/225/problem/A",
+    "problemId": "1828",
+    "problem_idx": "A",
+    "shortId": "225A",
+    "contest_number": "225",
+    "problem_submissions": {
+        "A": [
+            2221105,
+            2214162,
+            2213024,
+            2213181,
+            2218269,
+            2215390,
+            2213087,
+            2213131,
+            2213045,
+            2213399,
+            2218254,
+            2213449,
+            2215635,
+            2213022,
+            2219451,
+            2214235,
+            2218861,
+            2213502
+        ],
+        "D": [
+            2218238,
+            2217449,
+            2217706,
+            2290695,
+            2219111,
+            2226502,
+            2219345,
+            2221170
+        ],
+        "C": [
+            2217175,
+            2219527,
+            2217380,
+            2214633,
+            2213571,
+            2214672,
+            2216972,
+            2213976,
+            2217628,
+            2215057,
+            2215884,
+            2217221,
+            2216137,
+            2214774,
+            2219743
+        ],
+        "B": [
+            2215089,
+            2214635,
+            2214157,
+            2213471,
+            2217514,
+            2216657,
+            2214710,
+            2214892,
+            2219487,
+            2217944,
+            2217204,
+            2220412,
+            2220302,
+            2217349,
+            2217093,
+            2216495
+        ],
+        "E": [
+            2219166,
+            2216024,
+            2218518,
+            2218635,
+            2218425,
+            2270284,
+            2216885,
+            2219080,
+            2218848,
+            2218491,
+            2218490,
+            2218734,
+            2217815
+        ]
+    },
+    "name": "A. Dice Tower",
+    "statement": "A dice is a cube, its faces contain distinct integers from 1 to 6 as\r\nblack points. The sum of numbers at the opposite dice faces always\r\nequals 7. Please note that there are only two dice (these dices are\r\nmirror of each other) that satisfy the given constraints (both of them\r\nare shown on the picture on the left). Alice and Bob play dice. Alice\r\nhas built a tower from dice. We know that in this tower the adjacent\r\ndice contact with faces with distinct numbers. Bob wants to uniquely\r\nidentify the numbers written on the faces of all dice, from which the\r\ntower is built. Unfortunately, Bob is looking at the tower from the\r\nface, and so he does not see all the numbers on the faces. Bob sees the\r\nnumber on the top of the tower and the numbers on the two adjacent sides\r\n(on the right side of the picture shown what Bob sees).Help Bob, tell\r\nwhether it is possible to uniquely identify the numbers on the faces of\r\nall the dice in the tower, or not.\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <cstdlib>\nusing namespace std;\nbool ok[7];\nint n,x,p;\nint main()\n{\n\tscanf(\"%d%d\",&n,&x),ok[x]=1,p=x,ok[7-x]=1;\n\tfor(int i=1;i<=n;++i)\n\t{\n\t\tint a,b; scanf(\"%d%d\",&a,&b);\n\t\tif(a==x||b==x||a==7-x||b==7-x)\n\t\t{\n\t\t\tprintf(\"NO\\n\");\n\t\t\treturn 0;\n\t\t}\n\t}\n\tprintf(\"YES\\n\");\n//\tsystem(\"pause\");\n\treturn 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "greedy"
+    ],
+    "dificulty": "1100",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Dice Tower.json",
+    "editorial_link": "https://codeforces.com//blog/entry/5322",
+    "editorial": "You should iterate over all dices from up to down and restore answer. You can easily find number of the bottom side of the 1st dice. Using known sides of the 2nd dice you can find pair of numbets on top and bottom side of the 2nd dice. If one of them equal to number on bottom of the 1st dice, you can restore all numbers on the 2n dice. Then using this idea you can try restore numbers on the 3rd dice and so on. If you restored all numbers, you should write YES. If for some dice you cannot uniquely determine order of numbers on the top and botton sides, there will be at least 2 placing of numbers. In this case you shoyld write NO."
+}

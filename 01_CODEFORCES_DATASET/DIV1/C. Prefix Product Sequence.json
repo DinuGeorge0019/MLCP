@@ -1,1 +1,90 @@
-{"link": "https://codeforces.com//contest/487/problem/C", "problemId": "17749", "problem_idx": "C", "shortId": "487C", "contest_number": "487", "problem_submissions": {"D": [8785170, 8785802, 8789803, 8787371, 8788023, 8786843, 8786047, 8788953, 8789614, 8788601, 8788287, 8809646], "C": [8782578, 8779214, 8784203, 8781731, 8783945, 8788058, 8788160, 8784014, 8785214, 8790866, 8785252, 8787004, 8781669, 8783114], "B": [8779947, 8781687, 8783062, 8780136, 8781381, 8780441, 8781611, 8782195, 8783872, 8781857, 8781107, 8781244, 8782491, 8780482, 8784680, 8788899], "A": [8777348, 8787397, 8780501, 8784128, 8783081, 8782652, 8779644, 8779577, 8777743, 8778427, 8792035, 8778269, 8785641, 8784172]}, "name": "C. Prefix Product Sequence", "statement": "Consider a sequence . Define its prefix product sequence .Now given ,\r\nfind a permutation of , such that its prefix product sequence is a\r\npermutation of .\r\n", "solutions": ["#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <queue>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <cctype>\n#include <string>\n#include <cstring>\n#include <ctime>\n#include <string.h>\n\nusing namespace std;\n\ntypedef long long int64;\ntypedef unsigned long long uint64;\n#define two(X) (1<<(X))\n#define twoL(X) (((int64)(1))<<(X))\n#define contain(S,X) (((S)&two(X))!=0)\n#define containL(S,X) (((S)&twoL(X))!=0)\nconst double pi=acos(-1.0);\nconst double eps=1e-11;\ntemplate<class T> inline void checkmin(T &a,T b){if(b<a) a=b;}\ntemplate<class T> inline void checkmax(T &a,T b){if(b>a) a=b;}\ntemplate<class T> inline T sqr(T x){return x*x;}\ntypedef pair<int,int> ipair;\n#define SIZE(A) ((int)A.size())\n#define LENGTH(A) ((int)A.length())\n#define MP(A,B) make_pair(A,B)\n#define PB(X) push_back(X)\n\nconst int maxn=200000+5;\n\nint n;\nint w;\nint a[maxn];\nint r[maxn];\nint p[maxn];\n\nbool v1[maxn],v2[maxn];\n\nint main()\n{\n\tscanf(\"%d\",&n);\n\tif (n==1) { printf(\"YES\\n1\\n\"); return 0; }\n\tif (n==2) { printf(\"YES\\n1\\n2\\n\"); return 0; }\n\tif (n==3) { printf(\"YES\\n1\\n2\\n3\\n\"); return 0; }\n\tif (n==4) { printf(\"YES\\n1\\n3\\n2\\n4\\n\"); return 0; }\n\tfor (int m=2;m*m<=n;m++) if (n%m==0) { printf(\"NO\\n\"); return 0; }\n\tfor (w=2;;w++)\n\t{\n\t\tbool ok=true;\n\t\tfor (int pw=1,i=1;i<n-1;i++)\n\t\t{\n\t\t\tpw=(int)(((int64)pw*w)%n);\n\t\t\tif (pw==1) { ok=false; break; }\n\t\t}\n\t\tif (ok) break;\n\t}\n\tp[0]=1;\n\tfor (int i=1;i<n;i++) p[i]=(int)(((int64)p[i-1]*w)%n);\n\tint c=0;\n\tfor (int i=1;i<=(n-1)/2-1;i++) a[c++]=((i&1)?i:(n-1-i));\n\ta[c++]=(n-1)/2;\n\tfor (int i=(n-1)/2-1;i>=1;i--) a[c++]=((i&1)?(n-1-i):i);\t\n\tint d=0;\n\tr[d++]=1;\n\tfor (int i=0;i<c;i++) r[d++]=p[a[i]];\n\tr[d++]=n;\n/*\n\tmemset(v1,false,sizeof(v1));\n\tmemset(v2,false,sizeof(v2));\n\tfor (int x=1,i=0;i<n;i++)\n\t{\n\t\tx=(int)(((int64)x*r[i])%n);\n\t\tif (v1[r[i]] || v2[x])\n\t\t{\n\t\t\tprintf(\"ERROR\\n\");\n\t\t\texit(0);\n\t\t}\n\t\tv1[r[i]]=v2[x]=true;\n\t}\n*/\n\tprintf(\"YES\\n\");\n\tfor (int i=0;i<n;i++) printf(\"%d\\n\",r[i]);\n\treturn 0;\n}\n\n"], "input": "", "output": "", "tags": ["constructive algorithms", "math", "number theory"], "dificulty": "2300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/487/problem/C",
+    "problemId": "17749",
+    "problem_idx": "C",
+    "shortId": "487C",
+    "contest_number": "487",
+    "problem_submissions": {
+        "D": [
+            8785170,
+            8785802,
+            8789803,
+            8787371,
+            8788023,
+            8786843,
+            8786047,
+            8788953,
+            8789614,
+            8788601,
+            8788287,
+            8809646
+        ],
+        "C": [
+            8782578,
+            8779214,
+            8784203,
+            8781731,
+            8783945,
+            8788058,
+            8788160,
+            8784014,
+            8785214,
+            8790866,
+            8785252,
+            8787004,
+            8781669,
+            8783114
+        ],
+        "B": [
+            8779947,
+            8781687,
+            8783062,
+            8780136,
+            8781381,
+            8780441,
+            8781611,
+            8782195,
+            8783872,
+            8781857,
+            8781107,
+            8781244,
+            8782491,
+            8780482,
+            8784680,
+            8788899
+        ],
+        "A": [
+            8777348,
+            8787397,
+            8780501,
+            8784128,
+            8783081,
+            8782652,
+            8779644,
+            8779577,
+            8777743,
+            8778427,
+            8792035,
+            8778269,
+            8785641,
+            8784172
+        ]
+    },
+    "name": "C. Prefix Product Sequence",
+    "statement": "Consider a sequence . Define its prefix product sequence .Now given ,\r\nfind a permutation of , such that its prefix product sequence is a\r\npermutation of .\r\n",
+    "solutions": [
+        "#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <queue>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <cctype>\n#include <string>\n#include <cstring>\n#include <ctime>\n#include <string.h>\n\nusing namespace std;\n\ntypedef long long int64;\ntypedef unsigned long long uint64;\n#define two(X) (1<<(X))\n#define twoL(X) (((int64)(1))<<(X))\n#define contain(S,X) (((S)&two(X))!=0)\n#define containL(S,X) (((S)&twoL(X))!=0)\nconst double pi=acos(-1.0);\nconst double eps=1e-11;\ntemplate<class T> inline void checkmin(T &a,T b){if(b<a) a=b;}\ntemplate<class T> inline void checkmax(T &a,T b){if(b>a) a=b;}\ntemplate<class T> inline T sqr(T x){return x*x;}\ntypedef pair<int,int> ipair;\n#define SIZE(A) ((int)A.size())\n#define LENGTH(A) ((int)A.length())\n#define MP(A,B) make_pair(A,B)\n#define PB(X) push_back(X)\n\nconst int maxn=200000+5;\n\nint n;\nint w;\nint a[maxn];\nint r[maxn];\nint p[maxn];\n\nbool v1[maxn],v2[maxn];\n\nint main()\n{\n\tscanf(\"%d\",&n);\n\tif (n==1) { printf(\"YES\\n1\\n\"); return 0; }\n\tif (n==2) { printf(\"YES\\n1\\n2\\n\"); return 0; }\n\tif (n==3) { printf(\"YES\\n1\\n2\\n3\\n\"); return 0; }\n\tif (n==4) { printf(\"YES\\n1\\n3\\n2\\n4\\n\"); return 0; }\n\tfor (int m=2;m*m<=n;m++) if (n%m==0) { printf(\"NO\\n\"); return 0; }\n\tfor (w=2;;w++)\n\t{\n\t\tbool ok=true;\n\t\tfor (int pw=1,i=1;i<n-1;i++)\n\t\t{\n\t\t\tpw=(int)(((int64)pw*w)%n);\n\t\t\tif (pw==1) { ok=false; break; }\n\t\t}\n\t\tif (ok) break;\n\t}\n\tp[0]=1;\n\tfor (int i=1;i<n;i++) p[i]=(int)(((int64)p[i-1]*w)%n);\n\tint c=0;\n\tfor (int i=1;i<=(n-1)/2-1;i++) a[c++]=((i&1)?i:(n-1-i));\n\ta[c++]=(n-1)/2;\n\tfor (int i=(n-1)/2-1;i>=1;i--) a[c++]=((i&1)?(n-1-i):i);\t\n\tint d=0;\n\tr[d++]=1;\n\tfor (int i=0;i<c;i++) r[d++]=p[a[i]];\n\tr[d++]=n;\n/*\n\tmemset(v1,false,sizeof(v1));\n\tmemset(v2,false,sizeof(v2));\n\tfor (int x=1,i=0;i<n;i++)\n\t{\n\t\tx=(int)(((int64)x*r[i])%n);\n\t\tif (v1[r[i]] || v2[x])\n\t\t{\n\t\t\tprintf(\"ERROR\\n\");\n\t\t\texit(0);\n\t\t}\n\t\tv1[r[i]]=v2[x]=true;\n\t}\n*/\n\tprintf(\"YES\\n\");\n\tfor (int i=0;i<n;i++) printf(\"%d\\n\",r[i]);\n\treturn 0;\n}\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "math",
+        "number theory"
+    ],
+    "dificulty": "2300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Prefix Product Sequence.json",
+    "editorial_link": "https://codeforces.com/blog/entry/14832",
+    "editorial": "The answer is YES if and only if  is a prime or  or . First we can find . If  occurs in \\{a_1, ,a_\\{n-1\\}\\} in the prefix product sequence  will occur twice which do not satisfy the condition.  So  must be  from which we know . But for any composite number  we have (See the proof below). So we can know that for all composite number  the answer is NO. For ,  is a solution. For ,  is a solution. For any prime number , let  be . If there are two same number , . Then we get  which leads to , which is a contradiction. So all  numbers will occur exactly once. And this is a solution. Also, we can find a primitive root  of  and $g^\\{0\\}, g^\\{1\\}, g^\\{n-3\\}, g^\\{3\\}, g^\\{n-5\\}, \\\\cdots \\} is also a solution. Proof:  For a composite number  it can either be written as the products of two numbers . If , then we immediately get . If , note that  so , we have  So  always holds which means "
+}

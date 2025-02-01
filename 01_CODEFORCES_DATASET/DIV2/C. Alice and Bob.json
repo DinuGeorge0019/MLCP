@@ -1,1 +1,105 @@
-{"link": "https://codeforces.com//contest/347/problem/C", "problemId": "3510", "problem_idx": "C", "shortId": "347C", "contest_number": "347", "problem_submissions": {"C": [4518768, 4513742, 4517653, 4518839, 4520636, 4513589, 4515480, 4513320, 4513590, 4521190, 4514183, 4515546, 4513940, 4516018, 4514431, 4512340, 4514717, 4516799, 4519674], "D": [4515778, 4520517, 4519885, 4520973, 4523724, 4519031, 4523601], "B": [4512188, 4512255, 4513932, 4514468, 4511829, 4511441, 4512094, 4512109, 4512127, 4512494, 4511760, 4512987, 4512079, 4512011, 4512852, 4513990, 4514484, 4513535, 4513631, 4514973], "A": [4510977, 4511197, 4511967, 4512169, 4511066, 4511024, 4511167, 4511360, 4511075, 4511574, 4515121, 4511042, 4511261, 4512777, 4514480, 4513698, 4511919, 4511676, 4512313], "E": [4519822, 4520189, 4521340, 4522190]}, "name": "C. Alice and Bob", "statement": "It is so boring in the summer holiday, isn\u2019t it? So Alice and Bob have\r\ninvented a new game to play. The rules are as follows. First, they get a\r\nset of distinct integers. And then they take turns to make the following\r\nmoves. During each move, either Alice or Bob (the player whose turn is\r\nthe current) can choose two distinct integers and from the set, such\r\nthat the set doesn\u2019t contain their absolute difference . Then this\r\nplayer adds integer to the set (so, the size of the set increases by\r\none).If the current player has no valid move, he (or she) loses the\r\ngame. The question is who will finally win the game if both players play\r\noptimally. Remember that Alice always moves first.\r\n", "solutions": ["#include <cstdio>\n#include <cstring>\n#include <cassert>\n#include <iostream>\n#include <sstream>\n#include <algorithm>\n#include <numeric>\n#include <vector>\n#include <string>\n#include <map>\n#include <set>\n#include <bitset>\n#include <cmath>\n\nusing namespace std;\n\n#define DBG(z) cerr << #z << \": \" << (z) << endl\n#define NEWL cerr << endl\n#define passert(x, m) {if (!(x)) {cerr << m << \"  ::  \";} assert(x);}\n#define err(s) cerr << \"\u001b[92m\" << s << \"\u001b[0m\" << endl\n#define LINE cerr << \"DEBUG LINE: \" << __LINE__ << endl\n\n#define IT(v) __typeof((v).begin())\n#define mem(f, a) memset(f, a, sizeof(f))\n#define all(c) (c).begin(), (c).end()\n#define rall(c) (c).rbegin(), (c).rend()\n#define for_each(it, v) for (__typeof((v).begin()) it = (v).begin(); it != (v).end(); ++it)\n#define next_int() ({int __t; scanf(\"%d\", &__t); __t;})\n\nint main() {\n    int n = next_int();\n    vector <int> a(n);\n    int g = 0;\n    for (int i = 0; i < n; ++i) a[i] = next_int(), g = __gcd(a[i], g);\n    int r = *max_element(all(a));\n    assert(r % g == 0);\n    r = r / g - n;\n    assert(r > -1);\n\n    if (r & 1)\n        puts(\"Alice\");\n    else\n        puts(\"Bob\");\n}\n\n"], "input": "", "output": "", "tags": ["games", "math", "number theory"], "dificulty": "1600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/347/problem/C",
+    "problemId": "3510",
+    "problem_idx": "C",
+    "shortId": "347C",
+    "contest_number": "347",
+    "problem_submissions": {
+        "C": [
+            4518768,
+            4513742,
+            4517653,
+            4518839,
+            4520636,
+            4513589,
+            4515480,
+            4513320,
+            4513590,
+            4521190,
+            4514183,
+            4515546,
+            4513940,
+            4516018,
+            4514431,
+            4512340,
+            4514717,
+            4516799,
+            4519674
+        ],
+        "D": [
+            4515778,
+            4520517,
+            4519885,
+            4520973,
+            4523724,
+            4519031,
+            4523601
+        ],
+        "B": [
+            4512188,
+            4512255,
+            4513932,
+            4514468,
+            4511829,
+            4511441,
+            4512094,
+            4512109,
+            4512127,
+            4512494,
+            4511760,
+            4512987,
+            4512079,
+            4512011,
+            4512852,
+            4513990,
+            4514484,
+            4513535,
+            4513631,
+            4514973
+        ],
+        "A": [
+            4510977,
+            4511197,
+            4511967,
+            4512169,
+            4511066,
+            4511024,
+            4511167,
+            4511360,
+            4511075,
+            4511574,
+            4515121,
+            4511042,
+            4511261,
+            4512777,
+            4514480,
+            4513698,
+            4511919,
+            4511676,
+            4512313
+        ],
+        "E": [
+            4519822,
+            4520189,
+            4521340,
+            4522190
+        ]
+    },
+    "name": "C. Alice and Bob",
+    "statement": "It is so boring in the summer holiday, isn\u2019t it? So Alice and Bob have\r\ninvented a new game to play. The rules are as follows. First, they get a\r\nset of distinct integers. And then they take turns to make the following\r\nmoves. During each move, either Alice or Bob (the player whose turn is\r\nthe current) can choose two distinct integers and from the set, such\r\nthat the set doesn\u2019t contain their absolute difference . Then this\r\nplayer adds integer to the set (so, the size of the set increases by\r\none).If the current player has no valid move, he (or she) loses the\r\ngame. The question is who will finally win the game if both players play\r\noptimally. Remember that Alice always moves first.\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <cstring>\n#include <cassert>\n#include <iostream>\n#include <sstream>\n#include <algorithm>\n#include <numeric>\n#include <vector>\n#include <string>\n#include <map>\n#include <set>\n#include <bitset>\n#include <cmath>\n\nusing namespace std;\n\n#define DBG(z) cerr << #z << \": \" << (z) << endl\n#define NEWL cerr << endl\n#define passert(x, m) {if (!(x)) {cerr << m << \"  ::  \";} assert(x);}\n#define err(s) cerr << \"\u001b[92m\" << s << \"\u001b[0m\" << endl\n#define LINE cerr << \"DEBUG LINE: \" << __LINE__ << endl\n\n#define IT(v) __typeof((v).begin())\n#define mem(f, a) memset(f, a, sizeof(f))\n#define all(c) (c).begin(), (c).end()\n#define rall(c) (c).rbegin(), (c).rend()\n#define for_each(it, v) for (__typeof((v).begin()) it = (v).begin(); it != (v).end(); ++it)\n#define next_int() ({int __t; scanf(\"%d\", &__t); __t;})\n\nint main() {\n    int n = next_int();\n    vector <int> a(n);\n    int g = 0;\n    for (int i = 0; i < n; ++i) a[i] = next_int(), g = __gcd(a[i], g);\n    int r = *max_element(all(a));\n    assert(r % g == 0);\n    r = r / g - n;\n    assert(r > -1);\n\n    if (r & 1)\n        puts(\"Alice\");\n    else\n        puts(\"Bob\");\n}\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "games",
+        "math",
+        "number theory"
+    ],
+    "dificulty": "1600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Alice and Bob.json",
+    "editorial_link": "https://codeforces.com//blog/entry/8903",
+    "editorial": "Brief description:\nYou have a number b, and want to minus it to a, what you can do in each step is weather subtract 1 or b mod xi from b. And we ask what is the minimum number of steps you need.\n\nAnalysis:\nI bet there is a few people know the greedy method even if he/she have solved the early version before.\n\nCodeforces #153 Div 1. Problem C. Number Transformation\n\nLet dp[k] denotes the minimum number of steps to transform b+k to b. In each step, you could only choose i which makes b+k-(b+k) mod x[i] minimal to calc dp[k]. It works bacause dp[0..k-1] is a monotone increasing function. Proof: - Say dp[k]=dp[k-t]+1.If t==1, then dp[0..k] is monotone increasing obviously.Otherwise dp[k-1]<=dp[k-t]+1=dp[k] (there must exist a x[i] makes b+k-1 also transform to b+k-t,and it is not necessarily the optimal decision of dp[k-1]). So dp[k] is a monotone increasing function, we can greedily calc dp[a-b].\n\nIn the first glance, it looks like something which will run in square complexity. But actually is linear. That is because, we could cut exactly max{xi} in each 2 step. It can be proof by induction.\n\nSo the remians work is to delete those same xi, and watch out some situation could cause degeneration. Many of us failed in this last step and got TLE\n"
+}

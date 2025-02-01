@@ -1,1 +1,101 @@
-{"link": "https://codeforces.com//contest/453/problem/D", "problemId": "11936", "problem_idx": "D", "shortId": "453D", "contest_number": "453", "problem_submissions": {"D": [7318525, 7321381, 7319937, 7313076, 7316122, 11122936], "C": [7314789, 7312823, 7323051, 7318282, 7319034, 7312696, 7313901, 7313477, 7314695, 7314310, 7314103, 7314216, 7311079, 7314796, 7314374, 7314951, 7314159, 7314941], "B": [7311773, 7310412, 7316305, 7319850, 7314250, 7310826, 7311570, 7321252, 7320392, 7320316, 7312680, 7310934, 7311494, 7312013, 7315911, 7311404, 7312306, 7313238, 7312326, 7313318], "A": [7308671, 7308664, 7309073, 7318976, 7309345, 7308656, 7308757, 7321161, 7309462, 7308797, 7309148, 7308775, 7313516, 7309054, 7309188, 7308988, 7311729, 7309495], "E": [7318455, 7321485, 7325631, 7343757]}, "name": "D. Little Pony and Elements of Harmony", "statement": "The Elements of Harmony are six supernatural artifacts representing\r\nsubjective aspects of harmony. They are arguably the most powerful force\r\nin Equestria. The inside of Elements of Harmony can be seen as a\r\ncomplete graph with vertices labeled from 0 to , where is a power of\r\ntwo, equal to . The energy in Elements of Harmony is in constant\r\nmovement. According to the ancient book, the energy of vertex in time\r\nequals to: Here is the transformation coefficient an array of integers\r\nand is the number of ones in the binary representation of number .Given\r\nthe transformation coefficient and the energy distribution at time 0 .\r\nHelp Twilight Sparkle predict the energy distribution at time . The\r\nanswer can be quite large, so output it modulo .\r\n", "solutions": ["#include <iostream>\n#include <vector>\n#include <cstring>\n#include <cstdlib>\n\nusing namespace std;\n\n#define MAXM 22\n\nint M, P;\nlong long T;\n\nint A[MAXM][MAXM];\nint R[MAXM][MAXM];\nint TMP[MAXM][MAXM];\n\nint ncr[MAXM][MAXM];\n\nint X[1 << 20];\nint B[MAXM];\n\nint mmul(int x, int y) {\n  return (1ll * x * y) % P;\n}\n\nvoid madd(int& x, int y) {\n  x += y;\n  if(x >= P) x -= P;\n}\n\nvoid matmul(int X[MAXM][MAXM], int Y[MAXM][MAXM], int Z[MAXM][MAXM]) {\n  for(int i = 0; i <= M; i++) {\n    for(int j = 0; j <= M; j++) {\n      X[i][j] = 0;\n      for(int k = 0; k <= M; k++) {\n        madd(X[i][j],  mmul(Y[i][k], Z[k][j]));\n      }\n    }\n  }\n}\n\nvoid solve(int x, int pos, vector<int>& V) {\n  if(pos == 0) {\n    X[x] = 0;\n    for(int i = 0; i <= M; i++) {\n      madd(X[x], mmul(B[i], V[i]));\n    }\n    return;\n  }\n\n  pos--;\n  int sz = M - pos;\n\n  int flp = 1 << pos;\n  for(int i = 0; i < 2 * flp; i += flp) {\n    vector<int> NV((sz + 1) * flp);\n\n    for(int j = 0; j < sz; j++) {\n      for(int k = 0; k < flp; k++) {\n        madd(NV[j * flp + k], V[j * (flp * 2) + i + k]);\n        madd(NV[(j + 1) * flp + k], V[j * (flp * 2) + (flp - i) + k]);\n      }\n    }\n\n    solve(x | i, pos, NV);\n  }\n}\n\nint main() {\n  ios_base::sync_with_stdio(false);\n\n  cin >> M >> T >> P;\n  for(int i = 0; i < 1 << M; i++) {\n    cin >> X[i];\n    //X[i] = rand() % P;\n    //X[i] = 1;\n\n    X[i] %= P;\n  }\n  for(int i = 0; i <= M; i++) {\n    cin >> B[i];\n    //B[i] = rand() % P;\n    //B[i] = 1;\n\n    B[i] %= P;\n  }\n\n  for(int i = ncr[0][0] = 1; i < MAXM; i++) {\n    for(int j = ncr[i][0] = ncr[i][i] = 1; j < i; j++) {\n      ncr[i][j] = (ncr[i - 1][j - 1] + ncr[i - 1][j]) % P;\n    }\n  }\n\n  for(int i = 0; i <= M; i++) {\n    for(int j = 0; j <= M; j++) {\n      R[i][j] = i == j ? 1 : 0;\n      for(int k = 0; k <= i && k <= j; k++) {\n        int v = mmul(ncr[i][k], ncr[M - i][j - k]);\n        v = mmul(v, B[i + j - 2 * k]);\n        A[i][j] = (A[i][j] + v) % P;\n      }\n    }\n  }\n\n  for(int i = 63 - __builtin_clzll(T); i >= 0; i--) {\n    matmul(TMP, R, R);\n    memcpy(R, TMP, sizeof(R));\n\n    if(T & 1LL << i) {\n      matmul(TMP, R, A);\n      memcpy(R, TMP, sizeof(R));\n    }\n  }\n\n/*\n  for(int i = 0; i <= M; i++) {\n    for(int j = 0; j <= M; j++) {\n      cout << R[i][j] << ' ';\n    }\n    cout << endl;\n  }\n*/\n\n  for(int i = 0; i <= M; i++) {\n    B[i] = R[i][0];\n  }\n\n/*\n  for(int i = 0; i < 1 << M; i++) {\n    int sm = 0;\n    for(int j = 0; j < 1 << M; j++) {\n      sm = (sm + mmul(X[j], B[__builtin_popcount(i ^ j)])) % P;\n    }\n    cout << sm << '\\n';\n  }\n*/\n\n  vector<int> V(X, X + (1 << M));\n  solve(0, M, V);\n\n  for(int i = 0; i < 1 << M; i++) {\n    cout << X[i] << '\\n';\n  }\n\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["dp", "matrices"], "dificulty": "3000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/453/problem/D",
+    "problemId": "11936",
+    "problem_idx": "D",
+    "shortId": "453D",
+    "contest_number": "453",
+    "problem_submissions": {
+        "D": [
+            7318525,
+            7321381,
+            7319937,
+            7313076,
+            7316122,
+            11122936
+        ],
+        "C": [
+            7314789,
+            7312823,
+            7323051,
+            7318282,
+            7319034,
+            7312696,
+            7313901,
+            7313477,
+            7314695,
+            7314310,
+            7314103,
+            7314216,
+            7311079,
+            7314796,
+            7314374,
+            7314951,
+            7314159,
+            7314941
+        ],
+        "B": [
+            7311773,
+            7310412,
+            7316305,
+            7319850,
+            7314250,
+            7310826,
+            7311570,
+            7321252,
+            7320392,
+            7320316,
+            7312680,
+            7310934,
+            7311494,
+            7312013,
+            7315911,
+            7311404,
+            7312306,
+            7313238,
+            7312326,
+            7313318
+        ],
+        "A": [
+            7308671,
+            7308664,
+            7309073,
+            7318976,
+            7309345,
+            7308656,
+            7308757,
+            7321161,
+            7309462,
+            7308797,
+            7309148,
+            7308775,
+            7313516,
+            7309054,
+            7309188,
+            7308988,
+            7311729,
+            7309495
+        ],
+        "E": [
+            7318455,
+            7321485,
+            7325631,
+            7343757
+        ]
+    },
+    "name": "D. Little Pony and Elements of Harmony",
+    "statement": "The Elements of Harmony are six supernatural artifacts representing\r\nsubjective aspects of harmony. They are arguably the most powerful force\r\nin Equestria. The inside of Elements of Harmony can be seen as a\r\ncomplete graph with vertices labeled from 0 to , where is a power of\r\ntwo, equal to . The energy in Elements of Harmony is in constant\r\nmovement. According to the ancient book, the energy of vertex in time\r\nequals to: Here is the transformation coefficient an array of integers\r\nand is the number of ones in the binary representation of number .Given\r\nthe transformation coefficient and the energy distribution at time 0 .\r\nHelp Twilight Sparkle predict the energy distribution at time . The\r\nanswer can be quite large, so output it modulo .\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <vector>\n#include <cstring>\n#include <cstdlib>\n\nusing namespace std;\n\n#define MAXM 22\n\nint M, P;\nlong long T;\n\nint A[MAXM][MAXM];\nint R[MAXM][MAXM];\nint TMP[MAXM][MAXM];\n\nint ncr[MAXM][MAXM];\n\nint X[1 << 20];\nint B[MAXM];\n\nint mmul(int x, int y) {\n  return (1ll * x * y) % P;\n}\n\nvoid madd(int& x, int y) {\n  x += y;\n  if(x >= P) x -= P;\n}\n\nvoid matmul(int X[MAXM][MAXM], int Y[MAXM][MAXM], int Z[MAXM][MAXM]) {\n  for(int i = 0; i <= M; i++) {\n    for(int j = 0; j <= M; j++) {\n      X[i][j] = 0;\n      for(int k = 0; k <= M; k++) {\n        madd(X[i][j],  mmul(Y[i][k], Z[k][j]));\n      }\n    }\n  }\n}\n\nvoid solve(int x, int pos, vector<int>& V) {\n  if(pos == 0) {\n    X[x] = 0;\n    for(int i = 0; i <= M; i++) {\n      madd(X[x], mmul(B[i], V[i]));\n    }\n    return;\n  }\n\n  pos--;\n  int sz = M - pos;\n\n  int flp = 1 << pos;\n  for(int i = 0; i < 2 * flp; i += flp) {\n    vector<int> NV((sz + 1) * flp);\n\n    for(int j = 0; j < sz; j++) {\n      for(int k = 0; k < flp; k++) {\n        madd(NV[j * flp + k], V[j * (flp * 2) + i + k]);\n        madd(NV[(j + 1) * flp + k], V[j * (flp * 2) + (flp - i) + k]);\n      }\n    }\n\n    solve(x | i, pos, NV);\n  }\n}\n\nint main() {\n  ios_base::sync_with_stdio(false);\n\n  cin >> M >> T >> P;\n  for(int i = 0; i < 1 << M; i++) {\n    cin >> X[i];\n    //X[i] = rand() % P;\n    //X[i] = 1;\n\n    X[i] %= P;\n  }\n  for(int i = 0; i <= M; i++) {\n    cin >> B[i];\n    //B[i] = rand() % P;\n    //B[i] = 1;\n\n    B[i] %= P;\n  }\n\n  for(int i = ncr[0][0] = 1; i < MAXM; i++) {\n    for(int j = ncr[i][0] = ncr[i][i] = 1; j < i; j++) {\n      ncr[i][j] = (ncr[i - 1][j - 1] + ncr[i - 1][j]) % P;\n    }\n  }\n\n  for(int i = 0; i <= M; i++) {\n    for(int j = 0; j <= M; j++) {\n      R[i][j] = i == j ? 1 : 0;\n      for(int k = 0; k <= i && k <= j; k++) {\n        int v = mmul(ncr[i][k], ncr[M - i][j - k]);\n        v = mmul(v, B[i + j - 2 * k]);\n        A[i][j] = (A[i][j] + v) % P;\n      }\n    }\n  }\n\n  for(int i = 63 - __builtin_clzll(T); i >= 0; i--) {\n    matmul(TMP, R, R);\n    memcpy(R, TMP, sizeof(R));\n\n    if(T & 1LL << i) {\n      matmul(TMP, R, A);\n      memcpy(R, TMP, sizeof(R));\n    }\n  }\n\n/*\n  for(int i = 0; i <= M; i++) {\n    for(int j = 0; j <= M; j++) {\n      cout << R[i][j] << ' ';\n    }\n    cout << endl;\n  }\n*/\n\n  for(int i = 0; i <= M; i++) {\n    B[i] = R[i][0];\n  }\n\n/*\n  for(int i = 0; i < 1 << M; i++) {\n    int sm = 0;\n    for(int j = 0; j < 1 << M; j++) {\n      sm = (sm + mmul(X[j], B[__builtin_popcount(i ^ j)])) % P;\n    }\n    cout << sm << '\\n';\n  }\n*/\n\n  vector<int> V(X, X + (1 << M));\n  solve(0, M, V);\n\n  for(int i = 0; i < 1 << M; i++) {\n    cout << X[i] << '\\n';\n  }\n\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp",
+        "matrices"
+    ],
+    "dificulty": "3000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Little Pony and Elements of Harmony.json",
+    "editorial_link": "https://codeforces.com//blog/entry/13190",
+    "editorial": "Brief description:\nGiven you a vector e and a transformation matrix A. Caculate eAt under modulo p.\n\nAnalysis:\nLet's consider the e = [1 1 ... 1]. After a period, it will be ke where k is a const. So we know that [1 1, ..., 1] is an eigenvector and k is the corresponding an eigenvalue.\n\nThe linear transformation has 2m eigenvectors.\n\nThe i(0???i?<?2m)-th\n\neigenvector is [(-1)^f(0, i) (-1)^f(1, i) ... (-1)^f(2^m-1, i)], where f(x, y) means that the number of ones in the binary notation of x and y.\n\nWe notice that the eigenvalue is only related to the number of ones in i, and it is not hard to calc one eigenvalue in O(m) time. To decompose the initial vector to the eigenvectors, we need Fast Walsh\u0096Hadamard transform."
+}

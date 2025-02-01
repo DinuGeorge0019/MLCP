@@ -1,1 +1,105 @@
-{"link": "https://codeforces.com//contest/166/problem/E", "problemId": "1043", "problem_idx": "E", "shortId": "166E", "contest_number": "166", "problem_submissions": {"D": [1396659, 1395820, 1401592, 1396051, 1397210], "B": [1395005, 1394804, 1392115, 1394417, 1395521, 1396164, 1392917, 1395627, 1396717, 1394631, 1395100, 1394589, 1396975, 1397293], "C": [1392257, 1391396, 1392030, 1393877, 1393945, 1392242, 1390459, 1391422, 1391954, 1395935, 1394755, 1392498, 1394730, 1392841, 1393241, 1392725], "E": [1390755, 1392062, 1391036, 1395303, 1394970, 1391365, 1391505, 1392099, 1390858, 1394891, 1391571, 1391330, 1391965, 1393022, 1397588, 1391462, 1390747], "A": [1389902, 1389901, 1390096, 1390092, 1390420, 1390228, 1392273, 1389894, 1390237, 1390485, 1391136, 1389957, 1390738, 1389907, 1389972, 1389815, 1389969]}, "name": "E. Tetrahedron", "statement": "You are given a tetrahedron. Let\u2019s mark its vertices with letters , ,\r\nand correspondingly. An ant is standing in the vertex of the\r\ntetrahedron. The ant is quite active and he wouldn\u2019t stay idle. At each\r\nmoment of time he makes a step from one vertex to another one along some\r\nedge of the tetrahedron. The ant just can\u2019t stand on one place.You do\r\nnot have to do much to solve the problem: your task is to count the\r\nnumber of ways in which the ant can go from the initial vertex to itself\r\nin exactly steps. In other words, you are asked to find out the number\r\nof different cyclic paths with the length of from vertex to itself. As\r\nthe number can be quite large, you should print it modulo ().\r\n", "solutions": ["#pragma comment(linker, \"/stack:64000000\")\n#include <algorithm>\n#include <iostream>\n#include <cassert>\n#include <climits>\n#include <utility>\n#include <cstdlib>\n#include <cstdio>\n#include <cstring>\n#include <memory.h>\n#include <vector>\n#include <bitset>\n#include <string>\n#include <deque>\n#include <queue>\n#include <ctime>\n#include <set>\n#include <map>\n#include <deque>\n#include <stack>\n#include <cmath>\nusing namespace std;\n\ntypedef long long ll;\ntypedef long double ld;\n#define forn(i, n) for (int i = 0; i < int(n); i++)\n#define ford(i, n) for (int i = int(n) - 1; i >= 0; i--)\n#define for1(i, n) for (int i = 1; i <= int(n); i++)\n#define fore(i, l, r) for (int i = int(l); i < int(r); i++)\n#define all(a) (a).begin(), (a).end()\n#define sz(a) int((a).size())\n#define pb push_back\n#define pii pair <int, int>\n#define vi vector <int>\n#define mp make_pair\n\ntemplate <typename X> inline X abs (const X &a) {return a < 0? -a: a;}\ntemplate <typename X> inline X sqr (const X &a) {return a * a;}\n\nconst int INF = INT_MAX / 2;\nconst ll INF64 = LLONG_MAX / 2LL;\nconst ld EPS = 1E-9, PI = 3.1415926535897932384626433832795;\n\nconst ll MOD = 1000000007LL;\n\ninline vector <vector <ll> > mul (const vector <vector <ll> > &a, const vector <vector <ll> > &b)\n{\n    vector <vector <ll> > res (4);\n    forn (i, 4)\n        res[i].resize (4);\n\n    forn (i, 4)\n        forn (j, 4)\n            forn (k, 4)\n            {\n                res[i][j] = (res[i][j] + ((a[i][k] % MOD) * (b[k][j] % MOD)) % MOD) % MOD;\n            }       \n\n    return res;\n}\n\nvector <vector <ll> > binPow (const vector <vector <ll> > &a, int k)\n{\n    if (k == 0)\n    {\n        vector <vector <ll> > res (4);\n        forn (i, 4)\n            res[i].resize (4);\n\n        forn (i, 4)\n            res[i][i] = 1;\n\n        return res;\n    }\n\n    if (k & 1)\n        return mul (binPow (a, k - 1), a);\n    else\n    {\n        vector <vector <ll> > res = binPow (a, (k >> 1));\n        return mul (res, res);\n    }\n}\n\nint main()\n{\n#ifndef ONLINE_JUDGE\n    freopen(\"input.txt\", \"rt\", stdin);\n    freopen(\"output.txt\", \"wt\", stdout);\n#endif\n\n    int n;\n    cin >> n;\n\n    vector <vector <ll> > g;\n    \n    g.resize (4);\n    forn (i, 4)\n        g[i].resize (4);\n\n    forn (i, 4)\n        forn (j, 4)\n            g[i][j] = (i == j? 0: 1);\n\n    vector <vector <ll> > ans = binPow (g, n);\n\n    cout << ans[0][0] << endl;\n\n    return 0;\n}"], "input": "", "output": "", "tags": ["dp", "math", "matrices"], "dificulty": "1500", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/166/problem/E",
+    "problemId": "1043",
+    "problem_idx": "E",
+    "shortId": "166E",
+    "contest_number": "166",
+    "problem_submissions": {
+        "D": [
+            1396659,
+            1395820,
+            1401592,
+            1396051,
+            1397210
+        ],
+        "B": [
+            1395005,
+            1394804,
+            1392115,
+            1394417,
+            1395521,
+            1396164,
+            1392917,
+            1395627,
+            1396717,
+            1394631,
+            1395100,
+            1394589,
+            1396975,
+            1397293
+        ],
+        "C": [
+            1392257,
+            1391396,
+            1392030,
+            1393877,
+            1393945,
+            1392242,
+            1390459,
+            1391422,
+            1391954,
+            1395935,
+            1394755,
+            1392498,
+            1394730,
+            1392841,
+            1393241,
+            1392725
+        ],
+        "E": [
+            1390755,
+            1392062,
+            1391036,
+            1395303,
+            1394970,
+            1391365,
+            1391505,
+            1392099,
+            1390858,
+            1394891,
+            1391571,
+            1391330,
+            1391965,
+            1393022,
+            1397588,
+            1391462,
+            1390747
+        ],
+        "A": [
+            1389902,
+            1389901,
+            1390096,
+            1390092,
+            1390420,
+            1390228,
+            1392273,
+            1389894,
+            1390237,
+            1390485,
+            1391136,
+            1389957,
+            1390738,
+            1389907,
+            1389972,
+            1389815,
+            1389969
+        ]
+    },
+    "name": "E. Tetrahedron",
+    "statement": "You are given a tetrahedron. Let\u2019s mark its vertices with letters , ,\r\nand correspondingly. An ant is standing in the vertex of the\r\ntetrahedron. The ant is quite active and he wouldn\u2019t stay idle. At each\r\nmoment of time he makes a step from one vertex to another one along some\r\nedge of the tetrahedron. The ant just can\u2019t stand on one place.You do\r\nnot have to do much to solve the problem: your task is to count the\r\nnumber of ways in which the ant can go from the initial vertex to itself\r\nin exactly steps. In other words, you are asked to find out the number\r\nof different cyclic paths with the length of from vertex to itself. As\r\nthe number can be quite large, you should print it modulo ().\r\n",
+    "solutions": [
+        "#pragma comment(linker, \"/stack:64000000\")\n#include <algorithm>\n#include <iostream>\n#include <cassert>\n#include <climits>\n#include <utility>\n#include <cstdlib>\n#include <cstdio>\n#include <cstring>\n#include <memory.h>\n#include <vector>\n#include <bitset>\n#include <string>\n#include <deque>\n#include <queue>\n#include <ctime>\n#include <set>\n#include <map>\n#include <deque>\n#include <stack>\n#include <cmath>\nusing namespace std;\n\ntypedef long long ll;\ntypedef long double ld;\n#define forn(i, n) for (int i = 0; i < int(n); i++)\n#define ford(i, n) for (int i = int(n) - 1; i >= 0; i--)\n#define for1(i, n) for (int i = 1; i <= int(n); i++)\n#define fore(i, l, r) for (int i = int(l); i < int(r); i++)\n#define all(a) (a).begin(), (a).end()\n#define sz(a) int((a).size())\n#define pb push_back\n#define pii pair <int, int>\n#define vi vector <int>\n#define mp make_pair\n\ntemplate <typename X> inline X abs (const X &a) {return a < 0? -a: a;}\ntemplate <typename X> inline X sqr (const X &a) {return a * a;}\n\nconst int INF = INT_MAX / 2;\nconst ll INF64 = LLONG_MAX / 2LL;\nconst ld EPS = 1E-9, PI = 3.1415926535897932384626433832795;\n\nconst ll MOD = 1000000007LL;\n\ninline vector <vector <ll> > mul (const vector <vector <ll> > &a, const vector <vector <ll> > &b)\n{\n    vector <vector <ll> > res (4);\n    forn (i, 4)\n        res[i].resize (4);\n\n    forn (i, 4)\n        forn (j, 4)\n            forn (k, 4)\n            {\n                res[i][j] = (res[i][j] + ((a[i][k] % MOD) * (b[k][j] % MOD)) % MOD) % MOD;\n            }       \n\n    return res;\n}\n\nvector <vector <ll> > binPow (const vector <vector <ll> > &a, int k)\n{\n    if (k == 0)\n    {\n        vector <vector <ll> > res (4);\n        forn (i, 4)\n            res[i].resize (4);\n\n        forn (i, 4)\n            res[i][i] = 1;\n\n        return res;\n    }\n\n    if (k & 1)\n        return mul (binPow (a, k - 1), a);\n    else\n    {\n        vector <vector <ll> > res = binPow (a, (k >> 1));\n        return mul (res, res);\n    }\n}\n\nint main()\n{\n#ifndef ONLINE_JUDGE\n    freopen(\"input.txt\", \"rt\", stdin);\n    freopen(\"output.txt\", \"wt\", stdout);\n#endif\n\n    int n;\n    cin >> n;\n\n    vector <vector <ll> > g;\n    \n    g.resize (4);\n    forn (i, 4)\n        g[i].resize (4);\n\n    forn (i, 4)\n        forn (j, 4)\n            g[i][j] = (i == j? 0: 1);\n\n    vector <vector <ll> > ans = binPow (g, n);\n\n    cout << ans[0][0] << endl;\n\n    return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp",
+        "math",
+        "matrices"
+    ],
+    "dificulty": "1500",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Tetrahedron.json",
+    "editorial_link": "https://codeforces.com//blog/entry/4173",
+    "editorial": "Obvious solution with dynamics: you need to know only how many moves are\r\nleft and where is the ant. This is states, each with 3 options most of\r\nsuch solution passes. Observe that the vertices A, B, C are equivalent.\r\nThis allows writing such solution: Also this problem could be solved by\r\nwith binary exponentiation of some matrix into power .\r\n"
+}

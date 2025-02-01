@@ -1,1 +1,108 @@
-{"link": "https://codeforces.com//contest/955/problem/C", "problemId": "167745", "problem_idx": "C", "shortId": "955C", "contest_number": "955", "problem_submissions": {"E": [36552751], "D": [36547766, 36561781, 36687646, 72294185], "C": [36544337, 36544697, 36542762, 36552120, 36546618, 36544122, 36549891, 36544109, 36541691, 36576017, 36575027, 36548324, 36546617, 36544127, 36541601, 36543835, 36543719, 36546626, 36545136, 36544045, 36543760, 36541102], "B": [36538238, 36537135, 36537612, 36562998, 36539430, 36538683, 36540472, 36537286, 36537082, 36538951, 36538215, 36537949, 36537216, 36540793, 36539603, 36539538, 36538461, 36538576, 36537767, 36537306], "A": [36536991, 36539709, 36536867, 36548240, 36538150, 36537171, 36538851, 36536810, 36543232, 36537420, 36540571, 36537312, 36546633, 36537606, 36537598, 36537548, 36537069, 36537405, 36537023, 36550641], "F": [36545987, 36553463, 36668304]}, "name": "C. Sad powers", "statement": "You\u2019re given queries of the form . For each query you have to find the\r\nnumber of such that and there exist integer numbers , such that .\r\n", "solutions": ["#include<bits/stdc++.h>\nusing namespace std;\nconst int maxp=63;\nint miu[maxp],q[maxp]; bool flag[maxp];\nvoid prepare() {\n\tmiu[1]=1; for(int i=2;i<maxp;i++) {\n\t\tif(!flag[i]) {\n\t\t\tmiu[i]=-1,q[++q[0]]=i,flag[i]=1;\n\t\t}\n\t\tfor(int j=1;j<=q[0]&&i*q[j]<maxp;j++) {\n\t\t\tflag[i*q[j]]=1; if(i%q[j]==0) {\n\t\t\t\tmiu[i*q[j]]=0; break;\n\t\t\t} else miu[i*q[j]]=-miu[i];\n\t\t}\n\t}\n}\nlong long Calc(long long x) {\n\tif(!x) return 0; long long res=0;\n\tfor(int i=2;i<maxp;i++) {\n\t\tif(!miu[i]) continue;\n\t\tlong long t=pow((long double)x+0.5,1.0/i)-1;\n\t\tif(!t) break; res+=-miu[i]*t;\n\t}\n\treturn res;\n}\nint main() {\n\tprepare(); int q;\n\tfor(scanf(\"%d\",&q);q;q--) {\n\t\tlong long l,r; scanf(\"%lld%lld\",&l,&r);\n\t\tlong long ans=Calc(r)-Calc(l-1)+(l==1);\n\t\tprintf(\"%lld\\n\",ans);\n\t}\n\treturn 0;\n}"], "input": "", "output": "", "tags": ["binary search", "math", "number theory"], "dificulty": "2100", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/955/problem/C",
+    "problemId": "167745",
+    "problem_idx": "C",
+    "shortId": "955C",
+    "contest_number": "955",
+    "problem_submissions": {
+        "E": [
+            36552751
+        ],
+        "D": [
+            36547766,
+            36561781,
+            36687646,
+            72294185
+        ],
+        "C": [
+            36544337,
+            36544697,
+            36542762,
+            36552120,
+            36546618,
+            36544122,
+            36549891,
+            36544109,
+            36541691,
+            36576017,
+            36575027,
+            36548324,
+            36546617,
+            36544127,
+            36541601,
+            36543835,
+            36543719,
+            36546626,
+            36545136,
+            36544045,
+            36543760,
+            36541102
+        ],
+        "B": [
+            36538238,
+            36537135,
+            36537612,
+            36562998,
+            36539430,
+            36538683,
+            36540472,
+            36537286,
+            36537082,
+            36538951,
+            36538215,
+            36537949,
+            36537216,
+            36540793,
+            36539603,
+            36539538,
+            36538461,
+            36538576,
+            36537767,
+            36537306
+        ],
+        "A": [
+            36536991,
+            36539709,
+            36536867,
+            36548240,
+            36538150,
+            36537171,
+            36538851,
+            36536810,
+            36543232,
+            36537420,
+            36540571,
+            36537312,
+            36546633,
+            36537606,
+            36537598,
+            36537548,
+            36537069,
+            36537405,
+            36537023,
+            36550641
+        ],
+        "F": [
+            36545987,
+            36553463,
+            36668304
+        ]
+    },
+    "name": "C. Sad powers",
+    "statement": "You\u2019re given queries of the form . For each query you have to find the\r\nnumber of such that and there exist integer numbers , such that .\r\n",
+    "solutions": [
+        "#include<bits/stdc++.h>\nusing namespace std;\nconst int maxp=63;\nint miu[maxp],q[maxp]; bool flag[maxp];\nvoid prepare() {\n\tmiu[1]=1; for(int i=2;i<maxp;i++) {\n\t\tif(!flag[i]) {\n\t\t\tmiu[i]=-1,q[++q[0]]=i,flag[i]=1;\n\t\t}\n\t\tfor(int j=1;j<=q[0]&&i*q[j]<maxp;j++) {\n\t\t\tflag[i*q[j]]=1; if(i%q[j]==0) {\n\t\t\t\tmiu[i*q[j]]=0; break;\n\t\t\t} else miu[i*q[j]]=-miu[i];\n\t\t}\n\t}\n}\nlong long Calc(long long x) {\n\tif(!x) return 0; long long res=0;\n\tfor(int i=2;i<maxp;i++) {\n\t\tif(!miu[i]) continue;\n\t\tlong long t=pow((long double)x+0.5,1.0/i)-1;\n\t\tif(!t) break; res+=-miu[i]*t;\n\t}\n\treturn res;\n}\nint main() {\n\tprepare(); int q;\n\tfor(scanf(\"%d\",&q);q;q--) {\n\t\tlong long l,r; scanf(\"%lld%lld\",&l,&r);\n\t\tlong long ans=Calc(r)-Calc(l-1)+(l==1);\n\t\tprintf(\"%lld\\n\",ans);\n\t}\n\treturn 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "binary search",
+        "math",
+        "number theory"
+    ],
+    "dificulty": "2100",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Sad powers.json",
+    "editorial_link": "https://codeforces.com//blog/entry/58547",
+    "editorial": "Let\u00e2\u0080\u0099s fix some power . It\u00e2\u0080\u0099s obvious that there are no more than numbers\r\nsuch that does not exceed . At the same time, only for this amoung is\r\nrelatively huge; for all other the total amount of such numbers will be\r\nof the order of .Let\u00e2\u0080\u0099s then generate all of them and dispose of all\r\nperfect squares among them. Then answer to query is equal to the amount\r\nof generated numbers between and plus some perfect squared in range. The\r\nfirst value can be calculated via two binary searches. The second one is\r\n. Note that due to precision issues the standard might produce incorrect\r\nvalues, so you can use additional binary searches instead.: .\r\n"
+}

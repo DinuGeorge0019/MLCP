@@ -1,1 +1,93 @@
-{"link": "https://codeforces.com//contest/150/problem/B", "problemId": "930", "problem_idx": "B", "shortId": "150B", "contest_number": "150", "problem_submissions": {"D": [1194790, 1195710, 1196410, 1196643, 1195734, 1193495, 1197438, 1194800, 1193784, 1198921], "C": [1192372, 1192889, 1193569, 1192214, 1192135, 1196040, 1193366, 1195697, 1197378, 1191883, 1193918, 1192472, 1192349], "B": [1188186, 2541924, 1188277, 1188125, 1187707, 1188412, 1188356, 1188767, 1186964, 1188247, 1188294, 1188405, 1188647, 1194611, 1188404, 1188925], "A": [1187447, 1187836, 1187271, 1187190, 1197743, 1187054, 1187897, 1187519, 1187187, 1187884, 1187266, 1187565, 1187877, 1187293, 1188217], "E": [1201858, 1204781]}, "name": "B. Quantity of Strings", "statement": "Just in case somebody missed it: this winter is totally cold in Nvodsk!\r\nIt is so cold that one gets funny thoughts. For example, let\u2019s say there\r\nare strings with the length exactly , based on the alphabet of size .\r\nAny its substring with length equal to is a palindrome. How many such\r\nstrings exist? Your task is to find their quantity modulo (). Be careful\r\nand don\u2019t miss a string or two!Let us remind you that a string is a\r\npalindrome if it can be read the same way in either direction, from the\r\nleft to the right and from the right to the left.\r\n", "solutions": ["#pragma comment (linker, \"/STACK:200000000\")\n#define _SECURE_SCL 0\n#include <algorithm>\n#include <bitset>\n#include <cmath>\n#include <ctime>\n#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <deque>\n#include <iostream>\n#include <map>\n#include <queue>\n#include <set>\n#include <string>\n#include <stack>\n#include <sstream>\n#include <vector>\n\nusing namespace std;\n\ntypedef long long int64;\nconst int INF = (int) 1E9;\nconst int64 INF64 = (int64) 1E18;\nconst double EPS = 1E-9;\nconst double PI = acos((double)0) * 2;\n\n#define forn(i,n)  for (int i=0; i<int(n); ++i)\n#define ford(i,n)  for (int i=int(n)-1; i>=0; --i)\n#define fore(i,l,n)  for (int i=int(l); i<int(n); ++i)\n#define all(a)  a.begin(), a.end()\n#define fs  first\n#define sc  second\n#define pb  push_back\n#define mp  make_pair\n\n\nconst int MAXN = 2010;\nconst int64 MOD = INF + 7;\n\n\nint n, m, k;\n\n\nbool read() {\n\treturn !! (cin >> n >> m >> k);\n}\n\n\nint dsu[MAXN];\nbool u[MAXN];\n\nint get (int v) {\n\treturn v==dsu[v] ? v : dsu[v] = get (dsu[v]);\n}\n\nvoid unite (int a, int b) {\n\ta = get(a),  b = get(b);\n\tif (a != b)\n\t\tdsu[a] = b;\n}\n\nvoid solve() {\n\tforn(i,n)\n\t\tdsu[i] = i;\n\n\tforn(i,n-k+1)\n\t\tforn(j,k)\n\t\t\tunite (i+j, i+k-1-j);\n\n\tmemset (u, 0, sizeof u);\n\tforn(i,n)\n\t\tu[get(i)] = true;\n\n\tint64 ans = 1;\n\tforn(i,n)\n\t\tif (u[i])\n\t\t\tans = (ans * m) % MOD;\n\tcout << ans << endl;\n}\n\n\nint main() {\n#ifdef SU2_PROJ\n\tfreopen (\"input.txt\", \"rt\", stdin);\n\tfreopen (\"output.txt\", \"wt\", stdout);\n\twhile (read())\n\t\tsolve();\n#else\n\tif (!read())  throw;\n\tsolve();\n#endif\n}"], "input": "", "output": "", "tags": ["combinatorics", "dfs and similar", "graphs", "math"], "dificulty": "1600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/150/problem/B",
+    "problemId": "930",
+    "problem_idx": "B",
+    "shortId": "150B",
+    "contest_number": "150",
+    "problem_submissions": {
+        "D": [
+            1194790,
+            1195710,
+            1196410,
+            1196643,
+            1195734,
+            1193495,
+            1197438,
+            1194800,
+            1193784,
+            1198921
+        ],
+        "C": [
+            1192372,
+            1192889,
+            1193569,
+            1192214,
+            1192135,
+            1196040,
+            1193366,
+            1195697,
+            1197378,
+            1191883,
+            1193918,
+            1192472,
+            1192349
+        ],
+        "B": [
+            1188186,
+            2541924,
+            1188277,
+            1188125,
+            1187707,
+            1188412,
+            1188356,
+            1188767,
+            1186964,
+            1188247,
+            1188294,
+            1188405,
+            1188647,
+            1194611,
+            1188404,
+            1188925
+        ],
+        "A": [
+            1187447,
+            1187836,
+            1187271,
+            1187190,
+            1197743,
+            1187054,
+            1187897,
+            1187519,
+            1187187,
+            1187884,
+            1187266,
+            1187565,
+            1187877,
+            1187293,
+            1188217
+        ],
+        "E": [
+            1201858,
+            1204781
+        ]
+    },
+    "name": "B. Quantity of Strings",
+    "statement": "Just in case somebody missed it: this winter is totally cold in Nvodsk!\r\nIt is so cold that one gets funny thoughts. For example, let\u2019s say there\r\nare strings with the length exactly , based on the alphabet of size .\r\nAny its substring with length equal to is a palindrome. How many such\r\nstrings exist? Your task is to find their quantity modulo (). Be careful\r\nand don\u2019t miss a string or two!Let us remind you that a string is a\r\npalindrome if it can be read the same way in either direction, from the\r\nleft to the right and from the right to the left.\r\n",
+    "solutions": [
+        "#pragma comment (linker, \"/STACK:200000000\")\n#define _SECURE_SCL 0\n#include <algorithm>\n#include <bitset>\n#include <cmath>\n#include <ctime>\n#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <deque>\n#include <iostream>\n#include <map>\n#include <queue>\n#include <set>\n#include <string>\n#include <stack>\n#include <sstream>\n#include <vector>\n\nusing namespace std;\n\ntypedef long long int64;\nconst int INF = (int) 1E9;\nconst int64 INF64 = (int64) 1E18;\nconst double EPS = 1E-9;\nconst double PI = acos((double)0) * 2;\n\n#define forn(i,n)  for (int i=0; i<int(n); ++i)\n#define ford(i,n)  for (int i=int(n)-1; i>=0; --i)\n#define fore(i,l,n)  for (int i=int(l); i<int(n); ++i)\n#define all(a)  a.begin(), a.end()\n#define fs  first\n#define sc  second\n#define pb  push_back\n#define mp  make_pair\n\n\nconst int MAXN = 2010;\nconst int64 MOD = INF + 7;\n\n\nint n, m, k;\n\n\nbool read() {\n\treturn !! (cin >> n >> m >> k);\n}\n\n\nint dsu[MAXN];\nbool u[MAXN];\n\nint get (int v) {\n\treturn v==dsu[v] ? v : dsu[v] = get (dsu[v]);\n}\n\nvoid unite (int a, int b) {\n\ta = get(a),  b = get(b);\n\tif (a != b)\n\t\tdsu[a] = b;\n}\n\nvoid solve() {\n\tforn(i,n)\n\t\tdsu[i] = i;\n\n\tforn(i,n-k+1)\n\t\tforn(j,k)\n\t\t\tunite (i+j, i+k-1-j);\n\n\tmemset (u, 0, sizeof u);\n\tforn(i,n)\n\t\tu[get(i)] = true;\n\n\tint64 ans = 1;\n\tforn(i,n)\n\t\tif (u[i])\n\t\t\tans = (ans * m) % MOD;\n\tcout << ans << endl;\n}\n\n\nint main() {\n#ifdef SU2_PROJ\n\tfreopen (\"input.txt\", \"rt\", stdin);\n\tfreopen (\"output.txt\", \"wt\", stdout);\n\twhile (read())\n\t\tsolve();\n#else\n\tif (!read())  throw;\n\tsolve();\n#endif\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "combinatorics",
+        "dfs and similar",
+        "graphs",
+        "math"
+    ],
+    "dificulty": "1600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Quantity of Strings.json",
+    "editorial_link": "https://codeforces.com/blog/entry/3905?locale=en",
+    "editorial": "We can offer you two solitions: You can build a graph with positions in\r\nsting as a nodes and equality in any substring of length as edges. Lets\r\ndenote the number of components in the graph. The answer is . Analyze\r\nfour cases:\r\n"
+}

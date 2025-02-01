@@ -1,1 +1,88 @@
-{"link": "https://codeforces.com//contest/594/problem/D", "problemId": "40381", "problem_idx": "D", "shortId": "594D", "contest_number": "594", "problem_submissions": {"E": [16759125], "A": [14859835, 14187151, 14168211, 14172935, 14182638], "B": [14156236, 14148350, 14148054, 14157567, 14148683, 14153705, 14154342, 14148482, 14159536, 14174689, 14159892, 14159855, 14159731], "D": [14150984, 14155176, 14155954, 14153436, 14155957, 14149401, 14158502, 14157969, 14149011, 14149866, 14152166, 14149390, 14153522, 14151360, 14154138, 14150754, 14152455], "C": [14148084, 14150600, 14150845, 14151161, 14152433, 14158444, 14151325, 14153060, 14153280, 14152819, 14149839, 14153721, 14148614, 14156263, 14151875, 14156017, 14156027]}, "name": "D. REQ", "statement": "Today on a math lesson the teacher told Vovochka that the Euler function\r\nof a positive integer is an arithmetic function that counts the positive\r\nintegers less than or equal to n that are relatively prime to n. The\r\nnumber is coprime to all the positive integers and .Now the teacher gave\r\nVovochka an array of positive integers and a task to process queries to\r\ncalculate and print modulo . As it is too hard for a second grade school\r\nstudent, you\u2019ve decided to help Vovochka.\r\n", "solutions": ["#include<cstdio>\n#include<algorithm>\n#include<cstring>\n#include<iostream>\n#include<cstdlib>\n#include<cmath>\n#include<vector>\n#include<map>\n#include<set>\n#include<queue>\n#include<bitset>\nusing namespace std;\ntypedef long long ll;\ntypedef double db;\nconst db pi=acos(-1);\nvoid gn(int &x){\n\tint sg=1;char c;while(((c=getchar())<'0'||c>'9')&&c!='-');\n\tif(c=='-')sg=-1,x=0;else x=c-'0';\n\twhile((c=getchar())>='0'&&c<='9')x=x*10+c-'0';\n\tx*=sg;\n}\nvoid gn(ll &x){\n\tint sg=1;char c;while(((c=getchar())<'0'||c>'9')&&c!='-');\n\tif(c=='-')sg=-1,x=0;else x=c-'0';\n\twhile((c=getchar())>='0'&&c<='9')x=x*10+c-'0';\n\tx*=sg;\n}\nconst int mo=1000000007;\nconst int inf=1061109567;\nint qp(int a,ll b){int ans=1;do{if(b&1)ans=1ll*ans*a%mo;a=1ll*a*a%mo;}while(b>>=1);return ans;}\nint dx[4]={1,0,-1,0};\nint dy[4]={0,1,0,-1};\n\nint bo[1000005]={0},pr[1000005],tot=0;\nint lo[1111111];\nint inv[1111111];\nvoid sieve(int n){\n\tinv[1]=1;\n\tfor (int i=2;i<=n;i++){\n\t\tif(!bo[i]){\n\t\t\tpr[++tot]=i;\n\t\t\tinv[i]=qp(i,mo-2);\n\t\t\tlo[i]=i;\n\t\t}\n\t\tfor (int j=1;j<=tot && pr[j]*i<=n;j++){\n\t\t\tbo[i*pr[j]]=1;\n\t\t\tinv[i*pr[j]]=1ll*inv[i]*inv[pr[j]]%mo;\n\t\t\tlo[i*pr[j]]=pr[j];\n\t\t\tif(i%pr[j]==0){\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t}\n}\nint n;\n\nint a[222222];\nint b[2222222];\nint rig[222222];\nstruct quer{\n\tint l,r,id;\n}qu[222222];\nint cmp(const quer&a,const quer&b){\n\treturn a.r<b.r;\n}\nint ans[222222];\nint las[1222222]={0};\nint bit[2222222];\nint mul[2222222];\n\nvoid bitupd(int x,int d){\n\tfor(;x<=tot;x+=x&-x)bit[x]=1ll*bit[x]*d%mo;\n}\nint bitque(int x){\n\tint ans=1;\n\tfor(;x;x-=x&-x)ans=1ll*ans*bit[x]%mo;\n\treturn ans;\n}\n\nint main()\n{\n\tsieve(1000000);\n\tgn(n);\n\ttot=0;\n\tfor (int i=1;i<=n;i++){\n\t\tint x;\n\t\tgn(x);\n\t\ta[i]=x;\n\t\twhile(x>1){\n\t\t\tint p=lo[x];\n\t\t\twhile(x%p==0)x/=p;\n\t\t\tb[++tot]=p;\n\t\t}\n\t\trig[i]=tot;\n\t}\n\tmul[0]=1;\n\tfor (int i=1;i<=n;i++)mul[i]=1ll*mul[i-1]*a[i]%mo;\n\tint q;gn(q);\n\tfor (int i=1;i<=q;i++){\n\t\tgn(qu[i].l);\n\t\tgn(qu[i].r);\n\t\tqu[i].id=i;\n\t\tans[i]=1ll*mul[qu[i].r]*qp(mul[qu[i].l-1],mo-2)%mo;\n\t\tqu[i].l=rig[qu[i].l-1]+1;\n\t\tqu[i].r=rig[qu[i].r];\n\t}\n\tsort(qu+1,qu+1+q,cmp);\n\tint cur=1;\n\tfor (int i=0;i<=tot;i++)bit[i]=1;\n\tfor (int i=0;i<=tot;i++){\n\t\tif(i){\n\t\t\tif(las[b[i]]==0){\n\t\t\t\tbitupd(i,1ll*(b[i]-1)*inv[b[i]]%mo);\n\t\t\t}else{\n\t\t\t\tbitupd(las[b[i]],1ll*inv[b[i]-1]*b[i]%mo);\n\t\t\t\tbitupd(i,1ll*(b[i]-1)*inv[b[i]]%mo);\n\t\t\t}\n\t\t\tlas[b[i]]=i;\n\t\t}\n\t\twhile(cur!=q+1 && qu[cur].r==i){\n\t\t\tif(qu[cur].l>qu[cur].r){\n\t\t\t\tcur++;\n\t\t\t\tcontinue;\n\t\t\t}\n\t\t\tint ans=bitque(qu[cur].r);\n\t\t\tans=1ll*ans*qp(bitque(qu[cur].l-1),mo-2)%mo;\n\t\t\t/*ans=1ll*mul[qu[cur].r]*ans%mo;\n\t\t\tans=1ll*ans*qp(mul[qu[cur].l-1],mo-2)%mo;*/\n\t\t\t::ans[qu[cur].id]=1ll*::ans[qu[cur].id]*ans%mo;\n\t\t\tcur++;\n\t\t}\n\t}\n\tfor (int i=1;i<=q;i++)printf(\"%d\\n\",ans[i]);\n\treturn 0;\n}\n\t\t\n\n"], "input": "", "output": "", "tags": ["data structures", "number theory"], "dificulty": "2500", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/594/problem/D",
+    "problemId": "40381",
+    "problem_idx": "D",
+    "shortId": "594D",
+    "contest_number": "594",
+    "problem_submissions": {
+        "E": [
+            16759125
+        ],
+        "A": [
+            14859835,
+            14187151,
+            14168211,
+            14172935,
+            14182638
+        ],
+        "B": [
+            14156236,
+            14148350,
+            14148054,
+            14157567,
+            14148683,
+            14153705,
+            14154342,
+            14148482,
+            14159536,
+            14174689,
+            14159892,
+            14159855,
+            14159731
+        ],
+        "D": [
+            14150984,
+            14155176,
+            14155954,
+            14153436,
+            14155957,
+            14149401,
+            14158502,
+            14157969,
+            14149011,
+            14149866,
+            14152166,
+            14149390,
+            14153522,
+            14151360,
+            14154138,
+            14150754,
+            14152455
+        ],
+        "C": [
+            14148084,
+            14150600,
+            14150845,
+            14151161,
+            14152433,
+            14158444,
+            14151325,
+            14153060,
+            14153280,
+            14152819,
+            14149839,
+            14153721,
+            14148614,
+            14156263,
+            14151875,
+            14156017,
+            14156027
+        ]
+    },
+    "name": "D. REQ",
+    "statement": "Today on a math lesson the teacher told Vovochka that the Euler function\r\nof a positive integer is an arithmetic function that counts the positive\r\nintegers less than or equal to n that are relatively prime to n. The\r\nnumber is coprime to all the positive integers and .Now the teacher gave\r\nVovochka an array of positive integers and a task to process queries to\r\ncalculate and print modulo . As it is too hard for a second grade school\r\nstudent, you\u2019ve decided to help Vovochka.\r\n",
+    "solutions": [
+        "#include<cstdio>\n#include<algorithm>\n#include<cstring>\n#include<iostream>\n#include<cstdlib>\n#include<cmath>\n#include<vector>\n#include<map>\n#include<set>\n#include<queue>\n#include<bitset>\nusing namespace std;\ntypedef long long ll;\ntypedef double db;\nconst db pi=acos(-1);\nvoid gn(int &x){\n\tint sg=1;char c;while(((c=getchar())<'0'||c>'9')&&c!='-');\n\tif(c=='-')sg=-1,x=0;else x=c-'0';\n\twhile((c=getchar())>='0'&&c<='9')x=x*10+c-'0';\n\tx*=sg;\n}\nvoid gn(ll &x){\n\tint sg=1;char c;while(((c=getchar())<'0'||c>'9')&&c!='-');\n\tif(c=='-')sg=-1,x=0;else x=c-'0';\n\twhile((c=getchar())>='0'&&c<='9')x=x*10+c-'0';\n\tx*=sg;\n}\nconst int mo=1000000007;\nconst int inf=1061109567;\nint qp(int a,ll b){int ans=1;do{if(b&1)ans=1ll*ans*a%mo;a=1ll*a*a%mo;}while(b>>=1);return ans;}\nint dx[4]={1,0,-1,0};\nint dy[4]={0,1,0,-1};\n\nint bo[1000005]={0},pr[1000005],tot=0;\nint lo[1111111];\nint inv[1111111];\nvoid sieve(int n){\n\tinv[1]=1;\n\tfor (int i=2;i<=n;i++){\n\t\tif(!bo[i]){\n\t\t\tpr[++tot]=i;\n\t\t\tinv[i]=qp(i,mo-2);\n\t\t\tlo[i]=i;\n\t\t}\n\t\tfor (int j=1;j<=tot && pr[j]*i<=n;j++){\n\t\t\tbo[i*pr[j]]=1;\n\t\t\tinv[i*pr[j]]=1ll*inv[i]*inv[pr[j]]%mo;\n\t\t\tlo[i*pr[j]]=pr[j];\n\t\t\tif(i%pr[j]==0){\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t}\n}\nint n;\n\nint a[222222];\nint b[2222222];\nint rig[222222];\nstruct quer{\n\tint l,r,id;\n}qu[222222];\nint cmp(const quer&a,const quer&b){\n\treturn a.r<b.r;\n}\nint ans[222222];\nint las[1222222]={0};\nint bit[2222222];\nint mul[2222222];\n\nvoid bitupd(int x,int d){\n\tfor(;x<=tot;x+=x&-x)bit[x]=1ll*bit[x]*d%mo;\n}\nint bitque(int x){\n\tint ans=1;\n\tfor(;x;x-=x&-x)ans=1ll*ans*bit[x]%mo;\n\treturn ans;\n}\n\nint main()\n{\n\tsieve(1000000);\n\tgn(n);\n\ttot=0;\n\tfor (int i=1;i<=n;i++){\n\t\tint x;\n\t\tgn(x);\n\t\ta[i]=x;\n\t\twhile(x>1){\n\t\t\tint p=lo[x];\n\t\t\twhile(x%p==0)x/=p;\n\t\t\tb[++tot]=p;\n\t\t}\n\t\trig[i]=tot;\n\t}\n\tmul[0]=1;\n\tfor (int i=1;i<=n;i++)mul[i]=1ll*mul[i-1]*a[i]%mo;\n\tint q;gn(q);\n\tfor (int i=1;i<=q;i++){\n\t\tgn(qu[i].l);\n\t\tgn(qu[i].r);\n\t\tqu[i].id=i;\n\t\tans[i]=1ll*mul[qu[i].r]*qp(mul[qu[i].l-1],mo-2)%mo;\n\t\tqu[i].l=rig[qu[i].l-1]+1;\n\t\tqu[i].r=rig[qu[i].r];\n\t}\n\tsort(qu+1,qu+1+q,cmp);\n\tint cur=1;\n\tfor (int i=0;i<=tot;i++)bit[i]=1;\n\tfor (int i=0;i<=tot;i++){\n\t\tif(i){\n\t\t\tif(las[b[i]]==0){\n\t\t\t\tbitupd(i,1ll*(b[i]-1)*inv[b[i]]%mo);\n\t\t\t}else{\n\t\t\t\tbitupd(las[b[i]],1ll*inv[b[i]-1]*b[i]%mo);\n\t\t\t\tbitupd(i,1ll*(b[i]-1)*inv[b[i]]%mo);\n\t\t\t}\n\t\t\tlas[b[i]]=i;\n\t\t}\n\t\twhile(cur!=q+1 && qu[cur].r==i){\n\t\t\tif(qu[cur].l>qu[cur].r){\n\t\t\t\tcur++;\n\t\t\t\tcontinue;\n\t\t\t}\n\t\t\tint ans=bitque(qu[cur].r);\n\t\t\tans=1ll*ans*qp(bitque(qu[cur].l-1),mo-2)%mo;\n\t\t\t/*ans=1ll*mul[qu[cur].r]*ans%mo;\n\t\t\tans=1ll*ans*qp(mul[qu[cur].l-1],mo-2)%mo;*/\n\t\t\t::ans[qu[cur].id]=1ll*::ans[qu[cur].id]*ans%mo;\n\t\t\tcur++;\n\t\t}\n\t}\n\tfor (int i=1;i<=q;i++)printf(\"%d\\n\",ans[i]);\n\treturn 0;\n}\n\t\t\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "data structures",
+        "number theory"
+    ],
+    "dificulty": "2500",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. REQ.json",
+    "editorial_link": "https://codeforces.com//blog/entry/21487",
+    "editorial": "Read input, including queries to solve them offline. Sort the queries by\r\n, making sure to keep their original indices. Use Sieve of Erastosthenes\r\nto precalculate primes up to Use those primes to factorize all the\r\nvalues of (this step takes ). We want to store the results in two data\r\nstructures: Initialize a BIT or segment tree (), that can calculate\r\nrange products modulo , with the values from . Use to find the leftmost\r\nindex for each prime factor. Multiply those positions in by . We can now\r\nanswer queries with using . To \"advance\" by to eventually answer the\r\nrest of the queries: Sample: 65793661\r\n"
+}

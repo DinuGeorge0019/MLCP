@@ -1,1 +1,106 @@
-{"link": "https://codeforces.com//contest/108/problem/D", "problemId": "570", "problem_idx": "D", "shortId": "108D", "contest_number": "108", "problem_submissions": {"D": [631152, 630566, 631699, 633125, 632252, 630736, 631399, 630814, 631533, 630518, 631851, 632455, 631854, 632380, 632591, 632622], "C": [629180, 629868, 629472, 629971, 635740, 630685, 688399, 631427, 630137, 631303, 628693, 629432, 630403, 630647, 631107, 630964, 630765, 630940], "B": [628051, 628449, 68305499, 628675, 632122, 628702, 627917, 628889, 628448, 630178, 632188, 628860, 628600, 628771, 628618, 629621, 629072], "A": [627480, 627844, 627421, 627636, 631848, 627468, 627396, 627555, 627512, 629270, 627646, 627419, 627496, 627622, 632729, 627875, 627538], "E": [631664, 641028]}, "name": "D. Basketball Team", "statement": "As a German University in Cairo (GUC) student and a basketball player,\r\nHerr Wafa was delighted once he heard the news. GUC is finally\r\nparticipating in the Annual Basketball Competition (ABC). A team is to\r\nbe formed of players, all of which are GUC students. However, the team\r\nmight have players belonging to different departments. There are\r\ndepartments in GUC, numbered from to . Herr Wafa\u2019s department has number\r\n. For each department , Herr Wafa knows number how many students who\r\nplay basketball belong to this department.Herr Wafa was also able to\r\nguarantee a spot on the team, using his special powers. But since he\r\nhates floating-point numbers, he needs your help at finding the\r\nprobability that he will have at least one teammate belonging to his\r\ndepartment. Note that every possible team containing Herr Wafa is\r\nequally probable. Consider all the students different from each other.\r\n", "solutions": ["#include <iostream>\n#include <fstream>\n#include <vector>\n#include <algorithm>\n#include <string>\n#include <string.h>\n\nusing namespace std;\n\nconst int MAX=1005;\nint N,M,H,s[MAX];\n\ndouble di(int a, int b){\n    double ans=1;\n    for(int i=0; i<N-1; i++){\n\tans*=(double)(a-i)/(double)(b-i);\n    }\n    return ans;\n}\n\nint main(){\n    cin >> N >> M >> H;\n    H--;\n    int total=0;\n    for(int i=0; i<M; i++){\n\tcin >> s[i];\n\ttotal+=s[i];\n    }\n    if(total<N){\n\tcout << \"-1.0\\n\";\n\treturn 0;\n    }\n    total--; s[H]--; \n    double ans=1-di(total-s[H],total);\n    printf(\"%.9f\\n\", ans);\n}\n"], "input": "", "output": "", "tags": ["combinatorics", "math", "probabilities"], "dificulty": "1600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/108/problem/D",
+    "problemId": "570",
+    "problem_idx": "D",
+    "shortId": "108D",
+    "contest_number": "108",
+    "problem_submissions": {
+        "D": [
+            631152,
+            630566,
+            631699,
+            633125,
+            632252,
+            630736,
+            631399,
+            630814,
+            631533,
+            630518,
+            631851,
+            632455,
+            631854,
+            632380,
+            632591,
+            632622
+        ],
+        "C": [
+            629180,
+            629868,
+            629472,
+            629971,
+            635740,
+            630685,
+            688399,
+            631427,
+            630137,
+            631303,
+            628693,
+            629432,
+            630403,
+            630647,
+            631107,
+            630964,
+            630765,
+            630940
+        ],
+        "B": [
+            628051,
+            628449,
+            68305499,
+            628675,
+            632122,
+            628702,
+            627917,
+            628889,
+            628448,
+            630178,
+            632188,
+            628860,
+            628600,
+            628771,
+            628618,
+            629621,
+            629072
+        ],
+        "A": [
+            627480,
+            627844,
+            627421,
+            627636,
+            631848,
+            627468,
+            627396,
+            627555,
+            627512,
+            629270,
+            627646,
+            627419,
+            627496,
+            627622,
+            632729,
+            627875,
+            627538
+        ],
+        "E": [
+            631664,
+            641028
+        ]
+    },
+    "name": "D. Basketball Team",
+    "statement": "As a German University in Cairo (GUC) student and a basketball player,\r\nHerr Wafa was delighted once he heard the news. GUC is finally\r\nparticipating in the Annual Basketball Competition (ABC). A team is to\r\nbe formed of players, all of which are GUC students. However, the team\r\nmight have players belonging to different departments. There are\r\ndepartments in GUC, numbered from to . Herr Wafa\u2019s department has number\r\n. For each department , Herr Wafa knows number how many students who\r\nplay basketball belong to this department.Herr Wafa was also able to\r\nguarantee a spot on the team, using his special powers. But since he\r\nhates floating-point numbers, he needs your help at finding the\r\nprobability that he will have at least one teammate belonging to his\r\ndepartment. Note that every possible team containing Herr Wafa is\r\nequally probable. Consider all the students different from each other.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <fstream>\n#include <vector>\n#include <algorithm>\n#include <string>\n#include <string.h>\n\nusing namespace std;\n\nconst int MAX=1005;\nint N,M,H,s[MAX];\n\ndouble di(int a, int b){\n    double ans=1;\n    for(int i=0; i<N-1; i++){\n\tans*=(double)(a-i)/(double)(b-i);\n    }\n    return ans;\n}\n\nint main(){\n    cin >> N >> M >> H;\n    H--;\n    int total=0;\n    for(int i=0; i<M; i++){\n\tcin >> s[i];\n\ttotal+=s[i];\n    }\n    if(total<N){\n\tcout << \"-1.0\\n\";\n\treturn 0;\n    }\n    total--; s[H]--; \n    double ans=1-di(total-s[H],total);\n    printf(\"%.9f\\n\", ans);\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "combinatorics",
+        "math",
+        "probabilities"
+    ],
+    "dificulty": "1600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Basketball Team.json",
+    "editorial_link": "https://codeforces.com//blog/entry/2514",
+    "editorial": "This problem is asking for the probability. Consider two sets of teams: the set of teams where Herr Wafa is the only student from his major and the set where at least one other student from Herr Wafa's major is present. These two sets don't intersect, so once we can compute the number of teams in the first set, A, and the number of teams in the second set, B, the answer would be B?/?(A?+?B).\n\nThe number of teams in the first set is A = . We subtract one as Herr Wafa is guaranteed the spot, and the other (n?-?1) spots are to be taken by the remaining  students.\n\nNow let's count the number of teams having exactly k students from Herr Wafa's major apart from him. This number would be . Much like for the first set, (n?-?(k?+?1)) students from the other majors should he selected, and none of them should be from Herr Wafa's major. The total number of teams where at least one other student is from Herr Wafa's major is therefore .\n\nThe statements above describe the mathematical solution. It can be implemented in various ways."
+}

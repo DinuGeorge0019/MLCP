@@ -1,1 +1,97 @@
-{"link": "https://codeforces.com//contest/151/problem/A", "problemId": "934", "problem_idx": "A", "shortId": "151A", "contest_number": "151", "problem_submissions": {"D": [1191288, 1190982, 1192075, 1188622, 1191064, 1192743, 1193614, 1191724, 1192528, 1193223, 1188963, 1193176, 1193652, 1193586, 1193699, 1194530], "C": [1189986, 1190106, 1190645, 1190418, 1193125, 1191423, 1190313, 1193505, 1191825, 1191803, 1193463, 1191879, 1191139, 1192438, 1191193, 1191323], "B": [1188864, 1188485, 1189628, 1193411, 1189152, 1189396, 1188819, 1188853, 1189550, 1189820, 1191583, 1190692, 1189320, 1189623, 1188981, 1189626], "A": [1187303, 1186976, 1188162, 1194214, 1187098, 1187126, 1187027, 1187048, 1187460, 1187074, 1189804, 1187622, 1187259, 1188213, 1187014, 1187154]}, "name": "A. Soft Drinking", "statement": "This winter is so cold in Nvodsk! A group of friends decided to buy\r\nbottles of a soft drink called \"Take-It-Light\" to warm up a bit. Each\r\nbottle has milliliters of the drink. Also they bought limes and cut each\r\nof them into slices. After that they found grams of salt.To make a\r\ntoast, each friend needs milliliters of the drink, a slice of lime and\r\ngrams of salt. The friends want to make as many toasts as they can,\r\nprovided they all drink the same amount. How many toasts can each friend\r\nmake?\r\n", "solutions": ["#include <iostream>\n#include <algorithm>\n#include <vector>\n#include <string>\n#include <cstring>\n#include <cstdio>\n#include <cstdlib>\n#include <queue>\n#include <map>\nusing namespace std;\n\nint main()\n{\n\tint n, k, l, c, d, p, nl, np;\n\tcin >> n >> k >> l >> c >> d >> p >> nl >> np;\n\tint s = 1000000000;\n\tint t;\n\tt = k * l / nl / n;\n\tif(t < s) s = t;\n\tt = c * d / n;\n\tif(t < s) s = t;\n\tt = p / np / n;\n\tif(t < s) s = t;\t\t\n\tcout << s << endl;\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["implementation", "math"], "dificulty": "800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/151/problem/A",
+    "problemId": "934",
+    "problem_idx": "A",
+    "shortId": "151A",
+    "contest_number": "151",
+    "problem_submissions": {
+        "D": [
+            1191288,
+            1190982,
+            1192075,
+            1188622,
+            1191064,
+            1192743,
+            1193614,
+            1191724,
+            1192528,
+            1193223,
+            1188963,
+            1193176,
+            1193652,
+            1193586,
+            1193699,
+            1194530
+        ],
+        "C": [
+            1189986,
+            1190106,
+            1190645,
+            1190418,
+            1193125,
+            1191423,
+            1190313,
+            1193505,
+            1191825,
+            1191803,
+            1193463,
+            1191879,
+            1191139,
+            1192438,
+            1191193,
+            1191323
+        ],
+        "B": [
+            1188864,
+            1188485,
+            1189628,
+            1193411,
+            1189152,
+            1189396,
+            1188819,
+            1188853,
+            1189550,
+            1189820,
+            1191583,
+            1190692,
+            1189320,
+            1189623,
+            1188981,
+            1189626
+        ],
+        "A": [
+            1187303,
+            1186976,
+            1188162,
+            1194214,
+            1187098,
+            1187126,
+            1187027,
+            1187048,
+            1187460,
+            1187074,
+            1189804,
+            1187622,
+            1187259,
+            1188213,
+            1187014,
+            1187154
+        ]
+    },
+    "name": "A. Soft Drinking",
+    "statement": "This winter is so cold in Nvodsk! A group of friends decided to buy\r\nbottles of a soft drink called \"Take-It-Light\" to warm up a bit. Each\r\nbottle has milliliters of the drink. Also they bought limes and cut each\r\nof them into slices. After that they found grams of salt.To make a\r\ntoast, each friend needs milliliters of the drink, a slice of lime and\r\ngrams of salt. The friends want to make as many toasts as they can,\r\nprovided they all drink the same amount. How many toasts can each friend\r\nmake?\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <algorithm>\n#include <vector>\n#include <string>\n#include <cstring>\n#include <cstdio>\n#include <cstdlib>\n#include <queue>\n#include <map>\nusing namespace std;\n\nint main()\n{\n\tint n, k, l, c, d, p, nl, np;\n\tcin >> n >> k >> l >> c >> d >> p >> nl >> np;\n\tint s = 1000000000;\n\tint t;\n\tt = k * l / nl / n;\n\tif(t < s) s = t;\n\tt = c * d / n;\n\tif(t < s) s = t;\n\tt = p / np / n;\n\tif(t < s) s = t;\t\t\n\tcout << s << endl;\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation",
+        "math"
+    ],
+    "dificulty": "800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Soft Drinking.json",
+    "editorial_link": "https://codeforces.com//blog/entry/3905",
+    "editorial": "Soda will be enough for = * / * toasts. Limes will last for toasts. Salt\r\nis enough for toasts. Total result: .\r\n"
+}

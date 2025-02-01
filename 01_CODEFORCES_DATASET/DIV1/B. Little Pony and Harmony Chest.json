@@ -1,1 +1,102 @@
-{"link": "https://codeforces.com//contest/453/problem/B", "problemId": "11934", "problem_idx": "B", "shortId": "453B", "contest_number": "453", "problem_submissions": {"D": [7318525, 7321381, 7319937, 7313076, 7316122, 11122936], "C": [7314789, 7312823, 7323051, 7318282, 7319034, 7312696, 7313901, 7313477, 7314695, 7314310, 7314103, 7314216, 7311079, 7314796, 7314374, 7314951, 7314159, 7314941], "B": [7311773, 7310412, 7316305, 7319850, 7314250, 7310826, 7311570, 7321252, 7320392, 7320316, 7312680, 7310934, 7311494, 7312013, 7315911, 7311404, 7312306, 7313238, 7312326, 7313318], "A": [7308671, 7308664, 7309073, 7318976, 7309345, 7308656, 7308757, 7321161, 7309462, 7308797, 7309148, 7308775, 7313516, 7309054, 7309188, 7308988, 7311729, 7309495], "E": [7318455, 7321485, 7325631, 7343757]}, "name": "B. Little Pony and Harmony Chest", "statement": "Princess Twilight went to Celestia and Luna\u2019s old castle to research the\r\nchest from the Elements of Harmony. A sequence of positive integers is\r\nharmony if and only if for every two elements of the sequence their\r\ngreatest common divisor equals 1. According to an ancient book, the key\r\nof the chest is a harmony sequence which minimizes the following\r\nexpression:You are given sequence , help Princess Twilight to find the\r\nkey.\r\n", "solutions": ["#include <bits/stdc++.h>\n\nusing namespace std;\n\n#define MAXV 62\n#define INF 0x3FFFFFFF\n\nint N;\nint A[110];\nint M[MAXV];\nint low;\nvector<int> P;\n\nint memo[110][1 << 10][10];\n\nint solve(int x, int m) {\n  if(__builtin_popcount((m >> low) + 1) != 1) return INF;\n  if(x == N) return 0;\n\n  int& ref = memo[x][m & ((1 << low) - 1)][__builtin_popcount(m >> low)];\n  if(ref != -1) return ref;\n\n  ref = INF;\n  for(int i = 1; i < MAXV; i++) {\n    if((M[i] & m) == 0) {\n      ref = min(ref, abs(A[x] - i) + solve(x + 1, m | M[i]));\n    }\n  }\n  return ref;\n}\n\nvoid recover(int x, int m) {\n  if(x == N) return;\n\n  int val = solve(x, m);\n  for(int i = 1; i < MAXV; i++) {\n    if((M[i] & m) == 0) {\n      if(abs(A[x] - i) + solve(x + 1, m | M[i]) == val) {\n        if(x) cout << ' ';\n        cout << i;\n        recover(x + 1, m | M[i]);\n        break;\n      }\n    }\n  }\n}\n\nint main() {\n  for(int p = 2; p < MAXV; p++) {\n    bool isp = true;\n    for(int i = 2; i < p && isp; i++) {\n      isp = p % i != 0;\n    }\n    if(isp) {\n      P.push_back(p);\n      if(p <= 30) low++;\n    }\n  }\n\n  for(int i = 1; i < MAXV; i++) {\n    M[i] = 0;\n    for(int j = 0; j < P.size(); j++) {\n      if(i % P[j] == 0) {\n        M[i] |= 1 << j;\n      }\n    }\n  }\n\n  cin >> N;\n  for(int i = 0; i < N; i++) {\n    cin >> A[i];\n  }\n\n  memset(memo, -1, sizeof(memo));\n  recover(0, 0);\n  cout << endl;\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["bitmasks", "brute force", "dp"], "dificulty": "2000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/453/problem/B",
+    "problemId": "11934",
+    "problem_idx": "B",
+    "shortId": "453B",
+    "contest_number": "453",
+    "problem_submissions": {
+        "D": [
+            7318525,
+            7321381,
+            7319937,
+            7313076,
+            7316122,
+            11122936
+        ],
+        "C": [
+            7314789,
+            7312823,
+            7323051,
+            7318282,
+            7319034,
+            7312696,
+            7313901,
+            7313477,
+            7314695,
+            7314310,
+            7314103,
+            7314216,
+            7311079,
+            7314796,
+            7314374,
+            7314951,
+            7314159,
+            7314941
+        ],
+        "B": [
+            7311773,
+            7310412,
+            7316305,
+            7319850,
+            7314250,
+            7310826,
+            7311570,
+            7321252,
+            7320392,
+            7320316,
+            7312680,
+            7310934,
+            7311494,
+            7312013,
+            7315911,
+            7311404,
+            7312306,
+            7313238,
+            7312326,
+            7313318
+        ],
+        "A": [
+            7308671,
+            7308664,
+            7309073,
+            7318976,
+            7309345,
+            7308656,
+            7308757,
+            7321161,
+            7309462,
+            7308797,
+            7309148,
+            7308775,
+            7313516,
+            7309054,
+            7309188,
+            7308988,
+            7311729,
+            7309495
+        ],
+        "E": [
+            7318455,
+            7321485,
+            7325631,
+            7343757
+        ]
+    },
+    "name": "B. Little Pony and Harmony Chest",
+    "statement": "Princess Twilight went to Celestia and Luna\u2019s old castle to research the\r\nchest from the Elements of Harmony. A sequence of positive integers is\r\nharmony if and only if for every two elements of the sequence their\r\ngreatest common divisor equals 1. According to an ancient book, the key\r\nof the chest is a harmony sequence which minimizes the following\r\nexpression:You are given sequence , help Princess Twilight to find the\r\nkey.\r\n",
+    "solutions": [
+        "#include <bits/stdc++.h>\n\nusing namespace std;\n\n#define MAXV 62\n#define INF 0x3FFFFFFF\n\nint N;\nint A[110];\nint M[MAXV];\nint low;\nvector<int> P;\n\nint memo[110][1 << 10][10];\n\nint solve(int x, int m) {\n  if(__builtin_popcount((m >> low) + 1) != 1) return INF;\n  if(x == N) return 0;\n\n  int& ref = memo[x][m & ((1 << low) - 1)][__builtin_popcount(m >> low)];\n  if(ref != -1) return ref;\n\n  ref = INF;\n  for(int i = 1; i < MAXV; i++) {\n    if((M[i] & m) == 0) {\n      ref = min(ref, abs(A[x] - i) + solve(x + 1, m | M[i]));\n    }\n  }\n  return ref;\n}\n\nvoid recover(int x, int m) {\n  if(x == N) return;\n\n  int val = solve(x, m);\n  for(int i = 1; i < MAXV; i++) {\n    if((M[i] & m) == 0) {\n      if(abs(A[x] - i) + solve(x + 1, m | M[i]) == val) {\n        if(x) cout << ' ';\n        cout << i;\n        recover(x + 1, m | M[i]);\n        break;\n      }\n    }\n  }\n}\n\nint main() {\n  for(int p = 2; p < MAXV; p++) {\n    bool isp = true;\n    for(int i = 2; i < p && isp; i++) {\n      isp = p % i != 0;\n    }\n    if(isp) {\n      P.push_back(p);\n      if(p <= 30) low++;\n    }\n  }\n\n  for(int i = 1; i < MAXV; i++) {\n    M[i] = 0;\n    for(int j = 0; j < P.size(); j++) {\n      if(i % P[j] == 0) {\n        M[i] |= 1 << j;\n      }\n    }\n  }\n\n  cin >> N;\n  for(int i = 0; i < N; i++) {\n    cin >> A[i];\n  }\n\n  memset(memo, -1, sizeof(memo));\n  recover(0, 0);\n  cout << endl;\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "bitmasks",
+        "brute force",
+        "dp"
+    ],
+    "dificulty": "2000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Little Pony and Harmony Chest.json",
+    "editorial_link": "https://codeforces.com//blog/entry/13190",
+    "editorial": "You are given sequence ai, find a pairwise coprime sequence bi which minimizes \n\nAnalysis:\nSince {1, 1 ..., 1} is a pairwise coprime sequence, the maximum element of bi can never greater then 2mx?-?1. Here mx is the maximum elements in ai. So what we need consider is the first a few prime factors. It is not hard to use bitmask-dp to solve this:\n\nHere dp[i][s]: means the first i items of the sequence, and the prime factor have already existed. And fact[k]? means the prime factor set of number k."
+}

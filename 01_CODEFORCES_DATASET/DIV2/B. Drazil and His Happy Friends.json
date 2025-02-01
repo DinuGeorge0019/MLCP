@@ -1,1 +1,107 @@
-{"link": "https://codeforces.com//contest/515/problem/B", "problemId": "22483", "problem_idx": "B", "shortId": "515B", "contest_number": "515", "problem_submissions": {"C": [9901093, 9891593, 9889966, 9894661, 9890694, 9891519, 9891807, 9891147, 9894312, 9892979, 9890976, 9896690, 9895106, 9891765, 9893860, 9889767, 9894769], "E": [9897953, 9901196, 9901641], "A": [9893658, 9884581, 9884436, 9884731, 9884617, 9893616, 9885742, 9884882, 9886057, 9890988, 9899002, 9884584, 9884720, 9884480, 9897882, 9895179, 9887232], "B": [9893222, 9886714, 9886489, 9887475, 9887922, 9887319, 9888734, 9887265, 9890144, 9891119, 9888369, 9892060, 9887541, 9886326, 9890729, 9894202, 9891245], "D": [9889440, 9896686, 9895645, 9901264, 9898104, 9900858, 9899954, 9900443, 9899935, 9899852, 9899500, 9928352, 9928159, 9899922, 9900339, 9901106]}, "name": "B. Drazil and His Happy Friends", "statement": "Drazil has many friends. Some of them are happy and some of them are\r\nunhappy. Drazil wants to make all his friends become happy. So he\r\ninvented the following plan.There are boys and girls among his friends.\r\nLet\u2019s number them from to and to separately. In -th day, Drazil invites\r\n-th boy and -th girl to have dinner together (as Drazil is programmer,\r\nstarts from ). If one of those two people is happy, the other one will\r\nalso become happy. Otherwise, those two people remain in their states.\r\nOnce a person becomes happy (or if he/she was happy originally), he\r\nstays happy forever.Drazil wants to know whether he can use this plan to\r\nmake all his friends become happy at some moment.\r\n", "solutions": ["#include <stdio.h>\nint a[110], b[110];\nint l[210], w, r;\nint main() {\n    int n, m, x, y, p, i;\n    scanf(\"%d%d\", &n, &m);\n    scanf(\"%d\", &p);\n    while (p--) {\n        scanf(\"%d\", &x);\n        a[x] = 1;\n        l[w++] = x;\n    }\n    scanf(\"%d\", &p);\n    while (p--) {\n        scanf(\"%d\", &x);\n        b[x] = 1;\n        l[w++] = n + x;\n    }\n    for (r = 0; r < w; r++) {\n        x = l[r];\n        if (x < n) {\n            y = x % m;\n            do {\n                if (!b[y]) {\n                    b[y] = 1;\n                    l[w++] = n + y;\n                }\n                y = (y + n) % m;\n            } while (y != x % m);\n        } else {\n            x = x - n;\n            y = x % n;\n            do {\n                if (!a[y]) {\n                    a[y] = 1;\n                    l[w++] = y;\n                }\n                y = (y + m) % n;\n            } while (y != x % n);\n        }\n    }\n    for (i = 0; i < n; i++) if (!a[i]) {\n        printf(\"No\\n\"); return 0;\n    }\n    for (i = 0; i < m; i++) if (!b[i]) {\n        printf(\"No\\n\"); return 0;\n    }\n    printf(\"Yes\\n\");\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["brute force", "dsu", "meet-in-the-middle", "number theory"], "dificulty": "1300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/515/problem/B",
+    "problemId": "22483",
+    "problem_idx": "B",
+    "shortId": "515B",
+    "contest_number": "515",
+    "problem_submissions": {
+        "C": [
+            9901093,
+            9891593,
+            9889966,
+            9894661,
+            9890694,
+            9891519,
+            9891807,
+            9891147,
+            9894312,
+            9892979,
+            9890976,
+            9896690,
+            9895106,
+            9891765,
+            9893860,
+            9889767,
+            9894769
+        ],
+        "E": [
+            9897953,
+            9901196,
+            9901641
+        ],
+        "A": [
+            9893658,
+            9884581,
+            9884436,
+            9884731,
+            9884617,
+            9893616,
+            9885742,
+            9884882,
+            9886057,
+            9890988,
+            9899002,
+            9884584,
+            9884720,
+            9884480,
+            9897882,
+            9895179,
+            9887232
+        ],
+        "B": [
+            9893222,
+            9886714,
+            9886489,
+            9887475,
+            9887922,
+            9887319,
+            9888734,
+            9887265,
+            9890144,
+            9891119,
+            9888369,
+            9892060,
+            9887541,
+            9886326,
+            9890729,
+            9894202,
+            9891245
+        ],
+        "D": [
+            9889440,
+            9896686,
+            9895645,
+            9901264,
+            9898104,
+            9900858,
+            9899954,
+            9900443,
+            9899935,
+            9899852,
+            9899500,
+            9928352,
+            9928159,
+            9899922,
+            9900339,
+            9901106
+        ]
+    },
+    "name": "B. Drazil and His Happy Friends",
+    "statement": "Drazil has many friends. Some of them are happy and some of them are\r\nunhappy. Drazil wants to make all his friends become happy. So he\r\ninvented the following plan.There are boys and girls among his friends.\r\nLet\u2019s number them from to and to separately. In -th day, Drazil invites\r\n-th boy and -th girl to have dinner together (as Drazil is programmer,\r\nstarts from ). If one of those two people is happy, the other one will\r\nalso become happy. Otherwise, those two people remain in their states.\r\nOnce a person becomes happy (or if he/she was happy originally), he\r\nstays happy forever.Drazil wants to know whether he can use this plan to\r\nmake all his friends become happy at some moment.\r\n",
+    "solutions": [
+        "#include <stdio.h>\nint a[110], b[110];\nint l[210], w, r;\nint main() {\n    int n, m, x, y, p, i;\n    scanf(\"%d%d\", &n, &m);\n    scanf(\"%d\", &p);\n    while (p--) {\n        scanf(\"%d\", &x);\n        a[x] = 1;\n        l[w++] = x;\n    }\n    scanf(\"%d\", &p);\n    while (p--) {\n        scanf(\"%d\", &x);\n        b[x] = 1;\n        l[w++] = n + x;\n    }\n    for (r = 0; r < w; r++) {\n        x = l[r];\n        if (x < n) {\n            y = x % m;\n            do {\n                if (!b[y]) {\n                    b[y] = 1;\n                    l[w++] = n + y;\n                }\n                y = (y + n) % m;\n            } while (y != x % m);\n        } else {\n            x = x - n;\n            y = x % n;\n            do {\n                if (!a[y]) {\n                    a[y] = 1;\n                    l[w++] = y;\n                }\n                y = (y + m) % n;\n            } while (y != x % n);\n        }\n    }\n    for (i = 0; i < n; i++) if (!a[i]) {\n        printf(\"No\\n\"); return 0;\n    }\n    for (i = 0; i < m; i++) if (!b[i]) {\n        printf(\"No\\n\"); return 0;\n    }\n    printf(\"Yes\\n\");\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "dsu",
+        "meet-in-the-middle",
+        "number theory"
+    ],
+    "dificulty": "1300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Drazil and His Happy Friends.json",
+    "editorial_link": "https://codeforces.com//blog/entry/16468",
+    "editorial": "You may notice that Drazil invites his friends periodically, and the period of invitation patterns is at most n?*?m (because there are only n?*?m possible pairs of boys and girls).\n\nSo if no one changes from unhappy to happy in consecutive n?*?m days, there won't be any changes anymore since then.\n\nWe can simulate the process of having dinner until there are no status changes in consecutive n?*?m days.\n\nBecause there are only n+m people, it's easy to prove the simulation requires O((n?+?m)?*?n?*?m) days.\n\nBut in fact, the simulation takes only O(n?*?m) days.(More accurately, the bound is (min(n,?m)?+?1)?*?(max(n,?m)?-?1) )\n\nWhat happens? You can do some experiments by yourself. =) (you can suppose that only one person is happy in the beginning.)\n\nIn fact, this problem can be solved in O(n?+?m).\n\nLet g be the greatest common divisor of n and m. If the i-th person is happy, then all people with number x satisfying  will become happy some day because of this person.\n\nSo for each 0???i???g?-?1, we only need to check if there exists at least one person whose number mod g is i and is happy.\n\nIf it exists for all i, the answer is 'Yes', otherwise the answer is 'No'."
+}

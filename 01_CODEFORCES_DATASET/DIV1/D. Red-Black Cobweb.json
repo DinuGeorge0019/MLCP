@@ -1,1 +1,106 @@
-{"link": "https://codeforces.com//contest/833/problem/D", "problemId": "116222", "problem_idx": "D", "shortId": "833D", "contest_number": "833", "problem_submissions": {"E": [29083224, 29083091], "D": [29016770, 29016294, 29011617, 29013958, 29009345, 29244474, 29205082, 29015261, 29017136, 29012336, 29008041, 29014134, 29019073], "C": [29008615, 29008359, 29015249, 29038532, 29038473, 29013146, 29010690, 29004990, 29014257, 29023306, 29012381, 29014235, 29007517, 29015632, 29016681], "B": [29000858, 28999434, 29001150, 29001528, 29002115, 29002974, 29016798, 29017661, 29016482, 29001800, 29005534, 29010788, 29005299, 29004648, 29003078, 29002266, 29014197, 29004174, 28997722], "A": [28994520, 28994190, 28994134, 28993034, 28994420, 28995369, 28994393, 28997116, 29011489, 28992915, 28994389, 28993845, 28993595, 28996557, 28993837, 28993225, 28994120, 28993719, 28995865, 28994510]}, "name": "D. Red-Black Cobweb", "statement": "Slastyona likes to watch life of nearby grove\u2019s dwellers. This time she\r\nwatches a strange red-black spider sitting at the center of a huge\r\ncobweb.The cobweb is a set of nodes connected by threads, each of the\r\ntreads is either red of black. Using these threads, the spider can move\r\nbetween nodes. No thread connects a node to itself, and between any two\r\nnodes there is a unique sequence of threads connecting them.Slastyona\r\ndecided to study some special qualities of the cobweb. She noticed that\r\neach of the threads has a value of .However, Slastyona is mostly\r\ninterested in of the cobweb. Consider those of the shortest paths\r\nbetween each pair of nodes on which the numbers of red and black threads\r\ndiffer at most twice. For each such path compute the product of the\r\nclamminess of threads on the path.The jelliness of the cobweb is the\r\nproduct of all obtained values among all paths. Those paths that differ\r\nby direction only are counted only once.Of course, this number can be\r\nhuge, so Slastyona asks you to compute the jelliness of the given cobweb\r\nand print the answer modulo .\r\n", "solutions": ["//PRZEMYSL ASSERTY\n\n//SPRAWDZ CORNER CASE'Y, MINIMALNE I MAKSYMALNE WEJ\u015aCIE I WYJ\u015aCIE\n\n//MODULO = 1\n\n//while (clock()<=69*CLOCKS_PER_SEC)\n\n#include <bits/stdc++.h>\n#include <ext/pb_ds/assoc_container.hpp>\n#include <ext/pb_ds/tree_policy.hpp>\n\nusing namespace __gnu_pbds;\nusing namespace std;\n\ntemplate <typename T>\nusing ordered_set =\n    tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n#define sim template < class c\n#define ris return * this\n#define dor > debug & operator <<\n#define eni(x) sim > typename \\\n  enable_if<sizeof dud<c>(0) x 1, debug&>::type operator<<(c i) {\nsim > struct rge { c b, e; };\nsim > rge<c> range(c i, c j) { return rge<c>{i, j}; }\nsim > auto dud(c* x) -> decltype(cerr << *x, 0);\nsim > char dud(...);\nstruct debug {\n#ifdef LOCAL\n~debug() { cerr << endl; }\neni(!=) cerr << boolalpha << i; ris; }\neni(==) ris << range(begin(i), end(i)); }\nsim, class b dor(pair < b, c > d) {\n  ris << \"(\" << d.first << \", \" << d.second << \")\";\n}\nsim dor(rge<c> d) {\n  *this << \"[\";\n  for (auto it = d.b; it != d.e; ++it)\n    *this << \", \" + 2 * (it == d.b) << *it;\n  ris << \"]\";\n}\n#else\nsim dor(const c&) { ris; }\n#endif\n};\n#define imie(...) \" [\" << #__VA_ARGS__ \": \" << (__VA_ARGS__) << \"] \"\n\n#define shandom_ruffle random_shuffle\n\nconst int nax=1000*1007;\nconst int vax=500*1007;\nconst long long mod=1000*1000*1000+7;\n\n//potengowe\nint drzewo[nax];\n\nvoid pisz(int v, int w)\n{\n\tv+=vax;\n\tfor (int i=v; i; i-=(-i&i))\n\t\tdrzewo[i]+=w;\n}\n\nint czyt(int v)\n{\n\tv+=vax;\n\tint ret=0;\n\tfor (int i=v; i<nax; i+=(-i&i))\n\t\tret+=drzewo[i];\n\treturn ret;\n}\n//kuniec potengi\n\nint n;\nvector <pair <int,int> > graf[nax];\n\nint kol[nax];\nlong long wag[nax];\nlong long nailu[nax];\n\nlong long wyn=1;\n\nlong long pot(long long v, long long wyk)\n{\n\tlong long ret=1;\n\twhile(wyk)\n\t{\n\t\tif (wyk&1)\n\t\t{\n\t\t\tret*=v;\n\t\t\tret%=mod;\n\t\t}\n\t\tv*=v;\n\t\tv%=mod;\n\t\twyk>>=1;\n\t}\n\treturn ret;\n}\n\nint bylcen[nax];\n\nvector <int> spo;\nint roz[nax];\nint maxroz[nax];\n\nvoid dfs1(int v, int oj)\n{\n\troz[v]=1;\n\tmaxroz[v]=0;\n\tspo.push_back(v);\n\tfor (auto i : graf[v])\n\t{\n\t\tif (i.first==oj || bylcen[i.first])\n\t\t\tcontinue;\n\t\tdfs1(i.first, v);\n\t\troz[v]+=roz[i.first];\n\t\tmaxroz[v]=max(maxroz[v], roz[i.first]);\n\t}\n}\n\nlong long dp[nax];\nint bila[nax];\nint bilb[nax];\nint l;\n\nvector <int> wek;\n\nvoid dfs2(int v, int oj)\n{\n\twek.push_back(v);\n\tfor (auto i : graf[v])\n\t{\n\t\tif (i.first==oj || bylcen[i.first])\n\t\t\tcontinue;\n\t\tbila[i.first]=bila[v];\n\t\tbilb[i.first]=bilb[v];\n\t\tif (kol[i.second])\n\t\t{\n\t\t\tbila[i.first]+=2;\n\t\t\tbilb[i.first]-=1;\n\t\t}\n\t\telse\n\t\t{\n\t\t\tbila[i.first]-=1;\n\t\t\tbilb[i.first]+=2;\n\t\t}\n\t\tdfs2(i.first, v);\n\t}\n}\n\nbool mniej(int a, int b)\n{\n\treturn bilb[a]<bilb[b];\n}\n\nvoid opierdol(int raz)\n{\n\t//debug() <<  wek << \" \" << raz;\n\tsort(wek.begin(), wek.end(), mniej);\n\tint wsk=wek.size();\n\tfor (int i : wek)\n\t{\n\t\twhile(wsk && bilb[i]+bilb[wek[wsk-1]]>=0)\n\t\t{\n\t\t\twsk--;\n\t\t\tpisz(bila[wek[wsk]], 1);\n\t\t}\n\t\tdp[i]+=raz*czyt(-bila[i]);\n\t}\n\twhile(wsk<(int)wek.size())\n\t{\n\t\tpisz(bila[wek[wsk]], -1);\n\t\twsk++;\n\t}\n}\n\nlong long dfs3(int v, int oj)\n{\n\tlong long ret=dp[v];\n\tfor (auto i : graf[v])\n\t{\n\t\tif (i.first==oj || bylcen[i.first])\n\t\t\tcontinue;\n\t\tlong long w=dfs3(i.first, v);\n\t\tnailu[i.second]+=w;\n\t\tret+=w;\n\t}\n\treturn ret;\n}\n\ninline void jebaj(int c)\n{\n\tfor (int i : spo)\n\t\tdp[i]=0;\n\tl=0;\n\tbila[c]=bilb[c]=0;\n\twek.clear();\n\tdfs2(c, 0);\n\topierdol(1);\n\tfor (auto i : graf[c])\n\t{\n\t\tif (bylcen[i.first])\n\t\t\tcontinue;\n\t\twek.clear();\n\t\tdfs2(i.first, c);\n\t\topierdol(-1);\n\t}\n\t//for (int i : spo)\n\t//\tdebug() << i << \" \" << dp[i];\n\tdfs3(c, 0);\n}\n\nvoid szuk(int v)\n{\n\tif (bylcen[v])\n\t\treturn;\n\tspo.clear();\n\tdfs1(v, 0);\n\tint c=-1;\n\tfor (int i : spo)\n\t\tif (maxroz[i]*2<=roz[v] && (roz[v]-roz[i])*2<=roz[v])\n\t\t\tc=i;\n\tassert(c>0);\n\t//debug() << imie(c);\n\t\n\tjebaj(c);\n\t\n\tbylcen[c]=1;\n\tfor (auto i : graf[c])\n\t\tszuk(i.first);\n}\n\nint main()\n{\n\tscanf(\"%d\", &n);\n\tfor (int i=1; i<n; i++)\n\t{\n\t\tint a, b;\n\t\tscanf(\"%d%d\", &a, &b);\n\t\tgraf[a].push_back({b, i});\n\t\tgraf[b].push_back({a, i});\n\t\tscanf(\"%lld%d\", &wag[i], &kol[i]);\n\t}\n\tszuk(1);\n\tfor (int i=1; i<n; i++)\n\t\twyn=(wyn*pot(wag[i], nailu[i]))%mod;\n\tprintf(\"%lld\\n\", wyn);\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["data structures", "divide and conquer", "implementation", "trees"], "dificulty": "2800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/833/problem/D",
+    "problemId": "116222",
+    "problem_idx": "D",
+    "shortId": "833D",
+    "contest_number": "833",
+    "problem_submissions": {
+        "E": [
+            29083224,
+            29083091
+        ],
+        "D": [
+            29016770,
+            29016294,
+            29011617,
+            29013958,
+            29009345,
+            29244474,
+            29205082,
+            29015261,
+            29017136,
+            29012336,
+            29008041,
+            29014134,
+            29019073
+        ],
+        "C": [
+            29008615,
+            29008359,
+            29015249,
+            29038532,
+            29038473,
+            29013146,
+            29010690,
+            29004990,
+            29014257,
+            29023306,
+            29012381,
+            29014235,
+            29007517,
+            29015632,
+            29016681
+        ],
+        "B": [
+            29000858,
+            28999434,
+            29001150,
+            29001528,
+            29002115,
+            29002974,
+            29016798,
+            29017661,
+            29016482,
+            29001800,
+            29005534,
+            29010788,
+            29005299,
+            29004648,
+            29003078,
+            29002266,
+            29014197,
+            29004174,
+            28997722
+        ],
+        "A": [
+            28994520,
+            28994190,
+            28994134,
+            28993034,
+            28994420,
+            28995369,
+            28994393,
+            28997116,
+            29011489,
+            28992915,
+            28994389,
+            28993845,
+            28993595,
+            28996557,
+            28993837,
+            28993225,
+            28994120,
+            28993719,
+            28995865,
+            28994510
+        ]
+    },
+    "name": "D. Red-Black Cobweb",
+    "statement": "Slastyona likes to watch life of nearby grove\u2019s dwellers. This time she\r\nwatches a strange red-black spider sitting at the center of a huge\r\ncobweb.The cobweb is a set of nodes connected by threads, each of the\r\ntreads is either red of black. Using these threads, the spider can move\r\nbetween nodes. No thread connects a node to itself, and between any two\r\nnodes there is a unique sequence of threads connecting them.Slastyona\r\ndecided to study some special qualities of the cobweb. She noticed that\r\neach of the threads has a value of .However, Slastyona is mostly\r\ninterested in of the cobweb. Consider those of the shortest paths\r\nbetween each pair of nodes on which the numbers of red and black threads\r\ndiffer at most twice. For each such path compute the product of the\r\nclamminess of threads on the path.The jelliness of the cobweb is the\r\nproduct of all obtained values among all paths. Those paths that differ\r\nby direction only are counted only once.Of course, this number can be\r\nhuge, so Slastyona asks you to compute the jelliness of the given cobweb\r\nand print the answer modulo .\r\n",
+    "solutions": [
+        "//PRZEMYSL ASSERTY\n\n//SPRAWDZ CORNER CASE'Y, MINIMALNE I MAKSYMALNE WEJ\u015aCIE I WYJ\u015aCIE\n\n//MODULO = 1\n\n//while (clock()<=69*CLOCKS_PER_SEC)\n\n#include <bits/stdc++.h>\n#include <ext/pb_ds/assoc_container.hpp>\n#include <ext/pb_ds/tree_policy.hpp>\n\nusing namespace __gnu_pbds;\nusing namespace std;\n\ntemplate <typename T>\nusing ordered_set =\n    tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n#define sim template < class c\n#define ris return * this\n#define dor > debug & operator <<\n#define eni(x) sim > typename \\\n  enable_if<sizeof dud<c>(0) x 1, debug&>::type operator<<(c i) {\nsim > struct rge { c b, e; };\nsim > rge<c> range(c i, c j) { return rge<c>{i, j}; }\nsim > auto dud(c* x) -> decltype(cerr << *x, 0);\nsim > char dud(...);\nstruct debug {\n#ifdef LOCAL\n~debug() { cerr << endl; }\neni(!=) cerr << boolalpha << i; ris; }\neni(==) ris << range(begin(i), end(i)); }\nsim, class b dor(pair < b, c > d) {\n  ris << \"(\" << d.first << \", \" << d.second << \")\";\n}\nsim dor(rge<c> d) {\n  *this << \"[\";\n  for (auto it = d.b; it != d.e; ++it)\n    *this << \", \" + 2 * (it == d.b) << *it;\n  ris << \"]\";\n}\n#else\nsim dor(const c&) { ris; }\n#endif\n};\n#define imie(...) \" [\" << #__VA_ARGS__ \": \" << (__VA_ARGS__) << \"] \"\n\n#define shandom_ruffle random_shuffle\n\nconst int nax=1000*1007;\nconst int vax=500*1007;\nconst long long mod=1000*1000*1000+7;\n\n//potengowe\nint drzewo[nax];\n\nvoid pisz(int v, int w)\n{\n\tv+=vax;\n\tfor (int i=v; i; i-=(-i&i))\n\t\tdrzewo[i]+=w;\n}\n\nint czyt(int v)\n{\n\tv+=vax;\n\tint ret=0;\n\tfor (int i=v; i<nax; i+=(-i&i))\n\t\tret+=drzewo[i];\n\treturn ret;\n}\n//kuniec potengi\n\nint n;\nvector <pair <int,int> > graf[nax];\n\nint kol[nax];\nlong long wag[nax];\nlong long nailu[nax];\n\nlong long wyn=1;\n\nlong long pot(long long v, long long wyk)\n{\n\tlong long ret=1;\n\twhile(wyk)\n\t{\n\t\tif (wyk&1)\n\t\t{\n\t\t\tret*=v;\n\t\t\tret%=mod;\n\t\t}\n\t\tv*=v;\n\t\tv%=mod;\n\t\twyk>>=1;\n\t}\n\treturn ret;\n}\n\nint bylcen[nax];\n\nvector <int> spo;\nint roz[nax];\nint maxroz[nax];\n\nvoid dfs1(int v, int oj)\n{\n\troz[v]=1;\n\tmaxroz[v]=0;\n\tspo.push_back(v);\n\tfor (auto i : graf[v])\n\t{\n\t\tif (i.first==oj || bylcen[i.first])\n\t\t\tcontinue;\n\t\tdfs1(i.first, v);\n\t\troz[v]+=roz[i.first];\n\t\tmaxroz[v]=max(maxroz[v], roz[i.first]);\n\t}\n}\n\nlong long dp[nax];\nint bila[nax];\nint bilb[nax];\nint l;\n\nvector <int> wek;\n\nvoid dfs2(int v, int oj)\n{\n\twek.push_back(v);\n\tfor (auto i : graf[v])\n\t{\n\t\tif (i.first==oj || bylcen[i.first])\n\t\t\tcontinue;\n\t\tbila[i.first]=bila[v];\n\t\tbilb[i.first]=bilb[v];\n\t\tif (kol[i.second])\n\t\t{\n\t\t\tbila[i.first]+=2;\n\t\t\tbilb[i.first]-=1;\n\t\t}\n\t\telse\n\t\t{\n\t\t\tbila[i.first]-=1;\n\t\t\tbilb[i.first]+=2;\n\t\t}\n\t\tdfs2(i.first, v);\n\t}\n}\n\nbool mniej(int a, int b)\n{\n\treturn bilb[a]<bilb[b];\n}\n\nvoid opierdol(int raz)\n{\n\t//debug() <<  wek << \" \" << raz;\n\tsort(wek.begin(), wek.end(), mniej);\n\tint wsk=wek.size();\n\tfor (int i : wek)\n\t{\n\t\twhile(wsk && bilb[i]+bilb[wek[wsk-1]]>=0)\n\t\t{\n\t\t\twsk--;\n\t\t\tpisz(bila[wek[wsk]], 1);\n\t\t}\n\t\tdp[i]+=raz*czyt(-bila[i]);\n\t}\n\twhile(wsk<(int)wek.size())\n\t{\n\t\tpisz(bila[wek[wsk]], -1);\n\t\twsk++;\n\t}\n}\n\nlong long dfs3(int v, int oj)\n{\n\tlong long ret=dp[v];\n\tfor (auto i : graf[v])\n\t{\n\t\tif (i.first==oj || bylcen[i.first])\n\t\t\tcontinue;\n\t\tlong long w=dfs3(i.first, v);\n\t\tnailu[i.second]+=w;\n\t\tret+=w;\n\t}\n\treturn ret;\n}\n\ninline void jebaj(int c)\n{\n\tfor (int i : spo)\n\t\tdp[i]=0;\n\tl=0;\n\tbila[c]=bilb[c]=0;\n\twek.clear();\n\tdfs2(c, 0);\n\topierdol(1);\n\tfor (auto i : graf[c])\n\t{\n\t\tif (bylcen[i.first])\n\t\t\tcontinue;\n\t\twek.clear();\n\t\tdfs2(i.first, c);\n\t\topierdol(-1);\n\t}\n\t//for (int i : spo)\n\t//\tdebug() << i << \" \" << dp[i];\n\tdfs3(c, 0);\n}\n\nvoid szuk(int v)\n{\n\tif (bylcen[v])\n\t\treturn;\n\tspo.clear();\n\tdfs1(v, 0);\n\tint c=-1;\n\tfor (int i : spo)\n\t\tif (maxroz[i]*2<=roz[v] && (roz[v]-roz[i])*2<=roz[v])\n\t\t\tc=i;\n\tassert(c>0);\n\t//debug() << imie(c);\n\t\n\tjebaj(c);\n\t\n\tbylcen[c]=1;\n\tfor (auto i : graf[c])\n\t\tszuk(i.first);\n}\n\nint main()\n{\n\tscanf(\"%d\", &n);\n\tfor (int i=1; i<n; i++)\n\t{\n\t\tint a, b;\n\t\tscanf(\"%d%d\", &a, &b);\n\t\tgraf[a].push_back({b, i});\n\t\tgraf[b].push_back({a, i});\n\t\tscanf(\"%lld%d\", &wag[i], &kol[i]);\n\t}\n\tszuk(1);\n\tfor (int i=1; i<n; i++)\n\t\twyn=(wyn*pot(wag[i], nailu[i]))%mod;\n\tprintf(\"%lld\\n\", wyn);\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "data structures",
+        "divide and conquer",
+        "implementation",
+        "trees"
+    ],
+    "dificulty": "2800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Red-Black Cobweb.json",
+    "editorial_link": "https://codeforces.com//blog/entry/53567",
+    "editorial": "centroid decomposition, segment tree / BIT / treap, modulo\r\ndivisionAnalogically to the vast variety of problems where we are to\r\nfind some information about all the paths of the tree at once, we can\r\nuse centroid decomposition as a basis.Let us fix some centroid and some\r\npath consisting of red and black vertices (let us denote it as a pair ).\r\nFor this path, we need to somehow obtain (and do it fast!) information\r\nabout all augmenting paths such pairs that .Let us simplify a problem\r\nfor a little while: let\u00e2\u0080\u0099s assume we are only interested in finding such\r\npaths that . If we rewrite the inequality as , we can clearly see that\r\nthe paths we are interested in comprise the suffix of some tree with\r\nnodes having indices .Unfortunately, this bound is not enough. We need\r\nto discard all the paths that satisfy not only this condition, but also\r\nhave a red part which is too long, i.e. those having .With the same\r\ntrick we the inequality turns into , describing some prefix of a tree.We\r\nshould maintain and of for all subtrees. Then the problem of calculating\r\nthe contribution of a fixed path reduces to quering these two trees.\r\nMore precisely, for a path with looks as follows. Denote as for the\r\nfirst tree, and as the corresponding pair for the second one. Then the\r\nfirst pair gives us the positive contribution of () whereas the second\r\npair gives the same amount of negative contribution (in terms of the\r\nsecond tree this time). The only thing left is to divide them modulo .We\r\nmight get a little bit more tricky and use modulo givision only when we\r\nprocess all paths from this centroid; this will give us the total\r\ncomplexity of , where .\r\n"
+}

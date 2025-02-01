@@ -1,1 +1,82 @@
-{"link": "https://codeforces.com//contest/78/problem/B", "problemId": "418", "problem_idx": "B", "shortId": "78B", "contest_number": "78", "problem_submissions": {"E": [412000, 412857], "B": [409412, 410003, 409464, 409485, 409229, 409391, 409709, 409646, 409243, 409557, 410163, 409775, 409340, 409369, 410560], "A": [408793, 408783, 408965, 408822, 408787, 408815, 408846, 408809, 408863, 408801, 409486, 410948, 408932, 408926, 409703], "C": [410868, 412693, 410900, 410229, 410280, 410434, 410827, 410485, 410919, 411104, 410723, 411342, 411575, 412006], "D": [411731]}, "name": "B. Easter Eggs", "statement": "The Easter Rabbit laid eggs in a circle and is about to paint them. Each\r\negg should be painted one color out of 7: red, orange, yellow, green,\r\nblue, indigo or violet. Also, the following conditions should be\r\nsatisfied: Each of the seven colors should be used to paint at least one\r\negg. Any four eggs should be painted different colors. Help the Easter\r\nRabbit paint the eggs in the required manner. We know that it is always\r\npossible.\r\n", "solutions": ["#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cctype>\n#include <cmath>\n#include <string>\n#include <algorithm>\n#include <sstream>\n#include <map>\n#include <set>\n#include <queue>\n#include <numeric>\n\nusing namespace std;\n\n\nchar C[] = \"ROYGBIV\";\n\nint main() {\n\n    int N;\n    scanf(\"%d\", &N);\n    for (int i = 0; i < N-3; i++) {\n        putchar(C[i%4]);\n    }\n    puts(\"BIV\");\n\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["constructive algorithms", "implementation"], "dificulty": "1200", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/78/problem/B",
+    "problemId": "418",
+    "problem_idx": "B",
+    "shortId": "78B",
+    "contest_number": "78",
+    "problem_submissions": {
+        "E": [
+            412000,
+            412857
+        ],
+        "B": [
+            409412,
+            410003,
+            409464,
+            409485,
+            409229,
+            409391,
+            409709,
+            409646,
+            409243,
+            409557,
+            410163,
+            409775,
+            409340,
+            409369,
+            410560
+        ],
+        "A": [
+            408793,
+            408783,
+            408965,
+            408822,
+            408787,
+            408815,
+            408846,
+            408809,
+            408863,
+            408801,
+            409486,
+            410948,
+            408932,
+            408926,
+            409703
+        ],
+        "C": [
+            410868,
+            412693,
+            410900,
+            410229,
+            410280,
+            410434,
+            410827,
+            410485,
+            410919,
+            411104,
+            410723,
+            411342,
+            411575,
+            412006
+        ],
+        "D": [
+            411731
+        ]
+    },
+    "name": "B. Easter Eggs",
+    "statement": "The Easter Rabbit laid eggs in a circle and is about to paint them. Each\r\negg should be painted one color out of 7: red, orange, yellow, green,\r\nblue, indigo or violet. Also, the following conditions should be\r\nsatisfied: Each of the seven colors should be used to paint at least one\r\negg. Any four eggs should be painted different colors. Help the Easter\r\nRabbit paint the eggs in the required manner. We know that it is always\r\npossible.\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cctype>\n#include <cmath>\n#include <string>\n#include <algorithm>\n#include <sstream>\n#include <map>\n#include <set>\n#include <queue>\n#include <numeric>\n\nusing namespace std;\n\n\nchar C[] = \"ROYGBIV\";\n\nint main() {\n\n    int N;\n    scanf(\"%d\", &N);\n    for (int i = 0; i < N-3; i++) {\n        putchar(C[i%4]);\n    }\n    puts(\"BIV\");\n\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "implementation"
+    ],
+    "dificulty": "1200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Easter Eggs.json",
+    "editorial_link": "https://codeforces.com//blog/entry/1812",
+    "editorial": "At first, you can [n?/?7] times output string \"ROYGBIV\" ([] is a rounding down). After than you can output \"\", \"G\", \"GB\", \"YGB\", \"YGBI\", \"OYGBI\" or \"OYGBIV\" according to remainder of division n by 7. A resulting string will satisfy problem's requirements."
+}

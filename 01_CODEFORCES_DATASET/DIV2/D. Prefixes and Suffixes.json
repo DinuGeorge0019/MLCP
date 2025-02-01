@@ -1,1 +1,116 @@
-{"link": "https://codeforces.com//contest/1730/problem/D", "problemId": "1555172", "problem_idx": "D", "shortId": "1730D", "contest_number": "1730", "problem_submissions": {"F": [173481312, 173482867, 173478875, 173582676], "D": [173464501, 173463845, 173492235, 173460042, 173462224, 173461894, 173462011, 173463683, 173464123, 173466252, 173465903, 173465820, 173472784, 173476685, 173475004, 173471558, 173472223], "C": [173450456, 173450157, 173457042, 173452649, 173450776, 173453445, 173454802, 173455629, 173456866, 173446752, 173444646, 173455631, 173457312, 173447641, 173447077, 173451017, 173452623, 173453329], "B": [173445492, 173444904, 173458756, 173449524, 173445632, 173448108, 173451808, 173449142, 173453555, 173457120, 173455134, 173451905, 173454521, 173452227, 173444715, 173446889, 173447944, 173446921], "A": [173439407, 173438936, 173438879, 173443820, 173439220, 173439980, 173443156, 173443507, 173445064, 173455369, 173446952, 173439340, 173447666, 173440064, 173438737, 173441530, 173439874, 173440797], "E": [173564584, 173477480, 173568880]}, "name": "D. Prefixes and Suffixes", "statement": "You have two strings s_1 and s_2 of length n, consisting of lowercase\r\nEnglish letters. You can perform the following operation any (possibly\r\nzero) number of times: Choose a positive integer 1\r\nleq k\r\nleq n. Swap the prefix of the string s_1 and the suffix of the string\r\ns_2 of length k. Is it possible to make these two strings equal by doing\r\ndescribed operations?\r\n", "solutions": ["#pragma GCC optimize(\"Ofast\",\"unroll-loops\",\"omit-frame-pointer\",\"inline\") //Optimization flags\n#pragma GCC option(\"arch=native\",\"tune=native\",\"no-zero-upper\") //Enable AVX\n#pragma GCC target(\"sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2\")\n#include<bits/stdc++.h>\n//#include<ext/pb_ds/assoc_container.hpp>\nusing namespace std;\n//using namespace __gnu_pbds;\nconst int inf=0x3f3f3f3f;\nconst double eps=1e-6;\nconst int mod=1e9+7;\ntypedef long long ll;\n#ifndef LOCAL\n#define cerr if(0)cout\n#define eprintf(...) 0\n#else\n#define eprintf(...) fprintf(stderr, __VA_ARGS__)\n#endif\ninline string getstr(string &s,int l,int r){string ret=\"\";for(int i=l;i<=r;i++)ret.push_back(s[i]);return ret;}\nint modpow(int x,int y,int md=mod){int ret=1;do{if(y&1)ret=(ll)ret*x%md;x=(ll)x*x%md;}while(y>>=1);return ret;}\ninline int Rand(){return rand()*32768+rand();}\nint T,n;\nstring s1,s2;\nint main(){\n\tios::sync_with_stdio(0);\n\tcin>>T;\n\twhile(T--){\n\t\tcin>>n>>s1>>s2;\n\t\ts1=\" \"+s1;s2=\" \"+s2;\n\t\tmap<pair<char,char>,int>cnt;\n\t\tfor(int i=1;i<=n;i++){\n\t\t\tchar c1=s1[i],c2=s2[n-i+1];\n\t\t\tcnt[make_pair(min(c1,c2),max(c1,c2))]++;\n\t\t}\n\t\tint tot=0;\n\t\tfor(auto p:cnt)if(p.second&1)tot++;\n\t\tfor(auto p:cnt)if(p.second&1)if(p.first.first!=p.first.second){\n\t\t\ttot++;\n\t\t}\n\t\tif(tot>1)puts(\"No\");\n\t\telse puts(\"Yes\");\n\t}\n\treturn 0;\n}"], "input": "", "output": "", "tags": ["constructive algorithms", "strings", "two pointers"], "dificulty": "2200", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/1730/problem/D",
+    "problemId": "1555172",
+    "problem_idx": "D",
+    "shortId": "1730D",
+    "contest_number": "1730",
+    "problem_submissions": {
+        "F": [
+            173481312,
+            173482867,
+            173478875,
+            173582676
+        ],
+        "D": [
+            173464501,
+            173463845,
+            173492235,
+            173460042,
+            173462224,
+            173461894,
+            173462011,
+            173463683,
+            173464123,
+            173466252,
+            173465903,
+            173465820,
+            173472784,
+            173476685,
+            173475004,
+            173471558,
+            173472223
+        ],
+        "C": [
+            173450456,
+            173450157,
+            173457042,
+            173452649,
+            173450776,
+            173453445,
+            173454802,
+            173455629,
+            173456866,
+            173446752,
+            173444646,
+            173455631,
+            173457312,
+            173447641,
+            173447077,
+            173451017,
+            173452623,
+            173453329
+        ],
+        "B": [
+            173445492,
+            173444904,
+            173458756,
+            173449524,
+            173445632,
+            173448108,
+            173451808,
+            173449142,
+            173453555,
+            173457120,
+            173455134,
+            173451905,
+            173454521,
+            173452227,
+            173444715,
+            173446889,
+            173447944,
+            173446921
+        ],
+        "A": [
+            173439407,
+            173438936,
+            173438879,
+            173443820,
+            173439220,
+            173439980,
+            173443156,
+            173443507,
+            173445064,
+            173455369,
+            173446952,
+            173439340,
+            173447666,
+            173440064,
+            173438737,
+            173441530,
+            173439874,
+            173440797
+        ],
+        "E": [
+            173564584,
+            173477480,
+            173568880
+        ]
+    },
+    "name": "D. Prefixes and Suffixes",
+    "statement": "You have two strings s_1 and s_2 of length n, consisting of lowercase\r\nEnglish letters. You can perform the following operation any (possibly\r\nzero) number of times: Choose a positive integer 1\r\nleq k\r\nleq n. Swap the prefix of the string s_1 and the suffix of the string\r\ns_2 of length k. Is it possible to make these two strings equal by doing\r\ndescribed operations?\r\n",
+    "solutions": [
+        "#pragma GCC optimize(\"Ofast\",\"unroll-loops\",\"omit-frame-pointer\",\"inline\") //Optimization flags\n#pragma GCC option(\"arch=native\",\"tune=native\",\"no-zero-upper\") //Enable AVX\n#pragma GCC target(\"sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2\")\n#include<bits/stdc++.h>\n//#include<ext/pb_ds/assoc_container.hpp>\nusing namespace std;\n//using namespace __gnu_pbds;\nconst int inf=0x3f3f3f3f;\nconst double eps=1e-6;\nconst int mod=1e9+7;\ntypedef long long ll;\n#ifndef LOCAL\n#define cerr if(0)cout\n#define eprintf(...) 0\n#else\n#define eprintf(...) fprintf(stderr, __VA_ARGS__)\n#endif\ninline string getstr(string &s,int l,int r){string ret=\"\";for(int i=l;i<=r;i++)ret.push_back(s[i]);return ret;}\nint modpow(int x,int y,int md=mod){int ret=1;do{if(y&1)ret=(ll)ret*x%md;x=(ll)x*x%md;}while(y>>=1);return ret;}\ninline int Rand(){return rand()*32768+rand();}\nint T,n;\nstring s1,s2;\nint main(){\n\tios::sync_with_stdio(0);\n\tcin>>T;\n\twhile(T--){\n\t\tcin>>n>>s1>>s2;\n\t\ts1=\" \"+s1;s2=\" \"+s2;\n\t\tmap<pair<char,char>,int>cnt;\n\t\tfor(int i=1;i<=n;i++){\n\t\t\tchar c1=s1[i],c2=s2[n-i+1];\n\t\t\tcnt[make_pair(min(c1,c2),max(c1,c2))]++;\n\t\t}\n\t\tint tot=0;\n\t\tfor(auto p:cnt)if(p.second&1)tot++;\n\t\tfor(auto p:cnt)if(p.second&1)if(p.first.first!=p.first.second){\n\t\t\ttot++;\n\t\t}\n\t\tif(tot>1)puts(\"No\");\n\t\telse puts(\"Yes\");\n\t}\n\treturn 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "strings",
+        "two pointers"
+    ],
+    "dificulty": "2200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Prefixes and Suffixes.json",
+    "editorial_link": "https://codeforces.com//blog/entry/107293",
+    "editorial": "If you reflect the second string and see what happens, it is easy to see\r\nthat the elements at the same positions in both strings after any action\r\nremain at the same positions relative to each other. Let\u00e2\u0080\u0099s combine them\r\ninto unsorted pairs and treat these pairs as single objects. Now we need\r\nto compose a palindrome from these objects. This is always possible with\r\nthe help of these actions, if there is a palindrome consisting of these\r\nobjects (pay attention to odd palindromes, there must be a pair of the\r\nform (a, a) in the center).Proof of possibility:Let\u00e2\u0080\u0099s make an array of\r\npairs, in one action we expand some prefix of this array and the\r\nelements in the pairs of this prefix are swapped. Let\u00e2\u0080\u0099s prove that we\r\ncan change the order of the pairs in the array as we like. We will build\r\nfrom the end. Let all the pairs after position already stand as we want,\r\nand now the pair that we want to place in position at position . Let\u00e2\u0080\u0099s\r\ndo the following: will move the pair from position to the beginning.\r\nswap elements within a pair if needed (so pairs are considered\r\nunsorted). move the pair from the beginning to position .(* the action\r\nis optional if you don\u00e2\u0080\u0099t want to change the order of the elements in the\r\npair)With this construction, we can get any permutation of these pairs\r\nand a palindrome, if it is possible. If you divide the final palindrome\r\ninto two strings and expand the second one back, you get the first\r\nstring.Example:From the test suite from the condition:, , expanded\r\n.Couples:, , , , .Pairs unordered:, , .Pairs in a palindrome:, , , ,\r\n.Real couples:, , , , .Strings: expanded , .!!! The pair !!!\r\n"
+}

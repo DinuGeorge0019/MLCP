@@ -1,1 +1,106 @@
-{"link": "https://codeforces.com//contest/338/problem/C", "problemId": "3398", "problem_idx": "C", "shortId": "338C", "contest_number": "338", "problem_submissions": {"D": [4295147, 4299466, 4295982, 4299910, 4297907, 4322675, 4322635, 4296295, 4300603, 4303747], "C": [4293877, 4292949, 4296119, 4290785, 4294450, 4290995, 4292819, 4294306, 4289507, 4319214, 4292496, 4292285, 4293888, 4293909, 4292095, 4292420], "A": [4292482, 4289057, 4289014, 4297071, 4289608, 4292907, 4298719, 4290998, 4292048, 4294562, 4288621, 4289027, 4288252, 4289309], "E": [4291715, 4297382, 4294190, 4295220, 4296654, 4297161, 4295153, 4304466, 4296200, 4296272, 4296355, 4296995, 4392972, 4307055], "B": [4289897, 4290803, 4292502, 4296197, 4291687, 4294720, 4290858, 4290695, 4291375, 4290406, 4289563, 4290575, 4290335, 4290751, 4293818, 4293496]}, "name": "C. Divisor Tree", "statement": "A is a rooted tree that meets the following conditions: Each vertex of\r\nthe tree contains a positive integer number. The numbers written in the\r\nleaves of the tree are prime numbers. For any inner vertex, the number\r\nwithin it is equal to the product of the numbers written in its\r\nchildren. Manao has distinct integers . He tries to build a divisor tree\r\nwhich contains each of these numbers. That is, for each , there should\r\nbe at least one vertex in the tree which contains . Manao loves compact\r\nstyle, but his trees are too large. Help Manao determine the minimum\r\npossible number of vertices in the divisor tree sought.\r\n", "solutions": ["#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <memory.h>\n\nusing namespace std;\n\nconst int inf = 1234567;\n\nint n;\nlong long a[42];\nvector <long long> primes;\nint f[444];\n\nvoid go(int t, int v, long long num, vector <int> buckets) {\n  if (v == n) {\n    int sz = buckets.size();\n    int ft = 1;\n    for (int i=0;i<sz;i++) ft += f[buckets[i]];\n    int other = primes.size(), divs = 0;\n    for (int i=0;i<other;i++)\n      while (num % primes[i] == 0) {\n        num /= primes[i];\n        divs++;\n      }\n    if ((t & (t - 1)) == 0 && divs == 1) divs = 0;\n    ft += divs;\n    if (ft < f[t]) f[t] = ft;\n    return;\n  }\n  if (t & (1 << v)) {\n    if (num % a[v] == 0) {\n      vector <int> q = buckets;\n      q.push_back(1 << v);\n      go(t, v + 1, num / a[v], q);\n    }\n    vector <int> q = buckets;\n    int sz = q.size();\n    for (int i=0;i<sz;i++) {\n      q[i] += (1 << v);\n      go(t, v + 1, num, q);\n      q[i] -= (1 << v);\n    }\n  }\n  else go(t, v + 1, num, buckets);\n}\n\nint main() {\n  cin >> n;\n  for (int i=0;i<n;i++) cin >> a[i];\n  sort(a, a + n);\n  reverse(a, a + n);\n  primes.clear();\n  for (int i=0;i<n;i++) {\n    long long x = a[i];\n    for (long long j = 2; j * j <= x; j++)\n      if (x % j == 0) {\n        primes.push_back(j);\n        while (x % j == 0) x /= j;\n      }\n    if (x > 1) primes.push_back(x);\n  }\n  sort(primes.begin(), primes.end());\n  primes.resize(unique(primes.begin(), primes.end()) - primes.begin());\n  for (int t=1;t<(1 << n);t++) {\n    int first = 0;\n    for (int i=0;i<n;i++)\n      if (t & (1 << i)) {\n        first = i;\n        break;\n      }\n    f[t] = inf;\n    vector <int> empty;\n    go(t, first + 1, a[first], empty);\n  }\n  int best = f[(1 << n) - 1];\n  int g[444];\n  for (int i=0;i<(1 << n);i++) g[i] = inf;\n  g[0] = 0;\n  for (int i=0;i<(1 << n);i++)\n    for (int j=1;j<(1 << n);j++)\n      if ((i & j) == 0)\n        if (g[i] + f[j] < g[i + j]) g[i + j] = g[i] + f[j];\n  int other = g[(1 << n) - 1] + 1;\n  if (other < best) best = other;\n  printf(\"%d\\n\", best);\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["brute force", "dp", "number theory"], "dificulty": "2200", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/338/problem/C",
+    "problemId": "3398",
+    "problem_idx": "C",
+    "shortId": "338C",
+    "contest_number": "338",
+    "problem_submissions": {
+        "D": [
+            4295147,
+            4299466,
+            4295982,
+            4299910,
+            4297907,
+            4322675,
+            4322635,
+            4296295,
+            4300603,
+            4303747
+        ],
+        "C": [
+            4293877,
+            4292949,
+            4296119,
+            4290785,
+            4294450,
+            4290995,
+            4292819,
+            4294306,
+            4289507,
+            4319214,
+            4292496,
+            4292285,
+            4293888,
+            4293909,
+            4292095,
+            4292420
+        ],
+        "A": [
+            4292482,
+            4289057,
+            4289014,
+            4297071,
+            4289608,
+            4292907,
+            4298719,
+            4290998,
+            4292048,
+            4294562,
+            4288621,
+            4289027,
+            4288252,
+            4289309
+        ],
+        "E": [
+            4291715,
+            4297382,
+            4294190,
+            4295220,
+            4296654,
+            4297161,
+            4295153,
+            4304466,
+            4296200,
+            4296272,
+            4296355,
+            4296995,
+            4392972,
+            4307055
+        ],
+        "B": [
+            4289897,
+            4290803,
+            4292502,
+            4296197,
+            4291687,
+            4294720,
+            4290858,
+            4290695,
+            4291375,
+            4290406,
+            4289563,
+            4290575,
+            4290335,
+            4290751,
+            4293818,
+            4293496
+        ]
+    },
+    "name": "C. Divisor Tree",
+    "statement": "A is a rooted tree that meets the following conditions: Each vertex of\r\nthe tree contains a positive integer number. The numbers written in the\r\nleaves of the tree are prime numbers. For any inner vertex, the number\r\nwithin it is equal to the product of the numbers written in its\r\nchildren. Manao has distinct integers . He tries to build a divisor tree\r\nwhich contains each of these numbers. That is, for each , there should\r\nbe at least one vertex in the tree which contains . Manao loves compact\r\nstyle, but his trees are too large. Help Manao determine the minimum\r\npossible number of vertices in the divisor tree sought.\r\n",
+    "solutions": [
+        "#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <memory.h>\n\nusing namespace std;\n\nconst int inf = 1234567;\n\nint n;\nlong long a[42];\nvector <long long> primes;\nint f[444];\n\nvoid go(int t, int v, long long num, vector <int> buckets) {\n  if (v == n) {\n    int sz = buckets.size();\n    int ft = 1;\n    for (int i=0;i<sz;i++) ft += f[buckets[i]];\n    int other = primes.size(), divs = 0;\n    for (int i=0;i<other;i++)\n      while (num % primes[i] == 0) {\n        num /= primes[i];\n        divs++;\n      }\n    if ((t & (t - 1)) == 0 && divs == 1) divs = 0;\n    ft += divs;\n    if (ft < f[t]) f[t] = ft;\n    return;\n  }\n  if (t & (1 << v)) {\n    if (num % a[v] == 0) {\n      vector <int> q = buckets;\n      q.push_back(1 << v);\n      go(t, v + 1, num / a[v], q);\n    }\n    vector <int> q = buckets;\n    int sz = q.size();\n    for (int i=0;i<sz;i++) {\n      q[i] += (1 << v);\n      go(t, v + 1, num, q);\n      q[i] -= (1 << v);\n    }\n  }\n  else go(t, v + 1, num, buckets);\n}\n\nint main() {\n  cin >> n;\n  for (int i=0;i<n;i++) cin >> a[i];\n  sort(a, a + n);\n  reverse(a, a + n);\n  primes.clear();\n  for (int i=0;i<n;i++) {\n    long long x = a[i];\n    for (long long j = 2; j * j <= x; j++)\n      if (x % j == 0) {\n        primes.push_back(j);\n        while (x % j == 0) x /= j;\n      }\n    if (x > 1) primes.push_back(x);\n  }\n  sort(primes.begin(), primes.end());\n  primes.resize(unique(primes.begin(), primes.end()) - primes.begin());\n  for (int t=1;t<(1 << n);t++) {\n    int first = 0;\n    for (int i=0;i<n;i++)\n      if (t & (1 << i)) {\n        first = i;\n        break;\n      }\n    f[t] = inf;\n    vector <int> empty;\n    go(t, first + 1, a[first], empty);\n  }\n  int best = f[(1 << n) - 1];\n  int g[444];\n  for (int i=0;i<(1 << n);i++) g[i] = inf;\n  g[0] = 0;\n  for (int i=0;i<(1 << n);i++)\n    for (int j=1;j<(1 << n);j++)\n      if ((i & j) == 0)\n        if (g[i] + f[j] < g[i + j]) g[i + j] = g[i] + f[j];\n  int other = g[(1 << n) - 1] + 1;\n  if (other < best) best = other;\n  printf(\"%d\\n\", best);\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "dp",
+        "number theory"
+    ],
+    "dificulty": "2200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Divisor Tree.json",
+    "editorial_link": "https://codeforces.com//blog/entry/8629",
+    "editorial": "Let us first show that in an optimal divisor tree only the root or a leaf can hold a value other than one of a[i]. Suppose that we have an inner vertex different from the root which holds a number X not equal to any of a[i]. Then we can exclude this vertex from the tree and tie its children to its parent without violating any of the tree's properties.\n\nHence, our tree consists of the root, vertices with numbers a[i] tied to each other or to the root, and leaves, which are tied to vertices with numbers a[i] and contain these numbers' prime factorizations. The exception is the case when one of a[i] is written in root itself, and the case when some a[i]-s are prime themselves. Also note that in general case it's easy to count how many leaves the tree will have. This count is equal to the sum of exponents of primes in prime factorizations of those a[i]-s which are the children of the root.\n\nSince N <= 8, we can build all divisor trees which satisfy the observations we made. Let's sort numbers a[i] in descending order and recursively choose a parent for each of them from the vertices already present in the tree. Of course, tying a number X to some vertex v is only possible if the product of X and the numbers in children of v divides the number in v itself. For a[1], we have a choice \u0097 we can make it the root of the tree or a child of the root (in this case the root will hold a nominal infinity which is divisible by any number). For every next a[i], the choice is whether to tie it to the root or a vertex containing one of the previous numbers. Therefore, we only consider O(N!) trees in total."
+}

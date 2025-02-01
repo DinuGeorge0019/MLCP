@@ -1,1 +1,105 @@
-{"link": "https://codeforces.com//contest/512/problem/D", "problemId": "21645", "problem_idx": "D", "shortId": "512D", "contest_number": "512", "problem_submissions": {"E": [9689055, 9689637, 9689329, 9688006, 9687653, 9689489, 9689150, 9686860, 9690989, 9687876], "D": [9687125, 9687387, 9685060, 9686450, 9688310, 9687526, 9848172, 9687098, 9689725], "C": [9684294, 9683675, 9686457, 9682885, 9681860, 9683241, 9686129, 9685822, 9688905, 9683891, 9686124, 9685967, 9682813, 9687765, 9684696, 9686605, 9690364, 9690022], "B": [9681311, 9680720, 9682911, 9680295, 9679957, 9680851, 9679895, 9681573, 9681772, 9685086, 9682711, 9681029, 9681643, 9680950, 9691594, 9680058], "A": [9679078, 9679241, 9683617, 9678600, 9678498, 9679465, 9682231, 9681794, 9679166, 9679612, 9683011, 9689408, 9679816, 9678578, 9678585, 9679972, 9678357]}, "name": "D. Fox And Travelling", "statement": "Fox Ciel is going to travel to New Foxland during this summer.New\r\nFoxland has attractions that are linked by undirected roads. Two\r\nattractions are called adjacent if they are linked by a road. Fox Ciel\r\nhas days to visit this city and each day she will visit exactly one\r\nattraction.There is one important rule in New Foxland: you can\u2019t visit\r\nan attraction if it has more than one adjacent attraction that you\r\nhaven\u2019t visited yet.At the beginning Fox Ciel haven\u2019t visited any\r\nattraction. During her travelling she may move aribtrarly between\r\nattraction. After visiting attraction , she may travel to attraction\r\nsatisfying conditions above that hasn\u2019t been visited yet, even if it is\r\nnot reachable from by using the roads (Ciel uses boat for travelling\r\nbetween attractions, so it is possible). She wants to know how many\r\ndifferent travelling plans she can make. Calculate this number modulo\r\nfor every from to since she hasn\u2019t decided for how many days she is\r\nvisiting New Foxland.\r\n", "solutions": ["#include <iostream>\n#include <vector>\n#include <cmath>\n#include <ctime>\n#include <cstdio>\n#include <queue>\n#include <set>\n#include <map>\n#include <fstream>\n#include <cstdlib>\n#include <string>\n#include <cstring>\n#include <algorithm>\n#include <numeric>\n\n#define mp make_pair\n#define fi first\n#define se second\n#define pb push_back\n#define all(x) (x).begin(), (x).end()\n#define forn(i, n) for (int i = 0; i < (int)(n); ++i)\n#define for1(i, n) for (int i = 1; i <= (int)(n); ++i)\n#define ford(i, n) for (int i = (int)(n) - 1; i >= 0; --i)\n#define fore(i, a, b) for (int i = (int)(a); i <= (int)(b); ++i)\n\nusing namespace std;\n\ntypedef pair<int, int> pii;\ntypedef vector<int> vi;\ntypedef vector<vi> vvi;\ntypedef long long i64;\ntypedef vector<i64> vi64;\ntypedef vector<vi64> vvi64;\n\ntemplate<class T>\nbool uin(T &a, T b) {\n    if (a > b) {\n        a = b;\n        return true;\n    }\n    return false;\n}\n\ntemplate<class T>\nbool uax(T &a, T b) {\n    if (a < b) {\n        a = b;\n        return true;\n    }\n    return false;\n}\n\nconst i64 P = 1000000000 + 9;\nconst int MAXN = 110;\ni64 CNK[301][301];\nint vis[MAXN], ok[MAXN];\nint p[MAXN], d[MAXN], mr[MAXN];\nvvi e, pe;\n\ni64 ans[MAXN];\n\ni64 deg(i64 x, i64 d) {\n    i64 res = 1;\n    while (d) {\n        if (d & 1) {\n            res *= x; res %= P;\n        }\n        x *= x; x %= P;\n        d /= 2;\n    }\n    return res;\n}\n\nvoid add(i64 &x, i64 y) {\n    x += y; x %= P;\n}\n\nvi64 mul(vi64 a, vi64 b) {\n    vi64 c(a.size() + b.size() - 1);\n    forn(i, a.size()) forn(j, b.size()) {\n        add(c[i + j], a[i] * b[j] % P * CNK[i + j][i]);\n    }\n    return c;\n}\n\nvi64 dfs_cnt(int v, int p, vvi &e) {\n    vi64 res(1, 1);\n    for (int u: e[v]) {\n        if (!ok[u] || u == p) continue;\n        res = mul(res, dfs_cnt(u, v, e));\n    }\n    i64 x = res.back();\n    res.pb(x);\n    return res;\n}\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    cout.precision(10);\n    cout << fixed;\n#ifdef LOCAL_DEFINE\n    freopen(\"input.txt\", \"rt\", stdin);\n#endif\n\n    CNK[0][0] = 1;\n    for1(i, 300) {\n        CNK[i][0] = 1;\n        for1(j, i) CNK[i][j] = (CNK[i - 1][j - 1] + CNK[i - 1][j]) % P;\n    }\n    int N, M;\n    cin >> N >> M;\n    e.resize(N);\n    pe.resize(N);\n    forn(i, M) {\n        int x, y;\n        cin >> x >> y;\n        --x; --y;\n        e[x].pb(y); e[y].pb(x);\n        ++d[x]; ++d[y];\n    }\n    forn(i, N) p[i] = -1;\n\n    while (1) {\n        bool ch = false;\n        forn(i, N) {\n            if (!vis[i] && d[i] == 1) {\n                vis[i] = 1;\n                ok[i] = 1;\n                for (int v: e[i]) {\n                    if (!vis[v]) {\n                        p[i] = v;\n                        pe[v].pb(i);\n                        --d[i];\n                        --d[v];\n                    }\n                }\n                ch = true;\n                break;\n            }\n        }\n        if (!ch) break;\n    }\n    vi64 ans(1, 1);\n    forn(i, N) {\n        if (!ok[i]) {\n            if (d[i] == 0) {\n                ok[i] = 1;\n                vi q;\n                q.pb(i);\n                int cur = 0;\n                while (cur < q.size()) {\n                    int v = q[cur++];\n                    for (int u: pe[v]) {\n                        q.pb(u);\n                    }\n                }\n\n                vi64 res(1);\n                for (int v: q) {\n                    vi64 r = dfs_cnt(v, -1, e);\n                    if (res.size() < r.size()) res.resize(r.size());\n                    forn(i, r.size()) add(res[i], r[i]);\n                }\n                forn(i, res.size()) {\n                    if (i + 1 < res.size()) res[i] = (res[i] * deg(res.size() - i - 1, P - 2)) % P;\n                }\n                ans = mul(ans, res);\n            } else if (pe[i].size()) {\n                vi64 r = dfs_cnt(i, -1, e);\n                r.pop_back();\n                ans = mul(ans, r);\n            }\n        }\n    }\n\n    while (ans.size() < N + 1) ans.pb(0);\n    forn(i, N + 1) cout << ans[i] << '\\n';\n\n#ifdef LOCAL_DEFINE\n    cerr << \"Time elapsed: \" << 1.0 * clock() / CLOCKS_PER_SEC << \" s.\\n\";\n#endif\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["dp", "trees"], "dificulty": "2900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/512/problem/D",
+    "problemId": "21645",
+    "problem_idx": "D",
+    "shortId": "512D",
+    "contest_number": "512",
+    "problem_submissions": {
+        "E": [
+            9689055,
+            9689637,
+            9689329,
+            9688006,
+            9687653,
+            9689489,
+            9689150,
+            9686860,
+            9690989,
+            9687876
+        ],
+        "D": [
+            9687125,
+            9687387,
+            9685060,
+            9686450,
+            9688310,
+            9687526,
+            9848172,
+            9687098,
+            9689725
+        ],
+        "C": [
+            9684294,
+            9683675,
+            9686457,
+            9682885,
+            9681860,
+            9683241,
+            9686129,
+            9685822,
+            9688905,
+            9683891,
+            9686124,
+            9685967,
+            9682813,
+            9687765,
+            9684696,
+            9686605,
+            9690364,
+            9690022
+        ],
+        "B": [
+            9681311,
+            9680720,
+            9682911,
+            9680295,
+            9679957,
+            9680851,
+            9679895,
+            9681573,
+            9681772,
+            9685086,
+            9682711,
+            9681029,
+            9681643,
+            9680950,
+            9691594,
+            9680058
+        ],
+        "A": [
+            9679078,
+            9679241,
+            9683617,
+            9678600,
+            9678498,
+            9679465,
+            9682231,
+            9681794,
+            9679166,
+            9679612,
+            9683011,
+            9689408,
+            9679816,
+            9678578,
+            9678585,
+            9679972,
+            9678357
+        ]
+    },
+    "name": "D. Fox And Travelling",
+    "statement": "Fox Ciel is going to travel to New Foxland during this summer.New\r\nFoxland has attractions that are linked by undirected roads. Two\r\nattractions are called adjacent if they are linked by a road. Fox Ciel\r\nhas days to visit this city and each day she will visit exactly one\r\nattraction.There is one important rule in New Foxland: you can\u2019t visit\r\nan attraction if it has more than one adjacent attraction that you\r\nhaven\u2019t visited yet.At the beginning Fox Ciel haven\u2019t visited any\r\nattraction. During her travelling she may move aribtrarly between\r\nattraction. After visiting attraction , she may travel to attraction\r\nsatisfying conditions above that hasn\u2019t been visited yet, even if it is\r\nnot reachable from by using the roads (Ciel uses boat for travelling\r\nbetween attractions, so it is possible). She wants to know how many\r\ndifferent travelling plans she can make. Calculate this number modulo\r\nfor every from to since she hasn\u2019t decided for how many days she is\r\nvisiting New Foxland.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <vector>\n#include <cmath>\n#include <ctime>\n#include <cstdio>\n#include <queue>\n#include <set>\n#include <map>\n#include <fstream>\n#include <cstdlib>\n#include <string>\n#include <cstring>\n#include <algorithm>\n#include <numeric>\n\n#define mp make_pair\n#define fi first\n#define se second\n#define pb push_back\n#define all(x) (x).begin(), (x).end()\n#define forn(i, n) for (int i = 0; i < (int)(n); ++i)\n#define for1(i, n) for (int i = 1; i <= (int)(n); ++i)\n#define ford(i, n) for (int i = (int)(n) - 1; i >= 0; --i)\n#define fore(i, a, b) for (int i = (int)(a); i <= (int)(b); ++i)\n\nusing namespace std;\n\ntypedef pair<int, int> pii;\ntypedef vector<int> vi;\ntypedef vector<vi> vvi;\ntypedef long long i64;\ntypedef vector<i64> vi64;\ntypedef vector<vi64> vvi64;\n\ntemplate<class T>\nbool uin(T &a, T b) {\n    if (a > b) {\n        a = b;\n        return true;\n    }\n    return false;\n}\n\ntemplate<class T>\nbool uax(T &a, T b) {\n    if (a < b) {\n        a = b;\n        return true;\n    }\n    return false;\n}\n\nconst i64 P = 1000000000 + 9;\nconst int MAXN = 110;\ni64 CNK[301][301];\nint vis[MAXN], ok[MAXN];\nint p[MAXN], d[MAXN], mr[MAXN];\nvvi e, pe;\n\ni64 ans[MAXN];\n\ni64 deg(i64 x, i64 d) {\n    i64 res = 1;\n    while (d) {\n        if (d & 1) {\n            res *= x; res %= P;\n        }\n        x *= x; x %= P;\n        d /= 2;\n    }\n    return res;\n}\n\nvoid add(i64 &x, i64 y) {\n    x += y; x %= P;\n}\n\nvi64 mul(vi64 a, vi64 b) {\n    vi64 c(a.size() + b.size() - 1);\n    forn(i, a.size()) forn(j, b.size()) {\n        add(c[i + j], a[i] * b[j] % P * CNK[i + j][i]);\n    }\n    return c;\n}\n\nvi64 dfs_cnt(int v, int p, vvi &e) {\n    vi64 res(1, 1);\n    for (int u: e[v]) {\n        if (!ok[u] || u == p) continue;\n        res = mul(res, dfs_cnt(u, v, e));\n    }\n    i64 x = res.back();\n    res.pb(x);\n    return res;\n}\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    cout.precision(10);\n    cout << fixed;\n#ifdef LOCAL_DEFINE\n    freopen(\"input.txt\", \"rt\", stdin);\n#endif\n\n    CNK[0][0] = 1;\n    for1(i, 300) {\n        CNK[i][0] = 1;\n        for1(j, i) CNK[i][j] = (CNK[i - 1][j - 1] + CNK[i - 1][j]) % P;\n    }\n    int N, M;\n    cin >> N >> M;\n    e.resize(N);\n    pe.resize(N);\n    forn(i, M) {\n        int x, y;\n        cin >> x >> y;\n        --x; --y;\n        e[x].pb(y); e[y].pb(x);\n        ++d[x]; ++d[y];\n    }\n    forn(i, N) p[i] = -1;\n\n    while (1) {\n        bool ch = false;\n        forn(i, N) {\n            if (!vis[i] && d[i] == 1) {\n                vis[i] = 1;\n                ok[i] = 1;\n                for (int v: e[i]) {\n                    if (!vis[v]) {\n                        p[i] = v;\n                        pe[v].pb(i);\n                        --d[i];\n                        --d[v];\n                    }\n                }\n                ch = true;\n                break;\n            }\n        }\n        if (!ch) break;\n    }\n    vi64 ans(1, 1);\n    forn(i, N) {\n        if (!ok[i]) {\n            if (d[i] == 0) {\n                ok[i] = 1;\n                vi q;\n                q.pb(i);\n                int cur = 0;\n                while (cur < q.size()) {\n                    int v = q[cur++];\n                    for (int u: pe[v]) {\n                        q.pb(u);\n                    }\n                }\n\n                vi64 res(1);\n                for (int v: q) {\n                    vi64 r = dfs_cnt(v, -1, e);\n                    if (res.size() < r.size()) res.resize(r.size());\n                    forn(i, r.size()) add(res[i], r[i]);\n                }\n                forn(i, res.size()) {\n                    if (i + 1 < res.size()) res[i] = (res[i] * deg(res.size() - i - 1, P - 2)) % P;\n                }\n                ans = mul(ans, res);\n            } else if (pe[i].size()) {\n                vi64 r = dfs_cnt(i, -1, e);\n                r.pop_back();\n                ans = mul(ans, r);\n            }\n        }\n    }\n\n    while (ans.size() < N + 1) ans.pb(0);\n    forn(i, N + 1) cout << ans[i] << '\\n';\n\n#ifdef LOCAL_DEFINE\n    cerr << \"Time elapsed: \" << 1.0 * clock() / CLOCKS_PER_SEC << \" s.\\n\";\n#endif\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp",
+        "trees"
+    ],
+    "dificulty": "2900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Fox And Travelling.json",
+    "editorial_link": "https://codeforces.com/blog/entry/16173",
+    "editorial": "We could find that some nodes cannot be visited. And more specific, if\r\none node is in a cycle then it cannot be visited. So what about the\r\nstructure of nodes that we can visit? Let\u00e2\u0080\u0099s first find a way to get all\r\nnodes that could be visited. We can deal with this by something like\r\nbiconnected decomposition, but that is not easy to implement. In fact we\r\ncan use this simple method: each time we pick one node that have at most\r\n1 neighborhood and delete it. Repeat this process until we can\u00e2\u0080\u0099t do it\r\nanymore. We could find these nodes are actually belonging to these 2\r\nkinds: 1. A tree. 2. Rooted tree. (that means, the root is attached to a\r\ncycle) The rooted tree case is simple: we can solve it by tree DP. The\r\nstate will be dp[i][j] = the way to remove j nodes in the subtree rooted\r\nat i. Then how to solve the unrooted tree case? The way to deal with\r\nthat is to transform it into rooted case. We have 2 solution: We select\r\none unvisited node as the root by some rules: for example, we select one\r\nwith minimal index. Then we just need to modify the DP a bit to adjust\r\nthis additional condition. We could find if the tree has n nodes and we\r\nvisit k nodes in the end, then there will be max(1, n-k) ways to choose\r\nthe root. That means if we choose every node as the root and sum up\r\nthem, we will count this case exactly max(1, n-k) times. So we just do\r\nthe rooted DP for from node n times, and divide max(1, n-k) for ans[k].\r\nThe overall complicity is , and it can be optimize into if you like.\r\n"
+}

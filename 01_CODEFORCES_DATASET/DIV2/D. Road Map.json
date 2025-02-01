@@ -1,1 +1,106 @@
-{"link": "https://codeforces.com//contest/34/problem/D", "problemId": "162", "problem_idx": "D", "shortId": "34D", "contest_number": "34", "problem_submissions": {"E": [149443, 149486, 149296, 149692, 149695, 149861, 149815, 149892, 150067, 150121, 150338, 150361, 149747, 150891], "D": [148876, 148578, 148654, 148286, 149242, 149046, 149356, 149232, 149202, 149561, 149681, 149837, 148969, 148779], "C": [148446, 148259, 148380, 147901, 148723, 148716, 149028, 148780, 148867, 148942, 149049, 149444, 1288885, 148173], "B": [147829, 147766, 147991, 148454, 148119, 148124, 148114, 148340, 148112, 148042, 148372, 148576, 148152, 147806, 147813], "A": [147656, 147624, 147815, 147607, 147780, 147787, 147700, 148115, 147723, 147796, 147956, 147948, 147884, 147651]}, "name": "D. Road Map", "statement": "There are cities in Berland. Each city has its index an integer number\r\nfrom to . The capital has index . All the roads in Berland are two-way.\r\nThe road system is such that there is exactly one path from the capital\r\nto each city, i.e. the road map looks like a tree. In Berland\u2019s\r\nchronicles the road map is kept in the following way: for each city ,\r\ndifferent from the capital, there is kept number index of the last city\r\non the way from the capital to .Once the king of Berland Berl XXXIV\r\ndecided to move the capital from city to city . Naturally, after this\r\nthe old representation of the road map in Berland\u2019s chronicles became\r\nincorrect. Please, help the king find out a new representation of the\r\nroad map in the way described above.\r\n", "solutions": ["#include<cstdio>\n#include<iostream>\n#include<sstream>\n#include<cmath>\n#include<algorithm>\n#include<map>\n#include<set>\n#include<list>\n#include<vector>\n#include<stack>\n#include<queue>\n#include<string>\n#include<ctime>\nusing namespace std;\ntypedef vector<int> VI;\ntypedef vector<VI> VVI;\ntypedef pair <int,int> ii;\n#define sz(a) int((a).size())\n#define pb push_back\nconst int INF = 2147483647;\nconst double PI = 3.141592653589793;\nconst int N = 100000;\n\nbool vis[N];\nVI graf[N];\nint tab[N],i,j,k,k2,pop[N],n,r1,r2;\n\nvoid dfs (int w, int o) {\n     pop[w]=o;\n     vis[w]=true;\n     for (int i=0;i<graf[w].size();i++) if (!vis[graf[w][i]]) dfs(graf[w][i],w);\n}\n\nint main () {\nscanf (\"%d %d %d\",&n,&r1,&r2);\nfor (i=1;i<=n;i++) {\n    graf[i].resize(0);\n    vis[i]=false;\n}\ni=1;\nfor (j=0;j<n-1;j++) {\n    if (i==r1) i++;\n    scanf (\"%d\",&tab[i]);\n    graf[i].pb(tab[i]);\n    graf[tab[i]].pb(i);\n    i++;\n}\ndfs(r1,-1);\nk=pop[r2]; k2=r2;\nwhile (k!=-1) {\n      tab[k]=k2;\n      k=pop[k];\n      k2 = pop[k2];\n}\nfor (i=1;i<=n;i++) if (i!=r2) printf(\"%d \",tab[i]);\nprintf(\"\\n\");\n      \nreturn 0;\n}\n"], "input": "", "output": "", "tags": ["dfs and similar", "graphs"], "dificulty": "1600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/34/problem/D",
+    "problemId": "162",
+    "problem_idx": "D",
+    "shortId": "34D",
+    "contest_number": "34",
+    "problem_submissions": {
+        "E": [
+            149443,
+            149486,
+            149296,
+            149692,
+            149695,
+            149861,
+            149815,
+            149892,
+            150067,
+            150121,
+            150338,
+            150361,
+            149747,
+            150891
+        ],
+        "D": [
+            148876,
+            148578,
+            148654,
+            148286,
+            149242,
+            149046,
+            149356,
+            149232,
+            149202,
+            149561,
+            149681,
+            149837,
+            148969,
+            148779
+        ],
+        "C": [
+            148446,
+            148259,
+            148380,
+            147901,
+            148723,
+            148716,
+            149028,
+            148780,
+            148867,
+            148942,
+            149049,
+            149444,
+            1288885,
+            148173
+        ],
+        "B": [
+            147829,
+            147766,
+            147991,
+            148454,
+            148119,
+            148124,
+            148114,
+            148340,
+            148112,
+            148042,
+            148372,
+            148576,
+            148152,
+            147806,
+            147813
+        ],
+        "A": [
+            147656,
+            147624,
+            147815,
+            147607,
+            147780,
+            147787,
+            147700,
+            148115,
+            147723,
+            147796,
+            147956,
+            147948,
+            147884,
+            147651
+        ]
+    },
+    "name": "D. Road Map",
+    "statement": "There are cities in Berland. Each city has its index an integer number\r\nfrom to . The capital has index . All the roads in Berland are two-way.\r\nThe road system is such that there is exactly one path from the capital\r\nto each city, i.e. the road map looks like a tree. In Berland\u2019s\r\nchronicles the road map is kept in the following way: for each city ,\r\ndifferent from the capital, there is kept number index of the last city\r\non the way from the capital to .Once the king of Berland Berl XXXIV\r\ndecided to move the capital from city to city . Naturally, after this\r\nthe old representation of the road map in Berland\u2019s chronicles became\r\nincorrect. Please, help the king find out a new representation of the\r\nroad map in the way described above.\r\n",
+    "solutions": [
+        "#include<cstdio>\n#include<iostream>\n#include<sstream>\n#include<cmath>\n#include<algorithm>\n#include<map>\n#include<set>\n#include<list>\n#include<vector>\n#include<stack>\n#include<queue>\n#include<string>\n#include<ctime>\nusing namespace std;\ntypedef vector<int> VI;\ntypedef vector<VI> VVI;\ntypedef pair <int,int> ii;\n#define sz(a) int((a).size())\n#define pb push_back\nconst int INF = 2147483647;\nconst double PI = 3.141592653589793;\nconst int N = 100000;\n\nbool vis[N];\nVI graf[N];\nint tab[N],i,j,k,k2,pop[N],n,r1,r2;\n\nvoid dfs (int w, int o) {\n     pop[w]=o;\n     vis[w]=true;\n     for (int i=0;i<graf[w].size();i++) if (!vis[graf[w][i]]) dfs(graf[w][i],w);\n}\n\nint main () {\nscanf (\"%d %d %d\",&n,&r1,&r2);\nfor (i=1;i<=n;i++) {\n    graf[i].resize(0);\n    vis[i]=false;\n}\ni=1;\nfor (j=0;j<n-1;j++) {\n    if (i==r1) i++;\n    scanf (\"%d\",&tab[i]);\n    graf[i].pb(tab[i]);\n    graf[tab[i]].pb(i);\n    i++;\n}\ndfs(r1,-1);\nk=pop[r2]; k2=r2;\nwhile (k!=-1) {\n      tab[k]=k2;\n      k=pop[k];\n      k2 = pop[k2];\n}\nfor (i=1;i<=n;i++) if (i!=r2) printf(\"%d \",tab[i]);\nprintf(\"\\n\");\n      \nreturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dfs and similar",
+        "graphs"
+    ],
+    "dificulty": "1600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Road Map.json",
+    "editorial_link": "https://codeforces.com//blog/entry/748",
+    "editorial": "SpoilerIn this problem, the root of the tree is . Suppose you want to go\r\nto an arbitrary node from the root and the last city on the way to go to\r\nis , then is the of . It is true because the nearest node in the way to\r\ngo the from an arbitrary node is it\u00e2\u0080\u0099s . But the question is how can we\r\nget the whole tree? It is possible because you are getting the for all\r\nnodes which is enough to build a tree. Now you can see that, the problem\r\nhas became \u00e2\u0080\u0099Change the root from to and then find the parents for all\r\nnodes.\u00e2\u0080\u0099 So we can run a DFS from the new root to find the parents for\r\nall nodes.Sorry for my poor English.\r\n"
+}

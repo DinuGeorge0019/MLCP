@@ -1,1 +1,87 @@
-{"link": "https://codeforces.com//contest/890/problem/B", "problemId": "133724", "problem_idx": "B", "shortId": "890B", "contest_number": "890", "problem_submissions": {"F": [32289917], "E": [32261274, 32675605, 32429167, 32262692], "D": [32257865, 32268886, 32258866, 32260610, 32261085, 32262116, 32262769, 32262040, 32269184, 32261804, 32261588, 32261452], "C": [32252742, 32258377, 32261755, 32255078, 32253602, 32254200, 32254499, 32258466, 32256926, 32255088, 32253307, 32258191], "B": [32249690, 32252382, 32249585, 32250216, 32249706, 32250555, 32251083, 32253080, 32251617, 32251074, 32250730, 32251426], "A": [32248474, 32263812, 32248207, 32248333, 32248364, 32248924, 32248328, 32250186, 32248109, 32248687, 32248286, 32248149]}, "name": "B. Vlad and Cafes", "statement": "Vlad likes to eat in cafes very much. During his life, he has visited\r\ncafes times. Unfortunately, Vlad started to feel that his last visits\r\nare not any different from each other. To fix that Vlad had a small\r\nresearch.First of all, Vlad assigned individual indices to all cafes.\r\nThen, he wrote down indices of cafes he visited in a row, in order of\r\nvisiting them. Now, Vlad wants to find such a cafe that his last visit\r\nto that cafe was before his last visits to every other cafe. In other\r\nwords, he wants to find such a cafe that he hasn\u2019t been there for as\r\nlong as possible. Help Vlad to find that cafe.\r\n", "solutions": ["#include <iostream>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\n#define DEB 1\n#define dbg_tab(x,l) if(DEB) { cerr << #x << \":\"; for(int i=0;i<l;i++) cerr << \" \" << x[i]; cerr << endl; }\n#define dbg_vec(x) if(DEB) { cerr << #x << \":\"; for(auto y:x) cerr << \" \" << y; cerr << endl; }\n\nint ti[200007];\n\nint main() {\n    ios_base::sync_with_stdio(0);\n    int n;\n    cin >> n;\n    for(int i = 1; i <= n; ++i) {\n        int x;\n        cin >> x;\n        ti[x] = i;\n    }\n    \n    int res = 1e9;\n    int gd = 0;\n    for(int i = 0; i <= 200000; ++i) {\n        if(ti[i] && ti[i] < res) {\n            res = ti[i];\n            gd = i;\n        }\n    }\n    \n    cout << gd << endl;\n    return 0;\n}\n"], "input": "", "output": "", "tags": [], "dificulty": "1000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/890/problem/B",
+    "problemId": "133724",
+    "problem_idx": "B",
+    "shortId": "890B",
+    "contest_number": "890",
+    "problem_submissions": {
+        "F": [
+            32289917
+        ],
+        "E": [
+            32261274,
+            32675605,
+            32429167,
+            32262692
+        ],
+        "D": [
+            32257865,
+            32268886,
+            32258866,
+            32260610,
+            32261085,
+            32262116,
+            32262769,
+            32262040,
+            32269184,
+            32261804,
+            32261588,
+            32261452
+        ],
+        "C": [
+            32252742,
+            32258377,
+            32261755,
+            32255078,
+            32253602,
+            32254200,
+            32254499,
+            32258466,
+            32256926,
+            32255088,
+            32253307,
+            32258191
+        ],
+        "B": [
+            32249690,
+            32252382,
+            32249585,
+            32250216,
+            32249706,
+            32250555,
+            32251083,
+            32253080,
+            32251617,
+            32251074,
+            32250730,
+            32251426
+        ],
+        "A": [
+            32248474,
+            32263812,
+            32248207,
+            32248333,
+            32248364,
+            32248924,
+            32248328,
+            32250186,
+            32248109,
+            32248687,
+            32248286,
+            32248149
+        ]
+    },
+    "name": "B. Vlad and Cafes",
+    "statement": "Vlad likes to eat in cafes very much. During his life, he has visited\r\ncafes times. Unfortunately, Vlad started to feel that his last visits\r\nare not any different from each other. To fix that Vlad had a small\r\nresearch.First of all, Vlad assigned individual indices to all cafes.\r\nThen, he wrote down indices of cafes he visited in a row, in order of\r\nvisiting them. Now, Vlad wants to find such a cafe that his last visit\r\nto that cafe was before his last visits to every other cafe. In other\r\nwords, he wants to find such a cafe that he hasn’t been there for as\r\nlong as possible. Help Vlad to find that cafe.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\n#define DEB 1\n#define dbg_tab(x,l) if(DEB) { cerr << #x << \":\"; for(int i=0;i<l;i++) cerr << \" \" << x[i]; cerr << endl; }\n#define dbg_vec(x) if(DEB) { cerr << #x << \":\"; for(auto y:x) cerr << \" \" << y; cerr << endl; }\n\nint ti[200007];\n\nint main() {\n    ios_base::sync_with_stdio(0);\n    int n;\n    cin >> n;\n    for(int i = 1; i <= n; ++i) {\n        int x;\n        cin >> x;\n        ti[x] = i;\n    }\n    \n    int res = 1e9;\n    int gd = 0;\n    for(int i = 0; i <= 200000; ++i) {\n        if(ti[i] && ti[i] < res) {\n            res = ti[i];\n            gd = i;\n        }\n    }\n    \n    cout << gd << endl;\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [],
+    "dificulty": "1000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Vlad and Cafes.json",
+    "editorial_link": "https://codeforces.com//blog/entry/55734",
+    "editorial": null
+}

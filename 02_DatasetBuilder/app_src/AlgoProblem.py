@@ -3,13 +3,19 @@
 # standard library imports
 import os
 from time import sleep
-import requests
 import re
 import string
 
 # related third-party
+from time import sleep
+import random
 from bs4 import BeautifulSoup
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
 import pypandoc
+import cloudscraper
+
 
 # local application/library specific imports
 from app_config import AppConfig
@@ -26,7 +32,7 @@ HEADERS = configProxy.return_request_headers()
 
 
 class AlgoProblem:
-    def __init__(self, problem_link: str, problem_submissions):
+    def __init__(self, problem_link: str, problem_submissions, editorial_link):
         self.link = problem_link
         self.problemId = ""
         self.problem_idx = problem_link.split("/")[-1]
@@ -34,6 +40,8 @@ class AlgoProblem:
         self.shortId = split_link[-3] + split_link[-1]
         self.contest_number = split_link[-3]
         self.problem_submissions = problem_submissions
+        self.editorial_link = editorial_link
+        self.editorial = ""
         self.name = ""
         self.statement = ""
         self.solutions = []
@@ -42,8 +50,12 @@ class AlgoProblem:
         self.tags = []
         self.dificulty = ""
         self.interactive = False
+        self.file_name = ""
         self.__get_problem_initial_data()
 
+    def set_problem_file_name(self, file_name):
+        self.file_name = file_name
+    
     def __remove_page_element_tags(self, html_content, content_list):
         """
         Remove HTML tags from the specified list of page elements in the given HTML content.
@@ -90,6 +102,18 @@ class AlgoProblem:
         latex = re.sub(f'[^{re.escape(string.printable)}]', ' ', latex)
         return pypandoc.convert_text(latex, 'plain', format='latex')
 
+    def __get_source_code_solution(self, scraper):
+        submission = self.problem_submissions[self.problem_idx][0]
+        response = scraper.get(f"https://codeforces.com/contest/{self.contest_number}/submission/{submission}")
+        soup = BeautifulSoup(response.content, 'html5lib')
+        source_code = soup.find(id='program-source-text')
+        if source_code:
+            self.solutions.append(source_code.getText()) 
+            return True
+        else:
+            print(f"No submission https://codeforces.com/contest/{self.contest_number}/submission/{submission}")
+            return False
+
     def __get_problem_initial_data(self, get_input_flag = False, get_output_flag = False):
         """
         Get the problem initial data: name, statement, solutions
@@ -98,9 +122,9 @@ class AlgoProblem:
         Returns:
             None
         """
-        
-        req = requests.get(self.link, HEADERS)
-        soup = BeautifulSoup(req.content, 'html5lib')    
+        scrapper = cloudscraper.create_scraper()
+        response = scrapper.get(self.link)
+        soup = BeautifulSoup(response.content, 'html5lib')    
               
         # Get problem tags
         tag_response = self.__get_problem_tags(soup)
@@ -155,21 +179,30 @@ class AlgoProblem:
             else:
                 self.output = None
 
-        sleep(2)
-        # Get solutions
+    def get_problem_solution(self, driver):
+        # Get problem solutions
         for submission in self.problem_submissions[self.problem_idx]:
-            req = requests.get(f"https://codeforces.com/contest/{self.contest_number}/submission/{submission}", HEADERS)
-            soup = BeautifulSoup(req.content, 'html5lib')
-            problem_statement = soup.find(id='program-source-text')
-            if problem_statement:
-                self.solutions.append(problem_statement.getText()) 
+            
+            sleep(random.uniform(20, 30))  # Random sleep between requests
+            
+            print(f"https://mirror.codeforces.com/contest/{self.contest_number}/submission/{submission}")
+            
+            # Now navigate to the desired page
+            driver.get(f"https://mirror.codeforces.com/contest/{self.contest_number}/submission/{submission}")
+            
+            WebDriverWait(driver, 10).until(
+                EC.visibility_of_element_located((By.ID, "program-source-text"))
+            )
+
+            soup = BeautifulSoup(driver.page_source, 'html5lib')
+            source_code = soup.find(id='program-source-text')
+            if source_code:
+                self.solutions.append(source_code.getText()) 
                 break
             else:
-                print(f"No solution found for problem https://codeforces.com/contest/{self.contest_number}/submission/{submission}")
-                sleep(2)
+                print(f"No solution found for problem https://mirror.codeforces.com/contest/{self.contest_number}/submission/{submission}")
                 
         if len(self.solutions) == 0:
             self.interactive = True
             return
-
 

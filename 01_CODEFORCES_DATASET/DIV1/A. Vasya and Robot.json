@@ -1,1 +1,104 @@
-{"link": "https://codeforces.com//contest/354/problem/A", "problemId": "3666", "problem_idx": "A", "shortId": "354A", "contest_number": "354", "problem_submissions": {"D": [4777100, 138831224, 4787255], "B": [4773542, 4773611, 4776468, 4775805, 4775193, 4773708, 4777067, 4775769, 4772925, 4775400, 4771413, 4771906, 4774887, 4777860, 4778618], "E": [4771246, 4771315, 4769492, 4772059, 4772808, 4771657, 4773587, 4773533, 4773905, 4774625, 4774509, 4772823, 4772897, 4776755, 4773505, 4773556, 4773459], "A": [4769568, 4768918, 4772027, 4767693, 4768128, 4767864, 4767903, 4768032, 4777935, 4771459, 4769551, 4767761, 4767775, 4769653, 4768177, 4767934, 4771768], "C": [4768755, 4770072, 4771488, 4770801, 4770647, 4775263, 4770953, 4771621, 4770211, 4772507, 4775843, 4771271, 4771934, 4770241, 4775127, 4769346]}, "name": "A. Vasya and Robot", "statement": "Vasya has items lying in a line. The items are consecutively numbered by\r\nnumbers from to in such a way that the leftmost item has number , the\r\nrightmost item has number . Each item has a weight, the -th item weights\r\nkilograms.Vasya needs to collect all these items, however he won\u2019t do it\r\nby himself. He uses his brand new robot. The robot has two different\r\narms the left one and the right one. The robot can consecutively perform\r\nthe following actions: Take the leftmost item with the left hand and\r\nspend energy units ( is a weight of the leftmost item, is some\r\nparameter). If the previous action was the same (left-hand), then the\r\nrobot spends extra energy units; Take the rightmost item with the right\r\nhand and spend energy units ( is a weight of the rightmost item, is some\r\nparameter). If the previous action was the same (right-hand), then the\r\nrobot spends extra energy units; Naturally, Vasya wants to program the\r\nrobot in a way that the robot spends as little energy as possible. He\r\nasked you to solve this problem. Your task is to find the minimum number\r\nof energy units robot spends to collect all items.\r\n", "solutions": ["#include <iostream>\n#include <sstream>\n#include <fstream>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <stack>\n#include <set>\n#include <map>\n#include <algorithm>\n#include <functional>\n#include <utility>\n#include <bitset>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstdio>\n\nusing namespace std;\n\n#define REP(i,n) for((i)=0;(i)<(int)(n);(i)++)\n#define snuke(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n\ntypedef long long ll;\n\nint N;\nint w[100010];\n\nint main(void){\n    int i;\n    ll l,r,Ql,Qr;\n    \n    cin >> N >> l >> r >> Ql >> Qr;\n    REP(i,N) scanf(\"%d\", &w[i]);\n    \n    ll S = 0;\n    REP(i,N) S += w[i];\n    \n    ll ans = (1ll<<60);\n    ll L = 0;\n    \n    REP(i,N+1){\n        if(i != 0) L += w[i-1];\n        ll R = S - L;\n        ll tmp = L * l + R * r;\n        int j = N - i;\n        if(i > j) tmp += (i - j - 1) * Ql;\n        if(i < j) tmp += (j - i - 1) * Qr;\n        ans = min(ans, tmp);\n    }\n    \n    cout << ans << endl;\n    \n    return 0;\n}\n"], "input": "", "output": "", "tags": ["brute force", "greedy", "math"], "dificulty": "1500", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/354/problem/A",
+    "problemId": "3666",
+    "problem_idx": "A",
+    "shortId": "354A",
+    "contest_number": "354",
+    "problem_submissions": {
+        "D": [
+            4777100,
+            138831224,
+            4787255
+        ],
+        "B": [
+            4773542,
+            4773611,
+            4776468,
+            4775805,
+            4775193,
+            4773708,
+            4777067,
+            4775769,
+            4772925,
+            4775400,
+            4771413,
+            4771906,
+            4774887,
+            4777860,
+            4778618
+        ],
+        "E": [
+            4771246,
+            4771315,
+            4769492,
+            4772059,
+            4772808,
+            4771657,
+            4773587,
+            4773533,
+            4773905,
+            4774625,
+            4774509,
+            4772823,
+            4772897,
+            4776755,
+            4773505,
+            4773556,
+            4773459
+        ],
+        "A": [
+            4769568,
+            4768918,
+            4772027,
+            4767693,
+            4768128,
+            4767864,
+            4767903,
+            4768032,
+            4777935,
+            4771459,
+            4769551,
+            4767761,
+            4767775,
+            4769653,
+            4768177,
+            4767934,
+            4771768
+        ],
+        "C": [
+            4768755,
+            4770072,
+            4771488,
+            4770801,
+            4770647,
+            4775263,
+            4770953,
+            4771621,
+            4770211,
+            4772507,
+            4775843,
+            4771271,
+            4771934,
+            4770241,
+            4775127,
+            4769346
+        ]
+    },
+    "name": "A. Vasya and Robot",
+    "statement": "Vasya has items lying in a line. The items are consecutively numbered by\r\nnumbers from to in such a way that the leftmost item has number , the\r\nrightmost item has number . Each item has a weight, the -th item weights\r\nkilograms.Vasya needs to collect all these items, however he won\u2019t do it\r\nby himself. He uses his brand new robot. The robot has two different\r\narms the left one and the right one. The robot can consecutively perform\r\nthe following actions: Take the leftmost item with the left hand and\r\nspend energy units ( is a weight of the leftmost item, is some\r\nparameter). If the previous action was the same (left-hand), then the\r\nrobot spends extra energy units; Take the rightmost item with the right\r\nhand and spend energy units ( is a weight of the rightmost item, is some\r\nparameter). If the previous action was the same (right-hand), then the\r\nrobot spends extra energy units; Naturally, Vasya wants to program the\r\nrobot in a way that the robot spends as little energy as possible. He\r\nasked you to solve this problem. Your task is to find the minimum number\r\nof energy units robot spends to collect all items.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <sstream>\n#include <fstream>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <stack>\n#include <set>\n#include <map>\n#include <algorithm>\n#include <functional>\n#include <utility>\n#include <bitset>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstdio>\n\nusing namespace std;\n\n#define REP(i,n) for((i)=0;(i)<(int)(n);(i)++)\n#define snuke(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n\ntypedef long long ll;\n\nint N;\nint w[100010];\n\nint main(void){\n    int i;\n    ll l,r,Ql,Qr;\n    \n    cin >> N >> l >> r >> Ql >> Qr;\n    REP(i,N) scanf(\"%d\", &w[i]);\n    \n    ll S = 0;\n    REP(i,N) S += w[i];\n    \n    ll ans = (1ll<<60);\n    ll L = 0;\n    \n    REP(i,N+1){\n        if(i != 0) L += w[i-1];\n        ll R = S - L;\n        ll tmp = L * l + R * r;\n        int j = N - i;\n        if(i > j) tmp += (i - j - 1) * Ql;\n        if(i < j) tmp += (j - i - 1) * Qr;\n        ans = min(ans, tmp);\n    }\n    \n    cout << ans << endl;\n    \n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "greedy",
+        "math"
+    ],
+    "dificulty": "1500",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Vasya and Robot.json",
+    "editorial_link": "https://codeforces.com//blog/entry/8672",
+    "editorial": "Brute force how many times we will use operation from the left. So, if\r\nwe use it times, then it\u00e2\u0080\u0099s clear, that we will take first items by the\r\nleft operations and last items by the right operations. So, robot will\r\nspend energy plus some penalty for the same operations. To minimize this\r\npenalty we should perform the operations in the following order LRLRL\r\nRLRLLLLL , starting from the bigger set. For example, if , we should\r\nperform operations in this order: LRLRLRLRL LL. So, we will have to pay\r\nthe penalty two times . sum of first weights, sum of last weights.\r\nSolution in pseudocode: Time complexity: .\r\n"
+}

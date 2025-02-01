@@ -1,1 +1,100 @@
-{"link": "https://codeforces.com//contest/916/problem/D", "problemId": "148027", "problem_idx": "D", "shortId": "916D", "contest_number": "916", "problem_submissions": {"D": [34326007, 34322565, 34563169, 34324237, 34325530, 34324573, 34324098, 34325922, 34326213], "E": [34322258, 34325502, 34323285, 34321851, 34318358, 34324148, 34325404, 34326324], "C": [34310995, 34313571, 34311523, 34309797, 34318416, 34314936, 34314832, 34312668, 34312494, 34311976, 34311906, 34316835, 34313644, 34314417, 34316195, 34307237, 34308290, 34307428, 34311584, 34315270], "A": [34305522, 34305848, 34306019, 34311849, 34318455, 34305611, 34307081, 34305645, 34305601, 34305829, 34305615, 34306758, 34307093, 34306724, 34305983, 34307982, 34313895, 34310913, 34305897, 34305681], "B": [34321729, 34337379, 34311562, 34312817, 34317165, 34316891, 34316674]}, "name": "D. Jamie and To-do List", "statement": "Jamie is getting very busy with his school life. He starts to forget the\r\nassignments that he has to do. He decided to write the things down on a\r\nto-do list. He assigns a value for each of his assignment so he can\r\ndecide which he needs to spend more time on.After a few days, Jamie\r\nfinds out the list is too large that he can\u2019t even manage the list by\r\nhimself! As you are a good friend of Jamie, help him write a program to\r\nsupport the following operations on the to-do list: Add assignment to\r\nthe to-do list if it is not present, and set its to . If assignment is\r\nalready in the to-do list, its to . Remove assignment from the to-do\r\nlist if it is present in it. Output the number of assignments that are\r\nmore important (have a value) than assignment , so Jamie can decide a\r\nbetter schedule. Output if is not in the to-do list. Undo all changes\r\nthat have been made in the previous days (not including the day of this\r\noperation) At day , the to-do list is empty. In each of the following\r\ndays, Jamie will do out of the four operations. If the operation is a ,\r\nyou should , or poor Jamie cannot make appropriate decisions.\r\n", "solutions": ["#include <algorithm>\n#include <iostream>\n#include <cassert>\n#include <climits>\n#include <cstdlib>\n#include <cstring>\n#include <iomanip>\n#include <numeric>\n#include <cstdio>\n#include <string>\n#include <vector>\n#include <cmath>\n#include <ctime>\n#include <queue>\n#include <stack>\n#include <map>\n#include <set>\nusing namespace std;\n\n#define foreach(i, x)  for(type(x) i=x.begin() ; i != x.end() ; i++)\n#define FOR(ii, aa, bb) for(int ii = aa ; ii <= bb ; ii++)\n#define ROF(ii, aa, bb) for(int ii = aa ; ii >= bb ; ii--)\n\n#define type(x) __typeof(x.begin())\n\n#define orta ((bas + son) >> 1)\n#define sag (k + k + 1)\n#define sol (k + k)\n\n#define pb push_back\n#define mp make_pair\n\n#define nd second\n#define st first\n\n#define endl '\\n'\n\ntypedef pair< int, int > pii;\n\ntypedef long long ll;\n\nconst int logN = 17;\nconst ll mod  = 10000000000000061LL;//1e16 + 61ll;\nconst int inf  = 1e9;\nconst int N = 1e5 + 5;\n\nint n, m, x, y, z;\nchar str[123], test[123];\n\nclass node{\n\tpublic:\n\tint sum;\n\tnode *left, *right;\n\tnode(){ sum = 0; left = right = NULL; }\t\t\n};\n\ntypedef node* pnode;\n\npnode ST[N], ST2[N], T[N], T2[N];\n\nvoid init(pnode &t,ll bas,ll son){\n\tif(!t) t = new node;\n\treturn ;\n\tif(bas == son){ t->sum = 0; return ; }\n\tinit(t->left,bas,orta); init(t->right,orta+1,son);\n\tt->sum = t->left->sum + t->right->sum;\n}\n\nint sum(pnode p) { if(!p) return 0; return p->sum; }\n\nvoid update(pnode &bef,pnode &cur,ll bas,ll son,ll x, ll y){\n\tif(bas > x || son < x) { cur = bef; return ;}\n\tif(!cur) { cur = new node; cur->sum = sum(bef); } if(bas == son){ cur->sum += y; return ; }\n\tif(!bef) { bef = new node; }\n\tif(bas <= x && x <= orta){ cur->right = bef->right; update(bef->left,cur->left,bas,orta,x, y); }\n\telse { cur->left = bef->left; update(bef->right,cur->right,orta+1,son,x, y); }\n\tcur->sum = sum(cur->left) + sum(cur->right);\n}\n\nint query(pnode t,ll bas,ll son,ll x, ll y){\n\tif(!t) return 0;\n\tif(bas > y || son < x) return 0;\n\tif(x <= bas && son <= y) return t->sum;\n\treturn query(t->left,bas,orta,x,y) + query(t->right,orta+1,son,x,y);\n}\n\nll get() {\n\tll m = 0, nn = strlen(str + 1);\n\tfor(int i = 1; i <= nn; i++)\n\t\tm = (m * 37LL + str[i] - 'a' + 1) % mod;\n\treturn m + 1;\n}\n\nint main(){\n\n\tscanf(\"%d\",&n);\n\n\tinit(ST[0],1ll,inf);\n\tinit(ST2[0],1ll, mod);\n\n\tFOR(i, 1, n) {\n\t\tscanf(\"%s\", test + 1);\n\t\tif(test[1] == 's') {\n\t\t\tscanf(\"%s\", str + 1);\n\t\t\tll t = get();\n\t\t\tscanf(\"%d\", &x);\n\t\t\tll k = query(ST2[i - 1], 1, mod, t, t);\n\t\t\tif(k) {\n\t\t\t\tupdate(ST[i - 1], T[i], 1, inf, k, -1);\n\t\t\t\tupdate(T[i], ST[i], 1, inf, x, +1);\n\t\t\t\tupdate(ST2[i - 1], T2[i], 1, mod, t, -k);\n\t\t\t\tupdate(T2[i], ST2[i], 1, mod, t, +x);\n\t\t\t}\n\t\t\telse {\n\t\t\t\tupdate(ST[i - 1], ST[i], 1, inf, x, 1);\n\t\t\t\tupdate(ST2[i - 1], ST2[i], 1, mod, t, x);\n\t\t\t}\n\t\t}\n\t\tif(test[1] == 'r') {\n\t\t\tscanf(\"%s\", str + 1);\n\t\t\tll t = get();\n\t\t\tll k = query(ST2[i - 1], 1ll, mod, t, t);\n\t\t\tupdate(ST[i - 1], ST[i], 1ll, inf, k, -1);\n\t\t\tupdate(ST2[i - 1], ST2[i], 1ll, mod, t, -k);\n\t\t}\n\t\tif(test[1] == 'q') {\n\t\t\tscanf(\"%s\", str + 1);\n\t\t\tll t = get();\n\t\t\tST[i] = ST[i - 1];\n\t\t\tST2[i] = ST2[i - 1];\n\t\t\tint t1 = query(ST2[i], 1, mod, t, t);\n\t\t\tif(t1 == 0) printf(\"%d\\n\", -1);\n\t\t\telse printf(\"%d\\n\", query(ST[i], 1ll, (ll) inf, 1, t1 - 1));\n\t\t\tcout << flush;\n\t\t}\n\t\tif(test[1] == 'u') {\n\t\t\tscanf(\"%d\", &x);\n\t\t\tST[i] = ST[i - x - 1];\n\t\t\tST2[i] = ST2[i - x - 1];\n\t\t}\n\t}\n\n   \treturn 0;\n}"], "input": "", "output": "", "tags": ["data structures", "interactive", "trees"], "dificulty": "2200", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/916/problem/D",
+    "problemId": "148027",
+    "problem_idx": "D",
+    "shortId": "916D",
+    "contest_number": "916",
+    "problem_submissions": {
+        "D": [
+            34326007,
+            34322565,
+            34563169,
+            34324237,
+            34325530,
+            34324573,
+            34324098,
+            34325922,
+            34326213
+        ],
+        "E": [
+            34322258,
+            34325502,
+            34323285,
+            34321851,
+            34318358,
+            34324148,
+            34325404,
+            34326324
+        ],
+        "C": [
+            34310995,
+            34313571,
+            34311523,
+            34309797,
+            34318416,
+            34314936,
+            34314832,
+            34312668,
+            34312494,
+            34311976,
+            34311906,
+            34316835,
+            34313644,
+            34314417,
+            34316195,
+            34307237,
+            34308290,
+            34307428,
+            34311584,
+            34315270
+        ],
+        "A": [
+            34305522,
+            34305848,
+            34306019,
+            34311849,
+            34318455,
+            34305611,
+            34307081,
+            34305645,
+            34305601,
+            34305829,
+            34305615,
+            34306758,
+            34307093,
+            34306724,
+            34305983,
+            34307982,
+            34313895,
+            34310913,
+            34305897,
+            34305681
+        ],
+        "B": [
+            34321729,
+            34337379,
+            34311562,
+            34312817,
+            34317165,
+            34316891,
+            34316674
+        ]
+    },
+    "name": "D. Jamie and To-do List",
+    "statement": "Jamie is getting very busy with his school life. He starts to forget the\r\nassignments that he has to do. He decided to write the things down on a\r\nto-do list. He assigns a value for each of his assignment so he can\r\ndecide which he needs to spend more time on.After a few days, Jamie\r\nfinds out the list is too large that he can\u2019t even manage the list by\r\nhimself! As you are a good friend of Jamie, help him write a program to\r\nsupport the following operations on the to-do list: Add assignment to\r\nthe to-do list if it is not present, and set its to . If assignment is\r\nalready in the to-do list, its to . Remove assignment from the to-do\r\nlist if it is present in it. Output the number of assignments that are\r\nmore important (have a value) than assignment , so Jamie can decide a\r\nbetter schedule. Output if is not in the to-do list. Undo all changes\r\nthat have been made in the previous days (not including the day of this\r\noperation) At day , the to-do list is empty. In each of the following\r\ndays, Jamie will do out of the four operations. If the operation is a ,\r\nyou should , or poor Jamie cannot make appropriate decisions.\r\n",
+    "solutions": [
+        "#include <algorithm>\n#include <iostream>\n#include <cassert>\n#include <climits>\n#include <cstdlib>\n#include <cstring>\n#include <iomanip>\n#include <numeric>\n#include <cstdio>\n#include <string>\n#include <vector>\n#include <cmath>\n#include <ctime>\n#include <queue>\n#include <stack>\n#include <map>\n#include <set>\nusing namespace std;\n\n#define foreach(i, x)  for(type(x) i=x.begin() ; i != x.end() ; i++)\n#define FOR(ii, aa, bb) for(int ii = aa ; ii <= bb ; ii++)\n#define ROF(ii, aa, bb) for(int ii = aa ; ii >= bb ; ii--)\n\n#define type(x) __typeof(x.begin())\n\n#define orta ((bas + son) >> 1)\n#define sag (k + k + 1)\n#define sol (k + k)\n\n#define pb push_back\n#define mp make_pair\n\n#define nd second\n#define st first\n\n#define endl '\\n'\n\ntypedef pair< int, int > pii;\n\ntypedef long long ll;\n\nconst int logN = 17;\nconst ll mod  = 10000000000000061LL;//1e16 + 61ll;\nconst int inf  = 1e9;\nconst int N = 1e5 + 5;\n\nint n, m, x, y, z;\nchar str[123], test[123];\n\nclass node{\n\tpublic:\n\tint sum;\n\tnode *left, *right;\n\tnode(){ sum = 0; left = right = NULL; }\t\t\n};\n\ntypedef node* pnode;\n\npnode ST[N], ST2[N], T[N], T2[N];\n\nvoid init(pnode &t,ll bas,ll son){\n\tif(!t) t = new node;\n\treturn ;\n\tif(bas == son){ t->sum = 0; return ; }\n\tinit(t->left,bas,orta); init(t->right,orta+1,son);\n\tt->sum = t->left->sum + t->right->sum;\n}\n\nint sum(pnode p) { if(!p) return 0; return p->sum; }\n\nvoid update(pnode &bef,pnode &cur,ll bas,ll son,ll x, ll y){\n\tif(bas > x || son < x) { cur = bef; return ;}\n\tif(!cur) { cur = new node; cur->sum = sum(bef); } if(bas == son){ cur->sum += y; return ; }\n\tif(!bef) { bef = new node; }\n\tif(bas <= x && x <= orta){ cur->right = bef->right; update(bef->left,cur->left,bas,orta,x, y); }\n\telse { cur->left = bef->left; update(bef->right,cur->right,orta+1,son,x, y); }\n\tcur->sum = sum(cur->left) + sum(cur->right);\n}\n\nint query(pnode t,ll bas,ll son,ll x, ll y){\n\tif(!t) return 0;\n\tif(bas > y || son < x) return 0;\n\tif(x <= bas && son <= y) return t->sum;\n\treturn query(t->left,bas,orta,x,y) + query(t->right,orta+1,son,x,y);\n}\n\nll get() {\n\tll m = 0, nn = strlen(str + 1);\n\tfor(int i = 1; i <= nn; i++)\n\t\tm = (m * 37LL + str[i] - 'a' + 1) % mod;\n\treturn m + 1;\n}\n\nint main(){\n\n\tscanf(\"%d\",&n);\n\n\tinit(ST[0],1ll,inf);\n\tinit(ST2[0],1ll, mod);\n\n\tFOR(i, 1, n) {\n\t\tscanf(\"%s\", test + 1);\n\t\tif(test[1] == 's') {\n\t\t\tscanf(\"%s\", str + 1);\n\t\t\tll t = get();\n\t\t\tscanf(\"%d\", &x);\n\t\t\tll k = query(ST2[i - 1], 1, mod, t, t);\n\t\t\tif(k) {\n\t\t\t\tupdate(ST[i - 1], T[i], 1, inf, k, -1);\n\t\t\t\tupdate(T[i], ST[i], 1, inf, x, +1);\n\t\t\t\tupdate(ST2[i - 1], T2[i], 1, mod, t, -k);\n\t\t\t\tupdate(T2[i], ST2[i], 1, mod, t, +x);\n\t\t\t}\n\t\t\telse {\n\t\t\t\tupdate(ST[i - 1], ST[i], 1, inf, x, 1);\n\t\t\t\tupdate(ST2[i - 1], ST2[i], 1, mod, t, x);\n\t\t\t}\n\t\t}\n\t\tif(test[1] == 'r') {\n\t\t\tscanf(\"%s\", str + 1);\n\t\t\tll t = get();\n\t\t\tll k = query(ST2[i - 1], 1ll, mod, t, t);\n\t\t\tupdate(ST[i - 1], ST[i], 1ll, inf, k, -1);\n\t\t\tupdate(ST2[i - 1], ST2[i], 1ll, mod, t, -k);\n\t\t}\n\t\tif(test[1] == 'q') {\n\t\t\tscanf(\"%s\", str + 1);\n\t\t\tll t = get();\n\t\t\tST[i] = ST[i - 1];\n\t\t\tST2[i] = ST2[i - 1];\n\t\t\tint t1 = query(ST2[i], 1, mod, t, t);\n\t\t\tif(t1 == 0) printf(\"%d\\n\", -1);\n\t\t\telse printf(\"%d\\n\", query(ST[i], 1ll, (ll) inf, 1, t1 - 1));\n\t\t\tcout << flush;\n\t\t}\n\t\tif(test[1] == 'u') {\n\t\t\tscanf(\"%d\", &x);\n\t\t\tST[i] = ST[i - x - 1];\n\t\t\tST2[i] = ST2[i - x - 1];\n\t\t}\n\t}\n\n   \treturn 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "data structures",
+        "interactive",
+        "trees"
+    ],
+    "dificulty": "2200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Jamie and To-do List.json",
+    "editorial_link": "https://codeforces.com//blog/entry/57223",
+    "editorial": "Let\u00e2\u0080\u0099s solve a version that does\nnot consist of undo operation first. The task can be divided to two\nparts: finding the priority of a string and finding the rank of a\npriority. Both parts can be solved using trie trees. The first part is\nbasic string trie with get and set operation so I will not describe it\nhere in details. The second part is finding a rank of the number which\ncan be supported by a binary trie. To support the undo operation,\nobserve that each operation only add at most 31 nodes to the trie trees.\nTherefore, we can make use the idea of persistent data structure and\nstore all versions by reusing old versions of the data structure with\npointers. Remember to flush the output after each query operation. As\npointed out by some of you, there exists alternative solutions using\npersistent dynamic segment trees. My implementation: 34342389 (sorry for\na bit messy)\n"
+}

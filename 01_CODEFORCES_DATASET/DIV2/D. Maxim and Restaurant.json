@@ -1,1 +1,94 @@
-{"link": "https://codeforces.com//contest/262/problem/D", "problemId": "2509", "problem_idx": "D", "shortId": "262D", "contest_number": "262", "problem_submissions": {"E": [2917574, 2919991, 2920217], "C": [2915597, 2915456, 2915755, 2915133, 2915067, 2914439, 2920021, 2916661, 2917064, 2914971, 2916258, 2915804, 2915424, 2916306, 2915632, 2920899], "B": [2912801, 2913308, 2913727, 2913223, 2912896, 2915860, 2912738, 2913934, 2914694, 2913939, 2914490, 2913702, 2913690, 2913451, 2913711, 2912803], "A": [2911759, 2911860, 2912304, 2911748, 2911806, 2914884, 2911799, 2911959, 2912048, 2914184, 2912000, 2911981, 2911895, 2911859, 2912010, 2911726], "D": [2918906, 2919971, 2920564, 2920441, 2919464, 2920502, 2920612, 2918080]}, "name": "D. Maxim and Restaurant", "statement": "Maxim has opened his own restaurant! The restaurant has got a huge\r\ntable, the table\u2019s length is meters.Maxim has got a dinner party\r\ntonight, guests will come to him. Let\u2019s index the guests of Maxim\u2019s\r\nrestaurant from 1 to . Maxim knows the sizes of all guests that are\r\ngoing to come to him. The -th guest\u2019s size () represents the number of\r\nmeters the guest is going to take up if he sits at the restaurant\r\ntable.Long before the dinner, the guests line up in a queue in front of\r\nthe restaurant in some order. Then Maxim lets the guests in, one by one.\r\nMaxim stops letting the guests in when there is no place at the\r\nrestaurant table for another guest in the queue. There is no place at\r\nthe restaurant table for another guest in the queue, if the sum of sizes\r\nof all guests in the restaurant plus the size of this guest from the\r\nqueue is larger than . In this case, not to offend the guest who has no\r\nplace at the table, Maxim doesn\u2019t let any other guest in the restaurant,\r\neven if one of the following guests in the queue would have fit in at\r\nthe table.Maxim is now wondering, what is the average number of visitors\r\nwho have come to the restaurant for all possible orders of guests in the\r\nqueue. Help Maxim, calculate this number.\r\n", "solutions": ["#include <iostream>\n#include <vector>\n#include <string>\n#include <set>\n#include <algorithm>\n\n\nusing namespace std;\n\nint N, K, w[64], T;\ndouble A, x, m[64][64][64], C[64][64];\n\nint main()\n{\n\tfor (int n = 0; n < 64; n += 1)\n\t{\n\t\tC[n][0] = 1;\n\t\tC[n][n] = 1;\n\t\t\n\t\tfor (int r = 1; r <= n/2; r += 1)\n\t\t{\n\t\t\tC[n][r] = C[n-1][r-1]+C[n-1][r];\n\t\t\tC[n][n-r] = C[n][r];\n\t\t\t//cout << n << ' ' << r << ':' << C[n][r] << '\\n';\n\t\t}\n\t}\n\tcin >> N;\n\t\n\tfor (int i = 1; i <= N; i += 1)\n\t{\n\t\tcin >> w[i];\n\t\tT += w[i];\n\t}\n\t\n\t\n\tcin >> K;\n\t\n\tif (T <= K)\n\t{\n\t\tA = N;\n\t\tgoto last;\n\t}\n\t\n\tm[0][0][0] = 1;\n\t\n\tfor (int i = 1; i <= N; i += 1)\n\t{\n\t\tfor (int a = 0; a < N; a += 1)\n\t\t{\n\t\t\tx = 0;\n\t\t\tfor (int r = 0; r <= K; r += 1)\n\t\t\t{\n\t\t\t\tfor (int j = 1; j <= N; j += 1)\n\t\t\t\t{\n\t\t\t\t\tm[j][r][a] = m[j-1][r][a];\n\t\t\t\t\tif (i != j && r >= w[j]&&  a >= 1)\n\t\t\t\t\t{\n\t\t\t\t\t\tm[j][r][a] += m[j-1][r-w[j]][a-1];\n\t\t\t\t\t}\n\t\t\t\t\t//if(m[j][r][a])\n\t\t\t\t\t\t//cout << i << ' ' << j << ' ' << r << ' ' << a << ' ' << m[j][r][a] << '\\n';\n\t\t\t\t}\n\t\t\t\tif ( r+w[i] > K)\n\t\t\t\t{\n\t\t\t\t\tx += m[N][r][a];\n\t\t\t\t}\n\t\t\t}\n\t\t\tA += (x*a/(N*1.0))/C[N-1][a];\n\t\t}\n\t\t\n\t}\n\tlast:\n\tcout << A << '\\n';\n\t\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["combinatorics", "dp"], "dificulty": "1900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/262/problem/D",
+    "problemId": "2509",
+    "problem_idx": "D",
+    "shortId": "262D",
+    "contest_number": "262",
+    "problem_submissions": {
+        "E": [
+            2917574,
+            2919991,
+            2920217
+        ],
+        "C": [
+            2915597,
+            2915456,
+            2915755,
+            2915133,
+            2915067,
+            2914439,
+            2920021,
+            2916661,
+            2917064,
+            2914971,
+            2916258,
+            2915804,
+            2915424,
+            2916306,
+            2915632,
+            2920899
+        ],
+        "B": [
+            2912801,
+            2913308,
+            2913727,
+            2913223,
+            2912896,
+            2915860,
+            2912738,
+            2913934,
+            2914694,
+            2913939,
+            2914490,
+            2913702,
+            2913690,
+            2913451,
+            2913711,
+            2912803
+        ],
+        "A": [
+            2911759,
+            2911860,
+            2912304,
+            2911748,
+            2911806,
+            2914884,
+            2911799,
+            2911959,
+            2912048,
+            2914184,
+            2912000,
+            2911981,
+            2911895,
+            2911859,
+            2912010,
+            2911726
+        ],
+        "D": [
+            2918906,
+            2919971,
+            2920564,
+            2920441,
+            2919464,
+            2920502,
+            2920612,
+            2918080
+        ]
+    },
+    "name": "D. Maxim and Restaurant",
+    "statement": "Maxim has opened his own restaurant! The restaurant has got a huge\r\ntable, the table\u2019s length is meters.Maxim has got a dinner party\r\ntonight, guests will come to him. Let\u2019s index the guests of Maxim\u2019s\r\nrestaurant from 1 to . Maxim knows the sizes of all guests that are\r\ngoing to come to him. The -th guest\u2019s size () represents the number of\r\nmeters the guest is going to take up if he sits at the restaurant\r\ntable.Long before the dinner, the guests line up in a queue in front of\r\nthe restaurant in some order. Then Maxim lets the guests in, one by one.\r\nMaxim stops letting the guests in when there is no place at the\r\nrestaurant table for another guest in the queue. There is no place at\r\nthe restaurant table for another guest in the queue, if the sum of sizes\r\nof all guests in the restaurant plus the size of this guest from the\r\nqueue is larger than . In this case, not to offend the guest who has no\r\nplace at the table, Maxim doesn\u2019t let any other guest in the restaurant,\r\neven if one of the following guests in the queue would have fit in at\r\nthe table.Maxim is now wondering, what is the average number of visitors\r\nwho have come to the restaurant for all possible orders of guests in the\r\nqueue. Help Maxim, calculate this number.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <vector>\n#include <string>\n#include <set>\n#include <algorithm>\n\n\nusing namespace std;\n\nint N, K, w[64], T;\ndouble A, x, m[64][64][64], C[64][64];\n\nint main()\n{\n\tfor (int n = 0; n < 64; n += 1)\n\t{\n\t\tC[n][0] = 1;\n\t\tC[n][n] = 1;\n\t\t\n\t\tfor (int r = 1; r <= n/2; r += 1)\n\t\t{\n\t\t\tC[n][r] = C[n-1][r-1]+C[n-1][r];\n\t\t\tC[n][n-r] = C[n][r];\n\t\t\t//cout << n << ' ' << r << ':' << C[n][r] << '\\n';\n\t\t}\n\t}\n\tcin >> N;\n\t\n\tfor (int i = 1; i <= N; i += 1)\n\t{\n\t\tcin >> w[i];\n\t\tT += w[i];\n\t}\n\t\n\t\n\tcin >> K;\n\t\n\tif (T <= K)\n\t{\n\t\tA = N;\n\t\tgoto last;\n\t}\n\t\n\tm[0][0][0] = 1;\n\t\n\tfor (int i = 1; i <= N; i += 1)\n\t{\n\t\tfor (int a = 0; a < N; a += 1)\n\t\t{\n\t\t\tx = 0;\n\t\t\tfor (int r = 0; r <= K; r += 1)\n\t\t\t{\n\t\t\t\tfor (int j = 1; j <= N; j += 1)\n\t\t\t\t{\n\t\t\t\t\tm[j][r][a] = m[j-1][r][a];\n\t\t\t\t\tif (i != j && r >= w[j]&&  a >= 1)\n\t\t\t\t\t{\n\t\t\t\t\t\tm[j][r][a] += m[j-1][r-w[j]][a-1];\n\t\t\t\t\t}\n\t\t\t\t\t//if(m[j][r][a])\n\t\t\t\t\t\t//cout << i << ' ' << j << ' ' << r << ' ' << a << ' ' << m[j][r][a] << '\\n';\n\t\t\t\t}\n\t\t\t\tif ( r+w[i] > K)\n\t\t\t\t{\n\t\t\t\t\tx += m[N][r][a];\n\t\t\t\t}\n\t\t\t}\n\t\t\tA += (x*a/(N*1.0))/C[N-1][a];\n\t\t}\n\t\t\n\t}\n\tlast:\n\tcout << A << '\\n';\n\t\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "combinatorics",
+        "dp"
+    ],
+    "dificulty": "1900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Maxim and Restaurant.json",
+    "editorial_link": "https://codeforces.com//blog/entry/6398",
+    "editorial": "If all people can come, we will return answer as n.\nIf it is impossible, there will be finded some person that will be the last to come. We will brtueforce this value. Then we will detrminate dp[i,j,s] in how many ways j persons from the first i with total length s can be in the resturant. It is easy to calculate.\nThen we will add to the answer values dp[n][i][s]*i!*(n-1-i)! for all i,s such that s+p[h]>P. Where P \u0097 total length of the table, p[h] \u0097 length of the fixed person."
+}

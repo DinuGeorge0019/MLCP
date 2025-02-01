@@ -1,1 +1,101 @@
-{"link": "https://codeforces.com//contest/593/problem/D", "problemId": "40049", "problem_idx": "D", "shortId": "593D", "contest_number": "593", "problem_submissions": {"E": [14074831, 14071839, 14069012, 14112263, 14101227, 14078183, 14073295, 14073367], "D": [14071251, 14067776, 14071547, 14071080, 14071834, 14069627, 14072451, 14072921, 14072768, 14072117, 14072979, 14072065, 14072780, 14073132, 14073238], "B": [14065295, 14080270, 14065853, 14065770, 14066413, 14066282, 14075373, 14072184, 14066079, 14066654, 14066024, 14067374, 14064950, 14066946, 14073180, 14067257, 14066769, 14067908, 14066629], "A": [14064191, 14073716, 14064213, 14064573, 14064399, 14064679, 14064276, 14064487, 14064593, 14064652, 14065927, 14064315, 14065183, 14065251, 14065732, 14064991, 14065641, 14065343], "C": [14105964, 14078413, 14072751]}, "name": "D. Happy Tree Party", "statement": "Bogdan has a birthday today and mom gave him a tree consisting of\r\nvertecies. For every edge of the tree , some number was written on it.\r\nIn case you forget, a tree is a connected non-directed graph without\r\ncycles. After the present was granted, guests consecutively come to\r\nBogdan\u2019s party. When the -th guest comes, he performs exactly one of the\r\ntwo possible operations: Chooses some number , and two vertecies and .\r\nAfter that, he moves along the edges of the tree from vertex to vertex\r\nusing the shortest path (of course, such a path is unique in the tree).\r\nEvery time he moves along some edge , he replaces his current number by\r\n, that is, by the result of integer division div . Chooses some edge and\r\nreplaces the value written in it by some positive integer . As Bogdan\r\ncares about his guests, he decided to ease the process. Write a program\r\nthat performs all the operations requested by guests and outputs the\r\nresulting value for each of the first type.\r\n", "solutions": ["#include <bits/stdc++.h>\nusing namespace std;\n\ntypedef long long ll;\n\nconst int MAXN = 2e5 + 100;\nconst int MAXL = 18;\n\nint N, M;\npair<int, int> edge[MAXN];\nvector<pair<int, ll>> adj[MAXN];\n\nll edge_up[MAXN];\nint depth[MAXN];\nint par[MAXN][MAXL];\n\nvoid fill(int loc, int abv) {\n    par[loc][0] = abv;\n    for (int l = 1; l < MAXL; l++)\n        par[loc][l] = par[par[loc][l-1]][l-1];\n\n    for (auto v : adj[loc]) {\n        if (v.first == abv) continue;\n\n        depth[v.first] = depth[loc] + 1;\n        edge_up[v.first] = v.second;\n\n        fill(v.first, loc);\n    }\n}\n\nint go_up(int loc, int far) {\n    for (int l = 0; l < MAXL; l++)\n        if ((far >> l) & 1)\n            loc = par[loc][l];\n    return loc;\n}\n\nint lca(int a, int b) {\n    if (depth[a] < depth[b]) swap(a, b);\n    a = go_up(a, depth[a] - depth[b]);\n    if (a == b) return a;\n\n    for (int l = MAXL - 1; l >= 0; l--) {\n        if (par[a][l] != par[b][l]) {\n            a = par[a][l];\n            b = par[b][l];\n        }\n    }\n\n    return par[a][0];\n}\n\nstruct union_find{\n    vector<int> P, R, S;\n    vector<pair<int, int>> SM;\n    \n    union_find(int N){\n        P.resize(N), R.resize(N), S.resize(N), SM.resize(N);\n        for(int i=0; i<N; i++){\n            P[i] = i;\n            R[i] = 0;\n            S[i] = 1;\n            SM[i] = make_pair(depth[i], i);\n        }\n    }\n    \n    int rep(int i){\n        if(P[i] != i) P[i] = rep(P[i]);\n        return P[i];\n    }\n\n    bool unio(int a, int b){\n        a = rep(a), b = rep(b);\n        if(a == b) return false;\n        if(R[a] < R[b]) swap(a, b);\n        P[b] = a;\n        S[a] += S[b];\n        if(R[a] == R[b]) R[a]++;\n\n        if (SM[b].first < SM[a].first)\n            SM[a] = SM[b];\n\n        return true;\n    }\n};\n\nll solve(union_find &uf, int a, int b, ll V) {\n    int p = lca(a, b);\n\n    while (V > 0) {\n        int ra = uf.rep(a);\n        a = uf.SM[ra].second;\n\n        if (depth[a] <= depth[p]) break;\n        V /= edge_up[a];\n        a = par[a][0];\n    }\n\n    while (V > 0) {\n        int rb = uf.rep(b);\n        b = uf.SM[rb].second;\n\n        if (depth[b] <= depth[p]) break;\n        V /= edge_up[b];\n        b = par[b][0];\n    }\n\n    return V;\n}\n\nint main() {\n    ios_base::sync_with_stdio(false);\n    cin.tie(0), cout.tie(0), cout.precision(15);\n\n    cin >> N >> M;\n\n    for (int i = 0; i < N - 1; i++) {\n        int &u = edge[i].first;\n        int &v = edge[i].second;\n        ll c;\n\n        cin >> u >> v >> c;\n        u--, v--;\n\n        adj[u].emplace_back(v, c);\n        adj[v].emplace_back(u, c);\n    }\n\n    fill(0, 0);\n\n    union_find uf(N);\n\n    for (int i = 1; i < N; i++) {\n        if (edge_up[i] == 1) {\n            uf.unio(i, par[i][0]);\n        }\n    }\n\n    int T, A, B, P;\n    ll Y, C;\n\n    for (int i = 0; i < M; i++) {\n        cin >> T;\n        if (T == 1) {\n            cin >> A >> B >> Y;\n            cout << solve(uf, A - 1, B - 1, Y) << \"\\n\";\n        } else {\n            cin >> P >> C;\n            P--;\n            int u = edge[P].first;\n            int v = edge[P].second;\n\n            if (depth[u] > depth[v]) swap(u, v);\n            edge_up[v] = C;\n            if (C == 1) uf.unio(u, v);\n        }\n    }\n}\n\n"], "input": "", "output": "", "tags": ["data structures", "dfs and similar", "graphs", "math", "trees"], "dificulty": "2400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/593/problem/D",
+    "problemId": "40049",
+    "problem_idx": "D",
+    "shortId": "593D",
+    "contest_number": "593",
+    "problem_submissions": {
+        "E": [
+            14074831,
+            14071839,
+            14069012,
+            14112263,
+            14101227,
+            14078183,
+            14073295,
+            14073367
+        ],
+        "D": [
+            14071251,
+            14067776,
+            14071547,
+            14071080,
+            14071834,
+            14069627,
+            14072451,
+            14072921,
+            14072768,
+            14072117,
+            14072979,
+            14072065,
+            14072780,
+            14073132,
+            14073238
+        ],
+        "B": [
+            14065295,
+            14080270,
+            14065853,
+            14065770,
+            14066413,
+            14066282,
+            14075373,
+            14072184,
+            14066079,
+            14066654,
+            14066024,
+            14067374,
+            14064950,
+            14066946,
+            14073180,
+            14067257,
+            14066769,
+            14067908,
+            14066629
+        ],
+        "A": [
+            14064191,
+            14073716,
+            14064213,
+            14064573,
+            14064399,
+            14064679,
+            14064276,
+            14064487,
+            14064593,
+            14064652,
+            14065927,
+            14064315,
+            14065183,
+            14065251,
+            14065732,
+            14064991,
+            14065641,
+            14065343
+        ],
+        "C": [
+            14105964,
+            14078413,
+            14072751
+        ]
+    },
+    "name": "D. Happy Tree Party",
+    "statement": "Bogdan has a birthday today and mom gave him a tree consisting of\r\nvertecies. For every edge of the tree , some number was written on it.\r\nIn case you forget, a tree is a connected non-directed graph without\r\ncycles. After the present was granted, guests consecutively come to\r\nBogdan\u2019s party. When the -th guest comes, he performs exactly one of the\r\ntwo possible operations: Chooses some number , and two vertecies and .\r\nAfter that, he moves along the edges of the tree from vertex to vertex\r\nusing the shortest path (of course, such a path is unique in the tree).\r\nEvery time he moves along some edge , he replaces his current number by\r\n, that is, by the result of integer division div . Chooses some edge and\r\nreplaces the value written in it by some positive integer . As Bogdan\r\ncares about his guests, he decided to ease the process. Write a program\r\nthat performs all the operations requested by guests and outputs the\r\nresulting value for each of the first type.\r\n",
+    "solutions": [
+        "#include <bits/stdc++.h>\nusing namespace std;\n\ntypedef long long ll;\n\nconst int MAXN = 2e5 + 100;\nconst int MAXL = 18;\n\nint N, M;\npair<int, int> edge[MAXN];\nvector<pair<int, ll>> adj[MAXN];\n\nll edge_up[MAXN];\nint depth[MAXN];\nint par[MAXN][MAXL];\n\nvoid fill(int loc, int abv) {\n    par[loc][0] = abv;\n    for (int l = 1; l < MAXL; l++)\n        par[loc][l] = par[par[loc][l-1]][l-1];\n\n    for (auto v : adj[loc]) {\n        if (v.first == abv) continue;\n\n        depth[v.first] = depth[loc] + 1;\n        edge_up[v.first] = v.second;\n\n        fill(v.first, loc);\n    }\n}\n\nint go_up(int loc, int far) {\n    for (int l = 0; l < MAXL; l++)\n        if ((far >> l) & 1)\n            loc = par[loc][l];\n    return loc;\n}\n\nint lca(int a, int b) {\n    if (depth[a] < depth[b]) swap(a, b);\n    a = go_up(a, depth[a] - depth[b]);\n    if (a == b) return a;\n\n    for (int l = MAXL - 1; l >= 0; l--) {\n        if (par[a][l] != par[b][l]) {\n            a = par[a][l];\n            b = par[b][l];\n        }\n    }\n\n    return par[a][0];\n}\n\nstruct union_find{\n    vector<int> P, R, S;\n    vector<pair<int, int>> SM;\n    \n    union_find(int N){\n        P.resize(N), R.resize(N), S.resize(N), SM.resize(N);\n        for(int i=0; i<N; i++){\n            P[i] = i;\n            R[i] = 0;\n            S[i] = 1;\n            SM[i] = make_pair(depth[i], i);\n        }\n    }\n    \n    int rep(int i){\n        if(P[i] != i) P[i] = rep(P[i]);\n        return P[i];\n    }\n\n    bool unio(int a, int b){\n        a = rep(a), b = rep(b);\n        if(a == b) return false;\n        if(R[a] < R[b]) swap(a, b);\n        P[b] = a;\n        S[a] += S[b];\n        if(R[a] == R[b]) R[a]++;\n\n        if (SM[b].first < SM[a].first)\n            SM[a] = SM[b];\n\n        return true;\n    }\n};\n\nll solve(union_find &uf, int a, int b, ll V) {\n    int p = lca(a, b);\n\n    while (V > 0) {\n        int ra = uf.rep(a);\n        a = uf.SM[ra].second;\n\n        if (depth[a] <= depth[p]) break;\n        V /= edge_up[a];\n        a = par[a][0];\n    }\n\n    while (V > 0) {\n        int rb = uf.rep(b);\n        b = uf.SM[rb].second;\n\n        if (depth[b] <= depth[p]) break;\n        V /= edge_up[b];\n        b = par[b][0];\n    }\n\n    return V;\n}\n\nint main() {\n    ios_base::sync_with_stdio(false);\n    cin.tie(0), cout.tie(0), cout.precision(15);\n\n    cin >> N >> M;\n\n    for (int i = 0; i < N - 1; i++) {\n        int &u = edge[i].first;\n        int &v = edge[i].second;\n        ll c;\n\n        cin >> u >> v >> c;\n        u--, v--;\n\n        adj[u].emplace_back(v, c);\n        adj[v].emplace_back(u, c);\n    }\n\n    fill(0, 0);\n\n    union_find uf(N);\n\n    for (int i = 1; i < N; i++) {\n        if (edge_up[i] == 1) {\n            uf.unio(i, par[i][0]);\n        }\n    }\n\n    int T, A, B, P;\n    ll Y, C;\n\n    for (int i = 0; i < M; i++) {\n        cin >> T;\n        if (T == 1) {\n            cin >> A >> B >> Y;\n            cout << solve(uf, A - 1, B - 1, Y) << \"\\n\";\n        } else {\n            cin >> P >> C;\n            P--;\n            int u = edge[P].first;\n            int v = edge[P].second;\n\n            if (depth[u] > depth[v]) swap(u, v);\n            edge_up[v] = C;\n            if (C == 1) uf.unio(u, v);\n        }\n    }\n}\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "data structures",
+        "dfs and similar",
+        "graphs",
+        "math",
+        "trees"
+    ],
+    "dificulty": "2400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Happy Tree Party.json",
+    "editorial_link": "https://codeforces.com//blog/entry/21406",
+    "editorial": "Consider the problem ignoring the second typed requests. We note that in\r\nthe column where all the numbers on the edges of 1 maximum number of\r\nassignments to before will turn into is not exceeds . Indeed, if all the\r\n, the number of operations can be assessed as . Hang the tree for some\r\ntop and call it the root. Learn how to solve the problem, provided that\r\nfor every and no requests of the second type. For each vertex except the\r\nroot, we have identified it as the ancestor of the neighbor closest to\r\nthe root. Suppose we had a request of the first type from the top to\r\nvertices with original number . We divide the road into two vertical\r\nparts, one of which is close to the root, while the other moves away. We\r\nfind all the edges in this way. To do this, we calculate the depth of\r\neach node to the root of the distance. Now we will go up in parallel to\r\nthe tree of the two peaks, until he met a total. If in the course of the\r\nrecovery, we have been more than edges, in the substitutions we get and\r\nwe can at the current step to stop the algorithm search. Thus, we make\r\nno more than operations. Let\u00e2\u0080\u0098s turn to the problem, where . We note that\r\nour previous solution in this case can work for . Since the passage of\r\nthe edge with our value does not change. We reduce this problem to the\r\nabove consideration. Compress the graph, that is, remove all single\r\nedges. To do this, run by dfs root and will keep the deepest edge on the\r\npath from the root to the top with . Let us remember that we have had\r\nrequests to reduce . We maintain the closest ancestor of c . We use the\r\nidea of compression paths. When answer to a request of the first type\r\nwill be recalculated . We introduce a recursive function . Which returns\r\nthe , if , otherwise perform the assignment of and returns . Each edge\r\nwe will remove times, so in total the call of all functions running .\r\nFinal time is on request of the first type and an average of request of\r\nthe second type.\r\n"
+}

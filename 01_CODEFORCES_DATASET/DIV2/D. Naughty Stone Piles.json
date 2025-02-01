@@ -1,1 +1,106 @@
-{"link": "https://codeforces.com//contest/227/problem/D", "problemId": "1848", "problem_idx": "D", "shortId": "227D", "contest_number": "227", "problem_submissions": {"E": [2244819], "D": [2241285, 2242789, 2243651, 2244494, 2243976, 2245494, 2243333, 2241816, 2243438, 2243253, 2243591, 2242751, 2243506, 2242179, 2244374, 2241750, 2242474], "C": [2239263, 2240482, 2239762, 2242318, 2239042, 2240039, 2244041, 2239823, 2241928, 2239774, 2240494, 2241415, 2240378, 2239721, 2241369, 2239346, 2243306, 2238534], "B": [2238261, 2239265, 2238668, 2237700, 2237709, 2238241, 2238220, 2238145, 2238505, 2238087, 2238895, 2238677, 2239004, 2238928, 2237401, 2238043, 2239611, 2237944], "A": [2237402, 2238048, 2237808, 2237346, 2237343, 2240757, 2237508, 2237496, 2237858, 2237476, 2237431, 2237540, 2237592, 2241472, 2243917, 2237478, 2237575]}, "name": "D. Naughty Stone Piles", "statement": "There are piles of stones of sizes lying on the table in front of\r\nyou.During one move you can take one pile and add it to the other. As\r\nyou add pile to pile , the size of pile increases by the current size of\r\npile , and pile stops existing. The cost of the adding operation equals\r\nthe size of the added pile.Your task is to determine the minimum cost at\r\nwhich you can gather all stones in one pile. To add some challenge, the\r\nstone piles built up conspiracy and decided that each pile will let you\r\nadd to it not more than times (after that it can only be added to\r\nanother pile). Moreover, the piles decided to puzzle you completely and\r\ntold you variants (not necessarily distinct) of what might equal. Your\r\ntask is to find the minimum cost for each of variants.\r\n", "solutions": ["#include<iostream>\n#include<algorithm>\n\nusing namespace std;\n\nlong long n,q,i,s1,s[100010],a[100010],k[100010],t,at,dp,sum,now;\n\nbool cmp(long long a,long long b)\n{\n    return a>b;\n}\n\nint main()\n{\n    cin>>n;\n    for (i=0;i<n;i++)\n    {\n        cin>>a[i];\n    }\n    cin>>q;\n    for (i=0;i<q;i++)\n    {\n        cin>>k[i];\n    }\n    sort(a,a+n,cmp);\n    s[0]=0;\n    for (i=0;i<n;i++)\n    {\n        s[i+1]=s[i]+a[i];\n    }\n    s1=0;\n    for (i=0;i<n;i++)\n    {\n        s1+=a[i]*i;\n    }\n    for (i=0;i<q;i++)\n    {\n        if (i!=0) cout<<\" \";\n        if (k[i]==1)\n        {\n            cout<<s1;\n            continue;\n        }\n        t=1;dp=1;now=k[i];\n        sum=0;\n        while (t+now<n)\n        {\n            at=s[t+now]-s[t];\n            at=at*dp;\n            sum+=at;\n            t=t+now;\n            now=now*k[i];\n            dp++;\n        }\n        at=s[n]-s[t];\n        at=at*dp;\n        sum+=at;\n        cout<<sum;\n    }\n    cout<<endl;\n    return 0;\n}\n        \n"], "input": "", "output": "", "tags": ["math", "sortings"], "dificulty": "1900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/227/problem/D",
+    "problemId": "1848",
+    "problem_idx": "D",
+    "shortId": "227D",
+    "contest_number": "227",
+    "problem_submissions": {
+        "E": [
+            2244819
+        ],
+        "D": [
+            2241285,
+            2242789,
+            2243651,
+            2244494,
+            2243976,
+            2245494,
+            2243333,
+            2241816,
+            2243438,
+            2243253,
+            2243591,
+            2242751,
+            2243506,
+            2242179,
+            2244374,
+            2241750,
+            2242474
+        ],
+        "C": [
+            2239263,
+            2240482,
+            2239762,
+            2242318,
+            2239042,
+            2240039,
+            2244041,
+            2239823,
+            2241928,
+            2239774,
+            2240494,
+            2241415,
+            2240378,
+            2239721,
+            2241369,
+            2239346,
+            2243306,
+            2238534
+        ],
+        "B": [
+            2238261,
+            2239265,
+            2238668,
+            2237700,
+            2237709,
+            2238241,
+            2238220,
+            2238145,
+            2238505,
+            2238087,
+            2238895,
+            2238677,
+            2239004,
+            2238928,
+            2237401,
+            2238043,
+            2239611,
+            2237944
+        ],
+        "A": [
+            2237402,
+            2238048,
+            2237808,
+            2237346,
+            2237343,
+            2240757,
+            2237508,
+            2237496,
+            2237858,
+            2237476,
+            2237431,
+            2237540,
+            2237592,
+            2241472,
+            2243917,
+            2237478,
+            2237575
+        ]
+    },
+    "name": "D. Naughty Stone Piles",
+    "statement": "There are piles of stones of sizes lying on the table in front of\r\nyou.During one move you can take one pile and add it to the other. As\r\nyou add pile to pile , the size of pile increases by the current size of\r\npile , and pile stops existing. The cost of the adding operation equals\r\nthe size of the added pile.Your task is to determine the minimum cost at\r\nwhich you can gather all stones in one pile. To add some challenge, the\r\nstone piles built up conspiracy and decided that each pile will let you\r\nadd to it not more than times (after that it can only be added to\r\nanother pile). Moreover, the piles decided to puzzle you completely and\r\ntold you variants (not necessarily distinct) of what might equal. Your\r\ntask is to find the minimum cost for each of variants.\r\n",
+    "solutions": [
+        "#include<iostream>\n#include<algorithm>\n\nusing namespace std;\n\nlong long n,q,i,s1,s[100010],a[100010],k[100010],t,at,dp,sum,now;\n\nbool cmp(long long a,long long b)\n{\n    return a>b;\n}\n\nint main()\n{\n    cin>>n;\n    for (i=0;i<n;i++)\n    {\n        cin>>a[i];\n    }\n    cin>>q;\n    for (i=0;i<q;i++)\n    {\n        cin>>k[i];\n    }\n    sort(a,a+n,cmp);\n    s[0]=0;\n    for (i=0;i<n;i++)\n    {\n        s[i+1]=s[i]+a[i];\n    }\n    s1=0;\n    for (i=0;i<n;i++)\n    {\n        s1+=a[i]*i;\n    }\n    for (i=0;i<q;i++)\n    {\n        if (i!=0) cout<<\" \";\n        if (k[i]==1)\n        {\n            cout<<s1;\n            continue;\n        }\n        t=1;dp=1;now=k[i];\n        sum=0;\n        while (t+now<n)\n        {\n            at=s[t+now]-s[t];\n            at=at*dp;\n            sum+=at;\n            t=t+now;\n            now=now*k[i];\n            dp++;\n        }\n        at=s[n]-s[t];\n        at=at*dp;\n        sum+=at;\n        cout<<sum;\n    }\n    cout<<endl;\n    return 0;\n}\n        \n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "math",
+        "sortings"
+    ],
+    "dificulty": "1900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Naughty Stone Piles.json",
+    "editorial_link": "https://codeforces.com/blog/entry/5378",
+    "editorial": "Consider the following interpretation of the problem: stone piles are\r\ngraph vertices. Operation \"add pile to pile \" changes to operation of\r\nsuspencion of subtree of vertice to vertice . Numbers, written on\r\nvertices, piles\u00e2\u0080\u0099 sizes. Your task is to get such tree configuration,\r\nthat each vertice has no more than subtrees suspended to it, and sum of\r\nthe products of numbers, written on vertices, and vertices\u00e2\u0080\u0099 depth (where\r\nroot\u00e2\u0080\u0099s depth is 0) is minimal. In order to minimize the sum, at first,\r\nvertice with a larger number must be not deeply than vertice with\r\nsmaller number (otherwise it\u00e2\u0080\u0099s possible to change them and to get less\r\nsum), at second, each inner vertice, besides, maybe, one, has exactly\r\nsuccessors (the second condition is also proved using proof by\r\ncontradiction). Now you are to learn how to calculate sum (described\r\nabove) for this configuration quickly. In order do to it, let\u00e2\u0080\u0099s sort\r\npiles\u00e2\u0080\u0099 size array, and then let\u00e2\u0080\u0099s do the following: at first, let\u00e2\u0080\u0099s add\r\nto answer sum of sizes of piles from to (in 0-indexed array, sorted in\r\nnon-increasing order), multiplied by 1; then sum of sizes of next piles,\r\nmultiplied by 2; and so on till the end of array. In order to answer for\r\nthe query about the sum of segment, precalculate sums of prefixes\r\nimmediately after array sorting. Now in the case we can find answer in .\r\nIf you follow the same considerations for , answer for query will get\r\noperations that\u00e2\u0080\u0099s why solution will get TL, if is equal to in most of\r\nthe queries. So you should calculate the answer for beforehand and\r\nmemorize it, in order to response such queries in . Complexity .\r\nImplementation\r\n"
+}

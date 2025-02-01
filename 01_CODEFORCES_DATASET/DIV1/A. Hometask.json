@@ -1,1 +1,103 @@
-{"link": "https://codeforces.com//contest/154/problem/A", "problemId": "954", "problem_idx": "A", "shortId": "154A", "contest_number": "154", "problem_submissions": {"E": [1231038, 1230512, 1358194], "D": [1225676, 1226429, 1228394, 1228749, 1229408, 1228702, 1229077, 1223939, 1227964, 1479286, 1228630, 1225612, 1229806, 1227500, 1227060], "C": [1223619, 1223667, 1223145, 1226138, 1224320, 1226736, 1226231, 1230453, 1229461, 1479267, 1226553, 1226465, 1225747, 1230469, 1224292, 1224323], "B": [1222804, 1227642, 1224517, 1223990, 1223294, 1225469, 1223473, 1226506, 1224622, 1479175, 1224138, 1223064, 1223792, 1223935, 1223500, 1223955, 1223146, 1223079], "A": [1221382, 1221463, 1226241, 1221946, 1222395, 1223447, 1221860, 1224559, 1222303, 1479137, 1222840, 1221809, 1230571, 1221518, 1221796, 1222615, 1221718]}, "name": "A. Hometask", "statement": "Sergey attends lessons of the -ish language. Each lesson he receives a\r\nhometask. This time the task is to translate some sentence to the -ish\r\nlanguage. Sentences of the -ish language can be represented as strings\r\nconsisting of lowercase Latin letters without spaces or punctuation\r\nmarks.Sergey totally forgot about the task until half an hour before the\r\nnext lesson and hastily scribbled something down. But then he\r\nrecollected that in the last lesson he learned the grammar of -ish. The\r\nspelling rules state that -ish contains some \"forbidden\" pairs of\r\nletters: such letters can never occur in a sentence next to each other.\r\nAlso, the order of the letters doesn\u2019t matter (for example, if the pair\r\nof letters \"\" is forbidden, then any occurrences of substrings \"\" and \"\"\r\nare also forbidden). Also, each pair has different letters and each\r\nletter occurs in no more than one forbidden pair.Now Sergey wants to\r\ncorrect his sentence so that it doesn\u2019t contain any \"forbidden\" pairs of\r\nletters that stand next to each other. However, he is running out of\r\ntime, so he decided to simply cross out some letters from the sentence.\r\nWhat smallest number of letters will he have to cross out? When a letter\r\nis crossed out, it is \"removed\" so that the letters to its left and\r\nright (if they existed), become neighboring. For example, if we cross\r\nout the first letter from the string \"\", we get the string \"\", and if we\r\ncross out the second letter, we get \"\".\r\n", "solutions": ["#include<stdio.h>\n#include<string.h>\nchar in[101000];\nint ot[300];\nchar tmp[10];\nint main(){\n    scanf(\"%s\",in);\n    int k;\n    scanf(\"%d\",&k);\n    while(k--){\n        scanf(\"%s\",tmp);\n        ot[tmp[0]]=tmp[1];\n        ot[tmp[1]]=tmp[0];\n    }\n    int i,j=0;\n    int ans=0;\n    for(i=0;in[i];i=j){\n        if(ot[in[i]]==0){\n            j=i+1;\n            continue;\n        }\n        int c1=0,c2=0;\n        while(in[j]&&(in[j]==in[i]||in[j]==ot[in[i]])){\n            if(in[j]==in[i])c1++;\n            else c2++;\n            j++;\n        }\n        if(c1>c2)c1=c2;\n        ans+=c1;\n    }\n    printf(\"%d\\n\",ans);\n}\n"], "input": "", "output": "", "tags": ["greedy"], "dificulty": "1600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/154/problem/A",
+    "problemId": "954",
+    "problem_idx": "A",
+    "shortId": "154A",
+    "contest_number": "154",
+    "problem_submissions": {
+        "E": [
+            1231038,
+            1230512,
+            1358194
+        ],
+        "D": [
+            1225676,
+            1226429,
+            1228394,
+            1228749,
+            1229408,
+            1228702,
+            1229077,
+            1223939,
+            1227964,
+            1479286,
+            1228630,
+            1225612,
+            1229806,
+            1227500,
+            1227060
+        ],
+        "C": [
+            1223619,
+            1223667,
+            1223145,
+            1226138,
+            1224320,
+            1226736,
+            1226231,
+            1230453,
+            1229461,
+            1479267,
+            1226553,
+            1226465,
+            1225747,
+            1230469,
+            1224292,
+            1224323
+        ],
+        "B": [
+            1222804,
+            1227642,
+            1224517,
+            1223990,
+            1223294,
+            1225469,
+            1223473,
+            1226506,
+            1224622,
+            1479175,
+            1224138,
+            1223064,
+            1223792,
+            1223935,
+            1223500,
+            1223955,
+            1223146,
+            1223079
+        ],
+        "A": [
+            1221382,
+            1221463,
+            1226241,
+            1221946,
+            1222395,
+            1223447,
+            1221860,
+            1224559,
+            1222303,
+            1479137,
+            1222840,
+            1221809,
+            1230571,
+            1221518,
+            1221796,
+            1222615,
+            1221718
+        ]
+    },
+    "name": "A. Hometask",
+    "statement": "Sergey attends lessons of the -ish language. Each lesson he receives a\r\nhometask. This time the task is to translate some sentence to the -ish\r\nlanguage. Sentences of the -ish language can be represented as strings\r\nconsisting of lowercase Latin letters without spaces or punctuation\r\nmarks.Sergey totally forgot about the task until half an hour before the\r\nnext lesson and hastily scribbled something down. But then he\r\nrecollected that in the last lesson he learned the grammar of -ish. The\r\nspelling rules state that -ish contains some \"forbidden\" pairs of\r\nletters: such letters can never occur in a sentence next to each other.\r\nAlso, the order of the letters doesn\u2019t matter (for example, if the pair\r\nof letters \"\" is forbidden, then any occurrences of substrings \"\" and \"\"\r\nare also forbidden). Also, each pair has different letters and each\r\nletter occurs in no more than one forbidden pair.Now Sergey wants to\r\ncorrect his sentence so that it doesn\u2019t contain any \"forbidden\" pairs of\r\nletters that stand next to each other. However, he is running out of\r\ntime, so he decided to simply cross out some letters from the sentence.\r\nWhat smallest number of letters will he have to cross out? When a letter\r\nis crossed out, it is \"removed\" so that the letters to its left and\r\nright (if they existed), become neighboring. For example, if we cross\r\nout the first letter from the string \"\", we get the string \"\", and if we\r\ncross out the second letter, we get \"\".\r\n",
+    "solutions": [
+        "#include<stdio.h>\n#include<string.h>\nchar in[101000];\nint ot[300];\nchar tmp[10];\nint main(){\n    scanf(\"%s\",in);\n    int k;\n    scanf(\"%d\",&k);\n    while(k--){\n        scanf(\"%s\",tmp);\n        ot[tmp[0]]=tmp[1];\n        ot[tmp[1]]=tmp[0];\n    }\n    int i,j=0;\n    int ans=0;\n    for(i=0;in[i];i=j){\n        if(ot[in[i]]==0){\n            j=i+1;\n            continue;\n        }\n        int c1=0,c2=0;\n        while(in[j]&&(in[j]==in[i]||in[j]==ot[in[i]])){\n            if(in[j]==in[i])c1++;\n            else c2++;\n            j++;\n        }\n        if(c1>c2)c1=c2;\n        ans+=c1;\n    }\n    printf(\"%d\\n\",ans);\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "greedy"
+    ],
+    "dificulty": "1600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Hometask.json",
+    "editorial_link": "https://codeforces.com//blog/entry/3969",
+    "editorial": "Constriction saying that no letter occurs in more than one forbidden\r\npair lets us to use the greedy solution. Without the constriction the\r\nproblem is quite hard. Let\u00e2\u0080\u0099s look at all occurences of letters from some\r\npair. They form several continuous substrings divided by some other\r\nletters. We can note that in optimal solution the substrings cannot\r\nmerge, \u00e2\u0080\u0099cause we can leave at least one letter in each of such parts.\r\nSo, for each of these substrings problem is solved independently. To\r\nresolve conflicts within a substring, one has to remove all letters of\r\nsome kind, \u00e2\u0080\u0099cause while there are letters of both kinds there will be\r\nconflicts. Clearly, from each continuous substring of forbidden letters\r\nwe remove all letters of the kind which number is less than another. The\r\nanswer can be counted in O(kN) with k runs through the string.\r\n"
+}

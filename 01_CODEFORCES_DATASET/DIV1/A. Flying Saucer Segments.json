@@ -1,1 +1,107 @@
-{"link": "https://codeforces.com//contest/226/problem/A", "problemId": "1849", "problem_idx": "A", "shortId": "226A", "contest_number": "226", "problem_submissions": {"D": [2242483, 2240843, 2242697, 2239811, 2241181, 2240471, 2243151, 2239681, 2243648, 2243129, 2242567, 2244564, 2243396, 2244004, 2242755, 2240654, 2242232, 2243688], "C": [2240518, 2242095, 2241935, 2242212, 2245368, 2243264, 2242355, 2244421, 2245094, 2240401, 2245716, 2240548, 2245297, 2273600, 2246168, 2251858], "B": [2238162, 2238317, 2238835, 2237653, 2238869, 2244282, 2240573, 2241479, 2239690, 2239960, 2240247, 2244047, 2239779, 2243326, 2239668, 2238560, 2240587, 2244817], "A": [2237392, 2237493, 2237370, 2238271, 2237948, 2237516, 2239157, 2243302, 2237640, 2237633, 2237332, 2273554, 2237740, 2237340, 2237663, 2237380, 2241341, 2242419], "E": [3877418, 2263890, 2247800]}, "name": "A. Flying Saucer Segments", "statement": "An expedition group flew from planet ACM-1 to Earth in order to study\r\nthe bipedal species (its representatives don\u2019t even have antennas on\r\ntheir heads!).The flying saucer, on which the brave pioneers set off,\r\nconsists of three sections. These sections are connected by a chain: the\r\n1-st section is adjacent only to the 2-nd one, the 2-nd one to the 1-st\r\nand the 3-rd ones, the 3-rd one only to the 2-nd one. The transitions\r\nare possible only between the adjacent sections.The spacecraft team\r\nconsists of aliens. Each of them is given a rank an integer from to .\r\nThe ranks of all astronauts are distinct. The rules established on the\r\nSaucer, state that an alien may move from section to section only if it\r\nis senior in rank to all aliens who are in the segments and (besides,\r\nthe segments and are of course required to be adjacent). Any alien\r\nrequires exactly minute to make a move. Besides, safety regulations\r\nrequire that no more than one alien moved at the same minute along the\r\nship.Alien is senior in rank to alien , if the number indicating rank ,\r\nis more than the corresponding number for .At the moment the whole\r\nsaucer team is in the 3-rd segment. They all need to move to the 1-st\r\nsegment. One member of the crew, the alien with the identification\r\nnumber CFR-140, decided to calculate the minimum time (in minutes) they\r\nwill need to perform this task.Help CFR-140, figure out the minimum time\r\n(in minutes) that all the astronauts will need to move from the 3-rd\r\nsegment to the 1-st one. Since this number can be rather large, count it\r\nmodulo .\r\n", "solutions": ["// @author peter50216\n// #includes {{{\n#include<stdio.h>\n#include<stdlib.h>\n#include<string.h>\n#include<math.h>\n#include<assert.h>\n#include<stdarg.h>\n#include<time.h>\n#include<limits.h>\n#include<ctype.h>\n#include<string>\n#include<map>\n#include<set>\n#include<queue>\n#include<algorithm>\n#include<vector>\n#include<iostream>\nusing namespace std;\n// }}}\n// #defines {{{\n#define FOR(i,c) for(__typeof((c).begin()) i=(c).begin();i!=(c).end();i++)\n#define SZ(x) ((int)(x).size())\n#define REP(i,n) for(int i=0;i<(n);i++)\n#define REP1(i,a,b) for(int i=(a);i<=(b);i++)\n#define PER(i,n) for(int i=(n)-1;i>=0;i--)\n#define PER1(i,a,b) for(int i=(b);i>=(a);i--)\n#define RI(x) scanf(\"%d\",&x)\n#define DRI(x) int x;RI(x)\n#define RII(x,y) scanf(\"%d%d\",&x,&y)\n#define DRII(x,y) int x,y;RII(x,y);\n#define RIII(x,y,z) scanf(\"%d%d\",&x,&y,&z)\n#define DRIII(x,y,z) int x,y,z;RIII(x,y,z);\n#define CASET int ___T,cas=1;scanf(\"%d\",&___T);while(___T--)\n#define CASEN0(n) int cas=1;while(scanf(\"%d\",&n)!=EOF&&n)\n#define CASEN(n) int cas=1;while(scanf(\"%d\",&n)!=EOF)\n#define MP make_pair\n#define PB push_back\n#define MS0(x) memset(x,0,sizeof(x))\n#define MS1(x) memset(x,-1,sizeof(x))\n#define SEP(x) ((x)?'\\n':' ')\n#define F first\n#define S second\ntypedef pair<int,int> PII;\ntypedef long long LL;\n// }}}\n\ninline int pow(int a,int b,int m){\n    if(b==0)return 1%m;\n    if(b==1)return a%m;\n    long long x=pow(a,b/2,m);\n    x=(x*x)%m;\n    if(b%2)x=(x*a)%m;\n    return x;\n}\nint main(){\n    int n,m;\n    RII(n,m);\n    printf(\"%d\\n\",(pow(3,n,m)+m-1)%m);\n}\n// vim: fdm=marker:commentstring=\\ \\\"\\ %s:nowrap:autoread\n\n"], "input": "", "output": "", "tags": ["math"], "dificulty": "1400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/226/problem/A",
+    "problemId": "1849",
+    "problem_idx": "A",
+    "shortId": "226A",
+    "contest_number": "226",
+    "problem_submissions": {
+        "D": [
+            2242483,
+            2240843,
+            2242697,
+            2239811,
+            2241181,
+            2240471,
+            2243151,
+            2239681,
+            2243648,
+            2243129,
+            2242567,
+            2244564,
+            2243396,
+            2244004,
+            2242755,
+            2240654,
+            2242232,
+            2243688
+        ],
+        "C": [
+            2240518,
+            2242095,
+            2241935,
+            2242212,
+            2245368,
+            2243264,
+            2242355,
+            2244421,
+            2245094,
+            2240401,
+            2245716,
+            2240548,
+            2245297,
+            2273600,
+            2246168,
+            2251858
+        ],
+        "B": [
+            2238162,
+            2238317,
+            2238835,
+            2237653,
+            2238869,
+            2244282,
+            2240573,
+            2241479,
+            2239690,
+            2239960,
+            2240247,
+            2244047,
+            2239779,
+            2243326,
+            2239668,
+            2238560,
+            2240587,
+            2244817
+        ],
+        "A": [
+            2237392,
+            2237493,
+            2237370,
+            2238271,
+            2237948,
+            2237516,
+            2239157,
+            2243302,
+            2237640,
+            2237633,
+            2237332,
+            2273554,
+            2237740,
+            2237340,
+            2237663,
+            2237380,
+            2241341,
+            2242419
+        ],
+        "E": [
+            3877418,
+            2263890,
+            2247800
+        ]
+    },
+    "name": "A. Flying Saucer Segments",
+    "statement": "An expedition group flew from planet ACM-1 to Earth in order to study\r\nthe bipedal species (its representatives don\u2019t even have antennas on\r\ntheir heads!).The flying saucer, on which the brave pioneers set off,\r\nconsists of three sections. These sections are connected by a chain: the\r\n1-st section is adjacent only to the 2-nd one, the 2-nd one to the 1-st\r\nand the 3-rd ones, the 3-rd one only to the 2-nd one. The transitions\r\nare possible only between the adjacent sections.The spacecraft team\r\nconsists of aliens. Each of them is given a rank an integer from to .\r\nThe ranks of all astronauts are distinct. The rules established on the\r\nSaucer, state that an alien may move from section to section only if it\r\nis senior in rank to all aliens who are in the segments and (besides,\r\nthe segments and are of course required to be adjacent). Any alien\r\nrequires exactly minute to make a move. Besides, safety regulations\r\nrequire that no more than one alien moved at the same minute along the\r\nship.Alien is senior in rank to alien , if the number indicating rank ,\r\nis more than the corresponding number for .At the moment the whole\r\nsaucer team is in the 3-rd segment. They all need to move to the 1-st\r\nsegment. One member of the crew, the alien with the identification\r\nnumber CFR-140, decided to calculate the minimum time (in minutes) they\r\nwill need to perform this task.Help CFR-140, figure out the minimum time\r\n(in minutes) that all the astronauts will need to move from the 3-rd\r\nsegment to the 1-st one. Since this number can be rather large, count it\r\nmodulo .\r\n",
+    "solutions": [
+        "// @author peter50216\n// #includes {{{\n#include<stdio.h>\n#include<stdlib.h>\n#include<string.h>\n#include<math.h>\n#include<assert.h>\n#include<stdarg.h>\n#include<time.h>\n#include<limits.h>\n#include<ctype.h>\n#include<string>\n#include<map>\n#include<set>\n#include<queue>\n#include<algorithm>\n#include<vector>\n#include<iostream>\nusing namespace std;\n// }}}\n// #defines {{{\n#define FOR(i,c) for(__typeof((c).begin()) i=(c).begin();i!=(c).end();i++)\n#define SZ(x) ((int)(x).size())\n#define REP(i,n) for(int i=0;i<(n);i++)\n#define REP1(i,a,b) for(int i=(a);i<=(b);i++)\n#define PER(i,n) for(int i=(n)-1;i>=0;i--)\n#define PER1(i,a,b) for(int i=(b);i>=(a);i--)\n#define RI(x) scanf(\"%d\",&x)\n#define DRI(x) int x;RI(x)\n#define RII(x,y) scanf(\"%d%d\",&x,&y)\n#define DRII(x,y) int x,y;RII(x,y);\n#define RIII(x,y,z) scanf(\"%d%d\",&x,&y,&z)\n#define DRIII(x,y,z) int x,y,z;RIII(x,y,z);\n#define CASET int ___T,cas=1;scanf(\"%d\",&___T);while(___T--)\n#define CASEN0(n) int cas=1;while(scanf(\"%d\",&n)!=EOF&&n)\n#define CASEN(n) int cas=1;while(scanf(\"%d\",&n)!=EOF)\n#define MP make_pair\n#define PB push_back\n#define MS0(x) memset(x,0,sizeof(x))\n#define MS1(x) memset(x,-1,sizeof(x))\n#define SEP(x) ((x)?'\\n':' ')\n#define F first\n#define S second\ntypedef pair<int,int> PII;\ntypedef long long LL;\n// }}}\n\ninline int pow(int a,int b,int m){\n    if(b==0)return 1%m;\n    if(b==1)return a%m;\n    long long x=pow(a,b/2,m);\n    x=(x*x)%m;\n    if(b%2)x=(x*a)%m;\n    return x;\n}\nint main(){\n    int n,m;\n    RII(n,m);\n    printf(\"%d\\n\",(pow(3,n,m)+m-1)%m);\n}\n// vim: fdm=marker:commentstring=\\ \\\"\\ %s:nowrap:autoread\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "math"
+    ],
+    "dificulty": "1400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Flying Saucer Segments.json",
+    "editorial_link": "https://codeforces.com/blog/entry/5378",
+    "editorial": "Let Fn be the answer for the task, where n is equal to the amount of aliens. Let's assume, that we've solved problem for n?-?1 aliens, i.e. we know the value of Fn?-?1. Let's try to find value of Fn. Notice, that the most junior alien in rank will be able to leave the 3rd section, if and only if all other aliens are in the 1st section. So, now we know first Fn?-?1 actions. Then the most junior alien may go to the 2nd section. To make for him entrance to the 1st section possible, it's necessary for all other aliens to return to the first one. So, Fn?-?1 more actions are necessary. At last, after the most junior alien will go to the 1st section, Fn?-?1 more actions are required for n?-?1 other aliens to return to the 1st section from the 3rd. So, Fn?=?Fn?-?1?+?1?+?Fn?-?1?+?1?+?Fn?-?1. It allows to count Fn using matrix exponentiation in O(log n), but we'll improve current solution. Let's add 1 to both parts of the equality and after elementary operations we'll have Fn?=?3\u00b7(Fn?-?1?+?1)?-?1. Now it's easy to solve this reccurence: Fn?=?3n?-?1.\n\nTo count Fn quickly you should use binary power method. Solution's complexity \u0097 O(log n).\n\nDon't forget that if 3n mod m?=?0, answer is equal to m?-?1, but not ?-?1.\n\nAnd, in conclusion, notice that the task is equal to Hanoi Towers problem with a slight modification (it's impossible to move disks between one pair of rods)."
+}

@@ -1,1 +1,98 @@
-{"link": "https://codeforces.com//contest/152/problem/C", "problemId": "941", "problem_idx": "C", "shortId": "152C", "contest_number": "152", "problem_submissions": {"B": [1212565, 1207677, 1207042, 1206882, 1206900, 1207302, 1207825, 1206753, 1207786, 1206733, 1206745, 1206774, 1207750, 1206760, 1207729, 1208102, 1207969, 1207121], "D": [1211886, 1212861, 1219761, 1213345, 1213307, 1213255], "E": [1211066, 1211301, 1211747, 1212613, 1212600, 1217294], "C": [1206348, 1207801, 1207657, 1206181, 1206349, 1208424, 1207196, 1206520, 1207288, 1207467, 1207400, 1207032, 1207706, 1207030, 1206886, 1207024, 1207629], "A": [1205923, 1205987, 1205997, 1205917, 1205971, 1205996, 1206021, 1205974, 1206016, 1205930, 1205981, 1205912, 1205927, 1206449, 1206138, 1206011, 1205963]}, "name": "C. Pocket Book", "statement": "One day little Vasya found mom\u2019s pocket book. The book had names of her\r\nfriends and unusually enough, each name was exactly letters long. Let\u2019s\r\nnumber the names from to in the order in which they are written.As mom\r\nwasn\u2019t home, Vasya decided to play with names: he chose three integers ,\r\n, (, ), then he took names number and and swapped their prefixes of\r\nlength . For example, if we take names \"\" and \"\" and swap their prefixes\r\nwith the length of , the result will be names \"\" and \"\".You wonder how\r\nmany different names Vasya can write instead of name number , if Vasya\r\nis allowed to perform any number of the described actions. As Vasya\r\nperforms each action, he chooses numbers , , independently from the\r\nprevious moves and his choice is based entirely on his will. The sought\r\nnumber can be very large, so you should only find it modulo .\r\n", "solutions": ["#include <vector>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <sstream>\n#include <iostream>\n#include <cstdio>\n#include <queue>\n#include <cmath>\n#include <cstdlib>\n#include <cstring>\n#include <ctime>\n#include <string>\n#include <cassert>\n\nusing namespace std;\n\n//----------------------zjut_DD for Topcoder-------------------------------\ntypedef long long LL;\ntypedef pair<int,int> PII;\ntypedef vector<int> VI;\ntypedef vector<string> VS;\n#define PB push_back\n#define MP make_pair\n#define ff first\n#define ss second\n#define sz(v) (int)v.size()\n#define all(c) c.begin(),c.end() \n#define clr(buf,val) memset(buf,val,sizeof(buf))\n#define rep(i,l,r) for(int i=(l);i<(r);i++)\n#define repv(i,v)  for(int i=0;i<(int)v.size();i++)\n#define repi(it,c) for(typeof(c.begin()) it=c.begin();it!=c.end();++it)\n//------------------------------------------------------------------------\n\nstring s[110];\nconst int mod=1000000007;\nint main(){\n\tint n, m;\n\twhile( cin>>n>>m){\n\t\trep(i, 0, n) cin>>s[i];\n\t\tint ans=1;\n\t\trep(j, 0, m){\n\t\t\tset<char> st;\n\t\t\trep(i, 0, n) st.insert(s[i][j]);\n\t\t\tans=ans*(LL)sz(st)%mod;\n\t\t}\n\t\tprintf(\"%d\\n\", ans);\n\t}\n}\n\n"], "input": "", "output": "", "tags": ["combinatorics"], "dificulty": "1400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/152/problem/C",
+    "problemId": "941",
+    "problem_idx": "C",
+    "shortId": "152C",
+    "contest_number": "152",
+    "problem_submissions": {
+        "B": [
+            1212565,
+            1207677,
+            1207042,
+            1206882,
+            1206900,
+            1207302,
+            1207825,
+            1206753,
+            1207786,
+            1206733,
+            1206745,
+            1206774,
+            1207750,
+            1206760,
+            1207729,
+            1208102,
+            1207969,
+            1207121
+        ],
+        "D": [
+            1211886,
+            1212861,
+            1219761,
+            1213345,
+            1213307,
+            1213255
+        ],
+        "E": [
+            1211066,
+            1211301,
+            1211747,
+            1212613,
+            1212600,
+            1217294
+        ],
+        "C": [
+            1206348,
+            1207801,
+            1207657,
+            1206181,
+            1206349,
+            1208424,
+            1207196,
+            1206520,
+            1207288,
+            1207467,
+            1207400,
+            1207032,
+            1207706,
+            1207030,
+            1206886,
+            1207024,
+            1207629
+        ],
+        "A": [
+            1205923,
+            1205987,
+            1205997,
+            1205917,
+            1205971,
+            1205996,
+            1206021,
+            1205974,
+            1206016,
+            1205930,
+            1205981,
+            1205912,
+            1205927,
+            1206449,
+            1206138,
+            1206011,
+            1205963
+        ]
+    },
+    "name": "C. Pocket Book",
+    "statement": "One day little Vasya found mom\u2019s pocket book. The book had names of her\r\nfriends and unusually enough, each name was exactly letters long. Let\u2019s\r\nnumber the names from to in the order in which they are written.As mom\r\nwasn\u2019t home, Vasya decided to play with names: he chose three integers ,\r\n, (, ), then he took names number and and swapped their prefixes of\r\nlength . For example, if we take names \"\" and \"\" and swap their prefixes\r\nwith the length of , the result will be names \"\" and \"\".You wonder how\r\nmany different names Vasya can write instead of name number , if Vasya\r\nis allowed to perform any number of the described actions. As Vasya\r\nperforms each action, he chooses numbers , , independently from the\r\nprevious moves and his choice is based entirely on his will. The sought\r\nnumber can be very large, so you should only find it modulo .\r\n",
+    "solutions": [
+        "#include <vector>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <sstream>\n#include <iostream>\n#include <cstdio>\n#include <queue>\n#include <cmath>\n#include <cstdlib>\n#include <cstring>\n#include <ctime>\n#include <string>\n#include <cassert>\n\nusing namespace std;\n\n//----------------------zjut_DD for Topcoder-------------------------------\ntypedef long long LL;\ntypedef pair<int,int> PII;\ntypedef vector<int> VI;\ntypedef vector<string> VS;\n#define PB push_back\n#define MP make_pair\n#define ff first\n#define ss second\n#define sz(v) (int)v.size()\n#define all(c) c.begin(),c.end() \n#define clr(buf,val) memset(buf,val,sizeof(buf))\n#define rep(i,l,r) for(int i=(l);i<(r);i++)\n#define repv(i,v)  for(int i=0;i<(int)v.size();i++)\n#define repi(it,c) for(typeof(c.begin()) it=c.begin();it!=c.end();++it)\n//------------------------------------------------------------------------\n\nstring s[110];\nconst int mod=1000000007;\nint main(){\n\tint n, m;\n\twhile( cin>>n>>m){\n\t\trep(i, 0, n) cin>>s[i];\n\t\tint ans=1;\n\t\trep(j, 0, m){\n\t\t\tset<char> st;\n\t\t\trep(i, 0, n) st.insert(s[i][j]);\n\t\t\tans=ans*(LL)sz(st)%mod;\n\t\t}\n\t\tprintf(\"%d\\n\", ans);\n\t}\n}\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "combinatorics"
+    ],
+    "dificulty": "1400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Pocket Book.json",
+    "editorial_link": "https://codeforces.com//blog/entry/3926",
+    "editorial": "In this task, it was necessary to understand that in position Vasya can\r\nget any name of a special form. More exactly, it\u00e2\u0080\u0099s the name of form = ,\r\nwhere the first letter of any of the names, the second letter of any of\r\nthe names, -th letter of any of the names. Then the answer to the\r\nproblem is the product of (), where is a number of different letters in\r\nthe names placed in position .\r\n"
+}

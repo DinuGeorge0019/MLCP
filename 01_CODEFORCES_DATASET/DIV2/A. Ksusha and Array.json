@@ -1,1 +1,97 @@
-{"link": "https://codeforces.com//contest/299/problem/A", "problemId": "2891", "problem_idx": "A", "shortId": "299A", "contest_number": "299", "problem_submissions": {"E": [3605814, 3606062, 3606807, 3606793, 3606966, 3606745, 3606438, 3609554], "C": [3604035, 3603784, 3603782, 3603736, 3604628, 3604920, 3603414, 3603334, 3603157, 3603654, 3603737, 3604749, 3603386, 3603560, 3603362, 3603363, 3603600, 3602836], "B": [3602158, 3602245, 3602145, 3602426, 3602977, 3603984, 3601603, 3602069, 3603193, 3602012, 3602461, 3602235, 3601937, 3601885, 3602054, 3602242, 3602249, 3602180, 3601769], "A": [3601569, 3601528, 3601578, 3601667, 3601919, 3601657, 3601525, 3601619, 3601530, 3601590, 3601580, 3601595, 3601574, 3601531, 3601593, 3601778, 3601702, 3603276]}, "name": "A. Ksusha and Array", "statement": "Ksusha is a beginner coder. Today she starts studying arrays. She has\r\narray , consisting of positive integers.Her university teacher gave her\r\na task. Find such number in the array, that all array elements are\r\ndivisible by it. Help her and find the number!\r\n", "solutions": ["//include\n//------------------------------------------\n#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <cctype>\n#include <string>\n#include <cstring>\n#include <ctime>\n#include <queue>\n#include <climits>\nusing namespace std;\n\n//conversion\n//------------------------------------------\ninline int toInt(string s) {int v; istringstream sin(s);sin>>v;return v;}\ntemplate<class T> inline string toString(T x) {ostringstream sout;sout<<x;return sout.str();}\n\n//math\n//-------------------------------------------\ntemplate<class T> inline T sqr(T x) {return x*x;}\n\n//typedef\n//------------------------------------------\ntypedef vector<int> VI;\ntypedef vector<VI> VVI;\ntypedef vector<string> VS;\ntypedef pair<int, int> P;\ntypedef long long ll;\n\n//container util\n//------------------------------------------\n#define ALL(a)  (a).begin(),(a).end()\n#define RALL(a) (a).rbegin(), (a).rend()\n#define pb push_back\n#define mp make_pair\n#define SZ(a) int((a).size())\n#define EACH(i,c) for(typeof((c).begin()) i=(c).begin(); i!=(c).end(); ++i)\n#define EXIST(s,e) ((s).find(e)!=(s).end())\n#define SORT(c) sort((c).begin(),(c).end())\n#define fi first\n#define se second\n\n//repetition\n//------------------------------------------\n#define FOR(i,a,b) for(int i=(a);i<(b);++i)\n#define rep(i,n)  FOR(i,0,n)\n#define foreach(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n\n//constant\n//--------------------------------------------\nconst double EPS = 1e-10;\nconst double PI  = acos(-1.0);\nconst int dx[] = {-1,1,0,0};\nconst int dy[] = {0,0,1,-1};\n\n//clear memory\n#define CLR(a) memset((a), 0 ,sizeof(a))\n\n//debug\n#define dump(x)  cerr << #x << \" = \" << (x) << endl;\n#define debug(x) cerr << #x << \" = \" << (x) << \" (L\" << __LINE__ << \")\" << \" \" << __FILE__ << endl;\n\nint n;\nint a[100010];\nint g;\n\nint main(){\n    cin >> n;\n    rep(i, n){\n\tcin >> a[i];\n\tif(!i) g = a[i];\n\telse g = __gcd(g, a[i]);\n    }\n    rep(i, n){\n\tif(g % a[i] == 0){\n\t    cout << a[i] << endl;\n\t    return 0;\n\t}\n    }\n    cout << \"-1\" << endl;\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["brute force", "number theory", "sortings"], "dificulty": "1000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/299/problem/A",
+    "problemId": "2891",
+    "problem_idx": "A",
+    "shortId": "299A",
+    "contest_number": "299",
+    "problem_submissions": {
+        "E": [
+            3605814,
+            3606062,
+            3606807,
+            3606793,
+            3606966,
+            3606745,
+            3606438,
+            3609554
+        ],
+        "C": [
+            3604035,
+            3603784,
+            3603782,
+            3603736,
+            3604628,
+            3604920,
+            3603414,
+            3603334,
+            3603157,
+            3603654,
+            3603737,
+            3604749,
+            3603386,
+            3603560,
+            3603362,
+            3603363,
+            3603600,
+            3602836
+        ],
+        "B": [
+            3602158,
+            3602245,
+            3602145,
+            3602426,
+            3602977,
+            3603984,
+            3601603,
+            3602069,
+            3603193,
+            3602012,
+            3602461,
+            3602235,
+            3601937,
+            3601885,
+            3602054,
+            3602242,
+            3602249,
+            3602180,
+            3601769
+        ],
+        "A": [
+            3601569,
+            3601528,
+            3601578,
+            3601667,
+            3601919,
+            3601657,
+            3601525,
+            3601619,
+            3601530,
+            3601590,
+            3601580,
+            3601595,
+            3601574,
+            3601531,
+            3601593,
+            3601778,
+            3601702,
+            3603276
+        ]
+    },
+    "name": "A. Ksusha and Array",
+    "statement": "Ksusha is a beginner coder. Today she starts studying arrays. She has\r\narray , consisting of positive integers.Her university teacher gave her\r\na task. Find such number in the array, that all array elements are\r\ndivisible by it. Help her and find the number!\r\n",
+    "solutions": [
+        "//include\n//------------------------------------------\n#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <cctype>\n#include <string>\n#include <cstring>\n#include <ctime>\n#include <queue>\n#include <climits>\nusing namespace std;\n\n//conversion\n//------------------------------------------\ninline int toInt(string s) {int v; istringstream sin(s);sin>>v;return v;}\ntemplate<class T> inline string toString(T x) {ostringstream sout;sout<<x;return sout.str();}\n\n//math\n//-------------------------------------------\ntemplate<class T> inline T sqr(T x) {return x*x;}\n\n//typedef\n//------------------------------------------\ntypedef vector<int> VI;\ntypedef vector<VI> VVI;\ntypedef vector<string> VS;\ntypedef pair<int, int> P;\ntypedef long long ll;\n\n//container util\n//------------------------------------------\n#define ALL(a)  (a).begin(),(a).end()\n#define RALL(a) (a).rbegin(), (a).rend()\n#define pb push_back\n#define mp make_pair\n#define SZ(a) int((a).size())\n#define EACH(i,c) for(typeof((c).begin()) i=(c).begin(); i!=(c).end(); ++i)\n#define EXIST(s,e) ((s).find(e)!=(s).end())\n#define SORT(c) sort((c).begin(),(c).end())\n#define fi first\n#define se second\n\n//repetition\n//------------------------------------------\n#define FOR(i,a,b) for(int i=(a);i<(b);++i)\n#define rep(i,n)  FOR(i,0,n)\n#define foreach(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n\n//constant\n//--------------------------------------------\nconst double EPS = 1e-10;\nconst double PI  = acos(-1.0);\nconst int dx[] = {-1,1,0,0};\nconst int dy[] = {0,0,1,-1};\n\n//clear memory\n#define CLR(a) memset((a), 0 ,sizeof(a))\n\n//debug\n#define dump(x)  cerr << #x << \" = \" << (x) << endl;\n#define debug(x) cerr << #x << \" = \" << (x) << \" (L\" << __LINE__ << \")\" << \" \" << __FILE__ << endl;\n\nint n;\nint a[100010];\nint g;\n\nint main(){\n    cin >> n;\n    rep(i, n){\n\tcin >> a[i];\n\tif(!i) g = a[i];\n\telse g = __gcd(g, a[i]);\n    }\n    rep(i, n){\n\tif(g % a[i] == 0){\n\t    cout << a[i] << endl;\n\t    return 0;\n\t}\n    }\n    cout << \"-1\" << endl;\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "number theory",
+        "sortings"
+    ],
+    "dificulty": "1000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Ksusha and Array.json",
+    "editorial_link": "https://codeforces.com/blog/entry/7516",
+    "editorial": "If divide than . So the number which will divide every other number\r\nshould be less than or equal to every other number, so the only possible\r\ncandidate it\u00e2\u0080\u0099s the minimum in the array. So just check whether all\r\nelements are divisible by the minimal one.\r\n"
+}

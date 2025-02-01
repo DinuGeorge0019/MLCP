@@ -1,1 +1,102 @@
-{"link": "https://codeforces.com//contest/365/problem/B", "problemId": "4037", "problem_idx": "B", "shortId": "365B", "contest_number": "365", "problem_submissions": {"D": [5161161, 5161283, 5157384, 5159815, 5158624, 5166469, 5178120, 5170486, 5160944, 5162347], "E": [5158821, 5170866, 5166357, 5165530, 5170983, 5164746], "B": [5151375, 5150963, 5158725, 5151658, 5151363, 5150980, 5151686, 5152429, 5152202, 5152201, 5151731, 5151488, 5151955, 5151063, 5151172, 5152598, 5152621, 5153442], "A": [5150339, 5150212, 5155091, 5150784, 5150472, 5150332, 5150310, 5150370, 5150233, 5150237, 5150565, 5150277, 5150807, 5150147, 5150215, 5150852, 5150793, 5151650], "C": [5155955, 5153146, 5157421, 5169511, 5154928, 5157528, 5157115, 5178157, 5156809, 5157646, 5156758, 5158767, 5156252, 5158740, 5158464, 5159088]}, "name": "B. The Fibonacci Segment", "statement": "You have array . Segment () is good if , for all .Let\u2019s define , is the\r\nlength of the segment . Segment , is longer than segment , if .Your task\r\nis to find a good segment of the maximum length in array . Note that a\r\nsegment of length or is always good.\r\n", "solutions": ["#include <stdio.h>\n#include <string.h>\n\nint main(){\n\n    int test;\n    int ans=0,now=0;\n    long long prev1,prev2,temp;\n\n    for( scanf(\"%d\",&test) ; test-- ; ){\n        if( now==0 ){\n            scanf(\"%I64d\",&prev2);\n            now=1;\n        }\n        else if( now==1 ){\n            scanf(\"%I64d\",&prev1);\n            now=2;\n        }\n        else{\n            scanf(\"%I64d\",&temp);\n            if( prev1+prev2!=temp ){\n                now=2;  \n            }\n            else{\n                now++;\n            }\n            prev2=prev1;\n            prev1=temp; \n        }\n        \n        if( now>ans ) ans=now;\n    }\n    printf(\"%d\\n\",ans);\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["implementation"], "dificulty": "1100", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/365/problem/B",
+    "problemId": "4037",
+    "problem_idx": "B",
+    "shortId": "365B",
+    "contest_number": "365",
+    "problem_submissions": {
+        "D": [
+            5161161,
+            5161283,
+            5157384,
+            5159815,
+            5158624,
+            5166469,
+            5178120,
+            5170486,
+            5160944,
+            5162347
+        ],
+        "E": [
+            5158821,
+            5170866,
+            5166357,
+            5165530,
+            5170983,
+            5164746
+        ],
+        "B": [
+            5151375,
+            5150963,
+            5158725,
+            5151658,
+            5151363,
+            5150980,
+            5151686,
+            5152429,
+            5152202,
+            5152201,
+            5151731,
+            5151488,
+            5151955,
+            5151063,
+            5151172,
+            5152598,
+            5152621,
+            5153442
+        ],
+        "A": [
+            5150339,
+            5150212,
+            5155091,
+            5150784,
+            5150472,
+            5150332,
+            5150310,
+            5150370,
+            5150233,
+            5150237,
+            5150565,
+            5150277,
+            5150807,
+            5150147,
+            5150215,
+            5150852,
+            5150793,
+            5151650
+        ],
+        "C": [
+            5155955,
+            5153146,
+            5157421,
+            5169511,
+            5154928,
+            5157528,
+            5157115,
+            5178157,
+            5156809,
+            5157646,
+            5156758,
+            5158767,
+            5156252,
+            5158740,
+            5158464,
+            5159088
+        ]
+    },
+    "name": "B. The Fibonacci Segment",
+    "statement": "You have array . Segment () is good if , for all .Let\u2019s define , is the\r\nlength of the segment . Segment , is longer than segment , if .Your task\r\nis to find a good segment of the maximum length in array . Note that a\r\nsegment of length or is always good.\r\n",
+    "solutions": [
+        "#include <stdio.h>\n#include <string.h>\n\nint main(){\n\n    int test;\n    int ans=0,now=0;\n    long long prev1,prev2,temp;\n\n    for( scanf(\"%d\",&test) ; test-- ; ){\n        if( now==0 ){\n            scanf(\"%I64d\",&prev2);\n            now=1;\n        }\n        else if( now==1 ){\n            scanf(\"%I64d\",&prev1);\n            now=2;\n        }\n        else{\n            scanf(\"%I64d\",&temp);\n            if( prev1+prev2!=temp ){\n                now=2;  \n            }\n            else{\n                now++;\n            }\n            prev2=prev1;\n            prev1=temp; \n        }\n        \n        if( now>ans ) ans=now;\n    }\n    printf(\"%d\\n\",ans);\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation"
+    ],
+    "dificulty": "1100",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. The Fibonacci Segment.json",
+    "editorial_link": "https://codeforces.com//blog/entry/9657",
+    "editorial": "Good sequence may contain only zeroes or contain some positive number. In the second case such a sequence is not longer than sequence {0,?1,?1,?2,?3,?5,?8,?...,?x,?y} where y?>?109 and x???109. That's possible to find it using dummy algorithm. In the first case you may use binary search of two pointers.\n"
+}

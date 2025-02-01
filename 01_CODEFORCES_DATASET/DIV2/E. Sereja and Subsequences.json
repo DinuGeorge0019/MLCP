@@ -1,1 +1,101 @@
-{"link": "https://codeforces.com//contest/315/problem/E", "problemId": "3137", "problem_idx": "E", "shortId": "315E", "contest_number": "315", "problem_submissions": {"D": [3839378, 3835996, 3836633, 3840727, 3839410, 3842603, 3840070, 3842376, 3840954, 3840951, 3847146, 3854666], "E": [3839105, 3840643, 3838934, 3841894, 3842575, 3854729], "B": [3836129, 3832463, 3834203, 3833545, 3833336, 3831852, 3833749, 3835799, 3831777, 3842650, 3835295, 3833206, 3833365, 3834515, 3835102, 3833302, 3834530], "A": [3834029, 3831727, 3832271, 3832136, 3837854, 3833804, 3832476, 3842652, 3833993, 3832140, 3847870, 3832027, 3839153, 3831978, 3832841], "C": [3834613, 3839057, 3836478, 3837667, 3841764, 3835892, 3840284, 3834922, 3842622, 3841180, 3838323, 3835768, 3836939, 3838736, 3837885, 3839838]}, "name": "E. Sereja and Subsequences", "statement": "Sereja has a sequence that consists of positive integers, . First Sereja\r\ntook a piece of squared paper and wrote all non-empty non-decreasing\r\nsubsequences of sequence . Then for each sequence written on the squared\r\npaper, Sereja wrote on a piece of lines paper all sequences that it.A\r\nsequence of positive integers doesn\u2019t exceed a sequence of positive\r\nintegers , if the following inequation holds: .Now Sereja wonders, how\r\nmany sequences are written on the lines piece of paper. Help Sereja,\r\nfind the required quantity modulo .\r\n", "solutions": ["#include<stdio.h>\n#include<queue>\n#include<string.h>\n#include<ctype.h>\n#include<algorithm>\nusing namespace std;\ntypedef long long LL;\nconst int MAX=2100000;\nconst LL MOD=1000000007;\nconst int INF=1000000000;\nLL a[MAX];\nLL qwWE[MAX],c;\nLL Suhm[MAX];\nLL EWM[MAX];\nLL cur[MAX];\nLL WEAY(int t)\n{\n    LL ret=0;\n    while(t>0)\n    {\n        ret+=Suhm[t];\n        if(ret>=MOD)ret-=MOD;\n        t-=(-t)&t;\n    }\n    return ret;\n}\nLL inse(int t,int n,LL v)\n{\n    while(t<=n)\n    {\n        Suhm[t]+=v;\n        if(Suhm[t]>=MOD)Suhm[t]-=MOD;\n        t+=(-t)&t;\n    }\n    return 0;\n}\nint main()\n{\n    int T;\n    LL n,k;\n    int i,j;\n    LL tot=0;\n    while(scanf(\"%I64d\",&n,&k)!=EOF)\n    {\n        for(i=0;i<n;i++)\n        {\n            scanf(\"%I64d\",&a[i]);\n            qwWE[i]=a[i];\n        }\n        sort(qwWE,qwWE+n);\n        c=unique(qwWE,qwWE+n)-qwWE;\n        LL ans=0;\n        for(i=0;i<=c;i++)\n        {\n            EWM[i]=0;\n            cur[i]=0;\n            Suhm[i]=0;\n        }\n        for(i=0;i<n;i++)\n        {\n            j=lower_bound(qwWE,qwWE+c,a[i])-qwWE+1;\n            EWM[j]=cur[j];\n            cur[j]=(WEAY(j)*a[i]+a[i])%MOD;\n            LL tmp=cur[j]-EWM[j];\n            if(tmp<0)tmp+=MOD;\n            inse(j,c,tmp);\n        }\n        for(i=1;i<=c;i++)\n        {\n            ans+=cur[i];\n        }\n        ans%=MOD;\n        if(ans<0)ans+=MOD;\n        printf(\"%I64d\\n\",ans);\n    }\n}"], "input": "", "output": "", "tags": ["combinatorics", "data structures"], "dificulty": "2000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/315/problem/E",
+    "problemId": "3137",
+    "problem_idx": "E",
+    "shortId": "315E",
+    "contest_number": "315",
+    "problem_submissions": {
+        "D": [
+            3839378,
+            3835996,
+            3836633,
+            3840727,
+            3839410,
+            3842603,
+            3840070,
+            3842376,
+            3840954,
+            3840951,
+            3847146,
+            3854666
+        ],
+        "E": [
+            3839105,
+            3840643,
+            3838934,
+            3841894,
+            3842575,
+            3854729
+        ],
+        "B": [
+            3836129,
+            3832463,
+            3834203,
+            3833545,
+            3833336,
+            3831852,
+            3833749,
+            3835799,
+            3831777,
+            3842650,
+            3835295,
+            3833206,
+            3833365,
+            3834515,
+            3835102,
+            3833302,
+            3834530
+        ],
+        "A": [
+            3834029,
+            3831727,
+            3832271,
+            3832136,
+            3837854,
+            3833804,
+            3832476,
+            3842652,
+            3833993,
+            3832140,
+            3847870,
+            3832027,
+            3839153,
+            3831978,
+            3832841
+        ],
+        "C": [
+            3834613,
+            3839057,
+            3836478,
+            3837667,
+            3841764,
+            3835892,
+            3840284,
+            3834922,
+            3842622,
+            3841180,
+            3838323,
+            3835768,
+            3836939,
+            3838736,
+            3837885,
+            3839838
+        ]
+    },
+    "name": "E. Sereja and Subsequences",
+    "statement": "Sereja has a sequence that consists of positive integers, . First Sereja\r\ntook a piece of squared paper and wrote all non-empty non-decreasing\r\nsubsequences of sequence . Then for each sequence written on the squared\r\npaper, Sereja wrote on a piece of lines paper all sequences that it.A\r\nsequence of positive integers doesn\u2019t exceed a sequence of positive\r\nintegers , if the following inequation holds: .Now Sereja wonders, how\r\nmany sequences are written on the lines piece of paper. Help Sereja,\r\nfind the required quantity modulo .\r\n",
+    "solutions": [
+        "#include<stdio.h>\n#include<queue>\n#include<string.h>\n#include<ctype.h>\n#include<algorithm>\nusing namespace std;\ntypedef long long LL;\nconst int MAX=2100000;\nconst LL MOD=1000000007;\nconst int INF=1000000000;\nLL a[MAX];\nLL qwWE[MAX],c;\nLL Suhm[MAX];\nLL EWM[MAX];\nLL cur[MAX];\nLL WEAY(int t)\n{\n    LL ret=0;\n    while(t>0)\n    {\n        ret+=Suhm[t];\n        if(ret>=MOD)ret-=MOD;\n        t-=(-t)&t;\n    }\n    return ret;\n}\nLL inse(int t,int n,LL v)\n{\n    while(t<=n)\n    {\n        Suhm[t]+=v;\n        if(Suhm[t]>=MOD)Suhm[t]-=MOD;\n        t+=(-t)&t;\n    }\n    return 0;\n}\nint main()\n{\n    int T;\n    LL n,k;\n    int i,j;\n    LL tot=0;\n    while(scanf(\"%I64d\",&n,&k)!=EOF)\n    {\n        for(i=0;i<n;i++)\n        {\n            scanf(\"%I64d\",&a[i]);\n            qwWE[i]=a[i];\n        }\n        sort(qwWE,qwWE+n);\n        c=unique(qwWE,qwWE+n)-qwWE;\n        LL ans=0;\n        for(i=0;i<=c;i++)\n        {\n            EWM[i]=0;\n            cur[i]=0;\n            Suhm[i]=0;\n        }\n        for(i=0;i<n;i++)\n        {\n            j=lower_bound(qwWE,qwWE+c,a[i])-qwWE+1;\n            EWM[j]=cur[j];\n            cur[j]=(WEAY(j)*a[i]+a[i])%MOD;\n            LL tmp=cur[j]-EWM[j];\n            if(tmp<0)tmp+=MOD;\n            inse(j,c,tmp);\n        }\n        for(i=1;i<=c;i++)\n        {\n            ans+=cur[i];\n        }\n        ans%=MOD;\n        if(ans<0)ans+=MOD;\n        printf(\"%I64d\\n\",ans);\n    }\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "combinatorics",
+        "data structures"
+    ],
+    "dificulty": "2000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Sereja and Subsequences.json",
+    "editorial_link": "https://codeforces.com//blog/entry/7905",
+    "editorial": "It is clear that we need to calculate the sum of the products of elements of all the different non-decreasing subsequences of given sequence. Let's go through the sequence from left to right and maintain the array q[i]: what means the sum of all relevant sub-sequences, such that their last element is equal to i. Clearly, if the next number is x, then you need to put q[x] = sum (q[1] + q[2] + ... + q[x]) * x + x. The answer to the problem is the sum of q[i]. To find all the amounts you can use Fenwick tree."
+}

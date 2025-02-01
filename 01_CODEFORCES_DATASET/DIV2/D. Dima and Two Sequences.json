@@ -1,1 +1,103 @@
-{"link": "https://codeforces.com//contest/272/problem/D", "problemId": "2625", "problem_idx": "D", "shortId": "272D", "contest_number": "272", "problem_submissions": {"E": [3118319, 3118237, 3120547, 3121598, 3118047, 21764880, 3234980], "D": [3116079, 3119680, 3119390, 3118061, 3123255, 3116398, 3118778, 3119626, 3118105, 3119321, 3118815, 3120080, 3120415, 3120111, 3119541], "C": [3113880, 3114625, 3115575, 3120690, 3121462, 3114256, 3115381, 3116832, 3115695, 3116067, 3115638, 3116593, 3113387, 3116789, 3116062], "B": [3112843, 3112738, 3113998, 3114242, 3113384, 3112383, 3113900, 3114125, 3113347, 3113096, 3113583, 3113472, 3112484, 3113317, 3114065], "A": [3112197, 3112187, 3112490, 3114499, 3112321, 3112173, 3112427, 3112555, 3113875, 3112252, 3112599, 3112277, 3112185, 3114082, 3112780]}, "name": "D. Dima and Two Sequences", "statement": "Little Dima has two sequences of points with integer coordinates:\r\nsequence and sequence .Now Dima wants to count the number of distinct\r\nsequences of points of length that can be assembled from these\r\nsequences, such that the -coordinates of points in the assembled\r\nsequence will . Help him with that. Note that each element of the\r\ninitial sequences should be used exactly once in the assembled\r\nsequence.Dima considers two assembled sequences and distinct, if there\r\nis such , that .As the answer can be rather large, print the remainder\r\nfrom dividing the answer by number .\r\n", "solutions": ["#include<cstdio>\n#include<iostream>\n#include<cmath>\n#include<cstring>\n#include<cstdlib>\n#include<string>\n#include<vector>\n#include<map>\n#include<set>\n#include<algorithm>\n#include<cassert>\n#include<ctime>\nusing namespace std;\n\n#define rep(i,n) for(int i = 0; i < (int)n; i++)\n#define FOR(i,n,m) for(int i = (int)n; i <= (int)m; i++)\n#define FOD(i,n,m) for(int i = (int)n; i >= (int)m; i--)\n\ntypedef long long i64;\ntypedef pair<int, int> PI;\n\n#define sz(v) ((i64)(v).size())\n#define all(v) (v).begin(),(v).end()\n#define bit(n) (1LL<<(i64)(n))\n#define each(i,v) for(__typeof((v).begin()) i = (v).begin(); i != (v).end(); i++)\n\n#define PB push_back\n#define MP make_pair\n#define X first\n#define Y second\n\ntemplate<class T> void fmax(T &a, T b) { if (a < b) a = b; }\ntemplate<class T> void fmin(T &a, T b) { if (a > b) a = b; }\n\nint n, m;\npair<int, int> a[200010];\nlong long ans = 1;\n\nvoid calc(int a, int b) {\n//\tcout << a << b << endl;\n\tFOR(i, 2, a) {\n\t\tint x = i;\n\t\twhile (b && x % 2 == 0) x = x >> 1, b--;\n\t\tans = ans * x % m;\n\t}\n}\n\nint main() {\n\tcin >> n;\n\trep(i, n) cin >> a[i].X, a[i].Y = i + 1;\n\trep(i, n) cin >> a[i + n].X, a[i + n].Y = i + 1;\n\tn = n + n;\n\tsort(a, a + n);\n\tcin >> m;\n\tint j = 0, c = 0;\n\trep(i, n) {\n\t\tif (i != j && a[i] == a[i - 1]) c++;\n\t\tif (i == n - 1 || a[i].X != a[i + 1].X) {\n\t\t\tcalc(i - j + 1, c);\n\t\t\tj = i + 1;\n\t\t\tc = 0;\n\t\t}\n\t}\n\tcout << ans << endl;\n}\n\n"], "input": "", "output": "", "tags": ["combinatorics", "math", "sortings"], "dificulty": "1600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/272/problem/D",
+    "problemId": "2625",
+    "problem_idx": "D",
+    "shortId": "272D",
+    "contest_number": "272",
+    "problem_submissions": {
+        "E": [
+            3118319,
+            3118237,
+            3120547,
+            3121598,
+            3118047,
+            21764880,
+            3234980
+        ],
+        "D": [
+            3116079,
+            3119680,
+            3119390,
+            3118061,
+            3123255,
+            3116398,
+            3118778,
+            3119626,
+            3118105,
+            3119321,
+            3118815,
+            3120080,
+            3120415,
+            3120111,
+            3119541
+        ],
+        "C": [
+            3113880,
+            3114625,
+            3115575,
+            3120690,
+            3121462,
+            3114256,
+            3115381,
+            3116832,
+            3115695,
+            3116067,
+            3115638,
+            3116593,
+            3113387,
+            3116789,
+            3116062
+        ],
+        "B": [
+            3112843,
+            3112738,
+            3113998,
+            3114242,
+            3113384,
+            3112383,
+            3113900,
+            3114125,
+            3113347,
+            3113096,
+            3113583,
+            3113472,
+            3112484,
+            3113317,
+            3114065
+        ],
+        "A": [
+            3112197,
+            3112187,
+            3112490,
+            3114499,
+            3112321,
+            3112173,
+            3112427,
+            3112555,
+            3113875,
+            3112252,
+            3112599,
+            3112277,
+            3112185,
+            3114082,
+            3112780
+        ]
+    },
+    "name": "D. Dima and Two Sequences",
+    "statement": "Little Dima has two sequences of points with integer coordinates:\r\nsequence and sequence .Now Dima wants to count the number of distinct\r\nsequences of points of length that can be assembled from these\r\nsequences, such that the -coordinates of points in the assembled\r\nsequence will . Help him with that. Note that each element of the\r\ninitial sequences should be used exactly once in the assembled\r\nsequence.Dima considers two assembled sequences and distinct, if there\r\nis such , that .As the answer can be rather large, print the remainder\r\nfrom dividing the answer by number .\r\n",
+    "solutions": [
+        "#include<cstdio>\n#include<iostream>\n#include<cmath>\n#include<cstring>\n#include<cstdlib>\n#include<string>\n#include<vector>\n#include<map>\n#include<set>\n#include<algorithm>\n#include<cassert>\n#include<ctime>\nusing namespace std;\n\n#define rep(i,n) for(int i = 0; i < (int)n; i++)\n#define FOR(i,n,m) for(int i = (int)n; i <= (int)m; i++)\n#define FOD(i,n,m) for(int i = (int)n; i >= (int)m; i--)\n\ntypedef long long i64;\ntypedef pair<int, int> PI;\n\n#define sz(v) ((i64)(v).size())\n#define all(v) (v).begin(),(v).end()\n#define bit(n) (1LL<<(i64)(n))\n#define each(i,v) for(__typeof((v).begin()) i = (v).begin(); i != (v).end(); i++)\n\n#define PB push_back\n#define MP make_pair\n#define X first\n#define Y second\n\ntemplate<class T> void fmax(T &a, T b) { if (a < b) a = b; }\ntemplate<class T> void fmin(T &a, T b) { if (a > b) a = b; }\n\nint n, m;\npair<int, int> a[200010];\nlong long ans = 1;\n\nvoid calc(int a, int b) {\n//\tcout << a << b << endl;\n\tFOR(i, 2, a) {\n\t\tint x = i;\n\t\twhile (b && x % 2 == 0) x = x >> 1, b--;\n\t\tans = ans * x % m;\n\t}\n}\n\nint main() {\n\tcin >> n;\n\trep(i, n) cin >> a[i].X, a[i].Y = i + 1;\n\trep(i, n) cin >> a[i + n].X, a[i + n].Y = i + 1;\n\tn = n + n;\n\tsort(a, a + n);\n\tcin >> m;\n\tint j = 0, c = 0;\n\trep(i, n) {\n\t\tif (i != j && a[i] == a[i - 1]) c++;\n\t\tif (i == n - 1 || a[i].X != a[i + 1].X) {\n\t\t\tcalc(i - j + 1, c);\n\t\t\tj = i + 1;\n\t\t\tc = 0;\n\t\t}\n\t}\n\tcout << ans << endl;\n}\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "combinatorics",
+        "math",
+        "sortings"
+    ],
+    "dificulty": "1600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Dima and Two Sequences.json",
+    "editorial_link": "https://codeforces.com//blog/entry/6625",
+    "editorial": "Not hard to understand that answer will be (number of numbers with first coordinate = 1)! * (number of numbers with first coordinate = 2)! * ... * (number of numbers with first coordinate = 10^9)!/(2^(number of such i = 1..n, that Ai=Bi)). The only problem was to divide number with non prime modulo, it can be easely done if we will count number of prime mulpiplies=2 in all factorials. Then we can simply substract number that we need and multiply answer for some power of 2."
+}

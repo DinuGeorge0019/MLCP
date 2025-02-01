@@ -1,1 +1,101 @@
-{"link": "https://codeforces.com//contest/416/problem/D", "problemId": "8298", "problem_idx": "D", "shortId": "416D", "contest_number": "416", "problem_submissions": {"E": [6343446, 6342010, 6345905, 6345786, 6345780, 6345773], "D": [6339770, 6344331, 6341205, 6342895, 6343208, 6342314], "C": [6337298, 6337895, 6338062, 6340196, 6337743, 6338820, 6338400, 6338250, 6338293, 6337870, 6340982, 6339823, 6341497, 6338189, 6339580, 6337965, 6340260, 6340014], "B": [6336584, 6336919, 6336609, 6338408, 6338336, 6337856, 6337221, 6337301, 6340247, 6336851, 6339693, 6338067, 6337890, 6336878, 6337704, 6336869, 6338043, 6338578], "A": [6336344, 6336437, 6336373, 6336510, 6336806, 6336676, 6336386, 6337013, 6336347, 6337152, 6336694, 6336923, 6336396, 6336944, 6336382, 6336809, 6336583]}, "name": "D. Population Size", "statement": "Polycarpus develops an interesting theory about the interrelation of\r\narithmetic progressions with just everything in the world. His current\r\nidea is that the population of the capital of Berland changes over time\r\nlike an arithmetic progression. Well, or like multiple arithmetic\r\nprogressions.Polycarpus believes that if he writes out the population of\r\nthe capital for several consecutive years in the sequence , then it is\r\nconvenient to consider the array as several arithmetic progressions,\r\nwritten one after the other. For example, sequence can be considered as\r\na sequence of three arithmetic progressions , and , which are written\r\none after another.Unfortunately, Polycarpus may not have all the data\r\nfor the consecutive years (a census of the population doesn\u2019t occur\r\nevery year, after all). For this reason, some values of may be unknown.\r\nSuch values are represented by number .For a given sequence , which\r\nconsists of positive integers and values , find the minimum number of\r\narithmetic progressions Polycarpus needs to get . To get , the\r\nprogressions need to be written down one after the other. Values may\r\ncorrespond to an arbitrary positive integer and the values must be equal\r\nto the corresponding elements of sought consecutive record of the\r\nprogressions.Let us remind you that a finite sequence is called an\r\narithmetic progression if the difference of any two consecutive elements\r\nin it is constant. By definition, any sequence of length 1 is an\r\narithmetic progression.\r\n", "solutions": ["#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <vector>\n#include <iostream>\n#include <algorithm>\n\nusing namespace std;\n\n#define foreach(e,x) for(__typeof(x.begin()) e=x.begin(); e!=x.end(); ++e)\n\nconst int N = 200000 + 10;\n\nint n;\nlong long a[N];\n\nint getNext(int st)\n{\n    long long tmp = st;\n    vector<pair<long long, int> > vec;\n    for( ; tmp < n && vec.size() < 2; tmp ++) {\n        if (a[tmp] > 0) {\n            vec.push_back(make_pair(a[tmp], tmp));\n        }\n    }\n    if (vec.size() != 2) return n;\n\n    long long v1 = vec[0].first, t1 = vec[0].second;\n    long long v2 = vec[1].first, t2 = vec[1].second;\n    if ((v2 - v1) % (t2 - t1) == 0) {\n        long long d = (v2 - v1) / (t2 - t1);\n        tmp = v1;\n        int flag = true;\n        for(int i = t1 - 1; i >= st; -- i) {\n            tmp -= d;\n            if (tmp <= 0) {\n                flag = false;\n                break;\n            }\n        }\n        if (flag) {\n            st = t2;\n            tmp = v2;\n            for( ; st < n && tmp > 0; ) {\n                if (a[st] > 0 && a[st] != tmp) break;\n                ++ st;\n                tmp += d;\n            }\n            return st;\n        }\n    }\n    return t2;\n}\n\nvoid solve()\n{\n    cin >> n;\n    for(int i = 0; i < n; ++ i) {\n        scanf(\"%I64d\", a + i);\n    }\n    int ret = 0;\n    int tmp = 0;\n    for( ; tmp != n; ) {\n        ++ ret;\n        tmp = getNext(tmp);\n    }\n    cout << ret << endl;\n}\n\nint main()\n{\n    solve();\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["greedy", "implementation", "math"], "dificulty": "2400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/416/problem/D",
+    "problemId": "8298",
+    "problem_idx": "D",
+    "shortId": "416D",
+    "contest_number": "416",
+    "problem_submissions": {
+        "E": [
+            6343446,
+            6342010,
+            6345905,
+            6345786,
+            6345780,
+            6345773
+        ],
+        "D": [
+            6339770,
+            6344331,
+            6341205,
+            6342895,
+            6343208,
+            6342314
+        ],
+        "C": [
+            6337298,
+            6337895,
+            6338062,
+            6340196,
+            6337743,
+            6338820,
+            6338400,
+            6338250,
+            6338293,
+            6337870,
+            6340982,
+            6339823,
+            6341497,
+            6338189,
+            6339580,
+            6337965,
+            6340260,
+            6340014
+        ],
+        "B": [
+            6336584,
+            6336919,
+            6336609,
+            6338408,
+            6338336,
+            6337856,
+            6337221,
+            6337301,
+            6340247,
+            6336851,
+            6339693,
+            6338067,
+            6337890,
+            6336878,
+            6337704,
+            6336869,
+            6338043,
+            6338578
+        ],
+        "A": [
+            6336344,
+            6336437,
+            6336373,
+            6336510,
+            6336806,
+            6336676,
+            6336386,
+            6337013,
+            6336347,
+            6337152,
+            6336694,
+            6336923,
+            6336396,
+            6336944,
+            6336382,
+            6336809,
+            6336583
+        ]
+    },
+    "name": "D. Population Size",
+    "statement": "Polycarpus develops an interesting theory about the interrelation of\r\narithmetic progressions with just everything in the world. His current\r\nidea is that the population of the capital of Berland changes over time\r\nlike an arithmetic progression. Well, or like multiple arithmetic\r\nprogressions.Polycarpus believes that if he writes out the population of\r\nthe capital for several consecutive years in the sequence , then it is\r\nconvenient to consider the array as several arithmetic progressions,\r\nwritten one after the other. For example, sequence can be considered as\r\na sequence of three arithmetic progressions , and , which are written\r\none after another.Unfortunately, Polycarpus may not have all the data\r\nfor the consecutive years (a census of the population doesn\u2019t occur\r\nevery year, after all). For this reason, some values of may be unknown.\r\nSuch values are represented by number .For a given sequence , which\r\nconsists of positive integers and values , find the minimum number of\r\narithmetic progressions Polycarpus needs to get . To get , the\r\nprogressions need to be written down one after the other. Values may\r\ncorrespond to an arbitrary positive integer and the values must be equal\r\nto the corresponding elements of sought consecutive record of the\r\nprogressions.Let us remind you that a finite sequence is called an\r\narithmetic progression if the difference of any two consecutive elements\r\nin it is constant. By definition, any sequence of length 1 is an\r\narithmetic progression.\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <vector>\n#include <iostream>\n#include <algorithm>\n\nusing namespace std;\n\n#define foreach(e,x) for(__typeof(x.begin()) e=x.begin(); e!=x.end(); ++e)\n\nconst int N = 200000 + 10;\n\nint n;\nlong long a[N];\n\nint getNext(int st)\n{\n    long long tmp = st;\n    vector<pair<long long, int> > vec;\n    for( ; tmp < n && vec.size() < 2; tmp ++) {\n        if (a[tmp] > 0) {\n            vec.push_back(make_pair(a[tmp], tmp));\n        }\n    }\n    if (vec.size() != 2) return n;\n\n    long long v1 = vec[0].first, t1 = vec[0].second;\n    long long v2 = vec[1].first, t2 = vec[1].second;\n    if ((v2 - v1) % (t2 - t1) == 0) {\n        long long d = (v2 - v1) / (t2 - t1);\n        tmp = v1;\n        int flag = true;\n        for(int i = t1 - 1; i >= st; -- i) {\n            tmp -= d;\n            if (tmp <= 0) {\n                flag = false;\n                break;\n            }\n        }\n        if (flag) {\n            st = t2;\n            tmp = v2;\n            for( ; st < n && tmp > 0; ) {\n                if (a[st] > 0 && a[st] != tmp) break;\n                ++ st;\n                tmp += d;\n            }\n            return st;\n        }\n    }\n    return t2;\n}\n\nvoid solve()\n{\n    cin >> n;\n    for(int i = 0; i < n; ++ i) {\n        scanf(\"%I64d\", a + i);\n    }\n    int ret = 0;\n    int tmp = 0;\n    for( ; tmp != n; ) {\n        ++ ret;\n        tmp = getNext(tmp);\n    }\n    cout << ret << endl;\n}\n\nint main()\n{\n    solve();\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "greedy",
+        "implementation",
+        "math"
+    ],
+    "dificulty": "2400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Population Size.json",
+    "editorial_link": "https://codeforces.com//blog/entry/12277",
+    "editorial": "One thing to notice for this problem is that if we cover some interval\r\nwith a progression then it will better (at least no worse) to include as\r\nmany elements to the right of it as possible. So the solution is to\r\ngreedy find the leftmost number not covered by a progression, start a\r\nnew progression with that number (the interval covered by that\r\nprogression will be of size 1) and then try to extend this interval to\r\nthe right as far as possible. Repeat this step until all the numbers are\r\ncovered. One thing you should pay attention to is which numbers can be\r\ncovered by one arithmetic progression, for example: If there are no\r\nfixed numbers in the interval then we can cover it with one progression.\r\nIf there is only one non-fixed number in the interval then we can cover\r\nthis interval with one progression. If there are more than one non-fixed\r\nnumbers in the interval then we can calculate the parameters of the\r\nprogression (start value and difference). All non-fixed numbers should\r\nmatch those parameters. Difference should be integer. If the progression\r\nis ascending and there are some non-fixed numbers in the beginning then\r\nthose numbers should match positive numbers in the progression. Same way\r\nif the progression is descending then we can include numbers from the\r\nright side only while matching progression term is positive. Submission:\r\n6607174\r\n"
+}

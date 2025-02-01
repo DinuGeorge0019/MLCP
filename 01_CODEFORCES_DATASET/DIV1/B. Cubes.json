@@ -1,1 +1,106 @@
-{"link": "https://codeforces.com//contest/521/problem/B", "problemId": "23439", "problem_idx": "B", "shortId": "521B", "contest_number": "521", "problem_submissions": {"D": [10114323, 10113689, 10119859, 10119855, 10119796, 10113492, 10113596, 10116089, 10113726, 10114226, 10114023, 10114948, 10114997, 10118008, 10116808, 10115969, 10115919, 115640381], "B": [10109892, 10107901, 10108581, 10107819, 10114473, 10108104, 10108433, 10109077, 10107764, 10108790, 10107608, 10107745, 10107578, 10110313, 10108219, 10110179, 10111006], "C": [10109219, 10110415, 10110107, 10111080, 10109986, 10110836, 10111159, 10109138, 10106797, 10109327, 10109438, 10109146, 10106442, 10110202, 10108389, 10108555], "A": [10105003, 10105742, 10105267, 10111233, 10104462, 10105194, 10105511, 10104861, 10104854, 10104826, 10105033, 10104516, 10107256, 10104819, 10105232, 10104822], "E": [10113230, 10117526, 249300397]}, "name": "B. Cubes", "statement": "Once Vasya and Petya assembled a figure of cubes, each of them is\r\nassociated with a number between and (inclusive, each number appeared\r\nexactly once). Let\u2019s consider a coordinate system such that the is the\r\nground, and the is directed upwards. Each cube is associated with the\r\ncoordinates of its lower left corner, these coordinates are integers for\r\neach cube.The figure turned out to be . This means that for any cube\r\nthat is not on the ground, there is at least one cube under it such that\r\nthose two cubes touch . More formally, this means that for the cube with\r\ncoordinates either , or there is a cube with coordinates , or .Now the\r\nboys want to disassemble the figure and put all the cubes in a row. In\r\none step the cube is removed from the figure and being put to the right\r\nof the blocks that have already been laid. The guys remove the cubes in\r\nsuch order that the figure remains stable. To make the process more\r\ninteresting, the guys decided to play the following game. The guys take\r\nout the cubes from the figure in turns. It is easy to see that after the\r\nfigure is disassembled, the integers written on the cubes form a number,\r\nwritten in the -ary positional numerical system (possibly, with a\r\nleading zero). Vasya wants the resulting number to be maximum possible,\r\nand Petya, on the contrary, tries to make it as small as possible. Vasya\r\nstarts the game.Your task is to determine what number is formed after\r\nthe figure is disassembled, if the boys play optimally. Determine the\r\nremainder of the answer modulo .\r\n", "solutions": ["#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cmath>\n#include <cassert>\n#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n#include <queue>\n#include <deque>\n#include <set>\n#include <map>\n#include <utility>\n#include <numeric>\n#include <algorithm>\n#include <bitset>\n#include <complex>\n#include <cstdint>\n#include <unordered_set>\n#include <unordered_map>\n\nusing namespace std;\n\ntypedef long long Int;\ntypedef vector<int> vint;\ntypedef pair<int, int> pint;\n#define mp make_pair\n\ntemplate <typename T1, typename T2> ostream &operator<<(ostream &os, const pair<T1, T2> &a) { return os << \"(\" << a.first << \", \" << a.second << \")\"; };\ntemplate <typename T> void pv(T a, T b) { for (T i = a; i != b; ++i) cout << *i << \" \"; cout << endl; }\ntemplate <typename T> void chmin(T &t, const T &f) { if (t > f) t = f; }\ntemplate <typename T> void chmax(T &t, const T &f) { if (t < f) t = f; }\nint in() { int x; scanf(\"%d\", &x); return x; }\n\nconst Int MO = 1000000009;\n\nint N;\nint X[100010], Y[100010];\n\nmap<pint, int> tr;\nint nei[100010][5][3];\n\nbool is[100010];\n\nset<int> cands;\nbool on[100010];\n\nbool canRemove(int u) {\n#define has(e,f) is[nei[u][e][f]]\n\tif (has(1, 2) && !has(0, 1) && !has(1, 1)) return false;\n\tif (has(2, 2) && !has(1, 1) && !has(3, 1)) return false;\n\tif (has(3, 2) && !has(3, 1) && !has(4, 1)) return false;\n\treturn true;\n#undef has\n}\n\nint main() {\n\t\n\t\n\tfor (; ~scanf(\"%d\", &N); ) {\n\t\tfor (int u = 0; u < N; ++u) {\n\t\t\tX[u] = in();\n\t\t\tY[u] = in();\n\t\t}\n\t\ttr.clear();\n\t\tfor (int u = 0; u < N; ++u) {\n\t\t\ttr[mp(X[u], Y[u])] = u;\n\t\t}\n\t\tfor (int u = 0; u < N; ++u) {\n\t\t\tfor (int e = 0; e < 5; ++e) for (int f = 0; f < 3; ++f) {\n\t\t\t\tauto it = tr.find(mp(X[u] - 2 + e, Y[u] - 1 + f));\n\t\t\t\tnei[u][e][f] = (it != tr.end()) ? it->second : N;\n\t\t\t}\n\t\t}\n\t\tfill(is, is + N, true);\n\t\tis[N] = false;\n\t\t\n\t\tcands.clear();\n\t\tfill(on, on + N, false);\n\t\tfor (int u = 0; u < N; ++u) {\n\t\t\tif (canRemove(u)) {\n\t\t\t\tcands.insert(u);\n\t\t\t\ton[u] = true;\n\t\t\t}\n\t\t}\n\t\t\n\t\tInt ans = 0;\n\t\tfor (int turn = 0; turn < N; ++turn) {\n\t\t\tassert(!cands.empty());\n\t\t\tint u = -1;\n\t\t\tswitch (turn % 2) {\n\t\t\t\tcase 0: {\n\t\t\t\t\tu = *--cands.end();\n\t\t\t\t} break;\n\t\t\t\tcase 1: {\n\t\t\t\t\tu = *cands.begin();\n\t\t\t\t} break;\n\t\t\t\tdefault: assert(false);\n\t\t\t}\n\t\t\tassert(is[u]);\n\t\t\tans = (ans * N + u) % MO;\n\t\t\tcands.erase(u);\n\t\t\ton[u] = false;\n\t\t\tis[u] = false;\n\t\t\tfor (int e = 0; e < 5; ++e) for (int f = 0; f < 3; ++f) {\n\t\t\t\tconst int v = nei[u][e][f];\n\t\t\t\tif (is[v]) {\n\t\t\t\t\tconst bool res = canRemove(v);\n\t\t\t\t\tif (on[v] != res) {\n\t\t\t\t\t\tif (res) {\n\t\t\t\t\t\t\tcands.insert(v);\n\t\t\t\t\t\t} else {\n\t\t\t\t\t\t\tcands.erase(v);\n\t\t\t\t\t\t}\n\t\t\t\t\t\ton[v] = res;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tcout << ans << endl;\n\t}\n\t\n\treturn 0;\n}\n\n"], "input": "", "output": "", "tags": ["data structures", "greedy", "implementation"], "dificulty": "2100", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/521/problem/B",
+    "problemId": "23439",
+    "problem_idx": "B",
+    "shortId": "521B",
+    "contest_number": "521",
+    "problem_submissions": {
+        "D": [
+            10114323,
+            10113689,
+            10119859,
+            10119855,
+            10119796,
+            10113492,
+            10113596,
+            10116089,
+            10113726,
+            10114226,
+            10114023,
+            10114948,
+            10114997,
+            10118008,
+            10116808,
+            10115969,
+            10115919,
+            115640381
+        ],
+        "B": [
+            10109892,
+            10107901,
+            10108581,
+            10107819,
+            10114473,
+            10108104,
+            10108433,
+            10109077,
+            10107764,
+            10108790,
+            10107608,
+            10107745,
+            10107578,
+            10110313,
+            10108219,
+            10110179,
+            10111006
+        ],
+        "C": [
+            10109219,
+            10110415,
+            10110107,
+            10111080,
+            10109986,
+            10110836,
+            10111159,
+            10109138,
+            10106797,
+            10109327,
+            10109438,
+            10109146,
+            10106442,
+            10110202,
+            10108389,
+            10108555
+        ],
+        "A": [
+            10105003,
+            10105742,
+            10105267,
+            10111233,
+            10104462,
+            10105194,
+            10105511,
+            10104861,
+            10104854,
+            10104826,
+            10105033,
+            10104516,
+            10107256,
+            10104819,
+            10105232,
+            10104822
+        ],
+        "E": [
+            10113230,
+            10117526,
+            249300397
+        ]
+    },
+    "name": "B. Cubes",
+    "statement": "Once Vasya and Petya assembled a figure of cubes, each of them is\r\nassociated with a number between and (inclusive, each number appeared\r\nexactly once). Let\u2019s consider a coordinate system such that the is the\r\nground, and the is directed upwards. Each cube is associated with the\r\ncoordinates of its lower left corner, these coordinates are integers for\r\neach cube.The figure turned out to be . This means that for any cube\r\nthat is not on the ground, there is at least one cube under it such that\r\nthose two cubes touch . More formally, this means that for the cube with\r\ncoordinates either , or there is a cube with coordinates , or .Now the\r\nboys want to disassemble the figure and put all the cubes in a row. In\r\none step the cube is removed from the figure and being put to the right\r\nof the blocks that have already been laid. The guys remove the cubes in\r\nsuch order that the figure remains stable. To make the process more\r\ninteresting, the guys decided to play the following game. The guys take\r\nout the cubes from the figure in turns. It is easy to see that after the\r\nfigure is disassembled, the integers written on the cubes form a number,\r\nwritten in the -ary positional numerical system (possibly, with a\r\nleading zero). Vasya wants the resulting number to be maximum possible,\r\nand Petya, on the contrary, tries to make it as small as possible. Vasya\r\nstarts the game.Your task is to determine what number is formed after\r\nthe figure is disassembled, if the boys play optimally. Determine the\r\nremainder of the answer modulo .\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cmath>\n#include <cassert>\n#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n#include <queue>\n#include <deque>\n#include <set>\n#include <map>\n#include <utility>\n#include <numeric>\n#include <algorithm>\n#include <bitset>\n#include <complex>\n#include <cstdint>\n#include <unordered_set>\n#include <unordered_map>\n\nusing namespace std;\n\ntypedef long long Int;\ntypedef vector<int> vint;\ntypedef pair<int, int> pint;\n#define mp make_pair\n\ntemplate <typename T1, typename T2> ostream &operator<<(ostream &os, const pair<T1, T2> &a) { return os << \"(\" << a.first << \", \" << a.second << \")\"; };\ntemplate <typename T> void pv(T a, T b) { for (T i = a; i != b; ++i) cout << *i << \" \"; cout << endl; }\ntemplate <typename T> void chmin(T &t, const T &f) { if (t > f) t = f; }\ntemplate <typename T> void chmax(T &t, const T &f) { if (t < f) t = f; }\nint in() { int x; scanf(\"%d\", &x); return x; }\n\nconst Int MO = 1000000009;\n\nint N;\nint X[100010], Y[100010];\n\nmap<pint, int> tr;\nint nei[100010][5][3];\n\nbool is[100010];\n\nset<int> cands;\nbool on[100010];\n\nbool canRemove(int u) {\n#define has(e,f) is[nei[u][e][f]]\n\tif (has(1, 2) && !has(0, 1) && !has(1, 1)) return false;\n\tif (has(2, 2) && !has(1, 1) && !has(3, 1)) return false;\n\tif (has(3, 2) && !has(3, 1) && !has(4, 1)) return false;\n\treturn true;\n#undef has\n}\n\nint main() {\n\t\n\t\n\tfor (; ~scanf(\"%d\", &N); ) {\n\t\tfor (int u = 0; u < N; ++u) {\n\t\t\tX[u] = in();\n\t\t\tY[u] = in();\n\t\t}\n\t\ttr.clear();\n\t\tfor (int u = 0; u < N; ++u) {\n\t\t\ttr[mp(X[u], Y[u])] = u;\n\t\t}\n\t\tfor (int u = 0; u < N; ++u) {\n\t\t\tfor (int e = 0; e < 5; ++e) for (int f = 0; f < 3; ++f) {\n\t\t\t\tauto it = tr.find(mp(X[u] - 2 + e, Y[u] - 1 + f));\n\t\t\t\tnei[u][e][f] = (it != tr.end()) ? it->second : N;\n\t\t\t}\n\t\t}\n\t\tfill(is, is + N, true);\n\t\tis[N] = false;\n\t\t\n\t\tcands.clear();\n\t\tfill(on, on + N, false);\n\t\tfor (int u = 0; u < N; ++u) {\n\t\t\tif (canRemove(u)) {\n\t\t\t\tcands.insert(u);\n\t\t\t\ton[u] = true;\n\t\t\t}\n\t\t}\n\t\t\n\t\tInt ans = 0;\n\t\tfor (int turn = 0; turn < N; ++turn) {\n\t\t\tassert(!cands.empty());\n\t\t\tint u = -1;\n\t\t\tswitch (turn % 2) {\n\t\t\t\tcase 0: {\n\t\t\t\t\tu = *--cands.end();\n\t\t\t\t} break;\n\t\t\t\tcase 1: {\n\t\t\t\t\tu = *cands.begin();\n\t\t\t\t} break;\n\t\t\t\tdefault: assert(false);\n\t\t\t}\n\t\t\tassert(is[u]);\n\t\t\tans = (ans * N + u) % MO;\n\t\t\tcands.erase(u);\n\t\t\ton[u] = false;\n\t\t\tis[u] = false;\n\t\t\tfor (int e = 0; e < 5; ++e) for (int f = 0; f < 3; ++f) {\n\t\t\t\tconst int v = nei[u][e][f];\n\t\t\t\tif (is[v]) {\n\t\t\t\t\tconst bool res = canRemove(v);\n\t\t\t\t\tif (on[v] != res) {\n\t\t\t\t\t\tif (res) {\n\t\t\t\t\t\t\tcands.insert(v);\n\t\t\t\t\t\t} else {\n\t\t\t\t\t\t\tcands.erase(v);\n\t\t\t\t\t\t}\n\t\t\t\t\t\ton[v] = res;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tcout << ans << endl;\n\t}\n\t\n\treturn 0;\n}\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "data structures",
+        "greedy",
+        "implementation"
+    ],
+    "dificulty": "2100",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Cubes.json",
+    "editorial_link": "https://codeforces.com//blog/entry/16736",
+    "editorial": "Basically, the first player should maximize the lexicographical order of numbers, and the second player should minimize it. Thus, at every move the first player should choose the largest available number, and the second should choose the minimal one.\n\nFirst of all, how do we check if the cube can be removed? It is impossible only if there is some cube \"supported\" by it (i.e., it has coordinates (x?-?1,?y?+?1), (x,?y?+?1), (x?+?1,?y?+?1)) such that our cube is the only one supporting it. This can be checked explicitly. The large coordinates' limitations do not allow us to store a simply array for that, so we should use an associative array, like a set in C++.\n\nNow we should find the maximal/minimal number that can be removed. A simple linear search won't work fast enough, so we store another data structure containing all numbers available to remove; the structure should allow inserting, erasing and finding global minimum/maximum, so the set C++ structure fits again.\n\nWhen we've made our move, some cubes may have become available or unavailable to remove. However, there is an O(1) amount of cubes we have to recheck and possibly insert/erase from our structure: the cubes (x?\u00b1?1,?y) and (x?\u00b1?2,?y) may have become unavailable because some higher cube has become dangerous (that is, there is a single cube supporting it), and some of the cubes (x?-?1,?y?-?1), (x,?y?-?1) and (x?+?1,?y?-?1) may have become available because our cube was the only dangerous cube that it has been supporting. Anyway, a simple recheck for these cubes will handle all the cases."
+}

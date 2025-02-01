@@ -1,1 +1,102 @@
-{"link": "https://codeforces.com//contest/666/problem/E", "problemId": "57417", "problem_idx": "E", "shortId": "666E", "contest_number": "666", "problem_submissions": {"E": [17594948, 17581972, 17586090, 59816920, 60238846], "D": [17582206, 17581333, 17682266, 17585111, 17578532, 17682483, 17593764, 17580882], "C": [17576782, 17576849, 17576800, 17578215, 17578937, 17578155, 17577254, 17578057, 17578881, 17579042, 17579726, 17577922, 17578916, 17579778, 17580460, 17580072], "B": [17573525, 17573061, 17576637, 17573442, 17574093, 17572951, 17573669, 17574447, 17576416, 17574060, 17574231, 17575134, 17573766, 17575544, 17576709, 17573819, 17575438, 17575919, 17575656], "A": [17569955, 17569857, 17570262, 17570541, 17570429, 17570371, 17570641, 17570192, 17570791, 17570963, 17571866, 17570753, 17570879, 17571604, 17570261, 17571058, 17570440, 17570884, 17570485]}, "name": "E. Forensic Examination", "statement": "The country of Reberland is the archenemy of Berland. Recently the\r\nauthorities of Berland arrested a Reberlandian spy who tried to bring\r\nthe leaflets intended for agitational propaganda to Berland illegally .\r\nThe most leaflets contain substrings of the Absolutely Inadmissible\r\nSwearword and maybe even the whole word.Berland legal system uses the\r\ndifficult algorithm in order to determine the guilt of the spy. The main\r\npart of this algorithm is the following procedure.All the leaflets that\r\nare brought by the spy are numbered from to . After that it\u2019s needed to\r\nget the answer to queries of the following kind: \"\".The expert wants you\r\nto automate that procedure because this time texts of leaflets are too\r\nlong. Help him!\r\n", "solutions": ["#include <bits/stdc++.h>\n\n#define FO(i,a,b) for (int i = (a); i < (b); i++)\n#define sz(v) int(v.size())\n\nusing namespace std;\n\nint m;\nint s[600005];\nint a[600005], ia[600005];\n\nint h[600005], p[600005];\nlong long BASE = 1000003;\nlong long MOD = 1000000009;\nint ansmx[600005];\nint ansi[600005];\n\nint hsh(int i, int j) {\n\treturn (MOD + h[j] - h[i]) * p[600003-i] % MOD;\n}\n\nint lcp(int i, int j) {\n\tint S = 0, E = min(m-i,m-j), b = 0;\n\twhile (S <= E) {\n\t\tint M = (S+E)/2;\n\t\tif (hsh(i,i+M) == hsh(j,j+M)) b=M, S=M+1;\n\t\telse E=M-1;\n\t}\n\treturn b;\n}\n\nbool cmp(int i, int j) {\n    int l = lcp(i,j);\n    return s[i+l] < s[j+l];\n}\n\nvoid pbuf(int i) {\n    FO(j,i,m) {\n        if (s[j] < 420) printf(\"%c\", s[j]);\n        else printf(\"$\");\n    }\n    printf(\"\\n\");\n}\n\nint ind[600005];\nchar buf[600005];\n\nstruct node {\n    node *l, *r;\n    int mxv, mxi;\n\n    node() {\n        l = r = NULL;\n        mxv = 0;\n        mxi = 1e9;\n    }\n};\n\nnode *crt(int rs, int re, int qi) {\n    node *r = new node;\n    r->mxv = 1; r->mxi = qi;\n    if (rs+1 != re) {\n        int md = (rs+re)/2;\n        if (qi < md) r->l = crt(rs, md, qi);\n        else r->r = crt(md, re, qi);\n    }\n    return r;\n}\n\nnode *mrg(node *a, node *b) {\n    if (a == NULL) return b;\n    if (b == NULL) return a;\n    if (!a->l && !a->r) {\n        // leaf\n        a->mxv += b->mxv;\n        return a;\n    }\n\n    a->l = mrg(a->l, b->l);\n    a->r = mrg(a->r, b->r);\n    a->mxv = -1;\n    if (a->l) {\n        a->mxv = a->l->mxv;\n        a->mxi = a->l->mxi;\n    }\n    if (a->r && a->r->mxv > a->mxv) {\n        a->mxv = a->r->mxv;\n        a->mxi = a->r->mxi;\n    }\n    return a;\n}\n\npair<int,int> qmx(node *nd, int rs, int re, int qs, int qe) {\n    if (nd == NULL) return make_pair(0,qs);\n    if (rs == qs && re == qe) return {nd->mxv,nd->mxi};\n    int md = (rs+re)/2;\n    pair<int,int> r(0,qs);\n    if (qs<md) {\n        auto nr = qmx(nd->l, rs, md, qs, min(qe,md));\n        if (nr.first > r.first) r = nr;\n    }\n    if (qe>md) {\n        auto nr = qmx(nd->r, md, re, max(qs,md), qe);\n        if (nr.first > r.first) r = nr;\n    }\n    return r;\n}\n\nint ps[600005], tp[600005], g;\n\nbool sc(int i, int j) {\n\tif (ps[i] != ps[j]) return ps[i] < ps[j];\n\ti += g; j += g;\n\treturn i<m && j<m ? ps[i] < ps[j] : i > j;\n}\n\nvoid sa() {\n\tFO(i,0,m) a[i] = i, ps[i] = s[i];\n\tfor (g = 1;; g <<= 1) {\n\t\tsort(a,a+m,sc);\n\t\tFO(i,0,m-1) tp[i+1] = tp[i] + sc(a[i],a[i+1]);\n\t\tFO(i,0,m) ps[a[i]] = tp[i];\n\t\tif (tp[m-1] == m-1) break;\n\t}\n\tFO(i,0,m) ia[a[i]] = i;\n}\nint lp[20][600005];\n\nint qlcp(int i, int j) {\n    if (i>j) swap(i,j);\n    int pw = 31-__builtin_clz(j-i);\n    return min(lp[pw][i],lp[pw][j-(1<<pw)]);\n}\n\nint main() {\n    scanf(\" %s\", buf);\n    m = strlen(buf);\n    FO(i,0,m) s[i] = buf[i];\n    s[m] = 420+m; m++;\n\n    int n; scanf(\"%d\", &n);\n    FO(i,0,n) {\n        scanf(\" %s\", buf);\n        int nm = strlen(buf);\n        FO(j,0,nm) {\n            ind[m] = i+1;\n            s[m++] = buf[j];\n        }\n        s[m] = 420+m; m++;\n    }\n    //pbuf(0);\n\n\tp[0] = 1;\n\tFO(i,1,600005) p[i] = p[i-1] * BASE % MOD;\n\tFO(i,0,m) h[i+1] = (h[i] + p[i] * 1ll * s[i]) % MOD;\n\n    sa();\n    FO(i,0,m-1) lp[0][i] = lcp(a[i],a[i+1]);\n    FO(i,1,20) FO(j,0,m) {\n        if (j + (1<<i) < m) lp[i][j] = min(lp[i-1][j],lp[i-1][j+(1<<(i-1))]);\n    }\n    //FO(i,0,m) pbuf(a[i]);\n\n    int q; scanf(\"%d\", &q);\n    vector<tuple<int,int,int,int,int,int> > qu;\n    FO(z,0,q) {\n        int l, r, p, q; scanf(\"%d%d%d%d\", &l, &r, &p, &q);\n        l--; p--;\n        int sl = ia[p];\n        //pbuf(a[sl]);\n        int st = 0, en = sl-1, bl = sl;\n        while (st <= en) {\n            int md = (st+en)/2;\n            if (qlcp(md,sl) >= q-p) {\n                bl = md;\n                en = md-1;\n            } else st = md+1;\n        }\n        st = sl+1; en = m-1; int br = sl;\n        while (st <= en) {\n            int md = (st+en)/2;\n            if (qlcp(md,sl) >= q-p) {\n                br = md;\n                st = md+1;\n            } else en = md-1;\n        }\n        br++;\n        //printf(\"[%d,%d)\\n\", bl, br);\n        //pbuf(a[bl]);\n        qu.emplace_back(br-bl, bl, br, l, r, z);\n    }\n    sort(qu.begin(),qu.end());\n    set<tuple<int,int,node*> > rts;\n    FO(i,0,m) if (ind[i] != 0) {\n        //printf(\"%d: %d\\n\", ia[i], ind[i]-1);\n        node *nd = crt(0,n,ind[i]-1);\n        rts.emplace(ia[i],ia[i]+1,nd);\n    }\n    for (auto qq : qu) {\n        int len, bl, br, l, r, z; tie(len, bl, br, l, r, z) = qq;\n        node *rt = NULL;\n        while (1) {\n            auto it = rts.lower_bound(make_tuple(bl,-1,(node*)NULL));\n            if (it == rts.end() || get<0>(*it) >= br) break;\n            int sbl, sbr; node *snd; tie(sbl,sbr,snd) = *it;\n            rts.erase(it);\n            rt = mrg(rt,snd);\n        }\n        int mxv, mxi;\n        tie(mxv,mxi) = qmx(rt,0,n,l,r);\n        ansmx[z] = mxv;\n        ansi[z] = mxi+1;\n\n        rts.emplace(bl,br,rt);\n    }\n\n    FO(i,0,q) printf(\"%d %d\\n\", ansi[i], ansmx[i]);\n}\n\n"], "input": "", "output": "", "tags": ["data structures", "string suffix structures"], "dificulty": "3100", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/666/problem/E",
+    "problemId": "57417",
+    "problem_idx": "E",
+    "shortId": "666E",
+    "contest_number": "666",
+    "problem_submissions": {
+        "E": [
+            17594948,
+            17581972,
+            17586090,
+            59816920,
+            60238846
+        ],
+        "D": [
+            17582206,
+            17581333,
+            17682266,
+            17585111,
+            17578532,
+            17682483,
+            17593764,
+            17580882
+        ],
+        "C": [
+            17576782,
+            17576849,
+            17576800,
+            17578215,
+            17578937,
+            17578155,
+            17577254,
+            17578057,
+            17578881,
+            17579042,
+            17579726,
+            17577922,
+            17578916,
+            17579778,
+            17580460,
+            17580072
+        ],
+        "B": [
+            17573525,
+            17573061,
+            17576637,
+            17573442,
+            17574093,
+            17572951,
+            17573669,
+            17574447,
+            17576416,
+            17574060,
+            17574231,
+            17575134,
+            17573766,
+            17575544,
+            17576709,
+            17573819,
+            17575438,
+            17575919,
+            17575656
+        ],
+        "A": [
+            17569955,
+            17569857,
+            17570262,
+            17570541,
+            17570429,
+            17570371,
+            17570641,
+            17570192,
+            17570791,
+            17570963,
+            17571866,
+            17570753,
+            17570879,
+            17571604,
+            17570261,
+            17571058,
+            17570440,
+            17570884,
+            17570485
+        ]
+    },
+    "name": "E. Forensic Examination",
+    "statement": "The country of Reberland is the archenemy of Berland. Recently the\r\nauthorities of Berland arrested a Reberlandian spy who tried to bring\r\nthe leaflets intended for agitational propaganda to Berland illegally .\r\nThe most leaflets contain substrings of the Absolutely Inadmissible\r\nSwearword and maybe even the whole word.Berland legal system uses the\r\ndifficult algorithm in order to determine the guilt of the spy. The main\r\npart of this algorithm is the following procedure.All the leaflets that\r\nare brought by the spy are numbered from to . After that it\u2019s needed to\r\nget the answer to queries of the following kind: \"\".The expert wants you\r\nto automate that procedure because this time texts of leaflets are too\r\nlong. Help him!\r\n",
+    "solutions": [
+        "#include <bits/stdc++.h>\n\n#define FO(i,a,b) for (int i = (a); i < (b); i++)\n#define sz(v) int(v.size())\n\nusing namespace std;\n\nint m;\nint s[600005];\nint a[600005], ia[600005];\n\nint h[600005], p[600005];\nlong long BASE = 1000003;\nlong long MOD = 1000000009;\nint ansmx[600005];\nint ansi[600005];\n\nint hsh(int i, int j) {\n\treturn (MOD + h[j] - h[i]) * p[600003-i] % MOD;\n}\n\nint lcp(int i, int j) {\n\tint S = 0, E = min(m-i,m-j), b = 0;\n\twhile (S <= E) {\n\t\tint M = (S+E)/2;\n\t\tif (hsh(i,i+M) == hsh(j,j+M)) b=M, S=M+1;\n\t\telse E=M-1;\n\t}\n\treturn b;\n}\n\nbool cmp(int i, int j) {\n    int l = lcp(i,j);\n    return s[i+l] < s[j+l];\n}\n\nvoid pbuf(int i) {\n    FO(j,i,m) {\n        if (s[j] < 420) printf(\"%c\", s[j]);\n        else printf(\"$\");\n    }\n    printf(\"\\n\");\n}\n\nint ind[600005];\nchar buf[600005];\n\nstruct node {\n    node *l, *r;\n    int mxv, mxi;\n\n    node() {\n        l = r = NULL;\n        mxv = 0;\n        mxi = 1e9;\n    }\n};\n\nnode *crt(int rs, int re, int qi) {\n    node *r = new node;\n    r->mxv = 1; r->mxi = qi;\n    if (rs+1 != re) {\n        int md = (rs+re)/2;\n        if (qi < md) r->l = crt(rs, md, qi);\n        else r->r = crt(md, re, qi);\n    }\n    return r;\n}\n\nnode *mrg(node *a, node *b) {\n    if (a == NULL) return b;\n    if (b == NULL) return a;\n    if (!a->l && !a->r) {\n        // leaf\n        a->mxv += b->mxv;\n        return a;\n    }\n\n    a->l = mrg(a->l, b->l);\n    a->r = mrg(a->r, b->r);\n    a->mxv = -1;\n    if (a->l) {\n        a->mxv = a->l->mxv;\n        a->mxi = a->l->mxi;\n    }\n    if (a->r && a->r->mxv > a->mxv) {\n        a->mxv = a->r->mxv;\n        a->mxi = a->r->mxi;\n    }\n    return a;\n}\n\npair<int,int> qmx(node *nd, int rs, int re, int qs, int qe) {\n    if (nd == NULL) return make_pair(0,qs);\n    if (rs == qs && re == qe) return {nd->mxv,nd->mxi};\n    int md = (rs+re)/2;\n    pair<int,int> r(0,qs);\n    if (qs<md) {\n        auto nr = qmx(nd->l, rs, md, qs, min(qe,md));\n        if (nr.first > r.first) r = nr;\n    }\n    if (qe>md) {\n        auto nr = qmx(nd->r, md, re, max(qs,md), qe);\n        if (nr.first > r.first) r = nr;\n    }\n    return r;\n}\n\nint ps[600005], tp[600005], g;\n\nbool sc(int i, int j) {\n\tif (ps[i] != ps[j]) return ps[i] < ps[j];\n\ti += g; j += g;\n\treturn i<m && j<m ? ps[i] < ps[j] : i > j;\n}\n\nvoid sa() {\n\tFO(i,0,m) a[i] = i, ps[i] = s[i];\n\tfor (g = 1;; g <<= 1) {\n\t\tsort(a,a+m,sc);\n\t\tFO(i,0,m-1) tp[i+1] = tp[i] + sc(a[i],a[i+1]);\n\t\tFO(i,0,m) ps[a[i]] = tp[i];\n\t\tif (tp[m-1] == m-1) break;\n\t}\n\tFO(i,0,m) ia[a[i]] = i;\n}\nint lp[20][600005];\n\nint qlcp(int i, int j) {\n    if (i>j) swap(i,j);\n    int pw = 31-__builtin_clz(j-i);\n    return min(lp[pw][i],lp[pw][j-(1<<pw)]);\n}\n\nint main() {\n    scanf(\" %s\", buf);\n    m = strlen(buf);\n    FO(i,0,m) s[i] = buf[i];\n    s[m] = 420+m; m++;\n\n    int n; scanf(\"%d\", &n);\n    FO(i,0,n) {\n        scanf(\" %s\", buf);\n        int nm = strlen(buf);\n        FO(j,0,nm) {\n            ind[m] = i+1;\n            s[m++] = buf[j];\n        }\n        s[m] = 420+m; m++;\n    }\n    //pbuf(0);\n\n\tp[0] = 1;\n\tFO(i,1,600005) p[i] = p[i-1] * BASE % MOD;\n\tFO(i,0,m) h[i+1] = (h[i] + p[i] * 1ll * s[i]) % MOD;\n\n    sa();\n    FO(i,0,m-1) lp[0][i] = lcp(a[i],a[i+1]);\n    FO(i,1,20) FO(j,0,m) {\n        if (j + (1<<i) < m) lp[i][j] = min(lp[i-1][j],lp[i-1][j+(1<<(i-1))]);\n    }\n    //FO(i,0,m) pbuf(a[i]);\n\n    int q; scanf(\"%d\", &q);\n    vector<tuple<int,int,int,int,int,int> > qu;\n    FO(z,0,q) {\n        int l, r, p, q; scanf(\"%d%d%d%d\", &l, &r, &p, &q);\n        l--; p--;\n        int sl = ia[p];\n        //pbuf(a[sl]);\n        int st = 0, en = sl-1, bl = sl;\n        while (st <= en) {\n            int md = (st+en)/2;\n            if (qlcp(md,sl) >= q-p) {\n                bl = md;\n                en = md-1;\n            } else st = md+1;\n        }\n        st = sl+1; en = m-1; int br = sl;\n        while (st <= en) {\n            int md = (st+en)/2;\n            if (qlcp(md,sl) >= q-p) {\n                br = md;\n                st = md+1;\n            } else en = md-1;\n        }\n        br++;\n        //printf(\"[%d,%d)\\n\", bl, br);\n        //pbuf(a[bl]);\n        qu.emplace_back(br-bl, bl, br, l, r, z);\n    }\n    sort(qu.begin(),qu.end());\n    set<tuple<int,int,node*> > rts;\n    FO(i,0,m) if (ind[i] != 0) {\n        //printf(\"%d: %d\\n\", ia[i], ind[i]-1);\n        node *nd = crt(0,n,ind[i]-1);\n        rts.emplace(ia[i],ia[i]+1,nd);\n    }\n    for (auto qq : qu) {\n        int len, bl, br, l, r, z; tie(len, bl, br, l, r, z) = qq;\n        node *rt = NULL;\n        while (1) {\n            auto it = rts.lower_bound(make_tuple(bl,-1,(node*)NULL));\n            if (it == rts.end() || get<0>(*it) >= br) break;\n            int sbl, sbr; node *snd; tie(sbl,sbr,snd) = *it;\n            rts.erase(it);\n            rt = mrg(rt,snd);\n        }\n        int mxv, mxi;\n        tie(mxv,mxi) = qmx(rt,0,n,l,r);\n        ansmx[z] = mxv;\n        ansi[z] = mxi+1;\n\n        rts.emplace(bl,br,rt);\n    }\n\n    FO(i,0,q) printf(\"%d %d\\n\", ansi[i], ansmx[i]);\n}\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "data structures",
+        "string suffix structures"
+    ],
+    "dificulty": "3100",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\E. Forensic Examination.json",
+    "editorial_link": "https://codeforces.com//blog/entry/44622",
+    "editorial": "You are given string s and m strings ti. Queries of type \u00e2\u0080\u009cfind the\r\nstring ti with number from [l;r] which has the largest amount of\r\noccurrences of substring s[a, b]\u00e2\u0080\u009d approaching. Let\u00e2\u0080\u0099s build segment tree\r\nover the texts t_i. In each vertex of segment tree let\u00e2\u0080\u0099s build suffix\r\nautomaton for the concatenation of texts from corresponding segment with\r\ndelimeters like ab. Also for each state in this automaton we should\r\nfound the number of text in which this state state occurs most over all\r\ntexts from the segment. Also for each state v in this automaton we\r\nshould find such states in children of current segment tree vertex that\r\ninclude the set of string from v. If you maintain only such states that\r\ndo not contain strings like ab, it is obvious that either wanted state\r\nexists or there is no occurrences of strings from v in the texts from\r\nchild\u00e2\u0080\u0099s segment at all. Thus, to answer the query, firstly we find in\r\nroot vertex the state containing string , and after this we go down the\r\nsegment tree keeping the correct state via links calculated from the\r\nprevious state. Please refer to the code if something is unclear.\r\n"
+}

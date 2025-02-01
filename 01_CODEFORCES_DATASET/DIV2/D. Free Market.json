@@ -1,1 +1,103 @@
-{"link": "https://codeforces.com//contest/365/problem/D", "problemId": "4039", "problem_idx": "D", "shortId": "365D", "contest_number": "365", "problem_submissions": {"D": [5161161, 5161283, 5157384, 5159815, 5158624, 5166469, 5178120, 5170486, 5160944, 5162347], "E": [5158821, 5170866, 5166357, 5165530, 5170983, 5164746], "B": [5151375, 5150963, 5158725, 5151658, 5151363, 5150980, 5151686, 5152429, 5152202, 5152201, 5151731, 5151488, 5151955, 5151063, 5151172, 5152598, 5152621, 5153442], "A": [5150339, 5150212, 5155091, 5150784, 5150472, 5150332, 5150310, 5150370, 5150233, 5150237, 5150565, 5150277, 5150807, 5150147, 5150215, 5150852, 5150793, 5151650], "C": [5155955, 5153146, 5157421, 5169511, 5154928, 5157528, 5157115, 5178157, 5156809, 5157646, 5156758, 5158767, 5156252, 5158740, 5158464, 5159088]}, "name": "D. Free Market", "statement": "John Doe has recently found a \"Free Market\" in his city that is the\r\nplace where you can exchange some of your possessions for other things\r\nfor free. John knows that his city has items in total (each item is\r\nunique). You can bring any number of items to the market and exchange\r\nthem for any other one. Note that each item is one of a kind and that\r\nmeans that you cannot exchange set for set . However, you can always\r\nexchange set for any set , unless there is item , such that occurs in\r\nand occurs in .For each item, John knows its value . John\u2019s sense of\r\njustice doesn\u2019t let him exchange a set of items for a set of items , if\r\n( is the total price of items in the set ). During one day John can\r\nexchange only one set of items for something else. Initially, he has no\r\nitems. John wants to get a set of items with the maximum total price.\r\nFind the cost of such set and the minimum number of days John can get it\r\nin.\r\n", "solutions": ["#include <stdio.h>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\nbool flag[500005];\n\nint main(){\n    \n    int n,k,i,j,in,ans=0,now=0;\n    scanf(\"%d%d\",&n,&k);\n    \n    vector<int> pos;\n    \n    pos.push_back(0);\n    \n    for( i=0 ; i<n ; i++ ){\n        scanf(\"%d\",&in);\n        for( j=pos.size() ; j-- ; ){\n            if( pos[j]+in<500005 && flag[pos[j]+in]==0 ){\n                pos.push_back(pos[j]+in);\n                flag[pos[j]+in]=1;\n            }\n        }\n    }\n    \n    sort(pos.begin(),pos.end());\n    \n    for( i=0 ; i<pos.size() ; ans++ ){\n        for(; i<pos.size() && now+k>=pos[i] ; i++ );\n        \n        if( pos[i-1]!=now ) now=pos[i-1];\n        else break;\n        \n//      printf(\"%d\\n\",now);\n    }\n    \n//  printf(\"%d\\n\",pos.size());\n    printf(\"%d %d\\n\",now,ans);\n    \n    return 0;\n}\n"], "input": "", "output": "", "tags": ["dp", "greedy"], "dificulty": "2200", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/365/problem/D",
+    "problemId": "4039",
+    "problem_idx": "D",
+    "shortId": "365D",
+    "contest_number": "365",
+    "problem_submissions": {
+        "D": [
+            5161161,
+            5161283,
+            5157384,
+            5159815,
+            5158624,
+            5166469,
+            5178120,
+            5170486,
+            5160944,
+            5162347
+        ],
+        "E": [
+            5158821,
+            5170866,
+            5166357,
+            5165530,
+            5170983,
+            5164746
+        ],
+        "B": [
+            5151375,
+            5150963,
+            5158725,
+            5151658,
+            5151363,
+            5150980,
+            5151686,
+            5152429,
+            5152202,
+            5152201,
+            5151731,
+            5151488,
+            5151955,
+            5151063,
+            5151172,
+            5152598,
+            5152621,
+            5153442
+        ],
+        "A": [
+            5150339,
+            5150212,
+            5155091,
+            5150784,
+            5150472,
+            5150332,
+            5150310,
+            5150370,
+            5150233,
+            5150237,
+            5150565,
+            5150277,
+            5150807,
+            5150147,
+            5150215,
+            5150852,
+            5150793,
+            5151650
+        ],
+        "C": [
+            5155955,
+            5153146,
+            5157421,
+            5169511,
+            5154928,
+            5157528,
+            5157115,
+            5178157,
+            5156809,
+            5157646,
+            5156758,
+            5158767,
+            5156252,
+            5158740,
+            5158464,
+            5159088
+        ]
+    },
+    "name": "D. Free Market",
+    "statement": "John Doe has recently found a \"Free Market\" in his city that is the\r\nplace where you can exchange some of your possessions for other things\r\nfor free. John knows that his city has items in total (each item is\r\nunique). You can bring any number of items to the market and exchange\r\nthem for any other one. Note that each item is one of a kind and that\r\nmeans that you cannot exchange set for set . However, you can always\r\nexchange set for any set , unless there is item , such that occurs in\r\nand occurs in .For each item, John knows its value . John\u2019s sense of\r\njustice doesn\u2019t let him exchange a set of items for a set of items , if\r\n( is the total price of items in the set ). During one day John can\r\nexchange only one set of items for something else. Initially, he has no\r\nitems. John wants to get a set of items with the maximum total price.\r\nFind the cost of such set and the minimum number of days John can get it\r\nin.\r\n",
+    "solutions": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\nbool flag[500005];\n\nint main(){\n    \n    int n,k,i,j,in,ans=0,now=0;\n    scanf(\"%d%d\",&n,&k);\n    \n    vector<int> pos;\n    \n    pos.push_back(0);\n    \n    for( i=0 ; i<n ; i++ ){\n        scanf(\"%d\",&in);\n        for( j=pos.size() ; j-- ; ){\n            if( pos[j]+in<500005 && flag[pos[j]+in]==0 ){\n                pos.push_back(pos[j]+in);\n                flag[pos[j]+in]=1;\n            }\n        }\n    }\n    \n    sort(pos.begin(),pos.end());\n    \n    for( i=0 ; i<pos.size() ; ans++ ){\n        for(; i<pos.size() && now+k>=pos[i] ; i++ );\n        \n        if( pos[i-1]!=now ) now=pos[i-1];\n        else break;\n        \n//      printf(\"%d\\n\",now);\n    }\n    \n//  printf(\"%d\\n\",pos.size());\n    printf(\"%d %d\\n\",now,ans);\n    \n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp",
+        "greedy"
+    ],
+    "dificulty": "2200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Free Market.json",
+    "editorial_link": "https://codeforces.com//blog/entry/9657",
+    "editorial": "We may assume that John may exchange any subset of his items x to any other subset y, such as s(x)?+?d???s(y) (it does not matter if x intersects y). We can find all possible sums in subset of elements of the given set of items using standard dp (knapsack problem). John should always exchange all his current set of items to another, because if he had exchanged some subset of x (current set) z to y, we can say that he had exchanged x to . So, we have to find shortest sequence of sets a, such as s(ai?+?1)?-?d???s(ai) for any possible i and a0?=?{}. This subtask could be solved using following greedy algorithm. ai,?i?>?0 is maximal correct sum such as ai???ai?-?1?+?d. Consider optimal answer c and our answer a. Let k is the first position where ak???ck obiviously ak?>?ck (because ak selected as maximal as possible). Then consider q such as qi?=?ci for i???k and qk?=?ak. q is either optimal. Applying similar operations we will obtain a. So, a is optimal."
+}

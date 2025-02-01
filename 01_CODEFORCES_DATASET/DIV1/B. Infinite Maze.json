@@ -1,1 +1,98 @@
-{"link": "https://codeforces.com//contest/196/problem/B", "problemId": "1425", "problem_idx": "B", "shortId": "196B", "contest_number": "196", "problem_submissions": {"C": [1798703, 1791214, 1788606, 1793292, 1791199, 1789041, 1791625, 1799512, 1791088, 1791198, 1791178, 1796930, 1790873, 1791544], "E": [1795709, 1794289, 1790345, 1800573, 1800569, 1795140, 1795262, 1792160, 1794470, 1794856, 1794312, 1796014, 1797704], "D": [1795008, 1796853, 1794499, 2860569, 1792348, 1798254], "B": [1789001, 1792087, 1796669, 1789699, 1788889, 1792321, 1796356, 1793004, 1789434, 1789111, 1796367, 1788833, 1789314, 1789678], "A": [1787593, 1787638, 1787620, 1788588, 1787608, 1788006, 1789404, 1787655, 1787643, 1794879, 1787601, 1787960, 1787674, 1788094, 1787666, 1787769]}, "name": "B. Infinite Maze", "statement": "We\u2019ve got a rectangular -cell maze. Each cell is either passable, or is\r\na wall (impassable). A little boy found the maze and cyclically tiled a\r\nplane with it so that the plane became an infinite maze. Now on this\r\nplane cell is a wall if and only if cell is a wall.In this problem is a\r\nremainder of dividing number by number .The little boy stood at some\r\ncell on the plane and he wondered whether he can walk infinitely far\r\naway from his starting position. From cell he can go to one of the\r\nfollowing cells: , , and , provided that the cell he goes to is not a\r\nwall.\r\n", "solutions": ["#pragma comment(linker, \"/STACK:65777216\")\n\n#include <algorithm>\n#include <iostream>\n#include <string>\n#include<sstream>\n#include<string.h>\n#include <cstdio>\n#include <cassert>\n#include <complex>\n#include <vector>\n#include <bitset>\n#include <cmath>\n#include <queue>\n#include<stack>\n#include <set>\n#include <map>\n#include<ctime>\n#include<list>\n\nusing namespace std;\n \ntypedef long long ll;\ntypedef vector<int> vi;\t \ntypedef pair<int,int> pii;\ntypedef pair<double,double> pdd;\ntypedef unsigned long long ull;\n \n#define FOR(i,a,b) for (int i(a); i < (b); i++)\n#define REP(i,n) FOR(i,0,n)\n#define SORT(v) sort((v).begin(),(v).end())\n#define UN(v) sort((v).begin(),(v).end()),v.erase(unique(v.begin(),v.end()),v.end())\n#define CL(a,b) memset(a,b,sizeof(a))\n#define pb push_back\n\nchar s[1555][1555];\npii  a[1555][1555];\nbool u[1555][1555];\nqueue<pii> q;\nint n,m;\n\npii getid(int x,int y){\n\tif(x>=0) x/=n;\n\telse x=(x+1)/n-1;\n\tif(y>=0) y/=m;\n\telse y=(y+1)/m-1;\n\treturn pii(x,y);\n}\n\nint main(){\n#ifdef LocalHost\n    freopen(\"input.txt\",\"r\",stdin);\n\t//freopen(\"output.txt\",\"w\",stdout);\n#endif\n\n\tcin>>n>>m;\n\tREP(i,n) scanf(\" %s\",s[i]);\n\tREP(i,n)REP(j,m) if(s[i][j]=='S'){\n\t\tq.push(pii(i,j));\n\t\ts[i][j]='.';\n\t\ta[i][j] = getid(i,j);\n\t\tu[i][j]=1;\n\t}\n\twhile(!q.empty()){\n\t\tpii cc = q.front();q.pop();\n\t\tint x = cc.first;\n\t\tint y = cc.second;\n\t\tFOR(dx,-1,2)FOR(dy,-1,2)if(abs(dx)+abs(dy)==1){\n\t\t\tint nx = x + dx;\n\t\t\tint ny = y + dy;\n\t\t\tint tx = (nx%n + n ) % n;\n\t\t\tint ty = (ny%m + m ) % m;\n\t\t\tif(s[tx][ty]=='.'){\n\t\t\t\tif(u[tx][ty] && a[tx][ty]!=getid(nx,ny)){\n\t\t\t\t\tputs(\"Yes\");\n\t\t\t\t\treturn 0;\n\t\t\t\t}\n\t\t\t\tif(u[tx][ty]) continue;\n\t\t\t\tu[tx][ty]=1;\n\t\t\t\ta[tx][ty]=getid(nx,ny);\n\t\t\t\tq.push(pii(nx,ny));\n\t\t\t}\n\t\t}\n\t}\n\tputs(\"No\");\n\n#ifdef LocalHost\n\tcerr<<endl<<endl<<\"TIME: \"<<clock()<<endl;\n#endif\n    return 0;\n}"], "input": "", "output": "", "tags": ["dfs and similar", "graphs"], "dificulty": "2000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/196/problem/B",
+    "problemId": "1425",
+    "problem_idx": "B",
+    "shortId": "196B",
+    "contest_number": "196",
+    "problem_submissions": {
+        "C": [
+            1798703,
+            1791214,
+            1788606,
+            1793292,
+            1791199,
+            1789041,
+            1791625,
+            1799512,
+            1791088,
+            1791198,
+            1791178,
+            1796930,
+            1790873,
+            1791544
+        ],
+        "E": [
+            1795709,
+            1794289,
+            1790345,
+            1800573,
+            1800569,
+            1795140,
+            1795262,
+            1792160,
+            1794470,
+            1794856,
+            1794312,
+            1796014,
+            1797704
+        ],
+        "D": [
+            1795008,
+            1796853,
+            1794499,
+            2860569,
+            1792348,
+            1798254
+        ],
+        "B": [
+            1789001,
+            1792087,
+            1796669,
+            1789699,
+            1788889,
+            1792321,
+            1796356,
+            1793004,
+            1789434,
+            1789111,
+            1796367,
+            1788833,
+            1789314,
+            1789678
+        ],
+        "A": [
+            1787593,
+            1787638,
+            1787620,
+            1788588,
+            1787608,
+            1788006,
+            1789404,
+            1787655,
+            1787643,
+            1794879,
+            1787601,
+            1787960,
+            1787674,
+            1788094,
+            1787666,
+            1787769
+        ]
+    },
+    "name": "B. Infinite Maze",
+    "statement": "We\u2019ve got a rectangular -cell maze. Each cell is either passable, or is\r\na wall (impassable). A little boy found the maze and cyclically tiled a\r\nplane with it so that the plane became an infinite maze. Now on this\r\nplane cell is a wall if and only if cell is a wall.In this problem is a\r\nremainder of dividing number by number .The little boy stood at some\r\ncell on the plane and he wondered whether he can walk infinitely far\r\naway from his starting position. From cell he can go to one of the\r\nfollowing cells: , , and , provided that the cell he goes to is not a\r\nwall.\r\n",
+    "solutions": [
+        "#pragma comment(linker, \"/STACK:65777216\")\n\n#include <algorithm>\n#include <iostream>\n#include <string>\n#include<sstream>\n#include<string.h>\n#include <cstdio>\n#include <cassert>\n#include <complex>\n#include <vector>\n#include <bitset>\n#include <cmath>\n#include <queue>\n#include<stack>\n#include <set>\n#include <map>\n#include<ctime>\n#include<list>\n\nusing namespace std;\n \ntypedef long long ll;\ntypedef vector<int> vi;\t \ntypedef pair<int,int> pii;\ntypedef pair<double,double> pdd;\ntypedef unsigned long long ull;\n \n#define FOR(i,a,b) for (int i(a); i < (b); i++)\n#define REP(i,n) FOR(i,0,n)\n#define SORT(v) sort((v).begin(),(v).end())\n#define UN(v) sort((v).begin(),(v).end()),v.erase(unique(v.begin(),v.end()),v.end())\n#define CL(a,b) memset(a,b,sizeof(a))\n#define pb push_back\n\nchar s[1555][1555];\npii  a[1555][1555];\nbool u[1555][1555];\nqueue<pii> q;\nint n,m;\n\npii getid(int x,int y){\n\tif(x>=0) x/=n;\n\telse x=(x+1)/n-1;\n\tif(y>=0) y/=m;\n\telse y=(y+1)/m-1;\n\treturn pii(x,y);\n}\n\nint main(){\n#ifdef LocalHost\n    freopen(\"input.txt\",\"r\",stdin);\n\t//freopen(\"output.txt\",\"w\",stdout);\n#endif\n\n\tcin>>n>>m;\n\tREP(i,n) scanf(\" %s\",s[i]);\n\tREP(i,n)REP(j,m) if(s[i][j]=='S'){\n\t\tq.push(pii(i,j));\n\t\ts[i][j]='.';\n\t\ta[i][j] = getid(i,j);\n\t\tu[i][j]=1;\n\t}\n\twhile(!q.empty()){\n\t\tpii cc = q.front();q.pop();\n\t\tint x = cc.first;\n\t\tint y = cc.second;\n\t\tFOR(dx,-1,2)FOR(dy,-1,2)if(abs(dx)+abs(dy)==1){\n\t\t\tint nx = x + dx;\n\t\t\tint ny = y + dy;\n\t\t\tint tx = (nx%n + n ) % n;\n\t\t\tint ty = (ny%m + m ) % m;\n\t\t\tif(s[tx][ty]=='.'){\n\t\t\t\tif(u[tx][ty] && a[tx][ty]!=getid(nx,ny)){\n\t\t\t\t\tputs(\"Yes\");\n\t\t\t\t\treturn 0;\n\t\t\t\t}\n\t\t\t\tif(u[tx][ty]) continue;\n\t\t\t\tu[tx][ty]=1;\n\t\t\t\ta[tx][ty]=getid(nx,ny);\n\t\t\t\tq.push(pii(nx,ny));\n\t\t\t}\n\t\t}\n\t}\n\tputs(\"No\");\n\n#ifdef LocalHost\n\tcerr<<endl<<endl<<\"TIME: \"<<clock()<<endl;\n#endif\n    return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dfs and similar",
+        "graphs"
+    ],
+    "dificulty": "2000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Infinite Maze.json",
+    "editorial_link": "https://codeforces.com//blog/entry/4717",
+    "editorial": "Answer is \"Yes\" iff there are two distinct, reachable from start\r\nposition cells, which correspond to same cell in initial labyrinth.\r\nProof: If these cells exist, move to first of them, and infinitely\r\nrepeat moves leading from first to second. On the contrary, if infinite\r\nfar path exist, on this path we obviously can find such cells. How to\r\nfind out if they exist? Start DFS from initial cell. For each cell\r\nvisited, let . Now, if DFS tries to go to cell , contains something, and\r\n, we found these cells: they are and . Notice that DFS will visit no\r\nmore than cells (Dirichlet\u00e2\u0080\u0099s principle). So the asymptotic is .\r\n"
+}

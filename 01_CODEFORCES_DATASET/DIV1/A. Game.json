@@ -1,1 +1,96 @@
-{"link": "https://codeforces.com//contest/213/problem/A", "problemId": "1587", "problem_idx": "A", "shortId": "213A", "contest_number": "213", "problem_submissions": {"E": [1958173, 1969539, 1959873, 1958351, 1966588], "C": [1956984, 1956310, 1956134, 1954719, 1956966, 1955946, 1956887, 1958032, 1956545, 1956052, 1957958, 1958035, 1956906, 1958230, 1958332], "A": [1955875, 1954301, 1955345, 1958002, 1955539, 1958852, 1959099, 1957250, 1954723, 1954879, 1954628, 1955388, 1957376, 1958738], "B": [1955158, 1954754, 1954497, 1957206, 1954491, 1954655, 1955055, 1956017, 1960091, 1954587, 1956726, 1956267, 1958376, 1954707, 1954701], "D": [1958270, 1958148, 1956444, 1958920, 1958358, 1958527, 1958577, 1959892, 1960192, 1959820, 1960125, 1960223]}, "name": "A. Game", "statement": "Furik and Rubik love playing computer games. Furik has recently found a\r\nnew game that greatly interested Rubik. The game consists of parts and\r\nto complete each part a player may probably need to complete some other\r\nones. We know that the game can be fully completed, that is, its parts\r\ndo not form cyclic dependencies. Rubik has computers, on which he can\r\nplay this game. All computers are located in different houses. Besides,\r\nit has turned out that each part of the game can be completed only on\r\none of these computers. Let\u2019s number the computers with integers from to\r\n. Rubik can perform the following actions: Complete some part of the\r\ngame on some computer. Rubik spends exactly hour on completing any part\r\non any computer. Move from the 1-st computer to the 2-nd one. Rubik\r\nspends exactly hour on that. Move from the 1-st computer to the 3-rd\r\none. Rubik spends exactly hours on that. Move from the 2-nd computer to\r\nthe 1-st one. Rubik spends exactly hours on that. Move from the 2-nd\r\ncomputer to the 3-rd one. Rubik spends exactly hour on that. Move from\r\nthe 3-rd computer to the 1-st one. Rubik spends exactly hour on that.\r\nMove from the 3-rd computer to the 2-nd one. Rubik spends exactly hours\r\non that. Help Rubik to find the minimum number of hours he will need to\r\ncomplete all parts of the game. Initially Rubik can be located at the\r\ncomputer he considers necessary.\r\n", "solutions": ["#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <queue>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <complex>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <cstring>\n#include <ctime>\n#include <cassert>\nusing namespace std;\n\nconst int maxn = 200;\n\nint n;\nint c[maxn];\nvector<int> nexts[maxn];\nint indeg[maxn];\n\nint main()\n{\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", c + i);\n        c[i] --;\n    }\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", indeg + i);\n        for (int j = 0; j < indeg[i]; j++) {\n            int ai;\n            scanf(\"%d\", &ai);\n            ai --;\n            nexts[ai].push_back(i);\n        }\n    }\n    int ret = 1 << 30;\n    for (int s = 0; s < 3; s++) {\n        int hours = 0;\n        queue<int> Q[3];\n        vector<int> deg(indeg, indeg + n);\n        for (int i = 0; i < n; i++) {\n            if (deg[i] == 0) {\n                Q[c[i]].push(i);\n            }\n        }\n        int house = s;\n        while (!Q[0].empty() || !Q[1].empty() || !Q[2].empty()) {\n            if (Q[house].empty()) {\n                hours ++;\n                house = (house + 1) % 3;\n                continue;\n            }\n            int p = Q[house].front();\n            Q[house].pop();\n            hours ++;\n            for (int i = 0; i < nexts[p].size(); i++) {\n                int q = nexts[p][i];\n                if (--deg[q] == 0) {\n                    Q[c[q]].push(q);\n                }\n            }\n        }\n        ret = min(ret, hours);\n    }\n    printf(\"%d\\n\", ret);\n}\n"], "input": "", "output": "", "tags": ["dfs and similar", "greedy"], "dificulty": "1700", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/213/problem/A",
+    "problemId": "1587",
+    "problem_idx": "A",
+    "shortId": "213A",
+    "contest_number": "213",
+    "problem_submissions": {
+        "E": [
+            1958173,
+            1969539,
+            1959873,
+            1958351,
+            1966588
+        ],
+        "C": [
+            1956984,
+            1956310,
+            1956134,
+            1954719,
+            1956966,
+            1955946,
+            1956887,
+            1958032,
+            1956545,
+            1956052,
+            1957958,
+            1958035,
+            1956906,
+            1958230,
+            1958332
+        ],
+        "A": [
+            1955875,
+            1954301,
+            1955345,
+            1958002,
+            1955539,
+            1958852,
+            1959099,
+            1957250,
+            1954723,
+            1954879,
+            1954628,
+            1955388,
+            1957376,
+            1958738
+        ],
+        "B": [
+            1955158,
+            1954754,
+            1954497,
+            1957206,
+            1954491,
+            1954655,
+            1955055,
+            1956017,
+            1960091,
+            1954587,
+            1956726,
+            1956267,
+            1958376,
+            1954707,
+            1954701
+        ],
+        "D": [
+            1958270,
+            1958148,
+            1956444,
+            1958920,
+            1958358,
+            1958527,
+            1958577,
+            1959892,
+            1960192,
+            1959820,
+            1960125,
+            1960223
+        ]
+    },
+    "name": "A. Game",
+    "statement": "Furik and Rubik love playing computer games. Furik has recently found a\r\nnew game that greatly interested Rubik. The game consists of parts and\r\nto complete each part a player may probably need to complete some other\r\nones. We know that the game can be fully completed, that is, its parts\r\ndo not form cyclic dependencies. Rubik has computers, on which he can\r\nplay this game. All computers are located in different houses. Besides,\r\nit has turned out that each part of the game can be completed only on\r\none of these computers. Let\u2019s number the computers with integers from to\r\n. Rubik can perform the following actions: Complete some part of the\r\ngame on some computer. Rubik spends exactly hour on completing any part\r\non any computer. Move from the 1-st computer to the 2-nd one. Rubik\r\nspends exactly hour on that. Move from the 1-st computer to the 3-rd\r\none. Rubik spends exactly hours on that. Move from the 2-nd computer to\r\nthe 1-st one. Rubik spends exactly hours on that. Move from the 2-nd\r\ncomputer to the 3-rd one. Rubik spends exactly hour on that. Move from\r\nthe 3-rd computer to the 1-st one. Rubik spends exactly hour on that.\r\nMove from the 3-rd computer to the 2-nd one. Rubik spends exactly hours\r\non that. Help Rubik to find the minimum number of hours he will need to\r\ncomplete all parts of the game. Initially Rubik can be located at the\r\ncomputer he considers necessary.\r\n",
+    "solutions": [
+        "#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <queue>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <complex>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <cstring>\n#include <ctime>\n#include <cassert>\nusing namespace std;\n\nconst int maxn = 200;\n\nint n;\nint c[maxn];\nvector<int> nexts[maxn];\nint indeg[maxn];\n\nint main()\n{\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", c + i);\n        c[i] --;\n    }\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", indeg + i);\n        for (int j = 0; j < indeg[i]; j++) {\n            int ai;\n            scanf(\"%d\", &ai);\n            ai --;\n            nexts[ai].push_back(i);\n        }\n    }\n    int ret = 1 << 30;\n    for (int s = 0; s < 3; s++) {\n        int hours = 0;\n        queue<int> Q[3];\n        vector<int> deg(indeg, indeg + n);\n        for (int i = 0; i < n; i++) {\n            if (deg[i] == 0) {\n                Q[c[i]].push(i);\n            }\n        }\n        int house = s;\n        while (!Q[0].empty() || !Q[1].empty() || !Q[2].empty()) {\n            if (Q[house].empty()) {\n                hours ++;\n                house = (house + 1) % 3;\n                continue;\n            }\n            int p = Q[house].front();\n            Q[house].pop();\n            hours ++;\n            for (int i = 0; i < nexts[p].size(); i++) {\n                int q = nexts[p][i];\n                if (--deg[q] == 0) {\n                    Q[c[q]].push(q);\n                }\n            }\n        }\n        ret = min(ret, hours);\n    }\n    printf(\"%d\\n\", ret);\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dfs and similar",
+        "greedy"
+    ],
+    "dificulty": "1700",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Game.json",
+    "editorial_link": "https://codeforces.com//blog/entry/4982",
+    "editorial": "Solution Greedy.Lets our computers settled on circle, and moves (1->2,\n2->3, 3->1) will be steps \"forward\", and moves (1->3,3->2,2->1) will\nsteps \"back\". Note that \"back\" moves is not optimal, as we can make two\nmoves \"forward\" that is identical in time. We will look over all starts.\nFurther, we will go by circle while we not complited all game. For every\nlevel we will remember number ne[i] count of another level that \"direct\"\nneed for it. We will complited levels with ne[i]=0 and update all ne[i]\nthat we must. It can be implemented with O(n^3) time.\n"
+}

@@ -1,1 +1,90 @@
-{"link": "https://codeforces.com//contest/115/problem/A", "problemId": "602", "problem_idx": "A", "shortId": "115A", "contest_number": "115", "problem_submissions": {"D": [700677, 709440, 703439, 700783], "E": [699985, 700148, 699895, 700886, 700709, 699935, 700481, 704109, 702223, 702118, 701045, 699830, 700560], "C": [698491, 698807, 698911, 698386, 699374, 701004, 698059, 699204, 699619, 699661, 702059], "B": [697429, 697289, 697881, 697365, 697647, 697668, 699366, 697349, 697691, 697537, 697907, 698287, 699705], "A": [696588, 696258, 695843, 695844, 696704, 696136, 696907, 695911, 696007, 696195, 695937, 696483, 695990]}, "name": "A. Party", "statement": "A company has employees numbered from to . Each employee either has no\r\nimmediate manager or exactly one immediate manager, who is another\r\nemployee with a different number. An employee is said to be the of\r\nanother employee if at least one of the following is true: Employee is\r\nthe immediate manager of employee Employee has an immediate manager\r\nemployee such that employee is the superior of employee . The company\r\nwill not have a managerial cycle. That is, there will not exist an\r\nemployee who is the superior of his/her own immediate manager.Today the\r\ncompany is going to arrange a party. This involves dividing all\r\nemployees into several groups: every employee must belong to exactly one\r\ngroup. Furthermore, within any single group, there must not be two\r\nemployees and such that is the superior of .What is the minimum number\r\nof groups that must be formed?\r\n", "solutions": ["#include <vector>\n#include <cstring>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <queue>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <stdlib.h>\n#include <ctime>\n#include <string>\n#include <complex>\n#ifdef __ASD__\n#include <windows.h>\n#endif\nusing namespace std;\n#define all(a) a.begin(),a.end()\n#define forn(i,n) for(int i=0;i<(n);++i)\n#define fornn(i,n) for(i=0;i<(n);++i)\n#define lng long long\n#define SQ(a) ((a)*(a))\n#define forv(i,v) for(int i=0;i<(int)v.size();++i)\n#define mp make_pair\n#define pb push_back\n#define ABS(a) ((a)<0?-(a):(a))\n#define iinf 1000000000\n#define linf 1000000000000000000LL\n#define dinf 1e200\n#define left asdleft\n#define prev asdprev\n#define eps 1e-12\n#define y1 asdy1\n#define y2 asdy2\n#define EQ(a,b) abs((a)-(b))<eps\n#define PI 3.1415926535897932384626433832795\n#define DEG2RAD PI/180\n#define ulng unsigned lng\n#define next asdnext\n#define prev asdprev\nvoid mytimer(string task){\n#ifdef __ASD__\n        static LARGE_INTEGER prev;      LARGE_INTEGER cur,freq; QueryPerformanceCounter(&cur);  QueryPerformanceFrequency(&freq);       if(task!=\"\")            cout<<task<<\" took \"<<(cur.QuadPart-prev.QuadPart)*1.0/freq.QuadPart<<endl;     prev=cur;\n#endif\n}\nvoid ext(int c){\n#ifdef __ASD__\n        exit(c);\n#endif\n}\n\nint par[3000];\nvector<int> gr[3000];\n\nint dfs(int v){\n    int r=0;\n    forv(i,gr[v])\n        r=max(r,dfs(gr[v][i]));\n    return r+1;\n}\n \n#define taska \"burai\"\nint main(){\n#ifdef __ASD__\n    freopen(\"input.txt\",\"r\",stdin);freopen(\"output.txt\",\"w\",stdout);\n#else\n    //freopen(taska\".in\",\"r\",stdin);freopen(taska\".out\",\"w\",stdout);\n#endif\n\n    int n;\n    cin>>n;\n    forn(i,n){\n        int a;\n        cin>>a;\n        --a;\n        par[i]=a;\n        if(a>=0){\n            gr[a].pb(i);\n        }\n    }\n\n    int res=0;\n    forn(i,n){\n        if(par[i]<0){\n            int t=dfs(i);\n            res=max(res,t);\n        }\n    }\n\n    cout<<res;\n\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["dfs and similar", "graphs", "trees"], "dificulty": "900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/115/problem/A",
+    "problemId": "602",
+    "problem_idx": "A",
+    "shortId": "115A",
+    "contest_number": "115",
+    "problem_submissions": {
+        "D": [
+            700677,
+            709440,
+            703439,
+            700783
+        ],
+        "E": [
+            699985,
+            700148,
+            699895,
+            700886,
+            700709,
+            699935,
+            700481,
+            704109,
+            702223,
+            702118,
+            701045,
+            699830,
+            700560
+        ],
+        "C": [
+            698491,
+            698807,
+            698911,
+            698386,
+            699374,
+            701004,
+            698059,
+            699204,
+            699619,
+            699661,
+            702059
+        ],
+        "B": [
+            697429,
+            697289,
+            697881,
+            697365,
+            697647,
+            697668,
+            699366,
+            697349,
+            697691,
+            697537,
+            697907,
+            698287,
+            699705
+        ],
+        "A": [
+            696588,
+            696258,
+            695843,
+            695844,
+            696704,
+            696136,
+            696907,
+            695911,
+            696007,
+            696195,
+            695937,
+            696483,
+            695990
+        ]
+    },
+    "name": "A. Party",
+    "statement": "A company has employees numbered from to . Each employee either has no\r\nimmediate manager or exactly one immediate manager, who is another\r\nemployee with a different number. An employee is said to be the of\r\nanother employee if at least one of the following is true: Employee is\r\nthe immediate manager of employee Employee has an immediate manager\r\nemployee such that employee is the superior of employee . The company\r\nwill not have a managerial cycle. That is, there will not exist an\r\nemployee who is the superior of his/her own immediate manager.Today the\r\ncompany is going to arrange a party. This involves dividing all\r\nemployees into several groups: every employee must belong to exactly one\r\ngroup. Furthermore, within any single group, there must not be two\r\nemployees and such that is the superior of .What is the minimum number\r\nof groups that must be formed?\r\n",
+    "solutions": [
+        "#include <vector>\n#include <cstring>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <queue>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <stdlib.h>\n#include <ctime>\n#include <string>\n#include <complex>\n#ifdef __ASD__\n#include <windows.h>\n#endif\nusing namespace std;\n#define all(a) a.begin(),a.end()\n#define forn(i,n) for(int i=0;i<(n);++i)\n#define fornn(i,n) for(i=0;i<(n);++i)\n#define lng long long\n#define SQ(a) ((a)*(a))\n#define forv(i,v) for(int i=0;i<(int)v.size();++i)\n#define mp make_pair\n#define pb push_back\n#define ABS(a) ((a)<0?-(a):(a))\n#define iinf 1000000000\n#define linf 1000000000000000000LL\n#define dinf 1e200\n#define left asdleft\n#define prev asdprev\n#define eps 1e-12\n#define y1 asdy1\n#define y2 asdy2\n#define EQ(a,b) abs((a)-(b))<eps\n#define PI 3.1415926535897932384626433832795\n#define DEG2RAD PI/180\n#define ulng unsigned lng\n#define next asdnext\n#define prev asdprev\nvoid mytimer(string task){\n#ifdef __ASD__\n        static LARGE_INTEGER prev;      LARGE_INTEGER cur,freq; QueryPerformanceCounter(&cur);  QueryPerformanceFrequency(&freq);       if(task!=\"\")            cout<<task<<\" took \"<<(cur.QuadPart-prev.QuadPart)*1.0/freq.QuadPart<<endl;     prev=cur;\n#endif\n}\nvoid ext(int c){\n#ifdef __ASD__\n        exit(c);\n#endif\n}\n\nint par[3000];\nvector<int> gr[3000];\n\nint dfs(int v){\n    int r=0;\n    forv(i,gr[v])\n        r=max(r,dfs(gr[v][i]));\n    return r+1;\n}\n \n#define taska \"burai\"\nint main(){\n#ifdef __ASD__\n    freopen(\"input.txt\",\"r\",stdin);freopen(\"output.txt\",\"w\",stdout);\n#else\n    //freopen(taska\".in\",\"r\",stdin);freopen(taska\".out\",\"w\",stdout);\n#endif\n\n    int n;\n    cin>>n;\n    forn(i,n){\n        int a;\n        cin>>a;\n        --a;\n        par[i]=a;\n        if(a>=0){\n            gr[a].pb(i);\n        }\n    }\n\n    int res=0;\n    forn(i,n){\n        if(par[i]<0){\n            int t=dfs(i);\n            res=max(res,t);\n        }\n    }\n\n    cout<<res;\n\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dfs and similar",
+        "graphs",
+        "trees"
+    ],
+    "dificulty": "900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Party.json",
+    "editorial_link": "https://codeforces.com/blog/entry/2584",
+    "editorial": "We let an employee without a manager called as root. There\u00e2\u0080\u0099s an edge\r\nfrom a manager to an employee that he/she manages. First notice that the\r\ngraph is a collection of directed trees. Hence, we can assign a depth\r\nlabel to each node - denoting the number of nodes on the simple path\r\nfrom the root to it. The answer is then the maximum depth a node has.\r\nWhy? First, the answer is bounded below by this number because any pair\r\nof employees in this path cannot be in the same group. Second, since the\r\ngraph is a tree, each node in the graph has a unique depth label\r\nassigned to it. Simply put all nodes with the same depth in the same\r\ngroup. It\u00e2\u0080\u0099s fairly easy to see that no one will be the superior of\r\nanother within a group, for otherwise their depths will not be equal.\r\nRemark You might notice that there exist an O(N) implementation of the\r\nabove algorithm, yet the constraint is 2000. Well, this problem was\r\nswapped with the D1-B because the previous D1-A was thought to be harder\r\nthan expected. And so, in the process, we also decrease the constraint\r\nfor N from 200,000 to 2,000. I hope you like it :)\r\n"
+}

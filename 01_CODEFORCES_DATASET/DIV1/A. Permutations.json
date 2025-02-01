@@ -1,1 +1,107 @@
-{"link": "https://codeforces.com//contest/187/problem/A", "problemId": "1321", "problem_idx": "A", "shortId": "187A", "contest_number": "187", "problem_submissions": {"B": [1679215, 1673469, 1673732, 1673153, 1675030, 1674956, 1675111, 1673806, 1679398, 1676105, 1674092, 1674719, 1674215, 1676107, 1674271, 1673982, 1674600, 1674313, 1673997, 1674141], "E": [1678609, 1679989], "D": [1676469, 1678199, 1678043, 2407052, 1678555, 1679755, 1678435, 1704251, 1703901, 1680981, 1679861, 1687546, 1679340], "C": [1674683, 1675935, 1675188, 1676560, 1676489, 1677858, 1674899, 1676989, 1677275, 1675430, 1676217, 1675632, 1674653, 1675726, 1676281, 1676115, 1676408, 1676632, 1676653], "A": [1672823, 1672616, 1673643, 1673994, 1673278, 1672815, 1672696, 1672795, 1675020, 1673285, 1673012, 1672803, 1672821, 1672657, 1672773, 1673154, 1672871, 1672576, 1672702]}, "name": "A. Permutations", "statement": "Happy PMP is freshman and he is learning about algorithmic problems. He\r\nenjoys playing algorithmic games a lot.One of the seniors gave Happy PMP\r\na nice game. He is given two permutations of numbers through and is\r\nasked to convert the first one to the second. In one move he can remove\r\nthe last number from the permutation of numbers and inserts it back in\r\nan arbitrary position. He can either insert last number between any two\r\nconsecutive numbers, or he can place it at the beginning of the\r\npermutation.Happy PMP has an algorithm that solves the problem. But it\r\nis not fast enough. He wants to know the minimum number of moves to\r\nconvert the first permutation to the second.\r\n", "solutions": ["#include<stdio.h>\n#include<stdlib.h>\n#include<string.h>\n#include<math.h>\n#include<assert.h>\n#include<stdarg.h>\n#include<time.h>\n#include<string>\n#include<map>\n#include<set>\n#include<algorithm>\n#include<vector>\nusing namespace std;\nint a[201000],b[201000];\nint c[201000];\nint main(){\n    int n,i,j;\n    scanf(\"%d\",&n);\n    for(i=1;i<=n;i++){\n        scanf(\"%d\",&a[i]);\n\n    }\n    for(i=1;i<=n;i++){\n        scanf(\"%d\",&b[i]);\n        c[b[i]]=i;\n    }\n    for(i=1;i<=n;i++)a[i]=c[a[i]];\n    a[0]=0;\n    for(i=1;i<=n;i++)if(a[i]<a[i-1])break;\n    printf(\"%d\\n\",n+1-i);\n}\n\n"], "input": "", "output": "", "tags": ["greedy"], "dificulty": "1500", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/187/problem/A",
+    "problemId": "1321",
+    "problem_idx": "A",
+    "shortId": "187A",
+    "contest_number": "187",
+    "problem_submissions": {
+        "B": [
+            1679215,
+            1673469,
+            1673732,
+            1673153,
+            1675030,
+            1674956,
+            1675111,
+            1673806,
+            1679398,
+            1676105,
+            1674092,
+            1674719,
+            1674215,
+            1676107,
+            1674271,
+            1673982,
+            1674600,
+            1674313,
+            1673997,
+            1674141
+        ],
+        "E": [
+            1678609,
+            1679989
+        ],
+        "D": [
+            1676469,
+            1678199,
+            1678043,
+            2407052,
+            1678555,
+            1679755,
+            1678435,
+            1704251,
+            1703901,
+            1680981,
+            1679861,
+            1687546,
+            1679340
+        ],
+        "C": [
+            1674683,
+            1675935,
+            1675188,
+            1676560,
+            1676489,
+            1677858,
+            1674899,
+            1676989,
+            1677275,
+            1675430,
+            1676217,
+            1675632,
+            1674653,
+            1675726,
+            1676281,
+            1676115,
+            1676408,
+            1676632,
+            1676653
+        ],
+        "A": [
+            1672823,
+            1672616,
+            1673643,
+            1673994,
+            1673278,
+            1672815,
+            1672696,
+            1672795,
+            1675020,
+            1673285,
+            1673012,
+            1672803,
+            1672821,
+            1672657,
+            1672773,
+            1673154,
+            1672871,
+            1672576,
+            1672702
+        ]
+    },
+    "name": "A. Permutations",
+    "statement": "Happy PMP is freshman and he is learning about algorithmic problems. He\r\nenjoys playing algorithmic games a lot.One of the seniors gave Happy PMP\r\na nice game. He is given two permutations of numbers through and is\r\nasked to convert the first one to the second. In one move he can remove\r\nthe last number from the permutation of numbers and inserts it back in\r\nan arbitrary position. He can either insert last number between any two\r\nconsecutive numbers, or he can place it at the beginning of the\r\npermutation.Happy PMP has an algorithm that solves the problem. But it\r\nis not fast enough. He wants to know the minimum number of moves to\r\nconvert the first permutation to the second.\r\n",
+    "solutions": [
+        "#include<stdio.h>\n#include<stdlib.h>\n#include<string.h>\n#include<math.h>\n#include<assert.h>\n#include<stdarg.h>\n#include<time.h>\n#include<string>\n#include<map>\n#include<set>\n#include<algorithm>\n#include<vector>\nusing namespace std;\nint a[201000],b[201000];\nint c[201000];\nint main(){\n    int n,i,j;\n    scanf(\"%d\",&n);\n    for(i=1;i<=n;i++){\n        scanf(\"%d\",&a[i]);\n\n    }\n    for(i=1;i<=n;i++){\n        scanf(\"%d\",&b[i]);\n        c[b[i]]=i;\n    }\n    for(i=1;i<=n;i++)a[i]=c[a[i]];\n    a[0]=0;\n    for(i=1;i<=n;i++)if(a[i]<a[i-1])break;\n    printf(\"%d\\n\",n+1-i);\n}\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "greedy"
+    ],
+    "dificulty": "1500",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Permutations.json",
+    "editorial_link": "https://codeforces.com/blog/entry/4540",
+    "editorial": "It is easy to see that if we replace each number in the first permutation with position of that number in the second permutation, the problem reduces to sorting the first permutation.\n\nEach time we take a number from the end of array, we can postpone its insertion until we know the most suitable position for insertion. Note that it is not good to insert a number and take it again, as we could make a better decision first time we took the number.\n\nSo, as long as the remainder of the array is not in increasing order, we should take more numbers from the end. But as soon as you have an increasing subsequence, you can insert the numbers you have taken to make the array sorted.\n\nTherefore to solve the problem, we find the largest i such the numbers from 1 to i are in increasing order. The answer would be n-i."
+}

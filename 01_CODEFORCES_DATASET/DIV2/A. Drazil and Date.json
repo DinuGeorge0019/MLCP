@@ -1,1 +1,104 @@
-{"link": "https://codeforces.com//contest/515/problem/A", "problemId": "22482", "problem_idx": "A", "shortId": "515A", "contest_number": "515", "problem_submissions": {"C": [9901093, 9891593, 9889966, 9894661, 9890694, 9891519, 9891807, 9891147, 9894312, 9892979, 9890976, 9896690, 9895106, 9891765, 9893860, 9889767, 9894769], "E": [9897953, 9901196, 9901641], "A": [9893658, 9884581, 9884436, 9884731, 9884617, 9893616, 9885742, 9884882, 9886057, 9890988, 9899002, 9884584, 9884720, 9884480, 9897882, 9895179, 9887232], "B": [9893222, 9886714, 9886489, 9887475, 9887922, 9887319, 9888734, 9887265, 9890144, 9891119, 9888369, 9892060, 9887541, 9886326, 9890729, 9894202, 9891245], "D": [9889440, 9896686, 9895645, 9901264, 9898104, 9900858, 9899954, 9900443, 9899935, 9899852, 9899500, 9928352, 9928159, 9899922, 9900339, 9901106]}, "name": "A. Drazil and Date", "statement": "Someday, Drazil wanted to go on date with Varda. Drazil and Varda live\r\non Cartesian plane. Drazil\u2019s home is located in point and Varda\u2019s home\r\nis located in point . In each step, he can move in a unit distance in\r\nhorizontal or vertical direction. In other words, from position he can\r\ngo to positions , , or . Unfortunately, Drazil doesn\u2019t have sense of\r\ndirection. So he randomly chooses the direction he will go to in each\r\nstep. He may accidentally return back to his house during his travel.\r\nDrazil may even not notice that he has arrived to and continue\r\ntravelling. Luckily, Drazil arrived to the position successfully. Drazil\r\nsaid to Varda: \"It took me exactly steps to travel from my house to\r\nyours\". But Varda is confused about his words, she is not sure that it\r\nis possible to get from to in exactly steps. Can you find out if it is\r\npossible for Varda?\r\n", "solutions": ["#include <stdio.h>\nint main(){\n    int x, y, n;\n    scanf(\"%d%d%d\", &x, &y, &n);\n    if (x < 0) x = -x;\n    if (y < 0) y = -y;\n    if (x + y > n) {\n        printf(\"No\\n\");\n    } else if ((x + y - n) % 2) {\n        printf(\"No\\n\");\n    } else {\n        printf(\"Yes\\n\");\n    }\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["math"], "dificulty": "1000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/515/problem/A",
+    "problemId": "22482",
+    "problem_idx": "A",
+    "shortId": "515A",
+    "contest_number": "515",
+    "problem_submissions": {
+        "C": [
+            9901093,
+            9891593,
+            9889966,
+            9894661,
+            9890694,
+            9891519,
+            9891807,
+            9891147,
+            9894312,
+            9892979,
+            9890976,
+            9896690,
+            9895106,
+            9891765,
+            9893860,
+            9889767,
+            9894769
+        ],
+        "E": [
+            9897953,
+            9901196,
+            9901641
+        ],
+        "A": [
+            9893658,
+            9884581,
+            9884436,
+            9884731,
+            9884617,
+            9893616,
+            9885742,
+            9884882,
+            9886057,
+            9890988,
+            9899002,
+            9884584,
+            9884720,
+            9884480,
+            9897882,
+            9895179,
+            9887232
+        ],
+        "B": [
+            9893222,
+            9886714,
+            9886489,
+            9887475,
+            9887922,
+            9887319,
+            9888734,
+            9887265,
+            9890144,
+            9891119,
+            9888369,
+            9892060,
+            9887541,
+            9886326,
+            9890729,
+            9894202,
+            9891245
+        ],
+        "D": [
+            9889440,
+            9896686,
+            9895645,
+            9901264,
+            9898104,
+            9900858,
+            9899954,
+            9900443,
+            9899935,
+            9899852,
+            9899500,
+            9928352,
+            9928159,
+            9899922,
+            9900339,
+            9901106
+        ]
+    },
+    "name": "A. Drazil and Date",
+    "statement": "Someday, Drazil wanted to go on date with Varda. Drazil and Varda live\r\non Cartesian plane. Drazil\u2019s home is located in point and Varda\u2019s home\r\nis located in point . In each step, he can move in a unit distance in\r\nhorizontal or vertical direction. In other words, from position he can\r\ngo to positions , , or . Unfortunately, Drazil doesn\u2019t have sense of\r\ndirection. So he randomly chooses the direction he will go to in each\r\nstep. He may accidentally return back to his house during his travel.\r\nDrazil may even not notice that he has arrived to and continue\r\ntravelling. Luckily, Drazil arrived to the position successfully. Drazil\r\nsaid to Varda: \"It took me exactly steps to travel from my house to\r\nyours\". But Varda is confused about his words, she is not sure that it\r\nis possible to get from to in exactly steps. Can you find out if it is\r\npossible for Varda?\r\n",
+    "solutions": [
+        "#include <stdio.h>\nint main(){\n    int x, y, n;\n    scanf(\"%d%d%d\", &x, &y, &n);\n    if (x < 0) x = -x;\n    if (y < 0) y = -y;\n    if (x + y > n) {\n        printf(\"No\\n\");\n    } else if ((x + y - n) % 2) {\n        printf(\"No\\n\");\n    } else {\n        printf(\"Yes\\n\");\n    }\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "math"
+    ],
+    "dificulty": "1000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Drazil and Date.json",
+    "editorial_link": "https://codeforces.com//blog/entry/16468",
+    "editorial": "If Drazil chooses the shortest path from (0,0) to (a,b), it takes |a|?+?|b| steps.\n\nSo we know that all numbers less than |a|?+?|b| are impossible to be the number of steps that Drazil took.\n\nNow consider when the number of steps is not less than |a|?+?|b|.\n\nWhen Drazil arrives at (a,?b), he can take two more steps such as (a,?b) -> (a,?b?+?1) -> (a,?b) to remain at the same position.\n\nSo we know that for all s such that s???|a|?+?|b| and (s?-?(|a|?+?|b|))%2?=?0, there exists a way for Drazil to get to (a,?b) in exactly s steps.\n\nThe last part we should prove is that it's impossible for Drazil to arrive at (a,b) in exactly s steps when (s?-?(|a|?+?|b|))%2?=?1.\n\nWe can color all positions (x,?y) where (x?+?y)%2?=?0 as white and color other points as black.\n\nAfter each step, the color of the position you're at always changes.\n\nSo we know that it's impossible for Drazil to get to (a,?b) in odd/even steps if the color of (a,?b) is white/black.\n\nConclusion: If s???|a|?+?|b| and (s?-?(|a|?+?|b|))%2?=?0 print \"Yes\", Otherwise print \"No\"."
+}

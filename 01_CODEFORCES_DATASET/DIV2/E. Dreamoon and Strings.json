@@ -1,1 +1,105 @@
-{"link": "https://codeforces.com//contest/476/problem/E", "problemId": "15277", "problem_idx": "E", "shortId": "476E", "contest_number": "476", "problem_submissions": {"E": [8204672, 8203397, 8207038, 8211617], "D": [8197947, 8191751, 8202943, 8195927, 8196039, 8197811, 8197369, 8217545, 8199329, 8200501, 8205151, 8199419, 8198018, 8200566, 8201223, 8198122, 8201729], "C": [8188264, 8188407, 8188998, 8189052, 8201842, 8185141, 8195789, 8189091, 8193525, 8196914, 8196369, 8196594, 8195818, 8195843, 8196937, 8193815], "B": [8185985, 8208310, 8204785, 8187126, 8185874, 8187135, 8188697, 8188022, 8185704, 8186819, 8186804, 8188777, 8187192, 8187477, 8187062, 8187450, 8187242], "A": [8184534, 8184021, 8184248, 8184018, 8184166, 8186376, 8185191, 8184038, 8184338, 8184268, 8185458, 8184887, 8184306, 8184110, 8184903, 8184310]}, "name": "E. Dreamoon and Strings", "statement": "Dreamoon has a string and a pattern string . He first removes exactly\r\ncharacters from obtaining string as a result. Then he calculates that is\r\ndefined as the maximal number of non-overlapping substrings equal to\r\nthat can be found in . He wants to make this number as big as\r\npossible.More formally, let\u2019s define as maximum value of over all that\r\ncan be obtained by removing exactly characters from . Dreamoon wants to\r\nknow for all from to where denotes the length of string .\r\n", "solutions": ["//BISM ILLAHHIRRAHMANNI RRAHIM\n\n#include <cassert>\n#include <cctype>\n#include <climits>\n#include <cmath>\n#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <iostream>\n#include <sstream>\n#include <iomanip>\n#include <string>\n#include <vector>\n#include <list>\n#include <set>\n#include <map>\n#include <stack>\n#include <queue>\n#include <algorithm>\n#include <iterator>\n#include <utility>\nusing namespace std;\n\ntemplate< class T > T _abs(T n) { return (n < 0 ? -n : n); }\ntemplate< class T > T _max(T a, T b) { return (!(a < b) ? a : b); }\ntemplate< class T > T _min(T a, T b) { return (a < b ? a : b); }\ntemplate< class T > T sq(T x) { return x * x; }\n\n#define ALL(p) p.begin(),p.end()\n#define MP(x, y) make_pair(x, y)\n#define SET(p) memset(p, -1, sizeof(p))\n#define CLR(p) memset(p, 0, sizeof(p))\n#define MEM(p, v) memset(p, v, sizeof(p))\n#define CPY(d, s) memcpy(d, s, sizeof(s))\n#define READ(f) freopen(f, \"r\", stdin)\n#define WRITE(f) freopen(f, \"w\", stdout)\n#define SZ(c) (int)c.size()\n#define PB(x) push_back(x)\n#define ff first\n#define ss second\n#define i64 long long\n#define ld long double\n#define pii pair< int, int >\n#define psi pair< string, int >\n#define vi vector< int >\n\nconst double EPS = 1e-9;\nconst int INF = 0x7f7f7f7f;\n\nbool vis[2010][2010];\nint dp[2010][2010];\nchar ln[2010];\nchar p[2010];\nint jm[2010];\nint cs[2010];\n\nint dfs(int p,int lf) {\n    if(!ln[p]) return lf?-10000000:0;\n    if(vis[p][lf]) return dp[p][lf];\n    vis[p][lf]=1;\n    int r=dfs(p+1,lf);\n    if(lf) r=max(r,dfs(p+1,lf-1));\n    if(jm[p] && lf>=cs[p]) r=max(r,1+dfs(jm[p],lf-cs[p]));\n    return dp[p][lf]=r;\n}\n\n\n\nint main() {\n    //READ(\"in.txt\");\n    //WRITE(\"out.txt\");\n    int i,j,k,l;\n    scanf(\"%s %s\",ln,p);\n    for(i=0;ln[i];i++) {\n        for(j=i;ln[j] && ln[j]!=p[0];j++);\n        if(!ln[j]) continue;\n        cs[i]=0;\n        for(k=0;p[k];k++,j++) {\n            while(ln[j] && ln[j]!=p[k]) {\n                cs[i]++;\n                j++;\n            }\n            if(ln[j]!=p[k]) break;\n        }\n        if(!p[k]) jm[i]=j;\n    }\n    for(i=0;ln[i];i++) {\n        printf(\"%d \",max(0,dfs(0,i)));\n    }\n    printf(\"%d\\n\",max(0,dfs(0,i)));\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["dp", "strings"], "dificulty": "2200", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/476/problem/E",
+    "problemId": "15277",
+    "problem_idx": "E",
+    "shortId": "476E",
+    "contest_number": "476",
+    "problem_submissions": {
+        "E": [
+            8204672,
+            8203397,
+            8207038,
+            8211617
+        ],
+        "D": [
+            8197947,
+            8191751,
+            8202943,
+            8195927,
+            8196039,
+            8197811,
+            8197369,
+            8217545,
+            8199329,
+            8200501,
+            8205151,
+            8199419,
+            8198018,
+            8200566,
+            8201223,
+            8198122,
+            8201729
+        ],
+        "C": [
+            8188264,
+            8188407,
+            8188998,
+            8189052,
+            8201842,
+            8185141,
+            8195789,
+            8189091,
+            8193525,
+            8196914,
+            8196369,
+            8196594,
+            8195818,
+            8195843,
+            8196937,
+            8193815
+        ],
+        "B": [
+            8185985,
+            8208310,
+            8204785,
+            8187126,
+            8185874,
+            8187135,
+            8188697,
+            8188022,
+            8185704,
+            8186819,
+            8186804,
+            8188777,
+            8187192,
+            8187477,
+            8187062,
+            8187450,
+            8187242
+        ],
+        "A": [
+            8184534,
+            8184021,
+            8184248,
+            8184018,
+            8184166,
+            8186376,
+            8185191,
+            8184038,
+            8184338,
+            8184268,
+            8185458,
+            8184887,
+            8184306,
+            8184110,
+            8184903,
+            8184310
+        ]
+    },
+    "name": "E. Dreamoon and Strings",
+    "statement": "Dreamoon has a string and a pattern string . He first removes exactly\r\ncharacters from obtaining string as a result. Then he calculates that is\r\ndefined as the maximal number of non-overlapping substrings equal to\r\nthat can be found in . He wants to make this number as big as\r\npossible.More formally, let\u2019s define as maximum value of over all that\r\ncan be obtained by removing exactly characters from . Dreamoon wants to\r\nknow for all from to where denotes the length of string .\r\n",
+    "solutions": [
+        "//BISM ILLAHHIRRAHMANNI RRAHIM\n\n#include <cassert>\n#include <cctype>\n#include <climits>\n#include <cmath>\n#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <iostream>\n#include <sstream>\n#include <iomanip>\n#include <string>\n#include <vector>\n#include <list>\n#include <set>\n#include <map>\n#include <stack>\n#include <queue>\n#include <algorithm>\n#include <iterator>\n#include <utility>\nusing namespace std;\n\ntemplate< class T > T _abs(T n) { return (n < 0 ? -n : n); }\ntemplate< class T > T _max(T a, T b) { return (!(a < b) ? a : b); }\ntemplate< class T > T _min(T a, T b) { return (a < b ? a : b); }\ntemplate< class T > T sq(T x) { return x * x; }\n\n#define ALL(p) p.begin(),p.end()\n#define MP(x, y) make_pair(x, y)\n#define SET(p) memset(p, -1, sizeof(p))\n#define CLR(p) memset(p, 0, sizeof(p))\n#define MEM(p, v) memset(p, v, sizeof(p))\n#define CPY(d, s) memcpy(d, s, sizeof(s))\n#define READ(f) freopen(f, \"r\", stdin)\n#define WRITE(f) freopen(f, \"w\", stdout)\n#define SZ(c) (int)c.size()\n#define PB(x) push_back(x)\n#define ff first\n#define ss second\n#define i64 long long\n#define ld long double\n#define pii pair< int, int >\n#define psi pair< string, int >\n#define vi vector< int >\n\nconst double EPS = 1e-9;\nconst int INF = 0x7f7f7f7f;\n\nbool vis[2010][2010];\nint dp[2010][2010];\nchar ln[2010];\nchar p[2010];\nint jm[2010];\nint cs[2010];\n\nint dfs(int p,int lf) {\n    if(!ln[p]) return lf?-10000000:0;\n    if(vis[p][lf]) return dp[p][lf];\n    vis[p][lf]=1;\n    int r=dfs(p+1,lf);\n    if(lf) r=max(r,dfs(p+1,lf-1));\n    if(jm[p] && lf>=cs[p]) r=max(r,1+dfs(jm[p],lf-cs[p]));\n    return dp[p][lf]=r;\n}\n\n\n\nint main() {\n    //READ(\"in.txt\");\n    //WRITE(\"out.txt\");\n    int i,j,k,l;\n    scanf(\"%s %s\",ln,p);\n    for(i=0;ln[i];i++) {\n        for(j=i;ln[j] && ln[j]!=p[0];j++);\n        if(!ln[j]) continue;\n        cs[i]=0;\n        for(k=0;p[k];k++,j++) {\n            while(ln[j] && ln[j]!=p[k]) {\n                cs[i]++;\n                j++;\n            }\n            if(ln[j]!=p[k]) break;\n        }\n        if(!p[k]) jm[i]=j;\n    }\n    for(i=0;ln[i];i++) {\n        printf(\"%d \",max(0,dfs(0,i)));\n    }\n    printf(\"%d\\n\",max(0,dfs(0,i)));\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp",
+        "strings"
+    ],
+    "dificulty": "2200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Dreamoon and Strings.json",
+    "editorial_link": "https://codeforces.com//blog/entry/14256",
+    "editorial": "Another solution: Let = . We can run an edit distance like algorithm as\r\nfollowing (omitting the details of initialization and boundary\r\nconditions): That means remove cost is when it is in the middle of a and\r\nelsewhere because need to be consecutive(thus no need to be actually\r\nremove outside of a ). Then is the minimal number of removals to have\r\nnon-overlapping substring of . So we have . And after the maximal is\r\nreached, decrease answer by for every . time complexity: sample code:\r\n8215394\r\n"
+}

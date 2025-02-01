@@ -1,1 +1,96 @@
-{"link": "https://codeforces.com//contest/443/problem/D", "problemId": "10509", "problem_idx": "D", "shortId": "443D", "contest_number": "443", "problem_submissions": {"D": [6920325, 6916566, 6917590, 6918097, 6920177, 6917285, 6920976, 6921353, 6922229, 6919679, 6920725, 6916330, 6920984, 6916768, 6918289], "C": [6916700, 6920227, 6920927, 6921420, 6918956, 6921762, 6918294, 6918027, 6919227, 6921621, 6920532, 6921893], "B": [6914810, 6917396, 6914725, 6915203, 6915357, 6915551, 6915724, 6915492, 6915913, 6916470, 6917359, 6917333, 6915305, 6915776, 6915944, 6915992], "A": [6913586, 6913341, 6913477, 6914120, 6913376, 6913571, 6913622, 6914280, 6913834, 6913392, 6914327, 6913573, 6919949, 6913342], "E": [6948171]}, "name": "D. Andrey and Problem", "statement": "Andrey needs one more problem to conduct a programming contest. He has\r\nfriends who are always willing to help. He can ask some of them to come\r\nup with a contest problem. Andrey knows one value for each of his fiends\r\nthe probability that this friend will come up with a problem if Andrey\r\nasks him.Help Andrey choose people to ask. As he needs only one problem,\r\nAndrey is going to be really upset if no one comes up with a problem or\r\nif he gets more than one problem from his friends. You need to choose\r\nsuch a set of people that maximizes the chances of Andrey not getting\r\nupset.\r\n", "solutions": ["using namespace std;\n\n#include \"cstdio\"\n#include \"iostream\"\n#include \"algorithm\"\n#include \"vector\"\n#include \"string\"\n#include \"cctype\"\n#include \"set\"\n\ntypedef long long Long;\n\ndouble p[ 102 ];\n\ndouble choose(int n) {\n    double ret = 0.0;\n\n    for (int i = 0; i < n; i++) {\n        double q = 1.0;\n\n        for (int j = 0; j < n; j++) if ( i != j ) q *= 1.0 - p[ j ];\n\n        ret += p[ i ] * q;\n    }\n\n    return ret;\n}\n\nint main() {\n    int n;\n\n    cin >> n;\n    for (int i = 0; i < n; i++) cin >> p[ i ];\n\n    sort( p, p + n );\n    reverse( p, p + n );\n\n    double ans = 0.0;\n\n    for (int i = 1; i <= n; i++) {\n        double r = choose( i );\n\n        fprintf(stderr, \"%d -> %.12lf\\n\", i, r);\n\n        ans = max( ans, r );\n    }\n\n    printf(\"%.12lf\\n\", ans);\n\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["dp", "greedy", "math", "probabilities", "sortings"], "dificulty": "1800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/443/problem/D",
+    "problemId": "10509",
+    "problem_idx": "D",
+    "shortId": "443D",
+    "contest_number": "443",
+    "problem_submissions": {
+        "D": [
+            6920325,
+            6916566,
+            6917590,
+            6918097,
+            6920177,
+            6917285,
+            6920976,
+            6921353,
+            6922229,
+            6919679,
+            6920725,
+            6916330,
+            6920984,
+            6916768,
+            6918289
+        ],
+        "C": [
+            6916700,
+            6920227,
+            6920927,
+            6921420,
+            6918956,
+            6921762,
+            6918294,
+            6918027,
+            6919227,
+            6921621,
+            6920532,
+            6921893
+        ],
+        "B": [
+            6914810,
+            6917396,
+            6914725,
+            6915203,
+            6915357,
+            6915551,
+            6915724,
+            6915492,
+            6915913,
+            6916470,
+            6917359,
+            6917333,
+            6915305,
+            6915776,
+            6915944,
+            6915992
+        ],
+        "A": [
+            6913586,
+            6913341,
+            6913477,
+            6914120,
+            6913376,
+            6913571,
+            6913622,
+            6914280,
+            6913834,
+            6913392,
+            6914327,
+            6913573,
+            6919949,
+            6913342
+        ],
+        "E": [
+            6948171
+        ]
+    },
+    "name": "D. Andrey and Problem",
+    "statement": "Andrey needs one more problem to conduct a programming contest. He has\r\nfriends who are always willing to help. He can ask some of them to come\r\nup with a contest problem. Andrey knows one value for each of his fiends\r\nthe probability that this friend will come up with a problem if Andrey\r\nasks him.Help Andrey choose people to ask. As he needs only one problem,\r\nAndrey is going to be really upset if no one comes up with a problem or\r\nif he gets more than one problem from his friends. You need to choose\r\nsuch a set of people that maximizes the chances of Andrey not getting\r\nupset.\r\n",
+    "solutions": [
+        "using namespace std;\n\n#include \"cstdio\"\n#include \"iostream\"\n#include \"algorithm\"\n#include \"vector\"\n#include \"string\"\n#include \"cctype\"\n#include \"set\"\n\ntypedef long long Long;\n\ndouble p[ 102 ];\n\ndouble choose(int n) {\n    double ret = 0.0;\n\n    for (int i = 0; i < n; i++) {\n        double q = 1.0;\n\n        for (int j = 0; j < n; j++) if ( i != j ) q *= 1.0 - p[ j ];\n\n        ret += p[ i ] * q;\n    }\n\n    return ret;\n}\n\nint main() {\n    int n;\n\n    cin >> n;\n    for (int i = 0; i < n; i++) cin >> p[ i ];\n\n    sort( p, p + n );\n    reverse( p, p + n );\n\n    double ans = 0.0;\n\n    for (int i = 1; i <= n; i++) {\n        double r = choose( i );\n\n        fprintf(stderr, \"%d -> %.12lf\\n\", i, r);\n\n        ans = max( ans, r );\n    }\n\n    printf(\"%.12lf\\n\", ans);\n\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp",
+        "greedy",
+        "math",
+        "probabilities",
+        "sortings"
+    ],
+    "dificulty": "1800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Andrey and Problem.json",
+    "editorial_link": "https://codeforces.com//blog/entry/12739",
+    "editorial": "Let's sort all friends in such a way that pi???pj iff i???j. If there is pi?=?1 Andrey should ask only this friend. Now we can assume that all probabilities are less then 1. What should we maximize?\n\n\n\nLet , . Assume we already have some group of people we would ask a help. Let's look what will happen with the probability of success if we add a friend with probability pi to this group:\n\n\n\nIt means adding a new people to group will increase a probability of success only if S?<?1. Now let's look at another question. We have some group of people with S?<?1. And we want to add only one friend to this group. Which one is better? Let the probability of the first friend is pi and the second friend is pj. It's better to add first one if\n\n?i?-??j?=?P\u00b7pi\u00b7(1?-?S)?-?P\u00b7pj\u00b7(1?-?S)?=?P\u00b7(1?-?S)\u00b7(pi?-?pj)?>?0. As S?<?1 we get pi?>?pj.\n\nBut it's only a local criteria of optimality. But, we can prove that globally you should use only a group of people with the biggest probabilities. We can use proof by contradiction. Let's look at the optimal answer with biggest used suffix (in the begining of editorial we sort all friends). Of all such answers we use one with minimum number of people in it. Where are two friends i and j (pi < pj) and i-th friend is in answer and j-th isn't. Let's look at the answer if we exclude i-th friend. It should be smaller because we used optimal answer with minimum numer of people in it. So adding a new people to this group will increase success probability. But we know that adding j-th is better than i-th. So we have found a better answer.\n\nSo we have a very easy solution of this problem. After sorting probabilities we should you some suffix of it. Because of sorting time complexity is O(nlogn)."
+}

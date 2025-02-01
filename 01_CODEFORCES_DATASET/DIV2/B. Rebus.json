@@ -1,1 +1,84 @@
-{"link": "https://codeforces.com//contest/664/problem/B", "problemId": "55352", "problem_idx": "B", "shortId": "664B", "contest_number": "664", "problem_submissions": {"D": [17349142, 17352169, 17350410, 17346952, 17351161, 17351836, 17349679], "C": [17346765, 17347784, 17351763, 17370299, 17348428, 17347472, 17348750, 17349368, 17349547, 17348404, 17348571, 17349155, 17347963, 17348761, 17350390], "B": [17345534, 17345705, 17346660, 17348399, 17356817, 17346262, 17346481, 17346720, 17346607, 17346168, 17346552, 17347640, 17350189, 17347184, 17347057], "A": [17343935, 17344370, 17346020, 17343725, 17343734, 17344399, 17343237, 17344590, 17343732, 17344241, 17343738, 17343162, 17343568, 17343578, 17343700]}, "name": "B. Rebus", "statement": "You are given a rebus of form , consisting of only question marks,\r\nseparated by arithmetic operation \u201d and \u201d, equality and positive integer\r\n. The goal is to replace each question mark with some positive integer\r\nfrom to , such that equality holds.\r\n", "solutions": ["#include <stdio.h>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\nvector<char> op;\nint p, m;\n\nvector<int> ps, ms;\n\nint main()\n{\n\tp = 1;\n\tfor (;;)\n\t{\n\t\tchar ch;\n\t\tscanf(\" %*c %c\", &ch);\n\t\tif (ch == '=') break;\n\t\top.push_back(ch);\n\t\tif (ch == '+') p++;\n\t\telse m++;\n\t}\n\tint n;\n\tscanf(\"%d\", &n);\n\n\t// \ucd5c\ub313\uac12: p * n - m\n\t// \ucd5c\uc19f\uac12: p - m * n\n\tif (p - m * n <= n && n <= p * n - m)\n\t{\n\t\tprintf(\"Possible\\n\");\n\t\tps.resize(p, 1);\n\t\tms.resize(m, 1);\n\t\tint remain = (p - m) - n;\n\n\t\tif (remain < 0)\n\t\t{\n\t\t\tfor (int i = 0; i < p && remain; i++)\n\t\t\t{\n\t\t\t\tint adde = min(n - 1, -remain);\n\t\t\t\tps[i] += adde;\n\t\t\t\tremain += adde;\n\t\t\t}\n\t\t}\n\t\telse\n\t\t{\n\t\t\tfor (int i = 0; i < m && remain; i++)\n\t\t\t{\n\t\t\t\tint adde = min(n - 1, remain);\n\t\t\t\tms[i] += adde;\n\t\t\t\tremain -= adde;\n\t\t\t}\n\t\t}\n\n\t\tprintf(\"%d \", ps[0]);\n\n\t\tfor (int p1 = 1, m1 = 0, j = 0; j < op.size(); j++)\n\t\t{\n\t\t\tprintf(\"%c \", op[j]);\n\t\t\tif (op[j] == '-') printf(\"%d \", ms[m1++]);\n\t\t\telse printf(\"%d \", ps[p1++]);\n\t\t}\n\t\tprintf(\"= %d\\n\", n);\n\t}\n\telse\n\t{\n\t\tprintf(\"Impossible\\n\");\n\t}\n}"], "input": "", "output": "", "tags": ["greedy"], "dificulty": "1800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/664/problem/B",
+    "problemId": "55352",
+    "problem_idx": "B",
+    "shortId": "664B",
+    "contest_number": "664",
+    "problem_submissions": {
+        "D": [
+            17349142,
+            17352169,
+            17350410,
+            17346952,
+            17351161,
+            17351836,
+            17349679
+        ],
+        "C": [
+            17346765,
+            17347784,
+            17351763,
+            17370299,
+            17348428,
+            17347472,
+            17348750,
+            17349368,
+            17349547,
+            17348404,
+            17348571,
+            17349155,
+            17347963,
+            17348761,
+            17350390
+        ],
+        "B": [
+            17345534,
+            17345705,
+            17346660,
+            17348399,
+            17356817,
+            17346262,
+            17346481,
+            17346720,
+            17346607,
+            17346168,
+            17346552,
+            17347640,
+            17350189,
+            17347184,
+            17347057
+        ],
+        "A": [
+            17343935,
+            17344370,
+            17346020,
+            17343725,
+            17343734,
+            17344399,
+            17343237,
+            17344590,
+            17343732,
+            17344241,
+            17343738,
+            17343162,
+            17343568,
+            17343578,
+            17343700
+        ]
+    },
+    "name": "B. Rebus",
+    "statement": "You are given a rebus of form , consisting of only question marks,\r\nseparated by arithmetic operation \u201d and \u201d, equality and positive integer\r\n. The goal is to replace each question mark with some positive integer\r\nfrom to , such that equality holds.\r\n",
+    "solutions": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\nvector<char> op;\nint p, m;\n\nvector<int> ps, ms;\n\nint main()\n{\n\tp = 1;\n\tfor (;;)\n\t{\n\t\tchar ch;\n\t\tscanf(\" %*c %c\", &ch);\n\t\tif (ch == '=') break;\n\t\top.push_back(ch);\n\t\tif (ch == '+') p++;\n\t\telse m++;\n\t}\n\tint n;\n\tscanf(\"%d\", &n);\n\n\t// \ucd5c\ub313\uac12: p * n - m\n\t// \ucd5c\uc19f\uac12: p - m * n\n\tif (p - m * n <= n && n <= p * n - m)\n\t{\n\t\tprintf(\"Possible\\n\");\n\t\tps.resize(p, 1);\n\t\tms.resize(m, 1);\n\t\tint remain = (p - m) - n;\n\n\t\tif (remain < 0)\n\t\t{\n\t\t\tfor (int i = 0; i < p && remain; i++)\n\t\t\t{\n\t\t\t\tint adde = min(n - 1, -remain);\n\t\t\t\tps[i] += adde;\n\t\t\t\tremain += adde;\n\t\t\t}\n\t\t}\n\t\telse\n\t\t{\n\t\t\tfor (int i = 0; i < m && remain; i++)\n\t\t\t{\n\t\t\t\tint adde = min(n - 1, remain);\n\t\t\t\tms[i] += adde;\n\t\t\t\tremain -= adde;\n\t\t\t}\n\t\t}\n\n\t\tprintf(\"%d \", ps[0]);\n\n\t\tfor (int p1 = 1, m1 = 0, j = 0; j < op.size(); j++)\n\t\t{\n\t\t\tprintf(\"%c \", op[j]);\n\t\t\tif (op[j] == '-') printf(\"%d \", ms[m1++]);\n\t\t\telse printf(\"%d \", ps[p1++]);\n\t\t}\n\t\tprintf(\"= %d\\n\", n);\n\t}\n\telse\n\t{\n\t\tprintf(\"Impossible\\n\");\n\t}\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "greedy"
+    ],
+    "dificulty": "1800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Rebus.json",
+    "editorial_link": "https://codeforces.com//blog/entry/44408",
+    "editorial": "First we check whether any solution exists at all. For that purpose, we calculate the number of positive (the first one and any other with the ?+? sign) and negative elements (with the ?-? sign) in the sum. Let them be pos and neg, respectively. Then the minimum value of the sum that can be possibly obtained is equal to min?=?(1?\u00b7?pos?-?n?\u00b7?neg), as each positive number can be 1, but all negative can be ?-?n. Similarly, the maximum possible value is equal to max?=?(n?\u00b7?pos?-?1?\u00b7?neg). The solution therefore exists if and only if min???n???max.\n\nNow suppose a solution exists. Let's insert the numbers into the sum one by one from left to right. Suppose that we have determined the numbers for some prefix of the expression with the sum of S. Let the sign of the current unknown be sgn (?+?1 or ?-?1) and there are some unknown numbers left to the right, excluding the examined unknown, among them pos_left positive and neg_left negative elements. Suppose that the current unknown number takes value x. How do we find out whether this leads to a solution? The answer is: in the same way we checked it in the beginning of the solution. Examine the smallest and the largest values of the total sum that we can get. These are equal to min_left?=?(S?+?sgn?\u00b7?x?+?pos_left?-?n?\u00b7?neg_left) and max_left?=?(S?+?sgn?\u00b7?x?+?n?\u00b7?pos_left?-?neg_left), respectively. Then we may set the current number to x, if min_left???n???max_left holds. To find the value of x, we can solve a system of inequalities, but it is easier simply to check all possible values from 1 to n."
+}

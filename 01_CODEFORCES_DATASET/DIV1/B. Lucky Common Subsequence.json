@@ -1,1 +1,93 @@
-{"link": "https://codeforces.com//contest/346/problem/B", "problemId": "3504", "problem_idx": "B", "shortId": "346B", "contest_number": "346", "problem_submissions": {"D": [4517003, 4516053, 4520303, 4518426, 4519668, 4519453, 4520044, 4520308, 4520598, 4519925, 4520328, 4536609, 4520171], "C": [4514630, 4512046, 4516249, 4515877, 4517922, 4517089, 4517025, 4518644, 4518590, 4531944, 4516902, 4518219, 4522630, 4512654, 4519217], "B": [4513206, 4517360, 4514492, 4514065, 4515596, 4513931, 4513764, 4514197, 4516093, 4513703, 4523738, 4523122, 4518694, 4514752], "A": [4511118, 4513688, 4511296, 4511103, 4511703, 4511202, 4511179, 4510998, 4512725, 4511681, 4510991, 4511097, 4513241, 4515270], "E": [155070489, 4717703]}, "name": "B. Lucky Common Subsequence", "statement": "In mathematics, a is a sequence that can be derived from another\r\nsequence by deleting some elements without changing the order of the\r\nremaining elements. For example, the sequence is a subsequence of . A of\r\na string is a continuous subsequence of the string. For example, is a\r\nsubstring of .You are given two strings , and another string called .\r\nYour task is to find the longest common subsequence of and , such that\r\nit doesn\u2019t contain as a substring.\r\n", "solutions": ["#include <algorithm>\n#include <iostream>\n#include <iomanip>\n#include <complex>\n#include <cstring>\n#include <cstdlib>\n#include <string>\n#include <vector>\n#include <cstdio>\n#include <cmath>\n#include <map>\n#include <set>\nusing namespace std;\n//#pragma comment(linker,\"/STACK:102400000,102400000\")\n\nint nA, nB, nVirus;\nstring A, B, virus;\nint trans[101][26];\n\nstring prefix(string A, int len)\n{\n\tstring ret;\n\tfor(int i = 0; i < len; i++)\n\t\tret += A[i];\n\treturn ret;\n}\n\nbool endWith(string A, string pat)\n{\n\tif(A.length() < pat.length()) return false;\n\tfor(int i = 0; i < pat.length(); i++)\n\t\tif(A[i - (int)pat.length() + (int)A.length()] != pat[i])\n\t\t\treturn false;\n\treturn true;\n}\n\nint getStateID(string s)\n{\n\tint ret = 0;\n\tfor(int i = 1; i <= nVirus; i++)\n\t\tif(endWith(s, prefix(virus, i)))\n\t\t\tret = i;\n\treturn ret;\n}\n\nint F[101][101][101];\nint nex1[101][101][101];\nint nex2[101][101][101];\nint nex3[101][101][101];\nstring nex0[101][101][101];\nint done[101][101][101];\n\nint f(int pA, int pB, int state)\n{\n\tif(state == nVirus) return -10000;\n\tif(pA == nA && pB == nB) return 0;\n\tif(done[pA][pB][state]) return F[pA][pB][state];\n\tint &ret = F[pA][pB][state];\n\tret = -10000;\n\tdone[pA][pB][state] = true;\n\tif(pA != nA)\n\t{\n\t\tint v = f(pA + 1, pB, state);\n\t\tif(v > ret)\n\t\t{\n\t\t\tret = v;\n\t\t\tnex1[pA][pB][state] = pA + 1;\n\t\t\tnex2[pA][pB][state] = pB;\n\t\t\tnex3[pA][pB][state] = state;\n\t\t\tnex0[pA][pB][state] = \"\";\n\t\t}\n\t}\n\tif(pB != nB)\n\t{\n\t\tint v = f(pA, pB + 1, state);\n\t\tif(v > ret)\n\t\t{\n\t\t\tret = v;\n\t\t\tnex1[pA][pB][state] = pA;\n\t\t\tnex2[pA][pB][state] = pB + 1;\n\t\t\tnex3[pA][pB][state] = state;\n\t\t\tnex0[pA][pB][state] = \"\";\n\t\t}\n\t}\n\tif(pA != nA && pB != nB && A[pA] == B[pB])\n\t{\n\t\tint v = 1 + f(pA + 1, pB + 1, trans[state][A[pA]-'A']);\n\t\tif(v > ret)\n\t\t{\n\t\t\tret = v;\n\t\t\tnex1[pA][pB][state] = pA + 1;\n\t\t\tnex2[pA][pB][state] = pB + 1;\n\t\t\tnex3[pA][pB][state] = trans[state][A[pA]-'A'];\n\t\t\tnex0[pA][pB][state] = A[pA];\n\t\t}\n\t}\n\t\n\treturn ret;\n}\n\nint MAIN()\n{\n\tcin >> A >> B >> virus;\n\tnA = A.length();\n\tnB = B.length();\n\tnVirus = virus.length();\n\tmemset(nex1, 0xff, sizeof(nex1));\n\tfor(int i = 0; i < nVirus; i++)\n\t\tfor(int j = 0; j < 26; j++)\n\t\t\ttrans[i][j] = getStateID(prefix(virus, i) + char('A' + j));\n\tmemset(done, 0, sizeof(done));\n\tint ans = f(0, 0, 0);\n\tif(ans == 0)\n\t\tcout << ans << endl;\n\telse\n\t{\n\t\tint arg1 = 0;\n\t\tint arg2 = 0;\n\t\tint arg3 = 0;\n\t\tstring ansString;\n\t\twhile(nex1[arg1][arg2][arg3] != -1)\n\t\t{\n\t\t\tansString += nex0[arg1][arg2][arg3];\n\t\t\tint nextArg1 = nex1[arg1][arg2][arg3];\n\t\t\tint nextArg2 = nex2[arg1][arg2][arg3];\n\t\t\tint nextArg3 = nex3[arg1][arg2][arg3];\n\t\t\targ1 = nextArg1;\n\t\t\targ2 = nextArg2;\n\t\t\targ3 = nextArg3;\n\t\t}\n\t\tcout << ansString << endl;\n\t}\n\n\t\n\treturn 0;\n}\n\nint main()\n{\n\t#ifdef LOCAL_TEST\n\t\tfreopen(\"in.txt\", \"r\", stdin);\n\t\tfreopen(\"out.txt\", \"w\", stdout);\n\t#endif\n\tios :: sync_with_stdio(false);\n\tcout << fixed << setprecision(16);\n\treturn MAIN();\n}\n"], "input": "", "output": "", "tags": ["dp", "strings"], "dificulty": "2000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/346/problem/B",
+    "problemId": "3504",
+    "problem_idx": "B",
+    "shortId": "346B",
+    "contest_number": "346",
+    "problem_submissions": {
+        "D": [
+            4517003,
+            4516053,
+            4520303,
+            4518426,
+            4519668,
+            4519453,
+            4520044,
+            4520308,
+            4520598,
+            4519925,
+            4520328,
+            4536609,
+            4520171
+        ],
+        "C": [
+            4514630,
+            4512046,
+            4516249,
+            4515877,
+            4517922,
+            4517089,
+            4517025,
+            4518644,
+            4518590,
+            4531944,
+            4516902,
+            4518219,
+            4522630,
+            4512654,
+            4519217
+        ],
+        "B": [
+            4513206,
+            4517360,
+            4514492,
+            4514065,
+            4515596,
+            4513931,
+            4513764,
+            4514197,
+            4516093,
+            4513703,
+            4523738,
+            4523122,
+            4518694,
+            4514752
+        ],
+        "A": [
+            4511118,
+            4513688,
+            4511296,
+            4511103,
+            4511703,
+            4511202,
+            4511179,
+            4510998,
+            4512725,
+            4511681,
+            4510991,
+            4511097,
+            4513241,
+            4515270
+        ],
+        "E": [
+            155070489,
+            4717703
+        ]
+    },
+    "name": "B. Lucky Common Subsequence",
+    "statement": "In mathematics, a is a sequence that can be derived from another\r\nsequence by deleting some elements without changing the order of the\r\nremaining elements. For example, the sequence is a subsequence of . A of\r\na string is a continuous subsequence of the string. For example, is a\r\nsubstring of .You are given two strings , and another string called .\r\nYour task is to find the longest common subsequence of and , such that\r\nit doesn\u2019t contain as a substring.\r\n",
+    "solutions": [
+        "#include <algorithm>\n#include <iostream>\n#include <iomanip>\n#include <complex>\n#include <cstring>\n#include <cstdlib>\n#include <string>\n#include <vector>\n#include <cstdio>\n#include <cmath>\n#include <map>\n#include <set>\nusing namespace std;\n//#pragma comment(linker,\"/STACK:102400000,102400000\")\n\nint nA, nB, nVirus;\nstring A, B, virus;\nint trans[101][26];\n\nstring prefix(string A, int len)\n{\n\tstring ret;\n\tfor(int i = 0; i < len; i++)\n\t\tret += A[i];\n\treturn ret;\n}\n\nbool endWith(string A, string pat)\n{\n\tif(A.length() < pat.length()) return false;\n\tfor(int i = 0; i < pat.length(); i++)\n\t\tif(A[i - (int)pat.length() + (int)A.length()] != pat[i])\n\t\t\treturn false;\n\treturn true;\n}\n\nint getStateID(string s)\n{\n\tint ret = 0;\n\tfor(int i = 1; i <= nVirus; i++)\n\t\tif(endWith(s, prefix(virus, i)))\n\t\t\tret = i;\n\treturn ret;\n}\n\nint F[101][101][101];\nint nex1[101][101][101];\nint nex2[101][101][101];\nint nex3[101][101][101];\nstring nex0[101][101][101];\nint done[101][101][101];\n\nint f(int pA, int pB, int state)\n{\n\tif(state == nVirus) return -10000;\n\tif(pA == nA && pB == nB) return 0;\n\tif(done[pA][pB][state]) return F[pA][pB][state];\n\tint &ret = F[pA][pB][state];\n\tret = -10000;\n\tdone[pA][pB][state] = true;\n\tif(pA != nA)\n\t{\n\t\tint v = f(pA + 1, pB, state);\n\t\tif(v > ret)\n\t\t{\n\t\t\tret = v;\n\t\t\tnex1[pA][pB][state] = pA + 1;\n\t\t\tnex2[pA][pB][state] = pB;\n\t\t\tnex3[pA][pB][state] = state;\n\t\t\tnex0[pA][pB][state] = \"\";\n\t\t}\n\t}\n\tif(pB != nB)\n\t{\n\t\tint v = f(pA, pB + 1, state);\n\t\tif(v > ret)\n\t\t{\n\t\t\tret = v;\n\t\t\tnex1[pA][pB][state] = pA;\n\t\t\tnex2[pA][pB][state] = pB + 1;\n\t\t\tnex3[pA][pB][state] = state;\n\t\t\tnex0[pA][pB][state] = \"\";\n\t\t}\n\t}\n\tif(pA != nA && pB != nB && A[pA] == B[pB])\n\t{\n\t\tint v = 1 + f(pA + 1, pB + 1, trans[state][A[pA]-'A']);\n\t\tif(v > ret)\n\t\t{\n\t\t\tret = v;\n\t\t\tnex1[pA][pB][state] = pA + 1;\n\t\t\tnex2[pA][pB][state] = pB + 1;\n\t\t\tnex3[pA][pB][state] = trans[state][A[pA]-'A'];\n\t\t\tnex0[pA][pB][state] = A[pA];\n\t\t}\n\t}\n\t\n\treturn ret;\n}\n\nint MAIN()\n{\n\tcin >> A >> B >> virus;\n\tnA = A.length();\n\tnB = B.length();\n\tnVirus = virus.length();\n\tmemset(nex1, 0xff, sizeof(nex1));\n\tfor(int i = 0; i < nVirus; i++)\n\t\tfor(int j = 0; j < 26; j++)\n\t\t\ttrans[i][j] = getStateID(prefix(virus, i) + char('A' + j));\n\tmemset(done, 0, sizeof(done));\n\tint ans = f(0, 0, 0);\n\tif(ans == 0)\n\t\tcout << ans << endl;\n\telse\n\t{\n\t\tint arg1 = 0;\n\t\tint arg2 = 0;\n\t\tint arg3 = 0;\n\t\tstring ansString;\n\t\twhile(nex1[arg1][arg2][arg3] != -1)\n\t\t{\n\t\t\tansString += nex0[arg1][arg2][arg3];\n\t\t\tint nextArg1 = nex1[arg1][arg2][arg3];\n\t\t\tint nextArg2 = nex2[arg1][arg2][arg3];\n\t\t\tint nextArg3 = nex3[arg1][arg2][arg3];\n\t\t\targ1 = nextArg1;\n\t\t\targ2 = nextArg2;\n\t\t\targ3 = nextArg3;\n\t\t}\n\t\tcout << ansString << endl;\n\t}\n\n\t\n\treturn 0;\n}\n\nint main()\n{\n\t#ifdef LOCAL_TEST\n\t\tfreopen(\"in.txt\", \"r\", stdin);\n\t\tfreopen(\"out.txt\", \"w\", stdout);\n\t#endif\n\tios :: sync_with_stdio(false);\n\tcout << fixed << setprecision(16);\n\treturn MAIN();\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp",
+        "strings"
+    ],
+    "dificulty": "2000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Lucky Common Subsequence.json",
+    "editorial_link": "https://codeforces.com//blog/entry/8903",
+    "editorial": "Brief description:\nYou have been given two strings s1, s2 and virus, and you have to find the longest common subsequence of s1 and s2 without virus as a substring.\n\nAnalysis:\nThis is a rather classical problem, let's say if there is no virus, then it is the classical **LCS ** problem. You can solve this by a O(n2) dynamic programing.\n\nWhen consider about the virus, we should add 1 more dimension on the state to trace the growth of the virus. It can be done by wheather Aho-Corasick automation, or KMP when there is only one virus in this case. The overall time complexity is O(n3)."
+}

@@ -1,1 +1,101 @@
-{"link": "https://codeforces.com//contest/196/problem/C", "problemId": "1426", "problem_idx": "C", "shortId": "196C", "contest_number": "196", "problem_submissions": {"C": [1798703, 1791214, 1788606, 1793292, 1791199, 1789041, 1791625, 1799512, 1791088, 1791198, 1791178, 1796930, 1790873, 1791544], "E": [1795709, 1794289, 1790345, 1800573, 1800569, 1795140, 1795262, 1792160, 1794470, 1794856, 1794312, 1796014, 1797704], "D": [1795008, 1796853, 1794499, 2860569, 1792348, 1798254], "B": [1789001, 1792087, 1796669, 1789699, 1788889, 1792321, 1796356, 1793004, 1789434, 1789111, 1796367, 1788833, 1789314, 1789678], "A": [1787593, 1787638, 1787620, 1788588, 1787608, 1788006, 1789404, 1787655, 1787643, 1794879, 1787601, 1787960, 1787674, 1788094, 1787666, 1787769]}, "name": "C. Paint Tree", "statement": "You are given a tree with vertexes and points on a plane, no three\r\npoints lie on one straight line.Your task is to paint the given tree on\r\na plane, using the given points as vertexes. That is, you should\r\ncorrespond each vertex of the tree to exactly one point and each point\r\nshould correspond to a vertex. If two vertexes of the tree are connected\r\nby an edge, then the corresponding points should have a segment painted\r\nbetween them. The segments that correspond to non-adjacent edges, should\r\nnot have common points. The segments that correspond to adjacent edges\r\nshould have exactly one common point.\r\n", "solutions": ["#pragma comment(linker, \"/STACK:65777216\")\n\n#include <algorithm>\n#include <iostream>\n#include <string>\n#include<sstream>\n#include<string.h>\n#include <cstdio>\n#include <cassert>\n#include <complex>\n#include <vector>\n#include <bitset>\n#include <cmath>\n#include <queue>\n#include<stack>\n#include <set>\n#include <map>\n#include<ctime>\n#include<list>\n\nusing namespace std;\n \ntypedef long long ll;\ntypedef vector<int> vi;\t \ntypedef pair<int,int> pii;\ntypedef pair<double,double> pdd;\ntypedef unsigned long long ull;\n \n#define FOR(i,a,b) for (int i(a); i < (b); i++)\n#define REP(i,n) FOR(i,0,n)\n#define SORT(v) sort((v).begin(),(v).end())\n#define UN(v) sort((v).begin(),(v).end()),v.erase(unique(v.begin(),v.end()),v.end())\n#define CL(a,b) memset(a,b,sizeof(a))\n#define pb push_back\n\nstruct P{\n\tint x,y;\n\tint id;\n};\n\nbool cmp(const P&s1,const P&s2){\n\treturn pii(s1.x,s1.y)<pii(s2.x,s2.y);\n}\n\nP USE;\nvector<P> p;\n\nbool cmp2(const P&s1,const P&s2){\n\treturn (s1.x-USE.x)*ll(s2.y-USE.y)-(s2.x-USE.x)*ll(s1.y-USE.y)>0;\n}\n\n\n\nint n;\nvi v[1555];\nint sz[1555];\nint res[1555];\n\nvoid solve(vector<P> p, int curr,int par){\n\n\tint fix = 0;\n\tREP(i,p.size()) if(cmp(p[i],p[fix])) fix = i;\n\tres[p[fix].id] = curr;\n\tif(sz[curr]==1) return;\n\tUSE = p[fix];\n\tp.erase(p.begin()+fix);\n\tsort(p.begin(), p.end(), cmp2);\n\n\tREP(i,v[curr].size()) if(v[curr][i]!=par){\n\t\tvector<P> t(p.end()-sz[v[curr][i]], p.end());\n\t\tp.erase(p.end()-sz[v[curr][i]],p.end());\n\t\tsolve(t, v[curr][i], curr);\n\t}\n}\n\nint dfs(int ver,int par=-1){\n\tsz[ver] = 1;\n\tREP(i,v[ver].size()) if(v[ver][i]!=par)\n\t\tsz[ver] += dfs(v[ver][i], ver);\n\treturn sz[ver];\n}\n\nint main(){\n#ifdef LocalHost\n    freopen(\"input.txt\",\"r\",stdin);\n\t//freopen(\"output.txt\",\"w\",stdout);\n#endif\n\n\tcin>>n;\n\tREP(i,n-1){\n\t\tint x,y;\n\t\tscanf(\"%d %d\",&x,&y);\n\t\tx--,y--;\n\t\tv[x].pb(y);\n\t\tv[y].pb(x);\n\t}\n\tdfs(0);\n\tp.resize(n);\n\tREP(i,n) scanf(\"%d %d\",&p[i].x, &p[i].y),p[i].id=i;\n\n\tsolve(p, 0, -1);\n\tREP(i,n){\n\t\tif(i) printf(\" \");\n\t\tprintf(\"%d\",res[i]+1);\n\t}\n\tputs(\"\");\n\n#ifdef LocalHost\n\tcerr<<endl<<endl<<\"TIME: \"<<clock()<<endl;\n#endif\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["constructive algorithms", "divide and conquer", "geometry", "sortings", "trees"], "dificulty": "2200", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/196/problem/C",
+    "problemId": "1426",
+    "problem_idx": "C",
+    "shortId": "196C",
+    "contest_number": "196",
+    "problem_submissions": {
+        "C": [
+            1798703,
+            1791214,
+            1788606,
+            1793292,
+            1791199,
+            1789041,
+            1791625,
+            1799512,
+            1791088,
+            1791198,
+            1791178,
+            1796930,
+            1790873,
+            1791544
+        ],
+        "E": [
+            1795709,
+            1794289,
+            1790345,
+            1800573,
+            1800569,
+            1795140,
+            1795262,
+            1792160,
+            1794470,
+            1794856,
+            1794312,
+            1796014,
+            1797704
+        ],
+        "D": [
+            1795008,
+            1796853,
+            1794499,
+            2860569,
+            1792348,
+            1798254
+        ],
+        "B": [
+            1789001,
+            1792087,
+            1796669,
+            1789699,
+            1788889,
+            1792321,
+            1796356,
+            1793004,
+            1789434,
+            1789111,
+            1796367,
+            1788833,
+            1789314,
+            1789678
+        ],
+        "A": [
+            1787593,
+            1787638,
+            1787620,
+            1788588,
+            1787608,
+            1788006,
+            1789404,
+            1787655,
+            1787643,
+            1794879,
+            1787601,
+            1787960,
+            1787674,
+            1788094,
+            1787666,
+            1787769
+        ]
+    },
+    "name": "C. Paint Tree",
+    "statement": "You are given a tree with vertexes and points on a plane, no three\r\npoints lie on one straight line.Your task is to paint the given tree on\r\na plane, using the given points as vertexes. That is, you should\r\ncorrespond each vertex of the tree to exactly one point and each point\r\nshould correspond to a vertex. If two vertexes of the tree are connected\r\nby an edge, then the corresponding points should have a segment painted\r\nbetween them. The segments that correspond to non-adjacent edges, should\r\nnot have common points. The segments that correspond to adjacent edges\r\nshould have exactly one common point.\r\n",
+    "solutions": [
+        "#pragma comment(linker, \"/STACK:65777216\")\n\n#include <algorithm>\n#include <iostream>\n#include <string>\n#include<sstream>\n#include<string.h>\n#include <cstdio>\n#include <cassert>\n#include <complex>\n#include <vector>\n#include <bitset>\n#include <cmath>\n#include <queue>\n#include<stack>\n#include <set>\n#include <map>\n#include<ctime>\n#include<list>\n\nusing namespace std;\n \ntypedef long long ll;\ntypedef vector<int> vi;\t \ntypedef pair<int,int> pii;\ntypedef pair<double,double> pdd;\ntypedef unsigned long long ull;\n \n#define FOR(i,a,b) for (int i(a); i < (b); i++)\n#define REP(i,n) FOR(i,0,n)\n#define SORT(v) sort((v).begin(),(v).end())\n#define UN(v) sort((v).begin(),(v).end()),v.erase(unique(v.begin(),v.end()),v.end())\n#define CL(a,b) memset(a,b,sizeof(a))\n#define pb push_back\n\nstruct P{\n\tint x,y;\n\tint id;\n};\n\nbool cmp(const P&s1,const P&s2){\n\treturn pii(s1.x,s1.y)<pii(s2.x,s2.y);\n}\n\nP USE;\nvector<P> p;\n\nbool cmp2(const P&s1,const P&s2){\n\treturn (s1.x-USE.x)*ll(s2.y-USE.y)-(s2.x-USE.x)*ll(s1.y-USE.y)>0;\n}\n\n\n\nint n;\nvi v[1555];\nint sz[1555];\nint res[1555];\n\nvoid solve(vector<P> p, int curr,int par){\n\n\tint fix = 0;\n\tREP(i,p.size()) if(cmp(p[i],p[fix])) fix = i;\n\tres[p[fix].id] = curr;\n\tif(sz[curr]==1) return;\n\tUSE = p[fix];\n\tp.erase(p.begin()+fix);\n\tsort(p.begin(), p.end(), cmp2);\n\n\tREP(i,v[curr].size()) if(v[curr][i]!=par){\n\t\tvector<P> t(p.end()-sz[v[curr][i]], p.end());\n\t\tp.erase(p.end()-sz[v[curr][i]],p.end());\n\t\tsolve(t, v[curr][i], curr);\n\t}\n}\n\nint dfs(int ver,int par=-1){\n\tsz[ver] = 1;\n\tREP(i,v[ver].size()) if(v[ver][i]!=par)\n\t\tsz[ver] += dfs(v[ver][i], ver);\n\treturn sz[ver];\n}\n\nint main(){\n#ifdef LocalHost\n    freopen(\"input.txt\",\"r\",stdin);\n\t//freopen(\"output.txt\",\"w\",stdout);\n#endif\n\n\tcin>>n;\n\tREP(i,n-1){\n\t\tint x,y;\n\t\tscanf(\"%d %d\",&x,&y);\n\t\tx--,y--;\n\t\tv[x].pb(y);\n\t\tv[y].pb(x);\n\t}\n\tdfs(0);\n\tp.resize(n);\n\tREP(i,n) scanf(\"%d %d\",&p[i].x, &p[i].y),p[i].id=i;\n\n\tsolve(p, 0, -1);\n\tREP(i,n){\n\t\tif(i) printf(\" \");\n\t\tprintf(\"%d\",res[i]+1);\n\t}\n\tputs(\"\");\n\n#ifdef LocalHost\n\tcerr<<endl<<endl<<\"TIME: \"<<clock()<<endl;\n#endif\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "divide and conquer",
+        "geometry",
+        "sortings",
+        "trees"
+    ],
+    "dificulty": "2200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Paint Tree.json",
+    "editorial_link": "https://codeforces.com//blog/entry/4717",
+    "editorial": "No three points are in the same line, so the solution always exists.\r\nFirst, choose any one vertex as the root of tree. Find size of each\r\nsubtree using dfs. Then, we can build the answer recursively. Put the\r\nroot of tree to the most lower left point. Sort all other points by\r\nangle relative to this lower left point. Let us name the sizes of\r\nsubtrees of the root as , , ..., . Run the algorithm recursively, giving\r\nfirst points (in sorted order) for the first subtree of root, next\r\npoints for the second subtree and so on. Obviously, no two edges from\r\ndifferent subtrees can intersect now. At each step of recursion we are\r\nto put the root of current subtree to the first point in sorted-by-angle\r\norder, and then sort other points by angle relative to it. So, no two\r\nsubtrees will have any intersecting edges. The asymptotic of solution is\r\n.\r\n"
+}

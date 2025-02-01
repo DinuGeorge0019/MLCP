@@ -1,1 +1,86 @@
-{"link": "https://codeforces.com//contest/718/problem/A", "problemId": "72540", "problem_idx": "A", "shortId": "718A", "contest_number": "718", "problem_submissions": {"C": [22302962, 22302941, 22302889, 22302852, 22302731, 22302692, 20846565, 20849386, 20847435, 20859089, 20848615, 20840892, 20856665, 20846554, 20847508, 20848199, 20847949, 20848925, 20849628, 20854862, 20850773, 20851572, 20861188, 20850610], "D": [20853333, 20864854, 20856011, 20861286, 21246935, 21246860, 20864386], "A": [20842439, 20877357, 20843102, 20840207, 20845729, 20843895, 20841441, 20841738, 20840153, 20842838, 20841757, 20842345, 20848915, 20842908, 20843212, 20840112, 20842542, 20845574], "E": [20878493, 21383093, 33904537]}, "name": "A. Efim and Strange Grade", "statement": "Efim just received his grade for the last test. He studies in a special\r\nschool and his grade can be equal to any positive decimal fraction.\r\nFirst he got disappointed, as he expected a way more pleasant result.\r\nThen, he developed a tricky plan. Each second, he can ask his teacher to\r\nround the grade at any place after the decimal point (also, he can ask\r\nto round to the nearest integer). There are seconds left till the end of\r\nthe break, so Efim has to act fast. Help him find what is the maximum\r\ngrade he can get in no more than seconds. Note, that he can choose to\r\nnot use all seconds. Moreover, he can even choose to not round the grade\r\nat all.In this problem, classic rounding rules are used: while rounding\r\nnumber to the -th digit one has to take a look at the digit . If it is\r\nless than than the -th digit remain unchanged while all subsequent\r\ndigits are replaced with . Otherwise, if the digit is greater or equal\r\nto , the digit at the position is increased by (this might also change\r\nsome other digits, if this one was equal to ) and all subsequent digits\r\nare replaced with . At the end, all trailing zeroes are thrown away.For\r\nexample, if the number is rounded to the first decimal place, the result\r\nis , while if we round to the nearest integer, the result is . Rounding\r\nnumber in the fifth decimal place will result in number .\r\n", "solutions": ["#include <cstdio>\n#include <iostream>\n#include <vector>\n#include <string>\n#include <algorithm>\nusing namespace std;\n\nint n, t;\nstring s;\n\nvoid incByOne(string &s)\n{\n\tint pnt = int(s.length()) - 1;\n\twhile (pnt >= 0 && s[pnt] == '9')\n\t\ts[pnt--] = '0';\n\tif (pnt >= 0) s[pnt]++;\n\telse s = \"1\" + s;\n}\n\nint main()\n{\n\tcin >> n >> t;\n\tcin >> s;\n\tint pos = s.find('.');\n\tint ind = pos + 1;\n\twhile (ind < s.length() && s[ind] < '5') ind++;\n\tif (ind >= s.length()) printf(\"%s\\n\", s.c_str());\n\telse {\n\t\tint lst = s.length();\n\t\twhile (ind > pos && s[ind] >= '5' && t) {\n\t\t\tif (ind - 1 == pos) {\n\t\t\t\ts = s.substr(0, pos);\n\t\t\t\tincByOne(s);\n\t\t\t\tprintf(\"%s\\n\", s.substr().c_str());\n\t\t\t\treturn 0;\n\t\t\t}\n\t\t\ts[ind - 1]++;\n\t\t\tfor (int j = ind; j < lst; j++)\n\t\t\t\ts[j] = '0';\n\t\t\tlst = ind; ind--; t--;\n\t\t}\n\t\tlst = int(s.length()) - 1;\n\t\twhile (s[lst] == '0') lst--;\n\t\tprintf(\"%s\\n\", s.substr(0, lst + 1).c_str());\n\t}\n\treturn 0;\n}"], "input": "", "output": "", "tags": ["dp", "implementation", "math"], "dificulty": "1700", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/718/problem/A",
+    "problemId": "72540",
+    "problem_idx": "A",
+    "shortId": "718A",
+    "contest_number": "718",
+    "problem_submissions": {
+        "C": [
+            22302962,
+            22302941,
+            22302889,
+            22302852,
+            22302731,
+            22302692,
+            20846565,
+            20849386,
+            20847435,
+            20859089,
+            20848615,
+            20840892,
+            20856665,
+            20846554,
+            20847508,
+            20848199,
+            20847949,
+            20848925,
+            20849628,
+            20854862,
+            20850773,
+            20851572,
+            20861188,
+            20850610
+        ],
+        "D": [
+            20853333,
+            20864854,
+            20856011,
+            20861286,
+            21246935,
+            21246860,
+            20864386
+        ],
+        "A": [
+            20842439,
+            20877357,
+            20843102,
+            20840207,
+            20845729,
+            20843895,
+            20841441,
+            20841738,
+            20840153,
+            20842838,
+            20841757,
+            20842345,
+            20848915,
+            20842908,
+            20843212,
+            20840112,
+            20842542,
+            20845574
+        ],
+        "E": [
+            20878493,
+            21383093,
+            33904537
+        ]
+    },
+    "name": "A. Efim and Strange Grade",
+    "statement": "Efim just received his grade for the last test. He studies in a special\r\nschool and his grade can be equal to any positive decimal fraction.\r\nFirst he got disappointed, as he expected a way more pleasant result.\r\nThen, he developed a tricky plan. Each second, he can ask his teacher to\r\nround the grade at any place after the decimal point (also, he can ask\r\nto round to the nearest integer). There are seconds left till the end of\r\nthe break, so Efim has to act fast. Help him find what is the maximum\r\ngrade he can get in no more than seconds. Note, that he can choose to\r\nnot use all seconds. Moreover, he can even choose to not round the grade\r\nat all.In this problem, classic rounding rules are used: while rounding\r\nnumber to the -th digit one has to take a look at the digit . If it is\r\nless than than the -th digit remain unchanged while all subsequent\r\ndigits are replaced with . Otherwise, if the digit is greater or equal\r\nto , the digit at the position is increased by (this might also change\r\nsome other digits, if this one was equal to ) and all subsequent digits\r\nare replaced with . At the end, all trailing zeroes are thrown away.For\r\nexample, if the number is rounded to the first decimal place, the result\r\nis , while if we round to the nearest integer, the result is . Rounding\r\nnumber in the fifth decimal place will result in number .\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <iostream>\n#include <vector>\n#include <string>\n#include <algorithm>\nusing namespace std;\n\nint n, t;\nstring s;\n\nvoid incByOne(string &s)\n{\n\tint pnt = int(s.length()) - 1;\n\twhile (pnt >= 0 && s[pnt] == '9')\n\t\ts[pnt--] = '0';\n\tif (pnt >= 0) s[pnt]++;\n\telse s = \"1\" + s;\n}\n\nint main()\n{\n\tcin >> n >> t;\n\tcin >> s;\n\tint pos = s.find('.');\n\tint ind = pos + 1;\n\twhile (ind < s.length() && s[ind] < '5') ind++;\n\tif (ind >= s.length()) printf(\"%s\\n\", s.c_str());\n\telse {\n\t\tint lst = s.length();\n\t\twhile (ind > pos && s[ind] >= '5' && t) {\n\t\t\tif (ind - 1 == pos) {\n\t\t\t\ts = s.substr(0, pos);\n\t\t\t\tincByOne(s);\n\t\t\t\tprintf(\"%s\\n\", s.substr().c_str());\n\t\t\t\treturn 0;\n\t\t\t}\n\t\t\ts[ind - 1]++;\n\t\t\tfor (int j = ind; j < lst; j++)\n\t\t\t\ts[j] = '0';\n\t\t\tlst = ind; ind--; t--;\n\t\t}\n\t\tlst = int(s.length()) - 1;\n\t\twhile (s[lst] == '0') lst--;\n\t\tprintf(\"%s\\n\", s.substr(0, lst + 1).c_str());\n\t}\n\treturn 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp",
+        "implementation",
+        "math"
+    ],
+    "dificulty": "1700",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Efim and Strange Grade.json",
+    "editorial_link": "https://codeforces.com//blog/entry/47314",
+    "editorial": "One can notice that the closer to the decimal point we round our grade the bigger grade we get. Based on this observation we can easily solve the problem with dynamic programming.\n\nLet dpi be the minimum time required to get a carry to the (i?-?1)-th position.\n\nLet's denote our grade as a, and let ai be the (i)-th digit of the a. There are three cases:\n\nIf ai???5, then dpi?=?1.\n\nIf ai?<?4, then dpi?=?inf (it means, that we cann't get a carry to the (i?-?1)-th position).\n\nIf ai?=?4, then dpi?=?1?+?dpi?+?1.\n\nAfter computing dp, we need to find the minimum pos such that dppos???t. So, after that we know the position where we should round our grade.\n\nNow we only need to carefully add 1 to the number formed by the prefix that contains pos elements of the original grade."
+}

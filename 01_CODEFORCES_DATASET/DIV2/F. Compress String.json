@@ -1,1 +1,116 @@
-{"link": "https://codeforces.com//contest/1121/problem/F", "problemId": "306952", "problem_idx": "F", "shortId": "1121F", "contest_number": "1121", "problem_submissions": {"D": [50758250, 50758015, 50749128, 50747632, 50785617, 50754149, 50754700, 50755682], "E": [50757916, 50764324], "F": [50745381, 50750604, 50753091, 50749617, 50753700, 50750259, 50754814, 50754495, 50760298, 50761256, 50756002, 50755635, 50755816, 50755833, 50755580, 50757571, 50755934], "C": [50743029, 50746539, 50749003, 50753301, 50747698, 50753219, 50747567, 50743419, 50747905, 50747562, 50753852, 50753022, 50751877, 50749086, 50748818, 50753336, 50747068], "B": [50741461, 50741819, 50743532, 50743792, 50743537, 50751011, 50741449, 50742306, 50748477, 50742402, 50750467, 50743138, 50747985, 50747123, 50743911, 50743533, 50747184, 50742809], "A": [50741269, 50741274, 50741426, 50741433, 50742538, 50742625, 50742751, 50741659, 50741596, 50741572, 50751688, 50741748, 50743041, 50748198, 50742474, 50741733, 50743780, 50741312]}, "name": "F. Compress String", "statement": "Suppose you are given a string s of length n consisting of lowercase\r\nEnglish letters. You need to compress it using the smallest possible\r\nnumber of coins.To compress the string, you have to represent s as a\r\nconcatenation of several non-empty strings: s = t_{1} t_{2}\r\nldots t_{k}. The i-th of these strings should be encoded with one of the\r\ntwo ways: if |t_{i}| = 1, meaning that the current string consists of a\r\nsingle character, you can encode it paying a coins; if t_{i} is a\r\nsubstring of t_{1} t_{2}\r\nldots t_{i - 1}, then you can encode it paying b coins. A string x is a\r\nsubstring of a string y if x can be obtained from y by deletion of\r\nseveral (possibly, zero or all) characters from the beginning and\r\nseveral (possibly, zero or all) characters from the end.So your task is\r\nto calculate the minimum possible number of coins you need to spend in\r\norder to compress the given string s.\r\n", "solutions": ["#include <bits/stdc++.h>                                                                                                                                                                                                                                                                                \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n#define ld long double\n#define ll long long\n#define ull unsigned long long\n\n#define f first\n#define s second\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n#define endl '\\n'\n#define pii pair <ll, ll>\n\n#define ios ios_base::sync_with_stdio(0), cin.tie()\n#define pb push_back\n#define mp make_pair\n\n#define pi 3.14159265358979323846264\n#define y1 abacaba\n \n#define fn \"abc\"\n\nusing namespace std;\n\nconst int MXN = 5e5 + 30;\nconst int MAXN = 1e3 + 2;\nconst ll INF = 1e9 + 7;\nconst ll BINF = 1e15;\nconst int mod = 1e9 + 9;\nconst ld EPS = 1e-15;   \nconst ll dx[] = {0, 0, 1, -1};\nconst ll dy[] = {1, -1, 0, 0};\n\nint n, a, b;\nchar c[MXN];\n\nint d[MXN];\nstring s;\n\nint p[MXN];  \n\nint main(){\n    #ifdef DIAS\n        freopen(\"input.txt\", \"r\", stdin);\n        //freopen(\"output.txt\", \"w\", stdout);\n    #elif NAME \n    \tfreopen(fn\".in\", \"r\", stdin);\n    \tfreopen(fn\".out\", \"w\", stdout);\n    #endif\n\tcin >> n >> a >> b;\n\tfor(int i = 1; i <= n; i++){\n\t\tcin >> c[i];\n\t\td[i] = INF;\n    }\n    for(int i = 1; i <= n; i++){\n    \ts = \"\";\n   \t\tfor(int j = i; j <= n; j++){\n   \t\t\ts += c[j];\n\t\t}\n   \t\ts += '&';\n\t\tfor(int j = 1; j < i; j++){\n   \t\t\ts += c[j];\n\t\t}\n\t\tint mx = 0;\n\t\t//cout << s << ' ';\n\t\tfor(int k = 1; k < s.size(); k++){\n\t\t\tint j = p[k - 1];\n\t\t\twhile(j > 0 && s[k] != s[j]) j = p[j - 1];\n\t\t\tif(s[k] == s[j]) j ++;\n\t\t\tp[k] = j;\t \t\t\n\t\t}\n\t\tfor(int k = n - i + 1; k < s.size(); k++){\n\t\t\tmx = max(mx, p[k]);\t\n\t\t}\n\t\t//cout << mx << ' ';\n\t\td[i] = min(d[i], d[i - 1] + a);\n\t\tfor(int j = i; j <= i + mx - 1; j++){\n\t\t\td[j] = min(d[j], d[i - 1] + b);\n\t\t}\n\t\t//cout << d[i] << ' ';\n    }\n    cout << d[n];\n}   \t\n"], "input": "", "output": "", "tags": ["strings"], "dificulty": "2100", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/1121/problem/F",
+    "problemId": "306952",
+    "problem_idx": "F",
+    "shortId": "1121F",
+    "contest_number": "1121",
+    "problem_submissions": {
+        "D": [
+            50758250,
+            50758015,
+            50749128,
+            50747632,
+            50785617,
+            50754149,
+            50754700,
+            50755682
+        ],
+        "E": [
+            50757916,
+            50764324
+        ],
+        "F": [
+            50745381,
+            50750604,
+            50753091,
+            50749617,
+            50753700,
+            50750259,
+            50754814,
+            50754495,
+            50760298,
+            50761256,
+            50756002,
+            50755635,
+            50755816,
+            50755833,
+            50755580,
+            50757571,
+            50755934
+        ],
+        "C": [
+            50743029,
+            50746539,
+            50749003,
+            50753301,
+            50747698,
+            50753219,
+            50747567,
+            50743419,
+            50747905,
+            50747562,
+            50753852,
+            50753022,
+            50751877,
+            50749086,
+            50748818,
+            50753336,
+            50747068
+        ],
+        "B": [
+            50741461,
+            50741819,
+            50743532,
+            50743792,
+            50743537,
+            50751011,
+            50741449,
+            50742306,
+            50748477,
+            50742402,
+            50750467,
+            50743138,
+            50747985,
+            50747123,
+            50743911,
+            50743533,
+            50747184,
+            50742809
+        ],
+        "A": [
+            50741269,
+            50741274,
+            50741426,
+            50741433,
+            50742538,
+            50742625,
+            50742751,
+            50741659,
+            50741596,
+            50741572,
+            50751688,
+            50741748,
+            50743041,
+            50748198,
+            50742474,
+            50741733,
+            50743780,
+            50741312
+        ]
+    },
+    "name": "F. Compress String",
+    "statement": "Suppose you are given a string s of length n consisting of lowercase\r\nEnglish letters. You need to compress it using the smallest possible\r\nnumber of coins.To compress the string, you have to represent s as a\r\nconcatenation of several non-empty strings: s = t_{1} t_{2}\r\nldots t_{k}. The i-th of these strings should be encoded with one of the\r\ntwo ways: if |t_{i}| = 1, meaning that the current string consists of a\r\nsingle character, you can encode it paying a coins; if t_{i} is a\r\nsubstring of t_{1} t_{2}\r\nldots t_{i - 1}, then you can encode it paying b coins. A string x is a\r\nsubstring of a string y if x can be obtained from y by deletion of\r\nseveral (possibly, zero or all) characters from the beginning and\r\nseveral (possibly, zero or all) characters from the end.So your task is\r\nto calculate the minimum possible number of coins you need to spend in\r\norder to compress the given string s.\r\n",
+    "solutions": [
+        "#include <bits/stdc++.h>                                                                                                                                                                                                                                                                                \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n#define ld long double\n#define ll long long\n#define ull unsigned long long\n\n#define f first\n#define s second\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n#define endl '\\n'\n#define pii pair <ll, ll>\n\n#define ios ios_base::sync_with_stdio(0), cin.tie()\n#define pb push_back\n#define mp make_pair\n\n#define pi 3.14159265358979323846264\n#define y1 abacaba\n \n#define fn \"abc\"\n\nusing namespace std;\n\nconst int MXN = 5e5 + 30;\nconst int MAXN = 1e3 + 2;\nconst ll INF = 1e9 + 7;\nconst ll BINF = 1e15;\nconst int mod = 1e9 + 9;\nconst ld EPS = 1e-15;   \nconst ll dx[] = {0, 0, 1, -1};\nconst ll dy[] = {1, -1, 0, 0};\n\nint n, a, b;\nchar c[MXN];\n\nint d[MXN];\nstring s;\n\nint p[MXN];  \n\nint main(){\n    #ifdef DIAS\n        freopen(\"input.txt\", \"r\", stdin);\n        //freopen(\"output.txt\", \"w\", stdout);\n    #elif NAME \n    \tfreopen(fn\".in\", \"r\", stdin);\n    \tfreopen(fn\".out\", \"w\", stdout);\n    #endif\n\tcin >> n >> a >> b;\n\tfor(int i = 1; i <= n; i++){\n\t\tcin >> c[i];\n\t\td[i] = INF;\n    }\n    for(int i = 1; i <= n; i++){\n    \ts = \"\";\n   \t\tfor(int j = i; j <= n; j++){\n   \t\t\ts += c[j];\n\t\t}\n   \t\ts += '&';\n\t\tfor(int j = 1; j < i; j++){\n   \t\t\ts += c[j];\n\t\t}\n\t\tint mx = 0;\n\t\t//cout << s << ' ';\n\t\tfor(int k = 1; k < s.size(); k++){\n\t\t\tint j = p[k - 1];\n\t\t\twhile(j > 0 && s[k] != s[j]) j = p[j - 1];\n\t\t\tif(s[k] == s[j]) j ++;\n\t\t\tp[k] = j;\t \t\t\n\t\t}\n\t\tfor(int k = n - i + 1; k < s.size(); k++){\n\t\t\tmx = max(mx, p[k]);\t\n\t\t}\n\t\t//cout << mx << ' ';\n\t\td[i] = min(d[i], d[i - 1] + a);\n\t\tfor(int j = i; j <= i + mx - 1; j++){\n\t\t\td[j] = min(d[j], d[i - 1] + b);\n\t\t}\n\t\t//cout << d[i] << ' ';\n    }\n    cout << d[n];\n}   \t\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "strings"
+    ],
+    "dificulty": "2100",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\F. Compress String.json",
+    "editorial_link": "https://codeforces.com//blog/entry/65679",
+    "editorial": "Let's say that dp[p]\n is the minimal cost to encode the prefix of s\n with length p\n, the answer is dp[n]\n. If we want to encode the prefix with length p\n then the last symbol in our encoded string either equals sp\n, or represents some substring s[l,p]\n so that it occurs in the prefix of length l?1\n. Therefore one can see that\n\ndp[0]=0,\ndp[p]=min(a+dp[p?1],min(b+dp[l?1]?s[l,p] is a substring of s[1,l?1])).\n\nOne way to implement this is to calculate this dp\n forward and use hashes, but it may require some efforts to avoid collisions and fit into the time limit. Another way is to find for each p\n all appropriate l\n's by calculating z-function on the reverse of s[1,p]\n. The total complexity in this case is O(n2)\n."
+}

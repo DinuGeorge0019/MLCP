@@ -1,1 +1,89 @@
-{"link": "https://codeforces.com//contest/332/problem/D", "problemId": "3362", "problem_idx": "D", "shortId": "332D", "contest_number": "332", "problem_submissions": {"C": [4155522, 4156354, 4153132, 4153078, 4154819, 4153485, 4154446, 4155481, 4155178, 4155623, 4155730, 4154794, 4156773, 4155378, 4156846, 4154112], "E": [4153414, 4232674, 4158374], "B": [4150245, 4150553, 4152758, 4151567, 4149063, 4150850, 4150633, 4148733, 4149973, 4149574, 4149995, 4149281, 4152409, 4149688, 4152014, 4150178, 4149649], "A": [4152890, 4148247, 4148387, 4148367, 4148085, 4148922, 4150814, 4148615, 4148406, 4149253, 4148257, 4148663, 4148588, 4148447], "D": [4150491, 4155596, 4158402, 4155100]}, "name": "D. Theft of Blueprints", "statement": "Insurgents accidentally got hold of the plan of a top secret research\r\npolygon created on a distant planet for the needs of the Galaxy Empire.\r\nThe insurgents suppose that this polygon is developing new deadly\r\nweapon. The polygon consists of missile silos connected by bidirectional\r\nunderground passages. The passages are linked to laboratories where\r\nresearch is conducted. Naturally, the passages are guarded severely: the\r\npassage between silos and is patrolled by war droids.The insurgents\r\nstudied the polygon plan and noticed its unusual structure. As it turned\r\nout, for any -element set of silos there is exactly one silo that is\r\ndirectly connected by a passage with each silo from (we\u2019ll call this\r\nsilo ). Having considered that, the insurgents decided to act as\r\nfollows: they choose a -element set of silos ; a group of scouts lands\r\nfrom the air into each silo from ; each group moves along the\r\ncorresponding passage to the silo, adjacent with (as the scouts move,\r\nthey check out the laboratories and watch for any signs of weapon\r\nblueprints); in the silo, adjacent with , the groups get on the ship and\r\nfly away. is the total number of droids that patrol the passages through\r\nwhich the scouts will go. The danger of the operation obviously only\r\ndepends on the way to choose set . The insurgents haven\u2019t yet decided on\r\nthe exact silos to send the scouts to. However, they already want to\r\nstart preparing the weapons for the scout groups. To do that, the\r\ninsurgents need to know the mathematical average of the dangers of the\r\noperations that correspond to all possible ways to choose set . Solve\r\nthis problem to help the insurgents protect the ideals of the Republic!\r\n", "solutions": ["#include <iostream>\n#include <cstring>\n#include <cstdio>\n#include <cmath>\n#include <algorithm>\n#include <queue>\n#include <string>\n#include <vector>\n#include <set>\n#include <map>\n\n#define  MP(x,y) make_pair((x),(y))\n\nusing namespace std;\n\ntypedef __int64 LL;\n\nconst int Maxn=2100;\nint n,m;\nvector < LL > con[Maxn];\nint cnt[Maxn];\nLL C[Maxn][Maxn];\n\nvoid init()\n{\n    int i,j;\n    C[0][0]=1;\n    for(i=0;i<Maxn;i++)\n    {\n        C[i][0]=1;\n        for(j=1;j<i;j++)\n        C[i][j]=C[i-1][j-1]+C[i-1][j];\n        C[i][i]=1;\n    }\n}\n\nLL getC(int a,int b)\n{\n    if(b>a) return 0;\n    return C[a][b];\n}\n\nint main()\n{\n    int i,j;\n    init();\n    while(~scanf(\"%d%d\",&n,&m))\n    {\n        for(i=0;i<n;i++)\n        {\n            cnt[i]=0;\n            con[i].clear();\n        }\n        for(i=0;i<n;i++)\n        {\n            int tmp;\n            for(j=i+1;j<n;j++)\n            {\n                scanf(\"%I64d\",&tmp);\n                if(tmp!=-1)\n                {\n                    cnt[i]++;\n                    cnt[j]++;\n                    con[i].push_back(tmp);\n                    con[j].push_back(tmp);\n                }\n            }\n        }\n        LL A=0;\n        for(i=0;i<n;i++)\n        {\n            for(j=0;j<con[i].size();j++)\n            {\n               //cout<<i<<\" \"<<cnt[i]-1<<\" \"<<m-1<<\" \"<<getC(cnt[i]-1,m-1)*con[i][j]<<endl;\n                A+=getC(cnt[i]-1,m-1)*con[i][j];\n            }\n        }\n        printf(\"%I64d\\n\",A/getC(n,m));\n    }\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["graphs", "math"], "dificulty": "2400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/332/problem/D",
+    "problemId": "3362",
+    "problem_idx": "D",
+    "shortId": "332D",
+    "contest_number": "332",
+    "problem_submissions": {
+        "C": [
+            4155522,
+            4156354,
+            4153132,
+            4153078,
+            4154819,
+            4153485,
+            4154446,
+            4155481,
+            4155178,
+            4155623,
+            4155730,
+            4154794,
+            4156773,
+            4155378,
+            4156846,
+            4154112
+        ],
+        "E": [
+            4153414,
+            4232674,
+            4158374
+        ],
+        "B": [
+            4150245,
+            4150553,
+            4152758,
+            4151567,
+            4149063,
+            4150850,
+            4150633,
+            4148733,
+            4149973,
+            4149574,
+            4149995,
+            4149281,
+            4152409,
+            4149688,
+            4152014,
+            4150178,
+            4149649
+        ],
+        "A": [
+            4152890,
+            4148247,
+            4148387,
+            4148367,
+            4148085,
+            4148922,
+            4150814,
+            4148615,
+            4148406,
+            4149253,
+            4148257,
+            4148663,
+            4148588,
+            4148447
+        ],
+        "D": [
+            4150491,
+            4155596,
+            4158402,
+            4155100
+        ]
+    },
+    "name": "D. Theft of Blueprints",
+    "statement": "Insurgents accidentally got hold of the plan of a top secret research\r\npolygon created on a distant planet for the needs of the Galaxy Empire.\r\nThe insurgents suppose that this polygon is developing new deadly\r\nweapon. The polygon consists of missile silos connected by bidirectional\r\nunderground passages. The passages are linked to laboratories where\r\nresearch is conducted. Naturally, the passages are guarded severely: the\r\npassage between silos and is patrolled by war droids.The insurgents\r\nstudied the polygon plan and noticed its unusual structure. As it turned\r\nout, for any -element set of silos there is exactly one silo that is\r\ndirectly connected by a passage with each silo from (we\u2019ll call this\r\nsilo ). Having considered that, the insurgents decided to act as\r\nfollows: they choose a -element set of silos ; a group of scouts lands\r\nfrom the air into each silo from ; each group moves along the\r\ncorresponding passage to the silo, adjacent with (as the scouts move,\r\nthey check out the laboratories and watch for any signs of weapon\r\nblueprints); in the silo, adjacent with , the groups get on the ship and\r\nfly away. is the total number of droids that patrol the passages through\r\nwhich the scouts will go. The danger of the operation obviously only\r\ndepends on the way to choose set . The insurgents haven\u2019t yet decided on\r\nthe exact silos to send the scouts to. However, they already want to\r\nstart preparing the weapons for the scout groups. To do that, the\r\ninsurgents need to know the mathematical average of the dangers of the\r\noperations that correspond to all possible ways to choose set . Solve\r\nthis problem to help the insurgents protect the ideals of the Republic!\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <cstring>\n#include <cstdio>\n#include <cmath>\n#include <algorithm>\n#include <queue>\n#include <string>\n#include <vector>\n#include <set>\n#include <map>\n\n#define  MP(x,y) make_pair((x),(y))\n\nusing namespace std;\n\ntypedef __int64 LL;\n\nconst int Maxn=2100;\nint n,m;\nvector < LL > con[Maxn];\nint cnt[Maxn];\nLL C[Maxn][Maxn];\n\nvoid init()\n{\n    int i,j;\n    C[0][0]=1;\n    for(i=0;i<Maxn;i++)\n    {\n        C[i][0]=1;\n        for(j=1;j<i;j++)\n        C[i][j]=C[i-1][j-1]+C[i-1][j];\n        C[i][i]=1;\n    }\n}\n\nLL getC(int a,int b)\n{\n    if(b>a) return 0;\n    return C[a][b];\n}\n\nint main()\n{\n    int i,j;\n    init();\n    while(~scanf(\"%d%d\",&n,&m))\n    {\n        for(i=0;i<n;i++)\n        {\n            cnt[i]=0;\n            con[i].clear();\n        }\n        for(i=0;i<n;i++)\n        {\n            int tmp;\n            for(j=i+1;j<n;j++)\n            {\n                scanf(\"%I64d\",&tmp);\n                if(tmp!=-1)\n                {\n                    cnt[i]++;\n                    cnt[j]++;\n                    con[i].push_back(tmp);\n                    con[j].push_back(tmp);\n                }\n            }\n        }\n        LL A=0;\n        for(i=0;i<n;i++)\n        {\n            for(j=0;j<con[i].size();j++)\n            {\n               //cout<<i<<\" \"<<cnt[i]-1<<\" \"<<m-1<<\" \"<<getC(cnt[i]-1,m-1)*con[i][j]<<endl;\n                A+=getC(cnt[i]-1,m-1)*con[i][j];\n            }\n        }\n        printf(\"%I64d\\n\",A/getC(n,m));\n    }\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "graphs",
+        "math"
+    ],
+    "dificulty": "2400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Theft of Blueprints.json",
+    "editorial_link": "https://codeforces.com/blog/entry/8447",
+    "editorial": "In the problem is given the weighted undirected graph without loops and\r\nmultiple edges satisfying the following property: for every set\r\ncontaining vertices there is exactly one vertex adjacent to all vertices\r\nfrom this set (*) (this vertex is called adjacent with ). For any\r\n-element set of vertices we can calculate the special characteristic:\r\nthe sum of the weights of edges that connect vertices from with vertex,\r\nadjacent with S. It is required to find the mathematical average of the\r\ncharacteristics of all -element sets of vertices. One can solve this\r\nproblem using the following fact (the proof is now available only in the\r\nRussian version of this post): if , only complete graph containing\r\nvertices satisfies the problem statement. For complete graphs answer is\r\nequal to doubled sum of weights of all edges, divided by . The same way\r\none can calculate answer if . Now let s consider the case . Let s\r\niterate through the vertex which is adjacent with our two-element set.\r\nLet s write in ascending order all such numbers that . Any two different\r\nvertices of this list form the set for which vertex is adjacent, and\r\nthere are no other such sets of vertices. Looking over all pairs of\r\nvertices in this list, we can add characteristics of all these sets to\r\nthe answer. Since it s guaranteed that the graph satisfies the property\r\n(*), each pair of vertices will be analyzed only once. A similar\r\napproach is used in the validator for this problem. Asymptotics of the\r\nsolution . Code\r\n"
+}

@@ -1,1 +1,106 @@
-{"link": "https://codeforces.com//contest/901/problem/E", "problemId": "139716", "problem_idx": "E", "shortId": "901E", "contest_number": "901", "problem_submissions": {"D": [33426443, 33425255, 33425405, 33421002, 33428722, 33432497, 33430107, 33431968, 33434361, 33433853, 33432628, 33428305, 33435534, 33423537, 33424117, 33433491, 33424011, 33435055], "C": [33423246, 33421544, 33420578, 33429910, 33422327, 33425977, 33426202, 33427669, 33422440, 33429447, 33429169, 33424756, 33430999, 33430059, 33430695, 33420864, 33434365, 33425416], "B": [33419337, 33427579, 33429052, 33425071, 33431946, 33418047, 33432302, 33420475, 33497315, 33497308, 33496921, 33426321, 33423681, 33433893, 33426136, 33434123], "A": [33414182, 33413377, 33413379, 33422716, 33415121, 33413643, 33413547, 33414284, 33415005, 33416374, 33419687, 33414307, 33415289, 33414435, 33420715, 33423860, 33425257, 33413347], "E": [36988410]}, "name": "E. Cyclic Cipher", "statement": "Senor Vorpal Kickass\u2019o invented an innovative method to encrypt integer\r\nsequences of length . To encrypt a sequence, one has to choose a secret\r\nsequence , that acts as a key.Vorpal is very selective, so the key\r\nshould be such a sequence , that its cyclic shifts are linearly\r\nindependent, that is, there is no non-zero set of coefficients , such\r\nthat for all at the same time.After that for a sequence you should build\r\nthe following cipher:In other words, you are to compute the quadratic\r\ndeviation between each cyclic shift of and the sequence . The resulting\r\nsequence is the Kickass\u2019s cipher. The cipher is in development right now\r\nand Vorpal wants to decipher a sequence after it has been encrypted. You\r\nare to solve this problem for him. You are given sequences and . You are\r\nto find all suitable sequences .\r\n", "solutions": ["//by yjz\n#include<bits/stdc++.h>\nusing namespace std;\n#define FF first\n#define SS second\n#define PB push_back\n#define MP make_pair\n#define bged(v) (v).begin(),(v).end()\n#define foreach(it,s) for(__typeof((s).begin()) it=(s).begin();it!=(s).end();it++)\ntypedef long long ll;\nconst int Imx=2147483647;\nconst ll Lbig=2e18;\n//My i/o stream\nstruct fastio\n{\n\tchar s[100000];\n\tint it,len;\n\tfastio(){it=len=0;}\n\tinline char get()\n\t{\n\t\tif(it<len)return s[it++];it=0;\n\t\tlen=fread(s,1,100000,stdin);\n\t\tif(len==0)return EOF;else return s[it++];\n\t}\n\tbool notend()\n\t{\n\t\tchar c=get();\n\t\twhile(c==' '||c=='\\n')c=get();\n\t\tif(it>0)it--;\n\t\treturn c!=EOF;\n\t}\n}_buff;\n#define geti(x) x=getnum()\n#define getii(x,y) geti(x),geti(y)\n#define getiii(x,y,z) getii(x,y),geti(z)\n#define puti(x) putnum(x),putchar(' ')\n#define putii(x,y) puti(x),puti(y)\n#define putiii(x,y,z) putii(x,y),puti(z)\n#define putsi(x) putnum(x),putchar('\\n')\n#define putsii(x,y) puti(x),putsi(y)\n#define putsiii(x,y,z) putii(x,y),putsi(z)\ninline ll getnum()\n{\n\tll r=0;bool ng=0;char c;c=_buff.get();\n\twhile(c!='-'&&(c<'0'||c>'9'))c=_buff.get();\n\tif(c=='-')ng=1,c=_buff.get();\n\twhile(c>='0'&&c<='9')r=r*10+c-'0',c=_buff.get();\n\treturn ng?-r:r;\n}\ntemplate<class T> inline void putnum(T x)\n{\n\tif(x<0)putchar('-'),x=-x;\n\tregister short a[20]={},sz=0;\n\twhile(x)a[sz++]=x%10,x/=10;\n\tif(sz==0)putchar('0');\n\tfor(int i=sz-1;i>=0;i--)putchar('0'+a[i]);\n}\ninline char getreal(){char c=_buff.get();while(c<=32)c=_buff.get();return c;}\nint mod;\n\nconst int FFTpsz=1<<19;\nconst int FFTmx=FFTpsz+233;\nll qpow(ll x,ll k){return k==0?1:1ll*qpow(1ll*x*x%mod,k>>1)*(k&1?x:1)%mod;}\nint FFTsz;\nconst double pi=acos(-1);\nstruct point\n{\n\tdouble x,y;\n\tpoint(double X=0,double Y=0){x=X;y=Y;}\n\tpoint operator+(const point &t)const{return point(x+t.x,y+t.y);}\n\tpoint operator-(const point &t)const{return point(x-t.x,y-t.y);}\n\tpoint operator*(const point &t)const{return point(x*t.x-y*t.y,x*t.y+y*t.x);}\n\tpoint operator*(const double &t)const{return point(x*t,y*t);}\n\tpoint conj()const{return point(x,-y);}\n};\npoint w_pre[FFTmx];\nint uptopow(int n)\n{\n\tint ret=1;\n\twhile(ret<n)ret<<=1;\n\treturn ret;\n}\nvoid FFTprecalc()\n{\n\tfor(int i=0;i<=FFTpsz;i++)w_pre[i]=point(cos(2*pi/FFTpsz*i),sin(2*pi/FFTpsz*i));\n}\nvoid FFTinit(int n)\n{\n\tFFTsz=uptopow(n);\n}\nvoid FFT(point a[],int coef)\n{\n\tfor(int i=0,j=0;i<FFTsz;i++)\n\t{\n\t\tif(i<j)swap(a[i],a[j]);\n\t\tfor(int t=FFTsz>>1;(j^=t)<t;t>>=1);\n\t}\n\tstatic point w[FFTmx];\n\tfor(int l=1;l<FFTsz;l<<=1)\n\t{\n\t\tint l2=l<<1;\n\t\tif(coef==1)for(int j=0;j<l;j++)w[j]=w_pre[FFTpsz/l2*j];\n\t\telse for(int j=0;j<l;j++)w[j]=w_pre[FFTpsz-FFTpsz/l2*j];\n\t\tfor(int i=0;i<FFTsz;i+=l2)\n\t\t{\n\t\t\tfor(int j=0;j<l;j++)\n\t\t\t{\n\t\t\t\tpoint tmp=a[i+j+l]*w[j];\n\t\t\t\ta[i+j+l]=a[i+j]-tmp;\n\t\t\t\ta[i+j]=a[i+j]+tmp;\n\t\t\t}\n\t\t}\n\t}\n\tif(coef==-1)\n\t{\n\t\tfor(int i=0;i<FFTsz;i++)a[i]=a[i]*(1.0/FFTsz);\n\t}\n}\nvoid FFT2(point a[],point b[],int coef)\n{\n\tstatic point A[FFTmx];\n\tif(coef==1)\n\t{\n\t\tfor(int i=0;i<FFTsz;i++)A[i]=point(a[i].x,b[i].x);\n\t\tFFT(A,1);\n\t\tA[FFTsz]=A[0];\n\t\tfor(int i=0;i<FFTsz;i++)\n\t\t{\n\t\t\ta[i]=(A[i]+A[FFTsz-i].conj())*point(0.5,0);\n\t\t\tb[i]=(A[i]-A[FFTsz-i].conj())*point(0,-0.5);\n\t\t}\n\t}\n\telse\n\t{\n\t\tfor(int i=0;i<FFTsz;i++)A[i]=a[i]+b[i]*point(0,1);\n\t\tFFT(A,-1);\n\t\tfor(int i=0;i<FFTsz;i++)a[i]=point(A[i].x,0),b[i]=point(A[i].y,0);\n\t}\n}\nvoid polymul(int a[],int an,int b[],int bn,int c[],int cn,int md)\n{\n\tmod=md;\n\tif(1ll*an*bn<10000)\n\t{\n\t\tstatic int mul_t[FFTmx];\n\t\tfor(int i=0;i<cn;i++)mul_t[i]=0;\n\t\tfor(int i=0;i<an;i++)\n\t\t{\n\t\t\tfor(int j=0;j<bn&&i+j<cn;j++)\n\t\t\t{\n\t\t\t\tmul_t[i+j]=(mul_t[i+j]+1ll*a[i]*b[j])%mod;\n\t\t\t}\n\t\t}\n\t\tfor(int i=0;i<cn;i++)c[i]=(mul_t[i]%mod+mod)%mod;\n\t\treturn;\n\t}\n\tstatic point mul_a0[FFTmx],mul_a1[FFTmx];\n\tstatic point mul_b0[FFTmx],mul_b1[FFTmx];\n\tFFTinit(an+bn);\n\tfor(int i=0;i<FFTsz;i++)mul_a0[i]=point(i<an?((a[i]%mod+mod)%mod)&32767:0,0);\n\tfor(int i=0;i<FFTsz;i++)mul_a1[i]=point(i<an?((a[i]%mod+mod)%mod)>>15:0,0);\n\tfor(int i=0;i<FFTsz;i++)mul_b0[i]=point(i<bn?((b[i]%mod+mod)%mod)&32767:0,0);\n\tfor(int i=0;i<FFTsz;i++)mul_b1[i]=point(i<bn?((b[i]%mod+mod)%mod)>>15:0,0);\t\n\tFFT2(mul_a0,mul_a1,1);\n\tFFT2(mul_b0,mul_b1,1);\n\tfor(int i=0;i<FFTsz;i++)\n\t{\n\t\tpoint t0=mul_a0[i]*mul_b0[i];\n\t\tpoint t1=mul_a0[i]*mul_b1[i]+mul_a1[i]*mul_b0[i];\n\t\tpoint t2=mul_a1[i]*mul_b1[i];\n\t\tmul_a0[i]=t0;\n\t\tmul_a1[i]=t1;\n\t\tmul_b0[i]=t2;\n\t}\n\tFFT2(mul_a0,mul_a1,-1);\n\tFFT(mul_b0,-1);\n\tfor(int i=0;i<cn;i++)\n\t{\n\t\tif(i<FFTsz)\n\t\t{\n\t\t\tll t0=ll(mul_a0[i].x+0.5)%mod;\n\t\t\tll t1=ll(mul_a1[i].x+0.5)%mod;\n\t\t\tll t2=ll(mul_b0[i].x+0.5)%mod; \n\t\t\tc[i]=((t0+(t1<<15)+(t2<<30))%mod+mod)%mod;\n\t\t}\n\t\telse c[i]=0;\n\t}\n}\nvoid CZT(int a[],int N,int w,int md,int coef)//here w should be the sqrt of original w  md should be prime\n{\n\tmod=md;\n\tif(coef==-1)w=qpow(w,mod-2);\n\tstatic int CZT_f[FFTmx],CZT_g[FFTmx],CZT_a[FFTmx];\n\tfor(int i=0;i<N;i++)CZT_f[i]=1ll*a[i]%mod*qpow(w,1ll*i*i%(mod-1))%mod;\n\tfor(int i=0;i<N+N;i++)CZT_g[i]=qpow(w,mod-1-1ll*(N-i)*(N-i)%(mod-1))%mod;\n\tpolymul(CZT_f,N,CZT_g,N+N,CZT_a,N+N,mod);\n\tfor(int i=0;i<N;i++)a[i]=1ll*qpow(w,1ll*i*i%(mod-1))*(CZT_a[i+N])%mod;\n\tif(coef==-1)\n\t{\n\t\tll inv=qpow(N,mod-2);\n\t\tfor(int i=0;i<N;i++)a[i]=a[i]*inv%mod;\n\t}\n}\nbool isp(int x)\n{\n\tfor(int i=2;1ll*i*i<=x;i++)if(x%i==0)return false;\n\treturn true;\n}\npair<int,int> calc_mod(int l)\n{\n\tint md=l+1;\n\twhile(md<2333333||!isp(md))md+=l;\n\tmod=md;\n\tfor(int pr=2;pr<md;pr++)\n\t{\n\t\tbool ok=1;\n\t\tfor(int j=2;j<=md-1;j++)\n\t\t{\n\t\t\tj=(md-1)/((md-1)/j);\n\t\t\tif((md-1)%j==0)\n\t\t\t{\n\t\t\t\tif(qpow(pr,(md-1)/j)==1)\n\t\t\t\t{\n\t\t\t\t\tok=0;\n\t\t\t\t\tbreak;\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tif(ok)return MP(pr,md);\n\t}\n\tassert(false);\n}\nint n,b0[FFTmx];\nint b[FFTmx],c[FFTmx],da[FFTmx],dc[FFTmx],sa[FFTmx];\nint main()\n{\n\tFFTprecalc();\n\tgeti(n);\n\tfor(int i=0;i<n;i++)geti(b0[i]);\n\tfor(int i=0;i<n;i++)b[i]=b0[(n-i)%n];\n\tfor(int i=0;i<n;i++)geti(c[i]);c[n]=c[0];\n\tfor(int i=0;i<n;i++)dc[i]=(c[i+1]-c[i])/(-2);\n\tpair<int,int> pp=calc_mod(2*n);\n\tint w=pp.FF,md=pp.SS;\n//\tcerr<<\"w=\"<<w<<\" md=\"<<md<<endl;\n\tmod=md;\n\tw=qpow(w,(md-1)/2/n);\n\tCZT(dc,n,w,md,1);\n\tCZT(b,n,w,md,1);\n\tfor(int i=0;i<n;i++)da[i]=1ll*dc[i]*qpow(b[i],mod-2)%mod;\n\tCZT(da,n,w,md,-1);\n\tfor(int i=0;i<n;i++)\n\t{\n\t\tif(da[i]>mod/2)da[i]=da[i]-mod;\n\t}\n//\tcerr<<\"da:\"<<endl;\n//\tfor(int i=0;i<n;i++)cerr<<da[i]<<\" \";cerr<<endl;\n\tfor(int i=1;i<n;i++)\n\t{\n\t\tsa[i]=sa[i-1]+da[i-1];\n\t\tif(sa[i]<-5000||sa[i]>5000)\n\t\t{\n\t\t\tputs(\"0\");\n\t\t\treturn 0;\n\t\t}\n\t}\n\tll C2=0,C1=0,C0=-c[0];\n\tfor(int i=0;i<n;i++)\n\t{\n\t\tll tmp=b0[i]-sa[i];\n\t\tC2++;\n\t\tC1+=(-2)*tmp;\n\t\tC0+=tmp*tmp;\n\t}\n\tvector<int> v;\n\tfor(int i=-5000;i<=5000;i++)if(C2*i*i+C1*i+C0==0)v.PB(i);\n\tputsi(v.size());\n\tfor(int i=0;i<v.size();i++)\n\t{\n\t\tputi(v[i]);\n\t\tfor(int j=1;j<n;j++)puti(v[i]+sa[j]);\n\t\tputs(\"\");\n\t}\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["fft", "math"], "dificulty": "3300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/901/problem/E",
+    "problemId": "139716",
+    "problem_idx": "E",
+    "shortId": "901E",
+    "contest_number": "901",
+    "problem_submissions": {
+        "D": [
+            33426443,
+            33425255,
+            33425405,
+            33421002,
+            33428722,
+            33432497,
+            33430107,
+            33431968,
+            33434361,
+            33433853,
+            33432628,
+            33428305,
+            33435534,
+            33423537,
+            33424117,
+            33433491,
+            33424011,
+            33435055
+        ],
+        "C": [
+            33423246,
+            33421544,
+            33420578,
+            33429910,
+            33422327,
+            33425977,
+            33426202,
+            33427669,
+            33422440,
+            33429447,
+            33429169,
+            33424756,
+            33430999,
+            33430059,
+            33430695,
+            33420864,
+            33434365,
+            33425416
+        ],
+        "B": [
+            33419337,
+            33427579,
+            33429052,
+            33425071,
+            33431946,
+            33418047,
+            33432302,
+            33420475,
+            33497315,
+            33497308,
+            33496921,
+            33426321,
+            33423681,
+            33433893,
+            33426136,
+            33434123
+        ],
+        "A": [
+            33414182,
+            33413377,
+            33413379,
+            33422716,
+            33415121,
+            33413643,
+            33413547,
+            33414284,
+            33415005,
+            33416374,
+            33419687,
+            33414307,
+            33415289,
+            33414435,
+            33420715,
+            33423860,
+            33425257,
+            33413347
+        ],
+        "E": [
+            36988410
+        ]
+    },
+    "name": "E. Cyclic Cipher",
+    "statement": "Senor Vorpal Kickass\u2019o invented an innovative method to encrypt integer\r\nsequences of length . To encrypt a sequence, one has to choose a secret\r\nsequence , that acts as a key.Vorpal is very selective, so the key\r\nshould be such a sequence , that its cyclic shifts are linearly\r\nindependent, that is, there is no non-zero set of coefficients , such\r\nthat for all at the same time.After that for a sequence you should build\r\nthe following cipher:In other words, you are to compute the quadratic\r\ndeviation between each cyclic shift of and the sequence . The resulting\r\nsequence is the Kickass\u2019s cipher. The cipher is in development right now\r\nand Vorpal wants to decipher a sequence after it has been encrypted. You\r\nare to solve this problem for him. You are given sequences and . You are\r\nto find all suitable sequences .\r\n",
+    "solutions": [
+        "//by yjz\n#include<bits/stdc++.h>\nusing namespace std;\n#define FF first\n#define SS second\n#define PB push_back\n#define MP make_pair\n#define bged(v) (v).begin(),(v).end()\n#define foreach(it,s) for(__typeof((s).begin()) it=(s).begin();it!=(s).end();it++)\ntypedef long long ll;\nconst int Imx=2147483647;\nconst ll Lbig=2e18;\n//My i/o stream\nstruct fastio\n{\n\tchar s[100000];\n\tint it,len;\n\tfastio(){it=len=0;}\n\tinline char get()\n\t{\n\t\tif(it<len)return s[it++];it=0;\n\t\tlen=fread(s,1,100000,stdin);\n\t\tif(len==0)return EOF;else return s[it++];\n\t}\n\tbool notend()\n\t{\n\t\tchar c=get();\n\t\twhile(c==' '||c=='\\n')c=get();\n\t\tif(it>0)it--;\n\t\treturn c!=EOF;\n\t}\n}_buff;\n#define geti(x) x=getnum()\n#define getii(x,y) geti(x),geti(y)\n#define getiii(x,y,z) getii(x,y),geti(z)\n#define puti(x) putnum(x),putchar(' ')\n#define putii(x,y) puti(x),puti(y)\n#define putiii(x,y,z) putii(x,y),puti(z)\n#define putsi(x) putnum(x),putchar('\\n')\n#define putsii(x,y) puti(x),putsi(y)\n#define putsiii(x,y,z) putii(x,y),putsi(z)\ninline ll getnum()\n{\n\tll r=0;bool ng=0;char c;c=_buff.get();\n\twhile(c!='-'&&(c<'0'||c>'9'))c=_buff.get();\n\tif(c=='-')ng=1,c=_buff.get();\n\twhile(c>='0'&&c<='9')r=r*10+c-'0',c=_buff.get();\n\treturn ng?-r:r;\n}\ntemplate<class T> inline void putnum(T x)\n{\n\tif(x<0)putchar('-'),x=-x;\n\tregister short a[20]={},sz=0;\n\twhile(x)a[sz++]=x%10,x/=10;\n\tif(sz==0)putchar('0');\n\tfor(int i=sz-1;i>=0;i--)putchar('0'+a[i]);\n}\ninline char getreal(){char c=_buff.get();while(c<=32)c=_buff.get();return c;}\nint mod;\n\nconst int FFTpsz=1<<19;\nconst int FFTmx=FFTpsz+233;\nll qpow(ll x,ll k){return k==0?1:1ll*qpow(1ll*x*x%mod,k>>1)*(k&1?x:1)%mod;}\nint FFTsz;\nconst double pi=acos(-1);\nstruct point\n{\n\tdouble x,y;\n\tpoint(double X=0,double Y=0){x=X;y=Y;}\n\tpoint operator+(const point &t)const{return point(x+t.x,y+t.y);}\n\tpoint operator-(const point &t)const{return point(x-t.x,y-t.y);}\n\tpoint operator*(const point &t)const{return point(x*t.x-y*t.y,x*t.y+y*t.x);}\n\tpoint operator*(const double &t)const{return point(x*t,y*t);}\n\tpoint conj()const{return point(x,-y);}\n};\npoint w_pre[FFTmx];\nint uptopow(int n)\n{\n\tint ret=1;\n\twhile(ret<n)ret<<=1;\n\treturn ret;\n}\nvoid FFTprecalc()\n{\n\tfor(int i=0;i<=FFTpsz;i++)w_pre[i]=point(cos(2*pi/FFTpsz*i),sin(2*pi/FFTpsz*i));\n}\nvoid FFTinit(int n)\n{\n\tFFTsz=uptopow(n);\n}\nvoid FFT(point a[],int coef)\n{\n\tfor(int i=0,j=0;i<FFTsz;i++)\n\t{\n\t\tif(i<j)swap(a[i],a[j]);\n\t\tfor(int t=FFTsz>>1;(j^=t)<t;t>>=1);\n\t}\n\tstatic point w[FFTmx];\n\tfor(int l=1;l<FFTsz;l<<=1)\n\t{\n\t\tint l2=l<<1;\n\t\tif(coef==1)for(int j=0;j<l;j++)w[j]=w_pre[FFTpsz/l2*j];\n\t\telse for(int j=0;j<l;j++)w[j]=w_pre[FFTpsz-FFTpsz/l2*j];\n\t\tfor(int i=0;i<FFTsz;i+=l2)\n\t\t{\n\t\t\tfor(int j=0;j<l;j++)\n\t\t\t{\n\t\t\t\tpoint tmp=a[i+j+l]*w[j];\n\t\t\t\ta[i+j+l]=a[i+j]-tmp;\n\t\t\t\ta[i+j]=a[i+j]+tmp;\n\t\t\t}\n\t\t}\n\t}\n\tif(coef==-1)\n\t{\n\t\tfor(int i=0;i<FFTsz;i++)a[i]=a[i]*(1.0/FFTsz);\n\t}\n}\nvoid FFT2(point a[],point b[],int coef)\n{\n\tstatic point A[FFTmx];\n\tif(coef==1)\n\t{\n\t\tfor(int i=0;i<FFTsz;i++)A[i]=point(a[i].x,b[i].x);\n\t\tFFT(A,1);\n\t\tA[FFTsz]=A[0];\n\t\tfor(int i=0;i<FFTsz;i++)\n\t\t{\n\t\t\ta[i]=(A[i]+A[FFTsz-i].conj())*point(0.5,0);\n\t\t\tb[i]=(A[i]-A[FFTsz-i].conj())*point(0,-0.5);\n\t\t}\n\t}\n\telse\n\t{\n\t\tfor(int i=0;i<FFTsz;i++)A[i]=a[i]+b[i]*point(0,1);\n\t\tFFT(A,-1);\n\t\tfor(int i=0;i<FFTsz;i++)a[i]=point(A[i].x,0),b[i]=point(A[i].y,0);\n\t}\n}\nvoid polymul(int a[],int an,int b[],int bn,int c[],int cn,int md)\n{\n\tmod=md;\n\tif(1ll*an*bn<10000)\n\t{\n\t\tstatic int mul_t[FFTmx];\n\t\tfor(int i=0;i<cn;i++)mul_t[i]=0;\n\t\tfor(int i=0;i<an;i++)\n\t\t{\n\t\t\tfor(int j=0;j<bn&&i+j<cn;j++)\n\t\t\t{\n\t\t\t\tmul_t[i+j]=(mul_t[i+j]+1ll*a[i]*b[j])%mod;\n\t\t\t}\n\t\t}\n\t\tfor(int i=0;i<cn;i++)c[i]=(mul_t[i]%mod+mod)%mod;\n\t\treturn;\n\t}\n\tstatic point mul_a0[FFTmx],mul_a1[FFTmx];\n\tstatic point mul_b0[FFTmx],mul_b1[FFTmx];\n\tFFTinit(an+bn);\n\tfor(int i=0;i<FFTsz;i++)mul_a0[i]=point(i<an?((a[i]%mod+mod)%mod)&32767:0,0);\n\tfor(int i=0;i<FFTsz;i++)mul_a1[i]=point(i<an?((a[i]%mod+mod)%mod)>>15:0,0);\n\tfor(int i=0;i<FFTsz;i++)mul_b0[i]=point(i<bn?((b[i]%mod+mod)%mod)&32767:0,0);\n\tfor(int i=0;i<FFTsz;i++)mul_b1[i]=point(i<bn?((b[i]%mod+mod)%mod)>>15:0,0);\t\n\tFFT2(mul_a0,mul_a1,1);\n\tFFT2(mul_b0,mul_b1,1);\n\tfor(int i=0;i<FFTsz;i++)\n\t{\n\t\tpoint t0=mul_a0[i]*mul_b0[i];\n\t\tpoint t1=mul_a0[i]*mul_b1[i]+mul_a1[i]*mul_b0[i];\n\t\tpoint t2=mul_a1[i]*mul_b1[i];\n\t\tmul_a0[i]=t0;\n\t\tmul_a1[i]=t1;\n\t\tmul_b0[i]=t2;\n\t}\n\tFFT2(mul_a0,mul_a1,-1);\n\tFFT(mul_b0,-1);\n\tfor(int i=0;i<cn;i++)\n\t{\n\t\tif(i<FFTsz)\n\t\t{\n\t\t\tll t0=ll(mul_a0[i].x+0.5)%mod;\n\t\t\tll t1=ll(mul_a1[i].x+0.5)%mod;\n\t\t\tll t2=ll(mul_b0[i].x+0.5)%mod; \n\t\t\tc[i]=((t0+(t1<<15)+(t2<<30))%mod+mod)%mod;\n\t\t}\n\t\telse c[i]=0;\n\t}\n}\nvoid CZT(int a[],int N,int w,int md,int coef)//here w should be the sqrt of original w  md should be prime\n{\n\tmod=md;\n\tif(coef==-1)w=qpow(w,mod-2);\n\tstatic int CZT_f[FFTmx],CZT_g[FFTmx],CZT_a[FFTmx];\n\tfor(int i=0;i<N;i++)CZT_f[i]=1ll*a[i]%mod*qpow(w,1ll*i*i%(mod-1))%mod;\n\tfor(int i=0;i<N+N;i++)CZT_g[i]=qpow(w,mod-1-1ll*(N-i)*(N-i)%(mod-1))%mod;\n\tpolymul(CZT_f,N,CZT_g,N+N,CZT_a,N+N,mod);\n\tfor(int i=0;i<N;i++)a[i]=1ll*qpow(w,1ll*i*i%(mod-1))*(CZT_a[i+N])%mod;\n\tif(coef==-1)\n\t{\n\t\tll inv=qpow(N,mod-2);\n\t\tfor(int i=0;i<N;i++)a[i]=a[i]*inv%mod;\n\t}\n}\nbool isp(int x)\n{\n\tfor(int i=2;1ll*i*i<=x;i++)if(x%i==0)return false;\n\treturn true;\n}\npair<int,int> calc_mod(int l)\n{\n\tint md=l+1;\n\twhile(md<2333333||!isp(md))md+=l;\n\tmod=md;\n\tfor(int pr=2;pr<md;pr++)\n\t{\n\t\tbool ok=1;\n\t\tfor(int j=2;j<=md-1;j++)\n\t\t{\n\t\t\tj=(md-1)/((md-1)/j);\n\t\t\tif((md-1)%j==0)\n\t\t\t{\n\t\t\t\tif(qpow(pr,(md-1)/j)==1)\n\t\t\t\t{\n\t\t\t\t\tok=0;\n\t\t\t\t\tbreak;\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tif(ok)return MP(pr,md);\n\t}\n\tassert(false);\n}\nint n,b0[FFTmx];\nint b[FFTmx],c[FFTmx],da[FFTmx],dc[FFTmx],sa[FFTmx];\nint main()\n{\n\tFFTprecalc();\n\tgeti(n);\n\tfor(int i=0;i<n;i++)geti(b0[i]);\n\tfor(int i=0;i<n;i++)b[i]=b0[(n-i)%n];\n\tfor(int i=0;i<n;i++)geti(c[i]);c[n]=c[0];\n\tfor(int i=0;i<n;i++)dc[i]=(c[i+1]-c[i])/(-2);\n\tpair<int,int> pp=calc_mod(2*n);\n\tint w=pp.FF,md=pp.SS;\n//\tcerr<<\"w=\"<<w<<\" md=\"<<md<<endl;\n\tmod=md;\n\tw=qpow(w,(md-1)/2/n);\n\tCZT(dc,n,w,md,1);\n\tCZT(b,n,w,md,1);\n\tfor(int i=0;i<n;i++)da[i]=1ll*dc[i]*qpow(b[i],mod-2)%mod;\n\tCZT(da,n,w,md,-1);\n\tfor(int i=0;i<n;i++)\n\t{\n\t\tif(da[i]>mod/2)da[i]=da[i]-mod;\n\t}\n//\tcerr<<\"da:\"<<endl;\n//\tfor(int i=0;i<n;i++)cerr<<da[i]<<\" \";cerr<<endl;\n\tfor(int i=1;i<n;i++)\n\t{\n\t\tsa[i]=sa[i-1]+da[i-1];\n\t\tif(sa[i]<-5000||sa[i]>5000)\n\t\t{\n\t\t\tputs(\"0\");\n\t\t\treturn 0;\n\t\t}\n\t}\n\tll C2=0,C1=0,C0=-c[0];\n\tfor(int i=0;i<n;i++)\n\t{\n\t\tll tmp=b0[i]-sa[i];\n\t\tC2++;\n\t\tC1+=(-2)*tmp;\n\t\tC0+=tmp*tmp;\n\t}\n\tvector<int> v;\n\tfor(int i=-5000;i<=5000;i++)if(C2*i*i+C1*i+C0==0)v.PB(i);\n\tputsi(v.size());\n\tfor(int i=0;i<v.size();i++)\n\t{\n\t\tputi(v[i]);\n\t\tfor(int j=1;j<n;j++)puti(v[i]+sa[j]);\n\t\tputs(\"\");\n\t}\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "fft",
+        "math"
+    ],
+    "dificulty": "3300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\E. Cyclic Cipher.json",
+    "editorial_link": "https://codeforces.com//blog/entry/56478",
+    "editorial": ", hence, . Let , . Then . This corresponds to cyclic convolution of\r\npolynomials and . These polynomials uniquely determined by values in\r\nroots of unity of degree . Thus we can divide values of by values of in\r\nthis points and return to polynomials from values in roots of unity. To\r\ndo this one should compute discrete Fourier Transform in arbitrary\r\nlength polynomial which can be done by Bluestein\u00e2\u0080\u0099s algorithm. Note that\r\nyou can\u00e2\u0080\u0099t use complex fft here because real values can be very close to\r\nzero leading to great precision issues. Thus you should find some mod\r\nhaving root of unity of degree and compute discrete transform over it.\r\nThus we will find for each , which will allow us to recover , because\r\n.It can be proven that values of polynomial in roots of unity are\r\neigenvalues of matrix of linear system thus cyclic shifts are linearly\r\nindependent iff there is such mod which has root of unity of degree and\r\nvalues of polynomial in all such roots doesn\u00e2\u0080\u0099t equal zero. If it\u00e2\u0080\u0099s true\r\nfor polynomial in field of real numbers there will be only finite number\r\nof mods in which this may not be true (it only true if of polynomial and\r\nisn\u00e2\u0080\u0099t equal in such mod).\r\n"
+}

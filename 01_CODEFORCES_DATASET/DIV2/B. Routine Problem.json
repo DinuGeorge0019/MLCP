@@ -1,1 +1,106 @@
-{"link": "https://codeforces.com//contest/337/problem/B", "problemId": "3392", "problem_idx": "B", "shortId": "337B", "contest_number": "337", "problem_submissions": {"A": [12299505, 4287779, 4294787, 4288908, 4287593, 4287655, 4288715, 4287767, 4287597, 4289361, 4292228, 4297873, 4287659, 4288000, 4287546, 4288581, 4287692, 4288502], "E": [4297308, 4294426, 4299642, 7151846, 4296911, 4298400], "D": [4293164, 4295622, 4296185, 4297268, 4295484, 4297391, 4293932, 4295013, 4295647, 4297089, 4306458, 4315672, 4296531], "C": [4291413, 4292827, 4290434, 4291634, 4291820, 4293004, 4295602, 4293040, 4292436, 4290283, 4292545, 4293113, 4292103, 4291206, 4293573, 4292596], "B": [4289325, 4294106, 4292267, 4289473, 4288898, 4289573, 4288545, 4289624, 4292085, 4290934, 4289760, 4289731, 4290149, 4289634, 4289994, 4289149, 4302088]}, "name": "B. Routine Problem", "statement": "Manao has a monitor. The screen of the monitor has horizontal to\r\nvertical length ratio :. Now he is going to watch a movie. The movie\u2019s\r\nframe has horizontal to vertical length ratio :. Manao adjusts the view\r\nin such a way that the movie preserves the original frame ratio, but\r\nalso occupies as much space on the screen as possible and fits within it\r\ncompletely. Thus, he may have to zoom the movie in or out, but Manao\r\nwill always change the frame proportionally in both dimensions.Calculate\r\nthe ratio of empty screen (the part of the screen not occupied by the\r\nmovie) to the total screen size. Print the answer as an irreducible\r\nfraction .\r\n", "solutions": ["#include <algorithm>\n#include <cstring>\n#include <cstdlib>\n#include <cstdio>\n#define db double\n#define For(i,x,y) for (i=x;i<=y;i++)\nusing namespace std;\nint i,j,k,n,m,a,b,c,d,A,B;\nint main() {\n    scanf(\"%d%d%d%d\",&a,&b,&c,&d);\n    if (b*c<=d*a) A=a*d-b*c,B=a*c,A*=c,B*=d;\n    else A=b*c-a*d,B=b*d,A*=d,B*=c;\n    if (!A) printf(\"0/1\\n\");\n    else k=__gcd(A,B),printf(\"%d/%d\\n\",A/k,B/k);\n    return 0;\n}"], "input": "", "output": "", "tags": ["greedy", "math", "number theory"], "dificulty": "1400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/337/problem/B",
+    "problemId": "3392",
+    "problem_idx": "B",
+    "shortId": "337B",
+    "contest_number": "337",
+    "problem_submissions": {
+        "A": [
+            12299505,
+            4287779,
+            4294787,
+            4288908,
+            4287593,
+            4287655,
+            4288715,
+            4287767,
+            4287597,
+            4289361,
+            4292228,
+            4297873,
+            4287659,
+            4288000,
+            4287546,
+            4288581,
+            4287692,
+            4288502
+        ],
+        "E": [
+            4297308,
+            4294426,
+            4299642,
+            7151846,
+            4296911,
+            4298400
+        ],
+        "D": [
+            4293164,
+            4295622,
+            4296185,
+            4297268,
+            4295484,
+            4297391,
+            4293932,
+            4295013,
+            4295647,
+            4297089,
+            4306458,
+            4315672,
+            4296531
+        ],
+        "C": [
+            4291413,
+            4292827,
+            4290434,
+            4291634,
+            4291820,
+            4293004,
+            4295602,
+            4293040,
+            4292436,
+            4290283,
+            4292545,
+            4293113,
+            4292103,
+            4291206,
+            4293573,
+            4292596
+        ],
+        "B": [
+            4289325,
+            4294106,
+            4292267,
+            4289473,
+            4288898,
+            4289573,
+            4288545,
+            4289624,
+            4292085,
+            4290934,
+            4289760,
+            4289731,
+            4290149,
+            4289634,
+            4289994,
+            4289149,
+            4302088
+        ]
+    },
+    "name": "B. Routine Problem",
+    "statement": "Manao has a monitor. The screen of the monitor has horizontal to\r\nvertical length ratio :. Now he is going to watch a movie. The movie\u2019s\r\nframe has horizontal to vertical length ratio :. Manao adjusts the view\r\nin such a way that the movie preserves the original frame ratio, but\r\nalso occupies as much space on the screen as possible and fits within it\r\ncompletely. Thus, he may have to zoom the movie in or out, but Manao\r\nwill always change the frame proportionally in both dimensions.Calculate\r\nthe ratio of empty screen (the part of the screen not occupied by the\r\nmovie) to the total screen size. Print the answer as an irreducible\r\nfraction .\r\n",
+    "solutions": [
+        "#include <algorithm>\n#include <cstring>\n#include <cstdlib>\n#include <cstdio>\n#define db double\n#define For(i,x,y) for (i=x;i<=y;i++)\nusing namespace std;\nint i,j,k,n,m,a,b,c,d,A,B;\nint main() {\n    scanf(\"%d%d%d%d\",&a,&b,&c,&d);\n    if (b*c<=d*a) A=a*d-b*c,B=a*c,A*=c,B*=d;\n    else A=b*c-a*d,B=b*d,A*=d,B*=c;\n    if (!A) printf(\"0/1\\n\");\n    else k=__gcd(A,B),printf(\"%d/%d\\n\",A/k,B/k);\n    return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "greedy",
+        "math",
+        "number theory"
+    ],
+    "dificulty": "1400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Routine Problem.json",
+    "editorial_link": "https://codeforces.com//blog/entry/8629",
+    "editorial": "Suppose that the width and height of the screen are W and H\r\ncorrespondingly. Since W:H = a:b, we have H=W*b/a. Similarly, the width\r\nand height of the film frame w and h are related as h=w*d/c. Imagine\r\nthat Manao stretches/constricts the frame until it fits the screen\r\nhorizontally or vertically, whichever happens first. There are three\r\ncases to consider: the horizontal to vertical ratio of the screen is\r\nless, equal or more than the corresponding ratio of the frame. In the\r\nfirst case (a/b < c/d) the stretching process ends when the frame\r\nreaches the same width as the screen. That is, the frame will enlarge in\r\nW/w times and its new width will be W. Thus, its new height is h*W/w =\r\nw*c/d * W/w = W*d/c. We are interested in the ratio of unoccupied\r\nportion of the screen to its full size, which is (screen height - frame\r\nheight) / (screen height) = (W*b/a - W*d/c) / (W*b/a) = (bc-ad)/bc. In\r\nthe second case (a/b > c/d) the process ends when the frame reaches the\r\nsame height as the screen. Its height will become H and its width will\r\nbecome w*H/h = w * W*b/a / (w*d/c) = W*b/a * c/d. The unoccupied portion\r\nof the screen\u00e2\u0080\u0099s horizontal is (W - W*b/a * c/d)/W = (ad-bc)/ad. In the\r\nthird case, the frame fills the screen entirely and the answer will be\r\n0. All that\u00e2\u0080\u0099s left is to print the answer as an irreducible fraction. We\r\nneed to find the greatest common divisor of its nominator and\r\ndenominator for this. It can be done using Euclidean algorithm or just\r\nthrough trial division by every number from 1 to q. Since q is no more\r\nthan a product of two numbers from the input and these numbers are\r\nconstrained by 1000, we need to try at most million numbers in the worst\r\ncase.\r\n"
+}

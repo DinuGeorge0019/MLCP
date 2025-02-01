@@ -1,1 +1,92 @@
-{"link": "https://codeforces.com//contest/450/problem/D", "problemId": "11563", "problem_idx": "D", "shortId": "450D", "contest_number": "450", "problem_submissions": {"D": [7172300, 7189969, 7168692, 7168762, 7167893, 7173883, 7186151, 7172954, 7166069, 7167002], "C": [7163293, 7165488, 7162708, 7162772, 7171630, 7164674, 7167537, 7166382, 7164102, 7164882, 7160663, 7166275], "B": [7158888, 7159995, 7159436, 7163539, 7160088, 7159602, 7162497, 7161041, 7159252, 7161370, 7160845, 7161199, 7162311, 7159103, 7162904], "A": [7157648, 7158191, 7157937, 7159395, 7157906, 7158093, 7157984, 7167878, 7158537, 7157963, 7160445, 7158752, 7157827, 7158223, 7157598, 7158189], "E": [7171266, 7172113, 7171025]}, "name": "D. Jzzhu and Cities", "statement": "Jzzhu is the president of country A. There are cities numbered from to\r\nin his country. City is the capital of A. Also there are roads\r\nconnecting the cities. One can go from city to (and vise versa) using\r\nthe -th road, the length of this road is . Finally, there are train\r\nroutes in the country. One can use the -th train route to go from\r\ncapital of the country to city (and vise versa), the length of this\r\nroute is .Jzzhu doesn\u2019t want to waste the money of the country, so he is\r\ngoing to close some of the train routes. Please tell Jzzhu the maximum\r\nnumber of the train routes which can be closed under the following\r\ncondition: the length of the shortest path from every city to the\r\ncapital mustn\u2019t change.\r\n", "solutions": ["#include<set>\n#include<map>\n#include<list>\n#include<queue>\n#include<stack>\n#include<string>\n#include<math.h>\n#include<time.h>\n#include<vector>\n#include<bitset>\n#include<memory>\n#include<utility>\n#include<fstream>\n#include<stdio.h>\n#include<iostream>\n#include<stdlib.h>\n#include<string.h>\n#include<algorithm>\nusing namespace std;\nconst int maxn=100005;\nstruct edge\n{\n    int y;\n    int value;\n    int sign;\n    edge * next;\n};\nedge * li[100005];\nedge * new_edge()\n{\n    static edge a[1000005];\n    static int top=0;\n    return &a[top++];\n}\nvoid insert_edge(int x,int y,int z,int f)\n{\n    edge * t=new_edge();\n    t->y=y;\n    t->value=z;\n    t->next=li[x];\n    t->sign=f;\n    li[x]=t;\n    t=new_edge();\n    t->y=x;\n    t->value=z;\n    t->next=li[y];\n    li[y]=t;\n    t->sign=f;\n}\npriority_queue<pair<long long,int> > que;\nint pre[maxn];\nlong long dis[maxn];\nint sum[maxn];\nbool visit[maxn];\nvoid dijkstra(int s,int n)\n{\n    memset(visit,false,sizeof(visit));\n    memset(pre,-1,sizeof(pre));\n    int i;\n    for (i=0;i<=n;i++)\n    {\n        dis[i]=999999999999999999ll;\n    }\n    dis[s]=0;\n    pre[s]=-1;\n    que.push(make_pair(0ll,1));\n    for (;!que.empty();)\n    {\n        int now=que.top().second;\n        que.pop();\n        if (visit[now]) continue;\n        visit[now]=true;\n        edge * t;\n        for (t=li[now];t!=0;t=t->next)\n        {\n            if (dis[t->y]>dis[now]+t->value)\n            {\n                dis[t->y]=dis[now]+t->value;\n                if (t->sign==1) pre[t->y]=0; else pre[t->y]=now;\n                que.push(make_pair(-dis[t->y],t->y));\n            }\n            else if (dis[t->y]==dis[now]+t->value)\n            {\n                if ((t->sign==0)&&(pre[t->y]==0)) pre[t->y]=now;\n            }\n        }\n    }\n}\nint main()\n{\n    memset(li,0,sizeof(li));\n    #ifdef absi2011\n    freopen(\"input.txt\",\"r\",stdin);\n    freopen(\"output.txt\",\"w\",stdout);\n    #endif\n    int n,m,k;\n    scanf(\"%d%d%d\",&n,&m,&k);\n    int i;\n    for (i=0;i<m;i++)\n    {\n        int x,y,z;\n        scanf(\"%d%d%d\",&x,&y,&z);\n        insert_edge(x,y,z,0);\n    }\n    memset(sum,0,sizeof(sum));\n    for (i=0;i<k;i++)\n    {\n        int x=1;\n        int y,z;\n        scanf(\"%d%d\",&y,&z);\n        insert_edge(x,y,z,1);\n        sum[y]++;\n    }\n    dijkstra(1,n+1);\n    int ans=0;\n    for (i=1;i<=n;i++)\n    {\n        if (pre[i]!=0) ans+=sum[i]; else ans+=(sum[i]-1);\n    }\n    printf(\"%d\\n\",ans);\n    return 0; \n}\n"], "input": "", "output": "", "tags": ["graphs", "greedy", "shortest paths"], "dificulty": "2000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/450/problem/D",
+    "problemId": "11563",
+    "problem_idx": "D",
+    "shortId": "450D",
+    "contest_number": "450",
+    "problem_submissions": {
+        "D": [
+            7172300,
+            7189969,
+            7168692,
+            7168762,
+            7167893,
+            7173883,
+            7186151,
+            7172954,
+            7166069,
+            7167002
+        ],
+        "C": [
+            7163293,
+            7165488,
+            7162708,
+            7162772,
+            7171630,
+            7164674,
+            7167537,
+            7166382,
+            7164102,
+            7164882,
+            7160663,
+            7166275
+        ],
+        "B": [
+            7158888,
+            7159995,
+            7159436,
+            7163539,
+            7160088,
+            7159602,
+            7162497,
+            7161041,
+            7159252,
+            7161370,
+            7160845,
+            7161199,
+            7162311,
+            7159103,
+            7162904
+        ],
+        "A": [
+            7157648,
+            7158191,
+            7157937,
+            7159395,
+            7157906,
+            7158093,
+            7157984,
+            7167878,
+            7158537,
+            7157963,
+            7160445,
+            7158752,
+            7157827,
+            7158223,
+            7157598,
+            7158189
+        ],
+        "E": [
+            7171266,
+            7172113,
+            7171025
+        ]
+    },
+    "name": "D. Jzzhu and Cities",
+    "statement": "Jzzhu is the president of country A. There are cities numbered from to\r\nin his country. City is the capital of A. Also there are roads\r\nconnecting the cities. One can go from city to (and vise versa) using\r\nthe -th road, the length of this road is . Finally, there are train\r\nroutes in the country. One can use the -th train route to go from\r\ncapital of the country to city (and vise versa), the length of this\r\nroute is .Jzzhu doesn\u2019t want to waste the money of the country, so he is\r\ngoing to close some of the train routes. Please tell Jzzhu the maximum\r\nnumber of the train routes which can be closed under the following\r\ncondition: the length of the shortest path from every city to the\r\ncapital mustn\u2019t change.\r\n",
+    "solutions": [
+        "#include<set>\n#include<map>\n#include<list>\n#include<queue>\n#include<stack>\n#include<string>\n#include<math.h>\n#include<time.h>\n#include<vector>\n#include<bitset>\n#include<memory>\n#include<utility>\n#include<fstream>\n#include<stdio.h>\n#include<iostream>\n#include<stdlib.h>\n#include<string.h>\n#include<algorithm>\nusing namespace std;\nconst int maxn=100005;\nstruct edge\n{\n    int y;\n    int value;\n    int sign;\n    edge * next;\n};\nedge * li[100005];\nedge * new_edge()\n{\n    static edge a[1000005];\n    static int top=0;\n    return &a[top++];\n}\nvoid insert_edge(int x,int y,int z,int f)\n{\n    edge * t=new_edge();\n    t->y=y;\n    t->value=z;\n    t->next=li[x];\n    t->sign=f;\n    li[x]=t;\n    t=new_edge();\n    t->y=x;\n    t->value=z;\n    t->next=li[y];\n    li[y]=t;\n    t->sign=f;\n}\npriority_queue<pair<long long,int> > que;\nint pre[maxn];\nlong long dis[maxn];\nint sum[maxn];\nbool visit[maxn];\nvoid dijkstra(int s,int n)\n{\n    memset(visit,false,sizeof(visit));\n    memset(pre,-1,sizeof(pre));\n    int i;\n    for (i=0;i<=n;i++)\n    {\n        dis[i]=999999999999999999ll;\n    }\n    dis[s]=0;\n    pre[s]=-1;\n    que.push(make_pair(0ll,1));\n    for (;!que.empty();)\n    {\n        int now=que.top().second;\n        que.pop();\n        if (visit[now]) continue;\n        visit[now]=true;\n        edge * t;\n        for (t=li[now];t!=0;t=t->next)\n        {\n            if (dis[t->y]>dis[now]+t->value)\n            {\n                dis[t->y]=dis[now]+t->value;\n                if (t->sign==1) pre[t->y]=0; else pre[t->y]=now;\n                que.push(make_pair(-dis[t->y],t->y));\n            }\n            else if (dis[t->y]==dis[now]+t->value)\n            {\n                if ((t->sign==0)&&(pre[t->y]==0)) pre[t->y]=now;\n            }\n        }\n    }\n}\nint main()\n{\n    memset(li,0,sizeof(li));\n    #ifdef absi2011\n    freopen(\"input.txt\",\"r\",stdin);\n    freopen(\"output.txt\",\"w\",stdout);\n    #endif\n    int n,m,k;\n    scanf(\"%d%d%d\",&n,&m,&k);\n    int i;\n    for (i=0;i<m;i++)\n    {\n        int x,y,z;\n        scanf(\"%d%d%d\",&x,&y,&z);\n        insert_edge(x,y,z,0);\n    }\n    memset(sum,0,sizeof(sum));\n    for (i=0;i<k;i++)\n    {\n        int x=1;\n        int y,z;\n        scanf(\"%d%d\",&y,&z);\n        insert_edge(x,y,z,1);\n        sum[y]++;\n    }\n    dijkstra(1,n+1);\n    int ans=0;\n    for (i=1;i<=n;i++)\n    {\n        if (pre[i]!=0) ans+=sum[i]; else ans+=(sum[i]-1);\n    }\n    printf(\"%d\\n\",ans);\n    return 0; \n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "graphs",
+        "greedy",
+        "shortest paths"
+    ],
+    "dificulty": "2000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Jzzhu and Cities.json",
+    "editorial_link": "https://codeforces.com//blog/entry/13112",
+    "editorial": "We consider a train route as an undirected deletable edge . Let be the\r\nshortest path between and . We add all of the edges weighted where into\r\na new directed graph. A deletable edge can be deleted only if it isn\u00e2\u0080\u0099t\r\nin the new graph or the in-degree of in the new graph is more than ,\r\nbecause the connectivity of the new graph won\u00e2\u0080\u0099t be changed after\r\ndeleting these edges. Notice that you should subtract one from the\r\nin-degree of after you delete an edge .\r\n"
+}

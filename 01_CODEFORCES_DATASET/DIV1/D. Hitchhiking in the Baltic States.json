@@ -1,1 +1,104 @@
-{"link": "https://codeforces.com//contest/809/problem/D", "problemId": "106953", "problem_idx": "D", "shortId": "809D", "contest_number": "809", "problem_submissions": {"E": [27253997, 27253429], "D": [27249075, 27251826, 27251250, 27252529, 27250844, 27248855, 27249814, 27250805, 27251747, 27249258, 27246563, 27254846, 27254749], "C": [27246781, 27244976, 27248082, 27245390, 27251108, 27243956, 27253183, 27253135, 27244552, 27253129, 27245688, 27244697, 27248015, 27245843, 27247902, 27248924, 27249554, 27245267, 27250102, 27250477], "B": [27242404, 27247452, 27245322, 27249228, 27241882, 27241895, 27246216, 27242600, 27252141, 27243365, 27243040, 27244839, 27249122, 27244039, 27244488], "A": [27238822, 27238882, 27238974, 27238780, 27251619, 27238718, 27238690, 27238879, 27238895, 27238975, 27238855, 27238770, 27239286, 27239029, 27238990, 27239207, 27238846, 27239176, 27238782]}, "name": "D. Hitchhiking in the Baltic States", "statement": "Leha and Noora decided to go on a trip in the Baltic States. As you know\r\nfrom the previous problem, Leha has lost his car on the parking of the\r\nrestaurant. Unfortunately, requests to the watchman didn\u2019t helped hacker\r\nfind the car, so friends decided to go hitchhiking.In total, they\r\nintended to visit towns. However it turned out that sights in -th town\r\nare open for visitors only on days from to .What to do? Leha proposed to\r\nchoose for each town a day, when they will visit this town, i.e any\r\ninteger in interval . After that Noora choses some subsequence of towns\r\n, which friends are going to visit, that at first they are strictly\r\nincreasing, i.e is for all integers from to , but also the dates of the\r\nfriends visits are strictly increasing, i.e is true for all integers\r\nfrom to .Please help Leha and Noora in choosing such for each town , and\r\nsuch subsequence of towns , so that friends can visit maximal number of\r\ntowns.You may assume, that Leha and Noora can start the trip any day.\r\n", "solutions": ["//PRZEMYSL ASSERTY\n\n//SPRAWDZ CORNER CASE'Y, MINIMALNE I MAKSYMALNE WEJ\u015aCIE I WYJ\u015aCIE\n\n//MODULO = 1\n\n//while (clock()<=69*CLOCKS_PER_SEC)\n\n#include <bits/stdc++.h>\n#include <ext/pb_ds/assoc_container.hpp>\n#include <ext/pb_ds/tree_policy.hpp>\n\nusing namespace __gnu_pbds;\nusing namespace std;\n\ntemplate <typename T>\nusing ordered_set =\n    tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n#define sim template < class c\n#define ris return * this\n#define dor > debug & operator <<\n#define eni(x) sim > typename \\\n  enable_if<sizeof dud<c>(0) x 1, debug&>::type operator<<(c i) {\nsim > struct rge { c b, e; };\nsim > rge<c> range(c i, c j) { return rge<c>{i, j}; }\nsim > auto dud(c* x) -> decltype(cerr << *x, 0);\nsim > char dud(...);\nstruct debug {\n#ifdef LOCAL\n~debug() { cerr << endl; }\neni(!=) cerr << boolalpha << i; ris; }\neni(==) ris << range(begin(i), end(i)); }\nsim, class b dor(pair < b, c > d) {\n  ris << \"(\" << d.first << \", \" << d.second << \")\";\n}\nsim dor(rge<c> d) {\n  *this << \"[\";\n  for (auto it = d.b; it != d.e; ++it)\n    *this << \", \" + 2 * (it == d.b) << *it;\n  ris << \"]\";\n}\n#else\nsim dor(const c&) { ris; }\n#endif\n};\n#define imie(...) \" [\" << #__VA_ARGS__ \": \" << (__VA_ARGS__) << \"] \"\n\n#define shandom_ruffle random_shuffle\n\nconst int inf=1000*1000*1007;\n\nstruct node\n{\n\tint id;\n\tint roz;\n\tint prior;\n\tnode * lew;\n\tnode * pra;\n\tnode * oj;\n\t\n\tlong long narz;\n\tlong long war;\n\t\n\tnode(int idid)\n\t{\n\t\tprior=rand();\n\t\tlew=NULL;\n\t\tpra=NULL;\n\t\toj=NULL;\n\t\troz=1;\n\t\tid=idid;\n\t\tnarz=0;\n\t\twar=inf;\n\t}\n\tnode()\n\t{\n\t\tprior=rand();\n\t\tlew=NULL;\n\t\tpra=NULL;\n\t\toj=NULL;\n\t\troz=1;\n\t\tnarz=0;\n\t\twar=inf;\n\t}\n};\ninline void update(node * v)\n{\n\tif (v==NULL)\n\t\treturn;\n\tv->roz=1;\n\tv->war+=v->narz;\n\tif (v->lew!=NULL)\n\t{\n\t\tv->lew->narz+=v->narz;\n\t\tv->roz+=v->lew->roz;\n\t}\n\tif (v->pra!=NULL)\n\t{\n\t\tv->pra->narz+=v->narz;\n\t\tv->roz+=v->pra->roz;\n\t}\n\tv->narz=0;\n\t//tutaj dodajemy wszystkie operacje zwi\u0105zane z funkcjami m.in. drzewa przedzia\u0142owego, tzn. lazy propagation itp.\n}\nnode * merge(node * v, node * u)\n{\n\tif (v==NULL)\n\t\treturn u;\n\tif (u==NULL)\n\t\treturn v;\n\tif ((v->prior)>=(u->prior))\n\t{\n\t\tupdate(v);//czasem mo\u017cna usun\u0105\u0107\n\t\tv->pra=merge(v->pra, u);\n\t\tif (v->pra!=NULL)\n\t\t\tv->pra->oj=v;\n\t\tupdate(v);\n\t\treturn v;\n\t}\n\telse\n\t{\n\t\tupdate(u);//czasem mo\u017cna usun\u0105\u0107\n\t\tu->lew=merge(v, u->lew);\n\t\tif (u->lew!=NULL)\n\t\t\tu->lew->oj=u;\n\t\tupdate(u);\n\t\treturn u;\n\t}\n}\npair <node *, node *> split(node * v, const function <bool(node*)> &is_left)//is_left ma stwierdza\u0107, czy dany wierzcho\u0142ek powinien by\u0107 w lewej cz\u0119\u015bci\n{\n\tif (v==NULL)\n\t\treturn make_pair(v, v);\n\tpair <node *, node *> ret;\n\tupdate(v);//czasem mo\u017cna usun\u0105\u0107\n\tv->oj=NULL;\n\tif (is_left(v))\n\t{\n\t\tret=split(v->pra, is_left);\n\t\tv->pra=ret.first;\n\t\tif (v->pra!=NULL)\n\t\t\tv->pra->oj=v;\n\t\tret.first=v;\n\t}\n\telse\n\t{\n\t\tret=split(v->lew, is_left);\n\t\tv->lew=ret.second;\n\t\tif (v->lew!=NULL)\n\t\t\tv->lew->oj=v;\n\t\tret.second=v;\n\t}\n\tupdate(v);\n\treturn ret;\n}\nint gl_help;\nfunction <bool(node*)> cut_v(int v)//ucnina v pierwszych elementow\n{\n\tgl_help=v;\n\treturn [](node* u)->bool\n\t{\n\t\tint pom=1;\n\t\tif (u->lew!=NULL)\n\t\t\tpom+=u->lew->roz;\n\t\tif (pom>gl_help)\n\t\t\treturn false;\n\t\tgl_help-=pom;\n\t\treturn true;\n\t};\n}\nfunction <bool(node*)> cut_cos(int v)//ucnina v pierwszych elementow - kuamstfo\n{\n\tgl_help=v;\n\treturn [](node* u)->bool\n\t{\n\t\tupdate(u);\n\t\treturn u->war<gl_help;\n\t};\n}\n\nint n;\n\nnode *korz=NULL;\n\nint main()\n{\n\tkorz=new node();\n\tkorz->war=0;\n\tscanf(\"%d\", &n);\n\tfor (int i=1; i<=n+3; i++)\n\t{\n\t\tnode *tu=new node;\n\t\tkorz=merge(korz, tu);\n\t}\n\tfor (int i=1; i<=n; i++)\n\t{\n\t\tint l, r;\n\t\tscanf(\"%d%d\", &l, &r);\n\t\tauto jed=split(korz, cut_cos(l));\n\t\tauto dwa=split(jed.second, cut_cos(r));\n\t\tauto trz=split(dwa.second, cut_v(1));\n\t\ttrz.first->narz=0;\n\t\ttrz.first->war=l;\n\t\tif (dwa.first!=NULL)\n\t\t\tdwa.first->narz++;\n\t\tkorz=merge(jed.first, merge(trz.first, merge(dwa.first, trz.second)));\n\t}\n\tauto jed=split(korz, cut_cos(inf-1));\n\tprintf(\"%d\\n\", jed.first->roz-1);\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["data structures", "dp"], "dificulty": "2900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/809/problem/D",
+    "problemId": "106953",
+    "problem_idx": "D",
+    "shortId": "809D",
+    "contest_number": "809",
+    "problem_submissions": {
+        "E": [
+            27253997,
+            27253429
+        ],
+        "D": [
+            27249075,
+            27251826,
+            27251250,
+            27252529,
+            27250844,
+            27248855,
+            27249814,
+            27250805,
+            27251747,
+            27249258,
+            27246563,
+            27254846,
+            27254749
+        ],
+        "C": [
+            27246781,
+            27244976,
+            27248082,
+            27245390,
+            27251108,
+            27243956,
+            27253183,
+            27253135,
+            27244552,
+            27253129,
+            27245688,
+            27244697,
+            27248015,
+            27245843,
+            27247902,
+            27248924,
+            27249554,
+            27245267,
+            27250102,
+            27250477
+        ],
+        "B": [
+            27242404,
+            27247452,
+            27245322,
+            27249228,
+            27241882,
+            27241895,
+            27246216,
+            27242600,
+            27252141,
+            27243365,
+            27243040,
+            27244839,
+            27249122,
+            27244039,
+            27244488
+        ],
+        "A": [
+            27238822,
+            27238882,
+            27238974,
+            27238780,
+            27251619,
+            27238718,
+            27238690,
+            27238879,
+            27238895,
+            27238975,
+            27238855,
+            27238770,
+            27239286,
+            27239029,
+            27238990,
+            27239207,
+            27238846,
+            27239176,
+            27238782
+        ]
+    },
+    "name": "D. Hitchhiking in the Baltic States",
+    "statement": "Leha and Noora decided to go on a trip in the Baltic States. As you know\r\nfrom the previous problem, Leha has lost his car on the parking of the\r\nrestaurant. Unfortunately, requests to the watchman didn\u2019t helped hacker\r\nfind the car, so friends decided to go hitchhiking.In total, they\r\nintended to visit towns. However it turned out that sights in -th town\r\nare open for visitors only on days from to .What to do? Leha proposed to\r\nchoose for each town a day, when they will visit this town, i.e any\r\ninteger in interval . After that Noora choses some subsequence of towns\r\n, which friends are going to visit, that at first they are strictly\r\nincreasing, i.e is for all integers from to , but also the dates of the\r\nfriends visits are strictly increasing, i.e is true for all integers\r\nfrom to .Please help Leha and Noora in choosing such for each town , and\r\nsuch subsequence of towns , so that friends can visit maximal number of\r\ntowns.You may assume, that Leha and Noora can start the trip any day.\r\n",
+    "solutions": [
+        "//PRZEMYSL ASSERTY\n\n//SPRAWDZ CORNER CASE'Y, MINIMALNE I MAKSYMALNE WEJ\u015aCIE I WYJ\u015aCIE\n\n//MODULO = 1\n\n//while (clock()<=69*CLOCKS_PER_SEC)\n\n#include <bits/stdc++.h>\n#include <ext/pb_ds/assoc_container.hpp>\n#include <ext/pb_ds/tree_policy.hpp>\n\nusing namespace __gnu_pbds;\nusing namespace std;\n\ntemplate <typename T>\nusing ordered_set =\n    tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n#define sim template < class c\n#define ris return * this\n#define dor > debug & operator <<\n#define eni(x) sim > typename \\\n  enable_if<sizeof dud<c>(0) x 1, debug&>::type operator<<(c i) {\nsim > struct rge { c b, e; };\nsim > rge<c> range(c i, c j) { return rge<c>{i, j}; }\nsim > auto dud(c* x) -> decltype(cerr << *x, 0);\nsim > char dud(...);\nstruct debug {\n#ifdef LOCAL\n~debug() { cerr << endl; }\neni(!=) cerr << boolalpha << i; ris; }\neni(==) ris << range(begin(i), end(i)); }\nsim, class b dor(pair < b, c > d) {\n  ris << \"(\" << d.first << \", \" << d.second << \")\";\n}\nsim dor(rge<c> d) {\n  *this << \"[\";\n  for (auto it = d.b; it != d.e; ++it)\n    *this << \", \" + 2 * (it == d.b) << *it;\n  ris << \"]\";\n}\n#else\nsim dor(const c&) { ris; }\n#endif\n};\n#define imie(...) \" [\" << #__VA_ARGS__ \": \" << (__VA_ARGS__) << \"] \"\n\n#define shandom_ruffle random_shuffle\n\nconst int inf=1000*1000*1007;\n\nstruct node\n{\n\tint id;\n\tint roz;\n\tint prior;\n\tnode * lew;\n\tnode * pra;\n\tnode * oj;\n\t\n\tlong long narz;\n\tlong long war;\n\t\n\tnode(int idid)\n\t{\n\t\tprior=rand();\n\t\tlew=NULL;\n\t\tpra=NULL;\n\t\toj=NULL;\n\t\troz=1;\n\t\tid=idid;\n\t\tnarz=0;\n\t\twar=inf;\n\t}\n\tnode()\n\t{\n\t\tprior=rand();\n\t\tlew=NULL;\n\t\tpra=NULL;\n\t\toj=NULL;\n\t\troz=1;\n\t\tnarz=0;\n\t\twar=inf;\n\t}\n};\ninline void update(node * v)\n{\n\tif (v==NULL)\n\t\treturn;\n\tv->roz=1;\n\tv->war+=v->narz;\n\tif (v->lew!=NULL)\n\t{\n\t\tv->lew->narz+=v->narz;\n\t\tv->roz+=v->lew->roz;\n\t}\n\tif (v->pra!=NULL)\n\t{\n\t\tv->pra->narz+=v->narz;\n\t\tv->roz+=v->pra->roz;\n\t}\n\tv->narz=0;\n\t//tutaj dodajemy wszystkie operacje zwi\u0105zane z funkcjami m.in. drzewa przedzia\u0142owego, tzn. lazy propagation itp.\n}\nnode * merge(node * v, node * u)\n{\n\tif (v==NULL)\n\t\treturn u;\n\tif (u==NULL)\n\t\treturn v;\n\tif ((v->prior)>=(u->prior))\n\t{\n\t\tupdate(v);//czasem mo\u017cna usun\u0105\u0107\n\t\tv->pra=merge(v->pra, u);\n\t\tif (v->pra!=NULL)\n\t\t\tv->pra->oj=v;\n\t\tupdate(v);\n\t\treturn v;\n\t}\n\telse\n\t{\n\t\tupdate(u);//czasem mo\u017cna usun\u0105\u0107\n\t\tu->lew=merge(v, u->lew);\n\t\tif (u->lew!=NULL)\n\t\t\tu->lew->oj=u;\n\t\tupdate(u);\n\t\treturn u;\n\t}\n}\npair <node *, node *> split(node * v, const function <bool(node*)> &is_left)//is_left ma stwierdza\u0107, czy dany wierzcho\u0142ek powinien by\u0107 w lewej cz\u0119\u015bci\n{\n\tif (v==NULL)\n\t\treturn make_pair(v, v);\n\tpair <node *, node *> ret;\n\tupdate(v);//czasem mo\u017cna usun\u0105\u0107\n\tv->oj=NULL;\n\tif (is_left(v))\n\t{\n\t\tret=split(v->pra, is_left);\n\t\tv->pra=ret.first;\n\t\tif (v->pra!=NULL)\n\t\t\tv->pra->oj=v;\n\t\tret.first=v;\n\t}\n\telse\n\t{\n\t\tret=split(v->lew, is_left);\n\t\tv->lew=ret.second;\n\t\tif (v->lew!=NULL)\n\t\t\tv->lew->oj=v;\n\t\tret.second=v;\n\t}\n\tupdate(v);\n\treturn ret;\n}\nint gl_help;\nfunction <bool(node*)> cut_v(int v)//ucnina v pierwszych elementow\n{\n\tgl_help=v;\n\treturn [](node* u)->bool\n\t{\n\t\tint pom=1;\n\t\tif (u->lew!=NULL)\n\t\t\tpom+=u->lew->roz;\n\t\tif (pom>gl_help)\n\t\t\treturn false;\n\t\tgl_help-=pom;\n\t\treturn true;\n\t};\n}\nfunction <bool(node*)> cut_cos(int v)//ucnina v pierwszych elementow - kuamstfo\n{\n\tgl_help=v;\n\treturn [](node* u)->bool\n\t{\n\t\tupdate(u);\n\t\treturn u->war<gl_help;\n\t};\n}\n\nint n;\n\nnode *korz=NULL;\n\nint main()\n{\n\tkorz=new node();\n\tkorz->war=0;\n\tscanf(\"%d\", &n);\n\tfor (int i=1; i<=n+3; i++)\n\t{\n\t\tnode *tu=new node;\n\t\tkorz=merge(korz, tu);\n\t}\n\tfor (int i=1; i<=n; i++)\n\t{\n\t\tint l, r;\n\t\tscanf(\"%d%d\", &l, &r);\n\t\tauto jed=split(korz, cut_cos(l));\n\t\tauto dwa=split(jed.second, cut_cos(r));\n\t\tauto trz=split(dwa.second, cut_v(1));\n\t\ttrz.first->narz=0;\n\t\ttrz.first->war=l;\n\t\tif (dwa.first!=NULL)\n\t\t\tdwa.first->narz++;\n\t\tkorz=merge(jed.first, merge(trz.first, merge(dwa.first, trz.second)));\n\t}\n\tauto jed=split(korz, cut_cos(inf-1));\n\tprintf(\"%d\\n\", jed.first->roz-1);\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "data structures",
+        "dp"
+    ],
+    "dificulty": "2900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Hitchhiking in the Baltic States.json",
+    "editorial_link": "https://codeforces.com/blog/entry/52099",
+    "editorial": "Let minimal number that can be last in strictly increasing subsequence\r\nwith length . Iterate through prefixes of intervals and maintain this\r\ndp. Obviously this dp is strictly increasing.What happens when we add\r\nnew interval : In the rightmost position , such that , we can make a\r\ntransion . Since the rightmost position, , than this , i.e . Let the\r\nrightmost position, such that , the for each we can make a transition .\r\nBut since , than , so this . Thinking from the facts above, we can solve\r\nthis task maintaining dp in cartesian tree (treap). Let\u00e2\u0080\u0099s find and split\r\ninterval from to . Add to every number in this tree . Delete -t node.\r\nAnd merge everything adding one more node with key .\r\n"
+}

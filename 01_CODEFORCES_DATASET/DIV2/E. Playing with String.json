@@ -1,1 +1,97 @@
-{"link": "https://codeforces.com//contest/305/problem/E", "problemId": "3010", "problem_idx": "E", "shortId": "305E", "contest_number": "305", "problem_submissions": {"A": [3743947, 3742003, 3738237, 3741973, 3743789, 3738630, 3746146, 3738359, 3738236, 3744732, 3739637, 3742465, 3737309, 3742105, 3736988, 3737540], "B": [3742919, 3738335, 3737895, 3738111, 3743327, 3736944, 3739543, 3740227, 3738192, 3744577, 3738563], "C": [3742188, 3739255, 3740066, 3739103, 3742647, 3740551, 3737297, 3744156, 3736706, 3738323, 3738124, 3738406, 3742683, 3739670, 3738219, 3742469, 3739915], "D": [3741403, 6159506, 3821844, 3746061, 3744660, 3745182, 3743300, 3747615], "E": [3738483, 3741561, 6006201, 3743278, 3743310, 3741203, 3762743, 3747416, 3743624, 3742904, 3751978]}, "name": "E. Playing with String", "statement": "Two people play the following string game. Initially the players have\r\ngot some string . The players move in turns, the player who cannot make\r\na move loses. Before the game began, the string is written on a piece of\r\npaper, one letter per cell. A player\u2019s move is the sequence of actions:\r\nThe player chooses one of the available pieces of paper with some string\r\nwritten on it. Let\u2019s denote it is . Note that initially, only one piece\r\nof paper is available. The player chooses in the string character in\r\nposition such that for some positive integer the following equations\r\nhold: , , ..., . Player cuts the cell with the chosen character. As a\r\nresult of the operation, he gets three new pieces of paper, the first\r\none will contain string , the second one will contain a string\r\nconsisting of a single character , the third one contains string . Your\r\ntask is to determine the winner provided that both players play\r\noptimally well. If the first player wins, find the position of character\r\nthat is optimal to cut in his first move. If there are multiple\r\npositions, print the minimal possible one.\r\n", "solutions": ["/*\n* Problem: \n* Author: Leo Yu\n* Time: \n* State: SOLVED\n* Memo: \n*/\n#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cmath>\n#include <iostream>\n#include <algorithm>\n#include <ctime>\n#include <vector>\n#include <queue>\n#include <set>\n#include <map>\nusing namespace std;\ntypedef long long LL;\ninline int\tread()\n{\n\tint x = 0; char ch = getchar(); bool positive = 1;\n\tfor (; ch < '0' || ch > '9'; ch = getchar())\tif (ch == '-')  positive = 0;\n\tfor (; ch >= '0' && ch <= '9'; ch = getchar())\tx = x * 10 + ch - '0';\n\treturn positive ? x : -x;\n}\n#define link Link\n\nint N;\nchar\ta[5005];\nint\tf[5005], mex[5005];\n\ninline bool\tcheck()\n{\n\tint now = 0, ans = 0;\n\tfor (int i = 1; i <= N; ++ i)\n\t{\n\t\tif (a[i - 1] == a[i + 1] && a[i] != '$')\t++ now;\n\t\telse\n\t\t{\n\t\t\tans ^= f[now];\n\t\t\tnow = 0;\n\t\t}\n\t}\n\treturn ans == 0;\n}\n\nint main()\n{\n#ifndef ONLINE_JUDGE\n\tfreopen(\"a.in\", \"r\", stdin);\n\tfreopen(\"a.out\", \"w\", stdout);\n#endif\n\n\tscanf(\"%s\", a + 1);\n\tN = strlen(a + 1);\n\tf[0] = 0;\n\tfor (int i = 1; i <= N; ++ i)\n\t{\n\t\tfor (int j = 1; j <= i; ++ j)\n\t\t\tmex[f[max(j - 1 - 1, 0)] ^ f[max(i - j - 1, 0)]] = i;\n\t\tfor (int j = 0; ; ++ j)\n\t\t\tif (mex[j] != i)\n\t\t\t{\n\t\t\t\tf[i] = j;\n\t\t\t\tbreak;\n\t\t\t}\n\t}\n\ta[0] = '#', a[N + 1] = '%';\n\tfor (int i = 1; i <= N; ++ i)\tif (a[i - 1] == a[i + 1])\n\t{\n\t\tchar ori = a[i];\n\t\ta[i] = '$';\n\t\t\n\t\tif (check())\n\t\t{\n\t\t\tprintf(\"First\\n%d\\n\", i);\n\t\t\treturn 0;\n\t\t}\n\t\t\n\t\ta[i] = ori;\n\t}\n\tprintf(\"Second\\n\");\n\n\treturn 0;\n}\n\n"], "input": "", "output": "", "tags": ["games"], "dificulty": "2300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/305/problem/E",
+    "problemId": "3010",
+    "problem_idx": "E",
+    "shortId": "305E",
+    "contest_number": "305",
+    "problem_submissions": {
+        "A": [
+            3743947,
+            3742003,
+            3738237,
+            3741973,
+            3743789,
+            3738630,
+            3746146,
+            3738359,
+            3738236,
+            3744732,
+            3739637,
+            3742465,
+            3737309,
+            3742105,
+            3736988,
+            3737540
+        ],
+        "B": [
+            3742919,
+            3738335,
+            3737895,
+            3738111,
+            3743327,
+            3736944,
+            3739543,
+            3740227,
+            3738192,
+            3744577,
+            3738563
+        ],
+        "C": [
+            3742188,
+            3739255,
+            3740066,
+            3739103,
+            3742647,
+            3740551,
+            3737297,
+            3744156,
+            3736706,
+            3738323,
+            3738124,
+            3738406,
+            3742683,
+            3739670,
+            3738219,
+            3742469,
+            3739915
+        ],
+        "D": [
+            3741403,
+            6159506,
+            3821844,
+            3746061,
+            3744660,
+            3745182,
+            3743300,
+            3747615
+        ],
+        "E": [
+            3738483,
+            3741561,
+            6006201,
+            3743278,
+            3743310,
+            3741203,
+            3762743,
+            3747416,
+            3743624,
+            3742904,
+            3751978
+        ]
+    },
+    "name": "E. Playing with String",
+    "statement": "Two people play the following string game. Initially the players have\r\ngot some string . The players move in turns, the player who cannot make\r\na move loses. Before the game began, the string is written on a piece of\r\npaper, one letter per cell. A player\u2019s move is the sequence of actions:\r\nThe player chooses one of the available pieces of paper with some string\r\nwritten on it. Let\u2019s denote it is . Note that initially, only one piece\r\nof paper is available. The player chooses in the string character in\r\nposition such that for some positive integer the following equations\r\nhold: , , ..., . Player cuts the cell with the chosen character. As a\r\nresult of the operation, he gets three new pieces of paper, the first\r\none will contain string , the second one will contain a string\r\nconsisting of a single character , the third one contains string . Your\r\ntask is to determine the winner provided that both players play\r\noptimally well. If the first player wins, find the position of character\r\nthat is optimal to cut in his first move. If there are multiple\r\npositions, print the minimal possible one.\r\n",
+    "solutions": [
+        "/*\n* Problem: \n* Author: Leo Yu\n* Time: \n* State: SOLVED\n* Memo: \n*/\n#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cmath>\n#include <iostream>\n#include <algorithm>\n#include <ctime>\n#include <vector>\n#include <queue>\n#include <set>\n#include <map>\nusing namespace std;\ntypedef long long LL;\ninline int\tread()\n{\n\tint x = 0; char ch = getchar(); bool positive = 1;\n\tfor (; ch < '0' || ch > '9'; ch = getchar())\tif (ch == '-')  positive = 0;\n\tfor (; ch >= '0' && ch <= '9'; ch = getchar())\tx = x * 10 + ch - '0';\n\treturn positive ? x : -x;\n}\n#define link Link\n\nint N;\nchar\ta[5005];\nint\tf[5005], mex[5005];\n\ninline bool\tcheck()\n{\n\tint now = 0, ans = 0;\n\tfor (int i = 1; i <= N; ++ i)\n\t{\n\t\tif (a[i - 1] == a[i + 1] && a[i] != '$')\t++ now;\n\t\telse\n\t\t{\n\t\t\tans ^= f[now];\n\t\t\tnow = 0;\n\t\t}\n\t}\n\treturn ans == 0;\n}\n\nint main()\n{\n#ifndef ONLINE_JUDGE\n\tfreopen(\"a.in\", \"r\", stdin);\n\tfreopen(\"a.out\", \"w\", stdout);\n#endif\n\n\tscanf(\"%s\", a + 1);\n\tN = strlen(a + 1);\n\tf[0] = 0;\n\tfor (int i = 1; i <= N; ++ i)\n\t{\n\t\tfor (int j = 1; j <= i; ++ j)\n\t\t\tmex[f[max(j - 1 - 1, 0)] ^ f[max(i - j - 1, 0)]] = i;\n\t\tfor (int j = 0; ; ++ j)\n\t\t\tif (mex[j] != i)\n\t\t\t{\n\t\t\t\tf[i] = j;\n\t\t\t\tbreak;\n\t\t\t}\n\t}\n\ta[0] = '#', a[N + 1] = '%';\n\tfor (int i = 1; i <= N; ++ i)\tif (a[i - 1] == a[i + 1])\n\t{\n\t\tchar ori = a[i];\n\t\ta[i] = '$';\n\t\t\n\t\tif (check())\n\t\t{\n\t\t\tprintf(\"First\\n%d\\n\", i);\n\t\t\treturn 0;\n\t\t}\n\t\t\n\t\ta[i] = ori;\n\t}\n\tprintf(\"Second\\n\");\n\n\treturn 0;\n}\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "games"
+    ],
+    "dificulty": "2300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Playing with String.json",
+    "editorial_link": "https://codeforces.com/blog/entry/7712",
+    "editorial": "Let\u00e2\u0080\u0099s consider substring of , that all characters from to are palindrome\r\ncenters, and are not. Every such substring can be treated independently\r\nfrom the others, and as we don\u00e2\u0080\u0099t need to know it\u00e2\u0080\u0099sstructure let\u00e2\u0080\u0099s\r\nconsider only it length . Let\u00e2\u0080\u0099s calculate Grundy function. If we want to\r\ncut character at position then our game splits in to independent ones:\r\nfirst will have length , second , as and are not centers of palindrome\r\nany more. Solution\r\n"
+}

@@ -1,1 +1,103 @@
-{"link": "https://codeforces.com//contest/260/problem/C", "problemId": "2467", "problem_idx": "C", "shortId": "260C", "contest_number": "260", "problem_submissions": {"E": [2841488], "B": [2838739, 2837191, 2837768, 2838150, 2837744, 2838786, 2837047, 2839010, 2837833, 2838337, 2844158, 2838983, 2837520, 2838783, 2837827, 2837919, 2837792], "C": [2837179, 2838563, 2839071, 2839576, 2840298, 2840963, 2838247, 2841633, 2838738, 2839728, 2840997, 2840780, 2840234, 2841680, 2838985, 2837535, 2840027, 2839622, 2839935], "A": [2836127, 2836200, 2836494, 2836347, 2836171, 2836837, 2836322, 2836732, 2836174, 2844801, 2836481, 2836407, 2837519, 2836145, 2836199, 2840135, 2836459, 2836219], "D": [2839564, 2841151, 2841269, 2843347, 2843581, 2843906, 2843880, 2840859, 2843218, 2849694, 2842890, 2847485]}, "name": "C. Balls and Boxes", "statement": "Little Vasya had boxes with balls in the room. The boxes stood in a row\r\nand were numbered with numbers from 1 to from left to right.Once Vasya\r\nchose one of the boxes, let\u2019s assume that its number is , took all balls\r\nout from it (it is guaranteed that this box originally had at least one\r\nball), and began putting balls (one at a time) to the boxes with numbers\r\n, , and so on. If Vasya puts a ball into the box number , then the next\r\nball goes to box , the next one goes to box and so on. He did it until\r\nhe had no balls left in his hands. It is possible that Vasya puts\r\nmultiple balls to the same box, and it is also possible that one or more\r\nballs will go to the box number . If , Vasya puts the first ball into\r\nthe box number , then the next ball goes to box and so on. For example,\r\nlet\u2019s suppose that initially Vasya had four boxes, and the first box had\r\nballs, the second one had , the third one had and the fourth one had\r\nballs. Then, if , then Vasya will take all five balls out of the third\r\nbox and put them in the boxes with numbers: . After all Vasya\u2019s actions\r\nthe balls will lie in the boxes as follows: in the first box there are\r\nballs, in the second one, in the third one and in the fourth one.At this\r\npoint Vasya has completely forgotten the original arrangement of the\r\nballs in the boxes, but he knows how they are arranged now, and the\r\nnumber the number of the box, where he put the last of the taken out\r\nballs.He asks you to help to find the initial arrangement of the balls\r\nin the boxes.\r\n", "solutions": ["//program 260-C\n\n#include<iostream>\n#include<cstdio>\n#include<cstdlib>\n#include<cstring>\n#include<algorithm>\n\nusing namespace std;\n\nint main()\n{\n  int N,K;\n  scanf(\"%d%d\",&N,&K);\n  K--;\n  static long long A[100000];\n  for(int i=0;i<N;i++)\n    cin>>A[i];\n  int Min=1000000001,Best;\n  for(int i=0,j=K;i<N;i++)\n    {\n      if(A[j]<Min)\n        {\n          Min=A[j];\n          Best=j;\n        }\n      j--;\n      if(j<0)\n        j+=N;\n    }\n  if(Best<=K)\n    {\n      for(int i=Best+1;i<=K;i++)\n        {\n          A[i]-=Min+1;\n          A[Best]+=Min+1;\n        }\n      for(int i=0;i<Best;i++)\n        {\n          A[i]-=Min;\n          A[Best]+=Min;\n        }\n      for(int i=K+1;i<N;i++)\n        {\n          A[i]-=Min;\n          A[Best]+=Min;\n        }\n    }\n  else\n    {\n      for(int i=0;i<=K;i++)\n        {\n          A[i]-=Min+1;\n          A[Best]+=Min+1;\n        }\n      for(int i=K+1;i<Best;i++)\n        {\n          A[i]-=Min;\n          A[Best]+=Min;\n        }\n      for(int i=Best+1;i<N;i++)\n        {\n          A[i]-=Min+1;\n          A[Best]+=Min+1;\n        }\n    }\n  for(int i=0;i<N;i++)\n    {\n      cout<<A[i];\n      putchar((i+1==N)?'\\n':' ');\n    }\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["constructive algorithms", "greedy", "implementation"], "dificulty": "1700", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/260/problem/C",
+    "problemId": "2467",
+    "problem_idx": "C",
+    "shortId": "260C",
+    "contest_number": "260",
+    "problem_submissions": {
+        "E": [
+            2841488
+        ],
+        "B": [
+            2838739,
+            2837191,
+            2837768,
+            2838150,
+            2837744,
+            2838786,
+            2837047,
+            2839010,
+            2837833,
+            2838337,
+            2844158,
+            2838983,
+            2837520,
+            2838783,
+            2837827,
+            2837919,
+            2837792
+        ],
+        "C": [
+            2837179,
+            2838563,
+            2839071,
+            2839576,
+            2840298,
+            2840963,
+            2838247,
+            2841633,
+            2838738,
+            2839728,
+            2840997,
+            2840780,
+            2840234,
+            2841680,
+            2838985,
+            2837535,
+            2840027,
+            2839622,
+            2839935
+        ],
+        "A": [
+            2836127,
+            2836200,
+            2836494,
+            2836347,
+            2836171,
+            2836837,
+            2836322,
+            2836732,
+            2836174,
+            2844801,
+            2836481,
+            2836407,
+            2837519,
+            2836145,
+            2836199,
+            2840135,
+            2836459,
+            2836219
+        ],
+        "D": [
+            2839564,
+            2841151,
+            2841269,
+            2843347,
+            2843581,
+            2843906,
+            2843880,
+            2840859,
+            2843218,
+            2849694,
+            2842890,
+            2847485
+        ]
+    },
+    "name": "C. Balls and Boxes",
+    "statement": "Little Vasya had boxes with balls in the room. The boxes stood in a row\r\nand were numbered with numbers from 1 to from left to right.Once Vasya\r\nchose one of the boxes, let\u2019s assume that its number is , took all balls\r\nout from it (it is guaranteed that this box originally had at least one\r\nball), and began putting balls (one at a time) to the boxes with numbers\r\n, , and so on. If Vasya puts a ball into the box number , then the next\r\nball goes to box , the next one goes to box and so on. He did it until\r\nhe had no balls left in his hands. It is possible that Vasya puts\r\nmultiple balls to the same box, and it is also possible that one or more\r\nballs will go to the box number . If , Vasya puts the first ball into\r\nthe box number , then the next ball goes to box and so on. For example,\r\nlet\u2019s suppose that initially Vasya had four boxes, and the first box had\r\nballs, the second one had , the third one had and the fourth one had\r\nballs. Then, if , then Vasya will take all five balls out of the third\r\nbox and put them in the boxes with numbers: . After all Vasya\u2019s actions\r\nthe balls will lie in the boxes as follows: in the first box there are\r\nballs, in the second one, in the third one and in the fourth one.At this\r\npoint Vasya has completely forgotten the original arrangement of the\r\nballs in the boxes, but he knows how they are arranged now, and the\r\nnumber the number of the box, where he put the last of the taken out\r\nballs.He asks you to help to find the initial arrangement of the balls\r\nin the boxes.\r\n",
+    "solutions": [
+        "//program 260-C\n\n#include<iostream>\n#include<cstdio>\n#include<cstdlib>\n#include<cstring>\n#include<algorithm>\n\nusing namespace std;\n\nint main()\n{\n  int N,K;\n  scanf(\"%d%d\",&N,&K);\n  K--;\n  static long long A[100000];\n  for(int i=0;i<N;i++)\n    cin>>A[i];\n  int Min=1000000001,Best;\n  for(int i=0,j=K;i<N;i++)\n    {\n      if(A[j]<Min)\n        {\n          Min=A[j];\n          Best=j;\n        }\n      j--;\n      if(j<0)\n        j+=N;\n    }\n  if(Best<=K)\n    {\n      for(int i=Best+1;i<=K;i++)\n        {\n          A[i]-=Min+1;\n          A[Best]+=Min+1;\n        }\n      for(int i=0;i<Best;i++)\n        {\n          A[i]-=Min;\n          A[Best]+=Min;\n        }\n      for(int i=K+1;i<N;i++)\n        {\n          A[i]-=Min;\n          A[Best]+=Min;\n        }\n    }\n  else\n    {\n      for(int i=0;i<=K;i++)\n        {\n          A[i]-=Min+1;\n          A[Best]+=Min+1;\n        }\n      for(int i=K+1;i<Best;i++)\n        {\n          A[i]-=Min;\n          A[Best]+=Min;\n        }\n      for(int i=Best+1;i<N;i++)\n        {\n          A[i]-=Min+1;\n          A[Best]+=Min+1;\n        }\n    }\n  for(int i=0;i<N;i++)\n    {\n      cout<<A[i];\n      putchar((i+1==N)?'\\n':' ');\n    }\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "greedy",
+        "implementation"
+    ],
+    "dificulty": "1700",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Balls and Boxes.json",
+    "editorial_link": "https://codeforces.com//blog/entry/6263",
+    "editorial": "Firstly describe simple solution. We will get by one ball from boxes (we\r\nbegin from box ) from right to left (action back). At some moment there\r\nwill be balls in current box. This box is the first box in our initial\r\nproblem (from which we took all balls and begun to put). In this box we\r\nput all balls, which we get from all boxes. But we can t solve the\r\nproblem in such a way, because it is too long. Note, that before we meet\r\nthe situation when in some box will be balls, we will go through every\r\nelement of array several times and subtract . So we can make our\r\nsolution faster. We can subtract from every element of array , where\r\nminimum in array. After that you should do operations, that were\r\nmentioned above.\r\n"
+}

@@ -1,1 +1,97 @@
-{"link": "https://codeforces.com//contest/138/problem/E", "problemId": "736", "problem_idx": "E", "shortId": "138E", "contest_number": "138", "problem_submissions": {"D": [980256, 979660, 979865, 981459, 981782, 980490, 980859, 981836, 980983, 981220, 982093], "C": [977164, 977134, 978135, 978148, 979334, 977388, 977560, 980285, 976404, 978363, 977955, 977707, 978190, 978555, 976840, 982255, 978719], "B": [976212, 977359, 976881, 978412, 978151, 981022, 984515, 979243, 978060, 990834, 976636, 980026, 976613, 976894, 979990, 982256, 976694], "A": [975301, 975042, 975181, 979365, 975615, 980600, 975885, 975355, 975294, 974907, 975053, 982540, 975212, 975316, 978556], "E": [984982]}, "name": "E. Hellish Constraints", "statement": "Katya recently started to invent programming tasks and prepare her own\r\ncontests. What she does not like is boring and simple constraints. Katya\r\nis fed up with all those \" does not exceed a thousand\" and \"the sum of\r\ndoes not exceed a million\" and she decided to come up with something a\r\nlittle more complicated.The last problem written by Katya deals with\r\nstrings. The input is a string of small Latin letters. To make the\r\nstatement longer and strike terror into the people who will solve the\r\ncontest, Katya came up with the following set of restrictions of the\r\nsame type (characters in restrictions can be repeated and some\r\nrestrictions may contradict each other): The number of characters in a\r\nstring is not less than and not more than . ... The number of characters\r\nin a string is not less than and not more than . ... The number of\r\ncharacters in a string is not less than and not more than . However,\r\nhaving decided that it is too simple and obvious, Katya added the\r\nfollowing condition: a string meets no less than and not more than\r\nconstraints from the above given list.Katya does not like to compose\r\ndifficult and mean tests, so she just took a big string and wants to add\r\nto the tests all its substrings that meet the constraints. However,\r\nKatya got lost in her conditions and asked you to count the number of\r\nsubstrings of the string that meet the conditions (each occurrence of\r\nthe substring is counted separately).\r\n", "solutions": ["#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cmath>\n#include <cassert>\n#include <algorithm>\n#include <string>\n#include <vector>\n\nusing namespace std;\n\n#define eprintf(...) fprintf(stderr, __VA_ARGS__)\n#define pb push_back\n#define mp make_pair\n#define sz(x) ((int)(x).size())\n\ntypedef long long ll;\ntypedef vector<ll> vll;\ntypedef vector<int> vi;\ntypedef vector<vi> vvi;\ntypedef vector<bool> vb;\ntypedef vector<vb> vvb;\ntypedef pair<int, int> pii;\n\nconst int MAXL = 1e6;\nchar s[MAXL + 1];\n\nint main() {\n  #ifdef DEBUG\n  freopen(\"std.in\", \"r\", stdin);\n  freopen(\"std.out\", \"w\", stdout);\n  #endif\n\n  int k, L, R;\n  while (scanf(\"%s%d%d%d\", s, &k, &L, &R) >= 1) {\n    k *= 2;\n    vector<char> cs(k);\n    vi mivs(k), ks(k);\n    for (int i = 0; i < k;) {\n      int l, r;\n      scanf(\" %c%d%d\", &cs[i], &l, &r), cs[i];\n      mivs[i] = r + 1; ks[i] = -1;\n      i++;\n\n      cs[i] = cs[i - 1];\n      mivs[i] = l; ks[i] = 1;\n      i++;\n    }\n    int n = strlen(s);\n\n    vvi poses(128);\n    vi pid(n);\n    for (int i = n - 1; i >= 0; i--) {\n      int c = s[i];\n      pid[i] = sz(poses[c]);\n      poses[c].pb(i);\n    }\n\n    int zcnt = 0;\n    for (int i = 0; i < k; i++)\n      if (mivs[i] == 0)\n        zcnt += ks[i];\n\n    vi cnt(n, zcnt);\n    int ccnt = 0;\n    ll ans = 0;\n    for (int st = n - 1; st >= 0; st--) {\n      int c = s[st];\n//      eprintf(\"st=%d: %c; cnt=%d\\n\", st, c, cnt[st]);\n\n      if (L <= cnt[st] && cnt[st] <= R)\n        ccnt++;\n\n      for (int i = 0; i < k; i++) if (cs[i] == c && mivs[i] >= 1 && mivs[i] <= pid[st] + 1) {\n//        eprintf(\"  cond: >=%d, k=%d\\n\", mivs[i], ks[i]);\n        int npid = pid[st] - mivs[i] + 1;\n        assert(npid >= 0);\n        int l = poses[c][npid];\n        int r = npid > 0 ? poses[c][npid - 1] : n;\n//        eprintf(\"  l=%d, r=%d\\n\", l, r);\n\n        assert(st <= l && l <= r && r <= n);\n        for (int i2 = l; i2 < r; i2++) {\n          bool ov = L <= cnt[i2] && cnt[i2] <= R;\n          cnt[i2] += ks[i];\n//          eprintf(\"  cnt[%d]=%d\\n\", i2, cnt[i2]);\n          bool nv = L <= cnt[i2] && cnt[i2] <= R;\n          ccnt += ((int)nv - ov);\n        }\n      }\n\n//      eprintf(\" ccnt=%d\\n\", ccnt);\n      ans += ccnt;\n    }\n    printf(\"%I64d\\n\", ans);\n  }\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["brute force", "dp", "two pointers"], "dificulty": "2900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/138/problem/E",
+    "problemId": "736",
+    "problem_idx": "E",
+    "shortId": "138E",
+    "contest_number": "138",
+    "problem_submissions": {
+        "D": [
+            980256,
+            979660,
+            979865,
+            981459,
+            981782,
+            980490,
+            980859,
+            981836,
+            980983,
+            981220,
+            982093
+        ],
+        "C": [
+            977164,
+            977134,
+            978135,
+            978148,
+            979334,
+            977388,
+            977560,
+            980285,
+            976404,
+            978363,
+            977955,
+            977707,
+            978190,
+            978555,
+            976840,
+            982255,
+            978719
+        ],
+        "B": [
+            976212,
+            977359,
+            976881,
+            978412,
+            978151,
+            981022,
+            984515,
+            979243,
+            978060,
+            990834,
+            976636,
+            980026,
+            976613,
+            976894,
+            979990,
+            982256,
+            976694
+        ],
+        "A": [
+            975301,
+            975042,
+            975181,
+            979365,
+            975615,
+            980600,
+            975885,
+            975355,
+            975294,
+            974907,
+            975053,
+            982540,
+            975212,
+            975316,
+            978556
+        ],
+        "E": [
+            984982
+        ]
+    },
+    "name": "E. Hellish Constraints",
+    "statement": "Katya recently started to invent programming tasks and prepare her own\r\ncontests. What she does not like is boring and simple constraints. Katya\r\nis fed up with all those \" does not exceed a thousand\" and \"the sum of\r\ndoes not exceed a million\" and she decided to come up with something a\r\nlittle more complicated.The last problem written by Katya deals with\r\nstrings. The input is a string of small Latin letters. To make the\r\nstatement longer and strike terror into the people who will solve the\r\ncontest, Katya came up with the following set of restrictions of the\r\nsame type (characters in restrictions can be repeated and some\r\nrestrictions may contradict each other): The number of characters in a\r\nstring is not less than and not more than . ... The number of characters\r\nin a string is not less than and not more than . ... The number of\r\ncharacters in a string is not less than and not more than . However,\r\nhaving decided that it is too simple and obvious, Katya added the\r\nfollowing condition: a string meets no less than and not more than\r\nconstraints from the above given list.Katya does not like to compose\r\ndifficult and mean tests, so she just took a big string and wants to add\r\nto the tests all its substrings that meet the constraints. However,\r\nKatya got lost in her conditions and asked you to count the number of\r\nsubstrings of the string that meet the conditions (each occurrence of\r\nthe substring is counted separately).\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cmath>\n#include <cassert>\n#include <algorithm>\n#include <string>\n#include <vector>\n\nusing namespace std;\n\n#define eprintf(...) fprintf(stderr, __VA_ARGS__)\n#define pb push_back\n#define mp make_pair\n#define sz(x) ((int)(x).size())\n\ntypedef long long ll;\ntypedef vector<ll> vll;\ntypedef vector<int> vi;\ntypedef vector<vi> vvi;\ntypedef vector<bool> vb;\ntypedef vector<vb> vvb;\ntypedef pair<int, int> pii;\n\nconst int MAXL = 1e6;\nchar s[MAXL + 1];\n\nint main() {\n  #ifdef DEBUG\n  freopen(\"std.in\", \"r\", stdin);\n  freopen(\"std.out\", \"w\", stdout);\n  #endif\n\n  int k, L, R;\n  while (scanf(\"%s%d%d%d\", s, &k, &L, &R) >= 1) {\n    k *= 2;\n    vector<char> cs(k);\n    vi mivs(k), ks(k);\n    for (int i = 0; i < k;) {\n      int l, r;\n      scanf(\" %c%d%d\", &cs[i], &l, &r), cs[i];\n      mivs[i] = r + 1; ks[i] = -1;\n      i++;\n\n      cs[i] = cs[i - 1];\n      mivs[i] = l; ks[i] = 1;\n      i++;\n    }\n    int n = strlen(s);\n\n    vvi poses(128);\n    vi pid(n);\n    for (int i = n - 1; i >= 0; i--) {\n      int c = s[i];\n      pid[i] = sz(poses[c]);\n      poses[c].pb(i);\n    }\n\n    int zcnt = 0;\n    for (int i = 0; i < k; i++)\n      if (mivs[i] == 0)\n        zcnt += ks[i];\n\n    vi cnt(n, zcnt);\n    int ccnt = 0;\n    ll ans = 0;\n    for (int st = n - 1; st >= 0; st--) {\n      int c = s[st];\n//      eprintf(\"st=%d: %c; cnt=%d\\n\", st, c, cnt[st]);\n\n      if (L <= cnt[st] && cnt[st] <= R)\n        ccnt++;\n\n      for (int i = 0; i < k; i++) if (cs[i] == c && mivs[i] >= 1 && mivs[i] <= pid[st] + 1) {\n//        eprintf(\"  cond: >=%d, k=%d\\n\", mivs[i], ks[i]);\n        int npid = pid[st] - mivs[i] + 1;\n        assert(npid >= 0);\n        int l = poses[c][npid];\n        int r = npid > 0 ? poses[c][npid - 1] : n;\n//        eprintf(\"  l=%d, r=%d\\n\", l, r);\n\n        assert(st <= l && l <= r && r <= n);\n        for (int i2 = l; i2 < r; i2++) {\n          bool ov = L <= cnt[i2] && cnt[i2] <= R;\n          cnt[i2] += ks[i];\n//          eprintf(\"  cnt[%d]=%d\\n\", i2, cnt[i2]);\n          bool nv = L <= cnt[i2] && cnt[i2] <= R;\n          ccnt += ((int)nv - ov);\n        }\n      }\n\n//      eprintf(\" ccnt=%d\\n\", ccnt);\n      ans += ccnt;\n    }\n    printf(\"%I64d\\n\", ans);\n  }\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "dp",
+        "two pointers"
+    ],
+    "dificulty": "2900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\E. Hellish Constraints.json",
+    "editorial_link": "https://codeforces.com//blog/entry/3462",
+    "editorial": "Let's start with the case when we have only one constriction - \"c l r\". For a string s let's count an array A with a length equal to s's. A[i]?=?1 if the suffix of s starting at position i satisfies the condition, and A[i]?=?0 otherwise.\n\nSo, we have s and already counted A. What happens if we write another symbol c' at the of s? Let s'?=?s?+?c', A'?=?A(s').\n\nIf c'???c, than the part of A' corresponding to everything beside the last symbol does not change. The last element is 1 or 0 depending on the condition (it's easy to count).\n\nIf c'?=?c, some elements of A might change. Let's denote the i-th occurence of c in s' counting from the end as pi(c) (symbols and occurences are enumerated from 1). If there are less then i occurences, pi(c)?=?0.\n\nIt's easy to see that elements from A'[pl?+?1(c)?+?1..pl(c)] are incremented by 1, and elements from A'[pr?+?2(c)?+?1..pr?+?1(c)] are decremented by 1. It's also clear that as we add the symbols these invervals won't intersect for l and r separately (that is, every A[i] will be incremented and decremented not more than one time each).\n\nNow we can have more then one constriction. We count B[i] as the number of constrictions the suffix starting at i-th position satisfies. Clearly, B[i] is the sum of A[i]'s for all constrictions. Also, we support the variable C - number of i-s that satisfy L???B[i]???R.\n\nSimilarly, we add symbols one after another and change B[i]. To do that, we must consider all the constrictions concerning new symbols and change the numbers in the intervals mentioned above. Changing the numbers is just iterating over symbols in the mentioned intervals and incrementing/decrementing B[i]'s (this procedure also lets us to support C effectively). As the intervals for each constriction do not intersect, we will not change any B[i] more than twice for each constriction, so the number of operations concerning any constriction is O(n), giving total number of operations O(nk). To get the answer, we just sum up C's states after adding every symbol (as every substring will be a suffix of some prefix exactly one time).\n\nTo find borders of every interval used (in which the B[i]'s are changed) we can enumerate all occurences of every symbols and count the borders easily, knowing how many times every symbol occured. The other way to do that is to keep two pointers for each constriction, showing where last intervals ended. On the next occurence we move these pointers to next occurences of corresponding symbol (however, we need to handle the case when not enough symbols have occured to changed B)."
+}

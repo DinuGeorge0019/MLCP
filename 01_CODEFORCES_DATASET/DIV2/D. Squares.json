@@ -1,1 +1,95 @@
-{"link": "https://codeforces.com//contest/124/problem/D", "problemId": "660", "problem_idx": "D", "shortId": "124D", "contest_number": "124", "problem_submissions": {"D": [830516, 831052, 830260, 830876, 831073, 831039, 830521, 831685, 831637, 830707, 830117, 831656, 831924, 830160], "C": [829966, 828434, 832481, 830195, 830289, 830286, 831243, 829787, 830553, 831437, 830908, 830422, 830664, 830957], "B": [828282, 830142, 828624, 828524, 828126, 828773, 828303, 828596, 828124, 828824, 831632, 829528, 828350, 831819], "A": [826975, 827420, 827298, 826788, 826903, 827255, 826640, 827252, 826692, 827048, 828119, 827326, 826716, 828544], "E": [831333, 875691, 838710]}, "name": "D. Squares", "statement": "You are given an infinite checkered field. You should get from a square\r\n(; ) to a square (; ). Using the shortest path is not necessary. You can\r\nmove on the field squares in four directions. That is, when you are\r\npositioned in any square, you can move to any other side-neighboring\r\none. A square (; ) is considered bad, if at least one of the two\r\nconditions is fulfilled: , . Your task is to find the minimum number of\r\nbad cells one will have to visit on the way from (; ) to (; ).\r\n", "solutions": ["#include <iostream>\n#include <cmath>\n#include <algorithm>\nusing namespace std;\ntypedef long long int64;\nconst int64 INT_MAX = 0x7fffffff;\nint main(void) {\n  int64 a, b, x1, y1, x2, y2;\n  while (cin >> a >> b >> x1 >> y1 >> x2 >> y2) {\n    cerr << ((x1 + y1) / (2 * a)) << \" \" << ((x2 + y2) / (2 * a)) << \" - \";\n    cerr << ((x1 - y1) / (2 * b)) << \" \" << ((x2 - y2) / (2 * b)) << \"\\n\";\n    int a1 = (x1 + y1) / (2 * a), a2 = (x2 + y2) / (2 * a);\n    int b1 = (x1 - y1) / (2 * b), b2 = (x2 - y2) / (2 * b);\n    if (x1 + y1 < 0 && (x1 + y1) % (2 * a)) { --a1; }\n    if (x2 + y2 < 0 && (x2 + y2) % (2 * a)) { --a2; }\n    if (x1 - y1 < 0 && (x1 - y1) % (2 * b)) { --b1; }\n    if (x2 - y2 < 0 && (x2 - y2) % (2 * b)) { --b2; }\n    const int cross_a = abs(a1 - a2), cross_b = abs(b1 - b2);\n    cout << max(cross_a, cross_b) << \"\\n\";\n  }\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["brute force", "constructive algorithms", "number theory"], "dificulty": "1800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/124/problem/D",
+    "problemId": "660",
+    "problem_idx": "D",
+    "shortId": "124D",
+    "contest_number": "124",
+    "problem_submissions": {
+        "D": [
+            830516,
+            831052,
+            830260,
+            830876,
+            831073,
+            831039,
+            830521,
+            831685,
+            831637,
+            830707,
+            830117,
+            831656,
+            831924,
+            830160
+        ],
+        "C": [
+            829966,
+            828434,
+            832481,
+            830195,
+            830289,
+            830286,
+            831243,
+            829787,
+            830553,
+            831437,
+            830908,
+            830422,
+            830664,
+            830957
+        ],
+        "B": [
+            828282,
+            830142,
+            828624,
+            828524,
+            828126,
+            828773,
+            828303,
+            828596,
+            828124,
+            828824,
+            831632,
+            829528,
+            828350,
+            831819
+        ],
+        "A": [
+            826975,
+            827420,
+            827298,
+            826788,
+            826903,
+            827255,
+            826640,
+            827252,
+            826692,
+            827048,
+            828119,
+            827326,
+            826716,
+            828544
+        ],
+        "E": [
+            831333,
+            875691,
+            838710
+        ]
+    },
+    "name": "D. Squares",
+    "statement": "You are given an infinite checkered field. You should get from a square\r\n(; ) to a square (; ). Using the shortest path is not necessary. You can\r\nmove on the field squares in four directions. That is, when you are\r\npositioned in any square, you can move to any other side-neighboring\r\none. A square (; ) is considered bad, if at least one of the two\r\nconditions is fulfilled: , . Your task is to find the minimum number of\r\nbad cells one will have to visit on the way from (; ) to (; ).\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <cmath>\n#include <algorithm>\nusing namespace std;\ntypedef long long int64;\nconst int64 INT_MAX = 0x7fffffff;\nint main(void) {\n  int64 a, b, x1, y1, x2, y2;\n  while (cin >> a >> b >> x1 >> y1 >> x2 >> y2) {\n    cerr << ((x1 + y1) / (2 * a)) << \" \" << ((x2 + y2) / (2 * a)) << \" - \";\n    cerr << ((x1 - y1) / (2 * b)) << \" \" << ((x2 - y2) / (2 * b)) << \"\\n\";\n    int a1 = (x1 + y1) / (2 * a), a2 = (x2 + y2) / (2 * a);\n    int b1 = (x1 - y1) / (2 * b), b2 = (x2 - y2) / (2 * b);\n    if (x1 + y1 < 0 && (x1 + y1) % (2 * a)) { --a1; }\n    if (x2 + y2 < 0 && (x2 + y2) % (2 * a)) { --a2; }\n    if (x1 - y1 < 0 && (x1 - y1) % (2 * b)) { --b1; }\n    if (x2 - y2 < 0 && (x2 - y2) % (2 * b)) { --b2; }\n    const int cross_a = abs(a1 - a2), cross_b = abs(b1 - b2);\n    cout << max(cross_a, cross_b) << \"\\n\";\n  }\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "constructive algorithms",
+        "number theory"
+    ],
+    "dificulty": "1800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Squares.json",
+    "editorial_link": "https://codeforces.com//blog/entry/3047",
+    "editorial": "Let's turn the field on 45o transforming cells coordinates (x,?y) in (x?+?y,?x?-?y). Then the cell (x,?y) will be bad if one of the conditions occurs x???0 (mod 2a) or y???0 (mod 2b). So good cells will be divided into sectors by vertical and horizontal lines. For each sector, it is possible to determine the coordinates of a pair of numbers, the first number that will rise during the transition to the next right sector, and the second pair number will increase during the transition to the next upper sector. From the sector with coordinates (x,?y) can go to any nearby on the side of the sector, visiting at least one bad cell, ie in (x?-?1,?y), (x?+?1,?y), (x,?y?-?1) and (x,?y?+?1). Since the numbers 2a and 2b have the same parity, then from the sector (x,?y) can also go to the sector on the diagonal, and visiting a bad cell, ie in (x?-?1,?y?+?1), (x?+?1,?y?-?1), (x?-?1,?y?-?1) and (x?+?1,?y?+?1). Then it turns out that the minimum number of bad cells, which should be visited on the way out of from the sector (x1,?y1) to sector of (x2,?y2) equals max(|x1?-?x2|,?|y1?-?y2|).\nLet's transform the coordinates of the initial and final cells as described rule above. Then find sectors which contain our cells and calculate answer with formula above."
+}

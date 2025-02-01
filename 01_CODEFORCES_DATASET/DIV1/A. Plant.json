@@ -1,1 +1,79 @@
-{"link": "https://codeforces.com//contest/185/problem/A", "problemId": "1295", "problem_idx": "A", "shortId": "185A", "contest_number": "185", "problem_submissions": {"D": [1656258, 1657906, 1659029, 1659582, 1660143, 1660140, 1660650, 1660397, 1660794, 1660341, 1662000, 1661960, 1662031], "B": [1654760, 1653010, 1654904, 1655366, 1655062, 1655668, 1653656, 1655096, 1656068, 1655208, 1655477, 1655121, 1654374, 1656299, 1655431, 1655895], "A": [1652795, 1653595, 1652830, 1652854, 1654056, 1653415, 1652909, 1653006, 1653418, 1653729, 1653004, 1653330, 1652743, 1653797, 1652848, 1652763], "E": [1660675, 140398754]}, "name": "A. Plant", "statement": "Dwarfs have planted a very interesting plant, which is a triangle\r\ndirected \"upwards\". This plant has an amusing feature. After one year a\r\ntriangle plant directed \"upwards\" divides into four triangle plants:\r\nthree of them will point \"upwards\" and one will point \"downwards\". After\r\nanother year, each triangle plant divides into four triangle plants:\r\nthree of them will be directed in the same direction as the parent\r\nplant, and one of them will be directed in the opposite direction. Then\r\neach year the process repeats. The figure below illustrates this\r\nprocess. Help the dwarfs find out how many triangle plants that point\r\n\"upwards\" will be in years.\r\n", "solutions": ["#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <set>\n#include <map>\n#include <algorithm>\n#include <functional>\n#include <utility>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstdio>\n\nusing namespace std;\n\n#define REP(i,n) for((i)=0;(i)<(int)(n);(i)++)\n#define foreach(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n\ntypedef long long ll;\n#define MOD 1000000007ll\n\nll power(ll n){\n    if(n == 0) return 1;\n    ll ans = power(n/2);\n    return ans * ans % MOD * ((n%2 == 1) ? 2 : 1) % MOD;\n}\n\nint main(void){\n    ll n;\n    \n    cin >> n;\n    ll t = power(n);\n    ll ans = t * (t + 1) % MOD * ((MOD + 1) / 2) % MOD;\n    cout << ans << endl;\n    \n    return 0;\n}\n"], "input": "", "output": "", "tags": ["math"], "dificulty": "1300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/185/problem/A",
+    "problemId": "1295",
+    "problem_idx": "A",
+    "shortId": "185A",
+    "contest_number": "185",
+    "problem_submissions": {
+        "D": [
+            1656258,
+            1657906,
+            1659029,
+            1659582,
+            1660143,
+            1660140,
+            1660650,
+            1660397,
+            1660794,
+            1660341,
+            1662000,
+            1661960,
+            1662031
+        ],
+        "B": [
+            1654760,
+            1653010,
+            1654904,
+            1655366,
+            1655062,
+            1655668,
+            1653656,
+            1655096,
+            1656068,
+            1655208,
+            1655477,
+            1655121,
+            1654374,
+            1656299,
+            1655431,
+            1655895
+        ],
+        "A": [
+            1652795,
+            1653595,
+            1652830,
+            1652854,
+            1654056,
+            1653415,
+            1652909,
+            1653006,
+            1653418,
+            1653729,
+            1653004,
+            1653330,
+            1652743,
+            1653797,
+            1652848,
+            1652763
+        ],
+        "E": [
+            1660675,
+            140398754
+        ]
+    },
+    "name": "A. Plant",
+    "statement": "Dwarfs have planted a very interesting plant, which is a triangle\r\ndirected \"upwards\". This plant has an amusing feature. After one year a\r\ntriangle plant directed \"upwards\" divides into four triangle plants:\r\nthree of them will point \"upwards\" and one will point \"downwards\". After\r\nanother year, each triangle plant divides into four triangle plants:\r\nthree of them will be directed in the same direction as the parent\r\nplant, and one of them will be directed in the opposite direction. Then\r\neach year the process repeats. The figure below illustrates this\r\nprocess. Help the dwarfs find out how many triangle plants that point\r\n\"upwards\" will be in years.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <set>\n#include <map>\n#include <algorithm>\n#include <functional>\n#include <utility>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstdio>\n\nusing namespace std;\n\n#define REP(i,n) for((i)=0;(i)<(int)(n);(i)++)\n#define foreach(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n\ntypedef long long ll;\n#define MOD 1000000007ll\n\nll power(ll n){\n    if(n == 0) return 1;\n    ll ans = power(n/2);\n    return ans * ans % MOD * ((n%2 == 1) ? 2 : 1) % MOD;\n}\n\nint main(void){\n    ll n;\n    \n    cin >> n;\n    ll t = power(n);\n    ll ans = t * (t + 1) % MOD * ((MOD + 1) / 2) % MOD;\n    cout << ans << endl;\n    \n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "math"
+    ],
+    "dificulty": "1300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Plant.json",
+    "editorial_link": "https://codeforces.com/blog/entry/4488",
+    "editorial": "Let's propose, that after the i-th year, there is x triangles up and y triangles down. After another iteration we can see, that amount of triangles became \u0097 3x?+?y up and x?+?3y down. Let's see the difference between them: at the i-th it's x?-?y and at the i?+?1-th \u0097 it's (3x?+?y)?-?(x?+?3y)?=?2?*?(x?-?y). We can see, that difference between amount of triangles grown up by 2. Because on the i-th year the difference became 2i and all amount of triangles is 4i. We can see, that on the i-th year the number of our triangles is . That can be computed by modulo p using the fast-power algorithm."
+}

@@ -1,1 +1,107 @@
-{"link": "https://codeforces.com//contest/521/problem/C", "problemId": "23440", "problem_idx": "C", "shortId": "521C", "contest_number": "521", "problem_submissions": {"D": [10114323, 10113689, 10119859, 10119855, 10119796, 10113492, 10113596, 10116089, 10113726, 10114226, 10114023, 10114948, 10114997, 10118008, 10116808, 10115969, 10115919, 115640381], "B": [10109892, 10107901, 10108581, 10107819, 10114473, 10108104, 10108433, 10109077, 10107764, 10108790, 10107608, 10107745, 10107578, 10110313, 10108219, 10110179, 10111006], "C": [10109219, 10110415, 10110107, 10111080, 10109986, 10110836, 10111159, 10109138, 10106797, 10109327, 10109438, 10109146, 10106442, 10110202, 10108389, 10108555], "A": [10105003, 10105742, 10105267, 10111233, 10104462, 10105194, 10105511, 10104861, 10104854, 10104826, 10105033, 10104516, 10107256, 10104819, 10105232, 10104822], "E": [10113230, 10117526, 249300397]}, "name": "C. Pluses everywhere", "statement": "Vasya is sitting on an extremely boring math class. To have fun, he took\r\na piece of paper and wrote out numbers on a single line. After that,\r\nVasya began to write out different ways to put pluses (\"\") in the line\r\nbetween certain digits in the line so that the result was a correct\r\narithmetic expression; formally, no two pluses in such a partition can\r\nstand together (between any two adjacent pluses there must be at least\r\none digit), and no plus can stand at the beginning or the end of a line.\r\nFor example, in the string , ways (add no pluses), or are correct, and\r\nways , or are incorrect.The lesson was long, and Vasya has written all\r\nthe correct ways to place exactly pluses in a string of digits. At this\r\npoint, he got caught having fun by a teacher and he was given the task\r\nto calculate the sum of all the resulting arithmetic expressions by the\r\nend of the lesson (when calculating the value of an expression the\r\nleading zeros should be ignored). As the answer can be large, Vasya is\r\nallowed to get only its remainder modulo . Help him!\r\n", "solutions": ["#include<iostream>\n#include<cmath>\n#include<cstring>\n#include<algorithm>\n#include<cstdio>\nusing namespace std;\nint mo=1e9+7,nI[110000],I[110000],n,m;\nchar ch[110000];\nint quick(int k1,int k2){\n    int k3=1;\n    while (k2){\n        if (k2&1) k3=1ll*k3*k1%mo; k1=1ll*k1*k1%mo; k2>>=1;\n    }\n    return k3;\n}\nint C(int k1,int k2){\n    if (k2>k1) return 0;\n    return 1ll*I[k1]*nI[k2]%mo*nI[k1-k2]%mo;\n}\nint main(){\n    scanf(\"%d%d\",&n,&m); scanf(\"%s\",ch+1);\n    if (m==0){\n        int ans=0;\n        for (int i=1;i<=n;i++) ans=(1ll*ans*10+ch[i]-'0')%mo;\n        cout<<ans<<endl; return 0;\n    }\n    for (int i=1;i<=n;i++) nI[i]=quick(i,mo-2); nI[0]=1;\n    for (int i=1;i<=n;i++) nI[i]=1ll*nI[i]*nI[i-1]%mo;\n    I[0]=1; for (int i=1;i<=n;i++) I[i]=1ll*I[i-1]*i%mo;\n    int ans=0,num=0,pre=1;\n    for (int i=n;i;i--){\n        int k1=(num+1ll*pre*C(i-1,m))%mo;\n        ans=(ans+1ll*k1*(ch[i]-'0'))%mo;\n        num=(num+1ll*pre*C(i-2,m-1))%mo; pre=1ll*pre*10%mo;\n    }\n    cout<<ans<<endl;\n    return 0;\n}"], "input": "", "output": "", "tags": ["combinatorics", "dp", "math", "number theory"], "dificulty": "2200", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/521/problem/C",
+    "problemId": "23440",
+    "problem_idx": "C",
+    "shortId": "521C",
+    "contest_number": "521",
+    "problem_submissions": {
+        "D": [
+            10114323,
+            10113689,
+            10119859,
+            10119855,
+            10119796,
+            10113492,
+            10113596,
+            10116089,
+            10113726,
+            10114226,
+            10114023,
+            10114948,
+            10114997,
+            10118008,
+            10116808,
+            10115969,
+            10115919,
+            115640381
+        ],
+        "B": [
+            10109892,
+            10107901,
+            10108581,
+            10107819,
+            10114473,
+            10108104,
+            10108433,
+            10109077,
+            10107764,
+            10108790,
+            10107608,
+            10107745,
+            10107578,
+            10110313,
+            10108219,
+            10110179,
+            10111006
+        ],
+        "C": [
+            10109219,
+            10110415,
+            10110107,
+            10111080,
+            10109986,
+            10110836,
+            10111159,
+            10109138,
+            10106797,
+            10109327,
+            10109438,
+            10109146,
+            10106442,
+            10110202,
+            10108389,
+            10108555
+        ],
+        "A": [
+            10105003,
+            10105742,
+            10105267,
+            10111233,
+            10104462,
+            10105194,
+            10105511,
+            10104861,
+            10104854,
+            10104826,
+            10105033,
+            10104516,
+            10107256,
+            10104819,
+            10105232,
+            10104822
+        ],
+        "E": [
+            10113230,
+            10117526,
+            249300397
+        ]
+    },
+    "name": "C. Pluses everywhere",
+    "statement": "Vasya is sitting on an extremely boring math class. To have fun, he took\r\na piece of paper and wrote out numbers on a single line. After that,\r\nVasya began to write out different ways to put pluses (\"\") in the line\r\nbetween certain digits in the line so that the result was a correct\r\narithmetic expression; formally, no two pluses in such a partition can\r\nstand together (between any two adjacent pluses there must be at least\r\none digit), and no plus can stand at the beginning or the end of a line.\r\nFor example, in the string , ways (add no pluses), or are correct, and\r\nways , or are incorrect.The lesson was long, and Vasya has written all\r\nthe correct ways to place exactly pluses in a string of digits. At this\r\npoint, he got caught having fun by a teacher and he was given the task\r\nto calculate the sum of all the resulting arithmetic expressions by the\r\nend of the lesson (when calculating the value of an expression the\r\nleading zeros should be ignored). As the answer can be large, Vasya is\r\nallowed to get only its remainder modulo . Help him!\r\n",
+    "solutions": [
+        "#include<iostream>\n#include<cmath>\n#include<cstring>\n#include<algorithm>\n#include<cstdio>\nusing namespace std;\nint mo=1e9+7,nI[110000],I[110000],n,m;\nchar ch[110000];\nint quick(int k1,int k2){\n    int k3=1;\n    while (k2){\n        if (k2&1) k3=1ll*k3*k1%mo; k1=1ll*k1*k1%mo; k2>>=1;\n    }\n    return k3;\n}\nint C(int k1,int k2){\n    if (k2>k1) return 0;\n    return 1ll*I[k1]*nI[k2]%mo*nI[k1-k2]%mo;\n}\nint main(){\n    scanf(\"%d%d\",&n,&m); scanf(\"%s\",ch+1);\n    if (m==0){\n        int ans=0;\n        for (int i=1;i<=n;i++) ans=(1ll*ans*10+ch[i]-'0')%mo;\n        cout<<ans<<endl; return 0;\n    }\n    for (int i=1;i<=n;i++) nI[i]=quick(i,mo-2); nI[0]=1;\n    for (int i=1;i<=n;i++) nI[i]=1ll*nI[i]*nI[i-1]%mo;\n    I[0]=1; for (int i=1;i<=n;i++) I[i]=1ll*I[i-1]*i%mo;\n    int ans=0,num=0,pre=1;\n    for (int i=n;i;i--){\n        int k1=(num+1ll*pre*C(i-1,m))%mo;\n        ans=(ans+1ll*k1*(ch[i]-'0'))%mo;\n        num=(num+1ll*pre*C(i-2,m-1))%mo; pre=1ll*pre*10%mo;\n    }\n    cout<<ans<<endl;\n    return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "combinatorics",
+        "dp",
+        "math",
+        "number theory"
+    ],
+    "dificulty": "2200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Pluses everywhere.json",
+    "editorial_link": "https://codeforces.com//blog/entry/16736",
+    "editorial": "Consider some way of placing all the pluses, and a single digit di (digits in the string are numbered starting from 0 from left to right). This digit gives input of di\u00b710l to the total sum, where l is the distance to the nearest plus from the right, or to the end of string if there are no pluses there. If we sum up these quantities for all digits and all ways of placing the pluses, we will obtain the answer.\n\nFor a given digit di and some fixed l, how many ways are there to place the pluses? First of all, consider the case when the part containing the digit di is not last, that is, i?+?l?<?n?-?1. There are n?-?1 gaps to place pluses in total; the constraint about di and the distance l means that after digits di, ..., di?+?l?-?1 there are no pluses, while after the digit di?+?l there should be a plus. That is, the string should look as follows:\n\n\nHere a dot means a gap without a plus, and a question mark means that it's not important whether there is a plus or not. So, out of n?-?1 possible gaps there are l?+?1 gaps which states are defined, and there is one plus used in these gaps. That means that the other (n?-?1)?-?(l?+?1)?=?n?-?l?-?2 gaps may contain k?-?1 pluses in any possible way; that is, the number of such placements is . A similar reasoning implies that if the digit di is in the last part, that is, i?+?l?=?n?-?1, the number of placements is .\n\nTo sum up, the total answer is equal to\n\n\nLet us transform the sum:\n\n\nTo compute these sums, we will need to know all powers of 10 up to n-th (modulo 109?+?7), along with the binomial coefficients. To compute the binomials, recall that , so it is enough to know all the numbers k! for k upto n, along with their modular inverses. Also we should use the prefix sums of di, that is, the array . The rest is simple evaluation of the above sums.\n\nThe total complexity is , because the common algorithms for modular inverses (that is, Ferma's little theorem exponentiation or solving a diophantine equation using the Euclid's algorithm) have theoritcal worst-case complexity of . However, one can utilize a neat trick for finding modular inverses for first n consecutive numbers in linear time for a total complexity of O(n); for the description of the method refer to this comment by Kaban-5 (not sure why it has a negative rating, I found this quite insightful; maybe anyone can give a proper source for this method?)."
+}

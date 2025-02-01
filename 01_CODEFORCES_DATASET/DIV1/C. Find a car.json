@@ -1,1 +1,105 @@
-{"link": "https://codeforces.com//contest/809/problem/C", "problemId": "106952", "problem_idx": "C", "shortId": "809C", "contest_number": "809", "problem_submissions": {"E": [27253997, 27253429], "D": [27249075, 27251826, 27251250, 27252529, 27250844, 27248855, 27249814, 27250805, 27251747, 27249258, 27246563, 27254846, 27254749], "C": [27246781, 27244976, 27248082, 27245390, 27251108, 27243956, 27253183, 27253135, 27244552, 27253129, 27245688, 27244697, 27248015, 27245843, 27247902, 27248924, 27249554, 27245267, 27250102, 27250477], "B": [27242404, 27247452, 27245322, 27249228, 27241882, 27241895, 27246216, 27242600, 27252141, 27243365, 27243040, 27244839, 27249122, 27244039, 27244488], "A": [27238822, 27238882, 27238974, 27238780, 27251619, 27238718, 27238690, 27238879, 27238895, 27238975, 27238855, 27238770, 27239286, 27239029, 27238990, 27239207, 27238846, 27239176, 27238782]}, "name": "C. Find a car", "statement": "After a wonderful evening in the restaurant the time to go home came.\r\nLeha as a true gentlemen suggested Noora to give her a lift. Certainly\r\nthe girl agreed with pleasure. Suddenly one problem appeared: Leha\r\ncannot find his car on a huge parking near the restaurant. So he decided\r\nto turn to the watchman for help.Formally the parking can be represented\r\nas a matrix . There is exactly one car in every cell of the matrix. All\r\ncars have their own machine numbers represented as a positive integer.\r\nLet\u2019s index the columns of the matrix by integers from to from left to\r\nright and the rows by integers from to from top to bottom. By\r\ncoincidence it turned out, that for every cell the number of the car,\r\nwhich stands in this cell, is equal to the minimum positive integer,\r\nwhich can\u2019t be found in the cells and , . Leha wants to ask the watchman\r\nrequests, which can help him to find his car. Every request is\r\nrepresented as five integers . The watchman have to consider all cells\r\nof the matrix, such that and , and if the number of the car in cell does\r\nnot exceed , increase the answer to the request by the number of the car\r\nin cell . For each request Leha asks the watchman to tell him the\r\nresulting sum. Due to the fact that the sum can turn out to be quite\r\nlarge, hacker asks to calculate it modulo .However the requests seem to\r\nbe impracticable for the watchman. Help the watchman to answer all\r\nLeha\u2019s requests.\r\n", "solutions": ["//PRZEMYSL ASSERTY\n\n//SPRAWDZ CORNER CASE'Y, MINIMALNE I MAKSYMALNE WEJ\u015aCIE I WYJ\u015aCIE\n\n//MODULO = 1\n\n//while (clock()<=69*CLOCKS_PER_SEC)\n\n#include <bits/stdc++.h>\n#include <ext/pb_ds/assoc_container.hpp>\n#include <ext/pb_ds/tree_policy.hpp>\n\nusing namespace __gnu_pbds;\nusing namespace std;\n\ntemplate <typename T>\nusing ordered_set =\n    tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n#define sim template < class c\n#define ris return * this\n#define dor > debug & operator <<\n#define eni(x) sim > typename \\\n  enable_if<sizeof dud<c>(0) x 1, debug&>::type operator<<(c i) {\nsim > struct rge { c b, e; };\nsim > rge<c> range(c i, c j) { return rge<c>{i, j}; }\nsim > auto dud(c* x) -> decltype(cerr << *x, 0);\nsim > char dud(...);\nstruct debug {\n#ifdef LOCAL\n~debug() { cerr << endl; }\neni(!=) cerr << boolalpha << i; ris; }\neni(==) ris << range(begin(i), end(i)); }\nsim, class b dor(pair < b, c > d) {\n  ris << \"(\" << d.first << \", \" << d.second << \")\";\n}\nsim dor(rge<c> d) {\n  *this << \"[\";\n  for (auto it = d.b; it != d.e; ++it)\n    *this << \", \" + 2 * (it == d.b) << *it;\n  ris << \"]\";\n}\n#else\nsim dor(const c&) { ris; }\n#endif\n};\n#define imie(...) \" [\" << #__VA_ARGS__ \": \" << (__VA_ARGS__) << \"] \"\n\n#define shandom_ruffle random_shuffle\n\nconst long long mod=1000*1000*1000+7;\n\nmap < pair < pair <int,int> , int> , pair <long long, long long> > mapa;\n\ninline void dziel(long long &v)\n{\n\tif(v&1)\n\t\tv+=mod;\n\tv/=2;\n}\n\ninline int naj(int v)\n{\n\tint r=1;\n\twhile(r*2<v)\n\t\tr*=2;\n\treturn r;\n}\n\ninline pair <long long,long long> dod(pair <long long,long long> a, pair <long long,long long> b)\n{\n\ta.first+=b.first;\n\ta.second+=b.second;\n\treturn a;\n}\n\npair <long long,long long> licz(int a, int b, int k)\n{\n\tif (a>b)\n\t\tswap(a, b);\n\tint r=naj(b);\n\tk=min(k, 2*r);\n\tif (a<=0 || b<=0 || k<=0)\n\t\treturn {0, 0};\n\tpair <long long,long long> ret={0, 0};\n\tif (a==b && __builtin_popcount(a)==1)//kwadrat\n\t{\n\t\tk=min(k, a);\n\t\tret.first=a;\n\t\tret.first*=k;\n\t\tret.first%=mod;\n\t\tret.first*=(k+1);\n\t\tret.first%=mod;\n\t\tdziel(ret.first);\n\t\t\n\t\tret.second=a;\n\t\tret.second*=k;\n\t\tret.second%=mod;\n\t\treturn ret;\n\t}\n\tif (mapa.count({{a, b}, k}))\n\t\treturn mapa[{{a, b}, k}];\n\t\n\t\n\tret=dod(licz(min(a, r), min(b, r), k), licz(a-r, b-r, k));\n\t\n\tauto ret2=dod(licz(min(a, r), b-r, k-r), licz(a-r, min(b, r), k-r));\n\t\n\tret2.first+=ret2.second*r;\n\tret2.first%=mod;\n\t\n\tret=dod(ret, ret2);\n\t\n\tret.first%=mod;\n\tret.second%=mod;\n\t\n\tmapa[{{a, b}, k}]=ret;\n\treturn ret;\n}\n\nint main()\n{\n\tint q;\n\tscanf(\"%d\", &q);\n\twhile(q--)\n\t{\n\t\tmapa.clear();\n\t\tint a, b, x, y, k;\n\t\tscanf(\"%d%d%d%d%d\", &a, &b, &x, &y, &k);\n\t\tlong long wyn=licz(x, y, k).first-licz(x, b-1, k).first-licz(a-1, y, k).first+licz(a-1, b-1, k).first;\n\t\twyn%=mod;\n\t\twyn+=mod;\n\t\twyn%=mod;\n\t\tprintf(\"%lld\\n\", wyn);\n\t}\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["combinatorics", "divide and conquer", "dp"], "dificulty": "2600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/809/problem/C",
+    "problemId": "106952",
+    "problem_idx": "C",
+    "shortId": "809C",
+    "contest_number": "809",
+    "problem_submissions": {
+        "E": [
+            27253997,
+            27253429
+        ],
+        "D": [
+            27249075,
+            27251826,
+            27251250,
+            27252529,
+            27250844,
+            27248855,
+            27249814,
+            27250805,
+            27251747,
+            27249258,
+            27246563,
+            27254846,
+            27254749
+        ],
+        "C": [
+            27246781,
+            27244976,
+            27248082,
+            27245390,
+            27251108,
+            27243956,
+            27253183,
+            27253135,
+            27244552,
+            27253129,
+            27245688,
+            27244697,
+            27248015,
+            27245843,
+            27247902,
+            27248924,
+            27249554,
+            27245267,
+            27250102,
+            27250477
+        ],
+        "B": [
+            27242404,
+            27247452,
+            27245322,
+            27249228,
+            27241882,
+            27241895,
+            27246216,
+            27242600,
+            27252141,
+            27243365,
+            27243040,
+            27244839,
+            27249122,
+            27244039,
+            27244488
+        ],
+        "A": [
+            27238822,
+            27238882,
+            27238974,
+            27238780,
+            27251619,
+            27238718,
+            27238690,
+            27238879,
+            27238895,
+            27238975,
+            27238855,
+            27238770,
+            27239286,
+            27239029,
+            27238990,
+            27239207,
+            27238846,
+            27239176,
+            27238782
+        ]
+    },
+    "name": "C. Find a car",
+    "statement": "After a wonderful evening in the restaurant the time to go home came.\r\nLeha as a true gentlemen suggested Noora to give her a lift. Certainly\r\nthe girl agreed with pleasure. Suddenly one problem appeared: Leha\r\ncannot find his car on a huge parking near the restaurant. So he decided\r\nto turn to the watchman for help.Formally the parking can be represented\r\nas a matrix . There is exactly one car in every cell of the matrix. All\r\ncars have their own machine numbers represented as a positive integer.\r\nLet\u2019s index the columns of the matrix by integers from to from left to\r\nright and the rows by integers from to from top to bottom. By\r\ncoincidence it turned out, that for every cell the number of the car,\r\nwhich stands in this cell, is equal to the minimum positive integer,\r\nwhich can\u2019t be found in the cells and , . Leha wants to ask the watchman\r\nrequests, which can help him to find his car. Every request is\r\nrepresented as five integers . The watchman have to consider all cells\r\nof the matrix, such that and , and if the number of the car in cell does\r\nnot exceed , increase the answer to the request by the number of the car\r\nin cell . For each request Leha asks the watchman to tell him the\r\nresulting sum. Due to the fact that the sum can turn out to be quite\r\nlarge, hacker asks to calculate it modulo .However the requests seem to\r\nbe impracticable for the watchman. Help the watchman to answer all\r\nLeha\u2019s requests.\r\n",
+    "solutions": [
+        "//PRZEMYSL ASSERTY\n\n//SPRAWDZ CORNER CASE'Y, MINIMALNE I MAKSYMALNE WEJ\u015aCIE I WYJ\u015aCIE\n\n//MODULO = 1\n\n//while (clock()<=69*CLOCKS_PER_SEC)\n\n#include <bits/stdc++.h>\n#include <ext/pb_ds/assoc_container.hpp>\n#include <ext/pb_ds/tree_policy.hpp>\n\nusing namespace __gnu_pbds;\nusing namespace std;\n\ntemplate <typename T>\nusing ordered_set =\n    tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n#define sim template < class c\n#define ris return * this\n#define dor > debug & operator <<\n#define eni(x) sim > typename \\\n  enable_if<sizeof dud<c>(0) x 1, debug&>::type operator<<(c i) {\nsim > struct rge { c b, e; };\nsim > rge<c> range(c i, c j) { return rge<c>{i, j}; }\nsim > auto dud(c* x) -> decltype(cerr << *x, 0);\nsim > char dud(...);\nstruct debug {\n#ifdef LOCAL\n~debug() { cerr << endl; }\neni(!=) cerr << boolalpha << i; ris; }\neni(==) ris << range(begin(i), end(i)); }\nsim, class b dor(pair < b, c > d) {\n  ris << \"(\" << d.first << \", \" << d.second << \")\";\n}\nsim dor(rge<c> d) {\n  *this << \"[\";\n  for (auto it = d.b; it != d.e; ++it)\n    *this << \", \" + 2 * (it == d.b) << *it;\n  ris << \"]\";\n}\n#else\nsim dor(const c&) { ris; }\n#endif\n};\n#define imie(...) \" [\" << #__VA_ARGS__ \": \" << (__VA_ARGS__) << \"] \"\n\n#define shandom_ruffle random_shuffle\n\nconst long long mod=1000*1000*1000+7;\n\nmap < pair < pair <int,int> , int> , pair <long long, long long> > mapa;\n\ninline void dziel(long long &v)\n{\n\tif(v&1)\n\t\tv+=mod;\n\tv/=2;\n}\n\ninline int naj(int v)\n{\n\tint r=1;\n\twhile(r*2<v)\n\t\tr*=2;\n\treturn r;\n}\n\ninline pair <long long,long long> dod(pair <long long,long long> a, pair <long long,long long> b)\n{\n\ta.first+=b.first;\n\ta.second+=b.second;\n\treturn a;\n}\n\npair <long long,long long> licz(int a, int b, int k)\n{\n\tif (a>b)\n\t\tswap(a, b);\n\tint r=naj(b);\n\tk=min(k, 2*r);\n\tif (a<=0 || b<=0 || k<=0)\n\t\treturn {0, 0};\n\tpair <long long,long long> ret={0, 0};\n\tif (a==b && __builtin_popcount(a)==1)//kwadrat\n\t{\n\t\tk=min(k, a);\n\t\tret.first=a;\n\t\tret.first*=k;\n\t\tret.first%=mod;\n\t\tret.first*=(k+1);\n\t\tret.first%=mod;\n\t\tdziel(ret.first);\n\t\t\n\t\tret.second=a;\n\t\tret.second*=k;\n\t\tret.second%=mod;\n\t\treturn ret;\n\t}\n\tif (mapa.count({{a, b}, k}))\n\t\treturn mapa[{{a, b}, k}];\n\t\n\t\n\tret=dod(licz(min(a, r), min(b, r), k), licz(a-r, b-r, k));\n\t\n\tauto ret2=dod(licz(min(a, r), b-r, k-r), licz(a-r, min(b, r), k-r));\n\t\n\tret2.first+=ret2.second*r;\n\tret2.first%=mod;\n\t\n\tret=dod(ret, ret2);\n\t\n\tret.first%=mod;\n\tret.second%=mod;\n\t\n\tmapa[{{a, b}, k}]=ret;\n\treturn ret;\n}\n\nint main()\n{\n\tint q;\n\tscanf(\"%d\", &q);\n\twhile(q--)\n\t{\n\t\tmapa.clear();\n\t\tint a, b, x, y, k;\n\t\tscanf(\"%d%d%d%d%d\", &a, &b, &x, &y, &k);\n\t\tlong long wyn=licz(x, y, k).first-licz(x, b-1, k).first-licz(a-1, y, k).first+licz(a-1, b-1, k).first;\n\t\twyn%=mod;\n\t\twyn+=mod;\n\t\twyn%=mod;\n\t\tprintf(\"%lld\\n\", wyn);\n\t}\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "combinatorics",
+        "divide and conquer",
+        "dp"
+    ],
+    "dificulty": "2600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Find a car.json",
+    "editorial_link": "https://codeforces.com/blog/entry/52099",
+    "editorial": "At first, let\u00e2\u0080\u0099s examine that numbers in the matrix are equal to binary\r\nxor of the row and column. Precisely, the number in cell is equal to\r\n.Now let\u00e2\u0080\u0099s split the query into 4 queries to the matrix prefix, as we\r\nusually do it in matrix sum queries. In order to find the answer to the\r\nquery, we have to maintain 2 dp-on-bits: and , where the number of\r\nplaced bits, flags of equality in query and flag of equality of row and\r\ncolumn xor with . Flag of equality is a boolean, equal to , if our\r\nnumber became less then prefix, and if prefix is still equal. If you\r\naren\u00e2\u0080\u0099t familiar with such dp, please try to solve another task with dp\r\non prefix with less number of flags. will maintain the number of cells\r\nthat are suitable for the arguments and accumulated sum.\r\n"
+}

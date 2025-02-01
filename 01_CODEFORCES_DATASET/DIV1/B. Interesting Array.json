@@ -1,1 +1,99 @@
-{"link": "https://codeforces.com//contest/482/problem/B", "problemId": "15989", "problem_idx": "B", "shortId": "482B", "contest_number": "482", "problem_submissions": {"E": [8395492, 8395487, 8395485, 8395484, 8395481], "D": [8386071, 8389539, 8389292, 8390634, 8390063, 8388875, 8388934, 8389261, 8389687, 8445804, 8390689, 8390772, 9364523, 8390299, 8389829], "C": [8384458, 8395228, 8386818, 8387122, 8391988, 8393481, 8394742, 8391508, 8393489, 8387159, 8387776], "B": [8382609, 8381668, 8382625, 8383076, 8381676, 8382713, 8382593, 8383732, 8383882, 8385352, 8383031, 8383352, 8382682, 8381439, 8383046, 8382782], "A": [8380309, 8380134, 8380145, 8380792, 8380181, 8383494, 8380551, 8380832, 8382370, 8381220, 8380876, 8380679, 8381208, 8382400, 8381109, 8380183]}, "name": "B. Interesting Array", "statement": "We\u2019ll call an array of non-negative integers , if it meets constraints.\r\nThe -th of the constraints consists of three integers , , () meaning\r\nthat value should be equal to . Your task is to find any array of\r\nelements or state that such array doesn\u2019t exist.Expression means the\r\nbitwise AND of numbers and . In programming languages C++, Java and\r\nPython this operation is represented as \"&\", in Pascal as \"and\".\r\n", "solutions": ["#include <cstring>\n#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <memory.h>\n#include <cassert>\n\nusing namespace std;\n\nconst int N = 200010;\n\nint from[N], to[N], num[N];\nint s[N][30];\nint a[N][30];\nint sum[N][30];\n\nint main() {\n  int n, m;\n  scanf(\"%d %d\", &n, &m);\n  for (int i = 0; i <= n; i++) {\n    for (int j = 0; j < 30; j++) {\n      s[i][j] = 0;\n    }\n  }\n  for (int k = 0; k < m; k++) {\n    scanf(\"%d %d %d\", from + k, to + k, num + k);\n    from[k]--; to[k]--;\n    for (int j = 0; j < 30; j++) {\n      if (num[k] & (1 << j)) {\n        s[from[k]][j]++;\n        s[to[k] + 1][j]--;\n      }\n    }\n  }\n  for (int j = 0; j < 30; j++) {\n    int bal = 0;\n    sum[0][j] = 0;\n    for (int i = 0; i < n; i++) {\n      bal += s[i][j];\n      a[i][j] = (bal > 0);\n      sum[i + 1][j] = sum[i][j] + a[i][j];\n    }\n  }\n  for (int k = 0; k < m; k++) {\n    for (int j = 0; j < 30; j++) {\n      if (!(num[k] & (1 << j))) {\n        int get = sum[to[k] + 1][j] - sum[from[k]][j];\n        int need = (to[k] + 1) - (from[k]);\n        if (get == need) {\n          puts(\"NO\");\n          return 0;\n        }\n      }\n    }\n  }\n  puts(\"YES\");\n  for (int i = 0; i < n; i++) {\n    int res = 0;\n    for (int j = 0; j < 30; j++) {\n      if (a[i][j]) {\n        res += (1 << j);\n      }\n    }\n    if (i > 0) printf(\" \");\n    printf(\"%d\", res);\n  }\n  printf(\"\\n\");\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["constructive algorithms", "data structures", "trees"], "dificulty": "1800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/482/problem/B",
+    "problemId": "15989",
+    "problem_idx": "B",
+    "shortId": "482B",
+    "contest_number": "482",
+    "problem_submissions": {
+        "E": [
+            8395492,
+            8395487,
+            8395485,
+            8395484,
+            8395481
+        ],
+        "D": [
+            8386071,
+            8389539,
+            8389292,
+            8390634,
+            8390063,
+            8388875,
+            8388934,
+            8389261,
+            8389687,
+            8445804,
+            8390689,
+            8390772,
+            9364523,
+            8390299,
+            8389829
+        ],
+        "C": [
+            8384458,
+            8395228,
+            8386818,
+            8387122,
+            8391988,
+            8393481,
+            8394742,
+            8391508,
+            8393489,
+            8387159,
+            8387776
+        ],
+        "B": [
+            8382609,
+            8381668,
+            8382625,
+            8383076,
+            8381676,
+            8382713,
+            8382593,
+            8383732,
+            8383882,
+            8385352,
+            8383031,
+            8383352,
+            8382682,
+            8381439,
+            8383046,
+            8382782
+        ],
+        "A": [
+            8380309,
+            8380134,
+            8380145,
+            8380792,
+            8380181,
+            8383494,
+            8380551,
+            8380832,
+            8382370,
+            8381220,
+            8380876,
+            8380679,
+            8381208,
+            8382400,
+            8381109,
+            8380183
+        ]
+    },
+    "name": "B. Interesting Array",
+    "statement": "We\u2019ll call an array of non-negative integers , if it meets constraints.\r\nThe -th of the constraints consists of three integers , , () meaning\r\nthat value should be equal to . Your task is to find any array of\r\nelements or state that such array doesn\u2019t exist.Expression means the\r\nbitwise AND of numbers and . In programming languages C++, Java and\r\nPython this operation is represented as \"&\", in Pascal as \"and\".\r\n",
+    "solutions": [
+        "#include <cstring>\n#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <memory.h>\n#include <cassert>\n\nusing namespace std;\n\nconst int N = 200010;\n\nint from[N], to[N], num[N];\nint s[N][30];\nint a[N][30];\nint sum[N][30];\n\nint main() {\n  int n, m;\n  scanf(\"%d %d\", &n, &m);\n  for (int i = 0; i <= n; i++) {\n    for (int j = 0; j < 30; j++) {\n      s[i][j] = 0;\n    }\n  }\n  for (int k = 0; k < m; k++) {\n    scanf(\"%d %d %d\", from + k, to + k, num + k);\n    from[k]--; to[k]--;\n    for (int j = 0; j < 30; j++) {\n      if (num[k] & (1 << j)) {\n        s[from[k]][j]++;\n        s[to[k] + 1][j]--;\n      }\n    }\n  }\n  for (int j = 0; j < 30; j++) {\n    int bal = 0;\n    sum[0][j] = 0;\n    for (int i = 0; i < n; i++) {\n      bal += s[i][j];\n      a[i][j] = (bal > 0);\n      sum[i + 1][j] = sum[i][j] + a[i][j];\n    }\n  }\n  for (int k = 0; k < m; k++) {\n    for (int j = 0; j < 30; j++) {\n      if (!(num[k] & (1 << j))) {\n        int get = sum[to[k] + 1][j] - sum[from[k]][j];\n        int need = (to[k] + 1) - (from[k]);\n        if (get == need) {\n          puts(\"NO\");\n          return 0;\n        }\n      }\n    }\n  }\n  puts(\"YES\");\n  for (int i = 0; i < n; i++) {\n    int res = 0;\n    for (int j = 0; j < 30; j++) {\n      if (a[i][j]) {\n        res += (1 << j);\n      }\n    }\n    if (i > 0) printf(\" \");\n    printf(\"%d\", res);\n  }\n  printf(\"\\n\");\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "data structures",
+        "trees"
+    ],
+    "dificulty": "1800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Interesting Array.json",
+    "editorial_link": "https://codeforces.com//blog/entry/14417",
+    "editorial": "We will solve the task for every distinct\nbit. Now we must handle new constraint: . If number has 1 in bit with\nnumber , then all numbers in segment will have 1 in that bit too. To do\nthat, we can use a standard idea of adding on a segment. Let\u00e2\u0080\u0099s do two\nadding operation in array in position we will add , and in posiotion -1.\nThen we will calculate partial sums of array , and if > 0 (the sum on\nprefix length ), then bit at position will be 1, otherwise 0. After\nthat, you can use segment tree to check satisfying constraints. Jury\u00e2\u0080\u0099s\nsolution: 8394894\n"
+}

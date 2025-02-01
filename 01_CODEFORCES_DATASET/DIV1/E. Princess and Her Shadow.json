@@ -1,1 +1,107 @@
-{"link": "https://codeforces.com//contest/317/problem/E", "problemId": "3170", "problem_idx": "E", "shortId": "317E", "contest_number": "317", "problem_submissions": {"B": [3893431, 3887094, 3885846, 3887031, 3886538, 3889909, 3893582, 3888615, 3887617, 3888413, 3888179, 3889453, 3887116, 3887888, 3894545, 3895617, 3886384, 3887572], "C": [3892027, 3893534, 3892980, 3892836, 3889579, 3894319, 3891793, 3887685, 3891002, 3893514, 3895626, 3891853, 3895456, 3895311, 3890113, 3891161, 3891706, 3890677], "D": [3888744, 3888593, 3888799, 3890273, 3892231, 3885265, 3887984, 3892250, 3893865, 3891338, 3894467, 3893215, 3890469, 3890547, 3891578, 3893589, 3896477, 3896297], "A": [3884031, 3884987, 3884002, 3884136, 3889852, 3886867, 3884602, 3891904, 3885568, 3884656, 3883909, 3885144, 3894966, 3884417, 3885139], "E": [3932317, 3896465, 3896429]}, "name": "E. Princess and Her Shadow", "statement": "The forest, where our characters entertain themselves, may be\r\nrepresented as a set of integer cells in the plane, where the Shadow and\r\nthe Princess can move only up, down, left and right by . Some cells (as\r\nit happens in decent forests) are occupied by trees. The Shadow and the\r\nPrincess are not allowed to enter a cell occupied by a tree.\r\nUnfortunately, these are the hard times for the forest, so there are\r\nvery few trees growing here...At first the Princess was walking within\r\nthe cell (, ), while the Shadow hid from the Princess in the cell (, ).\r\nThe Princess, The Shadow and the trees are located in the different\r\ncells.The Shadow is playing with the Princess. As soon as the Princess\r\nmoves by in some direction, the Shadow simultaneously flies by in the\r\nsame direction, if it is possible (if the cell to fly to is not occupied\r\nby some tree); otherwise, the Shadow doesn\u2019t move. The Shadow is very\r\nshadowy, so our characters do not interfere with each other.We say that\r\nthe Shadow is caught by the Princess if after some move both of them are\r\nlocated in the same cell. Vlada managed to catch her Shadow! Can you?\r\n", "solutions": ["// @author peter50216\n// #includes {{{\n#include<stdio.h>\n#include<stdlib.h>\n#include<string.h>\n#include<functional>\n#include<math.h>\n#include<assert.h>\n#include<stdarg.h>\n#include<time.h>\n#include<limits.h>\n#include<ctype.h>\n#include<string>\n#include<map>\n#include<set>\n#include<queue>\n#include<algorithm>\n#include<vector>\n#include<iostream>\n#include<sstream>\nusing namespace std;\n// }}}\n// #defines {{{\n#define FOR(i,c) for(__typeof((c).begin()) i=(c).begin();i!=(c).end();i++)\n#define SZ(x) ((int)(x).size())\n#define ALL(x) (x).begin(),(x).end()\n#define REP(i,n) for(int i=0;i<(n);i++)\n#define REP1(i,a,b) for(int i=(a);i<=(b);i++)\n#define REPL(i,x) for(int i=0;x[i];i++)\n#define PER(i,n) for(int i=(n)-1;i>=0;i--)\n#define PER1(i,a,b) for(int i=(a);i>=(b);i--)\n#define RI(x) scanf(\"%d\",&x)\n#define DRI(x) int x;RI(x)\n#define RII(x,y) scanf(\"%d%d\",&x,&y)\n#define DRII(x,y) int x,y;RII(x,y)\n#define RIII(x,y,z) scanf(\"%d%d%d\",&x,&y,&z)\n#define DRIII(x,y,z) int x,y,z;RIII(x,y,z)\n#define RS(x) scanf(\"%s\",x)\n#define PI(x) printf(\"%d\\n\",x)\n#define PIS(x) printf(\"%d \",x)\n#define CASET int ___T,cas=1;scanf(\"%d \",&___T);while(___T--)\n#define CASEN0(n) int cas=1;while(scanf(\"%d\",&n)!=EOF&&n)\n#define CASEN(n) int cas=1;while(scanf(\"%d\",&n)!=EOF)\n#define MP make_pair\n#define PB push_back\n#define MS0(x) memset(x,0,sizeof(x))\n#define MS1(x) memset(x,-1,sizeof(x))\n#define SEP(x) ((x)?'\\n':' ')\n#define F first\n#define S second\n#ifdef ONLINE_JUDGE\n#define FILEIO(x) freopen(#x \".in\",\"r\",stdin);freopen(#x \".out\",\"w\",stdout);\n#define FILEIOS freopen(\"input.txt\",\"r\",stdin);freopen(\"output.txt\",\"w\",stdout);\n#else\n#define FILEIO(x) ;\n#define FILEIOS ;\n#endif\ntypedef pair<int,int> PII;\ntypedef long long LL;\ntypedef unsigned long long ULL;\n// }}}\n\nint vx,vy,sx,sy;\nint mid=110;\nint que[41000][2],qs,qe;\nint dx[4]={1,0,-1,0},dy[4]={0,1,0,-1};\nset<PII> rock;\ninline bool ins(int x,int y){return x<=110&&x>=-110&&y<=110&&y>=-110;}\nset<PII> vis;\nvector<int> mv;\nvector<int> ans;\ninline bool dfs(int sx,int sy){\n    if(vis.count(MP(sx,sy)))return 0;\n    vis.insert(MP(sx,sy));\n    REP(i,4){\n        int xx=sx+dx[i],yy=sy+dy[i];\n        if(rock.count(MP(xx,yy)))continue;\n        if(!ins(xx,yy))return 1;\n        if(dfs(xx,yy))return 1;\n    }\n    return 0;\n}\ninline bool to(int sx,int sy,int tx,int ty){\n    if(sx==tx&&sy==ty)return 1;\n    if(vis.count(MP(sx,sy)))return 0;\n    vis.insert(MP(sx,sy));\n    REP(i,4){\n        int xx=sx+dx[i],yy=sy+dy[i];\n        if(rock.count(MP(xx,yy)))continue;\n        if(!ins(xx,yy))return 0;\n        mv.PB(i);\n        if(to(xx,yy,tx,ty))return 1;\n        mv.pop_back();\n    }\n    return 0;\n}\ninline void move(int d){\n    ans.PB(d);\n    vx+=dx[d];\n    vy+=dy[d];\n    if(!rock.count(MP(sx+dx[d],sy+dy[d]))){\n        sx+=dx[d];sy+=dy[d];\n    }\n}\ninline void move(int d,int c){\n    while(c--)move(d);\n}\ninline void move(const vector<int>& seq){\n    REP(i,SZ(seq))move(seq[i]);\n}\nint main(){\n    RII(vx,vy);\n    RII(sx,sy);\n    DRI(m);\n    if(m==0){\n        puts(\"-1\");\n        return 0;\n    }\n    while(m--){\n        DRII(x,y);\n        rock.insert(MP(x,y));\n    }\n    vis.clear();\n    if(dfs(vx,vy)){//open\n        vis.clear();\n        if(!dfs(sx,sy)){\n            puts(\"-1\");\n            return 0;\n        }\n        vis.clear();mv.clear();\n        to(vx,vy,110,110);\n        move(mv);\n        move(0,1000);\n        move(1,1000);\n        if(ins(sx,sy)){\n            vis.clear();mv.clear();\n            to(sx,sy,110,110);\n            move(mv);\n        }\n        move(0,1000);\n        move(1,1000);\n        PII maxx=*rock.begin(),\n            minx=*rock.begin(),\n            maxy=*rock.begin(),\n            miny=*rock.begin();\n        FOR(it,rock){\n            if(it->F>maxx.F)maxx=*it;\n            if(it->F<minx.F)minx=*it;\n            if(it->S>maxy.S)maxy=*it;\n            if(it->S<miny.S)miny=*it;\n        }\n        if(vx>sx){\n            while(sy>maxx.S)move(3);\n            while(vx>sx)move(2);\n            move(0,1000);\n            move(1,1000);\n        }else{\n            while(sx>-200)move(2);\n            while(sy>minx.S)move(3);\n            while(vx<sx)move(0);\n            move(1,2000);\n            move(0,2000);\n        }\n        if(vy>sy){\n            while(sx>maxy.F)move(2);\n            while(vy>sy)move(3);\n        }else{\n            while(sy>-200)move(3);\n            while(sx>miny.F)move(2);\n            while(vy<sy)move(1);\n        }\n    }else{\n        vis.clear();mv.clear();\n        if(!to(vx,vy,sx,sy)){\n            puts(\"-1\");\n            return 0;\n        }\n        while(vx!=sx||vy!=sy){\n            vis.clear();mv.clear();\n            to(vx,vy,sx,sy);\n            move(mv);\n        }\n    }\n    REP(i,SZ(ans))printf(\"%c\",\"RULD\"[ans[i]]);\n}\n// vim: fdm=marker:commentstring=\\ \\\"\\ %s:nowrap:autoread\n"], "input": "", "output": "", "tags": ["constructive algorithms", "shortest paths"], "dificulty": "3100", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/317/problem/E",
+    "problemId": "3170",
+    "problem_idx": "E",
+    "shortId": "317E",
+    "contest_number": "317",
+    "problem_submissions": {
+        "B": [
+            3893431,
+            3887094,
+            3885846,
+            3887031,
+            3886538,
+            3889909,
+            3893582,
+            3888615,
+            3887617,
+            3888413,
+            3888179,
+            3889453,
+            3887116,
+            3887888,
+            3894545,
+            3895617,
+            3886384,
+            3887572
+        ],
+        "C": [
+            3892027,
+            3893534,
+            3892980,
+            3892836,
+            3889579,
+            3894319,
+            3891793,
+            3887685,
+            3891002,
+            3893514,
+            3895626,
+            3891853,
+            3895456,
+            3895311,
+            3890113,
+            3891161,
+            3891706,
+            3890677
+        ],
+        "D": [
+            3888744,
+            3888593,
+            3888799,
+            3890273,
+            3892231,
+            3885265,
+            3887984,
+            3892250,
+            3893865,
+            3891338,
+            3894467,
+            3893215,
+            3890469,
+            3890547,
+            3891578,
+            3893589,
+            3896477,
+            3896297
+        ],
+        "A": [
+            3884031,
+            3884987,
+            3884002,
+            3884136,
+            3889852,
+            3886867,
+            3884602,
+            3891904,
+            3885568,
+            3884656,
+            3883909,
+            3885144,
+            3894966,
+            3884417,
+            3885139
+        ],
+        "E": [
+            3932317,
+            3896465,
+            3896429
+        ]
+    },
+    "name": "E. Princess and Her Shadow",
+    "statement": "The forest, where our characters entertain themselves, may be\r\nrepresented as a set of integer cells in the plane, where the Shadow and\r\nthe Princess can move only up, down, left and right by . Some cells (as\r\nit happens in decent forests) are occupied by trees. The Shadow and the\r\nPrincess are not allowed to enter a cell occupied by a tree.\r\nUnfortunately, these are the hard times for the forest, so there are\r\nvery few trees growing here...At first the Princess was walking within\r\nthe cell (, ), while the Shadow hid from the Princess in the cell (, ).\r\nThe Princess, The Shadow and the trees are located in the different\r\ncells.The Shadow is playing with the Princess. As soon as the Princess\r\nmoves by in some direction, the Shadow simultaneously flies by in the\r\nsame direction, if it is possible (if the cell to fly to is not occupied\r\nby some tree); otherwise, the Shadow doesn\u2019t move. The Shadow is very\r\nshadowy, so our characters do not interfere with each other.We say that\r\nthe Shadow is caught by the Princess if after some move both of them are\r\nlocated in the same cell. Vlada managed to catch her Shadow! Can you?\r\n",
+    "solutions": [
+        "// @author peter50216\n// #includes {{{\n#include<stdio.h>\n#include<stdlib.h>\n#include<string.h>\n#include<functional>\n#include<math.h>\n#include<assert.h>\n#include<stdarg.h>\n#include<time.h>\n#include<limits.h>\n#include<ctype.h>\n#include<string>\n#include<map>\n#include<set>\n#include<queue>\n#include<algorithm>\n#include<vector>\n#include<iostream>\n#include<sstream>\nusing namespace std;\n// }}}\n// #defines {{{\n#define FOR(i,c) for(__typeof((c).begin()) i=(c).begin();i!=(c).end();i++)\n#define SZ(x) ((int)(x).size())\n#define ALL(x) (x).begin(),(x).end()\n#define REP(i,n) for(int i=0;i<(n);i++)\n#define REP1(i,a,b) for(int i=(a);i<=(b);i++)\n#define REPL(i,x) for(int i=0;x[i];i++)\n#define PER(i,n) for(int i=(n)-1;i>=0;i--)\n#define PER1(i,a,b) for(int i=(a);i>=(b);i--)\n#define RI(x) scanf(\"%d\",&x)\n#define DRI(x) int x;RI(x)\n#define RII(x,y) scanf(\"%d%d\",&x,&y)\n#define DRII(x,y) int x,y;RII(x,y)\n#define RIII(x,y,z) scanf(\"%d%d%d\",&x,&y,&z)\n#define DRIII(x,y,z) int x,y,z;RIII(x,y,z)\n#define RS(x) scanf(\"%s\",x)\n#define PI(x) printf(\"%d\\n\",x)\n#define PIS(x) printf(\"%d \",x)\n#define CASET int ___T,cas=1;scanf(\"%d \",&___T);while(___T--)\n#define CASEN0(n) int cas=1;while(scanf(\"%d\",&n)!=EOF&&n)\n#define CASEN(n) int cas=1;while(scanf(\"%d\",&n)!=EOF)\n#define MP make_pair\n#define PB push_back\n#define MS0(x) memset(x,0,sizeof(x))\n#define MS1(x) memset(x,-1,sizeof(x))\n#define SEP(x) ((x)?'\\n':' ')\n#define F first\n#define S second\n#ifdef ONLINE_JUDGE\n#define FILEIO(x) freopen(#x \".in\",\"r\",stdin);freopen(#x \".out\",\"w\",stdout);\n#define FILEIOS freopen(\"input.txt\",\"r\",stdin);freopen(\"output.txt\",\"w\",stdout);\n#else\n#define FILEIO(x) ;\n#define FILEIOS ;\n#endif\ntypedef pair<int,int> PII;\ntypedef long long LL;\ntypedef unsigned long long ULL;\n// }}}\n\nint vx,vy,sx,sy;\nint mid=110;\nint que[41000][2],qs,qe;\nint dx[4]={1,0,-1,0},dy[4]={0,1,0,-1};\nset<PII> rock;\ninline bool ins(int x,int y){return x<=110&&x>=-110&&y<=110&&y>=-110;}\nset<PII> vis;\nvector<int> mv;\nvector<int> ans;\ninline bool dfs(int sx,int sy){\n    if(vis.count(MP(sx,sy)))return 0;\n    vis.insert(MP(sx,sy));\n    REP(i,4){\n        int xx=sx+dx[i],yy=sy+dy[i];\n        if(rock.count(MP(xx,yy)))continue;\n        if(!ins(xx,yy))return 1;\n        if(dfs(xx,yy))return 1;\n    }\n    return 0;\n}\ninline bool to(int sx,int sy,int tx,int ty){\n    if(sx==tx&&sy==ty)return 1;\n    if(vis.count(MP(sx,sy)))return 0;\n    vis.insert(MP(sx,sy));\n    REP(i,4){\n        int xx=sx+dx[i],yy=sy+dy[i];\n        if(rock.count(MP(xx,yy)))continue;\n        if(!ins(xx,yy))return 0;\n        mv.PB(i);\n        if(to(xx,yy,tx,ty))return 1;\n        mv.pop_back();\n    }\n    return 0;\n}\ninline void move(int d){\n    ans.PB(d);\n    vx+=dx[d];\n    vy+=dy[d];\n    if(!rock.count(MP(sx+dx[d],sy+dy[d]))){\n        sx+=dx[d];sy+=dy[d];\n    }\n}\ninline void move(int d,int c){\n    while(c--)move(d);\n}\ninline void move(const vector<int>& seq){\n    REP(i,SZ(seq))move(seq[i]);\n}\nint main(){\n    RII(vx,vy);\n    RII(sx,sy);\n    DRI(m);\n    if(m==0){\n        puts(\"-1\");\n        return 0;\n    }\n    while(m--){\n        DRII(x,y);\n        rock.insert(MP(x,y));\n    }\n    vis.clear();\n    if(dfs(vx,vy)){//open\n        vis.clear();\n        if(!dfs(sx,sy)){\n            puts(\"-1\");\n            return 0;\n        }\n        vis.clear();mv.clear();\n        to(vx,vy,110,110);\n        move(mv);\n        move(0,1000);\n        move(1,1000);\n        if(ins(sx,sy)){\n            vis.clear();mv.clear();\n            to(sx,sy,110,110);\n            move(mv);\n        }\n        move(0,1000);\n        move(1,1000);\n        PII maxx=*rock.begin(),\n            minx=*rock.begin(),\n            maxy=*rock.begin(),\n            miny=*rock.begin();\n        FOR(it,rock){\n            if(it->F>maxx.F)maxx=*it;\n            if(it->F<minx.F)minx=*it;\n            if(it->S>maxy.S)maxy=*it;\n            if(it->S<miny.S)miny=*it;\n        }\n        if(vx>sx){\n            while(sy>maxx.S)move(3);\n            while(vx>sx)move(2);\n            move(0,1000);\n            move(1,1000);\n        }else{\n            while(sx>-200)move(2);\n            while(sy>minx.S)move(3);\n            while(vx<sx)move(0);\n            move(1,2000);\n            move(0,2000);\n        }\n        if(vy>sy){\n            while(sx>maxy.F)move(2);\n            while(vy>sy)move(3);\n        }else{\n            while(sy>-200)move(3);\n            while(sx>miny.F)move(2);\n            while(vy<sy)move(1);\n        }\n    }else{\n        vis.clear();mv.clear();\n        if(!to(vx,vy,sx,sy)){\n            puts(\"-1\");\n            return 0;\n        }\n        while(vx!=sx||vy!=sy){\n            vis.clear();mv.clear();\n            to(vx,vy,sx,sy);\n            move(mv);\n        }\n    }\n    REP(i,SZ(ans))printf(\"%c\",\"RULD\"[ans[i]]);\n}\n// vim: fdm=marker:commentstring=\\ \\\"\\ %s:nowrap:autoread\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "shortest paths"
+    ],
+    "dificulty": "3100",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\E. Princess and Her Shadow.json",
+    "editorial_link": "https://codeforces.com//blog/entry/7956",
+    "editorial": "In this problem princess Vlada should simply catch the Shadow. Here is\r\nthe idea of a solution. If there is only one tree, then using it as a\r\nbarrier to the shadow it is not hard to catch the shadow. Similar\r\ntechnique works if Vlada and Shadow are far from the square where all\r\nthe trees grow. But what can she do in the dark depths of the forest? If\r\nthere is no path at all between Vlada and Shadow, then there is no way\r\nto catch it. Otherwise consider a shortest path from Vlada to the Shadow\r\nand make Vlada follow it. This path gives Vlada a queue of the steps\r\nthat she should perform. Additionaly if shadow moves, then we add her\r\nmove to the queue (simply speaking Vlada follows the shadow). This is\r\nwhere the algorithmic part ends. Now we state that either Vlada catches\r\nthe shadow in the desired number of steps, or steps out of the \"forest\r\nsquare\". To proof this we note that the length of the path between Vlada\r\nand Shadow may only decrease. And if it does not decrease long enough,\r\nthen once in steps ( is the length of the path) Vlada and Shadow shifts\r\nat the same vector over and over, and at some moment leaves the \"forest\r\nsquare\". Note that if the trees allow our heroes to step out of the\r\n\"forest square\" at the beginning, then we may just get them out from the\r\nstart. But taking this approach we still need to catch the Shadow in a\r\n\"labyrinth forest\". Apologies for the delay. There are probably\r\nmisprints and mistakes here (thousands of them!), please feel free to\r\npoint them out.\r\n"
+}

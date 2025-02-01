@@ -1,1 +1,68 @@
-{"link": "https://codeforces.com//contest/98/problem/D", "problemId": "515", "problem_idx": "D", "shortId": "98D", "contest_number": "98", "problem_submissions": {"D": [559046, 560437, 558160, 558952, 559593, 560171, 559775, 560524, 560585], "C": [557680, 558912, 558966, 558795, 564197, 559465, 559563, 560488, 559529], "A": [555563, 555550, 556122, 555809, 555571, 555798, 555472, 555675, 557529, 556303, 555989, 556333, 557311, 555713, 556337, 560215], "E": [566997], "B": []}, "name": "D. Help Monks", "statement": "In a far away kingdom is the famous Lio Shan monastery. Gods constructed\r\nthree diamond pillars on the monastery\u2019s lawn long ago. Gods also placed\r\non one pillar golden disks of different diameters (in the order of the\r\ndiameters\u2019 decreasing from the bottom to the top). Besides, gods\r\ncommanded to carry all the disks from the first pillar to the third one\r\naccording to the following rules: you can carry only one disk in one\r\nmove; you cannot put a larger disk on a smaller one. There was no\r\nuniversal opinion concerning what is to happen after the gods\u2019 will is\r\ndone: some people promised world peace and eternal happiness to\r\neveryone, whereas others predicted that the kingdom will face communi\r\n(gee, what am I rambling about?) the Armageddon. However, as everybody\r\nknew that it was impossible to solve the problem in less than moves and\r\nthe lazy Lio Shan monks never even started to solve it, everyone lives\r\npeacefully even though the problem was never solved and nobody was\r\nafraid of the Armageddon.However, the monastery wasn\u2019t doing so well\r\nlately and the wise prior Ku Sean Sun had to cut some disks at the edges\r\nand use the gold for the greater good. Wouldn\u2019t you think that the prior\r\nis entitled to have an air conditioning system? Besides, staying in the\r\nmonastery all year is sooo dull One has to have a go at something new\r\nnow and then, go skiing, for example Ku Sean Sun realize how big a\r\nmistake he had made only after a while: after he cut the edges, the\r\ndiameters of some disks got the same; that means that some moves that\r\nused to be impossible to make, were at last possible (why, gods never\r\nprohibited to put a disk on a disk of the same diameter). Thus, the\r\npossible Armageddon can come earlier than was initially planned by gods.\r\nMuch earlier. So much earlier, in fact, that Ku Sean Sun won\u2019t even have\r\ntime to ski all he wants or relax under the air conditioner.The wise\r\nprior could never let that last thing happen and he asked one very old\r\nand very wise witch PikiWedia to help him. May be she can determine the\r\nleast number of moves needed to solve the gods\u2019 problem. However, the\r\nwitch laid out her cards and found no answer for the prior. Then he\r\nasked you to help him.Can you find the shortest solution of the problem,\r\ngiven the number of disks and their diameters? Keep in mind that it is\r\nallowed to place disks of the same diameter one on the other one,\r\nhowever, the order in which the disks are positioned on the third pillar\r\nin the end should match the initial order of the disks on the first\r\npillar.\r\n", "solutions": ["#include<stdio.h>\n#include<string.h>\n#include<algorithm>\nusing namespace std;\nint in[30];\nint out[1050000][2];\nint oc;\nint n;\nint pre[30];\nint cnt[30][2];\ninline int cntf(int np,int b){\n    if(cnt[np][b]!=-1)return cnt[np][b];\n    if(np==n)return cnt[np][b]=0;\n    if(!b)return cnt[np][b]=cntf(pre[np]+1,b)*2+(pre[np]-np+1);\n    else{\n\tint w1=cntf(np+1,0)*2+1;\n\tint w2=cntf(pre[np]+1,0)*2+cntf(pre[np]+1,1)+(pre[np]-np+1)*2;\n\treturn cnt[np][b]=min(w1,w2);\n    }\n}\ninline void move(int a,int b,int c,bool base,int np){\n    if(np==n)return;\n    if(base){\n\tint d1=cntf(np,1);\n\tint d2=cntf(np+1,0)*2+1;\n\tif(d1==d2){\n\t    move(a,c,b,false,np+1);\n\t    out[oc][0]=a;\n\t    out[oc][1]=b;\n\t    oc++;\n\t    move(c,b,a,false,np+1);\n\t}else{\n\t    move(a,b,c,false,pre[np]+1);\n\t    for(int i=np;i<=pre[np];i++){\n\t\tout[oc][0]=a;\n\t\tout[oc][1]=c;\n\t\toc++;\n\t    }\n\t    move(b,a,c,false,pre[np]+1);\n\t    for(int i=np;i<=pre[np];i++){\n\t\tout[oc][0]=c;\n\t\tout[oc][1]=b;\n\t\toc++;\n\t    }\n\t    move(a,b,c,true,pre[np]+1);\n\t}\n    }else{\n\tmove(a,c,b,false,pre[np]+1);\n\tfor(int i=np;i<=pre[np];i++){\n\t    out[oc][0]=a;\n\t    out[oc][1]=b;\n\t    oc++;\n\t}\n\tmove(c,b,a,false,pre[np]+1);\n    }\n}\nint main(){\n    int i;\n    scanf(\"%d\",&n);\n    for(i=0;i<n;i++){\n\tscanf(\"%d\",&in[i]);\n    }\n    pre[n-1]=n-1;\n    for(i=n-2;i>=0;i--){\n\tif(in[i]==in[i+1])pre[i]=pre[i+1];\n\telse pre[i]=i;\n    }\n    memset(cnt,-1,sizeof(cnt));\n    oc=0;\n    move(1,3,2,true,0);\n    printf(\"%d\\n\",oc);\n    for(i=0;i<oc;i++)printf(\"%d %d\\n\",out[i][0],out[i][1]);\n}\n"], "input": "", "output": "", "tags": ["constructive algorithms"], "dificulty": "2500", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/98/problem/D",
+    "problemId": "515",
+    "problem_idx": "D",
+    "shortId": "98D",
+    "contest_number": "98",
+    "problem_submissions": {
+        "D": [
+            559046,
+            560437,
+            558160,
+            558952,
+            559593,
+            560171,
+            559775,
+            560524,
+            560585
+        ],
+        "C": [
+            557680,
+            558912,
+            558966,
+            558795,
+            564197,
+            559465,
+            559563,
+            560488,
+            559529
+        ],
+        "A": [
+            555563,
+            555550,
+            556122,
+            555809,
+            555571,
+            555798,
+            555472,
+            555675,
+            557529,
+            556303,
+            555989,
+            556333,
+            557311,
+            555713,
+            556337,
+            560215
+        ],
+        "E": [
+            566997
+        ],
+        "B": []
+    },
+    "name": "D. Help Monks",
+    "statement": "In a far away kingdom is the famous Lio Shan monastery. Gods constructed\r\nthree diamond pillars on the monastery\u2019s lawn long ago. Gods also placed\r\non one pillar golden disks of different diameters (in the order of the\r\ndiameters\u2019 decreasing from the bottom to the top). Besides, gods\r\ncommanded to carry all the disks from the first pillar to the third one\r\naccording to the following rules: you can carry only one disk in one\r\nmove; you cannot put a larger disk on a smaller one. There was no\r\nuniversal opinion concerning what is to happen after the gods\u2019 will is\r\ndone: some people promised world peace and eternal happiness to\r\neveryone, whereas others predicted that the kingdom will face communi\r\n(gee, what am I rambling about?) the Armageddon. However, as everybody\r\nknew that it was impossible to solve the problem in less than moves and\r\nthe lazy Lio Shan monks never even started to solve it, everyone lives\r\npeacefully even though the problem was never solved and nobody was\r\nafraid of the Armageddon.However, the monastery wasn\u2019t doing so well\r\nlately and the wise prior Ku Sean Sun had to cut some disks at the edges\r\nand use the gold for the greater good. Wouldn\u2019t you think that the prior\r\nis entitled to have an air conditioning system? Besides, staying in the\r\nmonastery all year is sooo dull One has to have a go at something new\r\nnow and then, go skiing, for example Ku Sean Sun realize how big a\r\nmistake he had made only after a while: after he cut the edges, the\r\ndiameters of some disks got the same; that means that some moves that\r\nused to be impossible to make, were at last possible (why, gods never\r\nprohibited to put a disk on a disk of the same diameter). Thus, the\r\npossible Armageddon can come earlier than was initially planned by gods.\r\nMuch earlier. So much earlier, in fact, that Ku Sean Sun won\u2019t even have\r\ntime to ski all he wants or relax under the air conditioner.The wise\r\nprior could never let that last thing happen and he asked one very old\r\nand very wise witch PikiWedia to help him. May be she can determine the\r\nleast number of moves needed to solve the gods\u2019 problem. However, the\r\nwitch laid out her cards and found no answer for the prior. Then he\r\nasked you to help him.Can you find the shortest solution of the problem,\r\ngiven the number of disks and their diameters? Keep in mind that it is\r\nallowed to place disks of the same diameter one on the other one,\r\nhowever, the order in which the disks are positioned on the third pillar\r\nin the end should match the initial order of the disks on the first\r\npillar.\r\n",
+    "solutions": [
+        "#include<stdio.h>\n#include<string.h>\n#include<algorithm>\nusing namespace std;\nint in[30];\nint out[1050000][2];\nint oc;\nint n;\nint pre[30];\nint cnt[30][2];\ninline int cntf(int np,int b){\n    if(cnt[np][b]!=-1)return cnt[np][b];\n    if(np==n)return cnt[np][b]=0;\n    if(!b)return cnt[np][b]=cntf(pre[np]+1,b)*2+(pre[np]-np+1);\n    else{\n\tint w1=cntf(np+1,0)*2+1;\n\tint w2=cntf(pre[np]+1,0)*2+cntf(pre[np]+1,1)+(pre[np]-np+1)*2;\n\treturn cnt[np][b]=min(w1,w2);\n    }\n}\ninline void move(int a,int b,int c,bool base,int np){\n    if(np==n)return;\n    if(base){\n\tint d1=cntf(np,1);\n\tint d2=cntf(np+1,0)*2+1;\n\tif(d1==d2){\n\t    move(a,c,b,false,np+1);\n\t    out[oc][0]=a;\n\t    out[oc][1]=b;\n\t    oc++;\n\t    move(c,b,a,false,np+1);\n\t}else{\n\t    move(a,b,c,false,pre[np]+1);\n\t    for(int i=np;i<=pre[np];i++){\n\t\tout[oc][0]=a;\n\t\tout[oc][1]=c;\n\t\toc++;\n\t    }\n\t    move(b,a,c,false,pre[np]+1);\n\t    for(int i=np;i<=pre[np];i++){\n\t\tout[oc][0]=c;\n\t\tout[oc][1]=b;\n\t\toc++;\n\t    }\n\t    move(a,b,c,true,pre[np]+1);\n\t}\n    }else{\n\tmove(a,c,b,false,pre[np]+1);\n\tfor(int i=np;i<=pre[np];i++){\n\t    out[oc][0]=a;\n\t    out[oc][1]=b;\n\t    oc++;\n\t}\n\tmove(c,b,a,false,pre[np]+1);\n    }\n}\nint main(){\n    int i;\n    scanf(\"%d\",&n);\n    for(i=0;i<n;i++){\n\tscanf(\"%d\",&in[i]);\n    }\n    pre[n-1]=n-1;\n    for(i=n-2;i>=0;i--){\n\tif(in[i]==in[i+1])pre[i]=pre[i+1];\n\telse pre[i]=i;\n    }\n    memset(cnt,-1,sizeof(cnt));\n    oc=0;\n    move(1,3,2,true,0);\n    printf(\"%d\\n\",oc);\n    for(i=0;i<oc;i++)printf(\"%d %d\\n\",out[i][0],out[i][1]);\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms"
+    ],
+    "dificulty": "2500",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Help Monks.json",
+    "editorial_link": "https://codeforces.com/blog/entry/2323",
+    "editorial": "This problem was about famous puzzle \"Hanoi towers\", but diameters of some discs might be equal. How to solve that? A good thing to do is to write BFS solution to check optimality of your ideas for small inputs (by the way, BSF works quickly for almost all towers that have up to 10 discs) and then try to create an algo which solves the puzzle in an optimal way.\nLet C (x1, x2, ..., xn) be a solution (under \"solution\" here we mean optimal number of moves - the moves itself is easy to get with one recursive procedure; also \"solution\" is the number of moves to move group of discs from one peg to any other (and not some particular) ) to the puzzle when we have a puzzle with x1 equal largest discs, x2 equal second largest discs and so on. And let U (x1, x2, ..., xn) be a solution to the puzzle when you are allowed not to save the order of the discs (you should still follow the restriction of the initial puzzle not to put larger discs onto the smaller ones, but at the end discs of the same diameter may be in any order).\nThen one of the optimal solutions to the problem is the following:\nC (x1, x2, ..., xn) = U (x1, x2, ..., xn) if x1 = 1 (*)\nC (x1, x2, ..., xn) = 2*x1 - 1 if n = 1 (**)\nC (x1, x2, ..., xn) = U (x2, ..., xn) + x1 + U (x2, ..., xn) + x1 + C (x2, ..., xn). (***)\nU (x1, x2, ..., xn) = U (x2, ..., xn) + x1 + U (x2, ..., xn) (****)\nWhy so? One can notice that U() is \"almost\" solution for our problem: it \"flips\" order of the bottommost group of equal discs, the order of the rest of the discs remains the same! (try to understand why)\nThat's why (*) is correct.\nThe (**) is quite obvious.\nThe (***) does the following: move (x2, ..., xn) from peg 1 to peg 2 without saving the order. Then move x1 equal discs from peg 1 to peg 3, then move (x2, ..., xn) from peg 2 to peg 1 without saving the order (but it occurs that after we apply U() to the same group of discs twice, the order restored!), then move x1 equal discs from peg 3 to peg 2, and then use C() to move (x2, ..., xn) from peg 1 to peg 2 (here we use C() since we should preserve the order). So, (***) is correct.\nAnd (****) is quite straightforward expression for U(): move all discs but the largest group with the same algo, then move largest discs (that's why if x1 > 1, the group of discs \"flips\"), and then move all discs but the largest group onto the same peg with x1."
+}

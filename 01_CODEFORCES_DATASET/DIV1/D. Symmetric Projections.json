@@ -1,1 +1,100 @@
-{"link": "https://codeforces.com//contest/889/problem/D", "problemId": "133721", "problem_idx": "D", "shortId": "889D", "contest_number": "889", "problem_submissions": {"D": [32268277, 32261782, 32262346, 32267448, 32264912, 32270286, 32262994, 32270235, 32268920], "E": [32261080, 32269250, 42287448], "C": [32258949, 32258309, 32261571, 32258724, 32261718, 32260558, 32259837, 32261642, 32262113, 32268280, 32263105, 32260984, 32260094, 32262538, 32263363, 32275764, 32267069, 32261624, 32263229], "B": [32252734, 32253330, 32255576, 32255239, 32254428, 32258155, 32254407, 32256519, 32255311, 32263055, 32253848, 32255572, 32252983, 32255704, 32255404, 32253464, 32255981], "A": [32248128, 32248978, 32250463, 32251033, 32250128, 32254306, 32249854, 32249329, 32248510, 32248897, 32270420, 32248851, 32248699, 32248336, 32249379, 32249111, 32248222, 32250477]}, "name": "D. Symmetric Projections", "statement": "You are given a set of points on the plane. A line containing the origin\r\nis called good, if projection of the given set to this line forms a\r\nsymmetric multiset of points. Find the total number of good\r\nlines.Multiset is a set where equal elements are allowed.Multiset is\r\ncalled symmetric, if there is a point on the plane such that the\r\nmultiset is centrally symmetric in respect of point .\r\n", "solutions": ["#include <bits/stdc++.h>\nusing ll = long long;\nusing ld = long double;\nusing namespace std;\n\nconst int MAXN = 20001;\n\nint n;\nll x[MAXN], y[MAXN];\n\nvoid rm(int id) {\n    for (int i = id; i + 1 < n; ++i) {\n        x[i] = x[i + 1];\n        y[i] = y[i + 1];\n    }\n    --n;\n}\n\nll vals[MAXN];\nint ans = 0;\n\nconst int BTS = 20;\nconst ll MSK = (1 << BTS) - 1;\n\npair<ll, ll> mul(ll x, ll y) {\n    bool sgn = false;\n\n    if (x < 0) {\n        x = -x;\n        sgn = !sgn;\n    }\n\n    if (y < 0) {\n        y = -y;\n        sgn = !sgn;\n    }\n\n    ll xl = x & MSK;\n    x >>= BTS;\n    ll yl = y & MSK;\n    y >>= BTS;\n\n    ll lw = (xl * yl);\n    ll bg = ((x * y) << BTS) + x * yl + y * xl + (lw >> BTS);\n    lw &= MSK;\n\n    if (sgn) {\n        bg = -bg;\n        lw = -lw;\n    }\n\n    return { bg, lw };\n}\n\n\nint origx[MAXN];\nint origy[MAXN];\nint orign;\n\nvoid work(ll mdx, ll mdy) {\n    bool cool = true;\n    for (int j = 0; j < orign; ++j) {\n        vals[j] = origx[j] * mdx + origy[j] * mdy;\n    }\n\n    sort(vals, vals + orign);\n\n    ll s = vals[0] + vals[orign - 1];\n\n    for (int j = 0; j < orign - 1 - j; ++j) {\n        if (vals[j] + vals[orign - 1 - j] != s) {\n            cool = false;\n            break;\n        }\n    }\n    \n    if (cool) {\n        ++ans;\n    }\n}\n\nll mdx[MAXN], mdy[MAXN];\n\n\nint main() {\n#ifdef PAUNSVOKNO\n    freopen(\"input.txt\", \"r\", stdin); freopen(\"output.txt\", \"w\", stdout);\n#endif\n    ios_base::sync_with_stdio(false); cout.setf(ios::fixed); cout.precision(20); cout.tie(nullptr); cin.tie(nullptr);\n\n    cin >> n;\n    orign = n;\n\n    ll sx = 0, sy = 0;\n    for (int i = 0; i < n; ++i) {\n        cin >> x[i] >> y[i];\n        sx += x[i], sy += y[i];\n        origx[i] = x[i], origy[i] = y[i];\n    }\n\n    for (int i = 0; i < n; ++i) {\n        x[i] = (x[i] * n - sx);\n        y[i] = (y[i] * n - sy);\n    }\n\n    int cur = 0;\n    while (cur < n) {\n        if (x[cur] == 0 && y[cur] == 0) {\n            rm(cur);\n            continue;\n        }\n\n        bool ok = true;\n        for (int i = cur + 1; i < n; ++i) {\n            if (x[i] + x[cur] == 0 && y[i] + y[cur] == 0) {\n                rm(i);\n                rm(cur);\n                ok = false;\n                break;\n            }\n        }\n\n        cur += ok;\n    }\n\n    if (n == 0) {\n        cout << -1 << \"\\n\";\n        return 0;\n    }\n\n    mdx[0] = x[0], mdy[0] = y[0];\n\n    work(-y[0], x[0]);\n\n    for (int i = 1; i < n; ++i) {\n        bool ok = true;\n        mdx[i] = (x[0] + x[i]);\n        mdy[i] = (y[0] + y[i]);\n\n\n        for (int j = 0; j < i; ++j) {\n            if (mul(mdx[i], mdy[j]) == mul(mdy[i], mdx[j])) {\n                ok = false;\n                break;\n            }\n        }\n\n        if (ok) {\n            work(-mdy[i], mdx[i]);\n        }\n    }\n\n\n\n    cout << ans << \"\\n\";\n}"], "input": "", "output": "", "tags": ["geometry"], "dificulty": "2900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/889/problem/D",
+    "problemId": "133721",
+    "problem_idx": "D",
+    "shortId": "889D",
+    "contest_number": "889",
+    "problem_submissions": {
+        "D": [
+            32268277,
+            32261782,
+            32262346,
+            32267448,
+            32264912,
+            32270286,
+            32262994,
+            32270235,
+            32268920
+        ],
+        "E": [
+            32261080,
+            32269250,
+            42287448
+        ],
+        "C": [
+            32258949,
+            32258309,
+            32261571,
+            32258724,
+            32261718,
+            32260558,
+            32259837,
+            32261642,
+            32262113,
+            32268280,
+            32263105,
+            32260984,
+            32260094,
+            32262538,
+            32263363,
+            32275764,
+            32267069,
+            32261624,
+            32263229
+        ],
+        "B": [
+            32252734,
+            32253330,
+            32255576,
+            32255239,
+            32254428,
+            32258155,
+            32254407,
+            32256519,
+            32255311,
+            32263055,
+            32253848,
+            32255572,
+            32252983,
+            32255704,
+            32255404,
+            32253464,
+            32255981
+        ],
+        "A": [
+            32248128,
+            32248978,
+            32250463,
+            32251033,
+            32250128,
+            32254306,
+            32249854,
+            32249329,
+            32248510,
+            32248897,
+            32270420,
+            32248851,
+            32248699,
+            32248336,
+            32249379,
+            32249111,
+            32248222,
+            32250477
+        ]
+    },
+    "name": "D. Symmetric Projections",
+    "statement": "You are given a set of points on the plane. A line containing the origin\r\nis called good, if projection of the given set to this line forms a\r\nsymmetric multiset of points. Find the total number of good\r\nlines.Multiset is a set where equal elements are allowed.Multiset is\r\ncalled symmetric, if there is a point on the plane such that the\r\nmultiset is centrally symmetric in respect of point .\r\n",
+    "solutions": [
+        "#include <bits/stdc++.h>\nusing ll = long long;\nusing ld = long double;\nusing namespace std;\n\nconst int MAXN = 20001;\n\nint n;\nll x[MAXN], y[MAXN];\n\nvoid rm(int id) {\n    for (int i = id; i + 1 < n; ++i) {\n        x[i] = x[i + 1];\n        y[i] = y[i + 1];\n    }\n    --n;\n}\n\nll vals[MAXN];\nint ans = 0;\n\nconst int BTS = 20;\nconst ll MSK = (1 << BTS) - 1;\n\npair<ll, ll> mul(ll x, ll y) {\n    bool sgn = false;\n\n    if (x < 0) {\n        x = -x;\n        sgn = !sgn;\n    }\n\n    if (y < 0) {\n        y = -y;\n        sgn = !sgn;\n    }\n\n    ll xl = x & MSK;\n    x >>= BTS;\n    ll yl = y & MSK;\n    y >>= BTS;\n\n    ll lw = (xl * yl);\n    ll bg = ((x * y) << BTS) + x * yl + y * xl + (lw >> BTS);\n    lw &= MSK;\n\n    if (sgn) {\n        bg = -bg;\n        lw = -lw;\n    }\n\n    return { bg, lw };\n}\n\n\nint origx[MAXN];\nint origy[MAXN];\nint orign;\n\nvoid work(ll mdx, ll mdy) {\n    bool cool = true;\n    for (int j = 0; j < orign; ++j) {\n        vals[j] = origx[j] * mdx + origy[j] * mdy;\n    }\n\n    sort(vals, vals + orign);\n\n    ll s = vals[0] + vals[orign - 1];\n\n    for (int j = 0; j < orign - 1 - j; ++j) {\n        if (vals[j] + vals[orign - 1 - j] != s) {\n            cool = false;\n            break;\n        }\n    }\n    \n    if (cool) {\n        ++ans;\n    }\n}\n\nll mdx[MAXN], mdy[MAXN];\n\n\nint main() {\n#ifdef PAUNSVOKNO\n    freopen(\"input.txt\", \"r\", stdin); freopen(\"output.txt\", \"w\", stdout);\n#endif\n    ios_base::sync_with_stdio(false); cout.setf(ios::fixed); cout.precision(20); cout.tie(nullptr); cin.tie(nullptr);\n\n    cin >> n;\n    orign = n;\n\n    ll sx = 0, sy = 0;\n    for (int i = 0; i < n; ++i) {\n        cin >> x[i] >> y[i];\n        sx += x[i], sy += y[i];\n        origx[i] = x[i], origy[i] = y[i];\n    }\n\n    for (int i = 0; i < n; ++i) {\n        x[i] = (x[i] * n - sx);\n        y[i] = (y[i] * n - sy);\n    }\n\n    int cur = 0;\n    while (cur < n) {\n        if (x[cur] == 0 && y[cur] == 0) {\n            rm(cur);\n            continue;\n        }\n\n        bool ok = true;\n        for (int i = cur + 1; i < n; ++i) {\n            if (x[i] + x[cur] == 0 && y[i] + y[cur] == 0) {\n                rm(i);\n                rm(cur);\n                ok = false;\n                break;\n            }\n        }\n\n        cur += ok;\n    }\n\n    if (n == 0) {\n        cout << -1 << \"\\n\";\n        return 0;\n    }\n\n    mdx[0] = x[0], mdy[0] = y[0];\n\n    work(-y[0], x[0]);\n\n    for (int i = 1; i < n; ++i) {\n        bool ok = true;\n        mdx[i] = (x[0] + x[i]);\n        mdy[i] = (y[0] + y[i]);\n\n\n        for (int j = 0; j < i; ++j) {\n            if (mul(mdx[i], mdy[j]) == mul(mdy[i], mdx[j])) {\n                ok = false;\n                break;\n            }\n        }\n\n        if (ok) {\n            work(-mdy[i], mdx[i]);\n        }\n    }\n\n\n\n    cout << ans << \"\\n\";\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "geometry"
+    ],
+    "dificulty": "2900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Symmetric Projections.json",
+    "editorial_link": "https://codeforces.com//blog/entry/55734",
+    "editorial": "Let us note that projection of set of points to line move center of mass of initial set to center of mass of initial set to center of mass of projections multiset. So if the line is good then the center of mass of initial set move to center of symmetry. Also If there is two points, which are symmetric with respect to center of mass then they will be symmetric under the projection on arbitrary line. So we can throw away these points.\n\nFix arbitrary point from remaining set. Let us take point from set, which will be symmetric to the fixed point. There is only one line, which has property, that two projections of chosen points are symmetric: the line, which is perpendicular to line passing through the center of mass of initial set and center of segment connecting two chosen points. So we have no more then n candidates which can be a good line. It is possible to check, that line is good, in O(nlogn) time."
+}

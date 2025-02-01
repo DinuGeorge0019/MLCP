@@ -1,1 +1,100 @@
-{"link": "https://codeforces.com//contest/433/problem/B", "problemId": "9708", "problem_idx": "B", "shortId": "433B", "contest_number": "433", "problem_submissions": {"E": [6700632, 6733758, 6721505], "D": [6698331, 6698009, 6698968, 6697379, 6698650, 6715933, 6699612, 6703360, 6700792, 6700606, 6701919], "C": [6696171, 6695700, 6695492, 6694565, 6702743, 6693994, 6696132, 6697796, 6696959, 6725755, 6698054, 6719018, 6698571, 6698075, 6696805], "B": [6692744, 6692477, 6692926, 6692655, 6692933, 6693014, 6695266, 6693808, 6692887, 6694570, 6693057, 6692308, 6692432, 6694603, 6691962, 6693854, 6694164, 6696914], "A": [6691799, 6691577, 6691561, 6691897, 6692330, 6691645, 6695737, 6691837, 6691733, 6692882, 6691808, 6691593, 6691467, 6692751, 6692230, 6692129, 6691816]}, "name": "B. Kuriyama Mirai s Stones", "statement": "Kuriyama Mirai has killed many monsters and got many (namely ) stones.\r\nShe numbers the stones from to . The cost of the -th stone is . Kuriyama\r\nMirai wants to know something about these stones so she will ask you two\r\nkinds of questions: She will tell you two numbers, and , and you should\r\ntell her . Let be the cost of the -th cheapest stone (the cost that will\r\nbe on the -th place if we arrange all the stone costs in non-decreasing\r\norder). This time she will tell you two numbers, and , and you should\r\ntell her . For every question you should give the correct answer, or\r\nKuriyama Mirai will say \"fuyukai desu\" and then become unhappy.\r\n", "solutions": ["#include<cstdio>\n#include<cstring>\n#include<algorithm>\n\nusing namespace std;\n\ntypedef long long LL;\n\n#define LLF \"%I64d\"\n\nconst int MAX_SIZE = 100000;\n\nint n, data[MAX_SIZE + 10];\nLL a[MAX_SIZE + 10], b[MAX_SIZE + 10];\n\n\nint main(){\n\tscanf(\"%d\", &n);\n\tfor(int i = 1; i <= n; i ++)\n\t\tscanf(\"%d\", data + i);\n\tfor(int i = 1; i <= n; i ++)\n\t\ta[i] = a[i - 1] + data[i];\n\tsort(data + 1, data + n + 1);\n\tfor(int i = 1; i <= n; i ++)\n\t\tb[i] = b[i - 1] + data[i];\n\tint m;\n\tscanf(\"%d\", &m);\n\twhile(m --){\n\t\tint t, l, r;\n\t\tscanf(\"%d%d%d\", &t, &l, &r);\n\t\tif(t == 1)\n\t\t\tprintf(LLF \"\\n\", a[r] - a[l - 1]);\n\t\telse\n\t\t\tprintf(LLF \"\\n\", b[r] - b[l - 1]);\n\t}\n\n\treturn 0;\n}\n\n\n\n"], "input": "", "output": "", "tags": ["dp", "implementation", "sortings"], "dificulty": "1200", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/433/problem/B",
+    "problemId": "9708",
+    "problem_idx": "B",
+    "shortId": "433B",
+    "contest_number": "433",
+    "problem_submissions": {
+        "E": [
+            6700632,
+            6733758,
+            6721505
+        ],
+        "D": [
+            6698331,
+            6698009,
+            6698968,
+            6697379,
+            6698650,
+            6715933,
+            6699612,
+            6703360,
+            6700792,
+            6700606,
+            6701919
+        ],
+        "C": [
+            6696171,
+            6695700,
+            6695492,
+            6694565,
+            6702743,
+            6693994,
+            6696132,
+            6697796,
+            6696959,
+            6725755,
+            6698054,
+            6719018,
+            6698571,
+            6698075,
+            6696805
+        ],
+        "B": [
+            6692744,
+            6692477,
+            6692926,
+            6692655,
+            6692933,
+            6693014,
+            6695266,
+            6693808,
+            6692887,
+            6694570,
+            6693057,
+            6692308,
+            6692432,
+            6694603,
+            6691962,
+            6693854,
+            6694164,
+            6696914
+        ],
+        "A": [
+            6691799,
+            6691577,
+            6691561,
+            6691897,
+            6692330,
+            6691645,
+            6695737,
+            6691837,
+            6691733,
+            6692882,
+            6691808,
+            6691593,
+            6691467,
+            6692751,
+            6692230,
+            6692129,
+            6691816
+        ]
+    },
+    "name": "B. Kuriyama Mirai s Stones",
+    "statement": "Kuriyama Mirai has killed many monsters and got many (namely ) stones.\r\nShe numbers the stones from to . The cost of the -th stone is . Kuriyama\r\nMirai wants to know something about these stones so she will ask you two\r\nkinds of questions: She will tell you two numbers, and , and you should\r\ntell her . Let be the cost of the -th cheapest stone (the cost that will\r\nbe on the -th place if we arrange all the stone costs in non-decreasing\r\norder). This time she will tell you two numbers, and , and you should\r\ntell her . For every question you should give the correct answer, or\r\nKuriyama Mirai will say \"fuyukai desu\" and then become unhappy.\r\n",
+    "solutions": [
+        "#include<cstdio>\n#include<cstring>\n#include<algorithm>\n\nusing namespace std;\n\ntypedef long long LL;\n\n#define LLF \"%I64d\"\n\nconst int MAX_SIZE = 100000;\n\nint n, data[MAX_SIZE + 10];\nLL a[MAX_SIZE + 10], b[MAX_SIZE + 10];\n\n\nint main(){\n\tscanf(\"%d\", &n);\n\tfor(int i = 1; i <= n; i ++)\n\t\tscanf(\"%d\", data + i);\n\tfor(int i = 1; i <= n; i ++)\n\t\ta[i] = a[i - 1] + data[i];\n\tsort(data + 1, data + n + 1);\n\tfor(int i = 1; i <= n; i ++)\n\t\tb[i] = b[i - 1] + data[i];\n\tint m;\n\tscanf(\"%d\", &m);\n\twhile(m --){\n\t\tint t, l, r;\n\t\tscanf(\"%d%d%d\", &t, &l, &r);\n\t\tif(t == 1)\n\t\t\tprintf(LLF \"\\n\", a[r] - a[l - 1]);\n\t\telse\n\t\t\tprintf(LLF \"\\n\", b[r] - b[l - 1]);\n\t}\n\n\treturn 0;\n}\n\n\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp",
+        "implementation",
+        "sortings"
+    ],
+    "dificulty": "1200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Kuriyama Mirai s Stones.json",
+    "editorial_link": "https://codeforces.com//blog/entry/12397",
+    "editorial": "Sort sequence to obtain sequence . Sorting can be done in using\r\nquicksort. Now we are interested in the sum of a interval of a given\r\nsequence. This can be done by calculating the prefix sum of the sequence\r\nbeforehand. That is, let . The sum of numbers in the interval would then\r\nbe . We can deal with sequence likewise. Preprocessing takes time, and\r\nanswering a query is only . The total complexity would be . Solution:\r\n6713020\r\n"
+}

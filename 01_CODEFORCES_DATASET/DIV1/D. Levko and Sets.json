@@ -1,1 +1,93 @@
-{"link": "https://codeforces.com//contest/360/problem/D", "problemId": "3931", "problem_idx": "D", "shortId": "360D", "contest_number": "360", "problem_submissions": {"E": [5052621, 5051976, 5053848, 5054838], "C": [5051326, 5048345, 5049493, 5049490, 5050865, 5049536, 5050632, 5051192, 5051833, 5051566, 5051768, 5048366, 5049736], "D": [5050607, 5051524, 5050936, 5051425, 5048585, 5050472, 5056022, 5052000], "B": [5045795, 5044973, 5048544, 5051998, 5045747, 5046168, 5051455, 5046964, 5045609, 5046677, 5046979, 5047362, 5047061, 5045936, 5047748, 5047100, 5046972, 5046544], "A": [5044762, 5051854, 5044798, 5045200, 5044446, 5044824, 5045696, 5044827, 5045266, 5045205, 5044960, 5045344, 5047058, 5045224, 5045590, 5054975]}, "name": "D. Levko and Sets", "statement": "Levko loves all sorts of sets very much.Levko has two arrays of integers\r\nand and a prime number . Today he generates sets. Let\u2019s describe the\r\ngeneration process for the -th set: First it has a single number . Let\u2019s\r\ntake any element from this set. For all () if number doesn\u2019t occur in\r\nthe set, then add it to the set. Repeat step as long as we can add at\r\nleast one element to our set. Levko wonders, how many numbers belong to\r\nat least one set. That is, he wants to know what size is the union of\r\ngenerated sets.\r\n", "solutions": ["//#include <iostream>\n#include <fstream>\n#include <vector>\n#include <set>\n#include <map>\n#include <cstring>\n#include <string>\n#include <cmath>\n#include <cassert>\n#include <ctime>\n#include <algorithm>\n#include <sstream>\n#include <list>\n#include <queue>\n#include <deque>\n#include <stack>\n#include <cstdlib>\n#include <cstdio>\n#include <iterator>\n#include <functional>\n#include <bitset>\n#define mp make_pair\n#define pb push_back\n\n#ifdef LOCAL\n#define eprintf(...) fprintf(stderr,__VA_ARGS__)\n#else\n#define eprintf(...)\n#endif\n\n#define TIMESTAMP(x) eprintf(\"[\"#x\"] Time : %.3lf s.\\n\", clock()*1.0/CLOCKS_PER_SEC)\n#define TIMESTAMPf(x,...) eprintf(\"[\" x \"] Time : %.3lf s.\\n\", __VA_ARGS__, clock()*1.0/CLOCKS_PER_SEC)\n\n#if ( _WIN32 || __WIN32__ )\n    #define LLD \"%I64d\"\n#else\n    #define LLD \"%lld\"\n#endif\n\nusing namespace std;\n\n#define TASKNAME \"D\"\n\n#ifdef LOCAL\nstatic struct __timestamper {\n    ~__timestamper(){\n        TIMESTAMP(end);\n    }\n} __TIMESTAMPER;\n#endif\n\ntypedef long long ll;\ntypedef long double ld;\n\nint pow(int a,int b,int p){\n    int res = 1;\n    for (;b; b>>=1, a = (a * 1LL *a) % p)\n       if (b&1) res = (res * 1LL * a) % p;  \n    return res;\n}\n\nvector<int> divs;\nvector<bool> have;\n\nint getOrd(int a,int p){\n    for (int i = 0; i < (int)divs.size(); i++)\n        if (pow(a, divs[i], p) == 1)\n            return divs[i];\n    assert(false);\n}\n\nint main(){\n  #ifdef LOCAL\n    freopen(TASKNAME\".in\",\"r\",stdin);\n    freopen(TASKNAME\".out\",\"w\",stdout);\n  #endif\n\n    int n,m,p;\n\n    scanf(\"%d %d %d\",&n,&m,&p);\n\n    for (int i = 1; i*i <= p-1; i++){\n        if ((p-1) % i == 0){\n            divs.pb(i);\n            if (i != (p - 1) / i)\n                divs.pb((p - 1) / i);\n        }\n    }\n\n    sort(divs.begin(), divs.end());\n    have.resize(divs.size());\n\n    for (int i = 0; i < n; i++){\n        int a;\n        scanf(\"%d\",&a);\n        a = getOrd(a, p);\n        have[find(divs.begin(), divs.end(),a) - divs.begin()] = 1;\n    }\n\n    vector<int> ords;\n\n    for (int i = 0; i < (int)divs.size(); i++)\n        if (have[i]) {\n            ords.pb((p - 1) / divs[i]);\n//              eprintf(\"%d\\n\", ords.back());\n        }\n\n    int g = p - 1;\n    for (int i = 0; i < m; i++){\n        int b;\n        scanf(\"%d\",&b);\n        g = __gcd(g, b);\n    }\n\n    for (int i = 0; i < (int)ords.size(); i++)\n        ords[i] = ords[i] * __gcd(g, (p-1) / ords[i]);\n\n\n    sort(ords.begin(), ords.end());\n    ords.erase(unique(ords.begin(), ords.end()), ords.end());\n\n    have = vector<bool>(n, 0);\n\n    vector<int> cnt(divs.size());\n\n    int ans = 0;\n\n    for (int i = (int)divs.size() - 1; i >= 0; i--){\n        cnt[i] = (p - 1) / divs[i];\n        for (int j = i+1; j < (int)divs.size(); j++)\n            if (divs[j] % divs[i] == 0)\n                cnt[i] -= cnt[j];\n        for (int j = 0; j < (int)ords.size(); j++)\n            if (divs[i] % ords[j] == 0){\n                ans += cnt[i];\n                break;\n            }                       \n    }\n\n    printf(\"%d\\n\", ans);\n            \n      \n    return 0;\n}"], "input": "", "output": "", "tags": ["number theory"], "dificulty": "2600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/360/problem/D",
+    "problemId": "3931",
+    "problem_idx": "D",
+    "shortId": "360D",
+    "contest_number": "360",
+    "problem_submissions": {
+        "E": [
+            5052621,
+            5051976,
+            5053848,
+            5054838
+        ],
+        "C": [
+            5051326,
+            5048345,
+            5049493,
+            5049490,
+            5050865,
+            5049536,
+            5050632,
+            5051192,
+            5051833,
+            5051566,
+            5051768,
+            5048366,
+            5049736
+        ],
+        "D": [
+            5050607,
+            5051524,
+            5050936,
+            5051425,
+            5048585,
+            5050472,
+            5056022,
+            5052000
+        ],
+        "B": [
+            5045795,
+            5044973,
+            5048544,
+            5051998,
+            5045747,
+            5046168,
+            5051455,
+            5046964,
+            5045609,
+            5046677,
+            5046979,
+            5047362,
+            5047061,
+            5045936,
+            5047748,
+            5047100,
+            5046972,
+            5046544
+        ],
+        "A": [
+            5044762,
+            5051854,
+            5044798,
+            5045200,
+            5044446,
+            5044824,
+            5045696,
+            5044827,
+            5045266,
+            5045205,
+            5044960,
+            5045344,
+            5047058,
+            5045224,
+            5045590,
+            5054975
+        ]
+    },
+    "name": "D. Levko and Sets",
+    "statement": "Levko loves all sorts of sets very much.Levko has two arrays of integers\r\nand and a prime number . Today he generates sets. Let\u2019s describe the\r\ngeneration process for the -th set: First it has a single number . Let\u2019s\r\ntake any element from this set. For all () if number doesn\u2019t occur in\r\nthe set, then add it to the set. Repeat step as long as we can add at\r\nleast one element to our set. Levko wonders, how many numbers belong to\r\nat least one set. That is, he wants to know what size is the union of\r\ngenerated sets.\r\n",
+    "solutions": [
+        "//#include <iostream>\n#include <fstream>\n#include <vector>\n#include <set>\n#include <map>\n#include <cstring>\n#include <string>\n#include <cmath>\n#include <cassert>\n#include <ctime>\n#include <algorithm>\n#include <sstream>\n#include <list>\n#include <queue>\n#include <deque>\n#include <stack>\n#include <cstdlib>\n#include <cstdio>\n#include <iterator>\n#include <functional>\n#include <bitset>\n#define mp make_pair\n#define pb push_back\n\n#ifdef LOCAL\n#define eprintf(...) fprintf(stderr,__VA_ARGS__)\n#else\n#define eprintf(...)\n#endif\n\n#define TIMESTAMP(x) eprintf(\"[\"#x\"] Time : %.3lf s.\\n\", clock()*1.0/CLOCKS_PER_SEC)\n#define TIMESTAMPf(x,...) eprintf(\"[\" x \"] Time : %.3lf s.\\n\", __VA_ARGS__, clock()*1.0/CLOCKS_PER_SEC)\n\n#if ( _WIN32 || __WIN32__ )\n    #define LLD \"%I64d\"\n#else\n    #define LLD \"%lld\"\n#endif\n\nusing namespace std;\n\n#define TASKNAME \"D\"\n\n#ifdef LOCAL\nstatic struct __timestamper {\n    ~__timestamper(){\n        TIMESTAMP(end);\n    }\n} __TIMESTAMPER;\n#endif\n\ntypedef long long ll;\ntypedef long double ld;\n\nint pow(int a,int b,int p){\n    int res = 1;\n    for (;b; b>>=1, a = (a * 1LL *a) % p)\n       if (b&1) res = (res * 1LL * a) % p;  \n    return res;\n}\n\nvector<int> divs;\nvector<bool> have;\n\nint getOrd(int a,int p){\n    for (int i = 0; i < (int)divs.size(); i++)\n        if (pow(a, divs[i], p) == 1)\n            return divs[i];\n    assert(false);\n}\n\nint main(){\n  #ifdef LOCAL\n    freopen(TASKNAME\".in\",\"r\",stdin);\n    freopen(TASKNAME\".out\",\"w\",stdout);\n  #endif\n\n    int n,m,p;\n\n    scanf(\"%d %d %d\",&n,&m,&p);\n\n    for (int i = 1; i*i <= p-1; i++){\n        if ((p-1) % i == 0){\n            divs.pb(i);\n            if (i != (p - 1) / i)\n                divs.pb((p - 1) / i);\n        }\n    }\n\n    sort(divs.begin(), divs.end());\n    have.resize(divs.size());\n\n    for (int i = 0; i < n; i++){\n        int a;\n        scanf(\"%d\",&a);\n        a = getOrd(a, p);\n        have[find(divs.begin(), divs.end(),a) - divs.begin()] = 1;\n    }\n\n    vector<int> ords;\n\n    for (int i = 0; i < (int)divs.size(); i++)\n        if (have[i]) {\n            ords.pb((p - 1) / divs[i]);\n//              eprintf(\"%d\\n\", ords.back());\n        }\n\n    int g = p - 1;\n    for (int i = 0; i < m; i++){\n        int b;\n        scanf(\"%d\",&b);\n        g = __gcd(g, b);\n    }\n\n    for (int i = 0; i < (int)ords.size(); i++)\n        ords[i] = ords[i] * __gcd(g, (p-1) / ords[i]);\n\n\n    sort(ords.begin(), ords.end());\n    ords.erase(unique(ords.begin(), ords.end()), ords.end());\n\n    have = vector<bool>(n, 0);\n\n    vector<int> cnt(divs.size());\n\n    int ans = 0;\n\n    for (int i = (int)divs.size() - 1; i >= 0; i--){\n        cnt[i] = (p - 1) / divs[i];\n        for (int j = i+1; j < (int)divs.size(); j++)\n            if (divs[j] % divs[i] == 0)\n                cnt[i] -= cnt[j];\n        for (int j = 0; j < (int)ords.size(); j++)\n            if (divs[i] % ords[j] == 0){\n                ans += cnt[i];\n                break;\n            }                       \n    }\n\n    printf(\"%d\\n\", ans);\n            \n      \n    return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "number theory"
+    ],
+    "dificulty": "2600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Levko and Sets.json",
+    "editorial_link": "https://codeforces.com//blog/entry/9529",
+    "editorial": "is prime, so there exist primitive root modulo (We don\u00e2\u0080\u0099t need to find\r\nit, but we know that it exists). We can write . Note, that -th set\r\nconsists of all numbers , where , or we can write it as . By Fermat\u00e2\u0080\u0099s\r\nlittle theorem we have that . So can be equal to all values modulo ,\r\nwhere . Note that doesn\u00e2\u0080\u0099t depend on , so we can assign . Then all\r\nelements of -th set will be , where . Now we can replace by , where , as\r\nwe do with at the beginning. Then all elements of -th set will be ,\r\nwhere . This means that if we write all values in a line, -th set will\r\ncontain every -th element. Now we need to find union of this sets.Let\u00e2\u0080\u0099s\r\ndo it using inclusion-exclusion principle. All our numbers are divisors\r\nof . Let\u00e2\u0080\u0099s be the coefficient near in inclusion-exclusion principle( is\r\na divisor of ) and we can find this values, adding all alternatively.\r\nAlso we need to find . Let\u00e2\u0080\u0099s find volume of the i-th set. It is equal to\r\n. From the other side it is equal to such minimal number , that ( is a\r\ncycle). From we have that is divisible by . So we can find as a divisor\r\nof . And .\r\n"
+}

@@ -1,1 +1,106 @@
-{"link": "https://codeforces.com//contest/275/problem/D", "problemId": "2639", "problem_idx": "D", "shortId": "275D", "contest_number": "275", "problem_submissions": {"B": [3157455, 3154926, 3153875, 3154128, 3168618, 3157608, 3156503, 3154125, 3154230, 3157497, 3153507, 3154970, 3156558, 3164313, 3154711, 3160366], "D": [3155607, 3157854, 3158539, 3159163, 3159177, 3160578, 3159296, 3159635, 3159357, 3161717, 3160646, 3160630, 3156779, 3160587, 3157298, 3156905, 3156998, 3157339], "C": [3153198, 3153405, 3154890, 3156142, 3152561, 3153505, 3157377, 3155829, 3154047, 3155264, 3156869, 3157904, 3152045, 3156766, 3153753, 3155134, 3158671], "A": [3151085, 3151607, 3151113, 3151479, 3168404, 3151428, 3151540, 3151199, 3151322, 3154980, 3151175, 3151327, 3151992, 3151151, 3151487, 3151102, 3151305, 3160818], "E": [3164302]}, "name": "D. Zero Tree", "statement": "A is a graph with vertices and exactly edges; this graph should meet the\r\nfollowing condition: there exists exactly one shortest (by number of\r\nedges) path between any pair of its vertices.A of a tree is a tree with\r\nboth vertices and edges as subsets of vertices and edges of .You\u2019re\r\ngiven a tree with vertices. Consider its vertices numbered with integers\r\nfrom 1 to . Additionally an integer is written on every vertex of this\r\ntree. Initially the integer written on the -th vertex is equal to . In\r\none move you can apply the following operation: Select the subtree of\r\nthe given tree that includes the vertex with number 1. Increase (or\r\ndecrease) by one all the integers which are written on the vertices of\r\nthat subtree. Calculate the minimum number of moves that is required to\r\nmake all the integers written on the vertices of the given tree equal to\r\nzero.\r\n", "solutions": ["#include <iostream>\n#include <cstdio>\n#include <cstring>\n#include <algorithm>\n#include <cmath>\n#include <map>\n#include <queue>\n#include <vector>\n#include <cstdlib>\n#include <functional>\n#include <string>\n#define N 100010\nusing namespace std;\nstruct qph\n{\n    long long add,del;\n    qph(){}\n    qph(long long a,long long b)\n    {\n        add=a;del=b;\n    }\n};\nstruct node\n{\n    int v,next;\n}e[N*2];\nint head[N],cnt=0;\nvoid add(int u,int v)\n{\n    e[cnt].v=v;\n    e[cnt].next=head[u];\n    head[u]=cnt++;\n}\nint a[N];\nqph dfs(int u,int fa)\n{\n    long long add=0,del=0;\n    for(int i=head[u];i!=-1;i=e[i].next)\n    {\n        int v=e[i].v;\n        if(v==fa)continue;\n        qph hh=dfs(v,u);\n        long long x=hh.add,y=hh.del;\n        add=max(add,x);del=max(del,y);\n    }\n    long long now=a[u]+add-del;\n    if(now<0)add=add-now;\n    if(now>0)del=del+now;\n    qph ret=qph(add,del);\n    return ret;\n}\n\nint main()\n{\n    int n;\n    scanf(\"%d\",&n);\n    memset(head,-1,sizeof(head));\n    cnt=0;\n    for(int i=1;i<n;i++)\n    {\n        int u,v;\n        scanf(\"%d%d\",&u,&v);\n        add(u,v);add(v,u);\n    }\n    for(int i=1;i<=n;i++)\n     scanf(\"%d\",&a[i]);\n    qph ans=dfs(1,-1);\n    cout<<ans.add+ans.del<<endl;\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["dfs and similar", "dp", "trees"], "dificulty": "1800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/275/problem/D",
+    "problemId": "2639",
+    "problem_idx": "D",
+    "shortId": "275D",
+    "contest_number": "275",
+    "problem_submissions": {
+        "B": [
+            3157455,
+            3154926,
+            3153875,
+            3154128,
+            3168618,
+            3157608,
+            3156503,
+            3154125,
+            3154230,
+            3157497,
+            3153507,
+            3154970,
+            3156558,
+            3164313,
+            3154711,
+            3160366
+        ],
+        "D": [
+            3155607,
+            3157854,
+            3158539,
+            3159163,
+            3159177,
+            3160578,
+            3159296,
+            3159635,
+            3159357,
+            3161717,
+            3160646,
+            3160630,
+            3156779,
+            3160587,
+            3157298,
+            3156905,
+            3156998,
+            3157339
+        ],
+        "C": [
+            3153198,
+            3153405,
+            3154890,
+            3156142,
+            3152561,
+            3153505,
+            3157377,
+            3155829,
+            3154047,
+            3155264,
+            3156869,
+            3157904,
+            3152045,
+            3156766,
+            3153753,
+            3155134,
+            3158671
+        ],
+        "A": [
+            3151085,
+            3151607,
+            3151113,
+            3151479,
+            3168404,
+            3151428,
+            3151540,
+            3151199,
+            3151322,
+            3154980,
+            3151175,
+            3151327,
+            3151992,
+            3151151,
+            3151487,
+            3151102,
+            3151305,
+            3160818
+        ],
+        "E": [
+            3164302
+        ]
+    },
+    "name": "D. Zero Tree",
+    "statement": "A is a graph with vertices and exactly edges; this graph should meet the\r\nfollowing condition: there exists exactly one shortest (by number of\r\nedges) path between any pair of its vertices.A of a tree is a tree with\r\nboth vertices and edges as subsets of vertices and edges of .You\u2019re\r\ngiven a tree with vertices. Consider its vertices numbered with integers\r\nfrom 1 to . Additionally an integer is written on every vertex of this\r\ntree. Initially the integer written on the -th vertex is equal to . In\r\none move you can apply the following operation: Select the subtree of\r\nthe given tree that includes the vertex with number 1. Increase (or\r\ndecrease) by one all the integers which are written on the vertices of\r\nthat subtree. Calculate the minimum number of moves that is required to\r\nmake all the integers written on the vertices of the given tree equal to\r\nzero.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <cstdio>\n#include <cstring>\n#include <algorithm>\n#include <cmath>\n#include <map>\n#include <queue>\n#include <vector>\n#include <cstdlib>\n#include <functional>\n#include <string>\n#define N 100010\nusing namespace std;\nstruct qph\n{\n    long long add,del;\n    qph(){}\n    qph(long long a,long long b)\n    {\n        add=a;del=b;\n    }\n};\nstruct node\n{\n    int v,next;\n}e[N*2];\nint head[N],cnt=0;\nvoid add(int u,int v)\n{\n    e[cnt].v=v;\n    e[cnt].next=head[u];\n    head[u]=cnt++;\n}\nint a[N];\nqph dfs(int u,int fa)\n{\n    long long add=0,del=0;\n    for(int i=head[u];i!=-1;i=e[i].next)\n    {\n        int v=e[i].v;\n        if(v==fa)continue;\n        qph hh=dfs(v,u);\n        long long x=hh.add,y=hh.del;\n        add=max(add,x);del=max(del,y);\n    }\n    long long now=a[u]+add-del;\n    if(now<0)add=add-now;\n    if(now>0)del=del+now;\n    qph ret=qph(add,del);\n    return ret;\n}\n\nint main()\n{\n    int n;\n    scanf(\"%d\",&n);\n    memset(head,-1,sizeof(head));\n    cnt=0;\n    for(int i=1;i<n;i++)\n    {\n        int u,v;\n        scanf(\"%d%d\",&u,&v);\n        add(u,v);add(v,u);\n    }\n    for(int i=1;i<=n;i++)\n     scanf(\"%d\",&a[i]);\n    qph ans=dfs(1,-1);\n    cout<<ans.add+ans.del<<endl;\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dfs and similar",
+        "dp",
+        "trees"
+    ],
+    "dificulty": "1800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Zero Tree.json",
+    "editorial_link": "https://codeforces.com//blog/entry/6759",
+    "editorial": "In the problem statement vertex 1 is not mentioned as root of the tree. But it seems if we make it the root of the tree we can figure out the solution easier. For the leaves of the tree we can see the least number of steps needed to make each of them equal to zero. Consider a vertex which all its children are leaves. The minimum number of times that we should increase this vertex is at least as the maximum times one of the children of this vertex is increased. Also the minimum number of times this vertex is decreased is at least as maximum times one of the children of this vertex is decreased. Now we know some necessary plus or minus steps that this vertex is included in them. So after all of the children of this vertex reached zero, this vertex itself has some new value. If the current value of the vertex is positive we should decrease this vertex certain times otherwise we should decrease it. So we can find the minimum number of times this vertex should be decreased and the minimum number of times this vertex should be increased. As we showed above if we know these pair of numbers for each child of a vertex then we can calculate these numbers for that vertex too.\n\nThis can be implemented using a simple DFS on the rooted tree. And the answer to the problem would be the sum of increments and decrements of vertex 1. The time complexity of the solution is O(n)."
+}

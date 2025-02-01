@@ -1,1 +1,89 @@
-{"link": "https://codeforces.com//contest/114/problem/E", "problemId": "601", "problem_idx": "E", "shortId": "114E", "contest_number": "114", "problem_submissions": {"D": [680614, 677278, 687034, 703847, 688239, 686718], "C": [679537, 677329, 677420, 678206, 678894, 677340, 678896, 678198, 677942, 678443, 677408, 678308, 677570, 677264], "B": [675892, 675509, 675942, 675643, 676134, 676935, 675118, 676157, 675384, 675637, 675937, 676230, 680438, 675305, 675437, 675487], "A": [674586, 674367, 674130, 674388, 674341, 674633, 674152, 674272, 675893, 674247, 674536, 674866, 674450, 674150, 674236, 674109], "E": [703890, 692770]}, "name": "E. Double Happiness", "statement": "On the math lesson a teacher asked each pupil to come up with his own\r\nlucky numbers. As a fan of number theory Peter chose prime numbers. Bob\r\nwas more original. He said that number is his lucky number, if it can be\r\nrepresented as: where are arbitrary positive integers.Now, the boys\r\ndecided to find out how many days of the interval () are suitable for\r\npair programming. They decided that the day () is suitable for pair\r\nprogramming if and only if the number is lucky for Peter and lucky for\r\nBob at the same time. Help the boys to find the number of such days.\r\n", "solutions": ["#include<cstdio>\n#include<cstdlib>\n#include<cstring>\n#include<iostream>\n#include<algorithm>\n#include<bitset>\nusing namespace std;\nconst int N=300000100;\nbitset<300000100>v;\nint main()\n{\n    int i,ans=0,j,l,r;\n    scanf(\"%d%d\",&l,&r);\n    ans+=(l<=2&&r>=2);\n    v.set();\n    for(i=3;(j=i*i)<=N;i+=2)\n    if(v[j])for(;j<=N;j+=i<<1)v[j]=false;\n    for(i=5;i<=r;i+=4)if(i>=l&&v[i])ans++;\n    printf(\"%d\\n\",ans);\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["math", "number theory"], "dificulty": "2200", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/114/problem/E",
+    "problemId": "601",
+    "problem_idx": "E",
+    "shortId": "114E",
+    "contest_number": "114",
+    "problem_submissions": {
+        "D": [
+            680614,
+            677278,
+            687034,
+            703847,
+            688239,
+            686718
+        ],
+        "C": [
+            679537,
+            677329,
+            677420,
+            678206,
+            678894,
+            677340,
+            678896,
+            678198,
+            677942,
+            678443,
+            677408,
+            678308,
+            677570,
+            677264
+        ],
+        "B": [
+            675892,
+            675509,
+            675942,
+            675643,
+            676134,
+            676935,
+            675118,
+            676157,
+            675384,
+            675637,
+            675937,
+            676230,
+            680438,
+            675305,
+            675437,
+            675487
+        ],
+        "A": [
+            674586,
+            674367,
+            674130,
+            674388,
+            674341,
+            674633,
+            674152,
+            674272,
+            675893,
+            674247,
+            674536,
+            674866,
+            674450,
+            674150,
+            674236,
+            674109
+        ],
+        "E": [
+            703890,
+            692770
+        ]
+    },
+    "name": "E. Double Happiness",
+    "statement": "On the math lesson a teacher asked each pupil to come up with his own\r\nlucky numbers. As a fan of number theory Peter chose prime numbers. Bob\r\nwas more original. He said that number is his lucky number, if it can be\r\nrepresented as: where are arbitrary positive integers.Now, the boys\r\ndecided to find out how many days of the interval () are suitable for\r\npair programming. They decided that the day () is suitable for pair\r\nprogramming if and only if the number is lucky for Peter and lucky for\r\nBob at the same time. Help the boys to find the number of such days.\r\n",
+    "solutions": [
+        "#include<cstdio>\n#include<cstdlib>\n#include<cstring>\n#include<iostream>\n#include<algorithm>\n#include<bitset>\nusing namespace std;\nconst int N=300000100;\nbitset<300000100>v;\nint main()\n{\n    int i,ans=0,j,l,r;\n    scanf(\"%d%d\",&l,&r);\n    ans+=(l<=2&&r>=2);\n    v.set();\n    for(i=3;(j=i*i)<=N;i+=2)\n    if(v[j])for(;j<=N;j+=i<<1)v[j]=false;\n    for(i=5;i<=r;i+=4)if(i>=l&&v[i])ans++;\n    printf(\"%d\\n\",ans);\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "math",
+        "number theory"
+    ],
+    "dificulty": "2200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Double Happiness.json",
+    "editorial_link": "https://codeforces.com//blog/entry/2627",
+    "editorial": "In this task one have to find quantity of prime numbers that can be reproduced as sum of two perfect squares. Obviously, that 4k?+?3 prime numbers are not suitable as sum of two perfect squares can not be equal to 3 (of course, modulo 4). So, we can prove or use the well-known fact ( also known as Fermat theorem), that every odd 4k?+?1 prime number is a sum of two perfect squares. Also, we have not to forget about 2, as 2?=?12?+?12. \nNow, how can we get this task accepted? Simply using the sieve will exceed memory limit, but we can use block sieve, that works in the same time (), but uses  of memory. Also, we can use precalc for intervals of length equal to 100000."
+}

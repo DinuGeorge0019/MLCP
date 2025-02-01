@@ -1,1 +1,106 @@
-{"link": "https://codeforces.com//contest/337/problem/E", "problemId": "3395", "problem_idx": "E", "shortId": "337E", "contest_number": "337", "problem_submissions": {"A": [12299505, 4287779, 4294787, 4288908, 4287593, 4287655, 4288715, 4287767, 4287597, 4289361, 4292228, 4297873, 4287659, 4288000, 4287546, 4288581, 4287692, 4288502], "E": [4297308, 4294426, 4299642, 7151846, 4296911, 4298400], "D": [4293164, 4295622, 4296185, 4297268, 4295484, 4297391, 4293932, 4295013, 4295647, 4297089, 4306458, 4315672, 4296531], "C": [4291413, 4292827, 4290434, 4291634, 4291820, 4293004, 4295602, 4293040, 4292436, 4290283, 4292545, 4293113, 4292103, 4291206, 4293573, 4292596], "B": [4289325, 4294106, 4292267, 4289473, 4288898, 4289573, 4288545, 4289624, 4292085, 4290934, 4289760, 4289731, 4290149, 4289634, 4289994, 4289149, 4302088]}, "name": "E. Divisor Tree", "statement": "A is a rooted tree that meets the following conditions: Each vertex of\r\nthe tree contains a positive integer number. The numbers written in the\r\nleaves of the tree are prime numbers. For any inner vertex, the number\r\nwithin it is equal to the product of the numbers written in its\r\nchildren. Manao has distinct integers . He tries to build a divisor tree\r\nwhich contains each of these numbers. That is, for each , there should\r\nbe at least one vertex in the tree which contains . Manao loves compact\r\nstyle, but his trees are too large. Help Manao determine the minimum\r\npossible number of vertices in the divisor tree sought.\r\n", "solutions": ["#include <algorithm>\n#include <cstring>\n#include <cstdlib>\n#include <cstdio>\n#define N 1000010\n#define int64 long long\n#define For(i,x,y) for (i=x;i<=y;i++)\nusing namespace std;\nstruct ww {\n    int64 a;\n    int sum;\n} a[10];\nint i,j,k,n,m,an;\nint f[N],p[N],sum[N],s[100],ff[10],f1[10];\nint64 x,g[N];\n/*inline int work(int x) {\n    if (x==1) return 1;\n    return work(x/2+x%2)+x/2*2;\n}\ninline int work1(int x,int y) {\n    int A=x/2;\n    if (A<y) return s[y]+s[x-y]+1;\n    return min(f1[A][y]+s[x-A],f1[x-A][y]+s[A]);\n}*/\ninline void prepare() {\n    int i,j,k,u;\n    For(i,2,N-1) {\n        if (!f[i]) f[i]=p[++*p]=i;\n        for (j=1;j<=*p&&p[j]<=f[i]&&p[j]*i<N;j++) f[p[j]*i]=p[j];\n    }\n    /*For(i,1,50) s[i]=work(i),f1[i][i]=1;\n    For(i,2,50)For(j,1,i-1) f1[i][j]=work1(i,j);\n    For(i,3,50)For(j,1,i-1)For(k,1,i-j) {\n        int A=N;\n        For(u,j,i-k) A=min(A,f1[u][j]+f1[i-u][k]+1);\n        For(u,j+k,i-1) A=min(A,f2[u][j][k]+s[i-u]+1);\n        f2[i][j][k]=A;\n    }*/\n}\ninline bool cc1(const ww &a,const ww &b) {\n    return a.sum<b.sum;\n}\n/*inline void calc(int x,int &y) {\n    if (!ff[x]) {\n        y+=s[a[x].sum]; return;\n    }\n    if (ff[x]==1) {\n        y+=f1[a[x].sum][a[g[x]].sum]; return;\n    }\n    if (ff[x]==2) {\n        y+=f2[a[x].sum][a[g[x]].sum][a[h[x]].sum]; return;\n    }\n}*/\nvoid dfs(int x,int y,int sum) {\n    if (x>n) {\n        an=min(an,y+(sum>1)); return;\n    }\n    y+=(a[x].sum>1)+a[x].sum-f1[x];\n    dfs(x+1,y,sum+1);\n    int i;\n    For(i,x+1,n) {\n        if (a[i].a/g[i]%a[x].a==0) {\n            f1[i]+=a[x].sum; g[i]*=a[x].a; dfs(x+1,y,sum); g[i]/=a[x].a;\n            f1[i]-=a[x].sum;\n        }\n    }\n}\nint main() {\n    scanf(\"%d\",&n);\n    For(i,1,n) scanf(\"%I64d\",&a[i].a);\n    prepare();\n    For(i,1,n) {\n        for (j=1,x=a[i].a;j<=*p&&x>1;j++)\n        for (;x%p[j]==0;x/=p[j],a[i].sum++);\n        if (x>1) a[i].sum++; g[i]=1;\n    }\n    sort(a+1,a+n+1,cc1);\n    an=N; dfs(1,0,0);\n    printf(\"%d\\n\",an);\n    return 0;\n}"], "input": "", "output": "", "tags": ["brute force", "number theory", "trees"], "dificulty": "2200", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/337/problem/E",
+    "problemId": "3395",
+    "problem_idx": "E",
+    "shortId": "337E",
+    "contest_number": "337",
+    "problem_submissions": {
+        "A": [
+            12299505,
+            4287779,
+            4294787,
+            4288908,
+            4287593,
+            4287655,
+            4288715,
+            4287767,
+            4287597,
+            4289361,
+            4292228,
+            4297873,
+            4287659,
+            4288000,
+            4287546,
+            4288581,
+            4287692,
+            4288502
+        ],
+        "E": [
+            4297308,
+            4294426,
+            4299642,
+            7151846,
+            4296911,
+            4298400
+        ],
+        "D": [
+            4293164,
+            4295622,
+            4296185,
+            4297268,
+            4295484,
+            4297391,
+            4293932,
+            4295013,
+            4295647,
+            4297089,
+            4306458,
+            4315672,
+            4296531
+        ],
+        "C": [
+            4291413,
+            4292827,
+            4290434,
+            4291634,
+            4291820,
+            4293004,
+            4295602,
+            4293040,
+            4292436,
+            4290283,
+            4292545,
+            4293113,
+            4292103,
+            4291206,
+            4293573,
+            4292596
+        ],
+        "B": [
+            4289325,
+            4294106,
+            4292267,
+            4289473,
+            4288898,
+            4289573,
+            4288545,
+            4289624,
+            4292085,
+            4290934,
+            4289760,
+            4289731,
+            4290149,
+            4289634,
+            4289994,
+            4289149,
+            4302088
+        ]
+    },
+    "name": "E. Divisor Tree",
+    "statement": "A is a rooted tree that meets the following conditions: Each vertex of\r\nthe tree contains a positive integer number. The numbers written in the\r\nleaves of the tree are prime numbers. For any inner vertex, the number\r\nwithin it is equal to the product of the numbers written in its\r\nchildren. Manao has distinct integers . He tries to build a divisor tree\r\nwhich contains each of these numbers. That is, for each , there should\r\nbe at least one vertex in the tree which contains . Manao loves compact\r\nstyle, but his trees are too large. Help Manao determine the minimum\r\npossible number of vertices in the divisor tree sought.\r\n",
+    "solutions": [
+        "#include <algorithm>\n#include <cstring>\n#include <cstdlib>\n#include <cstdio>\n#define N 1000010\n#define int64 long long\n#define For(i,x,y) for (i=x;i<=y;i++)\nusing namespace std;\nstruct ww {\n    int64 a;\n    int sum;\n} a[10];\nint i,j,k,n,m,an;\nint f[N],p[N],sum[N],s[100],ff[10],f1[10];\nint64 x,g[N];\n/*inline int work(int x) {\n    if (x==1) return 1;\n    return work(x/2+x%2)+x/2*2;\n}\ninline int work1(int x,int y) {\n    int A=x/2;\n    if (A<y) return s[y]+s[x-y]+1;\n    return min(f1[A][y]+s[x-A],f1[x-A][y]+s[A]);\n}*/\ninline void prepare() {\n    int i,j,k,u;\n    For(i,2,N-1) {\n        if (!f[i]) f[i]=p[++*p]=i;\n        for (j=1;j<=*p&&p[j]<=f[i]&&p[j]*i<N;j++) f[p[j]*i]=p[j];\n    }\n    /*For(i,1,50) s[i]=work(i),f1[i][i]=1;\n    For(i,2,50)For(j,1,i-1) f1[i][j]=work1(i,j);\n    For(i,3,50)For(j,1,i-1)For(k,1,i-j) {\n        int A=N;\n        For(u,j,i-k) A=min(A,f1[u][j]+f1[i-u][k]+1);\n        For(u,j+k,i-1) A=min(A,f2[u][j][k]+s[i-u]+1);\n        f2[i][j][k]=A;\n    }*/\n}\ninline bool cc1(const ww &a,const ww &b) {\n    return a.sum<b.sum;\n}\n/*inline void calc(int x,int &y) {\n    if (!ff[x]) {\n        y+=s[a[x].sum]; return;\n    }\n    if (ff[x]==1) {\n        y+=f1[a[x].sum][a[g[x]].sum]; return;\n    }\n    if (ff[x]==2) {\n        y+=f2[a[x].sum][a[g[x]].sum][a[h[x]].sum]; return;\n    }\n}*/\nvoid dfs(int x,int y,int sum) {\n    if (x>n) {\n        an=min(an,y+(sum>1)); return;\n    }\n    y+=(a[x].sum>1)+a[x].sum-f1[x];\n    dfs(x+1,y,sum+1);\n    int i;\n    For(i,x+1,n) {\n        if (a[i].a/g[i]%a[x].a==0) {\n            f1[i]+=a[x].sum; g[i]*=a[x].a; dfs(x+1,y,sum); g[i]/=a[x].a;\n            f1[i]-=a[x].sum;\n        }\n    }\n}\nint main() {\n    scanf(\"%d\",&n);\n    For(i,1,n) scanf(\"%I64d\",&a[i].a);\n    prepare();\n    For(i,1,n) {\n        for (j=1,x=a[i].a;j<=*p&&x>1;j++)\n        for (;x%p[j]==0;x/=p[j],a[i].sum++);\n        if (x>1) a[i].sum++; g[i]=1;\n    }\n    sort(a+1,a+n+1,cc1);\n    an=N; dfs(1,0,0);\n    printf(\"%d\\n\",an);\n    return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "number theory",
+        "trees"
+    ],
+    "dificulty": "2200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Divisor Tree.json",
+    "editorial_link": "https://codeforces.com//blog/entry/8629",
+    "editorial": "Let us first show that in an optimal divisor tree only the root or a\r\nleaf can hold a value other than one of a[i]. Suppose that we have an\r\ninner vertex different from the root which holds a number X not equal to\r\nany of a[i]. Then we can exclude this vertex from the tree and tie its\r\nchildren to its parent without violating any of the tree\u00e2\u0080\u0099s properties.\r\nHence, our tree consists of the root, vertices with numbers a[i] tied to\r\neach other or to the root, and leaves, which are tied to vertices with\r\nnumbers a[i] and contain these numbers\u00e2\u0080\u0099 prime factorizations. The\r\nexception is the case when one of a[i] is written in root itself, and\r\nthe case when some a[i]-s are prime themselves. Also note that in\r\ngeneral case it\u00e2\u0080\u0099s easy to count how many leaves the tree will have. This\r\ncount is equal to the sum of exponents of primes in prime factorizations\r\nof those a[i]-s which are the children of the root. Since N <= 8, we can\r\nbuild all divisor trees which satisfy the observations we made. Let\u00e2\u0080\u0099s\r\nsort numbers a[i] in descending order and recursively choose a parent\r\nfor each of them from the vertices already present in the tree. Of\r\ncourse, tying a number X to some vertex v is only possible if the\r\nproduct of X and the numbers in children of v divides the number in v\r\nitself. For a[1], we have a choice we can make it the root of the tree\r\nor a child of the root (in this case the root will hold a nominal\r\ninfinity which is divisible by any number). For every next a[i], the\r\nchoice is whether to tie it to the root or a vertex containing one of\r\nthe previous numbers. Therefore, we only consider O(N!) trees in total.\r\nYou can check 4302171 for an implementation of this idea.\r\n"
+}

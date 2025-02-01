@@ -1,1 +1,103 @@
-{"link": "https://codeforces.com//contest/14/problem/A", "problemId": "62", "problem_idx": "A", "shortId": "14A", "contest_number": "14", "problem_submissions": {"E": [62192, 62594, 62287, 61971, 63187, 62768, 63056, 63225, 62267, 62557, 62780, 61993, 62626], "D": [61970, 62027, 62458, 62850, 62826, 62538, 62467, 62772, 62917, 62832, 63108, 62975, 63625, 62539], "C": [61574, 61559, 61851, 61582, 61766, 61317, 61719, 62215, 62454, 61795, 62487, 63175, 61560, 61903], "B": [61265, 61141, 61609, 61379, 61308, 61111, 61382, 61412, 61201, 61434, 62041, 61107, 61138, 61353], "A": [60974, 60976, 61243, 61277, 61025, 61008, 61112, 61102, 61052, 61126, 61656, 60978, 60966, 61057]}, "name": "A. Letter", "statement": "A boy Bob likes to draw. Not long ago he bought a rectangular graph\r\n(checked) sheet with rows and columns. Bob shaded some of the squares on\r\nthe sheet. Having seen his masterpiece, he decided to share it with his\r\nelder brother, who lives in Flatland. Now Bob has to send his picture by\r\npost, but because of the world economic crisis and high oil prices, he\r\nwants to send his creation, but to spend as little money as possible.\r\nFor each sent square of paper (no matter whether it is shaded or not)\r\nBob has to pay 3.14 burles. Please, help Bob cut out of his masterpiece\r\na rectangle of the minimum cost, that will contain all the shaded\r\nsquares. The rectangle\u2019s sides should be parallel to the sheet\u2019s sides.\r\n", "solutions": ["#include<algorithm>\n#include<iostream>\n#include<iomanip>\n#include<cstring>\n#include<vector>\n#include<string>\n#include<cmath>\nusing namespace std;\n\nint n , m;\nint lef , rig , a , b;\nstring s[51];\n\nint main()\n{\n    ios::sync_with_stdio(false);\n    while(cin>>n>>m)\n    {\n        lef = 100 , rig = -1 , a = 100 , b = -1;\n        for(int i = 1 ; i <= n ; i++)\n        {\n            cin>>s[i];\n            s[i] = \" \" + s[i];\n            for(int j = 1 ; j <= m ; j++)\n                if(s[i][j] == '*')\n                {\n                    lef = min(lef , j);\n                    rig = max(rig , j);\n                    a = min(a , i);\n                    b = max(b , i);\n                }\n        }\n        for(int i = a ; i <= b ; i++)\n        {\n            for(int j = lef ; j <= rig ; j++)\n                cout<<s[i][j];\n            cout<<endl;\n        }\n        \n    }\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["implementation"], "dificulty": "800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/14/problem/A",
+    "problemId": "62",
+    "problem_idx": "A",
+    "shortId": "14A",
+    "contest_number": "14",
+    "problem_submissions": {
+        "E": [
+            62192,
+            62594,
+            62287,
+            61971,
+            63187,
+            62768,
+            63056,
+            63225,
+            62267,
+            62557,
+            62780,
+            61993,
+            62626
+        ],
+        "D": [
+            61970,
+            62027,
+            62458,
+            62850,
+            62826,
+            62538,
+            62467,
+            62772,
+            62917,
+            62832,
+            63108,
+            62975,
+            63625,
+            62539
+        ],
+        "C": [
+            61574,
+            61559,
+            61851,
+            61582,
+            61766,
+            61317,
+            61719,
+            62215,
+            62454,
+            61795,
+            62487,
+            63175,
+            61560,
+            61903
+        ],
+        "B": [
+            61265,
+            61141,
+            61609,
+            61379,
+            61308,
+            61111,
+            61382,
+            61412,
+            61201,
+            61434,
+            62041,
+            61107,
+            61138,
+            61353
+        ],
+        "A": [
+            60974,
+            60976,
+            61243,
+            61277,
+            61025,
+            61008,
+            61112,
+            61102,
+            61052,
+            61126,
+            61656,
+            60978,
+            60966,
+            61057
+        ]
+    },
+    "name": "A. Letter",
+    "statement": "A boy Bob likes to draw. Not long ago he bought a rectangular graph\r\n(checked) sheet with rows and columns. Bob shaded some of the squares on\r\nthe sheet. Having seen his masterpiece, he decided to share it with his\r\nelder brother, who lives in Flatland. Now Bob has to send his picture by\r\npost, but because of the world economic crisis and high oil prices, he\r\nwants to send his creation, but to spend as little money as possible.\r\nFor each sent square of paper (no matter whether it is shaded or not)\r\nBob has to pay 3.14 burles. Please, help Bob cut out of his masterpiece\r\na rectangle of the minimum cost, that will contain all the shaded\r\nsquares. The rectangle\u2019s sides should be parallel to the sheet\u2019s sides.\r\n",
+    "solutions": [
+        "#include<algorithm>\n#include<iostream>\n#include<iomanip>\n#include<cstring>\n#include<vector>\n#include<string>\n#include<cmath>\nusing namespace std;\n\nint n , m;\nint lef , rig , a , b;\nstring s[51];\n\nint main()\n{\n    ios::sync_with_stdio(false);\n    while(cin>>n>>m)\n    {\n        lef = 100 , rig = -1 , a = 100 , b = -1;\n        for(int i = 1 ; i <= n ; i++)\n        {\n            cin>>s[i];\n            s[i] = \" \" + s[i];\n            for(int j = 1 ; j <= m ; j++)\n                if(s[i][j] == '*')\n                {\n                    lef = min(lef , j);\n                    rig = max(rig , j);\n                    a = min(a , i);\n                    b = max(b , i);\n                }\n        }\n        for(int i = a ; i <= b ; i++)\n        {\n            for(int j = lef ; j <= rig ; j++)\n                cout<<s[i][j];\n            cout<<endl;\n        }\n        \n    }\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation"
+    ],
+    "dificulty": "800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Letter.json",
+    "editorial_link": "https://codeforces.com//blog/entry/389",
+    "editorial": "To find the smallest rectangle containing the picture, iterate through the pairs (i,j) such that the j-th symbol in i-th line is '*'; find the minimum and maximum values of i and j from these pairs. The rectangle to output is [imin,?imax]?\u00d7?[jmin,?jmax]."
+}

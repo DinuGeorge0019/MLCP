@@ -1,1 +1,91 @@
-{"link": "https://codeforces.com//contest/214/problem/B", "problemId": "1583", "problem_idx": "B", "shortId": "214B", "contest_number": "214", "problem_submissions": {"E": [1956903, 1959345, 1957680, 1957463, 1959834, 1959308, 1959253, 1957749, 1958161, 1956289, 1958278], "C": [1955209, 1956435, 1959107, 1956342, 1957218, 1958467, 1961649, 1957400, 1955688, 1956389, 1957879], "B": [1954378, 1954778, 1958510, 1955446, 1959760, 1961278, 1961629, 1960691, 1956885, 1957774, 1955065, 1957623, 1954405], "A": [1953390, 1953632, 1953871, 1953304, 1953314, 1953971, 1953533, 1953542, 1953580, 1953288, 1953626, 1958517, 1953552, 1953593, 1953324], "D": [1959758, 1957255, 1957018, 1959688]}, "name": "B. Hometask", "statement": "Furik loves math lessons very much, so he doesn\u2019t attend them, unlike\r\nRubik. But now Furik wants to get a good mark for math. For that Ms.\r\nIvanova, his math teacher, gave him a new task. Furik solved the task\r\nimmediately. Can you?You are given a set of digits, your task is to find\r\nthe maximum integer that you can make from these digits. The made number\r\nmust be divisible by , , without a residue. It is permitted to use not\r\nall digits from the set, it is forbidden to use leading zeroes.Each\r\ndigit is allowed to occur in the number the same number of times it\r\noccurs in the set.\r\n", "solutions": ["#include <cstdio>\n#include <cstdlib>\n#include <cmath>\n#include <cstring>\n#include <string>\n#include <cassert>\n#include <iostream>\n#include <algorithm>\n#include <vector>\n#include <set>\n#include <map>\nusing namespace std;\n\nint N;\nint D[100000];\n\nvoid output(int x1, int x2) {\n  bool nonzero = 0;\n  for (int i = 0; i < N; i++) {\n    if (i == x1 || i == x2) continue;\n    if (D[i] == 0) {\n      if (nonzero) cout << D[i];\n    }\n    else {\n      nonzero = 1;\n      cout << D[i];\n    }\n  }\n  if (!nonzero) cout << 0;\n  cout << \"\\n\";\n}\n\nint main() {\n  cin >> N;\n  for (int i = 0; i < N; i++) cin >> D[i];\n  sort(D, D+N); reverse(D, D+N);\n\n  if (D[N-1] != 0) {\n    cout << -1 << \"\\n\";\n    return 0;\n  }\n\n  int alls = 0;\n  vector<int> zero, one, two;\n  for (int i = 0; i < N; i++) {\n    alls += D[i];\n    if (D[i] % 3 == 0) zero.push_back(i);\n    if (D[i] % 3 == 1) one.push_back(i);\n    if (D[i] % 3 == 2) two.push_back(i);\n  }\n\n  bool nonzero = 0; \n  if (alls % 3 == 0) output(-1,-1);\n  else if (alls % 3 == 1) {\n    if (one.size() > 0) {\n      output(one.back(), -1);\n    }\n    else if (two.size() > 1) {\n      output(two[two.size()-2], two[two.size()-1]);\n    }\n  }\n  else if (alls % 3 == 2) {\n    if (two.size() > 0) {\n      output(two.back(), -1);\n    }\n    else if (one.size() > 1) {\n      output(one[one.size()-2], one[one.size()-1]);\n    }\n  }\n}\n"], "input": "", "output": "", "tags": ["brute force", "constructive algorithms", "greedy", "math"], "dificulty": "1600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/214/problem/B",
+    "problemId": "1583",
+    "problem_idx": "B",
+    "shortId": "214B",
+    "contest_number": "214",
+    "problem_submissions": {
+        "E": [
+            1956903,
+            1959345,
+            1957680,
+            1957463,
+            1959834,
+            1959308,
+            1959253,
+            1957749,
+            1958161,
+            1956289,
+            1958278
+        ],
+        "C": [
+            1955209,
+            1956435,
+            1959107,
+            1956342,
+            1957218,
+            1958467,
+            1961649,
+            1957400,
+            1955688,
+            1956389,
+            1957879
+        ],
+        "B": [
+            1954378,
+            1954778,
+            1958510,
+            1955446,
+            1959760,
+            1961278,
+            1961629,
+            1960691,
+            1956885,
+            1957774,
+            1955065,
+            1957623,
+            1954405
+        ],
+        "A": [
+            1953390,
+            1953632,
+            1953871,
+            1953304,
+            1953314,
+            1953971,
+            1953533,
+            1953542,
+            1953580,
+            1953288,
+            1953626,
+            1958517,
+            1953552,
+            1953593,
+            1953324
+        ],
+        "D": [
+            1959758,
+            1957255,
+            1957018,
+            1959688
+        ]
+    },
+    "name": "B. Hometask",
+    "statement": "Furik loves math lessons very much, so he doesn\u2019t attend them, unlike\r\nRubik. But now Furik wants to get a good mark for math. For that Ms.\r\nIvanova, his math teacher, gave him a new task. Furik solved the task\r\nimmediately. Can you?You are given a set of digits, your task is to find\r\nthe maximum integer that you can make from these digits. The made number\r\nmust be divisible by , , without a residue. It is permitted to use not\r\nall digits from the set, it is forbidden to use leading zeroes.Each\r\ndigit is allowed to occur in the number the same number of times it\r\noccurs in the set.\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <cstdlib>\n#include <cmath>\n#include <cstring>\n#include <string>\n#include <cassert>\n#include <iostream>\n#include <algorithm>\n#include <vector>\n#include <set>\n#include <map>\nusing namespace std;\n\nint N;\nint D[100000];\n\nvoid output(int x1, int x2) {\n  bool nonzero = 0;\n  for (int i = 0; i < N; i++) {\n    if (i == x1 || i == x2) continue;\n    if (D[i] == 0) {\n      if (nonzero) cout << D[i];\n    }\n    else {\n      nonzero = 1;\n      cout << D[i];\n    }\n  }\n  if (!nonzero) cout << 0;\n  cout << \"\\n\";\n}\n\nint main() {\n  cin >> N;\n  for (int i = 0; i < N; i++) cin >> D[i];\n  sort(D, D+N); reverse(D, D+N);\n\n  if (D[N-1] != 0) {\n    cout << -1 << \"\\n\";\n    return 0;\n  }\n\n  int alls = 0;\n  vector<int> zero, one, two;\n  for (int i = 0; i < N; i++) {\n    alls += D[i];\n    if (D[i] % 3 == 0) zero.push_back(i);\n    if (D[i] % 3 == 1) one.push_back(i);\n    if (D[i] % 3 == 2) two.push_back(i);\n  }\n\n  bool nonzero = 0; \n  if (alls % 3 == 0) output(-1,-1);\n  else if (alls % 3 == 1) {\n    if (one.size() > 0) {\n      output(one.back(), -1);\n    }\n    else if (two.size() > 1) {\n      output(two[two.size()-2], two[two.size()-1]);\n    }\n  }\n  else if (alls % 3 == 2) {\n    if (two.size() > 0) {\n      output(two.back(), -1);\n    }\n    else if (one.size() > 1) {\n      output(one[one.size()-2], one[one.size()-1]);\n    }\n  }\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "constructive algorithms",
+        "greedy",
+        "math"
+    ],
+    "dificulty": "1600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Hometask.json",
+    "editorial_link": "https://codeforces.com//blog/entry/4982",
+    "editorial": "Nuber is divisible by 2,3,5 only if sum of the digits is divisible by 3\r\nand last digit is 0, so if we havent 0 in our set answer is -1,\r\notherwise solution exists(we can return 0 as solution). A further\r\nsolution analysis of the cases.Lets sort all didgits in nonincreasing\r\norder. If sum of all digits is divisible by 3 answer is our set of\r\ndigits(without spaces ofcourse :) ). If modulo equals 1 we must delete\r\nminimum digit from out set with modulo after division by 3 equals 1, if\r\nwe haven\u00e2\u0080\u0099t such we must delete 2 minimal digits with modulo after\r\ndivision by 3 equals 2. If we have modulo equals 2 we have identical\r\ncase.Also we must remember that we cannot use leading zeros. In case\r\nwhen we have more then one 0 and no another digit we must print only one\r\nzero.\r\n"
+}

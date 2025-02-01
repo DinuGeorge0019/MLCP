@@ -1,1 +1,94 @@
-{"link": "https://codeforces.com//contest/319/problem/A", "problemId": "3255", "problem_idx": "A", "shortId": "319A", "contest_number": "319", "problem_submissions": {"D": [3948106, 3949160, 3951651, 3949707, 3949637, 3949775, 3962727, 3950884, 4081627, 3951853], "C": [3946594, 3947263, 3948244, 3948613, 3948176, 3945420, 3945758, 3945713, 3946296, 3946346, 3946524, 3946613, 3946482, 3945816, 3947039, 3946470], "B": [3944659, 3943682, 3946080, 3946044, 3946423, 3943572, 3944269, 3944276, 3944495, 3944694, 3944617, 3944629, 3943999, 3945031, 3943612, 3945716], "A": [3942928, 3944735, 3943181, 3943824, 3943092, 3942620, 3942968, 3942994, 3942953, 3943439, 3942852, 3943177, 3942732, 3944034, 3944966, 3944250], "E": [4934160]}, "name": "A. Malek Dance Club", "statement": "As a tradition, every year before IOI all the members of Natalia Fan\r\nClub are invited to Malek Dance Club to have a fun night together. Malek\r\nDance Club has members and coincidentally Natalia Fan Club also has\r\nmembers. Each member of MDC is assigned a unique id from to . The same\r\nholds for each member of NFC.One of the parts of this tradition is one\r\nby one dance, where each member of MDC dances with a member of NFC. A\r\ndance pair is a pair of numbers such that member from MDC dances with\r\nmember from NFC.The complexity of a pairs\u2019 assignment is the number of\r\npairs of dancing pairs and such that and .You are given a binary number\r\nof length named . We know that member from MDC dances with member from\r\nNFC. Your task is to calculate the complexity of this assignment modulo\r\n.Expression denotes applying XOR to numbers and . This operation exists\r\nin all modern programming languages, for example, in and it denotes as ,\r\nin .\r\n", "solutions": ["#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <cassert>\n#include <ctime>\n#include <cstring>\n#include <string>\n#include <set>\n#include <map>\n#include <vector>\n#include <iostream>\n#include <algorithm>\nusing namespace std;\n#define pb push_back\n#define mp make_pair\n#define fs first\n#define sc second\nconst double pi = acos(-1.0);\nconst long long mdl = 1000 * 1000 * 1000 + 7;\nconst int size = 1000;\nlong long pw[size];\n\nint main() {\n\tpw[0] = 1;\n\tfor (int i = 1; i < size; i++)\n\t\tpw[i] = (pw[i - 1] * 2) % mdl;\n\n\t//freopen(\"problem_a.in\", \"r\", stdin);\n\t//freopen(\"problem_a.out\", \"w\", stdout);\n\t\n\tstring str;\n\tcin >> str;\n\tint n = str.length();\n\tlong long ans = 0;\n\treverse(str.begin(), str.end());\n\tfor (int i = 0; i < n; i++)\n\t\tif (str[i] == '1') {\n\t\t\tans = (ans + ((pw[i] * pw[i]) % mdl) * pw[n - i - 1] % mdl) % mdl;\n\t\t}\n\n\tcout << ans << endl;\n\n\treturn 0;\n}"], "input": "", "output": "", "tags": ["combinatorics", "math"], "dificulty": "1600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/319/problem/A",
+    "problemId": "3255",
+    "problem_idx": "A",
+    "shortId": "319A",
+    "contest_number": "319",
+    "problem_submissions": {
+        "D": [
+            3948106,
+            3949160,
+            3951651,
+            3949707,
+            3949637,
+            3949775,
+            3962727,
+            3950884,
+            4081627,
+            3951853
+        ],
+        "C": [
+            3946594,
+            3947263,
+            3948244,
+            3948613,
+            3948176,
+            3945420,
+            3945758,
+            3945713,
+            3946296,
+            3946346,
+            3946524,
+            3946613,
+            3946482,
+            3945816,
+            3947039,
+            3946470
+        ],
+        "B": [
+            3944659,
+            3943682,
+            3946080,
+            3946044,
+            3946423,
+            3943572,
+            3944269,
+            3944276,
+            3944495,
+            3944694,
+            3944617,
+            3944629,
+            3943999,
+            3945031,
+            3943612,
+            3945716
+        ],
+        "A": [
+            3942928,
+            3944735,
+            3943181,
+            3943824,
+            3943092,
+            3942620,
+            3942968,
+            3942994,
+            3942953,
+            3943439,
+            3942852,
+            3943177,
+            3942732,
+            3944034,
+            3944966,
+            3944250
+        ],
+        "E": [
+            4934160
+        ]
+    },
+    "name": "A. Malek Dance Club",
+    "statement": "As a tradition, every year before IOI all the members of Natalia Fan\r\nClub are invited to Malek Dance Club to have a fun night together. Malek\r\nDance Club has members and coincidentally Natalia Fan Club also has\r\nmembers. Each member of MDC is assigned a unique id from to . The same\r\nholds for each member of NFC.One of the parts of this tradition is one\r\nby one dance, where each member of MDC dances with a member of NFC. A\r\ndance pair is a pair of numbers such that member from MDC dances with\r\nmember from NFC.The complexity of a pairs\u2019 assignment is the number of\r\npairs of dancing pairs and such that and .You are given a binary number\r\nof length named . We know that member from MDC dances with member from\r\nNFC. Your task is to calculate the complexity of this assignment modulo\r\n.Expression denotes applying XOR to numbers and . This operation exists\r\nin all modern programming languages, for example, in and it denotes as ,\r\nin .\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <cassert>\n#include <ctime>\n#include <cstring>\n#include <string>\n#include <set>\n#include <map>\n#include <vector>\n#include <iostream>\n#include <algorithm>\nusing namespace std;\n#define pb push_back\n#define mp make_pair\n#define fs first\n#define sc second\nconst double pi = acos(-1.0);\nconst long long mdl = 1000 * 1000 * 1000 + 7;\nconst int size = 1000;\nlong long pw[size];\n\nint main() {\n\tpw[0] = 1;\n\tfor (int i = 1; i < size; i++)\n\t\tpw[i] = (pw[i - 1] * 2) % mdl;\n\n\t//freopen(\"problem_a.in\", \"r\", stdin);\n\t//freopen(\"problem_a.out\", \"w\", stdout);\n\t\n\tstring str;\n\tcin >> str;\n\tint n = str.length();\n\tlong long ans = 0;\n\treverse(str.begin(), str.end());\n\tfor (int i = 0; i < n; i++)\n\t\tif (str[i] == '1') {\n\t\t\tans = (ans + ((pw[i] * pw[i]) % mdl) * pw[n - i - 1] % mdl) % mdl;\n\t\t}\n\n\tcout << ans << endl;\n\n\treturn 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "combinatorics",
+        "math"
+    ],
+    "dificulty": "1600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Malek Dance Club.json",
+    "editorial_link": "https://codeforces.com//blog/entry/8166",
+    "editorial": "Solving this problem was easy when you modeled the assignment with two\r\nsets of points numbered from to (inclusive) paired with line segments.\r\nEach line segment corresponds to a dance pair. And each pair of\r\nintersecting lines increase the complexity by one. Imagine you now the\r\nsolution for binary string . Now we want to calculate the answer for and\r\neasily. Look at the figure below: The figure shows what happens in a\r\nsimple case. Whenever you append before the same structure appears twice\r\nin the result. But whenever you append before the same structure appears\r\ntwice but the first half of points in right column are swapped with the\r\nsecond half. This increases the number of intersections by size of first\r\nhalf times size of the second half. So if has length and is the\r\ncomplexity of the assignment then we have: An interesting fact is that\r\nis equal to .\r\n"
+}

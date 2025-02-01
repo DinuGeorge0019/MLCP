@@ -1,1 +1,116 @@
-{"link": "https://codeforces.com//contest/1201/problem/B", "problemId": "383825", "problem_idx": "B", "shortId": "1201B", "contest_number": "1201", "problem_submissions": {"D": [58282984, 58285276, 58288662, 58287120, 58288428, 58288088, 58287196, 58286940, 58293709, 58290148, 58292701, 58291902, 58289292, 58289457, 58289281, 58288685, 58285856, 58292531], "C": [58274262, 58275378, 58275429, 116632449, 116631019, 58275062, 58276963, 58278514, 58276803, 58277770, 58276940, 58274085, 58273643, 58275528, 58274524, 58274700, 58277775, 58274570, 58271303, 58273056], "B": [58271978, 58270841, 58272256, 58272912, 58273123, 58271671, 58271261, 58275291, 58272166, 58271760, 58271053, 58271553, 58271578, 58272097, 58275948, 58271369, 58278712, 58274589], "A": [58270131, 58270185, 58270752, 58271799, 58270882, 58270392, 58270232, 58273480, 58270504, 58270476, 58308382, 58270298, 58270453, 58270435, 58270635, 58270730, 58270229, 58270187, 58276880], "E1": [58306902, 58388117, 58386937], "E2": [58306808]}, "name": "B. Zero Array", "statement": "You are given an array a_1, a_2,\r\nldots, a_n.In one operation you can choose two elements a_i and a_j (i\r\nne j) and decrease each of them by one.You need to check whether it is\r\npossible to make all the elements equal to zero or not.\r\n", "solutions": ["#include <bits/stdc++.h>\nusing namespace std;\n\nconst int maxn = 1e5 + 5;\nint a[maxn];\n\nint main() {\n    int n; scanf(\"%d\", &n);\n    for (int i = 0; i < n; ++i) scanf(\"%d\", &a[i]);\n    sort(a, a + n);\n\n    if (accumulate(a, a + n, 0ll) & 1) {\n        puts(\"NO\");\n        return 0;\n    }\n\n    long long sum = 0;\n    for (int i = 0; i < n - 1; ++i) sum += a[i];\n    if (sum >= a[n - 1]) puts(\"YES\");\n    else puts(\"NO\");\n}\n\n"], "input": "", "output": "", "tags": ["greedy", "math"], "dificulty": "1500", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/1201/problem/B",
+    "problemId": "383825",
+    "problem_idx": "B",
+    "shortId": "1201B",
+    "contest_number": "1201",
+    "problem_submissions": {
+        "D": [
+            58282984,
+            58285276,
+            58288662,
+            58287120,
+            58288428,
+            58288088,
+            58287196,
+            58286940,
+            58293709,
+            58290148,
+            58292701,
+            58291902,
+            58289292,
+            58289457,
+            58289281,
+            58288685,
+            58285856,
+            58292531
+        ],
+        "C": [
+            58274262,
+            58275378,
+            58275429,
+            116632449,
+            116631019,
+            58275062,
+            58276963,
+            58278514,
+            58276803,
+            58277770,
+            58276940,
+            58274085,
+            58273643,
+            58275528,
+            58274524,
+            58274700,
+            58277775,
+            58274570,
+            58271303,
+            58273056
+        ],
+        "B": [
+            58271978,
+            58270841,
+            58272256,
+            58272912,
+            58273123,
+            58271671,
+            58271261,
+            58275291,
+            58272166,
+            58271760,
+            58271053,
+            58271553,
+            58271578,
+            58272097,
+            58275948,
+            58271369,
+            58278712,
+            58274589
+        ],
+        "A": [
+            58270131,
+            58270185,
+            58270752,
+            58271799,
+            58270882,
+            58270392,
+            58270232,
+            58273480,
+            58270504,
+            58270476,
+            58308382,
+            58270298,
+            58270453,
+            58270435,
+            58270635,
+            58270730,
+            58270229,
+            58270187,
+            58276880
+        ],
+        "E1": [
+            58306902,
+            58388117,
+            58386937
+        ],
+        "E2": [
+            58306808
+        ]
+    },
+    "name": "B. Zero Array",
+    "statement": "You are given an array a_1, a_2,\r\nldots, a_n.In one operation you can choose two elements a_i and a_j (i\r\nne j) and decrease each of them by one.You need to check whether it is\r\npossible to make all the elements equal to zero or not.\r\n",
+    "solutions": [
+        "#include <bits/stdc++.h>\nusing namespace std;\n\nconst int maxn = 1e5 + 5;\nint a[maxn];\n\nint main() {\n    int n; scanf(\"%d\", &n);\n    for (int i = 0; i < n; ++i) scanf(\"%d\", &a[i]);\n    sort(a, a + n);\n\n    if (accumulate(a, a + n, 0ll) & 1) {\n        puts(\"NO\");\n        return 0;\n    }\n\n    long long sum = 0;\n    for (int i = 0; i < n - 1; ++i) sum += a[i];\n    if (sum >= a[n - 1]) puts(\"YES\");\n    else puts(\"NO\");\n}\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "greedy",
+        "math"
+    ],
+    "dificulty": "1500",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Zero Array.json",
+    "editorial_link": "https://codeforces.com/blog/entry/68911",
+    "editorial": "There are 2 things needed to be possible to make all elements zero:1:\r\nThe sum of the elements must be even.2: The biggest element have to be\r\nless or equal than the sum of all the other elements.If both are true,\r\nthe answer is \"\", otherwise \"\".\r\n"
+}

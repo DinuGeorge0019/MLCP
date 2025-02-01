@@ -1,1 +1,104 @@
-{"link": "https://codeforces.com//contest/786/problem/C", "problemId": "99629", "problem_idx": "C", "shortId": "786C", "contest_number": "786", "problem_submissions": {"E": [25753975, 25749618, 25751063, 25750167, 25750928, 25751180, 26105577, 25800132], "D": [25746644, 25778480], "C": [25742197, 25745538, 25743345, 25745842, 25739155, 25745929, 25742960, 25745796, 25744579, 25746028, 25746972, 25743401, 25747247, 25747535, 25746531, 25744441, 25746633, 25742165, 25747374, 25744720], "B": [25740468, 25741179, 25741185, 25743380, 25745478, 25745982, 25742716, 25741370, 25741364, 25742235, 25746446, 25742809, 25743016, 25744432, 25748452, 25743844, 25745002, 25744286, 25740598], "A": [25737862, 25737692, 25737872, 25738672, 25742192, 25738355, 25739309, 25738230, 25737832, 25738120, 25738474, 25738969, 25738916, 25738225, 25737834, 25738628, 25738638, 25747228, 25739393, 25749219]}, "name": "C. Till I Collapse", "statement": "Rick and Morty want to find MR. PBH and they can\u2019t do it alone. So they\r\nneed of Mr. Meeseeks. They Have generated Mr. Meeseeks, standing in a\r\nline numbered from to . Each of them has his own color. -th Mr.\r\nMeeseeks\u2019 color is . Rick and Morty are gathering their army and they\r\nwant to divide Mr. Meeseeks into some squads. They don\u2019t want their\r\nsquads to be too colorful, so each squad should have Mr. Meeseeks of at\r\nmost different colors. Also each squad should be a continuous subarray\r\nof Mr. Meeseeks in the line. Meaning that for each , if Mr. Meeseeks\r\nnumber and Mr. Meeseeks number are in the same squad then Mr. Meeseeks\r\nnumber should be in that same squad. Also, each squad needs its own\r\npresidio, and building a presidio needs money, so they want the total\r\nnumber of squads to be minimized.Rick and Morty haven\u2019t finalized the\r\nexact value of , so in order to choose it, for each between and\r\n(inclusive) need to know the minimum number of presidios needed.\r\n", "solutions": ["#include <cstdio>\n#include <cstring>\n#include <cmath>\n#include <algorithm>\n#include <vector>\n#include <string>\n#include <map>\n#include <set>\n#include <cassert>\nusing namespace std;\n#define rep(i,a,n) for (int i=a;i<n;i++)\n#define per(i,a,n) for (int i=n-1;i>=a;i--)\n#define pb push_back\n#define mp make_pair\n#define all(x) (x).begin(),(x).end()\n#define fi first\n#define se second\n#define SZ(x) ((int)(x).size())\ntypedef vector<int> VI;\ntypedef long long ll;\ntypedef pair<int,int> PII;\nconst ll mod=1000000007;\nll powmod(ll a,ll b) {ll res=1;a%=mod; assert(b>=0); for(;b;b>>=1){if(b&1)res=res*a%mod;a=a*a%mod;}return res;}\n// head\n\nconst int N=101000;\nint n,c[N],ocr[N],nxtocr[N],cnt[N],a[N];\nVI r[N];\nvoid modify(int x,int s) {\n\tfor (;x<=n+1;x+=x&(-x)) c[x]+=s;\n}\nint find(int x) {\n\tint p=0;\n\tper(i,0,20) {\n\t\tif (p+(1<<i)<=n+1&&c[p+(1<<i)]<x) {\n\t\t\tx-=c[p+(1<<i)];\n\t\t\tp+=(1<<i);\n\t\t}\n\t}\n\treturn p+1;\n}\nint main() {\n\tscanf(\"%d\",&n);\n\trep(i,1,n+1) scanf(\"%d\",a+i);\n\trep(i,1,n+1) ocr[i]=n+1;\n\tper(i,1,n+1) {\n\t\tnxtocr[i]=ocr[a[i]];\n\t\tocr[a[i]]=i;\n\t}\n\trep(i,1,n+1) {\n\t\tmodify(ocr[i],1);\n\t\tr[1].pb(i);\n\t}\n\trep(i,1,n+1) {\n\t\tfor (auto d:r[i]) {\n\t\t\tint k=find(d+1);\n//\t\t\tprintf(\"%d %d %d\\n\",i,d,k);\n\t\t\tcnt[d]++;\n\t\t\tr[k].pb(d);\n\t\t}\n\t\tmodify(i,-1);\n\t\tmodify(nxtocr[i],1);\n\t}\n\trep(i,1,n+1) printf(\"%d \",cnt[i]);\n}\n"], "input": "", "output": "", "tags": ["data structures", "divide and conquer"], "dificulty": "2400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/786/problem/C",
+    "problemId": "99629",
+    "problem_idx": "C",
+    "shortId": "786C",
+    "contest_number": "786",
+    "problem_submissions": {
+        "E": [
+            25753975,
+            25749618,
+            25751063,
+            25750167,
+            25750928,
+            25751180,
+            26105577,
+            25800132
+        ],
+        "D": [
+            25746644,
+            25778480
+        ],
+        "C": [
+            25742197,
+            25745538,
+            25743345,
+            25745842,
+            25739155,
+            25745929,
+            25742960,
+            25745796,
+            25744579,
+            25746028,
+            25746972,
+            25743401,
+            25747247,
+            25747535,
+            25746531,
+            25744441,
+            25746633,
+            25742165,
+            25747374,
+            25744720
+        ],
+        "B": [
+            25740468,
+            25741179,
+            25741185,
+            25743380,
+            25745478,
+            25745982,
+            25742716,
+            25741370,
+            25741364,
+            25742235,
+            25746446,
+            25742809,
+            25743016,
+            25744432,
+            25748452,
+            25743844,
+            25745002,
+            25744286,
+            25740598
+        ],
+        "A": [
+            25737862,
+            25737692,
+            25737872,
+            25738672,
+            25742192,
+            25738355,
+            25739309,
+            25738230,
+            25737832,
+            25738120,
+            25738474,
+            25738969,
+            25738916,
+            25738225,
+            25737834,
+            25738628,
+            25738638,
+            25747228,
+            25739393,
+            25749219
+        ]
+    },
+    "name": "C. Till I Collapse",
+    "statement": "Rick and Morty want to find MR. PBH and they can\u2019t do it alone. So they\r\nneed of Mr. Meeseeks. They Have generated Mr. Meeseeks, standing in a\r\nline numbered from to . Each of them has his own color. -th Mr.\r\nMeeseeks\u2019 color is . Rick and Morty are gathering their army and they\r\nwant to divide Mr. Meeseeks into some squads. They don\u2019t want their\r\nsquads to be too colorful, so each squad should have Mr. Meeseeks of at\r\nmost different colors. Also each squad should be a continuous subarray\r\nof Mr. Meeseeks in the line. Meaning that for each , if Mr. Meeseeks\r\nnumber and Mr. Meeseeks number are in the same squad then Mr. Meeseeks\r\nnumber should be in that same squad. Also, each squad needs its own\r\npresidio, and building a presidio needs money, so they want the total\r\nnumber of squads to be minimized.Rick and Morty haven\u2019t finalized the\r\nexact value of , so in order to choose it, for each between and\r\n(inclusive) need to know the minimum number of presidios needed.\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <cstring>\n#include <cmath>\n#include <algorithm>\n#include <vector>\n#include <string>\n#include <map>\n#include <set>\n#include <cassert>\nusing namespace std;\n#define rep(i,a,n) for (int i=a;i<n;i++)\n#define per(i,a,n) for (int i=n-1;i>=a;i--)\n#define pb push_back\n#define mp make_pair\n#define all(x) (x).begin(),(x).end()\n#define fi first\n#define se second\n#define SZ(x) ((int)(x).size())\ntypedef vector<int> VI;\ntypedef long long ll;\ntypedef pair<int,int> PII;\nconst ll mod=1000000007;\nll powmod(ll a,ll b) {ll res=1;a%=mod; assert(b>=0); for(;b;b>>=1){if(b&1)res=res*a%mod;a=a*a%mod;}return res;}\n// head\n\nconst int N=101000;\nint n,c[N],ocr[N],nxtocr[N],cnt[N],a[N];\nVI r[N];\nvoid modify(int x,int s) {\n\tfor (;x<=n+1;x+=x&(-x)) c[x]+=s;\n}\nint find(int x) {\n\tint p=0;\n\tper(i,0,20) {\n\t\tif (p+(1<<i)<=n+1&&c[p+(1<<i)]<x) {\n\t\t\tx-=c[p+(1<<i)];\n\t\t\tp+=(1<<i);\n\t\t}\n\t}\n\treturn p+1;\n}\nint main() {\n\tscanf(\"%d\",&n);\n\trep(i,1,n+1) scanf(\"%d\",a+i);\n\trep(i,1,n+1) ocr[i]=n+1;\n\tper(i,1,n+1) {\n\t\tnxtocr[i]=ocr[a[i]];\n\t\tocr[a[i]]=i;\n\t}\n\trep(i,1,n+1) {\n\t\tmodify(ocr[i],1);\n\t\tr[1].pb(i);\n\t}\n\trep(i,1,n+1) {\n\t\tfor (auto d:r[i]) {\n\t\t\tint k=find(d+1);\n//\t\t\tprintf(\"%d %d %d\\n\",i,d,k);\n\t\t\tcnt[d]++;\n\t\t\tr[k].pb(d);\n\t\t}\n\t\tmodify(i,-1);\n\t\tmodify(nxtocr[i],1);\n\t}\n\trep(i,1,n+1) printf(\"%d \",cnt[i]);\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "data structures",
+        "divide and conquer"
+    ],
+    "dificulty": "2400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Till I Collapse.json",
+    "editorial_link": "https://codeforces.com//blog/entry/51163",
+    "editorial": "Your task is to find the minimum number of parts needed to partition\r\nthis such that each part contains no more than different numbers.For a\r\nfixed , we can greedily find the answer. First, fix a maximal partition\r\nwith at most different numbers in it, then a maximal after that and so\r\non. If answer for is , we can find this number in . The only thing we\r\nwant is to find maximum for a fixed so that has at most distinct\r\nnumbers. This can be done with binary search + segment tree, but it\u00e2\u0080\u0099s\r\ntoo slow. We can do this using a persistent segment tree in : for a\r\nfixed , we define to be if and there\u00e2\u0080\u0099s no such that and otherwise . So,\r\nif we have a segment tree on every , we can use this segment tree to\r\nfind the first for an arbitrary (it\u00e2\u0080\u0099s like finding one in this array).So\r\nwe find the answer in , so the total complexity is , and because , ,\r\nso:Total time complexity: .\r\n"
+}

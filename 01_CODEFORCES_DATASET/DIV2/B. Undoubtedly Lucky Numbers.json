@@ -1,1 +1,105 @@
-{"link": "https://codeforces.com//contest/244/problem/B", "problemId": "2192", "problem_idx": "B", "shortId": "244B", "contest_number": "244", "problem_submissions": {"D": [2571247, 2570676, 2575346, 2576494, 2682903, 2585837, 2585755, 2572212, 2572142, 2579013, 3418813, 2572107, 2574421], "C": [2569289, 2572891, 2570409, 2570513, 2641304, 2570920, 2572105, 2569437, 2570373, 2571030, 2570901, 2571143, 2571722, 2571723, 3289288, 2571234, 2571110], "B": [2568269, 2572132, 2568654, 2569576, 19961131, 2568814, 2570231, 2570819, 2569055, 2570885, 2568719, 2569755, 2569459, 2569334, 2568410, 2569135, 2570454, 2569964, 2569449], "A": [2567788, 2570624, 2567790, 2568110, 2567940, 2568024, 2569710, 2567812, 2568427, 2567980, 2568379, 2567844, 2567847, 2569075, 2567791, 2567881, 2567930, 2567996], "E": [2585587, 2630732]}, "name": "B. Undoubtedly Lucky Numbers", "statement": "Let\u2019s call a positive integer , if there are such digits and , that the\r\ndecimal representation of number (without leading zeroes) contains only\r\ndigits and .Polycarpus has integer . He wants to know how many positive\r\nintegers that do not exceed , are undoubtedly lucky. Help him, count\r\nthis number.\r\n", "solutions": ["#include <stdio.h>\n#include <map>\nusing namespace std;\nmap<long long, int> mp;\nint l[10000], w, r;\nint main(){\n    int n, x, y, ans = 0;\n    scanf(\"%d\", &n);\n    for (x = 0; x < 10; x++){\n        for (y = x + 1; y < 10; y++){\n            w = r = 0;\n            if (x && x <= n) l[w++] = x;\n            if (y && y <= n) l[w++] = y;\n            while (r < w){\n                long long t = l[r];\n                if (t * 10 + x <= n) l[w++] = t * 10 + x;\n                if (t * 10 + y <= n) l[w++] = t * 10 + y;\n                r++;\n            }\n            for (r = 0; r < w; r++){\n                if (mp.count(l[r]) == 0){\n                    ans++;\n                    mp[l[r]] = 1;\n                }\n            }\n        }\n    }\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["bitmasks", "brute force", "dfs and similar"], "dificulty": "1600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/244/problem/B",
+    "problemId": "2192",
+    "problem_idx": "B",
+    "shortId": "244B",
+    "contest_number": "244",
+    "problem_submissions": {
+        "D": [
+            2571247,
+            2570676,
+            2575346,
+            2576494,
+            2682903,
+            2585837,
+            2585755,
+            2572212,
+            2572142,
+            2579013,
+            3418813,
+            2572107,
+            2574421
+        ],
+        "C": [
+            2569289,
+            2572891,
+            2570409,
+            2570513,
+            2641304,
+            2570920,
+            2572105,
+            2569437,
+            2570373,
+            2571030,
+            2570901,
+            2571143,
+            2571722,
+            2571723,
+            3289288,
+            2571234,
+            2571110
+        ],
+        "B": [
+            2568269,
+            2572132,
+            2568654,
+            2569576,
+            19961131,
+            2568814,
+            2570231,
+            2570819,
+            2569055,
+            2570885,
+            2568719,
+            2569755,
+            2569459,
+            2569334,
+            2568410,
+            2569135,
+            2570454,
+            2569964,
+            2569449
+        ],
+        "A": [
+            2567788,
+            2570624,
+            2567790,
+            2568110,
+            2567940,
+            2568024,
+            2569710,
+            2567812,
+            2568427,
+            2567980,
+            2568379,
+            2567844,
+            2567847,
+            2569075,
+            2567791,
+            2567881,
+            2567930,
+            2567996
+        ],
+        "E": [
+            2585587,
+            2630732
+        ]
+    },
+    "name": "B. Undoubtedly Lucky Numbers",
+    "statement": "Let\u2019s call a positive integer , if there are such digits and , that the\r\ndecimal representation of number (without leading zeroes) contains only\r\ndigits and .Polycarpus has integer . He wants to know how many positive\r\nintegers that do not exceed , are undoubtedly lucky. Help him, count\r\nthis number.\r\n",
+    "solutions": [
+        "#include <stdio.h>\n#include <map>\nusing namespace std;\nmap<long long, int> mp;\nint l[10000], w, r;\nint main(){\n    int n, x, y, ans = 0;\n    scanf(\"%d\", &n);\n    for (x = 0; x < 10; x++){\n        for (y = x + 1; y < 10; y++){\n            w = r = 0;\n            if (x && x <= n) l[w++] = x;\n            if (y && y <= n) l[w++] = y;\n            while (r < w){\n                long long t = l[r];\n                if (t * 10 + x <= n) l[w++] = t * 10 + x;\n                if (t * 10 + y <= n) l[w++] = t * 10 + y;\n                r++;\n            }\n            for (r = 0; r < w; r++){\n                if (mp.count(l[r]) == 0){\n                    ans++;\n                    mp[l[r]] = 1;\n                }\n            }\n        }\n    }\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "bitmasks",
+        "brute force",
+        "dfs and similar"
+    ],
+    "dificulty": "1600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Undoubtedly Lucky Numbers.json",
+    "editorial_link": "https://codeforces.com//blog/entry/5895",
+    "editorial": "Solution 1. You should write some bruteforce solution over all numbers with no more than 9 digits (number 109 should be considered separately). Bruteforce algo seems like this:\n\ndfs( int num ) // run it as dfs(0)\n  if (num > 0 && num <= n) ans++\n  if (num >= 10^8) return\n  for a = 0..9 do\n    if num*10+a>0 then\n      if number num*10+a has no more than 2 different digits then\n        dfs( num*10+a )\nans will store the answer. After that you wrote bruteforce, you can run it and see that it works fast (that is same time for any testcase).\n\nSolution 2. Let's build all undoubdetly lucku numbers using bitmasks. You can iterate over length of number L, pair of digits x and y, and bitmask m of length L. If the i-th bit of m is 1, the i-th digit of number should be x; otherwise it should be y. So about 103?\u00d7?210 numbers will be generated (it is very rough estimate, count of numbers will be more than 10 times less).\n\nIn this solution you should accurately process the case of leading zeroes and the case when all digits of number are same."
+}

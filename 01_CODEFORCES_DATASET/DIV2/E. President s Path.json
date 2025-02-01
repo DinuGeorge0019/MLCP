@@ -1,1 +1,101 @@
-{"link": "https://codeforces.com//contest/416/problem/E", "problemId": "8299", "problem_idx": "E", "shortId": "416E", "contest_number": "416", "problem_submissions": {"E": [6343446, 6342010, 6345905, 6345786, 6345780, 6345773], "D": [6339770, 6344331, 6341205, 6342895, 6343208, 6342314], "C": [6337298, 6337895, 6338062, 6340196, 6337743, 6338820, 6338400, 6338250, 6338293, 6337870, 6340982, 6339823, 6341497, 6338189, 6339580, 6337965, 6340260, 6340014], "B": [6336584, 6336919, 6336609, 6338408, 6338336, 6337856, 6337221, 6337301, 6340247, 6336851, 6339693, 6338067, 6337890, 6336878, 6337704, 6336869, 6338043, 6338578], "A": [6336344, 6336437, 6336373, 6336510, 6336806, 6336676, 6336386, 6337013, 6336347, 6337152, 6336694, 6336923, 6336396, 6336944, 6336382, 6336809, 6336583]}, "name": "E. President s Path", "statement": "Good old Berland has cities and roads. Each road connects a pair of\r\ndistinct cities and is bidirectional. Between any pair of cities, there\r\nis at most one road. For each road, we know its length.We also know that\r\nthe President will soon ride along the Berland roads from city to city .\r\nNaturally, he will choose one of the shortest paths from to , but nobody\r\ncan say for sure which path he will choose.The Minister for Transport is\r\nreally afraid that the President might get upset by the state of the\r\nroads in the country. That is the reason he is planning to repair the\r\nroads in the possible President\u2019s path.Making the budget for such an\r\nevent is not an easy task. For all possible distinct pairs () find the\r\nnumber of roads that lie on at least one shortest path from to .\r\n", "solutions": ["#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <vector>\n#include <iostream>\n#include <algorithm>\n\nusing namespace std;\n\n#define foreach(e,x) for(__typeof(x.begin()) e=x.begin(); e!=x.end(); ++e)\n\nconst int N = 500 + 10;\nconst int INF = 1000000000LL;\n\nint n;\nint a[N][N];\nlong long f[N][N];\nlong long minv[N], cnt[N];\nvector<pair<int, int> > adj[N];\n\nvoid solve()\n{\n\tcin >> n;\n\tfor(int i = 0; i < n; ++ i) {\n\t\tfor(int j = 0; j < n; ++ j) {\n\t\t\tf[i][j] = INF;\n\t\t}\n\t\tf[i][i] = 0;\n\t}\n\tint m;\n\tint u, v, l;\n\tcin >> m;\n\tfor(int i = 0; i < m; ++ i) {\n\t\tscanf(\"%d%d%d\", &u, &v, &l);\n\t\t-- u, -- v;\n\t\tadj[u].push_back(make_pair(v, l));\n\t\tadj[v].push_back(make_pair(u, l));\n\t\tf[u][v] = f[v][u] = min(f[u][v], (long long)l);\n\t}\n\n\tfor(int k = 0; k < n; ++ k) {\n\t\tfor(int i = 0; i < n; ++ i) {\n\t\t\tfor(int j = 0; j < n; ++ j) {\n\t\t\t\tf[i][j] = min(f[i][j], f[i][k] + f[k][j]);\n\t\t\t}\n\t\t}\n\t}\n\n\tfor(int j = 1; j < n; ++ j) {\n\t\tfor(int i = 0; i < n; ++ i) {\n\t\t\tminv[i] = INF;\n\t\t\tcnt[i] = 1;\n\t\t\tforeach(it, adj[i]) {\n\t\t\t\tint v = it->first;\n\t\t\t\tint tmp = it->second + f[v][j];\n\t\t\t\tif (tmp < minv[i]) {\n\t\t\t\t\tminv[i] = tmp;\n\t\t\t\t\tcnt[i] = 1;\n\t\t\t\t} else if (tmp == minv[i]) {\n\t\t\t\t\t++ cnt[i];\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tfor(int i = 0; i < j; ++ i) {\n\t\t\tif (f[i][j] == INF) {\n\t\t\t\ta[i][j] = 0;\n\t\t\t\tcontinue;\n\t\t\t}\n\t\t\tint ret = 0;\n\t\t\tfor(int k = 0; k < n; ++ k) {\n\t\t\t\tif (f[i][j] - f[i][k] == minv[k]) {\n\t\t\t\t\tret += cnt[k];\n\t\t\t\t}\n\t\t\t}\n\t\t\ta[i][j] = ret;\n\t\t}\n\t}\n\tfor(int i = 0; i < n; ++ i)\n\t\tfor(int j = i + 1; j < n; ++ j) {\n\t\t\tprintf(\"%d \", a[i][j]);\n\t\t}\n}\n\nint main()\n{\n\tsolve();\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["dp", "graphs", "shortest paths"], "dificulty": "2500", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/416/problem/E",
+    "problemId": "8299",
+    "problem_idx": "E",
+    "shortId": "416E",
+    "contest_number": "416",
+    "problem_submissions": {
+        "E": [
+            6343446,
+            6342010,
+            6345905,
+            6345786,
+            6345780,
+            6345773
+        ],
+        "D": [
+            6339770,
+            6344331,
+            6341205,
+            6342895,
+            6343208,
+            6342314
+        ],
+        "C": [
+            6337298,
+            6337895,
+            6338062,
+            6340196,
+            6337743,
+            6338820,
+            6338400,
+            6338250,
+            6338293,
+            6337870,
+            6340982,
+            6339823,
+            6341497,
+            6338189,
+            6339580,
+            6337965,
+            6340260,
+            6340014
+        ],
+        "B": [
+            6336584,
+            6336919,
+            6336609,
+            6338408,
+            6338336,
+            6337856,
+            6337221,
+            6337301,
+            6340247,
+            6336851,
+            6339693,
+            6338067,
+            6337890,
+            6336878,
+            6337704,
+            6336869,
+            6338043,
+            6338578
+        ],
+        "A": [
+            6336344,
+            6336437,
+            6336373,
+            6336510,
+            6336806,
+            6336676,
+            6336386,
+            6337013,
+            6336347,
+            6337152,
+            6336694,
+            6336923,
+            6336396,
+            6336944,
+            6336382,
+            6336809,
+            6336583
+        ]
+    },
+    "name": "E. President s Path",
+    "statement": "Good old Berland has cities and roads. Each road connects a pair of\r\ndistinct cities and is bidirectional. Between any pair of cities, there\r\nis at most one road. For each road, we know its length.We also know that\r\nthe President will soon ride along the Berland roads from city to city .\r\nNaturally, he will choose one of the shortest paths from to , but nobody\r\ncan say for sure which path he will choose.The Minister for Transport is\r\nreally afraid that the President might get upset by the state of the\r\nroads in the country. That is the reason he is planning to repair the\r\nroads in the possible President\u2019s path.Making the budget for such an\r\nevent is not an easy task. For all possible distinct pairs () find the\r\nnumber of roads that lie on at least one shortest path from to .\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <vector>\n#include <iostream>\n#include <algorithm>\n\nusing namespace std;\n\n#define foreach(e,x) for(__typeof(x.begin()) e=x.begin(); e!=x.end(); ++e)\n\nconst int N = 500 + 10;\nconst int INF = 1000000000LL;\n\nint n;\nint a[N][N];\nlong long f[N][N];\nlong long minv[N], cnt[N];\nvector<pair<int, int> > adj[N];\n\nvoid solve()\n{\n\tcin >> n;\n\tfor(int i = 0; i < n; ++ i) {\n\t\tfor(int j = 0; j < n; ++ j) {\n\t\t\tf[i][j] = INF;\n\t\t}\n\t\tf[i][i] = 0;\n\t}\n\tint m;\n\tint u, v, l;\n\tcin >> m;\n\tfor(int i = 0; i < m; ++ i) {\n\t\tscanf(\"%d%d%d\", &u, &v, &l);\n\t\t-- u, -- v;\n\t\tadj[u].push_back(make_pair(v, l));\n\t\tadj[v].push_back(make_pair(u, l));\n\t\tf[u][v] = f[v][u] = min(f[u][v], (long long)l);\n\t}\n\n\tfor(int k = 0; k < n; ++ k) {\n\t\tfor(int i = 0; i < n; ++ i) {\n\t\t\tfor(int j = 0; j < n; ++ j) {\n\t\t\t\tf[i][j] = min(f[i][j], f[i][k] + f[k][j]);\n\t\t\t}\n\t\t}\n\t}\n\n\tfor(int j = 1; j < n; ++ j) {\n\t\tfor(int i = 0; i < n; ++ i) {\n\t\t\tminv[i] = INF;\n\t\t\tcnt[i] = 1;\n\t\t\tforeach(it, adj[i]) {\n\t\t\t\tint v = it->first;\n\t\t\t\tint tmp = it->second + f[v][j];\n\t\t\t\tif (tmp < minv[i]) {\n\t\t\t\t\tminv[i] = tmp;\n\t\t\t\t\tcnt[i] = 1;\n\t\t\t\t} else if (tmp == minv[i]) {\n\t\t\t\t\t++ cnt[i];\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tfor(int i = 0; i < j; ++ i) {\n\t\t\tif (f[i][j] == INF) {\n\t\t\t\ta[i][j] = 0;\n\t\t\t\tcontinue;\n\t\t\t}\n\t\t\tint ret = 0;\n\t\t\tfor(int k = 0; k < n; ++ k) {\n\t\t\t\tif (f[i][j] - f[i][k] == minv[k]) {\n\t\t\t\t\tret += cnt[k];\n\t\t\t\t}\n\t\t\t}\n\t\t\ta[i][j] = ret;\n\t\t}\n\t}\n\tfor(int i = 0; i < n; ++ i)\n\t\tfor(int j = i + 1; j < n; ++ j) {\n\t\t\tprintf(\"%d \", a[i][j]);\n\t\t}\n}\n\nint main()\n{\n\tsolve();\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp",
+        "graphs",
+        "shortest paths"
+    ],
+    "dificulty": "2500",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. President s Path.json",
+    "editorial_link": "https://codeforces.com//blog/entry/12277",
+    "editorial": "Let\u00e2\u0080\u0099s look at the graph given to us in the example: We need to count the\r\ncount of the edges on all the shortest paths between each pair of\r\nvertices. Let\u00e2\u0080\u0099s do something easier first instead of counting all the\r\nedges we will count only those which have the destination vertex on its\r\nside. For example here are the edges belonging to shortest paths from 4\r\nto 2 which are connected to vertex 2: Let\u00e2\u0080\u0099s denote this number like\r\nthis: number of edges which go into vertex on some shortest path from to\r\n. In the given example . Let\u00e2\u0080\u0099s also denote the set it is a set of the\r\nvertices which belong to at least one shortest path from to . For\r\nexample . With these two variables it can be seen that the answer for\r\nvertices and will be: In other words the answer for vertices and will be\r\nequal to the sum of for all vertices , which belong to any shortest path\r\nfrom to . So the only thing left is to calculate these and . Both of\r\nthem can be easily calculated if you have minimum distances between all\r\npairs of vertices. And these distances can be calculated using the\r\nFloyd-Warshall. So the full solution is: Calculate minimum distances\r\nbetween all pairs of vertices using Floyd-Warshall algorithm. Count .\r\nSimply iterate over all source vertices and all edges. For each edge\r\ncheck whether any of its ends belong to any shortest path from source.\r\nCalculate the answer. Let\u00e2\u0080\u0099s have three loops to iterate over the\r\nvertices , . First two vertices are those for which we\u00e2\u0080\u0099re calculating\r\nthe answer. Third vertex is the vertex which should belong to any\r\nshortest path (basically we\u00e2\u0080\u0099re checking whether belongs to ). If belongs\r\nto any shortest path from to then we add to the answer. Each step has a\r\ncomplexity . Submission: 6607257 P.S.: Please feel free to let me know\r\nabout any typos, errors, etc using the private messages.\r\n"
+}

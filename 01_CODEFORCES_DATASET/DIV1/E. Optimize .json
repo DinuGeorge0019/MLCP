@@ -1,1 +1,104 @@
-{"link": "https://codeforces.com//contest/338/problem/E", "problemId": "3400", "problem_idx": "E", "shortId": "338E", "contest_number": "338", "problem_submissions": {"D": [4295147, 4299466, 4295982, 4299910, 4297907, 4322675, 4322635, 4296295, 4300603, 4303747], "C": [4293877, 4292949, 4296119, 4290785, 4294450, 4290995, 4292819, 4294306, 4289507, 4319214, 4292496, 4292285, 4293888, 4293909, 4292095, 4292420], "A": [4292482, 4289057, 4289014, 4297071, 4289608, 4292907, 4298719, 4290998, 4292048, 4294562, 4288621, 4289027, 4288252, 4289309], "E": [4291715, 4297382, 4294190, 4295220, 4296654, 4297161, 4295153, 4304466, 4296200, 4296272, 4296355, 4296995, 4392972, 4307055], "B": [4289897, 4290803, 4292502, 4296197, 4291687, 4294720, 4290858, 4290695, 4291375, 4290406, 4289563, 4290575, 4290335, 4290751, 4293818, 4293496]}, "name": "E. Optimize ", "statement": "Manao is solving a problem with the following statement: He came up with\r\na solution that produces the correct answers but is too slow. You are\r\ngiven the pseudocode of his solution, where the function getAnswer\r\ncalculates the answer to the problem:getAnswer(a[1..n], b[1..len], h)\r\nanswer = 0 for i = 1 to n-len+1 answer = answer + f(a[i..i+len-1], b,\r\nh, 1) return answerf(s[1..len], b[1..len], h, index) if index = len+1\r\nthen return 1 for i = 1 to len if s[index] + b[i] >= h mem = b[i] b[i] =\r\n0 res = f(s, b, h, index + 1) b[i] = mem if res > 0 return 1 return\r\n0Your task is to help Manao optimize his algorithm.\r\n", "solutions": ["#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <memory.h>\n\nusing namespace std;\n\nconst int N = 2000010;\n\nint mx[N], add[N], a[N], b[N];\n\nvoid modify(int x, int l, int r, int ll, int rr, int v) {\n  if (l > rr || ll > r) return;\n  if (l >= ll && r <= rr) {\n    add[x] += v;\n    return;\n  }\n  if (add[x] != 0) {\n    add[x + x] += add[x];\n    add[x + x + 1] += add[x];\n    add[x] = 0;\n  }\n  int y = (l + r) >> 1;\n  modify(x + x, l, y, ll, rr, v);\n  modify(x + x + 1, y + 1, r, ll, rr, v);\n  mx[x] = mx[x + x + 1] + add[x + x + 1];\n  if (mx[x + x] + add[x + x] > mx[x]) mx[x] = mx[x + x] + add[x + x];\n}\n\nint main() {\n  int n, len, h;\n  scanf(\"%d %d %d\", &n, &len, &h);\n  for (int i=1;i<=len;i++) scanf(\"%d\", b+i);\n  sort(b + 1, b + len + 1);\n  reverse(b + 1, b + len + 1);\n  for (int i=1;i<=n;i++) {\n    int foo;\n    scanf(\"%d\", &foo);\n    int ll = 0, rr = len;\n    while (ll < rr) {\n      int mid = (ll + rr + 1) >> 1;\n      if (foo + b[mid] >= h) ll = mid;\n      else rr = mid - 1;\n    }\n    a[i] = ll;\n  }\n  memset(mx, 0, sizeof(mx));\n  memset(add, 0, sizeof(add));\n  for (int i=1;i<=len;i++) modify(1, 0, len, i, i, -i);\n  for (int i=1;i<=len-1;i++) modify(1, 0, len, a[i], len, 1);\n  int ans = 0;\n  for (int i=len;i<=n;i++) {\n    modify(1, 0, len, a[i], len, 1);\n    if (mx[1] + add[1] == 0) ans++;\n    modify(1, 0, len, a[i - len + 1], len, -1);\n  }\n  printf(\"%d\\n\", ans);\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["data structures"], "dificulty": "2600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/338/problem/E",
+    "problemId": "3400",
+    "problem_idx": "E",
+    "shortId": "338E",
+    "contest_number": "338",
+    "problem_submissions": {
+        "D": [
+            4295147,
+            4299466,
+            4295982,
+            4299910,
+            4297907,
+            4322675,
+            4322635,
+            4296295,
+            4300603,
+            4303747
+        ],
+        "C": [
+            4293877,
+            4292949,
+            4296119,
+            4290785,
+            4294450,
+            4290995,
+            4292819,
+            4294306,
+            4289507,
+            4319214,
+            4292496,
+            4292285,
+            4293888,
+            4293909,
+            4292095,
+            4292420
+        ],
+        "A": [
+            4292482,
+            4289057,
+            4289014,
+            4297071,
+            4289608,
+            4292907,
+            4298719,
+            4290998,
+            4292048,
+            4294562,
+            4288621,
+            4289027,
+            4288252,
+            4289309
+        ],
+        "E": [
+            4291715,
+            4297382,
+            4294190,
+            4295220,
+            4296654,
+            4297161,
+            4295153,
+            4304466,
+            4296200,
+            4296272,
+            4296355,
+            4296995,
+            4392972,
+            4307055
+        ],
+        "B": [
+            4289897,
+            4290803,
+            4292502,
+            4296197,
+            4291687,
+            4294720,
+            4290858,
+            4290695,
+            4291375,
+            4290406,
+            4289563,
+            4290575,
+            4290335,
+            4290751,
+            4293818,
+            4293496
+        ]
+    },
+    "name": "E. Optimize ",
+    "statement": "Manao is solving a problem with the following statement: He came up with\r\na solution that produces the correct answers but is too slow. You are\r\ngiven the pseudocode of his solution, where the function getAnswer\r\ncalculates the answer to the problem:getAnswer(a[1..n], b[1..len], h)\r\nanswer = 0 for i = 1 to n-len+1 answer = answer + f(a[i..i+len-1], b,\r\nh, 1) return answerf(s[1..len], b[1..len], h, index) if index = len+1\r\nthen return 1 for i = 1 to len if s[index] + b[i] >= h mem = b[i] b[i] =\r\n0 res = f(s, b, h, index + 1) b[i] = mem if res > 0 return 1 return\r\n0Your task is to help Manao optimize his algorithm.\r\n",
+    "solutions": [
+        "#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <memory.h>\n\nusing namespace std;\n\nconst int N = 2000010;\n\nint mx[N], add[N], a[N], b[N];\n\nvoid modify(int x, int l, int r, int ll, int rr, int v) {\n  if (l > rr || ll > r) return;\n  if (l >= ll && r <= rr) {\n    add[x] += v;\n    return;\n  }\n  if (add[x] != 0) {\n    add[x + x] += add[x];\n    add[x + x + 1] += add[x];\n    add[x] = 0;\n  }\n  int y = (l + r) >> 1;\n  modify(x + x, l, y, ll, rr, v);\n  modify(x + x + 1, y + 1, r, ll, rr, v);\n  mx[x] = mx[x + x + 1] + add[x + x + 1];\n  if (mx[x + x] + add[x + x] > mx[x]) mx[x] = mx[x + x] + add[x + x];\n}\n\nint main() {\n  int n, len, h;\n  scanf(\"%d %d %d\", &n, &len, &h);\n  for (int i=1;i<=len;i++) scanf(\"%d\", b+i);\n  sort(b + 1, b + len + 1);\n  reverse(b + 1, b + len + 1);\n  for (int i=1;i<=n;i++) {\n    int foo;\n    scanf(\"%d\", &foo);\n    int ll = 0, rr = len;\n    while (ll < rr) {\n      int mid = (ll + rr + 1) >> 1;\n      if (foo + b[mid] >= h) ll = mid;\n      else rr = mid - 1;\n    }\n    a[i] = ll;\n  }\n  memset(mx, 0, sizeof(mx));\n  memset(add, 0, sizeof(add));\n  for (int i=1;i<=len;i++) modify(1, 0, len, i, i, -i);\n  for (int i=1;i<=len-1;i++) modify(1, 0, len, a[i], len, 1);\n  int ans = 0;\n  for (int i=len;i<=n;i++) {\n    modify(1, 0, len, a[i], len, 1);\n    if (mx[1] + add[1] == 0) ans++;\n    modify(1, 0, len, a[i - len + 1], len, -1);\n  }\n  printf(\"%d\\n\", ans);\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "data structures"
+    ],
+    "dificulty": "2600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\E. Optimize .json",
+    "editorial_link": "https://codeforces.com//blog/entry/8629",
+    "editorial": "Decyphering Manao\u00e2\u0080\u0099s pseudocode, we unearth the following problem: you\r\nare given arrays a[1..n] and b[1..len] and a number h. Consider each\r\nsubarray of a of length L. Let us call it s. Count how many of them have\r\nthe property that the elements of b can be shuffled in such a way that\r\neach sum s[i]+b[i] (1<=i<=L) is at least h. First, let\u00e2\u0080\u0099s solve a problem\r\nfor one subarray. That is, we need to determine whether the elements of\r\ntwo arrays s and b can be matched in such a way that each sum is h or\r\nmore. We can do the following: for each element of s, find the least\r\nelement of b such that the two\u00e2\u0080\u0099s sum is at least h, and erase the\r\ncorresponding element from b. If we managed to pair each of the elements\r\nfrom s, then the arrays hold the property. Note that the elements of s\r\ncan be processed in any order. If both s and b are sorted, then the idea\r\ndescribed can be implemented in linear time. We can not achieve better\r\ncomplexity when considering each subarray separately, so we will try to\r\nsolve the problem for several subarrays at the same time. Suppose that b\r\nis already sorted. We choose some X < len and consider a subarray\r\na[i..i+X-1]. Let\u00e2\u0080\u0099s process all the numbers from this subarray, i.e., for\r\neach of them find the least b[j] which pairs up with this number and\r\nerase it from b. The whole processing can be done in time O(n) if we\r\nhave a sorted version of a and the corresponding indices computed\r\nbeforehand. Now we can find the answer for every subarray s of length\r\nlen which begins in segment [i-Y, i] using O(YlogY) operations, where\r\nY=len-X. For this, we just take the Y elements which are in s but not in\r\na[i..i+X-1] and process them against the numbers left in b. If each of\r\nthem has been paired, then subarray s holds the required property,\r\notherwise it does not. Moreover, since the subarrays we consider are\r\noverlapping, we can optimize even further and obtain amortized O(Y)\r\ncomplexity per subarray. To understand this, note that for processing a\r\nsubarray in O(Y) time we only need to obtain its sorted version (to be\r\nmore specific, the sorted version of the portion which does not overlap\r\nwith a[i..i+X-1]). For the leftmost subarray we consider, we can sort\r\nits elements in usual way. For every next subarray (which differs from\r\nits predecessor in exactly two elements) we only need O(Y) operations to\r\nobtain its sorted version by updating the information from the previous\r\nsubarray. Thus we have complexity O(YlogY + Y^2) of processing Y\r\nsegments in total, which gives O(Y) per segment on average. Now let us\r\ntake a look at the full picture. To process all subarrays of length len,\r\nwe need to use the method given above for each of the segments\r\na[Y..Y+len-1], a[2Y+1..2Y+len], a[3Y+2..3Y+len+1], .... Therefore, we\r\nhave O(N/Y) iterations of algorithm with comlexity O(N+Y^2). We need to\r\nfind a value of Y that minimizes N*N/Y + N*Y, which is Y=\u00c2\u00a0sqrt(N). The\r\noverall complexity is O(Nsqrt(N)). However, we need to consider the case\r\nlen < sqrt(N) separately, since then Y = len - X < len. In this case,\r\nthe problem can be solved in time O(N*len) with ideas similar to those\r\ndescribed above. You can check the implementation of this idea in\r\n4302344. P.S. The statement of the \"problem\" that Manao is solving\r\nactually contains a Georgian fairy tale. You can copy almost the same\r\ntext from here and try to guess what he tale is about :)\r\n"
+}

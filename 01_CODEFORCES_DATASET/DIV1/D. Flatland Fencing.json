@@ -1,1 +1,104 @@
-{"link": "https://codeforces.com//contest/154/problem/D", "problemId": "957", "problem_idx": "D", "shortId": "154D", "contest_number": "154", "problem_submissions": {"E": [1231038, 1230512, 1358194], "D": [1225676, 1226429, 1228394, 1228749, 1229408, 1228702, 1229077, 1223939, 1227964, 1479286, 1228630, 1225612, 1229806, 1227500, 1227060], "C": [1223619, 1223667, 1223145, 1226138, 1224320, 1226736, 1226231, 1230453, 1229461, 1479267, 1226553, 1226465, 1225747, 1230469, 1224292, 1224323], "B": [1222804, 1227642, 1224517, 1223990, 1223294, 1225469, 1223473, 1226506, 1224622, 1479175, 1224138, 1223064, 1223792, 1223935, 1223500, 1223955, 1223146, 1223079], "A": [1221382, 1221463, 1226241, 1221946, 1222395, 1223447, 1221860, 1224559, 1222303, 1479137, 1222840, 1221809, 1230571, 1221518, 1221796, 1222615, 1221718]}, "name": "D. Flatland Fencing", "statement": "The King of Flatland will organize a knights\u2019 tournament! The winner\r\nwill get half the kingdom and the favor of the princess of legendary\r\nbeauty and wisdom. The final test of the applicants\u2019 courage and\r\nstrength will be a fencing tournament. The tournament is held by the\r\nfollowing rules: the participants fight one on one, the winner (or\r\nrather, the survivor) transfers to the next round.Before the battle both\r\nparticipants stand at the specified points on the axis with integer\r\ncoordinates. Then they make moves in turn. The first participant moves\r\nfirst, naturally. During a move, the first participant can transfer from\r\nthe point to any integer point of the interval [; ]. The second\r\nparticipant can transfer during a move to any integer point of the\r\ninterval [; ]. That is, the options for the players\u2019 moves are symmetric\r\n(note that the numbers and are not required to be positive, and if ,\r\nthen staying in one place is a correct move). At any time the\r\nparticipants can be located arbitrarily relative to each other, that is,\r\nit is allowed to \"jump\" over the enemy in any direction. A participant\r\nwins if he uses his move to transfer to the point where his opponent\r\nis.Of course, the princess has already chosen a husband and now she\r\nwants to make her sweetheart win the tournament. He has already reached\r\nthe tournament finals and he is facing the last battle. The princess\r\nasks the tournament manager to arrange the tournament finalists in such\r\na way that her sweetheart wins the tournament, considering that both\r\nplayers play optimally. However, the initial location of the\r\nparticipants has already been announced, and we can only pull some\r\nstrings and determine which participant will be first and which one will\r\nbe second. But how do we know which participant can secure the victory?\r\nAlas, the princess is not learned in the military affairs... Therefore,\r\nshe asks you to determine how the battle will end considering that both\r\nopponents play optimally. Also, if the first player wins, your task is\r\nto determine his winning move.\r\n", "solutions": ["#include<stdio.h>\n#include<algorithm>\nusing namespace std;\nlong long x1,x2,a,b;\ninline int solve(long long& winm){\n    if(x2-x1<=b&&x2-x1>=a){\n        // one step\n        winm = x2;\n        return 1;\n    }\n    bool ref=0;\n    if(b<=0){\n        a*=-1;b*=-1;x1*=-1;x2*=-1;\n        swap(a,b);\n        ref=1;\n    }\n    if(a>0){\n        if(x1>x2)return 0;\n        long long tot=a+b;\n        long long r=x2-x1;\n        long long s=r%tot;\n        if(s==0)return -1;\n        if(s>=a&&s<=b){\n            winm=s+x1;\n            if(ref)winm*=-1;\n            return 1;\n        }\n        return 0;\n    }\n    return 0;\n}\nint main(){\n    scanf(\"%I64d%I64d%I64d%I64d\",&x1,&x2,&a,&b);\n    if(a>b)swap(a,b);\n    long long f;\n    int d=solve(f);\n    puts(d==0?\"DRAW\":d==-1?\"SECOND\":\"FIRST\");\n    if(d==1)printf(\"%I64d\\n\",f);\n}\n"], "input": "", "output": "", "tags": ["games", "math"], "dificulty": "2400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/154/problem/D",
+    "problemId": "957",
+    "problem_idx": "D",
+    "shortId": "154D",
+    "contest_number": "154",
+    "problem_submissions": {
+        "E": [
+            1231038,
+            1230512,
+            1358194
+        ],
+        "D": [
+            1225676,
+            1226429,
+            1228394,
+            1228749,
+            1229408,
+            1228702,
+            1229077,
+            1223939,
+            1227964,
+            1479286,
+            1228630,
+            1225612,
+            1229806,
+            1227500,
+            1227060
+        ],
+        "C": [
+            1223619,
+            1223667,
+            1223145,
+            1226138,
+            1224320,
+            1226736,
+            1226231,
+            1230453,
+            1229461,
+            1479267,
+            1226553,
+            1226465,
+            1225747,
+            1230469,
+            1224292,
+            1224323
+        ],
+        "B": [
+            1222804,
+            1227642,
+            1224517,
+            1223990,
+            1223294,
+            1225469,
+            1223473,
+            1226506,
+            1224622,
+            1479175,
+            1224138,
+            1223064,
+            1223792,
+            1223935,
+            1223500,
+            1223955,
+            1223146,
+            1223079
+        ],
+        "A": [
+            1221382,
+            1221463,
+            1226241,
+            1221946,
+            1222395,
+            1223447,
+            1221860,
+            1224559,
+            1222303,
+            1479137,
+            1222840,
+            1221809,
+            1230571,
+            1221518,
+            1221796,
+            1222615,
+            1221718
+        ]
+    },
+    "name": "D. Flatland Fencing",
+    "statement": "The King of Flatland will organize a knights\u2019 tournament! The winner\r\nwill get half the kingdom and the favor of the princess of legendary\r\nbeauty and wisdom. The final test of the applicants\u2019 courage and\r\nstrength will be a fencing tournament. The tournament is held by the\r\nfollowing rules: the participants fight one on one, the winner (or\r\nrather, the survivor) transfers to the next round.Before the battle both\r\nparticipants stand at the specified points on the axis with integer\r\ncoordinates. Then they make moves in turn. The first participant moves\r\nfirst, naturally. During a move, the first participant can transfer from\r\nthe point to any integer point of the interval [; ]. The second\r\nparticipant can transfer during a move to any integer point of the\r\ninterval [; ]. That is, the options for the players\u2019 moves are symmetric\r\n(note that the numbers and are not required to be positive, and if ,\r\nthen staying in one place is a correct move). At any time the\r\nparticipants can be located arbitrarily relative to each other, that is,\r\nit is allowed to \"jump\" over the enemy in any direction. A participant\r\nwins if he uses his move to transfer to the point where his opponent\r\nis.Of course, the princess has already chosen a husband and now she\r\nwants to make her sweetheart win the tournament. He has already reached\r\nthe tournament finals and he is facing the last battle. The princess\r\nasks the tournament manager to arrange the tournament finalists in such\r\na way that her sweetheart wins the tournament, considering that both\r\nplayers play optimally. However, the initial location of the\r\nparticipants has already been announced, and we can only pull some\r\nstrings and determine which participant will be first and which one will\r\nbe second. But how do we know which participant can secure the victory?\r\nAlas, the princess is not learned in the military affairs... Therefore,\r\nshe asks you to determine how the battle will end considering that both\r\nopponents play optimally. Also, if the first player wins, your task is\r\nto determine his winning move.\r\n",
+    "solutions": [
+        "#include<stdio.h>\n#include<algorithm>\nusing namespace std;\nlong long x1,x2,a,b;\ninline int solve(long long& winm){\n    if(x2-x1<=b&&x2-x1>=a){\n        // one step\n        winm = x2;\n        return 1;\n    }\n    bool ref=0;\n    if(b<=0){\n        a*=-1;b*=-1;x1*=-1;x2*=-1;\n        swap(a,b);\n        ref=1;\n    }\n    if(a>0){\n        if(x1>x2)return 0;\n        long long tot=a+b;\n        long long r=x2-x1;\n        long long s=r%tot;\n        if(s==0)return -1;\n        if(s>=a&&s<=b){\n            winm=s+x1;\n            if(ref)winm*=-1;\n            return 1;\n        }\n        return 0;\n    }\n    return 0;\n}\nint main(){\n    scanf(\"%I64d%I64d%I64d%I64d\",&x1,&x2,&a,&b);\n    if(a>b)swap(a,b);\n    long long f;\n    int d=solve(f);\n    puts(d==0?\"DRAW\":d==-1?\"SECOND\":\"FIRST\");\n    if(d==1)printf(\"%I64d\\n\",f);\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "games",
+        "math"
+    ],
+    "dificulty": "2400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Flatland Fencing.json",
+    "editorial_link": "https://codeforces.com//blog/entry/3969",
+    "editorial": "As the moves choices are symmetrical for both players, if one player can\r\nreach another in one move from some disposition, the other player also\r\ncan reach the first. So, if we are allowed to stand in one place (i.e. a\r\n<= 0 <= b), we can just stand still and wait for another player to come.\r\nIf she wants to win, she will have to step within our reach before that\r\nso that we can get her. So, if the first player doesn\u00e2\u0080\u0099t reach the second\r\ninitially, there is a draw as no one can ensure her victory. Thus we\r\nfinished the case a <= 0 <= b: either the first player wins in one move,\r\nor there is a draw. Now, let a and b have the same sign. Denote d = x2\r\nx1. If a <= b < 0, we can go to the situation with (d, a, b) = (-d, -b,\r\n-a), which is similar to the initial. So later on 0 < a. So we have the\r\nfollowing game: there are integers d and 0 < a <= b. In one move each\r\nplayer can substract an arbitrary integer number from segment [a; b]\r\nfrom d. The player who gets d = 0 after her move wins. If at some point\r\nd < 0, a draw is proclaimed (as no one can win anymore). The interesting\r\ncase is d > 0. Note that if d mod (a + b) = 0, the second player can use\r\nthe symmetrical strategy: for every first player\u00e2\u0080\u0099s move x of she can\r\nmake a move a + b x, and support the condition d mod (a + b) = 0. As d\r\ndecreases, the second player eventually moves to 0 and wins. So, if d\r\nmod (a + b) = 0, the second player wins. Thus, if d mod (a + b) is in\r\n[a; b], the first player wins, as he can reduce the game to the previous\r\ncase by letting the second player move in the losing situation. What\r\nabout all the other situations? Turns out all the other position are\r\ndraws. We prove that by induction: let d = k(a + b) + l, where l in [0;\r\na + b). Case l = 0, as we just proved, is losing, cases l in [a; b] are\r\nwinning. If l is in [1; a 1], we cannot move to losing position (we use\r\nthe induction assumption for lesser k), but after the move a, we move to\r\nthe draw position (if k = 0, we move to the negative number, otherwise\r\nwe get into [(k 1)(a + b) + b + 1; k(a + b) 1] segment, every position\r\nfrom which is a draw by assumption). Similarily for l = [b + 1; a + b\r\n1], move to a draw b.\r\n"
+}

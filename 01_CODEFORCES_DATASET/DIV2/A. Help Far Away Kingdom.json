@@ -1,1 +1,74 @@
-{"link": "https://codeforces.com//contest/99/problem/A", "problemId": "517", "problem_idx": "A", "shortId": "99A", "contest_number": "99", "problem_submissions": {"A": [558451, 555523, 555493, 555645, 555572, 555694, 555884, 555663, 555583, 555977, 555531, 556191, 555540], "B": [557712, 556216, 556603, 556728, 556497, 558103, 556546, 556687, 556371, 556520, 556804, 557248, 556558, 556908, 557909], "C": [557268, 556724, 558556, 558050, 558208, 557191, 557830, 557791, 558074, 558035, 558343, 558125, 559134, 558348, 559705, 559122]}, "name": "A. Help Far Away Kingdom", "statement": "In a far away kingdom lived the King, the Prince, the Shoemaker, the\r\nDressmaker and many other citizens. They lived happily until great\r\ntrouble came into the Kingdom. The ACMers settled there.Most damage\r\nthose strange creatures inflicted upon the kingdom was that they loved\r\nhigh precision numbers. As a result, the Kingdom healers had already had\r\nthree appointments with the merchants who were asked to sell, say,\r\nexactly beer barrels. To deal with the problem somehow, the King issued\r\nan order obliging rounding up all numbers to the closest integer to\r\nsimplify calculations. Specifically, the order went like this: If a\r\nnumber\u2019s integer part does not end with digit and its fractional part is\r\nstrictly less than , then the rounded up number coincides with the\r\nnumber s integer part. If a number\u2019s integer part does not end with\r\ndigit and its fractional part is not less than , the rounded up number\r\nis obtained if we add to the last digit of the number s integer part. If\r\nthe number s integer part ends with digit , to round up the numbers one\r\nshould go to Vasilisa the Wise. In the whole Kingdom she is the only one\r\nwho can perform the tricky operation of carrying into the next position.\r\nMerchants found the algorithm very sophisticated and they asked you (the\r\nACMers) to help them. Can you write a program that would perform the\r\nrounding according to the King s order?\r\n", "solutions": ["#include <cstdlib>\n#include <cctype>\n#include <cstring>\n#include <cstdio>\n#include <cmath>\n#include <string>\n#include <iostream>\n#include <sstream>\n#include <map>\n#include <set>\n#include <queue>\n#include <stack>\n#include <fstream>\n#include <numeric>\n#include <bitset>\n#include <list>\n#include <stdexcept>\n#include <functional>\n#include <utility>\n#include <ctime>\n#include <algorithm>\nusing namespace std;\n\nstring a;\nint main()\n{\n    cin >> a;\n    for (int i = 0; i < a.size(); i++)\n        if (a[i] == '.') {\n            bool jin = 0;\n            if (a[i + 1] >= '5')\n                jin = 1;\n            if (a[i - 1] == '9') {\n                puts(\"GOTO Vasilisa.\");\n                return 0;\n            }       \n            else if (jin) a[i - 1]++;\n            break;\n        }\n    for (int i = 0; i < a.size(); i++) {\n        if (a[i] == '.')\n            break;\n        putchar(a[i]);\n    }\n}\n"], "input": "", "output": "", "tags": ["strings"], "dificulty": "800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/99/problem/A",
+    "problemId": "517",
+    "problem_idx": "A",
+    "shortId": "99A",
+    "contest_number": "99",
+    "problem_submissions": {
+        "A": [
+            558451,
+            555523,
+            555493,
+            555645,
+            555572,
+            555694,
+            555884,
+            555663,
+            555583,
+            555977,
+            555531,
+            556191,
+            555540
+        ],
+        "B": [
+            557712,
+            556216,
+            556603,
+            556728,
+            556497,
+            558103,
+            556546,
+            556687,
+            556371,
+            556520,
+            556804,
+            557248,
+            556558,
+            556908,
+            557909
+        ],
+        "C": [
+            557268,
+            556724,
+            558556,
+            558050,
+            558208,
+            557191,
+            557830,
+            557791,
+            558074,
+            558035,
+            558343,
+            558125,
+            559134,
+            558348,
+            559705,
+            559122
+        ]
+    },
+    "name": "A. Help Far Away Kingdom",
+    "statement": "In a far away kingdom lived the King, the Prince, the Shoemaker, the\r\nDressmaker and many other citizens. They lived happily until great\r\ntrouble came into the Kingdom. The ACMers settled there.Most damage\r\nthose strange creatures inflicted upon the kingdom was that they loved\r\nhigh precision numbers. As a result, the Kingdom healers had already had\r\nthree appointments with the merchants who were asked to sell, say,\r\nexactly beer barrels. To deal with the problem somehow, the King issued\r\nan order obliging rounding up all numbers to the closest integer to\r\nsimplify calculations. Specifically, the order went like this: If a\r\nnumber\u2019s integer part does not end with digit and its fractional part is\r\nstrictly less than , then the rounded up number coincides with the\r\nnumber s integer part. If a number\u2019s integer part does not end with\r\ndigit and its fractional part is not less than , the rounded up number\r\nis obtained if we add to the last digit of the number s integer part. If\r\nthe number s integer part ends with digit , to round up the numbers one\r\nshould go to Vasilisa the Wise. In the whole Kingdom she is the only one\r\nwho can perform the tricky operation of carrying into the next position.\r\nMerchants found the algorithm very sophisticated and they asked you (the\r\nACMers) to help them. Can you write a program that would perform the\r\nrounding according to the King s order?\r\n",
+    "solutions": [
+        "#include <cstdlib>\n#include <cctype>\n#include <cstring>\n#include <cstdio>\n#include <cmath>\n#include <string>\n#include <iostream>\n#include <sstream>\n#include <map>\n#include <set>\n#include <queue>\n#include <stack>\n#include <fstream>\n#include <numeric>\n#include <bitset>\n#include <list>\n#include <stdexcept>\n#include <functional>\n#include <utility>\n#include <ctime>\n#include <algorithm>\nusing namespace std;\n\nstring a;\nint main()\n{\n    cin >> a;\n    for (int i = 0; i < a.size(); i++)\n        if (a[i] == '.') {\n            bool jin = 0;\n            if (a[i + 1] >= '5')\n                jin = 1;\n            if (a[i - 1] == '9') {\n                puts(\"GOTO Vasilisa.\");\n                return 0;\n            }       \n            else if (jin) a[i - 1]++;\n            break;\n        }\n    for (int i = 0; i < a.size(); i++) {\n        if (a[i] == '.')\n            break;\n        putchar(a[i]);\n    }\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "strings"
+    ],
+    "dificulty": "800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Help Far Away Kingdom.json",
+    "editorial_link": "https://codeforces.com//blog/entry/2326",
+    "editorial": "The first problem required manual checking. As I use Java, StringTokenizer helped me to break the string using '.' as the delimiter. As I had 2 strings I could check for the last character of the first string and if it was equal to 9 I printed \"GOTO Vasilisa.\" and for the other case I checked if the first char of the other string was greater than '5' if yes I added 1 to the first strings last char else print the same string."
+}

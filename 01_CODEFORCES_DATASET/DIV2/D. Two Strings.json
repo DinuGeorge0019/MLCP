@@ -1,1 +1,98 @@
-{"link": "https://codeforces.com//contest/224/problem/D", "problemId": "1794", "problem_idx": "D", "shortId": "224D", "contest_number": "224", "problem_submissions": {"E": [2198165, 2196819, 2198259, 2236128, 2197194, 2200952, 2199765, 2195540, 2194183, 2196229], "C": [2195830, 2191477, 2193694, 2193617, 2194313, 2194223, 2191815, 2195143, 2193986, 2195829, 2195362], "D": [2194352, 2195373, 2196141, 2197876, 2197375, 2196987, 2196590, 2197417, 2196810, 2194187], "B": [2190018, 2189879, 2191189, 2191665, 2190694, 2191086, 2195134, 2190875, 2194168, 2191594, 2190136, 2191734, 2190832, 2194600, 2190752, 2190993], "A": [2189231, 2189100, 2189357, 2190553, 2189190, 2189439, 2189115, 2189932, 2190812, 2189456, 2189202, 2189505, 2195692, 2189110, 2189926, 2189167]}, "name": "D. Two Strings", "statement": "A of length of string (where is the length of string ) is a string\r\n.You\u2019ve got two strings and . Let\u2019s consider all subsequences of string\r\n, coinciding with string . Is it true that each character of string\r\noccurs in at least one of these subsequences? In other words, is it true\r\nthat for all , there is such subsequence of string , that and for some .\r\n", "solutions": ["#include <iostream>\n#include <cstdio>\n#include <algorithm>\n#include <cassert>\n#include <cstring>\n#include <string>\n#include <vector>\n#include <set>\n#include <map>\n\n#define Eo(x) {cerr << #x << \" = \" << (x) << endl;}\n#define E(x) {cerr << #x << \" = \" << (x) << ' ';}\n\nusing namespace std;\n\nconst int N = 200005;\nchar fst[N], snd[N];\nint flen, slen;\nint back[26][N], fwd[26][N];\nint preflen[N], suflen[N];\n\nint main(){\n\tscanf(\"%200003s\\n%200003s\", fst, snd);\n\tflen = strlen(fst);\n\tslen = strlen(snd);\n\n\tfor (char c='a'; c<='z'; ++c){\n\t\tint last = -1;\n\t\tfor (int i=0; i<slen; ++i){\n\t\t\tif (snd[i] == c) last = i;\n\t\t\tback[c-'a'][i] = last;\n\t\t}\n\t\tlast = -1;\n\t\tfor (int i=slen-1; i>=0; --i){\n\t\t\tif (snd[i] == c) last = i;\n\t\t\tfwd[c-'a'][i] = last;\n\t\t}\n\t}\n\n\tint pref = 0;\n\tfor (int i=0; i<flen; ++i){\n\t\tint pos = ((pref == slen) ? pref-1 : pref);\n\t\tint last = back[fst[i]-'a'][pos];\n\t\tif (last == -1){\n\t\t\tpreflen[i] = 0;\n\t\t} else {\n\t\t\tpreflen[i] = last+1;\n\t\t}\n\t\tif (last == pref) ++pref;\n\t}\n\n\tpref = 0;\n\tfor (int i=flen-1; i>=0; --i){\n\t\tint pos = ((pref == slen) ? 0 : slen - 1 - pref);\n\t\tint last = fwd[fst[i]-'a'][pos];\n\t\tif (last == -1){\n\t\t\tsuflen[i] = 0;\n\t\t} else {\n\t\t\tsuflen[i] = slen - last;\n\t\t}\n\t\tif (last == slen - 1 - pref) ++pref;\n\t}\n\n\tfor (int i=0; i<flen; ++i){\n\t\tif (preflen[i] + suflen[i] <= slen){\n\t\t\tprintf(\"No\\n\");\n\t\t\treturn 0;\n\t\t}\n\t}\n\tprintf(\"Yes\\n\");\n\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["data structures", "strings"], "dificulty": "1900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/224/problem/D",
+    "problemId": "1794",
+    "problem_idx": "D",
+    "shortId": "224D",
+    "contest_number": "224",
+    "problem_submissions": {
+        "E": [
+            2198165,
+            2196819,
+            2198259,
+            2236128,
+            2197194,
+            2200952,
+            2199765,
+            2195540,
+            2194183,
+            2196229
+        ],
+        "C": [
+            2195830,
+            2191477,
+            2193694,
+            2193617,
+            2194313,
+            2194223,
+            2191815,
+            2195143,
+            2193986,
+            2195829,
+            2195362
+        ],
+        "D": [
+            2194352,
+            2195373,
+            2196141,
+            2197876,
+            2197375,
+            2196987,
+            2196590,
+            2197417,
+            2196810,
+            2194187
+        ],
+        "B": [
+            2190018,
+            2189879,
+            2191189,
+            2191665,
+            2190694,
+            2191086,
+            2195134,
+            2190875,
+            2194168,
+            2191594,
+            2190136,
+            2191734,
+            2190832,
+            2194600,
+            2190752,
+            2190993
+        ],
+        "A": [
+            2189231,
+            2189100,
+            2189357,
+            2190553,
+            2189190,
+            2189439,
+            2189115,
+            2189932,
+            2190812,
+            2189456,
+            2189202,
+            2189505,
+            2195692,
+            2189110,
+            2189926,
+            2189167
+        ]
+    },
+    "name": "D. Two Strings",
+    "statement": "A of length of string (where is the length of string ) is a string\r\n.You\u2019ve got two strings and . Let\u2019s consider all subsequences of string\r\n, coinciding with string . Is it true that each character of string\r\noccurs in at least one of these subsequences? In other words, is it true\r\nthat for all , there is such subsequence of string , that and for some .\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <cstdio>\n#include <algorithm>\n#include <cassert>\n#include <cstring>\n#include <string>\n#include <vector>\n#include <set>\n#include <map>\n\n#define Eo(x) {cerr << #x << \" = \" << (x) << endl;}\n#define E(x) {cerr << #x << \" = \" << (x) << ' ';}\n\nusing namespace std;\n\nconst int N = 200005;\nchar fst[N], snd[N];\nint flen, slen;\nint back[26][N], fwd[26][N];\nint preflen[N], suflen[N];\n\nint main(){\n\tscanf(\"%200003s\\n%200003s\", fst, snd);\n\tflen = strlen(fst);\n\tslen = strlen(snd);\n\n\tfor (char c='a'; c<='z'; ++c){\n\t\tint last = -1;\n\t\tfor (int i=0; i<slen; ++i){\n\t\t\tif (snd[i] == c) last = i;\n\t\t\tback[c-'a'][i] = last;\n\t\t}\n\t\tlast = -1;\n\t\tfor (int i=slen-1; i>=0; --i){\n\t\t\tif (snd[i] == c) last = i;\n\t\t\tfwd[c-'a'][i] = last;\n\t\t}\n\t}\n\n\tint pref = 0;\n\tfor (int i=0; i<flen; ++i){\n\t\tint pos = ((pref == slen) ? pref-1 : pref);\n\t\tint last = back[fst[i]-'a'][pos];\n\t\tif (last == -1){\n\t\t\tpreflen[i] = 0;\n\t\t} else {\n\t\t\tpreflen[i] = last+1;\n\t\t}\n\t\tif (last == pref) ++pref;\n\t}\n\n\tpref = 0;\n\tfor (int i=flen-1; i>=0; --i){\n\t\tint pos = ((pref == slen) ? 0 : slen - 1 - pref);\n\t\tint last = fwd[fst[i]-'a'][pos];\n\t\tif (last == -1){\n\t\t\tsuflen[i] = 0;\n\t\t} else {\n\t\t\tsuflen[i] = slen - last;\n\t\t}\n\t\tif (last == slen - 1 - pref) ++pref;\n\t}\n\n\tfor (int i=0; i<flen; ++i){\n\t\tif (preflen[i] + suflen[i] <= slen){\n\t\t\tprintf(\"No\\n\");\n\t\t\treturn 0;\n\t\t}\n\t}\n\tprintf(\"Yes\\n\");\n\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "data structures",
+        "strings"
+    ],
+    "dificulty": "1900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Two Strings.json",
+    "editorial_link": "https://codeforces.com//blog/entry/5301",
+    "editorial": "You were given two strings: s and t. You were required to examine all occurrences of the string t in the string s as subsequence and to find out if it is true that for each position of the s string there are such occurrence, that includes this position.\n\nFor each position i of the s string we calculate two values li and ri where li is the maximal possible number that the string t1... tli occurs as subsequence in the string s1... si, ri is the maximal possible number that the string t|t|?-?ri?+?1... t|t| occurs in the string si... s|s| as subsequence. Let us find all of l for the position 1... i?-?1 and want to find li. If the symbol tli?-?1?+?1 exists and concurs with the symbol si then li?=?li?-?1?+?1, in other case li?=?li?-?1. In the same way we can find ri if we move from the end of the string.\n\nNow we should check if the position i in the string s belongs to at least one occurrence. Let us assume this to be correct and the symbol si corresponds to the symbol tj of the string t. Then li?-?1???j?-?1 and ri?+?1???|t|?-?j by definition of the l and r. Then if j exists that si?=?tj and li?-?1?+?1???j???|t|?-?ri?+?1, then the position i of the string s belongs to at least one occurrence of the t, in other case the occurrence doesn\u0092t exist. We can easily check it by creating an array cnta,?i for each letter, which is a number of letters a in the positions 1... i of the string t. The complexity of the solution is O(|s|?+?|t|)."
+}

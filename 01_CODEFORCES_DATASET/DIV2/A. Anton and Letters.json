@@ -1,1 +1,93 @@
-{"link": "https://codeforces.com//contest/443/problem/A", "problemId": "10506", "problem_idx": "A", "shortId": "443A", "contest_number": "443", "problem_submissions": {"D": [6920325, 6916566, 6917590, 6918097, 6920177, 6917285, 6920976, 6921353, 6922229, 6919679, 6920725, 6916330, 6920984, 6916768, 6918289], "C": [6916700, 6920227, 6920927, 6921420, 6918956, 6921762, 6918294, 6918027, 6919227, 6921621, 6920532, 6921893], "B": [6914810, 6917396, 6914725, 6915203, 6915357, 6915551, 6915724, 6915492, 6915913, 6916470, 6917359, 6917333, 6915305, 6915776, 6915944, 6915992], "A": [6913586, 6913341, 6913477, 6914120, 6913376, 6913571, 6913622, 6914280, 6913834, 6913392, 6914327, 6913573, 6919949, 6913342], "E": [6948171]}, "name": "A. Anton and Letters", "statement": "Recently, Anton has found a set. The set consists of small English\r\nletters. Anton carefully wrote out all the letters from the set in one\r\nline, separated by a comma. He also added an opening curved bracket at\r\nthe beginning of the line and a closing curved bracket at the end of the\r\nline. Unfortunately, from time to time Anton would forget writing some\r\nletter and write it again. He asks you to count the total number of\r\ndistinct letters in his set.\r\n", "solutions": ["using namespace std;\n\n#include \"cstdio\"\n#include \"iostream\"\n#include \"algorithm\"\n#include \"vector\"\n#include \"string\"\n#include \"cctype\"\n#include \"set\"\n\ntypedef long long Long;\n\nset< char > letter;\n\nint main() \n{\n    string line;\n\n    getline( cin, line );\n\n    //fprintf(stderr, \"%s\\n\", line.c_str());\n\n    for (int i = 0; i < line.length(); i++) if ( isalpha( line[i] ) ) {\n        letter.insert( line[i] );\n        //fprintf(stderr, \"%c\\n\", line[i]);\n    }\n\n    cout << letter.size() << endl;\n\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["constructive algorithms", "implementation"], "dificulty": "800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/443/problem/A",
+    "problemId": "10506",
+    "problem_idx": "A",
+    "shortId": "443A",
+    "contest_number": "443",
+    "problem_submissions": {
+        "D": [
+            6920325,
+            6916566,
+            6917590,
+            6918097,
+            6920177,
+            6917285,
+            6920976,
+            6921353,
+            6922229,
+            6919679,
+            6920725,
+            6916330,
+            6920984,
+            6916768,
+            6918289
+        ],
+        "C": [
+            6916700,
+            6920227,
+            6920927,
+            6921420,
+            6918956,
+            6921762,
+            6918294,
+            6918027,
+            6919227,
+            6921621,
+            6920532,
+            6921893
+        ],
+        "B": [
+            6914810,
+            6917396,
+            6914725,
+            6915203,
+            6915357,
+            6915551,
+            6915724,
+            6915492,
+            6915913,
+            6916470,
+            6917359,
+            6917333,
+            6915305,
+            6915776,
+            6915944,
+            6915992
+        ],
+        "A": [
+            6913586,
+            6913341,
+            6913477,
+            6914120,
+            6913376,
+            6913571,
+            6913622,
+            6914280,
+            6913834,
+            6913392,
+            6914327,
+            6913573,
+            6919949,
+            6913342
+        ],
+        "E": [
+            6948171
+        ]
+    },
+    "name": "A. Anton and Letters",
+    "statement": "Recently, Anton has found a set. The set consists of small English\r\nletters. Anton carefully wrote out all the letters from the set in one\r\nline, separated by a comma. He also added an opening curved bracket at\r\nthe beginning of the line and a closing curved bracket at the end of the\r\nline. Unfortunately, from time to time Anton would forget writing some\r\nletter and write it again. He asks you to count the total number of\r\ndistinct letters in his set.\r\n",
+    "solutions": [
+        "using namespace std;\n\n#include \"cstdio\"\n#include \"iostream\"\n#include \"algorithm\"\n#include \"vector\"\n#include \"string\"\n#include \"cctype\"\n#include \"set\"\n\ntypedef long long Long;\n\nset< char > letter;\n\nint main() \n{\n    string line;\n\n    getline( cin, line );\n\n    //fprintf(stderr, \"%s\\n\", line.c_str());\n\n    for (int i = 0; i < line.length(); i++) if ( isalpha( line[i] ) ) {\n        letter.insert( line[i] );\n        //fprintf(stderr, \"%c\\n\", line[i]);\n    }\n\n    cout << letter.size() << endl;\n\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "implementation"
+    ],
+    "dificulty": "800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Anton and Letters.json",
+    "editorial_link": "https://codeforces.com//blog/entry/12739",
+    "editorial": "In this task you are to count the number of different letters in the\r\nset. In my opinion the easiest way to do this looks like this. You just\r\niterate over all small latin letters and check if the string contains it\r\n(with built-in functions).\r\n"
+}

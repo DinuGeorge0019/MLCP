@@ -1,1 +1,101 @@
-{"link": "https://codeforces.com//contest/577/problem/E", "problemId": "34892", "problem_idx": "E", "shortId": "577E", "contest_number": "577", "problem_submissions": {"E": [12934021, 12937802, 12946890, 12941991, 12957515, 12944448, 13175505, 12944648, 12944393, 12937611, 12947231, 12946467, 12943052, 12942794], "D": [12944318, 12940763, 12944692, 12944241, 12944185, 12943472], "C": [12939458, 12935330, 12931965, 12930011, 12933070, 12931435, 12931425, 12936025, 12933543, 12937247, 12928317, 12934645, 12932764, 12930639, 12932440, 12935065, 12934571], "B": [12935134, 12931058, 12929931, 12931038, 12930166, 12928876, 12933443, 12931395, 12932755, 12937356, 12947929, 13099221, 12935418, 12931420], "A": [12926434, 12926190, 12926725, 12926012, 12926179, 12925982, 12927025, 12927554, 12927030, 12926024, 12926655, 12926029, 12927638, 12927453, 12926982, 12926032]}, "name": "E. Points on Plane", "statement": "On a plane are points (, ) with integer coordinates between and . The\r\ndistance between the two points with numbers and is said to be the\r\nfollowing value: (the distance calculated by such formula is called ).We\r\ncall a hamiltonian path to be some permutation of numbers from to . We\r\nsay that the length of this path is value .Find some hamiltonian path\r\nwith a length of no more than . Note that you do not have to minimize\r\nthe path length.\r\n", "solutions": ["#include<bits/stdc++.h>\n\nusing namespace std;\n\nbool cmp(const pair<pair<int,int>,int> &p,const pair<pair<int,int>,int> &q)\n{\n  if(p.first.second!=q.first.second)return p.first.second<q.first.second;\n  return p.first.first<q.first.first;\n}\n\nvoid Do(vector<pair<pair<int,int>,int> > &a,int l,int r,bool f)\n{\n  if(r-l==1)\n  {\n    printf(\"%d \",a[l].second);\n    return;\n  }\n  if(f)sort(a.begin()+l,a.begin()+r,cmp);\n  else sort(a.begin()+l,a.begin()+r);\n  Do(a,l,(l+r)/2,!f);\n  Do(a,(l+r)/2,r,!f);\n}\n\nint main()\n{\n  vector<pair<pair<int,int>,int> > a;\n  int i,n,x,y;\n  \n  scanf(\"%d\",&n);\n  for(i=0;i<n;i++)\n  {\n    scanf(\"%d%d\",&x,&y);\n    a.push_back(make_pair(make_pair(x,y),i+1));\n  }\n  \n  Do(a,0,n,0);\n}"], "input": "", "output": "", "tags": ["constructive algorithms"], "dificulty": "2100", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/577/problem/E",
+    "problemId": "34892",
+    "problem_idx": "E",
+    "shortId": "577E",
+    "contest_number": "577",
+    "problem_submissions": {
+        "E": [
+            12934021,
+            12937802,
+            12946890,
+            12941991,
+            12957515,
+            12944448,
+            13175505,
+            12944648,
+            12944393,
+            12937611,
+            12947231,
+            12946467,
+            12943052,
+            12942794
+        ],
+        "D": [
+            12944318,
+            12940763,
+            12944692,
+            12944241,
+            12944185,
+            12943472
+        ],
+        "C": [
+            12939458,
+            12935330,
+            12931965,
+            12930011,
+            12933070,
+            12931435,
+            12931425,
+            12936025,
+            12933543,
+            12937247,
+            12928317,
+            12934645,
+            12932764,
+            12930639,
+            12932440,
+            12935065,
+            12934571
+        ],
+        "B": [
+            12935134,
+            12931058,
+            12929931,
+            12931038,
+            12930166,
+            12928876,
+            12933443,
+            12931395,
+            12932755,
+            12937356,
+            12947929,
+            13099221,
+            12935418,
+            12931420
+        ],
+        "A": [
+            12926434,
+            12926190,
+            12926725,
+            12926012,
+            12926179,
+            12925982,
+            12927025,
+            12927554,
+            12927030,
+            12926024,
+            12926655,
+            12926029,
+            12927638,
+            12927453,
+            12926982,
+            12926032
+        ]
+    },
+    "name": "E. Points on Plane",
+    "statement": "On a plane are points (, ) with integer coordinates between and . The\r\ndistance between the two points with numbers and is said to be the\r\nfollowing value: (the distance calculated by such formula is called ).We\r\ncall a hamiltonian path to be some permutation of numbers from to . We\r\nsay that the length of this path is value .Find some hamiltonian path\r\nwith a length of no more than . Note that you do not have to minimize\r\nthe path length.\r\n",
+    "solutions": [
+        "#include<bits/stdc++.h>\n\nusing namespace std;\n\nbool cmp(const pair<pair<int,int>,int> &p,const pair<pair<int,int>,int> &q)\n{\n  if(p.first.second!=q.first.second)return p.first.second<q.first.second;\n  return p.first.first<q.first.first;\n}\n\nvoid Do(vector<pair<pair<int,int>,int> > &a,int l,int r,bool f)\n{\n  if(r-l==1)\n  {\n    printf(\"%d \",a[l].second);\n    return;\n  }\n  if(f)sort(a.begin()+l,a.begin()+r,cmp);\n  else sort(a.begin()+l,a.begin()+r);\n  Do(a,l,(l+r)/2,!f);\n  Do(a,(l+r)/2,r,!f);\n}\n\nint main()\n{\n  vector<pair<pair<int,int>,int> > a;\n  int i,n,x,y;\n  \n  scanf(\"%d\",&n);\n  for(i=0;i<n;i++)\n  {\n    scanf(\"%d%d\",&x,&y);\n    a.push_back(make_pair(make_pair(x,y),i+1));\n  }\n  \n  Do(a,0,n,0);\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms"
+    ],
+    "dificulty": "2100",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Points on Plane.json",
+    "editorial_link": "https://codeforces.com//blog/entry/20226",
+    "editorial": "Let's split rectangle 106?\u00d7?106 by vertical lines into 1000 rectangles 103?\u00d7?106. Let's number them from left to right. We're going to pass through points rectangle by rectangle. Inside the rectangle we're going to pass the points in increasing order of y-coordinate if the number of rectangle is even and in decreasing if it's odd.\n\nLet's calculate the maximum length of such a way. The coordinates are independent. By y-coordinate we're passing 1000 rectangles from 0 to 106, 109 in total. By x-coordinate we're spending 1000 to get to the next point of current rectangle and 2000 to get to next rectangle. That means, 2?*?109?+?2000000 in total, which perfectly fits."
+}

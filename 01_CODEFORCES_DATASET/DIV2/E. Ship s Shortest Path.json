@@ -1,1 +1,98 @@
-{"link": "https://codeforces.com//contest/75/problem/E", "problemId": "401", "problem_idx": "E", "shortId": "75E", "contest_number": "75", "problem_submissions": {"D": [384982, 385991, 384525, 384834, 384839, 385091, 385312, 385411, 385305, 385211, 385417, 386039, 385176, 384867, 394964], "C": [384042, 383483, 383576, 384129, 383851, 384490, 383698, 383909, 384477, 383838, 383994, 384507, 384866, 384204, 386282, 384164], "B": [383618, 384106, 385087, 383734, 383356, 383597, 384237, 383641, 383456, 385358, 383400, 383978, 384400, 387215, 383552, 383723], "A": [383049, 382879, 382894, 382934, 382877, 382996, 383262, 382978, 383667, 382943, 382941, 383102, 383157, 382990, 383202], "E": [3910444]}, "name": "E. Ship s Shortest Path", "statement": "You have got a new job, and it\u2019s very interesting, you are a ship\r\ncaptain. Your first task is to move your ship from one point to another\r\npoint, and for sure you want to move it at the minimum cost.And it\u2019s\r\nwell known that the shortest distance between any 2 points is the length\r\nof the line segment between these 2 points. But unfortunately there is\r\nan island in the sea, so sometimes you won\u2019t be able to move your ship\r\nin the line segment between the 2 points.You can move to safe points. A\r\npoint is called safe if it\u2019s on the line segment between the start and\r\nend points, or if it\u2019s on the island\u2019s edge.But you are too lucky, you\r\nhave got some clever and strong workers and they can help you in your\r\ntrip, they can help you move the ship in the sea and they will take 1\r\nEgyptian pound for each moving unit in the sea, and they can carry the\r\nship (yes, they are very strong) and walk on the island and they will\r\ntake 2 Egyptian pounds for each moving unit in the island. The money\r\nwhich you will give to them will be divided between all workers, so the\r\nnumber of workers does not matter here.You can move your ship on the\r\nisland edge, and it will be considered moving in the sea.Now you have a\r\nsea map, and you have to decide what is the minimum cost for your\r\ntrip.Your starting point is (, ), and the end point is (, ), both points\r\nwill be different.The island will be a convex polygon and there will be\r\nno more than 2 polygon points on the same line, also the starting and\r\nthe end points won\u2019t be inside or on the boundary of the island. The\r\npoints for the polygon will be given in the anti-clockwise order.\r\n", "solutions": ["#include<cstdio>\n#include<cstring>\n#include<cmath>\n#include<algorithm>\n#include<complex>\n#include<vector>\n#include<set>\n#include<iostream>\nusing namespace std ;\n\nconst double EPS = 1e-9;\nconst double oops = 1e18;\n\n#define foreach(it,a) for(__typeof((a).begin()) it = (a).begin() ; it!=(a).end();it++)\n\ntypedef complex<double> Point;\n#define X real()\n#define Y imag()\n#define dot(a,b) real(conj(a)*(b))\n#define cross(a,b) imag(conj(a)*(b))\n#define vec(a,b) ((b)-(a))\n#define length(a) sqrt(dot(a,a))\n#define dist(a,b) length(vec(a,b))\n\nclass cmp\n{\npublic:\n\tbool operator () (const Point& p1,const Point& p2) const\n\t{\n\t\tif (fabs(p1.X-p2.X)>EPS)return p1.X<p2.X;\n\t\treturn p1.Y+EPS<p2.Y;\n\t}\n};\nbool operator < (const Point& p1,const Point& p2)\n{\n\tcmp ls;\n\treturn ls(p1,p2);\n}\n\n\nPoint intersection(const Point& p1,const Point& p2,const Point& q1,const Point& q2)\n{\n\tdouble t = cross(vec(q1,p1),vec(q1,q2))/cross(vec(q1,q2),vec(p1,p2));\n\treturn p1 + t*vec(p1,p2);\n}\nbool pointOnLine(const Point& p,const Point& p1,const Point& p2)\n{\n\treturn fabs(cross(vec(p,p1),vec(p,p2))) < EPS;\n}\nbool pointOnRay(const Point& p,const Point& p1,const Point& p2)\n{\n\treturn pointOnLine(p,p1,p2) && dot(vec(p1,p),vec(p1,p2))>-EPS;\n}\nbool pointOnSegment(const Point& p,const Point& p1,const Point& p2)\n{\n\treturn pointOnRay(p,p1,p2) && pointOnRay(p,p2,p1);\n}\nbool pointOnLeft(const Point& p,const Point& p1,const Point& p2)\n{\n\treturn cross(vec(p1,p2),vec(p1,p)) > EPS;\n}\nbool parallel(const Point& p1,const Point& p2,const Point& q1,const Point& q2)\n{\n\treturn fabs(cross(vec(p1,p2),vec(q1,q2))) < EPS;\n}\nbool collinear(const Point& p1,const Point& p2,const Point& q1,const Point& q2)\n{\n\treturn pointOnLine(p1,q1,q2) && pointOnLine(p2,q1,q2);\n}\nvector<Point> polygonCut(const vector<Point>& polygon,const Point& p1,const Point& p2)\n{\n\tvector<Point> ret ;\n\tfor (int i=0;i<polygon.size();i++){\n\t\tint j = (i + 1)%polygon.size();\n\t\tbool in1 = pointOnLeft(polygon[i],p1,p2);\n\t\tbool in2 = pointOnLeft(polygon[j],p1,p2);\n\t\tif (in1)\n\t\t\tret.push_back(polygon[i]);\n\t\tif (in1^in2)\n\t\t\tret.push_back(intersection(polygon[i],polygon[j],p1,p2));\n\t}\n/*\tfor (int i=0;i<ret.size();i++)\n\t\tcout << ret[i] << \" \";\n\tcout << endl;*/\n\treturn ret;\n}\ndouble perimeter(const vector<Point>& polygon)\n{\n\tdouble ret=0;\n\tfor (int i=0;i<polygon.size();i++){\n\t\tint j = (i + 1)%polygon.size();\n\t\tret+=dist(polygon[i],polygon[j]);\n\t}\n\treturn ret;\n}\n\n\nvector<Point> polygon;\nint n;\nPoint from,to;\n\n\nint main()\n{\n\t//freopen(\"ship.in\",\"r\",stdin);\n\tint c,c2;\n\tscanf(\"%lf%lf%lf%lf\",&from.X,&from.Y,&to.X,&to.Y);\n\tif (to < from)\n\t\tswap(from,to);\n\tscanf(\"%d\",&n);\n\tpolygon.resize(n);\n\tfor (c=0;c<n;c++)\n\t\tscanf(\"%lf%lf\",&polygon[c].X,&polygon[c].Y);\n\tset<Point,cmp> ss;\n\tbool touches = false;\n\tfor (int i=0;i<polygon.size();i++){\n\t\tint j = (i + 1)%polygon.size();\n\t\ttouches|=collinear(from,to,polygon[i],polygon[j]);\n\t\tif (parallel(polygon[i],polygon[j],from,to))continue;\n\t\tPoint r = intersection(polygon[i],polygon[j],from,to);\n\t\tif (pointOnSegment(r,polygon[i],polygon[j]) && pointOnSegment(r,from,to))\n\t\t\tss.insert(r);\n\t}\n\t\n\tdouble ret = oops;\n\tif (ss.size() == 2 && !touches){\n\t\tPoint p1 = *ss.begin();\n\t\tPoint p2 = *++ss.begin();\n//\t\tcout << p1 << p2 << endl;\n\t\tret = dist(from,to) + dist(p1,p2);\n\t\tret = min(ret, dist(from,to) + perimeter(polygonCut(polygon,from,to)) - 2*dist(p1,p2));\n\t\tret = min(ret, dist(from,to) + perimeter(polygonCut(polygon,to,from)) - 2*dist(p1,p2));\n\t}\n\telse ret = dist(from,to);\n\t\n\t/*printf(\"%d\\n\",ss.size());\n\tforeach(it,ss)\n\t\tcout << *it << endl;*/\n\t\n\tprintf(\"%.9lf\\n\",ret);\n\t\n\t\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["geometry", "shortest paths"], "dificulty": "2400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/75/problem/E",
+    "problemId": "401",
+    "problem_idx": "E",
+    "shortId": "75E",
+    "contest_number": "75",
+    "problem_submissions": {
+        "D": [
+            384982,
+            385991,
+            384525,
+            384834,
+            384839,
+            385091,
+            385312,
+            385411,
+            385305,
+            385211,
+            385417,
+            386039,
+            385176,
+            384867,
+            394964
+        ],
+        "C": [
+            384042,
+            383483,
+            383576,
+            384129,
+            383851,
+            384490,
+            383698,
+            383909,
+            384477,
+            383838,
+            383994,
+            384507,
+            384866,
+            384204,
+            386282,
+            384164
+        ],
+        "B": [
+            383618,
+            384106,
+            385087,
+            383734,
+            383356,
+            383597,
+            384237,
+            383641,
+            383456,
+            385358,
+            383400,
+            383978,
+            384400,
+            387215,
+            383552,
+            383723
+        ],
+        "A": [
+            383049,
+            382879,
+            382894,
+            382934,
+            382877,
+            382996,
+            383262,
+            382978,
+            383667,
+            382943,
+            382941,
+            383102,
+            383157,
+            382990,
+            383202
+        ],
+        "E": [
+            3910444
+        ]
+    },
+    "name": "E. Ship s Shortest Path",
+    "statement": "You have got a new job, and it\u2019s very interesting, you are a ship\r\ncaptain. Your first task is to move your ship from one point to another\r\npoint, and for sure you want to move it at the minimum cost.And it\u2019s\r\nwell known that the shortest distance between any 2 points is the length\r\nof the line segment between these 2 points. But unfortunately there is\r\nan island in the sea, so sometimes you won\u2019t be able to move your ship\r\nin the line segment between the 2 points.You can move to safe points. A\r\npoint is called safe if it\u2019s on the line segment between the start and\r\nend points, or if it\u2019s on the island\u2019s edge.But you are too lucky, you\r\nhave got some clever and strong workers and they can help you in your\r\ntrip, they can help you move the ship in the sea and they will take 1\r\nEgyptian pound for each moving unit in the sea, and they can carry the\r\nship (yes, they are very strong) and walk on the island and they will\r\ntake 2 Egyptian pounds for each moving unit in the island. The money\r\nwhich you will give to them will be divided between all workers, so the\r\nnumber of workers does not matter here.You can move your ship on the\r\nisland edge, and it will be considered moving in the sea.Now you have a\r\nsea map, and you have to decide what is the minimum cost for your\r\ntrip.Your starting point is (, ), and the end point is (, ), both points\r\nwill be different.The island will be a convex polygon and there will be\r\nno more than 2 polygon points on the same line, also the starting and\r\nthe end points won\u2019t be inside or on the boundary of the island. The\r\npoints for the polygon will be given in the anti-clockwise order.\r\n",
+    "solutions": [
+        "#include<cstdio>\n#include<cstring>\n#include<cmath>\n#include<algorithm>\n#include<complex>\n#include<vector>\n#include<set>\n#include<iostream>\nusing namespace std ;\n\nconst double EPS = 1e-9;\nconst double oops = 1e18;\n\n#define foreach(it,a) for(__typeof((a).begin()) it = (a).begin() ; it!=(a).end();it++)\n\ntypedef complex<double> Point;\n#define X real()\n#define Y imag()\n#define dot(a,b) real(conj(a)*(b))\n#define cross(a,b) imag(conj(a)*(b))\n#define vec(a,b) ((b)-(a))\n#define length(a) sqrt(dot(a,a))\n#define dist(a,b) length(vec(a,b))\n\nclass cmp\n{\npublic:\n\tbool operator () (const Point& p1,const Point& p2) const\n\t{\n\t\tif (fabs(p1.X-p2.X)>EPS)return p1.X<p2.X;\n\t\treturn p1.Y+EPS<p2.Y;\n\t}\n};\nbool operator < (const Point& p1,const Point& p2)\n{\n\tcmp ls;\n\treturn ls(p1,p2);\n}\n\n\nPoint intersection(const Point& p1,const Point& p2,const Point& q1,const Point& q2)\n{\n\tdouble t = cross(vec(q1,p1),vec(q1,q2))/cross(vec(q1,q2),vec(p1,p2));\n\treturn p1 + t*vec(p1,p2);\n}\nbool pointOnLine(const Point& p,const Point& p1,const Point& p2)\n{\n\treturn fabs(cross(vec(p,p1),vec(p,p2))) < EPS;\n}\nbool pointOnRay(const Point& p,const Point& p1,const Point& p2)\n{\n\treturn pointOnLine(p,p1,p2) && dot(vec(p1,p),vec(p1,p2))>-EPS;\n}\nbool pointOnSegment(const Point& p,const Point& p1,const Point& p2)\n{\n\treturn pointOnRay(p,p1,p2) && pointOnRay(p,p2,p1);\n}\nbool pointOnLeft(const Point& p,const Point& p1,const Point& p2)\n{\n\treturn cross(vec(p1,p2),vec(p1,p)) > EPS;\n}\nbool parallel(const Point& p1,const Point& p2,const Point& q1,const Point& q2)\n{\n\treturn fabs(cross(vec(p1,p2),vec(q1,q2))) < EPS;\n}\nbool collinear(const Point& p1,const Point& p2,const Point& q1,const Point& q2)\n{\n\treturn pointOnLine(p1,q1,q2) && pointOnLine(p2,q1,q2);\n}\nvector<Point> polygonCut(const vector<Point>& polygon,const Point& p1,const Point& p2)\n{\n\tvector<Point> ret ;\n\tfor (int i=0;i<polygon.size();i++){\n\t\tint j = (i + 1)%polygon.size();\n\t\tbool in1 = pointOnLeft(polygon[i],p1,p2);\n\t\tbool in2 = pointOnLeft(polygon[j],p1,p2);\n\t\tif (in1)\n\t\t\tret.push_back(polygon[i]);\n\t\tif (in1^in2)\n\t\t\tret.push_back(intersection(polygon[i],polygon[j],p1,p2));\n\t}\n/*\tfor (int i=0;i<ret.size();i++)\n\t\tcout << ret[i] << \" \";\n\tcout << endl;*/\n\treturn ret;\n}\ndouble perimeter(const vector<Point>& polygon)\n{\n\tdouble ret=0;\n\tfor (int i=0;i<polygon.size();i++){\n\t\tint j = (i + 1)%polygon.size();\n\t\tret+=dist(polygon[i],polygon[j]);\n\t}\n\treturn ret;\n}\n\n\nvector<Point> polygon;\nint n;\nPoint from,to;\n\n\nint main()\n{\n\t//freopen(\"ship.in\",\"r\",stdin);\n\tint c,c2;\n\tscanf(\"%lf%lf%lf%lf\",&from.X,&from.Y,&to.X,&to.Y);\n\tif (to < from)\n\t\tswap(from,to);\n\tscanf(\"%d\",&n);\n\tpolygon.resize(n);\n\tfor (c=0;c<n;c++)\n\t\tscanf(\"%lf%lf\",&polygon[c].X,&polygon[c].Y);\n\tset<Point,cmp> ss;\n\tbool touches = false;\n\tfor (int i=0;i<polygon.size();i++){\n\t\tint j = (i + 1)%polygon.size();\n\t\ttouches|=collinear(from,to,polygon[i],polygon[j]);\n\t\tif (parallel(polygon[i],polygon[j],from,to))continue;\n\t\tPoint r = intersection(polygon[i],polygon[j],from,to);\n\t\tif (pointOnSegment(r,polygon[i],polygon[j]) && pointOnSegment(r,from,to))\n\t\t\tss.insert(r);\n\t}\n\t\n\tdouble ret = oops;\n\tif (ss.size() == 2 && !touches){\n\t\tPoint p1 = *ss.begin();\n\t\tPoint p2 = *++ss.begin();\n//\t\tcout << p1 << p2 << endl;\n\t\tret = dist(from,to) + dist(p1,p2);\n\t\tret = min(ret, dist(from,to) + perimeter(polygonCut(polygon,from,to)) - 2*dist(p1,p2));\n\t\tret = min(ret, dist(from,to) + perimeter(polygonCut(polygon,to,from)) - 2*dist(p1,p2));\n\t}\n\telse ret = dist(from,to);\n\t\n\t/*printf(\"%d\\n\",ss.size());\n\tforeach(it,ss)\n\t\tcout << *it << endl;*/\n\t\n\tprintf(\"%.9lf\\n\",ret);\n\t\n\t\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "geometry",
+        "shortest paths"
+    ],
+    "dificulty": "2400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Ship s Shortest Path.json",
+    "editorial_link": "https://codeforces.com//blog/entry/1715",
+    "editorial": "The main idea for this problem is not hard, but maybe the hard part is implementing it.\nFirst we need to know if the straight line segment between the source and destination points intersect with the island or not. So we will intersect this line segment with all the polygon sides. If there are 2 segments intersect in more than 1 point we will consider as they don't intersect, because it's mentioned in the problem statement that you can move on the island's edge and it will be considered in the sea.\nNow we have a set of all distinct intersection points of the polygon and the straight line segment between the source and destination points. Because the polygon is convex, this set will contain at most 2 points. We have 3 different cases now:\n1- This set contains less than 2 points.\n2- This set contains 2 points and they are on the same polygon side.\n3- This set contains 2 points and they are not on the same polygon side.\n\nIn the first 2 cases the result will be simply the length of the straight line segment.\nIn the 3rd case you can do the following:\n1- Move from the source point to the nearest point of the 2 intersection points.\n2- You have 3 options here:\n    a- Move inside the island to the other intersection point.\n    b- Move in clockwise direction on the island's edge to the other intersection point.\n    c- Move in anti-clockwise direction on the island's edge to the other intersection point.\n    First option will be considered moving inside the island, and the other 2 options will be considered moving in the sea.\n    You should pick the minimum one.\n3- Move from the 2nd intersection point to the destination point."
+}

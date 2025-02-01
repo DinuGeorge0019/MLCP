@@ -1,1 +1,97 @@
-{"link": "https://codeforces.com//contest/820/problem/A", "problemId": "112028", "problem_idx": "A", "shortId": "820A", "contest_number": "820", "problem_submissions": {"D": [28090049, 28137649, 28088664, 28094955, 28089529, 28089527, 28090859, 28089173, 28091024, 28094638, 28089824, 28091652, 28090283, 28091750, 28092540, 28091733, 28092897, 28093521, 28094268], "B": [28083049, 28106071, 28082021, 28080745, 28083623, 28081407, 28080513, 28081950, 28082191, 28081439, 28083924, 28081732, 28083872, 28083485, 28080808, 28085943, 28080448, 28082955, 28081466], "A": [28080531, 28105895, 28079641, 28078276, 28078539, 28078543, 28078629, 28078567, 28078870, 28078269, 28078946, 28078387, 28078624, 28079616, 28078334, 28079395, 28078375, 28078673, 28078593], "C": [28113571, 28113484, 28106533, 143980051], "E": [28279885, 28136857]}, "name": "A. Mister B and Book Reading", "statement": "Mister B once received a gift: it was a book about aliens, which he\r\nstarted read immediately. This book had pages.At first day Mister B read\r\npages, but after that he started to speed up. Every day, starting from\r\nthe second, he read pages more than on the previous day (at first day he\r\nread pages, at second pages, at third pages, and so on). But Mister B is\r\njust a human, so he physically wasn\u2019t able to read more than pages per\r\nday.Also, to refresh his memory, every day, starting from the second,\r\nMister B had to reread last pages he read on the previous day. Mister B\r\nfinished the book when he read the last page for the first time.Help\r\nMister B to calculate how many days he needed to finish the book.\r\n", "solutions": ["#include<iostream>\n#include<cstdio>\nusing namespace std;\ninline int read()\n{\n\tint x = 0 , f = 1; char ch = getchar();\n\twhile(ch < '0' || ch > '9'){ if(ch == '-') f = -1;  ch = getchar();}\n\twhile(ch >= '0' && ch <= '9'){x = x * 10 + ch - '0';ch = getchar();}\n\treturn x * f;\n}\nint c,v0,v1,a,l;\nint main()\n{\n\tc=read();v0=read();v1=read();a=read();l=read();\n\tfor(int now=1,day=1;;++day)\n\t{\n\t\tint Rd=v0-(day!=1?l:0);\n\t\tnow+=Rd;\n\t\tif(now>c) return 0*printf(\"%d\\n\",day);\n\t\tv0=min(v1,v0+a);\n\t}\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["implementation"], "dificulty": "900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/820/problem/A",
+    "problemId": "112028",
+    "problem_idx": "A",
+    "shortId": "820A",
+    "contest_number": "820",
+    "problem_submissions": {
+        "D": [
+            28090049,
+            28137649,
+            28088664,
+            28094955,
+            28089529,
+            28089527,
+            28090859,
+            28089173,
+            28091024,
+            28094638,
+            28089824,
+            28091652,
+            28090283,
+            28091750,
+            28092540,
+            28091733,
+            28092897,
+            28093521,
+            28094268
+        ],
+        "B": [
+            28083049,
+            28106071,
+            28082021,
+            28080745,
+            28083623,
+            28081407,
+            28080513,
+            28081950,
+            28082191,
+            28081439,
+            28083924,
+            28081732,
+            28083872,
+            28083485,
+            28080808,
+            28085943,
+            28080448,
+            28082955,
+            28081466
+        ],
+        "A": [
+            28080531,
+            28105895,
+            28079641,
+            28078276,
+            28078539,
+            28078543,
+            28078629,
+            28078567,
+            28078870,
+            28078269,
+            28078946,
+            28078387,
+            28078624,
+            28079616,
+            28078334,
+            28079395,
+            28078375,
+            28078673,
+            28078593
+        ],
+        "C": [
+            28113571,
+            28113484,
+            28106533,
+            143980051
+        ],
+        "E": [
+            28279885,
+            28136857
+        ]
+    },
+    "name": "A. Mister B and Book Reading",
+    "statement": "Mister B once received a gift: it was a book about aliens, which he\r\nstarted read immediately. This book had pages.At first day Mister B read\r\npages, but after that he started to speed up. Every day, starting from\r\nthe second, he read pages more than on the previous day (at first day he\r\nread pages, at second pages, at third pages, and so on). But Mister B is\r\njust a human, so he physically wasn\u2019t able to read more than pages per\r\nday.Also, to refresh his memory, every day, starting from the second,\r\nMister B had to reread last pages he read on the previous day. Mister B\r\nfinished the book when he read the last page for the first time.Help\r\nMister B to calculate how many days he needed to finish the book.\r\n",
+    "solutions": [
+        "#include<iostream>\n#include<cstdio>\nusing namespace std;\ninline int read()\n{\n\tint x = 0 , f = 1; char ch = getchar();\n\twhile(ch < '0' || ch > '9'){ if(ch == '-') f = -1;  ch = getchar();}\n\twhile(ch >= '0' && ch <= '9'){x = x * 10 + ch - '0';ch = getchar();}\n\treturn x * f;\n}\nint c,v0,v1,a,l;\nint main()\n{\n\tc=read();v0=read();v1=read();a=read();l=read();\n\tfor(int now=1,day=1;;++day)\n\t{\n\t\tint Rd=v0-(day!=1?l:0);\n\t\tnow+=Rd;\n\t\tif(now>c) return 0*printf(\"%d\\n\",day);\n\t\tv0=min(v1,v0+a);\n\t}\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation"
+    ],
+    "dificulty": "900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Mister B and Book Reading.json",
+    "editorial_link": "https://codeforces.com//blog/entry/52946",
+    "editorial": "All that needed - is to accurately simulate process.Create variable,\r\nwhich will contain count of read pages, subtract , add , check, what you\r\nstill have unread pages, make and again.Complexity is .\r\n"
+}

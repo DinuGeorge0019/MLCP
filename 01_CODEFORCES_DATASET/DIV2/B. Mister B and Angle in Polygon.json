@@ -1,1 +1,99 @@
-{"link": "https://codeforces.com//contest/820/problem/B", "problemId": "112029", "problem_idx": "B", "shortId": "820B", "contest_number": "820", "problem_submissions": {"D": [28090049, 28137649, 28088664, 28094955, 28089529, 28089527, 28090859, 28089173, 28091024, 28094638, 28089824, 28091652, 28090283, 28091750, 28092540, 28091733, 28092897, 28093521, 28094268], "B": [28083049, 28106071, 28082021, 28080745, 28083623, 28081407, 28080513, 28081950, 28082191, 28081439, 28083924, 28081732, 28083872, 28083485, 28080808, 28085943, 28080448, 28082955, 28081466], "A": [28080531, 28105895, 28079641, 28078276, 28078539, 28078543, 28078629, 28078567, 28078870, 28078269, 28078946, 28078387, 28078624, 28079616, 28078334, 28079395, 28078375, 28078673, 28078593], "C": [28113571, 28113484, 28106533, 143980051], "E": [28279885, 28136857]}, "name": "B. Mister B and Angle in Polygon", "statement": "On one quiet day all of sudden Mister B decided to draw angle on his\r\nfield. Aliens have already visited his field and left many different\r\ngeometric figures on it. One of the figures is (regular convex polygon\r\nwith sides).That\u2019s why Mister B decided to use this polygon. Now Mister\r\nB must find three distinct vertices , , such that the angle (where is\r\nthe vertex of the angle, and and lie on its sides) is as close as\r\npossible to . In other words, the value should be minimum possible.If\r\nthere are many optimal solutions, Mister B should be satisfied with any\r\nof them.\r\n", "solutions": ["#include <bits/stdc++.h>\n#define ll long long\nusing namespace std;\n\tint n,a,minh;\n\tdouble ptr,mina=720;\nint inline read()\n{\n    int x=0,f=1;char ch=getchar();\n    while(ch<'0'||ch>'9'){if(ch=='-')f=-1;ch=getchar();}\n    while(ch>='0'&&ch<='9'){x=x*10+ch-'0';ch=getchar();}\n    return x*f;\n}\nint main()\n{\n\tn=read(),a=read();\n\tptr=(double)180/n;\n\tfor (int i=1;i<n-1;i++)\n\t\tif (fabs(ptr*i-a)<mina) mina=fabs(ptr*i-a),minh=i;\n\tprintf(\"%d %d %d\\n\",1,2+minh,1+minh);\n\treturn 0;\n}"], "input": "", "output": "", "tags": ["constructive algorithms", "geometry", "math"], "dificulty": "1300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/820/problem/B",
+    "problemId": "112029",
+    "problem_idx": "B",
+    "shortId": "820B",
+    "contest_number": "820",
+    "problem_submissions": {
+        "D": [
+            28090049,
+            28137649,
+            28088664,
+            28094955,
+            28089529,
+            28089527,
+            28090859,
+            28089173,
+            28091024,
+            28094638,
+            28089824,
+            28091652,
+            28090283,
+            28091750,
+            28092540,
+            28091733,
+            28092897,
+            28093521,
+            28094268
+        ],
+        "B": [
+            28083049,
+            28106071,
+            28082021,
+            28080745,
+            28083623,
+            28081407,
+            28080513,
+            28081950,
+            28082191,
+            28081439,
+            28083924,
+            28081732,
+            28083872,
+            28083485,
+            28080808,
+            28085943,
+            28080448,
+            28082955,
+            28081466
+        ],
+        "A": [
+            28080531,
+            28105895,
+            28079641,
+            28078276,
+            28078539,
+            28078543,
+            28078629,
+            28078567,
+            28078870,
+            28078269,
+            28078946,
+            28078387,
+            28078624,
+            28079616,
+            28078334,
+            28079395,
+            28078375,
+            28078673,
+            28078593
+        ],
+        "C": [
+            28113571,
+            28113484,
+            28106533,
+            143980051
+        ],
+        "E": [
+            28279885,
+            28136857
+        ]
+    },
+    "name": "B. Mister B and Angle in Polygon",
+    "statement": "On one quiet day all of sudden Mister B decided to draw angle on his\r\nfield. Aliens have already visited his field and left many different\r\ngeometric figures on it. One of the figures is (regular convex polygon\r\nwith sides).That\u2019s why Mister B decided to use this polygon. Now Mister\r\nB must find three distinct vertices , , such that the angle (where is\r\nthe vertex of the angle, and and lie on its sides) is as close as\r\npossible to . In other words, the value should be minimum possible.If\r\nthere are many optimal solutions, Mister B should be satisfied with any\r\nof them.\r\n",
+    "solutions": [
+        "#include <bits/stdc++.h>\n#define ll long long\nusing namespace std;\n\tint n,a,minh;\n\tdouble ptr,mina=720;\nint inline read()\n{\n    int x=0,f=1;char ch=getchar();\n    while(ch<'0'||ch>'9'){if(ch=='-')f=-1;ch=getchar();}\n    while(ch>='0'&&ch<='9'){x=x*10+ch-'0';ch=getchar();}\n    return x*f;\n}\nint main()\n{\n\tn=read(),a=read();\n\tptr=(double)180/n;\n\tfor (int i=1;i<n-1;i++)\n\t\tif (fabs(ptr*i-a)<mina) mina=fabs(ptr*i-a),minh=i;\n\tprintf(\"%d %d %d\\n\",1,2+minh,1+minh);\n\treturn 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "geometry",
+        "math"
+    ],
+    "dificulty": "1300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Mister B and Angle in Polygon.json",
+    "editorial_link": "https://codeforces.com//blog/entry/52946",
+    "editorial": "Since polygon is regular, all vertices of a regular polygon lie on a\r\ncommon circle (the circumscribed circle), so all possible angles are\r\ninscribed angles. And all inscribed angles subtending the same arc have\r\nsame measure.More over, minor and major arcs between vertices and equals\r\nto minor and major arcs between vertices and .And finally, length of arc\r\ncan be calculated with formula as sum of minor arcs between consecutive\r\nvertices. Length of minor arcs between consecutive vertices equals to\r\n.Length of inscribed angle is half of arc it based on.In other words if\r\nor in other case.In the end, this task can be solved by checking all\r\ndifferent ( can be fixed as ), or by formula, if we put in formula\r\nabove.In result finding closest angle can be done in or even time.\r\n"
+}

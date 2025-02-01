@@ -1,1 +1,92 @@
-{"link": "https://codeforces.com//contest/705/problem/A", "problemId": "67572", "problem_idx": "A", "shortId": "705A", "contest_number": "705", "problem_submissions": {"D": [19710317, 19709572, 19706603, 19723842, 19714113], "B": [19697015, 19695602, 19694872, 19691908, 19690813, 19690994, 19691365, 19692977, 19701184, 19690077, 19695542, 19693836, 19691432, 19691430, 19691201, 19691141, 19690981, 19690624], "C": [19695574, 19701038, 19703575, 19694988, 19695049, 19694120, 19694460, 19696131, 19693613, 19695194, 19694857, 19693954, 19699733, 19694740, 19697270, 19695964, 19694395, 19694550, 19694956], "A": [19689053, 19689391, 19688190, 19691873, 19687916, 19688114, 19688082, 19688059, 19695855, 19688080, 19688873, 19688894, 19689037, 19688592, 19688331, 19688091, 19688817, 19688188]}, "name": "A. Hulk", "statement": "Dr. Bruce Banner hates his enemies (like others don\u2019t). As we all know,\r\nhe can barely talk when he turns into the incredible Hulk. That\u2019s why he\r\nasked you to help him to express his feelings.Hulk likes the Inception\r\nso much, and like that his feelings are complicated. They have layers.\r\nThe first layer is hate, second one is love, third one is hate and so\r\non...For example if , then his feeling is \"\" or if it\u2019s \"\", and if it\u2019s\r\n\"\" and so on.Please help Dr. Banner.\r\n", "solutions": ["#include \"stdio.h\"\n\nint n;\n\nint main(){\n\tscanf(\"%d\",&n);\n\tprintf(\"I hate\");\n\tfor(int i = 1; i < n; i++){\n\t\tif(i%2==1) printf(\" that I love\");\n\t\telse printf(\" that I hate\");\n\t}\n\tprintf(\" it\\n\");\n}"], "input": "", "output": "", "tags": ["implementation"], "dificulty": "800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/705/problem/A",
+    "problemId": "67572",
+    "problem_idx": "A",
+    "shortId": "705A",
+    "contest_number": "705",
+    "problem_submissions": {
+        "D": [
+            19710317,
+            19709572,
+            19706603,
+            19723842,
+            19714113
+        ],
+        "B": [
+            19697015,
+            19695602,
+            19694872,
+            19691908,
+            19690813,
+            19690994,
+            19691365,
+            19692977,
+            19701184,
+            19690077,
+            19695542,
+            19693836,
+            19691432,
+            19691430,
+            19691201,
+            19691141,
+            19690981,
+            19690624
+        ],
+        "C": [
+            19695574,
+            19701038,
+            19703575,
+            19694988,
+            19695049,
+            19694120,
+            19694460,
+            19696131,
+            19693613,
+            19695194,
+            19694857,
+            19693954,
+            19699733,
+            19694740,
+            19697270,
+            19695964,
+            19694395,
+            19694550,
+            19694956
+        ],
+        "A": [
+            19689053,
+            19689391,
+            19688190,
+            19691873,
+            19687916,
+            19688114,
+            19688082,
+            19688059,
+            19695855,
+            19688080,
+            19688873,
+            19688894,
+            19689037,
+            19688592,
+            19688331,
+            19688091,
+            19688817,
+            19688188
+        ]
+    },
+    "name": "A. Hulk",
+    "statement": "Dr. Bruce Banner hates his enemies (like others don\u2019t). As we all know,\r\nhe can barely talk when he turns into the incredible Hulk. That\u2019s why he\r\nasked you to help him to express his feelings.Hulk likes the Inception\r\nso much, and like that his feelings are complicated. They have layers.\r\nThe first layer is hate, second one is love, third one is hate and so\r\non...For example if , then his feeling is \"\" or if it\u2019s \"\", and if it\u2019s\r\n\"\" and so on.Please help Dr. Banner.\r\n",
+    "solutions": [
+        "#include \"stdio.h\"\n\nint n;\n\nint main(){\n\tscanf(\"%d\",&n);\n\tprintf(\"I hate\");\n\tfor(int i = 1; i < n; i++){\n\t\tif(i%2==1) printf(\" that I love\");\n\t\telse printf(\" that I hate\");\n\t}\n\tprintf(\" it\\n\");\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation"
+    ],
+    "dificulty": "800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Hulk.json",
+    "editorial_link": "https://codeforces.com//blog/entry/46450",
+    "editorial": "Just alternatively print \"I hate that\" and \"I love that\", and in the last level change \"that\" to \"it\".\n"
+}

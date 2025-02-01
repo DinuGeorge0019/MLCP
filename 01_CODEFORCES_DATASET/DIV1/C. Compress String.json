@@ -1,1 +1,110 @@
-{"link": "https://codeforces.com//contest/1120/problem/C", "problemId": "306943", "problem_idx": "C", "shortId": "1120C", "contest_number": "1120", "problem_submissions": {"E": [50758414, 50756395, 51349737], "F": [50755440, 50756775, 50756923, 50745238, 50757783, 50769406, 57326050], "D": [50750764, 50751956, 50743562, 50751566, 50752777, 50751884, 50753994, 50750618, 50751945, 50752229, 50752378, 50752892, 50753276, 50756304, 50749029, 50755638, 50755384, 50755602, 50754622], "C": [50742812, 50748170, 50742079, 50747757, 50746596, 50747930, 50749515, 50746554, 50746940, 50749954, 50748511, 50747866, 50749223, 50751278, 50750205, 50750042, 50750814, 50749510, 50744496], "B": [50741885, 50746393, 50748182, 50754599, 50753894, 50755398, 50768361, 50757846, 50749483, 57329791], "A": [50743197, 50749514, 50746437, 50743945, 50745821, 50745101, 50745374, 50743501, 50746721, 50745328, 50746455, 73355086, 50745671, 50745395, 50746139]}, "name": "C. Compress String", "statement": "Suppose you are given a string s of length n consisting of lowercase\r\nEnglish letters. You need to compress it using the smallest possible\r\nnumber of coins.To compress the string, you have to represent s as a\r\nconcatenation of several non-empty strings: s = t_{1} t_{2}\r\nldots t_{k}. The i-th of these strings should be encoded with one of the\r\ntwo ways: if |t_{i}| = 1, meaning that the current string consists of a\r\nsingle character, you can encode it paying a coins; if t_{i} is a\r\nsubstring of t_{1} t_{2}\r\nldots t_{i - 1}, then you can encode it paying b coins. A string x is a\r\nsubstring of a string y if x can be obtained from y by deletion of\r\nseveral (possibly, zero or all) characters from the beginning and\r\nseveral (possibly, zero or all) characters from the end.So your task is\r\nto calculate the minimum possible number of coins you need to spend in\r\norder to compress the given string s.\r\n", "solutions": ["//~ while (clock()<=69*CLOCKS_PER_SEC)\n//~ #pragma comment(linker, \"/stack:200000000\")\n#pragma GCC optimize(\"O3\")\n//~ #pragma GCC optimize(\"Ofast\")\n//~ #pragma GCC target(\"sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native\")\n//~ #pragma GCC optimize(\"unroll-loops\")\n#include <bits/stdc++.h>\n#include <ext/pb_ds/assoc_container.hpp>\n#include <ext/pb_ds/tree_policy.hpp>\n\nusing namespace __gnu_pbds;\nusing namespace std;\n\ntemplate <typename T>\nusing ordered_set =\n    tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n#define sim template < class c\n#define ris return * this\n#define dor > debug & operator <<\n#define eni(x) sim > typename \\\n  enable_if<sizeof dud<c>(0) x 1, debug&>::type operator<<(c i) {\nsim > struct rge { c b, e; };\nsim > rge<c> range(c i, c j) { return rge<c>{i, j}; }\nsim > auto dud(c* x) -> decltype(cerr << *x, 0);\nsim > char dud(...);\nstruct debug {\n#ifdef LOCAL\n~debug() { cerr << endl; }\neni(!=) cerr << boolalpha << i; ris; }\neni(==) ris << range(begin(i), end(i)); }\nsim, class b dor(pair < b, c > d) {\n  ris << \"(\" << d.first << \", \" << d.second << \")\";\n}\nsim dor(rge<c> d) {\n  *this << \"[\";\n  for (auto it = d.b; it != d.e; ++it)\n    *this << \", \" + 2 * (it == d.b) << *it;\n  ris << \"]\";\n}\n#else\nsim dor(const c&) { ris; }\n#endif\n};\n#define imie(...) \" [\" << #__VA_ARGS__ \": \" << (__VA_ARGS__) << \"] \"\n\n#define shandom_ruffle random_shuffle\n\nusing ll=long long;\nusing pii=pair<int,int>;\nusing pll=pair<ll,ll>;\nusing vi=vector<int>;\nusing vll=vector<ll>;\nconst int nax=5007;\nconst int inf=1e9;\n\nint n, ka, kb;\n\nchar wcz[nax];\n\nint dp[nax][nax];\n\nint dp2[nax];\n\nint main()\n{\n\tscanf(\"%d%d%d\", &n, &ka, &kb);\n\tscanf(\"%s\", wcz+1);\n\tfor (int i=1; i<=n; i++)\n\t\tfor (int j=1; j<=n; j++)\n\t\t\tif (wcz[i]==wcz[j])\n\t\t\t\tdp[i][j]=dp[i-1][j-1]+1;\n\tfor (int i=1; i<=n; i++)\n\t{\n\t\tdp2[i]=dp2[i-1]+ka;\n\t\tfor (int j=1; j<i; j++)\n\t\t{\n\t\t\tint x=min(i-j, dp[i][j]);\n\t\t\tdp2[i]=min(dp2[i], dp2[i-x]+kb);\n\t\t}\n\t}\n\tprintf(\"%d\\n\", dp2[n]);\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["dp", "strings"], "dificulty": "2100", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/1120/problem/C",
+    "problemId": "306943",
+    "problem_idx": "C",
+    "shortId": "1120C",
+    "contest_number": "1120",
+    "problem_submissions": {
+        "E": [
+            50758414,
+            50756395,
+            51349737
+        ],
+        "F": [
+            50755440,
+            50756775,
+            50756923,
+            50745238,
+            50757783,
+            50769406,
+            57326050
+        ],
+        "D": [
+            50750764,
+            50751956,
+            50743562,
+            50751566,
+            50752777,
+            50751884,
+            50753994,
+            50750618,
+            50751945,
+            50752229,
+            50752378,
+            50752892,
+            50753276,
+            50756304,
+            50749029,
+            50755638,
+            50755384,
+            50755602,
+            50754622
+        ],
+        "C": [
+            50742812,
+            50748170,
+            50742079,
+            50747757,
+            50746596,
+            50747930,
+            50749515,
+            50746554,
+            50746940,
+            50749954,
+            50748511,
+            50747866,
+            50749223,
+            50751278,
+            50750205,
+            50750042,
+            50750814,
+            50749510,
+            50744496
+        ],
+        "B": [
+            50741885,
+            50746393,
+            50748182,
+            50754599,
+            50753894,
+            50755398,
+            50768361,
+            50757846,
+            50749483,
+            57329791
+        ],
+        "A": [
+            50743197,
+            50749514,
+            50746437,
+            50743945,
+            50745821,
+            50745101,
+            50745374,
+            50743501,
+            50746721,
+            50745328,
+            50746455,
+            73355086,
+            50745671,
+            50745395,
+            50746139
+        ]
+    },
+    "name": "C. Compress String",
+    "statement": "Suppose you are given a string s of length n consisting of lowercase\r\nEnglish letters. You need to compress it using the smallest possible\r\nnumber of coins.To compress the string, you have to represent s as a\r\nconcatenation of several non-empty strings: s = t_{1} t_{2}\r\nldots t_{k}. The i-th of these strings should be encoded with one of the\r\ntwo ways: if |t_{i}| = 1, meaning that the current string consists of a\r\nsingle character, you can encode it paying a coins; if t_{i} is a\r\nsubstring of t_{1} t_{2}\r\nldots t_{i - 1}, then you can encode it paying b coins. A string x is a\r\nsubstring of a string y if x can be obtained from y by deletion of\r\nseveral (possibly, zero or all) characters from the beginning and\r\nseveral (possibly, zero or all) characters from the end.So your task is\r\nto calculate the minimum possible number of coins you need to spend in\r\norder to compress the given string s.\r\n",
+    "solutions": [
+        "//~ while (clock()<=69*CLOCKS_PER_SEC)\n//~ #pragma comment(linker, \"/stack:200000000\")\n#pragma GCC optimize(\"O3\")\n//~ #pragma GCC optimize(\"Ofast\")\n//~ #pragma GCC target(\"sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native\")\n//~ #pragma GCC optimize(\"unroll-loops\")\n#include <bits/stdc++.h>\n#include <ext/pb_ds/assoc_container.hpp>\n#include <ext/pb_ds/tree_policy.hpp>\n\nusing namespace __gnu_pbds;\nusing namespace std;\n\ntemplate <typename T>\nusing ordered_set =\n    tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n#define sim template < class c\n#define ris return * this\n#define dor > debug & operator <<\n#define eni(x) sim > typename \\\n  enable_if<sizeof dud<c>(0) x 1, debug&>::type operator<<(c i) {\nsim > struct rge { c b, e; };\nsim > rge<c> range(c i, c j) { return rge<c>{i, j}; }\nsim > auto dud(c* x) -> decltype(cerr << *x, 0);\nsim > char dud(...);\nstruct debug {\n#ifdef LOCAL\n~debug() { cerr << endl; }\neni(!=) cerr << boolalpha << i; ris; }\neni(==) ris << range(begin(i), end(i)); }\nsim, class b dor(pair < b, c > d) {\n  ris << \"(\" << d.first << \", \" << d.second << \")\";\n}\nsim dor(rge<c> d) {\n  *this << \"[\";\n  for (auto it = d.b; it != d.e; ++it)\n    *this << \", \" + 2 * (it == d.b) << *it;\n  ris << \"]\";\n}\n#else\nsim dor(const c&) { ris; }\n#endif\n};\n#define imie(...) \" [\" << #__VA_ARGS__ \": \" << (__VA_ARGS__) << \"] \"\n\n#define shandom_ruffle random_shuffle\n\nusing ll=long long;\nusing pii=pair<int,int>;\nusing pll=pair<ll,ll>;\nusing vi=vector<int>;\nusing vll=vector<ll>;\nconst int nax=5007;\nconst int inf=1e9;\n\nint n, ka, kb;\n\nchar wcz[nax];\n\nint dp[nax][nax];\n\nint dp2[nax];\n\nint main()\n{\n\tscanf(\"%d%d%d\", &n, &ka, &kb);\n\tscanf(\"%s\", wcz+1);\n\tfor (int i=1; i<=n; i++)\n\t\tfor (int j=1; j<=n; j++)\n\t\t\tif (wcz[i]==wcz[j])\n\t\t\t\tdp[i][j]=dp[i-1][j-1]+1;\n\tfor (int i=1; i<=n; i++)\n\t{\n\t\tdp2[i]=dp2[i-1]+ka;\n\t\tfor (int j=1; j<i; j++)\n\t\t{\n\t\t\tint x=min(i-j, dp[i][j]);\n\t\t\tdp2[i]=min(dp2[i], dp2[i-x]+kb);\n\t\t}\n\t}\n\tprintf(\"%d\\n\", dp2[n]);\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp",
+        "strings"
+    ],
+    "dificulty": "2100",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Compress String.json",
+    "editorial_link": "https://codeforces.com//blog/entry/65679",
+    "editorial": "Let\u00e2\u0080\u0099s say that is the minimal cost to encode the prefix of with length ,\r\nthe answer is . If we want to encode the prefix with length then the\r\nlast symbol in our encoded string either equals , or represents some\r\nsubstring so that it occurs in the prefix of length . Therefore one can\r\nsee that One way to implement this is to calculate this forward and use\r\nhashes, but it may require some efforts to avoid collisions and fit into\r\nthe time limit. Another way is to find for each all appropriate \u00e2\u0080\u0099s by\r\ncalculating z-function on the reverse of . The total complexity in this\r\ncase is .\r\n"
+}

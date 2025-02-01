@@ -1,1 +1,97 @@
-{"link": "https://codeforces.com//contest/139/problem/C", "problemId": "729", "problem_idx": "C", "shortId": "139C", "contest_number": "139", "problem_submissions": {"E": [980042, 1355508, 989840], "D": [978407, 979258, 981500, 981141, 981629, 981112, 981003, 978361, 980314, 982438], "C": [976486, 980221, 979576, 975661, 979182, 978241, 976343, 980246, 977234, 977300, 980151, 975292, 976905, 979088, 978354, 975803], "B": [975799, 976102, 976580, 980368, 976461, 976842, 977973, 977389, 975833, 975600, 976651, 976089, 975820, 976583, 976416, 977370], "A": [974412, 974563, 974849, 979612, 974810, 975009, 974390, 974654, 984067, 974272, 974267, 976572, 974588, 974309, 974688, 974303, 977612]}, "name": "C. Literature Lesson", "statement": "Vera adores poems. All the poems Vera knows are divided into quatrains\r\n(groups of four lines) and in each quatrain some lines contain\r\nrhymes.Let\u2019s consider that all lines in the poems consist of lowercase\r\nLatin letters (without spaces). Letters \"\", \"\", \"\", \"\", \"\" are\r\nconsidered vowels.Two lines rhyme if their suffixes that start from the\r\n-th vowels (counting from the end) match. If a line has less than\r\nvowels, then such line can\u2019t rhyme with any other line. For example, if\r\n, lines and rhyme (the corresponding suffixes equal ), and if , they do\r\nnot rhyme ().Today on a literature lesson Vera learned that quatrains\r\ncan contain four different schemes of rhymes, namely the following ones\r\n(the same letters stand for rhyming lines): Clerihew (); Alternating ();\r\nEnclosed (). If all lines of a quatrain pairwise rhyme, then the\r\nquatrain can belong to any rhyme scheme (this situation is represented\r\nby ).If all quatrains of a poem belong to the same rhyme scheme, then we\r\ncan assume that the whole poem belongs to this rhyme scheme. If in each\r\nquatrain all lines pairwise rhyme, then the rhyme scheme of the poem is\r\n. Let us note that it doesn\u2019t matter whether lines from different\r\nquatrains rhyme with each other or not. In other words, it is possible\r\nthat different quatrains aren\u2019t connected by a rhyme.Vera got a long\r\npoem as a home task. The girl has to analyse it and find the poem rhyme\r\nscheme. Help Vera cope with the task.\r\n", "solutions": ["#include <vector>\n#include <string>\n#include <iostream>\n#include <algorithm>\n#include <queue>\n#include <set>\n#include <map>\n#include <sstream>\n#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cmath>\nusing namespace std;\ntypedef long long ll;\n#define pb push_back\n#define mp make_pair\n#define fi first\n#define se second\n#define FOR(i, s, t) for(i = (s); i < (t); i++)\n#define RFOR(i, s, t) for(i = (s)-1; i >= (t); i--)\n\nstring s[4];\nint k;\n\nbool dif[4][4];\n\nbool ch(char c)\n{\n  switch(c)\n  {\n    case'a':case'e':case'i':case'o':case'u':return 1;\n  }\n  return 0;\n}\n\nbool same(string s1, string s2)\n{\n  int i1, i2;\n  int t;\n  i1 = s1.size()-1;\n  t = 0;\n  while(i1 >= 0 && t < k)\n  {\n    if(ch(s1[i1]))\n      t++;\n    i1--;\n  }\n  if(t < k)\n    return 0;\n  i2 = s2.size()-1;\n  t = 0;\n  while(i2 >= 0 && t < k)\n  {\n    if(ch(s2[i2]))\n      t++;\n    i2--;\n  }\n  if(t < k)\n    return 0;\n  return s1.substr(i1+1) == s2.substr(i2+1);\n}\n\nint main()\n{\n  #ifdef __FIO\n  freopen(\"in.txt\", \"r\", stdin);\n  freopen(\"out.txt\", \"w\", stdout);\n  #endif\n  int n;\n  int i, j, k;\n  cin>>n>>::k;\n  memset(dif, 0, sizeof dif);\n  for(i = 0; i < n; i++)\n  {\n    for(j = 0; j < 4; j++)\n      cin>>s[j];\n    for(j = 0; j < 4; j++)\n      for(k = 0; k < j; k++)\n        if(!same(s[j], s[k]))\n          dif[j][k] = dif[k][j] = 1;\n  }\n  i = 0;\n  for(j = 0; j < 4; j++)\n    for(k = 0; k < 4; k++)\n      i += dif[j][k];\n  if(i == 0)\n  {\n    printf(\"aaaa\\n\");\n    return 0;\n  }\n  if(!dif[0][1] && !dif[2][3])\n  {\n    printf(\"aabb\\n\");\n  }\n  else if(!dif[0][2] && !dif[1][3])\n  {\n    printf(\"abab\\n\");\n  }\n  else if(!dif[0][3] && !dif[1][2])\n  {\n    printf(\"abba\\n\");\n  }\n  else\n    printf(\"NO\\n\");\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["implementation", "strings"], "dificulty": "1600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/139/problem/C",
+    "problemId": "729",
+    "problem_idx": "C",
+    "shortId": "139C",
+    "contest_number": "139",
+    "problem_submissions": {
+        "E": [
+            980042,
+            1355508,
+            989840
+        ],
+        "D": [
+            978407,
+            979258,
+            981500,
+            981141,
+            981629,
+            981112,
+            981003,
+            978361,
+            980314,
+            982438
+        ],
+        "C": [
+            976486,
+            980221,
+            979576,
+            975661,
+            979182,
+            978241,
+            976343,
+            980246,
+            977234,
+            977300,
+            980151,
+            975292,
+            976905,
+            979088,
+            978354,
+            975803
+        ],
+        "B": [
+            975799,
+            976102,
+            976580,
+            980368,
+            976461,
+            976842,
+            977973,
+            977389,
+            975833,
+            975600,
+            976651,
+            976089,
+            975820,
+            976583,
+            976416,
+            977370
+        ],
+        "A": [
+            974412,
+            974563,
+            974849,
+            979612,
+            974810,
+            975009,
+            974390,
+            974654,
+            984067,
+            974272,
+            974267,
+            976572,
+            974588,
+            974309,
+            974688,
+            974303,
+            977612
+        ]
+    },
+    "name": "C. Literature Lesson",
+    "statement": "Vera adores poems. All the poems Vera knows are divided into quatrains\r\n(groups of four lines) and in each quatrain some lines contain\r\nrhymes.Let\u2019s consider that all lines in the poems consist of lowercase\r\nLatin letters (without spaces). Letters \"\", \"\", \"\", \"\", \"\" are\r\nconsidered vowels.Two lines rhyme if their suffixes that start from the\r\n-th vowels (counting from the end) match. If a line has less than\r\nvowels, then such line can\u2019t rhyme with any other line. For example, if\r\n, lines and rhyme (the corresponding suffixes equal ), and if , they do\r\nnot rhyme ().Today on a literature lesson Vera learned that quatrains\r\ncan contain four different schemes of rhymes, namely the following ones\r\n(the same letters stand for rhyming lines): Clerihew (); Alternating ();\r\nEnclosed (). If all lines of a quatrain pairwise rhyme, then the\r\nquatrain can belong to any rhyme scheme (this situation is represented\r\nby ).If all quatrains of a poem belong to the same rhyme scheme, then we\r\ncan assume that the whole poem belongs to this rhyme scheme. If in each\r\nquatrain all lines pairwise rhyme, then the rhyme scheme of the poem is\r\n. Let us note that it doesn\u2019t matter whether lines from different\r\nquatrains rhyme with each other or not. In other words, it is possible\r\nthat different quatrains aren\u2019t connected by a rhyme.Vera got a long\r\npoem as a home task. The girl has to analyse it and find the poem rhyme\r\nscheme. Help Vera cope with the task.\r\n",
+    "solutions": [
+        "#include <vector>\n#include <string>\n#include <iostream>\n#include <algorithm>\n#include <queue>\n#include <set>\n#include <map>\n#include <sstream>\n#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cmath>\nusing namespace std;\ntypedef long long ll;\n#define pb push_back\n#define mp make_pair\n#define fi first\n#define se second\n#define FOR(i, s, t) for(i = (s); i < (t); i++)\n#define RFOR(i, s, t) for(i = (s)-1; i >= (t); i--)\n\nstring s[4];\nint k;\n\nbool dif[4][4];\n\nbool ch(char c)\n{\n  switch(c)\n  {\n    case'a':case'e':case'i':case'o':case'u':return 1;\n  }\n  return 0;\n}\n\nbool same(string s1, string s2)\n{\n  int i1, i2;\n  int t;\n  i1 = s1.size()-1;\n  t = 0;\n  while(i1 >= 0 && t < k)\n  {\n    if(ch(s1[i1]))\n      t++;\n    i1--;\n  }\n  if(t < k)\n    return 0;\n  i2 = s2.size()-1;\n  t = 0;\n  while(i2 >= 0 && t < k)\n  {\n    if(ch(s2[i2]))\n      t++;\n    i2--;\n  }\n  if(t < k)\n    return 0;\n  return s1.substr(i1+1) == s2.substr(i2+1);\n}\n\nint main()\n{\n  #ifdef __FIO\n  freopen(\"in.txt\", \"r\", stdin);\n  freopen(\"out.txt\", \"w\", stdout);\n  #endif\n  int n;\n  int i, j, k;\n  cin>>n>>::k;\n  memset(dif, 0, sizeof dif);\n  for(i = 0; i < n; i++)\n  {\n    for(j = 0; j < 4; j++)\n      cin>>s[j];\n    for(j = 0; j < 4; j++)\n      for(k = 0; k < j; k++)\n        if(!same(s[j], s[k]))\n          dif[j][k] = dif[k][j] = 1;\n  }\n  i = 0;\n  for(j = 0; j < 4; j++)\n    for(k = 0; k < 4; k++)\n      i += dif[j][k];\n  if(i == 0)\n  {\n    printf(\"aaaa\\n\");\n    return 0;\n  }\n  if(!dif[0][1] && !dif[2][3])\n  {\n    printf(\"aabb\\n\");\n  }\n  else if(!dif[0][2] && !dif[1][3])\n  {\n    printf(\"abab\\n\");\n  }\n  else if(!dif[0][3] && !dif[1][2])\n  {\n    printf(\"abba\\n\");\n  }\n  else\n    printf(\"NO\\n\");\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation",
+        "strings"
+    ],
+    "dificulty": "1600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Literature Lesson.json",
+    "editorial_link": "https://codeforces.com//blog/entry/3462",
+    "editorial": "The hardest part is to check whether two lines rhyme or not.\n\nWe have to check the suffixes starting in K-th vowels from the ends for equality. Notice that if a line has less then K vowels, it can NOT be part of any rhyme (even with the identical string).\n\nTo check this we can use two pointers running from two ends simultaneously, or use some built-in functions for taking substrings (like s.substr(...) in C++).\n\nNow, let us take three boolean variables: aabb, abab and abba. Each one says if every quatrain we have seen before satisfies the corresponding type of rhyme. To support them, for each new quatrain we must check for rhyming every pair of lines it and change variables if needed.\n\nIf at the end of the poem all variables are set to TRUE, then the type is aaaa. If all of them are FALSE's, then the answer is NO. Otherwise exactly on of them is TRUE, and answer is clear. \n\nComplexity - O(S), where S is the sum of all lines' sizes."
+}

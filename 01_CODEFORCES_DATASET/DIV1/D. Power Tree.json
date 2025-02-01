@@ -1,1 +1,114 @@
-{"link": "https://codeforces.com//contest/1120/problem/D", "problemId": "306944", "problem_idx": "D", "shortId": "1120D", "contest_number": "1120", "problem_submissions": {"E": [50758414, 50756395, 51349737], "F": [50755440, 50756775, 50756923, 50745238, 50757783, 50769406, 57326050], "D": [50750764, 50751956, 50743562, 50751566, 50752777, 50751884, 50753994, 50750618, 50751945, 50752229, 50752378, 50752892, 50753276, 50756304, 50749029, 50755638, 50755384, 50755602, 50754622], "C": [50742812, 50748170, 50742079, 50747757, 50746596, 50747930, 50749515, 50746554, 50746940, 50749954, 50748511, 50747866, 50749223, 50751278, 50750205, 50750042, 50750814, 50749510, 50744496], "B": [50741885, 50746393, 50748182, 50754599, 50753894, 50755398, 50768361, 50757846, 50749483, 57329791], "A": [50743197, 50749514, 50746437, 50743945, 50745821, 50745101, 50745374, 50743501, 50746721, 50745328, 50746455, 73355086, 50745671, 50745395, 50746139]}, "name": "D. Power Tree", "statement": "You are given a rooted tree with n vertices, the root of the tree is the\r\nvertex 1. Each vertex has some non-negative price. A leaf of the tree is\r\na non-root vertex that has degree 1.Arkady and Vasily play a strange\r\ngame on the tree. The game consists of three stages. On the first stage\r\nArkady buys some non-empty set of vertices of the tree. On the second\r\nstage Vasily puts some integers into all leaves of the tree. On the\r\nthird stage Arkady can perform several (possibly none) operations of the\r\nfollowing kind: choose some vertex v he bought on the first stage and\r\nsome integer x, and then add x to all integers in the leaves in the\r\nsubtree of v. The integer x can be positive, negative of zero.A leaf a\r\nis in the subtree of a vertex b if and only if the simple path between a\r\nand the root goes through b.Arkady\u2019s task is to make all integers in the\r\nleaves equal to zero. What is the minimum total cost s he has to pay on\r\nthe first stage to guarantee his own win independently of the integers\r\nVasily puts on the second stage? Also, we ask you to find all such\r\nvertices that there is an optimal (i.e. with cost s) set of vertices\r\ncontaining this one such that Arkady can guarantee his own win buying\r\nthis set on the first stage.\r\n", "solutions": ["//~ while (clock()<=69*CLOCKS_PER_SEC)\n//~ #pragma comment(linker, \"/stack:200000000\")\n#pragma GCC optimize(\"O3\")\n//~ #pragma GCC optimize(\"Ofast\")\n//~ #pragma GCC target(\"sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native\")\n//~ #pragma GCC optimize(\"unroll-loops\")\n#include <bits/stdc++.h>\n#include <ext/pb_ds/assoc_container.hpp>\n#include <ext/pb_ds/tree_policy.hpp>\n\nusing namespace __gnu_pbds;\nusing namespace std;\n\ntemplate <typename T>\nusing ordered_set =\n    tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n#define sim template < class c\n#define ris return * this\n#define dor > debug & operator <<\n#define eni(x) sim > typename \\\n  enable_if<sizeof dud<c>(0) x 1, debug&>::type operator<<(c i) {\nsim > struct rge { c b, e; };\nsim > rge<c> range(c i, c j) { return rge<c>{i, j}; }\nsim > auto dud(c* x) -> decltype(cerr << *x, 0);\nsim > char dud(...);\nstruct debug {\n#ifdef LOCAL\n~debug() { cerr << endl; }\neni(!=) cerr << boolalpha << i; ris; }\neni(==) ris << range(begin(i), end(i)); }\nsim, class b dor(pair < b, c > d) {\n  ris << \"(\" << d.first << \", \" << d.second << \")\";\n}\nsim dor(rge<c> d) {\n  *this << \"[\";\n  for (auto it = d.b; it != d.e; ++it)\n    *this << \", \" + 2 * (it == d.b) << *it;\n  ris << \"]\";\n}\n#else\nsim dor(const c&) { ris; }\n#endif\n};\n#define imie(...) \" [\" << #__VA_ARGS__ \": \" << (__VA_ARGS__) << \"] \"\n\n#define shandom_ruffle random_shuffle\n\nusing ll=long long;\nusing pii=pair<int,int>;\nusing pll=pair<ll,ll>;\nusing vi=vector<int>;\nusing vll=vector<ll>;\nconst int nax=200*1007;\nconst ll inf=1e18;\n\nint n;\n\nvi graf[nax];\nll tab[nax];\n\nll dpwsz[nax];\nll dpbez[nax];\n\nint lis[nax];\n\nvi opt;\n\nvoid minuj(ll &a, ll b)\n{\n\ta=min(a, b);\n}\n\nvoid maxuj(ll &a, ll b)\n{\n\ta=max(a, b);\n}\n\nvoid dfs1(int v, int oj)\n{\n\tfor (int &i : graf[v])\n\t{\n\t\tif (i==oj)\n\t\t{\n\t\t\tswap(i, graf[v].back());\n\t\t\tgraf[v].pop_back();\n\t\t\tbreak;\n\t\t}\n\t}\n\tlis[v]=(graf[v].empty());\n\tif (lis[v])\n\t{\n\t\tdpwsz[v]=tab[v];\n\t\tdpbez[v]=0;\n\t\treturn;\n\t}\n\tdpwsz[v]=0;\n\tdpbez[v]=0;\n\tvector <pll> wek;\n\tfor (int i : graf[v])\n\t{\n\t\tdfs1(i, v);\n\t\twek.push_back({dpwsz[i], dpbez[i]});\n\t}\n\tll sum=0;\n\tfor (pll i : wek)\n\t\tsum+=i.first;\n\tdpwsz[v]=sum;\n\tdpbez[v]=inf;\n\tfor (pll i : wek)\n\t\tminuj(dpbez[v], sum-i.first+i.second);\n\tminuj(dpwsz[v], dpbez[v]+tab[v]);\n}\n\nvoid dfs2(int v, ll kwsz, ll kbez)\n{\n\t//~ debug() << v << \" \" << kwsz << \" \" << kbez;\n\tvector <pll> wek;\n\tfor (int i : graf[v])\n\t\twek.push_back({dpwsz[i], dpbez[i]});\n\tll sum=0;\n\tfor (pll i : wek)\n\t\tsum+=i.first;\n\tif (kwsz==dpbez[v]+tab[v])\n\t\topt.push_back(v);\n\t//~ if (dpwsz[v]==sum)\n\t//~ {\n\t\t//~ for (int i : graf[v])\n\t\t\t//~ dfs2(i, dpwsz[i]);\n\t\t//~ return;\n\t//~ }\n\t\n\tvector <pair<ll,int> > wek2;\n\tfor (int i : graf[v])\n\t\twek2.push_back({-dpwsz[i]+dpbez[i], i});\n\tsort(wek2.begin(), wek2.end());\n\tfor (int i : graf[v])\n\t{\n\t\tll x=-inf;\n\t\tll y=-inf;\n\t\tmaxuj(y, kbez-(sum-dpwsz[i]));\n\t\tmaxuj(y, kwsz-(sum-dpwsz[i])-tab[v]);\n\t\tmaxuj(x, kwsz-(sum-dpwsz[i]));\n\t\tint num=0;\n\t\tfor (auto j : wek2)\n\t\t{\n\t\t\tif (j.second==i)\n\t\t\t\tcontinue;\n\t\t\tmaxuj(x, kbez-(sum-dpwsz[i])-j.first);\n\t\t\tmaxuj(x, kwsz-(sum-dpwsz[i])-j.first-tab[v]);\n\t\t\t//~ maxuj(y, kbez-(sum-dpwsz[i])-j.first);\n\t\t\t\n\t\t\tnum++;\n\t\t\tif (num>3)\n\t\t\t\tbreak;\n\t\t}\n\t\t\n\t\tdfs2(i, x, y);\n\t}\n}\n\nint main()\n{\n\tscanf(\"%d\", &n);\n\tfor (int i=1; i<=n; i++)\n\t\tscanf(\"%lld\", &tab[i]);\n\tfor (int i=1; i<n; i++)\n\t{\n\t\tint a, b;\n\t\tscanf(\"%d%d\", &a, &b);\n\t\tgraf[a].push_back(b);\n\t\tgraf[b].push_back(a);\n\t}\n\tdfs1(1, 0);\n\tdfs2(1, dpwsz[1], -inf);\n\t\n\t\n\tprintf(\"%lld %d\\n\", dpwsz[1], (int)opt.size());\n\tsort(opt.begin(), opt.end());\n\tfor (int i : opt)\n\t\tprintf(\"%d \", i);\n\tprintf(\"\\n\");\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["dfs and similar", "dp", "dsu", "graphs", "greedy", "trees"], "dificulty": "2500", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/1120/problem/D",
+    "problemId": "306944",
+    "problem_idx": "D",
+    "shortId": "1120D",
+    "contest_number": "1120",
+    "problem_submissions": {
+        "E": [
+            50758414,
+            50756395,
+            51349737
+        ],
+        "F": [
+            50755440,
+            50756775,
+            50756923,
+            50745238,
+            50757783,
+            50769406,
+            57326050
+        ],
+        "D": [
+            50750764,
+            50751956,
+            50743562,
+            50751566,
+            50752777,
+            50751884,
+            50753994,
+            50750618,
+            50751945,
+            50752229,
+            50752378,
+            50752892,
+            50753276,
+            50756304,
+            50749029,
+            50755638,
+            50755384,
+            50755602,
+            50754622
+        ],
+        "C": [
+            50742812,
+            50748170,
+            50742079,
+            50747757,
+            50746596,
+            50747930,
+            50749515,
+            50746554,
+            50746940,
+            50749954,
+            50748511,
+            50747866,
+            50749223,
+            50751278,
+            50750205,
+            50750042,
+            50750814,
+            50749510,
+            50744496
+        ],
+        "B": [
+            50741885,
+            50746393,
+            50748182,
+            50754599,
+            50753894,
+            50755398,
+            50768361,
+            50757846,
+            50749483,
+            57329791
+        ],
+        "A": [
+            50743197,
+            50749514,
+            50746437,
+            50743945,
+            50745821,
+            50745101,
+            50745374,
+            50743501,
+            50746721,
+            50745328,
+            50746455,
+            73355086,
+            50745671,
+            50745395,
+            50746139
+        ]
+    },
+    "name": "D. Power Tree",
+    "statement": "You are given a rooted tree with n vertices, the root of the tree is the\r\nvertex 1. Each vertex has some non-negative price. A leaf of the tree is\r\na non-root vertex that has degree 1.Arkady and Vasily play a strange\r\ngame on the tree. The game consists of three stages. On the first stage\r\nArkady buys some non-empty set of vertices of the tree. On the second\r\nstage Vasily puts some integers into all leaves of the tree. On the\r\nthird stage Arkady can perform several (possibly none) operations of the\r\nfollowing kind: choose some vertex v he bought on the first stage and\r\nsome integer x, and then add x to all integers in the leaves in the\r\nsubtree of v. The integer x can be positive, negative of zero.A leaf a\r\nis in the subtree of a vertex b if and only if the simple path between a\r\nand the root goes through b.Arkady\u2019s task is to make all integers in the\r\nleaves equal to zero. What is the minimum total cost s he has to pay on\r\nthe first stage to guarantee his own win independently of the integers\r\nVasily puts on the second stage? Also, we ask you to find all such\r\nvertices that there is an optimal (i.e. with cost s) set of vertices\r\ncontaining this one such that Arkady can guarantee his own win buying\r\nthis set on the first stage.\r\n",
+    "solutions": [
+        "//~ while (clock()<=69*CLOCKS_PER_SEC)\n//~ #pragma comment(linker, \"/stack:200000000\")\n#pragma GCC optimize(\"O3\")\n//~ #pragma GCC optimize(\"Ofast\")\n//~ #pragma GCC target(\"sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native\")\n//~ #pragma GCC optimize(\"unroll-loops\")\n#include <bits/stdc++.h>\n#include <ext/pb_ds/assoc_container.hpp>\n#include <ext/pb_ds/tree_policy.hpp>\n\nusing namespace __gnu_pbds;\nusing namespace std;\n\ntemplate <typename T>\nusing ordered_set =\n    tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n#define sim template < class c\n#define ris return * this\n#define dor > debug & operator <<\n#define eni(x) sim > typename \\\n  enable_if<sizeof dud<c>(0) x 1, debug&>::type operator<<(c i) {\nsim > struct rge { c b, e; };\nsim > rge<c> range(c i, c j) { return rge<c>{i, j}; }\nsim > auto dud(c* x) -> decltype(cerr << *x, 0);\nsim > char dud(...);\nstruct debug {\n#ifdef LOCAL\n~debug() { cerr << endl; }\neni(!=) cerr << boolalpha << i; ris; }\neni(==) ris << range(begin(i), end(i)); }\nsim, class b dor(pair < b, c > d) {\n  ris << \"(\" << d.first << \", \" << d.second << \")\";\n}\nsim dor(rge<c> d) {\n  *this << \"[\";\n  for (auto it = d.b; it != d.e; ++it)\n    *this << \", \" + 2 * (it == d.b) << *it;\n  ris << \"]\";\n}\n#else\nsim dor(const c&) { ris; }\n#endif\n};\n#define imie(...) \" [\" << #__VA_ARGS__ \": \" << (__VA_ARGS__) << \"] \"\n\n#define shandom_ruffle random_shuffle\n\nusing ll=long long;\nusing pii=pair<int,int>;\nusing pll=pair<ll,ll>;\nusing vi=vector<int>;\nusing vll=vector<ll>;\nconst int nax=200*1007;\nconst ll inf=1e18;\n\nint n;\n\nvi graf[nax];\nll tab[nax];\n\nll dpwsz[nax];\nll dpbez[nax];\n\nint lis[nax];\n\nvi opt;\n\nvoid minuj(ll &a, ll b)\n{\n\ta=min(a, b);\n}\n\nvoid maxuj(ll &a, ll b)\n{\n\ta=max(a, b);\n}\n\nvoid dfs1(int v, int oj)\n{\n\tfor (int &i : graf[v])\n\t{\n\t\tif (i==oj)\n\t\t{\n\t\t\tswap(i, graf[v].back());\n\t\t\tgraf[v].pop_back();\n\t\t\tbreak;\n\t\t}\n\t}\n\tlis[v]=(graf[v].empty());\n\tif (lis[v])\n\t{\n\t\tdpwsz[v]=tab[v];\n\t\tdpbez[v]=0;\n\t\treturn;\n\t}\n\tdpwsz[v]=0;\n\tdpbez[v]=0;\n\tvector <pll> wek;\n\tfor (int i : graf[v])\n\t{\n\t\tdfs1(i, v);\n\t\twek.push_back({dpwsz[i], dpbez[i]});\n\t}\n\tll sum=0;\n\tfor (pll i : wek)\n\t\tsum+=i.first;\n\tdpwsz[v]=sum;\n\tdpbez[v]=inf;\n\tfor (pll i : wek)\n\t\tminuj(dpbez[v], sum-i.first+i.second);\n\tminuj(dpwsz[v], dpbez[v]+tab[v]);\n}\n\nvoid dfs2(int v, ll kwsz, ll kbez)\n{\n\t//~ debug() << v << \" \" << kwsz << \" \" << kbez;\n\tvector <pll> wek;\n\tfor (int i : graf[v])\n\t\twek.push_back({dpwsz[i], dpbez[i]});\n\tll sum=0;\n\tfor (pll i : wek)\n\t\tsum+=i.first;\n\tif (kwsz==dpbez[v]+tab[v])\n\t\topt.push_back(v);\n\t//~ if (dpwsz[v]==sum)\n\t//~ {\n\t\t//~ for (int i : graf[v])\n\t\t\t//~ dfs2(i, dpwsz[i]);\n\t\t//~ return;\n\t//~ }\n\t\n\tvector <pair<ll,int> > wek2;\n\tfor (int i : graf[v])\n\t\twek2.push_back({-dpwsz[i]+dpbez[i], i});\n\tsort(wek2.begin(), wek2.end());\n\tfor (int i : graf[v])\n\t{\n\t\tll x=-inf;\n\t\tll y=-inf;\n\t\tmaxuj(y, kbez-(sum-dpwsz[i]));\n\t\tmaxuj(y, kwsz-(sum-dpwsz[i])-tab[v]);\n\t\tmaxuj(x, kwsz-(sum-dpwsz[i]));\n\t\tint num=0;\n\t\tfor (auto j : wek2)\n\t\t{\n\t\t\tif (j.second==i)\n\t\t\t\tcontinue;\n\t\t\tmaxuj(x, kbez-(sum-dpwsz[i])-j.first);\n\t\t\tmaxuj(x, kwsz-(sum-dpwsz[i])-j.first-tab[v]);\n\t\t\t//~ maxuj(y, kbez-(sum-dpwsz[i])-j.first);\n\t\t\t\n\t\t\tnum++;\n\t\t\tif (num>3)\n\t\t\t\tbreak;\n\t\t}\n\t\t\n\t\tdfs2(i, x, y);\n\t}\n}\n\nint main()\n{\n\tscanf(\"%d\", &n);\n\tfor (int i=1; i<=n; i++)\n\t\tscanf(\"%lld\", &tab[i]);\n\tfor (int i=1; i<n; i++)\n\t{\n\t\tint a, b;\n\t\tscanf(\"%d%d\", &a, &b);\n\t\tgraf[a].push_back(b);\n\t\tgraf[b].push_back(a);\n\t}\n\tdfs1(1, 0);\n\tdfs2(1, dpwsz[1], -inf);\n\t\n\t\n\tprintf(\"%lld %d\\n\", dpwsz[1], (int)opt.size());\n\tsort(opt.begin(), opt.end());\n\tfor (int i : opt)\n\t\tprintf(\"%d \", i);\n\tprintf(\"\\n\");\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dfs and similar",
+        "dp",
+        "dsu",
+        "graphs",
+        "greedy",
+        "trees"
+    ],
+    "dificulty": "2500",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Power Tree.json",
+    "editorial_link": "https://codeforces.com//blog/entry/65679",
+    "editorial": "One can see that the problem doesn\u00e2\u0080\u0099t change if we want to be able to\r\nobtain any possible combination of numbers in leaves from the all-zero\r\ncombination. Let , , ..., be the indices of all leaves in the order of\r\nany Euler tour. Let be the number written in . We say that . Denote the\r\ndifference by . We want to be able to obtain an arbitrary sequence ,\r\n..., with zero sum.Imagine that we bought a vertex whose subtree\r\ncontains exactly leaves from to . Applying the operation to this vertex\r\nwith number means increasing by and decreasing by without affecting all\r\nother differences.Let\u00e2\u0080\u0099s build new graph with vertices from to . Each\r\nsuch vertex represents an edge connecting vertices and with weight . To\r\nbe able to get every possible sequence with zero sum it\u00e2\u0080\u0099s needed and\r\nsufficient for the graph with picked edges be connected. Now we want to\r\nknow what is the weight of a minimal spanning tree and which edges can\r\nbe in it. Both can be found by, for example, Kruskal\u00e2\u0080\u0099s algorithm. We say\r\nthat a vertex a leaf if it\u00e2\u0080\u0099s in \u00e2\u0080\u0099s subtree.One can see that we can buy a\r\nset of vertices iff for each vertex there is at most one leaf in its\r\nsubtree which is not covered by any of bought vertices from the subtree.\r\nIndeed, if there are at least two such leaves then the difference\r\nbetween their values never change. On the other hand, if this holds, we\r\ncan set the required values in the bought vertices in the order of\r\nincreasing depth, performing the needed operation each time we are in\r\nvertex whose subtree contains a leaf which is not covered by any bought\r\nvertex in the subtree except the one we consider.So we calculate where\r\nwhere this value means the minimal possible cost where in the subtree of\r\nthere are not covered leaves. It can be shown that these values are\r\nenough to calculate the answer.\r\n"
+}

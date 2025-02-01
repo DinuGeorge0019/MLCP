@@ -1,1 +1,103 @@
-{"link": "https://codeforces.com//contest/14/problem/E", "problemId": "66", "problem_idx": "E", "shortId": "14E", "contest_number": "14", "problem_submissions": {"E": [62192, 62594, 62287, 61971, 63187, 62768, 63056, 63225, 62267, 62557, 62780, 61993, 62626], "D": [61970, 62027, 62458, 62850, 62826, 62538, 62467, 62772, 62917, 62832, 63108, 62975, 63625, 62539], "C": [61574, 61559, 61851, 61582, 61766, 61317, 61719, 62215, 62454, 61795, 62487, 63175, 61560, 61903], "B": [61265, 61141, 61609, 61379, 61308, 61111, 61382, 61412, 61201, 61434, 62041, 61107, 61138, 61353], "A": [60974, 60976, 61243, 61277, 61025, 61008, 61112, 61102, 61052, 61126, 61656, 60978, 60966, 61057]}, "name": "E. Camels", "statement": "Bob likes to draw camels: with a single hump, two humps, three humps,\r\netc. He draws a camel by connecting points on a coordinate plane. Now\r\nhe\u2019s drawing camels with humps, representing them as polylines in the\r\nplane. Each polyline consists of vertices with coordinates , , ..., .\r\nThe first vertex has a coordinate , the second , etc. Coordinates might\r\nbe any, but should satisfy the following conditions: there should be\r\nhumps precisely, i.e. such indexes (), so that , there should be\r\nprecisely such indexes (), so that , no segment of a polyline should be\r\nparallel to the -axis, all are integers between 1 and 4. For a series of\r\nhis drawings of camels with humps Bob wants to buy a notebook, but he\r\ndoesn\u2019t know how many pages he will need. Output the amount of different\r\npolylines that can be drawn to represent camels with humps for a given\r\nnumber .\r\n", "solutions": ["#include<algorithm>\n#include<iostream>\n#include<iomanip>\n#include<cstring>\n#include<vector>\n#include<string>\n#include<cmath>\nusing namespace std;\n\nint n , t;\n\nlong long dp[21][2][5][30] , ans;\n\nlong long dodp(int cur , int last , int where , int cnt)\n{\n    if(cur == n + 1)\n    {\n        if(cnt == 2 * t - 1)\n            return 1;\n        else\n            return 0;\n    }\n    if(dp[cur][last][where][cnt] >= 0)\n        return dp[cur][last][where][cnt];\n    dp[cur][last][where][cnt] = 0;\n    for(int i = 1 ; i <= 4 ; i++)\n    {\n        int th = -1;\n        if(i > where)\n            th = 0;\n        if(i < where)\n            th = 1;\n        if(th + last == 1)\n            dp[cur][last][where][cnt] += dodp(cur + 1 , th , i , cnt + 1);\n        if(th == last)\n            dp[cur][last][where][cnt] += dodp(cur + 1 , th , i , cnt);\n        \n    }\n    return dp[cur][last][where][cnt];\n}\n\nint main()\n{\n    ios::sync_with_stdio(false);\n    while(cin>>n>>t)\n    {\n        ans = 0;\n        memset(dp , 0xff , sizeof(dp));\n        for(int i = 1 ; i < 4 ; i++)\n            for(int j = i + 1 ; j <= 4 ; j++)\n                ans += dodp(3 , 0 , j , 0);\n        cout<<ans<<endl;\n    }\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["dp"], "dificulty": "1900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/14/problem/E",
+    "problemId": "66",
+    "problem_idx": "E",
+    "shortId": "14E",
+    "contest_number": "14",
+    "problem_submissions": {
+        "E": [
+            62192,
+            62594,
+            62287,
+            61971,
+            63187,
+            62768,
+            63056,
+            63225,
+            62267,
+            62557,
+            62780,
+            61993,
+            62626
+        ],
+        "D": [
+            61970,
+            62027,
+            62458,
+            62850,
+            62826,
+            62538,
+            62467,
+            62772,
+            62917,
+            62832,
+            63108,
+            62975,
+            63625,
+            62539
+        ],
+        "C": [
+            61574,
+            61559,
+            61851,
+            61582,
+            61766,
+            61317,
+            61719,
+            62215,
+            62454,
+            61795,
+            62487,
+            63175,
+            61560,
+            61903
+        ],
+        "B": [
+            61265,
+            61141,
+            61609,
+            61379,
+            61308,
+            61111,
+            61382,
+            61412,
+            61201,
+            61434,
+            62041,
+            61107,
+            61138,
+            61353
+        ],
+        "A": [
+            60974,
+            60976,
+            61243,
+            61277,
+            61025,
+            61008,
+            61112,
+            61102,
+            61052,
+            61126,
+            61656,
+            60978,
+            60966,
+            61057
+        ]
+    },
+    "name": "E. Camels",
+    "statement": "Bob likes to draw camels: with a single hump, two humps, three humps,\r\netc. He draws a camel by connecting points on a coordinate plane. Now\r\nhe\u2019s drawing camels with humps, representing them as polylines in the\r\nplane. Each polyline consists of vertices with coordinates , , ..., .\r\nThe first vertex has a coordinate , the second , etc. Coordinates might\r\nbe any, but should satisfy the following conditions: there should be\r\nhumps precisely, i.e. such indexes (), so that , there should be\r\nprecisely such indexes (), so that , no segment of a polyline should be\r\nparallel to the -axis, all are integers between 1 and 4. For a series of\r\nhis drawings of camels with humps Bob wants to buy a notebook, but he\r\ndoesn\u2019t know how many pages he will need. Output the amount of different\r\npolylines that can be drawn to represent camels with humps for a given\r\nnumber .\r\n",
+    "solutions": [
+        "#include<algorithm>\n#include<iostream>\n#include<iomanip>\n#include<cstring>\n#include<vector>\n#include<string>\n#include<cmath>\nusing namespace std;\n\nint n , t;\n\nlong long dp[21][2][5][30] , ans;\n\nlong long dodp(int cur , int last , int where , int cnt)\n{\n    if(cur == n + 1)\n    {\n        if(cnt == 2 * t - 1)\n            return 1;\n        else\n            return 0;\n    }\n    if(dp[cur][last][where][cnt] >= 0)\n        return dp[cur][last][where][cnt];\n    dp[cur][last][where][cnt] = 0;\n    for(int i = 1 ; i <= 4 ; i++)\n    {\n        int th = -1;\n        if(i > where)\n            th = 0;\n        if(i < where)\n            th = 1;\n        if(th + last == 1)\n            dp[cur][last][where][cnt] += dodp(cur + 1 , th , i , cnt + 1);\n        if(th == last)\n            dp[cur][last][where][cnt] += dodp(cur + 1 , th , i , cnt);\n        \n    }\n    return dp[cur][last][where][cnt];\n}\n\nint main()\n{\n    ios::sync_with_stdio(false);\n    while(cin>>n>>t)\n    {\n        ans = 0;\n        memset(dp , 0xff , sizeof(dp));\n        for(int i = 1 ; i < 4 ; i++)\n            for(int j = i + 1 ; j <= 4 ; j++)\n                ans += dodp(3 , 0 , j , 0);\n        cout<<ans<<endl;\n    }\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp"
+    ],
+    "dificulty": "1900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Camels.json",
+    "editorial_link": "https://codeforces.com//blog/entry/389",
+    "editorial": "Let us call an index j such that yj?-?1??>??yj??<??yj?+?1 a cavity. Also, we'll call humps and cavities by the common word break. Then there must be exactly T?=?2t?-?1 breaks, and the first one must be a hump.\nDenote by fnth the number of ways in which a camel with t breaks, ending at the point (n,h), can be extended to the end (the vertical xN?=?N) so that the total number of breaks was equal to T. Note that:\n1. fNTh?=?1, if h=1,2,3,4. (We have already finished the camel and it has T breaks)\n2. fNth?=?0, if 0???t?<?T,?h?=?1,?2,?3,?4. (We have already finished the camel, but it has less than T breaks)\n3. fn,?T?+?1,?h?=?0, if 1???n???N, h?=?1,?2,?3,?4. (The camel has already more than T breaks).\n \nNow we find the recurrent formula for fnth. Suppose that t is even. Then the last break was a cavity, and we are moving up currently. We can continue moving up, then the number of breaks stays the same, and we move to one of the points (n?+?1,?h?+?1),?(n?+?1,?h?+?2),?...,?(n?+?1,?4). Or we can move down, then the number of breaks increases by 1, and we move to one of the points (n?+?1,?h?-?1),?(n?+?1,?h?-?2),?...,?(n?+?1,?1). This gives us the formula\n.\n\nIf t is odd, then the last break was a hump, and similar reasoning leads to the formula\n.\n\nWe can calculate fnth by dynamic programming. Consider now the point (2,?h) on a camel. There are h-1 ways to get to this point (starting from points (1,?1),?...,?(1,?h?-?1)), and f2,?0,?h ways to extend the camel to the end. So the answer to the problem is ."
+}

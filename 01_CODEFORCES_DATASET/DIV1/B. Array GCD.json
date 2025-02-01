@@ -1,1 +1,101 @@
-{"link": "https://codeforces.com//contest/623/problem/B", "problemId": "47312", "problem_idx": "B", "shortId": "623B", "contest_number": "623", "problem_submissions": {"C": [15809186, 15807923, 15810181, 15806671, 15808652, 15818870, 15811297, 15824389, 15801567], "D": [15802822, 15804610, 15804063, 15810065, 15809969, 15800847, 15801410, 15804877, 15805201, 15809200, 15805279, 15805265, 15803978, 15806446, 15804093, 15805984, 15809435, 15808164], "B": [15799385, 15799937, 15800370, 15800033, 15797877, 15808021, 15799907, 15800024, 15802615, 15799613, 15799768, 15806416, 15803166, 15800459, 15801892, 15800003, 15806962, 15802319], "A": [15794295, 15794155, 15793520, 15793524, 15802472, 15806700, 15794661, 15793789, 15793952, 15802327, 15793050, 15794635, 15796862, 15810492, 15795834, 15794597, 15792903, 15798814], "E": [15807539, 15822584]}, "name": "B. Array GCD", "statement": "You are given array of length . You may consecutively apply two\r\noperations to this array: remove some subsegment (continuous\r\nsubsequence) of length and pay for it coins; change some elements of the\r\narray by at most , and pay coins for each change. Please note that each\r\nof operations may be applied at most once (and may be not applied at\r\nall) so you can remove only one segment and each number may be changed\r\n(increased or decreased) by at most . Also note, that you are not\r\nallowed to delete the whole array.Your goal is to calculate the minimum\r\nnumber of coins that you need to spend in order to make the greatest\r\ncommon divisor of the elements of the resulting array be greater than .\r\n", "solutions": ["#include <iostream>\n#include <iomanip>\n#include <fstream>\n#include <algorithm>\n#include <string>\n#include <vector>\n#include <map>\n#include <queue>\n#include <set>\n\nusing namespace std;\ntypedef long long ll;\nconst int MAXN = 1000100;\n\nint N, A, B;\nint arr[MAXN];\nint tval[MAXN];\nset <int> pfac;\n\nvoid run (int x)\n{\n    for (int i = 2; i * i <= x; i++)\n    {\n        if (x % i == 0)\n            pfac.insert(i);\n        while (x % i == 0)\n            x /= i;\n    }\n    if (x > 1)\n        pfac.insert(x);\n}\n\nll solve (int x)\n{\n    int mlo = N, mhi = -1;\n    for (int i = 0; i < N; i++)\n    {\n        int k = (arr[i] + 1) % x;\n        if (k == 1) tval[i] = 0;\n        else if (k == 0 || k == 2) tval[i] = 1;\n        else\n        {\n            mlo = min (mlo, i);\n            mhi = max (mhi, i);\n        }\n    }\n    \n    ll tot = 0;\n    for (int i = 0; i < N; i++)\n    {\n        if (i >= mlo && i <= mhi)\n            tot += A;\n        else tot += B * tval[i];\n    }\n    \n    if (mlo < N)\n    {\n        ll bhi = 0, btot = 0;\n        for (int i = mhi + 1; i < N; i++)\n        {\n            btot += A - tval[i] * B;\n            bhi = min (bhi, btot);\n        }\n        ll blo = 0;\n        btot = 0;\n        for (int i = mlo - 1; i >= 0; i--)\n        {\n            btot += A - tval[i] * B;\n            blo = min (blo, btot);\n        }\n        \n        return tot + blo + bhi;\n    }\n    else\n    {\n        ll bans = 0, bhi = 0, btot = 0;\n        for (int i = 0; i < N; i++)\n        {\n            btot += A - tval[i] * B;\n            bans = min (bans, btot - bhi);\n            bhi = max (bhi, btot);\n        }\n        return tot + bans;\n    }\n}\n\nint main()\n{\n    ios_base::sync_with_stdio(0);\n    cin >> N >> A >> B;\n    \n    for (int i = 0; i < N; i++)\n        cin >> arr[i];\n    \n    pfac.clear();\n    for (int i = -1; i <= 1; i++)\n    {\n        run (arr[0] + i);\n        run (arr[N-1] + i);\n    }\n    \n    ll ans = 1e17;\n    for (set<int>::iterator it = pfac.begin(); it != pfac.end(); it++)\n        ans = min (ans, solve (*it));\n    \n    cout << ans << \"\\n\";\n    //system (\"Pause\");\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["dp", "greedy", "number theory"], "dificulty": "2300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/623/problem/B",
+    "problemId": "47312",
+    "problem_idx": "B",
+    "shortId": "623B",
+    "contest_number": "623",
+    "problem_submissions": {
+        "C": [
+            15809186,
+            15807923,
+            15810181,
+            15806671,
+            15808652,
+            15818870,
+            15811297,
+            15824389,
+            15801567
+        ],
+        "D": [
+            15802822,
+            15804610,
+            15804063,
+            15810065,
+            15809969,
+            15800847,
+            15801410,
+            15804877,
+            15805201,
+            15809200,
+            15805279,
+            15805265,
+            15803978,
+            15806446,
+            15804093,
+            15805984,
+            15809435,
+            15808164
+        ],
+        "B": [
+            15799385,
+            15799937,
+            15800370,
+            15800033,
+            15797877,
+            15808021,
+            15799907,
+            15800024,
+            15802615,
+            15799613,
+            15799768,
+            15806416,
+            15803166,
+            15800459,
+            15801892,
+            15800003,
+            15806962,
+            15802319
+        ],
+        "A": [
+            15794295,
+            15794155,
+            15793520,
+            15793524,
+            15802472,
+            15806700,
+            15794661,
+            15793789,
+            15793952,
+            15802327,
+            15793050,
+            15794635,
+            15796862,
+            15810492,
+            15795834,
+            15794597,
+            15792903,
+            15798814
+        ],
+        "E": [
+            15807539,
+            15822584
+        ]
+    },
+    "name": "B. Array GCD",
+    "statement": "You are given array of length . You may consecutively apply two\r\noperations to this array: remove some subsegment (continuous\r\nsubsequence) of length and pay for it coins; change some elements of the\r\narray by at most , and pay coins for each change. Please note that each\r\nof operations may be applied at most once (and may be not applied at\r\nall) so you can remove only one segment and each number may be changed\r\n(increased or decreased) by at most . Also note, that you are not\r\nallowed to delete the whole array.Your goal is to calculate the minimum\r\nnumber of coins that you need to spend in order to make the greatest\r\ncommon divisor of the elements of the resulting array be greater than .\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <iomanip>\n#include <fstream>\n#include <algorithm>\n#include <string>\n#include <vector>\n#include <map>\n#include <queue>\n#include <set>\n\nusing namespace std;\ntypedef long long ll;\nconst int MAXN = 1000100;\n\nint N, A, B;\nint arr[MAXN];\nint tval[MAXN];\nset <int> pfac;\n\nvoid run (int x)\n{\n    for (int i = 2; i * i <= x; i++)\n    {\n        if (x % i == 0)\n            pfac.insert(i);\n        while (x % i == 0)\n            x /= i;\n    }\n    if (x > 1)\n        pfac.insert(x);\n}\n\nll solve (int x)\n{\n    int mlo = N, mhi = -1;\n    for (int i = 0; i < N; i++)\n    {\n        int k = (arr[i] + 1) % x;\n        if (k == 1) tval[i] = 0;\n        else if (k == 0 || k == 2) tval[i] = 1;\n        else\n        {\n            mlo = min (mlo, i);\n            mhi = max (mhi, i);\n        }\n    }\n    \n    ll tot = 0;\n    for (int i = 0; i < N; i++)\n    {\n        if (i >= mlo && i <= mhi)\n            tot += A;\n        else tot += B * tval[i];\n    }\n    \n    if (mlo < N)\n    {\n        ll bhi = 0, btot = 0;\n        for (int i = mhi + 1; i < N; i++)\n        {\n            btot += A - tval[i] * B;\n            bhi = min (bhi, btot);\n        }\n        ll blo = 0;\n        btot = 0;\n        for (int i = mlo - 1; i >= 0; i--)\n        {\n            btot += A - tval[i] * B;\n            blo = min (blo, btot);\n        }\n        \n        return tot + blo + bhi;\n    }\n    else\n    {\n        ll bans = 0, bhi = 0, btot = 0;\n        for (int i = 0; i < N; i++)\n        {\n            btot += A - tval[i] * B;\n            bans = min (bans, btot - bhi);\n            bhi = max (bhi, btot);\n        }\n        return tot + bans;\n    }\n}\n\nint main()\n{\n    ios_base::sync_with_stdio(0);\n    cin >> N >> A >> B;\n    \n    for (int i = 0; i < N; i++)\n        cin >> arr[i];\n    \n    pfac.clear();\n    for (int i = -1; i <= 1; i++)\n    {\n        run (arr[0] + i);\n        run (arr[N-1] + i);\n    }\n    \n    ll ans = 1e17;\n    for (set<int>::iterator it = pfac.begin(); it != pfac.end(); it++)\n        ans = min (ans, solve (*it));\n    \n    cout << ans << \"\\n\";\n    //system (\"Pause\");\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp",
+        "greedy",
+        "number theory"
+    ],
+    "dificulty": "2300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Array GCD.json",
+    "editorial_link": "https://codeforces.com//blog/entry/23278",
+    "editorial": "At least one of ends ( or ) is changed by at most 1. It means that if\r\ngcd > 1 then it divides on of prime divisors of either , , , , or . We\r\nwill iterate over these primes. Suppose prime is fixed. For each number\r\nwe know that it\u00e2\u0080\u0099s either divisible by or we can pay to fix it or it\r\nshould be in the subarray to change for We can use dynamic programming\r\ndp[number of numbers considered][subarray to change not\r\nstarted/started/finished] = minimal cost Complexity is , where is the\r\nnumber of primes to check.\r\n"
+}

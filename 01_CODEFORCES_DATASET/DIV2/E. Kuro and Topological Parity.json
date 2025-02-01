@@ -1,1 +1,107 @@
-{"link": "https://codeforces.com//contest/979/problem/E", "problemId": "183087", "problem_idx": "E", "shortId": "979E", "contest_number": "979", "problem_submissions": {"E": [38239944, 38239626, 38239985, 38241605], "D": [38235368, 38234401, 38232573, 38240292, 38232946, 38238813, 38236674, 38234013, 38234028, 38242834, 38235224, 38238975, 38236273, 38233251, 38924559, 38232308, 38231709], "C": [38225119, 38222425, 38225946, 38230085, 38224078, 38228380, 38224768, 38225370, 38223169, 38226246, 38227575, 38228558, 38229693, 38227316, 38227594, 38232766, 38225714, 38226125], "B": [38223636, 38219953, 38246488, 38228424, 38221669, 38225321, 38237418, 38223126, 38229060, 38225443, 38231632, 38234671, 38223153, 38228913, 38349158, 38225310], "A": [38217437, 38220346, 38223788, 38219996, 38221134, 38219848, 38242600, 38216689, 38216875, 38216674, 38216872, 38217267, 38220684, 38217206, 38218341, 38218810, 38220203, 38217265]}, "name": "E. Kuro and Topological Parity", "statement": "Kuro has recently won the \"Most intelligent cat ever\" contest. The three\r\nfriends then decided to go to Katie\u2019s home to celebrate Kuro\u2019s winning.\r\nAfter a big meal, they took a small break then started playing\r\ngames.Kuro challenged Katie to create a game with only a white paper, a\r\npencil, a pair of scissors and a lot of arrows (you can assume that the\r\nnumber of arrows is infinite). Immediately, Katie came up with the game\r\ncalled .The paper is divided into n pieces enumerated from 1 to n. Shiro\r\nhas painted some pieces with some color. Specifically, the i-th piece\r\nhas color c_{i} where c_{i} = 0 defines black color, c_{i} = 1 defines\r\nwhite color and c_{i} = -1 means that the piece hasn\u2019t been colored\r\nyet.The rules of the game is simple. Players must put some arrows\r\nbetween some pairs of different pieces in such a way that for each\r\narrow, the number in the piece it starts from is less than the number of\r\nthe piece it ends at. Also, two different pieces can only be connected\r\nby one arrow. After that the players must choose the color (0 or 1) for\r\neach of the unpainted pieces. The score of a valid way of putting the\r\narrows and coloring pieces is defined as the number of paths of pieces\r\nof alternating colors. For example, [1\r\nto 0\r\nto 1\r\nto 0], [0\r\nto 1\r\nto 0\r\nto 1], [1], [0] are valid paths and will be counted. You can only travel\r\nfrom piece x to piece y if and only if there is an arrow from x to y.But\r\nKuro is not fun yet. He loves parity. Let\u2019s call his favorite parity p\r\nwhere p = 0 stands for \"even\" and p = 1 stands for \"odd\". He wants to\r\nput the arrows and choose colors in such a way that the score has the\r\nparity of p.It seems like there will be so many ways which satisfy Kuro.\r\nHe wants to count the number of them but this could be a very large\r\nnumber. Let\u2019s help him with his problem, but print it modulo 10^{9} + 7.\r\n", "solutions": ["#include <bits/stdc++.h>\n#define FOR(i,s,e) for(int i=(s);i<=(e);i++)\n#define FORD(i,s,e) for(int i=(s);i>=(e);i--)\n#define ALL(k) (k).begin(),(k).end()\n#define e1 first\n#define e2 second\n#define mp make_pair\n#define pb push_back\n#define eb emplace_back\n\nusing namespace std;\ntypedef long long LL;\ntypedef unsigned long long LLU;\ntypedef long double LD;\ntypedef pair<int,int> PII;\ntypedef pair<LL,LL> PLL;\ntypedef vector<int> VI;\nconst bool print=false;\n\nconst int N=57;\nconst LL mod=1e9+7;\n\nint n, p;\nint in[N];\n\nLL DP[N][N][N][N];\n\nLL add(LL &a, LL b){\n\ta=(a+b)%mod;\n}\n\nvoid modulo(LL &a){\n\ta%=mod;\n}\n\nint main(){\n\t\n\tscanf(\"%d%d\", &n, &p);\n\tFOR(i,1,n)\n\t\tscanf(\"%d\", &in[i]);\n\tDP[0][0][0][0]=1;\n\t\n\tLL res=0;\n\tFOR(i,0,n) FOR(j,0,n) FOR(l,0,n) FOR(k,0,n){\n\t\tint s=i+j+l+k;\n\t\tif (s==n && ((j+k)%2)==p)\n\t\t\tadd(res, DP[i][j][l][k]);\n\t\tif (s>=n)\n\t\t\tcontinue;\n\t\ts++;\n\t\tFOR(f,0,1){\n\t\t\tif (in[s]==(f^1))\n\t\t\t\tcontinue;\n\t\t\tif (DP[i][j][l][k])\n\t\t\tif (!f){\n\t\t\t\tLL chan=(1LL<<l)*(((1LL<<k)+1)/2);\n\t\t\t\tLL stay=(1LL<<l)*((1LL<<k)/2);\n\t\t\t\tmodulo(chan);\n\t\t\t\tmodulo(stay);\n\t\t\t\tchan*=(1LL<<(i+j));\n\t\t\t\tstay*=(1LL<<(i+j));\n\t\t\t\tmodulo(chan);\n\t\t\t\tmodulo(stay);\n\t\t\t\tadd(DP[i+1][j][l][k], DP[i][j][l][k]*stay);\n\t\t\t\tadd(DP[i][j+1][l][k], DP[i][j][l][k]*chan);\n\t\t\t}\n\t\t\telse{\n\t\t\t\tLL chan=(1LL<<i)*(((1LL<<j)+1)/2);\n\t\t\t\tLL stay=(1LL<<i)*((1LL<<j)/2);\n\t\t\t\tmodulo(chan);\n\t\t\t\tmodulo(stay);\n\t\t\t\tchan*=(1LL<<(l+k));\n\t\t\t\tstay*=(1LL<<(l+k));\n\t\t\t\tmodulo(chan);\n\t\t\t\tmodulo(stay);\n\t\t\t\tadd(DP[i][j][l+1][k], DP[i][j][l][k]*stay);\n\t\t\t\tadd(DP[i][j][l][k+1], DP[i][j][l][k]*chan);\n\t\t\t}\n\t\t}\n\t}\n\t\n\tprintf(\"%lld\\n\", res);\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["dp"], "dificulty": "2400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/979/problem/E",
+    "problemId": "183087",
+    "problem_idx": "E",
+    "shortId": "979E",
+    "contest_number": "979",
+    "problem_submissions": {
+        "E": [
+            38239944,
+            38239626,
+            38239985,
+            38241605
+        ],
+        "D": [
+            38235368,
+            38234401,
+            38232573,
+            38240292,
+            38232946,
+            38238813,
+            38236674,
+            38234013,
+            38234028,
+            38242834,
+            38235224,
+            38238975,
+            38236273,
+            38233251,
+            38924559,
+            38232308,
+            38231709
+        ],
+        "C": [
+            38225119,
+            38222425,
+            38225946,
+            38230085,
+            38224078,
+            38228380,
+            38224768,
+            38225370,
+            38223169,
+            38226246,
+            38227575,
+            38228558,
+            38229693,
+            38227316,
+            38227594,
+            38232766,
+            38225714,
+            38226125
+        ],
+        "B": [
+            38223636,
+            38219953,
+            38246488,
+            38228424,
+            38221669,
+            38225321,
+            38237418,
+            38223126,
+            38229060,
+            38225443,
+            38231632,
+            38234671,
+            38223153,
+            38228913,
+            38349158,
+            38225310
+        ],
+        "A": [
+            38217437,
+            38220346,
+            38223788,
+            38219996,
+            38221134,
+            38219848,
+            38242600,
+            38216689,
+            38216875,
+            38216674,
+            38216872,
+            38217267,
+            38220684,
+            38217206,
+            38218341,
+            38218810,
+            38220203,
+            38217265
+        ]
+    },
+    "name": "E. Kuro and Topological Parity",
+    "statement": "Kuro has recently won the \"Most intelligent cat ever\" contest. The three\r\nfriends then decided to go to Katie\u2019s home to celebrate Kuro\u2019s winning.\r\nAfter a big meal, they took a small break then started playing\r\ngames.Kuro challenged Katie to create a game with only a white paper, a\r\npencil, a pair of scissors and a lot of arrows (you can assume that the\r\nnumber of arrows is infinite). Immediately, Katie came up with the game\r\ncalled .The paper is divided into n pieces enumerated from 1 to n. Shiro\r\nhas painted some pieces with some color. Specifically, the i-th piece\r\nhas color c_{i} where c_{i} = 0 defines black color, c_{i} = 1 defines\r\nwhite color and c_{i} = -1 means that the piece hasn\u2019t been colored\r\nyet.The rules of the game is simple. Players must put some arrows\r\nbetween some pairs of different pieces in such a way that for each\r\narrow, the number in the piece it starts from is less than the number of\r\nthe piece it ends at. Also, two different pieces can only be connected\r\nby one arrow. After that the players must choose the color (0 or 1) for\r\neach of the unpainted pieces. The score of a valid way of putting the\r\narrows and coloring pieces is defined as the number of paths of pieces\r\nof alternating colors. For example, [1\r\nto 0\r\nto 1\r\nto 0], [0\r\nto 1\r\nto 0\r\nto 1], [1], [0] are valid paths and will be counted. You can only travel\r\nfrom piece x to piece y if and only if there is an arrow from x to y.But\r\nKuro is not fun yet. He loves parity. Let\u2019s call his favorite parity p\r\nwhere p = 0 stands for \"even\" and p = 1 stands for \"odd\". He wants to\r\nput the arrows and choose colors in such a way that the score has the\r\nparity of p.It seems like there will be so many ways which satisfy Kuro.\r\nHe wants to count the number of them but this could be a very large\r\nnumber. Let\u2019s help him with his problem, but print it modulo 10^{9} + 7.\r\n",
+    "solutions": [
+        "#include <bits/stdc++.h>\n#define FOR(i,s,e) for(int i=(s);i<=(e);i++)\n#define FORD(i,s,e) for(int i=(s);i>=(e);i--)\n#define ALL(k) (k).begin(),(k).end()\n#define e1 first\n#define e2 second\n#define mp make_pair\n#define pb push_back\n#define eb emplace_back\n\nusing namespace std;\ntypedef long long LL;\ntypedef unsigned long long LLU;\ntypedef long double LD;\ntypedef pair<int,int> PII;\ntypedef pair<LL,LL> PLL;\ntypedef vector<int> VI;\nconst bool print=false;\n\nconst int N=57;\nconst LL mod=1e9+7;\n\nint n, p;\nint in[N];\n\nLL DP[N][N][N][N];\n\nLL add(LL &a, LL b){\n\ta=(a+b)%mod;\n}\n\nvoid modulo(LL &a){\n\ta%=mod;\n}\n\nint main(){\n\t\n\tscanf(\"%d%d\", &n, &p);\n\tFOR(i,1,n)\n\t\tscanf(\"%d\", &in[i]);\n\tDP[0][0][0][0]=1;\n\t\n\tLL res=0;\n\tFOR(i,0,n) FOR(j,0,n) FOR(l,0,n) FOR(k,0,n){\n\t\tint s=i+j+l+k;\n\t\tif (s==n && ((j+k)%2)==p)\n\t\t\tadd(res, DP[i][j][l][k]);\n\t\tif (s>=n)\n\t\t\tcontinue;\n\t\ts++;\n\t\tFOR(f,0,1){\n\t\t\tif (in[s]==(f^1))\n\t\t\t\tcontinue;\n\t\t\tif (DP[i][j][l][k])\n\t\t\tif (!f){\n\t\t\t\tLL chan=(1LL<<l)*(((1LL<<k)+1)/2);\n\t\t\t\tLL stay=(1LL<<l)*((1LL<<k)/2);\n\t\t\t\tmodulo(chan);\n\t\t\t\tmodulo(stay);\n\t\t\t\tchan*=(1LL<<(i+j));\n\t\t\t\tstay*=(1LL<<(i+j));\n\t\t\t\tmodulo(chan);\n\t\t\t\tmodulo(stay);\n\t\t\t\tadd(DP[i+1][j][l][k], DP[i][j][l][k]*stay);\n\t\t\t\tadd(DP[i][j+1][l][k], DP[i][j][l][k]*chan);\n\t\t\t}\n\t\t\telse{\n\t\t\t\tLL chan=(1LL<<i)*(((1LL<<j)+1)/2);\n\t\t\t\tLL stay=(1LL<<i)*((1LL<<j)/2);\n\t\t\t\tmodulo(chan);\n\t\t\t\tmodulo(stay);\n\t\t\t\tchan*=(1LL<<(l+k));\n\t\t\t\tstay*=(1LL<<(l+k));\n\t\t\t\tmodulo(chan);\n\t\t\t\tmodulo(stay);\n\t\t\t\tadd(DP[i][j][l+1][k], DP[i][j][l][k]*stay);\n\t\t\t\tadd(DP[i][j][l][k+1], DP[i][j][l][k]*chan);\n\t\t\t}\n\t\t}\n\t}\n\t\n\tprintf(\"%lld\\n\", res);\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp"
+    ],
+    "dificulty": "2400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Kuro and Topological Parity.json",
+    "editorial_link": "https://codeforces.com//blog/entry/59462",
+    "editorial": "SolutionThe problem asks us to find the number of different simple\r\ndirected acyclic graphs with forming its topological order to ensure the\r\nparity of the number of alternating paths to be equal to . We will solve\r\nthis problem using the dynamic programming approach. Let\u00e2\u0080\u0099s define\r\neven-white as the number of different nodes colored in white that has an\r\neven number of alternating paths that end in . In the same fashion,\r\nlet\u00e2\u0080\u0099s define odd-white as the number of different nodes colored in white\r\nthat has an odd number of alternating paths that end in , even-black the\r\nnumber of different nodes colored in black that has an even number of\r\nalternating paths that end in , and odd-black the number of different\r\nnodes colored in black that has an odd number of alternating paths that\r\nend in . Let\u00e2\u0080\u0099s also define as the number of different graphs following\r\nthe requirements that can be built using the first nodes, with\r\neven-white nodes, odd-white nodes and even-black nodes (the number of\r\nodd-black nodes ). We will figure out how to calculate such value. For\r\nthe sake of simplicity, let\u00e2\u0080\u0099s consider the current node the node to be a\r\nwhite node.We can notice a few things: If none of the previous nodes\r\nconnects to the current node, the current node becomes an odd-white node\r\n(the only alternating path that ends the current node is the node\r\nitself). How the previous white nodes connect to the current node does\r\nnot matter. There are ways to add edges between the previous white nodes\r\nand the current node. How the previous even-black nodes connect to the\r\ncurrent node does not matter, as it does not change the state of the\r\ncurrent white node (i.e. odd-white to even-white or even-white to\r\nodd-white). There are ways to add edges between the previous even-black\r\nnodes and the current node. If there are an odd number of previous\r\nodd-black nodes that have edges to the current node, the current node\r\nbecomes an even-white node. There are ways to do this. If there are an\r\neven number of previous odd-black nodes that have edges to the current\r\nnode, the current node becomes an odd-white node. There are ways to do\r\nthis. In conclusion, we can figure out that:It is worth mentioning that\r\nwe can use the same analogy to process when the current node is black.In\r\ntotal, we process through states, with an iteration for each stage, so\r\nthe time complexity is . However, with precomputation of and for every\r\nvalue of , we can optimize the time complexity to .Time complexity: .\r\n"
+}

@@ -1,1 +1,104 @@
-{"link": "https://codeforces.com//contest/1040/problem/A", "problemId": "215705", "problem_idx": "A", "shortId": "1040A", "contest_number": "1040", "problem_submissions": {"C": [42525959, 42516403, 42520218, 42509951], "E": [42518563, 42515513, 42516608, 42523906, 42523822, 42524914, 42516929, 42524932, 42514503, 42511196, 42518320, 42524442, 42528537], "B": [42514292, 42503342, 42502589, 42503781, 42507515, 42504172, 42504545, 42506438, 42505683, 42503118, 42546497, 42508433, 42507210, 42502341, 42521565, 42507357, 42501900, 42505960, 42504857], "A": [42508408, 42500521, 42500426, 42504655, 42500575, 42500946, 42519886, 42500455, 42501027, 42501547, 42500337, 42501761, 42500387, 42500370, 42517380, 42500340, 42502900, 42500738, 42500745], "D": [42506377, 42520704, 42524366, 42520672, 42517604, 42513292, 42525930, 42524271, 42524410, 42522170, 42511068, 42514990, 42523580, 42531287, 42513155]}, "name": "A. Palindrome Dance", "statement": "A group of n dancers rehearses a performance for the closing ceremony.\r\nThe dancers are arranged in a row, they\u2019ve studied their dancing moves\r\nand can\u2019t change positions. For some of them, a white dancing suit is\r\nalready bought, for some of them a black one, and for the rest the suit\r\nwill be bought in the future.On the day when the suits were to be\r\nbought, the director was told that the participants of the olympiad will\r\nbe happy if the colors of the suits on the scene will form a palindrome.\r\nA palindrome is a sequence that is the same when read from left to right\r\nand when read from right to left. The director liked the idea, and she\r\nwants to buy suits so that the color of the leftmost dancer\u2019s suit is\r\nthe same as the color of the rightmost dancer\u2019s suit, the 2nd left is\r\nthe same as 2nd right, and so on.The director knows how many burls it\r\ncosts to buy a white suit, and how many burls to buy a black suit. You\r\nneed to find out whether it is possible to buy suits to form a\r\npalindrome, and if it\u2019s possible, what\u2019s the minimal cost of doing so.\r\nRemember that dancers can not change positions, and due to bureaucratic\r\nreasons it is not allowed to buy new suits for the dancers who already\r\nhave suits, even if it reduces the overall spending.\r\n", "solutions": ["#include<bits/stdc++.h>\n#define mod 1000000007LL\n#define fi first\n#define se second\n#define mp make_pair\nusing namespace std;\ntypedef long long ll;\n\nint n,a,b,d[30],ans;\n\nvoid en()\n{\n    puts(\"-1\");\n    exit(0);\n}\n\nint main()\n{\n    scanf(\"%d %d %d\",&n,&a,&b);\n    //if(a<b) swap(a,b);\n\n    for(int i=0;i<n;i++) scanf(\"%d\",&d[i]);\n    for(int i=0;i<n/2;i++)\n    {\n        if(d[i]==0)\n        {\n            if(d[n-i-1]==1) en();\n            if(d[n-i-1]==2) ans+=a;\n        }\n\n        if(d[i]==1)\n        {\n            if(d[n-i-1]==0) en();\n            if(d[n-i-1]==2) ans+=b;\n        }\n\n        if(d[i]==2)\n        {\n            if(d[n-i-1]==0) ans+=a;\n            if(d[n-i-1]==1) ans+=b;\n            if(d[n-i-1]==2) ans+=2*min(a,b);\n        }\n    }\n\n    if(n%2==1 && d[n/2]==2) ans+=min(a,b);\n\n    printf(\"%d\",ans);\n}\n"], "input": "", "output": "", "tags": ["greedy"], "dificulty": "1000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/1040/problem/A",
+    "problemId": "215705",
+    "problem_idx": "A",
+    "shortId": "1040A",
+    "contest_number": "1040",
+    "problem_submissions": {
+        "C": [
+            42525959,
+            42516403,
+            42520218,
+            42509951
+        ],
+        "E": [
+            42518563,
+            42515513,
+            42516608,
+            42523906,
+            42523822,
+            42524914,
+            42516929,
+            42524932,
+            42514503,
+            42511196,
+            42518320,
+            42524442,
+            42528537
+        ],
+        "B": [
+            42514292,
+            42503342,
+            42502589,
+            42503781,
+            42507515,
+            42504172,
+            42504545,
+            42506438,
+            42505683,
+            42503118,
+            42546497,
+            42508433,
+            42507210,
+            42502341,
+            42521565,
+            42507357,
+            42501900,
+            42505960,
+            42504857
+        ],
+        "A": [
+            42508408,
+            42500521,
+            42500426,
+            42504655,
+            42500575,
+            42500946,
+            42519886,
+            42500455,
+            42501027,
+            42501547,
+            42500337,
+            42501761,
+            42500387,
+            42500370,
+            42517380,
+            42500340,
+            42502900,
+            42500738,
+            42500745
+        ],
+        "D": [
+            42506377,
+            42520704,
+            42524366,
+            42520672,
+            42517604,
+            42513292,
+            42525930,
+            42524271,
+            42524410,
+            42522170,
+            42511068,
+            42514990,
+            42523580,
+            42531287,
+            42513155
+        ]
+    },
+    "name": "A. Palindrome Dance",
+    "statement": "A group of n dancers rehearses a performance for the closing ceremony.\r\nThe dancers are arranged in a row, they\u2019ve studied their dancing moves\r\nand can\u2019t change positions. For some of them, a white dancing suit is\r\nalready bought, for some of them a black one, and for the rest the suit\r\nwill be bought in the future.On the day when the suits were to be\r\nbought, the director was told that the participants of the olympiad will\r\nbe happy if the colors of the suits on the scene will form a palindrome.\r\nA palindrome is a sequence that is the same when read from left to right\r\nand when read from right to left. The director liked the idea, and she\r\nwants to buy suits so that the color of the leftmost dancer\u2019s suit is\r\nthe same as the color of the rightmost dancer\u2019s suit, the 2nd left is\r\nthe same as 2nd right, and so on.The director knows how many burls it\r\ncosts to buy a white suit, and how many burls to buy a black suit. You\r\nneed to find out whether it is possible to buy suits to form a\r\npalindrome, and if it\u2019s possible, what\u2019s the minimal cost of doing so.\r\nRemember that dancers can not change positions, and due to bureaucratic\r\nreasons it is not allowed to buy new suits for the dancers who already\r\nhave suits, even if it reduces the overall spending.\r\n",
+    "solutions": [
+        "#include<bits/stdc++.h>\n#define mod 1000000007LL\n#define fi first\n#define se second\n#define mp make_pair\nusing namespace std;\ntypedef long long ll;\n\nint n,a,b,d[30],ans;\n\nvoid en()\n{\n    puts(\"-1\");\n    exit(0);\n}\n\nint main()\n{\n    scanf(\"%d %d %d\",&n,&a,&b);\n    //if(a<b) swap(a,b);\n\n    for(int i=0;i<n;i++) scanf(\"%d\",&d[i]);\n    for(int i=0;i<n/2;i++)\n    {\n        if(d[i]==0)\n        {\n            if(d[n-i-1]==1) en();\n            if(d[n-i-1]==2) ans+=a;\n        }\n\n        if(d[i]==1)\n        {\n            if(d[n-i-1]==0) en();\n            if(d[n-i-1]==2) ans+=b;\n        }\n\n        if(d[i]==2)\n        {\n            if(d[n-i-1]==0) ans+=a;\n            if(d[n-i-1]==1) ans+=b;\n            if(d[n-i-1]==2) ans+=2*min(a,b);\n        }\n    }\n\n    if(n%2==1 && d[n/2]==2) ans+=min(a,b);\n\n    printf(\"%d\",ans);\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "greedy"
+    ],
+    "dificulty": "1000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Palindrome Dance.json",
+    "editorial_link": "https://codeforces.com//blog/entry/61668",
+    "editorial": "Consider a pair of dancers located symmetrically with respect to the\r\ncenter of the stage. If they already have different suits, the answer is\r\ndefinitely \"impossible\". If they both have same suits, they are fine. If\r\none of them doesn\u00e2\u0080\u0099t have a suit, buy him a matching one. Finally, if\r\nboth don\u00e2\u0080\u0099t have suits, buy them two same suits of the cheaper color.\r\nAlso, if is odd and the central dancer doesn\u00e2\u0080\u0099t have a suit, buy him a\r\ncheaper one.\r\n"
+}

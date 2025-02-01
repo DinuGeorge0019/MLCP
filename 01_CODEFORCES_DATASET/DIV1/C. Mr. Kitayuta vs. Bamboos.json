@@ -1,1 +1,97 @@
-{"link": "https://codeforces.com//contest/506/problem/C", "problemId": "20822", "problem_idx": "C", "shortId": "506C", "contest_number": "506", "problem_submissions": {"C": [9464348, 9463979, 9557239, 9466208, 9514381], "D": [9461125, 9461876, 9460334, 9459573, 9458109, 9460700, 9459375, 9461634, 9460457, 9461910, 9458643, 9460232, 9462018, 9462258, 9460016, 9460009, 9459977, 9462409, 9460765], "B": [9459503, 9458315, 9457879, 9457557, 9459219, 9458249, 9461319, 9459208, 9457985, 9457950, 9462161, 9459453, 9458782, 9461373, 9462464, 9462819, 9459210, 9458536], "A": [9456602, 9456438, 9456462, 9456507, 9460135, 9456591, 9456641, 9456514, 9463082, 9456214, 9463955, 9457315, 9456528, 9457236, 9463962, 9457919, 9457204, 9456634, 9464389], "E": [9557214]}, "name": "C. Mr. Kitayuta vs. Bamboos", "statement": "Mr. Kitayuta\u2019s garden is planted with bamboos. (Bamboos are tall,\r\nfast-growing tropical plants with hollow stems.) At the moment, the\r\nheight of the -th bamboo is meters, and it grows meters at the end of\r\neach day. Actually, Mr. Kitayuta hates these bamboos. He once attempted\r\nto cut them down, but failed because their stems are too hard. Mr.\r\nKitayuta have not given up, however. He has crafted Magical Hammer with\r\nhis intelligence to drive them into the ground.He can use Magical Hammer\r\nat most times during each day, due to his limited Magic Power. Each time\r\nhe beat a bamboo with Magical Hammer, its height decreases by meters. If\r\nthe height would become negative by this change, it will become meters\r\ninstead (it does not disappear). In other words, if a bamboo whose\r\nheight is meters is beaten with Magical Hammer, its new height will be\r\nmeters. It is possible to beat the same bamboo more than once in a\r\nday.Mr. Kitayuta will fight the bamboos for days, starting today. His\r\npurpose is to minimize the height of the tallest bamboo after days (that\r\nis, iterations of \"Mr. Kitayuta beats the bamboos and then they grow\").\r\nFind the lowest possible height of the tallest bamboo after days.\r\n", "solutions": ["#include <cstdio>\n#include <functional>\n#include <algorithm>\n#include <vector>\n\nusing namespace std;\n\nlong long finalheights[100003];\nlong long grows[100003];\n\nint n,m,K,P;\n\nstruct node\n{\n\tlong long limit;\n\tlong long grow;\n\tint deadline;\n\tint lefthits;\n\tbool operator < (const node & other) const {\n\t\treturn deadline > other.deadline;\n\t}\n};\n\nbool check(long long ans)\n{\n\tvector<node> proc;\n\tfor (int i = 0; i < n; i++) {\n\t\tif (finalheights[i] > ans) {\n\t\t\tnode cur;\n\t\t\tcur.limit = ans;\n\t\t\tcur.grow = grows[i];\n\t\t\tcur.deadline = cur.limit / cur.grow;\n\t\t\tcur.lefthits = (finalheights[i] - ans + P - 1) / P;\n\t\t\tproc.emplace_back(cur);\n\t\t}\n\t}\n\tif ((long long)proc.size() > K * m) return false;\n\tmake_heap(proc.begin(),proc.end());\n\tint d = 1;\n\tint hits = 0;\n\twhile (d <= m && !proc.empty()) {\n\t\tpop_heap(proc.begin(),proc.end());\n\t\tauto &work = proc.back();\n\t\tif (work.deadline < d) return false;\n\n\t\twork.lefthits--;\n\t\twork.limit += P;\n\t\twork.deadline = work.limit / work.grow;\n\t\tif (work.lefthits == 0) {\n\t\t\tproc.pop_back();\n\t\t} else {\n\t\t\tpush_heap(proc.begin(),proc.end());\n\t\t}\n\n\t\tif (++hits == K) {\n\t\t\thits = 0;\n\t\t\td++;\n\t\t}\n\t}\n\treturn proc.empty();\n}\n\nint main(){\n\tscanf(\"%d%d%d%d\",&n,&m,&K,&P);\n\tfor (int i = 0; i < n; i++) {\n\t\tlong long h;\n\t\tscanf(\"%lld%lld\",&h, &grows[i]);\n\t\tfinalheights[i] = h + grows[i] * m;\n\t}\n\tlong long low = 0, high = *max_element(finalheights, finalheights+n);\n\tlong long ans = -1;\n\twhile (low <= high) {\n\t\tlong long mid = (low+high)/2;\n\t\tif (check(mid)) {\n\t\t\tans = mid;\n\t\t\thigh = mid - 1;\n\t\t} else {\n\t\t\tlow = mid + 1;\n\t\t}\n\t}\n\tprintf(\"%lld\\n\", ans);\n}"], "input": "", "output": "", "tags": ["binary search", "greedy"], "dificulty": "2900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/506/problem/C",
+    "problemId": "20822",
+    "problem_idx": "C",
+    "shortId": "506C",
+    "contest_number": "506",
+    "problem_submissions": {
+        "C": [
+            9464348,
+            9463979,
+            9557239,
+            9466208,
+            9514381
+        ],
+        "D": [
+            9461125,
+            9461876,
+            9460334,
+            9459573,
+            9458109,
+            9460700,
+            9459375,
+            9461634,
+            9460457,
+            9461910,
+            9458643,
+            9460232,
+            9462018,
+            9462258,
+            9460016,
+            9460009,
+            9459977,
+            9462409,
+            9460765
+        ],
+        "B": [
+            9459503,
+            9458315,
+            9457879,
+            9457557,
+            9459219,
+            9458249,
+            9461319,
+            9459208,
+            9457985,
+            9457950,
+            9462161,
+            9459453,
+            9458782,
+            9461373,
+            9462464,
+            9462819,
+            9459210,
+            9458536
+        ],
+        "A": [
+            9456602,
+            9456438,
+            9456462,
+            9456507,
+            9460135,
+            9456591,
+            9456641,
+            9456514,
+            9463082,
+            9456214,
+            9463955,
+            9457315,
+            9456528,
+            9457236,
+            9463962,
+            9457919,
+            9457204,
+            9456634,
+            9464389
+        ],
+        "E": [
+            9557214
+        ]
+    },
+    "name": "C. Mr. Kitayuta vs. Bamboos",
+    "statement": "Mr. Kitayuta\u2019s garden is planted with bamboos. (Bamboos are tall,\r\nfast-growing tropical plants with hollow stems.) At the moment, the\r\nheight of the -th bamboo is meters, and it grows meters at the end of\r\neach day. Actually, Mr. Kitayuta hates these bamboos. He once attempted\r\nto cut them down, but failed because their stems are too hard. Mr.\r\nKitayuta have not given up, however. He has crafted Magical Hammer with\r\nhis intelligence to drive them into the ground.He can use Magical Hammer\r\nat most times during each day, due to his limited Magic Power. Each time\r\nhe beat a bamboo with Magical Hammer, its height decreases by meters. If\r\nthe height would become negative by this change, it will become meters\r\ninstead (it does not disappear). In other words, if a bamboo whose\r\nheight is meters is beaten with Magical Hammer, its new height will be\r\nmeters. It is possible to beat the same bamboo more than once in a\r\nday.Mr. Kitayuta will fight the bamboos for days, starting today. His\r\npurpose is to minimize the height of the tallest bamboo after days (that\r\nis, iterations of \"Mr. Kitayuta beats the bamboos and then they grow\").\r\nFind the lowest possible height of the tallest bamboo after days.\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <functional>\n#include <algorithm>\n#include <vector>\n\nusing namespace std;\n\nlong long finalheights[100003];\nlong long grows[100003];\n\nint n,m,K,P;\n\nstruct node\n{\n\tlong long limit;\n\tlong long grow;\n\tint deadline;\n\tint lefthits;\n\tbool operator < (const node & other) const {\n\t\treturn deadline > other.deadline;\n\t}\n};\n\nbool check(long long ans)\n{\n\tvector<node> proc;\n\tfor (int i = 0; i < n; i++) {\n\t\tif (finalheights[i] > ans) {\n\t\t\tnode cur;\n\t\t\tcur.limit = ans;\n\t\t\tcur.grow = grows[i];\n\t\t\tcur.deadline = cur.limit / cur.grow;\n\t\t\tcur.lefthits = (finalheights[i] - ans + P - 1) / P;\n\t\t\tproc.emplace_back(cur);\n\t\t}\n\t}\n\tif ((long long)proc.size() > K * m) return false;\n\tmake_heap(proc.begin(),proc.end());\n\tint d = 1;\n\tint hits = 0;\n\twhile (d <= m && !proc.empty()) {\n\t\tpop_heap(proc.begin(),proc.end());\n\t\tauto &work = proc.back();\n\t\tif (work.deadline < d) return false;\n\n\t\twork.lefthits--;\n\t\twork.limit += P;\n\t\twork.deadline = work.limit / work.grow;\n\t\tif (work.lefthits == 0) {\n\t\t\tproc.pop_back();\n\t\t} else {\n\t\t\tpush_heap(proc.begin(),proc.end());\n\t\t}\n\n\t\tif (++hits == K) {\n\t\t\thits = 0;\n\t\t\td++;\n\t\t}\n\t}\n\treturn proc.empty();\n}\n\nint main(){\n\tscanf(\"%d%d%d%d\",&n,&m,&K,&P);\n\tfor (int i = 0; i < n; i++) {\n\t\tlong long h;\n\t\tscanf(\"%lld%lld\",&h, &grows[i]);\n\t\tfinalheights[i] = h + grows[i] * m;\n\t}\n\tlong long low = 0, high = *max_element(finalheights, finalheights+n);\n\tlong long ans = -1;\n\twhile (low <= high) {\n\t\tlong long mid = (low+high)/2;\n\t\tif (check(mid)) {\n\t\t\tans = mid;\n\t\t\thigh = mid - 1;\n\t\t} else {\n\t\t\tlow = mid + 1;\n\t\t}\n\t}\n\tprintf(\"%lld\\n\", ans);\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "binary search",
+        "greedy"
+    ],
+    "dificulty": "2900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Mr. Kitayuta vs. Bamboos.json",
+    "editorial_link": "https://codeforces.com/blog/entry/15889",
+    "editorial": "Let us begin by applying Binary Search. The problem becomes: \"is it possible that all the bamboos are at most X meters after m days?\" It is complicated by the fact that the height does not become negative; the excessive decrease will be wasted. We have found two approaches to this problem.\n\nSolution 1\nMr. Kitayuta must beat the i-th bamboo at least max(0,??(hi?+?m\u00b7ai?-?X)?/?P?) times (let this number ti). Actually, it is not necessary for him to beat it more than this number of times. Thus, let us assume that he beat the i-th bamboo exactly ti times. Also, for each j (1???j???ti), find the day di,?j such that, if the j-th beat on the i-th bamboo is performed before day di, it will be no longer possible to keep the i-th bamboo's height after m days at most X (it can be found by doing simple math). If Mr. Kitayuta can beat the bamboos under this constraint, all the bamboos' heights will become X meters or less after m days. Otherwise, some bamboos' heights will exceed X meters.\n\nThe time complexity of this solution will be , if we first calculate only ti, then if the sum of ti exceeds km, we skip finding di,?j (the answer is \"NO\").\n\nSolution 2\nThis problem becomes simpler if we simulate Mr. Kitayuta's fight backwards, that is, from day m to day 1. It looks like this:\n\n[Problem'] There are n bamboos. At the moment, the height of the i-th bamboo is X meters, and it shrinks ai meters at the beginning of each day. Mr. Kitayuta will play a game. He can use Magic Hammer at most k times per day to increase the height of a bamboo by p meters. If some bamboo's height becomes negative at any moment, he will lose the game immediately. Also, in order for him to win the game, the i-th bamboo's height must be at least hi meters after m days. Is victory possible?\n\nBelow is an illustration of this \"reverse simulation\":\n\n \nThis version is simpler because he is increasing the heights instead of decreasing, thus we do not need to take into account the \"excessive decrease beyond 0 meters\" which will be wasted. Let us consider an optimal strategy. If there exist bamboos whose heights would become negative after day m, he should beat the one that is the earliest to make him lose. Otherwise, he can choose any bamboo whose height would be less than hi meters after day m. Repeat beating the bamboos following this strategy, and see if he can actually claim victory."
+}

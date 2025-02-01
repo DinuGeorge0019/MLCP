@@ -1,1 +1,100 @@
-{"link": "https://codeforces.com//contest/142/problem/C", "problemId": "757", "problem_idx": "C", "shortId": "142C", "contest_number": "142", "problem_submissions": {"D": [1037429, 1033957, 1037084, 1113531, 1036315, 1036207, 1039046, 1039771, 1035511, 1039807], "C": [1036084, 1037803, 1040168, 1038580, 1038178, 1041260, 1038906, 1038902, 1038753, 1034775, 1040737, 1039056, 1038416, 1037153, 1034481], "B": [1032453, 1035023, 1033212, 1031763, 1032487, 1041275, 1033427, 1034500, 1033279, 1036000, 1032039, 1042729, 1042583, 1032611, 1033180, 1033834, 1032713, 1034068, 1032534], "A": [1031075, 1031753, 1031668, 1031166, 1031287, 1041290, 1031330, 1031886, 1032150, 1031269, 1033203, 1031404, 1031249, 1031261, 1031962, 1031577, 1031132], "E": [1356376, 1131959, 1131952, 1131947]}, "name": "C. Help Caretaker", "statement": "Autumn came late to the kingdom of Far Far Away. The harvest was\r\nexuberant and it is now time to get ready for the winter. As most people\r\ncelebrate the Harvest festival, Simon the Caretaker tries to solve a\r\nvery non-trivial task of how to find place for the agricultural\r\nequipment in the warehouse.He\u2019s got problems with some particularly\r\nlarge piece of equipment, which is, of course, turboplows. The problem\r\nis that when a turboplow is stored, it takes up not some simply\r\nrectangular space. It takes up a T-shaped space like on one of the four\r\npictures below (here character \"\" stands for the space occupied by the\r\nturboplow and character \"\" stands for the free space): Simon faced a\r\nquite natural challenge: placing in the given cells warehouse the\r\nmaximum number of turboplows. As one stores the turboplows, he can\r\nrotate them in any manner (so that they take up the space like on one of\r\nthe four pictures above). However, two turboplows cannot \"overlap\", that\r\nis, they cannot share the same cell in the warehouse.Simon feels that he\r\nalone cannot find the optimal way of positioning the plugs in the\r\nwarehouse that would maximize their quantity. Can you help him?\r\n", "solutions": ["#include <iostream>\n#include <fstream>\n#include <vector>\n#include <set>\n#include <map>\n#include <string>\n#include <cmath>\n#include <cassert>\n#include <ctime>\n#include <algorithm>\n#include <queue>\n#include <memory.h>\n#include <stack>\n#define mp make_pair\n#define pb push_back                     \n#define setval(a,v) memset(a,v,sizeof(a))\n\n#if ( _WIN32 || __WIN32__ )\n    #define LLD \"%I64d\"\n#else\n    #define LLD \"%lld\"\n#endif\n\nusing namespace std;\n\ntypedef long long ll;\ntypedef long double ld;\n\nchar s[10][10];\nchar bs[10][10];\n\nint ans;\n\nint start = clock();\n\nconst int dx[4][5] = {{0,1,2,1,1},{0,1,2,2,2},{1,1,0,1,2},{0,0,1,2,0}};\nconst int dy[4][5] = {{0,0,0,1,2},{1,1,0,1,2},{0,1,2,2,2},{0,1,1,1,2}};\nint n,m;\n\nbool q,q1;\n\nvoid dfs(int x,int y,int cur){\n    if (cur == ans){\n      memcpy(bs,s,sizeof(bs));\n      q = q1 = true;\n      return;\n    }\n    if (x >= n-2){\n        if (clock() - start > 2.7*CLOCKS_PER_SEC)\n           q = true, q1 = false; \n        return;\n    }\n    if (y >= m-2){\n        dfs(x+1,0,cur);\n        return;\n    }\n    if (((m-y+1)+(n-x)*m)/5 + cur <= ans)\n        return;\n    if ((m-y-1)+(n-x-2)*m+cur <= ans)\n        return;\n    for (int i = 0; i < 4; i++){\n        bool ok = !q;\n        for (int j = 0; j < 5; j++)\n            ok &= s[x+dx[i][j]][y+dy[i][j]] == 0;\n        if (ok){\n            for (int j = 0; j < 5; j++)\n                s[x+dx[i][j]][y+dy[i][j]] = 'A'+cur;\n            dfs(x,y+1,cur+1);\n            for (int j = 0; j < 5; j++)\n                s[x+dx[i][j]][y+dy[i][j]] = 0;\n        }\n    }\n    if (!q)\n        dfs(x,y+1,cur);\n}\n\n\nint main()\n{\n  #ifdef LOCAL\n    freopen(\"input.txt\",\"r\",stdin);\n    freopen(\"output.txt\",\"w\",stdout);\n  #endif\n\n  scanf(\"%d %d\",&n,&m);\n  if (n > 2 && m > 2){\n      for (ans = 0; ; ans++){\n        cerr << ans << endl;\n        q = q1= false;\n        dfs(0,0,0);\n        if (!q1){\n            ans--;\n            break;\n        }\n      }\n  }\n  printf(\"%d\\n\",ans);\n  for (int i = 0; i < n; i++,printf(\"\\n\"))\n    for (int j = 0; j < m; j++)\n        if (bs[i][j] == 0)\n            printf(\".\");\n        else\n            printf(\"%c\",bs[i][j]); \n  return 0;\n}"], "input": "", "output": "", "tags": ["brute force", "dp"], "dificulty": "2300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/142/problem/C",
+    "problemId": "757",
+    "problem_idx": "C",
+    "shortId": "142C",
+    "contest_number": "142",
+    "problem_submissions": {
+        "D": [
+            1037429,
+            1033957,
+            1037084,
+            1113531,
+            1036315,
+            1036207,
+            1039046,
+            1039771,
+            1035511,
+            1039807
+        ],
+        "C": [
+            1036084,
+            1037803,
+            1040168,
+            1038580,
+            1038178,
+            1041260,
+            1038906,
+            1038902,
+            1038753,
+            1034775,
+            1040737,
+            1039056,
+            1038416,
+            1037153,
+            1034481
+        ],
+        "B": [
+            1032453,
+            1035023,
+            1033212,
+            1031763,
+            1032487,
+            1041275,
+            1033427,
+            1034500,
+            1033279,
+            1036000,
+            1032039,
+            1042729,
+            1042583,
+            1032611,
+            1033180,
+            1033834,
+            1032713,
+            1034068,
+            1032534
+        ],
+        "A": [
+            1031075,
+            1031753,
+            1031668,
+            1031166,
+            1031287,
+            1041290,
+            1031330,
+            1031886,
+            1032150,
+            1031269,
+            1033203,
+            1031404,
+            1031249,
+            1031261,
+            1031962,
+            1031577,
+            1031132
+        ],
+        "E": [
+            1356376,
+            1131959,
+            1131952,
+            1131947
+        ]
+    },
+    "name": "C. Help Caretaker",
+    "statement": "Autumn came late to the kingdom of Far Far Away. The harvest was\r\nexuberant and it is now time to get ready for the winter. As most people\r\ncelebrate the Harvest festival, Simon the Caretaker tries to solve a\r\nvery non-trivial task of how to find place for the agricultural\r\nequipment in the warehouse.He\u2019s got problems with some particularly\r\nlarge piece of equipment, which is, of course, turboplows. The problem\r\nis that when a turboplow is stored, it takes up not some simply\r\nrectangular space. It takes up a T-shaped space like on one of the four\r\npictures below (here character \"\" stands for the space occupied by the\r\nturboplow and character \"\" stands for the free space): Simon faced a\r\nquite natural challenge: placing in the given cells warehouse the\r\nmaximum number of turboplows. As one stores the turboplows, he can\r\nrotate them in any manner (so that they take up the space like on one of\r\nthe four pictures above). However, two turboplows cannot \"overlap\", that\r\nis, they cannot share the same cell in the warehouse.Simon feels that he\r\nalone cannot find the optimal way of positioning the plugs in the\r\nwarehouse that would maximize their quantity. Can you help him?\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <fstream>\n#include <vector>\n#include <set>\n#include <map>\n#include <string>\n#include <cmath>\n#include <cassert>\n#include <ctime>\n#include <algorithm>\n#include <queue>\n#include <memory.h>\n#include <stack>\n#define mp make_pair\n#define pb push_back                     \n#define setval(a,v) memset(a,v,sizeof(a))\n\n#if ( _WIN32 || __WIN32__ )\n    #define LLD \"%I64d\"\n#else\n    #define LLD \"%lld\"\n#endif\n\nusing namespace std;\n\ntypedef long long ll;\ntypedef long double ld;\n\nchar s[10][10];\nchar bs[10][10];\n\nint ans;\n\nint start = clock();\n\nconst int dx[4][5] = {{0,1,2,1,1},{0,1,2,2,2},{1,1,0,1,2},{0,0,1,2,0}};\nconst int dy[4][5] = {{0,0,0,1,2},{1,1,0,1,2},{0,1,2,2,2},{0,1,1,1,2}};\nint n,m;\n\nbool q,q1;\n\nvoid dfs(int x,int y,int cur){\n    if (cur == ans){\n      memcpy(bs,s,sizeof(bs));\n      q = q1 = true;\n      return;\n    }\n    if (x >= n-2){\n        if (clock() - start > 2.7*CLOCKS_PER_SEC)\n           q = true, q1 = false; \n        return;\n    }\n    if (y >= m-2){\n        dfs(x+1,0,cur);\n        return;\n    }\n    if (((m-y+1)+(n-x)*m)/5 + cur <= ans)\n        return;\n    if ((m-y-1)+(n-x-2)*m+cur <= ans)\n        return;\n    for (int i = 0; i < 4; i++){\n        bool ok = !q;\n        for (int j = 0; j < 5; j++)\n            ok &= s[x+dx[i][j]][y+dy[i][j]] == 0;\n        if (ok){\n            for (int j = 0; j < 5; j++)\n                s[x+dx[i][j]][y+dy[i][j]] = 'A'+cur;\n            dfs(x,y+1,cur+1);\n            for (int j = 0; j < 5; j++)\n                s[x+dx[i][j]][y+dy[i][j]] = 0;\n        }\n    }\n    if (!q)\n        dfs(x,y+1,cur);\n}\n\n\nint main()\n{\n  #ifdef LOCAL\n    freopen(\"input.txt\",\"r\",stdin);\n    freopen(\"output.txt\",\"w\",stdout);\n  #endif\n\n  scanf(\"%d %d\",&n,&m);\n  if (n > 2 && m > 2){\n      for (ans = 0; ; ans++){\n        cerr << ans << endl;\n        q = q1= false;\n        dfs(0,0,0);\n        if (!q1){\n            ans--;\n            break;\n        }\n      }\n  }\n  printf(\"%d\\n\",ans);\n  for (int i = 0; i < n; i++,printf(\"\\n\"))\n    for (int j = 0; j < m; j++)\n        if (bs[i][j] == 0)\n            printf(\".\");\n        else\n            printf(\"%c\",bs[i][j]); \n  return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "dp"
+    ],
+    "dificulty": "2300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Help Caretaker.json",
+    "editorial_link": "https://codeforces.com/blog/entry/3651",
+    "editorial": "This is technical problem, one may use several approaches to solve it. Additional complexity is to restore the answer after you got it.\n1. Dynamic programming \"on the broken profile\" - I'll not explain the approach here in detail, you can find explanation of it on the Internet or even on Codeforces. Worth to point out, care should be taken of your code memory usage.\n2. Search with memorization - one jury solution uses logic like DP with usual (not broken) profile: move by rows (or by columns), try all possible T placements such that upper cell of T's is in the given row and run the same search procedure for the next raw, passing the state of the two last filled rows of the board to it. For the given board state save the answer recursive function returned (max number of T's one may place on the not-yet-filled part of the board) and use it in the future as the answer for the given state. This requires only O(n*2^(2^m)) of memory and works about 2 sec. on maxtest 9 x 9.\n3. Branch and bound. Another jury solution recursively tries all possible tilings of the board with T's. If on some step it occured that number of T's on the board plus number of T's one can theoretically place on the remaining part of the board doesn't exceed existing best answer - trim this node. Such solution is the easiest to code and it works only 0.5 sec. on maxtest, however it is not obvious from the very beginning.\n4. Precalc - not to write a lot of code (applying DP or search with memorization) and not to deal with possible time/memory limits, some participants did the right thing: using the third approach, just precalculated answers for large (or for all possible) inputs."
+}

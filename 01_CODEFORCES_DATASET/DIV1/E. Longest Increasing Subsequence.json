@@ -1,1 +1,103 @@
-{"link": "https://codeforces.com//contest/568/problem/E", "problemId": "32827", "problem_idx": "E", "shortId": "568E", "contest_number": "568", "problem_submissions": {"D": [12452919, 12452362, 12448661, 12453325, 12468492, 12468486, 12468483, 12451032, 12452255, 12452694, 12453501, 12453811, 12453450, 13003096, 12455889], "C": [12448571, 12455832, 12453103, 12456355, 12447177, 12448310, 12449857, 12450803, 12450475, 12451591, 12452278, 12452058, 12451086], "A": [12443004, 12441468, 12444210, 12441815, 12441971, 12443645, 12441974, 12441386, 12441504, 12441798, 12442012, 12441477, 12441565, 12442145, 12441398, 12441404, 12441967, 12457494, 12441406, 12441749], "B": [12441764, 12442322, 12442609, 12444738, 12444997, 12441522, 12443756, 12443073, 12442780, 12445676, 12444555, 12442448, 12443842, 12443319, 12443252, 12442442, 12442637, 12443546, 12444321], "E": [12455650]}, "name": "E. Longest Increasing Subsequence", "statement": ".Let\u2019s consider an array consisting of positive integers, some positions\r\nof which contain gaps.We have a collection of numbers that can be used\r\nto fill the gaps. Each number from the given collection can be used at\r\nmost once.Your task is to determine such way of filling gaps that the\r\nlongest increasing subsequence in the formed array has a maximum size.\r\n", "solutions": ["#include <iostream>\n#include <vector>\n#include <cstdio>\n#include <algorithm>\n#include <set>\n#include <map>\n#include <cassert>\n#include <numeric>\n#include <string>\n#include <cstring>\n#include <cmath>\nusing namespace std;\n\n#ifdef LOCAL\n\t#define eprintf(...) fprintf(stderr, __VA_ARGS__)\n#else\n\t#define eprintf(...) 42\n#endif\n\ntypedef long long int int64;\n\n\nint sz = 0;\nconst int maxn = (int) 1e5 + 100;\nint all[maxn * 2];\nint a[maxn];\nint b[maxn];\nbool has[2 * maxn];\nint nxt[2 * maxn];\nint prt[2 * maxn];\n\nint len2min[2 * maxn];\nint len2minF[2 * maxn];\nint len2minR[2 * maxn];\n\nconst int inf = (int) 1e9;\nvoid solveF(int l, int r, int bef)\n{\n\tint len = r - l;\n\tfor (int i = 0; i <= len; i++)\n\t\tlen2min[i] = inf;\n\tlen2min[0] = bef;\n\t\n\tfor (int i = l; i < r; i++)\n\t{\n//\t\teprintf(\"%d %d %d\\n\", l, i, r);\n\t\tint cur = a[i];\n\t\tif (a[i] != -1)\n\t\t{\n\t\t\tif (cur > bef)\n\t\t\t{\n//\t\t\teprintf(\"a[i] = %d\\n\", a[i] );\n\t\t\tint pos = lower_bound(len2min, len2min + len, a[i] ) - len2min;\n//\t\t\teprintf(\"pos = %d\\n\", pos);\n\t\t\tlen2min[pos] = cur; \n\t\t\t}\n\t\t}\n\t\telse\n\t\t{\n\t\t\tfor (int j = len - 1; j >= 0; j--)\n\t\t\t{\n\t\t\t\tif (len2min[j] >= sz)\n\t\t\t\t\tcontinue;\n\t\t\t\tint nx = nxt[len2min[j] + 1];\n\t\t\t\tif (nx < len2min[j + 1] )\n\t\t\t\t\tlen2min[j + 1] = nx;\n\t\t\t}\n\t\t}\n\t}\n}\n\nvoid solveR(int l, int r, int aft)\n{\n\tint len = r - l;\n\tfor (int i = 0; i <= len; i++)\n\t\tlen2min[i] = -1;\n\tlen2min[len] = aft;\n\t\n\tfor (int i = r - 1; i >= l; i--)\n\t{\n\t\tint cur = a[i];\n\t\tif (a[i] != -1)\n\t\t{\n\t\t\tif (cur < aft)\n\t\t\t{\n\t\t\t\tint pos = upper_bound(len2min, len2min + len, a[i] ) - len2min - 1;\n\t\t\t\tlen2min[pos] = cur; \n\t\t\t}\n\t\t}\n\t\telse\n\t\t{\n\t\t\tfor (int j = 1; j <= len; j++)\n\t\t\t{\n\t\t\t\tif (len2min[j] - 1 <= 0)\n\t\t\t\t\tcontinue;\n\t\t\t\tint pr = prt[len2min[j] - 1];\n\t\t\t\tif (pr > len2min[j - 1] )\n\t\t\t\t\tlen2min[j - 1] = pr;\n\t\t\t}\n\t\t}\n\t}\n\treverse(len2min, len2min + len + 1);\n}\n\nint tk = 0;\nint taked[maxn];\n\nvoid solve(int l, int r, int bef, int aft)\n{\n\teprintf(\"l = %d, r = %d, bef = %d, aft = %d\\n\", l, r, bef, aft);\n\tif (r - l == 1)\n\t{\n\t\tif (a[l] == -1)\n\t\t{\n\t\t\tint x = nxt[bef + 1];\n\t\t\tif (x < aft)\n\t\t\t{\n\t\t\t\ttaked[tk++] = x;\n\t\t\t\ta[l] = x;\n\t\t\t}\n\t\t}\n\t\treturn; \n\t}\n\tint mid = (l + r) / 2;\n\tsolveF(l, mid, bef);\n\tfor (int i = 0; i <= mid - l; i++)\n\t\tlen2minF[i] = len2min[i];\n\n\tsolveR(mid, r, aft);\n\tfor (int i = 0; i <= r - mid; i++)\n\t\tlen2minR[i] = len2min[i];\n\t\n\teprintf(\"mid = %d\\n\", mid);\n\tfor (int i = 0; i <= mid - l; i++)\n\t\teprintf(\"%d \", len2minF[i] );\n\teprintf(\"\\n\");\n\tfor (int i = 0; i <= r - mid; i++)\n\t\teprintf(\"%d \", len2minR[i] );\n\teprintf(\"\\n\");\n\t\n\tint bst = -1;\n\tint dv = -1;\n\tint j = r - mid;\n\tfor (int i = 0; i <= mid - l; i++)\n\t{\n\t\twhile (j >= 0 && len2minR[j] <= len2minF[i] )\n\t\t\tj--;\n\t\tif (j < 0)\n\t\t\tbreak;\n\t\tif (i + j > bst)\n\t\t{\n\t\t\tbst = i + j;\n\t\t\tdv = len2minF[i];\n\t\t}\n\t}\n\tsolve(l, mid, bef, dv + 1);\n\tsolve(mid, r, dv, aft);\n}\n\n\nvoid solve()\n{\n\tint n;\n\tscanf(\"%d\", &n);\n\tfor (int i = 0; i < n; i++)\n\t{\n\t\tscanf(\"%d\", &a[i] );\n\t\tif (a[i] != -1)\n\t\t\tall[sz++] = a[i];\n\t}\n\tint m;\n\tscanf(\"%d\", &m);\n\tfor (int i = 0; i < m; i++)\n\t{\n\t\tscanf(\"%d\", &b[i] );\n\t\tall[sz++] = b[i];\n\t}\n\tsort(b, b + m);\n\tall[sz++] = -2;\n\tsort(all, all + sz);\n\tsz = unique(all, all + sz) - all;\n\tfor (int i = 0; i < n; i++)\n\t\tif (a[i] != -1)\n\t\t\ta[i] = lower_bound(all, all + sz, a[i] ) - all;\n\tfor (int i = 0; i < m; i++)\n\t{\n\t\tb[i] = lower_bound(all, all + sz, b[i] ) - all;\n\t\thas[b[i] ] = true;\n\t}\n\tnxt[sz] = inf;\n\tfor (int i = sz - 1; i >= 0; i--)\n\t{\n\t\tif (has[i] )\n\t\t\tnxt[i] = i;\n\t\telse\n\t\t\tnxt[i] = nxt[i + 1];\n\t}\n\tprt[0] = -1;\n\tfor (int i = 1; i <= sz; i++)\n\t{\n\t\tif (has[i] )\n\t\t\tprt[i] = i;\n\t\telse\n\t\t\tprt[i] = prt[i - 1];\n\t}\n\n\tfor (int i = 0; i < n; i++)\n\t\teprintf(\"%d \", a[i] );\n\teprintf(\"\\n\");\n\tfor (int i = 0; i < m; i++)\n\t\teprintf(\"%d \", b[i] );\n\teprintf(\"\\n\");\n\tfor (int i = 0; i <= sz; i++)\n\t\teprintf(\"%d \", nxt[i] );\n\teprintf(\"\\n\");\n\tfor (int i = 0; i <= sz; i++)\n\t\teprintf(\"%d \", prt[i] );\n\teprintf(\"\\n\");\n\n\tsolve(0, n, 0, sz);\n\tsort(taked, taked + tk);\n\tint post = 0, posb = 0;\n\n\tfor (int i = 0; i < n; i++)\n\t{\n\t\tint x = a[i];\n\t\tif (a[i] == -1)\n\t\t{\n\t\t\teprintf(\"!!\\n\");\n\t\t\twhile (post < tk && taked[post] == b[posb] )\n\t\t\t{\n\t\t\t\tpost++;\n\t\t\t\tposb++;\n\t\t\t}\n//\t\t\teprintf(\"post = %d, posb = %d\\n\", post, posb);\n\t\t\ta[i] = b[posb++];\n//\t\t\teprintf(\"a[i] = %d\\n\", a[i] );\n\t\t}\n\t\tx = a[i];\n\t\tx = all[x];\n\t\tprintf(\"%d \", x);\n\t}\n}\n\n\nint main(int , char **)\n{\n#ifdef LOCAL\n\tfreopen(\"input.txt\", \"r\", stdin);\n//\tfreopen(\"output.txt\", \"w\", stdout);\n#endif\n\t\n\tsolve();\n\n\treturn 0;\n}\n\n\n"], "input": "", "output": "", "tags": ["data structures", "dp"], "dificulty": "3000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/568/problem/E",
+    "problemId": "32827",
+    "problem_idx": "E",
+    "shortId": "568E",
+    "contest_number": "568",
+    "problem_submissions": {
+        "D": [
+            12452919,
+            12452362,
+            12448661,
+            12453325,
+            12468492,
+            12468486,
+            12468483,
+            12451032,
+            12452255,
+            12452694,
+            12453501,
+            12453811,
+            12453450,
+            13003096,
+            12455889
+        ],
+        "C": [
+            12448571,
+            12455832,
+            12453103,
+            12456355,
+            12447177,
+            12448310,
+            12449857,
+            12450803,
+            12450475,
+            12451591,
+            12452278,
+            12452058,
+            12451086
+        ],
+        "A": [
+            12443004,
+            12441468,
+            12444210,
+            12441815,
+            12441971,
+            12443645,
+            12441974,
+            12441386,
+            12441504,
+            12441798,
+            12442012,
+            12441477,
+            12441565,
+            12442145,
+            12441398,
+            12441404,
+            12441967,
+            12457494,
+            12441406,
+            12441749
+        ],
+        "B": [
+            12441764,
+            12442322,
+            12442609,
+            12444738,
+            12444997,
+            12441522,
+            12443756,
+            12443073,
+            12442780,
+            12445676,
+            12444555,
+            12442448,
+            12443842,
+            12443319,
+            12443252,
+            12442442,
+            12442637,
+            12443546,
+            12444321
+        ],
+        "E": [
+            12455650
+        ]
+    },
+    "name": "E. Longest Increasing Subsequence",
+    "statement": ".Let\u2019s consider an array consisting of positive integers, some positions\r\nof which contain gaps.We have a collection of numbers that can be used\r\nto fill the gaps. Each number from the given collection can be used at\r\nmost once.Your task is to determine such way of filling gaps that the\r\nlongest increasing subsequence in the formed array has a maximum size.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <vector>\n#include <cstdio>\n#include <algorithm>\n#include <set>\n#include <map>\n#include <cassert>\n#include <numeric>\n#include <string>\n#include <cstring>\n#include <cmath>\nusing namespace std;\n\n#ifdef LOCAL\n\t#define eprintf(...) fprintf(stderr, __VA_ARGS__)\n#else\n\t#define eprintf(...) 42\n#endif\n\ntypedef long long int int64;\n\n\nint sz = 0;\nconst int maxn = (int) 1e5 + 100;\nint all[maxn * 2];\nint a[maxn];\nint b[maxn];\nbool has[2 * maxn];\nint nxt[2 * maxn];\nint prt[2 * maxn];\n\nint len2min[2 * maxn];\nint len2minF[2 * maxn];\nint len2minR[2 * maxn];\n\nconst int inf = (int) 1e9;\nvoid solveF(int l, int r, int bef)\n{\n\tint len = r - l;\n\tfor (int i = 0; i <= len; i++)\n\t\tlen2min[i] = inf;\n\tlen2min[0] = bef;\n\t\n\tfor (int i = l; i < r; i++)\n\t{\n//\t\teprintf(\"%d %d %d\\n\", l, i, r);\n\t\tint cur = a[i];\n\t\tif (a[i] != -1)\n\t\t{\n\t\t\tif (cur > bef)\n\t\t\t{\n//\t\t\teprintf(\"a[i] = %d\\n\", a[i] );\n\t\t\tint pos = lower_bound(len2min, len2min + len, a[i] ) - len2min;\n//\t\t\teprintf(\"pos = %d\\n\", pos);\n\t\t\tlen2min[pos] = cur; \n\t\t\t}\n\t\t}\n\t\telse\n\t\t{\n\t\t\tfor (int j = len - 1; j >= 0; j--)\n\t\t\t{\n\t\t\t\tif (len2min[j] >= sz)\n\t\t\t\t\tcontinue;\n\t\t\t\tint nx = nxt[len2min[j] + 1];\n\t\t\t\tif (nx < len2min[j + 1] )\n\t\t\t\t\tlen2min[j + 1] = nx;\n\t\t\t}\n\t\t}\n\t}\n}\n\nvoid solveR(int l, int r, int aft)\n{\n\tint len = r - l;\n\tfor (int i = 0; i <= len; i++)\n\t\tlen2min[i] = -1;\n\tlen2min[len] = aft;\n\t\n\tfor (int i = r - 1; i >= l; i--)\n\t{\n\t\tint cur = a[i];\n\t\tif (a[i] != -1)\n\t\t{\n\t\t\tif (cur < aft)\n\t\t\t{\n\t\t\t\tint pos = upper_bound(len2min, len2min + len, a[i] ) - len2min - 1;\n\t\t\t\tlen2min[pos] = cur; \n\t\t\t}\n\t\t}\n\t\telse\n\t\t{\n\t\t\tfor (int j = 1; j <= len; j++)\n\t\t\t{\n\t\t\t\tif (len2min[j] - 1 <= 0)\n\t\t\t\t\tcontinue;\n\t\t\t\tint pr = prt[len2min[j] - 1];\n\t\t\t\tif (pr > len2min[j - 1] )\n\t\t\t\t\tlen2min[j - 1] = pr;\n\t\t\t}\n\t\t}\n\t}\n\treverse(len2min, len2min + len + 1);\n}\n\nint tk = 0;\nint taked[maxn];\n\nvoid solve(int l, int r, int bef, int aft)\n{\n\teprintf(\"l = %d, r = %d, bef = %d, aft = %d\\n\", l, r, bef, aft);\n\tif (r - l == 1)\n\t{\n\t\tif (a[l] == -1)\n\t\t{\n\t\t\tint x = nxt[bef + 1];\n\t\t\tif (x < aft)\n\t\t\t{\n\t\t\t\ttaked[tk++] = x;\n\t\t\t\ta[l] = x;\n\t\t\t}\n\t\t}\n\t\treturn; \n\t}\n\tint mid = (l + r) / 2;\n\tsolveF(l, mid, bef);\n\tfor (int i = 0; i <= mid - l; i++)\n\t\tlen2minF[i] = len2min[i];\n\n\tsolveR(mid, r, aft);\n\tfor (int i = 0; i <= r - mid; i++)\n\t\tlen2minR[i] = len2min[i];\n\t\n\teprintf(\"mid = %d\\n\", mid);\n\tfor (int i = 0; i <= mid - l; i++)\n\t\teprintf(\"%d \", len2minF[i] );\n\teprintf(\"\\n\");\n\tfor (int i = 0; i <= r - mid; i++)\n\t\teprintf(\"%d \", len2minR[i] );\n\teprintf(\"\\n\");\n\t\n\tint bst = -1;\n\tint dv = -1;\n\tint j = r - mid;\n\tfor (int i = 0; i <= mid - l; i++)\n\t{\n\t\twhile (j >= 0 && len2minR[j] <= len2minF[i] )\n\t\t\tj--;\n\t\tif (j < 0)\n\t\t\tbreak;\n\t\tif (i + j > bst)\n\t\t{\n\t\t\tbst = i + j;\n\t\t\tdv = len2minF[i];\n\t\t}\n\t}\n\tsolve(l, mid, bef, dv + 1);\n\tsolve(mid, r, dv, aft);\n}\n\n\nvoid solve()\n{\n\tint n;\n\tscanf(\"%d\", &n);\n\tfor (int i = 0; i < n; i++)\n\t{\n\t\tscanf(\"%d\", &a[i] );\n\t\tif (a[i] != -1)\n\t\t\tall[sz++] = a[i];\n\t}\n\tint m;\n\tscanf(\"%d\", &m);\n\tfor (int i = 0; i < m; i++)\n\t{\n\t\tscanf(\"%d\", &b[i] );\n\t\tall[sz++] = b[i];\n\t}\n\tsort(b, b + m);\n\tall[sz++] = -2;\n\tsort(all, all + sz);\n\tsz = unique(all, all + sz) - all;\n\tfor (int i = 0; i < n; i++)\n\t\tif (a[i] != -1)\n\t\t\ta[i] = lower_bound(all, all + sz, a[i] ) - all;\n\tfor (int i = 0; i < m; i++)\n\t{\n\t\tb[i] = lower_bound(all, all + sz, b[i] ) - all;\n\t\thas[b[i] ] = true;\n\t}\n\tnxt[sz] = inf;\n\tfor (int i = sz - 1; i >= 0; i--)\n\t{\n\t\tif (has[i] )\n\t\t\tnxt[i] = i;\n\t\telse\n\t\t\tnxt[i] = nxt[i + 1];\n\t}\n\tprt[0] = -1;\n\tfor (int i = 1; i <= sz; i++)\n\t{\n\t\tif (has[i] )\n\t\t\tprt[i] = i;\n\t\telse\n\t\t\tprt[i] = prt[i - 1];\n\t}\n\n\tfor (int i = 0; i < n; i++)\n\t\teprintf(\"%d \", a[i] );\n\teprintf(\"\\n\");\n\tfor (int i = 0; i < m; i++)\n\t\teprintf(\"%d \", b[i] );\n\teprintf(\"\\n\");\n\tfor (int i = 0; i <= sz; i++)\n\t\teprintf(\"%d \", nxt[i] );\n\teprintf(\"\\n\");\n\tfor (int i = 0; i <= sz; i++)\n\t\teprintf(\"%d \", prt[i] );\n\teprintf(\"\\n\");\n\n\tsolve(0, n, 0, sz);\n\tsort(taked, taked + tk);\n\tint post = 0, posb = 0;\n\n\tfor (int i = 0; i < n; i++)\n\t{\n\t\tint x = a[i];\n\t\tif (a[i] == -1)\n\t\t{\n\t\t\teprintf(\"!!\\n\");\n\t\t\twhile (post < tk && taked[post] == b[posb] )\n\t\t\t{\n\t\t\t\tpost++;\n\t\t\t\tposb++;\n\t\t\t}\n//\t\t\teprintf(\"post = %d, posb = %d\\n\", post, posb);\n\t\t\ta[i] = b[posb++];\n//\t\t\teprintf(\"a[i] = %d\\n\", a[i] );\n\t\t}\n\t\tx = a[i];\n\t\tx = all[x];\n\t\tprintf(\"%d \", x);\n\t}\n}\n\n\nint main(int , char **)\n{\n#ifdef LOCAL\n\tfreopen(\"input.txt\", \"r\", stdin);\n//\tfreopen(\"output.txt\", \"w\", stdout);\n#endif\n\t\n\tsolve();\n\n\treturn 0;\n}\n\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "data structures",
+        "dp"
+    ],
+    "dificulty": "3000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\E. Longest Increasing Subsequence.json",
+    "editorial_link": "https://codeforces.com//blog/entry/19705",
+    "editorial": "Let\u00e2\u0080\u0099s calculate array : minimal number that can complete increasing\r\nsubsequence of length . (This is one of the common solution for LIS\r\nproblem). Elements of this array are increasing and we can add new\r\nelement to processed part of sequence as follows: find such index that\r\nand let We can process this action in time. When we handle a gap, we\r\nmust try to insert all numbers from set . If we sort elements of in\r\nadvance, then we can move with two iterators along arrays and and relax\r\nall needed values as explained above. This case requires time. Authors\r\nimplied solution with space complexity for answer restoring. We can do\r\nthis in the following way: Together with array we will store array index\r\nof element, which complete optimal increasing subsequence of length . If\r\nthis subsequence ends in a gap we will store . Also, we will store for\r\nevery not gap length of LIS(), which ends in this position (this is\r\nsimply calculating while processing array ) and position() of previous\r\nelement in this subsequence (if this elements is gap, we store ) Now we\r\nwill start recovery the answer with this information. While we are\r\nworking with not gaps it\u00e2\u0080\u0099s all right. We can simply restore LIS with\r\narray. The main difficulty lies in processing gaps. If value of in\r\ncurrent position equal to we know, that before this elements must be one\r\nor more gaps. And we can determine which gaps and what values from we\r\nmust put in them as follows: Let suppose that we stand at position (and\r\n). Now we want to find such position (which is not gap), that we can\r\nfill exactly gaps between with increasing numbers from interval .\r\nPosition we can simply iterates from to and with it calculating gaps\r\nbetween and . Check the condition described above we can produce via two\r\nbinary search query to array . Few details: How do we know, that between\r\npositions and we can fill gaps in such a way, that out answer still the\r\nbest?Let count gaps on interval , count different numbers from set ,\r\nlying in the range .Then, positions and are good only if . we can\r\ncalculate while iterates position , . What to do, is LIS ends or begins\r\nin gaps?This case we can solve by simply adding and in begin and end of\r\nout array. Complexity . Memory .\r\n"
+}

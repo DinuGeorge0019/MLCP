@@ -1,1 +1,91 @@
-{"link": "https://codeforces.com//contest/113/problem/A", "problemId": "592", "problem_idx": "A", "shortId": "113A", "contest_number": "113", "problem_submissions": {"E": [680388, 685905, 681683], "A": [677908, 674619, 675479, 675233, 675507, 675322, 676300, 675702, 674929, 678313, 683346, 682046, 676172, 676056], "B": [676745, 676166, 676692, 677267, 676920, 677563, 678285, 678205, 675093, 677719, 677894, 677545, 677448, 686002, 685992], "C": [676712, 678207, 677682, 678634, 679430, 680369, 680061, 678147, 687235, 682210, 681538, 681511, 680322, 680720, 681415, 681728, 685898, 685870], "D": [681282, 682967, 682949, 681414, 728339, 728337]}, "name": "A. Grammar Lessons", "statement": "Petya got interested in grammar on his third year in school. He invented\r\nhis own language called Petya\u2019s. Petya wanted to create a maximally\r\nsimple language that would be enough to chat with friends, that\u2019s why\r\nall the language\u2019s grammar can be described with the following set of\r\nrules: There are three parts of speech: the adjective, the noun, the\r\nverb. Each word in his language is an adjective, noun or verb. There are\r\ntwo genders: masculine and feminine. Each word in his language has\r\ngender either masculine or feminine. Masculine adjectives end with , and\r\nfeminine adjectives end with . Masculine nouns end with , and feminime\r\nnouns end with . Masculine verbs end with , and feminime verbs end with\r\n. Thus, each word in the Petya\u2019s language has one of the six endings,\r\ngiven above. There are no other endings in Petya\u2019s language. It is\r\naccepted that the whole word consists of an ending. That is, words \"\",\r\n\"\", \"\" and so on belong to the Petya\u2019s language. There aren\u2019t any\r\npunctuation marks, grammatical tenses, singular/plural forms or other\r\nlanguage complications. A sentence is either exactly one valid language\r\nword or exactly one . is any sequence of the Petya\u2019s language, that\r\nsatisfy both conditions: Words in statement follow in the following\r\norder (from the left to the right): zero or more adjectives followed by\r\nexactly one noun followed by zero or more verbs. All words in the\r\nstatement should have the same gender.After Petya\u2019s friend Vasya wrote\r\ninstant messenger (an instant messaging program) that supported the\r\nPetya\u2019s language, Petya wanted to add spelling and grammar checking to\r\nthe program. As Vasya was in the country and Petya didn\u2019t feel like\r\nwaiting, he asked you to help him with this problem. Your task is to\r\ndefine by a given sequence of words, whether it is true that the given\r\ntext represents exactly one sentence in Petya\u2019s language.\r\n", "solutions": ["//  Codeforces Beta Round #86\n\n#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cmath>\n#include <cassert>\n#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n#include <queue>\n#include <set>\n#include <map>\n#include <utility>\n#include <numeric>\n#include <algorithm>\n#include <bitset>\n#include <complex>\n\nusing namespace std;\n\ntypedef unsigned uint;\ntypedef long long Int;\ntypedef vector<int> vint;\ntypedef pair<int,int> pint;\n#define mp make_pair\n\ntemplate<class T> void pv(T a, T b) { for (T i = a; i != b; ++i) cout << *i << \" \"; cout << endl; }\ntemplate<class T> void pvp(T a, T b) { for (T i = a; i != b; ++i) cout << \"(\" << i->first << \", \" << i->second << \") \"; cout << endl; }\ntemplate<class T> void chmin(T &t, T f) { if (t > f) t = f; }\ntemplate<class T> void chmax(T &t, T f) { if (t < f) t = f; }\nint in_c() { int c; for (; (c = getchar()) <= ' '; ) { if (!~c) throw ~0; } return c; }\nint in() { int x = 0, c; for (; (uint)((c = getchar()) - '0') >= 10; ) { if (c == '-') return -in(); if (!~c) throw ~0; } do { x = (x << 3) + (x << 1) + (c - '0'); } while ((uint)((c = getchar()) - '0') < 10); return x; }\nInt In() { Int x = 0, c; for (; (uint)((c = getchar()) - '0') >= 10; ) { if (c == '-') return -In(); if (!~c) throw ~0; } do { x = (x << 3) + (x << 1) + (c - '0'); } while ((uint)((c = getchar()) - '0') < 10); return x; }\n\nint L;\nchar S[100010];\n\nint N;\nint is[100010];\n\nbool solve() {\n    int i;\n    for (i = 0; i < N; ++i) {\n        if (is[i] == -1) {\n            return 0;\n        }\n    }\n    if (N == 1) return 1;\n    for (i = 0; i < N; ++i) {\n        if (is[0] % 2 != is[i] % 2) {\n            return 0;\n        }\n    }\n    int a = 0, b = 0, c = 0;\n    i = 0;\n    for (; i < N && is[i] / 2 == 0; ++i) ++a;\n    for (; i < N && is[i] / 2 == 1; ++i) ++b;\n    for (; i < N && is[i] / 2 == 2; ++i) ++c;\n    if (i != N) return 0;\n    if (b != 1) return 0;\n    return 1;\n}\n\nint main() {\n    int i;\n    \n    for (; ; ) {\n        N = 0;\n        for (; ~scanf(\"%s\", S); ) {\n            if (!strcmp(S, \"#\")) break;\n            L = strlen(S);\n            is[N] = -1;\n            if (!strcmp(S + L - 4,   \"lios\")) is[N] = 0;\n            if (!strcmp(S + L - 5,  \"liala\")) is[N] = 1;\n            if (!strcmp(S + L - 3,    \"etr\")) is[N] = 2;\n            if (!strcmp(S + L - 4,   \"etra\")) is[N] = 3;\n            if (!strcmp(S + L - 6, \"initis\")) is[N] = 4;\n            if (!strcmp(S + L - 6, \"inites\")) is[N] = 5;\n            ++N;\n        }\n        if (N == 0) break;\n//cout<<\"is : \";pv(is,is+N);\n        bool res = solve();\n        puts(res ? \"YES\" : \"NO\");\n    }\n    \n    return 0;\n}\n"], "input": "", "output": "", "tags": ["implementation", "strings"], "dificulty": "1600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/113/problem/A",
+    "problemId": "592",
+    "problem_idx": "A",
+    "shortId": "113A",
+    "contest_number": "113",
+    "problem_submissions": {
+        "E": [
+            680388,
+            685905,
+            681683
+        ],
+        "A": [
+            677908,
+            674619,
+            675479,
+            675233,
+            675507,
+            675322,
+            676300,
+            675702,
+            674929,
+            678313,
+            683346,
+            682046,
+            676172,
+            676056
+        ],
+        "B": [
+            676745,
+            676166,
+            676692,
+            677267,
+            676920,
+            677563,
+            678285,
+            678205,
+            675093,
+            677719,
+            677894,
+            677545,
+            677448,
+            686002,
+            685992
+        ],
+        "C": [
+            676712,
+            678207,
+            677682,
+            678634,
+            679430,
+            680369,
+            680061,
+            678147,
+            687235,
+            682210,
+            681538,
+            681511,
+            680322,
+            680720,
+            681415,
+            681728,
+            685898,
+            685870
+        ],
+        "D": [
+            681282,
+            682967,
+            682949,
+            681414,
+            728339,
+            728337
+        ]
+    },
+    "name": "A. Grammar Lessons",
+    "statement": "Petya got interested in grammar on his third year in school. He invented\r\nhis own language called Petya\u2019s. Petya wanted to create a maximally\r\nsimple language that would be enough to chat with friends, that\u2019s why\r\nall the language\u2019s grammar can be described with the following set of\r\nrules: There are three parts of speech: the adjective, the noun, the\r\nverb. Each word in his language is an adjective, noun or verb. There are\r\ntwo genders: masculine and feminine. Each word in his language has\r\ngender either masculine or feminine. Masculine adjectives end with , and\r\nfeminine adjectives end with . Masculine nouns end with , and feminime\r\nnouns end with . Masculine verbs end with , and feminime verbs end with\r\n. Thus, each word in the Petya\u2019s language has one of the six endings,\r\ngiven above. There are no other endings in Petya\u2019s language. It is\r\naccepted that the whole word consists of an ending. That is, words \"\",\r\n\"\", \"\" and so on belong to the Petya\u2019s language. There aren\u2019t any\r\npunctuation marks, grammatical tenses, singular/plural forms or other\r\nlanguage complications. A sentence is either exactly one valid language\r\nword or exactly one . is any sequence of the Petya\u2019s language, that\r\nsatisfy both conditions: Words in statement follow in the following\r\norder (from the left to the right): zero or more adjectives followed by\r\nexactly one noun followed by zero or more verbs. All words in the\r\nstatement should have the same gender.After Petya\u2019s friend Vasya wrote\r\ninstant messenger (an instant messaging program) that supported the\r\nPetya\u2019s language, Petya wanted to add spelling and grammar checking to\r\nthe program. As Vasya was in the country and Petya didn\u2019t feel like\r\nwaiting, he asked you to help him with this problem. Your task is to\r\ndefine by a given sequence of words, whether it is true that the given\r\ntext represents exactly one sentence in Petya\u2019s language.\r\n",
+    "solutions": [
+        "//  Codeforces Beta Round #86\n\n#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cmath>\n#include <cassert>\n#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n#include <queue>\n#include <set>\n#include <map>\n#include <utility>\n#include <numeric>\n#include <algorithm>\n#include <bitset>\n#include <complex>\n\nusing namespace std;\n\ntypedef unsigned uint;\ntypedef long long Int;\ntypedef vector<int> vint;\ntypedef pair<int,int> pint;\n#define mp make_pair\n\ntemplate<class T> void pv(T a, T b) { for (T i = a; i != b; ++i) cout << *i << \" \"; cout << endl; }\ntemplate<class T> void pvp(T a, T b) { for (T i = a; i != b; ++i) cout << \"(\" << i->first << \", \" << i->second << \") \"; cout << endl; }\ntemplate<class T> void chmin(T &t, T f) { if (t > f) t = f; }\ntemplate<class T> void chmax(T &t, T f) { if (t < f) t = f; }\nint in_c() { int c; for (; (c = getchar()) <= ' '; ) { if (!~c) throw ~0; } return c; }\nint in() { int x = 0, c; for (; (uint)((c = getchar()) - '0') >= 10; ) { if (c == '-') return -in(); if (!~c) throw ~0; } do { x = (x << 3) + (x << 1) + (c - '0'); } while ((uint)((c = getchar()) - '0') < 10); return x; }\nInt In() { Int x = 0, c; for (; (uint)((c = getchar()) - '0') >= 10; ) { if (c == '-') return -In(); if (!~c) throw ~0; } do { x = (x << 3) + (x << 1) + (c - '0'); } while ((uint)((c = getchar()) - '0') < 10); return x; }\n\nint L;\nchar S[100010];\n\nint N;\nint is[100010];\n\nbool solve() {\n    int i;\n    for (i = 0; i < N; ++i) {\n        if (is[i] == -1) {\n            return 0;\n        }\n    }\n    if (N == 1) return 1;\n    for (i = 0; i < N; ++i) {\n        if (is[0] % 2 != is[i] % 2) {\n            return 0;\n        }\n    }\n    int a = 0, b = 0, c = 0;\n    i = 0;\n    for (; i < N && is[i] / 2 == 0; ++i) ++a;\n    for (; i < N && is[i] / 2 == 1; ++i) ++b;\n    for (; i < N && is[i] / 2 == 2; ++i) ++c;\n    if (i != N) return 0;\n    if (b != 1) return 0;\n    return 1;\n}\n\nint main() {\n    int i;\n    \n    for (; ; ) {\n        N = 0;\n        for (; ~scanf(\"%s\", S); ) {\n            if (!strcmp(S, \"#\")) break;\n            L = strlen(S);\n            is[N] = -1;\n            if (!strcmp(S + L - 4,   \"lios\")) is[N] = 0;\n            if (!strcmp(S + L - 5,  \"liala\")) is[N] = 1;\n            if (!strcmp(S + L - 3,    \"etr\")) is[N] = 2;\n            if (!strcmp(S + L - 4,   \"etra\")) is[N] = 3;\n            if (!strcmp(S + L - 6, \"initis\")) is[N] = 4;\n            if (!strcmp(S + L - 6, \"inites\")) is[N] = 5;\n            ++N;\n        }\n        if (N == 0) break;\n//cout<<\"is : \";pv(is,is+N);\n        bool res = solve();\n        puts(res ? \"YES\" : \"NO\");\n    }\n    \n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation",
+        "strings"
+    ],
+    "dificulty": "1600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Grammar Lessons.json",
+    "editorial_link": "https://codeforces.com//blog/entry/2627",
+    "editorial": "This task is an example of task that requires accurate realization. \nAfter reading the statement one can understand that we have to check whether the text from input represents exactly one correct sentence or no. If yes, therefore the text can be either a single word from our language or a following structure:\n{zero or non-zero count of adjectives} -> {a single noun} -> {zero or non-zero count of verbs}, and moreover, all these words should have equal gender.\nSo, to check these facts, one can do the following:\nWe count number of words. If this number is equal to 1, we check this word for being a valid word from our language. Otherwise, we can get gender of the first word, and iterate through the rest of the words validating existing of only one noun and order of these words. Also, while iterating we check the gender of each word for being equal to the gender of the first word."
+}

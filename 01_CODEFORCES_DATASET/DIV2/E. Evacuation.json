@@ -1,1 +1,83 @@
-{"link": "https://codeforces.com//contest/78/problem/E", "problemId": "421", "problem_idx": "E", "shortId": "78E", "contest_number": "78", "problem_submissions": {"E": [412000, 412857], "B": [409412, 410003, 409464, 409485, 409229, 409391, 409709, 409646, 409243, 409557, 410163, 409775, 409340, 409369, 410560], "A": [408793, 408783, 408965, 408822, 408787, 408815, 408846, 408809, 408863, 408801, 409486, 410948, 408932, 408926, 409703], "C": [410868, 412693, 410900, 410229, 410280, 410434, 410827, 410485, 410919, 411104, 410723, 411342, 411575, 412006], "D": [411731]}, "name": "E. Evacuation", "statement": "They\u2019ve screwed something up yet again... In one nuclear reactor of a\r\nresearch station an uncontrolled reaction is in progress and explosion\r\nwhich will destroy the whole station will happen soon.The station is\r\nrepresented by a square divided into blocks. Each block is either a\r\nreactor or a laboratory. There can be several reactors and exactly one\r\nof them will explode soon. The reactors can be considered impassable\r\nblocks, but one can move through laboratories. Between any two\r\nlaboratories, which are in adjacent blocks, there is a corridor. Blocks\r\nare considered adjacent if they have a common edge.In each laboratory\r\nthere is some number of scientists and some number of rescue capsules.\r\nOnce the scientist climbs into a capsule, he is considered to be saved.\r\nEach capsule has room for not more than one scientist.The reactor, which\r\nis about to explode, is damaged and a toxic coolant trickles from it\r\ninto the neighboring blocks. The block, which contains the reactor, is\r\nconsidered infected. Every minute the coolant spreads over the\r\nlaboratories through corridors. If at some moment one of the blocks is\r\ninfected, then the next minute all the neighboring laboratories also\r\nbecome infected. Once a lab is infected, all the scientists there that\r\nare not in rescue capsules die. The coolant does not spread through\r\nreactor blocks.There are exactly minutes to the explosion. Any scientist\r\nin a minute can move down the corridor to the next lab, if it is not\r\ninfected. On any corridor an unlimited number of scientists can\r\nsimultaneously move in both directions. It is believed that the\r\nscientists inside a lab moves without consuming time. Moreover, any\r\nscientist could get into the rescue capsule instantly. It is also\r\nbelieved that any scientist at any given moment always has the time to\r\nperform their actions (move from the given laboratory into the next one,\r\nor climb into the rescue capsule) before the laboratory will be\r\ninfected.Find the maximum number of scientists who will be able to\r\nescape.\r\n", "solutions": ["#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cctype>\n#include <cmath>\n#include <string>\n#include <algorithm>\n#include <sstream>\n#include <map>\n#include <set>\n#include <queue>\n#include <numeric>\n\nusing namespace std;\n\ntypedef pair<int,int> PII;\n\nconst int INF = 0x3F3F3F3F;\n\nint K, T;\nint dist[20][20][20][20];\nint cont[20][20];\nchar SCI[20][20];\nchar CAP[20][20];\n\nint dy[] = { -1, 0, 1, 0 };\nint dx[] = { 0, -1, 0, 1 };\n\n\nconst int MAXV = 2000;\n\nint M, N;                                   // # of left and right nodes.\nint PAR[MAXV];                              // par[] - pair relationship.\nint MATCH;                                  // maximum matching.\nint X[MAXV], Y[MAXV];\nvector<int> adj[MAXV];\nint disc[MAXV];\nint augment(int u, int c) {\n    for (int i = 0; i < adj[u].size(); i++) {\n        int v = adj[u][i];\n        if (disc[v] != c) {\n            disc[v] = c;\n            if (PAR[v]==-1 || augment(PAR[v], c))\n                return (PAR[v]=u, PAR[u]=v, 1);\n        }\n    }\n    return 0;\n}\nint bpm() {\n    MATCH = 0;\n    for (int i = 0; i < M+N; i++) disc[i] = PAR[i] = -1;\n    for (int i = 0; i < M; i++) if (adj[i].size() && PAR[i]==-1) MATCH += augment(i, i);\n    return MATCH;\n}\n\n\n\n\nint main() {\n\n    scanf(\" %d %d \", &K, &T);\n    for (int i = 0; i < K; i++) {\n        scanf(\" %s \", SCI[i]);\n    }\n    for (int i = 0; i < K; i++) {\n        scanf(\" %s \", CAP[i]);\n    }\n\n    // Mark time for contamination.\n    {\n        int y, x;\n        for (int i = 0; i < K; i++) for (int j = 0; j < K; j++) if (SCI[i][j]=='Z') {\n            y = i; x = j;\n            break;\n        }\n        for (int i = 0; i < K; i++) for (int j = 0; j < K; j++) cont[i][j] = INF;\n        queue<PII> q;\n        q.push(PII(y,x));\n        cont[y][x] = 0;\n        while (!q.empty()) {\n            PII u = q.front(); q.pop();\n            for (int i = 0; i < 4; i++) {\n                int ny = u.first + dy[i];\n                int nx = u.second + dx[i];\n                if (ny < 0 || nx < 0 || ny >= K || nx >= K) continue;\n                if (SCI[ny][nx]=='Z' || SCI[ny][nx]=='Y' || cont[ny][nx]!=INF) continue;\n                cont[ny][nx] = cont[u.first][u.second] + 1;\n                q.push(PII(ny,nx));\n            }\n        }\n    }\n\n    // Find all min distaces.\n    for (int y = 0; y < K; y++) for (int x = 0; x < K; x++) {\n        for (int i = 0; i < K; i++) for (int j = 0; j < K; j++) dist[y][x][i][j] = INF;\n        queue<PII> q;\n        q.push(PII(y,x));\n        dist[y][x][y][x] = 0;\n        while (!q.empty()) {\n            PII u = q.front(); q.pop();\n            if (dist[y][x][u.first][u.second] >= min(T, cont[u.first][u.second])) continue;\n            for (int i = 0; i < 4; i++) {\n                int ny = u.first + dy[i];\n                int nx = u.second + dx[i];\n                if (ny < 0 || nx < 0 || ny >= K || nx >= K) continue;\n                if (SCI[ny][nx]=='Z' || SCI[ny][nx]=='Y' || dist[y][x][ny][nx]!=INF) continue;\n                if (dist[y][x][u.first][u.second] + 1 > min(T, cont[ny][nx])) continue;\n                dist[y][x][ny][nx] = dist[y][x][u.first][u.second] + 1;\n                q.push(PII(ny,nx));\n            }\n        }\n    }\n\n\n    // Create node map.\n    M = N = 0;\n    for (int i = 0; i < K; i++) for (int j = 0; j < K; j++) if (SCI[i][j] > '0' && SCI[i][j] <= '9') {\n        int c = SCI[i][j]-'0';\n        for (int k = 0; k < c; k++) {\n            X[M] = i;\n            Y[M] = j;\n            M++;\n        }\n    }\n    for (int i = 0; i < K; i++) for (int j = 0; j < K; j++) if (CAP[i][j] > '0' && CAP[i][j] <= '9') {\n        int c = CAP[i][j]-'0';\n        for (int k = 0; k < c; k++) {\n            X[M+N] = i;\n            Y[M+N] = j;\n            N++;\n        }\n    }\n\n    // Build adj.\n    for (int i = 0; i < M; i++) for (int j = M; j < M+N; j++) if (dist[X[i]][Y[i]][X[j]][Y[j]] != INF) {\n        adj[i].push_back(j);\n        adj[j].push_back(i);\n    }\n\n    printf(\"%d\\n\", bpm());\n\n\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["flows", "graphs", "shortest paths"], "dificulty": "2300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/78/problem/E",
+    "problemId": "421",
+    "problem_idx": "E",
+    "shortId": "78E",
+    "contest_number": "78",
+    "problem_submissions": {
+        "E": [
+            412000,
+            412857
+        ],
+        "B": [
+            409412,
+            410003,
+            409464,
+            409485,
+            409229,
+            409391,
+            409709,
+            409646,
+            409243,
+            409557,
+            410163,
+            409775,
+            409340,
+            409369,
+            410560
+        ],
+        "A": [
+            408793,
+            408783,
+            408965,
+            408822,
+            408787,
+            408815,
+            408846,
+            408809,
+            408863,
+            408801,
+            409486,
+            410948,
+            408932,
+            408926,
+            409703
+        ],
+        "C": [
+            410868,
+            412693,
+            410900,
+            410229,
+            410280,
+            410434,
+            410827,
+            410485,
+            410919,
+            411104,
+            410723,
+            411342,
+            411575,
+            412006
+        ],
+        "D": [
+            411731
+        ]
+    },
+    "name": "E. Evacuation",
+    "statement": "They\u2019ve screwed something up yet again... In one nuclear reactor of a\r\nresearch station an uncontrolled reaction is in progress and explosion\r\nwhich will destroy the whole station will happen soon.The station is\r\nrepresented by a square divided into blocks. Each block is either a\r\nreactor or a laboratory. There can be several reactors and exactly one\r\nof them will explode soon. The reactors can be considered impassable\r\nblocks, but one can move through laboratories. Between any two\r\nlaboratories, which are in adjacent blocks, there is a corridor. Blocks\r\nare considered adjacent if they have a common edge.In each laboratory\r\nthere is some number of scientists and some number of rescue capsules.\r\nOnce the scientist climbs into a capsule, he is considered to be saved.\r\nEach capsule has room for not more than one scientist.The reactor, which\r\nis about to explode, is damaged and a toxic coolant trickles from it\r\ninto the neighboring blocks. The block, which contains the reactor, is\r\nconsidered infected. Every minute the coolant spreads over the\r\nlaboratories through corridors. If at some moment one of the blocks is\r\ninfected, then the next minute all the neighboring laboratories also\r\nbecome infected. Once a lab is infected, all the scientists there that\r\nare not in rescue capsules die. The coolant does not spread through\r\nreactor blocks.There are exactly minutes to the explosion. Any scientist\r\nin a minute can move down the corridor to the next lab, if it is not\r\ninfected. On any corridor an unlimited number of scientists can\r\nsimultaneously move in both directions. It is believed that the\r\nscientists inside a lab moves without consuming time. Moreover, any\r\nscientist could get into the rescue capsule instantly. It is also\r\nbelieved that any scientist at any given moment always has the time to\r\nperform their actions (move from the given laboratory into the next one,\r\nor climb into the rescue capsule) before the laboratory will be\r\ninfected.Find the maximum number of scientists who will be able to\r\nescape.\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cctype>\n#include <cmath>\n#include <string>\n#include <algorithm>\n#include <sstream>\n#include <map>\n#include <set>\n#include <queue>\n#include <numeric>\n\nusing namespace std;\n\ntypedef pair<int,int> PII;\n\nconst int INF = 0x3F3F3F3F;\n\nint K, T;\nint dist[20][20][20][20];\nint cont[20][20];\nchar SCI[20][20];\nchar CAP[20][20];\n\nint dy[] = { -1, 0, 1, 0 };\nint dx[] = { 0, -1, 0, 1 };\n\n\nconst int MAXV = 2000;\n\nint M, N;                                   // # of left and right nodes.\nint PAR[MAXV];                              // par[] - pair relationship.\nint MATCH;                                  // maximum matching.\nint X[MAXV], Y[MAXV];\nvector<int> adj[MAXV];\nint disc[MAXV];\nint augment(int u, int c) {\n    for (int i = 0; i < adj[u].size(); i++) {\n        int v = adj[u][i];\n        if (disc[v] != c) {\n            disc[v] = c;\n            if (PAR[v]==-1 || augment(PAR[v], c))\n                return (PAR[v]=u, PAR[u]=v, 1);\n        }\n    }\n    return 0;\n}\nint bpm() {\n    MATCH = 0;\n    for (int i = 0; i < M+N; i++) disc[i] = PAR[i] = -1;\n    for (int i = 0; i < M; i++) if (adj[i].size() && PAR[i]==-1) MATCH += augment(i, i);\n    return MATCH;\n}\n\n\n\n\nint main() {\n\n    scanf(\" %d %d \", &K, &T);\n    for (int i = 0; i < K; i++) {\n        scanf(\" %s \", SCI[i]);\n    }\n    for (int i = 0; i < K; i++) {\n        scanf(\" %s \", CAP[i]);\n    }\n\n    // Mark time for contamination.\n    {\n        int y, x;\n        for (int i = 0; i < K; i++) for (int j = 0; j < K; j++) if (SCI[i][j]=='Z') {\n            y = i; x = j;\n            break;\n        }\n        for (int i = 0; i < K; i++) for (int j = 0; j < K; j++) cont[i][j] = INF;\n        queue<PII> q;\n        q.push(PII(y,x));\n        cont[y][x] = 0;\n        while (!q.empty()) {\n            PII u = q.front(); q.pop();\n            for (int i = 0; i < 4; i++) {\n                int ny = u.first + dy[i];\n                int nx = u.second + dx[i];\n                if (ny < 0 || nx < 0 || ny >= K || nx >= K) continue;\n                if (SCI[ny][nx]=='Z' || SCI[ny][nx]=='Y' || cont[ny][nx]!=INF) continue;\n                cont[ny][nx] = cont[u.first][u.second] + 1;\n                q.push(PII(ny,nx));\n            }\n        }\n    }\n\n    // Find all min distaces.\n    for (int y = 0; y < K; y++) for (int x = 0; x < K; x++) {\n        for (int i = 0; i < K; i++) for (int j = 0; j < K; j++) dist[y][x][i][j] = INF;\n        queue<PII> q;\n        q.push(PII(y,x));\n        dist[y][x][y][x] = 0;\n        while (!q.empty()) {\n            PII u = q.front(); q.pop();\n            if (dist[y][x][u.first][u.second] >= min(T, cont[u.first][u.second])) continue;\n            for (int i = 0; i < 4; i++) {\n                int ny = u.first + dy[i];\n                int nx = u.second + dx[i];\n                if (ny < 0 || nx < 0 || ny >= K || nx >= K) continue;\n                if (SCI[ny][nx]=='Z' || SCI[ny][nx]=='Y' || dist[y][x][ny][nx]!=INF) continue;\n                if (dist[y][x][u.first][u.second] + 1 > min(T, cont[ny][nx])) continue;\n                dist[y][x][ny][nx] = dist[y][x][u.first][u.second] + 1;\n                q.push(PII(ny,nx));\n            }\n        }\n    }\n\n\n    // Create node map.\n    M = N = 0;\n    for (int i = 0; i < K; i++) for (int j = 0; j < K; j++) if (SCI[i][j] > '0' && SCI[i][j] <= '9') {\n        int c = SCI[i][j]-'0';\n        for (int k = 0; k < c; k++) {\n            X[M] = i;\n            Y[M] = j;\n            M++;\n        }\n    }\n    for (int i = 0; i < K; i++) for (int j = 0; j < K; j++) if (CAP[i][j] > '0' && CAP[i][j] <= '9') {\n        int c = CAP[i][j]-'0';\n        for (int k = 0; k < c; k++) {\n            X[M+N] = i;\n            Y[M+N] = j;\n            N++;\n        }\n    }\n\n    // Build adj.\n    for (int i = 0; i < M; i++) for (int j = M; j < M+N; j++) if (dist[X[i]][Y[i]][X[j]][Y[j]] != INF) {\n        adj[i].push_back(j);\n        adj[j].push_back(i);\n    }\n\n    printf(\"%d\\n\", bpm());\n\n\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "flows",
+        "graphs",
+        "shortest paths"
+    ],
+    "dificulty": "2300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Evacuation.json",
+    "editorial_link": "https://codeforces.com//blog/entry/1812",
+    "editorial": "Firstly, let's calculate the following value:\ndp[t][x0][y0][x][y] == true iff scientist from block (x0,y0) can reach block (x,y) in time t, considering toxic coolant.\n\nSecondly, let's consider a graph consisting of 4 parts:\n1 - source (one vertex)\n2 - first fraction (nxn vertices)\n3 - second fraction (nxn vertices)\n4 - sink (one vertex)\nEach vertex of each fraction is for one block. Build edge from source to each vertex of the first fraction with capability as number of scientists in corresponding block. Build edge from each vertex of the second fraction to sink with capability as number of rescue capsules in corresponding block. Build edge from vertex (x0,y0) of the first fraction  to vertex (x,y) of the second fraction iff dp[T][x0][y0][x][y]==true for at least one T. Capability of this edges is infinity.\n\nAs one can see, value of maxflow in this graph is answer for the problem.\n\nComplexity of this solution is O(tn4?+?kn6), where k is maximum possible number of scientists in each block(in this problem k?=?9)."
+}

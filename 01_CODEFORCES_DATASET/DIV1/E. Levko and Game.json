@@ -1,1 +1,95 @@
-{"link": "https://codeforces.com//contest/360/problem/E", "problemId": "3932", "problem_idx": "E", "shortId": "360E", "contest_number": "360", "problem_submissions": {"E": [5052621, 5051976, 5053848, 5054838], "C": [5051326, 5048345, 5049493, 5049490, 5050865, 5049536, 5050632, 5051192, 5051833, 5051566, 5051768, 5048366, 5049736], "D": [5050607, 5051524, 5050936, 5051425, 5048585, 5050472, 5056022, 5052000], "B": [5045795, 5044973, 5048544, 5051998, 5045747, 5046168, 5051455, 5046964, 5045609, 5046677, 5046979, 5047362, 5047061, 5045936, 5047748, 5047100, 5046972, 5046544], "A": [5044762, 5051854, 5044798, 5045200, 5044446, 5044824, 5045696, 5044827, 5045266, 5045205, 5044960, 5045344, 5047058, 5045224, 5045590, 5054975]}, "name": "E. Levko and Game", "statement": "Levko loves sports pathfinding competitions in his city very much. In\r\norder to boost his performance, Levko spends his spare time practicing.\r\nThe practice is a game.The city consists of intersections connected by\r\ndirected roads. Two or more roads can connect the same pair of\r\nintersections. Besides, there can be roads leading from an intersection\r\nto itself. Levko and Zenyk are playing a game. First Levko stands on\r\nintersection , and Zenyk stands on intersection . They both want to get\r\nto intersection . The person who does it quicker wins. If they get there\r\nat the same time, the game ends with a draw. By agreement both players\r\nstart simultaneously and move with the same speed.Levko wants to win\r\nvery much. He knows the lengths of all the roads in the city. Also he\r\nknows that he can change the lengths of some roads (there are such roads\r\nat all) if he pays the government. So, the government can change the\r\nlength of the -th road to any integer value in the segment [, ] (both\r\nborders inclusive). Levko wondered if he can reconstruct the roads so as\r\nto win the game and whether he can hope for the draw if he cannot\r\nwin.You should consider that both players play optimally well. It is\r\nguaranteed that we can get from intersections and to intersection .\r\n", "solutions": ["//#include <iostream>\n#include <fstream>\n#include <vector>\n#include <set>\n#include <map>\n#include <cstring>\n#include <string>\n#include <cmath>\n#include <cassert>\n#include <ctime>\n#include <algorithm>\n#include <sstream>\n#include <list>\n#include <queue>\n#include <deque>\n#include <stack>\n#include <cstdlib>\n#include <cstdio>\n#include <iterator>\n#include <functional>\n#include <bitset>\n#define mp make_pair\n#define pb push_back\n\n#ifdef LOCAL\n#define eprintf(...) fprintf(stderr,__VA_ARGS__)\n#else\n#define eprintf(...)\n#endif\n\n#define TIMESTAMP(x) eprintf(\"[\"#x\"] Time : %.3lf s.\\n\", clock()*1.0/CLOCKS_PER_SEC)\n#define TIMESTAMPf(x,...) eprintf(\"[\" x \"] Time : %.3lf s.\\n\", __VA_ARGS__, clock()*1.0/CLOCKS_PER_SEC)\n\n#if ( _WIN32 || __WIN32__ )\n    #define LLD \"%I64d\"\n#else\n    #define LLD \"%lld\"\n#endif\n\nusing namespace std;\n\n#define TASKNAME \"E\"\n\n#ifdef LOCAL\nstatic struct __timestamper {\n    ~__timestamper(){\n        TIMESTAMP(end);\n    }\n} __TIMESTAMPER;\n#endif\n\ntypedef long long ll;\ntypedef long double ld;\n\nconst int MAXN = 10000;\n\nvector<int> g[MAXN];\nvector<int> len[MAXN];\n\nint lf[MAXN];\nint rg[MAXN];\n\nint lf_bak[MAXN];\nint rg_bak[MAXN];\n\n\nll dst[MAXN];\nint pl[MAXN];\n\nbool canDraw[MAXN];\n\nset< pair<ll,int> > s;\n\n\nvoid relax(int v, ll cost, int p){\n    if (dst[v] > cost){\n        s.erase(mp(dst[v], v));\n        dst[v] = cost;\n        pl[v] = p;\n        canDraw[v] = (p == 2);\n        s.insert(mp(dst[v], v));\n    }\n    else if (dst[v] == cost){\n        if (pl[v] != p)\n            canDraw[v] = true;\n    }\n}\n\nint s1,s2,f;\n\n\nbool trySolve(bool wantWin){\n    memset(dst, 0x3f, sizeof(dst));\n    s.clear();\n\n    relax(s1, 0, 0);\n    relax(s2, 0, 1);\n\n    while (!s.empty()){\n        int v = s.begin()->second;\n        s.erase(s.begin());\n        if (v == f){\n            if (canDraw[v])\n               return !wantWin;\n            return pl[v] == 0;\n        }\n        if (canDraw[v])\n            pl[v] = 2;\n        for (int i = 0; i < (int)g[v].size(); i++){\n            int nv = g[v][i];\n            ll nlen = len[v][i];\n            if (nlen < 0){\n                if (pl[v] == 0 || (pl[v] == 2 && !wantWin)){\n                    nlen = rg[-nlen - 1] = lf[-nlen - 1];\n                } else {\n                    nlen = lf[-nlen - 1] = rg[-nlen - 1];\n                }\n            }\n            relax(nv, nlen + dst[v], pl[v]);\n        }\n    }\n    return !wantWin;\n}\n\n\nint main(){\n  #ifdef LOCAL\n    freopen(TASKNAME\".in\",\"r\",stdin);\n    freopen(TASKNAME\".out\",\"w\",stdout);\n  #endif\n\n    int n,m,k;\n    scanf(\"%d %d %d\",&n,&m,&k);\n    scanf(\"%d %d %d\",&s1,&s2,&f);\n    --s1,--s2,--f;\n\n    for (int i = 0; i < m; i++){\n        int a,b, l;\n        scanf(\"%d %d %d\",&a,&b,&l);\n        --a,--b;\n        g[a].pb(b); len[a].pb(l);\n//      g[b].pb(a); len[b].pb(l);\n    }\n\n    for (int i = 0; i < k; i++){\n        int a,b;\n        scanf(\"%d %d %d %d\",&a,&b,&lf[i],&rg[i]);\n        --a,--b;\n        g[a].pb(b); len[a].pb(-i-1);\n//      g[b].pb(a); len[b].pb(-i-1);\n    }\n\n    memcpy(lf_bak, lf, sizeof(lf));\n    memcpy(rg_bak, rg, sizeof(rg));\n\n    if (trySolve(1)){\n        printf(\"WIN\\n\");\n        for (int i = 0; i < k; i++)\n            printf(\"%d%c\", lf[i], \" \\n\"[i==k-1]);\n        return 0;\n    }\n\n    memcpy(lf, lf_bak, sizeof(lf));\n    memcpy(rg, rg_bak, sizeof(rg));\n\n    if (trySolve(0)){\n        printf(\"DRAW\\n\");\n        for (int i = 0; i < k; i++)\n            printf(\"%d%c\", lf[i], \" \\n\"[i==k-1]);\n        return 0;\n    }\n\n    printf(\"LOSE\\n\");\n    return 0;\n}"], "input": "", "output": "", "tags": ["graphs", "greedy", "shortest paths"], "dificulty": "2800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/360/problem/E",
+    "problemId": "3932",
+    "problem_idx": "E",
+    "shortId": "360E",
+    "contest_number": "360",
+    "problem_submissions": {
+        "E": [
+            5052621,
+            5051976,
+            5053848,
+            5054838
+        ],
+        "C": [
+            5051326,
+            5048345,
+            5049493,
+            5049490,
+            5050865,
+            5049536,
+            5050632,
+            5051192,
+            5051833,
+            5051566,
+            5051768,
+            5048366,
+            5049736
+        ],
+        "D": [
+            5050607,
+            5051524,
+            5050936,
+            5051425,
+            5048585,
+            5050472,
+            5056022,
+            5052000
+        ],
+        "B": [
+            5045795,
+            5044973,
+            5048544,
+            5051998,
+            5045747,
+            5046168,
+            5051455,
+            5046964,
+            5045609,
+            5046677,
+            5046979,
+            5047362,
+            5047061,
+            5045936,
+            5047748,
+            5047100,
+            5046972,
+            5046544
+        ],
+        "A": [
+            5044762,
+            5051854,
+            5044798,
+            5045200,
+            5044446,
+            5044824,
+            5045696,
+            5044827,
+            5045266,
+            5045205,
+            5044960,
+            5045344,
+            5047058,
+            5045224,
+            5045590,
+            5054975
+        ]
+    },
+    "name": "E. Levko and Game",
+    "statement": "Levko loves sports pathfinding competitions in his city very much. In\r\norder to boost his performance, Levko spends his spare time practicing.\r\nThe practice is a game.The city consists of intersections connected by\r\ndirected roads. Two or more roads can connect the same pair of\r\nintersections. Besides, there can be roads leading from an intersection\r\nto itself. Levko and Zenyk are playing a game. First Levko stands on\r\nintersection , and Zenyk stands on intersection . They both want to get\r\nto intersection . The person who does it quicker wins. If they get there\r\nat the same time, the game ends with a draw. By agreement both players\r\nstart simultaneously and move with the same speed.Levko wants to win\r\nvery much. He knows the lengths of all the roads in the city. Also he\r\nknows that he can change the lengths of some roads (there are such roads\r\nat all) if he pays the government. So, the government can change the\r\nlength of the -th road to any integer value in the segment [, ] (both\r\nborders inclusive). Levko wondered if he can reconstruct the roads so as\r\nto win the game and whether he can hope for the draw if he cannot\r\nwin.You should consider that both players play optimally well. It is\r\nguaranteed that we can get from intersections and to intersection .\r\n",
+    "solutions": [
+        "//#include <iostream>\n#include <fstream>\n#include <vector>\n#include <set>\n#include <map>\n#include <cstring>\n#include <string>\n#include <cmath>\n#include <cassert>\n#include <ctime>\n#include <algorithm>\n#include <sstream>\n#include <list>\n#include <queue>\n#include <deque>\n#include <stack>\n#include <cstdlib>\n#include <cstdio>\n#include <iterator>\n#include <functional>\n#include <bitset>\n#define mp make_pair\n#define pb push_back\n\n#ifdef LOCAL\n#define eprintf(...) fprintf(stderr,__VA_ARGS__)\n#else\n#define eprintf(...)\n#endif\n\n#define TIMESTAMP(x) eprintf(\"[\"#x\"] Time : %.3lf s.\\n\", clock()*1.0/CLOCKS_PER_SEC)\n#define TIMESTAMPf(x,...) eprintf(\"[\" x \"] Time : %.3lf s.\\n\", __VA_ARGS__, clock()*1.0/CLOCKS_PER_SEC)\n\n#if ( _WIN32 || __WIN32__ )\n    #define LLD \"%I64d\"\n#else\n    #define LLD \"%lld\"\n#endif\n\nusing namespace std;\n\n#define TASKNAME \"E\"\n\n#ifdef LOCAL\nstatic struct __timestamper {\n    ~__timestamper(){\n        TIMESTAMP(end);\n    }\n} __TIMESTAMPER;\n#endif\n\ntypedef long long ll;\ntypedef long double ld;\n\nconst int MAXN = 10000;\n\nvector<int> g[MAXN];\nvector<int> len[MAXN];\n\nint lf[MAXN];\nint rg[MAXN];\n\nint lf_bak[MAXN];\nint rg_bak[MAXN];\n\n\nll dst[MAXN];\nint pl[MAXN];\n\nbool canDraw[MAXN];\n\nset< pair<ll,int> > s;\n\n\nvoid relax(int v, ll cost, int p){\n    if (dst[v] > cost){\n        s.erase(mp(dst[v], v));\n        dst[v] = cost;\n        pl[v] = p;\n        canDraw[v] = (p == 2);\n        s.insert(mp(dst[v], v));\n    }\n    else if (dst[v] == cost){\n        if (pl[v] != p)\n            canDraw[v] = true;\n    }\n}\n\nint s1,s2,f;\n\n\nbool trySolve(bool wantWin){\n    memset(dst, 0x3f, sizeof(dst));\n    s.clear();\n\n    relax(s1, 0, 0);\n    relax(s2, 0, 1);\n\n    while (!s.empty()){\n        int v = s.begin()->second;\n        s.erase(s.begin());\n        if (v == f){\n            if (canDraw[v])\n               return !wantWin;\n            return pl[v] == 0;\n        }\n        if (canDraw[v])\n            pl[v] = 2;\n        for (int i = 0; i < (int)g[v].size(); i++){\n            int nv = g[v][i];\n            ll nlen = len[v][i];\n            if (nlen < 0){\n                if (pl[v] == 0 || (pl[v] == 2 && !wantWin)){\n                    nlen = rg[-nlen - 1] = lf[-nlen - 1];\n                } else {\n                    nlen = lf[-nlen - 1] = rg[-nlen - 1];\n                }\n            }\n            relax(nv, nlen + dst[v], pl[v]);\n        }\n    }\n    return !wantWin;\n}\n\n\nint main(){\n  #ifdef LOCAL\n    freopen(TASKNAME\".in\",\"r\",stdin);\n    freopen(TASKNAME\".out\",\"w\",stdout);\n  #endif\n\n    int n,m,k;\n    scanf(\"%d %d %d\",&n,&m,&k);\n    scanf(\"%d %d %d\",&s1,&s2,&f);\n    --s1,--s2,--f;\n\n    for (int i = 0; i < m; i++){\n        int a,b, l;\n        scanf(\"%d %d %d\",&a,&b,&l);\n        --a,--b;\n        g[a].pb(b); len[a].pb(l);\n//      g[b].pb(a); len[b].pb(l);\n    }\n\n    for (int i = 0; i < k; i++){\n        int a,b;\n        scanf(\"%d %d %d %d\",&a,&b,&lf[i],&rg[i]);\n        --a,--b;\n        g[a].pb(b); len[a].pb(-i-1);\n//      g[b].pb(a); len[b].pb(-i-1);\n    }\n\n    memcpy(lf_bak, lf, sizeof(lf));\n    memcpy(rg_bak, rg, sizeof(rg));\n\n    if (trySolve(1)){\n        printf(\"WIN\\n\");\n        for (int i = 0; i < k; i++)\n            printf(\"%d%c\", lf[i], \" \\n\"[i==k-1]);\n        return 0;\n    }\n\n    memcpy(lf, lf_bak, sizeof(lf));\n    memcpy(rg, rg_bak, sizeof(rg));\n\n    if (trySolve(0)){\n        printf(\"DRAW\\n\");\n        for (int i = 0; i < k; i++)\n            printf(\"%d%c\", lf[i], \" \\n\"[i==k-1]);\n        return 0;\n    }\n\n    printf(\"LOSE\\n\");\n    return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "graphs",
+        "greedy",
+        "shortest paths"
+    ],
+    "dificulty": "2800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\E. Levko and Game.json",
+    "editorial_link": "https://codeforces.com//blog/entry/9529",
+    "editorial": "Algorithm: Firstly we will solve problem if first player can win. Let\u00e2\u0080\u0099s\r\nmake all roads that we can change equal to and do two Dijkstra\u00e2\u0080\u0099s\r\nalgorithms from vertices and . Let\u00e2\u0080\u0099s be the distance from to , be the\r\ndistance from to . Consider a road, that we can change, from to . If ,\r\nwe will set length of such road equal to and do two Dijkstra\u00e2\u0080\u0099s\r\nalgorithms again. We run such process until any road changes its length.\r\nIf after all changes then first player wins. If we replace condition by\r\n, we can check if Levko can end this game with a draw. Proof: Let\u00e2\u0080\u0099s call\r\n\"edges\" only roads which Levko can change. When we do Dijkstra\u00e2\u0080\u0099s\r\nalgorithm we use all roads, not only edges. Let\u00e2\u0080\u0099s prove that if there\r\nexist such edges values that first player wins, there exist values of\r\nedges such that first player wins and all this values equal either or .\r\nConsider shortest pathes of both players.If only first player goes on\r\nedge from to , we can set its value . Proof: there must hold because\r\nfirst player goes on it and wins. This condition holds after change of\r\nvalue of this edge. If second player goes on this edge, he loses because\r\n. If second player doesn\u00e2\u0080\u0099t go on this edge, he loses because shortest\r\npath of first player became smaller( shortest path from to ).If only\r\nsecond player goes on edge from to , we can set its value . Proof:\r\nShortest path of the first player doesn\u00e2\u0080\u0099t change and shortest path of\r\nsecond player can only become larger.If no player go on edge, we can set\r\nits value . Proof: Shortest pathes of both players doesn\u00e2\u0080\u0099t change.If\r\nboth players go on edge from to , we can set its value . Proof: Shortest\r\npathes of both players decrease by (initial value of this edge ).After\r\nevery such operation first player wins again and all edges become either\r\nor . Consider result of our algorithm. Let\u00e2\u0080\u0099s call edge \"good\" if its\r\nvalue is equal to and \"bad\" if its value equals .(a) Let\u00e2\u0080\u0099s prove that\r\nafter performing all operations we will have for all good edges . If we\r\nhave for edge and after changing value of this condition doesn\u00e2\u0080\u0099t hold.\r\nWe have , . We change only one edge and shortest path from to become\r\nshorter so edge lies on this path.. Contradiction. (b) Let\u00e2\u0080\u0099s prove that\r\nafter performing all operations we will have for all bad edges. We can\r\ncontinue our procces otherwise.(c) Let\u00e2\u0080\u0099s prove that if condition holds\r\nfor some edge but we doesn\u00e2\u0080\u0099t change it on this iteration, this continion\r\nholds after this iteration. Proof is same as in (a).(d) Let\u00e2\u0080\u0099s prove that\r\nif any subset of good edges is equal to and , ift also holds when we\r\nmake all good edges equal . Let\u00e2\u0080\u0099s simulate all procces and use (c). Lets\r\nprove that for all edges values(not necessary only or ), for all bad\r\nedges .Assume that we have such edge. Consider shortest path of first\r\nplayer to its beginning. If there exist bad edges on this path, there\r\nmust holds inequality . Consider first of this bad edges . Then shortest\r\npath of first player to doesn\u00e2\u0080\u0099t consist any bad edge. Consider problem,m\r\nwhich is equivalent to our problem but finish is in vertex . good and\r\nbad edges will be same. Let\u00e2\u0080\u0099s change all value of edges as we do in\r\nitem 1. Note? that all bad edges will be equal to . So only subset of\r\ngood edges can be equal to and . By (d) we have that we can set all good\r\nedges and condition will be satisfied. So we have contradiction thst\r\nthis edge is bad. This means that if first player goes on any bad edge,\r\nhe loses. So we can set to all this edges. So we can set to some subset\r\nof good edges. By (d) we have that if we have for some subset of good\r\nedges, this condition will be true if we set all good edges . Note that\r\nproof will be same if we want to check whether Levko can end a game with\r\na draw.\r\n"
+}

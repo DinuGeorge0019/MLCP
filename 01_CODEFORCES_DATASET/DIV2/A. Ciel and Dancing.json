@@ -1,1 +1,103 @@
-{"link": "https://codeforces.com//contest/322/problem/A", "problemId": "3268", "problem_idx": "A", "shortId": "322A", "contest_number": "322", "problem_submissions": {"A": [3981623, 3973095, 3973865, 3973090, 3972819, 3972791, 3973637, 3972934, 3972906, 3972918, 3973641, 3972985, 3973091, 3972935, 3972929, 3973182, 3972893], "B": [3981333, 3975842, 3976873, 3974714, 3975747, 3973669, 3974548, 3974146, 3977509, 3974324, 3974761, 3974551, 3974557, 3976086, 3974559, 3974642], "C": [3980891, 3983597, 3976039, 3978515, 3978858, 3978735, 3977369, 3982226, 3976048, 3983804, 3979009, 3978590, 3980069, 3985116, 3977870, 3978375, 3975800], "D": [3978233, 3979300, 3979714, 3982078, 3981365, 3983063, 3981155, 3982692, 3980839, 3983851, 3983012, 3984085, 3984750, 3982466], "E": [3976453, 3981756, 3983016, 3990331, 3980078]}, "name": "A. Ciel and Dancing", "statement": "Fox Ciel and her friends are in a dancing room. There are boys and girls\r\nhere, and they never danced before. There will be some songs, during\r\neach song, there must be exactly one boy and one girl are dancing.\r\nBesides, there is a special rule: either the boy in the dancing pair\r\nmust dance for the first time (so, he didn\u2019t dance with anyone before);\r\nor the girl in the dancing pair must dance for the first time. Help Fox\r\nCiel to make a schedule that they can dance as many songs as possible.\r\n", "solutions": ["#include<cstdio>\n#include<iostream>\n#include<queue>\n#include<map>\n#include<set>\n#include<algorithm>\n#include<cmath>\n#include<cstdlib>\nusing namespace std;\n\n#define inf 1023456789\n#define linf 1023456789123456789ll\n#define pii pair<int,int>\n#define pipii pair<int, pii >\n#define pll pair<long long,long long>\n#define vint vector<int>\n#define vvint vector<vector<int> >\n\n#define DEBUG\n#ifdef DEBUG\n#define db(x) cerr << #x << \" = \" << x << endl\n#else\n#define db(x)\n#endif\n\nint main()\n{\n\tint n,m;\n\tscanf(\"%d %d\",&n,&m);\n\tprintf(\"%d\\n\",n+m-1);\n\tfor(int i=1; i<=n; i++)printf(\"%d 1\\n\",i);\n\tfor(int i=2; i<=m; i++)printf(\"1 %d\\n\",i);\n\treturn 0;\n}"], "input": "", "output": "", "tags": ["greedy"], "dificulty": "1000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/322/problem/A",
+    "problemId": "3268",
+    "problem_idx": "A",
+    "shortId": "322A",
+    "contest_number": "322",
+    "problem_submissions": {
+        "A": [
+            3981623,
+            3973095,
+            3973865,
+            3973090,
+            3972819,
+            3972791,
+            3973637,
+            3972934,
+            3972906,
+            3972918,
+            3973641,
+            3972985,
+            3973091,
+            3972935,
+            3972929,
+            3973182,
+            3972893
+        ],
+        "B": [
+            3981333,
+            3975842,
+            3976873,
+            3974714,
+            3975747,
+            3973669,
+            3974548,
+            3974146,
+            3977509,
+            3974324,
+            3974761,
+            3974551,
+            3974557,
+            3976086,
+            3974559,
+            3974642
+        ],
+        "C": [
+            3980891,
+            3983597,
+            3976039,
+            3978515,
+            3978858,
+            3978735,
+            3977369,
+            3982226,
+            3976048,
+            3983804,
+            3979009,
+            3978590,
+            3980069,
+            3985116,
+            3977870,
+            3978375,
+            3975800
+        ],
+        "D": [
+            3978233,
+            3979300,
+            3979714,
+            3982078,
+            3981365,
+            3983063,
+            3981155,
+            3982692,
+            3980839,
+            3983851,
+            3983012,
+            3984085,
+            3984750,
+            3982466
+        ],
+        "E": [
+            3976453,
+            3981756,
+            3983016,
+            3990331,
+            3980078
+        ]
+    },
+    "name": "A. Ciel and Dancing",
+    "statement": "Fox Ciel and her friends are in a dancing room. There are boys and girls\r\nhere, and they never danced before. There will be some songs, during\r\neach song, there must be exactly one boy and one girl are dancing.\r\nBesides, there is a special rule: either the boy in the dancing pair\r\nmust dance for the first time (so, he didn\u2019t dance with anyone before);\r\nor the girl in the dancing pair must dance for the first time. Help Fox\r\nCiel to make a schedule that they can dance as many songs as possible.\r\n",
+    "solutions": [
+        "#include<cstdio>\n#include<iostream>\n#include<queue>\n#include<map>\n#include<set>\n#include<algorithm>\n#include<cmath>\n#include<cstdlib>\nusing namespace std;\n\n#define inf 1023456789\n#define linf 1023456789123456789ll\n#define pii pair<int,int>\n#define pipii pair<int, pii >\n#define pll pair<long long,long long>\n#define vint vector<int>\n#define vvint vector<vector<int> >\n\n#define DEBUG\n#ifdef DEBUG\n#define db(x) cerr << #x << \" = \" << x << endl\n#else\n#define db(x)\n#endif\n\nint main()\n{\n\tint n,m;\n\tscanf(\"%d %d\",&n,&m);\n\tprintf(\"%d\\n\",n+m-1);\n\tfor(int i=1; i<=n; i++)printf(\"%d 1\\n\",i);\n\tfor(int i=2; i<=m; i++)printf(\"1 %d\\n\",i);\n\treturn 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "greedy"
+    ],
+    "dificulty": "1000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Ciel and Dancing.json",
+    "editorial_link": "https://codeforces.com//blog/entry/8192",
+    "editorial": "Let\u00e2\u0080\u0099s define remainNew = of people haven\u00e2\u0080\u0099t danced before. So at\r\nbeginning remainNew = n+m, and we have: And it\u00e2\u0080\u0099s not hard to construct\r\none schedule get this maximal possible answer:\r\n"
+}

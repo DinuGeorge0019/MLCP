@@ -1,1 +1,113 @@
-{"link": "https://codeforces.com//contest/518/problem/D", "problemId": "22989", "problem_idx": "D", "shortId": "518D", "contest_number": "518", "problem_submissions": {"C": [9988883, 9986333, 9990862, 9987399, 9998129, 9989956, 9985416, 9991301, 9988773, 9987777, 9986792, 9990874, 9996855, 9993083, 9991646, 9993492, 9989796], "B": [9986603, 9991969, 9985412, 9984010, 9991935, 9983836, 9985675, 9984464, 9984814, 9987730, 9987512, 9987182, 9990867, 9988157, 9985156, 9986048], "D": [9984146, 9987656, 9983589, 9996581, 9988389, 9983991, 10019512, 9994388, 9990798, 9998733, 9989910, 9992602, 9994055, 9988668, 9997395, 9994329, 10003029], "A": [9982691, 9984919, 9983532, 9982857, 9984890, 9982599, 9983377, 9983139, 9982876, 10006211, 9984273, 10016035, 9996459, 9986695, 9983905], "F": [9995207, 10007934], "E": [10000287, 10002761, 10005947, 10001378, 9999399, 10002023, 10011774]}, "name": "D. Ilya and Escalator", "statement": "Ilya got tired of sports programming, left university and got a job in\r\nthe subway. He was given the task to determine the escalator load\r\nfactor. Let\u2019s assume that people stand in the queue for the escalator.\r\nAt each second one of the two following possibilities takes place:\r\neither the first person in the queue enters the escalator with\r\nprobability , or the first person in the queue doesn\u2019t move with\r\nprobability , paralyzed by his fear of escalators and making the whole\r\nqueue wait behind him.Formally speaking, the -th person in the queue\r\ncannot enter the escalator until people with indices from to inclusive\r\nenter it. In one second only one person can enter the escalator. The\r\nescalator is infinite, so if a person enters it, he never leaves it,\r\nthat is he will be standing on the escalator at any following second.\r\nIlya needs to count the expected value of the number of people standing\r\non the escalator after seconds. Your task is to help him solve this\r\ncomplicated task.\r\n", "solutions": ["#include<vector>\n#include<list>\n#include<map>\n#include<set>\n#include<deque>\n#include<queue>\n#include<stack>\n#include<bitset>\n#include<algorithm>\n#include<functional>\n#include<numeric>\n#include<utility>\n#include<iostream>\n#include<sstream>\n#include<iomanip>\n#include<cmath>\n#include<cstdlib>\n#include<cctype>\n#include<string>\n#include<cstring>\n#include<cstdio>\n#include<ctime>\n#include<climits>\n#include<complex>\n#include<cassert>\n#define mp make_pair\n#define pb push_back\n#define fi first\n#define se second\n#define sz(x) (int)((x).size())\n#define all(x) x.begin(),x.end()\n#define clr(x) memset((x),0,sizeof(x))\n#define cdp(x) memset((x),-1,sizeof(x))\n#define rep(i,n) for (i=0;i<n;i++)\n#define Rep(i,a,b) for (i=a;i<=b;i++)\n#define ff(i,x) for (i=start[x];i!=-1;i=a[i].next)\n#define foreach(e,x) for(__typeof(x.begin()) e=x.begin();e!=x.end();++e)\nusing namespace std;\nconst double eps=1e-8;\nconst double pi=acos(-1.0);\nint dblcmp(double d){if (fabs(d)<eps)return 0;return d>eps?1:-1;}\ntypedef long long ll;\ntypedef vector<int> vi;\ntypedef vector<ll> vl;\ntypedef vector<string> vs;\ntypedef pair<int,int> pii;\ntypedef vector<pii> vpi;\ndouble dp[2111][2111];//i-th day, j people\nint main()\n{\n\tint i,j,k;\n\tdp[0][0]=1;\n\tint n,t;\n\tdouble p;\n\tcin>>n>>p>>t;\n\tfor (i=0;i<=t;i++)\n\t{\n\t\tfor (j=0;j<=n;j++)\n\t\t{\n\t\t\tif (j==n)\n\t\t\t{\n\t\t\t\tdp[i+1][j]+=dp[i][j];\n\t\t\t\tcontinue;\n\t\t\t}\n\t\t\tdp[i+1][j+1]+=dp[i][j]*p;\n\t\t\tdp[i+1][j]+=dp[i][j]*(1-p);\n\t\t}\n\t}\n\tdouble ans=0;\n\tfor (i=0;i<=n;i++)\n\t{\n\t\tans+=i*dp[t][i];\n\t}\n\tprintf(\"%.10lf\\n\",ans);\n\treturn 0;\n}\n\t\t\t"], "input": "", "output": "", "tags": ["combinatorics", "dp", "math", "probabilities"], "dificulty": "1700", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/518/problem/D",
+    "problemId": "22989",
+    "problem_idx": "D",
+    "shortId": "518D",
+    "contest_number": "518",
+    "problem_submissions": {
+        "C": [
+            9988883,
+            9986333,
+            9990862,
+            9987399,
+            9998129,
+            9989956,
+            9985416,
+            9991301,
+            9988773,
+            9987777,
+            9986792,
+            9990874,
+            9996855,
+            9993083,
+            9991646,
+            9993492,
+            9989796
+        ],
+        "B": [
+            9986603,
+            9991969,
+            9985412,
+            9984010,
+            9991935,
+            9983836,
+            9985675,
+            9984464,
+            9984814,
+            9987730,
+            9987512,
+            9987182,
+            9990867,
+            9988157,
+            9985156,
+            9986048
+        ],
+        "D": [
+            9984146,
+            9987656,
+            9983589,
+            9996581,
+            9988389,
+            9983991,
+            10019512,
+            9994388,
+            9990798,
+            9998733,
+            9989910,
+            9992602,
+            9994055,
+            9988668,
+            9997395,
+            9994329,
+            10003029
+        ],
+        "A": [
+            9982691,
+            9984919,
+            9983532,
+            9982857,
+            9984890,
+            9982599,
+            9983377,
+            9983139,
+            9982876,
+            10006211,
+            9984273,
+            10016035,
+            9996459,
+            9986695,
+            9983905
+        ],
+        "F": [
+            9995207,
+            10007934
+        ],
+        "E": [
+            10000287,
+            10002761,
+            10005947,
+            10001378,
+            9999399,
+            10002023,
+            10011774
+        ]
+    },
+    "name": "D. Ilya and Escalator",
+    "statement": "Ilya got tired of sports programming, left university and got a job in\r\nthe subway. He was given the task to determine the escalator load\r\nfactor. Let\u2019s assume that people stand in the queue for the escalator.\r\nAt each second one of the two following possibilities takes place:\r\neither the first person in the queue enters the escalator with\r\nprobability , or the first person in the queue doesn\u2019t move with\r\nprobability , paralyzed by his fear of escalators and making the whole\r\nqueue wait behind him.Formally speaking, the -th person in the queue\r\ncannot enter the escalator until people with indices from to inclusive\r\nenter it. In one second only one person can enter the escalator. The\r\nescalator is infinite, so if a person enters it, he never leaves it,\r\nthat is he will be standing on the escalator at any following second.\r\nIlya needs to count the expected value of the number of people standing\r\non the escalator after seconds. Your task is to help him solve this\r\ncomplicated task.\r\n",
+    "solutions": [
+        "#include<vector>\n#include<list>\n#include<map>\n#include<set>\n#include<deque>\n#include<queue>\n#include<stack>\n#include<bitset>\n#include<algorithm>\n#include<functional>\n#include<numeric>\n#include<utility>\n#include<iostream>\n#include<sstream>\n#include<iomanip>\n#include<cmath>\n#include<cstdlib>\n#include<cctype>\n#include<string>\n#include<cstring>\n#include<cstdio>\n#include<ctime>\n#include<climits>\n#include<complex>\n#include<cassert>\n#define mp make_pair\n#define pb push_back\n#define fi first\n#define se second\n#define sz(x) (int)((x).size())\n#define all(x) x.begin(),x.end()\n#define clr(x) memset((x),0,sizeof(x))\n#define cdp(x) memset((x),-1,sizeof(x))\n#define rep(i,n) for (i=0;i<n;i++)\n#define Rep(i,a,b) for (i=a;i<=b;i++)\n#define ff(i,x) for (i=start[x];i!=-1;i=a[i].next)\n#define foreach(e,x) for(__typeof(x.begin()) e=x.begin();e!=x.end();++e)\nusing namespace std;\nconst double eps=1e-8;\nconst double pi=acos(-1.0);\nint dblcmp(double d){if (fabs(d)<eps)return 0;return d>eps?1:-1;}\ntypedef long long ll;\ntypedef vector<int> vi;\ntypedef vector<ll> vl;\ntypedef vector<string> vs;\ntypedef pair<int,int> pii;\ntypedef vector<pii> vpi;\ndouble dp[2111][2111];//i-th day, j people\nint main()\n{\n\tint i,j,k;\n\tdp[0][0]=1;\n\tint n,t;\n\tdouble p;\n\tcin>>n>>p>>t;\n\tfor (i=0;i<=t;i++)\n\t{\n\t\tfor (j=0;j<=n;j++)\n\t\t{\n\t\t\tif (j==n)\n\t\t\t{\n\t\t\t\tdp[i+1][j]+=dp[i][j];\n\t\t\t\tcontinue;\n\t\t\t}\n\t\t\tdp[i+1][j+1]+=dp[i][j]*p;\n\t\t\tdp[i+1][j]+=dp[i][j]*(1-p);\n\t\t}\n\t}\n\tdouble ans=0;\n\tfor (i=0;i<=n;i++)\n\t{\n\t\tans+=i*dp[t][i];\n\t}\n\tprintf(\"%.10lf\\n\",ans);\n\treturn 0;\n}\n\t\t\t"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "combinatorics",
+        "dp",
+        "math",
+        "probabilities"
+    ],
+    "dificulty": "1700",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Ilya and Escalator.json",
+    "editorial_link": "https://codeforces.com//blog/entry/16598",
+    "editorial": "To solve this problem let's use dynamic programming. We will store two-dimensional array z[][] with type double. In z[i][j] will store the likelihood that after i seconds j people are on escalator.\n\nIn dynamic will be following transitions. If j?=?n, i. e. all n people already on escalator then we make transition z[i?+?1][j]?+??=?z[i][j]. Else, or person number j go to escalator in i?+?1 second, i. e. z[i?+?1][j?+?1]?+??=?z[i][j]?*?p, or person number j stays on his place, i. e. z[i?+?1][j]?+??=?z[i][j]?*?(1?\u0096?p).\n\nNow we need to count answer \u0097 it is sum on j from 0 to n inclusive z[t][j]?*?j.\n\nAsymptotic behavior of this solution \u0097 O(t?*?n), where t \u0097 on which moment we must count answer, n \u0097 how many people stay before escalator in the beginning."
+}

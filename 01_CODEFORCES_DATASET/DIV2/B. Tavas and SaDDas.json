@@ -1,1 +1,93 @@
-{"link": "https://codeforces.com//contest/535/problem/B", "problemId": "26038", "problem_idx": "B", "shortId": "535B", "contest_number": "535", "problem_submissions": {"D": [10715113, 10714538, 10713033, 10717870, 10717623, 10718212, 10719145, 10719368, 10718417, 10717655, 10712848, 10714795, 10715426, 20417071, 10716514, 10715240], "C": [10712561, 10708236, 10715493, 10714489, 10714358, 10714749, 10715771, 10713528, 10714886, 10713502, 10714572, 10719561], "B": [10707835, 10715165, 10706437, 10708415, 10709369, 10710794, 10710470, 10709993, 10707334, 10711642, 10714171, 10710232, 10711093, 10713617, 10708489, 10710722], "A": [10706255, 10715866, 10709239, 10706497, 10707836, 10706378, 10706480, 10723848, 10713315, 10706570, 10707243, 10707771, 10706513, 10707324]}, "name": "B. Tavas and SaDDas", "statement": "The problem is: You are given a . are the positive integers whose\r\ndecimal representations contain only the lucky digits 4 and 7. For\r\nexample, numbers , , are lucky and , , are not.If we sort all lucky\r\nnumbers in increasing order, what\u2019s the 1-based index of ? Tavas is not\r\nas smart as SaDDas, so he asked you to do him a favor and solve this\r\nproblem so he can have his headphones back.\r\n", "solutions": ["#include <cstdio>\n#include <cstdlib>\n#include <cmath>\n#include <ctime>\n#include <cassert>\n#include <cstring>\n#include <algorithm>\n#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <queue>\n#include <stack>\n#include <bitset>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <unordered_map>\n#include <unordered_set>\n#include <memory.h>\nusing namespace std;\n\nint main() {\n  int n;\n  scanf(\"%d\", &n);\n  int k = 0;\n  int l = 0;\n  while (n) {\n    const int t = n % 10;\n    if (t == 7) {\n      k |= (1 << l);\n    }\n    n /= 10;\n    l++;\n  }\n\n  k += (1 << l) - 1;\n\n  printf(\"%d\\n\", k);\n\n  return 0;\n}"], "input": "", "output": "", "tags": ["bitmasks", "brute force", "combinatorics", "implementation"], "dificulty": "1100", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/535/problem/B",
+    "problemId": "26038",
+    "problem_idx": "B",
+    "shortId": "535B",
+    "contest_number": "535",
+    "problem_submissions": {
+        "D": [
+            10715113,
+            10714538,
+            10713033,
+            10717870,
+            10717623,
+            10718212,
+            10719145,
+            10719368,
+            10718417,
+            10717655,
+            10712848,
+            10714795,
+            10715426,
+            20417071,
+            10716514,
+            10715240
+        ],
+        "C": [
+            10712561,
+            10708236,
+            10715493,
+            10714489,
+            10714358,
+            10714749,
+            10715771,
+            10713528,
+            10714886,
+            10713502,
+            10714572,
+            10719561
+        ],
+        "B": [
+            10707835,
+            10715165,
+            10706437,
+            10708415,
+            10709369,
+            10710794,
+            10710470,
+            10709993,
+            10707334,
+            10711642,
+            10714171,
+            10710232,
+            10711093,
+            10713617,
+            10708489,
+            10710722
+        ],
+        "A": [
+            10706255,
+            10715866,
+            10709239,
+            10706497,
+            10707836,
+            10706378,
+            10706480,
+            10723848,
+            10713315,
+            10706570,
+            10707243,
+            10707771,
+            10706513,
+            10707324
+        ]
+    },
+    "name": "B. Tavas and SaDDas",
+    "statement": "The problem is: You are given a . are the positive integers whose\r\ndecimal representations contain only the lucky digits 4 and 7. For\r\nexample, numbers , , are lucky and , , are not.If we sort all lucky\r\nnumbers in increasing order, what\u2019s the 1-based index of ? Tavas is not\r\nas smart as SaDDas, so he asked you to do him a favor and solve this\r\nproblem so he can have his headphones back.\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <cstdlib>\n#include <cmath>\n#include <ctime>\n#include <cassert>\n#include <cstring>\n#include <algorithm>\n#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <queue>\n#include <stack>\n#include <bitset>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <unordered_map>\n#include <unordered_set>\n#include <memory.h>\nusing namespace std;\n\nint main() {\n  int n;\n  scanf(\"%d\", &n);\n  int k = 0;\n  int l = 0;\n  while (n) {\n    const int t = n % 10;\n    if (t == 7) {\n      k |= (1 << l);\n    }\n    n /= 10;\n    l++;\n  }\n\n  k += (1 << l) - 1;\n\n  printf(\"%d\\n\", k);\n\n  return 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "bitmasks",
+        "brute force",
+        "combinatorics",
+        "implementation"
+    ],
+    "dificulty": "1100",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Tavas and SaDDas.json",
+    "editorial_link": "https://codeforces.com//blog/entry/17401",
+    "editorial": "Sol1: Consider has digits, decimal representation of binary string , is\r\na binary string of size and its digit is 0 if and only if the digit of\r\nis . Finally, answer equals to . Time complexity: Sol2: Count the number\r\nof lucky numbers less than or equal to using bitmask (assign a binary\r\nstring to each lucky number by replacing 4s with 0 and 7s with 1). Time\r\ncomplexity: Code by PrinceOfPersia Another Code by SoroushE Another Code\r\nby Haghani Python Code by Zlobober\r\n"
+}

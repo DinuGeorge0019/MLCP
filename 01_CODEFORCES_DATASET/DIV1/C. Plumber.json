@@ -1,1 +1,88 @@
-{"link": "https://codeforces.com//contest/115/problem/C", "problemId": "604", "problem_idx": "C", "shortId": "115C", "contest_number": "115", "problem_submissions": {"D": [700677, 709440, 703439, 700783], "E": [699985, 700148, 699895, 700886, 700709, 699935, 700481, 704109, 702223, 702118, 701045, 699830, 700560], "C": [698491, 698807, 698911, 698386, 699374, 701004, 698059, 699204, 699619, 699661, 702059], "B": [697429, 697289, 697881, 697365, 697647, 697668, 699366, 697349, 697691, 697537, 697907, 698287, 699705], "A": [696588, 696258, 695843, 695844, 696704, 696136, 696907, 695911, 696007, 696195, 695937, 696483, 695990]}, "name": "C. Plumber", "statement": "Little John aspires to become a plumber! Today he has drawn a grid\r\nconsisting of rows and columns, consisting of square cells.In each cell\r\nhe will draw a pipe segment. He can only draw four types of segments\r\nnumbered from to , illustrated as follows: Each pipe segment has two\r\nends, illustrated by the arrows in the picture above. For example,\r\nsegment has ends at top and left side of it.Little John considers the\r\npiping system to be leaking if there is at least one pipe segment inside\r\nthe grid whose end is not connected to another pipe\u2019s end or to the\r\nborder of the grid. The image below shows an example of leaking and\r\nnon-leaking systems of size . Now, you will be given the grid that has\r\nbeen partially filled by Little John. Each cell will either contain one\r\nof the four segments above, or be empty. Find the number of possible\r\ndifferent non-leaking final systems after Little John finishes filling\r\nof the empty cells with pipe segments. Print this number modulo ().Note\r\nthat rotations or flipping of the grid are not allowed and so two\r\nconfigurations that are identical only when one of them has been rotated\r\nor flipped either horizontally or vertically are considered two\r\ndifferent configurations.\r\n", "solutions": ["#include <vector>\n#include <cstring>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <queue>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <stdlib.h>\n#include <ctime>\n#include <string>\n#include <complex>\n#ifdef __ASD__\n#include <windows.h>\n#endif\nusing namespace std;\n#define all(a) a.begin(),a.end()\n#define forn(i,n) for(int i=0;i<(n);++i)\n#define fornn(i,n) for(i=0;i<(n);++i)\n#define lng long long\n#define SQ(a) ((a)*(a))\n#define forv(i,v) for(int i=0;i<(int)v.size();++i)\n#define mp make_pair\n#define pb push_back\n#define ABS(a) ((a)<0?-(a):(a))\n#define iinf 1000000000\n#define linf 1000000000000000000LL\n#define dinf 1e200\n#define left asdleft\n#define prev asdprev\n#define eps 1e-12\n#define y1 asdy1\n#define y2 asdy2\n#define EQ(a,b) abs((a)-(b))<eps\n#define PI 3.1415926535897932384626433832795\n#define DEG2RAD PI/180\n#define ulng unsigned lng\n#define next asdnext\n#define prev asdprev\nvoid mytimer(string task){\n#ifdef __ASD__\n        static LARGE_INTEGER prev;      LARGE_INTEGER cur,freq; QueryPerformanceCounter(&cur);  QueryPerformanceFrequency(&freq);       if(task!=\"\")            cout<<task<<\" took \"<<(cur.QuadPart-prev.QuadPart)*1.0/freq.QuadPart<<endl;     prev=cur;\n#endif\n}\nvoid ext(int c){\n#ifdef __ASD__\n        exit(c);\n#endif\n}\n\nbool was[2][510000][2];\nchar line[510000];\n\nconst int mod=1000003;\n\n#define taska \"burai\"\nint main(){\n#ifdef __ASD__\n    freopen(\"input.txt\",\"r\",stdin);freopen(\"output.txt\",\"w\",stdout);\n#else\n    //freopen(taska\".in\",\"r\",stdin);freopen(taska\".out\",\"w\",stdout);\n#endif\n\n    int n,m;\n    cin>>n>>m;\n    gets(line);\n    forn(i,n){\n        gets(line);\n        forn(j,m){\n            char c=line[j];\n            if(c=='.')\n                continue;\n            int v=c-'1';\n            int v1=v/2;\n            int v2=(v+1)%4/2;\n            was[0][i][(j%2)^v1]=true;\n            was[1][j][(i%2)^v2]=true;\n        }\n    }\n    int len[]={n,m};\n\n    int res=1;\n    forn(q,2){\n        forn(i,len[q]){\n            bool w1=was[q][i][0];\n            bool w2=was[q][i][1];\n            if(w1&&w2)\n                res=0;\n            else if(!w1&&!w2)\n                res=res*2%mod;\n        }\n    }\n\n    cout<<res;\n\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["math"], "dificulty": "2200", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/115/problem/C",
+    "problemId": "604",
+    "problem_idx": "C",
+    "shortId": "115C",
+    "contest_number": "115",
+    "problem_submissions": {
+        "D": [
+            700677,
+            709440,
+            703439,
+            700783
+        ],
+        "E": [
+            699985,
+            700148,
+            699895,
+            700886,
+            700709,
+            699935,
+            700481,
+            704109,
+            702223,
+            702118,
+            701045,
+            699830,
+            700560
+        ],
+        "C": [
+            698491,
+            698807,
+            698911,
+            698386,
+            699374,
+            701004,
+            698059,
+            699204,
+            699619,
+            699661,
+            702059
+        ],
+        "B": [
+            697429,
+            697289,
+            697881,
+            697365,
+            697647,
+            697668,
+            699366,
+            697349,
+            697691,
+            697537,
+            697907,
+            698287,
+            699705
+        ],
+        "A": [
+            696588,
+            696258,
+            695843,
+            695844,
+            696704,
+            696136,
+            696907,
+            695911,
+            696007,
+            696195,
+            695937,
+            696483,
+            695990
+        ]
+    },
+    "name": "C. Plumber",
+    "statement": "Little John aspires to become a plumber! Today he has drawn a grid\r\nconsisting of rows and columns, consisting of square cells.In each cell\r\nhe will draw a pipe segment. He can only draw four types of segments\r\nnumbered from to , illustrated as follows: Each pipe segment has two\r\nends, illustrated by the arrows in the picture above. For example,\r\nsegment has ends at top and left side of it.Little John considers the\r\npiping system to be leaking if there is at least one pipe segment inside\r\nthe grid whose end is not connected to another pipe\u2019s end or to the\r\nborder of the grid. The image below shows an example of leaking and\r\nnon-leaking systems of size . Now, you will be given the grid that has\r\nbeen partially filled by Little John. Each cell will either contain one\r\nof the four segments above, or be empty. Find the number of possible\r\ndifferent non-leaking final systems after Little John finishes filling\r\nof the empty cells with pipe segments. Print this number modulo ().Note\r\nthat rotations or flipping of the grid are not allowed and so two\r\nconfigurations that are identical only when one of them has been rotated\r\nor flipped either horizontally or vertically are considered two\r\ndifferent configurations.\r\n",
+    "solutions": [
+        "#include <vector>\n#include <cstring>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <queue>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <stdlib.h>\n#include <ctime>\n#include <string>\n#include <complex>\n#ifdef __ASD__\n#include <windows.h>\n#endif\nusing namespace std;\n#define all(a) a.begin(),a.end()\n#define forn(i,n) for(int i=0;i<(n);++i)\n#define fornn(i,n) for(i=0;i<(n);++i)\n#define lng long long\n#define SQ(a) ((a)*(a))\n#define forv(i,v) for(int i=0;i<(int)v.size();++i)\n#define mp make_pair\n#define pb push_back\n#define ABS(a) ((a)<0?-(a):(a))\n#define iinf 1000000000\n#define linf 1000000000000000000LL\n#define dinf 1e200\n#define left asdleft\n#define prev asdprev\n#define eps 1e-12\n#define y1 asdy1\n#define y2 asdy2\n#define EQ(a,b) abs((a)-(b))<eps\n#define PI 3.1415926535897932384626433832795\n#define DEG2RAD PI/180\n#define ulng unsigned lng\n#define next asdnext\n#define prev asdprev\nvoid mytimer(string task){\n#ifdef __ASD__\n        static LARGE_INTEGER prev;      LARGE_INTEGER cur,freq; QueryPerformanceCounter(&cur);  QueryPerformanceFrequency(&freq);       if(task!=\"\")            cout<<task<<\" took \"<<(cur.QuadPart-prev.QuadPart)*1.0/freq.QuadPart<<endl;     prev=cur;\n#endif\n}\nvoid ext(int c){\n#ifdef __ASD__\n        exit(c);\n#endif\n}\n\nbool was[2][510000][2];\nchar line[510000];\n\nconst int mod=1000003;\n\n#define taska \"burai\"\nint main(){\n#ifdef __ASD__\n    freopen(\"input.txt\",\"r\",stdin);freopen(\"output.txt\",\"w\",stdout);\n#else\n    //freopen(taska\".in\",\"r\",stdin);freopen(taska\".out\",\"w\",stdout);\n#endif\n\n    int n,m;\n    cin>>n>>m;\n    gets(line);\n    forn(i,n){\n        gets(line);\n        forn(j,m){\n            char c=line[j];\n            if(c=='.')\n                continue;\n            int v=c-'1';\n            int v1=v/2;\n            int v2=(v+1)%4/2;\n            was[0][i][(j%2)^v1]=true;\n            was[1][j][(i%2)^v2]=true;\n        }\n    }\n    int len[]={n,m};\n\n    int res=1;\n    forn(q,2){\n        forn(i,len[q]){\n            bool w1=was[q][i][0];\n            bool w2=was[q][i][1];\n            if(w1&&w2)\n                res=0;\n            else if(!w1&&!w2)\n                res=res*2%mod;\n        }\n    }\n\n    cout<<res;\n\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "math"
+    ],
+    "dificulty": "2200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Plumber.json",
+    "editorial_link": "https://codeforces.com/blog/entry/2584",
+    "editorial": "To solve this problem, let\u00e2\u0080\u0099s imagine that the left and top sides of the\r\ngrid also determines whether the pipe adjacent to that side has an end\r\nconnecting it to the side or not. There are 2^(N+M) ways to pick them.\r\nWe claim that if we fix them (i.e., pick one of the possible 2^(N+M)\r\nways, then the entire grid\u00e2\u0080\u0099s pipes are fixed). To see this, notice that\r\neach pipe segment will have either one vertical end (it either have end\r\non the top or end on the bottom) and one horizontal end (left or right).\r\nWe can pick any 4 combinations of them. Suppose we pick a row, and\r\ndetermine whether the leftmost pipe should have an end to the left of\r\nit, or not. Suppose it doesn\u00e2\u0080\u0099t have an opening to the left. It means\r\nthat the leftmost pipe should have an opening to the right, the next\r\npipe should have an opening to the left, the next pipe to the right, and\r\nso on. Continuing this way, we have fixed the horizontal ends for an\r\nentire row - and only that. Hence, if we pick one of the possible\r\n2^(N+M) ways to pick the ends, then the horizontal ends of each row and\r\nvertical ends of each column is fixed. Since there is exactly one pipe\r\nsegment that has a particular configuration of ends, there is exactly\r\none possible completed grid for each of the 2^(N+M) ways to pick the\r\nends. Hence, the solution works by first checking if a solution exists.\r\nAny pre-assigned pipe simply sets whether or not its corresponding row\r\nand column has an end at the left and top side. We need to check that no\r\ntwo pipes sets this value contradictorily. If any of them are\r\ncontradictory, then we return the answer as 0. Otherwise, we return\r\n2^(number of rows without preassigned cell + number of columns without\r\npreassigned cell).\r\n"
+}

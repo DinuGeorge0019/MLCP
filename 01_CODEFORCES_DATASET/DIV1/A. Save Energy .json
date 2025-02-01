@@ -1,1 +1,105 @@
-{"link": "https://codeforces.com//contest/936/problem/A", "problemId": "159976", "problem_idx": "A", "shortId": "936A", "contest_number": "936", "problem_submissions": {"E": [35712266, 35727991, 35725013, 35707211, 35770218], "D": [35700007, 35702585, 35703968, 35704322, 35707565, 35707992, 35703995, 35707242, 35706026, 35706184, 35705316], "C": [35693639, 35697250, 35695166, 35695586, 35697018, 35695913, 35698664, 35705647, 35697865, 35699503, 35697044, 35700894, 35699052, 35698193, 35698295, 35698757, 35697398, 35701177], "B": [35691090, 35691407, 35691792, 35691438, 35690313, 35691314, 35691290, 35690630, 35698924, 35693457, 35691128, 35693732, 35690660, 35690004, 35694559, 35691031, 35692920], "A": [35689192, 35689253, 35688351, 35690016, 35688869, 35688655, 35688920, 35688825, 35690115, 35690230, 35697676, 35690493, 35688221, 35691287, 35688663, 35690989, 35689298, 35689878]}, "name": "A. Save Energy ", "statement": "Julia is going to cook a chicken in the kitchen of her dormitory. To\r\nsave energy, the stove in the kitchen automatically turns off after\r\nminutes after turning on.During cooking, Julia goes to the kitchen every\r\nminutes and turns on the stove if it is turned off. While the cooker is\r\nturned off, it stays warm. The stove switches on and off instantly.It is\r\nknown that the chicken needs minutes to be cooked on the stove, if it is\r\nturned on, and minutes, if it is turned off. You need to find out, how\r\nmuch time will Julia have to cook the chicken, if it is considered that\r\nthe chicken is cooked evenly, with constant speed when the stove is\r\nturned on and at a constant speed when it is turned off.\r\n", "solutions": ["#include <bits/stdc++.h>\n\nusing namespace std;\n#define PB push_back\n#define MP make_pair\n#define LL long long\n#define int LL\n#define FOR(i,a,b) for(int i = (a); i <= (b); i++)\n#define RE(i,n) FOR(i,1,n)\n#define REP(i,n) FOR(i,0,(int)(n)-1)\n#define R(i,n) REP(i,n)\n#define VI vector<int>\n#define PII pair<int,int>\n#define LD long double\n#define FI first\n#define SE second\n#define st FI\n#define nd SE\n#define ALL(x) (x).begin(), (x).end()\n#define SZ(x) ((int)(x).size())\n\ntemplate<class C> void mini(C &a4, C b4) { a4 = min(a4, b4); }\ntemplate<class C> void maxi(C &a4, C b4) { a4 = max(a4, b4); }\n\ntemplate<class TH> void _dbg(const char *sdbg, TH h){ cerr<<sdbg<<'='<<h<<endl; }\ntemplate<class TH, class... TA> void _dbg(const char *sdbg, TH h, TA... a) {\n  while(*sdbg!=',')cerr<<*sdbg++;\n  cerr<<'='<<h<<','; _dbg(sdbg+1, a...);\n}\n\ntemplate<class T> ostream &operator<<(ostream& os, vector<T> V) {\n  os << \"[\"; for (auto vv : V) os << vv << \",\"; return os << \"]\";\n}\ntemplate<class L, class R> ostream &operator<<(ostream &os, pair<L,R> P) {\n  return os << \"(\" << P.st << \",\" << P.nd << \")\";\n}\n\n#ifdef LOCAL\n#define debug(...) _dbg(#__VA_ARGS__, __VA_ARGS__)\n#else\n#define debug(...) (__VA_ARGS__)\n#define cerr if(0)cout\n#endif\n\n\nint32_t main() {\n  ios_base::sync_with_stdio(0);\n  cin.tie(0);\n  cout << fixed << setprecision(11);\n  cerr << fixed << setprecision(6);\n\n  LL k, d, t;\n  cin >> k >> d >> t;\n\n  LL Cycle = (d + k - 1) / d * d;\n  LL AmountCyc = 2 * k + (Cycle - k);\n  LL FullCycs = (2 * t) / AmountCyc;\n  LD FullTime = (LD)FullCycs * Cycle;\n  \n  LL Remaining = 2 * t - FullCycs * AmountCyc;\n  debug(Cycle, AmountCyc, FullCycs, FullTime, Remaining);\n  if (Remaining < 2 * k)\n    FullTime += (LD)Remaining / 2;\n  else\n    FullTime += k + (LD)(Remaining - 2 * k);\n\n  cout << FullTime << \"\\n\";\n}\n\n"], "input": "", "output": "", "tags": ["binary search", "implementation", "math"], "dificulty": "1700", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/936/problem/A",
+    "problemId": "159976",
+    "problem_idx": "A",
+    "shortId": "936A",
+    "contest_number": "936",
+    "problem_submissions": {
+        "E": [
+            35712266,
+            35727991,
+            35725013,
+            35707211,
+            35770218
+        ],
+        "D": [
+            35700007,
+            35702585,
+            35703968,
+            35704322,
+            35707565,
+            35707992,
+            35703995,
+            35707242,
+            35706026,
+            35706184,
+            35705316
+        ],
+        "C": [
+            35693639,
+            35697250,
+            35695166,
+            35695586,
+            35697018,
+            35695913,
+            35698664,
+            35705647,
+            35697865,
+            35699503,
+            35697044,
+            35700894,
+            35699052,
+            35698193,
+            35698295,
+            35698757,
+            35697398,
+            35701177
+        ],
+        "B": [
+            35691090,
+            35691407,
+            35691792,
+            35691438,
+            35690313,
+            35691314,
+            35691290,
+            35690630,
+            35698924,
+            35693457,
+            35691128,
+            35693732,
+            35690660,
+            35690004,
+            35694559,
+            35691031,
+            35692920
+        ],
+        "A": [
+            35689192,
+            35689253,
+            35688351,
+            35690016,
+            35688869,
+            35688655,
+            35688920,
+            35688825,
+            35690115,
+            35690230,
+            35697676,
+            35690493,
+            35688221,
+            35691287,
+            35688663,
+            35690989,
+            35689298,
+            35689878
+        ]
+    },
+    "name": "A. Save Energy ",
+    "statement": "Julia is going to cook a chicken in the kitchen of her dormitory. To\r\nsave energy, the stove in the kitchen automatically turns off after\r\nminutes after turning on.During cooking, Julia goes to the kitchen every\r\nminutes and turns on the stove if it is turned off. While the cooker is\r\nturned off, it stays warm. The stove switches on and off instantly.It is\r\nknown that the chicken needs minutes to be cooked on the stove, if it is\r\nturned on, and minutes, if it is turned off. You need to find out, how\r\nmuch time will Julia have to cook the chicken, if it is considered that\r\nthe chicken is cooked evenly, with constant speed when the stove is\r\nturned on and at a constant speed when it is turned off.\r\n",
+    "solutions": [
+        "#include <bits/stdc++.h>\n\nusing namespace std;\n#define PB push_back\n#define MP make_pair\n#define LL long long\n#define int LL\n#define FOR(i,a,b) for(int i = (a); i <= (b); i++)\n#define RE(i,n) FOR(i,1,n)\n#define REP(i,n) FOR(i,0,(int)(n)-1)\n#define R(i,n) REP(i,n)\n#define VI vector<int>\n#define PII pair<int,int>\n#define LD long double\n#define FI first\n#define SE second\n#define st FI\n#define nd SE\n#define ALL(x) (x).begin(), (x).end()\n#define SZ(x) ((int)(x).size())\n\ntemplate<class C> void mini(C &a4, C b4) { a4 = min(a4, b4); }\ntemplate<class C> void maxi(C &a4, C b4) { a4 = max(a4, b4); }\n\ntemplate<class TH> void _dbg(const char *sdbg, TH h){ cerr<<sdbg<<'='<<h<<endl; }\ntemplate<class TH, class... TA> void _dbg(const char *sdbg, TH h, TA... a) {\n  while(*sdbg!=',')cerr<<*sdbg++;\n  cerr<<'='<<h<<','; _dbg(sdbg+1, a...);\n}\n\ntemplate<class T> ostream &operator<<(ostream& os, vector<T> V) {\n  os << \"[\"; for (auto vv : V) os << vv << \",\"; return os << \"]\";\n}\ntemplate<class L, class R> ostream &operator<<(ostream &os, pair<L,R> P) {\n  return os << \"(\" << P.st << \",\" << P.nd << \")\";\n}\n\n#ifdef LOCAL\n#define debug(...) _dbg(#__VA_ARGS__, __VA_ARGS__)\n#else\n#define debug(...) (__VA_ARGS__)\n#define cerr if(0)cout\n#endif\n\n\nint32_t main() {\n  ios_base::sync_with_stdio(0);\n  cin.tie(0);\n  cout << fixed << setprecision(11);\n  cerr << fixed << setprecision(6);\n\n  LL k, d, t;\n  cin >> k >> d >> t;\n\n  LL Cycle = (d + k - 1) / d * d;\n  LL AmountCyc = 2 * k + (Cycle - k);\n  LL FullCycs = (2 * t) / AmountCyc;\n  LD FullTime = (LD)FullCycs * Cycle;\n  \n  LL Remaining = 2 * t - FullCycs * AmountCyc;\n  debug(Cycle, AmountCyc, FullCycs, FullTime, Remaining);\n  if (Remaining < 2 * k)\n    FullTime += (LD)Remaining / 2;\n  else\n    FullTime += k + (LD)(Remaining - 2 * k);\n\n  cout << FullTime << \"\\n\";\n}\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "binary search",
+        "implementation",
+        "math"
+    ],
+    "dificulty": "1700",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Save Energy .json",
+    "editorial_link": "https://codeforces.com//blog/entry/58056",
+    "editorial": "There are repeated segments in the cooking process, that are between two\r\nconsecutive moments, when Julia turns the stove on. Let\u00e2\u0080\u0099s call such\r\nsegment a . Consider two cases: If , when Julia comes, the stove is\r\nalways off, that means . In other case Julia comes to the kitchen times\r\nbetween two turnings on, when the stove is still on, and does nothing.\r\nIn this case is a number such that the stove is on, the stove is off.\r\nThen the period is and is equal to . So . Let\u00e2\u0080\u0099s say the chicken consists\r\nof independent parts. On the working stove two parts of the chicken are\r\nprepared per minute. If the stove is off, one part is prepared. Let\u00e2\u0080\u0099s\r\nfind the number of prepared parts during one period: and we need whole\r\nperiods. After that we still have parts left to cook. If , chicken will\r\nbe prepared after minutes: minutes the stove will be on and it will be\r\noff. Thus the answer is Otherwise parts become ready after minutes and\r\nanswer is .\r\n"
+}

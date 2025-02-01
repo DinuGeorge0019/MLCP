@@ -1,1 +1,104 @@
-{"link": "https://codeforces.com//contest/568/problem/B", "problemId": "32824", "problem_idx": "B", "shortId": "568B", "contest_number": "568", "problem_submissions": {"D": [12452919, 12452362, 12448661, 12453325, 12468492, 12468486, 12468483, 12451032, 12452255, 12452694, 12453501, 12453811, 12453450, 13003096, 12455889], "C": [12448571, 12455832, 12453103, 12456355, 12447177, 12448310, 12449857, 12450803, 12450475, 12451591, 12452278, 12452058, 12451086], "A": [12443004, 12441468, 12444210, 12441815, 12441971, 12443645, 12441974, 12441386, 12441504, 12441798, 12442012, 12441477, 12441565, 12442145, 12441398, 12441404, 12441967, 12457494, 12441406, 12441749], "B": [12441764, 12442322, 12442609, 12444738, 12444997, 12441522, 12443756, 12443073, 12442780, 12445676, 12444555, 12442448, 12443842, 12443319, 12443252, 12442442, 12442637, 12443546, 12444321], "E": [12455650]}, "name": "B. Symmetric and Transitive", "statement": "Little Johnny has recently learned about set theory. Now he is studying\r\nbinary relations. You\u2019ve probably heard the term \"equivalence relation\".\r\nThese relations are very important in many areas of mathematics. For\r\nexample, the equality of the two numbers is an equivalence relation.A\r\nset of pairs of elements of some set is called a binary relation on set\r\n. For two elements and of the set we say that they are in relation , if\r\npair , in this case we use a notation .Binary relation is , if: It is\r\nreflexive (for any it is true that ); It is symmetric (for any , it is\r\ntrue that if , then ); It is transitive (if and , than ).Little Johnny\r\nis not completely a fool and he noticed that the first condition is not\r\nnecessary! Here is his \"proof\":Take any two elements, and . If , then\r\n(according to property (2)), which means (according to property\r\n(3)).It\u2019s very simple, isn\u2019t it? However, you noticed that Johnny\u2019s\r\n\"proof\" is wrong, and decided to show him a lot of examples that prove\r\nhim wrong.Here\u2019s your task: count the number of binary relations over a\r\nset of size such that they are symmetric, transitive, but not an\r\nequivalence relations (i.e. they are not reflexive).Since their number\r\nmay be very large (not , according to Little Johnny), print the\r\nremainder of integer division of this number by .\r\n", "solutions": ["#include <iostream>\n#include <algorithm>\n#include <cmath>\n#include <cstring>\n#include <cstdlib>\n#include <string>\n#include <vector>\n#include <cstdio>\n#include <cassert>\n#include <ctime>\n\nusing namespace std;\n\ntypedef long long ll;\ntypedef long double ld;\n\n#ifdef WIN32\n\t#define LLD \"%I64d\"\n#else\n\t#define LLD \"%lld\"\n#endif\n\n#define pb push_back\n#define all(x) begin(x), end(x)\n\nconst int MOD = 1000000007;\n\nconst int maxn = 4005;\n\nint c[maxn][maxn];\nint cnt[maxn], cnt2[maxn];\n\nvoid add(int &a, ll b)\n{\n    a = (a + b) % MOD;\n}\n\nint main()\n{\n    int n;\n    scanf(\"%d\", &n);\n    c[0][0] = 1;\n    for (int i = 1; i <= n; i++)\n    {\n        c[i][0] = 1;\n        for (int j = 1; j <= i; j++) c[i][j] = (c[i - 1][j] + c[i - 1][j - 1]) % MOD;\n    }\n    cnt[0] = 1;\n    for (int i = 0; i < n; i++)\n    {\n        for (int j = 1; j + i <= n; j++) add(cnt[i + j], (ll)cnt[i] * c[n - i - 1][j - 1]);\n    }\n    cnt2[0] = 1;\n    for (int i = 0; i < n; i++)\n    {\n        for (int j = 1; j + i <= n; j++) add(cnt2[i + j], (ll)cnt2[i] * c[n - i - 1][j - 1]);\n        add(cnt2[i + 1], cnt2[i]);\n    }\n    int answer = (cnt2[n] - cnt[n] + MOD) % MOD;\n//     for (int i = 0; i < n; i++) add(answer, cnt[i]);\n    cout << answer << endl;\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["combinatorics", "dp", "math"], "dificulty": "1900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/568/problem/B",
+    "problemId": "32824",
+    "problem_idx": "B",
+    "shortId": "568B",
+    "contest_number": "568",
+    "problem_submissions": {
+        "D": [
+            12452919,
+            12452362,
+            12448661,
+            12453325,
+            12468492,
+            12468486,
+            12468483,
+            12451032,
+            12452255,
+            12452694,
+            12453501,
+            12453811,
+            12453450,
+            13003096,
+            12455889
+        ],
+        "C": [
+            12448571,
+            12455832,
+            12453103,
+            12456355,
+            12447177,
+            12448310,
+            12449857,
+            12450803,
+            12450475,
+            12451591,
+            12452278,
+            12452058,
+            12451086
+        ],
+        "A": [
+            12443004,
+            12441468,
+            12444210,
+            12441815,
+            12441971,
+            12443645,
+            12441974,
+            12441386,
+            12441504,
+            12441798,
+            12442012,
+            12441477,
+            12441565,
+            12442145,
+            12441398,
+            12441404,
+            12441967,
+            12457494,
+            12441406,
+            12441749
+        ],
+        "B": [
+            12441764,
+            12442322,
+            12442609,
+            12444738,
+            12444997,
+            12441522,
+            12443756,
+            12443073,
+            12442780,
+            12445676,
+            12444555,
+            12442448,
+            12443842,
+            12443319,
+            12443252,
+            12442442,
+            12442637,
+            12443546,
+            12444321
+        ],
+        "E": [
+            12455650
+        ]
+    },
+    "name": "B. Symmetric and Transitive",
+    "statement": "Little Johnny has recently learned about set theory. Now he is studying\r\nbinary relations. You\u2019ve probably heard the term \"equivalence relation\".\r\nThese relations are very important in many areas of mathematics. For\r\nexample, the equality of the two numbers is an equivalence relation.A\r\nset of pairs of elements of some set is called a binary relation on set\r\n. For two elements and of the set we say that they are in relation , if\r\npair , in this case we use a notation .Binary relation is , if: It is\r\nreflexive (for any it is true that ); It is symmetric (for any , it is\r\ntrue that if , then ); It is transitive (if and , than ).Little Johnny\r\nis not completely a fool and he noticed that the first condition is not\r\nnecessary! Here is his \"proof\":Take any two elements, and . If , then\r\n(according to property (2)), which means (according to property\r\n(3)).It\u2019s very simple, isn\u2019t it? However, you noticed that Johnny\u2019s\r\n\"proof\" is wrong, and decided to show him a lot of examples that prove\r\nhim wrong.Here\u2019s your task: count the number of binary relations over a\r\nset of size such that they are symmetric, transitive, but not an\r\nequivalence relations (i.e. they are not reflexive).Since their number\r\nmay be very large (not , according to Little Johnny), print the\r\nremainder of integer division of this number by .\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <algorithm>\n#include <cmath>\n#include <cstring>\n#include <cstdlib>\n#include <string>\n#include <vector>\n#include <cstdio>\n#include <cassert>\n#include <ctime>\n\nusing namespace std;\n\ntypedef long long ll;\ntypedef long double ld;\n\n#ifdef WIN32\n\t#define LLD \"%I64d\"\n#else\n\t#define LLD \"%lld\"\n#endif\n\n#define pb push_back\n#define all(x) begin(x), end(x)\n\nconst int MOD = 1000000007;\n\nconst int maxn = 4005;\n\nint c[maxn][maxn];\nint cnt[maxn], cnt2[maxn];\n\nvoid add(int &a, ll b)\n{\n    a = (a + b) % MOD;\n}\n\nint main()\n{\n    int n;\n    scanf(\"%d\", &n);\n    c[0][0] = 1;\n    for (int i = 1; i <= n; i++)\n    {\n        c[i][0] = 1;\n        for (int j = 1; j <= i; j++) c[i][j] = (c[i - 1][j] + c[i - 1][j - 1]) % MOD;\n    }\n    cnt[0] = 1;\n    for (int i = 0; i < n; i++)\n    {\n        for (int j = 1; j + i <= n; j++) add(cnt[i + j], (ll)cnt[i] * c[n - i - 1][j - 1]);\n    }\n    cnt2[0] = 1;\n    for (int i = 0; i < n; i++)\n    {\n        for (int j = 1; j + i <= n; j++) add(cnt2[i + j], (ll)cnt2[i] * c[n - i - 1][j - 1]);\n        add(cnt2[i + 1], cnt2[i]);\n    }\n    int answer = (cnt2[n] - cnt[n] + MOD) % MOD;\n//     for (int i = 0; i < n; i++) add(answer, cnt[i]);\n    cout << answer << endl;\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "combinatorics",
+        "dp",
+        "math"
+    ],
+    "dificulty": "1900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Symmetric and Transitive.json",
+    "editorial_link": "https://codeforces.com//blog/entry/19705",
+    "editorial": "Let\u00e2\u0080\u0099s find Johnny\u00e2\u0080\u0099s mistake. It is all right in his proof except \u00e2\u0080\u009cIf \u00e2\u0080\u009d\r\npart. What if there is no such for an given ? Then obviously otherwise\r\nwe\u00e2\u0080\u0099ll take . We can see that our binary relation is some equivalence\r\nrelation which was expanded by some \"empty\" elements. For \"empty\"\r\nelement there is no such that . Thus we can divide our solution into two\r\nparts: Count the number of equivalence relations on sets of size For\r\nevery size count the number of ways to expand it with some \"empty\"\r\nelements. We can define equivalence relation using its equivalence\r\nclasses. So first part can be solved using dynamic programming: the\r\nnumbers of ways to divide first elements to equivalence classes. When we\r\nhandle next element we can send it to one of the existing equivalence\r\nclasses or we can create new class. Let\u00e2\u0080\u0099s solve second part. Consider\r\nset of size . We have found that there are ways to build equivalence\r\nrelation on this set. We have to add \"empty\" elements to this set. The\r\nnumber of ways to choose their positions is . We can calculate all the\r\nbinomial coefficients using Pascal\u00e2\u0080\u0099s triangle. So the answer to the\r\nproblem is . Complexity\r\n"
+}

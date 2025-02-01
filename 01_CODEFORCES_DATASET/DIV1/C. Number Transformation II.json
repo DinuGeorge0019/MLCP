@@ -1,1 +1,93 @@
-{"link": "https://codeforces.com//contest/346/problem/C", "problemId": "3505", "problem_idx": "C", "shortId": "346C", "contest_number": "346", "problem_submissions": {"D": [4517003, 4516053, 4520303, 4518426, 4519668, 4519453, 4520044, 4520308, 4520598, 4519925, 4520328, 4536609, 4520171], "C": [4514630, 4512046, 4516249, 4515877, 4517922, 4517089, 4517025, 4518644, 4518590, 4531944, 4516902, 4518219, 4522630, 4512654, 4519217], "B": [4513206, 4517360, 4514492, 4514065, 4515596, 4513931, 4513764, 4514197, 4516093, 4513703, 4523738, 4523122, 4518694, 4514752], "A": [4511118, 4513688, 4511296, 4511103, 4511703, 4511202, 4511179, 4510998, 4512725, 4511681, 4510991, 4511097, 4513241, 4515270], "E": [155070489, 4717703]}, "name": "C. Number Transformation II", "statement": "You are given a sequence of positive integers and two non-negative\r\nintegers and . Your task is to transform into . To do that, you can\r\nperform the following moves: subtract 1 from the current ; subtract mod\r\nfrom the current . Operation mod means taking the remainder after\r\ndivision of number by number .Now you want to know the minimum number of\r\nmoves needed to transform into .\r\n", "solutions": ["#include <algorithm>\n#include <iostream>\n#include <iomanip>\n#include <complex>\n#include <cstring>\n#include <cstdlib>\n#include <string>\n#include <vector>\n#include <cstdio>\n#include <cmath>\n#include <map>\n#include <set>\nusing namespace std;\n//#pragma comment(linker,\"/STACK:102400000,102400000\")\n\nint n;\nvector <int> xs;\nvector <int> nex_xs;\nint A, B;\n\nmap <int, int> occur;\n\nint MAIN()\n{\n\tcin >> n;\n\tfor(int i = 1; i <= n; i++)\n\t{\n\t\tint t;\n\t\tcin >> t;\n\t\tif(!occur.count(t))\n\t\t\txs.push_back(t);\n\t\toccur[t] = 1;\n\t}\n\tcin >> A >> B;\n\tint ans = 0;\n\twhile(A != B)\n\t{\n\t\tnex_xs.clear();\n\t\tint bestA = A - 1;\n\t\tfor(int i = 0; i < xs.size(); i++)\n\t\t{\n\t\t\tint t = xs[i];\n\t\t\tint v = (A / t) * t;\n\t\t\tif(v >= B)\n\t\t\t{\n\t\t\t\tnex_xs.push_back(t);\n\t\t\t\tbestA = min(bestA, v);\n\t\t\t}\n\t\t}\n\t\tA = bestA;\n\t\txs = nex_xs;\n\t\tans ++;\n\t}\n\tcout << ans << endl;\n\treturn 0;\n}\n\nint main()\n{\n\t#ifdef LOCAL_TEST\n\t\tfreopen(\"in.txt\", \"r\", stdin);\n\t\tfreopen(\"out.txt\", \"w\", stdout);\n\t#endif\n\tios :: sync_with_stdio(false);\n\tcout << fixed << setprecision(16);\n\treturn MAIN();\n}\n"], "input": "", "output": "", "tags": ["greedy", "math"], "dificulty": "2200", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/346/problem/C",
+    "problemId": "3505",
+    "problem_idx": "C",
+    "shortId": "346C",
+    "contest_number": "346",
+    "problem_submissions": {
+        "D": [
+            4517003,
+            4516053,
+            4520303,
+            4518426,
+            4519668,
+            4519453,
+            4520044,
+            4520308,
+            4520598,
+            4519925,
+            4520328,
+            4536609,
+            4520171
+        ],
+        "C": [
+            4514630,
+            4512046,
+            4516249,
+            4515877,
+            4517922,
+            4517089,
+            4517025,
+            4518644,
+            4518590,
+            4531944,
+            4516902,
+            4518219,
+            4522630,
+            4512654,
+            4519217
+        ],
+        "B": [
+            4513206,
+            4517360,
+            4514492,
+            4514065,
+            4515596,
+            4513931,
+            4513764,
+            4514197,
+            4516093,
+            4513703,
+            4523738,
+            4523122,
+            4518694,
+            4514752
+        ],
+        "A": [
+            4511118,
+            4513688,
+            4511296,
+            4511103,
+            4511703,
+            4511202,
+            4511179,
+            4510998,
+            4512725,
+            4511681,
+            4510991,
+            4511097,
+            4513241,
+            4515270
+        ],
+        "E": [
+            155070489,
+            4717703
+        ]
+    },
+    "name": "C. Number Transformation II",
+    "statement": "You are given a sequence of positive integers and two non-negative\r\nintegers and . Your task is to transform into . To do that, you can\r\nperform the following moves: subtract 1 from the current ; subtract mod\r\nfrom the current . Operation mod means taking the remainder after\r\ndivision of number by number .Now you want to know the minimum number of\r\nmoves needed to transform into .\r\n",
+    "solutions": [
+        "#include <algorithm>\n#include <iostream>\n#include <iomanip>\n#include <complex>\n#include <cstring>\n#include <cstdlib>\n#include <string>\n#include <vector>\n#include <cstdio>\n#include <cmath>\n#include <map>\n#include <set>\nusing namespace std;\n//#pragma comment(linker,\"/STACK:102400000,102400000\")\n\nint n;\nvector <int> xs;\nvector <int> nex_xs;\nint A, B;\n\nmap <int, int> occur;\n\nint MAIN()\n{\n\tcin >> n;\n\tfor(int i = 1; i <= n; i++)\n\t{\n\t\tint t;\n\t\tcin >> t;\n\t\tif(!occur.count(t))\n\t\t\txs.push_back(t);\n\t\toccur[t] = 1;\n\t}\n\tcin >> A >> B;\n\tint ans = 0;\n\twhile(A != B)\n\t{\n\t\tnex_xs.clear();\n\t\tint bestA = A - 1;\n\t\tfor(int i = 0; i < xs.size(); i++)\n\t\t{\n\t\t\tint t = xs[i];\n\t\t\tint v = (A / t) * t;\n\t\t\tif(v >= B)\n\t\t\t{\n\t\t\t\tnex_xs.push_back(t);\n\t\t\t\tbestA = min(bestA, v);\n\t\t\t}\n\t\t}\n\t\tA = bestA;\n\t\txs = nex_xs;\n\t\tans ++;\n\t}\n\tcout << ans << endl;\n\treturn 0;\n}\n\nint main()\n{\n\t#ifdef LOCAL_TEST\n\t\tfreopen(\"in.txt\", \"r\", stdin);\n\t\tfreopen(\"out.txt\", \"w\", stdout);\n\t#endif\n\tios :: sync_with_stdio(false);\n\tcout << fixed << setprecision(16);\n\treturn MAIN();\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "greedy",
+        "math"
+    ],
+    "dificulty": "2200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Number Transformation II.json",
+    "editorial_link": "https://codeforces.com//blog/entry/8903",
+    "editorial": "Brief description:\nYou have a number b, and want to minus it to a, what you can do in each step is weather subtract 1 or b mod xi from b. And we ask what is the minimum number of steps you need.\n\nAnalysis:\nI bet there is a few people know the greedy method even if he/she have solved the early version before.\n\nCodeforces #153 Div 1. Problem C. Number Transformation\n\nLet dp[k] denotes the minimum number of steps to transform b+k to b. In each step, you could only choose i which makes b+k-(b+k) mod x[i] minimal to calc dp[k]. It works bacause dp[0..k-1] is a monotone increasing function. Proof: - Say dp[k]=dp[k-t]+1.If t==1, then dp[0..k] is monotone increasing obviously.Otherwise dp[k-1]<=dp[k-t]+1=dp[k] (there must exist a x[i] makes b+k-1 also transform to b+k-t,and it is not necessarily the optimal decision of dp[k-1]). So dp[k] is a monotone increasing function, we can greedily calc dp[a-b].\n\nIn the first glance, it looks like something which will run in square complexity. But actually is linear. That is because, we could cut exactly max{xi} in each 2 step. It can be proof by induction.\n\nSo the remians work is to delete those same xi, and watch out some situation could cause degeneration. Many of us failed in this last step and got TLE"
+}

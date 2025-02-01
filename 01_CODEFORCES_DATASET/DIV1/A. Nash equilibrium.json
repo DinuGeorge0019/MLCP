@@ -1,0 +1,48 @@
+{
+    "link": "https://codeforces.com//contest/1302/problem/A",
+    "problemId": "530371",
+    "problem_idx": "A",
+    "shortId": "1302A",
+    "contest_number": "1302",
+    "problem_submissions": {
+        "G": [
+            70178308,
+            70181430
+        ],
+        "F": [
+            70174410,
+            70180942
+        ],
+        "B": [
+            70169462,
+            70166865
+        ],
+        "C": [
+            70167717,
+            70168002
+        ],
+        "A": [
+            70167198,
+            70167522
+        ],
+        "J": [
+            70183433
+        ],
+        "D": [
+            70170852
+        ]
+    },
+    "editorial_link": "https://codeforces.com//blog/entry/73599",
+    "editorial": "The solution itself is straightforward: for each row we mark all\r\nelements but the only maximal element (if exists) as not suitable for\r\nbeing the Nash equilibria, then do similarly for columns, then output\r\nthe lexicographically minimal unmarked cell. The bug was reading and\r\ninstead of and respectively, we hoped that the fact that the only two\r\nsamples were square and a table filled with equal elements should be a\r\nhint for everyone who have made this mistake at least once in their\r\nlife.\r\n",
+    "name": "A. Nash equilibrium",
+    "statement": "You are given a table A of integers n\r\ntimes m. The cell (x, y) is called if both of the following conditions\r\nhold: for each x_1\r\nneq x A_{xy} > A_{x_1y}; for each y_1\r\nneq y A_{xy} < A_{xy_1}. Find a Nash equilibrium in A. If there exist\r\nseveral equilibria, print the one with minimum x. If still there are\r\nseveral possible answers, print the one with minimum y.\r\n",
+    "solutions": [
+        "#include <bits/stdc++.h> using i64 = long long; int main() {    std::ios::sync_with_stdio(false);    std::cin.tie(nullptr);        int n;    std::cin >> n;        std::vector<int> a(n);    for (int i = 0; i < n; i++) {        std::cin >> a[i];    }        std::vector<std::vector<int>> adj(n);        for (int i = 1; i < n; i++) {        int u, v;        std::cin >> u >> v;        u--, v--;        adj[u].push_back(v);        adj[v].push_back(u);    }        std::vector<int> dp(n), t(n);    std::vector<std::set<int>> s(n);    std::function<void(int, int)> dfs = [&](int x, int p) {        std::map<int, int> cnt;        if (adj[x].size() == 1 && x) {            s[x].insert(0);            dp[x] = 1;        }        for (auto y : adj[x]) {            if (y == p) {                continue;            }            dfs(y, x);            dp[x] += dp[y] + 1;            if (s[x].size() < s[y].size()) {                std::swap(s[x], s[y]);                std::swap(t[x], t[y]);            }            for (auto z : s[y]) {                z ^= t[x] ^ t[y];                if (s[x].count(z)) {                    cnt[z ^ t[x]]++;                } else {                    s[x].insert(z);                }            }        }        if (!cnt.empty()) {            int mx = 0;            for (auto [_, v] : cnt) {                mx = std::max(mx, v);            }            dp[x] -= mx + 1;            s[x].clear();            t[x] = a[x];            for (auto [z, v] : cnt) {                if (v == mx) {                    s[x].insert(z);                }            }        } else {            dp[x] -= 1;            t[x] ^= a[x];        }    };    dfs(0, -1);        int ans = dp[0] + !s[0].count(t[0]);    std::cout << ans << \"\\n\";        return 0;}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [],
+    "dificulty": "",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Nash equilibrium.json"
+}

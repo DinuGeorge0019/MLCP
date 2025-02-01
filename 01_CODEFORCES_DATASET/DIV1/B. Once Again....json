@@ -1,1 +1,104 @@
-{"link": "https://codeforces.com//contest/582/problem/B", "problemId": "37186", "problem_idx": "B", "shortId": "582B", "contest_number": "582", "problem_submissions": {"E": [13382538, 13381116, 13378028, 13383504, 13383506, 13383917, 13383602, 145895898], "C": [13373394, 13375255, 13380779, 13374298, 13373776, 13372716, 13377174, 13375147, 13375206, 13375348, 13372216, 13373000, 13376950, 13374416, 13374597, 13371567, 13392220, 13380106, 13374816, 13375408], "B": [13370935, 13371321, 13372509, 13370999, 13368381, 13369232, 13374738, 13371115, 13372424, 13370249, 13368449, 13368172, 13372435, 13368862, 13369702, 13365121, 13392237, 13392226, 13370380, 13369378, 13369857], "A": [13366333, 13368173, 13364878, 13363160, 13374636, 13383874, 13368333, 13365806, 13366818, 13363090, 13364145, 13365273, 13365002, 13363636, 13374162, 13365145, 13364246, 13363367], "D": [13463010]}, "name": "B. Once Again...", "statement": "You are given an array of positive integers of length . We know that for\r\nany it is true that . Find the length of the longest non-decreasing\r\nsequence of the given array.\r\n", "solutions": ["#include<bits/stdc++.h>\nusing namespace std;\n\nconst int INF = 1e9;\n\nconst int MAXN = 200;\nconst int MAXV = 400;\n\nconst int V = 310;\n\nint N;\nint T;\n\nint A[MAXV];\n\nint dp[MAXV][MAXV];\nint res[MAXV][MAXV];\nint tmp[MAXV][MAXV];\n\nvoid mult(int a[MAXV][MAXV], int b[MAXV][MAXV]) {\n\tfor(int i = 0; i < V; i++) {\n\t\tfor(int j = i; j < V; j++) {\n\t\t\ttmp[i][j] = 0;\n\t\t\tfor(int k = i; k <= j; k++) {\n\t\t\t\ttmp[i][j] = max(tmp[i][j], a[i][k] + b[k][j]);\n\t\t\t}\n\t\t}\n\t}\n\tfor(int i = 0; i < V; i++) {\n\t\tfor(int j = i; j < V; j++) {\n\t\t\ta[i][j] = tmp[i][j];\n\t\t}\n\t}\n}\n\nint main() {\n\tios_base::sync_with_stdio(0);\n\tcin >> N;\n\tcin >> T;\n\tmemset(dp, 0, sizeof(dp));\n\tmemset(res, 0, sizeof(res));\n\tfor(int t = 0; t < N; t++) {\n\t\tint v; cin >> v;\n\t\tfor(int i = 0; i <= v; i++) {\n\t\t\tint cnt = 0;\n\t\t\tfor(int j = i; j <= v; j++) {\n\t\t\t\tcnt = max(cnt, dp[i][j]);\n\t\t\t}\n\t\t\tdp[i][v] = max(dp[i][v], cnt + 1);\n\t\t}\n\t}\n\twhile(T) {\n\t\tif(T % 2) {\n\t\t\tmult(res, dp);\n\t\t}\n\t\tmult(dp, dp);\n\t\tT /= 2;\n\t}\n\tint ans = 0;\n\tfor(int i = 0; i < V; i++) {\n\t\tfor(int j = i; j < V; j++) {\n\t\t\tans = max(ans, res[i][j]);\n\t\t}\n\t}\n\tcout << ans << '\\n';\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["constructive algorithms", "dp", "matrices"], "dificulty": "1900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/582/problem/B",
+    "problemId": "37186",
+    "problem_idx": "B",
+    "shortId": "582B",
+    "contest_number": "582",
+    "problem_submissions": {
+        "E": [
+            13382538,
+            13381116,
+            13378028,
+            13383504,
+            13383506,
+            13383917,
+            13383602,
+            145895898
+        ],
+        "C": [
+            13373394,
+            13375255,
+            13380779,
+            13374298,
+            13373776,
+            13372716,
+            13377174,
+            13375147,
+            13375206,
+            13375348,
+            13372216,
+            13373000,
+            13376950,
+            13374416,
+            13374597,
+            13371567,
+            13392220,
+            13380106,
+            13374816,
+            13375408
+        ],
+        "B": [
+            13370935,
+            13371321,
+            13372509,
+            13370999,
+            13368381,
+            13369232,
+            13374738,
+            13371115,
+            13372424,
+            13370249,
+            13368449,
+            13368172,
+            13372435,
+            13368862,
+            13369702,
+            13365121,
+            13392237,
+            13392226,
+            13370380,
+            13369378,
+            13369857
+        ],
+        "A": [
+            13366333,
+            13368173,
+            13364878,
+            13363160,
+            13374636,
+            13383874,
+            13368333,
+            13365806,
+            13366818,
+            13363090,
+            13364145,
+            13365273,
+            13365002,
+            13363636,
+            13374162,
+            13365145,
+            13364246,
+            13363367
+        ],
+        "D": [
+            13463010
+        ]
+    },
+    "name": "B. Once Again...",
+    "statement": "You are given an array of positive integers of length . We know that for\r\nany it is true that . Find the length of the longest non-decreasing\r\nsequence of the given array.\r\n",
+    "solutions": [
+        "#include<bits/stdc++.h>\nusing namespace std;\n\nconst int INF = 1e9;\n\nconst int MAXN = 200;\nconst int MAXV = 400;\n\nconst int V = 310;\n\nint N;\nint T;\n\nint A[MAXV];\n\nint dp[MAXV][MAXV];\nint res[MAXV][MAXV];\nint tmp[MAXV][MAXV];\n\nvoid mult(int a[MAXV][MAXV], int b[MAXV][MAXV]) {\n\tfor(int i = 0; i < V; i++) {\n\t\tfor(int j = i; j < V; j++) {\n\t\t\ttmp[i][j] = 0;\n\t\t\tfor(int k = i; k <= j; k++) {\n\t\t\t\ttmp[i][j] = max(tmp[i][j], a[i][k] + b[k][j]);\n\t\t\t}\n\t\t}\n\t}\n\tfor(int i = 0; i < V; i++) {\n\t\tfor(int j = i; j < V; j++) {\n\t\t\ta[i][j] = tmp[i][j];\n\t\t}\n\t}\n}\n\nint main() {\n\tios_base::sync_with_stdio(0);\n\tcin >> N;\n\tcin >> T;\n\tmemset(dp, 0, sizeof(dp));\n\tmemset(res, 0, sizeof(res));\n\tfor(int t = 0; t < N; t++) {\n\t\tint v; cin >> v;\n\t\tfor(int i = 0; i <= v; i++) {\n\t\t\tint cnt = 0;\n\t\t\tfor(int j = i; j <= v; j++) {\n\t\t\t\tcnt = max(cnt, dp[i][j]);\n\t\t\t}\n\t\t\tdp[i][v] = max(dp[i][v], cnt + 1);\n\t\t}\n\t}\n\twhile(T) {\n\t\tif(T % 2) {\n\t\t\tmult(res, dp);\n\t\t}\n\t\tmult(dp, dp);\n\t\tT /= 2;\n\t}\n\tint ans = 0;\n\tfor(int i = 0; i < V; i++) {\n\t\tfor(int j = i; j < V; j++) {\n\t\t\tans = max(ans, res[i][j]);\n\t\t}\n\t}\n\tcout << ans << '\\n';\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "dp",
+        "matrices"
+    ],
+    "dificulty": "1900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Once Again....json",
+    "editorial_link": "https://codeforces.com//blog/entry/20692",
+    "editorial": ". I tried observing the state of the matrix after each line, for various\r\ninputs, but still couldn\u00e2\u0080\u0099t get the intuition behind this relation. Can\r\nsomeone please explain it?\r\n"
+}

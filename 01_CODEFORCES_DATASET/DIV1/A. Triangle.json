@@ -1,1 +1,97 @@
-{"link": "https://codeforces.com//contest/407/problem/A", "problemId": "7731", "problem_idx": "A", "shortId": "407A", "contest_number": "407", "problem_submissions": {"D": [6186438, 6183272, 6186415, 6188995, 6186843], "C": [6183229, 6184237, 6184448, 6181726, 6183048, 6186206, 6183334, 6183650, 6187229, 6183606, 6183728, 6181678, 6184812, 6186103, 6186307, 6184286, 6185997], "A": [6179819, 6185054, 6178519, 6178154, 6178508, 6178273, 6178388, 6178848, 6178615, 6178776, 6179374, 6178369, 6179907, 6178927, 6178200, 6187273, 6182603, 6178438], "B": [6178779, 6180059, 6180299, 6179261, 6180911, 6179733, 6180104, 6180969, 6180700, 6180320, 6180917, 6186380, 6181105, 6180890, 6180916, 6181007, 6182073, 6187181], "E": [6198010, 6190656]}, "name": "A. Triangle", "statement": "There is a right triangle with legs of length and . Your task is to\r\ndetermine whether it is possible to locate the triangle on the plane in\r\nsuch a way that none of its sides is parallel to the coordinate axes.\r\nAll the vertices must have integer coordinates. If there exists such a\r\nlocation, you have to output the appropriate coordinates of vertices.\r\n", "solutions": ["#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <set>\n#include <vector>\n#include <map>\n#include <cmath>\n#include <algorithm>\n#include <memory.h>\n#include <string>\n#include <cstring>\n#include <sstream>\n#include <cstdlib>\n#include <ctime>\n#include <cassert>\n\nusing namespace std;\n\nint gcd(int a, int b) {\n  while (a > 0 && b > 0)\n    if (a > b) a %= b;\n    else b %= a;\n  return a + b;\n}\n\nvoid test(int xa, int ya, int xb, int yb) {\n  if (xa == xb || ya == yb || xb == 0 || yb == 0) {\n    return;\n  }\n  puts(\"YES\");\n  printf(\"%d %d\\n\", 0, 0);\n  printf(\"%d %d\\n\", xa, ya);\n  printf(\"%d %d\\n\", xb, yb);\n  exit(0);\n}\n\nint main() {\n  int a, b;\n  scanf(\"%d %d\", &a, &b);\n  for (int x = 1; x <= a; x++)\n    for (int y = 1; y <= a; y++)\n      if (x * x + y * y == a * a) {\n        int g = gcd(x, y);\n        int dx = x / g, dy = y / g;\n        int u = dx * dx + dy * dy;\n        int v = b * b;\n        if (v % u != 0) {\n          continue;\n        }\n        if (v % u == 0) {\n          int ratio = v / u;\n          int k = (int)sqrt(1.0 * ratio);\n          while (k * k < ratio) k++;\n          while (k * k > ratio) k--;\n          if (k * k == ratio) {\n            test(x, y, -dy * k, dx * k);\n            test(x, y, dy * k, -dx * k);\n          }\n        }\n      }\n  puts(\"NO\");\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["brute force", "geometry", "implementation", "math"], "dificulty": "1600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/407/problem/A",
+    "problemId": "7731",
+    "problem_idx": "A",
+    "shortId": "407A",
+    "contest_number": "407",
+    "problem_submissions": {
+        "D": [
+            6186438,
+            6183272,
+            6186415,
+            6188995,
+            6186843
+        ],
+        "C": [
+            6183229,
+            6184237,
+            6184448,
+            6181726,
+            6183048,
+            6186206,
+            6183334,
+            6183650,
+            6187229,
+            6183606,
+            6183728,
+            6181678,
+            6184812,
+            6186103,
+            6186307,
+            6184286,
+            6185997
+        ],
+        "A": [
+            6179819,
+            6185054,
+            6178519,
+            6178154,
+            6178508,
+            6178273,
+            6178388,
+            6178848,
+            6178615,
+            6178776,
+            6179374,
+            6178369,
+            6179907,
+            6178927,
+            6178200,
+            6187273,
+            6182603,
+            6178438
+        ],
+        "B": [
+            6178779,
+            6180059,
+            6180299,
+            6179261,
+            6180911,
+            6179733,
+            6180104,
+            6180969,
+            6180700,
+            6180320,
+            6180917,
+            6186380,
+            6181105,
+            6180890,
+            6180916,
+            6181007,
+            6182073,
+            6187181
+        ],
+        "E": [
+            6198010,
+            6190656
+        ]
+    },
+    "name": "A. Triangle",
+    "statement": "There is a right triangle with legs of length and . Your task is to\r\ndetermine whether it is possible to locate the triangle on the plane in\r\nsuch a way that none of its sides is parallel to the coordinate axes.\r\nAll the vertices must have integer coordinates. If there exists such a\r\nlocation, you have to output the appropriate coordinates of vertices.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <set>\n#include <vector>\n#include <map>\n#include <cmath>\n#include <algorithm>\n#include <memory.h>\n#include <string>\n#include <cstring>\n#include <sstream>\n#include <cstdlib>\n#include <ctime>\n#include <cassert>\n\nusing namespace std;\n\nint gcd(int a, int b) {\n  while (a > 0 && b > 0)\n    if (a > b) a %= b;\n    else b %= a;\n  return a + b;\n}\n\nvoid test(int xa, int ya, int xb, int yb) {\n  if (xa == xb || ya == yb || xb == 0 || yb == 0) {\n    return;\n  }\n  puts(\"YES\");\n  printf(\"%d %d\\n\", 0, 0);\n  printf(\"%d %d\\n\", xa, ya);\n  printf(\"%d %d\\n\", xb, yb);\n  exit(0);\n}\n\nint main() {\n  int a, b;\n  scanf(\"%d %d\", &a, &b);\n  for (int x = 1; x <= a; x++)\n    for (int y = 1; y <= a; y++)\n      if (x * x + y * y == a * a) {\n        int g = gcd(x, y);\n        int dx = x / g, dy = y / g;\n        int u = dx * dx + dy * dy;\n        int v = b * b;\n        if (v % u != 0) {\n          continue;\n        }\n        if (v % u == 0) {\n          int ratio = v / u;\n          int k = (int)sqrt(1.0 * ratio);\n          while (k * k < ratio) k++;\n          while (k * k > ratio) k--;\n          if (k * k == ratio) {\n            test(x, y, -dy * k, dx * k);\n            test(x, y, dy * k, -dx * k);\n          }\n        }\n      }\n  puts(\"NO\");\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "geometry",
+        "implementation",
+        "math"
+    ],
+    "dificulty": "1600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Triangle.json",
+    "editorial_link": "https://codeforces.com//blog/entry/11333",
+    "editorial": "In this problem you have to locate the right triangle with cathetuses ,\r\non a plane with its vertices in integer points. If the required layout\r\nexists, then cathetus always can be represented as a vector with integer\r\ncoordinates , and . Iterate over all possible (), check, that is\r\ninteger. Vector, ortogonal to vector , is . Take vector , where . The\r\ntriangle can be located on the plane if and only if\r\n"
+}

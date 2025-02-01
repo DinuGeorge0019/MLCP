@@ -1,1 +1,93 @@
-{"link": "https://codeforces.com//contest/262/problem/E", "problemId": "2510", "problem_idx": "E", "shortId": "262E", "contest_number": "262", "problem_submissions": {"E": [2917574, 2919991, 2920217], "C": [2915597, 2915456, 2915755, 2915133, 2915067, 2914439, 2920021, 2916661, 2917064, 2914971, 2916258, 2915804, 2915424, 2916306, 2915632, 2920899], "B": [2912801, 2913308, 2913727, 2913223, 2912896, 2915860, 2912738, 2913934, 2914694, 2913939, 2914490, 2913702, 2913690, 2913451, 2913711, 2912803], "A": [2911759, 2911860, 2912304, 2911748, 2911806, 2914884, 2911799, 2911959, 2912048, 2914184, 2912000, 2911981, 2911895, 2911859, 2912010, 2911726], "D": [2918906, 2919971, 2920564, 2920441, 2919464, 2920502, 2920612, 2918080]}, "name": "E. Maxim and Matrix", "statement": "Maxim loves to fill in a matrix in a special manner. Here is a\r\npseudocode of filling in a matrix of size :Maxim asks you to count, how\r\nmany numbers are there, such that the sum of values in the cells in the\r\nrow number of the resulting matrix equals .Expression ( ) means applying\r\nthe operation of bitwise excluding \"OR\" to numbers and . The given\r\noperation exists in all modern programming languages. For example, in\r\nlanguages and it is represented by character \"\", in by \"\".\r\n", "solutions": ["#include <iostream>\n#include <cstdio>\nusing namespace std;\nlong long n,t,ll1,tmp,now;\nint i,j,g;\nlong long dp[100][100],b[100];\nint main()\n{\n\tcin >> n >> t;\n\tb[1]=1;\n\tfor(i=2;i<=50;i++)\n\t\tb[i]=b[i-1]<<1;\n\tfor(i=1;i<=50;i++)\n\t\tif(t==b[i]) break;\n\tif(t!=b[i])\n\t{\n\t\tcout << 0 << endl;\n\t\treturn 0;\n\t}\n\tt=i;\n\tn+=2;\n\tll1=1;\n\tfor(i=50;i>=0;i--)\n\t{\n\t\ttmp=ll1<<i;\n\t\tif(n&tmp)\n\t\t{\n\t\t\tdp[i][g]=1;\n\t\t\tnow=now+(n&tmp);\n\t\t\tg++;\n\t\t}\n\t}\n\tfor(i=50;i>=0;i--)\n\t\tfor(j=0;j<=60;j++)\n\t\t\tdp[i][j]=dp[i][j]+dp[i+1][j-1]+dp[i+1][j];\n\tif(t==1) dp[0][t]--;\n\tcout << dp[0][t] << endl;\n\t//ystem(\"pause\");\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["dp"], "dificulty": "2000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/262/problem/E",
+    "problemId": "2510",
+    "problem_idx": "E",
+    "shortId": "262E",
+    "contest_number": "262",
+    "problem_submissions": {
+        "E": [
+            2917574,
+            2919991,
+            2920217
+        ],
+        "C": [
+            2915597,
+            2915456,
+            2915755,
+            2915133,
+            2915067,
+            2914439,
+            2920021,
+            2916661,
+            2917064,
+            2914971,
+            2916258,
+            2915804,
+            2915424,
+            2916306,
+            2915632,
+            2920899
+        ],
+        "B": [
+            2912801,
+            2913308,
+            2913727,
+            2913223,
+            2912896,
+            2915860,
+            2912738,
+            2913934,
+            2914694,
+            2913939,
+            2914490,
+            2913702,
+            2913690,
+            2913451,
+            2913711,
+            2912803
+        ],
+        "A": [
+            2911759,
+            2911860,
+            2912304,
+            2911748,
+            2911806,
+            2914884,
+            2911799,
+            2911959,
+            2912048,
+            2914184,
+            2912000,
+            2911981,
+            2911895,
+            2911859,
+            2912010,
+            2911726
+        ],
+        "D": [
+            2918906,
+            2919971,
+            2920564,
+            2920441,
+            2919464,
+            2920502,
+            2920612,
+            2918080
+        ]
+    },
+    "name": "E. Maxim and Matrix",
+    "statement": "Maxim loves to fill in a matrix in a special manner. Here is a\r\npseudocode of filling in a matrix of size :Maxim asks you to count, how\r\nmany numbers are there, such that the sum of values in the cells in the\r\nrow number of the resulting matrix equals .Expression ( ) means applying\r\nthe operation of bitwise excluding \"OR\" to numbers and . The given\r\noperation exists in all modern programming languages. For example, in\r\nlanguages and it is represented by character \"\", in by \"\".\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <cstdio>\nusing namespace std;\nlong long n,t,ll1,tmp,now;\nint i,j,g;\nlong long dp[100][100],b[100];\nint main()\n{\n\tcin >> n >> t;\n\tb[1]=1;\n\tfor(i=2;i<=50;i++)\n\t\tb[i]=b[i-1]<<1;\n\tfor(i=1;i<=50;i++)\n\t\tif(t==b[i]) break;\n\tif(t!=b[i])\n\t{\n\t\tcout << 0 << endl;\n\t\treturn 0;\n\t}\n\tt=i;\n\tn+=2;\n\tll1=1;\n\tfor(i=50;i>=0;i--)\n\t{\n\t\ttmp=ll1<<i;\n\t\tif(n&tmp)\n\t\t{\n\t\t\tdp[i][g]=1;\n\t\t\tnow=now+(n&tmp);\n\t\t\tg++;\n\t\t}\n\t}\n\tfor(i=50;i>=0;i--)\n\t\tfor(j=0;j<=60;j++)\n\t\t\tdp[i][j]=dp[i][j]+dp[i+1][j-1]+dp[i+1][j];\n\tif(t==1) dp[0][t]--;\n\tcout << dp[0][t] << endl;\n\t//ystem(\"pause\");\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp"
+    ],
+    "dificulty": "2000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Maxim and Matrix.json",
+    "editorial_link": "https://codeforces.com//blog/entry/6398",
+    "editorial": "For fixed m, the sum in the last row will be 2^(bit_count(m+1)-1). So now if T is not power of 2, answer is 0. Else we can find number of bits that we need. And know we have stndart problem. How many numbers form 2 to n+1 have exactly P bits in binary presentation of the number. It is well known problem can be done using binomial cooficients. We will count number of numebers smaller then out number with fixed prefix.\n"
+}

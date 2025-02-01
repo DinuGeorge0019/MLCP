@@ -1,1 +1,105 @@
-{"link": "https://codeforces.com//contest/498/problem/D", "problemId": "19902", "problem_idx": "D", "shortId": "498D", "contest_number": "498", "problem_submissions": {"E": [9254353, 9255134, 9255917, 9257774, 9256751, 9258696, 9256130, 9254869, 9255218, 9257482, 9259085, 9259412, 9293653], "D": [9252551, 9253707, 9253982, 9253218, 9254235, 9256783, 9248603, 9260246, 9259443, 9259317, 9251692, 9252178, 9254847, 9253161, 9255257, 9254544, 9255567], "C": [9251331, 9245747, 9250927, 9247459, 9249177, 9251204, 9249816, 9248998, 9251162, 9248001, 9250917, 9253358], "B": [9248724, 9250737, 9247577, 9260817, 9250130, 9252321, 9249119, 9253380, 9258038, 9252693, 9253079, 9252863, 9250195], "A": [9245371, 9251410, 9245412, 9245364, 9247095, 9245481, 9245345, 9245357, 9245352, 9245488, 9245360, 9245992, 9246642, 9245626]}, "name": "D. Traffic Jams in the Land", "statement": "Some country consists of cities, located along a straight highway. Let\u2019s\r\nnumber the cities with consecutive integers from to in the order they\r\noccur along the highway. Thus, the cities are connected by segments of\r\nthe highway, the -th segment connects cities number and . Every segment\r\nof the highway is associated with a positive integer the period of\r\ntraffic jams appearance on it. In order to get from city to city (),\r\nsome drivers use the following tactics. Initially the driver is in city\r\nand the current time equals zero. Until the driver arrives in city , he\r\nperfors the following actions: if the current time is a multiple of ,\r\nthen the segment of the highway number is now having traffic problems\r\nand the driver stays in the current city for one unit of time (formally\r\nspeaking, we assign ); if the current time is not a of , then the\r\nsegment of the highway number is now clear and that\u2019s why the driver\r\nuses one unit of time to move to city (formally, we assign and ). You\r\nare developing a new traffic control system. You want to consecutively\r\nprocess queries of two types: determine the final value of time after\r\nthe ride from city to city () assuming that we apply the tactics that is\r\ndescribed above. Note that for each query is being reset to . replace\r\nthe period of traffic jams appearing on the segment number by value\r\n(formally, assign ). Write a code that will effectively process the\r\nqueries given above.\r\n", "solutions": ["#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cassert>\n#include <ctime>\n#include <cmath>\n#include <algorithm>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <list>\n#include <set>\n#include <map>\n#include <iostream>\n\n#define pb push_back\n#define mp make_pair\n#define TASKNAME \"\"\n\n#ifdef DEBUG\n#define eprintf(...) fprintf(stderr,__VA_ARGS__)\n#else\n#define eprintf(...)\n#endif\n\n#define TIMESTAMP(x) eprintf(\"[\" #x \"] Time = %.3lfs\\n\",clock()*1.0/CLOCKS_PER_SEC)\n\n#ifdef _WIN32\n#define LLD \"%I64d\"\n#else\n#define LLD \"%lld\"\n#endif\n\n#define sz(x) ((int)(x).size())\n#define forn(i, n) for (int i = 0; i < (n); i++)\n\nusing namespace std;\n\ntypedef long double ld;\ntypedef long long ll;\ntypedef vector<ll> vll;\ntypedef vector<int> vi;\ntypedef vector<vi> vvi;\ntypedef vector<bool> vb;\ntypedef vector<vb> vvb;\ntypedef pair<int, int> pii;\ntypedef pair<ll, int> pli;\ntypedef pair<int, ll> pil;\ntypedef pair<ll, ll> pll;\ntypedef vector<pii> vpii;\n\nconst int inf = 1e9;\nconst double eps = 1e-9;\nconst int INF = inf;\nconst double EPS = eps;\n\n#ifdef DEBUG\nstruct __timestamper {\n  ~__timestamper(){\n    TIMESTAMP(end);\n  }\n} __Timestamper;\n#else\nstruct __timestamper {};\n#endif\n\n/*Template end*/\n\nconst int PER = 60;\n\nclass segm_tree {\n  struct Data {\n    int toadd[PER];\n\n    Data() {\n      fill(toadd, toadd + PER, 0);\n    }\n    Data(int x) {\n      assert(2 <= x && PER % x == 0);\n      fill(toadd, toadd + PER, 1);\n      for (int i = 0; i < PER; i += x)\n        toadd[i]++;\n    }\n    int &operator[](int x) { return toadd[x]; }\n    int  operator[](int x) const { return toadd[x]; }\n\n    friend Data operator+(const Data &a, const Data &b) {\n      Data res;\n      for (int st = 0; st < PER; st++) {\n        res[st] = a[st] + b[(st + a[st]) % PER];\n      }\n      return res;\n    }\n  };\n  int off;\n  vector<Data> tr;\n\npublic:\n  segm_tree(vector<int> &as) {\n    off = 1; while (off < sz(as)) off <<= 1;\n    tr = vector<Data>(2 * off);\n    forn (i, sz(as))\n      tr[off + i] = as[i];\n    for (int i = off - 1; i >= 1; i--)\n      tr[i] = tr[2 * i] + tr[2 * i + 1];\n  }\n  void set(int x, int v) {\n    tr[x += off] = v;\n    for (x >>= 1; x >= 1; x >>= 1)\n      tr[x] = tr[2 * x] + tr[2 * x + 1];\n  }\n  int get(int l, int r) {\n    Data resl, resr;\n    l += off; r += off;\n    while (l <= r) {\n      if (l & 1) resl = resl + tr[l++];\n      if (!(r & 1)) resr = tr[r--] + resr;\n      l >>= 1; r >>= 1;\n    }\n    Data res = resl + resr;\n    return res[0];\n  }\n};\n\nint main() {\n  #ifdef DEBUG\n  freopen(TASKNAME\".in\",\"r\",stdin);\n  freopen(TASKNAME\".out\",\"w\",stdout);\n  #endif\n\n  int n;\n  while (scanf(\"%d\", &n) == 1) {\n    vi as(n);\n    forn (i, n) scanf(\"%d\", &as[i]);\n\n    segm_tree tr(as);\n    int q;\n    scanf(\"%d\", &q);\n    while (q --> 0) {\n      char op;\n      scanf(\" %c\", &op);\n      if (op == 'A') {\n        int l, r;\n        scanf(\"%d%d\", &l, &r), l--, r -= 2;\n        printf(\"%d\\n\", tr.get(l, r));\n      } else if (op == 'C') {\n        int x, v;\n        scanf(\"%d%d\", &x, &v), x--;\n        tr.set(x, v);\n      } else {\n        assert(false);\n      }\n    }\n  }\n\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["data structures", "dp", "number theory"], "dificulty": "2400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/498/problem/D",
+    "problemId": "19902",
+    "problem_idx": "D",
+    "shortId": "498D",
+    "contest_number": "498",
+    "problem_submissions": {
+        "E": [
+            9254353,
+            9255134,
+            9255917,
+            9257774,
+            9256751,
+            9258696,
+            9256130,
+            9254869,
+            9255218,
+            9257482,
+            9259085,
+            9259412,
+            9293653
+        ],
+        "D": [
+            9252551,
+            9253707,
+            9253982,
+            9253218,
+            9254235,
+            9256783,
+            9248603,
+            9260246,
+            9259443,
+            9259317,
+            9251692,
+            9252178,
+            9254847,
+            9253161,
+            9255257,
+            9254544,
+            9255567
+        ],
+        "C": [
+            9251331,
+            9245747,
+            9250927,
+            9247459,
+            9249177,
+            9251204,
+            9249816,
+            9248998,
+            9251162,
+            9248001,
+            9250917,
+            9253358
+        ],
+        "B": [
+            9248724,
+            9250737,
+            9247577,
+            9260817,
+            9250130,
+            9252321,
+            9249119,
+            9253380,
+            9258038,
+            9252693,
+            9253079,
+            9252863,
+            9250195
+        ],
+        "A": [
+            9245371,
+            9251410,
+            9245412,
+            9245364,
+            9247095,
+            9245481,
+            9245345,
+            9245357,
+            9245352,
+            9245488,
+            9245360,
+            9245992,
+            9246642,
+            9245626
+        ]
+    },
+    "name": "D. Traffic Jams in the Land",
+    "statement": "Some country consists of cities, located along a straight highway. Let\u2019s\r\nnumber the cities with consecutive integers from to in the order they\r\noccur along the highway. Thus, the cities are connected by segments of\r\nthe highway, the -th segment connects cities number and . Every segment\r\nof the highway is associated with a positive integer the period of\r\ntraffic jams appearance on it. In order to get from city to city (),\r\nsome drivers use the following tactics. Initially the driver is in city\r\nand the current time equals zero. Until the driver arrives in city , he\r\nperfors the following actions: if the current time is a multiple of ,\r\nthen the segment of the highway number is now having traffic problems\r\nand the driver stays in the current city for one unit of time (formally\r\nspeaking, we assign ); if the current time is not a of , then the\r\nsegment of the highway number is now clear and that\u2019s why the driver\r\nuses one unit of time to move to city (formally, we assign and ). You\r\nare developing a new traffic control system. You want to consecutively\r\nprocess queries of two types: determine the final value of time after\r\nthe ride from city to city () assuming that we apply the tactics that is\r\ndescribed above. Note that for each query is being reset to . replace\r\nthe period of traffic jams appearing on the segment number by value\r\n(formally, assign ). Write a code that will effectively process the\r\nqueries given above.\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cassert>\n#include <ctime>\n#include <cmath>\n#include <algorithm>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <list>\n#include <set>\n#include <map>\n#include <iostream>\n\n#define pb push_back\n#define mp make_pair\n#define TASKNAME \"\"\n\n#ifdef DEBUG\n#define eprintf(...) fprintf(stderr,__VA_ARGS__)\n#else\n#define eprintf(...)\n#endif\n\n#define TIMESTAMP(x) eprintf(\"[\" #x \"] Time = %.3lfs\\n\",clock()*1.0/CLOCKS_PER_SEC)\n\n#ifdef _WIN32\n#define LLD \"%I64d\"\n#else\n#define LLD \"%lld\"\n#endif\n\n#define sz(x) ((int)(x).size())\n#define forn(i, n) for (int i = 0; i < (n); i++)\n\nusing namespace std;\n\ntypedef long double ld;\ntypedef long long ll;\ntypedef vector<ll> vll;\ntypedef vector<int> vi;\ntypedef vector<vi> vvi;\ntypedef vector<bool> vb;\ntypedef vector<vb> vvb;\ntypedef pair<int, int> pii;\ntypedef pair<ll, int> pli;\ntypedef pair<int, ll> pil;\ntypedef pair<ll, ll> pll;\ntypedef vector<pii> vpii;\n\nconst int inf = 1e9;\nconst double eps = 1e-9;\nconst int INF = inf;\nconst double EPS = eps;\n\n#ifdef DEBUG\nstruct __timestamper {\n  ~__timestamper(){\n    TIMESTAMP(end);\n  }\n} __Timestamper;\n#else\nstruct __timestamper {};\n#endif\n\n/*Template end*/\n\nconst int PER = 60;\n\nclass segm_tree {\n  struct Data {\n    int toadd[PER];\n\n    Data() {\n      fill(toadd, toadd + PER, 0);\n    }\n    Data(int x) {\n      assert(2 <= x && PER % x == 0);\n      fill(toadd, toadd + PER, 1);\n      for (int i = 0; i < PER; i += x)\n        toadd[i]++;\n    }\n    int &operator[](int x) { return toadd[x]; }\n    int  operator[](int x) const { return toadd[x]; }\n\n    friend Data operator+(const Data &a, const Data &b) {\n      Data res;\n      for (int st = 0; st < PER; st++) {\n        res[st] = a[st] + b[(st + a[st]) % PER];\n      }\n      return res;\n    }\n  };\n  int off;\n  vector<Data> tr;\n\npublic:\n  segm_tree(vector<int> &as) {\n    off = 1; while (off < sz(as)) off <<= 1;\n    tr = vector<Data>(2 * off);\n    forn (i, sz(as))\n      tr[off + i] = as[i];\n    for (int i = off - 1; i >= 1; i--)\n      tr[i] = tr[2 * i] + tr[2 * i + 1];\n  }\n  void set(int x, int v) {\n    tr[x += off] = v;\n    for (x >>= 1; x >= 1; x >>= 1)\n      tr[x] = tr[2 * x] + tr[2 * x + 1];\n  }\n  int get(int l, int r) {\n    Data resl, resr;\n    l += off; r += off;\n    while (l <= r) {\n      if (l & 1) resl = resl + tr[l++];\n      if (!(r & 1)) resr = tr[r--] + resr;\n      l >>= 1; r >>= 1;\n    }\n    Data res = resl + resr;\n    return res[0];\n  }\n};\n\nint main() {\n  #ifdef DEBUG\n  freopen(TASKNAME\".in\",\"r\",stdin);\n  freopen(TASKNAME\".out\",\"w\",stdout);\n  #endif\n\n  int n;\n  while (scanf(\"%d\", &n) == 1) {\n    vi as(n);\n    forn (i, n) scanf(\"%d\", &as[i]);\n\n    segm_tree tr(as);\n    int q;\n    scanf(\"%d\", &q);\n    while (q --> 0) {\n      char op;\n      scanf(\" %c\", &op);\n      if (op == 'A') {\n        int l, r;\n        scanf(\"%d%d\", &l, &r), l--, r -= 2;\n        printf(\"%d\\n\", tr.get(l, r));\n      } else if (op == 'C') {\n        int x, v;\n        scanf(\"%d%d\", &x, &v), x--;\n        tr.set(x, v);\n      } else {\n        assert(false);\n      }\n    }\n  }\n\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "data structures",
+        "dp",
+        "number theory"
+    ],
+    "dificulty": "2400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Traffic Jams in the Land.json",
+    "editorial_link": "https://codeforces.com//blog/entry/15353",
+    "editorial": "The solution of a problem 60 (LCM of a numbers from 2 to 6) segment\r\ntrees. In \u00e2\u0080\u0099th segment tree we will hold for every segment the next\r\nvalue: minimum time needed to get from to if we start in a moment of\r\ntime equal to modulo 60. Using these trees\u00e2\u0080\u0099 values it is easy to quickly\r\nanswer the questions, carefully changing the trees\u00e2\u0080\u0099 values.\r\n"
+}

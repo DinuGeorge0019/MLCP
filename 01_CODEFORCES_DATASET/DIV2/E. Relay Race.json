@@ -1,1 +1,88 @@
-{"link": "https://codeforces.com//contest/214/problem/E", "problemId": "1586", "problem_idx": "E", "shortId": "214E", "contest_number": "214", "problem_submissions": {"E": [1956903, 1959345, 1957680, 1957463, 1959834, 1959308, 1959253, 1957749, 1958161, 1956289, 1958278], "C": [1955209, 1956435, 1959107, 1956342, 1957218, 1958467, 1961649, 1957400, 1955688, 1956389, 1957879], "B": [1954378, 1954778, 1958510, 1955446, 1959760, 1961278, 1961629, 1960691, 1956885, 1957774, 1955065, 1957623, 1954405], "A": [1953390, 1953632, 1953871, 1953304, 1953314, 1953971, 1953533, 1953542, 1953580, 1953288, 1953626, 1958517, 1953552, 1953593, 1953324], "D": [1959758, 1957255, 1957018, 1959688]}, "name": "E. Relay Race", "statement": "Furik and Rubik take part in a relay race. The race will be set up on a\r\nlarge square with the side of meters. The given square is split into\r\ncells (represented as unit squares), each cell has some number.At the\r\nbeginning of the race Furik stands in a cell with coordinates , and\r\nRubik stands in a cell with coordinates . Right after the start Furik\r\nruns towards Rubik, besides, if Furik stands at a cell with coordinates\r\n, then he can move to cell or . After Furik reaches Rubik, Rubik starts\r\nrunning from cell with coordinates to cell with coordinates . If Rubik\r\nstands in cell , then he can move to cell or . Neither Furik, nor Rubik\r\nare allowed to go beyond the boundaries of the field; if a player goes\r\nbeyond the boundaries, he will be disqualified. To win the race, Furik\r\nand Rubik must earn as many points as possible. The number of points is\r\nthe sum of numbers from the cells Furik and Rubik visited. .Print the\r\nmaximum number of points Furik and Rubik can earn on the relay race.\r\n", "solutions": ["#include <cstdio>\n#include <cstdlib>\n#include <cmath>\n#include <cstring>\n#include <string>\n#include <cassert>\n#include <iostream>\n#include <algorithm>\n#include <vector>\n#include <set>\n#include <map>\nusing namespace std;\n\nint N;\nint A[300][300];\nint M[600][300][300];\nint dx[] = {1,0}, dy[] = {0,1};\nint main() {\n  cin >> N;\n  for (int i = 0; i < N; i++)\n    for (int j = 0; j < N; j++)\n      cin >> A[i][j];\n\n  memset(M, 128, sizeof(M));\n\n  M[0][0][0] = A[0][0];\n  for (int i = 0; i < 2*N-2; i++) {\n    for (int j = 0; j < N && j <= i; j++) {\n      for (int k = 0; k < N && k <= i; k++) {\n\tfor (int dj = 0; dj < 2; dj++) {\n\t  int njx = j + dx[dj], njy = i-j+dy[dj];\n\t  if (njx == N || njy == N) continue;\n\t  for (int dk = 0; dk < 2; dk++) {\n\t    int nkx = k + dx[dk], nky = i-k+dy[dk];\n\t    if (nkx == N || nky == N) continue;\n\t    \n\t    int total = A[njx][njy] + A[nkx][nky];\n\t    if (njx == nkx) total /= 2;\n\t    \n\t    M[i+1][njx][nkx] = max(M[i+1][njx][nkx], M[i][j][k] + total);\n\t  }\n\t}\n      }\n    }\n  }\n  cout << M[2*N-2][N-1][N-1] << \"\\n\";\n}\n"], "input": "", "output": "", "tags": ["dp"], "dificulty": "2000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/214/problem/E",
+    "problemId": "1586",
+    "problem_idx": "E",
+    "shortId": "214E",
+    "contest_number": "214",
+    "problem_submissions": {
+        "E": [
+            1956903,
+            1959345,
+            1957680,
+            1957463,
+            1959834,
+            1959308,
+            1959253,
+            1957749,
+            1958161,
+            1956289,
+            1958278
+        ],
+        "C": [
+            1955209,
+            1956435,
+            1959107,
+            1956342,
+            1957218,
+            1958467,
+            1961649,
+            1957400,
+            1955688,
+            1956389,
+            1957879
+        ],
+        "B": [
+            1954378,
+            1954778,
+            1958510,
+            1955446,
+            1959760,
+            1961278,
+            1961629,
+            1960691,
+            1956885,
+            1957774,
+            1955065,
+            1957623,
+            1954405
+        ],
+        "A": [
+            1953390,
+            1953632,
+            1953871,
+            1953304,
+            1953314,
+            1953971,
+            1953533,
+            1953542,
+            1953580,
+            1953288,
+            1953626,
+            1958517,
+            1953552,
+            1953593,
+            1953324
+        ],
+        "D": [
+            1959758,
+            1957255,
+            1957018,
+            1959688
+        ]
+    },
+    "name": "E. Relay Race",
+    "statement": "Furik and Rubik take part in a relay race. The race will be set up on a\r\nlarge square with the side of meters. The given square is split into\r\ncells (represented as unit squares), each cell has some number.At the\r\nbeginning of the race Furik stands in a cell with coordinates , and\r\nRubik stands in a cell with coordinates . Right after the start Furik\r\nruns towards Rubik, besides, if Furik stands at a cell with coordinates\r\n, then he can move to cell or . After Furik reaches Rubik, Rubik starts\r\nrunning from cell with coordinates to cell with coordinates . If Rubik\r\nstands in cell , then he can move to cell or . Neither Furik, nor Rubik\r\nare allowed to go beyond the boundaries of the field; if a player goes\r\nbeyond the boundaries, he will be disqualified. To win the race, Furik\r\nand Rubik must earn as many points as possible. The number of points is\r\nthe sum of numbers from the cells Furik and Rubik visited. .Print the\r\nmaximum number of points Furik and Rubik can earn on the relay race.\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <cstdlib>\n#include <cmath>\n#include <cstring>\n#include <string>\n#include <cassert>\n#include <iostream>\n#include <algorithm>\n#include <vector>\n#include <set>\n#include <map>\nusing namespace std;\n\nint N;\nint A[300][300];\nint M[600][300][300];\nint dx[] = {1,0}, dy[] = {0,1};\nint main() {\n  cin >> N;\n  for (int i = 0; i < N; i++)\n    for (int j = 0; j < N; j++)\n      cin >> A[i][j];\n\n  memset(M, 128, sizeof(M));\n\n  M[0][0][0] = A[0][0];\n  for (int i = 0; i < 2*N-2; i++) {\n    for (int j = 0; j < N && j <= i; j++) {\n      for (int k = 0; k < N && k <= i; k++) {\n\tfor (int dj = 0; dj < 2; dj++) {\n\t  int njx = j + dx[dj], njy = i-j+dy[dj];\n\t  if (njx == N || njy == N) continue;\n\t  for (int dk = 0; dk < 2; dk++) {\n\t    int nkx = k + dx[dk], nky = i-k+dy[dk];\n\t    if (nkx == N || nky == N) continue;\n\t    \n\t    int total = A[njx][njy] + A[nkx][nky];\n\t    if (njx == nkx) total /= 2;\n\t    \n\t    M[i+1][njx][nkx] = max(M[i+1][njx][nkx], M[i][j][k] + total);\n\t  }\n\t}\n      }\n    }\n  }\n  cout << M[2*N-2][N-1][N-1] << \"\\n\";\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp"
+    ],
+    "dificulty": "2000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Relay Race.json",
+    "editorial_link": "https://codeforces.com//blog/entry/4982",
+    "editorial": "Note, that we can make 2 pathes form cell (1,1) to cell (n,n).\nNote, that after each move our cells will be located on the same diagonal.\nWe will solve the problem with DP f(d,i1,i2), d \u0097 diagonal number, i1 \u0097 1st coordinate 1st path, i2 \u0097 1st coordinate 2nd path. It is clear that we can calculate 2nd coordinate when we know number of the diagonal and 1st coordinate. Recount \u0097 obvious, we make all 4 transition, and if pathes are intersected in temporary point, we add value of the cell only one, otherwise we add both values of the cells. We can imlement this solution with O(n^2) memory if we will rewrite array of DP after increasing of diagonal number. Also we must remember that answer can be lower then 0."
+}

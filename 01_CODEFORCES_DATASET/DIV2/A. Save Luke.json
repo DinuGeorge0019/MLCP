@@ -1,1 +1,98 @@
-{"link": "https://codeforces.com//contest/624/problem/A", "problemId": "47306", "problem_idx": "A", "shortId": "624A", "contest_number": "624", "problem_submissions": {"D": [15806940, 15809834, 15815500, 15815488, 15808308, 15806499, 15822402, 15822389], "C": [15799916, 15800393, 15799101, 15798526, 15798053, 15812078, 15803640, 15799590, 15811141, 15805884, 15804773, 15807212, 15803919, 15798110, 15802924, 15800928, 15805592], "B": [15793209, 15795799, 15793505, 15792793, 15792808, 15793962, 15793304, 15801141, 15793770, 15794743, 15794904, 15792647, 15795417, 15795148, 15800662, 15793795, 15793891, 15802098], "A": [15791761, 15792375, 15792429, 15819369, 15791753, 15791811, 15792573, 15791726, 15792066, 15792762, 15792462, 15791748, 15792983, 15792030, 15791890, 15791871, 15791850, 15792535], "E": [15845804, 15845576, 15805460]}, "name": "A. Save Luke", "statement": "Luke Skywalker got locked up in a rubbish shredder between two presses.\r\nR2D2 is already working on his rescue, but Luke needs to stay alive as\r\nlong as possible. For simplicity we will assume that everything happens\r\non a straight line, the presses are initially at coordinates and , and\r\nthey move towards each other with speed and , respectively. Luke has\r\nwidth and is able to choose any position between the presses. Luke dies\r\nas soon as the distance between the presses is less than his width. Your\r\ntask is to determine for how long Luke can stay alive.\r\n", "solutions": ["#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstring>\nusing namespace std;\n\nint main()  {\n\tdouble d,l, v1,v2;\n\tcin >> d >> l >> v1 >> v2;\n\tprintf(\"%.9lf\\n\", (l - d) / (v1 + v2));\n\t\n\treturn 0;\n}"], "input": "", "output": "", "tags": ["math"], "dificulty": "800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/624/problem/A",
+    "problemId": "47306",
+    "problem_idx": "A",
+    "shortId": "624A",
+    "contest_number": "624",
+    "problem_submissions": {
+        "D": [
+            15806940,
+            15809834,
+            15815500,
+            15815488,
+            15808308,
+            15806499,
+            15822402,
+            15822389
+        ],
+        "C": [
+            15799916,
+            15800393,
+            15799101,
+            15798526,
+            15798053,
+            15812078,
+            15803640,
+            15799590,
+            15811141,
+            15805884,
+            15804773,
+            15807212,
+            15803919,
+            15798110,
+            15802924,
+            15800928,
+            15805592
+        ],
+        "B": [
+            15793209,
+            15795799,
+            15793505,
+            15792793,
+            15792808,
+            15793962,
+            15793304,
+            15801141,
+            15793770,
+            15794743,
+            15794904,
+            15792647,
+            15795417,
+            15795148,
+            15800662,
+            15793795,
+            15793891,
+            15802098
+        ],
+        "A": [
+            15791761,
+            15792375,
+            15792429,
+            15819369,
+            15791753,
+            15791811,
+            15792573,
+            15791726,
+            15792066,
+            15792762,
+            15792462,
+            15791748,
+            15792983,
+            15792030,
+            15791890,
+            15791871,
+            15791850,
+            15792535
+        ],
+        "E": [
+            15845804,
+            15845576,
+            15805460
+        ]
+    },
+    "name": "A. Save Luke",
+    "statement": "Luke Skywalker got locked up in a rubbish shredder between two presses.\r\nR2D2 is already working on his rescue, but Luke needs to stay alive as\r\nlong as possible. For simplicity we will assume that everything happens\r\non a straight line, the presses are initially at coordinates and , and\r\nthey move towards each other with speed and , respectively. Luke has\r\nwidth and is able to choose any position between the presses. Luke dies\r\nas soon as the distance between the presses is less than his width. Your\r\ntask is to determine for how long Luke can stay alive.\r\n",
+    "solutions": [
+        "#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstring>\nusing namespace std;\n\nint main()  {\n\tdouble d,l, v1,v2;\n\tcin >> d >> l >> v1 >> v2;\n\tprintf(\"%.9lf\\n\", (l - d) / (v1 + v2));\n\t\n\treturn 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "math"
+    ],
+    "dificulty": "800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Save Luke.json",
+    "editorial_link": "https://codeforces.com//blog/entry/23278",
+    "editorial": "Width of free space is decreasing by per second. It means that it\u00e2\u0080\u0099ll\r\ndecrease from to in seconds. The moment when width gets a value of is\r\nthe last when Luke is alive so is the answer.\r\n"
+}

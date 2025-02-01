@@ -1,1 +1,85 @@
-{"link": "https://codeforces.com//contest/418/problem/A", "problemId": "8550", "problem_idx": "A", "shortId": "418A", "contest_number": "418", "problem_submissions": {"D": [6394549, 6390597, 6393422, 6452946, 6395793], "C": [6387160, 6388719, 6391450, 6395992, 6388957, 6393584, 6389213, 6389069, 6390380, 6390081, 6390308, 6391447, 6393284, 6391833], "B": [6386136, 6387276, 6386703, 6387216, 6390504, 6387795, 6392656, 6386870, 6387421, 6390739, 6387737, 6388222, 6388434, 6387453, 6389931, 6386999], "A": [6385669, 6397608, 6397606, 6385690, 6385811, 6385631, 6385706, 6385677, 6385655, 6385954, 6388328, 6385939, 6385795, 6386073, 6385780, 6385770]}, "name": "A. Football", "statement": "One day, at the \"Russian Code Cup\" event it was decided to play football\r\nas an out of competition event. All participants was divided into teams\r\nand played several matches, two teams could not play against each other\r\nmore than once.The appointed Judge was the most experienced member\r\nPavel. But since he was the wisest of all, he soon got bored of the game\r\nand fell asleep. Waking up, he discovered that the tournament is over\r\nand the teams want to know the results of all the matches.Pavel didn\u2019t\r\nwant anyone to discover about him sleeping and not keeping an eye on the\r\nresults, so he decided to recover the results of all games. To do this,\r\nhe asked all the teams and learned that the real winner was friendship,\r\nthat is, each team beat the other teams exactly times. Help Pavel come\r\nup with chronology of the tournir that meets all the conditions, or\r\notherwise report that there is no such table.\r\n", "solutions": ["#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <set>\n#include <vector>\n#include <map>\n#include <cmath>\n#include <algorithm>\n#include <memory.h>\n#include <string>\n#include <cstring>\n#include <sstream>\n#include <cstdlib>\n#include <ctime>\n#include <cassert>\n\nusing namespace std;\n\nint main() {\n  int n, k;\n  scanf(\"%d %d\", &n, &k);\n  if (k > (n - 1) / 2) {\n    printf(\"%d\\n\", -1);\n  } else {\n    printf(\"%d\\n\", n * k);\n    for (int i = 1; i <= n; i++)\n      for (int j = 0; j < k; j++) printf(\"%d %d\\n\", i, (i + j) % n + 1);\n  }\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["constructive algorithms", "graphs", "implementation"], "dificulty": "1400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/418/problem/A",
+    "problemId": "8550",
+    "problem_idx": "A",
+    "shortId": "418A",
+    "contest_number": "418",
+    "problem_submissions": {
+        "D": [
+            6394549,
+            6390597,
+            6393422,
+            6452946,
+            6395793
+        ],
+        "C": [
+            6387160,
+            6388719,
+            6391450,
+            6395992,
+            6388957,
+            6393584,
+            6389213,
+            6389069,
+            6390380,
+            6390081,
+            6390308,
+            6391447,
+            6393284,
+            6391833
+        ],
+        "B": [
+            6386136,
+            6387276,
+            6386703,
+            6387216,
+            6390504,
+            6387795,
+            6392656,
+            6386870,
+            6387421,
+            6390739,
+            6387737,
+            6388222,
+            6388434,
+            6387453,
+            6389931,
+            6386999
+        ],
+        "A": [
+            6385669,
+            6397608,
+            6397606,
+            6385690,
+            6385811,
+            6385631,
+            6385706,
+            6385677,
+            6385655,
+            6385954,
+            6388328,
+            6385939,
+            6385795,
+            6386073,
+            6385780,
+            6385770
+        ]
+    },
+    "name": "A. Football",
+    "statement": "One day, at the \"Russian Code Cup\" event it was decided to play football\r\nas an out of competition event. All participants was divided into teams\r\nand played several matches, two teams could not play against each other\r\nmore than once.The appointed Judge was the most experienced member\r\nPavel. But since he was the wisest of all, he soon got bored of the game\r\nand fell asleep. Waking up, he discovered that the tournament is over\r\nand the teams want to know the results of all the matches.Pavel didn\u2019t\r\nwant anyone to discover about him sleeping and not keeping an eye on the\r\nresults, so he decided to recover the results of all games. To do this,\r\nhe asked all the teams and learned that the real winner was friendship,\r\nthat is, each team beat the other teams exactly times. Help Pavel come\r\nup with chronology of the tournir that meets all the conditions, or\r\notherwise report that there is no such table.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <set>\n#include <vector>\n#include <map>\n#include <cmath>\n#include <algorithm>\n#include <memory.h>\n#include <string>\n#include <cstring>\n#include <sstream>\n#include <cstdlib>\n#include <ctime>\n#include <cassert>\n\nusing namespace std;\n\nint main() {\n  int n, k;\n  scanf(\"%d %d\", &n, &k);\n  if (k > (n - 1) / 2) {\n    printf(\"%d\\n\", -1);\n  } else {\n    printf(\"%d\\n\", n * k);\n    for (int i = 1; i <= n; i++)\n      for (int j = 0; j < k; j++) printf(\"%d %d\\n\", i, (i + j) % n + 1);\n  }\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "graphs",
+        "implementation"
+    ],
+    "dificulty": "1400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Football.json",
+    "editorial_link": "https://codeforces.com//blog/entry/11730",
+    "editorial": "Let\u00e2\u0080\u0099s consider this tournir as graph. Each vertex should have out-degree\r\n. Then the graph should contain exactly edges. But the full-graph\r\ncontains , because of that if then the answer is , otherwise we will\r\nconnect the -th vertex with , taking modulo if needed. Solution: 6396331\r\n"
+}

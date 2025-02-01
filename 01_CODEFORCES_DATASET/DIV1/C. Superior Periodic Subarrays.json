@@ -1,1 +1,102 @@
-{"link": "https://codeforces.com//contest/582/problem/C", "problemId": "37187", "problem_idx": "C", "shortId": "582C", "contest_number": "582", "problem_submissions": {"E": [13382538, 13381116, 13378028, 13383504, 13383506, 13383917, 13383602, 145895898], "C": [13373394, 13375255, 13380779, 13374298, 13373776, 13372716, 13377174, 13375147, 13375206, 13375348, 13372216, 13373000, 13376950, 13374416, 13374597, 13371567, 13392220, 13380106, 13374816, 13375408], "B": [13370935, 13371321, 13372509, 13370999, 13368381, 13369232, 13374738, 13371115, 13372424, 13370249, 13368449, 13368172, 13372435, 13368862, 13369702, 13365121, 13392237, 13392226, 13370380, 13369378, 13369857], "A": [13366333, 13368173, 13364878, 13363160, 13374636, 13383874, 13368333, 13365806, 13366818, 13363090, 13364145, 13365273, 13365002, 13363636, 13374162, 13365145, 13364246, 13363367], "D": [13463010]}, "name": "C. Superior Periodic Subarrays", "statement": "You are given an infinite periodic array with the period of length .\r\nFormally, . A periodic subarray (, ) of array is an infinite periodic\r\narray with a period of length that is a subsegment of array , starting\r\nwith position .A periodic subarray is , if when attaching it to the\r\narray , starting from index , any element of the subarray is larger than\r\nor equal to the corresponding element of array . An example of attaching\r\nis given on the figure (top infinite array , bottom its periodic\r\nsubarray ): Find the number of distinct pairs , corresponding to the\r\nsuperior periodic arrays.\r\n", "solutions": ["#include<bits/stdc++.h>\nusing namespace std;\n\ntypedef long long ll;\n\nconst int MAXN = 5e5;\n\nint N;\nint A[MAXN];\n\nint gcd[MAXN];\n\nint is_max[MAXN];\nint cnt[MAXN];\n\nint main() {\n\tios_base::sync_with_stdio(0);\n\n\tcin >> N;\n\tfor(int i = 0; i < N; i++) {\n\t\tcin >> A[i];\n\t\tA[i + N] = A[i];\n\t}\n\n\tll res = 0;\n\n\tfor(int g = 1; g <= N; g++) {\n\t\tif(N % g) continue;\n\t\tfor(int j = g; j <= N; j += g) {\n\t\t\tgcd[j] = g;\n\t\t}\n\t}\n\n\tfor(int g = 1; g <= N; g++) {\n\t\tif(N % g) continue;\n\t\tfor(int i = 0; i < g; i++) {\n\t\t\tint m = 0;\n\t\t\tfor(int j = i; j < N; j += g) {\n\t\t\t\tm = max(m, A[j]);\n\t\t\t}\n\t\t\tfor(int j = i; j < N * 2; j += g) {\n\t\t\t\tis_max[j] = (A[j] == m);\n\t\t\t}\n\t\t}\n\t\tfor(int j = 1; j < N * 2; j++) {\n\t\t\tif(is_max[j]) is_max[j] += is_max[j - 1];\n\t\t}\n\t\tcnt[0] = 0;\n\t\tfor(int i = 1; i < N; i++) {\n\t\t\tcnt[i] = cnt[i - 1] + (gcd[i] == g);\n\t\t}\n\t\tfor(int j = N; j < N * 2; j++) {\n\t\t\tres += cnt[min(is_max[j], N - 1)];\n\t\t}\n\t}\n\n\tcout << res << '\\n';\n\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["number theory"], "dificulty": "2400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/582/problem/C",
+    "problemId": "37187",
+    "problem_idx": "C",
+    "shortId": "582C",
+    "contest_number": "582",
+    "problem_submissions": {
+        "E": [
+            13382538,
+            13381116,
+            13378028,
+            13383504,
+            13383506,
+            13383917,
+            13383602,
+            145895898
+        ],
+        "C": [
+            13373394,
+            13375255,
+            13380779,
+            13374298,
+            13373776,
+            13372716,
+            13377174,
+            13375147,
+            13375206,
+            13375348,
+            13372216,
+            13373000,
+            13376950,
+            13374416,
+            13374597,
+            13371567,
+            13392220,
+            13380106,
+            13374816,
+            13375408
+        ],
+        "B": [
+            13370935,
+            13371321,
+            13372509,
+            13370999,
+            13368381,
+            13369232,
+            13374738,
+            13371115,
+            13372424,
+            13370249,
+            13368449,
+            13368172,
+            13372435,
+            13368862,
+            13369702,
+            13365121,
+            13392237,
+            13392226,
+            13370380,
+            13369378,
+            13369857
+        ],
+        "A": [
+            13366333,
+            13368173,
+            13364878,
+            13363160,
+            13374636,
+            13383874,
+            13368333,
+            13365806,
+            13366818,
+            13363090,
+            13364145,
+            13365273,
+            13365002,
+            13363636,
+            13374162,
+            13365145,
+            13364246,
+            13363367
+        ],
+        "D": [
+            13463010
+        ]
+    },
+    "name": "C. Superior Periodic Subarrays",
+    "statement": "You are given an infinite periodic array with the period of length .\r\nFormally, . A periodic subarray (, ) of array is an infinite periodic\r\narray with a period of length that is a subsegment of array , starting\r\nwith position .A periodic subarray is , if when attaching it to the\r\narray , starting from index , any element of the subarray is larger than\r\nor equal to the corresponding element of array . An example of attaching\r\nis given on the figure (top infinite array , bottom its periodic\r\nsubarray ): Find the number of distinct pairs , corresponding to the\r\nsuperior periodic arrays.\r\n",
+    "solutions": [
+        "#include<bits/stdc++.h>\nusing namespace std;\n\ntypedef long long ll;\n\nconst int MAXN = 5e5;\n\nint N;\nint A[MAXN];\n\nint gcd[MAXN];\n\nint is_max[MAXN];\nint cnt[MAXN];\n\nint main() {\n\tios_base::sync_with_stdio(0);\n\n\tcin >> N;\n\tfor(int i = 0; i < N; i++) {\n\t\tcin >> A[i];\n\t\tA[i + N] = A[i];\n\t}\n\n\tll res = 0;\n\n\tfor(int g = 1; g <= N; g++) {\n\t\tif(N % g) continue;\n\t\tfor(int j = g; j <= N; j += g) {\n\t\t\tgcd[j] = g;\n\t\t}\n\t}\n\n\tfor(int g = 1; g <= N; g++) {\n\t\tif(N % g) continue;\n\t\tfor(int i = 0; i < g; i++) {\n\t\t\tint m = 0;\n\t\t\tfor(int j = i; j < N; j += g) {\n\t\t\t\tm = max(m, A[j]);\n\t\t\t}\n\t\t\tfor(int j = i; j < N * 2; j += g) {\n\t\t\t\tis_max[j] = (A[j] == m);\n\t\t\t}\n\t\t}\n\t\tfor(int j = 1; j < N * 2; j++) {\n\t\t\tif(is_max[j]) is_max[j] += is_max[j - 1];\n\t\t}\n\t\tcnt[0] = 0;\n\t\tfor(int i = 1; i < N; i++) {\n\t\t\tcnt[i] = cnt[i - 1] + (gcd[i] == g);\n\t\t}\n\t\tfor(int j = N; j < N * 2; j++) {\n\t\t\tres += cnt[min(is_max[j], N - 1)];\n\t\t}\n\t}\n\n\tcout << res << '\\n';\n\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "number theory"
+    ],
+    "dificulty": "2400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Superior Periodic Subarrays.json",
+    "editorial_link": "https://codeforces.com//blog/entry/20692",
+    "editorial": "Let's fix s for every (l,?s) pair. One could easily prove, that if subarray contains ai element, than ai must be greater-or-equal than aj for every j such that . Let's use this idea and fix g?=?gcd(n,?s) (it must be a divisor of n). To check if ai can be in subarray with such constraints, let's for every 0???r?<?g calculate\n\n.\n\nIt's true that every good subarray must consist of and only of . For finding all such subarrays we will use two pointers approach and for every good ai, such that  is not good we will find aj such that  are good and  is not good. Let  has k elements . Any it's subarray is superior, so it gives us arrays of length 1,?2,?...,?k with count k,?k?-?1,?...,?1. As soon as sum of all k is not greater than n, we could just increase counts straightforward. There's a case when all ai are good, in which we must do another increases. Next we must add to the answer only counts of length x, such that gcd(x,?n)?=?g.\n\nSolution described above has complexity O(d(n)n), where d(n) is the number of divisors of n."
+}

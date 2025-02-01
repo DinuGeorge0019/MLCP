@@ -1,1 +1,103 @@
-{"link": "https://codeforces.com//contest/686/problem/B", "problemId": "63498", "problem_idx": "B", "shortId": "686B", "contest_number": "686", "problem_submissions": {"E": [18753113], "D": [18677363, 18676926, 18680203, 18677096, 18680500, 18679262, 18679726, 18681134, 18679340, 18681235, 18679151, 18677262, 18680852, 18682604, 18679420, 18683508, 18682836, 18677654], "C": [18674350, 18674219, 18675996, 18670680, 18674843, 18676354, 18677317, 18674277, 18676911, 18677370, 18678038, 18675789, 18677870, 18675610, 18676923, 18681967], "B": [18671047, 18668588, 18669725, 18672830, 18672620, 18669882, 18671172, 18668900, 18674893, 18677911, 18672621, 18670139, 18676902, 18670149, 18671650, 18671701], "A": [18669150, 18667513, 18667542, 18673623, 18668163, 18667514, 18669093, 18667603, 18674115, 18677610, 18668549, 18667772, 18667638, 18667507, 18667916, 18669148]}, "name": "B. Little Robber Girl s Zoo", "statement": "Little Robber Girl likes to scare animals in her zoo for fun. She\r\ndecided to arrange the animals in a row in the order of non-decreasing\r\nheight. However, the animals were so scared that they couldn\u2019t stay in\r\nthe right places.The robber girl was angry at first, but then she\r\ndecided to arrange the animals herself. She repeatedly names numbers and\r\nsuch that is even. After that animals that occupy positions between and\r\ninclusively are rearranged as follows: the animal at position swaps\r\nplaces with the animal at position , the animal swaps with the animal ,\r\n..., finally, the animal at position swaps with the animal .Help the\r\nrobber girl to arrange the animals in the order of non-decreasing\r\nheight. You should name at most segments, since otherwise the robber\r\ngirl will become bored and will start scaring the animals again.\r\n", "solutions": ["#include<bits/stdc++.h>\nusing namespace std;\nconst double eps(1e-8);\nconst double pi(3.14159265358979);\nconst int N=110;\nint n,a[N]={};\nint main()\n{\t\n\tcin>>n;\n\tfor(int i=1;i<=n;++i)\n\t\tcin>>a[i];\n\tfor(int i=n;i>=1;--i)\n\t\tfor(int j=1;j<i;++j)\n\t\t\tif(a[j+1]<a[j])\n\t\t\t{\n\t\t\t\tcout<<j<<' '<<j+1<<endl;\n\t\t\t\tswap(a[j],a[j+1]);\n\t\t\t}\n\treturn 0;\n}"], "input": "", "output": "", "tags": ["constructive algorithms", "implementation", "sortings"], "dificulty": "1100", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/686/problem/B",
+    "problemId": "63498",
+    "problem_idx": "B",
+    "shortId": "686B",
+    "contest_number": "686",
+    "problem_submissions": {
+        "E": [
+            18753113
+        ],
+        "D": [
+            18677363,
+            18676926,
+            18680203,
+            18677096,
+            18680500,
+            18679262,
+            18679726,
+            18681134,
+            18679340,
+            18681235,
+            18679151,
+            18677262,
+            18680852,
+            18682604,
+            18679420,
+            18683508,
+            18682836,
+            18677654
+        ],
+        "C": [
+            18674350,
+            18674219,
+            18675996,
+            18670680,
+            18674843,
+            18676354,
+            18677317,
+            18674277,
+            18676911,
+            18677370,
+            18678038,
+            18675789,
+            18677870,
+            18675610,
+            18676923,
+            18681967
+        ],
+        "B": [
+            18671047,
+            18668588,
+            18669725,
+            18672830,
+            18672620,
+            18669882,
+            18671172,
+            18668900,
+            18674893,
+            18677911,
+            18672621,
+            18670139,
+            18676902,
+            18670149,
+            18671650,
+            18671701
+        ],
+        "A": [
+            18669150,
+            18667513,
+            18667542,
+            18673623,
+            18668163,
+            18667514,
+            18669093,
+            18667603,
+            18674115,
+            18677610,
+            18668549,
+            18667772,
+            18667638,
+            18667507,
+            18667916,
+            18669148
+        ]
+    },
+    "name": "B. Little Robber Girl s Zoo",
+    "statement": "Little Robber Girl likes to scare animals in her zoo for fun. She\r\ndecided to arrange the animals in a row in the order of non-decreasing\r\nheight. However, the animals were so scared that they couldn\u2019t stay in\r\nthe right places.The robber girl was angry at first, but then she\r\ndecided to arrange the animals herself. She repeatedly names numbers and\r\nsuch that is even. After that animals that occupy positions between and\r\ninclusively are rearranged as follows: the animal at position swaps\r\nplaces with the animal at position , the animal swaps with the animal ,\r\n..., finally, the animal at position swaps with the animal .Help the\r\nrobber girl to arrange the animals in the order of non-decreasing\r\nheight. You should name at most segments, since otherwise the robber\r\ngirl will become bored and will start scaring the animals again.\r\n",
+    "solutions": [
+        "#include<bits/stdc++.h>\nusing namespace std;\nconst double eps(1e-8);\nconst double pi(3.14159265358979);\nconst int N=110;\nint n,a[N]={};\nint main()\n{\t\n\tcin>>n;\n\tfor(int i=1;i<=n;++i)\n\t\tcin>>a[i];\n\tfor(int i=n;i>=1;--i)\n\t\tfor(int j=1;j<i;++j)\n\t\t\tif(a[j+1]<a[j])\n\t\t\t{\n\t\t\t\tcout<<j<<' '<<j+1<<endl;\n\t\t\t\tswap(a[j],a[j+1]);\n\t\t\t}\n\treturn 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "implementation",
+        "sortings"
+    ],
+    "dificulty": "1100",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Little Robber Girl s Zoo.json",
+    "editorial_link": "https://codeforces.com//blog/entry/45558",
+    "editorial": "We need to sort an array with strange operations \u0097 namely, to swap elements with even and odd indices in subarray of even length. Note that we can change the 2 neighboring elements, simply doing our exchange action for subarray of length 2 containing these elements. Also, note that n???100, and it is permission to do 20?000 actions, therefore, we can write any quadratic sort, which changes the neighboring elements in each iteration (bubble sort for example)."
+}

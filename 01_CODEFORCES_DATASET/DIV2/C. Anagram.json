@@ -1,1 +1,106 @@
-{"link": "https://codeforces.com//contest/254/problem/C", "problemId": "2366", "problem_idx": "C", "shortId": "254C", "contest_number": "254", "problem_submissions": {"E": [2740484, 2741271, 2740417, 2740877, 2741373, 2743269, 2742126, 2743266, 2745430, 2771923], "C": [2738508, 2738068, 2738593, 2735008, 2736528, 2736699, 2737568, 2737352, 2745595, 2738018, 2737726, 2737295, 2738342, 2738512, 2737959, 2737102, 2738365, 2738534, 2738009], "B": [2737079, 2736879, 2739133, 2735037, 2735572, 2735546, 2736025, 2736861, 2735717, 2735630, 2736253, 2735557, 2735277, 2736333, 2737859, 2735812, 2735603, 2735733], "A": [2736146, 2734462, 2734865, 2741112, 2734113, 2735132, 2734336, 2735192, 2735720, 2734351, 2734166, 2734512, 2734291, 2734207, 2734482, 2734395, 2734573, 2734246, 2734420], "D": [2743106, 2742423, 2742158, 2746535, 2743203]}, "name": "C. Anagram", "statement": "String is an of string , if we can rearrange the letters in string and\r\nget exact string . For example, strings \"\" and \"\" are anagrams, so are\r\nstrings \"\" and \"\", but strings \"\" and \"\" are not.You are given two\r\nstrings and of the same length, consisting of uppercase English letters.\r\nYou need to get the anagram of string from string . You are permitted to\r\nperform the replacing operation: every operation is replacing some\r\ncharacter from the string by any other character. Get the anagram of\r\nstring in the least number of replacing operations. If you can get\r\nmultiple anagrams of string in the least number of operations, get the\r\nlexicographically minimal one.The lexicographic order of strings is the\r\nfamiliar to us \"dictionary\" order. Formally, the string of length is\r\nlexicographically smaller than string of the same length, if , , ..., ,\r\nfor some (). Here characters in the strings are numbered from 1. The\r\ncharacters of the strings are compared in the alphabetic order.\r\n", "solutions": ["#include<cstdio>\n#include<cstring>\nusing namespace std;\nint sn[30],tn[30];\nchar s[200000],t[200000];\nint main()\n{\n\tfreopen( \"input.txt\", \"r\", stdin );\n\tfreopen( \"output.txt\", \"w\", stdout );\n\tscanf( \"%s\", s );\n\tscanf( \"%s\", t );\n\tint l = strlen( s );\n\tfor ( int i = 0; i < l; i++ )\n\t\tsn[s[i]-'A']++;\n\tfor ( int i = 0; i < l; i++ )\n\t\ttn[t[i]-'A']++;\n\tint ac = 0;\n\tfor ( int i = 0; i < l; i++ )\n\t{\n\t\tif ( sn[s[i]-'A'] > tn[s[i]-'A'] )\n\t\t{\n\t\t\tint ll;\n\t\t\tfor ( int j = 0; j < 26; j++ ) if ( sn[j] < tn[j] )\n\t\t\t{\n\t\t\t\tll = j;\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tif ( s[i]-'A' > ll )\n\t\t\t{\n\t\t\t\tsn[s[i]-'A']--;\n\t\t\t\ts[i] = 'A' + ll;\n\t\t\t\tsn[ll]++;\n\t\t\t\tac++;\n\t\t\t}\n\t\t\telse if ( tn[s[i]-'A'] != 0 )\n\t\t\t{\n\t\t\t\tsn[s[i]-'A']--;\n\t\t\t\ttn[s[i]-'A']--;\n\t\t\t}\n\t\t\telse\n\t\t\t{\n\t\t\t\tsn[s[i]-'A']--;\n\t\t\t\ts[i] = 'A' + ll;\n\t\t\t\tsn[ll]++;\n\t\t\t\tac++;\n\t\t\t}\n\t\t}\n\t}\n\tprintf( \"%d\\n\", ac );\n\tprintf( \"%s\\n\", s );\n\treturn 0;\n}"], "input": "", "output": "", "tags": ["greedy", "strings"], "dificulty": "1800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/254/problem/C",
+    "problemId": "2366",
+    "problem_idx": "C",
+    "shortId": "254C",
+    "contest_number": "254",
+    "problem_submissions": {
+        "E": [
+            2740484,
+            2741271,
+            2740417,
+            2740877,
+            2741373,
+            2743269,
+            2742126,
+            2743266,
+            2745430,
+            2771923
+        ],
+        "C": [
+            2738508,
+            2738068,
+            2738593,
+            2735008,
+            2736528,
+            2736699,
+            2737568,
+            2737352,
+            2745595,
+            2738018,
+            2737726,
+            2737295,
+            2738342,
+            2738512,
+            2737959,
+            2737102,
+            2738365,
+            2738534,
+            2738009
+        ],
+        "B": [
+            2737079,
+            2736879,
+            2739133,
+            2735037,
+            2735572,
+            2735546,
+            2736025,
+            2736861,
+            2735717,
+            2735630,
+            2736253,
+            2735557,
+            2735277,
+            2736333,
+            2737859,
+            2735812,
+            2735603,
+            2735733
+        ],
+        "A": [
+            2736146,
+            2734462,
+            2734865,
+            2741112,
+            2734113,
+            2735132,
+            2734336,
+            2735192,
+            2735720,
+            2734351,
+            2734166,
+            2734512,
+            2734291,
+            2734207,
+            2734482,
+            2734395,
+            2734573,
+            2734246,
+            2734420
+        ],
+        "D": [
+            2743106,
+            2742423,
+            2742158,
+            2746535,
+            2743203
+        ]
+    },
+    "name": "C. Anagram",
+    "statement": "String is an of string , if we can rearrange the letters in string and\r\nget exact string . For example, strings \"\" and \"\" are anagrams, so are\r\nstrings \"\" and \"\", but strings \"\" and \"\" are not.You are given two\r\nstrings and of the same length, consisting of uppercase English letters.\r\nYou need to get the anagram of string from string . You are permitted to\r\nperform the replacing operation: every operation is replacing some\r\ncharacter from the string by any other character. Get the anagram of\r\nstring in the least number of replacing operations. If you can get\r\nmultiple anagrams of string in the least number of operations, get the\r\nlexicographically minimal one.The lexicographic order of strings is the\r\nfamiliar to us \"dictionary\" order. Formally, the string of length is\r\nlexicographically smaller than string of the same length, if , , ..., ,\r\nfor some (). Here characters in the strings are numbered from 1. The\r\ncharacters of the strings are compared in the alphabetic order.\r\n",
+    "solutions": [
+        "#include<cstdio>\n#include<cstring>\nusing namespace std;\nint sn[30],tn[30];\nchar s[200000],t[200000];\nint main()\n{\n\tfreopen( \"input.txt\", \"r\", stdin );\n\tfreopen( \"output.txt\", \"w\", stdout );\n\tscanf( \"%s\", s );\n\tscanf( \"%s\", t );\n\tint l = strlen( s );\n\tfor ( int i = 0; i < l; i++ )\n\t\tsn[s[i]-'A']++;\n\tfor ( int i = 0; i < l; i++ )\n\t\ttn[t[i]-'A']++;\n\tint ac = 0;\n\tfor ( int i = 0; i < l; i++ )\n\t{\n\t\tif ( sn[s[i]-'A'] > tn[s[i]-'A'] )\n\t\t{\n\t\t\tint ll;\n\t\t\tfor ( int j = 0; j < 26; j++ ) if ( sn[j] < tn[j] )\n\t\t\t{\n\t\t\t\tll = j;\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tif ( s[i]-'A' > ll )\n\t\t\t{\n\t\t\t\tsn[s[i]-'A']--;\n\t\t\t\ts[i] = 'A' + ll;\n\t\t\t\tsn[ll]++;\n\t\t\t\tac++;\n\t\t\t}\n\t\t\telse if ( tn[s[i]-'A'] != 0 )\n\t\t\t{\n\t\t\t\tsn[s[i]-'A']--;\n\t\t\t\ttn[s[i]-'A']--;\n\t\t\t}\n\t\t\telse\n\t\t\t{\n\t\t\t\tsn[s[i]-'A']--;\n\t\t\t\ts[i] = 'A' + ll;\n\t\t\t\tsn[ll]++;\n\t\t\t\tac++;\n\t\t\t}\n\t\t}\n\t}\n\tprintf( \"%d\\n\", ac );\n\tprintf( \"%s\\n\", s );\n\treturn 0;\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "greedy",
+        "strings"
+    ],
+    "dificulty": "1800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Anagram.json",
+    "editorial_link": "https://codeforces.com//blog/entry/6085",
+    "editorial": "Lets denote the number of character in by . Similarly is defined. Then\r\nthe minimum number of changes required to get anagram of from is equal\r\nto . Now we need to obtain lexicographically minimum solution. Lets\r\niterate through the positions in from the left to the right. For a fixed\r\nposition, look through all characters from \u00e2\u0080\u0099a\u00e2\u0080\u0099 to \u00e2\u0080\u0099z\u00e2\u0080\u0099 and for each\r\ncharacter decide whether the optimal answer can contain this character\r\nin that position. If it can, put this character in that position and\r\ncontinue with the next position. To check if the given character is\r\nsuitable quickly, we maintain the values and while iterating through\r\npositions.\r\n"
+}

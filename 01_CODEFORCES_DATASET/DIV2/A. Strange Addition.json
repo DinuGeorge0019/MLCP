@@ -1,1 +1,99 @@
-{"link": "https://codeforces.com//contest/305/problem/A", "problemId": "3006", "problem_idx": "A", "shortId": "305A", "contest_number": "305", "problem_submissions": {"A": [3743947, 3742003, 3738237, 3741973, 3743789, 3738630, 3746146, 3738359, 3738236, 3744732, 3739637, 3742465, 3737309, 3742105, 3736988, 3737540], "B": [3742919, 3738335, 3737895, 3738111, 3743327, 3736944, 3739543, 3740227, 3738192, 3744577, 3738563], "C": [3742188, 3739255, 3740066, 3739103, 3742647, 3740551, 3737297, 3744156, 3736706, 3738323, 3738124, 3738406, 3742683, 3739670, 3738219, 3742469, 3739915], "D": [3741403, 6159506, 3821844, 3746061, 3744660, 3745182, 3743300, 3747615], "E": [3738483, 3741561, 6006201, 3743278, 3743310, 3741203, 3762743, 3747416, 3743624, 3742904, 3751978]}, "name": "A. Strange Addition", "statement": "Unfortunately, Vasya can only sum pairs of integers (, ), such that for\r\nany decimal place at least one number has digit in this place. For\r\nexample, Vasya can sum numbers and , but he cannot sum and .Vasya has a\r\nset of distinct non-negative integers .Vasya wants to choose some\r\nintegers from this set so that he could sum any two chosen numbers. What\r\nmaximal number of integers can he choose in the required manner?\r\n", "solutions": ["/*\n* Problem: \n* Author: Leo Yu\n* Time: \n* State: SOLVED\n* Memo: \n*/\n#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cmath>\n#include <iostream>\n#include <algorithm>\n#include <ctime>\n#include <vector>\n#include <queue>\n#include <set>\n#include <map>\nusing namespace std;\ntypedef long long LL;\ninline int\tread()\n{\n\tint x = 0; char ch = getchar(); bool positive = 1;\n\tfor (; ch < '0' || ch > '9'; ch = getchar())\tif (ch == '-')  positive = 0;\n\tfor (; ch >= '0' && ch <= '9'; ch = getchar())\tx = x * 10 + ch - '0';\n\treturn positive ? x : -x;\n}\n#define link Link\n\nvector<int>\tans;\nint a[100006];\n\nint main()\n{\n#ifndef ONLINE_JUDGE\n\tfreopen(\"a.in\", \"r\", stdin);\n\tfreopen(\"a.out\", \"w\", stdout);\n#endif\n\n\tint N = read();\n\tans.clear();\n\tbool\tflag1 = 0, flag2 = 0, flag3 = 0;\n\tfor (int i = 1; i <= N; ++ i)\n\t{\n\t\tint x = a[i] = read();\n\t\tif (x == 0)\tans.push_back(x);\n\t\tif (x && x < 10 && !flag1)\tans.push_back(x), flag1 = 1;\n\t\tif (x && x < 100 && x % 10 == 0 && !flag2)\tans.push_back(x), flag2 = 1;\n\t\tif (x == 100 && !flag3)\tans.push_back(x), flag3 = 1;\n\t}\n\tfor (int i = 1; i <= N; ++ i)\n\t{\n\t\tint x = a[i];\n\t\tif (x && x < 100 && x % 10 && !flag1 && !flag2)\tans.push_back(x), flag1 = flag2 = 1;\n\t}\n\tprintf(\"%d\\n\", ans.size());\n\tfor (int i = 0; i < ans.size(); ++ i)\n\t\tprintf(\"%d%c\", ans[i], i < ans.size() - 1 ? ' ' : '\\n');\n\n\treturn 0;\n}\n\n"], "input": "", "output": "", "tags": ["brute force", "constructive algorithms", "implementation"], "dificulty": "1600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/305/problem/A",
+    "problemId": "3006",
+    "problem_idx": "A",
+    "shortId": "305A",
+    "contest_number": "305",
+    "problem_submissions": {
+        "A": [
+            3743947,
+            3742003,
+            3738237,
+            3741973,
+            3743789,
+            3738630,
+            3746146,
+            3738359,
+            3738236,
+            3744732,
+            3739637,
+            3742465,
+            3737309,
+            3742105,
+            3736988,
+            3737540
+        ],
+        "B": [
+            3742919,
+            3738335,
+            3737895,
+            3738111,
+            3743327,
+            3736944,
+            3739543,
+            3740227,
+            3738192,
+            3744577,
+            3738563
+        ],
+        "C": [
+            3742188,
+            3739255,
+            3740066,
+            3739103,
+            3742647,
+            3740551,
+            3737297,
+            3744156,
+            3736706,
+            3738323,
+            3738124,
+            3738406,
+            3742683,
+            3739670,
+            3738219,
+            3742469,
+            3739915
+        ],
+        "D": [
+            3741403,
+            6159506,
+            3821844,
+            3746061,
+            3744660,
+            3745182,
+            3743300,
+            3747615
+        ],
+        "E": [
+            3738483,
+            3741561,
+            6006201,
+            3743278,
+            3743310,
+            3741203,
+            3762743,
+            3747416,
+            3743624,
+            3742904,
+            3751978
+        ]
+    },
+    "name": "A. Strange Addition",
+    "statement": "Unfortunately, Vasya can only sum pairs of integers (, ), such that for\r\nany decimal place at least one number has digit in this place. For\r\nexample, Vasya can sum numbers and , but he cannot sum and .Vasya has a\r\nset of distinct non-negative integers .Vasya wants to choose some\r\nintegers from this set so that he could sum any two chosen numbers. What\r\nmaximal number of integers can he choose in the required manner?\r\n",
+    "solutions": [
+        "/*\n* Problem: \n* Author: Leo Yu\n* Time: \n* State: SOLVED\n* Memo: \n*/\n#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cmath>\n#include <iostream>\n#include <algorithm>\n#include <ctime>\n#include <vector>\n#include <queue>\n#include <set>\n#include <map>\nusing namespace std;\ntypedef long long LL;\ninline int\tread()\n{\n\tint x = 0; char ch = getchar(); bool positive = 1;\n\tfor (; ch < '0' || ch > '9'; ch = getchar())\tif (ch == '-')  positive = 0;\n\tfor (; ch >= '0' && ch <= '9'; ch = getchar())\tx = x * 10 + ch - '0';\n\treturn positive ? x : -x;\n}\n#define link Link\n\nvector<int>\tans;\nint a[100006];\n\nint main()\n{\n#ifndef ONLINE_JUDGE\n\tfreopen(\"a.in\", \"r\", stdin);\n\tfreopen(\"a.out\", \"w\", stdout);\n#endif\n\n\tint N = read();\n\tans.clear();\n\tbool\tflag1 = 0, flag2 = 0, flag3 = 0;\n\tfor (int i = 1; i <= N; ++ i)\n\t{\n\t\tint x = a[i] = read();\n\t\tif (x == 0)\tans.push_back(x);\n\t\tif (x && x < 10 && !flag1)\tans.push_back(x), flag1 = 1;\n\t\tif (x && x < 100 && x % 10 == 0 && !flag2)\tans.push_back(x), flag2 = 1;\n\t\tif (x == 100 && !flag3)\tans.push_back(x), flag3 = 1;\n\t}\n\tfor (int i = 1; i <= N; ++ i)\n\t{\n\t\tint x = a[i];\n\t\tif (x && x < 100 && x % 10 && !flag1 && !flag2)\tans.push_back(x), flag1 = flag2 = 1;\n\t}\n\tprintf(\"%d\\n\", ans.size());\n\tfor (int i = 0; i < ans.size(); ++ i)\n\t\tprintf(\"%d%c\", ans[i], i < ans.size() - 1 ? ' ' : '\\n');\n\n\treturn 0;\n}\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "constructive algorithms",
+        "implementation"
+    ],
+    "dificulty": "1600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Strange Addition.json",
+    "editorial_link": "https://codeforces.com/blog/entry/7712",
+    "editorial": "All you have to do is implement following algorithm:\n\nIf we have numbers 0 or 100, we take them to needed subset.\nIf we got number greater than 0 and less than 10, we take it.\nIf we got number  divisible by 10 we take it.\nIn case we have no numbers of second and third type, we take a number  that is not divisible by 10"
+}

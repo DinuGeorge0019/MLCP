@@ -1,1 +1,103 @@
-{"link": "https://codeforces.com//contest/298/problem/E", "problemId": "2858", "problem_idx": "E", "shortId": "298E", "contest_number": "298", "problem_submissions": {"C": [3570158, 3568738, 3569545, 3567890, 3567795, 3569019, 3570396, 3567853, 3569346, 3568955, 3569646, 3569940, 3571985, 3569198, 3566584, 3569693], "D": [3568096, 3570657, 3570524, 3570016, 3570399, 3570578, 3572279, 3569208, 3571015, 3570830, 3571239, 3572221, 3569761, 3572179, 3572808, 3571486], "B": [3566471, 3567469, 3566658, 3566618, 3566674, 3566985, 3566799, 3566534, 3567818, 3567371, 3567342, 3568432, 3567391, 3566870, 3566974, 3567848], "A": [3565924, 3565788, 3565272, 3565138, 3565194, 3565362, 3565614, 3565531, 3565855, 3565619, 3565475, 3565918, 3565883, 3565243, 3569485, 3566160], "E": [3577571, 3618894, 4783067, 3641979]}, "name": "E. Splitting the Uniqueness", "statement": "Polar bears like that is, arrays without repeated elements. You have got\r\na unique array with length containing non-negative integers. Since you\r\nare good friends with Alice and Bob, you decide to split the array in\r\ntwo. Precisely, you need to construct two arrays and that are also of\r\nlength , with the following conditions for all : are non-negative\r\nintegers; . Ideally, and should also be unique arrays. However, life in\r\nthe Arctic is hard and this is not always possible. Fortunately, Alice\r\nand Bob are still happy if their arrays are . We define an array of\r\nlength to be almost unique, if and only if it can be turned into a\r\nunique array by removing no more than entries.For example, the array is\r\nalmost unique because after removing the first two entries, it becomes .\r\nThe array is not almost unique because we need to remove at least\r\nentries to turn it into a unique array.So, your task is to split the\r\ngiven unique array into two almost unique arrays and .\r\n", "solutions": ["#include <stdio.h>\n#include <algorithm>\n\n#define MAXN 100005\n\nusing namespace std;\n\ntypedef pair<int, int>PII;\n\nPII s[MAXN];\nint a[MAXN];\nint b[MAXN];\n\nint main(){\n\tint n;\n\tint number;\n\tscanf(\"%d\", &n);\n\tfor(int i = 0; i < n; i++ ){\n\t\tscanf(\"%d\", &number);\n\t\ts[i] = PII(number, i);\n\t}\n\n\tsort(s, s + n);\n\n\tfor(int i = 0; i < n / 3; i++ ){\n\t\ta[s[i].second] = i;\n\t\tb[s[i].second] = s[i].first - i;\n\t}\n\n\tfor(int i = n / 3; i < 2 * n / 3; i++ ){\n\t\tb[s[i].second] = i;\n\t\ta[s[i].second] = s[i].first - i;\n\t}\n\n\tfor(int i = 2 * n / 3; i < n; i++ ){\n\t\tb[s[i].second] = n - 1 - i;\n\t\ta[s[i].second] = s[i].first - (n - 1 - i);\n\t}\n\n\tprintf(\"YES\\n\");\n\tfor(int i = 0; i < n; i++ )\n\t\tprintf(\"%d \", a[i]);\n\tprintf(\"\\n\");\n\tfor(int i = 0; i < n; i++ )\n\t\tprintf(\"%d \", b[i]);\n\tprintf(\"\\n\");\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["constructive algorithms", "sortings"], "dificulty": "2400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/298/problem/E",
+    "problemId": "2858",
+    "problem_idx": "E",
+    "shortId": "298E",
+    "contest_number": "298",
+    "problem_submissions": {
+        "C": [
+            3570158,
+            3568738,
+            3569545,
+            3567890,
+            3567795,
+            3569019,
+            3570396,
+            3567853,
+            3569346,
+            3568955,
+            3569646,
+            3569940,
+            3571985,
+            3569198,
+            3566584,
+            3569693
+        ],
+        "D": [
+            3568096,
+            3570657,
+            3570524,
+            3570016,
+            3570399,
+            3570578,
+            3572279,
+            3569208,
+            3571015,
+            3570830,
+            3571239,
+            3572221,
+            3569761,
+            3572179,
+            3572808,
+            3571486
+        ],
+        "B": [
+            3566471,
+            3567469,
+            3566658,
+            3566618,
+            3566674,
+            3566985,
+            3566799,
+            3566534,
+            3567818,
+            3567371,
+            3567342,
+            3568432,
+            3567391,
+            3566870,
+            3566974,
+            3567848
+        ],
+        "A": [
+            3565924,
+            3565788,
+            3565272,
+            3565138,
+            3565194,
+            3565362,
+            3565614,
+            3565531,
+            3565855,
+            3565619,
+            3565475,
+            3565918,
+            3565883,
+            3565243,
+            3569485,
+            3566160
+        ],
+        "E": [
+            3577571,
+            3618894,
+            4783067,
+            3641979
+        ]
+    },
+    "name": "E. Splitting the Uniqueness",
+    "statement": "Polar bears like that is, arrays without repeated elements. You have got\r\na unique array with length containing non-negative integers. Since you\r\nare good friends with Alice and Bob, you decide to split the array in\r\ntwo. Precisely, you need to construct two arrays and that are also of\r\nlength , with the following conditions for all : are non-negative\r\nintegers; . Ideally, and should also be unique arrays. However, life in\r\nthe Arctic is hard and this is not always possible. Fortunately, Alice\r\nand Bob are still happy if their arrays are . We define an array of\r\nlength to be almost unique, if and only if it can be turned into a\r\nunique array by removing no more than entries.For example, the array is\r\nalmost unique because after removing the first two entries, it becomes .\r\nThe array is not almost unique because we need to remove at least\r\nentries to turn it into a unique array.So, your task is to split the\r\ngiven unique array into two almost unique arrays and .\r\n",
+    "solutions": [
+        "#include <stdio.h>\n#include <algorithm>\n\n#define MAXN 100005\n\nusing namespace std;\n\ntypedef pair<int, int>PII;\n\nPII s[MAXN];\nint a[MAXN];\nint b[MAXN];\n\nint main(){\n\tint n;\n\tint number;\n\tscanf(\"%d\", &n);\n\tfor(int i = 0; i < n; i++ ){\n\t\tscanf(\"%d\", &number);\n\t\ts[i] = PII(number, i);\n\t}\n\n\tsort(s, s + n);\n\n\tfor(int i = 0; i < n / 3; i++ ){\n\t\ta[s[i].second] = i;\n\t\tb[s[i].second] = s[i].first - i;\n\t}\n\n\tfor(int i = n / 3; i < 2 * n / 3; i++ ){\n\t\tb[s[i].second] = i;\n\t\ta[s[i].second] = s[i].first - i;\n\t}\n\n\tfor(int i = 2 * n / 3; i < n; i++ ){\n\t\tb[s[i].second] = n - 1 - i;\n\t\ta[s[i].second] = s[i].first - (n - 1 - i);\n\t}\n\n\tprintf(\"YES\\n\");\n\tfor(int i = 0; i < n; i++ )\n\t\tprintf(\"%d \", a[i]);\n\tprintf(\"\\n\");\n\tfor(int i = 0; i < n; i++ )\n\t\tprintf(\"%d \", b[i]);\n\tprintf(\"\\n\");\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "sortings"
+    ],
+    "dificulty": "2400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Splitting the Uniqueness.json",
+    "editorial_link": "https://codeforces.com//blog/entry/7437",
+    "editorial": "An equivalent definition for almost unique, is an array with at least ? 2n?/?3? different elements. The idea is to split s into three parts: In the first part, we give uniqueness to a. In the second part, we give uniqueness to b. In the third part, we give uniqueness to both.\n\nLets assume s is sorted. Since s is an unique array, we know si???i for all i (0-based). The image below will give some intuition on how we are going to split it. a is red, b is blue, the length of the bar represent the magnitude of the number. In the first and second part, we do not care about the array that we are not giving uniqueness to.\n\n \n\nFor exampmle, if n?=?30:\n\ni?=?0... 9:? assign ai?=?i (do not care values of b)\n\ni?=?10... 19:? assign bi?=?i (do not care values of a)\n\ni?=?20... 29:? assign bi?=?29?-?i and set ai?=?si?-?bi. From i?=?20, a will have strictly increasing values starting from at least 11."
+}

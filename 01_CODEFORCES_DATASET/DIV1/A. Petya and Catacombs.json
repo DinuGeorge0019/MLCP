@@ -1,1 +1,102 @@
-{"link": "https://codeforces.com//contest/889/problem/A", "problemId": "133718", "problem_idx": "A", "shortId": "889A", "contest_number": "889", "problem_submissions": {"D": [32268277, 32261782, 32262346, 32267448, 32264912, 32270286, 32262994, 32270235, 32268920], "E": [32261080, 32269250, 42287448], "C": [32258949, 32258309, 32261571, 32258724, 32261718, 32260558, 32259837, 32261642, 32262113, 32268280, 32263105, 32260984, 32260094, 32262538, 32263363, 32275764, 32267069, 32261624, 32263229], "B": [32252734, 32253330, 32255576, 32255239, 32254428, 32258155, 32254407, 32256519, 32255311, 32263055, 32253848, 32255572, 32252983, 32255704, 32255404, 32253464, 32255981], "A": [32248128, 32248978, 32250463, 32251033, 32250128, 32254306, 32249854, 32249329, 32248510, 32248897, 32270420, 32248851, 32248699, 32248336, 32249379, 32249111, 32248222, 32250477]}, "name": "A. Petya and Catacombs", "statement": "A very brave explorer Petya once decided to explore Paris catacombs.\r\nSince Petya is not really experienced, his exploration is just walking\r\nthrough the catacombs.Catacombs consist of several rooms and\r\nbidirectional passages between some pairs of them. Some passages can\r\nconnect a room to itself and since the passages are built on different\r\ndepths they do not intersect each other. Every minute Petya arbitrary\r\nchooses a passage from the room he is currently in and then reaches the\r\nroom on the other end of the passage in exactly one minute. When he\r\nenters a room at minute , he makes a note in his logbook with number :\r\nIf Petya has visited this room before, he writes down the minute he was\r\nin this room last time; Otherwise, Petya writes down an arbitrary\r\nnon-negative integer strictly less than current minute . Initially,\r\nPetya was in one of the rooms at minute , he didn\u2019t write down number\r\n.At some point during his wandering Petya got tired, threw out his\r\nlogbook and went home. Vasya found his logbook and now he is curious:\r\nwhat is the minimum possible number of rooms in Paris catacombs\r\naccording to Petya\u2019s logbook?\r\n", "solutions": ["#include <bits/stdc++.h>\nusing ll = long long;\nusing ld = long double;\nusing namespace std;\n\nconst int MAXN = 200001;\n\nint c[MAXN];\n\nint main() {\n#ifdef PAUNSVOKNO\n    freopen(\"input.txt\", \"r\", stdin); freopen(\"output.txt\", \"w\", stdout);\n#endif\n    ios_base::sync_with_stdio(false); cout.setf(ios::fixed); cout.precision(20); cout.tie(nullptr); cin.tie(nullptr);\n    int n;\n    cin >> n;\n    int ans = 0;\n    for (int i = 0; i < n; ++i) {\n        int x;\n        cin >> x;\n        if (x <= 0 || c[x] == 1) {\n            ans++;\n        } else {\n            if (x > 0) {\n                c[x] = 1;\n            }\n        }\n    }\n\n    cout << ans << \"\\n\";\n}"], "input": "", "output": "", "tags": ["greedy", "implementation", "trees"], "dificulty": "1300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/889/problem/A",
+    "problemId": "133718",
+    "problem_idx": "A",
+    "shortId": "889A",
+    "contest_number": "889",
+    "problem_submissions": {
+        "D": [
+            32268277,
+            32261782,
+            32262346,
+            32267448,
+            32264912,
+            32270286,
+            32262994,
+            32270235,
+            32268920
+        ],
+        "E": [
+            32261080,
+            32269250,
+            42287448
+        ],
+        "C": [
+            32258949,
+            32258309,
+            32261571,
+            32258724,
+            32261718,
+            32260558,
+            32259837,
+            32261642,
+            32262113,
+            32268280,
+            32263105,
+            32260984,
+            32260094,
+            32262538,
+            32263363,
+            32275764,
+            32267069,
+            32261624,
+            32263229
+        ],
+        "B": [
+            32252734,
+            32253330,
+            32255576,
+            32255239,
+            32254428,
+            32258155,
+            32254407,
+            32256519,
+            32255311,
+            32263055,
+            32253848,
+            32255572,
+            32252983,
+            32255704,
+            32255404,
+            32253464,
+            32255981
+        ],
+        "A": [
+            32248128,
+            32248978,
+            32250463,
+            32251033,
+            32250128,
+            32254306,
+            32249854,
+            32249329,
+            32248510,
+            32248897,
+            32270420,
+            32248851,
+            32248699,
+            32248336,
+            32249379,
+            32249111,
+            32248222,
+            32250477
+        ]
+    },
+    "name": "A. Petya and Catacombs",
+    "statement": "A very brave explorer Petya once decided to explore Paris catacombs.\r\nSince Petya is not really experienced, his exploration is just walking\r\nthrough the catacombs.Catacombs consist of several rooms and\r\nbidirectional passages between some pairs of them. Some passages can\r\nconnect a room to itself and since the passages are built on different\r\ndepths they do not intersect each other. Every minute Petya arbitrary\r\nchooses a passage from the room he is currently in and then reaches the\r\nroom on the other end of the passage in exactly one minute. When he\r\nenters a room at minute , he makes a note in his logbook with number :\r\nIf Petya has visited this room before, he writes down the minute he was\r\nin this room last time; Otherwise, Petya writes down an arbitrary\r\nnon-negative integer strictly less than current minute . Initially,\r\nPetya was in one of the rooms at minute , he didn\u2019t write down number\r\n.At some point during his wandering Petya got tired, threw out his\r\nlogbook and went home. Vasya found his logbook and now he is curious:\r\nwhat is the minimum possible number of rooms in Paris catacombs\r\naccording to Petya\u2019s logbook?\r\n",
+    "solutions": [
+        "#include <bits/stdc++.h>\nusing ll = long long;\nusing ld = long double;\nusing namespace std;\n\nconst int MAXN = 200001;\n\nint c[MAXN];\n\nint main() {\n#ifdef PAUNSVOKNO\n    freopen(\"input.txt\", \"r\", stdin); freopen(\"output.txt\", \"w\", stdout);\n#endif\n    ios_base::sync_with_stdio(false); cout.setf(ios::fixed); cout.precision(20); cout.tie(nullptr); cin.tie(nullptr);\n    int n;\n    cin >> n;\n    int ans = 0;\n    for (int i = 0; i < n; ++i) {\n        int x;\n        cin >> x;\n        if (x <= 0 || c[x] == 1) {\n            ans++;\n        } else {\n            if (x > 0) {\n                c[x] = 1;\n            }\n        }\n    }\n\n    cout << ans << \"\\n\";\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "greedy",
+        "implementation",
+        "trees"
+    ],
+    "dificulty": "1300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Petya and Catacombs.json",
+    "editorial_link": "https://codeforces.com//blog/entry/55734",
+    "editorial": "First, we notice that if journal contains two equal notes ti?=?tj,?i?<?j, then at least one of them was made in newly visited room, because otherwise tj would be at least i. Thus there could be at most one note corresponding to previously visited room among equal notes.\n\nLet's denote by cnti number of occurrences of i in the journal. From the previous statement we deduce that minimum possible number of rooms is at least . Also, it's easy to see that this value can be achieved: we say that first occurrence of each value corresponds to revisiting the previous room and all other correspond to visiting new rooms.\n\nSo the problem can be solved by calculating values cnti for each i between 0 and n and calculating the above sum."
+}

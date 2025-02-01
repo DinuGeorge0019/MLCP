@@ -1,1 +1,92 @@
-{"link": "https://codeforces.com//contest/107/problem/D", "problemId": "565", "problem_idx": "D", "shortId": "107D", "contest_number": "107", "problem_submissions": {"D": [631074, 632228, 633629, 632921, 633464, 632054, 631978, 632641, 632457, 632305, 633703, 632778, 632827], "C": [629632, 632720, 632094, 632639, 634261, 630830, 636165, 633949], "B": [628278, 628879, 628954, 627989, 629002, 630226, 628861, 629530, 628650, 628939, 628920, 629402, 628525, 629206, 629445, 629058, 629408], "A": [627482, 627526, 628267, 627433, 628167, 627658, 627777, 628413, 627577, 628188, 628306, 630891, 627548, 627550, 629729, 627698, 627546], "E": [633956]}, "name": "D. Crime Management", "statement": "Zeyad wants to commit crimes in Egypt and not be punished at the end.\r\nThere are several types of crimes. For example, bribery is a crime but\r\nis not considered such when repeated twice. Therefore, bribery is not\r\nconsidered a crime when repeated an even number of times. Speeding is a\r\ncrime, but is not considered such when repeated a number of times which\r\nis a multiple of five.More specifically, conditions on crime repetitions\r\nare known. Each condition describes the crime type and its multiplicity\r\n. If the number of times Zeyad committed the crime is a multiple of ,\r\nZeyad will not be punished for crime . Some crimes may be listed more\r\nthan once. In this case fulfilling at least one condition for this crime\r\nis enough to not be punished for it. Of course, if for certain crime the\r\nnumber of times Zeyad committed it is zero, he is innocent with respect\r\nto this crime.Now Zeyad is interested in a number of ways he can commit\r\nexactly crimes without any punishment.The order of commiting the crimes\r\nmatters. More formally, two ways, sequences and , of committing crimes\r\nare equal if , for all .\r\n", "solutions": ["/*\n * d.cpp\n *\n *  Created on: 2011-8-23\n *      Author: mac\n */\n#include <cstdio>\n#include <cstring>\n#include <algorithm>\n#include <iostream>\n#include <vector>\n#define foreach(e,x) for(__typeof(x.begin()) e=x.begin();e!=x.end();++e)\n#define REP(i,n) for(int i=0;i<n;++i)\nusing namespace std;\ntypedef vector<vector<int> > mat;\nconst int MOD = 12345;\nint N;\n\nmat zero() {\n\treturn mat(N, vector<int>(N, 0));\n}\n\nmat unit() {\n\tmat a = zero();\n\tfor (int i = 0; i < N; ++i) {\n\t\ta[i][i] = 1;\n\t}\n\treturn a;\n}\n\nmat operator*(mat a, mat b) {\n\tmat c = zero();\n\tfor (int i = 0; i < N; ++i) {\n\t\tfor (int j = 0; j < N; ++j) {\n\t\t\tint tmp = 0;\n\t\t\tfor (int k = 0; k < N; ++k) {\n\t\t\t\ttmp += a[i][k] * b[k][j];\n\t\t\t\tif (k % 10 == 0)\n\t\t\t\t\ttmp %= MOD;\n\t\t\t}\n\t\t\tc[i][j] = tmp % MOD;\n\t\t}\n\t}\n\treturn c;\n}\n\ntypedef long long int64;\n\nmat matPow(mat a, int64 e) {\n\tif (!e)\n\t\treturn unit();\n\treturn e & 1 ? matPow(a, e - 1) * a : matPow(a * a, e >> 1);\n}\nint64 n;\nint c;\n\nint w[1000], mod[1000];\nbool has[26] = { };\n\nint main() {\n\tcin >> n >> c;\n\tN = 1;\n\tfor (int i = 0; i < c; ++i) {\n\t\tchar a;\n\t\tscanf(\" \");\n\t\tcin >> a;\n\t\tw[i] = a - 'A';\n\t\thas[w[i]] = true;\n\t\tcin >> mod[i];\n\t\tN *= mod[i];\n\t}\n\tmat m = zero();\n\tfor (int i = 0; i < N; ++i) {\n\t\tstatic int cur[1000];\n\t\tint x = i;\n\t\tfor (int j = 0; j < c; ++j) {\n\t\t\tcur[j] = x % mod[j];\n\t\t\tx /= mod[j];\n\t\t}\n\t\tfor (int nxt = 0; nxt < 26; ++nxt)\n\t\t\tif (has[nxt]) {\n\t\t\t\tfor (int j = 0; j < c; ++j) {\n\t\t\t\t\tif (w[j] == nxt) {\n\t\t\t\t\t\t++cur[j];\n\t\t\t\t\t\tif (cur[j] >= mod[j])\n\t\t\t\t\t\t\tcur[j] = 0;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tint ni = 0;\n\t\t\t\tfor (int j = c - 1; j >= 0; --j) {\n\t\t\t\t\tni = ni * mod[j] + cur[j];\n\t\t\t\t}\n\t\t\t\tm[i][ni]++;\n\t\t\t\tif (m[i][ni] >= MOD)\n\t\t\t\t\tm[i][ni] -= MOD;\n\t\t\t\tfor (int j = 0; j < c; ++j) {\n\t\t\t\t\tif (w[j] == nxt) {\n\t\t\t\t\t\t--cur[j];\n\t\t\t\t\t\tif (cur[j] < 0)\n\t\t\t\t\t\t\tcur[j] += mod[j];\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t}\n\tmat r = matPow(m, n);\n\tint ans = 0;\n\tfor (int i = 0; i < N; ++i) {\n\t\tint x = i;\n\t\tbool ok[26] = { };\n\t\tfor (int j = 0; j < c; ++j) {\n\t\t\tint cur = x % mod[j];\n\t\t\tx /= mod[j];\n\t\t\tif (cur == 0) {\n\t\t\t\tok[w[j]] = true;\n\t\t\t}\n\t\t}\n\t\tbool check = true;\n\t\tfor (int i = 0; i < 26; ++i) {\n\t\t\tif (has[i] && !ok[i]) {\n\t\t\t\tcheck = false;\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t\tif (check) {\n\t\t\t(ans += r[0][i]) %= MOD;\n\t\t}\n\t}\n\tcout << ans << endl;\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["dp", "graphs", "matrices"], "dificulty": "2400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/107/problem/D",
+    "problemId": "565",
+    "problem_idx": "D",
+    "shortId": "107D",
+    "contest_number": "107",
+    "problem_submissions": {
+        "D": [
+            631074,
+            632228,
+            633629,
+            632921,
+            633464,
+            632054,
+            631978,
+            632641,
+            632457,
+            632305,
+            633703,
+            632778,
+            632827
+        ],
+        "C": [
+            629632,
+            632720,
+            632094,
+            632639,
+            634261,
+            630830,
+            636165,
+            633949
+        ],
+        "B": [
+            628278,
+            628879,
+            628954,
+            627989,
+            629002,
+            630226,
+            628861,
+            629530,
+            628650,
+            628939,
+            628920,
+            629402,
+            628525,
+            629206,
+            629445,
+            629058,
+            629408
+        ],
+        "A": [
+            627482,
+            627526,
+            628267,
+            627433,
+            628167,
+            627658,
+            627777,
+            628413,
+            627577,
+            628188,
+            628306,
+            630891,
+            627548,
+            627550,
+            629729,
+            627698,
+            627546
+        ],
+        "E": [
+            633956
+        ]
+    },
+    "name": "D. Crime Management",
+    "statement": "Zeyad wants to commit crimes in Egypt and not be punished at the end.\r\nThere are several types of crimes. For example, bribery is a crime but\r\nis not considered such when repeated twice. Therefore, bribery is not\r\nconsidered a crime when repeated an even number of times. Speeding is a\r\ncrime, but is not considered such when repeated a number of times which\r\nis a multiple of five.More specifically, conditions on crime repetitions\r\nare known. Each condition describes the crime type and its multiplicity\r\n. If the number of times Zeyad committed the crime is a multiple of ,\r\nZeyad will not be punished for crime . Some crimes may be listed more\r\nthan once. In this case fulfilling at least one condition for this crime\r\nis enough to not be punished for it. Of course, if for certain crime the\r\nnumber of times Zeyad committed it is zero, he is innocent with respect\r\nto this crime.Now Zeyad is interested in a number of ways he can commit\r\nexactly crimes without any punishment.The order of commiting the crimes\r\nmatters. More formally, two ways, sequences and , of committing crimes\r\nare equal if , for all .\r\n",
+    "solutions": [
+        "/*\n * d.cpp\n *\n *  Created on: 2011-8-23\n *      Author: mac\n */\n#include <cstdio>\n#include <cstring>\n#include <algorithm>\n#include <iostream>\n#include <vector>\n#define foreach(e,x) for(__typeof(x.begin()) e=x.begin();e!=x.end();++e)\n#define REP(i,n) for(int i=0;i<n;++i)\nusing namespace std;\ntypedef vector<vector<int> > mat;\nconst int MOD = 12345;\nint N;\n\nmat zero() {\n\treturn mat(N, vector<int>(N, 0));\n}\n\nmat unit() {\n\tmat a = zero();\n\tfor (int i = 0; i < N; ++i) {\n\t\ta[i][i] = 1;\n\t}\n\treturn a;\n}\n\nmat operator*(mat a, mat b) {\n\tmat c = zero();\n\tfor (int i = 0; i < N; ++i) {\n\t\tfor (int j = 0; j < N; ++j) {\n\t\t\tint tmp = 0;\n\t\t\tfor (int k = 0; k < N; ++k) {\n\t\t\t\ttmp += a[i][k] * b[k][j];\n\t\t\t\tif (k % 10 == 0)\n\t\t\t\t\ttmp %= MOD;\n\t\t\t}\n\t\t\tc[i][j] = tmp % MOD;\n\t\t}\n\t}\n\treturn c;\n}\n\ntypedef long long int64;\n\nmat matPow(mat a, int64 e) {\n\tif (!e)\n\t\treturn unit();\n\treturn e & 1 ? matPow(a, e - 1) * a : matPow(a * a, e >> 1);\n}\nint64 n;\nint c;\n\nint w[1000], mod[1000];\nbool has[26] = { };\n\nint main() {\n\tcin >> n >> c;\n\tN = 1;\n\tfor (int i = 0; i < c; ++i) {\n\t\tchar a;\n\t\tscanf(\" \");\n\t\tcin >> a;\n\t\tw[i] = a - 'A';\n\t\thas[w[i]] = true;\n\t\tcin >> mod[i];\n\t\tN *= mod[i];\n\t}\n\tmat m = zero();\n\tfor (int i = 0; i < N; ++i) {\n\t\tstatic int cur[1000];\n\t\tint x = i;\n\t\tfor (int j = 0; j < c; ++j) {\n\t\t\tcur[j] = x % mod[j];\n\t\t\tx /= mod[j];\n\t\t}\n\t\tfor (int nxt = 0; nxt < 26; ++nxt)\n\t\t\tif (has[nxt]) {\n\t\t\t\tfor (int j = 0; j < c; ++j) {\n\t\t\t\t\tif (w[j] == nxt) {\n\t\t\t\t\t\t++cur[j];\n\t\t\t\t\t\tif (cur[j] >= mod[j])\n\t\t\t\t\t\t\tcur[j] = 0;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tint ni = 0;\n\t\t\t\tfor (int j = c - 1; j >= 0; --j) {\n\t\t\t\t\tni = ni * mod[j] + cur[j];\n\t\t\t\t}\n\t\t\t\tm[i][ni]++;\n\t\t\t\tif (m[i][ni] >= MOD)\n\t\t\t\t\tm[i][ni] -= MOD;\n\t\t\t\tfor (int j = 0; j < c; ++j) {\n\t\t\t\t\tif (w[j] == nxt) {\n\t\t\t\t\t\t--cur[j];\n\t\t\t\t\t\tif (cur[j] < 0)\n\t\t\t\t\t\t\tcur[j] += mod[j];\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t}\n\tmat r = matPow(m, n);\n\tint ans = 0;\n\tfor (int i = 0; i < N; ++i) {\n\t\tint x = i;\n\t\tbool ok[26] = { };\n\t\tfor (int j = 0; j < c; ++j) {\n\t\t\tint cur = x % mod[j];\n\t\t\tx /= mod[j];\n\t\t\tif (cur == 0) {\n\t\t\t\tok[w[j]] = true;\n\t\t\t}\n\t\t}\n\t\tbool check = true;\n\t\tfor (int i = 0; i < 26; ++i) {\n\t\t\tif (has[i] && !ok[i]) {\n\t\t\t\tcheck = false;\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t\tif (check) {\n\t\t\t(ans += r[0][i]) %= MOD;\n\t\t}\n\t}\n\tcout << ans << endl;\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp",
+        "graphs",
+        "matrices"
+    ],
+    "dificulty": "2400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Crime Management.json",
+    "editorial_link": "https://codeforces.com/blog/entry/2514",
+    "editorial": "At the first glance the upper limit for n being 1018 looks huge. But in fact, combined with the fact, that the answer should be output modulo 12345, it's should not scare you but rather hint that the problem has a DP approach.\n\nLike all DP problems the way to approach it is to split the problem into sub-problems and figure out what extra information should be carried between the sub-problems in order to combine them into the solution to the whole problem.\n\nSay, n is 11 and we solved the problem for the first 10 crimes. Clearly, just the number of ways to commit the first 10 crimes is not enough to solve the full problem with n?=?11. The extra information to be carried along with the number of ways to commit n crimes and be innocent is the following: the number of ways to commit the first n crimes and have remaining multiplicities d1,?d2,?...d26 respectively. The fact that the product of the multiplicities does not exceed 123 makes this a solvable task, as the set of all possible remainders contains not more elements than the product of multiplicities.\n\nTo illustrate the idea from the first paragraph consider the first example case. It has two constraints, A with multiplicity 1 and B with multiplicity 2. The remainder of the number of crimes of type A is always zero, and committing crimes of type A may not yield any punishment. The remainder of the number of crimes of type B is zero or one. Therefore, while solving the sub-problems for the first n2?<??=?n crimes, it's enough to keep track of only two numbers: \"number of ways to commit n2 crimes and be completely innocent\" and \"number of ways to commit n2 crimes and have committed one 'extra' crime of type B\".\n\nThe key step to solve the problem now is to notice that each transition from the solution for the first k crimes to the solution for the first (k?+?1) crimes can be seen as multiplying the vector of the current state by the transition matrix. Once all possible transitions are converted to the matrix form, the problem can be solved by raising the matrix into n-th power. Raising the matrix into large power can be done efficiently using matrix exponentiation: on some steps instead of computing Ai?+?1?=?Ai\u00b7 A0 one can compute A2i?=?Ai\u00b7 Ai.\n\nThe last trick of this problem is to deal with multiple allowed multiplicities. If they were not allowed, the remainders per each crime type could have been kept with the modulo being equal to the multiplicity for this crime type. Moreover, if no crime type is listed more than once, the only valid final state is the state where the remainders are zero across all the crime types.\n\nWith multiple allowed multiplicities, for each crime type the remainder modulo the product of the multiplicities of crimes for this type should be kept. (Strictly speaking, LCM is enough, but the constraints allow to use the plain product instead). Then, at the stage of printing the output, instead of treating the counter for the state with zero remainders as the only contributor to the output, one would have to iterate through all possible states and verify if each set of remainders conducts a valid final state."
+}

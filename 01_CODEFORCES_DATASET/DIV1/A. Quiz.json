@@ -1,1 +1,106 @@
-{"link": "https://codeforces.com//contest/338/problem/A", "problemId": "3396", "problem_idx": "A", "shortId": "338A", "contest_number": "338", "problem_submissions": {"D": [4295147, 4299466, 4295982, 4299910, 4297907, 4322675, 4322635, 4296295, 4300603, 4303747], "C": [4293877, 4292949, 4296119, 4290785, 4294450, 4290995, 4292819, 4294306, 4289507, 4319214, 4292496, 4292285, 4293888, 4293909, 4292095, 4292420], "A": [4292482, 4289057, 4289014, 4297071, 4289608, 4292907, 4298719, 4290998, 4292048, 4294562, 4288621, 4289027, 4288252, 4289309], "E": [4291715, 4297382, 4294190, 4295220, 4296654, 4297161, 4295153, 4304466, 4296200, 4296272, 4296355, 4296995, 4392972, 4307055], "B": [4289897, 4290803, 4292502, 4296197, 4291687, 4294720, 4290858, 4290695, 4291375, 4290406, 4289563, 4290575, 4290335, 4290751, 4293818, 4293496]}, "name": "A. Quiz", "statement": "Manao is taking part in a quiz. The quiz consists of consecutive\r\nquestions. A correct answer gives one point to the player. The game also\r\nhas a counter of consecutive correct answers. When the player answers a\r\nquestion correctly, the number on this counter increases by 1. If the\r\nplayer answers a question incorrectly, the counter is reset, that is,\r\nthe number on it reduces to 0. If after an answer the counter reaches\r\nthe number , then it is reset, and the player\u2019s score is doubled. Note\r\nthat in this case, first 1 point is added to the player\u2019s score, and\r\nthen the total score is doubled. At the beginning of the game, both the\r\nplayer\u2019s score and the counter of consecutive correct answers are set to\r\nzero.Manao remembers that he has answered exactly questions correctly.\r\nBut he does not remember the order in which the questions came. He\u2019s\r\ntrying to figure out what his minimum score may be. Help him and compute\r\nthe remainder of the corresponding number after division by .\r\n", "solutions": ["#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <memory.h>\n\nusing namespace std;\n\nconst long long md = 1000000009;\n\nlong long pw(long long a, long long b) {\n  long long x = 1, step = 1LL << 60;\n  while (step > 0) {\n    x = x * x % md;\n    if (step & b) x = x * a % md;\n    step >>= 1;\n  }\n  return x;\n}\n\nint main() {\n  long long n, m, k;\n  cin >> n >> m >> k;\n  long long ll = 0, rr = m / k;\n  while (ll < rr) {\n    long long mid = (ll + rr) >> 1;\n    long long N = n - mid * k;\n    long long M = m - mid * k;\n    if (N - N / k >= M) rr = mid;\n    else ll = mid + 1;\n  }\n  long long p = ll;\n  long long ans = m - p * k;\n  long long u = (pw(2, p + 1) + md - 2) % md;\n  ans = (ans + k * u) % md;\n  cout << ans << endl;\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["greedy", "math", "number theory"], "dificulty": "1600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/338/problem/A",
+    "problemId": "3396",
+    "problem_idx": "A",
+    "shortId": "338A",
+    "contest_number": "338",
+    "problem_submissions": {
+        "D": [
+            4295147,
+            4299466,
+            4295982,
+            4299910,
+            4297907,
+            4322675,
+            4322635,
+            4296295,
+            4300603,
+            4303747
+        ],
+        "C": [
+            4293877,
+            4292949,
+            4296119,
+            4290785,
+            4294450,
+            4290995,
+            4292819,
+            4294306,
+            4289507,
+            4319214,
+            4292496,
+            4292285,
+            4293888,
+            4293909,
+            4292095,
+            4292420
+        ],
+        "A": [
+            4292482,
+            4289057,
+            4289014,
+            4297071,
+            4289608,
+            4292907,
+            4298719,
+            4290998,
+            4292048,
+            4294562,
+            4288621,
+            4289027,
+            4288252,
+            4289309
+        ],
+        "E": [
+            4291715,
+            4297382,
+            4294190,
+            4295220,
+            4296654,
+            4297161,
+            4295153,
+            4304466,
+            4296200,
+            4296272,
+            4296355,
+            4296995,
+            4392972,
+            4307055
+        ],
+        "B": [
+            4289897,
+            4290803,
+            4292502,
+            4296197,
+            4291687,
+            4294720,
+            4290858,
+            4290695,
+            4291375,
+            4290406,
+            4289563,
+            4290575,
+            4290335,
+            4290751,
+            4293818,
+            4293496
+        ]
+    },
+    "name": "A. Quiz",
+    "statement": "Manao is taking part in a quiz. The quiz consists of consecutive\r\nquestions. A correct answer gives one point to the player. The game also\r\nhas a counter of consecutive correct answers. When the player answers a\r\nquestion correctly, the number on this counter increases by 1. If the\r\nplayer answers a question incorrectly, the counter is reset, that is,\r\nthe number on it reduces to 0. If after an answer the counter reaches\r\nthe number , then it is reset, and the player\u2019s score is doubled. Note\r\nthat in this case, first 1 point is added to the player\u2019s score, and\r\nthen the total score is doubled. At the beginning of the game, both the\r\nplayer\u2019s score and the counter of consecutive correct answers are set to\r\nzero.Manao remembers that he has answered exactly questions correctly.\r\nBut he does not remember the order in which the questions came. He\u2019s\r\ntrying to figure out what his minimum score may be. Help him and compute\r\nthe remainder of the corresponding number after division by .\r\n",
+    "solutions": [
+        "#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <memory.h>\n\nusing namespace std;\n\nconst long long md = 1000000009;\n\nlong long pw(long long a, long long b) {\n  long long x = 1, step = 1LL << 60;\n  while (step > 0) {\n    x = x * x % md;\n    if (step & b) x = x * a % md;\n    step >>= 1;\n  }\n  return x;\n}\n\nint main() {\n  long long n, m, k;\n  cin >> n >> m >> k;\n  long long ll = 0, rr = m / k;\n  while (ll < rr) {\n    long long mid = (ll + rr) >> 1;\n    long long N = n - mid * k;\n    long long M = m - mid * k;\n    if (N - N / k >= M) rr = mid;\n    else ll = mid + 1;\n  }\n  long long p = ll;\n  long long ans = m - p * k;\n  long long u = (pw(2, p + 1) + md - 2) % md;\n  ans = (ans + k * u) % md;\n  cout << ans << endl;\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "greedy",
+        "math",
+        "number theory"
+    ],
+    "dificulty": "1600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Quiz.json",
+    "editorial_link": "https://codeforces.com//blog/entry/8629",
+    "editorial": "Assume that Manao has doubled his score (i.e. gave k consecutive correct answers) exactly X times. Then the least possible score is obtained when this doublings happen in the beginning of the game, i.e., when he answers the first X*k questions and never manages to answer k consecutive questions after that. The correctness of this statement follows from the following: for any other scenario with X doublings, all of these doublings can be moved into the beginning and the total score will not increase. Hence, for X=1 Manao's minimum score is k*2+m-k: he answers k consecutive questions, the score doubles, then he answers m-k questions. For X=2 the minimum possible score is (k*2+k)*2+m-2*k, for X=3 \u0097 ((k*2+k)*2+k)*2+m-3*k. For the general case, a formula (2^1+2^2+...+2^X)*k + m-X*k = (2^(X+1)-2)*k + m-X*k is derived.\n\nThe abovementioned observation shows that the minimum score grows monotonically when X is increased, so all we need is to find the minimum feasible X. It should satisfy the inequalities X*k <= n and X + (n - n mod k) / k * (k-1) + n mod k >= m. More on the second inequality: Manao answered the first X*k questions, thus there are n-X*k left. Now he can answer at most k-1 question from each k questions. If k divides n-X*k (which is the same as k divides n), the inequality becomes X*k + (n-X*k) / k * (k-1) >= m, but the remainder complicates it a bit: X*k + (n - X*k - (n - X*k) mod k) / k * (k-1) + (n - X*k) mod k >= m. This formula can be simplified to the one written earlier. So, the minimum X is equal to max(0, m - (n - n mod k) / k * (k-1) - n mod k). You'll need exponentiation by squaring to compute the score corresponding to this value of X. Thus, the overall complexity of this solution is O(log(n))."
+}

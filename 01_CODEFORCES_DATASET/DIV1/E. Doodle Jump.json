@@ -1,1 +1,93 @@
-{"link": "https://codeforces.com//contest/346/problem/E", "problemId": "3507", "problem_idx": "E", "shortId": "346E", "contest_number": "346", "problem_submissions": {"D": [4517003, 4516053, 4520303, 4518426, 4519668, 4519453, 4520044, 4520308, 4520598, 4519925, 4520328, 4536609, 4520171], "C": [4514630, 4512046, 4516249, 4515877, 4517922, 4517089, 4517025, 4518644, 4518590, 4531944, 4516902, 4518219, 4522630, 4512654, 4519217], "B": [4513206, 4517360, 4514492, 4514065, 4515596, 4513931, 4513764, 4514197, 4516093, 4513703, 4523738, 4523122, 4518694, 4514752], "A": [4511118, 4513688, 4511296, 4511103, 4511703, 4511202, 4511179, 4510998, 4512725, 4511681, 4510991, 4511097, 4513241, 4515270], "E": [155070489, 4717703]}, "name": "E. Doodle Jump", "statement": "It is a very popular game and xiaodao likes it very much. One day when\r\nplaying the game she wondered whether there exists a platform that the\r\ndoodler couldn\u2019t reach due to the limits of its jumping ability.\r\nConsider the following problem.There are platforms. The height of the\r\n-th () platform is mod , where and are positive co-prime integers. The\r\nmaximum possible height of a Doodler\u2019s jump is . That is, it can jump\r\nfrom height to height () if . Initially, the Doodler is on the ground,\r\nthe height of which is 0. The question is whether it can reach the\r\nhighest platform or not.For example, when , , , , the heights of the\r\nplatforms are , , , as in the picture below. With the first jump the\r\nDoodler can jump to the platform at height , with the second one the\r\nDoodler can jump to the platform at height , but then it can\u2019t jump to\r\nany of the higher platforms. So, it can\u2019t reach the highest platform.\r\nUser xiaodao thought about the problem for a long time but didn\u2019t solve\r\nit, so she asks you for help. Also, she has a lot of instances of the\r\nproblem. Your task is solve all of these instances.\r\n", "solutions": ["#include <bits/stdc++.h>\n\n#define mp make_pair\n#define mt make_tuple\n#define fi first\n#define se second\n#define pb push_back\n#define all(x) (x).begin(), (x).end()\n#define rall(x) (x).rbegin(), (x).rend()\n#define forn(i, n) for (int i = 0; i < (int)(n); ++i)\n#define for1(i, n) for (int i = 1; i <= (int)(n); ++i)\n#define ford(i, n) for (int i = (int)(n) - 1; i >= 0; --i)\n#define fore(i, a, b) for (int i = (int)(a); i <= (int)(b); ++i)\n\nusing namespace std;\n\ntypedef pair<int, int> pii;\ntypedef vector<int> vi;\ntypedef vector<pii> vpi;\ntypedef vector<vi> vvi;\ntypedef long long i64;\ntypedef vector<i64> vi64;\ntypedef vector<vi64> vvi64;\ntypedef pair<i64, i64> pi64;\ntypedef double ld;\n\ntemplate<class T> bool uin(T &a, T b) { return a > b ? (a = b, true) : false; }\ntemplate<class T> bool uax(T &a, T b) { return a < b ? (a = b, true) : false; }\n\nstruct Run {\n    i64 l;\n    i64 d0, d;\n    i64 z0, dz;\n};\n\ni64 untilx(const vector<Run> &rs, i64 x) {\n/*    cerr << x << '\\n';\n    for (auto r: rs) {\n        cerr << r.l << ' ' << r.d0 << ' ' << r.d << ' ' << r.z0 << ' ' << r.dz << '\\n';\n    }*/\n    if (!x) return 1e18;\n    for (auto r: rs) {\n        if (r.d0 - r.d * r.l > x) continue;\n        if (r.d0 <= x) return r.z0;\n        i64 k = (r.d0 - x - 1) / r.d + 1;\n        return r.z0 + k * r.dz;\n    }\n    assert(false);\n    return -1;\n}\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    cout.precision(10);\n    cout << fixed;\n#ifdef LOCAL_DEFINE\n    freopen(\"input.txt\", \"rt\", stdin);\n#endif\n\n    int T;\n    cin >> T;\n    for1(tc, T) {\n//        cerr << tc << '\\n';\n        i64 a, n, p, h;\n        cin >> a >> n >> p >> h;\n        a %= p;\n        if (a <= h) {\n            cout << \"YES\" << '\\n';\n            continue;\n        }\n        i64 L = a, R = p - a;\n        i64 Lz = 1, Rz = 1;\n        vector<Run> ls = {{0, L, 0, 1, 0}}, rs = {{0, R, 0, 1, 0}};\n        while (max(L, R) > 1) {\n//            cerr << L << ' ' << Lz << ' ' << R << ' ' << Rz << '\\n';\n            if (L > R) {\n                i64 len = L / R;\n                ls.pb({len, L, R, Lz, Rz});\n                Lz += Rz * len;\n                L %= R;\n            } else {\n                i64 len = R / L;\n                rs.pb({len, R, L, Rz, Lz});\n                Rz += Lz * len;\n                R %= L;\n            }\n        }\n        i64 LC = untilx(ls, h);\n        i64 RC = untilx(rs, h);\n//        cerr << LC << ' ' << RC << '\\n';\n        cout << (n < LC + RC - 1 ? \"NO\" : \"YES\") << '\\n';\n//        cout << (n < LC + RC - 1 ? \"NO\" : \"YES\") << '\\n';\n    }\n\n#ifdef LOCAL_DEFINE\n    cerr << \"Time elapsed: \" << 1.0 * clock() / CLOCKS_PER_SEC << \" s.\\n\";\n#endif\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["math", "number theory"], "dificulty": "3000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/346/problem/E",
+    "problemId": "3507",
+    "problem_idx": "E",
+    "shortId": "346E",
+    "contest_number": "346",
+    "problem_submissions": {
+        "D": [
+            4517003,
+            4516053,
+            4520303,
+            4518426,
+            4519668,
+            4519453,
+            4520044,
+            4520308,
+            4520598,
+            4519925,
+            4520328,
+            4536609,
+            4520171
+        ],
+        "C": [
+            4514630,
+            4512046,
+            4516249,
+            4515877,
+            4517922,
+            4517089,
+            4517025,
+            4518644,
+            4518590,
+            4531944,
+            4516902,
+            4518219,
+            4522630,
+            4512654,
+            4519217
+        ],
+        "B": [
+            4513206,
+            4517360,
+            4514492,
+            4514065,
+            4515596,
+            4513931,
+            4513764,
+            4514197,
+            4516093,
+            4513703,
+            4523738,
+            4523122,
+            4518694,
+            4514752
+        ],
+        "A": [
+            4511118,
+            4513688,
+            4511296,
+            4511103,
+            4511703,
+            4511202,
+            4511179,
+            4510998,
+            4512725,
+            4511681,
+            4510991,
+            4511097,
+            4513241,
+            4515270
+        ],
+        "E": [
+            155070489,
+            4717703
+        ]
+    },
+    "name": "E. Doodle Jump",
+    "statement": "It is a very popular game and xiaodao likes it very much. One day when\r\nplaying the game she wondered whether there exists a platform that the\r\ndoodler couldn\u2019t reach due to the limits of its jumping ability.\r\nConsider the following problem.There are platforms. The height of the\r\n-th () platform is mod , where and are positive co-prime integers. The\r\nmaximum possible height of a Doodler\u2019s jump is . That is, it can jump\r\nfrom height to height () if . Initially, the Doodler is on the ground,\r\nthe height of which is 0. The question is whether it can reach the\r\nhighest platform or not.For example, when , , , , the heights of the\r\nplatforms are , , , as in the picture below. With the first jump the\r\nDoodler can jump to the platform at height , with the second one the\r\nDoodler can jump to the platform at height , but then it can\u2019t jump to\r\nany of the higher platforms. So, it can\u2019t reach the highest platform.\r\nUser xiaodao thought about the problem for a long time but didn\u2019t solve\r\nit, so she asks you for help. Also, she has a lot of instances of the\r\nproblem. Your task is solve all of these instances.\r\n",
+    "solutions": [
+        "#include <bits/stdc++.h>\n\n#define mp make_pair\n#define mt make_tuple\n#define fi first\n#define se second\n#define pb push_back\n#define all(x) (x).begin(), (x).end()\n#define rall(x) (x).rbegin(), (x).rend()\n#define forn(i, n) for (int i = 0; i < (int)(n); ++i)\n#define for1(i, n) for (int i = 1; i <= (int)(n); ++i)\n#define ford(i, n) for (int i = (int)(n) - 1; i >= 0; --i)\n#define fore(i, a, b) for (int i = (int)(a); i <= (int)(b); ++i)\n\nusing namespace std;\n\ntypedef pair<int, int> pii;\ntypedef vector<int> vi;\ntypedef vector<pii> vpi;\ntypedef vector<vi> vvi;\ntypedef long long i64;\ntypedef vector<i64> vi64;\ntypedef vector<vi64> vvi64;\ntypedef pair<i64, i64> pi64;\ntypedef double ld;\n\ntemplate<class T> bool uin(T &a, T b) { return a > b ? (a = b, true) : false; }\ntemplate<class T> bool uax(T &a, T b) { return a < b ? (a = b, true) : false; }\n\nstruct Run {\n    i64 l;\n    i64 d0, d;\n    i64 z0, dz;\n};\n\ni64 untilx(const vector<Run> &rs, i64 x) {\n/*    cerr << x << '\\n';\n    for (auto r: rs) {\n        cerr << r.l << ' ' << r.d0 << ' ' << r.d << ' ' << r.z0 << ' ' << r.dz << '\\n';\n    }*/\n    if (!x) return 1e18;\n    for (auto r: rs) {\n        if (r.d0 - r.d * r.l > x) continue;\n        if (r.d0 <= x) return r.z0;\n        i64 k = (r.d0 - x - 1) / r.d + 1;\n        return r.z0 + k * r.dz;\n    }\n    assert(false);\n    return -1;\n}\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    cout.precision(10);\n    cout << fixed;\n#ifdef LOCAL_DEFINE\n    freopen(\"input.txt\", \"rt\", stdin);\n#endif\n\n    int T;\n    cin >> T;\n    for1(tc, T) {\n//        cerr << tc << '\\n';\n        i64 a, n, p, h;\n        cin >> a >> n >> p >> h;\n        a %= p;\n        if (a <= h) {\n            cout << \"YES\" << '\\n';\n            continue;\n        }\n        i64 L = a, R = p - a;\n        i64 Lz = 1, Rz = 1;\n        vector<Run> ls = {{0, L, 0, 1, 0}}, rs = {{0, R, 0, 1, 0}};\n        while (max(L, R) > 1) {\n//            cerr << L << ' ' << Lz << ' ' << R << ' ' << Rz << '\\n';\n            if (L > R) {\n                i64 len = L / R;\n                ls.pb({len, L, R, Lz, Rz});\n                Lz += Rz * len;\n                L %= R;\n            } else {\n                i64 len = R / L;\n                rs.pb({len, R, L, Rz, Lz});\n                Rz += Lz * len;\n                R %= L;\n            }\n        }\n        i64 LC = untilx(ls, h);\n        i64 RC = untilx(rs, h);\n//        cerr << LC << ' ' << RC << '\\n';\n        cout << (n < LC + RC - 1 ? \"NO\" : \"YES\") << '\\n';\n//        cout << (n < LC + RC - 1 ? \"NO\" : \"YES\") << '\\n';\n    }\n\n#ifdef LOCAL_DEFINE\n    cerr << \"Time elapsed: \" << 1.0 * clock() / CLOCKS_PER_SEC << \" s.\\n\";\n#endif\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "math",
+        "number theory"
+    ],
+    "dificulty": "3000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\E. Doodle Jump.json",
+    "editorial_link": "https://codeforces.com//blog/entry/8903",
+    "editorial": "Take a =5, p =23 for example ... Divided the numbers in group.\n\n0  5  10  15  20\n2  7  12  17  22\n4  9  14  19\n1  6  11  16  21\n3  8  13  18\nWe start a new group when the number > P\n\nWe found the difference between the elements of the first group is 5, The subsequent is filling some gap between the them ...\n\nAfter some observation we could found that we should only consider into one gap ...(e.g. [0, 5] or [15, 20] or [20, 25] ... )\n\n0  5  10  15  20\n2  7  12  17  22\n4  9  14  19\n1  6  11  16\nThat says .. a =5, p =23 is roughly equal to some things in small scale?\n\nSo let's check it in detail. Lemma 1. In any case, the gap after 20 won't better than any gap before it.\n\n0  5  10  15  20 \n2  7  12  17  22\n4  9  14  19\n1  6  11  16\nFor example, in this case, the gap after 20 is: 20, 22 And it has 16 in [15, 17] but no 21.\n\nIs there any chance that [20, 23] is better than [15, 20]?\n\nNo, that is because, when there is no 21, then (19+5)%23 = 1, go to next floor. and there is no corresponding gap after 20 ([22, 24]) for this gap ([17, 19])\n\nSo we only need to consider [15, 20] ... and we found [15, 20] is roughly equal to [0, 5]\n\ne.g. :    15 20 17 19 16 18 \nequal:     0  5  2  4  1  3\nwe say 'roughly' because we havn't check some boundary case like there is 3 but on 18 ...\n\n0  5  10  15  20 \n2  7  12  17  22\n4  9  14  19\n1  6  11  16  21\n3  8  13 \nIf it happend, we should remove the number 3. .. If we can remove the element 5, then we can from a=5, p=23 to a'=2, p'=5 ...(n' = an/p, a' = a-p%a, if there is 3 but no 18, n'=n'-1)\n\nThe rest things is to discuss wheather 5 is necessary or not.\n\nLet's we have:\n\n0 2 4\n1 3\nIf the 2*n'<5, then there is only one floor, the answer is max(2, 5-2*n'). If there is more than one floor, we could conclude that 5 is useless.\n\nProof: Elemets in 1st floor is:\n\n0 a 2a 3a ...\nLet's say the maximum elements in 1st floor is x, then the minimum element in the 2nd floor is b0 = x+a-p, because b0 \u0097 a = x-p, so the difference between b0 and a is equal to the difference between x and p. That is, we can consider [b0, a] rather than [x, p], when there is a element insert in [b0, a], there must be some element insert in [x, p] in the same position.\n\nSo we have have succeeded to transform our original problem into a small one. Of couse, this problem havn't been solved, we haven't consider the time complexity. Says a' = a \u0097 p%a, when p = a+1, then a' = a-1, but we have a equal to 10^9, it won't work.\n\nBut, let's we have A1, A2, ... An ... and we subtract d from all of them, the answer won't be changed. So we can use p%a substitute for a-p%a, this is equivalent to we subtract %p% from all of them ..."
+}

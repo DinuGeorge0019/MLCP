@@ -1,1 +1,102 @@
-{"link": "https://codeforces.com//contest/469/problem/B", "problemId": "13930", "problem_idx": "B", "shortId": "469B", "contest_number": "469", "problem_submissions": {"D": [7876116, 7874956, 7877353, 7875879, 7876238, 7878696, 7880049, 7879604, 7880784, 7881781, 7881399, 7879768, 11704113], "A": [7871841, 7867973, 7872788, 7867411, 7867504, 7867568, 7867723, 7867280, 7868365, 7869367, 7868389, 7883163, 7867242, 7867290, 7867905, 7867413, 7867447], "B": [7871180, 7869550, 7871368, 7869737, 7871285, 7870565, 7869600, 7869418, 7872123, 7871421, 7871042, 7869770, 7869641, 7869782, 7869345, 7870155, 7872571, 7871201, 7870259], "C": [7869461, 7870930, 7869691, 7872021, 7872711, 7873725, 7871684, 7872545, 7873755, 7873123, 7873034, 7871464, 7873812, 7871462, 7872474, 7870758, 7873008, 7872626], "E": [7915862]}, "name": "B. Chat Online", "statement": "Little X and Little Z are good friends. They always chat online. But\r\nboth of them have schedules.Little Z has fixed schedule. He always\r\nonline at any moment of time between and , between and , ..., between\r\nand (all borders inclusive). But the schedule of Little X is quite\r\nstrange, it depends on the time when he gets up. If he gets up at time ,\r\nhe will be online at any moment of time between and , between and , ...,\r\nbetween and (all borders inclusive). But if he gets up at time , these\r\nsegments will be shifted by . They become (for all ).If at a moment of\r\ntime, both Little X and Little Z are online simultaneosly, they can chat\r\nonline happily. You know that Little X can get up at an integer moment\r\nof time between and (both borders inclusive). Also you know that Little\r\nX wants to get up at the moment of time, that is suitable for chatting\r\nwith Little Z (they must have at least one common moment of time in\r\nschedules). How many integer moments of time from the segment suit for\r\nthat?\r\n", "solutions": ["#include<cstdio>\n#include<cstring>\n#include<algorithm>\nusing namespace std;\nstruct str{int x,y;}a[2100],b[2100];\nint n,m,l,r,cnt[2100],ans,i,k,j;\nint main()\n{\n\tscanf(\"%d%d%d%d\",&n,&m,&l,&r);\n\tfor(i=1;i<=n;i++)\n\t\tscanf(\"%d%d\",&a[i].x,&a[i].y);\n\tfor(i=1;i<=m;i++)\n\t\tscanf(\"%d%d\",&b[i].x,&b[i].y);\n\tans=0;\n\tfor(i=l;i<=r;i++)\n\t{\n\t\tfor(j=0;j<=2000;j++)cnt[j]=0;\n\t\tfor(j=1;j<=n;j++)\n\t\t\tfor(k=a[j].x;k<=a[j].y;k++)\n\t\t\t\tcnt[k]=1;\n\t\tfor(j=1;j<=m;j++){\n\t\t\tfor(k=i+b[j].x;k<=i+b[j].y;k++)\n\t\t\t\tif(cnt[k])break;\n\t\t\tif(k<=i+b[j].y)break;\n\t\t}\n\t\tif(j<=m)ans++;\n\t}\n\tprintf(\"%d\\n\",ans);\n}"], "input": "", "output": "", "tags": ["implementation"], "dificulty": "1300", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/469/problem/B",
+    "problemId": "13930",
+    "problem_idx": "B",
+    "shortId": "469B",
+    "contest_number": "469",
+    "problem_submissions": {
+        "D": [
+            7876116,
+            7874956,
+            7877353,
+            7875879,
+            7876238,
+            7878696,
+            7880049,
+            7879604,
+            7880784,
+            7881781,
+            7881399,
+            7879768,
+            11704113
+        ],
+        "A": [
+            7871841,
+            7867973,
+            7872788,
+            7867411,
+            7867504,
+            7867568,
+            7867723,
+            7867280,
+            7868365,
+            7869367,
+            7868389,
+            7883163,
+            7867242,
+            7867290,
+            7867905,
+            7867413,
+            7867447
+        ],
+        "B": [
+            7871180,
+            7869550,
+            7871368,
+            7869737,
+            7871285,
+            7870565,
+            7869600,
+            7869418,
+            7872123,
+            7871421,
+            7871042,
+            7869770,
+            7869641,
+            7869782,
+            7869345,
+            7870155,
+            7872571,
+            7871201,
+            7870259
+        ],
+        "C": [
+            7869461,
+            7870930,
+            7869691,
+            7872021,
+            7872711,
+            7873725,
+            7871684,
+            7872545,
+            7873755,
+            7873123,
+            7873034,
+            7871464,
+            7873812,
+            7871462,
+            7872474,
+            7870758,
+            7873008,
+            7872626
+        ],
+        "E": [
+            7915862
+        ]
+    },
+    "name": "B. Chat Online",
+    "statement": "Little X and Little Z are good friends. They always chat online. But\r\nboth of them have schedules.Little Z has fixed schedule. He always\r\nonline at any moment of time between and , between and , ..., between\r\nand (all borders inclusive). But the schedule of Little X is quite\r\nstrange, it depends on the time when he gets up. If he gets up at time ,\r\nhe will be online at any moment of time between and , between and , ...,\r\nbetween and (all borders inclusive). But if he gets up at time , these\r\nsegments will be shifted by . They become (for all ).If at a moment of\r\ntime, both Little X and Little Z are online simultaneosly, they can chat\r\nonline happily. You know that Little X can get up at an integer moment\r\nof time between and (both borders inclusive). Also you know that Little\r\nX wants to get up at the moment of time, that is suitable for chatting\r\nwith Little Z (they must have at least one common moment of time in\r\nschedules). How many integer moments of time from the segment suit for\r\nthat?\r\n",
+    "solutions": [
+        "#include<cstdio>\n#include<cstring>\n#include<algorithm>\nusing namespace std;\nstruct str{int x,y;}a[2100],b[2100];\nint n,m,l,r,cnt[2100],ans,i,k,j;\nint main()\n{\n\tscanf(\"%d%d%d%d\",&n,&m,&l,&r);\n\tfor(i=1;i<=n;i++)\n\t\tscanf(\"%d%d\",&a[i].x,&a[i].y);\n\tfor(i=1;i<=m;i++)\n\t\tscanf(\"%d%d\",&b[i].x,&b[i].y);\n\tans=0;\n\tfor(i=l;i<=r;i++)\n\t{\n\t\tfor(j=0;j<=2000;j++)cnt[j]=0;\n\t\tfor(j=1;j<=n;j++)\n\t\t\tfor(k=a[j].x;k<=a[j].y;k++)\n\t\t\t\tcnt[k]=1;\n\t\tfor(j=1;j<=m;j++){\n\t\t\tfor(k=i+b[j].x;k<=i+b[j].y;k++)\n\t\t\t\tif(cnt[k])break;\n\t\t\tif(k<=i+b[j].y)break;\n\t\t}\n\t\tif(j<=m)ans++;\n\t}\n\tprintf(\"%d\\n\",ans);\n}"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation"
+    ],
+    "dificulty": "1300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Chat Online.json",
+    "editorial_link": "https://codeforces.com//blog/entry/13896",
+    "editorial": "This problem is not hard. Just iterator over all possible , and check if\r\nthe schedule of Little X and Little Z will overlap. 7894252 Bonus:\r\n"
+}

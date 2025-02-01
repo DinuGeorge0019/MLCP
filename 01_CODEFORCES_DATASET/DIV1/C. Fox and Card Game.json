@@ -1,1 +1,91 @@
-{"link": "https://codeforces.com//contest/388/problem/C", "problemId": "6407", "problem_idx": "C", "shortId": "388C", "contest_number": "388", "problem_submissions": {"D": [5881221, 5882916, 5884765, 5884166, 5884772, 5886438, 5886379, 5879628, 5881889, 5883814, 9006539], "A": [5878499, 5875213, 5874956, 5875207, 5875079, 5874857, 5875135, 5882241, 5886169, 5874693, 5875783, 5874826, 5874879, 5875011], "C": [5878094, 5879257, 5880482, 5882050, 5881780, 5878419, 5880247, 5886441, 5883025, 5884549, 5885115, 5881042, 5884063, 5878671], "B": [5877357, 5878081, 5878393, 5877933, 5879631, 5877363, 5877984, 5881618, 5885395, 5877991, 5880604, 5879253, 5880664, 5877570], "E": [5952727, 5888469]}, "name": "C. Fox and Card Game", "statement": "Fox Ciel is playing a card game with her friend Fox Jiro. There are\r\npiles of cards on the table. And there is a positive integer on each\r\ncard.The players take turns and Ciel takes the first turn. In Ciel\u2019s\r\nturn she takes a card from the top of any non-empty pile, and in Jiro\u2019s\r\nturn he takes a card from the bottom of any non-empty pile. Each player\r\nwants to maximize the total sum of the cards he took. The game ends when\r\nall piles become empty.Suppose Ciel and Jiro play optimally, what is the\r\nscore of the game?\r\n", "solutions": ["#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <memory.h>\n\nusing namespace std;\n\nint b[123456];\n\nint main() {\n  int n;\n  scanf(\"%d\", &n);\n  vector <int> a;\n  int x = 0, y = 0;\n  while (n--) {\n    int foo;\n    scanf(\"%d\", &foo);\n    for (int i = 0; i < foo; i++) {\n      scanf(\"%d\", b + i);\n    }\n    for (int i = 0; i < foo / 2; i++) {\n      x += b[i];\n      y += b[foo - (foo / 2) + i];\n    }\n    if (foo % 2 == 1) {\n      a.push_back(b[foo / 2]);\n    }\n  }\n  sort(a.begin(), a.end());\n  reverse(a.begin(), a.end());\n  for (int i = 0; i < (int)a.size(); i++)\n    if (i % 2 == 0) x += a[i];\n    else y += a[i];\n  printf(\"%d %d\\n\", x, y);\n  return 0;\n}\n"], "input": "", "output": "", "tags": ["games", "greedy", "sortings"], "dificulty": "2000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/388/problem/C",
+    "problemId": "6407",
+    "problem_idx": "C",
+    "shortId": "388C",
+    "contest_number": "388",
+    "problem_submissions": {
+        "D": [
+            5881221,
+            5882916,
+            5884765,
+            5884166,
+            5884772,
+            5886438,
+            5886379,
+            5879628,
+            5881889,
+            5883814,
+            9006539
+        ],
+        "A": [
+            5878499,
+            5875213,
+            5874956,
+            5875207,
+            5875079,
+            5874857,
+            5875135,
+            5882241,
+            5886169,
+            5874693,
+            5875783,
+            5874826,
+            5874879,
+            5875011
+        ],
+        "C": [
+            5878094,
+            5879257,
+            5880482,
+            5882050,
+            5881780,
+            5878419,
+            5880247,
+            5886441,
+            5883025,
+            5884549,
+            5885115,
+            5881042,
+            5884063,
+            5878671
+        ],
+        "B": [
+            5877357,
+            5878081,
+            5878393,
+            5877933,
+            5879631,
+            5877363,
+            5877984,
+            5881618,
+            5885395,
+            5877991,
+            5880604,
+            5879253,
+            5880664,
+            5877570
+        ],
+        "E": [
+            5952727,
+            5888469
+        ]
+    },
+    "name": "C. Fox and Card Game",
+    "statement": "Fox Ciel is playing a card game with her friend Fox Jiro. There are\r\npiles of cards on the table. And there is a positive integer on each\r\ncard.The players take turns and Ciel takes the first turn. In Ciel\u2019s\r\nturn she takes a card from the top of any non-empty pile, and in Jiro\u2019s\r\nturn he takes a card from the bottom of any non-empty pile. Each player\r\nwants to maximize the total sum of the cards he took. The game ends when\r\nall piles become empty.Suppose Ciel and Jiro play optimally, what is the\r\nscore of the game?\r\n",
+    "solutions": [
+        "#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <memory.h>\n\nusing namespace std;\n\nint b[123456];\n\nint main() {\n  int n;\n  scanf(\"%d\", &n);\n  vector <int> a;\n  int x = 0, y = 0;\n  while (n--) {\n    int foo;\n    scanf(\"%d\", &foo);\n    for (int i = 0; i < foo; i++) {\n      scanf(\"%d\", b + i);\n    }\n    for (int i = 0; i < foo / 2; i++) {\n      x += b[i];\n      y += b[foo - (foo / 2) + i];\n    }\n    if (foo % 2 == 1) {\n      a.push_back(b[foo / 2]);\n    }\n  }\n  sort(a.begin(), a.end());\n  reverse(a.begin(), a.end());\n  for (int i = 0; i < (int)a.size(); i++)\n    if (i % 2 == 0) x += a[i];\n    else y += a[i];\n  printf(\"%d %d\\n\", x, y);\n  return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "games",
+        "greedy",
+        "sortings"
+    ],
+    "dificulty": "2000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Fox and Card Game.json",
+    "editorial_link": "https://codeforces.com//blog/entry/10629",
+    "editorial": "First let\u00e2\u0080\u0099s consider the case which all piles have even size. In this\r\ncase, we can prove: in the optimal play, Ciel will gets all top most\r\nhalf cards of each pile, and Jiro gets the remain cards. We can prove by\r\nthese facts: Ciel have a strategy to ensure she can get this outcome and\r\nJiro also have a strategy to ensure this outcome. (For Jiro this\r\nstrategy is easy: just pick the card from pile that Ciel have just\r\npicked. For Ciel it\u00e2\u0080\u0099s a little bit harder.) Why we can conclude they are\r\nboth the optimal strategy? Ciel just can\u00e2\u0080\u0099t win more, because if she\r\nplayed with Jiro with above strategy, Jiro will get the bottom half of\r\neach pile. Then we come back with cases that contain odd size piles. The\r\nresult is: for odd size pile, Ciel will get the top (s-1)/2 cards and\r\nJiro will get the bottom (s-1)/2 cards. Then what about the middle one?\r\nLet\u00e2\u0080\u0099s denote S is all such middle cards. Then we define a reduced game:\r\nIn each turn, they pick one card from S. The optimal play for this game\r\nis easy: Ciel gets the max one, and Jiro gets the 2nd largest one, and\r\nCiel gets the 3rd largest one and so on. We can prove Ciel have a\r\nstrategy to get: all top half parts + cards she will get in the optimal\r\nplay in the reduced game. And Jiro also have a strategy to get: all\r\nbottom half parts + cards he will get in the optimal play in the reduced\r\ngame. And these strategy are optimal.\r\n"
+}

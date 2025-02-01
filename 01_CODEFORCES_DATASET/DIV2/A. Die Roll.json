@@ -1,1 +1,104 @@
-{"link": "https://codeforces.com//contest/9/problem/A", "problemId": "37", "problem_idx": "A", "shortId": "9A", "contest_number": "9", "problem_submissions": {"E": [39868, 40035, 40397, 39920, 40525, 40255, 40364, 40918, 40916, 40907, 40905, 40903, 40902, 40887, 40883, 40881], "B": [39322, 39157, 39182, 39065, 39109, 39103, 39519, 39212, 39094, 39095, 39125, 39498, 39287], "D": [39225, 39357, 39494, 39241, 39384, 39662, 39771, 39508, 39555, 39543, 2827312, 39714, 38998, 39881], "C": [38999, 38924, 39161, 38963, 38893, 38846, 39594, 38953, 38868, 38709, 38839, 39133, 38862], "A": [38708, 38736, 38719, 38706, 38745, 38722, 39296, 38845, 38717, 38803, 38714, 39067, 38711]}, "name": "A. Die Roll", "statement": "Yakko, Wakko and Dot, world-famous animaniacs, decided to rest from\r\nacting in cartoons, and take a leave to travel a bit. Yakko dreamt to go\r\nto Pennsylvania, his Motherland and the Motherland of his ancestors.\r\nWakko thought about Tasmania, its beaches, sun and sea. Dot chose\r\nTransylvania as the most mysterious and unpredictable place.But to their\r\ngreat regret, the leave turned to be very short, so it will be enough to\r\nvisit one of the three above named places. That\u2019s why Yakko, as the\r\ncleverest, came up with a truly genius idea: let each of the three roll\r\nan ordinary six-sided die, and the one with the highest amount of points\r\nwill be the winner, and will take the other two to the place of his/her\r\ndreams.Yakko thrown a die and got points, Wakko points. It was Dot\u2019s\r\nturn. But she didn\u2019t hurry. Dot wanted to know for sure what were her\r\nchances to visit Transylvania.It is known that Yakko and Wakko are true\r\ngentlemen, that\u2019s why if they have the same amount of points with Dot,\r\nthey will let Dot win.\r\n", "solutions": ["#include <iostream>\n#include <cmath>\n#include <algorithm>\n#include <cstdio>\n#include <string>\n\nusing namespace std;\n\nstring res[7] = {\"0/1\", \"1/6\", \"1/3\", \"1/2\", \"2/3\", \"5/6\", \"1/1\"};\n\nint main()\n{\n//\tfreopen(\"\", \"rt\", stdin);\n//\tfreopen(\"\", \"wt\", stdout);\n\tint a, b;\t\n\tcin >> a >> b;\n\tcout << res[7 - max(a, b)];\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["math", "probabilities"], "dificulty": "800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/9/problem/A",
+    "problemId": "37",
+    "problem_idx": "A",
+    "shortId": "9A",
+    "contest_number": "9",
+    "problem_submissions": {
+        "E": [
+            39868,
+            40035,
+            40397,
+            39920,
+            40525,
+            40255,
+            40364,
+            40918,
+            40916,
+            40907,
+            40905,
+            40903,
+            40902,
+            40887,
+            40883,
+            40881
+        ],
+        "B": [
+            39322,
+            39157,
+            39182,
+            39065,
+            39109,
+            39103,
+            39519,
+            39212,
+            39094,
+            39095,
+            39125,
+            39498,
+            39287
+        ],
+        "D": [
+            39225,
+            39357,
+            39494,
+            39241,
+            39384,
+            39662,
+            39771,
+            39508,
+            39555,
+            39543,
+            2827312,
+            39714,
+            38998,
+            39881
+        ],
+        "C": [
+            38999,
+            38924,
+            39161,
+            38963,
+            38893,
+            38846,
+            39594,
+            38953,
+            38868,
+            38709,
+            38839,
+            39133,
+            38862
+        ],
+        "A": [
+            38708,
+            38736,
+            38719,
+            38706,
+            38745,
+            38722,
+            39296,
+            38845,
+            38717,
+            38803,
+            38714,
+            39067,
+            38711
+        ]
+    },
+    "name": "A. Die Roll",
+    "statement": "Yakko, Wakko and Dot, world-famous animaniacs, decided to rest from\r\nacting in cartoons, and take a leave to travel a bit. Yakko dreamt to go\r\nto Pennsylvania, his Motherland and the Motherland of his ancestors.\r\nWakko thought about Tasmania, its beaches, sun and sea. Dot chose\r\nTransylvania as the most mysterious and unpredictable place.But to their\r\ngreat regret, the leave turned to be very short, so it will be enough to\r\nvisit one of the three above named places. That\u2019s why Yakko, as the\r\ncleverest, came up with a truly genius idea: let each of the three roll\r\nan ordinary six-sided die, and the one with the highest amount of points\r\nwill be the winner, and will take the other two to the place of his/her\r\ndreams.Yakko thrown a die and got points, Wakko points. It was Dot\u2019s\r\nturn. But she didn\u2019t hurry. Dot wanted to know for sure what were her\r\nchances to visit Transylvania.It is known that Yakko and Wakko are true\r\ngentlemen, that\u2019s why if they have the same amount of points with Dot,\r\nthey will let Dot win.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <cmath>\n#include <algorithm>\n#include <cstdio>\n#include <string>\n\nusing namespace std;\n\nstring res[7] = {\"0/1\", \"1/6\", \"1/3\", \"1/2\", \"2/3\", \"5/6\", \"1/1\"};\n\nint main()\n{\n//\tfreopen(\"\", \"rt\", stdin);\n//\tfreopen(\"\", \"wt\", stdout);\n\tint a, b;\t\n\tcin >> a >> b;\n\tcout << res[7 - max(a, b)];\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "math",
+        "probabilities"
+    ],
+    "dificulty": "800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Die Roll.json",
+    "editorial_link": "https://codeforces.com//blog/entry/283",
+    "editorial": "If the maximum of Yakko's and Wakko's points is a, then Dot will win, if she has not less than a points. So the probability of her win is (6 - (a-1)) / 6. Since there are only 6 values for a, you can simply hardcode the answers."
+}

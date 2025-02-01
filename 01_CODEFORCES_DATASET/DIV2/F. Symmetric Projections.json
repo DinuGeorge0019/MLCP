@@ -1,1 +1,89 @@
-{"link": "https://codeforces.com//contest/890/problem/F", "problemId": "133728", "problem_idx": "F", "shortId": "890F", "contest_number": "890", "problem_submissions": {"F": [32289917], "E": [32261274, 32675605, 32429167, 32262692], "D": [32257865, 32268886, 32258866, 32260610, 32261085, 32262116, 32262769, 32262040, 32269184, 32261804, 32261588, 32261452], "C": [32252742, 32258377, 32261755, 32255078, 32253602, 32254200, 32254499, 32258466, 32256926, 32255088, 32253307, 32258191], "B": [32249690, 32252382, 32249585, 32250216, 32249706, 32250555, 32251083, 32253080, 32251617, 32251074, 32250730, 32251426], "A": [32248474, 32263812, 32248207, 32248333, 32248364, 32248924, 32248328, 32250186, 32248109, 32248687, 32248286, 32248149]}, "name": "F. Symmetric Projections", "statement": "You are given a set of points on the plane. A line containing the origin\r\nis called good, if projection of the given set to this line forms a\r\nsymmetric multiset of points. Find the total number of good\r\nlines.Multiset is a set where equal elements are allowed.Multiset is\r\ncalled symmetric, if there is a point on the plane such that the\r\nmultiset is centrally symmetric in respect of point .\r\n", "solutions": ["#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <map>\nusing namespace std;\n\n#define DEB 1\n#define dbg_tab(x,l) if(DEB) { cerr << #x << \":\"; for(int i=0;i<l;i++) cerr << \" \" << x[i]; cerr << endl; }\n#define dbg_vec(x) if(DEB) { cerr << #x << \":\"; for(auto y:x) cerr << \" \" << y; cerr << endl; }\n\nconst int N = 2000;\n\nint n;\nint x[N + 7];\nint y[N + 7];\nlong long px, py;\n\nint wynik = 0;\n\nvoid sprawdz(long long dx, long long dy) {\n    swap(dx, dy);\n    dx *= -1;\n    long long ilp = px * dx + py * dy;\n    vector <long long> ils;\n    for(int i = 1; i <= n; ++i) {\n        ils.push_back(dx * n * x[i] + dy * n * y[i] - ilp);\n    }\n    \n    sort(ils.begin(), ils.end());\n    bool ok = 1;\n    for(int i = 0; i < n; ++i) if(ils[i] != -ils[n - i - 1]) ok = 0;\n    if(ok) wynik++;\n}\n\nstruct cmp {\n    bool operator()(pair <int, int> A, pair <int, int> B) {\n        return (long long) A.first * B.second < (long long) A.second * B.first;\n    }\n};  \n\nmap <pair <int, int>, int, cmp> S;\n\ninline int sgn(int x) {\n    if(x < 0) return -1;\n    else if(x > 0) return 1;\n    else return 0;\n}\n\ninline void dorzuc(int x, int y) {\n    if(x == 0 || y == 0) return;\n    else {\n        if(x < 0) {\n            x *= -1;\n            y *= -1;\n        }\n        S[{x, y}]++;\n    } \n}\n\nint main() {\n    ios_base::sync_with_stdio(0);\n    cin >> n;\n    px = py = 0;\n    for(int i = 1; i <= n; ++i) {\n        cin >> x[i] >> y[i];\n        px += x[i];\n        py += y[i];\n    }\n    \n    bool czyinf = 1;\n    for(int i = 1; i <= n; ++i) {\n        for(int j = i + 1; j <= n; ++j) {\n            if((long long) (x[i] + x[j]) * n - 2 * px != 0) czyinf = 0;\n            if((long long) (y[i] + y[j]) * n - 2 * py != 0) czyinf = 0;\n        }   \n    }\n    \n    if(czyinf) {\n        cout << -1 << endl;\n        return 0;\n    }\n    \n    vector <pair <long long, long long> > zb1;\n    vector <pair <long long, long long> > zb2;\n    \n    for(int i = 1; i <= n; ++i) {\n        zb1.push_back({(long long) n * x[i], (long long) n * y[i]});\n        zb2.push_back({2 * px - (long long) n * x[i], 2 * py - (long long) n * y[i]});\n    }\n    \n    sort(zb1.begin(), zb1.end());\n    sort(zb2.begin(), zb2.end());\n    czyinf = 1;\n    for(int i = 0; i < n; ++i) if(zb1[i] != zb2[i]) czyinf = 0;\n    \n    if(czyinf) {\n        cout << -1 << endl;\n        return 0;\n    }\n    \n    \n    for(int i = 1; i <= n; ++i) {\n        for(int j = i + 1; j <= n; ++j) {\n            int dx = x[i] + x[j];\n            dx *= n;\n            dx -= 2 * px;\n            int dy = y[i] + y[j];\n            dy *= n;\n            dy -= 2 * py;\n            dorzuc(dx, dy);\n        }\n    }\n    \n    for(int i = 1; i <= n; ++i) {\n        int dx = x[i];\n        dx *= n;\n        dx -= px;\n        int dy = y[i];\n        dy *= n;\n        dy -= py;\n        dorzuc(dx, dy);\n    }\n    \n    vector <pair <int, pair <int, int> > > kandydaci;\n    for(auto u : S) kandydaci.push_back({u.second, u.first});\n    sort(kandydaci.begin(), kandydaci.end(), greater <pair <int, pair <int, int> > > ());\n    \n    int ile = n + 5;\n    if(n > 500) ile /= 4;\n    for(int i = 0; i < ile && i < (int) kandydaci.size(); ++i) {\n        auto u = kandydaci[i];\n        sprawdz(u.second.first, u.second.second);\n    }\n    \n    sprawdz(1, 0);\n    sprawdz(0, 1);\n    cout << wynik << endl;\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["geometry"], "dificulty": "2900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/890/problem/F",
+    "problemId": "133728",
+    "problem_idx": "F",
+    "shortId": "890F",
+    "contest_number": "890",
+    "problem_submissions": {
+        "F": [
+            32289917
+        ],
+        "E": [
+            32261274,
+            32675605,
+            32429167,
+            32262692
+        ],
+        "D": [
+            32257865,
+            32268886,
+            32258866,
+            32260610,
+            32261085,
+            32262116,
+            32262769,
+            32262040,
+            32269184,
+            32261804,
+            32261588,
+            32261452
+        ],
+        "C": [
+            32252742,
+            32258377,
+            32261755,
+            32255078,
+            32253602,
+            32254200,
+            32254499,
+            32258466,
+            32256926,
+            32255088,
+            32253307,
+            32258191
+        ],
+        "B": [
+            32249690,
+            32252382,
+            32249585,
+            32250216,
+            32249706,
+            32250555,
+            32251083,
+            32253080,
+            32251617,
+            32251074,
+            32250730,
+            32251426
+        ],
+        "A": [
+            32248474,
+            32263812,
+            32248207,
+            32248333,
+            32248364,
+            32248924,
+            32248328,
+            32250186,
+            32248109,
+            32248687,
+            32248286,
+            32248149
+        ]
+    },
+    "name": "F. Symmetric Projections",
+    "statement": "You are given a set of points on the plane. A line containing the origin\r\nis called good, if projection of the given set to this line forms a\r\nsymmetric multiset of points. Find the total number of good\r\nlines.Multiset is a set where equal elements are allowed.Multiset is\r\ncalled symmetric, if there is a point on the plane such that the\r\nmultiset is centrally symmetric in respect of point .\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <map>\nusing namespace std;\n\n#define DEB 1\n#define dbg_tab(x,l) if(DEB) { cerr << #x << \":\"; for(int i=0;i<l;i++) cerr << \" \" << x[i]; cerr << endl; }\n#define dbg_vec(x) if(DEB) { cerr << #x << \":\"; for(auto y:x) cerr << \" \" << y; cerr << endl; }\n\nconst int N = 2000;\n\nint n;\nint x[N + 7];\nint y[N + 7];\nlong long px, py;\n\nint wynik = 0;\n\nvoid sprawdz(long long dx, long long dy) {\n    swap(dx, dy);\n    dx *= -1;\n    long long ilp = px * dx + py * dy;\n    vector <long long> ils;\n    for(int i = 1; i <= n; ++i) {\n        ils.push_back(dx * n * x[i] + dy * n * y[i] - ilp);\n    }\n    \n    sort(ils.begin(), ils.end());\n    bool ok = 1;\n    for(int i = 0; i < n; ++i) if(ils[i] != -ils[n - i - 1]) ok = 0;\n    if(ok) wynik++;\n}\n\nstruct cmp {\n    bool operator()(pair <int, int> A, pair <int, int> B) {\n        return (long long) A.first * B.second < (long long) A.second * B.first;\n    }\n};  \n\nmap <pair <int, int>, int, cmp> S;\n\ninline int sgn(int x) {\n    if(x < 0) return -1;\n    else if(x > 0) return 1;\n    else return 0;\n}\n\ninline void dorzuc(int x, int y) {\n    if(x == 0 || y == 0) return;\n    else {\n        if(x < 0) {\n            x *= -1;\n            y *= -1;\n        }\n        S[{x, y}]++;\n    } \n}\n\nint main() {\n    ios_base::sync_with_stdio(0);\n    cin >> n;\n    px = py = 0;\n    for(int i = 1; i <= n; ++i) {\n        cin >> x[i] >> y[i];\n        px += x[i];\n        py += y[i];\n    }\n    \n    bool czyinf = 1;\n    for(int i = 1; i <= n; ++i) {\n        for(int j = i + 1; j <= n; ++j) {\n            if((long long) (x[i] + x[j]) * n - 2 * px != 0) czyinf = 0;\n            if((long long) (y[i] + y[j]) * n - 2 * py != 0) czyinf = 0;\n        }   \n    }\n    \n    if(czyinf) {\n        cout << -1 << endl;\n        return 0;\n    }\n    \n    vector <pair <long long, long long> > zb1;\n    vector <pair <long long, long long> > zb2;\n    \n    for(int i = 1; i <= n; ++i) {\n        zb1.push_back({(long long) n * x[i], (long long) n * y[i]});\n        zb2.push_back({2 * px - (long long) n * x[i], 2 * py - (long long) n * y[i]});\n    }\n    \n    sort(zb1.begin(), zb1.end());\n    sort(zb2.begin(), zb2.end());\n    czyinf = 1;\n    for(int i = 0; i < n; ++i) if(zb1[i] != zb2[i]) czyinf = 0;\n    \n    if(czyinf) {\n        cout << -1 << endl;\n        return 0;\n    }\n    \n    \n    for(int i = 1; i <= n; ++i) {\n        for(int j = i + 1; j <= n; ++j) {\n            int dx = x[i] + x[j];\n            dx *= n;\n            dx -= 2 * px;\n            int dy = y[i] + y[j];\n            dy *= n;\n            dy -= 2 * py;\n            dorzuc(dx, dy);\n        }\n    }\n    \n    for(int i = 1; i <= n; ++i) {\n        int dx = x[i];\n        dx *= n;\n        dx -= px;\n        int dy = y[i];\n        dy *= n;\n        dy -= py;\n        dorzuc(dx, dy);\n    }\n    \n    vector <pair <int, pair <int, int> > > kandydaci;\n    for(auto u : S) kandydaci.push_back({u.second, u.first});\n    sort(kandydaci.begin(), kandydaci.end(), greater <pair <int, pair <int, int> > > ());\n    \n    int ile = n + 5;\n    if(n > 500) ile /= 4;\n    for(int i = 0; i < ile && i < (int) kandydaci.size(); ++i) {\n        auto u = kandydaci[i];\n        sprawdz(u.second.first, u.second.second);\n    }\n    \n    sprawdz(1, 0);\n    sprawdz(0, 1);\n    cout << wynik << endl;\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "geometry"
+    ],
+    "dificulty": "2900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\F. Symmetric Projections.json",
+    "editorial_link": "https://codeforces.com//blog/entry/55734",
+    "editorial": "Let us note that projection of set of points to line move center of mass of initial set to center of mass of initial set to center of mass of projections multiset. So if the line is good then the center of mass of initial set move to center of symmetry. Also If there is two points, which are symmetric with respect to center of mass then they will be symmetric under the projection on arbitrary line. So we can throw away these points.\n\nFix arbitrary point from remaining set. Let us take point from set, which will be symmetric to the fixed point. There is only one line, which has property, that two projections of chosen points are symmetric: the line, which is perpendicular to line passing through the center of mass of initial set and center of segment connecting two chosen points. So we have no more then n candidates which can be a good line. It is possible to check, that line is good, in O(nlogn) time."
+}

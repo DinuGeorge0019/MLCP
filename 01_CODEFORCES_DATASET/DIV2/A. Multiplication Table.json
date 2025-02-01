@@ -1,1 +1,102 @@
-{"link": "https://codeforces.com//contest/577/problem/A", "problemId": "34888", "problem_idx": "A", "shortId": "577A", "contest_number": "577", "problem_submissions": {"E": [12934021, 12937802, 12946890, 12941991, 12957515, 12944448, 13175505, 12944648, 12944393, 12937611, 12947231, 12946467, 12943052, 12942794], "D": [12944318, 12940763, 12944692, 12944241, 12944185, 12943472], "C": [12939458, 12935330, 12931965, 12930011, 12933070, 12931435, 12931425, 12936025, 12933543, 12937247, 12928317, 12934645, 12932764, 12930639, 12932440, 12935065, 12934571], "B": [12935134, 12931058, 12929931, 12931038, 12930166, 12928876, 12933443, 12931395, 12932755, 12937356, 12947929, 13099221, 12935418, 12931420], "A": [12926434, 12926190, 12926725, 12926012, 12926179, 12925982, 12927025, 12927554, 12927030, 12926024, 12926655, 12926029, 12927638, 12927453, 12926982, 12926032]}, "name": "A. Multiplication Table", "statement": "Let\u2019s consider a table consisting of rows and columns. The cell located\r\nat the intersection of -th row and -th column contains number . The rows\r\nand columns are numbered starting from 1.You are given a positive\r\ninteger . Your task is to count the number of cells in a table that\r\ncontain number .\r\n", "solutions": ["#include<cstdio>\n\nint main()\n{\n    int i,a,n,k;\n    scanf(\"%d%d\", &n, &k);\n    a = 0;\n    for (i = 1 ; i <= n ; ++i)\n    {\n        if ((k % i == 0) and (k / i <= n))\n            ++a;\n    }\n    printf(\"%d\\n\", a);\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["implementation", "number theory"], "dificulty": "1000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/577/problem/A",
+    "problemId": "34888",
+    "problem_idx": "A",
+    "shortId": "577A",
+    "contest_number": "577",
+    "problem_submissions": {
+        "E": [
+            12934021,
+            12937802,
+            12946890,
+            12941991,
+            12957515,
+            12944448,
+            13175505,
+            12944648,
+            12944393,
+            12937611,
+            12947231,
+            12946467,
+            12943052,
+            12942794
+        ],
+        "D": [
+            12944318,
+            12940763,
+            12944692,
+            12944241,
+            12944185,
+            12943472
+        ],
+        "C": [
+            12939458,
+            12935330,
+            12931965,
+            12930011,
+            12933070,
+            12931435,
+            12931425,
+            12936025,
+            12933543,
+            12937247,
+            12928317,
+            12934645,
+            12932764,
+            12930639,
+            12932440,
+            12935065,
+            12934571
+        ],
+        "B": [
+            12935134,
+            12931058,
+            12929931,
+            12931038,
+            12930166,
+            12928876,
+            12933443,
+            12931395,
+            12932755,
+            12937356,
+            12947929,
+            13099221,
+            12935418,
+            12931420
+        ],
+        "A": [
+            12926434,
+            12926190,
+            12926725,
+            12926012,
+            12926179,
+            12925982,
+            12927025,
+            12927554,
+            12927030,
+            12926024,
+            12926655,
+            12926029,
+            12927638,
+            12927453,
+            12926982,
+            12926032
+        ]
+    },
+    "name": "A. Multiplication Table",
+    "statement": "Let\u2019s consider a table consisting of rows and columns. The cell located\r\nat the intersection of -th row and -th column contains number . The rows\r\nand columns are numbered starting from 1.You are given a positive\r\ninteger . Your task is to count the number of cells in a table that\r\ncontain number .\r\n",
+    "solutions": [
+        "#include<cstdio>\n\nint main()\n{\n    int i,a,n,k;\n    scanf(\"%d%d\", &n, &k);\n    a = 0;\n    for (i = 1 ; i <= n ; ++i)\n    {\n        if ((k % i == 0) and (k / i <= n))\n            ++a;\n    }\n    printf(\"%d\\n\", a);\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation",
+        "number theory"
+    ],
+    "dificulty": "1000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Multiplication Table.json",
+    "editorial_link": "https://codeforces.com//blog/entry/20226",
+    "editorial": "It's easy to see that number x can appear in column i only once \u0097 in row x?/?i. For every column i, let's check that x divides i and x?/?i???n. If all requirements are met, we'll update the answer.\n"
+}

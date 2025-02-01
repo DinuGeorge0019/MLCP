@@ -21,7 +21,9 @@ def main():
     arguments = [
         ("fetch_codeforces_data", webScrapper.fetch_contests, "Fetch codeforces contests links."),
         ("build_codeforces_dataset", webScrapper.build_dataset, "Build codeforces dataset."),
+        ("update_codeforces_dataset", webScrapper.update_dataset, "Update codeforces dataset."),
         ("build_raw_dataset", datasetFactory.build_raw_dataset, "Build raw dataset."),
+        ("backward_update_json_files", datasetFactory.backward_update_json_files, "Backward update json files."),
         ("build_train_test_dataset", datasetFactory.build_train_test_dataset, "Build datasets (train / test / val)."),
         ("generate_dataset_overview", datasetFactory.generate_dataset_overview, "Generate dataset overview.")
     ]

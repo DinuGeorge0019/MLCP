@@ -1,1 +1,95 @@
-{"link": "https://codeforces.com//contest/309/problem/E", "problemId": "3005", "problem_idx": "E", "shortId": "309E", "contest_number": "309", "problem_submissions": {"B": [3731099, 3730792, 3731042, 3731786, 3730550, 3730284, 3729908, 3730541, 3730449, 3730996, 3729978, 3731064, 3730199, 3730107], "D": [3730805, 3730544, 3730976, 3731589, 3734080, 3734069, 3734066, 3734061, 3734059, 3734056, 3734042, 3734033, 3730688], "E": [3730645], "A": [3729981, 3730417, 3729803, 3730204, 3729805, 3729780, 3729813, 3729791, 3729913, 3729965, 3729850, 3729792, 3729963, 3729911, 3731133], "C": [3729784, 3729949, 3730172, 3730228, 3729910, 3729943, 3730005, 3730049, 3730161, 3730116, 3730023, 3729795, 3729875, 3729810, 3730574, 3730818, 3729859]}, "name": "E. Sheep", "statement": "Information technologies are developing and are increasingly penetrating\r\ninto all spheres of human activity. Incredible as it is, the most modern\r\ntechnology are used in farming!A large farm has a meadow with grazing\r\nsheep. Overall there are sheep and each of them contains a unique number\r\nfrom 1 to because the sheep need to be distinguished and you need to\r\nremember information about each one, and they are so much alike! The\r\nmeadow consists of infinite number of regions numbered from 1 to\r\ninfinity. It\u2019s known that sheep likes regions from to .There are two\r\nshepherds taking care of the sheep: First and Second. First wakes up\r\nearly in the morning and leads the sheep graze on the lawn. Second comes\r\nin the evening and collects all the sheep.One morning, First woke up a\r\nlittle later than usual, and had no time to lead the sheep graze on the\r\nlawn. So he tied together every two sheep if there is a region they both\r\nlike. First thought that it would be better Second would have less work\r\nin the evening, because sheep won\u2019t scatter too much, being tied to each\r\nother!In the evening Second came on the lawn, gathered the sheep and\r\ntried to line them up in a row. But try as he might, the sheep wouldn\u2019t\r\nline up as Second want! Second had neither the strength nor the ability\r\nto untie the sheep so he left them as they are, but with one condition:\r\nhe wanted to line up the sheep so that the maximum distance between two\r\ntied sheep was as small as possible. The distance between the sheep is\r\nthe number of sheep in the ranks that are between these two.Help Second\r\nfind the right arrangement.\r\n", "solutions": ["#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cmath>\n#include <cassert>\n#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n#include <queue>\n#include <set>\n#include <map>\n#include <utility>\n#include <numeric>\n#include <algorithm>\n#include <bitset>\n#include <complex>\n\nusing namespace std;\n\ntypedef unsigned uint;\ntypedef long long Int;\ntypedef vector<int> vint;\ntypedef pair<int,int> pint;\n#define mp make_pair\n\ntemplate<class T> void pv(T a, T b) { for (T i = a; i != b; ++i) cout << *i << \" \"; cout << endl; }\ntemplate<class T> void chmin(T &t, T f) { if (t > f) t = f; }\ntemplate<class T> void chmax(T &t, T f) { if (t < f) t = f; }\nint in() { int x; scanf(\"%d\", &x); return x; }\n\n#define MAXN 2010\n\nint N;\nint A[MAXN], B[MAXN];\nbool G[MAXN][MAXN];\n\nint L[MAXN], M[MAXN];\nbool S[MAXN];\nint cnt[MAXN];\n\nbool solve(int k) {\n// cout<<\"**** k = \"<<k<<\" ****\"<<endl;\n\tint u;\n\tfor (u = 0; u < N; ++u) {\n\t\tL[u] = 0;\n\t\tM[u] = N;\n\t\tS[u] = 1;\n\t}\n\tint q = 0, j;\n\tfor (; ; ) {\n\t\tint um = -1;\n\t\tfor (u = 0; u < N; ++u) if (S[u]) {\n\t\t\tif (!~um || B[um] > B[u]) {\n\t\t\t\tum = u;\n\t\t\t}\n\t\t}\n// cout<<\"um = \"<<um<<endl;\n\t\tL[um] = ++q;\n\t\tif (q == N) {\n\t\t\treturn 1;\n\t\t}\n\t\tfor (u = 0; u < N; ++u) if (!L[u]) {\n\t\t\tif (G[um][u] && M[u] == N) {\n\t\t\t\tM[u] = min(L[um] + k, N);\n\t\t\t}\n\t\t}\n\t\tmemset(cnt, 0, (N + 1) * 4);\n\t\tfor (u = 0; u < N; ++u) if (!L[u]) {\n\t\t\t++cnt[max(M[u] - q, 0)];\n\t\t}\n\t\tfor (j = 1; j <= N; ++j) {\n\t\t\tcnt[j] += cnt[j - 1];\n\t\t}\n// cout<<\"L : \";pv(L,L+N);\n// cout<<\"M : \";pv(M,M+N);\n// cout<<\"cnt : \";pv(cnt,cnt+N+1);\n\t\tfor (j = max(k - q + 1, 0); j <= N; ++j) {\n\t\t\tif (cnt[j] > j) {\n\t\t\t\treturn 0;\n\t\t\t}\n\t\t}\n\t\tfor (j = max(k - q + 1, 1); j <= N; ++j) {\n\t\t\tif (cnt[j] == j) {\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t\tfor (u = 0; u < N; ++u) {\n\t\t\tS[u] = !L[u] && (M[u] <= q + j);\n\t\t}\n// cout<<\"j = \"<<j<<endl;\n// cout<<\"S : \";pv(S,S+N);\n\t}\n}\n\n\nint perm[MAXN];\n\nint brute() {\n\tint u, v;\n\tfor (u = 0; u < N; ++u) {\n\t\tperm[u] = u;\n\t}\n\tint opt = N;\n\tdo {\n\t\tint tmp = 0;\n\t\tfor (u = 0; u < N; ++u) for (v = u + 1; v < N; ++v) if (G[u][v]) {\n\t\t\tchmax(tmp, abs(perm[u] - perm[v]));\n\t\t}\n\t\tchmin(opt, tmp);\n\t} while (next_permutation(perm, perm + N));\n\treturn opt;\n}\n\nint ans[MAXN];\n\nint main() {\n\tint u, v;\n\tint q;\n\t\n\tfor (; ~scanf(\"%d\", &N); ) {\n\t\tfor (u = 0; u < N; ++u) {\n\t\t\tA[u] = in();\n\t\t\tB[u] = in();\n\t\t}\n\t\tfor (u = 0; u < N; ++u) for (v = 0; v < N; ++v) if (u != v) {\n\t\t\tG[u][v] = (A[u] <= B[v] && A[v] <= B[u]);\n\t\t}\n\t\tint lo = -1, ho = N - 1;\n\t\tfor (; lo + 1 < ho; ) {\n\t\t\tint mo = (lo + ho) / 2;\n\t\t\t(solve(mo) ? ho : lo) = mo;\n\t\t}\n\t\tsolve(ho);\n// cout<<\"k = \"<<ho<<endl;\n// cout<<\"L : \";pv(L,L+N);\n// assert(ho==brute());\nfor(u=0;u<N;++u)for(v=u+1;v<N;++v)if(G[u][v])assert(abs(L[u]-L[v])<=ho);\n\t\tfor (u = 0; u < N; ++u) {\n\t\t\tans[L[u]] = u;\n\t\t}\n\t\tfor (q = 1; q <= N; ++q) {\n\t\t\tif (q > 1) printf(\" \");\n\t\t\tprintf(\"%d\", ans[q] + 1);\n\t\t}\n\t\tputs(\"\");\n\t}\n\t\n\treturn 0;\n}\n\n"], "input": "", "output": "", "tags": ["binary search", "greedy"], "dificulty": "2900", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/309/problem/E",
+    "problemId": "3005",
+    "problem_idx": "E",
+    "shortId": "309E",
+    "contest_number": "309",
+    "problem_submissions": {
+        "B": [
+            3731099,
+            3730792,
+            3731042,
+            3731786,
+            3730550,
+            3730284,
+            3729908,
+            3730541,
+            3730449,
+            3730996,
+            3729978,
+            3731064,
+            3730199,
+            3730107
+        ],
+        "D": [
+            3730805,
+            3730544,
+            3730976,
+            3731589,
+            3734080,
+            3734069,
+            3734066,
+            3734061,
+            3734059,
+            3734056,
+            3734042,
+            3734033,
+            3730688
+        ],
+        "E": [
+            3730645
+        ],
+        "A": [
+            3729981,
+            3730417,
+            3729803,
+            3730204,
+            3729805,
+            3729780,
+            3729813,
+            3729791,
+            3729913,
+            3729965,
+            3729850,
+            3729792,
+            3729963,
+            3729911,
+            3731133
+        ],
+        "C": [
+            3729784,
+            3729949,
+            3730172,
+            3730228,
+            3729910,
+            3729943,
+            3730005,
+            3730049,
+            3730161,
+            3730116,
+            3730023,
+            3729795,
+            3729875,
+            3729810,
+            3730574,
+            3730818,
+            3729859
+        ]
+    },
+    "name": "E. Sheep",
+    "statement": "Information technologies are developing and are increasingly penetrating\r\ninto all spheres of human activity. Incredible as it is, the most modern\r\ntechnology are used in farming!A large farm has a meadow with grazing\r\nsheep. Overall there are sheep and each of them contains a unique number\r\nfrom 1 to because the sheep need to be distinguished and you need to\r\nremember information about each one, and they are so much alike! The\r\nmeadow consists of infinite number of regions numbered from 1 to\r\ninfinity. It\u2019s known that sheep likes regions from to .There are two\r\nshepherds taking care of the sheep: First and Second. First wakes up\r\nearly in the morning and leads the sheep graze on the lawn. Second comes\r\nin the evening and collects all the sheep.One morning, First woke up a\r\nlittle later than usual, and had no time to lead the sheep graze on the\r\nlawn. So he tied together every two sheep if there is a region they both\r\nlike. First thought that it would be better Second would have less work\r\nin the evening, because sheep won\u2019t scatter too much, being tied to each\r\nother!In the evening Second came on the lawn, gathered the sheep and\r\ntried to line them up in a row. But try as he might, the sheep wouldn\u2019t\r\nline up as Second want! Second had neither the strength nor the ability\r\nto untie the sheep so he left them as they are, but with one condition:\r\nhe wanted to line up the sheep so that the maximum distance between two\r\ntied sheep was as small as possible. The distance between the sheep is\r\nthe number of sheep in the ranks that are between these two.Help Second\r\nfind the right arrangement.\r\n",
+    "solutions": [
+        "#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cmath>\n#include <cassert>\n#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n#include <queue>\n#include <set>\n#include <map>\n#include <utility>\n#include <numeric>\n#include <algorithm>\n#include <bitset>\n#include <complex>\n\nusing namespace std;\n\ntypedef unsigned uint;\ntypedef long long Int;\ntypedef vector<int> vint;\ntypedef pair<int,int> pint;\n#define mp make_pair\n\ntemplate<class T> void pv(T a, T b) { for (T i = a; i != b; ++i) cout << *i << \" \"; cout << endl; }\ntemplate<class T> void chmin(T &t, T f) { if (t > f) t = f; }\ntemplate<class T> void chmax(T &t, T f) { if (t < f) t = f; }\nint in() { int x; scanf(\"%d\", &x); return x; }\n\n#define MAXN 2010\n\nint N;\nint A[MAXN], B[MAXN];\nbool G[MAXN][MAXN];\n\nint L[MAXN], M[MAXN];\nbool S[MAXN];\nint cnt[MAXN];\n\nbool solve(int k) {\n// cout<<\"**** k = \"<<k<<\" ****\"<<endl;\n\tint u;\n\tfor (u = 0; u < N; ++u) {\n\t\tL[u] = 0;\n\t\tM[u] = N;\n\t\tS[u] = 1;\n\t}\n\tint q = 0, j;\n\tfor (; ; ) {\n\t\tint um = -1;\n\t\tfor (u = 0; u < N; ++u) if (S[u]) {\n\t\t\tif (!~um || B[um] > B[u]) {\n\t\t\t\tum = u;\n\t\t\t}\n\t\t}\n// cout<<\"um = \"<<um<<endl;\n\t\tL[um] = ++q;\n\t\tif (q == N) {\n\t\t\treturn 1;\n\t\t}\n\t\tfor (u = 0; u < N; ++u) if (!L[u]) {\n\t\t\tif (G[um][u] && M[u] == N) {\n\t\t\t\tM[u] = min(L[um] + k, N);\n\t\t\t}\n\t\t}\n\t\tmemset(cnt, 0, (N + 1) * 4);\n\t\tfor (u = 0; u < N; ++u) if (!L[u]) {\n\t\t\t++cnt[max(M[u] - q, 0)];\n\t\t}\n\t\tfor (j = 1; j <= N; ++j) {\n\t\t\tcnt[j] += cnt[j - 1];\n\t\t}\n// cout<<\"L : \";pv(L,L+N);\n// cout<<\"M : \";pv(M,M+N);\n// cout<<\"cnt : \";pv(cnt,cnt+N+1);\n\t\tfor (j = max(k - q + 1, 0); j <= N; ++j) {\n\t\t\tif (cnt[j] > j) {\n\t\t\t\treturn 0;\n\t\t\t}\n\t\t}\n\t\tfor (j = max(k - q + 1, 1); j <= N; ++j) {\n\t\t\tif (cnt[j] == j) {\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t\tfor (u = 0; u < N; ++u) {\n\t\t\tS[u] = !L[u] && (M[u] <= q + j);\n\t\t}\n// cout<<\"j = \"<<j<<endl;\n// cout<<\"S : \";pv(S,S+N);\n\t}\n}\n\n\nint perm[MAXN];\n\nint brute() {\n\tint u, v;\n\tfor (u = 0; u < N; ++u) {\n\t\tperm[u] = u;\n\t}\n\tint opt = N;\n\tdo {\n\t\tint tmp = 0;\n\t\tfor (u = 0; u < N; ++u) for (v = u + 1; v < N; ++v) if (G[u][v]) {\n\t\t\tchmax(tmp, abs(perm[u] - perm[v]));\n\t\t}\n\t\tchmin(opt, tmp);\n\t} while (next_permutation(perm, perm + N));\n\treturn opt;\n}\n\nint ans[MAXN];\n\nint main() {\n\tint u, v;\n\tint q;\n\t\n\tfor (; ~scanf(\"%d\", &N); ) {\n\t\tfor (u = 0; u < N; ++u) {\n\t\t\tA[u] = in();\n\t\t\tB[u] = in();\n\t\t}\n\t\tfor (u = 0; u < N; ++u) for (v = 0; v < N; ++v) if (u != v) {\n\t\t\tG[u][v] = (A[u] <= B[v] && A[v] <= B[u]);\n\t\t}\n\t\tint lo = -1, ho = N - 1;\n\t\tfor (; lo + 1 < ho; ) {\n\t\t\tint mo = (lo + ho) / 2;\n\t\t\t(solve(mo) ? ho : lo) = mo;\n\t\t}\n\t\tsolve(ho);\n// cout<<\"k = \"<<ho<<endl;\n// cout<<\"L : \";pv(L,L+N);\n// assert(ho==brute());\nfor(u=0;u<N;++u)for(v=u+1;v<N;++v)if(G[u][v])assert(abs(L[u]-L[v])<=ho);\n\t\tfor (u = 0; u < N; ++u) {\n\t\t\tans[L[u]] = u;\n\t\t}\n\t\tfor (q = 1; q <= N; ++q) {\n\t\t\tif (q > 1) printf(\" \");\n\t\t\tprintf(\"%d\", ans[q] + 1);\n\t\t}\n\t\tputs(\"\");\n\t}\n\t\n\treturn 0;\n}\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "binary search",
+        "greedy"
+    ],
+    "dificulty": "2900",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\E. Sheep.json",
+    "editorial_link": "https://codeforces.com//blog/entry/7749",
+    "editorial": "Author's supposed greedy algorithm as a solution for this problem. Let us follow this algorithm. Let us create to label for every interval Positionv and MaximalPositionv.\n\nPositionv \u0097 stands for position of v in the required permutation.\n\nMaximalPositionv \u0097 stands for maximal possible position of v in the particular moment of the algorithm.\n\nAlso let's consider count as a counter with initial value of 0 and set of unprocessed vertices S. The algorithm is following.\n\nUsing binary search we find the maximal possible distance between the farthest sheep. And then check whether exists the permutation with maximal distance no more than K.\n\nSort all the intervals in the increasing order of ri.\n\nPositioni?=?0, 1???i???n, MaximalPositioni?=?n, 1???i???n, current?=?1, count?=?0.\n\nDo count?=?count?+?1, Positioncurrent?=?count, erase current from S, if S \u0097 is empty, required permutation has been found.\n\nLook at every interval connected to current, and update MaximalPositionv?=?min(MaximalPositionv,?Positioncurrent?+?K)\n\nBuild sets S(count,?j)?=?{v|MaximalPositionv???count?+?j}. If for every j???K?-?count?+?1 holds |S(count,?j)|???j go to the step 7, otherwise there is no such permutation.\n\nChoose the minimal j such that |S(count,?j)|?=?j. Choose from it the interval with the smallest ri and consider it as a new value for current, go to the step 4.\n\nFirst let us discuss the complexity. Let us fix K (in total there are  iterations with fixed K).\n\nEvery step from 4 to 7 will be done at most n times (every time size of S decreases by one). Every step can be implemented in O(n) time. The most difficult one \u0097 step 6. But we can see that it's not necessary to actually build the sets, all we need to know \u0097 their sizes. This can be done in linear time just counting the number of intervals that MaximalPositionv?=?i. Let if be Ci \u0097 then size of S(count,?j) equals to C1?+?C2?+?...?+?Ccount?+?j, which can be easily calculated with partial sums.\n\nNow let us discuss why this algorithm works. If we have Position labels for every interval \u0097 we obviously have the solution. Now let us assume that we ended up earlier. Then we will show that there is no such permutation. If algorithm ended, it means that for some count (consider the smallest such count), exists j0, that |S(count,?j0)|?>?j0 at this step. Then |S(count,?k)|?>?k. Let us prove that from contradiction. From the definition of count we have |S(count?-?1,?j)|???j for every j???k?-?count?+?2. Then |S(count,?j)|?=?|S(count?-?1,?j?+?1)|?-?1???j for every j???k?-?1. And S(count,?j)?=?S(count,?k) for k???j?<?n?-?count?=?|S(count,?j)|?=?|S(count,?k)|???j. Finally |S(count,?n?-?count)|?=?n?-?count. Then |S(count,?j)|???j for every j, so we obtain contradiction. That means if algorithm stops at step 6 we have |S(count,?k)|?>?k. So exist at least k?+?1 interval, which still don't have assigned label Position and they should be assigned after count. So one of the intervals in S(count,?k) has to have the value of Position at least count?+?k?+?1. But every intervals in S(count,?k) connected to at least one interval with Position???count. So, we obtain that there is now such permutation."
+}

@@ -1,1 +1,77 @@
-{"link": "https://codeforces.com//contest/235/problem/B", "problemId": "2000", "problem_idx": "B", "shortId": "235B", "contest_number": "235", "problem_submissions": {"D": [3042109], "C": [2417778, 2401429, 2402641], "E": [2402112, 2401617, 2400848, 2421152, 2421132, 120142495, 120140982, 2406375], "A": [2397139, 2395807, 2396602, 2395919, 2397439, 2396282, 2397676, 2397630, 2396710, 2396092, 2396146, 2396812, 2396212, 2397021, 2396581], "B": [2395952, 2396750, 2397121, 2396950, 2397083, 2398248, 2396164, 2401830, 2396720, 2397471, 2402358, 2399645, 2400107, 2397813]}, "name": "B. Let s Play Osu ", "statement": "You\u2019re playing a game called Osu! Here\u2019s a simplified version of it.\r\nThere are clicks in a game. For each click there are two outcomes:\r\ncorrect or bad. Let us denote correct as \"\", bad as \"\", then the whole\r\nplay can be encoded as a sequence of characters \"\" and \"\".Using the play\r\nsequence you can calculate the score for the play as follows: for every\r\nmaximal consecutive \"\"s block, add the square of its length (the number\r\nof characters \"\") to the score. For example, if your play can be encoded\r\nas \"\", then there\u2019s three maximal consecutive \"\"s block \"\", \"\", \"\", so\r\nyour score will be . If there are no correct clicks in a play then the\r\nscore for the play equals to .You know that the probability to click the\r\n-th click correctly is . In other words, the -th character in the play\r\nsequence has probability to be \"\", to be \"\". You task is to calculate\r\nthe expected score for your play.\r\n", "solutions": ["#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <set>\n#include <map>\n#include <algorithm>\n#include <functional>\n#include <utility>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstdio>\n\nusing namespace std;\n\n#define REP(i,n) for((i)=0;(i)<(int)(n);(i)++)\n#define foreach(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n\ndouble p[100010];\n\nint main(void){\n    int N,i;\n    \n    scanf(\"%d\",&N);\n    REP(i,N) scanf(\"%lf\",&p[i]);\n    \n    double x = 0.0, ans = 0.0;\n    REP(i,N){\n        x = x * p[i] + p[i];\n        ans += 2.0 * x;\n        ans -= p[i];\n    }\n    \n    printf(\"%.9f\\n\", ans);\n    \n    return 0;\n}\n"], "input": "", "output": "", "tags": ["dp", "math", "probabilities"], "dificulty": "2000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/235/problem/B",
+    "problemId": "2000",
+    "problem_idx": "B",
+    "shortId": "235B",
+    "contest_number": "235",
+    "problem_submissions": {
+        "D": [
+            3042109
+        ],
+        "C": [
+            2417778,
+            2401429,
+            2402641
+        ],
+        "E": [
+            2402112,
+            2401617,
+            2400848,
+            2421152,
+            2421132,
+            120142495,
+            120140982,
+            2406375
+        ],
+        "A": [
+            2397139,
+            2395807,
+            2396602,
+            2395919,
+            2397439,
+            2396282,
+            2397676,
+            2397630,
+            2396710,
+            2396092,
+            2396146,
+            2396812,
+            2396212,
+            2397021,
+            2396581
+        ],
+        "B": [
+            2395952,
+            2396750,
+            2397121,
+            2396950,
+            2397083,
+            2398248,
+            2396164,
+            2401830,
+            2396720,
+            2397471,
+            2402358,
+            2399645,
+            2400107,
+            2397813
+        ]
+    },
+    "name": "B. Let s Play Osu ",
+    "statement": "You\u2019re playing a game called Osu! Here\u2019s a simplified version of it.\r\nThere are clicks in a game. For each click there are two outcomes:\r\ncorrect or bad. Let us denote correct as \"\", bad as \"\", then the whole\r\nplay can be encoded as a sequence of characters \"\" and \"\".Using the play\r\nsequence you can calculate the score for the play as follows: for every\r\nmaximal consecutive \"\"s block, add the square of its length (the number\r\nof characters \"\") to the score. For example, if your play can be encoded\r\nas \"\", then there\u2019s three maximal consecutive \"\"s block \"\", \"\", \"\", so\r\nyour score will be . If there are no correct clicks in a play then the\r\nscore for the play equals to .You know that the probability to click the\r\n-th click correctly is . In other words, the -th character in the play\r\nsequence has probability to be \"\", to be \"\". You task is to calculate\r\nthe expected score for your play.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n#include <deque>\n#include <queue>\n#include <set>\n#include <map>\n#include <algorithm>\n#include <functional>\n#include <utility>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <cstdio>\n\nusing namespace std;\n\n#define REP(i,n) for((i)=0;(i)<(int)(n);(i)++)\n#define foreach(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n\ndouble p[100010];\n\nint main(void){\n    int N,i;\n    \n    scanf(\"%d\",&N);\n    REP(i,N) scanf(\"%lf\",&p[i]);\n    \n    double x = 0.0, ans = 0.0;\n    REP(i,N){\n        x = x * p[i] + p[i];\n        ans += 2.0 * x;\n        ans -= p[i];\n    }\n    \n    printf(\"%.9f\\n\", ans);\n    \n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dp",
+        "math",
+        "probabilities"
+    ],
+    "dificulty": "2000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Let s Play Osu .json",
+    "editorial_link": "https://codeforces.com//blog/entry/5592",
+    "editorial": "Let us take a deep look at how this score is calculated. For an long \u00e2\u0080\u0099O\u00e2\u0080\u0099\r\nblock, it contributes to the answer. Let us reformat this problem a bit\r\nand consider the following alternative definition of the score: (1) For\r\neach two \u00e2\u0080\u0099O\u00e2\u0080\u0099 pair which there is no \u00e2\u0080\u0099X\u00e2\u0080\u0099 between them, they add 2 to the\r\nscore. (2) For each \u00e2\u0080\u0099O\u00e2\u0080\u0099, it adds 1 to the score. We claim that this new\r\ndefinition of the score is equivalent to the definition in the problem\r\nstatement. Proof of the claim: For an long \u00e2\u0080\u0099O\u00e2\u0080\u0099 block, there are pairs of\r\n\u00e2\u0080\u0099O\u00e2\u0080\u0099 in it and \u00e2\u0080\u0099O\u00e2\u0080\u0099 in it. Note that . So now we work with the new\r\ndefinition of the score. For each event(i,j) (which means s[i] and s[j]\r\nare \u00e2\u0080\u0099O\u00e2\u0080\u0099, and there is no \u00e2\u0080\u0099X\u00e2\u0080\u0099 between them). If event(i,j) happens, it\r\nadds 2 to the score. So we only need to sum up the probabilities of all\r\nevents and multiply them by 2, and our task becomes how to calculate the\r\nsum of probabilities of all the event(i,j). Let P(i,j) be the\r\nprobability of event(i,j). We can see that P(i,j) can be computed by .\r\nThen we denote P(j) as the sum of all event(i,j) for i<j. We have\r\ndp(0)=0 and dp(j)=(dp(j-1)+)*\r\n"
+}

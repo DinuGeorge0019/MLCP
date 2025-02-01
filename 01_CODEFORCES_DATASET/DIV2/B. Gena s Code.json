@@ -1,1 +1,89 @@
-{"link": "https://codeforces.com//contest/614/problem/B", "problemId": "45527", "problem_idx": "B", "shortId": "614B", "contest_number": "614", "problem_submissions": {"B": [15353969, 15350260, 15350615, 15350680, 15348454, 15350100, 15350974, 15353463, 15352422, 15357694, 15351731, 15351010, 15355162, 15361196, 15359446, 15372090, 15355813], "D": [15367152, 15366645, 15367844, 15371803, 15371151, 15372297, 15371070, 15371375, 15373375, 15370561], "C": [15353832, 15359347, 15364158, 15355108, 15361144, 15358460, 15370476, 15360373, 15359826, 15363428, 15360933, 15363074, 15366533], "A": [15347068, 15347426, 15347654, 15414018, 15347337, 15348138, 15348507, 15347653, 15355380, 15364322, 15353145, 15361803, 15348451], "E": [15380705]}, "name": "B. Gena s Code", "statement": "It\u2019s the year 4527 and the tanks game that we all know and love still\r\nexists. There also exists Great Gena\u2019s code, written in 2016. The\r\nproblem this code solves is: given the number of tanks that go into the\r\nbattle from each country, find their product. If it is turns to be too\r\nlarge, then the servers might have not enough time to assign tanks into\r\nteams and the whole game will collapse!There are exactly distinct\r\ncountries in the world and the -th country added tanks to the game. As\r\nthe developers of the game are perfectionists, the number of tanks from\r\neach country is beautiful. A number, according to the developers, is\r\nsuch number that its decimal representation consists only of digits \u201d\r\nand \u201d, moreover it contains digit \u201d. However, due to complaints from\r\nplayers, some number of tanks of country was removed from the game,\r\nhence the number of tanks of this country may not remain beautiful.Your\r\ntask is to write the program that solves exactly the same problem in\r\norder to verify Gena\u2019s code correctness. Just in case.\r\n", "solutions": ["#include<iostream>\n#include<string>\n\nusing namespace std;\n\nint main(void) {\n\tint n;\n\tcin >> n;\n\tint zeros = 0;\n\tstring nontriv = \"1\";\n\tfor (int i = 0; i < n; ++i) {\n\t\tstring cur;\n\t\tcin >> cur;\n\t\tif (cur.size() == 1 && cur[0] == '0') {\n\t\t\tcout << 0 << endl;\n\t\t\treturn 0;\n\t\t}\n\t\tbool ok = cur[0] == '1';\n\t\tfor (int j = 1; j < cur.size(); ++j) {\n\t\t\tok &= cur[j] == '0';\n\t\t}\n\t\tif (ok) {\n\t\t\tzeros += cur.size() - 1;\n\t\t} else {\n\t\t\tnontriv = cur;\n\t\t}\n\t}\n\tcout << nontriv;\n\tfor (int i = 0; i < zeros; ++i) cout << 0;\n\tcout << endl;\n}\n"], "input": "", "output": "", "tags": ["implementation", "math"], "dificulty": "1400", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/614/problem/B",
+    "problemId": "45527",
+    "problem_idx": "B",
+    "shortId": "614B",
+    "contest_number": "614",
+    "problem_submissions": {
+        "B": [
+            15353969,
+            15350260,
+            15350615,
+            15350680,
+            15348454,
+            15350100,
+            15350974,
+            15353463,
+            15352422,
+            15357694,
+            15351731,
+            15351010,
+            15355162,
+            15361196,
+            15359446,
+            15372090,
+            15355813
+        ],
+        "D": [
+            15367152,
+            15366645,
+            15367844,
+            15371803,
+            15371151,
+            15372297,
+            15371070,
+            15371375,
+            15373375,
+            15370561
+        ],
+        "C": [
+            15353832,
+            15359347,
+            15364158,
+            15355108,
+            15361144,
+            15358460,
+            15370476,
+            15360373,
+            15359826,
+            15363428,
+            15360933,
+            15363074,
+            15366533
+        ],
+        "A": [
+            15347068,
+            15347426,
+            15347654,
+            15414018,
+            15347337,
+            15348138,
+            15348507,
+            15347653,
+            15355380,
+            15364322,
+            15353145,
+            15361803,
+            15348451
+        ],
+        "E": [
+            15380705
+        ]
+    },
+    "name": "B. Gena s Code",
+    "statement": "It\u2019s the year 4527 and the tanks game that we all know and love still\r\nexists. There also exists Great Gena\u2019s code, written in 2016. The\r\nproblem this code solves is: given the number of tanks that go into the\r\nbattle from each country, find their product. If it is turns to be too\r\nlarge, then the servers might have not enough time to assign tanks into\r\nteams and the whole game will collapse!There are exactly distinct\r\ncountries in the world and the -th country added tanks to the game. As\r\nthe developers of the game are perfectionists, the number of tanks from\r\neach country is beautiful. A number, according to the developers, is\r\nsuch number that its decimal representation consists only of digits \u201d\r\nand \u201d, moreover it contains digit \u201d. However, due to complaints from\r\nplayers, some number of tanks of country was removed from the game,\r\nhence the number of tanks of this country may not remain beautiful.Your\r\ntask is to write the program that solves exactly the same problem in\r\norder to verify Gena\u2019s code correctness. Just in case.\r\n",
+    "solutions": [
+        "#include<iostream>\n#include<string>\n\nusing namespace std;\n\nint main(void) {\n\tint n;\n\tcin >> n;\n\tint zeros = 0;\n\tstring nontriv = \"1\";\n\tfor (int i = 0; i < n; ++i) {\n\t\tstring cur;\n\t\tcin >> cur;\n\t\tif (cur.size() == 1 && cur[0] == '0') {\n\t\t\tcout << 0 << endl;\n\t\t\treturn 0;\n\t\t}\n\t\tbool ok = cur[0] == '1';\n\t\tfor (int j = 1; j < cur.size(); ++j) {\n\t\t\tok &= cur[j] == '0';\n\t\t}\n\t\tif (ok) {\n\t\t\tzeros += cur.size() - 1;\n\t\t} else {\n\t\t\tnontriv = cur;\n\t\t}\n\t}\n\tcout << nontriv;\n\tfor (int i = 0; i < zeros; ++i) cout << 0;\n\tcout << endl;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation",
+        "math"
+    ],
+    "dificulty": "1400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Gena s Code.json",
+    "editorial_link": "https://codeforces.com//blog/entry/22832",
+    "editorial": "Author, developer: ch_egor You were asked to print the product of large\r\nnumbers, but it was guaranteed that at least are beautiful. It\u00e2\u0080\u0099s not\r\nhard to see that beautiful numbers are 0 and all powers of 10 (that is,\r\n1 followed by arbitrary number of zeros). If there is at least one zero\r\namong the given numbers, the product is 0. Otherwise, consider the only\r\nnon-beautiful number (if all numbers are beautiful, consider ).\r\nMultiplying by appends zeros to its decimal representation, so in this\r\ncase we have to find the only non-beautiful number and print it with\r\nseveral additional zeros. We tried to cut off all naive solutions that\r\nuse built-in long numbers multiplication in Python or Java. However,\r\nwith some additional tricks (e.g., \u00e2\u0080\u009cdivide-and-conquer\u00e2\u0080\u009d) this could pass\r\nall tests.\r\n"
+}

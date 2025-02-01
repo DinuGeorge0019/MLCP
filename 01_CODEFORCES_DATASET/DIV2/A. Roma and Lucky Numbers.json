@@ -1,1 +1,93 @@
-{"link": "https://codeforces.com//contest/262/problem/A", "problemId": "2506", "problem_idx": "A", "shortId": "262A", "contest_number": "262", "problem_submissions": {"E": [2917574, 2919991, 2920217], "C": [2915597, 2915456, 2915755, 2915133, 2915067, 2914439, 2920021, 2916661, 2917064, 2914971, 2916258, 2915804, 2915424, 2916306, 2915632, 2920899], "B": [2912801, 2913308, 2913727, 2913223, 2912896, 2915860, 2912738, 2913934, 2914694, 2913939, 2914490, 2913702, 2913690, 2913451, 2913711, 2912803], "A": [2911759, 2911860, 2912304, 2911748, 2911806, 2914884, 2911799, 2911959, 2912048, 2914184, 2912000, 2911981, 2911895, 2911859, 2912010, 2911726], "D": [2918906, 2919971, 2920564, 2920441, 2919464, 2920502, 2920612, 2918080]}, "name": "A. Roma and Lucky Numbers", "statement": "Roma (a popular Russian name that means \u2019Roman\u2019) loves the Little Lvov\r\nElephant\u2019s lucky numbers.Let us remind you that lucky numbers are\r\npositive integers whose decimal representation only contains lucky\r\ndigits and . For example, numbers , , are lucky and , , are not.Roma\u2019s\r\ngot positive integers. He wonders, how many of those integers have not\r\nmore than lucky digits? Help him, write the program that solves the\r\nproblem.\r\n", "solutions": ["#include <iostream>\n#include <cstdio>\nusing namespace std;\nint n,k,x,i,ans;\nint L(int x)\n{\n\tint ret=0;\n\twhile(x)\n\t{\n\t\tif((x%10==4)||(x%10==7)) ret++;\n\t\tx/=10;\n\t}\n\treturn ret;\n}\nint main()\n{\n\tcin >> n >> k;\n\tfor(i=1;i<=n;i++)\n\t{\n\t\tcin >> x;\n\t\tif(L(x)<=k) ans++;\n\t}\n\tcout << ans << endl;\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["implementation"], "dificulty": "800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/262/problem/A",
+    "problemId": "2506",
+    "problem_idx": "A",
+    "shortId": "262A",
+    "contest_number": "262",
+    "problem_submissions": {
+        "E": [
+            2917574,
+            2919991,
+            2920217
+        ],
+        "C": [
+            2915597,
+            2915456,
+            2915755,
+            2915133,
+            2915067,
+            2914439,
+            2920021,
+            2916661,
+            2917064,
+            2914971,
+            2916258,
+            2915804,
+            2915424,
+            2916306,
+            2915632,
+            2920899
+        ],
+        "B": [
+            2912801,
+            2913308,
+            2913727,
+            2913223,
+            2912896,
+            2915860,
+            2912738,
+            2913934,
+            2914694,
+            2913939,
+            2914490,
+            2913702,
+            2913690,
+            2913451,
+            2913711,
+            2912803
+        ],
+        "A": [
+            2911759,
+            2911860,
+            2912304,
+            2911748,
+            2911806,
+            2914884,
+            2911799,
+            2911959,
+            2912048,
+            2914184,
+            2912000,
+            2911981,
+            2911895,
+            2911859,
+            2912010,
+            2911726
+        ],
+        "D": [
+            2918906,
+            2919971,
+            2920564,
+            2920441,
+            2919464,
+            2920502,
+            2920612,
+            2918080
+        ]
+    },
+    "name": "A. Roma and Lucky Numbers",
+    "statement": "Roma (a popular Russian name that means \u2019Roman\u2019) loves the Little Lvov\r\nElephant\u2019s lucky numbers.Let us remind you that lucky numbers are\r\npositive integers whose decimal representation only contains lucky\r\ndigits and . For example, numbers , , are lucky and , , are not.Roma\u2019s\r\ngot positive integers. He wonders, how many of those integers have not\r\nmore than lucky digits? Help him, write the program that solves the\r\nproblem.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <cstdio>\nusing namespace std;\nint n,k,x,i,ans;\nint L(int x)\n{\n\tint ret=0;\n\twhile(x)\n\t{\n\t\tif((x%10==4)||(x%10==7)) ret++;\n\t\tx/=10;\n\t}\n\treturn ret;\n}\nint main()\n{\n\tcin >> n >> k;\n\tfor(i=1;i<=n;i++)\n\t{\n\t\tcin >> x;\n\t\tif(L(x)<=k) ans++;\n\t}\n\tcout << ans << endl;\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "implementation"
+    ],
+    "dificulty": "800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Roma and Lucky Numbers.json",
+    "editorial_link": "https://codeforces.com//blog/entry/6398",
+    "editorial": "This problem just need to simulate everithing that was given in\r\nstatment.\r\n"
+}

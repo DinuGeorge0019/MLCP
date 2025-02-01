@@ -1,1 +1,104 @@
-{"link": "https://codeforces.com//contest/298/problem/D", "problemId": "2857", "problem_idx": "D", "shortId": "298D", "contest_number": "298", "problem_submissions": {"C": [3570158, 3568738, 3569545, 3567890, 3567795, 3569019, 3570396, 3567853, 3569346, 3568955, 3569646, 3569940, 3571985, 3569198, 3566584, 3569693], "D": [3568096, 3570657, 3570524, 3570016, 3570399, 3570578, 3572279, 3569208, 3571015, 3570830, 3571239, 3572221, 3569761, 3572179, 3572808, 3571486], "B": [3566471, 3567469, 3566658, 3566618, 3566674, 3566985, 3566799, 3566534, 3567818, 3567371, 3567342, 3568432, 3567391, 3566870, 3566974, 3567848], "A": [3565924, 3565788, 3565272, 3565138, 3565194, 3565362, 3565614, 3565531, 3565855, 3565619, 3565475, 3565918, 3565883, 3565243, 3569485, 3566160], "E": [3577571, 3618894, 4783067, 3641979]}, "name": "D. Fish Weight", "statement": "It is known that there are fish species in the polar ocean, numbered\r\nfrom to . They are sorted by non-decreasing order of their weight, which\r\nis a positive number. Let the weight of the -th type of fish be , then\r\nholds.Polar bears Alice and Bob each have caught some fish, and they are\r\nguessing who has the larger sum of weight of the fish he/she\u2019s caught.\r\nGiven the type of the fish they\u2019ve caught, determine whether it is\r\npossible that the fish caught by Alice has a total weight than Bob\u2019s. In\r\nother words, does there exist a sequence of weights (not necessary\r\nintegers), such that the fish caught by Alice has a strictly larger\r\ntotal weight?\r\n", "solutions": ["//In the Name of GOD\n#include <iostream>\n#include <vector>\n#include <cmath>\n#include <cstring>\n#include <algorithm>\n#define MOD 1000000007ll\n\nusing namespace std;\n\nint a[100100],b[100100];\n\nint main()\n{\n\tlong long n,m,k;\n\tcin>>n>>m>>k;\n\tfor(int i=1;i<=n;i++)\n\t\tcin>>a[i];\n\tfor(int i=1;i<=m;i++)\n\t\tcin>>b[i];\n\tsort(a,a+n+1);\n\tsort(b,b+1+m);\n\tint i=n,j=m,x=0,y=0;\n\twhile(i>=0&&j>=0)\n\t{\n\t\tif(a[i]>b[j])\n\t\t{\n\t\t\tx++;\n\t\t\ti--;\n\t\t}\n\t\telse if(a[i]<b[j])\n\t\t{\n\t\t\ty++;\n\t\t\tj--;\n\t\t}\n\t\telse\n\t\t{\n\t\t\ti--;j--;\n\t\t}\n\t\tif(x>y)\n\t\t{\n\t\t\tcout<<\"YES\";\n\t\t\treturn 0;\n\t\t}\n\t}\n\tcout<<\"NO\";\n\treturn 0;\n}\n"], "input": "", "output": "", "tags": ["greedy", "math", "sortings"], "dificulty": "1600", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/298/problem/D",
+    "problemId": "2857",
+    "problem_idx": "D",
+    "shortId": "298D",
+    "contest_number": "298",
+    "problem_submissions": {
+        "C": [
+            3570158,
+            3568738,
+            3569545,
+            3567890,
+            3567795,
+            3569019,
+            3570396,
+            3567853,
+            3569346,
+            3568955,
+            3569646,
+            3569940,
+            3571985,
+            3569198,
+            3566584,
+            3569693
+        ],
+        "D": [
+            3568096,
+            3570657,
+            3570524,
+            3570016,
+            3570399,
+            3570578,
+            3572279,
+            3569208,
+            3571015,
+            3570830,
+            3571239,
+            3572221,
+            3569761,
+            3572179,
+            3572808,
+            3571486
+        ],
+        "B": [
+            3566471,
+            3567469,
+            3566658,
+            3566618,
+            3566674,
+            3566985,
+            3566799,
+            3566534,
+            3567818,
+            3567371,
+            3567342,
+            3568432,
+            3567391,
+            3566870,
+            3566974,
+            3567848
+        ],
+        "A": [
+            3565924,
+            3565788,
+            3565272,
+            3565138,
+            3565194,
+            3565362,
+            3565614,
+            3565531,
+            3565855,
+            3565619,
+            3565475,
+            3565918,
+            3565883,
+            3565243,
+            3569485,
+            3566160
+        ],
+        "E": [
+            3577571,
+            3618894,
+            4783067,
+            3641979
+        ]
+    },
+    "name": "D. Fish Weight",
+    "statement": "It is known that there are fish species in the polar ocean, numbered\r\nfrom to . They are sorted by non-decreasing order of their weight, which\r\nis a positive number. Let the weight of the -th type of fish be , then\r\nholds.Polar bears Alice and Bob each have caught some fish, and they are\r\nguessing who has the larger sum of weight of the fish he/she\u2019s caught.\r\nGiven the type of the fish they\u2019ve caught, determine whether it is\r\npossible that the fish caught by Alice has a total weight than Bob\u2019s. In\r\nother words, does there exist a sequence of weights (not necessary\r\nintegers), such that the fish caught by Alice has a strictly larger\r\ntotal weight?\r\n",
+    "solutions": [
+        "//In the Name of GOD\n#include <iostream>\n#include <vector>\n#include <cmath>\n#include <cstring>\n#include <algorithm>\n#define MOD 1000000007ll\n\nusing namespace std;\n\nint a[100100],b[100100];\n\nint main()\n{\n\tlong long n,m,k;\n\tcin>>n>>m>>k;\n\tfor(int i=1;i<=n;i++)\n\t\tcin>>a[i];\n\tfor(int i=1;i<=m;i++)\n\t\tcin>>b[i];\n\tsort(a,a+n+1);\n\tsort(b,b+1+m);\n\tint i=n,j=m,x=0,y=0;\n\twhile(i>=0&&j>=0)\n\t{\n\t\tif(a[i]>b[j])\n\t\t{\n\t\t\tx++;\n\t\t\ti--;\n\t\t}\n\t\telse if(a[i]<b[j])\n\t\t{\n\t\t\ty++;\n\t\t\tj--;\n\t\t}\n\t\telse\n\t\t{\n\t\t\ti--;j--;\n\t\t}\n\t\tif(x>y)\n\t\t{\n\t\t\tcout<<\"YES\";\n\t\t\treturn 0;\n\t\t}\n\t}\n\tcout<<\"NO\";\n\treturn 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "greedy",
+        "math",
+        "sortings"
+    ],
+    "dificulty": "1600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Fish Weight.json",
+    "editorial_link": "https://codeforces.com//blog/entry/7437",
+    "editorial": "First we sort a and b in non-increasing order. We claim that the answer is YES if and only if exists a is lexicographically larger than b.\n\n If a is not lexicographcally larger than b, that means for every i, ai???bi. That implies for every fish Alice has, there is a corresponding fish Bob has and is as heavy as Alice's.\n\n Let i be the smallest index such that ai?>?bi. We can amplify the gap between wai and wbi as large as we want to make Alice wins."
+}

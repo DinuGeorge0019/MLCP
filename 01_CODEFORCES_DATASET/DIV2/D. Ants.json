@@ -1,1 +1,92 @@
-{"link": "https://codeforces.com//contest/318/problem/D", "problemId": "3164", "problem_idx": "D", "shortId": "318D", "contest_number": "318", "problem_submissions": {"D": [3889771, 3891598, 3890931, 3895120, 3889991, 3892582, 3894118, 3895024, 3894070, 3893665, 3894800, 3895558, 3894762, 3894398, 3891169], "C": [3886193, 3886712, 3888993, 3887980, 3890359, 3888216, 3888258, 3890410, 4099870, 3891425, 3888553, 3888908, 3889856, 3895067], "B": [3885067, 3886676, 3887330, 3885863, 3887527, 3886640, 3886280, 3886107, 3888159, 4094214, 4094197, 3886069, 3886337, 3887281, 3887448, 3886826], "A": [3883842, 3885636, 3884050, 3884161, 3887877, 3884428, 3884162, 3884552, 3885363, 4093985, 3884118, 3885191, 3884387, 3884475, 3883975]}, "name": "D. Ants", "statement": "It has been noted that if some ants are put in the junctions of the\r\ngraphene integer lattice then they will act in the following fashion:\r\nevery minute at each junction (, ) containing at least four ants a group\r\nof four ants will be formed, and these four ants will scatter to the\r\nneighbouring junctions (, ), (, ), (, ), (, ) one ant in each direction.\r\nNo other ant movements will happen. Ants never interfere with each\r\nother.Scientists have put a colony of ants into the junction (0, 0) and\r\nnow they wish to know how many ants will there be at some given\r\njunctions, when the movement of the ants stops.\r\n", "solutions": ["#include <iostream>\n#include <cstdio>\n#include <cstring>\n#include <algorithm>\nusing namespace std;\n\nconst int err = 70;\nint dir[4][2] = {0,1,0,-1,1,0,-1,0};\nint a[2 * err + 5][2 * err + 5];\n\nbool sure(int x,int y)\n{\n\tx += err,y += err;\n\tif(x < 0 || y < 0) return false;\n\tif(x > 2 * err || y > 2 * err) return false;\n\treturn true;\n}\n\nvoid init(int n)\n{\n\tmemset(a,0,sizeof(a));\n\ta[err][err] = n;\n\tint ma = 0,mi = 0;\n\twhile(1) {\n\t\tbool flag = false;\n\t\tfor(int i = 0; i <= err * 2; i ++)\n\t\t\tfor(int j = 0; j <= err * 2; j ++)\n\t\t\t\tif(a[i][j] >= 4) {\n\t\t\t\t\tflag = true;\n\t\t\t\t\tfor(int k = 0; k < 4; k ++) {\n\t\t\t\t\t\tint x = i + dir[k][0];\n\t\t\t\t\t\tint y = j + dir[k][1];\n\t\t\t\t\t\ta[x][y] += a[i][j] / 4;\n\t\t\t\t\t\tma = max(x,ma);\n\t\t\t\t\t}\n\t\t\t\t\ta[i][j] %= 4;\n\t\t\t\t}\n\t\tif(!flag) {\n\t\t//\tcout << ma << endl;\n\t\t\treturn;\n\t\t}\n\t}\n}\n\nint main()\n{\n\tint n,m;\n\tint x,y;\n\tscanf(\"%d%d\",&n,&m);\n\tinit(n);\n\twhile(m --) {\n\t\tscanf(\"%d%d\",&x,&y);\n\t\tif(!sure(x,y)) printf(\"0\\n\");\n\t\telse \n\t\tprintf(\"%d\\n\",a[x + err][y + err]);\n\t}\n\treturn 0;\n}\n\n"], "input": "", "output": "", "tags": ["dfs and similar"], "dificulty": "2000", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/318/problem/D",
+    "problemId": "3164",
+    "problem_idx": "D",
+    "shortId": "318D",
+    "contest_number": "318",
+    "problem_submissions": {
+        "D": [
+            3889771,
+            3891598,
+            3890931,
+            3895120,
+            3889991,
+            3892582,
+            3894118,
+            3895024,
+            3894070,
+            3893665,
+            3894800,
+            3895558,
+            3894762,
+            3894398,
+            3891169
+        ],
+        "C": [
+            3886193,
+            3886712,
+            3888993,
+            3887980,
+            3890359,
+            3888216,
+            3888258,
+            3890410,
+            4099870,
+            3891425,
+            3888553,
+            3888908,
+            3889856,
+            3895067
+        ],
+        "B": [
+            3885067,
+            3886676,
+            3887330,
+            3885863,
+            3887527,
+            3886640,
+            3886280,
+            3886107,
+            3888159,
+            4094214,
+            4094197,
+            3886069,
+            3886337,
+            3887281,
+            3887448,
+            3886826
+        ],
+        "A": [
+            3883842,
+            3885636,
+            3884050,
+            3884161,
+            3887877,
+            3884428,
+            3884162,
+            3884552,
+            3885363,
+            4093985,
+            3884118,
+            3885191,
+            3884387,
+            3884475,
+            3883975
+        ]
+    },
+    "name": "D. Ants",
+    "statement": "It has been noted that if some ants are put in the junctions of the\r\ngraphene integer lattice then they will act in the following fashion:\r\nevery minute at each junction (, ) containing at least four ants a group\r\nof four ants will be formed, and these four ants will scatter to the\r\nneighbouring junctions (, ), (, ), (, ), (, ) one ant in each direction.\r\nNo other ant movements will happen. Ants never interfere with each\r\nother.Scientists have put a colony of ants into the junction (0, 0) and\r\nnow they wish to know how many ants will there be at some given\r\njunctions, when the movement of the ants stops.\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <cstdio>\n#include <cstring>\n#include <algorithm>\nusing namespace std;\n\nconst int err = 70;\nint dir[4][2] = {0,1,0,-1,1,0,-1,0};\nint a[2 * err + 5][2 * err + 5];\n\nbool sure(int x,int y)\n{\n\tx += err,y += err;\n\tif(x < 0 || y < 0) return false;\n\tif(x > 2 * err || y > 2 * err) return false;\n\treturn true;\n}\n\nvoid init(int n)\n{\n\tmemset(a,0,sizeof(a));\n\ta[err][err] = n;\n\tint ma = 0,mi = 0;\n\twhile(1) {\n\t\tbool flag = false;\n\t\tfor(int i = 0; i <= err * 2; i ++)\n\t\t\tfor(int j = 0; j <= err * 2; j ++)\n\t\t\t\tif(a[i][j] >= 4) {\n\t\t\t\t\tflag = true;\n\t\t\t\t\tfor(int k = 0; k < 4; k ++) {\n\t\t\t\t\t\tint x = i + dir[k][0];\n\t\t\t\t\t\tint y = j + dir[k][1];\n\t\t\t\t\t\ta[x][y] += a[i][j] / 4;\n\t\t\t\t\t\tma = max(x,ma);\n\t\t\t\t\t}\n\t\t\t\t\ta[i][j] %= 4;\n\t\t\t\t}\n\t\tif(!flag) {\n\t\t//\tcout << ma << endl;\n\t\t\treturn;\n\t\t}\n\t}\n}\n\nint main()\n{\n\tint n,m;\n\tint x,y;\n\tscanf(\"%d%d\",&n,&m);\n\tinit(n);\n\twhile(m --) {\n\t\tscanf(\"%d%d\",&x,&y);\n\t\tif(!sure(x,y)) printf(\"0\\n\");\n\t\telse \n\t\tprintf(\"%d\\n\",a[x + err][y + err]);\n\t}\n\treturn 0;\n}\n\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "dfs and similar"
+    ],
+    "dificulty": "2000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Ants.json",
+    "editorial_link": "https://codeforces.com/blog/entry/7956",
+    "editorial": "One may reformulate the problem ass follows. Non-negative integers are\r\nplaced in the vertices of two-dimensional lattice We may imagine this\r\nconstruction as a function . On each step for each vertex with we\r\nperform operation , which substracts 4 from and adds 1 to , , , . We may\r\nthink that operation applies to the whole function . We need to find\r\nvalues of after the iterations stops. Key idea is that operactions and\r\nfor all points and commutes, that is . This means that the order of\r\noperations is unimportant. In particular, we may assume that from each\r\ngiven vertex run all possible four-groups of ants and not only one.\r\nAfter this observation one may run full emulation of the process. As an\r\nexercise contestants may check that ants will never leave square with\r\ncenter in the origin with given constraints.\r\n"
+}

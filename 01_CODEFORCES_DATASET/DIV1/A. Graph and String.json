@@ -1,1 +1,100 @@
-{"link": "https://codeforces.com//contest/623/problem/A", "problemId": "47311", "problem_idx": "A", "shortId": "623A", "contest_number": "623", "problem_submissions": {"C": [15809186, 15807923, 15810181, 15806671, 15808652, 15818870, 15811297, 15824389, 15801567], "D": [15802822, 15804610, 15804063, 15810065, 15809969, 15800847, 15801410, 15804877, 15805201, 15809200, 15805279, 15805265, 15803978, 15806446, 15804093, 15805984, 15809435, 15808164], "B": [15799385, 15799937, 15800370, 15800033, 15797877, 15808021, 15799907, 15800024, 15802615, 15799613, 15799768, 15806416, 15803166, 15800459, 15801892, 15800003, 15806962, 15802319], "A": [15794295, 15794155, 15793520, 15793524, 15802472, 15806700, 15794661, 15793789, 15793952, 15802327, 15793050, 15794635, 15796862, 15810492, 15795834, 15794597, 15792903, 15798814], "E": [15807539, 15822584]}, "name": "A. Graph and String", "statement": "One day student Vasya was sitting on a lecture and mentioned a string ,\r\nconsisting of letters \"\", \"\" and \"\" that was written on his desk. As the\r\nlecture was boring, Vasya decided to complete the picture by composing a\r\ngraph with the following properties: has exactly vertices, numbered from\r\nto . For all pairs of vertices and , where , there is an edge connecting\r\nthem characters and are either equal or neighbouring in the alphabet.\r\nThat is, letters in pairs \"\"-\"\" and \"\"-\"\" are neighbouring, while\r\nletters \"\"-\"\" are not. Vasya painted the resulting graph near the string\r\nand then erased the string. Next day Vasya\u2019s friend Petya came to a\r\nlecture and found some graph at his desk. He had heard of Vasya\u2019s\r\nadventure and now he wants to find out whether it could be the original\r\ngraph , painted by Vasya. In order to verify this, Petya needs to know\r\nwhether there exists a string , such that if Vasya used this he would\r\nproduce the given graph .\r\n", "solutions": ["#include <iostream>\n#include <iomanip>\n#include <fstream>\n#include <algorithm>\n#include <string>\n#include <vector>\n#include <map>\n#include <queue>\n\nusing namespace std;\ntypedef long long ll;\nconst int MAXN = 510;\n\nint N, M;\nbool has[MAXN][MAXN];\n\nint lres[MAXN];\n\nvoid flood (int cloc, int val)\n{\n    if (lres[cloc] != 0)\n        return;\n    lres[cloc] = val;\n    for (int i = 0; i < N; i++)\n        if (has[cloc][i])\n            flood (i, 3 - val);\n}\n\nint main()\n{\n    cin >> N >> M;\n    for (int i = 0; i < N; i++)\n        for (int j = 0; j < N; j++)\n            has[i][j] = (i != j);\n    \n    for (int i = 0; i < M; i++)\n    {\n        int a, b;\n        cin >> a >> b;\n        a--, b--;\n        has[a][b] = has[b][a] = false;\n    }\n    \n    for (int i = 0; i < N; i++)\n        lres[i] = 0;\n    \n    for (int i = 0; i < N; i++)\n    {\n        bool seen = false;\n        for (int j = 0; j < N; j++)\n            if (has[i][j])\n            {\n                flood (i, 1);\n                seen = true;\n                break;\n            }\n        if (seen) break;\n    }\n    \n    bool win = true;\n    for (int i = 0; i < N; i++)\n        for (int j = 0; j < N; j++)\n        {\n            if (has[i][j] != (lres[i] + lres[j] == 3))\n                win = false;\n        }\n    \n    if (win)\n    {\n        cout << \"Yes\\n\";\n        for (int i = 0; i < N; i++)\n        {\n            if (lres[i] == 0) cout << 'b';\n            if (lres[i] == 1) cout << 'a';\n            if (lres[i] == 2) cout << 'c';\n        }\n        cout << \"\\n\";\n        //system (\"Pause\");\n    }\n    else\n        cout << \"No\\n\";\n    return 0;\n}\n"], "input": "", "output": "", "tags": ["constructive algorithms", "graphs"], "dificulty": "1800", "interactive": false}
+{
+    "link": "https://codeforces.com//contest/623/problem/A",
+    "problemId": "47311",
+    "problem_idx": "A",
+    "shortId": "623A",
+    "contest_number": "623",
+    "problem_submissions": {
+        "C": [
+            15809186,
+            15807923,
+            15810181,
+            15806671,
+            15808652,
+            15818870,
+            15811297,
+            15824389,
+            15801567
+        ],
+        "D": [
+            15802822,
+            15804610,
+            15804063,
+            15810065,
+            15809969,
+            15800847,
+            15801410,
+            15804877,
+            15805201,
+            15809200,
+            15805279,
+            15805265,
+            15803978,
+            15806446,
+            15804093,
+            15805984,
+            15809435,
+            15808164
+        ],
+        "B": [
+            15799385,
+            15799937,
+            15800370,
+            15800033,
+            15797877,
+            15808021,
+            15799907,
+            15800024,
+            15802615,
+            15799613,
+            15799768,
+            15806416,
+            15803166,
+            15800459,
+            15801892,
+            15800003,
+            15806962,
+            15802319
+        ],
+        "A": [
+            15794295,
+            15794155,
+            15793520,
+            15793524,
+            15802472,
+            15806700,
+            15794661,
+            15793789,
+            15793952,
+            15802327,
+            15793050,
+            15794635,
+            15796862,
+            15810492,
+            15795834,
+            15794597,
+            15792903,
+            15798814
+        ],
+        "E": [
+            15807539,
+            15822584
+        ]
+    },
+    "name": "A. Graph and String",
+    "statement": "One day student Vasya was sitting on a lecture and mentioned a string ,\r\nconsisting of letters \"\", \"\" and \"\" that was written on his desk. As the\r\nlecture was boring, Vasya decided to complete the picture by composing a\r\ngraph with the following properties: has exactly vertices, numbered from\r\nto . For all pairs of vertices and , where , there is an edge connecting\r\nthem characters and are either equal or neighbouring in the alphabet.\r\nThat is, letters in pairs \"\"-\"\" and \"\"-\"\" are neighbouring, while\r\nletters \"\"-\"\" are not. Vasya painted the resulting graph near the string\r\nand then erased the string. Next day Vasya\u2019s friend Petya came to a\r\nlecture and found some graph at his desk. He had heard of Vasya\u2019s\r\nadventure and now he wants to find out whether it could be the original\r\ngraph , painted by Vasya. In order to verify this, Petya needs to know\r\nwhether there exists a string , such that if Vasya used this he would\r\nproduce the given graph .\r\n",
+    "solutions": [
+        "#include <iostream>\n#include <iomanip>\n#include <fstream>\n#include <algorithm>\n#include <string>\n#include <vector>\n#include <map>\n#include <queue>\n\nusing namespace std;\ntypedef long long ll;\nconst int MAXN = 510;\n\nint N, M;\nbool has[MAXN][MAXN];\n\nint lres[MAXN];\n\nvoid flood (int cloc, int val)\n{\n    if (lres[cloc] != 0)\n        return;\n    lres[cloc] = val;\n    for (int i = 0; i < N; i++)\n        if (has[cloc][i])\n            flood (i, 3 - val);\n}\n\nint main()\n{\n    cin >> N >> M;\n    for (int i = 0; i < N; i++)\n        for (int j = 0; j < N; j++)\n            has[i][j] = (i != j);\n    \n    for (int i = 0; i < M; i++)\n    {\n        int a, b;\n        cin >> a >> b;\n        a--, b--;\n        has[a][b] = has[b][a] = false;\n    }\n    \n    for (int i = 0; i < N; i++)\n        lres[i] = 0;\n    \n    for (int i = 0; i < N; i++)\n    {\n        bool seen = false;\n        for (int j = 0; j < N; j++)\n            if (has[i][j])\n            {\n                flood (i, 1);\n                seen = true;\n                break;\n            }\n        if (seen) break;\n    }\n    \n    bool win = true;\n    for (int i = 0; i < N; i++)\n        for (int j = 0; j < N; j++)\n        {\n            if (has[i][j] != (lres[i] + lres[j] == 3))\n                win = false;\n        }\n    \n    if (win)\n    {\n        cout << \"Yes\\n\";\n        for (int i = 0; i < N; i++)\n        {\n            if (lres[i] == 0) cout << 'b';\n            if (lres[i] == 1) cout << 'a';\n            if (lres[i] == 2) cout << 'c';\n        }\n        cout << \"\\n\";\n        //system (\"Pause\");\n    }\n    else\n        cout << \"No\\n\";\n    return 0;\n}\n"
+    ],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "graphs"
+    ],
+    "dificulty": "1800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Graph and String.json",
+    "editorial_link": "https://codeforces.com//blog/entry/23278",
+    "editorial": "Finally we need to check graph validity. Check that all vertices \"a\" are\r\nonly connected with each other and \"b\" vertices. After that we need to\r\nperform a similar check for \"c\" vertices.\r\n"
+}
