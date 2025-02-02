@@ -37,7 +37,9 @@ class ClassifierChainWrapper():
         
         # Label Wise Metrics
         f1_scores = label_wise_f1_score(test_tags, predictions)
+        f1_scores = [float(t.numpy()) for t in f1_scores]
         accuracies = label_wise_accuracy(test_tags, predictions)
+        accuracies = [float(t.numpy()) for t in accuracies]
         accuracy = label_wise_macro_accuracy(test_tags, predictions).numpy()
         precision = precision_score(test_tags, predictions, average='macro')
         recall = recall_score(test_tags, predictions, average='macro')

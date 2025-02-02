@@ -3,7 +3,7 @@ import tensorflow as tf
 import keras as K
 from keras.layers import Dense
 from keras.metrics import BinaryAccuracy, Precision, Recall, AUC
-from keras.losses import BinaryCrossentropy
+from keras.losses import BinaryCrossentropy, BinaryFocalCrossentropy
 from keras.optimizers import AdamW
 from transformers import AutoTokenizer, TFAutoModel
 
@@ -28,17 +28,28 @@ class SentenceTransformerEncoderModel(K.Model):
         super().__init__(**kwargs)
         self.model_name = model_name
         self.num_classes = num_classes
-        self.problem_statement_tokenizer = AutoTokenizer.from_pretrained(model_name)        
-        self.problem_statement_model = TFAutoModel.from_pretrained(model_name)
+
+        # Load the transformer model
+        self.transformer = TFAutoModel.from_pretrained(model_name)
+        
+        # The classifier layer uses a sigmoid activation for multi-label classification.
         self.classifier = Dense(num_classes, activation='sigmoid')
 
     def get_config(self):
         config = super().get_config()
         config.update({
             'model_name': self.model_name,
-            'num_classes': self.num_classes,
+            'num_classes': self.num_classes
         })
         return config
+
+    def freeze_transformer(self):
+        """Freeze the transformer layers to prevent them from training."""
+        self.transformer.trainable = False
+
+    def unfreeze_transformer(self):
+        """Unfreeze the transformer layers to allow fine-tuning."""
+        self.transformer.trainable = True
 
     def call(self, inputs, **kwargs):
         input_ids = inputs['input_ids']
@@ -48,37 +59,38 @@ class SentenceTransformerEncoderModel(K.Model):
         # print(f"Input IDs shape: {input_ids.shape}")
         # print(f"Attention mask shape: {attention_mask.shape}")
         
-        # Sentence transformer outputs embeddings
-        transformer_output = self.problem_statement_model(input_ids, attention_mask=attention_mask)[0]
+        # Get the transformer outputs. The first element is usually the last hidden states.
+        transformer_outputs = self.transformer(input_ids, attention_mask=attention_mask)
+        
+        # Use the [CLS] token representation (first token) for classification.
+        cls_output = transformer_outputs[0][:, 0, :]  # shape: (batch_size, hidden_size)
+        
         # print(f"Transformer embeddings shape: {transformer_output.shape}")
         
-        # Use [CLS] token for classification
-        sentence_embeddings = transformer_output[:, 0, :]  
-
-        # Add dense layers for classification
-        output = self.classifier(sentence_embeddings)
-        
-        return output
+        # Pass the pooled output through the classifier
+        logits = self.classifier(cls_output)
+                
+        return logits
     
-    def compile_model(self, run_eagerly=False, learning_rate=2e-5, weight_decay=1e-4):
+    def compile_model(self, run_eagerly=False, threshold=0.5, learning_rate=2e-5, weight_decay=1e-4):
         # Define the optimizer, loss function and metrics
         optimizer = AdamW(learning_rate=learning_rate, weight_decay=weight_decay)
         loss = BinaryCrossentropy()
         metrics = [
-            # Label Wise Metrics
-            LabelWiseF1Score(name='label_wise_f1_score'),
-            LabelWiseAccuracy(name='label_wise_accuracy'),
+            # Label label-wise Metrics
+            LabelWiseF1Score(name='label_wise_f1_score', threshold=threshold),
+            LabelWiseAccuracy(name='label_wise_accuracy', threshold=threshold),
             # Macro Label Metrics
-            BinaryAccuracy(name='binary_accuracy'), 
-            Precision(name='precision'), 
-            Recall(name='recall'), 
+            BinaryAccuracy(name='binary_accuracy', threshold=threshold), 
+            Precision(name='precision', thresholds=threshold), 
+            Recall(name='recall', thresholds=threshold), 
             label_wise_macro_f1,
             # Subset Metrics
             subset_accuracy,
             subset_precision,
             subset_recall,
             subset_f1,
-            # Area Metrics
+            # Area under the curve metrics
             AUC(name='auc'),
             AUC(name='prc_auc', curve='PR')
             ]

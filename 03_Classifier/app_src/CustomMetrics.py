@@ -1,5 +1,7 @@
 import tensorflow as tf
 
+THRESHOLD = 0.5
+
 class PrintScoresCallback(tf.keras.callbacks.Callback):
     def on_test_end(self, metric_names, logs):
         
@@ -50,21 +52,24 @@ class PrintValidationScoresCallback(tf.keras.callbacks.Callback):
 
 @tf.keras.utils.register_keras_serializable()
 class LabelWiseF1Score(tf.keras.metrics.Metric):
-    def __init__(self, name='label_wise_f1_score', num_labels=5, **kwargs):
+    def __init__(self, name='label_wise_f1_score', num_labels=5, threshold=0.5, **kwargs):
         super(LabelWiseF1Score, self).__init__(name=name, **kwargs)
         self.num_labels = num_labels
+        self.threshold = threshold
+        
+        # This weight will hold one F1 score per label.
         self.f1_scores = self.add_weight(name='f1_scores', shape=(num_labels,), initializer='zeros', dtype=tf.float32)
 
     def update_state(self, y_true, y_pred, sample_weight=None):
-        y_pred = tf.round(y_pred)
+        # Apply the threshold to convert probabilities into binary predictions.
+        y_pred_thresholded = tf.cast(y_pred > self.threshold, tf.float32)
         y_true = tf.cast(y_true, tf.float32)
-        y_pred = tf.cast(y_pred, tf.float32)
         
         f1_scores = []
-        for i in range(y_true.shape[1]):
-            true_positives = tf.reduce_sum(tf.cast(y_true[:, i] * y_pred[:, i], tf.float32))
-            predicted_positives = tf.reduce_sum(tf.cast(y_pred[:, i], tf.float32))
-            actual_positives = tf.reduce_sum(tf.cast(y_true[:, i], tf.float32))
+        for i in range(self.num_labels):
+            true_positives = tf.reduce_sum(y_true[:, i] * y_pred_thresholded[:, i])
+            predicted_positives = tf.reduce_sum(y_pred_thresholded[:, i])
+            actual_positives = tf.reduce_sum(y_true[:, i])
             
             precision = true_positives / (predicted_positives + tf.keras.backend.epsilon())
             recall = true_positives / (actual_positives + tf.keras.backend.epsilon())
@@ -82,19 +87,20 @@ class LabelWiseF1Score(tf.keras.metrics.Metric):
 
 @tf.keras.utils.register_keras_serializable()
 class LabelWiseAccuracy(tf.keras.metrics.Metric):
-    def __init__(self, name='label_wise_accuracy', num_labels=5, **kwargs):
+    def __init__(self, name='label_wise_accuracy', num_labels=5, threshold=0.5, **kwargs):
         super(LabelWiseAccuracy, self).__init__(name=name, **kwargs)
         self.num_labels = num_labels
+        self.threshold = threshold
         self.accuracies = self.add_weight(name='accuracies', shape=(num_labels,), initializer='zeros', dtype=tf.float32)
 
     def update_state(self, y_true, y_pred, sample_weight=None):
-        y_pred = tf.round(y_pred)
+        # Apply the threshold
+        y_pred_thresholded = tf.cast(y_pred > self.threshold, tf.float32)
         y_true = tf.cast(y_true, tf.float32)
-        y_pred = tf.cast(y_pred, tf.float32)
         
         accuracies = []
-        for i in range(y_true.shape[1]):
-            correct_predictions = tf.equal(y_true[:, i], y_pred[:, i])
+        for i in range(self.num_labels):
+            correct_predictions = tf.equal(y_true[:, i], y_pred_thresholded[:, i])
             accuracy = tf.reduce_mean(tf.cast(correct_predictions, tf.float32))
             accuracies.append(accuracy)
         
@@ -108,16 +114,16 @@ class LabelWiseAccuracy(tf.keras.metrics.Metric):
 
 
 @tf.keras.utils.register_keras_serializable()
-def label_wise_f1_score(y_true, y_pred):
-    y_pred = tf.round(y_pred)
+def label_wise_f1_score(y_true, y_pred, threshold=THRESHOLD):
+    # Apply threshold to get binary predictions.
+    y_pred_thresholded = tf.cast(y_pred > threshold, tf.float32)
     y_true = tf.cast(y_true, tf.float32)
-    y_pred = tf.cast(y_pred, tf.float32)
     
     f1_scores = []
     for i in range(y_true.shape[1]):
-        true_positives = tf.reduce_sum(tf.cast(y_true[:, i] * y_pred[:, i], tf.float32))
-        predicted_positives = tf.reduce_sum(tf.cast(y_pred[:, i], tf.float32))
-        actual_positives = tf.reduce_sum(tf.cast(y_true[:, i], tf.float32))
+        true_positives = tf.reduce_sum(y_true[:, i] * y_pred_thresholded[:, i])
+        predicted_positives = tf.reduce_sum(y_pred_thresholded[:, i])
+        actual_positives = tf.reduce_sum(y_true[:, i])
         
         precision = true_positives / (predicted_positives + tf.keras.backend.epsilon())
         recall = true_positives / (actual_positives + tf.keras.backend.epsilon())
@@ -128,62 +134,58 @@ def label_wise_f1_score(y_true, y_pred):
     return f1_scores
 
 @tf.keras.utils.register_keras_serializable()
-def label_wise_macro_f1(y_true, y_pred):
-    f1_scores = label_wise_f1_score(y_true, y_pred)
+def label_wise_macro_f1(y_true, y_pred, threshold=THRESHOLD):
+    f1_scores = label_wise_f1_score(y_true, y_pred, threshold)
     macro_f1_score = tf.reduce_mean(tf.stack(f1_scores))
     return macro_f1_score
 
 @tf.keras.utils.register_keras_serializable()
-def subset_f1(y_true, y_pred):
-    precision = subset_precision(y_true, y_pred)
-    recall = subset_recall(y_true, y_pred)
+def subset_f1(y_true, y_pred, threshold=THRESHOLD):
+    precision = subset_precision(y_true, y_pred, threshold)
+    recall = subset_recall(y_true, y_pred, threshold)
     f1 = 2 * ((precision * recall) / (precision + recall + tf.keras.backend.epsilon()))
     return f1
 
 @tf.keras.utils.register_keras_serializable()
-def label_wise_accuracy(y_true, y_pred):
-    y_pred = tf.round(y_pred)
+def label_wise_accuracy(y_true, y_pred, threshold=THRESHOLD):
+    y_pred_thresholded = tf.cast(y_pred > threshold, tf.float32)
     y_true = tf.cast(y_true, tf.float32)
-    y_pred = tf.cast(y_pred, tf.float32)
     
     accuracies = []
     for i in range(y_true.shape[1]):
-        correct_predictions = tf.equal(y_true[:, i], y_pred[:, i])
+        correct_predictions = tf.equal(y_true[:, i], y_pred_thresholded[:, i])
         accuracy = tf.reduce_mean(tf.cast(correct_predictions, tf.float32))
         accuracies.append(accuracy)
     
     return accuracies
 
 @tf.keras.utils.register_keras_serializable()
-def label_wise_macro_accuracy(y_true, y_pred):
-    accuracies = label_wise_accuracy(y_true, y_pred)
+def label_wise_macro_accuracy(y_true, y_pred, threshold=THRESHOLD):
+    accuracies = label_wise_accuracy(y_true, y_pred, threshold)
     macro_accuracy = tf.reduce_mean(tf.stack(accuracies))
     return macro_accuracy
 
 @tf.keras.utils.register_keras_serializable()
-def subset_accuracy(y_true, y_pred):
-    y_pred = tf.round(y_pred)
+def subset_accuracy(y_true, y_pred, threshold=THRESHOLD):
+    y_pred_thresholded = tf.cast(y_pred > threshold, tf.float32)
     y_true = tf.cast(y_true, tf.float32)
-    y_pred = tf.cast(y_pred, tf.float32)
-    matches = tf.reduce_all(tf.equal(y_true, y_pred), axis=1)
+    matches = tf.reduce_all(tf.equal(y_true, y_pred_thresholded), axis=1)
     return tf.reduce_mean(tf.cast(matches, tf.float32))
 
 @tf.keras.utils.register_keras_serializable()
-def subset_precision(y_true, y_pred):
-    y_pred = tf.round(y_pred)
+def subset_precision(y_true, y_pred, threshold=THRESHOLD):
+    y_pred_thresholded = tf.cast(y_pred > threshold, tf.float32)
     y_true = tf.cast(y_true, tf.float32)
-    y_pred = tf.cast(y_pred, tf.float32)
-    true_positive = tf.reduce_sum(tf.cast(tf.logical_and(y_pred == 1, y_true == 1), tf.float32), axis=1)
-    predicted_positive = tf.reduce_sum(tf.cast(y_pred == 1, tf.float32), axis=1)
+    true_positive = tf.reduce_sum(tf.cast(tf.logical_and(y_pred_thresholded == 1, y_true == 1), tf.float32), axis=1)
+    predicted_positive = tf.reduce_sum(tf.cast(y_pred_thresholded == 1, tf.float32), axis=1)
     precision = true_positive / (predicted_positive + tf.keras.backend.epsilon())
     return tf.reduce_mean(precision)
 
 @tf.keras.utils.register_keras_serializable()
-def subset_recall(y_true, y_pred):
-    y_pred = tf.round(y_pred)
+def subset_recall(y_true, y_pred, threshold=THRESHOLD):
+    y_pred_thresholded = tf.cast(y_pred > threshold, tf.float32)
     y_true = tf.cast(y_true, tf.float32)
-    y_pred = tf.cast(y_pred, tf.float32)
-    true_positive = tf.reduce_sum(tf.cast(tf.logical_and(y_pred == 1, y_true == 1), tf.float32), axis=1)
+    true_positive = tf.reduce_sum(tf.cast(tf.logical_and(y_pred_thresholded == 1, y_true == 1), tf.float32), axis=1)
     actual_positive = tf.reduce_sum(tf.cast(y_true == 1, tf.float32), axis=1)
     recall = true_positive / (actual_positive + tf.keras.backend.epsilon())
     return tf.reduce_mean(recall)

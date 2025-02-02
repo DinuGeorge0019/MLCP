@@ -2,11 +2,12 @@ import os
 import pandas as pd
 import numpy as np
 import ast
-
+import random
 import tensorflow as tf
 from transformers import AutoTokenizer
-
+from math import ceil
 import keras as K
+from tqdm import tqdm
 
 
 # local application/library specific imports
@@ -15,6 +16,8 @@ from app_src.CustomMetrics import PrintScoresCallback, PrintValidationScoresCall
 from app_config import AppConfig
 from app_src.common import set_random_seed
 
+from app_src.CustomMetrics import subset_accuracy, subset_precision, subset_recall, subset_f1, label_wise_macro_accuracy, label_wise_macro_f1, LabelWiseF1Score, LabelWiseAccuracy
+
 # define configuration proxy
 configProxy = AppConfig()
 CONFIG = configProxy.return_config()
@@ -22,6 +25,8 @@ CONFIG = configProxy.return_config()
 # get global constants configuration
 GLOBAL_CONSTANTS = configProxy.return_global_constants()
 RANDOM_STATE = GLOBAL_CONSTANTS['RANDOM_SEED']
+
+random.seed(RANDOM_STATE)
 
 class SentenceTransformerWrapper():
     def __init__(self, model_name, number_of_tags):
@@ -50,7 +55,7 @@ class SentenceTransformerWrapper():
     
     def __tokenize_data(self, data):
         tokens = self.tokenizer(
-            data.tolist(),
+            data,
             add_special_tokens=True,
             truncation=True,
             max_length=512,
@@ -60,19 +65,33 @@ class SentenceTransformerWrapper():
         )
         return tokens['input_ids'], tokens['attention_mask']
     
-    def __build_tf_dataset(self, dataset, batch_size = 32):
-        problem_statements = np.array(dataset['problem_statement'].tolist())
-        tags = self.__encode_tags(dataset['tags'].tolist())
+    def __build_tf_dataset(self, data_df, batch_size = 32, shuffle_buffer_size=10000):
+        problem_statements = data_df['problem_statement'].tolist()
+        tags = self.__encode_tags(data_df['problem_tags'].tolist())
+        # Ensure tags are in a consistent format (e.g., a NumPy array)
+        if not isinstance(tags, (np.ndarray, tf.Tensor)):
+            tags = np.array(tags)
+            
+        # Tokenize all problem statements
         input_ids, attention_mask = self.__tokenize_data(problem_statements)
 
         # print(input_ids.shape)
         # print(attention_mask.shape)
         # print(tags.shape)        
         
-        dataset = tf.data.Dataset.from_tensor_slices(({
-            'input_ids': input_ids,
-            'attention_mask': attention_mask
-        }, tags)).batch(batch_size)
+        tf_dataset = tf.data.Dataset.from_tensor_slices((
+            {
+                'input_ids': input_ids,
+                'attention_mask': attention_mask
+            },
+            tags
+        ))
+        
+        # Apply optimizations: shuffle, cache, batch, prefetch
+        tf_dataset = tf_dataset.shuffle(buffer_size=shuffle_buffer_size)
+        tf_dataset = tf_dataset.cache()  # Use caching if your dataset fits in memory; otherwise, consider file-based caching.
+        tf_dataset = tf_dataset.batch(batch_size, drop_remainder=True)
+        tf_dataset = tf_dataset.prefetch(tf.data.AUTOTUNE)
         
         # Print the shapes of the batches to verify
         # for batch in dataset.take(1):
@@ -81,9 +100,9 @@ class SentenceTransformerWrapper():
         #     print(f"Attention mask batch shape: {input_batch['attention_mask'].shape}")
         #     print(f"Tags batch shape: {tag_batch.shape}")
         
-        return dataset
+        return tf_dataset
     
-    def train_model(self, train_dataset_path, val_dataset_path, epochs=5, batch_size=32, save_path=CONFIG['MODEL_SAVE_PATH']):
+    def train_model(self, train_dataset_path, val_dataset_path, epochs=5, batch_size=32, save_path=CONFIG['MODEL_SAVE_PATH'], train_model=True, threshold=0.5):
         
         self.__read_train_data(train_dataset_path)
         self.__read_validation_data(val_dataset_path)
@@ -91,39 +110,56 @@ class SentenceTransformerWrapper():
         self.train_dataset = self.__build_tf_dataset(self.train_dataset, batch_size)
         self.validation_dataset = self.__build_tf_dataset(self.validation_dataset, batch_size)
         
-        # Unfreeze the model
-        self.encoder_model.trainable = True
+        # Unfreeze the transformer layers
+        self.encoder_model.unfreeze_transformer()
         
         # Compile the model
-        self.encoder_model.compile_model(run_eagerly=False)
+        self.encoder_model.compile_model(run_eagerly=False, threshold=threshold)
         
-        # Train the model
-        self.encoder_model.fit(self.train_dataset, validation_data=self.validation_dataset, epochs=epochs, callbacks=[PrintValidationScoresCallback()])
-                
-        # Save the model
-        self.encoder_model.save(save_path)
-        print(f"Model saved to {save_path}")
-
-    def benchmark_model(self, model_path, test_dataset_path, batch_size=32):
+        if train_model:
+            # Define callbacks
+            callbacks = [
+                # Custom callback for printing validation scores
+                PrintValidationScoresCallback()
+            ]
+            
+            # Start training
+            history = self.encoder_model.fit(
+                self.train_dataset,
+                validation_data=self.validation_dataset,
+                epochs=epochs,
+                callbacks=callbacks
+            )
+        
+            # Save the model
+            self.encoder_model.save(save_path)
+            print(f"Model saved to {save_path}")
+    
+    def benchmark_model(self, test_dataset_path, batch_size=32, model_path=None):
         
         self.__read_test_data(test_dataset_path)
 
         # Convert test data to tf.data.Dataset
         self.test_dataset = self.__build_tf_dataset(self.test_dataset, batch_size)
-
-        # Load the model
-        loaded_model = K.models.load_model(model_path, custom_objects={'SentenceTransformerEncoderModel': SentenceTransformerEncoderModel})
-        print(f"Model loaded from {model_path}")
-
-        # Set the model to be non-trainable
-        loaded_model.trainable = False
-
-        # Set the model to evaluation mode
-        loaded_model.compile_model(run_eagerly=True)
+        if model_path:
+            # Load the model
+            loaded_model = K.models.load_model(
+                model_path, 
+                custom_objects={'SentenceTransformerEncoderModel': SentenceTransformerEncoderModel}
+            )
+            print(f"Model loaded from {model_path}")
+        else:
+            loaded_model = self.encoder_model
+            print("Using the trained model")
+            
+        # Freeze the transformer layers
+        loaded_model.freeze_transformer()
+        
+        # loaded_model.compile_model(run_eagerly=False)
 
         # Evaluate the model
         logs = loaded_model.evaluate(self.test_dataset)
-                
+        
         # Assuming these are the metric names in the same order as the results                
         metric_names = [
             'Loss',
@@ -149,4 +185,4 @@ class SentenceTransformerWrapper():
         callback = PrintScoresCallback()
         evaluation_results = callback.on_test_end(metric_names=metric_names, logs=logs)
         return evaluation_results
-                
+    

@@ -13,8 +13,6 @@ from xgboost import XGBClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from lightgbm import LGBMClassifier
 from sklearn.svm import SVC
-from catboost import CatBoostClassifier
-from sklearn.calibration import CalibratedClassifierCV
 from sklearn.feature_extraction.text import TfidfVectorizer 
 
 # local application/library specific imports
@@ -52,17 +50,6 @@ class DecisionTreeEvaluator():
         xgb_classifier = XGBClassifier(random_state=RANDOM_STATE)
         lgb_classifier = LGBMClassifier(random_state=RANDOM_STATE)
         svc_classifier = SVC(decision_function_shape='ovo')
-        catb_classifier = CatBoostClassifier(
-            random_state=RANDOM_STATE,
-            iterations=100,       # Number of boosting iterations
-            depth=6,              # Depth of the tree
-            learning_rate=0.1,    # Learning rate
-            l2_leaf_reg=3,        # L2 regularization term on weights
-            border_count=32,      # Number of splits for numerical features
-            verbose=0,            # Turn off verbose logging
-            task_type='GPU'       # Use GPU for training if available
-        )
-        catb_classifier = CalibratedClassifierCV(catb_classifier, method='sigmoid', cv=5)
 
         self.estimator_collection = {
             # 'CatBoostClassifier': catb_classifier,
@@ -111,7 +98,7 @@ class DecisionTreeEvaluator():
             encoder = CustomEncoder(encoder_model)
             return encoder.encode_problem_statement(problem_statements, batch_size)
     
-    def __encode_tags(self, tags):
+    def __encode_tags(self, tags):        
         for idx, string_tag_list in enumerate(tags):
             tags[idx] = ast.literal_eval(string_tag_list)
         return np.array(tags)
@@ -144,12 +131,8 @@ class DecisionTreeEvaluator():
             print('Benchmarking encoder model:', encoder)
             
             train_problem_statements = self.__encode_problem_statements(encoder, self.train_dataset['problem_statement'].tolist(), batch_size=encoder_batch_size)
-            train_tags = self.__encode_tags(self.train_dataset['tags'].tolist())     
-            # # Transform from sparce array to dense array
-            # predictions_dense = predictions.toarray()
-            # # Transform from float to integer
-            # predictions = np.round(predictions_dense).astype(int)
-        
+            train_tags = self.__encode_tags(self.train_dataset['problem_tags'].tolist())   
+                                  
             # print('Train problem statements shape:', train_problem_statements.shape)
             # print(train_problem_statements)
 
@@ -158,10 +141,10 @@ class DecisionTreeEvaluator():
             
             if validation:
                 validation_problem_statements = self.__encode_problem_statements(encoder, self.validation_dataset['problem_statement'].tolist(), batch_size=encoder_batch_size)
-                validation_tags = self.__encode_tags(self.validation_dataset['tags'].tolist())
+                validation_tags = self.__encode_tags(self.validation_dataset['problem_tags'].tolist())
             
             test_problem_statements = self.__encode_problem_statements(encoder, self.test_dataset['problem_statement'].tolist(), batch_size=encoder_batch_size)
-            test_tags = self.__encode_tags(self.test_dataset['tags'].tolist())
+            test_tags = self.__encode_tags(self.test_dataset['problem_tags'].tolist())
             
             # print('Test problem statements shape:', test_problem_statements.shape)
             # print('Test problem statements type:', test_problem_statements.dtype)

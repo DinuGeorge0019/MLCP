@@ -14,6 +14,7 @@ from transformers import AutoTokenizer, TFAutoModel
 import tensorflow as tf
 import numpy as np
 from tqdm import tqdm
+from math import ceil
 
 # local application/library specific imports
 from app_config import AppConfig
@@ -34,7 +35,7 @@ class CustomEncoder:
         self.problem_statement_model = TFAutoModel.from_pretrained(encodder_model)
         
     def encode_problem_statement(self, problem_statements, batch_size=32):
-        
+        dataset = tf.data.Dataset.from_tensor_slices(problem_statements).batch(batch_size)
         all_embeddings = []
 
         # Check if GPU is available
@@ -43,11 +44,16 @@ class CustomEncoder:
         else:
             print("GPU not available, using CPU")
 
-        for i in tqdm(range(0, len(problem_statements), batch_size), desc="Encoding Problem Statements"):
-            batch = problem_statements[i:i + batch_size]
+        # Calculate total number of batches
+        total_batches = ceil(len(problem_statements) / batch_size)
+        
+        for batch in tqdm(dataset, total=total_batches, desc="Encoding problem statements"):
 
+            # Convert each element in the batch (a tf.Tensor) to a Python string.
+            # If your strings are stored as bytes, decode them with 'utf-8'.
+            batch_strings = [s.numpy().decode('utf-8') for s in batch]
             encoded_premise = self.problem_statement_tokenizer(
-                batch,                                              # Encode each sentence in the batch
+                batch_strings,                                        # Encode each sentence in the batch
                 add_special_tokens=True,                            # Compute the CLS token
                 truncation=True,                                    # Truncate the embeddings to max_length
                 max_length=512,                                     # Pad & truncate all sentences.
@@ -62,11 +68,11 @@ class CustomEncoder:
                 attention_mask=encoded_premise.attention_mask
             )
 
-            # Use mean pooling over all token embeddings to get sentence-level embeddings
-            batch_embeddings = tf.reduce_mean(embeddings.last_hidden_state, axis=1)
-        
+            # Use pooler output for classification
+            batch_embeddings = embeddings.pooler_output
+
             # Convert to numpy array and append to the list
-            all_embeddings.append(batch_embeddings.numpy())
+            all_embeddings.append(batch_embeddings)
         
         # Concatenate all batch embeddings
         all_embeddings = np.concatenate(all_embeddings, axis=0)

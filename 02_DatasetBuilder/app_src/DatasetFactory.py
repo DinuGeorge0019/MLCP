@@ -379,7 +379,7 @@ class DatasetFactory:
         # Save the filtered dataset to a CSV file
         self.filtered_df.to_csv(CONFIG[f'TOP_{top_n_tags}_FILTERED_DATASET_PATH'],  index=False)
         
-        return top_tags
+        return top_tags, tag_counts
 
     def build_base_train_test_dataset(self, top_n_tags=5):
         # Load the preprocessed dataset
@@ -412,8 +412,10 @@ class DatasetFactory:
     def build_train_test_dataset(self, top_n_tags=5):
         
         # Filter the dataset
-        unique_tags = self.build_filtered_dataset(top_n_tags)
-                
+        unique_tags, tag_dictionary = self.build_filtered_dataset(top_n_tags)
+        
+        self.balance_tag_classes(unique_tags, tag_dictionary, top_n_tags)
+        
         # Build the base train test dataset
         self.build_base_train_test_dataset(top_n_tags)
         
@@ -428,17 +430,38 @@ class DatasetFactory:
         self.df_val = self.df_val.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_input', 'problem_output', 'file_name', 'editorial_link'])
                 
         # for 5 classes ->  ['greedy', 'math', 'implementation', 'dp', 'data structures']
-        # for 10 classes -> ['greedy', 'math', 'implementation', 'dp', 'data structures', 'constructive algorithms', 'brute force', 'graphs', 'binary search', 'sortings']
-        # for 15 classes -> ['greedy', 'math', 'implementation', 'dp', 'data structures', 'constructive algorithms', 'brute force', 'graphs', 'binary search', 'sortings', 'dfs and similar', 'trees', 'number theory', 'strings', 'combinatorics']
-        # for 20 classes -> ['greedy', 'math', 'implementation', 'dp', 'data structures', 'constructive algorithms', 'brute force', 'graphs', 'binary search', 'sortings', 'dfs and similar', 'trees', 'number theory', 'strings', 'combinatorics', 'two pointers', 'bitmasks', 'geometry', 'dsu', 'shortest paths']
+        # for 10 classes -> ['greedy', 'math', 'implementation', 'dp', 'data structures', 'brute force', 'constructive algorithms', 'binary search', 'sortings', 'graphs']
+        # for 15 classes -> ['greedy', 'math', 'implementation', 'dp', 'data structures', 'brute force', 'constructive algorithms', 'binary search', 'sortings', 'graphs', 'dfs and similar', 'trees', 'number theory', 'strings', 'combinatorics']
+        
+        # print(unique_tags)
         
         # encode the tags to one hot encoding
-        # self.df_train['tags'] = self.df_train['tags'].apply(lambda x: self.__create_binary_vector(x, unique_tags))
-        # self.df_test['tags'] = self.df_test['tags'].apply(lambda x: self.__create_binary_vector(x, unique_tags))
-        # self.df_val['tags'] = self.df_val['tags'].apply(lambda x: self.__create_binary_vector(x, unique_tags))
+        self.df_train['problem_tags'] = self.df_train['problem_tags'].apply(lambda x: self.__create_binary_vector(x, unique_tags))
+        self.df_test['problem_tags'] = self.df_test['problem_tags'].apply(lambda x: self.__create_binary_vector(x, unique_tags))
+        self.df_val['problem_tags'] = self.df_val['problem_tags'].apply(lambda x: self.__create_binary_vector(x, unique_tags))
         
         #save the datasets
         self.df_train.to_csv(CONFIG[f'TOP_{top_n_tags}_TRAINING_DATASET_PATH'], index=False)
         self.df_test.to_csv(CONFIG[f'TOP_{top_n_tags}_TESTING_DATASET_PATH'], index=False)
         self.df_val.to_csv(CONFIG[f'TOP_{top_n_tags}_VALIDATION_DATASET_PATH'], index=False)
     
+    def balance_tag_classes(self, unique_tags, tag_dictionary, top_n_tags=5):
+        
+        # print(unique_tags)
+        # print(tag_dictionary)
+        # print(sum([tag_dictionary[tag] for tag in unique_tags]))
+        
+        # Determine the minimum count of any tag class in the original DataFrame
+        min_count = min([tag_dictionary[tag] for tag in unique_tags])
+                
+        # Balance the dataset by tag classes
+        balanced_df = pd.DataFrame()
+        for tag in unique_tags:
+            tag_df = self.filtered_df[self.filtered_df['problem_tags'].str.contains(tag)]
+            balanced_df = pd.concat([balanced_df, tag_df.sample(n=min(len(tag_df), min_count), random_state=RANDOM_STATE)])
+        
+        self.filtered_df = balanced_df
+        
+        self.filtered_df.to_csv(CONFIG[f'TOP_{top_n_tags}_FILTERED_DATASET_PATH'],  index=False)
+        
+        

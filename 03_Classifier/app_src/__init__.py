@@ -5,4 +5,5 @@ from .ClassifierChainWrapper import ClassifierChainWrapper as ClassifierChainWra
 from .DecisionTreeEvaluator import DecisionTreeEvaluator as DecisionTreeEvaluator
 from .SentenceTransformerWrapper import SentenceTransformerWrapper as SentenceTransformerWrapper
 from .SentenceTransformerEncoderModel import SentenceTransformerEncoderModel as SentenceTransformerEncoderModel
+from .TransformerEvaluator import TransformerEvaluator as TransformerEvaluator
 from .common import set_random_seed as set_random_seed
