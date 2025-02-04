@@ -46,7 +46,6 @@ class Config(object):
             "TOP_20_BENCHMARK_BASELINE_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_20_baseline_models.csv'),
             
             ############################################################################################################
-            
             "TOP_5_BENCHMARK_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_5_baseline_transformer_models.csv'),
             "TOP_10_BENCHMARK_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_10_baseline_transformer_models.csv'),
             "TOP_15_BENCHMARK_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_15_baseline_transformer_models.csv'),
@@ -54,9 +53,11 @@ class Config(object):
             
             ############################################################################################################          
 
-            "MODEL_SAVE_PATH": os.path.join(BASE_DIR, '05_MODELS', '01_Sentence_Transformer_Models', f'sentence_transformer_model_{current_time}.keras'),
-            "MODEL_SAVE_PATH_ROOT": os.path.join(BASE_DIR, '05_MODELS', '01_Sentence_Transformer_Models')
-        }
+            "MODEL_SAVE_PATH": os.path.join(BASE_DIR, '05_MODELS', '01_Custom_Models', f'custom_model_{current_time}.weights.h5'),
+            "TRANSFORMER_SAVE_PATH": os.path.join(BASE_DIR, '05_MODELS', '02_Transformer_Models', f'transformer_model_{current_time}'),
+            "MODEL_SAVE_PATH_ROOT": os.path.join(BASE_DIR, '05_MODELS', '01_Custom_Models'),
+            "TRANSFORMER_SAVE_PATH_ROOT": os.path.join(BASE_DIR, '05_MODELS', '02_Transformer_Models')
+        }   
 
         self.global_constants = {
             "RANDOM_SEED": 42

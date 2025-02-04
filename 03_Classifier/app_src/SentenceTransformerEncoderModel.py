@@ -24,33 +24,30 @@ RANDOM_STATE = GLOBAL_CONSTANTS['RANDOM_SEED']
 random.seed(RANDOM_STATE)
 
 class SentenceTransformerEncoderModel(K.Model):
-    def __init__(self, model_name, num_classes=5, **kwargs):
+    def __init__(self, transformer_model, num_classes=5, **kwargs):
         super().__init__(**kwargs)
-        self.model_name = model_name
         self.num_classes = num_classes
 
         # Load the transformer model
-        self.transformer = TFAutoModel.from_pretrained(model_name)
+        self.transformer_model = transformer_model
         
         # The classifier layer uses a sigmoid activation for multi-label classification.
         self.classifier = Dense(num_classes, activation='sigmoid')
 
-    def get_config(self):
-        config = super().get_config()
-        config.update({
-            'model_name': self.model_name,
-            'num_classes': self.num_classes
-        })
-        return config
-
     def freeze_transformer(self):
         """Freeze the transformer layers to prevent them from training."""
-        self.transformer.trainable = False
+        self.transformer_model.trainable = False
 
     def unfreeze_transformer(self):
         """Unfreeze the transformer layers to allow fine-tuning."""
-        self.transformer.trainable = True
-
+        self.transformer_model.trainable = True
+        
+    def get_embeddings(self, inputs):
+        input_ids = inputs['input_ids']
+        attention_mask = inputs['attention_mask']
+        transformer_outputs = self.transformer_model(input_ids, attention_mask=attention_mask)
+        return transformer_outputs.last_hidden_state
+    
     def call(self, inputs, **kwargs):
         input_ids = inputs['input_ids']
         attention_mask = inputs['attention_mask']
@@ -60,15 +57,31 @@ class SentenceTransformerEncoderModel(K.Model):
         # print(f"Attention mask shape: {attention_mask.shape}")
         
         # Get the transformer outputs. The first element is usually the last hidden states.
-        transformer_outputs = self.transformer(input_ids, attention_mask=attention_mask)
+        transformer_outputs = self.transformer_model(input_ids, attention_mask=attention_mask)
         
-        # Use the [CLS] token representation (first token) for classification.
-        cls_output = transformer_outputs[0][:, 0, :]  # shape: (batch_size, hidden_size)
-        
-        # print(f"Transformer embeddings shape: {transformer_output.shape}")
-        
-        # Pass the pooled output through the classifier
-        logits = self.classifier(cls_output)
+        # Extract the last hidden states (batch_size, seq_len, hidden_dim)
+        hidden_states = transformer_outputs[0]
+
+        # Convert attention_mask to float so we can do elementwise multiplication
+        # shape: (batch_size, seq_len)
+        mask = tf.cast(attention_mask, dtype=hidden_states.dtype)
+
+        # Expand the mask for broadcast: (batch_size, seq_len, 1)
+        mask = tf.expand_dims(mask, axis=-1)
+
+        # Sum up the token embeddings * mask along the seq_len dimension
+        # shape: (batch_size, hidden_dim)
+        masked_sum = tf.reduce_sum(hidden_states * mask, axis=1)
+
+        # Avoid division by zero by forcing at least one non-zero denominator
+        mask_sum = tf.reduce_sum(mask, axis=1)  # shape: (batch_size, 1)
+        mask_sum = tf.clip_by_value(mask_sum, clip_value_min=1e-9, clip_value_max=1e9)
+
+        # Mean pooling: divide the summed embeddings by the number of valid tokens
+        mean_pooled = masked_sum / mask_sum  # shape: (batch_size, hidden_dim)
+
+        # Pass the mean-pooled embedding through your classifier
+        logits = self.classifier(mean_pooled)
                 
         return logits
     
