@@ -17,6 +17,9 @@ from app_config import AppConfig
 from app_src.common import set_random_seed
 from transformers import AutoTokenizer, TFAutoModel
 
+from sklearn.metrics import accuracy_score, precision_score, recall_score, roc_auc_score, average_precision_score, f1_score
+from app_src.CustomMetrics import subset_precision, subset_recall, subset_f1, label_wise_macro_accuracy, label_wise_accuracy, label_wise_f1_score
+
 # define configuration proxy
 configProxy = AppConfig()
 CONFIG = configProxy.return_config()
@@ -27,7 +30,7 @@ RANDOM_STATE = GLOBAL_CONSTANTS['RANDOM_SEED']
 
 random.seed(RANDOM_STATE)
 
-class SentenceTransformerWrapper():
+class OneVsAllSentenceTransformerWrapper():
     def __init__(self, model_name, number_of_tags):
         
         self.model_name = model_name
@@ -39,6 +42,8 @@ class SentenceTransformerWrapper():
         self.train_dataset = None
         self.validation_dataset = None
         
+        self.models = []
+
         set_random_seed(RANDOM_STATE)
         
     def __read_test_data(self, test_dataset_path):
@@ -67,7 +72,7 @@ class SentenceTransformerWrapper():
         )
         return tokens['input_ids'], tokens['attention_mask']
     
-    def __build_tf_dataset(self, data_df, batch_size = 32, shuffle_buffer_size=10000):
+    def __build_tf_dataset(self, data_df, batch_size = 32, shuffle_buffer_size=10000, testing=False):
         problem_statements = data_df['problem_statement'].tolist()
         tags = self.__encode_tags(data_df['problem_tags'].tolist())
         # Ensure tags are in a consistent format (e.g., a NumPy array)
@@ -90,7 +95,8 @@ class SentenceTransformerWrapper():
         ))
         
         # Apply optimizations: shuffle, cache, batch, prefetch
-        tf_dataset = tf_dataset.shuffle(buffer_size=shuffle_buffer_size)
+        if not testing:
+            tf_dataset = tf_dataset.shuffle(buffer_size=shuffle_buffer_size)
         tf_dataset = tf_dataset.cache()  # Use caching if your dataset fits in memory; otherwise, consider file-based caching.
         tf_dataset = tf_dataset.batch(batch_size, drop_remainder=True)
         tf_dataset = tf_dataset.prefetch(tf.data.AUTOTUNE)
@@ -106,23 +112,34 @@ class SentenceTransformerWrapper():
     
     def train_model(self, train_dataset_path, val_dataset_path, epochs=5, batch_size=32, train_model=True, threshold=0.5):
         
-        self.transformer_model = TFAutoModel.from_pretrained(self.model_name)
-        self.encoder_model = SentenceTransformerEncoderModel(self.transformer_model, self.number_of_tags)
-        
         self.__read_train_data(train_dataset_path)
         self.__read_validation_data(val_dataset_path)
         
         self.train_dataset = self.__build_tf_dataset(self.train_dataset, batch_size)
         self.validation_dataset = self.__build_tf_dataset(self.validation_dataset, batch_size)
         
-        # Unfreeze the transformer layers
-        self.encoder_model.unfreeze_transformer()
+        for label_idx in range(self.number_of_tags):
+            
+            print('Starting training for label:', label_idx)
+            
+            # single-label training dataset
+            single_label_train_ds = self.train_dataset.map(
+                lambda x, y: (x, y[:, label_idx])
+            )
+            # single-label validation dataset
+            single_label_val_ds = self.validation_dataset.map(
+                lambda x, y: (x, y[:, label_idx])
+            )
+            
+            transformer_model = TFAutoModel.from_pretrained(self.model_name)
+            encoder_model = SentenceTransformerEncoderModel(transformer_model, 1)
+            
+            # Unfreeze the transformer layers
+            encoder_model.unfreeze_transformer()
 
-        # Compile the model
-        self.encoder_model.compile_model(run_eagerly=False, threshold=threshold)
-        
-
-        if train_model:
+            # Compile the model
+            encoder_model.compile_model(run_eagerly=False, threshold=threshold)
+            
             # Define callbacks
             callbacks = [
                 # Custom callback for printing validation scores
@@ -130,74 +147,81 @@ class SentenceTransformerWrapper():
             ]
             
             # Start training
-            history = self.encoder_model.fit(
-                self.train_dataset,
-                validation_data=self.validation_dataset,
+            history = encoder_model.fit(
+                single_label_train_ds,
+                validation_data=single_label_val_ds,
                 epochs=epochs,
                 callbacks=callbacks
             )
-        else:
-            _ = self.encoder_model({"input_ids": tf.zeros((1, 512), tf.int32),
-           "attention_mask": tf.zeros((1, 512), tf.int32)})
-        
-        # Save the model
-        self.encoder_model.transformer_model.save_pretrained(CONFIG['TRANSFORMER_SAVE_PATH'])
-        print(f"Transformer model saved to {CONFIG['TRANSFORMER_SAVE_PATH']}")
-        
-        self.encoder_model.save_weights(CONFIG['MODEL_SAVE_PATH'])
-        print(f"Model saved to {CONFIG['MODEL_SAVE_PATH']}")
+            
+            self.models.append(encoder_model)
     
-    def benchmark_model(self, test_dataset_path, batch_size=32, model_path=None, transformer_model_path=None):
+    def benchmark_model(self, test_dataset_path, batch_size=32, model_path=None, transformer_model_path=None, threshold=0.5):
         
         self.__read_test_data(test_dataset_path)
+        test_tags_np = np.array(self.test_dataset['problem_tags'].tolist())  
 
         # Convert test data to tf.data.Dataset
-        self.test_dataset = self.__build_tf_dataset(self.test_dataset, batch_size)
-        if model_path and transformer_model_path:
-            self.transformer_model = TFAutoModel.from_pretrained(transformer_model_path)
-            self.encoder_model = SentenceTransformerEncoderModel(self.transformer_model, self.number_of_tags)
-
-            self.encoder_model.compile_model(run_eagerly=False)
-            
-            _ = self.encoder_model({"input_ids": tf.zeros((1, 512), tf.int32),
-           "attention_mask": tf.zeros((1, 512), tf.int32)})
-                        
-            self.encoder_model.load_weights(model_path)
+        self.test_dataset = self.__build_tf_dataset(self.test_dataset, batch_size, testing=True)
         
-            print(f"Model loaded from {model_path}")
-        else:
-            print("Using the trained model")
-            
-        self.encoder_model.freeze_transformer()
-
-        # loaded_model.compile_model(run_eagerly=False)
-
-        # Evaluate the model
-        logs = self.encoder_model.evaluate(self.test_dataset)
+        # We'll create an array to hold predictions for all 5 labels
+        all_preds = []
         
-        # Assuming these are the metric names in the same order as the results                
-        metric_names = [
-            'Loss',
+        for label_idx, estimator in enumerate(self.models):
+            
+            # single-label testing dataset
+            single_label_test_ds = self.test_dataset.map(
+                lambda x, y: (x, y[:, label_idx])
+            )
+            
+            estimator.freeze_transformer()
+            
+            pred_probs = estimator.predict(single_label_test_ds)
+            all_preds.append(pred_probs)
+        
+        all_preds = np.column_stack(all_preds)
+
+        predictions = (all_preds >= threshold).astype(int)
+        
+        # Label Wise Metrics
+        f1_scores = label_wise_f1_score(test_tags_np, predictions)
+        f1_scores = [float(t.numpy()) for t in f1_scores]
+        accuracies = label_wise_accuracy(test_tags_np, predictions)
+        accuracies = [float(t.numpy()) for t in accuracies]
+        accuracy = label_wise_macro_accuracy(test_tags_np, predictions).numpy()
+        precision = precision_score(test_tags_np, predictions, average='macro')
+        recall = recall_score(test_tags_np, predictions, average='macro')
+        f1 = f1_score(test_tags_np, predictions, average='macro')
+        
+        # Subset Metrics
+        sub_accuracy = accuracy_score(test_tags_np, predictions)
+        sub_precision = subset_precision(test_tags_np, predictions).numpy()
+        sub_recall = subset_recall(test_tags_np, predictions).numpy()
+        sub_f1 = subset_f1(test_tags_np, predictions).numpy()
+        
+        # Area Metrics
+        auc = roc_auc_score(test_tags_np, predictions, average='macro', multi_class='ovr')
+        prc_auc = average_precision_score(test_tags_np, predictions, average='macro')
+        
+        # Store the results
+        results = {
             # Label Wise Metrics
-            'Label F1 Scores',
-            'Label Accuracies',
+            'Label F1 Scores': f1_scores,
+            'Label Accuracies': accuracies,
             # Macro Label Metrics
-            'Accuracy',
-            'Precision',
-            'Recall',
-            'F1 Score',
+            'Accuracy': accuracy,
+            'Precision': precision,
+            'Recall': recall,
+            'F1 Score': f1,
             # Subset Metrics
-            'Subset Accuracy',
-            'Subset Precision',
-            'Subset Recall',
-            'Subset F1',
+            'Subset Accuracy': sub_accuracy,
+            'Subset Precision': sub_precision,
+            'Subset Recall': sub_recall,
+            'Subset F1': sub_f1,
             # Area Metrics
-            'AUC',
-            'PRC AUC'
-        ]
-        
-        # Manually invoke the PrintScoresCallback to print the validation metrics
-        callback = PrintScoresCallback()
-        evaluation_results = callback.on_test_end(metric_names=metric_names, logs=logs)
-        return evaluation_results
+            'AUC': auc,
+            'PRC AUC': prc_auc
+        }
+
+        return results
     

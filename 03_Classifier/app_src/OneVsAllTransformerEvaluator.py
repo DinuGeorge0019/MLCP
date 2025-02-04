@@ -1,0 +1,89 @@
+import os
+import pandas as pd
+import numpy as np
+import ast
+import random
+
+import tensorflow as tf
+from transformers import AutoTokenizer
+
+import keras as K
+
+
+# local application/library specific imports
+from app_src.OneVsAllSentenceTransformerWrapper import OneVsAllSentenceTransformerWrapper
+from app_config import AppConfig
+from app_src.common import set_random_seed
+
+# define configuration proxy
+configProxy = AppConfig()
+CONFIG = configProxy.return_config()
+
+# get global constants configuration
+GLOBAL_CONSTANTS = configProxy.return_global_constants()
+RANDOM_STATE = GLOBAL_CONSTANTS['RANDOM_SEED']
+
+random.seed(RANDOM_STATE)
+
+class OneVsAllTransformerEvaluator():
+    
+    def __init__(self) -> None:        
+        self.encoder_collection = []
+        
+        set_random_seed(RANDOM_STATE)
+        
+        self.__define_models()
+
+    def __define_models(self):
+
+        self.encoder_collection = [
+            # 'sentence-transformers/all-mpnet-base-v2'
+            # 'sentence-transformers/multi-qa-mpnet-base-dot-v1',
+            # 'sentence-transformers/multi-qa-distilbert-cos-v1',
+            # 'sentence-transformers/multi-qa-MiniLM-L6-cos-v1',
+            # 'sentence-transformers/all-distilroberta-v1',
+            # 'sentence-transformers/all-MiniLM-L12-v2',
+            # 'sentence-transformers/all-MiniLM-L6-v2',
+            # 'microsoft/mpnet-base',
+            # 'roberta-base',
+            'bert-base-uncased'
+            # 'facebook/bart-large-mnli'
+            # 'microsoft/deberta-v3-base'
+        ]
+    
+    def __save_metrics(self, encoder, estimator_name, metrics_results, number_of_tags):
+        
+        scores = {key: str(value) for key, value in metrics_results.items()}
+        csv_headers = ['Encoder Name', 'Estimator Name'] + list(scores.keys())
+        output_data = [f'{encoder}', f'{estimator_name}'] + list(scores.values())
+
+        # Create a DataFrame
+        df = pd.DataFrame([output_data], columns=csv_headers)
+
+        if not os.path.isfile(CONFIG[f'TOP_{number_of_tags}_BENCHMARK_ONEVSALL_TRANSFORMER_MODELS_PATH']):
+            # Write the DataFrame to the csv file
+            df.to_csv(CONFIG[f'TOP_{number_of_tags}_BENCHMARK_ONEVSALL_TRANSFORMER_MODELS_PATH'], index=False)
+        else:
+            # Append the DataFrame to an existing CSV file
+            df.to_csv(CONFIG[f'TOP_{number_of_tags}_BENCHMARK_ONEVSALL_TRANSFORMER_MODELS_PATH'], index=False, mode='a', header=False)
+    
+    def evaluate_models(self, epochs, batch_size, number_of_tags=5, train_model=True, threshold=0.5):
+        for model in self.encoder_collection:
+            print(f"Training and evaluating model: {model}")
+            transformer_wrapper = OneVsAllSentenceTransformerWrapper(model, number_of_tags)
+            transformer_wrapper.train_model(
+                train_dataset_path=CONFIG[f'TOP_{number_of_tags}_TRAINING_DATASET_PATH'],
+                val_dataset_path=CONFIG[f'TOP_{number_of_tags}_VALIDATION_DATASET_PATH'],
+                epochs=epochs,
+                batch_size=batch_size,
+                train_model=train_model,
+                threshold=threshold
+            )
+            
+            metrics = transformer_wrapper.benchmark_model(
+                test_dataset_path=CONFIG[f'TOP_{number_of_tags}_TESTING_DATASET_PATH'],
+                batch_size=32
+            )
+            
+            self.__save_metrics(model, model, metrics, number_of_tags)
+

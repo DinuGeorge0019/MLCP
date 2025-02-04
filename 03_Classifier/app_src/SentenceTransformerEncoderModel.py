@@ -11,7 +11,7 @@ import random
 
 # local application/library specific imports
 from app_config import AppConfig
-from app_src.CustomMetrics import subset_accuracy, subset_precision, subset_recall, subset_f1, label_wise_macro_accuracy, label_wise_macro_f1, LabelWiseF1Score, LabelWiseAccuracy
+from app_src.CustomMetrics import subset_accuracy, subset_precision, subset_recall, subset_f1, label_wise_macro_accuracy, label_wise_macro_f1, F1Score, LabelWiseF1Score, LabelWiseAccuracy
 
 # define configuration proxy
 configProxy = AppConfig()
@@ -89,24 +89,37 @@ class SentenceTransformerEncoderModel(K.Model):
         # Define the optimizer, loss function and metrics
         optimizer = AdamW(learning_rate=learning_rate, weight_decay=weight_decay)
         loss = BinaryCrossentropy()
-        metrics = [
-            # Label label-wise Metrics
-            LabelWiseF1Score(name='label_wise_f1_score', threshold=threshold),
-            LabelWiseAccuracy(name='label_wise_accuracy', threshold=threshold),
-            # Macro Label Metrics
-            BinaryAccuracy(name='binary_accuracy', threshold=threshold), 
-            Precision(name='precision', thresholds=threshold), 
-            Recall(name='recall', thresholds=threshold), 
-            label_wise_macro_f1,
-            # Subset Metrics
-            subset_accuracy,
-            subset_precision,
-            subset_recall,
-            subset_f1,
-            # Area under the curve metrics
-            AUC(name='auc'),
-            AUC(name='prc_auc', curve='PR')
-            ]
+
+        if self.num_classes > 2:
+            metrics = [
+                # Label label-wise Metrics
+                LabelWiseF1Score(name='label_wise_f1_score', threshold=threshold),
+                LabelWiseAccuracy(name='label_wise_accuracy', threshold=threshold),
+                # Macro Label Metrics
+                BinaryAccuracy(name='binary_accuracy', threshold=threshold), 
+                Precision(name='precision', thresholds=threshold), 
+                Recall(name='recall', thresholds=threshold), 
+                label_wise_macro_f1,
+                # Subset Metrics
+                subset_accuracy,
+                subset_precision,
+                subset_recall,
+                subset_f1,
+                # Area under the curve metrics
+                AUC(name='auc'),
+                AUC(name='prc_auc', curve='PR')
+                ]
+        else:
+            metrics = [
+                # Macro Label Metrics
+                BinaryAccuracy(name='binary_accuracy', threshold=threshold), 
+                Precision(name='precision', thresholds=threshold), 
+                Recall(name='recall', thresholds=threshold), 
+                F1Score(name='f1', threshold=threshold),
+                # Area under the curve metrics
+                AUC(name='auc'),
+                AUC(name='prc_auc', curve='PR')
+                ]
         
         # Compile the model
         self.compile(optimizer=optimizer, loss=loss, metrics=metrics, run_eagerly=run_eagerly)

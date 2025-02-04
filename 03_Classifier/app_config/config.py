@@ -44,12 +44,25 @@ class Config(object):
             "TOP_10_BENCHMARK_BASELINE_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_10_baseline_models.csv'),
             "TOP_15_BENCHMARK_BASELINE_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_15_baseline_models.csv'),
             "TOP_20_BENCHMARK_BASELINE_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_20_baseline_models.csv'),
+
+            ############################################################################################################          
+
+            "TOP_5_BENCHMARK_ONEVSALL_BASELINE_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_5_onevsall_baseline_models.csv'),
+            "TOP_10_BENCHMARK_ONEVSALL_BASELINE_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_10_onevsall_baseline_models.csv'),
+            "TOP_15_BENCHMARK_ONEVSALL_BASELINE_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_15_onevsall_baseline_models.csv'),
+            "TOP_20_BENCHMARK_ONEVSALL_BASELINE_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_20_onevsall_baseline_models.csv'), 
             
             ############################################################################################################
             "TOP_5_BENCHMARK_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_5_baseline_transformer_models.csv'),
             "TOP_10_BENCHMARK_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_10_baseline_transformer_models.csv'),
             "TOP_15_BENCHMARK_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_15_baseline_transformer_models.csv'),
             "TOP_20_BENCHMARK_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_20_baseline_transformer_models.csv'),
+            
+            ############################################################################################################
+            "TOP_5_BENCHMARK_ONEVSALL_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_5_onevsall_baseline_transformer_models.csv'),
+            "TOP_10_BENCHMARK_ONEVSALL_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_10_onevsall_baseline_transformer_models.csv'),
+            "TOP_15_BENCHMARK_ONEVSALL_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_15_onevsall_baseline_transformer_models.csv'),
+            "TOP_20_BENCHMARK_ONEVSALL_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_20_onevsall_baseline_transformer_models.csv'),
             
             ############################################################################################################          
 
