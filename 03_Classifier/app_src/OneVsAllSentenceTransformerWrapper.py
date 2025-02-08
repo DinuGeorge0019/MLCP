@@ -98,7 +98,10 @@ class OneVsAllSentenceTransformerWrapper():
         if not testing:
             tf_dataset = tf_dataset.shuffle(buffer_size=shuffle_buffer_size)
         tf_dataset = tf_dataset.cache()  # Use caching if your dataset fits in memory; otherwise, consider file-based caching.
-        tf_dataset = tf_dataset.batch(batch_size, drop_remainder=True)
+        if not testing:
+            tf_dataset = tf_dataset.batch(batch_size, drop_remainder=True)
+        else:
+            tf_dataset = tf_dataset.batch(batch_size, drop_remainder=False)
         tf_dataset = tf_dataset.prefetch(tf.data.AUTOTUNE)
         
         # Print the shapes of the batches to verify
@@ -159,8 +162,11 @@ class OneVsAllSentenceTransformerWrapper():
     def benchmark_model(self, test_dataset_path, batch_size=32, model_path=None, transformer_model_path=None, threshold=0.5):
         
         self.__read_test_data(test_dataset_path)
-        test_tags_np = np.array(self.test_dataset['problem_tags'].tolist())  
-
+        test_tags_np = self.__encode_tags(self.test_dataset['problem_tags'].tolist())
+        # Ensure tags are in a consistent format (e.g., a NumPy array)
+        if not isinstance(test_tags_np, (np.ndarray, tf.Tensor)):
+            test_tags_np = np.array(test_tags_np)
+        
         # Convert test data to tf.data.Dataset
         self.test_dataset = self.__build_tf_dataset(self.test_dataset, batch_size, testing=True)
         
@@ -181,7 +187,14 @@ class OneVsAllSentenceTransformerWrapper():
         
         all_preds = np.column_stack(all_preds)
 
-        predictions = (all_preds >= threshold).astype(int)
+        predictions = (all_preds > threshold).astype(int)
+        
+        print(predictions)
+        
+        print(test_tags_np)
+        
+        print(f"test_tags_np shape: {test_tags_np.shape}")
+        print(f"predictions shape: {predictions.shape}")    
         
         # Label Wise Metrics
         f1_scores = label_wise_f1_score(test_tags_np, predictions)

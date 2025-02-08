@@ -37,7 +37,7 @@ class TransformerEvaluator():
     def __define_models(self):
 
         self.encoder_collection = [
-            # 'sentence-transformers/all-mpnet-base-v2'
+            'sentence-transformers/all-mpnet-base-v2'
             # 'sentence-transformers/multi-qa-mpnet-base-dot-v1',
             # 'sentence-transformers/multi-qa-distilbert-cos-v1',
             # 'sentence-transformers/multi-qa-MiniLM-L6-cos-v1',
@@ -47,7 +47,7 @@ class TransformerEvaluator():
             # 'microsoft/mpnet-base',
             # 'roberta-base',
             # 'bert-base-uncased'
-            'facebook/bart-large-mnli'
+            # 'facebook/bart-large-mnli'
             # 'microsoft/deberta-v3-base'
         ]
     

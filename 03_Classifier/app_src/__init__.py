@@ -10,4 +10,7 @@ from .OneVsAllBasicWrapper import OneVsAllBasicWrapper as OneVsAllBasicWrapper
 from .OneVsAllDecisionTreeEvaluator import OneVsAllDecisionTreeEvaluator as OneVsAllDecisionTreeEvaluator
 from .OneVsAllSentenceTransformerWrapper import OneVsAllSentenceTransformerWrapper as OneVsAllSentenceTransformerWrapper
 from .OneVsAllTransformerEvaluator import OneVsAllTransformerEvaluator as OneVsAllTransformerEvaluator
+from .NLITransformerEmbeddingModel import NLITransformerEmbeddingModel as NLITransformerEmbeddingModel
+from .NLITransformerWrapper import NLITransformerWrapper as NLITransformerWrapper
+from .NLITripletTrainer import NLITripletTrainer as NLITripletTrainer
 from .common import set_random_seed as set_random_seed

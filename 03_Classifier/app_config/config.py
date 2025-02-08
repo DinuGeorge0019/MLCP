@@ -65,7 +65,9 @@ class Config(object):
             "TOP_20_BENCHMARK_ONEVSALL_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_20_onevsall_baseline_transformer_models.csv'),
             
             ############################################################################################################          
-
+            "NLI_TRAINING_DATASET_PATH": os.path.join(BASE_DIR, '01_TASK_DATASETS', '01_Raw_Datasets', 'nli_training_dataset.csv'),
+            
+            ############################################################################################################
             "MODEL_SAVE_PATH": os.path.join(BASE_DIR, '05_MODELS', '01_Custom_Models', f'custom_model_{current_time}.weights.h5'),
             "TRANSFORMER_SAVE_PATH": os.path.join(BASE_DIR, '05_MODELS', '02_Transformer_Models', f'transformer_model_{current_time}'),
             "MODEL_SAVE_PATH_ROOT": os.path.join(BASE_DIR, '05_MODELS', '01_Custom_Models'),

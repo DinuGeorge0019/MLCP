@@ -41,6 +41,12 @@ class Config(object):
             
             ############################################################################################################
             
+            "TOP_5_BALANCED_TRAINING_DATASET_PATH":f"{WORKING_DIR}\\01_TASK_DATASETS\\01_Raw_Datasets\\top_5_training_balanced_dataset.csv",
+            "TOP_10_BALANCED_TRAINING_DATASET_PATH":f"{WORKING_DIR}\\01_TASK_DATASETS\\01_Raw_Datasets\\top_10_training_balanced_dataset.csv",
+            "TOP_15_BALANCED_TRAINING_DATASET_PATH":f"{WORKING_DIR}\\01_TASK_DATASETS\\01_Raw_Datasets\\top_15_training_balanced_dataset.csv",
+            "NLI_TRAINING_DATASET_PATH":f"{WORKING_DIR}\\01_TASK_DATASETS\\01_Raw_Datasets\\nli_training_dataset.csv",
+            ############################################################################################################
+            
             "TOP_5_BASE_TRAINING_DATASET_PATH":f"{WORKING_DIR}\\01_TASK_DATASETS\\02_Base_Datasets\\top_5_base_training_dataset.csv",
             "TOP_10_BASE_TRAINING_DATASET_PATH":f"{WORKING_DIR}\\01_TASK_DATASETS\\02_Base_Datasets\\top_10_base_training_dataset.csv",
             "TOP_15_BASE_TRAINING_DATASET_PATH":f"{WORKING_DIR}\\01_TASK_DATASETS\\02_Base_Datasets\\top_15_base_training_dataset.csv",
