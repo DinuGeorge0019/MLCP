@@ -67,7 +67,7 @@ class OneVsAllTransformerEvaluator():
             # Append the DataFrame to an existing CSV file
             df.to_csv(CONFIG[f'TOP_{number_of_tags}_BENCHMARK_ONEVSALL_TRANSFORMER_MODELS_PATH'], index=False, mode='a', header=False)
     
-    def evaluate_models(self, epochs, batch_size, number_of_tags=5, train_model=True, threshold=0.5):
+    def evaluate_models(self, epochs, batch_size, number_of_tags=5, train_model=True, threshold=0.5, transformer_model_path=None):
         for model in self.encoder_collection:
             print(f"Training and evaluating model: {model}")
             transformer_wrapper = OneVsAllSentenceTransformerWrapper(model, number_of_tags)
@@ -77,7 +77,8 @@ class OneVsAllTransformerEvaluator():
                 epochs=epochs,
                 batch_size=batch_size,
                 train_model=train_model,
-                threshold=threshold
+                threshold=threshold,
+                transformer_model_path=transformer_model_path
             )
             
             metrics = transformer_wrapper.benchmark_model(

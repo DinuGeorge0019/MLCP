@@ -8,6 +8,7 @@ from transformers import AutoTokenizer
 from math import ceil
 import keras as K
 from tqdm import tqdm
+from sklearn.utils import resample
 
 
 # local application/library specific imports
@@ -113,28 +114,82 @@ class OneVsAllSentenceTransformerWrapper():
         
         return tf_dataset
     
-    def train_model(self, train_dataset_path, val_dataset_path, epochs=5, batch_size=32, train_model=True, threshold=0.5):
+    def train_model(self, train_dataset_path, val_dataset_path, epochs=5, batch_size=32, train_model=True, threshold=0.5, transformer_model_path=None):
         
         self.__read_train_data(train_dataset_path)
         self.__read_validation_data(val_dataset_path)
         
-        self.train_dataset = self.__build_tf_dataset(self.train_dataset, batch_size)
-        self.validation_dataset = self.__build_tf_dataset(self.validation_dataset, batch_size)
+        # Training Dataset
+        problem_statements = self.train_dataset['problem_statement'].tolist()
+        # problem_editorials = self.train_dataset['problem_editorial'].tolist()
+        tags = self.__encode_tags(self.train_dataset['problem_tags'].tolist())        
+        if not isinstance(tags, (np.ndarray, tf.Tensor)):
+            tags = np.array(tags)
+            
+        # # Append problem editorials to problem statements
+        # problem_statements.extend(problem_editorials)
+        # tags = np.concatenate([tags, tags], axis=0)  # Duplicate tags for editorials
+            
+        # Tokenize all problem statements
+        input_ids, attention_mask = self.__tokenize_data(problem_statements)
+    
+        # Validation Dataset
+        val_problem_statements = self.validation_dataset['problem_statement'].tolist()
+        val_tags = self.__encode_tags(self.validation_dataset['problem_tags'].tolist())
+        if not isinstance(val_tags, (np.ndarray, tf.Tensor)):
+            val_tags = np.array(val_tags)
+        
         
         for label_idx in range(self.number_of_tags):
             
             print('Starting training for label:', label_idx)
+
+            # Balance the classes for the current tag
+            pos_indices = np.where(tags[:, label_idx] == 1)[0]
+            neg_indices = np.where(tags[:, label_idx] == 0)[0]
+
+            # Undersample the majority class
+            if len(pos_indices) < len(neg_indices):
+                neg_indices = resample(neg_indices, replace=False, n_samples=len(pos_indices), random_state=42)
+            else:
+                pos_indices = resample(pos_indices, replace=False, n_samples=len(neg_indices), random_state=42)
+        
+            balanced_indices = np.concatenate([pos_indices, neg_indices])
+            np.random.shuffle(balanced_indices)
+
+            # Convert balanced_indices to TensorFlow tensor
+            balanced_indices = tf.convert_to_tensor(balanced_indices, dtype=tf.int32)
             
-            # single-label training dataset
-            single_label_train_ds = self.train_dataset.map(
-                lambda x, y: (x, y[:, label_idx])
-            )
-            # single-label validation dataset
-            single_label_val_ds = self.validation_dataset.map(
-                lambda x, y: (x, y[:, label_idx])
-            )
+            balanced_input_ids = tf.gather(input_ids, balanced_indices)
+            balanced_attention_mask = tf.gather(attention_mask, balanced_indices)
+            balanced_tags = tf.gather(tags[:, label_idx], balanced_indices)  # Single label
+        
+            # Convert to TensorFlow dataset
+            balanced_dataset = tf.data.Dataset.from_tensor_slices((
+                {
+                    'input_ids': balanced_input_ids,
+                    'attention_mask': balanced_attention_mask
+                },
+                balanced_tags
+            ))
+            single_label_train_ds = balanced_dataset.batch(batch_size).prefetch(tf.data.AUTOTUNE)
+
+            # Create a single-label validation dataset           
+            val_input_ids, val_attention_mask = self.__tokenize_data(val_problem_statements)
+            single_label_val_tags = val_tags[:, label_idx]  # Single label
+            val_dataset = tf.data.Dataset.from_tensor_slices((
+                {
+                    'input_ids': val_input_ids,
+                    'attention_mask': val_attention_mask
+                },
+                single_label_val_tags
+            ))
+            single_label_val_ds = val_dataset.batch(batch_size).prefetch(tf.data.AUTOTUNE)
             
-            transformer_model = TFAutoModel.from_pretrained(self.model_name)
+            if transformer_model_path:
+                transformer_model = TFAutoModel.from_pretrained(transformer_model_path)
+            else:
+                transformer_model = TFAutoModel.from_pretrained(self.model_name)
             encoder_model = SentenceTransformerEncoderModel(transformer_model, 1)
             
             # Unfreeze the transformer layers
@@ -146,7 +201,8 @@ class OneVsAllSentenceTransformerWrapper():
             # Define callbacks
             callbacks = [
                 # Custom callback for printing validation scores
-                PrintValidationScoresCallback()
+                PrintValidationScoresCallback(),
+                tf.keras.callbacks.EarlyStopping(monitor='val_f1', mode='max', patience=3, restore_best_weights=True)
             ]
             
             # Start training
@@ -162,13 +218,13 @@ class OneVsAllSentenceTransformerWrapper():
     def benchmark_model(self, test_dataset_path, batch_size=32, model_path=None, transformer_model_path=None, threshold=0.5):
         
         self.__read_test_data(test_dataset_path)
-        test_tags_np = self.__encode_tags(self.test_dataset['problem_tags'].tolist())
-        # Ensure tags are in a consistent format (e.g., a NumPy array)
-        if not isinstance(test_tags_np, (np.ndarray, tf.Tensor)):
-            test_tags_np = np.array(test_tags_np)
         
-        # Convert test data to tf.data.Dataset
-        self.test_dataset = self.__build_tf_dataset(self.test_dataset, batch_size, testing=True)
+        # Validation Dataset
+        test_problem_statements = self.test_dataset['problem_statement'].tolist()
+        test_tags = self.__encode_tags(self.test_dataset['problem_tags'].tolist())
+        if not isinstance(test_tags, (np.ndarray, tf.Tensor)):
+            test_tags = np.array(test_tags)
+        
         
         # We'll create an array to hold predictions for all 5 labels
         all_preds = []
@@ -176,9 +232,16 @@ class OneVsAllSentenceTransformerWrapper():
         for label_idx, estimator in enumerate(self.models):
             
             # single-label testing dataset
-            single_label_test_ds = self.test_dataset.map(
-                lambda x, y: (x, y[:, label_idx])
-            )
+            test_input_ids, test_attention_mask = self.__tokenize_data(test_problem_statements)
+            single_label_test_tags = test_tags[:, label_idx]  # Single label
+            test_dataset = tf.data.Dataset.from_tensor_slices((
+                {
+                    'input_ids': test_input_ids,
+                    'attention_mask': test_attention_mask
+                },
+                single_label_test_tags
+            ))
+            single_label_test_ds = test_dataset.batch(batch_size).prefetch(tf.data.AUTOTUNE)
             
             estimator.freeze_transformer()
             
@@ -191,30 +254,25 @@ class OneVsAllSentenceTransformerWrapper():
         
         print(predictions)
         
-        print(test_tags_np)
-        
-        print(f"test_tags_np shape: {test_tags_np.shape}")
-        print(f"predictions shape: {predictions.shape}")    
-        
         # Label Wise Metrics
-        f1_scores = label_wise_f1_score(test_tags_np, predictions)
+        f1_scores = label_wise_f1_score(test_tags, predictions)
         f1_scores = [float(t.numpy()) for t in f1_scores]
-        accuracies = label_wise_accuracy(test_tags_np, predictions)
+        accuracies = label_wise_accuracy(test_tags, predictions)
         accuracies = [float(t.numpy()) for t in accuracies]
-        accuracy = label_wise_macro_accuracy(test_tags_np, predictions).numpy()
-        precision = precision_score(test_tags_np, predictions, average='macro')
-        recall = recall_score(test_tags_np, predictions, average='macro')
-        f1 = f1_score(test_tags_np, predictions, average='macro')
+        accuracy = label_wise_macro_accuracy(test_tags, predictions).numpy()
+        precision = precision_score(test_tags, predictions, average='macro')
+        recall = recall_score(test_tags, predictions, average='macro')
+        f1 = f1_score(test_tags, predictions, average='macro')
         
         # Subset Metrics
-        sub_accuracy = accuracy_score(test_tags_np, predictions)
-        sub_precision = subset_precision(test_tags_np, predictions).numpy()
-        sub_recall = subset_recall(test_tags_np, predictions).numpy()
-        sub_f1 = subset_f1(test_tags_np, predictions).numpy()
+        sub_accuracy = accuracy_score(test_tags, predictions)
+        sub_precision = subset_precision(test_tags, predictions).numpy()
+        sub_recall = subset_recall(test_tags, predictions).numpy()
+        sub_f1 = subset_f1(test_tags, predictions).numpy()
         
         # Area Metrics
-        auc = roc_auc_score(test_tags_np, predictions, average='macro', multi_class='ovr')
-        prc_auc = average_precision_score(test_tags_np, predictions, average='macro')
+        auc = roc_auc_score(test_tags, predictions, average='macro', multi_class='ovr')
+        prc_auc = average_precision_score(test_tags, predictions, average='macro')
         
         # Store the results
         results = {

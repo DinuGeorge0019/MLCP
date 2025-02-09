@@ -127,22 +127,14 @@ class DecisionTreeEvaluator():
         for encoder_name in self.encoder_collection:
             print('Benchmarking encoder model:', encoder_name)
 
-    def benchmark_model(self, encoder_batch_size, number_of_tags, validation=False, transformer_name=None, model_path=None, transformer_model_path=None):
+    def benchmark_model(self, encoder_batch_size, number_of_tags, validation=False, transformer_name=None, transformer_model_path=None):
         
         if transformer_model_path:
             self.tokenizer = AutoTokenizer.from_pretrained(transformer_name)            
             
             self.transformer_model = TFAutoModel.from_pretrained(transformer_model_path)
-            self.encoder_model = SentenceTransformerEncoderModel(self.transformer_model, number_of_tags)
-
-            self.encoder_model.compile_model(run_eagerly=False)
             
-            _ = self.encoder_model({"input_ids": tf.zeros((1, 512), tf.int32),
-           "attention_mask": tf.zeros((1, 512), tf.int32)})
-                        
-            self.encoder_model.load_weights(model_path)
-            
-            self.encoder = CustomEncoder(transformer_name, self.encoder_model.transformer_model, self.tokenizer)
+            self.encoder = CustomEncoder(transformer_name, self.transformer_model, self.tokenizer)
             print('Loaded transformer model from:', transformer_model_path)
         else:
             self.tokenizer = AutoTokenizer.from_pretrained(transformer_name)

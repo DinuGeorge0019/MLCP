@@ -104,10 +104,14 @@ class SentenceTransformerWrapper():
         
         return tf_dataset
     
-    def train_model(self, train_dataset_path, val_dataset_path, epochs=5, batch_size=32, train_model=True, threshold=0.5):
+    def train_model(self, train_dataset_path, val_dataset_path, epochs=5, batch_size=32, train_model=True, threshold=0.5, transformer_model_path=None):
         
-        self.transformer_model = TFAutoModel.from_pretrained(self.model_name)
-        self.encoder_model = SentenceTransformerEncoderModel(self.transformer_model, self.number_of_tags)
+        if transformer_model_path:
+            self.transformer_model = TFAutoModel.from_pretrained(transformer_model_path)
+            self.encoder_model = SentenceTransformerEncoderModel(self.transformer_model, self.number_of_tags)
+        else:
+            self.transformer_model = TFAutoModel.from_pretrained(self.model_name)
+            self.encoder_model = SentenceTransformerEncoderModel(self.transformer_model, self.number_of_tags)
         
         self.__read_train_data(train_dataset_path)
         self.__read_validation_data(val_dataset_path)
@@ -120,7 +124,6 @@ class SentenceTransformerWrapper():
 
         # Compile the model
         self.encoder_model.compile_model(run_eagerly=False, threshold=threshold)
-        
 
         if train_model:
             # Define callbacks
@@ -141,9 +144,6 @@ class SentenceTransformerWrapper():
            "attention_mask": tf.zeros((1, 512), tf.int32)})
         
         # Save the model
-        self.encoder_model.transformer_model.save_pretrained(CONFIG['TRANSFORMER_SAVE_PATH'])
-        print(f"Transformer model saved to {CONFIG['TRANSFORMER_SAVE_PATH']}")
-        
         self.encoder_model.save_weights(CONFIG['MODEL_SAVE_PATH'])
         print(f"Model saved to {CONFIG['MODEL_SAVE_PATH']}")
     
@@ -161,7 +161,7 @@ class SentenceTransformerWrapper():
             
             _ = self.encoder_model({"input_ids": tf.zeros((1, 512), tf.int32),
            "attention_mask": tf.zeros((1, 512), tf.int32)})
-                        
+        
             self.encoder_model.load_weights(model_path)
         
             print(f"Model loaded from {model_path}")

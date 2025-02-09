@@ -79,9 +79,12 @@ class NLITransformerWrapper():
         return tf_dataset
     
     
-    def train_model(self, train_dataset_path, epochs=5, batch_size=32):
+    def train_model(self, train_dataset_path, epochs=5, batch_size=32, transformer_model_path=None):
+        if transformer_model_path:
+            self.transformer_model = TFAutoModel.from_pretrained(transformer_model_path)
+        else:
+            self.transformer_model = TFAutoModel.from_pretrained(self.model_name)
         
-        self.transformer_model = TFAutoModel.from_pretrained(self.model_name)
         self.encoder_model = NLITransformerEmbeddingModel(self.transformer_model)
         
         # Unfreeze the transformer layers
