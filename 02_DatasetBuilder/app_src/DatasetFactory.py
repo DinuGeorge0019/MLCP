@@ -23,6 +23,7 @@ import networkx as nx
 from scipy.spatial.distance import cosine
 from sklearn.utils import resample
 from sklearn.metrics.pairwise import cosine_similarity
+from collections import Counter
 
 # define configuration proxy
 working_dir = os.path.dirname(os.getcwd())
@@ -793,12 +794,6 @@ class DatasetFactory:
         # Initialize a list to store the NLI training data
         nli_data = []
         
-        # Load the SentenceTransformer model
-        model = SentenceTransformer('sentence-transformers/all-mpnet-base-v2')
-    
-        # Generate embeddings for the unique tags
-        tag_embeddings = {tag: model.encode(tag) for tag in unique_tags}
-
         # Iterate over each row in the DataFrame
         for index, row in self.df_train.iterrows():
             problem_statement = row['problem_statement']
@@ -808,35 +803,25 @@ class DatasetFactory:
             if set(problem_tags) == set(unique_tags):
                 continue
             
-            # Generate embedding for the problem statement
-            problem_embedding = model.encode(problem_statement)
-            
             # Create pairs of (problem statement, actual tag)
             actual_tags = list(set(problem_tags) & set(unique_tags))
             if not actual_tags:
                 continue  # Skip if there are no common tags
-            actual_tag = random.choice(actual_tags)
-            nli_data.append({
-                'problem_statement': problem_statement,
-                'entailment': actual_tag,
-                'contradiction': None  # Placeholder for contradiction tag
-            })
-                
-            # Find the closest non-actual tag
-            non_actual_tags = set(unique_tags) - set(actual_tags)
-            closest_non_tag = None
-            max_similarity = -1
-            for non_tag in non_actual_tags:
-                similarity = cosine_similarity([problem_embedding], [tag_embeddings[non_tag]])[0][0]
-                if similarity > max_similarity:
-                    max_similarity = similarity
-                    closest_non_tag = non_tag
             
-            # Update the contradiction tag for each entailment pair
-            for entry in nli_data:
-                if entry['problem_statement'] == problem_statement and entry['contradiction'] is None:
-                    entry['contradiction'] = closest_non_tag
-        
+            # Find all non-actual tags
+            non_actual_tags = set(unique_tags) - set(actual_tags)
+            if not non_actual_tags:
+                continue  # Skip if there are no common tags
+            
+            # Create entailment and contradiction pairs
+            for actual_tag in actual_tags:
+                for non_tag in non_actual_tags:
+                    nli_data.append({
+                        'problem_statement': problem_statement,
+                        'entailment': actual_tag,
+                        'contradiction': non_tag
+                    })
+
         # Filter out entries where contradiction is None
         nli_data = [entry for entry in nli_data if entry['entailment'] is not None]
         
@@ -846,7 +831,22 @@ class DatasetFactory:
         # Convert the NLI data to a DataFrame
         nli_df = pd.DataFrame(nli_data)
         
-        # Save the NLI training dataset to a CSV file
+        # # Balance the dataset by the tags used in entailment
+        # tag_counter = Counter(nli_df['entailment'])
+        # min_count = min(tag_counter.values())
+        # balanced_nli_data = []
+
+        # tag_balancer = Counter()
+        # for entry in nli_data:
+        #     tag = entry['entailment']
+        #     if tag_balancer[tag] < min_count:
+        #         balanced_nli_data.append(entry)
+        #         tag_balancer[tag] += 1
+
+        # # Convert the balanced NLI data to a DataFrame
+        # balanced_nli_df = pd.DataFrame(balanced_nli_data)
+
+        # Save the balanced NLI training dataset to a CSV file
         nli_df.to_csv(CONFIG['NLI_TRAINING_DATASET_PATH'], index=False)
-        
+
         return nli_df

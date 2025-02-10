@@ -50,7 +50,6 @@ class NLITransformerWrapper():
         problem_statements = self.train_dataset['problem_statement'].tolist()
         entailments = self.train_dataset['entailment'].tolist()
         contradictions = self.train_dataset['contradiction'].tolist()
-
         
         problem_statements_input_ids, problem_statements_attention_mask = self.__tokenize_data(problem_statements)
         entailments_input_ids, entailments_attention_mask = self.__tokenize_data(entailments)

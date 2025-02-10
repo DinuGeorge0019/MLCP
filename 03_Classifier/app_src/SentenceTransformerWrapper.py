@@ -129,7 +129,9 @@ class SentenceTransformerWrapper():
             # Define callbacks
             callbacks = [
                 # Custom callback for printing validation scores
-                PrintValidationScoresCallback()
+                PrintValidationScoresCallback(),
+                # Early stopping callback
+                tf.keras.callbacks.EarlyStopping(monitor='val_subset_f1', mode='max', patience=3, restore_best_weights=True)
             ]
             
             # Start training

@@ -138,7 +138,8 @@ class OneVsAllSentenceTransformerWrapper():
         val_tags = self.__encode_tags(self.validation_dataset['problem_tags'].tolist())
         if not isinstance(val_tags, (np.ndarray, tf.Tensor)):
             val_tags = np.array(val_tags)
-        
+        val_input_ids, val_attention_mask = self.__tokenize_data(val_problem_statements)
+
         
         for label_idx in range(self.number_of_tags):
             
@@ -172,10 +173,10 @@ class OneVsAllSentenceTransformerWrapper():
                 },
                 balanced_tags
             ))
+            
             single_label_train_ds = balanced_dataset.batch(batch_size).prefetch(tf.data.AUTOTUNE)
-
+        
             # Create a single-label validation dataset           
-            val_input_ids, val_attention_mask = self.__tokenize_data(val_problem_statements)
             single_label_val_tags = val_tags[:, label_idx]  # Single label
             val_dataset = tf.data.Dataset.from_tensor_slices((
                 {
@@ -224,7 +225,8 @@ class OneVsAllSentenceTransformerWrapper():
         test_tags = self.__encode_tags(self.test_dataset['problem_tags'].tolist())
         if not isinstance(test_tags, (np.ndarray, tf.Tensor)):
             test_tags = np.array(test_tags)
-        
+        test_input_ids, test_attention_mask = self.__tokenize_data(test_problem_statements)
+
         
         # We'll create an array to hold predictions for all 5 labels
         all_preds = []
@@ -232,7 +234,6 @@ class OneVsAllSentenceTransformerWrapper():
         for label_idx, estimator in enumerate(self.models):
             
             # single-label testing dataset
-            test_input_ids, test_attention_mask = self.__tokenize_data(test_problem_statements)
             single_label_test_tags = test_tags[:, label_idx]  # Single label
             test_dataset = tf.data.Dataset.from_tensor_slices((
                 {
