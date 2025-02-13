@@ -1,11 +1,12 @@
 import tensorflow as tf
 
 import keras as K
-from keras.layers import Dense
+from keras.layers import Dense, Dropout
 from keras.metrics import BinaryAccuracy, Precision, Recall, AUC
 from keras.losses import BinaryCrossentropy, BinaryFocalCrossentropy
 from keras.optimizers import AdamW
 from transformers import AutoTokenizer, TFAutoModel
+from keras.optimizers.schedules import LearningRateSchedule
 
 import random
 
@@ -22,6 +23,45 @@ GLOBAL_CONSTANTS = configProxy.return_global_constants()
 RANDOM_STATE = GLOBAL_CONSTANTS['RANDOM_SEED']
 
 random.seed(RANDOM_STATE)
+
+
+class WarmupConstantSchedule(LearningRateSchedule):
+    def __init__(self, initial_lr, total_steps, warmup_ratio=0.1):
+        """
+        Initializes the schedule.
+
+        Args:
+            initial_lr (float): The target constant learning rate after warmup.
+            total_steps (int): Total number of training steps.
+            warmup_ratio (float): Fraction of total steps to use for warmup.
+        """
+        super().__init__()
+        self.initial_lr = initial_lr
+        self.total_steps = total_steps
+        self.warmup_steps = int(total_steps * warmup_ratio)
+
+    def __call__(self, step):
+        """
+        Returns the learning rate for a given step.
+        During the first `warmup_steps`, the learning rate increases linearly.
+        After that, it remains constant.
+        """
+        step = tf.cast(step, tf.float32)
+        warmup_steps_float = tf.cast(self.warmup_steps, tf.float32)
+        # Use linear warmup if still in warmup phase.
+        return tf.cond(
+            step < warmup_steps_float,
+            lambda: self.initial_lr * (step / warmup_steps_float),
+            lambda: self.initial_lr
+        )
+
+    def get_config(self):
+        return {
+            "initial_lr": self.initial_lr,
+            "total_steps": self.total_steps,
+            "warmup_steps": self.warmup_steps,
+        }
+
 
 class SentenceTransformerEncoderModel(K.Model):
     def __init__(self, transformer_model, num_classes=5, **kwargs):
@@ -79,15 +119,23 @@ class SentenceTransformerEncoderModel(K.Model):
 
         # Mean pooling: divide the summed embeddings by the number of valid tokens
         mean_pooled = masked_sum / mask_sum  # shape: (batch_size, hidden_dim)
-
+        
         # Pass the mean-pooled embedding through your classifier
         logits = self.classifier(mean_pooled)
                 
         return logits
     
-    def compile_model(self, run_eagerly=False, threshold=0.5, learning_rate=2e-5, weight_decay=1e-4):
-        # Define the optimizer, loss function and metrics
-        optimizer = AdamW(learning_rate=learning_rate, weight_decay=weight_decay)
+    def compile_model(self, run_eagerly=False, threshold=0.5, learning_rate=2e-5, weight_decay=1e-4, total_steps=None):
+        
+        if total_steps:
+            # Create the learning rate schedule.
+            lr_schedule = WarmupConstantSchedule(learning_rate, total_steps, warmup_ratio=0.1)
+
+            # Define the optimizer, loss function and metrics
+            optimizer = AdamW(learning_rate=lr_schedule, weight_decay=weight_decay)
+        else:
+            optimizer = AdamW(learning_rate=learning_rate, weight_decay=weight_decay)
+        
         loss = BinaryCrossentropy()
 
         if self.num_classes > 2:

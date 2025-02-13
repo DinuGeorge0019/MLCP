@@ -47,8 +47,9 @@ class OneVsAllTransformerEvaluator():
             # 'microsoft/mpnet-base',
             # 'roberta-base',
             # 'bert-base-uncased'
-            # 'facebook/bart-large-mnli'
+            # 'facebook/bart-large-mnli' # 1024
             # 'microsoft/deberta-v3-base'
+            # 'microsoft/codebert-base'
         ]
     
     def __save_metrics(self, encoder, estimator_name, metrics_results, number_of_tags):
@@ -67,13 +68,13 @@ class OneVsAllTransformerEvaluator():
             # Append the DataFrame to an existing CSV file
             df.to_csv(CONFIG[f'TOP_{number_of_tags}_BENCHMARK_ONEVSALL_TRANSFORMER_MODELS_PATH'], index=False, mode='a', header=False)
     
-    def evaluate_models(self, epochs, batch_size, number_of_tags=5, train_model=True, threshold=0.5, transformer_model_path=None):
+    def evaluate_models(self, epochs, batch_size, number_of_tags=5, train_model=True, threshold=0.5, transformer_model_path=None, train_dataset_path=None, val_dataset_path=None, test_dataset_path=None):
         for model in self.encoder_collection:
             print(f"Training and evaluating model: {model}")
             transformer_wrapper = OneVsAllSentenceTransformerWrapper(model, number_of_tags)
             transformer_wrapper.train_model(
-                train_dataset_path=CONFIG[f'TOP_{number_of_tags}_TRAINING_DATASET_PATH'],
-                val_dataset_path=CONFIG[f'TOP_{number_of_tags}_VALIDATION_DATASET_PATH'],
+                train_dataset_path=train_dataset_path, #CONFIG[f'TOP_{number_of_tags}_TRAINING_DATASET_PATH'],
+                val_dataset_path=val_dataset_path, # CONFIG[f'TOP_{number_of_tags}_VALIDATION_DATASET_PATH'],
                 epochs=epochs,
                 batch_size=batch_size,
                 train_model=train_model,
@@ -82,7 +83,7 @@ class OneVsAllTransformerEvaluator():
             )
             
             metrics = transformer_wrapper.benchmark_model(
-                test_dataset_path=CONFIG[f'TOP_{number_of_tags}_TESTING_DATASET_PATH'],
+                test_dataset_path=test_dataset_path, #CONFIG[f'TOP_{number_of_tags}_TESTING_DATASET_PATH'],
                 batch_size=32
             )
             

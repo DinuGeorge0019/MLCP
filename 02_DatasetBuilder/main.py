@@ -31,11 +31,14 @@ def main():
         ("build_augument_tag_train_dataset", datasetFactory.build_augument_tag_train_dataset, "Build augmented tag train dataset."),
         ("build_augument_train_with_editorials_dataset", datasetFactory.build_augument_train_with_editorials_dataset, "Build augmented train with editorials dataset."),
         ("generate_dataset_overview", datasetFactory.generate_dataset_overview, "Generate dataset overview."),
-        ("build_nli_dataset", datasetFactory.build_nli_dataset, "Build NLI dataset.")
+        ("build_nli_dataset", datasetFactory.build_nli_dataset, "Build NLI dataset."),
+        ("check_dataset_tags", datasetFactory.check_dataset_tags, "Check dataset tags."),
+        ("build_outside_train_test_dataset", datasetFactory.build_outside_train_test_dataset, "Build outside train / test datasets."),
+        ("build_outside_nli_dataset", datasetFactory.build_outside_nli_dataset, "Build outside NLI dataset."),
     ]
 
     for arg, _, description in arguments:
-        if arg == "build_base_train_test_dataset" or arg == "build_train_test_dataset" or arg == "build_balanced_train_dataset"or arg == "build_augument_tag_train_dataset" or arg == "build_augument_train_with_editorials_dataset" or arg == "build_nli_dataset":
+        if arg == "build_train_test_dataset" or arg == "build_balanced_train_dataset"or arg == "build_augument_tag_train_dataset" or arg == "build_augument_train_with_editorials_dataset" or arg == "build_nli_dataset" or arg == "build_outside_train_test_dataset" or arg == "build_outside_nli_dataset":
             parser.add_argument(f'--{arg}', type=int, help=description, nargs=1, metavar='TOP_N')
         else:
             parser.add_argument(f'--{arg}', action='store_true', help=description)
@@ -44,10 +47,7 @@ def main():
     for arg, fun, _ in arguments:
         if hasattr(params, arg) and getattr(params, arg):
             print(f"Executing {arg}")            
-            if arg == "build_base_train_test_dataset":
-                top_n = params.build_train_test_dataset[0]
-                fun(top_n)
-            elif arg == "build_train_test_dataset":
+            if arg == "build_train_test_dataset":
                 top_n = params.build_train_test_dataset[0]
                 fun(top_n)
             elif arg == "build_balanced_train_dataset":
@@ -61,6 +61,12 @@ def main():
                 fun(top_n)
             elif arg == "build_nli_dataset":
                 top_n = params.build_nli_dataset[0]
+                fun(top_n)
+            elif arg == "build_outside_train_test_dataset":
+                top_n = params.build_outside_train_test_dataset[0]
+                fun(top_n)
+            elif arg == "build_outside_nli_dataset":
+                top_n = params.build_outside_nli_dataset[0]
                 fun(top_n)
             else:
                 fun()

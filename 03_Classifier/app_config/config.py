@@ -38,6 +38,20 @@ class Config(object):
             "TOP_15_VALIDATION_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', 'top_15_validation_dataset.csv'),
             "TOP_20_VALIDATION_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', 'top_20_validation_dataset.csv'),
             
+            ################################################################################################################
+            
+            "OUTSIDE_TOP_5_TRAINING_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', 'PSG_PREDICTING_ALGO', 'AMT5_train.csv'),
+            "OUTSIDE_TOP_5_TESTING_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', 'PSG_PREDICTING_ALGO', 'AMT5_test.csv'),
+            "OUTSIDE_TOP_5_VALIDATION_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', 'PSG_PREDICTING_ALGO', 'AMT5_validation.csv'),
+        
+            "OUTSIDE_TOP_10_TRAINING_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', 'PSG_PREDICTING_ALGO', 'AMT10_train.csv'),
+            "OUTSIDE_TOP_10_TESTING_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', 'PSG_PREDICTING_ALGO', 'AMT10_test.csv'),
+            "OUTSIDE_TOP_10_VALIDATION_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', 'PSG_PREDICTING_ALGO', 'AMT10_validation.csv'),
+            
+            "OUTSIDE_TOP_20_TRAINING_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', 'PSG_PREDICTING_ALGO', 'AMT20_train.csv'),
+            "OUTSIDE_TOP_20_TESTING_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', 'PSG_PREDICTING_ALGO', 'AMT20_test.csv'),
+            "OUTSIDE_TOP_20_VALIDATION_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', 'PSG_PREDICTING_ALGO', 'AMT20_validation.csv'),
+            
             ############################################################################################################          
 
             "TOP_5_BENCHMARK_BASELINE_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_5_baseline_models.csv'),
@@ -65,7 +79,16 @@ class Config(object):
             "TOP_20_BENCHMARK_ONEVSALL_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_20_onevsall_baseline_transformer_models.csv'),
             
             ############################################################################################################          
-            "NLI_TRAINING_DATASET_PATH": os.path.join(BASE_DIR, '01_TASK_DATASETS', '01_Raw_Datasets', 'nli_training_dataset.csv'),
+            "TOP_5_NLI_TRAINING_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '04_NLI_Datasets', 'top_5_nli_training_dataset.csv'),
+            "TOP_10_NLI_TRAINING_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '04_NLI_Datasets', 'top_10_nli_training_dataset.csv'),
+            "TOP_15_NLI_TRAINING_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '04_NLI_Datasets', 'top_15_nli_training_dataset.csv'),
+            "TOP_20_NLI_TRAINING_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '04_NLI_Datasets', 'top_20_nli_training_dataset.csv'),
+            
+            ############################################################################################################
+            
+            "OUTSIDE_TOP_5_NLI_TRAINING_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '04_NLI_Datasets', 'PSG_PREDICTING_ALGO', 'AMT5_nli_train.csv'),
+            "OUTSIDE_TOP_10_NLI_TRAINING_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '04_NLI_Datasets', 'PSG_PREDICTING_ALGO', 'AMT10_nli_train.csv'),
+            "OUTSIDE_TOP_20_NLI_TRAINING_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '04_NLI_Datasets', 'PSG_PREDICTING_ALGO', 'AMT20_nli_train.csv'),
             
             ############################################################################################################
             "MODEL_SAVE_PATH": os.path.join(BASE_DIR, '05_MODELS', '01_Custom_Models', f'custom_model_{current_time}.weights.h5'),

@@ -52,7 +52,7 @@ class ClassifierChainWrapper():
         sub_f1 = subset_f1(test_tags, predictions).numpy()
         
         # Area Metrics
-        auc = roc_auc_score(test_tags, predictions, average='macro', multi_class='ovr')
+        auc = roc_auc_score(test_tags, predictions)
         prc_auc = average_precision_score(test_tags, predictions, average='macro')
         
         # Store the results

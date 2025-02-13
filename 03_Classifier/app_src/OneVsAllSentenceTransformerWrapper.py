@@ -73,47 +73,7 @@ class OneVsAllSentenceTransformerWrapper():
         )
         return tokens['input_ids'], tokens['attention_mask']
     
-    def __build_tf_dataset(self, data_df, batch_size = 32, shuffle_buffer_size=10000, testing=False):
-        problem_statements = data_df['problem_statement'].tolist()
-        tags = self.__encode_tags(data_df['problem_tags'].tolist())
-        # Ensure tags are in a consistent format (e.g., a NumPy array)
-        if not isinstance(tags, (np.ndarray, tf.Tensor)):
-            tags = np.array(tags)
-            
-        # Tokenize all problem statements
-        input_ids, attention_mask = self.__tokenize_data(problem_statements)
 
-        # print(input_ids.shape)
-        # print(attention_mask.shape)
-        # print(tags.shape)        
-        
-        tf_dataset = tf.data.Dataset.from_tensor_slices((
-            {
-                'input_ids': input_ids,
-                'attention_mask': attention_mask
-            },
-            tags
-        ))
-        
-        # Apply optimizations: shuffle, cache, batch, prefetch
-        if not testing:
-            tf_dataset = tf_dataset.shuffle(buffer_size=shuffle_buffer_size)
-        tf_dataset = tf_dataset.cache()  # Use caching if your dataset fits in memory; otherwise, consider file-based caching.
-        if not testing:
-            tf_dataset = tf_dataset.batch(batch_size, drop_remainder=True)
-        else:
-            tf_dataset = tf_dataset.batch(batch_size, drop_remainder=False)
-        tf_dataset = tf_dataset.prefetch(tf.data.AUTOTUNE)
-        
-        # Print the shapes of the batches to verify
-        # for batch in dataset.take(1):
-        #     input_batch, tag_batch = batch
-        #     print(f"Input batch shape: {input_batch['input_ids'].shape}")
-        #     print(f"Attention mask batch shape: {input_batch['attention_mask'].shape}")
-        #     print(f"Tags batch shape: {tag_batch.shape}")
-        
-        return tf_dataset
-    
     def train_model(self, train_dataset_path, val_dataset_path, epochs=5, batch_size=32, train_model=True, threshold=0.5, transformer_model_path=None):
         
         self.__read_train_data(train_dataset_path)
@@ -196,8 +156,10 @@ class OneVsAllSentenceTransformerWrapper():
             # Unfreeze the transformer layers
             encoder_model.unfreeze_transformer()
 
+            total_steps = ceil(len(problem_statements) / batch_size) * epochs
+            
             # Compile the model
-            encoder_model.compile_model(run_eagerly=False, threshold=threshold)
+            encoder_model.compile_model(run_eagerly=False, threshold=threshold, total_steps=total_steps)
             
             # Define callbacks
             callbacks = [
@@ -272,7 +234,8 @@ class OneVsAllSentenceTransformerWrapper():
         sub_f1 = subset_f1(test_tags, predictions).numpy()
         
         # Area Metrics
-        auc = roc_auc_score(test_tags, predictions, average='macro', multi_class='ovr')
+        # auc = roc_auc_score(test_tags, predictions, average='macro', multi_class='ovr')
+        auc = roc_auc_score(test_tags, predictions)
         prc_auc = average_precision_score(test_tags, predictions, average='macro')
         
         # Store the results

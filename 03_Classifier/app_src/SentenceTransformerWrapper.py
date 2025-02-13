@@ -108,10 +108,9 @@ class SentenceTransformerWrapper():
         
         if transformer_model_path:
             self.transformer_model = TFAutoModel.from_pretrained(transformer_model_path)
-            self.encoder_model = SentenceTransformerEncoderModel(self.transformer_model, self.number_of_tags)
         else:
             self.transformer_model = TFAutoModel.from_pretrained(self.model_name)
-            self.encoder_model = SentenceTransformerEncoderModel(self.transformer_model, self.number_of_tags)
+        self.encoder_model = SentenceTransformerEncoderModel(self.transformer_model, self.number_of_tags)
         
         self.__read_train_data(train_dataset_path)
         self.__read_validation_data(val_dataset_path)

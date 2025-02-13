@@ -68,7 +68,7 @@ class DecisionTreeEvaluator():
         }
         
         self.encoder_collection = [
-            # 'sentence-transformers/all-mpnet-base-v2',
+            'sentence-transformers/all-mpnet-base-v2',
             # 'sentence-transformers/multi-qa-mpnet-base-dot-v1',
             # 'sentence-transformers/multi-qa-distilbert-cos-v1',
             # 'sentence-transformers/multi-qa-MiniLM-L6-cos-v1',
@@ -77,19 +77,28 @@ class DecisionTreeEvaluator():
             # 'sentence-transformers/all-MiniLM-L6-v2',
             # 'microsoft/mpnet-base',
             # 'roberta-base',
-            'bert-base-uncased',
+            # 'bert-base-uncased',
             # 'tfidf'
         ]
 
 
-    def __read_test_data(self, number_of_tags):
-        self.test_dataset = pd.read_csv(CONFIG[f'TOP_{number_of_tags}_TESTING_DATASET_PATH'])
+    def __read_test_data(self, number_of_tags, outside_dataset=False):
+        if outside_dataset:
+            self.test_dataset = pd.read_csv(CONFIG[f'OUTSIDE_TOP_{number_of_tags}_TESTING_DATASET_PATH'])
+        else:
+            self.test_dataset = pd.read_csv(CONFIG[f'TOP_{number_of_tags}_TESTING_DATASET_PATH'])
         
-    def __read_train_data(self, number_of_tags):
-        self.train_dataset = pd.read_csv(CONFIG[f'TOP_{number_of_tags}_TRAINING_DATASET_PATH'])
+    def __read_train_data(self, number_of_tags, outside_dataset=False):
+        if outside_dataset:
+            self.train_dataset = pd.read_csv(CONFIG[f'OUTSIDE_TOP_{number_of_tags}_TRAINING_DATASET_PATH'])
+        else:
+            self.train_dataset = pd.read_csv(CONFIG[f'TOP_{number_of_tags}_TRAINING_DATASET_PATH'])
     
-    def __read_validation_data(self, number_of_tags):
-        self.validation_dataset = pd.read_csv(CONFIG[f'TOP_{number_of_tags}_VALIDATION_DATASET_PATH'])
+    def __read_validation_data(self, number_of_tags, outside_dataset=False):
+        if outside_dataset:
+            self.validation_dataset = pd.read_csv(CONFIG[f'OUTSIDE_TOP_{number_of_tags}_VALIDATION_DATASET_PATH'])
+        else:
+            self.validation_dataset = pd.read_csv(CONFIG[f'TOP_{number_of_tags}_VALIDATION_DATASET_PATH'])
     
     def __encode_with_tfidf(self, problem_statements):
         return self.tfidf_vectorizer.fit_transform(problem_statements).toarray()
@@ -127,7 +136,7 @@ class DecisionTreeEvaluator():
         for encoder_name in self.encoder_collection:
             print('Benchmarking encoder model:', encoder_name)
 
-    def benchmark_model(self, encoder_batch_size, number_of_tags, validation=False, transformer_name=None, transformer_model_path=None):
+    def benchmark_model(self, encoder_batch_size, number_of_tags, validation=False, transformer_name=None, transformer_model_path=None, outside_dataset=False):
         
         if transformer_model_path:
             self.tokenizer = AutoTokenizer.from_pretrained(transformer_name)            
@@ -142,11 +151,17 @@ class DecisionTreeEvaluator():
             self.encoder = CustomEncoder(transformer_name, self.transformer_model, self.tokenizer)
             print('Loaded transformer model:', transformer_name)
         
-        self.__read_train_data(number_of_tags)
-        if validation:
-            self.__read_validation_data(number_of_tags)
-        self.__read_test_data(number_of_tags)
-                
+        if outside_dataset:
+            self.__read_train_data(number_of_tags, outside_dataset=True)
+            if validation:
+                self.__read_validation_data(number_of_tags, other_dataset=True)
+            self.__read_test_data(number_of_tags, other_dataset=True)
+        else:
+            self.__read_train_data(number_of_tags)
+            if validation:
+                self.__read_validation_data(number_of_tags)
+            self.__read_test_data(number_of_tags)
+            
         train_problem_statements = self.__encode_problem_statements(self.encoder, self.train_dataset['problem_statement'].tolist(), batch_size=encoder_batch_size)
         train_tags = self.__encode_tags(self.train_dataset['problem_tags'].tolist())   
                               
