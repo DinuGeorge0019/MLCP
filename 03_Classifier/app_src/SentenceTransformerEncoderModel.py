@@ -71,6 +71,11 @@ class SentenceTransformerEncoderModel(K.Model):
         # Load the transformer model
         self.transformer_model = transformer_model
         
+        self.linear_layer1 = Dense(768, activation='relu')
+        self.linear_layer2 = Dense(768, activation='relu')
+        # self.linear_layer3 = Dense(768, activation='linear')
+        # self.linear_layer4 = Dense(768, activation='linear')
+
         # The classifier layer uses a sigmoid activation for multi-label classification.
         self.classifier = Dense(num_classes, activation='sigmoid')
 
@@ -120,8 +125,15 @@ class SentenceTransformerEncoderModel(K.Model):
         # Mean pooling: divide the summed embeddings by the number of valid tokens
         mean_pooled = masked_sum / mask_sum  # shape: (batch_size, hidden_dim)
         
+        linear_output = self.linear_layer1(mean_pooled)
+        # linear_output = self.dropout1(linear_output)
+        linear_output = self.linear_layer2(linear_output)
+        # linear_output = self.dropout2(linear_output)
+        # linear_output = self.linear_layer3(linear_output)
+        # linear_output = self.linear_layer4(linear_output)
+        
         # Pass the mean-pooled embedding through your classifier
-        logits = self.classifier(mean_pooled)
+        logits = self.classifier(linear_output)
                 
         return logits
     

@@ -37,6 +37,8 @@ class OneVsAllTransformerEvaluator():
     def __define_models(self):
 
         self.encoder_collection = [
+            # 'facebook/bart-large-mnli'  # 1024
+            # 'google/bigbird-pegasus-large-arxiv'
             'sentence-transformers/all-mpnet-base-v2'
             # 'sentence-transformers/multi-qa-mpnet-base-dot-v1',
             # 'sentence-transformers/multi-qa-distilbert-cos-v1',
@@ -47,7 +49,6 @@ class OneVsAllTransformerEvaluator():
             # 'microsoft/mpnet-base',
             # 'roberta-base',
             # 'bert-base-uncased'
-            # 'facebook/bart-large-mnli' # 1024
             # 'microsoft/deberta-v3-base'
             # 'microsoft/codebert-base'
         ]

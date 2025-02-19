@@ -12,6 +12,7 @@ from collections import defaultdict
 import ast
 import string
 import re
+import tensorflow as tf
 from sklearn.model_selection import train_test_split
 from time import sleep
 # local application/library specific imports
@@ -24,6 +25,8 @@ from scipy.spatial.distance import cosine
 from sklearn.utils import resample
 from sklearn.metrics.pairwise import cosine_similarity
 from collections import Counter
+from transformers import AutoTokenizer, TFAutoModel, AutoModel
+from tqdm.auto import tqdm
 
 # define configuration proxy
 working_dir = os.path.dirname(os.getcwd())
@@ -39,7 +42,6 @@ RANDOM_STATE = GLOBAL_CONSTANTS['RANDOM_SEED']
 
 GENERATE_VALIDATION_DATASET = True
 
-random.seed(RANDOM_STATE)
 
 class DatasetFactory:
     def __init__(self):
@@ -322,7 +324,6 @@ class DatasetFactory:
         
         return df
 
-
     def __preprocess_problem_editorials(self, df):
         print("\nPreprocessing problem editorials")
 
@@ -366,8 +367,15 @@ class DatasetFactory:
         
     def build_filtered_dataset(self, df, unique_tags):
                 
-        # filter the dataset -> at least one tag from top-tags is present in the problem tags
-        df = df[df['problem_tags'].apply(lambda x: bool(set(ast.literal_eval(x) if isinstance(x, str) else x) & set(unique_tags)))]
+        # Filter the DataFrame and create a copy
+        df = df[df['problem_tags'].apply(
+            lambda x: bool(set(ast.literal_eval(x) if isinstance(x, str) else x) & set(unique_tags))
+        )].copy()
+        
+        # Modify the 'problem_tags' column on the copied DataFrame
+        df['problem_tags'] = df['problem_tags'].apply(
+            lambda x: list(set(ast.literal_eval(x) if isinstance(x, str) else x) & set(unique_tags))
+        )
         
         return df
     
@@ -377,104 +385,12 @@ class DatasetFactory:
         binary_vector = [0]*len(unique_tags)
                 
         if 'nan' != str(tag_list):
-            tag_list = ast.literal_eval(tag_list)  # Convert string representation of list to actual list
+            tag_list = ast.literal_eval(tag_list) if isinstance(tag_list, str) else tag_list  # Convert string representation of list to actual list
             for tag in tag_list:
                 if tag in unique_tags:
                     binary_vector[unique_tags.index(tag)] = 1
         
         return binary_vector
-    
-    # Create an adjacency matrix based on problem similarity
-    def __create_similarity_graph(self, embeddings, threshold=0.8):
-        """Creates a similarity graph where edges are added if cosine similarity > threshold."""
-        num_nodes = len(embeddings)
-        graph = nx.Graph()
-
-        # Add nodes
-        for i in range(num_nodes):
-            graph.add_node(i)
-
-        # Add edges based on cosine similarity
-        for i in range(num_nodes):
-            for j in range(i + 1, num_nodes):
-                similarity = 1 - cosine(embeddings[i], embeddings[j])
-                if similarity > threshold:
-                    graph.add_edge(i, j, weight=similarity)
-
-        return graph
-    
-    # Function to propagate labels using graph-based inference
-    def __propagate_labels_with_graph(self, df, graph):
-        """Uses a similarity graph to propagate missing labels."""
-        label_dict = {i: set(df.iloc[i]['problem_tags']) for i in graph.nodes()}
-
-        for node in graph.nodes():
-            neighbors = list(graph.neighbors(node))
-            if not neighbors:
-                continue  # Skip isolated nodes
-            
-            # Aggregate neighbor labels
-            neighbor_labels = set()
-            for neighbor in neighbors:
-                neighbor_labels.update(label_dict[neighbor])
-            
-            # Update the current problem's labels
-            label_dict[node].update(neighbor_labels)
-
-        # Convert back to DataFrame
-        df['problem_tags'] = [list(label_dict[i]) for i in range(len(df))]
-        return df
-    
-    def augument_train_data(self, df, top_n_tags=5, calculate_kmeans=False, target='problem_statement'):
-        # Load the encoder model
-        model = SentenceTransformer('sentence-transformers/all-mpnet-base-v2')
-
-        # Generate embeddings for problem statements
-        problem_statements = df[target].tolist()
-        problem_statement_embeddings = model.encode(problem_statements, batch_size=64, show_progress_bar=True)
-
-        # Add embeddings to the DataFrame
-        df[f'{target}_embeddings'] = list(problem_statement_embeddings)
-            
-        # Convert embeddings into NumPy array
-        problem_statement_embeddings = np.vstack(df[f'{target}_embeddings'].values)
-        
-        if calculate_kmeans:
-            # Determine the optimal number of clusters using the elbow method
-            inertia = []
-            K = range(1, 20)
-            for k in K:
-                kmeans = KMeans(n_clusters=k, random_state=RANDOM_STATE)
-                kmeans.fit(problem_statement_embeddings)
-                inertia.append(kmeans.inertia_)
-
-            # Plot the elbow method
-            plt.figure(figsize=(10, 6))
-            plt.plot(K, inertia, 'bx-')
-            plt.xlabel('Number of clusters')
-            plt.ylabel('Inertia')
-            plt.title('Elbow Method For Optimal k')
-            plt.show()
-        
-        # Apply K-Means Clustering for Initial Grouping
-        NUM_CLUSTERS = 6
-        kmeans = KMeans(n_clusters=NUM_CLUSTERS, random_state=RANDOM_STATE)
-        df[f'{target}_cluster'] = kmeans.fit_predict(problem_statement_embeddings)
-        
-        # Convert problem tags to list format
-        df['problem_tags'] = df['problem_tags'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
-        
-        # Create the similarity graph
-        
-        # between 70 and 75 seems to be the best threshold for problem statements
-        graph = self.__create_similarity_graph(problem_statement_embeddings, threshold=0.70)
-        
-        # Apply label propagation
-        balanced_df = self.__propagate_labels_with_graph(df, graph)
-
-        balanced_df.to_csv(CONFIG[f'TOP_{top_n_tags}_BALANCED_TRAINING_DATASET_PATH'], index=False)
-        
-        return balanced_df
 
     def count_tag_occurrences(self, df, unique_tags, tag_column='problem_tags'):
         # Ensure the tags are in list format
@@ -495,7 +411,7 @@ class DatasetFactory:
     
     def get_unique_tags(self, top_n_tags=5, outside_dataset=False):
         if outside_dataset:
-            df = pd.read_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_BASE_TRAINING_DATASET_PATH'])
+            df = pd.read_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_BASE_TESTING_DATASET_PATH'])
             
             # count the occurrences of each tag
             tags = df['tags'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
@@ -515,13 +431,14 @@ class DatasetFactory:
                 tag_counts[tag] += 1
                 
         sorted_tag_counts = dict(sorted(tag_counts.items(), key=lambda item: item[1], reverse=True))
-        
+                
         # get only the top n tags
         top_tags = list(sorted_tag_counts.keys())[:top_n_tags]
         
         return top_tags
     
-    # Build the base train test val dataset
+    ############################################################################################################
+    
     def build_base_train_test_dataset(self):
         
         # Preprocess the dataset
@@ -541,7 +458,6 @@ class DatasetFactory:
         self.df_train.to_csv(CONFIG[f'BASE_TRAINING_DATASET_PATH'], index=False)
         self.df_test.to_csv(CONFIG[f'BASE_TESTING_DATASET_PATH'], index=False)
     
-    # Build top n tags train test val dataset
     def build_train_test_dataset(self, top_n_tags=5):
         
         self.train_df = pd.read_csv(CONFIG[f'BASE_TRAINING_DATASET_PATH'])
@@ -556,16 +472,14 @@ class DatasetFactory:
         self.val_df = self.build_filtered_dataset(self.val_df, unique_tags)
         
         # # clean the datasets of unnecessary collumns
-        self.train_df = self.train_df.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_input', 'problem_output', 'file_name', 'editorial_link']) # 'problem_statement_embeddings', 'problem_statement_cluster'
-        self.test_df = self.test_df.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_input', 'problem_output', 'file_name', 'editorial_link'])
-        self.val_df = self.val_df.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_input', 'problem_output', 'file_name', 'editorial_link'])
+        self.train_df = self.train_df.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_solution', 'problem_input', 'problem_output', 'problem_dificulty', 'file_name', 'editorial_link', 'problem_editorial']) # 'problem_statement_embeddings', 'problem_statement_cluster'
+        self.test_df = self.test_df.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_solution', 'problem_input', 'problem_output', 'problem_dificulty', 'file_name', 'editorial_link', 'problem_editorial'])
+        self.val_df = self.val_df.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_solution', 'problem_input', 'problem_output', 'problem_dificulty', 'file_name', 'editorial_link', 'problem_editorial'])
                 
         # for 5 classes ->  ['greedy', 'math', 'implementation', 'dp', 'data structures']
         # for 10 classes -> ['greedy', 'math', 'implementation', 'dp', 'data structures', 'brute force', 'constructive algorithms', 'sortings', 'binary search', 'sortings', 'graphs']
         # for 15 classes -> ['greedy', 'math', 'implementation', 'dp', 'data structures', 'brute force', 'constructive algorithms', 'binary search', 'sortings', 'graphs', 'dfs and similar', 'trees', 'number theory', 'strings', 'combinatorics']
-        
-        # print(unique_tags)
-        
+                
         # encode the tags to one hot encoding
         self.train_df['problem_tags'] = self.train_df['problem_tags'].apply(lambda x: self.__create_binary_vector(x, unique_tags))
         self.test_df['problem_tags'] = self.test_df['problem_tags'].apply(lambda x: self.__create_binary_vector(x, unique_tags))
@@ -580,222 +494,63 @@ class DatasetFactory:
         self.train_df.to_csv(CONFIG[f'TOP_{top_n_tags}_TRAINING_DATASET_PATH'], index=False)
         self.test_df.to_csv(CONFIG[f'TOP_{top_n_tags}_TESTING_DATASET_PATH'], index=False)
         self.val_df.to_csv(CONFIG[f'TOP_{top_n_tags}_VALIDATION_DATASET_PATH'], index=False)
-    
-    def build_balanced_train_dataset(self, top_n_tags=5):
+
+    def build_train_test_dataset_without_tag_encoding(self, top_n_tags=5):
+        
+        self.train_df = pd.read_csv(CONFIG[f'BASE_TRAINING_DATASET_PATH'])
+        self.test_df = pd.read_csv(CONFIG[f'BASE_TESTING_DATASET_PATH'])
+        self.val_df = pd.read_csv(CONFIG[f'BASE_VALIDATION_DATASET_PATH'])
         
         unique_tags = self.get_unique_tags(top_n_tags)
         
-        self.df_train = pd.read_csv(CONFIG[f'TOP_{top_n_tags}_BASE_TRAINING_DATASET_PATH'])
-        
-        tag_counts = self.count_tag_occurrences(self.df_train, unique_tags=unique_tags)
-        
-        print(tag_counts)
-        
-        balanced_train_df = self.balance_tags(top_n_tags, tag_dictionary=tag_counts)
-        
-        tag_counts = self.count_tag_occurrences(balanced_train_df, unique_tags=unique_tags)
-
-        print(tag_counts)
-            
-        # # Load the base dataset
-        self.df_train = pd.read_csv(CONFIG[f'TOP_{top_n_tags}_BALANCED_TRAINING_DATASET_PATH'])
-        self.df_test = pd.read_csv(CONFIG[f'TOP_{top_n_tags}_BASE_TESTING_DATASET_PATH'])
-        self.df_val = pd.read_csv(CONFIG[f'TOP_{top_n_tags}_BASE_VALIDATION_DATASET_PATH'])
+        # Filter the dataset
+        self.train_df = self.build_filtered_dataset(self.train_df, unique_tags)
+        self.test_df = self.build_filtered_dataset(self.test_df, unique_tags)
+        self.val_df = self.build_filtered_dataset(self.val_df, unique_tags)
         
         # # clean the datasets of unnecessary collumns
-        self.df_train = self.df_train.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_input', 'problem_output', 'file_name', 'editorial_link']) # 'problem_statement_embeddings', 'problem_statement_cluster'
-        self.df_test = self.df_test.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_input', 'problem_output', 'file_name', 'editorial_link'])
-        self.df_val = self.df_val.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_input', 'problem_output', 'file_name', 'editorial_link'])
-                
-        # for 5 classes ->  ['greedy', 'math', 'implementation', 'dp', 'data structures']
-        # for 10 classes -> ['greedy', 'math', 'implementation', 'dp', 'data structures', 'brute force', 'constructive algorithms', 'sortings', 'binary search', 'sortings', 'graphs']
-        # for 15 classes -> ['greedy', 'math', 'implementation', 'dp', 'data structures', 'brute force', 'constructive algorithms', 'binary search', 'sortings', 'graphs', 'dfs and similar', 'trees', 'number theory', 'strings', 'combinatorics']
+        self.train_df = self.train_df.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_solution', 'problem_input', 'problem_output', 'problem_dificulty', 'file_name', 'editorial_link', 'problem_editorial'])
+        self.test_df = self.test_df.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_solution', 'problem_input', 'problem_output', 'problem_dificulty', 'file_name', 'editorial_link', 'problem_editorial'])
+        self.val_df = self.val_df.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_solution', 'problem_input', 'problem_output', 'problem_dificulty', 'file_name', 'editorial_link', 'problem_editorial'])
         
-        # print(unique_tags)
-        
-        # encode the tags to one hot encoding
-        self.df_train['problem_tags'] = self.df_train['problem_tags'].apply(lambda x: self.__create_binary_vector(x, unique_tags))
-        self.df_test['problem_tags'] = self.df_test['problem_tags'].apply(lambda x: self.__create_binary_vector(x, unique_tags))
-        self.df_val['problem_tags'] = self.df_val['problem_tags'].apply(lambda x: self.__create_binary_vector(x, unique_tags))
+        # Shuffle the datasets
+        self.train_df = self.train_df.sample(frac=1, random_state=RANDOM_STATE).reset_index(drop=True)
+        self.test_df = self.test_df.sample(frac=1, random_state=RANDOM_STATE).reset_index(drop=True)
+        self.val_df = self.val_df.sample(frac=1, random_state=RANDOM_STATE).reset_index(drop=True)
         
         #save the datasets
-        self.df_train.to_csv(CONFIG[f'TOP_{top_n_tags}_TRAINING_DATASET_PATH'], index=False)
-        self.df_test.to_csv(CONFIG[f'TOP_{top_n_tags}_TESTING_DATASET_PATH'], index=False)
-        self.df_val.to_csv(CONFIG[f'TOP_{top_n_tags}_VALIDATION_DATASET_PATH'], index=False)
-    
-    def build_augument_tag_train_dataset(self, top_n_tags=5):
+        self.train_df.to_csv(CONFIG[f'TOP_{top_n_tags}_TRAINING_WO_TAG_ENCODING_DATASET_PATH'], index=False)
+        self.test_df.to_csv(CONFIG[f'TOP_{top_n_tags}_TESTING_WO_TAG_ENCODING_DATASET_PATH'], index=False)
+        self.val_df.to_csv(CONFIG[f'TOP_{top_n_tags}_VALIDATION_WO_TAG_ENCODING_DATASET_PATH'], index=False)
+
+    def build_nli_dataset(self, top_n_tags=5):
+        random.seed(RANDOM_STATE)
+        
+        #BEST ALPHA 2 BETA 6
+        
+        ALPHA = 2 # AUGUMENTATION FACTOR / MULTIPLY THE BALANCED DATASET BY THIS FACTOR
+        BETA = 6 # MAXIMUM NUMBER OF PAIRS PER STATEMENT
+        
         unique_tags = self.get_unique_tags(top_n_tags)
-        
-        self.df_train = pd.read_csv(CONFIG[f'TOP_{top_n_tags}_BASE_TRAINING_DATASET_PATH'])
-
-        tag_counts = self.count_tag_occurrences(self.df_train, unique_tags=unique_tags)
-
-        print(tag_counts)
-
-        balanced_train_df = self.augument_train_data(self.df_train, top_n_tags, target='problem_editorial')
-        
-        tag_counts = self.count_tag_occurrences(balanced_train_df, unique_tags=unique_tags)
-
-        print(tag_counts)
-        
-        # # Load the base dataset
-        self.df_train = pd.read_csv(CONFIG[f'TOP_{top_n_tags}_BALANCED_TRAINING_DATASET_PATH'])
-        self.df_test = pd.read_csv(CONFIG[f'TOP_{top_n_tags}_BASE_TESTING_DATASET_PATH'])
-        self.df_val = pd.read_csv(CONFIG[f'TOP_{top_n_tags}_BASE_VALIDATION_DATASET_PATH'])
-        
-        # # clean the datasets of unnecessary collumns
-        self.df_train = self.df_train.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_input', 'problem_output', 'file_name', 'editorial_link']) # 'problem_statement_embeddings', 'problem_statement_cluster'
-        self.df_test = self.df_test.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_input', 'problem_output', 'file_name', 'editorial_link'])
-        self.df_val = self.df_val.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_input', 'problem_output', 'file_name', 'editorial_link'])
                 
-        # for 5 classes ->  ['greedy', 'math', 'implementation', 'dp', 'data structures']
-        # for 10 classes -> ['greedy', 'math', 'implementation', 'dp', 'data structures', 'brute force', 'constructive algorithms', 'sortings', 'binary search', 'sortings', 'graphs']
-        # for 15 classes -> ['greedy', 'math', 'implementation', 'dp', 'data structures', 'brute force', 'constructive algorithms', 'binary search', 'sortings', 'graphs', 'dfs and similar', 'trees', 'number theory', 'strings', 'combinatorics']
-        
-        # print(unique_tags)
-        
-        # encode the tags to one hot encoding
-        self.df_train['problem_tags'] = self.df_train['problem_tags'].apply(lambda x: self.__create_binary_vector(x, unique_tags))
-        self.df_test['problem_tags'] = self.df_test['problem_tags'].apply(lambda x: self.__create_binary_vector(x, unique_tags))
-        self.df_val['problem_tags'] = self.df_val['problem_tags'].apply(lambda x: self.__create_binary_vector(x, unique_tags))
-        
-        #save the datasets
-        self.df_train.to_csv(CONFIG[f'TOP_{top_n_tags}_TRAINING_DATASET_PATH'], index=False)
-        self.df_test.to_csv(CONFIG[f'TOP_{top_n_tags}_TESTING_DATASET_PATH'], index=False)
-        self.df_val.to_csv(CONFIG[f'TOP_{top_n_tags}_VALIDATION_DATASET_PATH'], index=False)    
-
-    def augment_with_editorials_dataset(self, df, top_n_tags=5):
-        # Ensure the tags are in list format
-        df['problem_tags'] = df['problem_tags'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
-
-        # Initialize a list to store the new instances
-        augmented_data = []
-
-        # Iterate over each row in the DataFrame
-        for index, row in df.iterrows():
-            problem_statement = row['problem_statement']
-            problem_tags = row['problem_tags']
-            problem_editorial = row['problem_editorial']
-
-            # Add the original problem statement and tags
-            augmented_data.append({
-                'problem_statement': problem_statement,
-                'problem_tags': problem_tags
-            })
-
-            # Add the problem editorial and tags
-            if pd.notna(problem_editorial) and problem_editorial.strip():
-                augmented_data.append({
-                    'problem_statement': problem_editorial,
-                    'problem_tags': problem_tags
-                })
-
-        # Convert the augmented data to a DataFrame
-        augmented_df = pd.DataFrame(augmented_data)
-
-        # Save the augmented dataset to a CSV file
-        augmented_df.to_csv(CONFIG[f'TOP_{top_n_tags}_BALANCED_TRAINING_DATASET_PATH'], index=False)
-
-        return augmented_df
-          
-    def build_augument_train_with_editorials_dataset(self, top_n_tags=5):
-        unique_tags = self.get_unique_tags(top_n_tags)
-        
-        self.df_train = pd.read_csv(CONFIG[f'TOP_{top_n_tags}_BASE_TRAINING_DATASET_PATH'])
-        
-        tag_counts = self.count_tag_occurrences(self.df_train, unique_tags=unique_tags)
-        
-        print(tag_counts)
-        
-        balanced_train_df = self.augment_with_editorials_dataset(self.df_train, top_n_tags)
-        
-        tag_counts = self.count_tag_occurrences(balanced_train_df, unique_tags=unique_tags)
-
-        print(tag_counts)
-        
-        # # Load the base dataset
-        self.df_train = pd.read_csv(CONFIG[f'TOP_{top_n_tags}_BALANCED_TRAINING_DATASET_PATH'])
-        self.df_test = pd.read_csv(CONFIG[f'TOP_{top_n_tags}_BASE_TESTING_DATASET_PATH'])
-        self.df_val = pd.read_csv(CONFIG[f'TOP_{top_n_tags}_BASE_VALIDATION_DATASET_PATH'])
-        
-        # # clean the datasets of unnecessary collumns
-        # self.df_train = self.df_train.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_input', 'problem_output', 'file_name', 'editorial_link']) # 'problem_statement_embeddings', 'problem_statement_cluster'
-        self.df_test = self.df_test.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_input', 'problem_output', 'file_name', 'editorial_link'])
-        self.df_val = self.df_val.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_input', 'problem_output', 'file_name', 'editorial_link'])
-                
-        # for 5 classes ->  ['greedy', 'math', 'implementation', 'dp', 'data structures']
-        # for 10 classes -> ['greedy', 'math', 'implementation', 'dp', 'data structures', 'brute force', 'constructive algorithms', 'sortings', 'binary search', 'sortings', 'graphs']
-        # for 15 classes -> ['greedy', 'math', 'implementation', 'dp', 'data structures', 'brute force', 'constructive algorithms', 'binary search', 'sortings', 'graphs', 'dfs and similar', 'trees', 'number theory', 'strings', 'combinatorics']
-        
-        # print(unique_tags)
-        
-        # encode the tags to one hot encoding
-        self.df_train['problem_tags'] = self.df_train['problem_tags'].apply(lambda x: self.__create_binary_vector(x, unique_tags))
-        self.df_test['problem_tags'] = self.df_test['problem_tags'].apply(lambda x: self.__create_binary_vector(x, unique_tags))
-        self.df_val['problem_tags'] = self.df_val['problem_tags'].apply(lambda x: self.__create_binary_vector(x, unique_tags))
-        
-        #save the datasets
-        self.df_train.to_csv(CONFIG[f'TOP_{top_n_tags}_TRAINING_DATASET_PATH'], index=False)
-        self.df_test.to_csv(CONFIG[f'TOP_{top_n_tags}_TESTING_DATASET_PATH'], index=False)
-        self.df_val.to_csv(CONFIG[f'TOP_{top_n_tags}_VALIDATION_DATASET_PATH'], index=False)
-
-    def balance_tags(self, top_n_tags, tag_dictionary):
-        
-        df = pd.read_csv(CONFIG[f'TOP_{top_n_tags}_BASE_TRAINING_DATASET_PATH'])
-        
-        unique_tags = tag_dictionary.keys()
-        
-        # Determine the minimum count across all tag classes
-        min_count = min(tag_dictionary[tag]['has_tag'] for tag in unique_tags)
-
-        # Store balanced samples
-        balanced_df = pd.DataFrame()
-
-        for tag in unique_tags:
-            # Sample problems with the current tag
-            tag_df = df[df['problem_tags'].str.contains(tag)]
-
-            # Sample with the minimum count
-            sampled_df = tag_df.sample(n=min(len(tag_df), min_count), random_state=RANDOM_STATE)
-            balanced_df = pd.concat([balanced_df, sampled_df])
-
-        # Drop duplicate problems to prevent over-representation
-        balanced_df = balanced_df.drop_duplicates(subset="problem_statement").reset_index(drop=True)
-
-        balanced_df.to_csv(CONFIG[f'TOP_{top_n_tags}_BALANCED_TRAINING_DATASET_PATH'], index=False)
-        
-        return balanced_df
-
-    def check_filtered_dataset(self, balanced_train_df, top_n_tags=5):
-                
-        # count the occurrences of each tag
-        tags = balanced_train_df['problem_tags'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
-
-        # Initialize the counter for all tags
-        tag_counts = defaultdict(int)
-
-        # Iterate over all problems and count each tag
-        for tag_list in tags:
-            for tag in tag_list:
-                tag_counts[tag.strip().strip("'")] += 1
-                
-        sorted_tag_counts = dict(sorted(tag_counts.items(), key=lambda item: item[1], reverse=True))
-        
-        for tag, count in sorted_tag_counts.items():
-            print(f"{tag}: {count}")
-    
-    def build_nli_dataset(self, top_n_tags):
-        unique_tags = self.get_unique_tags(top_n_tags)
-
         self.df_train = pd.read_csv(CONFIG[f'BASE_TRAINING_DATASET_PATH'])
-        
+                
         self.df_train = self.build_filtered_dataset(self.df_train, unique_tags)
         
+        self.df_train = self.df_train.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_solution', 'problem_input', 'problem_output', 'problem_dificulty', 'file_name', 'editorial_link', 'problem_editorial'])
+
+        self.check_dataset_distribution(self.df_train)
+
         # Ensure the tags are in list format
         self.df_train['problem_tags'] = self.df_train['problem_tags'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
         
         # Initialize a list to store the NLI training data
-        nli_data = []
+        nli_data = []        
+        
+        # Assume unique_tags and df_train are already defined
+        max_pairs_per_statement = BETA  # For example, allow at most 3 pairs per problem statement
+
+        entailment_counts = {tag: 0 for tag in unique_tags}
         
         # Iterate over each row in the DataFrame
         for index, row in self.df_train.iterrows():
@@ -816,15 +571,28 @@ class DatasetFactory:
             if not non_actual_tags:
                 continue  # Skip if there are no common tags
             
-            # Create entailment and contradiction pairs
+            # Generate all possible pairs for this statement
+            all_pairs = []
             for actual_tag in actual_tags:
                 for non_tag in non_actual_tags:
-                    nli_data.append({
+                    pair = {
                         'problem_statement': problem_statement,
                         'entailment': actual_tag,
                         'contradiction': non_tag
-                    })
-
+                    }
+                    all_pairs.append(pair)
+            
+            # Limit pairs per problem statement to avoid over-representation
+            if len(all_pairs) > max_pairs_per_statement:
+                sampled_pairs = random.sample(all_pairs, max_pairs_per_statement)
+            else:
+                sampled_pairs = all_pairs
+                    
+            # Optionally update global counters if you're tracking usage per tag
+            for pair in sampled_pairs:
+                entailment_counts[pair['entailment']] += 1
+                nli_data.append(pair)
+                
         # Filter out entries where contradiction is None
         nli_data = [entry for entry in nli_data if entry['entailment'] is not None]
         
@@ -834,46 +602,42 @@ class DatasetFactory:
         # Convert the NLI data to a DataFrame
         nli_df = pd.DataFrame(nli_data)
         
+        target = max(entailment_counts.values()) * ALPHA
+        
+        oversampled_subsets = []
+        for tag in unique_tags:
+            subset = nli_df[nli_df['entailment'] == tag]
+            current_count = len(subset)
+            if current_count < target:
+                n_needed = target - current_count
+                additional_samples = resample(
+                    subset,
+                    replace=True,
+                    n_samples=n_needed,
+                    random_state=RANDOM_STATE
+                )
+                balanced_subset = pd.concat([subset, additional_samples])
+            else:
+                balanced_subset = subset
+            oversampled_subsets.append(balanced_subset)
+    
+        # Combine the oversampled subsets into one DataFrame
+        nli_df = pd.concat(oversampled_subsets).reset_index(drop=True)        
+        
         # Shuffle the dataset
         nli_df = nli_df.sample(frac=1, random_state=RANDOM_STATE).reset_index(drop=True)
-        
+
+        print("Dataset size:", len(nli_df))
+                
         # Save the balanced NLI training dataset to a CSV file
         nli_df.to_csv(CONFIG[f'TOP_{top_n_tags}_NLI_TRAINING_DATASET_PATH'], index=False)
 
+        self.check_nli_dataset(top_n_tags, outside_dataset=False)
+        
         return nli_df
     
+    ############################################################################################################        
     
-    def check_dataset_tags(self, top_n_tags=5):
-        
-        unique_tags = self.get_unique_tags(top_n_tags)
-        print(unique_tags)
-        
-        df = pd.read_csv(CONFIG[f'BASE_VALIDATION_DATASET_PATH'])
-        
-        print(df.shape)
-    
-        df = self.build_filtered_dataset(df, unique_tags)
-        
-        print(df.shape)
-        
-        # count the occurrences of each tag
-        tags = df['problem_tags'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
-
-        # Initialize the counter for all tags
-        tag_counts = defaultdict(int)
-
-        # Iterate over all problems and count each tag
-        for tag_list in tags:
-            for tag in tag_list:
-                tag_counts[tag.strip().strip("'")] += 1
-                
-        sorted_tag_counts = dict(sorted(tag_counts.items(), key=lambda item: item[1], reverse=True))
-        
-        for tag, count in sorted_tag_counts.items():
-            print(f"{tag}: {count}")
-            
-            
-    # Build top n tags train test val dataset
     def build_outside_train_test_dataset(self, top_n_tags=5):
         
         self.train_df = pd.read_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_BASE_TRAINING_DATASET_PATH'])
@@ -881,14 +645,12 @@ class DatasetFactory:
         self.val_df = pd.read_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_BASE_VALIDATION_DATASET_PATH'])
         
         unique_tags = self.get_unique_tags(top_n_tags, outside_dataset=True)
-        
+                        
         # # clean the datasets of unnecessary collumns
         self.train_df = self.train_df.drop(columns=[self.train_df.columns[0], 'rating'])
         self.test_df = self.test_df.drop(columns=[self.test_df.columns[0], 'rating'])
         self.val_df = self.val_df.drop(columns=[self.val_df.columns[0], 'rating'])
-                                
-        # print(unique_tags)
-        
+                                        
         # encode the tags to one hot encoding
         self.train_df['tags'] = self.train_df['tags'].apply(lambda x: self.__create_binary_vector(x, unique_tags))
         self.test_df['tags'] = self.test_df['tags'].apply(lambda x: self.__create_binary_vector(x, unique_tags))
@@ -903,13 +665,55 @@ class DatasetFactory:
         self.train_df = self.train_df.rename(columns={'description': 'problem_statement', 'tags': 'problem_tags'})
         self.test_df = self.test_df.rename(columns={'description': 'problem_statement', 'tags': 'problem_tags'})
         self.val_df = self.val_df.rename(columns={'description': 'problem_statement', 'tags': 'problem_tags'})
-                                
+        
+        self.train_df = self.__preprocess_problem_statements(self.train_df)
+        self.test_df = self.__preprocess_problem_statements(self.test_df)
+        self.val_df = self.__preprocess_problem_statements(self.val_df)
+        
         #save the datasets
         self.train_df.to_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_TRAINING_DATASET_PATH'], index=False)
         self.test_df.to_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_TESTING_DATASET_PATH'], index=False)
         self.val_df.to_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_VALIDATION_DATASET_PATH'], index=False)
-    
+
+    def build_outside_train_test_dataset_without_tag_encoding(self, top_n_tags=5):
+        
+        self.train_df = pd.read_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_BASE_TRAINING_DATASET_PATH'])
+        self.test_df = pd.read_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_BASE_TESTING_DATASET_PATH'])
+        self.val_df = pd.read_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_BASE_VALIDATION_DATASET_PATH'])
+                                
+        # # clean the datasets of unnecessary collumns
+        self.train_df = self.train_df.drop(columns=[self.train_df.columns[0], 'rating'])
+        self.test_df = self.test_df.drop(columns=[self.test_df.columns[0], 'rating'])
+        self.val_df = self.val_df.drop(columns=[self.val_df.columns[0], 'rating'])
+                                        
+        # Shuffle the datasets
+        self.train_df = self.train_df.sample(frac=1, random_state=RANDOM_STATE).reset_index(drop=True)
+        self.test_df = self.test_df.sample(frac=1, random_state=RANDOM_STATE).reset_index(drop=True)
+        self.val_df = self.val_df.sample(frac=1, random_state=RANDOM_STATE).reset_index(drop=True)
+        
+        # Rename columns if needed
+        self.train_df = self.train_df.rename(columns={'description': 'problem_statement', 'tags': 'problem_tags'})
+        self.test_df = self.test_df.rename(columns={'description': 'problem_statement', 'tags': 'problem_tags'})
+        self.val_df = self.val_df.rename(columns={'description': 'problem_statement', 'tags': 'problem_tags'})
+        
+        self.train_df = self.__preprocess_problem_statements(self.train_df)
+        self.test_df = self.__preprocess_problem_statements(self.test_df)
+        self.val_df = self.__preprocess_problem_statements(self.val_df)
+        
+        #save the datasets
+        self.train_df.to_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_TRAINING_WO_TAG_ENCODING_DATASET_PATH'], index=False)
+        self.test_df.to_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_TESTING_WO_TAG_ENCODING_DATASET_PATH'], index=False)
+        self.val_df.to_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_VALIDATION_WO_TAG_ENCODING_DATASET_PATH'], index=False)
+
     def build_outside_nli_dataset(self, top_n_tags=5):
+        
+        random.seed(RANDOM_STATE)
+        
+        #BEST ALPHA 2 BETA 6
+        
+        ALPHA = 2 # AUGUMENTATION FACTOR / MULTIPLY THE BALANCED DATASET BY THIS FACTOR
+        BETA = 6 # MAXIMUM NUMBER OF PAIRS PER STATEMENT
+        
         unique_tags = self.get_unique_tags(top_n_tags, outside_dataset=True)
 
         self.df_train = pd.read_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_BASE_TRAINING_DATASET_PATH'])
@@ -917,11 +721,21 @@ class DatasetFactory:
         self.df_train = self.df_train.drop(columns=[self.df_train.columns[0], 'rating'])
         self.df_train = self.df_train.rename(columns={'description': 'problem_statement', 'tags': 'problem_tags'})
 
+        self.check_dataset_distribution(self.df_train)
+        
+        # Preprocess the problem statements
+        self.df_train = self.__preprocess_problem_statements(self.df_train)
+
         # Ensure the tags are in list format
         self.df_train['problem_tags'] = self.df_train['problem_tags'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
         
         # Initialize a list to store the NLI training data
-        nli_data = []
+        nli_data = []        
+        
+        # Assume unique_tags and df_train are already defined
+        max_pairs_per_statement = BETA  # For example, allow at most 3 pairs per problem statement
+
+        entailment_counts = {tag: 0 for tag in unique_tags}
         
         # Iterate over each row in the DataFrame
         for index, row in self.df_train.iterrows():
@@ -942,15 +756,28 @@ class DatasetFactory:
             if not non_actual_tags:
                 continue  # Skip if there are no common tags
             
-            # Create entailment and contradiction pairs
+            # Generate all possible pairs for this statement
+            all_pairs = []
             for actual_tag in actual_tags:
                 for non_tag in non_actual_tags:
-                    nli_data.append({
+                    pair = {
                         'problem_statement': problem_statement,
                         'entailment': actual_tag,
                         'contradiction': non_tag
-                    })
-
+                    }
+                    all_pairs.append(pair)
+            
+            # Limit pairs per problem statement to avoid over-representation
+            if len(all_pairs) > max_pairs_per_statement:
+                sampled_pairs = random.sample(all_pairs, max_pairs_per_statement)
+            else:
+                sampled_pairs = all_pairs
+                    
+            # Optionally update global counters if you're tracking usage per tag
+            for pair in sampled_pairs:
+                entailment_counts[pair['entailment']] += 1
+                nli_data.append(pair)
+                
         # Filter out entries where contradiction is None
         nli_data = [entry for entry in nli_data if entry['entailment'] is not None]
         
@@ -960,10 +787,239 @@ class DatasetFactory:
         # Convert the NLI data to a DataFrame
         nli_df = pd.DataFrame(nli_data)
         
+        target = max(entailment_counts.values()) * ALPHA
+        
+        oversampled_subsets = []
+        for tag in unique_tags:
+            subset = nli_df[nli_df['entailment'] == tag]
+            current_count = len(subset)
+            if current_count < target:
+                n_needed = target - current_count
+                additional_samples = resample(
+                    subset,
+                    replace=True,
+                    n_samples=n_needed,
+                    random_state=RANDOM_STATE
+                )
+                balanced_subset = pd.concat([subset, additional_samples])
+            else:
+                balanced_subset = subset
+            oversampled_subsets.append(balanced_subset)
+    
+        # Combine the oversampled subsets into one DataFrame
+        nli_df = pd.concat(oversampled_subsets).reset_index(drop=True)        
+        
         # Shuffle the dataset
         nli_df = nli_df.sample(frac=1, random_state=RANDOM_STATE).reset_index(drop=True)
-        
+
+        print("Dataset size:", len(nli_df))
+                
         # Save the balanced NLI training dataset to a CSV file
         nli_df.to_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_NLI_TRAINING_DATASET_PATH'], index=False)
 
+        self.check_nli_dataset(top_n_tags, outside_dataset=True)
+        
         return nli_df
+
+    ############################################################################################################
+
+    def check_dataset_distribution(self, df):
+        # count the occurrences of each tag
+        tags = df['problem_tags'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
+
+        # Initialize the counter for all tags
+        tag_counts = defaultdict(int)
+
+        # Iterate over all problems and count each tag
+        for tag_list in tags:
+            for tag in tag_list:
+                tag_counts[tag.strip().strip("'")] += 1
+                
+        sorted_tag_counts = dict(sorted(tag_counts.items(), key=lambda item: item[1], reverse=True))
+        
+        print(sorted_tag_counts.keys())
+        
+        print('Tags distribution :')
+        for tag, count in sorted_tag_counts.items():
+            print(f"{tag}: {count}")
+                    
+    def check_nli_dataset(self, top_n_tags=5, outside_dataset=False):
+        if outside_dataset:
+            self.df_train = pd.read_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_NLI_TRAINING_DATASET_PATH'])
+        else:
+            self.df_train = pd.read_csv(CONFIG[f'TOP_{top_n_tags}_NLI_TRAINING_DATASET_PATH'])
+        
+        # Initialize dictionaries to store the counts
+        entailment_counts = defaultdict(int)
+        contradiction_counts = defaultdict(int)
+        
+        # Iterate over each row in the DataFrame
+        for index, row in self.df_train.iterrows():
+            entailment_tag = row['entailment']
+            contradiction_tag = row['contradiction']
+            
+            # Update the counts
+            entailment_counts[entailment_tag] += 1
+            contradiction_counts[contradiction_tag] += 1
+            
+        # Print the counts for entailment tags
+        print("Entailment Tag Counts:")
+        for tag, count in entailment_counts.items():
+            print(f"{tag}: {count}")
+        
+        # Print the counts for contradiction tags
+        print("Contradiction Tag Counts:")
+        for tag, count in contradiction_counts.items():
+            print(f"{tag}: {count}")
+
+        return entailment_counts, contradiction_counts
+    
+        # Create an adjacency matrix based on problem similarity
+
+    ############################################################################################################
+
+    def __create_similarity_graph(self, embeddings, threshold=0.8):
+        """Creates a similarity graph where edges are added if cosine similarity > threshold."""
+        num_nodes = len(embeddings)
+        graph = nx.Graph()
+
+        # Add nodes
+        for i in range(num_nodes):
+            graph.add_node(i)
+
+        # Add edges based on cosine similarity
+        for i in range(num_nodes):
+            for j in range(i + 1, num_nodes):
+                similarity = 1 - cosine(embeddings[i], embeddings[j])
+                if similarity > threshold:
+                    graph.add_edge(i, j, weight=similarity)
+
+        return graph
+    
+    def __propagate_labels_with_graph(self, df, graph):
+        """
+        Uses a similarity graph to propagate missing labels.
+        Here, each label is represented as a binary vector (e.g. [0, 0, ..., 1, 0]).
+        For each node, we update its label vector using an elementwise maximum (logical OR)
+        across all of its neighbors.
+        """
+        # Create a dictionary mapping each node to its label vector as a numpy array
+        label_dict = {i: np.array(df.iloc[i]['problem_tags']) for i in graph.nodes()}
+
+        for node in graph.nodes():
+            neighbors = list(graph.neighbors(node))
+            if not neighbors:
+                continue  # Skip isolated nodes
+
+            # Start with the current node's label vector
+            aggregated = label_dict[node].copy()
+            # Propagate labels from neighbors (logical OR via elementwise maximum)
+            for neighbor in neighbors:
+                aggregated = np.maximum(aggregated, label_dict[neighbor])
+            label_dict[node] = aggregated
+
+        # Write the updated labels back to the DataFrame (convert numpy arrays to lists)
+        df['problem_tags'] = [label_dict[i].tolist() for i in range(len(df))]
+        return df
+
+    def encode_problem_statements(self, model, problem_statements, batch_size=32):
+        """
+        Encodes a list of problem statements into embeddings using mean pooling.
+
+        """
+        tokenizer = AutoTokenizer.from_pretrained('sentence-transformers/all-mpnet-base-v2')
+        
+        # Tokenize the list of problem statements
+        inputs = tokenizer(
+            problem_statements,
+            add_special_tokens=True,
+            truncation=True,
+            max_length=512,
+            padding='max_length',
+            return_attention_mask=True,
+            return_tensors='tf'
+        )
+
+        input_ids = inputs['input_ids']
+        attention_mask = inputs['attention_mask']
+        
+        # Create a tf.data.Dataset from the tokenized inputs
+        dataset = tf.data.Dataset.from_tensor_slices((input_ids, attention_mask))
+        dataset = dataset.batch(batch_size)
+        
+        all_embeddings = []
+        
+        for batch in tqdm(dataset, desc="Encoding problem statements"):
+            input_ids_batch, attention_mask_batch = batch
+            outputs = model(input_ids_batch, attention_mask=attention_mask_batch)  # outputs.last_hidden_state has shape (batch_size, seq_length, hidden_size)
+            
+            # Create a mask for the attention tokens (0 for padding tokens)
+            attention_mask_batch = tf.cast(tf.expand_dims(attention_mask_batch, -1), dtype=tf.float32)
+            # Sum the token embeddings
+            sum_embeddings = tf.reduce_sum(outputs.last_hidden_state * attention_mask_batch, axis=1)
+            # Sum the mask to get counts of valid tokens, and then compute the mean
+            sum_mask = tf.reduce_sum(attention_mask_batch, axis=1)
+            sentence_embeddings_mean = sum_embeddings / sum_mask
+            
+            all_embeddings.append(sentence_embeddings_mean)
+
+        # Concatenate all embeddings
+        all_embeddings = tf.concat(all_embeddings, axis=0)
+        
+        return all_embeddings.numpy()
+
+    def print_binary_dataset_distribution(self, df):
+        """
+        Prints the distribution of 1s for each index in the problem_tags column.
+        """
+        # Ensure the tags are in list format
+        df['problem_tags'] = df['problem_tags'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
+        
+        # Initialize a counter for the number of 1s at each index
+        tag_counts = Counter()
+        
+        # Iterate over each row in the DataFrame
+        for tags in df['problem_tags']:
+            for index, value in enumerate(tags):
+                if value == 1:
+                    tag_counts[index] += 1
+        
+        # Print the counts for each index
+        print("Distribution of 1s for each index in problem_tags:")
+        for index, count in sorted(tag_counts.items()):
+            print(f"Index {index}: {count}")
+
+    def augument_train_data(self, top_n_tags):
+        
+        target='problem_statement'
+        
+        # Load the base training dataset
+        df = pd.read_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_TRAINING_DATASET_PATH'])
+        
+        # Convert problem_tags to list format.
+        # For example, if stored as a string "[0, 0, ..., 1, 0]", convert it to a list.
+        df['problem_tags'] = df['problem_tags'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
+        
+        self.print_binary_dataset_distribution(df)
+        
+        # Load the encoder model
+        # model = SentenceTransformer('sentence-transformers/all-mpnet-base-v2')
+        model_path = os.path.join(CONFIG["TRANSFORMER_SAVE_PATH_ROOT"], 'transformer_model_20250218_205740_best_6_to_1')
+        model = TFAutoModel.from_pretrained(model_path)
+        
+        # Generate embeddings for problem statements
+        problem_statements = df[target].tolist()
+        problem_statement_embeddings = self.encode_problem_statements(model, problem_statements, batch_size=32)
+
+        # Create the similarity graph. 
+        # A threshold of 0.70 is chosen based on prior experiments.
+        graph = self.__create_similarity_graph(problem_statement_embeddings, threshold=0.99)
+        
+        # Apply label propagation using the similarity graph
+        balanced_df = self.__propagate_labels_with_graph(df, graph)
+        
+        self.print_binary_dataset_distribution(balanced_df)
+        
+        balanced_df.to_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_TRAINING_DATASET_PATH'], index=False)
+
+

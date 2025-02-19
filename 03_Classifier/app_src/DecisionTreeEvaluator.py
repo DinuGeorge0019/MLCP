@@ -49,19 +49,16 @@ class DecisionTreeEvaluator():
         decision_tree_classifier = DecisionTreeClassifier(random_state=RANDOM_STATE)
         gaussian_nb_classifier = GaussianNB()
         random_forest_classifier = RandomForestClassifier(random_state=RANDOM_STATE)
-        # gradient_boosting_classifier = GradientBoostingClassifier(random_state=RANDOM_STATE)
         xgb_classifier = XGBClassifier(random_state=RANDOM_STATE)
         lgb_classifier = LGBMClassifier(random_state=RANDOM_STATE)
         svc_classifier = SVC(decision_function_shape='ovo')
 
         self.estimator_collection = {
-            # 'CatBoostClassifier': catb_classifier,
             'LogisticRegression': logistic_regression_classifier,
             'KNeighborsClassifier': kn_classifier,
             'DecisionTreeClassifier': decision_tree_classifier,
             'GaussianNB': gaussian_nb_classifier,
             'RandomForestClassifier': random_forest_classifier,
-            # 'GradientBoostingClassifier': gradient_boosting_classifier,
             'XGBClassifier': xgb_classifier,
             'LGBMClassifier': lgb_classifier,
             'SVC': svc_classifier

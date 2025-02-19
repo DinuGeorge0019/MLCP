@@ -111,9 +111,9 @@ class OneVsAllSentenceTransformerWrapper():
 
             # Undersample the majority class
             if len(pos_indices) < len(neg_indices):
-                neg_indices = resample(neg_indices, replace=False, n_samples=len(pos_indices), random_state=42)
+                neg_indices = resample(neg_indices, replace=True, n_samples=len(pos_indices), random_state=42)
             else:
-                pos_indices = resample(pos_indices, replace=False, n_samples=len(neg_indices), random_state=42)
+                pos_indices = resample(pos_indices, replace=True, n_samples=len(neg_indices), random_state=42)
         
             balanced_indices = np.concatenate([pos_indices, neg_indices])
             np.random.shuffle(balanced_indices)
@@ -156,16 +156,16 @@ class OneVsAllSentenceTransformerWrapper():
             # Unfreeze the transformer layers
             encoder_model.unfreeze_transformer()
 
-            total_steps = ceil(len(problem_statements) / batch_size) * epochs
+            # total_steps = ceil(len(problem_statements) / batch_size) * epochs
             
             # Compile the model
-            encoder_model.compile_model(run_eagerly=False, threshold=threshold, total_steps=total_steps)
-            
+            # encoder_model.compile_model(run_eagerly=False, threshold=threshold, total_steps=total_steps)
+            encoder_model.compile_model(run_eagerly=False, threshold=threshold)
             # Define callbacks
             callbacks = [
                 # Custom callback for printing validation scores
                 PrintValidationScoresCallback(),
-                tf.keras.callbacks.EarlyStopping(monitor='val_f1', mode='max', patience=3, restore_best_weights=True)
+                tf.keras.callbacks.EarlyStopping(monitor='val_f1', mode='max', patience=5, restore_best_weights=True)
             ]
             
             # Start training

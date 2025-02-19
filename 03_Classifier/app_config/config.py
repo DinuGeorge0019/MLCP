@@ -23,20 +23,17 @@ class Config(object):
 
             ############################################################################################################          
             
-            "TOP_5_TRAINING_DATASET_PATH": os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', 'top_5_training_dataset.csv'),
-            "TOP_10_TRAINING_DATASET_PATH": os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', 'top_10_training_dataset.csv'),
-            "TOP_15_TRAINING_DATASET_PATH": os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', 'top_15_training_dataset.csv'),
-            "TOP_20_TRAINING_DATASET_PATH": os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', 'top_20_training_dataset.csv'),
+            "TOP_5_TRAINING_DATASET_PATH": os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', 'OUR_DATASET', 'top_5_training_dataset.csv'),
+            "TOP_10_TRAINING_DATASET_PATH": os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', 'OUR_DATASET', 'top_10_training_dataset.csv'),
+            "TOP_20_TRAINING_DATASET_PATH": os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', 'OUR_DATASET', 'top_20_training_dataset.csv'),
             
-            "TOP_5_TESTING_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', 'top_5_testing_dataset.csv'),
-            "TOP_10_TESTING_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', 'top_10_testing_dataset.csv'),
-            "TOP_15_TESTING_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', 'top_15_testing_dataset.csv'),
-            "TOP_20_TESTING_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', 'top_20_testing_dataset.csv'),
+            "TOP_5_TESTING_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', 'OUR_DATASET', 'top_5_testing_dataset.csv'),
+            "TOP_10_TESTING_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', 'OUR_DATASET', 'top_10_testing_dataset.csv'),
+            "TOP_20_TESTING_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', 'OUR_DATASET', 'top_20_testing_dataset.csv'),
 
-            "TOP_5_VALIDATION_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', 'top_5_validation_dataset.csv'), 
-            "TOP_10_VALIDATION_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', 'top_10_validation_dataset.csv'),
-            "TOP_15_VALIDATION_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', 'top_15_validation_dataset.csv'),
-            "TOP_20_VALIDATION_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', 'top_20_validation_dataset.csv'),
+            "TOP_5_VALIDATION_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', 'OUR_DATASET', 'top_5_validation_dataset.csv'), 
+            "TOP_10_VALIDATION_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', 'OUR_DATASET', 'top_10_validation_dataset.csv'),
+            "TOP_20_VALIDATION_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', 'OUR_DATASET', 'top_20_validation_dataset.csv'),
             
             ################################################################################################################
             
@@ -56,32 +53,27 @@ class Config(object):
 
             "TOP_5_BENCHMARK_BASELINE_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_5_baseline_models.csv'),
             "TOP_10_BENCHMARK_BASELINE_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_10_baseline_models.csv'),
-            "TOP_15_BENCHMARK_BASELINE_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_15_baseline_models.csv'),
             "TOP_20_BENCHMARK_BASELINE_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_20_baseline_models.csv'),
 
             ############################################################################################################          
 
             "TOP_5_BENCHMARK_ONEVSALL_BASELINE_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_5_onevsall_baseline_models.csv'),
             "TOP_10_BENCHMARK_ONEVSALL_BASELINE_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_10_onevsall_baseline_models.csv'),
-            "TOP_15_BENCHMARK_ONEVSALL_BASELINE_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_15_onevsall_baseline_models.csv'),
             "TOP_20_BENCHMARK_ONEVSALL_BASELINE_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_20_onevsall_baseline_models.csv'), 
             
             ############################################################################################################
             "TOP_5_BENCHMARK_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_5_baseline_transformer_models.csv'),
             "TOP_10_BENCHMARK_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_10_baseline_transformer_models.csv'),
-            "TOP_15_BENCHMARK_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_15_baseline_transformer_models.csv'),
             "TOP_20_BENCHMARK_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_20_baseline_transformer_models.csv'),
             
             ############################################################################################################
             "TOP_5_BENCHMARK_ONEVSALL_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_5_onevsall_baseline_transformer_models.csv'),
             "TOP_10_BENCHMARK_ONEVSALL_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_10_onevsall_baseline_transformer_models.csv'),
-            "TOP_15_BENCHMARK_ONEVSALL_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_15_onevsall_baseline_transformer_models.csv'),
             "TOP_20_BENCHMARK_ONEVSALL_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_20_onevsall_baseline_transformer_models.csv'),
             
             ############################################################################################################          
             "TOP_5_NLI_TRAINING_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '04_NLI_Datasets', 'top_5_nli_training_dataset.csv'),
             "TOP_10_NLI_TRAINING_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '04_NLI_Datasets', 'top_10_nli_training_dataset.csv'),
-            "TOP_15_NLI_TRAINING_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '04_NLI_Datasets', 'top_15_nli_training_dataset.csv'),
             "TOP_20_NLI_TRAINING_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '04_NLI_Datasets', 'top_20_nli_training_dataset.csv'),
             
             ############################################################################################################
