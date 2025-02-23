@@ -635,7 +635,76 @@ class DatasetFactory:
         self.check_nli_dataset(top_n_tags, outside_dataset=False)
         
         return nli_df
-    
+
+    def build_basic_nli_dataset(self, top_n_tags=5):
+        random.seed(RANDOM_STATE)
+                        
+        unique_tags = self.get_unique_tags(top_n_tags)
+                
+        self.df_train = pd.read_csv(CONFIG[f'BASE_TRAINING_DATASET_PATH'])
+                
+        self.df_train = self.build_filtered_dataset(self.df_train, unique_tags)
+        
+        self.df_train = self.df_train.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_solution', 'problem_input', 'problem_output', 'problem_dificulty', 'file_name', 'editorial_link', 'problem_editorial'])
+
+        self.check_dataset_distribution(self.df_train)
+
+        # Ensure the tags are in list format
+        self.df_train['problem_tags'] = self.df_train['problem_tags'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
+        
+        # Initialize a list to store the NLI training data
+        nli_data = []        
+                
+        # Iterate over each row in the DataFrame
+        for index, row in self.df_train.iterrows():
+            problem_statement = row['problem_statement']
+            problem_tags = row['problem_tags']
+
+            # Check if the problem has all the tags from unique_tags
+            if set(problem_tags) == set(unique_tags):
+                continue
+            
+            # Create pairs of (problem statement, actual tag)
+            actual_tags = list(set(problem_tags) & set(unique_tags))
+            if not actual_tags:
+                continue  # Skip if there are no common tags
+            
+            # Find all non-actual tags
+            non_actual_tags = set(unique_tags) - set(actual_tags)
+            if not non_actual_tags:
+                continue  # Skip if there are no common tags
+            
+            # Select a random entailment and contradiction
+            entailment_tag = random.choice(list(actual_tags))
+            contradiction_tag = random.choice(list(non_actual_tags))
+
+            pair = {
+                'problem_statement': problem_statement,
+                'entailment': entailment_tag,
+                'contradiction': contradiction_tag
+            }
+            
+            nli_data.append(pair)
+                
+        # Filter out entries where contradiction is None
+        nli_data = [entry for entry in nli_data if entry['entailment'] is not None]
+        
+        # Filter out entries where contradiction is None
+        nli_data = [entry for entry in nli_data if entry['contradiction'] is not None]
+        
+        # Convert the NLI data to a DataFrame
+        nli_df = pd.DataFrame(nli_data)    
+        
+        # Shuffle the dataset
+        nli_df = nli_df.sample(frac=1, random_state=RANDOM_STATE).reset_index(drop=True)
+
+        print("Dataset size:", len(nli_df))
+                
+        # Save the balanced NLI training dataset to a CSV file
+        nli_df.to_csv(CONFIG[f'TOP_{top_n_tags}_BASIC_NLI_TRAINING_DATASET_PATH'], index=False)
+        
+        return nli_df
+
     ############################################################################################################        
     
     def build_outside_train_test_dataset(self, top_n_tags=5):
@@ -821,6 +890,77 @@ class DatasetFactory:
         
         return nli_df
 
+    def build_outside_basic_nli_dataset(self, top_n_tags=5):
+        random.seed(RANDOM_STATE)
+                        
+        unique_tags = self.get_unique_tags(top_n_tags)
+                
+        self.df_train = pd.read_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_BASE_TRAINING_DATASET_PATH'])
+                
+        self.df_train = self.df_train.drop(columns=[self.df_train.columns[0], 'rating'])
+        self.df_train = self.df_train.rename(columns={'description': 'problem_statement', 'tags': 'problem_tags'})
+
+        self.check_dataset_distribution(self.df_train)
+        
+        # Preprocess the problem statements
+        self.df_train = self.__preprocess_problem_statements(self.df_train)
+
+        # Ensure the tags are in list format
+        self.df_train['problem_tags'] = self.df_train['problem_tags'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
+        
+        # Initialize a list to store the NLI training data
+        nli_data = []        
+                
+        # Iterate over each row in the DataFrame
+        for index, row in self.df_train.iterrows():
+            problem_statement = row['problem_statement']
+            problem_tags = row['problem_tags']
+
+            # Check if the problem has all the tags from unique_tags
+            if set(problem_tags) == set(unique_tags):
+                continue
+            
+            # Create pairs of (problem statement, actual tag)
+            actual_tags = list(set(problem_tags) & set(unique_tags))
+            if not actual_tags:
+                continue  # Skip if there are no common tags
+            
+            # Find all non-actual tags
+            non_actual_tags = set(unique_tags) - set(actual_tags)
+            if not non_actual_tags:
+                continue  # Skip if there are no common tags
+            
+            # Select a random entailment and contradiction
+            entailment_tag = random.choice(list(actual_tags))
+            contradiction_tag = random.choice(list(non_actual_tags))
+
+            pair = {
+                'problem_statement': problem_statement,
+                'entailment': entailment_tag,
+                'contradiction': contradiction_tag
+            }
+            
+            nli_data.append(pair)
+                
+        # Filter out entries where contradiction is None
+        nli_data = [entry for entry in nli_data if entry['entailment'] is not None]
+        
+        # Filter out entries where contradiction is None
+        nli_data = [entry for entry in nli_data if entry['contradiction'] is not None]
+        
+        # Convert the NLI data to a DataFrame
+        nli_df = pd.DataFrame(nli_data)    
+        
+        # Shuffle the dataset
+        nli_df = nli_df.sample(frac=1, random_state=RANDOM_STATE).reset_index(drop=True)
+
+        print("Dataset size:", len(nli_df))
+                
+        # Save the balanced NLI training dataset to a CSV file
+        nli_df.to_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_BASIC_NLI_TRAINING_DATASET_PATH'], index=False)
+        
+        return nli_df
+
     ############################################################################################################
 
     def check_dataset_distribution(self, df):
@@ -876,6 +1016,29 @@ class DatasetFactory:
     
         # Create an adjacency matrix based on problem similarity
 
+    def get_dataset_tags_and_distribution(self, top_n_tags=5):
+        # Load the dataset
+        df = pd.read_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_TRAINING_WO_TAG_ENCODING_DATASET_PATH'])
+        
+        # Ensure the tags are in list format
+        df['problem_tags'] = df['problem_tags'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
+        
+        # Initialize a dictionary to store the counts
+        tag_counts = defaultdict(int)
+        
+        # Iterate over each row in the DataFrame
+        for tags in df['problem_tags']:
+            for tag in tags:
+                tag_counts[tag] += 1
+        
+        print(tag_counts.keys())
+
+        # Print the counts for each tag
+        print("Tag Counts:")
+        for tag, count in tag_counts.items():
+            print(f"{tag}: {count}")
+            
+        
     ############################################################################################################
 
     def __create_similarity_graph(self, embeddings, threshold=0.8):

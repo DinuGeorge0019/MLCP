@@ -37,20 +37,14 @@ class OneVsAllTransformerEvaluator():
     def __define_models(self):
 
         self.encoder_collection = [
-            # 'facebook/bart-large-mnli'  # 1024
-            # 'google/bigbird-pegasus-large-arxiv'
-            'sentence-transformers/all-mpnet-base-v2'
+            'sentence-transformers/all-mpnet-base-v2',
             # 'sentence-transformers/multi-qa-mpnet-base-dot-v1',
             # 'sentence-transformers/multi-qa-distilbert-cos-v1',
-            # 'sentence-transformers/multi-qa-MiniLM-L6-cos-v1',
             # 'sentence-transformers/all-distilroberta-v1',
             # 'sentence-transformers/all-MiniLM-L12-v2',
-            # 'sentence-transformers/all-MiniLM-L6-v2',
-            # 'microsoft/mpnet-base',
-            # 'roberta-base',
-            # 'bert-base-uncased'
-            # 'microsoft/deberta-v3-base'
-            # 'microsoft/codebert-base'
+            # 'microsoft/deberta-v3-base',
+            # 'microsoft/codebert-base',
+            # 'bert-base-uncased',
         ]
     
     def __save_metrics(self, encoder, estimator_name, metrics_results, number_of_tags):
@@ -90,3 +84,24 @@ class OneVsAllTransformerEvaluator():
             
             self.__save_metrics(model, model, metrics, number_of_tags)
 
+    def evaluate_base_models(self, epochs, batch_size, number_of_tags=5, train_model=True, threshold=0.5, transformer_model_path=None, train_dataset_path=None, val_dataset_path=None, test_dataset_path=None):
+        for model in self.encoder_collection:
+            print(f"Training and evaluating model: {model}")
+            transformer_wrapper = OneVsAllSentenceTransformerWrapper(model, number_of_tags)
+            transformer_wrapper.train_model(
+                train_dataset_path=train_dataset_path, #CONFIG[f'TOP_{number_of_tags}_TRAINING_DATASET_PATH'],
+                val_dataset_path=val_dataset_path, # CONFIG[f'TOP_{number_of_tags}_VALIDATION_DATASET_PATH'],
+                epochs=epochs,
+                batch_size=batch_size,
+                train_model=train_model,
+                threshold=threshold,
+                transformer_model_path=transformer_model_path,
+                base_model_evaluation=True
+            )
+            
+            metrics = transformer_wrapper.benchmark_model(
+                test_dataset_path=test_dataset_path, #CONFIG[f'TOP_{number_of_tags}_TESTING_DATASET_PATH'],
+                batch_size=32
+            )
+            
+            self.__save_metrics(model, model, metrics, number_of_tags)

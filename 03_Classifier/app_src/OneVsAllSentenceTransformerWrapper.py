@@ -13,6 +13,7 @@ from sklearn.utils import resample
 
 # local application/library specific imports
 from app_src.SentenceTransformerEncoderModel import SentenceTransformerEncoderModel
+from app_src.BaseSentenceTransformerEncoderModel import BaseSentenceTransformerEncoderModel
 from app_src.CustomMetrics import PrintScoresCallback, PrintValidationScoresCallback
 from app_config import AppConfig
 from app_src.common import set_random_seed
@@ -74,7 +75,7 @@ class OneVsAllSentenceTransformerWrapper():
         return tokens['input_ids'], tokens['attention_mask']
     
 
-    def train_model(self, train_dataset_path, val_dataset_path, epochs=5, batch_size=32, train_model=True, threshold=0.5, transformer_model_path=None):
+    def train_model(self, train_dataset_path, val_dataset_path, epochs=5, batch_size=32, train_model=True, threshold=0.5, transformer_model_path=None, base_model_evaluation=False):
         
         self.__read_train_data(train_dataset_path)
         self.__read_validation_data(val_dataset_path)
@@ -151,30 +152,34 @@ class OneVsAllSentenceTransformerWrapper():
                 transformer_model = TFAutoModel.from_pretrained(transformer_model_path)
             else:
                 transformer_model = TFAutoModel.from_pretrained(self.model_name)
-            encoder_model = SentenceTransformerEncoderModel(transformer_model, 1)
+                
+            if base_model_evaluation:
+                encoder_model = BaseSentenceTransformerEncoderModel(transformer_model, 1)
+            else:
+                encoder_model = SentenceTransformerEncoderModel(transformer_model, 1)
             
-            # Unfreeze the transformer layers
-            encoder_model.unfreeze_transformer()
+                # Unfreeze the transformer layers
+                encoder_model.unfreeze_transformer()
 
-            # total_steps = ceil(len(problem_statements) / batch_size) * epochs
-            
-            # Compile the model
-            # encoder_model.compile_model(run_eagerly=False, threshold=threshold, total_steps=total_steps)
-            encoder_model.compile_model(run_eagerly=False, threshold=threshold)
-            # Define callbacks
-            callbacks = [
-                # Custom callback for printing validation scores
-                PrintValidationScoresCallback(),
-                tf.keras.callbacks.EarlyStopping(monitor='val_f1', mode='max', patience=5, restore_best_weights=True)
-            ]
-            
-            # Start training
-            history = encoder_model.fit(
-                single_label_train_ds,
-                validation_data=single_label_val_ds,
-                epochs=epochs,
-                callbacks=callbacks
-            )
+                # total_steps = ceil(len(problem_statements) / batch_size) * epochs
+                
+                # Compile the model
+                # encoder_model.compile_model(run_eagerly=False, threshold=threshold, total_steps=total_steps)
+                encoder_model.compile_model(run_eagerly=False, threshold=threshold)
+                # Define callbacks
+                callbacks = [
+                    # Custom callback for printing validation scores
+                    PrintValidationScoresCallback(),
+                    tf.keras.callbacks.EarlyStopping(monitor='val_f1', mode='max', patience=5, restore_best_weights=True)
+                ]
+                
+                # Start training
+                history = encoder_model.fit(
+                    single_label_train_ds,
+                    validation_data=single_label_val_ds,
+                    epochs=epochs,
+                    callbacks=callbacks
+                )
             
             self.models.append(encoder_model)
     

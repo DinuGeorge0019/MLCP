@@ -34,10 +34,14 @@ def main():
         ('build_nli_dataset', datasetFactory.build_nli_dataset, 'Build NLI dataset.'),
         ('build_train_test_dataset_without_tag_encoding', datasetFactory.build_train_test_dataset_without_tag_encoding, 'Build train / test dataset without tag encoding.'),
         ('build_outside_train_test_dataset_without_tag_encoding', datasetFactory.build_outside_train_test_dataset_without_tag_encoding, 'Build outside train / test dataset without tag encoding.'),
+        ('get_dataset_tags_and_distribution', datasetFactory.get_dataset_tags_and_distribution, 'Get dataset tags and distribution.'),
+        ('build_basic_nli_dataset', datasetFactory.build_basic_nli_dataset, 'Build basic NLI dataset.'),
+        ('build_outside_basic_nli_dataset', datasetFactory.build_outside_basic_nli_dataset, 'Build outside basic NLI dataset.'),
     ]
 
     for arg, _, description in arguments:
-        if arg == "build_train_test_dataset"  or arg == "build_outside_train_test_dataset" or arg == "build_outside_nli_dataset" or arg == 'check_nli_dataset' or arg == 'augument_train_data' or arg == 'build_nli_dataset' or arg == 'build_train_test_dataset_without_tag_encoding' or arg == 'build_outside_train_test_dataset_without_tag_encoding':
+        if arg == "build_train_test_dataset"  or arg == "build_outside_train_test_dataset" or arg == "build_outside_nli_dataset" or arg == 'check_nli_dataset' or arg == 'augument_train_data' or arg == 'build_nli_dataset' or \
+                    arg == 'build_train_test_dataset_without_tag_encoding' or arg == 'build_outside_train_test_dataset_without_tag_encoding' or arg == 'get_dataset_tags_and_distribution' or arg == 'build_basic_nli_dataset' or arg == 'build_outside_basic_nli_dataset':
             parser.add_argument(f'--{arg}', type=int, help=description, nargs=1, metavar='TOP_N')
         else:
             parser.add_argument(f'--{arg}', action='store_true', help=description)
@@ -69,6 +73,15 @@ def main():
                 fun(top_n)
             elif arg == 'build_outside_train_test_dataset_without_tag_encoding':
                 top_n = params.build_outside_train_test_dataset_without_tag_encoding[0]
+                fun(top_n)
+            elif arg == 'get_dataset_tags_and_distribution':
+                top_n = params.get_dataset_tags_and_distribution[0]
+                fun(top_n)
+            elif arg == 'build_basic_nli_dataset':
+                top_n = params.build_basic_nli_dataset[0]
+                fun(top_n)
+            elif arg == 'build_outside_basic_nli_dataset':
+                top_n = params.build_outside_basic_nli_dataset[0]
                 fun(top_n)
             else:
                 fun()

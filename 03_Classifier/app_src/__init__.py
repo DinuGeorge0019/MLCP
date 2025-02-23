@@ -13,4 +13,5 @@ from .OneVsAllTransformerEvaluator import OneVsAllTransformerEvaluator as OneVsA
 from .NLITransformerEmbeddingModel import NLITransformerEmbeddingModel as NLITransformerEmbeddingModel
 from .NLITransformerWrapper import NLITransformerWrapper as NLITransformerWrapper
 from .NLITripletTrainer import NLITripletTrainer as NLITripletTrainer
+from .BaseSentenceTransformerEncoderModel import BaseSentenceTransformerEncoderModel as BaseSentenceTransformerEncoderModel
 from .common import set_random_seed as set_random_seed

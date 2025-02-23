@@ -40,11 +40,19 @@ class Config(object):
             "TOP_5_NLI_TRAINING_DATASET_PATH":f"{WORKING_DIR}\\01_TASK_DATASETS\\04_NLI_Datasets\\top_5_nli_training_dataset.csv",
             "TOP_10_NLI_TRAINING_DATASET_PATH":f"{WORKING_DIR}\\01_TASK_DATASETS\\04_NLI_Datasets\\top_10_nli_training_dataset.csv",
             "TOP_20_NLI_TRAINING_DATASET_PATH":f"{WORKING_DIR}\\01_TASK_DATASETS\\04_NLI_Datasets\\top_20_nli_training_dataset.csv",
+
+            "TOP_5_BASIC_NLI_TRAINING_DATASET_PATH":f"{WORKING_DIR}\\01_TASK_DATASETS\\04_NLI_Datasets\\BASIC_NLI_DATASETS\\OUR_DATASET\\top_5_nli_training_dataset.csv",
+            "TOP_10_BASIC_NLI_TRAINING_DATASET_PATH":f"{WORKING_DIR}\\01_TASK_DATASETS\\04_NLI_Datasets\\BASIC_NLI_DATASETS\\OUR_DATASET\\top_10_nli_training_dataset.csv",
+            "TOP_20_BASIC_NLI_TRAINING_DATASET_PATH":f"{WORKING_DIR}\\01_TASK_DATASETS\\04_NLI_Datasets\\BASIC_NLI_DATASETS\\OUR_DATASET\\top_20_nli_training_dataset.csv",
             
             "OUTSIDE_TOP_5_NLI_TRAINING_DATASET_PATH": f"{WORKING_DIR}\\01_TASK_DATASETS\\04_NLI_Datasets\\PSG_PREDICTING_ALGO\\AMT5_nli_train.csv",
             "OUTSIDE_TOP_10_NLI_TRAINING_DATASET_PATH": f"{WORKING_DIR}\\01_TASK_DATASETS\\04_NLI_Datasets\\PSG_PREDICTING_ALGO\\AMT10_nli_train.csv",
             "OUTSIDE_TOP_20_NLI_TRAINING_DATASET_PATH": f"{WORKING_DIR}\\01_TASK_DATASETS\\04_NLI_Datasets\\PSG_PREDICTING_ALGO\\AMT20_nli_train.csv",
             
+            "OUTSIDE_TOP_5_BASIC_NLI_TRAINING_DATASET_PATH": f"{WORKING_DIR}\\01_TASK_DATASETS\\04_NLI_Datasets\\BASIC_NLI_DATASETS\\PSG_PREDICTING_ALGO\\AMT5_nli_train.csv",
+            "OUTSIDE_TOP_10_BASIC_NLI_TRAINING_DATASET_PATH": f"{WORKING_DIR}\\01_TASK_DATASETS\\04_NLI_Datasets\\BASIC_NLI_DATASETS\\PSG_PREDICTING_ALGO\\AMT10_nli_train.csv",
+            "OUTSIDE_TOP_20_BASIC_NLI_TRAINING_DATASET_PATH": f"{WORKING_DIR}\\01_TASK_DATASETS\\04_NLI_Datasets\\BASIC_NLI_DATASETS\\PSG_PREDICTING_ALGO\\AMT20_nli_train.csv",
+  
             ############################################################################################################
             
             "BASE_TRAINING_DATASET_PATH":f"{WORKING_DIR}\\01_TASK_DATASETS\\02_Base_Datasets\\base_training_dataset.csv",
