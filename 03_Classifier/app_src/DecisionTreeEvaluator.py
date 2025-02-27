@@ -54,14 +54,14 @@ class DecisionTreeEvaluator():
         svc_classifier = SVC(decision_function_shape='ovo')
 
         self.estimator_collection = {
-            'LogisticRegression': logistic_regression_classifier,
-            'KNeighborsClassifier': kn_classifier,
-            'DecisionTreeClassifier': decision_tree_classifier,
+            # 'LogisticRegression': logistic_regression_classifier,
+            # 'KNeighborsClassifier': kn_classifier,
+            # 'DecisionTreeClassifier': decision_tree_classifier,
             'GaussianNB': gaussian_nb_classifier,
-            'RandomForestClassifier': random_forest_classifier,
-            'XGBClassifier': xgb_classifier,
-            'LGBMClassifier': lgb_classifier,
-            'SVC': svc_classifier
+            # 'RandomForestClassifier': random_forest_classifier,
+            # 'XGBClassifier': xgb_classifier,
+            # 'LGBMClassifier': lgb_classifier,
+            # 'SVC': svc_classifier
         }
         
         self.encoder_collection = [
@@ -133,7 +133,7 @@ class DecisionTreeEvaluator():
         for encoder_name in self.encoder_collection:
             print('Benchmarking encoder model:', encoder_name)
 
-    def benchmark_model(self, encoder_batch_size, number_of_tags, validation=False, transformer_name=None, transformer_model_path=None, outside_dataset=False):
+    def benchmark_model(self, encoder_batch_size, number_of_tags, validation=False, transformer_name=None, transformer_model_path=None, outside_dataset=False, base_model_evaluation=False):
         
         if transformer_model_path:
             self.tokenizer = AutoTokenizer.from_pretrained(transformer_name)            
@@ -151,8 +151,8 @@ class DecisionTreeEvaluator():
         if outside_dataset:
             self.__read_train_data(number_of_tags, outside_dataset=True)
             if validation:
-                self.__read_validation_data(number_of_tags, other_dataset=True)
-            self.__read_test_data(number_of_tags, other_dataset=True)
+                self.__read_validation_data(number_of_tags, outside_dataset=True)
+            self.__read_test_data(number_of_tags, outside_dataset=True)
         else:
             self.__read_train_data(number_of_tags)
             if validation:
@@ -187,10 +187,12 @@ class DecisionTreeEvaluator():
             print('Benchmarking estimator model:', estimator_name)
             
             classifierChainWrapper = ClassifierChainWrapper(estimator)
-            if validation:
-                classifierChainWrapper.fit(train_problem_statements, train_tags, validation_problem_statements, validation_tags)
-            else:
-                classifierChainWrapper.fit(train_problem_statements, train_tags)
+            
+            if not base_model_evaluation:
+                if validation:
+                    classifierChainWrapper.fit(train_problem_statements, train_tags, validation_problem_statements, validation_tags)
+                else:
+                    classifierChainWrapper.fit(train_problem_statements, train_tags)
 
             metrics_results = classifierChainWrapper.predict(test_problem_statements, test_tags)
             

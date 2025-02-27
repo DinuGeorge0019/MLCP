@@ -74,8 +74,8 @@ class BaseSentenceTransformerEncoderModel(K.Model):
         if self.num_classes > 2:
             metrics = [
                 # Label label-wise Metrics
-                LabelWiseF1Score(name='label_wise_f1_score', threshold=threshold),
-                LabelWiseAccuracy(name='label_wise_accuracy', threshold=threshold),
+                LabelWiseF1Score(name='label_wise_f1_score', threshold=threshold, num_labels=self.num_classes),
+                LabelWiseAccuracy(name='label_wise_accuracy', threshold=threshold, num_labels=self.num_classes),
                 # Macro Label Metrics
                 BinaryAccuracy(name='binary_accuracy', threshold=threshold), 
                 Precision(name='precision', thresholds=threshold), 

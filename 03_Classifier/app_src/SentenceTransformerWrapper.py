@@ -12,6 +12,7 @@ from tqdm import tqdm
 
 # local application/library specific imports
 from app_src.SentenceTransformerEncoderModel import SentenceTransformerEncoderModel
+from app_src.BaseSentenceTransformerEncoderModel import BaseSentenceTransformerEncoderModel
 from app_src.CustomMetrics import PrintScoresCallback, PrintValidationScoresCallback
 from app_config import AppConfig
 from app_src.common import set_random_seed
@@ -104,33 +105,43 @@ class SentenceTransformerWrapper():
         
         return tf_dataset
     
-    def train_model(self, train_dataset_path, val_dataset_path, epochs=5, batch_size=32, train_model=True, threshold=0.5, transformer_model_path=None):
+    def train_model(self, train_dataset_path, val_dataset_path, epochs=5, batch_size=32, threshold=0.5, transformer_model_path=None, base_model_evaluation=False):
         
         if transformer_model_path:
             self.transformer_model = TFAutoModel.from_pretrained(transformer_model_path)
         else:
             self.transformer_model = TFAutoModel.from_pretrained(self.model_name)
-        self.encoder_model = SentenceTransformerEncoderModel(self.transformer_model, self.number_of_tags)
         
-        self.__read_train_data(train_dataset_path)
-        self.__read_validation_data(val_dataset_path)
-        
-        self.train_dataset = self.__build_tf_dataset(self.train_dataset, batch_size)
-        self.validation_dataset = self.__build_tf_dataset(self.validation_dataset, batch_size)
-        
-        # Unfreeze the transformer layers
-        self.encoder_model.unfreeze_transformer()
-
-        # Compile the model
-        self.encoder_model.compile_model(run_eagerly=False, threshold=threshold)
-
-        if train_model:
+        if base_model_evaluation:
+            self.encoder_model = BaseSentenceTransformerEncoderModel(self.transformer_model, self.number_of_tags)
+            
+            # Unfreeze the transformer layers
+            self.encoder_model.unfreeze_transformer()
+    
+            # Compile the model
+            self.encoder_model.compile_model(run_eagerly=False, threshold=threshold)
+            
+        else:
+            self.encoder_model = SentenceTransformerEncoderModel(self.transformer_model, self.number_of_tags)
+            
+            self.__read_train_data(train_dataset_path)
+            self.__read_validation_data(val_dataset_path)
+            
+            self.train_dataset = self.__build_tf_dataset(self.train_dataset, batch_size)
+            self.validation_dataset = self.__build_tf_dataset(self.validation_dataset, batch_size)
+            
+            # Unfreeze the transformer layers
+            self.encoder_model.unfreeze_transformer()
+    
+            # Compile the model
+            self.encoder_model.compile_model(run_eagerly=False, threshold=threshold)
+    
             # Define callbacks
             callbacks = [
                 # Custom callback for printing validation scores
                 PrintValidationScoresCallback(),
                 # Early stopping callback
-                tf.keras.callbacks.EarlyStopping(monitor='val_subset_f1', mode='max', patience=3, restore_best_weights=True)
+                tf.keras.callbacks.EarlyStopping(monitor='val_label_wise_macro_f1', mode='max', patience=5, restore_best_weights=True)
             ]
             
             # Start training
@@ -140,38 +151,19 @@ class SentenceTransformerWrapper():
                 epochs=epochs,
                 callbacks=callbacks
             )
-        else:
-            _ = self.encoder_model({"input_ids": tf.zeros((1, 512), tf.int32),
-           "attention_mask": tf.zeros((1, 512), tf.int32)})
         
         # Save the model
-        self.encoder_model.save_weights(CONFIG['MODEL_SAVE_PATH'])
-        print(f"Model saved to {CONFIG['MODEL_SAVE_PATH']}")
+        # self.encoder_model.save_weights(CONFIG['MODEL_SAVE_PATH'])
+        # print(f"Model saved to {CONFIG['MODEL_SAVE_PATH']}")
     
-    def benchmark_model(self, test_dataset_path, batch_size=32, model_path=None, transformer_model_path=None):
+    def benchmark_model(self, test_dataset_path, batch_size=32, threshold=0.5):
         
         self.__read_test_data(test_dataset_path)
 
         # Convert test data to tf.data.Dataset
         self.test_dataset = self.__build_tf_dataset(self.test_dataset, batch_size)
-        if model_path and transformer_model_path:
-            self.transformer_model = TFAutoModel.from_pretrained(transformer_model_path)
-            self.encoder_model = SentenceTransformerEncoderModel(self.transformer_model, self.number_of_tags)
-
-            self.encoder_model.compile_model(run_eagerly=False)
-            
-            _ = self.encoder_model({"input_ids": tf.zeros((1, 512), tf.int32),
-           "attention_mask": tf.zeros((1, 512), tf.int32)})
-        
-            self.encoder_model.load_weights(model_path)
-        
-            print(f"Model loaded from {model_path}")
-        else:
-            print("Using the trained model")
             
         self.encoder_model.freeze_transformer()
-
-        # loaded_model.compile_model(run_eagerly=False)
 
         # Evaluate the model
         logs = self.encoder_model.evaluate(self.test_dataset)

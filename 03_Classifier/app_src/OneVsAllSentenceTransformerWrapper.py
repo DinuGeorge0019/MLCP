@@ -75,7 +75,7 @@ class OneVsAllSentenceTransformerWrapper():
         return tokens['input_ids'], tokens['attention_mask']
     
 
-    def train_model(self, train_dataset_path, val_dataset_path, epochs=5, batch_size=32, train_model=True, threshold=0.5, transformer_model_path=None, base_model_evaluation=False):
+    def train_model(self, train_dataset_path, val_dataset_path, epochs=5, batch_size=32, threshold=0.5, transformer_model_path=None, base_model_evaluation=False):
         
         self.__read_train_data(train_dataset_path)
         self.__read_validation_data(val_dataset_path)
@@ -183,7 +183,7 @@ class OneVsAllSentenceTransformerWrapper():
             
             self.models.append(encoder_model)
     
-    def benchmark_model(self, test_dataset_path, batch_size=32, model_path=None, transformer_model_path=None, threshold=0.5):
+    def benchmark_model(self, test_dataset_path, batch_size=32, threshold=0.5):
         
         self.__read_test_data(test_dataset_path)
         

@@ -67,24 +67,42 @@ class TransformerEvaluator():
             # Append the DataFrame to an existing CSV file
             df.to_csv(CONFIG[f'TOP_{number_of_tags}_BENCHMARK_TRANSFORMER_MODELS_PATH'], index=False, mode='a', header=False)
     
-    def evaluate_models(self, epochs, batch_size, number_of_tags=5, train_model=True, threshold=0.5, transformer_model_path=None):
+    def evaluate_models(self, epochs, batch_size, number_of_tags=5, transformer_model_path=None, train_dataset_path=None, val_dataset_path=None, test_dataset_path=None):
         for model in self.encoder_collection:
             print(f"Training and evaluating model: {model}")
             transformer_wrapper = SentenceTransformerWrapper(model, number_of_tags)
             transformer_wrapper.train_model(
-                train_dataset_path=CONFIG[f'TOP_{number_of_tags}_TRAINING_DATASET_PATH'],
-                val_dataset_path=CONFIG[f'TOP_{number_of_tags}_VALIDATION_DATASET_PATH'],
+                train_dataset_path=train_dataset_path,
+                val_dataset_path=val_dataset_path,
                 epochs=epochs,
                 batch_size=batch_size,
-                train_model=train_model,
-                threshold=threshold,
                 transformer_model_path=transformer_model_path
             )
             
             metrics = transformer_wrapper.benchmark_model(
-                test_dataset_path=CONFIG[f'TOP_{number_of_tags}_TESTING_DATASET_PATH'],
+                test_dataset_path=test_dataset_path,
                 batch_size=32
             )
             
             self.__save_metrics(model, model, metrics, number_of_tags)
 
+
+    def evaluate_base_models(self, epochs, batch_size, number_of_tags=5, transformer_model_path=None, train_dataset_path=None, val_dataset_path=None, test_dataset_path=None):
+        for model in self.encoder_collection:
+            print(f"Training and evaluating model: {model}")
+            transformer_wrapper = SentenceTransformerWrapper(model, number_of_tags)
+            transformer_wrapper.train_model(
+                train_dataset_path=train_dataset_path, 
+                val_dataset_path=val_dataset_path, 
+                epochs=epochs,
+                batch_size=batch_size,
+                transformer_model_path=transformer_model_path,
+                base_model_evaluation=True
+            )
+            
+            metrics = transformer_wrapper.benchmark_model(
+                test_dataset_path=test_dataset_path,
+                batch_size=32
+            )
+            
+            self.__save_metrics(model, model, metrics, number_of_tags)
