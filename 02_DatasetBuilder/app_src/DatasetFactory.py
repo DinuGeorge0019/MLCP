@@ -27,6 +27,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from collections import Counter
 from transformers import AutoTokenizer, TFAutoModel, AutoModel
 from tqdm.auto import tqdm
+import networkx as nx
 
 # define configuration proxy
 working_dir = os.path.dirname(os.getcwd())
@@ -209,29 +210,35 @@ class DatasetFactory:
         min_statement_length = df['problem_statement'].apply(len).min()
         max_statement_length = df['problem_statement'].apply(len).max()
         mean_statement_length = df['problem_statement'].apply(len).mean()
-        
+        std_statement_length = df['problem_statement'].apply(len).std()
+
         output_file.write(f"Minimum problem statement length: {min_statement_length}\n")
         output_file.write(f"Maximum problem statement length: {max_statement_length}\n")
         output_file.write(f"Mean problem statement length: {mean_statement_length}\n\n")
+        output_file.write(f"Standard deviation of problem statement length: {std_statement_length}\n\n")
 
         # Get the minimum and maximum problem editorials lengths
         min_editorial_length = df['problem_editorial'].apply(len).min()
         max_editorial_length = df['problem_editorial'].apply(len).max()
         mean_editorial_length = df['problem_editorial'].apply(len).mean()
-        
+        std_editorial_length = df['problem_editorial'].apply(len).std()
+
         output_file.write(f"Minimum problem editorial length: {min_editorial_length}\n")
         output_file.write(f"Maximum problem editorial length: {max_editorial_length}\n")
         output_file.write(f"Mean problem editorial length: {mean_editorial_length}\n\n")
+        output_file.write(f"Standard deviation of problem editorial length: {std_editorial_length}\n\n")
 
         # Get the minimum and maximum problem solution lengths
         min_solution_length = df['problem_solution'].apply(len).min()
         max_solution_length = df['problem_solution'].apply(len).max()
         mean_statement_length = df['problem_solution'].apply(len).mean()
-        
+        std_solution_length = df['problem_solution'].apply(len).std()
+
         output_file.write(f"Minimum problem solution length: {min_solution_length}\n")
         output_file.write(f"Maximum problem solution length: {max_solution_length}\n")
         output_file.write(f"Mean problem solution length: {mean_statement_length}\n\n")
-        
+        output_file.write(f"Standard deviation of problem solution length: {std_solution_length}\n\n")
+
         # Get the number of difficulty classes
         number_of_difficulty_classes = len(difficulty_counts)
         output_file.write(f"Number of difficulty classes: {number_of_difficulty_classes}\n\n")        
@@ -259,12 +266,12 @@ class DatasetFactory:
         tags = list(tag_counts.keys())
         counts = list(tag_counts.values())
         
-        plt.figure(figsize=(20, 6))
+        plt.figure(figsize=(20, 10))
         plt.bar(tags, counts, color='skyblue')
-        plt.xlabel('Tags')
-        plt.ylabel('Number of Problems')
-        plt.title('Distribution of Tag Classes')
-        plt.xticks(rotation=90)
+        plt.xlabel('Tags', fontsize=24)
+        plt.ylabel('Number of Problems', fontsize=24)
+        plt.xticks(rotation=90, fontsize=24)
+        plt.yticks(fontsize=24)
         plt.tight_layout()
         
         plt.savefig(CONFIG['TAG_DISTRIBUTION_PLOT_PATH'])
@@ -1038,7 +1045,14 @@ class DatasetFactory:
         for tag, count in tag_counts.items():
             print(f"{tag}: {count}")
             
+    def get_dataset_top_tags(self, top_n_tags=5):
+        # Load the dataset
+        unique_tags = self.get_unique_tags(top_n_tags, outside_dataset=True)
         
+        print(unique_tags)
+        
+
+
     ############################################################################################################
 
     def __create_similarity_graph(self, embeddings, threshold=0.8):
@@ -1185,4 +1199,86 @@ class DatasetFactory:
         
         balanced_df.to_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_TRAINING_DATASET_PATH'], index=False)
 
+    def get_label_binary_df(self, df, tag_column="problem_tags"):
+        """
+        Converts a DataFrame column containing lists of tags into a binary DataFrame.
+        Each column in the new DataFrame corresponds to one unique tag, with 1 if the tag is present, 0 otherwise.
+        """
+        unique_tags = set()
+        for tags in df[tag_column]:
+            unique_tags.update(tags)
+        unique_tags = sorted(list(unique_tags))
+        
+        binary_rows = []
+        for tags in df[tag_column]:
+            row = {tag: 1 if tag in tags else 0 for tag in unique_tags}
+            binary_rows.append(row)
+        return pd.DataFrame(binary_rows)
+    
+    def analyze_label_relationships(self, df_labels):
+        """
+        Analyzes the relationships between labels by computing the Pearson correlation
+        between each pair of binary label columns.
+        
+        Args:
+            df_labels (pd.DataFrame): A DataFrame where each column is a binary indicator for a label.
+            threshold (float): Only label pairs with correlation above this value are returned.
+            
+        Returns:
+            similar_pairs (list): A list of tuples (label1, label2, correlation)
+                                  for label pairs with correlation above the threshold.
+        """
+        # Compute the correlation matrix for the binary labels.
+        # (For binary variables, Pearson correlation is a rough measure of co-occurrence.)
+        corr_matrix = df_labels.corr()
+        
+        labels = corr_matrix.columns.tolist()
+        
+        # Iterate over the upper-triangle of the correlation matrix.
+        for i in range(len(labels)):
+            for j in range(i + 1, len(labels)):
+                corr_value = corr_matrix.iloc[i, j]
+                print(f"Correlation between {labels[i]} and {labels[j]}: {corr_value:.2f}")
+            
+        #         if corr_value > threshold:
+        #             similar_pairs.append((labels[i], labels[j], corr_value))
+        
+        # # Sort pairs by correlation in descending order.
+        # similar_pairs = sorted(similar_pairs, key=lambda x: x[2], reverse=True)
+        # return similar_pairs
 
+    def analyze_tag_distribution(self, top_n_tags):
+        
+        print(f"Analyzing tag distribution for top {top_n_tags} tags")
+        
+        df_training = pd.read_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_TESTING_WO_TAG_ENCODING_DATASET_PATH'])
+        df_testing = pd.read_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_TESTING_WO_TAG_ENCODING_DATASET_PATH'])
+        df_validation = pd.read_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_VALIDATION_WO_TAG_ENCODING_DATASET_PATH'])
+        
+        # Concatenate all dataframes
+        df = pd.concat([df_training, df_testing, df_validation], ignore_index=True)
+                
+        # Ensure the tags are in list format
+        df['problem_tags'] = df['problem_tags'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
+            
+        # Ensure the tags are in list format
+        df['problem_tags'] = df['problem_tags'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
+    
+        # Initialize the counter for all tags
+        tag_counts = defaultdict(int)
+
+        # Iterate over all problems and count each tag
+        for tag_list in df['problem_tags']:
+            for tag in tag_list:
+                tag_counts[tag] += 1
+                
+        sorted_tag_counts = dict(sorted(tag_counts.items(), key=lambda item: item[1], reverse=True))
+
+        print(sorted_tag_counts)
+    
+        # Convert the tag lists into a binary DataFrame.
+        df_labels = self.get_label_binary_df(df, tag_column="problem_tags")
+        
+        # Analyze label relationships using a correlation threshold, e.g. 0.5.
+        self.analyze_label_relationships(df_labels)
+        

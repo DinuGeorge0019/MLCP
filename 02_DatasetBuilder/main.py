@@ -37,11 +37,14 @@ def main():
         ('get_dataset_tags_and_distribution', datasetFactory.get_dataset_tags_and_distribution, 'Get dataset tags and distribution.'),
         ('build_basic_nli_dataset', datasetFactory.build_basic_nli_dataset, 'Build basic NLI dataset.'),
         ('build_outside_basic_nli_dataset', datasetFactory.build_outside_basic_nli_dataset, 'Build outside basic NLI dataset.'),
+        ('get_dataset_top_tags', datasetFactory.get_dataset_top_tags, 'Get dataset top tags.'),
+        ('analyze_tag_distribution', datasetFactory.analyze_tag_distribution, 'Analyze tag distribution.')
     ]
 
     for arg, _, description in arguments:
         if arg == "build_train_test_dataset"  or arg == "build_outside_train_test_dataset" or arg == "build_outside_nli_dataset" or arg == 'check_nli_dataset' or arg == 'augument_train_data' or arg == 'build_nli_dataset' or \
-                    arg == 'build_train_test_dataset_without_tag_encoding' or arg == 'build_outside_train_test_dataset_without_tag_encoding' or arg == 'get_dataset_tags_and_distribution' or arg == 'build_basic_nli_dataset' or arg == 'build_outside_basic_nli_dataset':
+                    arg == 'build_train_test_dataset_without_tag_encoding' or arg == 'build_outside_train_test_dataset_without_tag_encoding' or arg == 'get_dataset_tags_and_distribution' or arg == 'build_basic_nli_dataset' or arg == 'build_outside_basic_nli_dataset' \
+                        or arg == 'get_dataset_top_tags' or arg == 'analyze_tag_distribution':
             parser.add_argument(f'--{arg}', type=int, help=description, nargs=1, metavar='TOP_N')
         else:
             parser.add_argument(f'--{arg}', action='store_true', help=description)
@@ -82,6 +85,12 @@ def main():
                 fun(top_n)
             elif arg == 'build_outside_basic_nli_dataset':
                 top_n = params.build_outside_basic_nli_dataset[0]
+                fun(top_n)
+            elif arg == 'get_dataset_top_tags':
+                top_n = params.get_dataset_top_tags[0]
+                fun(top_n)
+            elif arg == 'analyze_tag_distribution':
+                top_n = params.analyze_tag_distribution[0]
                 fun(top_n)
             else:
                 fun()
