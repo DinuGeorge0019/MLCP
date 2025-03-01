@@ -9,7 +9,6 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.naive_bayes import GaussianNB
-from sklearn.ensemble import GradientBoostingClassifier
 from xgboost import XGBClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from lightgbm import LGBMClassifier
@@ -18,7 +17,6 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 # local application/library specific imports
 from app_config import AppConfig
-from app_src import ClassifierChainWrapper
 from app_src import CustomEncoder
 from transformers import AutoTokenizer, TFAutoModel
 from app_src.SentenceTransformerEncoderModel import SentenceTransformerEncoderModel
@@ -50,19 +48,16 @@ class OneVsAllDecisionTreeEvaluator():
         decision_tree_classifier = DecisionTreeClassifier(random_state=RANDOM_STATE)
         gaussian_nb_classifier = GaussianNB()
         random_forest_classifier = RandomForestClassifier(random_state=RANDOM_STATE)
-        # gradient_boosting_classifier = GradientBoostingClassifier(random_state=RANDOM_STATE)
         xgb_classifier = XGBClassifier(random_state=RANDOM_STATE)
         lgb_classifier = LGBMClassifier(random_state=RANDOM_STATE)
         svc_classifier = SVC(decision_function_shape='ovo')
 
         self.estimator_collection = {
-            # 'CatBoostClassifier': catb_classifier,
             'LogisticRegression': logistic_regression_classifier,
             'KNeighborsClassifier': kn_classifier,
             'DecisionTreeClassifier': decision_tree_classifier,
             'GaussianNB': gaussian_nb_classifier,
             'RandomForestClassifier': random_forest_classifier,
-            # 'GradientBoostingClassifier': gradient_boosting_classifier,
             'XGBClassifier': xgb_classifier,
             'LGBMClassifier': lgb_classifier,
             'SVC': svc_classifier
@@ -70,16 +65,17 @@ class OneVsAllDecisionTreeEvaluator():
         
         self.encoder_collection = [
             'sentence-transformers/all-mpnet-base-v2',
-            # 'sentence-transformers/multi-qa-mpnet-base-dot-v1',
-            # 'sentence-transformers/multi-qa-distilbert-cos-v1',
-            # 'sentence-transformers/multi-qa-MiniLM-L6-cos-v1',
-            # 'sentence-transformers/all-distilroberta-v1',
-            # 'sentence-transformers/all-MiniLM-L12-v2',
-            # 'sentence-transformers/all-MiniLM-L6-v2',
-            # 'microsoft/mpnet-base',
-            # 'roberta-base',
-            # 'bert-base-uncased',
-            # 'tfidf'
+            'sentence-transformers/multi-qa-mpnet-base-dot-v1',
+            'sentence-transformers/multi-qa-distilbert-cos-v1',
+            'sentence-transformers/multi-qa-MiniLM-L6-cos-v1',
+            'sentence-transformers/all-distilroberta-v1',
+            'sentence-transformers/all-MiniLM-L12-v2',
+            'sentence-transformers/all-MiniLM-L6-v2',
+            'sentence-transformers/paraphrase-multilingual-mpnet-base-v2',
+            'sentence-transformers/paraphrase-albert-small-v2',
+            'microsoft/codebert-base',
+            'roberta-base',
+            'bert-base-uncased'
         ]
 
 

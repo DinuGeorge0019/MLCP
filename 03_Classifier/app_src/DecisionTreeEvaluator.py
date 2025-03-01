@@ -9,7 +9,6 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.naive_bayes import GaussianNB
-from sklearn.ensemble import GradientBoostingClassifier
 from xgboost import XGBClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from lightgbm import LGBMClassifier
@@ -21,7 +20,6 @@ from app_config import AppConfig
 from app_src import ClassifierChainWrapper
 from app_src import CustomEncoder
 from transformers import AutoTokenizer, TFAutoModel
-from app_src.SentenceTransformerEncoderModel import SentenceTransformerEncoderModel
 
 # define configuration proxy
 configProxy = AppConfig()
@@ -54,28 +52,29 @@ class DecisionTreeEvaluator():
         svc_classifier = SVC(decision_function_shape='ovo')
 
         self.estimator_collection = {
-            # 'LogisticRegression': logistic_regression_classifier,
-            # 'KNeighborsClassifier': kn_classifier,
-            # 'DecisionTreeClassifier': decision_tree_classifier,
+            'LogisticRegression': logistic_regression_classifier,
+            'KNeighborsClassifier': kn_classifier,
+            'DecisionTreeClassifier': decision_tree_classifier,
             'GaussianNB': gaussian_nb_classifier,
-            # 'RandomForestClassifier': random_forest_classifier,
-            # 'XGBClassifier': xgb_classifier,
-            # 'LGBMClassifier': lgb_classifier,
-            # 'SVC': svc_classifier
+            'RandomForestClassifier': random_forest_classifier,
+            'XGBClassifier': xgb_classifier,
+            'LGBMClassifier': lgb_classifier,
+            'SVC': svc_classifier
         }
         
         self.encoder_collection = [
             'sentence-transformers/all-mpnet-base-v2',
-            # 'sentence-transformers/multi-qa-mpnet-base-dot-v1',
-            # 'sentence-transformers/multi-qa-distilbert-cos-v1',
-            # 'sentence-transformers/multi-qa-MiniLM-L6-cos-v1',
-            # 'sentence-transformers/all-distilroberta-v1',
-            # 'sentence-transformers/all-MiniLM-L12-v2',
-            # 'sentence-transformers/all-MiniLM-L6-v2',
-            # 'microsoft/mpnet-base',
-            # 'roberta-base',
-            # 'bert-base-uncased',
-            # 'tfidf'
+            'sentence-transformers/multi-qa-mpnet-base-dot-v1',
+            'sentence-transformers/multi-qa-distilbert-cos-v1',
+            'sentence-transformers/multi-qa-MiniLM-L6-cos-v1',
+            'sentence-transformers/all-distilroberta-v1',
+            'sentence-transformers/all-MiniLM-L12-v2',
+            'sentence-transformers/all-MiniLM-L6-v2',
+            'sentence-transformers/paraphrase-multilingual-mpnet-base-v2',
+            'sentence-transformers/paraphrase-albert-small-v2',
+            'microsoft/codebert-base',
+            'roberta-base',
+            'bert-base-uncased'
         ]
 
 
@@ -90,12 +89,6 @@ class DecisionTreeEvaluator():
             self.train_dataset = pd.read_csv(CONFIG[f'OUTSIDE_TOP_{number_of_tags}_TRAINING_DATASET_PATH'])
         else:
             self.train_dataset = pd.read_csv(CONFIG[f'TOP_{number_of_tags}_TRAINING_DATASET_PATH'])
-    
-    def __read_validation_data(self, number_of_tags, outside_dataset=False):
-        if outside_dataset:
-            self.validation_dataset = pd.read_csv(CONFIG[f'OUTSIDE_TOP_{number_of_tags}_VALIDATION_DATASET_PATH'])
-        else:
-            self.validation_dataset = pd.read_csv(CONFIG[f'TOP_{number_of_tags}_VALIDATION_DATASET_PATH'])
     
     def __encode_with_tfidf(self, problem_statements):
         return self.tfidf_vectorizer.fit_transform(problem_statements).toarray()
@@ -126,14 +119,8 @@ class DecisionTreeEvaluator():
         else:
             # Append the DataFrame to an existing CSV file
             df.to_csv(CONFIG[f'TOP_{number_of_tags}_BENCHMARK_BASELINE_MODELS_PATH'], index=False, mode='a', header=False)
-
-
-    def benchmark_base_models(self, encoder_batch_size, number_of_tags, validation=False):
-        
-        for encoder_name in self.encoder_collection:
-            print('Benchmarking encoder model:', encoder_name)
-
-    def benchmark_model(self, encoder_batch_size, number_of_tags, validation=False, transformer_name=None, transformer_model_path=None, outside_dataset=False, base_model_evaluation=False):
+    
+    def benchmark_estimators(self, encoder_batch_size, number_of_tags, estimator_name=None, transformer_name=None, transformer_model_path=None, outside_dataset=False, base_model_evaluation=False):
         
         if transformer_model_path:
             self.tokenizer = AutoTokenizer.from_pretrained(transformer_name)            
@@ -150,50 +137,31 @@ class DecisionTreeEvaluator():
         
         if outside_dataset:
             self.__read_train_data(number_of_tags, outside_dataset=True)
-            if validation:
-                self.__read_validation_data(number_of_tags, outside_dataset=True)
             self.__read_test_data(number_of_tags, outside_dataset=True)
         else:
             self.__read_train_data(number_of_tags)
-            if validation:
-                self.__read_validation_data(number_of_tags)
             self.__read_test_data(number_of_tags)
-            
+        
+        # Encode the problem statements and tags for training
         train_problem_statements = self.__encode_problem_statements(self.encoder, self.train_dataset['problem_statement'].tolist(), batch_size=encoder_batch_size)
         train_tags = self.__encode_tags(self.train_dataset['problem_tags'].tolist())   
                               
-        # print('Train problem statements shape:', train_problem_statements.shape)
-        # print(train_problem_statements)
-
-        # print('Train tags shape:', train_tags.shape)   
-        # print(train_tags)
-        
-        if validation:
-            validation_problem_statements = self.__encode_problem_statements(self.encoder, self.validation_dataset['problem_statement'].tolist(), batch_size=encoder_batch_size)
-            validation_tags = self.__encode_tags(self.validation_dataset['problem_tags'].tolist())
-        
+        # Encode the problem statements and tags for testing
         test_problem_statements = self.__encode_problem_statements(self.encoder, self.test_dataset['problem_statement'].tolist(), batch_size=encoder_batch_size)
         test_tags = self.__encode_tags(self.test_dataset['problem_tags'].tolist())
         
-        # print('Test problem statements shape:', test_problem_statements.shape)
-        # print('Test problem statements type:', test_problem_statements.dtype)
-        # print(test_problem_statements)
-
-        # print('Test tags shape:', test_tags.shape)   
-        # print('Test tags type:',test_tags.dtype)
-        # print(test_tags)
-        
-        for estimator_name, estimator in self.estimator_collection.items():
-            print('Benchmarking estimator model:', estimator_name)
+        # Start benchmarking the estimator models
+        for name, estimator in self.estimator_collection.items():
+            if estimator_name and name != estimator_name:
+                continue
+            
+            print('Benchmarking estimator model:', name)
             
             classifierChainWrapper = ClassifierChainWrapper(estimator)
             
             if not base_model_evaluation:
-                if validation:
-                    classifierChainWrapper.fit(train_problem_statements, train_tags, validation_problem_statements, validation_tags)
-                else:
                     classifierChainWrapper.fit(train_problem_statements, train_tags)
 
             metrics_results = classifierChainWrapper.predict(test_problem_statements, test_tags)
             
-            self.__save_metrics(self.encoder, estimator_name, metrics_results, number_of_tags)
+            self.__save_metrics(self.encoder, name, metrics_results, number_of_tags)

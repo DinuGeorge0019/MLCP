@@ -23,7 +23,7 @@ class ClassifierChainWrapper():
     def __init__(self, base_estimator):
         self.classifier_chain = ClassifierChain(classifier=base_estimator)
         
-    def fit(self, train_problem_statements, train_tags, validation_problem_statements=None, validation_tags=None):        
+    def fit(self, train_problem_statements, train_tags):        
         return self.classifier_chain.fit(train_problem_statements, train_tags)
     
     def predict(self, test_problem_statements_embeddings, test_tags):

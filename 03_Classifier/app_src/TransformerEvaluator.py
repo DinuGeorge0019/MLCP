@@ -37,18 +37,18 @@ class TransformerEvaluator():
     def __define_models(self):
 
         self.encoder_collection = [
-            'sentence-transformers/all-mpnet-base-v2'
-            # 'sentence-transformers/multi-qa-mpnet-base-dot-v1',
-            # 'sentence-transformers/multi-qa-distilbert-cos-v1',
-            # 'sentence-transformers/multi-qa-MiniLM-L6-cos-v1',
-            # 'sentence-transformers/all-distilroberta-v1',
-            # 'sentence-transformers/all-MiniLM-L12-v2',
-            # 'sentence-transformers/all-MiniLM-L6-v2',
-            # 'microsoft/mpnet-base',
-            # 'roberta-base',
-            # 'bert-base-uncased'
-            # 'facebook/bart-large-mnli'
-            # 'microsoft/deberta-v3-base'
+            'sentence-transformers/all-mpnet-base-v2',
+            'sentence-transformers/multi-qa-mpnet-base-dot-v1',
+            'sentence-transformers/multi-qa-distilbert-cos-v1',
+            'sentence-transformers/multi-qa-MiniLM-L6-cos-v1',
+            'sentence-transformers/all-distilroberta-v1',
+            'sentence-transformers/all-MiniLM-L12-v2',
+            'sentence-transformers/all-MiniLM-L6-v2',
+            'sentence-transformers/paraphrase-multilingual-mpnet-base-v2',
+            'sentence-transformers/paraphrase-albert-small-v2',
+            'microsoft/codebert-base',
+            'roberta-base',
+            'bert-base-uncased'
         ]
     
     def __save_metrics(self, encoder, estimator_name, metrics_results, number_of_tags):
@@ -66,9 +66,11 @@ class TransformerEvaluator():
         else:
             # Append the DataFrame to an existing CSV file
             df.to_csv(CONFIG[f'TOP_{number_of_tags}_BENCHMARK_TRANSFORMER_MODELS_PATH'], index=False, mode='a', header=False)
-    
-    def evaluate_models(self, epochs, batch_size, number_of_tags=5, transformer_model_path=None, train_dataset_path=None, val_dataset_path=None, test_dataset_path=None):
-        for model in self.encoder_collection:
+
+    def evaluate_model(self, epochs, batch_size, number_of_tags=5, model=None, transformer_model_path=None, train_dataset_path=None, val_dataset_path=None, test_dataset_path=None):
+        if model is None:
+            raise Exception("Model name is required for evaluation")
+        else:
             print(f"Training and evaluating model: {model}")
             transformer_wrapper = SentenceTransformerWrapper(model, number_of_tags)
             transformer_wrapper.train_model(
@@ -86,9 +88,10 @@ class TransformerEvaluator():
             
             self.__save_metrics(model, model, metrics, number_of_tags)
 
-
-    def evaluate_base_models(self, epochs, batch_size, number_of_tags=5, transformer_model_path=None, train_dataset_path=None, val_dataset_path=None, test_dataset_path=None):
-        for model in self.encoder_collection:
+    def evaluate_base_model(self, epochs, batch_size, number_of_tags=5, model=None, transformer_model_path=None, train_dataset_path=None, val_dataset_path=None, test_dataset_path=None):
+        if model is None:
+            raise Exception("Model name is required for evaluation")
+        else:
             print(f"Training and evaluating model: {model}")
             transformer_wrapper = SentenceTransformerWrapper(model, number_of_tags)
             transformer_wrapper.train_model(
@@ -106,3 +109,12 @@ class TransformerEvaluator():
             )
             
             self.__save_metrics(model, model, metrics, number_of_tags)
+
+    def evaluate_models(self, epochs, batch_size, number_of_tags=5, transformer_model_path=None, train_dataset_path=None, val_dataset_path=None, test_dataset_path=None):
+        for model in self.encoder_collection:
+            self.evaluate_model(epochs, batch_size, number_of_tags, model, transformer_model_path, train_dataset_path, val_dataset_path, test_dataset_path)
+
+
+    def evaluate_base_models(self, epochs, batch_size, number_of_tags=5, transformer_model_path=None, train_dataset_path=None, val_dataset_path=None, test_dataset_path=None):
+        for model in self.encoder_collection:
+            self.evaluate_base_model(epochs, batch_size, number_of_tags, model, transformer_model_path, train_dataset_path, val_dataset_path, test_dataset_path)
