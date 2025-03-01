@@ -62,14 +62,14 @@ class Config(object):
             "TOP_20_BENCHMARK_ONEVSALL_BASELINE_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', 'top_20_DecisionTree_onevsall_results.csv'), 
             
             ############################################################################################################
-            "TOP_5_BENCHMARK_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_5_SingleModelClassifier_results.csv'),
-            "TOP_10_BENCHMARK_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_10_SingleModelClassifier_results.csv'),
-            "TOP_20_BENCHMARK_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_20_SingleModelClassifier_results.csv'),
+            "TOP_5_BENCHMARK_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', 'top_5_SingleModelClassifier_results.csv'),
+            "TOP_10_BENCHMARK_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', 'top_10_SingleModelClassifier_results.csv'),
+            "TOP_20_BENCHMARK_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', 'top_20_SingleModelClassifier_results.csv'),
             
             ############################################################################################################
-            "TOP_5_BENCHMARK_ONEVSALL_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_5_OneVsAll_results.csv'),
-            "TOP_10_BENCHMARK_ONEVSALL_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_10_OneVsAll_results.csv'),
-            "TOP_20_BENCHMARK_ONEVSALL_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', '01_Baseline_Models', 'top_20_OneVsAll_results.csv'),
+            "TOP_5_BENCHMARK_ONEVSALL_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', 'top_5_OneVsAll_results.csv'),
+            "TOP_10_BENCHMARK_ONEVSALL_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', 'top_10_OneVsAll_results.csv'),
+            "TOP_20_BENCHMARK_ONEVSALL_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', 'top_20_OneVsAll_results.csv'),
             
             ############################################################################################################          
             "TOP_5_NLI_TRAINING_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '04_NLI_Datasets', 'AUGMENTED_NLI_DATASETS', 'OUR_DATASET', 'top_5_nli_training_dataset.csv'),

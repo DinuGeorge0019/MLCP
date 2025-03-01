@@ -120,7 +120,7 @@ class DecisionTreeEvaluator():
             # Append the DataFrame to an existing CSV file
             df.to_csv(CONFIG[f'TOP_{number_of_tags}_BENCHMARK_BASELINE_MODELS_PATH'], index=False, mode='a', header=False)
     
-    def benchmark_estimators(self, encoder_batch_size, number_of_tags, estimator_name=None, transformer_name=None, transformer_model_path=None, outside_dataset=False, base_model_evaluation=False):
+    def benchmark_estimators(self, encoder_batch_size, number_of_tags, estimator_name=None, transformer_name=None, transformer_model_path=None, outside_dataset=False):
         
         if transformer_model_path:
             self.tokenizer = AutoTokenizer.from_pretrained(transformer_name)            
@@ -159,8 +159,7 @@ class DecisionTreeEvaluator():
             
             classifierChainWrapper = ClassifierChainWrapper(estimator)
             
-            if not base_model_evaluation:
-                    classifierChainWrapper.fit(train_problem_statements, train_tags)
+            classifierChainWrapper.fit(train_problem_statements, train_tags)
 
             metrics_results = classifierChainWrapper.predict(test_problem_statements, test_tags)
             
