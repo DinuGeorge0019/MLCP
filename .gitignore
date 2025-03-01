@@ -4,7 +4,9 @@ gpt_venv/
 
 __pycache__/
 
-05_MODELS/
+05_MODELS/01_DomainAdaped_Models/*
+!05_MODELS/01_DomainAdaped_Models/.gitkeep
+
 todo.txt
 conda commands.txt
 
