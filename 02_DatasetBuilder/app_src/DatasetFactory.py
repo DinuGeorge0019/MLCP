@@ -643,6 +643,162 @@ class DatasetFactory:
         
         return nli_df
 
+    def build_nli_dataset_dynamic_sampling(self, top_n_tags=5):
+        random.seed(RANDOM_STATE)
+        
+        #BEST ALPHA 2 BETA 6
+        
+        ALPHA = 2 # AUGUMENTATION FACTOR / MULTIPLY THE BALANCED DATASET BY THIS FACTOR
+        BETA = 6 # MAXIMUM NUMBER OF PAIRS PER STATEMENT
+        
+        unique_tags = self.get_unique_tags(top_n_tags)
+                
+        self.df_train = pd.read_csv(CONFIG[f'BASE_TRAINING_DATASET_PATH'])
+                
+        self.df_train = self.build_filtered_dataset(self.df_train, unique_tags)
+        
+        self.df_train = self.df_train.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_solution', 'problem_input', 'problem_output', 'problem_dificulty', 'file_name', 'editorial_link', 'problem_editorial'])
+
+        self.check_dataset_distribution(self.df_train)
+
+        # Ensure the tags are in list format
+        self.df_train['problem_tags'] = self.df_train['problem_tags'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
+        
+        # Compute tag embeddings for semantic similarity
+        model = TFAutoModel.from_pretrained('sentence-transformers/all-mpnet-base-v2')
+        tag_embeddings = self.encode_problem_statements(model, unique_tags)
+        tag_similarity_matrix = cosine_similarity(tag_embeddings)
+    
+        # Initialize a list to store the NLI training data
+        nli_data = []        
+        
+        # Assume unique_tags and df_train are already defined
+        max_pairs_per_statement = BETA  # For example, allow at most 3 pairs per problem statement
+
+        entailment_counts = {tag: 0 for tag in unique_tags}
+        
+        # Iterate over each row in the DataFrame
+        for index, row in self.df_train.iterrows():
+            problem_statement = row['problem_statement']
+            problem_tags = row['problem_tags']
+
+            # Check if the problem has all the tags from unique_tags
+            if set(problem_tags) == set(unique_tags):
+                continue
+            
+            # Create pairs of (problem statement, actual tag)
+            actual_tags = list(set(problem_tags) & set(unique_tags))
+            if not actual_tags:
+                continue  # Skip if there are no common tags
+            
+            # Find all non-actual tags
+            non_actual_tags = set(unique_tags) - set(actual_tags)
+            if not non_actual_tags:
+                continue  # Skip if there are no common tags
+            
+            # Dynamic sampling based on semantic similarity
+            hard_negatives = []
+            for actual_tag in actual_tags:
+                actual_idx = unique_tags.index(actual_tag)
+                non_actual_similarities = [(non_tag, tag_similarity_matrix[actual_idx][unique_tags.index(non_tag)]) for non_tag in non_actual_tags]
+                non_actual_similarities = sorted(non_actual_similarities, key=lambda x: x[1], reverse=True)
+
+                # Select top-k hard negatives based on similarity
+                hard_negatives.extend([non_tag for non_tag, sim in non_actual_similarities[:max_pairs_per_statement]])
+            
+            # Generate pairs
+            all_pairs = []
+            for actual_tag in actual_tags:
+                for non_tag in hard_negatives:
+                    pair = {
+                        'problem_statement': problem_statement,
+                        'entailment': actual_tag,
+                        'contradiction': non_tag
+                    }
+                    all_pairs.append(pair)
+            
+            # Limit pairs per problem statement to avoid over-representation
+            if len(all_pairs) > max_pairs_per_statement:
+                sampled_pairs = random.sample(all_pairs, max_pairs_per_statement)
+            else:
+                sampled_pairs = all_pairs
+                    
+            # Optionally update global counters if you're tracking usage per tag
+            for pair in sampled_pairs:
+                entailment_counts[pair['entailment']] += 1
+                nli_data.append(pair)
+                
+        # Filter out entries where contradiction is None
+        nli_data = [entry for entry in nli_data if entry['entailment'] is not None]
+        
+        # Filter out entries where contradiction is None
+        nli_data = [entry for entry in nli_data if entry['contradiction'] is not None]
+        
+        # Convert the NLI data to a DataFrame
+        nli_df = pd.DataFrame(nli_data)
+        
+        target = max(entailment_counts.values()) * ALPHA
+        
+        oversampled_subsets = []
+        for tag in unique_tags:
+            subset = nli_df[nli_df['entailment'] == tag]
+            current_count = len(subset)
+            if current_count < target:
+                n_needed = target - current_count
+                additional_samples = resample(
+                    subset,
+                    replace=True,
+                    n_samples=n_needed,
+                    random_state=RANDOM_STATE
+                )
+                balanced_subset = pd.concat([subset, additional_samples])
+            else:
+                balanced_subset = subset
+            oversampled_subsets.append(balanced_subset)
+    
+        # Combine the oversampled subsets into one DataFrame
+        nli_df = pd.concat(oversampled_subsets).reset_index(drop=True)        
+        
+        # Shuffle the dataset
+        nli_df = nli_df.sample(frac=1, random_state=RANDOM_STATE).reset_index(drop=True)
+
+        print("Dataset size:", len(nli_df))
+                
+        # Save the balanced NLI training dataset to a CSV file
+        nli_df.to_csv(CONFIG[f'TOP_{top_n_tags}_NLI_DYNAMIC_SAMPLING_TRAINING_DATASET_PATH'], index=False)
+
+        self.check_nli_dataset(top_n_tags, outside_dataset=False)
+        
+        return nli_df
+
+    def update_tags_to_descriptions(self, top_n_tags=5):
+        tags_with_descriptions = {
+            "greedy":"A greedy algorithm iteratively makes locally optimal choices at each step, aiming to reach a global optimum without reconsidering previous decisions.",
+            "math":"Math problems involve numerical computations, algebraic manipulations, or geometric reasoning, often requiring mathematical formulas and insights.",
+            "implementation":"Implementation problems test coding proficiency, emphasizing careful attention to detail, correctness, and the ability to translate problem specifications directly into efficient code.",
+            "dp":"Dynamic programming is a method for solving complex problems by breaking them down into simpler overlapping subproblems, storing solutions to these subproblems to avoid redundant computations.",
+            "data structures":"Data structures refer to specialized formats for organizing, processing, storing, and retrieving data efficiently, such as arrays, stacks, queues, trees, or hash tables.",
+            "brute force":"Brute force approaches systematically enumerate all possible solutions or combinations, often simple but computationally expensive, used when more optimized methods are impractical.",
+            "constructive algorithms":"Constructive algorithms involve explicitly constructing or designing a solution through incremental building or logical reasoning, rather than simply verifying existence or correctness.",
+            "binary search":"Binary search is an efficient algorithm for finding a target value's position within a sorted array or list by repeatedly dividing the search interval in half.",
+            "sortings":"Sorting algorithms systematically rearrange items in a particular order (e.g., ascending or descending), often fundamental in preprocessing data for more complex problems.",
+            "graphs":"Graph problems involve nodes (vertices) connected by edges, used to represent relationships or networks, requiring traversal, connectivity checks, or pathfinding.",
+            "dfs and similar":"Depth-First Search (DFS) and related techniques systematically explore graph structures by traversing as far as possible along each branch before backtracking.",
+            "trees":"Tree problems involve hierarchical graph structures with nodes and edges but no cycles, commonly requiring traversal, modification, or querying of structured data.",
+            "number theory":"Number theory problems focus on the properties and relationships of integers, including prime numbers, divisibility, modular arithmetic, and greatest common divisors.",
+            "strings":"String problems involve manipulation, analysis, and transformation of text sequences or character arrays, often including tasks like pattern matching, substring searching, or text editing.",
+            "combinatorics":"Combinatorial problems deal with counting, arranging, or selecting objects from finite sets, often involving permutations, combinations, and probability principles."
+        }
+        
+        nli_df = pd.read_csv(CONFIG[f'TOP_{top_n_tags}_NLI_TRAINING_DATASET_PATH'])
+        
+        # update each tag to its description
+        nli_df['entailment'] = nli_df['entailment'].apply(lambda x: tags_with_descriptions[x])
+        nli_df['contradiction'] = nli_df['contradiction'].apply(lambda x: tags_with_descriptions[x])
+        
+        # save the updated dataset
+        nli_df.to_csv(CONFIG[f'TOP_{top_n_tags}_NLI_TRAINING_DATASET_PATH'], index=False)
+        
     def build_basic_nli_dataset(self, top_n_tags=5):
         random.seed(RANDOM_STATE)
                         
@@ -892,6 +1048,136 @@ class DatasetFactory:
                 
         # Save the balanced NLI training dataset to a CSV file
         nli_df.to_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_NLI_TRAINING_DATASET_PATH'], index=False)
+
+        self.check_nli_dataset(top_n_tags, outside_dataset=True)
+        
+        return nli_df
+
+    def build_outside_nli_dataset_dynamic_sampling(self, top_n_tags=5):
+        random.seed(RANDOM_STATE)
+        
+        #BEST ALPHA 2 BETA 6
+        
+        ALPHA = 2 # AUGUMENTATION FACTOR / MULTIPLY THE BALANCED DATASET BY THIS FACTOR
+        BETA = 6 # MAXIMUM NUMBER OF PAIRS PER STATEMENT
+        
+        unique_tags = self.get_unique_tags(top_n_tags, outside_dataset=True)
+
+        self.df_train = pd.read_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_BASE_TRAINING_DATASET_PATH'])
+        
+        self.df_train = self.df_train.drop(columns=[self.df_train.columns[0], 'rating'])
+        self.df_train = self.df_train.rename(columns={'description': 'problem_statement', 'tags': 'problem_tags'})
+
+        self.check_dataset_distribution(self.df_train)
+
+        # Preprocess the problem statements
+        self.df_train = self.__preprocess_problem_statements(self.df_train)
+
+        # Ensure the tags are in list format
+        self.df_train['problem_tags'] = self.df_train['problem_tags'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
+        
+        # Compute tag embeddings for semantic similarity
+        model = TFAutoModel.from_pretrained('sentence-transformers/all-mpnet-base-v2')
+        tag_embeddings = self.encode_problem_statements(model, unique_tags)
+        tag_similarity_matrix = cosine_similarity(tag_embeddings)
+    
+        # Initialize a list to store the NLI training data
+        nli_data = []        
+        
+        # Assume unique_tags and df_train are already defined
+        max_pairs_per_statement = BETA  # For example, allow at most 3 pairs per problem statement
+
+        entailment_counts = {tag: 0 for tag in unique_tags}
+        
+        # Iterate over each row in the DataFrame
+        for index, row in self.df_train.iterrows():
+            problem_statement = row['problem_statement']
+            problem_tags = row['problem_tags']
+
+            # Check if the problem has all the tags from unique_tags
+            if set(problem_tags) == set(unique_tags):
+                continue
+            
+            # Create pairs of (problem statement, actual tag)
+            actual_tags = list(set(problem_tags) & set(unique_tags))
+            if not actual_tags:
+                continue  # Skip if there are no common tags
+            
+            # Find all non-actual tags
+            non_actual_tags = set(unique_tags) - set(actual_tags)
+            if not non_actual_tags:
+                continue  # Skip if there are no common tags
+            
+            # Dynamic sampling based on semantic similarity
+            hard_negatives = []
+            for actual_tag in actual_tags:
+                actual_idx = unique_tags.index(actual_tag)
+                non_actual_similarities = [(non_tag, tag_similarity_matrix[actual_idx][unique_tags.index(non_tag)]) for non_tag in non_actual_tags]
+                non_actual_similarities = sorted(non_actual_similarities, key=lambda x: x[1], reverse=True)
+
+                # Select top-k hard negatives based on similarity
+                hard_negatives.extend([non_tag for non_tag, sim in non_actual_similarities[:max_pairs_per_statement]])
+            
+            # Generate pairs
+            all_pairs = []
+            for actual_tag in actual_tags:
+                for non_tag in hard_negatives:
+                    pair = {
+                        'problem_statement': problem_statement,
+                        'entailment': actual_tag,
+                        'contradiction': non_tag
+                    }
+                    all_pairs.append(pair)
+            
+            # Limit pairs per problem statement to avoid over-representation
+            if len(all_pairs) > max_pairs_per_statement:
+                sampled_pairs = random.sample(all_pairs, max_pairs_per_statement)
+            else:
+                sampled_pairs = all_pairs
+                    
+            # Optionally update global counters if you're tracking usage per tag
+            for pair in sampled_pairs:
+                entailment_counts[pair['entailment']] += 1
+                nli_data.append(pair)
+                
+        # Filter out entries where contradiction is None
+        nli_data = [entry for entry in nli_data if entry['entailment'] is not None]
+        
+        # Filter out entries where contradiction is None
+        nli_data = [entry for entry in nli_data if entry['contradiction'] is not None]
+        
+        # Convert the NLI data to a DataFrame
+        nli_df = pd.DataFrame(nli_data)
+        
+        target = max(entailment_counts.values()) * ALPHA
+        
+        oversampled_subsets = []
+        for tag in unique_tags:
+            subset = nli_df[nli_df['entailment'] == tag]
+            current_count = len(subset)
+            if current_count < target:
+                n_needed = target - current_count
+                additional_samples = resample(
+                    subset,
+                    replace=True,
+                    n_samples=n_needed,
+                    random_state=RANDOM_STATE
+                )
+                balanced_subset = pd.concat([subset, additional_samples])
+            else:
+                balanced_subset = subset
+            oversampled_subsets.append(balanced_subset)
+    
+        # Combine the oversampled subsets into one DataFrame
+        nli_df = pd.concat(oversampled_subsets).reset_index(drop=True)        
+        
+        # Shuffle the dataset
+        nli_df = nli_df.sample(frac=1, random_state=RANDOM_STATE).reset_index(drop=True)
+
+        print("Dataset size:", len(nli_df))
+                
+        # Save the balanced NLI training dataset to a CSV file
+        nli_df.to_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_NLI_DYNAMIC_SAMPLING_TRAINING_DATASET_PATH'], index=False)
 
         self.check_nli_dataset(top_n_tags, outside_dataset=True)
         
