@@ -42,6 +42,7 @@ def main():
         ('update_tags_to_descriptions', datasetFactory.update_tags_to_descriptions, 'Update tags to descriptions.'),
         ('build_nli_dataset_dynamic_sampling', datasetFactory.build_nli_dataset_dynamic_sampling, 'Build NLI dataset with dynamic sampling.'),
         ('build_outside_nli_dataset_dynamic_sampling', datasetFactory.build_outside_nli_dataset_dynamic_sampling, 'Build outside NLI dataset with dynamic sampling.'),
+        ('create_alpaca_datasets', datasetFactory.create_alpaca_datasets, 'Create Alpaca dataset.')
     ]
 
     for arg, _, description in arguments:
@@ -49,6 +50,8 @@ def main():
                     arg == 'build_train_test_dataset_without_tag_encoding' or arg == 'build_outside_train_test_dataset_without_tag_encoding' or arg == 'get_dataset_tags_and_distribution' or arg == 'build_basic_nli_dataset' or arg == 'build_outside_basic_nli_dataset' \
                         or arg == 'get_dataset_top_tags' or arg == 'analyze_tag_distribution' or arg == 'update_tags_to_descriptions' or arg == 'build_nli_dataset_dynamic_sampling' or arg == 'build_outside_nli_dataset_dynamic_sampling':
             parser.add_argument(f'--{arg}', type=int, help=description, nargs=1, metavar='TOP_N')
+        elif arg == 'create_alpaca_datasets':
+            parser.add_argument(f'--{arg}', type=str, help=description, nargs=2, metavar=('TOP_N', 'OUTSIDE'))
         else:
             parser.add_argument(f'--{arg}', action='store_true', help=description)
 
@@ -104,6 +107,10 @@ def main():
             elif arg == 'build_outside_nli_dataset_dynamic_sampling':
                 top_n = params.build_outside_nli_dataset_dynamic_sampling[0]
                 fun(top_n)
+            elif arg == 'create_alpaca_datasets':
+                top_n = int(params.create_alpaca_datasets[0])  # Convert TOP_N to an integer
+                outside = params.create_alpaca_datasets[1].lower() == 'true'  # Convert OUTSIDE to a boolean
+                fun(top_n, outside)
             else:
                 fun()
 

@@ -28,6 +28,7 @@ from collections import Counter
 from transformers import AutoTokenizer, TFAutoModel, AutoModel
 from tqdm.auto import tqdm
 import networkx as nx
+import ast, json, pathlib
 
 # define configuration proxy
 working_dir = os.path.dirname(os.getcwd())
@@ -1568,3 +1569,78 @@ class DatasetFactory:
         # Analyze label relationships using a correlation threshold, e.g. 0.5.
         self.analyze_label_relationships(df_labels)
         
+    ###########################################################################################################
+    
+    def create_alpaca_datasets(self, top_n_tags, outside=False):
+        if outside:
+            df = pd.read_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_TRAINING_WO_TAG_ENCODING_DATASET_PATH'])
+        else:
+            df = pd.read_csv(CONFIG[f'TOP_{top_n_tags}_TRAINING_WO_TAG_ENCODING_DATASET_PATH'])
+
+        records = self.create_alpaca_dataset(df, top_n_tags, outside=outside)
+        
+        if outside:
+            pathlib.Path(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_ALPACA_TRAINING_DATASET_PATH']).write_text(
+                json.dumps(records, ensure_ascii=False, indent=2)
+            )
+        else:
+            pathlib.Path(CONFIG[f'TOP_{top_n_tags}_ALPACA_TRAINING_DATASET_PATH']).write_text(
+                json.dumps(records, ensure_ascii=False, indent=2)
+            )
+
+        if outside:
+            df = pd.read_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_TESTING_WO_TAG_ENCODING_DATASET_PATH'])
+        else:
+            df = pd.read_csv(CONFIG[f'TOP_{top_n_tags}_TESTING_WO_TAG_ENCODING_DATASET_PATH'])
+
+        records = self.create_alpaca_dataset(df, top_n_tags, outside=outside)
+        
+        if outside:
+            pathlib.Path(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_ALPACA_TESTING_DATASET_PATH']).write_text(
+                json.dumps(records, ensure_ascii=False, indent=2)
+            )
+        else:
+            pathlib.Path(CONFIG[f'TOP_{top_n_tags}_ALPACA_TESTING_DATASET_PATH']).write_text(
+                json.dumps(records, ensure_ascii=False, indent=2)
+            )
+
+        if outside:
+            df = pd.read_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_VALIDATION_WO_TAG_ENCODING_DATASET_PATH'])
+        else:
+            df = pd.read_csv(CONFIG[f'TOP_{top_n_tags}_VALIDATION_WO_TAG_ENCODING_DATASET_PATH'])
+
+        records = self.create_alpaca_dataset(df, top_n_tags, outside=outside)
+        
+        if outside:
+            pathlib.Path(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_ALPACA_VALIDATION_DATASET_PATH']).write_text(
+                json.dumps(records, ensure_ascii=False, indent=2)
+            )
+        else:
+            pathlib.Path(CONFIG[f'TOP_{top_n_tags}_ALPACA_VALIDATION_DATASET_PATH']).write_text(
+                json.dumps(records, ensure_ascii=False, indent=2)
+            )
+
+    def create_alpaca_dataset(self, df, top_n_tags, outside=False):
+        def tags_to_string(cell):
+            """Turn the Python-repr list in each CSV row into a plain text string."""
+            return ", ".join(ast.literal_eval(cell))
+        
+        top_tags = self.get_unique_tags(top_n_tags, outside_dataset=outside)
+                        
+        # Initialize a list to store the Alpaca dataset entries
+        records = []
+
+        # Iterate over each row in the DataFrame
+        for _, row in df.iterrows():
+                    
+            records.append({
+                "instruction": (
+                    "You are a strict tag classifier. Return ONLY the applicable tags from this fixed list:\n"
+                    f"{top_tags}\n"
+                    "Output exactly the tags, lowercase, separated by comma-no-space.\nNo other words.\n\nExample - \nProblem: All piles have equal size...\nAnswer: dp\n\nNow classify:"
+                ),
+                "input": row["problem_statement"],
+                "output": tags_to_string(row["problem_tags"])
+            })
+
+        return records
