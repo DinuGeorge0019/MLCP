@@ -19,6 +19,7 @@ def main():
     webScrapper = CodeforcesWebScrapper()
     datasetFactory = DatasetFactory()
     arguments = [
+        ("fetch_dataset_from_kaggle", datasetFactory.fetch_dataset_from_kaggle, "Fetch dataset from Kaggle."),
         ("fetch_codeforces_data", webScrapper.fetch_contests, "Fetch codeforces contests links."),
         ("build_codeforces_dataset", webScrapper.build_dataset, "Build codeforces dataset."),
         ("update_codeforces_dataset", webScrapper.update_dataset, "Update codeforces dataset."),
@@ -51,8 +52,9 @@ def main():
 
     for arg, _, description in arguments:
         if arg == "build_outside_train_test_dataset" or arg == "build_outside_nli_dataset" or arg == 'check_nli_dataset' or arg == 'augument_train_data' or arg == 'build_nli_dataset' or \
-                     arg == 'build_outside_train_test_dataset_without_tag_encoding' or arg == 'get_dataset_tags_and_distribution' or arg == 'build_basic_nli_dataset' or arg == 'build_outside_basic_nli_dataset' \
-                        or arg == 'get_dataset_top_tags' or arg == 'analyze_tag_distribution' or arg == 'update_tags_to_descriptions' or arg == 'build_nli_dataset_dynamic_sampling' or arg == 'build_outside_nli_dataset_dynamic_sampling' or arg == 'build_2025_llm_test_dataset':
+                arg == 'build_outside_train_test_dataset_without_tag_encoding' or arg == 'get_dataset_tags_and_distribution' or arg == 'build_basic_nli_dataset' or arg == 'build_outside_basic_nli_dataset' or\
+                arg == 'get_dataset_top_tags' or arg == 'analyze_tag_distribution' or arg == 'update_tags_to_descriptions' or arg == 'build_nli_dataset_dynamic_sampling' or \
+                arg == 'build_outside_nli_dataset_dynamic_sampling' or arg == 'build_2025_llm_test_dataset':
             parser.add_argument(f'--{arg}', type=int, help=description, nargs=1, metavar='TOP_N')
         elif arg == 'build_train_test_dataset' or arg == 'build_train_test_dataset_without_tag_encoding':
             parser.add_argument(f'--{arg}', type=str, help=description, nargs=2, metavar=('TOP_N', 'ADD_ENHANCEMENT'))

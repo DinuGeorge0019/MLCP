@@ -1,6 +1,11 @@
 # standard library imports
 import os
+import shutil
 import random
+import ast
+import string
+import re
+import ast, json, pathlib
 
 # related third-party
 import pandas as pd
@@ -9,9 +14,6 @@ import json
 from tqdm.auto import tqdm
 import matplotlib.pyplot as plt
 from collections import defaultdict
-import ast
-import string
-import re
 import tensorflow as tf
 from sklearn.model_selection import train_test_split
 # local application/library specific imports
@@ -24,8 +26,8 @@ from collections import Counter
 from transformers import AutoTokenizer, TFAutoModel
 from tqdm.auto import tqdm
 import networkx as nx
-import ast, json, pathlib
 import unicodedata
+import kagglehub
 
 # define configuration proxy
 working_dir = os.path.dirname(os.getcwd())
@@ -41,11 +43,39 @@ RANDOM_STATE = GLOBAL_CONSTANTS['RANDOM_SEED']
 
 GENERATE_VALIDATION_DATASET = True
 
-
 class DatasetFactory:
     def __init__(self):
         pass
+    
+    def fetch_dataset_from_kaggle(self):
+        """
+        Downloads the dataset from Kaggle using kagglehub and copies only the content
+        of the 01_TASK_DATASETS folder to the specified destination.
+        """
+        print("\nFetching dataset from Kaggle using kagglehub")
+        # Download dataset to a temporary location
+        temp_path = kagglehub.dataset_download(CONFIG['KAGGLE_DATASET_NAME'])
 
+        # Path to the 01_TASK_DATASETS folder inside the downloaded dataset
+        task_datasets_path = os.path.join(temp_path, "01_TASK_DATASETS")
+
+        # Ensure the destination directory exists
+        os.makedirs(CONFIG['TASK_DATASET_PATH'], exist_ok=True)
+
+        # Copy contents of 01_TASK_DATASETS to the destination path
+        if os.path.exists(task_datasets_path):
+            for item in os.listdir(task_datasets_path):
+                s = os.path.join(task_datasets_path, item)
+                d = os.path.join(CONFIG['TASK_DATASET_PATH'], item)
+                if os.path.isdir(s):
+                    shutil.copytree(s, d, dirs_exist_ok=True)
+                else:
+                    shutil.copy2(s, d)
+            print("Copied 01_TASK_DATASETS contents to:", CONFIG['TASK_DATASET_PATH'])
+        else:
+            print("01_TASK_DATASETS folder not found in the downloaded dataset.")
+        
+    
     def build_raw_dataset(self):
         """
         Reads input files from the dataset destination and creates a dataframe of the full raw competitive programming dataset.

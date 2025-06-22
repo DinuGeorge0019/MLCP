@@ -31,7 +31,8 @@ class Config(object):
             "CODEFORCES_DIV4_FILE": f"{WORKING_DIR}\\00_CODEFORCES_DATA\\DIV4_CONTESTS.in",
             
             ############################################################################################################
-            
+            "KAGGLE_DATASET_NAME": "dinuiongeorge/codeforces-competitive-programming-dataset",
+            "TASK_DATASET_PATH": f"{WORKING_DIR}\\01_TASK_DATASETS",
             "RAW_DATASET_PATH": f"{WORKING_DIR}\\01_TASK_DATASETS\\01_Raw_Datasets\\raw_dataset.csv",
             "PREPROCESSED_DATASET_PATH": f"{WORKING_DIR}\\01_TASK_DATASETS\\01_Raw_Datasets\\preprocessed_dataset.csv",
             "RAW_DATASET_2025_PATH": f"{WORKING_DIR}\\01_TASK_DATASETS\\01_Raw_Datasets\\raw_dataset_2025.csv",
