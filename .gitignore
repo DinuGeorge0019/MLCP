@@ -1,18 +1,21 @@
 .tmp.driveupload/
+.tmp.drivedownload/
+__pycache__/
 02_DatasetBuilder/.venv/
 gpt_venv/
 
-__pycache__/
 
 05_MODELS/01_DomainAdaped_Models/*
 !05_MODELS/01_DomainAdaped_Models/.gitkeep
+01_TASK_DATASETS/*
+!01_TASK_DATASETS/.gitkeep
+
+
+
+01_CODEFORCES_DATASET_V5.7z
+01_TASK_DATASETS.7z
 
 todo.txt
 conda commands.txt
 
-01_CODEFORCES_DATASET_V1.zip
-01_CODEFORCES_DATASET_V2.7z
-01_CODEFORCES_DATASET_V3.7z
-01_CODEFORCES_DATASET_V4.1.7z
-01_CODEFORCES_DATASET_V4.7z
-01_CODEFORCES_DATASET_V5.7z
+
