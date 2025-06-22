@@ -34,6 +34,20 @@ class Config(object):
             "TOP_5_VALIDATION_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', '01_DATASETS_W_TAG_ENCODING', 'OUR_DATASET', 'top_5_validation_dataset.csv'), 
             "TOP_10_VALIDATION_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', '01_DATASETS_W_TAG_ENCODING', 'OUR_DATASET', 'top_10_validation_dataset.csv'),
             "TOP_20_VALIDATION_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', '01_DATASETS_W_TAG_ENCODING', 'OUR_DATASET', 'top_20_validation_dataset.csv'),
+
+            ############################################################################################################          
+            
+            "TOP_5_TRAINING_ENHANCED_DATASET_PATH": os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', '04_DATASETS_ENHANCED_W_TAG_ENCODING', 'OUR_DATASET', 'top_5_training_dataset.csv'),
+            "TOP_10_TRAINING_ENHANCED_DATASET_PATH": os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', '04_DATASETS_ENHANCED_W_TAG_ENCODING', 'OUR_DATASET', 'top_10_training_dataset.csv'),
+            "TOP_20_TRAINING_ENHANCED_DATASET_PATH": os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', '04_DATASETS_ENHANCED_W_TAG_ENCODING', 'OUR_DATASET', 'top_20_training_dataset.csv'),
+            
+            "TOP_5_TESTING_ENHANCED_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', '04_DATASETS_ENHANCED_W_TAG_ENCODING', 'OUR_DATASET', 'top_5_testing_dataset.csv'),
+            "TOP_10_TESTING_ENHANCED_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', '04_DATASETS_ENHANCED_W_TAG_ENCODING', 'OUR_DATASET', 'top_10_testing_dataset.csv'),
+            "TOP_20_TESTING_ENHANCED_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', '04_DATASETS_ENHANCED_W_TAG_ENCODING', 'OUR_DATASET', 'top_20_testing_dataset.csv'),
+
+            "TOP_5_VALIDATION_ENHANCED_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', '04_DATASETS_ENHANCED_W_TAG_ENCODING', 'OUR_DATASET', 'top_5_validation_dataset.csv'), 
+            "TOP_10_VALIDATION_ENHANCED_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', '04_DATASETS_ENHANCED_W_TAG_ENCODING', 'OUR_DATASET', 'top_10_validation_dataset.csv'),
+            "TOP_20_VALIDATION_ENHANCED_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '03_Task_Datasets', '04_DATASETS_ENHANCED_W_TAG_ENCODING', 'OUR_DATASET', 'top_20_validation_dataset.csv'),
             
             ################################################################################################################
             
@@ -70,6 +84,16 @@ class Config(object):
             "TOP_5_BENCHMARK_ONEVSALL_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', 'top_5_OneVsAll_results.csv'),
             "TOP_10_BENCHMARK_ONEVSALL_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', 'top_10_OneVsAll_results.csv'),
             "TOP_20_BENCHMARK_ONEVSALL_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', 'top_20_OneVsAll_results.csv'),
+            
+            ############################################################################################################
+            "TOP_5_MULTIHEADDIFF_BENCHMARK_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', 'top_5_MultiHeadDiffSingleModelClassifier_results.csv'),
+            "TOP_10_MULTIHEADDIFF_BENCHMARK_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', 'top_10_MultiHeadDiffSingleModelClassifier_results.csv'),
+            "TOP_20_MULTIHEADDIFF_BENCHMARK_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', 'top_20_MultiHeadDiffSingleModelClassifier_results.csv'),
+            
+            ############################################################################################################
+            "TOP_5_MULTIHEADEDITORIAL_BENCHMARK_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', 'top_5_MultiHeadEditorialSingleModelClassifier_results.csv'),
+            "TOP_10_MULTIHEADEDITORIAL_BENCHMARK_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', 'top_10_MultiHeadEditorialSingleModelClassifier_results.csv'),
+            "TOP_20_MULTIHEADEDITORIAL_BENCHMARK_TRANSFORMER_MODELS_PATH": os.path.join(BASE_DIR, '04_BENCHMARKS', 'top_20_MultiHeadEditorialSingleModelClassifier_results.csv'),
             
             ############################################################################################################          
             "TOP_5_NLI_TRAINING_DATASET_PATH":os.path.join(BASE_DIR, '01_TASK_DATASETS', '04_NLI_Datasets', 'AUGMENTED_NLI_DATASETS', 'OUR_DATASET', 'top_5_nli_training_dataset.csv'),

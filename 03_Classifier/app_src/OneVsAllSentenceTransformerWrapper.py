@@ -87,10 +87,6 @@ class OneVsAllSentenceTransformerWrapper():
         if not isinstance(tags, (np.ndarray, tf.Tensor)):
             tags = np.array(tags)
             
-        # # Append problem editorials to problem statements
-        # problem_statements.extend(problem_editorials)
-        # tags = np.concatenate([tags, tags], axis=0)  # Duplicate tags for editorials
-            
         # Tokenize all problem statements
         input_ids, attention_mask = self.__tokenize_data(problem_statements)
     

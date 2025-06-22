@@ -19,28 +19,14 @@ class PrintScoresCallback(tf.keras.callbacks.Callback):
 class PrintValidationScoresCallback(tf.keras.callbacks.Callback):
     def print_metrics(self, epoch, logs):
         # Define the metric names in the order they appear in the logs
-        metric_names = [
-            'loss',
-            'val_label_wise_f1_score',
-            'val_label_wise_accuracy',
-            'val_binary_accuracy',
-            'val_precision',
-            'val_recall',
-            'val_label_wise_macro_f1',
-            'val_subset_accuracy',
-            'val_subset_precision',
-            'val_subset_recall',
-            'val_subset_f1',
-            'val_auc',
-            'val_prc_auc'
-        ]
         
         print(f'\nEpoch {epoch}: Validation Metrics:')
-        for name in metric_names:
-            value = logs.get(name)
-            if value is not None:
-                if name == 'val_label_wise_f1_score' or name == 'val_label_wise_accuracy':
+        for name, value in logs.items():
+            if name.startswith('val_'):
+                try:
                     value = tf.keras.backend.get_value(value)
+                except Exception:
+                    pass
                 print(f"{name}: {value}")
     
     def on_epoch_end(self, epoch, logs=None):
