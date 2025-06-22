@@ -6,6 +6,7 @@ gpt_venv/
 
 
 05_MODELS/01_DomainAdaped_Models/*
+!05_MODELS/01_DomainAdaped_Models/Models Board.md
 !05_MODELS/01_DomainAdaped_Models/.gitkeep
 01_TASK_DATASETS/*
 !01_TASK_DATASETS/.gitkeep
