@@ -23,6 +23,8 @@ def main():
         ("build_codeforces_dataset", webScrapper.build_dataset, "Build codeforces dataset."),
         ("update_codeforces_dataset", webScrapper.update_dataset, "Update codeforces dataset."),
         ("build_raw_dataset", datasetFactory.build_raw_dataset, "Build raw dataset."),
+        ("build_raw_2025_llm_test_dataset", datasetFactory.build_raw_2025_llm_test_dataset, "Build Raw 2025 LLM test dataset."),
+        ("build_2025_llm_test_dataset", datasetFactory.build_2025_llm_test_dataset, "Build 2025 LLM test dataset."),
         ("backward_update_json_files", datasetFactory.backward_update_json_files, "Backward update json files."),
         ("build_base_train_test_dataset", datasetFactory.build_base_train_test_dataset, "Build base train / test datasets."),
         ("build_train_test_dataset", datasetFactory.build_train_test_dataset, "Build datasets (train / test / val)."),
@@ -42,16 +44,24 @@ def main():
         ('update_tags_to_descriptions', datasetFactory.update_tags_to_descriptions, 'Update tags to descriptions.'),
         ('build_nli_dataset_dynamic_sampling', datasetFactory.build_nli_dataset_dynamic_sampling, 'Build NLI dataset with dynamic sampling.'),
         ('build_outside_nli_dataset_dynamic_sampling', datasetFactory.build_outside_nli_dataset_dynamic_sampling, 'Build outside NLI dataset with dynamic sampling.'),
-        ('create_alpaca_datasets', datasetFactory.create_alpaca_datasets, 'Create Alpaca dataset.')
+        ('create_alpaca_datasets', datasetFactory.create_alpaca_datasets, 'Create Alpaca dataset.'),
+        ('create_alpaca_paraphrase_datasets', datasetFactory.create_alpaca_paraphrase_datasets, 'Create Alpaca paraphrase dataset.'),
+        ('merge_paraphrase_and_original_dataset', datasetFactory.merge_paraphrase_and_original_dataset, 'Merge paraphrase and original dataset.'),
     ]
 
     for arg, _, description in arguments:
-        if arg == "build_train_test_dataset"  or arg == "build_outside_train_test_dataset" or arg == "build_outside_nli_dataset" or arg == 'check_nli_dataset' or arg == 'augument_train_data' or arg == 'build_nli_dataset' or \
-                    arg == 'build_train_test_dataset_without_tag_encoding' or arg == 'build_outside_train_test_dataset_without_tag_encoding' or arg == 'get_dataset_tags_and_distribution' or arg == 'build_basic_nli_dataset' or arg == 'build_outside_basic_nli_dataset' \
-                        or arg == 'get_dataset_top_tags' or arg == 'analyze_tag_distribution' or arg == 'update_tags_to_descriptions' or arg == 'build_nli_dataset_dynamic_sampling' or arg == 'build_outside_nli_dataset_dynamic_sampling':
+        if arg == "build_outside_train_test_dataset" or arg == "build_outside_nli_dataset" or arg == 'check_nli_dataset' or arg == 'augument_train_data' or arg == 'build_nli_dataset' or \
+                     arg == 'build_outside_train_test_dataset_without_tag_encoding' or arg == 'get_dataset_tags_and_distribution' or arg == 'build_basic_nli_dataset' or arg == 'build_outside_basic_nli_dataset' \
+                        or arg == 'get_dataset_top_tags' or arg == 'analyze_tag_distribution' or arg == 'update_tags_to_descriptions' or arg == 'build_nli_dataset_dynamic_sampling' or arg == 'build_outside_nli_dataset_dynamic_sampling' or arg == 'build_2025_llm_test_dataset':
             parser.add_argument(f'--{arg}', type=int, help=description, nargs=1, metavar='TOP_N')
+        elif arg == 'build_train_test_dataset' or arg == 'build_train_test_dataset_without_tag_encoding':
+            parser.add_argument(f'--{arg}', type=str, help=description, nargs=2, metavar=('TOP_N', 'ADD_ENHANCEMENT'))
         elif arg == 'create_alpaca_datasets':
             parser.add_argument(f'--{arg}', type=str, help=description, nargs=2, metavar=('TOP_N', 'OUTSIDE'))
+        elif arg == 'create_alpaca_paraphrase_datasets':
+            parser.add_argument(f'--{arg}', type=str, help=description, nargs=2, metavar=('TOP_N', 'OUTSIDE'))
+        elif arg == 'merge_paraphrase_and_original_dataset':
+            parser.add_argument(f'--{arg}', type=str, help=description, nargs=1, metavar='TOP_N')
         else:
             parser.add_argument(f'--{arg}', action='store_true', help=description)
 
@@ -59,14 +69,14 @@ def main():
     for arg, fun, _ in arguments:
         if hasattr(params, arg) and getattr(params, arg):
             print(f"Executing {arg}")            
-            if arg == "build_train_test_dataset":
-                top_n = params.build_train_test_dataset[0]
-                fun(top_n)
-            elif arg == "build_outside_train_test_dataset":
+            if arg == "build_outside_train_test_dataset":
                 top_n = params.build_outside_train_test_dataset[0]
                 fun(top_n)
             elif arg == "build_outside_nli_dataset":
                 top_n = params.build_outside_nli_dataset[0]
+                fun(top_n)
+            elif arg == 'build_2025_llm_test_dataset':
+                top_n = params.build_2025_llm_test_dataset[0]
                 fun(top_n)
             elif arg == 'check_nli_dataset':
                 top_n = params.check_nli_dataset[0]
@@ -77,9 +87,14 @@ def main():
             elif arg == 'build_nli_dataset':
                 top_n = params.build_nli_dataset[0]
                 fun(top_n)
+            elif arg == 'build_train_test_dataset':
+                top_n = int(params.build_train_test_dataset[0])  # Convert TOP_N to an integer
+                outside = params.build_train_test_dataset[1].lower() == 'true'  # Convert ADD_ENHANCEMENT to a boolean                
+                fun(top_n, outside)
             elif arg == 'build_train_test_dataset_without_tag_encoding':
-                top_n = params.build_train_test_dataset_without_tag_encoding[0]
-                fun(top_n)
+                top_n = int(params.build_train_test_dataset_without_tag_encoding[0])  # Convert TOP_N to an integer
+                outside = params.build_train_test_dataset_without_tag_encoding[1].lower() == 'true'  # Convert ADD_ENHANCEMENT to a boolean                
+                fun(top_n, outside)
             elif arg == 'build_outside_train_test_dataset_without_tag_encoding':
                 top_n = params.build_outside_train_test_dataset_without_tag_encoding[0]
                 fun(top_n)
@@ -111,6 +126,13 @@ def main():
                 top_n = int(params.create_alpaca_datasets[0])  # Convert TOP_N to an integer
                 outside = params.create_alpaca_datasets[1].lower() == 'true'  # Convert OUTSIDE to a boolean
                 fun(top_n, outside)
+            elif arg == 'create_alpaca_paraphrase_datasets':
+                top_n = int(params.create_alpaca_paraphrase_datasets[0])
+                outside = params.create_alpaca_paraphrase_datasets[1].lower() == 'true'
+                fun(top_n, outside)
+            elif arg == 'merge_paraphrase_and_original_dataset':
+                top_n = int(params.merge_paraphrase_and_original_dataset[0])
+                fun(top_n)
             else:
                 fun()
 

@@ -185,10 +185,10 @@ class AlgoProblem:
             
             sleep(random.uniform(20, 30))  # Random sleep between requests
             
-            print(f"https://mirror.codeforces.com/contest/{self.contest_number}/submission/{submission}")
+            print(f"https://codeforces.com/contest/{self.contest_number}/submission/{submission}")
             
             # Now navigate to the desired page
-            driver.get(f"https://mirror.codeforces.com/contest/{self.contest_number}/submission/{submission}")
+            driver.get(f"https://codeforces.com/contest/{self.contest_number}/submission/{submission}")
             
             WebDriverWait(driver, 10).until(
                 EC.visibility_of_element_located((By.ID, "program-source-text"))
@@ -200,7 +200,7 @@ class AlgoProblem:
                 self.solutions.append(source_code.getText()) 
                 break
             else:
-                print(f"No solution found for problem https://mirror.codeforces.com/contest/{self.contest_number}/submission/{submission}")
+                print(f"No solution found for problem https://codeforces.com/contest/{self.contest_number}/submission/{submission}")
                 
         if len(self.solutions) == 0:
             self.interactive = True

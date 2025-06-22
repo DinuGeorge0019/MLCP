@@ -14,21 +14,18 @@ import string
 import re
 import tensorflow as tf
 from sklearn.model_selection import train_test_split
-from time import sleep
 # local application/library specific imports
 from app_config import AppConfig
-from iterstrat.ml_stratifiers import MultilabelStratifiedKFold
-from sentence_transformers import SentenceTransformer
-from sklearn.cluster import KMeans
 import networkx as nx
 from scipy.spatial.distance import cosine
 from sklearn.utils import resample
 from sklearn.metrics.pairwise import cosine_similarity
 from collections import Counter
-from transformers import AutoTokenizer, TFAutoModel, AutoModel
+from transformers import AutoTokenizer, TFAutoModel
 from tqdm.auto import tqdm
 import networkx as nx
 import ast, json, pathlib
+import unicodedata
 
 # define configuration proxy
 working_dir = os.path.dirname(os.getcwd())
@@ -56,9 +53,6 @@ class DatasetFactory:
         Returns:
             None
         """
-
-        ignored_links = [
-        ]
         
         print("\nReading corpus")
         raw_dataset = []
@@ -70,22 +64,21 @@ class DatasetFactory:
                     json_data = json.load(input_file)
 
                 if 'file_name' in json_data:
-                    if json_data['link'] not in ignored_links:                
-                        raw_dataset.append([json_data['link'],
-                                            json_data['problemId'],
-                                            json_data['problem_idx'],
-                                            json_data['shortId'],
-                                            json_data['contest_number'],
-                                            json_data['name'],
-                                            json_data['statement'],
-                                            json_data['solutions'],
-                                            json_data['input'],
-                                            json_data['output'],
-                                            json_data['tags'],
-                                            json_data['dificulty'],
-                                            json_data['file_name'],
-                                            json_data['editorial_link'],
-                                            json_data['editorial']])
+                    raw_dataset.append([json_data['link'],
+                                        json_data['problemId'],
+                                        json_data['problem_idx'],
+                                        json_data['shortId'],
+                                        json_data['contest_number'],
+                                        json_data['name'],
+                                        json_data['statement'],
+                                        json_data['solutions'],
+                                        json_data['input'],
+                                        json_data['output'],
+                                        json_data['tags'],
+                                        json_data['dificulty'],
+                                        json_data['file_name'],
+                                        json_data['editorial_link'],
+                                        json_data['editorial']])
 
         # Create the raw dataset df of the
         raw_dataset_df = pd.DataFrame(
@@ -166,6 +159,120 @@ class DatasetFactory:
                 else:
                     print(index)
                     print(f"File not found: {file_path}")
+    
+    def build_raw_2025_llm_test_dataset(self):
+
+        print("\nReading corpus")
+        raw_dataset = []
+        for folder_name in os.listdir(CONFIG['DATASET_DESTINATION']):
+            folder_path = os.path.join(CONFIG['DATASET_DESTINATION'], folder_name)
+            for file in tqdm(os.listdir(folder_path)):
+                file_path = os.path.join(folder_path, file)
+                with open(file_path, "r", encoding="utf-8") as input_file:
+                    json_data = json.load(input_file)
+
+                if 'file_name' in json_data:
+                    raw_dataset.append([json_data['link'],
+                                        json_data['problemId'],
+                                        json_data['problem_idx'],
+                                        json_data['shortId'],
+                                        json_data['contest_number'],
+                                        json_data['name'],
+                                        json_data['statement'],
+                                        json_data['solutions'],
+                                        json_data['input'],
+                                        json_data['output'],
+                                        json_data['tags'],
+                                        json_data['dificulty'],
+                                        json_data['file_name'],
+                                        json_data['editorial_link'],
+                                        json_data['editorial']])
+
+        # Create the raw dataset df of the
+        raw_dataset_df = pd.DataFrame(
+            raw_dataset,
+            columns=['problem_link',
+                     'problem_id',
+                     'problem_idx',
+                     'short_id',
+                     'contest_number',
+                     'problem_name',
+                     'problem_statement',
+                     'problem_solution',
+                     'problem_input',
+                     'problem_output',   
+                     'problem_tags',
+                     'problem_dificulty',
+                     'file_name',
+                     'editorial_link',
+                     'problem_editorial'
+                     ])
+        
+        # Remove instances where tags are empty
+        raw_dataset_df = raw_dataset_df[(raw_dataset_df['problem_statement'].str.strip().str.len() > 100) &
+                                        (raw_dataset_df['problem_tags'].str.len() > 0) &
+                                        (raw_dataset_df['problem_dificulty'].str.len() > 0) &
+                                        (raw_dataset_df['problem_editorial'].str.strip().str.len() > 100)
+                                        ]
+
+        # Check for duplicate problem statements
+        duplicate_problem_statements = raw_dataset_df[raw_dataset_df['problem_statement'].str.strip().duplicated(keep=False)]
+
+        if not duplicate_problem_statements.empty:
+            # Drop duplicates, keeping the first occurrence
+            raw_dataset_df = raw_dataset_df.drop_duplicates(subset='problem_statement', keep='first')
+            print("Duplicates removed. Remaining dataset:")
+        else:
+            print("All problem statements are unique.")
+            
+        # Read the old raw dataset
+        old_raw_dataset = pd.read_csv(CONFIG['RAW_DATASET_PATH'], encoding="ISO-8859-1") 
+        old_links = set(old_raw_dataset['problem_link'])
+
+        # Filter out problems that are present in both datasets (by link)
+        raw_dataset_df = raw_dataset_df[~raw_dataset_df['problem_link'].isin(old_links)]
+        print(raw_dataset_df)
+        
+        # Save the new raw dataset to a CSV file
+        raw_dataset_df.to_csv(CONFIG['RAW_DATASET_2025_PATH'], index=False)
+        
+        # Save the raw dataset
+        self.preprocessed_df = raw_dataset_df
+
+        # Preprocess the problem statements
+        self.preprocessed_df = self.__preprocess_problem_statements(self.preprocessed_df)
+        
+        # Preprocess the problem editorials
+        self.preprocessed_df = self.__preprocess_problem_editorials(self.preprocessed_df)
+        
+        # Save the filtered dataset to a CSV file
+        self.preprocessed_df.to_csv(CONFIG[f'PREPROCESSED_DATASET_2025_PATH'],  index=False)
+        
+        
+    def build_2025_llm_test_dataset(self, top_n_tags=5):
+        
+        self.test_df = pd.read_csv(CONFIG[f'PREPROCESSED_DATASET_2025_PATH'])
+        
+        unique_tags = self.get_unique_tags(top_n_tags)
+        
+        # Filter the dataset
+        self.test_df = self.build_filtered_dataset(self.test_df, unique_tags)
+        
+        # # clean the datasets of unnecessary collumns
+        self.test_df = self.test_df.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_solution', 'problem_input', 'problem_output',  'file_name', 'editorial_link'])
+          
+        # Shuffle the datasets
+        self.test_df = self.test_df.sample(frac=1, random_state=RANDOM_STATE).reset_index(drop=True)
+        
+        #save the datasets
+        self.test_df.to_csv(CONFIG[f'TOP_{top_n_tags}_TESTING_ENHANCED_WO_TAG_ENCODING_DATASET_2025_PATH'], index=False)
+
+        records = self.create_alpaca_dataset(self.test_df, top_n_tags)
+
+        pathlib.Path(CONFIG[f'TOP_{top_n_tags}_ALPACA_TESTING_2025_DATASET_PATH']).write_text(
+            json.dumps(records, ensure_ascii=False, indent=2)
+        )
+
 
     def generate_dataset_overview(self):
         # read the raw dataset
@@ -199,7 +306,58 @@ class DatasetFactory:
                 
         # print dataset informations
         self.__print_dataset_info(df, number_of_problems, difficulty_counts, sorted_tag_counts)
+    
+    def __create_dataset_histogram(
+        self, 
+        editorials_lengths, editorials_mean_length, editorials_min_length, editorials_max_length,
+        statements_lengths, statements_mean_length, statements_min_length, statements_max_length
+        ):
         
+        # Create a figure with two subplots
+        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(20, 10))
+        
+        # Create a histogram of the editorial lengths
+        ax1.bar(range(len(editorials_lengths)), editorials_lengths, width=10)
+
+        # Add horizontal lines at the mean, minimum, and maximum lengths
+        ax1.axhline(editorials_mean_length, color='r', linestyle='dashed', linewidth=2, label='Mean')
+        ax1.axhline(editorials_min_length, color='g', linestyle='dotted', linewidth=2, label='Minimum')
+        ax1.axhline(editorials_max_length, color='b', linestyle='dotted', linewidth=2, label='Maximum')
+
+        # Add labels and title for the first subplot
+        ax1.set_xlabel('Editorial index', fontsize=24)
+        ax1.set_ylabel('Number of characters', fontsize=24)
+        ax1.set_title('Histogram of Editorial Lengths', fontsize=24)
+
+        # Set the font size of the x and y axis ticks
+        ax1.tick_params(axis='both', which='major', labelsize=24)
+
+        # Create a histogram of the statement lengths
+        ax2.bar(range(len(statements_lengths)), statements_lengths, width=10)
+
+        # Add horizontal lines at the mean, minimum, and maximum lengths
+        ax2.axhline(statements_mean_length, color='r', linestyle='dashed', linewidth=2)
+        ax2.axhline(statements_min_length, color='g', linestyle='dotted', linewidth=2)
+        ax2.axhline(statements_max_length, color='b', linestyle='dotted', linewidth=2)
+
+        # Add labels and title for the second subplot
+        ax2.set_xlabel('Statement index', fontsize=24)
+        ax2.set_ylabel('Number of characters', fontsize=24)
+        ax2.set_title('Histogram of Statement Lengths', fontsize=24)
+
+        # Set the font size of the x and y axis ticks
+        ax2.tick_params(axis='both', which='major', labelsize=24)
+
+        # Add a legend to the whole figure
+        fig.legend(loc='upper right', fontsize=24)
+
+        # Save the figure to a file
+        fig.savefig(CONFIG["LENGHTS_PLOT_PATH"])
+
+        # Close the figure
+        plt.close(fig)
+
+    
     def __print_dataset_info(self, df, number_of_problems, difficulty_counts, tag_counts):
         
         output_file = open(CONFIG['DATASET_INFO_PATH'], "w")
@@ -232,12 +390,12 @@ class DatasetFactory:
         # Get the minimum and maximum problem solution lengths
         min_solution_length = df['problem_solution'].apply(len).min()
         max_solution_length = df['problem_solution'].apply(len).max()
-        mean_statement_length = df['problem_solution'].apply(len).mean()
+        mean_solution_length = df['problem_solution'].apply(len).mean()
         std_solution_length = df['problem_solution'].apply(len).std()
 
         output_file.write(f"Minimum problem solution length: {min_solution_length}\n")
         output_file.write(f"Maximum problem solution length: {max_solution_length}\n")
-        output_file.write(f"Mean problem solution length: {mean_statement_length}\n\n")
+        output_file.write(f"Mean problem solution length: {mean_solution_length}\n\n")
         output_file.write(f"Standard deviation of problem solution length: {std_solution_length}\n\n")
 
         # Get the number of difficulty classes
@@ -262,6 +420,13 @@ class DatasetFactory:
             
         output_file.write("\n")
         
+        self.__create_dataset_histogram(
+            df['problem_editorial'].apply(len).tolist(),
+            mean_editorial_length, min_editorial_length, max_editorial_length,
+            df['problem_statement'].apply(len).tolist(),
+            mean_statement_length, min_statement_length, max_statement_length
+        )
+        
     def __plot_tag_distribution(self, tag_counts):
         # Convert the tag_counts dictionary to two lists
         tags = list(tag_counts.keys())
@@ -281,12 +446,13 @@ class DatasetFactory:
     def __plot_difficulty_distribution(self, difficulty_counts):
 
         # Plot the bar graph
-        plt.figure(figsize=(20, 6))
+        plt.figure(figsize=(20, 10))
         difficulty_counts.plot(kind='bar')
-        plt.title('Distribution of Difficulty Classes')
-        plt.xlabel('Difficulty Class')
-        plt.ylabel('Number of Problems')
-        plt.xticks(rotation=0)
+        plt.xlabel('Difficulty Class', fontsize=24)
+        plt.ylabel('Number of Problems', fontsize=24)
+        plt.xticks(rotation=90, fontsize=24)
+        plt.yticks(fontsize=24)
+        plt.tight_layout()
         
         # Save the plot to the specified path
         plt.savefig(CONFIG['DIFICULTY_DISTRIBUTION_PLOT_PATH'])
@@ -332,6 +498,29 @@ class DatasetFactory:
         
         return df
 
+    def __preprocess_problem_statements_(self, df):
+
+        print("\nPreprocessing paraphrased problem statements")
+
+        # remove unknown symbols
+        unknown_symbols = self.__search_unknown_symbols(df, collumn_name='paraphrased')
+        if unknown_symbols:
+            df.loc[:, 'paraphrased'] = df['paraphrased'].apply(lambda text: re.sub('[%s]' % re.escape(unknown_symbols), ' ', text))
+        else:
+            pass
+
+        # removing punctuations
+        df.loc[:, 'paraphrased'] = df['paraphrased'].apply(lambda text: re.sub('[%s]' % re.escape(string.punctuation), ' ', text))
+
+        # removing all unwanted spaces
+        df.loc[:, 'paraphrased'] = df['paraphrased'].apply(lambda text: re.sub('\s+', ' ', text))
+        
+        # Remove all duplicated sequences
+        duplicated_rows_bool = df['paraphrased'].duplicated()
+        df = df[~duplicated_rows_bool]
+        
+        return df
+
     def __preprocess_problem_editorials(self, df):
         print("\nPreprocessing problem editorials")
 
@@ -372,7 +561,7 @@ class DatasetFactory:
         
         # Save the filtered dataset to a CSV file
         self.preprocessed_df.to_csv(CONFIG[f'PREPROCESSED_DATASET_PATH'],  index=False)
-        
+
     def build_filtered_dataset(self, df, unique_tags):
                 
         # Filter the DataFrame and create a copy
@@ -466,7 +655,7 @@ class DatasetFactory:
         self.df_train.to_csv(CONFIG[f'BASE_TRAINING_DATASET_PATH'], index=False)
         self.df_test.to_csv(CONFIG[f'BASE_TESTING_DATASET_PATH'], index=False)
     
-    def build_train_test_dataset(self, top_n_tags=5):
+    def build_train_test_dataset(self, top_n_tags=5, add_enhancement=False):
         
         self.train_df = pd.read_csv(CONFIG[f'BASE_TRAINING_DATASET_PATH'])
         self.test_df = pd.read_csv(CONFIG[f'BASE_TESTING_DATASET_PATH'])
@@ -480,10 +669,15 @@ class DatasetFactory:
         self.val_df = self.build_filtered_dataset(self.val_df, unique_tags)
         
         # # clean the datasets of unnecessary collumns
-        self.train_df = self.train_df.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_solution', 'problem_input', 'problem_output', 'problem_dificulty', 'file_name', 'editorial_link', 'problem_editorial']) # 'problem_statement_embeddings', 'problem_statement_cluster'
-        self.test_df = self.test_df.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_solution', 'problem_input', 'problem_output', 'problem_dificulty', 'file_name', 'editorial_link', 'problem_editorial'])
-        self.val_df = self.val_df.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_solution', 'problem_input', 'problem_output', 'problem_dificulty', 'file_name', 'editorial_link', 'problem_editorial'])
-                
+        if add_enhancement:
+            self.train_df = self.train_df.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_solution', 'problem_input', 'problem_output', 'file_name', 'editorial_link'])
+            self.test_df = self.test_df.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_solution', 'problem_input', 'problem_output',  'file_name', 'editorial_link'])
+            self.val_df = self.val_df.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_solution', 'problem_input', 'problem_output', 'file_name', 'editorial_link'])
+        else:
+            self.train_df = self.train_df.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_solution', 'problem_input', 'problem_output', 'problem_dificulty', 'file_name', 'editorial_link', 'problem_editorial'])
+            self.test_df = self.test_df.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_solution', 'problem_input', 'problem_output', 'problem_dificulty', 'file_name', 'editorial_link', 'problem_editorial'])
+            self.val_df = self.val_df.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_solution', 'problem_input', 'problem_output', 'problem_dificulty', 'file_name', 'editorial_link', 'problem_editorial'])     
+        
         # for 5 classes ->  ['greedy', 'math', 'implementation', 'dp', 'data structures']
         # for 10 classes -> ['greedy', 'math', 'implementation', 'dp', 'data structures', 'brute force', 'constructive algorithms', 'sortings', 'binary search', 'sortings', 'graphs']
         # for 15 classes -> ['greedy', 'math', 'implementation', 'dp', 'data structures', 'brute force', 'constructive algorithms', 'binary search', 'sortings', 'graphs', 'dfs and similar', 'trees', 'number theory', 'strings', 'combinatorics']
@@ -499,11 +693,16 @@ class DatasetFactory:
         self.val_df = self.val_df.sample(frac=1, random_state=RANDOM_STATE).reset_index(drop=True)
         
         #save the datasets
-        self.train_df.to_csv(CONFIG[f'TOP_{top_n_tags}_TRAINING_DATASET_PATH'], index=False)
-        self.test_df.to_csv(CONFIG[f'TOP_{top_n_tags}_TESTING_DATASET_PATH'], index=False)
-        self.val_df.to_csv(CONFIG[f'TOP_{top_n_tags}_VALIDATION_DATASET_PATH'], index=False)
+        if add_enhancement:
+            self.train_df.to_csv(CONFIG[f'TOP_{top_n_tags}_TRAINING_ENHANCED_DATASET_PATH'], index=False)
+            self.test_df.to_csv(CONFIG[f'TOP_{top_n_tags}_TESTING_ENHANCED_DATASET_PATH'], index=False)
+            self.val_df.to_csv(CONFIG[f'TOP_{top_n_tags}_VALIDATION_ENHANCED_DATASET_PATH'], index=False)
+        else:  
+            self.train_df.to_csv(CONFIG[f'TOP_{top_n_tags}_TRAINING_DATASET_PATH'], index=False)
+            self.test_df.to_csv(CONFIG[f'TOP_{top_n_tags}_TESTING_DATASET_PATH'], index=False)
+            self.val_df.to_csv(CONFIG[f'TOP_{top_n_tags}_VALIDATION_DATASET_PATH'], index=False)
 
-    def build_train_test_dataset_without_tag_encoding(self, top_n_tags=5):
+    def build_train_test_dataset_without_tag_encoding(self, top_n_tags=5, add_enhancement=False):
         
         self.train_df = pd.read_csv(CONFIG[f'BASE_TRAINING_DATASET_PATH'])
         self.test_df = pd.read_csv(CONFIG[f'BASE_TESTING_DATASET_PATH'])
@@ -517,19 +716,29 @@ class DatasetFactory:
         self.val_df = self.build_filtered_dataset(self.val_df, unique_tags)
         
         # # clean the datasets of unnecessary collumns
-        self.train_df = self.train_df.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_solution', 'problem_input', 'problem_output', 'problem_dificulty', 'file_name', 'editorial_link', 'problem_editorial'])
-        self.test_df = self.test_df.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_solution', 'problem_input', 'problem_output', 'problem_dificulty', 'file_name', 'editorial_link', 'problem_editorial'])
-        self.val_df = self.val_df.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_solution', 'problem_input', 'problem_output', 'problem_dificulty', 'file_name', 'editorial_link', 'problem_editorial'])
-        
+        if add_enhancement:
+            self.train_df = self.train_df.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_solution', 'problem_input', 'problem_output', 'file_name', 'editorial_link'])
+            self.test_df = self.test_df.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_solution', 'problem_input', 'problem_output',  'file_name', 'editorial_link'])
+            self.val_df = self.val_df.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_solution', 'problem_input', 'problem_output', 'file_name', 'editorial_link'])
+        else:
+            self.train_df = self.train_df.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_solution', 'problem_input', 'problem_output', 'problem_dificulty', 'file_name', 'editorial_link', 'problem_editorial'])
+            self.test_df = self.test_df.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_solution', 'problem_input', 'problem_output', 'problem_dificulty', 'file_name', 'editorial_link', 'problem_editorial'])
+            self.val_df = self.val_df.drop(columns=['problem_link', 'problem_id', 'problem_idx', 'short_id', 'contest_number', 'problem_name', 'problem_solution', 'problem_input', 'problem_output', 'problem_dificulty', 'file_name', 'editorial_link', 'problem_editorial'])
+          
         # Shuffle the datasets
         self.train_df = self.train_df.sample(frac=1, random_state=RANDOM_STATE).reset_index(drop=True)
         self.test_df = self.test_df.sample(frac=1, random_state=RANDOM_STATE).reset_index(drop=True)
         self.val_df = self.val_df.sample(frac=1, random_state=RANDOM_STATE).reset_index(drop=True)
         
         #save the datasets
-        self.train_df.to_csv(CONFIG[f'TOP_{top_n_tags}_TRAINING_WO_TAG_ENCODING_DATASET_PATH'], index=False)
-        self.test_df.to_csv(CONFIG[f'TOP_{top_n_tags}_TESTING_WO_TAG_ENCODING_DATASET_PATH'], index=False)
-        self.val_df.to_csv(CONFIG[f'TOP_{top_n_tags}_VALIDATION_WO_TAG_ENCODING_DATASET_PATH'], index=False)
+        if add_enhancement:
+            self.train_df.to_csv(CONFIG[f'TOP_{top_n_tags}_TRAINING_ENHANCED_WO_TAG_ENCODING_DATASET_PATH'], index=False)
+            self.test_df.to_csv(CONFIG[f'TOP_{top_n_tags}_TESTING_ENHANCED_WO_TAG_ENCODING_DATASET_PATH'], index=False)
+            self.val_df.to_csv(CONFIG[f'TOP_{top_n_tags}_VALIDATION_ENHANCED_WO_TAG_ENCODING_DATASET_PATH'], index=False)
+        else:  
+            self.train_df.to_csv(CONFIG[f'TOP_{top_n_tags}_TRAINING_WO_TAG_ENCODING_DATASET_PATH'], index=False)
+            self.test_df.to_csv(CONFIG[f'TOP_{top_n_tags}_TESTING_WO_TAG_ENCODING_DATASET_PATH'], index=False)
+            self.val_df.to_csv(CONFIG[f'TOP_{top_n_tags}_VALIDATION_WO_TAG_ENCODING_DATASET_PATH'], index=False)
 
     def build_nli_dataset(self, top_n_tags=5):
         random.seed(RANDOM_STATE)
@@ -880,9 +1089,9 @@ class DatasetFactory:
         unique_tags = self.get_unique_tags(top_n_tags, outside_dataset=True)
                         
         # # clean the datasets of unnecessary collumns
-        self.train_df = self.train_df.drop(columns=[self.train_df.columns[0], 'rating'])
-        self.test_df = self.test_df.drop(columns=[self.test_df.columns[0], 'rating'])
-        self.val_df = self.val_df.drop(columns=[self.val_df.columns[0], 'rating'])
+        self.train_df = self.train_df.drop(columns=[self.train_df.columns[0]])
+        self.test_df = self.test_df.drop(columns=[self.test_df.columns[0]])
+        self.val_df = self.val_df.drop(columns=[self.val_df.columns[0]])
                                         
         # encode the tags to one hot encoding
         self.train_df['tags'] = self.train_df['tags'].apply(lambda x: self.__create_binary_vector(x, unique_tags))
@@ -895,9 +1104,9 @@ class DatasetFactory:
         self.val_df = self.val_df.sample(frac=1, random_state=RANDOM_STATE).reset_index(drop=True)
         
         # Rename columns if needed
-        self.train_df = self.train_df.rename(columns={'description': 'problem_statement', 'tags': 'problem_tags'})
-        self.test_df = self.test_df.rename(columns={'description': 'problem_statement', 'tags': 'problem_tags'})
-        self.val_df = self.val_df.rename(columns={'description': 'problem_statement', 'tags': 'problem_tags'})
+        self.train_df = self.train_df.rename(columns={'description': 'problem_statement', 'tags': 'problem_tags', 'rating': 'problem_dificulty'})
+        self.test_df = self.test_df.rename(columns={'description': 'problem_statement', 'tags': 'problem_tags', 'rating': 'problem_dificulty'})
+        self.val_df = self.val_df.rename(columns={'description': 'problem_statement', 'tags': 'problem_tags', 'rating': 'problem_dificulty'})
         
         self.train_df = self.__preprocess_problem_statements(self.train_df)
         self.test_df = self.__preprocess_problem_statements(self.test_df)
@@ -915,9 +1124,9 @@ class DatasetFactory:
         self.val_df = pd.read_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_BASE_VALIDATION_DATASET_PATH'])
                                 
         # # clean the datasets of unnecessary collumns
-        self.train_df = self.train_df.drop(columns=[self.train_df.columns[0], 'rating'])
-        self.test_df = self.test_df.drop(columns=[self.test_df.columns[0], 'rating'])
-        self.val_df = self.val_df.drop(columns=[self.val_df.columns[0], 'rating'])
+        self.train_df = self.train_df.drop(columns=[self.train_df.columns[0]])
+        self.test_df = self.test_df.drop(columns=[self.test_df.columns[0]])
+        self.val_df = self.val_df.drop(columns=[self.val_df.columns[0]])
                                         
         # Shuffle the datasets
         self.train_df = self.train_df.sample(frac=1, random_state=RANDOM_STATE).reset_index(drop=True)
@@ -925,9 +1134,9 @@ class DatasetFactory:
         self.val_df = self.val_df.sample(frac=1, random_state=RANDOM_STATE).reset_index(drop=True)
         
         # Rename columns if needed
-        self.train_df = self.train_df.rename(columns={'description': 'problem_statement', 'tags': 'problem_tags'})
-        self.test_df = self.test_df.rename(columns={'description': 'problem_statement', 'tags': 'problem_tags'})
-        self.val_df = self.val_df.rename(columns={'description': 'problem_statement', 'tags': 'problem_tags'})
+        self.train_df = self.train_df.rename(columns={'description': 'problem_statement', 'tags': 'problem_tags', 'rating': 'problem_dificulty'})
+        self.test_df = self.test_df.rename(columns={'description': 'problem_statement', 'tags': 'problem_tags', 'rating': 'problem_dificulty'})
+        self.val_df = self.val_df.rename(columns={'description': 'problem_statement', 'tags': 'problem_tags', 'rating': 'problem_dificulty'})
         
         self.train_df = self.__preprocess_problem_statements(self.train_df)
         self.test_df = self.__preprocess_problem_statements(self.test_df)
@@ -1338,8 +1547,6 @@ class DatasetFactory:
         
         print(unique_tags)
         
-
-
     ############################################################################################################
 
     def __create_similarity_graph(self, embeddings, threshold=0.8):
@@ -1571,14 +1778,91 @@ class DatasetFactory:
         
     ###########################################################################################################
     
+    # mapping of the worst Windows-1252 characters → ASCII
+    def __clean_to_utf8(self, text: str) -> str:
+        """
+        replaces common Win-1252 smart quotes/dashes with ASCII
+        removes other non-printable / control chars
+        ensures the returned str can be .encode('utf-8') losslessly
+        """
+        
+        _W1252_MAP = {
+        "\u2018": "'",   # left single quotation
+        "\u2019": "'",   # right single quotation
+        "\u201c": '"',   # left double quotation
+        "\u201d": '"',   # right double quotation
+        "\u2013": "-",   # en dash
+        "\u2014": "-",   # em dash
+        "\u2026": "...", # ellipsis
+        "\u00a0": " ",   # non-breaking space
+        "\u2264": "<=",   # less-than or equal to
+        "\u2260": "!=",   # not equal
+        "\u2265": ">=",   # greater-than or equal to
+        "\u2261": "==",   # identical to
+        "\u222a": "U",   # union
+        "\u2286": "U",   # subset of
+        "\u2211": "sum", # summation
+        "\u220f": "prod", # product
+        "\u2208": "in",   # element of
+        "\u2212": "-",   # minus sign
+        "\u00b1": "+-",  # plus-minus sign
+        "\u22c5": "*",   # dot operator
+        "\u221e": "inf", # infinity
+        "\u2227": "and",  # logical and
+        "\u2228": "or",   # logical or
+        "\u2295": "oplus", # circled plus
+        "\u2296": "ominus", # circled minus
+        "\u2308'": "lceil", # left ceiling
+        "\u2309'": "rceil", # right ceiling
+        "\u2205": "emptyset", # empty set
+        "\u2203": "exists", # there exists
+        "\u221a": "sqrt", # square root
+        "\u222b": "int",  # integral
+        "\u2192": "->",   # right arrow
+        "\u2190": "<-",   # left arrow
+        "\u03c6": "phi",  # phi
+        "\u03c0": "pi",   # pi
+        "\u2229": "cap",  # intersection
+        "\u230a": "lceil", # left ceiling
+        "\u230b": "rceil", # right ceiling
+        "\u2219": "*",   # bullet operator
+        "\u2206": "delta", # increment
+        "\u2207": "nabla", # nabla
+        "\u03a3": "Sigma", # summation
+        "\u03a0": "Pi",   # product
+        "\u22bb": "V",   # right angle
+        "\u22c0": "bigcap", # big intersection
+        "\u03c3": "sigma", # sigma
+        }
+        
+        if not isinstance(text, str):
+            text = str(text)
+
+        # step 1: map known chars
+        for bad, good in _W1252_MAP.items():
+            text = text.replace(bad, good)
+
+        # step 2: NFKC normalisation (e.g. full-width → ASCII)
+        text = unicodedata.normalize("NFKC", text)
+
+        # step 3: strip any remaining control chars except \n, \t
+        text = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]", "", text)
+
+        # optional: collapse multiple spaces
+        text = re.sub(r"[ \t]+", " ", text)
+
+        # will raise if still not valid
+        _ = text.encode("utf-8")
+        return text
+    
     def create_alpaca_datasets(self, top_n_tags, outside=False):
         if outside:
             df = pd.read_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_TRAINING_WO_TAG_ENCODING_DATASET_PATH'])
         else:
-            df = pd.read_csv(CONFIG[f'TOP_{top_n_tags}_TRAINING_WO_TAG_ENCODING_DATASET_PATH'])
+            df = pd.read_csv(CONFIG[f'TOP_{top_n_tags}_TRAINING_ENHANCED_WO_TAG_ENCODING_DATASET_PATH'])
 
         records = self.create_alpaca_dataset(df, top_n_tags, outside=outside)
-        
+
         if outside:
             pathlib.Path(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_ALPACA_TRAINING_DATASET_PATH']).write_text(
                 json.dumps(records, ensure_ascii=False, indent=2)
@@ -1587,11 +1871,11 @@ class DatasetFactory:
             pathlib.Path(CONFIG[f'TOP_{top_n_tags}_ALPACA_TRAINING_DATASET_PATH']).write_text(
                 json.dumps(records, ensure_ascii=False, indent=2)
             )
-
+            
         if outside:
             df = pd.read_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_TESTING_WO_TAG_ENCODING_DATASET_PATH'])
         else:
-            df = pd.read_csv(CONFIG[f'TOP_{top_n_tags}_TESTING_WO_TAG_ENCODING_DATASET_PATH'])
+            df = pd.read_csv(CONFIG[f'TOP_{top_n_tags}_TESTING_ENHANCED_WO_TAG_ENCODING_DATASET_PATH'])
 
         records = self.create_alpaca_dataset(df, top_n_tags, outside=outside)
         
@@ -1607,7 +1891,7 @@ class DatasetFactory:
         if outside:
             df = pd.read_csv(CONFIG[f'OUTSIDE_TOP_{top_n_tags}_VALIDATION_WO_TAG_ENCODING_DATASET_PATH'])
         else:
-            df = pd.read_csv(CONFIG[f'TOP_{top_n_tags}_VALIDATION_WO_TAG_ENCODING_DATASET_PATH'])
+            df = pd.read_csv(CONFIG[f'TOP_{top_n_tags}_VALIDATION_ENHANCED_WO_TAG_ENCODING_DATASET_PATH'])
 
         records = self.create_alpaca_dataset(df, top_n_tags, outside=outside)
         
@@ -1623,24 +1907,221 @@ class DatasetFactory:
     def create_alpaca_dataset(self, df, top_n_tags, outside=False):
         def tags_to_string(cell):
             """Turn the Python-repr list in each CSV row into a plain text string."""
-            return ", ".join(ast.literal_eval(cell))
+            if isinstance(cell, str):
+                try:
+                    tags = ast.literal_eval(cell)
+                except Exception:
+                    tags = [cell]
+            else:
+                tags = cell
+            return ", ".join(tags)
         
         top_tags = self.get_unique_tags(top_n_tags, outside_dataset=outside)
-                        
+
+        CLASSIFICATION_PROMPT = (
+            "You are a strict tag classifier.\n"
+            "Return ONLY the applicable tags from this fixed list:\n"
+            f"{top_tags}\n"
+            "Output exactly the tags, lowercase, separated by comma-no-space. No other words.\n"
+            "Each input consists of:\n"
+            " - A programming-problem statement.\n"
+            " - An \"--- Editorial ---\" section that explains the intended solution.\n"
+            "Use BOTH statement, and editorial to decide tags.\n"
+            "### EXAMPLE 1 \n"
+            "Problem: Given an array of n integers, answer q range minimum queries.\n"
+            "Editorial: Preprocess with a sparse table in O(n log n), then answer in O(1).\n"
+            "Answer: data structures\n"
+            "### EXAMPLE 2 \n"
+            "Problem: You have N coins and target sum S. Use each coin at most once.\n"
+            "Editorial: Build dp[i][j] = reachable sums using first i coins.\n"
+            "Answer: dp\n\n"
+            "Now classify:"
+        )
+
         # Initialize a list to store the Alpaca dataset entries
         records = []
 
         # Iterate over each row in the DataFrame
         for _, row in df.iterrows():
-                    
-            records.append({
-                "instruction": (
-                    "You are a strict tag classifier. Return ONLY the applicable tags from this fixed list:\n"
-                    f"{top_tags}\n"
-                    "Output exactly the tags, lowercase, separated by comma-no-space.\nNo other words.\n\nExample - \nProblem: All piles have equal size...\nAnswer: dp\n\nNow classify:"
-                ),
-                "input": row["problem_statement"],
-                "output": tags_to_string(row["problem_tags"])
-            })
+            records.append(
+                {
+                    "instruction": CLASSIFICATION_PROMPT,
+                    # concat problem + editorial
+                    "input": (
+                        row["problem_statement"].strip()
+                        + "\n--- Editorial ---\n"
+                        + self.__clean_to_utf8(row["problem_editorial"].strip())
+                    ),
+                    "output": tags_to_string(row["problem_tags"])
+                }
+            )
+
+            # records.append(
+            #     {
+            #         "instruction": (
+            #             "You are a strict tag classifier. Return ONLY the applicable tags from this fixed list:\n"
+            #             f"{top_tags}\n"
+            #             "Output exactly the tags, lowercase, separated by comma-no-space. "
+            #             "No other words.\n\n"
+            #             "Each input consists of:\n"
+            #             " a DIFFICULTY line (rating number)\n"
+            #             " a programming-problem statement\n"
+            #             " followed by an EDITORIAL section that explains the intended solution.\n"
+            #             "Use ALL parts to decide the tags, but follow the output rule.\n\n"
+            #             "Example - \n"
+            #             "Difficulty: 1800\n"
+            #             "Problem: All piles have equal size...\n"
+            #             "Editorial: This problem is solved with dynamic programming on states (dp).\n"
+            #             "Answer: dp\n\n"
+            #             "Now classify:"
+            #         ),
+            #         # concat problem + editorial
+            #         "input": (
+            #             f"Difficulty: {row['problem_dificulty']}\n"
+            #             + "\n\n--- Problem Statement ---\n"
+            #             + row["problem_statement"].strip()
+            #             + "\n\n--- Editorial ---\n"
+            #             + self.__clean_to_utf8(row["problem_editorial"].strip())
+            #         ),
+            #         "output": tags_to_string(row["problem_tags"])
+            #     }
+            # )
+
 
         return records
+
+    ###########################################################################################################
+
+    def create_alpaca_paraphrase_datasets(self, top_n_tags, outside=False):
+        
+        predict_df = pd.read_csv(CONFIG[f'TOP_{top_n_tags}_TRAINING_ENHANCED_DATASET_PATH'])
+        manual_labled_df = pd.read_csv(CONFIG[f'TOP_{top_n_tags}_MANUAL_PARAPHRASE_DATASET_PATH'], encoding="latin-1")
+        manual_labled_df = self.__preprocess_problem_statements(manual_labled_df)
+        
+        PROMPT = (
+            "Rewrite the following programming-problem **statement**.\n"
+            "Keep EVERY numeric bound and constraint identical.\n"
+            "DO NOT add explanations.\n"
+            "DO NOT copy or generate editorial text or sample C++ / Java / Python code.\n"\
+            "Return **ONLY** the rewritten statement in one block of plain text. \n"
+            "### EXAMPLE 1\n"
+            "Original: Two integers A and B (1 < A,B < 10^5)...\n"
+            "Rewrite:  Given two integers A and B where 1 < A,B < 10^5...\n"
+            "### EXAMPLE 2\n"
+            "Original: Output 'YES' if their gcd equals 1, otherwise 'NO'.\n"
+            "Rewrite:  Print 'YES' when gcd(A,B)=1; print 'NO' otherwise.\n"
+        )
+        
+        training_records = self.create_alpaca_paraphrase_dataset_manual(manual_labled_df, PROMPT)
+        predict_records = self.create_alpaca_paraphrase_dataset_predict(predict_df, PROMPT)
+
+        pathlib.Path(CONFIG[f'TOP_{top_n_tags}_ALPACA_PARAPHRASE_TRAINING_DATASET_PATH']).write_text(
+            json.dumps(training_records, ensure_ascii=False, indent=2)
+        )
+        pathlib.Path(CONFIG[f'TOP_{top_n_tags}_ALPACA_PARAPHRASE_TESTING_DATASET_PATH']).write_text(
+            json.dumps(predict_records, ensure_ascii=False, indent=2)
+        )
+
+    def create_alpaca_paraphrase_dataset_manual(self, df, prompt):
+                      
+        # Initialize a list to store the Alpaca dataset entries
+        records = []
+
+        # Iterate over each row in the DataFrame
+        for _, row in df.iterrows():
+
+            records.append(
+                {
+                    "instruction": prompt,
+                    "input": (self.__clean_to_utf8(row["problem_statement"].strip())),
+                    "output": (self.__clean_to_utf8(row["paraphrased"].strip())),
+                }
+            )
+
+        return records
+
+    def create_alpaca_paraphrase_dataset_predict(self, df, prompt):
+                      
+        # Initialize a list to store the Alpaca dataset entries
+        records = []
+
+        # Iterate over each row in the DataFrame
+        for _, row in df.iterrows():
+
+            records.append(
+                {
+                    "instruction": prompt,
+                    "input": (self.__clean_to_utf8(row["problem_statement"].strip())),
+                    "output": "",
+                }
+            )
+
+        return records
+    
+    def merge_paraphrase_and_original_dataset(self, top_n_tags):
+        def tags_to_string(cell):
+            """Turn the Python-repr list in each CSV row into a plain text string."""
+            return ", ".join(ast.literal_eval(cell))
+        
+        # Set the random seed for reproducibility
+        random.seed(RANDOM_STATE)
+        
+        # Load the original and paraphrased datasets
+        original_file_path = CONFIG[f'TOP_{top_n_tags}_TRAINING_ENHANCED_DATASET_PATH']
+        original_df = pd.read_csv(original_file_path)
+        
+        paraphrase_file_path = CONFIG[f'TOP_{top_n_tags}_ALPACA_PARAPHRASE_GENERATED_DATASET_PATH']
+        
+        top_tags = self.get_unique_tags(top_n_tags, outside_dataset=False)
+        
+        CLASSIFICATION_PROMPT = (
+            "You are a strict tag classifier. Return ONLY the applicable tags from this fixed list:\n"
+            f"{top_tags}\n"
+            "Output exactly the tags, lowercase, separated by comma-no-space. "
+            "No other words.\n\n"
+            "Each input consists of:\n"
+            " a programming-problem statement\n"
+            " followed by an optional EDITORIAL section that explains the intended solution.\n"
+            "Use BOTH parts to decide the tags, but follow the output rule.\n\n"
+            "Example - \n"
+            "Problem: All piles have equal size...\n"
+            "Editorial: This problem is solved with dynamic programming on states (dp).\n"
+            "Answer: dp\n\n"
+            "Now classify:"
+        )
+        
+        
+        paraphrase_records = []
+        with open(paraphrase_file_path, "r", encoding="utf-8") as file:
+            for id, line in enumerate(file):
+                data = json.loads(line)
+                
+                paraphrase_records.append(
+                    {
+                        "instruction": CLASSIFICATION_PROMPT,
+                        "input": self.__clean_to_utf8(original_df.iloc[id]['problem_statement'].strip())
+                        + "\n\n--- Editorial ---\n"
+                        + self.__clean_to_utf8(original_df.iloc[id]['problem_editorial'].strip()),
+                        "output": tags_to_string(original_df.iloc[id]["problem_tags"])
+                    }
+                )
+                
+                paraphrase_records.append(
+                    {
+                        "instruction": CLASSIFICATION_PROMPT,
+                        "input": self.__clean_to_utf8(data['predict'])
+                        + "\n\n--- Editorial ---\n"
+                        + self.__clean_to_utf8(original_df.iloc[id]['problem_editorial'].strip()),
+                        "output": tags_to_string(original_df.iloc[id]["problem_tags"])
+                    }
+                )
+
+        random.shuffle(paraphrase_records)
+        
+        pathlib.Path(CONFIG[f'TOP_{top_n_tags}_ALPACA_MERGED_TRAINING_DATASET_PATH']).write_text(
+            json.dumps(paraphrase_records, ensure_ascii=False, indent=2),
+            encoding="utf-8"
+        )
+        
+    
+    
