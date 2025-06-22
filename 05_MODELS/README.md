@@ -1,3 +1,6 @@
+
+Most of the models presented in this paper, unless trained locally, are available at:  https://huggingface.co/collections/Sauron0019/tagpredictionmodels-6850a43f3b03e89d4cd74f2f
+
 The models in this collection were introduced in the paper **Domain Adaptation for Automated Tag Prediction in Competitive Programming**. They fall into two broad groups:
 
 1. **Domain-Adapted MPNet Encoders**

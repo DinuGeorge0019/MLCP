@@ -2,12 +2,15 @@
 
 The `DatasetBuilder` library is designed to facilitate the construction of the proposed dataset and the processing of other datasets referenced in the paper.
 
+### Fetching the Dataset Locally
+To download the dataset directly from Kaggle, use the command `--fetch_dataset_from_kaggle` available in main.py script.
+
 ## Usage
 
 The main functionalities of the `DatasetBuilder` library can be accessed through the `main.py` script. 
 
 The most important commands are the following:
-
+- `--fetch_dataset_from_kaggle`: Download the dataset from Kaggle and extract it locally.
 - `--build_base_train_test_dataset`: Build base train/test datasets.
 - `--build_train_test_dataset TOP_N`: Build datasets (train/test/val) for the top N tags.
 - `--build_train_test_dataset_without_tag_encoding TOP_N`: Build train/test dataset without tag encoding for the top N tags.
