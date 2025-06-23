@@ -29,6 +29,12 @@ To replicate the LLM-based experiments (e.g., DeepSeek-LLM, Llama-3, Gemma-3), f
 3. **Colab Environment**
 
     We used the ColabEnvironment_LLaMA_Factory.ipynb notebook from the __ColabEnvironment directory to work with the LLaMA Factory GUI in Google Colab. You can use this notebook to easily set up and run your own experiments in a Colab environment.
+    Evaluation was performed using the integration code from ColabEnvironment_LLaMA_Factory notebook.
+    In order to replicate the experiments you should also have a huggingface token available.
+
+4. **Datasets Used**
+
+   Training and evaluation were performed using the datasets from 01_TASK_DATASETS\03_Task_Datasets\03_DATASETS_ALPACA_ENCODING\OUR_DATASET
 
 ## Replicating the Experiments using Gpt4o, Gpt4o-mini, and o1-mini, o3-mini
 
