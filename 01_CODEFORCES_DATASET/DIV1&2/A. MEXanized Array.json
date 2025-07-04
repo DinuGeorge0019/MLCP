@@ -184,5 +184,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\A. MEXanized Array.json",
     "editorial_link": "https://codeforces.com//blog/entry/120524",
-    "editorial": "TutorialNote that if , then the answer is .Otherwise, there are two\r\ncases: If , then the suitable array looks like . If , then the suitable\r\narray looks like . In both cases, we can construct the array and\r\ncalculate its sum in linear time. The overall complexity is .\r\n"
+    "editorial": "TutorialNote that if , then the answer is .Otherwise, there are two\r\ncases: If , then the suitable array looks like . If , then the suitable\r\narray looks like . In both cases, we can construct the array and\r\ncalculate its sum in linear time. The overall complexity is .\r\n",
+    "hint": []
 }

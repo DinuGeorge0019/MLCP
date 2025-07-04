@@ -179,5 +179,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\C. Binary String Reconstruction.json",
     "editorial_link": "https://codeforces.com//blog/entry/81916",
-    "editorial": "Note that means \"either or ,\" whereas means \"both and .\" We can greedily\r\nsolve this by starting out our string with all 1\u00e2\u0080\u0099s, then marking and as\r\n0 whenever we are forced to because . Then we can simply check whether\r\nall of the conditions are valid to confirm. Code: 90915688\r\n"
+    "editorial": "Note that means \"either or ,\" whereas means \"both and .\" We can greedily\r\nsolve this by starting out our string with all 1âs, then marking and as\r\n0 whenever we are forced to because . Then we can simply check whether\r\nall of the conditions are valid to confirm. Code: 90915688\r\n",
+    "hint": []
 }

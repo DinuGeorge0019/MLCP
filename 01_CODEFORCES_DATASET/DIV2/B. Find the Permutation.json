@@ -144,5 +144,9 @@
     ],
     "dificulty": "",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Find the Permutation.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Find the Permutation.json",
+    "hint": [
+        "Hint 1 \"It can be proven that permutation can be uniquely determined\"",
+        "Hint 2 This means that there is an order of elements. How to determine whether should be earlier in that order than ?"
+    ]
 }

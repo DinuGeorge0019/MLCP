@@ -139,5 +139,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\E. Two Arrays.json",
     "editorial_link": "https://codeforces.com//blog/entry/105232",
-    "editorial": "hint1.Since they are very smart, they know the result of the game at the\r\nbeginning.\r\n"
+    "editorial": "hint1.Since they are very smart, they know the result of the game at the\r\nbeginning.\r\n",
+    "hint": [
+        "hint1. Since they are very smart, they know the result of the game at the beginning.",
+        "hint2. If the result is , then Alice will end the game when Bob moves to a cell with score less than , and something analogous holds for Bob.",
+        "hint3. Thus, Alice can only move to a certain subset of cells, and the same holds for Bob."
+    ]
 }

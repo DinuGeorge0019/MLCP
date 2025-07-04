@@ -89,5 +89,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. K-special Tables.json",
     "editorial_link": "https://codeforces.com//blog/entry/23342",
-    "editorial": "Lets fill our table\nrow by row greedily. We want to have maximal possible number on k-th\nplace in the first row. After it we need at least numbers greater than\nours, so its maximum value is . If we select it then we are fixing all\nnumbers after column in the first row from to . On the first lets put\nsmallest possible numbers . If we do the same thing in the second row\nthen in the beginning it will have numbers from to , and from -th\nposition maximum possible values from to . And so on we will fill all\nrows. With careful implementation we don\u00e2\u0080\u0099t need to store whole matrix\nand we need only memory. Our algorithm works in time.\n"
+    "editorial": "Lets fill our table\nrow by row greedily. We want to have maximal possible number on k-th\nplace in the first row. After it we need at least numbers greater than\nours, so its maximum value is . If we select it then we are fixing all\nnumbers after column in the first row from to . On the first lets put\nsmallest possible numbers . If we do the same thing in the second row\nthen in the beginning it will have numbers from to , and from -th\nposition maximum possible values from to . And so on we will fill all\nrows. With careful implementation we donât need to store whole matrix\nand we need only memory. Our algorithm works in time.\n",
+    "hint": []
 }

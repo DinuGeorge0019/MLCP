@@ -206,7 +206,7 @@
         ]
     },
     "name": "C. Most Similar Words",
-    "statement": "You are given n words of length m, consisting of lowercase Latin\r\nalphabet letters. The i-th word is denoted s_i.In one move you can\r\nchoose and change the letter at that position to the previous or next\r\nletter in alphabetical order. For example: you can change \u201d to \u201d or to\r\n\u201d; \u201d can only be changed to \u201d; \u201d can only be changed to \u201d. The between\r\ntwo words is the number of moves required to make them equal. For\r\nexample, the between \"\" and \"\" is 1 + 10 + 0 + 0 = 11.Find the minimum\r\nof s_i and s_j such that (i < j). In other words, find the minimum over\r\nall possible pairs of the n words.\r\n",
+    "statement": "You are given n words of length m, consisting of lowercase Latin\r\nalphabet letters. The i-th word is denoted s_i.In one move you can\r\nchoose and change the letter at that position to the previous or next\r\nletter in alphabetical order. For example: you can change ” to ” or to\r\n”; ” can only be changed to ”; ” can only be changed to ”. The between\r\ntwo words is the number of moves required to make them equal. For\r\nexample, the between \"\" and \"\" is 1 + 10 + 0 + 0 = 11.Find the minimum\r\nof s_i and s_j such that (i < j). In other words, find the minimum over\r\nall possible pairs of the n words.\r\n",
     "solutions": [
         "#include <iostream>\n\nusing namespace std;\n\nconst int N = 110;\n\nint m;\nstring s[N];\n\nint solve(string s, string t)\n{\n\tint i;\n\tint res;\n\t\n\tfor(i = res = 0; i < m; i ++)\n\t\tres += abs(s[i] - t[i]);\n\t\n\treturn res;\n}\n\nint main()\n{\n\tint t;\n\tint n;\n\tint i, j;\n\tint ans;\n\t\n\tcin >> t;\n\twhile(t --)\n\t{\n\t\tcin >> n >> m;\n\t\tfor(i = 1; i <= n; i ++)\n\t\t\tcin >> s[i];\n\t\t\n\t\tfor(i = 1, ans = m * 26; i < n; i ++)\n\t\t\tfor(j = i + 1; j <= n; j ++)\n\t\t\t\tans = min(ans, solve(s[i], s[j]));\n\t\t\n\t\tcout << ans << endl;\n\t}\n\t\n\treturn 0;\n}\n"
     ],
@@ -224,5 +224,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\C. Most Similar Words.json",
     "editorial_link": "https://codeforces.com//blog/entry/102710",
-    "editorial": "Firstly, given any pair of strings of length , we should be able to tell\r\nthe difference between them. It\u00e2\u0080\u0099s enough to find the sum of absolute\r\ndifferences between each character from the same position. Now, we\r\nshould go through all possible pairs and pick the minimum value over all\r\nof them using the function we use to calculate the difference.\r\n"
+    "editorial": "Firstly, given any pair of strings of length , we should be able to tell\r\nthe difference between them. Itâs enough to find the sum of absolute\r\ndifferences between each character from the same position. Now, we\r\nshould go through all possible pairs and pick the minimum value over all\r\nof them using the function we use to calculate the difference.\r\n",
+    "hint": []
 }

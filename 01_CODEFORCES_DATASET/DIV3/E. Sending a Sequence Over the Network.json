@@ -170,5 +170,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\E. Sending a Sequence Over the Network.json",
     "editorial_link": "https://codeforces.com//blog/entry/107908",
-    "editorial": "Let\u00e2\u0080\u0099s introduce the dynamics. if on the prefix the answer is . Then in\r\nthis sequence the numbers corresponding to the sizes of the segments\r\nfrom the partition into subsegments will be called .A number at position\r\nin the sequence , if it is , is either to the right or to the left of\r\nthe segment. If it is to the left of the segment, it can only be\r\ninteresting if . Then . If it is on the right side of the segment, then\r\nif , then . The answer for the whole sequence is if .\r\n"
+    "editorial": "Letâs introduce the dynamics. if on the prefix the answer is . Then in\r\nthis sequence the numbers corresponding to the sizes of the segments\r\nfrom the partition into subsegments will be called .A number at position\r\nin the sequence , if it is , is either to the right or to the left of\r\nthe segment. If it is to the left of the segment, it can only be\r\ninteresting if . Then . If it is on the right side of the segment, then\r\nif , then . The answer for the whole sequence is if .\r\n",
+    "hint": []
 }

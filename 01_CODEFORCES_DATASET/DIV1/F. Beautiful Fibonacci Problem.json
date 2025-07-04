@@ -162,5 +162,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\F. Beautiful Fibonacci Problem.json",
     "editorial_link": "https://codeforces.com/blog/entry/71995",
-    "editorial": "Intuitively, we want to a formula for . This is one we need: .Denote ,\r\none can verify that modulo (directly calculate or use \u00e2\u0080\u009d).So we have\r\nfollowing properties: modulo . modulo . So on, modulo . Notice that ,\r\nwhere .So modulo .Let modulo , modulo . Then we choose .\r\n"
+    "editorial": "Intuitively, we want to a formula for . This is one we need: .Denote ,\r\none can verify that modulo (directly calculate or use â).So we have\r\nfollowing properties: modulo . modulo . So on, modulo . Notice that ,\r\nwhere .So modulo .Let modulo , modulo . Then we choose .\r\n",
+    "hint": []
 }

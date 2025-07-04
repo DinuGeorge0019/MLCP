@@ -112,5 +112,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Day at the Beach.json",
     "editorial_link": "https://codeforces.com//blog/entry/21685",
-    "editorial": "Let's take a minute to see how the best answer should look like.\n\nLet Hi be a sorted sequence of hi. Let E \u0097 set of indices of the last elements of each block. Then  e  E, first e sorted elements of sequence hi are equal to the first e elements of the sequence Hj.\n\nSo, it is not difficult to notice that the size of E is the answer for the problem.\n\nFirstly, we need to calculate two arrays: prefmax and suffmin, where prefmaxi \u0097 maximum between a1, a2, ..., ai, and suffmini \u0097 minimum between ai, ai?+?1, ..., an.\n\nIf you want to get the answer, just calculate the number of indices i that prefmaxi ??? suffmini?+?1."
+    "editorial": "Let's take a minute to see how the best answer should look like.\n\nLet Hi be a sorted sequence of hi. Let E  set of indices of the last elements of each block. Then  e  E, first e sorted elements of sequence hi are equal to the first e elements of the sequence Hj.\n\nSo, it is not difficult to notice that the size of E is the answer for the problem.\n\nFirstly, we need to calculate two arrays: prefmax and suffmin, where prefmaxi  maximum between a1, a2, ..., ai, and suffmini  minimum between ai, ai?+?1, ..., an.\n\nIf you want to get the answer, just calculate the number of indices i that prefmaxi ??? suffmini?+?1.",
+    "hint": []
 }

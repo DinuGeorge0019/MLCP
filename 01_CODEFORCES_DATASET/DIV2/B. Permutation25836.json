@@ -114,7 +114,7 @@
         ]
     },
     "name": "B. Permutation",
-    "statement": "\"Hey, it\u2019s homework time\" thought Polycarpus and of course he started\r\nwith his favourite subject, IT. Polycarpus managed to solve all tasks\r\nbut for the last one in 20 minutes. However, as he failed to solve the\r\nlast task after some considerable time, the boy asked you to help\r\nhim.The sequence of integers is called a permutation if it contains all\r\nintegers from to exactly once.You are given an arbitrary sequence\r\ncontaining integers. Each integer is not less than and not greater than\r\n. Determine what minimum number of elements Polycarpus needs to change\r\nto get a permutation (he should not delete or add numbers). In a single\r\nchange he can modify any single sequence element (i. e. replace it with\r\nanother integer).\r\n",
+    "statement": "\"Hey, it’s homework time\" thought Polycarpus and of course he started\r\nwith his favourite subject, IT. Polycarpus managed to solve all tasks\r\nbut for the last one in 20 minutes. However, as he failed to solve the\r\nlast task after some considerable time, the boy asked you to help\r\nhim.The sequence of integers is called a permutation if it contains all\r\nintegers from to exactly once.You are given an arbitrary sequence\r\ncontaining integers. Each integer is not less than and not greater than\r\n. Determine what minimum number of elements Polycarpus needs to change\r\nto get a permutation (he should not delete or add numbers). In a single\r\nchange he can modify any single sequence element (i. e. replace it with\r\nanother integer).\r\n",
     "solutions": [
         "#include <cstdio>\n#include <vector>\n#include <string>\n#include <cstring>\n#include <queue>\n#include <algorithm>\nusing namespace std;\n\ntypedef long long LL;\ntypedef pair<int,int> PII;\n\nint main(){\n    int n,cnt[5001]={},ans=0;\n    scanf(\"%d\",&n);\n    for(int i=0;i<n;i++){\n        int tmp;\n        scanf(\"%d\",&tmp);\n        cnt[tmp]++;\n    }\n    for(int i=1;i<=n;i++) if(!cnt[i]) ans++;\n    printf(\"%d\\n\",ans);\n}\n"
     ],
@@ -127,5 +127,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Permutation25836.json",
     "editorial_link": "https://codeforces.com//blog/entry/3318",
-    "editorial": "We can count the number of integers from 1 to n, which occur in sequence\r\nat least once. Then the answer is n minus that number. The complexity is\r\nO(n).\r\n"
+    "editorial": "We can count the number of integers from 1 to n, which occur in sequence\r\nat least once. Then the answer is n minus that number. The complexity is\r\nO(n).\r\n",
+    "hint": []
 }

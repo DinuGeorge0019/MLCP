@@ -105,5 +105,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Pinkie Pie Eats Patty-cakes.json",
     "editorial_link": "https://codeforces.com//blog/entry/81161",
-    "editorial": "Let\u00e2\u0080\u0099s note that if you can find the arrangement with the maximum\r\ndistance , then you can also find the arrangement with the maximum\r\ndistance . It allows you to use the binary search on the answer.To check\r\nthat the answer is at least , we can use the greedy algorithm. Each time\r\nlet\u00e2\u0080\u0099s use the element that we can use (we didn\u00e2\u0080\u0099t use it on the last\r\nsteps) and the number of the remaining elements equal to it is as large\r\nas possible. You can store the set of elements that you can use in the\r\nsorted by the number of appearances in . This sol works .Also there is a\r\nsolution in .\r\n"
+    "editorial": "Letâs note that if you can find the arrangement with the maximum\r\ndistance , then you can also find the arrangement with the maximum\r\ndistance . It allows you to use the binary search on the answer.To check\r\nthat the answer is at least , we can use the greedy algorithm. Each time\r\nletâs use the element that we can use (we didnât use it on the last\r\nsteps) and the number of the remaining elements equal to it is as large\r\nas possible. You can store the set of elements that you can use in the\r\nsorted by the number of appearances in . This sol works .Also there is a\r\nsolution in .\r\n",
+    "hint": []
 }

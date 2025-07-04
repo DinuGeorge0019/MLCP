@@ -130,5 +130,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Rounding.json",
     "editorial_link": "https://codeforces.com//blog/entry/56381",
-    "editorial": "At first let\u00e2\u0080\u0099s round down the given number to the nearest integer which\r\nends with and store this value in a variable : . So, the round up (call\r\nit ) is .If then the answer is . In the other case, the answer is .\r\n"
+    "editorial": "At first letâs round down the given number to the nearest integer which\r\nends with and store this value in a variable : . So, the round up (call\r\nit ) is .If then the answer is . In the other case, the answer is .\r\n",
+    "hint": []
 }

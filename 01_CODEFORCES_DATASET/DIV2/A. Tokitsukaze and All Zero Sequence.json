@@ -148,5 +148,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Tokitsukaze and All Zero Sequence.json",
     "editorial_link": "https://codeforces.com//blog/entry/102631",
-    "editorial": "TutorialWe observe that when there is in the sequence, it is optimal to\r\nchoose and any number other than for each operation.Therefore, when\r\nthere is in the sequence, let be the number of s, the answer is\r\n.Otherwise, when does not exist in the sequence, there are two\r\nsituations: When there exist two equal numbers in the sequence, we can\r\nperform the operation time to convert it into the situation of having in\r\nthe sequence. So the answer must be . When all numbers in the sequence\r\nare distinct, we can perform the operation times to convert it into the\r\nsituation of having in the sequence. So the answer must be .\r\n"
+    "editorial": "TutorialWe observe that when there is in the sequence, it is optimal to\r\nchoose and any number other than for each operation.Therefore, when\r\nthere is in the sequence, let be the number of s, the answer is\r\n.Otherwise, when does not exist in the sequence, there are two\r\nsituations: When there exist two equal numbers in the sequence, we can\r\nperform the operation time to convert it into the situation of having in\r\nthe sequence. So the answer must be . When all numbers in the sequence\r\nare distinct, we can perform the operation times to convert it into the\r\nsituation of having in the sequence. So the answer must be .\r\n",
+    "hint": []
 }

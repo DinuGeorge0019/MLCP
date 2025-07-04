@@ -108,5 +108,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. AquaMoon and Chess.json",
     "editorial_link": "https://codeforces.com//blog/entry/92739",
-    "editorial": "We enumerate from to . If position and both contain a chess and is not\r\nin other groups, then we divide them into one group.We can change the\r\noperation a little: Each time we can swap the two consecutive and the\r\nelement to their left or right. It\u00e2\u0080\u0099s easy to see this operation equals\r\nto the initial one. So that means we can take out the groups (two\r\nconsecutive ) and insert them to any position of the chessboard. So let\r\nthe number of groups be , the number of zeros be , it\u00e2\u0080\u0099s easy to find\r\nthat the answer is (Since inserting one group to the left of some or to\r\nthe right of it are the same).\r\n"
+    "editorial": "We enumerate from to . If position and both contain a chess and is not\r\nin other groups, then we divide them into one group.We can change the\r\noperation a little: Each time we can swap the two consecutive and the\r\nelement to their left or right. Itâs easy to see this operation equals\r\nto the initial one. So that means we can take out the groups (two\r\nconsecutive ) and insert them to any position of the chessboard. So let\r\nthe number of groups be , the number of zeros be , itâs easy to find\r\nthat the answer is (Since inserting one group to the left of some or to\r\nthe right of it are the same).\r\n",
+    "hint": []
 }

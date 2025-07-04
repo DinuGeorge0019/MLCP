@@ -182,5 +182,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\F. Chat Screenshots.json",
     "editorial_link": "https://codeforces.com//blog/entry/125878",
-    "editorial": "The author of the screenshot is always in the first position, so based\r\non his screenshot, nothing can be said about his first position. The\r\nrest of the chat participants are ordered based on the real order. Let\u00e2\u0080\u0099s\r\nbuild a graph of vertices. For each screenshot, add edges. For all , add\r\nan edge between the vertices and , where is the number of the current\r\nscreenshot.If there is an order that satisfies all screenshots, then\r\ntopological sorting will exist in this graph, which means there will be\r\nno cycles in it. So our goal is to check the graph for acyclicity.\r\n"
+    "editorial": "The author of the screenshot is always in the first position, so based\r\non his screenshot, nothing can be said about his first position. The\r\nrest of the chat participants are ordered based on the real order. Letâs\r\nbuild a graph of vertices. For each screenshot, add edges. For all , add\r\nan edge between the vertices and , where is the number of the current\r\nscreenshot.If there is an order that satisfies all screenshots, then\r\ntopological sorting will exist in this graph, which means there will be\r\nno cycles in it. So our goal is to check the graph for acyclicity.\r\n",
+    "hint": []
 }

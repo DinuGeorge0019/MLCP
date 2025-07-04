@@ -130,5 +130,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Plus from Picture.json",
     "editorial_link": "https://codeforces.com//blog/entry/67614",
-    "editorial": "First, try to find if there is any nonempty space which has 4 neighbors\r\nare all nonempty spaces. (Giant black star in the picture below.) If\r\nthere is no such nonempty space, the answer is \"\".Second, try to search\r\nthe end of the \"\" shape from the center. (White stars in the picture\r\nbelow.) Third, try to find if there is any nonempty space outside of \"\"\r\nshape(the area filled with \"\"). If found then the answer is \"\".If you\r\nvalidated all steps, then the answer is \"\".Time complexity is .\r\n"
+    "editorial": "First, try to find if there is any nonempty space which has 4 neighbors\r\nare all nonempty spaces. (Giant black star in the picture below.) If\r\nthere is no such nonempty space, the answer is \"\".Second, try to search\r\nthe end of the \"\" shape from the center. (White stars in the picture\r\nbelow.) Third, try to find if there is any nonempty space outside of \"\"\r\nshape(the area filled with \"\"). If found then the answer is \"\".If you\r\nvalidated all steps, then the answer is \"\".Time complexity is .\r\n",
+    "hint": []
 }

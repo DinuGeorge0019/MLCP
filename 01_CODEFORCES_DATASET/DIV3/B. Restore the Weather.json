@@ -185,5 +185,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Restore the Weather.json",
     "editorial_link": "https://codeforces.com//blog/entry/116636",
-    "editorial": "Let\u00e2\u0080\u0099s solve the problem using a greedy algorithm. Based on the array ,\r\nform an array of pairs {temperature, day number} and sort it in\r\nascending order of temperature. Also sort the array in ascending order.\r\nNow, the values and are the predicted and real temperature on day\r\n.Indeed, consider the minimum temperatures and . The difference between\r\nthem is . If we consider the value or at , there will be at least since\r\nand . Since it is guaranteed that it is possible to rearrange the\r\nelements in the array , and the elements and have the smallest\r\ndifference, it is definitely not greater than .\r\n"
+    "editorial": "Letâs solve the problem using a greedy algorithm. Based on the array ,\r\nform an array of pairs {temperature, day number} and sort it in\r\nascending order of temperature. Also sort the array in ascending order.\r\nNow, the values and are the predicted and real temperature on day\r\n.Indeed, consider the minimum temperatures and . The difference between\r\nthem is . If we consider the value or at , there will be at least since\r\nand . Since it is guaranteed that it is possible to rearrange the\r\nelements in the array , and the elements and have the smallest\r\ndifference, it is definitely not greater than .\r\n",
+    "hint": []
 }

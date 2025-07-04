@@ -120,7 +120,7 @@
         ]
     },
     "name": "A. Make a triangle ",
-    "statement": "Masha has three sticks of length a, b and c centimeters respectively. In\r\none minute Masha can pick one arbitrary stick and increase its length by\r\none centimeter. She is not allowed to break sticks.What is the minimum\r\nnumber of minutes she needs to spend increasing the stick\u2019s length in\r\norder to be able to assemble a triangle of positive area. Sticks should\r\nbe used as triangle\u2019s sides (one stick for one side) and their endpoints\r\nshould be located at triangle\u2019s vertices.\r\n",
+    "statement": "Masha has three sticks of length a, b and c centimeters respectively. In\r\none minute Masha can pick one arbitrary stick and increase its length by\r\none centimeter. She is not allowed to break sticks.What is the minimum\r\nnumber of minutes she needs to spend increasing the stick’s length in\r\norder to be able to assemble a triangle of positive area. Sticks should\r\nbe used as triangle’s sides (one stick for one side) and their endpoints\r\nshould be located at triangle’s vertices.\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\nusing namespace std;\n\nint main()\n{\n    int a[3];\n    cin>>a[0]>>a[1]>>a[2];\n    sort(a,a+3);\n    if(a[0]+a[1]>a[2]) puts(\"0\");\n    else cout<<a[2]-a[0]-a[1]+1<<endl;\n    return 0;\n}"
     ],
@@ -135,5 +135,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Make a triangle .json",
     "editorial_link": "https://codeforces.com//blog/entry/62455",
-    "editorial": "Suppose is the largest stick. It is known, that we can build a triangle\r\niff .So if we can build a triangle the answer is zero. Otherwise we can\r\njust increase or until the inequality above holds.So the answer is\r\n.Another approach: just bruteforce all possible triangles we can extend\r\nto (with sides ) and select the one with smallest .\r\n"
+    "editorial": "Suppose is the largest stick. It is known, that we can build a triangle\r\niff .So if we can build a triangle the answer is zero. Otherwise we can\r\njust increase or until the inequality above holds.So the answer is\r\n.Another approach: just bruteforce all possible triangles we can extend\r\nto (with sides ) and select the one with smallest .\r\n",
+    "hint": []
 }

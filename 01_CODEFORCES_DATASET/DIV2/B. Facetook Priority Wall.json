@@ -95,5 +95,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Facetook Priority Wall.json",
     "editorial_link": "https://codeforces.com//blog/entry/1715",
-    "editorial": "This problem is a direct simulation to the rules written in the problem statement.\nYou need to iterate over all actions and parse each one to know the type of the action, and the 2 names X and Y, and if your name is X or Y then update your priority factor with this person with the action corresponding value. And take care about some special names like \"post\", \"wall\", \"commented\" and \"on\".\nThen sort all names according to the sorting criteria mentioned in the statement.\nJust make sure to print all names which are mentioned in the input (excluding yourself), even if the priority factor with you is 0."
+    "editorial": "This problem is a direct simulation to the rules written in the problem statement.\nYou need to iterate over all actions and parse each one to know the type of the action, and the 2 names X and Y, and if your name is X or Y then update your priority factor with this person with the action corresponding value. And take care about some special names like \"post\", \"wall\", \"commented\" and \"on\".\nThen sort all names according to the sorting criteria mentioned in the statement.\nJust make sure to print all names which are mentioned in the input (excluding yourself), even if the priority factor with you is 0.",
+    "hint": []
 }

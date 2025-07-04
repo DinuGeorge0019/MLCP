@@ -123,5 +123,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Beru-taxi.json",
     "editorial_link": "https://codeforces.com//blog/entry/46510",
-    "editorial": "We know that time=distance/speed. For each car we should find timei, than if it is less than answer we should update it.\n"
+    "editorial": "We know that time=distance/speed. For each car we should find timei, than if it is less than answer we should update it.\n",
+    "hint": []
 }

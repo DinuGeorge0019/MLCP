@@ -76,7 +76,7 @@
         ]
     },
     "name": "A. Div. 64",
-    "statement": "Top-model Izabella participates in the competition. She wants to impress\r\njudges and show her mathematical skills.Her problem is following: for\r\ngiven string, consisting of only 0 and 1, tell if it\u2019s possible to\r\nremove some digits in such a way, that remaining number is a\r\nrepresentation of some positive integer, divisible by 64, in the binary\r\nnumerical system.\r\n",
+    "statement": "Top-model Izabella participates in the competition. She wants to impress\r\njudges and show her mathematical skills.Her problem is following: for\r\ngiven string, consisting of only 0 and 1, tell if it’s possible to\r\nremove some digits in such a way, that remaining number is a\r\nrepresentation of some positive integer, divisible by 64, in the binary\r\nnumerical system.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\n\nusing namespace std;\n\n#define ll long long\n#define ull unsigned long long\n#define pii pair < int , int >\n#define pipii pair < int , pii >\n#define pid pair <int, double>\n#define F first\n#define S second\n#define pb push_back\n#define mp make_pair\n#define pp pop_back()\n#define sz size()\n#define iz insert\n#define lg length()\n#define FRNAME \"A\"\n#define inf (int)1e6\n#define fr freopen(FRNAME\".in\",\"r\",stdin); freopen (FRNAME\".out\",\"w\",stdout);\n#define fr2 freopen(\"input.txt\",\"r\",stdin); freopen (\"output.txt\",\"w\",stdout)\nint n, m, k;\nint a[100100];\nint main ()\n{\n    string s;\n    cin >> s;\n    int cnt  = 0;\n\tfor (int i = 0; i < s.sz; i++)\n\t{\n\t\tif(s[i] == '1')\n\t\t{\n\t\t\tm = 1;\n\t\t}\n\t\telse\n\t\t{\n\t\t\tif (m) cnt++;\n\t\t}\n\t}\n\tcout << (cnt >= 6 ? \"yes\" : \"no\"); \t\n\treturn 0;\n}\t"
     ],
@@ -89,5 +89,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Div. 64.json",
     "editorial_link": "https://codeforces.com//blog/entry/55584",
-    "editorial": "If the string contains no ones then the answer is \"NO\" as the remainig number must be positive. Otherwise we can find the leftmost one and check if it is followed by at least six zeroes."
+    "editorial": "If the string contains no ones then the answer is \"NO\" as the remainig number must be positive. Otherwise we can find the leftmost one and check if it is followed by at least six zeroes.",
+    "hint": []
 }

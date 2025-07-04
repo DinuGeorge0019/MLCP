@@ -1,1 +1,116 @@
-{"link": "https://codeforces.com//contest/2071/problem/D2", "problemId": "3235597", "problem_idx": "D2", "shortId": "2071D2", "contest_number": "2071", "problem_submissions": {"C": [308500412, 308317666, 308361110, 308336146, 308323879, 308329162, 308431357, 308323153, 308322089, 308324712, 308324838, 308300023, 308338574, 308327490, 308358640], "D2": [308380420, 308341189, 308366571, 308352059, 308372786, 308368930, 308377735, 308374177, 308368337, 308375886], "F": [308373297, 308377404], "E": [308361980, 308345537, 308378051, 308376397, 308376665], "D1": [308339511, 308341058, 308362310, 308345467, 308346693, 308332849, 308332972, 308343247, 308340165, 308341094, 308346883, 308329536, 308369447], "B": [308310760, 308356333, 308327132, 308308541, 308313847, 308342227, 308309079, 308304207, 308317019, 308309205, 308310795, 308322545, 308331268], "A": [308295350, 308348314, 308303164, 308293936, 308302778, 308311307, 308294388, 308294024, 308294553, 308316276, 308297625, 308298079, 308296422]}, "editorial_link": "https://codeforces.com//blog/entry/140115", "editorial": "", "name": "D2. Infinite Sequence  Hard Version ", "statement": "You are given a positive integer n and the first n terms of an infinite\r\nbinary sequence a, which is defined as follows: For m>n, a_m = a_1\r\noplus a_2\r\noplus\r\nldots\r\noplus a_{\r\nlfloor\r\nfrac{m}{2}\r\nrfloor}^{\r\ntext{ }}. Your task is to compute the sum of elements in a given range\r\n[l, r]: a_l + a_{l + 1} +\r\nldots + a_r.^{\r\ntext{ }}\r\noplus denotes the bitwise XOR operation.\r\n", "solutions": [], "input": "", "output": "", "tags": ["bitmasks", "brute force", "constructive algorithms", "data structures", "dp", "implementation", "math"], "dificulty": "2500", "interactive": false, "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D2. Infinite Sequence  Hard Version .json"}
+{
+    "link": "https://codeforces.com//contest/2071/problem/D2",
+    "problemId": "3235597",
+    "problem_idx": "D2",
+    "shortId": "2071D2",
+    "contest_number": "2071",
+    "problem_submissions": {
+        "C": [
+            308500412,
+            308317666,
+            308361110,
+            308336146,
+            308323879,
+            308329162,
+            308431357,
+            308323153,
+            308322089,
+            308324712,
+            308324838,
+            308300023,
+            308338574,
+            308327490,
+            308358640
+        ],
+        "D2": [
+            308380420,
+            308341189,
+            308366571,
+            308352059,
+            308372786,
+            308368930,
+            308377735,
+            308374177,
+            308368337,
+            308375886
+        ],
+        "F": [
+            308373297,
+            308377404
+        ],
+        "E": [
+            308361980,
+            308345537,
+            308378051,
+            308376397,
+            308376665
+        ],
+        "D1": [
+            308339511,
+            308341058,
+            308362310,
+            308345467,
+            308346693,
+            308332849,
+            308332972,
+            308343247,
+            308340165,
+            308341094,
+            308346883,
+            308329536,
+            308369447
+        ],
+        "B": [
+            308310760,
+            308356333,
+            308327132,
+            308308541,
+            308313847,
+            308342227,
+            308309079,
+            308304207,
+            308317019,
+            308309205,
+            308310795,
+            308322545,
+            308331268
+        ],
+        "A": [
+            308295350,
+            308348314,
+            308303164,
+            308293936,
+            308302778,
+            308311307,
+            308294388,
+            308294024,
+            308294553,
+            308316276,
+            308297625,
+            308298079,
+            308296422
+        ]
+    },
+    "editorial_link": "https://codeforces.com//blog/entry/140115",
+    "editorial": "SolutionFirst, check the editorial of D1. D&C ApproachTo upgrade the\r\nsolution, we define a recursive function: We precompute the even and odd\r\nprefix sums for . For , the term follows: For simplicity, assume (if\r\nnot, keep incrementing and adjusting its contribution separately).Define\r\nThis sum can be expressed as: The pairs we’re interested in computing\r\nare (keep in mind that is odd): Notice that the sums of the above even\r\nand odd indices are equal, and depend on : Thus, the final sums are: As\r\na result, we can compute recursively by halving until , benefitting the\r\nprecomputed even and odd prefix sums at each step.The overall time\r\ncomplexity is: .\r\n",
+    "name": "D2. Infinite Sequence  Hard Version ",
+    "statement": "You are given a positive integer n and the first n terms of an infinite\r\nbinary sequence a, which is defined as follows: For m>n, a_m = a_1\r\noplus a_2\r\noplus\r\nldots\r\noplus a_{\r\nlfloor\r\nfrac{m}{2}\r\nrfloor}^{\r\ntext{ }}. Your task is to compute the sum of elements in a given range\r\n[l, r]: a_l + a_{l + 1} +\r\nldots + a_r.^{\r\ntext{ }}\r\noplus denotes the bitwise XOR operation.\r\n",
+    "solutions": [],
+    "input": "",
+    "output": "",
+    "tags": [
+        "bitmasks",
+        "brute force",
+        "constructive algorithms",
+        "data structures",
+        "dp",
+        "implementation",
+        "math"
+    ],
+    "dificulty": "2500",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D2. Infinite Sequence  Hard Version .json",
+    "hint": [
+        "Hint 1 Generalize the recursive method for evaluating an index to handle the computation of the prefix sum."
+    ]
+}

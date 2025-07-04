@@ -114,5 +114,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Orchestra.json",
     "editorial_link": "https://codeforces.com//blog/entry/43467",
-    "editorial": "We can iterate over each possible rectangle and count the number of\r\nviolists enclosed. This can be optimized with rectangular prefix sums,\r\nthough the simple brute force is sufficient for this problem. Runtime:\r\n"
+    "editorial": "We can iterate over each possible rectangle and count the number of\r\nviolists enclosed. This can be optimized with rectangular prefix sums,\r\nthough the simple brute force is sufficient for this problem. Runtime:\r\n",
+    "hint": []
 }

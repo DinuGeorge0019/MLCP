@@ -95,5 +95,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Sea and Islands.json",
     "editorial_link": "https://codeforces.com//blog/entry/17773",
-    "editorial": "It\u00e2\u0080\u0099s clear to understand, that optimal answer will consists of simple\r\ncells, for which following condition fullfills: the sum of indices of\r\nrow and column is even. We will try to put islands in such way, and if\r\nit\u00e2\u0080\u0099s impossible, we will report that answer is NO. Try to prove that\r\nthis solution is optimal. The jury solution: 11035691\r\n"
+    "editorial": "Itâs clear to understand, that optimal answer will consists of simple\r\ncells, for which following condition fullfills: the sum of indices of\r\nrow and column is even. We will try to put islands in such way, and if\r\nitâs impossible, we will report that answer is NO. Try to prove that\r\nthis solution is optimal. The jury solution: 11035691\r\n",
+    "hint": []
 }

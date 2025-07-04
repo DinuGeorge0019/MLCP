@@ -169,7 +169,7 @@
     "name": "B1. Reverse Card  Easy Version ",
     "statement": "You are given two positive integers n, m.Calculate the number of ordered\r\npairs (a, b) satisfying the following conditions: 1\r\nle a\r\nle n, 1\r\nle b\r\nle m; a+b is a multiple of b\r\ncdot\r\ngcd(a,b).\r\n",
     "solutions": [
-        "/** *    author:  tourist *    created: 30.04.2024 10:42:12**/#include <bits/stdc++.h>\u00a0using namespace std;\u00a0#ifdef LOCAL#include \"algo/debug.h\"#else#define debug(...) 42#endif\u00a0int main() {  ios::sync_with_stdio(false);  cin.tie(0);  int tt;  cin >> tt;  while (tt--) {    int n, m;    cin >> n >> m;    int64_t ans = 0;    for (int g = 1; g <= min(n, m); g++) {      for (int y = 1; g * y <= m; g++) {        int lim = n / g / y + 1;        if (lim >= g) {          ans += lim / g - (g == 1);        }      }    }    cout << ans << '\\n';  }  return 0;}"
+        "/** *    author:  tourist *    created: 30.04.2024 10:42:12**/#include <bits/stdc++.h> using namespace std; #ifdef LOCAL#include \"algo/debug.h\"#else#define debug(...) 42#endif int main() {  ios::sync_with_stdio(false);  cin.tie(0);  int tt;  cin >> tt;  while (tt--) {    int n, m;    cin >> n >> m;    int64_t ans = 0;    for (int g = 1; g <= min(n, m); g++) {      for (int y = 1; g * y <= m; g++) {        int lim = n / g / y + 1;        if (lim >= g) {          ans += lim / g - (g == 1);        }      }    }    cout << ans << '\\n';  }  return 0;}"
     ],
     "input": "",
     "output": "",
@@ -180,5 +180,9 @@
     ],
     "dificulty": "1400",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B1. Reverse Card  Easy Version .json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B1. Reverse Card  Easy Version .json",
+    "hint": [
+        "Hint 1 Denote as .",
+        "Hint 2 Did you notice that ? How to prove that?"
+    ]
 }

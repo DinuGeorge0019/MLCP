@@ -177,7 +177,7 @@
     "name": "A. Minimize ",
     "statement": "You are given two integers a and b (a\r\nleq b). Over all possible integer values of c (a\r\nleq c\r\nleq b), find the minimum value of (c - a) + (b - c).\r\n",
     "solutions": [
-        "#include<bits/stdc++.h>using namespace std;using ll=long long;using i128=__int128;using ull=unsigned long long;using ld=long double;using pii=pair<int,int>;using pll=pair<ll,ll>;clock_t a;const int M=998244353;const ll inf=1e17;const ld eps=1e-10;void oT(char c='.'){cout<<c<<\"Time:\"<<double(clock()-a)<<'\\n';}struct Solution{\t\tint n;\tvoid Init()\t{\t\tint a,b;cin>>a>>b;cout<<b-a<<'\\n';\t}\tvoid Solve()\t{\u00a0\t}};void precal(){}signed main() {    ios::sync_with_stdio(0);cin.tie(0);precal();    int t=1;cin>>t;while(t--){Solution sol;sol.Init();sol.Solve();}}"
+        "#include<bits/stdc++.h>using namespace std;using ll=long long;using i128=__int128;using ull=unsigned long long;using ld=long double;using pii=pair<int,int>;using pll=pair<ll,ll>;clock_t a;const int M=998244353;const ll inf=1e17;const ld eps=1e-10;void oT(char c='.'){cout<<c<<\"Time:\"<<double(clock()-a)<<'\\n';}struct Solution{\t\tint n;\tvoid Init()\t{\t\tint a,b;cin>>a>>b;cout<<b-a<<'\\n';\t}\tvoid Solve()\t{ \t}};void precal(){}signed main() {    ios::sync_with_stdio(0);cin.tie(0);precal();    int t=1;cin>>t;while(t--){Solution sol;sol.Init();sol.Solve();}}"
     ],
     "input": "",
     "output": "",
@@ -187,5 +187,6 @@
     ],
     "dificulty": "800",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\A. Minimize .json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\A. Minimize .json",
+    "hint": []
 }

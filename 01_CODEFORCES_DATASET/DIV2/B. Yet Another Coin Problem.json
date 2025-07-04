@@ -127,5 +127,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Yet Another Coin Problem.json",
     "editorial_link": "https://codeforces.com//blog/entry/126423",
-    "editorial": "SolutionFact: You will never need more than ones, threes, sixes and\r\ntens.Reason: For : Suppose if you used > ones, then you could have used\r\none and ones. For : Suppose if you used > threes, then you could have\r\nused one and threes.For : Suppose if you used > sixes, then you could\r\nhave used two \u00e2\u0080\u0099s and sixes.For : Suppose if you used > tens, then you\r\ncould have used two \u00e2\u0080\u0099s and tens.now since bound on their count is less,\r\nwe can bruteforce on these count.\r\n"
+    "editorial": "SolutionFact: You will never need more than ones, threes, sixes and\r\ntens.Reason: For : Suppose if you used > ones, then you could have used\r\none and ones. For : Suppose if you used > threes, then you could have\r\nused one and threes.For : Suppose if you used > sixes, then you could\r\nhave used two âs and sixes.For : Suppose if you used > tens, then you\r\ncould have used two âs and tens.now since bound on their count is less,\r\nwe can bruteforce on these count.\r\n",
+    "hint": [
+        "Hint At max how many , , , are required?",
+        "Hint When will the greedy logic of choosing the higher-valued coin first work?"
+    ]
 }

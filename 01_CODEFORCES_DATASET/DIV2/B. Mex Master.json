@@ -149,5 +149,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Mex Master.json",
     "editorial_link": "https://codeforces.com//blog/entry/114048",
-    "editorial": "Hint 1: .First, let\u00e2\u0080\u0099s determine if can be . That means we can\u00e2\u0080\u0099t place\r\ntwo s next to each other. This is achievable when the number of s is not\r\ngreater than .Then determine if can be . That means we can\u00e2\u0080\u0099t place and\r\nnext to each other. Therefore, if there is no in or there exist an\r\nelement in , we can simply rearrange as to make .The last case there are\r\nonly and in and the number of s is greater than . We want to make which\r\nis the minimum. Since the number of s is not greater than the number of\r\ns, we can rearrange as to make .\r\n"
+    "editorial": "Hint 1: .First, letâs determine if can be . That means we canât place\r\ntwo s next to each other. This is achievable when the number of s is not\r\ngreater than .Then determine if can be . That means we canât place and\r\nnext to each other. Therefore, if there is no in or there exist an\r\nelement in , we can simply rearrange as to make .The last case there are\r\nonly and in and the number of s is greater than . We want to make which\r\nis the minimum. Since the number of s is not greater than the number of\r\ns, we can rearrange as to make .\r\n",
+    "hint": []
 }

@@ -71,7 +71,7 @@
         ]
     },
     "name": "A. Perfect Permutation",
-    "statement": "A is a sequence of integers , consisting of distinct positive integers,\r\neach of them doesn\u2019t exceed . Let\u2019s denote the -th element of\r\npermutation as . We\u2019ll call number the size of permutation .Nickolas\r\nadores permutations. He likes some permutations more than the others. He\r\ncalls such permutations perfect. A permutation is such permutation that\r\nfor any ( is the permutation size) the following equations hold and .\r\nNickolas asks you to print any perfect permutation of size for the given\r\n.\r\n",
+    "statement": "A is a sequence of integers , consisting of distinct positive integers,\r\neach of them doesn’t exceed . Let’s denote the -th element of\r\npermutation as . We’ll call number the size of permutation .Nickolas\r\nadores permutations. He likes some permutations more than the others. He\r\ncalls such permutations perfect. A permutation is such permutation that\r\nfor any ( is the permutation size) the following equations hold and .\r\nNickolas asks you to print any perfect permutation of size for the given\r\n.\r\n",
     "solutions": [
         "#include<cstdio>\n\nint n;\n\nint main()\n{\nscanf(\"%d\",&n);\nif (n&1) printf(\"-1\\n\");\nelse\n  for (int i=1;i<=n/2;i++) printf(\"%d %d \",i*2,i*2-1);\nreturn 0;\n}\n"
     ],
@@ -85,5 +85,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Perfect Permutation84490.json",
     "editorial_link": "https://codeforces.com//blog/entry/5514",
-    "editorial": "Consider permutation p such that pi?=?i. Actually p is a sequence of numbers from 1 to n. Obviously ppi?=?i. Now the only trick is to change the permutation to satisfy the second equation: pi???i. Let's swap every two consequtive elements. More formally, for each k:?2k???n let's swap p2k?-?1 and p2k. It's easy to see that the obtained permutation satisfies both equations for every n with the only exception: when n is odd, there is no answer and we should print ?-?1."
+    "editorial": "Consider permutation p such that pi?=?i. Actually p is a sequence of numbers from 1 to n. Obviously ppi?=?i. Now the only trick is to change the permutation to satisfy the second equation: pi???i. Let's swap every two consequtive elements. More formally, for each k:?2k???n let's swap p2k?-?1 and p2k. It's easy to see that the obtained permutation satisfies both equations for every n with the only exception: when n is odd, there is no answer and we should print ?-?1.",
+    "hint": []
 }

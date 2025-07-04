@@ -164,5 +164,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Fair Playoff.json",
     "editorial_link": "https://codeforces.com//blog/entry/91481",
-    "editorial": "It is easier to determine the case when the players with the maximum\r\nskills will not meet in the finals. It means that they met in the\r\nsemifinals, and in the other semifinals, both players are weaker.It\u00e2\u0080\u0099s\r\neasy to check this case with the following formula: or .\r\n"
+    "editorial": "It is easier to determine the case when the players with the maximum\r\nskills will not meet in the finals. It means that they met in the\r\nsemifinals, and in the other semifinals, both players are weaker.Itâs\r\neasy to check this case with the following formula: or .\r\n",
+    "hint": []
 }

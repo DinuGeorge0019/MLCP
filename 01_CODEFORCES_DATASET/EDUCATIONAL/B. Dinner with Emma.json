@@ -139,7 +139,7 @@
         ]
     },
     "name": "B. Dinner with Emma",
-    "statement": "Jack decides to invite Emma out for a dinner. Jack is a modest student,\r\nhe doesn\u2019t want to go to an expensive restaurant. Emma is a girl with\r\nhigh taste, she prefers elite places.Munhattan consists of streets and\r\navenues. There is exactly one restaurant on the intersection of each\r\nstreet and avenue. The streets are numbered with integers from to and\r\nthe avenues are numbered with integers from to . The cost of dinner in\r\nthe restaurant at the intersection of the -th street and the -th avenue\r\nis .Jack and Emma decide to choose the restaurant in the following way.\r\nFirstly Emma chooses the street to dinner and then Jack chooses the\r\navenue. Emma and Jack makes their choice optimally: Emma wants to\r\nmaximize the cost of the dinner, Jack wants to minimize it. Emma takes\r\ninto account that Jack wants to minimize the cost of the dinner. Find\r\nthe cost of the dinner for the couple in love.\r\n",
+    "statement": "Jack decides to invite Emma out for a dinner. Jack is a modest student,\r\nhe doesn’t want to go to an expensive restaurant. Emma is a girl with\r\nhigh taste, she prefers elite places.Munhattan consists of streets and\r\navenues. There is exactly one restaurant on the intersection of each\r\nstreet and avenue. The streets are numbered with integers from to and\r\nthe avenues are numbered with integers from to . The cost of dinner in\r\nthe restaurant at the intersection of the -th street and the -th avenue\r\nis .Jack and Emma decide to choose the restaurant in the following way.\r\nFirstly Emma chooses the street to dinner and then Jack chooses the\r\navenue. Emma and Jack makes their choice optimally: Emma wants to\r\nmaximize the cost of the dinner, Jack wants to minimize it. Emma takes\r\ninto account that Jack wants to minimize the cost of the dinner. Find\r\nthe cost of the dinner for the couple in love.\r\n",
     "solutions": [
         "#include <iostream>\n#include <fstream>\n#include <set>\n#include <map>\n#include <string>\n#include <vector>\n#include <bitset>\n#include <algorithm>\n#include <cstring>\n#include <cstdlib>\n#include <cmath>\n#include <cassert>\n#include <queue>\n\n\ntypedef long long ll;\ntypedef double ld;\n\nusing namespace std;\n\n\nint main() {\n\tint n, m;\n\tcin >> n >> m;\n\tint mx = 0;\n\tfor (int i = 0; i < n; ++i) {\n\t\tint mn = 2e9;\n\t\tfor (int j = 0; j < m; ++j) {\n\t\t\tint a;\n\t\t\tcin >> a;\n\t\t\tmn = min(mn, a);\n\t\t}\n\t\tmx = max(mx, mn);\n\t}\n\tcout << mx << \"\\n\";\n\treturn 0;\n}\n\n\n"
     ],
@@ -153,5 +153,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. Dinner with Emma.json",
     "editorial_link": "https://codeforces.com//blog/entry/22712",
-    "editorial": "Firstly you should find the minimum value in each row and after that you\r\nshould find the maximum value over that minimums. It\u00e2\u0080\u0099s corresponding to\r\nthe strategy of Jack and Emma. C++ solution Complexity: .\r\n"
+    "editorial": "Firstly you should find the minimum value in each row and after that you\r\nshould find the maximum value over that minimums. Itâs corresponding to\r\nthe strategy of Jack and Emma. C++ solution Complexity: .\r\n",
+    "hint": []
 }

@@ -119,7 +119,7 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/130213",
-    "editorial": "SolutionLet\u00e2\u0080\u0099s consider the block of characters at the end. Notice that\r\ntheir quantity cannot decrease. Let be the number of identical\r\ncharacters at the end; there are three possible cases: it is enough to\r\nfind any block of length greater than and separate a block of length\r\nfrom it; obviously, there is no solution; find a block of length or and\r\nseparate a block of length from it. This solution works in , but it is\r\nnot the only correct one. Your solution may differ significantly from\r\nthe one proposed.\r\n",
+    "editorial": "SolutionLetâs consider the block of characters at the end. Notice that\r\ntheir quantity cannot decrease. Let be the number of identical\r\ncharacters at the end; there are three possible cases: it is enough to\r\nfind any block of length greater than and separate a block of length\r\nfrom it; obviously, there is no solution; find a block of length or and\r\nseparate a block of length from it. This solution works in , but it is\r\nnot the only correct one. Your solution may differ significantly from\r\nthe one proposed.\r\n",
     "name": "D. Fixing a Binary String",
     "statement": "You are given a binary string s of length n, consisting of zeros and\r\nones. You can perform the following operation : Choose an integer p (1\r\nle p\r\nle n). Reverse the substring s_1 s_2\r\nldots s_p. After this step, the string s_1 s_2\r\nldots s_n will become s_p s_{p-1}\r\nldots s_1 s_{p+1} s_{p+2}\r\nldots s_n. Then, perform a cyclic shift of the string s to the left p\r\ntimes. After this step, the initial string s_1s_2\r\nldots s_n will become s_{p+1}s_{p+2}\r\nldots s_n s_p s_{p-1}\r\nldots s_1. For example, if you apply the operation to the string with\r\np=3, after the second step, the string will become , and after the third\r\nstep, it will become .A string s is called if two conditions are met:\r\ns_1=s_2=\r\nldots=s_k; s_{i+k}\r\nneq s_i for any i (1\r\nle i\r\nle n - k). For example, with k=3, the strings , , and are k-proper,\r\nwhile the strings , , and are not.You are given an integer k, which of\r\nn. Find an integer p (1\r\nle p\r\nle n) such that after performing the operation, the string s becomes\r\nk-proper, or determine that it is impossible. Note that if the string is\r\ninitially k-proper, you still need to apply exactly one operation to it.\r\n",
     "solutions": [
@@ -138,5 +138,6 @@
     ],
     "dificulty": "1800",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Fixing a Binary String.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Fixing a Binary String.json",
+    "hint": []
 }

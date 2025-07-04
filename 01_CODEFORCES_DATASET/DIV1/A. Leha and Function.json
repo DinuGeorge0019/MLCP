@@ -129,5 +129,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Leha and Function.json",
     "editorial_link": "https://codeforces.com//blog/entry/53943?locale=en",
-    "editorial": "First of all, let's understand what is the value of F(N,?K).\nFor any subset of size K, say, a1,?a2...aK, we can represent it as a sequence of numbers d1,?d2...dK?+?1, so that d1?=?a1, d1?+?d2?=?a2, ..., .\nWe're interested in E[d1], expected value of d1. Knowing some basic facts about expected values, we can derive the following:\nE[d1?+?...?+?dK?+?1]?=?N?+?1\nE[d1]?+?...?+?E[dK?+?1]?=?(K?+?1)\u00b7E[d1]\nAnd we immediately get that .\nWe could also get the formula by using the Hockey Stick Identity, as Benq stated in his comment.\nNow, according to rearrangement inequality,  is maximized when A is increasing and B is decreasing."
+    "editorial": "First of all, let's understand what is the value of F(N,?K).\nFor any subset of size K, say, a1,?a2...aK, we can represent it as a sequence of numbers d1,?d2...dK?+?1, so that d1?=?a1, d1?+?d2?=?a2, ..., .\nWe're interested in E[d1], expected value of d1. Knowing some basic facts about expected values, we can derive the following:\nE[d1?+?...?+?dK?+?1]?=?N?+?1\nE[d1]?+?...?+?E[dK?+?1]?=?(K?+?1)·E[d1]\nAnd we immediately get that .\nWe could also get the formula by using the Hockey Stick Identity, as Benq stated in his comment.\nNow, according to rearrangement inequality,  is maximized when A is increasing and B is decreasing.",
+    "hint": []
 }

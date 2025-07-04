@@ -155,5 +155,14 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\F2. Gregor and the Odd Cows  Hard .json",
     "editorial_link": "https://codeforces.com//blog/entry/93586",
-    "editorial": "SolutionFirst read (and understand!) the editorial for the easy version\r\nof the problem. Definition: The of a point (x,y) is (x\r\n"
+    "editorial": "SolutionFirst read (and understand!) the editorial for the easy version\r\nof the problem. Definition: The of a point (x,y) is (x\r\n",
+    "hint": [
+        "Hint 1 Solve the easy version of the problem.",
+        "Hint 2 Taking each coordinate modulo 4 no longer works. This is because if or are odd, there's no way to predict whether the boundary count (see editorial of the easy version) is 1 or 3 mod 4.",
+        "Hint 3 By playing with Pick's Theorem, you should find that (the total number of boundary points) has to be even. Let , , and be the boundary count of the three sides of a lattice triangle.",
+        "Hint 4 Lets count the answer. Fix a point. Fix the boundary count mod 4 of the two sides adjacent to that point. Fix more things.",
+        "Hint 5 In Hint 4, we fixed a point. It's critical that you fix the boundary count of the side opposite that point to be even.",
+        "Hint 1 Let's give each component a \"representative\" cell. Then our task is now to count the number of representatives.",
+        "Hint 2 Let the cell with the smallest amount of paint in a component be the representative. How can we find if a given cell is a representative or not?"
+    ]
 }

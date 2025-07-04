@@ -141,5 +141,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. We Got Everything Covered .json",
     "editorial_link": "https://codeforces.com//blog/entry/125137",
-    "editorial": "TutorialThe smallest length possible for such a string is . Why?To have\r\nthe string as a subsequence, you need to have at least characters in the\r\nstring as . Similarly for all different characters. So, that gives a\r\ntotal length of at least .In fact, it is always possible to construct a\r\nstring of length that satisfies this property. One such string is times\r\nwhere is the letter of English alphabet. For example, the answer for can\r\nbe . It is not hard to see that the first letter of the subsequence can\r\nbe from the first group of letters, second letter from the second group\r\nand so on.\r\n"
+    "editorial": "TutorialThe smallest length possible for such a string is . Why?To have\r\nthe string as a subsequence, you need to have at least characters in the\r\nstring as . Similarly for all different characters. So, that gives a\r\ntotal length of at least .In fact, it is always possible to construct a\r\nstring of length that satisfies this property. One such string is times\r\nwhere is the letter of English alphabet. For example, the answer for can\r\nbe . It is not hard to see that the first letter of the subsequence can\r\nbe from the first group of letters, second letter from the second group\r\nand so on.\r\n",
+    "hint": []
 }

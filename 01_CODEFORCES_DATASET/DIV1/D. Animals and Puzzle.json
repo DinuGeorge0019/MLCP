@@ -118,5 +118,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Animals and Puzzle.json",
     "editorial_link": "https://codeforces.com//blog/entry/47094",
-    "editorial": "First lets calculate maximum square ending in cell (, ). For each cell\r\nif input matrix contain then else (, , ).We will use binary search to\r\nfind the answer. Lets fix some value . For each square (, )..(, ) we\r\nneed to find maximum and compare it to . To find maximum we can use .So\r\npreprocessing takes (), and query works in ().\r\n"
+    "editorial": "First lets calculate maximum square ending in cell (, ). For each cell\r\nif input matrix contain then else (, , ).We will use binary search to\r\nfind the answer. Lets fix some value . For each square (, )..(, ) we\r\nneed to find maximum and compare it to . To find maximum we can use .So\r\npreprocessing takes (), and query works in ().\r\n",
+    "hint": []
 }

@@ -108,5 +108,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. George and Sleep.json",
     "editorial_link": "https://codeforces.com//blog/entry/10583",
-    "editorial": "I will describe the simple solution. Let George woke up in the hours and\r\nminutes, and he slept for hours and minutes. Let\u00e2\u0080\u0099s get the number and .\r\nIf , then you should add to minutes and subtract from one hour. After\r\nthat if , then add to it hours. You can print the answer in C++ by using\r\nthe following line: The complexity is time and memory. Author\u00e2\u0080\u0099s\r\nsolution: 5850831\r\n"
+    "editorial": "I will describe the simple solution. Let George woke up in the hours and\r\nminutes, and he slept for hours and minutes. Letâs get the number and .\r\nIf , then you should add to minutes and subtract from one hour. After\r\nthat if , then add to it hours. You can print the answer in C++ by using\r\nthe following line: The complexity is time and memory. Authorâs\r\nsolution: 5850831\r\n",
+    "hint": []
 }

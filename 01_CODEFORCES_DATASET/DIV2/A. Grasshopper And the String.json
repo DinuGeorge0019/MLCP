@@ -120,7 +120,7 @@
         ]
     },
     "name": "A. Grasshopper And the String",
-    "statement": "One day, the Grasshopper was jumping on the lawn and found a piece of\r\npaper with a string. Grasshopper became interested what is the minimum\r\nhe should have in order to be able to reach the far end of the string,\r\njumping only on vowels of the English alphabet. is the maximum possible\r\nlength of his jump. Formally, consider that at the begginning the\r\nGrasshopper is located directly in front of the leftmost character of\r\nthe string. His goal is to reach the position right after the rightmost\r\ncharacter of the string. In one jump the Grasshopper could jump to the\r\nright any distance from to the value of his . The following letters are\r\nvowels: \u201d, \u201d, \u201d, \u201d, \u201d and \u201d.\r\n",
+    "statement": "One day, the Grasshopper was jumping on the lawn and found a piece of\r\npaper with a string. Grasshopper became interested what is the minimum\r\nhe should have in order to be able to reach the far end of the string,\r\njumping only on vowels of the English alphabet. is the maximum possible\r\nlength of his jump. Formally, consider that at the begginning the\r\nGrasshopper is located directly in front of the leftmost character of\r\nthe string. His goal is to reach the position right after the rightmost\r\ncharacter of the string. In one jump the Grasshopper could jump to the\r\nright any distance from to the value of his . The following letters are\r\nvowels: ”, ”, ”, ”, ” and ”.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\n\nusing namespace std;\n\nchar a[] = {'A', 'E', 'I', 'O', 'U', 'Y'};\n\nint main()\n{\n  string s;\n  int ans = 1;\n  cin >> s;\n  int last = -1;\n  for(int i=0;i<s.size();i++)\n  {\n    bool v = false;\n    for(int j=0;j<6;j++)\n      v |= (s[i] == a[j]);\n    if(v)\n    {\n      ans = max(ans, i - last);\n      last = i;\n    }\n  }\n  ans = max(ans, (int)s.size() - last);\n  cout << ans;\n  return 0;\n}\n"
     ],
@@ -133,5 +133,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Grasshopper And the String.json",
     "editorial_link": "https://codeforces.com//blog/entry/48133",
-    "editorial": "In this problem you have to find the longest sequence of consonants. The\r\nanswer is its length + 1. Iterate over each letter of string maintaining\r\ncurrent number of consecutive consonants and length of longest sequence.\r\nIf current letter is consonant then increase by 1, otherwise update and\r\nset = 1. Don\u00e2\u0080\u0099t forget to update value after exiting loop (as string can\r\npossibly end with consonant).Time complexity , length of the specified\r\nstring.\r\n"
+    "editorial": "In this problem you have to find the longest sequence of consonants. The\r\nanswer is its length + 1. Iterate over each letter of string maintaining\r\ncurrent number of consecutive consonants and length of longest sequence.\r\nIf current letter is consonant then increase by 1, otherwise update and\r\nset = 1. Donât forget to update value after exiting loop (as string can\r\npossibly end with consonant).Time complexity , length of the specified\r\nstring.\r\n",
+    "hint": []
 }

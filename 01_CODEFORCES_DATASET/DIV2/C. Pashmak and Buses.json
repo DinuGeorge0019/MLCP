@@ -129,5 +129,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Pashmak and Buses.json",
     "editorial_link": "https://codeforces.com//blog/entry/13430",
-    "editorial": "For each student consider a sequence of elements from to that shows the\r\nbus number which is taken by this student on each day. Obviously, there\r\nare different sequence at all, so if , pigeonhole principle indicates\r\nthat at least two of this sequences will be equal, so that two students\r\nwill become close friends and no solutions exist. But if , then we can\r\nassign a unique sequence to each student and compute the answer. For\r\ncomputing that, we can find the first -digits numbers in -based numbers.\r\nTotal complexity : Sample solutions: 7495236\r\n"
+    "editorial": "For each student consider a sequence of elements from to that shows the\r\nbus number which is taken by this student on each day. Obviously, there\r\nare different sequence at all, so if , pigeonhole principle indicates\r\nthat at least two of this sequences will be equal, so that two students\r\nwill become close friends and no solutions exist. But if , then we can\r\nassign a unique sequence to each student and compute the answer. For\r\ncomputing that, we can find the first -digits numbers in -based numbers.\r\nTotal complexity : Sample solutions: 7495236\r\n",
+    "hint": []
 }

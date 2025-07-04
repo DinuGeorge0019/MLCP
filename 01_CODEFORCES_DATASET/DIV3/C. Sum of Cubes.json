@@ -172,5 +172,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C. Sum of Cubes.json",
     "editorial_link": "https://codeforces.com//blog/entry/87874",
-    "editorial": "In this problem, we need to find and such that and .Since and are\r\npositive, and are also positive. Hence . Therefore, the number can be\r\niterated from to . Since in all tests , then .For each , you can find by\r\nthe formula . This is a positive number. It remains to check that is an\r\ninteger.\r\n"
+    "editorial": "In this problem, we need to find and such that and .Since and are\r\npositive, and are also positive. Hence . Therefore, the number can be\r\niterated from to . Since in all tests , then .For each , you can find by\r\nthe formula . This is a positive number. It remains to check that is an\r\ninteger.\r\n",
+    "hint": []
 }

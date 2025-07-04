@@ -109,5 +109,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Gluttony.json",
     "editorial_link": "https://codeforces.com//blog/entry/55841",
-    "editorial": "Sort the array and shift it by one. This array will be an\r\nanswer.Proof:When we shift the sorted array all of the elements become\r\ngreater except the first one, consider and if 1 wasn\u00e2\u0080\u0099t in t we would\r\nhave otherwise consider then 1 can\u00e2\u0080\u0099t be in and we have so and we are\r\ndone!\r\n"
+    "editorial": "Sort the array and shift it by one. This array will be an\r\nanswer.Proof:When we shift the sorted array all of the elements become\r\ngreater except the first one, consider and if 1 wasnât in t we would\r\nhave otherwise consider then 1 canât be in and we have so and we are\r\ndone!\r\n",
+    "hint": []
 }

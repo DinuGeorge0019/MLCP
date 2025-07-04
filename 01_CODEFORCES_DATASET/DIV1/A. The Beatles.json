@@ -106,5 +106,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. The Beatles.json",
     "editorial_link": "https://codeforces.com//blog/entry/66301",
-    "editorial": "Let\u00e2\u0080\u0099s assume that we know the length of the jump, and it is equal to .\r\nThen, in order to be back at the starting point, Sergey will need to\r\nmake exactly moves, where is the greatest common divider. Let , where\r\nand are non-negative integers. So, if we know and , than can only take\r\nvalues: , where means modulo . It is clear that only can be considered.\r\nThen we iterate over all the variants of the pair , and for each we find\r\nthe number of moves to the starting point. The minimum and maximum of\r\nthe resulting numbers will be the answer.\r\n"
+    "editorial": "Letâs assume that we know the length of the jump, and it is equal to .\r\nThen, in order to be back at the starting point, Sergey will need to\r\nmake exactly moves, where is the greatest common divider. Let , where\r\nand are non-negative integers. So, if we know and , than can only take\r\nvalues: , where means modulo . It is clear that only can be considered.\r\nThen we iterate over all the variants of the pair , and for each we find\r\nthe number of moves to the starting point. The minimum and maximum of\r\nthe resulting numbers will be the answer.\r\n",
+    "hint": []
 }

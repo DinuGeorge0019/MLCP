@@ -129,5 +129,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Nice Matrix.json",
     "editorial_link": "https://codeforces.com//blog/entry/83452",
-    "editorial": "Note, that if the value of is equal to some number , then values of ,\r\nand must also be equal to this number by the palindrome property.A\r\nsimilar property holds for all of the following elements (), so the\r\nproblem is reduced to finding the optimal number for each four of\r\nnumbers (maybe less for some positions in matrix). This number is the\r\nmedian of these numbers (the average of the sorted set). The answer will\r\nbe the sum of the differences between the median of the \"four\" and each\r\nnumber in the \"four\" for all \"fours\".\r\n"
+    "editorial": "Note, that if the value of is equal to some number , then values of ,\r\nand must also be equal to this number by the palindrome property.A\r\nsimilar property holds for all of the following elements (), so the\r\nproblem is reduced to finding the optimal number for each four of\r\nnumbers (maybe less for some positions in matrix). This number is the\r\nmedian of these numbers (the average of the sorted set). The answer will\r\nbe the sum of the differences between the median of the \"four\" and each\r\nnumber in the \"four\" for all \"fours\".\r\n",
+    "hint": []
 }

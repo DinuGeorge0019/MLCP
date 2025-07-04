@@ -161,5 +161,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Make It Increasing.json",
     "editorial_link": "https://codeforces.com//blog/entry/102550",
-    "editorial": "We will process the elements of the sequence starting from the end of\r\nthe sequence. Each element () will be divided by until it is less than .\r\nIf at some point it turns out that , it is impossible to obtain the\r\ndesired sequence.\r\n"
+    "editorial": "We will process the elements of the sequence starting from the end of\r\nthe sequence. Each element () will be divided by until it is less than .\r\nIf at some point it turns out that , it is impossible to obtain the\r\ndesired sequence.\r\n",
+    "hint": []
 }

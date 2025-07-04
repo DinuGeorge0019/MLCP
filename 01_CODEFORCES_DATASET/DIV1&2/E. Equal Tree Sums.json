@@ -206,5 +206,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\E. Equal Tree Sums.json",
     "editorial_link": "https://codeforces.com//blog/entry/101211",
-    "editorial": "Bicolor the tree, and put in vertices of one color and in vertices of\r\nthe other color. Consider removing one vertex . In each subtree, for\r\neach edge not incident with , will be added for one of the endpoints and\r\nfor the other endpoint, so the total contribution is . For the one edge\r\nin each subtree incident with , the contribution will be or depending on\r\nthe color of . So the sums of the subtrees will all be equal to or .\r\n"
+    "editorial": "Bicolor the tree, and put in vertices of one color and in vertices of\r\nthe other color. Consider removing one vertex . In each subtree, for\r\neach edge not incident with , will be added for one of the endpoints and\r\nfor the other endpoint, so the total contribution is . For the one edge\r\nin each subtree incident with , the contribution will be or depending on\r\nthe color of . So the sums of the subtrees will all be equal to or .\r\n",
+    "hint": []
 }

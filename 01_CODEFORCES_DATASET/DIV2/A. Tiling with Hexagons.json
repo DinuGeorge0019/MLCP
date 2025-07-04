@@ -99,7 +99,7 @@
         ]
     },
     "name": "A. Tiling with Hexagons",
-    "statement": "Several ages ago Berland was a kingdom. The King of Berland adored math.\r\nThat\u2019s why, when he first visited one of his many palaces, he first of\r\nall paid attention to the floor in one hall. The floor was tiled with\r\nhexagonal tiles.The hall also turned out hexagonal in its shape. The\r\nKing walked along the perimeter of the hall and concluded that each of\r\nthe six sides has , , , , and adjacent tiles, correspondingly.To better\r\nvisualize the situation, look at the picture showing a similar hexagon\r\nfor , and . According to the legend, as the King of Berland obtained the\r\nvalues , and , he almost immediately calculated the total number of\r\ntiles on the hall floor. Can you do the same?\r\n",
+    "statement": "Several ages ago Berland was a kingdom. The King of Berland adored math.\r\nThat’s why, when he first visited one of his many palaces, he first of\r\nall paid attention to the floor in one hall. The floor was tiled with\r\nhexagonal tiles.The hall also turned out hexagonal in its shape. The\r\nKing walked along the perimeter of the hall and concluded that each of\r\nthe six sides has , , , , and adjacent tiles, correspondingly.To better\r\nvisualize the situation, look at the picture showing a similar hexagon\r\nfor , and . According to the legend, as the King of Berland obtained the\r\nvalues , and , he almost immediately calculated the total number of\r\ntiles on the hall floor. Can you do the same?\r\n",
     "solutions": [
         "#include <vector> \n#include <list> \n#include <map> \n#include <set> \n#include <deque> \n#include <vector> \n#include <list> \n#include <map> \n#include <set> \n#include <deque> \n#include <queue> \n#include <stack> \n#include <bitset> \n#include <algorithm> \n#include <functional> \n#include <numeric> \n#include <utility> \n#include <sstream> \n#include <iostream> \n#include <iomanip> \n#include <cstdio> \n#include <cmath> \n#include <cstdlib> \n#include <cctype> \n#include <string> \n#include <cstring> \n#include <ctime> \n\nusing namespace std;\n\nint main()\n{\n  int i,a,b,c,tmp,tot;\n  scanf(\"%d%d%d\",&a,&b,&c);\n  tot=0;\n  tmp=a*2;\n  for (i=0;i<b+c-1;i++)\n  {\n    tot+=(tmp/2);\n    if (i+1<b) tmp++;\n    else tmp--;\n    if (i+1<c) tmp++;\n    else tmp--;\n  } \n  printf(\"%d\\n\",tot);\n}\n"
     ],
@@ -113,5 +113,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Tiling with Hexagons.json",
     "editorial_link": "https://codeforces.com//blog/entry/5066",
-    "editorial": "For solving this problem you might find some formula like\nres?=?abc?-?(a?-?1)(b?-?1)(c?-?1), res?=?ab?+?bc?+?ca?-?a?-?b?-?c?+?1, or something else.\nAlso the problem can be solved in O(a?+?b?+?c) time \u0097 you can move from the top line to the bottom line of hexagon and sum number of tiles in every line."
+    "editorial": "For solving this problem you might find some formula like\nres?=?abc?-?(a?-?1)(b?-?1)(c?-?1), res?=?ab?+?bc?+?ca?-?a?-?b?-?c?+?1, or something else.\nAlso the problem can be solved in O(a?+?b?+?c) time  you can move from the top line to the bottom line of hexagon and sum number of tiles in every line.",
+    "hint": []
 }

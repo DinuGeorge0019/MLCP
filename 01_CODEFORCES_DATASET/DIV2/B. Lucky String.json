@@ -99,7 +99,7 @@
         ]
     },
     "name": "B. Lucky String",
-    "statement": "Petya recently learned to determine whether a string of lowercase Latin\r\nletters is lucky. For each individual letter all its positions in the\r\nstring are written out in the increasing order. This results in lists of\r\nnumbers; some of them can be empty. A string is considered lucky if and\r\nonly if in each list the absolute difference of any two numbers is a\r\nlucky number. For example, let\u2019s consider string \"\". The lists of\r\npositions of equal letters are: : : : : : : Lists of positions of\r\nletters , , , ..., are empty.This string is lucky as all differences are\r\nlucky numbers. For letters : , , for letters : , for letters : . Note\r\nthat if some letter occurs only once in a string, it doesn\u2019t influence\r\nthe string\u2019s luckiness after building the lists of positions of equal\r\nletters. The string where all the letters are distinct is considered\r\nlucky.Find the lexicographically minimal lucky string whose length\r\nequals .\r\n",
+    "statement": "Petya recently learned to determine whether a string of lowercase Latin\r\nletters is lucky. For each individual letter all its positions in the\r\nstring are written out in the increasing order. This results in lists of\r\nnumbers; some of them can be empty. A string is considered lucky if and\r\nonly if in each list the absolute difference of any two numbers is a\r\nlucky number. For example, let’s consider string \"\". The lists of\r\npositions of equal letters are: : : : : : : Lists of positions of\r\nletters , , , ..., are empty.This string is lucky as all differences are\r\nlucky numbers. For letters : , , for letters : , for letters : . Note\r\nthat if some letter occurs only once in a string, it doesn’t influence\r\nthe string’s luckiness after building the lists of positions of equal\r\nletters. The string where all the letters are distinct is considered\r\nlucky.Find the lexicographically minimal lucky string whose length\r\nequals .\r\n",
     "solutions": [
         "#include <iostream>\n#include <cstdio>\n#include <cstdlib>\n#include <cmath>\n#include <cstring>\n#include <algorithm>\n#include <queue>\nusing namespace std;\n\nint N;\n\nint main()\n{\n    char num[1111];\n    while(~scanf(\"%d\", &N)){\n        for(int i = 0; i < N; i++)\n            putchar('a'+i%4);\n        printf(\"\\n\");\n    }\n    return 0;\n}\n"
     ],
@@ -113,5 +113,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Lucky String.json",
     "editorial_link": "https://codeforces.com//blog/entry/2547",
-    "editorial": "To solve this problem you need to notice that result is a prefix of string abcdabcdabcd...abcd and output first n characters of this string."
+    "editorial": "To solve this problem you need to notice that result is a prefix of string abcdabcdabcd...abcd and output first n characters of this string.",
+    "hint": []
 }

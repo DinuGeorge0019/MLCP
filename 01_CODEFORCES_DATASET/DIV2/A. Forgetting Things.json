@@ -154,5 +154,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Forgetting Things.json",
     "editorial_link": "https://codeforces.com//blog/entry/70898",
-    "editorial": "The answer exists only if da=db\n, db=da+1\n, or da=9\n and db=1\n. Alternatively, one could simply check all a\n up to 100 (or another reasoable bound)."
+    "editorial": "The answer exists only if da=db\n, db=da+1\n, or da=9\n and db=1\n. Alternatively, one could simply check all a\n up to 100 (or another reasoable bound).",
+    "hint": []
 }

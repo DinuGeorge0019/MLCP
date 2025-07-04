@@ -167,5 +167,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. Flag of Berland.json",
     "editorial_link": "https://codeforces.com//blog/entry/53662",
-    "editorial": "There are lots of ways to check correctness. For example, you can keep\r\nboolean array with already used colors, check stripes naively and mark\r\nthe color used if the stripe has single color. If all the colors are\r\nused in the end then the answer is .Overall complexity: .\r\n"
+    "editorial": "There are lots of ways to check correctness. For example, you can keep\r\nboolean array with already used colors, check stripes naively and mark\r\nthe color used if the stripe has single color. If all the colors are\r\nused in the end then the answer is .Overall complexity: .\r\n",
+    "hint": []
 }

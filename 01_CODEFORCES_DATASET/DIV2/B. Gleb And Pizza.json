@@ -117,5 +117,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Gleb And Pizza.json",
     "editorial_link": "https://codeforces.com//blog/entry/54179",
-    "editorial": "To understand whether some piece of sausage intersects with pizza, we\r\ncan check if their borders intersect. And to check this, since their\r\nborders are circles, we are interested in their radii and the distance\r\nbetween their centers. To check if a piece of sausage is inside the\r\ncrust, we firstly check that it is inside the pizza ), and secondly\r\ncheck that it is completely outside the central part of the pizza ).\r\nhttps://ideone.com/Jd66XL\r\n"
+    "editorial": "To understand whether some piece of sausage intersects with pizza, we\r\ncan check if their borders intersect. And to check this, since their\r\nborders are circles, we are interested in their radii and the distance\r\nbetween their centers. To check if a piece of sausage is inside the\r\ncrust, we firstly check that it is inside the pizza ), and secondly\r\ncheck that it is completely outside the central part of the pizza ).\r\nhttps://ideone.com/Jd66XL\r\n",
+    "hint": []
 }

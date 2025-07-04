@@ -97,7 +97,7 @@
         ]
     },
     "name": "A. Bits",
-    "statement": "Let\u2019s denote as the number of bits set (\u20191\u2019 bits) in the binary\r\nrepresentation of the non-negative integer .You are given multiple\r\nqueries consisting of pairs of integers and . For each query, find the ,\r\nsuch that , and is maximum possible. If there are multiple such numbers\r\nfind the smallest of them.\r\n",
+    "statement": "Let’s denote as the number of bits set (’1’ bits) in the binary\r\nrepresentation of the non-negative integer .You are given multiple\r\nqueries consisting of pairs of integers and . For each query, find the ,\r\nsuch that , and is maximum possible. If there are multiple such numbers\r\nfind the smallest of them.\r\n",
     "solutions": [
         "#include <iostream>\n#include <vector>\n#include <cmath>\n#include <ctime>\n#include <cstdio>\n#include <queue>\n#include <set>\n#include <map>\n#include <fstream>\n#include <cstdlib>\n#include <string>\n#include <cstring>\n#include <algorithm>\n#include <numeric>\n\n#define mp make_pair\n#define fi first\n#define se second\n#define pb push_back\n#define all(x) (x).begin(), (x).end()\n#define forn(i, n) for (int i = 0; i < (int)(n); ++i)\n#define ford(i, n) for (int i = (int)(n) - 1; i >= 0; --i)\n#define fore(i, a, b) for (int i = (int)(a); i <= (int)(b); ++i)\n\nusing namespace std;\n\ntypedef pair<int, int> pii;\ntypedef vector<int> vi;\ntypedef vector<vi> vvi;\ntypedef long long i64;\ntypedef vector<i64> vi64;\ntypedef vector<vi64> vvi64;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cout.precision(10);\n    cout << fixed;\n#ifdef LOCAL_DEFINE\n    freopen(\"input.txt\", \"rt\", stdin);\n#endif\n\n    int N;\n    cin >> N;\n    forn(i, N) {\n        i64 L, R;\n        cin >> L >> R;\n        i64 add = 0;\n        ford(k, 60) {\n            i64 M = (1LL << k) - 1;\n            if (L <= M && M <= R) {\n                add += M;\n                break;\n            }\n            if (L > M) {\n                add += 1LL << k;\n                L -= 1LL << k;\n                R -= 1LL << k;\n            }\n        }\n        cout << add << '\\n';\n    }\n\n#ifdef LOCAL_DEFINE\n    cerr << \"Time elapsed: \" << 1.0 * clock() / CLOCKS_PER_SEC << \" s.\\n\";\n#endif\n    return 0;\n}\n"
     ],
@@ -111,5 +111,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Bits.json",
     "editorial_link": "https://codeforces.com//blog/entry/14592",
-    "editorial": "Let us define function , that gives answer to the query. It looks\r\nfollows: if then ; else if , where maximum integer such , then ; else if\r\nthen ; else . Total complexity is per query.\r\n"
+    "editorial": "Let us define function , that gives answer to the query. It looks\r\nfollows: if then ; else if , where maximum integer such , then ; else if\r\nthen ; else . Total complexity is per query.\r\n",
+    "hint": []
 }

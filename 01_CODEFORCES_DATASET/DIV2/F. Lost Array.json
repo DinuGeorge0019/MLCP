@@ -140,5 +140,13 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\F. Lost Array.json",
     "editorial_link": "https://codeforces.com//blog/entry/105419",
-    "editorial": "First, we can see that contribute times to , which can calculate similar\r\nto Pascal\u00e2\u0080\u0099s Triangle. It\u00e2\u0080\u0099s easy to see that the value that contribute to\r\nequal to when is odd, otherwise. Let\u00e2\u0080\u0099s solve the inverse problem: Given\r\narray . Construct for all . By Lucas Theorem, is odd when is a submask\r\nof (with is inverse mask of ). Let define with smallest satisfy . Set\r\nand then is the Zeta transform of . So we could apply Mobius transform\r\nin to get . Since the operation is xor, mobius transform is as same as\r\nzeta transform. But unlike the inverse problem, there are some\r\ndifferences. We don\u00e2\u0080\u0099t know the value of for in . Let be the sum over\r\nsupermasks array of (with is supermasks of when , then set for in .\r\nAfter that, do another sum over supermasks on to get original value of .\r\nNow we can find from and from . Complexity: Solution\r\n"
+    "editorial": "First, we can see that contribute times to , which can calculate similar\r\nto Pascalâs Triangle. Itâs easy to see that the value that contribute to\r\nequal to when is odd, otherwise. Letâs solve the inverse problem: Given\r\narray . Construct for all . By Lucas Theorem, is odd when is a submask\r\nof (with is inverse mask of ). Let define with smallest satisfy . Set\r\nand then is the Zeta transform of . So we could apply Mobius transform\r\nin to get . Since the operation is xor, mobius transform is as same as\r\nzeta transform. But unlike the inverse problem, there are some\r\ndifferences. We donât know the value of for in . Let be the sum over\r\nsupermasks array of (with is supermasks of when , then set for in .\r\nAfter that, do another sum over supermasks on to get original value of .\r\nNow we can find from and from . Complexity: Solution\r\n",
+    "hint": [
+        "Hint 0 Is there any case that the answer doesn't exist? If exist, are there multiple?",
+        "Hint 1 How many times does contribute to ? Hint 1.1 Pascal's Triangle Calculate value that contribute to . Hint 1.2 Sierpiński triangle",
+        "Hint 1.1 Pascal's Triangle",
+        "Hint 1.2 Sierpiński triangle",
+        "Hint 2 Consider the inverse problem: Given array . Construct for all . How can you solve this problem?",
+        "Hint 3 Consider easier problem: Let construct matrix of size same way as matrix . Given , please reconstruct . How can you solve this problem?"
+    ]
 }

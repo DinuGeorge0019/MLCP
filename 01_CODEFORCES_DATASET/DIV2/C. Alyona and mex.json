@@ -99,7 +99,7 @@
         ]
     },
     "name": "C. Alyona and mex",
-    "statement": "Alyona\u2019s mother wants to present an array of non-negative integers to\r\nAlyona. The array should be special. Alyona is a capricious girl so\r\nafter she gets the array, she inspects of its subarrays. Subarray is a\r\nset of some subsequent elements of the array. The -th subarray is\r\ndescribed with two integers and , and its elements are .Alyona is going\r\nto find for each of the chosen subarrays. Among these the girl is going\r\nto find the smallest. She wants this minimum to be as large as possible.\r\nYou are to find an array of elements so that the minimum among those\r\nchosen by Alyona subarrays is as large as possible.The of a set is a\r\nminimum possible non-negative integer that is not in .\r\n",
+    "statement": "Alyona’s mother wants to present an array of non-negative integers to\r\nAlyona. The array should be special. Alyona is a capricious girl so\r\nafter she gets the array, she inspects of its subarrays. Subarray is a\r\nset of some subsequent elements of the array. The -th subarray is\r\ndescribed with two integers and , and its elements are .Alyona is going\r\nto find for each of the chosen subarrays. Among these the girl is going\r\nto find the smallest. She wants this minimum to be as large as possible.\r\nYou are to find an array of elements so that the minimum among those\r\nchosen by Alyona subarrays is as large as possible.The of a set is a\r\nminimum possible non-negative integer that is not in .\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std; \n\nconst int N=350000;\nconst int Mod=1e9+7;\n\nlong long a[N],f[N],ans;\nint n,m,l[N],r[N];\n\nint main() {\n\tcin>>n>>m;\n\t//for(int i=1;i<=n;i++) cin>>a[i];\n\tint ans=1e9;\n\tfor(int i=1;i<=m;i++) {\n\t\tscanf(\"%d%d\",l+i,r+i);\n\t\tans=min(ans,r[i]-l[i]+1);\n\t}\n\tcout<<ans<<endl;\n\tint tmp=0;\n\tfor(int i=1;i<=n;i++) {\n\t\tcout<<tmp<<\" \";\n\t\ttmp++;\n\t\tif(tmp==ans) tmp=0;\n\t}\n}\n"
     ],
@@ -112,5 +112,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Alyona and mex.json",
     "editorial_link": "https://codeforces.com//blog/entry/48582",
-    "editorial": "Obviously, the answer to the problem can not be greater than the minimum length among the lengths of the sub-arrays. Suppose that the minimum length of all the sub-arrays is equal to len. Then the desired array is: 0,?1,?2,?3,?...,?len?-?1,?0,?1,?2,?3,?... len?-?1... . Not hard to make sure that mex of any subarray will be at least len."
+    "editorial": "Obviously, the answer to the problem can not be greater than the minimum length among the lengths of the sub-arrays. Suppose that the minimum length of all the sub-arrays is equal to len. Then the desired array is: 0,?1,?2,?3,?...,?len?-?1,?0,?1,?2,?3,?... len?-?1... . Not hard to make sure that mex of any subarray will be at least len.",
+    "hint": []
 }

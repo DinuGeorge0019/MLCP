@@ -126,5 +126,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Sonya and Matrix.json",
     "editorial_link": "https://codeforces.com/blog/entry/60443",
-    "editorial": "Suppose that a matrix has sizes , zero is located at . Let be the\r\ndistance to the cell , and let the distance to the cell . Obvious that\r\nthe farthest distance from the zero cell will be to a corner cell. The\r\nmaximum number in the list is equal to the maximum distance to a corner\r\ncell (let\u00e2\u0080\u0099s assume that it is ).We know that ; ; ; . And ; ; . Let\u00e2\u0080\u0099s\r\nfind the minimum ) such that the number of occurrences of in the list is\r\nnot equal to . We can notice that . Let\u00e2\u0080\u0099s look at each pair (). If we\r\nknow , and , we can find and restore the matrix. If it could be done, we\r\nalready found the answer.\r\n"
+    "editorial": "Suppose that a matrix has sizes , zero is located at . Let be the\r\ndistance to the cell , and let the distance to the cell . Obvious that\r\nthe farthest distance from the zero cell will be to a corner cell. The\r\nmaximum number in the list is equal to the maximum distance to a corner\r\ncell (letâs assume that it is ).We know that ; ; ; . And ; ; . Letâs\r\nfind the minimum ) such that the number of occurrences of in the list is\r\nnot equal to . We can notice that . Letâs look at each pair (). If we\r\nknow , and , we can find and restore the matrix. If it could be done, we\r\nalready found the answer.\r\n",
+    "hint": []
 }

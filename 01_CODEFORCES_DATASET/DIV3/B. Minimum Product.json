@@ -144,5 +144,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Minimum Product.json",
     "editorial_link": "https://codeforces.com//blog/entry/82284",
-    "editorial": "The only fact required to solve the problem: if we start decreasing the\r\nnumber, we are better to end decreasing it and only then decrease the\r\nother number. So, we can just consider two cases: when we decrease\r\nfirst, and after that and vice versa, and just take the minimum product\r\nof these two results. The rest is just implementation.\r\n"
+    "editorial": "The only fact required to solve the problem: if we start decreasing the\r\nnumber, we are better to end decreasing it and only then decrease the\r\nother number. So, we can just consider two cases: when we decrease\r\nfirst, and after that and vice versa, and just take the minimum product\r\nof these two results. The rest is just implementation.\r\n",
+    "hint": []
 }

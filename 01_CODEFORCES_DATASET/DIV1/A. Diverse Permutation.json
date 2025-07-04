@@ -80,7 +80,7 @@
         ]
     },
     "name": "A. Diverse Permutation",
-    "statement": "is an ordered set of integers , consisting of distinct positive integers\r\nnot larger than . We\u2019ll denote as the length of permutation .Your task\r\nis to find such permutation of length , that the group of numbers has\r\nexactly distinct elements.\r\n",
+    "statement": "is an ordered set of integers , consisting of distinct positive integers\r\nnot larger than . We’ll denote as the length of permutation .Your task\r\nis to find such permutation of length , that the group of numbers has\r\nexactly distinct elements.\r\n",
     "solutions": [
         "#include <cstring>\n#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <memory.h>\n#include <cassert>\n\nusing namespace std;\n\nint a[1234567];\n\nint main() {\n  int n, k;\n  scanf(\"%d %d\", &n, &k);\n  a[0] = 1;\n  int low = 1, high = 1;\n  for (int i = 1; i <= k; i++) {\n    if (i % 2 == 1) {\n      a[i] = ++high;\n    } else {\n      a[i] = --low;\n    }\n  }\n  for (int i = k + 1; i < n; i++) {\n    if (a[k] == low) {\n      a[i] = a[i - 1] - 1;\n    } else {\n      a[i] = a[i - 1] + 1;\n    }\n  }\n  int smallest = a[0];\n  for (int i = 1; i < n; i++) {\n    if (a[i] < smallest) {\n      smallest = a[i];\n    }\n  }\n  for (int i = 0; i < n; i++) {\n    if (i > 0) printf(\" \");\n    printf(\"%d\", a[i] - smallest + 1);\n  }\n  printf(\"\\n\");\n  return 0;\n}\n"
     ],
@@ -94,5 +94,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Diverse Permutation.json",
     "editorial_link": "https://codeforces.com//blog/entry/14417",
-    "editorial": " Let\u00e2\u0080\u0099s see, what\u00e2\u0080\u0099s the solution for some : 1\n10 2 9 3 8 4 7 5 6 At the odd indexes we placed increasing sequence 1,\n2, 3 .., at the even decreasing sequence . First, we must get the\npermutation the way described above, then get first numbers from it, and\nthen we should make all other distances be equal to 1. This solution\nworks with . Jury\u00e2\u0080\u0099s solution: 8394876\n"
+    "editorial": " Letâs see, whatâs the solution for some : 1\n10 2 9 3 8 4 7 5 6 At the odd indexes we placed increasing sequence 1,\n2, 3 .., at the even decreasing sequence . First, we must get the\npermutation the way described above, then get first numbers from it, and\nthen we should make all other distances be equal to 1. This solution\nworks with . Juryâs solution: 8394876\n",
+    "hint": []
 }

@@ -128,5 +128,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Lucky Substring.json",
     "editorial_link": "https://codeforces.com//blog/entry/2956",
-    "editorial": "Notice, that answer is either one digit or -1. So, if there are no 4 and 7 digits, then answer is -1. Else, if there is more or equel number of digits 4, then answer is 4, else answer is 7."
+    "editorial": "Notice, that answer is either one digit or -1. So, if there are no 4 and 7 digits, then answer is -1. Else, if there is more or equel number of digits 4, then answer is 4, else answer is 7.",
+    "hint": []
 }

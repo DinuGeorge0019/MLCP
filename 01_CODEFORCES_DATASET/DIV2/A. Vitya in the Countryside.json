@@ -86,7 +86,7 @@
         ]
     },
     "name": "A. Vitya in the Countryside",
-    "statement": "Every summer Vitya comes to visit his grandmother in the countryside.\r\nThis summer, he got a huge wart. Every grandma knows that one should\r\ntreat warts when the moon goes down. Thus, Vitya has to catch the moment\r\nwhen the moon is down.Moon cycle lasts 30 days. The size of the visible\r\npart of the moon (in Vitya\u2019s units) for each day is , , , , , , , , , ,\r\n, , , , , , , , , , , , , , , , , , , , and then cycle repeats, thus\r\nafter the second again goes .As there is no internet in the countryside,\r\nVitya has been watching the moon for consecutive days and for each of\r\nthese days he wrote down the size of the visible part of the moon. Help\r\nhim find out whether the moon will be up or down next day, or this\r\ncannot be determined by the data he has.\r\n",
+    "statement": "Every summer Vitya comes to visit his grandmother in the countryside.\r\nThis summer, he got a huge wart. Every grandma knows that one should\r\ntreat warts when the moon goes down. Thus, Vitya has to catch the moment\r\nwhen the moon is down.Moon cycle lasts 30 days. The size of the visible\r\npart of the moon (in Vitya’s units) for each day is , , , , , , , , , ,\r\n, , , , , , , , , , , , , , , , , , , , and then cycle repeats, thus\r\nafter the second again goes .As there is no internet in the countryside,\r\nVitya has been watching the moon for consecutive days and for each of\r\nthese days he wrote down the size of the visible part of the moon. Help\r\nhim find out whether the moon will be up or down next day, or this\r\ncannot be determined by the data he has.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\n\nint a[100];\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &a[i]);\n    }\n    if (a[n - 1] == 15 || a[n - 1] == 0) {\n        if (a[n - 1] == 15) {\n            puts(\"DOWN\");\n        } else{\n            puts(\"UP\");\n        }\n    } else {\n        if (n == 1) {\n            puts(\"-1\");\n        } else {\n            if (a[n - 2] < a[n - 1]) {\n                puts(\"UP\");\n            } else {\n                puts(\"DOWN\");\n            }\n        }\n    }\n    return 0;\n}"
     ],
@@ -99,5 +99,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Vitya in the Countryside.json",
     "editorial_link": "https://codeforces.com//blog/entry/47314",
-    "editorial": "There are four cases that should be carefully considered:\n\nan?=?15  ?\u0097? the answer is always DOWN.\n\nan?=?0  ?\u0097? the answer is always UP.\n\nIf n?=?1  ?\u0097? the answer is -1.\n\nIf n?>?1, then if an\u00961?>?an  ?\u0097? answer is DOWN, else UP."
+    "editorial": "There are four cases that should be carefully considered:\n\nan?=?15  ?? the answer is always DOWN.\n\nan?=?0  ?? the answer is always UP.\n\nIf n?=?1  ?? the answer is -1.\n\nIf n?>?1, then if an1?>?an  ?? answer is DOWN, else UP.",
+    "hint": []
 }

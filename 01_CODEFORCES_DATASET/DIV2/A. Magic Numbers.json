@@ -99,7 +99,7 @@
         ]
     },
     "name": "A. Magic Numbers",
-    "statement": "A magic number is a number formed by concatenation of numbers , and . We\r\ncan use each of these numbers any number of times. Therefore , and are\r\nmagic numbers but , and are not.You\u2019re given a number. Determine if it\r\nis a magic number or not.\r\n",
+    "statement": "A magic number is a number formed by concatenation of numbers , and . We\r\ncan use each of these numbers any number of times. Therefore , and are\r\nmagic numbers but , and are not.You’re given a number. Determine if it\r\nis a magic number or not.\r\n",
     "solutions": [
         "#include<cstdio>\n#include<cstdlib>\n#include<cstring>\n#include<algorithm>\n#include<iostream>\n#include<fstream>\n#include<map>\n#include<ctime>\n#include<set>\n#include<queue>\n#include<cmath>\n#include<vector>\n#include<bitset>\n#include<functional>\n#define x first\n#define y second\n#define mp make_pair\n#define pb push_back\n#define REP(i,l,r) for((i)=(l);(i)<=(r);++(i))\n#define REP2(i,l,r) for((i)=(l);(i)!=(r);++(i))\nusing namespace std;\n\ntypedef long long LL;\ntypedef double ld;\n\nint n;\nint f[100];\nstring a;\n\nint main()\n{\n#ifndef ONLINE_JUDGE\n\tfreopen(\"input.txt\",\"r\",stdin);freopen(\"output.txt\",\"w\",stdout);\n#endif\n\tcin>>a;\n\tint i;\n\tf[0]=1;\n\tREP2(i,0,a.size())\n\t{\n\t\tf[i+1]=f[i] && a[i]=='1';\n\t\tif(i)\n\t\t\tf[i+1]=f[i+1] || ( f[i-1] && a[i-1]=='1' && a[i]=='4' );\n\t\tif(i>1)\n\t\t\tf[i+1]=f[i+1] || ( f[i-2] && a[i-2]=='1' && a[i-1]=='4' && a[i]=='4' );\n\t}\n\tif(f[a.size()])\n\t\tcout<<\"YES\"<<endl;\n\telse cout<<\"NO\"<<endl;\n\treturn 0;\n}\n"
     ],
@@ -113,5 +113,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Magic Numbers.json",
     "editorial_link": "https://codeforces.com//blog/entry/8166",
-    "editorial": "Although the input number is very small, solving the problem for\r\narbitrary length numbers using strings is easier. It\u00e2\u0080\u0099s easy to prove\r\nthat a number meeting the following conditions is magical: Here is a\r\nsample implementation in C++:\r\n"
+    "editorial": "Although the input number is very small, solving the problem for\r\narbitrary length numbers using strings is easier. Itâs easy to prove\r\nthat a number meeting the following conditions is magical: Here is a\r\nsample implementation in C++:\r\n",
+    "hint": []
 }

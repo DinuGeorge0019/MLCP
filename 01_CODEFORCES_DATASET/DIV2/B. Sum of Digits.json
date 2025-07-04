@@ -94,7 +94,7 @@
         ]
     },
     "name": "B. Sum of Digits",
-    "statement": "Having watched the last Harry Potter film, little Gerald also decided to\r\npractice magic. He found in his father\u2019s magical book a spell that turns\r\nany number in the sum of its digits. At the moment Gerald learned that,\r\nhe came across a number . How many times can Gerald put a spell on it\r\nuntil the number becomes one-digit?\r\n",
+    "statement": "Having watched the last Harry Potter film, little Gerald also decided to\r\npractice magic. He found in his father’s magical book a spell that turns\r\nany number in the sum of its digits. At the moment Gerald learned that,\r\nhe came across a number . How many times can Gerald put a spell on it\r\nuntil the number becomes one-digit?\r\n",
     "solutions": [
         "#include <iostream>\n#include <string>\n#include <set>\n#include <map>\n#include <vector>\n\n\nusing namespace std;\n\nstring s;\n\nint getSum(int x){\n    int ans = 0;\n    while(x){\n        ans += x%10;\n        x/=10;\n    }\n    return ans;\n}\n\nint main(){\n    cin >> s;\n    if(s.length()==1){\n        cout << 0;\n        return 0;\n    }\n    int sum = 0;\n    for(int i=0; i<s.length(); i++){\n        sum += (s[i]-'0');\n    }\n    int ans = 1;\n    while(sum>9){\n        sum = getSum(sum);\n        ans++;\n    }\n    cout << ans;\n\n    return 0;\n}"
     ],
@@ -107,5 +107,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Sum of Digits.json",
     "editorial_link": "https://codeforces.com//blog/entry/2393",
-    "editorial": "Initial number consist of no more then 100000 digits. Therefore after first transform resulting number will be no more then 900000, and then it will constist of no more then 6 digits. Thus after next transform number will be no more then 54 and so it will be two-digit or one-digit. Sum of digits of a two-digit number no more, then 18, and sum of digit of such number no more, then 9.\nThus Gerald can't do nore, then 4 transforms. First transform one can implement one simple pass throw symbols of given string. Following operations take very little time."
+    "editorial": "Initial number consist of no more then 100000 digits. Therefore after first transform resulting number will be no more then 900000, and then it will constist of no more then 6 digits. Thus after next transform number will be no more then 54 and so it will be two-digit or one-digit. Sum of digits of a two-digit number no more, then 18, and sum of digit of such number no more, then 9.\nThus Gerald can't do nore, then 4 transforms. First transform one can implement one simple pass throw symbols of given string. Following operations take very little time.",
+    "hint": []
 }

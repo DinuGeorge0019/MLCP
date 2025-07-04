@@ -137,5 +137,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Given Length and Sum of Digits....json",
     "editorial_link": "https://codeforces.com//blog/entry/14741",
-    "editorial": "There is a greedy approach to solve the problem. Just try first digit\r\nfrom lower values to higher (in subtask to minimize number) and check if\r\nit is possible to construct a tail in such a way that it satisfies rule\r\nabout length/sum. You can use a function \u00e2\u0080\u0098can(m,s)\u00e2\u0080\u0099 that answers if it\r\nis possible to construct a sequence of length with the sum of digits :\r\nUsing the function can(m,s) you can easily pick up answer\r\ndigit-by-digit. For the first part of problem (to minimize number) this\r\npart of code is: The equation (i > 0 || d > 0 || (m == 1 && d == 0)) is\r\nneeded to be careful with leading zeroes.\r\n"
+    "editorial": "There is a greedy approach to solve the problem. Just try first digit\r\nfrom lower values to higher (in subtask to minimize number) and check if\r\nit is possible to construct a tail in such a way that it satisfies rule\r\nabout length/sum. You can use a function âcan(m,s)â that answers if it\r\nis possible to construct a sequence of length with the sum of digits :\r\nUsing the function can(m,s) you can easily pick up answer\r\ndigit-by-digit. For the first part of problem (to minimize number) this\r\npart of code is: The equation (i > 0 || d > 0 || (m == 1 && d == 0)) is\r\nneeded to be careful with leading zeroes.\r\n",
+    "hint": []
 }

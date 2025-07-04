@@ -177,5 +177,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\D. Challenging Valleys.json",
     "editorial_link": "https://codeforces.com//blog/entry/109348",
-    "editorial": "One possible solution is to represent a range of equal element as a\r\nsingle element with that value. Construct this array and loop through it\r\nand check how many element satisfy the conditions or and or . If exactly\r\none index satisfies these conditions, print \"YES\" and othewise\r\n\"NO\".Complexity:\r\n"
+    "editorial": "One possible solution is to represent a range of equal element as a\r\nsingle element with that value. Construct this array and loop through it\r\nand check how many element satisfy the conditions or and or . If exactly\r\none index satisfies these conditions, print \"YES\" and othewise\r\n\"NO\".Complexity:\r\n",
+    "hint": []
 }

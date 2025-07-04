@@ -101,7 +101,7 @@
         ]
     },
     "name": "C. Boredom",
-    "statement": "Alex doesn\u2019t like boredom. That\u2019s why whenever he gets bored, he comes\r\nup with games. One long winter evening he came up with a game and\r\ndecided to play it.Given a sequence consisting of integers. The player\r\ncan make several steps. In a single step he can choose an element of the\r\nsequence (let\u2019s denote it ) and delete it, at that all elements equal to\r\nand also must be deleted from the sequence. That step brings points to\r\nthe player. Alex is a perfectionist, so he decided to get as many points\r\nas possible. Help him.\r\n",
+    "statement": "Alex doesn’t like boredom. That’s why whenever he gets bored, he comes\r\nup with games. One long winter evening he came up with a game and\r\ndecided to play it.Given a sequence consisting of integers. The player\r\ncan make several steps. In a single step he can choose an element of the\r\nsequence (let’s denote it ) and delete it, at that all elements equal to\r\nand also must be deleted from the sequence. That step brings points to\r\nthe player. Alex is a perfectionist, so he decided to get as many points\r\nas possible. Help him.\r\n",
     "solutions": [
         "#include <cstdio>\n#include <vector>\n#include <algorithm>\n#include <queue>\n#include <map>\n#include <set>\n#include <iostream>\n\nusing namespace std;\n\nint A[100005], ctos;\nlong long D[100005], S[100005];\n\nint main()\n{\n    scanf(\"%d\",&ctos);\n    for(int i=1; i<=ctos; i++){\n        scanf(\"%d\",&A[i]);\n        S[A[i]]=S[A[i]]+A[i];\n    }\n    D[100000]=S[100000];\n    for(int i=99999; i>0; i--){\n        if(D[i+1]>D[i+2]+S[i]){\n            D[i]=D[i+1];\n        }\n        else {\n            D[i]=D[i+2]+S[i];\n        }\n    }\n    cout<<D[1]<<\"\\n\";\n    return 0;\n}\n"
     ],
@@ -114,5 +114,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Boredom.json",
     "editorial_link": "https://codeforces.com//blog/entry/13336",
-    "editorial": "Solutions: 7407649, 7407655; In this task we need to maximize the sum of\r\nnumbers that we took. Let precalc array . number of integers in array .\r\nNow we can easily calculate the DP: , ; ; ; The answer is . Asymptotics\r\n.\r\n"
+    "editorial": "Solutions: 7407649, 7407655; In this task we need to maximize the sum of\r\nnumbers that we took. Let precalc array . number of integers in array .\r\nNow we can easily calculate the DP: , ; ; ; The answer is . Asymptotics\r\n.\r\n",
+    "hint": []
 }

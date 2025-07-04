@@ -128,7 +128,7 @@
         ]
     },
     "name": "A. Single Push",
-    "statement": "You\u2019re given two arrays a[1\r\ndots n] and b[1\r\ndots n], both of the same length n.In order to perform a , you have to\r\nchoose three integers l, r, k satisfying 1\r\nle l\r\nle r\r\nle n and k > 0. Then, you will add k to elements a_l, a_{l+1},\r\nldots, a_r.For example, if a = [3, 7, 1, 4, 1, 2] and you choose (l = 3,\r\nr = 5, k = 2), the array a will become [3, 7,\r\nunderline{3, 6, 3}, 2].You can do this operation . Can you make array a\r\nequal to array b?(We consider that a = b if and only if, for every 1\r\nle i\r\nle n, a_i = b_i)\r\n",
+    "statement": "You’re given two arrays a[1\r\ndots n] and b[1\r\ndots n], both of the same length n.In order to perform a , you have to\r\nchoose three integers l, r, k satisfying 1\r\nle l\r\nle r\r\nle n and k > 0. Then, you will add k to elements a_l, a_{l+1},\r\nldots, a_r.For example, if a = [3, 7, 1, 4, 1, 2] and you choose (l = 3,\r\nr = 5, k = 2), the array a will become [3, 7,\r\nunderline{3, 6, 3}, 2].You can do this operation . Can you make array a\r\nequal to array b?(We consider that a = b if and only if, for every 1\r\nle i\r\nle n, a_i = b_i)\r\n",
     "solutions": [
         "#include <cstdio>\n#include <cstring>\n#include <vector>\nusing namespace std;\n\nint n,tc;\nint A[100005], B[100005];\n\nint main(){\n\n\tscanf(\"%d\",&tc);\n\twhile ( tc-- ){\n\t\tint l = -1, r = -1;\n\t\tbool cannot = false;\n\t\tscanf(\"%d\",&n);\n\t\tfor ( int i = 0; i < n; i++ ){\n\t\t\tscanf(\"%d\",&A[i]);\n\t\t}\n\t\tfor ( int i = 0; i < n; i++ ){\n\t\t\tscanf(\"%d\",&B[i]);\n\t\t\tif ( B[i] == A[i] ) continue;\n\t\t\tif ( B[i] < A[i] ) cannot = true;\n\t\t\telse  {\n\t\t\t\tif ( l == -1 ) l = i;\n\t\t\t\tr = i;\n\t\t\t}\n\t\t}\n\n\t\tif ( cannot ){\n\t\t\tprintf(\"NO\\n\");\n\t\t} else {\n\t\t\tif ( l == -1 || r == -1 ){\n\t\t\t\tprintf(\"YES\\n\");\n\t\t\t} else {\n\t\t\t\tint diff = B[l] - A[l];\n\t\t\t\tfor ( int i = l + 1; i <= r; i++ ){\n\t\t\t\t\tif ( B[i] - A[i] != diff ){\n\t\t\t\t\t\tcannot = true;\n\t\t\t\t\t\tbreak;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tif ( cannot ) printf(\"NO\\n\");\n\t\t\t\telse printf(\"YES\\n\");\n\t\t\t}\n\t\t}\n\t}\n\treturn 0;\n}"
     ],
@@ -141,5 +141,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Single Push.json",
     "editorial_link": "https://codeforces.com//blog/entry/71489?locale=en",
-    "editorial": "If we set , we have to check that has the following form: . Firstly\r\ncheck that there is no negative element in .Solution 1 : add to the\r\nbeginning and the end of the array , then check that there is at most\r\ntwo indices such that .Solution 2 : let be the smallest integer such\r\nthat , and be the greatest integer such that . Check that for all ,\r\n.Complexity : for each test case.Implementation (solution 1)\r\n"
+    "editorial": "If we set , we have to check that has the following form: . Firstly\r\ncheck that there is no negative element in .Solution 1 : add to the\r\nbeginning and the end of the array , then check that there is at most\r\ntwo indices such that .Solution 2 : let be the smallest integer such\r\nthat , and be the greatest integer such that . Check that for all ,\r\n.Complexity : for each test case.Implementation (solution 1)\r\n",
+    "hint": []
 }

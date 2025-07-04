@@ -159,5 +159,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Sasha and the Beautiful Array.json",
     "editorial_link": "https://codeforces.com//blog/entry/125943",
-    "editorial": "a2?a1+a3?a2+\u0085+an?an?1=an?a1\n. So we just need to maximize this value, which means the answer is the maximum number in the array minus the minimum."
+    "editorial": "a2?a1+a3?a2++an?an?1=an?a1\n. So we just need to maximize this value, which means the answer is the maximum number in the array minus the minimum.",
+    "hint": []
 }

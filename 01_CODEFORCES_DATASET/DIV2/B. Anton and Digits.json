@@ -119,7 +119,7 @@
         ]
     },
     "name": "B. Anton and Digits",
-    "statement": "Recently Anton found a box with digits in his room. There are digits ,\r\ndigits , digits and digits .Anton\u2019s favorite integers are and . He\r\ndecided to compose this integers from digits he has. He wants to make\r\nthe sum of these integers as large as possible. Help him solve this\r\ntask!Each digit can be used no more than once, i.e. the composed\r\nintegers should contain no more than digits , digits and so on. Of\r\ncourse, unused digits are not counted in the sum.\r\n",
+    "statement": "Recently Anton found a box with digits in his room. There are digits ,\r\ndigits , digits and digits .Anton’s favorite integers are and . He\r\ndecided to compose this integers from digits he has. He wants to make\r\nthe sum of these integers as large as possible. Help him solve this\r\ntask!Each digit can be used no more than once, i.e. the composed\r\nintegers should contain no more than digits , digits and so on. Of\r\ncourse, unused digits are not counted in the sum.\r\n",
     "solutions": [
         "#include <iostream>\n#include <fstream>\n#include <list>\n#include <stack>\n#include <deque>\n#include <utility>\n#include <queue>\n#include <set>\n#include <map>\n#include <bitset>\n#include <vector>\n#include <cmath>\n#include <string>\n#include <algorithm>\n#include <iomanip>\n#include <ctime>\n#include <iterator>\n#include <cstdio>\n#include <cstring>\n#include <cstdlib>\n\n\nusing namespace std;\n\ntypedef long long ll;\ntypedef long double ld;\ntypedef unsigned long long ull;\n\n#define f first\n#define s second\n#define pb push_back\n#define mp make_pair\n\nconst int maxn = 100500;\nconst int inf = 2e9;\nconst double eps = 1e-8;\nconst int base = 1073676287;\n\nint main()\n{\n    srand( time( 0 ) );\n    // freopen( \"input.txt\", \"r\", stdin );\n    // freopen( \"output.txt\", \"w\", stdout );\n    // ios_base::sync_with_stdio(false);\n    int k2, k3, k5, k6;\n    scanf ( \"%d%d%d%d\", &k2, &k3, &k5, &k6 );\n    ll ans = 256LL * min( k2, min( k5, k6 ) );\n    k2 -= min( k2, min( k5, k6 ) );\n    ans += 32LL * min( k2, k3 );\n    cout << ans << endl;\n    return 0;\n}\n"
     ],
@@ -135,5 +135,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Anton and Digits.json",
     "editorial_link": "https://codeforces.com//blog/entry/48397",
-    "editorial": "We will act greedily. At first we\u00e2\u0080\u0099ll make maximal possible amount of\r\nnumbers. It will be equal to . From the rest of the digits we\u00e2\u0080\u0099ll make\r\nmaximal possible amount of numbers. It will be equal to (we use instead\r\nof , because twos we\u00e2\u0080\u0099ve already used to make numbers. Now it\u00e2\u0080\u0099s not hard\r\nto observe that the answer will be equal to .Time complexity is .\r\n"
+    "editorial": "We will act greedily. At first weâll make maximal possible amount of\r\nnumbers. It will be equal to . From the rest of the digits weâll make\r\nmaximal possible amount of numbers. It will be equal to (we use instead\r\nof , because twos weâve already used to make numbers. Now itâs not hard\r\nto observe that the answer will be equal to .Time complexity is .\r\n",
+    "hint": []
 }

@@ -158,5 +158,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. I Hate 1111.json",
     "editorial_link": "https://codeforces.com//blog/entry/91195",
-    "editorial": "Method 1Notice that and\nsimilarly . This implies that we can construct and all bigger numbers\nusing only and . So it suffices to check whether we can construct from\nand only.Suppose , where . Suppose , where . Then . So we can just brute\nforce all value of to check whether can be made.Method 2Since , by the\nChicken McNugget Theorem, all numbers greater than can be written as a\nsum of and . We can use brute force to find the answer to all values\nless than or equal to and answer yes for all other numbers.\n"
+    "editorial": "Method 1Notice that and\nsimilarly . This implies that we can construct and all bigger numbers\nusing only and . So it suffices to check whether we can construct from\nand only.Suppose , where . Suppose , where . Then . So we can just brute\nforce all value of to check whether can be made.Method 2Since , by the\nChicken McNugget Theorem, all numbers greater than can be written as a\nsum of and . We can use brute force to find the answer to all values\nless than or equal to and answer yes for all other numbers.\n",
+    "hint": [
+        "Hint 0 Read the name of the problem ;)",
+        "Hint 1",
+        "Hint 2 All numbers other than and are useless."
+    ]
 }

@@ -177,5 +177,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\A. Spell Check.json",
     "editorial_link": "https://codeforces.com//blog/entry/106478",
-    "editorial": "Here are two solutions. Iterate through the string character by\r\ncharacter. If , then ; otherwise, if or , then or . If the statement is\r\nfalse for any , the answer is . Otherwise it is . Replace all with ,\r\nsince they are the same anyway. Then just check if the two strings are\r\nequal.In either case the complexity is per testcase.\r\n"
+    "editorial": "Here are two solutions. Iterate through the string character by\r\ncharacter. If , then ; otherwise, if or , then or . If the statement is\r\nfalse for any , the answer is . Otherwise it is . Replace all with ,\r\nsince they are the same anyway. Then just check if the two strings are\r\nequal.In either case the complexity is per testcase.\r\n",
+    "hint": []
 }

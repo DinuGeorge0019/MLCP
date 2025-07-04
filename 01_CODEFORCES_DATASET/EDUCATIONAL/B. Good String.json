@@ -176,5 +176,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. Good String.json",
     "editorial_link": "https://codeforces.com//blog/entry/66147",
-    "editorial": "A string is good when either its first character is or the last is .\r\nStrings of type are not good, as their first and last characters will\r\nnever change and they will eventually come to the form .So, the answer\r\nis the minimum number of characters from the beginning of the string,\r\nwhich must be removed so that the first symbol becomes , or minimum\r\nnumber of characters from the end of the string, which must be removed\r\nso that the last symbol becomes .\r\n"
+    "editorial": "A string is good when either its first character is or the last is .\r\nStrings of type are not good, as their first and last characters will\r\nnever change and they will eventually come to the form .So, the answer\r\nis the minimum number of characters from the beginning of the string,\r\nwhich must be removed so that the first symbol becomes , or minimum\r\nnumber of characters from the end of the string, which must be removed\r\nso that the last symbol becomes .\r\n",
+    "hint": []
 }

@@ -125,7 +125,7 @@
         ]
     },
     "name": "C. Joty and Chocolate",
-    "statement": "Little Joty has got a task to do. She has a line of tiles indexed from\r\nto . She has to paint them in a strange pattern.An unpainted tile should\r\nbe painted Red if it\u2019s index is divisible by and an unpainted tile\r\nshould be painted Blue if it\u2019s index is divisible by . So the tile with\r\nthe number divisible by and can be either painted Red or Blue.After her\r\npainting is done, she will get chocolates for each tile that is painted\r\nRed and chocolates for each tile that is painted Blue.Note that she can\r\npaint tiles in any order she wants.Given the required information, find\r\nthe maximum number of chocolates Joty can get.\r\n",
+    "statement": "Little Joty has got a task to do. She has a line of tiles indexed from\r\nto . She has to paint them in a strange pattern.An unpainted tile should\r\nbe painted Red if it’s index is divisible by and an unpainted tile\r\nshould be painted Blue if it’s index is divisible by . So the tile with\r\nthe number divisible by and can be either painted Red or Blue.After her\r\npainting is done, she will get chocolates for each tile that is painted\r\nRed and chocolates for each tile that is painted Blue.Note that she can\r\npaint tiles in any order she wants.Given the required information, find\r\nthe maximum number of chocolates Joty can get.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\ntypedef long long LL;\n\nint main() {\n    LL n , a , b , p , q;\n    cin >> n >> a >> b >> p >> q;\n    LL A = n / a , B = n / b , c = a / __gcd(a , b) * b;\n    LL C = n / c;\n    A -= C , B -= C;\n    cout << A * p + B * q + max(p , q) * C << endl;\n}\n"
     ],
@@ -140,5 +140,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\C. Joty and Chocolate.json",
     "editorial_link": "https://codeforces.com//blog/entry/45405",
-    "editorial": "The problem was suggested by Sheikh Monir skmonir. Easy to see that we\r\ncan paint with both colours only tiles with the numbers multiple of .\r\nObviously that tiles should be painted with more expensive colour. So\r\nthe answer equals to . C++ solution\r\n"
+    "editorial": "The problem was suggested by Sheikh Monir skmonir. Easy to see that we\r\ncan paint with both colours only tiles with the numbers multiple of .\r\nObviously that tiles should be painted with more expensive colour. So\r\nthe answer equals to . C++ solution\r\n",
+    "hint": []
 }

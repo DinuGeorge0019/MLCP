@@ -181,5 +181,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\A. Perfect Squares.json",
     "editorial_link": "https://codeforces.com//blog/entry/57250",
-    "editorial": "For each number, check whether the number is a square or not (by\r\nchecking factors smaller than the square root of the number or using\r\nsqrt function).The answer is the largest number which isn\u00e2\u0080\u0099t a square.\r\n(negative numbers can\u00e2\u0080\u0099t be squares)Make sure you initialize your max\r\nvariable to instead of .\r\n"
+    "editorial": "For each number, check whether the number is a square or not (by\r\nchecking factors smaller than the square root of the number or using\r\nsqrt function).The answer is the largest number which isnât a square.\r\n(negative numbers canât be squares)Make sure you initialize your max\r\nvariable to instead of .\r\n",
+    "hint": []
 }

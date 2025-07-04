@@ -96,5 +96,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Kuriyama Mirai s Stones.json",
     "editorial_link": "https://codeforces.com//blog/entry/12397",
-    "editorial": "Sort sequence to obtain sequence . Sorting can be done in using\r\nquicksort. Now we are interested in the sum of a interval of a given\r\nsequence. This can be done by calculating the prefix sum of the sequence\r\nbeforehand. That is, let . The sum of numbers in the interval would then\r\nbe . We can deal with sequence likewise. Preprocessing takes time, and\r\nanswering a query is only . The total complexity would be . Solution:\r\n6713020\r\n"
+    "editorial": "Sort sequence to obtain sequence . Sorting can be done in using\r\nquicksort. Now we are interested in the sum of a interval of a given\r\nsequence. This can be done by calculating the prefix sum of the sequence\r\nbeforehand. That is, let . The sum of numbers in the interval would then\r\nbe . We can deal with sequence likewise. Preprocessing takes time, and\r\nanswering a query is only . The total complexity would be . Solution:\r\n6713020\r\n",
+    "hint": []
 }

@@ -206,7 +206,7 @@
         ]
     },
     "name": "D. X-Sum",
-    "statement": "Timur\u2019s grandfather gifted him a chessboard to practice his chess\r\nskills. This chessboard is a grid a with n rows and m columns with each\r\ncell having a integer written on it. Timur\u2019s challenge is to place a\r\nbishop on the board such that the sum of all cells attacked by the\r\nbishop is . The bishop attacks in all directions diagonally, and there\r\nis no limit to the distance which the bishop can attack. Note that the\r\ncell on which the bishop is placed is also considered attacked. Help him\r\nfind the maximal sum he can get.\r\n",
+    "statement": "Timur’s grandfather gifted him a chessboard to practice his chess\r\nskills. This chessboard is a grid a with n rows and m columns with each\r\ncell having a integer written on it. Timur’s challenge is to place a\r\nbishop on the board such that the sum of all cells attacked by the\r\nbishop is . The bishop attacks in all directions diagonally, and there\r\nis no limit to the distance which the bishop can attack. Note that the\r\ncell on which the bishop is placed is also considered attacked. Help him\r\nfind the maximal sum he can get.\r\n",
     "solutions": [
         "#include <iostream>\n\nusing namespace std;\n\nconst int N = 220;\n\nlong long a[N][N];\nlong long f[N * 2], g[N * 2];\n\nint main()\n{\n\tint t;\n\tint n, m;\n\tint i, j;\n\tlong long ans;\n\t\n\tcin >> t;\n\twhile(t --)\n\t{\n\t\tcin >> n >> m;\n\t\tfor(i = 1; i <= n; i ++)\n\t\t\tfor(j = 1; j <= m; j ++)\n\t\t\t\tcin >> a[i][j];\n\t\t\n\t\tfor(i = 1; i <= n + m; i ++)\n\t\t\tf[i] = g[i] = 0;\n\t\tfor(i = 1; i <= n; i ++)\n\t\t\tfor(j = 1; j <= m; j ++)\n\t\t\t{\n\t\t\t\tf[i + j] += a[i][j];\n\t\t\t\tg[i - j + m] += a[i][j];\n\t\t\t}\n\t\t\n\t\tfor(i = 1, ans = 0; i <= n; i ++)\n\t\t\tfor(j = 1; j <= m; j ++)\n\t\t\t\tans = max(ans, f[i + j] + g[i - j + m] - a[i][j]);\n\t\t\n\t\tcout << ans << endl;\n\t}\n\t\n\treturn 0;\n}\n"
     ],
@@ -221,5 +221,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\D. X-Sum.json",
     "editorial_link": "https://codeforces.com//blog/entry/102710",
-    "editorial": "The solution is to check the sum over all diagonals for each cell.For a\r\ncell () we can iterate over all elements in all its diagonals. This will\r\nbe in total elements.The complexity will be . solutions involving\r\nprecomputation are also possible but aren\u00e2\u0080\u0099t needed.\r\n"
+    "editorial": "The solution is to check the sum over all diagonals for each cell.For a\r\ncell () we can iterate over all elements in all its diagonals. This will\r\nbe in total elements.The complexity will be . solutions involving\r\nprecomputation are also possible but arenât needed.\r\n",
+    "hint": []
 }

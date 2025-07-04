@@ -171,7 +171,7 @@
         ]
     },
     "name": "A. Musical Puzzle",
-    "statement": "Vlad decided to compose a melody on his guitar. Let\u2019s represent the\r\nmelody as a sequence of notes corresponding to the characters \u2019a\u2019, \u2019b\u2019,\r\n\u2019c\u2019, \u2019d\u2019, \u2019e\u2019, \u2019f\u2019, and \u2019g\u2019.However, Vlad is not very experienced in\r\nplaying the guitar and can only record notes at a time. Vlad wants to\r\nobtain the melody s, and to do this, he can merge the recorded melodies\r\ntogether. In this case, the last sound of the first melody must match\r\nthe first sound of the second melody.For example, if Vlad recorded the\r\nmelodies and , he can merge them together and obtain the melody , and\r\nthen merge the result with to get .Help Vlad determine the number of\r\nmelodies consisting of two notes that he needs to record in order to\r\nobtain the melody s.\r\n",
+    "statement": "Vlad decided to compose a melody on his guitar. Let’s represent the\r\nmelody as a sequence of notes corresponding to the characters ’a’, ’b’,\r\n’c’, ’d’, ’e’, ’f’, and ’g’.However, Vlad is not very experienced in\r\nplaying the guitar and can only record notes at a time. Vlad wants to\r\nobtain the melody s, and to do this, he can merge the recorded melodies\r\ntogether. In this case, the last sound of the first melody must match\r\nthe first sound of the second melody.For example, if Vlad recorded the\r\nmelodies and , he can merge them together and obtain the melody , and\r\nthen merge the result with to get .Help Vlad determine the number of\r\nmelodies consisting of two notes that he needs to record in order to\r\nobtain the melody s.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\n\nusing i64 = long long;\n\nvoid solve() {\n    int n;\n    std::cin >> n;\n    std::string s;\n    std::cin >> s;\n    std::map<std::string, int> cnt;\n    for (int i = 1; i < n; i++) {\n        std::string t;\n        t += s[i - 1];\n        t += s[i];\n        ++cnt[t];\n    }\n    std::cout << (int) cnt.size() << \"\\n\";\n}\n\nsigned main() {\n    std::ios::sync_with_stdio(false);\n    std::cin.tie(nullptr);\n \n    int t = 1;\n    std::cin >> t;\n \n    while (t--) {\n        solve();\n    }\n}"
     ],
@@ -185,5 +185,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Musical Puzzle.json",
     "editorial_link": "https://codeforces.com//blog/entry/116636",
-    "editorial": "Let\u00e2\u0080\u0099s construct the melody sequentially. In the first step, we can\r\nrecord the notes and . In the next step, we need to record and , because\r\nthere must be a common symbol when gluing and so on. That is, we need to\r\nhave recorded melodies + for all . We only need to count how many\r\ndifferent ones among them, because we don\u00e2\u0080\u0099t need to record one melody\r\ntwice.\r\n"
+    "editorial": "Letâs construct the melody sequentially. In the first step, we can\r\nrecord the notes and . In the next step, we need to record and , because\r\nthere must be a common symbol when gluing and so on. That is, we need to\r\nhave recorded melodies + for all . We only need to count how many\r\ndifferent ones among them, because we donât need to record one melody\r\ntwice.\r\n",
+    "hint": []
 }

@@ -138,5 +138,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Strange Partition.json",
     "editorial_link": "https://codeforces.com//blog/entry/86464",
-    "editorial": "Note that, . It means that the maximal sum is attained if we do not\r\napply any operations, and the minimal one is attained if we replace all\r\nthe element with a single one, equal to the sum of all elements.\r\n"
+    "editorial": "Note that, . It means that the maximal sum is attained if we do not\r\napply any operations, and the minimal one is attained if we replace all\r\nthe element with a single one, equal to the sum of all elements.\r\n",
+    "hint": []
 }

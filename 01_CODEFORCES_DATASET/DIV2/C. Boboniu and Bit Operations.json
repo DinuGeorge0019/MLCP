@@ -116,7 +116,7 @@
         ]
     },
     "name": "C. Boboniu and Bit Operations",
-    "statement": "Boboniu likes bit operations. He wants to play a game with you.Boboniu\r\ngives you two sequences of non-negative integers a_1,a_2,\r\nldots,a_n and b_1,b_2,\r\nldots,b_m.For each i (1\r\nle i\r\nle n), you\u2019re asked to choose a j (1\r\nle j\r\nle m) and let c_i=a_i\r\n& b_j, where\r\n& denotes the bitwise AND operation. Note that you can pick the same j\r\nfor different i\u2019s.Find the minimum possible c_1 | c_2 |\r\nldots | c_n, where | denotes the bitwise OR operation.\r\n",
+    "statement": "Boboniu likes bit operations. He wants to play a game with you.Boboniu\r\ngives you two sequences of non-negative integers a_1,a_2,\r\nldots,a_n and b_1,b_2,\r\nldots,b_m.For each i (1\r\nle i\r\nle n), you’re asked to choose a j (1\r\nle j\r\nle m) and let c_i=a_i\r\n& b_j, where\r\n& denotes the bitwise AND operation. Note that you can pick the same j\r\nfor different i’s.Find the minimum possible c_1 | c_2 |\r\nldots | c_n, where | denotes the bitwise OR operation.\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\nusing namespace std;\nint n,m,a[210],b[210],res;\nbool ok[210][210];\nint main(){\n\tscanf(\"%d%d\",&n,&m);\n\tfor(int i=1;i<=n;i++)scanf(\"%d\",&a[i]);\n\tfor(int j=1;j<=m;j++)scanf(\"%d\",&b[j]);\n\tfor(int k=8;k>=0;k--){\n\t\tbool fl=true;\n\t\tfor(int i=1;i<=n;i++){\n\t\t\tbool fd=false;\n\t\t\tfor(int j=1;j<=m;j++)if(!ok[i][j]&&!(a[i]&b[j]&(1<<k)))fd=true;\n\t\t\tfl&=fd;\n\t\t}\n\t\tif(!fl){res+=(1<<k);continue;}\n\t\tfor(int i=1;i<=n;i++)for(int j=1;j<=m;j++)ok[i][j]|=((a[i]&b[j]&(1<<k))!=0);\n\t}\n\tprintf(\"%d\\n\",res);\n\treturn 0;\n}\n"
     ],
@@ -132,5 +132,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Boboniu and Bit Operations.json",
     "editorial_link": "https://codeforces.com//blog/entry/81355",
-    "editorial": "Suppose the answer is . Thus for all (), .Since , we can enumerate all\r\nintegers from to , and check if there exists for each that . The minimum\r\nof them will be the answer.The time complexity is\r\n"
+    "editorial": "Suppose the answer is . Thus for all (), .Since , we can enumerate all\r\nintegers from to , and check if there exists for each that . The minimum\r\nof them will be the answer.The time complexity is\r\n",
+    "hint": []
 }

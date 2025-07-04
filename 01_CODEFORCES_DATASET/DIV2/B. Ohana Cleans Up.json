@@ -115,5 +115,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Ohana Cleans Up.json",
     "editorial_link": "https://codeforces.com//blog/entry/18842",
-    "editorial": "For each row, there is only one set of columns we can sweep so it\r\nbecomes completely clean. So, there are only configurations of sweeping\r\ncolumns to look at. Checking a configuration takes time to count the\r\nnumber of rows that are completely clean. There are configurations in\r\nall, so this takes time total. Alternatively, another way of solving\r\nthis problem is finding the maximum number of rows that are all the\r\nsame. Example code:\r\nhttp://codeforces.com/contest/554/submission/11767576\r\n"
+    "editorial": "For each row, there is only one set of columns we can sweep so it\r\nbecomes completely clean. So, there are only configurations of sweeping\r\ncolumns to look at. Checking a configuration takes time to count the\r\nnumber of rows that are completely clean. There are configurations in\r\nall, so this takes time total. Alternatively, another way of solving\r\nthis problem is finding the maximum number of rows that are all the\r\nsame. Example code:\r\nhttp://codeforces.com/contest/554/submission/11767576\r\n",
+    "hint": []
 }

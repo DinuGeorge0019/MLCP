@@ -177,5 +177,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\D. Make The Fence Great Again.json",
     "editorial_link": "https://codeforces.com//blog/entry/69925",
-    "editorial": "Let\u00e2\u0080\u0099s notice that in optimal answer all boards will be increased by no\r\nmore than two. It is true because if it is beneficial to increase the\r\nlength of some board by three or more (denote its length as ) then\r\nincreasing to the length , or is cheaper and one of these boards is not\r\nequal to any of its adjacent boards.Noticing this, we can write a\r\nsolution based on dynamic programming. Let\u00e2\u0080\u0099s is minimum amount of money\r\nfor making fence great, moreover the last board(with index ) we increase\r\nby . Then value can be calculated as follows:\r\n"
+    "editorial": "Letâs notice that in optimal answer all boards will be increased by no\r\nmore than two. It is true because if it is beneficial to increase the\r\nlength of some board by three or more (denote its length as ) then\r\nincreasing to the length , or is cheaper and one of these boards is not\r\nequal to any of its adjacent boards.Noticing this, we can write a\r\nsolution based on dynamic programming. Letâs is minimum amount of money\r\nfor making fence great, moreover the last board(with index ) we increase\r\nby . Then value can be calculated as follows:\r\n",
+    "hint": []
 }

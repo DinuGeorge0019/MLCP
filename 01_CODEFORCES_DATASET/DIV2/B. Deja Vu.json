@@ -161,5 +161,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Deja Vu.json",
     "editorial_link": "https://codeforces.com//blog/entry/121876",
-    "editorial": "Let a number be divisible by . Then after applying the operation it is\r\nno longer divisible by . From this we can conclude that if we apply the\r\noperation , and there is such an operation that , then the operation\r\ndoes not change the array. So, it is useless and can be simply not\r\nprocessed. Then we will maintain the minimum of the processed . If the\r\nnew operation is smaller than the minimum processed one, we will process\r\nthe operation and update it. Otherwise we just won\u00e2\u0080\u0099t do anything. Since\r\nthe minimum processed will decrease at most times, the time complexity\r\nis .\r\n"
+    "editorial": "Let a number be divisible by . Then after applying the operation it is\r\nno longer divisible by . From this we can conclude that if we apply the\r\noperation , and there is such an operation that , then the operation\r\ndoes not change the array. So, it is useless and can be simply not\r\nprocessed. Then we will maintain the minimum of the processed . If the\r\nnew operation is smaller than the minimum processed one, we will process\r\nthe operation and update it. Otherwise we just wonât do anything. Since\r\nthe minimum processed will decrease at most times, the time complexity\r\nis .\r\n",
+    "hint": []
 }

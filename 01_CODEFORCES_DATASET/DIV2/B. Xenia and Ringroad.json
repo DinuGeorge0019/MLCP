@@ -98,7 +98,7 @@
         ]
     },
     "name": "B. Xenia and Ringroad",
-    "statement": "Xenia lives in a city that has houses built along the main ringroad. The\r\nringroad houses are numbered 1 through in the clockwise order. The\r\nringroad traffic is one way and also is clockwise.Xenia has recently\r\nmoved into the ringroad house number 1. As a result, she\u2019s got things to\r\ndo. In order to complete the -th task, she needs to be in the house\r\nnumber and complete all tasks with numbers less than . Initially, Xenia\r\nis in the house number 1, find the minimum time she needs to complete\r\nall her tasks if moving from a house to a neighboring one along the\r\nringroad takes one unit of time.\r\n",
+    "statement": "Xenia lives in a city that has houses built along the main ringroad. The\r\nringroad houses are numbered 1 through in the clockwise order. The\r\nringroad traffic is one way and also is clockwise.Xenia has recently\r\nmoved into the ringroad house number 1. As a result, she’s got things to\r\ndo. In order to complete the -th task, she needs to be in the house\r\nnumber and complete all tasks with numbers less than . Initially, Xenia\r\nis in the house number 1, find the minimum time she needs to complete\r\nall her tasks if moving from a house to a neighboring one along the\r\nringroad takes one unit of time.\r\n",
     "solutions": [
         "#include <iostream>\n#include <cstring>\n#include <cstdio>\n#include <algorithm>\n\nusing namespace std;\n\ntypedef long long LL;\nconst int N=100005;\n\nint n, m;\nLL A[N];\n\nint main() {\n\tscanf(\"%d%d\", &n, &m);\n\tfor(int i=1; i<=m; i++) {\n\t\tscanf(\"%I64d\", &A[i]);\n\t\tA[i]--;\n\t}\n\tLL last=0, ans=0;\n\tfor(int i=1; i<=m; i++) {\n\t\tif(A[i]>=last) ans+=A[i]-last, last=A[i];\n\t\telse ans+=n-last+A[i], last=A[i];\n\t}\n\tprintf(\"%I64d\\n\", ans);\n\treturn 0;\n}\n"
     ],
@@ -111,5 +111,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Xenia and Ringroad.json",
     "editorial_link": "https://codeforces.com//blog/entry/8725",
-    "editorial": "Tutorial by Fefer_Ivan To solve this problem we must learn how to\r\ncalculate fast enought the time, needed to travel between houses and .\r\nLet\u00e2\u0080\u0099s consider the case when . Than Xenia needs seconds to get from to .\r\nOtherwise , Xenia will have to go thought house number 1. So she will\r\nneed seconds.\r\n"
+    "editorial": "Tutorial by Fefer_Ivan To solve this problem we must learn how to\r\ncalculate fast enought the time, needed to travel between houses and .\r\nLetâs consider the case when . Than Xenia needs seconds to get from to .\r\nOtherwise , Xenia will have to go thought house number 1. So she will\r\nneed seconds.\r\n",
+    "hint": []
 }

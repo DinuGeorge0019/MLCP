@@ -171,5 +171,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\A. Sum of 2050.json",
     "editorial_link": "https://codeforces.com//blog/entry/89968",
-    "editorial": "First, we need to check whether is the multiple of . If is not the\r\nmultiple of , the answer is always .Then we can divide by , the problem\r\nnow is how to represent as the sum of powers of . So the answer is the\r\nsum of its digits in decimal representation.\r\n"
+    "editorial": "First, we need to check whether is the multiple of . If is not the\r\nmultiple of , the answer is always .Then we can divide by , the problem\r\nnow is how to represent as the sum of powers of . So the answer is the\r\nsum of its digits in decimal representation.\r\n",
+    "hint": []
 }

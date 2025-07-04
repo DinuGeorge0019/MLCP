@@ -143,5 +143,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Count Pairs.json",
     "editorial_link": "https://codeforces.com//blog/entry/68079",
-    "editorial": "Let's transform condtition a ittle bit. ai?aj??0\n mod\n p\n, so condtition is equivalent:\n\n(ai?aj)(ai+aj)(a2i+a2j)?(ai?aj)k?a4i?a4j?kai?kaj?a4i?kai?a4j?kaj\n.\n\nThat's why we just need to count number of pairs of equal numbers in the array bi=(a4i?kai)\n mod\n p\n. It's easy to do it, for example, using map. Complexity O(n)\n or O(nlog(n))\n."
+    "editorial": "Let's transform condtition a ittle bit. ai?aj??0\n mod\n p\n, so condtition is equivalent:\n\n(ai?aj)(ai+aj)(a2i+a2j)?(ai?aj)k?a4i?a4j?kai?kaj?a4i?kai?a4j?kaj\n.\n\nThat's why we just need to count number of pairs of equal numbers in the array bi=(a4i?kai)\n mod\n p\n. It's easy to do it, for example, using map. Complexity O(n)\n or O(nlog(n))\n.",
+    "hint": []
 }

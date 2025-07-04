@@ -151,5 +151,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Consecutive Sum.json",
     "editorial_link": "https://codeforces.com//blog/entry/83109",
-    "editorial": "Solution For each index (), there is exactly one element among to , which\ncan swap with . If is greater than that element, swap them. This process\nperform the operation at most times. After performing operations, select\nto . This is the maximum score we can get.\n"
+    "editorial": "Solution For each index (), there is exactly one element among to , which\ncan swap with . If is greater than that element, swap them. This process\nperform the operation at most times. After performing operations, select\nto . This is the maximum score we can get.\n",
+    "hint": [
+        "Hint 1 -th element moves only to -th position ( is integer).",
+        "Hint 2 We cannot select and simultaneously. In other words, if we can swap and , we cannot select and simultaneously.",
+        "Hint 3 Among all elements for each ( ), only one element is selected."
+    ]
 }

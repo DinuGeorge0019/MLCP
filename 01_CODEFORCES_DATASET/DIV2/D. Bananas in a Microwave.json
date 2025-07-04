@@ -138,5 +138,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Bananas in a Microwave.json",
     "editorial_link": "https://codeforces.com//blog/entry/89137",
-    "editorial": "We have a brute force O(N?M2)\n solution.\n\nAt every timestep t\n, for each banana bi\n that has already been reached previously, apply this timestep's operation yt\n times on bi\n. For all the yt\n bananas reachable from bi\n, update their minimum reachability time if they hadn't been reached previously.\n\nWhy is this correct? Simply because we are simulating each possible step of the algorithm exactly as it is described. Therefore, we cannot get an answer that's better or worse than that of the optimal solution."
+    "editorial": "We have a brute force O(N?M2)\n solution.\n\nAt every timestep t\n, for each banana bi\n that has already been reached previously, apply this timestep's operation yt\n times on bi\n. For all the yt\n bananas reachable from bi\n, update their minimum reachability time if they hadn't been reached previously.\n\nWhy is this correct? Simply because we are simulating each possible step of the algorithm exactly as it is described. Therefore, we cannot get an answer that's better or worse than that of the optimal solution.",
+    "hint": []
 }

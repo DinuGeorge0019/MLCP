@@ -106,5 +106,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Road Construction.json",
     "editorial_link": "https://codeforces.com//blog/entry/8417",
-    "editorial": "Since m < n/2, there exists at least one node that is not incident to any edge.\nThe constraints can be satisfied if and only if the graph is a star graph: http://en.wikipedia.org/wiki/Star_(graph_theory). We can just create a star graph centered with the node and connect it to all other nodes."
+    "editorial": "Since m < n/2, there exists at least one node that is not incident to any edge.\nThe constraints can be satisfied if and only if the graph is a star graph: http://en.wikipedia.org/wiki/Star_(graph_theory). We can just create a star graph centered with the node and connect it to all other nodes.",
+    "hint": []
 }

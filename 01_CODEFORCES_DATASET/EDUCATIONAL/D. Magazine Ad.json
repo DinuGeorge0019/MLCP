@@ -246,5 +246,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\D. Magazine Ad.json",
     "editorial_link": "https://codeforces.com//blog/entry/51768",
-    "editorial": "Firstly notice that there is no difference between space and hyphen, you\r\ncan replace them with the same character, if you want.Let\u00e2\u0080\u0099s run binary\r\nsearch on answer. Fix width and greedily construct ad wrap word only if\r\nyou don\u00e2\u0080\u0099t option to continue on the same line. Then check if number of\r\nlines doesn\u00e2\u0080\u0099t exceed .Overall complexity: .\r\n"
+    "editorial": "Firstly notice that there is no difference between space and hyphen, you\r\ncan replace them with the same character, if you want.Letâs run binary\r\nsearch on answer. Fix width and greedily construct ad wrap word only if\r\nyou donât option to continue on the same line. Then check if number of\r\nlines doesnât exceed .Overall complexity: .\r\n",
+    "hint": []
 }

@@ -134,5 +134,12 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Construct Matrix.json",
     "editorial_link": "https://codeforces.com//blog/entry/123721",
-    "editorial": "SolutionFirst, let\u00e2\u0080\u0099s note that when is odd, the solution doesn\u00e2\u0080\u0099t exist.\r\nIt\u00e2\u0080\u0099s obvious since in the solution the xors of all the rows are the\r\nsame, it follows that the parity of the number of s in each row is the\r\nsame, and let\u00e2\u0080\u0099s remember that is even, and from these conditions get\r\nthat solution exists only when is even.Second, let\u00e2\u0080\u0099s note that for or ,\r\nthe solution exists only for .For all other cases, a solution always\r\nexists. when , we can fill submatrices of size . when . Let\u00e2\u0080\u0099s note that\r\n. Let\u00e2\u0080\u0099s write in the following positions: , , , , , . After this, we\r\nshould fill the remaining ones, and let\u00e2\u0080\u0099s note that . There are obvious\r\nsubmatrices of size , which aren\u00e2\u0080\u0099t filled yet outside the top left\r\nsubmatrix. If , then we can fill as many of those submatrices as\r\nnecessary, otherwise if , we can also fill with s the following\r\npositions too: , , , .\r\n"
+    "editorial": "SolutionFirst, letâs note that when is odd, the solution doesnât exist.\r\nItâs obvious since in the solution the xors of all the rows are the\r\nsame, it follows that the parity of the number of s in each row is the\r\nsame, and letâs remember that is even, and from these conditions get\r\nthat solution exists only when is even.Second, letâs note that for or ,\r\nthe solution exists only for .For all other cases, a solution always\r\nexists. when , we can fill submatrices of size . when . Letâs note that\r\n. Letâs write in the following positions: , , , , , . After this, we\r\nshould fill the remaining ones, and letâs note that . There are obvious\r\nsubmatrices of size , which arenât filled yet outside the top left\r\nsubmatrix. If , then we can fill as many of those submatrices as\r\nnecessary, otherwise if , we can also fill with s the following\r\npositions too: , , , .\r\n",
+    "hint": [
+        "Hint 1 Does solution exist when is odd?",
+        "Hint 2 What can you understand when or ?",
+        "Hint 3 How can we easily fill the matrix with s, such that all problem conditions are satisfied when is divisible by ?",
+        "Hint 4 How will you solve the problem when ?",
+        "Hint 5 Try to merge ideas of Hint and Hint together."
+    ]
 }

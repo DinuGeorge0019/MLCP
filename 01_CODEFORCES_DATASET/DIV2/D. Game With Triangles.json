@@ -173,5 +173,8 @@
     ],
     "dificulty": "",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Game With Triangles.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Game With Triangles.json",
+    "hint": [
+        "Hint The maximum score after performing times with two points on , and times with two points on , can be easily computed in time. But naively checking all possible number of operations takes time. Is there a property we can abuse so that we can solve for each faster?"
+    ]
 }

@@ -90,7 +90,7 @@
         ]
     },
     "name": "B. Bear and Strings",
-    "statement": "The bear has a string (record is the string\u2019s length), consisting of\r\nlowercase English letters. The bear wants to count the number of such\r\npairs of indices , that string contains at least one string \"\" as a\r\nsubstring.String contains string \"\", if there is such index , that , , ,\r\n.Help the bear cope with the given problem.\r\n",
+    "statement": "The bear has a string (record is the string’s length), consisting of\r\nlowercase English letters. The bear wants to count the number of such\r\npairs of indices , that string contains at least one string \"\" as a\r\nsubstring.String contains string \"\", if there is such index , that , , ,\r\n.Help the bear cope with the given problem.\r\n",
     "solutions": [
         "#include <cstdio>\n#include <cstring>\n#include <algorithm>\n\nusing namespace std;\n\nchar str[5555];\nint n;\n\nint main() {\n    scanf(\"%s\", str);\n    n = strlen(str);\n    int ans = 0, max_i = -1;\n    for (int i = 0; i < n; ++ i) {\n        if (i >= 3 && str[i - 3] == 'b' && str[i - 2] == 'e' && str[i - 1] == 'a' && str[i] == 'r') max_i = i - 3;\n        ans += max_i + 1;\n    }\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n"
     ],
@@ -107,5 +107,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Bear and Strings.json",
     "editorial_link": "https://codeforces.com//blog/entry/10514",
-    "editorial": "In this problem you could write a better solution than the naive. To do\r\nthis, you can iterate through the first cycle of the left index\r\nconsidered substring and the second cycle of the right index considered\r\nsubstring . If any position has been substring \"bear\", means all the\r\nstrings , also contain \"bear\" as a substring. So we can add to the\r\nanswer and exit from the second cycle. Also needed to understand, that\r\nif the string was not a substring \"bear\", then in row substring \"bear\"\r\ncould appear only in the last four characters.\r\n"
+    "editorial": "In this problem you could write a better solution than the naive. To do\r\nthis, you can iterate through the first cycle of the left index\r\nconsidered substring and the second cycle of the right index considered\r\nsubstring . If any position has been substring \"bear\", means all the\r\nstrings , also contain \"bear\" as a substring. So we can add to the\r\nanswer and exit from the second cycle. Also needed to understand, that\r\nif the string was not a substring \"bear\", then in row substring \"bear\"\r\ncould appear only in the last four characters.\r\n",
+    "hint": []
 }

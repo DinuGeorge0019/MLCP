@@ -106,5 +106,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Counting Rhombi.json",
     "editorial_link": "https://codeforces.com//blog/entry/4540",
-    "editorial": "Observe that lots of rhombi have the same shape, but are in different locations.\n\nWhat uniquely determines the shape of a rhombus? Its width and its height.\n\nIs it possible to build a rhombus with every width and every height such that the vertices of the rhombus are in integer points? No, it is possible only if the width and the height are both even.\n\nHow many places we can put a rhombus of width w0 and height h0 in a rectangle of width w and height h? (w * w0 + 1)(h * h0 + 1)\n\nSo, iterator over all even widths and heights and for each of them add the number of possible locations to the final result."
+    "editorial": "Observe that lots of rhombi have the same shape, but are in different locations.\n\nWhat uniquely determines the shape of a rhombus? Its width and its height.\n\nIs it possible to build a rhombus with every width and every height such that the vertices of the rhombus are in integer points? No, it is possible only if the width and the height are both even.\n\nHow many places we can put a rhombus of width w0 and height h0 in a rectangle of width w and height h? (w * w0 + 1)(h * h0 + 1)\n\nSo, iterator over all even widths and heights and for each of them add the number of possible locations to the final result.",
+    "hint": []
 }

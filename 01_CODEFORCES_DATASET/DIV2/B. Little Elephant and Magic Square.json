@@ -95,7 +95,7 @@
         ]
     },
     "name": "B. Little Elephant and Magic Square",
-    "statement": "Little Elephant loves magic squares very much.A is a table, each cell\r\ncontains some positive integer. At that the sums of integers in all\r\nrows, columns and diagonals of the table are equal. The figure below\r\nshows the magic square, the sum of integers in all its rows, columns and\r\ndiagonals equals 15. The Little Elephant remembered one magic square. He\r\nstarted writing this square on a piece of paper, but as he wrote, he\r\nforgot all three elements of the main diagonal of the magic square.\r\nFortunately, the Little Elephant clearly remembered that all elements of\r\nthe magic square did not exceed . Help the Little Elephant, restore the\r\noriginal magic square, given the Elephant\u2019s notes.\r\n",
+    "statement": "Little Elephant loves magic squares very much.A is a table, each cell\r\ncontains some positive integer. At that the sums of integers in all\r\nrows, columns and diagonals of the table are equal. The figure below\r\nshows the magic square, the sum of integers in all its rows, columns and\r\ndiagonals equals 15. The Little Elephant remembered one magic square. He\r\nstarted writing this square on a piece of paper, but as he wrote, he\r\nforgot all three elements of the main diagonal of the magic square.\r\nFortunately, the Little Elephant clearly remembered that all elements of\r\nthe magic square did not exceed . Help the Little Elephant, restore the\r\noriginal magic square, given the Elephant’s notes.\r\n",
     "solutions": [
         "#include <cstdio>\nusing namespace std;\n\nint main()\n{\n    int a[9];\n    for(int i = 0; i < 9; ++i)\n        scanf(\"%d\", a+i);\n    a[0] = (a[2] + a[5] + a[1] + a[7] - a[3] - a[6]) / 2;\n    a[4] = a[2] + a[5] - a[0];\n    a[8] = a[0] + a[3] + a[6] - a[5] - a[2];\n    for(int i = 0; i < 9; ++i)\n        printf(\"%d%c\", a[i], i%3 == 2 ? '\\n' : ' ');\n    return 0;\n}\n"
     ],
@@ -109,5 +109,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Little Elephant and Magic Square.json",
     "editorial_link": "https://codeforces.com//blog/entry/6213",
-    "editorial": "Since each number is less than or equal to , you can loop all possible\r\nvalues, the rest of cells can be calculated from this.\r\n"
+    "editorial": "Since each number is less than or equal to , you can loop all possible\r\nvalues, the rest of cells can be calculated from this.\r\n",
+    "hint": []
 }

@@ -114,7 +114,7 @@
         ]
     },
     "name": "B. Prison Transfer",
-    "statement": "The prison of your city has prisoners. As the prison can\u2019t accommodate\r\nall of them, the city mayor has decided to transfer of the prisoners to\r\na prison located in another city.For this reason, he made the prisoners\r\nto stand in a line, with a number written on their chests. The number is\r\nthe severity of the crime he/she has committed. The greater the number,\r\nthe more severe his/her crime was.Then, the mayor told you to choose the\r\nprisoners, who will be transferred to the other prison. He also imposed\r\ntwo conditions. They are, The chosen prisoners has to form a contiguous\r\nsegment of prisoners. Any of the chosen prisoner\u2019s crime level should\r\nnot be greater then . Because, that will make the prisoner a severe\r\ncriminal and the mayor doesn\u2019t want to take the risk of his running away\r\nduring the transfer. Find the number of ways you can choose the\r\nprisoners.\r\n",
+    "statement": "The prison of your city has prisoners. As the prison can’t accommodate\r\nall of them, the city mayor has decided to transfer of the prisoners to\r\na prison located in another city.For this reason, he made the prisoners\r\nto stand in a line, with a number written on their chests. The number is\r\nthe severity of the crime he/she has committed. The greater the number,\r\nthe more severe his/her crime was.Then, the mayor told you to choose the\r\nprisoners, who will be transferred to the other prison. He also imposed\r\ntwo conditions. They are, The chosen prisoners has to form a contiguous\r\nsegment of prisoners. Any of the chosen prisoner’s crime level should\r\nnot be greater then . Because, that will make the prisoner a severe\r\ncriminal and the mayor doesn’t want to take the risk of his running away\r\nduring the transfer. Find the number of ways you can choose the\r\nprisoners.\r\n",
     "solutions": [
         "#include <stdio.h>\n#include <string.h>\n\nint main()\n{\n  //freopen(\"input.txt\", \"rt\", stdin);\n  //freopen(\"output.txt\", \"wt\", stdout);\n\n  int n, t, c;\n  scanf(\"%d %d %d\", &n, &t, &c);\n  int prev = -1;\n  int res = 0;\n  for (int i = 0; i < n; i++)\n  {\n    int v;\n    scanf(\"%d\", &v);\n    if (v <= t && i - prev >= c)\n      res++;\n    else if (v > t)\n      prev = i;\n  }\n\n  printf(\"%d\", res);\n\n  return 0;\n}\n"
     ],
@@ -128,5 +128,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Prison Transfer.json",
     "editorial_link": "https://codeforces.com//blog/entry/12082",
-    "editorial": "The severity of crimes form an integer sequence. Find all the contiguous\r\nsequences without any integer greater than . If the length of any\r\nsequence is , then we can choose prisoners from them in ways. Model\r\nsolution : 6546272\r\n"
+    "editorial": "The severity of crimes form an integer sequence. Find all the contiguous\r\nsequences without any integer greater than . If the length of any\r\nsequence is , then we can choose prisoners from them in ways. Model\r\nsolution : 6546272\r\n",
+    "hint": []
 }

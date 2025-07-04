@@ -172,5 +172,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E1. Square-Free Division  easy version .json",
     "editorial_link": "https://codeforces.com//blog/entry/88677",
-    "editorial": "For factorization of let\u00e2\u0080\u0099s define . After that it is easy to see that is\r\na perfect square if and only if .Now let\u00e2\u0080\u0099s say for all . The problem we\r\nneed to solve is: split the array into minimal amount of\r\nnon-intersecting subsegments so that on each subsegment all numbers are\r\ndifferent. Since we can do that using a greedy idea. If we consider an\r\nelement that has not been in our current segment, then we add it to the\r\nsegment. If it\u00e2\u0080\u0099s already taken, then we should end our current segment\r\nand start a new one.\r\n"
+    "editorial": "For factorization of letâs define . After that it is easy to see that is\r\na perfect square if and only if .Now letâs say for all . The problem we\r\nneed to solve is: split the array into minimal amount of\r\nnon-intersecting subsegments so that on each subsegment all numbers are\r\ndifferent. Since we can do that using a greedy idea. If we consider an\r\nelement that has not been in our current segment, then we add it to the\r\nsegment. If itâs already taken, then we should end our current segment\r\nand start a new one.\r\n",
+    "hint": []
 }

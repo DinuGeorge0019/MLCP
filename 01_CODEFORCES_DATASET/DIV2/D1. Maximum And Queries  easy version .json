@@ -161,5 +161,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D1. Maximum And Queries  easy version .json",
     "editorial_link": "https://codeforces.com//blog/entry/122820",
-    "editorial": "Construct the answer by iterating through every single bit from large to\r\nsmall ( to ).Denote a the current answer and a the bit we want to add.\r\nFor each () if the -th bit in is on we do not need to use any\r\noperations. If the -th bit in is 0 then we need to increase by .If the\r\ntotal number of operations required to get from to is smaller than ,\r\ndecrease by that number and change the array accordingly. Otherwise do\r\nnothing.\r\n"
+    "editorial": "Construct the answer by iterating through every single bit from large to\r\nsmall ( to ).Denote a the current answer and a the bit we want to add.\r\nFor each () if the -th bit in is on we do not need to use any\r\noperations. If the -th bit in is 0 then we need to increase by .If the\r\ntotal number of operations required to get from to is smaller than ,\r\ndecrease by that number and change the array accordingly. Otherwise do\r\nnothing.\r\n",
+    "hint": [
+        "Hint Try using greedy to construct the answer bit by bit."
+    ]
 }

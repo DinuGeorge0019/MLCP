@@ -143,5 +143,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\C. Not Equal on a Segment.json",
     "editorial_link": "https://codeforces.com//blog/entry/23442",
-    "editorial": "This problem is a simplified version of the problem suggested by\r\nMohammad Nematollahi Deemo. This problem can be solved differently. For\r\nexample you can use some data structures or sqrt-decomposition\r\ntechnique. But it is not required. We expected the following simple\r\nsolution from the participants. Let\u00e2\u0080\u0099s preprocess the following values\r\nthe position of the first element to the left from the -th element such\r\nthat . Now to answer to the query we should check if then we have the\r\nanswer. Otherwise we should check the position . C++ solution\r\nComplexity: .\r\n"
+    "editorial": "This problem is a simplified version of the problem suggested by\r\nMohammad Nematollahi Deemo. This problem can be solved differently. For\r\nexample you can use some data structures or sqrt-decomposition\r\ntechnique. But it is not required. We expected the following simple\r\nsolution from the participants. Letâs preprocess the following values\r\nthe position of the first element to the left from the -th element such\r\nthat . Now to answer to the query we should check if then we have the\r\nanswer. Otherwise we should check the position . C++ solution\r\nComplexity: .\r\n",
+    "hint": []
 }

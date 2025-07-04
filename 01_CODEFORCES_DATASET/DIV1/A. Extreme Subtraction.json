@@ -154,5 +154,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Extreme Subtraction.json",
     "editorial_link": "https://codeforces.com//blog/entry/84298",
-    "editorial": "The problem sounds like this \u0097 check that there are increasing and decreasing arrays, the element-wise sum of which is equal to the given array.\n\nThis problem can be solved greedily. Let's maximize each element of the decreasing array (let's call this array a\n, and the increasing one b\n). Suppose initial array is v\n and we have solved the problem on a prefix of length i?1\n. Then, for the element a[i]\n, a[i]?a[i?1]\n and v[i]?a[i]?b[i?1]\n must be fulfilled. Rewriting the second inequality and combining with the first one, we get a[i]?min(a[i?1],v[i]?b[i?1])\n. It is clear that taking a[i]=min(a[i?1],v[i]?b[i?1])\n is best by construction."
+    "editorial": "The problem sounds like this  check that there are increasing and decreasing arrays, the element-wise sum of which is equal to the given array.\n\nThis problem can be solved greedily. Let's maximize each element of the decreasing array (let's call this array a\n, and the increasing one b\n). Suppose initial array is v\n and we have solved the problem on a prefix of length i?1\n. Then, for the element a[i]\n, a[i]?a[i?1]\n and v[i]?a[i]?b[i?1]\n must be fulfilled. Rewriting the second inequality and combining with the first one, we get a[i]?min(a[i?1],v[i]?b[i?1])\n. It is clear that taking a[i]=min(a[i?1],v[i]?b[i?1])\n is best by construction.",
+    "hint": []
 }

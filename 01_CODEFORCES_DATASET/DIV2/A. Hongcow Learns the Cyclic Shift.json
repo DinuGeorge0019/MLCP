@@ -112,5 +112,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Hongcow Learns the Cyclic Shift.json",
     "editorial_link": "https://codeforces.com//blog/entry/49126",
-    "editorial": "We only need to consider at most |s| cyclic shifts (since |s| cyclic\r\nshifts returns us back to the original string). So, we can put these all\r\nin a set, and return the size of the set. code\r\n"
+    "editorial": "We only need to consider at most |s| cyclic shifts (since |s| cyclic\r\nshifts returns us back to the original string). So, we can put these all\r\nin a set, and return the size of the set. code\r\n",
+    "hint": []
 }

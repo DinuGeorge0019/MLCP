@@ -199,5 +199,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\A. Two 0-1 Sequences.json",
     "editorial_link": "https://codeforces.com//blog/entry/105464",
-    "editorial": "Considering that whichever the operation you use, the length of would\r\ndecrease .So you can only modify the first elements of , otherwise the\r\nlength of can\u00e2\u0080\u0099t be equal to the length of . That means must equals to\r\n.And about the first element of : if is , you can use to make and remove\r\nelements. if is , you can use to make and remove elements.So just check\r\nthe first elements in to find if there is anyone that equals to .\r\n"
+    "editorial": "Considering that whichever the operation you use, the length of would\r\ndecrease .So you can only modify the first elements of , otherwise the\r\nlength of canât be equal to the length of . That means must equals to\r\n.And about the first element of : if is , you can use to make and remove\r\nelements. if is , you can use to make and remove elements.So just check\r\nthe first elements in to find if there is anyone that equals to .\r\n",
+    "hint": []
 }

@@ -152,5 +152,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Chess Tourney.json",
     "editorial_link": "https://codeforces.com//blog/entry/53986",
-    "editorial": "Let\u00e2\u0080\u0099s sort the input array in non-decreasing order. Now we should take\r\nthe first players to the first team and the last players to the second\r\nteam. That will guarantee that every member of the first team has\r\ngreater or equal rating than every member of the second team. Now the\r\nonly thing left is to check if all ratings in the first teams differ\r\nfrom all the ratings in the second team (if some are equal then in\r\nsorted order).\r\n"
+    "editorial": "Letâs sort the input array in non-decreasing order. Now we should take\r\nthe first players to the first team and the last players to the second\r\nteam. That will guarantee that every member of the first team has\r\ngreater or equal rating than every member of the second team. Now the\r\nonly thing left is to check if all ratings in the first teams differ\r\nfrom all the ratings in the second team (if some are equal then in\r\nsorted order).\r\n",
+    "hint": []
 }

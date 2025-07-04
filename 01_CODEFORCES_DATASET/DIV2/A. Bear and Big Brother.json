@@ -101,7 +101,7 @@
         ]
     },
     "name": "A. Bear and Big Brother",
-    "statement": "Bear Limak wants to become the largest of bears, or at least to become\r\nlarger than his brother Bob.Right now, Limak and Bob weigh and\r\nrespectively. It\u2019s guaranteed that Limak\u2019s weight is smaller than or\r\nequal to his brother\u2019s weight.Limak eats a lot and his weight is tripled\r\nafter every year, while Bob\u2019s weight is doubled after every year.After\r\nhow many full years will Limak become strictly larger (strictly heavier)\r\nthan Bob?\r\n",
+    "statement": "Bear Limak wants to become the largest of bears, or at least to become\r\nlarger than his brother Bob.Right now, Limak and Bob weigh and\r\nrespectively. It’s guaranteed that Limak’s weight is smaller than or\r\nequal to his brother’s weight.Limak eats a lot and his weight is tripled\r\nafter every year, while Bob’s weight is doubled after every year.After\r\nhow many full years will Limak become strictly larger (strictly heavier)\r\nthan Bob?\r\n",
     "solutions": [
         "#include <iostream>\n#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <algorithm>\n#include <cmath>\n#include <string>\n#include <sstream>\n#include <vector>\n#include <queue>\n#include <set>\n#include <map>\n#include <ctime>\n\n#define inf 0x3f3f3f3f\n#define Inf 0x3FFFFFFFFFFFFFFFLL\n#define rep(i, n) for (int i = 0; i < (n); ++i)\n#define Rep(i, n) for (int i = 1; i <= (n); ++i)\n#define clr(x, a) memset(x, (a), sizeof x)\nusing namespace std;\ntypedef long long ll;\n\nint main() {\n\tll a, b; cin >> a >> b;\n\tint ret = 0;\n\twhile (a <= b) {\n\t\ta *= 3;\n\t\tb *= 2;\n\t\t++ret;\n\t}\n\tcout << ret << endl;\n\treturn 0;\n}\n\n"
     ],
@@ -114,5 +114,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Bear and Big Brother.json",
     "editorial_link": "https://codeforces.com//blog/entry/51068",
-    "editorial": "This problem is simple: just multiply by and by until . Output the\r\nnumber of operations. You will not need more than iterations.\r\n"
+    "editorial": "This problem is simple: just multiply by and by until . Output the\r\nnumber of operations. You will not need more than iterations.\r\n",
+    "hint": []
 }

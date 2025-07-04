@@ -147,5 +147,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Dima and a Bad XOR.json",
     "editorial_link": "https://codeforces.com//blog/entry/66602",
-    "editorial": "Let\u00e2\u0080\u0099s take the first number in each array.Then, if we have current XOR\r\nstrictly greater than zero we can output an answer.And if there is some\r\narray, such that it contains at least two distinct numbers, you can\r\nchange the first number in this array to number, that differs from it,\r\nand get XOR .Else, each array consists of the same numbers, so all\r\npossible XORs are equal to , and there is no answer.Complexity is .\r\n"
+    "editorial": "Letâs take the first number in each array.Then, if we have current XOR\r\nstrictly greater than zero we can output an answer.And if there is some\r\narray, such that it contains at least two distinct numbers, you can\r\nchange the first number in this array to number, that differs from it,\r\nand get XOR .Else, each array consists of the same numbers, so all\r\npossible XORs are equal to , and there is no answer.Complexity is .\r\n",
+    "hint": []
 }

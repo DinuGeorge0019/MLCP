@@ -172,5 +172,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\D. Explorer Space.json",
     "editorial_link": "https://codeforces.com//blog/entry/89968",
-    "editorial": "Since the graph is bipartite, when is odd, it is impossible to go back\r\nto the vertex after steps.Since the graph is undirected, we can always\r\nfind a path with length , walk along this path and return.We can use\r\ndynamic programming to compute the shortest path from with length . .The\r\ntime complexity is .\r\n"
+    "editorial": "Since the graph is bipartite, when is odd, it is impossible to go back\r\nto the vertex after steps.Since the graph is undirected, we can always\r\nfind a path with length , walk along this path and return.We can use\r\ndynamic programming to compute the shortest path from with length . .The\r\ntime complexity is .\r\n",
+    "hint": []
 }

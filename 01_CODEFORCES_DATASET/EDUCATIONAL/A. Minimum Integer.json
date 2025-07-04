@@ -180,5 +180,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Minimum Integer.json",
     "editorial_link": "https://codeforces.com/blog/entry/64483",
-    "editorial": "There are two basic cases we have to consider: either the element we\r\nwant to find is less than , or it is greater than .In the first case, we\r\nare interested in itself: it is the minimum positive number divisible by\r\n, and if it is less than , then it is the answer.In the second case, we\r\nhave to find minimum element that is greater than and is divisible by .\r\nThis can be done as follows: we calculate the number of elements\r\ndivisible by that are not greater than as , and then we take -th\r\nelement, which is .\r\n"
+    "editorial": "There are two basic cases we have to consider: either the element we\r\nwant to find is less than , or it is greater than .In the first case, we\r\nare interested in itself: it is the minimum positive number divisible by\r\n, and if it is less than , then it is the answer.In the second case, we\r\nhave to find minimum element that is greater than and is divisible by .\r\nThis can be done as follows: we calculate the number of elements\r\ndivisible by that are not greater than as , and then we take -th\r\nelement, which is .\r\n",
+    "hint": []
 }

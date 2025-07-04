@@ -117,5 +117,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Dishonest Sellers.json",
     "editorial_link": "https://codeforces.com//blog/entry/50724",
-    "editorial": "To solve this problem we\nneed at first to sort all items in increasing order of values . Then\nlet\u00e2\u0080\u0099s iterate through sorted array. If for the current item we did not\nbuy items now and if after discounts it will cost not more than now, we\nneed to buy it now and pay , in the other case we need to buy item after\ndiscounts and pay .\n"
+    "editorial": "To solve this problem we\nneed at first to sort all items in increasing order of values . Then\nletâs iterate through sorted array. If for the current item we did not\nbuy items now and if after discounts it will cost not more than now, we\nneed to buy it now and pay , in the other case we need to buy item after\ndiscounts and pay .\n",
+    "hint": []
 }

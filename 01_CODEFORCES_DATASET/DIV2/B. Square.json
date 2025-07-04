@@ -86,7 +86,7 @@
         ]
     },
     "name": "B. Square",
-    "statement": "There is a square painted on a piece of paper, the square\u2019s side equals\r\nmeters. John Doe draws crosses on the square\u2019s perimeter. John paints\r\nthe first cross in the lower left corner of the square. Then John moves\r\nalong the square\u2019s perimeter in the clockwise direction (first upwards,\r\nthen to the right, then downwards, then to the left and so on). Every\r\ntime he walks meters, he draws a cross (see picture for\r\nclarifications).John Doe stops only when the lower left corner of the\r\nsquare has two crosses. How many crosses will John draw?\r\n",
+    "statement": "There is a square painted on a piece of paper, the square’s side equals\r\nmeters. John Doe draws crosses on the square’s perimeter. John paints\r\nthe first cross in the lower left corner of the square. Then John moves\r\nalong the square’s perimeter in the clockwise direction (first upwards,\r\nthen to the right, then downwards, then to the left and so on). Every\r\ntime he walks meters, he draws a cross (see picture for\r\nclarifications).John Doe stops only when the lower left corner of the\r\nsquare has two crosses. How many crosses will John draw?\r\n",
     "solutions": [
         "#include<algorithm>\n#include<iostream>\n\nusing namespace std;\n\nint main() {\n  int T;\n  cin >> T;\n  for(int t = 0; t < T; ++t)\n    {\n      int N;\n      cin >> N;\n      cout << 4LL*N / __gcd(4, N+1) + 1 << endl;\n    }\n}\n"
     ],
@@ -99,5 +99,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Square.json",
     "editorial_link": "https://codeforces.com//blog/entry/4673",
-    "editorial": "Let the pencil move by the line and put crosses through every (n?+?1) point. Lets associate every point on the line with point on square perimeter. Namely, point x on the line will be associated with point on square perimeter that we will reach if we move pencil around square to x clockwise. Then lower left corner will be associated with all points 4np for every non-negative integer p. Crosses will be associated with points k(n?+?1) for some non-negative k. Nearest point of overlap of two families of points will be in point LCM(n?+?1, 4n). Then we will put  crosses."
+    "editorial": "Let the pencil move by the line and put crosses through every (n?+?1) point. Lets associate every point on the line with point on square perimeter. Namely, point x on the line will be associated with point on square perimeter that we will reach if we move pencil around square to x clockwise. Then lower left corner will be associated with all points 4np for every non-negative integer p. Crosses will be associated with points k(n?+?1) for some non-negative k. Nearest point of overlap of two families of points will be in point LCM(n?+?1, 4n). Then we will put  crosses.",
+    "hint": []
 }

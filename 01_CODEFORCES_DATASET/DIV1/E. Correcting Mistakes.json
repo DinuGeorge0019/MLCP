@@ -125,5 +125,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\E. Correcting Mistakes.json",
     "editorial_link": "https://codeforces.com//blog/entry/17458",
-    "editorial": "Suppose that S is obtained from W by deleteing the earlier symbol than T. Then it is true that W?=?A?+?x?+?B?+?y?+?C, S?=?A?+?x?+?B?+?C, T?=?A?+?B?+?y?+?C, where x and y are deleted symbols and A, B ? C are some (possibly, empty) strings.\n\nLet's calculate A as a longest common prefix of S and T and C as a longest common suffix. Remove both of them from strings. Now we now that x and y are respectively the first letter of string S and last letter of string T. Remove them too. The only thing left is to check if remaining parts of strings are equal.\n\nPerform such operation for S and T and for T and S."
+    "editorial": "Suppose that S is obtained from W by deleteing the earlier symbol than T. Then it is true that W?=?A?+?x?+?B?+?y?+?C, S?=?A?+?x?+?B?+?C, T?=?A?+?B?+?y?+?C, where x and y are deleted symbols and A, B ? C are some (possibly, empty) strings.\n\nLet's calculate A as a longest common prefix of S and T and C as a longest common suffix. Remove both of them from strings. Now we now that x and y are respectively the first letter of string S and last letter of string T. Remove them too. The only thing left is to check if remaining parts of strings are equal.\n\nPerform such operation for S and T and for T and S.",
+    "hint": []
 }

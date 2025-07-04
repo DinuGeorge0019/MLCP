@@ -166,5 +166,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Yet Another Bookshelf.json",
     "editorial_link": "https://codeforces.com//blog/entry/83903",
-    "editorial": "We can notice that the answer is the number of zeros between the\r\nleftmost occurrence of and the rightmost occurrence of . Why is it true?\r\nLet\u00e2\u0080\u0099s take the leftmost maximum by inclusion segment of and just shift\r\nit right. We can see that using this algorithm we will do exactly\r\ndescribed amount of moves and there is no way improve the answer.\r\n"
+    "editorial": "We can notice that the answer is the number of zeros between the\r\nleftmost occurrence of and the rightmost occurrence of . Why is it true?\r\nLetâs take the leftmost maximum by inclusion segment of and just shift\r\nit right. We can see that using this algorithm we will do exactly\r\ndescribed amount of moves and there is no way improve the answer.\r\n",
+    "hint": []
 }

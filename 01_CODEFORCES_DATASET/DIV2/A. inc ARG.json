@@ -104,5 +104,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. inc ARG.json",
     "editorial_link": "https://codeforces.com//blog/entry/13694",
-    "editorial": "If we add 1 to a number, its binary representation changes in a simple\r\nway: all the least significant \u00e2\u0080\u0099s change to \u00e2\u0080\u0099s, and the single following\r\nchanges to . It suffices to find the length of largest suffix which\r\ncontains only \u00e2\u0080\u0099s, suppose its length is . Then the answer is except for\r\nthe case when all the string consists of , when the answer is . It is\r\namusing that div1E problem is concerned with addition of 1 to a binary\r\ninteger as well. =)\r\n"
+    "editorial": "If we add 1 to a number, its binary representation changes in a simple\r\nway: all the least significant âs change to âs, and the single following\r\nchanges to . It suffices to find the length of largest suffix which\r\ncontains only âs, suppose its length is . Then the answer is except for\r\nthe case when all the string consists of , when the answer is . It is\r\namusing that div1E problem is concerned with addition of 1 to a binary\r\ninteger as well. =)\r\n",
+    "hint": []
 }

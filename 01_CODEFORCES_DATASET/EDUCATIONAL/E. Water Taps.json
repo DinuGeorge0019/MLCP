@@ -211,5 +211,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\E. Water Taps.json",
     "editorial_link": "https://codeforces.com//blog/entry/58519",
-    "editorial": "The following greedy strategy work. Let\u00e2\u0080\u0099s turn all the taps at full\r\npower. If total temperature is greater than then we would like to\r\ndecrease power on some taps with higher temperature. We want to decrease\r\nas low power as possible, so we should prioritize taps with the highest\r\ntemperature. Sort all taps by temperature and find the total power on\r\nsuffix you should decrease to have equal temperatures. This can be done\r\nwith binary search. The same works for smaller initial\r\ntemperature.Overall complexity: .\r\n"
+    "editorial": "The following greedy strategy work. Letâs turn all the taps at full\r\npower. If total temperature is greater than then we would like to\r\ndecrease power on some taps with higher temperature. We want to decrease\r\nas low power as possible, so we should prioritize taps with the highest\r\ntemperature. Sort all taps by temperature and find the total power on\r\nsuffix you should decrease to have equal temperatures. This can be done\r\nwith binary search. The same works for smaller initial\r\ntemperature.Overall complexity: .\r\n",
+    "hint": []
 }

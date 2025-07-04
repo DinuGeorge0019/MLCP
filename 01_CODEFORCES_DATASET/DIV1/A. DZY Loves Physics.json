@@ -111,5 +111,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. DZY Loves Physics.json",
     "editorial_link": "https://codeforces.com//blog/entry/12959",
-    "editorial": "If there is a connected induced subgraph containing more than nodes with\r\nthe maximum density. The density of every connected induced subgraph of\r\nit that contains only one edge can be represented as , where are the\r\nvalues of the two nodes linked by the edge. The density of the bigger\r\nconnected induced subgraph is at most . If , and for every edge, . Then\r\nwe\u00e2\u0080\u0099ll have , and , and , it leads to contradiction. So just check every\r\nsingle node, and every nodes linked by an edge. The time complexity is .\r\ncheck the C++ code here.\r\n"
+    "editorial": "If there is a connected induced subgraph containing more than nodes with\r\nthe maximum density. The density of every connected induced subgraph of\r\nit that contains only one edge can be represented as , where are the\r\nvalues of the two nodes linked by the edge. The density of the bigger\r\nconnected induced subgraph is at most . If , and for every edge, . Then\r\nweâll have , and , and , it leads to contradiction. So just check every\r\nsingle node, and every nodes linked by an edge. The time complexity is .\r\ncheck the C++ code here.\r\n",
+    "hint": []
 }

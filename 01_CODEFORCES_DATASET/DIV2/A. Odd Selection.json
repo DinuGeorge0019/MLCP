@@ -130,5 +130,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Odd Selection.json",
     "editorial_link": "https://codeforces.com//blog/entry/78202",
-    "editorial": ": The sum of numbers can only be odd if we have an odd number of numbers\r\nwhich are odd. (An odd statement, indeed).: We first maintain two\r\nvariables, and , representing the number of odd and even numbers in the\r\narray, respectively. We then iterate over the number of odd numbers we\r\ncan choose; which are upto , and see if where is the number of odd\r\nnumbers we have chosen. :\r\n"
+    "editorial": ": The sum of numbers can only be odd if we have an odd number of numbers\r\nwhich are odd. (An odd statement, indeed).: We first maintain two\r\nvariables, and , representing the number of odd and even numbers in the\r\narray, respectively. We then iterate over the number of odd numbers we\r\ncan choose; which are upto , and see if where is the number of odd\r\nnumbers we have chosen. :\r\n",
+    "hint": []
 }

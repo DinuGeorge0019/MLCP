@@ -139,5 +139,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Min Max Swap.json",
     "editorial_link": "https://codeforces.com//blog/entry/99384",
-    "editorial": "SolutionLet . The answer will always be where is the maximum of the\r\narray that does not contain .Since is fixed, the problem can be reduced\r\nto minimize , that is, minimize the maximum of the array that does not\r\ncontain the global maximum.WLOG assume that the global maximum will be\r\nin the array , we can swap elements at each index such that , ending\r\nwith for all . It can be shown that the maximum of array is minimized in\r\nthis way.Time complexity: Code\r\n"
+    "editorial": "SolutionLet . The answer will always be where is the maximum of the\r\narray that does not contain .Since is fixed, the problem can be reduced\r\nto minimize , that is, minimize the maximum of the array that does not\r\ncontain the global maximum.WLOG assume that the global maximum will be\r\nin the array , we can swap elements at each index such that , ending\r\nwith for all . It can be shown that the maximum of array is minimized in\r\nthis way.Time complexity: Code\r\n",
+    "hint": [
+        "Hint 1 Think about how will contribute to the answer.",
+        "Hint 2 The maximum of one array is always . How should you minimize then?"
+    ]
 }

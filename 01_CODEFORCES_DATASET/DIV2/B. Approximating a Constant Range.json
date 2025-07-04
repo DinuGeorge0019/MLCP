@@ -99,7 +99,7 @@
         ]
     },
     "name": "B. Approximating a Constant Range",
-    "statement": "When Xellos was doing a practice course in university, he once had to\r\nmeasure the intensity of an effect that slowly approached equilibrium. A\r\ngood way to determine the equilibrium intensity would be choosing a\r\nsufficiently large number of consecutive data points that seems as\r\nconstant as possible and taking their average. Of course, with the usual\r\nsizes of data, it\u2019s nothing challenging but why not make a similar\r\nprogramming contest problem while we\u2019re at it?You\u2019re given a sequence of\r\ndata points . There aren\u2019t any big jumps between consecutive data points\r\nfor each , it\u2019s guaranteed that .A range of data points is said to be if\r\nthe difference between the largest and the smallest value in that range\r\nis at most . Formally, let be the maximum and the minimum value of for ;\r\nthe range is almost constant if .Find the length of the longest almost\r\nconstant range.\r\n",
+    "statement": "When Xellos was doing a practice course in university, he once had to\r\nmeasure the intensity of an effect that slowly approached equilibrium. A\r\ngood way to determine the equilibrium intensity would be choosing a\r\nsufficiently large number of consecutive data points that seems as\r\nconstant as possible and taking their average. Of course, with the usual\r\nsizes of data, it’s nothing challenging but why not make a similar\r\nprogramming contest problem while we’re at it?You’re given a sequence of\r\ndata points . There aren’t any big jumps between consecutive data points\r\nfor each , it’s guaranteed that .A range of data points is said to be if\r\nthe difference between the largest and the smallest value in that range\r\nis at most . Formally, let be the maximum and the minimum value of for ;\r\nthe range is almost constant if .Find the length of the longest almost\r\nconstant range.\r\n",
     "solutions": [
         "#include <iostream>\n\nusing namespace std;\n\nint n;\nint a[110000];\nint last[110000];\n\nint main() {\n    cin >> n;\n    for (int i = 0; i < n; i++) {\n        cin >> a[i];\n    }\n    for (int i = 0; i <= 100000; i++)  {\n        last[i] = -1;\n    }\n    int l = 0;\n    int ans = 0;\n    for (int i = 0; i < n; i++) {\n        int x = -1;\n        if (a[i] + 2 <= 100000) {\n            x = max(x, last[a[i] + 2]);\n        }\n        if (a[i] - 2 >= 0) {\n            x = max(x, last[a[i] - 2]);\n        }\n        l = max(l, x + 1);\n        ans = max(ans, i - l + 1);\n\n        last[a[i]] = i;\n    }\n    cout << ans << endl;\n    return 0;\n}\n"
     ],
@@ -114,5 +114,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Approximating a Constant Range.json",
     "editorial_link": "https://codeforces.com//blog/entry/21755",
-    "editorial": "Solve a simpler version of the problem where Ai?+?1???Ai for all i."
+    "editorial": "Solve a simpler version of the problem where Ai?+?1???Ai for all i.",
+    "hint": []
 }

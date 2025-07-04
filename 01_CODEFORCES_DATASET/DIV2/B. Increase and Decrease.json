@@ -101,7 +101,7 @@
         ]
     },
     "name": "B. Increase and Decrease",
-    "statement": "Polycarpus has an array, consisting of integers . Polycarpus likes it\r\nwhen numbers in an array match. That\u2019s why he wants the array to have as\r\nmany equal numbers as possible. For that Polycarpus performs the\r\nfollowing operation multiple times: he chooses two elements of the array\r\n, ; he simultaneously increases number by and decreases number by , that\r\nis, executes and . The given operation changes exactly two distinct\r\narray elements. Polycarpus can apply the described operation an infinite\r\nnumber of times. Now he wants to know what maximum number of equal array\r\nelements he can get if he performs an arbitrary number of such\r\noperation. Help Polycarpus.\r\n",
+    "statement": "Polycarpus has an array, consisting of integers . Polycarpus likes it\r\nwhen numbers in an array match. That’s why he wants the array to have as\r\nmany equal numbers as possible. For that Polycarpus performs the\r\nfollowing operation multiple times: he chooses two elements of the array\r\n, ; he simultaneously increases number by and decreases number by , that\r\nis, executes and . The given operation changes exactly two distinct\r\narray elements. Polycarpus can apply the described operation an infinite\r\nnumber of times. Now he wants to know what maximum number of equal array\r\nelements he can get if he performs an arbitrary number of such\r\noperation. Help Polycarpus.\r\n",
     "solutions": [
         "#include <cstdio>\n#include <cmath>\n#include <algorithm>\n#include <string.h>\nusing namespace std;\n\nint a[1000*1000], n;\nint main()\n{\n    scanf(\"%d\", &n);\n    int s=0;\n    for (int i=0; i<n; i++) scanf(\"%d\", &a[i]), s+=a[i];\n    printf(\"%d\\n\", n-(s%n ? 1 : 0));\n    return 0;\n}\n"
     ],
@@ -115,5 +115,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Increase and Decrease.json",
     "editorial_link": "https://codeforces.com//blog/entry/5934",
-    "editorial": "Note, that you can always get the answer . To get this result you should\r\nmake first equal using the last element as the second element in pair of\r\ngiven operation. But after it, the whole array could become equal. It\r\ncould happen if the sum of array s elements is divisible by . So the\r\nanswer is or .\r\n"
+    "editorial": "Note, that you can always get the answer . To get this result you should\r\nmake first equal using the last element as the second element in pair of\r\ngiven operation. But after it, the whole array could become equal. It\r\ncould happen if the sum of array s elements is divisible by . So the\r\nanswer is or .\r\n",
+    "hint": []
 }

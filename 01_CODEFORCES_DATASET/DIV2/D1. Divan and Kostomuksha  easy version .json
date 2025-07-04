@@ -160,5 +160,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D1. Divan and Kostomuksha  easy version .json",
     "editorial_link": "https://codeforces.com//blog/entry/97283",
-    "editorial": "Let\u00e2\u0080\u0099s solve the dynamic programming problem. Let be the maximum\nanswer for all arrays, the last element of which is divisible by . Let\u00e2\u0080\u0099s\ncalculate the dynamics from to , where is the maximum value of .\nInitially, , where is the amount of . How do we recalculate our dynamic\nprogramming? , for all such that (i.e. is divisible by ). In this\ndynamic, we iterate over the past change of our on the prefix, and\ngreedily add all possible elements.The resulting asymptotics in time is\n.\n"
+    "editorial": "Letâs solve the dynamic programming problem. Let be the maximum\nanswer for all arrays, the last element of which is divisible by . Letâs\ncalculate the dynamics from to , where is the maximum value of .\nInitially, , where is the amount of . How do we recalculate our dynamic\nprogramming? , for all such that (i.e. is divisible by ). In this\ndynamic, we iterate over the past change of our on the prefix, and\ngreedily add all possible elements.The resulting asymptotics in time is\n.\n",
+    "hint": []
 }

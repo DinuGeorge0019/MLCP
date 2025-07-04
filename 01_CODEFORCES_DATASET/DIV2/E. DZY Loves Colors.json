@@ -99,5 +99,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. DZY Loves Colors.json",
     "editorial_link": "https://codeforces.com//blog/entry/12959",
-    "editorial": "The only thing you need to notice is that if there are many continuous units with the same uppermost color, just merge them in one big unit. Every time painting continuous units, such big units will only increase by at most 3. Then you can use STL set to solve it. But anyway, a segment tree is useful enough"
+    "editorial": "The only thing you need to notice is that if there are many continuous units with the same uppermost color, just merge them in one big unit. Every time painting continuous units, such big units will only increase by at most 3. Then you can use STL set to solve it. But anyway, a segment tree is useful enough",
+    "hint": []
 }

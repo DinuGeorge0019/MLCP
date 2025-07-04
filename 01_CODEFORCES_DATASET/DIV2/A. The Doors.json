@@ -125,7 +125,7 @@
         ]
     },
     "name": "A. The Doors",
-    "statement": "Three years have passes and nothing changed. It is still raining in\r\nLondon, and Mr. Black has to close all the doors in his home in order to\r\nnot be flooded. Once, however, Mr. Black became so nervous that he\r\nopened one door, then another, then one more and so on until he opened\r\nall the doors in his house.There are exactly two exits from Mr. Black\u2019s\r\nhouse, let\u2019s name them left and right exits. There are several doors in\r\neach of the exits, so each door in Mr. Black\u2019s house is located either\r\nin the left or in the right exit. You know where each door is located.\r\nInitially all the doors are closed. Mr. Black can exit the house if and\r\nonly if all doors in at least one of the exits is open. You are given a\r\nsequence in which Mr. Black opened the doors, please find the smallest\r\nindex k such that Mr. Black can exit the house after opening the first k\r\ndoors.We have to note that Mr. Black opened each door at most once, and\r\nin the end all doors became open.\r\n",
+    "statement": "Three years have passes and nothing changed. It is still raining in\r\nLondon, and Mr. Black has to close all the doors in his home in order to\r\nnot be flooded. Once, however, Mr. Black became so nervous that he\r\nopened one door, then another, then one more and so on until he opened\r\nall the doors in his house.There are exactly two exits from Mr. Black’s\r\nhouse, let’s name them left and right exits. There are several doors in\r\neach of the exits, so each door in Mr. Black’s house is located either\r\nin the left or in the right exit. You know where each door is located.\r\nInitially all the doors are closed. Mr. Black can exit the house if and\r\nonly if all doors in at least one of the exits is open. You are given a\r\nsequence in which Mr. Black opened the doors, please find the smallest\r\nindex k such that Mr. Black can exit the house after opening the first k\r\ndoors.We have to note that Mr. Black opened each door at most once, and\r\nin the end all doors became open.\r\n",
     "solutions": [
         "#include<cstdio>\n#include<iostream>\n#include<cstring>\nusing namespace std;\nconst int N=200100;\nint a[N],n;\nint main(){\n\tcin>>n;\n\tfor (int i=1;i<=n;i++)scanf(\"%d\",&a[i]);\n\tint j=n;\n\twhile (a[j]==a[n])j--;\n\tcout<<j<<endl;\n}"
     ],
@@ -138,5 +138,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. The Doors.json",
     "editorial_link": "https://codeforces.com//blog/entry/66301",
-    "editorial": "Let\u00e2\u0080\u0099s walk through the array and find for each exit the door, that was\r\nopened last. Then the answer is minimum of the numbers of these doors.\r\n"
+    "editorial": "Letâs walk through the array and find for each exit the door, that was\r\nopened last. Then the answer is minimum of the numbers of these doors.\r\n",
+    "hint": []
 }

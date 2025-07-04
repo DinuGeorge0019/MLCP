@@ -165,5 +165,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\D. Array Division.json",
     "editorial_link": "https://codeforces.com//blog/entry/52010",
-    "editorial": "Suppose we want to move an element from the prefix to the suffix (if we\r\nneed to move an element from the suffix to the prefix, we can just\r\nreverse the array and do the same thing).Suppose the resulting prefix\r\nwill contain elements. Then we need to check that the prefix with\r\nelements contains an element such that the sum of this prefix without\r\nthis element is equal to the half of the sum of the whole array (and\r\nthen we can move this element to the suffix).To check all the prefixes,\r\nwe can scan the array from left to right while maintaining the set of\r\nelements on the prefix and the sum of these elements.\r\n"
+    "editorial": "Suppose we want to move an element from the prefix to the suffix (if we\r\nneed to move an element from the suffix to the prefix, we can just\r\nreverse the array and do the same thing).Suppose the resulting prefix\r\nwill contain elements. Then we need to check that the prefix with\r\nelements contains an element such that the sum of this prefix without\r\nthis element is equal to the half of the sum of the whole array (and\r\nthen we can move this element to the suffix).To check all the prefixes,\r\nwe can scan the array from left to right while maintaining the set of\r\nelements on the prefix and the sum of these elements.\r\n",
+    "hint": []
 }

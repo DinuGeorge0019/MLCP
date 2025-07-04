@@ -108,7 +108,7 @@
         ]
     },
     "name": "C. Vladik and fractions",
-    "statement": "Vladik and Chloe decided to determine who of them is better at math.\r\nVladik claimed that for any positive integer he can represent fraction\r\nas a sum of three distinct positive fractions in form .Help Vladik with\r\nthat, i.e for a given find three distinct positive integers , and such\r\nthat . Because Chloe can\u2019t check Vladik\u2019s answer if the numbers are\r\nlarge, he asks you to print numbers not exceeding .If there is no such\r\nanswer, print .\r\n",
+    "statement": "Vladik and Chloe decided to determine who of them is better at math.\r\nVladik claimed that for any positive integer he can represent fraction\r\nas a sum of three distinct positive fractions in form .Help Vladik with\r\nthat, i.e for a given find three distinct positive integers , and such\r\nthat . Because Chloe can’t check Vladik’s answer if the numbers are\r\nlarge, he asks you to print numbers not exceeding .If there is no such\r\nanswer, print .\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\n\nusing namespace std;\n\n\n\nint main() {\n    long long n,x,y,z,a,b;\n\n    scanf(\"%lld\", &n);\n    for(x=3*n/2;x>=1;x--) {\n        if(n>2*x) break;\n        for(y=2*n*x/(2*x-n);y>=1;y--) {\n            if(n*(x+y)>2*x*y) break;\n            a=n*x*y;\n            b=2*x*y-n*y-n*x;\n            if(b==0) continue;\n            if(a%b!=0) continue;\n            z=a/b;\n            if(x>=1 && x<=1000000000 && y>=1 && y<=1000000000 && z>=1 && z<=1000000000 && x!=y && x!=z && y!=z) {\n                printf(\"%lld %lld %lld\\n\", x,y ,z);\n                return 0;\n            }\n        }\n    }\n    printf(\"-1\\n\");\n\n    return 0;\n}\n"
     ],
@@ -124,5 +124,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Vladik and fractions.json",
     "editorial_link": "https://codeforces.com//blog/entry/49049",
-    "editorial": "Note that for there is no solution, and for there is solution .To come\r\nto this solution, represent and reduce the problem to represent as a sum\r\nof two fractions. Let\u00e2\u0080\u0099s find the difference between and and get a\r\nfraction , so the solution is\r\n"
+    "editorial": "Note that for there is no solution, and for there is solution .To come\r\nto this solution, represent and reduce the problem to represent as a sum\r\nof two fractions. Letâs find the difference between and and get a\r\nfraction , so the solution is\r\n",
+    "hint": []
 }

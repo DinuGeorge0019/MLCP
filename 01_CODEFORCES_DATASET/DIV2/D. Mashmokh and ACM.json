@@ -110,5 +110,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Mashmokh and ACM.json",
     "editorial_link": "https://codeforces.com//blog/entry/11470",
-    "editorial": "Lets define dp[i][j] as number of good sequences of length i that ends in j.\n\nLet's denote divisors of j by x1,?x2,?...,?xl. Then \n\nThis yields O(nk sqrt(n)) solution which is not fast enough. But one could use the fact that the following loops run in O(n log(n)) in order to achieve O(nk log(n)) which is fast enough to pass the tests."
+    "editorial": "Lets define dp[i][j] as number of good sequences of length i that ends in j.\n\nLet's denote divisors of j by x1,?x2,?...,?xl. Then \n\nThis yields O(nk sqrt(n)) solution which is not fast enough. But one could use the fact that the following loops run in O(n log(n)) in order to achieve O(nk log(n)) which is fast enough to pass the tests.",
+    "hint": []
 }

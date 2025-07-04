@@ -114,5 +114,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Maximum Median.json",
     "editorial_link": "https://codeforces.com/blog/entry/68911",
-    "editorial": "Sort the array in non-decreasing order. In the new array you can make\r\nbinary search with the maximum median value. For a given median value\r\n(), it is required to make operations. If this value is more than ,\r\ncan\u00e2\u0080\u0099t be median, otherwise it can. Time complexity:\r\n"
+    "editorial": "Sort the array in non-decreasing order. In the new array you can make\r\nbinary search with the maximum median value. For a given median value\r\n(), it is required to make operations. If this value is more than ,\r\ncanât be median, otherwise it can. Time complexity:\r\n",
+    "hint": []
 }

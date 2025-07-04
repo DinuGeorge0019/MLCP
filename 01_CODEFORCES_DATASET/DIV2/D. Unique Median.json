@@ -145,5 +145,10 @@
     ],
     "dificulty": "",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Unique Median.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Unique Median.json",
+    "hint": [
+        "Hint 1 Solve the problem when .",
+        "Hint 2 Assign if and if and calculate the number of bad subarrays.",
+        "Hint 3 Extend this solution for , however, you need to take overcounting into account."
+    ]
 }

@@ -170,5 +170,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\A. YES or YES .json",
     "editorial_link": "https://codeforces.com//blog/entry/104786",
-    "editorial": "You should implement what is written in the statement. Here are three\r\nways to do it: Check that the first character is or , check that the\r\nsecond character is or , and check the third character is or . Make an\r\narray storing all acceptable strings (there are only ), and loop and see\r\nif any of the strings match the input. Use some built-in function like\r\nin C++ to make the string all lowercase, and check if is equal to . The\r\ncomplexity is per test case.\r\n"
+    "editorial": "You should implement what is written in the statement. Here are three\r\nways to do it: Check that the first character is or , check that the\r\nsecond character is or , and check the third character is or . Make an\r\narray storing all acceptable strings (there are only ), and loop and see\r\nif any of the strings match the input. Use some built-in function like\r\nin C++ to make the string all lowercase, and check if is equal to . The\r\ncomplexity is per test case.\r\n",
+    "hint": []
 }

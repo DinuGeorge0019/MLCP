@@ -145,5 +145,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Madoka and The Best University.json",
     "editorial_link": "https://codeforces.com//blog/entry/106553",
-    "editorial": "Let's bruteforce c\n, then we have gcd(a,b)=gcd(a,a+b)=gcd(a,n?c)\n. This means that gcd(a,b)\n divides n?c\n, so let's just go through all divisors of n?c\n. For every factor d\n, the count of pairs (a,b)\n satisfying a+b=n?c\n and gcd(a,b)=d\n is ?(n?cd)\n, because we need d\n to divide a\n and be coprime with n?cd\n, so that the gcd\n is equal to d\n.\n\nTherefore, the answer to the problem is ?lcm(c,d)??n?cd\n, where 1?c?n?2\n and d\n is a factor of n?c\n."
+    "editorial": "Let's bruteforce c\n, then we have gcd(a,b)=gcd(a,a+b)=gcd(a,n?c)\n. This means that gcd(a,b)\n divides n?c\n, so let's just go through all divisors of n?c\n. For every factor d\n, the count of pairs (a,b)\n satisfying a+b=n?c\n and gcd(a,b)=d\n is ?(n?cd)\n, because we need d\n to divide a\n and be coprime with n?cd\n, so that the gcd\n is equal to d\n.\n\nTherefore, the answer to the problem is ?lcm(c,d)??n?cd\n, where 1?c?n?2\n and d\n is a factor of n?c\n.",
+    "hint": []
 }

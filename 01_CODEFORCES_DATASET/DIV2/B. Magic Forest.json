@@ -119,5 +119,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Magic Forest.json",
     "editorial_link": "https://codeforces.com//blog/entry/57605",
-    "editorial": "Consider some triple for which holds. Due to xor invertibility, we can\r\nsee that . So, we only need to iterate through two of three possible\r\nsides of the xorangle as the third can be deduced uniquely. One could\r\nalso apply some constant optimizations (and put some pragmas) get\r\nsolution with small constant accepted.\r\n"
+    "editorial": "Consider some triple for which holds. Due to xor invertibility, we can\r\nsee that . So, we only need to iterate through two of three possible\r\nsides of the xorangle as the third can be deduced uniquely. One could\r\nalso apply some constant optimizations (and put some pragmas) get\r\nsolution with small constant accepted.\r\n",
+    "hint": []
 }

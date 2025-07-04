@@ -152,7 +152,7 @@
         ]
     },
     "name": "A. Shovels and Swords",
-    "statement": "Polycarp plays a well-known computer game (we won\u2019t mention its name).\r\nIn this game, he can craft tools of two types shovels and swords. To\r\ncraft a shovel, Polycarp spends two sticks and one diamond; to craft a\r\nsword, Polycarp spends two diamonds and one stick.Each tool can be sold\r\nfor exactly one emerald. How many emeralds can Polycarp earn, if he has\r\na sticks and b diamonds?\r\n",
+    "statement": "Polycarp plays a well-known computer game (we won’t mention its name).\r\nIn this game, he can craft tools of two types shovels and swords. To\r\ncraft a shovel, Polycarp spends two sticks and one diamond; to craft a\r\nsword, Polycarp spends two diamonds and one stick.Each tool can be sold\r\nfor exactly one emerald. How many emeralds can Polycarp earn, if he has\r\na sticks and b diamonds?\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\n\nvoid solve(){\n\tlong long a, b;\n\tcin >> a >> b;\n\tlong long ans = (a + b) / 3;\n\tans = min(ans, min(a, b));\n\tcout << ans << '\\n';\n}\n\nint main(){\n\tios_base::sync_with_stdio(false), cin.tie(nullptr);\n\tint T;\n\tcin >> T;\n\twhile(T--) solve();\n}"
     ],
@@ -167,5 +167,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Shovels and Swords.json",
     "editorial_link": "https://codeforces.com//blog/entry/78735",
-    "editorial": "There are three constraints on the number of emeralds: the number of\r\nemeralds can\u00e2\u0080\u0099t be greater than ; the number of emeralds can\u00e2\u0080\u0099t be greater\r\nthan ; the number of emeralds can\u00e2\u0080\u0099t be greater than . So the answer is .\r\n"
+    "editorial": "There are three constraints on the number of emeralds: the number of\r\nemeralds canât be greater than ; the number of emeralds canât be greater\r\nthan ; the number of emeralds canât be greater than . So the answer is .\r\n",
+    "hint": []
 }

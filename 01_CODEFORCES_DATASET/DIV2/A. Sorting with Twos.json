@@ -160,5 +160,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Sorting with Twos.json",
     "editorial_link": "https://codeforces.com//blog/entry/121876",
-    "editorial": "Look at the difference array . = for each . If array is sorted, its\r\ndifference array has all of its elements non-negative. And operation is\r\nadding to if is a power of . So look at difference array. If there is\r\nsuch that is not a power of and then answer is NO . Else answer is YES .\r\nTime complexity: .\r\n"
+    "editorial": "Look at the difference array . = for each . If array is sorted, its\r\ndifference array has all of its elements non-negative. And operation is\r\nadding to if is a power of . So look at difference array. If there is\r\nsuch that is not a power of and then answer is NO . Else answer is YES .\r\nTime complexity: .\r\n",
+    "hint": []
 }

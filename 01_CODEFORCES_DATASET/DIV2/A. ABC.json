@@ -148,5 +148,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. ABC.json",
     "editorial_link": "https://codeforces.com//blog/entry/99442",
-    "editorial": "SolutionLet and the resulting string be . For there to be no palindromes\r\nof length greater than , at least all of these inequalities must be\r\ntrue: , , and . Since our string is binary, this is impossible, so the\r\nanswer is \"NO\".For , there are 4 strings that have the answer \"YES\": , ,\r\n, and ; as well as 2 strings that have the answer \"NO\": and .Time\r\ncomplexity:\r\n"
+    "editorial": "SolutionLet and the resulting string be . For there to be no palindromes\r\nof length greater than , at least all of these inequalities must be\r\ntrue: , , and . Since our string is binary, this is impossible, so the\r\nanswer is \"NO\".For , there are 4 strings that have the answer \"YES\": , ,\r\n, and ; as well as 2 strings that have the answer \"NO\": and .Time\r\ncomplexity:\r\n",
+    "hint": [
+        "Hint 1 Only a few strings have the answer \"YES\".",
+        "Hint 2 For , the answer is \"NO\"."
+    ]
 }

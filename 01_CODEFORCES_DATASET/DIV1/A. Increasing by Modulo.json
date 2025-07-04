@@ -115,5 +115,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Increasing by Modulo.json",
     "editorial_link": "https://codeforces.com//blog/entry/67241",
-    "editorial": "Let's check that the answer to the problem is ?x\n.\n\nThen, for each element, you have some interval (interval on the \"circle\" of remainders modulo m\n) of values, that it can be equal to.\n\nSo you need to check that you can pick in each interval some point, to make all these values non-decrease.\n\nYou can do it with greedy! Each time, let's take the smallest element from the interval, that is at least the previously chosen value.\n\nAnd after this, let's make the binary search on x\n.\n\nSo we have the solution in O(nlogm)\n."
+    "editorial": "Let's check that the answer to the problem is ?x\n.\n\nThen, for each element, you have some interval (interval on the \"circle\" of remainders modulo m\n) of values, that it can be equal to.\n\nSo you need to check that you can pick in each interval some point, to make all these values non-decrease.\n\nYou can do it with greedy! Each time, let's take the smallest element from the interval, that is at least the previously chosen value.\n\nAnd after this, let's make the binary search on x\n.\n\nSo we have the solution in O(nlogm)\n.",
+    "hint": []
 }

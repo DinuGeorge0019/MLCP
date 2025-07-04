@@ -194,5 +194,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\C. Odd Even Increments.json",
     "editorial_link": "https://codeforces.com//blog/entry/102101",
-    "editorial": "Note is that after doing two operations of the same type, they are\r\n\"cancelled out\" in terms of parity, since we would change the parity of\r\nall elements once, then change it back again. So, we know that we will\r\ndo each operation exactly or time. It is possible to check all possible\r\ncases just by simulating, or we can notice that all elements on all\r\nindices of the same parity have the same parity and if they do we can\r\nalways find an answer, by doing just a single type of operation a single\r\ntime (in case the array doesn\u00e2\u0080\u0099t already contain all elements of the same\r\nparity).The time complexity is .\r\n"
+    "editorial": "Note is that after doing two operations of the same type, they are\r\n\"cancelled out\" in terms of parity, since we would change the parity of\r\nall elements once, then change it back again. So, we know that we will\r\ndo each operation exactly or time. It is possible to check all possible\r\ncases just by simulating, or we can notice that all elements on all\r\nindices of the same parity have the same parity and if they do we can\r\nalways find an answer, by doing just a single type of operation a single\r\ntime (in case the array doesnât already contain all elements of the same\r\nparity).The time complexity is .\r\n",
+    "hint": []
 }

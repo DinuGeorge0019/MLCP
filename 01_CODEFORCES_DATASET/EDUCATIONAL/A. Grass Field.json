@@ -152,5 +152,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Grass Field.json",
     "editorial_link": "https://codeforces.com//blog/entry/104671",
-    "editorial": "If there is no grass on the field, the answer is . If the whole field is\r\nfilled with grass, the answer is , because there always will be one cell\r\nthat we can\u00e2\u0080\u0099t clear with one move. Otherwise, the answer is . This is\r\nbecause if the cell is empty, we can just choose other row than and\r\nother column than and clear three other cells in one move.\r\n"
+    "editorial": "If there is no grass on the field, the answer is . If the whole field is\r\nfilled with grass, the answer is , because there always will be one cell\r\nthat we canât clear with one move. Otherwise, the answer is . This is\r\nbecause if the cell is empty, we can just choose other row than and\r\nother column than and clear three other cells in one move.\r\n",
+    "hint": []
 }

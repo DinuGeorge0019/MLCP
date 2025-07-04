@@ -170,5 +170,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Subtract or Divide.json",
     "editorial_link": "https://codeforces.com//blog/entry/84885",
-    "editorial": "For , the answer is when is even and when is odd. Cases when can be\r\nhandled separately.Case 1: For , it can be shown that the minimum number\r\nof operations required are , , respectively.Case 2: and is evenIf is\r\neven and greater than , then is a proper divisor. So we can divide by to\r\nmake it and then subtract . This requires operations.Case 3: and is\r\noddIn this case, can be made even by subtracting . From case 2, it can\r\nbe seen that it will take more operations. Thus a total of operations\r\nare required.Time complexity: per case\r\n"
+    "editorial": "For , the answer is when is even and when is odd. Cases when can be\r\nhandled separately.Case 1: For , it can be shown that the minimum number\r\nof operations required are , , respectively.Case 2: and is evenIf is\r\neven and greater than , then is a proper divisor. So we can divide by to\r\nmake it and then subtract . This requires operations.Case 3: and is\r\noddIn this case, can be made even by subtracting . From case 2, it can\r\nbe seen that it will take more operations. Thus a total of operations\r\nare required.Time complexity: per case\r\n",
+    "hint": []
 }

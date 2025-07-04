@@ -153,5 +153,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Keyboard.json",
     "editorial_link": "https://codeforces.com//blog/entry/14136",
-    "editorial": "This is an implementation problem, therefore most of the solution fit in\r\nthe time limit. We can even save the keyboard in strings and make a\r\nbrute force search for each character to find its position and then\r\nprint the left/right neighbour.\r\n"
+    "editorial": "This is an implementation problem, therefore most of the solution fit in\r\nthe time limit. We can even save the keyboard in strings and make a\r\nbrute force search for each character to find its position and then\r\nprint the left/right neighbour.\r\n",
+    "hint": []
 }

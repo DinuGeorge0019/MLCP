@@ -140,5 +140,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Greatest Convex.json",
     "editorial_link": "https://codeforces.com//blog/entry/110901",
-    "editorial": "Suppose we can make operations so that elements do not participate in\r\nany operation. Then these elements in the final array will end up at the\r\nbeginning in the order in which they were in the initial array. And\r\nsince this must be maximized to minimize the number of operations, we\r\nneed to find the maximal subsequence of the numbers . Let this sequence\r\nhave numbers, then the answer is .\r\n"
+    "editorial": "Suppose we can make operations so that elements do not participate in\r\nany operation. Then these elements in the final array will end up at the\r\nbeginning in the order in which they were in the initial array. And\r\nsince this must be maximized to minimize the number of operations, we\r\nneed to find the maximal subsequence of the numbers . Let this sequence\r\nhave numbers, then the answer is .\r\n",
+    "hint": [
+        "Hint 1 Try to brute force for . Do you see anything suspicious?",
+        "Hint 2 Now try to brute force from to for large numbers."
+    ]
 }

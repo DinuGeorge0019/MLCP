@@ -149,5 +149,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Matching Numbers.json",
     "editorial_link": "https://codeforces.com//blog/entry/112584",
-    "editorial": "Let\u00e2\u0080\u0099s assume that to is paired and each sum of pair is . Sum from to\r\nshould equal to the sum of to . So we obtain , which leads to . Since is\r\neven, should be even. So if is even, we cannot find such pairing.If is\r\nodd, there are various ways to make such pairing. Let . can be such\r\npairing.\r\n"
+    "editorial": "Letâs assume that to is paired and each sum of pair is . Sum from to\r\nshould equal to the sum of to . So we obtain , which leads to . Since is\r\neven, should be even. So if is even, we cannot find such pairing.If is\r\nodd, there are various ways to make such pairing. Let . can be such\r\npairing.\r\n",
+    "hint": []
 }

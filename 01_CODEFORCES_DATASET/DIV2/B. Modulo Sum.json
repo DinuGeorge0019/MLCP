@@ -100,5 +100,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Modulo Sum.json",
     "editorial_link": "https://codeforces.com//blog/entry/20226",
-    "editorial": "Let's consider two cases: n?>?m and n???m.\n\nIf n?>?m, let's look at prefix sums. By pigeonhole principle, there are two equals sums modulo m. Assume Slmodm?=?Srmodm. Then the sum on segment [l?+?1,?r] equals zero modulo m, that means the answer is definitely \"YES\".\n\nIf n???m, we'll solve this task using dynamic programming in O(m2) time. Assume can[i][r] means if we can achieve the sum equal to r modulo m using only first i?-?1 items. The updates in this dynamic programming are obvious: we either take number ai and go to the state can[i?+?1][(r?+?ai) mod m] or not, then we'll get to the state can[i?+?1][r]."
+    "editorial": "Let's consider two cases: n?>?m and n???m.\n\nIf n?>?m, let's look at prefix sums. By pigeonhole principle, there are two equals sums modulo m. Assume Slmodm?=?Srmodm. Then the sum on segment [l?+?1,?r] equals zero modulo m, that means the answer is definitely \"YES\".\n\nIf n???m, we'll solve this task using dynamic programming in O(m2) time. Assume can[i][r] means if we can achieve the sum equal to r modulo m using only first i?-?1 items. The updates in this dynamic programming are obvious: we either take number ai and go to the state can[i?+?1][(r?+?ai) mod m] or not, then we'll get to the state can[i?+?1][r].",
+    "hint": []
 }

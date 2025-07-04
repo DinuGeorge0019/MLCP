@@ -132,5 +132,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Unimodal Array.json",
     "editorial_link": "https://codeforces.com//blog/entry/53302",
-    "editorial": "Let use two variables . Initially and .After that we need to iterate\r\nthrough the given array from the left to the right and increase until\r\nthe next element is strictly more than previous. After that we need to\r\niterate through the given array from the right to the left and decrease\r\nuntil .Now it is left only to check that all elements between positions\r\nand are equal to each other. If it is true the answer is \"\", otherwise,\r\nthe answer is \"\".\r\n"
+    "editorial": "Let use two variables . Initially and .After that we need to iterate\r\nthrough the given array from the left to the right and increase until\r\nthe next element is strictly more than previous. After that we need to\r\niterate through the given array from the right to the left and decrease\r\nuntil .Now it is left only to check that all elements between positions\r\nand are equal to each other. If it is true the answer is \"\", otherwise,\r\nthe answer is \"\".\r\n",
+    "hint": []
 }

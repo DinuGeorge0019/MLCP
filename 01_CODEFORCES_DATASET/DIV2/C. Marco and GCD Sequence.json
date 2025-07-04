@@ -112,5 +112,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Marco and GCD Sequence.json",
     "editorial_link": "https://codeforces.com//blog/entry/55884",
-    "editorial": "If the minimum element isn\u00e2\u0080\u0099t the gcd of the given set, the answer is .\r\nOtherwise, we can insert the minimum element between two consecutive\r\nelements of the set. And the length of the sequence is which satisfies\r\nthe constraints.\r\n"
+    "editorial": "If the minimum element isnât the gcd of the given set, the answer is .\r\nOtherwise, we can insert the minimum element between two consecutive\r\nelements of the set. And the length of the sequence is which satisfies\r\nthe constraints.\r\n",
+    "hint": []
 }

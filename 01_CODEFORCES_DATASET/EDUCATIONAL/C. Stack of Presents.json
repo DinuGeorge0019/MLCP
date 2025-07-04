@@ -150,5 +150,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\C. Stack of Presents.json",
     "editorial_link": "https://codeforces.com//blog/entry/72577",
-    "editorial": "At first let\u00e2\u0080\u0099s precalculate array such that .Now presume that we have to\r\ncalculate answer for . Then there are two cases (let\u00e2\u0080\u0099s denote ,\r\ninitially ): if then we have to spend seconds on it ( second on the gift\r\n, seconds on removing gifts above and seconds on pushing these gifts);\r\nif then we can reorder gifts by previous actions such that gift be on\r\nthe top of stack. So we spend only second on it.\r\n"
+    "editorial": "At first letâs precalculate array such that .Now presume that we have to\r\ncalculate answer for . Then there are two cases (letâs denote ,\r\ninitially ): if then we have to spend seconds on it ( second on the gift\r\n, seconds on removing gifts above and seconds on pushing these gifts);\r\nif then we can reorder gifts by previous actions such that gift be on\r\nthe top of stack. So we spend only second on it.\r\n",
+    "hint": []
 }

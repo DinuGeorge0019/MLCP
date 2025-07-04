@@ -168,5 +168,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Arena.json",
     "editorial_link": "https://codeforces.com//blog/entry/87873",
-    "editorial": "If for some hero , no other hero is weaker than , then the -th hero\r\ncannot win any fights and is not a possible winner. Otherwise, the hero\r\nis a possible winner he may fight the weakest hero times and be declared\r\nthe winner.So the solution to the problem is calculating the number of\r\nminimum elements in the array , since all other elements denote possible\r\nwinners of the tournament.\r\n"
+    "editorial": "If for some hero , no other hero is weaker than , then the -th hero\r\ncannot win any fights and is not a possible winner. Otherwise, the hero\r\nis a possible winner he may fight the weakest hero times and be declared\r\nthe winner.So the solution to the problem is calculating the number of\r\nminimum elements in the array , since all other elements denote possible\r\nwinners of the tournament.\r\n",
+    "hint": []
 }

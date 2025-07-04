@@ -123,5 +123,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Wet Shark and Bishops.json",
     "editorial_link": "https://codeforces.com//blog/entry/23196",
-    "editorial": "Let\u00e2\u0080\u0099s start with two bishops (x1, y1) and (x2, y2). Notice that if (x1,\r\ny1) attacks (x2, y2), either x1 + y1 == x2 + y2 OR x1 y1 == x2 y2. So,\r\nfor each bishop (x, y), we will store x + y in one map and x y in\r\nanother map.\r\n"
+    "editorial": "Letâs start with two bishops (x1, y1) and (x2, y2). Notice that if (x1,\r\ny1) attacks (x2, y2), either x1 + y1 == x2 + y2 OR x1 y1 == x2 y2. So,\r\nfor each bishop (x, y), we will store x + y in one map and x y in\r\nanother map.\r\n",
+    "hint": []
 }

@@ -123,5 +123,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Vladik and Favorite Game.json",
     "editorial_link": "https://codeforces.com//blog/entry/52228",
-    "editorial": "It\u00e2\u0080\u0099s clear, that to reach finish without stepping into dangerous cells\r\nwe have to know, whether our buttons are broken. Firstly, let\u00e2\u0080\u0099s find any\r\nroute to the finish using bfs / dfs. At the first moment of this route,\r\nwhen we have to go down, we would find out, if our button is broken,\r\nbecause we are still at the first row of the matrix and if the button is\r\nbroken, we just won\u00e2\u0080\u0099t move anywhere. Similarly for left and right pair\r\nof buttons. After that we found out, that button was broken, we can\r\nchange in our route moves to opposite ones.\r\n"
+    "editorial": "Itâs clear, that to reach finish without stepping into dangerous cells\r\nwe have to know, whether our buttons are broken. Firstly, letâs find any\r\nroute to the finish using bfs / dfs. At the first moment of this route,\r\nwhen we have to go down, we would find out, if our button is broken,\r\nbecause we are still at the first row of the matrix and if the button is\r\nbroken, we just wonât move anywhere. Similarly for left and right pair\r\nof buttons. After that we found out, that button was broken, we can\r\nchange in our route moves to opposite ones.\r\n",
+    "hint": [
+        "Hint 1 Try to solve problem, when buttons can't be broken.",
+        "Hint 2 Try to find out whether the buttons are broken somehow, without taking risk of losing."
+    ]
 }

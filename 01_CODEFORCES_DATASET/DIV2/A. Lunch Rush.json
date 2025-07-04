@@ -93,7 +93,7 @@
         ]
     },
     "name": "A. Lunch Rush",
-    "statement": "Having written another programming contest, three Rabbits decided to\r\ngrab some lunch. The coach gave the team exactly time units for the\r\nlunch break.The Rabbits have a list of restaurants to lunch in: the -th\r\nrestaurant is characterized by two integers and . Value shows the time\r\nthe Rabbits need to lunch in the -th restaurant. If time exceeds the\r\ntime that the coach has given for the lunch break, then the Rabbits\u2019 joy\r\nfrom lunching in this restaurant will equal . Otherwise, the Rabbits get\r\nexactly units of joy.Your task is to find the value of the maximum joy\r\nthe Rabbits can get from the lunch, depending on the restaurant. The\r\nRabbits must choose one restaurant to lunch in. Note that the joy value\r\nisn\u2019t necessarily a positive value.\r\n",
+    "statement": "Having written another programming contest, three Rabbits decided to\r\ngrab some lunch. The coach gave the team exactly time units for the\r\nlunch break.The Rabbits have a list of restaurants to lunch in: the -th\r\nrestaurant is characterized by two integers and . Value shows the time\r\nthe Rabbits need to lunch in the -th restaurant. If time exceeds the\r\ntime that the coach has given for the lunch break, then the Rabbits’ joy\r\nfrom lunching in this restaurant will equal . Otherwise, the Rabbits get\r\nexactly units of joy.Your task is to find the value of the maximum joy\r\nthe Rabbits can get from the lunch, depending on the restaurant. The\r\nRabbits must choose one restaurant to lunch in. Note that the joy value\r\nisn’t necessarily a positive value.\r\n",
     "solutions": [
         "#include<cstdio>\n#include<algorithm>\nusing namespace std;\n#define INF 1000000007\nint n,k,S=-INF;\nint main()\n{\n\tscanf(\"%d%d\",&n,&k);\n\tfor(int i=0;i<n;i++)\n\t{\n\t\tint f,t;\n\t\tscanf(\"%d%d\",&f,&t);\n\t\tint c=0;\n\t\tif(t>k)c=f-(t-k);else c=f;\n\t\tif(c>S)S=c;\n\t}\n\tprintf(\"%d\\n\",S);\n\treturn 0;\n}"
     ],
@@ -106,5 +106,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Lunch Rush.json",
     "editorial_link": "https://codeforces.com//blog/entry/6779",
-    "editorial": "Let s look at all restraunts, where Rabbits can have their lunch. Let s\r\ncalculate the answer for all restraunts and choose the maximulm value\r\namong of them. We need to use formula descrbed in problem statement to\r\ncalculate the answer for some particular restraunt. Time complexity of\r\nthis solution is . C++ code Java code\r\n"
+    "editorial": "Let s look at all restraunts, where Rabbits can have their lunch. Let s\r\ncalculate the answer for all restraunts and choose the maximulm value\r\namong of them. We need to use formula descrbed in problem statement to\r\ncalculate the answer for some particular restraunt. Time complexity of\r\nthis solution is . C++ code Java code\r\n",
+    "hint": []
 }

@@ -100,5 +100,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. DZY Loves Physics.json",
     "editorial_link": "https://codeforces.com//blog/entry/12959",
-    "editorial": "If there is a connected induced subgraph containing more than 2 nodes with the maximum density. The density of every connected induced subgraph of it that contains only one edge can be represented as , where u,?v are the values of the two nodes linked by the edge. The density of the bigger connected induced subgraph is at most .\n\nIf , and for every edge, . Then we'll have u?+?v?<?Bc, and , and , it leads to contradiction.\n\nSo just check every single node, and every 2 nodes linked by an edge.\n\nThe time complexity is O(n?+?m)."
+    "editorial": "If there is a connected induced subgraph containing more than 2 nodes with the maximum density. The density of every connected induced subgraph of it that contains only one edge can be represented as , where u,?v are the values of the two nodes linked by the edge. The density of the bigger connected induced subgraph is at most .\n\nIf , and for every edge, . Then we'll have u?+?v?<?Bc, and , and , it leads to contradiction.\n\nSo just check every single node, and every 2 nodes linked by an edge.\n\nThe time complexity is O(n?+?m).",
+    "hint": []
 }

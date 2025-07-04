@@ -161,5 +161,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C. Make It Good.json",
     "editorial_link": "https://codeforces.com//blog/entry/80257",
-    "editorial": "Consider the maximum element of the good array of length . Then we can\r\nnotice that the array looks like . And this is pretty obvious that if\r\nthe array doesn\u00e2\u0080\u0099t have this structure, then it isn\u00e2\u0080\u0099t good (you can see\r\nit yourself). So we need to find the longest such suffix. It\u00e2\u0080\u0099s pretty\r\neasy doable with pointer: initially, the pointer is at the last element.\r\nThen, while and , decrease by one. If we\u00e2\u0080\u0099re done with the previous step,\r\nwe do the same, but while and . The answer is .\r\n"
+    "editorial": "Consider the maximum element of the good array of length . Then we can\r\nnotice that the array looks like . And this is pretty obvious that if\r\nthe array doesnât have this structure, then it isnât good (you can see\r\nit yourself). So we need to find the longest such suffix. Itâs pretty\r\neasy doable with pointer: initially, the pointer is at the last element.\r\nThen, while and , decrease by one. If weâre done with the previous step,\r\nwe do the same, but while and . The answer is .\r\n",
+    "hint": []
 }

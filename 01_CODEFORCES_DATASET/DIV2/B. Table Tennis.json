@@ -100,5 +100,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Table Tennis.json",
     "editorial_link": "https://codeforces.com//blog/entry/55435",
-    "editorial": "It\u00e2\u0080\u0099s not very difficult to solve this problem in . The statement hints\r\nus that we can use the data structure . We need to maintain the queue of\r\nplayers, the current winner and the number of wins he has. Each game is\r\nprocessed in . It can be shown that number of games is less than .Of\r\ncourse, this solution is too slow. Let\u00e2\u0080\u0099s think what happens if is large.\r\nMore precisely, assume that . The winner need to win at least games in a\r\nrow, that is, he need to win against all the other players. Hence, the\r\nwinner is just the strongest player.So, if , we can solve the problem in\r\n. Otherwise simulation works in .\r\n"
+    "editorial": "Itâs not very difficult to solve this problem in . The statement hints\r\nus that we can use the data structure . We need to maintain the queue of\r\nplayers, the current winner and the number of wins he has. Each game is\r\nprocessed in . It can be shown that number of games is less than .Of\r\ncourse, this solution is too slow. Letâs think what happens if is large.\r\nMore precisely, assume that . The winner need to win at least games in a\r\nrow, that is, he need to win against all the other players. Hence, the\r\nwinner is just the strongest player.So, if , we can solve the problem in\r\n. Otherwise simulation works in .\r\n",
+    "hint": []
 }

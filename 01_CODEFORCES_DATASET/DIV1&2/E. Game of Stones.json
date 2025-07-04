@@ -154,5 +154,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\E. Game of Stones.json",
     "editorial_link": "https://codeforces.com//blog/entry/50550",
-    "editorial": "Set and Editorial by: AakashHanda This problem can be solved using DP\r\nwith Bitmasks to calculate the grundy value of piles. Let us have a\r\n2-dimensional dp table, , where the first dimension is for number of\r\nstones in the pile and second dimension is for bitmask. The bitmask has\r\n-th bit set if we are allowed to remove stones from the pile. Now, to\r\ncalculate we need to iterate over all possible moves allowed and find\r\nthe mex. Code\r\n"
+    "editorial": "Set and Editorial by: AakashHanda This problem can be solved using DP\r\nwith Bitmasks to calculate the grundy value of piles. Let us have a\r\n2-dimensional dp table, , where the first dimension is for number of\r\nstones in the pile and second dimension is for bitmask. The bitmask has\r\n-th bit set if we are allowed to remove stones from the pile. Now, to\r\ncalculate we need to iterate over all possible moves allowed and find\r\nthe mex. Code\r\n",
+    "hint": []
 }

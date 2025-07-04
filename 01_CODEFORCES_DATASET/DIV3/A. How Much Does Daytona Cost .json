@@ -156,5 +156,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. How Much Does Daytona Cost .json",
     "editorial_link": "https://codeforces.com//blog/entry/120813",
-    "editorial": "It\u00e2\u0080\u0099s enough to check if there even exists the element equals to , since\r\nis obviously the most common element in the subsegment of length which\r\ncontains it.\r\n"
+    "editorial": "Itâs enough to check if there even exists the element equals to , since\r\nis obviously the most common element in the subsegment of length which\r\ncontains it.\r\n",
+    "hint": [
+        "Hint 1 When is the answer definitely \"NO\"?",
+        "Hint 2 What happens if there is no element equal to in the array?",
+        "Hint 3 What happens if there is an element equal to in the array?"
+    ]
 }

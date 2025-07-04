@@ -112,5 +112,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Zero Array.json",
     "editorial_link": "https://codeforces.com/blog/entry/68911",
-    "editorial": "There are 2 things needed to be possible to make all elements zero:1:\r\nThe sum of the elements must be even.2: The biggest element have to be\r\nless or equal than the sum of all the other elements.If both are true,\r\nthe answer is \"\", otherwise \"\".\r\n"
+    "editorial": "There are 2 things needed to be possible to make all elements zero:1:\r\nThe sum of the elements must be even.2: The biggest element have to be\r\nless or equal than the sum of all the other elements.If both are true,\r\nthe answer is \"\", otherwise \"\".\r\n",
+    "hint": []
 }

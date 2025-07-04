@@ -203,5 +203,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\A. Exponential Equation.json",
     "editorial_link": "https://codeforces.com//blog/entry/112009",
-    "editorial": "For even , a key observation is that is always legit.And for odd ,\r\nnotice that . So if or is an even number, obviously is an even number.\r\nOtherwise if both and are all odd numbers , and are all odd numbers, so\r\nis an even number, and is also an even number. That means is always even\r\nand there\u00e2\u0080\u0099s no solution for odd .\r\n"
+    "editorial": "For even , a key observation is that is always legit.And for odd ,\r\nnotice that . So if or is an even number, obviously is an even number.\r\nOtherwise if both and are all odd numbers , and are all odd numbers, so\r\nis an even number, and is also an even number. That means is always even\r\nand thereâs no solution for odd .\r\n",
+    "hint": []
 }

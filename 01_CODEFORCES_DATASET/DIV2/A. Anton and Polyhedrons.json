@@ -113,7 +113,7 @@
         ]
     },
     "name": "A. Anton and Polyhedrons",
-    "statement": "Anton\u2019s favourite geometric figures are regular polyhedrons. Note that\r\nthere are five kinds of regular polyhedrons: . Tetrahedron has\r\ntriangular faces. . Cube has square faces. . Octahedron has triangular\r\nfaces. . Dodecahedron has pentagonal faces. . Icosahedron has triangular\r\nfaces. All five kinds of polyhedrons are shown on the picture below:\r\nAnton has a collection of polyhedrons. One day he decided to know, how\r\nmany faces his polyhedrons have in total. Help Anton and find this\r\nnumber!\r\n",
+    "statement": "Anton’s favourite geometric figures are regular polyhedrons. Note that\r\nthere are five kinds of regular polyhedrons: . Tetrahedron has\r\ntriangular faces. . Cube has square faces. . Octahedron has triangular\r\nfaces. . Dodecahedron has pentagonal faces. . Icosahedron has triangular\r\nfaces. All five kinds of polyhedrons are shown on the picture below:\r\nAnton has a collection of polyhedrons. One day he decided to know, how\r\nmany faces his polyhedrons have in total. Help Anton and find this\r\nnumber!\r\n",
     "solutions": [
         "#include<cstdio>\n#include<cstring>\n#include<cstdlib>\n#include<algorithm>\n\nusing namespace std;\nconst int MX=22;\nint n;\n\nint main(){\n\tint ans=0;char s[MX];\n\tscanf(\"%d\",&n);\n\tfor(int i=1;i<=n;i++){\n\t\tscanf(\"%s\",s);\n\t\tif(s[0]=='T')ans+=4;\n\t\telse if(s[0]=='C')ans+=6;\n\t\telse if(s[0]=='O')ans+=8;\n\t\telse if(s[0]=='D')ans+=12;\n\t\telse ans+=20;\n\t}\n\tprintf(\"%d\\n\",ans);\n\treturn 0;\n}\n"
     ],
@@ -127,5 +127,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Anton and Polyhedrons.json",
     "editorial_link": "https://codeforces.com//blog/entry/50996",
-    "editorial": "I think there\u00e2\u0080\u0099s nothing to explain in this problem. Just check the\r\npolyhedron type, determine its number of faces and sum these\r\nnumbers.Time complexity is .\r\n"
+    "editorial": "I think thereâs nothing to explain in this problem. Just check the\r\npolyhedron type, determine its number of faces and sum these\r\nnumbers.Time complexity is .\r\n",
+    "hint": [
+        "Hint 404 Not Found"
+    ]
 }

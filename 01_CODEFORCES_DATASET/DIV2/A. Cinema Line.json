@@ -95,5 +95,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Cinema Line.json",
     "editorial_link": "https://codeforces.com//blog/entry/9031",
-    "editorial": "In the problem you need to decide whether cashier can give a change to\r\nall customers if the price of the ticket is 25 rubles and there\u00e2\u0080\u0099s 3\r\nkinds of bills: 25, 50 and 100 rubles. There\u00e2\u0080\u0099s no money in the ticket\r\noffice in the beginning. Let\u00e2\u0080\u0099s consider 3 cases. The solution is to keep\r\ntrack of the number of 25 and 50 ruble bills and act greedily when\r\ngiving change to 100 rubles try 25+50 first and then 25+25+25.\r\n"
+    "editorial": "In the problem you need to decide whether cashier can give a change to\r\nall customers if the price of the ticket is 25 rubles and thereâs 3\r\nkinds of bills: 25, 50 and 100 rubles. Thereâs no money in the ticket\r\noffice in the beginning. Letâs consider 3 cases. The solution is to keep\r\ntrack of the number of 25 and 50 ruble bills and act greedily when\r\ngiving change to 100 rubles try 25+50 first and then 25+25+25.\r\n",
+    "hint": []
 }

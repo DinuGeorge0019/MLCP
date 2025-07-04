@@ -202,5 +202,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\E. Kolya and Movie Theatre.json",
     "editorial_link": "https://codeforces.com//blog/entry/119715",
-    "editorial": "Let\u00e2\u0080\u0099s notice that if we visit the cinema on days with numbers , the\r\ntotal entertainment value of the visited movies will be equal to .Thus,\r\nit is sufficient to iterate over the day when Kolya will visit the\r\ncinema for the last time , and maintain the maximum non-negative\r\nelements on the prefix . This can be done, for example, using\r\nstd::multiset. The total complexity of the solution will be .\r\n"
+    "editorial": "Letâs notice that if we visit the cinema on days with numbers , the\r\ntotal entertainment value of the visited movies will be equal to .Thus,\r\nit is sufficient to iterate over the day when Kolya will visit the\r\ncinema for the last time , and maintain the maximum non-negative\r\nelements on the prefix . This can be done, for example, using\r\nstd::multiset. The total complexity of the solution will be .\r\n",
+    "hint": []
 }

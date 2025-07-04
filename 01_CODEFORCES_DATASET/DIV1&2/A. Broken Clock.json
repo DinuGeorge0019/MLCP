@@ -138,5 +138,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\A. Broken Clock.json",
     "editorial_link": "https://codeforces.com//blog/entry/47497",
-    "editorial": "Let\u00e2\u0080\u0099s iterate over all possible values that can be shown on the\r\nclock.First two digits must form a number from to in case of -hours\r\nformat and a number from to in case of -hours format. Second two digits\r\nmust form a number from to .For each value, we will count the number of\r\ndigits that differ from the original ones.Finally, choose the value,\r\nthat differs in the least number of digits.\r\n"
+    "editorial": "Letâs iterate over all possible values that can be shown on the\r\nclock.First two digits must form a number from to in case of -hours\r\nformat and a number from to in case of -hours format. Second two digits\r\nmust form a number from to .For each value, we will count the number of\r\ndigits that differ from the original ones.Finally, choose the value,\r\nthat differs in the least number of digits.\r\n",
+    "hint": []
 }

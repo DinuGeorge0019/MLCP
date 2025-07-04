@@ -154,5 +154,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Food Buying.json",
     "editorial_link": "https://codeforces.com//blog/entry/73627",
-    "editorial": "Let\u00e2\u0080\u0099s do the following greedy solution: it is obvious that when we buy\r\nfood that costs exactly for , we don\u00e2\u0080\u0099t lose any burles because of\r\nrounding. Let\u00e2\u0080\u0099s take the maximum power of that is not greater than (let\r\nit be ), buy food that costs (and add this number to the answer) and add\r\nto . Apply this process until and then add to the answer.Time\r\ncomplexity: per test case.\r\n"
+    "editorial": "Letâs do the following greedy solution: it is obvious that when we buy\r\nfood that costs exactly for , we donât lose any burles because of\r\nrounding. Letâs take the maximum power of that is not greater than (let\r\nit be ), buy food that costs (and add this number to the answer) and add\r\nto . Apply this process until and then add to the answer.Time\r\ncomplexity: per test case.\r\n",
+    "hint": []
 }

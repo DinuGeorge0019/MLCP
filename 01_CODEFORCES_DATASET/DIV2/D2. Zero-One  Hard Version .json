@@ -151,5 +151,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D2. Zero-One  Hard Version .json",
     "editorial_link": "https://codeforces.com//blog/entry/83109",
-    "editorial": "Solution(Continued from D1 editorial)If , greedy approach used in D1\r\ndoesn\u00e2\u0080\u0099t work. Let\u00e2\u0080\u0099s use DP. Define as the minimal cost when there is s\r\nin first elements of and , and as the minimal cost when there is s in\r\nfirst elements of and . Initially all table values are .First, check .\r\nIf , set to . Otherwise, set to .Then, check the following elements from\r\nto in turn. If , If , for . The answer is .\r\n"
+    "editorial": "Solution(Continued from D1 editorial)If , greedy approach used in D1\r\ndoesnât work. Letâs use DP. Define as the minimal cost when there is s\r\nin first elements of and , and as the minimal cost when there is s in\r\nfirst elements of and . Initially all table values are .First, check .\r\nIf , set to . Otherwise, set to .Then, check the following elements from\r\nto in turn. If , If , for . The answer is .\r\n",
+    "hint": [
+        "Hint 1 Greedy solution used in D1 doesn't work in this version.",
+        "Hint 2 The restriction accepts normal solution."
+    ]
 }

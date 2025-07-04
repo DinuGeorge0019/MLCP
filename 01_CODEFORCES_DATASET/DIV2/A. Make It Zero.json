@@ -130,5 +130,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Make It Zero.json",
     "editorial_link": "https://codeforces.com//blog/entry/116642",
-    "editorial": "Note thatSo if is even, after performing the operation on twice, the\r\nsubarray will all become .When is even, we can perform the operation on\r\ntwice.When is odd, we can perform the operation on twice. After that the\r\narray becomes . Then perform the operation on twice.Time Complexity: per\r\ntest case.\r\n"
+    "editorial": "Note thatSo if is even, after performing the operation on twice, the\r\nsubarray will all become .When is even, we can perform the operation on\r\ntwice.When is odd, we can perform the operation on twice. After that the\r\narray becomes . Then perform the operation on twice.Time Complexity: per\r\ntest case.\r\n",
+    "hint": [
+        "Hint 1 Indeed at most operations will be used.",
+        "Hint 2 If is even, and you do the operation on twice, then the subarray will all become ."
+    ]
 }

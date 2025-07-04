@@ -109,7 +109,7 @@
         ]
     },
     "name": "A. Bulbs",
-    "statement": "Vasya wants to turn on Christmas lights consisting of bulbs. Initially,\r\nall bulbs are turned off. There are buttons, each of them is connected\r\nto some set of bulbs. Vasya can press any of these buttons. When the\r\nbutton is pressed, it turns on all the bulbs it\u2019s connected to. Can\r\nVasya light up all the bulbs?If Vasya presses the button such that some\r\nbulbs connected to it are already turned on, they do not change their\r\nstate, i.e. remain turned on.\r\n",
+    "statement": "Vasya wants to turn on Christmas lights consisting of bulbs. Initially,\r\nall bulbs are turned off. There are buttons, each of them is connected\r\nto some set of bulbs. Vasya can press any of these buttons. When the\r\nbutton is pressed, it turns on all the bulbs it’s connected to. Can\r\nVasya light up all the bulbs?If Vasya presses the button such that some\r\nbulbs connected to it are already turned on, they do not change their\r\nstate, i.e. remain turned on.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\nint n, m, x, y;\nbool cani[105] = {false};\nint main()\n{\n\tcin >> n >> m;\n\tfor (int i = 1; i <= n; i++)\n\t{\n\t\tcin >> x;\n\t\tfor (int j = 1; j <= x; j++) cin >> y, cani[y] = true;\n\t}\n\tfor (int i = 1; i <= m; i++)\n\t\tif (!cani[i])\n\t\t{\n\t\t\tputs(\"NO\");\n\t\t\treturn 0;\n\t\t}\n\tputs(\"YES\");\n\treturn 0;\n}"
     ],
@@ -122,5 +122,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Bulbs.json",
     "editorial_link": "https://codeforces.com//blog/entry/22658",
-    "editorial": "Let\u00e2\u0080\u0099s make a counter of number of buttons that switch every lamp off. If\r\nthere is a lamp with zero counter, output NO, otherwise YES. code:\r\n15260902\r\n"
+    "editorial": "Letâs make a counter of number of buttons that switch every lamp off. If\r\nthere is a lamp with zero counter, output NO, otherwise YES. code:\r\n15260902\r\n",
+    "hint": []
 }

@@ -118,5 +118,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Amr and Music.json",
     "editorial_link": "https://codeforces.com/blog/entry/15975",
-    "editorial": "Problem: We have to split the number into maximum number of elements of\r\nsuch that their sum is less than or equal to . Hint: To maximize the\r\nanswer we have to split the number into the smallest numbers possible.\r\nSolution: So and since the limits are small we can pick up the smallest\r\nelement of the array and subtract it from , and we keep doing this times\r\nor until the smallest number is larger than . Another solution is to\r\nsort the array in non-decreasing order and go on the same way. Time\r\ncomplexity: or Implementation: 9529124 .\r\n"
+    "editorial": "Problem: We have to split the number into maximum number of elements of\r\nsuch that their sum is less than or equal to . Hint: To maximize the\r\nanswer we have to split the number into the smallest numbers possible.\r\nSolution: So and since the limits are small we can pick up the smallest\r\nelement of the array and subtract it from , and we keep doing this times\r\nor until the smallest number is larger than . Another solution is to\r\nsort the array in non-decreasing order and go on the same way. Time\r\ncomplexity: or Implementation: 9529124 .\r\n",
+    "hint": []
 }

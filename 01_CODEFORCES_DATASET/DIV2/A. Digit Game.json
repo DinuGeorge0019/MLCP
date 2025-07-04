@@ -147,5 +147,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Digit Game.json",
     "editorial_link": "https://codeforces.com//blog/entry/82817",
-    "editorial": "Let\u00e2\u0080\u0099s say that digits on odd positions are blue and digits on even\r\npositions are red. If is even the remaining digit will be red. If there\r\nis at least one even red digit then Breach wins (he can mark all digits\r\nexcept the one that will remain in the end). In other case Raze wins,\r\nbecause any digit that may remain is odd.If is odd the remaining digit\r\nwill be blue. If there is at least one odd blue digit then Raze wins\r\n(using the same strategy applied to her). In other case Breach wins.\r\n"
+    "editorial": "Letâs say that digits on odd positions are blue and digits on even\r\npositions are red. If is even the remaining digit will be red. If there\r\nis at least one even red digit then Breach wins (he can mark all digits\r\nexcept the one that will remain in the end). In other case Raze wins,\r\nbecause any digit that may remain is odd.If is odd the remaining digit\r\nwill be blue. If there is at least one odd blue digit then Raze wins\r\n(using the same strategy applied to her). In other case Breach wins.\r\n",
+    "hint": []
 }

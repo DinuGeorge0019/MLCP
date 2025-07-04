@@ -122,7 +122,7 @@
         ]
     },
     "name": "A. A Prank",
-    "statement": "JATC and his friend Giraffe are currently in their room, solving some\r\nproblems. Giraffe has written on the board an array a_1, a_2, ..., a_n\r\nof integers, such that 1\r\nle a_1 < a_2 <\r\nldots < a_n\r\nle 10^3, and then went to the bathroom.JATC decided to prank his friend\r\nby erasing some in the array. Since he doesn\u2019t want for the prank to go\r\ntoo far, he will only erase in a way, such that Giraffe can still\r\nrestore the array using the information from the remaining elements.\r\nBecause Giraffe has created the array, he\u2019s that it\u2019s an increasing\r\narray and all the elements are integers in the range [1, 10^3].JATC\r\nwonders what is the greatest number of elements he can erase?\r\n",
+    "statement": "JATC and his friend Giraffe are currently in their room, solving some\r\nproblems. Giraffe has written on the board an array a_1, a_2, ..., a_n\r\nof integers, such that 1\r\nle a_1 < a_2 <\r\nldots < a_n\r\nle 10^3, and then went to the bathroom.JATC decided to prank his friend\r\nby erasing some in the array. Since he doesn’t want for the prank to go\r\ntoo far, he will only erase in a way, such that Giraffe can still\r\nrestore the array using the information from the remaining elements.\r\nBecause Giraffe has created the array, he’s that it’s an increasing\r\narray and all the elements are integers in the range [1, 10^3].JATC\r\nwonders what is the greatest number of elements he can erase?\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\n\nint a[1006];\n\nint main () {\n\tint n;\n\tcin >> n;\n\tfor (int i=1;i<=n;++i) {\n\t\tint x;\n\t\tcin >> x;\n\t\ta[x] = 1;\n\t\t//cin >> a[i];\n\t}\n\tint ans = 0;\n\t//from 1 ~ ?\n\tint L,R;\n\tfor (int i=1;i<=1000;++i) {\n\t\tif (!a[i]) {\n\t\t\tans = max(ans, max(0,i-2));\n\t\t\tL = i;\n\t\t\tbreak;\n\t\t}\n\t}\n\t//from 1000 ~ ?\n\tfor (int i=1000;i>=1;--i) {\n\t\tif (!a[i]) {\n\t\t\tans =max(ans ,max(0,999-i));\n\t\t\tR = i;\n\t\t\tbreak;\n\t\t}\n\t}\n\t//else\n\tint pre=0;\n\tfor (int i=L+1;i<=R-1;++i) {\n\t\tif (a[i-1] && a[i] && a[i+1]) ++pre;\n\t\telse pre=0;\n\t\tans = max(ans,pre);\n\t}\n\tcout << ans << endl;\n}\n"
     ],
@@ -136,5 +136,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. A Prank.json",
     "editorial_link": "https://codeforces.com/blog/entry/63199",
-    "editorial": "Since for all , let set and . For every such that , if then we can erase\r\nall the elements between and (not inclusive). So just check for all the\r\nvalid pairs and maximize the answer. Time complexity: .\r\n"
+    "editorial": "Since for all , let set and . For every such that , if then we can erase\r\nall the elements between and (not inclusive). So just check for all the\r\nvalid pairs and maximize the answer. Time complexity: .\r\n",
+    "hint": []
 }

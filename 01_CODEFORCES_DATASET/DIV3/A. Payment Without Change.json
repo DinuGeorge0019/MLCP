@@ -137,5 +137,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Payment Without Change.json",
     "editorial_link": "https://codeforces.com//blog/entry/71184",
-    "editorial": "Firstly, we obviously need to take at least coins of value . If we\r\ncannot do it, the answer it . Otherwise we always can obtain the\r\nrequired sum if .\r\n"
+    "editorial": "Firstly, we obviously need to take at least coins of value . If we\r\ncannot do it, the answer it . Otherwise we always can obtain the\r\nrequired sum if .\r\n",
+    "hint": []
 }

@@ -137,5 +137,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. GCD Problem.json",
     "editorial_link": "https://codeforces.com//blog/entry/97920",
-    "editorial": "SolutionKey observation: there always exists a solution with under the\r\ngiven constraints. We set because there is no solution when or .Solution\r\n1: Brute force from and calculate the value of (), then check whether .\r\nIt works, because you will find a prime number such that does not divide\r\n.Solution 2: Randomly choose and calculate (). Repeating that for enough\r\ntimes will eventually get you a pair of () such that .Solution 3:\r\nConstructive solution. When , output (). When , output (). When , output\r\n().\r\n"
+    "editorial": "SolutionKey observation: there always exists a solution with under the\r\ngiven constraints. We set because there is no solution when or .Solution\r\n1: Brute force from and calculate the value of (), then check whether .\r\nIt works, because you will find a prime number such that does not divide\r\n.Solution 2: Randomly choose and calculate (). Repeating that for enough\r\ntimes will eventually get you a pair of () such that .Solution 3:\r\nConstructive solution. When , output (). When , output (). When , output\r\n().\r\n",
+    "hint": [
+        "Hint There must exist a solution for under the given constraints."
+    ]
 }

@@ -170,7 +170,7 @@
         ]
     },
     "name": "A. Game with Integers",
-    "statement": "Vanya and Vova are playing a game. Players are given an integer n. On\r\ntheir turn, the player can add 1 to the current integer or subtract 1.\r\nThe players take turns; Vanya starts. If Vanya\u2019s move the integer is\r\ndivisible by 3, then he wins. If 10 moves have passed and Vanya has not\r\nwon, then Vova wins.Write a program that, based on the integer n,\r\ndetermines who will win if both players play optimally.\r\n",
+    "statement": "Vanya and Vova are playing a game. Players are given an integer n. On\r\ntheir turn, the player can add 1 to the current integer or subtract 1.\r\nThe players take turns; Vanya starts. If Vanya’s move the integer is\r\ndivisible by 3, then he wins. If 10 moves have passed and Vanya has not\r\nwon, then Vova wins.Write a program that, based on the integer n,\r\ndetermines who will win if both players play optimally.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\n\nint32_t main() {\n        ios_base::sync_with_stdio(0);\n        cin.tie(0);\n        int t;\n        cin >> t;\n        while (t--) {\n                int n;\n                cin >> n;\n                cout << (n % 3 ? \"First\\n\" : \"Second\\n\");\n        }\n}"
     ],
@@ -185,5 +185,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Game with Integers.json",
     "editorial_link": "https://codeforces.com//blog/entry/122407",
-    "editorial": "EditorialConsider the remainder from dividing by before the first move.\r\nIf it is equal to or , then Vanya can make the number divisible by after\r\nthe first move, i.e. he wins. Let the remainder be , then Vanya must\r\nchange the number after which it will not be divisible by . Then Vova\r\ncan do the same operation as Vanya and make it divisible by again. This\r\nwill go on indefinitely, so Vova wins.\r\n"
+    "editorial": "EditorialConsider the remainder from dividing by before the first move.\r\nIf it is equal to or , then Vanya can make the number divisible by after\r\nthe first move, i.e. he wins. Let the remainder be , then Vanya must\r\nchange the number after which it will not be divisible by . Then Vova\r\ncan do the same operation as Vanya and make it divisible by again. This\r\nwill go on indefinitely, so Vova wins.\r\n",
+    "hint": []
 }

@@ -133,5 +133,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Minimum path.json",
     "editorial_link": "https://codeforces.com//blog/entry/62612",
-    "editorial": "First, let's find the number of a-s in the beginning of the answer. To do this one can calculate dp[i][j] standing for the minimal number of non-a-s among all paths from the initial corner to (i, j). The number of a-s is simply the greatest (i+j)\n among all pairs (i,j)\n such that dp[i][j]?k\n (or 0\n, if there are no).\n\nConsider all cells where we can go right after obtaining the prefix of a-s. Now we repeat the following: append the minimal symbol in these cells to the answer, choose those cells and go from them in both possible directions to obtain the new set of cells. One can see that the answer we obtain is indeed the required answer."
+    "editorial": "First, let's find the number of a-s in the beginning of the answer. To do this one can calculate dp[i][j] standing for the minimal number of non-a-s among all paths from the initial corner to (i, j). The number of a-s is simply the greatest (i+j)\n among all pairs (i,j)\n such that dp[i][j]?k\n (or 0\n, if there are no).\n\nConsider all cells where we can go right after obtaining the prefix of a-s. Now we repeat the following: append the minimal symbol in these cells to the answer, choose those cells and go from them in both possible directions to obtain the new set of cells. One can see that the answer we obtain is indeed the required answer.",
+    "hint": []
 }

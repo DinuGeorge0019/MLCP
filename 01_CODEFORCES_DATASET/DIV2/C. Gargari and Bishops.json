@@ -119,5 +119,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Gargari and Bishops.json",
     "editorial_link": "https://codeforces.com/blog/entry/13631",
-    "editorial": "We preprocess the sum for all the diagonals(principals and secondary diagonals) in two arrays(so that for every element i,j we can find sum of elements which are attacked in O(1) time).Also for avoiding the intersection,we need to find two cells so that for one the sum of row and column is even and for the other one the sum of row and column is odd.Finally,we analyze every cell ,we see if the sum of row and column is even or odd,and update that two positions(solutions)."
+    "editorial": "We preprocess the sum for all the diagonals(principals and secondary diagonals) in two arrays(so that for every element i,j we can find sum of elements which are attacked in O(1) time).Also for avoiding the intersection,we need to find two cells so that for one the sum of row and column is even and for the other one the sum of row and column is odd.Finally,we analyze every cell ,we see if the sum of row and column is even or odd,and update that two positions(solutions).",
+    "hint": []
 }

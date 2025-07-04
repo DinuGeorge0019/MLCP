@@ -171,7 +171,7 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/129364",
-    "editorial": "For each query, we binary search to find the last sign we passed (since\r\nthe array is sorted). Say it is . Then, minutes have passed. To find out\r\nhow much time has passed since we left that sign, we know that the speed\r\nbetween sign and is (by the usual formula for speed).We have passed a\r\ndistance since the last sign, so the total number of minutes since the\r\nlast sign is Adding this to our from before, we get the answer.Be\r\ncareful about using floating-point numbers, as they can behave\r\nstrangely. Our solution below doesn\u00e2\u0080\u0099t use them at all.\r\n",
+    "editorial": "For each query, we binary search to find the last sign we passed (since\r\nthe array is sorted). Say it is . Then, minutes have passed. To find out\r\nhow much time has passed since we left that sign, we know that the speed\r\nbetween sign and is (by the usual formula for speed).We have passed a\r\ndistance since the last sign, so the total number of minutes since the\r\nlast sign is Adding this to our from before, we get the answer.Be\r\ncareful about using floating-point numbers, as they can behave\r\nstrangely. Our solution below doesnât use them at all.\r\n",
     "name": "E. Find the Car",
     "statement": "Timur is in a car traveling on the number line from point 0 to point n.\r\nThe car starts moving from point 0 at minute 0.There are k+1 signs on\r\nthe line at points 0, a_1, a_2,\r\ndots, a_k, and Timur knows that the car will arrive there at minutes 0,\r\nb_1, b_2,\r\ndots, b_k, respectively. The sequences a and b are strictly increasing\r\nwith a_k = n. Between any two adjacent signs, the car travels with a .\r\nTimur has q queries: each query will be an integer d, and Timur wants\r\nyou to output how many minutes it takes the car to reach point d, .\r\n",
     "solutions": [
@@ -186,5 +186,6 @@
     ],
     "dificulty": "1500",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\E. Find the Car.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\E. Find the Car.json",
+    "hint": []
 }

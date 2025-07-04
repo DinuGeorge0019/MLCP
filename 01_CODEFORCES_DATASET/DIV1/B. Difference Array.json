@@ -141,5 +141,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Difference Array.json",
     "editorial_link": "https://codeforces.com//blog/entry/104930",
-    "editorial": "Let\u00e2\u0080\u0099s prove that the brute-force solution (considering zeros\r\ndifferently) can pass.Define and it changes when an operation is\r\nperformed.After sorting the array and ignoring s, the factis always\r\ntrue.And after performing one operation, .So in each operation, you cost\r\ntime to sort the new array and decrease by at least .After the first\r\noperation, is . The complexity is , where .\r\n"
+    "editorial": "Letâs prove that the brute-force solution (considering zeros\r\ndifferently) can pass.Define and it changes when an operation is\r\nperformed.After sorting the array and ignoring s, the factis always\r\ntrue.And after performing one operation, .So in each operation, you cost\r\ntime to sort the new array and decrease by at least .After the first\r\noperation, is . The complexity is , where .\r\n",
+    "hint": []
 }

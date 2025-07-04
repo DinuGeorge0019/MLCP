@@ -181,5 +181,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\D. Rudolph and Christmas Tree.json",
     "editorial_link": "https://codeforces.com//blog/entry/118044",
-    "editorial": "Let\u00e2\u0080\u0099s consider the triangles in ascending order of . Let the current\r\ntriangle have index . There are two cases: The triangle does not\r\nintersect with the -th triangle . In this case, we simply add the area\r\nof the triangle to the answer. The area will be . The triangle\r\nintersects with the -th triangle . We can add to the answer the area of\r\nthe figure that does not belong to the intersection and move on to the\r\nnext triangle. Note that this figure is a trapezoid with a lower base\r\nand height . The upper base can be found based on the similarity of\r\ntriangles. The heights of the triangles are in the ratio . Then the\r\nupper base . The area of the trapezoid is . Time complexity is .\r\n"
+    "editorial": "Letâs consider the triangles in ascending order of . Let the current\r\ntriangle have index . There are two cases: The triangle does not\r\nintersect with the -th triangle . In this case, we simply add the area\r\nof the triangle to the answer. The area will be . The triangle\r\nintersects with the -th triangle . We can add to the answer the area of\r\nthe figure that does not belong to the intersection and move on to the\r\nnext triangle. Note that this figure is a trapezoid with a lower base\r\nand height . The upper base can be found based on the similarity of\r\ntriangles. The heights of the triangles are in the ratio . Then the\r\nupper base . The area of the trapezoid is . Time complexity is .\r\n",
+    "hint": [
+        "Hint 1 Consider all the triangles in order from bottom to top.",
+        "Hint 2 What if the current triangle intersects with the next one?",
+        "Hint 3 Trapezoid"
+    ]
 }

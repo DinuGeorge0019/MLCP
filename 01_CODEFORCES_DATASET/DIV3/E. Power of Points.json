@@ -192,5 +192,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\E. Power of Points.json",
     "editorial_link": "https://codeforces.com//blog/entry/119134",
-    "editorial": "If we have the segments , the sum of is the sum of the segments\u00e2\u0080\u0099\r\nlengths. That\u00e2\u0080\u0099s because a segment intersect exactly points. Now we can\r\nfind the answer for fixed in . How to do it more efficiently?Let\u00e2\u0080\u0099s sort\r\nthe given points so that .Processing we get that for all the segments\r\nare and for all the segments are . We need to summarize their lengths.\r\nFormally we need to calculate We can maintain the sum of coordinates on\r\nthe prefix and suffix, and calculate this formula for fixed in .The\r\ntotal complexity is .\r\n"
+    "editorial": "If we have the segments , the sum of is the sum of the segmentsâ\r\nlengths. Thatâs because a segment intersect exactly points. Now we can\r\nfind the answer for fixed in . How to do it more efficiently?Letâs sort\r\nthe given points so that .Processing we get that for all the segments\r\nare and for all the segments are . We need to summarize their lengths.\r\nFormally we need to calculate We can maintain the sum of coordinates on\r\nthe prefix and suffix, and calculate this formula for fixed in .The\r\ntotal complexity is .\r\n",
+    "hint": []
 }

@@ -194,7 +194,7 @@
         ]
     },
     "name": "A. To My Critics",
-    "statement": "Suneet has three digits a, b, and c. Since math isn\u2019t his strongest\r\npoint, he asks you to determine if you can choose any two digits to make\r\na sum greater or equal to 10.Output \"\" if there is such a pair, and \"\"\r\notherwise.\r\n",
+    "statement": "Suneet has three digits a, b, and c. Since math isn’t his strongest\r\npoint, he asks you to determine if you can choose any two digits to make\r\na sum greater or equal to 10.Output \"\" if there is such a pair, and \"\"\r\notherwise.\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\nusing namespace std;\nusing ll = long long;\n\n#define dbg(a)  cerr << #a << \": \" << a << \"\\n\"\n\nvoid solve () {\n\tint a, b, c;  cin >> a >> b >> c;\n\tif (a + b + c - min({a, b, c}) >= 10)  cout << \"YES\\n\";\n\telse  cout << \"NO\\n\";\n}\n\nint main(){\n\tios::sync_with_stdio(0), cin.tie(0);\n\t\n\tint tc = 1;\n\tcin >> tc;\n\tfor (int t = 1; t <= tc; ++t) {\n\t  solve();\n\t}\n}"
     ],
@@ -208,5 +208,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\A. To My Critics.json",
     "editorial_link": "https://codeforces.com//blog/entry/118466",
-    "editorial": "One way to solve the problem is to check if a+b+c?min(a,b,c)?10\n using an if statement.\n"
+    "editorial": "One way to solve the problem is to check if a+b+c?min(a,b,c)?10\n using an if statement.\n",
+    "hint": []
 }

@@ -156,5 +156,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. Balanced Substring.json",
     "editorial_link": "https://codeforces.com//blog/entry/55171",
-    "editorial": "Let be the number of zeroes and the number of ones on prefix of length ;\r\nalso let (). The interesting property of is that the substring is\r\nbalanced iff . That leads to a solution: for each value of maintain the\r\nminimum where this is obtained (let it be called ), and for each index\r\nin the string update answer with .\r\n"
+    "editorial": "Let be the number of zeroes and the number of ones on prefix of length ;\r\nalso let (). The interesting property of is that the substring is\r\nbalanced iff . That leads to a solution: for each value of maintain the\r\nminimum where this is obtained (let it be called ), and for each index\r\nin the string update answer with .\r\n",
+    "hint": []
 }

@@ -114,5 +114,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Mancala.json",
     "editorial_link": "https://codeforces.com//blog/entry/59202",
-    "editorial": "in this problem, we brute-force on the optimal hole to choose since\r\nthere are only 14 holes, but how to calculate how many stones there will\r\nbe after we start from the ith hole? the process of putting stones is\r\nrepeating every 14 holes, suppose k is the number of stones in hand now\r\nso k/14 will be added to all holes and we simulate adding k mod 14 then\r\nwe take the maximum answer from all the holes.\r\n"
+    "editorial": "in this problem, we brute-force on the optimal hole to choose since\r\nthere are only 14 holes, but how to calculate how many stones there will\r\nbe after we start from the ith hole? the process of putting stones is\r\nrepeating every 14 holes, suppose k is the number of stones in hand now\r\nso k/14 will be added to all holes and we simulate adding k mod 14 then\r\nwe take the maximum answer from all the holes.\r\n",
+    "hint": []
 }

@@ -157,5 +157,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\A. A Serial Killer.json",
     "editorial_link": "https://codeforces.com//blog/entry/50622",
-    "editorial": "You just have to store the current two strings. This can simply be done\r\nby replacing the string to be deleted with the new string. This can be\r\ndone in O(n)\r\n"
+    "editorial": "You just have to store the current two strings. This can simply be done\r\nby replacing the string to be deleted with the new string. This can be\r\ndone in O(n)\r\n",
+    "hint": []
 }

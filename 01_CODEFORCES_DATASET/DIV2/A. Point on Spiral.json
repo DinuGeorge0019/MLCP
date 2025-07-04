@@ -110,5 +110,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Point on Spiral.json",
     "editorial_link": "https://codeforces.com//blog/entry/95148",
-    "editorial": "Since constraints are small, you can just simulate the whole process,\r\nbut I\u00e2\u0080\u0099ll explain an solution. Let\u00e2\u0080\u0099s look at the path Now it\u00e2\u0080\u0099s easy to\r\nsee that the plane can be divided into four parts And then we can\r\ncalculate answer for each part separately, just be careful with borders.\r\nFor example, for the right part the answer is . Code\r\n"
+    "editorial": "Since constraints are small, you can just simulate the whole process,\r\nbut Iâll explain an solution. Letâs look at the path Now itâs easy to\r\nsee that the plane can be divided into four parts And then we can\r\ncalculate answer for each part separately, just be careful with borders.\r\nFor example, for the right part the answer is . Code\r\n",
+    "hint": []
 }

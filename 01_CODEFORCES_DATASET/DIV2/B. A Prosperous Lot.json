@@ -91,7 +91,7 @@
         ]
     },
     "name": "B. A Prosperous Lot",
-    "statement": "Big Banban is hesitating over the amount of money to give out. He\r\nconsiders loops to be lucky since it symbolizes unity and harmony.He\r\nwould like to find a positive integer not greater than , such that there\r\nare exactly in the decimal representation of , or determine that such\r\ndoes not exist.A is a planar area enclosed by lines in the digits\u2019\r\ndecimal representation written in Arabic numerals. For example, there is\r\none loop in digit , two loops in and no loops in . Refer to the figure\r\nbelow for all exact forms.\r\n",
+    "statement": "Big Banban is hesitating over the amount of money to give out. He\r\nconsiders loops to be lucky since it symbolizes unity and harmony.He\r\nwould like to find a positive integer not greater than , such that there\r\nare exactly in the decimal representation of , or determine that such\r\ndoes not exist.A is a planar area enclosed by lines in the digits’\r\ndecimal representation written in Arabic numerals. For example, there is\r\none loop in digit , two loops in and no loops in . Refer to the figure\r\nbelow for all exact forms.\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\nusing namespace std;\nint k;\nint main()\n{\n\tscanf(\"%d\",&k);\n\tif(k>36)puts(\"-1\");else\n\t{\n\t\tfor(;k>1;k-=2)putchar('8');\n\t\tif(k)puts(\"6\");\n\t}\n}"
     ],
@@ -105,5 +105,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. A Prosperous Lot.json",
     "editorial_link": "https://codeforces.com//blog/entry/57763",
-    "editorial": "What\u00e2\u0080\u0099s the maximum number of loops in an integer no greater than ? Since\r\nis the only digit with two loops, we tend to use as many eights as\r\npossible. It can be seen that the answer is , achieved by . Thus if ,\r\nthe answer does not exist under the constraints.There are tons of\r\napproaches to the following part. Share yours in the comments!The author\r\nconsiders and as lucky numbers and uses only and to construct a valid\r\nanswer. In particular, the output consists of eight(s) and nine(s).\r\nSolve the problem with the shortest code! The tester\u00e2\u0080\u0099s Python solution\r\nis 51 bytes including a line break, can you beat them? ;)\r\n"
+    "editorial": "Whatâs the maximum number of loops in an integer no greater than ? Since\r\nis the only digit with two loops, we tend to use as many eights as\r\npossible. It can be seen that the answer is , achieved by . Thus if ,\r\nthe answer does not exist under the constraints.There are tons of\r\napproaches to the following part. Share yours in the comments!The author\r\nconsiders and as lucky numbers and uses only and to construct a valid\r\nanswer. In particular, the output consists of eight(s) and nine(s).\r\nSolve the problem with the shortest code! The testerâs Python solution\r\nis 51 bytes including a line break, can you beat them? ;)\r\n",
+    "hint": []
 }

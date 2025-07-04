@@ -113,5 +113,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Yaroslav and Permutations.json",
     "editorial_link": "https://codeforces.com//blog/entry/7329",
-    "editorial": "Note that after applying the operations of the exchange, we can get any permutation of numbers. Not difficult to understand that the answer is \"YES\", if you can place a single number that it would not stand in the neighboring cells. Thus, if a some number is meeted C times, it must fulfill the condition C <= (n+1) / 2."
+    "editorial": "Note that after applying the operations of the exchange, we can get any permutation of numbers. Not difficult to understand that the answer is \"YES\", if you can place a single number that it would not stand in the neighboring cells. Thus, if a some number is meeted C times, it must fulfill the condition C <= (n+1) / 2.",
+    "hint": []
 }

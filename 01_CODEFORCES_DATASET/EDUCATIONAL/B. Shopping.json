@@ -138,7 +138,7 @@
         ]
     },
     "name": "B. Shopping",
-    "statement": "Ayush is a cashier at the shopping center. Recently his department has\r\nstarted a \u201d\" service which allows users to shop online. The store\r\ncontains items. customers have already used the above service. Each user\r\npaid for items. Let denote the -th item in the -th person\u2019s order.Due to\r\nthe space limitations all the items are arranged in one single row. When\r\nAyush receives the -th order he will find one by one all the items () in\r\nthe row. Let denote the position of the item in the row at the moment of\r\nits collection. Then Ayush takes time equal to for the -th customer.When\r\nAyush accesses the -th element he keeps a new stock in the front of the\r\nrow and takes away the -th element. Thus the values are updating.Your\r\ntask is to calculate the total time it takes for Ayush to process all\r\nthe orders.You can assume that the market has endless stock.\r\n",
+    "statement": "Ayush is a cashier at the shopping center. Recently his department has\r\nstarted a ”\" service which allows users to shop online. The store\r\ncontains items. customers have already used the above service. Each user\r\npaid for items. Let denote the -th item in the -th person’s order.Due to\r\nthe space limitations all the items are arranged in one single row. When\r\nAyush receives the -th order he will find one by one all the items () in\r\nthe row. Let denote the position of the item in the row at the moment of\r\nits collection. Then Ayush takes time equal to for the -th customer.When\r\nAyush accesses the -th element he keeps a new stock in the front of the\r\nrow and takes away the -th element. Thus the values are updating.Your\r\ntask is to calculate the total time it takes for Ayush to process all\r\nthe orders.You can assume that the market has endless stock.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\n\nint n, m, k;\n\nint tab[1007];\n\nint wyn;\n\nint x;\n\nint y;\n\nint main()\n{\n    scanf(\"%d%d%d\", &n, &m, &k);\n    for (int i=1; i<=k; i++)\n    scanf(\"%d\", &tab[i]);\n    for (int i=1; i<=n*m; i++)\n    {\n        scanf(\"%d\", &x);\n        for (int i=1; i<=k; i++)\n        {\n            if (tab[i]==x)\n            {\n                y=i;\n            }\n        }\n        while(y>1)\n        {\n            swap(tab[y], tab[y-1]);\n            y--;\n            wyn++;\n        }\n        wyn++;\n    }\n    printf(\"%d\\n\", wyn);\n    return 0;\n}\n"
     ],
@@ -151,5 +151,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. Shopping.json",
     "editorial_link": "https://codeforces.com//blog/entry/44466",
-    "editorial": "The problem was suggested by Ayush Anand JeanValjean01. In this problem\r\nyou should simply do what was written in the problem statement. There\r\nare no tricks. C++ solution\r\n"
+    "editorial": "The problem was suggested by Ayush Anand JeanValjean01. In this problem\r\nyou should simply do what was written in the problem statement. There\r\nare no tricks. C++ solution\r\n",
+    "hint": []
 }

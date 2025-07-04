@@ -113,5 +113,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Ping-Pong  Easy Version .json",
     "editorial_link": "https://codeforces.com//blog/entry/8166",
-    "editorial": "Imagine the intervals as nodes of a graph and draw directed edges\r\nbetween them as defined in the statement. Now answering the second query\r\nwould be trivial if you are familiar with graph traversal algorithms\r\nlike DFS or BFS or even Floyd-Warshall! Here\u00e2\u0080\u0099s an implementation using\r\nDFS: 3951145 And here\u00e2\u0080\u0099s an implementation using BFS: 3947426 Finally an\r\nimplementation using Floyd-Warshall: 3945330\r\n"
+    "editorial": "Imagine the intervals as nodes of a graph and draw directed edges\r\nbetween them as defined in the statement. Now answering the second query\r\nwould be trivial if you are familiar with graph traversal algorithms\r\nlike DFS or BFS or even Floyd-Warshall! Hereâs an implementation using\r\nDFS: 3951145 And hereâs an implementation using BFS: 3947426 Finally an\r\nimplementation using Floyd-Warshall: 3945330\r\n",
+    "hint": []
 }

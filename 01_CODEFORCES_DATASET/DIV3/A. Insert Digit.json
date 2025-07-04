@@ -177,5 +177,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Insert Digit.json",
     "editorial_link": "https://codeforces.com//blog/entry/114788",
-    "editorial": "Note that numbers of the same length are compared lexicographically.\r\nThat is, until some index the numbers will match, and then the digit in\r\nour number should be greater.Let\u00e2\u0080\u0099s write out the numbers until . As soon\r\nas this condition is false or the line ends, insert the digit .We got\r\nthe lexicographically maximum number, which means just the maximum\r\nnumber.\r\n"
+    "editorial": "Note that numbers of the same length are compared lexicographically.\r\nThat is, until some index the numbers will match, and then the digit in\r\nour number should be greater.Letâs write out the numbers until . As soon\r\nas this condition is false or the line ends, insert the digit .We got\r\nthe lexicographically maximum number, which means just the maximum\r\nnumber.\r\n",
+    "hint": []
 }

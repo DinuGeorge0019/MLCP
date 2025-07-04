@@ -153,5 +153,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. Array Recovery.json",
     "editorial_link": "https://codeforces.com//blog/entry/107461",
-    "editorial": "Note that or . Since there is no upper bound for the values of , the\r\ncase where for all always exists. It remains to check if there are other\r\nways. To do this, it is enough to check whether there is such a position\r\nthat: ; ; the change to doesn\u00e2\u0080\u0099t result in a negative value of . The\r\nreason for is that for no matter the plus or minus we choose, the array\r\ndoesn\u00e2\u0080\u0099t change. If you could change at least one sign to minus, that\r\nwould be another answer.\r\n"
+    "editorial": "Note that or . Since there is no upper bound for the values of , the\r\ncase where for all always exists. It remains to check if there are other\r\nways. To do this, it is enough to check whether there is such a position\r\nthat: ; ; the change to doesnât result in a negative value of . The\r\nreason for is that for no matter the plus or minus we choose, the array\r\ndoesnât change. If you could change at least one sign to minus, that\r\nwould be another answer.\r\n",
+    "hint": []
 }

@@ -126,7 +126,7 @@
         ]
     },
     "name": "D. Nezzar and Board",
-    "statement": "n integers x_1,x_2,\r\nldots,x_n are written on the board. Nezzar can perform the following\r\noperation multiple times. Select two integers x,y (not necessarily\r\ndistinct) on the board, and write down 2x-y. Note that you don\u2019t remove\r\nselected numbers. Now, Nezzar wonders if it is possible to have his\r\nfavorite number k on the board after applying above operation multiple\r\ntimes.\r\n",
+    "statement": "n integers x_1,x_2,\r\nldots,x_n are written on the board. Nezzar can perform the following\r\noperation multiple times. Select two integers x,y (not necessarily\r\ndistinct) on the board, and write down 2x-y. Note that you don’t remove\r\nselected numbers. Now, Nezzar wonders if it is possible to have his\r\nfavorite number k on the board after applying above operation multiple\r\ntimes.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\n\n#define N 200100\n\ntypedef long long ll;\n\nint n;\nll k, x[N];\n\nint main() {\n    int T;\n    scanf(\"%d\", &T);\n    while (T --) {\n\t\tscanf(\"%d %lld\", &n, &k);\n\t\tfor (int i = 1; i <= n; i ++) scanf(\"%lld\", &x[i]);\n\t\tll d = 0;\n\t\tfor (int i = 1; i < n; i ++) d = __gcd(d, abs(x[i] - x[n]));\n\t\tif ((k - x[n]) % d == 0) puts(\"YES\");\n\t\telse puts(\"NO\");\n    }\n\n    return 0;\n}\n"
     ],
@@ -141,5 +141,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Nezzar and Board.json",
     "editorial_link": "https://codeforces.com//blog/entry/87294",
-    "editorial": "Let's first assume that x1=0\n (Otherwise, we could subtract x1\n for x1,x2,\u0085,xn\n and k\n). We will now prove that the answer is \"YES\" if and only if k\n can be divided by g=gcd(x2,x3,\u0085,xn)\n.\n\nOne direction is straightforward. Note that any number written on the board should be divisible by g\n, which follows from the fact that g|x,g|y?g|2x?y\n. It only remains to prove that for any x\n divisible by g\n, we could write down x\n on the board. We will prove it by induction on n\n.\n\nBase case (n=2\n) is obvious. Let g0=gcd(x2,x3,\u0085,xn?1)\n. By B\u00e9zout's Theorem, there exists integers s,t\n such that g0s?xnt=g\n. By induction, we could write down g0\n on the board, and trivially xnt\n can be written on the board. Therefore, we could write down g\n applying operation recursively."
+    "editorial": "Let's first assume that x1=0\n (Otherwise, we could subtract x1\n for x1,x2,,xn\n and k\n). We will now prove that the answer is \"YES\" if and only if k\n can be divided by g=gcd(x2,x3,,xn)\n.\n\nOne direction is straightforward. Note that any number written on the board should be divisible by g\n, which follows from the fact that g|x,g|y?g|2x?y\n. It only remains to prove that for any x\n divisible by g\n, we could write down x\n on the board. We will prove it by induction on n\n.\n\nBase case (n=2\n) is obvious. Let g0=gcd(x2,x3,,xn?1)\n. By Bézout's Theorem, there exists integers s,t\n such that g0s?xnt=g\n. By induction, we could write down g0\n on the board, and trivially xnt\n can be written on the board. Therefore, we could write down g\n applying operation recursively.",
+    "hint": []
 }

@@ -108,5 +108,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Domino.json",
     "editorial_link": "https://codeforces.com/blog/entry/9145",
-    "editorial": "Let\u00e2\u0080\u0099s denote the sum of numbers on the upper halves of pieces as , and\r\nthe sum on the lower halves . If this sums are even, than the answer is\r\nobviously . Note, that if the numbers on both halves of piece have the\r\nsame parity, than parity of and won\u00e2\u0080\u0099t change after rotation this piece.\r\nIf the numbers on halves have different parity, than parities of both\r\nand will change after rotation. Therefore, if and have different\r\nparities, than the answer is . If both and are odd, than we should\r\ncheck, if there is a piece with numbers of different parities. If so,\r\nthe answer is , otherwise, the answer is .\r\n"
+    "editorial": "Letâs denote the sum of numbers on the upper halves of pieces as , and\r\nthe sum on the lower halves . If this sums are even, than the answer is\r\nobviously . Note, that if the numbers on both halves of piece have the\r\nsame parity, than parity of and wonât change after rotation this piece.\r\nIf the numbers on halves have different parity, than parities of both\r\nand will change after rotation. Therefore, if and have different\r\nparities, than the answer is . If both and are odd, than we should\r\ncheck, if there is a piece with numbers of different parities. If so,\r\nthe answer is , otherwise, the answer is .\r\n",
+    "hint": []
 }

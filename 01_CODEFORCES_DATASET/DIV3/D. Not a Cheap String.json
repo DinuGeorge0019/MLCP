@@ -192,5 +192,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\D. Not a Cheap String.json",
     "editorial_link": "https://codeforces.com//blog/entry/104763",
-    "editorial": "The main idea is that it is always better to remove the most expensive\r\nsymbol. To do this quickly, we will count all the symbols and remove\r\nthem from the most expensive to the cheapest, counting how many times we\r\nhave removed each. During the output, we will skip the characters the\r\nnumber of times that we deleted.\r\n"
+    "editorial": "The main idea is that it is always better to remove the most expensive\r\nsymbol. To do this quickly, we will count all the symbols and remove\r\nthem from the most expensive to the cheapest, counting how many times we\r\nhave removed each. During the output, we will skip the characters the\r\nnumber of times that we deleted.\r\n",
+    "hint": []
 }

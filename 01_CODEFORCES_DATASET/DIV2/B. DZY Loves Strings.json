@@ -107,5 +107,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. DZY Loves Strings.json",
     "editorial_link": "https://codeforces.com//blog/entry/13036",
-    "editorial": "Firstly the optimal way is to insert letter with maximal . Let {}. If we\r\ninsert this character into the \u00e2\u0080\u0099th position, the extra value we could\r\nget is equal to . Because of , when , we can get the largest extra\r\nvalue. So if we insert the k letters at the end of , we will get the\r\nlargest possible value.\r\n"
+    "editorial": "Firstly the optimal way is to insert letter with maximal . Let {}. If we\r\ninsert this character into the âth position, the extra value we could\r\nget is equal to . Because of , when , we can get the largest extra\r\nvalue. So if we insert the k letters at the end of , we will get the\r\nlargest possible value.\r\n",
+    "hint": []
 }

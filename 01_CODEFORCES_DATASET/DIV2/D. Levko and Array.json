@@ -88,5 +88,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Levko and Array.json",
     "editorial_link": "https://codeforces.com//blog/entry/9529",
-    "editorial": "Let's solve this problem using binary search. We need to check whether we can achieve an array, when c(a) will be at most x. Lets make dp. dp[i] means minimal number of elements with indeces less than i, which we need to change, but we don't change i-th element. Let's iterate next element j, which we don't change. Then we know that we can change all elements between i and j. It is equivalent to such condition\n\n|aj?-?ai|???(j?-?i)\u00b7x\n\nDifference between neighboring elements can be at most x. The maximal possible difference increases by x exactly j?-?i times between elements i and j, so this inequality is correct."
+    "editorial": "Let's solve this problem using binary search. We need to check whether we can achieve an array, when c(a) will be at most x. Lets make dp. dp[i] means minimal number of elements with indeces less than i, which we need to change, but we don't change i-th element. Let's iterate next element j, which we don't change. Then we know that we can change all elements between i and j. It is equivalent to such condition\n\n|aj?-?ai|???(j?-?i)·x\n\nDifference between neighboring elements can be at most x. The maximal possible difference increases by x exactly j?-?i times between elements i and j, so this inequality is correct.",
+    "hint": []
 }

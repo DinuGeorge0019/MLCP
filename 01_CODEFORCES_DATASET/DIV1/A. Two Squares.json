@@ -135,5 +135,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Two Squares.json",
     "editorial_link": "https://codeforces.com//blog/entry/60047",
-    "editorial": "It can be shown that if two squares intersect, then at least for one of the squares it is true that either one of its corners lies within the other square, or its center lies within the other square.\n\nIt is very easy to check if any corner or the center of the square rotated by 45 degrees lies within the square with sides parallel to the axes.\n\nTo check in the opposite directions in a similarly simple fashion, it is enough to rotate both squares by 45 degrees. To turn both squares by 45 degrees (with some scaling, which is OK) it is sufficient to replace each x\n coordinate with x+y\n and each y\n coordinate with x?y\n."
+    "editorial": "It can be shown that if two squares intersect, then at least for one of the squares it is true that either one of its corners lies within the other square, or its center lies within the other square.\n\nIt is very easy to check if any corner or the center of the square rotated by 45 degrees lies within the square with sides parallel to the axes.\n\nTo check in the opposite directions in a similarly simple fashion, it is enough to rotate both squares by 45 degrees. To turn both squares by 45 degrees (with some scaling, which is OK) it is sufficient to replace each x\n coordinate with x+y\n and each y\n coordinate with x?y\n.",
+    "hint": []
 }

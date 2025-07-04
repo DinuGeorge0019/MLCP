@@ -126,11 +126,11 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/129027",
-    "editorial": "I\u00e2\u0080\u0099m not sure if that was the right approach for the misread verison, but\r\nafter realizing my mistake, simply disabling the outer loop to handle\r\nonly case made it AC. 258896138 Would\u00e2\u0080\u0099ve been great for me if the\r\nproblem was actually about the misread one :)\r\n",
+    "editorial": "Iâm not sure if that was the right approach for the misread verison, but\r\nafter realizing my mistake, simply disabling the outer loop to handle\r\nonly case made it AC. 258896138 Wouldâve been great for me if the\r\nproblem was actually about the misread one :)\r\n",
     "name": "C. Permutation Counting",
-    "statement": "You have some cards. An integer between 1 and n is written on each card:\r\nspecifically, for each i from 1 to n, you have a_i cards which have the\r\nnumber i written on them.There is also a shop which contains unlimited\r\ncards of each type. You have k coins, so you can buy k new cards in\r\ntotal, and the cards you buy can contain any integer between 1 and\r\nn.After buying the new cards, you rearrange all your cards in a line.\r\nThe score of a rearrangement is the number of (contiguous) subarrays of\r\nlength n which are a permutation of [1, 2,\r\nldots, n]. What\u2019s the maximum score you can get?\r\n",
+    "statement": "You have some cards. An integer between 1 and n is written on each card:\r\nspecifically, for each i from 1 to n, you have a_i cards which have the\r\nnumber i written on them.There is also a shop which contains unlimited\r\ncards of each type. You have k coins, so you can buy k new cards in\r\ntotal, and the cards you buy can contain any integer between 1 and\r\nn.After buying the new cards, you rearrange all your cards in a line.\r\nThe score of a rearrangement is the number of (contiguous) subarrays of\r\nlength n which are a permutation of [1, 2,\r\nldots, n]. What’s the maximum score you can get?\r\n",
     "solutions": [
-        "#include<bits/stdc++.h>using namespace std;\u00a0#define int int64_t#define pb push_back#define pii pair<int, int>#define st first#define nd second#define sz(x) (int)(x).size()#define all(x) (x).begin(), (x).end()\u00a0const int MAXN = 200'009;\u00a0int tab[MAXN];\u00a0void solve() {\tint n, K;\tcin >> n >> K;\tfor(int i=1;i<=n;i++) {\t\tcin >> tab[i];\t}\tint s = 0;\tint e = 1e13;\tint ans = 0;\twhile(e-s>1) {\t\tint m = (e+s)/2;\t\tint cost = 0;\t\tint ile_mniej = 0;\t\tfor(int i=1;i<=n;i++) {\t\t\tcost += max((int)0, m-tab[i]);\t\t\tif(tab[i]<=m) ile_mniej++;\t\t}\t\tif(cost>K) {\t\t\te = m;\t\t} else {\t\t\ts = m;\t\t\tans = max(ans, m*n);\t\t}\t}\tfor(int i=1;i<=n;i++) {\t\tK -= max((int)0, s-tab[i]);\t}\tfor(int i=1;i<=n;i++) {\t\tif(tab[i]>s) ans++;\t\telse {\t\t\tif(K) {\t\t\t\tK--;\t\t\t\tans++;\t\t\t} \t\t}\t}\tcout << ans-n+1 << \"\\n\";}\u00a0int32_t main() {\tios_base::sync_with_stdio(false);\tcin.tie(NULL);\t\tint t;\tcin >> t;\twhile(t--) {\t\tsolve();\t}}"
+        "#include<bits/stdc++.h>using namespace std; #define int int64_t#define pb push_back#define pii pair<int, int>#define st first#define nd second#define sz(x) (int)(x).size()#define all(x) (x).begin(), (x).end() const int MAXN = 200'009; int tab[MAXN]; void solve() {\tint n, K;\tcin >> n >> K;\tfor(int i=1;i<=n;i++) {\t\tcin >> tab[i];\t}\tint s = 0;\tint e = 1e13;\tint ans = 0;\twhile(e-s>1) {\t\tint m = (e+s)/2;\t\tint cost = 0;\t\tint ile_mniej = 0;\t\tfor(int i=1;i<=n;i++) {\t\t\tcost += max((int)0, m-tab[i]);\t\t\tif(tab[i]<=m) ile_mniej++;\t\t}\t\tif(cost>K) {\t\t\te = m;\t\t} else {\t\t\ts = m;\t\t\tans = max(ans, m*n);\t\t}\t}\tfor(int i=1;i<=n;i++) {\t\tK -= max((int)0, s-tab[i]);\t}\tfor(int i=1;i<=n;i++) {\t\tif(tab[i]>s) ans++;\t\telse {\t\t\tif(K) {\t\t\t\tK--;\t\t\t\tans++;\t\t\t} \t\t}\t}\tcout << ans-n+1 << \"\\n\";} int32_t main() {\tios_base::sync_with_stdio(false);\tcin.tie(NULL);\t\tint t;\tcin >> t;\twhile(t--) {\t\tsolve();\t}}"
     ],
     "input": "",
     "output": "",
@@ -144,5 +144,6 @@
     ],
     "dificulty": "1400",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Permutation Counting.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Permutation Counting.json",
+    "hint": []
 }

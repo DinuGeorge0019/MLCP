@@ -111,7 +111,7 @@
         ]
     },
     "name": "B. AND 0, Sum Big",
-    "statement": "Baby Badawy\u2019s first words were \"AND 0 SUM BIG\", so he decided to solve\r\nthe following problem. Given two integers n and k, count the number of\r\narrays of length n such that: all its elements are integers between 0\r\nand 2^k-1 (inclusive); the bitwise AND of all its elements is 0; the sum\r\nof its elements is as large as possible. Since the answer can be very\r\nlarge, print its remainder when divided by 10^9+7.\r\n",
+    "statement": "Baby Badawy’s first words were \"AND 0 SUM BIG\", so he decided to solve\r\nthe following problem. Given two integers n and k, count the number of\r\narrays of length n such that: all its elements are integers between 0\r\nand 2^k-1 (inclusive); the bitwise AND of all its elements is 0; the sum\r\nof its elements is as large as possible. Since the answer can be very\r\nlarge, print its remainder when divided by 10^9+7.\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(0);\n    cin.tie(0);\n    int t;\n    cin >> t;\n    while (t--) {\n        int mod = 1e9 + 7;\n        int n, k;\n        cin >> n >> k;\n        int z = 1;\n        for (int i = 0; i < k; i++) {\n            z = (z * (long long)n) % mod;\n        }\n        cout << z << '\\n';\n    }\n}"
     ],
@@ -126,5 +126,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. AND 0, Sum Big.json",
     "editorial_link": "https://codeforces.com//blog/entry/89810",
-    "editorial": "Let\u00e2\u0080\u0099s start with an array where every single bit in every single element\r\nis . It clearly doesn\u00e2\u0080\u0099t have bitwise-and equal to , so for each bit, we\r\nneed to turn it off (make it ) in at least one of the elements. However,\r\nwe can\u00e2\u0080\u0099t turn it off in more than one element, since the sum would then\r\ndecrease for no reason. So for every bit, we should choose exactly one\r\nelement and turn it off there. Since there are bits and elements, the\r\nanswer is just Unable to parse markup [type=CF_MATHJAX] Code link:\r\nhttps://pastebin.com/0D8yL5WW\r\n"
+    "editorial": "Letâs start with an array where every single bit in every single element\r\nis . It clearly doesnât have bitwise-and equal to , so for each bit, we\r\nneed to turn it off (make it ) in at least one of the elements. However,\r\nwe canât turn it off in more than one element, since the sum would then\r\ndecrease for no reason. So for every bit, we should choose exactly one\r\nelement and turn it off there. Since there are bits and elements, the\r\nanswer is just Unable to parse markup [type=CF_MATHJAX] Code link:\r\nhttps://pastebin.com/0D8yL5WW\r\n",
+    "hint": []
 }

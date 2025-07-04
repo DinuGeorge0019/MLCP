@@ -184,7 +184,7 @@
     "name": "A. Cards Partition",
     "statement": "You have some cards. An integer between 1 and n is written on each card:\r\nspecifically, for each i from 1 to n, you have a_i cards which have the\r\nnumber i written on them.There is also a shop which contains unlimited\r\ncards of each type. You have k coins, so you can buy k new cards in\r\ntotal, and the cards you buy can contain any integer , inclusive.After\r\nbuying the new cards, you must partition your cards into decks,\r\naccording to the following rules: all the decks must have the same size;\r\nthere are no pairs of cards with the same value in the same deck. Find\r\nthe maximum possible size of a deck after buying cards and partitioning\r\nthem optimally.\r\n",
     "solutions": [
-        "#include <bits/stdc++.h>\u00a0using i64 = long long;using u64 = unsigned long long;using u32 = unsigned;\u00a0void solve() {    int n;    i64 k;    std::cin >> n >> k;        std::vector<i64> a(n);    for (int i = 0; i < n; i++) {        std::cin >> a[i];    }    std::sort(a.begin(), a.end());        i64 sum = std::accumulate(a.begin(), a.end(), 0LL);    i64 mx = a[n - 1];        for (int i = n; i >= 1; i--) {        i64 need = mx * i;        need = std::max(need, sum + (i - sum % i) % i);        if (need - sum <= k) {            std::cout << i << \"\\n\";            return;        }    }}\u00a0int main() {    std::ios::sync_with_stdio(false);    std::cin.tie(nullptr);        int t;    std::cin >> t;        while (t--) {        solve();    }        return 0;}"
+        "#include <bits/stdc++.h> using i64 = long long;using u64 = unsigned long long;using u32 = unsigned; void solve() {    int n;    i64 k;    std::cin >> n >> k;        std::vector<i64> a(n);    for (int i = 0; i < n; i++) {        std::cin >> a[i];    }    std::sort(a.begin(), a.end());        i64 sum = std::accumulate(a.begin(), a.end(), 0LL);    i64 mx = a[n - 1];        for (int i = n; i >= 1; i--) {        i64 need = mx * i;        need = std::max(need, sum + (i - sum % i) % i);        if (need - sum <= k) {            std::cout << i << \"\\n\";            return;        }    }} int main() {    std::ios::sync_with_stdio(false);    std::cin.tie(nullptr);        int t;    std::cin >> t;        while (t--) {        solve();    }        return 0;}"
     ],
     "input": "",
     "output": "",
@@ -197,5 +197,11 @@
     ],
     "dificulty": "1600",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Cards Partition.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Cards Partition.json",
+    "hint": [
+        "Hint 1 The answer is at most .",
+        "Hint 2 Solve the problem with .",
+        "Hint 3 When is the answer ?",
+        "Hint 4 If the answer is not , how can you buy cards?"
+    ]
 }

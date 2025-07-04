@@ -86,7 +86,7 @@
         ]
     },
     "name": "A. Borya s Diagnosis",
-    "statement": "It seems that Borya is seriously sick. He is going visit doctors to find\r\nout the exact diagnosis. Each of the doctors needs the information about\r\nall previous visits, so Borya has to visit them in the prescribed order\r\n(i.e. Borya should first visit doctor , then doctor , then doctor and so\r\non). Borya will get the information about his health from the last\r\ndoctor.Doctors have a strange working schedule. The doctor goes to work\r\non the -th day and works every day. So, he works on days .The doctor\u2019s\r\nappointment takes quite a long time, so Borya can not see more than one\r\ndoctor per day. What is the minimum time he needs to visit all doctors?\r\n",
+    "statement": "It seems that Borya is seriously sick. He is going visit doctors to find\r\nout the exact diagnosis. Each of the doctors needs the information about\r\nall previous visits, so Borya has to visit them in the prescribed order\r\n(i.e. Borya should first visit doctor , then doctor , then doctor and so\r\non). Borya will get the information about his health from the last\r\ndoctor.Doctors have a strange working schedule. The doctor goes to work\r\non the -th day and works every day. So, he works on days .The doctor’s\r\nappointment takes quite a long time, so Borya can not see more than one\r\ndoctor per day. What is the minimum time he needs to visit all doctors?\r\n",
     "solutions": [
         "#include <cstdio>\nusing namespace std;\n#define REP(i,n) for(int i=0;i<(n);++i)\n#define FORE(i,c) for(__typeof((c).begin())i=(c).begin();i!=(c).end();++i)\n\nint n,s,d;\n\nint main() {\n  scanf(\"%d\",&n);\n  int t = 0;\n  REP(i,n) {\n    scanf(\"%d%d\",&s,&d);\n    int p = s;\n    while (p <= t) { p += d; }\n    t = p;\n  }\n  printf(\"%d\\n\", t);\n}\n"
     ],
@@ -99,5 +99,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Borya s Diagnosis.json",
     "editorial_link": "https://codeforces.com//blog/entry/55435",
-    "editorial": "Note that Borya can use a greedy algorithm. He will visit each doctor as\r\nsoon as possible. We only need to find the earliest day when he can do\r\nit. Constraints are pretty low, so we can use almost any reasonable\r\nway.For example, we can just go through all the days, starting from the\r\ncurrent one, and check if the doctor is working on that day. At the step\r\nwe need to go through at most days.There is a more efficient way. We can\r\nfind the smallest that is greater than the current day, such that , in .\r\nIf , Borya will visit a doctor on day , otherwise on day . This solution\r\nis .\r\n"
+    "editorial": "Note that Borya can use a greedy algorithm. He will visit each doctor as\r\nsoon as possible. We only need to find the earliest day when he can do\r\nit. Constraints are pretty low, so we can use almost any reasonable\r\nway.For example, we can just go through all the days, starting from the\r\ncurrent one, and check if the doctor is working on that day. At the step\r\nwe need to go through at most days.There is a more efficient way. We can\r\nfind the smallest that is greater than the current day, such that , in .\r\nIf , Borya will visit a doctor on day , otherwise on day . This solution\r\nis .\r\n",
+    "hint": []
 }

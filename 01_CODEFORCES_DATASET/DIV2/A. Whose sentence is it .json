@@ -75,5 +75,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Whose sentence is it .json",
     "editorial_link": "https://codeforces.com//blog/entry/7785",
-    "editorial": "We only need to find out if miao. is a prefix of the sentence, and if\r\nlala. is a suffix of the sentence. Pay attention to the situation when\r\nboth conditions are satisfied.\r\n"
+    "editorial": "We only need to find out if miao. is a prefix of the sentence, and if\r\nlala. is a suffix of the sentence. Pay attention to the situation when\r\nboth conditions are satisfied.\r\n",
+    "hint": []
 }

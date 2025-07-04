@@ -121,5 +121,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Nastya and Door.json",
     "editorial_link": "https://codeforces.com//blog/entry/76479",
-    "editorial": "Let\u00e2\u0080\u0099s make an array consisting of and , such that it shows whether the\r\nposition is a peak on the whole segment. To do this, we will go through\r\nthe indices from to , and if the conditions and are true, then we write\r\nin a new array at position . After that, we calculate the prefix sum in\r\nthe new array . Now the number of peaks in the segment is calculated as\r\n, so we find out how many peaks in the desired segment, not including\r\nthe boundaries of the segment. It remains only to go through all from to\r\nand find the leftmost , such that as much as possible.\r\n"
+    "editorial": "Letâs make an array consisting of and , such that it shows whether the\r\nposition is a peak on the whole segment. To do this, we will go through\r\nthe indices from to , and if the conditions and are true, then we write\r\nin a new array at position . After that, we calculate the prefix sum in\r\nthe new array . Now the number of peaks in the segment is calculated as\r\n, so we find out how many peaks in the desired segment, not including\r\nthe boundaries of the segment. It remains only to go through all from to\r\nand find the leftmost , such that as much as possible.\r\n",
+    "hint": []
 }

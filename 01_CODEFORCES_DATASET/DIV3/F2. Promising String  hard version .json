@@ -180,5 +180,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\F2. Promising String  hard version .json",
     "editorial_link": "https://codeforces.com//blog/entry/101526",
-    "editorial": "Now we need to quickly find for a given balance value (on the prefix),\r\nthe number of matching left boundaries. The boundary is suitable if the\r\nbalance on the boundary is comparable modulo to the current balance and\r\nthe current balance is less than the balance on the boundary, since we\r\nneed the balance on the segment to be non-positive. That is, we need to\r\nbe able to find a number of numbers for each value of the balance that\r\nis not less than ours. This can be done either by data structure, or\r\nnotice that the balance takes only different values, then you can find\r\nthe number of numbers not less on the prefix for .\r\n"
+    "editorial": "Now we need to quickly find for a given balance value (on the prefix),\r\nthe number of matching left boundaries. The boundary is suitable if the\r\nbalance on the boundary is comparable modulo to the current balance and\r\nthe current balance is less than the balance on the boundary, since we\r\nneed the balance on the segment to be non-positive. That is, we need to\r\nbe able to find a number of numbers for each value of the balance that\r\nis not less than ours. This can be done either by data structure, or\r\nnotice that the balance takes only different values, then you can find\r\nthe number of numbers not less on the prefix for .\r\n",
+    "hint": []
 }

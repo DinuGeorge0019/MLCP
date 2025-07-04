@@ -163,5 +163,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. Vova and Trophies.json",
     "editorial_link": "https://codeforces.com/blog/entry/63544",
-    "editorial": "Let be the maximal segment of gold cups that begins in the cup . Let be\r\nthe maximum segment of gold cups that ends in the cup . Also, let the\r\ntotal number of gold cups be .Note that it makes no sense to change the\r\ncups of the same color. Then let\u00e2\u0080\u0099s consider the silver cup, which will\r\nchange with the gold cup, let its number be . Then if , then we will\r\nupdate the answer with the value , and otherwise with the value . This\r\nwill not work if all the cups are golden. In this case, the answer is .\r\n"
+    "editorial": "Let be the maximal segment of gold cups that begins in the cup . Let be\r\nthe maximum segment of gold cups that ends in the cup . Also, let the\r\ntotal number of gold cups be .Note that it makes no sense to change the\r\ncups of the same color. Then letâs consider the silver cup, which will\r\nchange with the gold cup, let its number be . Then if , then we will\r\nupdate the answer with the value , and otherwise with the value . This\r\nwill not work if all the cups are golden. In this case, the answer is .\r\n",
+    "hint": []
 }

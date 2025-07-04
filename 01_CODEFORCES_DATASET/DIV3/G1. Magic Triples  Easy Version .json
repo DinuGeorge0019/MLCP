@@ -196,5 +196,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\G1. Magic Triples  Easy Version .json",
     "editorial_link": "https://codeforces.com//blog/entry/115409",
-    "editorial": "Let , obviously , the number of occurrences of the number in the array\r\n.Separately, let\u00e2\u0080\u0099s count the number of triples for . The total number of\r\nsuch triples will be .Next, we will count . Note that , so . Thus, after\r\nsorting through all possible from to , as well as all and adding to the\r\nanswer, we get a solution for .\r\n"
+    "editorial": "Let , obviously , the number of occurrences of the number in the array\r\n.Separately, letâs count the number of triples for . The total number of\r\nsuch triples will be .Next, we will count . Note that , so . Thus, after\r\nsorting through all possible from to , as well as all and adding to the\r\nanswer, we get a solution for .\r\n",
+    "hint": []
 }

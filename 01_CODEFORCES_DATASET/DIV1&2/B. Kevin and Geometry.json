@@ -215,5 +215,10 @@
     ],
     "dificulty": "",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\B. Kevin and Geometry.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\B. Kevin and Geometry.json",
+    "hint": [
+        "Hint 1 What is the condition for four edges to form an isosceles trapezoid?",
+        "Hint 2 How do you find two bases after fixing the length of the legs?",
+        "Hint 3 How do you choose two legs?"
+    ]
 }

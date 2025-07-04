@@ -197,11 +197,11 @@
         "I": []
     },
     "editorial_link": "https://codeforces.com//blog/entry/129801",
-    "editorial": "SolutionRead the hints.Consider enumerating each number from to whether\r\nit is contained by . Suppose that the current enumeration reaches , and\r\nin the remaining constraints, and are two sets, the only difference\r\nbetween them is whether they contain ( contains ): contains . We can\r\nmerge and into a new constraint and &. doesn\u00e2\u0080\u0099t contain . We can merge\r\nand into a new constraint and &. We can merge constraints quickly when\r\nthe enumeration reaches a new number. And the time complexity is\r\n",
+    "editorial": "SolutionRead the hints.Consider enumerating each number from to whether\r\nit is contained by . Suppose that the current enumeration reaches , and\r\nin the remaining constraints, and are two sets, the only difference\r\nbetween them is whether they contain ( contains ): contains . We can\r\nmerge and into a new constraint and &. doesnât contain . We can merge\r\nand into a new constraint and &. We can merge constraints quickly when\r\nthe enumeration reaches a new number. And the time complexity is\r\n",
     "name": "F. Set",
     "statement": "Define the of a finite set of natural numbers T\r\nsubseteq\r\n{0,1,2,\r\nldots\r\n} as f(T) =\r\nsum\r\nlimits_{i\r\nin T} 2^i. For example, f(\r\n{0,2\r\n}) = 2^0 + 2^2 = 5 and f(\r\n{\r\n}) = 0. Notice that f is a bijection from all such sets to all\r\nnon-negative integers. As such, f^{-1} is also defined.You are given an\r\ninteger n along with 2^n-1 sets V_1,V_2,\r\nldots,V_{2^n-1}.Find all sets S that satisfy the following constraint: S\r\nsubseteq\r\n{0,1,\r\nldots,n-1\r\n}. Note that S can be . For all subsets T\r\nsubseteq\r\n{0,1,\r\nldots,n-1\r\n}, |S\r\ncap T|\r\nin V_{f(T)}. Due to the large input and output, both input and output\r\nwill be given in terms of binary encodings of the sets.\r\n",
     "solutions": [
-        "/** *    author:  tourist *    created: 25.05.2024 10:57:59**/#include <bits/stdc++.h>\u00a0using namespace std;\u00a0#ifdef LOCAL#include \"algo/debug.h\"#else#define debug(...) 42#endif\u00a0int main() {  ios::sync_with_stdio(false);  cin.tie(0);  int n;  cin >> n;  vector<int> v(1 << n);  for (int i = 1; i < (1 << n); i++) {    cin >> v[i];  }  v[0] = 1;  vector<vector<int>> a(n + 1);  a[0] = v;  for (int i = 1; i <= n; i++) {    a[i].resize(1 << (n - i));  }  vector<int> res;  auto Dfs = [&](auto&& self, int b, int num) {    if (b == n) {      if (a[b][0] > 0) {        res.push_back(num);      }      return;    }    for (int val = 0; val < 2; val++) {      for (int i = 0; i < (1 << (n - b - 1)); i++) {        a[b + 1][i] = a[b][2 * i] & (a[b][2 * i + 1] >> val);      }      self(self, b + 1, num + (val << b));    }  };  Dfs(Dfs, 0, 0);  sort(res.begin(), res.end());  cout << res.size() << '\\n';  for (int x : res) {    cout << x << '\\n';  }  return 0;}"
+        "/** *    author:  tourist *    created: 25.05.2024 10:57:59**/#include <bits/stdc++.h> using namespace std; #ifdef LOCAL#include \"algo/debug.h\"#else#define debug(...) 42#endif int main() {  ios::sync_with_stdio(false);  cin.tie(0);  int n;  cin >> n;  vector<int> v(1 << n);  for (int i = 1; i < (1 << n); i++) {    cin >> v[i];  }  v[0] = 1;  vector<vector<int>> a(n + 1);  a[0] = v;  for (int i = 1; i <= n; i++) {    a[i].resize(1 << (n - i));  }  vector<int> res;  auto Dfs = [&](auto&& self, int b, int num) {    if (b == n) {      if (a[b][0] > 0) {        res.push_back(num);      }      return;    }    for (int val = 0; val < 2; val++) {      for (int i = 0; i < (1 << (n - b - 1)); i++) {        a[b + 1][i] = a[b][2 * i] & (a[b][2 * i + 1] >> val);      }      self(self, b + 1, num + (val << b));    }  };  Dfs(Dfs, 0, 0);  sort(res.begin(), res.end());  cout << res.size() << '\\n';  for (int x : res) {    cout << x << '\\n';  }  return 0;}"
     ],
     "input": "",
     "output": "",
@@ -216,5 +216,8 @@
     ],
     "dificulty": "2600",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\F. Set.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\F. Set.json",
+    "hint": [
+        "Hint 1 Consider enumerating each number from to whether it is contained by , when we have enumerated the first numbers, there are only constraints."
+    ]
 }

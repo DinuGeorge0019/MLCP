@@ -110,5 +110,11 @@
     ],
     "dificulty": "",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Haystacks.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Haystacks.json",
+    "hint": [
+        "Hint 1 Let's say you have to empty the haystacks in a fixed order. What's the best way to do it?",
+        "Hint 2 Write the expression for the number of moves for a given order.",
+        "Hint 3 In an optimal ordering, you should not gain anything by swapping two entries of the order. Using this, describe the optimal order.",
+        "Hint 4 The constraint only limits what you can empty last. How can you efficiently compute the expression in Hint 2?"
+    ]
 }

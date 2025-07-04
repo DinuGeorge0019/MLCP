@@ -171,9 +171,9 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/129364",
-    "editorial": "Since the string is length at most , we can try all swaps of two\r\ncharacters of the string. This is per test case, which is fast enough.\r\nIf none of them create a different string, then all characters in the\r\noriginal string are the same, so the answer is . Actually, it\u00e2\u0080\u0099s enough\r\nto try all swaps with the first character, solving the problem in . Why?\r\n",
+    "editorial": "Since the string is length at most , we can try all swaps of two\r\ncharacters of the string. This is per test case, which is fast enough.\r\nIf none of them create a different string, then all characters in the\r\noriginal string are the same, so the answer is . Actually, itâs enough\r\nto try all swaps with the first character, solving the problem in . Why?\r\n",
     "name": "B. Different String",
-    "statement": "You are given a string s consisting of lowercase English\r\nletters.Rearrange the characters of s to form a new string r that is to\r\ns, or report that it\u2019s impossible.\r\n",
+    "statement": "You are given a string s consisting of lowercase English\r\nletters.Rearrange the characters of s to form a new string r that is to\r\ns, or report that it’s impossible.\r\n",
     "solutions": [
         "#include <iostream>#include <set>#include <map>#include <vector>#include <algorithm>#include <cmath>using namespace std;typedef long long ll;const int N = 5e5 + 10;//int a[N];void solve() {\tstring s;\tcin >> s;\tfor (int i = 0; i < (int)s.size() - 1; i++) {\t\tif (s[i] != s[i + 1]) {\t\t\tcout << \"YES\\n\";\t\t\tswap(s[i], s[i + 1]);\t\t\tcout << s << \"\\n\";\t\t\treturn;\t\t}\t}\tcout << \"NO\\n\";}int main() {\tint t = 1;\tcin >> t;\twhile (t--) {\t\tsolve();\t} }"
     ],
@@ -185,5 +185,6 @@
     ],
     "dificulty": "800",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\B. Different String.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\B. Different String.json",
+    "hint": []
 }

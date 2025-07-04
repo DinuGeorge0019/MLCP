@@ -170,5 +170,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\E. Restoring the Permutation.json",
     "editorial_link": "https://codeforces.com//blog/entry/89007",
-    "editorial": "If we want to build a minimal lexicographic permutation, we need to\r\nbuild it from left to right by adding the smallest possible element. If\r\n, so the new number must not be greater than all the previous ones, and\r\nif , then necessarily . does not happen, since is the maximum element\r\namong the first elements.We get a greedy solution if , then , otherwise\r\nwe put the minimum character that has not yet occurred in the\r\npermutation.\r\n"
+    "editorial": "If we want to build a minimal lexicographic permutation, we need to\r\nbuild it from left to right by adding the smallest possible element. If\r\n, so the new number must not be greater than all the previous ones, and\r\nif , then necessarily . does not happen, since is the maximum element\r\namong the first elements.We get a greedy solution if , then , otherwise\r\nwe put the minimum character that has not yet occurred in the\r\npermutation.\r\n",
+    "hint": []
 }

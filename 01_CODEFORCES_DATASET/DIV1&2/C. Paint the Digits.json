@@ -211,5 +211,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\C. Paint the Digits.json",
     "editorial_link": "https://codeforces.com/blog/entry/69791",
-    "editorial": "The sequence must split into two non-decreasing where the end of the first ?\n start of the second.\n\nLet's bruteforce the value x\n, so that all elements <x\n go to the color 1\n, all elements >x\n go to the color 2\n, and for =x\n we are not sure.\n\nActually, we can say that all elements equal to x\n, which go before the first element >x\n ?an safely go to the color 2\n, while the rest can only go to the color 1\n.\n\nSo we colored our sequence and we now only need to check whether this coloring is fine.\n\nComplexity is 10?n\n."
+    "editorial": "The sequence must split into two non-decreasing where the end of the first ?\n start of the second.\n\nLet's bruteforce the value x\n, so that all elements <x\n go to the color 1\n, all elements >x\n go to the color 2\n, and for =x\n we are not sure.\n\nActually, we can say that all elements equal to x\n, which go before the first element >x\n ?an safely go to the color 2\n, while the rest can only go to the color 1\n.\n\nSo we colored our sequence and we now only need to check whether this coloring is fine.\n\nComplexity is 10?n\n.",
+    "hint": []
 }

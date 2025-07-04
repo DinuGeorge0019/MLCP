@@ -90,7 +90,7 @@
         ]
     },
     "name": "B. Number Busters",
-    "statement": "Arthur and Alexander are number busters. Today they\u2019ve got a\r\ncompetition. Arthur took a group of four integers and Alexander took\r\ninteger . Arthur and Alexander use distinct approaches to number\r\nbustings. Alexander is just a regular guy. Each second, he subtracts one\r\nfrom his number. In other words, he performs the assignment: . Arthur is\r\na sophisticated guy. Each second Arthur performs a complex operation,\r\ndescribed as follows: if , perform the assignment , if , then perform\r\ntwo consecutive assignments .You\u2019ve got numbers . Determine when\r\nAlexander gets ahead of Arthur if both guys start performing the\r\noperations at the same time. Assume that Alexander got ahead of Arthur\r\nif .\r\n",
+    "statement": "Arthur and Alexander are number busters. Today they’ve got a\r\ncompetition. Arthur took a group of four integers and Alexander took\r\ninteger . Arthur and Alexander use distinct approaches to number\r\nbustings. Alexander is just a regular guy. Each second, he subtracts one\r\nfrom his number. In other words, he performs the assignment: . Arthur is\r\na sophisticated guy. Each second Arthur performs a complex operation,\r\ndescribed as follows: if , perform the assignment , if , then perform\r\ntwo consecutive assignments .You’ve got numbers . Determine when\r\nAlexander gets ahead of Arthur if both guys start performing the\r\noperations at the same time. Assume that Alexander got ahead of Arthur\r\nif .\r\n",
     "solutions": [
         "#include<stdio.h>\n#include<iostream>\nint t[10001];\nint C[10001];\nint v[10001];\nint a,b,x,w,c,times,st;\nbool check(long long x){\n\tlong long y=x/(times-st);\n\tx=x%(times-st);\n\tlong long z=a-y*(C[times]-C[st]),zz=c-y*(times-st);\n\tif(zz<=z) return true;\n\tfor(int i=1;i<=x;++i){\n\t\tif(C[st+i]!=C[st+i-1]) --z;\n\t\t--zz;\n\t\tif(zz<=z) return true;\n\t}\n\treturn false;\n}\nint main(){\n    scanf(\"%d%d%d%d%d\",&a,&b,&w,&x,&c);\n    int bb=b;\n    v[b]=1;\n    t[1]=b;\n    for(times=2;;++times){\n\t\tif(bb>=x) bb-=x,C[times]=C[times-1];\n\t\telse bb=w-(x-bb),C[times]=C[times-1]+1;\n\t\tt[times]=bb;\n\t\tif(!v[bb]) v[bb]=times;\n\t\telse {st=v[bb];break;}\n    }\n//    times=10000;\n    for(int i=1;i<times;++i){\n\t\tif(c<=a){printf(\"%d\\n\",i-1);return 0;}\n\t\tif(b>=x) b-=x;\n\t\telse --a,b=w-(x-b);\n\t\t--c;\n\t}\n\tif(c<=a){printf(\"%d\\n\",times-1);return 0;}\n\tlong long lans=0,rans=~0ULL>>2;\n\twhile(lans+1!=rans){\n\t\tlong long mid=(lans+rans)/2;\n\t\tif(check(mid)) rans=mid;\n\t\telse lans=mid;\n\t}\n\tstd::cout<<lans+times<<std::endl;\n\treturn 0;\n}\n"
     ],
@@ -104,5 +104,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Number Busters.json",
     "editorial_link": "https://codeforces.com//blog/entry/10442",
-    "editorial": "In the problem you should understand, what is the structure of Artur\u00e2\u0080\u0099s\r\noperation. You can see that this operation is near operation\r\n"
+    "editorial": "In the problem you should understand, what is the structure of Arturâs\r\noperation. You can see that this operation is near operation\r\n",
+    "hint": []
 }

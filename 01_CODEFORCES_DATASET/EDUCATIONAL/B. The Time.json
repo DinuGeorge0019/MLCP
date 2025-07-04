@@ -142,5 +142,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. The Time.json",
     "editorial_link": "https://codeforces.com//blog/entry/23442",
-    "editorial": "In this problem we can simply increase times the current time by one\r\nminute (after each increasing we should check the hours and the minutes\r\nfor overflow). Another solution is to use the next formulas as the\r\nanswer: . C++ solution 1 C++ solution 2 Complexity: or .\r\n"
+    "editorial": "In this problem we can simply increase times the current time by one\r\nminute (after each increasing we should check the hours and the minutes\r\nfor overflow). Another solution is to use the next formulas as the\r\nanswer: . C++ solution 1 C++ solution 2 Complexity: or .\r\n",
+    "hint": []
 }

@@ -125,7 +125,7 @@
         ]
     },
     "name": "A. Tennis Tournament",
-    "statement": "A tennis tournament with participants is running. The participants are\r\nplaying by an olympic system, so the winners move on and the losers drop\r\nout.The tournament takes place in the following way (below, is the\r\nnumber of the participants of the current round): let be the maximal\r\npower of the number such that , participants compete in the current\r\nround and a half of them passes to the next round, the other\r\nparticipants pass to the next round directly, when only one participant\r\nremains, the tournament finishes. Each match requires bottles of water\r\nfor each participant and one bottle for the judge. Besides towels are\r\ngiven to each participant for the whole tournament.Find the number of\r\nbottles and towels needed for the tournament.Note that it\u2019s a tennis\r\ntournament so in each match two participants compete (one of them will\r\nwin and the other will lose).\r\n",
+    "statement": "A tennis tournament with participants is running. The participants are\r\nplaying by an olympic system, so the winners move on and the losers drop\r\nout.The tournament takes place in the following way (below, is the\r\nnumber of the participants of the current round): let be the maximal\r\npower of the number such that , participants compete in the current\r\nround and a half of them passes to the next round, the other\r\nparticipants pass to the next round directly, when only one participant\r\nremains, the tournament finishes. Each match requires bottles of water\r\nfor each participant and one bottle for the judge. Besides towels are\r\ngiven to each participant for the whole tournament.Find the number of\r\nbottles and towels needed for the tournament.Note that it’s a tennis\r\ntournament so in each match two participants compete (one of them will\r\nwin and the other will lose).\r\n",
     "solutions": [
         "#ifdef __GNUC__\n#pragma GCC target(\"sse4,avx\")\n#endif\n#include <immintrin.h>\n#include <algorithm>\n#include <string>\n#include <iostream>\n#include <vector>\n#include <cstdint>\n#include <numeric>\n\nvoid run(std::istream &in, std::ostream &out) {\n  int n, b, p;\n  in >> n >> b >> p;\n  out << (2 * b + 1) * (n - 1) << \" \" << n * p << std::endl;\n}\n\nint main() {\n  std::cin.sync_with_stdio(false);\n  std::cin.tie(nullptr);\n  run(std::cin, std::cout);\n  return 0;\n}"
     ],
@@ -139,5 +139,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Tennis Tournament.json",
     "editorial_link": "https://codeforces.com//blog/entry/43203",
-    "editorial": "The problem was suggested by unprost. Here you can simply model the\r\nprocess. Or you can note that after each match some player drops out. In\r\ntotal players will drop out. So the first answer is . Obviously the\r\nsecond answer is . ++ solution 1 ++ solution 2 Complexity: , or depends\r\non the realization.\r\n"
+    "editorial": "The problem was suggested by unprost. Here you can simply model the\r\nprocess. Or you can note that after each match some player drops out. In\r\ntotal players will drop out. So the first answer is . Obviously the\r\nsecond answer is . ++ solution 1 ++ solution 2 Complexity: , or depends\r\non the realization.\r\n",
+    "hint": []
 }

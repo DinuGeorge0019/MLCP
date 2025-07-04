@@ -142,5 +142,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\F. Good Pairs .json",
     "editorial_link": "https://codeforces.com//blog/entry/110169",
-    "editorial": "SolutionHow to prove the claim in hint ? Suppose we have a good pair\r\nsuch that . Now using exchange arguments we can claim that there always\r\nexists a sequence(say ) starting at index and ending at index such that\r\ndifference between adjacent elements of is atmost strictly increasing if\r\nstrictly decreasing if Thus will be counted in if and will be counted in\r\nif .Time complexity is .\r\n"
+    "editorial": "SolutionHow to prove the claim in hint ? Suppose we have a good pair\r\nsuch that . Now using exchange arguments we can claim that there always\r\nexists a sequence(say ) starting at index and ending at index such that\r\ndifference between adjacent elements of is atmost strictly increasing if\r\nstrictly decreasing if Thus will be counted in if and will be counted in\r\nif .Time complexity is .\r\n",
+    "hint": [
+        "Hint 1 We should have . This seems a bit hard, as we can have greater than, smaller than or equal to . Why not solve the easier version first? A pair is good if there exists a sequence of indices such that and ; for all ; and for all . Suppose number of pairs ( ) that are good. Find .",
+        "Hint 2 To solve the problem in hint , let us define as the number of pairs such that is good. Let us move from to . To find , let us first find the smallest index such that lies in range . We can observe that , where gives us the number of indices among last elements of such that lies in the range . We can use fenwik tree or ordered set to find .",
+        "Hint 3 Now let us get back to original problem. First let us count number of pairs such that . Assume is number of such pairs. Time for another cool claim! For our original problem, answer is , where denotes the array when it is reversed."
+    ]
 }

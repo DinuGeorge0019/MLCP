@@ -86,7 +86,7 @@
         ]
     },
     "name": "B. DZY Loves Chemistry",
-    "statement": "DZY has chemicals, and pairs of them will react. He wants to pour these\r\nchemicals into a test tube, and he needs to pour them in one by one, in\r\nany order. Let\u2019s consider the danger of a test tube. Danger of an empty\r\ntest tube is . And every time when DZY pours a chemical, if there are\r\nalready one or more chemicals in the test tube that can react with it,\r\nthe danger of the test tube will be multiplied by . Otherwise the danger\r\nremains as it is.Find the maximum possible danger after pouring all the\r\nchemicals one by one in optimal order.\r\n",
+    "statement": "DZY has chemicals, and pairs of them will react. He wants to pour these\r\nchemicals into a test tube, and he needs to pour them in one by one, in\r\nany order. Let’s consider the danger of a test tube. Danger of an empty\r\ntest tube is . And every time when DZY pours a chemical, if there are\r\nalready one or more chemicals in the test tube that can react with it,\r\nthe danger of the test tube will be multiplied by . Otherwise the danger\r\nremains as it is.Find the maximum possible danger after pouring all the\r\nchemicals one by one in optimal order.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\n\ntypedef long long ll;\nconst double pi=acos (-1.0);\nconst double eps=1e-8 ;\n//const ll INF=(_I64_MAX)/2;\n//#pragma comment(linker, \"/STACK:102400000,102400000\")\nconst int inf=0x3f3f3f3f ;\n#define maxx(a) memset(a, 0x3f, sizeof(a))\n#define zero(a) memset(a, 0, sizeof(a))\n#define FILL(a,b) memset(a, b, sizeof(a))\n#define REP(i,a,b) for(i=a;i<b;i++)\n#define rep(i,n) REP(i,0,n)\n#define srep(i,n) for(i = 1;i <= n;i ++)\n#define snuke(c,itr) for( __typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)\n#define MP make_pair\n#define fi first\n#define se second\ntypedef pair <int, int> PII;\ntypedef pair <ll, ll> PX;\n\nPII a;\nvoid work() {\n\n\n}\n\nbool f[55];\nvector<int> e[55];\nint tp;\nvoid dfs(int x,int pa) {\n    f[x] = 1;\n    tp ++;\n    for(int i = 0;i < e[x].size();i ++) {\n        int v = e[x][i];\n        if (!f[v]) {\n            dfs(v,x);\n        }\n    }\n}\n\nint main ()\n{\n#ifdef LOCAL\n     freopen(\"in.txt\" ,\"r\", stdin);\n     // freopen (\"out.txt\",\"w\",stdout);\n#endif\n     int n,m;\n     cin>>n>>m;\n     int i,j;\n     FILL(f,0);\n     rep(i,m) {\n         int x,y;\n         cin>>x>>y;\n         e[x].push_back(y);\n         e[y].push_back(x);\n     }\n     int ans = 0;\n     ll res = 1;\n     srep(i,n) {\n         if (!f[i]) {\n             tp  = 0;\n             dfs(i,-1);\n             ans += tp - 1;\n         }\n     }\n     rep(i,ans) res *= 2;\n     cout<<res<<endl;\n     return 0 ;\n}\n"
     ],
@@ -101,5 +101,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. DZY Loves Chemistry.json",
     "editorial_link": "https://codeforces.com//blog/entry/12959",
-    "editorial": "It\u00e2\u0080\u0099s easy to find that answer is equal to , where is the number of\r\nconnected components. check the C++ code here.\r\n"
+    "editorial": "Itâs easy to find that answer is equal to , where is the number of\r\nconnected components. check the C++ code here.\r\n",
+    "hint": []
 }

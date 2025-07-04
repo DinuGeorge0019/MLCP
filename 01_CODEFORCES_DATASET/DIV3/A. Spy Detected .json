@@ -174,5 +174,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Spy Detected .json",
     "editorial_link": "https://codeforces.com//blog/entry/89535",
-    "editorial": "To find a number that differs from the rest of the numbers in the array,\r\nyou need to iterate through the array, maintaining two pairs of numbers\r\nand , where is a number from the array, is how many times the number\r\noccurs in the array.Then, to get an answer, you need to find the\r\nposition of the that occurs in the array exactly once (i.e. ).\r\n"
+    "editorial": "To find a number that differs from the rest of the numbers in the array,\r\nyou need to iterate through the array, maintaining two pairs of numbers\r\nand , where is a number from the array, is how many times the number\r\noccurs in the array.Then, to get an answer, you need to find the\r\nposition of the that occurs in the array exactly once (i.e. ).\r\n",
+    "hint": []
 }

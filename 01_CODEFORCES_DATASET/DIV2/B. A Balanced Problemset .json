@@ -142,5 +142,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. A Balanced Problemset .json",
     "editorial_link": "https://codeforces.com//blog/entry/125137",
-    "editorial": "TutorialLet the difficulties of the sub-problems be . By properties of\r\nGCD, . So, the final answer will always be a divisor of . Now, consider\r\na divisor of . If , you can choose the difficulties of the sub-problems\r\nto be each of which is a multiple of and hence, the balance of this\r\nproblemset will be . Otherwise you cannot choose the difficulties of\r\nsub-problems such that each of them is a multiple of . Find the maximum\r\nfor which this condition holds. This can be done in using trivial\r\nfactorization.\r\n"
+    "editorial": "TutorialLet the difficulties of the sub-problems be . By properties of\r\nGCD, . So, the final answer will always be a divisor of . Now, consider\r\na divisor of . If , you can choose the difficulties of the sub-problems\r\nto be each of which is a multiple of and hence, the balance of this\r\nproblemset will be . Otherwise you cannot choose the difficulties of\r\nsub-problems such that each of them is a multiple of . Find the maximum\r\nfor which this condition holds. This can be done in using trivial\r\nfactorization.\r\n",
+    "hint": []
 }

@@ -167,5 +167,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C. Similar Pairs.json",
     "editorial_link": "https://codeforces.com//blog/entry/77846",
-    "editorial": "Let be the number of even numbers in the array, and be the number of odd\r\nnumbers in the array. Note that if the parities of and of do not equal,\r\nthen the answer does not exist. Otherwise, we consider two cases: and\r\nare even numbers. Then all numbers can be combined into pairs of equal\r\nparity. and are odd numbers. Then you need to check whether there are\r\ntwo numbers in the array such that the modulus of their difference is .\r\nIf there are two such numbers, then combine them into one pair. and will\r\ndecrease by and become even, then the solution exists as shown in the\r\nprevious case.\r\n"
+    "editorial": "Let be the number of even numbers in the array, and be the number of odd\r\nnumbers in the array. Note that if the parities of and of do not equal,\r\nthen the answer does not exist. Otherwise, we consider two cases: and\r\nare even numbers. Then all numbers can be combined into pairs of equal\r\nparity. and are odd numbers. Then you need to check whether there are\r\ntwo numbers in the array such that the modulus of their difference is .\r\nIf there are two such numbers, then combine them into one pair. and will\r\ndecrease by and become even, then the solution exists as shown in the\r\nprevious case.\r\n",
+    "hint": []
 }

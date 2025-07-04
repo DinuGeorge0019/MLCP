@@ -113,5 +113,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Spongebob and Squares.json",
     "editorial_link": "https://codeforces.com//blog/entry/21685",
-    "editorial": "First of all, let's solve this problem for n???m, and then just swap n and m and print the answer. Important! Not to print squares twice!\n\nWe can use this formula for fixed n & m (n???m) for calculating the value of x. \n\nThen \n\nUsing the sum squares and the sum of the first k numbers we can easily solve this problem.\n\nGetting 6x?=?6n2?*?m?-?3(n2?+?n3?-?nm?-?n2)?+?2n3?-?3n3?+?n?=?3?*?m?*?n2?+?3?*?m?*?n?-?n3?+?n\n\nAs we solved this task for n???m the 3n2?*?m?=????n3, it means that n is not greater than ."
+    "editorial": "First of all, let's solve this problem for n???m, and then just swap n and m and print the answer. Important! Not to print squares twice!\n\nWe can use this formula for fixed n & m (n???m) for calculating the value of x. \n\nThen \n\nUsing the sum squares and the sum of the first k numbers we can easily solve this problem.\n\nGetting 6x?=?6n2?*?m?-?3(n2?+?n3?-?nm?-?n2)?+?2n3?-?3n3?+?n?=?3?*?m?*?n2?+?3?*?m?*?n?-?n3?+?n\n\nAs we solved this task for n???m the 3n2?*?m?=????n3, it means that n is not greater than .",
+    "hint": []
 }

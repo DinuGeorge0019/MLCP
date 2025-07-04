@@ -129,7 +129,7 @@
         ]
     },
     "name": "C. The Smallest String Concatenation",
-    "statement": "You\u2019re given a list of strings . You\u2019d like to concatenate them together\r\nin some order such that the resulting string would be lexicographically\r\nsmallest.Given the list of strings, output the lexicographically\r\nsmallest concatenation.\r\n",
+    "statement": "You’re given a list of strings . You’d like to concatenate them together\r\nin some order such that the resulting string would be lexicographically\r\nsmallest.Given the list of strings, output the lexicographically\r\nsmallest concatenation.\r\n",
     "solutions": [
         "#include <iostream>\n#include <fstream>\n#include <set>\n#include <map>\n#include <string>\n#include <vector>\n#include <bitset>\n#include <algorithm>\n#include <cstring>\n#include <cstdlib>\n#include <cmath>\n#include <cassert>\n#include <queue>\n\n\ntypedef long long ll;\ntypedef long double ld;\n\nusing namespace std;\n\nstring s[60000];\n\nbool cmp(const string& a, const string& b) {\n\treturn (a + b) < (b + a);\n}\n\nint main() {\n\tint n;\n\tcin >> n;\n\tfor (int i = 0; i < n; ++i)\n\t\tcin >> s[i];\n\tsort(s, s + n, cmp);\n\tfor (int i = 0; i < n; ++i)\n\t\tcout << s[i];\n\tcout << \"\\n\";\n\treturn 0;\n}\n\n\n"
     ],
@@ -143,5 +143,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\C. The Smallest String Concatenation.json",
     "editorial_link": "https://codeforces.com//blog/entry/43493",
-    "editorial": "The problem was suggested by Lewin Gan Lewin. The proof of the\r\ntransitivity also belongs to him. Let\u00e2\u0080\u0099s sort all the strings by\r\ncomparator and concatenate them. Let\u00e2\u0080\u0099s prove that it\u00e2\u0080\u0099s the optimal\r\nanswer. Let that operator be transitive (so if ). Consider an optimal\r\nanswer with two strings in reverse order by that operator. Because of\r\nthe transitivity of operator we can assume that pair of strings are\r\nneighbouring. But then we can swap them and get the better answer. Let\u00e2\u0080\u0099s\r\nprove the transitivity of operator. Consider the strings as the -base\r\nnumbers. Then the relation equivalent to . The last is simply the\r\nrelation between real numbers. So we proved the transitivity of the\r\nrelation . C++ solution by me. Python solution by Lewin. Complexity: ,\r\nwhere is the maximal string length.\r\n"
+    "editorial": "The problem was suggested by Lewin Gan Lewin. The proof of the\r\ntransitivity also belongs to him. Letâs sort all the strings by\r\ncomparator and concatenate them. Letâs prove that itâs the optimal\r\nanswer. Let that operator be transitive (so if ). Consider an optimal\r\nanswer with two strings in reverse order by that operator. Because of\r\nthe transitivity of operator we can assume that pair of strings are\r\nneighbouring. But then we can swap them and get the better answer. Letâs\r\nprove the transitivity of operator. Consider the strings as the -base\r\nnumbers. Then the relation equivalent to . The last is simply the\r\nrelation between real numbers. So we proved the transitivity of the\r\nrelation . C++ solution by me. Python solution by Lewin. Complexity: ,\r\nwhere is the maximal string length.\r\n",
+    "hint": []
 }

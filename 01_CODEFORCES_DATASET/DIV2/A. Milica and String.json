@@ -144,5 +144,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Milica and String.json",
     "editorial_link": "https://codeforces.com//blog/entry/120960",
-    "editorial": "SolutionIn the hint section, we showed that the minimum number of\r\noperations is , , or . We have cases: No operations are needed if\r\nalready contains characters . Else, we can use brute force to check if\r\nchanging some prefix leads to having s. If we find such a prefix, we\r\nprint it as the answer, and use only one operation. There are\r\npossibilities. Implementing them takes or time. Else, we use the two\r\noperations described in the hint section.\r\n"
+    "editorial": "SolutionIn the hint section, we showed that the minimum number of\r\noperations is , , or . We have cases: No operations are needed if\r\nalready contains characters . Else, we can use brute force to check if\r\nchanging some prefix leads to having s. If we find such a prefix, we\r\nprint it as the answer, and use only one operation. There are\r\npossibilities. Implementing them takes or time. Else, we use the two\r\noperations described in the hint section.\r\n",
+    "hint": []
 }

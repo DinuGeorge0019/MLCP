@@ -130,5 +130,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Absolute Maximization.json",
     "editorial_link": "https://codeforces.com//blog/entry/110278",
-    "editorial": "Need more hints?Considering the last two hints, try to maximize the\r\nmaximum element and minimize the minimum element.\r\n"
+    "editorial": "Need more hints?Considering the last two hints, try to maximize the\r\nmaximum element and minimize the minimum element.\r\n",
+    "hint": [
+        "Hint 1 Which s in the binary representation cannot be changed to .",
+        "Hint 2 Similarly, Which s in the binary representation cannot be changed to ."
+    ]
 }

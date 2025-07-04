@@ -83,7 +83,7 @@
         ]
     },
     "name": "A. Sereja and Bottles",
-    "statement": "Sereja and his friends went to a picnic. The guys had soda bottles just\r\nfor it. Sereja forgot the bottle opener as usual, so the guys had to\r\ncome up with another way to open bottles.Sereja knows that the -th\r\nbottle is from brand , besides, you can use it to open bottles of brand\r\n. You can use one bottle to open multiple other bottles. Sereja can open\r\nbottle with opened bottle or closed bottle.Knowing this, Sereja wants to\r\nfind out the number of bottles they\u2019ve got that they won\u2019t be able to\r\nopen in any way. Help him and find this number.\r\n",
+    "statement": "Sereja and his friends went to a picnic. The guys had soda bottles just\r\nfor it. Sereja forgot the bottle opener as usual, so the guys had to\r\ncome up with another way to open bottles.Sereja knows that the -th\r\nbottle is from brand , besides, you can use it to open bottles of brand\r\n. You can use one bottle to open multiple other bottles. Sereja can open\r\nbottle with opened bottle or closed bottle.Knowing this, Sereja wants to\r\nfind out the number of bottles they’ve got that they won’t be able to\r\nopen in any way. Help him and find this number.\r\n",
     "solutions": [
         "#include<cstdio>\n#include<iostream>\n#include<cstring>\n#include<cmath>\n#include<cstdlib>\nusing namespace std;\nint a[110]={0};int x[110]={0};int y[110]={0};int main(){int n;cin >> n;for (int i=1; i<=n; i++)cin >> x[i] >> y[i];for (int i=1; i<=n; i++)for (int j=1; j<=n; j++)if (i!=j && y[i]==x[j])a[j]=1;int tot=0;for (int i=1; i<=n; i++)if (a[i]) tot++;cout << n - tot;return 0;}"
     ],
@@ -96,5 +96,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Sereja and Bottles.json",
     "editorial_link": "https://codeforces.com//blog/entry/7905",
-    "editorial": "Just check for each bottle, can I open it with another. In this task can pass absolutely any solutions.\n"
+    "editorial": "Just check for each bottle, can I open it with another. In this task can pass absolutely any solutions.\n",
+    "hint": []
 }

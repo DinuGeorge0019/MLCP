@@ -174,5 +174,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\G. Gift Set.json",
     "editorial_link": "https://codeforces.com//blog/entry/91637",
-    "editorial": "In this problem, we can use a binary search for the answer (If we can\r\nmake sets, then we can make sets). So, we need to come up with the\r\nfollowing test, whether we can make sets knowing the parameters .Let\r\n(otherwise we will swap them). If , the answer is .Otherwise, let\u00e2\u0080\u0099s say\r\nwe want to make sets of the first kind. Then we get a system of\r\ninequalities Let\u00e2\u0080\u0099s express from here We need to check whether these four\r\nequations have an intersection in integers. If there is, then the\r\ndivision into gifts exists.\r\n"
+    "editorial": "In this problem, we can use a binary search for the answer (If we can\r\nmake sets, then we can make sets). So, we need to come up with the\r\nfollowing test, whether we can make sets knowing the parameters .Let\r\n(otherwise we will swap them). If , the answer is .Otherwise, letâs say\r\nwe want to make sets of the first kind. Then we get a system of\r\ninequalities Letâs express from here We need to check whether these four\r\nequations have an intersection in integers. If there is, then the\r\ndivision into gifts exists.\r\n",
+    "hint": []
 }

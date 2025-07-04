@@ -136,5 +136,9 @@
     ],
     "dificulty": "900",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Penchick and Satay Sticks.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Penchick and Satay Sticks.json",
+    "hint": [
+        "Hint 1 Consider which permutations you can get by reversing the operations and starting from the identity permutation",
+        "Hint 2 After and have been swapped, i.e. and , neither of them can then be involved in another different swap."
+    ]
 }

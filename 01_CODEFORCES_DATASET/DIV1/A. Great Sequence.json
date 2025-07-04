@@ -138,5 +138,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Great Sequence.json",
     "editorial_link": "https://codeforces.com//blog/entry/100249",
-    "editorial": "Let's look at the minimal integer in our multiset. Since it can be matched with only one integer, we need to create such pair. Thus, we can maintain the current multiset. We need to take the minimal element out of it (and delete it from it), find a pair for it, and delete it from the multiset if such pair exists, or add 1 to the answer if there is no such pair."
+    "editorial": "Let's look at the minimal integer in our multiset. Since it can be matched with only one integer, we need to create such pair. Thus, we can maintain the current multiset. We need to take the minimal element out of it (and delete it from it), find a pair for it, and delete it from the multiset if such pair exists, or add 1 to the answer if there is no such pair.",
+    "hint": []
 }

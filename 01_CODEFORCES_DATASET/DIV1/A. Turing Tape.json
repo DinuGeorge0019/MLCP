@@ -106,5 +106,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Turing Tape.json",
     "editorial_link": "https://codeforces.com//blog/entry/3302",
-    "editorial": "This was another implementation problem, inspired by another great language INTERCAL. Technically it was a bit more complicated than the previous one, due to the usage of byte reversal and having to implement not the described procedure but its inverse. For i-th character of input data reverse it and store in rev[i]; then i-th number of the output can be calculated as (rev[i?-?1]?-?rev[i]?+?256)%256 (for i?=?0 rev[i?-?1]?=?0)."
+    "editorial": "This was another implementation problem, inspired by another great language INTERCAL. Technically it was a bit more complicated than the previous one, due to the usage of byte reversal and having to implement not the described procedure but its inverse. For i-th character of input data reverse it and store in rev[i]; then i-th number of the output can be calculated as (rev[i?-?1]?-?rev[i]?+?256)%256 (for i?=?0 rev[i?-?1]?=?0).",
+    "hint": []
 }

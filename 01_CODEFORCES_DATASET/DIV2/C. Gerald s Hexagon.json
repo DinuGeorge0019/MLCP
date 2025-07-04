@@ -116,5 +116,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Gerald s Hexagon.json",
     "editorial_link": "https://codeforces.com//blog/entry/19237",
-    "editorial": "Let\u00e2\u0080\u0099s consider regular triangle with sides of Let\u00e2\u0080\u0099s split it to regular\r\ntriangles with sides of by lines parallel to the sides. Big triange area\r\ntimes larger then small triangles area and therefore big triangle have\r\nsplitted by small triangles. If we join regular triangles to sides and\r\nof hexagon we get a triangle sides of . Then hexagon area is equals to .\r\n"
+    "editorial": "Letâs consider regular triangle with sides of Letâs split it to regular\r\ntriangles with sides of by lines parallel to the sides. Big triange area\r\ntimes larger then small triangles area and therefore big triangle have\r\nsplitted by small triangles. If we join regular triangles to sides and\r\nof hexagon we get a triangle sides of . Then hexagon area is equals to .\r\n",
+    "hint": []
 }

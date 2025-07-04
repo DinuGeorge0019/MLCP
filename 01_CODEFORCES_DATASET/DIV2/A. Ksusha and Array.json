@@ -93,5 +93,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Ksusha and Array.json",
     "editorial_link": "https://codeforces.com/blog/entry/7516",
-    "editorial": "If divide than . So the number which will divide every other number\r\nshould be less than or equal to every other number, so the only possible\r\ncandidate it\u00e2\u0080\u0099s the minimum in the array. So just check whether all\r\nelements are divisible by the minimal one.\r\n"
+    "editorial": "If divide than . So the number which will divide every other number\r\nshould be less than or equal to every other number, so the only possible\r\ncandidate itâs the minimum in the array. So just check whether all\r\nelements are divisible by the minimal one.\r\n",
+    "hint": []
 }

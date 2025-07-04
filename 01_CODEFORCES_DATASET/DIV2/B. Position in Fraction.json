@@ -130,5 +130,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Position in Fraction.json",
     "editorial_link": "https://codeforces.com//blog/entry/56294",
-    "editorial": "In this task you should complete long division and stop, when one period\r\npassed. Period can\u00e2\u0080\u0099t be more than by pigeonhole principle. So you need\r\nto complete iterations and if digit hasn\u00e2\u0080\u0099t been met, print .Time\r\ncomplexity .\r\n"
+    "editorial": "In this task you should complete long division and stop, when one period\r\npassed. Period canât be more than by pigeonhole principle. So you need\r\nto complete iterations and if digit hasnât been met, print .Time\r\ncomplexity .\r\n",
+    "hint": []
 }

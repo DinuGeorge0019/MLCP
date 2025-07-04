@@ -183,5 +183,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Gardener and the Array.json",
     "editorial_link": "https://codeforces.com//blog/entry/111286",
-    "editorial": "The problem can be solved as follows: for each bit count the number of\r\nits occurrences in all numbers in the test. If each number has a bit\r\nwhich occurs in all numbers exactly once, then the answer is \"NO\",\r\notherwise the answer is \"YES\".Let\u00e2\u0080\u0099s try to prove this solution. Let\r\nthere be a number in which all bits occurs in all numbers at least\r\ntimes. But then it is possible to construct a sequence using all\r\nnumbers, and a sequence using all numbers except the given one.If each\r\nnumber has \"unique\" bits, then all will be different.\r\n"
+    "editorial": "The problem can be solved as follows: for each bit count the number of\r\nits occurrences in all numbers in the test. If each number has a bit\r\nwhich occurs in all numbers exactly once, then the answer is \"NO\",\r\notherwise the answer is \"YES\".Letâs try to prove this solution. Let\r\nthere be a number in which all bits occurs in all numbers at least\r\ntimes. But then it is possible to construct a sequence using all\r\nnumbers, and a sequence using all numbers except the given one.If each\r\nnumber has \"unique\" bits, then all will be different.\r\n",
+    "hint": []
 }

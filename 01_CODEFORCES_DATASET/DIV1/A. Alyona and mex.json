@@ -106,7 +106,7 @@
         ]
     },
     "name": "A. Alyona and mex",
-    "statement": "Alyona\u2019s mother wants to present an array of non-negative integers to\r\nAlyona. The array should be special. Alyona is a capricious girl so\r\nafter she gets the array, she inspects of its subarrays. Subarray is a\r\nset of some subsequent elements of the array. The -th subarray is\r\ndescribed with two integers and , and its elements are .Alyona is going\r\nto find for each of the chosen subarrays. Among these the girl is going\r\nto find the smallest. She wants this minimum to be as large as possible.\r\nYou are to find an array of elements so that the minimum among those\r\nchosen by Alyona subarrays is as large as possible.The of a set is a\r\nminimum possible non-negative integer that is not in .\r\n",
+    "statement": "Alyona’s mother wants to present an array of non-negative integers to\r\nAlyona. The array should be special. Alyona is a capricious girl so\r\nafter she gets the array, she inspects of its subarrays. Subarray is a\r\nset of some subsequent elements of the array. The -th subarray is\r\ndescribed with two integers and , and its elements are .Alyona is going\r\nto find for each of the chosen subarrays. Among these the girl is going\r\nto find the smallest. She wants this minimum to be as large as possible.\r\nYou are to find an array of elements so that the minimum among those\r\nchosen by Alyona subarrays is as large as possible.The of a set is a\r\nminimum possible non-negative integer that is not in .\r\n",
     "solutions": [
         "#include <cstdio>\n#include <cstring>\n#include <cmath>\n#include <algorithm>\n#include <vector>\n#include <string>\n#include <map>\n#include <set>\n#include <cassert>\nusing namespace std;\n#define rep(i,a,n) for (int i=a;i<n;i++)\n#define per(i,a,n) for (int i=n-1;i>=a;i--)\n#define pb push_back\n#define mp make_pair\n#define all(x) (x).begin(),(x).end()\n#define fi first\n#define se second\n#define SZ(x) ((int)(x).size())\ntypedef vector<int> VI;\ntypedef long long ll;\ntypedef pair<int,int> PII;\nconst ll mod=1000000007;\nll powmod(ll a,ll b) {ll res=1;a%=mod; assert(b>=0); for(;b;b>>=1){if(b&1)res=res*a%mod;a=a*a%mod;}return res;}\n// head\n\nint n,m,l,r;\nint main() {\n\tscanf(\"%d%d\",&n,&m);\n\tint d=n;\n\trep(i,0,m) {\n\t\tscanf(\"%d%d\",&l,&r);\n\t\td=min(d,r-l+1);\n\t}\n\tprintf(\"%d\\n\",d);\n\trep(i,0,n) printf(\"%d \",i%d);\n\tputs(\"\");\n}\n"
     ],
@@ -120,5 +120,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Alyona and mex.json",
     "editorial_link": "https://codeforces.com//blog/entry/48582",
-    "editorial": "Obviously, the answer to the problem can not be greater than the minimum\r\nlength among the lengths of the sub-arrays. Suppose that the minimum\r\nlength of all the sub-arrays is equal to len. Then the desired array is:\r\n. Not hard to make sure that mex of any subarray will be at least len.\r\n"
+    "editorial": "Obviously, the answer to the problem can not be greater than the minimum\r\nlength among the lengths of the sub-arrays. Suppose that the minimum\r\nlength of all the sub-arrays is equal to len. Then the desired array is:\r\n. Not hard to make sure that mex of any subarray will be at least len.\r\n",
+    "hint": []
 }

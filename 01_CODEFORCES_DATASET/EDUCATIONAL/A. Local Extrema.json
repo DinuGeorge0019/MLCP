@@ -168,5 +168,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Local Extrema.json",
     "editorial_link": "https://codeforces.com//blog/entry/55701",
-    "editorial": "Iterate over indices from to and check if at least one of given local\r\nextremum conditions holds.Overall complexity: .\r\n"
+    "editorial": "Iterate over indices from to and check if at least one of given local\r\nextremum conditions holds.Overall complexity: .\r\n",
+    "hint": []
 }

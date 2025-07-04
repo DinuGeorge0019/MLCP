@@ -136,5 +136,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Helping the Nature.json",
     "editorial_link": "https://codeforces.com//blog/entry/103978",
-    "editorial": "Consider the difference array . Note that for it is necessary to make\r\nsubtractions on the suffix. For , you need to make subtractions on the\r\nprefix. Let\u00e2\u0080\u0099s add them to the answer. Let\u00e2\u0080\u0099s calculate the final array\r\nusing prefix and suffix sums for . Note that it will consist of the same\r\nnumbers. Add to the answer, where is the resulting number.\r\n"
+    "editorial": "Consider the difference array . Note that for it is necessary to make\r\nsubtractions on the suffix. For , you need to make subtractions on the\r\nprefix. Letâs add them to the answer. Letâs calculate the final array\r\nusing prefix and suffix sums for . Note that it will consist of the same\r\nnumbers. Add to the answer, where is the resulting number.\r\n",
+    "hint": []
 }

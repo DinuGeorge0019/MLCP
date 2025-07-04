@@ -173,5 +173,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\A. Vlad and the Best of Five.json",
     "editorial_link": "https://codeforces.com//blog/entry/126132",
-    "editorial": "Since the string is of an odd length, we know that the number of s can\u00e2\u0080\u0099t\r\nbe equal to the number of s. So, there is always only one possible\r\nanswer.Denote variables a_counter and b_counter the count of s and s in\r\nthe string respectively. Let\u00e2\u0080\u0099s just iterate through all 5 characters of\r\nthe string and increase the a_counter every time we see an and the\r\nb_counter every time we see a . If the a_counter is greater than the\r\nb_counter we output , and otherwise.\r\n"
+    "editorial": "Since the string is of an odd length, we know that the number of s canât\r\nbe equal to the number of s. So, there is always only one possible\r\nanswer.Denote variables a_counter and b_counter the count of s and s in\r\nthe string respectively. Letâs just iterate through all 5 characters of\r\nthe string and increase the a_counter every time we see an and the\r\nb_counter every time we see a . If the a_counter is greater than the\r\nb_counter we output , and otherwise.\r\n",
+    "hint": []
 }

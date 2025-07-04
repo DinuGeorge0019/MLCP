@@ -145,5 +145,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Park Lighting.json",
     "editorial_link": "https://codeforces.com//blog/entry/77869",
-    "editorial": "Note that if at least one of the sides is even, the square can be\r\ndivided into pairs of neighbors and the answer is . If both sides are\r\nodd, we can first light up a part of the park. Then we\u00e2\u0080\u0099ll still have the\r\npart . We can light it up with lanterns. Then the total number of the\r\nlanterns is .Note that both cases can be combined into one formula: .The\r\noverall compexity is per test.\r\n"
+    "editorial": "Note that if at least one of the sides is even, the square can be\r\ndivided into pairs of neighbors and the answer is . If both sides are\r\nodd, we can first light up a part of the park. Then weâll still have the\r\npart . We can light it up with lanterns. Then the total number of the\r\nlanterns is .Note that both cases can be combined into one formula: .The\r\noverall compexity is per test.\r\n",
+    "hint": []
 }

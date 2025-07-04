@@ -108,7 +108,9 @@ class DatasetFactory:
                                         json_data['dificulty'],
                                         json_data['file_name'],
                                         json_data['editorial_link'],
-                                        json_data['editorial']])
+                                        json_data['editorial'],
+                                        json_data.get('hint', [])]                             
+                                       )
 
         # Create the raw dataset df of the
         raw_dataset_df = pd.DataFrame(
@@ -127,7 +129,8 @@ class DatasetFactory:
                      'problem_dificulty',
                      'file_name',
                      'editorial_link',
-                     'problem_editorial'
+                     'problem_editorial',
+                     'problem_hint'
                      ])
         
         # Remove instances where tags are empty

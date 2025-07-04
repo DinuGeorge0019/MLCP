@@ -105,5 +105,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Vasya and Football.json",
     "editorial_link": "https://codeforces.com//blog/entry/14985",
-    "editorial": "We need 2 arrays for the first and second team, in which we must save\r\n\"status\" of the player is he \"clear\", yellow carded or sent off. Then\r\nwhile inputing we must output the players name if he wasn\u00e2\u0080\u0099t sent off,\r\nand after the event he must be sent off.\r\n"
+    "editorial": "We need 2 arrays for the first and second team, in which we must save\r\n\"status\" of the player is he \"clear\", yellow carded or sent off. Then\r\nwhile inputing we must output the players name if he wasnât sent off,\r\nand after the event he must be sent off.\r\n",
+    "hint": []
 }

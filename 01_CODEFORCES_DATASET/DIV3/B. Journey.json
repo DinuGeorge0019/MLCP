@@ -160,7 +160,7 @@
     "name": "B. Journey",
     "statement": "Monocarp decided to embark on a long hiking journey.He decided that on\r\nthe first day he would walk a kilometers, on the second day he would\r\nwalk b kilometers, on the third day he would walk c kilometers, on the\r\nfourth day, just like on the first, he would walk a kilometers, on the\r\nfifth day, just like on the second, he would walk b kilometers, on the\r\nsixth day, just like on the third, he would walk c kilometers, and so\r\non.Monocarp will complete his journey on the day when he has walked at\r\nleast n kilometers in total. Your task is to determine the day on which\r\nMonocarp will complete his journey.\r\n",
     "solutions": [
-        "#include <bits/stdc++.h>#define ll long longusing namespace std;\u00a0int main(){    ios::sync_with_stdio(false);    cin.tie(nullptr);        int t;    cin >> t;        while(t--){        ll n, a, b, c;        cin >> n >> a >> b >> c;\u00a0        ll cs = a + b + c;        ll k = (n - 1) / cs;        ll to = k * cs;        ll rem = n - to;        ll ans = k * 3;                if(rem <= a){            ans +=1;        }        else if(rem <= a + b){            ans +=2;        }        else{            ans +=3;        }        cout << ans << \"\\n\";    }}"
+        "#include <bits/stdc++.h>#define ll long longusing namespace std; int main(){    ios::sync_with_stdio(false);    cin.tie(nullptr);        int t;    cin >> t;        while(t--){        ll n, a, b, c;        cin >> n >> a >> b >> c;         ll cs = a + b + c;        ll k = (n - 1) / cs;        ll to = k * cs;        ll rem = n - to;        ll ans = k * 3;                if(rem <= a){            ans +=1;        }        else if(rem <= a + b){            ans +=2;        }        else{            ans +=3;        }        cout << ans << \"\\n\";    }}"
     ],
     "input": "",
     "output": "",
@@ -170,5 +170,6 @@
     ],
     "dificulty": "800",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Journey.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Journey.json",
+    "hint": []
 }

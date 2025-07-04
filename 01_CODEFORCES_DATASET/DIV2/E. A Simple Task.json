@@ -110,5 +110,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. A Simple Task.json",
     "editorial_link": "https://codeforces.com//blog/entry/19212",
-    "editorial": "In this problem we will be using counting sort. So for each query we\r\nwill count the number of occurrences for each character, and then update\r\nthe range like this But this is too slow. We want a data structure that\r\ncan support the above operations in appropriate time. Let s make 26\r\nsegment trees each one for each character. Now for each query let s get\r\nthe count of every character in the range, and then arrange them and\r\nupdate each segment tree with the new values. We will have to use lazy\r\npropagation technique for updating ranges. Time complexity: where sz is\r\nthe size of the alphabet (i.e. = 26). Implementation\r\n"
+    "editorial": "In this problem we will be using counting sort. So for each query we\r\nwill count the number of occurrences for each character, and then update\r\nthe range like this But this is too slow. We want a data structure that\r\ncan support the above operations in appropriate time. Let s make 26\r\nsegment trees each one for each character. Now for each query let s get\r\nthe count of every character in the range, and then arrange them and\r\nupdate each segment tree with the new values. We will have to use lazy\r\npropagation technique for updating ranges. Time complexity: where sz is\r\nthe size of the alphabet (i.e. = 26). Implementation\r\n",
+    "hint": []
 }

@@ -144,5 +144,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Shocking Arrangement.json",
     "editorial_link": "https://codeforces.com//blog/entry/114208",
-    "editorial": "If the array consists entirely of zeros, then this is impossible, since\r\n.Otherwise, we will put all zeros at the beginning. Now our array is\r\nwithout zeros.We will add the elements into the array in order.If now\r\nthe sum of the added elements is , we will take any of the remaining\r\npositive numbers as the next element. Since the sum of all the numbers\r\nis , a positive number is guaranteed to be found (if there are still\r\nnumbers left). If now the sum is , then we will take any of the\r\nremaining negative numbers as the next element. Again, since the sum of\r\nall the numbers is , a negative number is bound to be found.Why it\r\nworks:The maximum number of the form is the same as (including\r\n)According to the structure of the algorithm, it is clear that in the\r\nresulting array , and .In total, the condition will be met.\r\n"
+    "editorial": "If the array consists entirely of zeros, then this is impossible, since\r\n.Otherwise, we will put all zeros at the beginning. Now our array is\r\nwithout zeros.We will add the elements into the array in order.If now\r\nthe sum of the added elements is , we will take any of the remaining\r\npositive numbers as the next element. Since the sum of all the numbers\r\nis , a positive number is guaranteed to be found (if there are still\r\nnumbers left). If now the sum is , then we will take any of the\r\nremaining negative numbers as the next element. Again, since the sum of\r\nall the numbers is , a negative number is bound to be found.Why it\r\nworks:The maximum number of the form is the same as (including\r\n)According to the structure of the algorithm, it is clear that in the\r\nresulting array , and .In total, the condition will be met.\r\n",
+    "hint": [
+        "Hint 1 Express in a simpler way.",
+        "Hint 1.1 Use the prefix sums of the array .",
+        "Hint 2 Build the answer starting from an empty array. If you add numbers to the response so that the prefix sum is always in the half-interval , the resulting array will fit the condition. How to do it? Remember that the sum of the array is ."
+    ]
 }

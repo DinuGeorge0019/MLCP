@@ -114,5 +114,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Aramic script.json",
     "editorial_link": "https://codeforces.com//blog/entry/59202",
-    "editorial": "One can easily notice that we only differentiate between words when\r\ndifferent letters exit, so one easy way to consider all the different\r\nwords that belong to the same root as one, is to map every word to a\r\nmask of 26 bits; that is, for example, if letter \u00e2\u0080\u0099b\u00e2\u0080\u0099 exits in the ith\r\nword then we set the second bit in the ith mask to one, eventually, we\r\ninsert all the masks in a set and the set size is the required answer.\r\n"
+    "editorial": "One can easily notice that we only differentiate between words when\r\ndifferent letters exit, so one easy way to consider all the different\r\nwords that belong to the same root as one, is to map every word to a\r\nmask of 26 bits; that is, for example, if letter âbâ exits in the ith\r\nword then we set the second bit in the ith mask to one, eventually, we\r\ninsert all the masks in a set and the set size is the required answer.\r\n",
+    "hint": []
 }

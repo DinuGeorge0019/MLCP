@@ -130,5 +130,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. k-th equality.json",
     "editorial_link": "https://codeforces.com//blog/entry/117394",
-    "editorial": "The largest possible value for is , so we can iterate over each\r\npossibility. When we fix , we can find the range of values for such that\r\n, and . For each such value, we have a correct equality.We can easily\r\nfind this range. We get that and from this inequality, we know how many\r\nequations for the given we have. As we start by minimizing , we can find\r\nits value for the -th equation if we iterate from the smallest possible\r\nvalues of .When we have fixed (or find out that there is no such\r\nequation), we iterate over all possible values of and check if the\r\nresulting has digits. The complexity is .\r\n"
+    "editorial": "The largest possible value for is , so we can iterate over each\r\npossibility. When we fix , we can find the range of values for such that\r\n, and . For each such value, we have a correct equality.We can easily\r\nfind this range. We get that and from this inequality, we know how many\r\nequations for the given we have. As we start by minimizing , we can find\r\nits value for the -th equation if we iterate from the smallest possible\r\nvalues of .When we have fixed (or find out that there is no such\r\nequation), we iterate over all possible values of and check if the\r\nresulting has digits. The complexity is .\r\n",
+    "hint": []
 }

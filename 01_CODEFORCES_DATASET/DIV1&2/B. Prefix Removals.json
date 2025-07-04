@@ -171,5 +171,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\B. Prefix Removals.json",
     "editorial_link": "https://codeforces.com//blog/entry/100127",
-    "editorial": "SolutionLet be the initial string. For a string , let\u00e2\u0080\u0099s define , i.e.,\r\nthe substring of from to . The final string is for some .In the final\r\nstring, , so the first character doesn\u00e2\u0080\u0099t appear anywhere else in . This\r\nmeans that . In other words, is the rightmost occurrence of a letter in\r\n.Can you ever remove , if ? Notice that you would need to remove ():\r\nthis means that there must exist for some . So, , and this is a\r\ncontradiction.Therefore, is the smallest index such that .You can find\r\nby iterating over the string from right to left and updating the\r\nfrequency of each letter. Indeed if and only if the frequency of the\r\nletter is up to now (in the iteration from right to left we are\r\nperforming). The value of is the minimum such index .Complexity:\r\n"
+    "editorial": "SolutionLet be the initial string. For a string , letâs define , i.e.,\r\nthe substring of from to . The final string is for some .In the final\r\nstring, , so the first character doesnât appear anywhere else in . This\r\nmeans that . In other words, is the rightmost occurrence of a letter in\r\n.Can you ever remove , if ? Notice that you would need to remove ():\r\nthis means that there must exist for some . So, , and this is a\r\ncontradiction.Therefore, is the smallest index such that .You can find\r\nby iterating over the string from right to left and updating the\r\nfrequency of each letter. Indeed if and only if the frequency of the\r\nletter is up to now (in the iteration from right to left we are\r\nperforming). The value of is the minimum such index .Complexity:\r\n",
+    "hint": [
+        "Hint 1 Are there any characters that you can never remove?",
+        "Hint 2 You can't remove the rightmost occurrence of each letter. Can you remove the other characters?",
+        "Hint 3 If you can remove and is not the rightmost occurrence of a letter, you can also remove ."
+    ]
 }

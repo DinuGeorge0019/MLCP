@@ -139,5 +139,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Okabe and Future Gadget Laboratory.json",
     "editorial_link": "https://codeforces.com/blog/entry/52895",
-    "editorial": "We can simulate exactly what's described in the statement: loop over all cells not equal to 1 and check if it doesn't break the city property. To check if a cell breaks the property, just loop over an element in the same row, and an element in the same column, and see if they can add to give the cell's number. The complexity is O(n4)."
+    "editorial": "We can simulate exactly what's described in the statement: loop over all cells not equal to 1 and check if it doesn't break the city property. To check if a cell breaks the property, just loop over an element in the same row, and an element in the same column, and see if they can add to give the cell's number. The complexity is O(n4).",
+    "hint": []
 }

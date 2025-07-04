@@ -168,5 +168,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\F. Interacdive Problem.json",
     "editorial_link": "https://codeforces.com//blog/entry/98942",
-    "editorial": "After each query we know the value, then we need to find to find the\r\ncurrent value. To find it, we will use a binary search.Suppose is in the\r\nhalf-interval, in order to understand which half it is in, we will make\r\na query, select the middle of the half-interval and make a query. After\r\nthat, will either change, which means that was in the half-interval, or\r\nnot, then it was in the half-interval. Now you just need to properly\r\nshift the half-interval to accommodate the query change.\r\n"
+    "editorial": "After each query we know the value, then we need to find to find the\r\ncurrent value. To find it, we will use a binary search.Suppose is in the\r\nhalf-interval, in order to understand which half it is in, we will make\r\na query, select the middle of the half-interval and make a query. After\r\nthat, will either change, which means that was in the half-interval, or\r\nnot, then it was in the half-interval. Now you just need to properly\r\nshift the half-interval to accommodate the query change.\r\n",
+    "hint": []
 }

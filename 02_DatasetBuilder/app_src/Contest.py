@@ -1,5 +1,3 @@
-
-
 # standard library imports
 import os
 import requests
@@ -207,6 +205,59 @@ class Contest:
             
         return plain_text
     
+    def __get_hints(self, target_problem):
+        """Return a **list of unique Hint spoilers** for one Codeforces task.
+
+        * We identify the task section by locating the first `<a>` whose
+          visible text starts with the task code (e.g. "2093B –").
+        * Only spoiler blocks whose normalised title matches
+          ``^hint\d*$`` are collected – the wrapper titled "Hints" is
+          ignored.
+        * Duplicate hints are removed while preserving order.
+        * If no hints are found an empty list is returned (never *None*).
+        """
+
+        import re
+
+        contest = target_problem['contest_number']
+        idx = target_problem['problem_idx']
+        code = f"{contest}{idx}"  # e.g. 2093B
+
+        # 1) locate the section header (first anchor with text starting with code)
+        anchor = self.editorial_content_soup.find(
+            'a', string=lambda s: s and s.strip().startswith(code)
+        )
+        if not anchor:
+            warn = f"Hint header not found for → {target_problem['link']}"
+            print("[WARN]", warn)
+            return []
+        header = anchor.parent
+
+        # helper: next problem header (anchor for another letter)
+        def is_next_problem(tag):
+            a = tag.find('a', string=lambda s: s and s.strip().startswith(str(contest)))
+            return bool(a and not a.string.strip().startswith(code))
+
+        hints: list[str] = []
+        seen: set[str] = set()
+
+        next_header = header.find_next(is_next_problem)
+        ptr = header.find_next()
+        while ptr and ptr != next_header:
+            if ptr.name == 'div' and 'spoiler' in ptr.get('class', []):
+                title_el = ptr.find(class_='spoiler-title')
+                raw_title = title_el.get_text(strip=True) if title_el else ptr.get_text(strip=True).split('\n', 1)[0]
+                norm = re.sub(r'[^a-z]', '', raw_title.lower())
+                if re.fullmatch(r'hint\d*', norm):
+                    txt = ptr.get_text(" ", strip=True)
+                    if txt not in seen:
+                        seen.add(txt)
+                        hints.append(txt)
+            ptr = ptr.find_next()
+
+        return hints
+
+    
     def __get_editorial(self, target_problem):
         
         href = f"contest/{target_problem['contest_number']}/problem/{target_problem['problem_idx']}"
@@ -341,41 +392,30 @@ class Contest:
                     # Retrieve the problem from the collection
                     target_problem = problems_collection[problems_collection_links.index(problem_link)]
 
-                    # Check if the problem needs to be updated
-                    if target_problem['editorial_link'] == "" or target_problem['editorial'] == "" or target_problem['editorial_link'] == None or target_problem['editorial'] == None:
-                        # Update the editorial
-                        print(f"Problem {problem_link} is going to be updated.")
-                        
-                        # Update the editorial link if we do not have it
-                        if target_problem['editorial_link'] == "" or target_problem['editorial_link'] == None:
-                            self.__start_editorial_link_retrival()
-                            target_problem['editorial_link'] = self.editorial_link
-                        
-                        # Update the editorial if we do not have it
-                        if target_problem['editorial'] == "" or target_problem['editorial'] == None:
-                            self.editorial_link = target_problem['editorial_link']
-                            
-                            if self.editorial_content_soup is None:
-                                # Update the self.editorial_content_soup globally so you don't have to retrieve it again after each problem
-                                self.driver.get(self.editorial_link)
-                                sleep(0.5)
-                                self.editorial_content_soup = BeautifulSoup(self.driver.page_source, 'html5lib')
-                                
-                                self.editorial_content_soup = self.__remove_page_element_tags(self.editorial_content_soup, ['style', 'span', 'script', 'meta'])
-                                
-                                # with open("soup.html", "w", encoding="utf-8") as f:
-                                #     f.write(self.editorial_content_soup.prettify())
-                            
-                            # print(self.editorial_link)
-                            
-                            target_problem['editorial'] = self.__get_editorial(target_problem=target_problem)
-
-                        print(target_problem['file_name'])
-                        
-                        # Save the problem back to the dataset path
-                        with open(target_problem['file_name'], 'w', encoding='utf-8') as f:
-                        # # with open(target_problem['name'], 'w', encoding='utf-8') as f:
-                            json.dump(target_problem, f, ensure_ascii=False, indent=4)
+                    # Update editorial link if missing
+                    editorial_link_updated = self._update_editorial_link(target_problem)
+                    
+                    # Check if editorial or hint needs updating
+                    needs_editorial_update = (target_problem['editorial'] == "" or target_problem['editorial'] == None)
+                    needs_hint_update = (target_problem['hint'] == [] or target_problem['hint'] is None)
+                    
+                    # If either editorial or hint needs updating, ensure we have the editorial content soup
+                    if needs_editorial_update or needs_hint_update:
+                        self._ensure_editorial_content_soup(target_problem['editorial_link'])
+                    
+                    # Update editorial separately
+                    if needs_editorial_update:
+                        print(f"Updating editorial for problem {target_problem['file_name']}")
+                        self._update_editorial(target_problem)
+                    
+                    # Update hint separately
+                    if needs_hint_update:
+                        # print(f"Updating hint for problem {target_problem['file_name']}")
+                        self._update_hint(target_problem)
+                    
+                    # Save the problem back to the dataset path
+                    with open(target_problem['file_name'], 'w', encoding='utf-8') as f:
+                        json.dump(target_problem, f, ensure_ascii=False, indent=4)
 
         # If no problem_link from self.problem_links in the problems_collection_links than process the whole contest
         else:
@@ -447,3 +487,62 @@ class Contest:
             output_file.close()
         
         # PROBLEM RETRIVAL END
+    
+    def _ensure_editorial_content_soup(self, editorial_link):
+        """
+        Ensure that the editorial content soup is loaded and available.
+        Args:
+            editorial_link (str): The link to the editorial page
+        Returns:
+            None
+        """
+        if self.editorial_content_soup is None and editorial_link:
+            self.editorial_link = editorial_link
+            self.driver.get(self.editorial_link)
+            sleep(0.5)
+            self.editorial_content_soup = BeautifulSoup(self.driver.page_source, 'html5lib')
+            self.editorial_content_soup = self.__remove_page_element_tags(
+                self.editorial_content_soup, ['style', 'span', 'script', 'meta']
+            )
+
+    def _update_editorial_link(self, target_problem):
+        """
+        Update the editorial link for a problem if it's missing.
+        Args:
+            target_problem (dict): The problem dictionary to update
+        Returns:
+            bool: True if the editorial link was updated, False otherwise
+        """
+        if target_problem['editorial_link'] == "" or target_problem['editorial_link'] == None:
+            self.__start_editorial_link_retrival()
+            target_problem['editorial_link'] = self.editorial_link
+            return True
+        return False
+
+    def _update_editorial(self, target_problem):
+        """
+        Update the editorial content for a problem if it's missing.
+        Args:
+            target_problem (dict): The problem dictionary to update
+        Returns:
+            bool: True if the editorial was updated, False otherwise
+        """
+        if target_problem['editorial'] == "" or target_problem['editorial'] == None:
+            target_problem['editorial'] = self.__get_editorial(target_problem=target_problem)
+            return True
+        return False
+
+    def _update_hint(self, target_problem):
+        """
+        Update the hint content for a problem if it's missing.
+        Args:
+            target_problem (dict): The problem dictionary to update
+        Returns:
+            bool: True if the hint was updated, False otherwise
+        """
+        if target_problem['hint'] == [] or target_problem['hint'] == None:
+            target_problem['hint'] = self.__get_hints(target_problem=target_problem)
+            if target_problem['hint']:
+                print(f"Hint updated for problem {target_problem['file_name']}")
+            return True
+        return False

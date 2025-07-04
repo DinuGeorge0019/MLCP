@@ -169,5 +169,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\B. Unnatural Conditions.json",
     "editorial_link": "https://codeforces.com/blog/entry/61493",
-    "editorial": "First note, that if some output is correct for test with and , then it\u00e2\u0080\u0099s\r\ncorrect for any valid test. After noticing this, we don\u00e2\u0080\u0099t need to read\r\ninput and output one answer for any test. One of many possible answers\r\nis (200 nines, 199 zeroes, 1 one) (200 nines)\r\n"
+    "editorial": "First note, that if some output is correct for test with and , then itâs\r\ncorrect for any valid test. After noticing this, we donât need to read\r\ninput and output one answer for any test. One of many possible answers\r\nis (200 nines, 199 zeroes, 1 one) (200 nines)\r\n",
+    "hint": []
 }

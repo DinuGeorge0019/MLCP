@@ -132,5 +132,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Cards.json",
     "editorial_link": "https://codeforces.com//blog/entry/46283",
-    "editorial": "Because of it is guaranteed, that the answer always exists, we need to\r\nsort all cards in non-descending order of the numbers, which are written\r\non them. Then we need to give to the first player the first and the last\r\ncard from the sorted array, give to the second player the second and the\r\npenultimate cards and so on.\r\n"
+    "editorial": "Because of it is guaranteed, that the answer always exists, we need to\r\nsort all cards in non-descending order of the numbers, which are written\r\non them. Then we need to give to the first player the first and the last\r\ncard from the sorted array, give to the second player the second and the\r\npenultimate cards and so on.\r\n",
+    "hint": []
 }

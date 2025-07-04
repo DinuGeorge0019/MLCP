@@ -208,5 +208,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\C. Word on the Paper.json",
     "editorial_link": "https://codeforces.com//blog/entry/118466",
-    "editorial": "You can iterate through the grid and then once you find a letter,\r\niterate downwards until you get the whole word.However there is an\r\napproach that is even faster to code: just input each character, and\r\noutput it if it is not a dot. This works because we will input the\r\ncharacters in the same order from top to bottom. The complexity is\r\nregardless.\r\n"
+    "editorial": "You can iterate through the grid and then once you find a letter,\r\niterate downwards until you get the whole word.However there is an\r\napproach that is even faster to code: just input each character, and\r\noutput it if it is not a dot. This works because we will input the\r\ncharacters in the same order from top to bottom. The complexity is\r\nregardless.\r\n",
+    "hint": []
 }

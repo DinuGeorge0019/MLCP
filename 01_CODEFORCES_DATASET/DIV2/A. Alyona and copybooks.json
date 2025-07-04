@@ -99,7 +99,7 @@
         ]
     },
     "name": "A. Alyona and copybooks",
-    "statement": "Little girl Alyona is in a shop to buy some copybooks for school. She\r\nstudy four subjects so she wants to have equal number of copybooks for\r\neach of the subjects. There are three types of copybook\u2019s packs in the\r\nshop: it is possible to buy one copybook for rubles, a pack of two\r\ncopybooks for rubles, and a pack of three copybooks for rubles. Alyona\r\nalready has copybooks.What is the minimum amount of rubles she should\r\npay to buy such number of copybooks that is divisible by ? There are\r\ninfinitely many packs of any type in the shop. Alyona can buy packs of\r\ndifferent type in the same purchase.\r\n",
+    "statement": "Little girl Alyona is in a shop to buy some copybooks for school. She\r\nstudy four subjects so she wants to have equal number of copybooks for\r\neach of the subjects. There are three types of copybook’s packs in the\r\nshop: it is possible to buy one copybook for rubles, a pack of two\r\ncopybooks for rubles, and a pack of three copybooks for rubles. Alyona\r\nalready has copybooks.What is the minimum amount of rubles she should\r\npay to buy such number of copybooks that is divisible by ? There are\r\ninfinitely many packs of any type in the shop. Alyona can buy packs of\r\ndifferent type in the same purchase.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std; \n\nconst int N=3500;\nconst int Mod=1e9+7;\n\nlong long f[N];\n\nint main() {\n\tlong long n,a,b,c,ans=1e18;\n\tcin>>n>>a>>b>>c;\n\tfor(int i=1;i<N;i++) f[i]=1e18;\n\tfor(int i=1;i<N;i++) {\n\t\tif(i>=1)f[i]=min(f[i],f[i-1]+a);\n\t\tif(i>=2)f[i]=min(f[i],f[i-2]+b);\n\t\tif(i>=3)f[i]=min(f[i],f[i-3]+c);\n\t\tif((n+i)%4==0)ans=min(ans,f[i]);\n\t}\n\tif(n%4==0) ans=0;\n\tcout<<ans;\n}\n"
     ],
@@ -113,5 +113,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Alyona and copybooks.json",
     "editorial_link": "https://codeforces.com//blog/entry/48582",
-    "editorial": "Let - is the smallest non-negative integer such that is a multiple of\r\n4.If is 0, then, obviously, the answer is 0.If is equal to 1, then you\r\ncan buy one set of one notebook, you can buy 3 sets of three notebooks,\r\nyou can buy 1 set of three notebooks and 1 set of two notebooks. Take\r\nthe most optimal response.If equals 2, you can buy 2 sets of one\r\nnotebook, 1 set of two notebooks, two sets of three notebooks. Take the\r\nmost optimal response.If is equal to 3, you can buy 3 sets of one book,\r\n1 set of single and 1 set of two notebooks, one set of three notebooks.\r\nTake the most optimal response.\r\n"
+    "editorial": "Let - is the smallest non-negative integer such that is a multiple of\r\n4.If is 0, then, obviously, the answer is 0.If is equal to 1, then you\r\ncan buy one set of one notebook, you can buy 3 sets of three notebooks,\r\nyou can buy 1 set of three notebooks and 1 set of two notebooks. Take\r\nthe most optimal response.If equals 2, you can buy 2 sets of one\r\nnotebook, 1 set of two notebooks, two sets of three notebooks. Take the\r\nmost optimal response.If is equal to 3, you can buy 3 sets of one book,\r\n1 set of single and 1 set of two notebooks, one set of three notebooks.\r\nTake the most optimal response.\r\n",
+    "hint": []
 }

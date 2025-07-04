@@ -130,7 +130,7 @@
         ]
     },
     "name": "A. Grade Allocation",
-    "statement": "n students are taking an exam. The highest possible score at this exam\r\nis m. Let a_{i} be the score of the i-th student. You have access to the\r\nschool database which stores the results of all students.You can change\r\neach student\u2019s score as long as the following conditions are satisfied:\r\nAll scores are integers 0\r\nleq a_{i}\r\nleq m The average score of the class doesn\u2019t change. You are student 1\r\nand you would like to maximize your own score.Find the highest possible\r\nscore you can assign to yourself such that all conditions are satisfied.\r\n",
+    "statement": "n students are taking an exam. The highest possible score at this exam\r\nis m. Let a_{i} be the score of the i-th student. You have access to the\r\nschool database which stores the results of all students.You can change\r\neach student’s score as long as the following conditions are satisfied:\r\nAll scores are integers 0\r\nleq a_{i}\r\nleq m The average score of the class doesn’t change. You are student 1\r\nand you would like to maximize your own score.Find the highest possible\r\nscore you can assign to yourself such that all conditions are satisfied.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\n\nusing namespace std;\nint t;\nint n, m, x;\nint main( ) {\n\tscanf(\"%d\", &t);\n\twhile (t --) {\n\t\tscanf(\"%d %d\", &n, &m);\n\t\tint sum = 0;\n\t\tfor (int i = 1; i <= n; i ++) {\n\t\t\tscanf(\"%d\", &x);\n\t\t\tsum += x;\n\t\t}\n\t\tprintf(\"%d\\n\", min(sum, m));\n\t}\n\treturn 0;\n}\n"
     ],
@@ -143,5 +143,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Grade Allocation.json",
     "editorial_link": "https://codeforces.com//blog/entry/74493",
-    "editorial": "Since the average score of the class must remain same ,this means the\r\nsum of the scores of all students in the class must remain same. We want\r\nto maximize the score of the first student and since the minimum score\r\nof each student can be zero we can add the scores of the rest of\r\nstudents to the first student as long as his score is less than or equal\r\nto m. Therefore the answer is Time complexity : per testcase\r\n"
+    "editorial": "Since the average score of the class must remain same ,this means the\r\nsum of the scores of all students in the class must remain same. We want\r\nto maximize the score of the first student and since the minimum score\r\nof each student can be zero we can add the scores of the rest of\r\nstudents to the first student as long as his score is less than or equal\r\nto m. Therefore the answer is Time complexity : per testcase\r\n",
+    "hint": []
 }

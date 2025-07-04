@@ -105,5 +105,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Good Sequences.json",
     "editorial_link": "https://codeforces.com//blog/entry/6478",
-    "editorial": "The main idea is DP. Let's define dp[x] as the maximal value of the length of the good sequence whose last element is x, and define d[i] as the (maximal value of dp[x] where x is divisible by i).\n\nYou should calculate dp[x] in the increasing order of x. The value of dp[x] is (maximal value of d[i] where i is a divisor of x) + 1. After you calculate dp[x], for each divisor i of x, you should update d[i] too.\n\nThis algorithm works in O(nlogn) because the sum of the number of the divisor from 1 to n is O(nlogn).\n\nNote that there is a corner case. When the set is {1}, you should output 1."
+    "editorial": "The main idea is DP. Let's define dp[x] as the maximal value of the length of the good sequence whose last element is x, and define d[i] as the (maximal value of dp[x] where x is divisible by i).\n\nYou should calculate dp[x] in the increasing order of x. The value of dp[x] is (maximal value of d[i] where i is a divisor of x) + 1. After you calculate dp[x], for each divisor i of x, you should update d[i] too.\n\nThis algorithm works in O(nlogn) because the sum of the number of the divisor from 1 to n is O(nlogn).\n\nNote that there is a corner case. When the set is {1}, you should output 1.",
+    "hint": []
 }

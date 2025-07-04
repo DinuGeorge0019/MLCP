@@ -107,5 +107,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Grid game.json",
     "editorial_link": "https://codeforces.com//blog/entry/64722",
-    "editorial": "One possible solution is to place vertical tiles into lower-left corner and place horizontal tiles into upper-right corner.If some tile comes, but there is already a tile of the same type, than we will place the new tile into upper-left corner. So both tiles will be cleared and only them."
+    "editorial": "One possible solution is to place vertical tiles into lower-left corner and place horizontal tiles into upper-right corner.If some tile comes, but there is already a tile of the same type, than we will place the new tile into upper-left corner. So both tiles will be cleared and only them.",
+    "hint": []
 }

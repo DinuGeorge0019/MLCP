@@ -85,7 +85,7 @@
         ]
     },
     "name": "A. Good Number",
-    "statement": "Let\u2019s call a number -good if it contains all digits not exceeding ().\r\nYou\u2019ve got a number and an array containing numbers. Find out how many\r\n-good numbers are in (count each number every time it occurs in array ).\r\n",
+    "statement": "Let’s call a number -good if it contains all digits not exceeding ().\r\nYou’ve got a number and an array containing numbers. Find out how many\r\n-good numbers are in (count each number every time it occurs in array ).\r\n",
     "solutions": [
         "#include <stdio.h>\n#include <string.h>\n\nint main(){\n\n    int test;\n    int k;\n    bool flag[10];\n    int in,ans=0;\n\n    for( scanf(\"%d%d\",&test,&k) ; test-- ; ){\n        memset(flag,0,sizeof(flag));\n        for( scanf(\"%d\",&in); in ; in/=10 ){\n            flag[in%10]=1;  \n        }\n        \n        for( int i=0 ; i<=k ; i++ ) if(flag[i]==false ) goto fail;\n        \n        ans++;\n        fail:;\n        \n    }\n    printf(\"%d\\n\",ans);\n    return 0;\n}\n"
     ],
@@ -98,5 +98,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Good Number.json",
     "editorial_link": "https://codeforces.com//blog/entry/9657",
-    "editorial": "Task was to find the least digit, that is not contained in the given number and compare with given k.\n"
+    "editorial": "Task was to find the least digit, that is not contained in the given number and compare with given k.\n",
+    "hint": []
 }

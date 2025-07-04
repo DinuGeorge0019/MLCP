@@ -134,5 +134,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. King s Path.json",
     "editorial_link": "https://codeforces.com//blog/entry/5837",
-    "editorial": "The most important thing for accepted solution is that it is guaranteed\r\nthat the total length of all given segments doesn\u00e2\u0080\u0099t exceed . We should\r\nuse this feature, let\u00e2\u0080\u0099s number allowed cells and found shortest path by\r\nBFS. It\u00e2\u0080\u0099s easiest to use associative array such as map in C++ for\r\nnumbering. The time is .\r\n"
+    "editorial": "The most important thing for accepted solution is that it is guaranteed\r\nthat the total length of all given segments doesnât exceed . We should\r\nuse this feature, letâs number allowed cells and found shortest path by\r\nBFS. Itâs easiest to use associative array such as map in C++ for\r\nnumbering. The time is .\r\n",
+    "hint": []
 }

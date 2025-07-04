@@ -105,5 +105,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. DZY Loves Modification.json",
     "editorial_link": "https://codeforces.com//blog/entry/13036",
-    "editorial": "If , apperently the best choice is choosing the row or column which can\r\ngive greatest pleasure value each time. Ignore first,then we can get a\r\ngreatest number . Then if we choose rows for times, choose columns for\r\ntimes, should subtract . So we could enumerate i form 0 to k and\r\ncalculate each time, max is the maximum possible pleasure value DZY\r\ncould get. Let be the maximum pleasure value we can get after choosing\r\nrows and be the maximum pleasure value we can get after choosing\r\ncolumns. Then . We can use two priority queues to calculate and quickly.\r\n"
+    "editorial": "If , apperently the best choice is choosing the row or column which can\r\ngive greatest pleasure value each time. Ignore first,then we can get a\r\ngreatest number . Then if we choose rows for times, choose columns for\r\ntimes, should subtract . So we could enumerate i form 0 to k and\r\ncalculate each time, max is the maximum possible pleasure value DZY\r\ncould get. Let be the maximum pleasure value we can get after choosing\r\nrows and be the maximum pleasure value we can get after choosing\r\ncolumns. Then . We can use two priority queues to calculate and quickly.\r\n",
+    "hint": []
 }

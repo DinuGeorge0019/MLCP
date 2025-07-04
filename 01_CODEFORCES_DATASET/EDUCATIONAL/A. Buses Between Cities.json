@@ -138,7 +138,7 @@
         ]
     },
     "name": "A. Buses Between Cities",
-    "statement": "Buses run between the cities and , the first one is at 05:00 AM and the\r\nlast one departs not later than at 11:59 PM. A bus from the city departs\r\nevery minutes and arrives to the city in a minutes, and a bus from the\r\ncity departs every minutes and arrives to the city in a minutes.The\r\ndriver Simion wants to make his job diverse, so he counts the buses\r\ngoing towards him. Simion doesn\u2019t count the buses he meet at the start\r\nand finish.You know the time when Simion departed from the city to the\r\ncity . Calculate the number of buses Simion will meet to be sure in his\r\ncounting.\r\n",
+    "statement": "Buses run between the cities and , the first one is at 05:00 AM and the\r\nlast one departs not later than at 11:59 PM. A bus from the city departs\r\nevery minutes and arrives to the city in a minutes, and a bus from the\r\ncity departs every minutes and arrives to the city in a minutes.The\r\ndriver Simion wants to make his job diverse, so he counts the buses\r\ngoing towards him. Simion doesn’t count the buses he meet at the start\r\nand finish.You know the time when Simion departed from the city to the\r\ncity . Calculate the number of buses Simion will meet to be sure in his\r\ncounting.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\n\nint a, b;\nint c, d;\n\nint e, f;\n\nchar wcz[107];\n\nint sta, kon;\n\nint wyn;\n\nint main()\n{\n    scanf(\"%d%d\", &a, &b);\n    scanf(\"%d%d\", &c, &d);\n    scanf(\"%s\", wcz);\n    sta+=(wcz[4]-'0')*1;\n    sta+=(wcz[3]-'0')*10;\n    sta+=(wcz[1]-'0')*60;\n    sta+=(wcz[0]-'0')*600;\n    kon=sta+b;\n    for (int i=60*5; i<24*60; i+=c)\n    {\n        e=i;\n        f=i+d;\n        if (f<=sta || e>=kon)\n        continue;\n        wyn++;\n    }\n    printf(\"%d\\n\", wyn);\n    return 0;\n}\n"
     ],
@@ -151,5 +151,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Buses Between Cities.json",
     "editorial_link": "https://codeforces.com//blog/entry/44466",
-    "editorial": "The problem was suggested by Sergey Erlikh unprost. Consider the time\r\ninterval when Simion will be on the road strictly between cities ().\r\nLet\u00e2\u0080\u0099s iterate over the oncoming buses. Let be the time interval when the\r\noncoming bus will be strictly between two cities. If the intersection of\r\nthat intervals is not empty than Simion will count that bus. ++ solution\r\n"
+    "editorial": "The problem was suggested by Sergey Erlikh unprost. Consider the time\r\ninterval when Simion will be on the road strictly between cities ().\r\nLetâs iterate over the oncoming buses. Let be the time interval when the\r\noncoming bus will be strictly between two cities. If the intersection of\r\nthat intervals is not empty than Simion will count that bus. ++ solution\r\n",
+    "hint": []
 }

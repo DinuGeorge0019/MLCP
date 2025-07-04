@@ -130,7 +130,7 @@
         ]
     },
     "name": "A. Distance and Axis",
-    "statement": "We have a point A with coordinate x = n on OX-axis. We\u2019d like to find an\r\nB (also on OX-axis), such that the between the distance from O to B and\r\nthe distance from A to B is equal to k. Since sometimes it\u2019s impossible\r\nto find such point B, we can, in one step, increase or decrease the\r\ncoordinate of A by 1. What is the minimum number of steps we should do\r\nto make such point B exist?\r\n",
+    "statement": "We have a point A with coordinate x = n on OX-axis. We’d like to find an\r\nB (also on OX-axis), such that the between the distance from O to B and\r\nthe distance from A to B is equal to k. Since sometimes it’s impossible\r\nto find such point B, we can, in one step, increase or decrease the\r\ncoordinate of A by 1. What is the minimum number of steps we should do\r\nto make such point B exist?\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\n\ntypedef long long ll;\ntypedef long double ld;\n\ntypedef pair<int, int> pi;\ntypedef pair<ll,ll> pl;\n\ntypedef vector<int> vi;\ntypedef vector<ld> vd;\ntypedef vector<ll> vl;\ntypedef vector<pi> vpi;\ntypedef vector<pl> vpl;\n\n#define sz(x) (int)(x).size()\n#define mp make_pair\n#define pb push_back\n#define f first\n#define s second\n#define lb lower_bound\n#define ub upper_bound\n#define all(x) x.begin(), x.end()\n\nint main() {\n\tios::sync_with_stdio(0); cin.tie(0);\n\n\tint t;\n\tcin >> t;\n\twhile(t--) {\n\t\tint n, k;\n\t\tcin >> n >> k;\n\t\tcout << max(k-n, k&1^n&1) << \"\\n\";\n\t}\n\n\treturn 0;\n}"
     ],
@@ -144,5 +144,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Distance and Axis.json",
     "editorial_link": "https://codeforces.com//blog/entry/81700",
-    "editorial": "If is less than , we have to move to coordinate , and set the coordinate\r\nof as or . So the answer is .If is not less than , let\u00e2\u0080\u0099s define the\r\ncoordinate of as (). By the condition in the problem, the difference\r\nbetween () and () should be equal to . That is, is , and summarizing the\r\nformula, . Because the coordinate of is integer, if the parity of and is\r\nsame the answer is , otherwise the answer is (If we increase the\r\ncoordinate of by , m becomes integer).Time complexity :\r\n"
+    "editorial": "If is less than , we have to move to coordinate , and set the coordinate\r\nof as or . So the answer is .If is not less than , letâs define the\r\ncoordinate of as (). By the condition in the problem, the difference\r\nbetween () and () should be equal to . That is, is , and summarizing the\r\nformula, . Because the coordinate of is integer, if the parity of and is\r\nsame the answer is , otherwise the answer is (If we increase the\r\ncoordinate of by , m becomes integer).Time complexity :\r\n",
+    "hint": []
 }

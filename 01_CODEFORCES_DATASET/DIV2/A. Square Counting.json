@@ -146,5 +146,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Square Counting.json",
     "editorial_link": "https://codeforces.com//blog/entry/100584",
-    "editorial": "Let the number of elements in the sequence equal to be and let the sum\r\nof all other numbers be . Then, . If an element of the sequence is not\r\nequal to , then its value is at most is . There are numbers in the\r\nsequence, so . Thus, , which is the value we want to find. So, to solve\r\nthe problem it is enough to compute the value of .Intended complexity:\r\nper test case.\r\n"
+    "editorial": "Let the number of elements in the sequence equal to be and let the sum\r\nof all other numbers be . Then, . If an element of the sequence is not\r\nequal to , then its value is at most is . There are numbers in the\r\nsequence, so . Thus, , which is the value we want to find. So, to solve\r\nthe problem it is enough to compute the value of .Intended complexity:\r\nper test case.\r\n",
+    "hint": []
 }

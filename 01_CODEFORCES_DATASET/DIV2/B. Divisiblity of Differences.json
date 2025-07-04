@@ -148,5 +148,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Divisiblity of Differences.json",
     "editorial_link": "https://codeforces.com//blog/entry/55233",
-    "editorial": "If is divisible by , then and have same reminder when divided by . Let\u00e2\u0080\u0099s\r\ndivide number to groups by reminder by modulo , and if there is a group\r\nwith size at least print numbers from it.\r\n"
+    "editorial": "If is divisible by , then and have same reminder when divided by . Letâs\r\ndivide number to groups by reminder by modulo , and if there is a group\r\nwith size at least print numbers from it.\r\n",
+    "hint": []
 }

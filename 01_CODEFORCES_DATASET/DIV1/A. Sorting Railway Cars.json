@@ -116,5 +116,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Sorting Railway Cars.json",
     "editorial_link": "https://codeforces.com//blog/entry/22019",
-    "editorial": "So we must find the longest subsegment of pos, where pos[a], pos[a+1], ,\r\npos[b] is increasing.\r\n"
+    "editorial": "So we must find the longest subsegment of pos, where pos[a], pos[a+1], ,\r\npos[b] is increasing.\r\n",
+    "hint": []
 }

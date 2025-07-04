@@ -162,7 +162,7 @@
     "name": "A. Submission Bait",
     "statement": "Alice and Bob are playing a game in an array a of size n.They take turns\r\nto do operations, with Alice starting first. The player who can not\r\noperate will lose. At first, a variable mx is set to 0.In one operation,\r\na player can do: Choose an index i (1\r\nle i\r\nle n) such that a_{i}\r\ngeq mx and set mx to a_{i}. Then, set a_{i} to 0.Determine whether Alice\r\nhas a winning strategy.\r\n",
     "solutions": [
-        "#include <bits/stdc++.h>using namespace std;\u00a0using ll = long long;// #define int ll\u00a0#define endl '\\n'#define pb push_backusing pi = array<int, 2>;\u00a0void skibidi_sigma() {  int n;  cin >> n;    vector<int> a(n), f(n);  for (int i = 0; i < n; ++i) {    cin >> a[i];    --a[i];    ++f[a[i]];  }    bool ok = false;  for (int i = 0; i < n; ++i) {    ok |= (f[i] & 1);  }  cout << (ok ? \"YES\" : \"NO\");}\u00a0int32_t main() {  ios_base::sync_with_stdio(false);  cin.tie(NULL);    int T;  cin >> T;    while (T--) {    skibidi_sigma();    cout << endl;  }}\u00a0/*\u00a0*/"
+        "#include <bits/stdc++.h>using namespace std; using ll = long long;// #define int ll #define endl '\\n'#define pb push_backusing pi = array<int, 2>; void skibidi_sigma() {  int n;  cin >> n;    vector<int> a(n), f(n);  for (int i = 0; i < n; ++i) {    cin >> a[i];    --a[i];    ++f[a[i]];  }    bool ok = false;  for (int i = 0; i < n; ++i) {    ok |= (f[i] & 1);  }  cout << (ok ? \"YES\" : \"NO\");} int32_t main() {  ios_base::sync_with_stdio(false);  cin.tie(NULL);    int T;  cin >> T;    while (T--) {    skibidi_sigma();    cout << endl;  }} /* */"
     ],
     "input": "",
     "output": "",
@@ -174,5 +174,6 @@
     ],
     "dificulty": "900",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Submission Bait.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Submission Bait.json",
+    "hint": []
 }

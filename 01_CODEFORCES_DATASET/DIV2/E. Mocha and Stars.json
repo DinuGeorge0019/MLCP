@@ -160,5 +160,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Mocha and Stars.json",
     "editorial_link": "https://codeforces.com//blog/entry/93898",
-    "editorial": "We firstly ignore the constraint of , let be the number of integers\r\nsatisfy the following two conditions: For all (), is an integer in the\r\nrange . . We can compute it in by Knapsack DP optimized by\r\nprefix-sums.Then we consider about the constraint of , let be Mobius\r\nfunction, and be if satisfies the two conditions we mentioned about\r\n(without the constraint of ), otherwise it will be .The answer we want\r\nis: Since can be changed to , it equals: So we can compute it in .\r\n"
+    "editorial": "We firstly ignore the constraint of , let be the number of integers\r\nsatisfy the following two conditions: For all (), is an integer in the\r\nrange . . We can compute it in by Knapsack DP optimized by\r\nprefix-sums.Then we consider about the constraint of , let be Mobius\r\nfunction, and be if satisfies the two conditions we mentioned about\r\n(without the constraint of ), otherwise it will be .The answer we want\r\nis: Since can be changed to , it equals: So we can compute it in .\r\n",
+    "hint": []
 }

@@ -104,5 +104,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Ksenia and Pan Scales.json",
     "editorial_link": "https://codeforces.com//blog/entry/10442",
-    "editorial": "This problem is just a technic problem. So, you should take weights one\r\nby one and place the current one into the side of the scales that\r\ncontains lower number of weights. At the end you should output answer in\r\nthe correct format.\r\n"
+    "editorial": "This problem is just a technic problem. So, you should take weights one\r\nby one and place the current one into the side of the scales that\r\ncontains lower number of weights. At the end you should output answer in\r\nthe correct format.\r\n",
+    "hint": []
 }

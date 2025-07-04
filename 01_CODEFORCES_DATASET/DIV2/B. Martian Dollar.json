@@ -108,5 +108,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Martian Dollar.json",
     "editorial_link": "https://codeforces.com//blog/entry/1620",
-    "editorial": "Since number of days is very small (2?\u00d7?103) we can just iterate over all possibilities of buy-day and sell-day. This will take ? (n2) time which is OK."
+    "editorial": "Since number of days is very small (2?×?103) we can just iterate over all possibilities of buy-day and sell-day. This will take ? (n2) time which is OK.",
+    "hint": []
 }

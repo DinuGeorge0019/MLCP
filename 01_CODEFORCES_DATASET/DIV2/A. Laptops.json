@@ -114,5 +114,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Laptops.json",
     "editorial_link": "https://codeforces.com//blog/entry/13336",
-    "editorial": "In this task you need to check the existense of such\npair and , such that , , . If such and exist, Alex is happy. There is\nvery simple solution. Let\u00e2\u0080\u0099s check that for all . If this condition is\ntrue we should print \"Poor Alex\". We can easy prove it. Let\u00e2\u0080\u0099s sort\narrays and like pair of numbers in increasing order. We can see that\nAlex is happy if we have at least one inversion in array , i.e there is\nsuch pair and that (). i.e it means that array is not sorted and it\u00e2\u0080\u0099s\nmeans that .\n"
+    "editorial": "In this task you need to check the existense of such\npair and , such that , , . If such and exist, Alex is happy. There is\nvery simple solution. Letâs check that for all . If this condition is\ntrue we should print \"Poor Alex\". We can easy prove it. Letâs sort\narrays and like pair of numbers in increasing order. We can see that\nAlex is happy if we have at least one inversion in array , i.e there is\nsuch pair and that (). i.e it means that array is not sorted and itâs\nmeans that .\n",
+    "hint": []
 }

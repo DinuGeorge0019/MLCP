@@ -130,5 +130,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Neko does Maths.json",
     "editorial_link": "https://codeforces.com/blog/entry/66696",
-    "editorial": "The is equal to . In fact, there are not much possible values for the\r\ndenominator of this fraction.Without losing generality, let\u00e2\u0080\u0099s assume .\r\nApplying one step of Euclid\u00e2\u0080\u0099s algorithm we can see, that .So the is a\r\ndivisor of . Let\u00e2\u0080\u0099s iterate over all divisors of . That also means that .\r\nIn case , we can use . Otherwise, the corresponding should be . Lastly,\r\nwe need to check whether the value of is the smallest found so far.Also,\r\none has to be careful when dealing with answer, which was the reason why\r\nmany solutions got WA 63. The complexity is .\r\n"
+    "editorial": "The is equal to . In fact, there are not much possible values for the\r\ndenominator of this fraction.Without losing generality, letâs assume .\r\nApplying one step of Euclidâs algorithm we can see, that .So the is a\r\ndivisor of . Letâs iterate over all divisors of . That also means that .\r\nIn case , we can use . Otherwise, the corresponding should be . Lastly,\r\nwe need to check whether the value of is the smallest found so far.Also,\r\none has to be careful when dealing with answer, which was the reason why\r\nmany solutions got WA 63. The complexity is .\r\n",
+    "hint": []
 }

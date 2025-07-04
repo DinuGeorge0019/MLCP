@@ -178,5 +178,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\C. Advantage.json",
     "editorial_link": "https://codeforces.com//blog/entry/109348",
-    "editorial": "Make a copy of the array : call it . Sort in non-decreasing order, so\r\nthat is the maximum strength and the second maximum strength.Then for\r\neveryone but the best person, they should compare with the best person\r\nwho has strength . So for all such that , we should output . Otherwise,\r\noutput the second highest strength, which is the next best person.\r\n"
+    "editorial": "Make a copy of the array : call it . Sort in non-decreasing order, so\r\nthat is the maximum strength and the second maximum strength.Then for\r\neveryone but the best person, they should compare with the best person\r\nwho has strength . So for all such that , we should output . Otherwise,\r\noutput the second highest strength, which is the next best person.\r\n",
+    "hint": []
 }

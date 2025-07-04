@@ -113,5 +113,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Jzzhu and Chocolate.json",
     "editorial_link": "https://codeforces.com//blog/entry/13112",
-    "editorial": "We assume that (if , we can simply swap and ). If we finally cut the\r\nchocolate into rows and columns , we should maximize the narrowest row\r\nand maximize the narrowest column, so the answer will be . There are two\r\nalgorithms to find the optimal . Notice that if is smaller, the answer\r\nusually will be better. Then we can find that if , the optimal can only\r\nbe or . If , the optimal can only be . If , the optimal can only be ,\r\nbecause let , . has at most values, so we can enum it and choose the\r\nmaximum for each value.\r\n"
+    "editorial": "We assume that (if , we can simply swap and ). If we finally cut the\r\nchocolate into rows and columns , we should maximize the narrowest row\r\nand maximize the narrowest column, so the answer will be . There are two\r\nalgorithms to find the optimal . Notice that if is smaller, the answer\r\nusually will be better. Then we can find that if , the optimal can only\r\nbe or . If , the optimal can only be . If , the optimal can only be ,\r\nbecause let , . has at most values, so we can enum it and choose the\r\nmaximum for each value.\r\n",
+    "hint": []
 }

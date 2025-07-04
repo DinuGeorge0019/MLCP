@@ -101,5 +101,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Sasha and Array.json",
     "editorial_link": "https://codeforces.com//blog/entry/47314",
-    "editorial": "Let's denote\n \n\nLet's recall how we can quickly find n-th Fibonacci number. To do this we need to find a matrix product .\n\nIn order to solve our problem let's create the following segments tree: in each leaf which corresponds to the element i we will store a vector  and in all other nodes we will store the sums of all the vectors that correspond to a given segment.\n\nNow, to perform the first request we should multiply all the vectors in a segment [l..r] by  and to get an answer to the second request we have to find a sum in a segment [l..r]."
+    "editorial": "Let's denote\n \n\nLet's recall how we can quickly find n-th Fibonacci number. To do this we need to find a matrix product .\n\nIn order to solve our problem let's create the following segments tree: in each leaf which corresponds to the element i we will store a vector  and in all other nodes we will store the sums of all the vectors that correspond to a given segment.\n\nNow, to perform the first request we should multiply all the vectors in a segment [l..r] by  and to get an answer to the second request we have to find a sum in a segment [l..r].",
+    "hint": []
 }

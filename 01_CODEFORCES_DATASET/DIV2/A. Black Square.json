@@ -96,7 +96,7 @@
         ]
     },
     "name": "A. Black Square",
-    "statement": "Quite recently, a very smart student named Jury decided that lectures\r\nare boring, so he downloaded a game called \"\" on his super cool\r\ntouchscreen phone.In this game, the phone\u2019s screen is divided into four\r\nvertical strips. Each second, a black square appears on some of the\r\nstrips. According to the rules of the game, Jury must use this second to\r\ntouch the corresponding strip to make the square go away. As Jury is\r\nboth smart and lazy, he counted that he wastes exactly calories on\r\ntouching the -th strip.You\u2019ve got a string , describing the process of\r\nthe game and numbers . Calculate how many calories Jury needs to destroy\r\nall the squares?\r\n",
+    "statement": "Quite recently, a very smart student named Jury decided that lectures\r\nare boring, so he downloaded a game called \"\" on his super cool\r\ntouchscreen phone.In this game, the phone’s screen is divided into four\r\nvertical strips. Each second, a black square appears on some of the\r\nstrips. According to the rules of the game, Jury must use this second to\r\ntouch the corresponding strip to make the square go away. As Jury is\r\nboth smart and lazy, he counted that he wastes exactly calories on\r\ntouching the -th strip.You’ve got a string , describing the process of\r\nthe game and numbers . Calculate how many calories Jury needs to destroy\r\nall the squares?\r\n",
     "solutions": [
         "#include<cstdio>\n#include<vector>\n#include<cstring>\n#include<stack>\n#include<algorithm>\nusing namespace std;\nchar str[100010];\nint main(){\n    int a1,a2,a3,a4;\n    scanf(\"%d%d%d%d\",&a1,&a2,&a3,&a4);\n    scanf(\"%s\",str);    int n=strlen(str);\n    int an=0;\n    for(int i=0;i<n;i++){\n        if(str[i]=='1')an+=a1;\n        if(str[i]=='2')an+=a2;\n        if(str[i]=='3')an+=a3;\n        if(str[i]=='4')an+=a4;\n    }\n    printf(\"%d\",an);\n    return 0;\n}\n"
     ],
@@ -109,5 +109,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Black Square.json",
     "editorial_link": "https://codeforces.com//blog/entry/12369",
-    "editorial": "To solve this problem, you must only do the process described in\r\nstatement. Complexity: Solution: 6676675\r\n"
+    "editorial": "To solve this problem, you must only do the process described in\r\nstatement. Complexity: Solution: 6676675\r\n",
+    "hint": []
 }

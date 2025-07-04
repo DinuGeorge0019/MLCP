@@ -133,5 +133,11 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Laura and Operations.json",
     "editorial_link": "https://codeforces.com//blog/entry/122677",
-    "editorial": "SolutionRead the hints.If the parity of and is not the same, then it is\r\nimpossible for only digits to remain on the board, as it would require .\r\nOtherwise, the following construction will leave only digits on the\r\nboard.First remove digits and and write digit while and . If , then we\r\nare done. Otherwise, without loss of generality assume . That means that\r\nafter the operations and is even (Because and are the same parity). Now\r\nwe perform the following operations times to get only digits left.\r\nRemove digits and and add digit . After that remove digits and and add\r\ndigit . An effective change of these operations is the reduction of by\r\n.Time and memory complexities are .\r\n"
+    "editorial": "SolutionRead the hints.If the parity of and is not the same, then it is\r\nimpossible for only digits to remain on the board, as it would require .\r\nOtherwise, the following construction will leave only digits on the\r\nboard.First remove digits and and write digit while and . If , then we\r\nare done. Otherwise, without loss of generality assume . That means that\r\nafter the operations and is even (Because and are the same parity). Now\r\nwe perform the following operations times to get only digits left.\r\nRemove digits and and add digit . After that remove digits and and add\r\ndigit . An effective change of these operations is the reduction of by\r\n.Time and memory complexities are .\r\n",
+    "hint": [
+        "Hint 1 Check if only digits can remain. The situation is similar for checking if only digits or only digits can remain.",
+        "Hint 2 Try to find something that stays the same after each operation.",
+        "Hint 3 Look at the parity of the numbers.",
+        "Hint 4 The parity of each number changes after an operation. That means that if numbers have the same parity, they will always have the same parity. If they had different parity, their parities stay different."
+    ]
 }

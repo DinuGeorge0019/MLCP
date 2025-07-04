@@ -152,5 +152,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Game of Robots.json",
     "editorial_link": "https://codeforces.com//blog/entry/44715",
-    "editorial": "To solve this problem we need to brute how many identifiers will called\r\nrobots in the order from left to right. Let\u00e2\u0080\u0099s solve this problem in one\r\nindexing. Let the current robot will call identifiers. If let\u00e2\u0080\u0099s make and\r\ngo to the next robot. Else we need to print , where is the array with\r\nrobots identifiers and end our algorithm.\r\n"
+    "editorial": "To solve this problem we need to brute how many identifiers will called\r\nrobots in the order from left to right. Letâs solve this problem in one\r\nindexing. Let the current robot will call identifiers. If letâs make and\r\ngo to the next robot. Else we need to print , where is the array with\r\nrobots identifiers and end our algorithm.\r\n",
+    "hint": []
 }

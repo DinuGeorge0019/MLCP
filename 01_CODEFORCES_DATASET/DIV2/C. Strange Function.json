@@ -151,5 +151,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Strange Function.json",
     "editorial_link": "https://codeforces.com//blog/entry/92492",
-    "editorial": "Enumerate the value of f(i)\n. Since f(n)=i\n means lcm(1,2,...,i?1)?n\n, f(n)\n will not be too big (less than 100\n). The number of k\ns such that f(k)=i\n is ?n/lcm(1,2,...,i?1)???n/lcm(1,2,...,i)?\n. (k\n should be divisible by 1?i?1\n but not i\n) So the answer is ?i>1i(?n/lcm(1,2,...,i?1)???n/lcm(1,2,...,i)?)\n.\n\nWe can also write the answer in another form, which is equivalent to the previous form:\n\n?i?1?n/lcm(1,2,...,i)?+n"
+    "editorial": "Enumerate the value of f(i)\n. Since f(n)=i\n means lcm(1,2,...,i?1)?n\n, f(n)\n will not be too big (less than 100\n). The number of k\ns such that f(k)=i\n is ?n/lcm(1,2,...,i?1)???n/lcm(1,2,...,i)?\n. (k\n should be divisible by 1?i?1\n but not i\n) So the answer is ?i>1i(?n/lcm(1,2,...,i?1)???n/lcm(1,2,...,i)?)\n.\n\nWe can also write the answer in another form, which is equivalent to the previous form:\n\n?i?1?n/lcm(1,2,...,i)?+n",
+    "hint": []
 }

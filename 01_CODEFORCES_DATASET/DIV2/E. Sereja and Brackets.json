@@ -112,5 +112,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Sereja and Brackets.json",
     "editorial_link": "https://codeforces.com//blog/entry/10363",
-    "editorial": "We will support the segments tree. At each vertex will be stored:\nav \u0097 the maximum length of the bracket subsequence\nbv \u0097 how many there it open brackets that sequence doesn't contain\ncv \u0097 how many there it closed brackets that sequence doesn't contain\nIf we want to combine two vertices with parameters (a1,?b1,?c1) and (a2,?b2,?c2), we can use the following rules:\nt?=?min(b1,?c2)\na?=?a1?+?a2?+?t\nb?=?b1?+?b2?-?t\nc?=?c1?+?c2?-?t"
+    "editorial": "We will support the segments tree. At each vertex will be stored:\nav  the maximum length of the bracket subsequence\nbv  how many there it open brackets that sequence doesn't contain\ncv  how many there it closed brackets that sequence doesn't contain\nIf we want to combine two vertices with parameters (a1,?b1,?c1) and (a2,?b2,?c2), we can use the following rules:\nt?=?min(b1,?c2)\na?=?a1?+?a2?+?t\nb?=?b1?+?b2?-?t\nc?=?c1?+?c2?-?t",
+    "hint": []
 }

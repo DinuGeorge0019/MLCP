@@ -163,5 +163,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Satisfying Constraints.json",
     "editorial_link": "https://codeforces.com//blog/entry/122560",
-    "editorial": "Let's first only consider the ?\n and ?\n constraints. The integers satisfying those two constraints will be some contiguous interval [l,r]\n. To find [l,r]\n, for each ?x\n constraint, we do l:=max(l,x)\n and for each ?x\n constraint, we do r:=min(r,x)\n.\n\nNow, for each, ?x\n constraint, we check if x\n is in [l,r]\n. If so, we subtract one from the answer (remember that there are no duplicate constraints). Let the total number of times we subtract be s\n. Then our answer is max(r?l+1?s,0)\n. The time complexity of this solution is O(n)\n."
+    "editorial": "Let's first only consider the ?\n and ?\n constraints. The integers satisfying those two constraints will be some contiguous interval [l,r]\n. To find [l,r]\n, for each ?x\n constraint, we do l:=max(l,x)\n and for each ?x\n constraint, we do r:=min(r,x)\n.\n\nNow, for each, ?x\n constraint, we check if x\n is in [l,r]\n. If so, we subtract one from the answer (remember that there are no duplicate constraints). Let the total number of times we subtract be s\n. Then our answer is max(r?l+1?s,0)\n. The time complexity of this solution is O(n)\n.",
+    "hint": [
+        "Hint 1 Suppose there are no constraints. How would you solve the problem? How would you then factor in the constraints into your solution?"
+    ]
 }

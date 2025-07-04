@@ -183,7 +183,7 @@
         ]
     },
     "name": "B. Ordinary Numbers",
-    "statement": "Let\u2019s call a positive integer n ordinary if in the decimal notation all\r\nits digits are the same. For example, 1, 2 and 99 are ordinary numbers,\r\nbut 719 and 2021 are not ordinary numbers.For a given number n, find the\r\nnumber of ordinary numbers among the numbers from 1 to n.\r\n",
+    "statement": "Let’s call a positive integer n ordinary if in the decimal notation all\r\nits digits are the same. For example, 1, 2 and 99 are ordinary numbers,\r\nbut 719 and 2021 are not ordinary numbers.For a given number n, find the\r\nnumber of ordinary numbers among the numbers from 1 to n.\r\n",
     "solutions": [
         "#include \"bits/extc++.h\"\n\nusing namespace std;\n\ntemplate<class T, class U = less<T>>\nusing rt = __gnu_pbds::tree<T, __gnu_pbds::null_type, U, __gnu_pbds::rb_tree_tag, __gnu_pbds::tree_order_statistics_node_update>;\n\ntemplate<class T, class U>\nvoid sep(T &out, const string &s, const U &u) {\n\tout << u;\n}\n\ntemplate<class T, class Head, class ...Tail>\nvoid sep(T &out, const string &s, const Head &h, const Tail &...t) {\n\tout << h << s;\n\tsep(out, s, t...);\n}\n\n#ifdef DEBUG\n#define dbg(...)                                                      \\\ncerr << \"L\" << __LINE__ << \" [\" << #__VA_ARGS__ << \"]\" << \": \";       \\\nsep(cerr, \" | \", __VA_ARGS__);                                        \\\ncerr << endl\n#else\n#define cerr if(false) cerr\n#define dbg(...) cerr\n#endif\n\n//imagine a language where int = long\n#define long int64_t\n\n//typing too hard\n#define endl \"\\n\"\n\n#define sz(x) int((x).size())\n\nvector<int> ans;\n\nvoid pcomp() {\n\tfor(int i = 1; i < 10; i++) {\n\t\tstring s;\n\t\tfor(int j = 0; j < 9; j++) {\n\t\t\ts += to_string(i);\n\t\t\tans.push_back(stoi(s));\n\t\t}\n\t}\n\tsort(begin(ans), end(ans));\n}\n\nvoid solve() {\n\tint n;\n\tcin >> n;\n\tcout << upper_bound(begin(ans), end(ans), n) - ans.begin() << endl;\n}\n\nint main() {\n\tcin.tie(0)->sync_with_stdio(0);\n\tcin.exceptions(ios::failbit);\n#ifdef LOCAL\n\tfreopen(\"input.txt\", \"r\", stdin);\n#endif\n\tpcomp();\n\tint t = 1;\n\tcin >> t;\n\tfor(int _ = 1; _ <= t; _++) {\n\t\tdbg(_);\n//\t\tcout << \"Case #\" << _ << \": \";\n\t\tsolve();\n\t}\n}\n"
     ],
@@ -198,5 +198,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Ordinary Numbers.json",
     "editorial_link": "https://codeforces.com//blog/entry/90342",
-    "editorial": "Note that every ordinary number can be represented as . Therefore, to\r\ncount all ordinary numbers among the numbers from to , it is enough to\r\ncount the number of pairs such that . In the given constraints, it is\r\nenough to iterate over from to and from to .\r\n"
+    "editorial": "Note that every ordinary number can be represented as . Therefore, to\r\ncount all ordinary numbers among the numbers from to , it is enough to\r\ncount the number of pairs such that . In the given constraints, it is\r\nenough to iterate over from to and from to .\r\n",
+    "hint": []
 }

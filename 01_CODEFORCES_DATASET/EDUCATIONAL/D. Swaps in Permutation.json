@@ -138,5 +138,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\D. Swaps in Permutation.json",
     "editorial_link": "https://codeforces.com//blog/entry/46075",
-    "editorial": "The problem was suggested by Zi Song Yeoh zscoder. Consider a graph with\r\nvertices whose edges is the pairs from the input. It\u00e2\u0080\u0099s possible to swap\r\nany two values with the positions in some connected component in that\r\ngraph. So we can sort the values from any component in decreasing order.\r\nEasy to see that after sorting the values of each component we will get\r\nthe lexicographically maximal permutation. C++ solution\r\n"
+    "editorial": "The problem was suggested by Zi Song Yeoh zscoder. Consider a graph with\r\nvertices whose edges is the pairs from the input. Itâs possible to swap\r\nany two values with the positions in some connected component in that\r\ngraph. So we can sort the values from any component in decreasing order.\r\nEasy to see that after sorting the values of each component we will get\r\nthe lexicographically maximal permutation. C++ solution\r\n",
+    "hint": []
 }

@@ -190,5 +190,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Team Composition  Programmers and Mathematicians.json",
     "editorial_link": "https://codeforces.com//blog/entry/97288",
-    "editorial": "If necessary, change the values of and so that is always true. Consider\r\ntwo cases.1. Let . Then:, .This means that the set is at least times\r\nlarger than , and we can form teams of the form , where one participant\r\nwill be a programmer and three will be mathematicians.2. Let . Then\r\nassume that . Let\u00e2\u0080\u0099s substitute this value into the inequality:, , Then\r\nwe compose commands of the form . Since making such a command decreases\r\nthe value of by 2. The new value , . The condition still holds. Then\r\nmake commands of the form .The total number of commands is . That\u00e2\u0080\u0099s what\r\nwe wanted to get.\r\n"
+    "editorial": "If necessary, change the values of and so that is always true. Consider\r\ntwo cases.1. Let . Then:, .This means that the set is at least times\r\nlarger than , and we can form teams of the form , where one participant\r\nwill be a programmer and three will be mathematicians.2. Let . Then\r\nassume that . Letâs substitute this value into the inequality:, , Then\r\nwe compose commands of the form . Since making such a command decreases\r\nthe value of by 2. The new value , . The condition still holds. Then\r\nmake commands of the form .The total number of commands is . Thatâs what\r\nwe wanted to get.\r\n",
+    "hint": []
 }

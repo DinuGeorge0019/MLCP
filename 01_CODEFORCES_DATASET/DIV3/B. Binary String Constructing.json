@@ -136,5 +136,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Binary String Constructing.json",
     "editorial_link": "https://codeforces.com/blog/entry/60417",
-    "editorial": "This problem has several general cases: is even and , then the answer is\r\nrepeated times, then ones and zeroes; is even and , then the answer is\r\nrepeated times, then zeroes and ones; is odd and , then the answer is\r\nrepeated times, then zeroes and ones; is odd and , then the answer is\r\nrepeated times, then ones and zeroes. I am sure that there are other\r\nmore beautiful solution, but for me the easiest way to solve this\r\nproblem is to extract general cases and handle it.Overall complexity is\r\n.\r\n"
+    "editorial": "This problem has several general cases: is even and , then the answer is\r\nrepeated times, then ones and zeroes; is even and , then the answer is\r\nrepeated times, then zeroes and ones; is odd and , then the answer is\r\nrepeated times, then zeroes and ones; is odd and , then the answer is\r\nrepeated times, then ones and zeroes. I am sure that there are other\r\nmore beautiful solution, but for me the easiest way to solve this\r\nproblem is to extract general cases and handle it.Overall complexity is\r\n.\r\n",
+    "hint": []
 }

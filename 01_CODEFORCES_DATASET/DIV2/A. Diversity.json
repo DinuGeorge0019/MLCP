@@ -104,5 +104,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Diversity.json",
     "editorial_link": "https://codeforces.com//blog/entry/54029",
-    "editorial": "One could note what in case , we should always print .Overwise the\r\nfinding value is equal , where is a number of different letters in the\r\noriginal string.It is correct because if condition is satisfied and we\r\nshouldn\u00e2\u0080\u0099t do anything, so the answer is zero. If we could change\r\nduplicated letters to a different letters initially weren\u00e2\u0080\u0099t contained in\r\n.Solution complexity is\r\n"
+    "editorial": "One could note what in case , we should always print .Overwise the\r\nfinding value is equal , where is a number of different letters in the\r\noriginal string.It is correct because if condition is satisfied and we\r\nshouldnât do anything, so the answer is zero. If we could change\r\nduplicated letters to a different letters initially werenât contained in\r\n.Solution complexity is\r\n",
+    "hint": []
 }

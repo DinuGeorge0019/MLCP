@@ -1,1 +1,115 @@
-{"link": "https://codeforces.com//contest/2071/problem/E", "problemId": "3235598", "problem_idx": "E", "shortId": "2071E", "contest_number": "2071", "problem_submissions": {"C": [308500412, 308317666, 308361110, 308336146, 308323879, 308329162, 308431357, 308323153, 308322089, 308324712, 308324838, 308300023, 308338574, 308327490, 308358640], "D2": [308380420, 308341189, 308366571, 308352059, 308372786, 308368930, 308377735, 308374177, 308368337, 308375886], "F": [308373297, 308377404], "E": [308361980, 308345537, 308378051, 308376397, 308376665], "D1": [308339511, 308341058, 308362310, 308345467, 308346693, 308332849, 308332972, 308343247, 308340165, 308341094, 308346883, 308329536, 308369447], "B": [308310760, 308356333, 308327132, 308308541, 308313847, 308342227, 308309079, 308304207, 308317019, 308309205, 308310795, 308322545, 308331268], "A": [308295350, 308348314, 308303164, 308293936, 308302778, 308311307, 308294388, 308294024, 308294553, 308316276, 308297625, 308298079, 308296422]}, "editorial_link": "https://codeforces.com//blog/entry/140115", "editorial": "", "name": "E. LeaFall", "statement": "You are given a tree^{\r\ntext{ }} with n vertices. Over time, each vertex i (1\r\nle i\r\nle n) has a probability of\r\nfrac{p_i}{q_i} of falling. Determine the expected value of the number of\r\nunordered pairs^{\r\ntext{ }} of vertices that become leaves^{\r\ntext{ }} in the resulting forest^{\r\ntext{ }}, modulo 998\r\n,244\r\n,353.Note that when vertex v falls, it is removed along with all edges\r\nconnected to it. However, adjacent vertices remain unaffected by the\r\nfall of v.^{\r\ntext{ }}A tree is a connected graph without cycles. ^{\r\ntext{ }}An unordered pair is a collection of two elements where the\r\norder in which the elements appear does not matter. For example, the\r\nunordered pair (1, 2) is considered the same as (2, 1).^{\r\ntext{ }}A leaf is a vertex that is connected to exactly one edge.^{\r\ntext{ }}A forest is a graph without cycles\r\n", "solutions": [], "input": "", "output": "", "tags": ["combinatorics", "dp", "probabilities", "trees"], "dificulty": "2600", "interactive": false, "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. LeaFall.json"}
+{
+    "link": "https://codeforces.com//contest/2071/problem/E",
+    "problemId": "3235598",
+    "problem_idx": "E",
+    "shortId": "2071E",
+    "contest_number": "2071",
+    "problem_submissions": {
+        "C": [
+            308500412,
+            308317666,
+            308361110,
+            308336146,
+            308323879,
+            308329162,
+            308431357,
+            308323153,
+            308322089,
+            308324712,
+            308324838,
+            308300023,
+            308338574,
+            308327490,
+            308358640
+        ],
+        "D2": [
+            308380420,
+            308341189,
+            308366571,
+            308352059,
+            308372786,
+            308368930,
+            308377735,
+            308374177,
+            308368337,
+            308375886
+        ],
+        "F": [
+            308373297,
+            308377404
+        ],
+        "E": [
+            308361980,
+            308345537,
+            308378051,
+            308376397,
+            308376665
+        ],
+        "D1": [
+            308339511,
+            308341058,
+            308362310,
+            308345467,
+            308346693,
+            308332849,
+            308332972,
+            308343247,
+            308340165,
+            308341094,
+            308346883,
+            308329536,
+            308369447
+        ],
+        "B": [
+            308310760,
+            308356333,
+            308327132,
+            308308541,
+            308313847,
+            308342227,
+            308309079,
+            308304207,
+            308317019,
+            308309205,
+            308310795,
+            308322545,
+            308331268
+        ],
+        "A": [
+            308295350,
+            308348314,
+            308303164,
+            308293936,
+            308302778,
+            308311307,
+            308294388,
+            308294024,
+            308294553,
+            308316276,
+            308297625,
+            308298079,
+            308296422
+        ]
+    },
+    "editorial_link": "https://codeforces.com//blog/entry/140115",
+    "editorial": "SolutionLet denote the probability that the -th node falls. We partition\r\nthe unordered pairs into three categories: and are direct neighbors. and\r\nshare a common neighbor. Pairs that do not satisfy the first two\r\nconditions. Now, let us analyze the contribution of the first category\r\nto the final answer. For a pair of direct neighbors, both vertices\r\nbecome leaves if neither nor falls and if all of their other neighbors\r\nfall. Thus, the contribution of a specific pair is given by: The whole\r\ncontribution of the first category is: For the second category, and\r\nshare a neighbor, so this shared neighbor either must be the only one\r\nnot falling among the neighbors of and , or it must fall and exactly one\r\nof the other neighbors of both and must not fall. Additionally, both and\r\nmust not fall anyway. Therefore, the contribution for a pair in the\r\nsecond category is given by: where is the shared neighbor of and .The\r\nwhole contribution of the second category is: Moving to the third\r\ncategory: Here, and are neither direct neighbors nor do they share any\r\ncommon neighbor. In this case, the events that and become leaves are\r\ncompletely independent. Define as the probability that vertex becomes a\r\nleaf. Hence, for a pair in this category, the contribution is given by:\r\nThe whole contribution of the third category is: The final answer is\r\nobtained by summing the contributions from all three categories. We can\r\ncompute the contribution of the third category by summing for all pairs\r\nwith , and then subtracting the contributions corresponding to pairs\r\nthat satisfy one of the first two categories. The contribution of the\r\nsecond category can be computed by iterating over each node and\r\naccumulating the contributions from its neighbors (since these pairs\r\nshare that node as their only common neighbor). The contribution of the\r\nfirst category can be computed in linear time too.The overall time\r\ncomplexity is , where the factor arises from the modular inverse\r\ncomputations.\r\n",
+    "name": "E. LeaFall",
+    "statement": "You are given a tree^{\r\ntext{ }} with n vertices. Over time, each vertex i (1\r\nle i\r\nle n) has a probability of\r\nfrac{p_i}{q_i} of falling. Determine the expected value of the number of\r\nunordered pairs^{\r\ntext{ }} of vertices that become leaves^{\r\ntext{ }} in the resulting forest^{\r\ntext{ }}, modulo 998\r\n,244\r\n,353.Note that when vertex v falls, it is removed along with all edges\r\nconnected to it. However, adjacent vertices remain unaffected by the\r\nfall of v.^{\r\ntext{ }}A tree is a connected graph without cycles. ^{\r\ntext{ }}An unordered pair is a collection of two elements where the\r\norder in which the elements appear does not matter. For example, the\r\nunordered pair (1, 2) is considered the same as (2, 1).^{\r\ntext{ }}A leaf is a vertex that is connected to exactly one edge.^{\r\ntext{ }}A forest is a graph without cycles\r\n",
+    "solutions": [],
+    "input": "",
+    "output": "",
+    "tags": [
+        "combinatorics",
+        "dp",
+        "probabilities",
+        "trees"
+    ],
+    "dificulty": "2600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. LeaFall.json",
+    "hint": [
+        "Hint 1 Think about an unordered pair where both u and v are leaves in the final forest. Consider dividing all such pairs into separate categories based on their relationship in the original tree.",
+        "Hint 2 Let the first category be the pairs that are directly connected (neighbors), and analyze under what conditions both vertices become leaves.",
+        "Hint 3 For the pairs that are not direct neighbors, focus on those that share a common neighbor. Investigate how the state (fallen or not) of their neighbors influences the possibility of both vertices becoming leaves."
+    ]
+}

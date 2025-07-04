@@ -170,5 +170,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\D. Double Strings.json",
     "editorial_link": "https://codeforces.com//blog/entry/104786",
-    "editorial": "Use some data structure that allows you to answer queries of the form:\r\n\"does the string appear in the array ?\" For example, in C++ you can use\r\na , while in Python you can use a dictionary .Afterwards, for each\r\nstring , brute force all strings and such that . There are at most such\r\nstrings, because has length at most . Then check if both and appear in\r\nthe array using your data structure.The time complexity is per test\r\ncase, where is the maximum length of an input string.\r\n"
+    "editorial": "Use some data structure that allows you to answer queries of the form:\r\n\"does the string appear in the array ?\" For example, in C++ you can use\r\na , while in Python you can use a dictionary .Afterwards, for each\r\nstring , brute force all strings and such that . There are at most such\r\nstrings, because has length at most . Then check if both and appear in\r\nthe array using your data structure.The time complexity is per test\r\ncase, where is the maximum length of an input string.\r\n",
+    "hint": []
 }

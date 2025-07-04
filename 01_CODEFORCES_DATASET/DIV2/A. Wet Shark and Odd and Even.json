@@ -122,5 +122,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Wet Shark and Odd and Even.json",
     "editorial_link": "https://codeforces.com//blog/entry/23196",
-    "editorial": "First, if the sum of all the numbers is already even, then we do\r\nnothing. Otherwise, we remove the smallest odd number. Since, if the sum\r\nis odd, we need to remove a number with the same parity to make the sum\r\neven. Notice it\u00e2\u0080\u0099s always bad to remove more odd numbers, and it does\r\nnothing to remove even numbers.\r\n"
+    "editorial": "First, if the sum of all the numbers is already even, then we do\r\nnothing. Otherwise, we remove the smallest odd number. Since, if the sum\r\nis odd, we need to remove a number with the same parity to make the sum\r\neven. Notice itâs always bad to remove more odd numbers, and it does\r\nnothing to remove even numbers.\r\n",
+    "hint": []
 }

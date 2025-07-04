@@ -142,5 +142,9 @@
     ],
     "dificulty": "",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Palindromic Subsequences.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Palindromic Subsequences.json",
+    "hint": [
+        "Hint 1 Analyze the example with .",
+        "Hint 2 If is a palindrome, then is also a palindrome for all ."
+    ]
 }

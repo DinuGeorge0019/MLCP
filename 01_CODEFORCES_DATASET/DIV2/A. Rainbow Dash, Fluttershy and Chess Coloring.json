@@ -103,5 +103,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Rainbow Dash, Fluttershy and Chess Coloring.json",
     "editorial_link": "https://codeforces.com//blog/entry/81161",
-    "editorial": "By modeling the game on different grids it was possible to notice that\r\nthe answer is equal to . You can prove that this is the answer by using\r\ninduction method separately for grids with even and odd sides.Initially\r\nit was asked to solve the problem for rectangular grids. You can think\r\nabout this version of the problem.\r\n"
+    "editorial": "By modeling the game on different grids it was possible to notice that\r\nthe answer is equal to . You can prove that this is the answer by using\r\ninduction method separately for grids with even and odd sides.Initially\r\nit was asked to solve the problem for rectangular grids. You can think\r\nabout this version of the problem.\r\n",
+    "hint": []
 }

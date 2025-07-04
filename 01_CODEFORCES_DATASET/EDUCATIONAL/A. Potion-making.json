@@ -147,5 +147,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Potion-making.json",
     "editorial_link": "https://codeforces.com//blog/entry/90793",
-    "editorial": "Since you need liters of essence to be exactly of potion then we can\r\nwrite an equality: or and for some integer . Since we need to minimize\r\nand , then we should maximize , but both and should be divisible by . In\r\nother words, taking as Greatest Common Divisor of and is optimal.As a\r\nresult .\r\n"
+    "editorial": "Since you need liters of essence to be exactly of potion then we can\r\nwrite an equality: or and for some integer . Since we need to minimize\r\nand , then we should maximize , but both and should be divisible by . In\r\nother words, taking as Greatest Common Divisor of and is optimal.As a\r\nresult .\r\n",
+    "hint": []
 }

@@ -98,7 +98,7 @@
         ]
     },
     "name": "B. Kefa and Company",
-    "statement": "Kefa wants to celebrate his first big salary by going to restaurant.\r\nHowever, he needs company. Kefa has friends, each friend will agree to\r\ngo to the restaurant if Kefa asks. Each friend is characterized by the\r\namount of money he has and the friendship factor in respect to Kefa. The\r\nparrot doesn\u2019t want any friend to feel poor compared to somebody else in\r\nthe company (Kefa doesn\u2019t count). A friend feels poor if in the company\r\nthere is someone who has at least units of money more than he does.\r\nAlso, Kefa wants the total friendship factor of the members of the\r\ncompany to be maximum. Help him invite an optimal company!\r\n",
+    "statement": "Kefa wants to celebrate his first big salary by going to restaurant.\r\nHowever, he needs company. Kefa has friends, each friend will agree to\r\ngo to the restaurant if Kefa asks. Each friend is characterized by the\r\namount of money he has and the friendship factor in respect to Kefa. The\r\nparrot doesn’t want any friend to feel poor compared to somebody else in\r\nthe company (Kefa doesn’t count). A friend feels poor if in the company\r\nthere is someone who has at least units of money more than he does.\r\nAlso, Kefa wants the total friendship factor of the members of the\r\ncompany to be maximum. Help him invite an optimal company!\r\n",
     "solutions": [
         "#include<iostream>\n#include<sstream>\n#include<cstdio>\n#include<cstring>\n#include<string>\n#include<cstdlib>\n#include<cmath>\n#include<cctype>\n#include<ctime>\n#include<algorithm>\n#include<iomanip>\n#include<vector>\n#include<queue>\n#include<map>\n#include<set>\n#include<cassert>\n#include<bitset>\n\nusing namespace std;\ntypedef long long LL;\nconst int N=2e5;\nstruct ones\n{\n    int a,b;\n} f[N];\nint cmp(const ones &a,const ones &b)\n{\n    return a.a<b.a;\n}\nint main() {\n    int n,m;\n    cin>>n>>m;\n    for(int i=1;i<=n;i++)\n        scanf(\"%d%d\",&f[i].a,&f[i].b);\n    sort(f+1,f+n+1,cmp);\n    int zz=1;\n    long long ans=0,now=0;\n    for(int i=1;i<=n;i++)\n    {\n        while(f[i].a-f[zz].a >= m)\n        {\n            now=now-(long long)f[zz].b;\n            zz++;\n        }\n        now+=(long long)f[i].b;\n        if (now>ans) ans=now;\n    }\n    cout<<ans<<endl;\n    return 0;\n}"
     ],
@@ -113,5 +113,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Kefa and Company.json",
     "editorial_link": "https://codeforces.com//blog/entry/20468",
-    "editorial": "At first we sort all friends in money ascending order. Now the answer is\r\nsome array subsegment. Next, we use the method of two pointers for\r\nfinding the required subsegment. Asymptotics . Solution\r\n"
+    "editorial": "At first we sort all friends in money ascending order. Now the answer is\r\nsome array subsegment. Next, we use the method of two pointers for\r\nfinding the required subsegment. Asymptotics . Solution\r\n",
+    "hint": []
 }

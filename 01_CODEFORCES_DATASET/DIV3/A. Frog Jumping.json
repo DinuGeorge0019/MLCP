@@ -178,5 +178,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Frog Jumping.json",
     "editorial_link": "https://codeforces.com//blog/entry/63274",
-    "editorial": "With each pair of jumps of kind \"to the right to the left\" the frog\r\njumps . So the answer is almost . Almost because there can be one more\r\njump to the right. So if is odd then we have to add to the answer.\r\n"
+    "editorial": "With each pair of jumps of kind \"to the right to the left\" the frog\r\njumps . So the answer is almost . Almost because there can be one more\r\njump to the right. So if is odd then we have to add to the answer.\r\n",
+    "hint": []
 }

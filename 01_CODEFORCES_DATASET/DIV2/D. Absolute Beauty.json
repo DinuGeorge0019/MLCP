@@ -143,5 +143,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Absolute Beauty.json",
     "editorial_link": "https://codeforces.com//blog/entry/120960",
-    "editorial": "SolutionThe pair represents some interval, and is its length. Let us try\r\nto maximize the sum of the intervals\u00e2\u0080\u0099 lengths. We present three cases of\r\nwhat a swap does to two arbitrary intervals.Notice how the sum of the\r\nlengths increases only in the first case. We want the distance between\r\nthe first interval\u00e2\u0080\u0099s right endpoint and the second interval\u00e2\u0080\u0099s left\r\nendpoint to be as large as possible. So we choose integers and such that\r\nand is maximized. We add twice the value, if it is positive, to the\r\noriginal absolute beauty. If the value is or negative, we simply do\r\nnothing.To quickly find the maximum of over all and , we find the\r\nmaximum of and the minimum of . Subtracting the two extremum values\r\nproduces the desired result.\r\n"
+    "editorial": "SolutionThe pair represents some interval, and is its length. Let us try\r\nto maximize the sum of the intervalsâ lengths. We present three cases of\r\nwhat a swap does to two arbitrary intervals.Notice how the sum of the\r\nlengths increases only in the first case. We want the distance between\r\nthe first intervalâs right endpoint and the second intervalâs left\r\nendpoint to be as large as possible. So we choose integers and such that\r\nand is maximized. We add twice the value, if it is positive, to the\r\noriginal absolute beauty. If the value is or negative, we simply do\r\nnothing.To quickly find the maximum of over all and , we find the\r\nmaximum of and the minimum of . Subtracting the two extremum values\r\nproduces the desired result.\r\n",
+    "hint": [
+        "Hint If , swap them. Imagine the pairs as intervals. How can we visualize the problem?"
+    ]
 }

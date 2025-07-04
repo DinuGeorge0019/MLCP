@@ -100,7 +100,7 @@
         ]
     },
     "name": "B. T-primes",
-    "statement": "We know that prime numbers are positive integers that have exactly two\r\ndistinct positive divisors. Similarly, we\u2019ll call a positive integer ,\r\nif has exactly three distinct positive divisors.You are given an array\r\nof positive integers. For each of them determine whether it is -prime or\r\nnot.\r\n",
+    "statement": "We know that prime numbers are positive integers that have exactly two\r\ndistinct positive divisors. Similarly, we’ll call a positive integer ,\r\nif has exactly three distinct positive divisors.You are given an array\r\nof positive integers. For each of them determine whether it is -prime or\r\nnot.\r\n",
     "solutions": [
         "#include <cstdio>\n\nlong long num[1000010];\nint notPrime[1000010], cnt;\n\nbool find(long long obj){\n\n    int l = 0, r = cnt;\n    while(l != r){\n        \n        int m = (l + r) / 2;\n        if(obj <= num[m]) r = m;\n        else l = m + 1;\n\n    }\n\n    return l < cnt && num[l] == obj;\n\n}\n\nint main(){\n\n    for(int i = 2; i * i <= 1000000; i++){\n\n        if(notPrime[i]) continue;\n\n        for(int j = i * i; j <= 1000000; j += i){\n            notPrime[j] = 1;\n        }\n\n    }\n\n    for(int i = 2; i <= 1000000; i++){\n        if(!notPrime[i]) num[cnt++] = (long long)i * i;\n    }\n\n    int n;\n    scanf(\"%d\" ,&n);\n\n    while(n--){\n\n        long long obj;\n        scanf(\"%I64d\" ,&obj);\n\n        puts(find(obj)? \"YES\": \"NO\");\n\n    }\n\n}\n"
     ],
@@ -116,5 +116,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. T-primes.json",
     "editorial_link": "https://codeforces.com//blog/entry/5437",
-    "editorial": "It can be shown that only squares of prime numbers are T-primes, and\r\nthat there are not too many of them as many as there are prime numbers\r\nnot greater than . Precompute these numbers (using, for example, the\r\nsieve of Eratosthenes) and store them in an array or an std::set, then\r\nwe can answer each query by simply checking whether the number in\r\nquestion is amongst the precomputed numbers. The complexity of the\r\nsolution is linear in relation to or , where (one can also get a tighter\r\nbound). Sample solution: http://pastie.org/4897166 (archived copy)\r\n"
+    "editorial": "It can be shown that only squares of prime numbers are T-primes, and\r\nthat there are not too many of them as many as there are prime numbers\r\nnot greater than . Precompute these numbers (using, for example, the\r\nsieve of Eratosthenes) and store them in an array or an std::set, then\r\nwe can answer each query by simply checking whether the number in\r\nquestion is amongst the precomputed numbers. The complexity of the\r\nsolution is linear in relation to or , where (one can also get a tighter\r\nbound). Sample solution: http://pastie.org/4897166 (archived copy)\r\n",
+    "hint": []
 }

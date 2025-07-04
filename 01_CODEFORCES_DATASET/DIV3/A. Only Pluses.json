@@ -149,11 +149,11 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/131461",
-    "editorial": "TutorialLet\u00e2\u0080\u0099s prove why it\u00e2\u0080\u0099s always better to add to the smallest\r\nnumber, let , then compare the three expressions: , , and . Remove the\r\ncommon part , and we get: , , ., since , similarly, , since . Therefore,\r\nwe can simply find the minimum times and add one to it. And thus, obtain\r\nthe answer.Another, primitive approach is to simply iterate through what\r\nwe will add to , , and with three loops.Since we can only add times, the\r\ntime complexity of the solution is .\r\n",
+    "editorial": "TutorialLetâs prove why itâs always better to add to the smallest\r\nnumber, let , then compare the three expressions: , , and . Remove the\r\ncommon part , and we get: , , ., since , similarly, , since . Therefore,\r\nwe can simply find the minimum times and add one to it. And thus, obtain\r\nthe answer.Another, primitive approach is to simply iterate through what\r\nwe will add to , , and with three loops.Since we can only add times, the\r\ntime complexity of the solution is .\r\n",
     "name": "A. Only Pluses",
     "statement": "Kmes has written three integers a, b and c in order to remember that he\r\nhas to give Noobish_Monk a\r\ntimes b\r\ntimes c bananas.Noobish_Monk has found these integers and decided to do\r\nthe following : pick one of these integers; increase it by 1. For\r\nexample, if a = 2, b = 3 and c = 4, then one can increase a three times\r\nby one and increase b two times. After that a = 5, b = 5, c = 4. Then\r\nthe total number of bananas will be 5\r\ntimes 5\r\ntimes 4 = 100.What is the maximum value of a\r\ntimes b\r\ntimes c Noobish_Monk can achieve with these operations?\r\n",
     "solutions": [
-        "#include <bits/stdc++.h> using namespace std;\u00a0#define int long long#define inf 0x3F3F3F3F3F3F3F3F\u00a0const int MXN = 2e5 + 5;\u00a0mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());\u00a0void _(){\tint a, b, c;\tcin >> a >> b >> c;\tint res = -inf;\tfor (int i = 0; i <= 5; i++)\t{\t\tfor (int j = 0; j <= 5; j++)\t\t{\t\t\tfor (int k = 0; k <= 5; k++)\t\t\t{\t\t\t\tif (i + j + k <= 5) res = max(res, (a + i) * (b + j) * (c + k));\t\t\t}\t\t}\t}\tcout << res << '\\n';}\u00a0signed main(){\tios_base::sync_with_stdio(0);\tcin.tie(0);\tint t;\tcin >> t;\twhile (t--)\t{\t\t_();\t}}"
+        "#include <bits/stdc++.h> using namespace std; #define int long long#define inf 0x3F3F3F3F3F3F3F3F const int MXN = 2e5 + 5; mt19937 rng(chrono::steady_clock::now().time_since_epoch().count()); void _(){\tint a, b, c;\tcin >> a >> b >> c;\tint res = -inf;\tfor (int i = 0; i <= 5; i++)\t{\t\tfor (int j = 0; j <= 5; j++)\t\t{\t\t\tfor (int k = 0; k <= 5; k++)\t\t\t{\t\t\t\tif (i + j + k <= 5) res = max(res, (a + i) * (b + j) * (c + k));\t\t\t}\t\t}\t}\tcout << res << '\\n';} signed main(){\tios_base::sync_with_stdio(0);\tcin.tie(0);\tint t;\tcin >> t;\twhile (t--)\t{\t\t_();\t}}"
     ],
     "input": "",
     "output": "",
@@ -166,5 +166,6 @@
     ],
     "dificulty": "800",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Only Pluses.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Only Pluses.json",
+    "hint": []
 }

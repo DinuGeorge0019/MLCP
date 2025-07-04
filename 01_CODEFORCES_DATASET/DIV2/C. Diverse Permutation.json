@@ -92,7 +92,7 @@
         ]
     },
     "name": "C. Diverse Permutation",
-    "statement": "is an ordered set of integers , consisting of distinct positive integers\r\nnot larger than . We\u2019ll denote as the length of permutation .Your task\r\nis to find such permutation of length , that the group of numbers has\r\nexactly distinct elements.\r\n",
+    "statement": "is an ordered set of integers , consisting of distinct positive integers\r\nnot larger than . We’ll denote as the length of permutation .Your task\r\nis to find such permutation of length , that the group of numbers has\r\nexactly distinct elements.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    int n, k; cin >> n >> k;\n\n    int c = 1, s = 1, t = k;\n\n    while(t >= 0) {\n        cout << c << ' ';\n        c += s * t; t--; s *= -1;\n    }\n    for(int i = k + 2; i <= n; ++i) cout << i << ' ';\n    cout << endl;\n\n    return 0;\n}"
     ],
@@ -106,5 +106,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Diverse Permutation.json",
     "editorial_link": "https://codeforces.com//blog/entry/14417",
-    "editorial": "Let\u00e2\u0080\u0099s see, what\u00e2\u0080\u0099s the solution for some : 1\n10 2 9 3 8 4 7 5 6 At the odd indexes we placed increasing sequence 1,\n2, 3 .., at the even decreasing sequence . First, we must get the\npermutation the way described above, then get first numbers from it, and\nthen we should make all other distances be equal to 1. This solution\nworks with . Jury\u00e2\u0080\u0099s solution: 8394876\n"
+    "editorial": "Letâs see, whatâs the solution for some : 1\n10 2 9 3 8 4 7 5 6 At the odd indexes we placed increasing sequence 1,\n2, 3 .., at the even decreasing sequence . First, we must get the\npermutation the way described above, then get first numbers from it, and\nthen we should make all other distances be equal to 1. This solution\nworks with . Juryâs solution: 8394876\n",
+    "hint": []
 }

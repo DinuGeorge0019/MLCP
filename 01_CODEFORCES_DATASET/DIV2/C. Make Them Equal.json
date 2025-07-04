@@ -173,5 +173,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Make Them Equal.json",
     "editorial_link": "https://codeforces.com//blog/entry/95525",
-    "editorial": "If the whole string is equal to then you don\u00e2\u0080\u0099t need to make any\r\noperations.In order to find if it is possible with exactly operation, we\r\ncan pass through every and count all the letters that are divisible by .\r\nThis takes time complexity.If for some all its multiples are then the\r\nanswer is operation with that .If all the above conditions don\u00e2\u0080\u0099t hold\r\nyou can always make operations and make all the elements equal.One\r\npossible way is with and .After the first operation only the last\r\nelement of is not thus if we use since then is not divisible by and it\r\nwill become equal to .Time complexity: per test case.\r\n"
+    "editorial": "If the whole string is equal to then you donât need to make any\r\noperations.In order to find if it is possible with exactly operation, we\r\ncan pass through every and count all the letters that are divisible by .\r\nThis takes time complexity.If for some all its multiples are then the\r\nanswer is operation with that .If all the above conditions donât hold\r\nyou can always make operations and make all the elements equal.One\r\npossible way is with and .After the first operation only the last\r\nelement of is not thus if we use since then is not divisible by and it\r\nwill become equal to .Time complexity: per test case.\r\n",
+    "hint": [
+        "Hint You need atmost 2 operations."
+    ]
 }

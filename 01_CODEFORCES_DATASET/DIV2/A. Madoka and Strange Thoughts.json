@@ -145,5 +145,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Madoka and Strange Thoughts.json",
     "editorial_link": "https://codeforces.com//blog/entry/106553",
-    "editorial": "Notice that only the following pairs of numbers are possible: (x,x)\n, (x,2?x)\n, and (x,3?x)\n.\n\nProof:\nLet d=gcd(a,b)\n. Now notice that it's impossible that a=k?d\n for some k>4\n, because otherwise lcm\n will be at least k?d>3?d\n. Therefore the only possible cases are the pairs listed above and (2?d,3?d)\n, but in the latter case we have lcm=6?d\n.\n\nThe number of the pairs of the first kind is n\n, of the second kind is 2??n2?\n, and of the third kind is 2??n3?\n (the factor 2\n in the latter two formulae arises from the fact that pairs are ordered). Therefore, the answer to the problem is n+2?(?n2?+?n3?)\n."
+    "editorial": "Notice that only the following pairs of numbers are possible: (x,x)\n, (x,2?x)\n, and (x,3?x)\n.\n\nProof:\nLet d=gcd(a,b)\n. Now notice that it's impossible that a=k?d\n for some k>4\n, because otherwise lcm\n will be at least k?d>3?d\n. Therefore the only possible cases are the pairs listed above and (2?d,3?d)\n, but in the latter case we have lcm=6?d\n.\n\nThe number of the pairs of the first kind is n\n, of the second kind is 2??n2?\n, and of the third kind is 2??n3?\n (the factor 2\n in the latter two formulae arises from the fact that pairs are ordered). Therefore, the answer to the problem is n+2?(?n2?+?n3?)\n.",
+    "hint": []
 }

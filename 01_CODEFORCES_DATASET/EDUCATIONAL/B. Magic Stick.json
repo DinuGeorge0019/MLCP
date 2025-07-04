@@ -205,5 +205,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. Magic Stick.json",
     "editorial_link": "https://codeforces.com//blog/entry/71434",
-    "editorial": "cannot be transformed into any other number. can be transformed into or\r\n, and can be transformed only into . It means that if , then only is\r\nreachable; and if or , then should be less than .Otherwise, we can make\r\nas large as we want, so if , any is reachable.\r\n"
+    "editorial": "cannot be transformed into any other number. can be transformed into or\r\n, and can be transformed only into . It means that if , then only is\r\nreachable; and if or , then should be less than .Otherwise, we can make\r\nas large as we want, so if , any is reachable.\r\n",
+    "hint": []
 }

@@ -158,5 +158,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. 2-3 Moves.json",
     "editorial_link": "https://codeforces.com//blog/entry/105653",
-    "editorial": "If , the answer is (we can\u00e2\u0080\u0099t get , so we can move by to the right and by\r\nto the left). If or , the answer is obviously . Otherwise, the answer is\r\nalways . We can\u00e2\u0080\u0099t get the answer less than this value (because we need\r\nat least moves to get to the point greater than or equal to ) and we can\r\nalways get this answer by the recurrence.\r\n"
+    "editorial": "If , the answer is (we canât get , so we can move by to the right and by\r\nto the left). If or , the answer is obviously . Otherwise, the answer is\r\nalways . We canât get the answer less than this value (because we need\r\nat least moves to get to the point greater than or equal to ) and we can\r\nalways get this answer by the recurrence.\r\n",
+    "hint": []
 }

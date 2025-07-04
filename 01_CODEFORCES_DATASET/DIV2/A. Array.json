@@ -91,5 +91,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Array.json",
     "editorial_link": "https://codeforces.com//blog/entry/7497",
-    "editorial": "In this problem you just need to implement following algorithm. Split\r\ninput data into 3 vectors: first will contain negative numbers, second\r\npositive numbers, third zeroes. If size of first vector is even move one\r\nnumber from it to the third vector. If second vector is empty, then move\r\ntwo numbers from first vector to the second vector. This solution works\r\nin . uthor\u00e2\u0080\u0099s solution\r\n"
+    "editorial": "In this problem you just need to implement following algorithm. Split\r\ninput data into 3 vectors: first will contain negative numbers, second\r\npositive numbers, third zeroes. If size of first vector is even move one\r\nnumber from it to the third vector. If second vector is empty, then move\r\ntwo numbers from first vector to the second vector. This solution works\r\nin . uthorâs solution\r\n",
+    "hint": []
 }

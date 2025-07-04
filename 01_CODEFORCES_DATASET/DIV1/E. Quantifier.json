@@ -1,1 +1,136 @@
-{"link": "https://codeforces.com//contest/2081/problem/E", "problemId": "3268219", "problem_idx": "E", "shortId": "2081E", "contest_number": "2081", "problem_submissions": {"B": [310774215, 310752573, 310826211, 310739558, 310740102, 310737148, 310765995, 310740246, 310740411, 310741073, 310738730, 310756764, 310764342, 310740030, 311003693, 310899344, 310756759], "G2": [310759041, 310768901], "G1": [310755673, 310759015, 310756557, 310778645, 310765573, 310772467], "D": [310740089, 310749620, 310736583, 310742447, 310756472, 310749776, 311027213, 310763231, 310761892, 310742331, 310755537, 310777318, 310776606, 310764407, 310744818, 310748246, 310836677, 310748850, 310737628, 310743454, 310762523], "F": [310771700, 310779543, 310754815, 310762358, 310891482, 312515283], "C": [310742461, 310749579, 310750103, 310749689, 310758863, 310753338, 310754039, 310753444, 310776556, 310767765, 310753226, 310756623, 310767338, 310755335, 310755677, 310757463, 310759247, 310772525], "A": [310731565, 310739375, 310732389, 310731680, 310732110, 310734146, 310732038, 310732151, 310731709, 310735423, 310732004, 310743686, 310737151, 310732535, 310735886, 310731360, 310731694, 310736792], "E": [312258360, 310770842]}, "editorial_link": "https://codeforces.com//blog/entry/140702", "editorial": "", "name": "E. Quantifier", "statement": "Given a rooted tree with n+1 nodes labeled from 0 to n, where the root\r\nis node 0, and . There are m chips labeled from 1 to m, each colored\r\neither black or white. Initially, they are arranged on edge (0,1) from\r\ntop to bottom in ascending order of labels. You can perform the\r\nfollowing operations any number of times (possibly zero) in any order:\r\nSelect two edges (u,v) and (v,w) such that u is the parent of v and v is\r\nthe parent of w, where edge (u,v) contains at least one chip. Move the\r\nchip on edge (u,v) to the place on edge (v,w), i. e., above all existing\r\nchips on (v,w). Select two edges (u,v) and (v,w) such that u is the\r\nparent of v and v is the parent of w, where edge (v,w) contains at least\r\none chip. Move the chip on edge (v,w) to the place on edge (u,v), i. e.,\r\nbelow all existing chips on (u,v). Select two chips of the same color on\r\nthe same edge, and swap their positions. Each chip i has a movement\r\nrange, defined as all edges on the simple path from the root to node\r\nd_i. During operations, you must ensure that no chip is moved to an edge\r\noutside its movement range.Finally, you must move all chips back to edge\r\n(0,1). It can be found that the order of the chips may change. Compute\r\nthe number of possible permutations of chips for the final arrangement\r\non the edge (0,1) modulo 998\r\n,244\r\n,353.A permutation of chips is defined as a sequence of length m\r\nconsisting of the of the chips from top to bottom.\r\n", "solutions": [], "input": "", "output": "", "tags": ["combinatorics", "dp", "implementation"], "dificulty": "3300", "interactive": false, "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\E. Quantifier.json"}
+{
+    "link": "https://codeforces.com//contest/2081/problem/E",
+    "problemId": "3268219",
+    "problem_idx": "E",
+    "shortId": "2081E",
+    "contest_number": "2081",
+    "problem_submissions": {
+        "B": [
+            310774215,
+            310752573,
+            310826211,
+            310739558,
+            310740102,
+            310737148,
+            310765995,
+            310740246,
+            310740411,
+            310741073,
+            310738730,
+            310756764,
+            310764342,
+            310740030,
+            311003693,
+            310899344,
+            310756759
+        ],
+        "G2": [
+            310759041,
+            310768901
+        ],
+        "G1": [
+            310755673,
+            310759015,
+            310756557,
+            310778645,
+            310765573,
+            310772467
+        ],
+        "D": [
+            310740089,
+            310749620,
+            310736583,
+            310742447,
+            310756472,
+            310749776,
+            311027213,
+            310763231,
+            310761892,
+            310742331,
+            310755537,
+            310777318,
+            310776606,
+            310764407,
+            310744818,
+            310748246,
+            310836677,
+            310748850,
+            310737628,
+            310743454,
+            310762523
+        ],
+        "F": [
+            310771700,
+            310779543,
+            310754815,
+            310762358,
+            310891482,
+            312515283
+        ],
+        "C": [
+            310742461,
+            310749579,
+            310750103,
+            310749689,
+            310758863,
+            310753338,
+            310754039,
+            310753444,
+            310776556,
+            310767765,
+            310753226,
+            310756623,
+            310767338,
+            310755335,
+            310755677,
+            310757463,
+            310759247,
+            310772525
+        ],
+        "A": [
+            310731565,
+            310739375,
+            310732389,
+            310731680,
+            310732110,
+            310734146,
+            310732038,
+            310732151,
+            310731709,
+            310735423,
+            310732004,
+            310743686,
+            310737151,
+            310732535,
+            310735886,
+            310731360,
+            310731694,
+            310736792
+        ],
+        "E": [
+            312258360,
+            310770842
+        ]
+    },
+    "editorial_link": "https://codeforces.com//blog/entry/140702",
+    "editorial": "SolutionFirst, in descending order of labels, move each chip to the\r\ndeepest possible position successively. It can be shown that this allows\r\neach chip to reach the theoretically deepest position it can attain.\r\nConsequently, every final state can be obtained from this configuration\r\nby performing only upward moves of chips and swaps of adjacent chips\r\nwith the same color.Next comes the process of moving chips upward while\r\nperforming dynamic programming (DP). Let denote the edge from node to\r\nits parent. Assume we have decided the order of all the chips in subtree\r\n(except the ones on ), and we need to merge them with the original chips\r\non . If the bottom chip on shares color with the subtree’s top chip, we\r\nneed to know the length of the subtree’s topmost maximal monochromatic\r\ncontiguous segment to calculate the number of ways to merge the two\r\nparts, i.e., if the length of the bottommost segment on is and the\r\nlength of the topmost segment of the subtree is , we have ways to\r\ncombine them. So we need to record the color and the length of the top\r\nsegment.Let denote the number of permutation schemes on after moving all\r\nthe chips in subtree to , where: The topmost chip on is black/white\r\n(0/1). The length of the topmost maximal monochromatic contiguous\r\nsegment on is . When calculating for all , we first merge the DP states\r\nof all the subtrees of node , and then merge the original chips on into\r\nthe resulting DP states.Subtree merging: Assume we merge two subtrees\r\nand . Let and denote the number of chips on and respectively, and let be\r\na temporary DP array initialized to all zeros.Let’s consider two\r\ncases.Case 1: Different colors at tops of and Suppose the top chip comes\r\nfrom after merging. Then the maximal monochromatic segment length from\r\nbecomes irrelevant, and therefore let . If the top chip of would split\r\nthe top segment of , enumerate split positions. The split position\r\nshould be strictly inside the top segment of . Otherwise, the position\r\nof the top chip of becomes irrelevant. With suffix sum optimization,\r\nthis achieves time complexity.Case 2: Same color at topsIf there are\r\nonly chips of this color on both edges: Otherwise, assume the topmost\r\ndifferent-colored chip is from subtree after merging. Enumerate\r\ninsertion positions where this chip splits the top segment of the other\r\n(not necessarily strictly inside the segment). (Similar transition\r\nequation for .)With suffix sum optimization, this forms a tree knapsack\r\nDP with time complexity. After computing , we can treat as the DP states\r\nof a subtree, and continue to perform the process above.Merging original\r\nchips on into the results: We first account for internal permutations of\r\noriginal monochromatic segments. After that, if the bottom chip on\r\nshares color with merged subtrees’ top chip (with segment lengths and ),\r\nmultiply the DP state by .Assuming and are of the same order, the\r\noverall time complexity is .\r\n",
+    "name": "E. Quantifier",
+    "statement": "Given a rooted tree with n+1 nodes labeled from 0 to n, where the root\r\nis node 0, and . There are m chips labeled from 1 to m, each colored\r\neither black or white. Initially, they are arranged on edge (0,1) from\r\ntop to bottom in ascending order of labels. You can perform the\r\nfollowing operations any number of times (possibly zero) in any order:\r\nSelect two edges (u,v) and (v,w) such that u is the parent of v and v is\r\nthe parent of w, where edge (u,v) contains at least one chip. Move the\r\nchip on edge (u,v) to the place on edge (v,w), i. e., above all existing\r\nchips on (v,w). Select two edges (u,v) and (v,w) such that u is the\r\nparent of v and v is the parent of w, where edge (v,w) contains at least\r\none chip. Move the chip on edge (v,w) to the place on edge (u,v), i. e.,\r\nbelow all existing chips on (u,v). Select two chips of the same color on\r\nthe same edge, and swap their positions. Each chip i has a movement\r\nrange, defined as all edges on the simple path from the root to node\r\nd_i. During operations, you must ensure that no chip is moved to an edge\r\noutside its movement range.Finally, you must move all chips back to edge\r\n(0,1). It can be found that the order of the chips may change. Compute\r\nthe number of possible permutations of chips for the final arrangement\r\non the edge (0,1) modulo 998\r\n,244\r\n,353.A permutation of chips is defined as a sequence of length m\r\nconsisting of the of the chips from top to bottom.\r\n",
+    "solutions": [],
+    "input": "",
+    "output": "",
+    "tags": [
+        "combinatorics",
+        "dp",
+        "implementation"
+    ],
+    "dificulty": "3300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\E. Quantifier.json",
+    "hint": [
+        "Hint 1 Move each chip as deep as possible in descending order of labels. Can we simplify the operations after that?",
+        "Hint 2 Now we only need to move the chips upward and swap adjacent chips with the same color. What can we do after that?",
+        "Hint 3 We can perform dynamic programming (DP) to calculate the numbers. What information do we need to record?",
+        "Hint 4 We need to record the color and the length of the top monochromatic segment. How can we perform the DP in time complexity?"
+    ]
+}

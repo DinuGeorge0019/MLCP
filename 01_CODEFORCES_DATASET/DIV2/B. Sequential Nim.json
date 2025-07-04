@@ -131,5 +131,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Sequential Nim.json",
     "editorial_link": "https://codeforces.com//blog/entry/80427",
-    "editorial": "Suppose . If removing the entire first pile is winning, player 1 will do\r\nthat. Otherwise, player 1 can leave exactly one stone in the first pile,\r\nforcing player 2 to remove it, leaving player 1 in the winning position.\r\nOtherwise, if , then it is forced to remove the first pile.So, whichever\r\nplayer gets the first pile with more than one stone wins. That is, let\r\nbe the maximum number such that . If is even, the first player will win.\r\nOtherwise, the second player will win. The only exception is when all\r\npiles have exactly stone. In that case, the first player wins when is\r\nodd.Complexity is .\r\n"
+    "editorial": "Suppose . If removing the entire first pile is winning, player 1 will do\r\nthat. Otherwise, player 1 can leave exactly one stone in the first pile,\r\nforcing player 2 to remove it, leaving player 1 in the winning position.\r\nOtherwise, if , then it is forced to remove the first pile.So, whichever\r\nplayer gets the first pile with more than one stone wins. That is, let\r\nbe the maximum number such that . If is even, the first player will win.\r\nOtherwise, the second player will win. The only exception is when all\r\npiles have exactly stone. In that case, the first player wins when is\r\nodd.Complexity is .\r\n",
+    "hint": []
 }

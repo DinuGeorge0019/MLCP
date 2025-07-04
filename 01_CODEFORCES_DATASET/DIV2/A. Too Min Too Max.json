@@ -125,5 +125,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Too Min Too Max.json",
     "editorial_link": "https://codeforces.com//blog/entry/126423",
-    "editorial": "SolutionSuppose if there were only elements in the array. Let them be .\r\nThen the answer will be maximum of the three cases which are listed as\r\nfollows:- so clearly is the maximum. So, to maximize this we can set ,\r\nas large as possible and , as small as possible i.e. , , and where means\r\nelement in sorted order of given array.\r\n"
+    "editorial": "SolutionSuppose if there were only elements in the array. Let them be .\r\nThen the answer will be maximum of the three cases which are listed as\r\nfollows:- so clearly is the maximum. So, to maximize this we can set ,\r\nas large as possible and , as small as possible i.e. , , and where means\r\nelement in sorted order of given array.\r\n",
+    "hint": [
+        "Hint 1 What will be answer if there were only elements in the array?"
+    ]
 }

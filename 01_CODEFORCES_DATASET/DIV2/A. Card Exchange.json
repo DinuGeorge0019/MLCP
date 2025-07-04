@@ -108,7 +108,7 @@
         "F": []
     },
     "editorial_link": "https://codeforces.com//blog/entry/128914",
-    "editorial": "If you don\u00e2\u0080\u0099t initially have at least copies of any number, you can\u00e2\u0080\u0099t\r\nperform any operations, so the answer is .Otherwise, we can show that we\r\ncan always get down to cards, with the following algorithm: Choose any\r\ncard that you have copies of, and remove those copies If you have no\r\nmore cards, take any cards and end the process. Otherwise, let be the\r\nnumber on any card you have. Take copies of . Now, you have at least\r\ncopies of , so return to step . Since the total number of cards\r\ndecreases at each step, this process will always terminate, so you will\r\nalways end up with cards. Also, since the total number of cards\r\ndecreases by exactly at each step, and you can\u00e2\u0080\u0099t do any operations if\r\nyou have less than cards, it is impossible to do better than , so our\r\nsolution of is optimal.Complexity: or depending on implementation.\r\n",
+    "editorial": "If you donât initially have at least copies of any number, you canât\r\nperform any operations, so the answer is .Otherwise, we can show that we\r\ncan always get down to cards, with the following algorithm: Choose any\r\ncard that you have copies of, and remove those copies If you have no\r\nmore cards, take any cards and end the process. Otherwise, let be the\r\nnumber on any card you have. Take copies of . Now, you have at least\r\ncopies of , so return to step . Since the total number of cards\r\ndecreases at each step, this process will always terminate, so you will\r\nalways end up with cards. Also, since the total number of cards\r\ndecreases by exactly at each step, and you canât do any operations if\r\nyou have less than cards, it is impossible to do better than , so our\r\nsolution of is optimal.Complexity: or depending on implementation.\r\n",
     "name": "A. Card Exchange",
     "statement": "You have a hand of n cards, where each card has a number written on it,\r\nand a fixed integer k. You can perform the following operation any\r\nnumber of times: Choose any k cards from your hand that all have the\r\nsame number. Exchange these cards for k-1 cards, each of which can have\r\nnumber you choose (including the number written on the cards you just\r\nexchanged). Here is one possible sequence of operations for the first\r\nexample case, which has k=3: What is the minimum number of cards you can\r\nhave in your hand at the end of this process?\r\n",
     "solutions": [
@@ -123,5 +123,6 @@
     ],
     "dificulty": "800",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Card Exchange.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Card Exchange.json",
+    "hint": []
 }

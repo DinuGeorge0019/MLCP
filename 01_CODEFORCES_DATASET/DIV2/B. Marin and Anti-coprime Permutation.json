@@ -173,5 +173,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Marin and Anti-coprime Permutation.json",
     "editorial_link": "https://codeforces.com//blog/entry/101302",
-    "editorial": "TutorialWe can prove that . ProofAssuming : If there exists a prime\r\nnumber that , there are numbers divisible by , so we can match at most\r\nnumbers into pairs, which is smaller than . Otherwise, we can match odd\r\nnumbers with even positions, and even numbers with odd positions, which\r\nleads to . Because is odd, is not divisible by with . Therefore,\r\n.Therefore: If is odd, the answer is since the number of odd is greater\r\nthan the number of even. Otherwise, we will match odd with even and vice\r\nversa. For odd number in even position, we have ways. According to the\r\nmultiplicative rule, the answer will be .\r\n"
+    "editorial": "TutorialWe can prove that . ProofAssuming : If there exists a prime\r\nnumber that , there are numbers divisible by , so we can match at most\r\nnumbers into pairs, which is smaller than . Otherwise, we can match odd\r\nnumbers with even positions, and even numbers with odd positions, which\r\nleads to . Because is odd, is not divisible by with . Therefore,\r\n.Therefore: If is odd, the answer is since the number of odd is greater\r\nthan the number of even. Otherwise, we will match odd with even and vice\r\nversa. For odd number in even position, we have ways. According to the\r\nmultiplicative rule, the answer will be .\r\n",
+    "hint": [
+        "Hint 1 Let's . What is the maximum value of ?",
+        "Hint 2 For each value of , can you construct a satisfying permutation?"
+    ]
 }

@@ -92,5 +92,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Little Xor.json",
     "editorial_link": "https://codeforces.com//blog/entry/6054",
-    "editorial": "Let\u00e2\u0080\u0099s iterate over all segments in our array. For each of them we\u00e2\u0080\u0099ll\r\nfind the of all its elements. Then we need to output the maximal we\u00e2\u0080\u0099ve\r\nseen.\r\n"
+    "editorial": "Letâs iterate over all segments in our array. For each of them weâll\r\nfind the of all its elements. Then we need to output the maximal weâve\r\nseen.\r\n",
+    "hint": []
 }

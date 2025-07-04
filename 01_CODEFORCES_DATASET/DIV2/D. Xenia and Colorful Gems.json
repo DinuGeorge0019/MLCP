@@ -131,5 +131,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Xenia and Colorful Gems.json",
     "editorial_link": "https://codeforces.com//blog/entry/76099",
-    "editorial": "Once we read the first number (and know which set it\u00e2\u0080\u0099s coming from), the\r\ncases are possible while iterating over . Consider the array looks like\r\nthis in the beginning. Cases: This eventually goes over all possible\r\ntriplets, and every time we find a triplet, we find the best middle ()\r\nnumber using binary search. My submission: 76948887.\r\n"
+    "editorial": "Once we read the first number (and know which set itâs coming from), the\r\ncases are possible while iterating over . Consider the array looks like\r\nthis in the beginning. Cases: This eventually goes over all possible\r\ntriplets, and every time we find a triplet, we find the best middle ()\r\nnumber using binary search. My submission: 76948887.\r\n",
+    "hint": []
 }

@@ -145,5 +145,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Destroying Bridges.json",
     "editorial_link": "https://codeforces.com//blog/entry/127195",
-    "editorial": "O(n) SolutionAtleast bridges need to burnt (the bridges connecting the\r\nreachable islands and the non-reachable islands). A simple solution is\r\nfor every from to , check if , in which case print and break.\r\n"
+    "editorial": "O(n) SolutionAtleast bridges need to burnt (the bridges connecting the\r\nreachable islands and the non-reachable islands). A simple solution is\r\nfor every from to , check if , in which case print and break.\r\n",
+    "hint": [
+        "Hint 1 What is the minimum number of bridges to burn if we want to make exactly islands visitable from ?",
+        "Hint 2 What is the answer when .",
+        "Hint 3 When , is it possible to make any island non-visitable?"
+    ]
 }

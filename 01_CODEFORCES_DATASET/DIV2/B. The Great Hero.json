@@ -135,5 +135,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. The Great Hero.json",
     "editorial_link": "https://codeforces.com//blog/entry/87598",
-    "editorial": "The hero needs\r\nlceil b_i/A\r\nrceil attacks to kill the i-th monster, and he will obtain\r\nlceil b_i/A\r\nrceil a_i damage after that.Suppose the k-th monster is the last monster\r\nkilled by the hero. Then the health value of the hero before the last\r\nattack is h_k = B -\r\nsum_{i=1}^n\r\nleft\r\nlceil\r\nfrac {b_i} {A}\r\nright\r\nrceil a_i + a_k. All monsters can be killed if and only if\r\nmax_k\r\n{h_k\r\n} > 0. This can be checked in O(n) time.\r\n"
+    "editorial": "The hero needs\r\nlceil b_i/A\r\nrceil attacks to kill the i-th monster, and he will obtain\r\nlceil b_i/A\r\nrceil a_i damage after that.Suppose the k-th monster is the last monster\r\nkilled by the hero. Then the health value of the hero before the last\r\nattack is h_k = B -\r\nsum_{i=1}^n\r\nleft\r\nlceil\r\nfrac {b_i} {A}\r\nright\r\nrceil a_i + a_k. All monsters can be killed if and only if\r\nmax_k\r\n{h_k\r\n} > 0. This can be checked in O(n) time.\r\n",
+    "hint": []
 }

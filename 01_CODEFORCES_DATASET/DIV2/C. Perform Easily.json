@@ -131,5 +131,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Perform Easily.json",
     "editorial_link": "https://codeforces.com//blog/entry/84056",
-    "editorial": "My logic : The maximal and minimal frets are obviously useful frets i.e.\r\nthey are used by some fret. So I first sorted the notes and then fixed\r\nthe \"minimal used fret\" by using the frets required by the first note by\r\nthe various strings (the logic being that the smallest note will use the\r\nsmallest fret from all possible combinations). So out of the 6 frets\r\nusable by the first note, one of them should be the \"minimal\" fret of\r\nthe optimum set. Then I just binary search for the right hand side by\r\nchecking if all notes can be played for the specified minimal fret.\r\n"
+    "editorial": "My logic : The maximal and minimal frets are obviously useful frets i.e.\r\nthey are used by some fret. So I first sorted the notes and then fixed\r\nthe \"minimal used fret\" by using the frets required by the first note by\r\nthe various strings (the logic being that the smallest note will use the\r\nsmallest fret from all possible combinations). So out of the 6 frets\r\nusable by the first note, one of them should be the \"minimal\" fret of\r\nthe optimum set. Then I just binary search for the right hand side by\r\nchecking if all notes can be played for the specified minimal fret.\r\n",
+    "hint": []
 }

@@ -116,7 +116,7 @@
         ]
     },
     "name": "A. Subset Mex",
-    "statement": "Given a set of integers (it can contain equal elements).You have to\r\nsplit it into two subsets A and B (both of them can contain equal\r\nelements or be empty). You have to maximize the value of\r\nmex(A)+mex(B).Here mex of a set denotes the smallest non-negative\r\ninteger that doesn\u2019t exist in the set. For example: mex(\r\n{1,4,0,2,2,1\r\n})=3 mex(\r\n{3,3,2,1,3,0,0\r\n})=4 mex(\r\nvarnothing)=0 (mex for empty set) The set is splitted into two subsets A\r\nand B if for any integer number x the number of occurrences of x into\r\nthis set is equal to the sum of the number of occurrences of x into A\r\nand the number of occurrences of x into B.\r\n",
+    "statement": "Given a set of integers (it can contain equal elements).You have to\r\nsplit it into two subsets A and B (both of them can contain equal\r\nelements or be empty). You have to maximize the value of\r\nmex(A)+mex(B).Here mex of a set denotes the smallest non-negative\r\ninteger that doesn’t exist in the set. For example: mex(\r\n{1,4,0,2,2,1\r\n})=3 mex(\r\n{3,3,2,1,3,0,0\r\n})=4 mex(\r\nvarnothing)=0 (mex for empty set) The set is splitted into two subsets A\r\nand B if for any integer number x the number of occurrences of x into\r\nthis set is equal to the sum of the number of occurrences of x into A\r\nand the number of occurrences of x into B.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\n#define ff first\n#define ss second\n#define rep(i, a, b) for(int i = a; i < (b); ++i)\n#define all(x) begin(x), end(x)\n#define sz(x) (int)(x).size()\n#define pb push_back\n#define FASTIO ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);\n#define endl '\\n'\n//#define int long long\ntypedef long long ll;\ntypedef pair<int, int> pii;\ntypedef vector<ll> vl;\ntypedef vector<pii> vpi;\ntypedef pair<ll,ll> pll;\ntypedef vector<string> vs;\ntypedef vector<pll> vpl;\ntypedef vector<int> vi;\n\nvoid solve(){\n  int n;\n  cin >> n;\n  vi a(n);\n  vi cnt(150,0);\n  for(int i=0;i<n;i++){\n    cin >> a[i];\n    cnt[a[i]]++;\n  }\n  int res=0;\n  int curs = 2;\n  for(int i=0;i<=100;i++){\n    if(cnt[i] == 0)break;\n    int nv = min(curs,cnt[i]);\n    res+=nv;\n    curs = nv;\n  }\n  cout << res << endl;\n}\n\nint32_t main(){\n  FASTIO;\n  int t;\n  cin >> t;\n  while(t--){\n    solve();\n  }\n}"
     ],
@@ -131,5 +131,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Subset Mex.json",
     "editorial_link": "https://codeforces.com//blog/entry/82560",
-    "editorial": "Let us store the count of each number from to in array . Now would be\r\nthe smallest for which .Let this be . would be smallest for which . This\r\nis because one count of each number less than would go to therefore the\r\nelement which was present initially once would now not be available for\r\n.Overall Complexity: .\r\n"
+    "editorial": "Let us store the count of each number from to in array . Now would be\r\nthe smallest for which .Let this be . would be smallest for which . This\r\nis because one count of each number less than would go to therefore the\r\nelement which was present initially once would now not be available for\r\n.Overall Complexity: .\r\n",
+    "hint": []
 }

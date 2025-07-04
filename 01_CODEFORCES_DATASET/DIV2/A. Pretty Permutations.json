@@ -106,5 +106,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Pretty Permutations.json",
     "editorial_link": "https://codeforces.com//blog/entry/92199",
-    "editorial": "There are two cases: if is even, print: Formally, you swap every other\r\npair of adjacent elements. This is optimal because the total distance is\r\n, which has to be minimal since the distance of one cat must be . if is\r\nodd, first print then solve the even case for the remaining elements.\r\nThis is optimal because the distance is , which has to be minimal since\r\na distance of is not achievable.\r\n"
+    "editorial": "There are two cases: if is even, print: Formally, you swap every other\r\npair of adjacent elements. This is optimal because the total distance is\r\n, which has to be minimal since the distance of one cat must be . if is\r\nodd, first print then solve the even case for the remaining elements.\r\nThis is optimal because the distance is , which has to be minimal since\r\na distance of is not achievable.\r\n",
+    "hint": [
+        "Hint The parity (whether is odd or even) matters.",
+        "Hint Swapping two adjacent cats keeps both of them close to their original location and changes both of their locations.",
+        "Hint If is even, the optimal distance is , and if is odd the optimal distance is ."
+    ]
 }

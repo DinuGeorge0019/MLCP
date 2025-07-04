@@ -76,7 +76,7 @@
         ]
     },
     "name": "A. The number of positions",
-    "statement": "Petr stands in line of people, but he doesn\u2019t know exactly which\r\nposition he occupies. He can say that there are no less than people\r\nstanding in front of him and no more than people standing behind him.\r\nFind the number of different positions Petr can occupy.\r\n",
+    "statement": "Petr stands in line of people, but he doesn’t know exactly which\r\nposition he occupies. He can say that there are no less than people\r\nstanding in front of him and no more than people standing behind him.\r\nFind the number of different positions Petr can occupy.\r\n",
     "solutions": [
         "#include <iostream>\n#include <algorithm>\nusing namespace std;\n\nint main(void) {\n  for (int n, a, b; cin >> n >> a >> b; ) {\n    cout << (min(b + 1, n - a)) << \"\\n\";\n  }\n  return 0;\n}\n"
     ],
@@ -89,5 +89,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. The number of positions.json",
     "editorial_link": "https://codeforces.com//blog/entry/3047",
-    "editorial": "Let's iterate through the each item and check whether it is appropriate to the conditions a???i?-?1 and n?-?i???b (for i from 1 to n). The first condition can be converted into a?+?1???i, and the condition n?-?i???b in n?-?b???i, then the general condition can be written max(a?+?1,?n?-?b)???i and then our answer can be calculated by the formula n?-?max(a?+?1,?n?-?b)?+?1."
+    "editorial": "Let's iterate through the each item and check whether it is appropriate to the conditions a???i?-?1 and n?-?i???b (for i from 1 to n). The first condition can be converted into a?+?1???i, and the condition n?-?i???b in n?-?b???i, then the general condition can be written max(a?+?1,?n?-?b)???i and then our answer can be calculated by the formula n?-?max(a?+?1,?n?-?b)?+?1.",
+    "hint": []
 }

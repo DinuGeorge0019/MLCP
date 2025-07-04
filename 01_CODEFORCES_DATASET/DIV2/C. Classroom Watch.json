@@ -147,5 +147,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Classroom Watch.json",
     "editorial_link": "https://codeforces.com//blog/entry/55233",
-    "editorial": "For numbers that doesn't exceed 109 sum of digits doesn't exceed 100, so we can just iterate over all possible sums of digits x and check if sum of digits of n?-?x equals x.\n"
+    "editorial": "For numbers that doesn't exceed 109 sum of digits doesn't exceed 100, so we can just iterate over all possible sums of digits x and check if sum of digits of n?-?x equals x.\n",
+    "hint": []
 }

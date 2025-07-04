@@ -131,5 +131,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Tokitsukaze and Enhancement.json",
     "editorial_link": "https://codeforces.com/blog/entry/68314",
-    "editorial": "TutorialJust enumerating the increment can pass.However, by increasing\r\nat most points, the value of her HP can always become an odd number, and\r\nthus the highest possible level is either or . We can just solve case by\r\ncase.\r\n"
+    "editorial": "TutorialJust enumerating the increment can pass.However, by increasing\r\nat most points, the value of her HP can always become an odd number, and\r\nthus the highest possible level is either or . We can just solve case by\r\ncase.\r\n",
+    "hint": []
 }

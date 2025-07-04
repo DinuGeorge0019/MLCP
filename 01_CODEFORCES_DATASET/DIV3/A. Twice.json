@@ -167,9 +167,9 @@
     "editorial_link": "https://codeforces.com//blog/entry/136334",
     "editorial": "We want to count how many times we can choose i\n and j\n such that ai=aj\n. Suppose fx\n stores the frequency of x\n in a\n. Once we choose ai=aj=x\n, fx\n is subtracted by 2\n. Thus, the answer is the sum of ?fx2?\n over all x\n.",
     "name": "A. Twice",
-    "statement": "Kinich unboxes an array a with n integers. Initially, Kinich\u2019s score is\r\n0. He will perform the following operation any number of times: Select\r\ntwo indices i and j (1\r\nleq i < j\r\nleq n) such that neither i nor j has been chosen in any previous\r\noperation and a_i = a_j. Then, add 1 to his score. Output the maximum\r\nscore Kinich can achieve after performing the aforementioned operation\r\nany number of times.\r\n",
+    "statement": "Kinich unboxes an array a with n integers. Initially, Kinich’s score is\r\n0. He will perform the following operation any number of times: Select\r\ntwo indices i and j (1\r\nleq i < j\r\nleq n) such that neither i nor j has been chosen in any previous\r\noperation and a_i = a_j. Then, add 1 to his score. Output the maximum\r\nscore Kinich can achieve after performing the aforementioned operation\r\nany number of times.\r\n",
     "solutions": [
-        "#include <bits/stdc++.h>\u00a0#define int long long#define fi first#define se second\u00a0const int N = 2e5 + 5;const int K = 1e2 + 5;const int mod = 1e9 + 7;const int inf = 1e18 + 7;\u00a0#define all(v) (v).begin(), (v).end()#define pii pair<int, int> \u00a0using namespace std;\u00a0mt19937 rd(chrono::steady_clock::now().time_since_epoch().count());\u00a0int t, n;int cnt[22];\u00a0signed main() {    ios_base::sync_with_stdio(0);    cin.tie(0);        if(ifstream(\"file.inp\")){    \tfreopen(\"file.inp\", \"r\", stdin);    \tfreopen(\"file.out\", \"w\", stdout);    }        cin >> t;    while(t--) {    \tcin >> n;    \tfor(int i = 1; i <= n; i++) {    \t\tint x;    \t\tcin >> x;    \t\tcnt[x]++;    \t}    \tint res = 0;    \tfor(int i = 1; i <= n; i++) res += cnt[i] / 2, cnt[i] = 0;    \tcout << res << '\\n';    }        return 0;}\u00a0// tuntun"
+        "#include <bits/stdc++.h> #define int long long#define fi first#define se second const int N = 2e5 + 5;const int K = 1e2 + 5;const int mod = 1e9 + 7;const int inf = 1e18 + 7; #define all(v) (v).begin(), (v).end()#define pii pair<int, int>  using namespace std; mt19937 rd(chrono::steady_clock::now().time_since_epoch().count()); int t, n;int cnt[22]; signed main() {    ios_base::sync_with_stdio(0);    cin.tie(0);        if(ifstream(\"file.inp\")){    \tfreopen(\"file.inp\", \"r\", stdin);    \tfreopen(\"file.out\", \"w\", stdout);    }        cin >> t;    while(t--) {    \tcin >> n;    \tfor(int i = 1; i <= n; i++) {    \t\tint x;    \t\tcin >> x;    \t\tcnt[x]++;    \t}    \tint res = 0;    \tfor(int i = 1; i <= n; i++) res += cnt[i] / 2, cnt[i] = 0;    \tcout << res << '\\n';    }        return 0;} // tuntun"
     ],
     "input": "",
     "output": "",
@@ -178,5 +178,6 @@
     ],
     "dificulty": "800",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Twice.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Twice.json",
+    "hint": []
 }

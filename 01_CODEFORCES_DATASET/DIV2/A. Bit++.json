@@ -100,7 +100,7 @@
         ]
     },
     "name": "A. Bit++",
-    "statement": "The classic programming language of Bitland is Bit++. This language is\r\nso peculiar and complicated.The language is that peculiar as it has\r\nexactly one variable, called . Also, there are two operations: Operation\r\nincreases the value of variable by 1. Operation decreases the value of\r\nvariable by 1. A statement in language Bit++ is a sequence, consisting\r\nof exactly one operation and one variable . The statement is written\r\nwithout spaces, that is, it can only contain characters \"\", \"\", \"\".\r\nExecuting a statement means applying the operation it contains.A\r\nprogramme in Bit++ is a sequence of statements, each of them needs to be\r\nexecuted. Executing a programme means executing all the statements it\r\ncontains.You\u2019re given a programme in language Bit++. The initial value\r\nof is . Execute the programme and find its final value (the value of the\r\nvariable when this programme is executed).\r\n",
+    "statement": "The classic programming language of Bitland is Bit++. This language is\r\nso peculiar and complicated.The language is that peculiar as it has\r\nexactly one variable, called . Also, there are two operations: Operation\r\nincreases the value of variable by 1. Operation decreases the value of\r\nvariable by 1. A statement in language Bit++ is a sequence, consisting\r\nof exactly one operation and one variable . The statement is written\r\nwithout spaces, that is, it can only contain characters \"\", \"\", \"\".\r\nExecuting a statement means applying the operation it contains.A\r\nprogramme in Bit++ is a sequence of statements, each of them needs to be\r\nexecuted. Executing a programme means executing all the statements it\r\ncontains.You’re given a programme in language Bit++. The initial value\r\nof is . Execute the programme and find its final value (the value of the\r\nvariable when this programme is executed).\r\n",
     "solutions": [
         "#include <cstdio>\n#include <cmath>\n#include <cstring>\n#include <algorithm>\n#include <map>\n#include <vector>\n#include <queue>\n#include <iostream>\n#include <string>\nusing namespace std;\n#define LL long long\n#define maxn 200100\n#define maxe 210000\n\nchar s[20];\nint main()\n{\n\tint n,ans=0;\n\tcin>>n;\n\twhile(n--)\n\t{\n\t\tscanf(\"%s\",s);\n\t\tif(s[1]=='+')\n\t\t\tans++;\n\t\telse\n\t\t\tans--;\n\t}\n\tcout<<ans<<endl;\n}\t"
     ],
@@ -113,5 +113,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Bit++.json",
     "editorial_link": "https://codeforces.com//blog/entry/6999",
-    "editorial": "Just use a simple loop."
+    "editorial": "Just use a simple loop.",
+    "hint": []
 }

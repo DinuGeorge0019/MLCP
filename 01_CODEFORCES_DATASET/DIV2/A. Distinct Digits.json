@@ -154,5 +154,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Distinct Digits.json",
     "editorial_link": "https://codeforces.com//blog/entry/70162",
-    "editorial": "Let\u00e2\u0080\u0099s see how to check if all digits of are different. Since there can\r\nbe only different numbers( to ) in single digit, you can count the\r\noccurrences of numbers by looking all digits of . You can count all\r\ndigits by using modulo or changing whole number to string. For example,\r\nif , then occurrence of each number will be , because there are two s,\r\nsingle and single in . So is invalid number.Now do the same thing for\r\nall where . If you find any valid number then print it. Otherwise print\r\n.Time complexity is .\r\n"
+    "editorial": "Letâs see how to check if all digits of are different. Since there can\r\nbe only different numbers( to ) in single digit, you can count the\r\noccurrences of numbers by looking all digits of . You can count all\r\ndigits by using modulo or changing whole number to string. For example,\r\nif , then occurrence of each number will be , because there are two s,\r\nsingle and single in . So is invalid number.Now do the same thing for\r\nall where . If you find any valid number then print it. Otherwise print\r\n.Time complexity is .\r\n",
+    "hint": []
 }

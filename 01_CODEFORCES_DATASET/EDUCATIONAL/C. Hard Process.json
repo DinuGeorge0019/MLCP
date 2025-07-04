@@ -129,7 +129,7 @@
         ]
     },
     "name": "C. Hard Process",
-    "statement": "You are given an array with elements. Each element of is either or\r\n.Let\u2019s denote the length of the longest subsegment of consecutive\r\nelements in , consisting of only numbers one, as . You can change no\r\nmore than zeroes to ones to maximize .\r\n",
+    "statement": "You are given an array with elements. Each element of is either or\r\n.Let’s denote the length of the longest subsegment of consecutive\r\nelements in , consisting of only numbers one, as . You can change no\r\nmore than zeroes to ones to maximize .\r\n",
     "solutions": [
         "# include <cstdio>\n# include <set>\nusing namespace std;\nconst int MN = 3e5 + 44;\nint a[MN];\nint main()\n{\n\tint n, k;\n\tscanf(\"%d%d\", &n, &k);\n\tfor (int i = 0; i < n; ++i)\n\t{\n\t\tscanf(\"%d\", a + i);\n\t\ta[i] ^= 1;\n\t}\n\tint res = 0;\n\tint sum = 0;\n\tint h = 0;\n\tint l = 0, r = 0;\n\tfor (int t = 0; t < n; ++t)\n\t{\n\t\twhile (sum + a[h] <= k && h < n)\n\t\t{\n\t\t\tsum += a[h];\n\t\t\th++;\n\t\t}\n\t\tif (h - t > res)\n\t\t{\n\t\t\tres = h - t;\n\t\t\tl = t;\n\t\t\tr = h;\n\t\t}\n\t\tres = max(res, h - t);\n\t\tsum -= a[t];\n\t}\n\tprintf(\"%d\\n\", res);\n\tfor (int i = l; i < r; ++i)\n\t\ta[i] = 0;\n\tfor (int i = 0; i < n; ++i)\n\t\tprintf(\"%d \", 1 - a[i]);\n\tprintf(\"\\n\");\n}"
     ],
@@ -144,5 +144,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\C. Hard Process.json",
     "editorial_link": "https://codeforces.com//blog/entry/44259",
-    "editorial": "The problem was suggested by Mohammad Amin Raeisi Smaug. Let\u00e2\u0080\u0099s call the\r\nsegment good if it contains no more than zeroes. Note if segment is good\r\nthan the segment is also good. So we can use the method of two pointers:\r\nthe first pointer is and the second is . Let\u00e2\u0080\u0099s iterate over from the\r\nleft to the right and move while we can (to do that we should simply\r\nmaintain the number of zeroes in the current segment). C++ solution\r\n"
+    "editorial": "The problem was suggested by Mohammad Amin Raeisi Smaug. Letâs call the\r\nsegment good if it contains no more than zeroes. Note if segment is good\r\nthan the segment is also good. So we can use the method of two pointers:\r\nthe first pointer is and the second is . Letâs iterate over from the\r\nleft to the right and move while we can (to do that we should simply\r\nmaintain the number of zeroes in the current segment). C++ solution\r\n",
+    "hint": []
 }

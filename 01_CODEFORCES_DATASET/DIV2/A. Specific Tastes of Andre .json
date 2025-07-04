@@ -117,7 +117,7 @@
         ]
     },
     "name": "A. Specific Tastes of Andre ",
-    "statement": "Andre has very specific tastes. Recently he started falling in love with\r\narrays.Andre calls an nonempty array b , if sum of its elements is\r\ndivisible by the length of this array. For example, array [2, 3, 1] is\r\ngood, as sum of its elements 6 is divisible by 3, but array [1, 1, 2, 3]\r\nisn\u2019t good, as 7 isn\u2019t divisible by 4. Andre calls an array a of length\r\nn if the following conditions hold: Every nonempty subarray of this\r\narray is . For every i (1\r\nle i\r\nle n), 1\r\nleq a_i\r\nleq 100. Given a positive integer n, output any array of length n. We\r\ncan show that for the given constraints such an array always exists.An\r\narray c is a subarray of an array d if c can be obtained from d by\r\ndeletion of several (possibly, zero or all) elements from the beginning\r\nand several (possibly, zero or all) elements from the end.\r\n",
+    "statement": "Andre has very specific tastes. Recently he started falling in love with\r\narrays.Andre calls an nonempty array b , if sum of its elements is\r\ndivisible by the length of this array. For example, array [2, 3, 1] is\r\ngood, as sum of its elements 6 is divisible by 3, but array [1, 1, 2, 3]\r\nisn’t good, as 7 isn’t divisible by 4. Andre calls an array a of length\r\nn if the following conditions hold: Every nonempty subarray of this\r\narray is . For every i (1\r\nle i\r\nle n), 1\r\nleq a_i\r\nleq 100. Given a positive integer n, output any array of length n. We\r\ncan show that for the given constraints such an array always exists.An\r\narray c is a subarray of an array d if c can be obtained from d by\r\ndeletion of several (possibly, zero or all) elements from the beginning\r\nand several (possibly, zero or all) elements from the end.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\n\nusing namespace std;\n\ntypedef long long ll;\n\nint main(){\n    ios::sync_with_stdio(false);\n    cin.tie(NULL);\n\n    int t;\n    cin >> t;\n\n    while(t--){\n        int n;\n        cin >> n;\n\n        for(int i = 0; i < n; ++i)\n            cout << 1 << \" \";\n        cout << \"\\n\";\n    }\n}"
     ],
@@ -131,5 +131,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Specific Tastes of Andre .json",
     "editorial_link": "https://codeforces.com//blog/entry/84589",
-    "editorial": "The array = is perfect since the sum of every subarray is exactly equal\r\nto its length, and thus divisible by it.\r\n"
+    "editorial": "The array = is perfect since the sum of every subarray is exactly equal\r\nto its length, and thus divisible by it.\r\n",
+    "hint": []
 }

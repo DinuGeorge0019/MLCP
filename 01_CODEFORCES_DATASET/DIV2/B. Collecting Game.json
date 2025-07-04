@@ -165,5 +165,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Collecting Game.json",
     "editorial_link": "https://codeforces.com//blog/entry/123160",
-    "editorial": "SolutionLet\u00e2\u0080\u0099s sort array . The answer for the largest element is because\r\nthe score, which is , cannot be smaller than any of the other elements.\r\nNow, consider the second largest element. The answer is at least because\r\nevery element that is not greater than can be taken. Then, we check if\r\nthe score is at least . This inspires the following solution: first, we\r\nfind the prefix sum of array . We calculate the answer in decreasing\r\norder of . To calculate the answer for an , we find the largest such\r\nthat and set the answer for equal to the answer of .\r\n"
+    "editorial": "SolutionLetâs sort array . The answer for the largest element is because\r\nthe score, which is , cannot be smaller than any of the other elements.\r\nNow, consider the second largest element. The answer is at least because\r\nevery element that is not greater than can be taken. Then, we check if\r\nthe score is at least . This inspires the following solution: first, we\r\nfind the prefix sum of array . We calculate the answer in decreasing\r\norder of . To calculate the answer for an , we find the largest such\r\nthat and set the answer for equal to the answer of .\r\n",
+    "hint": []
 }

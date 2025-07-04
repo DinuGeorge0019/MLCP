@@ -1,1 +1,116 @@
-{"link": "https://codeforces.com//contest/2092/problem/D", "problemId": "3297796", "problem_idx": "D", "shortId": "2092D", "contest_number": "2092", "problem_submissions": {"F": [313024072], "E": [313000271, 312969707, 312983960, 312981996, 312968778, 312981677, 312983137, 312976146, 312967918, 312987199, 312966853, 312978935, 312982784, 312983310, 312990508], "D": [312985746, 312980683, 312966151, 312963806, 312979770, 312972092, 312973588, 312972934, 312975411, 312970630, 312984829, 312974754, 312973591, 312974219, 312974125], "C": [312968332, 312958283, 312951558, 312951101, 312956688, 312962577, 312960872, 312961466, 312959434, 312964501, 312963490, 312968676, 312965224, 312966318, 312958909], "B": [312954182, 312954965, 312956218, 312968439, 312955440, 312953626, 312955662, 312953860, 312954705, 312962665, 312965211, 312957241, 312955219, 312953537], "A": [312949653, 312950184, 312949676, 312949416, 312951072, 312954840, 312949917, 312948936, 312949574, 312962028, 315023921, 312963336, 312950648, 312950994, 312951265]}, "editorial_link": "https://codeforces.com//blog/entry/141023", "editorial": "", "name": "D. Mishkin Energizer", "statement": "In anticipation of a duel with his old friend Fernan, Edmond is\r\npreparing an energy drink called \"\". The drink consists of a string s of\r\nlength n, made up only of the characters , , and , which correspond to\r\nthe content of three different substances in the drink.We call the drink\r\nif it contains an equal number of all substances. To boost his aura and\r\nensure victory in the duel, Edmond must make the initial string balanced\r\nby applying the following operation: Choose an index i such that s_i\r\nneq s_{i+1} (where i + 1 must not exceed the size of the string). Insert\r\na character x, either , , or , between them such that x\r\nneq s_i and x\r\nneq s_{i+1}. Help Edmond make the drink balanced and win the duel by\r\nperforming . If there are multiple solutions, any one of them can be\r\noutput. If it is impossible, you must report this.\r\n", "solutions": [], "input": "", "output": "", "tags": ["brute force", "constructive algorithms", "greedy", "implementation", "strings"], "dificulty": "1800", "interactive": false, "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Mishkin Energizer.json"}
+{
+    "link": "https://codeforces.com//contest/2092/problem/D",
+    "problemId": "3297796",
+    "problem_idx": "D",
+    "shortId": "2092D",
+    "contest_number": "2092",
+    "problem_submissions": {
+        "F": [
+            313024072
+        ],
+        "E": [
+            313000271,
+            312969707,
+            312983960,
+            312981996,
+            312968778,
+            312981677,
+            312983137,
+            312976146,
+            312967918,
+            312987199,
+            312966853,
+            312978935,
+            312982784,
+            312983310,
+            312990508
+        ],
+        "D": [
+            312985746,
+            312980683,
+            312966151,
+            312963806,
+            312979770,
+            312972092,
+            312973588,
+            312972934,
+            312975411,
+            312970630,
+            312984829,
+            312974754,
+            312973591,
+            312974219,
+            312974125
+        ],
+        "C": [
+            312968332,
+            312958283,
+            312951558,
+            312951101,
+            312956688,
+            312962577,
+            312960872,
+            312961466,
+            312959434,
+            312964501,
+            312963490,
+            312968676,
+            312965224,
+            312966318,
+            312958909
+        ],
+        "B": [
+            312954182,
+            312954965,
+            312956218,
+            312968439,
+            312955440,
+            312953626,
+            312955662,
+            312953860,
+            312954705,
+            312962665,
+            312965211,
+            312957241,
+            312955219,
+            312953537
+        ],
+        "A": [
+            312949653,
+            312950184,
+            312949676,
+            312949416,
+            312951072,
+            312954840,
+            312949917,
+            312948936,
+            312949574,
+            312962028,
+            315023921,
+            312963336,
+            312950648,
+            312950994,
+            312951265
+        ]
+    },
+    "editorial_link": "https://codeforces.com//blog/entry/141023",
+    "editorial": "Solution 1It is clear that there is no solution if all the letters in\r\nare the same. Let us now prove that a solution always exists in all\r\nother cases.While the string remains unbalanced, let us assume that ,\r\nwhere , and denotes the number of occurrences of the letter in .\r\nConsider two cases: The string contains the substring bc or cb. In this\r\ncase, we can perform the operation on it to obtain bac or cab.\r\nOtherwise, the string must contain the substring ca or ac. Without loss\r\nof generality, assume that contains ca. Then we can perform the\r\nfollowing sequence of operations: ca cba cbca cbaca cabaca. It can be\r\nobserved that after each operation, the value of decreases by one. Here,\r\n, , and are always chosen such that . Therefore, the algorithm is\r\nguaranteed to terminate, and it does so when , which implies .It remains\r\nto prove that the number of operations performed by the proposed\r\nalgorithm does not exceed . ProofAssume that initially , where . Then\r\n.While , we increment by one in each step, using no more than operations\r\nper step. Therefore, this phase requires at most operations. Afterwards,\r\nthe algorithm alternately increments and by one until both become equal\r\nto . I claim that this phase will use the -operations sequence (i.e.,\r\nthe second case in the algorithm) at most once. Indeed, let us consider\r\nthe first time we perform the transformation ca cabaca. It is easy to\r\nsee that all subsequent steps will involve only single-operation\r\ntransformations. Thus, this phase requires no more than operations.\r\nSumming up, the total number of operations is bounded above by . If ,\r\nthis number is less than given that . Otherwise, the first step of the\r\nalgorithm will be either bc bac or cb cab, requiring only one operation.\r\nThis improves the estimate for the number of operations in the first\r\nphase from to . As a result, in the case where , the total number of\r\noperations does not exceed .\r\n",
+    "name": "D. Mishkin Energizer",
+    "statement": "In anticipation of a duel with his old friend Fernan, Edmond is\r\npreparing an energy drink called \"\". The drink consists of a string s of\r\nlength n, made up only of the characters , , and , which correspond to\r\nthe content of three different substances in the drink.We call the drink\r\nif it contains an equal number of all substances. To boost his aura and\r\nensure victory in the duel, Edmond must make the initial string balanced\r\nby applying the following operation: Choose an index i such that s_i\r\nneq s_{i+1} (where i + 1 must not exceed the size of the string). Insert\r\na character x, either , , or , between them such that x\r\nneq s_i and x\r\nneq s_{i+1}. Help Edmond make the drink balanced and win the duel by\r\nperforming . If there are multiple solutions, any one of them can be\r\noutput. If it is impossible, you must report this.\r\n",
+    "solutions": [],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "constructive algorithms",
+        "greedy",
+        "implementation",
+        "strings"
+    ],
+    "dificulty": "1800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Mishkin Energizer.json",
+    "hint": [
+        "Hint It is impossible to balance the string if and only if all its letters are the same."
+    ]
+}

@@ -163,5 +163,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Turtle Math  Fast Three Task.json",
     "editorial_link": "https://codeforces.com//blog/entry/126560",
-    "editorial": "Let\u00e2\u0080\u0099s denote the sum of elements as . If is already divisible by , then\r\nthe answer is .The answer is in the following cases: If , then we can\r\nadd to any element to make the sum divisible by ; If there exists an\r\nsuch that , then we can remove such to make the sum divisible by .\r\nOtherwise, if , we cannot achieve the required sum in one operation. We\r\ncan increase any element twice, then the sum will increase by and become\r\ndivisible by .\r\n"
+    "editorial": "Letâs denote the sum of elements as . If is already divisible by , then\r\nthe answer is .The answer is in the following cases: If , then we can\r\nadd to any element to make the sum divisible by ; If there exists an\r\nsuch that , then we can remove such to make the sum divisible by .\r\nOtherwise, if , we cannot achieve the required sum in one operation. We\r\ncan increase any element twice, then the sum will increase by and become\r\ndivisible by .\r\n",
+    "hint": []
 }

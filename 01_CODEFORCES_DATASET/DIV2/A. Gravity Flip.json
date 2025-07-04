@@ -106,5 +106,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Gravity Flip.json",
     "editorial_link": "https://codeforces.com//blog/entry/11186",
-    "editorial": "Observe that in the final configuration the heights of the columns are\r\nin non-decreasing order. Also, the number of columns of each height\r\nremains the same. This means that the answer to the problem is the\r\nsorted sequence of the given column heights. Solution complexity: ,\r\nsince we can sort by counting.\r\n"
+    "editorial": "Observe that in the final configuration the heights of the columns are\r\nin non-decreasing order. Also, the number of columns of each height\r\nremains the same. This means that the answer to the problem is the\r\nsorted sequence of the given column heights. Solution complexity: ,\r\nsince we can sort by counting.\r\n",
+    "hint": []
 }

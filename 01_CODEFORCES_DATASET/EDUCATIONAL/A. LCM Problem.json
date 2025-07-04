@@ -182,5 +182,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. LCM Problem.json",
     "editorial_link": "https://codeforces.com//blog/entry/80809",
-    "editorial": "Suppose we have chosen and as the answer, and is not a divisor of .\r\nSince belongs to , we could have chosen and instead. So if the answer\r\nexists, there also exists an answer where is a divisor of .If , then\r\nthere is no pair such that and . Otherwise, and is the answer.\r\n"
+    "editorial": "Suppose we have chosen and as the answer, and is not a divisor of .\r\nSince belongs to , we could have chosen and instead. So if the answer\r\nexists, there also exists an answer where is a divisor of .If , then\r\nthere is no pair such that and . Otherwise, and is the answer.\r\n",
+    "hint": []
 }

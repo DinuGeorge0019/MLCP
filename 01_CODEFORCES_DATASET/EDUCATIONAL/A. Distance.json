@@ -165,7 +165,7 @@
         ]
     },
     "name": "A. Distance",
-    "statement": "Let\u2019s denote the Manhattan distance between two points p_1 (with\r\ncoordinates (x_1, y_1)) and p_2 (with coordinates (x_2, y_2)) as d(p_1,\r\np_2) = |x_1 - x_2| + |y_1 - y_2|. For example, the distance between two\r\npoints with coordinates (1, 3) and (4, 2) is |1 - 4| + |3 - 2| = 4.You\r\nare given two points, A and B. The point A has coordinates (0, 0), the\r\npoint B has coordinates (x, y).Your goal is to find a point C such that:\r\nboth coordinates of C are non-negative integers; d(A, C) =\r\ndfrac{d(A, B)}{2} (without any rounding); d(B, C) =\r\ndfrac{d(A, B)}{2} (without any rounding). Find any point C that meets\r\nthese constraints, or report that no such point exists.\r\n",
+    "statement": "Let’s denote the Manhattan distance between two points p_1 (with\r\ncoordinates (x_1, y_1)) and p_2 (with coordinates (x_2, y_2)) as d(p_1,\r\np_2) = |x_1 - x_2| + |y_1 - y_2|. For example, the distance between two\r\npoints with coordinates (1, 3) and (4, 2) is |1 - 4| + |3 - 2| = 4.You\r\nare given two points, A and B. The point A has coordinates (0, 0), the\r\npoint B has coordinates (x, y).Your goal is to find a point C such that:\r\nboth coordinates of C are non-negative integers; d(A, C) =\r\ndfrac{d(A, B)}{2} (without any rounding); d(B, C) =\r\ndfrac{d(A, B)}{2} (without any rounding). Find any point C that meets\r\nthese constraints, or report that no such point exists.\r\n",
     "solutions": [
         "// xtqqwq\n#include<bits/stdc++.h>\n\n#define pb push_back\n#define fi first\n#define se second\n#define mp make_pair\n\nusing namespace std;\n\ntypedef long long ll;\ntypedef unsigned long long ull;\ntypedef pair<int,int> pii;\ntypedef pair<ll,ll> pll;\ntypedef long double ld;\n\ntemplate <typename T> bool chkmin(T &x,T y){return x>y?x=y,1:0;}\ntemplate <typename T> bool chkmax(T &x,T y){return x<y?x=y,1:0;}\n\nint readint(){\n\tint x=0,f=1; char ch=getchar();\n\twhile(ch<'0'||ch>'9'){if(ch=='-')f=-1;ch=getchar();}\n\twhile(ch>='0'&&ch<='9'){x=x*10+ch-'0';ch=getchar();}\n\treturn x*f;\n}\n\nint x,y;\n\nint main(){\n\tint T=readint();\n\twhile(T--){\n\t\tx=readint(); y=readint();\n\t\tif((x+y)&1) printf(\"-1 -1\\n\");\n\t\telse{\n\t\t\tint t=(x+y)/2;\n\t\t\tprintf(\"%d %d\\n\",x/2,(y+1)/2);\n\t\t}\n\t}\n\treturn 0;\n}"
     ],
@@ -179,5 +179,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Distance.json",
     "editorial_link": "https://codeforces.com//blog/entry/97164",
-    "editorial": "There is a solution in , but in fact, a solution that checks all points\r\nwith -coordinate from to and -coordinate from to is fast enough. There\u00e2\u0080\u0099s\r\nno need to check any other points, since implies that point is on one of\r\nthe shortest paths between and .\r\n"
+    "editorial": "There is a solution in , but in fact, a solution that checks all points\r\nwith -coordinate from to and -coordinate from to is fast enough. Thereâs\r\nno need to check any other points, since implies that point is on one of\r\nthe shortest paths between and .\r\n",
+    "hint": []
 }

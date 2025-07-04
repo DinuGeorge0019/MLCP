@@ -182,5 +182,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. Queries about less or equal elements.json",
     "editorial_link": "https://codeforces.com//blog/entry/21827",
-    "editorial": "Let\u00e2\u0080\u0099s sort all numbers in a. Now let\u00e2\u0080\u0099s iterate over elements of and for\r\nelement find the index of lowest number that is greater than . We can do\r\nthat using binary search. That index will be the answer for value .\r\nComplexity: .\r\n"
+    "editorial": "Letâs sort all numbers in a. Now letâs iterate over elements of and for\r\nelement find the index of lowest number that is greater than . We can do\r\nthat using binary search. That index will be the answer for value .\r\nComplexity: .\r\n",
+    "hint": []
 }

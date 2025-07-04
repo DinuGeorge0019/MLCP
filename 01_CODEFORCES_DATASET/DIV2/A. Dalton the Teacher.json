@@ -147,5 +147,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Dalton the Teacher.json",
     "editorial_link": "https://codeforces.com//blog/entry/118540",
-    "editorial": "SolutionLet be the number of sad students at the beginning. The answer\r\nis .In one move, you can make at most sad students happy (because you\r\ncan change the position of at most two students), so you need at least\r\nmoves.In fact, you can make everyone happy in exactly moves: while there\r\nare at least sad students, you can swap them and both of them will be\r\nhappy; if there is exactly sad student left, you can swap it with any\r\nother student. Complexity:\r\n"
+    "editorial": "SolutionLet be the number of sad students at the beginning. The answer\r\nis .In one move, you can make at most sad students happy (because you\r\ncan change the position of at most two students), so you need at least\r\nmoves.In fact, you can make everyone happy in exactly moves: while there\r\nare at least sad students, you can swap them and both of them will be\r\nhappy; if there is exactly sad student left, you can swap it with any\r\nother student. Complexity:\r\n",
+    "hint": [
+        "Hint 1 What's the most efficient way to make the sad students happy?",
+        "Hint 2 In most cases, you can make sad students happy in move."
+    ]
 }

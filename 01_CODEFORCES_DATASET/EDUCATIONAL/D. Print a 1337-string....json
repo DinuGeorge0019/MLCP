@@ -152,5 +152,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\D. Print a 1337-string....json",
     "editorial_link": "https://codeforces.com/blog/entry/68972",
-    "editorial": "Let\u00e2\u0080\u0099s consider the following string . If digit occurs times in it, then\r\nstring have subsequences . Let\u00e2\u0080\u0099s increase the number of digits in this\r\nstring while condition holds ( is the number of digits in this string).\r\nThe length of this string will not exceed because . The value will not\r\nexceed as well.All we have to do is increase the number of subsequences\r\nin the current string by . So if we add digits after the first two\r\ndigits we increase the number of subsequences by . The string will look\r\nlike this: , where sequence consists of exactly digits and sequence\r\nconsists of exactly digits .\r\n"
+    "editorial": "Letâs consider the following string . If digit occurs times in it, then\r\nstring have subsequences . Letâs increase the number of digits in this\r\nstring while condition holds ( is the number of digits in this string).\r\nThe length of this string will not exceed because . The value will not\r\nexceed as well.All we have to do is increase the number of subsequences\r\nin the current string by . So if we add digits after the first two\r\ndigits we increase the number of subsequences by . The string will look\r\nlike this: , where sequence consists of exactly digits and sequence\r\nconsists of exactly digits .\r\n",
+    "hint": []
 }

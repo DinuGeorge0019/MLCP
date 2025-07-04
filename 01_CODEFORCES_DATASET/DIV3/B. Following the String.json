@@ -184,5 +184,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Following the String.json",
     "editorial_link": "https://codeforces.com//blog/entry/125597",
-    "editorial": "To build the desired string, we will move from left to right and add\r\ncharacters. In order to add a character at each step with the required\r\nnumber of occurrences, we will keep track of the number of times each\r\ncharacter is added.\r\n"
+    "editorial": "To build the desired string, we will move from left to right and add\r\ncharacters. In order to add a character at each step with the required\r\nnumber of occurrences, we will keep track of the number of times each\r\ncharacter is added.\r\n",
+    "hint": []
 }

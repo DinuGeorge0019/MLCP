@@ -74,7 +74,7 @@
         ]
     },
     "name": "A. Levko and Table",
-    "statement": "Levko loves tables that consist of rows and columns very much. He\r\nespecially loves beautiful tables. A table is to Levko if the sum of\r\nelements in each row and column of the table equals .Unfortunately, he\r\ndoesn\u2019t know any such table. Your task is to help him to find at least\r\none of them.\r\n",
+    "statement": "Levko loves tables that consist of rows and columns very much. He\r\nespecially loves beautiful tables. A table is to Levko if the sum of\r\nelements in each row and column of the table equals .Unfortunately, he\r\ndoesn’t know any such table. Your task is to help him to find at least\r\none of them.\r\n",
     "solutions": [
         "#include <iostream>\n#include <algorithm>\n#include <vector>\n#include <cmath>\n#include <memory.h>\n#include <time.h>\n#include <set>\n#include <map>\n#include <deque>\n#include <queue>\n#include <cstdlib>\n#include <cstdio>\n#include <string>\n#include <fstream>\n\nusing namespace std;\n\nint a[222][222];\n\nint main(){\n    //freopen(\"input.txt\",\"r\",stdin);\n    //freopen(\"output.txt\",\"w\",stdout);\n    ios_base::sync_with_stdio(0);\n    int n,m;\n    cin >> n >> m;\n    for (int i = 1; i<=n; i++)\n     for (int j = 1; j<=n; j++) a[i][j]=1;\n    int ans = m - (n-1);\n    for (int i = 1; i<=n; i++) a[i][i]=ans;\n    for (int i = 1; i<=n; i++){\n    for (int j = 1; j<=n; j++) cout << a[i][j] << \" \"; cout << endl;\n    }\n    return 0;\n}\n"
     ],
@@ -88,5 +88,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Levko and Table.json",
     "editorial_link": "https://codeforces.com//blog/entry/9529",
-    "editorial": "Matrix,in which all diagonal elements equal and other elements equal ,\r\nsatisfied all conditions. For example, if n = 4 and k = 7, our matrix\r\nwill be 7 0 0 0 0 7 0 0 0 0 7 0 0 0 0 7\r\n"
+    "editorial": "Matrix,in which all diagonal elements equal and other elements equal ,\r\nsatisfied all conditions. For example, if n = 4 and k = 7, our matrix\r\nwill be 7 0 0 0 0 7 0 0 0 0 7 0 0 0 0 7\r\n",
+    "hint": []
 }

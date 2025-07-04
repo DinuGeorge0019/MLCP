@@ -172,5 +172,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Lunar New Year and a Wander.json",
     "editorial_link": "https://codeforces.com/blog/entry/64928",
-    "editorial": "In fact, you don\u00e2\u0080\u0099t really need to consider the path Bob wanders. A\r\npriority queue is enough for this problem. When Bob visits a node, add\r\nits adjacent nodes into the priority queue. Every time he visits a new\r\nnode, it will be one with the smallest index in the priority queue.\r\n"
+    "editorial": "In fact, you donât really need to consider the path Bob wanders. A\r\npriority queue is enough for this problem. When Bob visits a node, add\r\nits adjacent nodes into the priority queue. Every time he visits a new\r\nnode, it will be one with the smallest index in the priority queue.\r\n",
+    "hint": []
 }

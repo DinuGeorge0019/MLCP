@@ -155,5 +155,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B2. TV Subscriptions  Hard Version .json",
     "editorial_link": "https://codeforces.com//blog/entry/70898",
-    "editorial": "In larger limitations we have to use two pointers to maintain the number of distinct elements between segments. We can store a map or an array that counts the number of occurences of each element, as well as the number of distinct elements (i.e. the number of non-zero entries in the map). Moving the segment to the right involves changing two entries of the map, keeping track of which entries become/cease to be non-zero. The complexity is O(nlogn)\n or O(n)\n (both are acceptable)."
+    "editorial": "In larger limitations we have to use two pointers to maintain the number of distinct elements between segments. We can store a map or an array that counts the number of occurences of each element, as well as the number of distinct elements (i.e. the number of non-zero entries in the map). Moving the segment to the right involves changing two entries of the map, keeping track of which entries become/cease to be non-zero. The complexity is O(nlogn)\n or O(n)\n (both are acceptable).",
+    "hint": []
 }

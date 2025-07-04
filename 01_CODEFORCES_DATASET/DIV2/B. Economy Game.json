@@ -108,5 +108,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Economy Game.json",
     "editorial_link": "https://codeforces.com//blog/entry/45425",
-    "editorial": "We can simply try every from to and from , and if is non-negative and\r\ndivided by , then the answer is \"YES\". If there is no such and , then\r\nthe answer is \"NO\". Code\r\n"
+    "editorial": "We can simply try every from to and from , and if is non-negative and\r\ndivided by , then the answer is \"YES\". If there is no such and , then\r\nthe answer is \"NO\". Code\r\n",
+    "hint": []
 }

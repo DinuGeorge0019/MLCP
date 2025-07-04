@@ -171,5 +171,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\B. Increasing.json",
     "editorial_link": "https://codeforces.com//blog/entry/107962",
-    "editorial": "If there are two elements with the same value, then the answer is ,\r\nbecause neither of these values is less than the other.Otherwise, the\r\nanswer is , since we can just sort the array.The time complexity is or\r\ndepending on the implementation.\r\n"
+    "editorial": "If there are two elements with the same value, then the answer is ,\r\nbecause neither of these values is less than the other.Otherwise, the\r\nanswer is , since we can just sort the array.The time complexity is or\r\ndepending on the implementation.\r\n",
+    "hint": []
 }

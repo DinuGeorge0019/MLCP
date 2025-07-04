@@ -144,5 +144,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Array Cloning Technique.json",
     "editorial_link": "https://codeforces.com//blog/entry/101663",
-    "editorial": "EditorialWe will use a greedy technique. Let\u00e2\u0080\u0099s find the most common\r\nelement in the array. Let it be and let it occur times in the array.\r\nThen let\u00e2\u0080\u0099s make a copy where all elements are . To do that we can make a\r\ncopy of the given array and put all in one array. Now we will repeat the\r\nalgorithm for the new array until we get a copy with numbers .\r\n"
+    "editorial": "EditorialWe will use a greedy technique. Letâs find the most common\r\nelement in the array. Let it be and let it occur times in the array.\r\nThen letâs make a copy where all elements are . To do that we can make a\r\ncopy of the given array and put all in one array. Now we will repeat the\r\nalgorithm for the new array until we get a copy with numbers .\r\n",
+    "hint": []
 }

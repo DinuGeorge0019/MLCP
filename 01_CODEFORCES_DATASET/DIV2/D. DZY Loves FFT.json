@@ -99,5 +99,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. DZY Loves FFT.json",
     "editorial_link": "https://codeforces.com//blog/entry/12959",
-    "editorial": "Firstly, you should notice that A, B are given randomly.\n\nThen there're many ways to solve this problem, I just introduce one of them.\n\nThis algorithm can get Ci one by one. Firstly, choose an s. Then check if Ci equals to n,?n?-?1,?n?-?2... n?-?s?+?1. If none of is the answer, just calculate Ci by brute force.\n\nThe excepted time complexity to calculate Ci?-?1 is around\n\n\nwhere .\n\nJust choose an s to make the formula as small as possible. The worst excepted number of operations is around tens of million."
+    "editorial": "Firstly, you should notice that A, B are given randomly.\n\nThen there're many ways to solve this problem, I just introduce one of them.\n\nThis algorithm can get Ci one by one. Firstly, choose an s. Then check if Ci equals to n,?n?-?1,?n?-?2... n?-?s?+?1. If none of is the answer, just calculate Ci by brute force.\n\nThe excepted time complexity to calculate Ci?-?1 is around\n\n\nwhere .\n\nJust choose an s to make the formula as small as possible. The worst excepted number of operations is around tens of million.",
+    "hint": []
 }

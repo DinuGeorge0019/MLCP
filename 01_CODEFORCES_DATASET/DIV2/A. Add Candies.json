@@ -164,5 +164,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Add Candies.json",
     "editorial_link": "https://codeforces.com//blog/entry/82067",
-    "editorial": "Tiny hintWe\u00e2\u0080\u0099re only interested in differences between the elements. Is\r\nthere another way to express the operation?\r\n"
+    "editorial": "Tiny hintWeâre only interested in differences between the elements. Is\r\nthere another way to express the operation?\r\n",
+    "hint": [
+        "Hint The operation in the -th turn is equivalent to selecting one element and subtracting from it."
+    ]
 }

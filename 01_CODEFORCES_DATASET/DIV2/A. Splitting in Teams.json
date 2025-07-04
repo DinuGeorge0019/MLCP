@@ -134,7 +134,7 @@
         ]
     },
     "name": "A. Splitting in Teams",
-    "statement": "There were groups of students which came to write a training contest. A\r\ngroup is either one person who can write the contest with anyone else,\r\nor two people who want to write the contest in the same team.The coach\r\ndecided to form teams of exactly three people for this training.\r\nDetermine the maximum number of teams of three people he can form. It is\r\npossible that he can\u2019t use all groups to form teams. For groups of two,\r\neither both students should write the contest, or both should not. If\r\ntwo students from a group of two will write the contest, they should be\r\nin the same team.\r\n",
+    "statement": "There were groups of students which came to write a training contest. A\r\ngroup is either one person who can write the contest with anyone else,\r\nor two people who want to write the contest in the same team.The coach\r\ndecided to form teams of exactly three people for this training.\r\nDetermine the maximum number of teams of three people he can form. It is\r\npossible that he can’t use all groups to form teams. For groups of two,\r\neither both students should write the contest, or both should not. If\r\ntwo students from a group of two will write the contest, they should be\r\nin the same team.\r\n",
     "solutions": [
         "#include<cstdio>\n#include<cstring>\n#include<iostream>\n#include<algorithm>\nusing namespace std;\nint n,c1,c2;\nint main(){\n\tscanf(\"%d\",&n);\n\tfor(int i=1,x;i<=n;i++){\n\t\tscanf(\"%d\",&x);\n\t\tif(x==1)c1++;\n\t\telse c2++;\n\t}\n\tint ans=min(c2,c1);c1-=ans;\n\tans+=c1/3;\n\tprintf(\"%d\\n\",ans);\n\treturn 0;\n}\n"
     ],
@@ -149,5 +149,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Splitting in Teams.json",
     "editorial_link": "https://codeforces.com//blog/entry/56392",
-    "editorial": "it is profitably to the coach to unite groups from two students with\r\ngroups from one student and after that unite in teams three groups from\r\none student. Let\u00e2\u0080\u0099s calculate two values: the number of groups from one\r\nstudent, and the number of groups from two students. Then if the answer\r\nis . In the other case, the answer is .\r\n"
+    "editorial": "it is profitably to the coach to unite groups from two students with\r\ngroups from one student and after that unite in teams three groups from\r\none student. Letâs calculate two values: the number of groups from one\r\nstudent, and the number of groups from two students. Then if the answer\r\nis . In the other case, the answer is .\r\n",
+    "hint": []
 }

@@ -192,5 +192,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\B. Triple.json",
     "editorial_link": "https://codeforces.com//blog/entry/102101",
-    "editorial": "Approach 1:Sort the array using an efficient sorting algorithm. For\r\nevery element check if the next two in the array are equal to it. If you\r\nfind such an element output it. Time complexity is .Approach 2:Notice\r\nthat elements have an upper bound of , you can use an auxiliary array to\r\nstore the count of each value. Go through each value and see if its\r\ncount is bigger than or equal to . Time complexity is .\r\n"
+    "editorial": "Approach 1:Sort the array using an efficient sorting algorithm. For\r\nevery element check if the next two in the array are equal to it. If you\r\nfind such an element output it. Time complexity is .Approach 2:Notice\r\nthat elements have an upper bound of , you can use an auxiliary array to\r\nstore the count of each value. Go through each value and see if its\r\ncount is bigger than or equal to . Time complexity is .\r\n",
+    "hint": []
 }

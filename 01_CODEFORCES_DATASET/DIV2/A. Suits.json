@@ -138,5 +138,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Suits.json",
     "editorial_link": "https://codeforces.com/blog/entry/72247",
-    "editorial": "There are two ways to approach this problem. The first way is to iterate\r\non the number of suits of one type that we will compose and calculate\r\nthe number of suits of the second type we can compose from the remaining\r\nitems.The second way is to use the fact that if , then we have to make\r\nas many suits of the first type as possible (and the opposite is true if\r\n). So we firstly make the maximum possible number of more expensive\r\nsuits, and use the remaining items to compose cheaper suits.\r\n"
+    "editorial": "There are two ways to approach this problem. The first way is to iterate\r\non the number of suits of one type that we will compose and calculate\r\nthe number of suits of the second type we can compose from the remaining\r\nitems.The second way is to use the fact that if , then we have to make\r\nas many suits of the first type as possible (and the opposite is true if\r\n). So we firstly make the maximum possible number of more expensive\r\nsuits, and use the remaining items to compose cheaper suits.\r\n",
+    "hint": []
 }

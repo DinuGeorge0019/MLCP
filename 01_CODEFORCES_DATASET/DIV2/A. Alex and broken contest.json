@@ -130,7 +130,7 @@
         ]
     },
     "name": "A. Alex and broken contest",
-    "statement": "One day Alex was creating a contest about his friends, but accidentally\r\ndeleted it. Fortunately, all the problems were saved, but now he needs\r\nto find them among other problems.But there are too many problems, to do\r\nit manually. Alex asks you to write a program, which will determine if a\r\nproblem is from this contest by its name.It is known, that problem is\r\nfrom this contest if and only if its name contains one of Alex\u2019s\r\nfriends\u2019 name . His friends\u2019 names are \"\", \"\", \"\", \"\" and \"\".\r\n",
+    "statement": "One day Alex was creating a contest about his friends, but accidentally\r\ndeleted it. Fortunately, all the problems were saved, but now he needs\r\nto find them among other problems.But there are too many problems, to do\r\nit manually. Alex asks you to write a program, which will determine if a\r\nproblem is from this contest by its name.It is known, that problem is\r\nfrom this contest if and only if its name contains one of Alex’s\r\nfriends’ name . His friends’ names are \"\", \"\", \"\", \"\" and \"\".\r\n",
     "solutions": [
         "#include<iostream>\n#include<cstdio>\n#include<algorithm>\n#include<cstring>\n#include<cmath>\n#include<set>\n#include<map>\n#include<queue>\nusing namespace std;\ntypedef long long  LL;\n#define sqr(x) ((x)*(x))\n#define mp make_pair\n#define F first\n#define S second\ninline int read(){\n\tint x = 0; char ch = getchar(); bool positive = 1;\n\tfor (; !isdigit(ch); ch = getchar())\tif (ch == '-')\tpositive = 0;\n\tfor (; isdigit(ch); ch = getchar())\tx = x * 10 + ch - '0';\n\treturn positive ? x : -x;\n}\ninline void write(int a){\n    if(a>=10)write(a/10);\n    putchar('0'+a%10);\n}\ninline void writeln(int a){\n    if(a<0){\n    \ta=-a; putchar('-');\n\t}\n\twrite(a); puts(\"\");\n}\n#include<string>\nint ans;\nstring s,ch[5]={\"Danil\",\"Olya\", \"Slava\",\"Ann\",\"Nikita\"};\nint main(){\n\tcin>>s;\n\tfor(int i=0;i<5;i++){\n\t\tfor(int j=0;j+ch[i].length()<=s.length();j++){\n\t\t\tint flag=0;\n\t\t\tfor(int k=0;k<ch[i].length();k++){\n\t\t\t\tif(ch[i][k]!=s[j+k])flag=1;\n\t\t\t}\n\t\t\tif(!flag)ans++;\n\t\t}\n\t}\n\tif(ans==1)puts(\"YES\"); else puts(\"NO\");\n}"
     ],
@@ -144,5 +144,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Alex and broken contest.json",
     "editorial_link": "https://codeforces.com//blog/entry/55362",
-    "editorial": "You need just implement what is written in the statements. Count the\r\ntotal number of entries of the names and check if it\u00e2\u0080\u0099s equal to .\r\n"
+    "editorial": "You need just implement what is written in the statements. Count the\r\ntotal number of entries of the names and check if itâs equal to .\r\n",
+    "hint": []
 }

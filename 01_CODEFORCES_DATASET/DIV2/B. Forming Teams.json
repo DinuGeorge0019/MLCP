@@ -113,5 +113,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Forming Teams.json",
     "editorial_link": "https://codeforces.com//blog/entry/5066",
-    "editorial": "You can build some graph where vertices are students and edges are enmities. You should drop some vertices and then paint them in two colors. Any edge should connect vertices of distinct colors and numbers of vertices of every color should be same.\n\nYou can see that graph consists chians, cycles and sepatated vertices. Every of that component can be painted in 2 colors except one case: cycles of odd length. So, you should drop one vertex from every odd cycle. After that you can get odd number of vertices. Then you should drop one more vertex (you can chose any of them). The obtained graph can be easily painted in 2 colors in the required manner."
+    "editorial": "You can build some graph where vertices are students and edges are enmities. You should drop some vertices and then paint them in two colors. Any edge should connect vertices of distinct colors and numbers of vertices of every color should be same.\n\nYou can see that graph consists chians, cycles and sepatated vertices. Every of that component can be painted in 2 colors except one case: cycles of odd length. So, you should drop one vertex from every odd cycle. After that you can get odd number of vertices. Then you should drop one more vertex (you can chose any of them). The obtained graph can be easily painted in 2 colors in the required manner.",
+    "hint": []
 }

@@ -159,5 +159,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. Divisor Subtraction.json",
     "editorial_link": "https://codeforces.com/blog/entry/63151",
-    "editorial": "Notice that once the number becomes even, it never stops being even as\r\nsubtracting doesn\u00e2\u0080\u0099t change parity. Thus, the task is to find the\r\nsmallest divisor, subtract it and print .Overall complexity: .\r\n"
+    "editorial": "Notice that once the number becomes even, it never stops being even as\r\nsubtracting doesnât change parity. Thus, the task is to find the\r\nsmallest divisor, subtract it and print .Overall complexity: .\r\n",
+    "hint": []
 }

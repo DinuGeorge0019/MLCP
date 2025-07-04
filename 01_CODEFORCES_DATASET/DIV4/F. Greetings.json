@@ -172,5 +172,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\F. Greetings.json",
     "editorial_link": "https://codeforces.com//blog/entry/123952",
-    "editorial": "Let\u00e2\u0080\u0099s consider two persons and . When do they meet each other?We can\r\ntreat a person traveling from point to point as a segment . Notice that\r\nthey meet when and , or and ; or in other words, when one segment\r\ncontains another.We can count the number of pairs when one fully\r\ncontains another, which is a quite classic problem, and can be solved by\r\niterating over the segments in increasing order of the position and for\r\neach of them adding the number of segments that we have already passed\r\nthat have an value larger than the one of the current segment.The time\r\ncomplexity is .\r\n"
+    "editorial": "Letâs consider two persons and . When do they meet each other?We can\r\ntreat a person traveling from point to point as a segment . Notice that\r\nthey meet when and , or and ; or in other words, when one segment\r\ncontains another.We can count the number of pairs when one fully\r\ncontains another, which is a quite classic problem, and can be solved by\r\niterating over the segments in increasing order of the position and for\r\neach of them adding the number of segments that we have already passed\r\nthat have an value larger than the one of the current segment.The time\r\ncomplexity is .\r\n",
+    "hint": []
 }

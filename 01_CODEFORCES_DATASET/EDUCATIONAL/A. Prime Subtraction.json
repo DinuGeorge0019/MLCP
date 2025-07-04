@@ -180,5 +180,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Prime Subtraction.json",
     "editorial_link": "https://codeforces.com//blog/entry/70450",
-    "editorial": "Let\u00e2\u0080\u0099s denote the difference between and as (). Then, if has a prime\r\ndivisor , we can subtract from times.The only positive integer that\r\ndoesn\u00e2\u0080\u0099t have any prime divisors is . So, the answer is if and only if .\r\n"
+    "editorial": "Letâs denote the difference between and as (). Then, if has a prime\r\ndivisor , we can subtract from times.The only positive integer that\r\ndoesnât have any prime divisors is . So, the answer is if and only if .\r\n",
+    "hint": []
 }

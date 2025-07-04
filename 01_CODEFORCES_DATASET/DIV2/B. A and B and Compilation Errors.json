@@ -131,5 +131,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. A and B and Compilation Errors.json",
     "editorial_link": "https://codeforces.com/blog/entry/16687",
-    "editorial": "In this problem you were given three arrays. Second array is the same as the first array without one element, third array is the same as second array without first element. You were asked to find deleted elements.\n\nSolution: I'll describe easiest solution for this problem: Let's denote a as sum of all elements of first array, b as sum of all elements of second array and c as sum of all elements of third array. Then answer is a?-?b and b?-?c\n\nThere are also some other solutions for this problem which use map, xor, etc."
+    "editorial": "In this problem you were given three arrays. Second array is the same as the first array without one element, third array is the same as second array without first element. You were asked to find deleted elements.\n\nSolution: I'll describe easiest solution for this problem: Let's denote a as sum of all elements of first array, b as sum of all elements of second array and c as sum of all elements of third array. Then answer is a?-?b and b?-?c\n\nThere are also some other solutions for this problem which use map, xor, etc.",
+    "hint": []
 }

@@ -159,5 +159,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. ConstructOR .json",
     "editorial_link": "https://codeforces.com//blog/entry/108319",
-    "editorial": "Without loss of generality, we will only consider the case when is\nodd and is even. Since the last bit of is , then the last bit of must\nalso be . Therefore, cannot be a multiple of , as is odd, while is even.\n"
+    "editorial": "Without loss of generality, we will only consider the case when is\nodd and is even. Since the last bit of is , then the last bit of must\nalso be . Therefore, cannot be a multiple of , as is odd, while is even.\n",
+    "hint": []
 }

@@ -138,5 +138,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. z-sort.json",
     "editorial_link": "https://codeforces.com//blog/entry/43986",
-    "editorial": "The problem was suggested by Smaug. Easy to see that we can -sort any\r\narray . Let be the number of even positions in . We can assign to those\r\npositions maximal elements and distribute other elements to odd\r\npositions. Obviously the resulting array is -sorted. C++ solution\r\n"
+    "editorial": "The problem was suggested by Smaug. Easy to see that we can -sort any\r\narray . Let be the number of even positions in . We can assign to those\r\npositions maximal elements and distribute other elements to odd\r\npositions. Obviously the resulting array is -sorted. C++ solution\r\n",
+    "hint": []
 }

@@ -183,5 +183,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\A. Mainak and Array.json",
     "editorial_link": "https://codeforces.com//blog/entry/106675",
-    "editorial": "There are four candidates of the maximum value of achievable, each of\r\nwhich can be found in time. No subarray is chosen: Answer would be in\r\nthis case. Chosen subarray contains and : Answer would be where is same\r\nas (notice that the previous case is included in this case as well).\r\nChosen subarray doesn\u00e2\u0080\u0099t contain : Answer would be . Chosen subarray\r\ndoesn\u00e2\u0080\u0099t contain : Answer would be . Finally we report the maximum of all\r\nof these four values in total time .\r\n"
+    "editorial": "There are four candidates of the maximum value of achievable, each of\r\nwhich can be found in time. No subarray is chosen: Answer would be in\r\nthis case. Chosen subarray contains and : Answer would be where is same\r\nas (notice that the previous case is included in this case as well).\r\nChosen subarray doesnât contain : Answer would be . Chosen subarray\r\ndoesnât contain : Answer would be . Finally we report the maximum of all\r\nof these four values in total time .\r\n",
+    "hint": [
+        "Hint 1 Which subsegments are relevant?",
+        "Hint 2 and can be taken up only by some combination of elements, not all."
+    ]
 }

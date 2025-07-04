@@ -112,7 +112,7 @@
         ]
     },
     "name": "C. Cut  em all ",
-    "statement": "You\u2019re given a tree with n vertices.Your task is to determine the\r\nmaximum possible number of edges that can be removed in such a way that\r\nall the remaining connected components will have even size.\r\n",
+    "statement": "You’re given a tree with n vertices.Your task is to determine the\r\nmaximum possible number of edges that can be removed in such a way that\r\nall the remaining connected components will have even size.\r\n",
     "solutions": [
         "#include <cstdio>\n#include <cstring>\n#include <iostream>\n#include <vector>\n#include <map>\n#include <algorithm>\n#include <map>\n#include <set>\n#include <bitset>\n#include <cstdlib>\n#include <stack>\n#include <queue>\n#define rep(i,n) for(int i=1;i<=n;++i)\n#define pb push_back\nusing namespace std;\n\nvector<int> g[210000];\nint son[210000];\nint n,ans;\n\nvoid dfs(int x,int pre)\n{\n\tson[x]=1;\n\tfor(auto i:g[x])\n\tif (i!=pre)\n\t{\n\t\tdfs(i,x);\n\t\tson[x]=son[x]+son[i];\n\t\tif (son[i]%2==0) ans++;\n\t}\n}\n\nint main()\n{\n\tcin>>n;\n\tans=0;\n\tfor (int i=1;i<=n-1;i++)\n\t{\n\t\tint x,y; \n\t\tscanf(\"%d%d\",&x,&y);\n\t\tg[x].pb(y);\n\t\tg[y].pb(x);\n\t}\n\n\tdfs(1,0);\n\n\tif (son[1]%2!=0){ puts(\"-1\"); return 0; }\n\tcout<<ans<<endl;\n}\n"
     ],
@@ -129,5 +129,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Cut  em all .json",
     "editorial_link": "https://codeforces.com//blog/entry/59551",
-    "editorial": "Note that if there is an edge that can be removed, we can do it without\r\nany problem. Let\u00e2\u0080\u0099s consider such edge that in one of the obtained\r\nsubtrees it is impossible to delete more anything else, and its removal\r\nis possible. What happens if we delete it in the tree? Relative to the\r\nother end of the edge, the odd-even balance of the subtree has not\r\nchanged, which means that the edge has not been affected by further\r\ndeletions. Which means if we remove it, the answer will be better. This\r\nis followed by a greedy solution: in dfs we count the size of the\r\nsubtree for each vertex, including the current vertex, and if it is\r\neven, then the edge from the parent (if it exists) can be removed.\r\n"
+    "editorial": "Note that if there is an edge that can be removed, we can do it without\r\nany problem. Letâs consider such edge that in one of the obtained\r\nsubtrees it is impossible to delete more anything else, and its removal\r\nis possible. What happens if we delete it in the tree? Relative to the\r\nother end of the edge, the odd-even balance of the subtree has not\r\nchanged, which means that the edge has not been affected by further\r\ndeletions. Which means if we remove it, the answer will be better. This\r\nis followed by a greedy solution: in dfs we count the size of the\r\nsubtree for each vertex, including the current vertex, and if it is\r\neven, then the edge from the parent (if it exists) can be removed.\r\n",
+    "hint": []
 }

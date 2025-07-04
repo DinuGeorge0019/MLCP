@@ -164,5 +164,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Three Indices.json",
     "editorial_link": "https://codeforces.com//blog/entry/80054",
-    "editorial": "A solution in : iterate on , check that there exists an element lower\r\nthan to the left of it, and check that there exists an element lower\r\nthan to the right of it. Can be optimized to with prefix/suffix minima.A\r\nsolution in : note that if there is some answer, we can find an index\r\nsuch that and (if there is no such triple, the array descends to some\r\npoint and ascends after that, so there is no answer). So we only have to\r\ncheck consecutive triples.\r\n"
+    "editorial": "A solution in : iterate on , check that there exists an element lower\r\nthan to the left of it, and check that there exists an element lower\r\nthan to the right of it. Can be optimized to with prefix/suffix minima.A\r\nsolution in : note that if there is some answer, we can find an index\r\nsuch that and (if there is no such triple, the array descends to some\r\npoint and ascends after that, so there is no answer). So we only have to\r\ncheck consecutive triples.\r\n",
+    "hint": []
 }

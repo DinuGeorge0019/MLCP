@@ -247,5 +247,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\C. Maximal GCD.json",
     "editorial_link": "https://codeforces.com//blog/entry/51768",
-    "editorial": "Notice that GCD of the resulting sequence is always a divisor of . Now\r\nlet\u00e2\u0080\u0099s iterate over all divisors up to . Current divisor is . One of the\r\nways to retrieve resulting sequence is to take , their sum is . The last\r\nnumber is . You should check if . is the sum of arithmetic progression,\r\nits equal to .Don\u00e2\u0080\u0099t forget that you should consider and , if you check\r\ndivisors up to . Take maximum of possible divisors or output if there\r\nwere no such divisors.Overall complexity: .\r\n"
+    "editorial": "Notice that GCD of the resulting sequence is always a divisor of . Now\r\nletâs iterate over all divisors up to . Current divisor is . One of the\r\nways to retrieve resulting sequence is to take , their sum is . The last\r\nnumber is . You should check if . is the sum of arithmetic progression,\r\nits equal to .Donât forget that you should consider and , if you check\r\ndivisors up to . Take maximum of possible divisors or output if there\r\nwere no such divisors.Overall complexity: .\r\n",
+    "hint": []
 }

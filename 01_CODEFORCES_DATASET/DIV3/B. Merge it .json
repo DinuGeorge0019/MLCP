@@ -143,5 +143,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Merge it .json",
     "editorial_link": "https://codeforces.com/blog/entry/67598",
-    "editorial": "Let be the number of elements of with the remainder modulo . Then the\r\ninitial answer can be represented as and we have to compose numbers with\r\nremainders and somehow optimally. It can be shown that the best way to\r\ndo it is the following: firstly, while there is at least one remainder\r\nand at least one remainder , let\u00e2\u0080\u0099s compose them into one . After this,\r\nat least one of the numbers will be zero, then we have to compose\r\nremaining numbers into numbers divisible by . If then the maximum\r\nremaining number of elements we can obtain is (because ), and in the\r\nother case ( the maximum number of elements is (because ).\r\n"
+    "editorial": "Let be the number of elements of with the remainder modulo . Then the\r\ninitial answer can be represented as and we have to compose numbers with\r\nremainders and somehow optimally. It can be shown that the best way to\r\ndo it is the following: firstly, while there is at least one remainder\r\nand at least one remainder , letâs compose them into one . After this,\r\nat least one of the numbers will be zero, then we have to compose\r\nremaining numbers into numbers divisible by . If then the maximum\r\nremaining number of elements we can obtain is (because ), and in the\r\nother case ( the maximum number of elements is (because ).\r\n",
+    "hint": []
 }

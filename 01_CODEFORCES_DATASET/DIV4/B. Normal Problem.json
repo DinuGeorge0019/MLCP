@@ -185,9 +185,9 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/137306",
-    "editorial": "Problem Credits: Lilypad Analysis: Lilypad, macaquedev Solution The\r\nletters she reads that comprise string are just the letters that\r\ncomprise string , flipped left-to-right. This means that \u00e2\u0080\u0099p\u00e2\u0080\u0099 becomes\r\n\u00e2\u0080\u0099q\u00e2\u0080\u0099, \u00e2\u0080\u0099q\u00e2\u0080\u0099 becomes \u00e2\u0080\u0099p\u00e2\u0080\u0099, and \u00e2\u0080\u0099w\u00e2\u0080\u0099 stays \u00e2\u0080\u0099w\u00e2\u0080\u0099, since it is vertically\r\nsymmetrical. The order in which the letters are read is also reversed,\r\nbecause what used to be the left side of string gets flipped over to the\r\nright side of string , and vice versa.We now have an algorithm for\r\nconstructing string , which is to iterate from right-to-left on string ,\r\noutputting \u00e2\u0080\u0099p\u00e2\u0080\u0099 when there is a \u00e2\u0080\u0099q\u00e2\u0080\u0099, \u00e2\u0080\u0099q\u00e2\u0080\u0099 when there is a \u00e2\u0080\u0099p\u00e2\u0080\u0099, and \u00e2\u0080\u0099w\u00e2\u0080\u0099\r\nwhen there is a \u00e2\u0080\u0099w\u00e2\u0080\u0099.\r\n",
+    "editorial": "Problem Credits: Lilypad Analysis: Lilypad, macaquedev Solution The\r\nletters she reads that comprise string are just the letters that\r\ncomprise string , flipped left-to-right. This means that âpâ becomes\r\nâqâ, âqâ becomes âpâ, and âwâ stays âwâ, since it is vertically\r\nsymmetrical. The order in which the letters are read is also reversed,\r\nbecause what used to be the left side of string gets flipped over to the\r\nright side of string , and vice versa.We now have an algorithm for\r\nconstructing string , which is to iterate from right-to-left on string ,\r\noutputting âpâ when there is a âqâ, âqâ when there is a âpâ, and âwâ\r\nwhen there is a âwâ.\r\n",
     "name": "B. Normal Problem",
-    "statement": "A string consisting of only characters \u2019p\u2019, \u2019q\u2019, and \u2019w\u2019 is painted on a\r\nglass window of a store. Ship walks past the store, standing directly in\r\nfront of the glass window, and observes string a. Ship then heads inside\r\nthe store, looks directly at the same glass window, and observes string\r\nb.Ship gives you string a. Your job is to find and output b.\r\n",
+    "statement": "A string consisting of only characters ’p’, ’q’, and ’w’ is painted on a\r\nglass window of a store. Ship walks past the store, standing directly in\r\nfront of the glass window, and observes string a. Ship then heads inside\r\nthe store, looks directly at the same glass window, and observes string\r\nb.Ship gives you string a. Your job is to find and output b.\r\n",
     "solutions": [
         "#include<bits/stdc++.h>#define int long longusing namespace std;const int N = 1e5+5;int t;string s;main(){    cin>>t;    while(t--){        cin>>s;        int cc = s.size();        for(int i = cc - 1 ; i >= 0 ; i--){            if(s[i] == 'q') cout<<\"p\";            else if(s[i] == 'p') cout<<\"q\";            else cout<<\"w\";        }        cout<<'\\n';    }}"
     ],
@@ -199,5 +199,6 @@
     ],
     "dificulty": "800",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\B. Normal Problem.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\B. Normal Problem.json",
+    "hint": []
 }

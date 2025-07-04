@@ -129,7 +129,7 @@
         ]
     },
     "name": "B. The Golden Age",
-    "statement": "year in Berland is such a year that its number can be represented as ,\r\nwhere and are non-negative integer numbers. For example, if and then the\r\nyears and are (, ) and year isn\u2019t as there is no such representation for\r\nit.Such interval of years that there are no years in it is called .You\r\nshould write a program which will find maximum length of which starts no\r\nearlier than the year and ends no later than the year . If all years in\r\nthe interval are then the answer is .\r\n",
+    "statement": "year in Berland is such a year that its number can be represented as ,\r\nwhere and are non-negative integer numbers. For example, if and then the\r\nyears and are (, ) and year isn’t as there is no such representation for\r\nit.Such interval of years that there are no years in it is called .You\r\nshould write a program which will find maximum length of which starts no\r\nearlier than the year and ends no later than the year . If all years in\r\nthe interval are then the answer is .\r\n",
     "solutions": [
         "#include<cstdio>\n#include<algorithm>\n#include<vector>\nusing namespace std;\nvector<long long> v;\nint main()\n{\n\tlong long x,y,l,r,i,j,ans=0;\n\tscanf(\"%I64d%I64d%I64d%I64d\",&x,&y,&l,&r);\n\tv.push_back(l-1);v.push_back(r+1);\n\tfor(i=1;;i*=x)\n\t{\n\t\tfor(j=1;;j*=y)\n\t\t{\n\t\t\tif(i+j>=l&&i+j<=r)v.push_back(i+j);\n\t\t\tif(j>r/y)break;\n\t\t}\n\t\tif(i>r/x)break;\n\t}\n\tsort(v.begin(),v.end());\n\tfor(i=1;i<v.size();++i)ans=max(ans,v[i]-v[i-1]-1);\n\tprintf(\"%I64d\",ans);\n}"
     ],
@@ -143,5 +143,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. The Golden Age.json",
     "editorial_link": "https://codeforces.com//blog/entry/52410",
-    "editorial": "Notice that for has no more than powers which give numbers no greater\r\nthan .So let\u00e2\u0080\u0099s store all possible sums of all powers of and . Now the\r\nanswer to the query can be obtained in linear time by checking\r\ndifference between neighbouring unlucky years in sorted order.Don\u00e2\u0080\u0099t\r\nforget that you should handle multiplying of such big numbers very\r\ncarefully. For example, instead of writingwhile (num <= 1e18) num =\r\nnum * xorwhile (num * x <= 1e18) num = num * xyou should writewhile (num\r\n<= 1e18 / x) num = num * xto avoid getting overflow errors of 64-bit\r\ntype.Integer division will work fine in that case because will never\r\nexceed if doesn\u00e2\u0080\u0099t exceed .Overall complexity: .\r\n"
+    "editorial": "Notice that for has no more than powers which give numbers no greater\r\nthan .So letâs store all possible sums of all powers of and . Now the\r\nanswer to the query can be obtained in linear time by checking\r\ndifference between neighbouring unlucky years in sorted order.Donât\r\nforget that you should handle multiplying of such big numbers very\r\ncarefully. For example, instead of writingwhile (num <= 1e18) num =\r\nnum * xorwhile (num * x <= 1e18) num = num * xyou should writewhile (num\r\n<= 1e18 / x) num = num * xto avoid getting overflow errors of 64-bit\r\ntype.Integer division will work fine in that case because will never\r\nexceed if doesnât exceed .Overall complexity: .\r\n",
+    "hint": []
 }

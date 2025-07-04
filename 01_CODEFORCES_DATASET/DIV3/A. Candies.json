@@ -116,5 +116,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Candies.json",
     "editorial_link": "https://codeforces.com//blog/entry/76352",
-    "editorial": "Notice that . Thus we can replace the initial equation with the\r\nfollowing: . So we can iterate over all possible in range (because ) and\r\ncheck if is divisible by . If it is then we can print .P.S. I know that\r\nso many participants found the formula using geometric progression sum\r\nbut there is the other way to understand this and it is a way more\r\nintuitive for me. Just take a look at the binary representation of\r\nnumbers: we can notice that and so on. Thus and so on. And if we add one\r\nto this number consisting of ones then we get .\r\n"
+    "editorial": "Notice that . Thus we can replace the initial equation with the\r\nfollowing: . So we can iterate over all possible in range (because ) and\r\ncheck if is divisible by . If it is then we can print .P.S. I know that\r\nso many participants found the formula using geometric progression sum\r\nbut there is the other way to understand this and it is a way more\r\nintuitive for me. Just take a look at the binary representation of\r\nnumbers: we can notice that and so on. Thus and so on. And if we add one\r\nto this number consisting of ones then we get .\r\n",
+    "hint": []
 }

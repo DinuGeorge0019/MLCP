@@ -114,5 +114,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. IQ test93140.json",
     "editorial_link": "https://codeforces.com//blog/entry/594",
-    "editorial": "We can store two values, countodd and counteven, as the number of odd or even elements in the series. We can also store lastodd and lasteven as the index of the last odd/even item encountered. If only one odd number appears --- output lastodd; otherwise only one even number appears, so output lasteven."
+    "editorial": "We can store two values, countodd and counteven, as the number of odd or even elements in the series. We can also store lastodd and lasteven as the index of the last odd/even item encountered. If only one odd number appears --- output lastodd; otherwise only one even number appears, so output lasteven.",
+    "hint": []
 }

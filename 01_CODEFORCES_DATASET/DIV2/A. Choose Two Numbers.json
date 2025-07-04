@@ -111,7 +111,7 @@
         ]
     },
     "name": "A. Choose Two Numbers",
-    "statement": "You are given an array A, consisting of n positive integers a_1, a_2,\r\ndots, a_n, and an array B, consisting of m positive integers b_1, b_2,\r\ndots, b_m. Choose some element a of A and some element b of B such that\r\na+b doesn\u2019t belong to A and doesn\u2019t belong to B. For example, if A = [2,\r\n1, 7] and B = [1, 3, 4], we can choose 1 from A and 4 from B, as number\r\n5 = 1 + 4 doesn\u2019t belong to A and doesn\u2019t belong to B. However, we can\u2019t\r\nchoose 2 from A and 1 from B, as 3 = 2 + 1 belongs to B.It can be shown\r\nthat such a pair exists. If there are multiple answers, print any.Choose\r\nand print any such two numbers.\r\n",
+    "statement": "You are given an array A, consisting of n positive integers a_1, a_2,\r\ndots, a_n, and an array B, consisting of m positive integers b_1, b_2,\r\ndots, b_m. Choose some element a of A and some element b of B such that\r\na+b doesn’t belong to A and doesn’t belong to B. For example, if A = [2,\r\n1, 7] and B = [1, 3, 4], we can choose 1 from A and 4 from B, as number\r\n5 = 1 + 4 doesn’t belong to A and doesn’t belong to B. However, we can’t\r\nchoose 2 from A and 1 from B, as 3 = 2 + 1 belongs to B.It can be shown\r\nthat such a pair exists. If there are multiple answers, print any.Choose\r\nand print any such two numbers.\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\nusing namespace std;\nint main(){\n\tint n; scanf(\"%d\",&n);\n\tint mx1=0,mx2=0;\n\tfor (int i=1,x;i<=n;++i) scanf(\"%d\",&x),mx1=max(mx1,x);\n\tscanf(\"%d\",&n);\n\tfor (int i=1,x;i<=n;++i) scanf(\"%d\",&x),mx2=max(mx2,x);\n\tprintf(\"%d %d\\n\",mx1,mx2);\n}"
     ],
@@ -125,5 +125,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Choose Two Numbers.json",
     "editorial_link": "https://codeforces.com//blog/entry/69158",
-    "editorial": "Let be the largest number in the array , be the largest number in the\r\narray . Then the number isn\u00e2\u0080\u0099t present neither in the array nor in the\r\narray . Indeed, , and is the largest number in the array , so is not\r\nincluded in . Similarly, is not included in . Thus, you can select from\r\n, from .The asymptotics is if you find the largest element by sorting\r\n(which many did), or if you find it linearly.\r\n"
+    "editorial": "Let be the largest number in the array , be the largest number in the\r\narray . Then the number isnât present neither in the array nor in the\r\narray . Indeed, , and is the largest number in the array , so is not\r\nincluded in . Similarly, is not included in . Thus, you can select from\r\n, from .The asymptotics is if you find the largest element by sorting\r\n(which many did), or if you find it linearly.\r\n",
+    "hint": []
 }

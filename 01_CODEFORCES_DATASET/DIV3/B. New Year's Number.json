@@ -160,5 +160,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. New Year's Number.json",
     "editorial_link": "https://codeforces.com//blog/entry/87188",
-    "editorial": "Let the number of , the number of (). Let us write the required\r\ndecomposition of the number : Then we get that is divisible by . Take\r\nequal to the remainder of divided by . Then is uniquely determined from\r\nthe formula above: Then, if the result is that ( because the remainder\r\nof dividing by is non-negative), then can be represented as the sum of a\r\ncertain number of and a certain number of .\r\n"
+    "editorial": "Let the number of , the number of (). Let us write the required\r\ndecomposition of the number : Then we get that is divisible by . Take\r\nequal to the remainder of divided by . Then is uniquely determined from\r\nthe formula above: Then, if the result is that ( because the remainder\r\nof dividing by is non-negative), then can be represented as the sum of a\r\ncertain number of and a certain number of .\r\n",
+    "hint": []
 }

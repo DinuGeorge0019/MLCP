@@ -166,5 +166,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\F. Vitaly and Advanced Useless Algorithms.json",
     "editorial_link": "https://codeforces.com//blog/entry/100712",
-    "editorial": "Note that it is always advantageous for us to complete the task that has\r\nan earlier deadline first. Only then will we proceed to the next task.\r\nThen we can solve each problem independently for each exam. Then it\r\nremains to score percent on the task on the available options. This is a\r\ntypical knapsack problem with an answer recovery.\r\n"
+    "editorial": "Note that it is always advantageous for us to complete the task that has\r\nan earlier deadline first. Only then will we proceed to the next task.\r\nThen we can solve each problem independently for each exam. Then it\r\nremains to score percent on the task on the available options. This is a\r\ntypical knapsack problem with an answer recovery.\r\n",
+    "hint": []
 }

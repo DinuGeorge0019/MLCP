@@ -193,5 +193,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\B. Omkar and Heavenly Tree.json",
     "editorial_link": "https://codeforces.com//blog/entry/96072",
-    "editorial": "Because the number of restrictions is less than , there is guaranteed to\r\nbe at least one value from to that is not a value of for any of the\r\nrestrictions. Find a value that is not for all of the restrictions and\r\nconstruct a tree that is a \"star\" with that value in the middle. An easy\r\nway to do this is to make an edge from that value to every other number\r\nfrom to .\r\n"
+    "editorial": "Because the number of restrictions is less than , there is guaranteed to\r\nbe at least one value from to that is not a value of for any of the\r\nrestrictions. Find a value that is not for all of the restrictions and\r\nconstruct a tree that is a \"star\" with that value in the middle. An easy\r\nway to do this is to make an edge from that value to every other number\r\nfrom to .\r\n",
+    "hint": []
 }

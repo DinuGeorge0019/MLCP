@@ -132,5 +132,20 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Permutation Swap.json",
     "editorial_link": "https://codeforces.com//blog/entry/116109",
-    "editorial": "SolutionIn order to move to position , it is easy to see that has to be\r\ndivisible by .So, has to be all divisible by . The largest possible\r\nvalue of turns out to be the greatest common divisor of integers .Time\r\ncomplexity:\r\n"
+    "editorial": "SolutionIn order to move to position , it is easy to see that has to be\r\ndivisible by .So, has to be all divisible by . The largest possible\r\nvalue of turns out to be the greatest common divisor of integers .Time\r\ncomplexity:\r\n",
+    "hint": [
+        "Hint 1 In order to move to its right position, what does the value of have to satisfy?",
+        "Hint 1 Sort the array , and fix the values from to .",
+        "Hint 1 What is the minimum cost to sort just one subarray?",
+        "Hint 2 What happens when two operations intersect each other?",
+        "Hint 3 When can we sort two adjacency ranges independently?",
+        "Hint 4 Try to calculate the contribution of each position.",
+        "Hint1 Try to construct beautiful string greedily.",
+        "Hint2 What happens when we have two even palindromes share one of their endpoints?",
+        "Hint1 Is the answer related to the centroid of the current tree?",
+        "Hint2 How much the centroid will move after one query?",
+        "Hint 1 You do not need to consider all pairs of nodes, only some of them will do.",
+        "Hint 2 Find an equivalent condition of the statement. Hint 2.1 Let be the set of all nodes reachable by u using at most one route. Consider all where is a leaf in the tree.",
+        "Hint 2.1 Let be the set of all nodes reachable by u using at most one route. Consider all where is a leaf in the tree."
+    ]
 }

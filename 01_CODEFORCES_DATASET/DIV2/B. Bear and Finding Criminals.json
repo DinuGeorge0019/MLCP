@@ -108,7 +108,7 @@
         ]
     },
     "name": "B. Bear and Finding Criminals",
-    "statement": "There are cities in Bearland, numbered through . Cities are arranged in\r\none long row. The distance between cities and is equal to .Limak is a\r\npolice officer. He lives in a city . His job is to catch criminals. It\u2019s\r\nhard because he doesn\u2019t know in which cities criminals are. Though, he\r\nknows that there is criminal in each city.Limak is going to use a BCD\r\n(Bear Criminal Detector). The BCD will tell Limak how many criminals\r\nthere are for every distance from a city . After that, Limak can catch a\r\ncriminal in each city for which he that there must be a criminal.You\r\nknow in which cities criminals are. Count the number of criminals Limak\r\nwill catch, after he uses the BCD.\r\n",
+    "statement": "There are cities in Bearland, numbered through . Cities are arranged in\r\none long row. The distance between cities and is equal to .Limak is a\r\npolice officer. He lives in a city . His job is to catch criminals. It’s\r\nhard because he doesn’t know in which cities criminals are. Though, he\r\nknows that there is criminal in each city.Limak is going to use a BCD\r\n(Bear Criminal Detector). The BCD will tell Limak how many criminals\r\nthere are for every distance from a city . After that, Limak can catch a\r\ncriminal in each city for which he that there must be a criminal.You\r\nknow in which cities criminals are. Count the number of criminals Limak\r\nwill catch, after he uses the BCD.\r\n",
     "solutions": [
         "#include <algorithm>\n#include <iostream>\n#include <cstring>\n#include <vector>\n#include <cstdio>\n#include <string>\n#include <set>\n#include <map>\nusing namespace std;\ntypedef long long ll;\ntypedef double db;\ntypedef pair<int,int> pii;\ntypedef vector<int> vi;\n#define de(x) cout << #x << \"=\" << x << endl\n#define rep(i,a,b) for(int i=a;i<b;++i)\n#define all(x) (x).begin(),(x).end()\n#define sz(x) (int)(x).size()\n#define mp make_pair\n#define pb push_back\n#define fi first\n#define se second\nint a , n , x[110] , o[110];\nint main(){\n    cin >> n >> a;\n    rep(i,1,n+1) cin >> x[i];\n    int ans = 0;\n    for(int i=a,j=a;i>=1||j<=n;--i,++j){\n        bool ok = true;\n        if(i >= 1 && !x[i]) ok = false;\n        if(j <= n && !x[j]) ok = false;\n        if(ok){\n            if(i >= 1) o[i] = true;\n            if(j <= n) o[j] = true;\n        }\n    }\n    rep(i,1,n+1) ans += o[i];\n    cout << ans << endl;\n    return 0;\n}\n"
     ],
@@ -122,5 +122,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Bear and Finding Criminals.json",
     "editorial_link": "https://codeforces.com//blog/entry/45310",
-    "editorial": "Limak can\u00e2\u0080\u0099t catch a criminal only if there are two cities at the same\r\ndistance and only one of them contains a criminal. You should iterate\r\nover the distance and for each distance check if and are both in range\r\nand if only one of them has . code1\r\n"
+    "editorial": "Limak canât catch a criminal only if there are two cities at the same\r\ndistance and only one of them contains a criminal. You should iterate\r\nover the distance and for each distance check if and are both in range\r\nand if only one of them has . code1\r\n",
+    "hint": []
 }

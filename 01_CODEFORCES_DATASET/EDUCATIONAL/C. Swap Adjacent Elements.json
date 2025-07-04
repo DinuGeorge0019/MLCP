@@ -193,5 +193,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\C. Swap Adjacent Elements.json",
     "editorial_link": "https://codeforces.com/blog/entry/57516",
-    "editorial": "Take a look at some pair such that and initial . It means that all the\r\nswaps from to should be allowed. Then it\u00e2\u0080\u0099s easy to notice that it\u00e2\u0080\u0099s\r\nenough to check only and as any other pair can be deducted from this.\r\nYou can precalc for each and prefix sums over the string of allowed\r\nswaps to check it in no time.Overall complexity: .\r\n"
+    "editorial": "Take a look at some pair such that and initial . It means that all the\r\nswaps from to should be allowed. Then itâs easy to notice that itâs\r\nenough to check only and as any other pair can be deducted from this.\r\nYou can precalc for each and prefix sums over the string of allowed\r\nswaps to check it in no time.Overall complexity: .\r\n",
+    "hint": []
 }

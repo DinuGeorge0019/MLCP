@@ -162,7 +162,7 @@
         ]
     },
     "name": "B. Maximal Continuous Rest",
-    "statement": "Each day in Berland consists of n hours. Polycarp likes time management.\r\nThat\u2019s why he has a fixed schedule for each day it is a sequence a_1,\r\na_2,\r\ndots, a_n (each a_i is either 0 or 1), where a_i=0 if Polycarp works\r\nduring the i-th hour of the day and a_i=1 if Polycarp rests during the\r\ni-th hour of the day.Days go one after another endlessly and Polycarp\r\nuses the same schedule for each day.What is the maximal number of\r\ncontinuous hours during which Polycarp rests? It is guaranteed that\r\nthere is at least one working hour in a day.\r\n",
+    "statement": "Each day in Berland consists of n hours. Polycarp likes time management.\r\nThat’s why he has a fixed schedule for each day it is a sequence a_1,\r\na_2,\r\ndots, a_n (each a_i is either 0 or 1), where a_i=0 if Polycarp works\r\nduring the i-th hour of the day and a_i=1 if Polycarp rests during the\r\ni-th hour of the day.Days go one after another endlessly and Polycarp\r\nuses the same schedule for each day.What is the maximal number of\r\ncontinuous hours during which Polycarp rests? It is guaranteed that\r\nthere is at least one working hour in a day.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\n\n#define ll long long\n#define pb push_back\n\nusing namespace std;\n\nint main()\n{\n    ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);\n\n    ll n, x;\n    cin >> n;\n    vector<ll> a;\n    for(int i = 0; i < n; ++i){\n        cin >> x;\n        a.pb(x);\n    }\n\n    for(int i = 0; i < n; ++i){\n        a.pb(a[i]);\n    }\n\n    ll mx = 0, cur = 0;\n\n    for(int i = 0; i < 2*n; ++i){\n        if(a[i] == 1){\n            cur++;\n        }\n        else{\n            mx = max(mx, cur);\n            cur = 0;\n        }\n    }\n\n    cout << mx;\n\n    return 0;\n}\n"
     ],
@@ -175,5 +175,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Maximal Continuous Rest.json",
     "editorial_link": "https://codeforces.com//blog/entry/66062",
-    "editorial": "At first consider we process the only day. In this case just iterate\r\nover hours and maintain the length of the current rest block (i.e. if\r\nthe element equals then increase , if the element equals then reset to\r\n). The maximum intermediate value of is the answer.In case of multiple\r\ndays, consider the given sequence as a cyclic sequence. Concatenate the\r\nsequence twice and solve the previous case. Sure, not it is no necessary\r\nto concatenate it in explicit way, just use instead of and process .\r\n"
+    "editorial": "At first consider we process the only day. In this case just iterate\r\nover hours and maintain the length of the current rest block (i.e. if\r\nthe element equals then increase , if the element equals then reset to\r\n). The maximum intermediate value of is the answer.In case of multiple\r\ndays, consider the given sequence as a cyclic sequence. Concatenate the\r\nsequence twice and solve the previous case. Sure, not it is no necessary\r\nto concatenate it in explicit way, just use instead of and process .\r\n",
+    "hint": []
 }

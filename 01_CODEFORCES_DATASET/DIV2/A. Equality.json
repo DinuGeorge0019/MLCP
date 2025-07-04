@@ -130,5 +130,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Equality.json",
     "editorial_link": "https://codeforces.com/blog/entry/61692",
-    "editorial": "First we need to find the frequencies of the first alphabets in the\r\nstring. Let the minimum frequency among these frequencies be . Then we\r\ncannot select characters of one kind, and we can definitely select\r\ncharacters of each kind, hence the answer is given by (frequency of\r\nfirst characters) * Overall Complexity:\r\n"
+    "editorial": "First we need to find the frequencies of the first alphabets in the\r\nstring. Let the minimum frequency among these frequencies be . Then we\r\ncannot select characters of one kind, and we can definitely select\r\ncharacters of each kind, hence the answer is given by (frequency of\r\nfirst characters) * Overall Complexity:\r\n",
+    "hint": []
 }

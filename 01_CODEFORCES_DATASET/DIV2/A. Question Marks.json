@@ -137,9 +137,9 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/132185",
-    "editorial": "SolutionLet\u00e2\u0080\u0099s say there are problems take as the answer, therefore he\r\ncan only get points with the answer . The same is correct for , and .\r\nTherefore, the maximum score can be achieved is .Time complexity:\r\n",
+    "editorial": "SolutionLetâs say there are problems take as the answer, therefore he\r\ncan only get points with the answer . The same is correct for , and .\r\nTherefore, the maximum score can be achieved is .Time complexity:\r\n",
     "name": "A. Question Marks",
-    "statement": "Tim is doing a test consisting of 4n questions; each question has 4\r\noptions: \u201d, \u201d, \u201d, and \u201d. For each option, there are exactly n correct\r\nanswers corresponding to that option meaning there are n questions with\r\nthe answer \u201d, n questions with the answer \u201d, n questions with the answer\r\n\u201d, and n questions with the answer \u201d.For each question, Tim wrote his\r\nanswer on the answer sheet. If he could not figure out the answer, he\r\nwould leave a question mark \u201d for that question.You are given his answer\r\nsheet of 4n characters. What is the maximum number of correct answers\r\nTim can get?\r\n",
+    "statement": "Tim is doing a test consisting of 4n questions; each question has 4\r\noptions: ”, ”, ”, and ”. For each option, there are exactly n correct\r\nanswers corresponding to that option meaning there are n questions with\r\nthe answer ”, n questions with the answer ”, n questions with the answer\r\n”, and n questions with the answer ”.For each question, Tim wrote his\r\nanswer on the answer sheet. If he could not figure out the answer, he\r\nwould leave a question mark ” for that question.You are given his answer\r\nsheet of 4n characters. What is the maximum number of correct answers\r\nTim can get?\r\n",
     "solutions": [
         "#include <bits/stdc++.h>#define pb push_back#define sz(a) ((int)a.size())#define re return#define all(a) a.begin(),a.end()#define rept(i,a,b) for(int i=(a);i<(b);i++)#define rep(i,a) rept(i,0,a)#define vi vector<int>#define pii pair<int,int>#define F first#define S second#define de(x) cout<<#x<<\"=\"<<x<<\"\\n\";#define int long long#define il inline#define db double#define ld long dbusing namespace std;const int MOD=998244353,INF=1000000000000000000;template<typename T>inline void Mx(T &a,T b){a=max(a,b);}template<typename T>inline void Mi(T &a,T b){a=min(a,b);}void FILEIO(string s){\tfreopen((s+\".in\").c_str(),\"r\",stdin);\tfreopen((s+\".out\").c_str(),\"w\",stdout);}void run(){\tint n;\tstring s;\tcin>>n>>s;\tint ca=0,cb=0,cc=0,cd=0;\tfor(char c:s){\t\tif(c=='A')ca++;\t\tif(c=='B')cb++;\t\tif(c=='C')cc++;\t\tif(c=='D')cd++;\t}\tcout<<min(n,ca)+min(n,cb)+min(n,cc)+min(n,cd)<<\"\\n\";}signed main(){\tios::sync_with_stdio(0);\tcin.tie(0);cout.tie(0);\tint T=1;\tcin>>T;\twhile(T--)\t\trun();\tre 0;}"
     ],
@@ -151,5 +151,8 @@
     ],
     "dificulty": "800",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Question Marks.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Question Marks.json",
+    "hint": [
+        "Hint What is the pattern of Tim's answer sheet that can give him maximum score?"
+    ]
 }

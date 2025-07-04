@@ -139,7 +139,7 @@
         ]
     },
     "name": "A. Oath of the Night's Watch",
-    "statement": "The Night\u2019s Watch oath.With that begins the watch of Jon Snow. He is\r\nassigned the task to support the stewards.This time he has stewards with\r\nhim whom he has to provide support. Each steward has his own strength.\r\nJon Snow likes to support a steward only if there exists at least one\r\nsteward who has strength strictly less than him and at least one steward\r\nwho has strength strictly greater than him.Can you find how many\r\nstewards will Jon support?\r\n",
+    "statement": "The Night’s Watch oath.With that begins the watch of Jon Snow. He is\r\nassigned the task to support the stewards.This time he has stewards with\r\nhim whom he has to provide support. Each steward has his own strength.\r\nJon Snow likes to support a steward only if there exists at least one\r\nsteward who has strength strictly less than him and at least one steward\r\nwho has strength strictly greater than him.Can you find how many\r\nstewards will Jon support?\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\ntypedef long long ll;\ntypedef long double ld;\ntypedef complex<ld> pt;\n#define fi first\n#define se second\n#define pb push_back\n#define mp make_pair\nconst ld TAU=2*acos(-1);\nconst ld eps=1e-7;\nconst int inf=1e9+99;\nconst ll linf=1e18+88;\n\n\n\nint32_t main() {\n\tint n; scanf(\"%d\",&n);\n\tstatic int a[100<<10];\n\tfor(int i=0;i<n;i++) scanf(\"%d\",a+i);\n\tint mn=*min_element(a,a+n);\n\tint mx=*max_element(a,a+n);\n\tint Z=0;\n\tfor(int i=0;i<n;i++) if(a[i]!=mx && a[i]!=mn) ++Z;\n\tprintf(\"%d\\n\",Z);\n}\n\n\n"
     ],
@@ -153,5 +153,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\A. Oath of the Night's Watch.json",
     "editorial_link": "https://codeforces.com//blog/entry/50550",
-    "editorial": "Set and Editorial by: vntshh You just have to find the number of\r\nelements greater than the minimum number occurring in the array and less\r\nthan the maximum number occurring in the array. This can be done in by\r\ntraversing the array once and finding the minimum and maximum of the\r\narray, and then in another traversal, find the good numbers. Complexity:\r\nCode\r\n"
+    "editorial": "Set and Editorial by: vntshh You just have to find the number of\r\nelements greater than the minimum number occurring in the array and less\r\nthan the maximum number occurring in the array. This can be done in by\r\ntraversing the array once and finding the minimum and maximum of the\r\narray, and then in another traversal, find the good numbers. Complexity:\r\nCode\r\n",
+    "hint": []
 }

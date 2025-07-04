@@ -105,5 +105,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Lucky Permutation Triple.json",
     "editorial_link": "https://codeforces.com//blog/entry/7641",
-    "editorial": "Math, Constructive algorithms, Congruent\n\nwhen n is odd, A[i] = B[i] = i\nwhen n is even, there is no solution. So why? Because:\nS = \\Sum_{i=0}^{n-1} i = n/2 (mod n) but 2*S = 0 (mod n)"
+    "editorial": "Math, Constructive algorithms, Congruent\n\nwhen n is odd, A[i] = B[i] = i\nwhen n is even, there is no solution. So why? Because:\nS = \\Sum_{i=0}^{n-1} i = n/2 (mod n) but 2*S = 0 (mod n)",
+    "hint": []
 }

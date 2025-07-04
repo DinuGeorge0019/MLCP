@@ -206,5 +206,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Two Rival Students.json",
     "editorial_link": "https://codeforces.com//blog/entry/71434",
-    "editorial": "To solve the problem you need to understand two facts: The answer can\u00e2\u0080\u0099t\r\nbe greater than ; If current distance between rivaling student if less\r\nthen we always can increment this distance by one swap; In means that\r\nanswer is equal to .\r\n"
+    "editorial": "To solve the problem you need to understand two facts: The answer canât\r\nbe greater than ; If current distance between rivaling student if less\r\nthen we always can increment this distance by one swap; In means that\r\nanswer is equal to .\r\n",
+    "hint": []
 }

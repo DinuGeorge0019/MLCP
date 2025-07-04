@@ -91,5 +91,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Counting Rectangles is Fun.json",
     "editorial_link": "https://codeforces.com//blog/entry/9944",
-    "editorial": "We can precalculate all rectangles, in O(N^2M^2) with using consecutive\r\nsums for 2D. And then we use 4D consecutive sums, we can answer the\r\nqueries. The time conplexity is O(N^2M^2+Q). my solution:\r\nhttp://ideone.com/QOjwse\r\n"
+    "editorial": "We can precalculate all rectangles, in O(N^2M^2) with using consecutive\r\nsums for 2D. And then we use 4D consecutive sums, we can answer the\r\nqueries. The time conplexity is O(N^2M^2+Q). my solution:\r\nhttp://ideone.com/QOjwse\r\n",
+    "hint": []
 }

@@ -130,5 +130,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Neko Finds Grapes.json",
     "editorial_link": "https://codeforces.com/blog/entry/66696",
-    "editorial": "The most important observation is that: Key with odd id can only be used\r\nto unlock chest with even id Key with even id can only be used to unlock\r\nchest with odd id Let: be the number of chests with even and odd id,\r\nrespectively be the number of keys with even and odd id, respectively\r\nWith even-id chests and odd-id keys, you can unlock at most chests.With\r\nodd-id chests and even-id keys, you can unlock at most chests.Therefore,\r\nthe final answer is .Complexity:\r\n"
+    "editorial": "The most important observation is that: Key with odd id can only be used\r\nto unlock chest with even id Key with even id can only be used to unlock\r\nchest with odd id Let: be the number of chests with even and odd id,\r\nrespectively be the number of keys with even and odd id, respectively\r\nWith even-id chests and odd-id keys, you can unlock at most chests.With\r\nodd-id chests and even-id keys, you can unlock at most chests.Therefore,\r\nthe final answer is .Complexity:\r\n",
+    "hint": []
 }

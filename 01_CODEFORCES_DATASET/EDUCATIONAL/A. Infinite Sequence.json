@@ -143,5 +143,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Infinite Sequence.json",
     "editorial_link": "https://codeforces.com//blog/entry/23442",
-    "editorial": "Let\u00e2\u0080\u0099s decrease by one. Now let\u00e2\u0080\u0099s determine the block with the -th\r\nnumber. To do that let\u00e2\u0080\u0099s at first subtract from , then subtract , then\r\nsubtract and so on until we got negative . The number of subtractions\r\nwill be the number of the block and the position in the block will be\r\nthe last nonnegative number we will get. ++ solution Complexity: .\r\n"
+    "editorial": "Letâs decrease by one. Now letâs determine the block with the -th\r\nnumber. To do that letâs at first subtract from , then subtract , then\r\nsubtract and so on until we got negative . The number of subtractions\r\nwill be the number of the block and the position in the block will be\r\nthe last nonnegative number we will get. ++ solution Complexity: .\r\n",
+    "hint": []
 }

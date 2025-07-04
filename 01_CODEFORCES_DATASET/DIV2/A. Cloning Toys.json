@@ -106,7 +106,7 @@
         ]
     },
     "name": "A. Cloning Toys",
-    "statement": "Imp likes his plush toy a lot. Recently, he found a machine that can\r\nclone plush toys. Imp knows that if he applies the machine to an\r\noriginal toy, he additionally gets one more original toy and one copy,\r\nand if he applies the machine to a copied toy, he gets two additional\r\ncopies.Initially, Imp has only one original toy. He wants to know if it\r\nis possible to use machine to get exactly toys and toys? He can\u2019t throw\r\ntoys away, and he can\u2019t apply the machine to a copy if he doesn\u2019t\r\ncurrently have any copies.\r\n",
+    "statement": "Imp likes his plush toy a lot. Recently, he found a machine that can\r\nclone plush toys. Imp knows that if he applies the machine to an\r\noriginal toy, he additionally gets one more original toy and one copy,\r\nand if he applies the machine to a copied toy, he gets two additional\r\ncopies.Initially, Imp has only one original toy. He wants to know if it\r\nis possible to use machine to get exactly toys and toys? He can’t throw\r\ntoys away, and he can’t apply the machine to a copy if he doesn’t\r\ncurrently have any copies.\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\n\nusing namespace std;\n\ntypedef long long ll;\ntypedef pair<int, int> pii;\n\n#define F first\n#define S second\nvoid shit(){\n    cout << \"No\" << endl;\n    exit(0);\n}\nint main(){\n    int c, o;\n    cin >> c >> o;\n    if(o < 1) shit();\n    if((c + o) % 2 != 1) shit();\n    int tot = (c + o - 1) / 2;\n    int op = o - 1;\n    int lef = tot - op;\n\tif (lef < 0)\n\t\tshit();\n    if(c == lef * 2 + op){\n        if(op == 0 && lef != 0) shit();\n        cout << \"Yes\" << endl;\n    }\n    else shit();\n}\n"
     ],
@@ -119,5 +119,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Cloning Toys.json",
     "editorial_link": "https://codeforces.com//blog/entry/57605",
-    "editorial": "Consider a few cases: If , the answer is always . If , then the answer\r\nis possible only if ; if , the answer is . We can observe that the\r\noriginal was cloned times to produce the requested amount of originals,\r\nthen the additional copies were created by cloning the copies emerged\r\nfrom cloning the original. As every cloning of a copy results in\r\nadditional two, we need to check whether is divisible by 2. We also need\r\nto take care of the case when is less than zero in this case, the answer\r\nis also . .\r\n"
+    "editorial": "Consider a few cases: If , the answer is always . If , then the answer\r\nis possible only if ; if , the answer is . We can observe that the\r\noriginal was cloned times to produce the requested amount of originals,\r\nthen the additional copies were created by cloning the copies emerged\r\nfrom cloning the original. As every cloning of a copy results in\r\nadditional two, we need to check whether is divisible by 2. We also need\r\nto take care of the case when is less than zero in this case, the answer\r\nis also . .\r\n",
+    "hint": []
 }

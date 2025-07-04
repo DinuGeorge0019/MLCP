@@ -127,5 +127,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. XOR-pyramid.json",
     "editorial_link": "https://codeforces.com//blog/entry/59484",
-    "editorial": "Let\u00e2\u0080\u0099s calculate recursively and save arrays from each level of\r\nrecursion. We get two-dimencional array and . Now let\u00e2\u0080\u0099s view recursive\r\ncalculation for . You can see what array of -th level of recursion is\r\n(numbeer of levels of recursion is length of segment). To calculate\r\nmaximum of all sub-segments for each segment, replace on . Now answer of\r\nquestion is . Overall time complexity is .Solution\r\n"
+    "editorial": "Letâs calculate recursively and save arrays from each level of\r\nrecursion. We get two-dimencional array and . Now letâs view recursive\r\ncalculation for . You can see what array of -th level of recursion is\r\n(numbeer of levels of recursion is length of segment). To calculate\r\nmaximum of all sub-segments for each segment, replace on . Now answer of\r\nquestion is . Overall time complexity is .Solution\r\n",
+    "hint": []
 }

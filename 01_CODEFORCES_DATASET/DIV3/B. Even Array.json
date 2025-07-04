@@ -155,5 +155,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Even Array.json",
     "editorial_link": "https://codeforces.com//blog/entry/78864",
-    "editorial": "We split all the positions in which the parity of the index does not\r\nmatch with the parity of the element into two arrays. If there is an odd\r\nnumber in the even index, add this index to the array. Otherwise, if\r\nthere is an even number in the odd index, add this index to the array.\r\nNote that if the sizes of the and arrays are not equal, then there is no\r\nanswer. Otherwise, the array can be made by doing exactly operations by\r\nsimply swapping all the elements in the and arrays.\r\n"
+    "editorial": "We split all the positions in which the parity of the index does not\r\nmatch with the parity of the element into two arrays. If there is an odd\r\nnumber in the even index, add this index to the array. Otherwise, if\r\nthere is an even number in the odd index, add this index to the array.\r\nNote that if the sizes of the and arrays are not equal, then there is no\r\nanswer. Otherwise, the array can be made by doing exactly operations by\r\nsimply swapping all the elements in the and arrays.\r\n",
+    "hint": []
 }

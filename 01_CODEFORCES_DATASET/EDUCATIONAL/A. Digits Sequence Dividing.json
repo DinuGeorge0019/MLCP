@@ -164,5 +164,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Digits Sequence Dividing.json",
     "editorial_link": "https://codeforces.com//blog/entry/64833",
-    "editorial": "Since we just want to make two numbers such that the first number is\r\nsmaller than the second, our best bet is to use only the first digit for\r\nthe first number and the rest of the digits for the second number. Note\r\nthat since the numbers can have up to 300 digits we shouldn\u00e2\u0080\u0099t actually\r\nevaluate the second number. Instead, since the digits only include 1\r\nthrough 9, we can handle that case by checking the number of digits.\r\nCode: 49002957\r\n"
+    "editorial": "Since we just want to make two numbers such that the first number is\r\nsmaller than the second, our best bet is to use only the first digit for\r\nthe first number and the rest of the digits for the second number. Note\r\nthat since the numbers can have up to 300 digits we shouldnât actually\r\nevaluate the second number. Instead, since the digits only include 1\r\nthrough 9, we can handle that case by checking the number of digits.\r\nCode: 49002957\r\n",
+    "hint": []
 }

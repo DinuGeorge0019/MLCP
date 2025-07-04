@@ -134,5 +134,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Differential Sorting.json",
     "editorial_link": "https://codeforces.com//blog/entry/100153",
-    "editorial": "First of all, if , then the answer is since we can\u00e2\u0080\u0099t change the last two\r\nelements.If , there exists a simple solution: perform the operation for\r\neach .Otherwise, the answer exists if and only if the initial array is\r\nsorted. Proof: Assume that and we can sort the array after operations.\r\nConsider the last operation we performed (). Since all elements should\r\nbe negative after the last operation, so should hold before the last\r\noperation. But after this, so the array isn\u00e2\u0080\u0099t sorted in the end. By\r\ncontradiction, we have proved that we can\u00e2\u0080\u0099t perform any operations as\r\nlong as .\r\n"
+    "editorial": "First of all, if , then the answer is since we canât change the last two\r\nelements.If , there exists a simple solution: perform the operation for\r\neach .Otherwise, the answer exists if and only if the initial array is\r\nsorted. Proof: Assume that and we can sort the array after operations.\r\nConsider the last operation we performed (). Since all elements should\r\nbe negative after the last operation, so should hold before the last\r\noperation. But after this, so the array isnât sorted in the end. By\r\ncontradiction, we have proved that we canât perform any operations as\r\nlong as .\r\n",
+    "hint": []
 }

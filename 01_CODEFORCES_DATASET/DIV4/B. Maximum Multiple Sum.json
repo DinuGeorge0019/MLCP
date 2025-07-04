@@ -192,7 +192,7 @@
     "name": "B. Maximum Multiple Sum",
     "statement": "Given an integer n, find an integer x such that: 2\r\nleq x\r\nleq n. The sum of multiples of x that are less than or equal to n is\r\nmaximized. Formally, x + 2x + 3x +\r\ndots + kx where kx\r\nleq n is maximized over all possible values of x.\r\n",
     "solutions": [
-        "#include <bits/stdc++.h>\u00a0using namespace std;\u00a0#define int long long#define inf 0x3F3F3F3F3F3F3F3F\u00a0const int MXN = 3e5 + 5;\u00a0void _(){\tint n;\tcin >> n;\tarray<int, 2> res = {0, 0};\tfor (int i = 2; i <= n; i++)\t{\t\tres = max(res, {(n / i) * (n / i + 1) * i, i});\t}\tcout << res[1] << '\\n';}\u00a0signed main(){\tios_base::sync_with_stdio(0);\tcin.tie(0);\tint t;\tcin >> t;\tfor (int tt = 1; tt <= t; tt++)\t{\t\t_();\t}}"
+        "#include <bits/stdc++.h> using namespace std; #define int long long#define inf 0x3F3F3F3F3F3F3F3F const int MXN = 3e5 + 5; void _(){\tint n;\tcin >> n;\tarray<int, 2> res = {0, 0};\tfor (int i = 2; i <= n; i++)\t{\t\tres = max(res, {(n / i) * (n / i + 1) * i, i});\t}\tcout << res[1] << '\\n';} signed main(){\tios_base::sync_with_stdio(0);\tcin.tie(0);\tint t;\tcin >> t;\tfor (int tt = 1; tt <= t; tt++)\t{\t\t_();\t}}"
     ],
     "input": "",
     "output": "",
@@ -203,5 +203,6 @@
     ],
     "dificulty": "800",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\B. Maximum Multiple Sum.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\B. Maximum Multiple Sum.json",
+    "hint": []
 }

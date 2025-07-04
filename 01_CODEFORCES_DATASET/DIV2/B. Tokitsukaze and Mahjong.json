@@ -132,5 +132,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Tokitsukaze and Mahjong.json",
     "editorial_link": "https://codeforces.com/blog/entry/68314",
-    "editorial": "TutorialThere are only two types of mentsus, so you can enumerate the\r\nmentsu you want her to form, and check the difference between that and\r\nthose currently in her hand.Alternatively, you can find out that the\r\nanswer is at most , since she can draw two extra identical tiles which\r\nare the same as one of those in her hand. You may enumerate at most\r\nextra tile for her and check if it can contribute to a mentsu. If she\r\ncan\u00e2\u0080\u0099t, the answer will be .\r\n"
+    "editorial": "TutorialThere are only two types of mentsus, so you can enumerate the\r\nmentsu you want her to form, and check the difference between that and\r\nthose currently in her hand.Alternatively, you can find out that the\r\nanswer is at most , since she can draw two extra identical tiles which\r\nare the same as one of those in her hand. You may enumerate at most\r\nextra tile for her and check if it can contribute to a mentsu. If she\r\ncanât, the answer will be .\r\n",
+    "hint": []
 }

@@ -122,7 +122,7 @@
         ]
     },
     "name": "B. Santa Claus and Keyboard Check",
-    "statement": "Santa Claus decided to disassemble his keyboard to clean it. After he\r\nreturned all the keys back, he suddenly realized that some pairs of keys\r\ntook each other\u2019s place! That is, Santa suspects that each key is either\r\non its place, or on the place of another key, which is located exactly\r\nwhere the first key should be. In order to make sure that he\u2019s right and\r\nrestore the correct order of keys, Santa typed his favorite patter\r\nlooking only to his keyboard.You are given the Santa\u2019s favorite patter\r\nand the string he actually typed. Determine which pairs of keys could be\r\nmixed. Each key must occur in pairs .\r\n",
+    "statement": "Santa Claus decided to disassemble his keyboard to clean it. After he\r\nreturned all the keys back, he suddenly realized that some pairs of keys\r\ntook each other’s place! That is, Santa suspects that each key is either\r\non its place, or on the place of another key, which is located exactly\r\nwhere the first key should be. In order to make sure that he’s right and\r\nrestore the correct order of keys, Santa typed his favorite patter\r\nlooking only to his keyboard.You are given the Santa’s favorite patter\r\nand the string he actually typed. Determine which pairs of keys could be\r\nmixed. Each key must occur in pairs .\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\n#define fo(i,a,b) for(int i=(a);i<(b);i++)\n#define MOD 1000000007\n#define MP make_pair\n#define PB push_back\ntypedef long long ll;\n\nstring s, t;\nint m[300], N;\nvector<pair<char, char>> v;\n\nint main () {\n\tcin >> s >> t;\n\tN = (int) s.size();\n\tfo(i, 0, N) {\n\t\tif (m[s[i]] && m[s[i]] != t[i]) return puts(\"-1\"), 0;\n\t\tif (m[t[i]] && m[t[i]] != s[i]) return puts(\"-1\"), 0;\n\t\tif (!m[s[i]]) {\n\t\t\tassert(!m[t[i]]);\n\t\t\tm[t[i]] = s[i], m[s[i]] = t[i];\n\t\t\tif (s[i] != t[i]) v.PB(MP(s[i], t[i]));\n\t\t}\n\t}\n\tprintf(\"%d\\n\", (int) v.size());\n\tfor (auto i : v) printf(\"%c %c\\n\", i.first, i.second);\n\treturn 0;\n}\n"
     ],
@@ -137,5 +137,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Santa Claus and Keyboard Check.json",
     "editorial_link": "https://codeforces.com//blog/entry/49328",
-    "editorial": "Denote the two strings from the input by s and t. It's enough to find all pairs of distinct si and ti and then do the following:\n\nEnsure that each symbol is in no more than one different pair,\nEnsure that if symbol c is in a pair with another symbol d, then each occurrence of c in s on the i-th place takes place iff ti?=?d, and vice versa.\nIf at least one of these conditions fails, there is no answer, otherwise, it's enough to print the obtained pairs."
+    "editorial": "Denote the two strings from the input by s and t. It's enough to find all pairs of distinct si and ti and then do the following:\n\nEnsure that each symbol is in no more than one different pair,\nEnsure that if symbol c is in a pair with another symbol d, then each occurrence of c in s on the i-th place takes place iff ti?=?d, and vice versa.\nIf at least one of these conditions fails, there is no answer, otherwise, it's enough to print the obtained pairs.",
+    "hint": []
 }

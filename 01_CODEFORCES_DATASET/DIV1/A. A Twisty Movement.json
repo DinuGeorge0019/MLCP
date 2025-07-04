@@ -89,11 +89,11 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/57763",
-    "editorial": "Since , it\u00e2\u0080\u0099s equivalent to find a longest subsequence like . By an easy\ndynamic programming we can find it in or time. You can see solution in\nthe model solution below. Here we introduce an O(n) approach: Since the\nsubsequence can be split into 4 parts () , we can set be the longest\nsubsequence of with first parts.\n",
+    "editorial": "Since , itâs equivalent to find a longest subsequence like . By an easy\ndynamic programming we can find it in or time. You can see solution in\nthe model solution below. Here we introduce an O(n) approach: Since the\nsubsequence can be split into 4 parts () , we can set be the longest\nsubsequence of with first parts.\n",
     "name": "A. A Twisty Movement",
     "statement": "A performer holding the rod low is represented by a , while one holding\r\nit high is represented by a . Thus, the line of performers can be\r\nrepresented by a sequence .Little Tommy is among them. He would like to\r\nchoose an interval (), then reverse so that the length of the longest\r\nnon-decreasing subsequence of the new sequence is maximum.A\r\nnon-decreasing subsequence is a sequence of indices , such that and .\r\nThe length of the subsequence is .\r\n",
     "solutions": [
-        "#include <iostream>#include <cstdio>#include <cstdlib>#include <algorithm>#include <cmath>#include <vector>#include <set>#include <map>#include <unordered_set>#include <unordered_map>#include <queue>#include <ctime>#include <cassert>#include <complex>#include <string>#include <cstring>using namespace std;\u00a0#ifdef LOCAL\t#define eprintf(...) fprintf(stderr, __VA_ARGS__)#else\t#define eprintf(...) 42#endif\u00a0typedef long long ll;typedef pair<int, int> pii;#define mp make_pair\u00a0const int N = 2020;int n;int a[N];int ans = 0;\u00a0int main(){//\tfreopen(\"input.txt\", \"r\", stdin);//\tfreopen(\"output.txt\", \"w\", stdout);\u00a0\tscanf(\"%d\", &n);\tfor (int i = 0; i < n; i++)\t\tscanf(\"%d\", &a[i]);\tfor (int z = 0; z <= n; z++) {\t\tint ans1 = 0, ans2 = 0;\t\tint sum = 0;\t\tfor (int i = 0; i < z; i++)\t\t\tsum += (int)(a[i] == 1);\t\tans1 = max(ans1, sum);\t\tfor (int i = z - 1; i >= 0; i--) {\t\t\tif (a[i] == 1)\t\t\t\tsum--;\t\t\telse\t\t\t\tsum++;\t\t\tans1 = max(ans1, sum);\t\t}\t\tsum = 0;\t\tfor (int i = z; i < n; i++)\t\t\tsum += (int)(a[i] == 2);\t\tans2 = max(ans2, sum);\t\tfor (int i = z; i < n; i++) {\t\t\tif (a[i] == 1)\t\t\t\tsum++;\t\t\telse\t\t\t\tsum--;\t\t\tans2 = max(ans2, sum);\t\t}\t\tans = max(ans, ans1 + ans2);\t}\tprintf(\"%d\\n\", ans);\u00a0\treturn 0;}"
+        "#include <iostream>#include <cstdio>#include <cstdlib>#include <algorithm>#include <cmath>#include <vector>#include <set>#include <map>#include <unordered_set>#include <unordered_map>#include <queue>#include <ctime>#include <cassert>#include <complex>#include <string>#include <cstring>using namespace std; #ifdef LOCAL\t#define eprintf(...) fprintf(stderr, __VA_ARGS__)#else\t#define eprintf(...) 42#endif typedef long long ll;typedef pair<int, int> pii;#define mp make_pair const int N = 2020;int n;int a[N];int ans = 0; int main(){//\tfreopen(\"input.txt\", \"r\", stdin);//\tfreopen(\"output.txt\", \"w\", stdout); \tscanf(\"%d\", &n);\tfor (int i = 0; i < n; i++)\t\tscanf(\"%d\", &a[i]);\tfor (int z = 0; z <= n; z++) {\t\tint ans1 = 0, ans2 = 0;\t\tint sum = 0;\t\tfor (int i = 0; i < z; i++)\t\t\tsum += (int)(a[i] == 1);\t\tans1 = max(ans1, sum);\t\tfor (int i = z - 1; i >= 0; i--) {\t\t\tif (a[i] == 1)\t\t\t\tsum--;\t\t\telse\t\t\t\tsum++;\t\t\tans1 = max(ans1, sum);\t\t}\t\tsum = 0;\t\tfor (int i = z; i < n; i++)\t\t\tsum += (int)(a[i] == 2);\t\tans2 = max(ans2, sum);\t\tfor (int i = z; i < n; i++) {\t\t\tif (a[i] == 1)\t\t\t\tsum++;\t\t\telse\t\t\t\tsum--;\t\t\tans2 = max(ans2, sum);\t\t}\t\tans = max(ans, ans1 + ans2);\t}\tprintf(\"%d\\n\", ans); \treturn 0;}"
     ],
     "input": "",
     "output": "",
@@ -102,5 +102,6 @@
     ],
     "dificulty": "1800",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. A Twisty Movement.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. A Twisty Movement.json",
+    "hint": []
 }

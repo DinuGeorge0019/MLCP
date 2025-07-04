@@ -128,5 +128,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Toy Cars.json",
     "editorial_link": "https://codeforces.com//blog/entry/17982",
-    "editorial": "We can find all information about -th car collisions in the -th row of\r\nthe matrix . More specific, if there is at least one 1 or 3 at -th row,\r\nthen -th car isn\u00e2\u0080\u0099t good (it was turned over in at least one collision).\r\nOtherwise, -th car is good. We just need to check this condition for\r\neach car.\r\n"
+    "editorial": "We can find all information about -th car collisions in the -th row of\r\nthe matrix . More specific, if there is at least one 1 or 3 at -th row,\r\nthen -th car isnât good (it was turned over in at least one collision).\r\nOtherwise, -th car is good. We just need to check this condition for\r\neach car.\r\n",
+    "hint": []
 }

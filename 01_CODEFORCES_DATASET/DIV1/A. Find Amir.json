@@ -125,5 +125,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Find Amir.json",
     "editorial_link": "https://codeforces.com/blog/entry/51846",
-    "editorial": "If the answer is 2, other wise l.To prove this phrase, assume the answer\r\nis (), consider all of multiples of from to as . If , is also a correct\r\nanswer, otherwise numbers from to make at least even number, and for\r\neach multiple from to as , or is even, so 2 is also a correct\r\nanswer.Bounce: Find the maximum number, occurs maximum number of times\r\nin the segment.\r\n"
+    "editorial": "If the answer is 2, other wise l.To prove this phrase, assume the answer\r\nis (), consider all of multiples of from to as . If , is also a correct\r\nanswer, otherwise numbers from to make at least even number, and for\r\neach multiple from to as , or is even, so 2 is also a correct\r\nanswer.Bounce: Find the maximum number, occurs maximum number of times\r\nin the segment.\r\n",
+    "hint": [
+        "hint1 Find minimum weighted edges.",
+        "hint2 There is some edges with weight 0, try to connect them in a carefully way."
+    ]
 }

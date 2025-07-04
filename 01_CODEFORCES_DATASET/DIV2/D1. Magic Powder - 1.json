@@ -154,5 +154,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D1. Magic Powder - 1.json",
     "editorial_link": "https://codeforces.com//blog/entry/44715",
-    "editorial": "This problem with small constraints can be solved in the following way.\r\nLet\u00e2\u0080\u0099s bake cookies one by one until it is possible. For every new cookie\r\nlet\u00e2\u0080\u0099s calculate how many grams of the magic powder we need to bake it.\r\nFor this let\u00e2\u0080\u0099s brute all ingredients and for the ingredient number if\r\nlet\u00e2\u0080\u0099s make , else let\u00e2\u0080\u0099s make and . When we bruted all ingredients if\r\nthan we can\u00e2\u0080\u0099t bake more cookies. Else let\u00e2\u0080\u0099s make and go to bake new\r\ncookie.\r\n"
+    "editorial": "This problem with small constraints can be solved in the following way.\r\nLetâs bake cookies one by one until it is possible. For every new cookie\r\nletâs calculate how many grams of the magic powder we need to bake it.\r\nFor this letâs brute all ingredients and for the ingredient number if\r\nletâs make , else letâs make and . When we bruted all ingredients if\r\nthan we canât bake more cookies. Else letâs make and go to bake new\r\ncookie.\r\n",
+    "hint": []
 }

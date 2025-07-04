@@ -193,5 +193,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\C. MEX Repetition.json",
     "editorial_link": "https://codeforces.com//blog/entry/119902",
-    "editorial": "Append the initial array with . It is easy to see that is a permutation\r\nof . In this case setting is basically equivalent , but after this the\r\nnew is changed. In fact, it becomes equal to the old value of , since\r\nthis value is not now present in the array.In other words, performing\r\nthe operation on is equivalent to swapping and . Performing the\r\noperation on can be viewed as swaps. It means that the array changes\r\nfrom to , i. e. we simply perform the cyclic shift to the right.To\r\nfinish up the solution, first, calculate (you can do so, for example, by\r\nsetting ). Second, calculate and then perform the cyclic shift in .\r\n"
+    "editorial": "Append the initial array with . It is easy to see that is a permutation\r\nof . In this case setting is basically equivalent , but after this the\r\nnew is changed. In fact, it becomes equal to the old value of , since\r\nthis value is not now present in the array.In other words, performing\r\nthe operation on is equivalent to swapping and . Performing the\r\noperation on can be viewed as swaps. It means that the array changes\r\nfrom to , i. e. we simply perform the cyclic shift to the right.To\r\nfinish up the solution, first, calculate (you can do so, for example, by\r\nsetting ). Second, calculate and then perform the cyclic shift in .\r\n",
+    "hint": []
 }

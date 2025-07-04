@@ -111,7 +111,7 @@
         ]
     },
     "name": "C. Vasya and String",
-    "statement": "High school student Vasya got a string of length as a birthday present.\r\nThis string consists of letters \u201d and \u201d only. Vasya denotes of the\r\nstring as the maximum length of a (consecutive subsequence) consisting\r\nof equal letters.Vasya can change no more than characters of the\r\noriginal string. What is the maximum beauty of the string he can\r\nachieve?\r\n",
+    "statement": "High school student Vasya got a string of length as a birthday present.\r\nThis string consists of letters ” and ” only. Vasya denotes of the\r\nstring as the maximum length of a (consecutive subsequence) consisting\r\nof equal letters.Vasya can change no more than characters of the\r\noriginal string. What is the maximum beauty of the string he can\r\nachieve?\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\n\nint n, k;\n\nint Solve(string str) {\n\tint j = -1, countB = 0, ans = 0;\n\tfor(int i = 0; i < str.size(); ++i) {\n\t\tcountB += (str[i] == 'b');\n\n\t\twhile(j <= i && countB > k) {\n\t\t\t++j;\n\t\t\tcountB -= (str[j] == 'b');\n\t\t}\n\n\t\tans = max(ans, i - j);\n\t}\n\n\treturn ans;\n}\n\nint main() {\n\t#ifndef ONLINE_JUDGE\n\t\tfreopen(\"data.in\",\"r\",stdin);\n\t#endif // ONLINE_JUDGE\n\tcin.sync_with_stdio(false);\n\tcin.tie(0);\n\n\tcin >> n >> k;\n\n\tstring str;\n\tcin >> str;\n\n\tint r = Solve(str);\n\tfor(auto &c : str)\n\t\tc = c ^ 'a' ^ 'b';\n\tcout << max(r, Solve(str))<<\"\\n\";\n\n\n\treturn 0;\n}\n"
     ],
@@ -127,5 +127,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Vasya and String.json",
     "editorial_link": "https://codeforces.com/blog/entry/45018",
-    "editorial": "This problem can be solved with help of two pointers. Let the first\r\npointer is and the second pointer is . Then for every position we will\r\nmove right end until on the substring it is possible to make no more\r\nthan swaps to make this substring beautiful. Then we need to update the\r\nanswer with length of this substring and move to the right. Asymptotic\r\nbehavior .\r\n"
+    "editorial": "This problem can be solved with help of two pointers. Let the first\r\npointer is and the second pointer is . Then for every position we will\r\nmove right end until on the substring it is possible to make no more\r\nthan swaps to make this substring beautiful. Then we need to update the\r\nanswer with length of this substring and move to the right. Asymptotic\r\nbehavior .\r\n",
+    "hint": []
 }

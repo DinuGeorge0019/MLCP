@@ -158,5 +158,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\B. Cutting Carrot.json",
     "editorial_link": "https://codeforces.com/blog/entry/51962",
-    "editorial": "Let's find the value of xi explicitly. Suppose we make the i-th cut and distance xi from the apex. Then, the ratio of similitude of the isosceles triangle with apex equal to the apex of the carrot and the base equal to the i-th cut and the whole carrot is . Since the area of this smaller isosceles triangle is the sum of areas of the first i pieces, which is  of the whole carrot. Thus, , which is equivalent to . Thus,  and we can find each xi in O(1) time. The total complexity is O(n)."
+    "editorial": "Let's find the value of xi explicitly. Suppose we make the i-th cut and distance xi from the apex. Then, the ratio of similitude of the isosceles triangle with apex equal to the apex of the carrot and the base equal to the i-th cut and the whole carrot is . Since the area of this smaller isosceles triangle is the sum of areas of the first i pieces, which is  of the whole carrot. Thus, , which is equivalent to . Thus,  and we can find each xi in O(1) time. The total complexity is O(n).",
+    "hint": []
 }

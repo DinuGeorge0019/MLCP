@@ -93,7 +93,7 @@
         ]
     },
     "name": "A. Vanya and Cards",
-    "statement": "Vanya loves playing. He even has a special set of cards to play with.\r\nEach card has a single integer. The number on the card can be positive,\r\nnegative and can even be equal to zero. The only limit is, the number on\r\neach card doesn\u2019t exceed in the absolute value.Natasha doesn\u2019t like when\r\nVanya spends a long time playing, so she hid all of his cards. Vanya\r\nbecame sad and started looking for the cards but he only found of them.\r\nVanya loves the balance, so he wants the sum of all numbers on found\r\ncards equal to zero. On the other hand, he got very tired of looking for\r\ncards. Help the boy and say what is the minimum number of cards does he\r\nneed to find to make the sum equal to zero?You can assume that initially\r\nVanya had infinitely many cards with each integer number from to .\r\n",
+    "statement": "Vanya loves playing. He even has a special set of cards to play with.\r\nEach card has a single integer. The number on the card can be positive,\r\nnegative and can even be equal to zero. The only limit is, the number on\r\neach card doesn’t exceed in the absolute value.Natasha doesn’t like when\r\nVanya spends a long time playing, so she hid all of his cards. Vanya\r\nbecame sad and started looking for the cards but he only found of them.\r\nVanya loves the balance, so he wants the sum of all numbers on found\r\ncards equal to zero. On the other hand, he got very tired of looking for\r\ncards. Help the boy and say what is the minimum number of cards does he\r\nneed to find to make the sum equal to zero?You can assume that initially\r\nVanya had infinitely many cards with each integer number from to .\r\n",
     "solutions": [
         "#include <cstdio>\n#include <iostream>\n\nusing namespace std;\n\nint n,m,x,sum,ans;\n\nint main()\n{\n    cin>>n>>m;\n    sum=0;\n    for(int i=0;i<n;i++)\n    {\n        scanf(\"%d\",&x);\n        sum+=x;\n    }\n    if(sum<0)sum=-sum;\n    ans=sum/m;\n    if(sum%m)ans++;\n    cout<<ans;\n    return 0;\n}\n"
     ],
@@ -107,5 +107,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Vanya and Cards.json",
     "editorial_link": "https://codeforces.com//blog/entry/10842",
-    "editorial": "We must sum all numbers, and reduced it to zero by the operations +x and\r\n-x. Solution\r\n"
+    "editorial": "We must sum all numbers, and reduced it to zero by the operations +x and\r\n-x. Solution\r\n",
+    "hint": []
 }

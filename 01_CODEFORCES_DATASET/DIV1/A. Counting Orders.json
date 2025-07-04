@@ -175,5 +175,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Counting Orders.json",
     "editorial_link": "https://codeforces.com//blog/entry/116109",
-    "editorial": "First, we can sort the array , as it does not change the\nanswer.Let\u00e2\u0080\u0099s try to choose the values of from to . How many ways are\nthere to choose the value of ?The new must satisfies . But some of the\ncandidates are already chosen as for some . However, since , we know\nthat there are exactly candidates already chosen previously by all\nvalues of . So, there are (number of such that ) ways to choose the\nvalue of .We can use two pointers or binary search to efficiently find\nthe (number of such that ) for all .Time complexity: .\n"
+    "editorial": "First, we can sort the array , as it does not change the\nanswer.Letâs try to choose the values of from to . How many ways are\nthere to choose the value of ?The new must satisfies . But some of the\ncandidates are already chosen as for some . However, since , we know\nthat there are exactly candidates already chosen previously by all\nvalues of . So, there are (number of such that ) ways to choose the\nvalue of .We can use two pointers or binary search to efficiently find\nthe (number of such that ) for all .Time complexity: .\n",
+    "hint": [
+        "Hint 1 Sort the array , and fix the values from to ."
+    ]
 }

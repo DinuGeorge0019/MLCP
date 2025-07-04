@@ -128,5 +128,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Palindromic Indices.json",
     "editorial_link": "https://codeforces.com//blog/entry/103097",
-    "editorial": "TutorialLet\u00e2\u0080\u0099s remove some index from the first half of and check whether\r\nthe resulting string is a palindrome or not, the other half has the same\r\napproach. The prefix of length already matches with the suffix of the\r\nsame length because the initial string was a palindrome, so we just need\r\nto check if is a palindrome. For to be a palindrome, should be equal to\r\nwhich was initially equal to , again which should be equal to and this\r\ngoes on. Here we can see that . So the answer is simply equal to the\r\nnumber of contiguous same characters in the center of the string which\r\ncan be calculated in .\r\n"
+    "editorial": "TutorialLetâs remove some index from the first half of and check whether\r\nthe resulting string is a palindrome or not, the other half has the same\r\napproach. The prefix of length already matches with the suffix of the\r\nsame length because the initial string was a palindrome, so we just need\r\nto check if is a palindrome. For to be a palindrome, should be equal to\r\nwhich was initially equal to , again which should be equal to and this\r\ngoes on. Here we can see that . So the answer is simply equal to the\r\nnumber of contiguous same characters in the center of the string which\r\ncan be calculated in .\r\n",
+    "hint": [
+        "Hint Read the statement carefully!! The given string is a palindrome ."
+    ]
 }

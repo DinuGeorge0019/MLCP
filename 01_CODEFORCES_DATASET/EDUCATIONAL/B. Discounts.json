@@ -176,5 +176,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. Discounts.json",
     "editorial_link": "https://codeforces.com/blog/entry/65752",
-    "editorial": "When using -th coupon, the bar we get for free should have at least bars\r\nnot cheaper than it. So, if we consider sorted in non-decreasing order,\r\nthen we cannot get discount greater than .On the other hand, we can\r\nalways get such a discount if we pick most expensive bars to buy using\r\nthe -th coupon.\r\n"
+    "editorial": "When using -th coupon, the bar we get for free should have at least bars\r\nnot cheaper than it. So, if we consider sorted in non-decreasing order,\r\nthen we cannot get discount greater than .On the other hand, we can\r\nalways get such a discount if we pick most expensive bars to buy using\r\nthe -th coupon.\r\n",
+    "hint": []
 }

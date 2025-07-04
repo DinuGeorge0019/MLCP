@@ -180,5 +180,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Make Equal.json",
     "editorial_link": "https://codeforces.com//blog/entry/125878",
-    "editorial": "Since the number of operations does not matter, let\u00e2\u0080\u0099s find any suitable\r\nsequence of operations.Each vessel should contain units of water. Water\r\ncan only be poured to the right, so we will iterate over from to and\r\npour all the excess water from the -th vessel to the -th. If at some\r\npoint there is not enough water in the -th vessel, the answer is .\r\n"
+    "editorial": "Since the number of operations does not matter, letâs find any suitable\r\nsequence of operations.Each vessel should contain units of water. Water\r\ncan only be poured to the right, so we will iterate over from to and\r\npour all the excess water from the -th vessel to the -th. If at some\r\npoint there is not enough water in the -th vessel, the answer is .\r\n",
+    "hint": []
 }

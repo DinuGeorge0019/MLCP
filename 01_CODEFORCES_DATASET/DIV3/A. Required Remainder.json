@@ -142,5 +142,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Required Remainder.json",
     "editorial_link": "https://codeforces.com//blog/entry/79517",
-    "editorial": "There are two cases in this problem. If we try to maximize the answer,\r\nwe need to consider only two integers: and . Of course, the first one is\r\nbetter (we get rid of the existing remainder and trying to add to this\r\nnumber). If it\u00e2\u0080\u0099s too big, then we can and need to take the second one\r\n(this number is just the first one but decreased by ). The answer can be\r\nalways found between these numbers.Time complexity: .\r\n"
+    "editorial": "There are two cases in this problem. If we try to maximize the answer,\r\nwe need to consider only two integers: and . Of course, the first one is\r\nbetter (we get rid of the existing remainder and trying to add to this\r\nnumber). If itâs too big, then we can and need to take the second one\r\n(this number is just the first one but decreased by ). The answer can be\r\nalways found between these numbers.Time complexity: .\r\n",
+    "hint": []
 }

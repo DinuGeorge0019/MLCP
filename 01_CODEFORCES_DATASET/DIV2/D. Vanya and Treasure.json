@@ -115,5 +115,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Vanya and Treasure.json",
     "editorial_link": "https://codeforces.com//blog/entry/45181",
-    "editorial": "We can make dynamic programming , where is minimal time, that we have\r\nwaste to open the chest in the cell . For the cells of color : . For\r\neach next color we can look over all cells of color and all cells of\r\ncolor , then for each cell of color with coordinates and for each cell\r\nwith color and coordinates . But complexity of this solution is , what\r\nis not enough. We can do such improvement: let be the amount of cells of\r\ncolor , then when , we can do bfs from cells of color to cells of color\r\n. Then we will have complexity . Proof Code\r\n"
+    "editorial": "We can make dynamic programming , where is minimal time, that we have\r\nwaste to open the chest in the cell . For the cells of color : . For\r\neach next color we can look over all cells of color and all cells of\r\ncolor , then for each cell of color with coordinates and for each cell\r\nwith color and coordinates . But complexity of this solution is , what\r\nis not enough. We can do such improvement: let be the amount of cells of\r\ncolor , then when , we can do bfs from cells of color to cells of color\r\n. Then we will have complexity . Proof Code\r\n",
+    "hint": []
 }

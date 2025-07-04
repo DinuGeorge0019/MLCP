@@ -178,5 +178,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\B. Atilla's Favorite Problem.json",
     "editorial_link": "https://codeforces.com//blog/entry/109348",
-    "editorial": "To solve the problem we need to find the character with the highest\r\nalphabetical order in our string, since Atilla will need at least that\r\nalphabet size and won\u00e2\u0080\u0099t need more. To do this iterate through the string\r\nand find the character with the highest alphabetical order. Output the\r\nmaximum alphabetical order found. The solution can be done in\r\n"
+    "editorial": "To solve the problem we need to find the character with the highest\r\nalphabetical order in our string, since Atilla will need at least that\r\nalphabet size and wonât need more. To do this iterate through the string\r\nand find the character with the highest alphabetical order. Output the\r\nmaximum alphabetical order found. The solution can be done in\r\n",
+    "hint": []
 }

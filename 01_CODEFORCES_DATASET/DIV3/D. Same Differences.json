@@ -198,5 +198,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\D. Same Differences.json",
     "editorial_link": "https://codeforces.com//blog/entry/90342",
-    "editorial": "Let\u00e2\u0080\u0099s rewrite the original equality a bit: Let\u00e2\u0080\u0099s replace each with .\r\nThen the answer is the number of pairs such that and . To calculate this\r\nvalue you can use or sorting.\r\n"
+    "editorial": "Letâs rewrite the original equality a bit: Letâs replace each with .\r\nThen the answer is the number of pairs such that and . To calculate this\r\nvalue you can use or sorting.\r\n",
+    "hint": []
 }

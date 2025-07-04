@@ -136,5 +136,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Star sky.json",
     "editorial_link": "https://codeforces.com//blog/entry/53588",
-    "editorial": "The brightness of the -th star in moment is , where is modulo\r\noperator.Let\u00e2\u0080\u0099s precalc for each , , the number of stars with the initial\r\nbrightness in the rectangle (; )-(; ). It is calculated like calcuating\r\nof partial sums: .Then the total brightness of stars at the -th view is\r\n, where is the number of stars with the initial brightness in the given\r\nrectangle. This number can be calculated using array , using the\r\ninclusion-exclusion principle: .Let is the maximum coordinate. Time\r\ncomplexity: . Memory complexity: .\r\n"
+    "editorial": "The brightness of the -th star in moment is , where is modulo\r\noperator.Letâs precalc for each , , the number of stars with the initial\r\nbrightness in the rectangle (; )-(; ). It is calculated like calcuating\r\nof partial sums: .Then the total brightness of stars at the -th view is\r\n, where is the number of stars with the initial brightness in the given\r\nrectangle. This number can be calculated using array , using the\r\ninclusion-exclusion principle: .Let is the maximum coordinate. Time\r\ncomplexity: . Memory complexity: .\r\n",
+    "hint": []
 }

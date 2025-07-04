@@ -101,5 +101,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Compartments.json",
     "editorial_link": "https://codeforces.com/blog/entry/9210",
-    "editorial": "In the problem you should come up with some right greedy algorithm. One\r\nof correct approaches acts as follows: To solve the problem you should\r\nfollow your common sense (is it greedy?). Writing naive solution (bfs\r\nsearch) for stress purposes is not so bad for proving correctness of\r\nyour solution.\r\n"
+    "editorial": "In the problem you should come up with some right greedy algorithm. One\r\nof correct approaches acts as follows: To solve the problem you should\r\nfollow your common sense (is it greedy?). Writing naive solution (bfs\r\nsearch) for stress purposes is not so bad for proving correctness of\r\nyour solution.\r\n",
+    "hint": []
 }

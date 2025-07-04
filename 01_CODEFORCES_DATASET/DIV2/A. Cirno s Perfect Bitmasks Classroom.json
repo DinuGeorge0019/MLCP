@@ -112,7 +112,7 @@
         ]
     },
     "name": "A. Cirno s Perfect Bitmasks Classroom",
-    "statement": "Even if it\u2019s a really easy question, she won\u2019t be able to answer it\r\nCirno\u2019s perfect bitmasks classroom has just started!Cirno gave her\r\nstudents a positive integer x. As an assignment, her students need to\r\nfind the integer y, which satisfies the following two conditions:x\r\ntexttt{and}\r\ny > 0 x\r\ntexttt{xor}\r\ny > 0Where\r\ntexttt{and} is the bitwise AND operation, and\r\ntexttt{xor} is the bitwise XOR operation.Among the students was Mystia,\r\nwho was truly baffled by all these new operators. Please help her!\r\n",
+    "statement": "Even if it’s a really easy question, she won’t be able to answer it\r\nCirno’s perfect bitmasks classroom has just started!Cirno gave her\r\nstudents a positive integer x. As an assignment, her students need to\r\nfind the integer y, which satisfies the following two conditions:x\r\ntexttt{and}\r\ny > 0 x\r\ntexttt{xor}\r\ny > 0Where\r\ntexttt{and} is the bitwise AND operation, and\r\ntexttt{xor} is the bitwise XOR operation.Among the students was Mystia,\r\nwho was truly baffled by all these new operators. Please help her!\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\n#define int long long\nconstexpr int inf = 1e18;\nconstexpr int maxn = 2e5 + 5;\nconstexpr int mod = 998244353;\n\ninline void solve()\n{\n  int x; cin >> x;\n  if (__builtin_popcount(x) > 1)\n    cout << (x & -x) << '\\n';\n  else if (x == 1)\n    cout << \"3\\n\";\n  else\n    cout << (x ^ 1) << '\\n';\n}\n\nsigned main()\n{\n  ios::sync_with_stdio(false);\n  cin.tie(nullptr);\n  int T; cin >> T;\n  while (T --)\n  solve();\n  return 0;\n}"
     ],
@@ -126,5 +126,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Cirno s Perfect Bitmasks Classroom.json",
     "editorial_link": "https://codeforces.com//blog/entry/103493",
-    "editorial": "SolutionLet be the -th bit of , be the -th bit of (both indexed from\r\n)...To satisfy the first condition, find the minimum integer satisfying\r\n, and assign to .If , the second condition is satisfied now. Otherwise,\r\nfind the minimum integer satisfying , and assign to .The time complexity\r\nis .\r\n"
+    "editorial": "SolutionLet be the -th bit of , be the -th bit of (both indexed from\r\n)...To satisfy the first condition, find the minimum integer satisfying\r\n, and assign to .If , the second condition is satisfied now. Otherwise,\r\nfind the minimum integer satisfying , and assign to .The time complexity\r\nis .\r\n",
+    "hint": [
+        "Hint Consider Unable to parse markup [type=CF_MATHJAX] and Unable to parse markup [type=CF_MATHJAX] separately."
+    ]
 }

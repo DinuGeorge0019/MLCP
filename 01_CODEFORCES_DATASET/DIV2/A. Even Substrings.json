@@ -137,5 +137,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Even Substrings.json",
     "editorial_link": "https://codeforces.com//blog/entry/66101",
-    "editorial": "Any substring ending in forms an even substring. Thus, iterate over all\r\npositions of the string , and if the digit represented by character at\r\nindex is even, then add to the answer, since all the substrings starting\r\nat and ending at are even substrings.Overall Complexity: .\r\n"
+    "editorial": "Any substring ending in forms an even substring. Thus, iterate over all\r\npositions of the string , and if the digit represented by character at\r\nindex is even, then add to the answer, since all the substrings starting\r\nat and ending at are even substrings.Overall Complexity: .\r\n",
+    "hint": []
 }

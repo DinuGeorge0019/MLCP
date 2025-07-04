@@ -152,5 +152,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Two Cakes.json",
     "editorial_link": "https://codeforces.com/blog/entry/65520",
-    "editorial": "Let be the set of cells accessible from .Similarly, let be the set of\r\ncells accessible from .We can find and using a search algorithm such as\r\na DFS or a BFS.If , then a tunnel is not needed, so the answer is\r\n.Otherwise, we need to create a tunnel with an endpoint in and the other\r\nin . Now, we can simply iterate through all possible pairs of cells\r\nwhere and to find one that minimizes the cost (i.e., ).The time\r\ncomplexity is .\r\n"
+    "editorial": "Let be the set of cells accessible from .Similarly, let be the set of\r\ncells accessible from .We can find and using a search algorithm such as\r\na DFS or a BFS.If , then a tunnel is not needed, so the answer is\r\n.Otherwise, we need to create a tunnel with an endpoint in and the other\r\nin . Now, we can simply iterate through all possible pairs of cells\r\nwhere and to find one that minimizes the cost (i.e., ).The time\r\ncomplexity is .\r\n",
+    "hint": []
 }

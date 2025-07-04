@@ -108,7 +108,7 @@
         ]
     },
     "name": "A. Vladik and flights",
-    "statement": "Vladik is a competitive programmer. This year he is going to win the\r\nInternational Olympiad in Informatics. But it is not as easy as it\r\nsounds: the question Vladik face now is to find the cheapest way to get\r\nto the olympiad.Vladik knows airports. All the airports are located on a\r\nstraight line. Each airport has unique id from to , Vladik\u2019s house is\r\nsituated next to the airport with id , and the place of the olympiad is\r\nsituated next to the airport with id . It is possible that Vladik\u2019s\r\nhouse and the place of the olympiad are located near the same airport.\r\nTo get to the olympiad, Vladik can fly between any pair of airports any\r\nnumber of times, but he has to start his route at the airport and finish\r\nit at the airport .Each airport belongs to one of two companies. The\r\ncost of flight from the airport to the airport is zero if both airports\r\nbelong to the same company, and if they belong to different\r\ncompanies.Print the minimum cost Vladik has to pay to get to the\r\nolympiad.\r\n",
+    "statement": "Vladik is a competitive programmer. This year he is going to win the\r\nInternational Olympiad in Informatics. But it is not as easy as it\r\nsounds: the question Vladik face now is to find the cheapest way to get\r\nto the olympiad.Vladik knows airports. All the airports are located on a\r\nstraight line. Each airport has unique id from to , Vladik’s house is\r\nsituated next to the airport with id , and the place of the olympiad is\r\nsituated next to the airport with id . It is possible that Vladik’s\r\nhouse and the place of the olympiad are located near the same airport.\r\nTo get to the olympiad, Vladik can fly between any pair of airports any\r\nnumber of times, but he has to start his route at the airport and finish\r\nit at the airport .Each airport belongs to one of two companies. The\r\ncost of flight from the airport to the airport is zero if both airports\r\nbelong to the same company, and if they belong to different\r\ncompanies.Print the minimum cost Vladik has to pay to get to the\r\nolympiad.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint n,a,b;\nstring s;\n\nint main() {\n    cin>>n>>a>>b;\n    cin>>s;\n    if(s[a-1]==s[b-1]) {\n        cout<<0<<endl;\n    }\n    else {\n        cout<<1<<endl;\n    }\n\n    return 0;\n}\n"
     ],
@@ -123,5 +123,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Vladik and flights.json",
     "editorial_link": "https://codeforces.com//blog/entry/49049",
-    "editorial": "The answer is , if airports with numbers and belong to one company.\r\nOtherwise there are two adjacent airports, that belong to different\r\ncompanies. We can get to one of them for free, then pay to fly from one\r\nto another and then fly to airport number for free. So, in this case the\r\nanswer is . Complexity .\r\n"
+    "editorial": "The answer is , if airports with numbers and belong to one company.\r\nOtherwise there are two adjacent airports, that belong to different\r\ncompanies. We can get to one of them for free, then pay to fly from one\r\nto another and then fly to airport number for free. So, in this case the\r\nanswer is . Complexity .\r\n",
+    "hint": []
 }

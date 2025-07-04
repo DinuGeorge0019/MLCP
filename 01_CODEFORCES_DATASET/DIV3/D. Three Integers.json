@@ -143,5 +143,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\D. Three Integers.json",
     "editorial_link": "https://codeforces.com//blog/entry/74224",
-    "editorial": "Let\u00e2\u0080\u0099s iterate over all possible values of from to . It is obvious that\r\ncannot be bigger than , else we can just move to . Then let\u00e2\u0080\u0099s iterate\r\nover all possible multiples of from to . Let this number be . Then we\r\ncan find as the nearest number to that is divisible by (we can check two\r\nnearest numbers to be sure). These numbers are and . Then we can update\r\nthe answer with the found triple. Note that the only condition you need\r\nto check is that .Time complexity: because of the sum of the harmonic\r\nseries.\r\n"
+    "editorial": "Letâs iterate over all possible values of from to . It is obvious that\r\ncannot be bigger than , else we can just move to . Then letâs iterate\r\nover all possible multiples of from to . Let this number be . Then we\r\ncan find as the nearest number to that is divisible by (we can check two\r\nnearest numbers to be sure). These numbers are and . Then we can update\r\nthe answer with the found triple. Note that the only condition you need\r\nto check is that .Time complexity: because of the sum of the harmonic\r\nseries.\r\n",
+    "hint": []
 }

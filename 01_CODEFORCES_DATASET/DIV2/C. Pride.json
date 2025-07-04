@@ -121,5 +121,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Pride.json",
     "editorial_link": "https://codeforces.com//blog/entry/55841",
-    "editorial": "Consider as number of s in the .If then the answer is .otherwise We\r\nshould find a segment with its equal to 1 and minimum length.consider a\r\nsegment as which and it\u00e2\u0080\u0099s gcd as We fix and then iterate through all in\r\norder. Consider we know that then .If then you can make all the elements\r\nin .Answer is minimum possible over all possible segments.\r\n"
+    "editorial": "Consider as number of s in the .If then the answer is .otherwise We\r\nshould find a segment with its equal to 1 and minimum length.consider a\r\nsegment as which and itâs gcd as We fix and then iterate through all in\r\norder. Consider we know that then .If then you can make all the elements\r\nin .Answer is minimum possible over all possible segments.\r\n",
+    "hint": []
 }

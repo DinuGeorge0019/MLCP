@@ -166,5 +166,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Two distinct points.json",
     "editorial_link": "https://codeforces.com//blog/entry/64751",
-    "editorial": "One of the possible answers is always a pair of endpoints of the given\r\nsegments. So we can add all endpoints to the array and iterate over all\r\npairs of elements of this array and check if the current pair is\r\nsuitable or not.\r\n"
+    "editorial": "One of the possible answers is always a pair of endpoints of the given\r\nsegments. So we can add all endpoints to the array and iterate over all\r\npairs of elements of this array and check if the current pair is\r\nsuitable or not.\r\n",
+    "hint": []
 }

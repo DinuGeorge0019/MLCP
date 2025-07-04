@@ -175,5 +175,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\F. Clear the String.json",
     "editorial_link": "https://codeforces.com/blog/entry/65752",
-    "editorial": "We will solve the problem by dynamic programming. Let be the answer for\r\nsubstring . Then we have two cases: The first letter of the substring is\r\ndeleted separately from the rest, then ; The first letter of the\r\nsubstring is deleted alongside with some other letter (both letters must\r\nbe equal), then .\r\n"
+    "editorial": "We will solve the problem by dynamic programming. Let be the answer for\r\nsubstring . Then we have two cases: The first letter of the substring is\r\ndeleted separately from the rest, then ; The first letter of the\r\nsubstring is deleted alongside with some other letter (both letters must\r\nbe equal), then .\r\n",
+    "hint": []
 }

@@ -193,5 +193,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\F. You Are So Beautiful.json",
     "editorial_link": "https://codeforces.com//blog/entry/121621",
-    "editorial": "Note that a subarray suits us if is the leftmost occurrence of the\r\nnumber in the array and is the rightmost occurrence of the number in the\r\narray. Let\u00e2\u0080\u0099s create an array filled with zeros and set if is the\r\nrightmost occurrence of the number in the array (this can be done using\r\nsets or dictionaries). Now we need to consider all suitable left\r\nboundaries and see how many suitable right boundaries we have on the\r\nsuffix, either by precomputing a suffix sum or by simply maintaining a\r\nvariable while traversing from left to right.\r\n"
+    "editorial": "Note that a subarray suits us if is the leftmost occurrence of the\r\nnumber in the array and is the rightmost occurrence of the number in the\r\narray. Letâs create an array filled with zeros and set if is the\r\nrightmost occurrence of the number in the array (this can be done using\r\nsets or dictionaries). Now we need to consider all suitable left\r\nboundaries and see how many suitable right boundaries we have on the\r\nsuffix, either by precomputing a suffix sum or by simply maintaining a\r\nvariable while traversing from left to right.\r\n",
+    "hint": []
 }

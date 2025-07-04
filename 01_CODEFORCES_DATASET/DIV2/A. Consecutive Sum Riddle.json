@@ -170,5 +170,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Consecutive Sum Riddle.json",
     "editorial_link": "https://codeforces.com//blog/entry/95525",
-    "editorial": "You can take (?n+1)+(?n+2)+\u0085+(n?1)+n\n, so the sum will be n\n. Thus, l=?n+1\n and r=n\n."
+    "editorial": "You can take (?n+1)+(?n+2)++(n?1)+n\n, so the sum will be n\n. Thus, l=?n+1\n and r=n\n.",
+    "hint": [
+        "Hint See how case works."
+    ]
 }

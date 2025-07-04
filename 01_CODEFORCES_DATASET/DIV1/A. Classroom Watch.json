@@ -138,5 +138,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Classroom Watch.json",
     "editorial_link": "https://codeforces.com//blog/entry/55233",
-    "editorial": "For numbers that doesn\u00e2\u0080\u0099t exceed sum of digits doesn\u00e2\u0080\u0099t exceed , so we can\r\njust iterate over all possible sums of digits and check if sum of digits\r\nof equals .\r\n"
+    "editorial": "For numbers that doesnât exceed sum of digits doesnât exceed , so we can\r\njust iterate over all possible sums of digits and check if sum of digits\r\nof equals .\r\n",
+    "hint": []
 }

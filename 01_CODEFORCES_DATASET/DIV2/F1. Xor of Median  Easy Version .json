@@ -144,5 +144,14 @@
     ],
     "dificulty": "",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\F1. Xor of Median  Easy Version .json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\F1. Xor of Median  Easy Version .json",
+    "hint": [
+        "Hint 1 The order of the sequence doesn't matter. What if we fix the sequence and then calculate its contribution to the answer?",
+        "Hint 2 By Lucas's theorem the contribution is odd iff for each set bit in there is exactly one such that has this bit set, and . In other words, has to partition all set bits in . For a fixed with an odd contribution, what will be the median?",
+        "Hint 3 There is a very big element in .",
+        "Hint 4 Since partitions the bits of , there will be which has it's most significant bit. This means that , so will always be the median.",
+        "Hint 5 Suppose there are non-zero elements in . We can partition all set bits of into non-empty subsequences and then choose which of the numbers will occur. How can we calculate the answer now?",
+        "Hint 6 The only time we use the value of is when we partition all of it's set bits into subsequences. That means that the answer only depends on the number of set bits in , not on itself. This allows us to solve the easy version by fixing the value of and the value of the median.",
+        "Hint 7 To solve the hard version use Lucas's theorem again and do digit dp or SOS-dp."
+    ]
 }

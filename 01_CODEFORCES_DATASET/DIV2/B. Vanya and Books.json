@@ -111,5 +111,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Vanya and Books.json",
     "editorial_link": "https://codeforces.com//blog/entry/18696",
-    "editorial": "We can find out a formula for this problem: for answer will be ; for\r\nanswer will be ; for answer will be ; so for answer will be ; Time\r\ncomplexity , where is the length of n. We also could just try options\r\nand solve problem for each option. UPD: Don\u00e2\u0080\u0099t use function pow() to find\r\npowers of 10, because it doesn\u00e2\u0080\u0099t work right sometimes. C++ code\r\nWild_Hamster Java code Wild_Hamster Python code Zlobober\r\n"
+    "editorial": "We can find out a formula for this problem: for answer will be ; for\r\nanswer will be ; for answer will be ; so for answer will be ; Time\r\ncomplexity , where is the length of n. We also could just try options\r\nand solve problem for each option. UPD: Donât use function pow() to find\r\npowers of 10, because it doesnât work right sometimes. C++ code\r\nWild_Hamster Java code Wild_Hamster Python code Zlobober\r\n",
+    "hint": []
 }

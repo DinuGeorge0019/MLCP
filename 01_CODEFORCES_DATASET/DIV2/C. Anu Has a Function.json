@@ -108,7 +108,7 @@
         ]
     },
     "name": "C. Anu Has a Function",
-    "statement": "Anu has created her own function f: f(x, y) = (x | y) - y where |\r\ndenotes the bitwise OR operation. For example, f(11, 6) = (11|6) - 6 =\r\n15 - 6 = 9. It can be proved that for any nonnegative numbers x and y\r\nvalue of f(x, y) is also nonnegative. She would like to research more\r\nabout this function and has created multiple problems for herself. But\r\nshe isn\u2019t able to solve all of them and needs your help. Here is one of\r\nthese problems.A value of an array [a_1, a_2,\r\ndots, a_n] is defined as f(f(\r\ndots f(f(a_1, a_2), a_3),\r\ndots a_{n-1}), a_n) (see notes). You are given an array with elements.\r\nHow should you reorder its elements so that the value of the array is\r\nmaximal possible?\r\n",
+    "statement": "Anu has created her own function f: f(x, y) = (x | y) - y where |\r\ndenotes the bitwise OR operation. For example, f(11, 6) = (11|6) - 6 =\r\n15 - 6 = 9. It can be proved that for any nonnegative numbers x and y\r\nvalue of f(x, y) is also nonnegative. She would like to research more\r\nabout this function and has created multiple problems for herself. But\r\nshe isn’t able to solve all of them and needs your help. Here is one of\r\nthese problems.A value of an array [a_1, a_2,\r\ndots, a_n] is defined as f(f(\r\ndots f(f(a_1, a_2), a_3),\r\ndots a_{n-1}), a_n) (see notes). You are given an array with elements.\r\nHow should you reorder its elements so that the value of the array is\r\nmaximal possible?\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\n#define Rint register int\n#define MP make_pair\n#define fi first\n#define se second\nusing namespace std;\ntypedef long long LL;\ntypedef pair<int, int> pii;\ntemplate<typename T>\ninline void read(T &x){\n\tint ch = getchar(); x = 0;\n\tbool f = false;\n\twhile((ch < '0' || ch > '9') && ch != '-') ch = getchar();\n\tif(ch == '-'){f = true; ch = getchar();}\n\twhile(ch >= '0' && ch <= '9'){x = x * 10 + ch - '0'; ch = getchar();}\n\tif(f) x = -x;\t\n}\nconst int N = 100003;\nint n, a[N];\nint main(){\n\tread(n);\n\tfor(Rint i = 1;i <= n;++ i){\n\t\tread(a[i]);\n\t}\n\tfor(Rint j = 30;~j;-- j){\n\t\tint cnt = 0, p;\n\t\tfor(Rint i = 1;i <= n;++ i) if((a[i] >> j) & 1) ++ cnt, p = i;\n\t\tif(cnt == 1){\n\t\t\tprintf(\"%d \", a[p]);\n\t\t\tfor(Rint k = 1;k <= n;++ k) if(k != p) printf(\"%d \", a[k]);\n\t\t\treturn 0;\n\t\t}\n\t}\n\tfor(Rint i = 1;i <= n;++ i) printf(\"%d \", a[i]);\n}"
     ],
@@ -122,5 +122,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Anu Has a Function.json",
     "editorial_link": "https://codeforces.com//blog/entry/73763",
-    "editorial": "what will happen if we are unable to find a1? How to take a1 for the\r\nsolution ?\r\n"
+    "editorial": "what will happen if we are unable to find a1? How to take a1 for the\r\nsolution ?\r\n",
+    "hint": []
 }

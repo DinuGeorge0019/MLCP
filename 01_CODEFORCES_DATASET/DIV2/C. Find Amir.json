@@ -135,5 +135,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Find Amir.json",
     "editorial_link": "https://codeforces.com//blog/entry/51846",
-    "editorial": "Consider pairs of schools cost of their traverse is :.Connect this pairs\r\nwith traversing from the second of each pair to the first of the next\r\npair. So if the answer is and if the answer is .The minimum number of\r\ndirect paths should be , so because of using all of s and make the other\r\ndirect paths with s the path is minimum possible spanning tree.\r\n"
+    "editorial": "Consider pairs of schools cost of their traverse is :.Connect this pairs\r\nwith traversing from the second of each pair to the first of the next\r\npair. So if the answer is and if the answer is .The minimum number of\r\ndirect paths should be , so because of using all of s and make the other\r\ndirect paths with s the path is minimum possible spanning tree.\r\n",
+    "hint": [
+        "hint1 Find minimum weighted edges.",
+        "hint2 There is some edges with weight 0, try to connect them in a carefully way."
+    ]
 }

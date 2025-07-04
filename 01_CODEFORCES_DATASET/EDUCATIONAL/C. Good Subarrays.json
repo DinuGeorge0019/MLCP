@@ -189,5 +189,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\C. Good Subarrays.json",
     "editorial_link": "https://codeforces.com//blog/entry/81506",
-    "editorial": "We use zero indexing in this solution. We also use half-closed interval\r\n(so subarray is ).Let\u00e2\u0080\u0099s precalculate the array , where (so if sum of\r\nfirst elements of ).Then subarray is good if , so .Thus, we have to\r\ngroup all prefix by value for from to . And if the have prefix with same\r\nvalue of then we have to add to the answer.\r\n"
+    "editorial": "We use zero indexing in this solution. We also use half-closed interval\r\n(so subarray is ).Letâs precalculate the array , where (so if sum of\r\nfirst elements of ).Then subarray is good if , so .Thus, we have to\r\ngroup all prefix by value for from to . And if the have prefix with same\r\nvalue of then we have to add to the answer.\r\n",
+    "hint": []
 }

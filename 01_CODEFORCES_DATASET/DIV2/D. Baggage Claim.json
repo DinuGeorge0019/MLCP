@@ -1,1 +1,103 @@
-{"link": "https://codeforces.com//contest/2098/problem/D", "problemId": "3353163", "problem_idx": "D", "shortId": "2098D", "contest_number": "2098", "problem_submissions": {"E": [317320024, 317322204, 317313156, 317321829, 317319668, 317318024, 317438260], "D": [317309574, 317317051, 317313607, 317308210, 317298812, 317311685, 317309218, 317311584, 317309264, 317307368], "C": [317295196, 317296691, 317289274, 317296563, 317290701, 317300783, 317292285, 317291852, 317292763, 317292850, 317292261, 317304345, 317300061, 317294892, 317298246], "B": [317289494, 317313236, 317286412, 317291280, 317285715, 317291349, 317285030, 317287128, 317287700, 317289713, 317283188, 317291016, 317286513, 317290125], "A": [317280615, 317287742, 317281612, 317282607, 317281699, 317303477, 317279602, 317280114, 317281057, 317282638, 317282803, 317280020, 317283173, 317280277, 317286464], "F": [317318369, 317305957, 317319613, 317439057]}, "editorial_link": "https://codeforces.com//blog/entry/142316", "editorial": "", "name": "D. Baggage Claim", "statement": "Every airport has a baggage claim area, and Balbesovo Airport is no\r\nexception. At some point, one of the administrators at Sheremetyevo came\r\nup with an unusual idea: to change the traditional shape of the baggage\r\nclaim conveyor from a carousel to a more complex form.Suppose that the\r\nbaggage claim area is represented as a rectangular grid of size n\r\ntimes m. The administration proposed that the path of the conveyor\r\nshould pass through the cells p_1, p_2,\r\nldots, p_{2k+1}, where p_i = (x_i, y_i).For each cell p_i and the next\r\ncell p_{i+1} (where 1\r\nleq i\r\nleq 2k), these cells must share a common side. Additionally, the path\r\nmust be simple, meaning that for no pair of indices i\r\nneq j should the cells p_i and p_j coincide.Unfortunately, the route\r\nplan was accidentally spoiled by spilled coffee, and only the cells with\r\nodd indices of the path were preserved: p_1, p_3, p_5,\r\nldots, p_{2k+1}. Your task is to determine the number of ways to restore\r\nthe original complete path p_1, p_2,\r\nldots, p_{2k+1} given these k+1 cells.Since the answer can be very\r\nlarge, output it modulo 10^9+7.\r\n", "solutions": [], "input": "", "output": "", "tags": ["combinatorics", "dfs and similar", "graphs", "math"], "dificulty": "2300", "interactive": false, "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Baggage Claim.json"}
+{
+    "link": "https://codeforces.com//contest/2098/problem/D",
+    "problemId": "3353163",
+    "problem_idx": "D",
+    "shortId": "2098D",
+    "contest_number": "2098",
+    "problem_submissions": {
+        "E": [
+            317320024,
+            317322204,
+            317313156,
+            317321829,
+            317319668,
+            317318024,
+            317438260
+        ],
+        "D": [
+            317309574,
+            317317051,
+            317313607,
+            317308210,
+            317298812,
+            317311685,
+            317309218,
+            317311584,
+            317309264,
+            317307368
+        ],
+        "C": [
+            317295196,
+            317296691,
+            317289274,
+            317296563,
+            317290701,
+            317300783,
+            317292285,
+            317291852,
+            317292763,
+            317292850,
+            317292261,
+            317304345,
+            317300061,
+            317294892,
+            317298246
+        ],
+        "B": [
+            317289494,
+            317313236,
+            317286412,
+            317291280,
+            317285715,
+            317291349,
+            317285030,
+            317287128,
+            317287700,
+            317289713,
+            317283188,
+            317291016,
+            317286513,
+            317290125
+        ],
+        "A": [
+            317280615,
+            317287742,
+            317281612,
+            317282607,
+            317281699,
+            317303477,
+            317279602,
+            317280114,
+            317281057,
+            317282638,
+            317282803,
+            317280020,
+            317283173,
+            317280277,
+            317286464
+        ],
+        "F": [
+            317318369,
+            317305957,
+            317319613,
+            317439057
+        ]
+    },
+    "editorial_link": "https://codeforces.com//blog/entry/142316",
+    "editorial": null,
+    "name": "D. Baggage Claim",
+    "statement": "Every airport has a baggage claim area, and Balbesovo Airport is no\r\nexception. At some point, one of the administrators at Sheremetyevo came\r\nup with an unusual idea: to change the traditional shape of the baggage\r\nclaim conveyor from a carousel to a more complex form.Suppose that the\r\nbaggage claim area is represented as a rectangular grid of size n\r\ntimes m. The administration proposed that the path of the conveyor\r\nshould pass through the cells p_1, p_2,\r\nldots, p_{2k+1}, where p_i = (x_i, y_i).For each cell p_i and the next\r\ncell p_{i+1} (where 1\r\nleq i\r\nleq 2k), these cells must share a common side. Additionally, the path\r\nmust be simple, meaning that for no pair of indices i\r\nneq j should the cells p_i and p_j coincide.Unfortunately, the route\r\nplan was accidentally spoiled by spilled coffee, and only the cells with\r\nodd indices of the path were preserved: p_1, p_3, p_5,\r\nldots, p_{2k+1}. Your task is to determine the number of ways to restore\r\nthe original complete path p_1, p_2,\r\nldots, p_{2k+1} given these k+1 cells.Since the answer can be very\r\nlarge, output it modulo 10^9+7.\r\n",
+    "solutions": [],
+    "input": "",
+    "output": "",
+    "tags": [
+        "combinatorics",
+        "dfs and similar",
+        "graphs",
+        "math"
+    ],
+    "dificulty": "2300",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Baggage Claim.json",
+    "hint": []
+}

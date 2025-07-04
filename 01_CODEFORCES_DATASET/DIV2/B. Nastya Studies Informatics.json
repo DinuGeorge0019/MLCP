@@ -116,5 +116,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Nastya Studies Informatics.json",
     "editorial_link": "https://codeforces.com/blog/entry/60083",
-    "editorial": "Let\u00e2\u0080\u0099s consider some suitable pair . As , we can present number as , and\r\nnumber as , where we know that and .Let\u00e2\u0080\u0099s consider too that from the\r\nrestriction from the problem we surely know the restriction for and ,\r\nthat is . Let\u00e2\u0080\u0099s remember we know that (because is , is ). Then we can\r\nget . Dividing by :..Now if , answer equals 0.Else as is surely less\r\nthan , we can just sort out all possible pairs of divisors , such that ,\r\nand then to check that and are in the getting above restrictions.\r\nComplexity of this solution is .\r\n"
+    "editorial": "Letâs consider some suitable pair . As , we can present number as , and\r\nnumber as , where we know that and .Letâs consider too that from the\r\nrestriction from the problem we surely know the restriction for and ,\r\nthat is . Letâs remember we know that (because is , is ). Then we can\r\nget . Dividing by :..Now if , answer equals 0.Else as is surely less\r\nthan , we can just sort out all possible pairs of divisors , such that ,\r\nand then to check that and are in the getting above restrictions.\r\nComplexity of this solution is .\r\n",
+    "hint": []
 }

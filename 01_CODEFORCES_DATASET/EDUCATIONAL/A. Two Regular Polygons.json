@@ -196,5 +196,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Two Regular Polygons.json",
     "editorial_link": "https://codeforces.com//blog/entry/74640",
-    "editorial": "The answer is \"\" if and only if is divisible by because if you number\r\nall vertices of the initial polygon from to clockwise then you need to\r\ntake every vertex divisible by (and this number obviously should be\r\ninteger) and there is no other way to construct the other polygon.\r\n"
+    "editorial": "The answer is \"\" if and only if is divisible by because if you number\r\nall vertices of the initial polygon from to clockwise then you need to\r\ntake every vertex divisible by (and this number obviously should be\r\ninteger) and there is no other way to construct the other polygon.\r\n",
+    "hint": []
 }

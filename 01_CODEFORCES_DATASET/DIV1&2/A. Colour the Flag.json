@@ -214,5 +214,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\A. Colour the Flag.json",
     "editorial_link": "https://codeforces.com//blog/entry/91760",
-    "editorial": "Observe that there are only two valid grids, one where the top left cell\r\nis \"\" and one where it\u00e2\u0080\u0099s \"\". We can just test those two grids and see if\r\nthey conform with the requirements.Time complexity:\r\n"
+    "editorial": "Observe that there are only two valid grids, one where the top left cell\r\nis \"\" and one where itâs \"\". We can just test those two grids and see if\r\nthey conform with the requirements.Time complexity:\r\n",
+    "hint": [
+        "Hint 1 Let's say you know the colour of the first square, what colours can you figure out next?",
+        "Hint 2 Colour it like a chessboard, but there's more than one possible chessboard!",
+        "Hint 3 Brute force the color of the first square!"
+    ]
 }

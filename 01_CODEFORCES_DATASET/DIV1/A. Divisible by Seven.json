@@ -89,7 +89,7 @@
         ]
     },
     "name": "A. Divisible by Seven",
-    "statement": "You have number , whose decimal representation quite luckily contains\r\ndigits 1, 6, 8, 9. Rearrange the digits in its decimal representation so\r\nthat the resulting number will be divisible by 7.Number doesn\u2019t contain\r\nany leading zeroes and contains digits 1, 6, 8, 9 (it also can contain\r\nanother digits). The resulting number also mustn\u2019t contain any leading\r\nzeroes.\r\n",
+    "statement": "You have number , whose decimal representation quite luckily contains\r\ndigits 1, 6, 8, 9. Rearrange the digits in its decimal representation so\r\nthat the resulting number will be divisible by 7.Number doesn’t contain\r\nany leading zeroes and contains digits 1, 6, 8, 9 (it also can contain\r\nanother digits). The resulting number also mustn’t contain any leading\r\nzeroes.\r\n",
     "solutions": [
         "#include <iostream>\n#include <cstdio>\n#include <algorithm>\n#include <cstring>\n#include <string>\nusing namespace std;\n\nint main() {\n\tstring a;\n\tcin >> a;\n\tstring last = \"1689\";\n\tfor (int i = 0; i < last.size(); ++i) {\n\t\ta.erase(find(a.begin(), a.end(), last[i]));\n\t}\n\tif (count(a.begin(), a.end(), '0') == a.size()) {\n\t\tcout << \"1869\" << a << endl;\n\t\treturn 0;\n\t}\n\tsort(a.rbegin(), a.rend());\n\tdo {\n\t\tstring t = a + last;\n\t\tint ret = 0;\n\t\tfor (int i = 0; i < t.size(); ++i) {\n\t\t\tret = ret * 10 + t[i] - '0';\n\t\t\tret %= 7;\n\t\t}\n\t\tif (ret == 0) {\n\t\t\tcout << t << endl;\n\t\t\treturn 0;\n\t\t}\n\t} while (next_permutation(last.begin(), last.end()));\n}\n"
     ],
@@ -103,5 +103,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Divisible by Seven.json",
     "editorial_link": "https://codeforces.com//blog/entry/10084",
-    "editorial": "Because permutation of 1, 6, 8, 9 can form integers\nthat mod 7 equals 0, 1, 2, 3, 4, 5, 6. So you can construct answer like\nthis: nonzero digits + a permutation of 1, 6, 8, 9 + zeros.\n"
+    "editorial": "Because permutation of 1, 6, 8, 9 can form integers\nthat mod 7 equals 0, 1, 2, 3, 4, 5, 6. So you can construct answer like\nthis: nonzero digits + a permutation of 1, 6, 8, 9 + zeros.\n",
+    "hint": []
 }

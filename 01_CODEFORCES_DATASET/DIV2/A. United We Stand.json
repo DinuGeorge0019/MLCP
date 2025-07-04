@@ -139,5 +139,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. United We Stand.json",
     "editorial_link": "https://codeforces.com//blog/entry/119287",
-    "editorial": "TutorialFirst, if all numbers are equal, then there is no answer (since\r\nis divisible by , if both arrays are non-empty, then is a divisor of\r\n).Second, if is divisible by and they are both natural numbers, then the\r\nfollowing equality holds: (by definition, if is divisible by , then can\r\nbe represented as , where is a natural number).Now we can place all\r\ninstances of the smallest number into , and all other numbers into . It\r\ncan be seen that such a construction always gives a valid answer.\r\n"
+    "editorial": "TutorialFirst, if all numbers are equal, then there is no answer (since\r\nis divisible by , if both arrays are non-empty, then is a divisor of\r\n).Second, if is divisible by and they are both natural numbers, then the\r\nfollowing equality holds: (by definition, if is divisible by , then can\r\nbe represented as , where is a natural number).Now we can place all\r\ninstances of the smallest number into , and all other numbers into . It\r\ncan be seen that such a construction always gives a valid answer.\r\n",
+    "hint": [
+        "Hint 1 What does it mean that divides ?"
+    ]
 }

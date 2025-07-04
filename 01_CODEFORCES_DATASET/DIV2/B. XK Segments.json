@@ -125,5 +125,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. XK Segments.json",
     "editorial_link": "https://codeforces.com//blog/entry/56028",
-    "editorial": "First, we need to understand how to find the number of integers in\r\nsegment which are divisible by . It is . After that we should sort array\r\nin ascending order. For each left boundary of the segment we need to\r\nfind minimal and maximal index of good right boundaries. All right\r\nboundaries should satisfy the following condition . We already know , is\r\nincreasing while increases. So we can do binary search on sorted array\r\nto find minimal/maximal index of good right boundaries and that mean we\r\ncan find the number of good right boundaries. Time complexity . Solution\r\n"
+    "editorial": "First, we need to understand how to find the number of integers in\r\nsegment which are divisible by . It is . After that we should sort array\r\nin ascending order. For each left boundary of the segment we need to\r\nfind minimal and maximal index of good right boundaries. All right\r\nboundaries should satisfy the following condition . We already know , is\r\nincreasing while increases. So we can do binary search on sorted array\r\nto find minimal/maximal index of good right boundaries and that mean we\r\ncan find the number of good right boundaries. Time complexity . Solution\r\n",
+    "hint": []
 }

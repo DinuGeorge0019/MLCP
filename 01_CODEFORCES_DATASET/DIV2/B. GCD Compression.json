@@ -168,5 +168,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. GCD Compression.json",
     "editorial_link": "https://codeforces.com//blog/entry/79107",
-    "editorial": ":It is always possible to form pairs of elements such that their gcd is\r\ndivisible by .:We can pair up the odd numbers and even numbers\r\nseparately so that the sum of numbers in each pair is divisible by .\r\nNote that we can always form pairs in the above manner because in the\r\nworst case, we would discard one odd number and one even number from .\r\nIf we discarded more than one even or odd numbers, we could instead form\r\nanother pair with even sum.Time Complexity:\r\n"
+    "editorial": ":It is always possible to form pairs of elements such that their gcd is\r\ndivisible by .:We can pair up the odd numbers and even numbers\r\nseparately so that the sum of numbers in each pair is divisible by .\r\nNote that we can always form pairs in the above manner because in the\r\nworst case, we would discard one odd number and one even number from .\r\nIf we discarded more than one even or odd numbers, we could instead form\r\nanother pair with even sum.Time Complexity:\r\n",
+    "hint": []
 }

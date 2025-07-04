@@ -171,5 +171,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Nearest Minimums.json",
     "editorial_link": "https://codeforces.com/blog/entry/56771",
-    "editorial": "This task can be done by one array traversal. Maintain current minimum\r\nvalue, position of the last occurrence of , current minumum distance\r\nbetween two occurrences of . Now for each if then do , , . For do , . In\r\nthe end will be the global minimum of array and will keep the closest\r\nits occurrences.Overall complexity: .\r\n"
+    "editorial": "This task can be done by one array traversal. Maintain current minimum\r\nvalue, position of the last occurrence of , current minumum distance\r\nbetween two occurrences of . Now for each if then do , , . For do , . In\r\nthe end will be the global minimum of array and will keep the closest\r\nits occurrences.Overall complexity: .\r\n",
+    "hint": []
 }

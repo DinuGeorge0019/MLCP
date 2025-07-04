@@ -81,7 +81,7 @@
         ]
     },
     "name": "A. Set of Strings",
-    "statement": "You are given a string . A sequence of strings is called , if the\r\nconcatenation of these strings is string (formally, ) and the first\r\ncharacters of these strings are distinct.Find any sequence of strings or\r\ndetermine that the sequence doesn\u2019t exist.\r\n",
+    "statement": "You are given a string . A sequence of strings is called , if the\r\nconcatenation of these strings is string (formally, ) and the first\r\ncharacters of these strings are distinct.Find any sequence of strings or\r\ndetermine that the sequence doesn’t exist.\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\nusing namespace std;\n\nint k , f[256] , mrk[101] , cnt=0 , done=0 ;\nstring a ;\n\nint main(){\n  memset(f,-1,sizeof(f)) ;\n  cin >> k >> a ;\n  for(int i=0 ; i<a.size() ; i++) if(f[a[i]]==-1) f[a[i]]=i , mrk[i]=1 , cnt++ ; \n  if(cnt<k) { printf(\"NO\") ;  return 0 ;}\n\n  printf(\"YES\") ; \n  for(int i=0 ; i<a.size() ; i++) {\n    if(mrk[i] && done<k) puts(\"\") , done++ ;\n    cout << a[i] ;  \n  }   \n\n  return 0;\n}"
     ],
@@ -95,5 +95,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Set of Strings.json",
     "editorial_link": "https://codeforces.com//blog/entry/17773",
-    "editorial": "In that task you need to implement what was written in the statements.\r\nLet\u00e2\u0080\u0099s iterate over all characters of string and keep array . Also let\u00e2\u0080\u0099s\r\nkeep current string. If current character was not used previously, then\r\nlet\u00e2\u0080\u0099s put current string to the answer and after that we need to clear\r\ncurrent string. Otherwise, let\u00e2\u0080\u0099s append current character to the current\r\nstring. If array, that contain answer will have more then elements, we\r\nwill concatenate few last strings. The jury solution: 11035685\r\n"
+    "editorial": "In that task you need to implement what was written in the statements.\r\nLetâs iterate over all characters of string and keep array . Also letâs\r\nkeep current string. If current character was not used previously, then\r\nletâs put current string to the answer and after that we need to clear\r\ncurrent string. Otherwise, letâs append current character to the current\r\nstring. If array, that contain answer will have more then elements, we\r\nwill concatenate few last strings. The jury solution: 11035685\r\n",
+    "hint": []
 }

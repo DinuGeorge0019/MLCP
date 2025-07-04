@@ -110,5 +110,10 @@
     ],
     "dificulty": "",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. The Trail.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. The Trail.json",
+    "hint": [
+        "Hint 1 Pick , and find the sum of the whole grid. What does this tell you?",
+        "Hint 2 Once you know , the top left cell is fixed.",
+        "Hint 3 What about the next cell on the trail?"
+    ]
 }

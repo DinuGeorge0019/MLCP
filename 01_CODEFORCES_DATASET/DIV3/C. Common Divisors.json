@@ -183,5 +183,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C. Common Divisors.json",
     "editorial_link": "https://codeforces.com//blog/entry/69108",
-    "editorial": "Let is the greatest common divisor of all elements of the array. You can\r\nfind it by Euclidean algorithm or some standard library functions. Then\r\nthe answer is just the number of divisors of . You can find this value\r\nin .\r\n"
+    "editorial": "Let is the greatest common divisor of all elements of the array. You can\r\nfind it by Euclidean algorithm or some standard library functions. Then\r\nthe answer is just the number of divisors of . You can find this value\r\nin .\r\n",
+    "hint": []
 }

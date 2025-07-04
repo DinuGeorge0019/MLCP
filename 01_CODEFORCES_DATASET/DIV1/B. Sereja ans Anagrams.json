@@ -106,5 +106,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Sereja ans Anagrams.json",
     "editorial_link": "https://codeforces.com//blog/entry/9726",
-    "editorial": "We will divide the sequence on sequences. -st, -th, -th, ... element\r\nwill go to the first sequence, -nd, -th, -th... will go to the second\r\nsequence and so on. Now you need to find an answer for each of them,\r\nconsidering that . This can be solved by a simple method. You can go\r\nalong the sequence from left to right and count the number of\r\noccurrences of each number. If the number of occurrences of each number\r\nwill match the number of occurrences of the same number in the second\r\nsequence, then everything is OK.\r\n"
+    "editorial": "We will divide the sequence on sequences. -st, -th, -th, ... element\r\nwill go to the first sequence, -nd, -th, -th... will go to the second\r\nsequence and so on. Now you need to find an answer for each of them,\r\nconsidering that . This can be solved by a simple method. You can go\r\nalong the sequence from left to right and count the number of\r\noccurrences of each number. If the number of occurrences of each number\r\nwill match the number of occurrences of the same number in the second\r\nsequence, then everything is OK.\r\n",
+    "hint": []
 }

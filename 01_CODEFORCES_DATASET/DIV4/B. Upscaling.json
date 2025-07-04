@@ -166,5 +166,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\B. Upscaling.json",
     "editorial_link": "https://codeforces.com//blog/entry/127664",
-    "editorial": "You just need to implement what is written. One way is to go\r\ncell-by-cell in a regular checkerboard, and construct the larger one one\r\ncell at a time by copying cell into cells , , , .A faster solution is to\r\nnotice that if we round down coordinates in the enlarged checkerboard to\r\n, we get the corresponding cell in the original checkerboard. And to\r\noutput a regular checkerboard, we output if the sum of coordinates is\r\neven, and if it is odd.So the faster implementation is: iterate over all\r\ncells in the checkerboard. If is even output , else output .\r\n"
+    "editorial": "You just need to implement what is written. One way is to go\r\ncell-by-cell in a regular checkerboard, and construct the larger one one\r\ncell at a time by copying cell into cells , , , .A faster solution is to\r\nnotice that if we round down coordinates in the enlarged checkerboard to\r\n, we get the corresponding cell in the original checkerboard. And to\r\noutput a regular checkerboard, we output if the sum of coordinates is\r\neven, and if it is odd.So the faster implementation is: iterate over all\r\ncells in the checkerboard. If is even output , else output .\r\n",
+    "hint": []
 }

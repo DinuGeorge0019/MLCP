@@ -137,5 +137,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Marlin.json",
     "editorial_link": "https://codeforces.com//blog/entry/59350",
-    "editorial": "Instead of looking at the second path from to , consider it as from to\r\n.Now when is even, we can do the following: start from (2,2), put a\r\nhotel in that cell and another hotel in (2,n-1), then a hotel in (2,3)\r\nand one in (2, n-2), and so on until either the second row is full\r\n(expect for the middle column) or the number of hotels is , if you still\r\nneed more hotels then just do the same for the third row.This works\r\nbecause going from to is identical to going from to since the\r\nconstructed grid is symmetric.Now if then just fill the the middle\r\ncolumn (second and third row), and if is odd then just add a hotel in\r\nmiddle column.\r\n"
+    "editorial": "Instead of looking at the second path from to , consider it as from to\r\n.Now when is even, we can do the following: start from (2,2), put a\r\nhotel in that cell and another hotel in (2,n-1), then a hotel in (2,3)\r\nand one in (2, n-2), and so on until either the second row is full\r\n(expect for the middle column) or the number of hotels is , if you still\r\nneed more hotels then just do the same for the third row.This works\r\nbecause going from to is identical to going from to since the\r\nconstructed grid is symmetric.Now if then just fill the the middle\r\ncolumn (second and third row), and if is odd then just add a hotel in\r\nmiddle column.\r\n",
+    "hint": []
 }

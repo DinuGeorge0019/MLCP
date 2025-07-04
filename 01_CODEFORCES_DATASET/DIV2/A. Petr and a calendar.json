@@ -115,5 +115,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Petr and a calendar.json",
     "editorial_link": "https://codeforces.com//blog/entry/49946",
-    "editorial": "Just implement writing dates one by one and keeping current column and\r\nrow, or use the formula , where is the number of days in the month.\r\n"
+    "editorial": "Just implement writing dates one by one and keeping current column and\r\nrow, or use the formula , where is the number of days in the month.\r\n",
+    "hint": []
 }

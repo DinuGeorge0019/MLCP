@@ -159,5 +159,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\F. Consecutive Subsequence.json",
     "editorial_link": "https://codeforces.com//blog/entry/59281",
-    "editorial": "Let be the answer for our problem if the last element of our subsequence\r\nequals to .Then we have an easy solution: let\u00e2\u0080\u0099s store as a \"\" (C++) or\r\n\"\" (Java). Initially for each . Then let\u00e2\u0080\u0099s iterate over all in order of\r\ninput and try to update with a ().Then the maximum element of will be\r\nour answer. Let it be . Then let\u00e2\u0080\u0099s find any such that . Let it be . Then\r\nfor restoring the answer we need to iterate over all elements of our\r\narray in reverse order and if the current element then push to the array\r\nof positions of our subsequence and make .\r\n"
+    "editorial": "Let be the answer for our problem if the last element of our subsequence\r\nequals to .Then we have an easy solution: letâs store as a \"\" (C++) or\r\n\"\" (Java). Initially for each . Then letâs iterate over all in order of\r\ninput and try to update with a ().Then the maximum element of will be\r\nour answer. Let it be . Then letâs find any such that . Let it be . Then\r\nfor restoring the answer we need to iterate over all elements of our\r\narray in reverse order and if the current element then push to the array\r\nof positions of our subsequence and make .\r\n",
+    "hint": []
 }

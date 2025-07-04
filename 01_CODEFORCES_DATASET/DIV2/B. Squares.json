@@ -86,7 +86,7 @@
         ]
     },
     "name": "B. Squares",
-    "statement": "Vasya has found a piece of paper with a coordinate system written on it.\r\nThere are distinct squares drawn in this coordinate system. Let\u2019s number\r\nthe squares with integers from 1 to . It turned out that points with\r\ncoordinates and are the opposite corners of the -th square.Vasya wants\r\nto find such integer point (with integer coordinates) of the plane, that\r\nbelongs to exactly drawn squares. We\u2019ll say that a point belongs to a\r\nsquare, if the point is located either inside the square, or on its\r\nboundary. Help Vasya find a point that would meet the described limits.\r\n",
+    "statement": "Vasya has found a piece of paper with a coordinate system written on it.\r\nThere are distinct squares drawn in this coordinate system. Let’s number\r\nthe squares with integers from 1 to . It turned out that points with\r\ncoordinates and are the opposite corners of the -th square.Vasya wants\r\nto find such integer point (with integer coordinates) of the plane, that\r\nbelongs to exactly drawn squares. We’ll say that a point belongs to a\r\nsquare, if the point is located either inside the square, or on its\r\nboundary. Help Vasya find a point that would meet the described limits.\r\n",
     "solutions": [
         "#include <cstdio>\n#include <algorithm>\n\nint aa[100], n, k;\n\nint main() {\n    scanf(\"%d%d\", &n, &k);\n    for(int i=0; i<n; i++) scanf(\"%d\", aa+i);\n    std::sort(aa, aa+n);\n    aa[n] = aa[n-1]+1;\n    int i;\n    for(i=0; i<n; i++) {\n        if(aa[i] == aa[i+1]) continue;\n        if(i == n-k) {\n            printf(\"%d %d\\n\", aa[i], aa[i]);\n            break;\n        }\n    }\n    if(i == n) puts(\"-1\");\n    return 0;\n}\n"
     ],
@@ -101,5 +101,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Squares.json",
     "editorial_link": "https://codeforces.com//blog/entry/6419",
-    "editorial": "If , then the answer doesn\u00e2\u0080\u0099t exist. Otherwise let\u00e2\u0080\u0099s sort the squares by\r\ndescending of their sizes. Now you can print any point that belongs to\r\nthe -th square and doesn\u00e2\u0080\u0099t belong to the -th square. One of the possible\r\nanswers is .\r\n"
+    "editorial": "If , then the answer doesnât exist. Otherwise letâs sort the squares by\r\ndescending of their sizes. Now you can print any point that belongs to\r\nthe -th square and doesnât belong to the -th square. One of the possible\r\nanswers is .\r\n",
+    "hint": []
 }

@@ -124,5 +124,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Sonya and Hotels.json",
     "editorial_link": "https://codeforces.com/blog/entry/60443",
-    "editorial": "One hotel always can be built to the left of the first hotel. One more\r\ncan be built to the right of the last hotel. Let\u00e2\u0080\u0099s look at each pair of\r\nthe adjacent hotels. If the distance between these two hotels is greater\r\nthan , we can build one hotel at a distance of to the right from the\r\nleft hotel and one more at a distance of to the left from the right\r\nhotel. If the distance between these two hotels is equal to , we can\r\nbuild only one hotel in the middle of them. Otherwise, we can not build\r\na hotel between them.\r\n"
+    "editorial": "One hotel always can be built to the left of the first hotel. One more\r\ncan be built to the right of the last hotel. Letâs look at each pair of\r\nthe adjacent hotels. If the distance between these two hotels is greater\r\nthan , we can build one hotel at a distance of to the right from the\r\nleft hotel and one more at a distance of to the left from the right\r\nhotel. If the distance between these two hotels is equal to , we can\r\nbuild only one hotel in the middle of them. Otherwise, we can not build\r\na hotel between them.\r\n",
+    "hint": []
 }

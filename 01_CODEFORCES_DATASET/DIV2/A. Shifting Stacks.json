@@ -151,7 +151,7 @@
         ]
     },
     "name": "A. Shifting Stacks",
-    "statement": "You have n stacks of blocks. The i-th stack contains h_i blocks and it\u2019s\r\nheight is the number of blocks in it. In one move you can take a block\r\nfrom the i-th stack (if there is at least one block) and put it to the\r\ni + 1-th stack. Can you make the sequence of heights strictly\r\nincreasing?Note that the number of stacks always remains n: stacks don\u2019t\r\ndisappear when they have 0 blocks.\r\n",
+    "statement": "You have n stacks of blocks. The i-th stack contains h_i blocks and it’s\r\nheight is the number of blocks in it. In one move you can take a block\r\nfrom the i-th stack (if there is at least one block) and put it to the\r\ni + 1-th stack. Can you make the sequence of heights strictly\r\nincreasing?Note that the number of stacks always remains n: stacks don’t\r\ndisappear when they have 0 blocks.\r\n",
     "solutions": [
         "//#pragma GCC target(\"avx,avx2\")\t\n#include<bits/stdc++.h>\n//#include<immintrin.h>\nusing namespace std;\n\ntemplate <typename T> void chmin(T&x,const T &y)\n{\n\tif(x>y)x=y;\n}\ntemplate <typename T> void chmax(T &x,const T &y)\n{\n\tif(x<y)x=y;\n}\ntypedef int64_t s64;\ntypedef uint64_t u64;\ntypedef uint32_t u32;\ntypedef pair<int,int> pii;\n#define rep(i,l,r) for(int i=l;i<=r;++i)\n#define per(i,r,l) for(int i=r;i>=l;--i)\n#define rep0(i,l,r) for(int i=l;i<r;++i)\n#define gc (c=getchar())\nchar readc()\n{\n\tchar c;\n\twhile(isspace(gc));\n\treturn c;\n}\nint read()\n{\n\tchar c;\n\twhile(gc<'-');\n\tif(c=='-')\n\t{\n\t\tint x=gc-'0';\n\t\twhile(gc>='0')x=x*10+c-'0';\n\t\treturn -x;\n\t}\n\tint x=c-'0';\n\twhile(gc>='0')x=x*10+c-'0';\n\treturn x;\n}\n#undef gc\n\nint main()\n{\n#ifdef LOCAL\n\tfreopen(\"1.in\",\"r\",stdin);//freopen(\"1.out\",\"w\",stdout);\n#endif\t\n\tint tt=read();\n\twhile(tt--)\n\t{\n\t\tint n=read();\n\t\ts64 sum=0;\n\t\tbool ok=1;\n\t\trep(i,1,n)\n\t\t{\n\t\t\tsum+=read();\n\t\t\tok&=sum>=s64(i)*(i-1)/2;\n\t\t}\n\t\tputs(ok?\"YES\":\"NO\");\n\t}\n}\n"
     ],
@@ -165,5 +165,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Shifting Stacks.json",
     "editorial_link": "https://codeforces.com//blog/entry/87849",
-    "editorial": "SolutionLet\u00e2\u0080\u0099s consider the smallest amount of blocks we need to make the\r\nfirst heights ascending. As heights are non-negative and ascending the\r\nheights should look like , so the minimum sum is . It turns out that\r\nthis is the only requirement. If it\u00e2\u0080\u0099s not the case for every prefix the\r\nanswer is because we can\u00e2\u0080\u0099t make some prefix ascending. Otherwise the\r\nanswer is because you can move the blocks right till there is at least\r\nblocks in the -th stack and this would make the heights ascending.\r\n"
+    "editorial": "SolutionLetâs consider the smallest amount of blocks we need to make the\r\nfirst heights ascending. As heights are non-negative and ascending the\r\nheights should look like , so the minimum sum is . It turns out that\r\nthis is the only requirement. If itâs not the case for every prefix the\r\nanswer is because we canât make some prefix ascending. Otherwise the\r\nanswer is because you can move the blocks right till there is at least\r\nblocks in the -th stack and this would make the heights ascending.\r\n",
+    "hint": [
+        "Hint1 What's the lower bound for the amount of blocks for the answer to be ?",
+        "Hint2 Check the predicate for every prefix."
+    ]
 }

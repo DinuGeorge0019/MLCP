@@ -166,5 +166,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\A. Stair, Peak, or Neither .json",
     "editorial_link": "https://codeforces.com//blog/entry/127664",
-    "editorial": "You just need to write two if-statements and check the two cases. Please\r\nnote that some languages like C++ won’t allow a chain of comparisons\r\nlike , and you should instead write it as .\r\n"
+    "editorial": "You just need to write two if-statements and check the two cases. Please\r\nnote that some languages like C++ won’t allow a chain of comparisons\r\nlike , and you should instead write it as .\r\n",
+    "hint": []
 }

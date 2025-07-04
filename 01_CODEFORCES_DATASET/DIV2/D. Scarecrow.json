@@ -108,5 +108,12 @@
     ],
     "dificulty": "",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Scarecrow.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Scarecrow.json",
+    "hint": [
+        "Hint 1 Should you ever change the order of scarecrows?",
+        "Hint 2 What's the first thing that the leftmost scarecrow should do?",
+        "Hint 3 What's the only way to save time? Think in terms of distances and not times.",
+        "Hint 4 Look at the points where the crow \"switches over\" between scarecrows.",
+        "Hint 5 Greedy."
+    ]
 }

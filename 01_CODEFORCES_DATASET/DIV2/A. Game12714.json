@@ -120,5 +120,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Game12714.json",
     "editorial_link": "https://codeforces.com//blog/entry/59484",
-    "editorial": "First let\u00e2\u0080\u0099s notice that the first player makes turns and the second one\r\nmakes . So, if numbers are -indexed and sorted, first player can make\r\nthe answer not more than -th by deleting maximal number every time. The\r\nsecond can make it not less than -th. But , because .So the answer has\r\nminimal and maximal values, which are the same. So the answer is -th\r\nnumber ascending.Asymptotics is or Solution\r\n"
+    "editorial": "First letâs notice that the first player makes turns and the second one\r\nmakes . So, if numbers are -indexed and sorted, first player can make\r\nthe answer not more than -th by deleting maximal number every time. The\r\nsecond can make it not less than -th. But , because .So the answer has\r\nminimal and maximal values, which are the same. So the answer is -th\r\nnumber ascending.Asymptotics is or Solution\r\n",
+    "hint": []
 }

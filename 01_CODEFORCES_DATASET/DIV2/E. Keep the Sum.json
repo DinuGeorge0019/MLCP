@@ -1,1 +1,103 @@
-{"link": "https://codeforces.com//contest/2103/problem/E", "problemId": "3344323", "problem_idx": "E", "shortId": "2103E", "contest_number": "2103", "problem_submissions": {"E": [316580259, 316596724, 317172040, 316590039, 316595391], "F": [316566749, 316554849, 316570194, 316571690, 316564753, 316565334, 316570375, 316566324, 316575470, 316580599], "D": [316555496, 316575935, 316547933, 316557810, 316581217, 316583504, 316574629, 316579069, 316561467, 316554031, 316570027], "C": [316551349, 316539195, 316536817, 316551152, 316552060, 316551470, 316558008, 316550915, 316554352, 316539931, 316539580], "B": [316531722, 316533206, 316540972, 316534158, 316532366, 316536408, 316536066, 316548057, 316551531, 316531957, 316544497], "A": [316523865, 316526077, 316528063, 316524687, 316526522, 316532444, 316526800, 316525336, 316545204, 316523615, 316541424]}, "editorial_link": "https://codeforces.com//blog/entry/142149", "editorial": "", "name": "E. Keep the Sum", "statement": "You are given an integer k and an array a of length n, where each\r\nelement satisfies 0\r\nle a_i\r\nle k for all 1\r\nle i\r\nle n. You can perform the following operation on the array: Choose two\r\ndistinct indices i and j (1\r\nle i,j\r\nle n and i\r\nneq j) such that a_i + a_j = k. Select an integer x satisfying -a_j\r\nle x\r\nle a_i. Decrease a_i by x and increase a_j by x. In other words, update\r\na_i := a_i - x and a_j := a_j + x. Note that the constraints on x ensure\r\nthat all elements of array a remain between 0 and k throughout the\r\noperations.Your task is to determine whether it is possible to make the\r\narray a non-decreasing^{\r\ntext{ }} using the above operation. If it is possible, find a sequence\r\nof at most 3n operations that transforms the array into a non-decreasing\r\none.It can be proven that if it is possible to make the array\r\nnon-decreasing using the above operation, there exists a solution that\r\nuses at most 3n operations.^{\r\ntext{ }} An array a_1, a_2,\r\nldots, a_n is said to be non-decreasing if for all 1\r\nle i\r\nle n - 1, it holds that a_i\r\nle a_{i+1}.\r\n", "solutions": [], "input": "", "output": "", "tags": ["constructive algorithms", "implementation", "two pointers"], "dificulty": "2600", "interactive": false, "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Keep the Sum.json"}
+{
+    "link": "https://codeforces.com//contest/2103/problem/E",
+    "problemId": "3344323",
+    "problem_idx": "E",
+    "shortId": "2103E",
+    "contest_number": "2103",
+    "problem_submissions": {
+        "E": [
+            316580259,
+            316596724,
+            317172040,
+            316590039,
+            316595391
+        ],
+        "F": [
+            316566749,
+            316554849,
+            316570194,
+            316571690,
+            316564753,
+            316565334,
+            316570375,
+            316566324,
+            316575470,
+            316580599
+        ],
+        "D": [
+            316555496,
+            316575935,
+            316547933,
+            316557810,
+            316581217,
+            316583504,
+            316574629,
+            316579069,
+            316561467,
+            316554031,
+            316570027
+        ],
+        "C": [
+            316551349,
+            316539195,
+            316536817,
+            316551152,
+            316552060,
+            316551470,
+            316558008,
+            316550915,
+            316554352,
+            316539931,
+            316539580
+        ],
+        "B": [
+            316531722,
+            316533206,
+            316540972,
+            316534158,
+            316532366,
+            316536408,
+            316536066,
+            316548057,
+            316551531,
+            316531957,
+            316544497
+        ],
+        "A": [
+            316523865,
+            316526077,
+            316528063,
+            316524687,
+            316526522,
+            316532444,
+            316526800,
+            316525336,
+            316545204,
+            316523615,
+            316541424
+        ]
+    },
+    "editorial_link": "https://codeforces.com//blog/entry/142149",
+    "editorial": "Solution part 1We can do the following sequence of operations. It could\r\nchange values of elements at positions and , but their sum will remain\r\nand values at indices and will be swapped. We do operation on indices\r\nand and we make it so that and . We do operation on indices and and we\r\nmake it so that and . We do operation on indices and and we make it so\r\nthat and . Notice that after this sequence of operations we swapped\r\nvalues at positions and and is still . We can now sort the rest of the\r\narray (without and ) and then adjust values of and at the end. However,\r\nthere is still a problem.\r\n",
+    "name": "E. Keep the Sum",
+    "statement": "You are given an integer k and an array a of length n, where each\r\nelement satisfies 0\r\nle a_i\r\nle k for all 1\r\nle i\r\nle n. You can perform the following operation on the array: Choose two\r\ndistinct indices i and j (1\r\nle i,j\r\nle n and i\r\nneq j) such that a_i + a_j = k. Select an integer x satisfying -a_j\r\nle x\r\nle a_i. Decrease a_i by x and increase a_j by x. In other words, update\r\na_i := a_i - x and a_j := a_j + x. Note that the constraints on x ensure\r\nthat all elements of array a remain between 0 and k throughout the\r\noperations.Your task is to determine whether it is possible to make the\r\narray a non-decreasing^{\r\ntext{ }} using the above operation. If it is possible, find a sequence\r\nof at most 3n operations that transforms the array into a non-decreasing\r\none.It can be proven that if it is possible to make the array\r\nnon-decreasing using the above operation, there exists a solution that\r\nuses at most 3n operations.^{\r\ntext{ }} An array a_1, a_2,\r\nldots, a_n is said to be non-decreasing if for all 1\r\nle i\r\nle n - 1, it holds that a_i\r\nle a_{i+1}.\r\n",
+    "solutions": [],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "implementation",
+        "two pointers"
+    ],
+    "dificulty": "2600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Keep the Sum.json",
+    "hint": [
+        "Hint 1 When is the solution trivially -1?",
+        "Hint 2 When it is impossible to do any operation and array is not sorted in the beginning. Is that enough though?",
+        "Hint 3 It is enough. If we have even a single pair of values that sums up to , we can make the array non-decreasing. From now assume there is only one such pair as we can ignore other pairs.",
+        "Hint 4 The constraint of hints that a solution is linear. Maybe we are actually supposed to sort the array? Let's assume indices of values that sum up to are and . How do we swap values at some other two indices and .",
+        "Hint 5 It might be impossible to adjust values of and . Take and array [$1$, , , , ] for example, with and . How do we avoid such problems?",
+        "Hint 6 If and we can just make and and as all other elements are between and , it is guaranteed that array is sorted. How do we do it?"
+    ]
+}

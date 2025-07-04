@@ -133,7 +133,7 @@
         ]
     },
     "name": "A. Gamer Hemose",
-    "statement": "There is an Agent in Valorant, and he has n weapons. The i-th weapon has\r\na damage value a_i, and the Agent will face an enemy whose health value\r\nis H.The Agent will perform one or more moves until the enemy dies.In\r\none move, he will choose a weapon and decrease the enemy\u2019s health by its\r\ndamage value. The enemy will die when his health will become less than\r\nor equal to 0. However, not everything is so easy: .What is the minimum\r\nnumber of times that the Agent will need to use the weapons to kill the\r\nenemy?\r\n",
+    "statement": "There is an Agent in Valorant, and he has n weapons. The i-th weapon has\r\na damage value a_i, and the Agent will face an enemy whose health value\r\nis H.The Agent will perform one or more moves until the enemy dies.In\r\none move, he will choose a weapon and decrease the enemy’s health by its\r\ndamage value. The enemy will die when his health will become less than\r\nor equal to 0. However, not everything is so easy: .What is the minimum\r\nnumber of times that the Agent will need to use the weapons to kill the\r\nenemy?\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\n#define rep(i,n) for (int i=1;i<=(n);i++)\nusing namespace std;\nint n,h,a[1005];\nvoid solve()\n{\n\tcin>>n>>h;\n\trep(i,n)cin>>a[i];\n\tsort(a+1,a+n+1);\n\tint t=h/(a[n-1]+a[n]);\n\th-=t*(a[n-1]+a[n]);\n\tt*=2;\n\tif(h>0) h-=a[n],t++;\n\tif(h>0) h-=a[n-1],t++;\n\tcout<<t<<endl;\n}\nint main()\n{\n\tint t;\n\tcin>>t;\n\twhile(t--) solve();\n\treturn 0;\n}"
     ],
@@ -149,5 +149,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Gamer Hemose.json",
     "editorial_link": "https://codeforces.com//blog/entry/95583",
-    "editorial": "It\u00e2\u0080\u0099s always optimal to use two weapons with the highest damage value and\r\nswitch between them.Let be the highest damage value of a weapon, and be\r\nthe second-highest damage value of a weapon. we will decrease monster\r\nhealth by in the first move, and by in the second move and so on.\r\n"
+    "editorial": "Itâs always optimal to use two weapons with the highest damage value and\r\nswitch between them.Let be the highest damage value of a weapon, and be\r\nthe second-highest damage value of a weapon. we will decrease monster\r\nhealth by in the first move, and by in the second move and so on.\r\n",
+    "hint": []
 }

@@ -118,5 +118,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. The Useless Toy.json",
     "editorial_link": "https://codeforces.com//blog/entry/53567",
-    "editorial": "none.The sole fact that the spinner has four positions, which are\r\nrepeated periodically, leads us to the following observations that are\r\neasily verifiable: first thing is that no matter what the direction was,\r\nwhen is even we\u00e2\u0080\u0099re going to get the same ending position; secondly, if\r\nwe replace by , the resulting problem would have the same answer\r\n(basically we have removed full rotations of the spinner from\r\nconsideration). Thus, if , the answer is \"\". Otherwise, we have to find\r\nthe aforementioned remainder and find the direction of the spin, which\r\nis pretty straightforward. .\r\n"
+    "editorial": "none.The sole fact that the spinner has four positions, which are\r\nrepeated periodically, leads us to the following observations that are\r\neasily verifiable: first thing is that no matter what the direction was,\r\nwhen is even weâre going to get the same ending position; secondly, if\r\nwe replace by , the resulting problem would have the same answer\r\n(basically we have removed full rotations of the spinner from\r\nconsideration). Thus, if , the answer is \"\". Otherwise, we have to find\r\nthe aforementioned remainder and find the direction of the spin, which\r\nis pretty straightforward. .\r\n",
+    "hint": []
 }

@@ -71,7 +71,7 @@
         ]
     },
     "name": "A. System of Equations",
-    "statement": "Furik loves math lessons very much, so he doesn\u2019t attend them, unlike\r\nRubik. But now Furik wants to get a good mark for math. For that Ms.\r\nIvanova, his math teacher, gave him a new task. Furik solved the task\r\nimmediately. Can you?You are given a system of equations: You should\r\ncount, how many there are pairs of integers which satisfy the system.\r\n",
+    "statement": "Furik loves math lessons very much, so he doesn’t attend them, unlike\r\nRubik. But now Furik wants to get a good mark for math. For that Ms.\r\nIvanova, his math teacher, gave him a new task. Furik solved the task\r\nimmediately. Can you?You are given a system of equations: You should\r\ncount, how many there are pairs of integers which satisfy the system.\r\n",
     "solutions": [
         "#include <cstdio>\n#include <cstdlib>\n#include <cmath>\n#include <cstring>\n#include <string>\n#include <cassert>\n#include <iostream>\n#include <algorithm>\n#include <vector>\n#include <set>\n#include <map>\nusing namespace std;\n\nint main() {\n  int N, M;\n  cin >> N >> M;\n  int ct = 0;\n  for (int a = 0; a <= 1000; a++)\n    for (int b = 0; b <= 1000; b++)\n      if (a*a + b == N && b*b + a == M)\n\tct++;\n  cout << ct << \"\\n\";\n}\n"
     ],
@@ -84,5 +84,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. System of Equations.json",
     "editorial_link": "https://codeforces.com//blog/entry/4982",
-    "editorial": "Solution for this problem just go through the possible pairs of numbers\r\nand check them for correctness. We can do that in any way.\r\n"
+    "editorial": "Solution for this problem just go through the possible pairs of numbers\r\nand check them for correctness. We can do that in any way.\r\n",
+    "hint": []
 }

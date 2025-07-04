@@ -196,5 +196,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\F. Equate Multisets.json",
     "editorial_link": "https://codeforces.com//blog/entry/104763",
-    "editorial": "We divide each number from the multiset by as long as it is divisible\r\nwithout a remainder. Because if we can get a new number from the\r\nmultiset , we can also increase it to the original number by\r\nmultiplication by . Now notice that it does not make sense to use the\r\nfirst operation (multiplication by ), because we get an even number, and\r\nonly odd numbers remain in the multiset . Then we take the largest\r\nnumber from and if it is in , we remove this number from both multisets.\r\nOtherwise, we use the second operation, if the number is greater than .\r\nIf it is equal to , then it is impossible to equalize the multisets and\r\n.\r\n"
+    "editorial": "We divide each number from the multiset by as long as it is divisible\r\nwithout a remainder. Because if we can get a new number from the\r\nmultiset , we can also increase it to the original number by\r\nmultiplication by . Now notice that it does not make sense to use the\r\nfirst operation (multiplication by ), because we get an even number, and\r\nonly odd numbers remain in the multiset . Then we take the largest\r\nnumber from and if it is in , we remove this number from both multisets.\r\nOtherwise, we use the second operation, if the number is greater than .\r\nIf it is equal to , then it is impossible to equalize the multisets and\r\n.\r\n",
+    "hint": []
 }

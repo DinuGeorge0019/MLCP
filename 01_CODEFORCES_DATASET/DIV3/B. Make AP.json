@@ -167,5 +167,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Make AP.json",
     "editorial_link": "https://codeforces.com//blog/entry/98942",
-    "editorial": "Let\u00e2\u0080\u0099s iterate over the number that we want to multiply by .How can we\r\ncheck that we can multiply the current number so that an AP is\r\nformed?Note that those numbers that we do not touch should form an AP\r\nthemselves. For instance, let at the current operation we want somehow\r\nmultiply the number . Then , and .Note that . Thus, we know what is.\r\nAlso we know that . Let\u00e2\u0080\u0099s check if is divisible by . If yes, then we\r\nhave found the answer, if not, then move on to the next number.We do the\r\nsame for and .Be careful with non positive numbers, integer divisions\r\nand other edge cases.\r\n"
+    "editorial": "Letâs iterate over the number that we want to multiply by .How can we\r\ncheck that we can multiply the current number so that an AP is\r\nformed?Note that those numbers that we do not touch should form an AP\r\nthemselves. For instance, let at the current operation we want somehow\r\nmultiply the number . Then , and .Note that . Thus, we know what is.\r\nAlso we know that . Letâs check if is divisible by . If yes, then we\r\nhave found the answer, if not, then move on to the next number.We do the\r\nsame for and .Be careful with non positive numbers, integer divisions\r\nand other edge cases.\r\n",
+    "hint": []
 }

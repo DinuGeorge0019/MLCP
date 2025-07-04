@@ -158,5 +158,9 @@
     ],
     "dificulty": "1900",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\F. XORificator 3000.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\F. XORificator 3000.json",
+    "hint": [
+        "Hint 1 Note the base of the module",
+        "Hint 2 Can we quickly compute XOR on the segment ?"
+    ]
 }

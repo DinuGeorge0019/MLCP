@@ -122,7 +122,7 @@
         ]
     },
     "name": "B. BerSU Ball",
-    "statement": "The Berland State University is hosting a ballroom dance in celebration\r\nof its 100500-th anniversary! boys and girls are already busy rehearsing\r\nwaltz, minuet, polonaise and quadrille moves.We know that several\r\nboy&girl pairs are going to be invited to the ball. However, the\r\npartners\u2019 dancing skill in each pair must differ by at most one.For each\r\nboy, we know his dancing skills. Similarly, for each girl we know her\r\ndancing skills. Write a code that can determine the largest possible\r\nnumber of pairs that can be formed from boys and girls.\r\n",
+    "statement": "The Berland State University is hosting a ballroom dance in celebration\r\nof its 100500-th anniversary! boys and girls are already busy rehearsing\r\nwaltz, minuet, polonaise and quadrille moves.We know that several\r\nboy&girl pairs are going to be invited to the ball. However, the\r\npartners’ dancing skill in each pair must differ by at most one.For each\r\nboy, we know his dancing skills. Similarly, for each girl we know her\r\ndancing skills. Write a code that can determine the largest possible\r\nnumber of pairs that can be formed from boys and girls.\r\n",
     "solutions": [
         "#include<cstdio>\n#include<cstdlib>\n#include<algorithm>\nusing namespace std;\nconst int MAX = 100 + 10;\nint a[MAX], b[MAX];\nint main(){\n    int n;\n    scanf(\"%d\", &n);\n    for(int i = 0 ; i < n ;i++)\n        scanf(\"%d\", &a[i]);\n    int m;\n    scanf(\"%d\", &m);\n    for(int i = 0 ; i < m ; i++){\n        scanf(\"%d\", &b[i]);\n    }\n    sort(a, a+n);\n    sort(b, b+m);\n    int i = 0, j = 0, ans = 0;\n    while(i < n && j < m){\n        if(abs(a[i] - b[j]) <= 1){\n            i++,j++,ans++;\n        }else if(a[i] < b[j]) i++;\n        else j++;\n    }\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n"
     ],
@@ -140,5 +140,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. BerSU Ball.json",
     "editorial_link": "https://codeforces.com//blog/entry/14741",
-    "editorial": "There are about 100500 ways to solve the problem. You can find maximal\r\nmatching in a bipartite graph boys-girls, write dynamic programming or\r\njust use greedy approach. Let\u00e2\u0080\u0099s sort boys and girls by skill. If boy\r\nwith lowest skill can be matched, it is good idea to match him. It can\u00e2\u0080\u0099t\r\nreduce answer size. Use girl with lowest skill to match. So you can use\r\ncode like:\r\n"
+    "editorial": "There are about 100500 ways to solve the problem. You can find maximal\r\nmatching in a bipartite graph boys-girls, write dynamic programming or\r\njust use greedy approach. Letâs sort boys and girls by skill. If boy\r\nwith lowest skill can be matched, it is good idea to match him. It canât\r\nreduce answer size. Use girl with lowest skill to match. So you can use\r\ncode like:\r\n",
+    "hint": []
 }

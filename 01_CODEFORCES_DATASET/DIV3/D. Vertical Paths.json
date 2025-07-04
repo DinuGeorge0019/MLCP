@@ -162,5 +162,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\D. Vertical Paths.json",
     "editorial_link": "https://codeforces.com//blog/entry/102550",
-    "editorial": "Let\u00e2\u0080\u0099s find a set of leaves of a given tree. From each leaf we will climb\r\nup the tree until we meet a vertex already visited. Having met such a\r\nvertex, start a new path from the next leaf. The sequence of vertices in\r\nthe found paths must be deduced in reverse order, because the paths must\r\ngo from bottom to top. It also follows from this solution that the\r\nnumber of paths will always be equal to the number of leaves in the\r\ntree.\r\n"
+    "editorial": "Letâs find a set of leaves of a given tree. From each leaf we will climb\r\nup the tree until we meet a vertex already visited. Having met such a\r\nvertex, start a new path from the next leaf. The sequence of vertices in\r\nthe found paths must be deduced in reverse order, because the paths must\r\ngo from bottom to top. It also follows from this solution that the\r\nnumber of paths will always be equal to the number of leaves in the\r\ntree.\r\n",
+    "hint": []
 }

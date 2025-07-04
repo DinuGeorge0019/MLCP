@@ -125,5 +125,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Add One.json",
     "editorial_link": "https://codeforces.com//blog/entry/89550",
-    "editorial": "We can solve this problem using 1D dp.Let be defined as the length of\r\nthe string after applying operation -times to the number . Then, , in ,\r\nif (The final number after applying operations to the number is .) ,\r\nOtherwise.(length would be the sum of operations and operations.) We can\r\nprecalculate the above table until ( ).Now for each test case, the final\r\nanswer is:, where is (in form of string).Time Complexity O(+||), where .\r\n"
+    "editorial": "We can solve this problem using 1D dp.Let be defined as the length of\r\nthe string after applying operation -times to the number . Then, , in ,\r\nif (The final number after applying operations to the number is .) ,\r\nOtherwise.(length would be the sum of operations and operations.) We can\r\nprecalculate the above table until ( ).Now for each test case, the final\r\nanswer is:, where is (in form of string).Time Complexity O(+||), where .\r\n",
+    "hint": []
 }

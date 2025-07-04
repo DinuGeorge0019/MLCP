@@ -121,7 +121,7 @@
         ]
     },
     "name": "A. Forbidden Subsequence",
-    "statement": "You are given strings S and T, consisting of lowercase English letters.\r\nIt is guaranteed that T is a permutation of the string . Find string S\u2019,\r\nthe permutation of S such that T is a subsequence of S\u2019.String a is a of\r\nstring b if the number of occurrences of each distinct character is the\r\nsame in both strings.A string a is a of a string b if a can be obtained\r\nfrom b by deletion of several (possibly, zero or all) elements.A string\r\na is than a string b if and only if one of the following holds: a is a\r\nprefix of b, but a\r\nne b; in the first position where a and b differ, the string a has a\r\nletter that appears earlier in the alphabet than the corresponding\r\nletter in b.\r\n",
+    "statement": "You are given strings S and T, consisting of lowercase English letters.\r\nIt is guaranteed that T is a permutation of the string . Find string S’,\r\nthe permutation of S such that T is a subsequence of S’.String a is a of\r\nstring b if the number of occurrences of each distinct character is the\r\nsame in both strings.A string a is a of a string b if a can be obtained\r\nfrom b by deletion of several (possibly, zero or all) elements.A string\r\na is than a string b if and only if one of the following holds: a is a\r\nprefix of b, but a\r\nne b; in the first position where a and b differ, the string a has a\r\nletter that appears earlier in the alphabet than the corresponding\r\nletter in b.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\nusing LL = long long;\nint main(){\n\tios::sync_with_stdio(false);\n\tcin.tie(nullptr);\n\tint t;\n\tfor (cin >> t; t; t -= 1) {\n\t\tstring S, T;\n\t\tcin >> S >> T;\n\t\tranges::sort(S);\n\t\tif (T != \"abc\" or S[0] != 'a') cout << S << \"\\n\";\n\t\telse {\n\t\t\tfor (int i = 0; i < 26; i += 1)\n\t\t\t\tfor (char c : S) {\n\t\t\t\t\tif (i == 0 or i >= 3) {\n\t\t\t\t\t\tif (c == 'a' + i) cout << c;\n\t\t\t\t\t}\n\t\t\t\t\telse if (c == 'a' + 3 - i) cout << c;\n\t\t\t\t}\n\t\t\tcout << \"\\n\";\n\t\t}\n\t}\n\treturn 0;\n}"
     ],
@@ -137,5 +137,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Forbidden Subsequence.json",
     "editorial_link": "https://codeforces.com//blog/entry/97920",
-    "editorial": "SolutionIf there are no occurrences of a, b or c in , sort and output\r\nit.Else, if abc, sort and output it.Else, output all a, then all c, then\r\nall b, then the rest of the string sorted.\r\n"
+    "editorial": "SolutionIf there are no occurrences of a, b or c in , sort and output\r\nit.Else, if abc, sort and output it.Else, output all a, then all c, then\r\nall b, then the rest of the string sorted.\r\n",
+    "hint": [
+        "Hint When is the lexicographically smallest permutation of (i.e. the sorted string) not the answer?"
+    ]
 }

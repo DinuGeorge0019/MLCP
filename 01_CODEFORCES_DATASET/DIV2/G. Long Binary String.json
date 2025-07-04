@@ -151,5 +151,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\G. Long Binary String.json",
     "editorial_link": "https://codeforces.com//blog/entry/104310",
-    "editorial": "Ignore leading zeroes of . We can add them back at the end.Let\u00e2\u0080\u0099s view\r\nthe string as a polynomial in . Then in an operation we can multiply by\r\nany monomial for some , so after some number of operations we can\r\nmultiply by some other polynomial .At the end, we have a string with two\r\nflipped bits. We can in fact make the first character equal to by\r\nfinding the smallest such that . Such a exists, because the constant\r\nterm of is and is arbitrary. Rewrite this as . Now it\u00e2\u0080\u0099s clear that the\r\nanswer is a divisor of the order of in .We can use polynomial factoring\r\nalgorithms or baby-step-giant-step and meet in the middle. The time\r\ncomplexity is or .\r\n"
+    "editorial": "Ignore leading zeroes of . We can add them back at the end.Letâs view\r\nthe string as a polynomial in . Then in an operation we can multiply by\r\nany monomial for some , so after some number of operations we can\r\nmultiply by some other polynomial .At the end, we have a string with two\r\nflipped bits. We can in fact make the first character equal to by\r\nfinding the smallest such that . Such a exists, because the constant\r\nterm of is and is arbitrary. Rewrite this as . Now itâs clear that the\r\nanswer is a divisor of the order of in .We can use polynomial factoring\r\nalgorithms or baby-step-giant-step and meet in the middle. The time\r\ncomplexity is or .\r\n",
+    "hint": [
+        "Hint Polynomials!"
+    ]
 }

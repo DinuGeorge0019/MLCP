@@ -96,7 +96,7 @@
         ]
     },
     "name": "A. Lucky Ticket",
-    "statement": "Petya loves tickets very much. As we know, each ticket has a number that\r\nis a positive integer. Its length equals ( is always even). Petya calls\r\na ticket lucky if the ticket\u2019s number is a lucky number and the sum of\r\ndigits in the first half (the sum of the first digits) equals the sum of\r\ndigits in the second half (the sum of the last digits). Check if the\r\ngiven ticket is lucky.\r\n",
+    "statement": "Petya loves tickets very much. As we know, each ticket has a number that\r\nis a positive integer. Its length equals ( is always even). Petya calls\r\na ticket lucky if the ticket’s number is a lucky number and the sum of\r\ndigits in the first half (the sum of the first digits) equals the sum of\r\ndigits in the second half (the sum of the last digits). Check if the\r\ngiven ticket is lucky.\r\n",
     "solutions": [
         "#include <cmath>\n#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <iostream>\n#include <algorithm>\nusing namespace std;\n\nconst int\tMAX_N\t= 100;\nint\t\t\tN;\nchar\t\ta\t\t[MAX_N];\n\nvoid Init()\n{\n\tscanf(\"%d\", &N);\n\tscanf(\"%s\", a);\n}\n\nint Solve()\n{\n\tint ans1 = 0, ans2 = 0;\n\tfor(int i = 0; i < N; ++ i)\n\t\tif (a[i] != '4' && a[i] != '7') return 0;\n\tfor(int i = 0; i < N / 2; ++ i) ans1 += a[i] - '0';\n\tfor(int i = N / 2; i < N; ++ i) ans2 += a[i] - '0';\n\treturn ans1 == ans2;\n}\n\nint main()\n{\n\tInit();\n\tif (Solve()) cout << \"YES\" << endl;\n\telse cout << \"NO\" << endl;\n\t//system(\"pause\");\n\treturn 0;\n}\n"
     ],
@@ -109,5 +109,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Lucky Ticket.json",
     "editorial_link": "https://codeforces.com//blog/entry/3746",
-    "editorial": "In this problem everything is obvious: if all digits are lucky and sum of the digits of the first half equals to the sum of the digits of the second half, then answer is YES, in other case - NO. All this can be checked by single loop through all the digits. \n"
+    "editorial": "In this problem everything is obvious: if all digits are lucky and sum of the digits of the first half equals to the sum of the digits of the second half, then answer is YES, in other case - NO. All this can be checked by single loop through all the digits. \n",
+    "hint": []
 }

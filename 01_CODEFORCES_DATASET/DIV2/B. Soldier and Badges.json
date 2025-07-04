@@ -112,7 +112,7 @@
         ]
     },
     "name": "B. Soldier and Badges",
-    "statement": "Colonel has badges. He wants to give one badge to every of his soldiers.\r\nEach badge has a , which shows how much it\u2019s owner reached. Coolness\r\nfactor can be increased by one for the cost of one coin. For every pair\r\nof soldiers one of them should get a badge with strictly higher factor\r\nthan the second one. Exact values of their factors aren\u2019t important,\r\nthey just need to have distinct factors. Colonel knows, which soldier is\r\nsupposed to get which badge initially, but there is a problem. Some of\r\nbadges may have the same factor of coolness. Help him and calculate how\r\nmuch money has to be paid for making all badges have different factors\r\nof coolness.\r\n",
+    "statement": "Colonel has badges. He wants to give one badge to every of his soldiers.\r\nEach badge has a , which shows how much it’s owner reached. Coolness\r\nfactor can be increased by one for the cost of one coin. For every pair\r\nof soldiers one of them should get a badge with strictly higher factor\r\nthan the second one. Exact values of their factors aren’t important,\r\nthey just need to have distinct factors. Colonel knows, which soldier is\r\nsupposed to get which badge initially, but there is a problem. Some of\r\nbadges may have the same factor of coolness. Help him and calculate how\r\nmuch money has to be paid for making all badges have different factors\r\nof coolness.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\n#define rep(i,n) for(int i=0;i<n;i++)\n#define rep2(i,n) for(int i=1;i<=n;i++)\nint main(){\n    int n;\n    int x[3005];\n    cin >> n;\n    rep2(i,n) cin >> x[i];\n    sort(x+1,x+n+1);\n    int prev = -1000,res = 0;\n    rep2(i,n){\n    \tif(prev+1 <= x[i]){\n    \t\tprev = x[i];\n    \t}\n    \telse{\n    \t\tres += prev+1-x[i];\n    \t\tprev++;\n    \t}\n    }\n    cout << res << endl;\n}"
     ],
@@ -128,5 +128,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Soldier and Badges.json",
     "editorial_link": "https://codeforces.com//blog/entry/18034",
-    "editorial": "Let's count the number of badges with coolness factor 1, 2 and so on. Then, let's look at the number of badges with value equal to 1. If it's greater than 1, we have to increase a value of every of them except for one. Then, we look at number of badges with value 2, 3 and so on up to 2n?-?2 (because maximum value of badge which we can achieve is 2n?-?1). It is easy to see that this is the correct solution. We can implement it in O(n), but solutions that work in complexity O(n^2) also passed."
+    "editorial": "Let's count the number of badges with coolness factor 1, 2 and so on. Then, let's look at the number of badges with value equal to 1. If it's greater than 1, we have to increase a value of every of them except for one. Then, we look at number of badges with value 2, 3 and so on up to 2n?-?2 (because maximum value of badge which we can achieve is 2n?-?1). It is easy to see that this is the correct solution. We can implement it in O(n), but solutions that work in complexity O(n^2) also passed.",
+    "hint": []
 }

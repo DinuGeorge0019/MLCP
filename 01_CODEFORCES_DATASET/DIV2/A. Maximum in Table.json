@@ -130,5 +130,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Maximum in Table.json",
     "editorial_link": "https://codeforces.com//blog/entry/16119",
-    "editorial": "In this problem one needed to implement what was written in the\r\nstatement: create matrix (two-dimensional array) using given rules and\r\nfind maximal value in the table. It is also possible to see that maximal\r\nelement is always in bottom-right corner. Easier solution with recursion\r\nalso was enough to get AC: One may see the Pascal\u00e2\u0080\u0099s triangle in the\r\ngiven matrix and understand that answer is equal to Prepared by:\r\nriadwawAuthor of editorial: riadwaw\r\n"
+    "editorial": "In this problem one needed to implement what was written in the\r\nstatement: create matrix (two-dimensional array) using given rules and\r\nfind maximal value in the table. It is also possible to see that maximal\r\nelement is always in bottom-right corner. Easier solution with recursion\r\nalso was enough to get AC: One may see the Pascalâs triangle in the\r\ngiven matrix and understand that answer is equal to Prepared by:\r\nriadwawAuthor of editorial: riadwaw\r\n",
+    "hint": []
 }

@@ -76,7 +76,7 @@
         ]
     },
     "name": "B. Roma and Changing Signs",
-    "statement": "Roma works in a company that sells TVs. Now he has to prepare a report\r\nfor the last year.Roma has got a list of the company\u2019s incomes. The list\r\nis a sequence that consists of integers. The total income of the company\r\nis the sum of all integers in sequence. Roma decided to perform exactly\r\nchanges of signs of several numbers in the sequence. He can also change\r\nthe sign of a number one, two or more times.The operation of changing a\r\nnumber\u2019s sign is the operation of multiplying this number by -.Help Roma\r\nperform the changes so as to make the total income of the company (the\r\nsum of numbers in the resulting sequence) maximum. Note that Roma should\r\nperform changes.\r\n",
+    "statement": "Roma works in a company that sells TVs. Now he has to prepare a report\r\nfor the last year.Roma has got a list of the company’s incomes. The list\r\nis a sequence that consists of integers. The total income of the company\r\nis the sum of all integers in sequence. Roma decided to perform exactly\r\nchanges of signs of several numbers in the sequence. He can also change\r\nthe sign of a number one, two or more times.The operation of changing a\r\nnumber’s sign is the operation of multiplying this number by -.Help Roma\r\nperform the changes so as to make the total income of the company (the\r\nsum of numbers in the resulting sequence) maximum. Note that Roma should\r\nperform changes.\r\n",
     "solutions": [
         "#include <iostream>\n#include <cstdio>\nusing namespace std;\nint i,j,n,k;\nint a[100010];\nvoid Qsort(int l,int r)\n{\n\tint i=l,j=r,x=a[(l+r)>>1],t;\n\twhile(i<=j)\n\t{\n\t\twhile(a[i]<x) i++;\n\t\twhile(x<a[j]) j--;\n\t\tif(i<=j)\n\t\t{\n\t\t\tt=a[i]; a[i]=a[j]; a[j]=t;\n\t\t\ti++,j--;\n\t\t}\n\t}\n\tif(l<j) Qsort(l,j);\n\tif(i<r) Qsort(i,r);\n}\nint main()\n{\n\tscanf(\"%d%d\",&n,&k);\n\tfor(i=1;i<=n;i++) scanf(\"%d\",&a[i]);\n\tQsort(1,n);\n\tfor(i=1;i<=n;i++)\n\t{\n\t\tif(k==0) break;\n\t\tif(a[i]<0)\n\t\t{\n\t\t\ta[i]=-a[i];\n\t\t\tk--;\n\t\t}\n\t}\n\tif(k%2==1)\n\t{\n\t\tQsort(1,n);\n\t\ta[1]=-a[1];\n\t}\n\tj=0;\n\tfor(i=1;i<=n;i++) j+=a[i];\n\tcout << j << endl;\n\t//system(\"pause\");\n\treturn 0;\n}\n"
     ],
@@ -89,5 +89,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Roma and Changing Signs.json",
     "editorial_link": "https://codeforces.com//blog/entry/6398",
-    "editorial": "We will \"reverse\" numbers from the begining to the end while numebrers\r\nare negative and we did\u00e2\u0080\u0099t spend all k operations.In the end there can\r\nleave some operetions, and we will \"reverse\" only one numeber, with\r\nminimal value k(that remains) times.\r\n"
+    "editorial": "We will \"reverse\" numbers from the begining to the end while numebrers\r\nare negative and we didât spend all k operations.In the end there can\r\nleave some operetions, and we will \"reverse\" only one numeber, with\r\nminimal value k(that remains) times.\r\n",
+    "hint": []
 }

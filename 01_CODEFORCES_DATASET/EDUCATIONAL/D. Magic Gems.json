@@ -163,5 +163,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\D. Magic Gems.json",
     "editorial_link": "https://codeforces.com//blog/entry/65365",
-    "editorial": "Let\u00e2\u0080\u0099s reformulate the solution to the form of dynamic programming. the\r\nnumber of ways to split the gems so that the total amount of space taken\r\nis . Then there are obvious transitions of either splitting the last gem\r\nor not. .And that can be easily rewritten in such a way that matrix\r\nexponentiation becomes the solution.Overall complexity: .\r\n"
+    "editorial": "Letâs reformulate the solution to the form of dynamic programming. the\r\nnumber of ways to split the gems so that the total amount of space taken\r\nis . Then there are obvious transitions of either splitting the last gem\r\nor not. .And that can be easily rewritten in such a way that matrix\r\nexponentiation becomes the solution.Overall complexity: .\r\n",
+    "hint": []
 }

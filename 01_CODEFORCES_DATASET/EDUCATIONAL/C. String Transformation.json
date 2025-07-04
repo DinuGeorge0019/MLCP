@@ -155,5 +155,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\C. String Transformation.json",
     "editorial_link": "https://codeforces.com//blog/entry/58210",
-    "editorial": "The problem can be solved by the next greedy algorithm. At first we need\r\nto store the last character of the alphabet we haven\u00e2\u0080\u0099t obtained, for\r\nexample, in variable (initially it will be equal to ). Then we will just\r\niterate over all characters of the string from left to right and if the\r\ncurrent character of the string is not greater than , we just replace it\r\nto and increase by 1. If in any moment will be greater than , we got the\r\nanswer. And if after iterating over the string will be not greater than\r\n, the answer is -1 .\r\n"
+    "editorial": "The problem can be solved by the next greedy algorithm. At first we need\r\nto store the last character of the alphabet we havenât obtained, for\r\nexample, in variable (initially it will be equal to ). Then we will just\r\niterate over all characters of the string from left to right and if the\r\ncurrent character of the string is not greater than , we just replace it\r\nto and increase by 1. If in any moment will be greater than , we got the\r\nanswer. And if after iterating over the string will be not greater than\r\n, the answer is -1 .\r\n",
+    "hint": []
 }

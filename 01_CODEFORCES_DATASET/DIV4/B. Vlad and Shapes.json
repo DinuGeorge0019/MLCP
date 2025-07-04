@@ -174,5 +174,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\B. Vlad and Shapes.json",
     "editorial_link": "https://codeforces.com//blog/entry/126132",
-    "editorial": "Let\u00e2\u0080\u0099s draw some examples on paper and notice a pattern. What we notice\r\nis that in the case of a triangle there is a row with exactly one , but\r\nnot a square. So, this is what we need to check. Iterate through all\r\nrows, and check if there is a row with exactly one . If it was the case\r\nfor at least one, then the answer is \"\", and \"\" otherwise. Check if any\r\nsquare has sum . If it does, then we must be at one of the sloped sides\r\nof a triangle, so the answer is \"\". If there is no such square, the\r\nanswer is \"\". Why does it work?\r\n"
+    "editorial": "Letâs draw some examples on paper and notice a pattern. What we notice\r\nis that in the case of a triangle there is a row with exactly one , but\r\nnot a square. So, this is what we need to check. Iterate through all\r\nrows, and check if there is a row with exactly one . If it was the case\r\nfor at least one, then the answer is \"\", and \"\" otherwise. Check if any\r\nsquare has sum . If it does, then we must be at one of the sloped sides\r\nof a triangle, so the answer is \"\". If there is no such square, the\r\nanswer is \"\". Why does it work?\r\n",
+    "hint": []
 }

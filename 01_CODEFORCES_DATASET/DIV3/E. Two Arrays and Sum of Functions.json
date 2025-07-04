@@ -133,7 +133,7 @@
         ]
     },
     "name": "E. Two Arrays and Sum of Functions",
-    "statement": "You are given two arrays a and b, both of length n.Let\u2019s define a\r\nfunction f(l, r) =\r\nsum\r\nlimits_{l\r\nle i\r\nle r} a_i\r\ncdot b_i.Your task is to reorder the elements (choose an arbitrary order\r\nof elements) of the array b to minimize the value of\r\nsum\r\nlimits_{1\r\nle l\r\nle r\r\nle n} f(l, r). Since the answer can be very large, you have to print it\r\nmodulo 998244353. Note that you should .\r\n",
+    "statement": "You are given two arrays a and b, both of length n.Let’s define a\r\nfunction f(l, r) =\r\nsum\r\nlimits_{l\r\nle i\r\nle r} a_i\r\ncdot b_i.Your task is to reorder the elements (choose an arbitrary order\r\nof elements) of the array b to minimize the value of\r\nsum\r\nlimits_{1\r\nle l\r\nle r\r\nle n} f(l, r). Since the answer can be very large, you have to print it\r\nmodulo 998244353. Note that you should .\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\nusing namespace std;\n#define LL long long\n#define PII pair<int,int>\n#define PB push_back\n#define POP pop_back\n#define FI first\n#define SE second\n#define endl '\\n'\n#define ls x<<1\n#define rs x<<1|1\nconst LL N=2e6+7,mod=998244353,INF=1e9;\nLL n,m;\nLL a[N],b[N],c[N];\nint main()\n{\n    cin>>n;\n    for(LL i=1;i<=n;i++){\n        scanf(\"%lld\",&a[i]);\n    }\n    for(int i=1;i<=n;i++){\n        scanf(\"%lld\",&b[i]);\n    }\n    for(LL i=1;i<=n;i++){\n        c[i]=i*(n-i+1ll)*a[i];\n    }\n    sort(c+1,c+1+n);\n    sort(b+1,b+1+n,greater<LL>());\n    LL ans=0;\n    for(int i=1;i<=n;i++){\n        ans+=c[i]%mod*b[i];\n        ans%=mod;\n    }\n    cout<<ans;\n    return 0;\n}"
     ],
@@ -148,5 +148,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\E. Two Arrays and Sum of Functions.json",
     "editorial_link": "https://codeforces.com//blog/entry/67041",
-    "editorial": "Let\u00e2\u0080\u0099s use technique to solve this problem. How many times the value will\r\noccur in the answer? It will occur times. Okay, now we can see that for\r\neach position we have the value . The only non-constant value there is .\r\nSo let . . We should pair the minimum with the maximum , the second\r\nminimum with the second maximum and so on. So, let\u00e2\u0080\u0099s sort the array and\r\nthe array , reverse the array and calculate the sum of values (don\u00e2\u0080\u0099t\r\nforget about modulo here!).\r\n"
+    "editorial": "Letâs use technique to solve this problem. How many times the value will\r\noccur in the answer? It will occur times. Okay, now we can see that for\r\neach position we have the value . The only non-constant value there is .\r\nSo let . . We should pair the minimum with the maximum , the second\r\nminimum with the second maximum and so on. So, letâs sort the array and\r\nthe array , reverse the array and calculate the sum of values (donât\r\nforget about modulo here!).\r\n",
+    "hint": []
 }

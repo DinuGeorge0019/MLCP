@@ -138,5 +138,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. Lara Croft and the New Game.json",
     "editorial_link": "https://codeforces.com//blog/entry/59195",
-    "editorial": "Naive solution would be just simulate the tranversal and break when\r\nsteps are made. Obviously, this won\u00e2\u0080\u0099t fit into time limit. Then we can\r\ndecompose the path to some parts which can be calculated separately.\r\nWalk from the top left to the bottom left corner; Walk from second\r\ncolumn to -th on even rows; Walk from -th column to second on odd rows.\r\nIf then it\u00e2\u0080\u0099s the first part. Otherwise you can use the fact that rows\r\nare of the same length. will tell you the row and will get you the\r\nnumber of steps Lara have made along this row.Overall complexity: .\r\n"
+    "editorial": "Naive solution would be just simulate the tranversal and break when\r\nsteps are made. Obviously, this wonât fit into time limit. Then we can\r\ndecompose the path to some parts which can be calculated separately.\r\nWalk from the top left to the bottom left corner; Walk from second\r\ncolumn to -th on even rows; Walk from -th column to second on odd rows.\r\nIf then itâs the first part. Otherwise you can use the fact that rows\r\nare of the same length. will tell you the row and will get you the\r\nnumber of steps Lara have made along this row.Overall complexity: .\r\n",
+    "hint": []
 }

@@ -1,1 +1,103 @@
-{"link": "https://codeforces.com//contest/2103/problem/B", "problemId": "3344320", "problem_idx": "B", "shortId": "2103B", "contest_number": "2103", "problem_submissions": {"E": [316580259, 316596724, 317172040, 316590039, 316595391], "F": [316566749, 316554849, 316570194, 316571690, 316564753, 316565334, 316570375, 316566324, 316575470, 316580599], "D": [316555496, 316575935, 316547933, 316557810, 316581217, 316583504, 316574629, 316579069, 316561467, 316554031, 316570027], "C": [316551349, 316539195, 316536817, 316551152, 316552060, 316551470, 316558008, 316550915, 316554352, 316539931, 316539580], "B": [316531722, 316533206, 316540972, 316534158, 316532366, 316536408, 316536066, 316548057, 316551531, 316531957, 316544497], "A": [316523865, 316526077, 316528063, 316524687, 316526522, 316532444, 316526800, 316525336, 316545204, 316523615, 316541424]}, "editorial_link": "https://codeforces.com//blog/entry/142149", "editorial": "", "name": "B. Binary Typewriter", "statement": "You are given a binary string s of length n and a typewriter with two\r\nbuttons: and . Initially, your finger is on the button . You can do the\r\nfollowing two operations: Press the button your finger is currently on.\r\nThis will type out the character that is on the button. Move your finger\r\nto the other button. If your finger is on button , move it to button ,\r\nand vice versa. The of a binary string is defined as the minimum number\r\nof operations needed to type the entire string. Before typing, you may\r\nreverse at most one substring^{\r\ntext{ }} of s. More formally, you can choose two indices 1\r\nle l\r\nle r\r\nle n, and reverse the substring s_{l\r\nldots r}, resulting in the new string s_1s_2\r\nldots s_{l-1}s_rs_{r-1}\r\nldots s_ls_{r+1}\r\nldots s_n. Your task is to find the minimum possible cost among all\r\nstrings obtainable by performing at most one substring reversal on s.^{\r\ntext{ }}A string a is a substring of a string b if a can be obtained\r\nfrom b by the deletion of several (possibly, zero or all) characters\r\nfrom the beginning and several (possibly, zero or all) characters from\r\nthe end.\r\n", "solutions": [], "input": "", "output": "", "tags": ["greedy", "math"], "dificulty": "1100", "interactive": false, "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Binary Typewriter.json"}
+{
+    "link": "https://codeforces.com//contest/2103/problem/B",
+    "problemId": "3344320",
+    "problem_idx": "B",
+    "shortId": "2103B",
+    "contest_number": "2103",
+    "problem_submissions": {
+        "E": [
+            316580259,
+            316596724,
+            317172040,
+            316590039,
+            316595391
+        ],
+        "F": [
+            316566749,
+            316554849,
+            316570194,
+            316571690,
+            316564753,
+            316565334,
+            316570375,
+            316566324,
+            316575470,
+            316580599
+        ],
+        "D": [
+            316555496,
+            316575935,
+            316547933,
+            316557810,
+            316581217,
+            316583504,
+            316574629,
+            316579069,
+            316561467,
+            316554031,
+            316570027
+        ],
+        "C": [
+            316551349,
+            316539195,
+            316536817,
+            316551152,
+            316552060,
+            316551470,
+            316558008,
+            316550915,
+            316554352,
+            316539931,
+            316539580
+        ],
+        "B": [
+            316531722,
+            316533206,
+            316540972,
+            316534158,
+            316532366,
+            316536408,
+            316536066,
+            316548057,
+            316551531,
+            316531957,
+            316544497
+        ],
+        "A": [
+            316523865,
+            316526077,
+            316528063,
+            316524687,
+            316526522,
+            316532444,
+            316526800,
+            316525336,
+            316545204,
+            316523615,
+            316541424
+        ]
+    },
+    "editorial_link": "https://codeforces.com//blog/entry/142149",
+    "editorial": "SolutionRead the hints.As said in the hints, we will assume that string\r\nstarts with a 0. Now we need to check if it is possible to pick indices\r\nand such that the number of changes after the swap decreases by . With\r\nsome casework, we can see that it is always possible if the original\r\nnumber of changes is at least . If the original number of changes is ,\r\nwe cannot decrease it by , but we can decrease it by . If the original\r\nnumber of changes is or , we cannot decrease it.Counting the number of\r\nchanges can be done in a single pass of a loop. The time and memory\r\ncomplexities are per testcase.\r\n",
+    "name": "B. Binary Typewriter",
+    "statement": "You are given a binary string s of length n and a typewriter with two\r\nbuttons: and . Initially, your finger is on the button . You can do the\r\nfollowing two operations: Press the button your finger is currently on.\r\nThis will type out the character that is on the button. Move your finger\r\nto the other button. If your finger is on button , move it to button ,\r\nand vice versa. The of a binary string is defined as the minimum number\r\nof operations needed to type the entire string. Before typing, you may\r\nreverse at most one substring^{\r\ntext{ }} of s. More formally, you can choose two indices 1\r\nle l\r\nle r\r\nle n, and reverse the substring s_{l\r\nldots r}, resulting in the new string s_1s_2\r\nldots s_{l-1}s_rs_{r-1}\r\nldots s_ls_{r+1}\r\nldots s_n. Your task is to find the minimum possible cost among all\r\nstrings obtainable by performing at most one substring reversal on s.^{\r\ntext{ }}A string a is a substring of a string b if a can be obtained\r\nfrom b by the deletion of several (possibly, zero or all) characters\r\nfrom the beginning and several (possibly, zero or all) characters from\r\nthe end.\r\n",
+    "solutions": [],
+    "input": "",
+    "output": "",
+    "tags": [
+        "greedy",
+        "math"
+    ],
+    "dificulty": "1100",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Binary Typewriter.json",
+    "hint": [
+        "Hint 1 Given the string , how do we calculate the answer?",
+        "Hint 2 We know that we need to type a character (apply operation exactly times). How many switches do we do?",
+        "Hint 3 If the string starts with a 1, we need to do a switch immediately. From that point on, we only switch if the current number in the string changes. We can assume that we start with a 0, as the other case can be handled by appending 0 to the start and subtracting from the final answer.",
+        "Hint 4 We will assume that we only want to make the answer smaller, as for keeping the answer, we can pick any interval of size . How does reversing some interval [ , ] change the answer?",
+        "Hint 5 Notice that all switches before , after and inbetween and will stay. So we only care about the values of , , and .",
+        "Hint 6 Notice that if , then the swap does not change the number of changes. So we can assume that in the optimal swap. Now, to evaluate how good the swap is, we can observe the following: if , the number of changes increases by , otherwise it decreases by . if , the number of changes increases by , otherwise it decreases by . Those 2 changes stack.",
+        "Hint 7 From the previous hint, we can conclude that we can decrease the number of changes by at most . For us to be able to decrease the number of changes by , it shall hold that and . If we want to decrease the number of changes by , it is enough to make and to make . If we cannot do either of the previous two, the number of changes cannot be decreased."
+    ]
+}

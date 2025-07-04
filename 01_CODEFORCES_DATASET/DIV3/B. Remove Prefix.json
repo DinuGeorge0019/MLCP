@@ -183,5 +183,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Remove Prefix.json",
     "editorial_link": "https://codeforces.com//blog/entry/105549",
-    "editorial": "Let\u00e2\u0080\u0099s turn the problem around: we\u00e2\u0080\u0099ll look for the longest suffix that\r\nwill make Polycarp happy, since it\u00e2\u0080\u0099s the same thing.Let\u00e2\u0080\u0099s create an\r\narray , in which we will mark the numbers already encountered. Let\u00e2\u0080\u0099s go\r\nalong from right to left and check if does not occur to the right (in\r\nthis case it is marked in ), if it occurs to the right, then removing\r\nany prefix that does not include , we get an array where occurs twice,\r\nso we have to delete prefix of length .\r\n"
+    "editorial": "Letâs turn the problem around: weâll look for the longest suffix that\r\nwill make Polycarp happy, since itâs the same thing.Letâs create an\r\narray , in which we will mark the numbers already encountered. Letâs go\r\nalong from right to left and check if does not occur to the right (in\r\nthis case it is marked in ), if it occurs to the right, then removing\r\nany prefix that does not include , we get an array where occurs twice,\r\nso we have to delete prefix of length .\r\n",
+    "hint": []
 }

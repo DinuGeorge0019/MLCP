@@ -99,5 +99,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Young Photographer.json",
     "editorial_link": "https://codeforces.com//blog/entry/389",
-    "editorial": "First we find the intersection of all segments. To do this, denote by m the rightmost of left ends of the segments and denote by M the leftmost of right ends of the segments. The intersection of the segments is [m,M] (or empty set if m>M). Now determine the nearest point from this segment. If x0?<?m, it's m, and the answer is m?-?x0. If x0?>?M, it's M, and the answer is x0?-?M. If , it's x0, and the answer is 0. If m>M, then the answer is -1."
+    "editorial": "First we find the intersection of all segments. To do this, denote by m the rightmost of left ends of the segments and denote by M the leftmost of right ends of the segments. The intersection of the segments is [m,M] (or empty set if m>M). Now determine the nearest point from this segment. If x0?<?m, it's m, and the answer is m?-?x0. If x0?>?M, it's M, and the answer is x0?-?M. If , it's x0, and the answer is 0. If m>M, then the answer is -1.",
+    "hint": []
 }

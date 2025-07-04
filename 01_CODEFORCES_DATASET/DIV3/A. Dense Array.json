@@ -170,5 +170,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Dense Array.json",
     "editorial_link": "https://codeforces.com//blog/entry/87874",
-    "editorial": "Note that adding elements between positions () and will not change the\r\nratio of the adjacent elements, except for the ones just added.\r\nTherefore, for each pair of adjacent numbers, the problem can be solved\r\nindependently.Let us solve the problem for a adjacent pair of numbers\r\nand for which the inequality from the statements does not hold. Suppose\r\nthat (if not, we will swap them). Then between and it requires to insert\r\nelements of the form: It is better not to use explicit formula, but to\r\nuse the following cycle:\r\n"
+    "editorial": "Note that adding elements between positions () and will not change the\r\nratio of the adjacent elements, except for the ones just added.\r\nTherefore, for each pair of adjacent numbers, the problem can be solved\r\nindependently.Let us solve the problem for a adjacent pair of numbers\r\nand for which the inequality from the statements does not hold. Suppose\r\nthat (if not, we will swap them). Then between and it requires to insert\r\nelements of the form: It is better not to use explicit formula, but to\r\nuse the following cycle:\r\n",
+    "hint": []
 }

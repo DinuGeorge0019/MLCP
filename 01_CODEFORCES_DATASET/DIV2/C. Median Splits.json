@@ -1,1 +1,104 @@
-{"link": "https://codeforces.com//contest/2103/problem/C", "problemId": "3344321", "problem_idx": "C", "shortId": "2103C", "contest_number": "2103", "problem_submissions": {"E": [316580259, 316596724, 317172040, 316590039, 316595391], "F": [316566749, 316554849, 316570194, 316571690, 316564753, 316565334, 316570375, 316566324, 316575470, 316580599], "D": [316555496, 316575935, 316547933, 316557810, 316581217, 316583504, 316574629, 316579069, 316561467, 316554031, 316570027], "C": [316551349, 316539195, 316536817, 316551152, 316552060, 316551470, 316558008, 316550915, 316554352, 316539931, 316539580], "B": [316531722, 316533206, 316540972, 316534158, 316532366, 316536408, 316536066, 316548057, 316551531, 316531957, 316544497], "A": [316523865, 316526077, 316528063, 316524687, 316526522, 316532444, 316526800, 316525336, 316545204, 316523615, 316541424]}, "editorial_link": "https://codeforces.com//blog/entry/142149", "editorial": "", "name": "C. Median Splits", "statement": "The median of an array b_1, b_2,\r\nldots b_m, written as\r\noperatorname{med}(b_1, b_2,\r\nldots, b_m), is the\r\nleft\r\nlceil\r\nfrac{m}{2}\r\nright\r\nrceil-th^{\r\ntext{ }} smallest element of array b.You are given an array of integers\r\na_1, a_2,\r\nldots, a_n and an integer k. You need to determine whether there exists\r\na pair of indices 1\r\nle l < r < n such that:\r\noperatorname{med}(\r\noperatorname{med}(a_1, a_2,\r\nldots, a_l),\r\noperatorname{med}(a_{l+1}, a_{l+2},\r\nldots, a_r),\r\noperatorname{med}(a_{r+1}, a_{r+2},\r\nldots, a_n))\r\nle k.In other words, determine whether it is possible to split the array\r\ninto three contiguous subarrays^{\r\ntext{ }} such that the median of the three subarray medians is less than\r\nor equal to k.^{\r\ntext{ }}\r\nlceil x\r\nrceil is the ceiling function which returns the least integer greater\r\nthan or equal to x.^{\r\ntext{ }}An array x is a subarray of an array y if x can be obtained from\r\ny by the deletion of several (possibly, zero or all) elements from the\r\nbeginning and several (possibly, zero or all) elements from the end.\r\n", "solutions": [], "input": "", "output": "", "tags": ["binary search", "greedy", "implementation", "sortings"], "dificulty": "1600", "interactive": false, "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Median Splits.json"}
+{
+    "link": "https://codeforces.com//contest/2103/problem/C",
+    "problemId": "3344321",
+    "problem_idx": "C",
+    "shortId": "2103C",
+    "contest_number": "2103",
+    "problem_submissions": {
+        "E": [
+            316580259,
+            316596724,
+            317172040,
+            316590039,
+            316595391
+        ],
+        "F": [
+            316566749,
+            316554849,
+            316570194,
+            316571690,
+            316564753,
+            316565334,
+            316570375,
+            316566324,
+            316575470,
+            316580599
+        ],
+        "D": [
+            316555496,
+            316575935,
+            316547933,
+            316557810,
+            316581217,
+            316583504,
+            316574629,
+            316579069,
+            316561467,
+            316554031,
+            316570027
+        ],
+        "C": [
+            316551349,
+            316539195,
+            316536817,
+            316551152,
+            316552060,
+            316551470,
+            316558008,
+            316550915,
+            316554352,
+            316539931,
+            316539580
+        ],
+        "B": [
+            316531722,
+            316533206,
+            316540972,
+            316534158,
+            316532366,
+            316536408,
+            316536066,
+            316548057,
+            316551531,
+            316531957,
+            316544497
+        ],
+        "A": [
+            316523865,
+            316526077,
+            316528063,
+            316524687,
+            316526522,
+            316532444,
+            316526800,
+            316525336,
+            316545204,
+            316523615,
+            316541424
+        ]
+    },
+    "editorial_link": "https://codeforces.com//blog/entry/142149",
+    "editorial": "SolutionRead the hints.Cases and from hint 5 are symmetric, so we will\r\nonly explain how to do case . Compute the prefix sum of the array, let\r\nit be array . The subarray [l, ] has non-negative sum if . For each\r\nindex compute value (max suffix prefix), such that . Then iterate over\r\nindex that will be the end of the first subarray. If and , then it will\r\nbe possible to split the array such that the medians of the first and\r\nsecond subarrays are .Case is even easier. Find positions and such that\r\n[ , ] is the shortest prefix with median and [ , ] is the shortest\r\nsuffix with median . Then the split into three subarrays such that the\r\nfirst and third have median is possible if and only if [ , ] is a valid\r\nsubarray, in other words, if .As both cases can be checked with a few\r\narray passes, the time and memory complexities are per testcase.\r\n",
+    "name": "C. Median Splits",
+    "statement": "The median of an array b_1, b_2,\r\nldots b_m, written as\r\noperatorname{med}(b_1, b_2,\r\nldots, b_m), is the\r\nleft\r\nlceil\r\nfrac{m}{2}\r\nright\r\nrceil-th^{\r\ntext{ }} smallest element of array b.You are given an array of integers\r\na_1, a_2,\r\nldots, a_n and an integer k. You need to determine whether there exists\r\na pair of indices 1\r\nle l < r < n such that:\r\noperatorname{med}(\r\noperatorname{med}(a_1, a_2,\r\nldots, a_l),\r\noperatorname{med}(a_{l+1}, a_{l+2},\r\nldots, a_r),\r\noperatorname{med}(a_{r+1}, a_{r+2},\r\nldots, a_n))\r\nle k.In other words, determine whether it is possible to split the array\r\ninto three contiguous subarrays^{\r\ntext{ }} such that the median of the three subarray medians is less than\r\nor equal to k.^{\r\ntext{ }}\r\nlceil x\r\nrceil is the ceiling function which returns the least integer greater\r\nthan or equal to x.^{\r\ntext{ }}An array x is a subarray of an array y if x can be obtained from\r\ny by the deletion of several (possibly, zero or all) elements from the\r\nbeginning and several (possibly, zero or all) elements from the end.\r\n",
+    "solutions": [],
+    "input": "",
+    "output": "",
+    "tags": [
+        "binary search",
+        "greedy",
+        "implementation",
+        "sortings"
+    ],
+    "dificulty": "1600",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Median Splits.json",
+    "hint": [
+        "Hint 1 We split our array into subarrays, take their medians, and the final median needs to be . That means that the median of at least of those subarrays needs to be .",
+        "Hint 2 For a given array of length , what is the condition that ?",
+        "Hint 3 There need to be at least as many elements in that are as those that are . How can we simplify this?",
+        "Hint 4 We can replace all elements that are with and all elementsthat are with . Now the median of is if and only if the sum of elements in is non-negative.",
+        "Hint 5 Now that we replaced the elements of , the question is if it is possible to split it into subarrays, of which at least have a non-negative sum. There are cases: The first and second subarrays have non-negative sums. The second and third subarrays have non-negative sums. The first and third subarrays have non-negative sums.",
+        "Hint 6 Use prefix/suffix sums and maximums/ minimums to help you compute the answer in linear time."
+    ]
+}

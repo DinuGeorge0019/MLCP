@@ -132,5 +132,14 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\F. Edge Queries.json",
     "editorial_link": "https://codeforces.com//blog/entry/110278",
-    "editorial": "AnswerA graph with bridges connecting components with a hamiltonian\r\ncycle.\r\n"
+    "editorial": "AnswerA graph with bridges connecting components with a hamiltonian\r\ncycle.\r\n",
+    "hint": [
+        "Hint 1 What kind of graph meets the conditions given in the statement? Answer A graph with bridges connecting components with a hamiltonian cycle.",
+        "Hint 2 Which edges will never be counted in answer to any query? Answer Of course, the bridges.",
+        "Hint 3 Restructure the graph to be able to answer queries.",
+        "Hint 4 on a tree can be solved efficiently via Lowest Common Ancestor (LCA).",
+        "Hint 1 The provided definition of the given graph, actually means a cactus graph. no, it doesn't, my bad :facepalm:",
+        "Hint 2 What are the kind of edges we want to cut if we want to keep the path connected? Answer of Hint 2 We want to cut the edges that lie on a simple cycle.",
+        "Hint 3 If we want to decompose a graph into simple cycles, what algorithm do we use? Answer for Hint 3 We use the Biconnected Components algorithm. After using it, the graph of BCCs become a tree. Now we can use LCA/Mo's on trees/whatever algorithm we would use on trees, on this trees of BCCs."
+    ]
 }

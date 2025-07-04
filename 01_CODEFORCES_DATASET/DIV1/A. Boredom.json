@@ -96,7 +96,7 @@
         ]
     },
     "name": "A. Boredom",
-    "statement": "Alex doesn\u2019t like boredom. That\u2019s why whenever he gets bored, he comes\r\nup with games. One long winter evening he came up with a game and\r\ndecided to play it.Given a sequence consisting of integers. The player\r\ncan make several steps. In a single step he can choose an element of the\r\nsequence (let\u2019s denote it ) and delete it, at that all elements equal to\r\nand also must be deleted from the sequence. That step brings points to\r\nthe player. Alex is a perfectionist, so he decided to get as many points\r\nas possible. Help him.\r\n",
+    "statement": "Alex doesn’t like boredom. That’s why whenever he gets bored, he comes\r\nup with games. One long winter evening he came up with a game and\r\ndecided to play it.Given a sequence consisting of integers. The player\r\ncan make several steps. In a single step he can choose an element of the\r\nsequence (let’s denote it ) and delete it, at that all elements equal to\r\nand also must be deleted from the sequence. That step brings points to\r\nthe player. Alex is a perfectionist, so he decided to get as many points\r\nas possible. Help him.\r\n",
     "solutions": [
         "#include <cstring>\n#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <memory.h>\n#include <cassert>\n\nusing namespace std;\n\nconst int N = 1000010;\n\nint cnt[N];\nlong long f[N];\n\nint main() {\n  int n;\n  scanf(\"%d\", &n);\n  memset(cnt, 0, sizeof(cnt));\n  for (int i = 0; i < n; i++) {\n    int foo;\n    scanf(\"%d\", &foo);\n    cnt[foo]++;\n  }\n  f[0] = 0;\n  for (int i = 1; i < N; i++) {\n    f[i] = (long long)i * cnt[i];\n    if (i - 2 >= 0) {\n      f[i] += f[i - 2];\n    }\n    if (f[i - 1] > f[i]) {\n      f[i] = f[i - 1];\n    }\n  }\n  cout << f[N - 1] << endl;\n  return 0;\n}\n"
     ],
@@ -109,5 +109,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Boredom.json",
     "editorial_link": "https://codeforces.com//blog/entry/13336",
-    "editorial": " In this task we need to maximize the sum of\nnumbers that we took. Let precalc array . number of integers in array .\nNow we can easily calculate the DP: , ; ; ; The answer is . Asymptotics\n.\n"
+    "editorial": " In this task we need to maximize the sum of\nnumbers that we took. Let precalc array . number of integers in array .\nNow we can easily calculate the DP: , ; ; ; The answer is . Asymptotics\n.\n",
+    "hint": []
 }

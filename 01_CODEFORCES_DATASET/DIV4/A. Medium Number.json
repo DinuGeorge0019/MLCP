@@ -177,5 +177,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\A. Medium Number.json",
     "editorial_link": "https://codeforces.com//blog/entry/109348",
-    "editorial": "Here are two ways to implement what\u00e2\u0080\u0099s given in the problem: Take input\r\nas an array , and sort it. Output the middle element. Write two\r\nif-statements. The first: if , output . Else, if , output . Else, output\r\n.\r\n"
+    "editorial": "Here are two ways to implement whatâs given in the problem: Take input\r\nas an array , and sort it. Output the middle element. Write two\r\nif-statements. The first: if , output . Else, if , output . Else, output\r\n.\r\n",
+    "hint": []
 }

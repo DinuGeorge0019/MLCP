@@ -182,5 +182,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Everyone Loves to Sleep.json",
     "editorial_link": "https://codeforces.com//blog/entry/105549",
-    "editorial": "To begin with, let\u00e2\u0080\u0099s learn how to determine how much time must pass\r\nbefore the alarm to trigger. If the alarm time is later than the current\r\none, then obviously minutes should pass. Otherwise, this value will be\r\nnegative and then it should pass since a full day must pass, not\r\nincluding the time from the alarm to the current time. We just need to\r\nfind the minimum number of minutes among all the alarm clocks.Due to\r\nsmall constrains, the problem can also be solved by stimulating the\r\nsleep process: increase the answer by and check whether any alarm will\r\nwork after this time.\r\n"
+    "editorial": "To begin with, letâs learn how to determine how much time must pass\r\nbefore the alarm to trigger. If the alarm time is later than the current\r\none, then obviously minutes should pass. Otherwise, this value will be\r\nnegative and then it should pass since a full day must pass, not\r\nincluding the time from the alarm to the current time. We just need to\r\nfind the minimum number of minutes among all the alarm clocks.Due to\r\nsmall constrains, the problem can also be solved by stimulating the\r\nsleep process: increase the answer by and check whether any alarm will\r\nwork after this time.\r\n",
+    "hint": []
 }

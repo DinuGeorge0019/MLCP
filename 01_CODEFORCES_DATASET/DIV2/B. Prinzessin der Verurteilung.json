@@ -151,5 +151,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Prinzessin der Verurteilung.json",
     "editorial_link": "https://codeforces.com//blog/entry/91520",
-    "editorial": "SolutionLet s brute force check all substrings of length <= 3 and print\r\nthe lexicographically smallest one that doesn t appear as a substring in\r\nthe input. We can guarantee that we will come across the answer due to\r\nthe pigeonhole principle. There are at most possible substrings of\r\nlength 3 or shorter in the input. There exist total substrings of length\r\n3 or shorter. It is impossible for the input to contain all substrings,\r\nas for .Final runtime looks something like or depending on how you\r\nimplement substring checking.\r\n"
+    "editorial": "SolutionLet s brute force check all substrings of length <= 3 and print\r\nthe lexicographically smallest one that doesn t appear as a substring in\r\nthe input. We can guarantee that we will come across the answer due to\r\nthe pigeonhole principle. There are at most possible substrings of\r\nlength 3 or shorter in the input. There exist total substrings of length\r\n3 or shorter. It is impossible for the input to contain all substrings,\r\nas for .Final runtime looks something like or depending on how you\r\nimplement substring checking.\r\n",
+    "hint": [
+        "Hint 1 Pigeonhole principle",
+        "Hint 2 What is the longest the answer can be?"
+    ]
 }

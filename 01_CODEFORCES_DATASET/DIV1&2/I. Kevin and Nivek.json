@@ -212,5 +212,11 @@
     ],
     "dificulty": "",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\I. Kevin and Nivek.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\I. Kevin and Nivek.json",
+    "hint": [
+        "Hint 1 Can you compute from efficiently?",
+        "Hint 2 If the difference between the number of victories is large, he will either always win or always lose for type 2 matches.",
+        "Hint 3 We can speed up this part to .",
+        "Hint 4 For the part that the difference between the number of victories is not large, solve it recursively."
+    ]
 }

@@ -174,5 +174,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\F. Juju and Binary String.json",
     "editorial_link": "https://codeforces.com//blog/entry/101302",
-    "editorial": "ObservationIt is easy to show that the cuteness of is .What is the\r\nnumber of in the concatenated string needed so that the answer exists?\r\n"
+    "editorial": "ObservationIt is easy to show that the cuteness of is .What is the\r\nnumber of in the concatenated string needed so that the answer exists?\r\n",
+    "hint": [
+        "Hint 1 Let be the number of black balls and be the number of white balls. The answer will be impossible if is not a multiple of . Observation It is easy to show that the cuteness of is . What is the number of in the concatenated string needed so that the answer exists? Proof The cuteness of is by definition. Now consider , the cuteness of the concatenated string. The cuteness of is , so the number of needed is . If is not an integer then there will be no answer, so must be a multiple of .",
+        "Hint 2 We don't need more than 2 parts, or to say is needed in this problem. Observation Let (the number of in ). For convenient, from now let assume the array and string is wrapped around: and . We have and there exists for all that . Contestant's Proof GM+ smax provides a simple and clean answer here . Author's Proof Let , and we are doing with wrap around arrays for convenient. We want to prove that for any that there will be some . Let for is the minimal position that . Let is the first position starting that , we have [1] Since and, we have . [2] Since we can show that. [3] Since , we also have From [1], [2], [3], if there is then there will be for some that ."
+    ]
 }

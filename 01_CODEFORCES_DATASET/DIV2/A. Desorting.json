@@ -133,5 +133,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Desorting.json",
     "editorial_link": "https://codeforces.com//blog/entry/116940",
-    "editorial": "Problem Credits: buffering Analysis: buffering SolutionTo make not\r\nsorted, we just have to make for one . In one operation, we can reduce\r\nthe gap between two adjacent elements by by adding to and subtracting\r\nfrom .It is clearly optimal to pick the smallest gap between a pair of\r\nadjacent elements to minimize the number of operations we have to do. If\r\nwe have , we can make within operations.Thus, we can just go through ,\r\nfind the minimum difference gap, and calculate the minimum operations\r\nusing the above formula. Note that if is not sorted, we can just output\r\n.The time complexity is .\r\n"
+    "editorial": "Problem Credits: buffering Analysis: buffering SolutionTo make not\r\nsorted, we just have to make for one . In one operation, we can reduce\r\nthe gap between two adjacent elements by by adding to and subtracting\r\nfrom .It is clearly optimal to pick the smallest gap between a pair of\r\nadjacent elements to minimize the number of operations we have to do. If\r\nwe have , we can make within operations.Thus, we can just go through ,\r\nfind the minimum difference gap, and calculate the minimum operations\r\nusing the above formula. Note that if is not sorted, we can just output\r\n.The time complexity is .\r\n",
+    "hint": [
+        "Hint 1 To make not sorted, we just need to pick one index so . How do we do this?"
+    ]
 }

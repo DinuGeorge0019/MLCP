@@ -151,5 +151,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. BowWow and the Timetable.json",
     "editorial_link": "https://codeforces.com/blog/entry/69244",
-    "editorial": "Basically, the problem asks you to count , which is equal to . If we\r\ndenote as a length of the input number, then is either equal to if is\r\nthe power of two (it can be checked by checking that there is not more\r\nthan one in the input string), or to otherwise, so the answer to the\r\nproblem is either or . Also for the answer is .\r\n"
+    "editorial": "Basically, the problem asks you to count , which is equal to . If we\r\ndenote as a length of the input number, then is either equal to if is\r\nthe power of two (it can be checked by checking that there is not more\r\nthan one in the input string), or to otherwise, so the answer to the\r\nproblem is either or . Also for the answer is .\r\n",
+    "hint": []
 }

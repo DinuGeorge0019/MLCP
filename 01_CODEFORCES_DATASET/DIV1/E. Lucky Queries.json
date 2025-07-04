@@ -109,5 +109,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\E. Lucky Queries.json",
     "editorial_link": "https://codeforces.com//blog/entry/3746",
-    "editorial": "To solve this problem you need to handle segment tree with following information:\n\nn4: number of 4-digits in node range.\nn7: number of 7-digits in node range.\nn47: maximum non-decreasing subsequence in range.\nn74: maximum non-increasing subsequence in range.\n\nWhen we reverse digits in some node we just swap(n4, n7), swap(n47, n74). When we update node we keep n4(father) = n4(left_son) + n4(right_son), n47(father) = max(n47(left_son) + n7(right_son), n4(left_son) + n47(right_son), n4(left_son) + n7(right_son)). Then for each count query result is n47."
+    "editorial": "To solve this problem you need to handle segment tree with following information:\n\nn4: number of 4-digits in node range.\nn7: number of 7-digits in node range.\nn47: maximum non-decreasing subsequence in range.\nn74: maximum non-increasing subsequence in range.\n\nWhen we reverse digits in some node we just swap(n4, n7), swap(n47, n74). When we update node we keep n4(father) = n4(left_son) + n4(right_son), n47(father) = max(n47(left_son) + n7(right_son), n4(left_son) + n47(right_son), n4(left_son) + n7(right_son)). Then for each count query result is n47.",
+    "hint": []
 }

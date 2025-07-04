@@ -141,7 +141,7 @@
         ]
     },
     "name": "A. Unit Array",
-    "statement": "Given an array a of length n, which elements are equal to -1 and 1.\r\nLet\u2019s call the array a if the following conditions are held at the same\r\ntime: a_1 + a_2 +\r\nldots + a_n\r\nge 0; a_1\r\ncdot a_2\r\ncdot\r\nldots\r\ncdot a_n = 1. In one operation, you can select an arbitrary element of\r\nthe array a_i and change its value to the opposite. In other words, if\r\na_i = -1, you can assign the value to a_i := 1, and if a_i = 1, then\r\nassign the value to a_i := -1.Determine the minimum number of operations\r\nyou need to perform to make the array a good. It can be shown that this\r\nis always possible.\r\n",
+    "statement": "Given an array a of length n, which elements are equal to -1 and 1.\r\nLet’s call the array a if the following conditions are held at the same\r\ntime: a_1 + a_2 +\r\nldots + a_n\r\nge 0; a_1\r\ncdot a_2\r\ncdot\r\nldots\r\ncdot a_n = 1. In one operation, you can select an arbitrary element of\r\nthe array a_i and change its value to the opposite. In other words, if\r\na_i = -1, you can assign the value to a_i := 1, and if a_i = 1, then\r\nassign the value to a_i := -1.Determine the minimum number of operations\r\nyou need to perform to make the array a good. It can be shown that this\r\nis always possible.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\n#define int long long\nusing namespace std;\nvoid mermermer()\n{\n\tint n;\n\tcin >> n;\n\tint x=0,y=0;\n\twhile(n--)\n\t{\n\t\tint t;\n\t\tcin >> t;\n\t\tif(t==1) ++x;\n\t\telse ++y;\n\t}\n\tint ans=0;\n\twhile(!(x-y>=0&&y%2==0)) --y,++x,++ans;\n\tcout << ans << \"\\n\";\n}\nsigned main()\n{\n\tios::sync_with_stdio(false);\n\tcin.tie(0);\n\tint T;\n\tcin >> T;\n\twhile(T--) mermermer();\n\treturn 0;\n}\n//bu pa kun nan!!!"
     ],
@@ -155,5 +155,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Unit Array.json",
     "editorial_link": "https://codeforces.com//blog/entry/117384",
-    "editorial": "First, let\u00e2\u0080\u0099s make the sum of the array elements . To do this, we just\r\nneed to change some to . The number of such replacements can be\r\ncalculated using a formula or explicitly simulated.After that, there are\r\ntwo possible situations: either the product of all elements is equal to\r\n, or the product of all elements is equal to . In the first case, we\r\ndon\u00e2\u0080\u0099t need to do anything else. In the second case, we need to replace\r\none more with (note that in this case the sum will remain ).\r\n"
+    "editorial": "First, letâs make the sum of the array elements . To do this, we just\r\nneed to change some to . The number of such replacements can be\r\ncalculated using a formula or explicitly simulated.After that, there are\r\ntwo possible situations: either the product of all elements is equal to\r\n, or the product of all elements is equal to . In the first case, we\r\ndonât need to do anything else. In the second case, we need to replace\r\none more with (note that in this case the sum will remain ).\r\n",
+    "hint": []
 }

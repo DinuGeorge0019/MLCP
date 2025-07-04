@@ -128,7 +128,7 @@
         ]
     },
     "name": "A. The New Year  Meeting Friends",
-    "statement": "There are three friend living on the straight line in Lineland. The\r\nfirst friend lives at the point , the second friend lives at the point ,\r\nand the third friend lives at the point . They plan to celebrate the New\r\nYear together, so they need to meet at one point. What is the minimum\r\ntotal distance they have to travel in order to meet at some point and\r\ncelebrate the New Year?It\u2019s guaranteed that the optimal answer is always\r\ninteger.\r\n",
+    "statement": "There are three friend living on the straight line in Lineland. The\r\nfirst friend lives at the point , the second friend lives at the point ,\r\nand the third friend lives at the point . They plan to celebrate the New\r\nYear together, so they need to meet at one point. What is the minimum\r\ntotal distance they have to travel in order to meet at some point and\r\ncelebrate the New Year?It’s guaranteed that the optimal answer is always\r\ninteger.\r\n",
     "solutions": [
         "#include<cstdio>\n#include<cstring>\n#include<vector>\n#include<algorithm>\n#include<string>\n#include<iostream>\nusing namespace std;\nint main() {\n\tint a, b, c;\n\tcin >> a >> b >> c;\n\tcout << max(max(a, b), c) - min(min(a, b), c) << endl;\n}\n"
     ],
@@ -143,5 +143,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. The New Year  Meeting Friends.json",
     "editorial_link": "https://codeforces.com//blog/entry/47502",
-    "editorial": "To solve this problem you need to understand that friends must meet in\r\nthe middle point of the given points, so friends who live in the\r\nleftmost and in the rightmost points must go to the middle point.\r\nBecause of that the answer equals to .\r\n"
+    "editorial": "To solve this problem you need to understand that friends must meet in\r\nthe middle point of the given points, so friends who live in the\r\nleftmost and in the rightmost points must go to the middle point.\r\nBecause of that the answer equals to .\r\n",
+    "hint": []
 }

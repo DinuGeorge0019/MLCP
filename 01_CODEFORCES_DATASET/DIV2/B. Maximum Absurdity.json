@@ -86,5 +86,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Maximum Absurdity.json",
     "editorial_link": "https://codeforces.com/blog/entry/8447",
-    "editorial": "Let s build the array of partial sums, which will permit to find the sum\r\nin any segment of the array in . Let\u00e2\u0080\u0099s iterate through the number (the\r\nleft edge of the leftmost segment) in descending order. Now we need to\r\nfind among segments of length , starting from position which index is\r\ngreater than or equal to , a segment with the maximum sum. Since we\r\nsearch in descending order, we can maintain this segment during the\r\ntransition from to . Asymptotics of the solution . Code\r\n"
+    "editorial": "Let s build the array of partial sums, which will permit to find the sum\r\nin any segment of the array in . Letâs iterate through the number (the\r\nleft edge of the leftmost segment) in descending order. Now we need to\r\nfind among segments of length , starting from position which index is\r\ngreater than or equal to , a segment with the maximum sum. Since we\r\nsearch in descending order, we can maintain this segment during the\r\ntransition from to . Asymptotics of the solution . Code\r\n",
+    "hint": []
 }

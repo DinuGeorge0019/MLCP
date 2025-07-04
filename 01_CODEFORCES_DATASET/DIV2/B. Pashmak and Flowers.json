@@ -114,7 +114,7 @@
         ]
     },
     "name": "B. Pashmak and Flowers",
-    "statement": "Pashmak decided to give Parmida a pair of flowers from the garden. There\r\nare flowers in the garden and the -th of them has a beauty number .\r\nParmida is a very strange girl so she doesn\u2019t want to have the two most\r\nbeautiful flowers necessarily. She wants to have those pairs of flowers\r\nthat their beauty difference is maximal possible!Your task is to write a\r\nprogram which calculates two things: The maximum beauty difference of\r\nflowers that Pashmak can give to Parmida. The number of ways that\r\nPashmak can pick the flowers. Two ways are considered different if and\r\nonly if there is at least one flower that is chosen in the first way and\r\nnot chosen in the second way.\r\n",
+    "statement": "Pashmak decided to give Parmida a pair of flowers from the garden. There\r\nare flowers in the garden and the -th of them has a beauty number .\r\nParmida is a very strange girl so she doesn’t want to have the two most\r\nbeautiful flowers necessarily. She wants to have those pairs of flowers\r\nthat their beauty difference is maximal possible!Your task is to write a\r\nprogram which calculates two things: The maximum beauty difference of\r\nflowers that Pashmak can give to Parmida. The number of ways that\r\nPashmak can pick the flowers. Two ways are considered different if and\r\nonly if there is at least one flower that is chosen in the first way and\r\nnot chosen in the second way.\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\n#define REP(i,n) for (int i=0;i<(n);i=i+1)\n#define fi   first\n#define se   second\nusing namespace std;\nmap<int,int> mp;\nint main(void) {\n    int n;\n    scanf(\"%d\",&n);\n    REP(zz,n) {\n        int t;\n        scanf(\"%d\",&t);\n        mp[t]++;\n    }\n    if (mp.size()==1) {\n        cout<<\"0 \"<<(1LL*n*(n-1)/2);\n        return 0;\n    }\n    __typeof(mp.begin()) ft=mp.begin();\n    __typeof(mp.begin()) lt=mp.end(); lt--;\n    cout<<(lt->fi-ft->fi)<<\" \"<<(1LL*ft->se*lt->se);\n    return 0;\n}\n"
     ],
@@ -129,5 +129,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Pashmak and Flowers.json",
     "editorial_link": "https://codeforces.com//blog/entry/13430",
-    "editorial": "If all numbers are equal then answer will be , otherwise the answer will\r\nbe , where is the number of our maximum elements and is the number of\r\nour minimum elements. Total complexity : Sample solution: 7495202\r\n"
+    "editorial": "If all numbers are equal then answer will be , otherwise the answer will\r\nbe , where is the number of our maximum elements and is the number of\r\nour minimum elements. Total complexity : Sample solution: 7495202\r\n",
+    "hint": []
 }

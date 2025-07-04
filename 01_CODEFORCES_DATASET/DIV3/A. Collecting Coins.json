@@ -136,7 +136,7 @@
         ]
     },
     "name": "A. Collecting Coins",
-    "statement": "Polycarp has three sisters: Alice, Barbara, and Cerene. They\u2019re\r\ncollecting coins. Currently, Alice has a coins, Barbara has b coins and\r\nCerene has c coins. Recently Polycarp has returned from the trip around\r\nthe world and brought n coins.He wants to distribute these n coins\r\nbetween his sisters in such a way that the number of coins Alice has is\r\nequal to the number of coins Barbara has and is equal to the number of\r\ncoins Cerene has. In other words, if Polycarp gives A coins to Alice, B\r\ncoins to Barbara and C coins to Cerene (A+B+C=n), then a + A = b + B =\r\nc + C. that A, B or C (the number of coins Polycarp gives to Alice,\r\nBarbara and Cerene correspondingly) can be 0.Your task is to find out if\r\nit is possible to distribute n coins between sisters in a way described\r\nabove.You have to answer t independent test cases.\r\n",
+    "statement": "Polycarp has three sisters: Alice, Barbara, and Cerene. They’re\r\ncollecting coins. Currently, Alice has a coins, Barbara has b coins and\r\nCerene has c coins. Recently Polycarp has returned from the trip around\r\nthe world and brought n coins.He wants to distribute these n coins\r\nbetween his sisters in such a way that the number of coins Alice has is\r\nequal to the number of coins Barbara has and is equal to the number of\r\ncoins Cerene has. In other words, if Polycarp gives A coins to Alice, B\r\ncoins to Barbara and C coins to Cerene (A+B+C=n), then a + A = b + B =\r\nc + C. that A, B or C (the number of coins Polycarp gives to Alice,\r\nBarbara and Cerene correspondingly) can be 0.Your task is to find out if\r\nit is possible to distribute n coins between sisters in a way described\r\nabove.You have to answer t independent test cases.\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\nusing namespace std;\n#define PB push_back\n#define LL long long\n#define PII pair<int,int>\n#define FI first\n#define SE second\nconst int INF=0x3f3f3f3f;\nconst int N=1e6+7,mod=1e9+7;\nint n,m;\nint a[N];\nint main()\n{\n    int t;\n    cin>>t;\n    while(t--){\n        int a[3];\n        scanf(\"%d%d%d%d\",&a[0],&a[1],&a[2],&n);\n        sort(a,a+3);\n        if(a[2]-a[0]+a[2]-a[1]>n||(a[0]+a[1]+a[2]+n)%3!=0){\n            puts(\"NO\");\n        }\n        else puts(\"YES\");\n    }\n    return 0;\n}\n"
     ],
@@ -149,5 +149,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Collecting Coins.json",
     "editorial_link": "https://codeforces.com//blog/entry/73274",
-    "editorial": "Suppose . If it isn\u00e2\u0080\u0099t true then let\u00e2\u0080\u0099s rearrange our variables. Then we\r\nneed at least coins to make , and equal. So if then the answer is \"\".\r\nOtherwise, the answer if \"\" if the number is divisible by . This is true\r\nbecause after making and equal we need to distribute all remaining\r\ncandies between three sisters.\r\n"
+    "editorial": "Suppose . If it isnât true then letâs rearrange our variables. Then we\r\nneed at least coins to make , and equal. So if then the answer is \"\".\r\nOtherwise, the answer if \"\" if the number is divisible by . This is true\r\nbecause after making and equal we need to distribute all remaining\r\ncandies between three sisters.\r\n",
+    "hint": []
 }

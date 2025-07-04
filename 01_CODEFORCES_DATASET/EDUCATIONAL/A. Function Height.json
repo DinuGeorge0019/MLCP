@@ -178,5 +178,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Function Height.json",
     "editorial_link": "https://codeforces.com/blog/entry/61727",
-    "editorial": "It is easy to see that the area of the plot is the sum of areas of all\r\ntriangles in this plot. Each move increases area by one. We cannot\r\nobtain the answer less than but we always can obtain such an answer.\r\n"
+    "editorial": "It is easy to see that the area of the plot is the sum of areas of all\r\ntriangles in this plot. Each move increases area by one. We cannot\r\nobtain the answer less than but we always can obtain such an answer.\r\n",
+    "hint": []
 }

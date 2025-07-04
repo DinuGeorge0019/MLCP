@@ -150,7 +150,7 @@
         ]
     },
     "name": "D. Green and Black Tea",
-    "statement": "Innokentiy likes tea very much and today he wants to drink exactly cups\r\nof tea. He would be happy to drink more but he had exactly tea bags, of\r\nthem are green and are black.Innokentiy doesn\u2019t like to drink the same\r\ntea (green or black) more than times in a row. Your task is to determine\r\nthe order of brewing tea bags so that Innokentiy will be able to drink\r\ncups of tea, without drinking the same tea more than times in a row, or\r\nto inform that it is impossible. Each tea bag has to be used exactly\r\nonce.\r\n",
+    "statement": "Innokentiy likes tea very much and today he wants to drink exactly cups\r\nof tea. He would be happy to drink more but he had exactly tea bags, of\r\nthem are green and are black.Innokentiy doesn’t like to drink the same\r\ntea (green or black) more than times in a row. Your task is to determine\r\nthe order of brewing tea bags so that Innokentiy will be able to drink\r\ncups of tea, without drinking the same tea more than times in a row, or\r\nto inform that it is impossible. Each tea bag has to be used exactly\r\nonce.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\n#define ll long long\n#define ld long double\n#define N ((ll)301*1000)\n#define INF ((ll)2e9)\n#define MOD ((ll)1e9+7)\nll tavan(ll x,ll y){ll res=1;while(y){res*=y%2?x:1;res%=MOD;x*=x;x%=MOD;y/=2;}return res;}\n\nll n,k,a,b;\nchar A='G',B='B';\n\nint main()\n{\n    ios_base::sync_with_stdio(0);cin.tie(0);\n    cin>>n>>k>>a>>b;\n    if(a<b)swap(a,b),swap(A,B);\n    ll num=(a+k-1)/k-1;\n    if(num>b)return cout<<\"NO\",0;\n    b-=num;\n    for(int i=0;i<num;i++)\n    {\n    \tfor(int j=0;j<k;j++)cout<<A;\n    \tcout<<B;\n    \tfor(int j=0;j<k-1 && b;j++,b--)cout<<B;\n\t}\n\tll p=a%k;\n\tif(p==0)p=k;\n\tfor(int j=0;j<p;j++)cout<<A;\n\tfor(int j=0;j<k && b;j++,b--)cout<<B;\n    return 0;\n}"
     ],
@@ -165,5 +165,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Green and Black Tea.json",
     "editorial_link": "https://codeforces.com//blog/entry/49160",
-    "editorial": "Let\u00e2\u0080\u0099s use greedy to solve this problem. On the current step we choose\r\ntea, which left more, but if the last cups were equal we need to use the\r\nother tea. If we can\u00e2\u0080\u0099t use the other tea there is no answer and we need\r\nto print . So, we need to store the number of last cups, which were\r\nequals and how many of green and black tea left we greedily build the\r\nanswer. If we use all tea with this algorithm we found the answer and it\r\nis guaranteed that it is correct answer.\r\n"
+    "editorial": "Letâs use greedy to solve this problem. On the current step we choose\r\ntea, which left more, but if the last cups were equal we need to use the\r\nother tea. If we canât use the other tea there is no answer and we need\r\nto print . So, we need to store the number of last cups, which were\r\nequals and how many of green and black tea left we greedily build the\r\nanswer. If we use all tea with this algorithm we found the answer and it\r\nis guaranteed that it is correct answer.\r\n",
+    "hint": []
 }

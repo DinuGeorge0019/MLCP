@@ -97,5 +97,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Mr. Kitayuta s Gift.json",
     "editorial_link": "https://codeforces.com/blog/entry/15889",
-    "editorial": "[Problem] Given a string, turn it into a palindrome by inserting one\r\nletter or state that it is impossible. (Problem by evima) Since the\r\nstring is short (at most 10 characters), you can simply try every\r\npossible way of inserting a letter (\"where\" and \"what\" to insert), and\r\ncheck if the resulting string is a palindrome. The writer\u00e2\u0080\u0099s code (C++):\r\n9501249Note: For some strange reason, we (contest managers) cannot\r\nsubmit solutions so that everyone can see them. PraveenDhinwa told us\r\nhow to do so. Thank you!\r\n"
+    "editorial": "[Problem] Given a string, turn it into a palindrome by inserting one\r\nletter or state that it is impossible. (Problem by evima) Since the\r\nstring is short (at most 10 characters), you can simply try every\r\npossible way of inserting a letter (\"where\" and \"what\" to insert), and\r\ncheck if the resulting string is a palindrome. The writerâs code (C++):\r\n9501249Note: For some strange reason, we (contest managers) cannot\r\nsubmit solutions so that everyone can see them. PraveenDhinwa told us\r\nhow to do so. Thank you!\r\n",
+    "hint": []
 }

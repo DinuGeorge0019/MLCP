@@ -213,5 +213,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\C. Target Practice.json",
     "editorial_link": "https://codeforces.com//blog/entry/120634",
-    "editorial": "You can just hardcode the values in the array below, and iterate through\r\nthe grid; if it is an , we add the value to our total. See the\r\nimplementation for more details. The time complexity per testcase.\r\n"
+    "editorial": "You can just hardcode the values in the array below, and iterate through\r\nthe grid; if it is an , we add the value to our total. See the\r\nimplementation for more details. The time complexity per testcase.\r\n",
+    "hint": []
 }

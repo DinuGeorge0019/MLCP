@@ -110,5 +110,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Canvas Frames.json",
     "editorial_link": "https://codeforces.com//blog/entry/3140",
-    "editorial": " Idea of this problem was offered by RAD. It was the last problem in the problemset and I had no any easy idea:) I thank him for it.\n\nHere you should calculate an array cnt[100]. i-th element of it stores number of sticks whose lengths equal i. Now you should calculate number of pairs of sticks of equal lengths. This number is , where [x] is floor of x. For every frame you need 2 if such pairs and you can choose it in any order. Therefore the answer will be z?=?[k?/?2]."
+    "editorial": " Idea of this problem was offered by RAD. It was the last problem in the problemset and I had no any easy idea:) I thank him for it.\n\nHere you should calculate an array cnt[100]. i-th element of it stores number of sticks whose lengths equal i. Now you should calculate number of pairs of sticks of equal lengths. This number is , where [x] is floor of x. For every frame you need 2 if such pairs and you can choose it in any order. Therefore the answer will be z?=?[k?/?2].",
+    "hint": []
 }

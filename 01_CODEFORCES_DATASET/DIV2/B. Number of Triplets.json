@@ -105,5 +105,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Number of Triplets.json",
     "editorial_link": "https://codeforces.com//blog/entry/4372",
-    "editorial": "You can see that for every two points from triplet (for example, for A and C) you can find place of the third point. So you can find number of requred triplets just inerate over all pairs of points and check middle point between points in every pair.\n\nHow to fast check position? You can add 1000 for all coordinates (you can see that this operation doesn't change the answer) and mark them in the 2-dimensional boolean array 2001?2001. So you can check every position for point in O(1) time.\n\nObtained solution works in O(n2)."
+    "editorial": "You can see that for every two points from triplet (for example, for A and C) you can find place of the third point. So you can find number of requred triplets just inerate over all pairs of points and check middle point between points in every pair.\n\nHow to fast check position? You can add 1000 for all coordinates (you can see that this operation doesn't change the answer) and mark them in the 2-dimensional boolean array 2001?2001. So you can check every position for point in O(1) time.\n\nObtained solution works in O(n2).",
+    "hint": []
 }

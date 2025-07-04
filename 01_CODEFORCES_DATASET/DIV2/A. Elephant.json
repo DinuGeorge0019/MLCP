@@ -100,7 +100,7 @@
         ]
     },
     "name": "A. Elephant",
-    "statement": "An elephant decided to visit his friend. It turned out that the\r\nelephant\u2019s house is located at point and his friend\u2019s house is located\r\nat point of the coordinate line. In one step the elephant can move , , ,\r\nor positions forward. Determine, what is the minimum number of steps he\r\nneed to make in order to get to his friend\u2019s house.\r\n",
+    "statement": "An elephant decided to visit his friend. It turned out that the\r\nelephant’s house is located at point and his friend’s house is located\r\nat point of the coordinate line. In one step the elephant can move , , ,\r\nor positions forward. Determine, what is the minimum number of steps he\r\nneed to make in order to get to his friend’s house.\r\n",
     "solutions": [
         "#include<stdio.h>\n#include<iostream>\n#include<vector>\n#include<cmath>\n#include<algorithm>\n#include<memory.h>\n#include<map>\n#include<set>\n#include<queue>\n#include<list>\n#include<sstream>\n#include<cstring>\n#define mp make_pair\n#define pb push_back      \n#define F first\n#define S second\n#define SS stringstream\n#define sqr(x) ((x)*(x))\n#define m0(x) memset(x,0,sizeof(x))\n#define m1(x) memset(x,63,sizeof(x))\n#define CC(x) cout << (x) << endl\n#define pw(x) (1ll<<(x))\n#define buli(x) __builtin_popcountll(x)\n#define forn(i, n) for(int i = 0 ; (i) < (n) ; ++i)\n#define M 1000000007\n#define N 611111\n\n#define TASK \"1\"\n\nusing namespace std;\ntypedef pair<int,int> pt;\n\nint main(){\n//  freopen(TASK\".in\",\"r\",stdin);   \n//  freopen(TASK\".out\",\"w\",stdout);\n    int n;\n    cin >> n;\n    cout << (n + 4) / 5 << endl;\n    return 0;\n}"
     ],
@@ -113,5 +113,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Elephant.json",
     "editorial_link": "https://codeforces.com//blog/entry/22971",
-    "editorial": "It\u00e2\u0080\u0099s optimal to do the biggest possible step everytime. So elephant\nshould do several steps by distance 5 and one or zero step by smaller\ndistance. Answer equals to Solution 15550796\n"
+    "editorial": "Itâs optimal to do the biggest possible step everytime. So elephant\nshould do several steps by distance 5 and one or zero step by smaller\ndistance. Answer equals to Solution 15550796\n",
+    "hint": []
 }

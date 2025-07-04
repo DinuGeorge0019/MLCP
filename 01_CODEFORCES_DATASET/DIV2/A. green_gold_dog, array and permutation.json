@@ -167,5 +167,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. green_gold_dog, array and permutation.json",
     "editorial_link": "https://codeforces.com//blog/entry/120353",
-    "editorial": "TutorialLet\u00e2\u0080\u0099s subtract from the minimum number, subtract from the second\r\nminimum, from the third , and subtract from the maximum. Then the number\r\nof distinct elements will be . Obviously, it is impossible to achieve a\r\nbetter result.Let\u00e2\u0080\u0099s prove that the number of distinct elements will be\r\nequal to . Suppose , then without loss of generality, let\u00e2\u0080\u0099s say that ,\r\nthen , which means < . Contradiction.Time Complexity: per test case.\r\n"
+    "editorial": "TutorialLetâs subtract from the minimum number, subtract from the second\r\nminimum, from the third , and subtract from the maximum. Then the number\r\nof distinct elements will be . Obviously, it is impossible to achieve a\r\nbetter result.Letâs prove that the number of distinct elements will be\r\nequal to . Suppose , then without loss of generality, letâs say that ,\r\nthen , which means < . Contradiction.Time Complexity: per test case.\r\n",
+    "hint": []
 }

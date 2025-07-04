@@ -199,5 +199,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\A. Factorise N+M.json",
     "editorial_link": "https://codeforces.com//blog/entry/108567",
-    "editorial": "There are multiple solutions for this problem. We will discuss two of\r\nthem.One solution is to choose . This always guarantees that is prime,\r\nbecause is always prime. And we can see that , which is always not\r\nprime, because always holds.Another solution is to choose . If is odd,\r\nthen will be an even number greater than and therefore not prime.\r\nOtherwise is even. The only even number prime number is and it can be\r\nverified that is not a prime number.Time complexity for each test case:\r\n"
+    "editorial": "There are multiple solutions for this problem. We will discuss two of\r\nthem.One solution is to choose . This always guarantees that is prime,\r\nbecause is always prime. And we can see that , which is always not\r\nprime, because always holds.Another solution is to choose . If is odd,\r\nthen will be an even number greater than and therefore not prime.\r\nOtherwise is even. The only even number prime number is and it can be\r\nverified that is not a prime number.Time complexity for each test case:\r\n",
+    "hint": []
 }

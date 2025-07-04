@@ -133,5 +133,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E2. Nauuo and Pictures  hard version .json",
     "editorial_link": "https://codeforces.com//blog/entry/67511",
-    "editorial": "There are trees, the -th of them has vertices. times you add a new leaf\r\nand attach it to a random vertex. A new vertex is either attached to one\r\nof the initially-existing vertices (then the p-bility is ) or it is\r\nattached to one of already added vertices. This gives us a trivial proof\r\nby induction: if p-bility of adding a vertex to the -th tree in previous\r\nsteps is , then it\u00e2\u0080\u0099s the same in this step when we attach the new vertex\r\nto one of vertices added in previous steps. So p-bility is in every\r\nstep.\r\n"
+    "editorial": "There are trees, the -th of them has vertices. times you add a new leaf\r\nand attach it to a random vertex. A new vertex is either attached to one\r\nof the initially-existing vertices (then the p-bility is ) or it is\r\nattached to one of already added vertices. This gives us a trivial proof\r\nby induction: if p-bility of adding a vertex to the -th tree in previous\r\nsteps is , then itâs the same in this step when we attach the new vertex\r\nto one of vertices added in previous steps. So p-bility is in every\r\nstep.\r\n",
+    "hint": []
 }

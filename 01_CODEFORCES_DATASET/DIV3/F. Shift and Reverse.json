@@ -159,5 +159,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\F. Shift and Reverse.json",
     "editorial_link": "https://codeforces.com//blog/entry/123012",
-    "editorial": "In this problem, there are several possible sequences of actions from\r\nwhich the optimal one must be chosen. For brevity, let\u00e2\u0080\u0099s denote the\r\nreverse by the letter \"\", and the shift by the letter \"\": Let\u00e2\u0080\u0099s write\r\nout the array twice and count the segments on which it increases and\r\ndecreases. This way, we can find all possible shifts that will sort the\r\narray.\r\n"
+    "editorial": "In this problem, there are several possible sequences of actions from\r\nwhich the optimal one must be chosen. For brevity, letâs denote the\r\nreverse by the letter \"\", and the shift by the letter \"\": Letâs write\r\nout the array twice and count the segments on which it increases and\r\ndecreases. This way, we can find all possible shifts that will sort the\r\narray.\r\n",
+    "hint": []
 }

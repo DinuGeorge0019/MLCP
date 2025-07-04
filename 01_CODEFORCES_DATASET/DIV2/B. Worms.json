@@ -140,7 +140,7 @@
         ]
     },
     "name": "B. Worms",
-    "statement": "It is lunch time for Mole. His friend, Marmot, prepared him a nice game\r\nfor lunch.Marmot brought Mole ordered piles of worms such that -th pile\r\ncontains worms. He labeled all these worms with consecutive integers:\r\nworms in first pile are labeled with numbers to , worms in second pile\r\nare labeled with numbers to and so on. See the example for a better\r\nunderstanding.Mole can\u2019t eat all the worms (Marmot brought a lot) and,\r\nas we all know, Mole is blind, so Marmot tells him the labels of the\r\nbest juicy worms. Marmot will only give Mole a worm if Mole says\r\ncorrectly in which pile this worm is contained.Poor Mole asks for your\r\nhelp. For all juicy worms said by Marmot, tell Mole the correct answers.\r\n",
+    "statement": "It is lunch time for Mole. His friend, Marmot, prepared him a nice game\r\nfor lunch.Marmot brought Mole ordered piles of worms such that -th pile\r\ncontains worms. He labeled all these worms with consecutive integers:\r\nworms in first pile are labeled with numbers to , worms in second pile\r\nare labeled with numbers to and so on. See the example for a better\r\nunderstanding.Mole can’t eat all the worms (Marmot brought a lot) and,\r\nas we all know, Mole is blind, so Marmot tells him the labels of the\r\nbest juicy worms. Marmot will only give Mole a worm if Mole says\r\ncorrectly in which pile this worm is contained.Poor Mole asks for your\r\nhelp. For all juicy worms said by Marmot, tell Mole the correct answers.\r\n",
     "solutions": [
         "#include <cstdio>\n#include <algorithm>\n\nusing namespace std;\n\nconst int kMaxN = 100000;\nint n, s[kMaxN + 1];\n\nint main() {\n    scanf(\"%d\", &n);\n    for (int i = 1; i <= n; ++ i) {\n        scanf(\"%d\", &s[i]);\n        s[i] += s[i - 1];\n    }\n    int m;\n    scanf(\"%d\", &m);\n    for (int x; m --; ) {\n        scanf(\"%d\", &x);\n        int p = lower_bound(s + 1, s + n + 1, x) - s;\n        printf(\"%d\\n\", p);\n    }\n    return 0;\n}\n"
     ],
@@ -154,5 +154,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Worms.json",
     "editorial_link": "https://codeforces.com//blog/entry/14136",
-    "editorial": "There are two solutions: We can make partial sums () and then make a\r\nbinary search for each query to find the result with the properties and\r\n. This solution has the complexity We can precalculate the index of the\r\npile for each worm and then answer for each query in . This solution has\r\nthe complexity\r\n"
+    "editorial": "There are two solutions: We can make partial sums () and then make a\r\nbinary search for each query to find the result with the properties and\r\n. This solution has the complexity We can precalculate the index of the\r\npile for each worm and then answer for each query in . This solution has\r\nthe complexity\r\n",
+    "hint": []
 }

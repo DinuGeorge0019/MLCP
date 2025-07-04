@@ -87,7 +87,7 @@
         ]
     },
     "name": "B. New Year s Eve",
-    "statement": "Since Grisha behaved well last year, at New Year\u2019s Eve he was visited by\r\nDed Moroz who brought an enormous bag of gifts with him! The bag\r\ncontains sweet candies from , each labeled from to corresponding to its\r\ntastiness. No two candies have the same tastiness.The choice of candies\r\nhas a direct effect on Grisha\u2019s happiness. One can assume that he should\r\ntake the tastiest ones but no, the holiday magic turns things upside\r\ndown. It is the xor-sum of tastinesses that matters, not the ordinary\r\nsum!A xor-sum of a sequence of integers is defined as the bitwise XOR of\r\nall its elements: , here denotes the bitwise XOR operation; more about\r\nbitwise XOR can be found here.Ded Moroz warned Grisha he has more houses\r\nto visit, so Grisha can take candies from the bag. Help Grisha determine\r\nthe largest xor-sum (largest xor-sum means maximum happiness!) he can\r\nobtain.\r\n",
+    "statement": "Since Grisha behaved well last year, at New Year’s Eve he was visited by\r\nDed Moroz who brought an enormous bag of gifts with him! The bag\r\ncontains sweet candies from , each labeled from to corresponding to its\r\ntastiness. No two candies have the same tastiness.The choice of candies\r\nhas a direct effect on Grisha’s happiness. One can assume that he should\r\ntake the tastiest ones but no, the holiday magic turns things upside\r\ndown. It is the xor-sum of tastinesses that matters, not the ordinary\r\nsum!A xor-sum of a sequence of integers is defined as the bitwise XOR of\r\nall its elements: , here denotes the bitwise XOR operation; more about\r\nbitwise XOR can be found here.Ded Moroz warned Grisha he has more houses\r\nto visit, so Grisha can take candies from the bag. Help Grisha determine\r\nthe largest xor-sum (largest xor-sum means maximum happiness!) he can\r\nobtain.\r\n",
     "solutions": [
         "#include<cstdio>\n#include<algorithm>\nusing namespace std;\nlong long n, K;\nint main() {\n\tscanf(\"%lld%lld\", &n, &K);\n\tif (K == 1) {\n\t\tprintf(\"%lld\\n\", n);\n\t}\n\telse {\n\t\tlong long r = 1;\n\t\twhile (r <= n)r *= 2;\n\t\tprintf(\"%lld\\n\", r - 1);\n\t}\n}"
     ],
@@ -102,5 +102,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. New Year s Eve.json",
     "editorial_link": "https://codeforces.com//blog/entry/56920",
-    "editorial": "If , the answer is .Otherwise, let\u00e2\u0080\u0099s take a look at the most significant\r\nbit of answer and denote it by (with the -th bit being the least\r\npossible). It must be the same as the most significant bit of . This\r\nmeans the answer cannot exceed .Consider the numbers and . Obviously,\r\nthey both do not exceed . At the same time, their xor is . Hence, the\r\nmaximum answer can always be obtained if .\r\n"
+    "editorial": "If , the answer is .Otherwise, letâs take a look at the most significant\r\nbit of answer and denote it by (with the -th bit being the least\r\npossible). It must be the same as the most significant bit of . This\r\nmeans the answer cannot exceed .Consider the numbers and . Obviously,\r\nthey both do not exceed . At the same time, their xor is . Hence, the\r\nmaximum answer can always be obtained if .\r\n",
+    "hint": []
 }

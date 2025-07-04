@@ -155,5 +155,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Li Hua and Tree.json",
     "editorial_link": "https://codeforces.com//blog/entry/114890",
-    "editorial": "Denote as the subtree of .The \"rotate\" operation doesn\u00e2\u0080\u0099t change the tree\r\nmuch. More specifically, only the of changes. We can use the brute force\r\nmethod to maintain useful information about each vertex when the\r\noperations are performed.What we need to do next is to find the of a\r\nvertex in a reasonable time. We can use a set to maintain the and index\r\nof all the sons of each vertex.Time complexity: .\r\n"
+    "editorial": "Denote as the subtree of .The \"rotate\" operation doesnât change the tree\r\nmuch. More specifically, only the of changes. We can use the brute force\r\nmethod to maintain useful information about each vertex when the\r\noperations are performed.What we need to do next is to find the of a\r\nvertex in a reasonable time. We can use a set to maintain the and index\r\nof all the sons of each vertex.Time complexity: .\r\n",
+    "hint": []
 }

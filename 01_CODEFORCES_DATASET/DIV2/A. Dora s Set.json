@@ -138,11 +138,11 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/133382",
-    "editorial": "In a pair of there are at least two odd integers and at most one even\r\ninteger. That\u00e2\u0080\u0099s because if two even integers occur at the same time,\r\ntheir will be at least .It\u00e2\u0080\u0099s optimal to make full use of the odd\r\nintegers, so we try to choose two odd integers in a pair. In fact, this\r\nis always possible. Note that two consecutive odd integers always have ,\r\nand consecutive integers also have , so we can choose three consecutive\r\nintegers in the form of . We can see that this is always optimal.\r\nTherefore, the answer is: the result of dividing the number of odd\r\nnumbers in by and rounding down.The time complexity is: or .\r\n",
+    "editorial": "In a pair of there are at least two odd integers and at most one even\r\ninteger. Thatâs because if two even integers occur at the same time,\r\ntheir will be at least .Itâs optimal to make full use of the odd\r\nintegers, so we try to choose two odd integers in a pair. In fact, this\r\nis always possible. Note that two consecutive odd integers always have ,\r\nand consecutive integers also have , so we can choose three consecutive\r\nintegers in the form of . We can see that this is always optimal.\r\nTherefore, the answer is: the result of dividing the number of odd\r\nnumbers in by and rounding down.The time complexity is: or .\r\n",
     "name": "A. Dora s Set",
     "statement": "Dora has a set s containing integers. In the beginning, she will put all\r\nintegers in [l, r] into the set s. That is, an integer x is initially\r\ncontained in the set if and only if l\r\nleq x\r\nleq r. Then she allows you to perform the following operations: Select\r\nthree integers a, b, and c from the set s, such that\r\ngcd(a, b) =\r\ngcd(b, c) =\r\ngcd(a, c) = 1^\r\ndagger. Then, remove these three integers from the set s. What is the\r\nmaximum number of operations you can perform?^\r\ndaggerRecall that\r\ngcd(x, y) means the greatest common divisor of integers x and y.\r\n",
     "solutions": [
-        "#include <bits/stdc++.h>using namespace std;\u00a0int main() {\tios::sync_with_stdio(0);\tcin.tie(0); cout.tie(0);\tint T;\tfor (cin >> T; T; T--) {\t\tint l, r; cin >> l >> r;\t\tint ct = (r + 1) / 2 - l / 2;\t\tcout << ct / 2 << '\\n';\t}\treturn 0;}"
+        "#include <bits/stdc++.h>using namespace std; int main() {\tios::sync_with_stdio(0);\tcin.tie(0); cout.tie(0);\tint T;\tfor (cin >> T; T; T--) {\t\tint l, r; cin >> l >> r;\t\tint ct = (r + 1) / 2 - l / 2;\t\tcout << ct / 2 << '\\n';\t}\treturn 0;}"
     ],
     "input": "",
     "output": "",
@@ -153,5 +153,10 @@
     ],
     "dificulty": "800",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Dora s Set.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Dora s Set.json",
+    "hint": [
+        "Hint 1 How many odd integers are there in a pair ? Answer At least 2.",
+        "Hint 2 It's always better to put exactly odd integers and exactly even integer in one pair of . Is there a way to always choose optimal ?",
+        "Hint 3 Try consecutive integers."
+    ]
 }

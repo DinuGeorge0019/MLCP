@@ -161,5 +161,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\D. Vasya And The Matrix.json",
     "editorial_link": "https://codeforces.com/blog/entry/61015",
-    "editorial": "If , then there is no suitable matrix. The operation means\r\nxor.Otherwise, we can always construct a suitable matrix by the\r\nfollowing method: the first element of the first line will be equal to .\r\nThe second element of the first line is , the third element is , the\r\nlast one is .The first element of the second line will be , the first\r\nelement of the third line is , the first element of the last line is .\r\nThe rest of the elements will be zero.It is not difficult to verify that\r\nthe matrix obtained satisfies all the restrictions.\r\n"
+    "editorial": "If , then there is no suitable matrix. The operation means\r\nxor.Otherwise, we can always construct a suitable matrix by the\r\nfollowing method: the first element of the first line will be equal to .\r\nThe second element of the first line is , the third element is , the\r\nlast one is .The first element of the second line will be , the first\r\nelement of the third line is , the first element of the last line is .\r\nThe rest of the elements will be zero.It is not difficult to verify that\r\nthe matrix obtained satisfies all the restrictions.\r\n",
+    "hint": []
 }

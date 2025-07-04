@@ -89,5 +89,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Candy Bags.json",
     "editorial_link": "https://codeforces.com//blog/entry/8418",
-    "editorial": "In this problem one must divide all natural numbers from 1 to to groups\r\nsize of with the same sums. Lets divide all this numbers to pairs . We\r\ncan to do it since is even and therefore is even too. Then we can just\r\nmake groups consists of of these pairs.\r\n"
+    "editorial": "In this problem one must divide all natural numbers from 1 to to groups\r\nsize of with the same sums. Lets divide all this numbers to pairs . We\r\ncan to do it since is even and therefore is even too. Then we can just\r\nmake groups consists of of these pairs.\r\n",
+    "hint": []
 }

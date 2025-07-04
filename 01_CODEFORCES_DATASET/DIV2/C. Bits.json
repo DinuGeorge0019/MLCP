@@ -96,7 +96,7 @@
         ]
     },
     "name": "C. Bits",
-    "statement": "Let\u2019s denote as the number of bits set (\u20191\u2019 bits) in the binary\r\nrepresentation of the non-negative integer .You are given multiple\r\nqueries consisting of pairs of integers and . For each query, find the ,\r\nsuch that , and is maximum possible. If there are multiple such numbers\r\nfind the smallest of them.\r\n",
+    "statement": "Let’s denote as the number of bits set (’1’ bits) in the binary\r\nrepresentation of the non-negative integer .You are given multiple\r\nqueries consisting of pairs of integers and . For each query, find the ,\r\nsuch that , and is maximum possible. If there are multiple such numbers\r\nfind the smallest of them.\r\n",
     "solutions": [
         "#include <iostream>\n#include <cstdio>\n#include <algorithm>\n#include <cstring>\n#include <cmath>\n#include <vector>\n#include <map>\n#include <set>\n#include <queue>\n#include <cstdlib>\n\n#define rep(a,b,c) for(int a=b;a<=c;++a)\n#define per(a,b,c) for(int a=b;a>=c;--a)\n#define mp make_pair\n#define PII pair<int,int>\n#define PDD pair<double,double>\n#define min(a,b) (((a)<(b))?(a):(b))\n#define max(a,b) (((a)>(b))?(a):(b))\n#define X first\n#define Y second\n#define PI 3.141592653589793\n\nusing namespace std;\n\ntypedef long long ll;\n\ninline int gcd(int x,int y){\n\tfor\t(int t;y;t=x%y,x=y,y=t);\n\treturn\tx;\n}\n\ninline ll gcd(ll x,ll y){\n\tfor\t(ll t;y;t=x%y,x=y,y=t);\n\treturn\tx;\n}\n\ninline void read(int &x){\n\tchar cc=getchar();\n\twhile\t(cc<'0' || cc>'9')\tcc=getchar();\n\tx=0;\n\twhile\t(cc>='0' && cc<='9'){\n\t\tx=x*10+cc-'0';\n\t\tcc=getchar();\n\t}\n}\n\nint n;\nll l,r;\n\nint main(){\n\tscanf(\"%d\",&n);\n\trep(i,1,n){\n\t\tscanf(\"%I64d%I64d\",&l,&r);\n\t\tfor\t(ll j=1;l+j<=r;j<<=1)\n\t\t\tif\t((l&j)==0)\tl+=j;\n\t\tprintf(\"%I64d\\n\",l);\n\t}\n\treturn\t0;\n}\n\n\n"
     ],
@@ -110,5 +110,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Bits.json",
     "editorial_link": "https://codeforces.com//blog/entry/14592",
-    "editorial": "Let us define function f(L,?R), that gives answer to the query. It looks follows:\n\nif L?=?R then f(L,?R)?=?L;\n\nelse if 2b???L, where b \u0097 maximum integer such 2b???R, then f(L,?R)?=?f(L?-?2b,?R?-?2b)?+?2b;\n\nelse if 2b?+?1?-?1???R then f(L,?R)?=?2b?+?1?-?1;\n\nelse f(L,?R)?=?2b?-?1."
+    "editorial": "Let us define function f(L,?R), that gives answer to the query. It looks follows:\n\nif L?=?R then f(L,?R)?=?L;\n\nelse if 2b???L, where b  maximum integer such 2b???R, then f(L,?R)?=?f(L?-?2b,?R?-?2b)?+?2b;\n\nelse if 2b?+?1?-?1???R then f(L,?R)?=?2b?+?1?-?1;\n\nelse f(L,?R)?=?2b?-?1.",
+    "hint": []
 }

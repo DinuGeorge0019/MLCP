@@ -108,7 +108,7 @@
         ]
     },
     "name": "A. Greed",
-    "statement": "Jafar has cans of cola. Each can is described by two integers: remaining\r\nvolume of cola and can\u2019s capacity ( ).Jafar has decided to pour all\r\nremaining cola into just cans, determine if he can do this or not!\r\n",
+    "statement": "Jafar has cans of cola. Each can is described by two integers: remaining\r\nvolume of cola and can’s capacity ( ).Jafar has decided to pour all\r\nremaining cola into just cans, determine if he can do this or not!\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint n;\nint a[100005], b[100005];\n\nint main(void) {\n    ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);\n    cin >> n;\n    long long s = 0;\n    for (int i = 0; i < n; ++i) cin >> a[i], s += a[i];\n    for (int i = 0; i < n; ++i) cin >> b[i];\n    sort(b, b + n);\n    if (s <= b[n-1] + b[n-2]) cout << \"YES\" << endl;\n    else cout << \"NO\" << endl;\n}\n"
     ],
@@ -122,5 +122,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Greed.json",
     "editorial_link": "https://codeforces.com//blog/entry/55841",
-    "editorial": "we sort the capacities in nonincreasing order and let if the answer is\r\nno and otherwise the answer is yes\r\n"
+    "editorial": "we sort the capacities in nonincreasing order and let if the answer is\r\nno and otherwise the answer is yes\r\n",
+    "hint": []
 }

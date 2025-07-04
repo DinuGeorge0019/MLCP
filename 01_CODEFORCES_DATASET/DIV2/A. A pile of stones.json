@@ -121,5 +121,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. A pile of stones.json",
     "editorial_link": "https://codeforces.com/blog/entry/66993?locale=en",
-    "editorial": "Let\u00e2\u0080\u0099s consider an array , there , if \"\" and , if \"\". Let\u00e2\u0080\u0099s notice, that\r\nthe answer for all . It is true, because after making the first\r\noperations the number of stones will be , so at the end the number of\r\nstones will be .Let\u00e2\u0080\u0099s prove, that the answer is equal to . We proved\r\nthat it should be at least that number of stones. It\u00e2\u0080\u0099s easy to see, that\r\nif we will take stones at the beginning, the pile will be non-empty each\r\ntime when Vasya should take a stone and at the end, the number of stones\r\nwill be equal to .Complexity: .\r\n"
+    "editorial": "Letâs consider an array , there , if \"\" and , if \"\". Letâs notice, that\r\nthe answer for all . It is true, because after making the first\r\noperations the number of stones will be , so at the end the number of\r\nstones will be .Letâs prove, that the answer is equal to . We proved\r\nthat it should be at least that number of stones. Itâs easy to see, that\r\nif we will take stones at the beginning, the pile will be non-empty each\r\ntime when Vasya should take a stone and at the end, the number of stones\r\nwill be equal to .Complexity: .\r\n",
+    "hint": []
 }

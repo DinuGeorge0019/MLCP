@@ -91,7 +91,7 @@
         ]
     },
     "name": "A. Series of Crimes",
-    "statement": "The Berland capital is shaken with three bold crimes committed by the\r\nPihsters, a notorious criminal gang.The Berland capital\u2019s map is\r\nrepresented by an rectangular table. Each cell of the table on the map\r\nrepresents some districts of the capital. The capital\u2019s main detective\r\nPolycarpus took a map and marked there the districts where the first\r\nthree robberies had been committed as asterisks. Deduction tells\r\nPolycarpus that the fourth robbery will be committed in such district,\r\nthat all four robbed districts will form the vertices of some rectangle,\r\nparallel to the sides of the map. Polycarpus is good at deduction but\r\nhe\u2019s hopeless at math. So he asked you to find the district where the\r\nfourth robbery will be committed.\r\n",
+    "statement": "The Berland capital is shaken with three bold crimes committed by the\r\nPihsters, a notorious criminal gang.The Berland capital’s map is\r\nrepresented by an rectangular table. Each cell of the table on the map\r\nrepresents some districts of the capital. The capital’s main detective\r\nPolycarpus took a map and marked there the districts where the first\r\nthree robberies had been committed as asterisks. Deduction tells\r\nPolycarpus that the fourth robbery will be committed in such district,\r\nthat all four robbed districts will form the vertices of some rectangle,\r\nparallel to the sides of the map. Polycarpus is good at deduction but\r\nhe’s hopeless at math. So he asked you to find the district where the\r\nfourth robbery will be committed.\r\n",
     "solutions": [
         "#include<cstdio>\n#include<vector>\n#include<cmath>\n#include<algorithm>\n\n#define pb push_back\n\ntypedef unsigned int uint;\ntypedef long long i64;\ntypedef unsigned long long ui64;\n\nconst int intINF=999999999;\nconst i64 i64INF=99999999999999999ll;\nconst double doubleINF=9999999999.;\n\nusing namespace std;\n\nint X[4],Y[4],l;\n\nint main(){\n\tint n,m;\n\tchar c;\n\tscanf(\"%d%d\",&n,&m);\n\tfor(int i=1;i<=n;i++){\n\t\tscanf(\"%*c\");\n\t\tfor(int j=1;j<=m;j++){\n\t\t\tscanf(\"%c\",&c);\n\t\t\tif(c=='*') X[++l]=i,Y[l]=j;\n\t\t}\n\t}\n\tsort(X+1,X+4);\n\tsort(Y+1,Y+4);\n\tif(X[1]==X[2]) printf(\"%d\",X[3]);\n\telse printf(\"%d\",X[1]);\n\tprintf(\" \");\n\tif(Y[1]==Y[2]) printf(\"%d\",Y[3]);\n\telse printf(\"%d\",Y[1]);\n\tprintf(\"\\n\");\n\treturn 0;\n}\n"
     ],
@@ -106,5 +106,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Series of Crimes.json",
     "editorial_link": "https://codeforces.com//blog/entry/4372",
-    "editorial": "Required row is row that have only one star inside. Requred column is comumn that also have only one star inside. So, you can iterate over all rows/columns, calculate number of stars inside them and find the answer."
+    "editorial": "Required row is row that have only one star inside. Requred column is comumn that also have only one star inside. So, you can iterate over all rows/columns, calculate number of stars inside them and find the answer.",
+    "hint": []
 }

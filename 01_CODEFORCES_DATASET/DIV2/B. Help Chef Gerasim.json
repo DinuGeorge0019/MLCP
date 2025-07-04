@@ -71,5 +71,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Help Chef Gerasim.json",
     "editorial_link": "https://codeforces.com//blog/entry/2326",
-    "editorial": "Problem B was easier considering the mathematical nature of the problem. There were a few cases to take care of and a score of 900+ was easily get able. On summing up the volumes if they don't divide equally among the n cups, then the answer is unrecoverable. If all of the values are equal to the average then the pages did not play any prank. On the other hand if more than 2 cups deviate from the average the answer is again unrecoverable. If the number of cups that deviate is 2. We can find the cups which were used for transfer and find the volume transferred by calculating the difference of the values from the mean."
+    "editorial": "Problem B was easier considering the mathematical nature of the problem. There were a few cases to take care of and a score of 900+ was easily get able. On summing up the volumes if they don't divide equally among the n cups, then the answer is unrecoverable. If all of the values are equal to the average then the pages did not play any prank. On the other hand if more than 2 cups deviate from the average the answer is again unrecoverable. If the number of cups that deviate is 2. We can find the cups which were used for transfer and find the volume transferred by calculating the difference of the values from the mean.",
+    "hint": []
 }

@@ -117,7 +117,7 @@
         ]
     },
     "name": "B. 2D Traveling",
-    "statement": "Piggy lives on an infinite plane with the Cartesian coordinate system on\r\nit.There are n cities on the plane, numbered from 1 to n, and the first\r\nk cities are defined as . The coordinates of the i-th city are\r\n(x_i,y_i).Piggy, as a well-experienced traveller, wants to have a\r\nrelaxing trip after Zhongkao examination. Currently, he is in city a,\r\nand he wants to travel to city b by air. You can fly between any two\r\ncities, and you can visit several cities in any order while travelling,\r\nbut the final destination must be city b.Because of active trade between\r\nmajor cities, it\u2019s possible to travel by plane between them for free.\r\nFormally, the price of an air ticket f(i,j) between two cities i and j\r\nis defined as follows: f(i,j)=\r\nbegin{cases} 0, &\r\ntext{if cities }i\r\ntext{ and }j\r\ntext{ are both major cities}\r\n|x_i-x_j|+|y_i-y_j|, &\r\ntext{otherwise}\r\nend{cases} Piggy doesn\u2019t want to save time, but he wants to save money.\r\nSo you need to tell him the value of the total cost of all air tickets\r\nif he can take any number of flights.\r\n",
+    "statement": "Piggy lives on an infinite plane with the Cartesian coordinate system on\r\nit.There are n cities on the plane, numbered from 1 to n, and the first\r\nk cities are defined as . The coordinates of the i-th city are\r\n(x_i,y_i).Piggy, as a well-experienced traveller, wants to have a\r\nrelaxing trip after Zhongkao examination. Currently, he is in city a,\r\nand he wants to travel to city b by air. You can fly between any two\r\ncities, and you can visit several cities in any order while travelling,\r\nbut the final destination must be city b.Because of active trade between\r\nmajor cities, it’s possible to travel by plane between them for free.\r\nFormally, the price of an air ticket f(i,j) between two cities i and j\r\nis defined as follows: f(i,j)=\r\nbegin{cases} 0, &\r\ntext{if cities }i\r\ntext{ and }j\r\ntext{ are both major cities}\r\n|x_i-x_j|+|y_i-y_j|, &\r\ntext{otherwise}\r\nend{cases} Piggy doesn’t want to save time, but he wants to save money.\r\nSo you need to tell him the value of the total cost of all air tickets\r\nif he can take any number of flights.\r\n",
     "solutions": [
         "// #pragma GCC optimize(\"Ofast\")\n// #pragma GCC optimize(\"unroll-loops\")\n// #pragma GCC target(\"sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2\")\n#include <bits/stdc++.h>\n#define int long long\n#define i64 long long\n#define pii pair <int, int> \nusing namespace std;\ninline int read(void) {\n    int x=0,sgn=1; char ch=getchar();\n    while(ch<48||57<ch) {if(ch==45)sgn=0;ch=getchar();}\n    while(47<ch&&ch<58) {x=x*10+ch-48;   ch=getchar();}\n    return sgn? x:-x;\n}\nvoid write(int x) {\n    if(x<0) putchar('-'),x=-x;\n    if(x>9) write(x/10);\n    putchar(x%10+'0');\n}\nint n,k,a,b,D1,D2,D3;\nint x[200005],y[200005];\ninline int dis(int a,int b) { return abs(x[a]-x[b])+abs(y[a]-y[b]); }\ninline void work() {\n    cin>>n>>k>>a>>b;\n    for(int i=1; i<=n; ++i) cin>>x[i]>>y[i];\n    D1=dis(a,b);\n    D2=D3=D1;\n    for(int i=1; i<=k; ++i) D2=min(D2,dis(a,i));\n    for(int i=1; i<=k; ++i) D3=min(D3,dis(b,i));\n    cout<<min(D2+D3,D1)<<endl;\n}   \nsigned main() {\n    int T=read();\n    while(T--) work();\n\treturn 0;\n}"
     ],
@@ -133,5 +133,33 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. 2D Traveling.json",
     "editorial_link": "https://codeforces.com//blog/entry/116642",
-    "editorial": "First of all, it\u00e2\u0080\u0099s easy to see that if there are no major cities, the\r\nminimum value of the total cost should be the optimal choice is to fly\r\ndirectly from city to city . Piggy will pass through a maximum of major\r\ncities. If he passes through or more major cities in a row, then he can\r\nfly directly from the first one to the last one. If he passes through\r\nmajor cities and passes an ordinary city between them, the cost must be\r\nhigher than flying directly between these two major cities. So the\r\noptimal choice always consists of no more than major cities, and they\r\nare in a row.Thus, you can express the optimal choice as , where and are\r\nboth major cities. If you naively enumerate and , the total complexity\r\nof the solution will be . But after seeing that and work independently,\r\nwe can enumerate them separately. The total complexity decreases to .\r\n"
+    "editorial": "First of all, itâs easy to see that if there are no major cities, the\r\nminimum value of the total cost should be the optimal choice is to fly\r\ndirectly from city to city . Piggy will pass through a maximum of major\r\ncities. If he passes through or more major cities in a row, then he can\r\nfly directly from the first one to the last one. If he passes through\r\nmajor cities and passes an ordinary city between them, the cost must be\r\nhigher than flying directly between these two major cities. So the\r\noptimal choice always consists of no more than major cities, and they\r\nare in a row.Thus, you can express the optimal choice as , where and are\r\nboth major cities. If you naively enumerate and , the total complexity\r\nof the solution will be . But after seeing that and work independently,\r\nwe can enumerate them separately. The total complexity decreases to .\r\n",
+    "hint": [
+        "Hint What will happen if there are no major cities?",
+        "Hint 1 What is the upper bound of according to and ? Can you construct such a matrix that reaches the upper bound?",
+        "Hint 2 If not, can you construct a matrix which maximizes ? This is of some help to get the solution.",
+        "Hint 1 You can calculate the number of candies of each person after the swap easily. Denote the number as .",
+        "Hint 2 Since a person gives candies to and receives candies from exactly one person, assume he gives away candies and receives candies, then we have . If , at most how many pairs can satisfy this equation?",
+        "Hint 3 Do the two restrictions in the statement, Note that one cannot give more candies than currently he has (he might receive candies from someone else before) and he cannot give candies to himself, either. really make any difference to the answer?",
+        "Hint 4 For whom may not give or receive candies?",
+        "Hint 5 When is a power of , how many ways can the person gives/receives candies at most?",
+        "Hint 6 Try to determine some people's way to give/receive candies first, then others. How to do this? Bit-by-bit.",
+        "Hint 1 For any simple path length , what's the sum of the maximum value of cities in all assignments? For the cities out of the path, their value doesn't matter.",
+        "Hint 2 Consider an easy dp to calculate the number of paths with different lengths.",
+        "Hint 3 How many different subtrees are there in this tree?",
+        "Hint 4 What's the maximum length of the paths?",
+        "Hint 5 Try to optimize the dp with the conclusion you get in Hint 3 and Hint 4.",
+        "Hint 1 In fact, vertices with degree are useless, let's first ignore them. It's easy to see that when , we can simply hang them under the vertices which haven't reached their degree limit.",
+        "Hint 2 In most cases, we can simply put two vertices on the cycle.",
+        "Hint 3 Sort from the largest to the smallest. Can we construct a flower-like psuedotree when ? Can we construct a flower-like psuedotree when and ?",
+        "Hint 4 Can you find an easy way to construct the flower-like psuedotree when the number of is even?",
+        "Hint 5 Try to extend the solution when the number of is even to the odd case. Note some corner cases.",
+        "Hint 1 Consider this problem on the prefix sum array.",
+        "Hint 2 Try to make some observations about the prefix sum array. Consider dp.",
+        "Hint 3 Go for a slow solution first, for example, or .",
+        "Hint 4 The last step is to optimize your dp to . :)",
+        "Hint 1 Greedy.",
+        "Hint 2 This problem is somehow related to geometry.",
+        "Hint 3 What structure will the intervals you choose each time form?"
+    ]
 }

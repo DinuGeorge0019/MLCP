@@ -158,5 +158,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. A Wide, Wide Graph.json",
     "editorial_link": "https://codeforces.com//blog/entry/114644",
-    "editorial": "Find the diameter (the longest path) in the original tree. Now if the\r\nnumber is greater than the length of the diameter, then there will be no\r\nedges in the graph. Otherwise, the ends of this diameter are connected\r\nto each other, and possibly to other vertices as well. Then we can\r\npre-calculate the answer for each in descending order. Let\u00e2\u0080\u0099s maintain\r\nthe set of vertices already reachable. Then for updating the answer for\r\nonly vertices at a distance from one end of the diameter can be added to\r\nthe answer.\r\n"
+    "editorial": "Find the diameter (the longest path) in the original tree. Now if the\r\nnumber is greater than the length of the diameter, then there will be no\r\nedges in the graph. Otherwise, the ends of this diameter are connected\r\nto each other, and possibly to other vertices as well. Then we can\r\npre-calculate the answer for each in descending order. Letâs maintain\r\nthe set of vertices already reachable. Then for updating the answer for\r\nonly vertices at a distance from one end of the diameter can be added to\r\nthe answer.\r\n",
+    "hint": [
+        "Hint 1 At what maximal does the graph not decompose into single components? What happens if we decrease by ?",
+        "Hint 2 Consider some diameter of a tree (the path of the longest length). If in the graph a vertex has a neighbor, then it is also connected by an edge to one of the ends of the diameter. How can we use this fact to find the answer for if we know the components of graph ?"
+    ]
 }

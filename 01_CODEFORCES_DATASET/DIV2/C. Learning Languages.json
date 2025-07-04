@@ -79,5 +79,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Learning Languages.json",
     "editorial_link": "https://codeforces.com//blog/entry/6815",
-    "editorial": "Build bipartite graph with n nodes for employees and m nodes for languages. If an employee initially knows a language, than there will be an edge between corresponding nodes. Now the problem is simple: add the minimal number of edges in such a way, that all the n employees will be in the same connected component. Obviously, this number equals to the number of initially connected components, containing at least one employee, minus one. But there is one exception (pretest #4): if initially everyone knows no languages, we'll have to add n edges, because we can't add the edges between employees (remember that the graph is bipartite)."
+    "editorial": "Build bipartite graph with n nodes for employees and m nodes for languages. If an employee initially knows a language, than there will be an edge between corresponding nodes. Now the problem is simple: add the minimal number of edges in such a way, that all the n employees will be in the same connected component. Obviously, this number equals to the number of initially connected components, containing at least one employee, minus one. But there is one exception (pretest #4): if initially everyone knows no languages, we'll have to add n edges, because we can't add the edges between employees (remember that the graph is bipartite).",
+    "hint": []
 }

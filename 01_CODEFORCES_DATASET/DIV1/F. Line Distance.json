@@ -156,5 +156,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\F. Line Distance.json",
     "editorial_link": "https://codeforces.com//blog/entry/82067",
-    "editorial": "Stupid hintBinary search is your friend. To determine if the answer is\r\nbigger or smaller than , we need to count the number of pairs of points\r\n, such that .\r\n"
+    "editorial": "Stupid hintBinary search is your friend. To determine if the answer is\r\nbigger or smaller than , we need to count the number of pairs of points\r\n, such that .\r\n",
+    "hint": []
 }

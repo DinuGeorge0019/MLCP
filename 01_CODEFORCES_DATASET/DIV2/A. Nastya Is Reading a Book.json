@@ -110,7 +110,7 @@
         ]
     },
     "name": "A. Nastya Is Reading a Book",
-    "statement": "After lessons Nastya decided to read a book. The book contains n\r\nchapters, going one after another, so that one page of the book belongs\r\nto exactly one chapter and each chapter contains at least one\r\npage.Yesterday evening Nastya did not manage to finish reading the book,\r\nso she marked the page with number k as the first page which was not\r\nread (i.e. she read all pages from the 1-st to the (k-1)-th).The next\r\nday Nastya\u2019s friend Igor came and asked her, how many chapters remain to\r\nbe read by Nastya? Nastya is too busy now, so she asks you to compute\r\nthe number of chapters she has not completely read yet (i.e. the number\r\nof chapters she has not started to read or has finished reading\r\nsomewhere in the middle).\r\n",
+    "statement": "After lessons Nastya decided to read a book. The book contains n\r\nchapters, going one after another, so that one page of the book belongs\r\nto exactly one chapter and each chapter contains at least one\r\npage.Yesterday evening Nastya did not manage to finish reading the book,\r\nso she marked the page with number k as the first page which was not\r\nread (i.e. she read all pages from the 1-st to the (k-1)-th).The next\r\nday Nastya’s friend Igor came and asked her, how many chapters remain to\r\nbe read by Nastya? Nastya is too busy now, so she asks you to compute\r\nthe number of chapters she has not completely read yet (i.e. the number\r\nof chapters she has not started to read or has finished reading\r\nsomewhere in the middle).\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\nusing namespace std;\nint N, K;\nint l[1010], r[1010];\nint main()\n{\n  scanf(\"%d\", &N);\n  for(int i=0; i<N; ++i) scanf(\"%d%d\", l+i, r+i);\n  scanf(\"%d\", &K);\n  int cnt = 0;\n  for(int i=0; i<N; ++i)\n  {\n    if(r[i] >=K) ++cnt;\n  }\n  printf(\"%d\\n\", cnt);\n}\n"
     ],
@@ -123,5 +123,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Nastya Is Reading a Book.json",
     "editorial_link": "https://codeforces.com/blog/entry/65905",
-    "editorial": "It is easy to understand that the first unread chapter is the last\r\nchapter, whom . In order to find it we can iterate through list of\r\nchapters in increasing order.\r\n"
+    "editorial": "It is easy to understand that the first unread chapter is the last\r\nchapter, whom . In order to find it we can iterate through list of\r\nchapters in increasing order.\r\n",
+    "hint": []
 }

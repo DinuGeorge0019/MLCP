@@ -163,5 +163,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Turtle Puzzle  Rearrange and Negate.json",
     "editorial_link": "https://codeforces.com//blog/entry/126560",
-    "editorial": "Neither of the operations change the absolute value of any . Therefore,\r\nthe maximum answer we can get is . Now we will show there is a way to\r\nobtain this sum.The way is simple. Firstly use operation 1 to sort the\r\narray, so all the negative elements come before the non-negative\r\nelements. Then use operation 2 to invert the prefix of negative elements\r\n(or not perform the operation if all the elements are non-negative\r\ninitially). Then we obtain an array of non-negative integers, hence the\r\nanswer is indeed .\r\n"
+    "editorial": "Neither of the operations change the absolute value of any . Therefore,\r\nthe maximum answer we can get is . Now we will show there is a way to\r\nobtain this sum.The way is simple. Firstly use operation 1 to sort the\r\narray, so all the negative elements come before the non-negative\r\nelements. Then use operation 2 to invert the prefix of negative elements\r\n(or not perform the operation if all the elements are non-negative\r\ninitially). Then we obtain an array of non-negative integers, hence the\r\nanswer is indeed .\r\n",
+    "hint": []
 }

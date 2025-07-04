@@ -104,7 +104,7 @@
         ]
     },
     "name": "B. Alyona and Mex",
-    "statement": "Someone gave Alyona an array containing positive integers . In one\r\noperation, Alyona can choose any element of the array and decrease it,\r\ni.e. replace with any positive integer that is smaller than the current\r\none. Alyona can repeat this operation as many times as she wants. In\r\nparticular, she may not apply any operation to the array at\r\nall.Formally, after applying some operations Alyona will get an array of\r\npositive integers such that for every . Your task is to determine the\r\nmaximum possible value of mex of this array. of an array in this problem\r\nis the integer that doesn\u2019t appear in this array. For example, mex of\r\nthe array containing , and is equal to , while mex of the array\r\ncontaining , and is equal to .\r\n",
+    "statement": "Someone gave Alyona an array containing positive integers . In one\r\noperation, Alyona can choose any element of the array and decrease it,\r\ni.e. replace with any positive integer that is smaller than the current\r\none. Alyona can repeat this operation as many times as she wants. In\r\nparticular, she may not apply any operation to the array at\r\nall.Formally, after applying some operations Alyona will get an array of\r\npositive integers such that for every . Your task is to determine the\r\nmaximum possible value of mex of this array. of an array in this problem\r\nis the integer that doesn’t appear in this array. For example, mex of\r\nthe array containing , and is equal to , while mex of the array\r\ncontaining , and is equal to .\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\nusing namespace std;\nint f[111111];\nint m,ans;\n\nint now;\nint main()\n{\n\tscanf(\"%d\",&m);\n\tfor(int i=1;i<=m;i++)\n\t\tscanf(\"%d\",&f[i]);\n\tsort(f+1,f+m+1);\n\tnow=1;\n\tans=1;\n\tfor(int i=1;i<=m;i++)\n\t{\n\t\tif(f[i]<now)continue;\n\t\tif(f[i]>=now)\n\t\t{\n\t\t\tnow++;\n\t\t\tans=now;\n\t\t}\n\t}\n\tcout<<ans<<endl;\n\t\n\treturn 0;\n}\n"
     ],
@@ -117,5 +117,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Alyona and Mex.json",
     "editorial_link": "https://codeforces.com//blog/entry/45491",
-    "editorial": "Let\u00e2\u0080\u0099s sort the array. Let 1. Then walk through the array. Let\u00e2\u0080\u0099s look at\r\ncurrent number. If it is greater or equal to , then let\u00e2\u0080\u0099s increase by .\r\nAnswer is .\r\n"
+    "editorial": "Letâs sort the array. Let 1. Then walk through the array. Letâs look at\r\ncurrent number. If it is greater or equal to , then letâs increase by .\r\nAnswer is .\r\n",
+    "hint": []
 }

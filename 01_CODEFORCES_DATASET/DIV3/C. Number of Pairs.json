@@ -174,5 +174,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C. Number of Pairs.json",
     "editorial_link": "https://codeforces.com//blog/entry/91637",
-    "editorial": "The problem can be divided into two classic ones: Count the number of\r\npairs ; Count the number of pairs . Let be the answer to the first\r\nproblem, and be the answer to the second problem. Then is the answer to\r\nthe original problem.The new problem can be solved by binary search.\r\nIterate over the first element of the pair. Then you need to count the\r\nnumber of elements such that . If you sort the array, this value can be\r\ncalculated by running a single binary search.\r\n"
+    "editorial": "The problem can be divided into two classic ones: Count the number of\r\npairs ; Count the number of pairs . Let be the answer to the first\r\nproblem, and be the answer to the second problem. Then is the answer to\r\nthe original problem.The new problem can be solved by binary search.\r\nIterate over the first element of the pair. Then you need to count the\r\nnumber of elements such that . If you sort the array, this value can be\r\ncalculated by running a single binary search.\r\n",
+    "hint": []
 }

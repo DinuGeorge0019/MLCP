@@ -117,5 +117,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C. Alternating Subsequence.json",
     "editorial_link": "https://codeforces.com//blog/entry/76352",
-    "editorial": "Firstly, let\u00e2\u0080\u0099s extract maximum by inclusion segments of the array that\r\nconsists of the numbers with the same sign. For example, if the array is\r\nthen these segments are , , and . We can do it with any \"two\r\npointers\"-like algorithm. The number of these segments is the maximum\r\npossible length of the alternating subsequence because we can take only\r\none element from each block. And as we want to maximize the sum, we need\r\nto take the maximum element from each block.Time complexity: .\r\n"
+    "editorial": "Firstly, letâs extract maximum by inclusion segments of the array that\r\nconsists of the numbers with the same sign. For example, if the array is\r\nthen these segments are , , and . We can do it with any \"two\r\npointers\"-like algorithm. The number of these segments is the maximum\r\npossible length of the alternating subsequence because we can take only\r\none element from each block. And as we want to maximize the sum, we need\r\nto take the maximum element from each block.Time complexity: .\r\n",
+    "hint": []
 }

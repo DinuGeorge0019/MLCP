@@ -125,7 +125,7 @@
         ]
     },
     "name": "A. Supermarket",
-    "statement": "We often go to supermarkets to buy some fruits or vegetables, and on the\r\ntag there prints the price for a kilo. But in some supermarkets, when\r\nasked how much the items are, the clerk will say that a for b kilos (You\r\ndon\u2019t need to care about what is), the same as a/b for a kilo.Now\r\nimagine you\u2019d like to buy m kilos of apples. You\u2019ve asked n supermarkets\r\nand got the prices. Find the minimum cost for those apples.You can\r\nassume that there are enough apples in all supermarkets.\r\n",
+    "statement": "We often go to supermarkets to buy some fruits or vegetables, and on the\r\ntag there prints the price for a kilo. But in some supermarkets, when\r\nasked how much the items are, the clerk will say that a for b kilos (You\r\ndon’t need to care about what is), the same as a/b for a kilo.Now\r\nimagine you’d like to buy m kilos of apples. You’ve asked n supermarkets\r\nand got the prices. Find the minimum cost for those apples.You can\r\nassume that there are enough apples in all supermarkets.\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\nusing namespace std;\n\nint n,m,a,b;\ndouble ans=1e20;\n\nint main()\n{\n    ios::sync_with_stdio(0);\n    cout.tie(0);\n    cin>>n>>m;\n    for(int i=1;i<=n;i++)\n    {\n        cin>>a>>b;\n        ans=min(ans,(double)a/b);\n    }\n    printf(\"%.8lf\",ans*m);\n    return 0;\n}"
     ],
@@ -140,5 +140,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Supermarket.json",
     "editorial_link": "https://codeforces.com//blog/entry/57462",
-    "editorial": "We can use greedy algorithm.Obviously, if you can pay the least money\r\nfor per kilo, you can pay the least money for kilos. So you can find the\r\nminimum of , we say it is . Then is the final answer. .\r\n"
+    "editorial": "We can use greedy algorithm.Obviously, if you can pay the least money\r\nfor per kilo, you can pay the least money for kilos. So you can find the\r\nminimum of , we say it is . Then is the final answer. .\r\n",
+    "hint": []
 }

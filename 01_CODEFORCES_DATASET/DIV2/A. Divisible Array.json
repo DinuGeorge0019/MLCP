@@ -132,5 +132,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Divisible Array.json",
     "editorial_link": "https://codeforces.com//blog/entry/116109",
-    "editorial": "Solution Consider the array that satisfies the second condition. It has\nthe sum of .One solution is to notice that if we double every element ,\nthe sum becomes , which is divisible by .Another solution is to increase\nthe value of until the sum becomes divisible by . This works because\nevery integer is divisible by , and we only need to increase by at most\n.Time complexity:\n"
+    "editorial": "Solution Consider the array that satisfies the second condition. It has\nthe sum of .One solution is to notice that if we double every element ,\nthe sum becomes , which is divisible by .Another solution is to increase\nthe value of until the sum becomes divisible by . This works because\nevery integer is divisible by , and we only need to increase by at most\n.Time complexity:\n",
+    "hint": [
+        "Hint 1 Remember the sum of the first positive integers?",
+        "Hint 2 Every positive integer is divisible by ."
+    ]
 }

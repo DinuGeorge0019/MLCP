@@ -143,5 +143,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\C. Four Segments.json",
     "editorial_link": "https://codeforces.com//blog/entry/54357",
-    "editorial": "Imagine the same task but without the first term in sum. As the sum of\r\nthe array is fixed, the best second segment should be the one with the\r\ngreatest sum. This can be solved in with partial sums. When recalcing\r\nthe best segment to end at position , you should take minimal prefix sum\r\nfrom to inclusive (from the whole sum you want to subtract the lowest\r\nnumber). Now let\u00e2\u0080\u0099s just iterate over all possible ends of the first\r\nsegment and solve the task above on the array without this\r\nsegment.Oveall complexity: .\r\n"
+    "editorial": "Imagine the same task but without the first term in sum. As the sum of\r\nthe array is fixed, the best second segment should be the one with the\r\ngreatest sum. This can be solved in with partial sums. When recalcing\r\nthe best segment to end at position , you should take minimal prefix sum\r\nfrom to inclusive (from the whole sum you want to subtract the lowest\r\nnumber). Now letâs just iterate over all possible ends of the first\r\nsegment and solve the task above on the array without this\r\nsegment.Oveall complexity: .\r\n",
+    "hint": []
 }

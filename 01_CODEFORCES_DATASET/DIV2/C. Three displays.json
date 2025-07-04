@@ -144,5 +144,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Three displays.json",
     "editorial_link": "https://codeforces.com//blog/entry/59758",
-    "editorial": "Let\u00e2\u0080\u0099s fix j. Now we can see that i and k are independent, so we can find\r\nbest i by iterating over all i < j, checking if s_i < s_j holds and\r\nchoosing the one with smallest c_i. Then do the same for k.There are\r\nO(n) options for j, for each of them we will do O(n) operations. Total\r\ncomplexity is O(n^2)\r\n"
+    "editorial": "Letâs fix j. Now we can see that i and k are independent, so we can find\r\nbest i by iterating over all i < j, checking if s_i < s_j holds and\r\nchoosing the one with smallest c_i. Then do the same for k.There are\r\nO(n) options for j, for each of them we will do O(n) operations. Total\r\ncomplexity is O(n^2)\r\n",
+    "hint": []
 }

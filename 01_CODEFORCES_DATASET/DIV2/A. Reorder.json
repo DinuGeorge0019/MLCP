@@ -131,5 +131,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Reorder.json",
     "editorial_link": "https://codeforces.com//blog/entry/84024",
-    "editorial": "You can notice that the -th number in the array will be included in the\r\nsum times, which means that the value will add to the sum. That is, the\r\npermutation of the elements does not affect the required sum, and\r\ntherefore it is enough to check whether the sum of the array elements is\r\nequal to the given number.\r\n"
+    "editorial": "You can notice that the -th number in the array will be included in the\r\nsum times, which means that the value will add to the sum. That is, the\r\npermutation of the elements does not affect the required sum, and\r\ntherefore it is enough to check whether the sum of the array elements is\r\nequal to the given number.\r\n",
+    "hint": []
 }

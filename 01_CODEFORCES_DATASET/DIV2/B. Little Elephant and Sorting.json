@@ -95,7 +95,7 @@
         ]
     },
     "name": "B. Little Elephant and Sorting",
-    "statement": "The Little Elephant loves sortings.He has an array consisting of\r\nintegers. Let\u2019s number the array elements from 1 to , then the -th\r\nelement will be denoted as . The Little Elephant can make one move to\r\nchoose an arbitrary pair of integers and and increase by for all such\r\nthat .Help the Little Elephant find the minimum number of moves he needs\r\nto convert array to an arbitrary array sorted in the non-decreasing\r\norder. Array , consisting of elements, is sorted in the non-decreasing\r\norder if for any holds.\r\n",
+    "statement": "The Little Elephant loves sortings.He has an array consisting of\r\nintegers. Let’s number the array elements from 1 to , then the -th\r\nelement will be denoted as . The Little Elephant can make one move to\r\nchoose an arbitrary pair of integers and and increase by for all such\r\nthat .Help the Little Elephant find the minimum number of moves he needs\r\nto convert array to an arbitrary array sorted in the non-decreasing\r\norder. Array , consisting of elements, is sorted in the non-decreasing\r\norder if for any holds.\r\n",
     "solutions": [
         "#include<cstdio>\n#include<cstring>\n#include<algorithm>\nusing namespace std;\nconst int maxn = 100009;\nlong long a[maxn], b[maxn];\nint main()\n{\n    int n, i;\n    long long ans;\n    while(scanf(\"%d\", &n) != EOF)\n    {\n        for(i=0; i<n; ++i) scanf(\"%I64d\", a+i);\n        ans=0;\n        for(i=1; i<n; ++i)\n        {\n            a[i] += ans;\n            if(a[i]>=a[i-1]) continue;\n            ans += a[i-1]-a[i];\n            a[i]=a[i-1];\n        }\n        printf(\"%I64d\\n\", ans);\n    }\n    return 0;\n}\n"
     ],
@@ -109,5 +109,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Little Elephant and Sorting.json",
     "editorial_link": "https://codeforces.com//blog/entry/4849",
-    "editorial": "In this problem you need to notice the fact (which can be proven, but it\r\nis almost obvious) that if you are doing some operation for interval\r\nfrom to (inclusive), must be equal to . This is becuase when you add\r\nsomething to all right part the answer can\u00e2\u0080\u0099t be worse. After that you\r\nneed to go from left to right and greedly add appropriate number of\r\nturns. The complexity is .\r\n"
+    "editorial": "In this problem you need to notice the fact (which can be proven, but it\r\nis almost obvious) that if you are doing some operation for interval\r\nfrom to (inclusive), must be equal to . This is becuase when you add\r\nsomething to all right part the answer canât be worse. After that you\r\nneed to go from left to right and greedly add appropriate number of\r\nturns. The complexity is .\r\n",
+    "hint": []
 }

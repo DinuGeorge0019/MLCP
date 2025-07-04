@@ -140,5 +140,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Nezzar and Colorful Balls.json",
     "editorial_link": "https://codeforces.com//blog/entry/87294",
-    "editorial": "For positions which numbers are the same, they cannot be colored using\r\nsame color.Let us color the i-th occurrence of any number using color\r\ni.We can see that: We cannot use fewer colors: if there are k occurrence\r\nof any number, at least k color is needed. The assignment of color is\r\nvalid: Since the sequence was non-increasing, for any subsequence it is\r\nalso non-increasing. As there are no duplicates in colored subsequence,\r\nthe subsequence is strictly increasing as well. Therefore, we only need\r\nto count the number of occurrence of every number and take the maximum\r\nof them.Time complexity: O(n) per test case\r\n"
+    "editorial": "For positions which numbers are the same, they cannot be colored using\r\nsame color.Let us color the i-th occurrence of any number using color\r\ni.We can see that: We cannot use fewer colors: if there are k occurrence\r\nof any number, at least k color is needed. The assignment of color is\r\nvalid: Since the sequence was non-increasing, for any subsequence it is\r\nalso non-increasing. As there are no duplicates in colored subsequence,\r\nthe subsequence is strictly increasing as well. Therefore, we only need\r\nto count the number of occurrence of every number and take the maximum\r\nof them.Time complexity: O(n) per test case\r\n",
+    "hint": []
 }

@@ -99,7 +99,7 @@
         ]
     },
     "name": "B. Sereja and Stairs",
-    "statement": "Sereja loves integer sequences very much. He especially likes\r\nstairs.Sequence ( is the length of the sequence) is stairs if there is\r\nsuch index , that the following condition is met: For example, sequences\r\n[1, 2, 3, 2] and [4, 2] are stairs and sequence [3, 1, 2] isn\u2019t.Sereja\r\nhas cards with numbers. He wants to put some cards on the table in a row\r\nto get a stair sequence. What maximum number of cards can he put on the\r\ntable?\r\n",
+    "statement": "Sereja loves integer sequences very much. He especially likes\r\nstairs.Sequence ( is the length of the sequence) is stairs if there is\r\nsuch index , that the following condition is met: For example, sequences\r\n[1, 2, 3, 2] and [4, 2] are stairs and sequence [3, 1, 2] isn’t.Sereja\r\nhas cards with numbers. He wants to put some cards on the table in a row\r\nto get a stair sequence. What maximum number of cards can he put on the\r\ntable?\r\n",
     "solutions": [
         "#include<iostream>\n#include<cstdio>\n#include<cmath>\n#include<algorithm>\n#include<vector> \n#include<cstring>\n#include<string>\n#define mp make_pair\n#define scn second\n#define frs first\n#define pb push_back\n#define NAME \"a\"\n#define fop freopen(NAME \".in\", \"r\", stdin); freopen(NAME \".out\", \"w\", stdout); \nusing namespace std;\n\ntypedef unsigned long long ull;\ntypedef long long ll;\ntypedef pair<int, int> pi;\nvoid dout() { cerr << endl; }\ntemplate <typename Head, typename... Tail>\nvoid dout(Head H, Tail... T) {\n  cerr << H << ' ';\n  dout(T...);\n}\nint was[100010], n, a[100100];\nint ans[500000];\n\nint main(){\n\t#ifdef LocalHost\n\t\tfop;\n\t#endif\n\tscanf(\"%d\", &n);\n\tfor (int i = 0; i < n; ++i) \n\t\tscanf(\"%d\", &a[i]);\n\tsort(a, a + n);\n\tint l = 100001, r = 100001;\n\tans[l] = a[n - 1];\n\t--l, ++r;\n\tfor (int i = n - 2; i >= 0; --i) {\n\t\tif (ans[l + 1] != a[i])\n\t\t\tans[l] = a[i], --l;\n\t\telse {\n\t\t\tif (ans[r - 1] != a[i])\n\t\t\t\tans[r] = a[i], ++r;\n\t\t}\t\n\t}\n\t\n\tprintf(\"%d\\n\", r - l - 1);\n\tfor (int i = l + 1; i < r; ++i)\n\t\tprintf(\"%d \", ans[i]);\n\treturn 0;\n}"
     ],
@@ -114,5 +114,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Sereja and Stairs.json",
     "editorial_link": "https://codeforces.com//blog/entry/10363",
-    "editorial": "Calculate the amount of each number. For all the different numbers\r\nmaximum possible times of use isn\u00e2\u0080\u0099t more than 2 times. For the maximum\r\nis is only 1.\r\n"
+    "editorial": "Calculate the amount of each number. For all the different numbers\r\nmaximum possible times of use isnât more than 2 times. For the maximum\r\nis is only 1.\r\n",
+    "hint": []
 }

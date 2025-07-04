@@ -153,5 +153,11 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Replace and Keep Sorted.json",
     "editorial_link": "https://codeforces.com//blog/entry/87470",
-    "editorial": "SolutionLet\u00e2\u0080\u0099s consider each value from to . If , you can replace with\r\n(and you get -similar array). There are such values of . If , you can\r\nreplace with (and you get -similar array). There are such values of . If\r\n, and for all in , you can either replace the rightmost which is less\r\nthan , or the leftmost which is greater than (and you get -similar\r\narrays). There are such values of . If for some in , no -similar arrays\r\ncan be made. The total count is , which simplifies to .Complexity: .\r\n"
+    "editorial": "SolutionLetâs consider each value from to . If , you can replace with\r\n(and you get -similar array). There are such values of . If , you can\r\nreplace with (and you get -similar array). There are such values of . If\r\n, and for all in , you can either replace the rightmost which is less\r\nthan , or the leftmost which is greater than (and you get -similar\r\narrays). There are such values of . If for some in , no -similar arrays\r\ncan be made. The total count is , which simplifies to .Complexity: .\r\n",
+    "hint": [
+        "Hint 1 You can make a -similar array by assigning for some and .",
+        "Hint 2 How many -similar arrays can you make if is already equal to some ( )?",
+        "Hint 3 How many -similar arrays can you make if either or ?",
+        "Hint 4 How many -similar arrays can you make if none of the previous conditions holds?"
+    ]
 }

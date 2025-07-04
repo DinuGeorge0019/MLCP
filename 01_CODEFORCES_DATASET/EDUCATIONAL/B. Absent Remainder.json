@@ -141,7 +141,7 @@
         ]
     },
     "name": "B. Absent Remainder",
-    "statement": "You are given a sequence a_1, a_2,\r\ndots, a_n consisting of n pairwise distinct positive integers.Find\r\nleft\r\nlfloor\r\nfrac n 2\r\nright\r\nrfloor different pairs of integers x and y such that: x\r\nneq y; x and y appear in a; x\u00a0mod\u00a0y doesn\u2019t appear in a. Note that some\r\nx or y can belong to multiple pairs.\r\nlfloor x\r\nrfloor denotes the floor function the largest integer less than or equal\r\nto x. x\u00a0mod\u00a0y denotes the remainder from dividing x by y.If there are\r\nmultiple solutions, print any of them. It can be shown that at least one\r\nsolution always exists.\r\n",
+    "statement": "You are given a sequence a_1, a_2,\r\ndots, a_n consisting of n pairwise distinct positive integers.Find\r\nleft\r\nlfloor\r\nfrac n 2\r\nright\r\nrfloor different pairs of integers x and y such that: x\r\nneq y; x and y appear in a; x mod y doesn’t appear in a. Note that some\r\nx or y can belong to multiple pairs.\r\nlfloor x\r\nrfloor denotes the floor function the largest integer less than or equal\r\nto x. x mod y denotes the remainder from dividing x by y.If there are\r\nmultiple solutions, print any of them. It can be shown that at least one\r\nsolution always exists.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\n\n#define all(x) (x).begin(), (x).end()\n#define itn int\n#define make_unique(x) sort((x).begin(), (x).end()); (x).erase(unique((x).begin(), (x).end()), (x).end())\n\nusing namespace std;\n\ninline int nxt() {\n\tint x;\n\tcin >> x;\n\treturn x;\n}\n\nvoid solve() {\n\tint n = nxt();\n\tvector<int> a(n);\n\tgenerate(all(a), nxt);\n\tsort(all(a));\n\tfor (int i = 0; i < n / 2; ++i) {\n\t\tcout << a[i + 1] << \" \" << a[0] << \"\\n\";\n\t}\n}\n\nint main() {\n\tios_base::sync_with_stdio(false);\n\tcin.tie(nullptr);\n\n\tint t = nxt();\n\twhile (t--) {\n\t\tsolve();\n\t}\n\n\treturn 0;\n}\n"
     ],
@@ -156,5 +156,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. Absent Remainder.json",
     "editorial_link": "https://codeforces.com//blog/entry/97467",
-    "editorial": "There is one important observation: .Thus, you can obtain at least pair\r\nby choosing as the minimum number in the sequence and as anything else.\r\nfor any positive .Overall complexity: per testcase.\r\n"
+    "editorial": "There is one important observation: .Thus, you can obtain at least pair\r\nby choosing as the minimum number in the sequence and as anything else.\r\nfor any positive .Overall complexity: per testcase.\r\n",
+    "hint": []
 }

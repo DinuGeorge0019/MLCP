@@ -199,5 +199,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C2. Powering the Hero  hard version .json",
     "editorial_link": "https://codeforces.com//blog/entry/113477",
-    "editorial": "To solve it, it should be noted that despite the way the deck with\r\nbonuses works, the order in which they will be applied is not important.\r\nThen, when we meet the hero card, we just need to add to the answer the\r\nmaximum of the available bonuses.Constraints make you use structures\r\nsuch as a priority queue to quickly find and extract the maximum.\r\n"
+    "editorial": "To solve it, it should be noted that despite the way the deck with\r\nbonuses works, the order in which they will be applied is not important.\r\nThen, when we meet the hero card, we just need to add to the answer the\r\nmaximum of the available bonuses.Constraints make you use structures\r\nsuch as a priority queue to quickly find and extract the maximum.\r\n",
+    "hint": []
 }

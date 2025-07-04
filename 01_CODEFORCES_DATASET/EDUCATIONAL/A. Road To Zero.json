@@ -165,5 +165,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Road To Zero.json",
     "editorial_link": "https://codeforces.com//blog/entry/76633",
-    "editorial": "Let\u00e2\u0080\u0099s presume that . Then there are two cases in the problem: If then we\r\nhave to times perform the first operation. So the answer is ; If then we\r\nhave to times perform the second operation and pass the remaining\r\ndistance by performing the first operation. So the answer is .\r\n"
+    "editorial": "Letâs presume that . Then there are two cases in the problem: If then we\r\nhave to times perform the first operation. So the answer is ; If then we\r\nhave to times perform the second operation and pass the remaining\r\ndistance by performing the first operation. So the answer is .\r\n",
+    "hint": []
 }

@@ -171,5 +171,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\D. Valid BFS .json",
     "editorial_link": "https://codeforces.com/blog/entry/61606",
-    "editorial": "We can store the neighbors of the nodes in their adjacency lists. After\r\nthat, we can sort the adjacency lists of all the nodes in the order in\r\nwhich they are present in the input BFS Sequence.Now we can do the\r\nstandard BFS traversal starting from node and check if this BFS\r\ntraversal is same as the input BFS Sequence. If its not, the answer will\r\nbe \"No\".\r\n"
+    "editorial": "We can store the neighbors of the nodes in their adjacency lists. After\r\nthat, we can sort the adjacency lists of all the nodes in the order in\r\nwhich they are present in the input BFS Sequence.Now we can do the\r\nstandard BFS traversal starting from node and check if this BFS\r\ntraversal is same as the input BFS Sequence. If its not, the answer will\r\nbe \"No\".\r\n",
+    "hint": []
 }

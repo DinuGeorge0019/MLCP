@@ -73,7 +73,7 @@
         ]
     },
     "name": "A. Jzzhu and Children",
-    "statement": "There are children in Jzzhu\u2019s school. Jzzhu is going to give some\r\ncandies to them. Let\u2019s number all the children from to . The -th child\r\nwants to get at least candies.Jzzhu asks children to line up. Initially,\r\nthe -th child stands at the -th place of the line. Then Jzzhu start\r\ndistribution of the candies. He follows the algorithm: Give candies to\r\nthe first child of the line. If this child still haven\u2019t got enough\r\ncandies, then the child goes to the end of the line, else the child go\r\nhome. Repeat the first two steps while the line is not empty. Consider\r\nall the children in the order they go home. Jzzhu wants to know, which\r\nchild will be the last in this order?\r\n",
+    "statement": "There are children in Jzzhu’s school. Jzzhu is going to give some\r\ncandies to them. Let’s number all the children from to . The -th child\r\nwants to get at least candies.Jzzhu asks children to line up. Initially,\r\nthe -th child stands at the -th place of the line. Then Jzzhu start\r\ndistribution of the candies. He follows the algorithm: Give candies to\r\nthe first child of the line. If this child still haven’t got enough\r\ncandies, then the child goes to the end of the line, else the child go\r\nhome. Repeat the first two steps while the line is not empty. Consider\r\nall the children in the order they go home. Jzzhu wants to know, which\r\nchild will be the last in this order?\r\n",
     "solutions": [
         "#include<set>\n#include<map>\n#include<list>\n#include<queue>\n#include<stack>\n#include<string>\n#include<math.h>\n#include<time.h>\n#include<vector>\n#include<bitset>\n#include<memory>\n#include<utility>\n#include<fstream>\n#include<stdio.h>\n#include<iostream>\n#include<stdlib.h>\n#include<string.h>\n#include<algorithm>\nusing namespace std;\nint main()\n{\n    #ifdef absi2011\n    freopen(\"input.txt\",\"r\",stdin);\n    freopen(\"output.txt\",\"w\",stdout);\n    #endif\n    int n,m;\n    cin>>n>>m;\n    int i;\n    int now=1;\n    int maxi=0;\n    for (i=1;i<=n;i++)\n    {\n        int x;\n        cin>>x;\n        if ((x-1)/m+1>=maxi)\n        {\n            maxi=(x-1)/m+1;\n            now=i;\n        }\n    }\n    cout<<now<<endl;\n    return 0; \n}\n"
     ],
@@ -86,5 +86,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Jzzhu and Children.json",
     "editorial_link": "https://codeforces.com//blog/entry/13112",
-    "editorial": "You can simply simulate it or find the last maximum ceil(ai?/?m).\n"
+    "editorial": "You can simply simulate it or find the last maximum ceil(ai?/?m).\n",
+    "hint": []
 }

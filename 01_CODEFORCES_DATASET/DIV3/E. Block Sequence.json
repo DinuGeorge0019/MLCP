@@ -190,5 +190,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\E. Block Sequence.json",
     "editorial_link": "https://codeforces.com//blog/entry/121327",
-    "editorial": "Let\u00e2\u0080\u0099s use the dynamic programming approach: let be the number of\r\noperations required to make the segment from to beautiful. There are two\r\npossible ways to achieve this: Remove the element at position and make\r\nthe segment from to beautiful, then ; Make the segment from to\r\nbeautiful, then (cases where need to be handled separately).\r\n"
+    "editorial": "Letâs use the dynamic programming approach: let be the number of\r\noperations required to make the segment from to beautiful. There are two\r\npossible ways to achieve this: Remove the element at position and make\r\nthe segment from to beautiful, then ; Make the segment from to\r\nbeautiful, then (cases where need to be handled separately).\r\n",
+    "hint": []
 }

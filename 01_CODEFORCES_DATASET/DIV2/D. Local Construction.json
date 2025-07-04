@@ -1,1 +1,103 @@
-{"link": "https://codeforces.com//contest/2103/problem/D", "problemId": "3344322", "problem_idx": "D", "shortId": "2103D", "contest_number": "2103", "problem_submissions": {"E": [316580259, 316596724, 317172040, 316590039, 316595391], "F": [316566749, 316554849, 316570194, 316571690, 316564753, 316565334, 316570375, 316566324, 316575470, 316580599], "D": [316555496, 316575935, 316547933, 316557810, 316581217, 316583504, 316574629, 316579069, 316561467, 316554031, 316570027], "C": [316551349, 316539195, 316536817, 316551152, 316552060, 316551470, 316558008, 316550915, 316554352, 316539931, 316539580], "B": [316531722, 316533206, 316540972, 316534158, 316532366, 316536408, 316536066, 316548057, 316551531, 316531957, 316544497], "A": [316523865, 316526077, 316528063, 316524687, 316526522, 316532444, 316526800, 316525336, 316545204, 316523615, 316541424]}, "editorial_link": "https://codeforces.com//blog/entry/142149", "editorial": "", "name": "D. Local Construction", "statement": "An element b_i (1\r\nle i\r\nle m) in an array b_1, b_2,\r\nldots, b_m is a local minimum if at least one of the following holds: 2\r\nle i\r\nle m - 1 and b_i < b_{i - 1} and b_i < b_{i + 1}, or i = 1 and b_1 <\r\nb_2, or i = m and b_m < b_{m - 1}. Similarly, an element b_i (1\r\nle i\r\nle m) in an array b_1, b_2,\r\nldots, b_m is a local maximum if at least one of the following holds: 2\r\nle i\r\nle m - 1 and b_i > b_{i - 1} and b_i > b_{i + 1}, or i = 1 and b_1 >\r\nb_2, or i = m and b_m > b_{m - 1}. Note that local minima and maxima are\r\nnot defined for arrays with only one element.There is a hidden\r\npermutation^{\r\ntext{ }} p of length n. The following two operations are applied to\r\npermutation p alternately, starting from operation 1, until there is\r\nonly one element left in p: remove all elements of p which are local\r\nminima. remove all elements of p which are local maxima. More\r\nspecifically, operation 1 is applied during every odd iteration, and\r\noperation 2 is applied during every even iteration, until there is only\r\none element left in p.For each index i (1\r\nle i\r\nle n), let a_i be the iteration number that element p_i is removed, or\r\n-1 if it was never removed.It can be proven that there will be only one\r\nelement left in p after at most\r\nlceil\r\nlog_2 n\r\nrceil iterations (in other words, a_i\r\nle\r\nlceil\r\nlog_2 n\r\nrceil).You are given the array a_1, a_2,\r\nldots, a_n. Your task is to construct any permutation p of n elements\r\nthat satisfies array a.^{\r\ntext{ }}A permutation of length n is an array consisting of n distinct\r\nintegers from 1 to n in arbitrary order. For example, [2,3,1,5,4] is a\r\npermutation, but [1,2,2] is not a permutation (2 appears twice in the\r\narray), and [1,3,4] is also not a permutation (n=3 but there is 4 in the\r\narray).\r\n", "solutions": [], "input": "", "output": "", "tags": ["constructive algorithms", "dfs and similar", "implementation", "two pointers"], "dificulty": "2000", "interactive": false, "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Local Construction.json"}
+{
+    "link": "https://codeforces.com//contest/2103/problem/D",
+    "problemId": "3344322",
+    "problem_idx": "D",
+    "shortId": "2103D",
+    "contest_number": "2103",
+    "problem_submissions": {
+        "E": [
+            316580259,
+            316596724,
+            317172040,
+            316590039,
+            316595391
+        ],
+        "F": [
+            316566749,
+            316554849,
+            316570194,
+            316571690,
+            316564753,
+            316565334,
+            316570375,
+            316566324,
+            316575470,
+            316580599
+        ],
+        "D": [
+            316555496,
+            316575935,
+            316547933,
+            316557810,
+            316581217,
+            316583504,
+            316574629,
+            316579069,
+            316561467,
+            316554031,
+            316570027
+        ],
+        "C": [
+            316551349,
+            316539195,
+            316536817,
+            316551152,
+            316552060,
+            316551470,
+            316558008,
+            316550915,
+            316554352,
+            316539931,
+            316539580
+        ],
+        "B": [
+            316531722,
+            316533206,
+            316540972,
+            316534158,
+            316532366,
+            316536408,
+            316536066,
+            316548057,
+            316551531,
+            316531957,
+            316544497
+        ],
+        "A": [
+            316523865,
+            316526077,
+            316528063,
+            316524687,
+            316526522,
+            316532444,
+            316526800,
+            316525336,
+            316545204,
+            316523615,
+            316541424
+        ]
+    },
+    "editorial_link": "https://codeforces.com//blog/entry/142149",
+    "editorial": "SolutionRead the hints.We process each layer separately and WLOG assume\r\nthat we delete those that are not local maximums. We will have some\r\nelements that go onto next layer, and we will get their order when we\r\nprocess the next layer, for now we just know their positions. Say\r\nexactly elements are going to next layer, then we can select them to be\r\nthe largest elements, which guarantees they will be local maximums. Now\r\nthe question is how to place smaller elements. We can imagine that\r\nbigger elements divide the layer into subarrays of indices that will be\r\ndeleted. It does not matter how we fill in those subarrays with smaller\r\nelements, as long as they are in sorted order. If the subarray is the\r\nprefix of a layer, it must be sorted increasingly, and if it is the\r\nsuffix of the layer, it must be sorted decreasingly.Depending on\r\nimplementation time complexity is either or , both of which are fast\r\nenough to pass. Memory complexity is .\r\n",
+    "name": "D. Local Construction",
+    "statement": "An element b_i (1\r\nle i\r\nle m) in an array b_1, b_2,\r\nldots, b_m is a local minimum if at least one of the following holds: 2\r\nle i\r\nle m - 1 and b_i < b_{i - 1} and b_i < b_{i + 1}, or i = 1 and b_1 <\r\nb_2, or i = m and b_m < b_{m - 1}. Similarly, an element b_i (1\r\nle i\r\nle m) in an array b_1, b_2,\r\nldots, b_m is a local maximum if at least one of the following holds: 2\r\nle i\r\nle m - 1 and b_i > b_{i - 1} and b_i > b_{i + 1}, or i = 1 and b_1 >\r\nb_2, or i = m and b_m > b_{m - 1}. Note that local minima and maxima are\r\nnot defined for arrays with only one element.There is a hidden\r\npermutation^{\r\ntext{ }} p of length n. The following two operations are applied to\r\npermutation p alternately, starting from operation 1, until there is\r\nonly one element left in p: remove all elements of p which are local\r\nminima. remove all elements of p which are local maxima. More\r\nspecifically, operation 1 is applied during every odd iteration, and\r\noperation 2 is applied during every even iteration, until there is only\r\none element left in p.For each index i (1\r\nle i\r\nle n), let a_i be the iteration number that element p_i is removed, or\r\n-1 if it was never removed.It can be proven that there will be only one\r\nelement left in p after at most\r\nlceil\r\nlog_2 n\r\nrceil iterations (in other words, a_i\r\nle\r\nlceil\r\nlog_2 n\r\nrceil).You are given the array a_1, a_2,\r\nldots, a_n. Your task is to construct any permutation p of n elements\r\nthat satisfies array a.^{\r\ntext{ }}A permutation of length n is an array consisting of n distinct\r\nintegers from 1 to n in arbitrary order. For example, [2,3,1,5,4] is a\r\npermutation, but [1,2,2] is not a permutation (2 appears twice in the\r\narray), and [1,3,4] is also not a permutation (n=3 but there is 4 in the\r\narray).\r\n",
+    "solutions": [],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "dfs and similar",
+        "implementation",
+        "two pointers"
+    ],
+    "dificulty": "2000",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Local Construction.json",
+    "hint": [
+        "Hint 1 Try to prove the claim that . It also shall help you understand when the construction is possible, which is often a good way to think about constructive problems.",
+        "Hint 2 We can notice that among any two consecutive elements and , one of them has to be deleted. That means that after each operation, around half of the elements are deleted, therefore giving us the bound . It also means that for array to describe a possible permutation, it must not contain two consecutive elements on any layer that do not get deleted in next iteration.",
+        "Hint 3 The whole function on going to next layer is defined in recursive way. Also, WLOG we can assume that local maximums stay, as it is symmetrical for local minimums. It makes sense to think about how to arrange elements on current layer and select those that do and those that do not get deleted. Then we will apply recursive step on next layer to arrange those that do not get deleted. But how can we guarantee elements at some position will not get deleted?",
+        "Hint 4 If there are positions at which elements that should not be deleted go, then we can just select the biggest elements to go there and the rest of the array we fill in with smaller ones. But how do we guarantee that one of the smaller ones does not become a local maximum?",
+        "Hint 5 We can sort the smaller elements in increasing/ decreasing order, so none of them will be local maximum. However, there is an edge case of the smallest elements that form a prefix/ suffix. The part of smallest elements that form a prefix must be sorted in increasing order and the part of smallest elements that form a suffix must be sorted in decreasing order. Otherwise we might get that elements at first or last positions are local maximum when we do not want them to be."
+    ]
+}

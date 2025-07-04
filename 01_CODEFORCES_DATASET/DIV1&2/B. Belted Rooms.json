@@ -218,5 +218,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\B. Belted Rooms.json",
     "editorial_link": "https://codeforces.com//blog/entry/83771",
-    "editorial": "Let\u00e2\u0080\u0099s consider two ways to\nreturn to the start point. The first is to go one big round around the\ncircle. The second is to move 1 step to the side, and return back\nimmediately.Going one big round is only possible if and only if: There\nare no clockwise belts OR There are no anticlockwise belts If we can go\none big round, all rooms are returnable.If there are both clockwise and\nanticlockwise belts, then we can\u00e2\u0080\u0099t go one big round. For any room to be\nreturnable, it must have an off belt to the left or to the right. In\nsummary, check if clockwise belts are absent or if anticlockwise belts\nare absent. If either is absent, the answer is . Otherwise, we have to\ncount the number of rooms with an off belt to the left or to the right.\n"
+    "editorial": "Letâs consider two ways to\nreturn to the start point. The first is to go one big round around the\ncircle. The second is to move 1 step to the side, and return back\nimmediately.Going one big round is only possible if and only if: There\nare no clockwise belts OR There are no anticlockwise belts If we can go\none big round, all rooms are returnable.If there are both clockwise and\nanticlockwise belts, then we canât go one big round. For any room to be\nreturnable, it must have an off belt to the left or to the right. In\nsummary, check if clockwise belts are absent or if anticlockwise belts\nare absent. If either is absent, the answer is . Otherwise, we have to\ncount the number of rooms with an off belt to the left or to the right.\n",
+    "hint": [
+        "Hint 1 There are 2 cases to consider for a room to be returnable.",
+        "Hint 2 For a room to be returnable, either go one big round around all the rooms or move to an adjacent room and move back."
+    ]
 }

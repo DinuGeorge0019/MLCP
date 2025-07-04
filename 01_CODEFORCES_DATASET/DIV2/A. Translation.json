@@ -95,7 +95,7 @@
         ]
     },
     "name": "A. Translation",
-    "statement": "The translation from the Berland language into the Birland language is\r\nnot an easy task. Those languages are very similar: a berlandish word\r\ndiffers from a birlandish word with the same meaning a little: it is\r\nspelled (and pronounced) reversely. For example, a Berlandish word\r\ncorresponds to a Birlandish word . However, it\u2019s easy to make a mistake\r\nduring the translation . Vasya translated word from Berlandish into\r\nBirlandish as . Help him: find out if he translated the word correctly.\r\n",
+    "statement": "The translation from the Berland language into the Birland language is\r\nnot an easy task. Those languages are very similar: a berlandish word\r\ndiffers from a birlandish word with the same meaning a little: it is\r\nspelled (and pronounced) reversely. For example, a Berlandish word\r\ncorresponds to a Birlandish word . However, it’s easy to make a mistake\r\nduring the translation . Vasya translated word from Berlandish into\r\nBirlandish as . Help him: find out if he translated the word correctly.\r\n",
     "solutions": [
         "#include<iostream>\n#include<cstdio>\n#include<cmath>\n#include<cstdlib>\n#include<algorithm>\n#include<vector>\n#include<string>\n#include<list>\n#include<map>\n#include<set>\n#include<queue>\n#include<stack>\n#include<utility>\n#include<sstream>\nusing namespace std;\n#define FOR(I,A,B) for(int I=(A);I<=(B);I++)\n#define REP(I,N) for(int I=0;I<(N);I++)\n#define ALL(X) (X).begin(),(X).end()\n#define VAR(A,B) __typeof(B) A=B\n#define FORE(I,X) for(VAR(I,(X).begin());I!=(X).end();I++)\n#define F first\n#define S second\n#define INF 1000000007\n#define PB push_back\n#define MP make_pair\ntypedef pair<int,int> PII;\ntypedef long long LL;\nstring a,b;\nchar tab[1007];\n\nint main(){\n\tscanf(\"%s\",tab); a=tab;\n\tscanf(\"%s\",tab); b=tab;\n\treverse(ALL(a));\n\tif (a==b) printf(\"YES\\n\");\n\telse printf(\"NO\\n\");\n}\n"
     ],
@@ -109,5 +109,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Translation.json",
     "editorial_link": "https://codeforces.com//blog/entry/1620",
-    "editorial": "Many languages have built-in reverse() function for strings. we can reverse one of the strings and check if it's equal to the other one , or we can check it manually. I prefer the second."
+    "editorial": "Many languages have built-in reverse() function for strings. we can reverse one of the strings and check if it's equal to the other one , or we can check it manually. I prefer the second.",
+    "hint": []
 }

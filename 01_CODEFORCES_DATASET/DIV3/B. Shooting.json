@@ -158,5 +158,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Shooting.json",
     "editorial_link": "https://codeforces.com//blog/entry/69954",
-    "editorial": "We can see that because the multiplier in the formula is the position of\r\nthe number and we want to minimize the sum of such formulas, the\r\nfollowing greedy solution comes up to mind: because we want to count\r\ngreater values as earlier as possible, let\u00e2\u0080\u0099s sort the array in\r\nnon-increasing order (saving initial indices of elements), calculate the\r\nanswer and print the permutation of indices in order from left to right.\r\n"
+    "editorial": "We can see that because the multiplier in the formula is the position of\r\nthe number and we want to minimize the sum of such formulas, the\r\nfollowing greedy solution comes up to mind: because we want to count\r\ngreater values as earlier as possible, letâs sort the array in\r\nnon-increasing order (saving initial indices of elements), calculate the\r\nanswer and print the permutation of indices in order from left to right.\r\n",
+    "hint": []
 }

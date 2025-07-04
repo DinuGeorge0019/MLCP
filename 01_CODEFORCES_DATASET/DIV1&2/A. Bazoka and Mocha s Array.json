@@ -197,11 +197,11 @@
         "I": []
     },
     "editorial_link": "https://codeforces.com//blog/entry/129801",
-    "editorial": "SolutionRead the hints.If is non-decreasing initially, the answer is\r\nyes.If isn\u00e2\u0080\u0099t non-decreasing initially, we can find the smallest such\r\nthat . Then we choose and . If the array is non-decreasing, the answer\r\nis yes. Otherwise, the answer is no.\r\n",
+    "editorial": "SolutionRead the hints.If is non-decreasing initially, the answer is\r\nyes.If isnât non-decreasing initially, we can find the smallest such\r\nthat . Then we choose and . If the array is non-decreasing, the answer\r\nis yes. Otherwise, the answer is no.\r\n",
     "name": "A. Bazoka and Mocha s Array",
     "statement": "Mocha likes arrays, so before her departure, Bazoka gave her an array a\r\nconsisting of n positive integers as a gift.Now Mocha wants to know\r\nwhether array a could become sorted in non-decreasing order after\r\nperforming the following operation some (possibly, zero) times: Split\r\nthe array into two parts a prefix and a suffix, then swap these two\r\nparts. In other words, let a=x+y. Then, we can set a:= y+x. Here +\r\ndenotes the array concatenation operation. For example, if\r\na=[3,1,4,1,5], we can choose x=[3,1] and y=[4,1,5], satisfying a=x+y.\r\nThen, we can set a:= y + x = [4,1,5,3,1]. We can also choose\r\nx=[3,1,4,1,5] and y=[\r\n,], satisfying a=x+y. Then, we can set a := y+x = [3,1,4,1,5]. Note that\r\nwe are not allowed to choose x=[3,1,1] and y=[4,5], neither are we\r\nallowed to choose x=[1,3] and y=[5,1,4], as both these choices do not\r\nsatisfy a=x+y.\r\n",
     "solutions": [
-        "/** *    author:  tourist *    created: 25.05.2024 10:02:14**/#include <bits/stdc++.h>\u00a0using namespace std;\u00a0#ifdef LOCAL#include \"algo/debug.h\"#else#define debug(...) 42#endif\u00a0int main() {  ios::sync_with_stdio(false);  cin.tie(0);  int tt;  cin >> tt;  while (tt--) {    int n;    cin >> n;    vector<int> a(n);    for (int i = 0; i < n; i++) {      cin >> a[i];    }    bool ok = false;    for (int it = 0; it < n; it++) {      ok |= is_sorted(a.begin(), a.end());      rotate(a.begin(), a.begin() + 1, a.end());    }    cout << (ok ? \"YES\" : \"NO\") << '\\n';  }  return 0;}"
+        "/** *    author:  tourist *    created: 25.05.2024 10:02:14**/#include <bits/stdc++.h> using namespace std; #ifdef LOCAL#include \"algo/debug.h\"#else#define debug(...) 42#endif int main() {  ios::sync_with_stdio(false);  cin.tie(0);  int tt;  cin >> tt;  while (tt--) {    int n;    cin >> n;    vector<int> a(n);    for (int i = 0; i < n; i++) {      cin >> a[i];    }    bool ok = false;    for (int it = 0; it < n; it++) {      ok |= is_sorted(a.begin(), a.end());      rotate(a.begin(), a.begin() + 1, a.end());    }    cout << (ok ? \"YES\" : \"NO\") << '\\n';  }  return 0;}"
     ],
     "input": "",
     "output": "",
@@ -213,5 +213,9 @@
     ],
     "dificulty": "800",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\A. Bazoka and Mocha s Array.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\A. Bazoka and Mocha s Array.json",
+    "hint": [
+        "Hint 1 We can't do any insertions by the operation.",
+        "Hint 2 If the answer is yes, we can make become non-decreasing in no more than one operation."
+    ]
 }

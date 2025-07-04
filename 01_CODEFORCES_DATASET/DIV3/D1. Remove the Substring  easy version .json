@@ -183,5 +183,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\D1. Remove the Substring  easy version .json",
     "editorial_link": "https://codeforces.com//blog/entry/69108",
-    "editorial": "In this problem we can just iterate over all possible substrings and try\r\nto remove each of them. After removing the substring we can check if\r\nremains the subsequence of in linear time.Let we remove the substring .\r\nLet\u00e2\u0080\u0099s maintain a pointer (the initial value of the pointer is ) and\r\niterate over all possible from to . If and let\u00e2\u0080\u0099s increase by one. If\r\nafter all iterations then let\u00e2\u0080\u0099s update the answer with the length of the\r\ncurrent substring.\r\n"
+    "editorial": "In this problem we can just iterate over all possible substrings and try\r\nto remove each of them. After removing the substring we can check if\r\nremains the subsequence of in linear time.Let we remove the substring .\r\nLetâs maintain a pointer (the initial value of the pointer is ) and\r\niterate over all possible from to . If and letâs increase by one. If\r\nafter all iterations then letâs update the answer with the length of the\r\ncurrent substring.\r\n",
+    "hint": []
 }

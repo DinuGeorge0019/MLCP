@@ -169,5 +169,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\F. Spy-string.json",
     "editorial_link": "https://codeforces.com//blog/entry/77846",
-    "editorial": "Consider all strings that differ from the first one in no more than one\r\nposition (this is either the first string or the first string with one\r\ncharacter changed). We will go through all such strings and see if they\r\ncan be the answer. To do this, go through all the strings and calculate\r\nthe number of positions where they differ.\r\n"
+    "editorial": "Consider all strings that differ from the first one in no more than one\r\nposition (this is either the first string or the first string with one\r\ncharacter changed). We will go through all such strings and see if they\r\ncan be the answer. To do this, go through all the strings and calculate\r\nthe number of positions where they differ.\r\n",
+    "hint": []
 }

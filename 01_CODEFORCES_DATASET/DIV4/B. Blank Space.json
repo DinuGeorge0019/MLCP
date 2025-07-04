@@ -188,5 +188,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\B. Blank Space.json",
     "editorial_link": "https://codeforces.com//blog/entry/116108",
-    "editorial": "We can iterate through the array and keep track of the length of the\r\ncurrent blank space. Whenever we encounter a , we increase the length of\r\nthe current blank space, and whenever we encounter a , we check if the\r\ncurrent blank space is longer than the previous longest blank space. If\r\nit is, we update the length of the longest blank space. Finally, we\r\nreturn the length of the longest blank space.The time complexity of this\r\nalgorithm is .\r\n"
+    "editorial": "We can iterate through the array and keep track of the length of the\r\ncurrent blank space. Whenever we encounter a , we increase the length of\r\nthe current blank space, and whenever we encounter a , we check if the\r\ncurrent blank space is longer than the previous longest blank space. If\r\nit is, we update the length of the longest blank space. Finally, we\r\nreturn the length of the longest blank space.The time complexity of this\r\nalgorithm is .\r\n",
+    "hint": []
 }

@@ -167,5 +167,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\H. Binary Median.json",
     "editorial_link": "https://codeforces.com//blog/entry/77846",
-    "editorial": "If we did not delete the strings, then the median would be equal to the\r\nbinary notation of . After deleting strings, the median cannot change\r\n(numerically) by more than . Let\u00e2\u0080\u0099s start with the median and each time\r\ndecrease it by one if there are fewer not deleted smaller numbers than\r\nnot deleted large numbers. Similarly, you need to increase the median by\r\none, otherwise. The algorithm stops when the result is the median of the\r\ncurrent set. All these steps will run at most times.\r\n"
+    "editorial": "If we did not delete the strings, then the median would be equal to the\r\nbinary notation of . After deleting strings, the median cannot change\r\n(numerically) by more than . Letâs start with the median and each time\r\ndecrease it by one if there are fewer not deleted smaller numbers than\r\nnot deleted large numbers. Similarly, you need to increase the median by\r\none, otherwise. The algorithm stops when the result is the median of the\r\ncurrent set. All these steps will run at most times.\r\n",
+    "hint": []
 }

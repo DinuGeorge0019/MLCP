@@ -77,5 +77,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Visit of the Great.json",
     "editorial_link": "https://codeforces.com/blog/entry/4488",
-    "editorial": "This is number theory problem.\n\nI'm trying to explain it step by step:\n\n1) Let's prove, that LCD is maximum 2.\n\nLet . Squaring both sides we get , but we want to . This means, that d can be only 2.\n\n2) Let's make this lenghty product simplier.\n\n.\n\nWe can count this by modulo p fast, and divide it by 2r?-?l, if k is odd.\n\n3) There is many interesting things in this solution.\n\nFirstly, it doesn't work, when p?=?2 \u0097 but it can easily done by you.\n\nThe other problem is harder, what if , this means that for each i???l : , and this mean,\nthat for each i???l : k2i?+?1???p2. And the product by modulo p is equal to 2r?-?l?+?1."
+    "editorial": "This is number theory problem.\n\nI'm trying to explain it step by step:\n\n1) Let's prove, that LCD is maximum 2.\n\nLet . Squaring both sides we get , but we want to . This means, that d can be only 2.\n\n2) Let's make this lenghty product simplier.\n\n.\n\nWe can count this by modulo p fast, and divide it by 2r?-?l, if k is odd.\n\n3) There is many interesting things in this solution.\n\nFirstly, it doesn't work, when p?=?2  but it can easily done by you.\n\nThe other problem is harder, what if , this means that for each i???l : , and this mean,\nthat for each i???l : k2i?+?1???p2. And the product by modulo p is equal to 2r?-?l?+?1.",
+    "hint": []
 }

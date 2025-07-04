@@ -212,5 +212,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\E2. Rotate Columns  hard version .json",
     "editorial_link": "https://codeforces.com/blog/entry/69791",
-    "editorial": "The previous solution is slightly too slow to pass the large\r\nconstraints. Let\u00e2\u0080\u0099s sort columns by the maximum element in them. Observe,\r\nthat it is surely unoptimal to use columns which go after first columns\r\nin sorted order (we could\u00e2\u0080\u0099ve replaced them with some unused column). So\r\nwe can solve the hard version with previous solution in which we\r\nconsider only best columns. Complexity Code\r\n"
+    "editorial": "The previous solution is slightly too slow to pass the large\r\nconstraints. Letâs sort columns by the maximum element in them. Observe,\r\nthat it is surely unoptimal to use columns which go after first columns\r\nin sorted order (we couldâve replaced them with some unused column). So\r\nwe can solve the hard version with previous solution in which we\r\nconsider only best columns. Complexity Code\r\n",
+    "hint": []
 }

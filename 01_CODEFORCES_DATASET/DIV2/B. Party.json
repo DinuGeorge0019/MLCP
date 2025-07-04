@@ -113,7 +113,7 @@
         ]
     },
     "name": "B. Party",
-    "statement": "A club plans to hold a party and will invite some of its n members. The\r\nn members are identified by the numbers 1, 2,\r\ndots, n. If member i is not invited, the party will gain an unhappiness\r\nvalue of a_i.There are m pairs of friends among the n members. As per\r\ntradition, if both people from a friend pair are invited, they will\r\nshare a cake at the party. The total number of cakes eaten will be equal\r\nto the number of pairs of friends such that both members have been\r\ninvited.However, the club\u2019s oven can only cook two cakes at a time. So,\r\nthe club demands that the total number of cakes eaten is an even\r\nnumber.What is the minimum possible total unhappiness value of the\r\nparty, respecting the constraint that the total number of cakes eaten is\r\neven?\r\n",
+    "statement": "A club plans to hold a party and will invite some of its n members. The\r\nn members are identified by the numbers 1, 2,\r\ndots, n. If member i is not invited, the party will gain an unhappiness\r\nvalue of a_i.There are m pairs of friends among the n members. As per\r\ntradition, if both people from a friend pair are invited, they will\r\nshare a cake at the party. The total number of cakes eaten will be equal\r\nto the number of pairs of friends such that both members have been\r\ninvited.However, the club’s oven can only cook two cakes at a time. So,\r\nthe club demands that the total number of cakes eaten is an even\r\nnumber.What is the minimum possible total unhappiness value of the\r\nparty, respecting the constraint that the total number of cakes eaten is\r\neven?\r\n",
     "solutions": [
         "#include<cstdio>\n#include<algorithm>\nusing namespace std;\n\nint T,n,m;\nint arr[100000];\nint p1[100000];\nint p2[100000];\nint deg[100000];\n\nint main(void)\n{\n\tscanf(\"%d\",&T);\n\twhile(T--){\n\t\tscanf(\"%d%d\",&n,&m);\n\t\tfor(int i=0;i<n;i++){\n\t\t\tscanf(\"%d\",&arr[i]);\n\t\t\tdeg[i]=0;\n\t\t}\n\t\tfor(int i=0;i<m;i++){\n\t\t\tscanf(\"%d%d\",&p1[i],&p2[i]);\n\t\t\tp1[i]--; p2[i]--;\n\t\t\tdeg[p1[i]]++; deg[p2[i]]++;\n\t\t}\n\t\tint ans=114514;\n\t\tif(m%2==0) ans=0;\n\t\tfor(int i=0;i<n;i++)\n\t\t\tif((m-deg[i])%2==0)\n\t\t\t\tans=min(ans,arr[i]);\n\t\tfor(int i=0;i<m;i++)\n\t\t\tif((m-deg[p1[i]]-deg[p2[i]]+1)%2==0)\n\t\t\t\tans=min(ans,arr[p1[i]]+arr[p2[i]]);\n\t\tprintf(\"%d\\n\",ans);\n\t}\n\treturn 0;\n}"
     ],
@@ -127,5 +127,22 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Party.json",
     "editorial_link": "https://codeforces.com//blog/entry/105232",
-    "editorial": "Let's consider the case where m\n is odd only, since if m\n is even the answer is 0\n.\n\nAssume that you delete x\n vertices with even degrees and y\n vertices with odd degrees.\n\nIf y?1\n, then only deleting one vertex with an odd degree would lead to a not worse answer, so you do not need to consider it except for (x,y)=(0,1)\n.\n\nIf y=0\n, then the parity of the edges at the end is determined only by the number of edges whose both endpoints are deleted. In particular, there must be at least two adjacent vertices deleted with even degrees. So you do not need to consider it except for (x,y)=(2,0)\n and they are neighbours.\n\nThus, an optimal solution either has (x,y)=(0,1)\n or (x,y)=(2,0)\n and the two vertices are adjacent.\n\nOne can iterate over all possible solutions with such a structure and take the optimal one.\n\nTotal time complexity: O(n+m)\n."
+    "editorial": "Let's consider the case where m\n is odd only, since if m\n is even the answer is 0\n.\n\nAssume that you delete x\n vertices with even degrees and y\n vertices with odd degrees.\n\nIf y?1\n, then only deleting one vertex with an odd degree would lead to a not worse answer, so you do not need to consider it except for (x,y)=(0,1)\n.\n\nIf y=0\n, then the parity of the edges at the end is determined only by the number of edges whose both endpoints are deleted. In particular, there must be at least two adjacent vertices deleted with even degrees. So you do not need to consider it except for (x,y)=(2,0)\n and they are neighbours.\n\nThus, an optimal solution either has (x,y)=(0,1)\n or (x,y)=(2,0)\n and the two vertices are adjacent.\n\nOne can iterate over all possible solutions with such a structure and take the optimal one.\n\nTotal time complexity: O(n+m)\n.",
+    "hint": [
+        "hint1. See the party as a graph.",
+        "hint2. Divide the vertices into two categories according to their degrees' parity.",
+        "hint1. The picture must consist of some stripes with at least rows or at least columns.",
+        "hint2. When is odd and all , we cannot draw a beautiful picture using row stripes.",
+        "hint1. The maximum can always be achieved in the center position of one day's rain.",
+        "hint2. is a piecewise linear function and the slope of will only change for times.",
+        "hint3. Supposing you know an invalid position where , what are the properties of a rain that, if erase, makes it valid?",
+        "hint1. Consider the same bit of three integers at the same time.",
+        "hint2.",
+        "hint1 If interval are all good and , then is good, too.",
+        "hint2 If interval are all good and , then is good, too.",
+        "hint3 Consider enumerating good intervals according to their length.",
+        "hint1. Since they are very smart, they know the result of the game at the beginning.",
+        "hint2. If the result is , then Alice will end the game when Bob moves to a cell with score less than , and something analogous holds for Bob.",
+        "hint3. Thus, Alice can only move to a certain subset of cells, and the same holds for Bob."
+    ]
 }

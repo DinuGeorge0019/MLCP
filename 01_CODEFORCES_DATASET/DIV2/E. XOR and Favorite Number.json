@@ -113,5 +113,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. XOR and Favorite Number.json",
     "editorial_link": "https://codeforces.com//blog/entry/22971",
-    "editorial": "We have array . Let\u00e2\u0080\u0099s calculate array (, ). Xor of subarray equals to .\r\nSo query (l, r) is counting number of pairs , () . Let we know answer\r\nfor query (l, r) and know for all count of in . We can update in O(1)\r\nanswer and if we move left or right border of query on 1. So we can\r\nsolve problem offline in with sqrt-decomposion (Mo\u00e2\u0080\u0099s algorithm).\r\nSolution 15550846\r\n"
+    "editorial": "We have array . Letâs calculate array (, ). Xor of subarray equals to .\r\nSo query (l, r) is counting number of pairs , () . Let we know answer\r\nfor query (l, r) and know for all count of in . We can update in O(1)\r\nanswer and if we move left or right border of query on 1. So we can\r\nsolve problem offline in with sqrt-decomposion (Moâs algorithm).\r\nSolution 15550846\r\n",
+    "hint": []
 }

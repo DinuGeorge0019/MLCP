@@ -125,5 +125,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Sonya and Robots.json",
     "editorial_link": "https://codeforces.com/blog/entry/60443",
-    "editorial": "Let\u00e2\u0080\u0099s assume that our left robot is located in the position. The robot\r\ncould be there only if the value that is written there did not occur\r\nearlier. The number of possible locations of the second robot is equal\r\nto the number of distinct numbers on the segment . Let be the number of\r\ndifferent numbers on . Let\u00e2\u0080\u0099s find these number from right to left. If\r\noccurs the first time , otherwise, .\r\n"
+    "editorial": "Letâs assume that our left robot is located in the position. The robot\r\ncould be there only if the value that is written there did not occur\r\nearlier. The number of possible locations of the second robot is equal\r\nto the number of distinct numbers on the segment . Let be the number of\r\ndifferent numbers on . Letâs find these number from right to left. If\r\noccurs the first time , otherwise, .\r\n",
+    "hint": []
 }

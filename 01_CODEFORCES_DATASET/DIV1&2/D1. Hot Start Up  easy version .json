@@ -217,5 +217,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\D1. Hot Start Up  easy version .json",
     "editorial_link": "https://codeforces.com//blog/entry/113321",
-    "editorial": "But when I just changed the variable MLong from (2**63-1) to (2**62-1) ,\r\nit was accepted . I usually make MLong assigned to (2**63-1) since it\u00e2\u0080\u0099s\r\nequivalent to sys.maxsize but I dont\u00e2\u0080\u0099t know why it gives TLE .Is that\r\nbecause of using of Big integers in python or another issue ?\r\n"
+    "editorial": "But when I just changed the variable MLong from (2**63-1) to (2**62-1) ,\r\nit was accepted . I usually make MLong assigned to (2**63-1) since itâs\r\nequivalent to sys.maxsize but I dontât know why it gives TLE .Is that\r\nbecause of using of Big integers in python or another issue ?\r\n",
+    "hint": []
 }

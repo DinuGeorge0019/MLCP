@@ -158,5 +158,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Squares and Cubes.json",
     "editorial_link": "https://codeforces.com//blog/entry/98159",
-    "editorial": "We\u00e2\u0080\u0099ll search for positive integers not larger than , and add their\r\nsquares or cubes to the set if they don\u00e2\u0080\u0099t exceed . If , the maximum\r\nnumber Polycarp will like is , so the running time will be within the\r\ntime limit.The answer to the problem is the length of the resulting set.\r\n"
+    "editorial": "Weâll search for positive integers not larger than , and add their\r\nsquares or cubes to the set if they donât exceed . If , the maximum\r\nnumber Polycarp will like is , so the running time will be within the\r\ntime limit.The answer to the problem is the length of the resulting set.\r\n",
+    "hint": []
 }

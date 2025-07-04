@@ -163,5 +163,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Lucky Year.json",
     "editorial_link": "https://codeforces.com//blog/entry/52010",
-    "editorial": "Notice that the next lucky year always looks like (first digit of the\r\ncurrent + 1) 10^(number of digits of the current - 1). It holds also for\r\nnumbers starting with 9, it will be 10 10^(number of digits - 1). The\r\nanswer is the difference between the next lucky year and current year.\r\n"
+    "editorial": "Notice that the next lucky year always looks like (first digit of the\r\ncurrent + 1) 10^(number of digits of the current - 1). It holds also for\r\nnumbers starting with 9, it will be 10 10^(number of digits - 1). The\r\nanswer is the difference between the next lucky year and current year.\r\n",
+    "hint": []
 }

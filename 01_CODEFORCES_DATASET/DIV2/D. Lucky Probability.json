@@ -115,5 +115,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Lucky Probability.json",
     "editorial_link": "https://codeforces.com//blog/entry/2547",
-    "editorial": "Let L[i] - i-th lucky number, starting from 1 (L[0]?=?0, L[1]?=?4, L[2]?=?7...). At first choose first k lucky number, then second k numbers and so on. For each of that group lets find answer, result will be a sum of each of this probabilities. Let index of current first number if i, last - j (j?=?i?+?k?-?1). Then we need to find intersection of intervals [pl;pr] and (L[i?-?1];L[i]], and also [vl;vr] and [L[j];L[j?+?1]), product of that values will be a number of ways in which p?<?v, similarly for p?>?v. Sum of all that values for each group will be a total number of ways, then result = total number of ways / ((pr?-?pl?+?1)?*?(vr?-?vl?+?1))."
+    "editorial": "Let L[i] - i-th lucky number, starting from 1 (L[0]?=?0, L[1]?=?4, L[2]?=?7...). At first choose first k lucky number, then second k numbers and so on. For each of that group lets find answer, result will be a sum of each of this probabilities. Let index of current first number if i, last - j (j?=?i?+?k?-?1). Then we need to find intersection of intervals [pl;pr] and (L[i?-?1];L[i]], and also [vl;vr] and [L[j];L[j?+?1]), product of that values will be a number of ways in which p?<?v, similarly for p?>?v. Sum of all that values for each group will be a total number of ways, then result = total number of ways / ((pr?-?pl?+?1)?*?(vr?-?vl?+?1)).",
+    "hint": []
 }

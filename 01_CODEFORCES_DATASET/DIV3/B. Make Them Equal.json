@@ -160,5 +160,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Make Them Equal.json",
     "editorial_link": "https://codeforces.com//blog/entry/66586",
-    "editorial": "Let\u00e2\u0080\u0099s leave only unique values of the given array in the array (i. e.\r\nconstruct an array that is actually array without duplicate element) and\r\nsort it in ascending order. Then let\u00e2\u0080\u0099s consider the following cases: If\r\nthe length of is greater than then the answer is ; if the length of is\r\nthen there are two cases: if then the answer is ; otherwise the answer\r\nis ; if the length of is then there are also two cases: if is even then\r\nthe answer is ; otherwise the answer is ; and if the length of is then\r\nthe answer is .\r\n"
+    "editorial": "Letâs leave only unique values of the given array in the array (i. e.\r\nconstruct an array that is actually array without duplicate element) and\r\nsort it in ascending order. Then letâs consider the following cases: If\r\nthe length of is greater than then the answer is ; if the length of is\r\nthen there are two cases: if then the answer is ; otherwise the answer\r\nis ; if the length of is then there are also two cases: if is even then\r\nthe answer is ; otherwise the answer is ; and if the length of is then\r\nthe answer is .\r\n",
+    "hint": []
 }

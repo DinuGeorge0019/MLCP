@@ -130,5 +130,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Display Size.json",
     "editorial_link": "https://codeforces.com//blog/entry/49171",
-    "editorial": "We can iterate through the values of from 1 to . For each if and if is\r\nless than already found different we need to update answer with values\r\nand (because must be less than ).\r\n"
+    "editorial": "We can iterate through the values of from 1 to . For each if and if is\r\nless than already found different we need to update answer with values\r\nand (because must be less than ).\r\n",
+    "hint": []
 }

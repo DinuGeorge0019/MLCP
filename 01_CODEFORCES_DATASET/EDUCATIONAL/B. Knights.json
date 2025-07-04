@@ -178,5 +178,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. Knights.json",
     "editorial_link": "https://codeforces.com//blog/entry/69925",
-    "editorial": "Let\u00e2\u0080\u0099s denote a cell (, ) as if is even, otherwise the cell is . It\u00e2\u0080\u0099s\r\neasy to see that if a knight is occupying a black cell, then all cells\r\nattacked by it are white, and vice versa.Using this fact, we can\r\nconstruct a solution where every pair of knights that attack each other\r\nhave different colors put black knights into black cells, and white\r\nknights into white cells, so every pair of knights that can possibly\r\nform a duel actually form it.\r\n"
+    "editorial": "Letâs denote a cell (, ) as if is even, otherwise the cell is . Itâs\r\neasy to see that if a knight is occupying a black cell, then all cells\r\nattacked by it are white, and vice versa.Using this fact, we can\r\nconstruct a solution where every pair of knights that attack each other\r\nhave different colors put black knights into black cells, and white\r\nknights into white cells, so every pair of knights that can possibly\r\nform a duel actually form it.\r\n",
+    "hint": []
 }

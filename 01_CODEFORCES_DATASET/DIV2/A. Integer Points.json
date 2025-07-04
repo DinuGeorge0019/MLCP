@@ -142,5 +142,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Integer Points.json",
     "editorial_link": "https://codeforces.com//blog/entry/70720",
-    "editorial": "Consider two lines :It\u00e2\u0080\u0099s clear that they will have integral intersection\r\npoint iff and have the same parity. Let\u00e2\u0080\u0099s find number of even and odd\r\nrespectively. Moreover let\u00e2\u0080\u0099s find and for . Now answer is . Complexity:\r\n.Pay attention that answer does not fit in 32-bit data type.\r\n"
+    "editorial": "Consider two lines :Itâs clear that they will have integral intersection\r\npoint iff and have the same parity. Letâs find number of even and odd\r\nrespectively. Moreover letâs find and for . Now answer is . Complexity:\r\n.Pay attention that answer does not fit in 32-bit data type.\r\n",
+    "hint": []
 }

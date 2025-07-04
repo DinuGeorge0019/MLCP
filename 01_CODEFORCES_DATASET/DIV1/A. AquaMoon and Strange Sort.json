@@ -124,5 +124,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. AquaMoon and Strange Sort.json",
     "editorial_link": "https://codeforces.com//blog/entry/92739",
-    "editorial": "It's easy to see that each number needs to move an even distance.\n\nFor the same number, count how many of them are in the odd position and even position.\n\nSort the array and count again.\n\nThe given array named A, the sorted array named B.\n\nFor every number, if the number of its occurrence in the odd position in A is different from its occurrence in the odd position in B, or the number of its occurrence in the even position in A is different from its occurrence in the even position in B, then the answer is NO. Otherwise the answer is YES."
+    "editorial": "It's easy to see that each number needs to move an even distance.\n\nFor the same number, count how many of them are in the odd position and even position.\n\nSort the array and count again.\n\nThe given array named A, the sorted array named B.\n\nFor every number, if the number of its occurrence in the odd position in A is different from its occurrence in the odd position in B, or the number of its occurrence in the even position in A is different from its occurrence in the even position in B, then the answer is NO. Otherwise the answer is YES.",
+    "hint": []
 }

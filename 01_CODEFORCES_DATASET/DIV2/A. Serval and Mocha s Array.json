@@ -143,5 +143,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Serval and Mocha s Array.json",
     "editorial_link": "https://codeforces.com//blog/entry/113246",
-    "editorial": "Considering an array of () positive\nintegers, the following inequality holds for : Therefore, when the\nprefix of is good, we can show that all the prefixes of whose length is\nno less than are good, then is beautiful. It is obvious that is good\nwhen is beautiful. So we get the conclusion that is beautiful if and\nonly if the prefix is good.We can check if there exist () such that . If\nso, we can move to the front of to make it beautiful, then the answer is\nYes. If not, the answer is No.Time complexity: .\n"
+    "editorial": "Considering an array of () positive\nintegers, the following inequality holds for : Therefore, when the\nprefix of is good, we can show that all the prefixes of whose length is\nno less than are good, then is beautiful. It is obvious that is good\nwhen is beautiful. So we get the conclusion that is beautiful if and\nonly if the prefix is good.We can check if there exist () such that . If\nso, we can move to the front of to make it beautiful, then the answer is\nYes. If not, the answer is No.Time complexity: .\n",
+    "hint": []
 }

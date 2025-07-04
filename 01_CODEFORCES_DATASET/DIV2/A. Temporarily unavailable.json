@@ -152,5 +152,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Temporarily unavailable.json",
     "editorial_link": "https://codeforces.com/blog/entry/72461?locale=en",
-    "editorial": "To get an answer, we need to subtract from the whole time the time that\r\nwe will be in the coverage area. Let the left boundary of the cover be ,\r\nand the right boundary of the cover be . Then the intersection\r\nboundaries will be , . Then the answer is calculated by the formula .\r\n"
+    "editorial": "To get an answer, we need to subtract from the whole time the time that\r\nwe will be in the coverage area. Let the left boundary of the cover be ,\r\nand the right boundary of the cover be . Then the intersection\r\nboundaries will be , . Then the answer is calculated by the formula .\r\n",
+    "hint": []
 }

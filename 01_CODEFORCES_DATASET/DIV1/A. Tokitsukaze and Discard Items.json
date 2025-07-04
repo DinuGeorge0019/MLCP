@@ -139,5 +139,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Tokitsukaze and Discard Items.json",
     "editorial_link": "https://codeforces.com/blog/entry/68314",
-    "editorial": "The order of discarding is given, so we can simulate the process\nof discarding.In each time, we can calculate the page that contains the\nfirst special item that has not been discarded, and then locate all the\nspecial items that need to be discarded at one time. Repeat this process\nuntil all special items are discarded.Each time at least one item would\nbe discarded, so the time complexity is .\n"
+    "editorial": "The order of discarding is given, so we can simulate the process\nof discarding.In each time, we can calculate the page that contains the\nfirst special item that has not been discarded, and then locate all the\nspecial items that need to be discarded at one time. Repeat this process\nuntil all special items are discarded.Each time at least one item would\nbe discarded, so the time complexity is .\n",
+    "hint": []
 }

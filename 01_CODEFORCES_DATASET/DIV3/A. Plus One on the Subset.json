@@ -166,5 +166,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Plus One on the Subset.json",
     "editorial_link": "https://codeforces.com//blog/entry/98942",
-    "editorial": "Let\u00e2\u0080\u0099s sort the numbers in ascending order. It becomes immediately clear\r\nthat it is not profitable for us to increase the numbers that are equal\r\nto the last number (the maximum of the array). It turns out that every\r\ntime you need to take such a subset of the array, in which all the\r\nnumbers, except the maximums. And once for each operation, the numbers\r\nin the subset are increased by one, then how many times can the\r\noperation be performed on the array? Accordingly .\r\n"
+    "editorial": "Letâs sort the numbers in ascending order. It becomes immediately clear\r\nthat it is not profitable for us to increase the numbers that are equal\r\nto the last number (the maximum of the array). It turns out that every\r\ntime you need to take such a subset of the array, in which all the\r\nnumbers, except the maximums. And once for each operation, the numbers\r\nin the subset are increased by one, then how many times can the\r\noperation be performed on the array? Accordingly .\r\n",
+    "hint": []
 }

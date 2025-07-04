@@ -125,5 +125,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Phillip and Trains.json",
     "editorial_link": "https://codeforces.com//blog/entry/20898",
-    "editorial": "One could consider a graph with vertices corresponding to every (x,?y) position. I should notice that train positions for each Phillip position are fully restorable from his y coordinate. Edge between vertices u and v means that we could get from position corresponding to u to position corresponding by v in one turn without moving onto a train cell or moving in a cell which will be occupied by some train before the next turn. All we need next is to find whether any finishing position is reachable from the only starting position (using BFS or DFS, or, as soon as graph is a DAG, dynamic programming)."
+    "editorial": "One could consider a graph with vertices corresponding to every (x,?y) position. I should notice that train positions for each Phillip position are fully restorable from his y coordinate. Edge between vertices u and v means that we could get from position corresponding to u to position corresponding by v in one turn without moving onto a train cell or moving in a cell which will be occupied by some train before the next turn. All we need next is to find whether any finishing position is reachable from the only starting position (using BFS or DFS, or, as soon as graph is a DAG, dynamic programming).",
+    "hint": []
 }

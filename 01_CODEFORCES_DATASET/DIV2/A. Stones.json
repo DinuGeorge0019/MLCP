@@ -105,7 +105,7 @@
         ]
     },
     "name": "A. Stones",
-    "statement": "Alice is playing with some stones.Now there are three numbered heaps of\r\nstones. The first of them contains a stones, the second of them contains\r\nb stones and the third of them contains c stones.Each time she can do\r\none of two operations: take one stone from the first heap and two stones\r\nfrom the second heap (this operation can be done only if the first heap\r\ncontains at least one stone and the second heap contains at least two\r\nstones); take one stone from the second heap and two stones from the\r\nthird heap (this operation can be done only if the second heap contains\r\nat least one stone and the third heap contains at least two stones). She\r\nwants to get the maximum number of stones, but she doesn\u2019t know what to\r\ndo. Initially, she has 0 stones. Can you help her?\r\n",
+    "statement": "Alice is playing with some stones.Now there are three numbered heaps of\r\nstones. The first of them contains a stones, the second of them contains\r\nb stones and the third of them contains c stones.Each time she can do\r\none of two operations: take one stone from the first heap and two stones\r\nfrom the second heap (this operation can be done only if the first heap\r\ncontains at least one stone and the second heap contains at least two\r\nstones); take one stone from the second heap and two stones from the\r\nthird heap (this operation can be done only if the second heap contains\r\nat least one stone and the third heap contains at least two stones). She\r\nwants to get the maximum number of stones, but she doesn’t know what to\r\ndo. Initially, she has 0 stones. Can you help her?\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\n#define int long long\n#define endl '\\n'\ntypedef long long ll;\nint i;\n\nsigned main() {\n    ios::sync_with_stdio(false);\n    cin.tie(0);\n    cout.tie(0);\n\n    int t;\n    cin >> t;\n    while(t--) {\n        int a,b,c;\n        cin >> a >> b >> c;\n        int res = 0;\n        for(int i = 0; i <= a && 2*i <= b; ++i) {\n            int newB = b-i-i;\n            int curr = 3*i;\n            curr +=3*min(newB, c/2);\n            res = max(res, curr);\n        }\n        cout << res << endl;\n    }\n}\n"
     ],
@@ -120,5 +120,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Stones.json",
     "editorial_link": "https://codeforces.com/blog/entry/70654",
-    "editorial": "We can use many ways to solve the problem. If you just enumerate how\r\nmany operations of the first and the second type, it will also pass.Of\r\ncourse there is a greedy solution. We make the second operation as much\r\nas possible, and then use the first operation. It takes time.\r\n"
+    "editorial": "We can use many ways to solve the problem. If you just enumerate how\r\nmany operations of the first and the second type, it will also pass.Of\r\ncourse there is a greedy solution. We make the second operation as much\r\nas possible, and then use the first operation. It takes time.\r\n",
+    "hint": []
 }

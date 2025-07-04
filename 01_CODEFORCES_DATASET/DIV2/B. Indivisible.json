@@ -105,7 +105,7 @@
         ]
     },
     "name": "B. Indivisible",
-    "statement": "You\u2019re given a positive integer n.Find a permutation a_1, a_2,\r\ndots, a_n such that for any 1\r\nleq l < r\r\nleq n, the sum a_l + a_{l+1} +\r\ndots + a_r is not divisible by r-l+1.A permutation of length n is an\r\narray consisting of n distinct integers from 1 to n in arbitrary order.\r\nFor example, [2,3,1,5,4] is a permutation, but [1,2,2] is not a\r\npermutation (2 appears twice in the array), and [1,3,4] is also not a\r\npermutation (n=3 but there is 4 in the array).\r\n",
+    "statement": "You’re given a positive integer n.Find a permutation a_1, a_2,\r\ndots, a_n such that for any 1\r\nleq l < r\r\nleq n, the sum a_l + a_{l+1} +\r\ndots + a_r is not divisible by r-l+1.A permutation of length n is an\r\narray consisting of n distinct integers from 1 to n in arbitrary order.\r\nFor example, [2,3,1,5,4] is a permutation, but [1,2,2] is not a\r\npermutation (2 appears twice in the array), and [1,3,4] is also not a\r\npermutation (n=3 but there is 4 in the array).\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\nusing namespace std;\n\nusing PI = pair<int, int>;\nusing LL = long long;\n\nconst int N = 105;\n\nint main() {\n#ifndef ONLINE_JUDGE\n\tfreopen(\"in.txt\", \"r\", stdin);\n#endif\n\tios::sync_with_stdio(0);\n\tcin.tie(0);\n\t\n\tint T; cin >> T;\n\twhile (T --) {\n\t\tint n; cin >> n;\n\t\tif (n == 1) {\n\t\t\tcout << 1 << endl;\n\t\t\tcontinue;\n\t\t}\n\t\tif (n & 1) {\n\t\t\tcout << -1 << endl;\n\t\t\tcontinue;\n\t\t}\n\t\tfor (int i = 2; i <= n; i += 2) {\n\t\t\tcout << i << ' ' << i - 1 << ' ';\n\t\t}cout << endl;\n\t}\n\treturn 0;\n}\n"
     ],
@@ -118,5 +118,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Indivisible.json",
     "editorial_link": "https://codeforces.com//blog/entry/115586",
-    "editorial": "If is odd, there is no solution, as the sum of the whole array is always\r\ndivisible by . Otherwise, the solution is as follows: Start with the\r\nidentity permutation . Swap the adjacent pairs to get . Indeed, consider\r\nthe sum of a sub-array . There are cases: and have different parity: the\r\nsum is and its greatest common divisor with is , as is not divisible by\r\n; and have the same parity: the sum is or , depending on the parity. The\r\nfirst summand is divisible by , as is even. So, the whole sum has the\r\nremainder or modulo , thus it can\u00e2\u0080\u0099t be divisible by it.\r\n"
+    "editorial": "If is odd, there is no solution, as the sum of the whole array is always\r\ndivisible by . Otherwise, the solution is as follows: Start with the\r\nidentity permutation . Swap the adjacent pairs to get . Indeed, consider\r\nthe sum of a sub-array . There are cases: and have different parity: the\r\nsum is and its greatest common divisor with is , as is not divisible by\r\n; and have the same parity: the sum is or , depending on the parity. The\r\nfirst summand is divisible by , as is even. So, the whole sum has the\r\nremainder or modulo , thus it canât be divisible by it.\r\n",
+    "hint": [
+        "Hint 1 Can you find a necessary condition for whether a Fish Subgraph exists?",
+        "Hint 2 For the Fish Subgraph to exist, the graph must have a cycle with one node in the cycle having degree at least 4.",
+        "Hint 3 When the necessary condition is satisfied, actually, you can always find a Fish Subgraph. Try to prove this, and see if your proof can be turned into an algorithm."
+    ]
 }

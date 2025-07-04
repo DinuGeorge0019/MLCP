@@ -152,5 +152,11 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D1. Zero-One  Easy Version .json",
     "editorial_link": "https://codeforces.com//blog/entry/83109",
-    "editorial": "Consider another binary string , in which (). So doing an\noperation means selecting two indices of and flipping them. Also, let\u00e2\u0080\u0099s\ndefine is the number of in . Because the parity of never changes, the\nanswer is if is odd.If is even, classify the cases: If and two -s are\nadjacent, the answer is . Because holds, we can always replace one -cost\noperation with two -cost operations. If and two -s are not adjacent, the\nanswer is . If , select -th and -th each (). This costs , and we showed\nthe cost cannot be reduced more in hint 3.\n"
+    "editorial": "Consider another binary string , in which (). So doing an\noperation means selecting two indices of and flipping them. Also, letâs\ndefine is the number of in . Because the parity of never changes, the\nanswer is if is odd.If is even, classify the cases: If and two -s are\nadjacent, the answer is . Because holds, we can always replace one -cost\noperation with two -cost operations. If and two -s are not adjacent, the\nanswer is . If , select -th and -th each (). This costs , and we showed\nthe cost cannot be reduced more in hint 3.\n",
+    "hint": [
+        "Hint 1 Consider is another binary string, in which . We have to make equal to using the operation.",
+        "Hint 2 Because the operation does not change the parity of the number of in , the answer is if has odd number of .",
+        "Hint 3 If the number of in is (now assume that is even), at least operations are needed. So total cost would be at least .",
+        "Hint 4 One -cost operation can be replaced with two -cost operations."
+    ]
 }

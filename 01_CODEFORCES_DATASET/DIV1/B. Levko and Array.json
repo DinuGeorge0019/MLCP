@@ -90,5 +90,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Levko and Array.json",
     "editorial_link": "https://codeforces.com//blog/entry/9529",
-    "editorial": "Let\u00e2\u0080\u0099s solve this problem using binary search. We need to check whether\r\nwe can achieve an array, when will be at most . Lets make dp. means\r\nminimal number of elements with indeces less than , which we need to\r\nchange, but we don\u00e2\u0080\u0099t change -th element. Let\u00e2\u0080\u0099s iterate next element ,\r\nwhich we don\u00e2\u0080\u0099t change. Then we know that we can change all elements\r\nbetween and . It is equivalent to such condition Difference between\r\nneighboring elements can be at most . The maximal possible difference\r\nincreases by exactly times between elements and , so this inequality is\r\ncorrect.\r\n"
+    "editorial": "Letâs solve this problem using binary search. We need to check whether\r\nwe can achieve an array, when will be at most . Lets make dp. means\r\nminimal number of elements with indeces less than , which we need to\r\nchange, but we donât change -th element. Letâs iterate next element ,\r\nwhich we donât change. Then we know that we can change all elements\r\nbetween and . It is equivalent to such condition Difference between\r\nneighboring elements can be at most . The maximal possible difference\r\nincreases by exactly times between elements and , so this inequality is\r\ncorrect.\r\n",
+    "hint": []
 }

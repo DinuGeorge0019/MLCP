@@ -130,5 +130,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Common Subsequence.json",
     "editorial_link": "https://codeforces.com//blog/entry/80427",
-    "editorial": "If there is any common subsequence, then there is a common element of\r\nand . And a common element is also a common subsequence of length .\r\nTherefore, we need only find a common element of the two arrays, or say\r\nthat they share no elements.Complexity is if we compare each pair of\r\nelements, if we sort the arrays and take their intersection, or use a\r\nset data structure, or if we use a hash table.\r\n"
+    "editorial": "If there is any common subsequence, then there is a common element of\r\nand . And a common element is also a common subsequence of length .\r\nTherefore, we need only find a common element of the two arrays, or say\r\nthat they share no elements.Complexity is if we compare each pair of\r\nelements, if we sort the arrays and take their intersection, or use a\r\nset data structure, or if we use a hash table.\r\n",
+    "hint": []
 }

@@ -188,5 +188,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\A. Divide and Multiply.json",
     "editorial_link": "https://codeforces.com//blog/entry/97350",
-    "editorial": "First we divide all numbers by , while they\u00e2\u0080\u0099re divisible and calculate ,\r\nthe number of successful divisions. Next we notice that to maximize the\r\nsum we need to multiply by the largest number remaining in the array\r\nafter the described operations.\r\n"
+    "editorial": "First we divide all numbers by , while theyâre divisible and calculate ,\r\nthe number of successful divisions. Next we notice that to maximize the\r\nsum we need to multiply by the largest number remaining in the array\r\nafter the described operations.\r\n",
+    "hint": []
 }

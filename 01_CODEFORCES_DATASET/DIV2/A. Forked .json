@@ -148,7 +148,7 @@
         ]
     },
     "name": "A. Forked ",
-    "statement": "Lunchbox is done with playing chess! His queen and king just got forked\r\nagain!In chess, a fork is when a knight attacks two pieces of higher\r\nvalue, commonly the king and the queen. Lunchbox knows that knights can\r\nbe tricky, and in the version of chess that he is playing, knights are\r\neven trickier: instead of moving 1 tile in one direction and 2 tiles in\r\nthe other, knights in Lunchbox\u2019s modified game move a tiles in one\r\ndirection and b tiles in the other.Lunchbox is playing chess on an\r\ninfinite chessboard which contains all cells (x,y) where x and y are\r\n(possibly negative) integers. Lunchbox\u2019s king and queen are placed on\r\ncells (x_K,y_K) and (x_Q,y_Q) respectively. Find the number of positions\r\nsuch that if a knight was placed on that cell, it would attack both the\r\nking and queen.\r\n",
+    "statement": "Lunchbox is done with playing chess! His queen and king just got forked\r\nagain!In chess, a fork is when a knight attacks two pieces of higher\r\nvalue, commonly the king and the queen. Lunchbox knows that knights can\r\nbe tricky, and in the version of chess that he is playing, knights are\r\neven trickier: instead of moving 1 tile in one direction and 2 tiles in\r\nthe other, knights in Lunchbox’s modified game move a tiles in one\r\ndirection and b tiles in the other.Lunchbox is playing chess on an\r\ninfinite chessboard which contains all cells (x,y) where x and y are\r\n(possibly negative) integers. Lunchbox’s king and queen are placed on\r\ncells (x_K,y_K) and (x_Q,y_Q) respectively. Find the number of positions\r\nsuch that if a knight was placed on that cell, it would attack both the\r\nking and queen.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint T;\n\nint main() {\n\tios::sync_with_stdio(0);\n\tcin.tie(0);\n\tcin >> T;\n\twhile (T--) {\n\t\tint a, b, x, y, z, w;\n\t\tcin >> a >> b >> x >> y >> z >> w;\n\t\tconst int dx[8] = {a, a, -a, -a, b, b, -b, -b};\n\t\tconst int dy[8] = {b, -b, b, -b, a, -a, a, -a};\n\t\tint ans = 0;\n\t\tfor (int i = 0; i < (a == b ? 4 : 8); ++i) {\n\t\t\tint px = x + dx[i], py = y + dy[i];\n\t\t\tint tx = abs(px - z), ty = abs(py - w);\n\t\t\tif ((tx == a && ty == b) || (tx == b && ty == a)) ++ans;\n\t\t} \n\t\tcout << ans << '\\n';\n\t}\n\treturn 0;\n}\n"
     ],
@@ -162,5 +162,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Forked .json",
     "editorial_link": "https://codeforces.com//blog/entry/123160",
-    "editorial": "SolutionThere are at most positions of the knight that can attack a\r\nsingle cell. Therefore, we can find all positions that attack the king\r\nand the positions that attack the queen and count the number of\r\npositions that appear in both of these lists.\r\n"
+    "editorial": "SolutionThere are at most positions of the knight that can attack a\r\nsingle cell. Therefore, we can find all positions that attack the king\r\nand the positions that attack the queen and count the number of\r\npositions that appear in both of these lists.\r\n",
+    "hint": []
 }

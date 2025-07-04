@@ -156,7 +156,7 @@
         ]
     },
     "name": "A. Grasshopper on a Line",
-    "statement": "You are given two integers x and k. Grasshopper starts in a point 0 on\r\nan OX axis. In one move, it can jump some integer distance, , to the\r\nleft or to the right.What\u2019s the smallest number of moves it takes the\r\ngrasshopper to reach point x? What are these moves? If there are\r\nmultiple answers, print any of them.\r\n",
+    "statement": "You are given two integers x and k. Grasshopper starts in a point 0 on\r\nan OX axis. In one move, it can jump some integer distance, , to the\r\nleft or to the right.What’s the smallest number of moves it takes the\r\ngrasshopper to reach point x? What are these moves? If there are\r\nmultiple answers, print any of them.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\nint main(){\n  int t;\n  cin >> t;\n  for (int i = 0; i < t; i++){\n    int x, k;\n    cin >> x >> k;\n    if (x % k != 0){\n      cout << 1 << endl;\n      cout << x << endl;\n    } else if (x % k != 1){\n      cout << 2 << endl;\n      cout << 1 << ' ' << x - 1 << endl;\n    } else {\n      cout << 2 << endl;\n      cout << -1 << ' ' << x + 1 << endl;\n    }\n  }\n}"
     ],
@@ -170,5 +170,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Grasshopper on a Line.json",
     "editorial_link": "https://codeforces.com//blog/entry/116752",
-    "editorial": "When is not divisible by , the grasshopper can reach in just one\r\njump.Otherwise, you can show that two jumps are always enough. For\r\nexample, jumps and . is not divisible by any . Also, and can\u00e2\u0080\u0099t be\r\ndivisible by any at the same time.\r\n"
+    "editorial": "When is not divisible by , the grasshopper can reach in just one\r\njump.Otherwise, you can show that two jumps are always enough. For\r\nexample, jumps and . is not divisible by any . Also, and canât be\r\ndivisible by any at the same time.\r\n",
+    "hint": []
 }

@@ -197,5 +197,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\F. 3SUM.json",
     "editorial_link": "https://codeforces.com//blog/entry/103883",
-    "editorial": "Since we only care about the last digit of the sum , we can ignore all\r\nnumbers other than the last digits of the elements of . (For example, we\r\ncan consider to be the same as .)Now note that if a number appears more\r\nthan times in the array, we can ignore all copies that occur more than\r\ntimes, since our sum only involves three numbers. (For example, we can\r\nconsider to be the same as .)Using these observations, note that there\r\nare only digits, and each digit can occur at most times. So we can\r\nalways reduce the array to one of length . Since is very small, we can\r\nbrute force all triples , which runs quickly enough.Time complexity: .\r\n"
+    "editorial": "Since we only care about the last digit of the sum , we can ignore all\r\nnumbers other than the last digits of the elements of . (For example, we\r\ncan consider to be the same as .)Now note that if a number appears more\r\nthan times in the array, we can ignore all copies that occur more than\r\ntimes, since our sum only involves three numbers. (For example, we can\r\nconsider to be the same as .)Using these observations, note that there\r\nare only digits, and each digit can occur at most times. So we can\r\nalways reduce the array to one of length . Since is very small, we can\r\nbrute force all triples , which runs quickly enough.Time complexity: .\r\n",
+    "hint": []
 }

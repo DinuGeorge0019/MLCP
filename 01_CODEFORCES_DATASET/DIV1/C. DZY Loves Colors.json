@@ -110,5 +110,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. DZY Loves Colors.json",
     "editorial_link": "https://codeforces.com//blog/entry/12959",
-    "editorial": "The only thing you need to notice is that if there are many continuous\r\nunits with the same uppermost color, just merge them in one big unit.\r\nEvery time painting continuous units, such big units will only increase\r\nby at most . Then you can use STL set to solve it. But anyway, a segment\r\ntree is useful enough, check the C++ solution here. The time complexity\r\nis .\r\n"
+    "editorial": "The only thing you need to notice is that if there are many continuous\r\nunits with the same uppermost color, just merge them in one big unit.\r\nEvery time painting continuous units, such big units will only increase\r\nby at most . Then you can use STL set to solve it. But anyway, a segment\r\ntree is useful enough, check the C++ solution here. The time complexity\r\nis .\r\n",
+    "hint": []
 }

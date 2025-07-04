@@ -182,5 +182,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Circle of Students.json",
     "editorial_link": "https://codeforces.com//blog/entry/69108",
-    "editorial": "We just need to find the position of the in the array and then check if\r\nthe sequence is going counterclockwise or clockwise from the position or\r\ncorrespondingly. We can do this by two cycles.Total complexity: .\r\n"
+    "editorial": "We just need to find the position of the in the array and then check if\r\nthe sequence is going counterclockwise or clockwise from the position or\r\ncorrespondingly. We can do this by two cycles.Total complexity: .\r\n",
+    "hint": []
 }

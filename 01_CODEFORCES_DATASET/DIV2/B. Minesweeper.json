@@ -120,5 +120,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Minesweeper.json",
     "editorial_link": "https://codeforces.com//blog/entry/59484",
-    "editorial": "Let\u00e2\u0080\u0099s make two-dimensional array . For each cell if it has bomb in it we\r\nadd in where is neighboring cell for . Now is a number of bombs in\r\nneighboring cells of and we can check validity of field according to the\r\ncondition of the problem: If there is a number in the cell, then exacly\r\nof neighboring cells have bombs. Otherwise, if cell has no bomb, then\r\nneighboring cells have no bombs. Solution\r\n"
+    "editorial": "Letâs make two-dimensional array . For each cell if it has bomb in it we\r\nadd in where is neighboring cell for . Now is a number of bombs in\r\nneighboring cells of and we can check validity of field according to the\r\ncondition of the problem: If there is a number in the cell, then exacly\r\nof neighboring cells have bombs. Otherwise, if cell has no bomb, then\r\nneighboring cells have no bombs. Solution\r\n",
+    "hint": []
 }

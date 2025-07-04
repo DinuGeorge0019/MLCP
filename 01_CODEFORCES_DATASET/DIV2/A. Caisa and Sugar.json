@@ -104,7 +104,7 @@
         ]
     },
     "name": "A. Caisa and Sugar",
-    "statement": "Caisa is going to have a party and he needs to buy the ingredients for a\r\nbig chocolate cake. For that he is going to the biggest supermarket in\r\ntown.Unfortunately, he has just dollars for sugar. But that\u2019s not a\r\nreason to be sad, because there are types of sugar in the supermarket,\r\nmaybe he able to buy one. But that\u2019s not all. The supermarket has very\r\nunusual exchange politics: instead of cents the sellers give sweets to a\r\nbuyer as a change. Of course, the number of given sweets always doesn\u2019t\r\nexceed , because each seller maximizes the number of dollars in the\r\nchange ( cents can be replaced with a dollar).Caisa wants to buy only\r\none type of sugar, also he wants to maximize the number of sweets in the\r\nchange. What is the maximum number of sweets he can get? Note, that\r\nCaisa doesn\u2019t want to minimize the cost of the sugar, he only wants to\r\nget maximum number of sweets as change.\r\n",
+    "statement": "Caisa is going to have a party and he needs to buy the ingredients for a\r\nbig chocolate cake. For that he is going to the biggest supermarket in\r\ntown.Unfortunately, he has just dollars for sugar. But that’s not a\r\nreason to be sad, because there are types of sugar in the supermarket,\r\nmaybe he able to buy one. But that’s not all. The supermarket has very\r\nunusual exchange politics: instead of cents the sellers give sweets to a\r\nbuyer as a change. Of course, the number of given sweets always doesn’t\r\nexceed , because each seller maximizes the number of dollars in the\r\nchange ( cents can be replaced with a dollar).Caisa wants to buy only\r\none type of sugar, also he wants to maximize the number of sweets in the\r\nchange. What is the maximum number of sweets he can get? Note, that\r\nCaisa doesn’t want to minimize the cost of the sugar, he only wants to\r\nget maximum number of sweets as change.\r\n",
     "solutions": [
         "#include <stdio.h>\n#include <string.h>\n#include <algorithm>\n#include <vector>\n#include <map>\n#include <set>\n#include <string>\n#include <functional>\n\ntypedef long long lld;\n\nconst int N = 100 + 5;\n\nint n,s,A[N],B[N];\n\nint main() {\n    scanf(\"%d%d\",&n,&s);\n    int answer = -1;\n    for (int i = 0; i < n; ++ i) {\n        scanf(\"%d%d\",A+i,B+i);\n        int need = A[i] + (B[i]>0);\n        if (s < need) continue;\n        if (B[i]==0) {\n            answer = std::max(answer,0);\n        } else {\n            int value = 100 - B[i];\n            answer = std::max(answer,value);\n        }\n    }\n    printf(\"%d\\n\",answer);\n    return 0;\n}"
     ],
@@ -118,5 +118,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Caisa and Sugar.json",
     "editorial_link": "https://codeforces.com/blog/entry/13631",
-    "editorial": " This is a simple implementation problem."
+    "editorial": " This is a simple implementation problem.",
+    "hint": []
 }

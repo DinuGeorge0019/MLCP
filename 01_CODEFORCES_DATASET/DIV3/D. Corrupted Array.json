@@ -175,5 +175,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\D. Corrupted Array.json",
     "editorial_link": "https://codeforces.com//blog/entry/89535",
-    "editorial": "What is the sum of all the elements in ? This is twice the sum of all\r\nthe elements in + .Denote by the sum of all the elements of . Let\u00e2\u0080\u0099s\r\niterate over which of the array elements was added as the sum of the\r\nelements (let\u00e2\u0080\u0099s denote, for ). Then, = . It remains to check that the\r\nelement is present in the array , this can be done using a hash table or\r\na binary search tree.\r\n"
+    "editorial": "What is the sum of all the elements in ? This is twice the sum of all\r\nthe elements in + .Denote by the sum of all the elements of . Letâs\r\niterate over which of the array elements was added as the sum of the\r\nelements (letâs denote, for ). Then, = . It remains to check that the\r\nelement is present in the array , this can be done using a hash table or\r\na binary search tree.\r\n",
+    "hint": []
 }

@@ -100,5 +100,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Ciel and Flowers.json",
     "editorial_link": "https://codeforces.com//blog/entry/8192",
-    "editorial": "If there are no \"mixing bouquet\" then the answer will be r/3 + g/3 +\r\nb/3. One important observation is that: There always exist an optimal\r\nsolution with less than 3 mixing bouquet. The proof is here: Once we get\r\n3 mixing bouquet, we can change it to (1 red bouquet + 1 green bouquet +\r\n1 blue bouquet) So we can try 0, 1, 2 mixing bouquet and make the remain\r\n3 kind of bouquets use above greedy method. Output one with largest\r\noutcome.\r\n"
+    "editorial": "If there are no \"mixing bouquet\" then the answer will be r/3 + g/3 +\r\nb/3. One important observation is that: There always exist an optimal\r\nsolution with less than 3 mixing bouquet. The proof is here: Once we get\r\n3 mixing bouquet, we can change it to (1 red bouquet + 1 green bouquet +\r\n1 blue bouquet) So we can try 0, 1, 2 mixing bouquet and make the remain\r\n3 kind of bouquets use above greedy method. Output one with largest\r\noutcome.\r\n",
+    "hint": []
 }

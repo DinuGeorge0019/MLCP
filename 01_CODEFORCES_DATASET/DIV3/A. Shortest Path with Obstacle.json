@@ -178,5 +178,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Shortest Path with Obstacle.json",
     "editorial_link": "https://codeforces.com//blog/entry/92715",
-    "editorial": "Let\u00e2\u0080\u0099s suppose that the forbidden cell does not affect the shortest path.\r\nIn that case, the answer would be .The forbidden cell blocks the\r\nshortest path if and only if it belongs to every shortest path. In other\r\nwords, if there is only one shortest path and the forbidden cell belongs\r\nto it. So, the answer differs from if and only if and are in one row or\r\ncolumn and is between them. In that case, the answer is (i.e. greater by\r\n).In order to check that point lays between and on a straight line, just\r\ncheck .So, the correct solution looks like this:\r\n"
+    "editorial": "Letâs suppose that the forbidden cell does not affect the shortest path.\r\nIn that case, the answer would be .The forbidden cell blocks the\r\nshortest path if and only if it belongs to every shortest path. In other\r\nwords, if there is only one shortest path and the forbidden cell belongs\r\nto it. So, the answer differs from if and only if and are in one row or\r\ncolumn and is between them. In that case, the answer is (i.e. greater by\r\n).In order to check that point lays between and on a straight line, just\r\ncheck .So, the correct solution looks like this:\r\n",
+    "hint": []
 }

@@ -152,5 +152,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Diluc and Kaeya.json",
     "editorial_link": "https://codeforces.com//blog/entry/91520",
-    "editorial": "SolutionFor each prefix, label it with a pair where = frequency of D in\r\nthis prefix and = frequency of K in this prefix. Divide and by . If we\r\niterate over all prefixes from to left, we can notice that the answer\r\nfor the prefix equals the of occurrences of this pair we have seen so\r\nfar! This can be visualized by drawing a poly-line as mentioned in the\r\nhints.As for implementation, you can use a map in C++ or a HashMap in\r\nJava to achieve or runtime.\r\n"
+    "editorial": "SolutionFor each prefix, label it with a pair where = frequency of D in\r\nthis prefix and = frequency of K in this prefix. Divide and by . If we\r\niterate over all prefixes from to left, we can notice that the answer\r\nfor the prefix equals the of occurrences of this pair we have seen so\r\nfar! This can be visualized by drawing a poly-line as mentioned in the\r\nhints.As for implementation, you can use a map in C++ or a HashMap in\r\nJava to achieve or runtime.\r\n",
+    "hint": [
+        "Hint 1 Turn into geometry problem",
+        "Hint 2 Represent every prefix as point in cartesian plane where = frequency of ‘D’ and = frequency of ‘K’. Draw a polyline connecting these points in order of increasing length of prefix.",
+        "Hint 3 Draw a line from origin to point. What can we say about intersections of poly-line with this line?"
+    ]
 }

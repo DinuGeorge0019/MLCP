@@ -204,5 +204,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\A. Good Pairs.json",
     "editorial_link": "https://codeforces.com//blog/entry/101211",
-    "editorial": "By the triangle inequality, for all real numbers , we have: with\r\nequality if and only if .Now, take indices and such that and are the\r\nmaximum and minimum values of the array, respectively. Then, for each\r\nindex , we have , meaning that , as we desired.\r\n"
+    "editorial": "By the triangle inequality, for all real numbers , we have: with\r\nequality if and only if .Now, take indices and such that and are the\r\nmaximum and minimum values of the array, respectively. Then, for each\r\nindex , we have , meaning that , as we desired.\r\n",
+    "hint": []
 }

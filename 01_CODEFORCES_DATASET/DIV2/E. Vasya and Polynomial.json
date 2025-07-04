@@ -105,5 +105,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Vasya and Polynomial.json",
     "editorial_link": "https://codeforces.com//blog/entry/14985",
-    "editorial": "Let\u00e2\u0080\u0099s discuss 2 case. 1) t!=1 2) t=1. 1) If our function is not constant\r\n(n>=1) than a is greater all the coefficients, so the only polynom can\r\nbe the number b in the a-ary counting system. We must only check that\r\none and constant function. 2)if t=1 must be careful: in case 1 1 1: the\r\nanswer is inf, in case 1 1 n: the answer is 0 in case 1 ^x(x-integer,\r\nx>0): the answer is 1 in the other cases P(1) is greater than other\r\ncoefficients.\r\n"
+    "editorial": "Letâs discuss 2 case. 1) t!=1 2) t=1. 1) If our function is not constant\r\n(n>=1) than a is greater all the coefficients, so the only polynom can\r\nbe the number b in the a-ary counting system. We must only check that\r\none and constant function. 2)if t=1 must be careful: in case 1 1 1: the\r\nanswer is inf, in case 1 1 n: the answer is 0 in case 1 ^x(x-integer,\r\nx>0): the answer is 1 in the other cases P(1) is greater than other\r\ncoefficients.\r\n",
+    "hint": []
 }

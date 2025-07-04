@@ -116,5 +116,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Balanced Array.json",
     "editorial_link": "https://codeforces.com//blog/entry/76352",
-    "editorial": "Firstly, if is not divisible by then the answer is \"\" because the\r\nparities of halves won\u00e2\u0080\u0099t match. Otherwise, the answer is always \"\".\r\nLet\u00e2\u0080\u0099s construct it as follows: firstly, let\u00e2\u0080\u0099s create the array . This\r\narray is almost good except one thing: the sum in the right half is\r\nexactly less than the sum in the left half. So we can fix it easily:\r\njust add to the last element.\r\n"
+    "editorial": "Firstly, if is not divisible by then the answer is \"\" because the\r\nparities of halves wonât match. Otherwise, the answer is always \"\".\r\nLetâs construct it as follows: firstly, letâs create the array . This\r\narray is almost good except one thing: the sum in the right half is\r\nexactly less than the sum in the left half. So we can fix it easily:\r\njust add to the last element.\r\n",
+    "hint": []
 }

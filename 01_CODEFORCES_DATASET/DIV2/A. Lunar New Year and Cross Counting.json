@@ -155,7 +155,7 @@
         ]
     },
     "name": "A. Lunar New Year and Cross Counting",
-    "statement": "This matrix M of size n\r\ntimes n contains only \u201d and \u201d (without quotes). The element in the i-th\r\nrow and the j-th column (i, j) is defined as M(i, j), where 1\r\nleq i, j\r\nleq n. We define a appearing in the i-th row and the j-th column (1 < i,\r\nj < n) if and only if M(i, j) = M(i - 1, j - 1) = M(i - 1, j + 1) =\r\nM(i + 1, j - 1) = M(i + 1, j + 1) = \u201d.The following figure illustrates a\r\ncross appearing at position (2, 2) in a 3\r\ntimes 3 matrix. X.X.X.X.X Your task is to find out the number of in the\r\ngiven matrix M. Two are different if and only if they appear in\r\ndifferent rows or columns.\r\n",
+    "statement": "This matrix M of size n\r\ntimes n contains only ” and ” (without quotes). The element in the i-th\r\nrow and the j-th column (i, j) is defined as M(i, j), where 1\r\nleq i, j\r\nleq n. We define a appearing in the i-th row and the j-th column (1 < i,\r\nj < n) if and only if M(i, j) = M(i - 1, j - 1) = M(i - 1, j + 1) =\r\nM(i + 1, j - 1) = M(i + 1, j + 1) = ”.The following figure illustrates a\r\ncross appearing at position (2, 2) in a 3\r\ntimes 3 matrix. X.X.X.X.X Your task is to find out the number of in the\r\ngiven matrix M. Two are different if and only if they appear in\r\ndifferent rows or columns.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\n\nconst int N = 550;\nchar s[N][N];\n\nint main() {\n\tint n; cin >> n;\n\tfor (int i = 1; i <= n; i++) cin >> s[i] + 1;\n\tint cn = 0;\n\tfor (int i = 2; i < n; i++)\n\t\tfor (int j = 2; j < n; j++) {\n\t\t\tif (s[i][j] == 'X' && s[i - 1][j - 1] == 'X' && s[i - 1][j + 1] == 'X' && s[i + 1][j - 1] == 'X' && s[i + 1][j + 1] == 'X') cn++;\n\t\t}\n\tcout << cn << endl;\t\t\n\treturn 0;\n}\n\t"
     ],
@@ -168,5 +168,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Lunar New Year and Cross Counting.json",
     "editorial_link": "https://codeforces.com/blog/entry/64928",
-    "editorial": "The solution is simple: Just check if can appear in every positions. Two\r\nnesting for-loops will be enough to solve this problem.\r\n"
+    "editorial": "The solution is simple: Just check if can appear in every positions. Two\r\nnesting for-loops will be enough to solve this problem.\r\n",
+    "hint": []
 }

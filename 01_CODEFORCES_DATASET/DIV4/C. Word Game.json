@@ -178,5 +178,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\C. Word Game.json",
     "editorial_link": "https://codeforces.com//blog/entry/106478",
-    "editorial": "You need to implement what is written in the statement. To quickly check\r\nif a word is written by another guy, you should store some or Python\r\ndictionary, and increment every time you see a new string in the input.\r\nThen, you should iterate through each guy, find the number of times\r\ntheir word appears, and update their score. The complexity is per\r\ntestcase.\r\n"
+    "editorial": "You need to implement what is written in the statement. To quickly check\r\nif a word is written by another guy, you should store some or Python\r\ndictionary, and increment every time you see a new string in the input.\r\nThen, you should iterate through each guy, find the number of times\r\ntheir word appears, and update their score. The complexity is per\r\ntestcase.\r\n",
+    "hint": []
 }

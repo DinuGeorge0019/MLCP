@@ -145,11 +145,11 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/137018",
-    "editorial": "The main idea of this problem is that these operations only change\r\nelements on the positions with the same parity. So, we can solve for\r\nelements on odd and even positions independently.Let\u00e2\u0080\u0099s make two arrays\r\nand the first one will consist of all the elements on the odd positions,\r\nand the second one will consist of all the elements on the even\r\npositions. Now we can rewrite given operations as: pick any array or ,\r\nafter that pick any two adjacent elements and subtract from one of these\r\nelements and add to another. In order to make all the elements in array\r\nequal, the sum of all elements in must be divisible by , and also the\r\nsum of all the elements in must be divisible by , where is the length of\r\narray . And also to make all the elements of the initial array equal,\r\nmust be satisfied. If all these conditions are satisfied, the answer is\r\n\"YES\", otherwise \"NO\".\r\n",
+    "editorial": "The main idea of this problem is that these operations only change\r\nelements on the positions with the same parity. So, we can solve for\r\nelements on odd and even positions independently.Letâs make two arrays\r\nand the first one will consist of all the elements on the odd positions,\r\nand the second one will consist of all the elements on the even\r\npositions. Now we can rewrite given operations as: pick any array or ,\r\nafter that pick any two adjacent elements and subtract from one of these\r\nelements and add to another. In order to make all the elements in array\r\nequal, the sum of all elements in must be divisible by , and also the\r\nsum of all the elements in must be divisible by , where is the length of\r\narray . And also to make all the elements of the initial array equal,\r\nmust be satisfied. If all these conditions are satisfied, the answer is\r\n\"YES\", otherwise \"NO\".\r\n",
     "name": "B. Transfusion",
     "statement": "You are given an array a of length n. In one operation, you can pick an\r\nindex i from 2 to n-1 inclusive, and do one of the following actions:\r\nDecrease a_{i-1} by 1, then increase a_{i+1} by 1. Decrease a_{i+1} by\r\n1, then increase a_{i-1} by 1. After each operation, all the values must\r\nbe non-negative. Can you make all the elements equal after any number of\r\noperations?\r\n",
     "solutions": [
-        "#include <bits/stdc++.h>using namespace std;\u00a0typedef long long ll;\u00a0int main(){    ios::sync_with_stdio(false);    cin.tie(0);    int t;    cin >> t;    while(t--){        int n;        cin >> n;        vector<ll> a(n);        ll total =0;        for(int i=0;i<n;i++){            cin >> a[i];            total += a[i];        }        if(total % n !=0){            cout << \"NO\\n\";            continue;        }        ll target = total /n;        ll sum_odd=0;        for(int i=0;i<n;i+=2){            sum_odd += a[i];        }        ll ceil_n_half = (n +1)/2;        if(sum_odd == ceil_n_half * target){            cout << \"YES\\n\";        }        else{            cout << \"NO\\n\";        }    }}"
+        "#include <bits/stdc++.h>using namespace std; typedef long long ll; int main(){    ios::sync_with_stdio(false);    cin.tie(0);    int t;    cin >> t;    while(t--){        int n;        cin >> n;        vector<ll> a(n);        ll total =0;        for(int i=0;i<n;i++){            cin >> a[i];            total += a[i];        }        if(total % n !=0){            cout << \"NO\\n\";            continue;        }        ll target = total /n;        ll sum_odd=0;        for(int i=0;i<n;i+=2){            sum_odd += a[i];        }        ll ceil_n_half = (n +1)/2;        if(sum_odd == ceil_n_half * target){            cout << \"YES\\n\";        }        else{            cout << \"NO\\n\";        }    }}"
     ],
     "input": "",
     "output": "",
@@ -160,5 +160,6 @@
     ],
     "dificulty": "1100",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Transfusion.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Transfusion.json",
+    "hint": []
 }

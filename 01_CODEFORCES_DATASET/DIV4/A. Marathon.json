@@ -196,5 +196,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\A. Marathon.json",
     "editorial_link": "https://codeforces.com//blog/entry/103883",
-    "editorial": "We can re-word the problem to count the number of numbers from that are\r\nlarger than . A possible way to do this is by keeping a variable that\r\ngets incremented every time we checked using the if statement whether a\r\nnumber is larger than . The complexity is .\r\n"
+    "editorial": "We can re-word the problem to count the number of numbers from that are\r\nlarger than . A possible way to do this is by keeping a variable that\r\ngets incremented every time we checked using the if statement whether a\r\nnumber is larger than . The complexity is .\r\n",
+    "hint": []
 }

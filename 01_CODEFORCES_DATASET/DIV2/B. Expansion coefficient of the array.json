@@ -107,7 +107,7 @@
         ]
     },
     "name": "B. Expansion coefficient of the array",
-    "statement": "Let\u2019s call an array of non-negative integers a_1, a_2,\r\nldots, a_n a k-extension for some non-negative integer k if for all\r\npossible pairs of indices 1\r\nleq i, j\r\nleq n the inequality k\r\ncdot |i - j|\r\nleq min(a_i, a_j) is satisfied. The expansion coefficient of the array a\r\nis the maximal integer k such that the array a is a k-extension. Any\r\narray is a 0-expansion, so the expansion coefficient always exists.You\r\nare given an array of non-negative integers a_1, a_2,\r\nldots, a_n. Find its expansion coefficient.\r\n",
+    "statement": "Let’s call an array of non-negative integers a_1, a_2,\r\nldots, a_n a k-extension for some non-negative integer k if for all\r\npossible pairs of indices 1\r\nleq i, j\r\nleq n the inequality k\r\ncdot |i - j|\r\nleq min(a_i, a_j) is satisfied. The expansion coefficient of the array a\r\nis the maximal integer k such that the array a is a k-extension. Any\r\narray is a 0-expansion, so the expansion coefficient always exists.You\r\nare given an array of non-negative integers a_1, a_2,\r\nldots, a_n. Find its expansion coefficient.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\n\nconst int N = 330000;\n\nint a[N];\n\nint main() {\n#ifndef ONLINE_JUDGE\n\tfreopen(\"in.txt\", \"r\", stdin);\n\tfreopen(\"out.txt\", \"w\", stdout);\n#endif\n\tios_base::sync_with_stdio(0);\n\tcin.tie(0); cout.tie(0);\n\tint n; cin >> n;\n\tfor (int i = 1; i <= n; i++) cin >> a[i];\n\tint ans = INT_MAX;\n\tfor (int i = 1; i <= n; i++) {\n\t\tif (i > 1) ans = min(ans, a[i] / (i - 1));\n\t\tif (i < n) ans = min(ans, a[i] / (n - i));\n\t}\n\tcout << ans << endl;\n\treturn 0;\n}\n\n"
     ],
@@ -121,5 +121,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Expansion coefficient of the array.json",
     "editorial_link": "https://codeforces.com/blog/entry/66993?locale=en",
-    "editorial": "Let our array be a -extension. All inequalities for can be changed to .\r\nFor all inequalities are always true, because all numbers are\r\nnon-negative. So, the maximum possible value of is equal to the minimum\r\nof for all . Let\u00e2\u0080\u0099s note, that . So, we need to take a minimum of for all\r\n. If we will fix the minimum value for all is equal to and it is reached\r\nat the maximum denominator value, because .So the answer is equal to and\r\nit can be simply found by linear time.Complexity: .\r\n"
+    "editorial": "Let our array be a -extension. All inequalities for can be changed to .\r\nFor all inequalities are always true, because all numbers are\r\nnon-negative. So, the maximum possible value of is equal to the minimum\r\nof for all . Letâs note, that . So, we need to take a minimum of for all\r\n. If we will fix the minimum value for all is equal to and it is reached\r\nat the maximum denominator value, because .So the answer is equal to and\r\nit can be simply found by linear time.Complexity: .\r\n",
+    "hint": []
 }

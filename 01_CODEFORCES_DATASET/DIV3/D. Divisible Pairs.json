@@ -182,5 +182,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\D. Divisible Pairs.json",
     "editorial_link": "https://codeforces.com//blog/entry/125878",
-    "editorial": "Let\u00e2\u0080\u0099s consider a good pair.Since , it follows that , which implies that\r\nis either or . Therefore, for some , this holds true if .Since , it\r\nfollows that , which implies that .Thus, for some fixed , all will fit\r\nthe following criteria: ; ; .We will iterate through from left to right\r\nand maintain the count of elements with specific pairs using a on the\r\nprefix.\r\n"
+    "editorial": "Letâs consider a good pair.Since , it follows that , which implies that\r\nis either or . Therefore, for some , this holds true if .Since , it\r\nfollows that , which implies that .Thus, for some fixed , all will fit\r\nthe following criteria: ; ; .We will iterate through from left to right\r\nand maintain the count of elements with specific pairs using a on the\r\nprefix.\r\n",
+    "hint": []
 }

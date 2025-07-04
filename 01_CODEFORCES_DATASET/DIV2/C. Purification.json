@@ -105,5 +105,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Purification.json",
     "editorial_link": "https://codeforces.com//blog/entry/8417",
-    "editorial": "Obviously the minimum possible answer is n (why?). But is it always possible to purify all the cells with n spells?\nIf there exist a row consisting of entirely \"E\" cells and a column consisting of entirely \"E\" cells, then the answer is -1. This is since the cell with that row and that column cannot be purifed.\nOtherwise, without loss of generality let's suppose there is no row consisting entirely of \"E\". Then, for each row, find any \".\" cell. Purify it. The case with no column consisting entirely of \"E\" is similar."
+    "editorial": "Obviously the minimum possible answer is n (why?). But is it always possible to purify all the cells with n spells?\nIf there exist a row consisting of entirely \"E\" cells and a column consisting of entirely \"E\" cells, then the answer is -1. This is since the cell with that row and that column cannot be purifed.\nOtherwise, without loss of generality let's suppose there is no row consisting entirely of \"E\". Then, for each row, find any \".\" cell. Purify it. The case with no column consisting entirely of \"E\" is similar.",
+    "hint": []
 }

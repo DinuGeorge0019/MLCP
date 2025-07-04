@@ -114,5 +114,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Dima and Lisa.json",
     "editorial_link": "https://codeforces.com//blog/entry/20766",
-    "editorial": "There is a fact that the distance between adjacent prime numbers isn\u00e2\u0080\u0099t\r\nbig. For maximal distanse is . So let\u00e2\u0080\u0099s find maximal prime , such that\r\n(we can just decrease n while it\u00e2\u0080\u0099s not prime(we can check it in )). We\r\nknow that . Now we have even (because and are odd) number and we should\r\ndivide it into a sum of two primes. As , we can just iterate over small\r\nprimes and check if is prime and is prime. You can check that there is a\r\nsolution for all even numbers less than by bruteforce.\r\n"
+    "editorial": "There is a fact that the distance between adjacent prime numbers isnât\r\nbig. For maximal distanse is . So letâs find maximal prime , such that\r\n(we can just decrease n while itâs not prime(we can check it in )). We\r\nknow that . Now we have even (because and are odd) number and we should\r\ndivide it into a sum of two primes. As , we can just iterate over small\r\nprimes and check if is prime and is prime. You can check that there is a\r\nsolution for all even numbers less than by bruteforce.\r\n",
+    "hint": []
 }

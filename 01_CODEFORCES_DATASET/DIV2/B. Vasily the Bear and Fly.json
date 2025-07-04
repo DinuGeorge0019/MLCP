@@ -110,5 +110,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Vasily the Bear and Fly.json",
     "editorial_link": "https://codeforces.com//blog/entry/8574",
-    "editorial": "Also you could iterate circles, adding distance for each of them and\r\ndividing by in the end. Let\u00e2\u0080\u0099s see how the -th iteration works . Distance\r\nto -th circle is . Distance to -th circle, where , is . For other\r\ncircles it\u00e2\u0080\u0099s quite simple to calculate sum of distances. There are\r\ncircles which located to the left of current circle. So, sum of\r\ndistances for these circles is . In the same manner we can calculate\r\nanswer for cirlcles which are located to the right of the current circle\r\nAuthor\u00e2\u0080\u0099s solution\r\n"
+    "editorial": "Also you could iterate circles, adding distance for each of them and\r\ndividing by in the end. Letâs see how the -th iteration works . Distance\r\nto -th circle is . Distance to -th circle, where , is . For other\r\ncircles itâs quite simple to calculate sum of distances. There are\r\ncircles which located to the left of current circle. So, sum of\r\ndistances for these circles is . In the same manner we can calculate\r\nanswer for cirlcles which are located to the right of the current circle\r\nAuthorâs solution\r\n",
+    "hint": []
 }

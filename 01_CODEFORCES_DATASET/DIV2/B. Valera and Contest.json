@@ -107,5 +107,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Valera and Contest.json",
     "editorial_link": "https://codeforces.com//blog/entry/9760",
-    "editorial": "In this task you are to determine such array , that following conditions\r\nare met: It\u00e2\u0080\u0099s clear to understand, that value should be distributed\r\nevenly between the first elements. For example, you can use following\r\nalgorithm: If , you should use same algorithm with other elements, but\r\nthere are to distribute value . Some participants forgot about test,\r\nwhere . They received RE11. Author\u00e2\u0080\u0099s solution: 5306414\r\n"
+    "editorial": "In this task you are to determine such array , that following conditions\r\nare met: Itâs clear to understand, that value should be distributed\r\nevenly between the first elements. For example, you can use following\r\nalgorithm: If , you should use same algorithm with other elements, but\r\nthere are to distribute value . Some participants forgot about test,\r\nwhere . They received RE11. Authorâs solution: 5306414\r\n",
+    "hint": []
 }

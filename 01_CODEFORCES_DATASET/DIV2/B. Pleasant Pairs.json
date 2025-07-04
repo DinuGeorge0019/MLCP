@@ -107,5 +107,26 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Pleasant Pairs.json",
     "editorial_link": "https://codeforces.com//blog/entry/92199",
-    "editorial": "Loop over all values of and . Because , we only care about pairs if .\r\nThe number of such pairs is , so you can brute force all pairs.The\r\nreason the total number of pairs is is because if the first element of\r\nthe pair is , there are only possible values of . by the harmonic\r\nseries. Thus the solution runs in time total.\r\n"
+    "editorial": "Loop over all values of and . Because , we only care about pairs if .\r\nThe number of such pairs is , so you can brute force all pairs.The\r\nreason the total number of pairs is is because if the first element of\r\nthe pair is , there are only possible values of . by the harmonic\r\nseries. Thus the solution runs in time total.\r\n",
+    "hint": [
+        "Hint",
+        "Hint The number of pairs such that is .",
+        "Hint What's the minimum value that an edge from to can be?",
+        "Hint Use edges with negative value whenever you can.",
+        "Hint The sum of the values of edges with positive weight must be the maximum value in the array.",
+        "Hint Fix the initial node chosen and root the tree there, what is the contribution of each pair of nodes?",
+        "Hint Nothing matters besides the path from node to node , and the initially chosen node .",
+        "Hint You are given two stacks of size and . In a single step, you randomly choose a stack to remove a single item from. What is the probability that becomes before ? Can you extend this argument for an arbitrary probability to remove from one of the two stacks, and a probability of to do nothing?",
+        "Hint What are the invariants? The monovariants?",
+        "Hint What is the prefix sum array of the converged array? What is the difference array of the converged array?",
+        "Hint What if you conducted the process on a prefix of size , then of size , and on and on?",
+        "Hint How many values are actually interesting?",
+        "Hint The answer is always unique.",
+        "Hint Try to figure out what the location of the -th element would be if you only looked at the first elements, then the first , etc. to find an solution.",
+        "Hint Use sqrt decomposition to optimize it.",
+        "Hint How much does each chef's initial dish contribute at time ?",
+        "Hint What if you really, really wanted to use matrix exponentiation?",
+        "Hint How can you multiply some vectors by a matrix in time? (go back to linear algebra class)",
+        "Hint Decompose into linear combinations of eigenvectors."
+    ]
 }

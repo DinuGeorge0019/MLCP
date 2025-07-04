@@ -85,7 +85,7 @@
         ]
     },
     "name": "A. Snow Footprints",
-    "statement": "There is a straight snowy road, divided into blocks. The blocks are\r\nnumbered from 1 to from left to right. If one moves from the -th block\r\nto the -th block, he will leave a right footprint on the -th block.\r\nSimilarly, if one moves from the -th block to the -th block, he will\r\nleave a left footprint on the -th block. If there already is a footprint\r\non the -th block, the new footprint will cover the old one. At the\r\nbeginning, there were no footprints. Then polar bear Alice starts from\r\nthe -th block, makes a sequence of moves and ends in the -th block. It\r\nis known that Alice never moves outside of the road. You are given the\r\ndescription of Alice\u2019s footprints. Your task is to find a pair of\r\npossible values of by looking at the footprints.\r\n",
+    "statement": "There is a straight snowy road, divided into blocks. The blocks are\r\nnumbered from 1 to from left to right. If one moves from the -th block\r\nto the -th block, he will leave a right footprint on the -th block.\r\nSimilarly, if one moves from the -th block to the -th block, he will\r\nleave a left footprint on the -th block. If there already is a footprint\r\non the -th block, the new footprint will cover the old one. At the\r\nbeginning, there were no footprints. Then polar bear Alice starts from\r\nthe -th block, makes a sequence of moves and ends in the -th block. It\r\nis known that Alice never moves outside of the road. You are given the\r\ndescription of Alice’s footprints. Your task is to find a pair of\r\npossible values of by looking at the footprints.\r\n",
     "solutions": [
         "//In the Name of GOD\n#include <iostream>\n#include <vector>\n#include <cmath>\n#include <cstring>\n#include <algorithm>\n#define MOD 1000000007ll\n\nusing namespace std;\n\n\n\n\nint main()\n{\n\tlong long n;\n\tcin>>n;\n\tstring s;\n\tcin>>s;\n\tbool r=0,l=0;\n\tfor(int i=0;i<n;i++)\n\t{\n\t\tif(s[i]=='R')\n\t\t\tr=1;\n\t\tif(s[i]=='L')\n\t\t\tl=1;\n\t}\n\tif(r==0)\n\t{\n\t\tfor(int i=0;i<n;i++)\n\t\t\tif(s[i]=='L')\n\t\t\t{\n\t\t\t\tcout<<i+1<<\" \"<<i;\n\t\t\t\treturn 0;\n\t\t\t}\n\t}\n\tif(l==0)\n\t{\n\t\tfor(int i=n-1;i>0;i--)\n\t\t\tif(s[i]=='R')\n\t\t\t{\n\t\t\t\tcout<<i+1<<\" \"<<i+2;\n\t\t\t\treturn 0;\n\t\t\t}\n\t}\n\tfor(int i=0;i<n;i++)\n\t\tif(s[i]=='R')\n\t\t{\n\t\t\tcout<<i+1<<\" \";\n\t\t\tbreak;\n\t\t}\n\tfor(int i=0;i<n;i++)\n\t\tif(s[i]=='L')\n\t\t{\n\t\t\tcout<<i;\n\t\t\tbreak;\n\t\t}\n\treturn 0;\n}\n"
     ],
@@ -99,5 +99,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Snow Footprints.json",
     "editorial_link": "https://codeforces.com//blog/entry/7437",
-    "editorial": "The starting position can be anywhere with a footprint. The footprints\r\ncan be categorized into 3 types. In case 1, we end in the left of all\r\nfootprints. In case 2, we end in the right of all footprints. In case 3,\r\nwe either end in the rightmost or the leftmost\r\n"
+    "editorial": "The starting position can be anywhere with a footprint. The footprints\r\ncan be categorized into 3 types. In case 1, we end in the left of all\r\nfootprints. In case 2, we end in the right of all footprints. In case 3,\r\nwe either end in the rightmost or the leftmost\r\n",
+    "hint": []
 }

@@ -117,5 +117,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Modulo Equality.json",
     "editorial_link": "https://codeforces.com//blog/entry/72358",
-    "editorial": "There exists some , such that . Let\u00e2\u0080\u0099s enumerate it, then is . Like that\r\nyou can get candidates, each of them can be checked in with sort or in\r\nif you will note that the order is just cyclically shifting.Also, this\r\nproblem can be solved in with some string matching algorithms, I will\r\nleave it as a bonus.\r\n"
+    "editorial": "There exists some , such that . Letâs enumerate it, then is . Like that\r\nyou can get candidates, each of them can be checked in with sort or in\r\nif you will note that the order is just cyclically shifting.Also, this\r\nproblem can be solved in with some string matching algorithms, I will\r\nleave it as a bonus.\r\n",
+    "hint": []
 }

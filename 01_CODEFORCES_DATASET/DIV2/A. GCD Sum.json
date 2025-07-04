@@ -136,5 +136,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. GCD Sum.json",
     "editorial_link": "https://codeforces.com//blog/entry/89137",
-    "editorial": "Therefore, for the input n\n, we can simply check which one of n\n, n+1\n, and n+2\n has its gcd-sum >1\n, and print the lowest of them."
+    "editorial": "Therefore, for the input n\n, we can simply check which one of n\n, n+1\n, and n+2\n has its gcd-sum >1\n, and print the lowest of them.",
+    "hint": [
+        "Hint Can you think of the simplest properties that relate a number and its sum of digits?",
+        "Hint 2 Note that if is a multiple of 3, then both as well as the sum of digits of are a multiple of 3! Can you put this property to use here?",
+        "Hint 3 If is a multiple of 3, then . Therefore, we are guaranteed that at least every third number will satisfy the constraints required by our problem ."
+    ]
 }

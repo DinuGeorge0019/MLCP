@@ -180,5 +180,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C. Thermostat.json",
     "editorial_link": "https://codeforces.com//blog/entry/109254",
-    "editorial": "First let\u00e2\u0080\u0099s consider the cases when the answer exists: If , then the\r\nthermostat is already set up and the answer is . else if , then it is\r\nenough to reconfigure the thermostat in operation. else if exist such\r\ntemperature , that and , then you can configure the thermostat in\r\noperations. If such exists between and , we can chose one of bounds: or\r\n. we need to make operations if times if we cannot reconfigure through\r\none of the boundaries as above, but we can through both: or If we can\u00e2\u0080\u0099t\r\nget the temperature in one of these ways, the answer is .\r\n"
+    "editorial": "First letâs consider the cases when the answer exists: If , then the\r\nthermostat is already set up and the answer is . else if , then it is\r\nenough to reconfigure the thermostat in operation. else if exist such\r\ntemperature , that and , then you can configure the thermostat in\r\noperations. If such exists between and , we can chose one of bounds: or\r\n. we need to make operations if times if we cannot reconfigure through\r\none of the boundaries as above, but we can through both: or If we canât\r\nget the temperature in one of these ways, the answer is .\r\n",
+    "hint": []
 }

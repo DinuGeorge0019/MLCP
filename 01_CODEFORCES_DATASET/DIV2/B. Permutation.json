@@ -87,7 +87,7 @@
         ]
     },
     "name": "B. Permutation",
-    "statement": "A is an ordered group of numbers , consisting of distinct positive\r\nintegers, each is no more than . We\u2019ll define number as the length of\r\npermutation .Simon has a positive integer and a non-negative integer ,\r\nsuch that . Help him find permutation of length , such that it meets\r\nthis equation: .\r\n",
+    "statement": "A is an ordered group of numbers , consisting of distinct positive\r\nintegers, each is no more than . We’ll define number as the length of\r\npermutation .Simon has a positive integer and a non-negative integer ,\r\nsuch that . Help him find permutation of length , such that it meets\r\nthis equation: .\r\n",
     "solutions": [
         "#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <algorithm>\n\nusing namespace std;\n\nint n, k;\nint a[55555 * 2];\n\nint main() {\n    scanf(\"%d%d\", &n, &k);\n    for (int i = 0; i < n; ++ i) {\n        a[i << 1] = i << 1 | 1;\n        a[i << 1 | 1] = i << 1;\n    }\n    for (int i = 0; i < k; ++ i) swap(a[i << 1], a[i << 1 | 1]);\n    for (int i = 0; i < n * 2; ++ i) printf(\"%d \", a[i] + 1);\n    return 0;\n}"
     ],
@@ -102,5 +102,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Permutation.json",
     "editorial_link": "https://codeforces.com//blog/entry/9425",
-    "editorial": "The answer is a slightly modified permutation . Let\u00e2\u0080\u0099s reverse numbers\r\nand for each . It\u00e2\u0080\u0099s not hard to understand, that this permutation is\r\ngood. : 4968385\r\n"
+    "editorial": "The answer is a slightly modified permutation . Letâs reverse numbers\r\nand for each . Itâs not hard to understand, that this permutation is\r\ngood. : 4968385\r\n",
+    "hint": []
 }

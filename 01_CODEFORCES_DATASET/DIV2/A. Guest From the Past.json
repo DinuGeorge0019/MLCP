@@ -75,7 +75,7 @@
         ]
     },
     "name": "A. Guest From the Past",
-    "statement": "Kolya Gerasimov loves kefir very much. He lives in year 1984 and knows\r\nall the details of buying this delicious drink. One day, as you probably\r\nknow, he found himself in year 2084, and buying kefir there is much more\r\ncomplicated.Kolya is hungry, so he went to the nearest milk shop. In\r\n2084 you may buy kefir in a plastic liter bottle, that costs rubles, or\r\nin glass liter bottle, that costs rubles. Also, you may return empty\r\nglass bottle and get () rubles back, but you cannot return plastic\r\nbottles.Kolya has rubles and he is really hungry, so he wants to drink\r\nas much kefir as possible. There were no plastic bottles in his 1984, so\r\nKolya doesn\u2019t know how to act optimally and asks for your help.\r\n",
+    "statement": "Kolya Gerasimov loves kefir very much. He lives in year 1984 and knows\r\nall the details of buying this delicious drink. One day, as you probably\r\nknow, he found himself in year 2084, and buying kefir there is much more\r\ncomplicated.Kolya is hungry, so he went to the nearest milk shop. In\r\n2084 you may buy kefir in a plastic liter bottle, that costs rubles, or\r\nin glass liter bottle, that costs rubles. Also, you may return empty\r\nglass bottle and get () rubles back, but you cannot return plastic\r\nbottles.Kolya has rubles and he is really hungry, so he wants to drink\r\nas much kefir as possible. There were no plastic bottles in his 1984, so\r\nKolya doesn’t know how to act optimally and asks for your help.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\n\nusing namespace std;\n\nconst int mod = 1000000007;\nconst int inf = 1001001001;\nlong long n,a,b,c,ans;\n\nint main()\n{\n    //freopen(\"input.txt\", \"r\", stdin);\n    //freopen(\"output.txt\", \"w\", stdout);\n    ios_base::sync_with_stdio(0);\n\n    cin >> n >> a >> b >> c;\n    if (n<min(a,b)){\n        cout << 0;\n        return 0;\n    }\n    if (a>b-c && n-b>=0){\n        ans=(n-b)/(b-c)+1+((n-b)%(b-c)+c)/a;\n    }\n    else{\n        ans= n/a;\n    }\n    cout << ans;\n    return 0;\n}\n"
     ],
@@ -89,5 +89,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Guest From the Past.json",
     "editorial_link": "https://codeforces.com//blog/entry/23342",
-    "editorial": "If we have at least\nmoney then cost of one glass bottle is . This means that if then we\ndon\u00e2\u0080\u0099t need to buy glass bottles, only plastic ones, and the answer will\nbe . Otherwise we need to buy glass bottles while we can. So, if we have\nat least money, then we will buy glass bottles and then spend rest of\nthe money on plastic ones. This is simple solution.\n"
+    "editorial": "If we have at least\nmoney then cost of one glass bottle is . This means that if then we\ndonât need to buy glass bottles, only plastic ones, and the answer will\nbe . Otherwise we need to buy glass bottles while we can. So, if we have\nat least money, then we will buy glass bottles and then spend rest of\nthe money on plastic ones. This is simple solution.\n",
+    "hint": []
 }

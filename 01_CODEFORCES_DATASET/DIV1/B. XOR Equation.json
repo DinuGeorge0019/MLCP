@@ -129,5 +129,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. XOR Equation.json",
     "editorial_link": "https://codeforces.com//blog/entry/43467",
-    "editorial": "For any two integers a and b, we have , where  is the xor and a&b is the bitwise AND. This is because  is non-carrying binary addition. Thus, we can find a&b?=?(s?-?x)?/?2 (if this is not an integer, there are no solutions).\n\nNow, for each bit, we have 4 cases: , and . If , then ai?=?bi, so we have one possibility: ai?=?bi?=?ai&bi. If , then we must have ai&bi?=?0 (otherwise we print 0), and we have two choices: ai?=?1 and bi?=?0 or vice versa. Thus, we can return 2n, where n is the number of one-bits in x. (Remember to subtract 2 for the cases a?=?0 or b?=?0 if necessary.)"
+    "editorial": "For any two integers a and b, we have , where  is the xor and a&b is the bitwise AND. This is because  is non-carrying binary addition. Thus, we can find a&b?=?(s?-?x)?/?2 (if this is not an integer, there are no solutions).\n\nNow, for each bit, we have 4 cases: , and . If , then ai?=?bi, so we have one possibility: ai?=?bi?=?ai&bi. If , then we must have ai&bi?=?0 (otherwise we print 0), and we have two choices: ai?=?1 and bi?=?0 or vice versa. Thus, we can return 2n, where n is the number of one-bits in x. (Remember to subtract 2 for the cases a?=?0 or b?=?0 if necessary.)",
+    "hint": []
 }

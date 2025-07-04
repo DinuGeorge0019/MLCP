@@ -158,5 +158,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\F1. Spanning Tree with Maximum Degree.json",
     "editorial_link": "https://codeforces.com//blog/entry/65807",
-    "editorial": "We can take vertex with the maximum degree and all its neighbours. To\r\nimplement it, just run from vertex with the maximum degree. See the\r\nauthors solution for better understanding.\r\n"
+    "editorial": "We can take vertex with the maximum degree and all its neighbours. To\r\nimplement it, just run from vertex with the maximum degree. See the\r\nauthors solution for better understanding.\r\n",
+    "hint": []
 }

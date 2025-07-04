@@ -129,7 +129,7 @@
     "name": "B. Brightness Begins",
     "statement": "Imagine you have n light bulbs numbered 1, 2,\r\nldots, n. . To the state of a bulb means to turn it off if it used to be\r\non, and to turn it on otherwise.Next, you do the following: for each i =\r\n1, 2,\r\nldots, n, flip the state of all bulbs j such that j is divisible by i^\r\ndagger. After performing all operations, there will be several bulbs\r\nthat are still on. Your goal is to make this number exactly k.Find the\r\nsmallest suitable n such that after performing the operations there will\r\nbe exactly k bulbs on. We can show that an answer always exists.^\r\ndagger An integer x is divisible by y if there exists an integer z such\r\nthat x = y\r\ncdot z.\r\n",
     "solutions": [
-        "#include <bits/stdc++.h>using namespace std;long long F(long long k){\tlong long L = 0;\tlong long R = 1e9 + 1;\twhile (L < R - 1)\t{\t\tlong long M = (L + R) / 2;\t\tif (M * M <= k)\t\t{\t\t\tL = M;\t\t}\t\telse\t\t{\t\t\tR = M;\t\t}\t}\treturn k - L;}\u00a0int main(){\tint t;\tcin >> t;\tfor (int tt = 0; tt < t; tt++)\t{\t\tlong long k;\t\tcin >> k;\t\tlong long L = 0;\t\tlong long R = 2e18;\t\twhile (L < R - 1)\t\t{\t\t\tlong long M = (L + R) / 2;\t\t\tif (F(M) < k)\t\t\t{\t\t\t\tL = M;\t\t\t}\t\t\telse\t\t\t{\t\t\t\tR = M;\t\t\t}\t\t}\t\tcout << R << endl;\t}\treturn 0;}"
+        "#include <bits/stdc++.h>using namespace std;long long F(long long k){\tlong long L = 0;\tlong long R = 1e9 + 1;\twhile (L < R - 1)\t{\t\tlong long M = (L + R) / 2;\t\tif (M * M <= k)\t\t{\t\t\tL = M;\t\t}\t\telse\t\t{\t\t\tR = M;\t\t}\t}\treturn k - L;} int main(){\tint t;\tcin >> t;\tfor (int tt = 0; tt < t; tt++)\t{\t\tlong long k;\t\tcin >> k;\t\tlong long L = 0;\t\tlong long R = 2e18;\t\twhile (L < R - 1)\t\t{\t\t\tlong long M = (L + R) / 2;\t\t\tif (F(M) < k)\t\t\t{\t\t\t\tL = M;\t\t\t}\t\t\telse\t\t\t{\t\t\t\tR = M;\t\t\t}\t\t}\t\tcout << R << endl;\t}\treturn 0;}"
     ],
     "input": "",
     "output": "",
@@ -139,5 +139,6 @@
     ],
     "dificulty": "1200",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Brightness Begins.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Brightness Begins.json",
+    "hint": []
 }

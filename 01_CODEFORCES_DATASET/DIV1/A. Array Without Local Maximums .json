@@ -104,5 +104,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Array Without Local Maximums .json",
     "editorial_link": "https://codeforces.com/blog/entry/62688",
-    "editorial": "Let\u00e2\u0080\u0099s find solution with complexity . We can count quantity of ways to\r\nrestore element from to with last element equalls to , means that\r\nprevious element is less then the last or last element is first, the\r\nopposite. So , .Now let\u00e2\u0080\u0099s count on each prefix before counting all , so\r\nwe can recalculate dp in O(1) time.Complexity is .\r\n"
+    "editorial": "Letâs find solution with complexity . We can count quantity of ways to\r\nrestore element from to with last element equalls to , means that\r\nprevious element is less then the last or last element is first, the\r\nopposite. So , .Now letâs count on each prefix before counting all , so\r\nwe can recalculate dp in O(1) time.Complexity is .\r\n",
+    "hint": []
 }

@@ -131,5 +131,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Reverse Sort.json",
     "editorial_link": "https://codeforces.com//blog/entry/96866",
-    "editorial": "Any binary string can be sorted in at most operation!Let the number of s\r\nin be and the number of s in be .The first positions of the final sorted\r\nstring will be and the remaining positions will be (since it is sorted\r\nin non-decreasing order).: For every that is in the first positions of ,\r\nthere is a that is in the last positions of (Why?).If the string is not\r\nalready sorted, in one operation pick the subsequence consisting of all\r\ns among the first positions of as well as all s among the last positions\r\nof . It can be shown that this will correctly sort the string since the\r\nnumber of such s and s are equal.:\r\n"
+    "editorial": "Any binary string can be sorted in at most operation!Let the number of s\r\nin be and the number of s in be .The first positions of the final sorted\r\nstring will be and the remaining positions will be (since it is sorted\r\nin non-decreasing order).: For every that is in the first positions of ,\r\nthere is a that is in the last positions of (Why?).If the string is not\r\nalready sorted, in one operation pick the subsequence consisting of all\r\ns among the first positions of as well as all s among the last positions\r\nof . It can be shown that this will correctly sort the string since the\r\nnumber of such s and s are equal.:\r\n",
+    "hint": [
+        "Hint 1 What can you say about the number of $0$s and $1$s that are in positions where they should not be in the final string?",
+        "Hint 2 What is the minimum number of operations required to sort the string given this relationship between the number of such $0$s and $1$s?"
+    ]
 }

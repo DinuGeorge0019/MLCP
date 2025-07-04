@@ -114,5 +114,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Buy the String.json",
     "editorial_link": "https://codeforces.com//blog/entry/84731",
-    "editorial": "We will consider each character seperately. Look at the -th character;\r\nif it is originally a , we can either change it to a and pay coins for\r\nthis specific character, or we can not change it and pay coins for it.\r\nSince we want to pay as little as possible, we take the minimum of these\r\ntwo. So if the th character is a , we will have to pay coins for it. A\r\nsimilar logic can be used for the zeroes; if the th character is a we\r\nwill have to pay coins. So we iterate over , and for each character we\r\nadd the required minimum to the sum, depending on whether it\u00e2\u0080\u0099s a or\r\n.Time complexity:\r\n"
+    "editorial": "We will consider each character seperately. Look at the -th character;\r\nif it is originally a , we can either change it to a and pay coins for\r\nthis specific character, or we can not change it and pay coins for it.\r\nSince we want to pay as little as possible, we take the minimum of these\r\ntwo. So if the th character is a , we will have to pay coins for it. A\r\nsimilar logic can be used for the zeroes; if the th character is a we\r\nwill have to pay coins. So we iterate over , and for each character we\r\nadd the required minimum to the sum, depending on whether itâs a or\r\n.Time complexity:\r\n",
+    "hint": []
 }

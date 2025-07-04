@@ -150,5 +150,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\A. Checking the Calendar.json",
     "editorial_link": "https://codeforces.com//blog/entry/47644",
-    "editorial": "Days of the week in two adjacent months may either be the same (in\r\nFebruary and March), or differ by two (in April and May) or differ by\r\nthree (in January and February). Also, it was necessary to pay attention\r\nto direction of that difference (monday and tuesday is not the same as\r\ntuesday and monday).\r\n"
+    "editorial": "Days of the week in two adjacent months may either be the same (in\r\nFebruary and March), or differ by two (in April and May) or differ by\r\nthree (in January and February). Also, it was necessary to pay attention\r\nto direction of that difference (monday and tuesday is not the same as\r\ntuesday and monday).\r\n",
+    "hint": []
 }

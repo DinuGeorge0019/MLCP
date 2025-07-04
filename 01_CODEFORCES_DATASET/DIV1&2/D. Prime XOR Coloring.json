@@ -181,7 +181,7 @@
     "name": "D. Prime XOR Coloring",
     "statement": "You are given an undirected graph with n vertices, numbered from 1 to n.\r\nThere is an edge between vertices u and v if and only if u\r\noplus v is a prime number, where\r\noplus denotes the bitwise XOR operator.Color all vertices of the graph\r\nusing the minimum number of colors, such that no two vertices directly\r\nconnected by an edge have the same color.\r\n",
     "solutions": [
-        "/** *    author:  tourist *    created: 28.07.2024 10:43:20**/#include <bits/stdc++.h>\u00a0using namespace std;\u00a0#ifdef LOCAL#include \"algo/debug.h\"#else#define debug(...) 42#endif\u00a0int main() {  ios::sync_with_stdio(false);  cin.tie(nullptr);  int tt;  cin >> tt;  while (tt--) {    int n;    cin >> n;    if (n <= 5) {      cout << n / 2 + 1 << '\\n';      for (int i = 0; i < n; i++) {        cout << (i + 3) / 2 << \" \\n\"[i == n - 1];      }    } else {      cout << 4 << '\\n';      for (int i = 0; i < n; i++) {        cout << i % 4 + 1 << \" \\n\"[i == n - 1];      }    }  }  return 0;}"
+        "/** *    author:  tourist *    created: 28.07.2024 10:43:20**/#include <bits/stdc++.h> using namespace std; #ifdef LOCAL#include \"algo/debug.h\"#else#define debug(...) 42#endif int main() {  ios::sync_with_stdio(false);  cin.tie(nullptr);  int tt;  cin >> tt;  while (tt--) {    int n;    cin >> n;    if (n <= 5) {      cout << n / 2 + 1 << '\\n';      for (int i = 0; i < n; i++) {        cout << (i + 3) / 2 << \" \\n\"[i == n - 1];      }    } else {      cout << 4 << '\\n';      for (int i = 0; i < n; i++) {        cout << i % 4 + 1 << \" \\n\"[i == n - 1];      }    }  }  return 0;}"
     ],
     "input": "",
     "output": "",
@@ -195,5 +195,9 @@
     ],
     "dificulty": "1900",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\D. Prime XOR Coloring.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\D. Prime XOR Coloring.json",
+    "hint": [
+        "Hint 1 The answer is always <= 4.",
+        "Hint 2 If and both have same remainder when divided by 4, then is a multiple of ."
+    ]
 }

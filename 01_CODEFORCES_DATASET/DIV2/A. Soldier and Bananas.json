@@ -127,5 +127,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Soldier and Bananas.json",
     "editorial_link": "https://codeforces.com//blog/entry/18034",
-    "editorial": "We can easily calculate the sum of money that we need to buy all the bananas that we want, let's name it x.\n\nIf n?>??=?x the answer is 0, because we don't need to borrow anything.\n\nOtherwise the answer is x?-?n."
+    "editorial": "We can easily calculate the sum of money that we need to buy all the bananas that we want, let's name it x.\n\nIf n?>??=?x the answer is 0, because we don't need to borrow anything.\n\nOtherwise the answer is x?-?n.",
+    "hint": []
 }

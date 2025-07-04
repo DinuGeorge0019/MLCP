@@ -170,5 +170,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\F. Maximum Reduction.json",
     "editorial_link": "https://codeforces.com/blog/entry/61606",
-    "editorial": "For each element , find maximum such that for every and minimum such\r\nthat for every .Now, let us count the no. of times contributes to our\r\nanswer, which can be calculated as (the no. of subsegments of length\r\nwhich contain )+(the no. of subsegments of length which contain ) +\r\n... + (the no. of subsegments of length which contain ) where each\r\nsubsegment should be between .Let then above sum can be represented as\r\ntimes until 0 which equals where , , .The last part is mostly\r\nmathematical with some case work.\r\n"
+    "editorial": "For each element , find maximum such that for every and minimum such\r\nthat for every .Now, let us count the no. of times contributes to our\r\nanswer, which can be calculated as (the no. of subsegments of length\r\nwhich contain )+(the no. of subsegments of length which contain ) +\r\n... + (the no. of subsegments of length which contain ) where each\r\nsubsegment should be between .Let then above sum can be represented as\r\ntimes until 0 which equals where , , .The last part is mostly\r\nmathematical with some case work.\r\n",
+    "hint": []
 }

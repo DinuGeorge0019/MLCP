@@ -127,7 +127,7 @@
         ]
     },
     "name": "B. Promo",
-    "statement": "The store sells n items, the price of the i-th item is p_i. The store\u2019s\r\nmanagement is going to hold a promotion: if a customer purchases at\r\nleast x items, y cheapest of them are free.The management has not yet\r\ndecided on the exact values of x and y. Therefore, they ask you to\r\nprocess q queries: for the given values of x and y, determine the\r\nmaximum total value of items received for free, if a customer makes\r\n.Note that all queries are independent; they don\u2019t affect the store\u2019s\r\nstock.\r\n",
+    "statement": "The store sells n items, the price of the i-th item is p_i. The store’s\r\nmanagement is going to hold a promotion: if a customer purchases at\r\nleast x items, y cheapest of them are free.The management has not yet\r\ndecided on the exact values of x and y. Therefore, they ask you to\r\nprocess q queries: for the given values of x and y, determine the\r\nmaximum total value of items received for free, if a customer makes\r\n.Note that all queries are independent; they don’t affect the store’s\r\nstock.\r\n",
     "solutions": [
         "/**\n *    author:  tourist\n *    created: 12.06.2022 18:36:04       \n**/\n#include <bits/stdc++.h>\n\nusing namespace std;\n\n#ifdef LOCAL\n#include \"algo/debug.h\"\n#else\n#define debug(...) 42\n#endif\n\nint main() {\n  ios::sync_with_stdio(false);\n  cin.tie(0);\n  int n, q;\n  cin >> n >> q;\n  vector<int> a(n);\n  for (int i = 0; i < n; i++) {\n    cin >> a[i];\n  }\n  sort(a.begin(), a.end());\n  vector<long long> pref(n + 1);\n  for (int i = 0; i < n; i++) {\n    pref[i + 1] = pref[i] + a[i];\n  }\n  while (q--) {\n    int x, y;\n    cin >> x >> y;\n    cout << pref[n - (x - y)] - pref[n - x] << '\\n';\n  }\n  return 0;\n}\n"
     ],
@@ -141,5 +141,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. Promo.json",
     "editorial_link": "https://codeforces.com//blog/entry/103835",
-    "editorial": "First of all, there is an answer with exactly items bought. Suppose\r\nitems worth () were purchased. Then by removing from this set, the sum\r\nof the cheapest items in the set will change by , which means the answer\r\nwill not decrease.The second fact that is necessary to solve the problem\r\nof the most expensive items should be chosen. Otherwise, one can remove\r\nthe minimum price item from the set and add an item with a higher price\r\n(it can always be found), which means the answer will not decrease.Using\r\nthese two facts, it is enough to sort the array and use prefix sums.\r\n"
+    "editorial": "First of all, there is an answer with exactly items bought. Suppose\r\nitems worth () were purchased. Then by removing from this set, the sum\r\nof the cheapest items in the set will change by , which means the answer\r\nwill not decrease.The second fact that is necessary to solve the problem\r\nof the most expensive items should be chosen. Otherwise, one can remove\r\nthe minimum price item from the set and add an item with a higher price\r\n(it can always be found), which means the answer will not decrease.Using\r\nthese two facts, it is enough to sort the array and use prefix sums.\r\n",
+    "hint": []
 }

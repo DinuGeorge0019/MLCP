@@ -109,5 +109,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Fancy Fence.json",
     "editorial_link": "https://codeforces.com//blog/entry/6596",
-    "editorial": "Problem\nThe problem is to tell whether there exists a regular polygon with angle equal to a.\n\nSolution\nConsider all supplementary angles of the regular n-polygon with angle a, which are equal to . Their sum is equal to , because the polygon is convex. Then the following equality holds: n\u00b7(180?-?a)?=?360, which means that there is an answer if and only if ."
+    "editorial": "Problem\nThe problem is to tell whether there exists a regular polygon with angle equal to a.\n\nSolution\nConsider all supplementary angles of the regular n-polygon with angle a, which are equal to . Their sum is equal to , because the polygon is convex. Then the following equality holds: n·(180?-?a)?=?360, which means that there is an answer if and only if .",
+    "hint": []
 }

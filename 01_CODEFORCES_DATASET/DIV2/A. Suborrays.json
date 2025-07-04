@@ -128,5 +128,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Suborrays.json",
     "editorial_link": "https://codeforces.com//blog/entry/81265",
-    "editorial": "Every permutation is good. Proof: We use the fact that for any set of\r\nnumbers, it\u00e2\u0080\u0099s bitwise OR is at least the maximum value in it. Now, we\r\njust need to show that any subarray of length has at least one element\r\ngreater than or equal to . If the maximum element is , then, we have\r\nelements all with values in the range . By the pigeonhole principle, at\r\nleast of them must be the same contradicting the fact the it\u00e2\u0080\u0099s a\r\npermutation. Time Complexity:\r\n"
+    "editorial": "Every permutation is good. Proof: We use the fact that for any set of\r\nnumbers, itâs bitwise OR is at least the maximum value in it. Now, we\r\njust need to show that any subarray of length has at least one element\r\ngreater than or equal to . If the maximum element is , then, we have\r\nelements all with values in the range . By the pigeonhole principle, at\r\nleast of them must be the same contradicting the fact the itâs a\r\npermutation. Time Complexity:\r\n",
+    "hint": []
 }

@@ -151,5 +151,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C. Product of Three Numbers.json",
     "editorial_link": "https://codeforces.com//blog/entry/73274",
-    "editorial": "Suppose . Let\u00e2\u0080\u0099s try to minimize and maximize . Let be the minimum\r\ndivisor of greater than . Then let be the minimum divisor of that isn\u00e2\u0080\u0099t\r\nequal and . If isn\u00e2\u0080\u0099t equal , and then the answer is \"\", otherwise the\r\nanswer is \"\".Time complexity: per query.\r\n"
+    "editorial": "Suppose . Letâs try to minimize and maximize . Let be the minimum\r\ndivisor of greater than . Then let be the minimum divisor of that isnât\r\nequal and . If isnât equal , and then the answer is \"\", otherwise the\r\nanswer is \"\".Time complexity: per query.\r\n",
+    "hint": []
 }

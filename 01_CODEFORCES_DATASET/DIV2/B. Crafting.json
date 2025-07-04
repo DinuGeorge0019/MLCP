@@ -108,5 +108,8 @@
     ],
     "dificulty": "",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Crafting.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Crafting.json",
+    "hint": [
+        "Hint 1 The order of the moves is pretty much irrelevant. What happens if we try to make two different materials?"
+    ]
 }

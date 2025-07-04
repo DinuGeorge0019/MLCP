@@ -160,5 +160,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. Segment Occurrences.json",
     "editorial_link": "https://codeforces.com/blog/entry/61015",
-    "editorial": "Let\u00e2\u0080\u0099s take a look at a naive approach: for each query you iterate over\r\npositions and check if . Okay, this is obviously . Now we notice that\r\nthere are only positions for to start from, we can calculate if there is\r\nan occurrence of starting in this position beforehand in . Thus, we\r\ntransition to solution. Finally, we calculate a partial sum array over\r\nthis occurrence check array and answer each query in .Overall\r\ncomplexity: .\r\n"
+    "editorial": "Letâs take a look at a naive approach: for each query you iterate over\r\npositions and check if . Okay, this is obviously . Now we notice that\r\nthere are only positions for to start from, we can calculate if there is\r\nan occurrence of starting in this position beforehand in . Thus, we\r\ntransition to solution. Finally, we calculate a partial sum array over\r\nthis occurrence check array and answer each query in .Overall\r\ncomplexity: .\r\n",
+    "hint": []
 }

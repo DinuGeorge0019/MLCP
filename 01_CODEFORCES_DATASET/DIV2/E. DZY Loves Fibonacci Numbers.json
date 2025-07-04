@@ -107,5 +107,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. DZY Loves Fibonacci Numbers.json",
     "editorial_link": "https://codeforces.com//blog/entry/13036",
-    "editorial": "As we know, \n\nFortunately, we find that \n\nSo, \n\nWith multiplicative inverse, we find,\n\n\n\n\n\n\n\nNow, \n\nAs you see, we can just maintain the sum of a Geometric progression \n\nThis is a simple problem which can be solved with segment tree in ."
+    "editorial": "As we know, \n\nFortunately, we find that \n\nSo, \n\nWith multiplicative inverse, we find,\n\n\n\n\n\n\n\nNow, \n\nAs you see, we can just maintain the sum of a Geometric progression \n\nThis is a simple problem which can be solved with segment tree in .",
+    "hint": []
 }

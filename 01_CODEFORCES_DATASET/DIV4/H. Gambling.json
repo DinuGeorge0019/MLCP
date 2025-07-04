@@ -199,5 +199,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\H. Gambling.json",
     "editorial_link": "https://codeforces.com//blog/entry/103883",
-    "editorial": "There are several solutions. Here is one.If we fix the value of , then\r\nlet\u00e2\u0080\u0099s make a new array as follows: if , and otherwise. Then the total\r\namount of money earned will just be , so we only need to maximize . In\r\nother words, we need to find the maximum sum of a subarray. This is a\r\nstandard problem that can be solved using segment tree.Note that we need\r\nto iterate over all values of , of which there are possibilities. So we\r\nhave to update elements of the segment tree times and query once for\r\neach , which means overall the solution runs in .\r\n"
+    "editorial": "There are several solutions. Here is one.If we fix the value of , then\r\nletâs make a new array as follows: if , and otherwise. Then the total\r\namount of money earned will just be , so we only need to maximize . In\r\nother words, we need to find the maximum sum of a subarray. This is a\r\nstandard problem that can be solved using segment tree.Note that we need\r\nto iterate over all values of , of which there are possibilities. So we\r\nhave to update elements of the segment tree times and query once for\r\neach , which means overall the solution runs in .\r\n",
+    "hint": []
 }

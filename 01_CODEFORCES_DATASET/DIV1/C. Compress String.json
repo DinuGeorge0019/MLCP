@@ -106,5 +106,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Compress String.json",
     "editorial_link": "https://codeforces.com//blog/entry/65679",
-    "editorial": "Let\u00e2\u0080\u0099s say that is the minimal cost to encode the prefix of with length ,\r\nthe answer is . If we want to encode the prefix with length then the\r\nlast symbol in our encoded string either equals , or represents some\r\nsubstring so that it occurs in the prefix of length . Therefore one can\r\nsee that One way to implement this is to calculate this forward and use\r\nhashes, but it may require some efforts to avoid collisions and fit into\r\nthe time limit. Another way is to find for each all appropriate \u00e2\u0080\u0099s by\r\ncalculating z-function on the reverse of . The total complexity in this\r\ncase is .\r\n"
+    "editorial": "Letâs say that is the minimal cost to encode the prefix of with length ,\r\nthe answer is . If we want to encode the prefix with length then the\r\nlast symbol in our encoded string either equals , or represents some\r\nsubstring so that it occurs in the prefix of length . Therefore one can\r\nsee that One way to implement this is to calculate this forward and use\r\nhashes, but it may require some efforts to avoid collisions and fit into\r\nthe time limit. Another way is to find for each all appropriate âs by\r\ncalculating z-function on the reverse of . The total complexity in this\r\ncase is .\r\n",
+    "hint": []
 }

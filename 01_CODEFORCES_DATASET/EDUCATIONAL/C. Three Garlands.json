@@ -172,5 +172,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\C. Three Garlands.json",
     "editorial_link": "https://codeforces.com/blog/entry/56771",
-    "editorial": "There are pretty few cases to have : One of is equal to ; At least two\r\nof are equal to ; All equal ; . It\u00e2\u0080\u0099s easy to notice that having minimum\r\nof equal to produce the only case, greater numbers will always miss some\r\nseconds. Let\u00e2\u0080\u0099s consider minimum of , let it cover all odd seconds. Now\r\nyou should cover all even seconds and and are the only possible\r\nsolutions.Overall complexity: .\r\n"
+    "editorial": "There are pretty few cases to have : One of is equal to ; At least two\r\nof are equal to ; All equal ; . Itâs easy to notice that having minimum\r\nof equal to produce the only case, greater numbers will always miss some\r\nseconds. Letâs consider minimum of , let it cover all odd seconds. Now\r\nyou should cover all even seconds and and are the only possible\r\nsolutions.Overall complexity: .\r\n",
+    "hint": []
 }

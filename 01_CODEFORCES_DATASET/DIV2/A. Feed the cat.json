@@ -89,7 +89,7 @@
         ]
     },
     "name": "A. Feed the cat",
-    "statement": "After waking up at :, Andrew realised that he had forgotten to feed his\r\nonly cat for yet another time (guess why there\u2019s only one cat). The\r\ncat\u2019s current hunger level is points, moreover each minute without food\r\nincreases his hunger by points.At any time Andrew can visit the store\r\nwhere tasty buns are sold (you can assume that is doesn\u2019t take time to\r\nget to the store and back). One such bun costs roubles and decreases\r\nhunger by points. Since the demand for bakery drops heavily in the\r\nevening, there is a special discount for buns starting from : (note that\r\nthe cost might become rational). Of course, buns cannot be sold by\r\nparts.Determine the minimum amount of money Andrew has to spend in order\r\nto feed his cat. The cat is considered fed if its hunger level is less\r\nthan or equal to zero.\r\n",
+    "statement": "After waking up at :, Andrew realised that he had forgotten to feed his\r\nonly cat for yet another time (guess why there’s only one cat). The\r\ncat’s current hunger level is points, moreover each minute without food\r\nincreases his hunger by points.At any time Andrew can visit the store\r\nwhere tasty buns are sold (you can assume that is doesn’t take time to\r\nget to the store and back). One such bun costs roubles and decreases\r\nhunger by points. Since the demand for bakery drops heavily in the\r\nevening, there is a special discount for buns starting from : (note that\r\nthe cost might become rational). Of course, buns cannot be sold by\r\nparts.Determine the minimum amount of money Andrew has to spend in order\r\nto feed his cat. The cat is considered fed if its hunger level is less\r\nthan or equal to zero.\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\nusing namespace std;\nint main() {\n\tint hh,mm,h,d,c,n; scanf(\"%d%d%d%d%d%d\",&hh,&mm,&h,&d,&c,&n);\n\tdouble ans;\n\tif(hh>=20)ans=(h+n-1)/n*c*0.8;\n\telse{\n\t\tans=(h+n-1)/n*c; int m=(19-hh)*60+(60-mm);\n\t\tans=min(ans,(h+m*d+n-1)/n*c*0.8);\n\t}\n\tprintf(\"%.9f\\n\",ans); return 0;\n}"
     ],
@@ -103,5 +103,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Feed the cat.json",
     "editorial_link": "https://codeforces.com//blog/entry/58547",
-    "editorial": "It\u00e2\u0080\u0099s optimal to buy buns either right after waking up or at : (if\r\npossible) because between the awakening and : cost doesn\u00e2\u0080\u0099t change but\r\ncat\u00e2\u0080\u0099s hunger does. There was one extra case when Andrew wakes up after :\r\nand has only one possible option of buying everything since he cannot\r\nturn back time.\r\n"
+    "editorial": "Itâs optimal to buy buns either right after waking up or at : (if\r\npossible) because between the awakening and : cost doesnât change but\r\ncatâs hunger does. There was one extra case when Andrew wakes up after :\r\nand has only one possible option of buying everything since he cannot\r\nturn back time.\r\n",
+    "hint": []
 }

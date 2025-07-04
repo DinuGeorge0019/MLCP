@@ -107,5 +107,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Stripe.json",
     "editorial_link": "https://codeforces.com//blog/entry/463",
-    "editorial": "One should keep two sums S1 ans S2, where S1 is the sum of all numbers on the left part of the stripe, and S2 is the sum of the right one. At the beginning S1 = 0 and S2 equals to the sum of all numbers of the stripe. Then we move the border of the parts within a cycle from left to right recalculating the values of S1 and S2 each iteration and increasing the answer when it's necessary."
+    "editorial": "One should keep two sums S1 ans S2, where S1 is the sum of all numbers on the left part of the stripe, and S2 is the sum of the right one. At the beginning S1 = 0 and S2 equals to the sum of all numbers of the stripe. Then we move the border of the parts within a cycle from left to right recalculating the values of S1 and S2 each iteration and increasing the answer when it's necessary.",
+    "hint": []
 }

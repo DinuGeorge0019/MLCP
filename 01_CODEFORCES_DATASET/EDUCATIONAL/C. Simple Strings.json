@@ -153,5 +153,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\C. Simple Strings.json",
     "editorial_link": "https://codeforces.com//blog/entry/44466",
-    "editorial": "The problem was suggested by Zi Song Yeoh zscoder. There are two ways to\r\nsolve this problem: greedy approach and dynamic programming. The first\r\napprroach: Considerr some segment of consecutive equal characters. Let\r\nbe the length of that segment. Easy to see that we should change at\r\nleast characters in the segment to remove all the pairs of equal\r\nconsecutive letters. On the other hand we can simply change the second,\r\nthe fourth etc. symbols to letter that is not equal to the letters\r\nbefore and after the segment. Greedy approach on C++\r\n"
+    "editorial": "The problem was suggested by Zi Song Yeoh zscoder. There are two ways to\r\nsolve this problem: greedy approach and dynamic programming. The first\r\napprroach: Considerr some segment of consecutive equal characters. Let\r\nbe the length of that segment. Easy to see that we should change at\r\nleast characters in the segment to remove all the pairs of equal\r\nconsecutive letters. On the other hand we can simply change the second,\r\nthe fourth etc. symbols to letter that is not equal to the letters\r\nbefore and after the segment. Greedy approach on C++\r\n",
+    "hint": []
 }

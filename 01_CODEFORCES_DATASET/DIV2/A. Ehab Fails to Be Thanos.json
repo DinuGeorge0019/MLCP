@@ -141,7 +141,7 @@
         ]
     },
     "name": "A. Ehab Fails to Be Thanos",
-    "statement": "You\u2019re given an array a of length 2n. Is it possible to reorder it in\r\nsuch way so that the sum of the first n elements equal to the sum of the\r\nlast n elements?\r\n",
+    "statement": "You’re given an array a of length 2n. Is it possible to reorder it in\r\nsuch way so that the sum of the first n elements equal to the sum of the\r\nlast n elements?\r\n",
     "solutions": [
         " #include <iostream>\n#include <cstdio>\n#include <cstring>\n#include <algorithm>\nusing namespace std;\ntypedef long long ll;\ntypedef pair<int, int> mypair;\ninline int read()\n{\n\tint x = 0, f = 1;\n\tchar c = getchar();\n\twhile (!isdigit(c))\n\t{\n\t\tif (c == '-') f = -1;\n\t\tc = getchar();\n\t}\n\twhile (isdigit(c))\n\t{\n\t\tx = x * 10 + c - '0';\n\t\tc = getchar();\n\t}\n\treturn x * f;\n}\n\nint n, a[4000005];\n\nint main()\n{\n\tn = read(); n <<= 1;\n\tfor (int i = 1; i <= n; i ++) a[i] = read();\n\tsort(a + 1, a + 1 + n);\n\tll ans = 0, s = 0;\n\tfor (int i = 1; i <= n; i ++)\n\t{\n\t\tif (i <= n / 2) s += a[i];\n\t\tans += a[i];\n\t}\n\tif (s * 2ll == ans) puts(\"-1\");\n\telse for (int i = 1; i <= n; i ++) printf(\"%d%c\", a[i], i == n ? 10 : 32);\n\treturn 0;\n}"
     ],
@@ -156,5 +156,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Ehab Fails to Be Thanos.json",
     "editorial_link": "https://codeforces.com//blog/entry/67388",
-    "editorial": "If all elements in the array are equal, there\u00e2\u0080\u0099s no solution. Otherwise,\r\nsort the array. The sum of the second half will indeed be greater than\r\nthat of the first half. Another solution is to see if they already have\r\ndifferent sums. If they do, print the array as it is. Otherwise, find\r\nany pair of different elements from different halves and swap them. Code\r\nlink: https://pastebin.com/FDXTuDdZ\r\n"
+    "editorial": "If all elements in the array are equal, thereâs no solution. Otherwise,\r\nsort the array. The sum of the second half will indeed be greater than\r\nthat of the first half. Another solution is to see if they already have\r\ndifferent sums. If they do, print the array as it is. Otherwise, find\r\nany pair of different elements from different halves and swap them. Code\r\nlink: https://pastebin.com/FDXTuDdZ\r\n",
+    "hint": []
 }

@@ -120,5 +120,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Make it Increasing.json",
     "editorial_link": "https://codeforces.com//blog/entry/102013",
-    "editorial": "SolutionIf the final array, is , ... , than the solution is surely\r\nunoptimal if there is an , when , and , or . Because there was one\r\nunnecessary move on or on .Similarly it is unoptimal, if and or .We can\r\nsee, that there will be a in the final array. If we fix the position of\r\nthe element, than we can set the other values greadily: find the\r\nsmallest value for each element, which is bigger than the previous one,\r\nand similarly before that element.We can fix each element, and calculate\r\nthe answer for that in time. The minimum of these values will be the\r\nfinal answer. So the final complexity is .\r\n"
+    "editorial": "SolutionIf the final array, is , ... , than the solution is surely\r\nunoptimal if there is an , when , and , or . Because there was one\r\nunnecessary move on or on .Similarly it is unoptimal, if and or .We can\r\nsee, that there will be a in the final array. If we fix the position of\r\nthe element, than we can set the other values greadily: find the\r\nsmallest value for each element, which is bigger than the previous one,\r\nand similarly before that element.We can fix each element, and calculate\r\nthe answer for that in time. The minimum of these values will be the\r\nfinal answer. So the final complexity is .\r\n",
+    "hint": []
 }

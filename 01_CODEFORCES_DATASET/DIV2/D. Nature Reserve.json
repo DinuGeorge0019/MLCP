@@ -126,5 +126,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Nature Reserve.json",
     "editorial_link": "https://codeforces.com//blog/entry/62238",
-    "editorial": "If there are both positive and negative , the answer is . Now assume\r\nthat . Key observation: the answer can be binary searched. How to check\r\nif there is a valid circle with radius ? Firstly, the center of such\r\ncircle is on the line . Every point must be not farther than from the\r\ncenter. It means that the center is inside or on the boundary of all\r\ncircles . The intersection of every such circle with creates a segment\r\n(possibly empty). If the intersection of all such segments is non-empty,\r\nthere exists some valid circle. Total complexity is . There is also an\r\nsolution, but it\u00e2\u0080\u0099s much harder to implement.\r\n"
+    "editorial": "If there are both positive and negative , the answer is . Now assume\r\nthat . Key observation: the answer can be binary searched. How to check\r\nif there is a valid circle with radius ? Firstly, the center of such\r\ncircle is on the line . Every point must be not farther than from the\r\ncenter. It means that the center is inside or on the boundary of all\r\ncircles . The intersection of every such circle with creates a segment\r\n(possibly empty). If the intersection of all such segments is non-empty,\r\nthere exists some valid circle. Total complexity is . There is also an\r\nsolution, but itâs much harder to implement.\r\n",
+    "hint": []
 }

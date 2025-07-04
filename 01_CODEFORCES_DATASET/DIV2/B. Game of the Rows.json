@@ -120,5 +120,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Game of the Rows.json",
     "editorial_link": "https://codeforces.com//blog/entry/53815",
-    "editorial": "Use greedy solution. Consider a group with members, put of them in seats\r\n[3, 6] of some row, and throw the row. Now we have members in this group\r\nnow. Continue till all of the seats in the range become full, continue\r\nwith and . Now handle groups with size .For groups with size , allocate\r\nseats in range or seats in range or .For groups with size , allocate\r\nseats in range or or seats in range . If no seat found, divide this\r\ngroup and make it two groups with size 1.Fill the other parts with\r\ngroups with groups with size .If in any part we ran out of seat, the\r\nanswer is , otherwise.\r\n"
+    "editorial": "Use greedy solution. Consider a group with members, put of them in seats\r\n[3, 6] of some row, and throw the row. Now we have members in this group\r\nnow. Continue till all of the seats in the range become full, continue\r\nwith and . Now handle groups with size .For groups with size , allocate\r\nseats in range or seats in range or .For groups with size , allocate\r\nseats in range or or seats in range . If no seat found, divide this\r\ngroup and make it two groups with size 1.Fill the other parts with\r\ngroups with groups with size .If in any part we ran out of seat, the\r\nanswer is , otherwise.\r\n",
+    "hint": []
 }

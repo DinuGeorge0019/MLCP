@@ -148,5 +148,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. XOR Mixup.json",
     "editorial_link": "https://codeforces.com//blog/entry/104310",
-    "editorial": "Any element of the array works. Let\u00e2\u0080\u0099s use for .Suppose that the original\r\narray is . Then .Let\u00e2\u0080\u0099s show that is the of all other elements of the\r\narray; that is, . Substituting , we have There are two occurences of on\r\nthe right-hand side and only one occurrence of . Since for all , the all\r\ncancel out, leaving only . More formally, we can write the following.\r\nThe same proof follows for any . Hence you can output any element of the\r\narray.The time complexity is .\r\n"
+    "editorial": "Any element of the array works. Letâs use for .Suppose that the original\r\narray is . Then .Letâs show that is the of all other elements of the\r\narray; that is, . Substituting , we have There are two occurences of on\r\nthe right-hand side and only one occurrence of . Since for all , the all\r\ncancel out, leaving only . More formally, we can write the following.\r\nThe same proof follows for any . Hence you can output any element of the\r\narray.The time complexity is .\r\n",
+    "hint": [
+        "Hint ."
+    ]
 }

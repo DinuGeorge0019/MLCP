@@ -144,5 +144,25 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Equal XOR.json",
     "editorial_link": "https://codeforces.com//blog/entry/127195",
-    "editorial": "We can append any 2\n occurrence numbers to our sequence l\n and any 0\n occurrence numbers to our sequence r\n without any issue because the xor value will cancel out. We do this while our sequence sizes are less than 2?k\n. At the end of this process, l\n and r\n will have the same size due to Hint 2\n.\n\nNow, we use as many 1\n occurrence numbers appending to both l\n and r\n as needed. Since we append to both sequences, the xor value of the 2\n sequences will be the same.\n\nIf we had to solve for odd sequence sizes, we could take a 1\n occurrence number at the very start to make it even, and then run the same process, but if there are no 1\n occurrence numbers at all, we fail with this method."
+    "editorial": "We can append any 2\n occurrence numbers to our sequence l\n and any 0\n occurrence numbers to our sequence r\n without any issue because the xor value will cancel out. We do this while our sequence sizes are less than 2?k\n. At the end of this process, l\n and r\n will have the same size due to Hint 2\n.\n\nNow, we use as many 1\n occurrence numbers appending to both l\n and r\n as needed. Since we append to both sequences, the xor value of the 2\n sequences will be the same.\n\nIf we had to solve for odd sequence sizes, we could take a 1\n occurrence number at the very start to make it even, and then run the same process, but if there are no 1\n occurrence numbers at all, we fail with this method.",
+    "hint": [
+        "Hint 1 Group numbers according to how many times they occur in .",
+        "Hint 2 The group of numbers having occurrences in is of the same size as the group of numbers having occurences in .",
+        "Hint 3 Try to use the and occurrence numbers first, and then if we still need more, we can use the occurence numbers. Remember that we have to form sequences of size which is even.",
+        "Hint 1 Alice can adapt to Bob's strategy. Try to keep that in mind.",
+        "Hint 3 Let be the frequency array of . You can ignore all due to the previous hint. Now the answer is some simple casework.",
+        "Hint 1 When is a string not -good? (Ignore the trivial edge cases of and ).",
+        "Hint 2 What happens when and are both palindromes?",
+        "Hint 1 Try to solve for line case.",
+        "Hint 2 You may have to use more than node for certain cases.",
+        "Hint 3 Extend the solution for the line to the general tree version (consider the diamater).",
+        "Hint 1 Try to come up with some necessary and sufficient conditions of a good array.",
+        "Hint 2 Apply dp once you have a good condition.",
+        "Hint 1 Try to apply Principle of Inclusion Exclusion (PIE).",
+        "Hint 2 You do not need to store both last elements! Only the last is enough.",
+        "Hint 1 It might be optimal for Bob to reduce multiple elements at the same time, thus making Alice choose between which element she wants to take.",
+        "Hint 2 Suppose you are only checking whether for now, what would Alice's strategy be?",
+        "Hint 3 Try fixing the element that Bob wants to make sure Alice is not able to get. What would be his strategy then?",
+        "Hint 2 We can use dynamic programming here. So let us have , such that gives the minimum number of flips required to make friend of and the maximum suffix sum is . String is called to be friend of string , if for every ( ), there exists indices and such that: 1. 2. is a mode of the string"
+    ]
 }

@@ -167,5 +167,24 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Fighting Tournament.json",
     "editorial_link": "https://codeforces.com//blog/entry/106049",
-    "editorial": "TutorialNote that after the strongest athlete is at the beginning of the\r\nqueue, only he will win. The strongest athlete will be at the beginning\r\nof the queue no more than after the -th round. Let\u00e2\u0080\u0099s simulate the first\r\nrounds, if the -th athlete won in the -th round, then we will write down\r\nthe number for him. Now, to answer the query , it is enough to find the\r\nnumber of wins of the athlete in rounds with numbers , and if , and the\r\nstrength of the athlete is equal to , then add to the answer another\r\n.The complexity of the solution is .\r\n"
+    "editorial": "TutorialNote that after the strongest athlete is at the beginning of the\r\nqueue, only he will win. The strongest athlete will be at the beginning\r\nof the queue no more than after the -th round. Letâs simulate the first\r\nrounds, if the -th athlete won in the -th round, then we will write down\r\nthe number for him. Now, to answer the query , it is enough to find the\r\nnumber of wins of the athlete in rounds with numbers , and if , and the\r\nstrength of the athlete is equal to , then add to the answer another\r\n.The complexity of the solution is .\r\n",
+    "hint": [
+        "Hint 1 Who would win duels if the strongest athlete was the first in queue?",
+        "Hint 2 After what number of rounds is the strongest athlete guaranteed to be at the front of the queue?",
+        "Hint 3 Simulate the first rounds and write down their winners so that for each person you can quickly find out the number of wins in rounds with numbers no more than a given number.",
+        "Hint 1 Segments of length greater than 2 are not needed.",
+        "Hint 2 There is an answer in which segments of length does not intersect with segments of length .",
+        "Hint 3 If is executed for , then we can fill this segment with zeros in seconds using only segments of length 2.",
+        "Hint 1 The answer for and is the same.",
+        "Hint 2 In this problem, a general statement is useful: for any array of length , is true.",
+        "Hint 3 Try applying the second hint for and divisible by , where are divisors of .",
+        "Hint 4 We can consider only which equals to , where is a simple divisor of .",
+        "Hint 1 Try to reduce the task to a single array and tree.",
+        "Hint 2 Try to reduce the tree to a match of bipartite graph. The first part: For each , a segment of suitable values. The second part: The set and the number .",
+        "Hint 3 There exist and such that the answer to the query is ''YES'' if and only if .",
+        "Hint 1 you can notice that a pair of operations , and , lead to the same result, what does this mean?",
+        "Hint 2 This means that operations can be represented as two permutations describing which swaps will occur with rows and which swaps will occur with columns.",
+        "Hint 3 Try to reduce this problem to a graph isomorphism problem.",
+        "Hint The only one hint to this problem is don't try to solve, it's not worth it."
+    ]
 }

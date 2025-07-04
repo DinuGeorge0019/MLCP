@@ -199,5 +199,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C. Book Reading.json",
     "editorial_link": "https://codeforces.com//blog/entry/69464",
-    "editorial": "Let be the number of integers from to divisible by . We can notice that\r\nbecause we write down only the last digit of each number divisible by\r\nthen the length of the \"cycle\" of digits does not exceed . In fact, we\r\ncan always suppose that it is because for all from to . So let for all\r\nfrom to . Then the answer is .\r\n"
+    "editorial": "Let be the number of integers from to divisible by . We can notice that\r\nbecause we write down only the last digit of each number divisible by\r\nthen the length of the \"cycle\" of digits does not exceed . In fact, we\r\ncan always suppose that it is because for all from to . So let for all\r\nfrom to . Then the answer is .\r\n",
+    "hint": []
 }

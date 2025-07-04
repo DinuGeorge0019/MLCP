@@ -123,5 +123,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Good Triple.json",
     "editorial_link": "https://codeforces.com//blog/entry/67241",
-    "editorial": "Lemma: there are no strings without such of length at least 9.In fact,\r\nyou just can write brute force to find all \"good\" strings and then\r\nrealize that they all are small.Ok, so with this you can just write some\r\nsort of \"naive\" solution, for each find the largest , such that is a\r\n\"good\" string, and then add to the answer. You can do it in or in , as I\r\ndo in my solution. Check it out!\r\n"
+    "editorial": "Lemma: there are no strings without such of length at least 9.In fact,\r\nyou just can write brute force to find all \"good\" strings and then\r\nrealize that they all are small.Ok, so with this you can just write some\r\nsort of \"naive\" solution, for each find the largest , such that is a\r\n\"good\" string, and then add to the answer. You can do it in or in , as I\r\ndo in my solution. Check it out!\r\n",
+    "hint": []
 }

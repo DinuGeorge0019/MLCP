@@ -90,7 +90,7 @@
         ]
     },
     "name": "B. Chtholly s request",
-    "statement": "Chtholly has been thinking about a problem for days:If a number is and\r\nlength of its decimal representation without leading zeros is even, we\r\ncall it a zcy number. A number is means when written in decimal\r\nrepresentation, it contains no leading zeros and reads the same forwards\r\nand backwards. For example and are palindromes and and are not.\r\nMoreover, is zcy number and is not.Given integers and , calculate the\r\nsum of the smallest zcy numbers and output this sum modulo\r\n.Unfortunately, Willem isn\u2019t good at solving this kind of problems, so\r\nhe asks you for help!\r\n",
+    "statement": "Chtholly has been thinking about a problem for days:If a number is and\r\nlength of its decimal representation without leading zeros is even, we\r\ncall it a zcy number. A number is means when written in decimal\r\nrepresentation, it contains no leading zeros and reads the same forwards\r\nand backwards. For example and are palindromes and and are not.\r\nMoreover, is zcy number and is not.Given integers and , calculate the\r\nsum of the smallest zcy numbers and output this sum modulo\r\n.Unfortunately, Willem isn’t good at solving this kind of problems, so\r\nhe asks you for help!\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\n\ntypedef long long i64;\n\ni64 inverse(int x)\n{\n    i64 ans;\n    i64 base(1);\n    while (x >= base)\n        base *= 10;\n    ans = base * x;\n    base /= 10;\n    while (x) {\n        ans += (x % 10) * base;\n        x /= 10;\n        base /= 10;\n    }\n    return ans;\n}\n\nint main()\n{\n    //cout << inverse(1);\n    i64 ans(0);\n    int n, k;\n    cin >> n >> k;\n    for (int i(1); i <= n; i++)\n        ans += inverse(i);\n\n    cout << ans % (1ll * k);\n    return 0;\n}\n"
     ],
@@ -103,5 +103,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Chtholly s request.json",
     "editorial_link": "https://codeforces.com//blog/entry/56135",
-    "editorial": "The -th smallest zcy number is , where denotes the decimal\r\nrepresentation of a positive integer as a string, denotes the\r\nconcatenation two strings, and denotes the reverse of a string. Then go\r\nover the smallest such numbers and sum them up to obtain the answer.\r\n"
+    "editorial": "The -th smallest zcy number is , where denotes the decimal\r\nrepresentation of a positive integer as a string, denotes the\r\nconcatenation two strings, and denotes the reverse of a string. Then go\r\nover the smallest such numbers and sum them up to obtain the answer.\r\n",
+    "hint": []
 }

@@ -113,5 +113,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Maximum Value.json",
     "editorial_link": "https://codeforces.com//blog/entry/14592",
-    "editorial": "Let us iterate over all different . Since we need to maximize , then\r\niterate all integer (such divisible by ) in range from to , where\r\ndoubled maximum value of the sequence. For each such we need to find\r\nmaximum , such . Limits for numbers allow to do this in time with an\r\narray. After that, update answer by value . Total time complexity is .\r\n"
+    "editorial": "Let us iterate over all different . Since we need to maximize , then\r\niterate all integer (such divisible by ) in range from to , where\r\ndoubled maximum value of the sequence. For each such we need to find\r\nmaximum , such . Limits for numbers allow to do this in time with an\r\narray. After that, update answer by value . Total time complexity is .\r\n",
+    "hint": []
 }

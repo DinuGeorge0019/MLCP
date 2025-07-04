@@ -139,5 +139,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\C. Nested Segments.json",
     "editorial_link": "https://codeforces.com//blog/entry/59195",
-    "editorial": "Let\u00e2\u0080\u0099s sort segments firstly by their left border in increasing order and\r\nin case of equal by their right border in decreasing order. If there is\r\nany valid pair then the inner segment will always go after the outer\r\none. Now you can go from left to right, keep the maximum right border of\r\nprocessed segments and compare it to the current segment. Overall\r\ncomplexity: .\r\n"
+    "editorial": "Letâs sort segments firstly by their left border in increasing order and\r\nin case of equal by their right border in decreasing order. If there is\r\nany valid pair then the inner segment will always go after the outer\r\none. Now you can go from left to right, keep the maximum right border of\r\nprocessed segments and compare it to the current segment. Overall\r\ncomplexity: .\r\n",
+    "hint": []
 }

@@ -132,7 +132,7 @@
         ]
     },
     "name": "B. Hamster Farm",
-    "statement": "Dima has a hamsters farm. Soon hamsters will grow up on it and Dima will\r\nsell them in a city nearby.Hamsters should be transported in boxes. If\r\nsome box is not completely full, the hamsters in it are bored, that\u2019s\r\nwhy each box should be completely full with hamsters.Dima can buy boxes\r\nat a factory. The factory produces boxes of kinds, boxes of the -th kind\r\ncan contain in themselves hamsters. Dima can buy any amount of boxes,\r\nbut he should buy boxes of only one kind to get a wholesale discount.Of\r\ncourse, Dima would buy boxes in such a way that each box can be\r\ncompletely filled with hamsters and transported to the city. If there is\r\nno place for some hamsters, Dima will leave them on the farm.Find out\r\nhow many boxes and of which type should Dima buy to transport maximum\r\nnumber of hamsters.\r\n",
+    "statement": "Dima has a hamsters farm. Soon hamsters will grow up on it and Dima will\r\nsell them in a city nearby.Hamsters should be transported in boxes. If\r\nsome box is not completely full, the hamsters in it are bored, that’s\r\nwhy each box should be completely full with hamsters.Dima can buy boxes\r\nat a factory. The factory produces boxes of kinds, boxes of the -th kind\r\ncan contain in themselves hamsters. Dima can buy any amount of boxes,\r\nbut he should buy boxes of only one kind to get a wholesale discount.Of\r\ncourse, Dima would buy boxes in such a way that each box can be\r\ncompletely filled with hamsters and transported to the city. If there is\r\nno place for some hamsters, Dima will leave them on the farm.Find out\r\nhow many boxes and of which type should Dima buy to transport maximum\r\nnumber of hamsters.\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\n\nusing namespace std;\n\ntypedef long long ll;\ntypedef pair<int, int> pii;\n\n#define F first\n#define S second\n\nconst int MAXK = 1e5 + 10;\n\nll a[MAXK];\n\nint main(){\n\tios::sync_with_stdio(false);\n\tcin.tie(0);\n\tll n; cin >> n;\n\tint k; cin >> k;\n\tfor (int i = 0; i < k; i++) cin >> a[i];\n\tll mx = -1, id = -1;\n\tfor (int i = 0; i < k; i++){\n\t\tll cur = n - n % a[i];\n\t\tif (cur > mx){\n\t\t\tmx = cur;\n\t\t\tid = i;\n\t\t}\n\t}\n\tcout << id+1 << \" \" << n/a[id] << \"\\n\";\n\treturn 0;\n}\n"
     ],
@@ -145,5 +145,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Hamster Farm.json",
     "editorial_link": "https://codeforces.com//blog/entry/57892",
-    "editorial": "The easies way to solve this problem is to find the minimum number of\r\nhamsters that can be left on the farm. If Dima byes boxes of the -th\r\ntype, there are hamsters left on the farm. So we should find such a type\r\n, that the value is minimum among all ; The number of boxes to buy is\r\nthen equal to .\r\n"
+    "editorial": "The easies way to solve this problem is to find the minimum number of\r\nhamsters that can be left on the farm. If Dima byes boxes of the -th\r\ntype, there are hamsters left on the farm. So we should find such a type\r\n, that the value is minimum among all ; The number of boxes to buy is\r\nthen equal to .\r\n",
+    "hint": []
 }

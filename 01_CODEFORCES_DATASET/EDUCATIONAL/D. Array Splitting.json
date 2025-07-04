@@ -160,5 +160,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\D. Array Splitting.json",
     "editorial_link": "https://codeforces.com/blog/entry/67484",
-    "editorial": "Let\u00e2\u0080\u0099s denote as (just a suffix sum). And let be the position where\r\nstarts the -th subarray (obviously, and ). Then we can make an\r\ninteresting transformation: So, our task is equivalent to choosing sum\r\nof all array and different suffix sums. And we want to maximize their\r\ntotal sum.That\u00e2\u0080\u0099s why we can just greedily take maximum suffix sums along\r\nwith sum of all array.\r\n"
+    "editorial": "Letâs denote as (just a suffix sum). And let be the position where\r\nstarts the -th subarray (obviously, and ). Then we can make an\r\ninteresting transformation: So, our task is equivalent to choosing sum\r\nof all array and different suffix sums. And we want to maximize their\r\ntotal sum.Thatâs why we can just greedily take maximum suffix sums along\r\nwith sum of all array.\r\n",
+    "hint": []
 }

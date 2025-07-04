@@ -95,5 +95,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Making a String.json",
     "editorial_link": "https://codeforces.com//blog/entry/23278",
-    "editorial": "Sort array in descending order. Iterate over all letters, First letter\r\nis added times, each other letter is added . Don\u00e2\u0080\u0099t forget that if some\r\nletter is not added at all, then all next letters are not added too.\r\n"
+    "editorial": "Sort array in descending order. Iterate over all letters, First letter\r\nis added times, each other letter is added . Donât forget that if some\r\nletter is not added at all, then all next letters are not added too.\r\n",
+    "hint": []
 }

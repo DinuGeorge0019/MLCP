@@ -80,7 +80,7 @@
         ]
     },
     "name": "A. Life Without Zeros",
-    "statement": "Can you imagine our life if we removed all zeros from it? For sure we\r\nwill have many problems.In this problem we will have a simple example if\r\nwe removed all zeros from our life, it\u2019s the addition operation. Let\u2019s\r\nassume you are given this equation , where and are positive integers,\r\nand is the sum of and . Now let\u2019s remove all zeros from this equation.\r\nWill the equation remain correct after removing all zeros?For example if\r\nthe equation is , if we removed all zeros it will be which is still a\r\ncorrect equation.But if the equation is , if we removed all zeros it\r\nwill be which is not a correct equation.\r\n",
+    "statement": "Can you imagine our life if we removed all zeros from it? For sure we\r\nwill have many problems.In this problem we will have a simple example if\r\nwe removed all zeros from our life, it’s the addition operation. Let’s\r\nassume you are given this equation , where and are positive integers,\r\nand is the sum of and . Now let’s remove all zeros from this equation.\r\nWill the equation remain correct after removing all zeros?For example if\r\nthe equation is , if we removed all zeros it will be which is still a\r\ncorrect equation.But if the equation is , if we removed all zeros it\r\nwill be which is not a correct equation.\r\n",
     "solutions": [
         "#include <iostream>\n#include <cstdio>\n#include <cmath>\n#include <algorithm>\n#include <vector>\n#include <string>\n#include <cstring>\n#include <map>\n#include <iomanip>\n\n\nusing namespace std;\n\n\n\nint main() {\n  //freopen (\"input.txt\", \"r\", stdin);\n  //freopen (\"output.txt\", \"w\", stdout);\n  long long a, b;\n  cin >> a >> b;\n  long long c = a + b;\n  long long a1 = 0, b1 = 0, c1 = 0;\n  long long d = c;\n  long long k = 1;\n  while (a != 0) {\n    if (a % 10 != 0) {\n      a1 = a1  + k * (a % 10);\n          k *= 10;\n    }\n    a /= 10;\n  }\n  k = 1;\n  while (b != 0) {\n    if (b % 10 != 0) {\n      b1 = b1 + k * (b % 10);\n          k *= 10;\n    }\n    b /= 10;\n  }\n  k = 1;\n  while (c != 0) {\n    if (c % 10 != 0) {\n      c1 = c1 +k * (c % 10);\n          k *= 10;\n    }\n    c /= 10;\n  }\n  if (a1 + b1 == c1) {\n    cout << \"YES\";\n  } else\n    cout << \"NO\";\n  return 0;\n}"
     ],
@@ -93,5 +93,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Life Without Zeros.json",
     "editorial_link": "https://codeforces.com//blog/entry/1715",
-    "editorial": "In this problem you need to do what is written in the statement. You can do it in the following 3 steps:\n1- Calculate C.\n2- Remove all zeros from A, B and C.\n3- Check if the new values form a correct equation."
+    "editorial": "In this problem you need to do what is written in the statement. You can do it in the following 3 steps:\n1- Calculate C.\n2- Remove all zeros from A, B and C.\n3- Check if the new values form a correct equation.",
+    "hint": []
 }

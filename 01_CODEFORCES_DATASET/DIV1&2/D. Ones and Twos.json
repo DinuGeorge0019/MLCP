@@ -192,5 +192,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\D. Ones and Twos.json",
     "editorial_link": "https://codeforces.com//blog/entry/122172",
-    "editorial": "SolutionDenote as the sum of subarray from to .Claim: If there is any\r\nsubarray with sum , we can find a subarray with sum .Proof: Suppose ,\r\nconsider 3 cases: , we have . , we have . , we have . So to check if\r\nthere exists a subarray whose sum equals , we can find the maximum\r\nsubarray sum having the same parity with and compare it with .The case\r\nwhere is obvious, suppose the opposite happens. If array is full of -s,\r\nthe answer is . Otherwise, let and be the positions of the first and\r\nlast in . Any subarray with will have a different parity with . So we\r\nwill compare with to get the answer.\r\n"
+    "editorial": "SolutionDenote as the sum of subarray from to .Claim: If there is any\r\nsubarray with sum , we can find a subarray with sum .Proof: Suppose ,\r\nconsider 3 cases: , we have . , we have . , we have . So to check if\r\nthere exists a subarray whose sum equals , we can find the maximum\r\nsubarray sum having the same parity with and compare it with .The case\r\nwhere is obvious, suppose the opposite happens. If array is full of -s,\r\nthe answer is . Otherwise, let and be the positions of the first and\r\nlast in . Any subarray with will have a different parity with . So we\r\nwill compare with to get the answer.\r\n",
+    "hint": [
+        "Hint 1 Consider some small examples and write down every possible value of subarray sums. Can you see some patterns?"
+    ]
 }

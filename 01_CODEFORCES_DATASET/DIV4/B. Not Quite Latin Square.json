@@ -172,5 +172,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\B. Not Quite Latin Square.json",
     "editorial_link": "https://codeforces.com//blog/entry/123952",
-    "editorial": "There are many solutions. For example, look at the row with the question\r\nmark, and write some if statements to check the missing letter.A shorter\r\nsolution: find the count of each letter. The one that appears only twice\r\nis the missing one.\r\n"
+    "editorial": "There are many solutions. For example, look at the row with the question\r\nmark, and write some if statements to check the missing letter.A shorter\r\nsolution: find the count of each letter. The one that appears only twice\r\nis the missing one.\r\n",
+    "hint": []
 }

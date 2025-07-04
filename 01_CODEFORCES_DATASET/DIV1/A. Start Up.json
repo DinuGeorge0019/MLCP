@@ -105,7 +105,7 @@
         ]
     },
     "name": "A. Start Up",
-    "statement": "Recently, a start up by two students of a state university of city F\r\ngained incredible popularity. Now it\u2019s time to start a new company. But\r\nwhat do we call it?The market analysts came up with a very smart plan:\r\nthe name of the company should be identical to its reflection in a\r\nmirror! In other words, if we write out the name of the company on a\r\npiece of paper in a line (horizontally, from left to right) with large\r\nEnglish letters, then put this piece of paper in front of the mirror,\r\nthen the reflection of the name in the mirror should perfectly match the\r\nline written on the piece of paper.There are many suggestions for the\r\ncompany name, so coming up to the mirror with a piece of paper for each\r\nname wouldn\u2019t be sensible. The founders of the company decided to\r\nautomatize this process. They asked you to write a program that can,\r\ngiven a word, determine whether the word is a \u2019mirror\u2019 word or not.\r\n",
+    "statement": "Recently, a start up by two students of a state university of city F\r\ngained incredible popularity. Now it’s time to start a new company. But\r\nwhat do we call it?The market analysts came up with a very smart plan:\r\nthe name of the company should be identical to its reflection in a\r\nmirror! In other words, if we write out the name of the company on a\r\npiece of paper in a line (horizontally, from left to right) with large\r\nEnglish letters, then put this piece of paper in front of the mirror,\r\nthen the reflection of the name in the mirror should perfectly match the\r\nline written on the piece of paper.There are many suggestions for the\r\ncompany name, so coming up to the mirror with a piece of paper for each\r\nname wouldn’t be sensible. The founders of the company decided to\r\nautomatize this process. They asked you to write a program that can,\r\ngiven a word, determine whether the word is a ’mirror’ word or not.\r\n",
     "solutions": [
         "#include <cstdio>\n#include <cstring>\n#include <algorithm>\n#define FOR(i,s,e) for (int i=(s); i<(e); i++)\n#define FOE(i,s,e) for (int i=(s); i<=(e); i++)\n#define FOD(i,s,e) for (int i=(s)-1; i>=(e); i--)\n#define CLR(a,x) memset(a, x, sizeof(a))\n#define EXP(i,l) for (int i=(l); i; i=qn[i])\n#define LLD long long\nusing namespace std;\n\nint ok, n;\nchar s[100005], v[300];\n\nint main(){\n\tscanf(\"%s\", s);\n\tv['A'] = v['H'] = v['I'] = v['M'] = v['O'] = v['T'] = v['U'] =\n\tv['V'] = v['W'] = v['X'] = v['Y'] = 1;\n\t\n\tn = strlen(s);\n\tok = 1;\n\tFOR(i,0,n){\n\t\tif (!v[s[i]]) ok = 0;\n\t\tif (s[i] != s[n - i - 1]) ok = 0;\n\t}\n\t\n\tputs(ok ? \"YES\" : \"NO\");\n\treturn 0;\n}\n"
     ],
@@ -118,5 +118,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Start Up.json",
     "editorial_link": "https://codeforces.com//blog/entry/11871",
-    "editorial": "One should firstly recognize that the required string should be\r\npalindrome and each character of the string should be symmetric. All the\r\nsymmetric characters are .\r\n"
+    "editorial": "One should firstly recognize that the required string should be\r\npalindrome and each character of the string should be symmetric. All the\r\nsymmetric characters are .\r\n",
+    "hint": []
 }

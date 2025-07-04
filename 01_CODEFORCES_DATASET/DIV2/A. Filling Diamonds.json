@@ -104,7 +104,7 @@
     "name": "A. Filling Diamonds",
     "statement": "You have integer n. Calculate how many ways are there to fully cover\r\nbelt-like area of 4n-2 triangles with diamond shapes. Diamond shape\r\nconsists of two triangles. You can move, rotate or flip the shape, but\r\nyou cannot scale it. 2 coverings are different if some 2 triangles are\r\ncovered by the same diamond shape in one of them and by different\r\ndiamond shapes in the other one.Please look at pictures below for better\r\nunderstanding. On the left you can see the diamond shape you will use,\r\nand on the right you can see the area you want to fill. These are the\r\nfigures of the area you want to fill for n = 1, 2, 3, 4. You have to\r\nanswer t independent test cases.\r\n",
     "solutions": [
-        "\ufeff#include<bits/stdc++.h>\n#include <array>\nusing namespace std;\nusing ULL = unsigned long long;\nusing UL = unsigned;\nusing LL = long long;\n#define rep(i, n) for(UL i = 0; i < (n); i++)\n\ntemplate<class Ty>\nusing passive_queue = priority_queue<Ty, vector<Ty>, greater<Ty>>;\n\nstruct Problem {\n\n\tvoid Solve() {\n\t\tUL Q; cin >> Q;\n\t\trep(i, Q) {\n\t\t\tUL N; cin >> N;\n\t\t\tcout << N << endl;\n\t\t}\n\t}\n\n\tProblem();\n};\nint main() {\n\tunique_ptr<Problem> p(new Problem());\n\tp->Solve();\n\treturn 0;\n}\nProblem::Problem() {\n\tcout << fixed << setprecision(10);\n}\n"
+        "﻿#include<bits/stdc++.h>\n#include <array>\nusing namespace std;\nusing ULL = unsigned long long;\nusing UL = unsigned;\nusing LL = long long;\n#define rep(i, n) for(UL i = 0; i < (n); i++)\n\ntemplate<class Ty>\nusing passive_queue = priority_queue<Ty, vector<Ty>, greater<Ty>>;\n\nstruct Problem {\n\n\tvoid Solve() {\n\t\tUL Q; cin >> Q;\n\t\trep(i, Q) {\n\t\t\tUL N; cin >> N;\n\t\t\tcout << N << endl;\n\t\t}\n\t}\n\n\tProblem();\n};\nint main() {\n\tunique_ptr<Problem> p(new Problem());\n\tp->Solve();\n\treturn 0;\n}\nProblem::Problem() {\n\tcout << fixed << setprecision(10);\n}\n"
     ],
     "input": "",
     "output": "",
@@ -118,5 +118,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Filling Diamonds.json",
     "editorial_link": "https://codeforces.com//blog/entry/75913",
-    "editorial": "The key observation of this problem is, wherever you put vertical\r\ndiamond at some point, all other places are uniquely placed by\r\nhorizontal diamonds like picture below. There are places you can put\r\nvertical diamond, so answer is for each test case.\r\n"
+    "editorial": "The key observation of this problem is, wherever you put vertical\r\ndiamond at some point, all other places are uniquely placed by\r\nhorizontal diamonds like picture below. There are places you can put\r\nvertical diamond, so answer is for each test case.\r\n",
+    "hint": []
 }

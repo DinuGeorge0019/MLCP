@@ -119,7 +119,7 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/130213",
-    "editorial": "SolutionConsider two numbers and such that . Then consider the numbers\r\nand . Let\u00e2\u0080\u0099s look at the last bit of and . Possible scenarios: Both bits\r\nare equal to adding one will change the bits at the same positions,\r\ntherefore ; Both bits are equal to adding one will change the bits at\r\nthe same positions and also add one to the next bit, therefore we can\r\nsimilarly consider the next bit; Bits are different adding one to the\r\nzero bit will only change one bit, while the subsequent bit of the other\r\nnumber will be changed. This means that . It is clear that we need to\r\nmaximize the number of zeros in the maximum matching suffix of and .\r\nObviously, this number is equal to the maximum matching suffix of and .\r\nLet be the length of the maximum matching suffix of and , then the\r\nanswer is .This can be calculated in time for one test case, where is\r\nthe limit on and .\r\n",
+    "editorial": "SolutionConsider two numbers and such that . Then consider the numbers\r\nand . Letâs look at the last bit of and . Possible scenarios: Both bits\r\nare equal to adding one will change the bits at the same positions,\r\ntherefore ; Both bits are equal to adding one will change the bits at\r\nthe same positions and also add one to the next bit, therefore we can\r\nsimilarly consider the next bit; Bits are different adding one to the\r\nzero bit will only change one bit, while the subsequent bit of the other\r\nnumber will be changed. This means that . It is clear that we need to\r\nmaximize the number of zeros in the maximum matching suffix of and .\r\nObviously, this number is equal to the maximum matching suffix of and .\r\nLet be the length of the maximum matching suffix of and , then the\r\nanswer is .This can be calculated in time for one test case, where is\r\nthe limit on and .\r\n",
     "name": "B. XOR Sequences",
     "statement": "You are given two distinct non-negative integers x and y. Consider two\r\ninfinite sequences a_1, a_2, a_3,\r\nldots and b_1, b_2, b_3,\r\nldots, where a_n = n\r\noplus x; b_n = n\r\noplus y. Here, x\r\noplus y denotes the bitwise XOR operation of integers x and y.For\r\nexample, with x = 6, the first 8 elements of sequence a will look as\r\nfollows: [7, 4, 5, 2, 3, 0, 1, 14,\r\nldots]. Note that the indices of elements start with 1.Your task is to\r\nfind the length of the longest common subsegment^\r\ndagger of sequences a and b. In other words, find the maximum integer m\r\nsuch that a_i = b_j, a_{i + 1} = b_{j + 1},\r\nldots, a_{i + m - 1} = b_{j + m - 1} for some i, j\r\nge 1.^\r\ndaggerA subsegment of sequence p is a sequence p_l,p_{l+1},\r\nldots,p_r, where 1\r\nle l\r\nle r.\r\n",
     "solutions": [
@@ -133,5 +133,8 @@
     ],
     "dificulty": "1000",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. XOR Sequences.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. XOR Sequences.json",
+    "hint": [
+        "Hint Look at samples."
+    ]
 }

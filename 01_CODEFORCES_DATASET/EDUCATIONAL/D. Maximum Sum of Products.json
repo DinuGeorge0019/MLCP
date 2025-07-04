@@ -149,5 +149,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\D. Maximum Sum of Products.json",
     "editorial_link": "https://codeforces.com//blog/entry/90212",
-    "editorial": "The naive approach is to iterate over and , reverse the subsegment of\r\nthe array and calculate the answer. But this solution is too slow and\r\nworks in .Instead, we can iterate over the center of the reversed\r\nsegment and its length. If the current segment is , and we want to go to\r\n, then the answer for the subsegment will increase by . It remains to\r\nadd the answer for and , but without reversion, this is easy to do if\r\nyou pre-calculate the prefix sums of the values .\r\n"
+    "editorial": "The naive approach is to iterate over and , reverse the subsegment of\r\nthe array and calculate the answer. But this solution is too slow and\r\nworks in .Instead, we can iterate over the center of the reversed\r\nsegment and its length. If the current segment is , and we want to go to\r\n, then the answer for the subsegment will increase by . It remains to\r\nadd the answer for and , but without reversion, this is easy to do if\r\nyou pre-calculate the prefix sums of the values .\r\n",
+    "hint": []
 }

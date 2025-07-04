@@ -161,5 +161,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C. Removal of Unattractive Pairs.json",
     "editorial_link": "https://codeforces.com//blog/entry/123012",
-    "editorial": "Consider a finite string; obviously, all characters in it are the same,\r\nas otherwise, we could remove some pair of characters.If some character\r\noccurs in the string more than times, then the final string will always\r\nconsist only of it, because with one deletion we can only get rid of one\r\noccurrence. To minimize the number of these characters, we need to\r\nremove one occurrence each time. We can always do this until the string\r\nis left with only such a character.Otherwise, we can remove all possible\r\npairs regardless of the order of deletions.\r\n"
+    "editorial": "Consider a finite string; obviously, all characters in it are the same,\r\nas otherwise, we could remove some pair of characters.If some character\r\noccurs in the string more than times, then the final string will always\r\nconsist only of it, because with one deletion we can only get rid of one\r\noccurrence. To minimize the number of these characters, we need to\r\nremove one occurrence each time. We can always do this until the string\r\nis left with only such a character.Otherwise, we can remove all possible\r\npairs regardless of the order of deletions.\r\n",
+    "hint": []
 }

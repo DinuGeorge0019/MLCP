@@ -143,11 +143,11 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/130839",
-    "editorial": "In all cases where the first team initially led the score, and then the\r\nsecond team, there will be a moment when the score is equal, so it is\r\nenough to check only this condition. If it is met, the answer is \"\",\r\notherwise the answer is \"\".Let\u00e2\u0080\u0099s demonstrate how events could have\r\nunfolded without an equal score, if the condition is not met. Let and ,\r\nthen the events could have occurred as follows: : () : () : ... : : () :\r\n()... :\r\n",
+    "editorial": "In all cases where the first team initially led the score, and then the\r\nsecond team, there will be a moment when the score is equal, so it is\r\nenough to check only this condition. If it is met, the answer is \"\",\r\notherwise the answer is \"\".Letâs demonstrate how events could have\r\nunfolded without an equal score, if the condition is not met. Let and ,\r\nthen the events could have occurred as follows: : () : () : ... : : () :\r\n()... :\r\n",
     "name": "A. Soccer",
     "statement": "Dima loves watching soccer. In such a game, the score on the scoreboard\r\nis represented as x : y, where x is the number of goals of the first\r\nteam, and y is the number of goals of the second team. At any given\r\ntime, only one team can score a goal, so the score x : y can change to\r\neither (x + 1) : y, or x : (y + 1).While watching a soccer game, Dima\r\nwas distracted by very important matters, and after some time, he\r\nreturned to watching the game. Dima remembers the score right before he\r\nwas distracted, and the score right after he returned. Given these two\r\nscores, he wonders the following question. Is it possible that, , the\r\nteams never had an equal score?It is guaranteed that at neither of the\r\ntwo time points Dima remembers the teams had equal scores. However, it\r\nis possible that the score did not change during his absence.Help Dima\r\nand answer the question!\r\n",
     "solutions": [
-        "#include <bits/stdc++.h>using namespace std;\u00a0#define ar array#define sz(v) int(v.size())typedef long long ll;\u00a0\u00a0\u00a0void solve() {    int x1,y1; cin>>x1>>y1;    int x2,y2; cin>>x2>>y2;    if (x1>y1) swap(x1,y1), swap(x2,y2);    cout << (x2<=y2?\"YES\\n\":\"NO\\n\");}\u00a0int main() {    ios::sync_with_stdio(0); cin.tie(0);    int T=1;    cin>>T;    while (T--) solve();}"
+        "#include <bits/stdc++.h>using namespace std; #define ar array#define sz(v) int(v.size())typedef long long ll;   void solve() {    int x1,y1; cin>>x1>>y1;    int x2,y2; cin>>x2>>y2;    if (x1>y1) swap(x1,y1), swap(x2,y2);    cout << (x2<=y2?\"YES\\n\":\"NO\\n\");} int main() {    ios::sync_with_stdio(0); cin.tie(0);    int T=1;    cin>>T;    while (T--) solve();}"
     ],
     "input": "",
     "output": "",
@@ -159,5 +159,6 @@
     ],
     "dificulty": "800",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Soccer.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Soccer.json",
+    "hint": []
 }

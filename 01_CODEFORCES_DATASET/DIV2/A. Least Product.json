@@ -134,5 +134,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Least Product.json",
     "editorial_link": "https://codeforces.com//blog/entry/123721",
-    "editorial": "SolutionFirst, let\u00e2\u0080\u0099s find the minimum product we can get. If one of the\r\nnumbers is or becomes , then the product will be . Otherwise, all the\r\nnumbers don\u00e2\u0080\u0099t change their sign during the operation. So the initial\r\nproduct won\u00e2\u0080\u0099t change its sign as well. Also, we can note that the\r\nabsolute value will not increase after an operation. That means if the\r\ninitial product is negative, we cannot decrease it. In this case the\r\nnecessary number of operations will be .If the initial product is\r\npositive, then we know the product won\u00e2\u0080\u0099t become negative, therefore we\r\nwill make it zero with operation, which will be the answer and the\r\noperation will be changing any number to . If the initial product is\r\nzero, then we don\u00e2\u0080\u0099t need to change anything, so the number of operations\r\nneeded is .\r\n"
+    "editorial": "SolutionFirst, letâs find the minimum product we can get. If one of the\r\nnumbers is or becomes , then the product will be . Otherwise, all the\r\nnumbers donât change their sign during the operation. So the initial\r\nproduct wonât change its sign as well. Also, we can note that the\r\nabsolute value will not increase after an operation. That means if the\r\ninitial product is negative, we cannot decrease it. In this case the\r\nnecessary number of operations will be .If the initial product is\r\npositive, then we know the product wonât become negative, therefore we\r\nwill make it zero with operation, which will be the answer and the\r\noperation will be changing any number to . If the initial product is\r\nzero, then we donât need to change anything, so the number of operations\r\nneeded is .\r\n",
+    "hint": [
+        "Hint 1 What is the minimum product that we can get, when one of the given numbers is equal to .",
+        "Hint 2 How is the absolute value of the integer changed, when we apply the given operation on that integer?",
+        "Hint 3 We can always make the product as small as possible with at most operation."
+    ]
 }

@@ -120,5 +120,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. k-rounding.json",
     "editorial_link": "https://codeforces.com//blog/entry/54604",
-    "editorial": "Notice that the number x ends with k or more zeros if the maximal power of 2 that is a divisor of x is at least k and the maximal power of 5 that is a divisor of x is at least k. Let's calculate the maximal powers of 2 and 5 that are divisors of n. If any of the powers is less than k then multiply the number by appropriate number of 2 and 5.\n\nThe answer is also LCM(n,?10k)."
+    "editorial": "Notice that the number x ends with k or more zeros if the maximal power of 2 that is a divisor of x is at least k and the maximal power of 5 that is a divisor of x is at least k. Let's calculate the maximal powers of 2 and 5 that are divisors of n. If any of the powers is less than k then multiply the number by appropriate number of 2 and 5.\n\nThe answer is also LCM(n,?10k).",
+    "hint": []
 }

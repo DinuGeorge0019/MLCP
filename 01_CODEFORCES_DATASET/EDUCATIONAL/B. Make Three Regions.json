@@ -146,7 +146,7 @@
     "name": "B. Make Three Regions",
     "statement": "There is a grid, consisting of 2 rows and n columns. Each cell of the\r\ngrid is either free or blocked.A free cell y is reachable from a free\r\ncell x if at least one of these conditions holds: x and y share a side;\r\nthere exists a free cell z such that z is reachable from x and y is\r\nreachable from z. A connected region is a set of free cells of the grid\r\nsuch that all cells in it are reachable from one another, but adding any\r\nother free cell to the set violates this rule.For example, consider the\r\nfollowing layout, where white cells are free, and dark grey cells are\r\nblocked: There are 3 regions in it, denoted with red, green and blue\r\ncolor respectively: The given grid contains at most 1 connected region.\r\nYour task is to calculate the number of free cells meeting the following\r\nconstraint: if this cell is blocked, the number of connected regions\r\nbecomes exactly 3.\r\n",
     "solutions": [
-        "#include <bits/stdc++.h>//#define int li#define f first#define s second\u00a0using namespace std;using li = long long;using ld = long double;\u00a0\u00a0int32_t main(){    ios_base::sync_with_stdio(0);    cin.tie(0);\u00a0    int t;    cin >> t;\u00a0    while(t--)    {        int n;        cin >> n;\u00a0        string a[2];        cin >> a[0] >> a[1];\u00a0        int ans = 0;\u00a0        for(int i = 1; i < n - 1; i++)            for(int j = 0; j < 2; j++)                if(a[j][i] == '.' && a[j ^ 1][i] == '.' && a[j][i + 1] == '.' && a[j][i - 1] == '.' && a[j ^ 1][i + 1] == 'x' && a[j ^ 1][i - 1] == 'x')                    ans++;\u00a0        cout << ans << \"\\n\";    }}"
+        "#include <bits/stdc++.h>//#define int li#define f first#define s second using namespace std;using li = long long;using ld = long double;  int32_t main(){    ios_base::sync_with_stdio(0);    cin.tie(0);     int t;    cin >> t;     while(t--)    {        int n;        cin >> n;         string a[2];        cin >> a[0] >> a[1];         int ans = 0;         for(int i = 1; i < n - 1; i++)            for(int j = 0; j < 2; j++)                if(a[j][i] == '.' && a[j ^ 1][i] == '.' && a[j][i + 1] == '.' && a[j][i - 1] == '.' && a[j ^ 1][i + 1] == 'x' && a[j ^ 1][i - 1] == 'x')                    ans++;         cout << ans << \"\\n\";    }}"
     ],
     "input": "",
     "output": "",
@@ -156,5 +156,6 @@
     ],
     "dificulty": "1100",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. Make Three Regions.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. Make Three Regions.json",
+    "hint": []
 }

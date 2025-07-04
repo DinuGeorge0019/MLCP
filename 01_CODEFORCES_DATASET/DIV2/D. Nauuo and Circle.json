@@ -136,5 +136,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Nauuo and Circle.json",
     "editorial_link": "https://codeforces.com//blog/entry/67511",
-    "editorial": "First, if we choose a node as the root, then each subtree must be in a continuous arc on the circle. Then, we can use DP to solve this problem.\n\nLet fu\n be the number of plans to draw the subtree of u\n, then fu=(|son(u)|+[u?root])!?v?son(u)fv\n \u0097 choose a position for each subtree and then u\n itself, then draw the subtrees. However, instead of choosing the position of the root, we suppose the root is on a certain point on the circle, then rotate the circle, thus get the answer: nfroot\n.\n\nIn fact, we don't have to write a DP, the answer is n\n times the product of the factorial of each node's degree (n?i=1ndegree[i]!\n)."
+    "editorial": "First, if we choose a node as the root, then each subtree must be in a continuous arc on the circle. Then, we can use DP to solve this problem.\n\nLet fu\n be the number of plans to draw the subtree of u\n, then fu=(|son(u)|+[u?root])!?v?son(u)fv\n  choose a position for each subtree and then u\n itself, then draw the subtrees. However, instead of choosing the position of the root, we suppose the root is on a certain point on the circle, then rotate the circle, thus get the answer: nfroot\n.\n\nIn fact, we don't have to write a DP, the answer is n\n times the product of the factorial of each node's degree (n?i=1ndegree[i]!\n).",
+    "hint": []
 }

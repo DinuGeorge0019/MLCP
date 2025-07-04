@@ -164,5 +164,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\F2. Frequency Problem  Hard Version .json",
     "editorial_link": "https://codeforces.com//blog/entry/82067",
-    "editorial": "If an element V\n appears more than n???\n times, we can simply brute-force this pair with partial sums (D,V)\n in O(n)\n.\n\nFor the other elements, for all the appearances of V\n we'll consider only at most |V|+1\n neighboring occurrences of D\n to search for the optimal interval. We can generalize the brute-force solution to work for this case too, by writing a function that solves just for a vector of interesting positions. Don't forget to take into account extending intervals with zeroes as well.\n\nWith proper preprocessing, this gives a solution in O(|V|2)\n per value V\n. Therefore, total runtime is bounded by O(nn???)\n."
+    "editorial": "If an element V\n appears more than n???\n times, we can simply brute-force this pair with partial sums (D,V)\n in O(n)\n.\n\nFor the other elements, for all the appearances of V\n we'll consider only at most |V|+1\n neighboring occurrences of D\n to search for the optimal interval. We can generalize the brute-force solution to work for this case too, by writing a function that solves just for a vector of interesting positions. Don't forget to take into account extending intervals with zeroes as well.\n\nWith proper preprocessing, this gives a solution in O(|V|2)\n per value V\n. Therefore, total runtime is bounded by O(nn???)\n.",
+    "hint": []
 }

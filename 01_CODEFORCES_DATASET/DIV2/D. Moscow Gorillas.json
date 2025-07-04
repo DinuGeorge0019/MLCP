@@ -175,5 +175,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Moscow Gorillas.json",
     "editorial_link": "https://codeforces.com//blog/entry/112723",
-    "editorial": "Denote by the index of the number in the permutation. Subsegments with\r\nare as follows . Denote by: , . Subsegments with are as follows . Let\u00e2\u0080\u0099s\r\nfind all subsegments with . If , then the subsegments with are as\r\nfollows If , then there is no subsegment with If , then the subsegments\r\nwith are as follows It remains only to intersect the sets of such\r\nsubsegments for and , which is done trivially. Code\r\n"
+    "editorial": "Denote by the index of the number in the permutation. Subsegments with\r\nare as follows . Denote by: , . Subsegments with are as follows . Letâs\r\nfind all subsegments with . If , then the subsegments with are as\r\nfollows If , then there is no subsegment with If , then the subsegments\r\nwith are as follows It remains only to intersect the sets of such\r\nsubsegments for and , which is done trivially. Code\r\n",
+    "hint": []
 }

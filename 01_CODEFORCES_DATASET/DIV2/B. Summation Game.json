@@ -164,5 +164,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Summation Game.json",
     "editorial_link": "https://codeforces.com//blog/entry/122560",
-    "editorial": "It is optimal for Bob to negate the x\n largest elements of the array. So in order to minimize the damage Bob will do, Alice should always remove some number of largest elements.\n\nTo solve the problem, we can sort the array and iterate over i\n (0?i?k\n) where i\n is the number of elements Alice removes. For each i\n, we know that Alice will remove the i\n largest elements of the array and Bob will then negate the x\n largest remaining elements. So the sum at the end can be calculated quickly with prefix sums. The time complexity is O(nlogn)\n because of sorting."
+    "editorial": "It is optimal for Bob to negate the x\n largest elements of the array. So in order to minimize the damage Bob will do, Alice should always remove some number of largest elements.\n\nTo solve the problem, we can sort the array and iterate over i\n (0?i?k\n) where i\n is the number of elements Alice removes. For each i\n, we know that Alice will remove the i\n largest elements of the array and Bob will then negate the x\n largest remaining elements. So the sum at the end can be calculated quickly with prefix sums. The time complexity is O(nlogn)\n because of sorting.",
+    "hint": [
+        "Hint 1 What is the optimal strategy for Bob?",
+        "Hint 2 It is optimal for Bob to negate the largest elements of the array. So what should Alice do?"
+    ]
 }

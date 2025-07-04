@@ -135,7 +135,7 @@
     "name": "A. LuoTianyi and the Show",
     "statement": "There are n people taking part in a show about VOCALOID. They will sit\r\nin the row of seats, numbered 1 to m from left to right.The n people\r\ncome and sit in order. Each person occupies a seat in one of three ways:\r\nSit in the seat next to the left of the leftmost person who is already\r\nsitting, or if seat 1 is taken, then leave the show. If there is no one\r\ncurrently sitting, sit in seat m. Sit in the seat next to the right of\r\nthe rightmost person who is already sitting, or if seat m is taken, then\r\nleave the show. If there is no one currently sitting, sit in seat 1. Sit\r\nin the seat numbered x_i. If this seat is taken, then leave the show.\r\nNow you want to know what is the maximum number of people that can take\r\na seat, if you can let people into the show in any order?\r\n",
     "solutions": [
-        "#include <bits/stdc++.h>\u00a0using i64 = long long;\u00a0void solve() {    int n, m;    std::cin >> m >> n;        int cnt1 = 0, cnt2 = 0;    std::vector<int> a;    for (int i = 0; i < m; i++) {        int x;        std::cin >> x;        if (x == -1) {            cnt1++;        } else if (x == -2) {            cnt2++;        } else {            a.push_back(x);        }    }    std::sort(a.begin(), a.end());    a.erase(std::unique(a.begin(), a.end()), a.end());        int ans = 0;    ans = std::max(ans, cnt1 + int(a.size()));    ans = std::max(ans, cnt2 + int(a.size()));    ans = std::min(ans, n);        for (int i = 0; i < a.size(); i++) {        int l = std::min(a[i] - 1, i + cnt1);        int r = std::min(n - a[i], int(a.size()) - 1 - i + cnt2);        ans = std::max(ans, l + 1 + r);    }    std::cout << ans << \"\\n\";}\u00a0int main() {    std::ios::sync_with_stdio(false);    std::cin.tie(nullptr);        int t;    std::cin >> t;        while (t--) {        solve();    }        return 0;}"
+        "#include <bits/stdc++.h> using i64 = long long; void solve() {    int n, m;    std::cin >> m >> n;        int cnt1 = 0, cnt2 = 0;    std::vector<int> a;    for (int i = 0; i < m; i++) {        int x;        std::cin >> x;        if (x == -1) {            cnt1++;        } else if (x == -2) {            cnt2++;        } else {            a.push_back(x);        }    }    std::sort(a.begin(), a.end());    a.erase(std::unique(a.begin(), a.end()), a.end());        int ans = 0;    ans = std::max(ans, cnt1 + int(a.size()));    ans = std::max(ans, cnt2 + int(a.size()));    ans = std::min(ans, n);        for (int i = 0; i < a.size(); i++) {        int l = std::min(a[i] - 1, i + cnt1);        int r = std::min(n - a[i], int(a.size()) - 1 - i + cnt2);        ans = std::max(ans, l + 1 + r);    }    std::cout << ans << \"\\n\";} int main() {    std::ios::sync_with_stdio(false);    std::cin.tie(nullptr);        int t;    std::cin >> t;        while (t--) {        solve();    }        return 0;}"
     ],
     "input": "",
     "output": "",
@@ -145,5 +145,6 @@
     ],
     "dificulty": "1400",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. LuoTianyi and the Show.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. LuoTianyi and the Show.json",
+    "hint": []
 }

@@ -124,5 +124,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Sanae and Giant Robot.json",
     "editorial_link": "https://codeforces.com//blog/entry/103493",
-    "editorial": "Solution Let . The task can be described as: Given an array . For some\ngiven interval if , we can assign to (). The goal is to make\n().Obviously assigning non-zero value to is useless, while assigning to\ndoes no harm. Therefore, we can repeatedly choose any interval\nsatisfying , and assigning to all non-zero () until there is no such\ninterval. We can use set in C++ or disjoint set or segment tree to find\nsuch .As each element can be assigned to at most once, the time\ncomplexity is .\n"
+    "editorial": "Solution Let . The task can be described as: Given an array . For some\ngiven interval if , we can assign to (). The goal is to make\n().Obviously assigning non-zero value to is useless, while assigning to\ndoes no harm. Therefore, we can repeatedly choose any interval\nsatisfying , and assigning to all non-zero () until there is no such\ninterval. We can use set in C++ or disjoint set or segment tree to find\nsuch .As each element can be assigned to at most once, the time\ncomplexity is .\n",
+    "hint": [
+        "Hint1 Let Unable to parse markup [type=CF_MATHJAX] for convenience.",
+        "Hint2 The interval selected satisfies Unable to parse markup [type=CF_MATHJAX] . What does range sum remind you of?"
+    ]
 }

@@ -121,7 +121,7 @@
         ]
     },
     "name": "C. Phone Numbers",
-    "statement": "You are given a string consisting of lowercase English letters and an\r\ninteger . Find the lexicographically smallest string of length , such\r\nthat its set of letters is a subset of the set of letters of and is\r\nlexicographically smaller than .It\u2019s guaranteed that the answer\r\nexists.Note that the set of letters is a set, not a multiset. For\r\nexample, the set of letters of is .String is lexicographically smaller\r\nthan string , if is a prefix of , is not equal to or there exists , such\r\nthat and for all it is satisfied that . For example, is\r\nlexicographically smaller than , is lexicographically smaller than ,\r\nlexicographically smaller than and lexicographically smaller than .\r\n",
+    "statement": "You are given a string consisting of lowercase English letters and an\r\ninteger . Find the lexicographically smallest string of length , such\r\nthat its set of letters is a subset of the set of letters of and is\r\nlexicographically smaller than .It’s guaranteed that the answer\r\nexists.Note that the set of letters is a set, not a multiset. For\r\nexample, the set of letters of is .String is lexicographically smaller\r\nthan string , if is a prefix of , is not equal to or there exists , such\r\nthat and for all it is satisfied that . For example, is\r\nlexicographically smaller than , is lexicographically smaller than ,\r\nlexicographically smaller than and lexicographically smaller than .\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\n\nusing namespace std;\ntypedef long long ll;\nint n, m;\nchar s[100005], b[100005];\nint vis[30], id[30];\nint stk[30], tp;\nint main(){\n\tscanf(\"%d%d\", &n, &m);\n\tscanf(\"%s\", s + 1);\n\tfor(int i = 1; i <= n; i ++){\n\t\tvis[s[i] - 'a'] = 1;\n\t}\n\tfor(int i = 0; i < 26; i ++){\n\t\tif(vis[i]) stk[++tp] = i, id[i] = tp;\n\t}\n\tif(m > n){\n\t\tfor(int i = 1; i <= n; i ++){\n\t\t\tprintf(\"%c\", s[i]);\n\t\t}\n\t\tfor(int i = n + 1; i <= m; i ++){\n\t\t\tprintf(\"%c\", stk[1] + 'a');\n\t\t}\n\t\treturn 0;\n\t}\n\tfor(int i = 1; i <= m; i ++){\n\t\tb[i] = s[i];\n\t}\n\t\tint d = id[b[m] - 'a'], pos = m;\n\t\twhile(d == tp){\n\t\t\tb[pos] = (char)(stk[1] + 'a');\n\t\t\tpos--;\n\t\t\td = id[b[pos] - 'a'];\n\t\t}\n\t\tb[pos] = stk[d + 1] + 'a';\n\tfor(int i = 1; i <= m; i ++){\n\t\tprintf(\"%c\", b[i]);\n\t}\n\treturn 0;\n} \n"
     ],
@@ -136,5 +136,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Phone Numbers.json",
     "editorial_link": "https://codeforces.com//blog/entry/58033",
-    "editorial": "Consider cases: If we should simply add minimum symbols from . If we\r\nneed to replace all symbols in the suffix of first symbols of string\r\nconsisting of largest symbols to smallest symbols and next symbol before\r\nthis suffix replace with next symbol that exists in the string.\r\nComplexity of this solution is .\r\n"
+    "editorial": "Consider cases: If we should simply add minimum symbols from . If we\r\nneed to replace all symbols in the suffix of first symbols of string\r\nconsisting of largest symbols to smallest symbols and next symbol before\r\nthis suffix replace with next symbol that exists in the string.\r\nComplexity of this solution is .\r\n",
+    "hint": []
 }

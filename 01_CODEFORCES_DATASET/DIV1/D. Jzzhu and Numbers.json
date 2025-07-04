@@ -114,5 +114,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Jzzhu and Numbers.json",
     "editorial_link": "https://codeforces.com//blog/entry/13112",
-    "editorial": "Firstly, we can use inclusion-exclusion principle in this problem. Let\r\nbe the count of number where . Let be the number of in the binary\r\nrespresentation of . Then the answer equals to . Now the task is to\r\ncalculate for every integer between and . Let be the count of number\r\nwhere and (they are defined below). We divide and into two parts, the\r\nfirst binary bits and the other binary bits. Let be the first part of\r\nand be the second part of . Let be the first part of and be the second\r\npart of . We can calculate in : The problem can be solved in now ( in\r\nthis problem).\r\n"
+    "editorial": "Firstly, we can use inclusion-exclusion principle in this problem. Let\r\nbe the count of number where . Let be the number of in the binary\r\nrespresentation of . Then the answer equals to . Now the task is to\r\ncalculate for every integer between and . Let be the count of number\r\nwhere and (they are defined below). We divide and into two parts, the\r\nfirst binary bits and the other binary bits. Let be the first part of\r\nand be the second part of . Let be the first part of and be the second\r\npart of . We can calculate in : The problem can be solved in now ( in\r\nthis problem).\r\n",
+    "hint": []
 }

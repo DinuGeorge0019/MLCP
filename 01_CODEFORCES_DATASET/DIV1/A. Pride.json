@@ -112,5 +112,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Pride.json",
     "editorial_link": "https://codeforces.com//blog/entry/55841",
-    "editorial": "Consider cnt1 as number of 1s in the a.\n\nIf 0?<?cnt1 then the answer is n?-?cnt1.\n\notherwise We should find a segment with its gcd equal to 1 and minimum length.\n\nconsider a segment as (L,?R) which L???R and it's gcd as D(L,?R)\n\nWe fix L and then iterate through all R in order. Consider we know that D(L,?R)?=?G then D(L,?R?+?1)?=?gcd(G,?A(R?+?1)).\n\nIf D(L,?R)?=?1 then you can make all the elements in (R?-?L?+?1)?+?(n?-?1).\n\nAnswer is minimum possible D(L,?R) over all possible segments."
+    "editorial": "Consider cnt1 as number of 1s in the a.\n\nIf 0?<?cnt1 then the answer is n?-?cnt1.\n\notherwise We should find a segment with its gcd equal to 1 and minimum length.\n\nconsider a segment as (L,?R) which L???R and it's gcd as D(L,?R)\n\nWe fix L and then iterate through all R in order. Consider we know that D(L,?R)?=?G then D(L,?R?+?1)?=?gcd(G,?A(R?+?1)).\n\nIf D(L,?R)?=?1 then you can make all the elements in (R?-?L?+?1)?+?(n?-?1).\n\nAnswer is minimum possible D(L,?R) over all possible segments.",
+    "hint": []
 }

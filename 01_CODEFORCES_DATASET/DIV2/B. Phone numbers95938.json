@@ -114,5 +114,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Phone numbers95938.json",
     "editorial_link": "https://codeforces.com//blog/entry/594",
-    "editorial": "There are many ways of separating the string into clusters of 2 or 3 characters. One easy way is to output 2 characters at a time, until you have only 2 or 3 characters remaining."
+    "editorial": "There are many ways of separating the string into clusters of 2 or 3 characters. One easy way is to output 2 characters at a time, until you have only 2 or 3 characters remaining.",
+    "hint": []
 }

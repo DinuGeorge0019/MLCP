@@ -121,5 +121,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Meeting of Old Friends.json",
     "editorial_link": "https://codeforces.com//blog/entry/47094",
-    "editorial": "Lets find two numbers and lower and upper bound on time which guys can\r\nspend together. (, ), (,). If then answer is definitely . In case we\r\nneed to number belongs to the interval. If is it true answer is ,\r\notherwise it is .\r\n"
+    "editorial": "Lets find two numbers and lower and upper bound on time which guys can\r\nspend together. (, ), (,). If then answer is definitely . In case we\r\nneed to number belongs to the interval. If is it true answer is ,\r\notherwise it is .\r\n",
+    "hint": []
 }

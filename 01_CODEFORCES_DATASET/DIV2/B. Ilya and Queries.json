@@ -99,7 +99,7 @@
         ]
     },
     "name": "B. Ilya and Queries",
-    "statement": "Ilya the Lion wants to help all his friends with passing exams. They\r\nneed to solve the following problem to pass the IT exam.You\u2019ve got\r\nstring ( is the length of the string), consisting only of characters \"\"\r\nand \"\" and queries. Each query is described by a pair of integers . The\r\nanswer to the query is the number of such integers , that .Ilya the Lion\r\nwants to help his friends but is there anyone to help him? Help Ilya,\r\nsolve the problem.\r\n",
+    "statement": "Ilya the Lion wants to help all his friends with passing exams. They\r\nneed to solve the following problem to pass the IT exam.You’ve got\r\nstring ( is the length of the string), consisting only of characters \"\"\r\nand \"\" and queries. Each query is described by a pair of integers . The\r\nanswer to the query is the number of such integers , that .Ilya the Lion\r\nwants to help his friends but is there anyone to help him? Help Ilya,\r\nsolve the problem.\r\n",
     "solutions": [
         "#include <cmath>\n#include <cstdio>\n#include <cstdlib>\n#include <iostream>\n#include <algorithm>\n#include <cstring>\nusing namespace std;\n\nconst int MAXN = 101000;\n\nchar str[MAXN];\nint f[MAXN], n, m;\n\nint main()\n{\n#ifndef ONLINE_JUDGE\n\tfreopen(\"input.txt\", \"r\", stdin);\n\tfreopen(\"output.txt\", \"w\", stdout);\n#endif\n\tscanf(\"%s\", str + 1);\n\tn = strlen(str + 1);\n\tscanf(\"%d\", &m);\n\tfor (int i = 1; i < n; ++i)\n\t\tf[i] = f[i - 1] + (str[i] == str[i + 1]);\n\tfor (int i = 1; i <= m; ++i)\n\t{\n\t\tint x, y;\n\t\tscanf(\"%d%d\", &x, &y);\n\t\tprintf(\"%d\\n\", f[y - 1] - f[x - 1]);\n\t}\n\tfclose(stdin);\n\tfclose(stdout);\n\treturn 0;\n}\n"
     ],
@@ -113,5 +113,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Ilya and Queries.json",
     "editorial_link": "https://codeforces.com//blog/entry/7826",
-    "editorial": "Precalculate some array , that , if , else . Now for any query , you\r\nneed to find sum of , that . It is standart problem. For solving this\r\nproblem you can precalcutate some another array Sum, where . Then sum of\r\ninterval is Sum_r Sum_{l-1}. For better understanding you can look at\r\nsolution.\r\n"
+    "editorial": "Precalculate some array , that , if , else . Now for any query , you\r\nneed to find sum of , that . It is standart problem. For solving this\r\nproblem you can precalcutate some another array Sum, where . Then sum of\r\ninterval is Sum_r Sum_{l-1}. For better understanding you can look at\r\nsolution.\r\n",
+    "hint": []
 }

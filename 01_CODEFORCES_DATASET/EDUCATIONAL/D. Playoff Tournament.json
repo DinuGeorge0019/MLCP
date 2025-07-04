@@ -167,5 +167,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\D. Playoff Tournament.json",
     "editorial_link": "https://codeforces.com//blog/entry/91481",
-    "editorial": "Denote as the number of teams that can be winners in the -th game. The\r\nanswer to the problem is .If the -th game is played between the winners\r\nof games and (), then: if ; if ; if . So we can calculate all values of\r\nfor the initial string.Note that the result of no more than other games\r\ndepends on the result of any game. So, if we change , it will change no\r\nmore than values of , and we can recalculate all of them.For\r\nconvenience, you can renumerate the games so that the playoff looks like\r\na segment tree, i. e. the final has the number , the semifinals have\r\nnumbers and , etc.\r\n"
+    "editorial": "Denote as the number of teams that can be winners in the -th game. The\r\nanswer to the problem is .If the -th game is played between the winners\r\nof games and (), then: if ; if ; if . So we can calculate all values of\r\nfor the initial string.Note that the result of no more than other games\r\ndepends on the result of any game. So, if we change , it will change no\r\nmore than values of , and we can recalculate all of them.For\r\nconvenience, you can renumerate the games so that the playoff looks like\r\na segment tree, i. e. the final has the number , the semifinals have\r\nnumbers and , etc.\r\n",
+    "hint": []
 }

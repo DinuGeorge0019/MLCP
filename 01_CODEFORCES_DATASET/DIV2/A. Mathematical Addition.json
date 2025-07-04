@@ -132,5 +132,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Mathematical Addition.json",
     "editorial_link": "https://codeforces.com//blog/entry/96953",
-    "editorial": "We have the equation: xu+yv=x+yu+v.\n\nLet's multiply the left and right parts by u?v?(u+v)\n.\n\nReceived: x?v?(u+v)+y?u?(u+v)=(x+y)?u?v\n.\n\nAfter opening the brackets and simplifying, we have: x?v2+y?u2=0\n.\n\nOne of the solutions to this equation is x=?u2\n, y=v2"
+    "editorial": "We have the equation: xu+yv=x+yu+v.\n\nLet's multiply the left and right parts by u?v?(u+v)\n.\n\nReceived: x?v?(u+v)+y?u?(u+v)=(x+y)?u?v\n.\n\nAfter opening the brackets and simplifying, we have: x?v2+y?u2=0\n.\n\nOne of the solutions to this equation is x=?u2\n, y=v2",
+    "hint": []
 }

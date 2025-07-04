@@ -212,5 +212,10 @@
     ],
     "dificulty": "",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\H2. Kevin and Stones  Hard Version .json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\H2. Kevin and Stones  Hard Version .json",
+    "hint": [
+        "Hint 1 Think about the necessary conditions.",
+        "Hint 2 Simplify the graph while keeping the conditions.",
+        "Hint 3 Try to move the stones one bye one."
+    ]
 }

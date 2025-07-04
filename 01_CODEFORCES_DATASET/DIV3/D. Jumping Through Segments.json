@@ -159,5 +159,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\D. Jumping Through Segments.json",
     "editorial_link": "https://codeforces.com//blog/entry/123012",
-    "editorial": "First, let\u00e2\u0080\u0099s note that if we can pass a level with some value of , then\r\nwe can make all the same moves and pass it with a larger value. This\r\nallows us to use binary search for the answer.To check whether it is\r\npossible to pass the level with a certain , we will maintain a segment\r\nin which we can find ourselves. After each move, it expands by in both\r\ndirections and is reduced to the intersection with the segment where the\r\nplayer must be at that move. If at any point the intersection becomes\r\nempty, then it is impossible to pass the level with such .\r\n"
+    "editorial": "First, letâs note that if we can pass a level with some value of , then\r\nwe can make all the same moves and pass it with a larger value. This\r\nallows us to use binary search for the answer.To check whether it is\r\npossible to pass the level with a certain , we will maintain a segment\r\nin which we can find ourselves. After each move, it expands by in both\r\ndirections and is reduced to the intersection with the segment where the\r\nplayer must be at that move. If at any point the intersection becomes\r\nempty, then it is impossible to pass the level with such .\r\n",
+    "hint": []
 }

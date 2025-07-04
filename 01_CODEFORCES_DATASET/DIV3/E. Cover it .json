@@ -147,5 +147,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\E. Cover it .json",
     "editorial_link": "https://codeforces.com/blog/entry/67598",
-    "editorial": "Firstly, let\u00e2\u0080\u0099s run bfs on the given graph and calculate distances for\r\nall vertices. In fact, we don\u00e2\u0080\u0099t need distances, we need their parities.\r\nThe second part is to find all vertices with an even distance, all\r\nvertices with and odd distance, and print the smallest by size part. Why\r\nis it always true? Firstly, it is obvious that at least one of these\r\nsizes will not exceed . And secondly, because we are checking just\r\nparities of distances, it is obvious that each vertex of some parity is\r\nconnected with at least one vertex of the opposite parity (because it\r\nhas this parity from some vertex of the opposite parity).\r\n"
+    "editorial": "Firstly, letâs run bfs on the given graph and calculate distances for\r\nall vertices. In fact, we donât need distances, we need their parities.\r\nThe second part is to find all vertices with an even distance, all\r\nvertices with and odd distance, and print the smallest by size part. Why\r\nis it always true? Firstly, it is obvious that at least one of these\r\nsizes will not exceed . And secondly, because we are checking just\r\nparities of distances, it is obvious that each vertex of some parity is\r\nconnected with at least one vertex of the opposite parity (because it\r\nhas this parity from some vertex of the opposite parity).\r\n",
+    "hint": []
 }

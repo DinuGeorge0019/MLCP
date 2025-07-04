@@ -132,7 +132,7 @@
         ]
     },
     "name": "A. Three Strings",
-    "statement": "You are given three strings a, b and c of the same length n. The strings\r\nconsist of lowercase English letters only. The i-th letter of a is a_i,\r\nthe i-th letter of b is b_i, the i-th letter of c is c_i.For every i (1\r\nleq i\r\nleq n) you swap (i.e. exchange) c_i with either a_i or b_i. So in total\r\nyou\u2019ll perform exactly n swap operations, each of them either c_i\r\nleftrightarrow a_i or c_i\r\nleftrightarrow b_i (i iterates over all integers between 1 and n,\r\ninclusive).For example, if a is \"\", b is \"\", and c is \"\", you can make c\r\nequal to \"\" taking the 1-st and the 4-th letters from a and the others\r\nfrom b. In this way a becomes \"\" and b becomes \"\".Is it possible that\r\nafter these swaps the string a becomes exactly the same as the string b?\r\n",
+    "statement": "You are given three strings a, b and c of the same length n. The strings\r\nconsist of lowercase English letters only. The i-th letter of a is a_i,\r\nthe i-th letter of b is b_i, the i-th letter of c is c_i.For every i (1\r\nleq i\r\nleq n) you swap (i.e. exchange) c_i with either a_i or b_i. So in total\r\nyou’ll perform exactly n swap operations, each of them either c_i\r\nleftrightarrow a_i or c_i\r\nleftrightarrow b_i (i iterates over all integers between 1 and n,\r\ninclusive).For example, if a is \"\", b is \"\", and c is \"\", you can make c\r\nequal to \"\" taking the 1-st and the 4-th letters from a and the others\r\nfrom b. In this way a becomes \"\" and b becomes \"\".Is it possible that\r\nafter these swaps the string a becomes exactly the same as the string b?\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\n\nint T, n;\nstd::string a, b, c;\n\nbool solve() {\n    for (int i = 0; i < n; i++) {\n        if (a[i] == b[i]) {\n            if (a[i] != c[i]) { return false; }\n        } else if (a[i] == c[i] || b[i] == c[i]) {\n            \n        } else {\n            return false;\n        }\n    }\n    return true;\n}\n\nint main() {\n    for (std::cin >> T; T; T--) {\n        std::cin >> a >> b >> c; n = a.size();\n        printf(\"%s\\n\", solve() ? \"YES\" : \"NO\");\n    }\n    return 0;\n}"
     ],
@@ -146,5 +146,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Three Strings.json",
     "editorial_link": "https://codeforces.com//blog/entry/73877",
-    "editorial": "For every where is the length of the strings. If is equal to we can swap\r\nit with or if is equal to we can swap it with , otherwise we can\u00e2\u0080\u0099t swap\r\nit. So we only need to check that is equal or is equal to .Complexity is\r\n.Code:https://ideone.com/Z5Hamc\r\n"
+    "editorial": "For every where is the length of the strings. If is equal to we can swap\r\nit with or if is equal to we can swap it with , otherwise we canât swap\r\nit. So we only need to check that is equal or is equal to .Complexity is\r\n.Code:https://ideone.com/Z5Hamc\r\n",
+    "hint": []
 }

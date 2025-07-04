@@ -159,5 +159,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Qualifying Contest.json",
     "editorial_link": "https://codeforces.com//blog/entry/44093",
-    "editorial": "Let\u00e2\u0080\u0099s consider the participants from every region separately. So for\r\nevery region we just need to sort all of its participants by their score\r\nin non-increasing order. The answer for a region is inconsistent if and\r\nonly if the score of the second and the third participant in this order\r\nare equal, otherwise the answer is the first and the second participant\r\nin this order. The solution complexity is .\r\n"
+    "editorial": "Letâs consider the participants from every region separately. So for\r\nevery region we just need to sort all of its participants by their score\r\nin non-increasing order. The answer for a region is inconsistent if and\r\nonly if the score of the second and the third participant in this order\r\nare equal, otherwise the answer is the first and the second participant\r\nin this order. The solution complexity is .\r\n",
+    "hint": []
 }

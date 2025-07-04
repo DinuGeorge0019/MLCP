@@ -151,5 +151,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Matching.json",
     "editorial_link": "https://codeforces.com//blog/entry/115296",
-    "editorial": "In a positive integer, the first digit is from to , and every next digit\r\ncan be any. This allows us to implement the following combinatorial\r\napproach: calculate the number of different values for the first digit,\r\nwhich is if the first character of is , if the first character of is any\r\nother digit, or if the first character of is ; calculate the number of\r\ndifferent values for each of the other digits, which is if the\r\ncorresponding character of is a digit, or if it is ; multiply all these\r\nvalues.\r\n"
+    "editorial": "In a positive integer, the first digit is from to , and every next digit\r\ncan be any. This allows us to implement the following combinatorial\r\napproach: calculate the number of different values for the first digit,\r\nwhich is if the first character of is , if the first character of is any\r\nother digit, or if the first character of is ; calculate the number of\r\ndifferent values for each of the other digits, which is if the\r\ncorresponding character of is a digit, or if it is ; multiply all these\r\nvalues.\r\n",
+    "hint": []
 }

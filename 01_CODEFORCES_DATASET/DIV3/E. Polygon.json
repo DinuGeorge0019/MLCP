@@ -167,5 +167,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\E. Polygon.json",
     "editorial_link": "https://codeforces.com//blog/entry/77846",
-    "editorial": "Let\u00e2\u0080\u0099s see how the matrix looks like after some sequence of shoots: The\r\nmatrix consists of , or There is at least one at position () or (), and\r\nany not at position () or () must have below or right. If the second\r\ncondition is violated, then the in the corresponding cell would continue\r\nits flight. Thus, it is necessary and sufficient to verify that the\r\nmatrix satisfies the condition above.\r\n"
+    "editorial": "Letâs see how the matrix looks like after some sequence of shoots: The\r\nmatrix consists of , or There is at least one at position () or (), and\r\nany not at position () or () must have below or right. If the second\r\ncondition is violated, then the in the corresponding cell would continue\r\nits flight. Thus, it is necessary and sufficient to verify that the\r\nmatrix satisfies the condition above.\r\n",
+    "hint": []
 }

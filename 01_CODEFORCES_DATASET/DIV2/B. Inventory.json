@@ -92,5 +92,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Inventory.json",
     "editorial_link": "https://codeforces.com//blog/entry/19705",
-    "editorial": "Let\u00e2\u0080\u0099s look at the problem from another side: how many numbers can we\r\nleave unchanged to get permutation? It is obvious: these numbers must be\r\nfrom to and they are must be pairwise distinct. This condition is\r\nnecessary and sufficient. This problem can be solved with greedy\r\nalgorithm. If me meet the number we have never met before and this\r\nnumber is between and , we will leave this number unchanged. To\r\nimplement this we can use array where we will mark used numbers. After\r\nthat we will look over the array again and allocate numbers that weren\u00e2\u0080\u0099t\r\nused. Complexity .\r\n"
+    "editorial": "Letâs look at the problem from another side: how many numbers can we\r\nleave unchanged to get permutation? It is obvious: these numbers must be\r\nfrom to and they are must be pairwise distinct. This condition is\r\nnecessary and sufficient. This problem can be solved with greedy\r\nalgorithm. If me meet the number we have never met before and this\r\nnumber is between and , we will leave this number unchanged. To\r\nimplement this we can use array where we will mark used numbers. After\r\nthat we will look over the array again and allocate numbers that werenât\r\nused. Complexity .\r\n",
+    "hint": []
 }

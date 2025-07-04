@@ -135,5 +135,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Orac and Models.json",
     "editorial_link": "https://codeforces.com//blog/entry/77284",
-    "editorial": "Considering DP, we can design DP statuses as follow: f_i stands for the\r\nlength of the longest beautiful sequence end up with index i. We can\r\nfind the transformation easily: f_i =\r\nmax\r\nlimits_{j\r\nmid i, s_j<s_i}\r\n{f_j + 1\r\n} Then, the length of answer sequence is the maximum value among\r\nf_1,f_2,\r\ncdots,f_n.About the complexity of DP: If you transform by iterating\r\nmultiples, it will be O(n\r\nlog n) (According to properties of Harmonic Series); if you iterate\r\ndivisors, then it will be O(n\r\nsqrt n). Fortunately, both of them are acceptable in this problem.\r\n"
+    "editorial": "Considering DP, we can design DP statuses as follow: f_i stands for the\r\nlength of the longest beautiful sequence end up with index i. We can\r\nfind the transformation easily: f_i =\r\nmax\r\nlimits_{j\r\nmid i, s_j<s_i}\r\n{f_j + 1\r\n} Then, the length of answer sequence is the maximum value among\r\nf_1,f_2,\r\ncdots,f_n.About the complexity of DP: If you transform by iterating\r\nmultiples, it will be O(n\r\nlog n) (According to properties of Harmonic Series); if you iterate\r\ndivisors, then it will be O(n\r\nsqrt n). Fortunately, both of them are acceptable in this problem.\r\n",
+    "hint": []
 }

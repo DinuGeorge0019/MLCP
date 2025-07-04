@@ -125,7 +125,7 @@
         ]
     },
     "name": "F. U2",
-    "statement": "Recently Vasya learned that, given two points with different x\r\ncoordinates, you can draw through them exactly one parabola with\r\nequation of type y = x^2 + bx + c, where b and c are reals. Let\u2019s call\r\nsuch a parabola an U-shaped one.Vasya drew several distinct points with\r\ninteger coordinates on a plane and then drew an U-shaped parabola\r\nthrough each pair of the points that have different x coordinates. The\r\npicture became somewhat messy, but Vasya still wants to count how many\r\nof the parabolas drawn don\u2019t have any drawn point inside their internal\r\narea. Help Vasya.The internal area of an U-shaped parabola is the part\r\nof the plane that lies strictly above the parabola when the y axis is\r\ndirected upwards.\r\n",
+    "statement": "Recently Vasya learned that, given two points with different x\r\ncoordinates, you can draw through them exactly one parabola with\r\nequation of type y = x^2 + bx + c, where b and c are reals. Let’s call\r\nsuch a parabola an U-shaped one.Vasya drew several distinct points with\r\ninteger coordinates on a plane and then drew an U-shaped parabola\r\nthrough each pair of the points that have different x coordinates. The\r\npicture became somewhat messy, but Vasya still wants to count how many\r\nof the parabolas drawn don’t have any drawn point inside their internal\r\narea. Help Vasya.The internal area of an U-shaped parabola is the part\r\nof the plane that lies strictly above the parabola when the y axis is\r\ndirected upwards.\r\n",
     "solutions": [
         "#include<cstdio>\n#include<iostream>\n#include<cstring>\n#include<algorithm>\nusing namespace std;\ntypedef long long ll;\nconst int N=1e6+10;\nstruct dot{ll x,y;}p[N];\nll cross(dot a,dot b){return a.x*b.y-a.y*b.x;}\nll a[N],b[N],n,d[N],r;\n\nbool comp(dot a,dot b){\n\tif (a.x==b.x)return a.y>b.y;\n\treturn a.x>b.x;\n}\ndot operator -(dot a,dot b){return (dot){a.x-b.x,a.y-b.y};}\nint main(){\n\tcin>>n;\n\tfor (int i=1;i<=n;i++){\n\t\tint x,y;\n\t\tscanf(\"%d%d\",&x,&y);\n\t\tp[i].x=x;p[i].y=y-(ll)x*x;\n\t}\n\tsort(p+1,p+n+1,comp);\n\td[r=1]=1;\n\tfor (int i=2;i<=n;i++){\n\t\tif (p[i].x==p[i-1].x)continue;\n\t\twhile (r>1&&cross(p[d[r-1]]-p[d[r]],p[i]-p[d[r]])>=0)r--;\n\t\td[++r]=i;\n\t}\n\tcout<<r-1<<endl;\n}"
     ],
@@ -140,5 +140,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\F. U2.json",
     "editorial_link": "https://codeforces.com//blog/entry/66301",
-    "editorial": "Let's rewrite parabola equation y=x2+bx+c\n as y?x2=bx+c\n. This means, that if you change each point (xi,yi)\n to (xi,yi?x2i)\n, then the parabolas will turn into straight lines, and the task will be reduced to constructing a top part of convex hull on the obtained points and calculate the number of segments on it."
+    "editorial": "Let's rewrite parabola equation y=x2+bx+c\n as y?x2=bx+c\n. This means, that if you change each point (xi,yi)\n to (xi,yi?x2i)\n, then the parabolas will turn into straight lines, and the task will be reduced to constructing a top part of convex hull on the obtained points and calculate the number of segments on it.",
+    "hint": []
 }

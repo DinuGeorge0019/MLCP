@@ -207,5 +207,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Yet Another Dividing into Teams.json",
     "editorial_link": "https://codeforces.com//blog/entry/70779",
-    "editorial": "The answer is always or . Why it is so? Because if there is no such pair\r\namong all students that then we can take all students into one team.\r\nOtherwise, we can divide them into two teams by their programming skill\r\nparity.\r\n"
+    "editorial": "The answer is always or . Why it is so? Because if there is no such pair\r\namong all students that then we can take all students into one team.\r\nOtherwise, we can divide them into two teams by their programming skill\r\nparity.\r\n",
+    "hint": []
 }

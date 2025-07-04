@@ -127,5 +127,24 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Manipulating History.json",
     "editorial_link": "https://codeforces.com//blog/entry/103493",
-    "editorial": "SolutionLet be the unshuffled operation sequence.Consider a single\r\nletter that has ever appeared in (there are letters). There are two\r\npossible situations: is in the initial string. No matter is replaced or\r\nnot, will appear in the input data exactly once (in replaced strings or\r\nin the final string). is not in the initial string. No matter is\r\nreplaced or not, will appear in the input data exactly twice. So the\r\nanswer is the only letter appearing odd times in the input data.The time\r\ncomplexity is .\r\n"
+    "editorial": "SolutionLet be the unshuffled operation sequence.Consider a single\r\nletter that has ever appeared in (there are letters). There are two\r\npossible situations: is in the initial string. No matter is replaced or\r\nnot, will appear in the input data exactly once (in replaced strings or\r\nin the final string). is not in the initial string. No matter is\r\nreplaced or not, will appear in the input data exactly twice. So the\r\nanswer is the only letter appearing odd times in the input data.The time\r\ncomplexity is .\r\n",
+    "hint": [
+        "Hint1 You do not need to know anything about string matching or other algorithms.",
+        "Hint2 Why the initial string consists of only one letter?",
+        "Hint3 Why the answer is unique if there is at least one answer?",
+        "Hint4 What if each string in the input data consist of one letter?",
+        "Hint5 Parity.",
+        "Hint1 Consider Unable to parse markup [type=CF_MATHJAX] and Unable to parse markup [type=CF_MATHJAX] separately.",
+        "Hint2 Consider maximizing the initial mushrooms and the additional mushrooms separately.",
+        "Hint3 Is there any common strategy?",
+        "Hint1 Unable to parse markup [type=CF_MATHJAX] . What can we do with the first Unable to parse markup [type=CF_MATHJAX] queries?",
+        "Hint2 We can now the lengths of each edge with Unable to parse markup [type=CF_MATHJAX] queries.",
+        "Hint3 Kruskal.",
+        "Hint1 Let Unable to parse markup [type=CF_MATHJAX] for convenience.",
+        "Hint2 The interval selected satisfies Unable to parse markup [type=CF_MATHJAX] . What does range sum remind you of?",
+        "Hint1 What is the range of the answer?",
+        "Hint2 How to solve it in Unable to parse markup [type=CF_MATHJAX] ?",
+        "Hint Consider the Inclusion-Exclusion Principle.",
+        "Hint How legia 's mind works?"
+    ]
 }

@@ -184,7 +184,7 @@
     "name": "B. A BIT of a Construction",
     "statement": "Given integers n and k, construct a sequence of n non-negative (i.e.\r\ngeq 0) integers a_1, a_2,\r\nldots, a_n such that\r\nsum\r\nlimits_{i = 1}^n a_i = k The of 1s in the binary representation of a_1 |\r\na_2 |\r\nldots | a_n is maximized, where | denotes the bitwise OR operation.\r\n",
     "solutions": [
-        "/*\u5728\u53d1\u89c9\u90a3\u4e00\u5929 \u5728\u90a3\u4e00\u5929\u6f6e\u6c5b\u6cdb\u4e0a\u9ad8\u7b51\u57ce\u5899\u65f6\u95f4\u8bf7\u5c06\u4e00\u5207\u8bc1\u660e*/#include<bits/stdc++.h>using namespace std;const int maxn=500005;int n,m,T,ans,flg;int a[maxn];string s;int main(){\tscanf(\"%d\",&T);\twhile(T--){\t\tans=flg=0;\t\tscanf(\"%d%d\",&n,&m);\t\tif(n==1){\t\t\tprintf(\"%d\\n\",m);\t\t\tcontinue;\t\t}\t\tint k=0;\t\twhile((1<<(k+1))-1<m)\t\t\tk++;\t\tprintf(\"%d %d \",(1<<k)-1,m-(1<<k)+1);\t\tfor(int i=1;i<=n-2;i++)\t\t\tprintf(\"0 \");\t\tputs(\"\");\t}\treturn 0;}"
+        "/*在发觉那一天 在那一天潮汛泛上高筑城墙时间请将一切证明*/#include<bits/stdc++.h>using namespace std;const int maxn=500005;int n,m,T,ans,flg;int a[maxn];string s;int main(){\tscanf(\"%d\",&T);\twhile(T--){\t\tans=flg=0;\t\tscanf(\"%d%d\",&n,&m);\t\tif(n==1){\t\t\tprintf(\"%d\\n\",m);\t\t\tcontinue;\t\t}\t\tint k=0;\t\twhile((1<<(k+1))-1<m)\t\t\tk++;\t\tprintf(\"%d %d \",(1<<k)-1,m-(1<<k)+1);\t\tfor(int i=1;i<=n-2;i++)\t\t\tprintf(\"0 \");\t\tputs(\"\");\t}\treturn 0;}"
     ],
     "input": "",
     "output": "",
@@ -196,5 +196,8 @@
     ],
     "dificulty": "1100",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. A BIT of a Construction.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. A BIT of a Construction.json",
+    "hint": [
+        "Hint 1 Given that the sum is bounded, which bits could be set in the bitwise OR?"
+    ]
 }

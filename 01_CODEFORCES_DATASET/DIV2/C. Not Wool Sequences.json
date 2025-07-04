@@ -98,5 +98,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Not Wool Sequences.json",
     "editorial_link": "https://codeforces.com//blog/entry/5765",
-    "editorial": "Let a1,?...,?an be a not-wool-sequence. We define another sequence called b in which bi is xor of the first i elements of a,  and b0?=?0.\n\nNow xor of elements of a consecutive subsequence like ai,?...,?aj will be equal to . So we know that all elements of b should be different. Therefore b is a sequence of distinct integers of length n?+?1 starting with 0 made of numbers 0 to 2m?-?1. The number of such sequences is  and this is the answer to problem."
+    "editorial": "Let a1,?...,?an be a not-wool-sequence. We define another sequence called b in which bi is xor of the first i elements of a,  and b0?=?0.\n\nNow xor of elements of a consecutive subsequence like ai,?...,?aj will be equal to . So we know that all elements of b should be different. Therefore b is a sequence of distinct integers of length n?+?1 starting with 0 made of numbers 0 to 2m?-?1. The number of such sequences is  and this is the answer to problem.",
+    "hint": []
 }

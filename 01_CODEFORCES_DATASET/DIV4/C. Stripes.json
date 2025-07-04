@@ -169,5 +169,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\C. Stripes.json",
     "editorial_link": "https://codeforces.com//blog/entry/107962",
-    "editorial": "Note that if a stripe is painted last, then the entire stripe appears in\r\nthe final picture (because no other stripe is covering it).Since rows\r\nare only painted red and columns are only painted blue, we can just\r\ncheck if any row contains 8 s. If there is such a row, then red was\r\npainted last; otherwise, blue was painted last.\r\n"
+    "editorial": "Note that if a stripe is painted last, then the entire stripe appears in\r\nthe final picture (because no other stripe is covering it).Since rows\r\nare only painted red and columns are only painted blue, we can just\r\ncheck if any row contains 8 s. If there is such a row, then red was\r\npainted last; otherwise, blue was painted last.\r\n",
+    "hint": []
 }

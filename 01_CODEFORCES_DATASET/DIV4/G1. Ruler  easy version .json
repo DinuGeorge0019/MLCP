@@ -187,7 +187,7 @@
     "editorial_link": "https://codeforces.com//blog/entry/132383",
     "editorial": "Consider queries of the form ?  1  y\n. Since x>1\n, the height of the rectangle is always measured correctly. That means:\n\nIf y<x\n, the response is y\n.\nIf y?x\n, the response is y+1\n.\nThis is a monotonic function, which means we can use binary search to find the smallest y\n for which the response is y+1\n. The number of queries is ?log2(1000)?=10\n.",
     "name": "G1. Ruler  easy version ",
-    "statement": "mathbf{10} .We have a secret ruler that is missing one number x (2\r\nleq x\r\nleq 999). When you measure an object of length y, the ruler reports the\r\nfollowing values: If y < x, the ruler (correctly) measures the object as\r\nhaving length y. If y\r\ngeq x, the ruler incorrectly measures the object as having length y+1.\r\nYou need to find the value of x. To do that, you can make queries of the\r\nfollowing form:\r\ntexttt{?}\u00a0a\u00a0b in response, we will measure the side lengths of an a\r\ntimes b rectangle with our ruler and multiply the results, reporting the\r\nmeasured area of the rectangle back to you. For example, if x=4 and you\r\nquery a 3\r\ntimes 5 rectangle, we will measure its side lengths as 3\r\ntimes 6 and report 18 back to you. Find the value of x. You can ask at\r\nmost\r\nmathbf{10} queries.\r\n",
+    "statement": "mathbf{10} .We have a secret ruler that is missing one number x (2\r\nleq x\r\nleq 999). When you measure an object of length y, the ruler reports the\r\nfollowing values: If y < x, the ruler (correctly) measures the object as\r\nhaving length y. If y\r\ngeq x, the ruler incorrectly measures the object as having length y+1.\r\nYou need to find the value of x. To do that, you can make queries of the\r\nfollowing form:\r\ntexttt{?} a b in response, we will measure the side lengths of an a\r\ntimes b rectangle with our ruler and multiply the results, reporting the\r\nmeasured area of the rectangle back to you. For example, if x=4 and you\r\nquery a 3\r\ntimes 5 rectangle, we will measure its side lengths as 3\r\ntimes 6 and report 18 back to you. Find the value of x. You can ask at\r\nmost\r\nmathbf{10} queries.\r\n",
     "solutions": [
         "#include<bits/stdc++.h>using namespace std;int T;int solve(int l,int r){\tif(l==r)return l;\tint lmid=(2*l+r)/3,rmid=(2*r+l)/3;\tcout<<\"? \"<<lmid<<\" \"<<rmid<<endl;\tint got;cin>>got;\tif(got==lmid*rmid)return solve(rmid+1,r);\tif(got==(lmid+1)*(rmid+1))return solve(l,lmid);\treturn solve(lmid+1,rmid);}int main(){\tcin>>T;\twhile(T--){\t\tint got=solve(2,999);\t\tcout<<\"! \"<<got<<endl;\t}\treturn 0;}"
     ],
@@ -199,5 +199,6 @@
     ],
     "dificulty": "1500",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\G1. Ruler  easy version .json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\G1. Ruler  easy version .json",
+    "hint": []
 }

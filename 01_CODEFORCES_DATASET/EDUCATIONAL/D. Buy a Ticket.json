@@ -156,5 +156,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\D. Buy a Ticket.json",
     "editorial_link": "https://codeforces.com//blog/entry/57840",
-    "editorial": "The function of the path length is not that different from the usual one. You can multiply edge weights by two and run Dijkstra in the following manner. Set disti?=?ai for all  and push these values to heap. When finished, disti will be equal to the shortest path."
+    "editorial": "The function of the path length is not that different from the usual one. You can multiply edge weights by two and run Dijkstra in the following manner. Set disti?=?ai for all  and push these values to heap. When finished, disti will be equal to the shortest path.",
+    "hint": []
 }

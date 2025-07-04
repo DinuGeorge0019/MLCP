@@ -139,5 +139,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Queen.json",
     "editorial_link": "https://codeforces.com//blog/entry/66301",
-    "editorial": "From the condition about the fact that each vertex equally respects all\r\nits ancestors, we can understand that each vertex is either always a\r\ncandidate for deletion or it can never be deleted. That is because when\r\nwe delete some vertex all new vertices which become sons of it\u00e2\u0080\u0099s parent\r\nare also disrespecting it.Now we can iterate over all vertices and if it\r\nrespects it\u00e2\u0080\u0099s parent, we will remember that it\u00e2\u0080\u0099s parent can not be\r\ndeleted. And so we will get the answer.\r\n"
+    "editorial": "From the condition about the fact that each vertex equally respects all\r\nits ancestors, we can understand that each vertex is either always a\r\ncandidate for deletion or it can never be deleted. That is because when\r\nwe delete some vertex all new vertices which become sons of itâs parent\r\nare also disrespecting it.Now we can iterate over all vertices and if it\r\nrespects itâs parent, we will remember that itâs parent can not be\r\ndeleted. And so we will get the answer.\r\n",
+    "hint": []
 }

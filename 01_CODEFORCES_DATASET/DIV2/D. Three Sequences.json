@@ -132,5 +132,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Three Sequences.json",
     "editorial_link": "https://codeforces.com//blog/entry/82560",
-    "editorial": "Since sequence is non-decreasing and sequence is non-increasing, we need\r\nto mimimize .Now observe that if then and .Else if then but . Now we\r\ncalculate .Let this sum be . Now lets assume is . So then is .And as\r\nobserved before . Now we just need to minimize . Now it is easily\r\nobservable that should be .For the changes, since we only need to know ,\r\nso only and will change.Total time complexity: .\r\n"
+    "editorial": "Since sequence is non-decreasing and sequence is non-increasing, we need\r\nto mimimize .Now observe that if then and .Else if then but . Now we\r\ncalculate .Let this sum be . Now lets assume is . So then is .And as\r\nobserved before . Now we just need to minimize . Now it is easily\r\nobservable that should be .For the changes, since we only need to know ,\r\nso only and will change.Total time complexity: .\r\n",
+    "hint": []
 }

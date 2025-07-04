@@ -160,5 +160,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Square.json",
     "editorial_link": "https://codeforces.com//blog/entry/124757",
-    "editorial": "There are many ways to solve this problem, the simplest way is as\r\nfollows. Let\u00e2\u0080\u0099s find the minimum and maximum coordinate among all the\r\ncorners of the square. The difference of these coordinates will give us\r\nthe length of the square side . After that, we can calculate the area of\r\nthe square as .\r\n"
+    "editorial": "There are many ways to solve this problem, the simplest way is as\r\nfollows. Letâs find the minimum and maximum coordinate among all the\r\ncorners of the square. The difference of these coordinates will give us\r\nthe length of the square side . After that, we can calculate the area of\r\nthe square as .\r\n",
+    "hint": []
 }

@@ -187,5 +187,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\E. Round Dance.json",
     "editorial_link": "https://codeforces.com//blog/entry/116636",
-    "editorial": "Let\u00e2\u0080\u0099s build an undirected graph, draw the edges . Let\u00e2\u0080\u0099s split this graph\r\ninto connectivity components, denote their number by . There could not\r\nbe more than round dances.Since the degree of each vertex is no more\r\nthan two, the connectivity components are simple cycles and bamboos. If\r\nwe connect the vertices of degree one in each bamboo, we get a partition\r\ninto round dances.Now let\u00e2\u0080\u0099s try to get the minimum number of round\r\ndances. Nothing can be done with cycles, and all bamboos can be combined\r\ninto one. If you get bamboos and cycles, then the answer is .Time\r\ncomplexity is .\r\n"
+    "editorial": "Letâs build an undirected graph, draw the edges . Letâs split this graph\r\ninto connectivity components, denote their number by . There could not\r\nbe more than round dances.Since the degree of each vertex is no more\r\nthan two, the connectivity components are simple cycles and bamboos. If\r\nwe connect the vertices of degree one in each bamboo, we get a partition\r\ninto round dances.Now letâs try to get the minimum number of round\r\ndances. Nothing can be done with cycles, and all bamboos can be combined\r\ninto one. If you get bamboos and cycles, then the answer is .Time\r\ncomplexity is .\r\n",
+    "hint": []
 }

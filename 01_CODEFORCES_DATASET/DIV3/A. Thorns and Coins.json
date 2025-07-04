@@ -154,5 +154,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Thorns and Coins.json",
     "editorial_link": "https://codeforces.com//blog/entry/126196",
-    "editorial": "Let\u00e2\u0080\u0099s move forward by if the next cell does not have spikes, and by\r\notherwise. By doing so, we will visit all spike-free cells that we can\r\nreach, and thus collect all the coins in those cells. Note that if we\r\nare in cell , and cells and have spikes, then we can only jump into the\r\nspikes and thus end the game.Therefore, we need to count how many coins\r\nappear in the string before the substring \"\".\r\n"
+    "editorial": "Letâs move forward by if the next cell does not have spikes, and by\r\notherwise. By doing so, we will visit all spike-free cells that we can\r\nreach, and thus collect all the coins in those cells. Note that if we\r\nare in cell , and cells and have spikes, then we can only jump into the\r\nspikes and thus end the game.Therefore, we need to count how many coins\r\nappear in the string before the substring \"\".\r\n",
+    "hint": []
 }

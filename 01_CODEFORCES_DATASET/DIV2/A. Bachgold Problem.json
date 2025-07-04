@@ -122,5 +122,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Bachgold Problem.json",
     "editorial_link": "https://codeforces.com//blog/entry/49186",
-    "editorial": "We need represent integer number () as a sum of maximum possible number\r\nof prime numbers, they don t have to be different. If is even number, we\r\ncan represent it as sum of only - minimal prime number. It is minimal\r\nprime number, so number of primes in sum is maximal in this case.If is\r\nodd number, we can use representing of as sum with only and replace last\r\nsummand from to .Using of any prime as summand is not optimal, because\r\nit can be replaced by more than one and .\r\n"
+    "editorial": "We need represent integer number () as a sum of maximum possible number\r\nof prime numbers, they don t have to be different. If is even number, we\r\ncan represent it as sum of only - minimal prime number. It is minimal\r\nprime number, so number of primes in sum is maximal in this case.If is\r\nodd number, we can use representing of as sum with only and replace last\r\nsummand from to .Using of any prime as summand is not optimal, because\r\nit can be replaced by more than one and .\r\n",
+    "hint": []
 }

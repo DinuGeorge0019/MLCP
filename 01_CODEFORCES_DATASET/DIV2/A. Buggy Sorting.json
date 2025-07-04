@@ -101,7 +101,7 @@
         ]
     },
     "name": "A. Buggy Sorting",
-    "statement": "Little boy Valera studies an algorithm of sorting an integer array.\r\nAfter studying the theory, he went on to the practical tasks. As a\r\nresult, he wrote a program that sorts an array of integers in the\r\nnon-decreasing order. The pseudocode of the program, written by Valera,\r\nis given below. The input of the program gets number and array .loop\r\ninteger variable from to loop integer variable from to if , then swap\r\nthe values of elements and But Valera could have made a mistake, because\r\nhe hasn\u2019t yet fully learned the sorting algorithm. If Valera made a\r\nmistake in his program, you need to give a counter-example that makes\r\nhis program work improperly (that is, the example that makes the program\r\nsort the array not in the non-decreasing order). If such example for the\r\ngiven value of doesn\u2019t exist, print -1.\r\n",
+    "statement": "Little boy Valera studies an algorithm of sorting an integer array.\r\nAfter studying the theory, he went on to the practical tasks. As a\r\nresult, he wrote a program that sorts an array of integers in the\r\nnon-decreasing order. The pseudocode of the program, written by Valera,\r\nis given below. The input of the program gets number and array .loop\r\ninteger variable from to loop integer variable from to if , then swap\r\nthe values of elements and But Valera could have made a mistake, because\r\nhe hasn’t yet fully learned the sorting algorithm. If Valera made a\r\nmistake in his program, you need to give a counter-example that makes\r\nhis program work improperly (that is, the example that makes the program\r\nsort the array not in the non-decreasing order). If such example for the\r\ngiven value of doesn’t exist, print -1.\r\n",
     "solutions": [
         "#include <cstdio>\n#include <cmath>\n#include <algorithm>\n#include <string.h>\nusing namespace std;\n\nint a[52], n;\nvoid srt()\n{\n\tfor (int i = 0; i+1< n; i++)\n\t\tfor (int j = i; j+1<n; j++)\n\t\t\tif (a[j]>a[j+1]) swap(a[j], a[j+1]);\n}\nint main()\n{\n\tscanf(\"%d\", &n);\n\tfor (int i=0; i<n; i++) a[i]=n-i;\n\tsrt();\n\tbool ok=1;\n\tfor (int i=0; i + 1 < n; i++)\n\t\tif (a[i]>a[i+1]) ok=0;\n\tif (ok) puts(\"-1\");\n\telse for (int i = 0 ; i <n; i++) printf(\"%d \", n-i);\n\treturn 0;\n}\n"
     ],
@@ -116,5 +116,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Buggy Sorting.json",
     "editorial_link": "https://codeforces.com//blog/entry/5934",
-    "editorial": "In this problem you should hack the sorting algorithm, of course it was\r\nincorrect. It was correct only for arrays with . In other cases you\r\ncould print as a counter-example. To make the sorting right, the second\r\ncycle should be from but not from .\r\n"
+    "editorial": "In this problem you should hack the sorting algorithm, of course it was\r\nincorrect. It was correct only for arrays with . In other cases you\r\ncould print as a counter-example. To make the sorting right, the second\r\ncycle should be from but not from .\r\n",
+    "hint": []
 }

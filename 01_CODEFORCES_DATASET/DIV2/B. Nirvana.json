@@ -140,5 +140,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Nirvana.json",
     "editorial_link": "https://codeforces.com//blog/entry/66301",
-    "editorial": "Let number be an answer, and - number from input, so = for some\r\n(otherwise, you can increase one of the digits by , so that will still\r\nbe no more than ). So, let\u00e2\u0080\u0099s go through from to the length of and return\r\nthe maximum of them by the product of digits.\r\n"
+    "editorial": "Let number be an answer, and - number from input, so = for some\r\n(otherwise, you can increase one of the digits by , so that will still\r\nbe no more than ). So, letâs go through from to the length of and return\r\nthe maximum of them by the product of digits.\r\n",
+    "hint": []
 }

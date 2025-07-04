@@ -132,5 +132,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. A and B and Team Training.json",
     "editorial_link": "https://codeforces.com/blog/entry/16687",
-    "editorial": "In this problem we should split n experienced participants and m newbies into teams.\n\nSolution: Let's denote number teams with 2 experienced partisipants and 1 new participant as type1 and teams with 1 experienced participant and 2 new participants as type2. Let's fix number of teams of type1 and denote it as i. Their amount is not grater than m. Then number of teams of type2 is min(m?-?2?*?i,?n?-?i). Check all possible i' and update answer."
+    "editorial": "In this problem we should split n experienced participants and m newbies into teams.\n\nSolution: Let's denote number teams with 2 experienced partisipants and 1 new participant as type1 and teams with 1 experienced participant and 2 new participants as type2. Let's fix number of teams of type1 and denote it as i. Their amount is not grater than m. Then number of teams of type2 is min(m?-?2?*?i,?n?-?i). Check all possible i' and update answer.",
+    "hint": []
 }

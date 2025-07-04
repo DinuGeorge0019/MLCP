@@ -127,7 +127,7 @@
     "name": "C. Increasing Sequence with Fixed OR",
     "statement": "You are given a positive integer n. Find the sequence of positive\r\nintegers a=[a_1,a_2,\r\nldots,a_k] that satisfies the following conditions, and print the\r\nsequence: a_i\r\nle n for all 1\r\nle i\r\nle k. a is strictly increasing. That is, a_i>a_{i-1} for all 2\r\nle i\r\nle k. a_i\r\n,|\r\n,a_{i-1}=n for all 2\r\nle i\r\nle k, where | denotes the bitwise OR operation.\r\n",
     "solutions": [
-        "#include <bits/stdc++.h>#define pb push_back#define sz(a) ((int)a.size())#define re return#define all(a) a.begin(),a.end()#define rept(i,a,b) for(int i=(a);i<(b);i++)#define rep(i,a) rept(i,0,a)#define vi vector<int>#define pii pair<int,int>#define F first#define S second#define de(x) cout<<#x<<\"=\"<<x<<\"\\n\";#define int long long#define il inline#define db double#define ld long dbusing namespace std;const int MOD=998244353,INF=1000000000000000000;template<typename T>inline void Mx(T &a,T b){a=max(a,b);}template<typename T>inline void Mi(T &a,T b){a=min(a,b);}void FILEIO(string s){\tfreopen((s+\".in\").c_str(),\"r\",stdin);\tfreopen((s+\".out\").c_str(),\"w\",stdout);}void run(){\tint n;\tcin>>n;\tvi v;\trep(i,61)if((n>>i)&1)v.pb(1ll<<i);\tif(sz(v)==1){\t\tcout<<\"1\\n\"<<n<<\"\\n\";\t\tre;\t}\tcout<<sz(v)+1<<\"\\n\";\tfor(int i=sz(v)-1;i>=0;i--){\t\tint x=0;\t\trep(j,sz(v))if(j!=i)x+=v[j];\t\tcout<<x<<\" \";\t}\tcout<<n<<\"\\n\";}signed main(){\tios::sync_with_stdio(0);\tcin.tie(0);cout.tie(0);\tint T=1;\tcin>>T;\twhile(T--)\t\trun();\tre 0;}\u00a0"
+        "#include <bits/stdc++.h>#define pb push_back#define sz(a) ((int)a.size())#define re return#define all(a) a.begin(),a.end()#define rept(i,a,b) for(int i=(a);i<(b);i++)#define rep(i,a) rept(i,0,a)#define vi vector<int>#define pii pair<int,int>#define F first#define S second#define de(x) cout<<#x<<\"=\"<<x<<\"\\n\";#define int long long#define il inline#define db double#define ld long dbusing namespace std;const int MOD=998244353,INF=1000000000000000000;template<typename T>inline void Mx(T &a,T b){a=max(a,b);}template<typename T>inline void Mi(T &a,T b){a=min(a,b);}void FILEIO(string s){\tfreopen((s+\".in\").c_str(),\"r\",stdin);\tfreopen((s+\".out\").c_str(),\"w\",stdout);}void run(){\tint n;\tcin>>n;\tvi v;\trep(i,61)if((n>>i)&1)v.pb(1ll<<i);\tif(sz(v)==1){\t\tcout<<\"1\\n\"<<n<<\"\\n\";\t\tre;\t}\tcout<<sz(v)+1<<\"\\n\";\tfor(int i=sz(v)-1;i>=0;i--){\t\tint x=0;\t\trep(j,sz(v))if(j!=i)x+=v[j];\t\tcout<<x<<\" \";\t}\tcout<<n<<\"\\n\";}signed main(){\tios::sync_with_stdio(0);\tcin.tie(0);cout.tie(0);\tint T=1;\tcin>>T;\twhile(T--)\t\trun();\tre 0;} "
     ],
     "input": "",
     "output": "",
@@ -138,5 +138,6 @@
     ],
     "dificulty": "1300",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Increasing Sequence with Fixed OR.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Increasing Sequence with Fixed OR.json",
+    "hint": []
 }

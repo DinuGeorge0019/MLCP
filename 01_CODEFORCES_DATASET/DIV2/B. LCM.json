@@ -119,7 +119,7 @@
         ]
     },
     "name": "B. LCM",
-    "statement": "Ivan has number b. He is sorting through the numbers a from 1 to\r\n10^{18}, and for every a writes\r\nfrac{[a,\r\n,\r\n, b]}{a} on blackboard. Here [a,\r\n,\r\n, b] stands for least common multiple of a and b. Ivan is very lazy,\r\nthat\u2019s why this task bored him soon. But he is interested in how many\r\ndifferent numbers he would write on the board if he would finish the\r\ntask. Help him to find the quantity of different numbers he would write\r\non the board.\r\n",
+    "statement": "Ivan has number b. He is sorting through the numbers a from 1 to\r\n10^{18}, and for every a writes\r\nfrac{[a,\r\n,\r\n, b]}{a} on blackboard. Here [a,\r\n,\r\n, b] stands for least common multiple of a and b. Ivan is very lazy,\r\nthat’s why this task bored him soon. But he is interested in how many\r\ndifferent numbers he would write on the board if he would finish the\r\ntask. Help him to find the quantity of different numbers he would write\r\non the board.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n\tios_base::sync_with_stdio(false);\n\tlong long n; cin >> n;\n\tint cnt = 0;\n\tfor (long long i = 1; i * i <= n; ++i) if (n % i == 0) {\n\t\tcnt++;\n\t\tif (i * i < n) cnt++;\n\t}\n\tcout << cnt << '\\n';\n}\n"
     ],
@@ -133,5 +133,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. LCM.json",
     "editorial_link": "https://codeforces.com/blog/entry/62688",
-    "editorial": ", here is greatest common divisor. Let\u00e2\u0080\u0099s see how many different values\r\ncan have . All values that divides are reachable if and every value of\r\ndivides . So answer is number of divisors of . It can be calculated in\r\ntime.\r\n"
+    "editorial": ", here is greatest common divisor. Letâs see how many different values\r\ncan have . All values that divides are reachable if and every value of\r\ndivides . So answer is number of divisors of . It can be calculated in\r\ntime.\r\n",
+    "hint": []
 }

@@ -132,5 +132,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\E. Bosco and Particle.json",
     "editorial_link": "https://codeforces.com//blog/entry/114899",
-    "editorial": "Observation 1 Observe that whole process is periodic. Note that the\nprocess is reversible. If you are in some state , consisting of position\nof the particle and the current state position of each oscillator, you\ncan decide the next state and the previous state. This implies the state\ntransition graph is a permutation, so it decomposes into cycles.\n"
+    "editorial": "Observation 1 Observe that whole process is periodic. Note that the\nprocess is reversible. If you are in some state , consisting of position\nof the particle and the current state position of each oscillator, you\ncan decide the next state and the previous state. This implies the state\ntransition graph is a permutation, so it decomposes into cycles.\n",
+    "hint": [
+        "Hint 1 If the oscillator string is periodic, what should we do?",
+        "Hint 2 Use the case when to help you calculate the answer."
+    ]
 }

@@ -115,5 +115,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Godsend.json",
     "editorial_link": "https://codeforces.com/blog/entry/53943?locale=en",
-    "editorial": "First player wins if there is at least one odd number in the array. Let's prove this.\nLet's denote total count of odd numbers at T.\nThere are two cases to consider:\n1) T is odd. First player takes whole array and wins.\n2) T is even. Suppose that position of the rightmost odd number is pos. Then the strategy for the first player is as follows: in his first move, pick subarray [1;pos?-?1]. The remaining suffix of the array will have exactly one odd number that second player won't be able to include in his subarray. So, regardless of his move, first player will take the remaining numbers and win."
+    "editorial": "First player wins if there is at least one odd number in the array. Let's prove this.\nLet's denote total count of odd numbers at T.\nThere are two cases to consider:\n1) T is odd. First player takes whole array and wins.\n2) T is even. Suppose that position of the rightmost odd number is pos. Then the strategy for the first player is as follows: in his first move, pick subarray [1;pos?-?1]. The remaining suffix of the array will have exactly one odd number that second player won't be able to include in his subarray. So, regardless of his move, first player will take the remaining numbers and win.",
+    "hint": []
 }

@@ -156,5 +156,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\E. Singers' Tour.json",
     "editorial_link": "https://codeforces.com//blog/entry/97927",
-    "editorial": "First, .Consider the sum . If we substitute the formula of then for\r\nevery the coefficient at will be equal to , so we can find the sum of\r\nall : is equal to . If the sum of isn\u00e2\u0080\u0099t divisible by , then the answer\r\nis . Now let\u00e2\u0080\u0099s consider the difference between two neighboring towns: ,\r\nso . If the value of we found isn\u00e2\u0080\u0099t a positive integer, then the answer\r\nif . Otherwise, we can find a single value of for every . It\u00e2\u0080\u0099s easy to\r\nsee that these values are correct.Overall complexity: per testcase.\r\n"
+    "editorial": "First, .Consider the sum . If we substitute the formula of then for\r\nevery the coefficient at will be equal to , so we can find the sum of\r\nall : is equal to . If the sum of isnât divisible by , then the answer\r\nis . Now letâs consider the difference between two neighboring towns: ,\r\nso . If the value of we found isnât a positive integer, then the answer\r\nif . Otherwise, we can find a single value of for every . Itâs easy to\r\nsee that these values are correct.Overall complexity: per testcase.\r\n",
+    "hint": []
 }

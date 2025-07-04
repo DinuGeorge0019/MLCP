@@ -146,5 +146,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Kind Anton.json",
     "editorial_link": "https://codeforces.com//blog/entry/75802",
-    "editorial": "First of all, note that we can add an element with index to an element\r\nwith index iff . This means that the element cannot be added to any\r\nother element because there is no index in the array. This is why we can\r\nfirst equalize the elements and . If , they are already equal. If , then\r\nwe need to have element equal to along the elements with indexes . For ,\r\nwe need to have along these elements. After the elements with index\r\nbecome equal, we can go to the element with index and do the same. Then\r\nindexes , , ..., . You can implement this idea yourself!Final time\r\ncomplexity:\r\n"
+    "editorial": "First of all, note that we can add an element with index to an element\r\nwith index iff . This means that the element cannot be added to any\r\nother element because there is no index in the array. This is why we can\r\nfirst equalize the elements and . If , they are already equal. If , then\r\nwe need to have element equal to along the elements with indexes . For ,\r\nwe need to have along these elements. After the elements with index\r\nbecome equal, we can go to the element with index and do the same. Then\r\nindexes , , ..., . You can implement this idea yourself!Final time\r\ncomplexity:\r\n",
+    "hint": []
 }

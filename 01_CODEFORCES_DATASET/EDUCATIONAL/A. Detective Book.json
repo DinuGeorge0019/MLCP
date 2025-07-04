@@ -162,7 +162,7 @@
         ]
     },
     "name": "A. Detective Book",
-    "statement": "Ivan recently bought a detective book. The book is so interesting that\r\neach page of this book introduces some sort of a mystery, which will be\r\nexplained later. The i-th page contains some mystery that will be\r\nexplained on page a_i (a_i\r\nge i).Ivan wants to read the whole book. Each day, he reads the first\r\npage he didn\u2019t read earlier, and continues to read the following pages\r\none by one, until all the mysteries he read about are explained and\r\nclear to him (Ivan stops if there does not exist any page i such that\r\nIvan already has read it, but hasn\u2019t read page a_i). After that, he\r\ncloses the book and continues to read it on the following day from the\r\nnext page.How many days will it take to read the whole book?\r\n",
+    "statement": "Ivan recently bought a detective book. The book is so interesting that\r\neach page of this book introduces some sort of a mystery, which will be\r\nexplained later. The i-th page contains some mystery that will be\r\nexplained on page a_i (a_i\r\nge i).Ivan wants to read the whole book. Each day, he reads the first\r\npage he didn’t read earlier, and continues to read the following pages\r\none by one, until all the mysteries he read about are explained and\r\nclear to him (Ivan stops if there does not exist any page i such that\r\nIvan already has read it, but hasn’t read page a_i). After that, he\r\ncloses the book and continues to read it on the following day from the\r\nnext page.How many days will it take to read the whole book?\r\n",
     "solutions": [
         "#include<cstdio>\n#include<iostream>\nusing namespace std;\n#define N 123000\nint a[N];\nint main()\n{\n\tint n,ans=0;\n\tscanf(\"%d\",&n);\n\tfor (int i=1;i<=n;++i) scanf(\"%d\",&a[i]);\n\tfor (int i=1,ne=1;i<=n;++i)\n\t{\n\t\tne=max(a[i],ne);\n\t\tif (ne==i) ++ans;\n\t}\n\tprintf(\"%d\",ans);\n\treturn 0;\n}"
     ],
@@ -175,5 +175,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Detective Book.json",
     "editorial_link": "https://codeforces.com//blog/entry/66147",
-    "editorial": "Solution is just some implementation: simulate algorithm given in the\r\nlegend, maintaining maximum over all on prefix and breaking when the\r\nmaximum becomes smaller than index of the next page.\r\n"
+    "editorial": "Solution is just some implementation: simulate algorithm given in the\r\nlegend, maintaining maximum over all on prefix and breaking when the\r\nmaximum becomes smaller than index of the next page.\r\n",
+    "hint": []
 }

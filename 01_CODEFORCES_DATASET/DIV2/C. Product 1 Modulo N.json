@@ -111,7 +111,7 @@
         ]
     },
     "name": "C. Product 1 Modulo N",
-    "statement": "Now you get Baby Ehab\u2019s first words: \"Given an integer n, find the\r\nlongest subsequence of [1,2,\r\nldots, n-1] whose product is 1 modulo n.\" Please solve the problem.A\r\nsequence b is a subsequence of an array a if b can be obtained from a by\r\ndeleting some (possibly all) elements. The product of an empty\r\nsubsequence is equal to 1.\r\n",
+    "statement": "Now you get Baby Ehab’s first words: \"Given an integer n, find the\r\nlongest subsequence of [1,2,\r\nldots, n-1] whose product is 1 modulo n.\" Please solve the problem.A\r\nsequence b is a subsequence of an array a if b can be obtained from a by\r\ndeleting some (possibly all) elements. The product of an empty\r\nsubsequence is equal to 1.\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(0);\n    cin.tie(0);\n    int n;\n    cin >> n;\n    int z = 1;\n    vector<int> ans;\n    for (int i = 1; i < n; i++)\n    if (gcd(i, n) == 1) {\n        int p = (z * (long long)i) % n;\n        ans.push_back(i);\n        z = p;\n    }\n    if (z != 1) {\n        for (int i = 0; i < ans.size(); i++)\n            if (ans[i] == z) {\n                ans.erase(ans.begin() + i);\n                break;\n            }\n    }\n    cout << ans.size() << '\\n';\n    for (int i : ans)\n        cout << i <<  ' ';\n}"
     ],
@@ -125,5 +125,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Product 1 Modulo N.json",
     "editorial_link": "https://codeforces.com//blog/entry/89810",
-    "editorial": "So first observe that the subsequence can\u00e2\u0080\u0099t contain any element that\r\nisn\u00e2\u0080\u0099t coprime with . Why? Because then its product won\u00e2\u0080\u0099t be coprime with\r\n, so when you take it modulo , it can\u00e2\u0080\u0099t be . In mathier words, Unable to\r\nparse markup [type=CF_MATHJAX] Unable to parse markup [type=CF_MATHJAX]\r\nCode link: https://pastebin.com/JnjZ3SQm Bonus task: solve it for Unable\r\nto parse markup [type=CF_MATHJAX]\r\n"
+    "editorial": "So first observe that the subsequence canât contain any element that\r\nisnât coprime with . Why? Because then its product wonât be coprime with\r\n, so when you take it modulo , it canât be . In mathier words, Unable to\r\nparse markup [type=CF_MATHJAX] Unable to parse markup [type=CF_MATHJAX]\r\nCode link: https://pastebin.com/JnjZ3SQm Bonus task: solve it for Unable\r\nto parse markup [type=CF_MATHJAX]\r\n",
+    "hint": []
 }

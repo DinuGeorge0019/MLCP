@@ -133,7 +133,7 @@
         ]
     },
     "name": "B. Hemose Shopping",
-    "statement": "Hemose has an array of n integers. He wants Samez to sort the array in\r\nthe non-decreasing order. Since it would be a too easy problem for\r\nSamez, Hemose allows Samez to use only the following operation:Choose\r\nindices i and j such that 1\r\nle i, j\r\nle n, and\r\nlvert i - j\r\nrvert\r\ngeq x. Then, swap elements a_i and a_j.Can you tell Samez if there\u2019s a\r\nway to sort the array in the non-decreasing order by using the operation\r\nwritten above some finite number of times (possibly 0)?\r\n",
+    "statement": "Hemose has an array of n integers. He wants Samez to sort the array in\r\nthe non-decreasing order. Since it would be a too easy problem for\r\nSamez, Hemose allows Samez to use only the following operation:Choose\r\nindices i and j such that 1\r\nle i, j\r\nle n, and\r\nlvert i - j\r\nrvert\r\ngeq x. Then, swap elements a_i and a_j.Can you tell Samez if there’s a\r\nway to sort the array in the non-decreasing order by using the operation\r\nwritten above some finite number of times (possibly 0)?\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\n#define rep(i,n) for (int i=1;i<=(n);i++)\nusing namespace std;\nint n,l,a[100005],b[100005];\nvector<int> v;\nvoid solve()\n{\n\tcin>>n>>l;\n\trep(i,n) cin>>a[i];\n\tv.clear();\n\trep(i,n) if(i-l>=1||i+l<=n) v.push_back(a[i]);\n\tsort(v.begin(),v.end());\n\tint t=0;\n\trep(i,n) if(i-l>=1||i+l<=n) b[i]=v[t++]; else b[i]=a[i];\n\trep(i,n-1) if(b[i]>b[i+1]) {puts(\"NO\");return;}\n\tputs(\"YES\");\n}\nint main()\n{\n\tint t;\n\tcin>>t;\n\twhile(t--) solve();\n\treturn 0;\n}"
     ],
@@ -149,5 +149,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Hemose Shopping.json",
     "editorial_link": "https://codeforces.com//blog/entry/95583",
-    "editorial": "The answer is always \"YES\" If because you can reorder the array as you\r\nwant.Otherwise, You can swap the first elements and the last elements,\r\nso you can reorder them as you want but the rest have to stay in their\r\npositions in the sorted array.So if elements in the subarray in the\r\noriginal array are in their same position after sorting the array then\r\nthe answer is YES, otherwise NO.\r\n"
+    "editorial": "The answer is always \"YES\" If because you can reorder the array as you\r\nwant.Otherwise, You can swap the first elements and the last elements,\r\nso you can reorder them as you want but the rest have to stay in their\r\npositions in the sorted array.So if elements in the subarray in the\r\noriginal array are in their same position after sorting the array then\r\nthe answer is YES, otherwise NO.\r\n",
+    "hint": []
 }

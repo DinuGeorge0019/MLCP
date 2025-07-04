@@ -219,5 +219,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\A. Lucky .json",
     "editorial_link": "https://codeforces.com//blog/entry/102710",
-    "editorial": "We need to check if the sum of the first three digits is equal to the\r\nsum of the last three digits. This is doable by scanning the input as a\r\nstring, then comparing the sum of the first three characters with the\r\nsum of the last three characters using the if statement and the addition\r\noperation.\r\n"
+    "editorial": "We need to check if the sum of the first three digits is equal to the\r\nsum of the last three digits. This is doable by scanning the input as a\r\nstring, then comparing the sum of the first three characters with the\r\nsum of the last three characters using the if statement and the addition\r\noperation.\r\n",
+    "hint": []
 }

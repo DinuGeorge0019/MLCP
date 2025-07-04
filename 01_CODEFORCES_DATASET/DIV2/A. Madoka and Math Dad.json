@@ -133,5 +133,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Madoka and Math Dad.json",
     "editorial_link": "https://codeforces.com//blog/entry/100780",
-    "editorial": "Since we want to maximize the number we need, we will first find the longest suitable number. Obviously, it is better to use only the numbers 1\n and 2\n for this. Therefore, the answer always looks like 2121\u0085\n or 1212\u0085\n. The first option is optimal when n\n has a remainder of 2\n or 0\n modulo 3\n, otherwise the second option is optimal."
+    "editorial": "Since we want to maximize the number we need, we will first find the longest suitable number. Obviously, it is better to use only the numbers 1\n and 2\n for this. Therefore, the answer always looks like 2121\n or 1212\n. The first option is optimal when n\n has a remainder of 2\n or 0\n modulo 3\n, otherwise the second option is optimal.",
+    "hint": []
 }

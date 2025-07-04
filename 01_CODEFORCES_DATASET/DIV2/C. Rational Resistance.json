@@ -119,5 +119,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Rational Resistance.json",
     "editorial_link": "https://codeforces.com//blog/entry/8860",
-    "editorial": "If a fraction  can be obtained with k resistors, then it is simple to calculate that we can obtain fractions  and  with k?+?1 resistors. So adding one resistor means performing one operation backwards in Euclidean algorithm. That means that the answer is equal to the number of steps in standard Euclidean algorithm."
+    "editorial": "If a fraction  can be obtained with k resistors, then it is simple to calculate that we can obtain fractions  and  with k?+?1 resistors. So adding one resistor means performing one operation backwards in Euclidean algorithm. That means that the answer is equal to the number of steps in standard Euclidean algorithm.",
+    "hint": []
 }

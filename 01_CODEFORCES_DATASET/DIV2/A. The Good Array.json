@@ -145,5 +145,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. The Good Array.json",
     "editorial_link": "https://codeforces.com//blog/entry/116963",
-    "editorial": "Let\u00e2\u0080\u0099s find lower bound for answer. In any good array, there are at least\r\nones among the first elements. Also, is always , as . So there are at\r\nleast ones in any good array. This lower bound can always be achieved by\r\nplacing ones on position and on positions for all integers such that\r\n.The answer to the probelm is .\r\n"
+    "editorial": "Letâs find lower bound for answer. In any good array, there are at least\r\nones among the first elements. Also, is always , as . So there are at\r\nleast ones in any good array. This lower bound can always be achieved by\r\nplacing ones on position and on positions for all integers such that\r\n.The answer to the probelm is .\r\n",
+    "hint": [
+        "Hint The first and last elements are always equal to .",
+        "Hint There are at least ones among the first elements."
+    ]
 }

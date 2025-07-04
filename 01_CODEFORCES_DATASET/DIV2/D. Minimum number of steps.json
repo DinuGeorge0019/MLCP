@@ -122,7 +122,7 @@
         ]
     },
     "name": "D. Minimum number of steps",
-    "statement": "We have a string of letters \u201d and \u201d. We want to perform some operations\r\non it. On each step we choose one of substrings \"\" in the string and\r\nreplace it with the string \"\". If we have no \"\" as a substring, our job\r\nis done. Print the minimum number of steps we should perform to make our\r\njob done modulo .The string \"\" appears as a substring if there is a\r\nletter \u201d right after the letter \u201d somewhere in the string.\r\n",
+    "statement": "We have a string of letters ” and ”. We want to perform some operations\r\non it. On each step we choose one of substrings \"\" in the string and\r\nreplace it with the string \"\". If we have no \"\" as a substring, our job\r\nis done. Print the minimum number of steps we should perform to make our\r\njob done modulo .The string \"\" appears as a substring if there is a\r\nletter ” right after the letter ” somewhere in the string.\r\n",
     "solutions": [
         "#include <iostream>\n#include <cstdio>\n#include <vector>\n#include <cstring>\n#include <map>\n#include <cstdlib>\n#include <cmath>\n#include <string>\n#include <algorithm>\n#include <set>\n#include <stack>\n#include <queue>\n#include <utility>\n#include <bitset>\n#define fi first\n#define se second\n#define mkp make_pair\n#define pb push_back\n#define rep(i,a,b) for (int i=(a);i<(b);i++)\n#define per(i,b,a) for (int i=(b)-1;i>=(a);i--)\n#define REP(i,a,b) for (int i=(a);i<=(b);i++)\n#define PER(i,b,a) for (int i=(b);i>=(a);i--)\nusing namespace std;\ntypedef long long LL;\n\nconst int INF = 0x3f3f3f3f;\n\nconst int MAXN = 1000005; // 1e6;\nchar a[MAXN];\nint n;\nconst int MOD = 1e9+7;\nLL ans = 0;\nLL b = 0;\nint main()\n{\n        cin>>a;\n        n = strlen(a);\n        for (int i = n-1; i >= 0; i--)\n        {\n                if (a[i]=='b') b = (b+1)%MOD;\n                if (a[i]=='a') ans = (ans+b)%MOD, b = (b<<1) %MOD;\n        }\n        cout<<ans<<endl;\n}\n"
     ],
@@ -135,5 +135,11 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Minimum number of steps.json",
     "editorial_link": "https://codeforces.com//blog/entry/51846",
-    "editorial": "The final state will be some character after : It\u00e2\u0080\u0099s obvious to prove all\r\ns are distinctive to each other(i.e. Each in the initial state, will add\r\nsome number of s to the final state disjoint from other s). For a\r\ncharacter from the initial state it will double after seeing a character\r\n. For each -th character , consider the number of before it. So the\r\nfinal number of s can be defined as .\r\n"
+    "editorial": "The final state will be some character after : Itâs obvious to prove all\r\ns are distinctive to each other(i.e. Each in the initial state, will add\r\nsome number of s to the final state disjoint from other s). For a\r\ncharacter from the initial state it will double after seeing a character\r\n. For each -th character , consider the number of before it. So the\r\nfinal number of s can be defined as .\r\n",
+    "hint": [
+        "hint1 The last situation is some characters after some ones.",
+        "hint2 The last situation is unique.",
+        "hint3 The number of steps is also unique.",
+        "hint4 Each character makes a number of characters in the last situation according to the number of characters before it."
+    ]
 }

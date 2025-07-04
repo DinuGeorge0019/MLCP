@@ -126,5 +126,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Lex String.json",
     "editorial_link": "https://codeforces.com//blog/entry/103471",
-    "editorial": "SolutionWe can\u00e2\u0080\u0099t take the smallest character in both strings when we\u00e2\u0080\u0099ve\r\nalready took elements from the string we chose. Denote as the number of\r\ncharacters we\u00e2\u0080\u0099ve took from string in the last few consecutive moves and\r\ndenote the same for . If , then we have to take the smallest character\r\nin string instead of possibly . If , then we have to take the smallest\r\ncharacter in string instead of possibly .Remember to reset to when you\r\ntake a character from . Similarly, reset to when you take a character\r\nfrom .\r\n"
+    "editorial": "SolutionWe canât take the smallest character in both strings when weâve\r\nalready took elements from the string we chose. Denote as the number of\r\ncharacters weâve took from string in the last few consecutive moves and\r\ndenote the same for . If , then we have to take the smallest character\r\nin string instead of possibly . If , then we have to take the smallest\r\ncharacter in string instead of possibly .Remember to reset to when you\r\ntake a character from . Similarly, reset to when you take a character\r\nfrom .\r\n",
+    "hint": [
+        "Hint Greedily take the smallest character in both strings. What's the exception to this?"
+    ]
 }

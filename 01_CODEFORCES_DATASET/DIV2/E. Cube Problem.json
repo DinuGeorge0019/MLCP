@@ -90,5 +90,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Cube Problem.json",
     "editorial_link": "https://codeforces.com/blog/entry/7516",
-    "editorial": "After reading the problem statement one can understand that all we need\r\nis to calculate the number of positive integer solutions of equation: .\r\nThe key observation is: , after that simply calculate all divisors of\r\nand then first go over all , such that then go over all , such that and\r\nthen determine , such that . After that we need to solve the system and\r\nfind out how many solutions it adds.\r\n"
+    "editorial": "After reading the problem statement one can understand that all we need\r\nis to calculate the number of positive integer solutions of equation: .\r\nThe key observation is: , after that simply calculate all divisors of\r\nand then first go over all , such that then go over all , such that and\r\nthen determine , such that . After that we need to solve the system and\r\nfind out how many solutions it adds.\r\n",
+    "hint": []
 }

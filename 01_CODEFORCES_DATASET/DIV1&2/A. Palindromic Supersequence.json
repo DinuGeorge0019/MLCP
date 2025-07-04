@@ -150,5 +150,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\A. Palindromic Supersequence.json",
     "editorial_link": "https://codeforces.com//blog/entry/57796",
-    "editorial": "Let be the reverse of string . Now, will always have as a subsequence\r\n(as first half) and it is a palindrome with size less than . So, it may\r\nbe one of the possible solutions.\r\n"
+    "editorial": "Let be the reverse of string . Now, will always have as a subsequence\r\n(as first half) and it is a palindrome with size less than . So, it may\r\nbe one of the possible solutions.\r\n",
+    "hint": []
 }

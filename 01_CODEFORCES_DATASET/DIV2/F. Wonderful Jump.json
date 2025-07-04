@@ -139,5 +139,13 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\F. Wonderful Jump.json",
     "editorial_link": "https://codeforces.com//blog/entry/110901",
-    "editorial": "There is a very easy dp solution, we will show one possible way to\r\noptimize it to , where is the maximum possible value of .Let be the\r\nminimum number of eris required to reach index , . Suppose we want to\r\ncalculate and we already know . Let\u00e2\u0080\u0099s look at our cost function more\r\nclosely. We can notice that it is definitely not optimal to use the\r\ntransition if . That is, it will be more optimal to perform jumps of\r\nlength 1.Transforming this inequality, we get . So if is quite large, we\r\nonly need to look at a couple of close to , and then do something else\r\nfor the small values of .1. To handle this case, we can just iterate\r\nover all from to , since the transition could be optimal only if .Time\r\ncomplexity: .2. Another useful fact is that if there exists an index\r\nsuch that and , the transition also cannot be optimal, since followed by\r\nwill cost less.Proof: This leaves us two subcases two handle.2.1 Just\r\nmaintain the rightmost occurrences of all values from to . Time\r\ncomplexity: .2.2 Initially set to and decrease it until becomes true.\r\nTime complexity: amortized.Total time complexity:\r\n"
+    "editorial": "There is a very easy dp solution, we will show one possible way to\r\noptimize it to , where is the maximum possible value of .Let be the\r\nminimum number of eris required to reach index , . Suppose we want to\r\ncalculate and we already know . Letâs look at our cost function more\r\nclosely. We can notice that it is definitely not optimal to use the\r\ntransition if . That is, it will be more optimal to perform jumps of\r\nlength 1.Transforming this inequality, we get . So if is quite large, we\r\nonly need to look at a couple of close to , and then do something else\r\nfor the small values of .1. To handle this case, we can just iterate\r\nover all from to , since the transition could be optimal only if .Time\r\ncomplexity: .2. Another useful fact is that if there exists an index\r\nsuch that and , the transition also cannot be optimal, since followed by\r\nwill cost less.Proof: This leaves us two subcases two handle.2.1 Just\r\nmaintain the rightmost occurrences of all values from to . Time\r\ncomplexity: .2.2 Initially set to and decrease it until becomes true.\r\nTime complexity: amortized.Total time complexity:\r\n",
+    "hint": [
+        "Hint 0 Use dynamic programming.",
+        "Hint 1",
+        "Hint 2 Compare with .",
+        "Hint 3 Compare with for some .",
+        "Hint 4 Two cases: and .",
+        "Hint 5 Split into two more cases: and ."
+    ]
 }

@@ -154,5 +154,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\D. Jon and Orbs.json",
     "editorial_link": "https://codeforces.com//blog/entry/50550",
-    "editorial": "Set and Editorial by: arnabsamanta This problem can be solve using\r\ninclusion-exclusion principle but precision errors need to be handled.\r\nTherefore, we use the following dynamic programming approach to solve\r\nthis problem. On day there are two possibilities, Case-1 : Jon doesn\u00e2\u0080\u0099t\r\nfind a new orb then the probability of it is . Case-2 : Jon does find a\r\nnew orb then the probability of it is . Therefore, We need to find the\r\nminimum such that where, = number of days Jon waited. = number of\r\ndistinct orbs Jon have till now. = probability of Jon having distinct\r\norbs in days. = Total number of distinct orbs possible. Code\r\n"
+    "editorial": "Set and Editorial by: arnabsamanta This problem can be solve using\r\ninclusion-exclusion principle but precision errors need to be handled.\r\nTherefore, we use the following dynamic programming approach to solve\r\nthis problem. On day there are two possibilities, Case-1 : Jon doesnât\r\nfind a new orb then the probability of it is . Case-2 : Jon does find a\r\nnew orb then the probability of it is . Therefore, We need to find the\r\nminimum such that where, = number of days Jon waited. = number of\r\ndistinct orbs Jon have till now. = probability of Jon having distinct\r\norbs in days. = Total number of distinct orbs possible. Code\r\n",
+    "hint": []
 }

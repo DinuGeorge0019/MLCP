@@ -197,11 +197,11 @@
         "I": []
     },
     "editorial_link": "https://codeforces.com//blog/entry/129801",
-    "editorial": "SolutionRead the hints.Suppose the minimum element of is . Then we\r\niterate over , if an element is not divisible by , then we add it to (\r\nis initially empty).If is still empty after iterating , the answer is\r\nyes. If isn\u00e2\u0080\u0099t empty, we check whether all elements of are divisible by\r\nthe minimum element of . If so, the answer is yes. Otherwise, the answer\r\nis no.\r\n",
+    "editorial": "SolutionRead the hints.Suppose the minimum element of is . Then we\r\niterate over , if an element is not divisible by , then we add it to (\r\nis initially empty).If is still empty after iterating , the answer is\r\nyes. If isnât empty, we check whether all elements of are divisible by\r\nthe minimum element of . If so, the answer is yes. Otherwise, the answer\r\nis no.\r\n",
     "name": "B. 378QAQ and Mocha s Array",
     "statement": "Mocha likes arrays, so before her departure, 378QAQ gave her an array a\r\nconsisting of n positive integers as a gift.Mocha thinks that a is if\r\nthere exist two numbers i and j (1\r\nleq i,j\r\nleq n, i\r\nneq j) such that for all k (1\r\nleq k\r\nleq n), a_k is divisible^\r\ndagger by either a_i or a_j.Determine whether a is beautiful.^\r\ndagger x is divisible by y if there exists an integer z such that x = y\r\ncdot z.\r\n",
     "solutions": [
-        "/** *    author:  tourist *    created: 25.05.2024 10:28:35**/#include <bits/stdc++.h>\u00a0using namespace std;\u00a0#ifdef LOCAL#include \"algo/debug.h\"#else#define debug(...) 42#endif\u00a0int main() {  ios::sync_with_stdio(false);  cin.tie(0);  int tt;  cin >> tt;  while (tt--) {    int n;    cin >> n;    vector<int> a(n);    for (int i = 0; i < n; i++) {      cin >> a[i];    }    sort(a.begin(), a.end());    int g = 0;    for (int i = 1; i < n; i++) {      if (a[i] % a[0] != 0) {        g = __gcd(g, a[i]);      }    }    bool found = false;    for (int i = 1; i < n; i++) {      if (g % a[i] == 0) {        found = true;        break;      }    }    cout << (found ? \"YES\" : \"NO\") << '\\n';  }  return 0;}"
+        "/** *    author:  tourist *    created: 25.05.2024 10:28:35**/#include <bits/stdc++.h> using namespace std; #ifdef LOCAL#include \"algo/debug.h\"#else#define debug(...) 42#endif int main() {  ios::sync_with_stdio(false);  cin.tie(0);  int tt;  cin >> tt;  while (tt--) {    int n;    cin >> n;    vector<int> a(n);    for (int i = 0; i < n; i++) {      cin >> a[i];    }    sort(a.begin(), a.end());    int g = 0;    for (int i = 1; i < n; i++) {      if (a[i] % a[0] != 0) {        g = __gcd(g, a[i]);      }    }    bool found = false;    for (int i = 1; i < n; i++) {      if (g % a[i] == 0) {        found = true;        break;      }    }    cout << (found ? \"YES\" : \"NO\") << '\\n';  }  return 0;}"
     ],
     "input": "",
     "output": "",
@@ -213,5 +213,9 @@
     ],
     "dificulty": "1000",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\B. 378QAQ and Mocha s Array.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\B. 378QAQ and Mocha s Array.json",
+    "hint": [
+        "Hint 1 How to solve the problem if we only need to find a number ( ) such that is divisible by for all ( )?",
+        "Hint 2 We only need to check whether all elements are divisible by the minimum element of the array."
+    ]
 }

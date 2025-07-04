@@ -99,7 +99,7 @@
         ]
     },
     "name": "A. Two Bases",
-    "statement": "After seeing the \"ALL YOUR BASE ARE BELONG TO US\" meme for the first\r\ntime, numbers and realised that they have different bases, which\r\ncomplicated their relations.You\u2019re given a number represented in base\r\nand a number represented in base . Compare those two numbers.\r\n",
+    "statement": "After seeing the \"ALL YOUR BASE ARE BELONG TO US\" meme for the first\r\ntime, numbers and realised that they have different bases, which\r\ncomplicated their relations.You’re given a number represented in base\r\nand a number represented in base . Compare those two numbers.\r\n",
     "solutions": [
         "#include <iostream>\n\nusing namespace std;\n\nint n, k;\nint a[100];\n\nlong long calc() {\n    long long x = 0;\n    for (int i = 0; i < n; i++) {\n        x = x * k + a[i];\n    }\n    return x;\n}\nint main() {\n    cin >> n >> k;\n    for (int i = 0; i < n; i++) {\n        cin >> a[i];\n    }\n    long long x = calc();\n    cin >> n >> k;\n    for (int i = 0; i < n; i++) {\n        cin >> a[i];\n    }\n    long long y = calc();\n    if (x == y) {\n        cout << '=' << endl;\n    } else if (x < y) {\n        cout << '<' << endl;\n    } else {\n        cout << '>' << endl;\n    }\n    return 0;\n}\n"
     ],
@@ -113,5 +113,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Two Bases.json",
     "editorial_link": "https://codeforces.com//blog/entry/21755",
-    "editorial": "Try conversions between bases."
+    "editorial": "Try conversions between bases.",
+    "hint": []
 }

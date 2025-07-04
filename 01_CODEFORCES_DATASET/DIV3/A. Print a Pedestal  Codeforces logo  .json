@@ -180,5 +180,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Print a Pedestal  Codeforces logo  .json",
     "editorial_link": "https://codeforces.com//blog/entry/103658",
-    "editorial": "In the constraints, the problem can be solved by brute force: we will go\r\nthrough the value for (the height for the first place), and then select\r\nsuitable values for and . Since , we divide the remaining blocks equally\r\nbetween and . If it turns out that , then we try to decrease by and\r\nincrease by 1. If we get the right answer (), output the heights and\r\nstop the process. We will go through the value of in order of\r\nincreasing.\r\n"
+    "editorial": "In the constraints, the problem can be solved by brute force: we will go\r\nthrough the value for (the height for the first place), and then select\r\nsuitable values for and . Since , we divide the remaining blocks equally\r\nbetween and . If it turns out that , then we try to decrease by and\r\nincrease by 1. If we get the right answer (), output the heights and\r\nstop the process. We will go through the value of in order of\r\nincreasing.\r\n",
+    "hint": []
 }

@@ -170,9 +170,9 @@
     "editorial_link": "https://codeforces.com//blog/entry/130135",
     "editorial": "It is necessary to have at least problems of each difficulty level. If\r\nthere are already at least problems of difficulty level , then there is\r\nno need to come up with more problems of this difficulty level.\r\nOtherwise, it is necessary to come up with problems, where is the number\r\nof problems of difficulty level (if more problems of this difficulty\r\nlevel are created, the number will not be minimum).\r\n",
     "name": "A. Problem Generator",
-    "statement": "Vlad is planning to hold m rounds next month. Each round should contain\r\none problem of difficulty levels \u201d, \u201d, \u201d, \u201d, \u201d, \u201d, and \u201d.Vlad already\r\nhas a bank of n problems, where the i-th problem has a difficulty level\r\nof a_i. There may not be enough of these problems, so he may have to\r\ncome up with a few more problems.Vlad wants to come up with as few\r\nproblems as possible, so he asks you to find the minimum number of\r\nproblems he needs to come up with in order to hold m rounds.For example,\r\nif m=1, n = 10, a= \u201d, then he needs to come up with two problems: one of\r\ndifficulty level \u201d and one of difficulty level \u201d.\r\n",
+    "statement": "Vlad is planning to hold m rounds next month. Each round should contain\r\none problem of difficulty levels ”, ”, ”, ”, ”, ”, and ”.Vlad already\r\nhas a bank of n problems, where the i-th problem has a difficulty level\r\nof a_i. There may not be enough of these problems, so he may have to\r\ncome up with a few more problems.Vlad wants to come up with as few\r\nproblems as possible, so he asks you to find the minimum number of\r\nproblems he needs to come up with in order to hold m rounds.For example,\r\nif m=1, n = 10, a= ”, then he needs to come up with two problems: one of\r\ndifficulty level ” and one of difficulty level ”.\r\n",
     "solutions": [
-        "#include <bits/stdc++.h>using namespace std;\u00a0int main() {    int t; cin >> t;    while (t--) {        int n, m; cin >> n >> m;        map<char, int> mp;        string s; cin >> s;        for (char c: s) mp[c]++;        int ans = 0;        for (char c: string(\"ABCDEFG\")) {            ans += max(0, m - mp[c]);        }        cout << ans << endl;    }}"
+        "#include <bits/stdc++.h>using namespace std; int main() {    int t; cin >> t;    while (t--) {        int n, m; cin >> n >> m;        map<char, int> mp;        string s; cin >> s;        for (char c: s) mp[c]++;        int ans = 0;        for (char c: string(\"ABCDEFG\")) {            ans += max(0, m - mp[c]);        }        cout << ans << endl;    }}"
     ],
     "input": "",
     "output": "",
@@ -181,5 +181,6 @@
     ],
     "dificulty": "800",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Problem Generator.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Problem Generator.json",
+    "hint": []
 }

@@ -129,5 +129,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Checkposts.json",
     "editorial_link": "https://codeforces.com//blog/entry/12082",
-    "editorial": "Find the strongly connected components of the graph. From each component\r\nwe need to choose a node with the lowest cost. If there are more than\r\none nodes with lowest cost, then there are more than one way to choose\r\nnode from this component. Model solution : 6546275\r\n"
+    "editorial": "Find the strongly connected components of the graph. From each component\r\nwe need to choose a node with the lowest cost. If there are more than\r\none nodes with lowest cost, then there are more than one way to choose\r\nnode from this component. Model solution : 6546275\r\n",
+    "hint": []
 }

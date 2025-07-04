@@ -173,5 +173,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Stone Game.json",
     "editorial_link": "https://codeforces.com//blog/entry/91637",
-    "editorial": "If we want to destroy the largest and smallest stone, then there are\r\nonly four options: Destroy the stones on the left until we destroy the\r\nsmallest stone. Then destroy the stones on the right, until we destroy\r\nthe largest stone. Destroy the stones on the right until we destroy the\r\nsmallest stone. Then destroy the stones on the left, until we destroy\r\nthe largest stone. Destroy the stones on the left until we destroy both\r\nstones. Destroy the stones on the right until we destroy both stones.\r\nYou need to check all four options and choose the minimum answer.\r\n"
+    "editorial": "If we want to destroy the largest and smallest stone, then there are\r\nonly four options: Destroy the stones on the left until we destroy the\r\nsmallest stone. Then destroy the stones on the right, until we destroy\r\nthe largest stone. Destroy the stones on the right until we destroy the\r\nsmallest stone. Then destroy the stones on the left, until we destroy\r\nthe largest stone. Destroy the stones on the left until we destroy both\r\nstones. Destroy the stones on the right until we destroy both stones.\r\nYou need to check all four options and choose the minimum answer.\r\n",
+    "hint": []
 }

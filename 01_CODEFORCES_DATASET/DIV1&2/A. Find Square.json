@@ -168,5 +168,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\A. Find Square.json",
     "editorial_link": "https://codeforces.com/blog/entry/61493",
-    "editorial": "There are lots of possible solutions. For example, run through rows from\r\nthe top until you find one with at least one \u00e2\u0080\u0099B\u00e2\u0080\u0099. Do the same for the\r\nbottom. Average of the two row numbers is the number of the middle row.\r\nNow find the first and last \u00e2\u0080\u0099B\u00e2\u0080\u0099 in that row, their average value is the\r\nnumber of the middle column.Alternative approach is to print , where is\r\nthe number of black points and is a list of black points.\r\n"
+    "editorial": "There are lots of possible solutions. For example, run through rows from\r\nthe top until you find one with at least one âBâ. Do the same for the\r\nbottom. Average of the two row numbers is the number of the middle row.\r\nNow find the first and last âBâ in that row, their average value is the\r\nnumber of the middle column.Alternative approach is to print , where is\r\nthe number of black points and is a list of black points.\r\n",
+    "hint": []
 }

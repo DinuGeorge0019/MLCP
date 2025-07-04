@@ -175,7 +175,7 @@
         ]
     },
     "name": "B. Letters Rearranging",
-    "statement": "You are given a string s consisting only of lowercase Latin letters.You\r\ncan rearrange all letters of this string as you wish. Your task is to\r\nobtain a string by rearranging the letters of the given string or report\r\nthat it is impossible to do it.Let\u2019s call a string if it is not a\r\npalindrome. Palindrome is a string which is read from left to right the\r\nsame as from right to left. For example, strings \"\", \"\" and \"\" are\r\npalindromes and strings \"\", \"\" are not.You have to answer t queries.\r\n",
+    "statement": "You are given a string s consisting only of lowercase Latin letters.You\r\ncan rearrange all letters of this string as you wish. Your task is to\r\nobtain a string by rearranging the letters of the given string or report\r\nthat it is impossible to do it.Let’s call a string if it is not a\r\npalindrome. Palindrome is a string which is read from left to right the\r\nsame as from right to left. For example, strings \"\", \"\" and \"\" are\r\npalindromes and strings \"\", \"\" are not.You have to answer t queries.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    int t; cin >> t;\n    while (t--) {\n        string s; cin >> s;\n        sort(s.begin(), s.end());\n        string t = s;\n        reverse(t.begin(), t.end());\n        if (s == t) cout << -1 << endl;\n        else cout << s << endl;\n    }\n}\n"
     ],
@@ -191,5 +191,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. Letters Rearranging.json",
     "editorial_link": "https://codeforces.com/blog/entry/63877",
-    "editorial": "The only case when the answer is is when all letters of the string are\r\nequal. Why is it so? Because if we have at least two different letters\r\nwe can place the first one at the first position of the string and the\r\nsecond one at the last position of the string. Then it is clearly that\r\nthe obtained string is . We can implement this solution by the following\r\nway: sort and if (the first letter equals to the last one) then the\r\nanswer is otherwise the answer is .\r\n"
+    "editorial": "The only case when the answer is is when all letters of the string are\r\nequal. Why is it so? Because if we have at least two different letters\r\nwe can place the first one at the first position of the string and the\r\nsecond one at the last position of the string. Then it is clearly that\r\nthe obtained string is . We can implement this solution by the following\r\nway: sort and if (the first letter equals to the last one) then the\r\nanswer is otherwise the answer is .\r\n",
+    "hint": []
 }

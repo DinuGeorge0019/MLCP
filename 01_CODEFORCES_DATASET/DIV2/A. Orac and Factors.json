@@ -133,5 +133,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Orac and Factors.json",
     "editorial_link": "https://codeforces.com//blog/entry/77284",
-    "editorial": "If we simulate the whole process we will get TLE because k is too large.\r\nSo we need some trivial observations: If n is even, then for each\r\noperation n will be added by 2 and keep being even. If n is odd, then\r\nfor the first time n will be added by an odd number and then become\r\neven. So it\u00e2\u0080\u0099s easy to see that the answer is\r\nleft\r\n{\r\nbegin{array}{lcl} n+2k & n\r\ntextrm{ is even}\r\nn+2(k-1)+d(n) & n\r\ntextrm{ is odd}\r\nend{array}\r\nright. where d(n) is the smallest positive factor of x except 1, which\r\ncan be calculated in O(n) time.The overall complexity is O(n) .\r\n"
+    "editorial": "If we simulate the whole process we will get TLE because k is too large.\r\nSo we need some trivial observations: If n is even, then for each\r\noperation n will be added by 2 and keep being even. If n is odd, then\r\nfor the first time n will be added by an odd number and then become\r\neven. So itâs easy to see that the answer is\r\nleft\r\n{\r\nbegin{array}{lcl} n+2k & n\r\ntextrm{ is even}\r\nn+2(k-1)+d(n) & n\r\ntextrm{ is odd}\r\nend{array}\r\nright. where d(n) is the smallest positive factor of x except 1, which\r\ncan be calculated in O(n) time.The overall complexity is O(n) .\r\n",
+    "hint": []
 }

@@ -91,5 +91,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Buns.json",
     "editorial_link": "https://codeforces.com//blog/entry/2493",
-    "editorial": "Let create array dp by size n x m. dp[i][j] means maximum number of tugriks that the baker can earn if he used i grams of dough and cook buns with stuffings of types 1..j.\n\nInitially dp[i][0] is 0 for all i.\n\nYou can easily calculate this dp:\ndp[i][j] = max{ dp[i-c[j]*k][j-1] + d[j]*k } for every k from 0 to a[j]/b[j], for which i-c[j]*k>=0\n\nThe answer will be max{ dp[k][m] + ((n-k)/c0)*d0 } for every k from 0 to n.\n\nOf course, all divisions in editorial of this problem are integer.\n\nSolution works in O(nma), where a is maximum a_i."
+    "editorial": "Let create array dp by size n x m. dp[i][j] means maximum number of tugriks that the baker can earn if he used i grams of dough and cook buns with stuffings of types 1..j.\n\nInitially dp[i][0] is 0 for all i.\n\nYou can easily calculate this dp:\ndp[i][j] = max{ dp[i-c[j]*k][j-1] + d[j]*k } for every k from 0 to a[j]/b[j], for which i-c[j]*k>=0\n\nThe answer will be max{ dp[k][m] + ((n-k)/c0)*d0 } for every k from 0 to n.\n\nOf course, all divisions in editorial of this problem are integer.\n\nSolution works in O(nma), where a is maximum a_i.",
+    "hint": []
 }

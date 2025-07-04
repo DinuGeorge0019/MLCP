@@ -142,5 +142,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\E. Array Queries.json",
     "editorial_link": "https://codeforces.com//blog/entry/51588",
-    "editorial": "There are two possible solutions in time.First of them answers each\r\nquery using simple iteration changes to for each query until becomes\r\ngreater than , as stated in the problem. But it is too slow.Second\r\nsolution precalculates answers for each and : if , then , else . But\r\nthis uses memory and can be done in time.Now we can notice that if ,\r\nthen second solution will use only time and memory, and if , then first\r\nsolution will do not more than operations on each query. So we can\r\ncombine these two solutions.Time complexity: .\r\n"
+    "editorial": "There are two possible solutions in time.First of them answers each\r\nquery using simple iteration changes to for each query until becomes\r\ngreater than , as stated in the problem. But it is too slow.Second\r\nsolution precalculates answers for each and : if , then , else . But\r\nthis uses memory and can be done in time.Now we can notice that if ,\r\nthen second solution will use only time and memory, and if , then first\r\nsolution will do not more than operations on each query. So we can\r\ncombine these two solutions.Time complexity: .\r\n",
+    "hint": []
 }

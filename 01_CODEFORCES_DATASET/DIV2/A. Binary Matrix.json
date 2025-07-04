@@ -1,1 +1,96 @@
-{"link": "https://codeforces.com//contest/2082/problem/A", "problemId": "3268231", "problem_idx": "A", "shortId": "2082A", "contest_number": "2082", "problem_submissions": {"C": [310757662, 310738839, 310741948, 310755345, 310747809, 310754991, 310750033, 310742245, 310745992, 310739427, 310766291, 310770365, 310774496, 310738439, 310742256], "B": [310756193, 310762836, 310736704, 310738531, 310762205, 310765739, 310741348, 310948734, 310739682, 310748022, 310769249, 310747145, 310731841, 310735775], "A": [310752338, 310731483, 310732296, 310731957, 310751405, 310733958, 310731435, 310736063, 310731710, 310738741, 310755946, 310768406, 310734097, 310731262, 310731419], "F": [310740415, 310756365, 310763981, 310765480, 310763103, 310764545, 310754661, 310762420, 310770297, 310753852, 310773942], "D": [310780095, 310748052, 310761917, 310773885, 310767254]}, "editorial_link": "https://codeforces.com//blog/entry/140702", "editorial": "", "name": "A. Binary Matrix", "statement": "A matrix is called binary if all its elements are either 0 or 1.Ecrade\r\ncalls a binary matrix A if the following two properties hold: The\r\nbitwise XOR of all numbers in each row of matrix A is equal to 0. The\r\nbitwise XOR of all numbers in each column of matrix A is equal to 0.\r\nEcrade has a binary matrix of size n\r\ncdot m. He is interested in the minimum number of elements that need to\r\nbe changed for the matrix to become .However, it seems a little\r\ndifficult, so please help him!\r\n", "solutions": [], "input": "", "output": "", "tags": ["constructive algorithms", "greedy"], "dificulty": "800", "interactive": false, "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Binary Matrix.json"}
+{
+    "link": "https://codeforces.com//contest/2082/problem/A",
+    "problemId": "3268231",
+    "problem_idx": "A",
+    "shortId": "2082A",
+    "contest_number": "2082",
+    "problem_submissions": {
+        "C": [
+            310757662,
+            310738839,
+            310741948,
+            310755345,
+            310747809,
+            310754991,
+            310750033,
+            310742245,
+            310745992,
+            310739427,
+            310766291,
+            310770365,
+            310774496,
+            310738439,
+            310742256
+        ],
+        "B": [
+            310756193,
+            310762836,
+            310736704,
+            310738531,
+            310762205,
+            310765739,
+            310741348,
+            310948734,
+            310739682,
+            310748022,
+            310769249,
+            310747145,
+            310731841,
+            310735775
+        ],
+        "A": [
+            310752338,
+            310731483,
+            310732296,
+            310731957,
+            310751405,
+            310733958,
+            310731435,
+            310736063,
+            310731710,
+            310738741,
+            310755946,
+            310768406,
+            310734097,
+            310731262,
+            310731419
+        ],
+        "F": [
+            310740415,
+            310756365,
+            310763981,
+            310765480,
+            310763103,
+            310764545,
+            310754661,
+            310762420,
+            310770297,
+            310753852,
+            310773942
+        ],
+        "D": [
+            310780095,
+            310748052,
+            310761917,
+            310773885,
+            310767254
+        ]
+    },
+    "editorial_link": "https://codeforces.com//blog/entry/140702",
+    "editorial": "SolutionLet be the number of rows where the bitwise XOR of all the\r\nnumbers in it is , and be the number of columns where the bitwise XOR of\r\nall the numbers in it is . Our goal is to make both and zero.When we\r\nchange an element in the matrix, both and change by exactly one. Thus,\r\nit’s not hard to see that the answer is .The time complexity is .\r\n",
+    "name": "A. Binary Matrix",
+    "statement": "A matrix is called binary if all its elements are either 0 or 1.Ecrade\r\ncalls a binary matrix A if the following two properties hold: The\r\nbitwise XOR of all numbers in each row of matrix A is equal to 0. The\r\nbitwise XOR of all numbers in each column of matrix A is equal to 0.\r\nEcrade has a binary matrix of size n\r\ncdot m. He is interested in the minimum number of elements that need to\r\nbe changed for the matrix to become .However, it seems a little\r\ndifficult, so please help him!\r\n",
+    "solutions": [],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "greedy"
+    ],
+    "dificulty": "800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Binary Matrix.json",
+    "hint": [
+        "Hint Do we really have to consider the problem on the whole matrix?"
+    ]
+}

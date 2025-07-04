@@ -107,5 +107,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Pasha Maximizes.json",
     "editorial_link": "https://codeforces.com//blog/entry/12479",
-    "editorial": "The problem could solved by greedy algorithm. We will try to pull\r\nmaximum digits to the beginning. The algorithm could be described in\r\nthis way: 1) Consider every position in the number from the first,\r\nassume that the current position is 2) Find the nearest maximum digit\r\nfrom the next digits of the number, assume that this digit is on\r\nposition 3) If this maximum digit is greater than current digit on\r\nposition , then make series of swaps, push this digit to position , also\r\ndecrease , that is do\r\n"
+    "editorial": "The problem could solved by greedy algorithm. We will try to pull\r\nmaximum digits to the beginning. The algorithm could be described in\r\nthis way: 1) Consider every position in the number from the first,\r\nassume that the current position is 2) Find the nearest maximum digit\r\nfrom the next digits of the number, assume that this digit is on\r\nposition 3) If this maximum digit is greater than current digit on\r\nposition , then make series of swaps, push this digit to position , also\r\ndecrease , that is do\r\n",
+    "hint": []
 }

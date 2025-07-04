@@ -91,7 +91,7 @@
         ]
     },
     "name": "A. Line to Cashier",
-    "statement": "Little Vasya went to the supermarket to get some groceries. He walked\r\nabout the supermarket for a long time and got a basket full of products.\r\nNow he needs to choose the cashier to pay for the products.There are\r\ncashiers at the exit from the supermarket. At the moment the queue for\r\nthe -th cashier already has people. The -th person standing in the queue\r\nto the -th cashier has items in the basket. Vasya knows that: the\r\ncashier needs 5 seconds to scan one item; after the cashier scans each\r\nitem of some customer, he needs 15 seconds to take the customer\u2019s money\r\nand give him the change. Of course, Vasya wants to select a queue so\r\nthat he can leave the supermarket as soon as possible. Help him write a\r\nprogram that displays the minimum number of seconds after which Vasya\r\ncan get to one of the cashiers.\r\n",
+    "statement": "Little Vasya went to the supermarket to get some groceries. He walked\r\nabout the supermarket for a long time and got a basket full of products.\r\nNow he needs to choose the cashier to pay for the products.There are\r\ncashiers at the exit from the supermarket. At the moment the queue for\r\nthe -th cashier already has people. The -th person standing in the queue\r\nto the -th cashier has items in the basket. Vasya knows that: the\r\ncashier needs 5 seconds to scan one item; after the cashier scans each\r\nitem of some customer, he needs 15 seconds to take the customer’s money\r\nand give him the change. Of course, Vasya wants to select a queue so\r\nthat he can leave the supermarket as soon as possible. Help him write a\r\nprogram that displays the minimum number of seconds after which Vasya\r\ncan get to one of the cashiers.\r\n",
     "solutions": [
         "#include <iostream>\n#include <vector>\n#include <stack>\n#include <queue>\n#include <algorithm>\n#include <cmath>\n#include <iomanip>\n#include <unordered_set>\n#include <stdio.h>\n#include <string.h>\n#include <unordered_map>\nusing namespace std;\n\n#define MOD 10e9+7\nint m[100000];\nint main(){\n    int n;\n    cin>>n;\n    for(int i=0; i<n; i++)\n        cin>>m[i];\n    int v=1000000000;\n    for(int i=0; i<n; i++){\n        int sum=0;\n        for(int e=0; e<m[i]; e++){\n            int a;\n            cin>>a;\n            sum+=5*a;\n            sum+=15;\n        }\n        v=min(v,sum);\n    }\n    cout<<v<<endl;\n    return 0;\n}\n"
     ],
@@ -104,5 +104,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Line to Cashier.json",
     "editorial_link": "https://codeforces.com//blog/entry/11333",
-    "editorial": "In this problem you were to find waiting the time for every queue by\r\nsumming up the purchases of all the people, and return the minimum.\r\n"
+    "editorial": "In this problem you were to find waiting the time for every queue by\r\nsumming up the purchases of all the people, and return the minimum.\r\n",
+    "hint": []
 }

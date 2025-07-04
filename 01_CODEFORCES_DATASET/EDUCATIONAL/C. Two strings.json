@@ -135,5 +135,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\C. Two strings.json",
     "editorial_link": "https://codeforces.com//blog/entry/50010",
-    "editorial": "Try thinking not about erasing a substring from B, but rather picking some number of characters (possibly zero) from the left, and some from the right.\n\n???????\nTwo pointers\n\n???????\nFor every prefix of B, count how big of a prefix of A you will require. Call these values p[i]. Put infinity in the cells where even whole A is not enough.\n\nSame for every suffix of B count the length of the required suffix of A. Call these values s[i].\n\nNow try increasing the length of prefix of B, while decreasing the length of the suffix until p[pref_len] + s[suf_len] is less or equal to the length of A."
+    "editorial": "Try thinking not about erasing a substring from B, but rather picking some number of characters (possibly zero) from the left, and some from the right.\n\n???????\nTwo pointers\n\n???????\nFor every prefix of B, count how big of a prefix of A you will require. Call these values p[i]. Put infinity in the cells where even whole A is not enough.\n\nSame for every suffix of B count the length of the required suffix of A. Call these values s[i].\n\nNow try increasing the length of prefix of B, while decreasing the length of the suffix until p[pref_len] + s[suf_len] is less or equal to the length of A.",
+    "hint": []
 }

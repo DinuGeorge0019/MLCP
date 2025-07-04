@@ -176,5 +176,8 @@
     ],
     "dificulty": "",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Triangle Tree.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Triangle Tree.json",
+    "hint": [
+        "Hint When is a good pair, is actually simply represented as follows. Naively calculating this for all good pairs takes time. Can you find a different representation where we can count wiser?"
+    ]
 }

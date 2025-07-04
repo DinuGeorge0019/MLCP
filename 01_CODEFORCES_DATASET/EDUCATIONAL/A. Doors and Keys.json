@@ -139,5 +139,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Doors and Keys.json",
     "editorial_link": "https://codeforces.com//blog/entry/100227",
-    "editorial": "The necessary and sufficient condition is the following: for each color\r\nthe key should appear before the door.Necessary is easy to show: if\r\nthere is a key after a door, this door can\u00e2\u0080\u0099t be opened.Sufficient can be\r\nshown the following way. If there are no closed doors left, the knight\r\nhas reached the princess. Otherwise, consider the first door the knight\r\nencounters. He has a key for this door, so he opens it. We remove both\r\nthe key and the door from the string and proceed to the case with one\r\nless door.Overall complexity: .\r\n"
+    "editorial": "The necessary and sufficient condition is the following: for each color\r\nthe key should appear before the door.Necessary is easy to show: if\r\nthere is a key after a door, this door canât be opened.Sufficient can be\r\nshown the following way. If there are no closed doors left, the knight\r\nhas reached the princess. Otherwise, consider the first door the knight\r\nencounters. He has a key for this door, so he opens it. We remove both\r\nthe key and the door from the string and proceed to the case with one\r\nless door.Overall complexity: .\r\n",
+    "hint": []
 }

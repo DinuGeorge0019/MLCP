@@ -194,5 +194,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\F. Minimum Maximum Distance.json",
     "editorial_link": "https://codeforces.com//blog/entry/121327",
-    "editorial": "Let\u00e2\u0080\u0099s run a breadth-first traversal from any labeled vertex and find the\r\nfarthest other labeled vertex from it. Then we run a traversal from and\r\nfind the farthest labeled vertex from it (it may coincide with ). Then\r\nthe answer is , where is the distance between and . It is worth\r\nconsidering separately the case when there is only one labeled vertex in\r\nthe tree. Then the answer is .\r\n"
+    "editorial": "Letâs run a breadth-first traversal from any labeled vertex and find the\r\nfarthest other labeled vertex from it. Then we run a traversal from and\r\nfind the farthest labeled vertex from it (it may coincide with ). Then\r\nthe answer is , where is the distance between and . It is worth\r\nconsidering separately the case when there is only one labeled vertex in\r\nthe tree. Then the answer is .\r\n",
+    "hint": []
 }

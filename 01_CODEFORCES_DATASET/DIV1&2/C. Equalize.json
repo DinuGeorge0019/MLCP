@@ -170,5 +170,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\C. Equalize.json",
     "editorial_link": "https://codeforces.com/blog/entry/61606",
-    "editorial": "This can be seen that to minimize the cost, we should use the swap\r\noperation only when there are two consecutive positions(and with\r\nopposite values) to fix. For all other positions to fix, we can use the\r\nflip operation.\r\n"
+    "editorial": "This can be seen that to minimize the cost, we should use the swap\r\noperation only when there are two consecutive positions(and with\r\nopposite values) to fix. For all other positions to fix, we can use the\r\nflip operation.\r\n",
+    "hint": []
 }

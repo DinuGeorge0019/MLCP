@@ -132,5 +132,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\F. Knights.json",
     "editorial_link": "https://codeforces.com/blog/entry/62688",
-    "editorial": "If after some loops of the process we will have two neighboring lines with length x\n total complexity of knights would be not less than O(x24)\n.\n\nIn this construction:\n\n\n\n0\n \u0097 initial placement.\n\n1,2\n \u0097 added knights.\n\nWould be two neighboring lines with length O(2?n3)\n so total complexity of knights would be O((2?n3)24)=O(n29)\n.\n\nThe possible way to facilitate the invention this (or over) solutions is to write process modeling.\n\nBonus: Solve this problem with complexity O(n26)\n."
+    "editorial": "If after some loops of the process we will have two neighboring lines with length x\n total complexity of knights would be not less than O(x24)\n.\n\nIn this construction:\n\n\n\n0\n  initial placement.\n\n1,2\n  added knights.\n\nWould be two neighboring lines with length O(2?n3)\n so total complexity of knights would be O((2?n3)24)=O(n29)\n.\n\nThe possible way to facilitate the invention this (or over) solutions is to write process modeling.\n\nBonus: Solve this problem with complexity O(n26)\n.",
+    "hint": []
 }

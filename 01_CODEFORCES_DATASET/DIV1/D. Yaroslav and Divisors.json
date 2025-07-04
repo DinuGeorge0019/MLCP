@@ -106,5 +106,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Yaroslav and Divisors.json",
     "editorial_link": "https://codeforces.com//blog/entry/7560",
-    "editorial": "Lets add all pair: (x,y) ((d[x]%d[y]==0) || (d[y]%d[x]==0)) to some lest. We can count such pairs using Eretosphen algorithm. Here will be O(n*log(n)) sych pairs using fact, that we have permutation. We will sort all this paairs using counting-sort. Also we will sort given in input intervals. For each given interval we should count number of pairs that countained in given them . Such problem we can solve using Fenvik tree. On each step we will add segments(that are sorted by right side). On each step we will update Fenfick-tree that count number of added pairs on some suffix. Using such tree if it easy to count the answer. "
+    "editorial": "Lets add all pair: (x,y) ((d[x]%d[y]==0) || (d[y]%d[x]==0)) to some lest. We can count such pairs using Eretosphen algorithm. Here will be O(n*log(n)) sych pairs using fact, that we have permutation. We will sort all this paairs using counting-sort. Also we will sort given in input intervals. For each given interval we should count number of pairs that countained in given them . Such problem we can solve using Fenvik tree. On each step we will add segments(that are sorted by right side). On each step we will update Fenfick-tree that count number of added pairs on some suffix. Using such tree if it easy to count the answer. ",
+    "hint": []
 }

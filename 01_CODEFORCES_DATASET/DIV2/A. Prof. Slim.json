@@ -131,7 +131,7 @@
         ]
     },
     "name": "A. Prof. Slim",
-    "statement": "Given an array of n integers a_1,a_2,\r\nldots,a_n, , check if you can make this array sorted by using the\r\nfollowing operation any number of times (possibly zero). An array is\r\nsorted if its elements are arranged in a non-decreasing order. select\r\ntwo indices i and j (1\r\nle i,j\r\nle n) such that a_i and a_j have . In other words, one must be positive\r\nand one must be negative. swap the of a_{i} and a_{j}. For example if\r\nyou select a_i=3 and a_j=-2, then they will change to a_i=-3 and a_j=2.\r\nProf. Slim saw that the problem is still too easy and isn\u2019t worth his\r\ntime, so he decided to give it to you to solve.\r\n",
+    "statement": "Given an array of n integers a_1,a_2,\r\nldots,a_n, , check if you can make this array sorted by using the\r\nfollowing operation any number of times (possibly zero). An array is\r\nsorted if its elements are arranged in a non-decreasing order. select\r\ntwo indices i and j (1\r\nle i,j\r\nle n) such that a_i and a_j have . In other words, one must be positive\r\nand one must be negative. swap the of a_{i} and a_{j}. For example if\r\nyou select a_i=3 and a_j=-2, then they will change to a_i=-3 and a_j=2.\r\nProf. Slim saw that the problem is still too easy and isn’t worth his\r\ntime, so he decided to give it to you to solve.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\n#define int long long\nusing namespace std;\nint a[1000005];\nsigned main()\n{\n\tios::sync_with_stdio(false);\n\tcin.tie(0);\n\tint T;\n\tcin >> T;\n\twhile(T--)\n\t{\n\t\tint n;\n\t\tcin >> n;\n\t\tint cnt=0;\n\t\tfor(int i=1;i<=n;i++)\n\t\t{\n\t\t\tcin >> a[i];\n\t\t\tif(a[i]<0) ++cnt;\n\t\t\ta[i]=max(a[i],-a[i]);\n\t\t}\n\t\tfor(int i=1;i<=n;i++)\n\t\t\tif(i<=cnt) a[i]*=-1;\n\t\tint flag=1;\n\t\tfor(int i=2;i<=n;i++)\n\t\t\tif(a[i]<a[i-1]) flag=0;\n\t\tif(flag) cout << \"YES\\n\";\n\t\telse cout << \"NO\\n\";\n\t}\n\treturn 0;\n}"
     ],
@@ -146,5 +146,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Prof. Slim.json",
     "editorial_link": "https://codeforces.com//blog/entry/102579",
-    "editorial": "We can notice that to make the array sorted we must move all the\r\nnegative signs to the beginning of the array. So let\u00e2\u0080\u0099s say the number of\r\nnegative elements is . Then we must check that the first elements are\r\nnon-increasing and the remaining elements are non-decreasing.Complexity\r\nis .\r\n"
+    "editorial": "We can notice that to make the array sorted we must move all the\r\nnegative signs to the beginning of the array. So letâs say the number of\r\nnegative elements is . Then we must check that the first elements are\r\nnon-increasing and the remaining elements are non-decreasing.Complexity\r\nis .\r\n",
+    "hint": []
 }

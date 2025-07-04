@@ -209,5 +209,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. Negative Prefixes.json",
     "editorial_link": "https://codeforces.com//blog/entry/82673",
-    "editorial": "Let\u00e2\u0080\u0099s collect the prefix sums of the initial array . How do they change\r\nif you swap two values in the array? Let\u00e2\u0080\u0099s swap values on positions and\r\n(). Prefix sums from to aren\u00e2\u0080\u0099t changed. Prefix sums from to are\r\nincreased by (note that if then these sums become smaller). Finally,\r\nprefix sums from to aren\u00e2\u0080\u0099t changed as well.Thus, swapping two values\r\nwill only increase some prefix sums but never decrease any of them.That\r\nhelps us see that the array such that all values on the unlocked\r\npositions are sorted in a non-increasing order is the most optimal one.\r\nOverall complexity: per testcase.\r\n"
+    "editorial": "Letâs collect the prefix sums of the initial array . How do they change\r\nif you swap two values in the array? Letâs swap values on positions and\r\n(). Prefix sums from to arenât changed. Prefix sums from to are\r\nincreased by (note that if then these sums become smaller). Finally,\r\nprefix sums from to arenât changed as well.Thus, swapping two values\r\nwill only increase some prefix sums but never decrease any of them.That\r\nhelps us see that the array such that all values on the unlocked\r\npositions are sorted in a non-increasing order is the most optimal one.\r\nOverall complexity: per testcase.\r\n",
+    "hint": []
 }

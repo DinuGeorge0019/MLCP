@@ -86,7 +86,7 @@
         ]
     },
     "name": "A. Boy or Girl",
-    "statement": "Those days, many boys use beautiful girls\u2019 photos as avatars in forums.\r\nSo it is pretty hard to tell the gender of a user at the first glance.\r\nLast year, our hero went to a forum and had a nice chat with a beauty\r\n(he thought so). After that they talked very often and eventually they\r\nbecame a couple in the network. But yesterday, he came to see \"her\" in\r\nthe real world and found out \"she\" is actually a very strong man! Our\r\nhero is very sad and he is too tired to love again now. So he came up\r\nwith a way to recognize users\u2019 genders by their user names.This is his\r\nmethod: if the number of distinct characters in one\u2019s user name is odd,\r\nthen he is a male, otherwise she is a female. You are given the string\r\nthat denotes the user name, please help our hero to determine the gender\r\nof this user by his method.\r\n",
+    "statement": "Those days, many boys use beautiful girls’ photos as avatars in forums.\r\nSo it is pretty hard to tell the gender of a user at the first glance.\r\nLast year, our hero went to a forum and had a nice chat with a beauty\r\n(he thought so). After that they talked very often and eventually they\r\nbecame a couple in the network. But yesterday, he came to see \"her\" in\r\nthe real world and found out \"she\" is actually a very strong man! Our\r\nhero is very sad and he is too tired to love again now. So he came up\r\nwith a way to recognize users’ genders by their user names.This is his\r\nmethod: if the number of distinct characters in one’s user name is odd,\r\nthen he is a male, otherwise she is a female. You are given the string\r\nthat denotes the user name, please help our hero to determine the gender\r\nof this user by his method.\r\n",
     "solutions": [
         "#include<stdio.h>\n#include<string.h>\n\nchar c[100005];\nint n,m;\n\nint main()\n{\n\tint i,j,a;\n\tn=0;\n\tm=0;\n\tscanf(\"%s\",c);\n\tn=strlen(c);\n\tfor(i=0;i<n;i++)\n\t{\n\t\ta=0;\n\t\tfor(j=0;j<i;j++)\n\t\t{\n\t\t\tif(c[i]==c[j])\n\t\t\t\ta++;\n\t\t}\n\t\tif(a==0)\n\t\t\tm++;\n\t}\n\tif(m%2==0)\n\t\tprintf(\"CHAT WITH HER!\");\n\telse\n\t\tprintf(\"IGNORE HIM!\");\n\treturn 0;\n}"
     ],
@@ -101,5 +101,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Boy or Girl.json",
     "editorial_link": "https://codeforces.com//blog/entry/5592",
-    "editorial": "It is a very simple problem, just count how many distinct chars in the\r\ninput and output the correct answer.\r\n"
+    "editorial": "It is a very simple problem, just count how many distinct chars in the\r\ninput and output the correct answer.\r\n",
+    "hint": []
 }

@@ -119,7 +119,7 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/130213",
-    "editorial": "SolutionNote this fact: in every Manhattan triangle there are two points\r\nsuch that .Let\u00e2\u0080\u0099s start with distributing all points with their value.For\r\neach point find point using lower bound method in corresponding set.\r\nThen we have to find the third point: it can be in either or diagonal.\r\nBorders at coordinate for them are and it can be found using the same\r\nlower bound method.Then, distribute all points with value and do the\r\nsame algorithm.Total time complexity is .\r\n",
+    "editorial": "SolutionNote this fact: in every Manhattan triangle there are two points\r\nsuch that .Letâs start with distributing all points with their value.For\r\neach point find point using lower bound method in corresponding set.\r\nThen we have to find the third point: it can be in either or diagonal.\r\nBorders at coordinate for them are and it can be found using the same\r\nlower bound method.Then, distribute all points with value and do the\r\nsame algorithm.Total time complexity is .\r\n",
     "name": "E. Manhattan Triangle",
     "statement": "The Manhattan distance between two points (x_1, y_1) and (x_2, y_2) is\r\ndefined as: |x_1 - x_2| + |y_1 - y_2|.We call a three points on the\r\nplane, the Manhattan distances between each pair of which are equal.You\r\nare given a set of pairwise distinct points and an integer d. Your task\r\nis to find any Manhattan triangle, composed of three distinct points\r\nfrom the given set, where the Manhattan distance between any pair of\r\nvertices is equal to d.\r\n",
     "solutions": [
@@ -137,5 +137,8 @@
     ],
     "dificulty": "2400",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Manhattan Triangle.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Manhattan Triangle.json",
+    "hint": [
+        "Hint In every Manhattan triangle there are two points such that ."
+    ]
 }

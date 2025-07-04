@@ -112,5 +112,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Petya and Square.json",
     "editorial_link": "https://codeforces.com//blog/entry/2616",
-    "editorial": "One can notice that if we want to divide a square into two equal parts, then the cutting line should pass through the center of our square. Thus, if the marked cell contains the center of the square, then we can\u0092t make a cut, otherwise we can. Here is the code which solves the problem:\n"
+    "editorial": "One can notice that if we want to divide a square into two equal parts, then the cutting line should pass through the center of our square. Thus, if the marked cell contains the center of the square, then we cant make a cut, otherwise we can. Here is the code which solves the problem:\n",
+    "hint": []
 }

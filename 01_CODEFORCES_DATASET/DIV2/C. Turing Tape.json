@@ -107,5 +107,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Turing Tape.json",
     "editorial_link": "https://codeforces.com//blog/entry/3302",
-    "editorial": "This was another implementation problem, inspired by another great\r\nlanguage INTERCAL. Technically it was a bit more complicated than the\r\nprevious one, due to the usage of byte reversal and having to implement\r\nnot the described procedure but its inverse. For i-th character of input\r\ndata reverse it and store in ; then i-th number of the output can be\r\ncalculated as (for ).\r\n"
+    "editorial": "This was another implementation problem, inspired by another great\r\nlanguage INTERCAL. Technically it was a bit more complicated than the\r\nprevious one, due to the usage of byte reversal and having to implement\r\nnot the described procedure but its inverse. For i-th character of input\r\ndata reverse it and store in ; then i-th number of the output can be\r\ncalculated as (for ).\r\n",
+    "hint": []
 }

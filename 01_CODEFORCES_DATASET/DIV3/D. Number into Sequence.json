@@ -154,5 +154,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\D. Number into Sequence.json",
     "editorial_link": "https://codeforces.com//blog/entry/84984",
-    "editorial": "Consider in this canonical form (just find the prime factorization of\r\n).Let be such an index that is the maximum among all values of . Then\r\nthe answer length can not exceed . This is because if the answer has\r\ngreater length, then some number doesn\u00e2\u0080\u0099t have in its representation\r\n(thus, there will be problems with divisibility because we are\r\nconsidering primes). So, let\u00e2\u0080\u0099s create the answer of length consisting of\r\n. Then let\u00e2\u0080\u0099s just multiply the last element by all other primes in their\r\ndegrees. So, we satisfied the divisibility rule and the length of the\r\nanswer is the maximum possible.\r\n"
+    "editorial": "Consider in this canonical form (just find the prime factorization of\r\n).Let be such an index that is the maximum among all values of . Then\r\nthe answer length can not exceed . This is because if the answer has\r\ngreater length, then some number doesnât have in its representation\r\n(thus, there will be problems with divisibility because we are\r\nconsidering primes). So, letâs create the answer of length consisting of\r\n. Then letâs just multiply the last element by all other primes in their\r\ndegrees. So, we satisfied the divisibility rule and the length of the\r\nanswer is the maximum possible.\r\n",
+    "hint": []
 }

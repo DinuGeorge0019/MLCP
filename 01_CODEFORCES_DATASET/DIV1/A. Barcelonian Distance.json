@@ -122,5 +122,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Barcelonian Distance.json",
     "editorial_link": "https://codeforces.com//blog/entry/63324",
-    "editorial": "One way is to handle some cases: intersect the line with the border of the bounding box of (x1,y1)\n and (x2,y2)\n, and relax answer by some values depending on the mutual location of intersection points, as on the pics below. Another way is to intersect horizontal and vertical lines through (x1,y1)\n and (x2,y2)\n, intersect them with the ax+by+c=0\n line, consider the obtained 6 points as vertices of a graph, add all horizontal and vertical edges in this graph, run Floyd/Ford-Bellman/Dijkstra algorithm.\n"
+    "editorial": "One way is to handle some cases: intersect the line with the border of the bounding box of (x1,y1)\n and (x2,y2)\n, and relax answer by some values depending on the mutual location of intersection points, as on the pics below. Another way is to intersect horizontal and vertical lines through (x1,y1)\n and (x2,y2)\n, intersect them with the ax+by+c=0\n line, consider the obtained 6 points as vertices of a graph, add all horizontal and vertical edges in this graph, run Floyd/Ford-Bellman/Dijkstra algorithm.\n",
+    "hint": []
 }

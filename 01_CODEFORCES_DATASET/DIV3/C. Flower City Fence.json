@@ -203,5 +203,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C. Flower City Fence.json",
     "editorial_link": "https://codeforces.com//blog/entry/119715",
-    "editorial": "Obviously, if , then this fence is not symmetric, because the fence has\r\na length of , while the horizontally laid fence has a length of .Now\r\nlet\u00e2\u0080\u0099s build a fence using horizontal boards that would match the\r\noriginal fence . And let\u00e2\u0080\u0099s check if the arrays and are equal. If they\r\nare equal, then the fence is symmetric; otherwise, it is not. There\r\nwon\u00e2\u0080\u0099t be any memory issues since all , which means the length of array\r\ndoes not exceed .\r\n"
+    "editorial": "Obviously, if , then this fence is not symmetric, because the fence has\r\na length of , while the horizontally laid fence has a length of .Now\r\nletâs build a fence using horizontal boards that would match the\r\noriginal fence . And letâs check if the arrays and are equal. If they\r\nare equal, then the fence is symmetric; otherwise, it is not. There\r\nwonât be any memory issues since all , which means the length of array\r\ndoes not exceed .\r\n",
+    "hint": []
 }

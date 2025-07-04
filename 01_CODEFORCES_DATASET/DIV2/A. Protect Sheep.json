@@ -122,5 +122,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Protect Sheep.json",
     "editorial_link": "https://codeforces.com//blog/entry/58286",
-    "editorial": "Suppose that there is a wolf and a sheep in adjacent cells. It is\r\nobvious that in this case, the answer \"\" this particular wolf can always\r\nattack this sheep.Otherwise, the answer is always \"\". The simplest way\r\nof protecting all sheep is to place a dog in every empty cell. Then no\r\nwolf can move and all sheep are safe and happy.\r\n"
+    "editorial": "Suppose that there is a wolf and a sheep in adjacent cells. It is\r\nobvious that in this case, the answer \"\" this particular wolf can always\r\nattack this sheep.Otherwise, the answer is always \"\". The simplest way\r\nof protecting all sheep is to place a dog in every empty cell. Then no\r\nwolf can move and all sheep are safe and happy.\r\n",
+    "hint": []
 }

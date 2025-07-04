@@ -136,5 +136,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Wizard of Orz.json",
     "editorial_link": "https://codeforces.com//blog/entry/86566",
-    "editorial": "If there is only one panel, then pause it when digit appears on it. You\r\ncannot do any better than that.Otherwise, it is always optimal to pause\r\nthe second panel from left, when the digit appears on it. This would\r\ngive an answer of the form . You can verify that this is the largest\r\nnumber that can be achieved.\r\n"
+    "editorial": "If there is only one panel, then pause it when digit appears on it. You\r\ncannot do any better than that.Otherwise, it is always optimal to pause\r\nthe second panel from left, when the digit appears on it. This would\r\ngive an answer of the form . You can verify that this is the largest\r\nnumber that can be achieved.\r\n",
+    "hint": []
 }

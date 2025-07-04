@@ -169,5 +169,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\D. Palindromes Coloring.json",
     "editorial_link": "https://codeforces.com//blog/entry/98942",
-    "editorial": "We will solve the problem greedily. First, we will try to add pairs of\r\nidentical characters to palindromes. As long as there are at least\r\npairs, let\u00e2\u0080\u0099s add them. After that, it is no longer possible to add a\r\ncouple of characters, but you can try to add one character in the\r\nmiddle. This can be done if there are at least characters left. There is\r\nno need to paint other characters.\r\n"
+    "editorial": "We will solve the problem greedily. First, we will try to add pairs of\r\nidentical characters to palindromes. As long as there are at least\r\npairs, letâs add them. After that, it is no longer possible to add a\r\ncouple of characters, but you can try to add one character in the\r\nmiddle. This can be done if there are at least characters left. There is\r\nno need to paint other characters.\r\n",
+    "hint": []
 }

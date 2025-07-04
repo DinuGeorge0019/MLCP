@@ -141,5 +141,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Binary Strings are Fun.json",
     "editorial_link": "https://codeforces.com//blog/entry/110169",
-    "editorial": "SolutionNow we know how to solve for whole string .We can similarly\r\nsolve for all prefixes.To find , we need to find the longest suffix of\r\ncontaining same character. We can easily calculate this all prefixes\r\nwhile moving from to .Time complexity is .\r\n"
+    "editorial": "SolutionNow we know how to solve for whole string .We can similarly\r\nsolve for all prefixes.To find , we need to find the longest suffix of\r\ncontaining same character. We can easily calculate this all prefixes\r\nwhile moving from to .Time complexity is .\r\n",
+    "hint": [
+        "Hint 1 Let us first find .",
+        "Hint 2 where is the length of longest suffix of in which all characters are same.",
+        "Hint 3 How to prove the result in hint ? First of all it is easy to see if all characters of are same, as median is always . Now we assume that contains distinct characters. Suppose is one good extension of . Assume we are index . If there exists an index such that , we should have . Why? Assume is the smallest index greater than such that . Now if we have , can never be median of subarray . So if longest suffix of having same characters of starts at index , for all and can be anything(either or ) for all ."
+    ]
 }

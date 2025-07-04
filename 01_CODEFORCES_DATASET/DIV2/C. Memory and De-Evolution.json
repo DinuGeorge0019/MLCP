@@ -89,5 +89,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Memory and De-Evolution.json",
     "editorial_link": "https://codeforces.com//blog/entry/47050",
-    "editorial": "Let's reverse the process: start with an equilateral triangle with side length y, and lets get to an equilateral triangle with side length x. In each step, we can act greedily while obeying the triangle inequality. This will give us our desired answer.\n"
+    "editorial": "Let's reverse the process: start with an equilateral triangle with side length y, and lets get to an equilateral triangle with side length x. In each step, we can act greedily while obeying the triangle inequality. This will give us our desired answer.\n",
+    "hint": []
 }

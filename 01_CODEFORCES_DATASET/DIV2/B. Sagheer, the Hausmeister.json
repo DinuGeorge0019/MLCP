@@ -119,5 +119,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Sagheer, the Hausmeister.json",
     "editorial_link": "https://codeforces.com//blog/entry/52318",
-    "editorial": "When Sagheer reaches a floor for the first time, he will be standing at\r\neither left or right stairs. If he is standing at the left stairs, then\r\nhe will go to the rightmost room with lights on. If he is standing at\r\nthe right stairs, then he will go to the leftmost room with lights on.\r\nNext, he will either take the left stairs or the right stairs to go to\r\nthe next floor. We will brute force on the choice of the stairs at each\r\nfloor. Note that Sagheer doesn t have to go to the last floor, so he\r\nwill go to the highest floor that has a room with lights on. Complexity:\r\nImplementation\r\n"
+    "editorial": "When Sagheer reaches a floor for the first time, he will be standing at\r\neither left or right stairs. If he is standing at the left stairs, then\r\nhe will go to the rightmost room with lights on. If he is standing at\r\nthe right stairs, then he will go to the leftmost room with lights on.\r\nNext, he will either take the left stairs or the right stairs to go to\r\nthe next floor. We will brute force on the choice of the stairs at each\r\nfloor. Note that Sagheer doesn t have to go to the last floor, so he\r\nwill go to the highest floor that has a room with lights on. Complexity:\r\nImplementation\r\n",
+    "hint": []
 }

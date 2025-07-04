@@ -104,7 +104,7 @@
         ]
     },
     "name": "A. Captain Flint and Crew Recruitment",
-    "statement": "Recently, out of blue Captain Flint has been interested in math and even\r\ndefined a new class of integers. Let\u2019s define a positive integer x as if\r\nit can be represented as p\r\ncdot q, where 1 < p < q and p and q are prime numbers. For example,\r\nintegers 6 and 10 are nearly primes (since 2\r\ncdot 3 = 6 and 2\r\ncdot 5 = 10), but integers 1, 3, 4, 16, 17 or 44 are not.Captain Flint\r\nguessed an integer n and asked you: can you represent it as where of\r\nthem should be .Uncle Bogdan easily solved the task and joined the crew.\r\nCan you do the same?\r\n",
+    "statement": "Recently, out of blue Captain Flint has been interested in math and even\r\ndefined a new class of integers. Let’s define a positive integer x as if\r\nit can be represented as p\r\ncdot q, where 1 < p < q and p and q are prime numbers. For example,\r\nintegers 6 and 10 are nearly primes (since 2\r\ncdot 3 = 6 and 2\r\ncdot 5 = 10), but integers 1, 3, 4, 16, 17 or 44 are not.Captain Flint\r\nguessed an integer n and asked you: can you represent it as where of\r\nthem should be .Uncle Bogdan easily solved the task and joined the crew.\r\nCan you do the same?\r\n",
     "solutions": [
         "#pragma GCC optimize(\"O3\")\n#include<cstdio>\n#include<cstdlib>\n#include<cstring>\n#include<cmath>\n#include<algorithm>\n#include<functional>\n#include<vector>\n#include<queue>\n#include<stack>\n#include<set>\n#include<map>\nusing namespace std;\n#define MOD 1000000007\n#define f(i,n) for(int i=0;i<int(n);i++)\n#define N 200000\n\n\nint main() {\n\tint a[N];\n\tf(i, N)a[i] = 0;\n\tint n, k, t;\n\tint x, y, z;\n\tlong long s, ans;\n\tbool v = true;\n\tans = 0;\n\tscanf(\"%d\", &t);\n\tf(tt, t) {\n\t\tscanf(\"%d\", &n);\n\t\tif (n < 31)printf(\"NO\\n\");\n\t\telse if (n == 36) {\n\t\t\tprintf(\"YES\\n\");\n\t\t\tprintf(\"5 6 10 15\\n\");\n\t\t}\n\t\telse if (n == 40) {\n\t\t\tprintf(\"YES\\n\");\n\t\t\tprintf(\"2 6 10 22\\n\");\n\t\t}\n\t\telse if (n == 44) {\n\t\t\tprintf(\"YES\\n\");\n\t\t\tprintf(\"6 7 10 21\\n\");\n\t\t}\n\t\telse {\n\t\t\tprintf(\"YES\\n\");\n\t\t\tprintf(\"6 10 14 %d\\n\",n - 30);\n\t\t}\n\t}\n\n\treturn 0;\n}"
     ],
@@ -120,5 +120,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Captain Flint and Crew Recruitment.json",
     "editorial_link": "https://codeforces.com//blog/entry/80828",
-    "editorial": "Consider the three smallest nearly prime numbers: and : if , then the\r\nanswer is . otherwise the answer is . The easiest way is to display in\r\ncases where .If then we can output .In addition, it was possible to\r\ngenerate the first nearly prime numbers and iterate over all their\r\npossible triplets.Complexity: or more if brute-force is written.\r\n"
+    "editorial": "Consider the three smallest nearly prime numbers: and : if , then the\r\nanswer is . otherwise the answer is . The easiest way is to display in\r\ncases where .If then we can output .In addition, it was possible to\r\ngenerate the first nearly prime numbers and iterate over all their\r\npossible triplets.Complexity: or more if brute-force is written.\r\n",
+    "hint": []
 }

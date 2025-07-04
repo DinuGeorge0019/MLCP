@@ -155,5 +155,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D1. Frequency Problem  Easy Version .json",
     "editorial_link": "https://codeforces.com//blog/entry/82067",
-    "editorial": "For the easy version, it's sufficient to consider all pairs (D\n, V\n) in linear time, by using the standard algorithm which computes the longest interval with sum 0\n. Thus, we get a solution with complexity O(100?n\n)."
+    "editorial": "For the easy version, it's sufficient to consider all pairs (D\n, V\n) in linear time, by using the standard algorithm which computes the longest interval with sum 0\n. Thus, we get a solution with complexity O(100?n\n).",
+    "hint": []
 }

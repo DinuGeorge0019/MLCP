@@ -150,7 +150,7 @@
         ]
     },
     "name": "B. Digital root",
-    "statement": "Today at the lesson of mathematics, Petya learns about the digital\r\nroot.The digital root of a non-negative integer is the single digit\r\nvalue obtained by an iterative process of summing digits, on each\r\niteration using the result from the previous iteration to compute a\r\ndigit sum. The process continues until a single-digit number is reached.\r\nLet\u2019s denote the digital root of x as S(x). Then S(5)=5,\r\nS(38)=S(3+8=11)=S(1+1=2)=2, S(10)=S(1+0=1)=1.As a homework Petya got n\r\ntasks of the form: find k-th positive number whose digital root is\r\nx.Petya has already solved all the problems, but he doesn\u2019t know if it\u2019s\r\nright. Your task is to solve all n tasks from Petya\u2019s homework.\r\n",
+    "statement": "Today at the lesson of mathematics, Petya learns about the digital\r\nroot.The digital root of a non-negative integer is the single digit\r\nvalue obtained by an iterative process of summing digits, on each\r\niteration using the result from the previous iteration to compute a\r\ndigit sum. The process continues until a single-digit number is reached.\r\nLet’s denote the digital root of x as S(x). Then S(5)=5,\r\nS(38)=S(3+8=11)=S(1+1=2)=2, S(10)=S(1+0=1)=1.As a homework Petya got n\r\ntasks of the form: find k-th positive number whose digital root is\r\nx.Petya has already solved all the problems, but he doesn’t know if it’s\r\nright. Your task is to solve all n tasks from Petya’s homework.\r\n",
     "solutions": [
         "#ifndef BZ\n#pragma GCC optimize \"-O3\"\n#endif\n#include <bits/stdc++.h>\n\n#define FASTIO\n#define ALL(v) (v).begin(), (v).end()\n#define rep(i, l, r) for (int i = (l); i < (r); ++i)\n\n#ifdef FASTIO\n#define scanf abacaba\n#define printf abacaba\n#endif\n\ntypedef long long ll;\ntypedef long double ld;\ntypedef unsigned long long ull;\n\nusing namespace std;\n\nint main() {\n#ifdef FASTIO\n    ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);\n#endif\n    int n;\n    cin >> n;\n    for (int i = 0; i < n; i++) {\n        ll k, x;\n        cin >> k >> x;\n        cout << 9 * (k - 1) + x << \"\\n\";\n    }\n    return 0;\n}\n\n"
     ],
@@ -164,5 +164,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. Digital root.json",
     "editorial_link": "https://codeforces.com//blog/entry/64833",
-    "editorial": "The key observation is that the digital root of an integer is the\r\nsingle-digit number such that . You can prove this by noticing that for\r\nall . Once we observe this, finding the -th number is very simple; see\r\nthe code: 48993705\r\n"
+    "editorial": "The key observation is that the digital root of an integer is the\r\nsingle-digit number such that . You can prove this by noticing that for\r\nall . Once we observe this, finding the -th number is very simple; see\r\nthe code: 48993705\r\n",
+    "hint": []
 }

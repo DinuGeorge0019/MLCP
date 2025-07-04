@@ -144,5 +144,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\F. Random Query.json",
     "editorial_link": "https://codeforces.com//blog/entry/54357",
-    "editorial": "For each index we will find the number of pairs (before swapping) such\r\nthat is the first occurence of in the chosen segment. Let be previous\r\noccurence of before (if is the first occurence, then if we suppose the\r\narray to be -indexed). Let\u00e2\u0080\u0099s find the number of pairs such that , and\r\nthen multiply it by and subtract for this index. has to be in segment ,\r\nand has to be in segment , so the number of ways to choose this pair is\r\n.The value we receive as the sum of these values over all segments is\r\nthe total number of distinct elements over all pairs , so we need to\r\ndivide it by the number of these pairs.\r\n"
+    "editorial": "For each index we will find the number of pairs (before swapping) such\r\nthat is the first occurence of in the chosen segment. Let be previous\r\noccurence of before (if is the first occurence, then if we suppose the\r\narray to be -indexed). Letâs find the number of pairs such that , and\r\nthen multiply it by and subtract for this index. has to be in segment ,\r\nand has to be in segment , so the number of ways to choose this pair is\r\n.The value we receive as the sum of these values over all segments is\r\nthe total number of distinct elements over all pairs , so we need to\r\ndivide it by the number of these pairs.\r\n",
+    "hint": []
 }

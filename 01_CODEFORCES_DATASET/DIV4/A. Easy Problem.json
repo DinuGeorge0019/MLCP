@@ -189,7 +189,7 @@
     "name": "A. Easy Problem",
     "statement": "Cube is given an integer n. She wants to know how many ordered pairs of\r\npositive integers (a,b) there are such that a=n-b. Since Cube is not\r\nvery good at math, please help her!\r\n",
     "solutions": [
-        "#include<bits/stdc++.h>#define int long long#define pii pair<int,int>#define pb push_back#define in insert#define fi first#define se second#define ld long double#define vvec vector<vector<int>>using namespace std;const int mod=1000000007;const int N=2e5+7;const int inf=1e17;int a[N];int n;\u00a0signed main(){    ios_base::sync_with_stdio(0);    cin.tie(0);cout.tie(0);    //freopen(\"TASK.inp\",\"r\",stdin);    //freopen(\"TASK.out\",\"w\",stdout);    int t;cin>>t;    while(t--){        cin>>n;        cout<<n-1<<'\\n';    }}"
+        "#include<bits/stdc++.h>#define int long long#define pii pair<int,int>#define pb push_back#define in insert#define fi first#define se second#define ld long double#define vvec vector<vector<int>>using namespace std;const int mod=1000000007;const int N=2e5+7;const int inf=1e17;int a[N];int n; signed main(){    ios_base::sync_with_stdio(0);    cin.tie(0);cout.tie(0);    //freopen(\"TASK.inp\",\"r\",stdin);    //freopen(\"TASK.out\",\"w\",stdout);    int t;cin>>t;    while(t--){        cin>>n;        cout<<n-1<<'\\n';    }}"
     ],
     "input": "",
     "output": "",
@@ -199,5 +199,6 @@
     ],
     "dificulty": "800",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\A. Easy Problem.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\A. Easy Problem.json",
+    "hint": []
 }

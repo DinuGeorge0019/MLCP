@@ -167,5 +167,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C1. Increasing Subsequence  easy version .json",
     "editorial_link": "https://codeforces.com/blog/entry/66737",
-    "editorial": "In this problem the following greedy solution works: let\u00e2\u0080\u0099s maintain the\r\nlast element of the increasing sequence we got and on each turn choose\r\nthe minimum element greater than this last element among the leftmost\r\nand the rightmost. Such turns will maximize the answer. You can find\r\ndetails of implementation in the authors solution.\r\n"
+    "editorial": "In this problem the following greedy solution works: letâs maintain the\r\nlast element of the increasing sequence we got and on each turn choose\r\nthe minimum element greater than this last element among the leftmost\r\nand the rightmost. Such turns will maximize the answer. You can find\r\ndetails of implementation in the authors solution.\r\n",
+    "hint": []
 }

@@ -143,5 +143,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Team Olympiad.json",
     "editorial_link": "https://codeforces.com//blog/entry/14849",
-    "editorial": "The teams could be formed using greedy algorithm. We can choose any\r\nthree children with different skills who are not participants of any\r\nteam yet and form a new team using them. After some time we could not\r\nform any team, so the answer to the problem is minimum of the number of\r\nones, twos and threes in given array. We can get solution if we add\r\nchildren with different skills into three different arrays. Also the\r\nproblem could be solved in every iteration find new three children for\r\nnew team.\r\n"
+    "editorial": "The teams could be formed using greedy algorithm. We can choose any\r\nthree children with different skills who are not participants of any\r\nteam yet and form a new team using them. After some time we could not\r\nform any team, so the answer to the problem is minimum of the number of\r\nones, twos and threes in given array. We can get solution if we add\r\nchildren with different skills into three different arrays. Also the\r\nproblem could be solved in every iteration find new three children for\r\nnew team.\r\n",
+    "hint": []
 }

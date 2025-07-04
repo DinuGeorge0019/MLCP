@@ -128,5 +128,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Ntarsis  Set.json",
     "editorial_link": "https://codeforces.com//blog/entry/116940",
-    "editorial": "Problem Credits: nsqrtlog Analysis: nsqrtlog, buffering AnswerIf is\r\nbetween and , it will move to a new position of , since positions before\r\nit are deleted.\r\n"
+    "editorial": "Problem Credits: nsqrtlog Analysis: nsqrtlog, buffering AnswerIf is\r\nbetween and , it will move to a new position of , since positions before\r\nit are deleted.\r\n",
+    "hint": [
+        "Hint 1 Suppose that the numbers are arranged in a line in increasing order. Take a look at each number before some day. If it isn't deleted on that day, what new position does it occupy, and how is that impacted by its previous position? Answer If is between and , it will move to a new position of , since positions before it are deleted.",
+        "Hint 2 Take this observation, and apply it to simulate the process backwards."
+    ]
 }

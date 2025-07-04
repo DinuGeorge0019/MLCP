@@ -185,5 +185,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C. Vlad Building Beautiful Array.json",
     "editorial_link": "https://codeforces.com//blog/entry/116636",
-    "editorial": "If all the numbers in the array already have the same parity, then for\r\neach it is sufficient to assign .Otherwise, it is impossible to make all\r\nthe numbers even by leaving them positive, because the parity changes\r\nonly when subtracting an odd number, and we cannot make the minimum odd\r\nnumber an even number. It remains only to make all numbers odd, that is,\r\nsubtract odd numbers from even numbers. This can be done if the minimum\r\nnumber in the array is odd, because we can subtract it from every even\r\nnumber.\r\n"
+    "editorial": "If all the numbers in the array already have the same parity, then for\r\neach it is sufficient to assign .Otherwise, it is impossible to make all\r\nthe numbers even by leaving them positive, because the parity changes\r\nonly when subtracting an odd number, and we cannot make the minimum odd\r\nnumber an even number. It remains only to make all numbers odd, that is,\r\nsubtract odd numbers from even numbers. This can be done if the minimum\r\nnumber in the array is odd, because we can subtract it from every even\r\nnumber.\r\n",
+    "hint": []
 }

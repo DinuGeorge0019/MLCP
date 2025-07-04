@@ -129,5 +129,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Filling Shapes.json",
     "editorial_link": "https://codeforces.com//blog/entry/67614",
-    "editorial": "If you want to have no empty spaces on tiles, you should fill leftmost\r\nbottom tile. Then you have only 2 choices; Both cases force you to group\r\nleftmost tiles and fill. By this fact, we should group each tiles and\r\nfill independently. So the answer is if is odd, then the answer is\r\n(impossible), otherwise, the answer is .Time complexity is with bit\r\noperation or with iteration.\r\n"
+    "editorial": "If you want to have no empty spaces on tiles, you should fill leftmost\r\nbottom tile. Then you have only 2 choices; Both cases force you to group\r\nleftmost tiles and fill. By this fact, we should group each tiles and\r\nfill independently. So the answer is if is odd, then the answer is\r\n(impossible), otherwise, the answer is .Time complexity is with bit\r\noperation or with iteration.\r\n",
+    "hint": []
 }

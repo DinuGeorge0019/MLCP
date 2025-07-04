@@ -154,5 +154,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Optimal Insertion.json",
     "editorial_link": "https://codeforces.com//blog/entry/95865",
-    "editorial": "For some reason I\u00e2\u0080\u0099ve decided to not use the Fenwick trees like I did\r\nbefore and switched to Order Statistics Tree from GNU C++ PBDs. The\r\nsolution should be O((n + m) (log(n) + log(m))) Can someone help me\r\nunderstand why I have TLE? The idea is as follows: The asymptotic seems\r\nright: there are n + m steps, at each of them there are at most log(n) +\r\nlog(m) operations, so this should really fit the limitations. I can\u00e2\u0080\u0099t\r\nfigure out why I get TLE :( Here\u00e2\u0080\u0099s the code: 133029362\r\n"
+    "editorial": "For some reason Iâve decided to not use the Fenwick trees like I did\r\nbefore and switched to Order Statistics Tree from GNU C++ PBDs. The\r\nsolution should be O((n + m) (log(n) + log(m))) Can someone help me\r\nunderstand why I have TLE? The idea is as follows: The asymptotic seems\r\nright: there are n + m steps, at each of them there are at most log(n) +\r\nlog(m) operations, so this should really fit the limitations. I canât\r\nfigure out why I get TLE :( Hereâs the code: 133029362\r\n",
+    "hint": []
 }

@@ -174,5 +174,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D2. 388535  Hard Version .json",
     "editorial_link": "https://codeforces.com//blog/entry/101302",
-    "editorial": "There are two solutions to this problem.If is even and is odd,\nwe can skip the last bit and divide the range by two, then recursively\nsolve it. Otherwise, we will pair with , and we will left with at most\ncandidates for to check.There is also another solution: we can iterate\nall possibilities of (by assuming is for all ). If is the hidden number,\nfor all , so the problem reduce to \"count the number of that \", which\ncan be solved with binary trie.\n"
+    "editorial": "There are two solutions to this problem.If is even and is odd,\nwe can skip the last bit and divide the range by two, then recursively\nsolve it. Otherwise, we will pair with , and we will left with at most\ncandidates for to check.There is also another solution: we can iterate\nall possibilities of (by assuming is for all ). If is the hidden number,\nfor all , so the problem reduce to \"count the number of that \", which\ncan be solved with binary trie.\n",
+    "hint": [
+        "Hint 1 If , then .",
+        "Hint 2 if is even and is odd, the last bit of can be either or (we can pair with )."
+    ]
 }

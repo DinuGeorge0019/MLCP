@@ -169,5 +169,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\E. Nearly Shortest Repeating Substring.json",
     "editorial_link": "https://codeforces.com//blog/entry/127664",
-    "editorial": "Let’s call a string a if it can be multiplied to the same length as What\r\nare the possibilities for the lengths of the period? Clearly, it must be\r\na divisor of . So the solution is to check all divisors of and see the\r\nsmallest one that works.To check if length works, multiply the prefix of\r\nlength until it’s the same length as and check how many differences\r\nthere are. However, the different letter can be in the prefix(for\r\nexample, and ), so we also check the same for the suffix of length . If\r\neither of them is true, output .All numbers at most have at most\r\ndivisors, so this will take operations, which is fast enough.\r\n"
+    "editorial": "Let’s call a string a if it can be multiplied to the same length as What\r\nare the possibilities for the lengths of the period? Clearly, it must be\r\na divisor of . So the solution is to check all divisors of and see the\r\nsmallest one that works.To check if length works, multiply the prefix of\r\nlength until it’s the same length as and check how many differences\r\nthere are. However, the different letter can be in the prefix(for\r\nexample, and ), so we also check the same for the suffix of length . If\r\neither of them is true, output .All numbers at most have at most\r\ndivisors, so this will take operations, which is fast enough.\r\n",
+    "hint": []
 }

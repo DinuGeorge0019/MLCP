@@ -185,5 +185,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C. Two Teams Composing.json",
     "editorial_link": "https://codeforces.com//blog/entry/75993",
-    "editorial": "Let the number of students with the skill is and the number of different\r\nskills is . Then the size of the first team can not exceed and the size\r\nof the second team can not exceed . So the answer is not greater than\r\nthe minimum of these two values. Moreover, let\u00e2\u0080\u0099s take a look at the\r\nskill with a maximum value of . Then there are two cases: all students\r\nwith this skill go to the second team then the sizes of teams are at\r\nmost and correspondingly. Otherwise, at least one student with this\r\nskill goes to the first team and the sizes are at most and\r\ncorrespondingly. So the answer is .Time complexity: .\r\n"
+    "editorial": "Let the number of students with the skill is and the number of different\r\nskills is . Then the size of the first team can not exceed and the size\r\nof the second team can not exceed . So the answer is not greater than\r\nthe minimum of these two values. Moreover, letâs take a look at the\r\nskill with a maximum value of . Then there are two cases: all students\r\nwith this skill go to the second team then the sizes of teams are at\r\nmost and correspondingly. Otherwise, at least one student with this\r\nskill goes to the first team and the sizes are at most and\r\ncorrespondingly. So the answer is .Time complexity: .\r\n",
+    "hint": []
 }

@@ -151,5 +151,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Long Way Home.json",
     "editorial_link": "https://codeforces.com//blog/entry/104261",
-    "editorial": "Let\u00e2\u0080\u0099s assume we know the shortest distances from the first vertex to\r\neach, if we have added no more than edges (air travels). Let\u00e2\u0080\u0099s learn to\r\nrecalculate the answer for edges.First, let\u00e2\u0080\u0099s update the answer for all\r\nthe paths ending in an air travel. Then we can run Dijkstra to take into\r\naccount all the paths ending with a usual edge.In order to add an air\r\ntravel, we need to update the distance to , with all the paths ending\r\nwith an air travel to . To do so, we can use Convex Hull Trick, since\r\nthe recalculation formula has the following form ( array of distances\r\nfor edges, array of distances if the flight goes exactly to the -th\r\nvertex):After that, we need to run Dijkstra to update the distances with\r\nall the paths not ending with an air travel.The resulting asymptotics is\r\n"
+    "editorial": "Letâs assume we know the shortest distances from the first vertex to\r\neach, if we have added no more than edges (air travels). Letâs learn to\r\nrecalculate the answer for edges.First, letâs update the answer for all\r\nthe paths ending in an air travel. Then we can run Dijkstra to take into\r\naccount all the paths ending with a usual edge.In order to add an air\r\ntravel, we need to update the distance to , with all the paths ending\r\nwith an air travel to . To do so, we can use Convex Hull Trick, since\r\nthe recalculation formula has the following form ( array of distances\r\nfor edges, array of distances if the flight goes exactly to the -th\r\nvertex):After that, we need to run Dijkstra to update the distances with\r\nall the paths not ending with an air travel.The resulting asymptotics is\r\n",
+    "hint": [
+        "Hint 1 For every from to find the shortest path from to , ending with an air trip.",
+        "Hint 2 Can you solve the problem for ?",
+        "Hint 3 If you have somehow solved the problem for , how can you solve it for ?"
+    ]
 }

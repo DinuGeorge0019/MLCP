@@ -78,5 +78,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Easter Eggs.json",
     "editorial_link": "https://codeforces.com//blog/entry/1812",
-    "editorial": "At first, you can [n?/?7] times output string \"ROYGBIV\" ([] is a rounding down). After than you can output \"\", \"G\", \"GB\", \"YGB\", \"YGBI\", \"OYGBI\" or \"OYGBIV\" according to remainder of division n by 7. A resulting string will satisfy problem's requirements."
+    "editorial": "At first, you can [n?/?7] times output string \"ROYGBIV\" ([] is a rounding down). After than you can output \"\", \"G\", \"GB\", \"YGB\", \"YGBI\", \"OYGBI\" or \"OYGBIV\" according to remainder of division n by 7. A resulting string will satisfy problem's requirements.",
+    "hint": []
 }

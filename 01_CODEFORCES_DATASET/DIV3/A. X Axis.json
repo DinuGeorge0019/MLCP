@@ -160,7 +160,7 @@
     "name": "A. X Axis",
     "statement": "You are given three points with integer coordinates x_1, x_2, and x_3 on\r\nthe X axis (1\r\nleq x_i\r\nleq 10). You can choose any point with an integer coordinate a on the X\r\naxis. Note that the point a may coincide with x_1, x_2, or x_3. Let f(a)\r\nbe the total distance from the given points to the point a. Find the\r\nsmallest value of f(a).The distance between points a and b is equal to\r\n|a - b|. For example, the distance between points a = 5 and b = 2 is 3.\r\n",
     "solutions": [
-        "#include<bits/stdc++.h>\u00a0#define int long long#define pb push_back#define fi first#define se secondusing namespace std;using ll = long long;using ld = long double;using ull = unsigned long long;mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());const int maxN = 1e6 + 5;const int mod = 1e9 + 7;const ll oo = 1e18;int a, b, c;void ReadInput(){    cin >> a >> b >> c;}void Solve(){    int res = 0;    if(a > b) swap(a, b);    if(a > c) swap(a, c);    if(b > c) swap(b, c);    cout << b - a + c - b << '\\n';}#define taskname \"\"int32_t main(){    if (fopen(taskname \".inp\", \"r\"))    {        freopen(taskname \".inp\", \"r\", stdin);        freopen(taskname \".out\", \"w\", stdout);    }    ios_base::sync_with_stdio(false);    cin.tie(nullptr);    int T = 1;    cin >> T;    for(int itest=1; itest<=T; itest++)    {        ReadInput();        Solve();    }}"
+        "#include<bits/stdc++.h> #define int long long#define pb push_back#define fi first#define se secondusing namespace std;using ll = long long;using ld = long double;using ull = unsigned long long;mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());const int maxN = 1e6 + 5;const int mod = 1e9 + 7;const ll oo = 1e18;int a, b, c;void ReadInput(){    cin >> a >> b >> c;}void Solve(){    int res = 0;    if(a > b) swap(a, b);    if(a > c) swap(a, c);    if(b > c) swap(b, c);    cout << b - a + c - b << '\\n';}#define taskname \"\"int32_t main(){    if (fopen(taskname \".inp\", \"r\"))    {        freopen(taskname \".inp\", \"r\", stdin);        freopen(taskname \".out\", \"w\", stdout);    }    ios_base::sync_with_stdio(false);    cin.tie(nullptr);    int T = 1;    cin >> T;    for(int itest=1; itest<=T; itest++)    {        ReadInput();        Solve();    }}"
     ],
     "input": "",
     "output": "",
@@ -172,5 +172,6 @@
     ],
     "dificulty": "800",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. X Axis.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. X Axis.json",
+    "hint": []
 }

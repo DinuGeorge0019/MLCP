@@ -159,5 +159,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C. Less or Equal.json",
     "editorial_link": "https://codeforces.com//blog/entry/59281",
-    "editorial": "In this problem you can do the following thing: firstly, let\u00e2\u0080\u0099s sort our\r\narray.Let will be the answer. Then you have two cases: if then otherwise\r\n(for 0-indexed array).Then you need to calculate the number of the\r\nelements of the array that are less than or equal to . Let it be . Then\r\nif or then print \"\" otherwise print .\r\n"
+    "editorial": "In this problem you can do the following thing: firstly, letâs sort our\r\narray.Let will be the answer. Then you have two cases: if then otherwise\r\n(for 0-indexed array).Then you need to calculate the number of the\r\nelements of the array that are less than or equal to . Let it be . Then\r\nif or then print \"\" otherwise print .\r\n",
+    "hint": []
 }

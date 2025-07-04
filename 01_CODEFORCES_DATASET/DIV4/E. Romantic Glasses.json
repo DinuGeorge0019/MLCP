@@ -172,5 +172,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\E. Romantic Glasses.json",
     "editorial_link": "https://codeforces.com//blog/entry/123952",
-    "editorial": "Let\u00e2\u0080\u0099s rewrite the given equation: as From here, it\u00e2\u0080\u0099s clear that we need\r\nto find if there is a subarray with equal to .How to check this? Let\u00e2\u0080\u0099s\r\nflip all elements on even indices . Then alternating sums of are the\r\nsame as subarray sums on .So we just need to check if there is a\r\nsubarray with sum . This is a standard problem with prefix sums: if two\r\nprefix sums are equal, then the subarray between them has sum ;\r\notherwise, no subarray has sum .The complexity is or depending on how\r\nyou check if two elements of an array are equal. Be careful about using\r\nhash tables, as they can be hacked.\r\n"
+    "editorial": "Letâs rewrite the given equation: as From here, itâs clear that we need\r\nto find if there is a subarray with equal to .How to check this? Letâs\r\nflip all elements on even indices . Then alternating sums of are the\r\nsame as subarray sums on .So we just need to check if there is a\r\nsubarray with sum . This is a standard problem with prefix sums: if two\r\nprefix sums are equal, then the subarray between them has sum ;\r\notherwise, no subarray has sum .The complexity is or depending on how\r\nyou check if two elements of an array are equal. Be careful about using\r\nhash tables, as they can be hacked.\r\n",
+    "hint": []
 }

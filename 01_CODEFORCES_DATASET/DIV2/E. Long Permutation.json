@@ -144,5 +144,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Long Permutation.json",
     "editorial_link": "https://codeforces.com//blog/entry/84298",
-    "editorial": "Let\u00e2\u0080\u0099s notice that most of the elements in the original permutation will\r\nnot change during all queries. Since the maximum permutation number does\r\nnot exceed , only the last elements of the permutation will change.Thus,\r\nafter each query of the second type, you need to generate a permutation\r\nwith the corresponding number.To answer the query of the first type, you\r\nneed to split the segment into two parts: we sum the part of the segment\r\nthat fell in the last elements in a simple cycle and calculate the other\r\npart of the segment using the formula of an arithmetic progression.\r\n"
+    "editorial": "Letâs notice that most of the elements in the original permutation will\r\nnot change during all queries. Since the maximum permutation number does\r\nnot exceed , only the last elements of the permutation will change.Thus,\r\nafter each query of the second type, you need to generate a permutation\r\nwith the corresponding number.To answer the query of the first type, you\r\nneed to split the segment into two parts: we sum the part of the segment\r\nthat fell in the last elements in a simple cycle and calculate the other\r\npart of the segment using the formula of an arithmetic progression.\r\n",
+    "hint": []
 }

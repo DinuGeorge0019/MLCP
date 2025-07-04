@@ -197,5 +197,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\A. Increasing and Decreasing.json",
     "editorial_link": "https://codeforces.com//blog/entry/119772",
-    "editorial": "TutorialWe use the following greedy construction:For all (), set . If ,\r\nwe\u00e2\u0080\u0099ve found a solution, otherwise there is no solution.Proof. Assume\r\nthere\u00e2\u0080\u0099s a solution which includes an index () such that . We can make\r\nfor all (), where . After several processes like this, we get a solution\r\nthe same as greedy construction gives. This leads to a contradiction.\r\n"
+    "editorial": "TutorialWe use the following greedy construction:For all (), set . If ,\r\nweâve found a solution, otherwise there is no solution.Proof. Assume\r\nthereâs a solution which includes an index () such that . We can make\r\nfor all (), where . After several processes like this, we get a solution\r\nthe same as greedy construction gives. This leads to a contradiction.\r\n",
+    "hint": []
 }

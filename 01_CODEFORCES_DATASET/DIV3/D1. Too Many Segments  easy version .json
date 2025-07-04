@@ -207,5 +207,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\D1. Too Many Segments  easy version .json",
     "editorial_link": "https://codeforces.com//blog/entry/70779",
-    "editorial": "In this problem, the following greedy solution works: let\u00e2\u0080\u0099s find the\r\nleftmost point covered by more than segments. We should fix it somehow.\r\nHow to do it? Let\u00e2\u0080\u0099s find some segment that was not removed already, it\r\ncovers this point and its rightmost end is maximum possible, and remove\r\nthis segment.You can implement it in any time you want, even in naively.\r\n"
+    "editorial": "In this problem, the following greedy solution works: letâs find the\r\nleftmost point covered by more than segments. We should fix it somehow.\r\nHow to do it? Letâs find some segment that was not removed already, it\r\ncovers this point and its rightmost end is maximum possible, and remove\r\nthis segment.You can implement it in any time you want, even in naively.\r\n",
+    "hint": []
 }

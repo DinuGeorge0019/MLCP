@@ -101,7 +101,7 @@
         ]
     },
     "name": "A. Splits",
-    "statement": "Let\u2019s define a split of n as a nonincreasing sequence of positive\r\nintegers, the sum of which is n. For example, the following sequences\r\nare splits of 8: [4, 4], [3, 3, 2], [2, 2, 1, 1, 1, 1], [5, 2, 1].The\r\nfollowing sequences aren\u2019t splits of 8: [1, 7], [5, 4], [11, -3], [1, 1,\r\n4, 1, 1].The weight of a split is the number of elements in the split\r\nthat are equal to the first element. For example, the weight of the\r\nsplit [1, 1, 1, 1, 1] is 5, the weight of the split [5, 5, 3, 3, 3] is 2\r\nand the weight of the split [9] equals 1.For a given n, find out the\r\nnumber of different weights of its splits.\r\n",
+    "statement": "Let’s define a split of n as a nonincreasing sequence of positive\r\nintegers, the sum of which is n. For example, the following sequences\r\nare splits of 8: [4, 4], [3, 3, 2], [2, 2, 1, 1, 1, 1], [5, 2, 1].The\r\nfollowing sequences aren’t splits of 8: [1, 7], [5, 4], [11, -3], [1, 1,\r\n4, 1, 1].The weight of a split is the number of elements in the split\r\nthat are equal to the first element. For example, the weight of the\r\nsplit [1, 1, 1, 1, 1] is 5, the weight of the split [5, 5, 3, 3, 3] is 2\r\nand the weight of the split [9] equals 1.For a given n, find out the\r\nnumber of different weights of its splits.\r\n",
     "solutions": [
         "#include <iostream>\n#include <algorithm>\nusing namespace std;\n\nint main() {\n\tint n;\n\tscanf(\"%d\", &n);\n\tif (n == 1) printf(\"1\\n\");\n\telse if (n == 2) printf(\"2\\n\");\n\telse if (n == 3) printf(\"2\\n\");\n\telse printf(\"%d\\n\", n / 2 + 1);\n\treturn 0;\n}\n"
     ],
@@ -114,5 +114,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Splits.json",
     "editorial_link": "https://codeforces.com//blog/entry/58991",
-    "editorial": "There are 2 cases:If weight of the split equals , then the split consist\r\nof ones. Here we have only 1 option.Else maximum number in the split is\r\nmore then 1. Then we can replace all maximum numbers with twos and the\r\nrest we split into ones and weight will be the same. So, here we have\r\noptions.Answer for this problem is + 1.\r\n"
+    "editorial": "There are 2 cases:If weight of the split equals , then the split consist\r\nof ones. Here we have only 1 option.Else maximum number in the split is\r\nmore then 1. Then we can replace all maximum numbers with twos and the\r\nrest we split into ones and weight will be the same. So, here we have\r\noptions.Answer for this problem is + 1.\r\n",
+    "hint": []
 }

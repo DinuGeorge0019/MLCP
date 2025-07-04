@@ -140,5 +140,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Andryusha and Socks.json",
     "editorial_link": "https://codeforces.com//blog/entry/50854",
-    "editorial": "This is a simple implementation problem. Store an array for whether a\r\nsock of each type is currently on the table, along with the total number\r\nof socks, and the largest number encountered. It is now easy to process\r\nsocks one by one and maintain everything.Complexity: time and memory.\r\n"
+    "editorial": "This is a simple implementation problem. Store an array for whether a\r\nsock of each type is currently on the table, along with the total number\r\nof socks, and the largest number encountered. It is now easy to process\r\nsocks one by one and maintain everything.Complexity: time and memory.\r\n",
+    "hint": []
 }

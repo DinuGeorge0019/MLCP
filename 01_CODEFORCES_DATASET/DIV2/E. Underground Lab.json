@@ -143,5 +143,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Underground Lab.json",
     "editorial_link": "https://codeforces.com//blog/entry/50854",
-    "editorial": "Let's start a DFS at any vertex of the graph, and produce an Euler tour \u0097 the order of vertices visited by a DFS, where each vertex v is written down every time DFS visits it (in particular, when a recursive call made from v terminates). Note that the Euler tour has exactly 2n?-?1 entries in it, hence it would be a correct answer for k?=?1. For a general k, cut the Euler tour into k consecutive pieces of size at most ? 2n?/?k?, and yield it as an answer. Note that each path of the answer has to contain at least one vertex.\n\nComplexity: O(n?+?m) time and memory."
+    "editorial": "Let's start a DFS at any vertex of the graph, and produce an Euler tour  the order of vertices visited by a DFS, where each vertex v is written down every time DFS visits it (in particular, when a recursive call made from v terminates). Note that the Euler tour has exactly 2n?-?1 entries in it, hence it would be a correct answer for k?=?1. For a general k, cut the Euler tour into k consecutive pieces of size at most ? 2n?/?k?, and yield it as an answer. Note that each path of the answer has to contain at least one vertex.\n\nComplexity: O(n?+?m) time and memory.",
+    "hint": []
 }

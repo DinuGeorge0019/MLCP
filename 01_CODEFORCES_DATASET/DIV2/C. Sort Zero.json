@@ -153,5 +153,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Sort Zero.json",
     "editorial_link": "https://codeforces.com//blog/entry/105919",
-    "editorial": "An array is sorted in non-decreasing order if and only if there is no\r\nindex such that . This leads to a strategy: while there is at least one\r\nsuch index , apply one operation with .Why is this optimal? Since our\r\noperation can only decrease values, and we must decrease so that is no\r\nlonger true, this leaves us no choice but to use the operation with .You\r\ncan simulate this strategy by maintaining a set of bad indices, since if\r\nan index becomes bad, after you apply an operation with , it can never\r\nbecome bad again. So in total, there are at most operations with the\r\nset.Complexity: or , depending on which set you use.Note: you can solve\r\nthe problem in by noticing that if an index is bad, we need to apply the\r\noperation for all unique non-zero values in . This is also quite a bit\r\nshorter to code.\r\n"
+    "editorial": "An array is sorted in non-decreasing order if and only if there is no\r\nindex such that . This leads to a strategy: while there is at least one\r\nsuch index , apply one operation with .Why is this optimal? Since our\r\noperation can only decrease values, and we must decrease so that is no\r\nlonger true, this leaves us no choice but to use the operation with .You\r\ncan simulate this strategy by maintaining a set of bad indices, since if\r\nan index becomes bad, after you apply an operation with , it can never\r\nbecome bad again. So in total, there are at most operations with the\r\nset.Complexity: or , depending on which set you use.Note: you can solve\r\nthe problem in by noticing that if an index is bad, we need to apply the\r\noperation for all unique non-zero values in . This is also quite a bit\r\nshorter to code.\r\n",
+    "hint": [
+        "Hint 1 The operation only decreases numbers.",
+        "Hint 2 An array is sorted if there is no index such that .",
+        "Hint 3 Suppose there is an index such that . What operations do you need to perform to make ?"
+    ]
 }

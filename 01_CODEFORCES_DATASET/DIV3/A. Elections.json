@@ -180,5 +180,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Elections.json",
     "editorial_link": "https://codeforces.com//blog/entry/96034",
-    "editorial": "Let\u00e2\u0080\u0099s solve the problem for the first candidate. To win the election, he\r\nneeds to get at least more votes than every other candidate. Therefore,\r\nthe first candidate needs to get at least votes. If is already greater\r\nthan this value, then you don\u00e2\u0080\u0099t need to add any votes, otherwise, you\r\nneed to add votes. So the answer for the first candidate is .Similarly,\r\nthe answer for the second candidate is , and, for the third one, the\r\nanswer is .\r\n"
+    "editorial": "Letâs solve the problem for the first candidate. To win the election, he\r\nneeds to get at least more votes than every other candidate. Therefore,\r\nthe first candidate needs to get at least votes. If is already greater\r\nthan this value, then you donât need to add any votes, otherwise, you\r\nneed to add votes. So the answer for the first candidate is .Similarly,\r\nthe answer for the second candidate is , and, for the third one, the\r\nanswer is .\r\n",
+    "hint": []
 }

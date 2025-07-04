@@ -147,5 +147,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Beautiful Array.json",
     "editorial_link": "https://codeforces.com//blog/entry/104261",
-    "editorial": "To start with, the sum of the numbers in the array cannot be less, than\r\n(where is the number by which we divide, and is beauty ())It is\r\nimportant, that . Let\u00e2\u0080\u0099s assume that is not true. Consider the sum of\r\ndivisible parts of numbers in the array: it obviously does not exceed ,\r\nthus the sum of remainders is at least , which means, that at least one\r\nof the numbers\u00e2\u0080\u0099 remainders is , which is impossible by definition of the\r\nremainder.That way we got the criteria for the existence of the answer:\r\n.If there does exist an answer, then we can use the following algorithm:\r\nAssign to any of the cells of the array. Iterate over all the cells\r\n(including the cell from the previous item) and add to the current cell,\r\nwhere is the current sum of the elements.\r\n"
+    "editorial": "To start with, the sum of the numbers in the array cannot be less, than\r\n(where is the number by which we divide, and is beauty ())It is\r\nimportant, that . Letâs assume that is not true. Consider the sum of\r\ndivisible parts of numbers in the array: it obviously does not exceed ,\r\nthus the sum of remainders is at least , which means, that at least one\r\nof the numbersâ remainders is , which is impossible by definition of the\r\nremainder.That way we got the criteria for the existence of the answer:\r\n.If there does exist an answer, then we can use the following algorithm:\r\nAssign to any of the cells of the array. Iterate over all the cells\r\n(including the cell from the previous item) and add to the current cell,\r\nwhere is the current sum of the elements.\r\n",
+    "hint": [
+        "Hint #1 Greedy.",
+        "Hint #2 What are the limits of with all else being the same? What is the number, which we can always add to a divisible by , to keep the answer the same?",
+        "Hint #3 is at least maximum reminder mod is ."
+    ]
 }

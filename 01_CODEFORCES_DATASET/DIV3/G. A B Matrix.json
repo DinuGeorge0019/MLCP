@@ -166,5 +166,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\G. A B Matrix.json",
     "editorial_link": "https://codeforces.com//blog/entry/77846",
-    "editorial": "Let\u00e2\u0080\u0099s see how the desired matrix looks like. Since each row should have\r\nexactly ones, and each column should have exactly ones, the number of\r\nones in all rows should be equal to the number of ones in all columns .\r\nThus, the desired matrix exists iff or .Let\u00e2\u0080\u0099s show how to construct the\r\ndesired matrix if it exists. Let\u00e2\u0080\u0099s find any number such that , where is\r\nthe remainder of dividing by . In the first row of the desired matrix,\r\nwe put the ones at the positions , and in the -th row we put the ones,\r\nas in the row, but cyclically shifted by to the right.\r\n"
+    "editorial": "Letâs see how the desired matrix looks like. Since each row should have\r\nexactly ones, and each column should have exactly ones, the number of\r\nones in all rows should be equal to the number of ones in all columns .\r\nThus, the desired matrix exists iff or .Letâs show how to construct the\r\ndesired matrix if it exists. Letâs find any number such that , where is\r\nthe remainder of dividing by . In the first row of the desired matrix,\r\nwe put the ones at the positions , and in the -th row we put the ones,\r\nas in the row, but cyclically shifted by to the right.\r\n",
+    "hint": []
 }

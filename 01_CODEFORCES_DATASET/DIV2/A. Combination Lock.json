@@ -114,7 +114,7 @@
         ]
     },
     "name": "A. Combination Lock",
-    "statement": "Scrooge McDuck keeps his most treasured savings in a home safe with a\r\ncombination lock. Each time he wants to put there the treasures that\r\nhe\u2019s earned fair and square, he has to open the lock. The combination\r\nlock is represented by rotating disks with digits from 0 to 9 written on\r\nthem. Scrooge McDuck has to turn some disks so that the combination of\r\ndigits on the disks forms a secret combination. In one move, he can\r\nrotate one disk one digit forwards or backwards. In particular, in one\r\nmove he can go from digit 0 to digit 9 and vice versa. What minimum\r\nnumber of actions does he need for that?\r\n",
+    "statement": "Scrooge McDuck keeps his most treasured savings in a home safe with a\r\ncombination lock. Each time he wants to put there the treasures that\r\nhe’s earned fair and square, he has to open the lock. The combination\r\nlock is represented by rotating disks with digits from 0 to 9 written on\r\nthem. Scrooge McDuck has to turn some disks so that the combination of\r\ndigits on the disks forms a secret combination. In one move, he can\r\nrotate one disk one digit forwards or backwards. In particular, in one\r\nmove he can go from digit 0 to digit 9 and vice versa. What minimum\r\nnumber of actions does he need for that?\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\n#define sz(x) int((x).size())\n\nusing namespace std;\n\ntypedef long long ll;\ntypedef unsigned long long ull;\ntypedef std::pair<int,int> PII;\ntypedef std::pair<ll,ll> PLL;\n\ntemplate<class T> inline T pr(T x) { return --x; }\ntemplate<class T> inline T nx(T x) { return ++x; }\n\nconst int maxn = 1010;\nint n;\nchar a[maxn],b[maxn];\n\nint main() {\n    int i,j,k,t,tt,T,Test;\n    scanf(\"%d\",&n);\n    int ans = 0;\n    scanf(\"%s%s\",a+1,b+1);\n    for (i=1; i<=n; ++i) {\n        t = a[i]-'0'; tt = b[i]-'0';\n        t = abs(t-tt);\n        ans += min(t,10-t);\n    }\n    printf(\"%d\\n\",ans);\n\n    return 0;\n}\n"
     ],
@@ -127,5 +127,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Combination Lock.json",
     "editorial_link": "https://codeforces.com//blog/entry/17643",
-    "editorial": "For every symbol we should determine how to rotate the disk. This can be\r\ndone either by formula: or even by the two for cycles: in both\r\ndirections.\r\n"
+    "editorial": "For every symbol we should determine how to rotate the disk. This can be\r\ndone either by formula: or even by the two for cycles: in both\r\ndirections.\r\n",
+    "hint": []
 }

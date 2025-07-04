@@ -132,5 +132,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Array Without Local Maximums .json",
     "editorial_link": "https://codeforces.com/blog/entry/62688",
-    "editorial": "Let's find solution with complexity O(n?a2)\n. We can count dp[prefix][a][flag]\n \u0097 quantity of ways to restore element from 1\n to pref\n with last element equalls to a\n, flag=0\n means that previous element is less then the last or last element is first, flag=1\n \u0097 the opposite. So dp[pref][a][0]=?a?1i=1(dp[pref?1][i][1]+dp[pref?1][i][0])\n, dp[pref][a][1]=dp[pref?1][a][0]+?200i=adp[pref?1][i][1]\n.\n\nNow let's count prefix_sums[a][flag]=?ai=1dp[pref][i][flag]\n on each prefix before counting all dp[pref]\n, so we can recalculate dp in O(1) time."
+    "editorial": "Let's find solution with complexity O(n?a2)\n. We can count dp[prefix][a][flag]\n  quantity of ways to restore element from 1\n to pref\n with last element equalls to a\n, flag=0\n means that previous element is less then the last or last element is first, flag=1\n  the opposite. So dp[pref][a][0]=?a?1i=1(dp[pref?1][i][1]+dp[pref?1][i][0])\n, dp[pref][a][1]=dp[pref?1][a][0]+?200i=adp[pref?1][i][1]\n.\n\nNow let's count prefix_sums[a][flag]=?ai=1dp[pref][i][flag]\n on each prefix before counting all dp[pref]\n, so we can recalculate dp in O(1) time.",
+    "hint": []
 }

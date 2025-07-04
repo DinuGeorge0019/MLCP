@@ -1,1 +1,104 @@
-{"link": "https://codeforces.com//contest/2103/problem/A", "problemId": "3344319", "problem_idx": "A", "shortId": "2103A", "contest_number": "2103", "problem_submissions": {"E": [316580259, 316596724, 317172040, 316590039, 316595391], "F": [316566749, 316554849, 316570194, 316571690, 316564753, 316565334, 316570375, 316566324, 316575470, 316580599], "D": [316555496, 316575935, 316547933, 316557810, 316581217, 316583504, 316574629, 316579069, 316561467, 316554031, 316570027], "C": [316551349, 316539195, 316536817, 316551152, 316552060, 316551470, 316558008, 316550915, 316554352, 316539931, 316539580], "B": [316531722, 316533206, 316540972, 316534158, 316532366, 316536408, 316536066, 316548057, 316551531, 316531957, 316544497], "A": [316523865, 316526077, 316528063, 316524687, 316526522, 316532444, 316526800, 316525336, 316545204, 316523615, 316541424]}, "editorial_link": "https://codeforces.com//blog/entry/142149", "editorial": "", "name": "A. Common Multiple", "statement": "You are given an array of integers a_1, a_2,\r\nldots, a_n. An array x_1, x_2,\r\nldots, x_m is if there exists an array y_1, y_2,\r\nldots, y_m such that the elements of y are distinct (in other words, y_i\r\nneq y_j for all 1\r\nle i < j\r\nle m), and the product of x_i and y_i is the same for all 1\r\nle i\r\nle m (in other words, x_i\r\ncdot y_i = x_j\r\ncdot y_j for all 1\r\nle i < j\r\nle m).Your task is to determine the maximum size of a subsequence^{\r\ntext{ }} of array a that is beautiful.^{\r\ntext{ }}A sequence b is a subsequence of a sequence a if b can be\r\nobtained from a by the deletion of several (possibly, zero or all)\r\nelement from arbitrary positions.\r\n", "solutions": [], "input": "", "output": "", "tags": ["brute force", "greedy", "implementation", "math"], "dificulty": "800", "interactive": false, "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Common Multiple.json"}
+{
+    "link": "https://codeforces.com//contest/2103/problem/A",
+    "problemId": "3344319",
+    "problem_idx": "A",
+    "shortId": "2103A",
+    "contest_number": "2103",
+    "problem_submissions": {
+        "E": [
+            316580259,
+            316596724,
+            317172040,
+            316590039,
+            316595391
+        ],
+        "F": [
+            316566749,
+            316554849,
+            316570194,
+            316571690,
+            316564753,
+            316565334,
+            316570375,
+            316566324,
+            316575470,
+            316580599
+        ],
+        "D": [
+            316555496,
+            316575935,
+            316547933,
+            316557810,
+            316581217,
+            316583504,
+            316574629,
+            316579069,
+            316561467,
+            316554031,
+            316570027
+        ],
+        "C": [
+            316551349,
+            316539195,
+            316536817,
+            316551152,
+            316552060,
+            316551470,
+            316558008,
+            316550915,
+            316554352,
+            316539931,
+            316539580
+        ],
+        "B": [
+            316531722,
+            316533206,
+            316540972,
+            316534158,
+            316532366,
+            316536408,
+            316536066,
+            316548057,
+            316551531,
+            316531957,
+            316544497
+        ],
+        "A": [
+            316523865,
+            316526077,
+            316528063,
+            316524687,
+            316526522,
+            316532444,
+            316526800,
+            316525336,
+            316545204,
+            316523615,
+            316541424
+        ]
+    },
+    "editorial_link": "https://codeforces.com//blog/entry/142149",
+    "editorial": "SolutionRead the hints.The answer to the problem is the number of\r\ndistinct elements in the array. There are many ways to find it; we will\r\npresent one of the easiest. We will count only the first appearances of\r\nevery value. That means that if array is for example [ , , , , , ], we\r\nwill only count at position , at position and at position . We will not\r\ncount values at positions and , nor the value at position , as they are\r\nnot the first appearance of those values.We will iterate through every\r\nelement in and for an element , check if there exists some such that .\r\nIf we can’t find such , then that means it’s the first appearance of .\r\nWe can do it by having one loop iterate over , and it will have a\r\nvariable that says whether it is the first appearance, originally set to\r\ntrue. Then we will iterate in another loop over all indices and if at\r\nany point , we will set the value of the variable to false. Then we\r\nincrease the count of different values if the variable is still\r\ntrue.Memory complexity is . Time complexity is per testcase giving us a\r\ntotal time complexity of .\r\n",
+    "name": "A. Common Multiple",
+    "statement": "You are given an array of integers a_1, a_2,\r\nldots, a_n. An array x_1, x_2,\r\nldots, x_m is if there exists an array y_1, y_2,\r\nldots, y_m such that the elements of y are distinct (in other words, y_i\r\nneq y_j for all 1\r\nle i < j\r\nle m), and the product of x_i and y_i is the same for all 1\r\nle i\r\nle m (in other words, x_i\r\ncdot y_i = x_j\r\ncdot y_j for all 1\r\nle i < j\r\nle m).Your task is to determine the maximum size of a subsequence^{\r\ntext{ }} of array a that is beautiful.^{\r\ntext{ }}A sequence b is a subsequence of a sequence a if b can be\r\nobtained from a by the deletion of several (possibly, zero or all)\r\nelement from arbitrary positions.\r\n",
+    "solutions": [],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "greedy",
+        "implementation",
+        "math"
+    ],
+    "dificulty": "800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Common Multiple.json",
+    "hint": [
+        "Hint 0 We need to solve the same problem times. We will make use of loops to do so. From now we will focus on solving a problem for one test case, but remember that all of the following will be in a loop.",
+        "Hint 1 So the array is beautiful if there exists an array of distinct elements such that is the same for all . We will try to make the condition into something more understandable. Suppose that the common product is some constant . How can you express each in terms of and ?",
+        "Hint 2 It can be expressed as . If all must be all different, what does that force upon the array for it to be beautiful?",
+        "Hint 3 Let and be indices of two arbitrary elements of . Then for array to be beautiful the following needs to hold: , divide both sides by , as neither nor are , multiply by Therefore, all values of must be distinct. But is it enough just that all values of are distinct? It is, and here is how to easily construct the integer array that satisfies the constraints. Let be the product of all elements of . Then make for all . As all values of are distinct and nonzero, it is guaranteed that all values of will also be distinct.",
+        "Hint 4 The solution is the number of distinct values in . How can we count that?",
+        "Hint 5 We can only count the first appearance of each value. So the problem is now how to check if the appearance of value at some position is indeed the first appearance of ."
+    ]
+}

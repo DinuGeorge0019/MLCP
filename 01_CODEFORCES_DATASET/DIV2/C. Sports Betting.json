@@ -1,1 +1,102 @@
-{"link": "https://codeforces.com//contest/2098/problem/C", "problemId": "3353161", "problem_idx": "C", "shortId": "2098C", "contest_number": "2098", "problem_submissions": {"E": [317320024, 317322204, 317313156, 317321829, 317319668, 317318024, 317438260], "D": [317309574, 317317051, 317313607, 317308210, 317298812, 317311685, 317309218, 317311584, 317309264, 317307368], "C": [317295196, 317296691, 317289274, 317296563, 317290701, 317300783, 317292285, 317291852, 317292763, 317292850, 317292261, 317304345, 317300061, 317294892, 317298246], "B": [317289494, 317313236, 317286412, 317291280, 317285715, 317291349, 317285030, 317287128, 317287700, 317289713, 317283188, 317291016, 317286513, 317290125], "A": [317280615, 317287742, 317281612, 317282607, 317281699, 317303477, 317279602, 317280114, 317281057, 317282638, 317282803, 317280020, 317283173, 317280277, 317286464], "F": [317318369, 317305957, 317319613, 317439057]}, "editorial_link": "https://codeforces.com//blog/entry/142316", "editorial": "", "name": "C. Sports Betting", "statement": "The boarding process for various flights can occur in different ways:\r\neither by or through a . Every day, exactly one flight is made from St.\r\nPetersburg to Minsk, and Vadim decided to demonstrate to the students\r\nthat he always knows in advance how the boarding will take place.Vadim\r\nmade a bet with n students, and with the i-th student, he made a bet on\r\nday a_i. Vadim wins the bet if he correctly predicts the boarding\r\nprocess on both day a_i+1 and day a_i+2.Although Vadim does not know in\r\nadvance how the boarding will occur, he really wants to win the bet with\r\none student and convince him of his predictive abilities. Check if there\r\nexists a strategy for Vadim that allows him to success.\r\n", "solutions": [], "input": "", "output": "", "tags": ["greedy", "math", "sortings"], "dificulty": "1400", "interactive": false, "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Sports Betting.json"}
+{
+    "link": "https://codeforces.com//contest/2098/problem/C",
+    "problemId": "3353161",
+    "problem_idx": "C",
+    "shortId": "2098C",
+    "contest_number": "2098",
+    "problem_submissions": {
+        "E": [
+            317320024,
+            317322204,
+            317313156,
+            317321829,
+            317319668,
+            317318024,
+            317438260
+        ],
+        "D": [
+            317309574,
+            317317051,
+            317313607,
+            317308210,
+            317298812,
+            317311685,
+            317309218,
+            317311584,
+            317309264,
+            317307368
+        ],
+        "C": [
+            317295196,
+            317296691,
+            317289274,
+            317296563,
+            317290701,
+            317300783,
+            317292285,
+            317291852,
+            317292763,
+            317292850,
+            317292261,
+            317304345,
+            317300061,
+            317294892,
+            317298246
+        ],
+        "B": [
+            317289494,
+            317313236,
+            317286412,
+            317291280,
+            317285715,
+            317291349,
+            317285030,
+            317287128,
+            317287700,
+            317289713,
+            317283188,
+            317291016,
+            317286513,
+            317290125
+        ],
+        "A": [
+            317280615,
+            317287742,
+            317281612,
+            317282607,
+            317281699,
+            317303477,
+            317279602,
+            317280114,
+            317281057,
+            317282638,
+            317282803,
+            317280020,
+            317283173,
+            317280277,
+            317286464
+        ],
+        "F": [
+            317318369,
+            317305957,
+            317319613,
+            317439057
+        ]
+    },
+    "editorial_link": "https://codeforces.com//blog/entry/142316",
+    "editorial": null,
+    "name": "C. Sports Betting",
+    "statement": "The boarding process for various flights can occur in different ways:\r\neither by or through a . Every day, exactly one flight is made from St.\r\nPetersburg to Minsk, and Vadim decided to demonstrate to the students\r\nthat he always knows in advance how the boarding will take place.Vadim\r\nmade a bet with n students, and with the i-th student, he made a bet on\r\nday a_i. Vadim wins the bet if he correctly predicts the boarding\r\nprocess on both day a_i+1 and day a_i+2.Although Vadim does not know in\r\nadvance how the boarding will occur, he really wants to win the bet with\r\none student and convince him of his predictive abilities. Check if there\r\nexists a strategy for Vadim that allows him to success.\r\n",
+    "solutions": [],
+    "input": "",
+    "output": "",
+    "tags": [
+        "greedy",
+        "math",
+        "sortings"
+    ],
+    "dificulty": "1400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Sports Betting.json",
+    "hint": []
+}

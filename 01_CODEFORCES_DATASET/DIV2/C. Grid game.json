@@ -99,7 +99,7 @@
     "name": "C. Grid game",
     "statement": "You are given a 4x4 grid. You play a game there is a sequence of tiles,\r\neach of them is either 2x1 or 1x2. Your task is to consequently place\r\nall tiles from the given sequence in the grid. When tile is placed, each\r\ncell which is located in fully occupied row or column is deleted (cells\r\nare deleted at the same time independently). You can place tile in the\r\ngrid at any position, the only condition is that tiles (and tile parts)\r\nshould not overlap. Your goal is to proceed all given figures and avoid\r\ncrossing at any time.\r\n",
     "solutions": [
-        "#include <cstdio>\n#include <cstdlib>\n#include <cstring>\nusing namespace std;\n#define N 1111\nchar t[N];\nint main() {\n    scanf(\"%s\", t+1);\n    int len = strlen(t+1);\n    int state = 0;//0x1\u8868\u793a\u6709\u7ad6\uff0c0x2\u8868\u793a\u6709\u6a2a\u7740\n    for (int i = 1; i <= len; ++i) {\n        int ty = t[i] == '0';\n        //\u7ad6\u7684\u5de6\u4e0a\u89d2\uff0c\u6a2a\u7740\u7684\u53f3\u4e0b\u89d2\n        if (t[i] == '0') {\n            if (state & 0x1) {\n                printf(\"3 1\\n\");\n            }\n            else\n                printf(\"1 1\\n\");\n            state ^= 0x1;\n        }\n        else {\n            if (state & 0x2) {\n                printf(\"4 1\\n\");\n            }\n            else\n                printf(\"4 3\\n\");\n            state ^= 0x2;\n        }\n    }\n    return 0;\n}"
+        "#include <cstdio>\n#include <cstdlib>\n#include <cstring>\nusing namespace std;\n#define N 1111\nchar t[N];\nint main() {\n    scanf(\"%s\", t+1);\n    int len = strlen(t+1);\n    int state = 0;//0x1表示有竖，0x2表示有横着\n    for (int i = 1; i <= len; ++i) {\n        int ty = t[i] == '0';\n        //竖的左上角，横着的右下角\n        if (t[i] == '0') {\n            if (state & 0x1) {\n                printf(\"3 1\\n\");\n            }\n            else\n                printf(\"1 1\\n\");\n            state ^= 0x1;\n        }\n        else {\n            if (state & 0x2) {\n                printf(\"4 1\\n\");\n            }\n            else\n                printf(\"4 3\\n\");\n            state ^= 0x2;\n        }\n    }\n    return 0;\n}"
     ],
     "input": "",
     "output": "",
@@ -111,5 +111,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Grid game.json",
     "editorial_link": "https://codeforces.com//blog/entry/64722",
-    "editorial": "One possible solution is to place vertical tiles into lower-left corner\r\nand place horizontal tiles into upper-right corner.If some tile comes,\r\nbut there is already a tile of the same type, than we will place the new\r\ntile into upper-left corner. So both tiles will be cleared and only\r\nthem.\r\n"
+    "editorial": "One possible solution is to place vertical tiles into lower-left corner\r\nand place horizontal tiles into upper-right corner.If some tile comes,\r\nbut there is already a tile of the same type, than we will place the new\r\ntile into upper-left corner. So both tiles will be cleared and only\r\nthem.\r\n",
+    "hint": []
 }

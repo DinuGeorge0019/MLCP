@@ -119,5 +119,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Alyona and Numbers.json",
     "editorial_link": "https://codeforces.com//blog/entry/45491",
-    "editorial": "Let\u00e2\u0080\u0099s iterate over the first number of the pair, let it be . Then we\r\nneed to count numbers from to with the remainder of dividing equal to 5.\r\nFor example, you can precalc how many numbers from to with every\r\nremainder between and .\r\n"
+    "editorial": "Letâs iterate over the first number of the pair, let it be . Then we\r\nneed to count numbers from to with the remainder of dividing equal to 5.\r\nFor example, you can precalc how many numbers from to with every\r\nremainder between and .\r\n",
+    "hint": []
 }

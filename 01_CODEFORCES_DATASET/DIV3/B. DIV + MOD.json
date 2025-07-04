@@ -164,5 +164,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. DIV + MOD.json",
     "editorial_link": "https://codeforces.com//blog/entry/100712",
-    "editorial": "Consider . Note that is maximal over the entire segment from to , so if\r\nthere is in which gives a greater result, then .Note that numbers from\r\nto that have an incomplete quotient when divided by equal to do not fit\r\nthis condition (and are guaranteed to have a value less than ). And the\r\nnumber : Has the maximum possible remainder ; Has the maximum possible\r\namong numbers less than . So there are two candidates for the answer\r\nthese are and . The second candidate is suitable only if it is at least\r\n. It remains only to compare the values of and select the maximum.\r\n"
+    "editorial": "Consider . Note that is maximal over the entire segment from to , so if\r\nthere is in which gives a greater result, then .Note that numbers from\r\nto that have an incomplete quotient when divided by equal to do not fit\r\nthis condition (and are guaranteed to have a value less than ). And the\r\nnumber : Has the maximum possible remainder ; Has the maximum possible\r\namong numbers less than . So there are two candidates for the answer\r\nthese are and . The second candidate is suitable only if it is at least\r\n. It remains only to compare the values of and select the maximum.\r\n",
+    "hint": []
 }

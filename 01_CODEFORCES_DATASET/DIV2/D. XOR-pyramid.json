@@ -120,5 +120,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. XOR-pyramid.json",
     "editorial_link": "https://codeforces.com//blog/entry/59484",
-    "editorial": "Let's calculate f(a)\n recursively and save arrays from each level of recursion. We get two-dimencional array dp[n][n]\n and dp[n][1]=f(a)\n. Now let's view recursive calculation for f(al\u0085ar)\n. You can see what array of i\n-th level of recursion is dp[i][l\u0085r?i+1]?dp[r?l+1][l]=f(al\u0085ar)\n (numbeer of levels of recursion is length of segment). To calculate maximum of all sub-segments for each segment, replace dp[i][j]\n on max(dp[i][j],dp[i?1][j],dp[i?1][j+1])\n. Now answer of question l,r\n is dp[r?l+1][l]\n. Overall time complexity is O(n2+q)\n."
+    "editorial": "Let's calculate f(a)\n recursively and save arrays from each level of recursion. We get two-dimencional array dp[n][n]\n and dp[n][1]=f(a)\n. Now let's view recursive calculation for f(alar)\n. You can see what array of i\n-th level of recursion is dp[i][lr?i+1]?dp[r?l+1][l]=f(alar)\n (numbeer of levels of recursion is length of segment). To calculate maximum of all sub-segments for each segment, replace dp[i][j]\n on max(dp[i][j],dp[i?1][j],dp[i?1][j+1])\n. Now answer of question l,r\n is dp[r?l+1][l]\n. Overall time complexity is O(n2+q)\n.",
+    "hint": []
 }

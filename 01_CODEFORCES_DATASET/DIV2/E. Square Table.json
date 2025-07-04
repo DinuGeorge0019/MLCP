@@ -95,5 +95,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Square Table.json",
     "editorial_link": "https://codeforces.com//blog/entry/11730",
-    "editorial": "Let's build array of the length n for each n, that the sum of the squares of its elements is the square:\n\nIf n?=?1, then take [1].\nIf n?=?2, then take [3,?4].\nIf n is even, then take .\nIf n is odd, then take .\nWe are given two numbers n and m. Let array a corresponds to n, and array b corresponds to m. The we will build the answer array c as follows cij?=?ai\u00b7bj."
+    "editorial": "Let's build array of the length n for each n, that the sum of the squares of its elements is the square:\n\nIf n?=?1, then take [1].\nIf n?=?2, then take [3,?4].\nIf n is even, then take .\nIf n is odd, then take .\nWe are given two numbers n and m. Let array a corresponds to n, and array b corresponds to m. The we will build the answer array c as follows cij?=?ai·bj.",
+    "hint": []
 }

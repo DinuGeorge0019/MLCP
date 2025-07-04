@@ -165,5 +165,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\D. Buying Shovels.json",
     "editorial_link": "https://codeforces.com//blog/entry/77846",
-    "editorial": "If Polycarp buys packages of shovels and gets exactly shovels in total,\r\nthen , that is, and are divisors of . Then the problem reduces to the\r\nfollowing, you need to find the maximum divisor of the number not\r\ngreater than . To do this, iterate over all the numbers from to\r\ninclusive and check whether is divisible by . If so, then and are both\r\ndivisors of and you can use them to try to improve the answer.\r\n"
+    "editorial": "If Polycarp buys packages of shovels and gets exactly shovels in total,\r\nthen , that is, and are divisors of . Then the problem reduces to the\r\nfollowing, you need to find the maximum divisor of the number not\r\ngreater than . To do this, iterate over all the numbers from to\r\ninclusive and check whether is divisible by . If so, then and are both\r\ndivisors of and you can use them to try to improve the answer.\r\n",
+    "hint": []
 }

@@ -189,7 +189,7 @@
         ]
     },
     "name": "A. Subtraction Game",
-    "statement": "You are given two positive integers, a and b (a < b).For some positive\r\ninteger n, two players will play a game starting with a pile of n\r\nstones. They take turns removing exactly a or exactly b stones from the\r\npile. The player who is unable to make a move loses.Find a positive\r\ninteger n such that the second player to move in this game has a winning\r\nstrategy. This means that no matter what moves the first player makes,\r\nthe second player can carefully choose their moves (possibly depending\r\non the first player\u2019s moves) to ensure they win.\r\n",
+    "statement": "You are given two positive integers, a and b (a < b).For some positive\r\ninteger n, two players will play a game starting with a pile of n\r\nstones. They take turns removing exactly a or exactly b stones from the\r\npile. The player who is unable to make a move loses.Find a positive\r\ninteger n such that the second player to move in this game has a winning\r\nstrategy. This means that no matter what moves the first player makes,\r\nthe second player can carefully choose their moves (possibly depending\r\non the first player’s moves) to ensure they win.\r\n",
     "solutions": [
         "#include <iostream>\n#include <algorithm>\n#include<cmath>\n#include<cstring>\n#include<cstdio>\n#include<cstdlib>\n#include<vector>\n#include<iomanip>\n#include<ctime>\n#include<set>\n#include<map>\n#include<queue>\n#include<stack>\n#include<bitset>\n#include<cassert>\n#define sqr(x) ((x)*(x))\n#define fz1(i,n) for ((i)=1;(i)<=(n);(i)++)\n#define fd1(i,n) for ((i)=(n);(i)>=1;(i)--)\n#define fz0g(i,n) for ((i)=0;(i)<=(n);(i)++)\n#define fd0g(i,n) for ((i)=(n);(i)>=0;(i)--)\n#define fz0k(i,n) for ((i)=0;(i)<(n);(i)++)\n#define fd0k(i,n) for ((i)=(((long long)(n))-1);(i)>=0;(i)--)\n#define fz(i,x,y) for ((i)=(x);(i)<=(y);(i)++)\n#define fd(i,y,x) for ((i)=(y);(i)>=(x);(i)--)\n#define fzin fz1(i,n)\n#define fzim fz1(i,m)\n#define fzjn fz1(j,n)\n#define fzjm fz1(j,m)\n#define ff(c,itr) for (__typeof((c).begin()) itr=(c).begin();itr!=(c).end();++itr)\n#define pb push_back\n#define mk make_pair\n#define rdst(st,len){static char ss[len];scanf(\" %s\",ss);(st)=ss;}\n#define spln(i,n) (i==n?'\\n':' ')\n#define fac_init(n){fac[0]=fac[1]=inv[1]=fi[0]=fi[1]=1;fz(i,2,n){fac[i]=1ll*fac[i-1]*i%mod;inv[i]=1ll*(mod-mod/i)*inv[mod%i]%mod;fi[i]=1ll*fi[i-1]*inv[i]%mod;}}\nusing namespace std;\ntypedef long long i64;\ntypedef long double f80;\ntypedef unsigned int u32;\ntypedef unsigned long long u64;\n//typedef __int128 i128;\n//typedef unsigned __int128 u128;\n#ifndef ONLINE_JUDGE\n\tFILE *___=freopen(\"1.in\",\"r\",stdin);\n#endif\ninline void read(int &x)\n{\n\tchar c;int f=1;\n\twhile(!isdigit(c=getchar()))if(c=='-')f=-1;\n\tx=(c&15);while(isdigit(c=getchar()))x=(x<<1)+(x<<3)+(c&15);\n\tx*=f;\n}\nvoid solve()\n{\n\tint a,b;read(a);read(b);\n\tprintf(\"%d\\n\",a+b);\n}\nint main()\n{\n\tint t;read(t);\n\twhile(t--)solve();\n\treturn 0;\n}"
     ],
@@ -203,5 +203,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\A. Subtraction Game.json",
     "editorial_link": "https://codeforces.com//blog/entry/118128",
-    "editorial": "We present two approaches.If , then works.Else if and , works.Otherwise,\r\nand , so works.Printing works because no matter what move the first\r\nplayer makes, the second player can respond with the opposite move.The\r\ntime complexity is per test case.\r\n"
+    "editorial": "We present two approaches.If , then works.Else if and , works.Otherwise,\r\nand , so works.Printing works because no matter what move the first\r\nplayer makes, the second player can respond with the opposite move.The\r\ntime complexity is per test case.\r\n",
+    "hint": [
+        "Hint 1 There exists a small where the second player can win.",
+        "Hint 2 If , then works."
+    ]
 }

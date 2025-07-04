@@ -110,5 +110,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Eugeny and Array.json",
     "editorial_link": "https://codeforces.com//blog/entry/7560",
-    "editorial": "If the length of the given segment is even and count of 1 in input is not lower then half of the length of the segment and count of -1 in the input is not lower then half of the length of the segment so we have answer 1, otherwise 0.\n"
+    "editorial": "If the length of the given segment is even and count of 1 in input is not lower then half of the length of the segment and count of -1 in the input is not lower then half of the length of the segment so we have answer 1, otherwise 0.\n",
+    "hint": []
 }

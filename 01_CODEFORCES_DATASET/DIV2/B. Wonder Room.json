@@ -111,5 +111,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Wonder Room.json",
     "editorial_link": "https://codeforces.com//blog/entry/13758",
-    "editorial": "Let s assume that . First of all, let s consider the situation when we\r\ncan already accommodate all the students. If then answer is . Otherwise,\r\nwe have to increase one of the walls(maybe, both). Let s do it in the\r\nfollowing way: iterate the size of the smallest wall ( ), after that we\r\ncan calculate the size of another wall as . For all this and if we\r\nchoose such a pair that has the smallest area of a room. Obviously to\r\nundestrand, that there is no point to consider because we can decrease\r\nit and receive room of smaller area when we know that . Complexity:\r\nSolution: 7784788\r\n"
+    "editorial": "Let s assume that . First of all, let s consider the situation when we\r\ncan already accommodate all the students. If then answer is . Otherwise,\r\nwe have to increase one of the walls(maybe, both). Let s do it in the\r\nfollowing way: iterate the size of the smallest wall ( ), after that we\r\ncan calculate the size of another wall as . For all this and if we\r\nchoose such a pair that has the smallest area of a room. Obviously to\r\nundestrand, that there is no point to consider because we can decrease\r\nit and receive room of smaller area when we know that . Complexity:\r\nSolution: 7784788\r\n",
+    "hint": []
 }

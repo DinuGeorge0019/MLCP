@@ -101,7 +101,7 @@
         ]
     },
     "name": "B. Messages",
-    "statement": "There are incoming messages for Vasya. The -th message is going to be\r\nreceived after minutes. Each message has a cost, which equals to\r\ninitially. After being received, the cost of a message decreases by each\r\nminute (it can become negative). Vasya can read any message after\r\nreceiving it at any moment of time. After reading the message, Vasya\u2019s\r\nbank account receives the current cost of this message. Initially,\r\nVasya\u2019s bank account is at .Also, each minute Vasya\u2019s bank account\r\nreceives , where is the amount of received but unread messages.Vasya\u2019s\r\nmessages are very important to him, and because of that he wants to have\r\nall messages read after minutes.Determine the maximum amount of money\r\nVasya\u2019s bank account can hold after minutes.\r\n",
+    "statement": "There are incoming messages for Vasya. The -th message is going to be\r\nreceived after minutes. Each message has a cost, which equals to\r\ninitially. After being received, the cost of a message decreases by each\r\nminute (it can become negative). Vasya can read any message after\r\nreceiving it at any moment of time. After reading the message, Vasya’s\r\nbank account receives the current cost of this message. Initially,\r\nVasya’s bank account is at .Also, each minute Vasya’s bank account\r\nreceives , where is the amount of received but unread messages.Vasya’s\r\nmessages are very important to him, and because of that he wants to have\r\nall messages read after minutes.Determine the maximum amount of money\r\nVasya’s bank account can hold after minutes.\r\n",
     "solutions": [
         "#include <iostream>\n#include <algorithm>\nusing namespace std;\n\nint main() {\n\tint n, A, B, C, T, t;\n\tscanf(\"%d%d%d%d%d\", &n, &A, &B, &C, &T);\n\tlong long ans = 0;\n\tfor (int i = 1; i <= n; i++) {\n\t\tscanf(\"%d\", &t);\n\t\t\n\t\tif (C >= B) {\n\t\t\tans += A + (long long)(T - t) * (C - B);\n\t\t}\n\t\telse ans += A;\n\t}\n\tcout << ans << endl;\n\treturn 0;\n}\n"
     ],
@@ -114,5 +114,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Messages.json",
     "editorial_link": "https://codeforces.com//blog/entry/58991",
-    "editorial": "Adding to account is equivalent to adding to prices of all come, but not\r\nread messages. Then after every minute to every unread messages adds .\r\nIf is positive, then answer is maximum when we read all messages at the\r\ntime . Otherwise we should read every message at the time it comes.\r\n"
+    "editorial": "Adding to account is equivalent to adding to prices of all come, but not\r\nread messages. Then after every minute to every unread messages adds .\r\nIf is positive, then answer is maximum when we read all messages at the\r\ntime . Otherwise we should read every message at the time it comes.\r\n",
+    "hint": []
 }

@@ -155,7 +155,7 @@
         ]
     },
     "name": "A. Binary Decimal",
-    "statement": "Let\u2019s call a number a if it\u2019s a positive integer and all digits in its\r\ndecimal notation are either 0 or 1. For example, 1\r\n,010\r\n,111 is a binary decimal, while 10\r\n,201 and 787\r\n,788 are not.Given a number n, you are asked to represent n as a sum of\r\nsome (not necessarily distinct) binary decimals. Compute the smallest\r\nnumber of binary decimals required for that.\r\n",
+    "statement": "Let’s call a number a if it’s a positive integer and all digits in its\r\ndecimal notation are either 0 or 1. For example, 1\r\n,010\r\n,111 is a binary decimal, while 10\r\n,201 and 787\r\n,788 are not.Given a number n, you are asked to represent n as a sum of\r\nsome (not necessarily distinct) binary decimals. Compute the smallest\r\nnumber of binary decimals required for that.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\n\nusing i64 = long long;\n\nint main() {\n    std::ios::sync_with_stdio(false);\n    std::cin.tie(nullptr);\n    \n    int t;\n    std::cin >> t;\n    while (t--) {\n        int n;\n        std::cin >> n;\n        \n        auto s = std::to_string(n);\n        \n        std::cout << (*std::max_element(s.begin(), s.end()) - '0') << \"\\n\";\n    }\n    \n    return 0;\n}"
     ],
@@ -169,5 +169,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\A. Binary Decimal.json",
     "editorial_link": "https://codeforces.com//blog/entry/92951",
-    "editorial": "Let be the largest decimal digit of .Note that we need at least binary\r\ndecimals to represent as a sum. Indeed, if we only use binary decimals,\r\nno digit of the sum will ever exceed . However, we need at least one\r\ndigit equal to .At the same time, it is easy to construct an answer with\r\nexactly terms. Start with all terms equal to , and consider each digit\r\nseparately. Let the -th digit of be . Pick any terms out of the terms we\r\nhave, and add to their -th digits.Therefore, the answer is .\r\n"
+    "editorial": "Let be the largest decimal digit of .Note that we need at least binary\r\ndecimals to represent as a sum. Indeed, if we only use binary decimals,\r\nno digit of the sum will ever exceed . However, we need at least one\r\ndigit equal to .At the same time, it is easy to construct an answer with\r\nexactly terms. Start with all terms equal to , and consider each digit\r\nseparately. Let the -th digit of be . Pick any terms out of the terms we\r\nhave, and add to their -th digits.Therefore, the answer is .\r\n",
+    "hint": []
 }

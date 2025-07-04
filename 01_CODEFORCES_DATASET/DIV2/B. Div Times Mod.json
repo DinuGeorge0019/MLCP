@@ -132,5 +132,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Div Times Mod.json",
     "editorial_link": "https://codeforces.com//blog/entry/64078",
-    "editorial": "n has to be divisible by p = x\r\nbmod k, which in turn is less than k. We can try all options of p (in\r\nO(p) time), and for suitable options restore x = p\r\ncdot\r\nfrac{n - p}{k}. Choose the smallest possible x. Note that p = 1 always\r\ndivides n, hence at least one option will always be available.\r\n"
+    "editorial": "n has to be divisible by p = x\r\nbmod k, which in turn is less than k. We can try all options of p (in\r\nO(p) time), and for suitable options restore x = p\r\ncdot\r\nfrac{n - p}{k}. Choose the smallest possible x. Note that p = 1 always\r\ndivides n, hence at least one option will always be available.\r\n",
+    "hint": []
 }

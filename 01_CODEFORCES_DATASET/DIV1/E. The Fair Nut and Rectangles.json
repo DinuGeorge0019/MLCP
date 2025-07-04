@@ -142,5 +142,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\E. The Fair Nut and Rectangles.json",
     "editorial_link": "https://codeforces.com/blog/entry/63753?locale=en",
-    "editorial": "Let\u00e2\u0080\u0099s order rectangles by , so will be increasing. If the is increasing,\r\nis decreasing, because there are no nested rectangles. Then lets define\r\nas the maximum value, which can be acheived by choosing some subset of\r\nfirst rectangles which contains the -th rectangle. It can be calculated\r\nby , where is the previous chosen rectangle (we subtract because it is\r\ncommon square of the subset for and -th rectangle). This formula can be\r\noptimized using convex hull trick and calculated in or in if rectangles\r\nare already sorted.\r\n"
+    "editorial": "Letâs order rectangles by , so will be increasing. If the is increasing,\r\nis decreasing, because there are no nested rectangles. Then lets define\r\nas the maximum value, which can be acheived by choosing some subset of\r\nfirst rectangles which contains the -th rectangle. It can be calculated\r\nby , where is the previous chosen rectangle (we subtract because it is\r\ncommon square of the subset for and -th rectangle). This formula can be\r\noptimized using convex hull trick and calculated in or in if rectangles\r\nare already sorted.\r\n",
+    "hint": []
 }

@@ -127,7 +127,7 @@
     "name": "B. Make Majority",
     "statement": "You are given a sequence [a_1,\r\nldots,a_n] where each element a_i is either 0 or 1. You can apply\r\nseveral (possibly zero) operations to the sequence. In each operation,\r\nyou select two integers 1\r\nle l\r\nle r\r\nle |a| (where |a| is the current length of a) and replace [a_l,\r\nldots,a_r] with a single element x, where x is the majority of [a_l,\r\nldots,a_r].Here, the majority of a sequence consisting of 0 and 1 is\r\ndefined as follows: suppose there are c_0 zeros and c_1 ones in the\r\nsequence, respectively. If c_0\r\nge c_1, the majority is 0. If c_0<c_1, the majority is 1. For example,\r\nsuppose a=[1,0,0,0,1,1]. If we select l=1,r=2, the resulting sequence\r\nwill be [0,0,0,1,1]. If we select l=4,r=6, the resulting sequence will\r\nbe [1,0,0,1]. Determine if you can make a=[1] with a finite number of\r\noperations.\r\n",
     "solutions": [
-        "#include <bits/stdc++.h>#define pb push_back#define sz(a) ((int)a.size())#define re return#define all(a) a.begin(),a.end()#define rept(i,a,b) for(int i=(a);i<(b);i++)#define rep(i,a) rept(i,0,a)#define vi vector<int>#define pii pair<int,int>#define F first#define S second#define de(x) cout<<#x<<\"=\"<<x<<\"\\n\";#define int long long#define il inline#define db double#define ld long dbusing namespace std;const int MOD=998244353,INF=1000000000000000000;template<typename T>inline void Mx(T &a,T b){a=max(a,b);}template<typename T>inline void Mi(T &a,T b){a=min(a,b);}void FILEIO(string s){\tfreopen((s+\".in\").c_str(),\"r\",stdin);\tfreopen((s+\".out\").c_str(),\"w\",stdout);}void run(){\tint n;\tstring s;\tcin>>n>>s;\tint c=-(s[0]=='0')-(s[n-1]=='0');\trep(i,n-1)if(s[i]==s[i+1]&&s[i]=='1')c++;\tif(c>=0)cout<<\"Yes\\n\";\telse cout<<\"No\\n\";}signed main(){\tios::sync_with_stdio(0);\tcin.tie(0);cout.tie(0);\tint T=1;\tcin>>T;\twhile(T--)\t\trun();\tre 0;}\u00a0"
+        "#include <bits/stdc++.h>#define pb push_back#define sz(a) ((int)a.size())#define re return#define all(a) a.begin(),a.end()#define rept(i,a,b) for(int i=(a);i<(b);i++)#define rep(i,a) rept(i,0,a)#define vi vector<int>#define pii pair<int,int>#define F first#define S second#define de(x) cout<<#x<<\"=\"<<x<<\"\\n\";#define int long long#define il inline#define db double#define ld long dbusing namespace std;const int MOD=998244353,INF=1000000000000000000;template<typename T>inline void Mx(T &a,T b){a=max(a,b);}template<typename T>inline void Mi(T &a,T b){a=min(a,b);}void FILEIO(string s){\tfreopen((s+\".in\").c_str(),\"r\",stdin);\tfreopen((s+\".out\").c_str(),\"w\",stdout);}void run(){\tint n;\tstring s;\tcin>>n>>s;\tint c=-(s[0]=='0')-(s[n-1]=='0');\trep(i,n-1)if(s[i]==s[i+1]&&s[i]=='1')c++;\tif(c>=0)cout<<\"Yes\\n\";\telse cout<<\"No\\n\";}signed main(){\tios::sync_with_stdio(0);\tcin.tie(0);cout.tie(0);\tint T=1;\tcin>>T;\twhile(T--)\t\trun();\tre 0;} "
     ],
     "input": "",
     "output": "",
@@ -137,5 +137,6 @@
     ],
     "dificulty": "900",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Make Majority.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Make Majority.json",
+    "hint": []
 }

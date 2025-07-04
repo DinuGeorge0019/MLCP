@@ -149,5 +149,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. One and Two.json",
     "editorial_link": "https://codeforces.com//blog/entry/112584",
-    "editorial": "There should be same number of at and .By checking every , we can solve\r\nthe problem at . By sweeping from to , we can solve the problem in . Not\r\ncounting the number of but naively multiplying using sweeping in python\r\nwas accepted since it has time complexity .Checking every and naively\r\nmultiplying solutions are , so those solutions won\u00e2\u0080\u0099t fit in time limit.\r\n"
+    "editorial": "There should be same number of at and .By checking every , we can solve\r\nthe problem at . By sweeping from to , we can solve the problem in . Not\r\ncounting the number of but naively multiplying using sweeping in python\r\nwas accepted since it has time complexity .Checking every and naively\r\nmultiplying solutions are , so those solutions wonât fit in time limit.\r\n",
+    "hint": []
 }

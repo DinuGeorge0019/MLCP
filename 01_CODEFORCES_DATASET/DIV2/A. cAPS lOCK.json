@@ -136,7 +136,7 @@
         ]
     },
     "name": "A. cAPS lOCK",
-    "statement": "wHAT DO WE NEED cAPS LOCK FOR?Caps lock is a computer keyboard key.\r\nPressing it sets an input mode in which typed letters are capital by\r\ndefault. If it is pressed by accident, it leads to accidents like the\r\none we had in the first passage. Let\u2019s consider that a word has been\r\ntyped with the Caps lock key accidentally switched on, if: either it\r\nonly contains uppercase letters; or all letters except for the first one\r\nare uppercase. In this case we should automatically change the case of\r\nall letters. For example, the case of the letters that form words \"\",\r\n\"\", \"\" should be changed.Write a program that applies the rule mentioned\r\nabove. If the rule cannot be applied, the program should leave the word\r\nunchanged.\r\n",
+    "statement": "wHAT DO WE NEED cAPS LOCK FOR?Caps lock is a computer keyboard key.\r\nPressing it sets an input mode in which typed letters are capital by\r\ndefault. If it is pressed by accident, it leads to accidents like the\r\none we had in the first passage. Let’s consider that a word has been\r\ntyped with the Caps lock key accidentally switched on, if: either it\r\nonly contains uppercase letters; or all letters except for the first one\r\nare uppercase. In this case we should automatically change the case of\r\nall letters. For example, the case of the letters that form words \"\",\r\n\"\", \"\" should be changed.Write a program that applies the rule mentioned\r\nabove. If the rule cannot be applied, the program should leave the word\r\nunchanged.\r\n",
     "solutions": [
         "#include <cstdio>\n#include <cstring>\n#include <cctype>\nchar s[110];\nint main()\n{\n    scanf(\"%s\",s);\n    int n=strlen(s),sum=0;\n    for (int i=0;i<n;i++)\n        if (isupper(s[i]))\n            sum++;\n    if (sum==n || sum==n-1 && islower(s[0]))\n        for (int i=0;i<n;i++)\n            if (isupper(s[i]))\n                s[i]=tolower(s[i]);\n            else\n                s[i]=toupper(s[i]);\n    printf(\"%s\\n\",s);\n    return(0);\n}\n"
     ],
@@ -150,5 +150,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. cAPS lOCK.json",
     "editorial_link": "https://codeforces.com//blog/entry/3256",
-    "editorial": "Just do what the statement asks you to. Check if all letters are uppercase, except for the first one, that you don't need to check. If so, change the case of the entire string. If not, do nothing. Please notice that an one-letter string must have its case changed.\n\nIt can be easly done in O(n), where n is the lenght of the string."
+    "editorial": "Just do what the statement asks you to. Check if all letters are uppercase, except for the first one, that you don't need to check. If so, change the case of the entire string. If not, do nothing. Please notice that an one-letter string must have its case changed.\n\nIt can be easly done in O(n), where n is the lenght of the string.",
+    "hint": []
 }

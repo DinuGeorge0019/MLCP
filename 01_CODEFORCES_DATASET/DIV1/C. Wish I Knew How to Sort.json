@@ -165,5 +165,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Wish I Knew How to Sort.json",
     "editorial_link": "https://codeforces.com//blog/entry/108336",
-    "editorial": "Let the number of zeros in the array be . Let be the expected number of\r\nswaps needed when there are zeros in the first positions. Then, we know\r\nthat , and we can write down the recurrence equations for by considering\r\nthe case where some element equals to one from the first positions and\r\nsome element equals to zero from the last positions are swapped.This is\r\nthe only case where the value will change. Thus, our recurrence is as\r\nfollows.Let . Then .The answer is , where is the initial number of zeros\r\nin the first positions.\r\n"
+    "editorial": "Let the number of zeros in the array be . Let be the expected number of\r\nswaps needed when there are zeros in the first positions. Then, we know\r\nthat , and we can write down the recurrence equations for by considering\r\nthe case where some element equals to one from the first positions and\r\nsome element equals to zero from the last positions are swapped.This is\r\nthe only case where the value will change. Thus, our recurrence is as\r\nfollows.Let . Then .The answer is , where is the initial number of zeros\r\nin the first positions.\r\n",
+    "hint": []
 }

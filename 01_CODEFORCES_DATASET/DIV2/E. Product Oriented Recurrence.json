@@ -131,5 +131,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Product Oriented Recurrence.json",
     "editorial_link": "https://codeforces.com//blog/entry/67614",
-    "editorial": "You can form the expression into this;Let \u00e2\u0080\u0099s -occurrence for prime\r\nnumber . For example, so \u00e2\u0080\u0099s -occurrence is .Then we can set the formula\r\nand calculate using matrix exponentiation. Since all different prime\r\nnumbers share same matrix, we can calculate matrix only once. And we\r\nhave less or equal than 36 distinct prime numbers targeted because you\r\ncannot get more than distinct prime numbers by prime decomposition from\r\nnumbers in range .With we can calculate , and we can calculate using\r\nmodulo inverse.Time complexity is .\r\n"
+    "editorial": "You can form the expression into this;Let âs -occurrence for prime\r\nnumber . For example, so âs -occurrence is .Then we can set the formula\r\nand calculate using matrix exponentiation. Since all different prime\r\nnumbers share same matrix, we can calculate matrix only once. And we\r\nhave less or equal than 36 distinct prime numbers targeted because you\r\ncannot get more than distinct prime numbers by prime decomposition from\r\nnumbers in range .With we can calculate , and we can calculate using\r\nmodulo inverse.Time complexity is .\r\n",
+    "hint": []
 }

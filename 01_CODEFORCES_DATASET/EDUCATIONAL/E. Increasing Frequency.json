@@ -165,5 +165,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\E. Increasing Frequency.json",
     "editorial_link": "https://codeforces.com/blog/entry/63544",
-    "editorial": "Let be a number of occurrences of number in subsegment .The given task\r\nis equivalent to choosing and value such that is maximum possible. But\r\nwith some transformations so we need to maximize .Key observation is the\r\nnext: if we fix some value then we can shrink each segment between\r\nconsecutive occurrences of in one element with weight equal to . Then we\r\nneed just to find subsegment with maximal sum the standard task which\r\ncan be solved in .Finally, total complexity is .\r\n"
+    "editorial": "Let be a number of occurrences of number in subsegment .The given task\r\nis equivalent to choosing and value such that is maximum possible. But\r\nwith some transformations so we need to maximize .Key observation is the\r\nnext: if we fix some value then we can shrink each segment between\r\nconsecutive occurrences of in one element with weight equal to . Then we\r\nneed just to find subsegment with maximal sum the standard task which\r\ncan be solved in .Finally, total complexity is .\r\n",
+    "hint": []
 }

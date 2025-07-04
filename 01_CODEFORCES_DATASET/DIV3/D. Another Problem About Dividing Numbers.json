@@ -173,5 +173,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\D. Another Problem About Dividing Numbers.json",
     "editorial_link": "https://codeforces.com//blog/entry/91637",
-    "editorial": "Let\u00e2\u0080\u0099s denote for the maximum number of moves for which the numbers and\r\ncan be made equal. It is easy to understand that the number of moves is\r\nmaximum when and each time we divided or by a prime number. That is, sum\r\nof exponents of prime divisors of sum of exponents of prime divisors of\r\n.Let\u00e2\u0080\u0099s denote by the minimum number of moves for which the numbers and\r\ncan be made equal. Consider a few cases: If , then ; If or , then ;\r\nOtherwise, then . Then, the answer \"\" is possible in the following\r\ncases: and and , or, and .\r\n"
+    "editorial": "Letâs denote for the maximum number of moves for which the numbers and\r\ncan be made equal. It is easy to understand that the number of moves is\r\nmaximum when and each time we divided or by a prime number. That is, sum\r\nof exponents of prime divisors of sum of exponents of prime divisors of\r\n.Letâs denote by the minimum number of moves for which the numbers and\r\ncan be made equal. Consider a few cases: If , then ; If or , then ;\r\nOtherwise, then . Then, the answer \"\" is possible in the following\r\ncases: and and , or, and .\r\n",
+    "hint": []
 }

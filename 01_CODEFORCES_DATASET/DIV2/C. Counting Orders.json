@@ -133,5 +133,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Counting Orders.json",
     "editorial_link": "https://codeforces.com//blog/entry/116109",
-    "editorial": "First, we can sort the array b\n, as it does not change the answer.\n\nLet's try to choose the values of a\n from an\n to a1\n. How many ways are there to choose the value of ai\n?\n\nThe new ai\n must satisfies ai>bi\n. But some of the candidates are already chosen as aj\n for some j>i\n. However, since aj>bj?bi\n, we know that there are exactly (n?i)\n candidates already chosen previously by all values of j>i\n. So, there are (number of k\n such that ak>bi\n) ?(n?i)\n ways to choose the value of ai\n.\n\nWe can use two pointers or binary search to efficiently find the (number of k\n such that ak>bi\n) for all i\n.\n\nTime complexity: O(nlogn)\n."
+    "editorial": "First, we can sort the array b\n, as it does not change the answer.\n\nLet's try to choose the values of a\n from an\n to a1\n. How many ways are there to choose the value of ai\n?\n\nThe new ai\n must satisfies ai>bi\n. But some of the candidates are already chosen as aj\n for some j>i\n. However, since aj>bj?bi\n, we know that there are exactly (n?i)\n candidates already chosen previously by all values of j>i\n. So, there are (number of k\n such that ak>bi\n) ?(n?i)\n ways to choose the value of ai\n.\n\nWe can use two pointers or binary search to efficiently find the (number of k\n such that ak>bi\n) for all i\n.\n\nTime complexity: O(nlogn)\n.",
+    "hint": []
 }

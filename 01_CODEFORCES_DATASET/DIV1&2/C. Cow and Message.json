@@ -184,5 +184,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\C. Cow and Message.json",
     "editorial_link": "https://codeforces.com//blog/entry/73953",
-    "editorial": "We observe that if the hidden string that occurs the most times has\r\nlength longer than , then there must exist one that occurs just as many\r\ntimes of length exactly . This is true because we can always just take\r\nthe first letters; there can\u00e2\u0080\u0099t be any collisions. Therefore, we only\r\nneed to check strings of lengths and . Checking strings of length is\r\neasy. To check strings of length , we can iterate across from left to\r\nright and update the number of times we have seen each string of length\r\nand using DP.Time Complexity: (c is length of alphabet)\r\n"
+    "editorial": "We observe that if the hidden string that occurs the most times has\r\nlength longer than , then there must exist one that occurs just as many\r\ntimes of length exactly . This is true because we can always just take\r\nthe first letters; there canât be any collisions. Therefore, we only\r\nneed to check strings of lengths and . Checking strings of length is\r\neasy. To check strings of length , we can iterate across from left to\r\nright and update the number of times we have seen each string of length\r\nand using DP.Time Complexity: (c is length of alphabet)\r\n",
+    "hint": []
 }

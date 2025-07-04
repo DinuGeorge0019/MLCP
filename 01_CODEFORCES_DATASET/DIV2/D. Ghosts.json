@@ -114,5 +114,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Ghosts.json",
     "editorial_link": "https://codeforces.com//blog/entry/59202",
-    "editorial": "The condition for two points to meet in a moment of time T is for them\r\nto have the same X coordinates and the same Y coordinates. Time when\r\nthey have the same X coordinates is So should beTime when they will meet\r\non Y axisIn order for them to collide so soSo Meaning that all ghosts\r\nwith the same will collide except if they were parallel.the answer is\r\ntwo times the number of collisions.\r\n"
+    "editorial": "The condition for two points to meet in a moment of time T is for them\r\nto have the same X coordinates and the same Y coordinates. Time when\r\nthey have the same X coordinates is So should beTime when they will meet\r\non Y axisIn order for them to collide so soSo Meaning that all ghosts\r\nwith the same will collide except if they were parallel.the answer is\r\ntwo times the number of collisions.\r\n",
+    "hint": []
 }

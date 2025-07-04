@@ -244,5 +244,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\F. Piet s Palette.json",
     "editorial_link": "https://codeforces.com//blog/entry/76819",
-    "editorial": "Equate an empty cell with the color white, and let\u00e2\u0080\u0099s represent the\r\ncolors as 0/1 vectors: Under this representation, mixing becomes\r\naddition . And the operations , , are linear transformations of the\r\ncolors. That is, each of these operations is equivalent to multiplying\r\nthe corresponding matrix by a cell\u00e2\u0080\u0099s vector: We simply have a system of\r\nlinear equations on unknowns, which we can solve with Gaussian\r\nelimination using bitsets.Complexity is\r\n"
+    "editorial": "Equate an empty cell with the color white, and letâs represent the\r\ncolors as 0/1 vectors: Under this representation, mixing becomes\r\naddition . And the operations , , are linear transformations of the\r\ncolors. That is, each of these operations is equivalent to multiplying\r\nthe corresponding matrix by a cellâs vector: We simply have a system of\r\nlinear equations on unknowns, which we can solve with Gaussian\r\nelimination using bitsets.Complexity is\r\n",
+    "hint": []
 }

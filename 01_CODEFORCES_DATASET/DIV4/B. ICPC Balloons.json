@@ -169,5 +169,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\B. ICPC Balloons.json",
     "editorial_link": "https://codeforces.com//blog/entry/104786",
-    "editorial": "Let\u00e2\u0080\u0099s keep an array of booleans, denoting whether or not some team has\r\nsolved the th problem already. Now we can iterate through the string\r\nfrom left to right and keep a running total . If is true (the -th\r\nproblem has already been solved), increase by ; otherwise, increase by\r\nand set to true.The time complexity is .Bonus: the answer is always .\r\nCan you see why?\r\n"
+    "editorial": "Letâs keep an array of booleans, denoting whether or not some team has\r\nsolved the th problem already. Now we can iterate through the string\r\nfrom left to right and keep a running total . If is true (the -th\r\nproblem has already been solved), increase by ; otherwise, increase by\r\nand set to true.The time complexity is .Bonus: the answer is always .\r\nCan you see why?\r\n",
+    "hint": []
 }

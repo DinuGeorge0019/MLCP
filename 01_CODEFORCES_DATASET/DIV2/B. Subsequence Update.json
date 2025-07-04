@@ -169,5 +169,8 @@
     ],
     "dificulty": "",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Subsequence Update.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Subsequence Update.json",
+    "hint": [
+        "Hint Assume that you chose some two indices and included in the subsequence, such that and . Does this actually help decrease the answer in any way?"
+    ]
 }

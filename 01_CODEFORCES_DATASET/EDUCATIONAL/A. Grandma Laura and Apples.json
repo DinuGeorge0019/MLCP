@@ -140,5 +140,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Grandma Laura and Apples.json",
     "editorial_link": "https://codeforces.com//blog/entry/43493",
-    "editorial": "The problem was suggested by unprost. Consider the process from the end.\r\nThe last buyer will always buy a half of an apple and get a half for\r\nfree (so the last string always is halfplus). After that each buyer\r\nincreases the number of apples twice and also maybe by one. So we simply\r\nhave the binary presentation of the number of apples from the end. To\r\ncalculate the answer we should simply restore that value from the end\r\nand also calculate the total money grandma should have. ++ solution by\r\nme. ++ solution by unprost. Complexity: .\r\n"
+    "editorial": "The problem was suggested by unprost. Consider the process from the end.\r\nThe last buyer will always buy a half of an apple and get a half for\r\nfree (so the last string always is halfplus). After that each buyer\r\nincreases the number of apples twice and also maybe by one. So we simply\r\nhave the binary presentation of the number of apples from the end. To\r\ncalculate the answer we should simply restore that value from the end\r\nand also calculate the total money grandma should have. ++ solution by\r\nme. ++ solution by unprost. Complexity: .\r\n",
+    "hint": []
 }

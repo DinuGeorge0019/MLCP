@@ -103,5 +103,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Turn the Rectangles.json",
     "editorial_link": "https://codeforces.com//blog/entry/60572",
-    "editorial": "You need to iterate over the rectangles from left to right and turn each\r\nrectangle in such a way that its height is as big as possible but not\r\ngreater than the height of the previous rectangle (if it\u00e2\u0080\u0099s not the first\r\none). If on some iteration there is no such way to place the rectangle,\r\nthe answer is \"\".\r\n"
+    "editorial": "You need to iterate over the rectangles from left to right and turn each\r\nrectangle in such a way that its height is as big as possible but not\r\ngreater than the height of the previous rectangle (if itâs not the first\r\none). If on some iteration there is no such way to place the rectangle,\r\nthe answer is \"\".\r\n",
+    "hint": []
 }

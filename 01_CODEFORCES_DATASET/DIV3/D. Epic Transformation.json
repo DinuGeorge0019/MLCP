@@ -171,5 +171,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\D. Epic Transformation.json",
     "editorial_link": "https://codeforces.com//blog/entry/89007",
-    "editorial": "Let\u00e2\u0080\u0099s replace each character with the number of its occurrences in the\r\nstring. Then each operation take two non-zero numbers and subtract one\r\nfrom them. In the end, we will have only one non-zero number left, and\r\nwe want to minimize it. We can say that we want to minimize the maximum\r\nnumber after applying all the operations, which means we want to\r\nminimize the maximum number at each step.We get the following greedy\r\nsolution each time we take two characters with maximal occurrences\r\nnumber and delete them.\r\n"
+    "editorial": "Letâs replace each character with the number of its occurrences in the\r\nstring. Then each operation take two non-zero numbers and subtract one\r\nfrom them. In the end, we will have only one non-zero number left, and\r\nwe want to minimize it. We can say that we want to minimize the maximum\r\nnumber after applying all the operations, which means we want to\r\nminimize the maximum number at each step.We get the following greedy\r\nsolution each time we take two characters with maximal occurrences\r\nnumber and delete them.\r\n",
+    "hint": []
 }

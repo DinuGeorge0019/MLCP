@@ -86,7 +86,7 @@
         ]
     },
     "name": "A. Ciel and Dancing",
-    "statement": "Fox Ciel and her friends are in a dancing room. There are boys and girls\r\nhere, and they never danced before. There will be some songs, during\r\neach song, there must be exactly one boy and one girl are dancing.\r\nBesides, there is a special rule: either the boy in the dancing pair\r\nmust dance for the first time (so, he didn\u2019t dance with anyone before);\r\nor the girl in the dancing pair must dance for the first time. Help Fox\r\nCiel to make a schedule that they can dance as many songs as possible.\r\n",
+    "statement": "Fox Ciel and her friends are in a dancing room. There are boys and girls\r\nhere, and they never danced before. There will be some songs, during\r\neach song, there must be exactly one boy and one girl are dancing.\r\nBesides, there is a special rule: either the boy in the dancing pair\r\nmust dance for the first time (so, he didn’t dance with anyone before);\r\nor the girl in the dancing pair must dance for the first time. Help Fox\r\nCiel to make a schedule that they can dance as many songs as possible.\r\n",
     "solutions": [
         "#include<cstdio>\n#include<iostream>\n#include<queue>\n#include<map>\n#include<set>\n#include<algorithm>\n#include<cmath>\n#include<cstdlib>\nusing namespace std;\n\n#define inf 1023456789\n#define linf 1023456789123456789ll\n#define pii pair<int,int>\n#define pipii pair<int, pii >\n#define pll pair<long long,long long>\n#define vint vector<int>\n#define vvint vector<vector<int> >\n\n#define DEBUG\n#ifdef DEBUG\n#define db(x) cerr << #x << \" = \" << x << endl\n#else\n#define db(x)\n#endif\n\nint main()\n{\n\tint n,m;\n\tscanf(\"%d %d\",&n,&m);\n\tprintf(\"%d\\n\",n+m-1);\n\tfor(int i=1; i<=n; i++)printf(\"%d 1\\n\",i);\n\tfor(int i=2; i<=m; i++)printf(\"1 %d\\n\",i);\n\treturn 0;\n}"
     ],
@@ -99,5 +99,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Ciel and Dancing.json",
     "editorial_link": "https://codeforces.com//blog/entry/8192",
-    "editorial": "Let\u00e2\u0080\u0099s define remainNew = of people haven\u00e2\u0080\u0099t danced before. So at\r\nbeginning remainNew = n+m, and we have: And it\u00e2\u0080\u0099s not hard to construct\r\none schedule get this maximal possible answer:\r\n"
+    "editorial": "Letâs define remainNew = of people havenât danced before. So at\r\nbeginning remainNew = n+m, and we have: And itâs not hard to construct\r\none schedule get this maximal possible answer:\r\n",
+    "hint": []
 }

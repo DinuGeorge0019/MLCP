@@ -156,5 +156,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Polycarp and Sums of Subsequences.json",
     "editorial_link": "https://codeforces.com//blog/entry/97927",
-    "editorial": "The order of elements in doesn\u00e2\u0080\u0099t matter. If there is at least one\r\ncorrect array , then we can sort it and get the answer in which .\r\nTherefore, we can always find a sorted array. Suppose that . Then , , .\r\nWe can find as .\r\n"
+    "editorial": "The order of elements in doesnât matter. If there is at least one\r\ncorrect array , then we can sort it and get the answer in which .\r\nTherefore, we can always find a sorted array. Suppose that . Then , , .\r\nWe can find as .\r\n",
+    "hint": []
 }

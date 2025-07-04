@@ -133,5 +133,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Underground Lab.json",
     "editorial_link": "https://codeforces.com//blog/entry/50854",
-    "editorial": "Let\u00e2\u0080\u0099s start a DFS at any vertex of the graph, and produce an Euler tour\r\nthe order of vertices visited by a DFS, where each vertex is written\r\ndown every time DFS visits it (in particular, when a recursive call made\r\nfrom terminates). Note that the Euler tour has exactly entries in it,\r\nhence it would be a correct answer for . For a general , cut the Euler\r\ntour into consecutive pieces of size at most , and yield it as an\r\nanswer. Note that each path of the answer has to contain at least one\r\nvertex.Complexity: time and memory.\r\n"
+    "editorial": "Letâs start a DFS at any vertex of the graph, and produce an Euler tour\r\nthe order of vertices visited by a DFS, where each vertex is written\r\ndown every time DFS visits it (in particular, when a recursive call made\r\nfrom terminates). Note that the Euler tour has exactly entries in it,\r\nhence it would be a correct answer for . For a general , cut the Euler\r\ntour into consecutive pieces of size at most , and yield it as an\r\nanswer. Note that each path of the answer has to contain at least one\r\nvertex.Complexity: time and memory.\r\n",
+    "hint": []
 }

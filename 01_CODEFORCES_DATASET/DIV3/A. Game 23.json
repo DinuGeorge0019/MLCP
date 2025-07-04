@@ -162,7 +162,7 @@
         ]
     },
     "name": "A. Game 23",
-    "statement": "Polycarp plays \"Game 23\". Initially he has a number n and his goal is to\r\ntransform it to m. In one move, he can multiply n by 2 or multiply n by\r\n3. He can perform any number of moves.Print the number of moves needed\r\nto transform n to m. Print if it is impossible to do so.It is easy to\r\nprove that any way to transform n to m contains the same number of moves\r\n(i.e. number of moves doesn\u2019t depend on the way of transformation).\r\n",
+    "statement": "Polycarp plays \"Game 23\". Initially he has a number n and his goal is to\r\ntransform it to m. In one move, he can multiply n by 2 or multiply n by\r\n3. He can perform any number of moves.Print the number of moves needed\r\nto transform n to m. Print if it is impossible to do so.It is easy to\r\nprove that any way to transform n to m contains the same number of moves\r\n(i.e. number of moves doesn’t depend on the way of transformation).\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\n\n#define ll long long\n#define pb push_back\n\nusing namespace std;\n\nint main()\n{\n    ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);\n\n    ll n, m;\n    cin >> n >> m;\n\n    ll ans = 0;\n\n    if(m % n != 0){\n        cout << -1;\n        return 0;\n    }\n    else{\n        m /= n;\n        while(m % 3 == 0){\n            m /= 3;\n            ans++;\n        }\n        while(m % 2 == 0){\n            m /= 2;\n            ans++;\n        }\n        if(m == 1){\n            cout << ans;\n        }\n        else{\n            cout << -1;\n        }\n    }\n\n    return 0;\n}\n"
     ],
@@ -176,5 +176,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Game 23.json",
     "editorial_link": "https://codeforces.com//blog/entry/66062",
-    "editorial": "If is not divisible by then just print and stop the program. Otherwise,\r\ncalculate , denoting the required number of times to multiply . It is\r\neasy to see that should be a product of zero or more \u00e2\u0080\u0099s and of zero or\r\nmore \u00e2\u0080\u0099s, i.e. for integers . To find just use a loop to divide by while\r\nit is divisible by . Similarly, to find just use a loop to divide by\r\nwhile it is divisible by . After the divisions, the expected value of is\r\n. If , print . Otherwise, print the total number of the loop iterations.\r\n"
+    "editorial": "If is not divisible by then just print and stop the program. Otherwise,\r\ncalculate , denoting the required number of times to multiply . It is\r\neasy to see that should be a product of zero or more âs and of zero or\r\nmore âs, i.e. for integers . To find just use a loop to divide by while\r\nit is divisible by . Similarly, to find just use a loop to divide by\r\nwhile it is divisible by . After the divisions, the expected value of is\r\n. If , print . Otherwise, print the total number of the loop iterations.\r\n",
+    "hint": []
 }

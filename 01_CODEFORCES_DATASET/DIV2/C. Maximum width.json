@@ -150,5 +150,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Maximum width.json",
     "editorial_link": "https://codeforces.com//blog/entry/87792",
-    "editorial": "For some subsequence of the string , let denote the position of the\r\ncharacter in the string . For fixed , we can find a subsequence that\r\nmaximizes . Let and be the minimum and maximum possible value of among\r\nall valid s. Now, it is easy to see that the maximum possible value of\r\nis equal to . To calculate we just need to find the first element after\r\nwhich is equal to . This can be done by a simple greedy or dp algorithm.\r\ncan be found in the same way. So, after finding and , the answer is\r\n.Complexity: .\r\n"
+    "editorial": "For some subsequence of the string , let denote the position of the\r\ncharacter in the string . For fixed , we can find a subsequence that\r\nmaximizes . Let and be the minimum and maximum possible value of among\r\nall valid s. Now, it is easy to see that the maximum possible value of\r\nis equal to . To calculate we just need to find the first element after\r\nwhich is equal to . This can be done by a simple greedy or dp algorithm.\r\ncan be found in the same way. So, after finding and , the answer is\r\n.Complexity: .\r\n",
+    "hint": []
 }

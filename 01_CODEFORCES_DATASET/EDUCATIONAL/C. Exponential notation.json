@@ -137,5 +137,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\C. Exponential notation.json",
     "editorial_link": "https://codeforces.com//blog/entry/46075",
-    "editorial": "The problem was suggsted by user blowUpTheStonySilence. This is an\r\nimplementation problem. You should do exactly what is written in the\r\nproblem statement. On my mind the simplest way is to find the position\r\nof the first not zero digit and the position of the dot. The difference\r\nbetween that positions is the value of (if the value is positive you\r\nshould also decrease it by one). C++ solution\r\n"
+    "editorial": "The problem was suggsted by user blowUpTheStonySilence. This is an\r\nimplementation problem. You should do exactly what is written in the\r\nproblem statement. On my mind the simplest way is to find the position\r\nof the first not zero digit and the position of the dot. The difference\r\nbetween that positions is the value of (if the value is positive you\r\nshould also decrease it by one). C++ solution\r\n",
+    "hint": []
 }

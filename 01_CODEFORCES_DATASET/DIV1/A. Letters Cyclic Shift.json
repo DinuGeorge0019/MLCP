@@ -93,7 +93,7 @@
         ]
     },
     "name": "A. Letters Cyclic Shift",
-    "statement": "You are given a non-empty string consisting of lowercase English\r\nletters. You have to pick of and shift all its letters \u201d \u201d \u201d \u201d \u201d \u201d. In\r\nother words, each character is replaced with the previous character of\r\nEnglish alphabet and \u201d is replaced with \u201d.What is the lexicographically\r\nminimum string that can be obtained from by performing this shift\r\nexactly once?\r\n",
+    "statement": "You are given a non-empty string consisting of lowercase English\r\nletters. You have to pick of and shift all its letters ” ” ” ” ” ”. In\r\nother words, each character is replaced with the previous character of\r\nEnglish alphabet and ” is replaced with ”.What is the lexicographically\r\nminimum string that can be obtained from by performing this shift\r\nexactly once?\r\n",
     "solutions": [
         "#include <iostream>\n#include <cstdio>\n#include <cstdlib>\n#include <cstring>\nusing namespace std;\n\nconst int N = 100100;\nint n;\nchar s[N];\n\nint main()\n{\n//\tfreopen(\"input.txt\", \"r\", stdin);\n//\tfreopen(\"output.txt\", \"w\", stdout);\n\n\tscanf(\" %s \", s);\n\tn = strlen(s);\n\tint l = 0;\n\twhile(l < n && s[l] == 'a') l++;\n\tif (l == n)\n\t{\n\t\ts[n - 1] = 'z';\n\t\tprintf(\"%s\\n\", s);\n\t\treturn 0;\n\t}\n\tfor (int i = l; i < n; i++)\n\t{\n\t\tif (s[i] == 'a') break;\n\t\ts[i]--;\n\t}\n\tprintf(\"%s\\n\", s);\n\n\treturn 0;\n}"
     ],
@@ -109,5 +109,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Letters Cyclic Shift.json",
     "editorial_link": "https://codeforces.com//blog/entry/46763",
-    "editorial": "If string consists only of symbols \u00e2\u0080\u0099a\u00e2\u0080\u0099, then we could only make it\r\nlexicographically bigger. To achieve the least change we should shift\r\nthe last symbol. In any other case we could make string\r\nlexicographically less. We should shift first biggest subsegment of\r\nstring consists only from symbols not equal to \u00e2\u0080\u0099a\u00e2\u0080\u0099.\r\n"
+    "editorial": "If string consists only of symbols âaâ, then we could only make it\r\nlexicographically bigger. To achieve the least change we should shift\r\nthe last symbol. In any other case we could make string\r\nlexicographically less. We should shift first biggest subsegment of\r\nstring consists only from symbols not equal to âaâ.\r\n",
+    "hint": []
 }

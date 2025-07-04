@@ -106,5 +106,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. A Twisty Movement.json",
     "editorial_link": "https://codeforces.com//blog/entry/57763",
-    "editorial": "Since 1???ai???2, it's equivalent to find a longest subsequence like 1?*?2?*?1?*?2?*?. By an easy dynamic programming we can find it in O(n) or O(n2) time. You can see O(n2) solution in the model solution below. Here we introduce an O(n) approach: Since the subsequence can be split into 4 parts (11...22...11...22...) , we can set dp[i][j](i?=?1...n,?j?=?0..3) be the longest subsequence of a[1...i] with first j parts.\n"
+    "editorial": "Since 1???ai???2, it's equivalent to find a longest subsequence like 1?*?2?*?1?*?2?*?. By an easy dynamic programming we can find it in O(n) or O(n2) time. You can see O(n2) solution in the model solution below. Here we introduce an O(n) approach: Since the subsequence can be split into 4 parts (11...22...11...22...) , we can set dp[i][j](i?=?1...n,?j?=?0..3) be the longest subsequence of a[1...i] with first j parts.\n",
+    "hint": []
 }

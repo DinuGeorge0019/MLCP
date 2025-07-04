@@ -146,5 +146,12 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Odd Swap Sort.json",
     "editorial_link": "https://codeforces.com//blog/entry/99942",
-    "editorial": "The key idea is to start merging from the beginning using a stack.\r\nAssume that the connected components are always segments in the\r\npermutation (this solution also proves this by induction).We will\r\niterate the prefix and maintain in our stack the minimum/maximum element\r\nof all the segments in order. When we increase the prefix adding the\r\nnext position , we add to the top of the stack. Then, we merge the top\r\ntwo segments while we are able to. If the top two segments have their\r\nminimum/maximum elements and , in this order from the top, we will merge\r\nthem only if , because this means that an edge exist between the\r\ntwo.When we reach the end, our stack contains all connected components.\r\nNote that merging two adjacent intervals forms a new interval, so we\r\nhave proven by induction that our first assumption is correct.Time\r\ncomplexity: .\r\n"
+    "editorial": "The key idea is to start merging from the beginning using a stack.\r\nAssume that the connected components are always segments in the\r\npermutation (this solution also proves this by induction).We will\r\niterate the prefix and maintain in our stack the minimum/maximum element\r\nof all the segments in order. When we increase the prefix adding the\r\nnext position , we add to the top of the stack. Then, we merge the top\r\ntwo segments while we are able to. If the top two segments have their\r\nminimum/maximum elements and , in this order from the top, we will merge\r\nthem only if , because this means that an edge exist between the\r\ntwo.When we reach the end, our stack contains all connected components.\r\nNote that merging two adjacent intervals forms a new interval, so we\r\nhave proven by induction that our first assumption is correct.Time\r\ncomplexity: .\r\n",
+    "hint": [
+        "Hint 1 Replace the condition \" is odd\" with something easier to work with.",
+        "Hint 2 The condition means that we only swap elements of different parity. Now, make some observations.",
+        "Hint 3 What happens if there are some elements and ( ) of the same parity, such that ?",
+        "Hint 4 If such pair exists, the answer is \"NO\". Now consider the array to be a merge between two increasing arrays (one with odd elements, one with even elements). Try to prove that the answer is always \"YES\" in this case.",
+        "Hint 5 What does the Bubble Sort algorithm do here? Does it ever do an illegal swap?"
+    ]
 }

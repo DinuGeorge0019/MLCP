@@ -166,7 +166,7 @@
         ]
     },
     "name": "B. Rudolph and Tic-Tac-Toe",
-    "statement": "Rudolph invented the game of tic-tac-toe for three players. It has\r\nclassic rules, except for the third player who plays with pluses. Rudolf\r\nhas a 3\r\ntimes 3 field the result of the completed game. Each field cell contains\r\neither a cross, or a nought, or a plus sign, or nothing. The game is won\r\nby the player who makes a horizontal, vertical or diagonal row of 3\u2019s of\r\ntheir symbols.Rudolph wants to find the result of the game. Either\r\nexactly one of the three players won or it ended in a draw. It is\r\nguaranteed that multiple players cannot win at the same time.\r\n",
+    "statement": "Rudolph invented the game of tic-tac-toe for three players. It has\r\nclassic rules, except for the third player who plays with pluses. Rudolf\r\nhas a 3\r\ntimes 3 field the result of the completed game. Each field cell contains\r\neither a cross, or a nought, or a plus sign, or nothing. The game is won\r\nby the player who makes a horizontal, vertical or diagonal row of 3’s of\r\ntheir symbols.Rudolph wants to find the result of the game. Either\r\nexactly one of the three players won or it ended in a draw. It is\r\nguaranteed that multiple players cannot win at the same time.\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\nusing namespace std;\nbool is(vector<string> vc,char ch)\n{\n    for(int i=0; i<3; ++i)\n    if (vc[i][0] == ch&&vc[i][1] == ch && vc[i][2] == ch)\n            return true;\nfor (int j = 0; j < 3; j++)\n        if (vc[0][j] == ch && vc[1][j] == ch && vc[2][j] == ch)\n            return true;\n  if (vc[0][0] == ch && vc[1][1] == ch && vc[2][2] == ch)\n        return true;\n\n    if (vc[0][2] == ch && vc[1][1] == ch && vc[2][0] == ch)\n        return true;\n\n    return false;\n}\n\nvoid solve()\n{\n   vector<string> vc(3);\n   for(int i=0; i<3; ++i)\n    cin>>vc[i];\n    if(is(vc, 'X'))\n        cout<<\"X\\n\";\n   else if (is(vc, 'O'))\n        cout<<\"O\\n\";\n else if (is(vc, '+'))\n        cout<<\"+\\n\";\nelse\n   cout<<\"DRAW\\n\";\n}\n\nint main()\n{\n    int t;\n    cin>>t;\n    while(t--)\n    {\n        solve();\n    }\n}\n"
     ],
@@ -181,5 +181,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Rudolph and Tic-Tac-Toe.json",
     "editorial_link": "https://codeforces.com//blog/entry/118044",
-    "editorial": "To solve this problem, it is enough to check the equality of elements on\r\neach row, column and diagonal of three elements. If all three elements\r\nare equal and are not \".\", then the value of these elements is the\r\nanswer. Note that a row of \".\" does not give you answer \".\". Statement\r\ndoes not say that the players have equal amount of moves, which means\r\nthat one player can have several winning rows.\r\n"
+    "editorial": "To solve this problem, it is enough to check the equality of elements on\r\neach row, column and diagonal of three elements. If all three elements\r\nare equal and are not \".\", then the value of these elements is the\r\nanswer. Note that a row of \".\" does not give you answer \".\". Statement\r\ndoes not say that the players have equal amount of moves, which means\r\nthat one player can have several winning rows.\r\n",
+    "hint": [
+        "Hint 1 What is the win condition to be checked?"
+    ]
 }

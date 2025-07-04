@@ -142,5 +142,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Increasing Sequence.json",
     "editorial_link": "https://codeforces.com//blog/entry/120792",
-    "editorial": "TutorialGreedy solution. Continue constructing as small as possible.If ,\r\n. Else, .For , if , . Else, . calculated by this process is the\r\nanswer.Time complexity is per test case.\r\n"
+    "editorial": "TutorialGreedy solution. Continue constructing as small as possible.If ,\r\n. Else, .For , if , . Else, . calculated by this process is the\r\nanswer.Time complexity is per test case.\r\n",
+    "hint": []
 }

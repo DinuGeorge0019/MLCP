@@ -149,5 +149,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Roof Construction.json",
     "editorial_link": "https://codeforces.com//blog/entry/99442",
-    "editorial": "SolutionLet be the highest set bit in . There will always be a pair of\r\nadjacent elements where one of them has the -th bit set and the other\r\none doesn\u00e2\u0080\u0099t, so the cost is at least . A simple construction that\r\nreaches it is , , , , , , , .Time complexity: Bonus: count the number of\r\npermutations with the minimum cost.\r\n"
+    "editorial": "SolutionLet be the highest set bit in . There will always be a pair of\r\nadjacent elements where one of them has the -th bit set and the other\r\none doesnât, so the cost is at least . A simple construction that\r\nreaches it is , , , , , , , .Time complexity: Bonus: count the number of\r\npermutations with the minimum cost.\r\n",
+    "hint": [
+        "Hint 1 The cost of construction is a power of two.",
+        "Hint 2 The cost of construction is , where is the highest set bit in ."
+    ]
 }

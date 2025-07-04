@@ -125,7 +125,7 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/134516",
-    "editorial": "By P.V.Sekhar SolutionThe first observation is that the expression | - &\r\nis bitwise independent. That is, the combination of a tuple of bits of\r\ncorresponding to the same power of 2 will only affect the bit value of\r\nat that power of 2 only.This is because: We are performing subtraction,\r\nso extra carry won\u00e2\u0080\u0099t be generated to the next power of 2. Any tuple of\r\nbits of , , and corresponding to the same power of 2 won\u00e2\u0080\u0099t result in -1\r\nfor that power of 2. As that would require to be zero and & to be one.\r\nThe former condition requires the bit of to be zero, while the latter\r\nrequires it to be one, which is contradicting. Now, let us consider all\r\n8 cases of bits of a, b, c and the corresponding bit value of d in the\r\nfollowing table:So, clearly, for different bits of and , we can find the\r\nvalue of the corresponding bit in , provided it is not the case when bit\r\nvalues of and are 1,0,0 or 0,1,1, which are not possible; so, in that\r\ncase, the answer is -1.\r\n",
+    "editorial": "By P.V.Sekhar SolutionThe first observation is that the expression | - &\r\nis bitwise independent. That is, the combination of a tuple of bits of\r\ncorresponding to the same power of 2 will only affect the bit value of\r\nat that power of 2 only.This is because: We are performing subtraction,\r\nso extra carry wonât be generated to the next power of 2. Any tuple of\r\nbits of , , and corresponding to the same power of 2 wonât result in -1\r\nfor that power of 2. As that would require to be zero and & to be one.\r\nThe former condition requires the bit of to be zero, while the latter\r\nrequires it to be one, which is contradicting. Now, let us consider all\r\n8 cases of bits of a, b, c and the corresponding bit value of d in the\r\nfollowing table:So, clearly, for different bits of and , we can find the\r\nvalue of the corresponding bit in , provided it is not the case when bit\r\nvalues of and are 1,0,0 or 0,1,1, which are not possible; so, in that\r\ncase, the answer is -1.\r\n",
     "name": "C. Bitwise Balancing",
     "statement": "You are given three non-negative integers b, c, and d.Please find a\r\nnon-negative integer a\r\nin [0, 2^{61}] such that (a\r\n, |\r\n, b)-(a\r\n,\r\n&\r\n, c)=d, where | and\r\n& denote the bitwise OR operation and the bitwise AND operation,\r\nrespectively.If such an a exists, print its value. If there is no\r\nsolution, print a single integer -1. If there are multiple solutions,\r\nprint any of them.\r\n",
     "solutions": [
@@ -143,5 +143,6 @@
     ],
     "dificulty": "1400",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Bitwise Balancing.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Bitwise Balancing.json",
+    "hint": []
 }

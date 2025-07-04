@@ -163,5 +163,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. New Palindrome.json",
     "editorial_link": "https://codeforces.com//blog/entry/116454",
-    "editorial": "Let\u00e2\u0080\u0099s look at the first characters. If all these characters are equal,\r\nthen there is no way to get another palindrome. Otherwise, there are at\r\nleast two different characters, you can swap them (and the characters\r\nsymmetrical to them on the right half of the string), and get a\r\npalindrome different from the given one.\r\n"
+    "editorial": "Letâs look at the first characters. If all these characters are equal,\r\nthen there is no way to get another palindrome. Otherwise, there are at\r\nleast two different characters, you can swap them (and the characters\r\nsymmetrical to them on the right half of the string), and get a\r\npalindrome different from the given one.\r\n",
+    "hint": []
 }

@@ -130,5 +130,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Reality Show.json",
     "editorial_link": "https://codeforces.com//blog/entry/74148",
-    "editorial": "First of all, we will notice that the order of entering doesn\u00e2\u0080\u0099t affect\r\nthe answer. Let\u00e2\u0080\u0099s reverse the sequence. We will add people in the\r\nnon-decreasing order. Let\u00e2\u0080\u0099s use dynamic programming: is the answer if we\r\nprocessed first candidates with the maximum value less or equal and\r\ntotal number of people who will reach is . How we should change values\r\nof when we go from to ? But how changes when we take -th element? After\r\nadding -th element we also should change . But every next lay will\r\nchange less: .It clear, that we can remove first parameter of and\r\nfinally get the asymptotics .\r\n"
+    "editorial": "First of all, we will notice that the order of entering doesnât affect\r\nthe answer. Letâs reverse the sequence. We will add people in the\r\nnon-decreasing order. Letâs use dynamic programming: is the answer if we\r\nprocessed first candidates with the maximum value less or equal and\r\ntotal number of people who will reach is . How we should change values\r\nof when we go from to ? But how changes when we take -th element? After\r\nadding -th element we also should change . But every next lay will\r\nchange less: .It clear, that we can remove first parameter of and\r\nfinally get the asymptotics .\r\n",
+    "hint": []
 }

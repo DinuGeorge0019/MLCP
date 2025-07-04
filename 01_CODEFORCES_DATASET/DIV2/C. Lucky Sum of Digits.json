@@ -113,5 +113,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Lucky Sum of Digits.json",
     "editorial_link": "https://codeforces.com//blog/entry/2547",
-    "editorial": "Let result number contains a digits 4 and b digits 7. Obviously, that a?*?4?+?b?*?7?=?n. Loop through all values of b. If we know b, we can calculate a, . Among all pairs (a;b) we need to choose one with a?+?b minimum. Among all that pairs we need to choose one with b minimum. Output will be an integer 444...444777...777, here number of digits 4 equal to a, number of digits 7 equal to b."
+    "editorial": "Let result number contains a digits 4 and b digits 7. Obviously, that a?*?4?+?b?*?7?=?n. Loop through all values of b. If we know b, we can calculate a, . Among all pairs (a;b) we need to choose one with a?+?b minimum. Among all that pairs we need to choose one with b minimum. Output will be an integer 444...444777...777, here number of digits 4 equal to a, number of digits 7 equal to b.",
+    "hint": []
 }

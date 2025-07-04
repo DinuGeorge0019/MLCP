@@ -183,5 +183,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\A. Add Plus Minus Sign.json",
     "editorial_link": "https://codeforces.com//blog/entry/110184",
-    "editorial": "The answer is the number of s modulo .We can get that by adding\n\u00e2\u0080\u0099-\u00e2\u0080\u0099 before the , and \u00e2\u0080\u0099+\u00e2\u0080\u0099 before the .\n"
+    "editorial": "The answer is the number of s modulo .We can get that by adding\nâ-â before the , and â+â before the .\n",
+    "hint": []
 }

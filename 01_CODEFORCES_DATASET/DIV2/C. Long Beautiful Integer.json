@@ -103,7 +103,7 @@
         ]
     },
     "name": "C. Long Beautiful Integer",
-    "statement": "You are given an integer x of n digits a_1, a_2,\r\nldots, a_n, which make up its decimal notation in order from left to\r\nright.Also, you are given a positive integer k < n.Let\u2019s call integer\r\nb_1, b_2,\r\nldots, b_m if b_i = b_{i+k} for each i, such that 1\r\nleq i\r\nleq m - k.You need to find the smallest integer y, such that y\r\ngeq x.\r\n",
+    "statement": "You are given an integer x of n digits a_1, a_2,\r\nldots, a_n, which make up its decimal notation in order from left to\r\nright.Also, you are given a positive integer k < n.Let’s call integer\r\nb_1, b_2,\r\nldots, b_m if b_i = b_{i+k} for each i, such that 1\r\nleq i\r\nleq m - k.You need to find the smallest integer y, such that y\r\ngeq x.\r\n",
     "solutions": [
         "//#pragma GCC optimize(\"Ofast\")\n//#pragma GCC target(\"sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx\")\n\n#include<bits/stdc++.h>\n\n#define pb push_back\n#define F first\n#define S second\n#define ll long long\n#define ld long double\n#define null nullptr\n#define _ <<' '<<\n#define endl '\\n'\n\nusing namespace std;\n\nmt19937 gen(chrono::high_resolution_clock::now().time_since_epoch().count());\n\nconst int N = 2e5 + 7;\nconst int M = 1e9 + 7;\n//const int M = 998244353;\nconst int FFTM = 998244353;\n\nint n, k;\nstring s;\nstring t;\n\nint main() {\n    ios_base::sync_with_stdio(0);\n    cin.tie(0);\n    cout.tie(0);\n#ifdef LOCAL\n    freopen(\"input.txt\", \"r\", stdin);\n    freopen(\"output.txt\", \"w\", stdout);\n#endif // LOCAL\n    cin >> n >> k;\n    cin >> s;\n    t = s;\n    for(int i = 0; i < k; ++i)\n        t[i] = s[i];\n    for(int i = k; i < n; ++i)\n        t[i] = t[i - k];\n    cerr << t << endl;\n    if (t >= s)\n    {\n        cout << n << '\\n' << t;\n        return 0;\n    }\n    for(int i = k - 1; i >= 0; --i)\n    {\n        if (s[i] != '9')\n        {\n            for(int j = i; j < n; j += k)\n                t[j]++;\n            break;\n        }\n        else\n        {\n            for(int j = i; j < n; j += k)\n                t[j] = '0';\n        }\n    }\n    cout << n << '\\n' << t;\n    return 0;\n}\n"
     ],
@@ -117,5 +117,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Long Beautiful Integer.json",
     "editorial_link": "https://codeforces.com//blog/entry/72358",
-    "editorial": "At first, let\u00e2\u0080\u0099s set for all .If it is at least the initial , then you\r\ncan print it as the answer.Otherwise, Let\u00e2\u0080\u0099s find the last non-nine digit\r\namong the first , increase it by one, and change all \u00e2\u0080\u0099s on the segment\r\nfrom it to -th character to .After that, again set for all .Then, you\r\ncan print it as the answer.\r\n"
+    "editorial": "At first, letâs set for all .If it is at least the initial , then you\r\ncan print it as the answer.Otherwise, Letâs find the last non-nine digit\r\namong the first , increase it by one, and change all âs on the segment\r\nfrom it to -th character to .After that, again set for all .Then, you\r\ncan print it as the answer.\r\n",
+    "hint": []
 }

@@ -95,7 +95,7 @@
         ]
     },
     "name": "A. Mashmokh and Lights",
-    "statement": "Mashmokh works in a factory. At the end of each day he must turn off all\r\nof the lights. The lights on the factory are indexed from to . There are\r\nbuttons in Mashmokh\u2019s room indexed from to as well. If Mashmokh pushes\r\nbutton with index , then each light with index not less than that is\r\nstill turned on turns off.Mashmokh is not very clever. So instead of\r\npushing the first button he pushes some of the buttons randomly each\r\nnight. He pushed distinct buttons (the buttons were pushed consecutively\r\nin the given order) this night. Now he wants to know for each light the\r\nindex of the button that turned this light off. Please note that the\r\nindex of button is actually , not .Please, help Mashmokh, print these\r\nindices.\r\n",
+    "statement": "Mashmokh works in a factory. At the end of each day he must turn off all\r\nof the lights. The lights on the factory are indexed from to . There are\r\nbuttons in Mashmokh’s room indexed from to as well. If Mashmokh pushes\r\nbutton with index , then each light with index not less than that is\r\nstill turned on turns off.Mashmokh is not very clever. So instead of\r\npushing the first button he pushes some of the buttons randomly each\r\nnight. He pushed distinct buttons (the buttons were pushed consecutively\r\nin the given order) this night. Now he wants to know for each light the\r\nindex of the button that turned this light off. Please note that the\r\nindex of button is actually , not .Please, help Mashmokh, print these\r\nindices.\r\n",
     "solutions": [
         "#include <stdio.h>\nint n, m, a[100], b[100];\nint main()\n{\n\tscanf(\"%d%d\", &n, &m);\n\tfor(int i = 0; i < m; i++)\n\t\tscanf(\"%d\", &b[i]);\n\tfor(int i = 0; i < m; i++)\n\t{\n\t\tfor(int j = b[i] - 1; j < n; j++)\n\t\t{\n\t\t\tif(!a[j])\n\t\t\t\ta[j] = b[i];\n\t\t}\n\t}\n\tfor(int i = 0; i < n; i++)\n\t\tprintf(\"%d \", a[i]);\n\tgetchar(); getchar();\n\treturn 0;\n}\n"
     ],
@@ -108,5 +108,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Mashmokh and Lights.json",
     "editorial_link": "https://codeforces.com//blog/entry/11470",
-    "editorial": "For this problem for each light you could just iterate over all pressed\r\nbuttons and find the first button that . Then you could output and move\r\nto next light.\r\n"
+    "editorial": "For this problem for each light you could just iterate over all pressed\r\nbuttons and find the first button that . Then you could output and move\r\nto next light.\r\n",
+    "hint": []
 }

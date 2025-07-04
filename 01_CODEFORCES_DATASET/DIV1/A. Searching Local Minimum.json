@@ -144,5 +144,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Searching Local Minimum.json",
     "editorial_link": "https://codeforces.com//blog/entry/87598",
-    "editorial": "We maintain by binary search a range which has a local minimum.\r\nMoreover, we assume that and . Initially, .In each iteration, let be the\r\nmidpoint of and . . If , then the range becomes .. If , then the range\r\nbecomes .When , we have found a local minimum .The number of queries to\r\nis at most .\r\n"
+    "editorial": "We maintain by binary search a range which has a local minimum.\r\nMoreover, we assume that and . Initially, .In each iteration, let be the\r\nmidpoint of and . . If , then the range becomes .. If , then the range\r\nbecomes .When , we have found a local minimum .The number of queries to\r\nis at most .\r\n",
+    "hint": []
 }

@@ -76,7 +76,7 @@
         ]
     },
     "name": "A. Roma and Lucky Numbers",
-    "statement": "Roma (a popular Russian name that means \u2019Roman\u2019) loves the Little Lvov\r\nElephant\u2019s lucky numbers.Let us remind you that lucky numbers are\r\npositive integers whose decimal representation only contains lucky\r\ndigits and . For example, numbers , , are lucky and , , are not.Roma\u2019s\r\ngot positive integers. He wonders, how many of those integers have not\r\nmore than lucky digits? Help him, write the program that solves the\r\nproblem.\r\n",
+    "statement": "Roma (a popular Russian name that means ’Roman’) loves the Little Lvov\r\nElephant’s lucky numbers.Let us remind you that lucky numbers are\r\npositive integers whose decimal representation only contains lucky\r\ndigits and . For example, numbers , , are lucky and , , are not.Roma’s\r\ngot positive integers. He wonders, how many of those integers have not\r\nmore than lucky digits? Help him, write the program that solves the\r\nproblem.\r\n",
     "solutions": [
         "#include <iostream>\n#include <cstdio>\nusing namespace std;\nint n,k,x,i,ans;\nint L(int x)\n{\n\tint ret=0;\n\twhile(x)\n\t{\n\t\tif((x%10==4)||(x%10==7)) ret++;\n\t\tx/=10;\n\t}\n\treturn ret;\n}\nint main()\n{\n\tcin >> n >> k;\n\tfor(i=1;i<=n;i++)\n\t{\n\t\tcin >> x;\n\t\tif(L(x)<=k) ans++;\n\t}\n\tcout << ans << endl;\n\treturn 0;\n}\n"
     ],
@@ -89,5 +89,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Roma and Lucky Numbers.json",
     "editorial_link": "https://codeforces.com//blog/entry/6398",
-    "editorial": "This problem just need to simulate everithing that was given in\r\nstatment.\r\n"
+    "editorial": "This problem just need to simulate everithing that was given in\r\nstatment.\r\n",
+    "hint": []
 }

@@ -135,5 +135,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Hills And Valleys.json",
     "editorial_link": "https://codeforces.com//blog/entry/86566",
-    "editorial": "Changing the value of affects the hill/valley status of only elements .\r\nWe claim that it is optimal to change to either or for valid .Let be a\r\nvalue of such that the number of hills/valleys among elements is\r\nminimised. Now, if , we can set without changing any non-hill/non-valley\r\nelement to a hill/valley. Similarly, if we can set . Hence proved.The\r\nfinal solution is as follows. Precompute the number of hills and valleys\r\nin the original array. Then, for every valid index , calculate the\r\nchange in the number of hills/valleys of the elements on setting and and\r\nupdate the minimum answer accordingly.\r\n"
+    "editorial": "Changing the value of affects the hill/valley status of only elements .\r\nWe claim that it is optimal to change to either or for valid .Let be a\r\nvalue of such that the number of hills/valleys among elements is\r\nminimised. Now, if , we can set without changing any non-hill/non-valley\r\nelement to a hill/valley. Similarly, if we can set . Hence proved.The\r\nfinal solution is as follows. Precompute the number of hills and valleys\r\nin the original array. Then, for every valid index , calculate the\r\nchange in the number of hills/valleys of the elements on setting and and\r\nupdate the minimum answer accordingly.\r\n",
+    "hint": []
 }

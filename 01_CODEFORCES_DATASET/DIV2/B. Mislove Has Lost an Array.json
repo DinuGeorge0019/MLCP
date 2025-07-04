@@ -138,7 +138,7 @@
         ]
     },
     "name": "B. Mislove Has Lost an Array",
-    "statement": "Mislove had an array a_1, a_2,\r\ncdots, a_n of n positive integers, but he has lost it. He only remembers\r\nthe following facts about it: The number of different numbers in the\r\narray is not less than l and is not greater than r; For each array\u2019s\r\nelement a_i either a_i = 1 or a_i is even and there is a number\r\ndfrac{a_i}{2} in the array.For example, if n=5, l=2, r=3 then an array\r\ncould be [1,2,2,4,4] or [1,1,1,1,2]; but it couldn\u2019t be [1,2,2,4,8]\r\nbecause this array contains 4 different numbers; it couldn\u2019t be\r\n[1,2,2,3,3] because 3 is odd and isn\u2019t equal to 1; and it couldn\u2019t be\r\n[1,1,2,2,16] because there is a number 16 in the array but there isn\u2019t a\r\nnumber\r\nfrac{16}{2} = 8.According to these facts, he is asking you to count the\r\nminimal and the maximal possible sums of all elements in an array.\r\n",
+    "statement": "Mislove had an array a_1, a_2,\r\ncdots, a_n of n positive integers, but he has lost it. He only remembers\r\nthe following facts about it: The number of different numbers in the\r\narray is not less than l and is not greater than r; For each array’s\r\nelement a_i either a_i = 1 or a_i is even and there is a number\r\ndfrac{a_i}{2} in the array.For example, if n=5, l=2, r=3 then an array\r\ncould be [1,2,2,4,4] or [1,1,1,1,2]; but it couldn’t be [1,2,2,4,8]\r\nbecause this array contains 4 different numbers; it couldn’t be\r\n[1,2,2,3,3] because 3 is odd and isn’t equal to 1; and it couldn’t be\r\n[1,1,2,2,16] because there is a number 16 in the array but there isn’t a\r\nnumber\r\nfrac{16}{2} = 8.According to these facts, he is asking you to count the\r\nminimal and the maximal possible sums of all elements in an array.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\n\nusing namespace std;\n\ntypedef long long ll;\n\nint n, l, r;\nint arr[1002];\nint arr2[1002];\nint ans1, ans2;\n\nint main(){\n    scanf(\"%d %d %d\", &n, &l, &r);\n    for(int i=0; i<=n; i++) arr[i] = 1, arr2[i] = (1<<(r-1));\n    for(int i=n-l+2; i<=n; i++) arr[i] = arr[i-1] * 2;\n    for(int i=1; i<=r; i++) arr2[i] = (1<<(i-1));\n    for(int i=1; i<=n; i++) ans1+=arr[i], ans2+=arr2[i];\n    printf(\"%d %d\", ans1, ans2);\n}\n"
     ],
@@ -152,5 +152,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Mislove Has Lost an Array.json",
     "editorial_link": "https://codeforces.com/blog/entry/69244",
-    "editorial": "Any array that satisfies statements\u00e2\u0080\u0099 conditions contains only powers of\r\ntwo from to , where , so the minimal sum is achieved when we take powers\r\nof two from to and set the other elements equal to ; the maximal sum is\r\nachieved when we take powers of two from to and set the other elements\r\nequal to .\r\n"
+    "editorial": "Any array that satisfies statementsâ conditions contains only powers of\r\ntwo from to , where , so the minimal sum is achieved when we take powers\r\nof two from to and set the other elements equal to ; the maximal sum is\r\nachieved when we take powers of two from to and set the other elements\r\nequal to .\r\n",
+    "hint": []
 }

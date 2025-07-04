@@ -111,5 +111,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Little Elephant and Numbers.json",
     "editorial_link": "https://codeforces.com//blog/entry/5177",
-    "editorial": "Here you just need to find all divisors of . This can be done using\r\nstandart algorithm with iterating from 1 to . After that you need to\r\nwrite some function that checks whether two numbers has same digits.\r\nThis also can be done using simple loops.\r\n"
+    "editorial": "Here you just need to find all divisors of . This can be done using\r\nstandart algorithm with iterating from 1 to . After that you need to\r\nwrite some function that checks whether two numbers has same digits.\r\nThis also can be done using simple loops.\r\n",
+    "hint": []
 }

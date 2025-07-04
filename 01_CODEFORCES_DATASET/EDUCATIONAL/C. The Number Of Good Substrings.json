@@ -160,5 +160,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\C. The Number Of Good Substrings.json",
     "editorial_link": "https://codeforces.com//blog/entry/69605",
-    "editorial": "At first, lets precalc the array . The value of if equal the maximum\r\nposition in range such that . After that lets iterate over the right\r\nboundary of substring and high -bit position (denote it as and\r\nrespectively).Note that if then .So we iterate over such pair that and\r\n.Lets look at value . If , then we have to increase the length of\r\nsubstring without increasing the value of . So we need to check if there\r\nexists a position such that and . This position exists if the condition\r\nis met ( is equal to -1).\r\n"
+    "editorial": "At first, lets precalc the array . The value of if equal the maximum\r\nposition in range such that . After that lets iterate over the right\r\nboundary of substring and high -bit position (denote it as and\r\nrespectively).Note that if then .So we iterate over such pair that and\r\n.Lets look at value . If , then we have to increase the length of\r\nsubstring without increasing the value of . So we need to check if there\r\nexists a position such that and . This position exists if the condition\r\nis met ( is equal to -1).\r\n",
+    "hint": []
 }

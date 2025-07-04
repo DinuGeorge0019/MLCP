@@ -141,5 +141,9 @@
     ],
     "dificulty": "1700",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Penchick and Desert Rabbit.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Penchick and Desert Rabbit.json",
+    "hint": [
+        "Hint 1 Suppose that you have found the maximum height reachable from tree . How do you find the maximum height reachable from tree ?",
+        "Hint 2 Let be the highest height among trees indexed from to , and be the lowest height among trees indexed from to . When can tree be reachable from tree ?"
+    ]
 }

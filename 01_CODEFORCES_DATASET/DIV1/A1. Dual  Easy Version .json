@@ -145,5 +145,11 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A1. Dual  Easy Version .json",
     "editorial_link": "https://codeforces.com//blog/entry/118540",
-    "editorial": "If all the elements are negative, you can make suffix sums (they\nare nondecreasing) with moves If there is at least one positive element\n, make using moves ; make the biggest element using moves ; make the\nbiggest element using moves ; ... This strategy requires\nmoves.Complexity:\n"
+    "editorial": "If all the elements are negative, you can make suffix sums (they\nare nondecreasing) with moves If there is at least one positive element\n, make using moves ; make the biggest element using moves ; make the\nbiggest element using moves ; ... This strategy requires\nmoves.Complexity:\n",
+    "hint": [
+        "Hint 1 There are several solutions to the easy version. In any case, how to get ?",
+        "Hint 2 For example, you can try making bigger using a positive element. What to do if all the elements are negative?",
+        "Hint 3 If all the elements are negative, you can win in moves. If there is a positive element, you can try to make , then , etc.",
+        "Hint 4 Make a big positive element using moves , then make bigger."
+    ]
 }

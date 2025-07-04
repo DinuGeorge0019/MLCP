@@ -118,7 +118,7 @@
         ]
     },
     "name": "B. Big Segment",
-    "statement": "A coordinate line has segments, the -th segment starts at the position\r\nand ends at the position . We will denote such a segment as .You have\r\nsuggested that one of the defined segments covers all others. In other\r\nwords, there is such segment in the given set, which contains all other\r\nones. Now you want to test your assumption. Find in the given set the\r\nsegment which covers all other segments, and print its number. If such a\r\nsegment doesn\u2019t exist, print -1.Formally we will assume that segment\r\ncovers segment , if they meet this condition .\r\n",
+    "statement": "A coordinate line has segments, the -th segment starts at the position\r\nand ends at the position . We will denote such a segment as .You have\r\nsuggested that one of the defined segments covers all others. In other\r\nwords, there is such segment in the given set, which contains all other\r\nones. Now you want to test your assumption. Find in the given set the\r\nsegment which covers all other segments, and print its number. If such a\r\nsegment doesn’t exist, print -1.Formally we will assume that segment\r\ncovers segment , if they meet this condition .\r\n",
     "solutions": [
         "#include <cstdio>\n#include <cstring>\n#include <algorithm>\n#include <cmath>\n\nusing namespace std;\n\nint x[111111], y[111111];\n\nint main() {\n\tint n; scanf(\"%d\", &n);\n\tfor (int i = 1; i <= n; ++i) scanf(\"%d%d\", &x[i], &y[i]);\n\tint minx = x[1], maxx = y[1];\n\tfor (int i = 1; i <= n; ++i) {\n\t\tminx = min(minx, x[i]);\n\t\tmaxx = max(maxx, y[i]);\n\t}\n\n\tfor (int i = 1; i <= n; ++i) {\n\t\tif (x[i] == minx && y[i] == maxx) {\n\t\t\tprintf(\"%d\\n\", i); return 0;\n\t\t}\n\t}\n\n\tprintf(\"%d\\n\", -1);\n\n\treturn 0;\n}\n"
     ],
@@ -132,5 +132,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Big Segment.json",
     "editorial_link": "https://codeforces.com//blog/entry/5837",
-    "editorial": "At first, we must note that the answer is always unique, because if\r\nsegment covers segment , that segment can\u00e2\u0080\u0099t cover segment . It possible\r\nif and only if there are coincide segments in the set, but it\u00e2\u0080\u0099s not\r\npermissible by the statement. Let\u00e2\u0080\u0099s pay attention the answer covers the\r\nmost left point of all segments and the most right point of all points\r\ntoo. Now then we should found and and print index of segment , or if\r\nthere is no such segment in the set. The time is .\r\n"
+    "editorial": "At first, we must note that the answer is always unique, because if\r\nsegment covers segment , that segment canât cover segment . It possible\r\nif and only if there are coincide segments in the set, but itâs not\r\npermissible by the statement. Letâs pay attention the answer covers the\r\nmost left point of all segments and the most right point of all points\r\ntoo. Now then we should found and and print index of segment , or if\r\nthere is no such segment in the set. The time is .\r\n",
+    "hint": []
 }

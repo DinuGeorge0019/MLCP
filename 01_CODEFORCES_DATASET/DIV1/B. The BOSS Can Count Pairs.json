@@ -132,5 +132,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. The BOSS Can Count Pairs.json",
     "editorial_link": "https://codeforces.com//blog/entry/116527",
-    "editorial": "Solution Since and , . Therefore, .Let and be the number of pairs from\nthe input such that . A pair is good if it satisfies .Firstly, we\u00e2\u0080\u0099ll\ncount the number of good pairs such that . Since , we can see that .This\nsum can be written as: The remaining good pairs will have , and instead\nof counting the pairs which have , we can count the pairs which have\n.Since , we can say that .Substituting for , this second sum can be\nwritten as: Since we\u00e2\u0080\u0099ve already established that , calculating this sum\ntakes time.Be especially careful when calculating these sums, as and can\nend up being either negative or greater than .Time complexity per\ntestcase:\n"
+    "editorial": "Solution Since and , . Therefore, .Let and be the number of pairs from\nthe input such that . A pair is good if it satisfies .Firstly, weâll\ncount the number of good pairs such that . Since , we can see that .This\nsum can be written as: The remaining good pairs will have , and instead\nof counting the pairs which have , we can count the pairs which have\n.Since , we can say that .Substituting for , this second sum can be\nwritten as: Since weâve already established that , calculating this sum\ntakes time.Be especially careful when calculating these sums, as and can\nend up being either negative or greater than .Time complexity per\ntestcase:\n",
+    "hint": [
+        "Hint 1 Since and , .",
+        "Hint 2 Since , then ."
+    ]
 }

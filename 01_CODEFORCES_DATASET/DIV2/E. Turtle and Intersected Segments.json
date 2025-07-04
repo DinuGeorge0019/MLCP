@@ -132,5 +132,9 @@
     ],
     "dificulty": "2600",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Turtle and Intersected Segments.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Turtle and Intersected Segments.json",
+    "hint": [
+        "Hint 1 Stop thinking about Boruvka.",
+        "Hint 2 Most of the edges in the graph are useless."
+    ]
 }

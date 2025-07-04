@@ -115,5 +115,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Devu, the Dumb Guy.json",
     "editorial_link": "https://codeforces.com//blog/entry/12545",
-    "editorial": "You can formulate the problem in following way. Given two arrays and .\r\nFind minimum cost of matching the elements of array to . For our problem\r\nthe array will be same as . The array will have content , 1, , 1, 1. For\r\na general version of this problem, we can use min cost max flow(min cost\r\nmatching), but for this problem following simple greedy solution will\r\nwork. Proof: It can be easily proved by exchange argument. Solution\r\nCodes\r\n"
+    "editorial": "You can formulate the problem in following way. Given two arrays and .\r\nFind minimum cost of matching the elements of array to . For our problem\r\nthe array will be same as . The array will have content , 1, , 1, 1. For\r\na general version of this problem, we can use min cost max flow(min cost\r\nmatching), but for this problem following simple greedy solution will\r\nwork. Proof: It can be easily proved by exchange argument. Solution\r\nCodes\r\n",
+    "hint": []
 }

@@ -199,5 +199,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C1. Powering the Hero  easy version .json",
     "editorial_link": "https://codeforces.com//blog/entry/113477",
-    "editorial": "To solve it, it should be noted that despite the way the deck with\r\nbonuses works, the order in which they will be applied is not important.\r\nThen, when we meet the hero card, we just need to add to the answer the\r\nmaximum of the available bonuses.Constraints allow you to sort the\r\ncurrent array with bonus values each time and remove the maximum\r\nelement.\r\n"
+    "editorial": "To solve it, it should be noted that despite the way the deck with\r\nbonuses works, the order in which they will be applied is not important.\r\nThen, when we meet the hero card, we just need to add to the answer the\r\nmaximum of the available bonuses.Constraints allow you to sort the\r\ncurrent array with bonus values each time and remove the maximum\r\nelement.\r\n",
+    "hint": []
 }

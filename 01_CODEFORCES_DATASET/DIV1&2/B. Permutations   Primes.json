@@ -203,5 +203,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\B. Permutations   Primes.json",
     "editorial_link": "https://codeforces.com//blog/entry/118128",
-    "editorial": "The cases can be handled separately. For , any construction with is\r\noptimal. We can prove this as follows: Note that since and are both\r\nprime, any with has a prime except for possibly , where . Therefore the\r\nprimality of this array is , where if proposition is true and if is\r\nfalse. On the other hand, for any permutation of , let be the index with\r\n. The primality of this array cannot exceed , since any pair with prime\r\nmust satisfy , and additionally no matter what the permutation is. The\r\nfunction is a quadratic which is maximized at , so as required.The time\r\ncomplexity is (note that we don\u00e2\u0080\u0099t even need to sieve for primes!).\r\n"
+    "editorial": "The cases can be handled separately. For , any construction with is\r\noptimal. We can prove this as follows: Note that since and are both\r\nprime, any with has a prime except for possibly , where . Therefore the\r\nprimality of this array is , where if proposition is true and if is\r\nfalse. On the other hand, for any permutation of , let be the index with\r\n. The primality of this array cannot exceed , since any pair with prime\r\nmust satisfy , and additionally no matter what the permutation is. The\r\nfunction is a quadratic which is maximized at , so as required.The time\r\ncomplexity is (note that we donât even need to sieve for primes!).\r\n",
+    "hint": [
+        "Hint 1 In order for to contribute to the primality, we must have , so there is some value between indices and .",
+        "Hint 2 To maximize the number of pairs that contain the value , we should put near the middle of the array.",
+        "Hint 3 To minimize the number of pairs where but is not prime, we should put and at the ends of the array."
+    ]
 }

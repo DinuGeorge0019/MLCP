@@ -178,5 +178,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Replacing Elements.json",
     "editorial_link": "https://codeforces.com//blog/entry/86827",
-    "editorial": "Let\u00e2\u0080\u0099s note that since all are positive, any . It means that we can\u00e2\u0080\u0099t\r\nmake the first and second minimums lower than they already are: suppose\r\nthe first and second minimums are and , if we choose any other element\r\nto replace, we can\u00e2\u0080\u0099t make it less than and if we choose to replace or we\r\nwill only make them bigger.As a result, it means that we can choose for\r\neach element either not to change it or make it equal to . So, to be\r\nable to make all elements we need just check that either or maximum .We\r\ncan do it, for example, by sorting our array in increasing order and\r\nchecking that either or .\r\n"
+    "editorial": "Letâs note that since all are positive, any . It means that we canât\r\nmake the first and second minimums lower than they already are: suppose\r\nthe first and second minimums are and , if we choose any other element\r\nto replace, we canât make it less than and if we choose to replace or we\r\nwill only make them bigger.As a result, it means that we can choose for\r\neach element either not to change it or make it equal to . So, to be\r\nable to make all elements we need just check that either or maximum .We\r\ncan do it, for example, by sorting our array in increasing order and\r\nchecking that either or .\r\n",
+    "hint": []
 }

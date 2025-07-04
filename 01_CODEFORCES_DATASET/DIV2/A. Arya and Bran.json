@@ -105,7 +105,7 @@
         ]
     },
     "name": "A. Arya and Bran",
-    "statement": "Bran and his older sister Arya are from the same house. Bran like\r\ncandies so much, so Arya is going to give him some Candies.At first,\r\nArya and Bran have Candies. There are days, at the -th day, Arya finds\r\ncandies in a box, that is given by the Many-Faced God. Every day she can\r\ngive Bran of her candies. If she don\u2019t give him the candies at the same\r\nday, they are saved for her and she can give them to him later.Your task\r\nis to find the minimum number of days Arya needs to give Bran candies\r\nthe end of the -th day. Formally, you need to output the minimum day\r\nindex to the end of which candies will be given out (the days are\r\nindexed from 1 to ).Print if she can\u2019t give him candies during given\r\ndays.\r\n",
+    "statement": "Bran and his older sister Arya are from the same house. Bran like\r\ncandies so much, so Arya is going to give him some Candies.At first,\r\nArya and Bran have Candies. There are days, at the -th day, Arya finds\r\ncandies in a box, that is given by the Many-Faced God. Every day she can\r\ngive Bran of her candies. If she don’t give him the candies at the same\r\nday, they are saved for her and she can give them to him later.Your task\r\nis to find the minimum number of days Arya needs to give Bran candies\r\nthe end of the -th day. Formally, you need to output the minimum day\r\nindex to the end of which candies will be given out (the days are\r\nindexed from 1 to ).Print if she can’t give him candies during given\r\ndays.\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\n#define FOR(i,s,e) for(int i=(s);i<=(e);i++)\n#define FORD(i,s,e) for(int i=(s);i>=(e);i--)\n#define ALL(k) (k).begin(),(k).end()\n#define e1 first\n#define e2 second\n#define mp make_pair\n#define pb push_back\n#define eb emplace_back\n\nusing namespace std;\ntypedef long long LL;\ntypedef unsigned long long LLU;\ntypedef long double LD;\ntypedef pair<int,int> PII;\ntypedef pair<LL,LL> PLL;\ntypedef vector<int> VI;\nconst bool print=false;\n\nint n;\n\nlong long k;\nlong long zap;\n\nint main()\n{\n    scanf(\"%d%lld\", &n, &k);\n    for (int i=1; i<=n; i++)\n    {\n        long long x;\n        scanf(\"%lld\", &x);\n        zap+=x;\n        x=min(zap, 8LL);\n        zap-=x;\n        k-=x;\n        if (k<=0)\n        {\n            printf(\"%d\\n\", i);\n            return 0;\n        }\n    }\n    printf(\"-1\\n\");\n    return 0;\n}\n"
     ],
@@ -118,5 +118,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Arya and Bran.json",
     "editorial_link": "https://codeforces.com//blog/entry/53815",
-    "editorial": "Let be number of her candies. At -th day , we increase by ,then we give\r\nBran . So we decrease from this value. We will print the answer once\r\nbecomes smaller or equal to . Or we will print if it does n happen after\r\ndays.\r\n"
+    "editorial": "Let be number of her candies. At -th day , we increase by ,then we give\r\nBran . So we decrease from this value. We will print the answer once\r\nbecomes smaller or equal to . Or we will print if it does n happen after\r\ndays.\r\n",
+    "hint": []
 }

@@ -117,5 +117,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Lucky Permutation.json",
     "editorial_link": "https://codeforces.com//blog/entry/2956",
-    "editorial": "If n???14 let find out, is k more than n! or not? If yes, then return -1. Then, notice, that since k???109, then at most 13 elements from right (suffix) will change. So, element from left of this part (prefix) will not change (then we can just find a number of lucky numbers on than range). To find result for the rest of the permutation (suffix) we need to find k-th permutation of number from 1 to t (t is maximun integer, such that t!???k). After we find that permutation, we can just loop through that permutation and count result."
+    "editorial": "If n???14 let find out, is k more than n! or not? If yes, then return -1. Then, notice, that since k???109, then at most 13 elements from right (suffix) will change. So, element from left of this part (prefix) will not change (then we can just find a number of lucky numbers on than range). To find result for the rest of the permutation (suffix) we need to find k-th permutation of number from 1 to t (t is maximun integer, such that t!???k). After we find that permutation, we can just loop through that permutation and count result.",
+    "hint": []
 }

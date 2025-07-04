@@ -81,7 +81,7 @@
         ]
     },
     "name": "B. Progress Bar",
-    "statement": "A progress bar is an element of graphical interface that displays the\r\nprogress of a process for this very moment before it is completed. Let\u2019s\r\ntake a look at the following form of such a bar.A bar is represented as\r\nsquares, located in line. To add clarity, let\u2019s number them with\r\npositive integers from to from the left to the right. Each square has\r\nsaturation ( for the -th square), which is measured by an integer from\r\nto . When the bar for some () is displayed, squares has the saturation ,\r\nsquares has the saturation , and the saturation of the square can have\r\nany value from to .So some first squares of the progress bar always have\r\nthe saturation . Some last squares always have the saturation . And\r\nthere is no more than one square that has the saturation different from\r\nand .The degree of the process\u2019s completion is measured in percents. Let\r\nthe process be\r\n",
+    "statement": "A progress bar is an element of graphical interface that displays the\r\nprogress of a process for this very moment before it is completed. Let’s\r\ntake a look at the following form of such a bar.A bar is represented as\r\nsquares, located in line. To add clarity, let’s number them with\r\npositive integers from to from the left to the right. Each square has\r\nsaturation ( for the -th square), which is measured by an integer from\r\nto . When the bar for some () is displayed, squares has the saturation ,\r\nsquares has the saturation , and the saturation of the square can have\r\nany value from to .So some first squares of the progress bar always have\r\nthe saturation . Some last squares always have the saturation . And\r\nthere is no more than one square that has the saturation different from\r\nand .The degree of the process’s completion is measured in percents. Let\r\nthe process be\r\n",
     "solutions": [
         "#include <iostream>\n#include <cstring>\n#include <cstdio>\nusing namespace std;\n\nint out[110];\n\nmain(){\n\tint n, k, t, i;\n\t\n\tscanf ( \"%d %d %d\", &n, &k, &t );\n\tt = t * n * k;\n\tmemset ( out, 0, sizeof ( out ) );\n\tfor ( i = 0; i <= n * k; i ++ )\n\t\tif ( i * 100 <= t && t < i * 100 + 100 )\n\t\t\tbreak;\n\t\telse\n\t\t\tout[ i / k ] ++;\n\tfor ( i = 0; i < n; i ++ )\n\t\tprintf( \"%d \", out[i] );\n\tprintf( \"\\n\" );\n\t\n\treturn 0;\n}\n"
     ],
@@ -95,5 +95,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Progress Bar.json",
     "editorial_link": "https://codeforces.com//blog/entry/1624",
-    "editorial": "At first, compute . It equals ? mnk?/?100?, where ? x? is rounding down. Next we fill first ? z?/?k? squares with a saturation k. (? z?/?k??+?1)-th square (if it exists) we fill in a saturation z?-?? z?/?k? k. All other squares we leave with a saturation 0."
+    "editorial": "At first, compute . It equals ? mnk?/?100?, where ? x? is rounding down. Next we fill first ? z?/?k? squares with a saturation k. (? z?/?k??+?1)-th square (if it exists) we fill in a saturation z?-?? z?/?k? k. All other squares we leave with a saturation 0.",
+    "hint": []
 }

@@ -81,7 +81,7 @@
         ]
     },
     "name": "A. Marks",
-    "statement": "Vasya, or Mr. Vasily Petrov is a dean of a department in a local\r\nuniversity. After the winter exams he got his hands on a group\u2019s\r\ngradebook.Overall the group has students. They received marks for\r\nsubjects. Each student got a mark from to (inclusive) for each\r\nsubject.Let\u2019s consider a student the , if there is no student who got a\r\nhigher mark for this subject. Let\u2019s consider a student , if there exists\r\na subject he is the .Your task is to find the number of students in the\r\ngroup.\r\n",
+    "statement": "Vasya, or Mr. Vasily Petrov is a dean of a department in a local\r\nuniversity. After the winter exams he got his hands on a group’s\r\ngradebook.Overall the group has students. They received marks for\r\nsubjects. Each student got a mark from to (inclusive) for each\r\nsubject.Let’s consider a student the , if there is no student who got a\r\nhigher mark for this subject. Let’s consider a student , if there exists\r\na subject he is the .Your task is to find the number of students in the\r\ngroup.\r\n",
     "solutions": [
         "#include <vector>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <sstream>\n#include <iostream>\n#include <cstdio>\n#include <queue>\n#include <cmath>\n#include <cstdlib>\n#include <cstring>\n#include <ctime>\n#include <string>\n#include <cassert>\n\nusing namespace std;\n\n//----------------------zjut_DD for Topcoder-------------------------------\ntypedef long long LL;\ntypedef pair<int,int> PII;\ntypedef vector<int> VI;\ntypedef vector<string> VS;\n#define PB push_back\n#define MP make_pair\n#define ff first\n#define ss second\n#define sz(v) (int)v.size()\n#define all(c) c.begin(),c.end() \n#define clr(buf,val) memset(buf,val,sizeof(buf))\n#define rep(i,l,r) for(int i=(l);i<(r);i++)\n#define repv(i,v)  for(int i=0;i<(int)v.size();i++)\n#define repi(it,c) for(typeof(c.begin()) it=c.begin();it!=c.end();++it)\n//------------------------------------------------------------------------\n\nstring s[110];\n\nint main(){\n\tint n, m;\n\twhile( cin>>n>>m){\n\t\trep(i, 0, n) cin>>s[i];\n\t\tint ans=0;\n\t\trep(i, 0, n){\n\t\t\tbool can=false;\n\t\t\trep(j, 0, m){\n\t\t\t\tbool big=false;\n\t\t\t\trep(k, 0, n) if( k!=i ){\n\t\t\t\t\tif( s[k][j]>s[i][j] ) big=true;\n\t\t\t\t}\n\t\t\t\tif( big==false ) can=true;\n\t\t\t}\n\t\t\tif( can ) ans++;\n\t\t}\n\t\tprintf(\"%d\\n\", ans);\n\t}\n}\n\n"
     ],
@@ -94,5 +94,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Marks.json",
     "editorial_link": "https://codeforces.com//blog/entry/3926",
-    "editorial": "In this problem you should do exactly what is written in the statement.\r\nHere is rough code of solution:\r\n"
+    "editorial": "In this problem you should do exactly what is written in the statement.\r\nHere is rough code of solution:\r\n",
+    "hint": []
 }

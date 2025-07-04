@@ -161,5 +161,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\A. Gotta Catch Em' All .json",
     "editorial_link": "https://codeforces.com//blog/entry/49743",
-    "editorial": "Since we are allowed to permute the string in any order to find the maximum occurences of the string \"Bulbasaur\", we simply keep the count of the letters 'B', 'u', 'l', 'b', 'a', 's', 'r'. Now the string \"Bulbasaur\" contains 1 'B', 2'u', 1 'l', 2'a', 1 's', 1'r' and 1 'b', thus the answer to the problem is Min(count('B'), count('b'), count('s'), count('r'), count('l'), count('a')/2, count('u')/2). You can maintain the counts using an array."
+    "editorial": "Since we are allowed to permute the string in any order to find the maximum occurences of the string \"Bulbasaur\", we simply keep the count of the letters 'B', 'u', 'l', 'b', 'a', 's', 'r'. Now the string \"Bulbasaur\" contains 1 'B', 2'u', 1 'l', 2'a', 1 's', 1'r' and 1 'b', thus the answer to the problem is Min(count('B'), count('b'), count('s'), count('r'), count('l'), count('a')/2, count('u')/2). You can maintain the counts using an array.",
+    "hint": []
 }

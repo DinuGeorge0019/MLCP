@@ -126,5 +126,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Mike and Cellphone.json",
     "editorial_link": "https://codeforces.com//blog/entry/45912",
-    "editorial": "We can try out all of the possible starting digits, seeing if we will go out of bounds by repeating the same movements. If it is valid and different from the correct one, we output \"NO\", otherwise we just output \"YES\"."
+    "editorial": "We can try out all of the possible starting digits, seeing if we will go out of bounds by repeating the same movements. If it is valid and different from the correct one, we output \"NO\", otherwise we just output \"YES\".",
+    "hint": []
 }

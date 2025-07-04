@@ -145,11 +145,11 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/137018",
-    "editorial": "Let\u00e2\u0080\u0099s look at digit . We can see that we can\u00e2\u0080\u0099t move it to the left more\r\nthan times because it will be after. So, we can say that only digits on\r\nindices from to can stand on index , because the maximum digit can be\r\nmoved to the left no more than times.Thus, for each we can brute force\r\nall digits from to and pick such that is maximum; if we have multiple\r\nmaximum options, we will minimize . After that, we will move to the left\r\nuntil it is on index .\r\n",
+    "editorial": "Letâs look at digit . We can see that we canât move it to the left more\r\nthan times because it will be after. So, we can say that only digits on\r\nindices from to can stand on index , because the maximum digit can be\r\nmoved to the left no more than times.Thus, for each we can brute force\r\nall digits from to and pick such that is maximum; if we have multiple\r\nmaximum options, we will minimize . After that, we will move to the left\r\nuntil it is on index .\r\n",
     "name": "D. Digital string maximization",
     "statement": "You are given a string s, consisting of digits from 0 to 9. In one\r\noperation, you can pick any digit in this string, except for 0 or the\r\nleftmost digit, decrease it by 1, and then swap it with the digit left\r\nto the picked.For example, in one operation from the string 1023, you\r\ncan get 1103 or 1022.Find the lexicographically maximum string you can\r\nobtain after any number of operations.\r\n",
     "solutions": [
-        "#include <bits/stdc++.h>using namespace std;\u00a0int main(){    ios::sync_with_stdio(false);    cin.tie(0);    int t;    cin >> t;    while(t--){        string s;        cin >> s;        int n = s.length();        vector<int> a(n);        for(int i=0;i<n;i++) a[i] = s[i]-'0';        for(int i=0;i<n;i++){            int end = min(i +9, n-1);            int max_val = a[i];            int j =i;            for(int t=i; t<=end; t++){                int current_val = a[t] - (t -i);                if(current_val > max_val){                    max_val = current_val;                    j =t;                }            }            if(j !=i){                int temp = a[j] - (j -i);                for(int k=j; k>i; k--){                    a[k] =a[k-1];                }                a[i] =temp;            }        }        string res = \"\";        for(auto d: a) res += to_string(d);        cout << res << \"\\n\";    }}"
+        "#include <bits/stdc++.h>using namespace std; int main(){    ios::sync_with_stdio(false);    cin.tie(0);    int t;    cin >> t;    while(t--){        string s;        cin >> s;        int n = s.length();        vector<int> a(n);        for(int i=0;i<n;i++) a[i] = s[i]-'0';        for(int i=0;i<n;i++){            int end = min(i +9, n-1);            int max_val = a[i];            int j =i;            for(int t=i; t<=end; t++){                int current_val = a[t] - (t -i);                if(current_val > max_val){                    max_val = current_val;                    j =t;                }            }            if(j !=i){                int temp = a[j] - (j -i);                for(int k=j; k>i; k--){                    a[k] =a[k-1];                }                a[i] =temp;            }        }        string res = \"\";        for(auto d: a) res += to_string(d);        cout << res << \"\\n\";    }}"
     ],
     "input": "",
     "output": "",
@@ -161,5 +161,6 @@
     ],
     "dificulty": "1300",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\D. Digital string maximization.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\D. Digital string maximization.json",
+    "hint": []
 }

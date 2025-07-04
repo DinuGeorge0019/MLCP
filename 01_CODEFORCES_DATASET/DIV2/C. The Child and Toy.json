@@ -90,7 +90,7 @@
         ]
     },
     "name": "C. The Child and Toy",
-    "statement": "On Children\u2019s Day, the child got a toy from Delayyy as a present.\r\nHowever, the child is so naughty that he can\u2019t wait to destroy the\r\ntoy.The toy consists of parts and ropes. Each rope links two parts, but\r\nevery pair of parts is linked by at most one rope. To split the toy, the\r\nchild must remove all its parts. The child can remove a single part at a\r\ntime, and each remove consume an energy. Let\u2019s define an energy value of\r\npart as . The child spend energy for removing part where are the parts\r\nthat are directly connected to the -th and haven\u2019t been removed.Help the\r\nchild to find out, what is the minimum total energy he should spend to\r\nremove all parts.\r\n",
+    "statement": "On Children’s Day, the child got a toy from Delayyy as a present.\r\nHowever, the child is so naughty that he can’t wait to destroy the\r\ntoy.The toy consists of parts and ropes. Each rope links two parts, but\r\nevery pair of parts is linked by at most one rope. To split the toy, the\r\nchild must remove all its parts. The child can remove a single part at a\r\ntime, and each remove consume an energy. Let’s define an energy value of\r\npart as . The child spend energy for removing part where are the parts\r\nthat are directly connected to the -th and haven’t been removed.Help the\r\nchild to find out, what is the minimum total energy he should spend to\r\nremove all parts.\r\n",
     "solutions": [
         "#include <cstdio>\n#include <string>\n#include <cstdlib>\n#include <cstdlib>\n#include <cstring>\n#include <iostream>\n#include <algorithm>\n#include <set>\n#include <map>\n#include <vector>\n#define rep(i, a, b) for (int i = a; i < b; ++i)\n#define dep(i, a, b) for (int i = a; i > b; --i)\n#define N 1005\nusing namespace std;\n\nint val[N];\nint u, v, n, m, ans;\n\nint main()\n{\n\tscanf(\"%d %d\", &n, &m);\n\trep(i, 0, n)\n\t{\n\t\tscanf(\"%d\", &val[i]);\n\t}\n\trep(i, 0, m)\n\t{\n\t\tscanf(\"%d %d\", &u, &v);\n\t\tans += min(val[u-1], val[v-1]);\n\t}\n\tprintf(\"%d\", ans);\n}\n"
     ],
@@ -105,5 +105,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. The Child and Toy.json",
     "editorial_link": "https://codeforces.com//blog/entry/12513",
-    "editorial": "The best way to delete all n nodes is deleting them in decreasing order\r\nof their value. Proof: Consider each edge , it will contribute to the\r\ntotal cost or when it is deleted. If we delete the vertices in\r\ndecreasing order, then it will contribute only , so the total costs is\r\nthe lowest.\r\n"
+    "editorial": "The best way to delete all n nodes is deleting them in decreasing order\r\nof their value. Proof: Consider each edge , it will contribute to the\r\ntotal cost or when it is deleted. If we delete the vertices in\r\ndecreasing order, then it will contribute only , so the total costs is\r\nthe lowest.\r\n",
+    "hint": []
 }

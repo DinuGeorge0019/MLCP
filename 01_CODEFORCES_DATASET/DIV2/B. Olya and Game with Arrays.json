@@ -140,5 +140,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Olya and Game with Arrays.json",
     "editorial_link": "https://codeforces.com//blog/entry/119287",
-    "editorial": "TutorialTo increase the answer for each array separately, it is\r\nnecessary to move the minimum to another array. Then, notice that it is\r\noptimal to move all the minimums to one array. Let\u00e2\u0080\u0099s figure out which\r\narray. After moving the minimum from an array, the second minimum in the\r\noriginal array becomes the new minimum. Then, it is easy to notice that\r\nit is optimal to move all the minimums to the array with the smallest\r\nsecond minimum. After all the movements, we will have one array where\r\nthe minimum element is the smallest number among all the arrays, and\r\narrays where the minimum element is the second minimum in the original\r\narray.Therefore, the answer to the problem will be , where is the\r\nminimum element among all the arrays, is the sum of all the second\r\nminimums, and is the smallest second minimum.\r\n"
+    "editorial": "TutorialTo increase the answer for each array separately, it is\r\nnecessary to move the minimum to another array. Then, notice that it is\r\noptimal to move all the minimums to one array. Letâs figure out which\r\narray. After moving the minimum from an array, the second minimum in the\r\noriginal array becomes the new minimum. Then, it is easy to notice that\r\nit is optimal to move all the minimums to the array with the smallest\r\nsecond minimum. After all the movements, we will have one array where\r\nthe minimum element is the smallest number among all the arrays, and\r\narrays where the minimum element is the second minimum in the original\r\narray.Therefore, the answer to the problem will be , where is the\r\nminimum element among all the arrays, is the sum of all the second\r\nminimums, and is the smallest second minimum.\r\n",
+    "hint": [
+        "Hint 1 Do all numbers in a single array really matter?",
+        "Hint 2 If only the first minimum and the second minimum matter, what is the only way to increase a single array's beauty?",
+        "Hint 3 What can we say about the array which will have the smallest number in the end?"
+    ]
 }

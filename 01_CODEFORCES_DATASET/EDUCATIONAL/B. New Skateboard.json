@@ -138,5 +138,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. New Skateboard.json",
     "editorial_link": "https://codeforces.com//blog/entry/43203",
-    "editorial": "This is one of the problems suggested by Bayram Berdiyev bayram, Allanur\r\nShiriyev Allanur, Bekmyrat Atayev Bekmyrat.A. The key observation is\r\nthat the number is divisible by if and only if its last two digits forms\r\na number divisible by . So to calculate the answer at first we should\r\ncount the substrings of length one. Now let\u00e2\u0080\u0099s consider pairs of\r\nconsecutive digits. If they forms a two digit number that is divisible\r\nby we should increase the answer by the index of the right one. C++\r\nsolution Complexity: .\r\n"
+    "editorial": "This is one of the problems suggested by Bayram Berdiyev bayram, Allanur\r\nShiriyev Allanur, Bekmyrat Atayev Bekmyrat.A. The key observation is\r\nthat the number is divisible by if and only if its last two digits forms\r\na number divisible by . So to calculate the answer at first we should\r\ncount the substrings of length one. Now letâs consider pairs of\r\nconsecutive digits. If they forms a two digit number that is divisible\r\nby we should increase the answer by the index of the right one. C++\r\nsolution Complexity: .\r\n",
+    "hint": []
 }

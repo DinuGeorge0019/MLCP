@@ -133,5 +133,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Maximum Product.json",
     "editorial_link": "https://codeforces.com//blog/entry/82560",
-    "editorial": "First, if all numbers are less than , then you should print the product\r\nof the five biggest numbers of them.Otherwise, the maximum product must\r\nbe non-negative. Sort the numbers by their absolute value from big to\r\nsmall. If the first five numbers\u00e2\u0080\u0099 product is positive then print it.\r\nThen we can always change one of the five to one of the other numbers to\r\nmake this product positive. Enumerate which one to replace, and you can\r\nsolve this problem in time.\r\n"
+    "editorial": "First, if all numbers are less than , then you should print the product\r\nof the five biggest numbers of them.Otherwise, the maximum product must\r\nbe non-negative. Sort the numbers by their absolute value from big to\r\nsmall. If the first five numbersâ product is positive then print it.\r\nThen we can always change one of the five to one of the other numbers to\r\nmake this product positive. Enumerate which one to replace, and you can\r\nsolve this problem in time.\r\n",
+    "hint": []
 }

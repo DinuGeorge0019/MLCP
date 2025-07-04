@@ -108,7 +108,7 @@
         ]
     },
     "name": "A. Buying A House",
-    "statement": "Zane the wizard had never loved anyone before, until he fell in love\r\nwith a girl, whose name remains unknown to us. The girl lives in house\r\nof a village. There are houses in that village, lining in a straight\r\nline from left to right: house , house , ..., house . The village is\r\nalso well-structured: house and house () are exactly meters away. In\r\nthis village, some houses are occupied, and some are not. Indeed,\r\nunoccupied houses can be purchased.You will be given integers that\r\ndenote the availability and the prices of the houses. If house is\r\noccupied, and therefore cannot be bought, then equals . Otherwise, house\r\ncan be bought, and represents the money required to buy it, in\r\ndollars.As Zane has only dollars to spare, it becomes a challenge for\r\nhim to choose the house to purchase, so that he could live as near as\r\npossible to his crush. Help Zane determine the minimum distance from his\r\ncrush\u2019s house to some house he can afford, to help him succeed in his\r\nlove.\r\n",
+    "statement": "Zane the wizard had never loved anyone before, until he fell in love\r\nwith a girl, whose name remains unknown to us. The girl lives in house\r\nof a village. There are houses in that village, lining in a straight\r\nline from left to right: house , house , ..., house . The village is\r\nalso well-structured: house and house () are exactly meters away. In\r\nthis village, some houses are occupied, and some are not. Indeed,\r\nunoccupied houses can be purchased.You will be given integers that\r\ndenote the availability and the prices of the houses. If house is\r\noccupied, and therefore cannot be bought, then equals . Otherwise, house\r\ncan be bought, and represents the money required to buy it, in\r\ndollars.As Zane has only dollars to spare, it becomes a challenge for\r\nhim to choose the house to purchase, so that he could live as near as\r\npossible to his crush. Help Zane determine the minimum distance from his\r\ncrush’s house to some house he can afford, to help him succeed in his\r\nlove.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\nint n, m, k, a[10000];\nint main() {\n\tcin >> n >> m >> k;\n\tint ans = n + 1;\n\tm--;\n\tfor (int i = 0; i < n; i++) {\n\t\tcin >> a[i];\n\t\tif (a[i] != 0 && a[i] <= k) {\n\t\t\tans = min(ans, abs(m - i));\n\t\t}\n\t}\n\tcout << ans * 10 << endl;\n}"
     ],
@@ -122,5 +122,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Buying A House.json",
     "editorial_link": "https://codeforces.com/blog/entry/51527",
-    "editorial": "This is a simple implementation problem.Let the be infinity initially.\r\nIterate through the houses. Suppose we are considering house , update\r\nthe if and only if1) ,2) , and3) < .The answer is .This solution runs in\r\n.\r\n"
+    "editorial": "This is a simple implementation problem.Let the be infinity initially.\r\nIterate through the houses. Suppose we are considering house , update\r\nthe if and only if1) ,2) , and3) < .The answer is .This solution runs in\r\n.\r\n",
+    "hint": []
 }

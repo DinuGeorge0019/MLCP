@@ -122,5 +122,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Gluttony.json",
     "editorial_link": "https://codeforces.com//blog/entry/55841",
-    "editorial": "Sort the array and shift it by one. This array will be an answer.\n\nProof:\n\nWhen we shift the sorted array all of the elements become greater except the first one, consider f?=?{1,?2,?...,?n} and t?=?{x1,?x2,?...,?xk} if 1 wasn't in t we would have\n\n\notherwise consider q?=?{y1,?y2,?...,?yn?-?k}?=?f?-?t then 1 can't be in q and we have\n\nso\n\nand we are done!"
+    "editorial": "Sort the array and shift it by one. This array will be an answer.\n\nProof:\n\nWhen we shift the sorted array all of the elements become greater except the first one, consider f?=?{1,?2,?...,?n} and t?=?{x1,?x2,?...,?xk} if 1 wasn't in t we would have\n\n\notherwise consider q?=?{y1,?y2,?...,?yn?-?k}?=?f?-?t then 1 can't be in q and we have\n\nso\n\nand we are done!",
+    "hint": []
 }

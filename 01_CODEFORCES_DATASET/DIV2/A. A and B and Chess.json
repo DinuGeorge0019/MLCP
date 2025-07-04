@@ -116,7 +116,7 @@
         ]
     },
     "name": "A. A and B and Chess",
-    "statement": "To train their logical thinking and solve problems better, A and B\r\ndecided to play chess. During the game A wondered whose position is now\r\nstronger.For each chess piece we know its weight: the queen\u2019s weight is\r\n9, the rook\u2019s weight is 5, the bishop\u2019s weight is 3, the knight\u2019s weight\r\nis 3, the pawn\u2019s weight is 1, the king\u2019s weight isn\u2019t considered in\r\nevaluating position. The player\u2019s weight equals to the sum of weights of\r\nall his pieces on the board.As A doesn\u2019t like counting, he asked you to\r\nhelp him determine which player has the larger position weight.\r\n",
+    "statement": "To train their logical thinking and solve problems better, A and B\r\ndecided to play chess. During the game A wondered whose position is now\r\nstronger.For each chess piece we know its weight: the queen’s weight is\r\n9, the rook’s weight is 5, the bishop’s weight is 3, the knight’s weight\r\nis 3, the pawn’s weight is 1, the king’s weight isn’t considered in\r\nevaluating position. The player’s weight equals to the sum of weights of\r\nall his pieces on the board.As A doesn’t like counting, he asked you to\r\nhelp him determine which player has the larger position weight.\r\n",
     "solutions": [
         "#include<iostream>\n#include<fstream>\n#include<cstdio>\n#include<vector>\n#include<string>\n#include<cstring>\n#include<queue>\n#include<map>\n#include<set>\n#include<algorithm>\n#include<iomanip>\n#include<bitset>\nusing namespace std;\n\nchar a[1000];\n\nint main() {\n//    freopen(\"ttt\", \"r\", stdin);\n\n    int s1 = 0, s2 = 0;\n\n    for(int i = 1; i <= 8; ++i) {\n        cin.getline(a, 1000);\n        for(int j = 0; j < 8; ++j) {\n            if(a[j] == 'Q')\n                s1 += 9;\n\n            if(a[j] == 'q')\n                s2 += 9;\n\n            if(a[j] == 'R')\n                s1 += 5;\n\n            if(a[j] == 'r')\n                s2 += 5;\n\n            if(a[j] == 'B')\n                s1 += 3;\n\n            if(a[j] == 'b')\n                s2 += 3;\n\n            if(a[j] == 'N')\n                s1 += 3;\n\n            if(a[j] == 'n')\n                s2 += 3;\n\n            if(a[j] == 'P')\n                s1 += 1;\n\n            if(a[j] == 'p')\n                s2 += 1;\n        }\n    }\n\n    if(s1 > s2) {\n        cout << \"White\";\n    return 0;\n    }\n    if(s2 > s1) {\n        cout << \"Black\";\n        return 0;\n    }\n    cout << \"Draw\";\n\n    return 0;\n}\n"
     ],
@@ -129,5 +129,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. A and B and Chess.json",
     "editorial_link": "https://codeforces.com/blog/entry/16687",
-    "editorial": "Iterate over the board and count scores of both player. Then just output the answer."
+    "editorial": "Iterate over the board and count scores of both player. Then just output the answer.",
+    "hint": []
 }

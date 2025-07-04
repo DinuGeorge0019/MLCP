@@ -171,5 +171,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\E. Scuza.json",
     "editorial_link": "https://codeforces.com//blog/entry/107962",
-    "editorial": "Let\u00e2\u0080\u0099s compute the prefix sums of the array : let . Rephrasing the\r\nproblem: for each question containing an integer , we need to find the\r\nlargest such that are all at most , and then output . In other words,\r\n.Let\u00e2\u0080\u0099s make the prefix maximums of the array: let . Then we need to find\r\nthe largest such that , which is doable using binary search, since the\r\narray is non-decreasing. Once we find the index , we simply need to\r\noutput .The time complexity is per testcase.\r\n"
+    "editorial": "Letâs compute the prefix sums of the array : let . Rephrasing the\r\nproblem: for each question containing an integer , we need to find the\r\nlargest such that are all at most , and then output . In other words,\r\n.Letâs make the prefix maximums of the array: let . Then we need to find\r\nthe largest such that , which is doable using binary search, since the\r\narray is non-decreasing. Once we find the index , we simply need to\r\noutput .The time complexity is per testcase.\r\n",
+    "hint": []
 }

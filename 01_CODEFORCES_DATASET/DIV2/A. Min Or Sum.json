@@ -134,5 +134,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Min Or Sum.json",
     "editorial_link": "https://codeforces.com//blog/entry/100153",
-    "editorial": "The answer is . Here is the proof:Let . After an operation, the value\r\nwon\u00e2\u0080\u0099t change.Since, , the sum of the array has a lower bound of . And\r\nthis sum can be constructed easily: for all , set to and to .\r\n"
+    "editorial": "The answer is . Here is the proof:Let . After an operation, the value\r\nwonât change.Since, , the sum of the array has a lower bound of . And\r\nthis sum can be constructed easily: for all , set to and to .\r\n",
+    "hint": []
 }

@@ -150,7 +150,7 @@
         ]
     },
     "name": "D. Catching Cheaters",
-    "statement": "You are given two strings A and B representing essays of two students\r\nwho are suspected cheaters. For any two strings C, D we define their\r\nsimilarity score S(C,D) as 4\r\ncdot LCS(C,D) - |C| - |D|, where LCS(C,D) denotes the length of the\r\nLongest Common of strings C and D. You believe that only some part of\r\nthe essays could have been copied, therefore you\u2019re interested in their\r\n.Calculate the maximal similarity score over all pairs of substrings.\r\nMore formally, output maximal S(C, D) over all pairs (C, D), where C is\r\nsome substring of A, and D is some substring of B. If X is a string, |X|\r\ndenotes its length.A string a is a of a string b if a can be obtained\r\nfrom b by deletion of several (possibly, zero or all) characters from\r\nthe beginning and several (possibly, zero or all) characters from the\r\nend.A string a is a of a string b if a can be obtained from b by\r\ndeletion of several (possibly, zero or all) characters. Pay attention to\r\nthe difference between the and , as they both appear in the problem\r\nstatement. You may wish to read the Wikipedia page about the Longest\r\nCommon Subsequence problem.\r\n",
+    "statement": "You are given two strings A and B representing essays of two students\r\nwho are suspected cheaters. For any two strings C, D we define their\r\nsimilarity score S(C,D) as 4\r\ncdot LCS(C,D) - |C| - |D|, where LCS(C,D) denotes the length of the\r\nLongest Common of strings C and D. You believe that only some part of\r\nthe essays could have been copied, therefore you’re interested in their\r\n.Calculate the maximal similarity score over all pairs of substrings.\r\nMore formally, output maximal S(C, D) over all pairs (C, D), where C is\r\nsome substring of A, and D is some substring of B. If X is a string, |X|\r\ndenotes its length.A string a is a of a string b if a can be obtained\r\nfrom b by deletion of several (possibly, zero or all) characters from\r\nthe beginning and several (possibly, zero or all) characters from the\r\nend.A string a is a of a string b if a can be obtained from b by\r\ndeletion of several (possibly, zero or all) characters. Pay attention to\r\nthe difference between the and , as they both appear in the problem\r\nstatement. You may wish to read the Wikipedia page about the Longest\r\nCommon Subsequence problem.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\n\nusing namespace std;\n\nchar A[5010],B[5010];\nint N, M;\nint f[5010][5010];\n\nint main() {\n    scanf(\"%d%d\",&N,&M);\n    scanf(\"%s\", A + 1);\n    scanf(\"%s\", B + 1);\n    int ans = 0;\n    for (int i=1;i<=N;i++) {\n        for (int j=1;j<=M;j++) {\n            f[i][j] = max(f[i - 1][j] - 1, f[i][j - 1] - 1);\n            if (A[i] == B[j]) {\n                f[i][j] = max(f[i][j], f[i - 1][j - 1] + 2);\n                f[i][j] = max(f[i][j], 2);\n            }\n            ans = max(ans, f[i][j]);\n        }\n    }\n    printf(\"%d\\n\",ans);\n}"
     ],
@@ -165,5 +165,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Catching Cheaters.json",
     "editorial_link": "https://codeforces.com//blog/entry/82067",
-    "editorial": "Key observationIf a substring has a negative score, we can throw it away\r\nand start from scratch.\r\n"
+    "editorial": "Key observationIf a substring has a negative score, we can throw it away\r\nand start from scratch.\r\n",
+    "hint": [
+        "Hint This is a dynamic programming problem. Recall the DP calculating the Longest Common Substring for two strings. What similarities are there in our setup, and what differs?"
+    ]
 }

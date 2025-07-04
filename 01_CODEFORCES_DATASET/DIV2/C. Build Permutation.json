@@ -138,5 +138,11 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Build Permutation.json",
     "editorial_link": "https://codeforces.com//blog/entry/105419",
-    "editorial": "First, let\u00e2\u0080\u0099s prove that the answer always exists. Let\u00e2\u0080\u0099s call the\r\nsmallest square number that is not smaller than is . Therefore , which\r\nmeans . Proof. So we can fill for . Using this method we can recursively\r\nreduce to , then all the way down to . We can prove that , as . Time\r\ncomplexity: Solution\r\n"
+    "editorial": "First, letâs prove that the answer always exists. Letâs call the\r\nsmallest square number that is not smaller than is . Therefore , which\r\nmeans . Proof. So we can fill for . Using this method we can recursively\r\nreduce to , then all the way down to . We can prove that , as . Time\r\ncomplexity: Solution\r\n",
+    "hint": [
+        "Hint 1 Is there any case that the answer doesn't exist?",
+        "Hint 2 What if:",
+        "Hint 3 Construct the suffix instead of the prefix.",
+        "Hint 4 With any positive integer , there is at least one square number in . Proof."
+    ]
 }

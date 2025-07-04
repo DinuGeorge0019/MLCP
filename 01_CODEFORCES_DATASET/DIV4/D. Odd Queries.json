@@ -191,5 +191,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\D. Odd Queries.json",
     "editorial_link": "https://codeforces.com//blog/entry/114143",
-    "editorial": "Note that for each question, the resulting array is So, the sum of the\r\nelements of the new array after each question is We can compute and in\r\ntime by precomputing the sum of all prefixes and suffixes, or\r\nalternatively by using the prefix sums technique. So we can find the sum\r\neach time in per question, and just check if it\u00e2\u0080\u0099s odd or not. The time\r\ncomplexity is .\r\n"
+    "editorial": "Note that for each question, the resulting array is So, the sum of the\r\nelements of the new array after each question is We can compute and in\r\ntime by precomputing the sum of all prefixes and suffixes, or\r\nalternatively by using the prefix sums technique. So we can find the sum\r\neach time in per question, and just check if itâs odd or not. The time\r\ncomplexity is .\r\n",
+    "hint": []
 }

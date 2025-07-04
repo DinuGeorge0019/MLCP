@@ -187,5 +187,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Last Year's Substring.json",
     "editorial_link": "https://codeforces.com//blog/entry/85594",
-    "editorial": "Let\u00e2\u0080\u0099s see how the deleted substring should look so that after deleting\r\nit, the string turns into the string \"\". The length of the string must\r\nbe . Then we can iterate over all substrings of the string of length\r\n(there are no more than five such substrings) and look at the string\r\nobtained after deleting the substring. That is, we need to check that\r\none of the following character sequence matches the : ; ; ; ; ;\r\n"
+    "editorial": "Letâs see how the deleted substring should look so that after deleting\r\nit, the string turns into the string \"\". The length of the string must\r\nbe . Then we can iterate over all substrings of the string of length\r\n(there are no more than five such substrings) and look at the string\r\nobtained after deleting the substring. That is, we need to check that\r\none of the following character sequence matches the : ; ; ; ; ;\r\n",
+    "hint": []
 }

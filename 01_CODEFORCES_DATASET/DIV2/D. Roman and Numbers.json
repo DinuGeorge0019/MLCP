@@ -93,7 +93,7 @@
         ]
     },
     "name": "D. Roman and Numbers",
-    "statement": "Roman is a young mathematician, very famous in Uzhland. Unfortunately,\r\nSereja doesn\u2019t think so. To make Sereja change his mind, Roman is ready\r\nto solve any mathematical problem. After some thought, Sereja asked Roma\r\nto find, how many numbers are close to number , modulo .Number is\r\nconsidered close to number modulo , if: it can be obtained by\r\nrearranging the digits of number , it doesn\u2019t have any leading zeroes,\r\nthe remainder after dividing number by equals 0. Roman is a good\r\nmathematician, but the number of such numbers is too huge for him. So he\r\nasks you to help him.\r\n",
+    "statement": "Roman is a young mathematician, very famous in Uzhland. Unfortunately,\r\nSereja doesn’t think so. To make Sereja change his mind, Roman is ready\r\nto solve any mathematical problem. After some thought, Sereja asked Roma\r\nto find, how many numbers are close to number , modulo .Number is\r\nconsidered close to number modulo , if: it can be obtained by\r\nrearranging the digits of number , it doesn’t have any leading zeroes,\r\nthe remainder after dividing number by equals 0. Roman is a good\r\nmathematician, but the number of such numbers is too huge for him. So he\r\nasks you to help him.\r\n",
     "solutions": [
         "#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <iostream>\n#include <algorithm>\n\nusing namespace std;\n\nlong long n;\nint f[20],num,m,maxn,g[10];\nlong long dp[1<<18][100];\nbool flag;\n\nint main()\n{\n    memset(f,0,sizeof(f));\n    memset(dp,0,sizeof(dp));\n    cin>>n>>m;\n    num=0;\n    if(n%m==0)flag=true;\n    else flag=false;\n    while(n)\n    {\n        f[num++]=n%10;\n        n=n/10;\n    }\n    maxn=1<<num;\n    dp[0][0]=1;\n    for(int k=0;k<num;k++)\n        if(f[k])dp[1<<k][f[k]%m]+=dp[0][0];\n    for(int i=1;i<maxn;i++)\n        for(int j=0;j<m;j++)\n        {\n            if(!dp[i][j])continue;\n            for(int k=0;k<num;k++)\n                if(!(i&(1<<k)))dp[i|(1<<k)][(j*10+f[k])%m]+=dp[i][j];\n        }\n    memset(g,0,sizeof(g));\n    for(int i=0;i<num;i++)\n        g[f[i]]++;\n    long long ans=dp[maxn-1][0];\n    for(int i=0;i<10;i++)\n        for(int j=1;j<=g[i];j++)\n            ans=ans/j;\n    //if(flag)ans--;\n    cout<<ans;\n    return 0;\n}\n"
     ],
@@ -110,5 +110,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Roman and Numbers.json",
     "editorial_link": "https://codeforces.com//blog/entry/10842",
-    "editorial": "This problem we can be attributed to the dynamic programming. We must\r\nusing mask and dynamic. We have dynamic dp[i][x], when i mask of\r\nreshuffle and x remainder on dividing by m. if we want to add number\r\na[j], we must using it: In the end we must answer to divide by the\r\nfactorial number of occurrences of each digit. Solution D\r\n"
+    "editorial": "This problem we can be attributed to the dynamic programming. We must\r\nusing mask and dynamic. We have dynamic dp[i][x], when i mask of\r\nreshuffle and x remainder on dividing by m. if we want to add number\r\na[j], we must using it: In the end we must answer to divide by the\r\nfactorial number of occurrences of each digit. Solution D\r\n",
+    "hint": []
 }

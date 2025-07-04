@@ -167,5 +167,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\C. Clock Conversion.json",
     "editorial_link": "https://codeforces.com//blog/entry/127664",
-    "editorial": "From 24-hour format to 12-hour format, the minutes are the same. For the\r\nhours: If is , then it should become . If is from to , then it should\r\nbecome . If is , then it should become . If is from to , then it should\r\nbecome . A fast way to implement this: replace the hours by , and if\r\nthis value is , set it to . Be careful to handle the case when and are\r\nsingle digits.\r\n"
+    "editorial": "From 24-hour format to 12-hour format, the minutes are the same. For the\r\nhours: If is , then it should become . If is from to , then it should\r\nbecome . If is , then it should become . If is from to , then it should\r\nbecome . A fast way to implement this: replace the hours by , and if\r\nthis value is , set it to . Be careful to handle the case when and are\r\nsingle digits.\r\n",
+    "hint": []
 }

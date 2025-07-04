@@ -104,5 +104,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Fox And Jumping.json",
     "editorial_link": "https://codeforces.com/blog/entry/16173",
-    "editorial": "This task equals to: what is the minimal sum of costs that we can select\r\nk cards, so their GCD is 1. First observation is that: means that for\r\nany prime , there exist i such that is not dividable by . So we only\r\ncare about what prime factors a number contain. (So for example, 12 ->\r\n{2, 3}, 6 -> {2, 3}, 9 -> {3]}) The second observation is: If then it\r\nhas at most 9 prime factors. So after we select one number, we only care\r\nabout these 9 or less primes. Then this problem equals to set covering\r\nproblem (SCP), it can be done by mask DP. It can run in about O(2^9 *\r\nn^2).\r\n"
+    "editorial": "This task equals to: what is the minimal sum of costs that we can select\r\nk cards, so their GCD is 1. First observation is that: means that for\r\nany prime , there exist i such that is not dividable by . So we only\r\ncare about what prime factors a number contain. (So for example, 12 ->\r\n{2, 3}, 6 -> {2, 3}, 9 -> {3]}) The second observation is: If then it\r\nhas at most 9 prime factors. So after we select one number, we only care\r\nabout these 9 or less primes. Then this problem equals to set covering\r\nproblem (SCP), it can be done by mask DP. It can run in about O(2^9 *\r\nn^2).\r\n",
+    "hint": []
 }

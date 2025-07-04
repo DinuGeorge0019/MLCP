@@ -99,5 +99,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Hongcow Buys a Deck of Cards.json",
     "editorial_link": "https://codeforces.com//blog/entry/49126",
-    "editorial": "Also note that if r_i or b_i >= n, we need to collect tokens no matter\r\nwhat since those costs can\u00e2\u0080\u0099t be offset. So, we can assume that r_i, b_i\r\n<= n. Let\u00e2\u0080\u0099s only buy tokens when we need them. Note that after buying a\r\ncard, you will have either 0 red tokens or 0 blue tokens, so our dp\r\nstate can be described by [mask][which one is zero][how many of the\r\nother] The dimensions of this dp table are 2^n * 2 * (n^2) (n^2 because\r\nthe costs to buy cards is at most n). See the code for more details on\r\nhow to update this dp. code\r\n"
+    "editorial": "Also note that if r_i or b_i >= n, we need to collect tokens no matter\r\nwhat since those costs canât be offset. So, we can assume that r_i, b_i\r\n<= n. Letâs only buy tokens when we need them. Note that after buying a\r\ncard, you will have either 0 red tokens or 0 blue tokens, so our dp\r\nstate can be described by [mask][which one is zero][how many of the\r\nother] The dimensions of this dp table are 2^n * 2 * (n^2) (n^2 because\r\nthe costs to buy cards is at most n). See the code for more details on\r\nhow to update this dp. code\r\n",
+    "hint": []
 }

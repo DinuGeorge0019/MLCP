@@ -188,5 +188,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\A. Codeforces Checking.json",
     "editorial_link": "https://codeforces.com//blog/entry/112282",
-    "editorial": "You need to implement what is written in the statement. You can either\r\nuse an if-statement for each of the characters , or you can iterate\r\nthrough the string check if the current character equals .\r\n"
+    "editorial": "You need to implement what is written in the statement. You can either\r\nuse an if-statement for each of the characters , or you can iterate\r\nthrough the string check if the current character equals .\r\n",
+    "hint": []
 }

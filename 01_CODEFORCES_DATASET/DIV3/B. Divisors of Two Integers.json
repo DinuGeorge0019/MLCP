@@ -169,5 +169,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Divisors of Two Integers.json",
     "editorial_link": "https://codeforces.com//blog/entry/64751",
-    "editorial": "Let\u00e2\u0080\u0099s take a look on the maximum element of the given array. Suddenly,\r\nthis number is (or , the order doesn\u00e2\u0080\u0099t matter). Okay, what would we do\r\nif we know and merged list of divisors of and ? Let\u00e2\u0080\u0099s remove all\r\ndivisors of and see what we got. The maximum element in the remaining\r\narray is . So, the problem is solved.\r\n"
+    "editorial": "Letâs take a look on the maximum element of the given array. Suddenly,\r\nthis number is (or , the order doesnât matter). Okay, what would we do\r\nif we know and merged list of divisors of and ? Letâs remove all\r\ndivisors of and see what we got. The maximum element in the remaining\r\narray is . So, the problem is solved.\r\n",
+    "hint": []
 }

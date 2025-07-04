@@ -142,5 +142,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. k-Factorization.json",
     "editorial_link": "https://codeforces.com//blog/entry/51588",
-    "editorial": "There are many approaches to this problem. You can, for example,\r\nfactorize , store all multipliers in a list, and while size of this list\r\nis greater than , take any two elements of this list and replace them\r\nwith their product. If the initial size of this list is less than , then\r\nanswer is .\r\n"
+    "editorial": "There are many approaches to this problem. You can, for example,\r\nfactorize , store all multipliers in a list, and while size of this list\r\nis greater than , take any two elements of this list and replace them\r\nwith their product. If the initial size of this list is less than , then\r\nanswer is .\r\n",
+    "hint": []
 }

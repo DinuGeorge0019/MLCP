@@ -166,5 +166,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Binary Cafe.json",
     "editorial_link": "https://codeforces.com//blog/entry/117060",
-    "editorial": "On the one hand, if Tema had an infinite number of coins, he could buy\r\nany set of desserts offered in the coffee shop. This can be done in\r\nways, since each of the desserts can either be taken or not taken.On the\r\nother hand, if the coffee shop offered an infinite number of desserts\r\nfor tasting, Tema could spend any amount of coins he has - from to .\r\nEach number of coins corresponds to its unique set of desserts, since\r\nany number is uniquely represented as a sum of powers of two.Combining\r\nthese two observations, we get the final answer - .\r\n"
+    "editorial": "On the one hand, if Tema had an infinite number of coins, he could buy\r\nany set of desserts offered in the coffee shop. This can be done in\r\nways, since each of the desserts can either be taken or not taken.On the\r\nother hand, if the coffee shop offered an infinite number of desserts\r\nfor tasting, Tema could spend any amount of coins he has - from to .\r\nEach number of coins corresponds to its unique set of desserts, since\r\nany number is uniquely represented as a sum of powers of two.Combining\r\nthese two observations, we get the final answer - .\r\n",
+    "hint": []
 }

@@ -150,5 +150,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Game with Cards.json",
     "editorial_link": "https://codeforces.com//blog/entry/103163",
-    "editorial": "Let the maximum card among all cards be .If only one player has a card\r\nof value of , then he/she can win by playing it on the first turn or on\r\nthe second turn; the opponent won\u00e2\u0080\u0099t be able to respond with any of their\r\ncards.Otherwise (if both players have a card with value ), the player\r\nwho plays this card earlier wins the game. So, in this case, the winner\r\nis the player who makes the first turn.\r\n"
+    "editorial": "Let the maximum card among all cards be .If only one player has a card\r\nof value of , then he/she can win by playing it on the first turn or on\r\nthe second turn; the opponent wonât be able to respond with any of their\r\ncards.Otherwise (if both players have a card with value ), the player\r\nwho plays this card earlier wins the game. So, in this case, the winner\r\nis the player who makes the first turn.\r\n",
+    "hint": []
 }

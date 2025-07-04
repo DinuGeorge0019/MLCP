@@ -154,5 +154,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C. Three Parts of the Array.json",
     "editorial_link": "https://codeforces.com//blog/entry/60672",
-    "editorial": "Since the given array consists of positive integers, for each value of ,\r\nthere can be at most one value of such that . We can use binary search\r\non the array of prefix sums of to find the correct value of , given that\r\nit exists. If it does exist and , this is a candidate solution so we\r\nstore it. Alternatively, we can use the two pointers trick when\r\nincreases, cannot decrease. Be careful to use 64 bit integers to store\r\nsums.Overall complexity is or .\r\n"
+    "editorial": "Since the given array consists of positive integers, for each value of ,\r\nthere can be at most one value of such that . We can use binary search\r\non the array of prefix sums of to find the correct value of , given that\r\nit exists. If it does exist and , this is a candidate solution so we\r\nstore it. Alternatively, we can use the two pointers trick when\r\nincreases, cannot decrease. Be careful to use 64 bit integers to store\r\nsums.Overall complexity is or .\r\n",
+    "hint": []
 }

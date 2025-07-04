@@ -162,5 +162,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Best Subsegment.json",
     "editorial_link": "https://codeforces.com//blog/entry/65365",
-    "editorial": "There is a property of arithmetic mean: and the equality holds when .\r\nObviously, we can always gain maximum arithmetic mean equal to by taking\r\nsingle maximum element from . Considering the property above, we need to\r\ntake only maximum elements in our subsegment, that\u00e2\u0080\u0099s why we need to find\r\nthe longest subsegment consisting only of maximum elements.\r\n"
+    "editorial": "There is a property of arithmetic mean: and the equality holds when .\r\nObviously, we can always gain maximum arithmetic mean equal to by taking\r\nsingle maximum element from . Considering the property above, we need to\r\ntake only maximum elements in our subsegment, thatâs why we need to find\r\nthe longest subsegment consisting only of maximum elements.\r\n",
+    "hint": []
 }

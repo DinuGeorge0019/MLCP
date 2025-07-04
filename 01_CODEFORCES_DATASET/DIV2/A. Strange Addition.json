@@ -95,5 +95,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Strange Addition.json",
     "editorial_link": "https://codeforces.com/blog/entry/7712",
-    "editorial": "All you have to do is implement following algorithm:\n\nIf we have numbers 0 or 100, we take them to needed subset.\nIf we got number greater than 0 and less than 10, we take it.\nIf we got number  divisible by 10 we take it.\nIn case we have no numbers of second and third type, we take a number  that is not divisible by 10"
+    "editorial": "All you have to do is implement following algorithm:\n\nIf we have numbers 0 or 100, we take them to needed subset.\nIf we got number greater than 0 and less than 10, we take it.\nIf we got number  divisible by 10 we take it.\nIn case we have no numbers of second and third type, we take a number  that is not divisible by 10",
+    "hint": []
 }

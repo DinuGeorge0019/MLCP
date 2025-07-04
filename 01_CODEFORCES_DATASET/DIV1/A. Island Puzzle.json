@@ -127,5 +127,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Island Puzzle.json",
     "editorial_link": "https://codeforces.com//blog/entry/43467",
-    "editorial": "Notice that, as we move the empty pedestal around the circle, we\r\ncyclically permute the statues (and the empty pedestal can be anywhere).\r\nThus, we can reach one state from another if and only if, after removing\r\nthe empty pedestal, they are cyclic shifts of each other. The starting\r\nand ending configurations are permutations, so we can check this in\r\nlinear time. Runtime:\r\n"
+    "editorial": "Notice that, as we move the empty pedestal around the circle, we\r\ncyclically permute the statues (and the empty pedestal can be anywhere).\r\nThus, we can reach one state from another if and only if, after removing\r\nthe empty pedestal, they are cyclic shifts of each other. The starting\r\nand ending configurations are permutations, so we can check this in\r\nlinear time. Runtime:\r\n",
+    "hint": []
 }

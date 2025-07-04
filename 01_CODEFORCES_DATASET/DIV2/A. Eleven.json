@@ -97,7 +97,7 @@
         ]
     },
     "name": "A. Eleven",
-    "statement": "Eleven wants to choose a new name for herself. As a bunch of geeks, her\r\nfriends suggested an algorithm to choose a name for her. Eleven wants\r\nher name to have exactly characters. Her friend suggested that her name\r\nshould only consist of uppercase and lowercase letters \u201d. More\r\nprecisely, they suggested that the -th letter of her name should be \u201d\r\n(uppercase) if is a member of Fibonacci sequence, and \u201d (lowercase)\r\notherwise. The letters in the name are numbered from to . Fibonacci\r\nsequence is the sequence where , , (). As her friends are too young to\r\nknow what Fibonacci sequence is, they asked you to help Eleven determine\r\nher new name.\r\n",
+    "statement": "Eleven wants to choose a new name for herself. As a bunch of geeks, her\r\nfriends suggested an algorithm to choose a name for her. Eleven wants\r\nher name to have exactly characters. Her friend suggested that her name\r\nshould only consist of uppercase and lowercase letters ”. More\r\nprecisely, they suggested that the -th letter of her name should be ”\r\n(uppercase) if is a member of Fibonacci sequence, and ” (lowercase)\r\notherwise. The letters in the name are numbered from to . Fibonacci\r\nsequence is the sequence where , , (). As her friends are too young to\r\nknow what Fibonacci sequence is, they asked you to help Eleven determine\r\nher new name.\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\n\nusing namespace std;\n\ntypedef long long ll;\ntypedef pair<int, int> pii;\n\n#define F first\n#define S second\n\nint f[200];\n\nint main(){\n\tios::sync_with_stdio(false);\n\tcin.tie(0);\n\tint n;\tcin >> n;\n\tf[1] = f[2] = 1;\n\tfor (int i = 3; i < 20; i++)\n\t\tf[i] = f[i-1] + f[i-2];\n\tfor (int i = 1; i <= n; i++){\n\t\tbool fl = 0;\n\t\tfor (int j = 1; j < 20; j++)\n\t\t\tif (i == f[j])\n\t\t\t\tfl = 1;\n\t\tif (fl)\n\t\t\tcout << \"O\";\n\t\telse\n\t\t\tcout << \"o\";\n\t}\n\tcout << \"\\n\";\n\treturn 0;\n}\n"
     ],
@@ -111,5 +111,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Eleven.json",
     "editorial_link": "https://codeforces.com/blog/entry/57420",
-    "editorial": "Calculate the first Fibonacci sequence elements, where is the greatest\r\ninteger such that . Let be a string consisting of lowercase \u00e2\u0080\u0099o\u00e2\u0080\u0099 letters.\r\nThen for each , perform = \u00e2\u0080\u0099O\u00e2\u0080\u0099. The answer is .Pseudo code:s = \"\"for i =\r\n0 to n-1 s[i] = \u00e2\u0080\u0099o\u00e2\u0080\u0099x = y = 1while y <= n s[y-1] = \u00e2\u0080\u0099O\u00e2\u0080\u0099 tmp = y y = y + x\r\nx = tmpprint(s)Total time complexity:\r\n"
+    "editorial": "Calculate the first Fibonacci sequence elements, where is the greatest\r\ninteger such that . Let be a string consisting of lowercase âoâ letters.\r\nThen for each , perform = âOâ. The answer is .Pseudo code:s = \"\"for i =\r\n0 to n-1 s[i] = âoâx = y = 1while y <= n s[y-1] = âOâ tmp = y y = y + x\r\nx = tmpprint(s)Total time complexity:\r\n",
+    "hint": []
 }

@@ -142,5 +142,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. Math Show.json",
     "editorial_link": "https://codeforces.com//blog/entry/54357",
-    "editorial": "Constraints tell us that we can avoid making any weird assumptions for\r\nany greedy solutions. You can easily count the answer for some fixed\r\namount of tasks completed. Just sort all left subtasks (but the longest\r\nto solve in each uncompleted task) and take the easiest till the time is\r\nover. Now you can iterate from to tasks completed and take maximum over\r\nall options.Overall complexity: .\r\n"
+    "editorial": "Constraints tell us that we can avoid making any weird assumptions for\r\nany greedy solutions. You can easily count the answer for some fixed\r\namount of tasks completed. Just sort all left subtasks (but the longest\r\nto solve in each uncompleted task) and take the easiest till the time is\r\nover. Now you can iterate from to tasks completed and take maximum over\r\nall options.Overall complexity: .\r\n",
+    "hint": []
 }

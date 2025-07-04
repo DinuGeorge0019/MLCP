@@ -160,5 +160,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Remove Smallest.json",
     "editorial_link": "https://codeforces.com//blog/entry/81082",
-    "editorial": "Firstly, let\u00e2\u0080\u0099s sort the initial array. Then it\u00e2\u0080\u0099s obvious that the best\r\nway to remove elements is from smallest to biggest. And if there is at\r\nleast one such that and then the answer is \"\", because we have no way to\r\nremove . Otherwise, the answer is \"\".\r\n"
+    "editorial": "Firstly, letâs sort the initial array. Then itâs obvious that the best\r\nway to remove elements is from smallest to biggest. And if there is at\r\nleast one such that and then the answer is \"\", because we have no way to\r\nremove . Otherwise, the answer is \"\".\r\n",
+    "hint": []
 }

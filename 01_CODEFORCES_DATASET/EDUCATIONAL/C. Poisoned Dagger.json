@@ -154,5 +154,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\C. Poisoned Dagger.json",
     "editorial_link": "https://codeforces.com//blog/entry/97467",
-    "editorial": "Let\u00e2\u0080\u0099s find out the total damage for a fixed value of . Since the effect\r\nof the poison from the -th attack deals damage seconds for and seconds\r\nfor , then the total damage is . We can see that the higher the value of\r\n, the greater the total sum. So we can do a binary search on and find\r\nthe minimum value when the sum is greater than or equal to .\r\n"
+    "editorial": "Letâs find out the total damage for a fixed value of . Since the effect\r\nof the poison from the -th attack deals damage seconds for and seconds\r\nfor , then the total damage is . We can see that the higher the value of\r\n, the greater the total sum. So we can do a binary search on and find\r\nthe minimum value when the sum is greater than or equal to .\r\n",
+    "hint": []
 }

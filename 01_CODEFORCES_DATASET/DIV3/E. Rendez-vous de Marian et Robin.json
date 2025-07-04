@@ -186,5 +186,11 @@
     ],
     "dificulty": "1800",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\E. Rendez-vous de Marian et Robin.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\E. Rendez-vous de Marian et Robin.json",
+    "hint": [
+        "Hint 1 In addition, h of the n vertices each has a single horse available. Just forget this condition exists, and assume each place contains unlimited horses.",
+        "Hint 1 Now for each place try to find the minimum time, if we reach there using a horse, and without a horse.",
+        "Hint 3 Try to solve above problem using a modified version of Dijkstra's algorithm",
+        "Hint 3 At last fix a meeting point, and take maximum of minimum time each person takes to reach there with or without horse."
+    ]
 }

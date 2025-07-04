@@ -111,5 +111,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Factory.json",
     "editorial_link": "https://codeforces.com//blog/entry/14592",
-    "editorial": "Production will stops iff exists integer such is divisible by . From\r\nthis fact follows that maximum will be about . So if we modeling some,\r\nfor example, 20 days and production does not stop, then it will never\r\nstop and answer is \"No\". Otherwise answer is \"Yes\".\r\n"
+    "editorial": "Production will stops iff exists integer such is divisible by . From\r\nthis fact follows that maximum will be about . So if we modeling some,\r\nfor example, 20 days and production does not stop, then it will never\r\nstop and answer is \"No\". Otherwise answer is \"Yes\".\r\n",
+    "hint": []
 }

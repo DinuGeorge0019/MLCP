@@ -138,5 +138,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. A-characteristic.json",
     "editorial_link": "https://codeforces.com//blog/entry/115465",
-    "editorial": "Note that the -characteristic depends only on the number of -s. Let the\r\nnumber of -s be equal to , then the number of -s is equal to , and the\r\n-characteristic is equal to .Let\u00e2\u0080\u0099s iterate over all from to , and check\r\nif there is such that . Then print numbers and numbers .\r\n"
+    "editorial": "Note that the -characteristic depends only on the number of -s. Let the\r\nnumber of -s be equal to , then the number of -s is equal to , and the\r\n-characteristic is equal to .Letâs iterate over all from to , and check\r\nif there is such that . Then print numbers and numbers .\r\n",
+    "hint": []
 }

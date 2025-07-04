@@ -161,5 +161,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\F. Graph Without Long Directed Paths.json",
     "editorial_link": "https://codeforces.com/blog/entry/66307",
-    "editorial": "What if the given graph will contain a cycle of odd length? It will mean\r\nthat some two consecutive edges of this cycle will be oriented in the\r\nsame way and will form a path of length two.What if there is no cycles\r\nof odd length in this graph? Then it is bipartite. Let\u00e2\u0080\u0099s color it and\r\nsee what we got. We got some vertices in the left part, some vertices in\r\nthe right part and all edges connecting vertices from different parts.\r\nLet\u00e2\u0080\u0099s orient all edges such that them will go from the left part to the\r\nright part. That\u00e2\u0080\u0099s it.\r\n"
+    "editorial": "What if the given graph will contain a cycle of odd length? It will mean\r\nthat some two consecutive edges of this cycle will be oriented in the\r\nsame way and will form a path of length two.What if there is no cycles\r\nof odd length in this graph? Then it is bipartite. Letâs color it and\r\nsee what we got. We got some vertices in the left part, some vertices in\r\nthe right part and all edges connecting vertices from different parts.\r\nLetâs orient all edges such that them will go from the left part to the\r\nright part. Thatâs it.\r\n",
+    "hint": []
 }

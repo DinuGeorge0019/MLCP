@@ -112,7 +112,7 @@
         ]
     },
     "name": "B. CopyCopyCopyCopyCopy",
-    "statement": "Ehab has an array a of length n. He has just enough free time to make a\r\nnew array consisting of n copies of the old array, written back-to-back.\r\nWhat will be the length of the new array\u2019s longest increasing\r\nsubsequence?A sequence a is a subsequence of an array b if a can be\r\nobtained from b by deletion of several (possibly, zero or all) elements.\r\nThe longest increasing subsequence of an array is the longest\r\nsubsequence such that its elements are ordered in strictly increasing\r\norder.\r\n",
+    "statement": "Ehab has an array a of length n. He has just enough free time to make a\r\nnew array consisting of n copies of the old array, written back-to-back.\r\nWhat will be the length of the new array’s longest increasing\r\nsubsequence?A sequence a is a subsequence of an array b if a can be\r\nobtained from b by deletion of several (possibly, zero or all) elements.\r\nThe longest increasing subsequence of an array is the longest\r\nsubsequence such that its elements are ordered in strictly increasing\r\norder.\r\n",
     "solutions": [
         "///BE NAME KHODA\n#include <bits/stdc++.h>\n\nusing namespace std;\n\n#define S second\n#define F first\n#define int long long\n\ntypedef long long ll;\ntypedef long double ld;\n\nconst int maxn = 3e5+10;\nconst int mod = 1e9+7;\nconst ll inf = 1e18+10;\n\nint n, m;\nint a[maxn];\nset<int> s;\n\nsigned main()\n{\n    ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);\n\n    int q; cin>> q;\n    while(q--)\n    {\n    cin>> n; s.clear();\n    for(int i = 1; i <= n; i++)\n    {\n        int x; cin>> x;\n        s.insert(x);\n    }\n    cout<< s.size() <<\"\\n\";\n    }\n}\n\n"
     ],
@@ -126,5 +126,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. CopyCopyCopyCopyCopy.json",
     "editorial_link": "https://codeforces.com//blog/entry/74235",
-    "editorial": "Let the number of distinct elements in be called . Clearly, the answer\r\nis limited by . Now, you can construct your subsequence as follows: take\r\nthe smallest element from the first copy, the second smallest element\r\nfrom the second copy, and so on. Since there are enough copies to take\r\nevery element, the answer is . Code link: https://pastebin.com/hjcxUDmY\r\nFirst AC: socho\r\n"
+    "editorial": "Let the number of distinct elements in be called . Clearly, the answer\r\nis limited by . Now, you can construct your subsequence as follows: take\r\nthe smallest element from the first copy, the second smallest element\r\nfrom the second copy, and so on. Since there are enough copies to take\r\nevery element, the answer is . Code link: https://pastebin.com/hjcxUDmY\r\nFirst AC: socho\r\n",
+    "hint": []
 }

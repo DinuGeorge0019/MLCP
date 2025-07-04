@@ -145,5 +145,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Number Circle.json",
     "editorial_link": "https://codeforces.com//blog/entry/68079",
-    "editorial": "Let's suppose that array is sorted. First of all, if an?an?1+an?2\n, than the answer is \u0097 NO (because otherwise an\n is not smaller than sum of the neighbors). We claim, that in all other cases answer is \u0097 YES. One of the possible constructions (if the array is already sorted) is:\n\nan?2,an,an?1,an?4,an?5,\u0085,a1\n\nIt's easy to see, that all numbers except an\n will have at least one neighbor which is not smaller than itself. Complexity O(nlog(n))\n."
+    "editorial": "Let's suppose that array is sorted. First of all, if an?an?1+an?2\n, than the answer is  NO (because otherwise an\n is not smaller than sum of the neighbors). We claim, that in all other cases answer is  YES. One of the possible constructions (if the array is already sorted) is:\n\nan?2,an,an?1,an?4,an?5,,a1\n\nIt's easy to see, that all numbers except an\n will have at least one neighbor which is not smaller than itself. Complexity O(nlog(n))\n.",
+    "hint": []
 }

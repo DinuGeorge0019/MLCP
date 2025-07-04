@@ -173,5 +173,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Commentary Boxes.json",
     "editorial_link": "https://codeforces.com//blog/entry/59962",
-    "editorial": "Notice that you need to check just two numbers: the closest one less or\r\nequal to and the closest one greater than . Distances to them are and\r\nrespectively. Now you should multiply the first result by , the second\r\nresult by and compare the products.Overall complexity: .\r\n"
+    "editorial": "Notice that you need to check just two numbers: the closest one less or\r\nequal to and the closest one greater than . Distances to them are and\r\nrespectively. Now you should multiply the first result by , the second\r\nresult by and compare the products.Overall complexity: .\r\n",
+    "hint": []
 }

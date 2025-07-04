@@ -167,5 +167,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. Buggy Robot.json",
     "editorial_link": "https://codeforces.com//blog/entry/55701",
-    "editorial": "Consider the final cell after original path. It has some distance to and\r\nto . That means the path included at least and in corresponding\r\ndirections. Let\u00e2\u0080\u0099s remove just these minimal numbers of moves.Finally,\r\nthe answer will be , where are distances from the final cell of the\r\noriginal path to .Overall complexity: .\r\n"
+    "editorial": "Consider the final cell after original path. It has some distance to and\r\nto . That means the path included at least and in corresponding\r\ndirections. Letâs remove just these minimal numbers of moves.Finally,\r\nthe answer will be , where are distances from the final cell of the\r\noriginal path to .Overall complexity: .\r\n",
+    "hint": []
 }

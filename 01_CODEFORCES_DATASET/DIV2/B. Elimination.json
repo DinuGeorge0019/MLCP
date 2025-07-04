@@ -121,5 +121,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Elimination.json",
     "editorial_link": "https://codeforces.com//blog/entry/84248",
-    "editorial": "The answer is at least because we have at least participants with the\r\nsum of and at least participants with the sum of . If we have\r\nparticipants with points equal to , and participants with points equal\r\nto and , then the 100th participant will have a total of points, and the\r\ncondition will be met, because , and .\r\n"
+    "editorial": "The answer is at least because we have at least participants with the\r\nsum of and at least participants with the sum of . If we have\r\nparticipants with points equal to , and participants with points equal\r\nto and , then the 100th participant will have a total of points, and the\r\ncondition will be met, because , and .\r\n",
+    "hint": []
 }

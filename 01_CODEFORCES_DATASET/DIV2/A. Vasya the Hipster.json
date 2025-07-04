@@ -101,7 +101,7 @@
         ]
     },
     "name": "A. Vasya the Hipster",
-    "statement": "One day Vasya the Hipster decided to count how many socks he had. It\r\nturned out that he had red socks and blue socks.According to the latest\r\nfashion, hipsters should wear the socks of different colors: a red one\r\non the left foot, a blue one on the right foot.Every day Vasya puts on\r\nnew socks in the morning and throws them away before going to bed as he\r\ndoesn\u2019t want to wash them.Vasya wonders, what is the maximum number of\r\ndays when he can dress fashionable and wear different socks, and after\r\nthat, for how many days he can then wear the same socks until he either\r\nruns out of socks or cannot make a single pair from the socks he\u2019s\r\ngot.Can you help him?\r\n",
+    "statement": "One day Vasya the Hipster decided to count how many socks he had. It\r\nturned out that he had red socks and blue socks.According to the latest\r\nfashion, hipsters should wear the socks of different colors: a red one\r\non the left foot, a blue one on the right foot.Every day Vasya puts on\r\nnew socks in the morning and throws them away before going to bed as he\r\ndoesn’t want to wash them.Vasya wonders, what is the maximum number of\r\ndays when he can dress fashionable and wear different socks, and after\r\nthat, for how many days he can then wear the same socks until he either\r\nruns out of socks or cannot make a single pair from the socks he’s\r\ngot.Can you help him?\r\n",
     "solutions": [
         "#include<cstdio>\n#include<cstdlib>\n#include<iostream>\n#include<algorithm>\n#include<cstring>\n#include<queue>\n#include<vector>\n#include<map>\n#include<set>\n#include<stack>\n#include<string>\n#include<cmath>\n#include<cctype>\n#include<ctime>\n#include<bitset>\nusing namespace std;\nconst int maxlongint=2147483647;\nconst int inf=1000000000;\nint main()\n{\n\tint i,j;\n\tcin>>i>>j;\n\tcout<<min(i,j)<<' '<<abs(j-i)/2<<endl;\n}\n"
     ],
@@ -115,5 +115,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Vasya the Hipster.json",
     "editorial_link": "https://codeforces.com//blog/entry/20508",
-    "editorial": "The first number in answer (number of days which Vasya can dress fashionably) is min(a,?b) because every from this day he will dress one red sock and one blue sock.\n\nAfter this Vasya will have either only red socks or only blue socks or socks do not remain at all. Because of that the second number in answer is max((a?-?min(a,?b))?/?2,?(b?-?min(a,?b))?/?2).\n\nAsymptotic behavior of this solution \u0097 O(1)."
+    "editorial": "The first number in answer (number of days which Vasya can dress fashionably) is min(a,?b) because every from this day he will dress one red sock and one blue sock.\n\nAfter this Vasya will have either only red socks or only blue socks or socks do not remain at all. Because of that the second number in answer is max((a?-?min(a,?b))?/?2,?(b?-?min(a,?b))?/?2).\n\nAsymptotic behavior of this solution  O(1).",
+    "hint": []
 }

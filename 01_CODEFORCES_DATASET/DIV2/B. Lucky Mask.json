@@ -110,5 +110,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Lucky Mask.json",
     "editorial_link": "https://codeforces.com//blog/entry/3746",
-    "editorial": "You can see that, in worst case, the answer will be equal to 177777. It can't be greater. So, only thing you need is to write some function F(x) which will return mask of the x. After that you need to write such kind of code: \n\n\n\nx = a?+?1;\n\nwhile (F(x) is not equal to b)\n\nincrease x;\n\n\n\nand x will contain the answer."
+    "editorial": "You can see that, in worst case, the answer will be equal to 177777. It can't be greater. So, only thing you need is to write some function F(x) which will return mask of the x. After that you need to write such kind of code: \n\n\n\nx = a?+?1;\n\nwhile (F(x) is not equal to b)\n\nincrease x;\n\n\n\nand x will contain the answer.",
+    "hint": []
 }

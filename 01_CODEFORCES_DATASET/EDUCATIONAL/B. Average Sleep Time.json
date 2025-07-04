@@ -150,7 +150,7 @@
         ]
     },
     "name": "B. Average Sleep Time",
-    "statement": "It\u2019s been almost a week since Polycarp couldn\u2019t get rid of insomnia. And\r\nas you may already know, one week in Berland lasts days!When Polycarp\r\nwent to a doctor with his problem, the doctor asked him about his\r\nsleeping schedule (more specifically, the average amount of hours of\r\nsleep per week). Luckily, Polycarp kept records of sleep times for the\r\nlast days. So now he has a sequence , where is the sleep time on the -th\r\nday.The number of records is so large that Polycarp is unable to\r\ncalculate the average value by himself. Thus he is asking you to help\r\nhim with the calculations. To get the average Polycarp is going to\r\nconsider consecutive days as a week. So there will be weeks to take into\r\nconsideration. For example, if , and , then the result is .You should\r\nwrite a program which will calculate average sleep times of Polycarp\r\nover all weeks.\r\n",
+    "statement": "It’s been almost a week since Polycarp couldn’t get rid of insomnia. And\r\nas you may already know, one week in Berland lasts days!When Polycarp\r\nwent to a doctor with his problem, the doctor asked him about his\r\nsleeping schedule (more specifically, the average amount of hours of\r\nsleep per week). Luckily, Polycarp kept records of sleep times for the\r\nlast days. So now he has a sequence , where is the sleep time on the -th\r\nday.The number of records is so large that Polycarp is unable to\r\ncalculate the average value by himself. Thus he is asking you to help\r\nhim with the calculations. To get the average Polycarp is going to\r\nconsider consecutive days as a week. So there will be weeks to take into\r\nconsideration. For example, if , and , then the result is .You should\r\nwrite a program which will calculate average sleep times of Polycarp\r\nover all weeks.\r\n",
     "solutions": [
         "#include<cstdio>\nlong long s[200007],v;\nint n,k;\nint main(){\n\tscanf(\"%d%d\",&n,&k);\n\tfor(int i=1;i<=n;++i){\n\t\tscanf(\"%I64d\",s+i);\n\t\ts[i]+=s[i-1];\n\t}\n\tfor(int i=k;i<=n;++i)v+=s[i]-s[i-k];\n\tprintf(\"%.10f\",1.*v/(n-k+1));\n\treturn 0;\n}"
     ],
@@ -165,5 +165,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. Average Sleep Time.json",
     "editorial_link": "https://codeforces.com//blog/entry/52010",
-    "editorial": "To get the sum for -th week you need to take sum of ()-th week, subtract\r\nfirst element of ()-th week from it and add up last element of -th week.\r\nAll common elements will remain.Thus by moving right week by week\r\ncalculate sum of all weeks and divide it by .Overall complexity: .\r\n"
+    "editorial": "To get the sum for -th week you need to take sum of ()-th week, subtract\r\nfirst element of ()-th week from it and add up last element of -th week.\r\nAll common elements will remain.Thus by moving right week by week\r\ncalculate sum of all weeks and divide it by .Overall complexity: .\r\n",
+    "hint": []
 }

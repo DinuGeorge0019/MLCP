@@ -121,5 +121,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Array Rearrangment.json",
     "editorial_link": "https://codeforces.com//blog/entry/84248",
-    "editorial": "It\u00e2\u0080\u0099s enough to sort in non-decreasing order and sort in non-increasing\r\norder and check, whether for all .Correctness can be proven by\r\ninduction: let\u00e2\u0080\u0099s show that if answer exists, there is a solution with\r\nminimum in and maximum in are paired. Let be minimum in and be maximum\r\nin . Let be number paired with and be number paired with . Since\r\nsolution is correct, and . Since , . Since , . So, can be paired with .\r\n"
+    "editorial": "Itâs enough to sort in non-decreasing order and sort in non-increasing\r\norder and check, whether for all .Correctness can be proven by\r\ninduction: letâs show that if answer exists, there is a solution with\r\nminimum in and maximum in are paired. Let be minimum in and be maximum\r\nin . Let be number paired with and be number paired with . Since\r\nsolution is correct, and . Since , . Since , . So, can be paired with .\r\n",
+    "hint": []
 }

@@ -172,5 +172,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\C. Minimum Value Rectangle.json",
     "editorial_link": "https://codeforces.com//blog/entry/61311",
-    "editorial": "Let\u00e2\u0080\u0099s work with the formula a bit: Let , then the formula becomes .\r\nConsidering , , thus is strictly increasing and has its minimum at .So\r\nthe solution will be to sort the list, extract the pairs of sticks of\r\nequal length and check only neighbouring pairs in sorted order for the\r\nanswer.Overall complexity: .\r\n"
+    "editorial": "Letâs work with the formula a bit: Let , then the formula becomes .\r\nConsidering , , thus is strictly increasing and has its minimum at .So\r\nthe solution will be to sort the list, extract the pairs of sticks of\r\nequal length and check only neighbouring pairs in sorted order for the\r\nanswer.Overall complexity: .\r\n",
+    "hint": []
 }

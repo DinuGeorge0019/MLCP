@@ -205,5 +205,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\C. Particles.json",
     "editorial_link": "https://codeforces.com//blog/entry/118128",
-    "editorial": "Consider the set of even-indexed particles and the set of odd-indexed\r\nparticles. Observe that particles can only ever combine with other\r\nparticles from the same set. It follows that the answer is at most On\r\nthe other hand, this bound is almost always obtainable. We can first\r\nperform the operation on all negatively charged particles in the same\r\nset as the desired final particle, then perform the operation on all the\r\nparticles from the opposite set. There is a corner case where all\r\nparticles are negative, where the answer is just .The time complexity is\r\n.\r\n"
+    "editorial": "Consider the set of even-indexed particles and the set of odd-indexed\r\nparticles. Observe that particles can only ever combine with other\r\nparticles from the same set. It follows that the answer is at most On\r\nthe other hand, this bound is almost always obtainable. We can first\r\nperform the operation on all negatively charged particles in the same\r\nset as the desired final particle, then perform the operation on all the\r\nparticles from the opposite set. There is a corner case where all\r\nparticles are negative, where the answer is just .The time complexity is\r\n.\r\n",
+    "hint": [
+        "Hint 1 The answer is the sum of some subset of . Think about which subsets are obtainable.",
+        "Hint 2 Consider the set of even-indexed particles and the set of odd-indexed particles."
+    ]
 }

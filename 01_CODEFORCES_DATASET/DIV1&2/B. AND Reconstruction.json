@@ -181,7 +181,7 @@
     "name": "B. AND Reconstruction",
     "statement": "You are given an array b of n - 1 integers.An array a of n integers is\r\ncalled if b_i = a_i\r\n,\r\n&\r\n, a_{i + 1} for 1\r\nle i\r\nle n-1, where\r\n& denotes the bitwise AND operator.Construct a good array, or report\r\nthat no good arrays exist.\r\n",
     "solutions": [
-        "/** *    author:  tourist *    created: 28.07.2024 10:36:13**/#include <bits/stdc++.h>\u00a0using namespace std;\u00a0#ifdef LOCAL#include \"algo/debug.h\"#else#define debug(...) 42#endif\u00a0int main() {  ios::sync_with_stdio(false);  cin.tie(nullptr);  int tt;  cin >> tt;  while (tt--) {    int n;    cin >> n;    vector<int> b(n - 1);    for (int i = 0; i < n - 1; i++) {      cin >> b[i];    }    vector<int> a(n);    for (int i = 0; i < n; i++) {      a[i] = (i == 0 ? 0 : b[i - 1]) | (i == n - 1 ? 0 : b[i]);    }    bool ok = true;    for (int i = 0; i < n - 1; i++) {      ok &= (b[i] == (a[i] & a[i + 1]));    }    if (ok) {      for (int i = 0; i < n; i++) {        cout << a[i] << \" \\n\"[i == n - 1];      }    } else {      cout << -1 << '\\n';    }  }  return 0;}"
+        "/** *    author:  tourist *    created: 28.07.2024 10:36:13**/#include <bits/stdc++.h> using namespace std; #ifdef LOCAL#include \"algo/debug.h\"#else#define debug(...) 42#endif int main() {  ios::sync_with_stdio(false);  cin.tie(nullptr);  int tt;  cin >> tt;  while (tt--) {    int n;    cin >> n;    vector<int> b(n - 1);    for (int i = 0; i < n - 1; i++) {      cin >> b[i];    }    vector<int> a(n);    for (int i = 0; i < n; i++) {      a[i] = (i == 0 ? 0 : b[i - 1]) | (i == n - 1 ? 0 : b[i]);    }    bool ok = true;    for (int i = 0; i < n - 1; i++) {      ok &= (b[i] == (a[i] & a[i + 1]));    }    if (ok) {      for (int i = 0; i < n; i++) {        cout << a[i] << \" \\n\"[i == n - 1];      }    } else {      cout << -1 << '\\n';    }  }  return 0;}"
     ],
     "input": "",
     "output": "",
@@ -192,5 +192,6 @@
     ],
     "dificulty": "1100",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\B. AND Reconstruction.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\B. AND Reconstruction.json",
+    "hint": []
 }

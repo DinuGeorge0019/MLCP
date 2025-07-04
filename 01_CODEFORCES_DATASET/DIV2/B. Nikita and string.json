@@ -144,5 +144,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Nikita and string.json",
     "editorial_link": "https://codeforces.com//blog/entry/55362",
-    "editorial": "Let be the count of letter \"\" in prefix of length and be the count of\r\nletter \"\" in prefix of length .Let\u00e2\u0080\u0099s fix two positions and , , so we\r\nremove all \"\" from prefix, which ends in , and suffix, which starts in ,\r\nand all \"\" between positions and . Then length of string is . Using two\r\nfor loops we find optimal and and calculate answer.\r\n"
+    "editorial": "Let be the count of letter \"\" in prefix of length and be the count of\r\nletter \"\" in prefix of length .Letâs fix two positions and , , so we\r\nremove all \"\" from prefix, which ends in , and suffix, which starts in ,\r\nand all \"\" between positions and . Then length of string is . Using two\r\nfor loops we find optimal and and calculate answer.\r\n",
+    "hint": []
 }

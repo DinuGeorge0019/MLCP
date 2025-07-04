@@ -110,5 +110,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Famil Door and Brackets.json",
     "editorial_link": "https://codeforces.com//blog/entry/43227",
-    "editorial": "This problem can be solved with dynamic programming: . Calculate : How\r\nmany sequences of brackets of length has balance and intermediate\r\nbalance never goes below zero (They form a prefix of a valid sequence of\r\nbrackets). . For the given sequence of length calculate the resulting\r\nbalance and the minimum balance . . Try the length of the sequence added\r\nat the beginning and its balance . If then add to the answer. Time\r\ncomplexity: C++ Solution\r\n"
+    "editorial": "This problem can be solved with dynamic programming: . Calculate : How\r\nmany sequences of brackets of length has balance and intermediate\r\nbalance never goes below zero (They form a prefix of a valid sequence of\r\nbrackets). . For the given sequence of length calculate the resulting\r\nbalance and the minimum balance . . Try the length of the sequence added\r\nat the beginning and its balance . If then add to the answer. Time\r\ncomplexity: C++ Solution\r\n",
+    "hint": []
 }

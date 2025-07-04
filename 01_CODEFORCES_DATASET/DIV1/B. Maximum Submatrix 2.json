@@ -89,7 +89,7 @@
         ]
     },
     "name": "B. Maximum Submatrix 2",
-    "statement": "You are given a matrix consisting of digits zero and one, its size is .\r\nYou are allowed to rearrange its rows. What is the maximum area of the\r\nsubmatrix that only consists of ones and can be obtained in the given\r\nproblem by the described operations?Let\u2019s assume that the rows of matrix\r\nare numbered from 1 to from top to bottom and the columns are numbered\r\nfrom 1 to from left to right. A matrix cell on the intersection of the\r\n-th row and the -th column can be represented as . Formally, a submatrix\r\nof matrix is a group of four integers . We will assume that the\r\nsubmatrix contains cells . The area of the submatrix is the number of\r\ncells it contains.\r\n",
+    "statement": "You are given a matrix consisting of digits zero and one, its size is .\r\nYou are allowed to rearrange its rows. What is the maximum area of the\r\nsubmatrix that only consists of ones and can be obtained in the given\r\nproblem by the described operations?Let’s assume that the rows of matrix\r\nare numbered from 1 to from top to bottom and the columns are numbered\r\nfrom 1 to from left to right. A matrix cell on the intersection of the\r\n-th row and the -th column can be represented as . Formally, a submatrix\r\nof matrix is a group of four integers . We will assume that the\r\nsubmatrix contains cells . The area of the submatrix is the number of\r\ncells it contains.\r\n",
     "solutions": [
         "#include <iostream>\n#include <cstdio>\n#include <algorithm>\n#include <cstring>\n#include <string>\nusing namespace std;\n\nconst int MAX_N = 5000 + 10;\nchar map[MAX_N][MAX_N];\nint rt[MAX_N][MAX_N];\nint n, m;\n\nint main() {\n\tscanf(\"%d%d\", &n, &m);\n\tfor (int r = 0; r < n; ++r) {\n\t\tscanf(\"%s\", map[r]);\n\t}\n\n\tfor (int r = 0; r < n; ++r) {\n\t\trt[r][m] = 0;\n\t\tfor (int c = m - 1; c >= 0; --c) {\n\t\t\trt[r][c] = map[r][c] == '1' ? rt[r][c + 1] + 1 : 0;\n\t\t}\n\t}\n\n\tint ans = 0;\n\n\tfor (int c = 0; c < m; ++c) {\n\t\tstatic int a[MAX_N];\n\t\tfor (int r = 0; r < n; ++r) {\n\t\t\ta[r] = rt[r][c];\n\t\t}\n\t\tsort(a, a + n);\n\n\t\tfor (int r = 0; r < n; ++r) {\n\t\t\tans = max(ans, a[r] * (n - r));\n\t\t}\n\t}\n\n\tcout << ans << endl;\n\treturn 0;\n}\n"
     ],
@@ -105,5 +105,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Maximum Submatrix 2.json",
     "editorial_link": "https://codeforces.com//blog/entry/10084",
-    "editorial": "We can get right[i][j] by O(n*m) dp. Let\nright[i][j] = how many continuous 1s is on cell (j, i)\u00e2\u0080\u0099s right. Let\nanswer = 0 For all column i\n"
+    "editorial": "We can get right[i][j] by O(n*m) dp. Let\nright[i][j] = how many continuous 1s is on cell (j, i)âs right. Let\nanswer = 0 For all column i\n",
+    "hint": []
 }

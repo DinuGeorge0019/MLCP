@@ -136,5 +136,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Searching Local Minimum.json",
     "editorial_link": "https://codeforces.com//blog/entry/87598",
-    "editorial": "We maintain by binary search a range [l,r] which has a local minimum. Moreover, we assume that al?1>al and ar<ar+1. Initially, [l,r]=[1,n].\n\nIn each iteration, let m be the midpoint of l and r.\n\nCase 1. If am<am+1, then the range becomes [l,m].\n\nCase 2. If am>am+1, then the range becomes [m+1,r].\n\nWhen l=r, we have found a local minimum al.\n\nThe number of queries to ai is at most 2?log2n??34<100."
+    "editorial": "We maintain by binary search a range [l,r] which has a local minimum. Moreover, we assume that al?1>al and ar<ar+1. Initially, [l,r]=[1,n].\n\nIn each iteration, let m be the midpoint of l and r.\n\nCase 1. If am<am+1, then the range becomes [l,m].\n\nCase 2. If am>am+1, then the range becomes [m+1,r].\n\nWhen l=r, we have found a local minimum al.\n\nThe number of queries to ai is at most 2?log2n??34<100.",
+    "hint": []
 }

@@ -179,7 +179,7 @@
     "name": "C. Assembly via Remainders",
     "statement": "You are given an array x_2,x_3,\r\ndots,x_n. Your task is to find array a_1,\r\ndots,a_n, where: 1\r\nle a_i\r\nle 10^9 for all 1\r\nle i\r\nle n. x_i=a_i\r\nbmod a_{i-1} for all 2\r\nle i\r\nle n. Here c\r\nbmod d denotes the remainder of the division of the integer c by the\r\ninteger d. For example 5\r\nbmod 2 = 1, 72\r\nbmod 3 = 0, 143\r\nbmod 14 = 3.\r\n",
     "solutions": [
-        "#include <bits/stdc++.h>\u00a0using namespace std;\u00a0typedef long long ll;\u00a0void solve();const int MX = 1010;\u00a0vector<pair<int, int>> hw[MX];\u00a0int main() {    for (int i = 1; i < MX; ++i) {        for (int j = 1; j < MX; ++j) {            hw[i % j].emplace_back(i, j);        }    }    cin.tie(nullptr)->sync_with_stdio(false);    int _ = 1;    cin >> _;    while (_--) {        solve();    }}\u00a0void solve() {    int n;    cin >> n;    vector<int> a(n - 1);    for (auto &i : a) {        cin >> i;    }    int cur = 5000;    cout << cur << ' ';    for (auto &el : a) {        cout << (cur += el) << ' ';    }    cout << \"\\n\";}"
+        "#include <bits/stdc++.h> using namespace std; typedef long long ll; void solve();const int MX = 1010; vector<pair<int, int>> hw[MX]; int main() {    for (int i = 1; i < MX; ++i) {        for (int j = 1; j < MX; ++j) {            hw[i % j].emplace_back(i, j);        }    }    cin.tie(nullptr)->sync_with_stdio(false);    int _ = 1;    cin >> _;    while (_--) {        solve();    }} void solve() {    int n;    cin >> n;    vector<int> a(n - 1);    for (auto &i : a) {        cin >> i;    }    int cur = 5000;    cout << cur << ' ';    for (auto &el : a) {        cout << (cur += el) << ' ';    }    cout << \"\\n\";}"
     ],
     "input": "",
     "output": "",
@@ -189,5 +189,10 @@
     ],
     "dificulty": "1000",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C. Assembly via Remainders.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C. Assembly via Remainders.json",
+    "hint": [
+        "Hint 1 Why constraints are small?",
+        "Hint 2 Try to think about increacing .",
+        "Hint 3 for ."
+    ]
 }

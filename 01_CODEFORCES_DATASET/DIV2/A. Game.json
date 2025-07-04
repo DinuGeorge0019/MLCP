@@ -141,5 +141,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Game.json",
     "editorial_link": "https://codeforces.com//blog/entry/100592",
-    "editorial": "It is easy to see that if there are no water locations, the answer is .\r\nOtherwise, we should jump from the last accessible from the start land\r\nlocation to the first land location from which the finish is accessible.\r\nIn order to find these locations, one can use two consecutive while\r\nloops, one increasing from until , and the other one decreasing from\r\nuntil . After the loops finish, we know that we should jump from the -th\r\nlocation to the -th at the cost of .\r\n"
+    "editorial": "It is easy to see that if there are no water locations, the answer is .\r\nOtherwise, we should jump from the last accessible from the start land\r\nlocation to the first land location from which the finish is accessible.\r\nIn order to find these locations, one can use two consecutive while\r\nloops, one increasing from until , and the other one decreasing from\r\nuntil . After the loops finish, we know that we should jump from the -th\r\nlocation to the -th at the cost of .\r\n",
+    "hint": []
 }

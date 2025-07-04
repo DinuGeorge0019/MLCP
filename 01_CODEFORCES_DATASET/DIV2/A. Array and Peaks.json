@@ -125,5 +125,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Array and Peaks.json",
     "editorial_link": "https://codeforces.com//blog/entry/89550",
-    "editorial": "There are many ways to solve this problem. The key idea is we try to use\r\nthe first largest elements from to to construct the peaks. So try\r\nconstructing the array like this: . For this answer to be possible which\r\nmeans . If this is not the case we output .\r\n"
+    "editorial": "There are many ways to solve this problem. The key idea is we try to use\r\nthe first largest elements from to to construct the peaks. So try\r\nconstructing the array like this: . For this answer to be possible which\r\nmeans . If this is not the case we output .\r\n",
+    "hint": []
 }

@@ -87,5 +87,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Restoration of string.json",
     "editorial_link": "https://codeforces.com//blog/entry/55734",
-    "editorial": "If some string is the most frequent then all its substrings are the most frequent too.\nIf string ab or similar is the most frequent then letter a is always followed by letter b and b always follow a.\nLet's consider directed graph on letters where edge a???b exists only if ab is the most frequent. If there is cycle in such graph then good string doesn't exist.\nSo such graph can be represented as several non-intersecting paths. All strings which correspond to paths must occur in non-empty good string. So if we print them in lexicographical order then we will get the answer."
+    "editorial": "If some string is the most frequent then all its substrings are the most frequent too.\nIf string ab or similar is the most frequent then letter a is always followed by letter b and b always follow a.\nLet's consider directed graph on letters where edge a???b exists only if ab is the most frequent. If there is cycle in such graph then good string doesn't exist.\nSo such graph can be represented as several non-intersecting paths. All strings which correspond to paths must occur in non-empty good string. So if we print them in lexicographical order then we will get the answer.",
+    "hint": []
 }

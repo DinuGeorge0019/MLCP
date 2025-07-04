@@ -104,5 +104,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Enlarge GCD.json",
     "editorial_link": "https://codeforces.com//blog/entry/61993",
-    "editorial": "First we divide all numbers by GCD of them. Then we should find\na subset with maximum number of integers GCD of which is bigger than .We\ncan enumerate a prime that GCD of the remaining integers can be divided\nby. And the number of integers can be divided by is the maximum size of\nthe subset.We can use Sieve of Euler to factor all integers in time.\nThen we find the prime that can divide most integers. The answer is\nminus the number of integers can be divided by this prime. If all\nintegers are (after dividing their GCD), there is no solution.\n"
+    "editorial": "First we divide all numbers by GCD of them. Then we should find\na subset with maximum number of integers GCD of which is bigger than .We\ncan enumerate a prime that GCD of the remaining integers can be divided\nby. And the number of integers can be divided by is the maximum size of\nthe subset.We can use Sieve of Euler to factor all integers in time.\nThen we find the prime that can divide most integers. The answer is\nminus the number of integers can be divided by this prime. If all\nintegers are (after dividing their GCD), there is no solution.\n",
+    "hint": []
 }

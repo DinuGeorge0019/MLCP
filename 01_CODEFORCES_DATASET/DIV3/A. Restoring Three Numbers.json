@@ -160,5 +160,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Restoring Three Numbers.json",
     "editorial_link": "https://codeforces.com//blog/entry/66586",
-    "editorial": "Let , , and . Then we can construct the following answer: , and .Because\r\nall numbers in the answer are positive, we can assume that the maximum\r\nelement of is . So let\u00e2\u0080\u0099s sort the input array consisting of four\r\nelements and just print and .\r\n"
+    "editorial": "Let , , and . Then we can construct the following answer: , and .Because\r\nall numbers in the answer are positive, we can assume that the maximum\r\nelement of is . So letâs sort the input array consisting of four\r\nelements and just print and .\r\n",
+    "hint": []
 }

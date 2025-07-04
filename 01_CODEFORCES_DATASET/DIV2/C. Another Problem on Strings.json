@@ -128,5 +128,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Another Problem on Strings.json",
     "editorial_link": "https://codeforces.com//blog/entry/4124",
-    "editorial": "You was to find number of segments of the strings on which the sum\r\nequals to (we are working with array of integers and ). We will count\r\narray where the value equals to sum on segment . We will count the\r\nanswer going from left to right. Let\u00e2\u0080\u0099s say we are in position . Now we\r\nwill add the number of segments on which the sum equals to and ends in\r\nposition . To do it we will count array where number of occurrences of .\r\nThen in position we add to the answer. The complexity is ).\r\n"
+    "editorial": "You was to find number of segments of the strings on which the sum\r\nequals to (we are working with array of integers and ). We will count\r\narray where the value equals to sum on segment . We will count the\r\nanswer going from left to right. Letâs say we are in position . Now we\r\nwill add the number of segments on which the sum equals to and ends in\r\nposition . To do it we will count array where number of occurrences of .\r\nThen in position we add to the answer. The complexity is ).\r\n",
+    "hint": []
 }

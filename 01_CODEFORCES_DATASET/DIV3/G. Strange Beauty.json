@@ -161,5 +161,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\G. Strange Beauty.json",
     "editorial_link": "https://codeforces.com//blog/entry/87188",
-    "editorial": "Let\u00e2\u0080\u0099s calculate for each number how many times it occurs in the array .\r\nLet\u00e2\u0080\u0099s denote this number as .Let\u00e2\u0080\u0099s use the dynamic programming method.\r\nLet be equal to the maximum number of numbers not greater than such that\r\nfor each pair of them one of the conditions above is satisfied. More\r\nformally, if , then there exists numbers () from the array such that for\r\nall () one of the conditions above is satisfied.Then to calculate you\r\ncan use the following formula: .Note that to calculate you need to go\r\nthrough the list of divisors of . For this, we use the sieve of\r\nEratosthenes.\r\n"
+    "editorial": "Letâs calculate for each number how many times it occurs in the array .\r\nLetâs denote this number as .Letâs use the dynamic programming method.\r\nLet be equal to the maximum number of numbers not greater than such that\r\nfor each pair of them one of the conditions above is satisfied. More\r\nformally, if , then there exists numbers () from the array such that for\r\nall () one of the conditions above is satisfied.Then to calculate you\r\ncan use the following formula: .Note that to calculate you need to go\r\nthrough the list of divisors of . For this, we use the sieve of\r\nEratosthenes.\r\n",
+    "hint": []
 }

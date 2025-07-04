@@ -189,5 +189,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. Tea Queue.json",
     "editorial_link": "https://codeforces.com/blog/entry/57516",
-    "editorial": "Let\u00e2\u0080\u0099s store the last moment when somebody gets a tea in the variable .\r\nThen if for the -th student then he will not get a tea. Otherwise he\r\nwill get it during second. And if he gets a tea then will be replaced\r\nwith the answer for this student.\r\n"
+    "editorial": "Letâs store the last moment when somebody gets a tea in the variable .\r\nThen if for the -th student then he will not get a tea. Otherwise he\r\nwill get it during second. And if he gets a tea then will be replaced\r\nwith the answer for this student.\r\n",
+    "hint": []
 }

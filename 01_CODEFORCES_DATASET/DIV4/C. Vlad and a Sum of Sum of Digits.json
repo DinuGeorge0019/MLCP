@@ -174,5 +174,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\C. Vlad and a Sum of Sum of Digits.json",
     "editorial_link": "https://codeforces.com//blog/entry/126132",
-    "editorial": "Let\u00e2\u0080\u0099s denote as the sum of digits of number . Since , for a single test\r\ncase, we can brute force and output the answer. However, since the\r\nnumber of test cases is large, we can\u00e2\u0080\u0099t compute this value for each\r\ntime. This needs a standard idea of precomputation: we will compute the\r\nanswer for each value from to and store it in an array : . Then to\r\nanswer each test case we just output . The precomputation takes time (it\r\ntakes time to find sum of digits), but now we can answer queries in per\r\ntest case, so overall the complexity is .\r\n"
+    "editorial": "Letâs denote as the sum of digits of number . Since , for a single test\r\ncase, we can brute force and output the answer. However, since the\r\nnumber of test cases is large, we canât compute this value for each\r\ntime. This needs a standard idea of precomputation: we will compute the\r\nanswer for each value from to and store it in an array : . Then to\r\nanswer each test case we just output . The precomputation takes time (it\r\ntakes time to find sum of digits), but now we can answer queries in per\r\ntest case, so overall the complexity is .\r\n",
+    "hint": []
 }

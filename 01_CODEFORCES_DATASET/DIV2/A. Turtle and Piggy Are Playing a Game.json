@@ -118,7 +118,7 @@
     "editorial_link": "https://codeforces.com//blog/entry/129848",
     "editorial": "For a specific , Piggy always chooses such that is a prime number, so\r\nthe score is the number of prime factors of .It is easy to see that the\r\nnumber with at least prime factors is . The largest integer satisfying\r\nis .Also, because , then , so , hence .So the answer is .Time\r\ncomplexity: or per test case.\r\n",
     "name": "A. Turtle and Piggy Are Playing a Game",
-    "statement": "Turtle and Piggy are playing a number game.First, Turtle will choose an\r\ninteger x, such that l\r\nle x\r\nle r, where l, r are given. It\u2019s also guaranteed that 2l\r\nle r.Then, Piggy will keep doing the following operation until x becomes\r\n1: Choose an integer p such that p\r\nge 2 and p\r\nmid x (i.e. x is a multiple of p). Set x to\r\nfrac{x}{p}, and the score will increase by 1. The score is initially 0.\r\nBoth Turtle and Piggy want to maximize the score. Please help them to\r\ncalculate the maximum score.\r\n",
+    "statement": "Turtle and Piggy are playing a number game.First, Turtle will choose an\r\ninteger x, such that l\r\nle x\r\nle r, where l, r are given. It’s also guaranteed that 2l\r\nle r.Then, Piggy will keep doing the following operation until x becomes\r\n1: Choose an integer p such that p\r\nge 2 and p\r\nmid x (i.e. x is a multiple of p). Set x to\r\nfrac{x}{p}, and the score will increase by 1. The score is initially 0.\r\nBoth Turtle and Piggy want to maximize the score. Please help them to\r\ncalculate the maximum score.\r\n",
     "solutions": [
         "#include<bits/stdc++.h>#define LL long long#define LLL __int128#define uint unsigned#define ldb long double#define uLL unsigned long longusing namespace std;inline void MAIN(){\tint l,r;\tcin>>l>>r;\tcout<<__lg(r)<<'\\n';}signed main(){    cin.tie(0)->sync_with_stdio(0);\tint t=1;cin>>t;while(t--)MAIN();    return 0;}/**/"
     ],
@@ -131,5 +131,9 @@
     ],
     "dificulty": "800",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Turtle and Piggy Are Playing a Game.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Turtle and Piggy Are Playing a Game.json",
+    "hint": [
+        "Hint 1 What is Piggy's optimal strategy?",
+        "Hint 2 What does mean?"
+    ]
 }

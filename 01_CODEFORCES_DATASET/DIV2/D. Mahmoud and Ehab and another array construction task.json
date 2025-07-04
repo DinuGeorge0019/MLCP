@@ -139,5 +139,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Mahmoud and Ehab and another array construction task.json",
     "editorial_link": "https://codeforces.com//blog/entry/58712",
-    "editorial": "Common things : Let\u00e2\u0080\u0099s call a number \"ok\" if it could be inserted to\r\narray , as a new element, without breaking any of the conditions (i.e it\r\nshould be coprime with all the previously inserted elements). Let\u00e2\u0080\u0099s call\r\nthe maximum number that could be inserted in the worst case . For each\r\ninteger from 2 to , we\u00e2\u0080\u0099ll precompute its prime divisors with sieve.\r\n"
+    "editorial": "Common things : Letâs call a number \"ok\" if it could be inserted to\r\narray , as a new element, without breaking any of the conditions (i.e it\r\nshould be coprime with all the previously inserted elements). Letâs call\r\nthe maximum number that could be inserted in the worst case . For each\r\ninteger from 2 to , weâll precompute its prime divisors with sieve.\r\n",
+    "hint": []
 }

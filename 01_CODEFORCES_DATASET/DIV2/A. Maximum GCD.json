@@ -153,7 +153,7 @@
         ]
     },
     "name": "A. Maximum GCD",
-    "statement": "Let\u2019s consider all integers in the range from 1 to n (inclusive).Among\r\nall pairs of integers in this range, find the maximum possible greatest\r\ncommon divisor of integers in pair. Formally, find the maximum value of\r\nmathrm{gcd}(a, b), where 1\r\nleq a < b\r\nleq n.The greatest common divisor,\r\nmathrm{gcd}(a, b), of two positive integers a and b is the biggest\r\ninteger that is a divisor of both a and b.\r\n",
+    "statement": "Let’s consider all integers in the range from 1 to n (inclusive).Among\r\nall pairs of integers in this range, find the maximum possible greatest\r\ncommon divisor of integers in pair. Formally, find the maximum value of\r\nmathrm{gcd}(a, b), where 1\r\nleq a < b\r\nleq n.The greatest common divisor,\r\nmathrm{gcd}(a, b), of two positive integers a and b is the biggest\r\ninteger that is a divisor of both a and b.\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\n\nusing namespace std;\n\nmain() {\n    ios_base::sync_with_stdio(0);\n    cin.tie(0);\n    cout.tie(0);\n    int t, n;\n    cin >> t;\n    while (t--) {\n        cin >> n;\n        cout << n / 2 << '\\n';\n    }\n    return 0;\n}\n"
     ],
@@ -169,5 +169,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Maximum GCD.json",
     "editorial_link": "https://codeforces.com//blog/entry/79107",
-    "editorial": ":Answer for any is equal to .:Let the maximum gcd be equal to . Since\r\nthe two numbers in a pair are distinct, one of them must be and both of\r\nthem must be divisible by . The smallest multiple of , greater than , is\r\n. Since each number in the pair must be , we must have , or . We can\r\nachieve , by choosing and .Time Complexity:\r\n"
+    "editorial": ":Answer for any is equal to .:Let the maximum gcd be equal to . Since\r\nthe two numbers in a pair are distinct, one of them must be and both of\r\nthem must be divisible by . The smallest multiple of , greater than , is\r\n. Since each number in the pair must be , we must have , or . We can\r\nachieve , by choosing and .Time Complexity:\r\n",
+    "hint": []
 }

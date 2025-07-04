@@ -114,5 +114,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Polyline.json",
     "editorial_link": "https://codeforces.com//blog/entry/22971",
-    "editorial": "Answer equals to one if all coordinates x or y of points are same. When\r\nanswer equals to two? Let\u00e2\u0080\u0099s iterate over all pairs of points. Let first\r\npoint in pair is beginning of polyline, second point is end. Only one or\r\ntwo such polylines with answer two exist. If third point is on the\r\npolyline it belongs to rectangle with corners in first two points. We\r\ncan just check it. Else answer equals to three. We can build vertical\r\nlines which contains the most left and the most right point and\r\nhorizontal line through third point. If we erase some excess rays we\r\nwill get polyline. Solution 15550843\r\n"
+    "editorial": "Answer equals to one if all coordinates x or y of points are same. When\r\nanswer equals to two? Letâs iterate over all pairs of points. Let first\r\npoint in pair is beginning of polyline, second point is end. Only one or\r\ntwo such polylines with answer two exist. If third point is on the\r\npolyline it belongs to rectangle with corners in first two points. We\r\ncan just check it. Else answer equals to three. We can build vertical\r\nlines which contains the most left and the most right point and\r\nhorizontal line through third point. If we erase some excess rays we\r\nwill get polyline. Solution 15550843\r\n",
+    "hint": []
 }

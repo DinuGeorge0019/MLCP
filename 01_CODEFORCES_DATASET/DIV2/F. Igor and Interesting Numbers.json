@@ -132,5 +132,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\F. Igor and Interesting Numbers.json",
     "editorial_link": "https://codeforces.com//blog/entry/49171",
-    "editorial": "Let’s use dynamic programming and the number of valid numbers with\r\nlength and maximal digit in this numbers is . Let iterate by from and\r\nbrute (how many times we will take digit ). Than new length , number\r\nwill ends to repeated times. Then . After that we need to find the\r\nlength of the answer number . Let iterate by from 1 and calculate the\r\nnumber of numbers with length . It can be done with help of (brute\r\nmaximum digit and calculate for ).\r\n"
+    "editorial": "Let’s use dynamic programming and the number of valid numbers with\r\nlength and maximal digit in this numbers is . Let iterate by from and\r\nbrute (how many times we will take digit ). Than new length , number\r\nwill ends to repeated times. Then . After that we need to find the\r\nlength of the answer number . Let iterate by from 1 and calculate the\r\nnumber of numbers with length . It can be done with help of (brute\r\nmaximum digit and calculate for ).\r\n",
+    "hint": []
 }

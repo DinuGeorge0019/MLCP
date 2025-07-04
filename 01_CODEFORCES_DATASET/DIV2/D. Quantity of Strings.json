@@ -79,7 +79,7 @@
         ]
     },
     "name": "D. Quantity of Strings",
-    "statement": "Just in case somebody missed it: this winter is totally cold in Nvodsk!\r\nIt is so cold that one gets funny thoughts. For example, let\u2019s say there\r\nare strings with the length exactly , based on the alphabet of size .\r\nAny its substring with length equal to is a palindrome. How many such\r\nstrings exist? Your task is to find their quantity modulo (). Be careful\r\nand don\u2019t miss a string or two!Let us remind you that a string is a\r\npalindrome if it can be read the same way in either direction, from the\r\nleft to the right and from the right to the left.\r\n",
+    "statement": "Just in case somebody missed it: this winter is totally cold in Nvodsk!\r\nIt is so cold that one gets funny thoughts. For example, let’s say there\r\nare strings with the length exactly , based on the alphabet of size .\r\nAny its substring with length equal to is a palindrome. How many such\r\nstrings exist? Your task is to find their quantity modulo (). Be careful\r\nand don’t miss a string or two!Let us remind you that a string is a\r\npalindrome if it can be read the same way in either direction, from the\r\nleft to the right and from the right to the left.\r\n",
     "solutions": [
         "#include <iostream>\n#include <algorithm>\n#include <vector>\n#include <string>\n#include <cstring>\n#include <cstdio>\n#include <cstdlib>\n#include <queue>\n#include <map>\nusing namespace std;\n\n#define P 1000000007\n\nint main()\n{\n\tint n, m, k;\n\tcin >> n >> m >> k;\n\tlong long ans = 0;\n\tif(k == 1 || k > n)\n\t{\n\t\tans = 1;\n\t\tint i;\n\t\tfor(i = 0; i < n; i++)\n\t\t{\n\t\t\tans *= m;\n\t\t\tans %= P;\n\t\t}\n\t}\n\telse if(k == n)\n\t{\n\t\tans = 1;\n\t\tint i;\n\t\tfor(i = 1; i <= n + 1 - i; i++)\n\t\t{\n\t\t\tans *= m;\n\t\t\tans %= P;\n\t\t}\n\t}\n\telse \n\t{\n\t\tif(k % 2 == 0)\n\t\t{\n\t\t\tans = m;\n\t\t}\n\t\telse\n\t\t{\n\t\t\tif(n == 1)\n\t\t\t{\n\t\t\t\tans = m;\n\t\t\t}\n\t\t\telse\n\t\t\t{\n\t\t\t\tans = m * m;\n\t\t\t}\n\t\t}\n\t}\n\tans %= P;\n\tcout << ans << endl;\n\treturn 0;\n}\n"
     ],
@@ -95,5 +95,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Quantity of Strings.json",
     "editorial_link": "https://codeforces.com//blog/entry/3905",
-    "editorial": "We can offer you two solitions:\n\nYou can build a graph with positions in sting as a nodes and equality in any substring of length k as edges. Lets denote e the number of components in the graph. The answer is me.\n\nAnalyze four cases:\n\nk?=?1 or ??>?n, the answer is mn.\nk?=?n, the answer is m(n?+?1)?/?2.\nk mod 2?=?1, any string like abababab... is ok, so the answer is m2.\nk mod 2?=?0, all symbols coincide and the answer is m."
+    "editorial": "We can offer you two solitions:\n\nYou can build a graph with positions in sting as a nodes and equality in any substring of length k as edges. Lets denote e the number of components in the graph. The answer is me.\n\nAnalyze four cases:\n\nk?=?1 or ??>?n, the answer is mn.\nk?=?n, the answer is m(n?+?1)?/?2.\nk mod 2?=?1, any string like abababab... is ok, so the answer is m2.\nk mod 2?=?0, all symbols coincide and the answer is m.",
+    "hint": []
 }

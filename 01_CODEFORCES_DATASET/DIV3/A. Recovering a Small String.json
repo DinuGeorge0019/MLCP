@@ -181,5 +181,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Recovering a Small String.json",
     "editorial_link": "https://codeforces.com//blog/entry/125878",
-    "editorial": "The problem can be solved by simply going through all the letter\r\ncombinations and searching for the lexicographically minimal one among\r\nthem.It is also possible to consider a string consisting of three\r\nletters \"a\", and, going through it from the end until the value of is\r\ngreater than zero, increase the letters to the maximum possible value\r\nand subtract the corresponding difference from .\r\n"
+    "editorial": "The problem can be solved by simply going through all the letter\r\ncombinations and searching for the lexicographically minimal one among\r\nthem.It is also possible to consider a string consisting of three\r\nletters \"a\", and, going through it from the end until the value of is\r\ngreater than zero, increase the letters to the maximum possible value\r\nand subtract the corresponding difference from .\r\n",
+    "hint": []
 }

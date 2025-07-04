@@ -192,5 +192,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Polycarp Writes a String from Memory.json",
     "editorial_link": "https://codeforces.com//blog/entry/104763",
-    "editorial": "Let us simulate the process. We store a set consisting of letters that\r\nPolycarp memorizes on one day. Gradually dial the set . If the size of\r\nexceeds , we add to the day counter and clear .\r\n"
+    "editorial": "Let us simulate the process. We store a set consisting of letters that\r\nPolycarp memorizes on one day. Gradually dial the set . If the size of\r\nexceeds , we add to the day counter and clear .\r\n",
+    "hint": []
 }

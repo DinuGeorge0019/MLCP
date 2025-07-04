@@ -86,7 +86,7 @@
         ]
     },
     "name": "B. Easy Number Challenge",
-    "statement": "Let\u2019s denote as the number of divisors of a positive integer . You are\r\ngiven three integers , and . Your task is to calculate the following\r\nsum:Find the sum modulo .\r\n",
+    "statement": "Let’s denote as the number of divisors of a positive integer . You are\r\ngiven three integers , and . Your task is to calculate the following\r\nsum:Find the sum modulo .\r\n",
     "solutions": [
         "#include<stdio.h>\n#include<stdlib.h>\n#include<math.h>\n\nint a[1000005];\nint p[105];\nint di[105][105];\nint p1;\n\nint main()\n{\n\tint i,j,k,in1,in2,in3,j1,i1,l,mm;\n\t__int64 la=0,la1=0;\n\tscanf(\"%d %d %d\",&in1,&in2,&in3);\n\tp[++p1]=2;\n\tp[++p1]=3;\n\n\tfor(i=4;i<=100;i++)\n\t{\n\t\tj1=0;\n\t\tfor(j=2;j<i;j++)\n\t\t\tif(i%j==0)\n\t\t\t\tj1++;\n\t\tif(j1==0)\n\t\t\tp[++p1]=i;\n\t}\n\t\n\n\tfor(i=1;i<=100;i++)\n\t{\n\t\ti1=i;\n\t\twhile(i1!=1)\n\t\t{\n\t\t\tfor(j=1;j<=p1;j++)\n\t\t\t{\n\t\t\t\tif(i1%p[j]==0)\n\t\t\t\t{\n\t\t\t\t\tdi[i][j]++;\n\t\t\t\t\ti1/=p[j];\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\n\tfor(i=1;i<=in1;i++)\n\t{\n\t\tfor(j=1;j<=in2;j++)\n\t\t{\n\t\t\tfor(k=1;k<=in3;k++)\n\t\t\t{\n\t\t\t\tmm=i*j*k;\n\t\t\t\tif(a[mm]==0)\n\t\t\t\t{\n\t\t\t\t\tla1=1;\n\t\t\t\t\tfor(l=1;l<=p1;l++)\n\t\t\t\t\t{\n\t\t\t\t\t\tla1*=(di[i][l]+di[j][l]+di[k][l]+1);\n\t\t\t\t\t}\n\t\t\t\t\ta[mm]=la1;\n\t\t\t\t}\n\t\t\t\tla+=a[mm];\n\t\t\t\tla%=1073741824;\n\t\t\t}\n\t\t}\n\t}\n\tprintf(\"%I64d\",la);\n\treturn 0;\n}"
     ],
@@ -100,5 +100,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Easy Number Challenge.json",
     "editorial_link": "https://codeforces.com//blog/entry/5592",
-    "editorial": "First of all, we can make a table of size a*b*c to store every number\u00e2\u0080\u0099s\r\nd value. Then we can just brute force through every tripe to calculate\r\nthe answer.\r\n"
+    "editorial": "First of all, we can make a table of size a*b*c to store every numberâs\r\nd value. Then we can just brute force through every tripe to calculate\r\nthe answer.\r\n",
+    "hint": []
 }

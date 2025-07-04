@@ -120,7 +120,7 @@
         ]
     },
     "name": "C. Oh Those Palindromes",
-    "statement": "A non-empty string is called , if it reads the same from the left to the\r\nright and from the right to the left. For example, \"\", \"\", and \"\" are\r\npalindromes, while \"\" and \"\" are not.A string is called a of another\r\nstring, if it can be obtained from that string by dropping some\r\n(possibly zero) number of characters from the beginning and from the end\r\nof it. For example, \"\", \"\", and \"\" are substrings of the string \"\",\r\nwhile \"\" and \"\" are not.Let\u2019s define a of the string as the number of\r\nits substrings that are palindromes. For example, the palindromic count\r\nof the string \"\" is 6 because all its substrings are palindromes, and\r\nthe palindromic count of the string \"\" is 3 because only its substrings\r\nof length 1 are palindromes.You are given a string s. You can\r\narbitrarily rearrange its characters. You goal is to obtain a string\r\nwith the maximum possible value of palindromic count.\r\n",
+    "statement": "A non-empty string is called , if it reads the same from the left to the\r\nright and from the right to the left. For example, \"\", \"\", and \"\" are\r\npalindromes, while \"\" and \"\" are not.A string is called a of another\r\nstring, if it can be obtained from that string by dropping some\r\n(possibly zero) number of characters from the beginning and from the end\r\nof it. For example, \"\", \"\", and \"\" are substrings of the string \"\",\r\nwhile \"\" and \"\" are not.Let’s define a of the string as the number of\r\nits substrings that are palindromes. For example, the palindromic count\r\nof the string \"\" is 6 because all its substrings are palindromes, and\r\nthe palindromic count of the string \"\" is 3 because only its substrings\r\nof length 1 are palindromes.You are given a string s. You can\r\narbitrarily rearrange its characters. You goal is to obtain a string\r\nwith the maximum possible value of palindromic count.\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\nusing namespace std;\n\nchar s[100010];\n\nint main()\n{\n    int n;\n    cin>>n>>s;\n    sort(s,s+n);\n    cout<<s<<endl;\n    return 0;\n}"
     ],
@@ -133,5 +133,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Oh Those Palindromes.json",
     "editorial_link": "https://codeforces.com//blog/entry/62455",
-    "editorial": "One possible solution is just to sort the string.\n\nWhy so?\n\nNote that each palindrome have equal character at their ends. Suppose this character is c\n with x\n number of occurences. Then there are at most x(x+1)/2\n palindromes with this character.\n\nSo we have a clear upper bound on answer. It is easy to see, that the sorted string fulfills that bound and hence it is the optimal answer."
+    "editorial": "One possible solution is just to sort the string.\n\nWhy so?\n\nNote that each palindrome have equal character at their ends. Suppose this character is c\n with x\n number of occurences. Then there are at most x(x+1)/2\n palindromes with this character.\n\nSo we have a clear upper bound on answer. It is easy to see, that the sorted string fulfills that bound and hence it is the optimal answer.",
+    "hint": []
 }

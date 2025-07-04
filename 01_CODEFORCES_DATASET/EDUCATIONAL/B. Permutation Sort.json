@@ -147,5 +147,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. Permutation Sort.json",
     "editorial_link": "https://codeforces.com//blog/entry/90793",
-    "editorial": "To solve the problem, it is enough to consider several cases: if the\r\narray is already sorted, the answer is ; if (or ), then you can sort the\r\narray in one operation by selecting the subarray (or ); if and , you can\r\nperform the sequence of operations , and and sort the array on each of\r\nthem (you can\u00e2\u0080\u0099t do it faster since you can\u00e2\u0080\u0099t move both to position and\r\nto position in only operations); otherwise, the array can be sorted in\r\noperations.\r\n"
+    "editorial": "To solve the problem, it is enough to consider several cases: if the\r\narray is already sorted, the answer is ; if (or ), then you can sort the\r\narray in one operation by selecting the subarray (or ); if and , you can\r\nperform the sequence of operations , and and sort the array on each of\r\nthem (you canât do it faster since you canât move both to position and\r\nto position in only operations); otherwise, the array can be sorted in\r\noperations.\r\n",
+    "hint": []
 }

@@ -128,5 +128,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Subsequence.json",
     "editorial_link": "https://codeforces.com//blog/entry/95477",
-    "editorial": "First we can change the way we calculate the value of a subsequence. We\ncan easily see the value of a subsequence is also , which is very\nsimilar to the distance of two node on a tree. Thus we can build the\ncartesian tree of the sequence, and set the weight of a edge between\nnode and as . Then we can see what we are going to calculate turns into\nfollows : choosing nodes, maximize the total distance between every two\nnodes. Thus we can solve this task using dynamic programming with the\ntime complexity .\n"
+    "editorial": "First we can change the way we calculate the value of a subsequence. We\ncan easily see the value of a subsequence is also , which is very\nsimilar to the distance of two node on a tree. Thus we can build the\ncartesian tree of the sequence, and set the weight of a edge between\nnode and as . Then we can see what we are going to calculate turns into\nfollows : choosing nodes, maximize the total distance between every two\nnodes. Thus we can solve this task using dynamic programming with the\ntime complexity .\n",
+    "hint": []
 }

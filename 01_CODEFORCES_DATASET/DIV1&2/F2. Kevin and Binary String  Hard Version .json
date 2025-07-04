@@ -213,5 +213,12 @@
     ],
     "dificulty": "",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\F2. Kevin and Binary String  Hard Version .json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\F2. Kevin and Binary String  Hard Version .json",
+    "hint": [
+        "Hint 1 What is the property for the final string?",
+        "Hint 2 Consider the immovable blocks.",
+        "Hint 3 For the easy version, fix the immovable blocks greedily.",
+        "Hint 4 For the hard version, use dynamic programming to determine the immovable blocks.",
+        "Hint 5 Use a data structure to speed up dynamic programming."
+    ]
 }

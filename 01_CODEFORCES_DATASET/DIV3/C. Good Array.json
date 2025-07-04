@@ -176,5 +176,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C. Good Array.json",
     "editorial_link": "https://codeforces.com//blog/entry/63274",
-    "editorial": "The first part: calculate the sum of the whole array: (be careful, it\r\ncan be !).The second part: let’s maintain an array of size where will be\r\nequal to the number of elements in the given array equals to .The third\r\npart: iterate over the array, let the current position be . Set , make .\r\nIf is even, and then the index is otherwise it doesn’t. And after all\r\nmake and set .\r\n"
+    "editorial": "The first part: calculate the sum of the whole array: (be careful, it\r\ncan be !).The second part: let’s maintain an array of size where will be\r\nequal to the number of elements in the given array equals to .The third\r\npart: iterate over the array, let the current position be . Set , make .\r\nIf is even, and then the index is otherwise it doesn’t. And after all\r\nmake and set .\r\n",
+    "hint": []
 }

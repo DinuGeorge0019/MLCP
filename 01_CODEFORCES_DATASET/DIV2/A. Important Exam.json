@@ -98,7 +98,7 @@
         ]
     },
     "name": "A. Important Exam",
-    "statement": "A class of students wrote a multiple-choice test.There are n students in\r\nthe class. The test had m questions, each of them had 5 possible answers\r\n(A, B, C, D or E). There is exactly one correct answer for each\r\nquestion. The correct answer for question i worth a_i points. Incorrect\r\nanswers are graded with zero points.The students remember what answers\r\nthey gave on the exam, but they don\u2019t know what are the correct answers.\r\nThey are very optimistic, so they want to know what is the maximum\r\npossible total score of all students in the class.\r\n",
+    "statement": "A class of students wrote a multiple-choice test.There are n students in\r\nthe class. The test had m questions, each of them had 5 possible answers\r\n(A, B, C, D or E). There is exactly one correct answer for each\r\nquestion. The correct answer for question i worth a_i points. Incorrect\r\nanswers are graded with zero points.The students remember what answers\r\nthey gave on the exam, but they don’t know what are the correct answers.\r\nThey are very optimistic, so they want to know what is the maximum\r\npossible total score of all students in the class.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\n\nconst int maxn = 1000 + 5;\nchar s[maxn][maxn];\nint a[maxn];\n\nint main() {\n    int n, m; scanf(\"%d%d\", &n, &m);\n    for (int i = 0; i < n; ++i) scanf(\"%s\", s[i]);\n    for (int i = 0; i < m; ++i) scanf(\"%d\", &a[i]);\n    long long ans = 0;\n    for (int i = 0; i < m; ++i) {\n        vector<int> cnt(5, 0);\n        for (int j = 0; j < n; ++j) cnt[s[j][i] - 'A']++;\n        ans += 1ll * a[i] * *max_element(cnt.begin(), cnt.end());\n    }\n    printf(\"%lld\\n\", ans);\n}\n"
     ],
@@ -112,5 +112,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Important Exam.json",
     "editorial_link": "https://codeforces.com/blog/entry/68911",
-    "editorial": "For each of the question let\u00e2\u0080\u0099s count the number of answers of different\r\ntype. Let The number of A answers to the i-th question. The maximum\r\nscore for that answer is . The answer is the sum of the maximum answer\r\nfor the questions.\r\n"
+    "editorial": "For each of the question letâs count the number of answers of different\r\ntype. Let The number of A answers to the i-th question. The maximum\r\nscore for that answer is . The answer is the sum of the maximum answer\r\nfor the questions.\r\n",
+    "hint": []
 }

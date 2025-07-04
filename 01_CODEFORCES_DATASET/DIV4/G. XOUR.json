@@ -171,9 +171,9 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/129364",
-    "editorial": "Note that if , then and must share all bits in their binary\r\nrepresentation, except for the last bits. This is because if they have a\r\nmismatch in any greater bit, their will include this bit, making its\r\nvalue .This means that we can group the numbers by removing the last two\r\nbits and putting equal numbers into the same group. In each group, we\r\ncan order the numbers freely (since we can swap any two of them), so\r\nit\u00e2\u0080\u0099s optimal to sort the numbers in each group. Thus we can just divide\r\nthe numbers into groups and sort each, solving the problem in . There\r\nare several ways to implement this: for instead, you can use a storing\r\nall the groups, and then sort the values in each group. The\r\nimplementation we used maps each integer to a priority queue, which\r\nautomatically will sort the numbers in each group.\r\n",
+    "editorial": "Note that if , then and must share all bits in their binary\r\nrepresentation, except for the last bits. This is because if they have a\r\nmismatch in any greater bit, their will include this bit, making its\r\nvalue .This means that we can group the numbers by removing the last two\r\nbits and putting equal numbers into the same group. In each group, we\r\ncan order the numbers freely (since we can swap any two of them), so\r\nitâs optimal to sort the numbers in each group. Thus we can just divide\r\nthe numbers into groups and sort each, solving the problem in . There\r\nare several ways to implement this: for instead, you can use a storing\r\nall the groups, and then sort the values in each group. The\r\nimplementation we used maps each integer to a priority queue, which\r\nautomatically will sort the numbers in each group.\r\n",
     "name": "G. XOUR",
-    "statement": "You are given an array a consisting of n nonnegative integers. You can\r\nswap the elements at positions i and j if a_i\u00a0\r\nmathsf{XOR}\u00a0a_j < 4, where\r\nmathsf{XOR} is the bitwise XOR operation.Find the lexicographically\r\nsmallest array that can be made with any number of swaps.An array x is\r\nlexicographically smaller than an array y if in the first position where\r\nx and y differ, x_i < y_i.\r\n",
+    "statement": "You are given an array a consisting of n nonnegative integers. You can\r\nswap the elements at positions i and j if a_i \r\nmathsf{XOR} a_j < 4, where\r\nmathsf{XOR} is the bitwise XOR operation.Find the lexicographically\r\nsmallest array that can be made with any number of swaps.An array x is\r\nlexicographically smaller than an array y if in the first position where\r\nx and y differ, x_i < y_i.\r\n",
     "solutions": [
         "#include <iostream>#include <set>#include <map>#include <vector>#include <algorithm>#include <cmath>using namespace std;typedef long long ll;const int N = 5e5 + 10;int a[N];void solve() {\tint n;\tcin >> n;\tmap <int, vector<pair<int, int>>> mp;\tfor (int i = 1; i <= n; i++) {\t\tcin >> a[i];\t\tmp[a[i] / 4].push_back({ a[i], i });\t}\tfor (auto it : mp) {\t\tvector <pair<int, int>> v = it.second;\t\tvector <int> w;\t\tfor (auto &qwe : v) {\t\t\tw.push_back(qwe.second);\t\t}\t\tsort(w.begin(), w.end());\t\tsort(v.begin(), v.end());\t\tfor (int i = 0; i < (int)v.size(); i++) {\t\t\ta[w[i]] = v[i].first;\t\t}\t}\tfor (int i = 1; i <= n; i++) {\t\tcout << a[i] << \" \";\t}\tcout << \"\\n\";}int main() {\tint t = 1;\tcin >> t;\twhile (t--) {\t\tsolve();\t} }"
     ],
@@ -186,5 +186,6 @@
     ],
     "dificulty": "1700",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\G. XOUR.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\G. XOUR.json",
+    "hint": []
 }

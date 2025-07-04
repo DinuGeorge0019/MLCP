@@ -134,5 +134,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. And.json",
     "editorial_link": "https://codeforces.com//blog/entry/60920",
-    "editorial": "Clearly, if it is possible then there are no more than operations\r\nneeded.So we basically need to distinguish outcomes , , and .The answer\r\nis zero if there are already equal elements in the array.To check if the\r\nanswer is we can apply the operation to each element of the array. If\r\nall elements are still distinct, then it couldn\u00e2\u0080\u0099t be helped.To check if\r\nthe answer is one we can bruteforce the element to apply the operation\r\nto, and if this operation changes this element, we can check if there is\r\nan element in the array.In all other cases answer is two.\r\n"
+    "editorial": "Clearly, if it is possible then there are no more than operations\r\nneeded.So we basically need to distinguish outcomes , , and .The answer\r\nis zero if there are already equal elements in the array.To check if the\r\nanswer is we can apply the operation to each element of the array. If\r\nall elements are still distinct, then it couldnât be helped.To check if\r\nthe answer is one we can bruteforce the element to apply the operation\r\nto, and if this operation changes this element, we can check if there is\r\nan element in the array.In all other cases answer is two.\r\n",
+    "hint": []
 }

@@ -200,5 +200,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Bad Prices.json",
     "editorial_link": "https://codeforces.com//blog/entry/69464",
-    "editorial": "Let be the minimum price of the berPhone during days . We can\r\nprecalculate this array moving from right to left and carrying the\r\nminimum price we met (in other words, if we iterate over all from to\r\nthen if otherwise ). Then the answer is the number of such days from to\r\nthat .\r\n"
+    "editorial": "Let be the minimum price of the berPhone during days . We can\r\nprecalculate this array moving from right to left and carrying the\r\nminimum price we met (in other words, if we iterate over all from to\r\nthen if otherwise ). Then the answer is the number of such days from to\r\nthat .\r\n",
+    "hint": []
 }

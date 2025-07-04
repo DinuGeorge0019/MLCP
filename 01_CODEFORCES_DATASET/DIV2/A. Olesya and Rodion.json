@@ -99,7 +99,7 @@
         ]
     },
     "name": "A. Olesya and Rodion",
-    "statement": "Olesya loves numbers consisting of digits, and Rodion only likes numbers\r\nthat are divisible by . Find some number that satisfies both of\r\nthem.Your task is: given the and print an integer strictly larger than\r\nzero consisting of digits that is divisible by . If such number doesn\u2019t\r\nexist, print .\r\n",
+    "statement": "Olesya loves numbers consisting of digits, and Rodion only likes numbers\r\nthat are divisible by . Find some number that satisfies both of\r\nthem.Your task is: given the and print an integer strictly larger than\r\nzero consisting of digits that is divisible by . If such number doesn’t\r\nexist, print .\r\n",
     "solutions": [
         "#include <cstdio>\n\nint main(){\n\tint n, t;\n\tscanf(\"%d%d\", &n, &t);\n\tif (n == 1){\n\t\tprintf(\"%d\\n\", t < 10 ? t : -1);\n\t}\n\telse{\n\t\tprintf(\"%d\", t < 10 ? t : 1);\n\t\tfor (int i = 1; i < n; ++i)\n\t\t\tputchar('0');\n\t\tputs(\"\");\n\t}\n\treturn 0;\n}\n"
     ],
@@ -112,5 +112,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Olesya and Rodion.json",
     "editorial_link": "https://codeforces.com//blog/entry/20766",
-    "editorial": "Two cases: and . If then there are two cases again :). If then answer is\r\n(because there is not any digit divisible by ). If , then answer, for\r\nexample, is \u00e2\u0080\u00991111...110\u00e2\u0080\u0099 (contains ones). If then answer, for example,\r\nis \u00e2\u0080\u0099tttttttt\u00e2\u0080\u0099 (it, obviously, divisible by ).\r\n"
+    "editorial": "Two cases: and . If then there are two cases again :). If then answer is\r\n(because there is not any digit divisible by ). If , then answer, for\r\nexample, is â1111...110â (contains ones). If then answer, for example,\r\nis âttttttttâ (it, obviously, divisible by ).\r\n",
+    "hint": []
 }

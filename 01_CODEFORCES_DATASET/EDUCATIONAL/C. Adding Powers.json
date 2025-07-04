@@ -198,5 +198,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\C. Adding Powers.json",
     "editorial_link": "https://codeforces.com//blog/entry/74640",
-    "editorial": "This is the solution that doesn\u00e2\u0080\u0099t involve masks. Let\u00e2\u0080\u0099s reverse the\r\nprocess and try to get all zeroes from the array : since all we can\r\nstart from maximum .The key idea: since then there should be no more\r\nthan one position such that and we should decrease it by . Now we can\r\ndecrease by and repeat the same process.If at any step there are at\r\nleast two or as result, we won\u00e2\u0080\u0099t get array filled with then there is no\r\nway to build the array .\r\n"
+    "editorial": "This is the solution that doesnât involve masks. Letâs reverse the\r\nprocess and try to get all zeroes from the array : since all we can\r\nstart from maximum .The key idea: since then there should be no more\r\nthan one position such that and we should decrease it by . Now we can\r\ndecrease by and repeat the same process.If at any step there are at\r\nleast two or as result, we wonât get array filled with then there is no\r\nway to build the array .\r\n",
+    "hint": []
 }

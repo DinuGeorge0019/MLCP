@@ -118,5 +118,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Hamming Distance Sum.json",
     "editorial_link": "https://codeforces.com//blog/entry/22256",
-    "editorial": "We are trying to find . Swapping the sums, we see that this is equivalent to .\n\nSumming up the answer in the naive fashion will give an O(n2) solution. However, notice that we can actually find  without going through each individual character. Rather, all we need is a frequency count of different characters. To obtain this frequency count, we can simply build prefix count arrays of all characters on b. Let's call this prefix count array F, where F[x][c] gives the number of occurrences of the character c in the prefix [0,?x) of b. We can then write . as . This gives us a linear solution."
+    "editorial": "We are trying to find . Swapping the sums, we see that this is equivalent to .\n\nSumming up the answer in the naive fashion will give an O(n2) solution. However, notice that we can actually find  without going through each individual character. Rather, all we need is a frequency count of different characters. To obtain this frequency count, we can simply build prefix count arrays of all characters on b. Let's call this prefix count array F, where F[x][c] gives the number of occurrences of the character c in the prefix [0,?x) of b. We can then write . as . This gives us a linear solution.",
+    "hint": []
 }

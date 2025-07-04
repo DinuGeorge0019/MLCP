@@ -166,5 +166,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Knapsack.json",
     "editorial_link": "https://codeforces.com//blog/entry/82067",
-    "editorial": "SolutionIf there is an item of size satisfying: , it is enough to output\r\nonly that item. Otherwise, we should exclude items which are larger than\r\nthe size of the knapsack and take a closer look at the situation.\r\nConsider greedily adding items in any order until we find a valid\r\nsolution or run out of items.This is correct because all items have\r\nsizes less than , so it is not possible to exceed knapsack size by\r\nadding one item in a situation where the sum of items doesn\u00e2\u0080\u0099t satisfy\r\nconstraint .This gives us a solution in .\r\n"
+    "editorial": "SolutionIf there is an item of size satisfying: , it is enough to output\r\nonly that item. Otherwise, we should exclude items which are larger than\r\nthe size of the knapsack and take a closer look at the situation.\r\nConsider greedily adding items in any order until we find a valid\r\nsolution or run out of items.This is correct because all items have\r\nsizes less than , so it is not possible to exceed knapsack size by\r\nadding one item in a situation where the sum of items doesnât satisfy\r\nconstraint .This gives us a solution in .\r\n",
+    "hint": [
+        "Hint Are there any items which you can put in the knapsack to fulfill the goal with one item? What happens if there are none?"
+    ]
 }

@@ -129,5 +129,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Find a Mine.json",
     "editorial_link": "https://codeforces.com//blog/entry/126423",
-    "editorial": "First, we query \"?\n 1\n 1\n\" then you get a value a1\n and you know that at least one of the mine is on the line x+y=a1+2\n.\n\nNow we make two more queries on both ends of this line where it touches the grid. After these two queries, we get two possible locations of the mine. We query one of these positions if we receive 0\n as the answer then this location otherwise the other location is the answer.\n\nReason: One of that two locations contains a mine. The other mine could spoil the result of the query only from one end. If it was closer from the other mine to both of the ends, it would mean that going from one end to the other is shorter through that mine, than through the diagonal. That's impossible."
+    "editorial": "First, we query \"?\n 1\n 1\n\" then you get a value a1\n and you know that at least one of the mine is on the line x+y=a1+2\n.\n\nNow we make two more queries on both ends of this line where it touches the grid. After these two queries, we get two possible locations of the mine. We query one of these positions if we receive 0\n as the answer then this location otherwise the other location is the answer.\n\nReason: One of that two locations contains a mine. The other mine could spoil the result of the query only from one end. If it was closer from the other mine to both of the ends, it would mean that going from one end to the other is shorter through that mine, than through the diagonal. That's impossible.",
+    "hint": [
+        "Hint 1 After querying \" \" What do we know about the location of mines? Answer If the answer is the location of one of the mines is such that .",
+        "Hint 2 What if we made the second query as \" \"? Answer If the answer is the location of one of the mines is such that ."
+    ]
 }

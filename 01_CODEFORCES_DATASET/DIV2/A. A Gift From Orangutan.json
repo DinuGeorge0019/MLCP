@@ -158,7 +158,7 @@
     "name": "A. A Gift From Orangutan",
     "statement": "The orangutan has gifted you an array a of length n. Using a, you will\r\nconstruct two arrays b and c, both containing n elements, in the\r\nfollowing manner: b_i =\r\nmin(a_1, a_2,\r\nldots, a_i) for each 1\r\nleq i\r\nleq n. c_i =\r\nmax(a_1, a_2,\r\nldots, a_i) for each 1\r\nleq i\r\nleq n. Define the of a as\r\nsum_{i=1}^n c_i - b_i (i.e. the sum of c_i - b_i over all 1\r\nleq i\r\nleq n). Before you calculate the , you can the elements of a however you\r\nwant.Find the maximum that you can get if you shuffle the elements of a\r\noptimally.\r\n",
     "solutions": [
-        "#include \"bits/stdc++.h\"using namespace std;using ll = long long;using vi = vector<int>;\u00a0#define endl '\\n'#define pb emplace_back#define sz(x) (int)(x).size()#define all(x) (x).begin(), (x).end()#define make_unique(x) sort(all(x)), x.resize(unique(all(x)) - begin(x))#define debug(x) cerr << \"[\" << __LINE__ << \"] \"#x\" = \" << (x) << endl\u00a0int a[1005];\u00a0void solve() {\t\tint n, mx = -1, mn = 1005;\t\tcin >> n;\tfor (int i = 0 ; i < n; i ++) {\t\tcin >> a[i];\t\tmx = max(mx, a[i]);\t\tmn = min(mn, a[i]);\t}\t\tif (n == 0) cout  << 0 << endl;\telse  {\t\tcout << 1LL * (mx - mn) * (n - 1) << endl;\t\t}\u00a0\treturn;\t}int main() {#ifndef ONLINE_JUDGE\tfreopen(\"in.txt\", \"r\", stdin);//\tfreopen(\"out.txt\", \"w\", stdout);#endif\u00a0\tios::sync_with_stdio(0); cin.tie(0); cout.tie(0);\u00a0\tint tc = 1;\tcin >> tc;\twhile (tc --) solve();\u00a0\treturn 0;}"
+        "#include \"bits/stdc++.h\"using namespace std;using ll = long long;using vi = vector<int>; #define endl '\\n'#define pb emplace_back#define sz(x) (int)(x).size()#define all(x) (x).begin(), (x).end()#define make_unique(x) sort(all(x)), x.resize(unique(all(x)) - begin(x))#define debug(x) cerr << \"[\" << __LINE__ << \"] \"#x\" = \" << (x) << endl int a[1005]; void solve() {\t\tint n, mx = -1, mn = 1005;\t\tcin >> n;\tfor (int i = 0 ; i < n; i ++) {\t\tcin >> a[i];\t\tmx = max(mx, a[i]);\t\tmn = min(mn, a[i]);\t}\t\tif (n == 0) cout  << 0 << endl;\telse  {\t\tcout << 1LL * (mx - mn) * (n - 1) << endl;\t\t} \treturn;\t}int main() {#ifndef ONLINE_JUDGE\tfreopen(\"in.txt\", \"r\", stdin);//\tfreopen(\"out.txt\", \"w\", stdout);#endif \tios::sync_with_stdio(0); cin.tie(0); cout.tie(0); \tint tc = 1;\tcin >> tc;\twhile (tc --) solve(); \treturn 0;}"
     ],
     "input": "",
     "output": "",
@@ -170,5 +170,6 @@
     ],
     "dificulty": "800",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. A Gift From Orangutan.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. A Gift From Orangutan.json",
+    "hint": []
 }

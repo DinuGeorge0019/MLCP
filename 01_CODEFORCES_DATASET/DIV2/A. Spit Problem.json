@@ -114,7 +114,7 @@
         ]
     },
     "name": "A. Spit Problem",
-    "statement": "In a Berland\u2019s zoo there is an enclosure with camels. It is known that\r\ncamels like to spit. Bob watched these interesting animals for the whole\r\nday and registered in his notepad where each animal spitted. Now he\r\nwants to know if in the zoo there are two camels, which spitted at each\r\nother. Help him to solve this task.The trajectory of a camel\u2019s spit is\r\nan arc, i.e. if the camel in position spits meters right, he can hit\r\nonly the camel in position , if such a camel exists.\r\n",
+    "statement": "In a Berland’s zoo there is an enclosure with camels. It is known that\r\ncamels like to spit. Bob watched these interesting animals for the whole\r\nday and registered in his notepad where each animal spitted. Now he\r\nwants to know if in the zoo there are two camels, which spitted at each\r\nother. Help him to solve this task.The trajectory of a camel’s spit is\r\nan arc, i.e. if the camel in position spits meters right, he can hit\r\nonly the camel in position , if such a camel exists.\r\n",
     "solutions": [
         "/*\nID: espr1t\nLANG: C++\nTASK: Demo\n*/\n\n#include <iostream>\n#include <cstdio>\n#include <cmath>\n#include <cstring>\n#include <vector>\n#include <algorithm>\n#include <cstdlib>\n#include <string>\n#include <queue>\n#include <map>\n#include <set>\n\n#define MAX 1024\n\nusing namespace std;\nFILE *in; FILE *out;\n\nint n;\nint a[MAX][2];\n\nint main(void)\n{\n\tin = stdin; out = stdout;\n//\tin = fopen(\"A.in\", \"rt\"); out = fopen(\"A.out\", \"wt\");\n\t\n\tfscanf(in, \"%d\", &n);\n\tfor (int i = 0; i < n; i++)\n\t\tfscanf(in, \"%d %d\", &a[i][0], &a[i][1]);\n\t\n\tint ans = 0;\n\tfor (int i = 0; i < n; i++)\n\t\tfor (int c = 0; c < n; c++)\n\t\t\tif (a[i][0] + a[i][1] == a[c][0])\n\t\t\t\tif (a[c][0] + a[c][1] == a[i][0])\n\t\t\t\t\tans = 1;\n\tfprintf(out, \"%s\\n\", ans ? \"YES\" : \"NO\");\n\t\n\treturn 0;\n}\n"
     ],
@@ -127,5 +127,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Spit Problem.json",
     "editorial_link": "https://codeforces.com//blog/entry/686",
-    "editorial": "Check whether exist a pair i and j,they satisfy xi+di = xj && xj+dj = xi;"
+    "editorial": "Check whether exist a pair i and j,they satisfy xi+di = xj && xj+dj = xi;",
+    "hint": []
 }

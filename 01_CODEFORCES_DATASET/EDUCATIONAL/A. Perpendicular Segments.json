@@ -126,11 +126,11 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/135680",
-    "editorial": "Let\u00e2\u0080\u0099s look at all segments with a fixed angle between them and the\r\nX-axis. Let\u00e2\u0080\u0099s take the shortest one with integer coordinates and length\r\nat least as . Let\u00e2\u0080\u0099s say that a bounding box of has width and height\r\n.It\u00e2\u0080\u0099s easy to see that a bounding box of segment will have width at\r\nleast and height at least , since the shortest segment will be just the\r\nsegment rotated at ninety degrees.So, in order to fit both segments and\r\n, both and should be at most . But if both and , then what is the\r\nlongest segment that can fit in such a bounding box? The answer is to\r\nset , then the length .In such a way, we found out that must not exceed\r\n, but if , then we can always take the following two segments: and where\r\n. They are perpendicular, fit in the allowed rectangle, and have length\r\nexactly .\r\n",
+    "editorial": "Letâs look at all segments with a fixed angle between them and the\r\nX-axis. Letâs take the shortest one with integer coordinates and length\r\nat least as . Letâs say that a bounding box of has width and height\r\n.Itâs easy to see that a bounding box of segment will have width at\r\nleast and height at least , since the shortest segment will be just the\r\nsegment rotated at ninety degrees.So, in order to fit both segments and\r\n, both and should be at most . But if both and , then what is the\r\nlongest segment that can fit in such a bounding box? The answer is to\r\nset , then the length .In such a way, we found out that must not exceed\r\n, but if , then we can always take the following two segments: and where\r\n. They are perpendicular, fit in the allowed rectangle, and have length\r\nexactly .\r\n",
     "name": "A. Perpendicular Segments",
-    "statement": "You are given a coordinate plane and three integers X, Y, and K. Find\r\ntwo line segments AB and CD such that the coordinates of points A, B, C,\r\nand D are integers; 0\r\nle A_x, B_x, C_x, D_x\r\nle X and 0\r\nle A_y, B_y, C_y, D_y\r\nle Y; the length of segment AB is at least K; the length of segment CD\r\nis at least K; segments AB and CD are : if you draw lines that contain\r\nAB and CD, they will cross at a right angle. Note that it\u2019s necessary\r\nfor segments to intersect. Segments are perpendicular as long as the\r\nlines they induce are perpendicular.\r\n",
+    "statement": "You are given a coordinate plane and three integers X, Y, and K. Find\r\ntwo line segments AB and CD such that the coordinates of points A, B, C,\r\nand D are integers; 0\r\nle A_x, B_x, C_x, D_x\r\nle X and 0\r\nle A_y, B_y, C_y, D_y\r\nle Y; the length of segment AB is at least K; the length of segment CD\r\nis at least K; segments AB and CD are : if you draw lines that contain\r\nAB and CD, they will cross at a right angle. Note that it’s necessary\r\nfor segments to intersect. Segments are perpendicular as long as the\r\nlines they induce are perpendicular.\r\n",
     "solutions": [
-        "#include <bits/stdc++.h>using namespace std;\u00a0void solve(){\tint X, Y, K;\tcin >> X >> Y >> K;\tint B = min(X, Y);\tcout << 0 << ' ' << 0 << ' ' << B << ' ' << B << '\\n';\tcout << B << ' ' << 0 << ' ' << 0 << ' ' << B << '\\n';}\u00a0int main(){\tios_base::sync_with_stdio(false), cin.tie(nullptr);\tint T;\tcin >> T;\twhile(T--) solve();}"
+        "#include <bits/stdc++.h>using namespace std; void solve(){\tint X, Y, K;\tcin >> X >> Y >> K;\tint B = min(X, Y);\tcout << 0 << ' ' << 0 << ' ' << B << ' ' << B << '\\n';\tcout << B << ' ' << 0 << ' ' << 0 << ' ' << B << '\\n';} int main(){\tios_base::sync_with_stdio(false), cin.tie(nullptr);\tint T;\tcin >> T;\twhile(T--) solve();}"
     ],
     "input": "",
     "output": "",
@@ -142,5 +142,6 @@
     ],
     "dificulty": "900",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Perpendicular Segments.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Perpendicular Segments.json",
+    "hint": []
 }

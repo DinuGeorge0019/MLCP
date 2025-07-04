@@ -96,5 +96,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Array GCD.json",
     "editorial_link": "https://codeforces.com//blog/entry/23278",
-    "editorial": "At least one of ends (a1 or an) is changed by at most 1. It means that if gcd > 1 then it divides on of prime divisors of either a1?-?1, a1, a1?+?1, an?-?1, an or an?+?1. We will iterate over these primes.\n\nSuppose prime p is fixed. For each number we know that it's either divisible by p or we can pay b to fix it or it should be in the subarray to change for a\n\nWe can use dynamic programming dp[number of numbers considered][subarray to change not started/started/finished] = minimal cost\n\nComplexity is O(Nd)?=?O(Nlog(max(ai)), where d is the number of primes to check."
+    "editorial": "At least one of ends (a1 or an) is changed by at most 1. It means that if gcd > 1 then it divides on of prime divisors of either a1?-?1, a1, a1?+?1, an?-?1, an or an?+?1. We will iterate over these primes.\n\nSuppose prime p is fixed. For each number we know that it's either divisible by p or we can pay b to fix it or it should be in the subarray to change for a\n\nWe can use dynamic programming dp[number of numbers considered][subarray to change not started/started/finished] = minimal cost\n\nComplexity is O(Nd)?=?O(Nlog(max(ai)), where d is the number of primes to check.",
+    "hint": []
 }

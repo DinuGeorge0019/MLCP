@@ -128,5 +128,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Vanya and Exams.json",
     "editorial_link": "https://codeforces.com/blog/entry/14957",
-    "editorial": "Sort in non-decreasing order for number of essays , after that go from\r\nthe beginning of this sorted pairs and add greedily the maximal number\r\nof points we can, i.e. add value , while total amount of points will not\r\nbe greater, than . Time complexity . Jury\u00e2\u0080\u0099s solution: 8924807\r\n"
+    "editorial": "Sort in non-decreasing order for number of essays , after that go from\r\nthe beginning of this sorted pairs and add greedily the maximal number\r\nof points we can, i.e. add value , while total amount of points will not\r\nbe greater, than . Time complexity . Juryâs solution: 8924807\r\n",
+    "hint": []
 }

@@ -98,7 +98,7 @@
         ]
     },
     "name": "B. Semifinals",
-    "statement": "Two semifinals have just been in the running tournament. Each semifinal\r\nhad participants. There are participants advancing to the finals, they\r\nare chosen as follows: from each semifinal, we choose people () who\r\nshowed the best result in their semifinals and all other places in the\r\nfinals go to the people who haven\u2019t ranked in the top in their semifinal\r\nbut got to the of the best among the others.The tournament organizers\r\nhasn\u2019t yet determined the value, so the participants want to know who\r\nelse has any chance to get to the finals and who can go home.\r\n",
+    "statement": "Two semifinals have just been in the running tournament. Each semifinal\r\nhad participants. There are participants advancing to the finals, they\r\nare chosen as follows: from each semifinal, we choose people () who\r\nshowed the best result in their semifinals and all other places in the\r\nfinals go to the people who haven’t ranked in the top in their semifinal\r\nbut got to the of the best among the others.The tournament organizers\r\nhasn’t yet determined the value, so the participants want to know who\r\nelse has any chance to get to the finals and who can go home.\r\n",
     "solutions": [
         "#include <algorithm>\n#include <cmath>\n#include <cstdio>\n#include <map>\n#include <queue>\n#include <set>\n#include <sstream>\n#include <string>\n#include <vector>\n\nusing namespace std;\n\nchar A[200000];\nchar B[200000];\nint n;\nint C[200000];\nint D[200000];\n\nint main() {\n  scanf (\"%d\", &n);\n  for (int i = 0; i < n; ++i) scanf (\"%d %d\", C + i, D + i);\n\n  A[n] = 0;\n  B[n] = 0;\n  for (int i = 0; i < n/2; ++i) A[i] = B[i] = '1';\n  for (int i = n/2; i < n; ++i) A[i] = B[i] = '0';\n\n  int a = 0, b = 0;\n  for (int i = 0; i < n; ++i) {\n    if (C[a] < D[b]) {A[a] = '1'; ++a;}\n    else {B[b] = '1'; ++b;}\n  }\n\n  printf(\"%s\\n%s\\n\", A, B);\n\n  return 0;\n}"
     ],
@@ -112,5 +112,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Semifinals.json",
     "editorial_link": "https://codeforces.com//blog/entry/10157",
-    "editorial": "You can think a bit and understand that you should consider only corner\r\ncases: and . All other cases will be something between them. If , we\r\nshould choose biggest elements from two sorted lists, one of the ways is\r\nto use two pointers method. And if , we just mark first people in each\r\nlist.\r\n"
+    "editorial": "You can think a bit and understand that you should consider only corner\r\ncases: and . All other cases will be something between them. If , we\r\nshould choose biggest elements from two sorted lists, one of the ways is\r\nto use two pointers method. And if , we just mark first people in each\r\nlist.\r\n",
+    "hint": []
 }

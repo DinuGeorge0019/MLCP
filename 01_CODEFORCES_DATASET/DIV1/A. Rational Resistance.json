@@ -143,5 +143,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Rational Resistance.json",
     "editorial_link": "https://codeforces.com//blog/entry/8860",
-    "editorial": "If a fraction can be obtained with resistors, then it is simple to\r\ncalculate that we can obtain fractions and with resistors. So adding one\r\nresistor means performing one operation backwards in Euclidean\r\nalgorithm. That means that the answer is equal to the number of steps in\r\nstandard Euclidean algorithm. Solution complexity: . Problem authors:\r\ngen, andreyv. : At first we thought about the major problem (any two\r\nelements can be joined), but had a moment of eureka and got that the\r\ngiven problem unexpectedly naturally can be reduced to GCD. By the way,\r\nthe result tree http://en.wikipedia.org/wiki/Calkin\r\n"
+    "editorial": "If a fraction can be obtained with resistors, then it is simple to\r\ncalculate that we can obtain fractions and with resistors. So adding one\r\nresistor means performing one operation backwards in Euclidean\r\nalgorithm. That means that the answer is equal to the number of steps in\r\nstandard Euclidean algorithm. Solution complexity: . Problem authors:\r\ngen, andreyv. : At first we thought about the major problem (any two\r\nelements can be joined), but had a moment of eureka and got that the\r\ngiven problem unexpectedly naturally can be reduced to GCD. By the way,\r\nthe result tree http://en.wikipedia.org/wiki/Calkin\r\n",
+    "hint": []
 }

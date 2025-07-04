@@ -136,5 +136,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. World Cup.json",
     "editorial_link": "https://codeforces.com//blog/entry/60217",
-    "editorial": "For gate (where ) we visit the gate at times Therefore, the earliest\r\nAllen could enter from gate is the time such that Now, for each ,\r\ncompute the minimal integer such that . Now, find the integer with\r\nminimum and output .\r\n"
+    "editorial": "For gate (where ) we visit the gate at times Therefore, the earliest\r\nAllen could enter from gate is the time such that Now, for each ,\r\ncompute the minimal integer such that . Now, find the integer with\r\nminimum and output .\r\n",
+    "hint": []
 }

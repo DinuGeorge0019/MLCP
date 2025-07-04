@@ -201,5 +201,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\D. Magical Array.json",
     "editorial_link": "https://codeforces.com//blog/entry/105464",
-    "editorial": "First, let\u00e2\u0080\u0099s focus on and do some calculations:1. 2. See what? Yes, even\r\nif you give lots of to array , the sum of remains. Thus, you can easily\r\nfind . And how to find the number of ? Let\u00e2\u0080\u0099s do some calculations\r\nagain:1. 2. This operation will add to the result of .Just minus the\r\ninitial and you will get the number of operations applied.\r\n"
+    "editorial": "First, letâs focus on and do some calculations:1. 2. See what? Yes, even\r\nif you give lots of to array , the sum of remains. Thus, you can easily\r\nfind . And how to find the number of ? Letâs do some calculations\r\nagain:1. 2. This operation will add to the result of .Just minus the\r\ninitial and you will get the number of operations applied.\r\n",
+    "hint": []
 }

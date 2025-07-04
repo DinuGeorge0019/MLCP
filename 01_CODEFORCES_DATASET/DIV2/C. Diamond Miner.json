@@ -118,7 +118,7 @@
         ]
     },
     "name": "C. Diamond Miner",
-    "statement": "Diamond Miner is a game that is similar to Gold Miner, but there are n\r\nminers instead of 1 in this game.The mining area can be described as a\r\nplane. The n miners can be regarded as n points . There are n diamond\r\nmines in the mining area. We can regard them as n points . For some\r\nreason, (point (0, 0)). Every miner should mine one diamond mine. Every\r\nminer has a hook, which can be used to mine a diamond mine. If a miner\r\nat the point (a,b) uses his hook to mine a diamond mine at the point\r\n(c,d), he will spend\r\nsqrt{(a-c)^2+(b-d)^2} energy to mine it (the distance between these\r\npoints). The miners can\u2019t move or help each other.The object of this\r\ngame is to minimize that miners spend. Can you find this minimum?\r\n",
+    "statement": "Diamond Miner is a game that is similar to Gold Miner, but there are n\r\nminers instead of 1 in this game.The mining area can be described as a\r\nplane. The n miners can be regarded as n points . There are n diamond\r\nmines in the mining area. We can regard them as n points . For some\r\nreason, (point (0, 0)). Every miner should mine one diamond mine. Every\r\nminer has a hook, which can be used to mine a diamond mine. If a miner\r\nat the point (a,b) uses his hook to mine a diamond mine at the point\r\n(c,d), he will spend\r\nsqrt{(a-c)^2+(b-d)^2} energy to mine it (the distance between these\r\npoints). The miners can’t move or help each other.The object of this\r\ngame is to minimize that miners spend. Can you find this minimum?\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\nusing namespace std;\n#define int long long\nconst int N=100005;\nint T,n,a[N],b[N],tot1,tot2,x,y;\nsigned main(){\n\tcin>>T;\n\twhile (T--){\n\t\tcin>>n;\n\t\ttot1=tot2=0;\n\t\tfor (int i=1;i<=2*n;i++){\n\t\t\tcin>>x>>y;\n\t\t\tif (!x)a[++tot1]=abs(y);\n\t\t\telse b[++tot2]=abs(x);\n\t\t}\n\t\tsort(a+1,a+n+1);\n\t\tsort(b+1,b+n+1);\n\t\tdouble ans=0;\n\t\tfor (int i=1;i<=n;i++)ans+=sqrt(a[i]*a[i]+b[i]*b[i]);\n\t\tprintf(\"%.10lf\\n\",ans);\n\t}\n}\n"
     ],
@@ -133,5 +133,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Diamond Miner.json",
     "editorial_link": "https://codeforces.com//blog/entry/88533",
-    "editorial": "Here Is My Submission.109634972\r\n"
+    "editorial": "Here Is My Submission.109634972\r\n",
+    "hint": []
 }

@@ -187,5 +187,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Heating.json",
     "editorial_link": "https://codeforces.com//blog/entry/71805",
-    "editorial": "Let\u00e2\u0080\u0099s denote the number of sections in the -th radiator as . Let\u00e2\u0080\u0099s prove\r\nthat in the optimal answer . Proof by contradiction: suppose we have and\r\nin the answer, let\u00e2\u0080\u0099s move from to and check: The answer is not optimal\r\ncontradiction.Finally, there is the only way to take with . And it\u00e2\u0080\u0099s to\r\ntake elements with value and elements with .\r\n"
+    "editorial": "Letâs denote the number of sections in the -th radiator as . Letâs prove\r\nthat in the optimal answer . Proof by contradiction: suppose we have and\r\nin the answer, letâs move from to and check: The answer is not optimal\r\ncontradiction.Finally, there is the only way to take with . And itâs to\r\ntake elements with value and elements with .\r\n",
+    "hint": []
 }

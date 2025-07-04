@@ -120,5 +120,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Dreamoon Likes Permutations.json",
     "editorial_link": "https://codeforces.com//blog/entry/75559",
-    "editorial": "Let be the maximum value of all elements in . If you can recover the the\r\narray to two permutations abd , then must be . So there are at most two\r\ncase: 1. , 2. . We can check the two cases separately with time\r\ncomplexity . Please see the example code for detail.\r\n"
+    "editorial": "Let be the maximum value of all elements in . If you can recover the the\r\narray to two permutations abd , then must be . So there are at most two\r\ncase: 1. , 2. . We can check the two cases separately with time\r\ncomplexity . Please see the example code for detail.\r\n",
+    "hint": []
 }

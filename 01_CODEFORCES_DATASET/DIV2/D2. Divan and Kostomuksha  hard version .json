@@ -160,5 +160,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D2. Divan and Kostomuksha  hard version .json",
     "editorial_link": "https://codeforces.com//blog/entry/97283",
-    "editorial": "SolutionTo solve , we can notice that to recalculate the dynamics, we\r\ncan iterate over all such that differ from by multiplying exactly prime\r\nnumber. Also, to speed up the solution, we can use the linear sieve of\r\nEratosthenes to find primes and factorization.The resulting asymptotics\r\nin time: .\r\n"
+    "editorial": "SolutionTo solve , we can notice that to recalculate the dynamics, we\r\ncan iterate over all such that differ from by multiplying exactly prime\r\nnumber. Also, to speed up the solution, we can use the linear sieve of\r\nEratosthenes to find primes and factorization.The resulting asymptotics\r\nin time: .\r\n",
+    "hint": []
 }

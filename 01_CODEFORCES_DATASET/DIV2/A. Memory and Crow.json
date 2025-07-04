@@ -75,7 +75,7 @@
         ]
     },
     "name": "A. Memory and Crow",
-    "statement": "There are integers written in a row. For all from to , values are\r\ndefined by the crows performing the following procedure: The crow sets\r\ninitially . The crow then adds to , subtracts , adds the number, and so\r\non until the \u2019th number. Thus, . Memory gives you the values , and he\r\nnow wants you to find the initial numbers written in the row? Can you do\r\nit?\r\n",
+    "statement": "There are integers written in a row. For all from to , values are\r\ndefined by the crows performing the following procedure: The crow sets\r\ninitially . The crow then adds to , subtracts , adds the number, and so\r\non until the ’th number. Thus, . Memory gives you the values , and he\r\nnow wants you to find the initial numbers written in the row? Can you do\r\nit?\r\n",
     "solutions": [
         "#include<cstdio>\n#include<algorithm>\n#include<cstring>\n#include<cstdlib>\n#include<cmath>\n#include<iostream>\n#include<vector>\nusing namespace std;\n\n#define maxn 100100\ntypedef long long ll;\nll a[maxn],b[maxn];\nint n;\n\nint main()\n{\n\tscanf(\"%d\",&n);\n\tfor(int i=1;i<=n;i++)\n\t\tscanf(\"%I64d\",a+i);\n\t\n\tfor(int i=n;i>=1;i--)\n\t{\n\t\tb[i]=a[i]+a[i+1];\n\t}\n\tfor(int i=1;i<=n;i++)\n\t\tprintf(\"%I64d \",b[i]);\n\treturn 0;\n}\n"
     ],
@@ -89,5 +89,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Memory and Crow.json",
     "editorial_link": "https://codeforces.com//blog/entry/47050",
-    "editorial": "Note that a[i]?+?a[i?+?1]?=?b[i]. Use the initial condition b[n]?=?a[n] and we can figure out the entire array b."
+    "editorial": "Note that a[i]?+?a[i?+?1]?=?b[i]. Use the initial condition b[n]?=?a[n] and we can figure out the entire array b.",
+    "hint": []
 }

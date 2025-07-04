@@ -104,5 +104,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Garland.json",
     "editorial_link": "https://codeforces.com//blog/entry/11333",
-    "editorial": "In this problem it is necessary to find the garland with the maximal\r\nlength, which can be composed of elements that we have. First, if you\r\nneed some color, but you don\u00e2\u0080\u0099t have it, then the answer is -1 Otherwise,\r\nanswer is always exists. Let\u00e2\u0080\u0099s sum the answers for all the colors\r\nseparately. Suppose we have pieces of a garland of some color, and we\r\nneed pieces. Then we have to add to the answer: if we will use 1 meter\r\npieces, in the other case if we will use all pieces.\r\n"
+    "editorial": "In this problem it is necessary to find the garland with the maximal\r\nlength, which can be composed of elements that we have. First, if you\r\nneed some color, but you donât have it, then the answer is -1 Otherwise,\r\nanswer is always exists. Letâs sum the answers for all the colors\r\nseparately. Suppose we have pieces of a garland of some color, and we\r\nneed pieces. Then we have to add to the answer: if we will use 1 meter\r\npieces, in the other case if we will use all pieces.\r\n",
+    "hint": []
 }

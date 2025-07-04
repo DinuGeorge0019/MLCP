@@ -102,9 +102,9 @@
         ]
     },
     "name": "B. Sorted Adjacent Differences",
-    "statement": "You have array of n numbers a_{1}, a_{2},\r\nldots, a_{n}. Rearrange these numbers to satisfy |a_{1} - a_{2}|\r\nle |a_{2} - a_{3}|\r\nle\r\nldots\r\nle |a_{n-1} - a_{n}|, where |x| denotes absolute value of x. It\u2019s always\r\npossible to find such rearrangement.Note that all numbers in a are not\r\nnecessarily different. In other words, some numbers of a may be same.You\r\nhave to answer independent t test cases.\r\n",
+    "statement": "You have array of n numbers a_{1}, a_{2},\r\nldots, a_{n}. Rearrange these numbers to satisfy |a_{1} - a_{2}|\r\nle |a_{2} - a_{3}|\r\nle\r\nldots\r\nle |a_{n-1} - a_{n}|, where |x| denotes absolute value of x. It’s always\r\npossible to find such rearrangement.Note that all numbers in a are not\r\nnecessarily different. In other words, some numbers of a may be same.You\r\nhave to answer independent t test cases.\r\n",
     "solutions": [
-        "\ufeff#include<bits/stdc++.h>\n#include <array>\nusing namespace std;\nusing ULL = unsigned long long;\nusing UL = unsigned;\nusing LL = long long;\n#define rep(i, n) for(UL i = 0; i < (n); i++)\n\ntemplate<class Ty>\nusing passive_queue = priority_queue<Ty, vector<Ty>, greater<Ty>>;\n\nstruct Problem {\n\n\tvoid Loop() {\n\t\tUL N; cin >> N;\n\t\tvector<int> A(N); rep(i, N) cin >> A[i];\n\t\tsort(A.begin(), A.end());\n\t\tint p = 0, q = N - 1;\n\t\tvector<int> ans;\n\t\twhile (p <= q) {\n\t\t\tans.push_back(A[p]);\n\t\t\tif (p < q) ans.push_back(A[q]);\n\t\t\tp++; q--;\n\t\t}\n\t\treverse(ans.begin(), ans.end());\n\t\trep(i, N) {\n\t\t\tif (i) cout << \" \";\n\t\t\tcout << ans[i];\n\t\t} cout << endl;\n\t}\n\n\tvoid Solve() {\n\t\tUL Q; cin >> Q;\n\t\trep(i, Q) {\n\t\t\tLoop();\n\t\t}\n\t}\n\n\tProblem();\n};\nint main() {\n\tunique_ptr<Problem> p(new Problem());\n\tp->Solve();\n\treturn 0;\n}\nProblem::Problem() {\n\tcout << fixed << setprecision(10);\n}\n"
+        "﻿#include<bits/stdc++.h>\n#include <array>\nusing namespace std;\nusing ULL = unsigned long long;\nusing UL = unsigned;\nusing LL = long long;\n#define rep(i, n) for(UL i = 0; i < (n); i++)\n\ntemplate<class Ty>\nusing passive_queue = priority_queue<Ty, vector<Ty>, greater<Ty>>;\n\nstruct Problem {\n\n\tvoid Loop() {\n\t\tUL N; cin >> N;\n\t\tvector<int> A(N); rep(i, N) cin >> A[i];\n\t\tsort(A.begin(), A.end());\n\t\tint p = 0, q = N - 1;\n\t\tvector<int> ans;\n\t\twhile (p <= q) {\n\t\t\tans.push_back(A[p]);\n\t\t\tif (p < q) ans.push_back(A[q]);\n\t\t\tp++; q--;\n\t\t}\n\t\treverse(ans.begin(), ans.end());\n\t\trep(i, N) {\n\t\t\tif (i) cout << \" \";\n\t\t\tcout << ans[i];\n\t\t} cout << endl;\n\t}\n\n\tvoid Solve() {\n\t\tUL Q; cin >> Q;\n\t\trep(i, Q) {\n\t\t\tLoop();\n\t\t}\n\t}\n\n\tProblem();\n};\nint main() {\n\tunique_ptr<Problem> p(new Problem());\n\tp->Solve();\n\treturn 0;\n}\nProblem::Problem() {\n\tcout << fixed << setprecision(10);\n}\n"
     ],
     "input": "",
     "output": "",
@@ -116,5 +116,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Sorted Adjacent Differences.json",
     "editorial_link": "https://codeforces.com//blog/entry/75913",
-    "editorial": "Sort the list, and make an oscillation centered on middle element like\r\npicture below. In this way, you will always achieve to make for all .\r\nTime complexity is .\r\n"
+    "editorial": "Sort the list, and make an oscillation centered on middle element like\r\npicture below. In this way, you will always achieve to make for all .\r\nTime complexity is .\r\n",
+    "hint": []
 }

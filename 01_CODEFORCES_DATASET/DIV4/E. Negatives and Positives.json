@@ -189,5 +189,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\E. Negatives and Positives.json",
     "editorial_link": "https://codeforces.com//blog/entry/112282",
-    "editorial": "We can notice that by performing any number of operations, the parity of\r\nthe count of negative numbers won\u00e2\u0080\u0099t ever change. Thus, if the number of\r\nnegative numbers is initially even, we can make it equal to by\r\nperforming some operations. So, for an even count of negative numbers,\r\nthe answer is the sum of the absolute values of all numbers (since we\r\ncan make all of them positive). And if the count of negative numbers is\r\nodd, we must have one negative number at the end. We will choose the one\r\nsmallest by absolute value and keep the rest positive (for simplicity,\r\nwe consider as a negative number).\r\n"
+    "editorial": "We can notice that by performing any number of operations, the parity of\r\nthe count of negative numbers wonât ever change. Thus, if the number of\r\nnegative numbers is initially even, we can make it equal to by\r\nperforming some operations. So, for an even count of negative numbers,\r\nthe answer is the sum of the absolute values of all numbers (since we\r\ncan make all of them positive). And if the count of negative numbers is\r\nodd, we must have one negative number at the end. We will choose the one\r\nsmallest by absolute value and keep the rest positive (for simplicity,\r\nwe consider as a negative number).\r\n",
+    "hint": []
 }

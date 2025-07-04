@@ -104,7 +104,7 @@
         ]
     },
     "name": "A. Rewards",
-    "statement": "Bizon the Champion is called the Champion for a reason. Bizon the\r\nChampion has recently got a present a new glass cupboard with shelves\r\nand he decided to put all his presents there. All the presents can be\r\ndivided into two types: medals and cups. Bizon the Champion has first\r\nprize cups, second prize cups and third prize cups. Besides, he has\r\nfirst prize medals, second prize medals and third prize medals.\r\nNaturally, the rewards in the cupboard must look good, that\u2019s why Bizon\r\nthe Champion decided to follow the rules: any shelf cannot contain both\r\ncups and medals at the same time; no shelf can contain more than five\r\ncups; no shelf can have more than ten medals. Help Bizon the Champion\r\nfind out if we can put all the rewards so that all the conditions are\r\nfulfilled.\r\n",
+    "statement": "Bizon the Champion is called the Champion for a reason. Bizon the\r\nChampion has recently got a present a new glass cupboard with shelves\r\nand he decided to put all his presents there. All the presents can be\r\ndivided into two types: medals and cups. Bizon the Champion has first\r\nprize cups, second prize cups and third prize cups. Besides, he has\r\nfirst prize medals, second prize medals and third prize medals.\r\nNaturally, the rewards in the cupboard must look good, that’s why Bizon\r\nthe Champion decided to follow the rules: any shelf cannot contain both\r\ncups and medals at the same time; no shelf can contain more than five\r\ncups; no shelf can have more than ten medals. Help Bizon the Champion\r\nfind out if we can put all the rewards so that all the conditions are\r\nfulfilled.\r\n",
     "solutions": [
         "#include <algorithm>\n#include <cstring>\n#include <cstdlib>\n#include <cstdio>\n#define For(i,x,y) for (i=x;i<=y;i++)\nusing namespace std;\nint i,j,k,n,m;\nint main() {\n\tint A,B;\n\tA=B=0;\n\tFor(i,1,3) scanf(\"%d\",&k),A+=k;\n\tFor(i,1,3) scanf(\"%d\",&k),B+=k;\n\tif (A) A=(A-1)/5+1;\n\tif (B) B=(B-1)/10+1;\n\tscanf(\"%d\",&k);\n\tprintf(\"%s\\n\",A+B>k?\"NO\":\"YES\");\n\treturn 0;\n}\n"
     ],
@@ -117,5 +117,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Rewards.json",
     "editorial_link": "https://codeforces.com//blog/entry/13042",
-    "editorial": "Because rewards of one type can be on one shelf, lets\ncalculate number of cups and number of medals . Minimum number of\nshelves that will be required for all cups can be found by formula . The\nsame with shelves with medals: . If sum of this two values more than\nthen answer is \"NO\" and \"YES\" otherwise.\n"
+    "editorial": "Because rewards of one type can be on one shelf, lets\ncalculate number of cups and number of medals . Minimum number of\nshelves that will be required for all cups can be found by formula . The\nsame with shelves with medals: . If sum of this two values more than\nthen answer is \"NO\" and \"YES\" otherwise.\n",
+    "hint": []
 }

@@ -98,7 +98,7 @@
         ]
     },
     "name": "D. Petya and Divisors",
-    "statement": "Little Petya loves looking for numbers\u2019 divisors. One day Petya came\r\nacross the following problem:You are given queries in the form \" \". For\r\neach query Petya should count how many divisors of number divide none of\r\nthe numbers . Help him.\r\n",
+    "statement": "Little Petya loves looking for numbers’ divisors. One day Petya came\r\nacross the following problem:You are given queries in the form \" \". For\r\neach query Petya should count how many divisors of number divide none of\r\nthe numbers . Help him.\r\n",
     "solutions": [
         "#include <iostream>\n#include <cstdio>\n#include <cstdlib>\n#include <cstring>\n#include <cmath>\n#define maxn 100010\n\nusing namespace std;\n\nint n;\nint f[maxn];\n\nint main() {\n    //freopen(\"d.in\",\"r\",stdin);\n\n    for (int i=1;i<=100000;++i) f[i]=-100000;\n    scanf(\"%d\",&n);\n    for (int ii=1;ii<=n;++ii) {\n        int x,y;\n        scanf(\"%d%d\",&x,&y);\n        int cnt=0;\n        for (int i=1;i<=(int)sqrt(x);++i)\n            if (x % i==0) {\n                int p=i,q=x/i;\n                if (f[p]<ii-y) cnt++;\n                f[p]=ii;\n                if (q!=p) {\n                    if (f[q]<ii-y) cnt++;\n                    f[q]=ii;\n                }\n            }\n        printf(\"%d\\n\",cnt);\n    }\n\n    return 0;\n}\n"
     ],
@@ -112,5 +112,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Petya and Divisors.json",
     "editorial_link": "https://codeforces.com//blog/entry/2616",
-    "editorial": "Let\u0092s create an array used[], j-th element of which will be the index of the last number from the input, which is divisible by j. Then for each query we\u0092ll iterate over all divisors of xi and for each k, which divides xi we\u0092ll check whether it is \u0093unique\u0094. After that we\u0092ll update used[k].\n\n"
+    "editorial": "Lets create an array used[], j-th element of which will be the index of the last number from the input, which is divisible by j. Then for each query well iterate over all divisors of xi and for each k, which divides xi well check whether it is unique. After that well update used[k].\n\n",
+    "hint": []
 }

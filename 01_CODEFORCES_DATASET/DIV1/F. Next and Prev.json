@@ -180,5 +180,10 @@
     ],
     "dificulty": "3200",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\F. Next and Prev.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\F. Next and Prev.json",
+    "hint": [
+        "Hint 1 How to maintain ? Try .",
+        "Hint 2 To maintain , we can use chunking. Just +1 and .",
+        "Hint 3 To finish it, consider what we do in segment-beats."
+    ]
 }

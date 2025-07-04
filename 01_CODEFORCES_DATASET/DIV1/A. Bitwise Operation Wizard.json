@@ -138,5 +138,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Bitwise Operation Wizard.json",
     "editorial_link": "https://codeforces.com//blog/entry/126513",
-    "editorial": "TutorialStep1:do queries like classic searching for the maximum value\r\namong numbers to get ;Step2:do queries to find all index such that\r\nreaches the maximum value. We store all such indexes in a vector\r\n.Step3:do queries to find in such that reaches the minimum value.\r\n"
+    "editorial": "TutorialStep1:do queries like classic searching for the maximum value\r\namong numbers to get ;Step2:do queries to find all index such that\r\nreaches the maximum value. We store all such indexes in a vector\r\n.Step3:do queries to find in such that reaches the minimum value.\r\n",
+    "hint": []
 }

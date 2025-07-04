@@ -154,5 +154,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Add and Divide.json",
     "editorial_link": "https://codeforces.com//blog/entry/87470",
-    "editorial": "SolutionNotice how it is never better to increase after dividing ().So\r\nwe can try to increase to a certain value and then divide by until it is\r\n. Being careful as not to do this with , the number of times we divide\r\nis going to be . In particular, if you reach (this requires at most\r\nmove), you need at most moves to finish.Let be the number of moves of\r\ntype ; we can try all values of () and, for each , check how many moves\r\nof type are necessary.Complexity: .If we notice that it is never\r\nconvenient to increase over , we can also achieve a solution with better\r\ncomplexity.\r\n"
+    "editorial": "SolutionNotice how it is never better to increase after dividing ().So\r\nwe can try to increase to a certain value and then divide by until it is\r\n. Being careful as not to do this with , the number of times we divide\r\nis going to be . In particular, if you reach (this requires at most\r\nmove), you need at most moves to finish.Let be the number of moves of\r\ntype ; we can try all values of () and, for each , check how many moves\r\nof type are necessary.Complexity: .If we notice that it is never\r\nconvenient to increase over , we can also achieve a solution with better\r\ncomplexity.\r\n",
+    "hint": [
+        "Hint 1 Suppose that you can use operations of type and operations of type . Try to reorder the operations in such a way that becomes the minimum possible.",
+        "Hint 2 You should use operations of type first, then moves of type . How many operations do you need in the worst case? ( , )",
+        "Hint 3 You need at most operations. Iterate over the number of operations of type ."
+    ]
 }

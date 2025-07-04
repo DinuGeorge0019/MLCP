@@ -142,7 +142,7 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/135849",
-    "editorial": "TutorialFirst, in a naive way, let\u00e2\u0080\u0099s count the number of times 1100\r\noccurs in .Then for each of queries we will update : consider the\r\nsubstring before changing and find the number of times that 1100 occurs\r\nin it. Then update and similarly find the number of times that 1100\r\noccurs in after applying the query.Thus, by doing , we get the number of\r\ntimes that 1100 occurs in after the query is applied. If , the answer to\r\nthe query is YES , otherwise it is NO .Complexity:\r\n",
+    "editorial": "TutorialFirst, in a naive way, letâs count the number of times 1100\r\noccurs in .Then for each of queries we will update : consider the\r\nsubstring before changing and find the number of times that 1100 occurs\r\nin it. Then update and similarly find the number of times that 1100\r\noccurs in after applying the query.Thus, by doing , we get the number of\r\ntimes that 1100 occurs in after the query is applied. If , the answer to\r\nthe query is YES , otherwise it is NO .Complexity:\r\n",
     "name": "C. Anya and 1100",
     "statement": "While rummaging through things in a distant drawer, Anya found a\r\nbeautiful string s consisting only of zeros and ones.Now she wants to\r\nmake it even more beautiful by performing q operations on it.Each\r\noperation is described by two integers i (1\r\nle i\r\nle |s|) and v (v\r\nin\r\n{0, 1\r\n}) and means that the i-th character of the string is assigned the value\r\nv (that is, the assignment s_i = v is performed).But Anya loves the\r\nnumber 1100, so after each query, she asks you to tell her whether the\r\nsubstring \"\" is present in her string (i.e. there exist such 1\r\nle i\r\nle |s| - 3 that s_{i}s_{i + 1}s_{i + 2}s_{i + 3} =\r\ntexttt{1100}).\r\n",
     "solutions": [
@@ -156,5 +156,8 @@
     ],
     "dificulty": "1100",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C. Anya and 1100.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C. Anya and 1100.json",
+    "hint": [
+        "Hint With each query, to track the change in the presence of “1100” in a row, you don't have to go through the entire row — you can check just a few neighboring cells."
+    ]
 }

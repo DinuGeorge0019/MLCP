@@ -126,5 +126,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Pyramid of Glasses.json",
     "editorial_link": "https://codeforces.com/blog/entry/45018",
-    "editorial": "The restrictions in this problem allow to simulate the process. Let the\r\nvolume of one wineglass equals to conventional units. So the volume of\r\nthe champagne surpluses which will stream to bottom level will always\r\ninteger number. So let\u00e2\u0080\u0099s pour in the top wineglass units of champagne,\r\nand then we have following case: if in the current wineglass is more\r\nchampagne than its volume, let\u00e2\u0080\u0099s make , and add of champagne in each of\r\nthe two bottom wineglasses. Asymptotic behavior .\r\n"
+    "editorial": "The restrictions in this problem allow to simulate the process. Let the\r\nvolume of one wineglass equals to conventional units. So the volume of\r\nthe champagne surpluses which will stream to bottom level will always\r\ninteger number. So letâs pour in the top wineglass units of champagne,\r\nand then we have following case: if in the current wineglass is more\r\nchampagne than its volume, letâs make , and add of champagne in each of\r\nthe two bottom wineglasses. Asymptotic behavior .\r\n",
+    "hint": []
 }

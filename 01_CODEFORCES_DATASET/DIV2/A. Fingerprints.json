@@ -124,5 +124,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Fingerprints.json",
     "editorial_link": "https://codeforces.com//blog/entry/60047",
-    "editorial": "The problem can be solved by iterating over every number of the\r\nsequence, then iterating over the sequence of fingerprints to check if\r\nthe number corresponds to a key with a fingerprint, resulting in an\r\nsolution.\r\n"
+    "editorial": "The problem can be solved by iterating over every number of the\r\nsequence, then iterating over the sequence of fingerprints to check if\r\nthe number corresponds to a key with a fingerprint, resulting in an\r\nsolution.\r\n",
+    "hint": []
 }

@@ -96,5 +96,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Watching a movie.json",
     "editorial_link": "https://codeforces.com/blog/entry/15353",
-    "editorial": "One can solve the problem using greedy algorithm: if we can skip minutes\r\nat current moment without skipping any good moment we do that, otherwise\r\nwatch another minute of the film.\r\n"
+    "editorial": "One can solve the problem using greedy algorithm: if we can skip minutes\r\nat current moment without skipping any good moment we do that, otherwise\r\nwatch another minute of the film.\r\n",
+    "hint": []
 }

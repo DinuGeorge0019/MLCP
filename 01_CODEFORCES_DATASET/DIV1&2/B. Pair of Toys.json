@@ -153,5 +153,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\B. Pair of Toys.json",
     "editorial_link": "https://codeforces.com//blog/entry/61356",
-    "editorial": "The problem is to calculate the number of ways to choose two distinct\r\nintegers from to with sum equals .If then the answer is because this is\r\nthe number of ways to choose two distinct integers from to with the sum\r\nequals . Otherwise let will be the minimum possible term in the correct\r\npair of integers. Also let will be the maximum possible term in the\r\ncorrect pair of integers. Then the answer is because this is the number\r\nof ways to choose two distinct integers from to with the sum equals .\r\n"
+    "editorial": "The problem is to calculate the number of ways to choose two distinct\r\nintegers from to with sum equals .If then the answer is because this is\r\nthe number of ways to choose two distinct integers from to with the sum\r\nequals . Otherwise let will be the minimum possible term in the correct\r\npair of integers. Also let will be the maximum possible term in the\r\ncorrect pair of integers. Then the answer is because this is the number\r\nof ways to choose two distinct integers from to with the sum equals .\r\n",
+    "hint": []
 }

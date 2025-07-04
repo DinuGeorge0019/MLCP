@@ -164,5 +164,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Beat The Odds.json",
     "editorial_link": "https://codeforces.com//blog/entry/103212",
-    "editorial": "The sum of an odd integer and an even integer is an odd integer. So, you\r\ncan\u00e2\u0080\u0099t have both even and odd elements in the array for the sum of every\r\ntwo consecutive elements to be even.Hence, the final array should only\r\ncontain or elements. Hence, we will remove either all odd elements or\r\nall even elements, whichever takes lesser number of operations.\r\nTherefore, the answer is: .\r\n"
+    "editorial": "The sum of an odd integer and an even integer is an odd integer. So, you\r\ncanât have both even and odd elements in the array for the sum of every\r\ntwo consecutive elements to be even.Hence, the final array should only\r\ncontain or elements. Hence, we will remove either all odd elements or\r\nall even elements, whichever takes lesser number of operations.\r\nTherefore, the answer is: .\r\n",
+    "hint": [
+        "Hint 1 Sum of two odd numbers is even and sum of two even numbers is also even.",
+        "Hint 2 If all consecutive pairs have even sum, can we generalize something about the sequence using the above hint?"
+    ]
 }

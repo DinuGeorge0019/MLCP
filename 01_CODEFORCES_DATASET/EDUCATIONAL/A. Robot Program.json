@@ -144,7 +144,7 @@
         ]
     },
     "name": "A. Robot Program",
-    "statement": "There is an infinite 2-dimensional grid. The robot stands in cell (0, 0)\r\nand wants to reach cell (x, y). Here is a list of possible commands the\r\nrobot can execute: move north from cell (i, j) to (i, j + 1); move east\r\nfrom cell (i, j) to (i + 1, j); move south from cell (i, j) to (i, j -\r\n1); move west from cell (i, j) to (i - 1, j); stay in cell (i, j). The\r\nrobot wants to reach cell (x, y) in as few commands as possible.\r\nHowever, he can\u2019t execute the same command two or more times in a\r\nrow.What is the minimum number of commands required to reach (x, y) from\r\n(0, 0)?\r\n",
+    "statement": "There is an infinite 2-dimensional grid. The robot stands in cell (0, 0)\r\nand wants to reach cell (x, y). Here is a list of possible commands the\r\nrobot can execute: move north from cell (i, j) to (i, j + 1); move east\r\nfrom cell (i, j) to (i + 1, j); move south from cell (i, j) to (i, j -\r\n1); move west from cell (i, j) to (i - 1, j); stay in cell (i, j). The\r\nrobot wants to reach cell (x, y) in as few commands as possible.\r\nHowever, he can’t execute the same command two or more times in a\r\nrow.What is the minimum number of commands required to reach (x, y) from\r\n(0, 0)?\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n\tint tc; scanf(\"%d\", &tc);\n\twhile(tc--) {\n\t\tint x, y; scanf(\"%d%d\", &x, &y);\n\t\tif(x < y) swap(x, y);\n\t\tif(x == y) printf(\"%d\\n\", x + y);\n\t\telse printf(\"%d\\n\", 2 * y + 1 + (x - y - 1) * 2);\n\t}\n\treturn 0;\n}"
     ],
@@ -157,5 +157,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Robot Program.json",
     "editorial_link": "https://codeforces.com//blog/entry/84847",
-    "editorial": "Obviously, you can always obtain the optimal answer without using west\r\nor south moves. So the shortest path consists of east moves and north\r\nmoves. Let\u00e2\u0080\u0099s estimate the lower bound of the answer. Take a look at\r\nthese constructions: \"\" and \"\" (let question mark be any command\r\ndifferent from the used one). That\u00e2\u0080\u0099s the tightest you can put east or\r\nnorth moves in.So the answer is at least . For you can put them just as\r\nin the construction and fill the rest of question marks with a stay in\r\nplace move. case works differently, though. You can do it only in moves\r\nby taking alternating moves.Overall complexity: per testcase.\r\n"
+    "editorial": "Obviously, you can always obtain the optimal answer without using west\r\nor south moves. So the shortest path consists of east moves and north\r\nmoves. Letâs estimate the lower bound of the answer. Take a look at\r\nthese constructions: \"\" and \"\" (let question mark be any command\r\ndifferent from the used one). Thatâs the tightest you can put east or\r\nnorth moves in.So the answer is at least . For you can put them just as\r\nin the construction and fill the rest of question marks with a stay in\r\nplace move. case works differently, though. You can do it only in moves\r\nby taking alternating moves.Overall complexity: per testcase.\r\n",
+    "hint": []
 }

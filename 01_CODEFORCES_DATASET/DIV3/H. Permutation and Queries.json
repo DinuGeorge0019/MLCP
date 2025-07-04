@@ -160,5 +160,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\H. Permutation and Queries.json",
     "editorial_link": "https://codeforces.com//blog/entry/98159",
-    "editorial": "Let\u00e2\u0080\u0099s compute an array of integers answers to all possible second-type\r\nqueries with , . Now, if we have to perform any second-type query, we\r\ncan split it into at most queries with and at most queries with .Let\u00e2\u0080\u0099s\r\nalso compute an array of integers reverse permutation. If , then .To\r\nperform any first-type query, we should recompute , and . We can swap\r\nand in the array and and in the array No more than elements will be\r\nchanged in the array . These are elements with indexes ( elements) and (\r\nelements). We can recompute and then assign and times. Similarly for\r\n.Time complexity: .\r\n"
+    "editorial": "Letâs compute an array of integers answers to all possible second-type\r\nqueries with , . Now, if we have to perform any second-type query, we\r\ncan split it into at most queries with and at most queries with .Letâs\r\nalso compute an array of integers reverse permutation. If , then .To\r\nperform any first-type query, we should recompute , and . We can swap\r\nand in the array and and in the array No more than elements will be\r\nchanged in the array . These are elements with indexes ( elements) and (\r\nelements). We can recompute and then assign and times. Similarly for\r\n.Time complexity: .\r\n",
+    "hint": []
 }

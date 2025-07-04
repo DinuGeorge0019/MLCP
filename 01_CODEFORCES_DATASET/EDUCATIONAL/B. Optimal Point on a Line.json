@@ -153,5 +153,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. Optimal Point on a Line.json",
     "editorial_link": "https://codeforces.com//blog/entry/46761",
-    "editorial": "The function of the total distance is monotonic between any pair of\r\nadjacent points from the input, so the answer is always in some of the\r\ngiven points. We can use that observation to solve the problem by\r\ncalculating the total distance for each point from the input and finding\r\nthe optimal point. The other solution uses the observation that the\r\nanswer is always is the middle point (by index) in the sorted list of\r\nthe given points. The last fact is also can be easily proven. C++\r\nsolution\r\n"
+    "editorial": "The function of the total distance is monotonic between any pair of\r\nadjacent points from the input, so the answer is always in some of the\r\ngiven points. We can use that observation to solve the problem by\r\ncalculating the total distance for each point from the input and finding\r\nthe optimal point. The other solution uses the observation that the\r\nanswer is always is the middle point (by index) in the sorted list of\r\nthe given points. The last fact is also can be easily proven. C++\r\nsolution\r\n",
+    "hint": []
 }

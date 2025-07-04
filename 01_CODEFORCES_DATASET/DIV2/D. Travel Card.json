@@ -116,5 +116,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Travel Card.json",
     "editorial_link": "https://codeforces.com//blog/entry/49946",
-    "editorial": "Hint: the problem looks difficult because tickets can change, however, it's can be solved with simple dynamic programming. You are asked the difference between neighboring dp's subtasks."
+    "editorial": "Hint: the problem looks difficult because tickets can change, however, it's can be solved with simple dynamic programming. You are asked the difference between neighboring dp's subtasks.",
+    "hint": []
 }

@@ -187,5 +187,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\D. Cow and Fields.json",
     "editorial_link": "https://codeforces.com//blog/entry/73953",
-    "editorial": "There are a few solutions that involve breadth first search (BFS) and\r\nsorting, this is just one of them. First, let\u00e2\u0080\u0099s use BFS to find the\r\ndistance from fields and to each special field. For a special field ,\r\nlet denote the distance to node , and denote the distance to .We want to\r\nchoose two fields and to maximize . Without loss of generality, suppose\r\n.Now we want to maximize subject to . This can be done by sorting by and\r\niterating over while keeping a suffix maximum array of to compute\r\n.Remember that an upper bound of the answer is the distance between\r\nfield and .Time Complexity:\r\n"
+    "editorial": "There are a few solutions that involve breadth first search (BFS) and\r\nsorting, this is just one of them. First, letâs use BFS to find the\r\ndistance from fields and to each special field. For a special field ,\r\nlet denote the distance to node , and denote the distance to .We want to\r\nchoose two fields and to maximize . Without loss of generality, suppose\r\n.Now we want to maximize subject to . This can be done by sorting by and\r\niterating over while keeping a suffix maximum array of to compute\r\n.Remember that an upper bound of the answer is the distance between\r\nfield and .Time Complexity:\r\n",
+    "hint": []
 }

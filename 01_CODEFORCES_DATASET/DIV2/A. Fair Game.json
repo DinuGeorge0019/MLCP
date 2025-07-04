@@ -140,5 +140,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Fair Game.json",
     "editorial_link": "https://codeforces.com//blog/entry/54765",
-    "editorial": "This problem has many different solutions. Let\u00e2\u0080\u0099s consider one of them.At\r\nfirst sort all numbers in non-descending order. Then the first numbers\r\nmust be equal to each other, the following numbers must be equal to each\r\nother, and the number from the first half must be different from the\r\nnumber from the second half. So, if all conditions: are met after\r\nsorting, the answer is . Vasya must choose before the game number and\r\nPetya (or vice versa). If at least one from the described conditions is\r\nfailed, the answer is .\r\n"
+    "editorial": "This problem has many different solutions. Letâs consider one of them.At\r\nfirst sort all numbers in non-descending order. Then the first numbers\r\nmust be equal to each other, the following numbers must be equal to each\r\nother, and the number from the first half must be different from the\r\nnumber from the second half. So, if all conditions: are met after\r\nsorting, the answer is . Vasya must choose before the game number and\r\nPetya (or vice versa). If at least one from the described conditions is\r\nfailed, the answer is .\r\n",
+    "hint": []
 }

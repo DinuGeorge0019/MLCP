@@ -155,7 +155,7 @@
         ]
     },
     "name": "C. Lunar New Year and Number Division",
-    "statement": "There are n positive integers a_1, a_2,\r\nldots, a_n on Bob\u2019s homework paper, where n is always an number. Bob is\r\nasked to divide those numbers into groups, where each group must contain\r\nat least 2 numbers. Suppose the numbers are divided into m groups, and\r\nthe sum of the numbers in the j-th group is s_j. Bob\u2019s aim is to\r\nminimize the sum of the square of s_j, that is\r\nsum_{j = 1}^{m} s_j^2.Bob is puzzled by this hard problem. Could you\r\nplease help him solve it?\r\n",
+    "statement": "There are n positive integers a_1, a_2,\r\nldots, a_n on Bob’s homework paper, where n is always an number. Bob is\r\nasked to divide those numbers into groups, where each group must contain\r\nat least 2 numbers. Suppose the numbers are divided into m groups, and\r\nthe sum of the numbers in the j-th group is s_j. Bob’s aim is to\r\nminimize the sum of the square of s_j, that is\r\nsum_{j = 1}^{m} s_j^2.Bob is puzzled by this hard problem. Could you\r\nplease help him solve it?\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\n\nconst int N = 550000;\nint a[N];\n\nint main() {\n\tint n; cin >> n;\n\tfor (int i = 1; i <= n; i++) cin >> a[i];\n\tsort(a + 1, a + n + 1);\n\tlong long ans = 0;\n\tfor (int i = 1; i <= n; i++) ans += a[i] * 1LL * a[i];\n\tfor (int i = 1; i <= n / 2; i++) ans += 2LL * a[i] * a[n + 1 - i];\n\tcout << ans << endl;\n\treturn 0;\n}"
     ],
@@ -171,5 +171,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Lunar New Year and Number Division.json",
     "editorial_link": "https://codeforces.com/blog/entry/64928",
-    "editorial": "This problem is easy as it looks like, and it is proved to be simple. As\r\nis even, the optimal grouping policy is to group the smallest with the\r\nlargest, the second smallest with the second largest, etc.First, it is\r\neasy to prove that it is optimal to group these numbers by , so the\r\nproof is given as an exercise to you.The proof of the second part is\r\nabout the Rearrangement Inequality. Let\u00e2\u0080\u0099s consider two of the\r\npermutations of the sequence . Suppose they are where if and only if .\r\nThen the sum is one of the grouping policy of . As we do not care about\r\nthe part We only aim to minimize . That is the direct application of the\r\nRearrangement Inequality.\r\n"
+    "editorial": "This problem is easy as it looks like, and it is proved to be simple. As\r\nis even, the optimal grouping policy is to group the smallest with the\r\nlargest, the second smallest with the second largest, etc.First, it is\r\neasy to prove that it is optimal to group these numbers by , so the\r\nproof is given as an exercise to you.The proof of the second part is\r\nabout the Rearrangement Inequality. Letâs consider two of the\r\npermutations of the sequence . Suppose they are where if and only if .\r\nThen the sum is one of the grouping policy of . As we do not care about\r\nthe part We only aim to minimize . That is the direct application of the\r\nRearrangement Inequality.\r\n",
+    "hint": []
 }

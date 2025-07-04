@@ -145,7 +145,7 @@
         ]
     },
     "name": "A. Diverse Substring",
-    "statement": "You are given a string s, consisting of n lowercase Latin letters.A\r\nsubstring of string s is a continuous segment of letters from s. For\r\nexample, \"\" is a substring of \"\" and \"\" is not. The length of the\r\nsubstring is the number of letters in it.Let\u2019s call some string of\r\nlength n if and only if there is no letter to appear strictly more than\r\nfrac n 2 times. For example, strings \"\" and \"\" are and strings \"\" and \"\"\r\nare not.Your task is to find substring of string s or report that there\r\nis none. Note that it is not required to maximize or minimize the length\r\nof the resulting substring.\r\n",
+    "statement": "You are given a string s, consisting of n lowercase Latin letters.A\r\nsubstring of string s is a continuous segment of letters from s. For\r\nexample, \"\" is a substring of \"\" and \"\" is not. The length of the\r\nsubstring is the number of letters in it.Let’s call some string of\r\nlength n if and only if there is no letter to appear strictly more than\r\nfrac n 2 times. For example, strings \"\" and \"\" are and strings \"\" and \"\"\r\nare not.Your task is to find substring of string s or report that there\r\nis none. Note that it is not required to maximize or minimize the length\r\nof the resulting substring.\r\n",
     "solutions": [
         "#include <iostream>\n#include <algorithm>\n#include <vector>\n#include <string>\n\nusing namespace std;\n\nint main() {\n  int n;\n  string s;\n  cin >> n >> s;\n  for (int i = 0; i + 1 < n; i++) {\n    if (s[i] != s[i + 1]) {\n      cout << \"YES\" << endl;\n      cout << s.substr(i, 2) << endl;\n      return 0;\n    }\n  }\n  cout << \"NO\" << endl;\n}\n\n"
     ],
@@ -159,5 +159,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Diverse Substring.json",
     "editorial_link": "https://codeforces.com/blog/entry/62742",
-    "editorial": "Notice that the string of two distinct letter is already diverse. That\r\nimplies that the answer is \"\" if and only if all the letters in the\r\nstring are the same. Otherwise you can check all pairs of adjacent\r\nletters in .Overall complexity: .\r\n"
+    "editorial": "Notice that the string of two distinct letter is already diverse. That\r\nimplies that the answer is \"\" if and only if all the letters in the\r\nstring are the same. Otherwise you can check all pairs of adjacent\r\nletters in .Overall complexity: .\r\n",
+    "hint": []
 }

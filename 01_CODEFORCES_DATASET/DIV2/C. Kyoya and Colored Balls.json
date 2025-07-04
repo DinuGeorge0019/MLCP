@@ -115,5 +115,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Kyoya and Colored Balls.json",
     "editorial_link": "https://codeforces.com//blog/entry/18842",
-    "editorial": "Let fi be the number of ways to solve the problem using only the first i colors. We want to compute fn.\n\nInitially, we have f1??=??1, since we only have a single color, and balls of the same color are indistinguishable. Now, to go from fi to fi?+?1, we note that we need to put at a ball of color i?+?1 at the very end, but the other balls of color i?+?1 can go anywhere in the sequence. The number of ways to arrange the balls of color i?+?1 is  (minus one because we need to put one ball at the very end). Using this recurrence, we can solve for fn.\n\nThus, we need to precompute binomial coefficients then evaluate the product."
+    "editorial": "Let fi be the number of ways to solve the problem using only the first i colors. We want to compute fn.\n\nInitially, we have f1??=??1, since we only have a single color, and balls of the same color are indistinguishable. Now, to go from fi to fi?+?1, we note that we need to put at a ball of color i?+?1 at the very end, but the other balls of color i?+?1 can go anywhere in the sequence. The number of ways to arrange the balls of color i?+?1 is  (minus one because we need to put one ball at the very end). Using this recurrence, we can solve for fn.\n\nThus, we need to precompute binomial coefficients then evaluate the product.",
+    "hint": []
 }

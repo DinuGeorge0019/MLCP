@@ -104,7 +104,7 @@
         ]
     },
     "name": "D. Multiplication Table",
-    "statement": "Bizon the Champion isn\u2019t just charming, he also is very smart.While some\r\nof us were learning the multiplication table, Bizon the Champion had fun\r\nin his own manner. Bizon the Champion painted an multiplication table,\r\nwhere the element on the intersection of the -th row and -th column\r\nequals (the rows and columns of the table are numbered starting from 1).\r\nThen he was asked: what number in the table is the -th largest number?\r\nBizon the Champion always answered correctly and immediately. Can you\r\nrepeat his success?Consider the given multiplication table. If you write\r\nout all numbers from the table in the non-decreasing order, then the -th\r\nnumber you write out is called the -th largest number.\r\n",
+    "statement": "Bizon the Champion isn’t just charming, he also is very smart.While some\r\nof us were learning the multiplication table, Bizon the Champion had fun\r\nin his own manner. Bizon the Champion painted an multiplication table,\r\nwhere the element on the intersection of the -th row and -th column\r\nequals (the rows and columns of the table are numbered starting from 1).\r\nThen he was asked: what number in the table is the -th largest number?\r\nBizon the Champion always answered correctly and immediately. Can you\r\nrepeat his success?Consider the given multiplication table. If you write\r\nout all numbers from the table in the non-decreasing order, then the -th\r\nnumber you write out is called the -th largest number.\r\n",
     "solutions": [
         "#include <algorithm>\n#include <cstring>\n#include <cstdlib>\n#include <cstdio>\n#define N 500010\n#define int64 long long\n#define For(i,x,y) for (i=x;i<=y;i++)\nusing namespace std;\nint i,j,k,n,m;\nint64 K;\ninline bool ju(int64 x) {\n\tint i;\n\tint64 s=0;\n\tFor(i,1,n) s+=min(0ll+m,x/i);\n\treturn s>=K;\n}\nint main() {\n\tscanf(\"%d%d%I64d\",&n,&m,&K);\n\tint64 l=1,r=1ll*n*m,mid;\n\tfor (;l<=r;) {\n\t\tmid=(l+r)/2;\n\t\tif (ju(mid)) r=mid-1;\n\t\telse l=mid+1;\n\t}\n\tprintf(\"%I64d\\n\",r+1);\n\treturn 0;\n}\n"
     ],
@@ -118,5 +118,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Multiplication Table.json",
     "editorial_link": "https://codeforces.com//blog/entry/13042",
-    "editorial": "Solution is binary search by answer. We need to find\nlargest such that amount of numbers from table, least than , is strictly\nless than . To calculate this count we sum counts from rows. In th row\nthere will be . Total complexity is .\n"
+    "editorial": "Solution is binary search by answer. We need to find\nlargest such that amount of numbers from table, least than , is strictly\nless than . To calculate this count we sum counts from rows. In th row\nthere will be . Total complexity is .\n",
+    "hint": []
 }

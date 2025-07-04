@@ -172,5 +172,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\A. Two Permutations.json",
     "editorial_link": "https://codeforces.com//blog/entry/109256",
-    "editorial": "If , we can always find such pair, here is a possible construction: The\r\nred part is their longest common prefix, and the blue part is their\r\nlongest common suffix.Otherwise, the two permutations must be equal, so\r\nsuch pair exists iff .\r\n"
+    "editorial": "If , we can always find such pair, here is a possible construction: The\r\nred part is their longest common prefix, and the blue part is their\r\nlongest common suffix.Otherwise, the two permutations must be equal, so\r\nsuch pair exists iff .\r\n",
+    "hint": []
 }

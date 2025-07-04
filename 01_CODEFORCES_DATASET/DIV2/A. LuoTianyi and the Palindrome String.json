@@ -140,5 +140,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. LuoTianyi and the Palindrome String.json",
     "editorial_link": "https://codeforces.com//blog/entry/116328",
-    "editorial": "Consider the substring of s\n from the second character to the last, or s2s3?sn\n. If it's not palindrome, then the answer must be n?1\n. What if it's palindrome? This implies that s2=sn\n, s3=sn?1\n, and so on. Meanwhile, the fact that s\n is palindrome implies s1=sn\n, s2=sn?1\n, etc. So we get s1=sn=s2=sn?1=?\n or that all characters in s\n is the same. In this situation, every subsequence of s\n is palindrome of course, so the answer should be ?1\n."
+    "editorial": "Consider the substring of s\n from the second character to the last, or s2s3?sn\n. If it's not palindrome, then the answer must be n?1\n. What if it's palindrome? This implies that s2=sn\n, s3=sn?1\n, and so on. Meanwhile, the fact that s\n is palindrome implies s1=sn\n, s2=sn?1\n, etc. So we get s1=sn=s2=sn?1=?\n or that all characters in s\n is the same. In this situation, every subsequence of s\n is palindrome of course, so the answer should be ?1\n.",
+    "hint": []
 }

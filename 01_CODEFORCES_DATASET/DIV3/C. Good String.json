@@ -133,7 +133,7 @@
         ]
     },
     "name": "C. Good String",
-    "statement": "Let\u2019s call (yet again) a string if its length is even, and every\r\ncharacter in odd position of this string is different from the next\r\ncharacter (the first character is different from the second, the third\r\nis different from the fourth, and so on). For example, the strings , and\r\nare good strings, and the strings , and are not good. .You are given a\r\nstring s, you have to delete minimum number of characters from this\r\nstring so that it becomes good.\r\n",
+    "statement": "Let’s call (yet again) a string if its length is even, and every\r\ncharacter in odd position of this string is different from the next\r\ncharacter (the first character is different from the second, the third\r\nis different from the fourth, and so on). For example, the strings , and\r\nare good strings, and the strings , and are not good. .You are given a\r\nstring s, you have to delete minimum number of characters from this\r\nstring so that it becomes good.\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\nusing namespace std;\n#define LL long long\n#define PII pair<int,int>\n#define PB push_back\n#define POP pop_back\n#define FI first\n#define SE second\n#define endl '\\n'\n#define ls x<<1\n#define rs x<<1|1\nconst int N=3e6+7,mod=1e9+7,INF=1e9;\nint n,m,x,y;\nchar a[N],b[N];\nchar s[N],ss[N];\nint main()\n{\n    int cnt=0;\n    cin>>n;\n    scanf(\"%s\",a+1);\n    for(int i=1;i<=n;i++){\n        if(a[i]==a[i+1]&&cnt%2==0){\n            continue;\n        }\n        else{\n            b[cnt++]=a[i];\n        }\n    }\n    if(cnt&1)cnt--;\n    cout<<n-cnt<<endl;\n    for(int i=0;i<cnt;i++){\n        printf(\"%c\",b[i]);\n    }cout<<endl;\n    return 0;\n}\n\n"
     ],
@@ -146,5 +146,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C. Good String.json",
     "editorial_link": "https://codeforces.com//blog/entry/67041",
-    "editorial": "The following greedy solution works: let\u00e2\u0080\u0099s iterate over all characters\r\nof the string from left to right, and if the last block of two\r\nconsecutive characters in the resulting string is full, just add the\r\ncurrent character to the resulting string, otherwise add this character\r\nif it is not equal to the first character of the last block. And don\u00e2\u0080\u0099t\r\nforget about the parity of length (remove last character if the length\r\nis odd).\r\n"
+    "editorial": "The following greedy solution works: letâs iterate over all characters\r\nof the string from left to right, and if the last block of two\r\nconsecutive characters in the resulting string is full, just add the\r\ncurrent character to the resulting string, otherwise add this character\r\nif it is not equal to the first character of the last block. And donât\r\nforget about the parity of length (remove last character if the length\r\nis odd).\r\n",
+    "hint": []
 }

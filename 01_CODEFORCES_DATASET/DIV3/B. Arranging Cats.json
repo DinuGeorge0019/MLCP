@@ -160,5 +160,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Arranging Cats.json",
     "editorial_link": "https://codeforces.com//blog/entry/124757",
-    "editorial": "Denote the amount of indices such that and as . Since it is impossible\r\nto change 0 to 1 at two different positions in one turn, the answer is\r\nnot less than . Analogously, if is amount of indices such that and , the\r\nanswer is not less than .It turns out that the answer is actually equal\r\nto . We can simply apply move operation from the index with to with\r\nwhile there are both of these types of indices (that will be operations)\r\nand then add or remove the rest of unsatisfied indices (that is exactly\r\noperations).\r\n"
+    "editorial": "Denote the amount of indices such that and as . Since it is impossible\r\nto change 0 to 1 at two different positions in one turn, the answer is\r\nnot less than . Analogously, if is amount of indices such that and , the\r\nanswer is not less than .It turns out that the answer is actually equal\r\nto . We can simply apply move operation from the index with to with\r\nwhile there are both of these types of indices (that will be operations)\r\nand then add or remove the rest of unsatisfied indices (that is exactly\r\noperations).\r\n",
+    "hint": []
 }

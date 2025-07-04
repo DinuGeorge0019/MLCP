@@ -172,5 +172,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\C. Bracket Sequences Concatenation Problem.json",
     "editorial_link": "https://codeforces.com//blog/entry/59962",
-    "editorial": "Let be the mirror reflection of the string . For example: (\"((\") = \"))\",\r\n(\"))(\") = \")((\", (\"()\") = \"()\".Let string be good if it does not have a\r\nprefix, which have more closing brackets than opening ones. For example,\r\n\"((\", \"(())(\", \"()()\" are good, and \"())\", \")((\", \"()())\" are not.The\r\nbalance of the string is the difference between number of opening and\r\nclosing brackets in . For example, (\"(()\") = 1, (\"()\") = 0.Let be the\r\nnumber of good strings with a balance .The answer to the problem is .\r\n"
+    "editorial": "Let be the mirror reflection of the string . For example: (\"((\") = \"))\",\r\n(\"))(\") = \")((\", (\"()\") = \"()\".Let string be good if it does not have a\r\nprefix, which have more closing brackets than opening ones. For example,\r\n\"((\", \"(())(\", \"()()\" are good, and \"())\", \")((\", \"()())\" are not.The\r\nbalance of the string is the difference between number of opening and\r\nclosing brackets in . For example, (\"(()\") = 1, (\"()\") = 0.Let be the\r\nnumber of good strings with a balance .The answer to the problem is .\r\n",
+    "hint": []
 }

@@ -155,5 +155,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. The String Has a Target.json",
     "editorial_link": "https://codeforces.com//blog/entry/114644",
-    "editorial": "At first, note that the operation should be applied only to the position\r\nof the minimal element of the string (since the 1st position in the\r\nfinal string should always contain the minimal letter). Next, let the\r\npositions of the minimum letter are . Then we must apply the operation\r\nto the last position (). Indeed, let us apply the operation to another\r\noccurrence: then the prefixes will coincide, and after that there will\r\nbe a character that is equal to the minimal one if we applied the\r\noperation to and will not be equal to it otherwise, which contradicts\r\nthe minimal string.\r\n"
+    "editorial": "At first, note that the operation should be applied only to the position\r\nof the minimal element of the string (since the 1st position in the\r\nfinal string should always contain the minimal letter). Next, let the\r\npositions of the minimum letter are . Then we must apply the operation\r\nto the last position (). Indeed, let us apply the operation to another\r\noccurrence: then the prefixes will coincide, and after that there will\r\nbe a character that is equal to the minimal one if we applied the\r\noperation to and will not be equal to it otherwise, which contradicts\r\nthe minimal string.\r\n",
+    "hint": [
+        "Hint 1 What should be the first character if we are trying to make the string lexicographically minimal?",
+        "Hint 2 Consider the string « ». If you choose , you get the string « », and if you choose you get « ». Try to generalize this reasoning to any string."
+    ]
 }

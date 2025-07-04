@@ -203,5 +203,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\D. Take a Guess.json",
     "editorial_link": "https://codeforces.com//blog/entry/94384",
-    "editorial": "To solve this problem, we can use the fact that or and .Then we can\r\ndetermine the first numbers in operations using the sums , and . Using\r\nthe formula , and .Knowing one of the numbers, it is quite simple to\r\nfind all the other numbers using the same principle by using operations.\r\nThen we just need to sort the resulting array and output the k-th\r\nelement.\r\n"
+    "editorial": "To solve this problem, we can use the fact that or and .Then we can\r\ndetermine the first numbers in operations using the sums , and . Using\r\nthe formula , and .Knowing one of the numbers, it is quite simple to\r\nfind all the other numbers using the same principle by using operations.\r\nThen we just need to sort the resulting array and output the k-th\r\nelement.\r\n",
+    "hint": []
 }

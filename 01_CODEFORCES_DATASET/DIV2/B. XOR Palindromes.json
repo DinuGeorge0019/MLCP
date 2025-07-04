@@ -168,5 +168,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. XOR Palindromes.json",
     "editorial_link": "https://codeforces.com//blog/entry/120353",
-    "editorial": "TutorialFirstly, a string is a palindrome if and only if for any ()\r\n(because when reversed, becomes ).We can divide the characters into\r\npairs, where each pair consists of and . If , then we need to have in\r\norder to obtain equal elements after XOR. Therefore, either (with ones)\r\nor (with ones). If , then must hold ( one in any case). Additionally, if\r\nis odd, then can be either or (with or ones).We can iterate over the\r\nnumber of pairs where will have two ones, as well as whether there will\r\nbe a one in the center or not. This way, we can obtain all possible\r\nnumbers of ones in , i.e., all good .Time Complexity: per test case.\r\n"
+    "editorial": "TutorialFirstly, a string is a palindrome if and only if for any ()\r\n(because when reversed, becomes ).We can divide the characters into\r\npairs, where each pair consists of and . If , then we need to have in\r\norder to obtain equal elements after XOR. Therefore, either (with ones)\r\nor (with ones). If , then must hold ( one in any case). Additionally, if\r\nis odd, then can be either or (with or ones).We can iterate over the\r\nnumber of pairs where will have two ones, as well as whether there will\r\nbe a one in the center or not. This way, we can obtain all possible\r\nnumbers of ones in , i.e., all good .Time Complexity: per test case.\r\n",
+    "hint": []
 }

@@ -142,5 +142,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Perfect Number.json",
     "editorial_link": "https://codeforces.com//blog/entry/57462",
-    "editorial": "Let\u00e2\u0080\u0099s use brute force the find the answer.You may find the answer is not\r\ntoo large (i.e. not bigger than ), then you can find it in the given\r\ntime limit.You can check every possible answer from (or from ), until we\r\nfind the -th perfect integer.That\u00e2\u0080\u0099s all what we need to do. :P . :P\r\nCould you please come up with a faster brute force algorithm which\r\ndoesn\u00e2\u0080\u0099t need to check too many possible answers? Can you solve the\r\nproblem with a bigger (i.e. or even bigger)?\r\n"
+    "editorial": "Letâs use brute force the find the answer.You may find the answer is not\r\ntoo large (i.e. not bigger than ), then you can find it in the given\r\ntime limit.You can check every possible answer from (or from ), until we\r\nfind the -th perfect integer.Thatâs all what we need to do. :P . :P\r\nCould you please come up with a faster brute force algorithm which\r\ndoesnât need to check too many possible answers? Can you solve the\r\nproblem with a bigger (i.e. or even bigger)?\r\n",
+    "hint": []
 }

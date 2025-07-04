@@ -103,5 +103,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Asphalting Roads.json",
     "editorial_link": "https://codeforces.com//blog/entry/20692",
-    "editorial": "To solve the problem one could just store two arrays hused[j] and vused[j] sized n and filled with false initially. Then process intersections one by one from 1 to n, and if for i-th intersections both hused[hi] and vused[vi] are false, add i to answer and set both hused[hi] and vused[vi] with true meaning that hi-th horizontal and vi-th vertical roads are now asphalted, and skip asphalting the intersection roads otherwise."
+    "editorial": "To solve the problem one could just store two arrays hused[j] and vused[j] sized n and filled with false initially. Then process intersections one by one from 1 to n, and if for i-th intersections both hused[hi] and vused[vi] are false, add i to answer and set both hused[hi] and vused[vi] with true meaning that hi-th horizontal and vi-th vertical roads are now asphalted, and skip asphalting the intersection roads otherwise.",
+    "hint": []
 }

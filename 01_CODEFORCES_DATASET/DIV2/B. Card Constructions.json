@@ -117,5 +117,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Card Constructions.json",
     "editorial_link": "https://codeforces.com//blog/entry/76819",
-    "editorial": "Let\u00e2\u0080\u0099s count the number of cards in a pyramid of height . There are cards\r\nstanding up, and there are horizontal cards. So, there are cards total.\r\nUsing this formula, we can quickly find the largest height that uses at\r\nmost cards.The quadratic formula or binary search can be used here, but\r\nare unnecessary. Simply iterating through all values works in time per\r\ntest.It\u00e2\u0080\u0099s enough to see that this takes time overall, where is the sum\r\nof across all test cases. But interestingly, we can argue for a tighter\r\nbound of due to the Cauchy-Schwarz Inequality:\r\n"
+    "editorial": "Letâs count the number of cards in a pyramid of height . There are cards\r\nstanding up, and there are horizontal cards. So, there are cards total.\r\nUsing this formula, we can quickly find the largest height that uses at\r\nmost cards.The quadratic formula or binary search can be used here, but\r\nare unnecessary. Simply iterating through all values works in time per\r\ntest.Itâs enough to see that this takes time overall, where is the sum\r\nof across all test cases. But interestingly, we can argue for a tighter\r\nbound of due to the Cauchy-Schwarz Inequality:\r\n",
+    "hint": []
 }

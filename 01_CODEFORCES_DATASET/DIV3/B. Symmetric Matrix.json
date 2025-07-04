@@ -130,5 +130,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Symmetric Matrix.json",
     "editorial_link": "https://codeforces.com//blog/entry/83120",
-    "editorial": "Firstly, if is odd then the answer is \"\" by obvious reasons. Otherwise,\r\nwe can notice that the top left and the bottom right values of the tile\r\ndo not matter (since we can place tiles symmetrically). So we only need\r\nto check that there is some tile that its top right value equals its\r\nbottom left value (because this is how we get main diagonal symmetry).\r\n"
+    "editorial": "Firstly, if is odd then the answer is \"\" by obvious reasons. Otherwise,\r\nwe can notice that the top left and the bottom right values of the tile\r\ndo not matter (since we can place tiles symmetrically). So we only need\r\nto check that there is some tile that its top right value equals its\r\nbottom left value (because this is how we get main diagonal symmetry).\r\n",
+    "hint": []
 }

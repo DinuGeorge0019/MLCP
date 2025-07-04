@@ -245,5 +245,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Maximal Binary Matrix.json",
     "editorial_link": "https://codeforces.com//blog/entry/51768",
-    "editorial": "Let\u00e2\u0080\u0099s construct matrix from top to bottom, from left to right. At\r\ncurrent step we consider position . Look at contents of cells and . If\r\nnumber of zeroes in them doesn\u00e2\u0080\u0099t exceed , then let\u00e2\u0080\u0099s fill those cells\r\nwith ones and decrease by this number.If isn\u00e2\u0080\u0099t equal to in the end of\r\nalgorithm, then there is no answer.Overall complexity: .\r\n"
+    "editorial": "Letâs construct matrix from top to bottom, from left to right. At\r\ncurrent step we consider position . Look at contents of cells and . If\r\nnumber of zeroes in them doesnât exceed , then letâs fill those cells\r\nwith ones and decrease by this number.If isnât equal to in the end of\r\nalgorithm, then there is no answer.Overall complexity: .\r\n",
+    "hint": []
 }

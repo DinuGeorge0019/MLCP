@@ -180,5 +180,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\E. Matrix and Shifts.json",
     "editorial_link": "https://codeforces.com//blog/entry/101526",
-    "editorial": "Count to the variable the number of all ones in the matrix.Then consider\r\npairs of diagonals, one of which starts in cell , and the other in cell\r\n(for ). Using cyclic shifts, we can assemble the main diagonal from this\r\npair. Then among all such pairs (and the main diagonal), find the one\r\nthat contains the maximal number of ones, and store this number in the\r\nvariable .The number of zeros on the main diagonal, which should be\r\nturned into ones, is equal to .The number of ones to be turned into\r\nzeros, because they are not on the main diagonal, is calculated as .The\r\ntotal answer is calculated as .\r\n"
+    "editorial": "Count to the variable the number of all ones in the matrix.Then consider\r\npairs of diagonals, one of which starts in cell , and the other in cell\r\n(for ). Using cyclic shifts, we can assemble the main diagonal from this\r\npair. Then among all such pairs (and the main diagonal), find the one\r\nthat contains the maximal number of ones, and store this number in the\r\nvariable .The number of zeros on the main diagonal, which should be\r\nturned into ones, is equal to .The number of ones to be turned into\r\nzeros, because they are not on the main diagonal, is calculated as .The\r\ntotal answer is calculated as .\r\n",
+    "hint": []
 }

@@ -132,5 +132,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Bus to Udayland.json",
     "editorial_link": "https://codeforces.com//blog/entry/46830",
-    "editorial": "For each row, check whether there exists two consecutive Os. Once you\r\nfind a pair of consecutive Os, you can replace them with +s and output\r\nthe bus. If no such pair exists, output NO.Time Complexity :\r\n"
+    "editorial": "For each row, check whether there exists two consecutive Os. Once you\r\nfind a pair of consecutive Os, you can replace them with +s and output\r\nthe bus. If no such pair exists, output NO.Time Complexity :\r\n",
+    "hint": []
 }

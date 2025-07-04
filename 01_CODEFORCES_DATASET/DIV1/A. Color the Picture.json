@@ -139,5 +139,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Color the Picture.json",
     "editorial_link": "https://codeforces.com//blog/entry/105232",
-    "editorial": "hint1.The picture must consist of some stripes with at least rows or at\r\nleast columns.\r\n"
+    "editorial": "hint1.The picture must consist of some stripes with at least rows or at\r\nleast columns.\r\n",
+    "hint": [
+        "hint1. The picture must consist of some stripes with at least rows or at least columns.",
+        "hint2. When is odd and all , we cannot draw a beautiful picture using row stripes."
+    ]
 }

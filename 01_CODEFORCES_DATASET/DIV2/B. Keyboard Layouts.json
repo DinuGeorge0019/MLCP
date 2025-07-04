@@ -133,5 +133,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Keyboard Layouts.json",
     "editorial_link": "https://codeforces.com//blog/entry/53302",
-    "editorial": "At first we need to support the correspondence of letters on keyboards.\r\nFor example, it can be done with help of . Let\u00e2\u0080\u0099s call it . Let the first\r\nlayout equals to and the second . Now we need to iterate through the\r\nfirst string and make . Also we need to make , where function gives the\r\nlowercase letter to the corresponding uppercase letter.After that simply\r\niterate through the given text. Let the current symbol is . If is a\r\ndigit we need to print it. Otherwise, is a letter, so we need to print .\r\n"
+    "editorial": "At first we need to support the correspondence of letters on keyboards.\r\nFor example, it can be done with help of . Letâs call it . Let the first\r\nlayout equals to and the second . Now we need to iterate through the\r\nfirst string and make . Also we need to make , where function gives the\r\nlowercase letter to the corresponding uppercase letter.After that simply\r\niterate through the given text. Let the current symbol is . If is a\r\ndigit we need to print it. Otherwise, is a letter, so we need to print .\r\n",
+    "hint": []
 }

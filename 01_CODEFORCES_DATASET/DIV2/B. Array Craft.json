@@ -158,11 +158,11 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/131716",
-    "editorial": "First, we consider making presumx>presumj\n for all x<i?n\n, and similarly for y\n. We can think of a trivial construction: a[r,\u0085,l]=[1,\u0085,1],a[1,\u0085...,r?1]=[?1,\u0085,?1]\n and a[l+1,\u0085,n]=[?1,\u0085,?1]\n.\n\nThe construction doesn't works when presumx<0\n, but we are close to the correct solution. Next, we will make a little adjustment: a[r,\u0085,l]=[1,\u0085,1],a[1,\u0085...,r?1]=[\u0085,1,?1]\n and a[l+1,\u0085,n]=[?1,1,\u0085]\n.\n\nIt is not hard to see presumx?presumj\n for all x<i?n\n, and for 1?i?y\n, max(presumi)?min(presumi)?1\n. Thus, we get presumx?2+presumy?1?2+min(presumi)?1+max(presumi)\n. The same applies to the suffix sum as well. Therefore, this construction is valid.",
+    "editorial": "First, we consider making presumx>presumj\n for all x<i?n\n, and similarly for y\n. We can think of a trivial construction: a[r,,l]=[1,,1],a[1,...,r?1]=[?1,,?1]\n and a[l+1,,n]=[?1,,?1]\n.\n\nThe construction doesn't works when presumx<0\n, but we are close to the correct solution. Next, we will make a little adjustment: a[r,,l]=[1,,1],a[1,...,r?1]=[,1,?1]\n and a[l+1,,n]=[?1,1,]\n.\n\nIt is not hard to see presumx?presumj\n for all x<i?n\n, and for 1?i?y\n, max(presumi)?min(presumi)?1\n. Thus, we get presumx?2+presumy?1?2+min(presumi)?1+max(presumi)\n. The same applies to the suffix sum as well. Therefore, this construction is valid.",
     "name": "B. Array Craft",
     "statement": "For an array b of size m, we define: the of b is the index i that\r\nsatisfies b_1+\r\nldots+b_i=\r\nmax_{j=1}^{m}(b_1+\r\nldots+b_j); the of b is the index i that satisfies b_i+\r\nldots+b_m=\r\nmax_{j=1}^{m}(b_j+\r\nldots+b_m).You are given three integers n, x, and y (x > y). Construct\r\nan array a of size n satisfying: a_i is either 1 or -1 for all 1\r\nle i\r\nle n; the of a is x; the of a is y.If there are multiple arrays that\r\nmeet the conditions, print any. It can be proven that such an array\r\nalways exists under the given conditions.\r\n",
     "solutions": [
-        "#include <bits/stdc++.h>using namespace std;\u00a0using ll = long long;// #define int ll\u00a0#define endl '\\n'#define pb push_backusing pi = array<int, 2>;\u00a0void skibidi_sigma() {  int n, x, y;  cin >> n >> x >> y;  --x; --y;    vector<int> a(n);  for (int i = y; i < n; ++i) {    a[i] = 1;  }  for (int i = y - 1; i >= 0; --i) {    a[i] = (a[i + 1] == 1 ? -1 : 1);  }  for (int i = x + 1; i < n; ++i) {    a[i] = (a[i - 1] == 1 ? -1 : 1);  }    for (int i = 0; i < n; ++i) {    cout << a[i] << \" \";  }}\u00a0int32_t main() {  ios_base::sync_with_stdio(false);  cin.tie(NULL);    int T;  cin >> T;    while (T--) {    skibidi_sigma();    cout << endl;  }}\u00a0/*\u00a0*/"
+        "#include <bits/stdc++.h>using namespace std; using ll = long long;// #define int ll #define endl '\\n'#define pb push_backusing pi = array<int, 2>; void skibidi_sigma() {  int n, x, y;  cin >> n >> x >> y;  --x; --y;    vector<int> a(n);  for (int i = y; i < n; ++i) {    a[i] = 1;  }  for (int i = y - 1; i >= 0; --i) {    a[i] = (a[i + 1] == 1 ? -1 : 1);  }  for (int i = x + 1; i < n; ++i) {    a[i] = (a[i - 1] == 1 ? -1 : 1);  }    for (int i = 0; i < n; ++i) {    cout << a[i] << \" \";  }} int32_t main() {  ios_base::sync_with_stdio(false);  cin.tie(NULL);    int T;  cin >> T;    while (T--) {    skibidi_sigma();    cout << endl;  }} /* */"
     ],
     "input": "",
     "output": "",
@@ -172,5 +172,6 @@
     ],
     "dificulty": "1200",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Array Craft.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Array Craft.json",
+    "hint": []
 }

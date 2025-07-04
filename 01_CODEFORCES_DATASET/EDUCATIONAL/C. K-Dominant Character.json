@@ -169,5 +169,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\C. K-Dominant Character.json",
     "editorial_link": "https://codeforces.com//blog/entry/55701",
-    "editorial": "At first, notice that the final answer is minimum over answers for each\r\ncharacter.The answer for one character can be obtained like this. Write\r\ndown lengths of segments between two consecutive occurrences of this\r\ncharacter, from the first occurrence to the start of the string and from\r\nthe last to the end of the string. Take maximum of these values. Answer\r\nwill be this maximum + 1.Overall complexity: .\r\n"
+    "editorial": "At first, notice that the final answer is minimum over answers for each\r\ncharacter.The answer for one character can be obtained like this. Write\r\ndown lengths of segments between two consecutive occurrences of this\r\ncharacter, from the first occurrence to the start of the string and from\r\nthe last to the end of the string. Take maximum of these values. Answer\r\nwill be this maximum + 1.Overall complexity: .\r\n",
+    "hint": []
 }

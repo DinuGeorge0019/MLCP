@@ -112,5 +112,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Lesha and array splitting.json",
     "editorial_link": "https://codeforces.com//blog/entry/49637",
-    "editorial": "Only in one case there is no answer. When array consists entirely of\r\nzeros. Because all subarrays of such array has zero sum.Otherwise there\r\nare two cases:Array sum is not zero. In this case we can divide array\r\ninto one subarray .Array sum is zero. But we know that array has\r\nnon-zero elements. Then there is exists such prefix , which sum is and .\r\nIf sum of array is zero and sum of prefix is , then sum of remaining\r\nsuffix is equals to (). Therefore array can be divided into two parts\r\nand .Time complexity .\r\n"
+    "editorial": "Only in one case there is no answer. When array consists entirely of\r\nzeros. Because all subarrays of such array has zero sum.Otherwise there\r\nare two cases:Array sum is not zero. In this case we can divide array\r\ninto one subarray .Array sum is zero. But we know that array has\r\nnon-zero elements. Then there is exists such prefix , which sum is and .\r\nIf sum of array is zero and sum of prefix is , then sum of remaining\r\nsuffix is equals to (). Therefore array can be divided into two parts\r\nand .Time complexity .\r\n",
+    "hint": []
 }

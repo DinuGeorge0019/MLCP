@@ -156,5 +156,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Rudolf and 121.json",
     "editorial_link": "https://codeforces.com//blog/entry/127018",
-    "editorial": "Let\u00e2\u0080\u0099s consider the minimum such that . Making this element zero is only\r\npossible by choosing the -th element for the operation (applying the\r\noperation to a more leftward element is either impossible or will make\r\nsome elements less than zero). We will apply operations in this way\r\nuntil we reach the end of the array. If there are non-zero elements left\r\nafter applying the operations, the answer is \"\".\r\n"
+    "editorial": "Letâs consider the minimum such that . Making this element zero is only\r\npossible by choosing the -th element for the operation (applying the\r\noperation to a more leftward element is either impossible or will make\r\nsome elements less than zero). We will apply operations in this way\r\nuntil we reach the end of the array. If there are non-zero elements left\r\nafter applying the operations, the answer is \"\".\r\n",
+    "hint": []
 }

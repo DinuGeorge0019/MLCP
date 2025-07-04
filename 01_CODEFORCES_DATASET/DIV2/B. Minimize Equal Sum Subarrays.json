@@ -144,7 +144,7 @@
     "name": "B. Minimize Equal Sum Subarrays",
     "statement": "Sun Tzu, You are given a permutation^{\r\ntext{ }} p of length n.Find a permutation q of length n that minimizes\r\nthe number of pairs (i, j) (1\r\nleq i\r\nleq j\r\nleq n) such that p_i + p_{i+1} +\r\nldots + p_j = q_i + q_{i+1} +\r\nldots + q_j.^{\r\ntext{ }}A permutation of length n is an array consisting of n distinct\r\nintegers from 1 to n in arbitrary order. For example, [2,3,1,5,4] is a\r\npermutation, but [1,2,2] is not a permutation (2 appears twice in the\r\narray), and [1,3,4] is also not a permutation (n=3 but there is 4 in the\r\narray).\r\n",
     "solutions": [
-        "#include <bits/stdc++.h>using namespace std;\u00a0int a[200005];\u00a0void work(){\tint n;\tcin >> n;\tfor(int i=1;i<=n;i++)\t\tscanf(\"%d\",&a[i]);\u00a0\tfor(int i=2;i<=n;i++)\t\tprintf(\"%d \",a[i]);\tprintf(\"%d\\n\",a[1]);}\u00a0int main(){\tint T;\tcin >> T;\twhile(T--)\t\twork();\treturn 0;}"
+        "#include <bits/stdc++.h>using namespace std; int a[200005]; void work(){\tint n;\tcin >> n;\tfor(int i=1;i<=n;i++)\t\tscanf(\"%d\",&a[i]); \tfor(int i=2;i<=n;i++)\t\tprintf(\"%d \",a[i]);\tprintf(\"%d\\n\",a[1]);} int main(){\tint T;\tcin >> T;\twhile(T--)\t\twork();\treturn 0;}"
     ],
     "input": "",
     "output": "",
@@ -155,5 +155,10 @@
     ],
     "dificulty": "1000",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Minimize Equal Sum Subarrays.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Minimize Equal Sum Subarrays.json",
+    "hint": [
+        "Hint 1 Sum of all elements will be equal in both permutations. So no of such is atleast 1. Can you find a permutation such that this count remains 1?",
+        "Hint 2 Set if , Set if , otherwise",
+        "Hint 3 Set"
+    ]
 }

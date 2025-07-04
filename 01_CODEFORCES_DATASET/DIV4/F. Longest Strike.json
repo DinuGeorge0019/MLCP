@@ -223,5 +223,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\F. Longest Strike.json",
     "editorial_link": "https://codeforces.com//blog/entry/102710",
-    "editorial": "Let\u00e2\u0080\u0099s call a value if it appears at least times. For example, if and ,\r\nthen good values are .So we need to find the longest subarray of this\r\narray in which all values are consecutive. For example, the subarray is\r\nthe answer, because all values are good and the length of the array is\r\nlongest.There are many ways to do this. For example, we can see when the\r\ndifference between two elements is more than , and then break the array\r\ninto parts based on that. For instance, . You can also iterate from left\r\nto right and keep track of the size of the current array.Time\r\ncomplexity: .\r\n"
+    "editorial": "Letâs call a value if it appears at least times. For example, if and ,\r\nthen good values are .So we need to find the longest subarray of this\r\narray in which all values are consecutive. For example, the subarray is\r\nthe answer, because all values are good and the length of the array is\r\nlongest.There are many ways to do this. For example, we can see when the\r\ndifference between two elements is more than , and then break the array\r\ninto parts based on that. For instance, . You can also iterate from left\r\nto right and keep track of the size of the current array.Time\r\ncomplexity: .\r\n",
+    "hint": []
 }

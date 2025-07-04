@@ -123,5 +123,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Pizza Separation.json",
     "editorial_link": "https://codeforces.com//blog/entry/56028",
-    "editorial": "We can notice that if one of the sectors is continuous then all the\r\nremaining pieces also form a continuous sector.If angle of the first\r\nsector is equal to then difference between angles of first and second\r\nsectors is . So for each possible continuous sector we can count it\u00e2\u0080\u0099s\r\nangle and update answer. Time complexity or . Solution\r\n"
+    "editorial": "We can notice that if one of the sectors is continuous then all the\r\nremaining pieces also form a continuous sector.If angle of the first\r\nsector is equal to then difference between angles of first and second\r\nsectors is . So for each possible continuous sector we can count itâs\r\nangle and update answer. Time complexity or . Solution\r\n",
+    "hint": []
 }

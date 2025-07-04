@@ -96,5 +96,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Jamie and Binary Sequence  changed after round .json",
     "editorial_link": "https://codeforces.com//blog/entry/57223",
-    "editorial": "The main idea of the solution is\n, that means you can replace 1 element with 2 elements. To start with,\nexpress in binary powers of two. As we can only increase the number of\nelements, there is no solution if there exists more than elements. Let\u00e2\u0080\u0099s\nfix the value first. Observe that we can decrease the value only if all\ncan be changed to . So we scan from the largest power and try to break\nit down if doing so does not produce more than elements. After is fixed,\nwe can greedily decrease the smallest element while the number of\nelements is less than . My implementation: 34342011\n"
+    "editorial": "The main idea of the solution is\n, that means you can replace 1 element with 2 elements. To start with,\nexpress in binary powers of two. As we can only increase the number of\nelements, there is no solution if there exists more than elements. Letâs\nfix the value first. Observe that we can decrease the value only if all\ncan be changed to . So we scan from the largest power and try to break\nit down if doing so does not produce more than elements. After is fixed,\nwe can greedily decrease the smallest element while the number of\nelements is less than . My implementation: 34342011\n",
+    "hint": []
 }

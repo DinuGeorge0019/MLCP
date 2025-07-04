@@ -119,7 +119,7 @@
         ]
     },
     "name": "A. Birthday",
-    "statement": "Ivan is collecting coins. There are only N different collectible coins,\r\nIvan has K of them. He will be celebrating his birthday soon, so all his\r\nM freinds decided to gift him coins. They all agreed to three terms:\r\nEveryone must gift as many coins as others. All coins given to Ivan must\r\nbe different. Not less than L coins from gifts altogether, must be new\r\nin Ivan\u2019s collection.But his friends don\u2019t know which coins have Ivan\r\nalready got in his collection. They don\u2019t want to spend money so they\r\nwant to buy minimum quantity of coins, that satisfy all terms,\r\nirrespective of the Ivan\u2019s collection. Help them to find this minimum\r\nnumber of coins or define it\u2019s not possible to meet all the terms.\r\n",
+    "statement": "Ivan is collecting coins. There are only N different collectible coins,\r\nIvan has K of them. He will be celebrating his birthday soon, so all his\r\nM freinds decided to gift him coins. They all agreed to three terms:\r\nEveryone must gift as many coins as others. All coins given to Ivan must\r\nbe different. Not less than L coins from gifts altogether, must be new\r\nin Ivan’s collection.But his friends don’t know which coins have Ivan\r\nalready got in his collection. They don’t want to spend money so they\r\nwant to buy minimum quantity of coins, that satisfy all terms,\r\nirrespective of the Ivan’s collection. Help them to find this minimum\r\nnumber of coins or define it’s not possible to meet all the terms.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n\tios_base::sync_with_stdio(false);\n\tlong long n, m, k, l; cin >> n >> m >> k >> l;\n\tlong long need = k + l;\n\tlong long ans = (need + m - 1) / m;\n\tif (ans * m > n) ans = -1;\n\tcout << ans << '\\n';\n}\n"
     ],
@@ -132,5 +132,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Birthday.json",
     "editorial_link": "https://codeforces.com/blog/entry/62688",
-    "editorial": "To get new coins irrespective of the Ivan\u00e2\u0080\u0099s collection he must get not\r\nless than coins as a present. Therefore each friend should gift at least\r\ncoins. But it may be not possible for all friends to gift coins if .\r\nComplexity is .\r\n"
+    "editorial": "To get new coins irrespective of the Ivanâs collection he must get not\r\nless than coins as a present. Therefore each friend should gift at least\r\ncoins. But it may be not possible for all friends to gift coins if .\r\nComplexity is .\r\n",
+    "hint": []
 }

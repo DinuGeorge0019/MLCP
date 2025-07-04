@@ -134,5 +134,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Copil Copac Draws Trees.json",
     "editorial_link": "https://codeforces.com//blog/entry/116527",
-    "editorial": "This problem can be solved via dynamic programming. From here on\nout, step from the statement will be called a \"scan\".Let be the number\nof scans needed to activate node , and be the index (in the order from\nthe input) of the edge which activated node .Intially, since only is\nactive, and .We will perform a dfs traversal starting from node . When\nwe process an edge , one of the following two cases can happen: If , we\ncan visit in the same scan as : , If , will be visited in the next scan\nafter : , The answer is .Time complexity per test case:\n"
+    "editorial": "This problem can be solved via dynamic programming. From here on\nout, step from the statement will be called a \"scan\".Let be the number\nof scans needed to activate node , and be the index (in the order from\nthe input) of the edge which activated node .Intially, since only is\nactive, and .We will perform a dfs traversal starting from node . When\nwe process an edge , one of the following two cases can happen: If , we\ncan visit in the same scan as : , If , will be visited in the next scan\nafter : , The answer is .Time complexity per test case:\n",
+    "hint": [
+        "Hint 1 What is the answer if ?",
+        "Hint 2 The previous case can be generalised to find the answer for any tree."
+    ]
 }

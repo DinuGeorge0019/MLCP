@@ -182,5 +182,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\A. Optimal Currency Exchange.json",
     "editorial_link": "https://codeforces.com/blog/entry/69563",
-    "editorial": "If we have bought dollar bills with value of two or more dollar bill, we\r\ncan change it one-dollar bills. Same goes for euro, we can replace all\r\neuro bills with several -euro bills.Now we can simply try buying some\r\nnumber of five-euro bills and buying all the rest with one-dollar\r\nbills.Complexity is .\r\n"
+    "editorial": "If we have bought dollar bills with value of two or more dollar bill, we\r\ncan change it one-dollar bills. Same goes for euro, we can replace all\r\neuro bills with several -euro bills.Now we can simply try buying some\r\nnumber of five-euro bills and buying all the rest with one-dollar\r\nbills.Complexity is .\r\n",
+    "hint": []
 }

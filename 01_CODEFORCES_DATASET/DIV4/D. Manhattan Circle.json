@@ -190,9 +190,9 @@
     "editorial_link": "https://codeforces.com//blog/entry/129620",
     "editorial": "Note that the manhattan circle is always in a diamond shape, symmetric from the center. Let's take notice of some special characteristics that can help us. One way is to find the top and bottom points of the circle. Note that these points will have columns at the center of the circle, so here we can acquire the value of k\n. To find h\n, since the circle is symmetric, it is just the middle of the rows of the top and bottom points.\n\nNote that we never needed to find the value of r\n.",
     "name": "D. Manhattan Circle",
-    "statement": "Given a n by m grid consisting of \u2019.\u2019 and \u201d characters, there exists a\r\nwhole manhattan circle on the grid. The top left corner of the grid has\r\ncoordinates (1,1), and the bottom right corner has coordinates (n,\r\nm).Point (a, b) belongs to the manhattan circle centered at (h, k) if\r\n|h - a| + |k - b| < r, where r is a positive constant.On the grid, the\r\nset of points that are part of the manhattan circle is marked as \u201d. Find\r\nthe coordinates of the center of the circle.\r\n",
+    "statement": "Given a n by m grid consisting of ’.’ and ” characters, there exists a\r\nwhole manhattan circle on the grid. The top left corner of the grid has\r\ncoordinates (1,1), and the bottom right corner has coordinates (n,\r\nm).Point (a, b) belongs to the manhattan circle centered at (h, k) if\r\n|h - a| + |k - b| < r, where r is a positive constant.On the grid, the\r\nset of points that are part of the manhattan circle is marked as ”. Find\r\nthe coordinates of the center of the circle.\r\n",
     "solutions": [
-        "#include <bits/stdc++.h>\u00a0using namespace std;\u00a0#define int long long#define inf 0x3F3F3F3F3F3F3F3F\u00a0const int MXN = 3e5 + 5;\u00a0void _(){\tint n, m;\tcin >> n >> m;\tvector<int> a, b;\tfor (int i = 1; i <= n; i++)\t{\t\tfor (int j = 1; j <= m; j++)\t\t{\t\t\tchar ch;\t\t\tcin >> ch;\t\t\tif (ch == '#') a.push_back(i), b.push_back(j);\t\t}\t}\tsort(a.begin(), a.end()), sort(b.begin(), b.end());\ta.resize(unique(a.begin(), a.end()) - a.begin());\tb.resize(unique(b.begin(), b.end()) - b.begin());\tcout << a[(int)a.size() / 2] << ' ' << b[b.size() / 2] << '\\n';}\u00a0signed main(){\tios_base::sync_with_stdio(0);\tcin.tie(0);\tint t;\tcin >> t;\tfor (int tt = 1; tt <= t; tt++)\t{\t\t_();\t}}"
+        "#include <bits/stdc++.h> using namespace std; #define int long long#define inf 0x3F3F3F3F3F3F3F3F const int MXN = 3e5 + 5; void _(){\tint n, m;\tcin >> n >> m;\tvector<int> a, b;\tfor (int i = 1; i <= n; i++)\t{\t\tfor (int j = 1; j <= m; j++)\t\t{\t\t\tchar ch;\t\t\tcin >> ch;\t\t\tif (ch == '#') a.push_back(i), b.push_back(j);\t\t}\t}\tsort(a.begin(), a.end()), sort(b.begin(), b.end());\ta.resize(unique(a.begin(), a.end()) - a.begin());\tb.resize(unique(b.begin(), b.end()) - b.begin());\tcout << a[(int)a.size() / 2] << ' ' << b[b.size() / 2] << '\\n';} signed main(){\tios_base::sync_with_stdio(0);\tcin.tie(0);\tint t;\tcin >> t;\tfor (int tt = 1; tt <= t; tt++)\t{\t\t_();\t}}"
     ],
     "input": "",
     "output": "",
@@ -202,5 +202,6 @@
     ],
     "dificulty": "900",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\D. Manhattan Circle.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\D. Manhattan Circle.json",
+    "hint": []
 }

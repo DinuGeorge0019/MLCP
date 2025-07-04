@@ -165,5 +165,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C2. Guessing the Greatest  hard version .json",
     "editorial_link": "https://codeforces.com//blog/entry/87849",
-    "editorial": "Kudos to Aleks5d for proposing a solution to this subproblem.\r\nSolutionLet\u00e2\u0080\u0099s find second max . Now let\u00e2\u0080\u0099s check if the max element is to\r\nthe left, or to the right. Just ask and see if the answer is different\r\nto . Now let\u00e2\u0080\u0099s suppose that the max element is to the right (for\r\nsymmetrical reasons). Now we only need to find the smallest such that\r\nthe answer to the query is . The smallest such is obviously the position\r\nof the maximum element. Now we need to use binary search to find such .\r\nSo the resulting number of queries is .\r\n"
+    "editorial": "Kudos to Aleks5d for proposing a solution to this subproblem.\r\nSolutionLetâs find second max . Now letâs check if the max element is to\r\nthe left, or to the right. Just ask and see if the answer is different\r\nto . Now letâs suppose that the max element is to the right (for\r\nsymmetrical reasons). Now we only need to find the smallest such that\r\nthe answer to the query is . The smallest such is obviously the position\r\nof the maximum element. Now we need to use binary search to find such .\r\nSo the resulting number of queries is .\r\n",
+    "hint": [
+        "Hint1 Binary search AGAIN?",
+        "Hint2 How to solve the problem if the second maximum element is at position ?",
+        "Hint3 How to check if the maximum element is to the left or the right of the second maximum in two queries?"
+    ]
 }

@@ -99,5 +99,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Dividing Orange.json",
     "editorial_link": "https://codeforces.com//blog/entry/5895",
-    "editorial": "Consider an array A of integers in range from 1 to nk. Let's remove from A all numbers ai and all other numbers store into an array B. The array B will have (n?-?1)k elements. Now for i-th kid you should output numbers ai, B[(n?-?1)?*?(i?-?1)?+?1], B[(n?-?1)?*?(i?-?1)?+?2], ... B[(n?-?1)?*?(i?-?1)?+?n?-?1] (B is 1-based)."
+    "editorial": "Consider an array A of integers in range from 1 to nk. Let's remove from A all numbers ai and all other numbers store into an array B. The array B will have (n?-?1)k elements. Now for i-th kid you should output numbers ai, B[(n?-?1)?*?(i?-?1)?+?1], B[(n?-?1)?*?(i?-?1)?+?2], ... B[(n?-?1)?*?(i?-?1)?+?n?-?1] (B is 1-based).",
+    "hint": []
 }

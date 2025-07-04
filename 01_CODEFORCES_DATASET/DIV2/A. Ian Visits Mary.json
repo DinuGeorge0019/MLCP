@@ -116,5 +116,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Ian Visits Mary.json",
     "editorial_link": "https://codeforces.com//blog/entry/114899",
-    "editorial": "EditorialLet us show that Ian can get to Mary within two moves. Indeed,\r\nconsider and where , since the value of the -coordinates of a point\r\nlying on the segment joining and , and is not at the endpoints, is\r\nstrictly between and , but there are no integers strictly between and ,\r\nthe point must not be a lattice point. Similarly, no lattice points lie\r\non the segment joining and with except for the endpoints. Therefore, Ian\r\ncan jump from to to .\r\n"
+    "editorial": "EditorialLet us show that Ian can get to Mary within two moves. Indeed,\r\nconsider and where , since the value of the -coordinates of a point\r\nlying on the segment joining and , and is not at the endpoints, is\r\nstrictly between and , but there are no integers strictly between and ,\r\nthe point must not be a lattice point. Similarly, no lattice points lie\r\non the segment joining and with except for the endpoints. Therefore, Ian\r\ncan jump from to to .\r\n",
+    "hint": []
 }

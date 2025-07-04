@@ -119,5 +119,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Case of the Zeros and Ones.json",
     "editorial_link": "https://codeforces.com//blog/entry/18919",
-    "editorial": "If there still exist at least one and at least one in the string then\r\nthere obviously exists either substring or substring (or both) and we\r\ncan remove it. The order in which we remove substrings is unimportant:\r\nin any case we will make such operations. Thus the answer is . Time: .\r\n"
+    "editorial": "If there still exist at least one and at least one in the string then\r\nthere obviously exists either substring or substring (or both) and we\r\ncan remove it. The order in which we remove substrings is unimportant:\r\nin any case we will make such operations. Thus the answer is . Time: .\r\n",
+    "hint": []
 }

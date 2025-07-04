@@ -137,5 +137,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. SwapSort.json",
     "editorial_link": "https://codeforces.com//blog/entry/14741",
-    "editorial": "All you need is to swap the current minimum with the -th element each\r\ntime. You can do it with the code like: This solution makes at most n-1\r\nswap operation. Also if (i != j) is not necessary.\r\n"
+    "editorial": "All you need is to swap the current minimum with the -th element each\r\ntime. You can do it with the code like: This solution makes at most n-1\r\nswap operation. Also if (i != j) is not necessary.\r\n",
+    "hint": []
 }

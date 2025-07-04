@@ -94,5 +94,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Mafia.json",
     "editorial_link": "https://codeforces.com//blog/entry/9031",
-    "editorial": "In the problem you need to find out how many games you need to play in order to make all people happy. It means that each of them played as many games as he wanted.\n\nLet the answer be x games. Notice that max(a1,?a2,?\u0085,?an)???x. Then i-th player can be game supervisor in x\u0096ai games. If we sum up we get  \u0097 it's the number of games in which players are ready to be supervisor. This number must be greater or equal to x \u0097 our answer.\n\n\n\n\n\n\n\n\nDon't forget about that condition: max(a1,?a2,?\u0085,?an)???x."
+    "editorial": "In the problem you need to find out how many games you need to play in order to make all people happy. It means that each of them played as many games as he wanted.\n\nLet the answer be x games. Notice that max(a1,?a2,?,?an)???x. Then i-th player can be game supervisor in xai games. If we sum up we get   it's the number of games in which players are ready to be supervisor. This number must be greater or equal to x  our answer.\n\n\n\n\n\n\n\n\nDon't forget about that condition: max(a1,?a2,?,?an)???x.",
+    "hint": []
 }

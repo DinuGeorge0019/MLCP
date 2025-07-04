@@ -123,5 +123,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. And Reachability.json",
     "editorial_link": "https://codeforces.com//blog/entry/67241",
-    "editorial": "Let\u00e2\u0080\u0099s calculate the smallest , such that contains bit , which is\r\nreachable from .How to recalculate it? Let is the smallest , such that\r\ncontains bit .Then, I claim that is equal to the or to the for all bits\r\nthat contains. Why? Because if you go from to some number, which has bit\r\nin the intersection, it is useless to go to the number which is not\r\nequal to , because from you can go to all numbers that have bit and that\r\npositioned farther.So in you can calculate all these values, and then to\r\nanswer the query you can check that there exists some bit in such that\r\n.This solution\r\n"
+    "editorial": "Letâs calculate the smallest , such that contains bit , which is\r\nreachable from .How to recalculate it? Let is the smallest , such that\r\ncontains bit .Then, I claim that is equal to the or to the for all bits\r\nthat contains. Why? Because if you go from to some number, which has bit\r\nin the intersection, it is useless to go to the number which is not\r\nequal to , because from you can go to all numbers that have bit and that\r\npositioned farther.So in you can calculate all these values, and then to\r\nanswer the query you can check that there exists some bit in such that\r\n.This solution\r\n",
+    "hint": []
 }

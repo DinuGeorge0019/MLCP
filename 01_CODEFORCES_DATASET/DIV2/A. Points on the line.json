@@ -136,5 +136,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Points on the line.json",
     "editorial_link": "https://codeforces.com//blog/entry/58033",
-    "editorial": "It\u00e2\u0080\u0099s clear that diameter of the multiset of points equals to difference\r\nof coordinates of point with maximum coordinate and point with minimum\r\ncoordinate. So we can iterate over all possible pairs of maximum and\r\nminimum point and check number of remaining points in . This solution\r\nworks in .Of course, there are faster solutions.\r\n"
+    "editorial": "Itâs clear that diameter of the multiset of points equals to difference\r\nof coordinates of point with maximum coordinate and point with minimum\r\ncoordinate. So we can iterate over all possible pairs of maximum and\r\nminimum point and check number of remaining points in . This solution\r\nworks in .Of course, there are faster solutions.\r\n",
+    "hint": []
 }

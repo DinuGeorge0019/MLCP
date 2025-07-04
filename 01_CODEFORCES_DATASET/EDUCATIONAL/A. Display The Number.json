@@ -180,5 +180,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Display The Number.json",
     "editorial_link": "https://codeforces.com//blog/entry/73467",
-    "editorial": "First of all, we don\u00e2\u0080\u0099t need to use any digits other than and . If we use\r\nany other digit, it consists of or more segments, so it can be replaced\r\nby two \u00e2\u0080\u0099s and the number will become greater. For the same reason we\r\ndon\u00e2\u0080\u0099t need to use more than one : if we have two, we can replace them\r\nwith three \u00e2\u0080\u0099s.Obviously, it is always optimal to place before . So our\r\nnumber is either a sequence of \u00e2\u0080\u0099s, or a and a sequence of \u00e2\u0080\u0099s. We should\r\nuse only if is odd, because if is even, it will decrease the number of\r\ndigits in the result.\r\n"
+    "editorial": "First of all, we donât need to use any digits other than and . If we use\r\nany other digit, it consists of or more segments, so it can be replaced\r\nby two âs and the number will become greater. For the same reason we\r\ndonât need to use more than one : if we have two, we can replace them\r\nwith three âs.Obviously, it is always optimal to place before . So our\r\nnumber is either a sequence of âs, or a and a sequence of âs. We should\r\nuse only if is odd, because if is even, it will decrease the number of\r\ndigits in the result.\r\n",
+    "hint": []
 }

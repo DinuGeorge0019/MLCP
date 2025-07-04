@@ -132,5 +132,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. XOR = Average.json",
     "editorial_link": "https://codeforces.com//blog/entry/109438",
-    "editorial": "Let us consider the cases when is odd and when its even. is odd: We can\r\nsee that printing will lead to an average of and an XOR of (since ).\r\nSimilarly, you could print any integer times to pass this case. is even:\r\nWe use a slight modification of the solution for odd here. Instead of\r\nprinting the same number times, we print . Both the XOR and the average\r\nof and are . Therefore the average of the total sequence remains , and\r\nthe XOR of the whole sequence is also . Note that there are other\r\npossible solutions, but the simplest one is described here.\r\n"
+    "editorial": "Let us consider the cases when is odd and when its even. is odd: We can\r\nsee that printing will lead to an average of and an XOR of (since ).\r\nSimilarly, you could print any integer times to pass this case. is even:\r\nWe use a slight modification of the solution for odd here. Instead of\r\nprinting the same number times, we print . Both the XOR and the average\r\nof and are . Therefore the average of the total sequence remains , and\r\nthe XOR of the whole sequence is also . Note that there are other\r\npossible solutions, but the simplest one is described here.\r\n",
+    "hint": [
+        "Hint Think small, then big!"
+    ]
 }

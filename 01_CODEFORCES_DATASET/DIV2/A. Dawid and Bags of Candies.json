@@ -118,7 +118,7 @@
         ]
     },
     "name": "A. Dawid and Bags of Candies",
-    "statement": "Dawid has four bags of candies. The i-th of them contains a_i candies.\r\nAlso, Dawid has two friends. He wants to give each bag to one of his two\r\nfriends. Is it possible to distribute the bags in such a way that each\r\nfriend receives the same amount of candies in total?Note, that you can\u2019t\r\nkeep bags for yourself or throw them away, each bag should be given to\r\none of the friends.\r\n",
+    "statement": "Dawid has four bags of candies. The i-th of them contains a_i candies.\r\nAlso, Dawid has two friends. He wants to give each bag to one of his two\r\nfriends. Is it possible to distribute the bags in such a way that each\r\nfriend receives the same amount of candies in total?Note, that you can’t\r\nkeep bags for yourself or throw them away, each bag should be given to\r\none of the friends.\r\n",
     "solutions": [
         "// Words are flowing out like endless rain into a paper cup\n// They slither while they pass they slip away across the universe\n// Pools of sorrow, waves of joy are drifting through my open mind\n// Possessing and caressing me\n\n#include <bits/stdc++.h>\nusing namespace std;\n\nusing LL = long long;\n\nnamespace _buff {\n\nconst size_t BUFF = 1 << 19;\nchar ibuf[BUFF], *ib = ibuf, *ie = ibuf;\nchar getc() {\n    if (ib == ie) {\n        ib = ibuf;\n        ie = ibuf + fread(ibuf, 1, BUFF, stdin);\n    }\n    return ib == ie ? -1 : *ib++;\n}\n\n}\n\nLL read() {\n    using namespace _buff;\n    LL ret = 0;\n    bool pos = true;\n    char c = getc();\n    for (; (c < '0' || c > '9') && c != '-'; c = getc()) {\n        assert(~c);\n    }\n    if (c == '-') {\n        pos = false;\n        c = getc();\n    }\n    for (; c >= '0' && c <= '9'; c = getc()) {\n        ret = (ret << 3) + (ret << 1) + (c ^ 48);\n    }\n    return pos ? ret : -ret;\n}\n\nint main() {\n    int a[4];\n    generate_n(a, 4, read);\n    for (int i = 0; i < 16; ++i) {\n        int sum1 = 0, sum2 = 0;\n        for (int j = 0; j < 4; ++j) {\n            ((i >> j & 1) ? sum1 : sum2) += a[j];\n        }\n        if (sum1 == sum2) {\n            puts(\"YES\");\n            return 0;\n        }\n    }\n    puts(\"NO\");\n    return 0;\n}\n"
     ],
@@ -132,5 +132,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Dawid and Bags of Candies.json",
     "editorial_link": "https://codeforces.com//blog/entry/70008",
-    "editorial": "Let\u00e2\u0080\u0099s firstly sort all the bags in non-decreasing order of capacities.\r\nAs the order of friends doesn\u00e2\u0080\u0099t matter, it turns out that one of them\r\nshould take only the biggest bag or the biggest and the smallest bag.\r\nIt\u00e2\u0080\u0099s easy to check if any of these possibilities works.\r\n"
+    "editorial": "Letâs firstly sort all the bags in non-decreasing order of capacities.\r\nAs the order of friends doesnât matter, it turns out that one of them\r\nshould take only the biggest bag or the biggest and the smallest bag.\r\nItâs easy to check if any of these possibilities works.\r\n",
+    "hint": []
 }

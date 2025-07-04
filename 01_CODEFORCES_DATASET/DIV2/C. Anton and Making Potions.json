@@ -135,5 +135,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Anton and Making Potions.json",
     "editorial_link": "https://codeforces.com//blog/entry/48397",
-    "editorial": "At first, observe that if we\u00e2\u0080\u0099ll take the -th potion of the first type\r\nand the -th potion of the second type, then we can prepare all the\r\npotions in seconds. So, we have to minimize this number.Let\u00e2\u0080\u0099s iterate\r\nover what potion of the first type we\u00e2\u0080\u0099ll use. Then we must find such\r\nspell of the second type that will prepare instantly as many as possible\r\npotions, and we\u00e2\u0080\u0099ll have enough manapoints for it. It can be done using\r\nbinary search, because the characteristics of potions of the second type\r\nand are sorted in non-decreasing order.Time complexity is .\r\n"
+    "editorial": "At first, observe that if weâll take the -th potion of the first type\r\nand the -th potion of the second type, then we can prepare all the\r\npotions in seconds. So, we have to minimize this number.Letâs iterate\r\nover what potion of the first type weâll use. Then we must find such\r\nspell of the second type that will prepare instantly as many as possible\r\npotions, and weâll have enough manapoints for it. It can be done using\r\nbinary search, because the characteristics of potions of the second type\r\nand are sorted in non-decreasing order.Time complexity is .\r\n",
+    "hint": []
 }

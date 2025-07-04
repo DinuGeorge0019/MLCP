@@ -1,1 +1,101 @@
-{"link": "https://codeforces.com//contest/2098/problem/A", "problemId": "3353159", "problem_idx": "A", "shortId": "2098A", "contest_number": "2098", "problem_submissions": {"E": [317320024, 317322204, 317313156, 317321829, 317319668, 317318024, 317438260], "D": [317309574, 317317051, 317313607, 317308210, 317298812, 317311685, 317309218, 317311584, 317309264, 317307368], "C": [317295196, 317296691, 317289274, 317296563, 317290701, 317300783, 317292285, 317291852, 317292763, 317292850, 317292261, 317304345, 317300061, 317294892, 317298246], "B": [317289494, 317313236, 317286412, 317291280, 317285715, 317291349, 317285030, 317287128, 317287700, 317289713, 317283188, 317291016, 317286513, 317290125], "A": [317280615, 317287742, 317281612, 317282607, 317281699, 317303477, 317279602, 317280114, 317281057, 317282638, 317282803, 317280020, 317283173, 317280277, 317286464], "F": [317318369, 317305957, 317319613, 317439057]}, "editorial_link": "https://codeforces.com//blog/entry/142316", "editorial": "", "name": "A. Vadim s Collection", "statement": "We call a phone number a if it is a string of 10 digits, where the i-th\r\ndigit from the left is at least 10 - i. That is, the first digit must be\r\nat least 9, the second at least 8,\r\nldots, with the last digit being at least 0.For example, is a beautiful\r\nphone number, while is not, since the second digit, which is 0, is less\r\nthan 8.Vadim has a phone number. He wants to rearrange its digits in\r\nsuch a way that the result is the phone number. Help Vadim solve this\r\nproblem.Please note that the phone numbers are compared as integers.\r\n", "solutions": [], "input": "", "output": "", "tags": ["brute force", "greedy"], "dificulty": "800", "interactive": false, "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Vadim s Collection.json"}
+{
+    "link": "https://codeforces.com//contest/2098/problem/A",
+    "problemId": "3353159",
+    "problem_idx": "A",
+    "shortId": "2098A",
+    "contest_number": "2098",
+    "problem_submissions": {
+        "E": [
+            317320024,
+            317322204,
+            317313156,
+            317321829,
+            317319668,
+            317318024,
+            317438260
+        ],
+        "D": [
+            317309574,
+            317317051,
+            317313607,
+            317308210,
+            317298812,
+            317311685,
+            317309218,
+            317311584,
+            317309264,
+            317307368
+        ],
+        "C": [
+            317295196,
+            317296691,
+            317289274,
+            317296563,
+            317290701,
+            317300783,
+            317292285,
+            317291852,
+            317292763,
+            317292850,
+            317292261,
+            317304345,
+            317300061,
+            317294892,
+            317298246
+        ],
+        "B": [
+            317289494,
+            317313236,
+            317286412,
+            317291280,
+            317285715,
+            317291349,
+            317285030,
+            317287128,
+            317287700,
+            317289713,
+            317283188,
+            317291016,
+            317286513,
+            317290125
+        ],
+        "A": [
+            317280615,
+            317287742,
+            317281612,
+            317282607,
+            317281699,
+            317303477,
+            317279602,
+            317280114,
+            317281057,
+            317282638,
+            317282803,
+            317280020,
+            317283173,
+            317280277,
+            317286464
+        ],
+        "F": [
+            317318369,
+            317305957,
+            317319613,
+            317439057
+        ]
+    },
+    "editorial_link": "https://codeforces.com//blog/entry/142316",
+    "editorial": "Our goal is to obtain the minimally possible string that satisfies the\r\nconditions of beauty. Therefore, we need to arrange the digits in order\r\nfrom the first to the last, each time choosing the minimally possible\r\nsuitable digit.More formally: For the -th position, we need to place the\r\nsmallest available digit that is not less than . After placing a digit,\r\nit becomes unavailable for further use. We repeat the process for all\r\npositions. Why does this work? Notice that when we place a digit in the\r\n-th position, we have at least digits in the original number that are\r\ngreater than or equal to , meaning that at most digits have been used\r\nfrom them earlier, and there is always some option available. Thus, at\r\neach step, it is beneficial to choose the smallest available suitable\r\ndigit because the number can always be completed to the end, and\r\nchoosing a larger digit would result in a larger number.\r\n",
+    "name": "A. Vadim s Collection",
+    "statement": "We call a phone number a if it is a string of 10 digits, where the i-th\r\ndigit from the left is at least 10 - i. That is, the first digit must be\r\nat least 9, the second at least 8,\r\nldots, with the last digit being at least 0.For example, is a beautiful\r\nphone number, while is not, since the second digit, which is 0, is less\r\nthan 8.Vadim has a phone number. He wants to rearrange its digits in\r\nsuch a way that the result is the phone number. Help Vadim solve this\r\nproblem.Please note that the phone numbers are compared as integers.\r\n",
+    "solutions": [],
+    "input": "",
+    "output": "",
+    "tags": [
+        "brute force",
+        "greedy"
+    ],
+    "dificulty": "800",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Vadim s Collection.json",
+    "hint": []
+}

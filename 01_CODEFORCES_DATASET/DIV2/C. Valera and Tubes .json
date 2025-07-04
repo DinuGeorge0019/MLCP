@@ -103,5 +103,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Valera and Tubes .json",
     "editorial_link": "https://codeforces.com//blog/entry/12615",
-    "editorial": "The solution is pretty simple. First we need\nto make such route that visits every cell exactly one time. It is not\ndifficult: After that, we can easily find the solution: you can make\nfirst tubes length be , and the last tube will consist from cells left.\nJury\u00e2\u0080\u0099s solution: 6850508\n"
+    "editorial": "The solution is pretty simple. First we need\nto make such route that visits every cell exactly one time. It is not\ndifficult: After that, we can easily find the solution: you can make\nfirst tubes length be , and the last tube will consist from cells left.\nJuryâs solution: 6850508\n",
+    "hint": []
 }

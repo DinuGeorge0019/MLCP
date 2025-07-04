@@ -94,5 +94,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Maxim and Increasing Subsequence.json",
     "editorial_link": "https://codeforces.com//blog/entry/6398",
-    "editorial": "This problem can be done using dp[i,j] where we can end our increasing\r\nsequence with length i and last number j. Its not hard to understand\r\nthat number of states will be n*b. To make a tranfer we need to know\r\narray first[j] first position of the number j in the sequence b,\r\nnext[i][j] first position of the number j in the sequence b after\r\nposition i. Now its easy to calculate all values.\r\n"
+    "editorial": "This problem can be done using dp[i,j] where we can end our increasing\r\nsequence with length i and last number j. Its not hard to understand\r\nthat number of states will be n*b. To make a tranfer we need to know\r\narray first[j] first position of the number j in the sequence b,\r\nnext[i][j] first position of the number j in the sequence b after\r\nposition i. Now its easy to calculate all values.\r\n",
+    "hint": []
 }

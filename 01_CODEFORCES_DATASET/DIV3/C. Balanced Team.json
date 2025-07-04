@@ -159,5 +159,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C. Balanced Team.json",
     "editorial_link": "https://codeforces.com//blog/entry/65807",
-    "editorial": "Let\u00e2\u0080\u0099s sort all values in non-decreasing order. Then we can use two\r\npointers to calculate for each student the maximum number of students\r\nsuch that (). This is pretty standard approach. We also can use binary\r\nsearch to do it (or we can store for each programming skill the number\r\nof students with this skill and just iterate from some skill to and sum\r\nup all numbers of students).\r\n"
+    "editorial": "Letâs sort all values in non-decreasing order. Then we can use two\r\npointers to calculate for each student the maximum number of students\r\nsuch that (). This is pretty standard approach. We also can use binary\r\nsearch to do it (or we can store for each programming skill the number\r\nof students with this skill and just iterate from some skill to and sum\r\nup all numbers of students).\r\n",
+    "hint": []
 }

@@ -215,5 +215,10 @@
     ],
     "dificulty": "",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\E. Kevin and And.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\E. Kevin and And.json",
+    "hint": [
+        "Hint 1 Consider the minimum number that can be obtained by operating times on a number .",
+        "Hint 2 Do these numbers have any other properties?",
+        "Hint 3 Consider the cost of each operation and each number independently."
+    ]
 }

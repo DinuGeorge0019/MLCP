@@ -81,5 +81,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Complicated GCD.json",
     "editorial_link": "https://codeforces.com//blog/entry/44408",
-    "editorial": "We examine two cases:\n\na?=?b \u0097 the segment consists of a single number, hence the answer is a.\na?<?b \u0097 we have gcd(a,?a?+?1,?a?+?2,?...,?b)?=?gcd(gcd(a,?a?+?1),?a?+?2,?...,?b)?=?gcd(1,?a?+?2,?...,?b)?=?1."
+    "editorial": "We examine two cases:\n\na?=?b  the segment consists of a single number, hence the answer is a.\na?<?b  we have gcd(a,?a?+?1,?a?+?2,?...,?b)?=?gcd(gcd(a,?a?+?1),?a?+?2,?...,?b)?=?gcd(1,?a?+?2,?...,?b)?=?1.",
+    "hint": []
 }

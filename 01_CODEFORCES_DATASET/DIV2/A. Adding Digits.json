@@ -84,7 +84,7 @@
         ]
     },
     "name": "A. Adding Digits",
-    "statement": "Vasya has got two number: and . However, Vasya finds number too short.\r\nSo he decided to repeat the operation of lengthening number times.One\r\noperation of lengthening a number means adding exactly one digit to the\r\nnumber (in the decimal notation) to the right provided that the\r\nresulting number is divisible by Vasya\u2019s number . If it is impossible to\r\nobtain the number which is divisible by , then the lengthening operation\r\ncannot be performed.Your task is to help Vasya and print the number he\r\ncan get after applying the lengthening operation to number times.\r\n",
+    "statement": "Vasya has got two number: and . However, Vasya finds number too short.\r\nSo he decided to repeat the operation of lengthening number times.One\r\noperation of lengthening a number means adding exactly one digit to the\r\nnumber (in the decimal notation) to the right provided that the\r\nresulting number is divisible by Vasya’s number . If it is impossible to\r\nobtain the number which is divisible by , then the lengthening operation\r\ncannot be performed.Your task is to help Vasya and print the number he\r\ncan get after applying the lengthening operation to number times.\r\n",
     "solutions": [
         "//program 260-A\n\n#include<iostream>\n#include<cstdio>\n#include<cstdlib>\n#include<cstring>\n#include<algorithm>\n\nusing namespace std;\n\nint main()\n{\n  int A,B,N;\n  scanf(\"%d%d%d\",&A,&B,&N);\n  int Temp=A;\n  static int Ans[100000];\n  for(int i=0;i<N;i++)\n    {\n      Ans[i]=-1;\n      for(int j=0;j<10;j++)\n        if(!((A*10+j)%B))\n          Ans[i]=j;\n      if(Ans[i]==-1)\n        {\n          printf(\"-1\\n\");\n          return 0;\n        }\n      A=0;\n    }\n  printf(\"%d\",Temp);\n  for(int i=0;i<N;i++)\n    putchar(Ans[i]+48);\n  putchar('\\n');\n  return 0;\n}\n"
     ],
@@ -98,5 +98,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Adding Digits.json",
     "editorial_link": "https://codeforces.com//blog/entry/6263",
-    "editorial": "At first try to add to the right one digit from to . If it is impossible\r\nwrite -1. In other case, the remaining digits can be because\r\ndivisibility doesn t change.\r\n"
+    "editorial": "At first try to add to the right one digit from to . If it is impossible\r\nwrite -1. In other case, the remaining digits can be because\r\ndivisibility doesn t change.\r\n",
+    "hint": []
 }

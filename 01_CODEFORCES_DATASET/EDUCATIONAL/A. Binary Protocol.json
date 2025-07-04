@@ -157,5 +157,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Binary Protocol.json",
     "editorial_link": "https://codeforces.com//blog/entry/53334",
-    "editorial": "Let\u00e2\u0080\u0099s decode the number digit by digit starting from the leftmost. When\r\nyou meet in the string, increase the value of the current digit. For\r\nprint current digit and proceed to the next one. Don\u00e2\u0080\u0099t forget to print\r\nthe last digit when the string is over.Overall complexity: .\r\n"
+    "editorial": "Letâs decode the number digit by digit starting from the leftmost. When\r\nyou meet in the string, increase the value of the current digit. For\r\nprint current digit and proceed to the next one. Donât forget to print\r\nthe last digit when the string is over.Overall complexity: .\r\n",
+    "hint": []
 }

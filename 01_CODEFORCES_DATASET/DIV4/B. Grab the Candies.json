@@ -190,5 +190,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\B. Grab the Candies.json",
     "editorial_link": "https://codeforces.com//blog/entry/114143",
-    "editorial": "Let be the total number of candies with all bags with an even number of\r\ncandies, and the total of all bags with an odd number of candies. If ,\r\nthen the answer is , because at the end Mihai (who takes only even\r\nnumbers of candies) will have less candies than Bianca.Otherwise if the\r\nanswer is . The construction is to simply put all even bags first, and\r\nthen all odd bags: since all even bags come before all odd bags and , at\r\nany point in time Mihai will have more candies than Bianca.The time\r\ncomplexity is .\r\n"
+    "editorial": "Let be the total number of candies with all bags with an even number of\r\ncandies, and the total of all bags with an odd number of candies. If ,\r\nthen the answer is , because at the end Mihai (who takes only even\r\nnumbers of candies) will have less candies than Bianca.Otherwise if the\r\nanswer is . The construction is to simply put all even bags first, and\r\nthen all odd bags: since all even bags come before all odd bags and , at\r\nany point in time Mihai will have more candies than Bianca.The time\r\ncomplexity is .\r\n",
+    "hint": []
 }

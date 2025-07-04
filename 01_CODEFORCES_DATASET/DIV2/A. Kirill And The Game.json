@@ -118,5 +118,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Kirill And The Game.json",
     "editorial_link": "https://codeforces.com//blog/entry/54179",
-    "editorial": "Let\u00e2\u0080\u0099s denote the potion\u00e2\u0080\u0099s amount of experience as and its cost as . We\r\nwant to know if there is a potion such that and meet the following\r\ncondition: . To do this, we can iterate on from to and check that is not\r\nless than and not greater than . https://ideone.com/a8syda\r\n"
+    "editorial": "Letâs denote the potionâs amount of experience as and its cost as . We\r\nwant to know if there is a potion such that and meet the following\r\ncondition: . To do this, we can iterate on from to and check that is not\r\nless than and not greater than . https://ideone.com/a8syda\r\n",
+    "hint": []
 }

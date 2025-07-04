@@ -160,5 +160,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. From Hero to Zero.json",
     "editorial_link": "https://codeforces.com/blog/entry/67484",
-    "editorial": "It\u00e2\u0080\u0099s always optimal to divide by whenever it\u00e2\u0080\u0099s possible, since dividing\r\nby equivalent to decreasing by .The only problem is that it\u00e2\u0080\u0099s too slow\r\nto just subtract from each time, since in the worst case we can make\r\noperations (Consider case and ).But if we\u00e2\u0080\u0099d look closer then we can just\r\nreplace times of subtract with one subtraction of . And to make is\r\ndivisible by we should make subtractions.\r\n"
+    "editorial": "Itâs always optimal to divide by whenever itâs possible, since dividing\r\nby equivalent to decreasing by .The only problem is that itâs too slow\r\nto just subtract from each time, since in the worst case we can make\r\noperations (Consider case and ).But if weâd look closer then we can just\r\nreplace times of subtract with one subtraction of . And to make is\r\ndivisible by we should make subtractions.\r\n",
+    "hint": []
 }

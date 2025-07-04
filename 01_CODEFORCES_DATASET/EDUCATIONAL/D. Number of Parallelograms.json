@@ -142,5 +142,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\D. Number of Parallelograms.json",
     "editorial_link": "https://codeforces.com//blog/entry/44259",
-    "editorial": "The problem was suggested by Sadegh Mahdavi smahdavi4. It\u00e2\u0080\u0099s known that\r\nthe diagonals of a parallelogram split each other in the middle. Let\u00e2\u0080\u0099s\r\niterate over the pairs of points and consider the middle of the segment\r\n: . Let\u00e2\u0080\u0099s calculate the value for each middle. is the number of segments\r\nwith the middle . Easy to see that the answer is . C++ solution\r\n"
+    "editorial": "The problem was suggested by Sadegh Mahdavi smahdavi4. Itâs known that\r\nthe diagonals of a parallelogram split each other in the middle. Letâs\r\niterate over the pairs of points and consider the middle of the segment\r\n: . Letâs calculate the value for each middle. is the number of segments\r\nwith the middle . Easy to see that the answer is . C++ solution\r\n",
+    "hint": []
 }

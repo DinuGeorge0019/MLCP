@@ -180,5 +180,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\D. Zigzags.json",
     "editorial_link": "https://codeforces.com//blog/entry/81916",
-    "editorial": "We can rethink this as counting the number of equal pairs where . To do\r\nthis we loop over from right to left and make sure we have all pairs\r\nwhere counted in a map. Then we simply iterate over and add up the\r\nnumber of occurrences of each in the map. For implementation details,\r\nnote that we don\u00e2\u0080\u0099t actually want to use a map and make our code slower.\r\nWe can just use an array of size and convert the pair to the number\r\nsince the are in the range . As a bonus, even if the were larger than ,\r\nwe could just compress them down to and repeat the solution above. Code:\r\n91019003\r\n"
+    "editorial": "We can rethink this as counting the number of equal pairs where . To do\r\nthis we loop over from right to left and make sure we have all pairs\r\nwhere counted in a map. Then we simply iterate over and add up the\r\nnumber of occurrences of each in the map. For implementation details,\r\nnote that we donât actually want to use a map and make our code slower.\r\nWe can just use an array of size and convert the pair to the number\r\nsince the are in the range . As a bonus, even if the were larger than ,\r\nwe could just compress them down to and repeat the solution above. Code:\r\n91019003\r\n",
+    "hint": []
 }

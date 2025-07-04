@@ -142,5 +142,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Flip Flop Sum.json",
     "editorial_link": "https://codeforces.com//blog/entry/112149",
-    "editorial": "Let\u00e2\u0080\u0099s say we\u00e2\u0080\u0099ve chosen index . What will happen? If the values of and\r\nhave opposite signs, flipping them won\u00e2\u0080\u0099t change the initial . if = = ,\r\nflipping them will reduce the by . if = = , flipping them will increase\r\nthe by . So, for each , we can check the values of and , and we can\r\nmeasure the effects on the based on the three cases stated above. Among\r\nthe effects, take the one that maximizes the .Time complexity: In each\r\ntest case,\r\n"
+    "editorial": "Letâs say weâve chosen index . What will happen? If the values of and\r\nhave opposite signs, flipping them wonât change the initial . if = = ,\r\nflipping them will reduce the by . if = = , flipping them will increase\r\nthe by . So, for each , we can check the values of and , and we can\r\nmeasure the effects on the based on the three cases stated above. Among\r\nthe effects, take the one that maximizes the .Time complexity: In each\r\ntest case,\r\n",
+    "hint": []
 }

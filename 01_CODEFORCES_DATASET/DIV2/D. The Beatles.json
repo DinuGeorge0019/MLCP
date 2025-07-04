@@ -140,5 +140,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. The Beatles.json",
     "editorial_link": "https://codeforces.com//blog/entry/66301",
-    "editorial": "Let's assume that we know the length of the jump, and it is equal to l\n. Then, in order to be back at the starting point, Sergey will need to make exactly n?k/gcd(n?k,l)\n moves, where gcd\n is the greatest common divider.\n\nLet l=kx+c\n, where c\n and x\n are non-negative integers. So, if we know a\n and b\n, than c\n can only take 4\n values: ((a+b)%c,(a?b)%c,(b?a)%c,(?a?b)%c)\n, where %c\n means modulo c\n. It is clear that only x<n\n can be considered. Then we iterate over all the 4n\n variants of the pair (x,c)\n, and for each we find the number of moves to the starting point. The minimum and maximum of the resulting numbers will be the answer."
+    "editorial": "Let's assume that we know the length of the jump, and it is equal to l\n. Then, in order to be back at the starting point, Sergey will need to make exactly n?k/gcd(n?k,l)\n moves, where gcd\n is the greatest common divider.\n\nLet l=kx+c\n, where c\n and x\n are non-negative integers. So, if we know a\n and b\n, than c\n can only take 4\n values: ((a+b)%c,(a?b)%c,(b?a)%c,(?a?b)%c)\n, where %c\n means modulo c\n. It is clear that only x<n\n can be considered. Then we iterate over all the 4n\n variants of the pair (x,c)\n, and for each we find the number of moves to the starting point. The minimum and maximum of the resulting numbers will be the answer.",
+    "hint": []
 }

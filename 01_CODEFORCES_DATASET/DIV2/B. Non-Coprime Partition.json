@@ -130,5 +130,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Non-Coprime Partition.json",
     "editorial_link": "https://codeforces.com/blog/entry/61692",
-    "editorial": "There are many ways to solve this question. The easiest way perhaps was\r\nto note that the sum of first numbers is given by , and one of or has to\r\nbe an integer, suppose . Then we can partition the numbers into two\r\nsets, one containing and the other containing the remaining integers,\r\nboth of which will have as a common factor. Special Case: There is no\r\nanswer for Overall Complexity:\r\n"
+    "editorial": "There are many ways to solve this question. The easiest way perhaps was\r\nto note that the sum of first numbers is given by , and one of or has to\r\nbe an integer, suppose . Then we can partition the numbers into two\r\nsets, one containing and the other containing the remaining integers,\r\nboth of which will have as a common factor. Special Case: There is no\r\nanswer for Overall Complexity:\r\n",
+    "hint": []
 }

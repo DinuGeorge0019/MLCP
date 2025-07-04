@@ -169,5 +169,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\C. Two Arrays.json",
     "editorial_link": "https://codeforces.com//blog/entry/73105",
-    "editorial": "Let\u00e2\u0080\u0099s consider the following sequence:.It\u00e2\u0080\u0099s sequence of length sorted in\r\nnon-descending order, where each element of each sequence is an integer\r\nbetween and .We can find the number of such sequences by simple\r\ncombinatorics it\u00e2\u0080\u0099s combination with repetitions. So the answer is .\r\n"
+    "editorial": "Letâs consider the following sequence:.Itâs sequence of length sorted in\r\nnon-descending order, where each element of each sequence is an integer\r\nbetween and .We can find the number of such sequences by simple\r\ncombinatorics itâs combination with repetitions. So the answer is .\r\n",
+    "hint": []
 }

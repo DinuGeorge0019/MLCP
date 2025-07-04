@@ -150,7 +150,7 @@
         ]
     },
     "name": "A. Compote",
-    "statement": "Nikolay has lemons, apples and pears. He decided to cook a compote.\r\nAccording to the recipe the fruits should be in the ratio . It means\r\nthat for each lemon in the compote should be exactly apples and exactly\r\npears. You can\u2019t crumble up, break up or cut these fruits into pieces.\r\nThese fruits lemons, apples and pears should be put in the compote as\r\nwhole fruits.Your task is to determine the maximum total number of\r\nlemons, apples and pears from which Nikolay can cook the compote. It is\r\npossible that Nikolay can\u2019t use any fruits, in this case print .\r\n",
+    "statement": "Nikolay has lemons, apples and pears. He decided to cook a compote.\r\nAccording to the recipe the fruits should be in the ratio . It means\r\nthat for each lemon in the compote should be exactly apples and exactly\r\npears. You can’t crumble up, break up or cut these fruits into pieces.\r\nThese fruits lemons, apples and pears should be put in the compote as\r\nwhole fruits.Your task is to determine the maximum total number of\r\nlemons, apples and pears from which Nikolay can cook the compote. It is\r\npossible that Nikolay can’t use any fruits, in this case print .\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\n#define ll long long\n#define ld long double\n#define N ((ll)301*1000)\n#define INF ((ll)2e9)\n#define MOD ((ll)1e9+7)\nll tavan(ll x,ll y){ll res=1;while(y){res*=y%2?x:1;res%=MOD;x*=x;x%=MOD;y/=2;}return res;}\n\nll a,b,c,ans;\n\nint main()\n{\n    ios_base::sync_with_stdio(0);cin.tie(0);\n    cin>>a>>b>>c;\n    while(1)\n    {\n    \tif(a<1 || b<2 || c<4)break;\n    \ta-=1;\n    \tb-=2;\n    \tc-=4;\n    \tans+=7;\n\t}\n    \n    cout<<ans;\n    return 0;\n}"
     ],
@@ -164,5 +164,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Compote.json",
     "editorial_link": "https://codeforces.com//blog/entry/49160",
-    "editorial": "At first let\u00e2\u0080\u0099s calculate how many portions of stewed fruit (in one\r\nportion lemon, apples and pears) we can cook. This number equals to ,\r\nwhere is integer part of . After that we need to multiply this number of\r\n7, because there is 7 fruits in 1 portion, and print the result.\r\n"
+    "editorial": "At first letâs calculate how many portions of stewed fruit (in one\r\nportion lemon, apples and pears) we can cook. This number equals to ,\r\nwhere is integer part of . After that we need to multiply this number of\r\n7, because there is 7 fruits in 1 portion, and print the result.\r\n",
+    "hint": []
 }

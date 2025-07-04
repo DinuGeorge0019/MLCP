@@ -139,5 +139,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\D. Degree Set.json",
     "editorial_link": "https://codeforces.com//blog/entry/59195",
-    "editorial": "We prove that the answer always always exists by constructing it. Graph\r\nfor is a single vertex; Graph for is a clique of vertices; Graph for\r\nsome is obtained from the graph by adding vertices initially connected\r\nto nothing and vertices connected to all previously mentioned ones. The\r\nvertices connected to nothing got degrees , the vertices from the\r\nprevious step increased their degrees by and finally there appeared\r\nvertices of degree . The number is vertices is as needed.\r\n"
+    "editorial": "We prove that the answer always always exists by constructing it. Graph\r\nfor is a single vertex; Graph for is a clique of vertices; Graph for\r\nsome is obtained from the graph by adding vertices initially connected\r\nto nothing and vertices connected to all previously mentioned ones. The\r\nvertices connected to nothing got degrees , the vertices from the\r\nprevious step increased their degrees by and finally there appeared\r\nvertices of degree . The number is vertices is as needed.\r\n",
+    "hint": []
 }

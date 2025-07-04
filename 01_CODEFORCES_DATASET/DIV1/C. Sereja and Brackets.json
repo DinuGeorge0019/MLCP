@@ -103,5 +103,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Sereja and Brackets.json",
     "editorial_link": "https://codeforces.com//blog/entry/10363",
-    "editorial": "We will support the segments tree. At each vertex will be stored: the\r\nmaximum length of the bracket subsequence how many there it open\r\nbrackets that sequence doesn\u00e2\u0080\u0099t contain how many there it closed brackets\r\nthat sequence doesn\u00e2\u0080\u0099t containIf we want to combine two vertices with\r\nparameters and , we can use the following rules:\r\n"
+    "editorial": "We will support the segments tree. At each vertex will be stored: the\r\nmaximum length of the bracket subsequence how many there it open\r\nbrackets that sequence doesnât contain how many there it closed brackets\r\nthat sequence doesnât containIf we want to combine two vertices with\r\nparameters and , we can use the following rules:\r\n",
+    "hint": []
 }

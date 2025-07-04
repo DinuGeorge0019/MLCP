@@ -163,5 +163,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\E. Vasya and Binary String.json",
     "editorial_link": "https://codeforces.com//blog/entry/64833",
-    "editorial": "We set up a DP on (start index, end index, number of consecutive digits\r\nmatching our start index). In other words, the current string we are\r\nsolving is the substring from start index to end index, plus some number\r\nof additional digits (all equal to S[start]) added as a prefix to our\r\nsubstring. We then have two choices from any given state: The runtime is\r\n, with a very good constant factor. Code: 49036191 Does anybody have ?\r\n"
+    "editorial": "We set up a DP on (start index, end index, number of consecutive digits\r\nmatching our start index). In other words, the current string we are\r\nsolving is the substring from start index to end index, plus some number\r\nof additional digits (all equal to S[start]) added as a prefix to our\r\nsubstring. We then have two choices from any given state: The runtime is\r\n, with a very good constant factor. Code: 49036191 Does anybody have ?\r\n",
+    "hint": []
 }

@@ -110,5 +110,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Yaroslav and Sequence.json",
     "editorial_link": "https://codeforces.com//blog/entry/7560",
-    "editorial": "Using dfs we will find number of numbers that we can set as positive. Note that we can either set all of the numbers as positive or leave one number(any) as negative. If we can obtain all numbers as positive, we just return sum of modules of the numbers, but if we cannot we will count the same sum and will subtract minimal modular value multiple 2 from sum.\n"
+    "editorial": "Using dfs we will find number of numbers that we can set as positive. Note that we can either set all of the numbers as positive or leave one number(any) as negative. If we can obtain all numbers as positive, we just return sum of modules of the numbers, but if we cannot we will count the same sum and will subtract minimal modular value multiple 2 from sum.\n",
+    "hint": []
 }

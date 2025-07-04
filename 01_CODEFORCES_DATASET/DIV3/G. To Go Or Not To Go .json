@@ -201,5 +201,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\G. To Go Or Not To Go .json",
     "editorial_link": "https://codeforces.com//blog/entry/90342",
-    "editorial": "There is no point in using two transitions between portals, because if\r\nyou want to go from portal to portal , and then from portal to portal ,\r\nthen you can immediately go from portal to portal for less.Then there\r\nare two possible paths.First do not use portals. Here it is enough to\r\nfind the shortest path between two points.The second use a single\r\ntransition. Let\u00e2\u0080\u0099s choose a portal from which we should teleport.\r\nObviously, this is a portal with a minimum distance to it and the cost\r\nof the transition. Similarly, the portal in which we should teleport is\r\nselected.\r\n"
+    "editorial": "There is no point in using two transitions between portals, because if\r\nyou want to go from portal to portal , and then from portal to portal ,\r\nthen you can immediately go from portal to portal for less.Then there\r\nare two possible paths.First do not use portals. Here it is enough to\r\nfind the shortest path between two points.The second use a single\r\ntransition. Letâs choose a portal from which we should teleport.\r\nObviously, this is a portal with a minimum distance to it and the cost\r\nof the transition. Similarly, the portal in which we should teleport is\r\nselected.\r\n",
+    "hint": []
 }

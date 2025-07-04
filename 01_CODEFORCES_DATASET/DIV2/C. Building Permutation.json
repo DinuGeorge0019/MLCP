@@ -106,5 +106,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Building Permutation.json",
     "editorial_link": "https://codeforces.com//blog/entry/7093",
-    "editorial": "The solution of the problem is rather simple. Sort all integers and then\r\nmake from integer integer , from integer integer and so on. So, integer\r\nadds to the answer the value . The answer should be count in 64-bit\r\ntype. You can simply guess why such solution is correct.\r\n"
+    "editorial": "The solution of the problem is rather simple. Sort all integers and then\r\nmake from integer integer , from integer integer and so on. So, integer\r\nadds to the answer the value . The answer should be count in 64-bit\r\ntype. You can simply guess why such solution is correct.\r\n",
+    "hint": []
 }

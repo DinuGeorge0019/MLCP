@@ -1,1 +1,132 @@
-{"link": "https://codeforces.com//contest/2081/problem/G2", "problemId": "3268222", "problem_idx": "G2", "shortId": "2081G2", "contest_number": "2081", "problem_submissions": {"B": [310774215, 310752573, 310826211, 310739558, 310740102, 310737148, 310765995, 310740246, 310740411, 310741073, 310738730, 310756764, 310764342, 310740030, 311003693, 310899344, 310756759], "G2": [310759041, 310768901], "G1": [310755673, 310759015, 310756557, 310778645, 310765573, 310772467], "D": [310740089, 310749620, 310736583, 310742447, 310756472, 310749776, 311027213, 310763231, 310761892, 310742331, 310755537, 310777318, 310776606, 310764407, 310744818, 310748246, 310836677, 310748850, 310737628, 310743454, 310762523], "F": [310771700, 310779543, 310754815, 310762358, 310891482, 312515283], "C": [310742461, 310749579, 310750103, 310749689, 310758863, 310753338, 310754039, 310753444, 310776556, 310767765, 310753226, 310756623, 310767338, 310755335, 310755677, 310757463, 310759247, 310772525], "A": [310731565, 310739375, 310732389, 310731680, 310732110, 310734146, 310732038, 310732151, 310731709, 310735423, 310732004, 310743686, 310737151, 310732535, 310735886, 310731360, 310731694, 310736792], "E": [312258360, 310770842]}, "editorial_link": "https://codeforces.com//blog/entry/140702", "editorial": "", "name": "G2. Hard Formula  Hard Version ", "statement": "You are given an integer n, and you need to compute (\r\nsum_{k=1}^n k\r\nbmod\r\nvarphi(k))\r\nbmod 2^{32}, where\r\nvarphi(k) equals the number of positive integers no greater than k that\r\nare coprime with k.\r\n", "solutions": [], "input": "", "output": "", "tags": ["math"], "dificulty": "3400", "interactive": false, "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\G2. Hard Formula  Hard Version .json"}
+{
+    "link": "https://codeforces.com//contest/2081/problem/G2",
+    "problemId": "3268222",
+    "problem_idx": "G2",
+    "shortId": "2081G2",
+    "contest_number": "2081",
+    "problem_submissions": {
+        "B": [
+            310774215,
+            310752573,
+            310826211,
+            310739558,
+            310740102,
+            310737148,
+            310765995,
+            310740246,
+            310740411,
+            310741073,
+            310738730,
+            310756764,
+            310764342,
+            310740030,
+            311003693,
+            310899344,
+            310756759
+        ],
+        "G2": [
+            310759041,
+            310768901
+        ],
+        "G1": [
+            310755673,
+            310759015,
+            310756557,
+            310778645,
+            310765573,
+            310772467
+        ],
+        "D": [
+            310740089,
+            310749620,
+            310736583,
+            310742447,
+            310756472,
+            310749776,
+            311027213,
+            310763231,
+            310761892,
+            310742331,
+            310755537,
+            310777318,
+            310776606,
+            310764407,
+            310744818,
+            310748246,
+            310836677,
+            310748850,
+            310737628,
+            310743454,
+            310762523
+        ],
+        "F": [
+            310771700,
+            310779543,
+            310754815,
+            310762358,
+            310891482,
+            312515283
+        ],
+        "C": [
+            310742461,
+            310749579,
+            310750103,
+            310749689,
+            310758863,
+            310753338,
+            310754039,
+            310753444,
+            310776556,
+            310767765,
+            310753226,
+            310756623,
+            310767338,
+            310755335,
+            310755677,
+            310757463,
+            310759247,
+            310772525
+        ],
+        "A": [
+            310731565,
+            310739375,
+            310732389,
+            310731680,
+            310732110,
+            310734146,
+            310732038,
+            310732151,
+            310731709,
+            310735423,
+            310732004,
+            310743686,
+            310737151,
+            310732535,
+            310735886,
+            310731360,
+            310731694,
+            310736792
+        ],
+        "E": [
+            312258360,
+            310770842
+        ]
+    },
+    "editorial_link": "https://codeforces.com//blog/entry/140702",
+    "editorial": "SolutionFor further optimization, let’s consider the DFS tree of sieve:\r\nvertices, rooted on , the father of a node is where denotes the maximum\r\nprime factor of .Consider all the positions that . Let’s divide them\r\ninto two cases: is a leaf, which means . is not a leaf, which means .\r\nThe answer could be calculated like this: where denotes the sum of in\r\nthe subtree of node , and could be calculated like this: We could use\r\nDFS to search all the nodes which satisfy case 2, and we can calculate\r\nits contribution to the answer during our DFS.For a non-leaf node ,\r\nlet’s consider its child nodes which satisfy case 1.It’s easy to see\r\nthat is in an interval, which allows calculation of the contributions of\r\nthese nodes.As a result, we get the number of nodes . DFS Code The\r\nnumber of non-leaf nodes satisfy Time to DFS (tested in i9-14900HX)\r\n78370 0.007s 285027 0.021s 1074403 0.085s 4010656 0.505s Let’s consider\r\nhow to calculate . Define: where denote the minimum prime number of\r\n.Then we can see that: It’s easy to see that , we can use Du Sieve to\r\nget all the in .According to , .Let , categorize these nodes again: (i)\r\n, Then . (ii) , then , . For those satisfy condition (i), let’s begin\r\nwith , delete the prime numbers from small to large, until and calculate\r\nthe contributions of these .We could use Dirichlet convolution to\r\ncalculate from .Step 1: Step 2: These could solve in .For those satisfy\r\ncondition (ii), we calculate in this method: Because and , we only need\r\nto consider , which is similar to . In this part, we only need for , so\r\nto calculate these is actually a two-dimensional partial order problem\r\nwhich can be solved using a BIT, time complexity .Since for each , we\r\nget in in case (i), and in case (ii).The total time complexity is .Let ,\r\nthe total time complexity is .Further optimization to This part is\r\nincluded in the offline contest. : The number of in range that satisfy\r\nis of the order of . Proof Since we only need to calculate where in case\r\n(ii).We actually only need to consider those , and .Then if , the actual\r\nsize to append into the BIT is only , so the time complexity of case ii\r\nis .Then we could adjust to , the time complexity could reduce to .To\r\nfurther optimize, let’s introduce a method that could significantly\r\nreduce the time consumption of Du Sieve.The formula of Du Sieve is . We\r\ncan see that , Let , the formula could be rewritten like this:\r\nTraditionally, we need times of division, but using this method need a\r\nmaximum of times of division. As for what we need to calculate in this\r\nproblem, we can get the formula: Without using things like , and use\r\ndynamic programming instead of DFS, we can further reduce the time\r\nconsumption.Then consider how to optimize Du Sieve to . Definition: if\r\nis a multiplicative function, then we define a multiplicative function .\r\nWe can calculate for each and then recurrence from . Let , we can change\r\nthe formula into: Where and , which can be calculated through Seive, but\r\nwe only need to solve instead of . According to , we know that the\r\nnumber of that satisfy is about , find them and iterate these numbers in\r\nthe Du Sieve. The time complexity of this part is . At last we get a\r\nsolution of .\r\n",
+    "name": "G2. Hard Formula  Hard Version ",
+    "statement": "You are given an integer n, and you need to compute (\r\nsum_{k=1}^n k\r\nbmod\r\nvarphi(k))\r\nbmod 2^{32}, where\r\nvarphi(k) equals the number of positive integers no greater than k that\r\nare coprime with k.\r\n",
+    "solutions": [],
+    "input": "",
+    "output": "",
+    "tags": [
+        "math"
+    ],
+    "dificulty": "3400",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\G2. Hard Formula  Hard Version .json",
+    "hint": [
+        "Hint 1 Consider the DFS structure of sieve. What kind of nodes are important? How many of nodes are important?",
+        "Hint 2 Consider using Du Sieve to get some important functions."
+    ]
+}

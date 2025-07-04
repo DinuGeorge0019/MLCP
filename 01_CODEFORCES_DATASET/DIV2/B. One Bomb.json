@@ -111,5 +111,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. One Bomb.json",
     "editorial_link": "https://codeforces.com//blog/entry/46148",
-    "editorial": "To solve this problem we need to calculate two arrays and , where must\r\nbe equal to the number of walls in the column number and must be equal\r\nto the number of walls in the row number . Also let\u00e2\u0080\u0099s store the total\r\nnumber of walls in the variable . Now we need to look over the cells.\r\nLet the current cell be . Let\u00e2\u0080\u0099s count the value how many walls will\r\ndestroy the bomb planted in the cell : . If the cell has a wall we count\r\nit twice, so we need to subtract from the . If we found the answer and\r\nneed to plant the bomb in the cell . If there is no such cell we need to\r\nprint \"\".\r\n"
+    "editorial": "To solve this problem we need to calculate two arrays and , where must\r\nbe equal to the number of walls in the column number and must be equal\r\nto the number of walls in the row number . Also letâs store the total\r\nnumber of walls in the variable . Now we need to look over the cells.\r\nLet the current cell be . Letâs count the value how many walls will\r\ndestroy the bomb planted in the cell : . If the cell has a wall we count\r\nit twice, so we need to subtract from the . If we found the answer and\r\nneed to plant the bomb in the cell . If there is no such cell we need to\r\nprint \"\".\r\n",
+    "hint": []
 }

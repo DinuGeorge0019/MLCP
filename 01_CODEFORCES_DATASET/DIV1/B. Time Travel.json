@@ -171,5 +171,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Time Travel.json",
     "editorial_link": "https://codeforces.com//blog/entry/121621",
-    "editorial": "Let denote the minimum number of moves required to reach vertex .\r\nInitially, for all vertices except , where . We will gradually mark the\r\nvertices for which we know the optimal answer. Similar to Dijkstra\u00e2\u0080\u0099s\r\nalgorithm, at each iteration, we will select the vertex with the minimum\r\nvalue of among the unmarked vertices. We will mark it and relax its\r\nneighbors: let be an edge belonging to record , we will find the minimum\r\nindex such that and , then . We can find using binary search, by saving\r\nthe indices of occurrences in for each time moments. The time complexity\r\nof the solution is .\r\n"
+    "editorial": "Let denote the minimum number of moves required to reach vertex .\r\nInitially, for all vertices except , where . We will gradually mark the\r\nvertices for which we know the optimal answer. Similar to Dijkstraâs\r\nalgorithm, at each iteration, we will select the vertex with the minimum\r\nvalue of among the unmarked vertices. We will mark it and relax its\r\nneighbors: let be an edge belonging to record , we will find the minimum\r\nindex such that and , then . We can find using binary search, by saving\r\nthe indices of occurrences in for each time moments. The time complexity\r\nof the solution is .\r\n",
+    "hint": []
 }

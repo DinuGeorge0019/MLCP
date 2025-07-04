@@ -153,5 +153,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Two Subsequences.json",
     "editorial_link": "https://codeforces.com//blog/entry/95865",
-    "editorial": "Note that taking as minimum character in is always optimal ( starts with\r\nminimum possible character and is prefix of any other longer string). In\r\nsuch case, is just all characters from except character from .\r\n"
+    "editorial": "Note that taking as minimum character in is always optimal ( starts with\r\nminimum possible character and is prefix of any other longer string). In\r\nsuch case, is just all characters from except character from .\r\n",
+    "hint": []
 }

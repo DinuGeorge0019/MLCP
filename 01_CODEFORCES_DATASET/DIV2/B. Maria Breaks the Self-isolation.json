@@ -145,5 +145,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Maria Breaks the Self-isolation.json",
     "editorial_link": "https://codeforces.com//blog/entry/77869",
-    "editorial": "Let be the maximum number of grannies that can go out to the yard. Then\r\nif Maria Ivanovna calls them all at the same time, then everyone will\r\nsee grannies. Since is the maximum answer, then each granny of them\r\nsatisfy (otherwise there\u00e2\u0080\u0099s no way for these grannies to gather in the\r\nyard), that is, such call is correct. So it is always enough to call\r\nonce.Note that if you order grannies by , Maria Ivanovna will have to\r\ncall first grannies from this list. She can take grannies if (otherwise,\r\nafter all grannies arrived, the last one will leave). To find we can do\r\na linear search.The overall compexity is per test.\r\n"
+    "editorial": "Let be the maximum number of grannies that can go out to the yard. Then\r\nif Maria Ivanovna calls them all at the same time, then everyone will\r\nsee grannies. Since is the maximum answer, then each granny of them\r\nsatisfy (otherwise thereâs no way for these grannies to gather in the\r\nyard), that is, such call is correct. So it is always enough to call\r\nonce.Note that if you order grannies by , Maria Ivanovna will have to\r\ncall first grannies from this list. She can take grannies if (otherwise,\r\nafter all grannies arrived, the last one will leave). To find we can do\r\na linear search.The overall compexity is per test.\r\n",
+    "hint": []
 }

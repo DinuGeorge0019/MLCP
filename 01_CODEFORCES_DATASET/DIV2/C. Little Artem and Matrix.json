@@ -120,5 +120,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Little Artem and Matrix.json",
     "editorial_link": "https://codeforces.com//blog/entry/44538",
-    "editorial": "Let's have 2 matrices: a, idx. In a we will have NULL for cell if we don't know the value or the value. idx will be initialized with idx[i][j] = {i, j}; Then we need to emulate the process on matrix idx. If we have 3rd query we can set up the value in matrix a, because we know the original position of that cell keeping idx.\n"
+    "editorial": "Let's have 2 matrices: a, idx. In a we will have NULL for cell if we don't know the value or the value. idx will be initialized with idx[i][j] = {i, j}; Then we need to emulate the process on matrix idx. If we have 3rd query we can set up the value in matrix a, because we know the original position of that cell keeping idx.\n",
+    "hint": []
 }

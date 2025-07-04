@@ -75,5 +75,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Archer.json",
     "editorial_link": "https://codeforces.com//blog/entry/7785",
-    "editorial": "let p=a/b,q=(1-c/d)*(1-a/b). The answer of this problem can be showed as:p*q^0+p*q^1+p*q^2+\u0085\u0085\u0085\u0085 That is the sum of a geometric progression which is infinite but 0<q<1.We can get the limit by the formula:p/(1-q)\n"
+    "editorial": "let p=a/b,q=(1-c/d)*(1-a/b). The answer of this problem can be showed as:p*q^0+p*q^1+p*q^2+ That is the sum of a geometric progression which is infinite but 0<q<1.We can get the limit by the formula:p/(1-q)\n",
+    "hint": []
 }

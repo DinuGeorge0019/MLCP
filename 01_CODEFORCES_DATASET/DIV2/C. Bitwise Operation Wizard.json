@@ -123,5 +123,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Bitwise Operation Wizard.json",
     "editorial_link": "https://codeforces.com//blog/entry/126513",
-    "editorial": "Step1:do queries ? x x y y\n like classic searching for the maximum value among n\n numbers to get pi=n?1\n;\n\nStep2:do queries ? x i y i\n to find all index k\n such that pi|pk\n reaches the maximum value. We store all such indexes in a vector id\n .\n\nStep3:do queries ? id[x] id[x] id[y] id[y]\n to find j\n in id\n such that pj\n reaches the minimum value."
+    "editorial": "Step1:do queries ? x x y y\n like classic searching for the maximum value among n\n numbers to get pi=n?1\n;\n\nStep2:do queries ? x i y i\n to find all index k\n such that pi|pk\n reaches the maximum value. We store all such indexes in a vector id\n .\n\nStep3:do queries ? id[x] id[x] id[y] id[y]\n to find j\n in id\n such that pj\n reaches the minimum value.",
+    "hint": []
 }

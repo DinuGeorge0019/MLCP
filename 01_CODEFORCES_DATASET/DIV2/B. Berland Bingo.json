@@ -94,5 +94,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Berland Bingo.json",
     "editorial_link": "https://codeforces.com//blog/entry/9866",
-    "editorial": "It is good idea to think about cards as set of numbers. It is easy to\r\nsee that card can t be finished before if is subset of . So all you need\r\nis to find such cards (sets) which do not have other card (other set) as\r\nsubset. Since there are at most 1000 cards, you may iterate through all\r\npairs and check that one card contains other in naive way like:\r\n"
+    "editorial": "It is good idea to think about cards as set of numbers. It is easy to\r\nsee that card can t be finished before if is subset of . So all you need\r\nis to find such cards (sets) which do not have other card (other set) as\r\nsubset. Since there are at most 1000 cards, you may iterate through all\r\npairs and check that one card contains other in naive way like:\r\n",
+    "hint": []
 }

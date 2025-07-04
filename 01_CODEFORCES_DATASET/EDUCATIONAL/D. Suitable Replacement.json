@@ -159,5 +159,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\D. Suitable Replacement.json",
     "editorial_link": "https://codeforces.com//blog/entry/53334",
-    "editorial": "Notice that the order of letters doesn\u00e2\u0080\u0099t matter at all, depends only on\r\namount of each letter.Let be the possibility that string will occur in\r\nat least times after replacing all signs and after some swaps. If is\r\ntrue then is also true. That leads to binary search over the answer.Let\r\nbe the amount of letters in and the amount of letters in . is the number\r\nof signs. is true if . If some letter appears in less times than needed\r\nthen replace some signs with it. Answer can be restored greedily by\r\nreplacing signs with the letters needed.Overall complexity: , where is\r\nthe size of the alphabet.\r\n"
+    "editorial": "Notice that the order of letters doesnât matter at all, depends only on\r\namount of each letter.Let be the possibility that string will occur in\r\nat least times after replacing all signs and after some swaps. If is\r\ntrue then is also true. That leads to binary search over the answer.Let\r\nbe the amount of letters in and the amount of letters in . is the number\r\nof signs. is true if . If some letter appears in less times than needed\r\nthen replace some signs with it. Answer can be restored greedily by\r\nreplacing signs with the letters needed.Overall complexity: , where is\r\nthe size of the alphabet.\r\n",
+    "hint": []
 }

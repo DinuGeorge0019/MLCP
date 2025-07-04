@@ -82,5 +82,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Dreamoon and Sets.json",
     "editorial_link": "https://codeforces.com/blog/entry/14256",
-    "editorial": "The first observation is that if we divide each number in a set by k, than the set would be rank 1. So we could find n sets of rank 1 then multiple every number by k.\nFor how to find n sets of rank 1, we can use {6a?+?1,?6a?+?2,?6a?+?3,?6a?+?5} as a valid rank 1 set and take a?=?0 to n?-?1 to form n sets and thus m?=?(6n?-?1)?*?k.\nThe proof that m is minimal can be shown by the fact that we take three consecutive odd numbers in each set. If we take less odd numbers there will be more than 1 even number in a set which their gcd is obviously a multiple of 2. And if we take more odd numbers m would be larger."
+    "editorial": "The first observation is that if we divide each number in a set by k, than the set would be rank 1. So we could find n sets of rank 1 then multiple every number by k.\nFor how to find n sets of rank 1, we can use {6a?+?1,?6a?+?2,?6a?+?3,?6a?+?5} as a valid rank 1 set and take a?=?0 to n?-?1 to form n sets and thus m?=?(6n?-?1)?*?k.\nThe proof that m is minimal can be shown by the fact that we take three consecutive odd numbers in each set. If we take less odd numbers there will be more than 1 even number in a set which their gcd is obviously a multiple of 2. And if we take more odd numbers m would be larger.",
+    "hint": []
 }

@@ -80,7 +80,7 @@
         ]
     },
     "name": "A. Parallelepiped",
-    "statement": "You\u2019ve got a rectangular parallelepiped with integer edge lengths. You\r\nknow the areas of its three faces that have a common vertex. Your task\r\nis to find the sum of lengths of all 12 edges of this parallelepiped.\r\n",
+    "statement": "You’ve got a rectangular parallelepiped with integer edge lengths. You\r\nknow the areas of its three faces that have a common vertex. Your task\r\nis to find the sum of lengths of all 12 edges of this parallelepiped.\r\n",
     "solutions": [
         "#include <iostream>\n#include <cstdio>\n#include <algorithm>\n#include <cassert>\n#include <string>\n#include <vector>\n#include <set>\n#include <map>\n\n#define Eo(x) {cerr << #x << \" = \" << (x) << endl;}\n#define E(x) {cerr << #x << \" = \" << (x) << ' ';}\n\nusing namespace std;\n\nint main(){\n\tint s1, s2, s3;\n\tscanf(\"%d%d%d\", &s1, &s2, &s3);\n\tfor (int i=1; i<=s1; ++i){\n\t\tint j = s1/i;\n\t\tif (i * j != s1) continue;\n\t\tint k = s2/i;\n\t\tif (i * k != s2) continue;\n\t\tif (j * k != s3) continue;\n\t\tprintf(\"%d\\n\", 4*(i+j+k));\n\t\tbreak;\n\t}\n\treturn 0;\n}\n"
     ],
@@ -95,5 +95,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Parallelepiped.json",
     "editorial_link": "https://codeforces.com//blog/entry/5301",
-    "editorial": "You were given areas of three faces of a rectangular parallelepiped. Your task was to find the sum of lengths of it's sides.\n\nLet a, b and c be the lengths of the sides that have one common vertex. Then the numbers we are given are s1?=?ab, s2?=?bc ? s3?=?ca. It is easy to find the lengths in terms of faces areas: , , . The answer is 4(a?+?b?+?c), because there are four sides that have lengths equal to a, b and c. The complexity is O(1)."
+    "editorial": "You were given areas of three faces of a rectangular parallelepiped. Your task was to find the sum of lengths of it's sides.\n\nLet a, b and c be the lengths of the sides that have one common vertex. Then the numbers we are given are s1?=?ab, s2?=?bc ? s3?=?ca. It is easy to find the lengths in terms of faces areas: , , . The answer is 4(a?+?b?+?c), because there are four sides that have lengths equal to a, b and c. The complexity is O(1).",
+    "hint": []
 }

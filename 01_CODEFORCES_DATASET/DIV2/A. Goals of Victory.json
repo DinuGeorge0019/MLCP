@@ -133,5 +133,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Goals of Victory.json",
     "editorial_link": "https://codeforces.com//blog/entry/121200",
-    "editorial": "Notice that each goal increases the efficiency of the team that scores\r\nby . But it also simultaneously decreases the efficiency of the opposite\r\nteam by . This means, if we maintain the sum of efficiency for all\r\nteams, each goal does not change the sum. Therefore, the sum must be .In\r\norder to make the sum to be , the efficiency of the missing team must be\r\nequal to the sum of efficiency of the other teams, multiplied by .Time\r\ncomplexity for each test case:\r\n"
+    "editorial": "Notice that each goal increases the efficiency of the team that scores\r\nby . But it also simultaneously decreases the efficiency of the opposite\r\nteam by . This means, if we maintain the sum of efficiency for all\r\nteams, each goal does not change the sum. Therefore, the sum must be .In\r\norder to make the sum to be , the efficiency of the missing team must be\r\nequal to the sum of efficiency of the other teams, multiplied by .Time\r\ncomplexity for each test case:\r\n",
+    "hint": []
 }

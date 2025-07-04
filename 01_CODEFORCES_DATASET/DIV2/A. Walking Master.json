@@ -150,5 +150,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Walking Master.json",
     "editorial_link": "https://codeforces.com//blog/entry/114048",
-    "editorial": "Hint 1: The value of is always non-decreasing, and the value of is\r\nalways non-increasing.It is possible to move from to if and only if and\r\n, since the value of is always non-decreasing and the value of is always\r\nnon-increasing.If it is possible, the answer is . One possible way is\r\n.Another way to understand this: is always a valid path if it is\r\npossible to move from to . So first let and , then the answer only\r\ndepends on and .\r\n"
+    "editorial": "Hint 1: The value of is always non-decreasing, and the value of is\r\nalways non-increasing.It is possible to move from to if and only if and\r\n, since the value of is always non-decreasing and the value of is always\r\nnon-increasing.If it is possible, the answer is . One possible way is\r\n.Another way to understand this: is always a valid path if it is\r\npossible to move from to . So first let and , then the answer only\r\ndepends on and .\r\n",
+    "hint": []
 }

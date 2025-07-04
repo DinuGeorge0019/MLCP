@@ -130,5 +130,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Vanya and Lanterns.json",
     "editorial_link": "https://codeforces.com/blog/entry/14957",
-    "editorial": "Sort lanterns in non-decreasing order. Then we need to find maximal\r\ndistance between two neighbour lanterns, let it be . Also we need to\r\nconsider street bounds and count distances from outside lanterns to\r\nstreet bounds, it will be and . The answer will be Time complexity .\r\nJury\u00e2\u0080\u0099s solution: 8924823\r\n"
+    "editorial": "Sort lanterns in non-decreasing order. Then we need to find maximal\r\ndistance between two neighbour lanterns, let it be . Also we need to\r\nconsider street bounds and count distances from outside lanterns to\r\nstreet bounds, it will be and . The answer will be Time complexity .\r\nJuryâs solution: 8924823\r\n",
+    "hint": []
 }

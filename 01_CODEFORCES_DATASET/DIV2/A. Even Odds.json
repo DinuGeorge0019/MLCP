@@ -88,5 +88,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Even Odds.json",
     "editorial_link": "https://codeforces.com/blog/entry/7956",
-    "editorial": "In this problem we need to understand how exactly numbers from to\r\nrearrange when we write firstly all odd numbers and after them all even\r\nnumbers. To find out which number stands at position one needs to find\r\nthe position where even numbers start and output either the position of\r\nthe odd number from the first half of the sequence or for the even\r\nnumber from the second half of the sequence.\r\n"
+    "editorial": "In this problem we need to understand how exactly numbers from to\r\nrearrange when we write firstly all odd numbers and after them all even\r\nnumbers. To find out which number stands at position one needs to find\r\nthe position where even numbers start and output either the position of\r\nthe odd number from the first half of the sequence or for the even\r\nnumber from the second half of the sequence.\r\n",
+    "hint": []
 }

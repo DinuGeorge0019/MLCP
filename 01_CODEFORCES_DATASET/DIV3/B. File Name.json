@@ -168,5 +168,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. File Name.json",
     "editorial_link": "https://codeforces.com/blog/entry/59430",
-    "editorial": "Let\u00e2\u0080\u0099s iterate through the given string from the left to the right. In a\r\nvariable we will store the number of letters \"\" which were before the\r\ncurrent letter in a row. If the current letter does not equal to \"\" we\r\nshould make . In the other case, the current letter equals to \"\". If ,\r\nwe should increase by one. In the other case, we should add one to the\r\nanswer because the current letter should be removed.\r\n"
+    "editorial": "Letâs iterate through the given string from the left to the right. In a\r\nvariable we will store the number of letters \"\" which were before the\r\ncurrent letter in a row. If the current letter does not equal to \"\" we\r\nshould make . In the other case, the current letter equals to \"\". If ,\r\nwe should increase by one. In the other case, we should add one to the\r\nanswer because the current letter should be removed.\r\n",
+    "hint": []
 }

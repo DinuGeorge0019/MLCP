@@ -177,5 +177,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\F. Is It Flower .json",
     "editorial_link": "https://codeforces.com//blog/entry/114788",
-    "editorial": "Note a few things: There are exactly vertices in the -flower, since from\r\neach of the vertices of the main cycle comes another cycle of size ; in\r\nthe -flower, all vertices have degree , except for the vertices of the\r\nmain cycle, whose degrees are ; it follows that in -flower edges; The\r\nlisted properties do not take into account only the connectivity of the\r\ngraph and the sizes of our cycles. To check connectivity we run a bfs or\r\ndfs from any vertex and check that all vertices have been visited. To\r\ncheck the cycle lengths, we cut out the edges of the main one and make\r\nsure that the graph has fell apart into components of size .\r\n"
+    "editorial": "Note a few things: There are exactly vertices in the -flower, since from\r\neach of the vertices of the main cycle comes another cycle of size ; in\r\nthe -flower, all vertices have degree , except for the vertices of the\r\nmain cycle, whose degrees are ; it follows that in -flower edges; The\r\nlisted properties do not take into account only the connectivity of the\r\ngraph and the sizes of our cycles. To check connectivity we run a bfs or\r\ndfs from any vertex and check that all vertices have been visited. To\r\ncheck the cycle lengths, we cut out the edges of the main one and make\r\nsure that the graph has fell apart into components of size .\r\n",
+    "hint": []
 }

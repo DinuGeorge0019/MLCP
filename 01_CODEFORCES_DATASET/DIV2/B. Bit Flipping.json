@@ -136,5 +136,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Bit Flipping.json",
     "editorial_link": "https://codeforces.com//blog/entry/100938",
-    "editorial": "Let\u00e2\u0080\u0099s see how many times a given bit will get flipped. Clearly, a bit\r\ngets flipped whenever it is not selected in an operation. Therefore, the\r\n-th bit gets flipped times. We want to select a bit as few times as\r\npossible. Now we can handle a few cases. is even, bit is (even number of\r\nflips don\u00e2\u0080\u0099t change the bit) is even, bit is (odd number of flips toggle\r\nthe bit from to ) is odd, bit is (even number of flips don\u00e2\u0080\u0099t change the\r\nbit) is odd, bit is (odd number of flips toggle the bit from to )\r\nProcess the string from left to right until you can\u00e2\u0080\u0099t anymore. If you\r\nstill have some remaining moves at the end, you can just give them all\r\nto the last bit. Then you can construct the final string by checking the\r\nparity of .Time complexity:\r\n"
+    "editorial": "Letâs see how many times a given bit will get flipped. Clearly, a bit\r\ngets flipped whenever it is not selected in an operation. Therefore, the\r\n-th bit gets flipped times. We want to select a bit as few times as\r\npossible. Now we can handle a few cases. is even, bit is (even number of\r\nflips donât change the bit) is even, bit is (odd number of flips toggle\r\nthe bit from to ) is odd, bit is (even number of flips donât change the\r\nbit) is odd, bit is (odd number of flips toggle the bit from to )\r\nProcess the string from left to right until you canât anymore. If you\r\nstill have some remaining moves at the end, you can just give them all\r\nto the last bit. Then you can construct the final string by checking the\r\nparity of .Time complexity:\r\n",
+    "hint": [
+        "Hint 1 Let's say you don't ever pick a bit. How many times will it get flipped?",
+        "Hint 2 If you do pick a bit once at some point, it will get flipped less time overall.",
+        "Hint 3 To get the lexicographically largest string, you need to make bits starting from the left. What is the minimum number of times you have to select a bit to ensure it gets flipped, or stays the same?"
+    ]
 }

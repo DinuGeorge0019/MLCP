@@ -171,7 +171,7 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/129364",
-    "editorial": "There are many solutions to this problem, some of which involve binary\r\nsearch, but we will present a solution that doesn\u00e2\u0080\u0099t use it. In fact, our\r\nsolution is basically just brute force, but with some small observations\r\nthat make it pass. See the implementation for more detail.First, we can\r\nonly count points such that and ; we can multiply by at the end to get\r\npoints in all four quadrants, by symmetry.Let\u00e2\u0080\u0099s store a variable\r\ninitially equal to . It will tell us the maximum -value to look\r\nat.Iterate through all values of from to . For each , decrease until the\r\ndistance of to the origin is . Then, brute force all values of from\r\ndownwards until we hit a point whose distance to the origin is ; at this\r\npoint, we break and add the number of valid points to our total. Note\r\nthat we essentially only look at points whose distance to the origin is\r\nbetween and ; that is, we brute force over all valid points.How many\r\nvalid points are there? Well, we can roughly estimate the number of\r\npoints as the area of the region, which is . This means we only visit\r\npoints per test case, which is fast enough.\r\n",
+    "editorial": "There are many solutions to this problem, some of which involve binary\r\nsearch, but we will present a solution that doesnât use it. In fact, our\r\nsolution is basically just brute force, but with some small observations\r\nthat make it pass. See the implementation for more detail.First, we can\r\nonly count points such that and ; we can multiply by at the end to get\r\npoints in all four quadrants, by symmetry.Letâs store a variable\r\ninitially equal to . It will tell us the maximum -value to look\r\nat.Iterate through all values of from to . For each , decrease until the\r\ndistance of to the origin is . Then, brute force all values of from\r\ndownwards until we hit a point whose distance to the origin is ; at this\r\npoint, we break and add the number of valid points to our total. Note\r\nthat we essentially only look at points whose distance to the origin is\r\nbetween and ; that is, we brute force over all valid points.How many\r\nvalid points are there? Well, we can roughly estimate the number of\r\npoints as the area of the region, which is . This means we only visit\r\npoints per test case, which is fast enough.\r\n",
     "name": "F. Circle Perimeter",
     "statement": "Given an integer r, find the number of lattice points that have a\r\nEuclidean distance from (0, 0) r but than r+1.A is a point with integer\r\ncoordinates. The from (0, 0) to the point (x,y) is\r\nsqrt{x^2 + y^2}.\r\n",
     "solutions": [
@@ -189,5 +189,6 @@
     ],
     "dificulty": "1600",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\F. Circle Perimeter.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\F. Circle Perimeter.json",
+    "hint": []
 }

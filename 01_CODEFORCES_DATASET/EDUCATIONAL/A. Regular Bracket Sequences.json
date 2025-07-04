@@ -150,5 +150,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Regular Bracket Sequences.json",
     "editorial_link": "https://codeforces.com//blog/entry/95188",
-    "editorial": "There are many ways to solve this problem. The model solution does the\r\nfollowing thing: start with the sequence ; merge the first characters\r\ninto one sequence to get ; merge the first characters into one sequence\r\nto get ; and so on.\r\n"
+    "editorial": "There are many ways to solve this problem. The model solution does the\r\nfollowing thing: start with the sequence ; merge the first characters\r\ninto one sequence to get ; merge the first characters into one sequence\r\nto get ; and so on.\r\n",
+    "hint": []
 }

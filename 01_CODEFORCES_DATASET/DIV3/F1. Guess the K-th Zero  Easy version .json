@@ -197,5 +197,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\F1. Guess the K-th Zero  Easy version .json",
     "editorial_link": "https://codeforces.com//blog/entry/90342",
-    "editorial": "This problem can be solved by binary search. Let\u00e2\u0080\u0099s maintain a segment\r\nthat is guaranteed to contain the -th zero and gradually narrow it\r\ndown.Let the current segment be and we want to find -th zero on it.\r\nLet\u00e2\u0080\u0099s make a query on the half of the segment , where . If there are at\r\nleast zeros on the left half of the segment, then we go to the left\r\nsegment and look for the -th zero.If there is only zeros on the left\r\nhalf, then we go to the right segment and look for -th zero.We will\r\nspend queries, which is within the limits.\r\n"
+    "editorial": "This problem can be solved by binary search. Letâs maintain a segment\r\nthat is guaranteed to contain the -th zero and gradually narrow it\r\ndown.Let the current segment be and we want to find -th zero on it.\r\nLetâs make a query on the half of the segment , where . If there are at\r\nleast zeros on the left half of the segment, then we go to the left\r\nsegment and look for the -th zero.If there is only zeros on the left\r\nhalf, then we go to the right segment and look for -th zero.We will\r\nspend queries, which is within the limits.\r\n",
+    "hint": []
 }

@@ -112,5 +112,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Urbanization.json",
     "editorial_link": "https://codeforces.com//blog/entry/48659",
-    "editorial": "First of all, note that n1+n2 chosen ones should be people with top\r\n(n1+n2) coeficients. Secondly, if the person with intelegence C will be\r\nin the first city then he will contribute to our overall IQ with C/n1\r\npoints. So, if n1<n2, then top-n1 ratings should be in the small city\r\nand the top-n2 from others in the big city.\r\n"
+    "editorial": "First of all, note that n1+n2 chosen ones should be people with top\r\n(n1+n2) coeficients. Secondly, if the person with intelegence C will be\r\nin the first city then he will contribute to our overall IQ with C/n1\r\npoints. So, if n1<n2, then top-n1 ratings should be in the small city\r\nand the top-n2 from others in the big city.\r\n",
+    "hint": []
 }

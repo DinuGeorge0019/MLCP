@@ -141,7 +141,7 @@
         ]
     },
     "name": "A. Rating Increase",
-    "statement": "Monocarp is a great solver of adhoc problems. Recently, he participated\r\nin an Educational Codeforces Round, and gained rating!Monocarp knew\r\nthat, before the round, his rating was a. After the round, it increased\r\nto b (b > a). He wrote both values one after another to not forget\r\nthem.However, he wrote them so close to each other, that he can\u2019t tell\r\nnow where the first value ends and the second value starts.Please, help\r\nhim find some values a and b such that: neither of them has a leading\r\nzero; both of them are strictly greater than 0; b > a; they produce the\r\ngiven value ab when written one after another. If there are multiple\r\nanswers, you can print any of them.\r\n",
+    "statement": "Monocarp is a great solver of adhoc problems. Recently, he participated\r\nin an Educational Codeforces Round, and gained rating!Monocarp knew\r\nthat, before the round, his rating was a. After the round, it increased\r\nto b (b > a). He wrote both values one after another to not forget\r\nthem.However, he wrote them so close to each other, that he can’t tell\r\nnow where the first value ends and the second value starts.Please, help\r\nhim find some values a and b such that: neither of them has a leading\r\nzero; both of them are strictly greater than 0; b > a; they produce the\r\ngiven value ab when written one after another. If there are multiple\r\nanswers, you can print any of them.\r\n",
     "solutions": [
         "/**\n *    author:  tourist\n *    created: 18.12.2023 09:34:55       \n**/\n#include <bits/stdc++.h>\n\nusing namespace std;\n\n#ifdef LOCAL\n#include \"algo/debug.h\"\n#else\n#define debug(...) 42\n#endif\n\nint main() {\n  ios::sync_with_stdio(false);\n  cin.tie(0);\n  int tt;\n  cin >> tt;\n  while (tt--) {\n    string s;\n    cin >> s;\n    bool found = false;\n    for (int i = 1; i <= (int) s.size() - 1; i++) {\n      string a = s.substr(0, i);\n      string b = s.substr(i);\n      if (a[0] == '0' || b[0] == '0') {\n        continue;\n      }\n      if (a.size() < b.size() || (a.size() == b.size() && a < b)) {\n        cout << a << \" \" << b << '\\n';\n        found = true;\n        break;\n      }\n    }\n    if (!found) {\n      cout << -1 << '\\n';\n    }\n  }\n  return 0;\n}\n"
     ],
@@ -154,5 +154,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Rating Increase.json",
     "editorial_link": "https://codeforces.com//blog/entry/123493",
-    "editorial": "Since the length of the string is pretty small, it\u00e2\u0080\u0099s possible to iterate\r\nover all possible cuts of into and . First, you have to check if has a\r\nleading zero. If it doesn\u00e2\u0080\u0099t, compare integer representations of and . In\r\norder to get an integer from a string, you can use for C++ or for\r\nPython.\r\n"
+    "editorial": "Since the length of the string is pretty small, itâs possible to iterate\r\nover all possible cuts of into and . First, you have to check if has a\r\nleading zero. If it doesnât, compare integer representations of and . In\r\norder to get an integer from a string, you can use for C++ or for\r\nPython.\r\n",
+    "hint": []
 }

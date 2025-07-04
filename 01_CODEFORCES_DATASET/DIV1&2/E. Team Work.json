@@ -152,5 +152,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\E. Team Work.json",
     "editorial_link": "https://codeforces.com//blog/entry/57796",
-    "editorial": "The required sum can be expressed as .Differentiating the above equation\r\nand multiplying by , we getDifferentiating and multiplying by again, we\r\ngetRepeating the process (multiplying by and differentiating) times, and\r\nreplacing , we get the desired sum.This can be done using dynamic\r\nprogramming.Consider to be the value of the function after performing\r\nthe differentiation and multiplying by , times at . So, our final answer\r\nwill be . after 1 operation, the above function becomes: or So, Take\r\ncare of special cases when or .The above seems to be dimensional but\r\nactually has states since is constant reducing one dimension.\r\n"
+    "editorial": "The required sum can be expressed as .Differentiating the above equation\r\nand multiplying by , we getDifferentiating and multiplying by again, we\r\ngetRepeating the process (multiplying by and differentiating) times, and\r\nreplacing , we get the desired sum.This can be done using dynamic\r\nprogramming.Consider to be the value of the function after performing\r\nthe differentiation and multiplying by , times at . So, our final answer\r\nwill be . after 1 operation, the above function becomes: or So, Take\r\ncare of special cases when or .The above seems to be dimensional but\r\nactually has states since is constant reducing one dimension.\r\n",
+    "hint": []
 }

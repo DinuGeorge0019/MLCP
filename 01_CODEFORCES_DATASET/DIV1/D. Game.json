@@ -140,5 +140,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Game.json",
     "editorial_link": "https://codeforces.com//blog/entry/60217",
-    "editorial": "One can show by induction that the expected value of the game is\r\n.Consider the first turn. For notation, let be the expected value of the\r\ngame when is set to , and let be the expected value of the game when is\r\nset to . By induction, it is easy to see that Consider Allen\u00e2\u0080\u0099s strategy.\r\nIf it is Allen\u00e2\u0080\u0099s turn, he will set , where are such that is maximal. As\r\nfor all , it is clear that is actually minimal among all the . This\r\nmeans that Bessie would have chosen to set if it were her turn.\r\nTherefore, the expected game value is\r\n"
+    "editorial": "One can show by induction that the expected value of the game is\r\n.Consider the first turn. For notation, let be the expected value of the\r\ngame when is set to , and let be the expected value of the game when is\r\nset to . By induction, it is easy to see that Consider Allenâs strategy.\r\nIf it is Allenâs turn, he will set , where are such that is maximal. As\r\nfor all , it is clear that is actually minimal among all the . This\r\nmeans that Bessie would have chosen to set if it were her turn.\r\nTherefore, the expected game value is\r\n",
+    "hint": []
 }

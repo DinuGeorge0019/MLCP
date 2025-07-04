@@ -189,5 +189,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\A. Tenzing and Tsondu.json",
     "editorial_link": "https://codeforces.com//blog/entry/117606",
-    "editorial": "TutorialLet\u00e2\u0080\u0099s view it as when monsters and fight, their health changes\r\ninto and respectively. So any monster with health is considered dead.\r\nTherefore, a player loses when the health of his monsters are all\r\n.Notice that and . Therefore, after each step, the sum of the health of\r\nmonsters decrease by the same amount for both players.Therefore, we only\r\nneed to know and to determine who wins. If , Tsondu wins. Else if ,\r\nTenzing wins. Else, it is a draw.\r\n"
+    "editorial": "TutorialLetâs view it as when monsters and fight, their health changes\r\ninto and respectively. So any monster with health is considered dead.\r\nTherefore, a player loses when the health of his monsters are all\r\n.Notice that and . Therefore, after each step, the sum of the health of\r\nmonsters decrease by the same amount for both players.Therefore, we only\r\nneed to know and to determine who wins. If , Tsondu wins. Else if ,\r\nTenzing wins. Else, it is a draw.\r\n",
+    "hint": []
 }

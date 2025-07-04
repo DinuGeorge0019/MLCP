@@ -132,7 +132,7 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/132942",
-    "editorial": "Let x be one of the most frequent\nelements in a, then the answer must be at least (n -\ntext{frequency of } x), and this lower bound is always achievable by\nkeep erasing a non-x element from a, and we can prove it\u00e2\u0080\u0099s always\npossible to do so.proof:If all elements of a are x, we are done.\nOtherwise, let y denote all the elements that are not x, then a would\nhave some subarray of the form x\nldots x, y\nldots y, x\nldots x. In this subarray, there must exist adjacent elements that\nsatisfy a_i\nleq a_{(i\nbmod m) + 1}, otherwise we would have x > y >\nldots > y > x implying x > x which leads to a contradiction.\n",
+    "editorial": "Let x be one of the most frequent\nelements in a, then the answer must be at least (n -\ntext{frequency of } x), and this lower bound is always achievable by\nkeep erasing a non-x element from a, and we can prove itâs always\npossible to do so.proof:If all elements of a are x, we are done.\nOtherwise, let y denote all the elements that are not x, then a would\nhave some subarray of the form x\nldots x, y\nldots y, x\nldots x. In this subarray, there must exist adjacent elements that\nsatisfy a_i\nleq a_{(i\nbmod m) + 1}, otherwise we would have x > y >\nldots > y > x implying x > x which leads to a contradiction.\n",
     "name": "A. Make All Equal",
     "statement": "You are given a cyclic array a_1, a_2,\r\nldots, a_n.You can perform the following operation on a at most n - 1\r\ntimes: Let m be the current size of a, you can choose any two adjacent\r\nelements where the previous one is no greater than the latter one (In\r\nparticular, a_m and a_1 are adjacent and a_m is the previous one), and\r\ndelete exactly one of them. In other words, choose an integer i (1\r\nleq i\r\nleq m) where a_i\r\nleq a_{(i\r\nbmod m) + 1} holds, and delete exactly one of a_i or a_{(i\r\nbmod m) + 1} from a. Your goal is to find the minimum number of\r\noperations needed to make all elements in a equal.\r\n",
     "solutions": [
@@ -146,5 +146,9 @@
     ],
     "dificulty": "800",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Make All Equal.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Make All Equal.json",
+    "hint": [
+        "Hint 1 What's the most obvious lower bound of the answer?",
+        "Hint 2 Is the lower bound achievable?"
+    ]
 }

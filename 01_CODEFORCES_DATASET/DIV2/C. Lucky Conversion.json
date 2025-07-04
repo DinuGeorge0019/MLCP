@@ -109,5 +109,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Lucky Conversion.json",
     "editorial_link": "https://codeforces.com//blog/entry/3746",
-    "editorial": "You need to find two numbers: c47 (number of such positions i, that ai?=?4 and bi?=?7) and c74 (number of such positions that ai?=?7 and bi?=?4). After that the result will be max(c47,?c74) (because you need to obtain min(c47,?c74) swaps, the rest max(c47,?c74)?-?min(c47,?c74) are editings of digits).\n"
+    "editorial": "You need to find two numbers: c47 (number of such positions i, that ai?=?4 and bi?=?7) and c74 (number of such positions that ai?=?7 and bi?=?4). After that the result will be max(c47,?c74) (because you need to obtain min(c47,?c74) swaps, the rest max(c47,?c74)?-?min(c47,?c74) are editings of digits).\n",
+    "hint": []
 }

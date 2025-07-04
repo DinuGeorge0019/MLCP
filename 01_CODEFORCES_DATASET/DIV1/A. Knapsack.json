@@ -156,5 +156,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Knapsack.json",
     "editorial_link": "https://codeforces.com//blog/entry/82067",
-    "editorial": "If there is an item of size C\n satisfying: ?W2??C?W\n, it is enough to output only that item. Otherwise, we should exclude items which are larger than the size of the knapsack and take a closer look at the situation. Consider greedily adding items in any order until we find a valid solution or run out of items.\n\nThis is correct because all items have sizes less than W2\n, so it is not possible to exceed knapsack size by adding one item in a situation where the sum of items C\n doesn't satisfy constraint ?W2??C?W\n.\n\nThis gives us a solution in O(n)\n."
+    "editorial": "If there is an item of size C\n satisfying: ?W2??C?W\n, it is enough to output only that item. Otherwise, we should exclude items which are larger than the size of the knapsack and take a closer look at the situation. Consider greedily adding items in any order until we find a valid solution or run out of items.\n\nThis is correct because all items have sizes less than W2\n, so it is not possible to exceed knapsack size by adding one item in a situation where the sum of items C\n doesn't satisfy constraint ?W2??C?W\n.\n\nThis gives us a solution in O(n)\n.",
+    "hint": []
 }

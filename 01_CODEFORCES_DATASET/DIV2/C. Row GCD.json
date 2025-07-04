@@ -120,5 +120,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Row GCD.json",
     "editorial_link": "https://codeforces.com//blog/entry/85750",
-    "editorial": "From basic properties of GCD we know that . The same applies for\r\nmultiple arguments: . Let\u00e2\u0080\u0099s use this for and subtract from all other\r\narguments: .If we find , then any answer can be found as . Note that we\r\nhave to assume that GCD of an empty set is , and for any , since is the\r\nonly number divisible by any other number.\r\n"
+    "editorial": "From basic properties of GCD we know that . The same applies for\r\nmultiple arguments: . Letâs use this for and subtract from all other\r\narguments: .If we find , then any answer can be found as . Note that we\r\nhave to assume that GCD of an empty set is , and for any , since is the\r\nonly number divisible by any other number.\r\n",
+    "hint": []
 }

@@ -221,5 +221,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\F. Fruit Sequences.json",
     "editorial_link": "https://codeforces.com//blog/entry/83771",
-    "editorial": "For a fixed , let us\ngraph in a histogram with as the -axis. We notice that this histogram is\nnon-increasing from left to right. Shown below is the histogram for the\nstring with , where box represents unit.The area under this histogram is\nthe sum of all for a fixed . Consider what happens to the histogram when\nwe move from to . If , then the histogram does not change at all. If ,\nthen we may need to update the histogram accordingly.Above is the\nhistogram for when .And this is the histogram for when .When adding a\nnew segment of s, we essentially fill up the bottom rows of the\nhistogram. Thus, we let be the largest such that . We maintain these\nvalues in an array. When we process a group of 1s, we update the values\nfor , change the area of the histogram and update the cumulative sum\naccordingly.With proper processing of the segments of 1s, this can be\ndone in time.\n"
+    "editorial": "For a fixed , let us\ngraph in a histogram with as the -axis. We notice that this histogram is\nnon-increasing from left to right. Shown below is the histogram for the\nstring with , where box represents unit.The area under this histogram is\nthe sum of all for a fixed . Consider what happens to the histogram when\nwe move from to . If , then the histogram does not change at all. If ,\nthen we may need to update the histogram accordingly.Above is the\nhistogram for when .And this is the histogram for when .When adding a\nnew segment of s, we essentially fill up the bottom rows of the\nhistogram. Thus, we let be the largest such that . We maintain these\nvalues in an array. When we process a group of 1s, we update the values\nfor , change the area of the histogram and update the cumulative sum\naccordingly.With proper processing of the segments of 1s, this can be\ndone in time.\n",
+    "hint": [
+        "Hint 1 Line sweep.",
+        "Hint 2 How does change when we increase r?"
+    ]
 }

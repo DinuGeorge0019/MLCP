@@ -111,7 +111,7 @@
         ]
     },
     "name": "A. Slime Combining",
-    "statement": "Your friend recently gave you some slimes for your birthday. You have\r\nslimes all initially with value .You are going to play a game with these\r\nslimes. Initially, you put a single slime by itself in a row. Then, you\r\nwill add the other slimes one by one. When you add a slime, you place it\r\nat the right of all already placed slimes. Then, while the last two\r\nslimes in the row have the same value , you combine them together to\r\ncreate a slime with value .You would like to see what the final state of\r\nthe row is after you\u2019ve added all slimes. Please print the values of the\r\nslimes in the row from left to right.\r\n",
+    "statement": "Your friend recently gave you some slimes for your birthday. You have\r\nslimes all initially with value .You are going to play a game with these\r\nslimes. Initially, you put a single slime by itself in a row. Then, you\r\nwill add the other slimes one by one. When you add a slime, you place it\r\nat the right of all already placed slimes. Then, while the last two\r\nslimes in the row have the same value , you combine them together to\r\ncreate a slime with value .You would like to see what the final state of\r\nthe row is after you’ve added all slimes. Please print the values of the\r\nslimes in the row from left to right.\r\n",
     "solutions": [
         "#include <iostream>\n#include <cstdio>\n#include <cstdlib>\nusing namespace std;\n\nint main()\n{\n\tint x;\n\tscanf(\"%d\", &x);\n\tfor (int i = 1 << 20, k = 21; i > 0; i >>= 1, k--)\n\t{\n\t\tif (x >= i)\n\t\t{\n\t\t\tprintf(\"%d \", k);\n\t\t\tx -= i;\n\t\t}\n\t}\n\tprintf(\"\\n\");\n\n\treturn 0;\n}"
     ],
@@ -124,5 +124,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\A. Slime Combining.json",
     "editorial_link": "https://codeforces.com//blog/entry/23142",
-    "editorial": "We can simulate the process described in the problem statement. There\r\nare many possible implementations of this, so see the example code for\r\none possible implementation. This method can take O(n) time. However,\r\nthere is a faster method. It can be shown that the answer is simply the\r\n1-based indices of the one bits in the binary representation of . So, we\r\ncan just do this in O(log n) time. Example code (for simulation):\r\nhttp://codeforces.com/contest/618/submission/15669470 Example code (for\r\nfaster method): http://codeforces.com/contest/618/submission/15669458\r\n"
+    "editorial": "We can simulate the process described in the problem statement. There\r\nare many possible implementations of this, so see the example code for\r\none possible implementation. This method can take O(n) time. However,\r\nthere is a faster method. It can be shown that the answer is simply the\r\n1-based indices of the one bits in the binary representation of . So, we\r\ncan just do this in O(log n) time. Example code (for simulation):\r\nhttp://codeforces.com/contest/618/submission/15669470 Example code (for\r\nfaster method): http://codeforces.com/contest/618/submission/15669458\r\n",
+    "hint": []
 }

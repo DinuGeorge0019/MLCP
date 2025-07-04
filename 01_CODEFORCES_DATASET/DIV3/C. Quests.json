@@ -231,5 +231,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C. Quests.json",
     "editorial_link": "https://codeforces.com//blog/entry/123530",
-    "editorial": "Let\u00e2\u0080\u0099s iterate over the number of quests that have been completed at\r\nleast once (denote it as ). It remains to complete quests more, and we\r\nare allowed to complete any of the first quests again. It is obvious\r\nthat we would like to complete quests with the largest value of among\r\nthe first of them. So the answer to the problem is the maximum of over\r\nall values of from to . Note that the value of is too large to calculate\r\nsums and maximums in the aforementioned formula every time (for each\r\nindependently), so you have to maintain these values as the value for\r\ngrows.\r\n"
+    "editorial": "Letâs iterate over the number of quests that have been completed at\r\nleast once (denote it as ). It remains to complete quests more, and we\r\nare allowed to complete any of the first quests again. It is obvious\r\nthat we would like to complete quests with the largest value of among\r\nthe first of them. So the answer to the problem is the maximum of over\r\nall values of from to . Note that the value of is too large to calculate\r\nsums and maximums in the aforementioned formula every time (for each\r\nindependently), so you have to maintain these values as the value for\r\ngrows.\r\n",
+    "hint": []
 }

@@ -78,7 +78,7 @@
         ]
     },
     "name": "A. Music",
-    "statement": "Little Lesha loves listening to music via his smartphone. But the\r\nsmartphone doesn\u2019t have much memory, so Lesha listens to his favorite\r\nsongs in a well-known social network InTalk.Unfortunately, internet is\r\nnot that fast in the city of Ekaterinozavodsk and the song takes a lot\r\nof time to download. But Lesha is quite impatient. The song\u2019s duration\r\nis seconds. Lesha downloads the first seconds of the song and plays it.\r\nWhen the playback reaches the point that has not yet been downloaded,\r\nLesha immediately plays the song from the start (the loaded part of the\r\nsong stays in his phone, and the download is continued from the same\r\nplace), and it happens until the song is downloaded completely and Lesha\r\nlistens to it to the end. For seconds of real time the Internet allows\r\nyou to download seconds of the track.Tell Lesha, for how many times he\r\nwill start the song, including the very first start.\r\n",
+    "statement": "Little Lesha loves listening to music via his smartphone. But the\r\nsmartphone doesn’t have much memory, so Lesha listens to his favorite\r\nsongs in a well-known social network InTalk.Unfortunately, internet is\r\nnot that fast in the city of Ekaterinozavodsk and the song takes a lot\r\nof time to download. But Lesha is quite impatient. The song’s duration\r\nis seconds. Lesha downloads the first seconds of the song and plays it.\r\nWhen the playback reaches the point that has not yet been downloaded,\r\nLesha immediately plays the song from the start (the loaded part of the\r\nsong stays in his phone, and the download is continued from the same\r\nplace), and it happens until the song is downloaded completely and Lesha\r\nlistens to it to the end. For seconds of real time the Internet allows\r\nyou to download seconds of the track.Tell Lesha, for how many times he\r\nwill start the song, including the very first start.\r\n",
     "solutions": [
         "/* In the name of Allah */\n\n#include<bits/stdc++.h>\n\nusing namespace std;\n\n\nint main()\n{\n    int s,t,q;\n    cin >> t>> s>> q;\n    int ans=1;\n    int time=0;\n    int ctr=0;\n    while(time!= t)\n    {\n        time++; ctr++;\n        if(ctr>1) s++;\n        if(ctr==q) ctr=0;\n        if(time>s) { ans++;time =1;}\n    }\n    cout<< ans;\n}\n"
     ],
@@ -92,5 +92,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Music.json",
     "editorial_link": "https://codeforces.com//blog/entry/19705",
-    "editorial": "Suppose we have downloaded seconds of the song and press the \u00e2\u0080\u0099play\u00e2\u0080\u0099\r\nbutton. Let\u00e2\u0080\u0099s find how many seconds will be downloaded when we will be\r\nforced to play the song once more. . Hence . Solution: let\u00e2\u0080\u0099s multiply by\r\nwhile . The answer is the amount of operations. Complexity\r\n"
+    "editorial": "Suppose we have downloaded seconds of the song and press the âplayâ\r\nbutton. Letâs find how many seconds will be downloaded when we will be\r\nforced to play the song once more. . Hence . Solution: letâs multiply by\r\nwhile . The answer is the amount of operations. Complexity\r\n",
+    "hint": []
 }

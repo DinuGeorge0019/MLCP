@@ -179,5 +179,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. 2048 Game.json",
     "editorial_link": "https://codeforces.com//blog/entry/69925",
-    "editorial": "It\u00e2\u0080\u0099s obvious that we don\u00e2\u0080\u0099t need elements that are larger than .If the\r\nsum of the remaining elements is greater than or equal to 2048, then the\r\nanswer is , and otherwise.It\u00e2\u0080\u0099s true because for getting a integer that\r\nwasn\u00e2\u0080\u0099t in the multiset initially, we first need to get integer .\r\n"
+    "editorial": "Itâs obvious that we donât need elements that are larger than .If the\r\nsum of the remaining elements is greater than or equal to 2048, then the\r\nanswer is , and otherwise.Itâs true because for getting a integer that\r\nwasnât in the multiset initially, we first need to get integer .\r\n",
+    "hint": []
 }

@@ -102,7 +102,7 @@
         ]
     },
     "name": "B. Lipshitz Sequence",
-    "statement": "A function is called Lipschitz continuous if there is a real constant\r\nsuch that the inequality holds for all . We\u2019ll deal with a more...\r\ndiscrete version of this term.For an array , we define it\u2019s Lipschitz\r\nconstant as follows: if , if , over all In other words, is the smallest\r\nnon-negative integer such that holds for all .You are given an array of\r\nsize and queries of the form . For each query, consider the subarray ;\r\ndetermine the sum of Lipschitz constants of of .\r\n",
+    "statement": "A function is called Lipschitz continuous if there is a real constant\r\nsuch that the inequality holds for all . We’ll deal with a more...\r\ndiscrete version of this term.For an array , we define it’s Lipschitz\r\nconstant as follows: if , if , over all In other words, is the smallest\r\nnon-negative integer such that holds for all .You are given an array of\r\nsize and queries of the form . For each query, consider the subarray ;\r\ndetermine the sum of Lipschitz constants of of .\r\n",
     "solutions": [
         "#include <cstdio>\n#include <cstring>\n#include <cmath>\n#include <algorithm>\n#include <vector>\n#include <string>\n#include <map>\n#include <set>\n#include <cassert>\nusing namespace std;\n#define rep(i,a,n) for (int i=a;i<n;i++)\n#define per(i,a,n) for (int i=n-1;i>=a;i--)\n#define pb push_back\n#define mp make_pair\n#define all(x) (x).begin(),(x).end()\n#define fi first\n#define se second\n#define SZ(x) ((int)(x).size())\ntypedef vector<int> VI;\ntypedef long long ll;\ntypedef pair<int,int> PII;\nconst ll mod=1000000007;\nll powmod(ll a,ll b) {ll res=1;a%=mod;for(;b;b>>=1){if(b&1)res=res*a%mod;a=a*a%mod;}return res;}\n// head\n\nconst int N=201000;\nint stk[N],top,a[N],l[N],r[N],b[N],vis[N];\nint n,q,pl,pr;\nll ans;\nvoid dfs(int u,int *a,int pl,int pr) {\n\tif (l[u]) dfs(l[u],a,pl,u-1);//,sz[u]+=sz[l[u]];\n\tif (r[u]) dfs(r[u],a,u+1,pr);//,sz[u]+=sz[r[u]];\n\tans+=(ll)-a[u]*(pr-u+1)*(u-pl+1);\n}\nvoid build(int *a,int n) {\n\tint top=0;\n\trep(i,1,n+1) l[i]=r[i]=0,vis[i]=0;\n\trep(i,1,n+1) {\n\t\tint k=top;\n\t\twhile (k>0&&a[stk[k-1]]>a[i]) --k;\n\t\tif (k) r[stk[k-1]]=i;\n\t\tif (k<top) l[i]=stk[k];\n\t\tstk[k++]=i;\n\t\ttop=k;\n\t}\n\t//rep(i,1,n+1) printf(\"V %d %d\\n\",l[i],r[i]);\n\trep(i,1,n+1) vis[l[i]]=vis[r[i]]=1;\n\tint rt=0;\n\trep(i,1,n+1) if (!vis[i]) rt=i;\n\tans=0;\n\tdfs(rt,a,1,n);\n}\n\nint main() {\n//\tfreopen(\"in\",\"r\",stdin);\n\tscanf(\"%d%d\",&n,&q);\n\trep(i,1,n+1) scanf(\"%d\",a+i);\n\trep(i,0,q) {\n\t\tscanf(\"%d%d\",&pl,&pr);\n\t\trep(j,pl,pr) b[j-pl+1]=-abs(a[j+1]-a[j]);\n\t\tbuild(b,pr-pl);\n\t\tprintf(\"%lld\\n\",ans);\n\t}\n}\n"
     ],
@@ -116,5 +116,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Lipshitz Sequence.json",
     "editorial_link": "https://codeforces.com//blog/entry/21755",
-    "editorial": "Forget about the ceiling function. Draw points (i,?A[i]) and lines between them \u0097 what's the Lipschitz constant geometrically?"
+    "editorial": "Forget about the ceiling function. Draw points (i,?A[i]) and lines between them  what's the Lipschitz constant geometrically?",
+    "hint": []
 }

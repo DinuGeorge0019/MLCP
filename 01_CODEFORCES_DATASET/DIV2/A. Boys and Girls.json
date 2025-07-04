@@ -107,7 +107,7 @@
         ]
     },
     "name": "A. Boys and Girls",
-    "statement": "There are boys and girls studying in the class. They should stand in a\r\nline so that boys and girls alternated there as much as possible. Let\u2019s\r\nassume that positions in the line are indexed from left to right by\r\nnumbers from 1 to . Then the number of integers () such that positions\r\nwith indexes and contain children of different genders (position has a\r\ngirl and position has a boy or vice versa) must be as large as possible.\r\nHelp the children and tell them how to form the line.\r\n",
+    "statement": "There are boys and girls studying in the class. They should stand in a\r\nline so that boys and girls alternated there as much as possible. Let’s\r\nassume that positions in the line are indexed from left to right by\r\nnumbers from 1 to . Then the number of integers () such that positions\r\nwith indexes and contain children of different genders (position has a\r\ngirl and position has a boy or vice versa) must be as large as possible.\r\nHelp the children and tell them how to form the line.\r\n",
     "solutions": [
         "#include <stdio.h>\n#include <string.h>\n#include <algorithm>\n\nusing namespace std;\n\ntypedef long long ll;\ntypedef unsigned long long ull;\n\nint main(void)\n{\n    freopen(\"input.txt\",\"rt\",stdin);\n    freopen(\"output.txt\",\"wt\",stdout);\n    int n = 0;\n    int m = 0;\n    scanf(\"%d %d\",&n,&m);\n    int all = n+m;\n    int l = 0;\n    if(m > n) l = 1;\n    for(int i = 0;i < all;i++)\n    {\n        if(l && m) { putchar('G'); m--;}\n        else if(n) { putchar('B');n--; }\n        else { putchar('G'); m--; }\n        l ^= 1;\n    }\n    puts(\"\");\n    while(getchar() != EOF);\n    return 0;\n}\n"
     ],
@@ -120,5 +120,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Boys and Girls.json",
     "editorial_link": "https://codeforces.com//blog/entry/6073",
-    "editorial": "Lets assume that we have more boys than girls (the other case is solved\r\nsimilarly). Then we can construct one of the optimal solutions in the\r\nfollowing way: we add pairs consisting of a boy and a girl (BG, in that\r\norder) to the end of the line until we don\u00e2\u0080\u0099t have girls any more. Then\r\nadd remaining boys to the end of the line. For instance, with 7 boys and\r\n4 girls we will come to the solution BGBGBGBGBBB.\r\n"
+    "editorial": "Lets assume that we have more boys than girls (the other case is solved\r\nsimilarly). Then we can construct one of the optimal solutions in the\r\nfollowing way: we add pairs consisting of a boy and a girl (BG, in that\r\norder) to the end of the line until we donât have girls any more. Then\r\nadd remaining boys to the end of the line. For instance, with 7 boys and\r\n4 girls we will come to the solution BGBGBGBGBBB.\r\n",
+    "hint": []
 }

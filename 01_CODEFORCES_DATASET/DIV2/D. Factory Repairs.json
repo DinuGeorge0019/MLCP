@@ -113,5 +113,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Factory Repairs.json",
     "editorial_link": "https://codeforces.com//blog/entry/43467",
-    "editorial": "Using two binary-indexed trees, we can maintain the prefix and suffix sums of the amounts we can produce with maximum production rates of B and A, respectively. Then we can just query the binary-indexed trees to find the maximum possible production given the start and end of the repairs."
+    "editorial": "Using two binary-indexed trees, we can maintain the prefix and suffix sums of the amounts we can produce with maximum production rates of B and A, respectively. Then we can just query the binary-indexed trees to find the maximum possible production given the start and end of the repairs.",
+    "hint": []
 }

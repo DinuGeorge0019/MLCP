@@ -180,5 +180,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Array Decrements.json",
     "editorial_link": "https://codeforces.com//blog/entry/103658",
-    "editorial": "For all elements of the arrays to become equal after subtraction of\r\nunits, for must be satisfied. In addition, if there exists , then the\r\nequality can be obtained only by subtracting exactly units from . Since\r\nthe equality must be satisfied for all , the problem is reduced to\r\nchecking that for all differences are equal and for the difference does\r\nnot exceed .\r\n"
+    "editorial": "For all elements of the arrays to become equal after subtraction of\r\nunits, for must be satisfied. In addition, if there exists , then the\r\nequality can be obtained only by subtracting exactly units from . Since\r\nthe equality must be satisfied for all , the problem is reduced to\r\nchecking that for all differences are equal and for the difference does\r\nnot exceed .\r\n",
+    "hint": []
 }

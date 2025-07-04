@@ -116,7 +116,7 @@
         ]
     },
     "name": "B. Boboniu Plays Chess",
-    "statement": "Boboniu likes playing chess with his employees. As we know, no employee\r\ncan beat the boss in the chess game, so Boboniu has never lost in any\r\nround.You are a new applicant for his company. Boboniu will test you\r\nwith the following chess question:Consider a n\r\ntimes m grid (rows are numbered from 1 to n, and columns are numbered\r\nfrom 1 to m). You have a chess piece, and it stands at some cell\r\n(S_x,S_y) which is not on the border (i.e. 2\r\nle S_x\r\nle n-1 and 2\r\nle S_y\r\nle m-1).From the cell (x,y), you can move your chess piece to (x,y\u2019) (1\r\nle y\u2019\r\nle m, y\u2019\r\nneq y) or (x\u2019,y) (1\r\nle x\u2019\r\nle n, x\u2019\r\nneq x). In other words, the chess piece moves as a rook. From the cell,\r\nyou can move to any cell on the same row or column.Your goal is to visit\r\neach cell exactly once. Can you find a solution?Note that cells on the\r\npath between two adjacent cells in your route are not counted as\r\nvisited, and it is not required to return to the starting point.\r\n",
+    "statement": "Boboniu likes playing chess with his employees. As we know, no employee\r\ncan beat the boss in the chess game, so Boboniu has never lost in any\r\nround.You are a new applicant for his company. Boboniu will test you\r\nwith the following chess question:Consider a n\r\ntimes m grid (rows are numbered from 1 to n, and columns are numbered\r\nfrom 1 to m). You have a chess piece, and it stands at some cell\r\n(S_x,S_y) which is not on the border (i.e. 2\r\nle S_x\r\nle n-1 and 2\r\nle S_y\r\nle m-1).From the cell (x,y), you can move your chess piece to (x,y’) (1\r\nle y’\r\nle m, y’\r\nneq y) or (x’,y) (1\r\nle x’\r\nle n, x’\r\nneq x). In other words, the chess piece moves as a rook. From the cell,\r\nyou can move to any cell on the same row or column.Your goal is to visit\r\neach cell exactly once. Can you find a solution?Note that cells on the\r\npath between two adjacent cells in your route are not counted as\r\nvisited, and it is not required to return to the starting point.\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\nusing namespace std;\nint a,b,c,d;\nint main(){\n\tscanf(\"%d%d%d%d\",&a,&b,&c,&d);\n\tprintf(\"%d %d\\n\",c,d);\n\tfor(int i=1;i<=a;i++)if(i!=c)printf(\"%d %d\\n\",i,d);\n\tfor(int i=1;i<=b;i++){\n\t\tif(i==d)continue;\n\t\tbool dir=(i&1);\n\t\tif(i>d)dir^=1;\n\t\tif(dir==1)for(int j=a;j;j--)printf(\"%d %d\\n\",j,i);\n\t\telse for(int j=1;j<=a;j++)printf(\"%d %d\\n\",j,i);\n\t}\n\treturn 0;\n}\n"
     ],
@@ -129,5 +129,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Boboniu Plays Chess.json",
     "editorial_link": "https://codeforces.com//blog/entry/81355",
-    "editorial": "There are many solutions and I will describe one of them.Let say\r\n.Iterate from to : if is odd, print . Else print .\r\n"
+    "editorial": "There are many solutions and I will describe one of them.Let say\r\n.Iterate from to : if is odd, print . Else print .\r\n",
+    "hint": []
 }

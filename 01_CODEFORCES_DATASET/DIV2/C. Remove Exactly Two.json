@@ -174,5 +174,8 @@
     ],
     "dificulty": "",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Remove Exactly Two.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Remove Exactly Two.json",
+    "hint": [
+        "Hint The answer after choosing two vertices is decided by the degrees of the two vertices, and whether the two vertices are adjacent . Can you find a clean solution where you don't have to care about the latter?"
+    ]
 }

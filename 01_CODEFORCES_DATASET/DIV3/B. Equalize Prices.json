@@ -147,5 +147,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Equalize Prices.json",
     "editorial_link": "https://codeforces.com//blog/entry/68003",
-    "editorial": "It is very intuitive that the maximum price we can obtain is where is\r\nthe minimum value in the array. For this price we should check that we\r\ncan change prices of all products to it. It can be done very easily: we\r\ncan just check if each segment covers the point . But this is not\r\nnecessary because if we can change the price of the maximum to this\r\nvalue () then we can change each price in the segment to this value. So\r\nwe just need to check that and if it is then print otherwise print .\r\n"
+    "editorial": "It is very intuitive that the maximum price we can obtain is where is\r\nthe minimum value in the array. For this price we should check that we\r\ncan change prices of all products to it. It can be done very easily: we\r\ncan just check if each segment covers the point . But this is not\r\nnecessary because if we can change the price of the maximum to this\r\nvalue () then we can change each price in the segment to this value. So\r\nwe just need to check that and if it is then print otherwise print .\r\n",
+    "hint": []
 }

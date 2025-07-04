@@ -116,7 +116,7 @@
         ]
     },
     "name": "A. Boboniu Likes to Color Balls",
-    "statement": "Boboniu gives you r red balls, g green balls, b blue balls, w white\r\nballs. He allows you to do the following operation as many times as you\r\nwant: Pick a red ball, a green ball, and a blue ball and then change\r\ntheir color to white. You should answer if it\u2019s possible to arrange all\r\nthe balls into a after several (possibly zero) number of described\r\noperations.\r\n",
+    "statement": "Boboniu gives you r red balls, g green balls, b blue balls, w white\r\nballs. He allows you to do the following operation as many times as you\r\nwant: Pick a red ball, a green ball, and a blue ball and then change\r\ntheir color to white. You should answer if it’s possible to arrange all\r\nthe balls into a after several (possibly zero) number of described\r\noperations.\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\nusing namespace std;\nint T,a,b,c,d;\nbool ok;\nint main(){\n\tscanf(\"%d\",&T);\n\twhile(T--){\n\t\tscanf(\"%d%d%d%d\",&a,&b,&c,&d),ok=false;\n\t\tok|=((a&1)+(b&1)+(c&1)+(d&1)<=1);\n\t\tif(a&&b&&c)a--,b--,c--,d+=3;\n\t\tok|=((a&1)+(b&1)+(c&1)+(d&1)<=1);\n\t\tputs(ok?\"Yes\":\"No\");\n\t}\n\treturn 0;\n}\n"
     ],
@@ -130,5 +130,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Boboniu Likes to Color Balls.json",
     "editorial_link": "https://codeforces.com//blog/entry/81355",
-    "editorial": "If there are less than or equal to one odd number in , , , , then you\r\ncan order them to be a palindrome.Otherwise, do the operation once (if\r\nyou can) and check the condition above.It is meaningless to do operation\r\nmore than once because we only care about the parity of , , , .\r\n"
+    "editorial": "If there are less than or equal to one odd number in , , , , then you\r\ncan order them to be a palindrome.Otherwise, do the operation once (if\r\nyou can) and check the condition above.It is meaningless to do operation\r\nmore than once because we only care about the parity of , , , .\r\n",
+    "hint": []
 }

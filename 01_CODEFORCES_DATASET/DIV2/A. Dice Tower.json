@@ -101,5 +101,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Dice Tower.json",
     "editorial_link": "https://codeforces.com//blog/entry/5322",
-    "editorial": "You should iterate over all dices from up to down and restore answer. You can easily find number of the bottom side of the 1st dice. Using known sides of the 2nd dice you can find pair of numbets on top and bottom side of the 2nd dice. If one of them equal to number on bottom of the 1st dice, you can restore all numbers on the 2n dice. Then using this idea you can try restore numbers on the 3rd dice and so on. If you restored all numbers, you should write YES. If for some dice you cannot uniquely determine order of numbers on the top and botton sides, there will be at least 2 placing of numbers. In this case you shoyld write NO."
+    "editorial": "You should iterate over all dices from up to down and restore answer. You can easily find number of the bottom side of the 1st dice. Using known sides of the 2nd dice you can find pair of numbets on top and bottom side of the 2nd dice. If one of them equal to number on bottom of the 1st dice, you can restore all numbers on the 2n dice. Then using this idea you can try restore numbers on the 3rd dice and so on. If you restored all numbers, you should write YES. If for some dice you cannot uniquely determine order of numbers on the top and botton sides, there will be at least 2 placing of numbers. In this case you shoyld write NO.",
+    "hint": []
 }

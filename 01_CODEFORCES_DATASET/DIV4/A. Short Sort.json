@@ -213,5 +213,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\A. Short Sort.json",
     "editorial_link": "https://codeforces.com//blog/entry/120634",
-    "editorial": "There are only possible input strings, and they are all given in the\r\ninput, so you can just output if is or and otherwise.Another way to\r\nsolve it is to count the number of letters in the wrong position. A swap\r\nchanges letters, so if at most two letters are in the wrong position,\r\nthen it\u00e2\u0080\u0099s possible, otherwise it\u00e2\u0080\u0099s not possible.Of course, you can also\r\nbrute force all possible swaps and check if it works.\r\n"
+    "editorial": "There are only possible input strings, and they are all given in the\r\ninput, so you can just output if is or and otherwise.Another way to\r\nsolve it is to count the number of letters in the wrong position. A swap\r\nchanges letters, so if at most two letters are in the wrong position,\r\nthen itâs possible, otherwise itâs not possible.Of course, you can also\r\nbrute force all possible swaps and check if it works.\r\n",
+    "hint": []
 }

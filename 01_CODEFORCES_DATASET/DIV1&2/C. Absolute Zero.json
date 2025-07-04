@@ -177,11 +177,11 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/132021",
-    "editorial": "If the array contains both odd and even numbers, it is impossible to zero the array. This is because any operation will maintain the presence of both odd and even elements.\n\nOtherwise, if all elements in the array are either odd or even, it is feasible to zero the array in no more than 31\n operations.\n\nThe operation strategy works by iteratively narrowing the range of all elements. Initially, the range of all elements is between [0,230]\n. Starting from x=229\n, we use each power of 2\n as x\n, reducing the exponent by one each time (i.e., 229,228,\u0085,20\n). After each operation, the range of all elements is halved, narrowed down to [0,x]\n. Continuing this process, after 30\n operations, all elements will become 0\n or 1\n. If all elements are 1\n after 30\n operations, perform one last operation with x=1\n to turn all 1s\n into 0s\n.",
+    "editorial": "If the array contains both odd and even numbers, it is impossible to zero the array. This is because any operation will maintain the presence of both odd and even elements.\n\nOtherwise, if all elements in the array are either odd or even, it is feasible to zero the array in no more than 31\n operations.\n\nThe operation strategy works by iteratively narrowing the range of all elements. Initially, the range of all elements is between [0,230]\n. Starting from x=229\n, we use each power of 2\n as x\n, reducing the exponent by one each time (i.e., 229,228,,20\n). After each operation, the range of all elements is halved, narrowed down to [0,x]\n. Continuing this process, after 30\n operations, all elements will become 0\n or 1\n. If all elements are 1\n after 30\n operations, perform one last operation with x=1\n to turn all 1s\n into 0s\n.",
     "name": "C. Absolute Zero",
     "statement": "You are given an array a of n integers.In one operation, you will\r\nperform the following two-step move: Choose an integer x (0\r\nle x\r\nle 10^{9}). Replace each a_i with |a_i - x|, where |v| denotes the\r\nabsolute value of v. For example, by choosing x = 8, the array [5, 7,\r\n10] will be changed into [|5-8|, |7-8|, |10-8|] = [3,1,2].Construct a\r\nsequence of operations to make all elements of a equal to 0 in at most\r\n40 operations or determine that it is impossible. You do need to\r\nminimize the number of operations.\r\n",
     "solutions": [
-        "/** *    author:  tourist *    created: 28.07.2024 10:37:52**/#include <bits/stdc++.h>\u00a0using namespace std;\u00a0#ifdef LOCAL#include \"algo/debug.h\"#else#define debug(...) 42#endif\u00a0int main() {  ios::sync_with_stdio(false);  cin.tie(nullptr);  int tt;  cin >> tt;  while (tt--) {    int n;    cin >> n;    vector<int> a(n);    for (int i = 0; i < n; i++) {      cin >> a[i];    }    bool ok = true;    for (int i = 1; i < n; i++) {      if (a[i] % 2 != a[0] % 2) {        ok = false;        break;      }    }    if (!ok) {      cout << -1 << '\\n';      continue;    }    ranges::sort(a);    cout << 32 << '\\n';    cout << a[0];    for (int i = 29; i >= 0; i--) {      cout << \" \" << (1 << i);    }    cout << \" \" << 1 << '\\n';  }  return 0;}"
+        "/** *    author:  tourist *    created: 28.07.2024 10:37:52**/#include <bits/stdc++.h> using namespace std; #ifdef LOCAL#include \"algo/debug.h\"#else#define debug(...) 42#endif int main() {  ios::sync_with_stdio(false);  cin.tie(nullptr);  int tt;  cin >> tt;  while (tt--) {    int n;    cin >> n;    vector<int> a(n);    for (int i = 0; i < n; i++) {      cin >> a[i];    }    bool ok = true;    for (int i = 1; i < n; i++) {      if (a[i] % 2 != a[0] % 2) {        ok = false;        break;      }    }    if (!ok) {      cout << -1 << '\\n';      continue;    }    ranges::sort(a);    cout << 32 << '\\n';    cout << a[0];    for (int i = 29; i >= 0; i--) {      cout << \" \" << (1 << i);    }    cout << \" \" << 1 << '\\n';  }  return 0;}"
     ],
     "input": "",
     "output": "",
@@ -192,5 +192,8 @@
     ],
     "dificulty": "1300",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\C. Absolute Zero.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\C. Absolute Zero.json",
+    "hint": [
+        "Hint Can you decrease maximum by half in one operation?"
+    ]
 }

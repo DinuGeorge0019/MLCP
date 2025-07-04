@@ -138,7 +138,7 @@
         ]
     },
     "name": "C. Two TVs",
-    "statement": "Polycarp is a great fan of television.He wrote down all the TV programs\r\nhe is interested in for today. His list contains shows, -th of them\r\nstarts at moment and ends at moment .Polycarp owns two TVs. He can watch\r\ntwo different shows simultaneously with two TVs but he can only watch\r\none show at any given moment on a single TV. If one show ends at the\r\nsame moment some other show starts then you can\u2019t watch them on a single\r\nTV.Polycarp wants to check out all shows. Are two TVs enough to do so?\r\n",
+    "statement": "Polycarp is a great fan of television.He wrote down all the TV programs\r\nhe is interested in for today. His list contains shows, -th of them\r\nstarts at moment and ends at moment .Polycarp owns two TVs. He can watch\r\ntwo different shows simultaneously with two TVs but he can only watch\r\none show at any given moment on a single TV. If one show ends at the\r\nsame moment some other show starts then you can’t watch them on a single\r\nTV.Polycarp wants to check out all shows. Are two TVs enough to do so?\r\n",
     "solutions": [
         "#include<cstdio>\n#include<cstring>\n#include<cstdlib>\n#include<cmath>\n#include<iostream>\n#include<algorithm>\nusing namespace std;\nvector<pair<int,int> > e;\nint main()\n{\n    int n;\n    scanf(\"%d\",&n);\n    for(int i=1;i<=n;i++)\n    {\n        int l,r;\n        scanf(\"%d%d\",&l,&r);\n        e.push_back(make_pair(l,1));\n        e.push_back(make_pair(r+1,-1));\n    }\n    sort(e.begin(),e.end());\n    int cnt=0;\n    for(int i=0;i<(int)e.size();i++)\n    {\n        cnt+=e[i].second;\n        if(cnt>2)return 0*printf(\"NO\\n\");\n    }\n    return 0*printf(\"YES\\n\");\n}\n"
     ],
@@ -153,5 +153,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\C. Two TVs.json",
     "editorial_link": "https://codeforces.com//blog/entry/53986",
-    "editorial": "Let\u00e2\u0080\u0099s process all the segments on the line from left to right. For each\r\nsegment we should push events () and () into some array. Sort this array\r\nof pair in increasing order (usual less comparator for pairs). Then we\r\niterate over its elements and maintain the current amount of open\r\nsegments (we passed their left border and didn\u00e2\u0080\u0099t pass their right\r\nborder).When we meet the event of the first type, we increment the value\r\nof , the second type decrement . If in some moment then the answer is\r\n.Overall complexity: .\r\n"
+    "editorial": "Letâs process all the segments on the line from left to right. For each\r\nsegment we should push events () and () into some array. Sort this array\r\nof pair in increasing order (usual less comparator for pairs). Then we\r\niterate over its elements and maintain the current amount of open\r\nsegments (we passed their left border and didnât pass their right\r\nborder).When we meet the event of the first type, we increment the value\r\nof , the second type decrement . If in some moment then the answer is\r\n.Overall complexity: .\r\n",
+    "hint": []
 }

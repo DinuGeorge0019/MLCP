@@ -90,5 +90,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Kolya and Tandem Repeat.json",
     "editorial_link": "https://codeforces.com//blog/entry/12739",
-    "editorial": "Let\u00e2\u0080\u0099s add question marks to the string. Than we can check all possible\r\nstarting and ending positions of tandem repeat in a new string. We can\r\ncheck each of them in time . We only need to check that some symbols are\r\nequal (in our task question mark is equal to every symbol).\r\n"
+    "editorial": "Letâs add question marks to the string. Than we can check all possible\r\nstarting and ending positions of tandem repeat in a new string. We can\r\ncheck each of them in time . We only need to check that some symbols are\r\nequal (in our task question mark is equal to every symbol).\r\n",
+    "hint": []
 }

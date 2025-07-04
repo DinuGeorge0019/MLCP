@@ -146,5 +146,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C1. Dual  Easy Version .json",
     "editorial_link": "https://codeforces.com//blog/entry/118540",
-    "editorial": "If all the elements are negative, you can make suffix sums (they are nondecreasing) with moves (n?1,n),(n?2,n?1),\u0085\n\nIf there is at least one positive element ax\n,\n\nmake ax>20\n using 5\n moves (x,x)\n;\nmake a2\n the biggest element using 2\n moves (2,x)\n;\nmake a3\n the biggest element using 2\n moves (3,2)\n;\n...\nThis strategy requires 5+2(n?1)?43\n moves.\n\nComplexity: O(n)"
+    "editorial": "If all the elements are negative, you can make suffix sums (they are nondecreasing) with moves (n?1,n),(n?2,n?1),\n\nIf there is at least one positive element ax\n,\n\nmake ax>20\n using 5\n moves (x,x)\n;\nmake a2\n the biggest element using 2\n moves (2,x)\n;\nmake a3\n the biggest element using 2\n moves (3,2)\n;\n...\nThis strategy requires 5+2(n?1)?43\n moves.\n\nComplexity: O(n)",
+    "hint": []
 }

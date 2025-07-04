@@ -167,5 +167,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\C. Two Seals.json",
     "editorial_link": "https://codeforces.com//blog/entry/53662",
-    "editorial": "If you can place two rectangles in some way (without rotations), then\r\nit\u00e2\u0080\u0099s always possible to move one of them to the top left corner and\r\nstick the other either to the bottom of the first (and push it all the\r\nway to the left) or to the right of it (and push it all the way to the\r\ntop).Now let\u00e2\u0080\u0099s try all possible reorderings and rotations for every pair\r\nof seals. If there is at least one correct reordering then update the\r\nanswer.Overall complexity: .\r\n"
+    "editorial": "If you can place two rectangles in some way (without rotations), then\r\nitâs always possible to move one of them to the top left corner and\r\nstick the other either to the bottom of the first (and push it all the\r\nway to the left) or to the right of it (and push it all the way to the\r\ntop).Now letâs try all possible reorderings and rotations for every pair\r\nof seals. If there is at least one correct reordering then update the\r\nanswer.Overall complexity: .\r\n",
+    "hint": []
 }

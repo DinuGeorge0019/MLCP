@@ -120,7 +120,7 @@
         ]
     },
     "name": "B. Equations of Mathematical Magic",
-    "statement": "Colossal! exclaimed Hawk-nose. A programmer! That\u2019s exactly what we are\r\nlooking for.Arkadi and Boris Strugatsky. Monday starts on\r\nSaturdayReading the book \"Equations of Mathematical Magic\" Roman\r\nOira-Oira and Cristobal Junta found an interesting equation: a - (a\r\noplus x) - x = 0 for some given a, where\r\noplus stands for a bitwise exclusive or (XOR) of two integers (this\r\noperation is denoted as or in many modern programming languages).\r\nOira-Oira quickly found some x, which is the solution of the equation,\r\nbut Cristobal Junta decided that Oira-Oira\u2019s result is not interesting\r\nenough, so he asked his colleague how many solutions of this equation\r\nexist. This task turned out to be too difficult for Oira-Oira, so he\r\nasks you to help.\r\n",
+    "statement": "Colossal! exclaimed Hawk-nose. A programmer! That’s exactly what we are\r\nlooking for.Arkadi and Boris Strugatsky. Monday starts on\r\nSaturdayReading the book \"Equations of Mathematical Magic\" Roman\r\nOira-Oira and Cristobal Junta found an interesting equation: a - (a\r\noplus x) - x = 0 for some given a, where\r\noplus stands for a bitwise exclusive or (XOR) of two integers (this\r\noperation is denoted as or in many modern programming languages).\r\nOira-Oira quickly found some x, which is the solution of the equation,\r\nbut Cristobal Junta decided that Oira-Oira’s result is not interesting\r\nenough, so he asked his colleague how many solutions of this equation\r\nexist. This task turned out to be too difficult for Oira-Oira, so he\r\nasks you to help.\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\nusing namespace std;\n\nint main()\n{\n    int n,a;\n    cin>>n;\n    while(n--)\n    {\n        scanf(\"%d\",&a);\n        int ans=1;\n        while(a)\n        {\n            if(a&1) ans<<=1;\n            a>>=1;\n        }\n        printf(\"%d\\n\",ans);\n    }\n    return 0;\n}"
     ],
@@ -133,5 +133,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Equations of Mathematical Magic.json",
     "editorial_link": "https://codeforces.com//blog/entry/62455",
-    "editorial": "Rewriting equation we have .If you look in the xor definition, it is\r\neasy to see, that , no matter and (just look at the each bit of the\r\n).And the equality handles only if bits of form a subset of bits of .So\r\nthe answer is , where is the number of bits in (also known as popcount).\r\n"
+    "editorial": "Rewriting equation we have .If you look in the xor definition, it is\r\neasy to see, that , no matter and (just look at the each bit of the\r\n).And the equality handles only if bits of form a subset of bits of .So\r\nthe answer is , where is the number of bits in (also known as popcount).\r\n",
+    "hint": []
 }

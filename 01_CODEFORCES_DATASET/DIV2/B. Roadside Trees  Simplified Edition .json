@@ -91,7 +91,7 @@
         ]
     },
     "name": "B. Roadside Trees  Simplified Edition ",
-    "statement": "Squirrel Liss loves nuts. There are trees (numbered to from west to\r\neast) along a street and there is a delicious nut on the top of each\r\ntree. The height of the tree is . Liss wants to eat all nuts.Now Liss is\r\non the root of the tree with the number . In one second Liss can perform\r\none of the following actions: Walk up or down one unit on a tree. Eat a\r\nnut on the top of the current tree. Jump to the next tree. In this\r\naction the height of Liss doesn\u2019t change. More formally, when Liss is at\r\nheight of the tree (), she jumps to height of the tree . This action\r\ncan\u2019t be performed if . Compute the minimal time (in seconds) required\r\nto eat all nuts.\r\n",
+    "statement": "Squirrel Liss loves nuts. There are trees (numbered to from west to\r\neast) along a street and there is a delicious nut on the top of each\r\ntree. The height of the tree is . Liss wants to eat all nuts.Now Liss is\r\non the root of the tree with the number . In one second Liss can perform\r\none of the following actions: Walk up or down one unit on a tree. Eat a\r\nnut on the top of the current tree. Jump to the next tree. In this\r\naction the height of Liss doesn’t change. More formally, when Liss is at\r\nheight of the tree (), she jumps to height of the tree . This action\r\ncan’t be performed if . Compute the minimal time (in seconds) required\r\nto eat all nuts.\r\n",
     "solutions": [
         "#include <iostream>\n#include <iomanip>\n#include <string>\n#include <cstring>\n#include <cstdlib>\n#include <cstdio>\n\nusing namespace std;\n\nint n;\n\nint H;\n\nint NH = 0;\n\nint ans = 0;\n\nint main()\n{\n\tcin >> n;\n\tcin >> H;\n\tans += (NH = H) + 1;\n\tfor (int i = 2; i <= n; i++)\n\t{\n\t\tans++;\n\t\tcin >> H;\n\t\tif (H >= NH)\n\t\t{\n\t\t\tans += H - NH + 1;\n\t\t\tNH = H;\n\t\t}\n\t\telse\n\t\t{\n\t\t\tans += NH - H + 1;\n\t\t\tNH = H;\n\t\t}\n\t}\n\tcout << ans << endl;\n\treturn 0;\n}"
     ],
@@ -105,5 +105,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Roadside Trees  Simplified Edition .json",
     "editorial_link": "https://codeforces.com//blog/entry/6478",
-    "editorial": "The optimal path of Liss is as follows: First she starts from the root of tree 1. Walk up the tree to the top and eat a nut. Walk down to the height min(h1,?h2). Jump to the tree 2. Walk up the tree to the top and eat a nut. Walk down to the height min(h2,?h3), ... and so on.\n"
+    "editorial": "The optimal path of Liss is as follows: First she starts from the root of tree 1. Walk up the tree to the top and eat a nut. Walk down to the height min(h1,?h2). Jump to the tree 2. Walk up the tree to the top and eat a nut. Walk down to the height min(h2,?h3), ... and so on.\n",
+    "hint": []
 }

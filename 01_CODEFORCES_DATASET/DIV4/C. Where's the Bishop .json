@@ -196,5 +196,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\C. Where's the Bishop .json",
     "editorial_link": "https://codeforces.com//blog/entry/103883",
-    "editorial": "There are many ways to solve the problem. One way is to look for the\r\nfollowing pattern: There can only be one such pattern if there is one\r\nbishop and it\u00e2\u0080\u0099s not on the edge of the board. We can iterate through all\r\ncells and see if we can match this pattern, and if we can we output the\r\ncentre cell.You can also look at the positions of the two diagonals and\r\nintersect them, but it requires more implementation.Time complexity: per\r\ntestcase.\r\n"
+    "editorial": "There are many ways to solve the problem. One way is to look for the\r\nfollowing pattern: There can only be one such pattern if there is one\r\nbishop and itâs not on the edge of the board. We can iterate through all\r\ncells and see if we can match this pattern, and if we can we output the\r\ncentre cell.You can also look at the positions of the two diagonals and\r\nintersect them, but it requires more implementation.Time complexity: per\r\ntestcase.\r\n",
+    "hint": []
 }

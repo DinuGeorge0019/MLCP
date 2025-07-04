@@ -158,5 +158,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Square String .json",
     "editorial_link": "https://codeforces.com//blog/entry/98159",
-    "editorial": "If the length of the given string is odd, then the answer is , since\r\nadding two strings cannot do that. Otherwise, let be the length of the\r\nstring. Let\u00e2\u0080\u0099s go through the first half of the string, comparing whether\r\nits first and characters are equal, its second and characters are equal,\r\nand so on. If the characters in any pair are not equal, the answer is ,\r\notherwise .\r\n"
+    "editorial": "If the length of the given string is odd, then the answer is , since\r\nadding two strings cannot do that. Otherwise, let be the length of the\r\nstring. Letâs go through the first half of the string, comparing whether\r\nits first and characters are equal, its second and characters are equal,\r\nand so on. If the characters in any pair are not equal, the answer is ,\r\notherwise .\r\n",
+    "hint": []
 }

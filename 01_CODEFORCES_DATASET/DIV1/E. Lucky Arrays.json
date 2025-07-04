@@ -96,5 +96,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\E. Lucky Arrays.json",
     "editorial_link": "https://codeforces.com//blog/entry/6161",
-    "editorial": "Solution is interval tree. We will save dynamic programming f[i,j] in\r\neach vertex, this dp means: in how many ways we can change all 0 to some\r\nnumbers on interval, such that it will be valid and first element will\r\nbe i and last will be j. With normal implementation its easy to pass\r\nsystem tests.\r\n"
+    "editorial": "Solution is interval tree. We will save dynamic programming f[i,j] in\r\neach vertex, this dp means: in how many ways we can change all 0 to some\r\nnumbers on interval, such that it will be valid and first element will\r\nbe i and last will be j. With normal implementation its easy to pass\r\nsystem tests.\r\n",
+    "hint": []
 }

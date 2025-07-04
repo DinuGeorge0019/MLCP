@@ -170,5 +170,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\C. Rectangles.json",
     "editorial_link": "https://codeforces.com/blog/entry/61493",
-    "editorial": "Note that intersection of any number of rectangles is a rectangle too\r\n(possibly, empty).Calculate intersection of rectangles with numbers ,\r\nand intersection of rectangles with numbers . If is the index of the\r\nrectangle not included in the answer, then intersection of and must be\r\nnon-empty. So, for some this condition is held, and we can print any\r\ninteger point inside this rectangle.\r\n"
+    "editorial": "Note that intersection of any number of rectangles is a rectangle too\r\n(possibly, empty).Calculate intersection of rectangles with numbers ,\r\nand intersection of rectangles with numbers . If is the index of the\r\nrectangle not included in the answer, then intersection of and must be\r\nnon-empty. So, for some this condition is held, and we can print any\r\ninteger point inside this rectangle.\r\n",
+    "hint": []
 }

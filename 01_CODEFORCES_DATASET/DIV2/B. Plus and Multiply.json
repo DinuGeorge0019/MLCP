@@ -152,5 +152,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Plus and Multiply.json",
     "editorial_link": "https://codeforces.com//blog/entry/92492",
-    "editorial": "First check specially if b=1\n.\n\nLet's consider when n\n is in S\n. The answer is when the smallest number m\n in S\n that n mod b=m mod b\n is less than n\n. It's easy to see that a new case of x mod b\n can only appear when you use \u00d7a\n to generate a new element. So the smallest number m\n in S that m mod b=k\n must be a power of a\n.\n\nFind all powers of a that is smaller than n\n. If there is one m=ak\n that n mod b=m mod b\n, the answer is yes. Otherwise it's no. Time complexity is O(logn)\n."
+    "editorial": "First check specially if b=1\n.\n\nLet's consider when n\n is in S\n. The answer is when the smallest number m\n in S\n that n mod b=m mod b\n is less than n\n. It's easy to see that a new case of x mod b\n can only appear when you use ×a\n to generate a new element. So the smallest number m\n in S that m mod b=k\n must be a power of a\n.\n\nFind all powers of a that is smaller than n\n. If there is one m=ak\n that n mod b=m mod b\n, the answer is yes. Otherwise it's no. Time complexity is O(logn)\n.",
+    "hint": []
 }

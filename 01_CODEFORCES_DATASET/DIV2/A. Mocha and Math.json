@@ -158,5 +158,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Mocha and Math.json",
     "editorial_link": "https://codeforces.com//blog/entry/93898",
-    "editorial": "We assume the answer is . In its binary representation, one bit will be\r\nonly if in all the \u00e2\u0080\u0099s binary representation,this bit is . Otherwise, we\r\ncan use one operation to make this bit in become 0, which is a smaller\r\nanswer.So we can set initially. Then we iterate over the sequence and\r\nmake , the is the anwser finally.\r\n"
+    "editorial": "We assume the answer is . In its binary representation, one bit will be\r\nonly if in all the âs binary representation,this bit is . Otherwise, we\r\ncan use one operation to make this bit in become 0, which is a smaller\r\nanswer.So we can set initially. Then we iterate over the sequence and\r\nmake , the is the anwser finally.\r\n",
+    "hint": []
 }

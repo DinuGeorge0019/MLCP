@@ -148,5 +148,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Domino Disaster.json",
     "editorial_link": "https://codeforces.com//blog/entry/94581",
-    "editorial": "If there is a vertical domino (either U or D) in the current slot, then\r\nthe corresponding domino half in the other row must be a D or a U,\r\nrespectively. Otherwise, we can just fill the rest of the row with\r\ncopies of LR.Time complexity: .\r\n"
+    "editorial": "If there is a vertical domino (either U or D) in the current slot, then\r\nthe corresponding domino half in the other row must be a D or a U,\r\nrespectively. Otherwise, we can just fill the rest of the row with\r\ncopies of LR.Time complexity: .\r\n",
+    "hint": []
 }

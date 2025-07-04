@@ -170,5 +170,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\D. Minimax Problem.json",
     "editorial_link": "https://codeforces.com//blog/entry/73105",
-    "editorial": "We will use binary search to solve the problem. Suppose we want to know\r\nif the answer is not less than .Each array can be represented by a -bit\r\nmask, where the -th bit is if the -th element of the array is not less\r\nthan , or if the -th element is less than . If we want to verify that\r\nthe answer is not less than , we have to choose two arrays such that\r\nbitwise OR of their masks is .Checking all pairs of arrays is too slow.\r\nInstead, we can treat the arrays represented by the same masks as equal\r\nso we will have no more than distinct arrays, and we can iterate over\r\npairs. Overall, the solution works in .\r\n"
+    "editorial": "We will use binary search to solve the problem. Suppose we want to know\r\nif the answer is not less than .Each array can be represented by a -bit\r\nmask, where the -th bit is if the -th element of the array is not less\r\nthan , or if the -th element is less than . If we want to verify that\r\nthe answer is not less than , we have to choose two arrays such that\r\nbitwise OR of their masks is .Checking all pairs of arrays is too slow.\r\nInstead, we can treat the arrays represented by the same masks as equal\r\nso we will have no more than distinct arrays, and we can iterate over\r\npairs. Overall, the solution works in .\r\n",
+    "hint": []
 }

@@ -144,7 +144,7 @@
     "name": "A. Find K Distinct Points with Fixed Center",
     "statement": "Sun Tzu, You are given three integers x_c, y_c, and k (-100\r\nleq x_c, y_c\r\nleq 100, 1\r\nleq k\r\nleq 1000). You need to find k points (x_1, y_1), (x_2, y_2),\r\nldots, (x_k, y_k), having integer coordinates, on the 2D coordinate\r\nplane such that: their center^{\r\ntext{ }} is (x_c, y_c) -10^9\r\nleq x_i, y_i\r\nleq 10^9 for all i from 1 to k It can be proven that at least one set of\r\nk distinct points always exists that satisfies these conditions.^{\r\ntext{ }}The center of k points (x_1, y_1), (x_2, y_2),\r\nldots, (x_k, y_k) is\r\nleft(\r\nfrac{x_1 + x_2 +\r\nldots + x_k}{k},\r\nfrac{y_1 + y_2 +\r\nldots + y_k}{k}\r\nright).\r\n",
     "solutions": [
-        "#include <bits/stdc++.h>using namespace std;\u00a0void work(){\tint xc,yc,k;\tcin >> xc >> yc >> k;\tif(k&1)\t{\t\tprintf(\"%d %d\\n\",xc,yc);\t\tfor(int i=1;i<=k/2;i++)\t\t{\t\t\tprintf(\"%d %d\\n\",xc-i,yc-i);\t\t\tprintf(\"%d %d\\n\",xc+i,yc+i);\t\t}\t}\telse\t{\t\tfor(int i=1;i<=k/2;i++)\t\t{\t\t\tprintf(\"%d %d\\n\",xc-i,yc-i);\t\t\tprintf(\"%d %d\\n\",xc+i,yc+i);\t\t}\t}}\u00a0int main(){\tint T;\tcin >> T;\twhile(T--)\t\twork();\treturn 0;}"
+        "#include <bits/stdc++.h>using namespace std; void work(){\tint xc,yc,k;\tcin >> xc >> yc >> k;\tif(k&1)\t{\t\tprintf(\"%d %d\\n\",xc,yc);\t\tfor(int i=1;i<=k/2;i++)\t\t{\t\t\tprintf(\"%d %d\\n\",xc-i,yc-i);\t\t\tprintf(\"%d %d\\n\",xc+i,yc+i);\t\t}\t}\telse\t{\t\tfor(int i=1;i<=k/2;i++)\t\t{\t\t\tprintf(\"%d %d\\n\",xc-i,yc-i);\t\t\tprintf(\"%d %d\\n\",xc+i,yc+i);\t\t}\t}} int main(){\tint T;\tcin >> T;\twhile(T--)\t\twork();\treturn 0;}"
     ],
     "input": "",
     "output": "",
@@ -155,5 +155,6 @@
     ],
     "dificulty": "800",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Find K Distinct Points with Fixed Center.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Find K Distinct Points with Fixed Center.json",
+    "hint": []
 }

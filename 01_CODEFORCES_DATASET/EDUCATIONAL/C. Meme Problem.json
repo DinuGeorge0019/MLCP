@@ -158,5 +158,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\C. Meme Problem.json",
     "editorial_link": "https://codeforces.com/blog/entry/63151",
-    "editorial": "To solve this problem we need to use some math and solve the equation on\r\nthe paper. If then and transforms to or . Then where . So if then , or\r\nif there is no answer.Since values are small, calculating answer in was\r\nenough, all we need to do is just output answer with sufficient number\r\nof digits after the decimal point.\r\n"
+    "editorial": "To solve this problem we need to use some math and solve the equation on\r\nthe paper. If then and transforms to or . Then where . So if then , or\r\nif there is no answer.Since values are small, calculating answer in was\r\nenough, all we need to do is just output answer with sufficient number\r\nof digits after the decimal point.\r\n",
+    "hint": []
 }

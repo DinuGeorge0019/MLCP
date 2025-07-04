@@ -101,7 +101,7 @@
         ]
     },
     "name": "A. Generous Kefa",
-    "statement": "One day Kefa found baloons. For convenience, we denote color of -th\r\nbaloon as lowercase letter of the Latin alphabet. Also Kefa has friends.\r\nFriend will be upset, If he get two baloons of the same color. Kefa want\r\nto give out baloons to his friends. Help Kefa to find out, can he give\r\nout all his baloons, such that no one of his friens will be upset print\r\n, if he can, and , otherwise. Note, that Kefa\u2019s friend will not upset,\r\nif he doesn\u2019t get baloons at all.\r\n",
+    "statement": "One day Kefa found baloons. For convenience, we denote color of -th\r\nbaloon as lowercase letter of the Latin alphabet. Also Kefa has friends.\r\nFriend will be upset, If he get two baloons of the same color. Kefa want\r\nto give out baloons to his friends. Help Kefa to find out, can he give\r\nout all his baloons, such that no one of his friens will be upset print\r\n, if he can, and , otherwise. Note, that Kefa’s friend will not upset,\r\nif he doesn’t get baloons at all.\r\n",
     "solutions": [
         "#include<iostream>\n#include<cstdio>\n#include<algorithm>\nusing namespace std;\nint a[26];\nint n,k,m;\nbool cmp(int x,int y){\n\treturn x>y;\n}\nint main(){\n\t//freopen(\"a.in\",\"r\",stdin);\n\t//freopen(\"a.out\",\"w\",stdout);\n\tcin>>n>>k;\n\tm=k;\n\tfor (int i=1;i<=n;i++){\n\t\tchar x;\n\t\tscanf(\" %c\",&x);\n\t\ta[x-'a']++;\n\t}\n\tsort(a,a+26,cmp);\n\ta[0]>k?printf(\"NO\"):printf(\"YES\");\n\treturn 0;\n}"
     ],
@@ -115,5 +115,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Generous Kefa.json",
     "editorial_link": "https://codeforces.com/blog/entry/53943?locale=en",
-    "editorial": "Consider each balloon color separately. For some color c, we can only assign all balloons of this color to Kefa's friends if c???k. Because otherwise, by pigeonhole principle, at least one of the friends will end up with at least two balloons of the same color.\nThis leads us to a fairly simple solution: calculate number of occurrences for each color, like, cntc.\nThen just check that cntc???k for each possible c."
+    "editorial": "Consider each balloon color separately. For some color c, we can only assign all balloons of this color to Kefa's friends if c???k. Because otherwise, by pigeonhole principle, at least one of the friends will end up with at least two balloons of the same color.\nThis leads us to a fairly simple solution: calculate number of occurrences for each color, like, cntc.\nThen just check that cntc???k for each possible c.",
+    "hint": []
 }

@@ -171,5 +171,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\D. Coprime.json",
     "editorial_link": "https://codeforces.com//blog/entry/107962",
-    "editorial": "Note that the array has at most distinct elements, since . For each\r\nvalue, store the largest index it is in. Then we can brute force all\r\npairs of values, and find the coprime pair with largest sum of\r\nindices.The time complexity is per testcase.\r\n"
+    "editorial": "Note that the array has at most distinct elements, since . For each\r\nvalue, store the largest index it is in. Then we can brute force all\r\npairs of values, and find the coprime pair with largest sum of\r\nindices.The time complexity is per testcase.\r\n",
+    "hint": []
 }

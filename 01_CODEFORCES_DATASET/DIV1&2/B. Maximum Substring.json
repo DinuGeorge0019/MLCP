@@ -167,5 +167,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\B. Maximum Substring.json",
     "editorial_link": "https://codeforces.com//blog/entry/108504",
-    "editorial": "SolutionConsidering that if we want to find the max value of , then the\r\nwhole string is the best to calculate, for it s and s are the max.Then\r\nconsidering and : what we need to do is to calculate the max continuous\r\nnumber of or , compare its square to the first condition, then take the\r\nbigger one as the answer.\r\n"
+    "editorial": "SolutionConsidering that if we want to find the max value of , then the\r\nwhole string is the best to calculate, for it s and s are the max.Then\r\nconsidering and : what we need to do is to calculate the max continuous\r\nnumber of or , compare its square to the first condition, then take the\r\nbigger one as the answer.\r\n",
+    "hint": []
 }

@@ -132,5 +132,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C. Increase and Copy.json",
     "editorial_link": "https://codeforces.com//blog/entry/83120",
-    "editorial": "It is pretty intuitive that we firstly need to do all increments and\r\nonly then copy numbers (because otherwise we can swap the order of moves\r\nand the sum will not decrease). You could notice that the answer does\r\nnot exceed so we can just iterate from to and fix the number we will\r\ncopy. Let it be . Then we need moves to obtain it and also need moves to\r\nget the enough number of copies. So, we can update the answer with this\r\nnumber of moves.Time complexity: per test case.Actually, the required\r\nnumber is always pretty near to so it is enough to try a few options in\r\nrange to get the optimal answer. This is solution.\r\n"
+    "editorial": "It is pretty intuitive that we firstly need to do all increments and\r\nonly then copy numbers (because otherwise we can swap the order of moves\r\nand the sum will not decrease). You could notice that the answer does\r\nnot exceed so we can just iterate from to and fix the number we will\r\ncopy. Let it be . Then we need moves to obtain it and also need moves to\r\nget the enough number of copies. So, we can update the answer with this\r\nnumber of moves.Time complexity: per test case.Actually, the required\r\nnumber is always pretty near to so it is enough to try a few options in\r\nrange to get the optimal answer. This is solution.\r\n",
+    "hint": []
 }

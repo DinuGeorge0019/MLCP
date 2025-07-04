@@ -80,5 +80,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Substring and Subsequence.json",
     "editorial_link": "https://codeforces.com//blog/entry/4187",
-    "editorial": "Solution summary: dynamic programming.\n\nSample jury solution: 1415300 (author = levlam)\n\nThe problem could be solved with the following dynamic programming. Let f[i,?j] be the number of distinct pairs (\"substring starting at position i\" and \"subsequence of the substring t[j... |t|]\")\n\nThen:\n\nf[i, j] = f[i, j + 1];\nif (s[i] == t[j])\n  add(f[i, j], f[i + 1, j + 1] + 1)\nAnswer =  f[i,0]"
+    "editorial": "Solution summary: dynamic programming.\n\nSample jury solution: 1415300 (author = levlam)\n\nThe problem could be solved with the following dynamic programming. Let f[i,?j] be the number of distinct pairs (\"substring starting at position i\" and \"subsequence of the substring t[j... |t|]\")\n\nThen:\n\nf[i, j] = f[i, j + 1];\nif (s[i] == t[j])\n  add(f[i, j], f[i + 1, j + 1] + 1)\nAnswer =  f[i,0]",
+    "hint": []
 }

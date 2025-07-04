@@ -80,7 +80,7 @@
         ]
     },
     "name": "B. Sereja and Mirroring",
-    "statement": "Let\u2019s assume that we are given a matrix of size , let\u2019s determine the\r\noperation of mirroring matrix . The mirroring of matrix is a matrix\r\nwhich has the following properties: the upper half of matrix (rows with\r\nnumbers from to ) exactly matches ; the lower half of matrix (rows with\r\nnumbers from to ) is symmetric to the upper one; the symmetry line is\r\nthe line that separates two halves (the line that goes in the middle,\r\nbetween rows and ). Sereja has an matrix . He wants to find such matrix\r\n, that it can be transformed into matrix , if we\u2019ll perform on it\r\n(possibly zero) mirrorings. What minimum number of rows can such matrix\r\ncontain?\r\n",
+    "statement": "Let’s assume that we are given a matrix of size , let’s determine the\r\noperation of mirroring matrix . The mirroring of matrix is a matrix\r\nwhich has the following properties: the upper half of matrix (rows with\r\nnumbers from to ) exactly matches ; the lower half of matrix (rows with\r\nnumbers from to ) is symmetric to the upper one; the symmetry line is\r\nthe line that separates two halves (the line that goes in the middle,\r\nbetween rows and ). Sereja has an matrix . He wants to find such matrix\r\n, that it can be transformed into matrix , if we’ll perform on it\r\n(possibly zero) mirrorings. What minimum number of rows can such matrix\r\ncontain?\r\n",
     "solutions": [
         "#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <stack>\n#include <bitset>\n#include <algorithm>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <cstdio>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <queue>\n\nusing namespace::std;\n\nint n,m;\nint a[1005][1005];\n\nint main(){\n    scanf(\"%d %d\",&n,&m);\n    for(int i=1;i<=n;i++){\n        for(int j=1;j<=m;j++)\n            scanf(\"%d\",&a[i][j]);\n    }\n    while(n%2==0){\n        int n1=n/2;\n        bool chk=true;\n        for(int i=1;i<=n1;i++){\n            int i1=n-i+1;\n            for(int j=1;j<=m;j++) chk&=a[i][j]==a[i1][j];\n        }\n        if(!chk) break;\n        n=n1;\n    }\n    printf(\"%d\",n);\n    return 0;\n}"
     ],
@@ -93,5 +93,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Sereja and Mirroring.json",
     "editorial_link": "https://codeforces.com//blog/entry/11998",
-    "editorial": "Lets solve problem from another side. We will try to cut of matix as\r\nmany times as we can. Cut means operation, reversed to operation\r\ndescribed in statement. To check, can we cut matrix we need to check\r\nfollowing conditions:1). 2). for all .\r\n"
+    "editorial": "Lets solve problem from another side. We will try to cut of matix as\r\nmany times as we can. Cut means operation, reversed to operation\r\ndescribed in statement. To check, can we cut matrix we need to check\r\nfollowing conditions:1). 2). for all .\r\n",
+    "hint": []
 }

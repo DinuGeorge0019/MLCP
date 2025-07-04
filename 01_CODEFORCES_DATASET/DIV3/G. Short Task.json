@@ -176,5 +176,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\G. Short Task.json",
     "editorial_link": "https://codeforces.com//blog/entry/89535",
-    "editorial": "Note that ( is the maximum value of in the problem), so it is enough for\r\nevery to calculate the value of .To calculate the value of , you can use\r\nthe sieve of Eratosthenes and get the solution for .Also, you can use\r\nthe linear sieve of Eratosthenes to find the minimum divisor for each\r\nand use the multiplicativity of the function : if .\r\n"
+    "editorial": "Note that ( is the maximum value of in the problem), so it is enough for\r\nevery to calculate the value of .To calculate the value of , you can use\r\nthe sieve of Eratosthenes and get the solution for .Also, you can use\r\nthe linear sieve of Eratosthenes to find the minimum divisor for each\r\nand use the multiplicativity of the function : if .\r\n",
+    "hint": []
 }

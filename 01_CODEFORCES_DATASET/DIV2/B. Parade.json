@@ -133,5 +133,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Parade.json",
     "editorial_link": "https://codeforces.com//blog/entry/48133",
-    "editorial": "Let\u00e2\u0080\u0099s calculate and values before update moves. Result will be stored in\r\nmaximum beauty that can be achieved. So initially . Now for every columm\r\nlet\u00e2\u0080\u0099s calculate - beauty of the parade after switching starting leg of\r\n-th column. . If then update value and store index for answer.If there\r\nwere no such that then answer is 0.Time complexity .\r\n"
+    "editorial": "Letâs calculate and values before update moves. Result will be stored in\r\nmaximum beauty that can be achieved. So initially . Now for every columm\r\nletâs calculate - beauty of the parade after switching starting leg of\r\n-th column. . If then update value and store index for answer.If there\r\nwere no such that then answer is 0.Time complexity .\r\n",
+    "hint": []
 }

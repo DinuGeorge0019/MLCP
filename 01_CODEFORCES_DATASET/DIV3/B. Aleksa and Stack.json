@@ -157,5 +157,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Aleksa and Stack.json",
     "editorial_link": "https://codeforces.com//blog/entry/120813",
-    "editorial": "There are many solutions to this problem, but the intended one is the\r\nfollowing:By selecting the first odd positive integers , we find that is\r\nalso an odd number, while the number is even, and an odd number can\r\nnever be divisible by an even number, so the construction is\r\ncorrect.Time complexity:\r\n"
+    "editorial": "There are many solutions to this problem, but the intended one is the\r\nfollowing:By selecting the first odd positive integers , we find that is\r\nalso an odd number, while the number is even, and an odd number can\r\nnever be divisible by an even number, so the construction is\r\ncorrect.Time complexity:\r\n",
+    "hint": [
+        "Hint 1 Watch parity.",
+        "Hint 2 What does the parity of depend on?",
+        "Hint 3 What parity are numbers which divide odd numbers?"
+    ]
 }

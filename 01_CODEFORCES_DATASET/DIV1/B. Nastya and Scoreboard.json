@@ -154,5 +154,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Nastya and Scoreboard.json",
     "editorial_link": "https://codeforces.com//blog/entry/76479",
-    "editorial": "Let dp[i][j]=true\n, if at the suffix i\u0085n\n you can turn on exactly j\n sticks and get the correct sequence of digits and false\n otherwise. It is easy to recalculate this dynamics: we will make transitions to all possible digits (the mask at position i\n should be a submask of the digit).\n\nAsymptotic calculate of the dynamics O(10nd)\n.\n\nNow let's go in order from 1\n to n\n and will try to eagerly set the maximum possible figure using our dynamics. It is easy to understand that in this way we get the maximum possible number of n\n digits."
+    "editorial": "Let dp[i][j]=true\n, if at the suffix in\n you can turn on exactly j\n sticks and get the correct sequence of digits and false\n otherwise. It is easy to recalculate this dynamics: we will make transitions to all possible digits (the mask at position i\n should be a submask of the digit).\n\nAsymptotic calculate of the dynamics O(10nd)\n.\n\nNow let's go in order from 1\n to n\n and will try to eagerly set the maximum possible figure using our dynamics. It is easy to understand that in this way we get the maximum possible number of n\n digits.",
+    "hint": []
 }

@@ -162,9 +162,9 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/129686",
-    "editorial": "Let\u00e2\u0080\u0099s construct a string according to the definition from the condition:\r\nwe write down all the letters from once in ascending order.After that,\r\nwe just need to replace all the characters in with their symmetric\r\ncharacters in the string . The length of string does not exceed , so the\r\nposition of this character can be found by linear search.\r\n",
+    "editorial": "Letâs construct a string according to the definition from the condition:\r\nwe write down all the letters from once in ascending order.After that,\r\nwe just need to replace all the characters in with their symmetric\r\ncharacters in the string . The length of string does not exceed , so the\r\nposition of this character can be found by linear search.\r\n",
     "name": "B. Symmetric Encoding",
-    "statement": "Polycarp has a string s, which consists of lowercase Latin letters. He\r\nencodes this string using the following algorithm: first, he constructs\r\na new auxiliary string r, which consists of all distinct letters of the\r\nstring s, written in alphabetical order; then the encoding happens as\r\nfollows: each character in the string s is replaced by its symmetric\r\ncharacter from the string r (the first character of the string r will be\r\nreplaced by the last, the second by the second from the end, and so on).\r\nFor example, encoding the string s=\"\" happens as follows: the string r\r\nis obtained as \"\"; the first character s_1=\u201d is replaced by \u201d; the\r\nsecond character s_2=\u201d is replaced by \u201d; the third character s_3=\u201d is\r\nreplaced by \u201d; ... the last character s_{10}=\u201d is replaced by \u201d. Thus,\r\nthe result of encoding the string s=\"\" is the string \"\".Write a program\r\nthat performs decoding that is, restores the original string s from the\r\nencoding result.\r\n",
+    "statement": "Polycarp has a string s, which consists of lowercase Latin letters. He\r\nencodes this string using the following algorithm: first, he constructs\r\na new auxiliary string r, which consists of all distinct letters of the\r\nstring s, written in alphabetical order; then the encoding happens as\r\nfollows: each character in the string s is replaced by its symmetric\r\ncharacter from the string r (the first character of the string r will be\r\nreplaced by the last, the second by the second from the end, and so on).\r\nFor example, encoding the string s=\"\" happens as follows: the string r\r\nis obtained as \"\"; the first character s_1=” is replaced by ”; the\r\nsecond character s_2=” is replaced by ”; the third character s_3=” is\r\nreplaced by ”; ... the last character s_{10}=” is replaced by ”. Thus,\r\nthe result of encoding the string s=\"\" is the string \"\".Write a program\r\nthat performs decoding that is, restores the original string s from the\r\nencoding result.\r\n",
     "solutions": [
         "#include <iostream>#include <cmath>#include <algorithm>#include <vector>#include <chrono>#include <random>#include <map>#include <set>using namespace std;const int N = 120000;void solve() {\tint n;\tcin >> n;\tstring s;\tcin >> s;\tset <char> ms;\tfor (auto& it : s) {\t\tms.insert(it);\t}\tvector <char> v;\tfor (auto &it : ms) {\t\tv.push_back(it);\t}\tmap <char, char> mp;\tfor (int i = 0; i < (int)v.size(); i++) {\t\tmp[v[i]] = v[(int)v.size() - 1 - i];\t}\tfor (auto& it : s) {\t\tit = mp[it];\t}\tcout << s << \"\\n\";}int main() {\tint t;\tcin >> t;\twhile (t--) {\t\tsolve();\t}}"
     ],
@@ -177,5 +177,6 @@
     ],
     "dificulty": "800",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Symmetric Encoding.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Symmetric Encoding.json",
+    "hint": []
 }

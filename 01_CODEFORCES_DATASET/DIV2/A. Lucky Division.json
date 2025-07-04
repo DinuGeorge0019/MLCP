@@ -128,5 +128,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Lucky Division.json",
     "editorial_link": "https://codeforces.com//blog/entry/2956",
-    "editorial": "In this problem you just need to loop through the integers i from 1 to n determine, is i lucky, if yes, then try, if n mod i = 0, then answer is \"YES\". If there are no such i, answer is \"NO\"."
+    "editorial": "In this problem you just need to loop through the integers i from 1 to n determine, is i lucky, if yes, then try, if n mod i = 0, then answer is \"YES\". If there are no such i, answer is \"NO\".",
+    "hint": []
 }

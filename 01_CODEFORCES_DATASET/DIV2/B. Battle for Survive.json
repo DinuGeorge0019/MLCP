@@ -130,9 +130,9 @@
     "editorial_link": "https://codeforces.com/blog/entry/134170",
     "editorial": "SolutionIt can be noted that the value of will always be negative in the\r\nfinal result.Therefore, we can subtract the sum from , and then subtract\r\nfrom .Thus, the final sum will be . This value cannot be exceeded\r\nbecause will always be negative.\r\n",
     "name": "B. Battle for Survive",
-    "statement": "Eralim, being the mafia boss, manages a group of n fighters. Fighter i\r\nhas a rating of a_i.Eralim arranges a tournament of n - 1 battles, in\r\neach of which two not yet eliminated fighters i and j () are chosen, and\r\nas a result of the battle, fighter i is eliminated from the tournament,\r\nand the rating of fighter j is reduced by the rating of fighter i. That\r\nis, a_j is decreased by a_i. Note that fighter j\u2019s rating can become\r\nnegative. The fighters indexes do not change.Eralim wants to know what\r\nmaximum rating the last remaining fighter can preserve if he chooses the\r\nbattles optimally.\r\n",
+    "statement": "Eralim, being the mafia boss, manages a group of n fighters. Fighter i\r\nhas a rating of a_i.Eralim arranges a tournament of n - 1 battles, in\r\neach of which two not yet eliminated fighters i and j () are chosen, and\r\nas a result of the battle, fighter i is eliminated from the tournament,\r\nand the rating of fighter j is reduced by the rating of fighter i. That\r\nis, a_j is decreased by a_i. Note that fighter j’s rating can become\r\nnegative. The fighters indexes do not change.Eralim wants to know what\r\nmaximum rating the last remaining fighter can preserve if he chooses the\r\nbattles optimally.\r\n",
     "solutions": [
-        "#include <bits/stdc++.h>using namespace std;\u00a0typedef long long ll;using vi = vector<int>;using vvi = vector<vector<int>>;using vll = vector<ll>;using vvll = vector<vector<ll>>;\u00a0#define all(x) x.begin(), x.end()#define ckmin(a,b) a = min(a,b)#define ckmax(a,b) a = max(a,b)\u00a0void solve() {    int N;    cin >> N;        vll A(N);    for (int i=0;i<N;i++) cin >> A[i];\u00a0    ll ans = 0;    for (ll a : A) ans += a;    ans -= 2 * A[N-2];    cout << ans << \"\\n\";}\u00a0int main() {    std::ios::sync_with_stdio(false);    std::cin.tie(NULL);\u00a0    int T;    cin >> T;    for (int t=0;t<T;t++) solve();\u00a0\u00a0    return 0;}"
+        "#include <bits/stdc++.h>using namespace std; typedef long long ll;using vi = vector<int>;using vvi = vector<vector<int>>;using vll = vector<ll>;using vvll = vector<vector<ll>>; #define all(x) x.begin(), x.end()#define ckmin(a,b) a = min(a,b)#define ckmax(a,b) a = max(a,b) void solve() {    int N;    cin >> N;        vll A(N);    for (int i=0;i<N;i++) cin >> A[i];     ll ans = 0;    for (ll a : A) ans += a;    ans -= 2 * A[N-2];    cout << ans << \"\\n\";} int main() {    std::ios::sync_with_stdio(false);    std::cin.tie(NULL);     int T;    cin >> T;    for (int t=0;t<T;t++) solve();      return 0;}"
     ],
     "input": "",
     "output": "",
@@ -143,5 +143,6 @@
     ],
     "dificulty": "900",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Battle for Survive.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Battle for Survive.json",
+    "hint": []
 }

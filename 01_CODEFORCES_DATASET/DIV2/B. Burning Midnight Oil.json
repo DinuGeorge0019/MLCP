@@ -124,5 +124,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Burning Midnight Oil.json",
     "editorial_link": "https://codeforces.com//blog/entry/4124",
-    "editorial": "This problem can be solved using binary search for the answer.\r\nobviously, if number is an answer than every number is also the answer,\r\nbecause the number of written lines of code could only become more. To\r\ncheck some number you can use formula given in the problem, because it\r\nwill have less than positive elements. The complexity is .\r\n"
+    "editorial": "This problem can be solved using binary search for the answer.\r\nobviously, if number is an answer than every number is also the answer,\r\nbecause the number of written lines of code could only become more. To\r\ncheck some number you can use formula given in the problem, because it\r\nwill have less than positive elements. The complexity is .\r\n",
+    "hint": []
 }

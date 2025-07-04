@@ -212,5 +212,10 @@
     ],
     "dificulty": "",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\G. Kevin and Teams.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\G. Kevin and Teams.json",
+    "hint": [
+        "Hint 1 What is the size of the maximum possible matching? What can be the \"most dense\" graph with maximum matching ?",
+        "Hint 2 Mixed-color triplet( with edge and with edge ) is a flexible structure to find a matching for both types.",
+        "Hint 3 Add vertices one by one. Try to get a \"mixed-color triple\" or a larger set of the same color."
+    ]
 }

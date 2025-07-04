@@ -202,5 +202,11 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\B. Bessie and MEX.json",
     "editorial_link": "https://codeforces.com//blog/entry/126942",
-    "editorial": null
+    "editorial": null,
+    "hint": [
+        "Hint 1 We will construct the solution forward.",
+        "Hint 2 Separate the 's given into negative and positive cases. What does this tell us about the ?",
+        "Hint 1 We will construct the solution backwards.",
+        "Hint 2 The is determined at the last index, since all of appear in ."
+    ]
 }

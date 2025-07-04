@@ -154,5 +154,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Array with Odd Sum.json",
     "editorial_link": "https://codeforces.com//blog/entry/73627",
-    "editorial": "Firstly, if the array already has an odd sum, the answer is \"\".\r\nOtherwise, we need to change the parity of the sum, so we need to change\r\nthe parity of some number. We can do in only when we have at least one\r\neven number and at least one odd number. Otherwise, the answer is \"\".\r\n"
+    "editorial": "Firstly, if the array already has an odd sum, the answer is \"\".\r\nOtherwise, we need to change the parity of the sum, so we need to change\r\nthe parity of some number. We can do in only when we have at least one\r\neven number and at least one odd number. Otherwise, the answer is \"\".\r\n",
+    "hint": []
 }

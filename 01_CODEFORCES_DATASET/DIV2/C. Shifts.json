@@ -116,5 +116,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Shifts.json",
     "editorial_link": "https://codeforces.com//blog/entry/5437",
-    "editorial": "Let's compute the minimum number of operations needed to get all 1s in each of the m columns. For this, traverse each row twice \u0097 one time to the left and one time to the right, recording the index of the nearest cell with 1 (in corresponding direction) for each column in this row. Then the number of operations for any particular column is the sum of the computed values over all rows. In turn, the answer to the problem is the minimal value of these sums.\n"
+    "editorial": "Let's compute the minimum number of operations needed to get all 1s in each of the m columns. For this, traverse each row twice  one time to the left and one time to the right, recording the index of the nearest cell with 1 (in corresponding direction) for each column in this row. Then the number of operations for any particular column is the sum of the computed values over all rows. In turn, the answer to the problem is the minimal value of these sums.\n",
+    "hint": []
 }

@@ -154,5 +154,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Multiples and Power Differences.json",
     "editorial_link": "https://codeforces.com//blog/entry/87470",
-    "editorial": "SolutionBuild a matrix with a checkerboard pattern: let if is even, and\r\notherwise. The difference between two adjacent cells is obviously a\r\nfourth power of an integer. We choose because it is . This ensures that\r\nis a multiple of , because it is either itself or the sum of two\r\nmultiples of .Complexity: .\r\n"
+    "editorial": "SolutionBuild a matrix with a checkerboard pattern: let if is even, and\r\notherwise. The difference between two adjacent cells is obviously a\r\nfourth power of an integer. We choose because it is . This ensures that\r\nis a multiple of , because it is either itself or the sum of two\r\nmultiples of .Complexity: .\r\n",
+    "hint": [
+        "Hint 1 Brute force doesn't work (even if you optimize it): there are relatively few solutions.",
+        "Hint 2 There may be very few possible values of , if is fixed. The problem arises when you have to find a value for a cell with, e.g., fixed neighbors. Try to find a possible property of the neighbors of , such that at least a solution for exists.",
+        "Hint 3 The least common multiple of all integers from to is less than ."
+    ]
 }

@@ -156,5 +156,14 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E2. LCM Sum  hard version .json",
     "editorial_link": "https://codeforces.com//blog/entry/105919",
-    "editorial": "Let\u00e2\u0080\u0099s count the number of bad triplets that don\u00e2\u0080\u0099t satisfy the condition,\r\ni.e. . Then the answer for one test case is the number of bad\r\ntriplets.Since , a triplet is bad only when or ( and ). This means that\r\nboth and must be a divisor of . For every segment where is a divisor of\r\n, let\u00e2\u0080\u0099s count the number of such that . Let\u00e2\u0080\u0099s call it the weight of the\r\nsegment. Turns out that for the current constraints, for every , we can\r\niterate over all pairs of , where and are divisors of , and check if the\r\ntriplet is bad. If it is, then we increase the weight of the segment by\r\none. To get answers for the test cases, we just need to find the sum of\r\nthe weights of the segments that are inside . This is a pretty standard\r\nproblem, which can be solved in offline using a data structure that\r\nsupports point add and range sum. It is possible to solve E1 without a\r\ndata structure by iterating over the segments and checking for every one\r\nof them if it lies inside .Complexity: with a seg tree ( is about and a\r\nseg tree update works in , so we get ). You can also use sqrt\r\ndecomposition to get .\r\n"
+    "editorial": "Letâs count the number of bad triplets that donât satisfy the condition,\r\ni.e. . Then the answer for one test case is the number of bad\r\ntriplets.Since , a triplet is bad only when or ( and ). This means that\r\nboth and must be a divisor of . For every segment where is a divisor of\r\n, letâs count the number of such that . Letâs call it the weight of the\r\nsegment. Turns out that for the current constraints, for every , we can\r\niterate over all pairs of , where and are divisors of , and check if the\r\ntriplet is bad. If it is, then we increase the weight of the segment by\r\none. To get answers for the test cases, we just need to find the sum of\r\nthe weights of the segments that are inside . This is a pretty standard\r\nproblem, which can be solved in offline using a data structure that\r\nsupports point add and range sum. It is possible to solve E1 without a\r\ndata structure by iterating over the segments and checking for every one\r\nof them if it lies inside .Complexity: with a seg tree ( is about and a\r\nseg tree update works in , so we get ). You can also use sqrt\r\ndecomposition to get .\r\n",
+    "hint": [
+        "Hint 1 Count the number of \"bad\" triplets such that .",
+        "Hint 2 in a bad triplet.",
+        "Hint 3 A triplet is bad iff or ( and ).",
+        "Hint 4 implies , , and are all divisors of .",
+        "Hint 5 For every , iterate over all pairs of divisors of .",
+        "Hint 6 Think of the \"bad\" triplets as of segments with some weight.",
+        "Hint 7 Solve in offline."
+    ]
 }

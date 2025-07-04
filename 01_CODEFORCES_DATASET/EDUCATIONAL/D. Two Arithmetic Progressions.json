@@ -153,5 +153,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\D. Two Arithmetic Progressions.json",
     "editorial_link": "https://codeforces.com//blog/entry/46761",
-    "editorial": "I wanted to give this problem a lot of time ago. I thought it is very\r\nstandard problem, but I underestimated its difficulty. Let\u00e2\u0080\u0099s write down\r\nthe equation describing the problem: . So we have linear Diofant\r\nequation with two variables: . The solution has the form: , where the\r\nlast equation can be solved by extended Euclid algorithm and is any\r\nintegral number. The variable should satisfy two conditions: and . The\r\nvalues and are fixed, so we can get the segment of possible values for\r\nthe values . The length of the segment is the answer for the problem.\r\nC++ solution\r\n"
+    "editorial": "I wanted to give this problem a lot of time ago. I thought it is very\r\nstandard problem, but I underestimated its difficulty. Letâs write down\r\nthe equation describing the problem: . So we have linear Diofant\r\nequation with two variables: . The solution has the form: , where the\r\nlast equation can be solved by extended Euclid algorithm and is any\r\nintegral number. The variable should satisfy two conditions: and . The\r\nvalues and are fixed, so we can get the segment of possible values for\r\nthe values . The length of the segment is the answer for the problem.\r\nC++ solution\r\n",
+    "hint": []
 }

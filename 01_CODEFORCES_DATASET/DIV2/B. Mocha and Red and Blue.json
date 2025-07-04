@@ -157,5 +157,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Mocha and Red and Blue.json",
     "editorial_link": "https://codeforces.com//blog/entry/93898",
-    "editorial": "For a longest period of \"\", it is optimized to paint either \"\" or \"\", so\r\nthe imperfectness it made is only related to the colors of both sides of\r\nit.Choose the one with the lower imperfectness for each longest period\r\nof \"\" in is acceptable.More elegantly, if the square on the left or on\r\nthe right of a \"\" is painted, simply paint \"\" with the different color\r\nfrom it. This can be proved to reach the minimum imperfectness by\r\nconsidering the parity.\r\n"
+    "editorial": "For a longest period of \"\", it is optimized to paint either \"\" or \"\", so\r\nthe imperfectness it made is only related to the colors of both sides of\r\nit.Choose the one with the lower imperfectness for each longest period\r\nof \"\" in is acceptable.More elegantly, if the square on the left or on\r\nthe right of a \"\" is painted, simply paint \"\" with the different color\r\nfrom it. This can be proved to reach the minimum imperfectness by\r\nconsidering the parity.\r\n",
+    "hint": []
 }

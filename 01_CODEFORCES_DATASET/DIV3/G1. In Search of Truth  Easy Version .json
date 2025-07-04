@@ -168,5 +168,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\G1. In Search of Truth  Easy Version .json",
     "editorial_link": "https://codeforces.com//blog/entry/117060",
-    "editorial": "Let be the numbers of the sectors in clockwise order, and let the arrow\r\ninitially point to the sector with number .First, let\u00e2\u0080\u0099s make queries of\r\n\"+ 1\", then we will know the numbers of consecutive sectors. If , then\r\nthe number of the first query that gives the answer is the desired .If\r\nwe did not find , this means that . Let\u00e2\u0080\u0099s save . Now we will make\r\nqueries of \"+ 1000\" until we get one of the numbers as the answer. Note\r\nthat we will need no more than queries of this type, after which it is\r\neasy to determine the number .Thus, we can determine the number in no\r\nmore than queries.\r\n"
+    "editorial": "Let be the numbers of the sectors in clockwise order, and let the arrow\r\ninitially point to the sector with number .First, letâs make queries of\r\n\"+ 1\", then we will know the numbers of consecutive sectors. If , then\r\nthe number of the first query that gives the answer is the desired .If\r\nwe did not find , this means that . Letâs save . Now we will make\r\nqueries of \"+ 1000\" until we get one of the numbers as the answer. Note\r\nthat we will need no more than queries of this type, after which it is\r\neasy to determine the number .Thus, we can determine the number in no\r\nmore than queries.\r\n",
+    "hint": []
 }

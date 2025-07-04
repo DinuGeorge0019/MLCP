@@ -142,7 +142,7 @@
         ]
     },
     "name": "A. Bear and Three Balls",
-    "statement": "Limak is a little polar bear. He has balls, the -th ball has size .Limak\r\nwants to give one ball to each of his three friends. Giving gifts isn\u2019t\r\neasy there are two rules Limak must obey to make friends happy: No two\r\nfriends can get balls of the same size. No two friends can get balls of\r\nsizes that differ by more than . For example, Limak can choose balls\r\nwith sizes , and , or balls with sizes , and . But he can\u2019t choose balls\r\nwith sizes , and (two friends would get balls of the same size), and he\r\ncan\u2019t choose balls with sizes , and (because sizes and differ by more\r\nthan ).Your task is to check whether Limak can choose three balls that\r\nsatisfy conditions above.\r\n",
+    "statement": "Limak is a little polar bear. He has balls, the -th ball has size .Limak\r\nwants to give one ball to each of his three friends. Giving gifts isn’t\r\neasy there are two rules Limak must obey to make friends happy: No two\r\nfriends can get balls of the same size. No two friends can get balls of\r\nsizes that differ by more than . For example, Limak can choose balls\r\nwith sizes , and , or balls with sizes , and . But he can’t choose balls\r\nwith sizes , and (two friends would get balls of the same size), and he\r\ncan’t choose balls with sizes , and (because sizes and differ by more\r\nthan ).Your task is to check whether Limak can choose three balls that\r\nsatisfy conditions above.\r\n",
     "solutions": [
         "#include <cstdio>\n#include <cstring>\n#include <cmath>\n#include <algorithm>\n#include <vector>\n#include <string>\n#include <map>\n#include <set>\n#include <cassert>\nusing namespace std;\n#define rep(i,a,n) for (int i=a;i<n;i++)\n#define per(i,a,n) for (int i=n-1;i>=a;i--)\n#define pb push_back\n#define mp make_pair\n#define all(x) (x).begin(),(x).end()\n#define fi first\n#define se second\n#define SZ(x) ((int)(x).size())\ntypedef vector<int> VI;\ntypedef long long ll;\ntypedef pair<int,int> PII;\nconst ll mod=1000000007;\nll powmod(ll a,ll b) {ll res=1;a%=mod;for(;b;b>>=1){if(b&1)res=res*a%mod;a=a*a%mod;}return res;}\n// head\n\nint n,a[51];\nint main() {\n\tscanf(\"%d\",&n);\n\trep(i,0,n) scanf(\"%d\",a+i);\n\tsort(a,a+n);\n\trep(i,0,n) rep(j,i+1,n) rep(k,j+1,n) if (a[k]==a[i]+2&&a[j]==a[i]+1) {\n\t\tputs(\"YES\");\n\t\treturn 0;\n\t}\n\tputs(\"NO\");\n}\n"
     ],
@@ -157,5 +157,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\A. Bear and Three Balls.json",
     "editorial_link": "https://codeforces.com//blog/entry/43886",
-    "editorial": "watch out for test like \"1 1 1 2 2 2 2 3 3 3\". It shows that it's not enough to sort number and check three neighbouring elements. You must remove repetitions. The easier solution is to write 3 for-loops, without any sorting. Do you see how?"
+    "editorial": "watch out for test like \"1 1 1 2 2 2 2 3 3 3\". It shows that it's not enough to sort number and check three neighbouring elements. You must remove repetitions. The easier solution is to write 3 for-loops, without any sorting. Do you see how?",
+    "hint": []
 }

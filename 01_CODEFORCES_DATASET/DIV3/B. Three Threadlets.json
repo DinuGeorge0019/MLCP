@@ -190,5 +190,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Three Threadlets.json",
     "editorial_link": "https://codeforces.com//blog/entry/121327",
-    "editorial": "If the lengths of the threadlets are equal, the answer is \"\".Otherwise,\r\nlet\u00e2\u0080\u0099s denote the length of the minimum threadlet as . If we cut it, we\r\nwill have only two operations, which is not enough.Therefore, the\r\ndesired length should be equal to . If or are not divisible by , the\r\nanswer is \"\". Otherwise, we will check if .\r\n"
+    "editorial": "If the lengths of the threadlets are equal, the answer is \"\".Otherwise,\r\nletâs denote the length of the minimum threadlet as . If we cut it, we\r\nwill have only two operations, which is not enough.Therefore, the\r\ndesired length should be equal to . If or are not divisible by , the\r\nanswer is \"\". Otherwise, we will check if .\r\n",
+    "hint": []
 }

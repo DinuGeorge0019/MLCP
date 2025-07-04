@@ -144,5 +144,13 @@
     ],
     "dificulty": "",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Nested Segments.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Nested Segments.json",
+    "hint": [
+        "Hint 1 Forget about counting. What is the maximum size of if ?",
+        "Hint 2 It is . What if isn't ?",
+        "Hint 3 It is still . To prove this represent a good set as a forest.",
+        "Hint 4 We can always add and for all to . Now the tree of has exactly leaves. What if a vertex has more than children?",
+        "Hint 5 What is the number of solutions when ?",
+        "Hint 6 It is the number of full binary trees with leaves, which is , where denotes the Catalan's sequence. Extend this idea to count the number of solutions for a general tree of ."
+    ]
 }

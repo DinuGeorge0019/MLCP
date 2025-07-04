@@ -169,5 +169,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C. Letters.json",
     "editorial_link": "https://codeforces.com/blog/entry/59430",
-    "editorial": "We should use that the letter queries are given in increasing order of\r\nroom numbers. We will store in a variable the number of rooms in already\r\nconsidered dormitories (this variable should have 64-bit type) and in a\r\nvariable we will store the minimum number of dormitory where the room\r\nfrom the current letter possibly is. Initially, and . We will iterate\r\nthrough the letters. Let the current letter should be delivered to the\r\nroom . While , we increase by and increase by one. So, we got the\r\ndormitory number where room is. It only remains to print two integers:\r\n(the dormitory number) and (the room number in this dormitory).\r\n"
+    "editorial": "We should use that the letter queries are given in increasing order of\r\nroom numbers. We will store in a variable the number of rooms in already\r\nconsidered dormitories (this variable should have 64-bit type) and in a\r\nvariable we will store the minimum number of dormitory where the room\r\nfrom the current letter possibly is. Initially, and . We will iterate\r\nthrough the letters. Let the current letter should be delivered to the\r\nroom . While , we increase by and increase by one. So, we got the\r\ndormitory number where room is. It only remains to print two integers:\r\n(the dormitory number) and (the room number in this dormitory).\r\n",
+    "hint": []
 }

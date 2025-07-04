@@ -187,7 +187,7 @@
     "editorial_link": "https://codeforces.com//blog/entry/132383",
     "editorial": "For each test case, we can brute force through all possible games (there are only four of them) and calculate who is the winner of the game by simulating the game.",
     "name": "B. Card Game",
-    "statement": "Suneet and Slavic play a card game. The rules of the game are as\r\nfollows: Each card has an integer value between 1 and 10. Each player\r\nreceives 2 cards which are face-down (so a player doesn\u2019t know their\r\ncards). The game is turn-based and consists . In a round, both players\r\npick a card and flip it. The player who flipped a card with a strictly\r\ngreater number wins the round. In case of equality, no one wins the\r\nround. A player wins a game if he wins the most number of rounds (i.e.\r\nstrictly greater than the other player). In case of equality, no one\r\nwins the game. Since Suneet and Slavic aren\u2019t best friends, you need to\r\ncalculate the number of ways the game could happen that Suneet would end\r\nup as the winner.\r\n",
+    "statement": "Suneet and Slavic play a card game. The rules of the game are as\r\nfollows: Each card has an integer value between 1 and 10. Each player\r\nreceives 2 cards which are face-down (so a player doesn’t know their\r\ncards). The game is turn-based and consists . In a round, both players\r\npick a card and flip it. The player who flipped a card with a strictly\r\ngreater number wins the round. In case of equality, no one wins the\r\nround. A player wins a game if he wins the most number of rounds (i.e.\r\nstrictly greater than the other player). In case of equality, no one\r\nwins the game. Since Suneet and Slavic aren’t best friends, you need to\r\ncalculate the number of ways the game could happen that Suneet would end\r\nup as the winner.\r\n",
     "solutions": [
         "#include<bits/stdc++.h>using namespace std;int T;int f(int x){\tif(x>0)return 1;\tif(x==0)return 0;\tif(x<0)return -1;}int main(){\tcin>>T;\twhile(T--){\t\tint a[2],b[2];cin>>a[0]>>a[1]>>b[0]>>b[1];int ans=0;\t\tfor(int i=0;i<2;i++)for(int j=0;j<2;j++){\t\t\tans+=(f(a[i]-b[j])+f(a[1-i]-b[1-j])>0);\t\t}\t\tcout<<ans<<endl;\t}\treturn 0;}"
     ],
@@ -200,5 +200,6 @@
     ],
     "dificulty": "1000",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\B. Card Game.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\B. Card Game.json",
+    "hint": []
 }

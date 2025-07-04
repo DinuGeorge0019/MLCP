@@ -209,5 +209,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Ropewalkers.json",
     "editorial_link": "https://codeforces.com//blog/entry/67829",
-    "editorial": "Let\u00e2\u0080\u0099s solve the problem when . If it\u00e2\u0080\u0099s not true, let\u00e2\u0080\u0099s sort , and . If\r\nwe move to any direction, the distance between and one of or decreases,\r\nso we get to a worse situation than it was. Thus, we can assume that the\r\nposition does not change. Then we should make following conditions come\r\ntrue: and .If it can be achieved in 0 seconds, else in seconds. So, the\r\nfirst condition can be achieved in . If it can be achieved in 0 seconds,\r\nelse in seconds. So, the second condition can be achieved in .So, the\r\nanswer for the problem is .\r\n"
+    "editorial": "Letâs solve the problem when . If itâs not true, letâs sort , and . If\r\nwe move to any direction, the distance between and one of or decreases,\r\nso we get to a worse situation than it was. Thus, we can assume that the\r\nposition does not change. Then we should make following conditions come\r\ntrue: and .If it can be achieved in 0 seconds, else in seconds. So, the\r\nfirst condition can be achieved in . If it can be achieved in 0 seconds,\r\nelse in seconds. So, the second condition can be achieved in .So, the\r\nanswer for the problem is .\r\n",
+    "hint": []
 }

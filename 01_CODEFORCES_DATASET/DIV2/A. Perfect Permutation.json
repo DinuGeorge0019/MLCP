@@ -126,5 +126,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Perfect Permutation.json",
     "editorial_link": "https://codeforces.com//blog/entry/105232",
-    "editorial": "hint1.The minimal weight is at least since divides any integer (so\r\ndivides ).\r\n"
+    "editorial": "hint1.The minimal weight is at least since divides any integer (so\r\ndivides ).\r\n",
+    "hint": [
+        "hint1. The minimal weight is at least since divides any integer (so divides )."
+    ]
 }

@@ -131,5 +131,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\F. OH NO1  -2-3-4 .json",
     "editorial_link": "https://codeforces.com//blog/entry/114899",
-    "editorial": "Key Idea 1Go through from vertex through and decided their final weights\r\nin this order. When deciding the weights for , make sure it is different\r\nfrom if and is adjacent to . Ignore vertices where is adjacent to but\r\nhave .\r\n"
+    "editorial": "Key Idea 1Go through from vertex through and decided their final weights\r\nin this order. When deciding the weights for , make sure it is different\r\nfrom if and is adjacent to . Ignore vertices where is adjacent to but\r\nhave .\r\n",
+    "hint": []
 }

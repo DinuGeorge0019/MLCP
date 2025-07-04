@@ -127,5 +127,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Bus of Characters.json",
     "editorial_link": "https://codeforces.com//blog/entry/59551",
-    "editorial": "Note that the final introvert-extrovert pairs are uniquely determined,\r\nand that using the stack, it is possible to recover which extrovert to\r\nwhich introvert will sit (note that the zeros and ones will form the\r\ncorrect bracket sequence). Then one of the solutions may be as follows:\r\n"
+    "editorial": "Note that the final introvert-extrovert pairs are uniquely determined,\r\nand that using the stack, it is possible to recover which extrovert to\r\nwhich introvert will sit (note that the zeros and ones will form the\r\ncorrect bracket sequence). Then one of the solutions may be as follows:\r\n",
+    "hint": []
 }

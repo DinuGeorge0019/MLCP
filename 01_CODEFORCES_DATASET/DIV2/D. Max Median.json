@@ -166,5 +166,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Max Median.json",
     "editorial_link": "https://codeforces.com//blog/entry/87849",
-    "editorial": "Let\u00e2\u0080\u0099s binary search the answer. Now let\u00e2\u0080\u0099s check if the answer is\nat least . Replace all values that are at least with 1 and values that\nare less than with . Now if for some segment the median is at least if\nthe sum on this subsegment is positive! Now we only need to check if the\narray consisting of and has a subsegment of length at least with\npositive sum. So let\u00e2\u0080\u0099s just calculate prefix sums of this array and for\nprefix sum at position choose the minimum prefix sum amongst positions ,\nwhich can be done using prefix minimum in linear time.So the resulting\ncomplexity is .\n"
+    "editorial": "Letâs binary search the answer. Now letâs check if the answer is\nat least . Replace all values that are at least with 1 and values that\nare less than with . Now if for some segment the median is at least if\nthe sum on this subsegment is positive! Now we only need to check if the\narray consisting of and has a subsegment of length at least with\npositive sum. So letâs just calculate prefix sums of this array and for\nprefix sum at position choose the minimum prefix sum amongst positions ,\nwhich can be done using prefix minimum in linear time.So the resulting\ncomplexity is .\n",
+    "hint": [
+        "Hint1 How to solve the problem if all the values are and ?",
+        "Hint2 Binary search ONCE MORE?",
+        "Hint3 How to check if the answer is at least ?"
+    ]
 }

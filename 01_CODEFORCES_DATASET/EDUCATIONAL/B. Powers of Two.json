@@ -139,5 +139,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. Powers of Two.json",
     "editorial_link": "https://codeforces.com//blog/entry/46324?locale=en",
-    "editorial": "To solve this problem we need to use map and store in this map how many\r\ntimes every integer appears in the given array. Then we need to iterate\r\nthrough all given numbers with variable . Let the current number is\r\nequal to . For this number we need to iterate on all possible powers of\r\n2 (the number of these powers is no more than 31). Let the current power\r\nis equal to . Then we need to make and add the value to the asnwer.\r\n"
+    "editorial": "To solve this problem we need to use map and store in this map how many\r\ntimes every integer appears in the given array. Then we need to iterate\r\nthrough all given numbers with variable . Let the current number is\r\nequal to . For this number we need to iterate on all possible powers of\r\n2 (the number of these powers is no more than 31). Let the current power\r\nis equal to . Then we need to make and add the value to the asnwer.\r\n",
+    "hint": []
 }

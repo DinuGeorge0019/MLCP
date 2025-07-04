@@ -195,5 +195,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\C. From S To T.json",
     "editorial_link": "https://codeforces.com//blog/entry/68405",
-    "editorial": "If the answer exists then each element of string matches with some\r\nelement of string . Thereby string must be a subsequence of string .Let\r\nequal to the number of occurrences of the letter in the string . Then\r\nfor any letter condition must be hold.So the answer to the query is if\r\nfollowing conditions hold: string is subsequence of string ; for any\r\nLatin latter .\r\n"
+    "editorial": "If the answer exists then each element of string matches with some\r\nelement of string . Thereby string must be a subsequence of string .Let\r\nequal to the number of occurrences of the letter in the string . Then\r\nfor any letter condition must be hold.So the answer to the query is if\r\nfollowing conditions hold: string is subsequence of string ; for any\r\nLatin latter .\r\n",
+    "hint": []
 }

@@ -171,5 +171,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\D. Permutation Transformation.json",
     "editorial_link": "https://codeforces.com//blog/entry/87874",
-    "editorial": "We will construct the required tree recursively. Let us describe the\r\nstate of tree construction by three values , where is the segment of the\r\npermutation, and is the current depth. Then the following transitions\r\ncan be described: find the position of the maximum element on the\r\nsegment , that is, ; the depth of the vertex is equal to ; if , then\r\nmake the transition to the state ; if , then make the transition to the\r\nstate ; Then, in order to construct the required tree, it is necessary\r\nto take as the initial state.\r\n"
+    "editorial": "We will construct the required tree recursively. Let us describe the\r\nstate of tree construction by three values , where is the segment of the\r\npermutation, and is the current depth. Then the following transitions\r\ncan be described: find the position of the maximum element on the\r\nsegment , that is, ; the depth of the vertex is equal to ; if , then\r\nmake the transition to the state ; if , then make the transition to the\r\nstate ; Then, in order to construct the required tree, it is necessary\r\nto take as the initial state.\r\n",
+    "hint": []
 }

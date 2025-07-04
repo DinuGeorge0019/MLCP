@@ -137,7 +137,7 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/132185",
-    "editorial": "SolutionFirst, if all elements already have the same parity, we don\u00e2\u0080\u0099t\r\nneed to do perform any operation.Next, if the array contains both and\r\nnumbers. In this case, it is impossible to convert all elements to\r\nnumbers. Why?If we apply an operation on: two elements, one of them\r\nremains . two elements of distinct parities, one of them is replaced\r\nwith their sum, which is an number. This implies even if we want to\r\nchange an element to number, it fails in both ways possible.So we just\r\nwant to convert all of them to numbers. Now come the greedy part: it\r\ndoesn\u00e2\u0080\u0099t reduce the number of elements, so skip it. this creates another\r\nnumber, indeed very awful. this is great, but only if the sum replaces\r\nthe one (which means ). Let\u00e2\u0080\u0099s find the largest element and call it .\r\nThen traverse each elements in non-decreasing order and apply an\r\noperation on and : If , becomes largest odd number. Thus, we set . This\r\nreduce the number of even element by . If , before we do this operation,\r\nwe need to do another on and the largest even element to make the\r\nlargest in the array. Note that this case only happens at most once. As\r\na result, the answer is the number of even elements (plus if the second\r\ncase occurs).Time complexity: .\r\n",
+    "editorial": "SolutionFirst, if all elements already have the same parity, we donât\r\nneed to do perform any operation.Next, if the array contains both and\r\nnumbers. In this case, it is impossible to convert all elements to\r\nnumbers. Why?If we apply an operation on: two elements, one of them\r\nremains . two elements of distinct parities, one of them is replaced\r\nwith their sum, which is an number. This implies even if we want to\r\nchange an element to number, it fails in both ways possible.So we just\r\nwant to convert all of them to numbers. Now come the greedy part: it\r\ndoesnât reduce the number of elements, so skip it. this creates another\r\nnumber, indeed very awful. this is great, but only if the sum replaces\r\nthe one (which means ). Letâs find the largest element and call it .\r\nThen traverse each elements in non-decreasing order and apply an\r\noperation on and : If , becomes largest odd number. Thus, we set . This\r\nreduce the number of even element by . If , before we do this operation,\r\nwe need to do another on and the largest even element to make the\r\nlargest in the array. Note that this case only happens at most once. As\r\na result, the answer is the number of even elements (plus if the second\r\ncase occurs).Time complexity: .\r\n",
     "name": "B. Parity and Sum",
     "statement": "Given an array a of n positive integers.In one operation, you can pick\r\nany pair of indexes (i, j) such that a_i and a_j have parity, then\r\nreplace the smaller one with the sum of them. More formally: If a_i <\r\na_j, replace a_i with a_i + a_j; Otherwise, replace a_j with a_i + a_j.\r\nFind the minimum number of operations needed to make all elements of the\r\narray have the same parity.\r\n",
     "solutions": [
@@ -151,5 +151,9 @@
     ],
     "dificulty": "1100",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Parity and Sum.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Parity and Sum.json",
+    "hint": [
+        "Hint 1 Find a way to make all the elements even. Then odd.",
+        "Hint 2 In the worst case, the number of operations required is the number of even elements + 1. Why?"
+    ]
 }

@@ -200,5 +200,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\F. Conditional Mix.json",
     "editorial_link": "https://codeforces.com//blog/entry/108567",
-    "editorial": "Let denote the number of occurrences of element in array .Claim: A\r\nmultiset of size , where is good if and only if and for every .The proof\r\nof that claim has been discussed in the comment section here.We proceed\r\nwith formulating a dynamic programming solution. Let denote that we have\r\npicked a prefix such that and . Our transition is going from to for all\r\n, this can be easily handled using prefix sums. However, we still have\r\nstates.We can cut down the number of states by noting that . That is,\r\nfor each value of , there are only values of . Since , the number of\r\nstates is bounded by .Time complexity:\r\n"
+    "editorial": "Let denote the number of occurrences of element in array .Claim: A\r\nmultiset of size , where is good if and only if and for every .The proof\r\nof that claim has been discussed in the comment section here.We proceed\r\nwith formulating a dynamic programming solution. Let denote that we have\r\npicked a prefix such that and . Our transition is going from to for all\r\n, this can be easily handled using prefix sums. However, we still have\r\nstates.We can cut down the number of states by noting that . That is,\r\nfor each value of , there are only values of . Since , the number of\r\nstates is bounded by .Time complexity:\r\n",
+    "hint": []
 }

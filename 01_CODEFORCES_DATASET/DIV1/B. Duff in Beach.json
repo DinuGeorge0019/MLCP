@@ -118,5 +118,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Duff in Beach.json",
     "editorial_link": "https://codeforces.com//blog/entry/20971",
-    "editorial": "If we fix x and bix mod n, then problem will be solved (because we can then multiply it by the number of valid distinct values of ).\n\nFor the problem above, let dp[i][j] be the number of valid subsequences of b where x?=?j and  and . Of course, for every i, dp[i][1]?=?1. For calculating value of dp[i][j]:\n\nFor this purpose, we can sort the array a and use two pointer:\n\nif p0,?p1,?...pn?-?1 is a permutation of 0,?...,?n?-?1 where for each 0???t?<?n?-?1, apt???apt?+?1:\n\nNow, if  and x?=?l?-?1 mod n, then answer equals to  (there are c?-?j?+?1 valid different values of  for the first group and c?-?j for the second group)."
+    "editorial": "If we fix x and bix mod n, then problem will be solved (because we can then multiply it by the number of valid distinct values of ).\n\nFor the problem above, let dp[i][j] be the number of valid subsequences of b where x?=?j and  and . Of course, for every i, dp[i][1]?=?1. For calculating value of dp[i][j]:\n\nFor this purpose, we can sort the array a and use two pointer:\n\nif p0,?p1,?...pn?-?1 is a permutation of 0,?...,?n?-?1 where for each 0???t?<?n?-?1, apt???apt?+?1:\n\nNow, if  and x?=?l?-?1 mod n, then answer equals to  (there are c?-?j?+?1 valid different values of  for the first group and c?-?j for the second group).",
+    "hint": []
 }

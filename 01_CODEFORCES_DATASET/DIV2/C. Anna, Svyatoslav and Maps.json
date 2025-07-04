@@ -154,5 +154,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Anna, Svyatoslav and Maps.json",
     "editorial_link": "https://codeforces.com/blog/entry/69244",
-    "editorial": "Firstly, find the matrix of the shortest paths using Floyd-Warshall\r\nalgortihm or running dfs from all vertexes; then a greedy approach works\r\nhere: add to the answer and then go along the path; if the distance from\r\nthe last vertex in the answer to the current vertex is shorter than in\r\ngiven path, add the vertex to the answer and continue traversing the\r\npath. Don\u00e2\u0080\u0099t forget to add in the end!\r\n"
+    "editorial": "Firstly, find the matrix of the shortest paths using Floyd-Warshall\r\nalgortihm or running dfs from all vertexes; then a greedy approach works\r\nhere: add to the answer and then go along the path; if the distance from\r\nthe last vertex in the answer to the current vertex is shorter than in\r\ngiven path, add the vertex to the answer and continue traversing the\r\npath. Donât forget to add in the end!\r\n",
+    "hint": []
 }

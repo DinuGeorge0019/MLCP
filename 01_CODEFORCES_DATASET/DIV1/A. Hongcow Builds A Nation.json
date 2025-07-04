@@ -98,5 +98,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Hongcow Builds A Nation.json",
     "editorial_link": "https://codeforces.com//blog/entry/49126",
-    "editorial": "First, let\u00e2\u0080\u0099s make all connected components cliques. This graph is still\r\nstable. Now, there are some components without special nodes. Where\r\nshould we connect them? If there is a component with size A and a\r\ncomponent with size B, we can add A*B edges if we connect these two\r\ncomponents. So, it makes sense to choose the largest component. code\r\n"
+    "editorial": "First, letâs make all connected components cliques. This graph is still\r\nstable. Now, there are some components without special nodes. Where\r\nshould we connect them? If there is a component with size A and a\r\ncomponent with size B, we can add A*B edges if we connect these two\r\ncomponents. So, it makes sense to choose the largest component. code\r\n",
+    "hint": []
 }

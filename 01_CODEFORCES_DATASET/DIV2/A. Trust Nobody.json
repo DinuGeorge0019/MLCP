@@ -148,5 +148,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Trust Nobody.json",
     "editorial_link": "https://codeforces.com//blog/entry/115892",
-    "editorial": "Let\u00e2\u0080\u0099s iterate over the number of liars in the group. Now everyone, who\r\nsays is a liar, and vice versa. Let\u00e2\u0080\u0099s count the actual number of liars.\r\nIf those numbers match, output the answer.Now that we\u00e2\u0080\u0099ve checked all\r\npossible \u00e2\u0080\u0099s, we can safely output , since no number of liars is\r\npossible.\r\n"
+    "editorial": "Letâs iterate over the number of liars in the group. Now everyone, who\r\nsays is a liar, and vice versa. Letâs count the actual number of liars.\r\nIf those numbers match, output the answer.Now that weâve checked all\r\npossible âs, we can safely output , since no number of liars is\r\npossible.\r\n",
+    "hint": [
+        "Hint1 Check each number of liars independently.",
+        "Hint2 How to check, whether there are exactly liars?"
+    ]
 }

@@ -138,5 +138,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Traveling Salesman Problem.json",
     "editorial_link": "https://codeforces.com//blog/entry/105419",
-    "editorial": "Suppose we only have boxes on the axis, then the optimal strategy is\r\ngoing in the following way: . There is no way to do in less than moves.\r\nWhat if we have boxes on two axis? Let\u00e2\u0080\u0099s assume it is , suppose we have\r\na strategy to go in the following way: . In this case it is optimal to\r\nfill the three dots with , which is just solving each axis\r\nindependently. Therefore, the number of axis does not matters. For each\r\naxis that has at least one box, go from to the farthest one, then come\r\nback to . Time complexity: Solution\r\n"
+    "editorial": "Suppose we only have boxes on the axis, then the optimal strategy is\r\ngoing in the following way: . There is no way to do in less than moves.\r\nWhat if we have boxes on two axis? Letâs assume it is , suppose we have\r\na strategy to go in the following way: . In this case it is optimal to\r\nfill the three dots with , which is just solving each axis\r\nindependently. Therefore, the number of axis does not matters. For each\r\naxis that has at least one box, go from to the farthest one, then come\r\nback to . Time complexity: Solution\r\n",
+    "hint": [
+        "Hint 1 Do we actually need to go off the axis?",
+        "Hint 2 How to avoid visiting an axis more than once?"
+    ]
 }

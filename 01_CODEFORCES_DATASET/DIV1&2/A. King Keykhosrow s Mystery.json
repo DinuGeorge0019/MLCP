@@ -194,9 +194,9 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/136579",
-    "editorial": "Solution Step 1: Prove that for the minimum value of , we must have .\r\nStep 2: To prove this, show that if , then will also satisfy the\r\nproblem\u00e2\u0080\u0099s requirements. Step 3: Since , if , then must hold. Therefore,\r\nimplies that satisfies the requirements. Step 4: Thus, must be divisible\r\nby both and . The smallest such is which can be calculated in .\r\n",
+    "editorial": "Solution Step 1: Prove that for the minimum value of , we must have .\r\nStep 2: To prove this, show that if , then will also satisfy the\r\nproblemâs requirements. Step 3: Since , if , then must hold. Therefore,\r\nimplies that satisfies the requirements. Step 4: Thus, must be divisible\r\nby both and . The smallest such is which can be calculated in .\r\n",
     "name": "A. King Keykhosrow s Mystery",
-    "statement": "There is a tale about the wise King Keykhosrow who owned a grand\r\ntreasury filled with treasures from across the Persian Empire. However,\r\nto prevent theft and ensure the safety of his wealth, King Keykhosrow\u2019s\r\nvault was sealed with a magical lock that could only be opened by\r\nsolving a riddle. The riddle involves two sacred numbers a and b. To\r\nunlock the vault, the challenger must determine the smallest key number\r\nm that satisfies two conditions: m must be greater than or equal to at\r\nleast one of a and b. The remainder when m is divided by a must be equal\r\nto the remainder when m is divided by b. Only by finding the smallest\r\ncorrect value of m can one unlock the vault and access the legendary\r\ntreasures!\r\n",
+    "statement": "There is a tale about the wise King Keykhosrow who owned a grand\r\ntreasury filled with treasures from across the Persian Empire. However,\r\nto prevent theft and ensure the safety of his wealth, King Keykhosrow’s\r\nvault was sealed with a magical lock that could only be opened by\r\nsolving a riddle. The riddle involves two sacred numbers a and b. To\r\nunlock the vault, the challenger must determine the smallest key number\r\nm that satisfies two conditions: m must be greater than or equal to at\r\nleast one of a and b. The remainder when m is divided by a must be equal\r\nto the remainder when m is divided by b. Only by finding the smallest\r\ncorrect value of m can one unlock the vault and access the legendary\r\ntreasures!\r\n",
     "solutions": [
         "#include<bits/stdc++.h>#define L(i, j, k) for(int i = (j); i <= (k); ++i)#define R(i, j, k) for(int i = (j); i >= (k); --i)#define ll long long #define sz(a) ((int) (a).size())#define pb emplace_back#define me(a, x) memset(a, x, sizeof(a))#define vi vector<int>#define ull unsigned long long#define i128 __int128using namespace std;const int N = 1e6 + 7;int n, m;int a[N];void Main() {\tcin >> n >> m;\tcout << n * m / __gcd(n, m) << '\\n';}int main() {\tios :: sync_with_stdio(false);\tcin.tie(0); cout.tie(0);\tint t; cin >> t; while(t--) Main();\treturn 0;}"
     ],
@@ -210,5 +210,6 @@
     ],
     "dificulty": "800",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\A. King Keykhosrow s Mystery.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\A. King Keykhosrow s Mystery.json",
+    "hint": []
 }

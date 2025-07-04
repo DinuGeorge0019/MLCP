@@ -85,7 +85,7 @@
         ]
     },
     "name": "B. Fortune Telling",
-    "statement": "Marina loves Sasha. But she keeps wondering whether Sasha loves her. Of\r\ncourse, the best way to know it is fortune telling. There are many ways\r\nof telling fortune, but Marina has picked the easiest one. She takes in\r\nher hand one or several camomiles and tears off the petals one by one.\r\nAfter each petal she pronounces alternatively \"Loves\" and \"Doesn\u2019t\r\nlove\", at that Marina always starts with \"Loves\". There are camomiles\r\ngrowing in the field, possessing the numbers of petals equal to . Marina\r\nwants to pick a bouquet with the maximal possible total number of petals\r\nso that the result would still be \"Loves\". Help her do that; find the\r\nmaximal number of petals possible in the bouquet.\r\n",
+    "statement": "Marina loves Sasha. But she keeps wondering whether Sasha loves her. Of\r\ncourse, the best way to know it is fortune telling. There are many ways\r\nof telling fortune, but Marina has picked the easiest one. She takes in\r\nher hand one or several camomiles and tears off the petals one by one.\r\nAfter each petal she pronounces alternatively \"Loves\" and \"Doesn’t\r\nlove\", at that Marina always starts with \"Loves\". There are camomiles\r\ngrowing in the field, possessing the numbers of petals equal to . Marina\r\nwants to pick a bouquet with the maximal possible total number of petals\r\nso that the result would still be \"Loves\". Help her do that; find the\r\nmaximal number of petals possible in the bouquet.\r\n",
     "solutions": [
         "#include <iostream>\n#include <algorithm>\nusing namespace std;\nint arr[256];\nint n;\nint main()\n{\n\tcin>>n;\n\tfor(int i=0; i<n; ++i) cin>>arr[i];\n\tint cnt=0;\n\tfor(int i=0; i<n; ++i) cnt += arr[i]&1;\n\tif (!cnt) {\n\t\tcout<<0<<'\\n';\n\t\treturn 0;\n\t}\n\tint r=0;\n\tsort(arr,arr+n);\n\tfor(int i=0; i<n; ++i) r+=arr[i];\n\tint a=0;\n\twhile(!(arr[a]&1)) ++a;\n\tif (!(cnt&1)) r -= arr[a];\n\tcout<<r<<'\\n';\n}\n"
     ],
@@ -99,5 +99,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Fortune Telling78150.json",
     "editorial_link": "https://codeforces.com//blog/entry/1276",
-    "editorial": "For this problem all you need to do is store the smallest odd number of petals and also the sum of all the petals. It is quite obvious that only if the number of petals is odd the result would be \"Loves\". So if the sum is even print sum - smallest odd, otherwise print the sum."
+    "editorial": "For this problem all you need to do is store the smallest odd number of petals and also the sum of all the petals. It is quite obvious that only if the number of petals is odd the result would be \"Loves\". So if the sum is even print sum - smallest odd, otherwise print the sum.",
+    "hint": []
 }

@@ -178,5 +178,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Lost Permutation.json",
     "editorial_link": "https://codeforces.com//blog/entry/109254",
-    "editorial": "Let us add to the sum of the elements of the array and try to find a\r\nsuitable permutation. To do this, greedily add elements until their sum\r\nis less than . And at the end we will check that the sum has matched.\r\nAlso check that the maximal element from : , and that the total elements\r\nin : .\r\n"
+    "editorial": "Let us add to the sum of the elements of the array and try to find a\r\nsuitable permutation. To do this, greedily add elements until their sum\r\nis less than . And at the end we will check that the sum has matched.\r\nAlso check that the maximal element from : , and that the total elements\r\nin : .\r\n",
+    "hint": []
 }

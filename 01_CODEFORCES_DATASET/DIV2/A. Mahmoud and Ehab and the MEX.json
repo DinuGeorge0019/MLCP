@@ -113,7 +113,7 @@
         ]
     },
     "name": "A. Mahmoud and Ehab and the MEX",
-    "statement": "Dr. Evil kidnapped Mahmoud and Ehab in the evil land because of their\r\nperformance in the Evil Olympiad in Informatics (EOI). He decided to\r\ngive them some problems to let them go.Dr. Evil is interested in sets,\r\nHe has a set of integers. Dr. Evil calls a set of integers if the of it\r\nis exactly . the of a set of integers is the minimum non-negative\r\ninteger that doesn\u2019t exist in it. For example, the of the set is and the\r\nof the set is .Dr. Evil is going to make his set . To do this he can\r\nperform some operations. During each operation he can add some\r\nnon-negative integer to his set or erase some element from it. What is\r\nthe minimal number of operations Dr. Evil has to perform to make his set\r\n?\r\n",
+    "statement": "Dr. Evil kidnapped Mahmoud and Ehab in the evil land because of their\r\nperformance in the Evil Olympiad in Informatics (EOI). He decided to\r\ngive them some problems to let them go.Dr. Evil is interested in sets,\r\nHe has a set of integers. Dr. Evil calls a set of integers if the of it\r\nis exactly . the of a set of integers is the minimum non-negative\r\ninteger that doesn’t exist in it. For example, the of the set is and the\r\nof the set is .Dr. Evil is going to make his set . To do this he can\r\nperform some operations. During each operation he can add some\r\nnon-negative integer to his set or erase some element from it. What is\r\nthe minimal number of operations Dr. Evil has to perform to make his set\r\n?\r\n",
     "solutions": [
         "#include <cstdio>\nint N, cnt[101], K, O;\nint main()\n{\n\tscanf(\"%d%d\", &N, &K);\n\tfor (int i = 0, x; i < N; i++)\n\t{\n\t\tscanf(\"%d\", &x);\n\t\tif (x == K)\n\t\t\tO++;\n\t\telse if (x < K)\n\t\t\tcnt[x] = 1;\n\t}\n\tfor (int i = 0; i < K; i++)\n\t\tif (!cnt[i])\n\t\t\tO++;\n\tprintf(\"%d\\n\", O);\n\treturn 0;\n}\n"
     ],
@@ -127,5 +127,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Mahmoud and Ehab and the MEX.json",
     "editorial_link": "https://codeforces.com//blog/entry/54590",
-    "editorial": "One can see that in the final set all the elements less than should\r\nexist, shouldn\u00e2\u0080\u0099t exist and any element greater than doesn\u00e2\u0080\u0099t matter, so\r\nwe will count the number of elements less than that don\u00e2\u0080\u0099t exist in the\r\ninitial set and add this to the answer, If exists we\u00e2\u0080\u0099ll add 1 to the\r\nanswer because should be removed . Time complexity : . Solution link\r\n(me) : https://pastebin.com/ALfcu8Ab . Solution link (mahmoudbadawy) :\r\nhttps://pastebin.com/yXLkmA5F .\r\n"
+    "editorial": "One can see that in the final set all the elements less than should\r\nexist, shouldnât exist and any element greater than doesnât matter, so\r\nwe will count the number of elements less than that donât exist in the\r\ninitial set and add this to the answer, If exists weâll add 1 to the\r\nanswer because should be removed . Time complexity : . Solution link\r\n(me) : https://pastebin.com/ALfcu8Ab . Solution link (mahmoudbadawy) :\r\nhttps://pastebin.com/yXLkmA5F .\r\n",
+    "hint": []
 }

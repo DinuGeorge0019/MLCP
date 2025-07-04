@@ -122,5 +122,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Non-zero.json",
     "editorial_link": "https://codeforces.com//blog/entry/73763",
-    "editorial": "While there are any zeros in the array, the product will be zero, so we\r\nshould add to each zero. Now, if the sum is zero, we should add to any\r\npositive number, so the sum becomes nonzero. So the answer is the number\r\nof zeroes in the array plus if the sum of numbers is equal to zero after\r\nadding to zeros.\r\n"
+    "editorial": "While there are any zeros in the array, the product will be zero, so we\r\nshould add to each zero. Now, if the sum is zero, we should add to any\r\npositive number, so the sum becomes nonzero. So the answer is the number\r\nof zeroes in the array plus if the sum of numbers is equal to zero after\r\nadding to zeros.\r\n",
+    "hint": []
 }

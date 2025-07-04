@@ -162,5 +162,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\C. Permute Digits.json",
     "editorial_link": "https://codeforces.com//blog/entry/57123",
-    "editorial": "Let\u00e2\u0080\u0099s construct the answer digit by digit starting from the leftmost.\r\nObviously, we are asked to build lexicographically maximal answer so in\r\nthis order we should choose the greatest digit on each step.Precalc\r\nnumber of digits in number . Iterate over all possible digits starting\r\nfrom the greatest. For each digit check if it\u00e2\u0080\u0099s possible to put it in\r\nthis position. For this you construct minimal suffix (greedily put the\r\nlowest digit) and compare the resulting number with number . If it\r\nbecame less or equal then proceed to the next digit.Overall complexity:\r\n, where is digits from to .\r\n"
+    "editorial": "Letâs construct the answer digit by digit starting from the leftmost.\r\nObviously, we are asked to build lexicographically maximal answer so in\r\nthis order we should choose the greatest digit on each step.Precalc\r\nnumber of digits in number . Iterate over all possible digits starting\r\nfrom the greatest. For each digit check if itâs possible to put it in\r\nthis position. For this you construct minimal suffix (greedily put the\r\nlowest digit) and compare the resulting number with number . If it\r\nbecame less or equal then proceed to the next digit.Overall complexity:\r\n, where is digits from to .\r\n",
+    "hint": []
 }

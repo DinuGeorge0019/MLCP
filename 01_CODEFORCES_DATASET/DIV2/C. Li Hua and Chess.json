@@ -137,7 +137,7 @@
         ]
     },
     "name": "C. Li Hua and Chess",
-    "statement": "Li Ming and Li Hua are playing a game. Li Hua has a chessboard of size n\r\ntimes m. Denote (r, c) (1\r\nle r\r\nle n, 1\r\nle c\r\nle m) as the cell on the r-th row from the top and on the c-th column\r\nfrom the left. Li Ming put a king on the chessboard and Li Hua needs to\r\nguess its position.Li Hua can ask Li Ming questions. In each question,\r\nhe can choose a cell and ask the minimum steps needed to move the king\r\nto the chosen cell. Each question is independent, which means the king\r\ndoesn\u2019t actually move.A king can move from (x,y) to (x\u2019,y\u2019) if and only\r\nif\r\nmax\r\n{|x-x\u2019|,|y-y\u2019|\r\n}=1 (shown in the following picture). The position of the king is chosen\r\nthe interaction.Suppose you were Li Hua, please solve this problem.\r\n",
+    "statement": "Li Ming and Li Hua are playing a game. Li Hua has a chessboard of size n\r\ntimes m. Denote (r, c) (1\r\nle r\r\nle n, 1\r\nle c\r\nle m) as the cell on the r-th row from the top and on the c-th column\r\nfrom the left. Li Ming put a king on the chessboard and Li Hua needs to\r\nguess its position.Li Hua can ask Li Ming questions. In each question,\r\nhe can choose a cell and ask the minimum steps needed to move the king\r\nto the chosen cell. Each question is independent, which means the king\r\ndoesn’t actually move.A king can move from (x,y) to (x’,y’) if and only\r\nif\r\nmax\r\n{|x-x’|,|y-y’|\r\n}=1 (shown in the following picture). The position of the king is chosen\r\nthe interaction.Suppose you were Li Hua, please solve this problem.\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\n#define int long long\nconst int N=1e5+5,M=305;\nusing namespace std;\nint n,m,dis1,dis2,dis3;\nvoid solve()\n{\n\tcin>>n>>m;\n\tcout<<\"? 1 1\"<<endl;\n\tcin>>dis1;\n\tif(m<=1){cout<<\"! \"<<dis1+1<<' '<<1<<endl;return;}\n\tif(n<=1){cout<<\"! \"<<1<<' '<<dis1+1<<endl;return;}\n\tcout<<\"? 1 2\"<<endl;\n\tcin>>dis2;\n\tif(dis1==dis2)\n\t{\n\t\tcout<<\"? \"<<dis1+1<<\" 1\"<<endl;\n\t\tcin>>dis3;\n\t\tcout<<\"! \"<<dis1+1<<' '<<dis3+1<<endl;\n\t\treturn;\n\t}\nelse{\n\t\tcout<<\"? \"<<1<<' '<<dis1+1<<endl;\n\t\tcin>>dis3;\n\t\tcout<<\"! \"<<dis3+1<<' '<<dis1+1<<endl;\n\t}\n}\nint tt;\nsigned main()\n{\n//\tios::sync_with_stdio(false);cin.tie(0);cout.tie(0);\n\ttt=1;\n\tcin>>tt;\n\twhile(tt--)solve();\n}"
     ],
@@ -152,5 +152,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Li Hua and Chess.json",
     "editorial_link": "https://codeforces.com//blog/entry/114890",
-    "editorial": "We can first ask and get the result . Obviously, the king must be on the\r\nfollowing two segments: from to . from to . Then, we can ask and and get\r\nthe results . There are three cases: If , the king is at . If , the king\r\nis at . If , the king is at .\r\n"
+    "editorial": "We can first ask and get the result . Obviously, the king must be on the\r\nfollowing two segments: from to . from to . Then, we can ask and and get\r\nthe results . There are three cases: If , the king is at . If , the king\r\nis at . If , the king is at .\r\n",
+    "hint": []
 }

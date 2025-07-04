@@ -103,7 +103,7 @@
         ]
     },
     "name": "B. Gerald is into Art",
-    "statement": "Gerald bought two very rare paintings at the Sotheby\u2019s auction and he\r\nnow wants to hang them on the wall. For that he bought a special board\r\nto attach it to the wall and place the paintings on the board. The board\r\nhas shape of an rectangle, the paintings have shape of a and\r\nrectangles.Since the paintings are painted in the style of abstract art,\r\nit does not matter exactly how they will be rotated, but still, one side\r\nof both the board, and each of the paintings must be parallel to the\r\nfloor. The paintings can touch each other and the edges of the board,\r\nbut can not overlap or go beyond the edge of the board. Gerald asks\r\nwhether it is possible to place the paintings on the board, or is the\r\nboard he bought not large enough?\r\n",
+    "statement": "Gerald bought two very rare paintings at the Sotheby’s auction and he\r\nnow wants to hang them on the wall. For that he bought a special board\r\nto attach it to the wall and place the paintings on the board. The board\r\nhas shape of an rectangle, the paintings have shape of a and\r\nrectangles.Since the paintings are painted in the style of abstract art,\r\nit does not matter exactly how they will be rotated, but still, one side\r\nof both the board, and each of the paintings must be parallel to the\r\nfloor. The paintings can touch each other and the edges of the board,\r\nbut can not overlap or go beyond the edge of the board. Gerald asks\r\nwhether it is possible to place the paintings on the board, or is the\r\nboard he bought not large enough?\r\n",
     "solutions": [
         "#include <iostream>\n\nusing namespace std;\n\nbool fits(int a, int b, int p, int q, int u, int v) {\n    return a >= p+u && b >= max(q,v);\n}\n\nint main() {\n    int a, b;\n    int p, q;\n    int u, v;\n    cin >> a >> b >> p >> q >> u >> v;\n    if(fits(a,b,p,q,u,v) ||\n        fits(a,b,p,q,v,u) ||\n        fits(a,b,q,p,u,v) ||\n        fits(a,b,q,p,v,u) ||\n        fits(b,a,p,q,u,v) ||\n        fits(b,a,p,q,v,u) ||\n        fits(b,a,q,p,u,v) ||\n        fits(b,a,q,p,v,u)) cout << \"YES\" << endl;\n    else cout << \"NO\" << endl;\n    return 0;\n}\n"
     ],
@@ -117,5 +117,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Gerald is into Art.json",
     "editorial_link": "https://codeforces.com//blog/entry/19237",
-    "editorial": "It is easy to see that one can snuggle paintings to each other and to\r\nedge of board. For instance one can put one of painting right over\r\nother. Then height of two paintings equals to sum of two heights and\r\nwidth of two paintings is equals to maximum of two widths. Now we can\r\njust iterate orientation of paintings and board.\r\n"
+    "editorial": "It is easy to see that one can snuggle paintings to each other and to\r\nedge of board. For instance one can put one of painting right over\r\nother. Then height of two paintings equals to sum of two heights and\r\nwidth of two paintings is equals to maximum of two widths. Now we can\r\njust iterate orientation of paintings and board.\r\n",
+    "hint": []
 }

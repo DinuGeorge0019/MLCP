@@ -120,5 +120,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Five Dimensional Points.json",
     "editorial_link": "https://codeforces.com//blog/entry/54317",
-    "editorial": "template< const size_t M, const size_t N > class\r\nmulti_dimensional_points { .... }; is a generalization of the\r\nbrute-force algorithm, where the problem is generalized to M-dimensional\r\npoints, and N is the maximum number of points. The full-implementation\r\nis shown in submission 30115750. Best Regards\r\n"
+    "editorial": "template< const size_t M, const size_t N > class\r\nmulti_dimensional_points { .... }; is a generalization of the\r\nbrute-force algorithm, where the problem is generalized to M-dimensional\r\npoints, and N is the maximum number of points. The full-implementation\r\nis shown in submission 30115750. Best Regards\r\n",
+    "hint": []
 }

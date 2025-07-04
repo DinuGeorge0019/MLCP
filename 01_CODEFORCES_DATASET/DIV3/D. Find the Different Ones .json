@@ -188,5 +188,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\D. Find the Different Ones .json",
     "editorial_link": "https://codeforces.com//blog/entry/125597",
-    "editorial": "Before processing the requests, let\u00e2\u0080\u0099s calculate the position of the\r\nnearest element to the left that is not equal to it (we will consider ).\r\nTo do this in linear time, we will traverse the array from left to\r\nright. For the -th element (), if , then , otherwise (all elements\r\nbetween and will be equal to by construction).To answer a query, we will\r\nfix the right boundary as one of the positions for the answer. Then the\r\nbest of all suitable positions for it is , as it is the maximum, and we\r\njust need to check that . (Note that by fixing any other position, you\r\nmay not find the answer for a segment of the form )\r\n"
+    "editorial": "Before processing the requests, letâs calculate the position of the\r\nnearest element to the left that is not equal to it (we will consider ).\r\nTo do this in linear time, we will traverse the array from left to\r\nright. For the -th element (), if , then , otherwise (all elements\r\nbetween and will be equal to by construction).To answer a query, we will\r\nfix the right boundary as one of the positions for the answer. Then the\r\nbest of all suitable positions for it is , as it is the maximum, and we\r\njust need to check that . (Note that by fixing any other position, you\r\nmay not find the answer for a segment of the form )\r\n",
+    "hint": []
 }

@@ -120,5 +120,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Cave Painting.json",
     "editorial_link": "https://codeforces.com//blog/entry/57605",
-    "editorial": "Consider the way remainders are obtained. Remainder can be obtained only\r\nwhen is taken modulo . Remainder can either be obtained when taken\r\nmodulo or . Since the remainder modulo is already fixed, the only\r\nopportunity left is . Proceeding this way, we come to a conclusion that\r\nif answer exists, then = holds. This condition is equal to mod = , i. e.\r\nshould be divisible by all numbers between and . In other words, must be\r\ndivisible by their LCM. Following the exponential growth of LCM, we\r\nclaim that when is huge enough, the answer won\u00e2\u0080\u0099t exists (more precisely\r\nat ). And for small we can solve the task naively. .\r\n"
+    "editorial": "Consider the way remainders are obtained. Remainder can be obtained only\r\nwhen is taken modulo . Remainder can either be obtained when taken\r\nmodulo or . Since the remainder modulo is already fixed, the only\r\nopportunity left is . Proceeding this way, we come to a conclusion that\r\nif answer exists, then = holds. This condition is equal to mod = , i. e.\r\nshould be divisible by all numbers between and . In other words, must be\r\ndivisible by their LCM. Following the exponential growth of LCM, we\r\nclaim that when is huge enough, the answer wonât exists (more precisely\r\nat ). And for small we can solve the task naively. .\r\n",
+    "hint": []
 }

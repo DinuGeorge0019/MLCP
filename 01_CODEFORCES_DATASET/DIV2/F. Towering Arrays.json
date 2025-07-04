@@ -1,1 +1,112 @@
-{"link": "https://codeforces.com//contest/2071/problem/F", "problemId": "3235599", "problem_idx": "F", "shortId": "2071F", "contest_number": "2071", "problem_submissions": {"C": [308500412, 308317666, 308361110, 308336146, 308323879, 308329162, 308431357, 308323153, 308322089, 308324712, 308324838, 308300023, 308338574, 308327490, 308358640], "D2": [308380420, 308341189, 308366571, 308352059, 308372786, 308368930, 308377735, 308374177, 308368337, 308375886], "F": [308373297, 308377404], "E": [308361980, 308345537, 308378051, 308376397, 308376665], "D1": [308339511, 308341058, 308362310, 308345467, 308346693, 308332849, 308332972, 308343247, 308340165, 308341094, 308346883, 308329536, 308369447], "B": [308310760, 308356333, 308327132, 308308541, 308313847, 308342227, 308309079, 308304207, 308317019, 308309205, 308310795, 308322545, 308331268], "A": [308295350, 308348314, 308303164, 308293936, 308302778, 308311307, 308294388, 308294024, 308294553, 308316276, 308297625, 308298079, 308296422]}, "editorial_link": "https://codeforces.com//blog/entry/140115", "editorial": "", "name": "F. Towering Arrays", "statement": "An array b = [b_1, b_2,\r\nldots, b_m] of length m is called p- if there exists an index i (1\r\nle i\r\nle m) such that for every index j (1\r\nle j\r\nle m), the following condition holds: b_j\r\nge p - |i - j|.Given an array a = [a_1, a_2,\r\nldots, a_n] of length n, you can remove at most k elements from it.\r\nDetermine the maximum value of p for which the remaining array can be\r\nmade p-.\r\n", "solutions": [], "input": "", "output": "", "tags": ["binary search", "data structures"], "dificulty": "2700", "interactive": false, "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\F. Towering Arrays.json"}
+{
+    "link": "https://codeforces.com//contest/2071/problem/F",
+    "problemId": "3235599",
+    "problem_idx": "F",
+    "shortId": "2071F",
+    "contest_number": "2071",
+    "problem_submissions": {
+        "C": [
+            308500412,
+            308317666,
+            308361110,
+            308336146,
+            308323879,
+            308329162,
+            308431357,
+            308323153,
+            308322089,
+            308324712,
+            308324838,
+            308300023,
+            308338574,
+            308327490,
+            308358640
+        ],
+        "D2": [
+            308380420,
+            308341189,
+            308366571,
+            308352059,
+            308372786,
+            308368930,
+            308377735,
+            308374177,
+            308368337,
+            308375886
+        ],
+        "F": [
+            308373297,
+            308377404
+        ],
+        "E": [
+            308361980,
+            308345537,
+            308378051,
+            308376397,
+            308376665
+        ],
+        "D1": [
+            308339511,
+            308341058,
+            308362310,
+            308345467,
+            308346693,
+            308332849,
+            308332972,
+            308343247,
+            308340165,
+            308341094,
+            308346883,
+            308329536,
+            308369447
+        ],
+        "B": [
+            308310760,
+            308356333,
+            308327132,
+            308308541,
+            308313847,
+            308342227,
+            308309079,
+            308304207,
+            308317019,
+            308309205,
+            308310795,
+            308322545,
+            308331268
+        ],
+        "A": [
+            308295350,
+            308348314,
+            308303164,
+            308293936,
+            308302778,
+            308311307,
+            308294388,
+            308294024,
+            308294553,
+            308316276,
+            308297625,
+            308298079,
+            308296422
+        ]
+    },
+    "editorial_link": "https://codeforces.com//blog/entry/140115",
+    "editorial": "SolutionLet’s do binary search on . After fixing some our goal is to\r\nfind the maximum -towering subsequence and check if the length of that\r\nsubsequence satisfies .To find the maximum -towering subsequence, for\r\neach index we will find the maximum -towering subsequence such that the\r\n\"left\" part of that subsequence is in prefix and its right part is in\r\nsuffix . Let’s focus only on prefixes, as the suffixes can be done\r\nsimilarly. So, for each prefix we want to find the maximum \"increasing\"\r\n-towering subsequence. To do it, we will traverse the array from left to\r\nright and maintain the currently found maximum subsequence. The key idea\r\nhere is that as you move from left to right you only need to add new\r\nelements to the \"increasing\" subsequence and never delete any (or,\r\nformally speaking, if we denote the set of indexes that correspond to\r\nmaximum \"increasing\" -towering subsequence on prefix as , then for any :\r\n(the proof is left to the reader). ElaborationBefore moving to the\r\ndetails of implementation, let’s elaborate a bit on the previous\r\nparagraph. Consider the fifth test case from the sample; suppose the\r\ncurrent ; and we have just arrived at the tenth element (denoted with\r\nstar ). Before this position, the maximum \"increasing\" -towering\r\nsubsequence consists of the first, third, and fifth elements (denoted\r\nwith underlines):.Now we need to check if we can increase the size of\r\nthe subsequence. Since , then we certainly can add the tenth element\r\nwith value to the subsequence. However, since we add a new number to the\r\nsubsequence, two numbers become available: the second one with value and\r\nthe forth one with value . Thus, after processing the tenth element, the\r\nmaximum \"increasing\" -towering subsequence will look like this:.So we\r\nneed some way to find such \"new\" numbers that appear when we add some\r\nelements to the subsequence (like when the element with value becomes\r\navailable from the example). To resolve this we first assign for each .\r\nTo find the positions that are becoming available, we can search for the\r\nrightmost non-positive element on the current prefix. Once found\r\n(suppose its index is ), decrease all elements on the prefix by one and\r\nassign (to avoid this position in the future). All these operations can\r\nbe performed with the help of a segment tree.This concludes the\r\nasymptotic complexity: .\r\n",
+    "name": "F. Towering Arrays",
+    "statement": "An array b = [b_1, b_2,\r\nldots, b_m] of length m is called p- if there exists an index i (1\r\nle i\r\nle m) such that for every index j (1\r\nle j\r\nle m), the following condition holds: b_j\r\nge p - |i - j|.Given an array a = [a_1, a_2,\r\nldots, a_n] of length n, you can remove at most k elements from it.\r\nDetermine the maximum value of p for which the remaining array can be\r\nmade p-.\r\n",
+    "solutions": [],
+    "input": "",
+    "output": "",
+    "tags": [
+        "binary search",
+        "data structures"
+    ],
+    "dificulty": "2700",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\F. Towering Arrays.json",
+    "hint": [
+        "Hint 1 Binary search on . After fixing , find the maximum -towering subsequence.",
+        "Hint 2 if we denote the set of indexes that correspond to the maximum \"increasing\" -towering subsequence on prefix as , then for any : ."
+    ]
+}

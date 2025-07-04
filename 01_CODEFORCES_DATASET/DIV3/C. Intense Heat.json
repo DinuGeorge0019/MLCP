@@ -138,5 +138,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C. Intense Heat.json",
     "editorial_link": "https://codeforces.com/blog/entry/60417",
-    "editorial": "This task is very straight-forward implementation problem. So we can\r\niterate over all segments of the given array, calculate their sum, and\r\nif the length of the current segment is not less than , try to update\r\nthe answer with the mean of this segment.Overall complexity is .\r\n"
+    "editorial": "This task is very straight-forward implementation problem. So we can\r\niterate over all segments of the given array, calculate their sum, and\r\nif the length of the current segment is not less than , try to update\r\nthe answer with the mean of this segment.Overall complexity is .\r\n",
+    "hint": []
 }

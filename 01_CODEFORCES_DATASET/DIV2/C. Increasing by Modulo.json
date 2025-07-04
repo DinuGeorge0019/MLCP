@@ -124,5 +124,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Increasing by Modulo.json",
     "editorial_link": "https://codeforces.com//blog/entry/67241",
-    "editorial": "Let\u00e2\u0080\u0099s check that the answer to the problem is .Then, for each element,\r\nyou have some interval (interval on the \"circle\" of remainders modulo )\r\nof values, that it can be equal to.So you need to check that you can\r\npick in each interval some point, to make all these values\r\nnon-decrease.You can do it with greedy! Each time, let\u00e2\u0080\u0099s take the\r\nsmallest element from the interval, that is at least the previously\r\nchosen value.And after this, let\u00e2\u0080\u0099s make the binary search on .So we have\r\nthe solution in .This solution\r\n"
+    "editorial": "Letâs check that the answer to the problem is .Then, for each element,\r\nyou have some interval (interval on the \"circle\" of remainders modulo )\r\nof values, that it can be equal to.So you need to check that you can\r\npick in each interval some point, to make all these values\r\nnon-decrease.You can do it with greedy! Each time, letâs take the\r\nsmallest element from the interval, that is at least the previously\r\nchosen value.And after this, letâs make the binary search on .So we have\r\nthe solution in .This solution\r\n",
+    "hint": []
 }

@@ -116,7 +116,7 @@
         ]
     },
     "name": "B. Proper Nutrition",
-    "statement": "Vasya has burles. One bottle of Ber-Cola costs burles and one Bars bar\r\ncosts burles. He can buy any non-negative integer number of bottles of\r\nBer-Cola and any non-negative integer number of Bars bars.Find out if\r\nit\u2019s possible to buy some amount of bottles of Ber-Cola and Bars bars\r\nand spend burles.In other words, you should find two non-negative\r\nintegers and such that Vasya can buy bottles of Ber-Cola and Bars bars\r\nand or tell that it\u2019s impossible.\r\n",
+    "statement": "Vasya has burles. One bottle of Ber-Cola costs burles and one Bars bar\r\ncosts burles. He can buy any non-negative integer number of bottles of\r\nBer-Cola and any non-negative integer number of Bars bars.Find out if\r\nit’s possible to buy some amount of bottles of Ber-Cola and Bars bars\r\nand spend burles.In other words, you should find two non-negative\r\nintegers and such that Vasya can buy bottles of Ber-Cola and Bars bars\r\nand or tell that it’s impossible.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\n\n#define mp make_pair\n#define pb push_back\n#define f first\n#define s second\n#define ll long long\n\nusing namespace std;\n\nconst int N = (3e5), mod = (1e9) + 7;\n\nll n,a,b;\n\nint main(){\n\tcin >> n >> a >> b;\n\tfor(int i = 0; i <= n; i++){\n\t\tif(n >= a * i && (n - a * i) % b == 0){\n\t\t\tcout << \"YES\\n\" << i << \" \" << (n - a * i) / b;\n\t\t\treturn 0;\n\t\t}\n\t}\n\tcout << \"NO\";\n\t\n \treturn 0;\n}             "
     ],
@@ -131,5 +131,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Proper Nutrition.json",
     "editorial_link": "https://codeforces.com//blog/entry/56381",
-    "editorial": "To solve this problem we need to brute how many bottles of Ber-Cola\r\nVasya will buy. Let this number equals to . Then, if is non-negative and\r\ndivided by we found the answer Vasya should by bottles of Ber-Cola and\r\nBars bars.In case that became negative there is no answer and we should\r\nprint \"\".\r\n"
+    "editorial": "To solve this problem we need to brute how many bottles of Ber-Cola\r\nVasya will buy. Let this number equals to . Then, if is non-negative and\r\ndivided by we found the answer Vasya should by bottles of Ber-Cola and\r\nBars bars.In case that became negative there is no answer and we should\r\nprint \"\".\r\n",
+    "hint": []
 }

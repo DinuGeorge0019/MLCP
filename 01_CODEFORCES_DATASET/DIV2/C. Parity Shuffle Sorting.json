@@ -151,5 +151,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Parity Shuffle Sorting.json",
     "editorial_link": "https://codeforces.com//blog/entry/83109",
-    "editorial": "SolutionIf , do nothing.Otherwise, select indices and to make equal to\r\nfirst. After that, for each element (), select indices and if is odd,\r\nand select indices and otherwise. This process requires operations and\r\nmake all elements equal, which is also non-decreasing.\r\n"
+    "editorial": "SolutionIf , do nothing.Otherwise, select indices and to make equal to\r\nfirst. After that, for each element (), select indices and if is odd,\r\nand select indices and otherwise. This process requires operations and\r\nmake all elements equal, which is also non-decreasing.\r\n",
+    "hint": [
+        "Hint 1 If all elements are equal, that array is also non-decreasing.",
+        "Hint 2 For each operation, one element is changed. Because we have to use at most operations, an element change occurs at most times. Considering that the initial array can be decreasing, at least operations can be needed in some cases."
+    ]
 }

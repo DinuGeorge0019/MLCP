@@ -120,5 +120,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Gargari and Permutations.json",
     "editorial_link": "https://codeforces.com/blog/entry/13631",
-    "editorial": "We can build a directed acyclic graph with n nodes.If j is after i in all vectors then we add in graph edge (i,j).Now we have to find the longest path in this graph. Another way is using dp."
+    "editorial": "We can build a directed acyclic graph with n nodes.If j is after i in all vectors then we add in graph edge (i,j).Now we have to find the longest path in this graph. Another way is using dp.",
+    "hint": []
 }

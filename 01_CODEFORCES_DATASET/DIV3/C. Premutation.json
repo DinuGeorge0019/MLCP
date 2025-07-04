@@ -187,5 +187,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C. Premutation.json",
     "editorial_link": "https://codeforces.com//blog/entry/111948",
-    "editorial": "When Kristina writes sequences on the whiteboard, she removes an element\r\nwith each index exactly once. Thus, the first element of the permutation\r\nwill be deleted only once on the first step. All sequences except one\r\nwill start with itTo solve the problem, find a sequence such that: it\r\nstarts with some element all sequences other than this one begin with\r\nsome element Then this permutation will describe the sequence of numbers\r\nremaining after removing the th element, and the first element itself\r\nwill be equal to the number . The initial permutation will look like [].\r\n"
+    "editorial": "When Kristina writes sequences on the whiteboard, she removes an element\r\nwith each index exactly once. Thus, the first element of the permutation\r\nwill be deleted only once on the first step. All sequences except one\r\nwill start with itTo solve the problem, find a sequence such that: it\r\nstarts with some element all sequences other than this one begin with\r\nsome element Then this permutation will describe the sequence of numbers\r\nremaining after removing the th element, and the first element itself\r\nwill be equal to the number . The initial permutation will look like [].\r\n",
+    "hint": []
 }

@@ -96,5 +96,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Next Test.json",
     "editorial_link": "https://codeforces.com//blog/entry/653",
-    "editorial": "We will create an array of boolean used[1..3001] ans fill it with \"false\" values. For each of n given number, we will assign corresponding used value to \"true\". After that, the index of first element of used with \"false\" value is the answer to the problem."
+    "editorial": "We will create an array of boolean used[1..3001] ans fill it with \"false\" values. For each of n given number, we will assign corresponding used value to \"true\". After that, the index of first element of used with \"false\" value is the answer to the problem.",
+    "hint": []
 }

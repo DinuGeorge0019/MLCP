@@ -110,5 +110,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. 3-cycles.json",
     "editorial_link": "https://codeforces.com//blog/entry/1620",
-    "editorial": "The road map with most edges is a complete bipartite graph with equal number of vertices on each side. (Prove it by yourself :D ). We can make such a graph by putting the first  vertices on one side and the other  on the other side.For sure , number of edges is ."
+    "editorial": "The road map with most edges is a complete bipartite graph with equal number of vertices on each side. (Prove it by yourself :D ). We can make such a graph by putting the first  vertices on one side and the other  on the other side.For sure , number of edges is .",
+    "hint": []
 }

@@ -156,5 +156,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\G. Rudolf and Subway.json",
     "editorial_link": "https://codeforces.com//blog/entry/127018",
-    "editorial": "Let\u00e2\u0080\u0099s construct a bipartite graph, where one part is the vertices of the\r\noriginal graph, i.e., subway stations, and the other part is the subway\r\nlines. We add an edge between a station vertex and a line vertex if in\r\nthe original subway graph, the station is incident to an edge of the\r\ncorresponding subway line. In the new graph, we find the shortest path\r\nbetween the vertices corresponding to the departure and destination\r\nstations (for example, using breadth-first search). The answer to the\r\nproblem will be the shortest path, divided in half.\r\n"
+    "editorial": "Letâs construct a bipartite graph, where one part is the vertices of the\r\noriginal graph, i.e., subway stations, and the other part is the subway\r\nlines. We add an edge between a station vertex and a line vertex if in\r\nthe original subway graph, the station is incident to an edge of the\r\ncorresponding subway line. In the new graph, we find the shortest path\r\nbetween the vertices corresponding to the departure and destination\r\nstations (for example, using breadth-first search). The answer to the\r\nproblem will be the shortest path, divided in half.\r\n",
+    "hint": []
 }

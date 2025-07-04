@@ -119,7 +119,7 @@
         ]
     },
     "name": "A. Hungry Student Problem",
-    "statement": "Ivan\u2019s classes at the university have just finished, and now he wants to\r\ngo to the local CFK cafe and eat some fried chicken.CFK sells chicken\r\nchunks in small and large portions. A small portion contains chunks; a\r\nlarge one chunks. Ivan wants to eat exactly chunks. Now he wonders\r\nwhether he can buy exactly this amount of chicken.Formally, Ivan wants\r\nto know if he can choose two non-negative integers and in such a way\r\nthat small portions and large ones contain exactly chunks.Help Ivan to\r\nanswer this question for several values of !\r\n",
+    "statement": "Ivan’s classes at the university have just finished, and now he wants to\r\ngo to the local CFK cafe and eat some fried chicken.CFK sells chicken\r\nchunks in small and large portions. A small portion contains chunks; a\r\nlarge one chunks. Ivan wants to eat exactly chunks. Now he wonders\r\nwhether he can buy exactly this amount of chicken.Formally, Ivan wants\r\nto know if he can choose two non-negative integers and in such a way\r\nthat small portions and large ones contain exactly chunks.Help Ivan to\r\nanswer this question for several values of !\r\n",
     "solutions": [
         "#include <stdio.h>\n#include <algorithm>\n#include <assert.h>\n#include <bitset>\n#include <cmath>\n#include <complex>\n#include <deque>\n#include <functional>\n#include <iostream>\n#include <limits.h>\n#include <map>\n#include <math.h>\n#include <queue>\n#include <set>\n#include <stdlib.h>\n#include <string.h>\n#include <string>\n#include <time.h>\n#include <unordered_map>\n#include <unordered_set>\n#include <vector>\n\n#pragma warning(disable:4996)\n#pragma comment(linker, \"/STACK:336777216\")\nusing namespace std;\n\n#define mp make_pair\n#define all(x) (x).begin(), (x).end()\n#define ldb ldouble\n\ntypedef tuple<int, int, int> t3;\ntypedef long long ll;\ntypedef unsigned long long ull;\ntypedef double db;\ntypedef long double ldb;\ntypedef pair <int, int> pii;\ntypedef pair <ll, ll> pll;\ntypedef pair <ll, int> pli;\ntypedef pair <db, db> pdd;\n\nint IT_MAX = 1 << 20;\nconst ll MOD = 1000000007;\nconst int INF = 0x3f3f3f3f;\nconst ll LL_INF = 0x3f3f3f3f3f3f3f3f;\nconst db PI = acos(-1);\nconst db ERR = 1e-9;\n#define szz(x) (int)(x).size()\n#define rep(i, n) for(int i=0;i<n;i++)\n#define Se second\n#define Fi first\n\nint main() {\n\tint T;\n\tscanf(\"%d\", &T);\n\twhile (T--) {\n\t\tint x, i, j;\n\t\tscanf(\"%d\", &x);\n\t\tfor (i = 0; i <= 100; i++) {\n\t\t\tfor (j = 0; j <= 100; j++) {\n\t\t\t\tint s = i * 3 + j * 7;\n\t\t\t\tif (s == x) break;\n\t\t\t}\n\t\t\tif (j <= 100) break;\n\t\t}\n\t\tif (i <= 100) printf(\"YES\\n\");\n\t\telse printf(\"NO\\n\");\n\t}\n\treturn 0;\n}"
     ],
@@ -133,5 +133,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Hungry Student Problem.json",
     "editorial_link": "https://codeforces.com//blog/entry/56330",
-    "editorial": "There are lots of different approaches to this problem. For example, you\r\ncould just iterate on the values of and from to and check if .\r\n"
+    "editorial": "There are lots of different approaches to this problem. For example, you\r\ncould just iterate on the values of and from to and check if .\r\n",
+    "hint": []
 }

@@ -213,5 +213,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\E1. Rotate Columns  easy version .json",
     "editorial_link": "https://codeforces.com/blog/entry/69791",
-    "editorial": "There many approaches possible, let's describe one of them.\n\nLet's change the problem to the following:\n\nRotate columns any way you want.\nSelect in each row one value, maximizing the sum.\nThis can be done with a dp, states are (prefix of columns, mask of taken columns). Basically at each step we are rotating the current column and fixing values for some of the rows.\n\nThe most simple way to write this makes 3n?m?n2\n (for every submask->mask transition iterate over all possible shifts and elements to consider in cost function).\n\nBut if we precalculate the cost function in advance, we will have O((3n+2nn2)?m)\n."
+    "editorial": "There many approaches possible, let's describe one of them.\n\nLet's change the problem to the following:\n\nRotate columns any way you want.\nSelect in each row one value, maximizing the sum.\nThis can be done with a dp, states are (prefix of columns, mask of taken columns). Basically at each step we are rotating the current column and fixing values for some of the rows.\n\nThe most simple way to write this makes 3n?m?n2\n (for every submask->mask transition iterate over all possible shifts and elements to consider in cost function).\n\nBut if we precalculate the cost function in advance, we will have O((3n+2nn2)?m)\n.",
+    "hint": []
 }

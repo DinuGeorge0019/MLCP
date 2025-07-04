@@ -96,5 +96,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Little Pony and Expected Maximum.json",
     "editorial_link": "https://codeforces.com//blog/entry/13190",
-    "editorial": "Calculate the expected maximum number after tossing a m faces dice n times.\n\nAnalysis:\nTake m = 6, n = 2 as a instance.\n\n6 6 6 6 6 6\n5 5 5 5 5 6\n4 4 4 4 5 6\n3 3 3 4 5 6\n2 2 3 4 5 6\n1 2 3 4 5 6\nEnumerate the maximum number, the distribution will be a n-dimensional super-cube with m-length-side. Each layer will be a large cube minus a smaller cube. So we have:\n\n\nCalculate in may cause overflow, we could move the divisor into the sum and calculate (i?/?m)n instead."
+    "editorial": "Calculate the expected maximum number after tossing a m faces dice n times.\n\nAnalysis:\nTake m = 6, n = 2 as a instance.\n\n6 6 6 6 6 6\n5 5 5 5 5 6\n4 4 4 4 5 6\n3 3 3 4 5 6\n2 2 3 4 5 6\n1 2 3 4 5 6\nEnumerate the maximum number, the distribution will be a n-dimensional super-cube with m-length-side. Each layer will be a large cube minus a smaller cube. So we have:\n\n\nCalculate in may cause overflow, we could move the divisor into the sum and calculate (i?/?m)n instead.",
+    "hint": []
 }

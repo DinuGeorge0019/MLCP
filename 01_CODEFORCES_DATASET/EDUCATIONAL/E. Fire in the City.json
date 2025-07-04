@@ -152,5 +152,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\E. Fire in the City.json",
     "editorial_link": "https://codeforces.com//blog/entry/53986",
-    "editorial": "We can use binary search to find the answer.When binary searching, to\r\ncheck whether the whole city will be lightened up after minutes, we can\r\nuse sweep line technique to find the smallest -coordinate of the cell\r\nthat is not lightened by centers of ignition (and the smallest\r\n-coordinate too). Suppose that and are these coordinates; then we can\r\nplace the last center of ignition at coordinates . Then we can use sweep\r\nline again to check whether the city is fully ignited.\r\n"
+    "editorial": "We can use binary search to find the answer.When binary searching, to\r\ncheck whether the whole city will be lightened up after minutes, we can\r\nuse sweep line technique to find the smallest -coordinate of the cell\r\nthat is not lightened by centers of ignition (and the smallest\r\n-coordinate too). Suppose that and are these coordinates; then we can\r\nplace the last center of ignition at coordinates . Then we can use sweep\r\nline again to check whether the city is fully ignited.\r\n",
+    "hint": []
 }

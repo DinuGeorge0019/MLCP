@@ -174,5 +174,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\A. Maximum Cake Tastiness.json",
     "editorial_link": "https://codeforces.com//blog/entry/100127",
-    "editorial": "SolutionThe answer is the sum of the maximum weights.You can always pick\r\nthe maximum weights: if they are and (), you can flip the subsegment to\r\nmake them adjacent.The result can\u00e2\u0080\u0099t be larger, because the sum of the\r\nweights of any pieces of cake is never greater than the sum of the\r\nmaximum weights.Iterating over all pairs of pieces of cake is enough to\r\nget AC, but you can solve the problem in by sorting the weights and\r\nprinting the sum of the last values, or even in if you calculate the\r\nmaximum and the second maximum in linear time.Complexity: , or\r\n"
+    "editorial": "SolutionThe answer is the sum of the maximum weights.You can always pick\r\nthe maximum weights: if they are and (), you can flip the subsegment to\r\nmake them adjacent.The result canât be larger, because the sum of the\r\nweights of any pieces of cake is never greater than the sum of the\r\nmaximum weights.Iterating over all pairs of pieces of cake is enough to\r\nget AC, but you can solve the problem in by sorting the weights and\r\nprinting the sum of the last values, or even in if you calculate the\r\nmaximum and the second maximum in linear time.Complexity: , or\r\n",
+    "hint": [
+        "Hint 1 Suppose you want to choose pieces of cake , . Can you make them adjacent in move?"
+    ]
 }

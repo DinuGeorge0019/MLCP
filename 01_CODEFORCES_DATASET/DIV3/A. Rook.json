@@ -158,5 +158,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Rook.json",
     "editorial_link": "https://codeforces.com//blog/entry/123012",
-    "editorial": "The answer includes all cells that share the same column or row with the\r\ngiven cell. Let\u00e2\u0080\u0099s iterate through all the columns, keeping the row\r\nconstant, and vice versa, iterate through the rows without changing the\r\ncolumn. To ensure that the input cell is not included in the answer, you\r\ncan either skip it or add all positions to a set and then remove it from\r\nthere.\r\n"
+    "editorial": "The answer includes all cells that share the same column or row with the\r\ngiven cell. Letâs iterate through all the columns, keeping the row\r\nconstant, and vice versa, iterate through the rows without changing the\r\ncolumn. To ensure that the input cell is not included in the answer, you\r\ncan either skip it or add all positions to a set and then remove it from\r\nthere.\r\n",
+    "hint": []
 }

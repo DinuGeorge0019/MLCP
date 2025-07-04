@@ -99,5 +99,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Pouring Rain.json",
     "editorial_link": "https://codeforces.com//blog/entry/44622",
-    "editorial": "To know how much water you consume per second you should divide consumed\r\nvolume, , by the area of the cup, . Then you should compare thisit with\r\n. If your speed of drinking is greater, then you\u00e2\u0080\u0099ll drink all the water\r\nin seconds. Otherwise you would never do it.\r\n"
+    "editorial": "To know how much water you consume per second you should divide consumed\r\nvolume, , by the area of the cup, . Then you should compare thisit with\r\n. If your speed of drinking is greater, then youâll drink all the water\r\nin seconds. Otherwise you would never do it.\r\n",
+    "hint": []
 }

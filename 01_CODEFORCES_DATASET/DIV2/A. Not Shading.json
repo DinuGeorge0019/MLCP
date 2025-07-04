@@ -139,5 +139,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Not Shading.json",
     "editorial_link": "https://codeforces.com//blog/entry/99067",
-    "editorial": "There are several cases to consider: If all the cell are white, then it\r\nis impossible to perform any operations, so you cannot make any cell\r\nblack. The answer is . If the cell in row and column is already black,\r\nthen we don\u00e2\u0080\u0099t need to perform any operations. The answer is . If any of\r\nthe cells in row are already black (that is, the cell we need to turn\r\nblack shares a row with a black cell), then we can take this black cell\r\nand make row . The same is true if any of the cells in column are\r\nalready black. The answer is . Otherwise, we claim the answer is . Take\r\nany black cell and make its row black. This means that every column\r\ncontains a black cell, so now we can take column are turn it black. Thus\r\nthe answer is . This can be easily implemented in time per test case.\r\n"
+    "editorial": "There are several cases to consider: If all the cell are white, then it\r\nis impossible to perform any operations, so you cannot make any cell\r\nblack. The answer is . If the cell in row and column is already black,\r\nthen we donât need to perform any operations. The answer is . If any of\r\nthe cells in row are already black (that is, the cell we need to turn\r\nblack shares a row with a black cell), then we can take this black cell\r\nand make row . The same is true if any of the cells in column are\r\nalready black. The answer is . Otherwise, we claim the answer is . Take\r\nany black cell and make its row black. This means that every column\r\ncontains a black cell, so now we can take column are turn it black. Thus\r\nthe answer is . This can be easily implemented in time per test case.\r\n",
+    "hint": [
+        "Hint 1 When is the answer ? When is the answer ? When is the answer ?",
+        "Hint 2 Can you do all remaining cases in steps?"
+    ]
 }

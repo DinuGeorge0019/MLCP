@@ -183,5 +183,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Equal Rectangles.json",
     "editorial_link": "https://codeforces.com//blog/entry/69108",
-    "editorial": "After sorting we can observe that if the answer is \"\" then the area of\r\neach rectangle is . Then we just need to check for each from to that and\r\nand . If all conditions are satisfied for all then the answer is \"\".\r\nOtherwise the answer is \"\".\r\n"
+    "editorial": "After sorting we can observe that if the answer is \"\" then the area of\r\neach rectangle is . Then we just need to check for each from to that and\r\nand . If all conditions are satisfied for all then the answer is \"\".\r\nOtherwise the answer is \"\".\r\n",
+    "hint": []
 }

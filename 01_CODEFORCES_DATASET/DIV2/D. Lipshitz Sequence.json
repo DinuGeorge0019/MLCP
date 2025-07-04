@@ -99,7 +99,7 @@
         ]
     },
     "name": "D. Lipshitz Sequence",
-    "statement": "A function is called Lipschitz continuous if there is a real constant\r\nsuch that the inequality holds for all . We\u2019ll deal with a more...\r\ndiscrete version of this term.For an array , we define it\u2019s Lipschitz\r\nconstant as follows: if , if , over all In other words, is the smallest\r\nnon-negative integer such that holds for all .You are given an array of\r\nsize and queries of the form . For each query, consider the subarray ;\r\ndetermine the sum of Lipschitz constants of of .\r\n",
+    "statement": "A function is called Lipschitz continuous if there is a real constant\r\nsuch that the inequality holds for all . We’ll deal with a more...\r\ndiscrete version of this term.For an array , we define it’s Lipschitz\r\nconstant as follows: if , if , over all In other words, is the smallest\r\nnon-negative integer such that holds for all .You are given an array of\r\nsize and queries of the form . For each query, consider the subarray ;\r\ndetermine the sum of Lipschitz constants of of .\r\n",
     "solutions": [
         "#include <iostream>\n#include <algorithm>\n#include <set>\n#include <cmath>\n\nusing namespace std;\n\nint n, q;\nint a[110000];\npair<int, int> order[110000];\nint X[110];\nint Y[110];\nlong long ans[110];\n\nint main() {\n    cin >> n >> q;\n    for (int i = 0; i < n; i++) {\n        cin >> a[i];\n    }\n    for (int i = 0; i < n - 1; i++) {\n        order[i] = make_pair(abs(a[i + 1] - a[i]), i);\n    }\n    for (int i = 0; i < q; i++) {\n        cin >> X[i] >> Y[i];\n        X[i]--;\n        Y[i]--;\n    }\n    sort(order, order + n - 1);\n    reverse(order, order + n - 1);\n    set<int> st;\n    st.insert(-1);\n    st.insert(n - 1);\n    for (int i = 0; i < n - 1; i++) {\n        int p = order[i].second;\n        int r = *st.lower_bound(p);\n        int l = *(--st.lower_bound(p));\n        st.insert(p);\n        // l + 1 ~ p\n        // p + 1 ~ r\n        int x, y;\n        for (int j = 0; j < q; j++) {\n            x = min(Y[j], p) - max(X[j], l + 1) + 1;\n            x = max(x, 0);\n            y = min(Y[j], r) - max(X[j], p + 1) + 1;\n            y = max(y, 0);\n            ans[j] += 1LL * x * y * order[i].first;\n        }\n    }\n    for (int i = 0; i < q; i++) {\n        cout << ans[i] << endl;\n    }\n    return 0;\n}\n"
     ],
@@ -112,5 +112,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Lipshitz Sequence.json",
     "editorial_link": "https://codeforces.com//blog/entry/21755",
-    "editorial": "Forget about the ceiling function. Draw points (i,?A[i]) and lines between them \u0097 what's the Lipschitz constant geometrically?"
+    "editorial": "Forget about the ceiling function. Draw points (i,?A[i]) and lines between them  what's the Lipschitz constant geometrically?",
+    "hint": []
 }

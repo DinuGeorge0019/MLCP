@@ -158,5 +158,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Block Adventure.json",
     "editorial_link": "https://codeforces.com/blog/entry/69035",
-    "editorial": "We can easily see that it\u00e2\u0080\u0099s always optimal to have as many blocks as\r\npossible in the bag before getting to the next column. Therefore, if the\r\ncharacter is currently on the top of the -th column, Gildong just needs\r\nto make become by repeating the -st or the -nd action. In other words,\r\nwe should add blocks to the bag. Adding or subtracting one by one will\r\nlead to TLE. If there exists a situation where the bag will have\r\nnegative number of blocks, the answer is NO. Otherwise the answer is\r\nYES.Time complexity: for each test case.\r\n"
+    "editorial": "We can easily see that itâs always optimal to have as many blocks as\r\npossible in the bag before getting to the next column. Therefore, if the\r\ncharacter is currently on the top of the -th column, Gildong just needs\r\nto make become by repeating the -st or the -nd action. In other words,\r\nwe should add blocks to the bag. Adding or subtracting one by one will\r\nlead to TLE. If there exists a situation where the bag will have\r\nnegative number of blocks, the answer is NO. Otherwise the answer is\r\nYES.Time complexity: for each test case.\r\n",
+    "hint": []
 }

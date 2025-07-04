@@ -207,5 +207,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Luntik and Subsequences.json",
     "editorial_link": "https://codeforces.com//blog/entry/96267",
-    "editorial": "It can be noticed that all subsequences with sum appear if we erase some\r\n-es from the array and also erase exactly one . We can independently\r\ncalculate the number of ways to erase some -es from the array (that way\r\nthe sum will remain the same), then calculate the number of ways to\r\nerase exactly one from the array (that way the sum will become equal to\r\n), and then multiply these two numbers. Therefore, the answer is equal\r\nto , where is the number of -es in the array, and is the number of -s.\r\n"
+    "editorial": "It can be noticed that all subsequences with sum appear if we erase some\r\n-es from the array and also erase exactly one . We can independently\r\ncalculate the number of ways to erase some -es from the array (that way\r\nthe sum will remain the same), then calculate the number of ways to\r\nerase exactly one from the array (that way the sum will become equal to\r\n), and then multiply these two numbers. Therefore, the answer is equal\r\nto , where is the number of -es in the array, and is the number of -s.\r\n",
+    "hint": []
 }

@@ -125,5 +125,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Even Subset Sum Problem.json",
     "editorial_link": "https://codeforces.com//blog/entry/74148",
-    "editorial": "If there is an even element in array there is an answer consisting of\r\nonly it. Otherwise if there is at least two odd elements in array there\r\nis an answer consisting of this two elements. Otherwise array is only\r\none odd element and there is no answer.\r\n"
+    "editorial": "If there is an even element in array there is an answer consisting of\r\nonly it. Otherwise if there is at least two odd elements in array there\r\nis an answer consisting of this two elements. Otherwise array is only\r\none odd element and there is no answer.\r\n",
+    "hint": []
 }

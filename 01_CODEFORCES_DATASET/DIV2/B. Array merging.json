@@ -131,5 +131,22 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Array merging.json",
     "editorial_link": "https://codeforces.com//blog/entry/116527",
-    "editorial": "SolutionLet be the length of the longest subarray from containing only\r\nelements equal to . If doesn\u00e2\u0080\u0099t appear in , then .Similarly, let be the\r\nlength of the longest subarray from containing only elements equal to .\r\nIf doesn\u00e2\u0080\u0099t appear in , then . and can be computed in by scanning the\r\narray while updating current maximal subarray.When merging two arrays,\r\nit is possible to force a particular subarray to be adjacent to another\r\nparticular subarray in the merged array. ProofWe can construct the\r\nmerged array as follows: If , then the merged array will have a subarray\r\nconsisting of equal elements.Therefore, the answer is equal to: Time\r\ncomplexity per testcase: .\r\n"
+    "editorial": "SolutionLet be the length of the longest subarray from containing only\r\nelements equal to . If doesnât appear in , then .Similarly, let be the\r\nlength of the longest subarray from containing only elements equal to .\r\nIf doesnât appear in , then . and can be computed in by scanning the\r\narray while updating current maximal subarray.When merging two arrays,\r\nit is possible to force a particular subarray to be adjacent to another\r\nparticular subarray in the merged array. ProofWe can construct the\r\nmerged array as follows: If , then the merged array will have a subarray\r\nconsisting of equal elements.Therefore, the answer is equal to: Time\r\ncomplexity per testcase: .\r\n",
+    "hint": [
+        "Hint 1 When we merge two arrays and , we can force the resulting array to have as a subarray, for some and .",
+        "Hint 2 If , then we can achieve a contiguous sequence of equal elements in the resulting array.",
+        "Hint 1 What is the answer if ?",
+        "Hint 2 The previous case can be generalised to find the answer for any tree.",
+        "Hint 1 Since and , .",
+        "Hint 2 Since , then .",
+        "Hint 1 While not necessarily a hint, this problem cannot be solved without knowing that there are Regular Bracket Strings of length .",
+        "Hint 2 What's the answer if ?",
+        "Hint 3 What's the answer if and the two intervals partially overlap?",
+        "Hint 4 Based on the previous hint, we can get rid of all partially overlapping intervals. The remaining intervals will have a tree-like structure.",
+        "Hint 5 Finding the tree is actually unnecessary and also very difficult.",
+        "Hint 6 The brackets on the positions covered by the same subset of intervals must form an RBS.",
+        "Hint 7 Hashing. Xor hashing specifically.",
+        "Hint 1 Why is bipartite coloring not always optimal?",
+        "Hint 2 How good is a bipartite coloring actually?"
+    ]
 }

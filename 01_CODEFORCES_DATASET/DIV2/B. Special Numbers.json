@@ -157,7 +157,7 @@
         ]
     },
     "name": "B. Special Numbers",
-    "statement": "Theofanis really likes sequences of positive integers, thus his teacher\r\n(Yeltsa Kcir) gave him a problem about a sequence that consists of only\r\nspecial numbers.Let\u2019s call a positive number if it can be written as a\r\nsum of non-negative powers of n. For example, for n = 4 number 17 is\r\nspecial, because it can be written as 4^0 + 4^2 = 1 + 16 = 17, but 9 is\r\nnot.Theofanis asks you to help him find the k-th special number if they\r\nare sorted in increasing order. Since this number may be too large,\r\noutput it modulo 10^9+7.\r\n",
+    "statement": "Theofanis really likes sequences of positive integers, thus his teacher\r\n(Yeltsa Kcir) gave him a problem about a sequence that consists of only\r\nspecial numbers.Let’s call a positive number if it can be written as a\r\nsum of non-negative powers of n. For example, for n = 4 number 17 is\r\nspecial, because it can be written as 4^0 + 4^2 = 1 + 16 = 17, but 9 is\r\nnot.Theofanis asks you to help him find the k-th special number if they\r\nare sorted in increasing order. Since this number may be too large,\r\noutput it modulo 10^9+7.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\n#define int long long\n#define mod 1000000007\nusing namespace std;\nsigned main(int argc, char** argv) {\n\tint T;\n\tcin >> T;\n\twhile(T--)\n\t{\n\t\tint n,k;\n\t\tcin >> n >> k;\n\t\tint ans=0,pw=1;\n\t\tfor(int i=1;i<=33;i++)\n\t\t{\n\t\t\tans+=(k&1)*pw;\n\t\t\tans%=mod;\n\t\t\tpw*=n;\n\t\t\tpw%=mod;\n\t\t\tk>>=1;\n\t\t}\n\t\tcout << ans << \"\\n\";\n\t}\n\treturn 0;\n}"
     ],
@@ -171,5 +171,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Special Numbers.json",
     "editorial_link": "https://codeforces.com//blog/entry/95525",
-    "editorial": "The problem is the same as finding the -th number that in base has only\r\nzeros and ones.So you can write in binary system and instead of powers\r\nof add powers of .\r\n"
+    "editorial": "The problem is the same as finding the -th number that in base has only\r\nzeros and ones.So you can write in binary system and instead of powers\r\nof add powers of .\r\n",
+    "hint": [
+        "Hint Think of the numbers in base ."
+    ]
 }

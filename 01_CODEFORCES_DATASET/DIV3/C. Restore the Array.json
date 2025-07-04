@@ -176,5 +176,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C. Restore the Array.json",
     "editorial_link": "https://codeforces.com//blog/entry/114788",
-    "editorial": "To solve the problem, you can build an array as follows at Let\u00e2\u0080\u0099s show\r\nthat from the constructed array we can get an array equal to the\r\noriginal array : If , then If , then So at If and , then If , then If ,\r\nthen By the construction of the array it is not possible that and . So\r\nIf , then If , then So We get that for , so and array is built\r\ncorrectly.\r\n"
+    "editorial": "To solve the problem, you can build an array as follows at Letâs show\r\nthat from the constructed array we can get an array equal to the\r\noriginal array : If , then If , then So at If and , then If , then If ,\r\nthen By the construction of the array it is not possible that and . So\r\nIf , then If , then So We get that for , so and array is built\r\ncorrectly.\r\n",
+    "hint": []
 }

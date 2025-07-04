@@ -138,5 +138,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\C. Cellular Network.json",
     "editorial_link": "https://codeforces.com//blog/entry/46324?locale=en",
-    "editorial": "At first store coordinates of all towers in set . Then let\u00e2\u0080\u0099s look\r\nthrough all cities. Let the current city be located in the point . Let .\r\nThen if is not equal to the end of the set we put in the variable the\r\nvalue the distance to the nearest tower on the right for the current\r\ncity. If is not equal to the beginning of the set we need to make and\r\nupdate the distance to the nearest tower on the left to the current\r\ncity. After that we only need to update the answer: .Also this problem\r\ncan be solved with help of two pointers in linear time.\r\n"
+    "editorial": "At first store coordinates of all towers in set . Then letâs look\r\nthrough all cities. Let the current city be located in the point . Let .\r\nThen if is not equal to the end of the set we put in the variable the\r\nvalue the distance to the nearest tower on the right for the current\r\ncity. If is not equal to the beginning of the set we need to make and\r\nupdate the distance to the nearest tower on the left to the current\r\ncity. After that we only need to update the answer: .Also this problem\r\ncan be solved with help of two pointers in linear time.\r\n",
+    "hint": []
 }

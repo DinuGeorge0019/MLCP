@@ -145,5 +145,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Equator.json",
     "editorial_link": "https://codeforces.com//blog/entry/58869",
-    "editorial": "To solve the problem we need to know the total number of problems which\r\nPolycarp planned to solve. We count it in one iteration through the\r\ngiven array and save the total number of problems in the variable .After\r\nthat, we will again iterate through the array and count the number of\r\nproblems that Polycarp will solve on the first days. Let this sum is\r\nequal to . We need to find the smallest for which it is true that . This\r\nday will be the answer.\r\n"
+    "editorial": "To solve the problem we need to know the total number of problems which\r\nPolycarp planned to solve. We count it in one iteration through the\r\ngiven array and save the total number of problems in the variable .After\r\nthat, we will again iterate through the array and count the number of\r\nproblems that Polycarp will solve on the first days. Let this sum is\r\nequal to . We need to find the smallest for which it is true that . This\r\nday will be the answer.\r\n",
+    "hint": []
 }

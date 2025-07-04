@@ -93,5 +93,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Crash.json",
     "editorial_link": "https://codeforces.com//blog/entry/11730",
-    "editorial": "Let us create array with elements, which is filled with . In the cell we\r\nwill contain the maximal number of the submissions of the participant\r\nwith identifier . We will process submissions in the given order. Let us\r\nprocess submission . If , then the answer is NO, else we will update\r\narray : . Solution: 6396297\r\n"
+    "editorial": "Let us create array with elements, which is filled with . In the cell we\r\nwill contain the maximal number of the submissions of the participant\r\nwith identifier . We will process submissions in the given order. Let us\r\nprocess submission . If , then the answer is NO, else we will update\r\narray : . Solution: 6396297\r\n",
+    "hint": []
 }

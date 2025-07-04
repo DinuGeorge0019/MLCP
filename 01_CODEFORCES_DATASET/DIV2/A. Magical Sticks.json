@@ -156,5 +156,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Magical Sticks.json",
     "editorial_link": "https://codeforces.com//blog/entry/79624",
-    "editorial": "Output . When is even, we can create When is odd, we can create\r\nInitially, there are only stick which has length . If we connect sticks\r\nand , after that, there is a stick which has a different length from and\r\n. Then, we can create at most sticks that have the same length. The\r\nvalue is equal to .Total complexity:\r\n"
+    "editorial": "Output . When is even, we can create When is odd, we can create\r\nInitially, there are only stick which has length . If we connect sticks\r\nand , after that, there is a stick which has a different length from and\r\n. Then, we can create at most sticks that have the same length. The\r\nvalue is equal to .Total complexity:\r\n",
+    "hint": []
 }

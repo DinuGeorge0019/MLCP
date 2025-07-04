@@ -136,5 +136,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Small GCD.json",
     "editorial_link": "https://codeforces.com//blog/entry/122677",
-    "editorial": "Solution part 1We calculate from to . For some , we can first calculate\r\nthe number of triples that have a value of function that is an integer\r\nmultiple of , and then from it subtract . Because of the previous hint,\r\nthe subtractions will be quite fast.Now the question is how to calculate\r\nthe number of triples that have a value of function that is an integer\r\nmultiple of .\r\n"
+    "editorial": "Solution part 1We calculate from to . For some , we can first calculate\r\nthe number of triples that have a value of function that is an integer\r\nmultiple of , and then from it subtract . Because of the previous hint,\r\nthe subtractions will be quite fast.Now the question is how to calculate\r\nthe number of triples that have a value of function that is an integer\r\nmultiple of .\r\n",
+    "hint": [
+        "Hint 1 Let be the biggest value in the array. Calculate array such that ( ) is the number of triples which have of . Then the answer is the sum of over all ( ).",
+        "Hint 2 Value of is around .",
+        "Hint 3 Numbers up to can have at most divisors."
+    ]
 }

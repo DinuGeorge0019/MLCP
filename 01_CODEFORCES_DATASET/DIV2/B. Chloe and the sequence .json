@@ -108,7 +108,7 @@
         ]
     },
     "name": "B. Chloe and the sequence ",
-    "statement": "Chloe, the same as Vladik, is a competitive programmer. She didn\u2019t have\r\nany problems to get to the olympiad like Vladik, but she was confused by\r\nthe task proposed on the olympiad.Let\u2019s consider the following algorithm\r\nof generating a sequence of integers. Initially we have a sequence\r\nconsisting of a single element equal to . Then we perform steps. On each\r\nstep we take the sequence we\u2019ve got on the previous step, append it to\r\nthe end of itself and insert in the middle the minimum positive integer\r\nwe haven\u2019t used before. For example, we get the sequence after the first\r\nstep, the sequence after the second step.The task is to find the value\r\nof the element with index (the elements are numbered from ) in the\r\nobtained sequence, i. e. after steps.Please help Chloe to solve the\r\nproblem!\r\n",
+    "statement": "Chloe, the same as Vladik, is a competitive programmer. She didn’t have\r\nany problems to get to the olympiad like Vladik, but she was confused by\r\nthe task proposed on the olympiad.Let’s consider the following algorithm\r\nof generating a sequence of integers. Initially we have a sequence\r\nconsisting of a single element equal to . Then we perform steps. On each\r\nstep we take the sequence we’ve got on the previous step, append it to\r\nthe end of itself and insert in the middle the minimum positive integer\r\nwe haven’t used before. For example, we get the sequence after the first\r\nstep, the sequence after the second step.The task is to find the value\r\nof the element with index (the elements are numbered from ) in the\r\nobtained sequence, i. e. after steps.Please help Chloe to solve the\r\nproblem!\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\n\nusing namespace std;\n\nlong long n,k;\n\nlong long get(long long n, long long k) {\n    long long length=(1ll<<n)-1;\n    if(length/2+1==k) return n;\n    else if(k<=length/2) return get(n-1,k);\n    else return get(n-1,k-length/2-1);\n}\n\nint main() {\n    scanf(\"%lld %lld\", &n, &k);\n    printf(\"%lld\\n\", get(n,k));\n\n    return 0;\n}\n"
     ],
@@ -124,5 +124,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Chloe and the sequence .json",
     "editorial_link": "https://codeforces.com//blog/entry/49049",
-    "editorial": "Consider the string after steps of algorithm. We can split it into three\r\nparts: string from previous step, new character, another one string from\r\nprevious step. Lets find the part, where our -th character is, and\r\nreduce our string to the string from the previous step.The complexity is\r\n.\r\n"
+    "editorial": "Consider the string after steps of algorithm. We can split it into three\r\nparts: string from previous step, new character, another one string from\r\nprevious step. Lets find the part, where our -th character is, and\r\nreduce our string to the string from the previous step.The complexity is\r\n.\r\n",
+    "hint": []
 }

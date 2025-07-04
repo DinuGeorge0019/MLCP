@@ -110,5 +110,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Bakery.json",
     "editorial_link": "https://codeforces.com//blog/entry/46662",
-    "editorial": "Note that it makes no sense to choose the city for bakeries and the city with the warehouse so that had more than one way between them, as every road increases the distance over which you have to pay.\n\nSo, the problem reduces to the following: select two neighboring cities so that one is a warehouse, and in the other & mdash; no. For doing this, simply iterate through all the city with the warehouse, among the neighbors of each town without looking for a warehouse and update the answer. If there is such a pair of cities, print -1."
+    "editorial": "Note that it makes no sense to choose the city for bakeries and the city with the warehouse so that had more than one way between them, as every road increases the distance over which you have to pay.\n\nSo, the problem reduces to the following: select two neighboring cities so that one is a warehouse, and in the other & mdash; no. For doing this, simply iterate through all the city with the warehouse, among the neighbors of each town without looking for a warehouse and update the answer. If there is such a pair of cities, print -1.",
+    "hint": []
 }

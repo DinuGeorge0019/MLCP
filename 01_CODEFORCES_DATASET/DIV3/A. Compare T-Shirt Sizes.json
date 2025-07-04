@@ -172,5 +172,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Compare T-Shirt Sizes.json",
     "editorial_link": "https://codeforces.com//blog/entry/107908",
-    "editorial": "Let , are the last characters of lines and respectively. And are the\r\nsizes of these strings. : then the answer depends only on and and is\r\nuniquely defined as the inverse of to (\"\" if , \"\" if , since the\r\ncharacters , , are in reverse order in the alphabet). : . Then the\r\nanswer is \"\". This also covers the case ; . Then the larger the size of\r\nthe string, the smaller the size of the t-shirt. That is, the answer is\r\n\"\" if and \"\" if ; . Then the larger the size of the string, the smaller\r\nthe size of the t-shirt. That is, the answer is \"\" if and \"\" if ;\r\n"
+    "editorial": "Let , are the last characters of lines and respectively. And are the\r\nsizes of these strings. : then the answer depends only on and and is\r\nuniquely defined as the inverse of to (\"\" if , \"\" if , since the\r\ncharacters , , are in reverse order in the alphabet). : . Then the\r\nanswer is \"\". This also covers the case ; . Then the larger the size of\r\nthe string, the smaller the size of the t-shirt. That is, the answer is\r\n\"\" if and \"\" if ; . Then the larger the size of the string, the smaller\r\nthe size of the t-shirt. That is, the answer is \"\" if and \"\" if ;\r\n",
+    "hint": []
 }

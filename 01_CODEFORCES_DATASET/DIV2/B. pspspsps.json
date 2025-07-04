@@ -111,7 +111,7 @@
     "name": "B. pspspsps",
     "statement": "Given a string s = s_1s_2\r\nldots s_n of length n consisting of characters , , and (dot), determine\r\nwhether a permutation^{\r\ntext{ }} p of length n exists, such that for all integers i (1\r\nle i\r\nle n): If s_i is , then [p_1, p_2,\r\nldots, p_i] forms a permutation (of length i); If s_i is , then [p_i,\r\np_{i+1},\r\nldots, p_{n}] forms a permutation (of length n-i+1); If s_i is , then\r\nthere is no additional restriction. ^{\r\ntext{ }}A permutation of length n is an array consisting of n distinct\r\nintegers from 1 to n in arbitrary order. For example, [2,3,1,5,4] is a\r\npermutation, but [1,2,2] is not a permutation (2 appears twice in the\r\narray), and [1,3,4] is also not a permutation (n=3 but there is 4 in the\r\narray).\r\n",
     "solutions": [
-        "#include <bits/stdc++.h>#define ent '\\n'#define int long long\u00a0typedef long long ll;using namespace std;\u00a0const int mod = 998'244'353;const int maxn = 5e3 + 12;\u00a0int p[maxn];int n, m, k;\u00a0void solve() {    string s;    cin >> n >> s;    int ans = 1;    for(int i = 0; i < n; i++) {        for(int j = i + 1; j < n; j++) {            if(s[i] == 's' && s[j] == 'p') {                ans &= (min(n - i, j + 1) <= j - i + 1);            }            if(s[i] == 'p' && s[j] == 's') ans = 0;        }    }    if(ans) {        cout << \"YES\\n\";    }    else {        cout << \"NO\\n\";    }}\u00a0int32_t main(){    ios_base::sync_with_stdio(0);    cin.tie(0);    cout.tie(0);    int t = 1;\u00a0    cin >> t;    while(t--){        solve();    }}"
+        "#include <bits/stdc++.h>#define ent '\\n'#define int long long typedef long long ll;using namespace std; const int mod = 998'244'353;const int maxn = 5e3 + 12; int p[maxn];int n, m, k; void solve() {    string s;    cin >> n >> s;    int ans = 1;    for(int i = 0; i < n; i++) {        for(int j = i + 1; j < n; j++) {            if(s[i] == 's' && s[j] == 'p') {                ans &= (min(n - i, j + 1) <= j - i + 1);            }            if(s[i] == 'p' && s[j] == 's') ans = 0;        }    }    if(ans) {        cout << \"YES\\n\";    }    else {        cout << \"NO\\n\";    }} int32_t main(){    ios_base::sync_with_stdio(0);    cin.tie(0);    cout.tie(0);    int t = 1;     cin >> t;    while(t--){        solve();    }}"
     ],
     "input": "",
     "output": "",
@@ -123,5 +123,6 @@
     ],
     "dificulty": "1300",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. pspspsps.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. pspspsps.json",
+    "hint": []
 }

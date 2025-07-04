@@ -116,5 +116,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Frequency of String.json",
     "editorial_link": "https://codeforces.com//blog/entry/58991",
-    "editorial": "Let be the summary length of Number of different lengths of is . All are\r\ndistinct, so summary number of their entries in is .Let\u00e2\u0080\u0099s find all\r\nentries of every . To do this we can use Aho-Corasick\u00e2\u0080\u0099s algorithm. Then\r\nwe know entries of , it is not hard to calculate the answer.\r\n"
+    "editorial": "Let be the summary length of Number of different lengths of is . All are\r\ndistinct, so summary number of their entries in is .Letâs find all\r\nentries of every . To do this we can use Aho-Corasickâs algorithm. Then\r\nwe know entries of , it is not hard to calculate the answer.\r\n",
+    "hint": []
 }

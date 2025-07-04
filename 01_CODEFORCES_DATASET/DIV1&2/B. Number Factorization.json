@@ -204,5 +204,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\B. Number Factorization.json",
     "editorial_link": "https://codeforces.com//blog/entry/112009",
-    "editorial": "First, is equivalent to the product of for times, so it is sufficient to\r\nset all to .Decomposite to some prime factors, greedily choose the most\r\nnumber of distinct prime numbers, the product is the maximum.\r\n"
+    "editorial": "First, is equivalent to the product of for times, so it is sufficient to\r\nset all to .Decomposite to some prime factors, greedily choose the most\r\nnumber of distinct prime numbers, the product is the maximum.\r\n",
+    "hint": []
 }

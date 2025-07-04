@@ -118,5 +118,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Sagheer and Nubian Market.json",
     "editorial_link": "https://codeforces.com//blog/entry/52318",
-    "editorial": "If Sagheer can buy items, then he can also buy less than items because\r\nthey will be within his budget. If he can t buy items, then can t also\r\nbuy more than items because they will exceed his budget. So, we can\r\napply binary search to find the best value for . For each value , we\r\nwill compute the new prices, sort them and pick the minimum prices to\r\nfind the best minimum cost for items. Complexity: Implementation\r\n"
+    "editorial": "If Sagheer can buy items, then he can also buy less than items because\r\nthey will be within his budget. If he can t buy items, then can t also\r\nbuy more than items because they will exceed his budget. So, we can\r\napply binary search to find the best value for . For each value , we\r\nwill compute the new prices, sort them and pick the minimum prices to\r\nfind the best minimum cost for items. Complexity: Implementation\r\n",
+    "hint": []
 }

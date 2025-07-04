@@ -173,5 +173,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Almost Rectangle.json",
     "editorial_link": "https://codeforces.com//blog/entry/89535",
-    "editorial": "f two asterisks are in the same row, then it is enough to select any\r\nother row and place two asterisks in the same columns in it.If two\r\nasterisks are in the same column, then you can do the same.If none of\r\nthe above conditions are met and the asterisks are at positions , , then\r\nyou can place two more asterisks at positions , .\r\n"
+    "editorial": "f two asterisks are in the same row, then it is enough to select any\r\nother row and place two asterisks in the same columns in it.If two\r\nasterisks are in the same column, then you can do the same.If none of\r\nthe above conditions are met and the asterisks are at positions , , then\r\nyou can place two more asterisks at positions , .\r\n",
+    "hint": []
 }

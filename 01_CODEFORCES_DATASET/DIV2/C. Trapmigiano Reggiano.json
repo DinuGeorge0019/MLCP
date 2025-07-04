@@ -1,1 +1,117 @@
-{"link": "https://codeforces.com//contest/2071/problem/C", "problemId": "3235595", "problem_idx": "C", "shortId": "2071C", "contest_number": "2071", "problem_submissions": {"C": [308500412, 308317666, 308361110, 308336146, 308323879, 308329162, 308431357, 308323153, 308322089, 308324712, 308324838, 308300023, 308338574, 308327490, 308358640], "D2": [308380420, 308341189, 308366571, 308352059, 308372786, 308368930, 308377735, 308374177, 308368337, 308375886], "F": [308373297, 308377404], "E": [308361980, 308345537, 308378051, 308376397, 308376665], "D1": [308339511, 308341058, 308362310, 308345467, 308346693, 308332849, 308332972, 308343247, 308340165, 308341094, 308346883, 308329536, 308369447], "B": [308310760, 308356333, 308327132, 308308541, 308313847, 308342227, 308309079, 308304207, 308317019, 308309205, 308310795, 308322545, 308331268], "A": [308295350, 308348314, 308303164, 308293936, 308302778, 308311307, 308294388, 308294024, 308294553, 308316276, 308297625, 308298079, 308296422]}, "editorial_link": "https://codeforces.com//blog/entry/140115", "editorial": "", "name": "C. Trapmigiano Reggiano", "statement": "In an Italian village, a hungry mouse starts at vertex\r\ntextrm{st} on a given tree^{\r\ntext{ }} with n vertices.Given a permutation p of length n^{\r\ntext{ }}, there are n steps. For the i-th step: A tempting piece of\r\nParmesan cheese appears at vertex p_i. If the mouse is currently at\r\nvertex p_i, it will stay there and enjoy the moment. Otherwise, it will\r\nmove along the simple path to vertex p_i . Your task is to find such a\r\npermutation so that, after all n steps, the mouse inevitably arrives at\r\nvertex\r\ntextrm{en}, where a trap awaits.Note that the mouse must arrive at\r\ntextrm{en} after all n steps, though it may pass through\r\ntextrm{en} earlier during the process.^{\r\ntext{ }}A tree is a connected graph without cycles. ^{\r\ntext{ }}A permutation of length n is an array consisting of n distinct\r\nintegers from 1 to n in arbitrary order. For example, [2,3,1,5,4] is a\r\npermutation, but [1,2,2] is not a permutation (2 appears twice in the\r\narray), and [1,3,4] is also not a permutation (n=3 but there is 4 in the\r\narray).\r\n", "solutions": [], "input": "", "output": "", "tags": ["constructive algorithms", "data structures", "dfs and similar", "dp", "greedy", "sortings", "trees"], "dificulty": "1700", "interactive": false, "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Trapmigiano Reggiano.json"}
+{
+    "link": "https://codeforces.com//contest/2071/problem/C",
+    "problemId": "3235595",
+    "problem_idx": "C",
+    "shortId": "2071C",
+    "contest_number": "2071",
+    "problem_submissions": {
+        "C": [
+            308500412,
+            308317666,
+            308361110,
+            308336146,
+            308323879,
+            308329162,
+            308431357,
+            308323153,
+            308322089,
+            308324712,
+            308324838,
+            308300023,
+            308338574,
+            308327490,
+            308358640
+        ],
+        "D2": [
+            308380420,
+            308341189,
+            308366571,
+            308352059,
+            308372786,
+            308368930,
+            308377735,
+            308374177,
+            308368337,
+            308375886
+        ],
+        "F": [
+            308373297,
+            308377404
+        ],
+        "E": [
+            308361980,
+            308345537,
+            308378051,
+            308376397,
+            308376665
+        ],
+        "D1": [
+            308339511,
+            308341058,
+            308362310,
+            308345467,
+            308346693,
+            308332849,
+            308332972,
+            308343247,
+            308340165,
+            308341094,
+            308346883,
+            308329536,
+            308369447
+        ],
+        "B": [
+            308310760,
+            308356333,
+            308327132,
+            308308541,
+            308313847,
+            308342227,
+            308309079,
+            308304207,
+            308317019,
+            308309205,
+            308310795,
+            308322545,
+            308331268
+        ],
+        "A": [
+            308295350,
+            308348314,
+            308303164,
+            308293936,
+            308302778,
+            308311307,
+            308294388,
+            308294024,
+            308294553,
+            308316276,
+            308297625,
+            308298079,
+            308296422
+        ]
+    },
+    "editorial_link": "https://codeforces.com//blog/entry/140115",
+    "editorial": "SolutionFirst, root the tree at vertex and approach it step by step.\r\nObserve that after processing all vertices at the largest depth , the\r\nmouse s current depth cannot exceed . By repeating this process for the\r\nnext largest depth , the mouse s depth will inevitably become or less.\r\nContinuing this way, we process vertices in descending order of depth\r\nuntil we reach the root, achieving the desired result.The overall time\r\ncomplexity is: .\r\n",
+    "name": "C. Trapmigiano Reggiano",
+    "statement": "In an Italian village, a hungry mouse starts at vertex\r\ntextrm{st} on a given tree^{\r\ntext{ }} with n vertices.Given a permutation p of length n^{\r\ntext{ }}, there are n steps. For the i-th step: A tempting piece of\r\nParmesan cheese appears at vertex p_i. If the mouse is currently at\r\nvertex p_i, it will stay there and enjoy the moment. Otherwise, it will\r\nmove along the simple path to vertex p_i . Your task is to find such a\r\npermutation so that, after all n steps, the mouse inevitably arrives at\r\nvertex\r\ntextrm{en}, where a trap awaits.Note that the mouse must arrive at\r\ntextrm{en} after all n steps, though it may pass through\r\ntextrm{en} earlier during the process.^{\r\ntext{ }}A tree is a connected graph without cycles. ^{\r\ntext{ }}A permutation of length n is an array consisting of n distinct\r\nintegers from 1 to n in arbitrary order. For example, [2,3,1,5,4] is a\r\npermutation, but [1,2,2] is not a permutation (2 appears twice in the\r\narray), and [1,3,4] is also not a permutation (n=3 but there is 4 in the\r\narray).\r\n",
+    "solutions": [],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "data structures",
+        "dfs and similar",
+        "dp",
+        "greedy",
+        "sortings",
+        "trees"
+    ],
+    "dificulty": "1700",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Trapmigiano Reggiano.json",
+    "hint": [
+        "Hint 1 Root the tree at vertex . What observations can you make?",
+        "Hint 2 Can the cheese be placed at the vertices in a specific sequence that prevents the mouse from moving farther away from vertex ?"
+    ]
+}

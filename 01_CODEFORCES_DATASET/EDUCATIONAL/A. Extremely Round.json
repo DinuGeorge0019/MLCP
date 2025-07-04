@@ -147,7 +147,7 @@
         ]
     },
     "name": "A. Extremely Round",
-    "statement": "Let\u2019s call a positive integer if it has only one non-zero digit. For\r\nexample, 5000, 4, 1, 10, 200 are extremely round integers; 42, 13, 666,\r\n77, 101 are not.You are given an integer n. You have to calculate the\r\nnumber of extremely round integers x such that 1\r\nle x\r\nle n.\r\n",
+    "statement": "Let’s call a positive integer if it has only one non-zero digit. For\r\nexample, 5000, 4, 1, 10, 200 are extremely round integers; 42, 13, 666,\r\n77, 101 are not.You are given an integer n. You have to calculate the\r\nnumber of extremely round integers x such that 1\r\nle x\r\nle n.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\nint main(){\n  int t;\n  cin >> t;\n  for (int i = 0; i < t; i++){\n    int n;\n    cin >> n;\n    int ans = 0;\n    for (int j = 1; j <= 9; j++){\n      int x = j;\n      while (x <= n){\n        ans++;\n        x *= 10;\n      }\n    }\n    cout << ans << endl;\n  }\n}"
     ],
@@ -161,5 +161,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Extremely Round.json",
     "editorial_link": "https://codeforces.com//blog/entry/110066",
-    "editorial": "There are many ways to solve this problem.The most naive one (iterating\r\nthrough all numbers from to in each test case and checking if they are\r\nextremely round) fails, since it is , but you can optimize it by\r\nnoticing that extremely round numbers are rare. So, for example, we can\r\niterate through all numbers from to once, remember which ones are\r\nextremely round, store them into an array, and while answering the test\r\ncase, only check the numbers from the array we have created.There is\r\nalso a solution in per test case with a formula, try to invent it\r\nyourself.\r\n"
+    "editorial": "There are many ways to solve this problem.The most naive one (iterating\r\nthrough all numbers from to in each test case and checking if they are\r\nextremely round) fails, since it is , but you can optimize it by\r\nnoticing that extremely round numbers are rare. So, for example, we can\r\niterate through all numbers from to once, remember which ones are\r\nextremely round, store them into an array, and while answering the test\r\ncase, only check the numbers from the array we have created.There is\r\nalso a solution in per test case with a formula, try to invent it\r\nyourself.\r\n",
+    "hint": []
 }

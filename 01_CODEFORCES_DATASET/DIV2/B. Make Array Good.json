@@ -143,5 +143,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Make Array Good.json",
     "editorial_link": "https://codeforces.com//blog/entry/110169",
-    "editorial": "Suppose gives the smallest power of which is greater than\n.Iterate from to and change to by adding to -th element. Time complexity\nis .\n"
+    "editorial": "Suppose gives the smallest power of which is greater than\n.Iterate from to and change to by adding to -th element. Time complexity\nis .\n",
+    "hint": [
+        "Hint 1 Suppose we have a prime number . Suppose there are two perfect powers of — and . Now it is easy to see is divisible by .",
+        "Hint 2 So now we need to choose some prime number . Let us start with the smallest prime number .",
+        "Hint 3 Here is one interesting fact. There always exists a power of in the range for any positive integer ."
+    ]
 }

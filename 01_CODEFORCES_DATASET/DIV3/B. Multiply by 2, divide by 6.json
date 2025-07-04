@@ -129,7 +129,7 @@
         ]
     },
     "name": "B. Multiply by 2, divide by 6",
-    "statement": "You are given an integer n. In one move, you can either multiply n by\r\ntwo or divide n by 6 (if it is divisible by 6 without the\r\nremainder).Your task is to find the minimum number of moves needed to\r\nobtain 1 from n or determine if it\u2019s impossible to do that.You have to\r\nanswer t independent test cases.\r\n",
+    "statement": "You are given an integer n. In one move, you can either multiply n by\r\ntwo or divide n by 6 (if it is divisible by 6 without the\r\nremainder).Your task is to find the minimum number of moves needed to\r\nobtain 1 from n or determine if it’s impossible to do that.You have to\r\nanswer t independent test cases.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\n#define IO_OP std::ios::sync_with_stdio(0); std::cin.tie(0);\n#define F first\n#define S second\n#define V vector\n#define PB push_back\n#define MP make_pair\n#define EB emplace_back\n#define ALL(v) (v).begin(), (v).end()\n#define debug(x) cerr << #x << \" is \" << x << endl\n\nusing namespace std;\n\ntypedef long long ll;\ntypedef pair<int, int> pi;\ntypedef V<int> vi;\n\nconst int INF = 1e9 + 7;\n\nsigned main()\n{\n\tIO_OP;\n\t\n\tint t;\n\tcin >> t;\n\twhile(t--) {\n\t\tint n;\n\t\tcin >> n;\n\t\tint sa = 0, na = 0;\n\t\twhile(n % 2 == 0) n /= 2, sa++;\n\t\twhile(n % 3 == 0) n /= 3, na++;\n\t\tif(n != 1 || sa > na) {\n\t\t\tcout << -1 << endl;\n\t\t\tcontinue;\n\t\t}\n\t\tcout << na + na - sa << endl;\n\t}\n\t\n}\n\n\n\n"
     ],
@@ -142,5 +142,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Multiply by 2, divide by 6.json",
     "editorial_link": "https://codeforces.com//blog/entry/79517",
-    "editorial": "If the number consists of other primes than and then the answer is .\r\nOtherwise, let be the number of twos in the factorization of and be the\r\nnumber of threes in the factorization of . If then the answer is because\r\nwe can\u00e2\u0080\u0099t get rid of all twos. Otherwise, the answer is .Time complexity:\r\n.\r\n"
+    "editorial": "If the number consists of other primes than and then the answer is .\r\nOtherwise, let be the number of twos in the factorization of and be the\r\nnumber of threes in the factorization of . If then the answer is because\r\nwe canât get rid of all twos. Otherwise, the answer is .Time complexity:\r\n.\r\n",
+    "hint": []
 }

@@ -165,5 +165,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Minimal Square.json",
     "editorial_link": "https://codeforces.com//blog/entry/77846",
-    "editorial": "Obviously that both rectangles should completely touch by one of the\r\nsides. Otherwise, you can move them closer to each other so that the\r\ntotal height or total width decreases, and the other dimension does not\r\nchange. Thus, there are only two options: The rectangles touch by width,\r\nwe get the side of the square equal to , The rectangles touch by height,\r\nwe get the side of the square equal to . Thus, the minimum side of the\r\nsquare is equal to the minimum of these two options. Then the answer is\r\n.\r\n"
+    "editorial": "Obviously that both rectangles should completely touch by one of the\r\nsides. Otherwise, you can move them closer to each other so that the\r\ntotal height or total width decreases, and the other dimension does not\r\nchange. Thus, there are only two options: The rectangles touch by width,\r\nwe get the side of the square equal to , The rectangles touch by height,\r\nwe get the side of the square equal to . Thus, the minimum side of the\r\nsquare is equal to the minimum of these two options. Then the answer is\r\n.\r\n",
+    "hint": []
 }

@@ -132,5 +132,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Prime Square.json",
     "editorial_link": "https://codeforces.com//blog/entry/84024",
-    "editorial": "First, note that the numbers 0 and 1 are not prime. Now let\u00e2\u0080\u0099s try to\r\nbuild a square from only these numbers. To begin with, fill in the main\r\nand secondary diagonal of the square with ones.If is even, then the sum\r\nin each row and each column is (prime number), and we have met the\r\ncondition.If is odd, then the sum in the row with the number and in the\r\ncolumn with the number will be equal to one. To fix this, add ones to\r\nthe cells and . As a result, the sum in columns and rows will be equal\r\nto two or three, and we have fulfilled the condition of the problem.\r\n"
+    "editorial": "First, note that the numbers 0 and 1 are not prime. Now letâs try to\r\nbuild a square from only these numbers. To begin with, fill in the main\r\nand secondary diagonal of the square with ones.If is even, then the sum\r\nin each row and each column is (prime number), and we have met the\r\ncondition.If is odd, then the sum in the row with the number and in the\r\ncolumn with the number will be equal to one. To fix this, add ones to\r\nthe cells and . As a result, the sum in columns and rows will be equal\r\nto two or three, and we have fulfilled the condition of the problem.\r\n",
+    "hint": []
 }

@@ -121,5 +121,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Vladik and Courtesy.json",
     "editorial_link": "https://codeforces.com//blog/entry/52228",
-    "editorial": "Let\u00e2\u0080\u0099s simulate process, described in problem statement. I.e subtract\r\nfrom and numbers , until any of them is less than zero. The process\r\nwould terminate less than in iterations, because sum of arithmetical\r\nprogression with members is approximately equal to .\r\n"
+    "editorial": "Letâs simulate process, described in problem statement. I.e subtract\r\nfrom and numbers , until any of them is less than zero. The process\r\nwould terminate less than in iterations, because sum of arithmetical\r\nprogression with members is approximately equal to .\r\n",
+    "hint": [
+        "Hint Seriously?"
+    ]
 }

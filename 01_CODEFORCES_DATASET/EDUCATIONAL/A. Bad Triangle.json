@@ -188,5 +188,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Bad Triangle.json",
     "editorial_link": "https://codeforces.com//blog/entry/81506",
-    "editorial": "The triangle with side is degenerate if . So we have to maximize the\r\nlength of the longest side () and minimize the total length of other\r\nsides ().Thus, if then we answer if , otherwise the answer is .\r\n"
+    "editorial": "The triangle with side is degenerate if . So we have to maximize the\r\nlength of the longest side () and minimize the total length of other\r\nsides ().Thus, if then we answer if , otherwise the answer is .\r\n",
+    "hint": []
 }

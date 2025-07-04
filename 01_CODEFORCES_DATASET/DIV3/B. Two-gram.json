@@ -160,5 +160,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Two-gram.json",
     "editorial_link": "https://codeforces.com//blog/entry/59281",
-    "editorial": "There are at least two different approaches to this problem:You can\r\niterate over all substrings of of length and calculate for each of them\r\nthe number of its occurrences in (and try to update the result with the\r\ncurrent substring).Also you can iterate over all two-grams in the\r\nalphabet and do the same as in the aforementioned solution.\r\n"
+    "editorial": "There are at least two different approaches to this problem:You can\r\niterate over all substrings of of length and calculate for each of them\r\nthe number of its occurrences in (and try to update the result with the\r\ncurrent substring).Also you can iterate over all two-grams in the\r\nalphabet and do the same as in the aforementioned solution.\r\n",
+    "hint": []
 }

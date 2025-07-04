@@ -141,5 +141,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\F. Fibonacci Additions.json",
     "editorial_link": "https://codeforces.com//blog/entry/99563",
-    "editorial": "Let . Consider another auxiliary array , where , , and for . Notice that\r\narrays and are equal if and only if all elements of are equal to .Let\u00e2\u0080\u0099s\r\nanalyze how Fibonacci addition affects . If Fibonacci addition is\r\nperformed on array on a segment from to , then: will increase by , will\r\ndecrease by , and will decrease by .Fibonacci addition on can be handled\r\nin a similar way.Fibonacci numbers modulo can be easily precomputed, and\r\ntherefore the problem can be solved in linear time.\r\n"
+    "editorial": "Let . Consider another auxiliary array , where , , and for . Notice that\r\narrays and are equal if and only if all elements of are equal to .Letâs\r\nanalyze how Fibonacci addition affects . If Fibonacci addition is\r\nperformed on array on a segment from to , then: will increase by , will\r\ndecrease by , and will decrease by .Fibonacci addition on can be handled\r\nin a similar way.Fibonacci numbers modulo can be easily precomputed, and\r\ntherefore the problem can be solved in linear time.\r\n",
+    "hint": [
+        "Hint 1 Let . Perform all operations on the array .",
+        "Hint 2 Nevermind Fibonacci and suppose the operation was to increase the elements of a given subsegment by a given constant. Can you solve this problem without using heavy data structures like segment tree?",
+        "Hint 3 Generalize the idea from hint 2 using the characteristic property of Fibonacci numbers ( )."
+    ]
 }

@@ -171,5 +171,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\C. Can I Square .json",
     "editorial_link": "https://codeforces.com//blog/entry/123952",
-    "editorial": "You should add up all the values to get the sum . Then we just need to\r\ncheck if is a perfect square. There are many ways, for example you can\r\nuse inbuilt function or binary search. Be careful with precision errors,\r\nsince function might return a floating-point type.\r\n"
+    "editorial": "You should add up all the values to get the sum . Then we just need to\r\ncheck if is a perfect square. There are many ways, for example you can\r\nuse inbuilt function or binary search. Be careful with precision errors,\r\nsince function might return a floating-point type.\r\n",
+    "hint": []
 }

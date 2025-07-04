@@ -172,5 +172,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\B. Morning Jogging.json",
     "editorial_link": "https://codeforces.com//blog/entry/89968",
-    "editorial": "The minimum sum is the sum of smallest of all numbers.To construct the\r\nanswer, we can just mark these smallest numbers and put them in\r\ndifferent columns. A possible way is that for each row, you can sort all\r\nnumbers from small to large, and rotate the marked number in this row to\r\nunmarked columns.For example,1?????23?????45\r\n"
+    "editorial": "The minimum sum is the sum of smallest of all numbers.To construct the\r\nanswer, we can just mark these smallest numbers and put them in\r\ndifferent columns. A possible way is that for each row, you can sort all\r\nnumbers from small to large, and rotate the marked number in this row to\r\nunmarked columns.For example,1?????23?????45\r\n",
+    "hint": []
 }

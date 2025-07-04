@@ -126,11 +126,11 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/129027",
-    "editorial": "It can be proved that Alice will win the game if and only if the number\r\nof facing-up coins is odd.Time complexity: for each case.Proof:Consider\r\nall possible operations: : The number of decreases by . : The number of\r\ndecreases by . : The number of decreases by . : The number of increases\r\nby . It can be seen that the parity always changes.It\u00e2\u0080\u0099s obvious that if\r\nthe number of is equal to , the player loses because there aren\u00e2\u0080\u0099t any\r\navailable operations. So Alice wins if and only if the number of is odd.\r\n",
+    "editorial": "It can be proved that Alice will win the game if and only if the number\r\nof facing-up coins is odd.Time complexity: for each case.Proof:Consider\r\nall possible operations: : The number of decreases by . : The number of\r\ndecreases by . : The number of decreases by . : The number of increases\r\nby . It can be seen that the parity always changes.Itâs obvious that if\r\nthe number of is equal to , the player loses because there arenât any\r\navailable operations. So Alice wins if and only if the number of is odd.\r\n",
     "name": "B. Coin Games",
-    "statement": "There are n coins on the table forming a circle, and each coin is either\r\nfacing up or facing down. Alice and Bob take turns to play the following\r\ngame, and Alice goes first.In each operation, the player chooses a\r\nfacing-up coin, removes the coin, and flips the two coins that are\r\nadjacent to it. If (before the operation) there are only two coins left,\r\nthen one will be removed and the other won\u2019t be flipped (as it would be\r\nflipped twice). If (before the operation) there is only one coin left,\r\nno coins will be flipped. If (before the operation) there are no\r\nfacing-up coins, the player loses.Decide who will win the game if they\r\nboth play optimally. It can be proved that the game will end in a finite\r\nnumber of operations, and one of them will win.\r\n",
+    "statement": "There are n coins on the table forming a circle, and each coin is either\r\nfacing up or facing down. Alice and Bob take turns to play the following\r\ngame, and Alice goes first.In each operation, the player chooses a\r\nfacing-up coin, removes the coin, and flips the two coins that are\r\nadjacent to it. If (before the operation) there are only two coins left,\r\nthen one will be removed and the other won’t be flipped (as it would be\r\nflipped twice). If (before the operation) there is only one coin left,\r\nno coins will be flipped. If (before the operation) there are no\r\nfacing-up coins, the player loses.Decide who will win the game if they\r\nboth play optimally. It can be proved that the game will end in a finite\r\nnumber of operations, and one of them will win.\r\n",
     "solutions": [
-        "#include<bits/stdc++.h>using namespace std;\u00a0#define int int64_t#define pb push_back#define pii pair<int, int>#define st first#define nd second#define sz(x) (int)(x).size()#define all(x) (x).begin(), (x).end()\u00a0int32_t main() {\tios_base::sync_with_stdio(false);\tcin.tie(NULL);\t\tint t;\tcin >> t;\twhile(t--) {\t\tint n;\t\tcin >> n;\t\tint cnt = 0;\t\tfor(int i=0;i<n;i++) {\t\t\tchar c;\t\t\tcin >> c;\t\t\tif(c=='U') cnt++;\t\t}\t\tif(cnt%2) cout << \"YES\\n\";\t\telse cout << \"NO\\n\";\t}}"
+        "#include<bits/stdc++.h>using namespace std; #define int int64_t#define pb push_back#define pii pair<int, int>#define st first#define nd second#define sz(x) (int)(x).size()#define all(x) (x).begin(), (x).end() int32_t main() {\tios_base::sync_with_stdio(false);\tcin.tie(NULL);\t\tint t;\tcin >> t;\twhile(t--) {\t\tint n;\t\tcin >> n;\t\tint cnt = 0;\t\tfor(int i=0;i<n;i++) {\t\t\tchar c;\t\t\tcin >> c;\t\t\tif(c=='U') cnt++;\t\t}\t\tif(cnt%2) cout << \"YES\\n\";\t\telse cout << \"NO\\n\";\t}}"
     ],
     "input": "",
     "output": "",
@@ -139,5 +139,30 @@
     ],
     "dificulty": "900",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Coin Games.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Coin Games.json",
+    "hint": [
+        "Hint 1 Is there anything that never / always changes after each operation?",
+        "Hint 2 The parity.",
+        "Hint 1 What's the answer if and ?",
+        "Hint 2 What's the answer if ?",
+        "Hint 3 You've already known the solution. How to improve it?",
+        "Hint 1 Denote as .",
+        "Hint 2 Did you notice that ? How to prove that?",
+        "Hint 1 Denote as . Assume that and .",
+        "Hint 2 .",
+        "Hint 3 How large could and be?",
+        "Hint 1 The height of a Fenwick Tree is , so operations like enumerating ancestors of each vertex will be acceptable.",
+        "Hint 2 What's the coefficient of in each value of its ancestors?",
+        "Hint 1 Binary search on the answer of magics.",
+        "Hint 2 You may come up with many solutions with heavy data structures. Unfortunately, none of them is helpful.",
+        "Hint 3 The key is to judge times whether vertex is reachable from vertex in steps, instead of querying the minimal value or something else.",
+        "Hint 1 Use the simplest way to judge if an is valid.",
+        "Hint 2 We've got a solution. Our target time complexity is .",
+        "Hint 3 It can be boiled down to a grid path counting problem.",
+        "Hint 1 Solve E1 with solution first (The solution doesn't help much in E2).",
+        "Hint 2 For a single round of inclusion-exclusion, write down the form of the answer as simple as possible.",
+        "Hint 1 How to maintain ? Try .",
+        "Hint 2 To maintain , we can use chunking. Just +1 and .",
+        "Hint 3 To finish it, consider what we do in segment-beats."
+    ]
 }

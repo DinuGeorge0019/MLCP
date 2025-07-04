@@ -138,5 +138,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. The Same Calendar.json",
     "editorial_link": "https://codeforces.com//blog/entry/45405",
-    "editorial": "The problem was suggested by Arthur Jaworski KingArthur. Two calendars\r\nare same if and only if they have the same number of days and starts\r\nwith the same day of a week. So we should simply iterate over years and\r\nmaintain the day of a week of January, 1st (for example). Easy to see\r\nthat the day of a week increases by one each year except of the leap\r\nyears, when it increases by two. C++ solution\r\n"
+    "editorial": "The problem was suggested by Arthur Jaworski KingArthur. Two calendars\r\nare same if and only if they have the same number of days and starts\r\nwith the same day of a week. So we should simply iterate over years and\r\nmaintain the day of a week of January, 1st (for example). Easy to see\r\nthat the day of a week increases by one each year except of the leap\r\nyears, when it increases by two. C++ solution\r\n",
+    "hint": []
 }

@@ -160,5 +160,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Forbidden Integer.json",
     "editorial_link": "https://codeforces.com//blog/entry/117791",
-    "editorial": "The problem is about considering the least amount of cases possible. I\r\npropose the following options.If , then you can always print ones. So\r\nthe answer is .If , then no integer is available, so the answer is .If ,\r\nthen only is available, so you can only collect even . So if it\u00e2\u0080\u0099s odd,\r\nthe answer is .Otherwise, you can always collect with the following\r\nconstruction: if is even then take , otherwise take . Then take twos.\r\nYou can see that an even only uses twos, so it fits the previous check.\r\nIf it\u00e2\u0080\u0099s odd, then is at least , so is allowed to take.Overall\r\ncomplexity: per testcase.\r\n"
+    "editorial": "The problem is about considering the least amount of cases possible. I\r\npropose the following options.If , then you can always print ones. So\r\nthe answer is .If , then no integer is available, so the answer is .If ,\r\nthen only is available, so you can only collect even . So if itâs odd,\r\nthe answer is .Otherwise, you can always collect with the following\r\nconstruction: if is even then take , otherwise take . Then take twos.\r\nYou can see that an even only uses twos, so it fits the previous check.\r\nIf itâs odd, then is at least , so is allowed to take.Overall\r\ncomplexity: per testcase.\r\n",
+    "hint": []
 }

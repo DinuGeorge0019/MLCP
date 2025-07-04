@@ -154,5 +154,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Rudolf and the Ticket.json",
     "editorial_link": "https://codeforces.com//blog/entry/127018",
-    "editorial": "For each test case, we calculate all elements from the first array. Then\r\nwe iterate through the elements in the second array and in a loop, we\r\ncalculate each sum . If this sum is less than or equal to , we add to\r\nthe answer.\r\n"
+    "editorial": "For each test case, we calculate all elements from the first array. Then\r\nwe iterate through the elements in the second array and in a loop, we\r\ncalculate each sum . If this sum is less than or equal to , we add to\r\nthe answer.\r\n",
+    "hint": []
 }

@@ -150,7 +150,7 @@
         ]
     },
     "name": "A. Points in Segments",
-    "statement": "You are given a set of n segments on the axis Ox, each segment has\r\ninteger endpoints between 1 and m inclusive. Segments may intersect,\r\noverlap or even coincide with each other. Each segment is characterized\r\nby two integers l_i and r_i (1\r\nle l_i\r\nle r_i\r\nle m) coordinates of the left and of the right endpoints. Consider all\r\ninteger points between 1 and m inclusive. Your task is to print all such\r\npoints that don\u2019t belong to any segment. The point x belongs to the\r\nsegment [l; r] if and only if l\r\nle x\r\nle r.\r\n",
+    "statement": "You are given a set of n segments on the axis Ox, each segment has\r\ninteger endpoints between 1 and m inclusive. Segments may intersect,\r\noverlap or even coincide with each other. Each segment is characterized\r\nby two integers l_i and r_i (1\r\nle l_i\r\nle r_i\r\nle m) coordinates of the left and of the right endpoints. Consider all\r\ninteger points between 1 and m inclusive. Your task is to print all such\r\npoints that don’t belong to any segment. The point x belongs to the\r\nsegment [l; r] if and only if l\r\nle x\r\nle r.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\n\n#define fi first\n#define se second\n#define p_b push_back\n#define pll pair<ll,ll>\n#define endl \"\\n\"\n#define m_p make_pair\n#define all(x) x.begin(),x.end()\n#define ld long double\n\nusing namespace std;\ntypedef long long ll;\nconst ll MAXN = 1123456;\n\ntemplate <typename T>\nT sqr(T x){\n    return x * x;\n}\n\ntemplate <typename T>\nvoid vout(T s){\n    cout << s << endl;\n    exit(0);\n}\n\nll bp(ll a,ll n){\n    ll res = 1;\n    while(n){\n        if(n % 2)res *= a;\n        a *= a;\n        n >>= 1;\n    }\n    return res;\n}\n\nint main(){\n    ios_base :: sync_with_stdio(0);\n    cin.tie(0);\n    //freopen(\"input.txt\",\"r\",stdin);\n    //freopen(\"output.txt\",\"w\",stdout);\n    ll n, m;\n    cin >> n >> m;\n    vector <bool> fl(m);\n    while(n--){\n        ll l, r;\n        cin >> l >> r;\n        l--;\n        for(int i = l; i < r; i++)fl[i] = 1;\n    }\n    vector <ll> ans;\n    for(int i = 0; i < m; i++)if(!fl[i])ans.p_b(i + 1);\n    cout << ans.size() << endl;\n    for(auto i : ans)cout << i << \" \";\n    return 0;\n}\n"
     ],
@@ -163,5 +163,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Points in Segments.json",
     "editorial_link": "https://codeforces.com/blog/entry/60949",
-    "editorial": "In this problem all you need is to check for each point from to if it\r\ncannot belongs to any segment. It can be done in by two nested loops or\r\nin by easy prefix sums calculation. Both solutions are below.\r\n"
+    "editorial": "In this problem all you need is to check for each point from to if it\r\ncannot belongs to any segment. It can be done in by two nested loops or\r\nin by easy prefix sums calculation. Both solutions are below.\r\n",
+    "hint": []
 }

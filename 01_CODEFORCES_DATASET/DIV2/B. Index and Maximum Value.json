@@ -138,11 +138,11 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/133382",
-    "editorial": "We take a maximum value from the initial array. Let\u00e2\u0080\u0099s call it .We can\r\nsee that will always be one of the maximum values after any number of\r\noperations. Consider the value (which should be less than or equal to )\r\nbefore a particular operation. If , then still holds after the\r\noperation. Otherwise . In the operation, the difference between and\r\ndecreases by at most , so cannot become strictly greater than . Then,\r\nremains the maximum value.So we have reduced the problem to . Each time\r\na new operation is added, we perform it only on (and then output ).Time\r\ncomplexity: .\r\n",
+    "editorial": "We take a maximum value from the initial array. Letâs call it .We can\r\nsee that will always be one of the maximum values after any number of\r\noperations. Consider the value (which should be less than or equal to )\r\nbefore a particular operation. If , then still holds after the\r\noperation. Otherwise . In the operation, the difference between and\r\ndecreases by at most , so cannot become strictly greater than . Then,\r\nremains the maximum value.So we have reduced the problem to . Each time\r\na new operation is added, we perform it only on (and then output ).Time\r\ncomplexity: .\r\n",
     "name": "B. Index and Maximum Value",
     "statement": "After receiving yet another integer array a_1, a_2,\r\nldots, a_n at her birthday party, Index decides to perform some\r\noperations on it.Formally, there are m operations that she is going to\r\nperform in order. Each of them belongs to one of the two types:\r\ntexttt{+ l r}. Given two integers l and r, for all 1\r\nleq i\r\nleq n such that l\r\nleq a_i\r\nleq r, set a_i := a_i + 1.\r\ntexttt{- l r}. Given two integers l and r, for all 1\r\nleq i\r\nleq n such that l\r\nleq a_i\r\nleq r, set a_i := a_i - 1. For example, if the initial array a = [7, 1,\r\n3, 4, 3], after performing the operation\r\ntexttt{+}\r\nspace 2\r\nspace 4, the array a = [7, 1, 4, 5, 4]. Then, after performing the\r\noperation\r\ntexttt{-}\r\nspace 1\r\nspace 10, the array a = [6, 0, 3, 4, 3].Index is curious about the\r\nmaximum value in the array a. Please help her find it after each of the\r\nm operations.\r\n",
     "solutions": [
-        "#include <bits/stdc++.h>using namespace std;\u00a0int main() {\tios::sync_with_stdio(0);\tcin.tie(0); cout.tie(0);\tint T;\tfor (cin >> T; T; T--) {\t\tint n, q; cin >> n >> q;\t\tint mx = 0;\t\tfor (int i = 0; i < n; i++) {\t\t\tint x; cin >> x;\t\t\tmx = max(mx, x);\t\t}\t\twhile (q--) {\t\t\tchar c;\t\t\tint x, y; cin >> c >> x >> y;\t\t\tif (mx >= x && mx <= y) {\t\t\t\tif (c == '+') mx++;\t\t\t\telse mx--;\t\t\t}\t\t\tcout << mx << ' ';\t\t}\t\tcout << '\\n';\t}\treturn 0;}"
+        "#include <bits/stdc++.h>using namespace std; int main() {\tios::sync_with_stdio(0);\tcin.tie(0); cout.tie(0);\tint T;\tfor (cin >> T; T; T--) {\t\tint n, q; cin >> n >> q;\t\tint mx = 0;\t\tfor (int i = 0; i < n; i++) {\t\t\tint x; cin >> x;\t\t\tmx = max(mx, x);\t\t}\t\twhile (q--) {\t\t\tchar c;\t\t\tint x, y; cin >> c >> x >> y;\t\t\tif (mx >= x && mx <= y) {\t\t\t\tif (c == '+') mx++;\t\t\t\telse mx--;\t\t\t}\t\t\tcout << mx << ' ';\t\t}\t\tcout << '\\n';\t}\treturn 0;}"
     ],
     "input": "",
     "output": "",
@@ -152,5 +152,8 @@
     ],
     "dificulty": "900",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Index and Maximum Value.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Index and Maximum Value.json",
+    "hint": [
+        "Hint Consider the position of the maximum value in one array. If there's multiple maximum values, choose any. What can you observe? Answer The position of the maximum value never changes. That is, if one element is the maximum value in the beginning, it will always be."
+    ]
 }

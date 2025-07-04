@@ -69,7 +69,7 @@
         ]
     },
     "name": "A. Points on Line",
-    "statement": "Little Petya likes points a lot. Recently his mom has presented him\r\npoints lying on the line . Now Petya is wondering in how many ways he\r\ncan choose three distinct points so that the distance between the two\r\nfarthest of them doesn\u2019t exceed .Note that the order of the points\r\ninside the group of three chosen points doesn\u2019t matter.\r\n",
+    "statement": "Little Petya likes points a lot. Recently his mom has presented him\r\npoints lying on the line . Now Petya is wondering in how many ways he\r\ncan choose three distinct points so that the distance between the two\r\nfarthest of them doesn’t exceed .Note that the order of the points\r\ninside the group of three chosen points doesn’t matter.\r\n",
     "solutions": [
         "#include <iostream>\n#include <iomanip>\n#include <stdio.h>\n#include <set>\n#include <vector>\n#include <map>\n#include <cmath>\n#include <algorithm>\n#include <memory.h>\n#include <string>\n#include <sstream>\n\nusing namespace std;\n\nint x[444444];\n\nint main() {\n//  freopen(\"in\", \"r\", stdin);\n//  freopen(\"out\", \"w\", stdout);\n  int n, d, i, j;\n  scanf(\"%d %d\", &n, &d);\n  for (i=0;i<n;i++) scanf(\"%d\", x+i);\n  j = 0;\n  long long ans = 0;\n  for (i=0;i<n;i++) {\n    while (x[i]-x[j] > d) j++;\n    ans += (long long)(i-j)*(i-j-1)/2;\n  }\n  cout << ans << endl;\n  return 0;\n}\n"
     ],
@@ -84,5 +84,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Points on Line.json",
     "editorial_link": "https://codeforces.com//blog/entry/6054",
-    "editorial": "Let\u00e2\u0080\u0099s select the rightmost point of our triplet. In order to do this we\r\ncan iterate over all points in ascending order of their X-coordinate. At\r\nthe same time we\u00e2\u0080\u0099ll maintain a pointer to the leftmost point which lays\r\non the distance not greater than from the current rightmost point. We\r\ncan easily find out the number of points in the segment between two\r\npointers, excluding the rightmost point. Let\u00e2\u0080\u0099s call this number . Then\r\nthere exist exactly triplets of points with the fixed rightmost point.\r\nThe only thing left is to sum up these values for all rightmost points.\r\n"
+    "editorial": "Letâs select the rightmost point of our triplet. In order to do this we\r\ncan iterate over all points in ascending order of their X-coordinate. At\r\nthe same time weâll maintain a pointer to the leftmost point which lays\r\non the distance not greater than from the current rightmost point. We\r\ncan easily find out the number of points in the segment between two\r\npointers, excluding the rightmost point. Letâs call this number . Then\r\nthere exist exactly triplets of points with the fixed rightmost point.\r\nThe only thing left is to sum up these values for all rightmost points.\r\n",
+    "hint": []
 }

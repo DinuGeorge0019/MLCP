@@ -80,7 +80,7 @@
         ]
     },
     "name": "A. Lexicographically Maximum Subsequence",
-    "statement": "You\u2019ve got string , consisting of only lowercase English letters. Find\r\nits lexicographically maximum subsequence.We\u2019ll call a non-empty string\r\na of string .String is than string , if either and , or exists such\r\nnumber , that and . Characters in lines are compared like their ASCII\r\ncodes.\r\n",
+    "statement": "You’ve got string , consisting of only lowercase English letters. Find\r\nits lexicographically maximum subsequence.We’ll call a non-empty string\r\na of string .String is than string , if either and , or exists such\r\nnumber , that and . Characters in lines are compared like their ASCII\r\ncodes.\r\n",
     "solutions": [
         "#pragma comment(linker, \"/STACK:65777216\")\n\n#include <algorithm>\n#include <iostream>\n#include <string>\n#include<sstream>\n#include<string.h>\n#include <cstdio>\n#include <cassert>\n#include <complex>\n#include <vector>\n#include <bitset>\n#include <cmath>\n#include <queue>\n#include<stack>\n#include <set>\n#include <map>\n#include<ctime>\n#include<list>\n\nusing namespace std;\n \ntypedef long long ll;\ntypedef vector<int> vi;\t \ntypedef pair<int,int> pii;\ntypedef pair<double,double> pdd;\ntypedef unsigned long long ull;\n \n#define FOR(i,a,b) for (int i(a); i < (b); i++)\n#define REP(i,n) FOR(i,0,n)\n#define SORT(v) sort((v).begin(),(v).end())\n#define UN(v) sort((v).begin(),(v).end()),v.erase(unique(v.begin(),v.end()),v.end())\n#define CL(a,b) memset(a,b,sizeof(a))\n#define pb push_back\n\n\nint main(){\n#ifdef LocalHost\n    freopen(\"input.txt\",\"r\",stdin);\n\t//freopen(\"output.txt\",\"w\",stdout);\n#endif\n\n\tstring s;\n\tcin>>s;\n\tstring t;\n\tREP(i,s.size()){\n\t\twhile(t.size() && t[t.size()-1]<s[i]) t.erase(t.end()-1);\n\t\tt.pb(s[i]);\n\t}\n\tcout<<t<<endl;\n\n#ifdef LocalHost\n\tcerr<<endl<<endl<<\"TIME: \"<<clock()<<endl;\n#endif\n    return 0;\n}"
     ],
@@ -94,5 +94,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Lexicographically Maximum Subsequence.json",
     "editorial_link": "https://codeforces.com//blog/entry/4717",
-    "editorial": "Solution is greedy. First, write all \u00e2\u0080\u0099z\u00e2\u0080\u0099 letters (if there is any)\r\nanswer must contain them all for sure. Now it\u00e2\u0080\u0099s time for \u00e2\u0080\u0099y\u00e2\u0080\u0099 letters. We\r\ncan use only those of them which are on the right of last used \u00e2\u0080\u0099z\u00e2\u0080\u0099\r\nletter. Then write \u00e2\u0080\u0099x\u00e2\u0080\u0099 letters they must be on the right of the last\r\nused \u00e2\u0080\u0099y\u00e2\u0080\u0099 and \u00e2\u0080\u0099z\u00e2\u0080\u0099 letters. And so on.\r\n"
+    "editorial": "Solution is greedy. First, write all âzâ letters (if there is any)\r\nanswer must contain them all for sure. Now itâs time for âyâ letters. We\r\ncan use only those of them which are on the right of last used âzâ\r\nletter. Then write âxâ letters they must be on the right of the last\r\nused âyâ and âzâ letters. And so on.\r\n",
+    "hint": []
 }

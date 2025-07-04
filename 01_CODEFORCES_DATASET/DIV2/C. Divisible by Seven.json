@@ -98,7 +98,7 @@
         ]
     },
     "name": "C. Divisible by Seven",
-    "statement": "You have number , whose decimal representation quite luckily contains\r\ndigits 1, 6, 8, 9. Rearrange the digits in its decimal representation so\r\nthat the resulting number will be divisible by 7.Number doesn\u2019t contain\r\nany leading zeroes and contains digits 1, 6, 8, 9 (it also can contain\r\nanother digits). The resulting number also mustn\u2019t contain any leading\r\nzeroes.\r\n",
+    "statement": "You have number , whose decimal representation quite luckily contains\r\ndigits 1, 6, 8, 9. Rearrange the digits in its decimal representation so\r\nthat the resulting number will be divisible by 7.Number doesn’t contain\r\nany leading zeroes and contains digits 1, 6, 8, 9 (it also can contain\r\nanother digits). The resulting number also mustn’t contain any leading\r\nzeroes.\r\n",
     "solutions": [
         "#include <cstdio>\n#include <iostream>\n#include <algorithm>\n#include <vector>\n#include <queue>\n#include <set>\n#include <string>\n#include <cstring>\n\nusing namespace std;\n\nstring ans[7];\n\nvoid presolve() {\n    int a[] = {1, 6, 8, 9};\n    do {\n        int c = 0;\n        for (int i = 0; i < 4; ++i) {\n            c = (c * 10 + a[i]) % 7;\n        }\n        string str;\n        for (int i = 0; i < 4; ++i) {\n            str.push_back('0' + a[i]);\n        }\n        ans[c] = str;\n    } while(next_permutation(a, a + 4));\n}\n\nchar s[1000010];\n\nint main() {\n    presolve();\n    scanf(\"%s\", s);\n    int n = strlen(s), cnt[10] = {0};\n    for (int i = 0; i < n; ++i) {\n        ++ cnt[s[i] - '0'];\n    }\n    if (cnt[0] + 4 == n) {\n        cout << ans[0];\n        for (int i = 0; i < cnt[0]; ++i) {\n            putchar('0');\n        }\n        cout << endl;\n    } else {\n        int c = 0;\n        for (int i = 9; i >= 0; --i) {\n            if (i == 9 || i == 8 || i == 6 || i == 1) {\n                -- cnt[i];\n            }\n            for (int j = 0; j < cnt[i]; ++j) {\n                putchar(i + '0');\n                c = (c * 10 + i) % 7;\n            }\n        }\n        cout << ans[(7 - c * 10000 % 7) % 7] << endl;\n    }\n    return 0;\n}"
     ],
@@ -112,5 +112,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Divisible by Seven.json",
     "editorial_link": "https://codeforces.com//blog/entry/10084",
-    "editorial": "Because permutation of 1, 6, 8, 9 can form integers that mod 7 equals 0, 1, 2, 3, 4, 5, 6.\n\nSo you can construct answer like this: nonzero digits + a permutation of 1, 6, 8, 9 + zeros."
+    "editorial": "Because permutation of 1, 6, 8, 9 can form integers that mod 7 equals 0, 1, 2, 3, 4, 5, 6.\n\nSo you can construct answer like this: nonzero digits + a permutation of 1, 6, 8, 9 + zeros.",
+    "hint": []
 }

@@ -196,7 +196,7 @@
         ]
     },
     "name": "A. Diagonal Walking",
-    "statement": "Mikhail walks on a 2D plane. He can go either up or right. You are given\r\na sequence of Mikhail\u2019s moves. He thinks that this sequence is too long\r\nand he wants to make it as short as possible.In the given sequence\r\nmoving up is described by character and moving right is described by\r\ncharacter . Mikhail can replace any pair of consecutive moves or with a\r\ndiagonal move (described as character ). After that, he can go on and do\r\nsome other replacements, until there is no pair of consecutive moves or\r\nleft.Your problem is to print the minimum possible length of the\r\nsequence of moves after the replacements.\r\n",
+    "statement": "Mikhail walks on a 2D plane. He can go either up or right. You are given\r\na sequence of Mikhail’s moves. He thinks that this sequence is too long\r\nand he wants to make it as short as possible.In the given sequence\r\nmoving up is described by character and moving right is described by\r\ncharacter . Mikhail can replace any pair of consecutive moves or with a\r\ndiagonal move (described as character ). After that, he can go on and do\r\nsome other replacements, until there is no pair of consecutive moves or\r\nleft.Your problem is to print the minimum possible length of the\r\nsequence of moves after the replacements.\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\n#define MN 105\nusing namespace std;\ninline int read()\n{\n    int x=0,f=1;char ch=getchar();\n    while(ch<'0'||ch>'9'){if(ch=='-')f=-1;ch=getchar();}\n    while(ch>='0'&&ch<='9'){x=x*10+ch-'0';ch=getchar();}\n    return x*f;\n}\nchar c[MN],s;\nint n,ans;\nint main()\n{\n\tregister int i;\n\tn=read();\n\tscanf(\"%s\",c+1);\n\ts=0;\n\tfor (i=1;i<=n;++i)\n\t\tif (c[i]!=s)\n\t\t\tif (s) s=0; else s=c[i],++ans;\n\t\telse ++ans; \n\tprintf(\"%d\",ans);\n\treturn 0;\t\n}"
     ],
@@ -209,5 +209,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Diagonal Walking.json",
     "editorial_link": "https://codeforces.com//blog/entry/58519",
-    "editorial": "Let\u00e2\u0080\u0099s iterate over all characters of the string from left to right\r\n(excluding last character). Suppose is a position of the current element\r\nof the string. If , increase answer by and increase by , else just\r\nincrease by .\r\n"
+    "editorial": "Letâs iterate over all characters of the string from left to right\r\n(excluding last character). Suppose is a position of the current element\r\nof the string. If , increase answer by and increase by , else just\r\nincrease by .\r\n",
+    "hint": []
 }

@@ -122,7 +122,7 @@
         ]
     },
     "name": "C. Ehab and a 2-operation task",
-    "statement": "You\u2019re given an array a of length n. You can perform the following\r\noperations on it: choose an index i (1\r\nle i\r\nle n), an integer x (0\r\nle x\r\nle 10^6), and replace a_j with a_j+x for all (1\r\nle j\r\nle i), which means add x to all the elements in the prefix ending at i.\r\nchoose an index i (1\r\nle i\r\nle n), an integer x (1\r\nle x\r\nle 10^6), and replace a_j with a_j\r\n",
+    "statement": "You’re given an array a of length n. You can perform the following\r\noperations on it: choose an index i (1\r\nle i\r\nle n), an integer x (0\r\nle x\r\nle 10^6), and replace a_j with a_j+x for all (1\r\nle j\r\nle i), which means add x to all the elements in the prefix ending at i.\r\nchoose an index i (1\r\nle i\r\nle n), an integer x (1\r\nle x\r\nle 10^6), and replace a_j with a_j\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\n\n#define _ << \" _ \" <<\n#define TRACE(x) cout << #x << \" = \" << x << endl\n\ntypedef long long ll;\n\n\n\nint main() {\n    ios_base::sync_with_stdio(false);\n    cin.tie(0);\n\n    ll n, a[2010];\n    cin >> n;\n    for (int i = 0; i < n; i++) cin >> a[i];\n\n    cout << n + 1 << \"\\n\";\n\n    for (int i = n - 1; i >= 0; i--) {\n        ll b = (ll)i - a[i] % n + n;\n        cout << \"1 \" << i + 1 << \" \" << b << \"\\n\";\n        for (int j = 0; j < i; j++) a[j] += b;\n    }\n\n    cout << \"2 \" << n << \" \" << n;\n\n    return 0;\n}\n\n"
     ],
@@ -137,5 +137,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Ehab and a 2-operation task.json",
     "editorial_link": "https://codeforces.com//blog/entry/63656",
-    "editorial": "First solution, n adds and 1 mod\nFirst, let's make ai?=?x?*?n?+?i (for some x). Then, let's mod the whole array with n (making ai?=?i). If the \"add update\" changed one index, we can just add i?+?n?-?ai%n to index i. The problem is, if we make ai?=?x?*?n?+?i, then update an index j?>?i, ai will be ruined. Just start from the back of the array!"
+    "editorial": "First solution, n adds and 1 mod\nFirst, let's make ai?=?x?*?n?+?i (for some x). Then, let's mod the whole array with n (making ai?=?i). If the \"add update\" changed one index, we can just add i?+?n?-?ai%n to index i. The problem is, if we make ai?=?x?*?n?+?i, then update an index j?>?i, ai will be ruined. Just start from the back of the array!",
+    "hint": []
 }

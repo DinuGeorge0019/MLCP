@@ -181,5 +181,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\D. Yet Another Problem On a Subsequence.json",
     "editorial_link": "https://codeforces.com/blog/entry/60288",
-    "editorial": "The problem is solved by the dynamic programming.Let be the answer for\r\nthe prefix of the array starting at (it contains the indices ).If , then\r\n.Otherwise, let\u00e2\u0080\u0099s go over the position , with which the next good array\r\nbegins. Then we need to select positions among positions, which will be\r\nelements of the array. The number of ways to choose an unordered set of\r\nitems from of different objects is calculated using the formula . Thus,\r\nthe dynamics is as follows:.The basis of dynamics is the value .\r\n"
+    "editorial": "The problem is solved by the dynamic programming.Let be the answer for\r\nthe prefix of the array starting at (it contains the indices ).If , then\r\n.Otherwise, letâs go over the position , with which the next good array\r\nbegins. Then we need to select positions among positions, which will be\r\nelements of the array. The number of ways to choose an unordered set of\r\nitems from of different objects is calculated using the formula . Thus,\r\nthe dynamics is as follows:.The basis of dynamics is the value .\r\n",
+    "hint": []
 }

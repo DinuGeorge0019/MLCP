@@ -103,5 +103,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. File List.json",
     "editorial_link": "https://codeforces.com//blog/entry/4303",
-    "editorial": "1, : 11 2 , . 8 , . 3 , . :-) X, min(8,X-1). 2, DP: is[i] . is[0] = 1, .\r\nis[i] = 1, ...\r\n"
+    "editorial": "1, : 11 2 , . 8 , . 3 , . :-) X, min(8,X-1). 2, DP: is[i] . is[0] = 1, .\r\nis[i] = 1, ...\r\n",
+    "hint": []
 }

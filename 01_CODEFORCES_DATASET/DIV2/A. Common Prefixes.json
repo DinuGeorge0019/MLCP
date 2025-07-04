@@ -120,7 +120,7 @@
         ]
     },
     "name": "A. Common Prefixes",
-    "statement": "The length of the of two strings s = s_1 s_2\r\nldots s_n and t = t_1 t_2\r\nldots t_m is defined as the maximum integer k (0\r\nle k\r\nle min(n,m)) such that s_1 s_2\r\nldots s_k equals t_1 t_2\r\nldots t_k.Koa the Koala initially has n+1 strings s_1, s_2,\r\ndots, s_{n+1}.For each i (1\r\nle i\r\nle n) she calculated a_i the length of the of s_i and s_{i+1}.Several\r\ndays later Koa found these numbers, but she couldn\u2019t remember the\r\nstrings.So Koa would like to find some strings s_1, s_2,\r\ndots, s_{n+1} which would have generated numbers a_1, a_2,\r\ndots, a_n. Can you help her?If there are many answers print any. We can\r\nshow that answer always exists for the given constraints.\r\n",
+    "statement": "The length of the of two strings s = s_1 s_2\r\nldots s_n and t = t_1 t_2\r\nldots t_m is defined as the maximum integer k (0\r\nle k\r\nle min(n,m)) such that s_1 s_2\r\nldots s_k equals t_1 t_2\r\nldots t_k.Koa the Koala initially has n+1 strings s_1, s_2,\r\ndots, s_{n+1}.For each i (1\r\nle i\r\nle n) she calculated a_i the length of the of s_i and s_{i+1}.Several\r\ndays later Koa found these numbers, but she couldn’t remember the\r\nstrings.So Koa would like to find some strings s_1, s_2,\r\ndots, s_{n+1} which would have generated numbers a_1, a_2,\r\ndots, a_n. Can you help her?If there are many answers print any. We can\r\nshow that answer always exists for the given constraints.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\n#define inf 0x3f3f3f3f\n#define m_k make_pair\nusing namespace std;\nconst int N=110;\nint t,n,a[N];\nchar s[N];\nsigned main()\n{\n\tscanf(\"%dd\",&t);\n\twhile (t--)\n\t{\n\t\tscanf(\"%d\",&n);\n\t\tfor (int i=1;i<=n;i++) scanf(\"%d\",&a[i]);\n\t\tint MAX=0;\n\t\tfor (int i=1;i<=n;i++) MAX=max(MAX,a[i]);\n\t\tMAX++;\n\t\tfor (int i=1;i<=MAX;i++) s[i]='a';\n\t\tprintf(\"%s\\n\",s+1);\n\t\tfor (int i=1;i<=n;i++)\n\t\t{\n\t\t\tif (s[a[i]+1]=='a') s[a[i]+1]='b';\n\t\t\telse s[a[i]+1]='a';\n\t\t\tprintf(\"%s\\n\",s+1);\n\t\t}\n\t}\n}\n"
     ],
@@ -135,5 +135,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Common Prefixes.json",
     "editorial_link": "https://codeforces.com//blog/entry/80562",
-    "editorial": "The problem asks to find strings such that for all (). A way to solve\r\nthis problem is the following: Set (ie. times ). For such that () set\r\nand then flip -th character of (ie. if it was put otherwise ). So for\r\neach : and will have exactly common characters from the prefix. The -th\r\ncharacter of is different than -th character of (this character always\r\nexists since and each string has length exactly ). Therefore the LCP is\r\nas desired. Time complexity: per testcase\r\n"
+    "editorial": "The problem asks to find strings such that for all (). A way to solve\r\nthis problem is the following: Set (ie. times ). For such that () set\r\nand then flip -th character of (ie. if it was put otherwise ). So for\r\neach : and will have exactly common characters from the prefix. The -th\r\ncharacter of is different than -th character of (this character always\r\nexists since and each string has length exactly ). Therefore the LCP is\r\nas desired. Time complexity: per testcase\r\n",
+    "hint": []
 }

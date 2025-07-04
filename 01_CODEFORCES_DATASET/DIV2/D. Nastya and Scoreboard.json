@@ -122,5 +122,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Nastya and Scoreboard.json",
     "editorial_link": "https://codeforces.com//blog/entry/76479",
-    "editorial": "Let , if at the suffix you can turn on exactly sticks and get the\r\ncorrect sequence of digits and otherwise. It is easy to recalculate this\r\ndynamics: we will make transitions to all possible digits (the mask at\r\nposition should be a submask of the digit).Asymptotic calculate of the\r\ndynamics .Now let\u00e2\u0080\u0099s go in order from to and will try to eagerly set the\r\nmaximum possible figure using our dynamics. It is easy to understand\r\nthat in this way we get the maximum possible number of digits.\r\n"
+    "editorial": "Let , if at the suffix you can turn on exactly sticks and get the\r\ncorrect sequence of digits and otherwise. It is easy to recalculate this\r\ndynamics: we will make transitions to all possible digits (the mask at\r\nposition should be a submask of the digit).Asymptotic calculate of the\r\ndynamics .Now letâs go in order from to and will try to eagerly set the\r\nmaximum possible figure using our dynamics. It is easy to understand\r\nthat in this way we get the maximum possible number of digits.\r\n",
+    "hint": []
 }

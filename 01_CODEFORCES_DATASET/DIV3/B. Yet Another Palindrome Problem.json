@@ -151,5 +151,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Yet Another Palindrome Problem.json",
     "editorial_link": "https://codeforces.com//blog/entry/74714",
-    "editorial": "The first observation is that we can always try to find the palindrome\r\nof length (otherwise, we can remove some characters from the middle\r\nuntil its length becomes ).The second observation is that the palindrome\r\nof length is two equal characters and some other (maybe, the same)\r\ncharacter between them. Now there are two ways: find the pair of equal\r\nnon-adjacent characters in or do it in (for each character we only need\r\nto consider its left and right occurrences).\r\n"
+    "editorial": "The first observation is that we can always try to find the palindrome\r\nof length (otherwise, we can remove some characters from the middle\r\nuntil its length becomes ).The second observation is that the palindrome\r\nof length is two equal characters and some other (maybe, the same)\r\ncharacter between them. Now there are two ways: find the pair of equal\r\nnon-adjacent characters in or do it in (for each character we only need\r\nto consider its left and right occurrences).\r\n",
+    "hint": []
 }

@@ -142,5 +142,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Chocolate Bunny.json",
     "editorial_link": "https://codeforces.com//blog/entry/82417",
-    "editorial": "Observation: .Proof: if , then ). If , then .Let\u00e2\u0080\u0099s maintain index of\r\nmaximal number on the reviewed prefix (initially ). Let\u00e2\u0080\u0099s consider index\r\n. Ask two queries: and . We\u00e2\u0080\u0099ll know the less from both of them and\r\neither guess and update or guess . In the end, all numbers will be\r\nguessed except , that, obviously, equals .In total, we\u00e2\u0080\u0099ll make queries.\r\n"
+    "editorial": "Observation: .Proof: if , then ). If , then .Letâs maintain index of\r\nmaximal number on the reviewed prefix (initially ). Letâs consider index\r\n. Ask two queries: and . Weâll know the less from both of them and\r\neither guess and update or guess . In the end, all numbers will be\r\nguessed except , that, obviously, equals .In total, weâll make queries.\r\n",
+    "hint": []
 }

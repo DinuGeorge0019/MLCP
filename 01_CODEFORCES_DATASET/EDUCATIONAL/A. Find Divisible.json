@@ -190,5 +190,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Find Divisible.json",
     "editorial_link": "https://codeforces.com//blog/entry/64156",
-    "editorial": "Print and . Firstly, the smallest value of you can have is and if any\r\ngreater value fits then fits as well. Secondly, the absolute difference\r\nbetween and increases when you increase , thus lessening the possibility\r\nof both numbers fitting into the range.Overall complexity: .\r\n"
+    "editorial": "Print and . Firstly, the smallest value of you can have is and if any\r\ngreater value fits then fits as well. Secondly, the absolute difference\r\nbetween and increases when you increase , thus lessening the possibility\r\nof both numbers fitting into the range.Overall complexity: .\r\n",
+    "hint": []
 }

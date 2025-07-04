@@ -138,5 +138,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Maximum Increase.json",
     "editorial_link": "https://codeforces.com//blog/entry/46324?locale=en",
-    "editorial": "Let\u00e2\u0080\u0099s iterate through the given array from the left to the right and\r\nstore in the variable the length of the current increasing subarray. If\r\nthe current element is more than the previous we need to increase on\r\none. In the other case we need to update the answer with the value of\r\nand put in 1, because new increasing subarray began.\r\n"
+    "editorial": "Letâs iterate through the given array from the left to the right and\r\nstore in the variable the length of the current increasing subarray. If\r\nthe current element is more than the previous we need to increase on\r\none. In the other case we need to update the answer with the value of\r\nand put in 1, because new increasing subarray began.\r\n",
+    "hint": []
 }

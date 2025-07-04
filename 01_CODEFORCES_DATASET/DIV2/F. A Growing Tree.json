@@ -161,5 +161,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\F. A Growing Tree.json",
     "editorial_link": "https://codeforces.com//blog/entry/121876",
-    "editorial": "Let\u00e2\u0080\u0099s parse all the queries and build the tree. We can easily support\r\nsubtree addition queries using segment tree on Euler tour of the tree.\r\nAnd when we add new vertex, we just need to set its value to zero. How\r\nto do it? You can get the value in this vertex now (by get query from\r\nthe segment tree), let it be . Then you add to its value. You can also\r\nuse Fenwick tree to handle range add point get queries. Time complexity:\r\n.Bonus: try to find a solution using sqrt decomposition. I hope it will\r\nget TLE, but still.\r\n"
+    "editorial": "Letâs parse all the queries and build the tree. We can easily support\r\nsubtree addition queries using segment tree on Euler tour of the tree.\r\nAnd when we add new vertex, we just need to set its value to zero. How\r\nto do it? You can get the value in this vertex now (by get query from\r\nthe segment tree), let it be . Then you add to its value. You can also\r\nuse Fenwick tree to handle range add point get queries. Time complexity:\r\n.Bonus: try to find a solution using sqrt decomposition. I hope it will\r\nget TLE, but still.\r\n",
+    "hint": []
 }

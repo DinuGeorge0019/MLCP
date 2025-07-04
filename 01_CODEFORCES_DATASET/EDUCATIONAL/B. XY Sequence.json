@@ -144,5 +144,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. XY Sequence.json",
     "editorial_link": "https://codeforces.com//blog/entry/101161",
-    "editorial": "Strategy is quite easy: we go from to and if we take this variant (we\r\nset ); otherwise we set . Note that all are in range so there won\u00e2\u0080\u0099t be\r\nany overflow/underflow.It\u00e2\u0080\u0099s also not hard to prove that this strategy\r\nmaximizes the sum. By contradiction: suppose the optimal answer has some\r\nindex where but . Let\u00e2\u0080\u0099s find first position where and swap operations\r\nbetween and . As a result, , all from were increased while remained the\r\nsame, i. e. there is no violation of the rules and the total sum\r\nincreased contradiction.\r\n"
+    "editorial": "Strategy is quite easy: we go from to and if we take this variant (we\r\nset ); otherwise we set . Note that all are in range so there wonât be\r\nany overflow/underflow.Itâs also not hard to prove that this strategy\r\nmaximizes the sum. By contradiction: suppose the optimal answer has some\r\nindex where but . Letâs find first position where and swap operations\r\nbetween and . As a result, , all from were increased while remained the\r\nsame, i. e. there is no violation of the rules and the total sum\r\nincreased contradiction.\r\n",
+    "hint": []
 }

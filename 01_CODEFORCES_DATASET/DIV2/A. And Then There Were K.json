@@ -135,5 +135,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. And Then There Were K.json",
     "editorial_link": "https://codeforces.com//blog/entry/90939",
-    "editorial": "Let & () & () & () & ... ()If there is at least one integer from to\r\nwhose bit at the index is , then the value of the bit in will also be .\r\nWe can easily observe that the (Highest set bit in ) in will become for\r\nthe first time when . All the other bits will become zero when . Thus\r\nthe answer is, .\r\n"
+    "editorial": "Let & () & () & () & ... ()If there is at least one integer from to\r\nwhose bit at the index is , then the value of the bit in will also be .\r\nWe can easily observe that the (Highest set bit in ) in will become for\r\nthe first time when . All the other bits will become zero when . Thus\r\nthe answer is, .\r\n",
+    "hint": []
 }

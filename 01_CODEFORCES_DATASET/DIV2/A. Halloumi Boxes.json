@@ -145,7 +145,7 @@
         ]
     },
     "name": "A. Halloumi Boxes",
-    "statement": "Theofanis is busy after his last contest, as now, he has to deliver many\r\nhalloumis all over the world. He stored them inside n boxes and each of\r\nwhich has some number a_i written on it. He wants to sort them in\r\nnon-decreasing order based on their number, however, his machine works\r\nin a strange way. It can only reverse any subarray^{\r\ndagger} of boxes with length k.Find if it\u2019s possible to sort the boxes\r\nusing .^{\r\ndagger} Reversing a subarray means choosing two indices i and j (where 1\r\nle i\r\nle j\r\nle n) and changing the array a_1, a_2,\r\nldots, a_n to a_1, a_2,\r\nldots, a_{i-1},\r\n; a_j, a_{j-1},\r\nldots, a_i,\r\n; a_{j+1},\r\nldots, a_{n-1}, a_n. The length of the subarray is then j - i + 1.\r\n",
+    "statement": "Theofanis is busy after his last contest, as now, he has to deliver many\r\nhalloumis all over the world. He stored them inside n boxes and each of\r\nwhich has some number a_i written on it. He wants to sort them in\r\nnon-decreasing order based on their number, however, his machine works\r\nin a strange way. It can only reverse any subarray^{\r\ndagger} of boxes with length k.Find if it’s possible to sort the boxes\r\nusing .^{\r\ndagger} Reversing a subarray means choosing two indices i and j (where 1\r\nle i\r\nle j\r\nle n) and changing the array a_1, a_2,\r\nldots, a_n to a_1, a_2,\r\nldots, a_{i-1},\r\n; a_j, a_{j-1},\r\nldots, a_i,\r\n; a_{j+1},\r\nldots, a_{n-1}, a_n. The length of the subarray is then j - i + 1.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false), cin.tie(0);\n    int t;\n    cin >> t;\n    while (t--) {\n        int n, k;\n        cin >> n >> k;\n        vector <int> a(n);\n        for (int i = 0; i < n; ++i) {\n            cin >> a[i];\n        }\n        if (k == 1 && !is_sorted(a.begin(), a.end())) {\n            cout << \"No\\n\";\n        } else {\n            cout << \"Yes\\n\";\n        }\n    }\n}"
     ],
@@ -160,5 +160,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Halloumi Boxes.json",
     "editorial_link": "https://codeforces.com//blog/entry/122820",
-    "editorial": "If the array is already sorted or then there is always a way (reverse of\r\nsize swap consecutive elements). Else it is not possible since when the\r\narray remains the same.\r\n"
+    "editorial": "If the array is already sorted or then there is always a way (reverse of\r\nsize swap consecutive elements). Else it is not possible since when the\r\narray remains the same.\r\n",
+    "hint": [
+        "Hint If is greater or equal to you can always swap adjacent elements."
+    ]
 }

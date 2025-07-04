@@ -116,7 +116,7 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/129848",
-    "editorial": "Each bit of the answer is independent, so we can calculate the value of\r\neach bit of the answer separately.Let\u00e2\u0080\u0099s consider the -th bit. Then,\r\n.Every second, a will \"spread\" one position to the left and right.If is\r\ninitially , then the answer for this bit is .Otherwise, is in a\r\ncontinuous segment of s, and we need to calculate whether the s on the\r\nleft and right of this segment can \"spread\" to . Let , then . The left\r\nspreading to takes seconds, and the right spreading to takes seconds.\r\nTherefore, if , then can become . Specifically, if , then there is no on\r\nthe left. Therefore, in this case, if , then can become .Time\r\ncomplexity: per test case.\r\n",
+    "editorial": "Each bit of the answer is independent, so we can calculate the value of\r\neach bit of the answer separately.Letâs consider the -th bit. Then,\r\n.Every second, a will \"spread\" one position to the left and right.If is\r\ninitially , then the answer for this bit is .Otherwise, is in a\r\ncontinuous segment of s, and we need to calculate whether the s on the\r\nleft and right of this segment can \"spread\" to . Let , then . The left\r\nspreading to takes seconds, and the right spreading to takes seconds.\r\nTherefore, if , then can become . Specifically, if , then there is no on\r\nthe left. Therefore, in this case, if , then can become .Time\r\ncomplexity: per test case.\r\n",
     "name": "B. Turtle and an Infinite Sequence",
     "statement": "There is a sequence a_0, a_1, a_2,\r\nldots of infinite length. Initially a_i = i for every non-negative\r\ninteger i.After every second, each element of the sequence will change.\r\na_i will change to a_{i - 1}\r\nmid a_i\r\nmid a_{i + 1} for every positive integer i. a_0 will change to a_0\r\nmid a_1. Here, | denotes bitwise OR.Turtle is asked to find the value of\r\na_n after m seconds. In particular, if m = 0, then he needs to find the\r\ninitial value of a_n. He is tired of calculating so many values, so\r\nplease help him!\r\n",
     "solutions": [
@@ -130,5 +130,9 @@
     ],
     "dificulty": "1300",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Turtle and an Infinite Sequence.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Turtle and an Infinite Sequence.json",
+    "hint": [
+        "Hint 1 Consider each bit separately.",
+        "Hint 2 Calculate the time when the -th bit of becomes ."
+    ]
 }

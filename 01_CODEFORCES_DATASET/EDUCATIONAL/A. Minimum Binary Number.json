@@ -137,5 +137,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Minimum Binary Number.json",
     "editorial_link": "https://codeforces.com//blog/entry/59195",
-    "editorial": "If then the answer is equal to . Otherwise answer will be equal to ,\r\nwhere is the count of the zeroes in the given string (i.e. the answer is\r\nthe binary string of length , in which the first character is one and\r\nthe other characters are zeroes).\r\n"
+    "editorial": "If then the answer is equal to . Otherwise answer will be equal to ,\r\nwhere is the count of the zeroes in the given string (i.e. the answer is\r\nthe binary string of length , in which the first character is one and\r\nthe other characters are zeroes).\r\n",
+    "hint": []
 }

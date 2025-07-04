@@ -147,5 +147,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\D. Almost All Divisors.json",
     "editorial_link": "https://codeforces.com//blog/entry/67041",
-    "editorial": "Suppose the given list of divisors is a list of divisors of some (in\r\nother words, suppose that the answer exists). Then the minimum divisor\r\nmultiplied by maximum divisor should be . This is true because if we\r\nhave a divisor we also have a divisor . Let\u00e2\u0080\u0099s sort all divisors and let\r\n.Now we need to check if all divisors of except and are the permutation\r\nof the array (check that our answer is really correct). We can find all\r\ndivisors of in , sort them and compare with the array . If arrays are\r\nequal then the answer is otherwise the answer is .\r\n"
+    "editorial": "Suppose the given list of divisors is a list of divisors of some (in\r\nother words, suppose that the answer exists). Then the minimum divisor\r\nmultiplied by maximum divisor should be . This is true because if we\r\nhave a divisor we also have a divisor . Letâs sort all divisors and let\r\n.Now we need to check if all divisors of except and are the permutation\r\nof the array (check that our answer is really correct). We can find all\r\ndivisors of in , sort them and compare with the array . If arrays are\r\nequal then the answer is otherwise the answer is .\r\n",
+    "hint": []
 }

@@ -187,5 +187,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\D. Matryoshkas.json",
     "editorial_link": "https://codeforces.com//blog/entry/111948",
-    "editorial": "First, for each size, let\u00e2\u0080\u0099s count the number of dolls of this size.Then,\r\nlet\u00e2\u0080\u0099s create a set, in which for each doll of size we add the numbers\r\nand . This will allow you to process all the segments, as well as the\r\ndimensions adjacent to them.We will iterate over the set in ascending\r\norder of size. Let be the number of matryoshkas of the current size, of\r\nthe previous one considered ( at the beginning). If the numbers do not\r\nmatch, then you need to close (if ), or open (if ) segments. It is\r\nenough to add only the opening of the segments to the answer.\r\n"
+    "editorial": "First, for each size, letâs count the number of dolls of this size.Then,\r\nletâs create a set, in which for each doll of size we add the numbers\r\nand . This will allow you to process all the segments, as well as the\r\ndimensions adjacent to them.We will iterate over the set in ascending\r\norder of size. Let be the number of matryoshkas of the current size, of\r\nthe previous one considered ( at the beginning). If the numbers do not\r\nmatch, then you need to close (if ), or open (if ) segments. It is\r\nenough to add only the opening of the segments to the answer.\r\n",
+    "hint": []
 }

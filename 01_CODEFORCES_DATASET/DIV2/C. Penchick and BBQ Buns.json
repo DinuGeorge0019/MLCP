@@ -136,5 +136,9 @@
     ],
     "dificulty": "1300",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Penchick and BBQ Buns.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Penchick and BBQ Buns.json",
+    "hint": [
+        "Hint 1 Solve the problem for and for even in general.",
+        "Hint 2 For odd , there exists a color that appears at least thrice. What does this mean?"
+    ]
 }

@@ -127,5 +127,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Finding Team Member.json",
     "editorial_link": "https://codeforces.com//blog/entry/20368",
-    "editorial": "Sort all possible combinations from high strength to low strength. Then iterator all combinations. If two people in a combination still are not contained in any team. then we make these two people as a team.\n"
+    "editorial": "Sort all possible combinations from high strength to low strength. Then iterator all combinations. If two people in a combination still are not contained in any team. then we make these two people as a team.\n",
+    "hint": []
 }

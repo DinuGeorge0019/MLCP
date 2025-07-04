@@ -190,5 +190,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\C. Mr. Perfectly Fine.json",
     "editorial_link": "https://codeforces.com//blog/entry/116108",
-    "editorial": "You can classify the books into four types \"\", \"\", \"\", \"\". We will take\r\na book of any type at most once and wont take a book that learns a\r\nsingle skill if that skill is already learned, so there are only two\r\ncases to look at We take the shortest \"\" and the the shortest \"\". We\r\ntake the shortest \"\". Out of these options, output the shortest one.\r\n"
+    "editorial": "You can classify the books into four types \"\", \"\", \"\", \"\". We will take\r\na book of any type at most once and wont take a book that learns a\r\nsingle skill if that skill is already learned, so there are only two\r\ncases to look at We take the shortest \"\" and the the shortest \"\". We\r\ntake the shortest \"\". Out of these options, output the shortest one.\r\n",
+    "hint": []
 }

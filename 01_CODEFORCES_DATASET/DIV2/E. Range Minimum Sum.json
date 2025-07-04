@@ -123,7 +123,7 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/131581",
-    "editorial": "Build the cartesian tree of a\n. Let lcx,rcx\n respectively be x\n's left and right children.\n\nConsider a vertex x\n. If we delete it, what would happen to the tree? Vertices that are on the outside of x\n's subtree will not be affected. Vertices inside the subtree of x\n will \"merge\". Actually, we can see that, only the right chain of x\n's left child (lcx?rclcx?rcrclcx?\u0085\n) and the left chain of x\n's right child will merge in a way like what we do in mergesort.\n\nNow, if we merge the chains by bruteforce (use sorting or std::merge), the time complexity is O(n)\n! It's easy to see that each vertex will only be considered O(1)\n times.\n",
+    "editorial": "Build the cartesian tree of a\n. Let lcx,rcx\n respectively be x\n's left and right children.\n\nConsider a vertex x\n. If we delete it, what would happen to the tree? Vertices that are on the outside of x\n's subtree will not be affected. Vertices inside the subtree of x\n will \"merge\". Actually, we can see that, only the right chain of x\n's left child (lcx?rclcx?rcrclcx?\n) and the left chain of x\n's right child will merge in a way like what we do in mergesort.\n\nNow, if we merge the chains by bruteforce (use sorting or std::merge), the time complexity is O(n)\n! It's easy to see that each vertex will only be considered O(1)\n times.\n",
     "name": "E. Range Minimum Sum",
     "statement": "For an array [a_1,a_2,\r\nldots,a_n] of length n, define f(a) as the sum of the minimum element\r\nover all subsegments. That is, f(a)=\r\nsum_{l=1}^n\r\nsum_{r=l}^n\r\nmin_{l\r\nle i\r\nle r}a_i.A permutation is a sequence of integers from 1 to n of length n\r\ncontaining each number exactly once. You are given a permutation\r\n[a_1,a_2,\r\nldots,a_n]. For each i, solve the following problem independently: Erase\r\na_i from a, concatenating the remaining parts, resulting in b =\r\n[a_1,a_2,\r\nldots,a_{i-1},\r\n;a_{i+1},\r\nldots,a_{n}]. Calculate f(b).\r\n",
     "solutions": [
@@ -140,5 +140,6 @@
     ],
     "dificulty": "2300",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Range Minimum Sum.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Range Minimum Sum.json",
+    "hint": []
 }

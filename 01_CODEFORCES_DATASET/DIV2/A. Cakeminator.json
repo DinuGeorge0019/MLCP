@@ -106,5 +106,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Cakeminator.json",
     "editorial_link": "https://codeforces.com//blog/entry/8417",
-    "editorial": "Long solution: Short solution: If there are r\u00e2\u0080\u0099 rows that cannot be\r\neaten, and c\u00e2\u0080\u0099 columns that cannot be eaten, then there are r\u00e2\u0080\u0099 * c\u00e2\u0080\u0099 cells\r\nthat cannot be eaten \u00e2\u0080\u0093 a cell such that both its row and columns cannot\r\nbe eaten. Since all other cells can be eaten, answer is R * C r\u00e2\u0080\u0099 * c\u00e2\u0080\u0099.\r\n"
+    "editorial": "Long solution: Short solution: If there are râ rows that cannot be\r\neaten, and câ columns that cannot be eaten, then there are râ * câ cells\r\nthat cannot be eaten â a cell such that both its row and columns cannot\r\nbe eaten. Since all other cells can be eaten, answer is R * C râ * câ.\r\n",
+    "hint": []
 }

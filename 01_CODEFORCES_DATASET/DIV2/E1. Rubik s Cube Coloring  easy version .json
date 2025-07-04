@@ -157,7 +157,7 @@
         ]
     },
     "name": "E1. Rubik s Cube Coloring  easy version ",
-    "statement": "Theofanis is starving, and he wants to eat his favorite food, sheftalia.\r\nHowever, he should first finish his homework. Can you help him with this\r\nproblem?You have a binary tree of 2^k - 1 nodes a binary tree where all\r\nvertices i from 1 to 2^{k - 1} - 1 have exactly two children: vertices\r\n2i and 2i + 1. Vertices from 2^{k - 1} to 2^k - 1 don\u2019t have any\r\nchildren. You want to color its vertices with the 6 Rubik\u2019s cube colors\r\n(White, Green, Red, Blue, Orange and Yellow).Let\u2019s call a coloring when\r\nall edges connect nodes with colors that are sides in the Rubik\u2019s cube.\r\nMore formally: a white node can be neighboring with white and yellow\r\nnodes; a yellow node can be neighboring with white and yellow nodes; a\r\ngreen node can be neighboring with green and blue nodes; a blue node can\r\nbe neighboring with green and blue nodes; a red node can be neighboring\r\nwith red and orange nodes; an orange node can be neighboring with red\r\nand orange nodes; You want to calculate the number of the good colorings\r\nof the binary tree. Two colorings are considered different if at least\r\none node is colored with a different color.The answer may be too large,\r\nso output the answer modulo 10^9+7.\r\n",
+    "statement": "Theofanis is starving, and he wants to eat his favorite food, sheftalia.\r\nHowever, he should first finish his homework. Can you help him with this\r\nproblem?You have a binary tree of 2^k - 1 nodes a binary tree where all\r\nvertices i from 1 to 2^{k - 1} - 1 have exactly two children: vertices\r\n2i and 2i + 1. Vertices from 2^{k - 1} to 2^k - 1 don’t have any\r\nchildren. You want to color its vertices with the 6 Rubik’s cube colors\r\n(White, Green, Red, Blue, Orange and Yellow).Let’s call a coloring when\r\nall edges connect nodes with colors that are sides in the Rubik’s cube.\r\nMore formally: a white node can be neighboring with white and yellow\r\nnodes; a yellow node can be neighboring with white and yellow nodes; a\r\ngreen node can be neighboring with green and blue nodes; a blue node can\r\nbe neighboring with green and blue nodes; a red node can be neighboring\r\nwith red and orange nodes; an orange node can be neighboring with red\r\nand orange nodes; You want to calculate the number of the good colorings\r\nof the binary tree. Two colorings are considered different if at least\r\none node is colored with a different color.The answer may be too large,\r\nso output the answer modulo 10^9+7.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\n\nusing namespace std;\nint n,fla[400400]; \nchar s[300300]; \nconst int mod=1e9+7; \nint fpw(int x,int k,int p) {\n    int ret=1;\n    while (k) {\n        if (k&1) ret=1ll*ret*x%p; \n        x=1ll*x*x%p; k>>=1; \n    }\n    return ret; \n}\nvoid solve() {\n    int n;\n    cin>>n;\n    int q=fpw(2,n,mod-1);\n    q=(q-2)%(mod-1); q=(q+mod-1)%(mod-1);\n    cout<<1ll*fpw(4,q,mod)*6%mod; \n}\nint main() {\n    int T; T=1; \n    // scanf(\"%d\",&T);\n    while (T--) {\n        solve(); \n    }\n    return 0; \n}"
     ],
@@ -171,5 +171,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E1. Rubik s Cube Coloring  easy version .json",
     "editorial_link": "https://codeforces.com//blog/entry/95525",
-    "editorial": "You have choices for the first node and for each other node. Thus, the\r\nanswer is .\r\n"
+    "editorial": "You have choices for the first node and for each other node. Thus, the\r\nanswer is .\r\n",
+    "hint": [
+        "Hint Think of how many colorings there are if you color only the root with one color."
+    ]
 }

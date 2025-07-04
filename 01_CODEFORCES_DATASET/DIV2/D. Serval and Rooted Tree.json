@@ -138,5 +138,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Serval and Rooted Tree.json",
     "editorial_link": "https://codeforces.com/blog/entry/66539",
-    "editorial": "If we want to check whether is the\nanswer (I didn\u00e2\u0080\u0099t say I want to do binary search), then we can set all\nthe numbers no less than as , and the numbers less than as . Then we can\nuse to represent that the maximum number on node is the -th smallest\nnumber of leaves within subtree of . There should be at least ones in\nthe subtree of such that the number on is one. Then is the final answer.\nComplexity .\n"
+    "editorial": "If we want to check whether is the\nanswer (I didnât say I want to do binary search), then we can set all\nthe numbers no less than as , and the numbers less than as . Then we can\nuse to represent that the maximum number on node is the -th smallest\nnumber of leaves within subtree of . There should be at least ones in\nthe subtree of such that the number on is one. Then is the final answer.\nComplexity .\n",
+    "hint": []
 }

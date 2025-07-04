@@ -113,5 +113,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Palindromifier.json",
     "editorial_link": "https://codeforces.com//blog/entry/83761",
-    "editorial": " SolutionThe operation above which\ntransformed into is very close, if only we could\u00e2\u0080\u0099ve somehow append to\nthe left. Turns out you can set that up, so from first append to the\nend, then you have . Now apply the operation from the hint on this\nstring and get . See why we added that first? We can now append it to\nthe front just like we wanted!. Do the operation and the job is\nfinished. Yep, amazingly just printing works!\n"
+    "editorial": " SolutionThe operation above which\ntransformed into is very close, if only we couldâve somehow append to\nthe left. Turns out you can set that up, so from first append to the\nend, then you have . Now apply the operation from the hint on this\nstring and get . See why we added that first? We can now append it to\nthe front just like we wanted!. Do the operation and the job is\nfinished. Yep, amazingly just printing works!\n",
+    "hint": [
+        "Hint You're not allowed to just pick the whole string and append its reversed result to the front, but what's the next best thing? We're very close to the answer if we take the whole string except for a letter (so for we make )."
+    ]
 }

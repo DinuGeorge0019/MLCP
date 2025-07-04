@@ -127,5 +127,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Five Dimensional Points.json",
     "editorial_link": "https://codeforces.com//blog/entry/54317",
-    "editorial": "It\u00e2\u0080\u0099s easier to visualize this in 2D first. Fix a point . If all other\r\npoints form angles that are 90 degrees or greater, they must all be in\r\ndifferent quadrants, so there can be at most 4 such points. In k\r\ndimension, this generalizes to 2*k such points, so for five dimensions,\r\nthere can only be at most 10 other points. Thus, we can run the naive\r\nsolution for small n and print 0 otherwise.\r\n"
+    "editorial": "Itâs easier to visualize this in 2D first. Fix a point . If all other\r\npoints form angles that are 90 degrees or greater, they must all be in\r\ndifferent quadrants, so there can be at most 4 such points. In k\r\ndimension, this generalizes to 2*k such points, so for five dimensions,\r\nthere can only be at most 10 other points. Thus, we can run the naive\r\nsolution for small n and print 0 otherwise.\r\n",
+    "hint": []
 }

@@ -95,7 +95,7 @@
         ]
     },
     "name": "B. Mashmokh and Tokens",
-    "statement": "Bimokh is Mashmokh\u2019s boss. For the following days he decided to pay to\r\nhis workers in a new way. At the beginning of each day he will give each\r\nworker a certain amount of tokens. Then at the end of each day each\r\nworker can give some of his tokens back to get a certain amount of\r\nmoney. The worker can save the rest of tokens but he can\u2019t use it in any\r\nother day to get more money. If a worker gives back tokens then he\u2019ll\r\nget dollars. Mashmokh likes the tokens however he likes money more.\r\nThat\u2019s why he wants to save as many tokens as possible so that the\r\namount of money he gets is maximal possible each day. He has numbers .\r\nNumber is the number of tokens given to each worker on the -th day. Help\r\nhim calculate for each of days the number of tokens he can save.\r\n",
+    "statement": "Bimokh is Mashmokh’s boss. For the following days he decided to pay to\r\nhis workers in a new way. At the beginning of each day he will give each\r\nworker a certain amount of tokens. Then at the end of each day each\r\nworker can give some of his tokens back to get a certain amount of\r\nmoney. The worker can save the rest of tokens but he can’t use it in any\r\nother day to get more money. If a worker gives back tokens then he’ll\r\nget dollars. Mashmokh likes the tokens however he likes money more.\r\nThat’s why he wants to save as many tokens as possible so that the\r\namount of money he gets is maximal possible each day. He has numbers .\r\nNumber is the number of tokens given to each worker on the -th day. Help\r\nhim calculate for each of days the number of tokens he can save.\r\n",
     "solutions": [
         "#include <stdio.h>\nint n, a, b, x[100000];\nint main()\n{\n\tscanf(\"%d%d%d\", &n, &a, &b);\n\tfor(int i = 0; i < n; i++)\n\t\tscanf(\"%d\", &x[i]);\n\tfor(int i = 0; i < n; i++)\n\t{\n\t\tlong long tmp = (long long)x[i] * a / b;\n\t\tprintf(\"%d \", x[i] - (tmp * b % a ? tmp * b / a + 1 : tmp * b / a));\n\t}\n\tgetchar(); getchar();\n\treturn 0;\n}\n"
     ],
@@ -111,5 +111,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Mashmokh and Tokens.json",
     "editorial_link": "https://codeforces.com//blog/entry/11470",
-    "editorial": "For this problem you can find the number of tokens you can save if you\r\ninitally have tokens in . Then you can calculate the answer for all of\r\nnumbers in . Suppose by . then . then . Suppose initially we have\r\ntokens. Let then we need to find such maximum that . So will be equal to\r\n. so we can calculate in .\r\n"
+    "editorial": "For this problem you can find the number of tokens you can save if you\r\ninitally have tokens in . Then you can calculate the answer for all of\r\nnumbers in . Suppose by . then . then . Suppose initially we have\r\ntokens. Let then we need to find such maximum that . So will be equal to\r\n. so we can calculate in .\r\n",
+    "hint": []
 }

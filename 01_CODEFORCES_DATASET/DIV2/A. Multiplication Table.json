@@ -84,7 +84,7 @@
         ]
     },
     "name": "A. Multiplication Table",
-    "statement": "Let\u2019s consider a table consisting of rows and columns. The cell located\r\nat the intersection of -th row and -th column contains number . The rows\r\nand columns are numbered starting from 1.You are given a positive\r\ninteger . Your task is to count the number of cells in a table that\r\ncontain number .\r\n",
+    "statement": "Let’s consider a table consisting of rows and columns. The cell located\r\nat the intersection of -th row and -th column contains number . The rows\r\nand columns are numbered starting from 1.You are given a positive\r\ninteger . Your task is to count the number of cells in a table that\r\ncontain number .\r\n",
     "solutions": [
         "#include<cstdio>\n\nint main()\n{\n    int i,a,n,k;\n    scanf(\"%d%d\", &n, &k);\n    a = 0;\n    for (i = 1 ; i <= n ; ++i)\n    {\n        if ((k % i == 0) and (k / i <= n))\n            ++a;\n    }\n    printf(\"%d\\n\", a);\n    return 0;\n}\n"
     ],
@@ -98,5 +98,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Multiplication Table.json",
     "editorial_link": "https://codeforces.com//blog/entry/20226",
-    "editorial": "It's easy to see that number x can appear in column i only once \u0097 in row x?/?i. For every column i, let's check that x divides i and x?/?i???n. If all requirements are met, we'll update the answer.\n"
+    "editorial": "It's easy to see that number x can appear in column i only once  in row x?/?i. For every column i, let's check that x divides i and x?/?i???n. If all requirements are met, we'll update the answer.\n",
+    "hint": []
 }

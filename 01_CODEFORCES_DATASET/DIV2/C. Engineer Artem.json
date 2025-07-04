@@ -134,5 +134,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Engineer Artem.json",
     "editorial_link": "https://codeforces.com//blog/entry/84589",
-    "editorial": "The increment by one operation essentially allows us to change the\r\nparity of any position. Let\u00e2\u0080\u0099s color the matrix like a chessboard. Since\r\nevery pair of adjacent cells consist of cells with different colors, we\r\ncan make values at all black cells even and values at all white cells\r\nodd.\r\n"
+    "editorial": "The increment by one operation essentially allows us to change the\r\nparity of any position. Letâs color the matrix like a chessboard. Since\r\nevery pair of adjacent cells consist of cells with different colors, we\r\ncan make values at all black cells even and values at all white cells\r\nodd.\r\n",
+    "hint": []
 }

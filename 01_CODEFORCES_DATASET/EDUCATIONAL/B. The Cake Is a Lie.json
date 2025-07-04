@@ -146,5 +146,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. The Cake Is a Lie.json",
     "editorial_link": "https://codeforces.com//blog/entry/90212",
-    "editorial": "Note that whichever path you choose, the total cost will be the same. If\r\nyou know that the cost is the same, then it\u00e2\u0080\u0099s not hard to calculate it.\r\nIt\u00e2\u0080\u0099s equal to . So the task is to check: is equal to or not.The constant\r\ncost may be proved by induction on : for cost is . For a fixed , there\r\nare only two last steps you can make: either from with cost : the total\r\ncost is or from with cost : the total cost is . So, whichever path you\r\nchoose, the total cost is the same.\r\n"
+    "editorial": "Note that whichever path you choose, the total cost will be the same. If\r\nyou know that the cost is the same, then itâs not hard to calculate it.\r\nItâs equal to . So the task is to check: is equal to or not.The constant\r\ncost may be proved by induction on : for cost is . For a fixed , there\r\nare only two last steps you can make: either from with cost : the total\r\ncost is or from with cost : the total cost is . So, whichever path you\r\nchoose, the total cost is the same.\r\n",
+    "hint": []
 }

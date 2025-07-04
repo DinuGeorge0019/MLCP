@@ -171,5 +171,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C. Double-ended Strings.json",
     "editorial_link": "https://codeforces.com//blog/entry/89007",
-    "editorial": "Regarding to the small constraints, in this problem you could iterate\r\nover how many characters were removed by each type of operation. If\r\ncharacters at the beginning and characters at the end are removed from\r\nthe string , then the substring remains, where is the length of the\r\nstring .There is also a fast solution to this problem using dynamic\r\nprogramming.\r\n"
+    "editorial": "Regarding to the small constraints, in this problem you could iterate\r\nover how many characters were removed by each type of operation. If\r\ncharacters at the beginning and characters at the end are removed from\r\nthe string , then the substring remains, where is the length of the\r\nstring .There is also a fast solution to this problem using dynamic\r\nprogramming.\r\n",
+    "hint": []
 }

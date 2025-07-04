@@ -94,5 +94,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Ivan and Powers of Two.json",
     "editorial_link": "https://codeforces.com/blog/entry/7712",
-    "editorial": "First of all, let\u00e2\u0080\u0099s carry over all powers of two in the following way:\r\nif we have , , carry 1 to . Now as all of are distinct, the answer is +\r\n1, where maximal value of , size of Solution\r\n"
+    "editorial": "First of all, letâs carry over all powers of two in the following way:\r\nif we have , , carry 1 to . Now as all of are distinct, the answer is +\r\n1, where maximal value of , size of Solution\r\n",
+    "hint": []
 }

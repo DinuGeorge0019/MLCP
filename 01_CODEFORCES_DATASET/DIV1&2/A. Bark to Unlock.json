@@ -127,7 +127,7 @@
         ]
     },
     "name": "A. Bark to Unlock",
-    "statement": "As technologies develop, manufacturers are making the process of\r\nunlocking a phone as user-friendly as possible. To unlock its new phone,\r\nArkady\u2019s pet dog Mu-mu has to bark the password once. The phone\r\nrepresents a password as a string of two lowercase English\r\nletters.Mu-mu\u2019s enemy Kashtanka wants to unlock Mu-mu\u2019s phone to steal\r\nsome sensible information, but it can only bark distinct words, each of\r\nwhich can be represented as a string of two lowercase English letters.\r\nKashtanka wants to bark several words (not necessarily distinct) one\r\nafter another to pronounce a string containing the password as a\r\nsubstring. Tell if it\u2019s possible to unlock the phone in this way, or\r\nnot.\r\n",
+    "statement": "As technologies develop, manufacturers are making the process of\r\nunlocking a phone as user-friendly as possible. To unlock its new phone,\r\nArkady’s pet dog Mu-mu has to bark the password once. The phone\r\nrepresents a password as a string of two lowercase English\r\nletters.Mu-mu’s enemy Kashtanka wants to unlock Mu-mu’s phone to steal\r\nsome sensible information, but it can only bark distinct words, each of\r\nwhich can be represented as a string of two lowercase English letters.\r\nKashtanka wants to bark several words (not necessarily distinct) one\r\nafter another to pronounce a string containing the password as a\r\nsubstring. Tell if it’s possible to unlock the phone in this way, or\r\nnot.\r\n",
     "solutions": [
         "#include <cstdio>\n\nchar a[4], b[101][4];\n\nint main() {\n\tint i, j, n;\n\tscanf(\"%s%d\", a, &n);\n\tfor (i = 0; i < n; i++) scanf(\"%s\", b[i]);\n\tfor (i = 0; i < n; i++) if (b[i][0] == a[0] && b[i][1] == a[1]) {\n\t\tputs(\"YES\");\n\t\treturn 0;\n\t}\n\tfor (i = 0; i < n; i++) for (j = 0; j < n; j++) if (b[i][0] == a[1] && b[j][1] == a[0]) {\n\t\tputs(\"YES\");\n\t\treturn 0;\n\t}\n\tputs(\"NO\");\n\treturn 0;\n}"
     ],
@@ -142,5 +142,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\A. Bark to Unlock.json",
     "editorial_link": "https://codeforces.com/blog/entry/55046",
-    "editorial": "If the answer is \u00e2\u0080\u0099yes\u00e2\u0080\u0099, then the password is either one of the given\r\nstrings, or can be formed by taking the last letter and the first letter\r\nof some of the given strings (these strings can be the same). This can\r\nbe checked straightforwardly in time.\r\n"
+    "editorial": "If the answer is âyesâ, then the password is either one of the given\r\nstrings, or can be formed by taking the last letter and the first letter\r\nof some of the given strings (these strings can be the same). This can\r\nbe checked straightforwardly in time.\r\n",
+    "hint": []
 }

@@ -131,7 +131,7 @@
         ]
     },
     "name": "A. Integer Moves",
-    "statement": "There\u2019s a chip in the point (0, 0) of the coordinate plane. In one\r\noperation, you can move the chip from some point (x_1, y_1) to some\r\npoint (x_2, y_2) if the Euclidean distance between these two points is\r\nan (i.e.\r\nsqrt{(x_1-x_2)^2+(y_1-y_2)^2} is integer).Your task is to determine the\r\nminimum number of operations required to move the chip from the point\r\n(0, 0) to the point (x, y).\r\n",
+    "statement": "There’s a chip in the point (0, 0) of the coordinate plane. In one\r\noperation, you can move the chip from some point (x_1, y_1) to some\r\npoint (x_2, y_2) if the Euclidean distance between these two points is\r\nan (i.e.\r\nsqrt{(x_1-x_2)^2+(y_1-y_2)^2} is integer).Your task is to determine the\r\nminimum number of operations required to move the chip from the point\r\n(0, 0) to the point (x, y).\r\n",
     "solutions": [
         "#include <iostream>\n#include <cstdio>\n#include <cstdlib>\n#include <algorithm>\n#include <cmath>\n#include <vector>\n#include <set>\n#include <map>\n#include <unordered_set>\n#include <unordered_map>\n#include <queue>\n#include <ctime>\n#include <cassert>\n#include <complex>\n#include <string>\n#include <cstring>\n#include <chrono>\n#include <random>\n#include <bitset>\n#include <array>\nusing namespace std;\n\n#ifdef LOCAL\n\t#define eprintf(...) {fprintf(stderr, __VA_ARGS__);fflush(stderr);}\n#else\n\t#define eprintf(...) 42\n#endif\n\nusing ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\nusing ull = unsigned long long;\ntemplate<typename T>\nusing pair2 = pair<T, T>;\nusing pii = pair<int, int>;\nusing pli = pair<ll, int>;\nusing pll = pair<ll, ll>;\nmt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());\nll myRand(ll B) {\n\treturn (ull)rng() % B;\n}\n\n#define pb push_back\n#define mp make_pair\n#define all(x) (x).begin(),(x).end()\n#define fi first\n#define se second\n\nclock_t startTime;\ndouble getCurrentTime() {\n\treturn (double)(clock() - startTime) / CLOCKS_PER_SEC;\n}\n\nint solve() {\n\tint x, y;\n\tscanf(\"%d%d\", &x, &y);\n\tint d = x * x + y * y;\n\tif (d == 0) return 0;\n\tint z = 0;\n\twhile(z * z < d) z++;\n\tif (z * z == d) return 1;\n\treturn 2;\n}\n\nint main()\n{\n\tstartTime = clock();\n//\tfreopen(\"input.txt\", \"r\", stdin);\n//\tfreopen(\"output.txt\", \"w\", stdout);\n\n\tint t;\n\tscanf(\"%d\", &t);\n\twhile(t--) {\n\t\tprintf(\"%d\\n\", solve());\n\t}\n\n\treturn 0;\n}\n"
     ],
@@ -145,5 +145,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Integer Moves.json",
     "editorial_link": "https://codeforces.com//blog/entry/101161",
-    "editorial": "Note that the answer does not exceed , because the chip can be moved as\r\nfollows: . Obviously, in this case, both operation are valid. It remains\r\nto check the cases when the answer is or . The answer is only if the\r\ndestination point is , and the answer is if is integer.\r\n"
+    "editorial": "Note that the answer does not exceed , because the chip can be moved as\r\nfollows: . Obviously, in this case, both operation are valid. It remains\r\nto check the cases when the answer is or . The answer is only if the\r\ndestination point is , and the answer is if is integer.\r\n",
+    "hint": []
 }

@@ -115,5 +115,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Lucky Sum.json",
     "editorial_link": "https://codeforces.com//blog/entry/2956",
-    "editorial": "Let generate all lucky number between 1 and 1010. Consider all segment [1;L0], [L0?+?1;L1], [L1?+?1;L2] ... Then the result equals to product of intersection of segments [1;L0] and [1;n] by L0 plus size of intersection of [L0?+?1;L1] and  [1;n] multiplied by L1 and so on."
+    "editorial": "Let generate all lucky number between 1 and 1010. Consider all segment [1;L0], [L0?+?1;L1], [L1?+?1;L2] ... Then the result equals to product of intersection of segments [1;L0] and [1;n] by L0 plus size of intersection of [L0?+?1;L1] and  [1;n] multiplied by L1 and so on.",
+    "hint": []
 }

@@ -75,5 +75,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Plant.json",
     "editorial_link": "https://codeforces.com/blog/entry/4488",
-    "editorial": "Let's propose, that after the i-th year, there is x triangles up and y triangles down. After another iteration we can see, that amount of triangles became \u0097 3x?+?y up and x?+?3y down. Let's see the difference between them: at the i-th it's x?-?y and at the i?+?1-th \u0097 it's (3x?+?y)?-?(x?+?3y)?=?2?*?(x?-?y). We can see, that difference between amount of triangles grown up by 2. Because on the i-th year the difference became 2i and all amount of triangles is 4i. We can see, that on the i-th year the number of our triangles is . That can be computed by modulo p using the fast-power algorithm."
+    "editorial": "Let's propose, that after the i-th year, there is x triangles up and y triangles down. After another iteration we can see, that amount of triangles became  3x?+?y up and x?+?3y down. Let's see the difference between them: at the i-th it's x?-?y and at the i?+?1-th  it's (3x?+?y)?-?(x?+?3y)?=?2?*?(x?-?y). We can see, that difference between amount of triangles grown up by 2. Because on the i-th year the difference became 2i and all amount of triangles is 4i. We can see, that on the i-th year the number of our triangles is . That can be computed by modulo p using the fast-power algorithm.",
+    "hint": []
 }

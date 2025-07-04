@@ -137,5 +137,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Teams Forming.json",
     "editorial_link": "https://codeforces.com//blog/entry/63961",
-    "editorial": "If we sort the students in order of non-decreasing their skill, we can\r\nsee that the minimum cost of the team with the lowest skill (let\u00e2\u0080\u0099s call\r\nit the first team) is equal to (if is already sorted), the cost of the\r\nsecond team is and so on.So if we sort in non-decreasing order then the\r\nanswer is .\r\n"
+    "editorial": "If we sort the students in order of non-decreasing their skill, we can\r\nsee that the minimum cost of the team with the lowest skill (letâs call\r\nit the first team) is equal to (if is already sorted), the cost of the\r\nsecond team is and so on.So if we sort in non-decreasing order then the\r\nanswer is .\r\n",
+    "hint": []
 }

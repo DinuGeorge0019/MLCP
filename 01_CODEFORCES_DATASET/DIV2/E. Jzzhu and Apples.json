@@ -87,5 +87,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Jzzhu and Apples.json",
     "editorial_link": "https://codeforces.com//blog/entry/13112",
-    "editorial": "Firstly, we should notice that and the primes larger than can not be\r\nmatched anyway, so we ignore these numbers. Let\u00e2\u0080\u0099s consider each prime\r\nwhere . For each prime , we find all of the numbers which are unmatched\r\nand have a divisor . Let be the count of those numbers we found. If is\r\neven, then we can match those numbers perfectly. Otherwise, we throw the\r\nnumber and the remaining numbers can be matched perfectly. Finally, only\r\neven numbers may be unmatched and we can match them in any way.\r\n"
+    "editorial": "Firstly, we should notice that and the primes larger than can not be\r\nmatched anyway, so we ignore these numbers. Letâs consider each prime\r\nwhere . For each prime , we find all of the numbers which are unmatched\r\nand have a divisor . Let be the count of those numbers we found. If is\r\neven, then we can match those numbers perfectly. Otherwise, we throw the\r\nnumber and the remaining numbers can be matched perfectly. Finally, only\r\neven numbers may be unmatched and we can match them in any way.\r\n",
+    "hint": []
 }

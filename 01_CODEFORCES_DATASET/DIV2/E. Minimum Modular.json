@@ -107,5 +107,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Minimum Modular.json",
     "editorial_link": "https://codeforces.com//blog/entry/7641",
-    "editorial": "It is hard to solve this problem at once, so at first, let us consider on k = 0, this easier case can be solved by enumerate on the ans. Let us define a bool array diff[], which diff[x] is weather there are two number, ai, aj, such that abs(ai?-?aj)?=?x.\n\nSo ans is legal <=> diff[ans], diff[2*ans] \u0085 are false.\n\nThe time-complexity O(n2?+?mlogm). Here m is the maximum ai.\n\nConsider on k?>?0, we need to know how many pairs which has difference x. Store them in\nvector<pair <int, int> > diff[x];\n\nThen use a dsu to maintain the how many a_i are congruent when enumerate on the ans."
+    "editorial": "It is hard to solve this problem at once, so at first, let us consider on k = 0, this easier case can be solved by enumerate on the ans. Let us define a bool array diff[], which diff[x] is weather there are two number, ai, aj, such that abs(ai?-?aj)?=?x.\n\nSo ans is legal <=> diff[ans], diff[2*ans]  are false.\n\nThe time-complexity O(n2?+?mlogm). Here m is the maximum ai.\n\nConsider on k?>?0, we need to know how many pairs which has difference x. Store them in\nvector<pair <int, int> > diff[x];\n\nThen use a dsu to maintain the how many a_i are congruent when enumerate on the ans.",
+    "hint": []
 }

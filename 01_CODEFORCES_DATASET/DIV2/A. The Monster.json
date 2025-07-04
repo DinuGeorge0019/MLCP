@@ -87,7 +87,7 @@
         ]
     },
     "name": "A. The Monster",
-    "statement": "A monster is chasing after Rick and Morty on another planet. They\u2019re so\r\nfrightened that sometimes they scream. More accurately, Rick screams at\r\ntimes and Morty screams at times . The Monster will catch them if at any\r\npoint they scream at the same time, so it wants to know when it will\r\ncatch them (the first time they scream at the same time) or that they\r\nwill never scream at the same time.\r\n",
+    "statement": "A monster is chasing after Rick and Morty on another planet. They’re so\r\nfrightened that sometimes they scream. More accurately, Rick screams at\r\ntimes and Morty screams at times . The Monster will catch them if at any\r\npoint they scream at the same time, so it wants to know when it will\r\ncatch them (the first time they scream at the same time) or that they\r\nwill never scream at the same time.\r\n",
     "solutions": [
         "#include <stdio.h>\n#include <string.h>\n#include <stdlib.h>\n#include <iostream>\n#include <algorithm>\nusing namespace std;\nconst int MAXN = 101010;\nint a, b, c, d, f[MAXN];\nint main()\n{\n\tmemset(f, 0, sizeof(f));\n\tscanf(\"%d%d%d%d\", &a, &b, &c, &d);\n\tfor(int i = b; i < MAXN; i += a)\n\t\tf[i] |= 1;\n\tfor(int i = d; i < MAXN; i += c)\n\t\tf[i] |= 2;\n\tfor(int i = 0; i < MAXN; i++)\n\t\tif(f[i] == 3)\n\t\t{\n\t\t\tprintf(\"%d\\n\", i);\n\t\t\treturn 0;\n\t\t}\n\tprintf(\"-1\\n\");\n\treturn 0;\n}\n\n"
     ],
@@ -102,5 +102,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. The Monster.json",
     "editorial_link": "https://codeforces.com//blog/entry/51163",
-    "editorial": "You need to find out if there are non-negative integers like and such\r\nand or (or both) is minimized. It\u00e2\u0080\u0099s easy to show that if , and such and\r\nexist, then , so you can iterate over and check if such exists. Time\r\ncomplexity:\r\n"
+    "editorial": "You need to find out if there are non-negative integers like and such\r\nand or (or both) is minimized. Itâs easy to show that if , and such and\r\nexist, then , so you can iterate over and check if such exists. Time\r\ncomplexity:\r\n",
+    "hint": []
 }

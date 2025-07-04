@@ -181,5 +181,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\D. Same GCDs.json",
     "editorial_link": "https://codeforces.com//blog/entry/73467",
-    "editorial": "The Euclidean algorithm is based on the next fact: if then . So, if then\r\n. So we can declare that we are looking at different integers with , so\r\nall forms a segment . So, we need to find the number of () such that\r\n.Let\u00e2\u0080\u0099s denote , then and . So, or . Since so we also can represent and,\r\ntherefore .Since , then or we need to calaculate the number of () such\r\nthat . Since so we can consider and this is the definition of Euler\u00e2\u0080\u0099s\r\ntotient function which is the answer.Euler\u00e2\u0080\u0099s totient function can be\r\ncalculated using factorization of . Then .\r\n"
+    "editorial": "The Euclidean algorithm is based on the next fact: if then . So, if then\r\n. So we can declare that we are looking at different integers with , so\r\nall forms a segment . So, we need to find the number of () such that\r\n.Letâs denote , then and . So, or . Since so we also can represent and,\r\ntherefore .Since , then or we need to calaculate the number of () such\r\nthat . Since so we can consider and this is the definition of Eulerâs\r\ntotient function which is the answer.Eulerâs totient function can be\r\ncalculated using factorization of . Then .\r\n",
+    "hint": []
 }

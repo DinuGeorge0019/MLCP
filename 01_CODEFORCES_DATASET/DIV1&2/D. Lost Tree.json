@@ -215,5 +215,11 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\D. Lost Tree.json",
     "editorial_link": "https://codeforces.com//blog/entry/91760",
-    "editorial": "If we had queries, solving this problem would be easy as we could just\r\nquery every single node and add edges when . However, notice that as\r\nlong as we make a query for at least endpoint of every edge, we will be\r\nable to find all the edges using this method.Observe that a tree is\r\nbipartite, so we would be able to achieve a bound of as long as we only\r\nquery the smaller bipartite set. To figure out which set is smaller, we\r\ncan just query any node and look at which nodes have odd depth and which\r\nones have even depth.Lastly, be careful with your queries so that your\r\nworst-case bound is rather than . One way to do this is to not include\r\nthe initial node you query in either bipartite set (so you are\r\neffectively working with nodes rather than ).Time complexity:\r\n"
+    "editorial": "If we had queries, solving this problem would be easy as we could just\r\nquery every single node and add edges when . However, notice that as\r\nlong as we make a query for at least endpoint of every edge, we will be\r\nable to find all the edges using this method.Observe that a tree is\r\nbipartite, so we would be able to achieve a bound of as long as we only\r\nquery the smaller bipartite set. To figure out which set is smaller, we\r\ncan just query any node and look at which nodes have odd depth and which\r\nones have even depth.Lastly, be careful with your queries so that your\r\nworst-case bound is rather than . One way to do this is to not include\r\nthe initial node you query in either bipartite set (so you are\r\neffectively working with nodes rather than ).Time complexity:\r\n",
+    "hint": [
+        "Hint 1 All trees are bipartite.",
+        "Hint 2 Find a -coloring of a tree in one query.",
+        "Hint 3 You can find all nodes adjacent to one node in one query.",
+        "Hint 4 The min(number of black, number of white) nodes is ."
+    ]
 }

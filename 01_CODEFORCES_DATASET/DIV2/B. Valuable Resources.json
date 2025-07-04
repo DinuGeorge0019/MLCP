@@ -96,7 +96,7 @@
         ]
     },
     "name": "B. Valuable Resources",
-    "statement": "Many computer strategy games require building cities, recruiting army,\r\nconquering tribes, collecting resources. Sometimes it leads to\r\ninteresting problems. Let\u2019s suppose that your task is to build a square\r\ncity. The world map uses the Cartesian coordinates. The sides of the\r\ncity should be parallel to coordinate axes. The map contains mines with\r\nvaluable resources, located at some points with integer coordinates. The\r\nsizes of mines are relatively small, i.e. they can be treated as points.\r\nThe city should be built in such a way that all the mines are inside or\r\non the border of the city square. Building a city takes large amount of\r\nmoney depending on the size of the city, so you have to build the city\r\nwith the minimum area. Given the positions of the mines find the minimum\r\npossible area of the city.\r\n",
+    "statement": "Many computer strategy games require building cities, recruiting army,\r\nconquering tribes, collecting resources. Sometimes it leads to\r\ninteresting problems. Let’s suppose that your task is to build a square\r\ncity. The world map uses the Cartesian coordinates. The sides of the\r\ncity should be parallel to coordinate axes. The map contains mines with\r\nvaluable resources, located at some points with integer coordinates. The\r\nsizes of mines are relatively small, i.e. they can be treated as points.\r\nThe city should be built in such a way that all the mines are inside or\r\non the border of the city square. Building a city takes large amount of\r\nmoney depending on the size of the city, so you have to build the city\r\nwith the minimum area. Given the positions of the mines find the minimum\r\npossible area of the city.\r\n",
     "solutions": [
         "#include <iostream>\n#include <cstdio>\n#include <cstdlib>\n\n\nusing namespace std;\n\nint main()\n{\n    int n;\n    long long x, y;\n    long long minx = 1e9 + 9, maxx = -1 * (1e9 + 9), maxy = -1 * (1e9 + 9), miny = 1e9 + 9;\n    \n    ios_base::sync_with_stdio(0);\n    \n    cin>>n;\n    \n    for(int i = 0; i < n; i++)\n      {\n          cin>>x>>y;\n          \n          if(x > maxx)\n            maxx = x;\n          \n          if(minx > x)\n            minx = x;\n          \n          if(maxy < y)\n            maxy = y;\n          \n          if(miny > y)\n            miny = y;\n      }\n    \n    x = max(maxy - miny, maxx - minx);\n    \n    cout<<x * x<<endl;\n    \n\n    return 0;\n}\n"
     ],
@@ -110,5 +110,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Valuable Resources.json",
     "editorial_link": "https://codeforces.com//blog/entry/14592",
-    "editorial": "Let us find minimum length needed to cover points by . It is . The same\r\nin . Since we need a square city to cover all the mines, then we need to\r\nset length of this square to the maximum from those two values.\r\n"
+    "editorial": "Let us find minimum length needed to cover points by . It is . The same\r\nin . Since we need a square city to cover all the mines, then we need to\r\nset length of this square to the maximum from those two values.\r\n",
+    "hint": []
 }

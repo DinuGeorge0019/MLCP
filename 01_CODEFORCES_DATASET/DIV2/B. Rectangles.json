@@ -103,5 +103,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Rectangles.json",
     "editorial_link": "https://codeforces.com//blog/entry/54029",
-    "editorial": "One could note, that each appropriate set of cells is always contained\r\nin one row or in one column.We should calculate numbers of white and\r\nblack cells and in every row and every column. For every we will\r\nsummarize (the number of non-empty subsets of this color contained in\r\none row/column).In the end, we subtract from the whole sum (this is a\r\nnumber of one-cell sets, which we count twice).Solution complexity is\r\n"
+    "editorial": "One could note, that each appropriate set of cells is always contained\r\nin one row or in one column.We should calculate numbers of white and\r\nblack cells and in every row and every column. For every we will\r\nsummarize (the number of non-empty subsets of this color contained in\r\none row/column).In the end, we subtract from the whole sum (this is a\r\nnumber of one-cell sets, which we count twice).Solution complexity is\r\n",
+    "hint": []
 }

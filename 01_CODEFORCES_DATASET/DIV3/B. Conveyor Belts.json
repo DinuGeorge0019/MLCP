@@ -176,5 +176,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Conveyor Belts.json",
     "editorial_link": "https://codeforces.com//blog/entry/114788",
-    "editorial": "Note that the conveyor matrix consists of cycles, through each of which\r\nwe can move without wasting energy. Now you need to find the distance\r\nbetween the cycles where the start and end cells are located. In one\r\nstep from any cycle, you can go either to the cycle that is closer to\r\nthe edge of the matrix, or to the cycle that is further from the edge of\r\nthe matrix. It turns out that it is enough to find on which cycles there\r\nare cells on the edge and take their difference modulo.\r\n"
+    "editorial": "Note that the conveyor matrix consists of cycles, through each of which\r\nwe can move without wasting energy. Now you need to find the distance\r\nbetween the cycles where the start and end cells are located. In one\r\nstep from any cycle, you can go either to the cycle that is closer to\r\nthe edge of the matrix, or to the cycle that is further from the edge of\r\nthe matrix. It turns out that it is enough to find on which cycles there\r\nare cells on the edge and take their difference modulo.\r\n",
+    "hint": []
 }

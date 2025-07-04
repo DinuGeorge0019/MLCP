@@ -130,5 +130,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Alyona and Spreadsheet.json",
     "editorial_link": "https://codeforces.com//blog/entry/50670",
-    "editorial": "For each cell compute value equal to maximum , such that table is\r\nnon-decreasing in row if we keep only rows from to inclusive. This\r\nvalues can be computed in time using the following formulas: , if and ;\r\notherwise. To process the query we have to check whether there exists\r\nsuch that . We will answer this questions using by precomputing maximum\r\nvalues in each row .\r\n"
+    "editorial": "For each cell compute value equal to maximum , such that table is\r\nnon-decreasing in row if we keep only rows from to inclusive. This\r\nvalues can be computed in time using the following formulas: , if and ;\r\notherwise. To process the query we have to check whether there exists\r\nsuch that . We will answer this questions using by precomputing maximum\r\nvalues in each row .\r\n",
+    "hint": []
 }

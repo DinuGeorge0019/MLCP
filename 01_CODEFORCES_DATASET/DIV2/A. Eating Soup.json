@@ -170,5 +170,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Eating Soup.json",
     "editorial_link": "https://codeforces.com/blog/entry/66943",
-    "editorial": "We can prove that the first one to leave the circle does not make any\r\ndifference to our answer. So after trying some tests, you will probably\r\ncome up with an idea of selecting the cats that are sitting right\r\nbetween the other two to be the prior ones to leave because, in this\r\nway, those vacancies will definitely be useful for creating more\r\nseparate groups.Therefore, if , the answer is since each cat to leave\r\n(after the first cat) increases the number of groups. Otherwise, if ,\r\neach cat to leave decreases the number of groups so the answer is .\r\nSummarily, the answer is . Be careful with .Complexity: .\r\n"
+    "editorial": "We can prove that the first one to leave the circle does not make any\r\ndifference to our answer. So after trying some tests, you will probably\r\ncome up with an idea of selecting the cats that are sitting right\r\nbetween the other two to be the prior ones to leave because, in this\r\nway, those vacancies will definitely be useful for creating more\r\nseparate groups.Therefore, if , the answer is since each cat to leave\r\n(after the first cat) increases the number of groups. Otherwise, if ,\r\neach cat to leave decreases the number of groups so the answer is .\r\nSummarily, the answer is . Be careful with .Complexity: .\r\n",
+    "hint": []
 }

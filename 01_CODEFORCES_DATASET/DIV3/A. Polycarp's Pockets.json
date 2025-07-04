@@ -136,5 +136,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Polycarp's Pockets.json",
     "editorial_link": "https://codeforces.com/blog/entry/60417",
-    "editorial": "We have to find the maximum number of elements with the same value (it\r\ncan be done by counting). This number will be the answer because if\r\nthere are no more than elements with the same value in the array it is\r\nobvious that we cannot use less than pockets, but we also doesn\u00e2\u0080\u0099t need\r\nto use more than pockets because of the other values can be also\r\ndistributed using pockets.Overall complexity is .\r\n"
+    "editorial": "We have to find the maximum number of elements with the same value (it\r\ncan be done by counting). This number will be the answer because if\r\nthere are no more than elements with the same value in the array it is\r\nobvious that we cannot use less than pockets, but we also doesnât need\r\nto use more than pockets because of the other values can be also\r\ndistributed using pockets.Overall complexity is .\r\n",
+    "hint": []
 }

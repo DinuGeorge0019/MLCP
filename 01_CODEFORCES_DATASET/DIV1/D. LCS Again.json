@@ -120,5 +120,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. LCS Again.json",
     "editorial_link": "https://codeforces.com//blog/entry/20368",
-    "editorial": "Followings are solution in short. Considering the LCS dp table lcs[x][y] which denotes the LCS value of first x characters of S and first y characters of T. If we know lcs[n][n]?=?n?-?1, then we only concern values in the table which abs(x?-?y)???1 and all value of lcs[x][y] must be min(x,?y) or min(x,?y)?-?1. So each row contains only 8 states(In fact,three states among these states will never be used), we can do dp on it row by row with time complexity O(n)."
+    "editorial": "Followings are solution in short. Considering the LCS dp table lcs[x][y] which denotes the LCS value of first x characters of S and first y characters of T. If we know lcs[n][n]?=?n?-?1, then we only concern values in the table which abs(x?-?y)???1 and all value of lcs[x][y] must be min(x,?y) or min(x,?y)?-?1. So each row contains only 8 states(In fact,three states among these states will never be used), we can do dp on it row by row with time complexity O(n).",
+    "hint": []
 }

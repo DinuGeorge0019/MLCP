@@ -105,7 +105,7 @@
         ]
     },
     "name": "B. JOE is on TV ",
-    "statement": "Our dear Cafe\u2019s owner, JOE Miller, will soon take part in a new game\r\nTV-show \"1 vs. n\"!The game goes in rounds, where in each round the host\r\nasks JOE and his opponents a common question. All participants failing\r\nto answer are eliminated. The show ends when only JOE remains (we assume\r\nthat JOE never answers a question wrong!).For each question JOE answers,\r\nif there are s (s > 0) opponents remaining and t (0\r\nle t\r\nle s) of them make a mistake on it, JOE receives\r\ndisplaystyle\r\nfrac{t}{s} dollars, and consequently there will be s - t opponents left\r\nfor the next question.JOE wonders what is the maximum possible reward he\r\ncan receive in the best possible scenario. Yet he has little time before\r\nshow starts, so can you help him answering it instead?\r\n",
+    "statement": "Our dear Cafe’s owner, JOE Miller, will soon take part in a new game\r\nTV-show \"1 vs. n\"!The game goes in rounds, where in each round the host\r\nasks JOE and his opponents a common question. All participants failing\r\nto answer are eliminated. The show ends when only JOE remains (we assume\r\nthat JOE never answers a question wrong!).For each question JOE answers,\r\nif there are s (s > 0) opponents remaining and t (0\r\nle t\r\nle s) of them make a mistake on it, JOE receives\r\ndisplaystyle\r\nfrac{t}{s} dollars, and consequently there will be s - t opponents left\r\nfor the next question.JOE wonders what is the maximum possible reward he\r\ncan receive in the best possible scenario. Yet he has little time before\r\nshow starts, so can you help him answering it instead?\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(void) {\n    ios_base::sync_with_stdio(0);\n    cin.tie(NULL);\n    int n;\n    cin >> n;\n    double ans = 0;\n    for (int i = 1; i <= n; ++i) ans += 1.0 / i;\n    cout << setprecision(12) << fixed << ans << endl;\n    return 0;\n}\n"
     ],
@@ -120,5 +120,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. JOE is on TV .json",
     "editorial_link": "https://codeforces.com//blog/entry/73051",
-    "editorial": "This is a greedy problem, with the optimal scenario being each question\r\neliminating a single opponent.It is easy to see that we will want each\r\nquestion to eliminate one opponent only, since after each elimination,\r\nthe ratio will be more and more rewarding (as lowers overtime) - as a\r\nresult, each elimination should have the lowest possible (i.e. ) so more\r\nopponents would have their rewards increased.Time complexity is .\r\n"
+    "editorial": "This is a greedy problem, with the optimal scenario being each question\r\neliminating a single opponent.It is easy to see that we will want each\r\nquestion to eliminate one opponent only, since after each elimination,\r\nthe ratio will be more and more rewarding (as lowers overtime) - as a\r\nresult, each elimination should have the lowest possible (i.e. ) so more\r\nopponents would have their rewards increased.Time complexity is .\r\n",
+    "hint": []
 }

@@ -139,7 +139,7 @@
         ]
     },
     "name": "A. King Moves",
-    "statement": "The only king stands on the standard chess board. You are given his\r\nposition in format \"\", where is the column from \u2019a\u2019 to \u2019h\u2019 and is the\r\nrow from \u20191\u2019 to \u20198\u2019. Find the number of moves permitted for the\r\nking.Check the king\u2019s moves here\r\nhttps://en.wikipedia.org/wiki/King_(chess).\r\n",
+    "statement": "The only king stands on the standard chess board. You are given his\r\nposition in format \"\", where is the column from ’a’ to ’h’ and is the\r\nrow from ’1’ to ’8’. Find the number of moves permitted for the\r\nking.Check the king’s moves here\r\nhttps://en.wikipedia.org/wiki/King_(chess).\r\n",
     "solutions": [
         "#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <string>\n#include <ctype.h>\n#include <deque>\n#include <queue>\n#include <cstring>\n#include <set>\n#include <list>\n#include <map>\n#include <random>\n#include <unordered_map>\n#include <stdio.h>\n\nusing namespace std;\n\ntypedef long long ll;\ntypedef std::vector<int> vi;\ntypedef std::vector<bool> vb;\ntypedef std::vector<string> vs;\ntypedef std::vector<double> vd;\ntypedef std::vector<long long> vll;\ntypedef std::vector<std::vector<int> > vvi;\ntypedef vector<vvi> vvvi;\ntypedef vector<vll> vvll;\ntypedef std::vector<std::pair<int, int> > vpi;\ntypedef vector<vpi> vvpi;\ntypedef std::pair<int, int> pi;\ntypedef std::pair<ll, ll> pll;\ntypedef std::vector<pll> vpll;\n\nconst long long mod = 1000000007;\n\n#define all(c) (c).begin(),(c).end()\n#define sz(c) (int)(c).size()\n#define forn(i, a, b) for(int i = a; i < b; i++)\n\n#define pb push_back\n#define mp make_pair\n\nint main()\n{\n#ifndef ONLINE_JUDGE\n    freopen(\"input.txt\", \"rt\", stdin);\n    freopen(\"output.txt\", \"wt\", stdout);\n#endif\n    char c;\n    char d;\n    cin>>c>>d;\n    int a=0, b=0;\n    if(c=='a' || c=='h') a=1;\n    if(d=='1' || d=='8') b=1;\n    if(a+b==2) cout<<3;\n    else if(a+b==1) cout<<5;\n    else cout<<8;\n    \n    \n    \n}\n\n\n"
     ],
@@ -152,5 +152,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. King Moves.json",
     "editorial_link": "https://codeforces.com//blog/entry/46761",
-    "editorial": "Easy to see that there are only three cases in this problem. If the king\r\nis in the corner of the board the answer is . If the king is on the\r\nborder of the board but not in a corner then the answer is . Otherwise\r\nthe answer is . ++ solution\r\n"
+    "editorial": "Easy to see that there are only three cases in this problem. If the king\r\nis in the corner of the board the answer is . If the king is on the\r\nborder of the board but not in a corner then the answer is . Otherwise\r\nthe answer is . ++ solution\r\n",
+    "hint": []
 }

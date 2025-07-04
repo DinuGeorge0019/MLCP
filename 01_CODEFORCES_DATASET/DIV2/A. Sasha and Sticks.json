@@ -89,7 +89,7 @@
         ]
     },
     "name": "A. Sasha and Sticks",
-    "statement": "It\u2019s one more school day now. Sasha doesn\u2019t like classes and is always\r\nbored at them. So, each day he invents some game and plays in it alone\r\nor with friends.Today he invented one simple game to play with Lena,\r\nwith whom he shares a desk. The rules are simple. Sasha draws sticks in\r\na row. After that the players take turns crossing out exactly sticks\r\nfrom left or right in each turn. Sasha moves first, because he is the\r\ninventor of the game. If there are less than sticks on the paper before\r\nsome turn, the game ends. Sasha wins if he makes strictly more moves\r\nthan Lena. Sasha wants to know the result of the game before playing,\r\nyou are to help him.\r\n",
+    "statement": "It’s one more school day now. Sasha doesn’t like classes and is always\r\nbored at them. So, each day he invents some game and plays in it alone\r\nor with friends.Today he invented one simple game to play with Lena,\r\nwith whom he shares a desk. The rules are simple. Sasha draws sticks in\r\na row. After that the players take turns crossing out exactly sticks\r\nfrom left or right in each turn. Sasha moves first, because he is the\r\ninventor of the game. If there are less than sticks on the paper before\r\nsome turn, the game ends. Sasha wins if he makes strictly more moves\r\nthan Lena. Sasha wants to know the result of the game before playing,\r\nyou are to help him.\r\n",
     "solutions": [
         "#include <iostream>\n\nusing namespace std;\n\nint main() {\n  cin.sync_with_stdio(false);\n  cin.tie(nullptr);\n  int64_t n, k;\n  cin >> n >> k;\n  if (n / k % 2 == 1) {\n    cout << \"YES\" << endl;\n  } else {\n    cout << \"NO\" << endl;\n  }\n  return 0;\n}\n"
     ],
@@ -103,5 +103,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Sasha and Sticks.json",
     "editorial_link": "https://codeforces.com//blog/entry/53461",
-    "editorial": "Note, that it\u00e2\u0080\u0099s not important from which side sticks are being crossing\r\nout. Players will make summary turns. If this number is odd, Sasha made\r\nmore turn than Lena and won. Otherwise, Sasha and Lena made same number\r\nof turns and Sasha didn\u00e2\u0080\u0099t win.\r\n"
+    "editorial": "Note, that itâs not important from which side sticks are being crossing\r\nout. Players will make summary turns. If this number is odd, Sasha made\r\nmore turn than Lena and won. Otherwise, Sasha and Lena made same number\r\nof turns and Sasha didnât win.\r\n",
+    "hint": []
 }

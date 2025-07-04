@@ -97,5 +97,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Array GCD.json",
     "editorial_link": "https://codeforces.com//blog/entry/23278",
-    "editorial": "At least one of ends ( or ) is changed by at most 1. It means that if\r\ngcd > 1 then it divides on of prime divisors of either , , , , or . We\r\nwill iterate over these primes. Suppose prime is fixed. For each number\r\nwe know that it\u00e2\u0080\u0099s either divisible by or we can pay to fix it or it\r\nshould be in the subarray to change for We can use dynamic programming\r\ndp[number of numbers considered][subarray to change not\r\nstarted/started/finished] = minimal cost Complexity is , where is the\r\nnumber of primes to check.\r\n"
+    "editorial": "At least one of ends ( or ) is changed by at most 1. It means that if\r\ngcd > 1 then it divides on of prime divisors of either , , , , or . We\r\nwill iterate over these primes. Suppose prime is fixed. For each number\r\nwe know that itâs either divisible by or we can pay to fix it or it\r\nshould be in the subarray to change for We can use dynamic programming\r\ndp[number of numbers considered][subarray to change not\r\nstarted/started/finished] = minimal cost Complexity is , where is the\r\nnumber of primes to check.\r\n",
+    "hint": []
 }

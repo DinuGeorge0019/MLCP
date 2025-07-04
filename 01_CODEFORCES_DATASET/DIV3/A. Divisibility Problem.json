@@ -155,5 +155,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Divisibility Problem.json",
     "editorial_link": "https://codeforces.com//blog/entry/75246",
-    "editorial": "If ( is divisible by ), just print . Otherwise, we need exactly moves to\r\nmake zero remainder of modulo . is modulo operation.\r\n"
+    "editorial": "If ( is divisible by ), just print . Otherwise, we need exactly moves to\r\nmake zero remainder of modulo . is modulo operation.\r\n",
+    "hint": []
 }

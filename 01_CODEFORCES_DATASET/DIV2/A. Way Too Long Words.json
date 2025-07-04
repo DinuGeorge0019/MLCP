@@ -81,7 +81,7 @@
         ]
     },
     "name": "A. Way Too Long Words",
-    "statement": "Sometimes some words like \"\" or \"\" are so long that writing them many\r\ntimes in one text is quite tiresome.Let\u2019s consider a word , if its\r\nlength is than characters. All too long words should be replaced with a\r\nspecial abbreviation.This abbreviation is made like this: we write down\r\nthe first and the last letter of a word and between them we write the\r\nnumber of letters between the first and the last letters. That number is\r\nin decimal system and doesn\u2019t contain any leading zeroes.Thus, \"\" will\r\nbe spelt as \"\", and \" will be spelt as \"\".You are suggested to\r\nautomatize the process of changing the words with abbreviations. At that\r\nall too long words should be replaced by the abbreviation and the words\r\nthat are not too long should not undergo any changes.\r\n",
+    "statement": "Sometimes some words like \"\" or \"\" are so long that writing them many\r\ntimes in one text is quite tiresome.Let’s consider a word , if its\r\nlength is than characters. All too long words should be replaced with a\r\nspecial abbreviation.This abbreviation is made like this: we write down\r\nthe first and the last letter of a word and between them we write the\r\nnumber of letters between the first and the last letters. That number is\r\nin decimal system and doesn’t contain any leading zeroes.Thus, \"\" will\r\nbe spelt as \"\", and \" will be spelt as \"\".You are suggested to\r\nautomatize the process of changing the words with abbreviations. At that\r\nall too long words should be replaced by the abbreviation and the words\r\nthat are not too long should not undergo any changes.\r\n",
     "solutions": [
         "#include <iostream>\n#include <cstring>\n#include <cstdio>\nusing namespace std;\n\nchar readin[110];\n\nmain(){\n\tint t;\n\t\n\tscanf ( \"%d\", &t );\n\twhile( t -- ){\n\t\tscanf ( \"%s\", readin );\n\t\tif ( strlen( readin ) > 10 )\n\t\t\tprintf( \"%c%d%c\\n\", readin[0], strlen( readin ) - 2, readin[ strlen( readin ) - 1 ] );\n\t\telse\n\t\t\tprintf( \"%s\\n\", readin );\n\t}\n\t\n\treturn 0;\n}\n"
     ],
@@ -94,5 +94,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Way Too Long Words.json",
     "editorial_link": "https://codeforces.com//blog/entry/1624",
-    "editorial": "In this problem you can just do what is written in the statement. Let read all words. For each of them compute its length L, its the first and the last letter. If L?>?10, output word without any changes, otherwise output the first letter, next L?-?2 and finally the last letter."
+    "editorial": "In this problem you can just do what is written in the statement. Let read all words. For each of them compute its length L, its the first and the last letter. If L?>?10, output word without any changes, otherwise output the first letter, next L?-?2 and finally the last letter.",
+    "hint": []
 }

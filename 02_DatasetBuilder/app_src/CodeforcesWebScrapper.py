@@ -165,6 +165,9 @@ class CodeforcesWebScrapper:
                 if 'editorial' not in data:
                     # Add editorial as a field in data
                     data['editorial'] = None
+                if 'hint' not in data:
+                    # Add hint as a field in data
+                    data['hint'] = None
                     
                 self.problems_collection.append(data)
         

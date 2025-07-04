@@ -114,7 +114,7 @@
         ]
     },
     "name": "A. Fence",
-    "statement": "Yura is tasked to build a closed fence in shape of an arbitrary\r\nnon-degenerate simple quadrilateral. He\u2019s already got three straight\r\nfence segments with known lengths a, b, and c. Now he needs to find out\r\nsome possible integer length d of the fourth straight fence segment so\r\nthat he can build the fence using these four segments. In other words,\r\nthe fence should have a quadrilateral shape with side lengths equal to\r\na, b, c, and d. Help Yura, find any possible length of the fourth side.A\r\nnon-degenerate simple quadrilateral is such a quadrilateral that no\r\nthree of its corners lie on the same line, and it does not cross itself.\r\n",
+    "statement": "Yura is tasked to build a closed fence in shape of an arbitrary\r\nnon-degenerate simple quadrilateral. He’s already got three straight\r\nfence segments with known lengths a, b, and c. Now he needs to find out\r\nsome possible integer length d of the fourth straight fence segment so\r\nthat he can build the fence using these four segments. In other words,\r\nthe fence should have a quadrilateral shape with side lengths equal to\r\na, b, c, and d. Help Yura, find any possible length of the fourth side.A\r\nnon-degenerate simple quadrilateral is such a quadrilateral that no\r\nthree of its corners lie on the same line, and it does not cross itself.\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\nusing namespace std;\n#define I inline int\n#define V inline void\n#define ll long long int\n#define isnum(ch) ('0'<=ch&&ch<='9')\n#define FOR(i,a,b) for(int i=a;i<=b;i++)\n#define ROF(i,a,b) for(int i=a;i>=b;i--)\n#define REP(u) for(int i=h[u],v;v=e[i].t,i;i=e[i].n)\n#define gc (_op==_ed&&(_ed=(_op=_buf)+fread(_buf,1,100000,stdin),_op==_ed)?EOF:*_op++)\nchar _buf[100000],*_op(_buf),*_ed(_buf);\nI getint(){\n\tint _s=0,_f=1;char _ch=gc;\n\twhile(!isnum(_ch))(_ch=='-')&&(_f=-1),_ch=gc;\n\twhile(isnum(_ch))_s=_s*10+_ch-48,_ch=gc;\n\treturn _s*_f;\n}\nconst int N=2e5+1,mod=998244353;\nV check(int&x){x-=mod,x+=x>>31&mod;}\nV cmax(int&x,int y){if(x-y>>31)x=y;}\nV cmin(int&x,int y){if(y-x>>31)x=y;}\nint T,n;\nll a[N];\nV input(){\n\tn=3;\n\tFOR(i,1,n)a[i]=getint();\n\tcout<<a[3]+a[2]+a[1]-1<<'\\n';\n}\nV init(){\n\t\n}\nV work(){\n\t\n}\nint main(){\n//\tfreopen(\"test.in\",\"r\",stdin);\n//\tfreopen(\".out\",\"w\",stdout);\n\tfor(scanf(\"%d\",&T);T--;){\n\t\tinput();\n\t\tinit();\n\t\twork();\n\t}\n\treturn 0;\n}\n"
     ],
@@ -128,5 +128,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Fence.json",
     "editorial_link": "https://codeforces.com//blog/entry/83452",
-    "editorial": "A quadrilateral can be built when , that is, the sum of the minimum\r\nthree numbers is greater than the maximum. To do this, you could choose\r\nor as .\r\n"
+    "editorial": "A quadrilateral can be built when , that is, the sum of the minimum\r\nthree numbers is greater than the maximum. To do this, you could choose\r\nor as .\r\n",
+    "hint": []
 }

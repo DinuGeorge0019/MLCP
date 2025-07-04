@@ -108,5 +108,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Pawn.json",
     "editorial_link": "https://codeforces.com//blog/entry/1620",
-    "editorial": "For each cell of the table store k?+?1 values. Where ith value is the maximum number of peas the pawn can take while he is at that cell and this number mod k?+?1 is i.\nThis makes a O(n2?\u00d7?m?\u00d7?k) dynamic programming which fits perfectly in the time."
+    "editorial": "For each cell of the table store k?+?1 values. Where ith value is the maximum number of peas the pawn can take while he is at that cell and this number mod k?+?1 is i.\nThis makes a O(n2?×?m?×?k) dynamic programming which fits perfectly in the time.",
+    "hint": []
 }

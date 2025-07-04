@@ -151,5 +151,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Li Hua and Pattern.json",
     "editorial_link": "https://codeforces.com//blog/entry/114890",
-    "editorial": "We can calculate the minimum needed operations easily by enumerating\r\nthrough the cells and performing an operation if the color of the cell\r\nis different from the targeted cell. Obviously, if , the problem has no\r\nsolution.Otherwise, there are two cases: If , the solution exists if and\r\nonly if , as we must perform two operations each time to meet the\r\nrequirement. If , the solution always exists, as we can perform the\r\nremaining operations at the center of the pattern. Time complexity: .\r\n"
+    "editorial": "We can calculate the minimum needed operations easily by enumerating\r\nthrough the cells and performing an operation if the color of the cell\r\nis different from the targeted cell. Obviously, if , the problem has no\r\nsolution.Otherwise, there are two cases: If , the solution exists if and\r\nonly if , as we must perform two operations each time to meet the\r\nrequirement. If , the solution always exists, as we can perform the\r\nremaining operations at the center of the pattern. Time complexity: .\r\n",
+    "hint": []
 }

@@ -106,7 +106,7 @@
         ]
     },
     "name": "A. Polo the Penguin and Segments ",
-    "statement": "Little penguin Polo adores integer segments, that is, pairs of integers\r\n. He has a set that consists of integer segments: . We know that no two\r\nsegments of this set intersect. In one move Polo can either widen any\r\nsegment of the set 1 unit to the left or 1 unit to the right, that is\r\ntransform to either segment , or to segment .The of a set of segments\r\nthat consists of segments is the number of integers , such that there is\r\ninteger , for which the following inequality holds, .Find the minimum\r\nnumber of moves needed to make the value of the set of Polo\u2019s segments\r\ndivisible by .\r\n",
+    "statement": "Little penguin Polo adores integer segments, that is, pairs of integers\r\n. He has a set that consists of integer segments: . We know that no two\r\nsegments of this set intersect. In one move Polo can either widen any\r\nsegment of the set 1 unit to the left or 1 unit to the right, that is\r\ntransform to either segment , or to segment .The of a set of segments\r\nthat consists of segments is the number of integers , such that there is\r\ninteger , for which the following inequality holds, .Find the minimum\r\nnumber of moves needed to make the value of the set of Polo’s segments\r\ndivisible by .\r\n",
     "solutions": [
         "#include<iostream>\n#include<cstdio>\nusing namespace std;\nint n,m,i,x,y,z;\nint main()\n{\n\tcin>>n>>m;\n\tfor(i=1;i<=n;i++)\n\t{\n\t\tcin>>x>>y;\n\t\tz+=y-x+1;\n\t}\n\tcout<<(m-z%m)%m<<endl;\n}"
     ],
@@ -120,5 +120,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Polo the Penguin and Segments .json",
     "editorial_link": "https://codeforces.com//blog/entry/7241",
-    "editorial": "Solution. First of all, we need to count, how many integers are inside given segments at the beginning. Since they don't intersect and even touch, no integer point can belong to more than one segment at the same time. This mans that starting value of segments is .\n\nIf k divides p, then answer is 0 \u0097 we don't need to do anything, it's already done. But if it's not true, we need to know the minimal number of turns to make k divisor of p. Since we can in single turn increase p by 1 (by decreasing the left point of the leftmost segment), this number is equal to .\n\nNote. Note that just output  is not enough: you need to pay attention for case when , or just output ."
+    "editorial": "Solution. First of all, we need to count, how many integers are inside given segments at the beginning. Since they don't intersect and even touch, no integer point can belong to more than one segment at the same time. This mans that starting value of segments is .\n\nIf k divides p, then answer is 0  we don't need to do anything, it's already done. But if it's not true, we need to know the minimal number of turns to make k divisor of p. Since we can in single turn increase p by 1 (by decreasing the left point of the leftmost segment), this number is equal to .\n\nNote. Note that just output  is not enough: you need to pay attention for case when , or just output .",
+    "hint": []
 }

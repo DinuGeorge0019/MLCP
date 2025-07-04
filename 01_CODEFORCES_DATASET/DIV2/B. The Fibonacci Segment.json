@@ -85,7 +85,7 @@
         ]
     },
     "name": "B. The Fibonacci Segment",
-    "statement": "You have array . Segment () is good if , for all .Let\u2019s define , is the\r\nlength of the segment . Segment , is longer than segment , if .Your task\r\nis to find a good segment of the maximum length in array . Note that a\r\nsegment of length or is always good.\r\n",
+    "statement": "You have array . Segment () is good if , for all .Let’s define , is the\r\nlength of the segment . Segment , is longer than segment , if .Your task\r\nis to find a good segment of the maximum length in array . Note that a\r\nsegment of length or is always good.\r\n",
     "solutions": [
         "#include <stdio.h>\n#include <string.h>\n\nint main(){\n\n    int test;\n    int ans=0,now=0;\n    long long prev1,prev2,temp;\n\n    for( scanf(\"%d\",&test) ; test-- ; ){\n        if( now==0 ){\n            scanf(\"%I64d\",&prev2);\n            now=1;\n        }\n        else if( now==1 ){\n            scanf(\"%I64d\",&prev1);\n            now=2;\n        }\n        else{\n            scanf(\"%I64d\",&temp);\n            if( prev1+prev2!=temp ){\n                now=2;  \n            }\n            else{\n                now++;\n            }\n            prev2=prev1;\n            prev1=temp; \n        }\n        \n        if( now>ans ) ans=now;\n    }\n    printf(\"%d\\n\",ans);\n    return 0;\n}\n"
     ],
@@ -98,5 +98,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. The Fibonacci Segment.json",
     "editorial_link": "https://codeforces.com//blog/entry/9657",
-    "editorial": "Good sequence may contain only zeroes or contain some positive number. In the second case such a sequence is not longer than sequence {0,?1,?1,?2,?3,?5,?8,?...,?x,?y} where y?>?109 and x???109. That's possible to find it using dummy algorithm. In the first case you may use binary search of two pointers.\n"
+    "editorial": "Good sequence may contain only zeroes or contain some positive number. In the second case such a sequence is not longer than sequence {0,?1,?1,?2,?3,?5,?8,?...,?x,?y} where y?>?109 and x???109. That's possible to find it using dummy algorithm. In the first case you may use binary search of two pointers.\n",
+    "hint": []
 }

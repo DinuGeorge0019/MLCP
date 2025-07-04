@@ -147,5 +147,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Months and Years.json",
     "editorial_link": "https://codeforces.com//blog/entry/56392",
-    "editorial": "Note, that , so we should consider the following cycle: not leap-year\r\nleap-year not leap-year not leap-year. This cycle repeats every years,\r\nexcept in some cases. We should generate an array describing the\r\nduration of the months in the described cycle. After that we should\r\ncheck that the given sequence can be found in the generated array. For\r\nexample, we can brute the beginning of the sequence in the array and\r\ncheck the correspondence of the elements of the given sequence to the\r\ncorresponding elements of the generated array.\r\n"
+    "editorial": "Note, that , so we should consider the following cycle: not leap-year\r\nleap-year not leap-year not leap-year. This cycle repeats every years,\r\nexcept in some cases. We should generate an array describing the\r\nduration of the months in the described cycle. After that we should\r\ncheck that the given sequence can be found in the generated array. For\r\nexample, we can brute the beginning of the sequence in the array and\r\ncheck the correspondence of the elements of the given sequence to the\r\ncorresponding elements of the generated array.\r\n",
+    "hint": []
 }

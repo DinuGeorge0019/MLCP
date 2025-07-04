@@ -89,5 +89,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Anton and Letters.json",
     "editorial_link": "https://codeforces.com//blog/entry/12739",
-    "editorial": "In this task you are to count the number of different letters in the\r\nset. In my opinion the easiest way to do this looks like this. You just\r\niterate over all small latin letters and check if the string contains it\r\n(with built-in functions).\r\n"
+    "editorial": "In this task you are to count the number of different letters in the\r\nset. In my opinion the easiest way to do this looks like this. You just\r\niterate over all small latin letters and check if the string contains it\r\n(with built-in functions).\r\n",
+    "hint": []
 }

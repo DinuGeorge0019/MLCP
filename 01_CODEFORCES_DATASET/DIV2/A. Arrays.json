@@ -86,5 +86,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Arrays.json",
     "editorial_link": "https://codeforces.com//blog/entry/19923",
-    "editorial": "In this problem one need to check whether it\u00e2\u0080\u0099s possible to choose\r\nelements from array and elements from array so that each of chosen\r\nelement in is less than each of chosen elements in . If it\u00e2\u0080\u0099s possible\r\nthen it\u00e2\u0080\u0099s possible to choose smallest elements in and largest elements\r\nin . That means that in particular, -th smallest element of is less than\r\n-th largest element in . So, if then the answer is \"YES\" and if not,\r\nthen the answer is \"NO\". Problem author: zeliboba. Problem developers:\r\nriadwaw, Kostroma. Solution code: 12873382.\r\n"
+    "editorial": "In this problem one need to check whether itâs possible to choose\r\nelements from array and elements from array so that each of chosen\r\nelement in is less than each of chosen elements in . If itâs possible\r\nthen itâs possible to choose smallest elements in and largest elements\r\nin . That means that in particular, -th smallest element of is less than\r\n-th largest element in . So, if then the answer is \"YES\" and if not,\r\nthen the answer is \"NO\". Problem author: zeliboba. Problem developers:\r\nriadwaw, Kostroma. Solution code: 12873382.\r\n",
+    "hint": []
 }

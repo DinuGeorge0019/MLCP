@@ -155,5 +155,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. Weird Subtraction Process.json",
     "editorial_link": "https://codeforces.com//blog/entry/58210",
-    "editorial": "The answer can be calculated very easy by Euclid algorithm (which is\r\ndescribed in the problem statement), but all subtractions will be\r\nreplaced by taking by modulo.\r\n"
+    "editorial": "The answer can be calculated very easy by Euclid algorithm (which is\r\ndescribed in the problem statement), but all subtractions will be\r\nreplaced by taking by modulo.\r\n",
+    "hint": []
 }

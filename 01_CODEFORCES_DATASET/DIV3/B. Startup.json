@@ -142,7 +142,7 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/135849",
-    "editorial": "TutorialLet\u00e2\u0080\u0099s create an array brand_cost of length and fill it so that\r\nbrand_cost[i] stores the cost of all bottles of brand . Then sort the\r\narray by non-growing and calculate the sum of its first min(n, k)\r\nelements, which will be the answer to the problem.Complexity:\r\n",
+    "editorial": "TutorialLetâs create an array brand_cost of length and fill it so that\r\nbrand_cost[i] stores the cost of all bottles of brand . Then sort the\r\narray by non-growing and calculate the sum of its first min(n, k)\r\nelements, which will be the answer to the problem.Complexity:\r\n",
     "name": "B. Startup",
     "statement": "Arseniy came up with another business plan to sell soda from a vending\r\nmachine! For this, he purchased a machine with n shelves, as well as k\r\nbottles, where the i-th bottle is characterized by the brand index b_i\r\nand the cost c_i. You can place any number of bottles on each shelf, but\r\nall bottles on the same shelf must be of the same brand.Arseniy knows\r\nthat all the bottles he puts on the shelves of the machine will be sold.\r\nTherefore, he asked you to calculate the amount he can earn.\r\n",
     "solutions": [
@@ -156,5 +156,6 @@
     ],
     "dificulty": "800",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Startup.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Startup.json",
+    "hint": []
 }

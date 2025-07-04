@@ -158,5 +158,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Middle of the Contest.json",
     "editorial_link": "https://codeforces.com//blog/entry/65807",
-    "editorial": "Firstly, let\u00e2\u0080\u0099s parse both strings to four integers (). Just read them\r\nand then use some standard functions to transform them into integers (or\r\nwe can do it manually).The second part is to obtain and . Then let . It\r\nis the answer.We have to print and , where is divided by rounding down\r\nand is modulo .The only thing we should do more carefully is to print\r\none leading zero before if it is less than and do the same for .\r\n"
+    "editorial": "Firstly, letâs parse both strings to four integers (). Just read them\r\nand then use some standard functions to transform them into integers (or\r\nwe can do it manually).The second part is to obtain and . Then let . It\r\nis the answer.We have to print and , where is divided by rounding down\r\nand is modulo .The only thing we should do more carefully is to print\r\none leading zero before if it is less than and do the same for .\r\n",
+    "hint": []
 }

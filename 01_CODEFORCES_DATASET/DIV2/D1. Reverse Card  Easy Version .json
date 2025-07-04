@@ -130,7 +130,7 @@
     "name": "D1. Reverse Card  Easy Version ",
     "statement": "You are given two positive integers n, m.Calculate the number of ordered\r\npairs (a, b) satisfying the following conditions: 1\r\nle a\r\nle n, 1\r\nle b\r\nle m; a+b is a multiple of b\r\ncdot\r\ngcd(a,b).\r\n",
     "solutions": [
-        "#include<bits/stdc++.h>using namespace std;\u00a0#define int int64_t#define pb push_back#define pii pair<int, int>#define st first#define nd second#define sz(x) (int)(x).size()#define all(x) (x).begin(), (x).end()\u00a0int32_t main() {\tios_base::sync_with_stdio(false);\tcin.tie(NULL);\t\tint t;\tcin >> t;\twhile(t--) {\t\tint n, m;\t\tcin >> n >> m;\t\tint cnt = 0;\t\tfor(int b=1;b<=m;b++) {\t\t\tfor(int a=b;a<=n;a+=b) {\t\t\t\tif((a+b)%(b*__gcd(a, b))==0) {\t\t\t\t\tcnt++;\t\t\t\t}\t\t\t}\t\t}\t\tcout << cnt << \"\\n\";\t}}"
+        "#include<bits/stdc++.h>using namespace std; #define int int64_t#define pb push_back#define pii pair<int, int>#define st first#define nd second#define sz(x) (int)(x).size()#define all(x) (x).begin(), (x).end() int32_t main() {\tios_base::sync_with_stdio(false);\tcin.tie(NULL);\t\tint t;\tcin >> t;\twhile(t--) {\t\tint n, m;\t\tcin >> n >> m;\t\tint cnt = 0;\t\tfor(int b=1;b<=m;b++) {\t\t\tfor(int a=b;a<=n;a+=b) {\t\t\t\tif((a+b)%(b*__gcd(a, b))==0) {\t\t\t\t\tcnt++;\t\t\t\t}\t\t\t}\t\t}\t\tcout << cnt << \"\\n\";\t}}"
     ],
     "input": "",
     "output": "",
@@ -141,5 +141,6 @@
     ],
     "dificulty": "1400",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D1. Reverse Card  Easy Version .json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D1. Reverse Card  Easy Version .json",
+    "hint": []
 }

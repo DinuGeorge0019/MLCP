@@ -177,5 +177,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\C. Playlist.json",
     "editorial_link": "https://codeforces.com//blog/entry/66147",
-    "editorial": "If we fix a song with minimum beauty in the answer, then we need to take\r\nthe remaining songs (or less) among those having beauty greater than or\r\nequal to the beauty of the fixed song and the longer they are, the\r\nbetter.So, we will iterate on the songs in the order of decreasing their\r\nbeauty, and for the current song we will maintain longest songs having\r\ngreater or similar beauty. This can be done using some standard\r\ncontainers: in or in .\r\n"
+    "editorial": "If we fix a song with minimum beauty in the answer, then we need to take\r\nthe remaining songs (or less) among those having beauty greater than or\r\nequal to the beauty of the fixed song and the longer they are, the\r\nbetter.So, we will iterate on the songs in the order of decreasing their\r\nbeauty, and for the current song we will maintain longest songs having\r\ngreater or similar beauty. This can be done using some standard\r\ncontainers: in or in .\r\n",
+    "hint": []
 }

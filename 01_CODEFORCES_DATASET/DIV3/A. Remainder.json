@@ -147,5 +147,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Remainder.json",
     "editorial_link": "https://codeforces.com//blog/entry/67041",
-    "editorial": "As we can see, last digits of the resulting number will be zeros except\r\nthe -th. So we need to change all ones to zeros (if needed) among last\r\ndigits, if the position of the digit is not , and change zero to one (if\r\nneeded) otherwise. It can be done with simple cycle.\r\n"
+    "editorial": "As we can see, last digits of the resulting number will be zeros except\r\nthe -th. So we need to change all ones to zeros (if needed) among last\r\ndigits, if the position of the digit is not , and change zero to one (if\r\nneeded) otherwise. It can be done with simple cycle.\r\n",
+    "hint": []
 }

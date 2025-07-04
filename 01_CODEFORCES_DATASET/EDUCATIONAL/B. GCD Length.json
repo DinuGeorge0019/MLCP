@@ -179,5 +179,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. GCD Length.json",
     "editorial_link": "https://codeforces.com//blog/entry/89634",
-    "editorial": "The easiest way to force some gcd to be of some fixed length is to use\r\nthe divisibility rules for , or : if the number produced by the last\r\ndigits is divisible by , then is also divisible by (same goes for and\r\n).One of the possible constructions is the following: let and . Since\r\nand are pairwise prime, gcd is .Overall complexity: per testcase.\r\n"
+    "editorial": "The easiest way to force some gcd to be of some fixed length is to use\r\nthe divisibility rules for , or : if the number produced by the last\r\ndigits is divisible by , then is also divisible by (same goes for and\r\n).One of the possible constructions is the following: let and . Since\r\nand are pairwise prime, gcd is .Overall complexity: per testcase.\r\n",
+    "hint": []
 }

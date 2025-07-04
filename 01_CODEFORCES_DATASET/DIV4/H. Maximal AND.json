@@ -193,5 +193,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\H. Maximal AND.json",
     "editorial_link": "https://codeforces.com//blog/entry/102101",
-    "editorial": "The optimal strategy is to greedily take the highest bit we have enough\r\noperations to set in every array element. To do this, we maintain a\r\ncount for each bit with the number of elements that have it set already.\r\nThe cost to set the -th bit will be . We go from the highest bit to the\r\nlowest: If we have enough operations left, we set the bit, subtract its\r\ncost from the operations and move to the next lower bit. If we don\u00e2\u0080\u0099t\r\nhave enough operations, we move on to the next lower bit and don\u00e2\u0080\u0099t\r\nmodify the operations. We stop once we processed bit .The time\r\ncomplexity is .\r\n"
+    "editorial": "The optimal strategy is to greedily take the highest bit we have enough\r\noperations to set in every array element. To do this, we maintain a\r\ncount for each bit with the number of elements that have it set already.\r\nThe cost to set the -th bit will be . We go from the highest bit to the\r\nlowest: If we have enough operations left, we set the bit, subtract its\r\ncost from the operations and move to the next lower bit. If we donât\r\nhave enough operations, we move on to the next lower bit and donât\r\nmodify the operations. We stop once we processed bit .The time\r\ncomplexity is .\r\n",
+    "hint": []
 }

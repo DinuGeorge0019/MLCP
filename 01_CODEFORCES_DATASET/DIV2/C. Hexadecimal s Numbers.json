@@ -86,7 +86,7 @@
         ]
     },
     "name": "C. Hexadecimal s Numbers",
-    "statement": "One beautiful July morning a terrible thing happened in Mainframe: a\r\nmean virus Megabyte somehow got access to the memory of his not less\r\nmean sister Hexadecimal. He loaded there a huge amount of different\r\nnatural numbers from 1 to to obtain total control over her energy.But\r\nhis plan failed. The reason for this was very simple: Hexadecimal didn\u2019t\r\nperceive any information, apart from numbers written in binary format.\r\nThis means that if a number in a decimal representation contained\r\ncharacters apart from 0 and 1, it was not stored in the memory. Now\r\nMegabyte wants to know, how many numbers were loaded successfully.\r\n",
+    "statement": "One beautiful July morning a terrible thing happened in Mainframe: a\r\nmean virus Megabyte somehow got access to the memory of his not less\r\nmean sister Hexadecimal. He loaded there a huge amount of different\r\nnatural numbers from 1 to to obtain total control over her energy.But\r\nhis plan failed. The reason for this was very simple: Hexadecimal didn’t\r\nperceive any information, apart from numbers written in binary format.\r\nThis means that if a number in a decimal representation contained\r\ncharacters apart from 0 and 1, it was not stored in the memory. Now\r\nMegabyte wants to know, how many numbers were loaded successfully.\r\n",
     "solutions": [
         "#include <iostream>\n#include <cmath>\n#include <algorithm>\n#include <cstdio>\n#include <string>\n\nusing namespace std;\n\nint bintodec(int x)\n{\n\tint ans = 0, p = 1;\n\twhile (x > 0)\n\t{\n\t\tans += (x%2) * p;\n\t\tx /= 2;\n\t\tp *= 10;\n\t}\n\treturn ans;\n}\n\nint main()\n{\n//\tfreopen(\"\", \"rt\", stdin);\n//\tfreopen(\"\", \"wt\", stdout);\n\tint n;\n\tcin >> n;\n\tint x = 1, ans = 0;\n\twhile (bintodec(x) <= n)\n\t{\n\t\tans++;\n\t\tx++;\n\t}\n\tcout << ans;\n\treturn 0;\n}\n"
     ],
@@ -101,5 +101,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Hexadecimal s Numbers.json",
     "editorial_link": "https://codeforces.com//blog/entry/283",
-    "editorial": "Brute force solution, when you try each number from 1 to n, will not fit into the time limit.\nNote, however, that all good numbers have at most 10 digits, and each of the digits is 0 or 1. That is, there are at most 210 binary strings to check. Each of these strings is a number from 1 to 210?-?1 in binary representation. So the algorithm is the following: for each number from 1 to 210?-?1 write its binary  representation, read it as if it was decimal representation and compare the result to n."
+    "editorial": "Brute force solution, when you try each number from 1 to n, will not fit into the time limit.\nNote, however, that all good numbers have at most 10 digits, and each of the digits is 0 or 1. That is, there are at most 210 binary strings to check. Each of these strings is a number from 1 to 210?-?1 in binary representation. So the algorithm is the following: for each number from 1 to 210?-?1 write its binary  representation, read it as if it was decimal representation and compare the result to n.",
+    "hint": []
 }

@@ -155,5 +155,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Short Substrings.json",
     "editorial_link": "https://codeforces.com//blog/entry/78864",
-    "editorial": "Note that the first two characters of match the first two characters of\r\n. The third character of the string again matches the second character\r\nof (since it is the first character in the second substring, which\r\ncontains the second and the third character of ). The fourth character\r\nmatches with the third character of .It is easy to notice that such a\r\npattern continues further. That is, the string consists of the first\r\ncharacter and all characters at even positions in .\r\n"
+    "editorial": "Note that the first two characters of match the first two characters of\r\n. The third character of the string again matches the second character\r\nof (since it is the first character in the second substring, which\r\ncontains the second and the third character of ). The fourth character\r\nmatches with the third character of .It is easy to notice that such a\r\npattern continues further. That is, the string consists of the first\r\ncharacter and all characters at even positions in .\r\n",
+    "hint": []
 }

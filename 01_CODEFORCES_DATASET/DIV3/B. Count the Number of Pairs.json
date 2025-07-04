@@ -199,5 +199,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Count the Number of Pairs.json",
     "editorial_link": "https://codeforces.com//blog/entry/113477",
-    "editorial": "Count two arrays and , such that contains the number of occurrences of\r\nth letter of the alphabet in the string in upper case, while in lower\r\ncase.Let\u00e2\u0080\u0099s add all existing pairs to the answer, so let\u00e2\u0080\u0099s add to it for\r\neach letter. Subtract this minimum from and to get the number of\r\nunpaired identical letters.Next, we will act greedily: if there is some\r\nset of at least two identical letters in the same case, we can apply the\r\noperation to half of them and get new pairs. Therefore, for each letter\r\nwe will add to the answer and decrease by that amount.\r\n"
+    "editorial": "Count two arrays and , such that contains the number of occurrences of\r\nth letter of the alphabet in the string in upper case, while in lower\r\ncase.Letâs add all existing pairs to the answer, so letâs add to it for\r\neach letter. Subtract this minimum from and to get the number of\r\nunpaired identical letters.Next, we will act greedily: if there is some\r\nset of at least two identical letters in the same case, we can apply the\r\noperation to half of them and get new pairs. Therefore, for each letter\r\nwe will add to the answer and decrease by that amount.\r\n",
+    "hint": []
 }

@@ -171,5 +171,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Rectangle Painting 1.json",
     "editorial_link": "https://codeforces.com/blog/entry/68812",
-    "editorial": "Let\u00e2\u0080\u0099s solve the problem for rectangle (). Of course, we can cover all\r\nrectangle with itself for cost . To get something smaller than we have\r\nto leave at least one column uncovered otherwise we pay at least sum of\r\nover all rectangles which is at least . This gives us an idea to use DP\r\non rectangles to solve the problem: is minimal cost to cover the\r\nrectangle . It is initialized by , and we have to try not to cover every\r\ncolumn/row. Of course, we have to check if it is all white from the\r\nbeginning; to do that we will precalculate 2D prefix sums. Total\r\ncomplexity is .\r\n"
+    "editorial": "Letâs solve the problem for rectangle (). Of course, we can cover all\r\nrectangle with itself for cost . To get something smaller than we have\r\nto leave at least one column uncovered otherwise we pay at least sum of\r\nover all rectangles which is at least . This gives us an idea to use DP\r\non rectangles to solve the problem: is minimal cost to cover the\r\nrectangle . It is initialized by , and we have to try not to cover every\r\ncolumn/row. Of course, we have to check if it is all white from the\r\nbeginning; to do that we will precalculate 2D prefix sums. Total\r\ncomplexity is .\r\n",
+    "hint": []
 }

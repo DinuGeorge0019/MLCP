@@ -95,7 +95,7 @@
         ]
     },
     "name": "A. Little Elephant and Rozdil",
-    "statement": "The Little Elephant loves Ukraine very much. Most of all he loves town\r\nRozdol (ukr. \"Rozdil\").However, Rozdil is dangerous to settle, so the\r\nLittle Elephant wants to go to some other town. The Little Elephant\r\ndoesn\u2019t like to spend much time on travelling, so for his journey he\r\nwill choose a town that needs minimum time to travel to. If there are\r\nmultiple such cities, then the Little Elephant won\u2019t go anywhere.For\r\neach town except for Rozdil you know the time needed to travel to this\r\ntown. Find the town the Little Elephant will go to or print \"\", if he\r\nstays in Rozdil.\r\n",
+    "statement": "The Little Elephant loves Ukraine very much. Most of all he loves town\r\nRozdol (ukr. \"Rozdil\").However, Rozdil is dangerous to settle, so the\r\nLittle Elephant wants to go to some other town. The Little Elephant\r\ndoesn’t like to spend much time on travelling, so for his journey he\r\nwill choose a town that needs minimum time to travel to. If there are\r\nmultiple such cities, then the Little Elephant won’t go anywhere.For\r\neach town except for Rozdil you know the time needed to travel to this\r\ntown. Find the town the Little Elephant will go to or print \"\", if he\r\nstays in Rozdil.\r\n",
     "solutions": [
         "#include<cstdio>\n#include<cstring>\n#include<algorithm>\nusing namespace std;\nconst int maxn = 100009;\nint a[maxn];\nint main()\n{\n    int n, i, mi, cnt, id;\n    while(scanf(\"%d\", &n) != EOF)\n    {\n        for(i=0; i<n; ++i) scanf(\"%d\", a+i);\n        mi=*min_element(a,a+n);\n        cnt=0;\n        for(i=0; i<n; ++i)\n        {\n            if(a[i]==mi)\n            {\n                id=i;\n                ++cnt;\n            }\n        }\n        if(cnt>1) puts(\"Still Rozdil\");\n        else printf(\"%d\\n\", id+1);\n    }\n    return 0;\n}\n"
     ],
@@ -109,5 +109,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Little Elephant and Rozdil.json",
     "editorial_link": "https://codeforces.com//blog/entry/4849",
-    "editorial": "This problem was the simplest in the problemset. All you need to do is\r\njust to sort all distances (keeping track on all indices). If the first\r\ntwo distances are equal, just output \"Still Rozdil\", otherwise output\r\nthe index of the first element of the array. The complexity is .\r\n"
+    "editorial": "This problem was the simplest in the problemset. All you need to do is\r\njust to sort all distances (keeping track on all indices). If the first\r\ntwo distances are equal, just output \"Still Rozdil\", otherwise output\r\nthe index of the first element of the array. The complexity is .\r\n",
+    "hint": []
 }

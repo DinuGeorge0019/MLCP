@@ -137,5 +137,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Eshag Loves Big Arrays.json",
     "editorial_link": "https://codeforces.com//blog/entry/91058",
-    "editorial": "We state that every element except for the elements with the smallest\r\nvalue can be deleted.Proof: denote as the minimum element (s) of the\r\narray , in each operation pick and some other element, say , which is\r\nbigger than , since , then will be deleted.Doing this for every will\r\nresult in the deletion of every element except for the elements with the\r\nsmallest value. So the answer to the problem is , where is the number of\r\ntimes appeared in .complexity:\r\n"
+    "editorial": "We state that every element except for the elements with the smallest\r\nvalue can be deleted.Proof: denote as the minimum element (s) of the\r\narray , in each operation pick and some other element, say , which is\r\nbigger than , since , then will be deleted.Doing this for every will\r\nresult in the deletion of every element except for the elements with the\r\nsmallest value. So the answer to the problem is , where is the number of\r\ntimes appeared in .complexity:\r\n",
+    "hint": []
 }

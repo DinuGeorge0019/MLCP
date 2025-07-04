@@ -157,5 +157,13 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. The Three Little Pigs.json",
     "editorial_link": "https://codeforces.com//blog/entry/93586",
-    "editorial": "For a given x\n, we want to compute ?Ni=1(3ix)\n, which can be solved with a combinatorial dynamic programming.\n\nDefine the array dp[x][m] (dimensions: N+1\u00d73\n), which computes the sum ?N?1i=0(3i+mx)\n. Under this definition, ans[x]=dp[x][0]+(3Nx)\n, where ans is what we want to find.\n\nUnder the definition of the dp, we can make the following mathematical observations.\n\ndp[x][0]+dp[x][1]+dp[x][2]=?3N?1i=0(ix)\n, since term i\n belongs to the array with m=imod3\n. This summation can be condensed with the Hockey Stick Identity into (3Nx+1)\n.\n\nBy repeated uses of Pascal's Identity, we get equations (2) and (3), giving us a system of 3 equations with 3 new unknowns, which can easily be solved.\n\n?2m=0dp[x][m]=(3Nx+1)\n.\ndp[x][1]=dp[x][0]+dp[x?1][0]\ndp[x][2]=dp[x][1]+dp[x?1][1]\nThe base case is that dp[0][0]=dp[0][1]=dp[0][2]=N\n. Each query can now be answered trivially.\n\nThe time complexity is O(N+Q)\n with combinatorial precomputation."
+    "editorial": "For a given x\n, we want to compute ?Ni=1(3ix)\n, which can be solved with a combinatorial dynamic programming.\n\nDefine the array dp[x][m] (dimensions: N+1×3\n), which computes the sum ?N?1i=0(3i+mx)\n. Under this definition, ans[x]=dp[x][0]+(3Nx)\n, where ans is what we want to find.\n\nUnder the definition of the dp, we can make the following mathematical observations.\n\ndp[x][0]+dp[x][1]+dp[x][2]=?3N?1i=0(ix)\n, since term i\n belongs to the array with m=imod3\n. This summation can be condensed with the Hockey Stick Identity into (3Nx+1)\n.\n\nBy repeated uses of Pascal's Identity, we get equations (2) and (3), giving us a system of 3 equations with 3 new unknowns, which can easily be solved.\n\n?2m=0dp[x][m]=(3Nx+1)\n.\ndp[x][1]=dp[x][0]+dp[x?1][0]\ndp[x][2]=dp[x][1]+dp[x?1][1]\nThe base case is that dp[0][0]=dp[0][1]=dp[0][2]=N\n. Each query can now be answered trivially.\n\nThe time complexity is O(N+Q)\n with combinatorial precomputation.",
+    "hint": [
+        "Hint 1 Convert the word problem into a combinatorics equation.",
+        "Hint 2 Write the equation for some . Write the equation for . How can we easily transition from the first to the second equation?",
+        "Hint 3 For a given , we want to calculate every third term in the sequence for . Think about how computing the entire summation will help.",
+        "Hint 2 How will the Binomial Theorem be helpful?",
+        "Hint 3 Try and construct a polynomial such as the coefficient in that polynomial represents the number of attack plans if the wolf wants to eat pigs.",
+        "Hint 4 Notice that is a geometric series, so FFT is unnecessary."
+    ]
 }

@@ -93,5 +93,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Triangle.json",
     "editorial_link": "https://codeforces.com//blog/entry/11333",
-    "editorial": "In this problem you have to locate the right triangle with cathetuses ,\r\non a plane with its vertices in integer points. If the required layout\r\nexists, then cathetus always can be represented as a vector with integer\r\ncoordinates , and . Iterate over all possible (), check, that is\r\ninteger. Vector, ortogonal to vector , is . Take vector , where . The\r\ntriangle can be located on the plane if and only if\r\n"
+    "editorial": "In this problem you have to locate the right triangle with cathetuses ,\r\non a plane with its vertices in integer points. If the required layout\r\nexists, then cathetus always can be represented as a vector with integer\r\ncoordinates , and . Iterate over all possible (), check, that is\r\ninteger. Vector, ortogonal to vector , is . Take vector , where . The\r\ntriangle can be located on the plane if and only if\r\n",
+    "hint": []
 }

@@ -114,7 +114,7 @@
         ]
     },
     "name": "A. Postcards and photos",
-    "statement": "Polycarpus has postcards and photos hung in a row on the wall. He\r\ndecided to put them away to the closet and hang on the wall a famous\r\npainter\u2019s picture. Polycarpus does it like that: he goes from the left\r\nto the right and removes the objects consecutively. As Polycarpus\r\ndoesn\u2019t want any mix-ups to happen, he will not carry in his hands\r\nobjects of two different types. In other words, Polycarpus can\u2019t carry\r\nboth postcards and photos simultaneously. Sometimes he goes to the\r\ncloset and puts the objects there, thus leaving his hands free.\r\nPolycarpus must put the postcards and photos to the closet. He cannot\r\nskip objects. What minimum number of times he should visit the closet if\r\nhe cannot carry more than 5 items?\r\n",
+    "statement": "Polycarpus has postcards and photos hung in a row on the wall. He\r\ndecided to put them away to the closet and hang on the wall a famous\r\npainter’s picture. Polycarpus does it like that: he goes from the left\r\nto the right and removes the objects consecutively. As Polycarpus\r\ndoesn’t want any mix-ups to happen, he will not carry in his hands\r\nobjects of two different types. In other words, Polycarpus can’t carry\r\nboth postcards and photos simultaneously. Sometimes he goes to the\r\ncloset and puts the objects there, thus leaving his hands free.\r\nPolycarpus must put the postcards and photos to the closet. He cannot\r\nskip objects. What minimum number of times he should visit the closet if\r\nhe cannot carry more than 5 items?\r\n",
     "solutions": [
         "#include <cstdio>\n#include <vector>\n#include <string>\n#include <cstring>\n#include <queue>\n#include <algorithm>\nusing namespace std;\n\ntypedef long long LL;\ntypedef pair<int,int> PII;\n\nint main(){\n    char s[200];\n    int ans=1,cnt=1;\n    gets(s);\n    for(int i=1;s[i];i++){\n        if(s[i]==s[i-1] && cnt<5) cnt++;\n        else{\n            cnt=1;\n            ans++;\n        }\n    }\n    printf(\"%d\\n\",ans);\n}\n"
     ],
@@ -127,5 +127,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Postcards and photos.json",
     "editorial_link": "https://codeforces.com//blog/entry/3318",
-    "editorial": "We will move from the left of string to the right. When we passed the\r\nwhole string, or in the hands of us have 5 pieces, or current object is\r\ndifferent from what we hold in our hands, we remove all the items in the\r\npantry. The answer to the problem is the number of visits to the pantry.\r\nThe complexity is O(n).\r\n"
+    "editorial": "We will move from the left of string to the right. When we passed the\r\nwhole string, or in the hands of us have 5 pieces, or current object is\r\ndifferent from what we hold in our hands, we remove all the items in the\r\npantry. The answer to the problem is the number of visits to the pantry.\r\nThe complexity is O(n).\r\n",
+    "hint": []
 }

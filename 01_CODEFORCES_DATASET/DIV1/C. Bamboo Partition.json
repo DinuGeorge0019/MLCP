@@ -124,5 +124,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Bamboo Partition.json",
     "editorial_link": "https://codeforces.com//blog/entry/53302",
-    "editorial": "First fact: The problem is asking to maximize such that: .. Let , then\r\n.Second fact: Number of possible values for is .For , let these values\r\nare and .So there is at most segments for such that will not change.Now\r\ngenerate all possible values and sort them, and for each segment check\r\nif there is a in that segment satisfying the condition and update the\r\nanswer.My solution.\r\n"
+    "editorial": "First fact: The problem is asking to maximize such that: .. Let , then\r\n.Second fact: Number of possible values for is .For , let these values\r\nare and .So there is at most segments for such that will not change.Now\r\ngenerate all possible values and sort them, and for each segment check\r\nif there is a in that segment satisfying the condition and update the\r\nanswer.My solution.\r\n",
+    "hint": []
 }

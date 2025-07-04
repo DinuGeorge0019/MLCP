@@ -123,7 +123,7 @@
         ]
     },
     "name": "B. Chocolates",
-    "statement": "You went to the store, selling n types of chocolates. There are a_i\r\nchocolates of type i in stock.You have unlimited amount of cash (so you\r\nare not restricted by any prices) and want to buy as many chocolates as\r\npossible. However if you buy x_i chocolates of type i (clearly, 0\r\nle x_i\r\nle a_i), then for all 1\r\nle j < i at least one of the following must hold: x_j = 0 (you bought\r\nzero chocolates of type j) x_j < x_i (you bought less chocolates of type\r\nj than of type i) For example, the array x = [0, 0, 1, 2, 10] satisfies\r\nthe requirement above (assuming that all a_i\r\nge x_i), while arrays x = [0, 1, 0], x = [5, 5] and x = [3, 2]\r\ndon\u2019t.Calculate the maximum number of chocolates you can buy.\r\n",
+    "statement": "You went to the store, selling n types of chocolates. There are a_i\r\nchocolates of type i in stock.You have unlimited amount of cash (so you\r\nare not restricted by any prices) and want to buy as many chocolates as\r\npossible. However if you buy x_i chocolates of type i (clearly, 0\r\nle x_i\r\nle a_i), then for all 1\r\nle j < i at least one of the following must hold: x_j = 0 (you bought\r\nzero chocolates of type j) x_j < x_i (you bought less chocolates of type\r\nj than of type i) For example, the array x = [0, 0, 1, 2, 10] satisfies\r\nthe requirement above (assuming that all a_i\r\nge x_i), while arrays x = [0, 1, 0], x = [5, 5] and x = [3, 2]\r\ndon’t.Calculate the maximum number of chocolates you can buy.\r\n",
     "solutions": [
         "#include <iostream>\n#include <algorithm>\n#include <vector>\n\nusing namespace std;\ntypedef long long llong;\ntypedef pair<int, int> pii;\n\nint n;\nint A[200001];\nint main() {\n    ios_base::sync_with_stdio(0); cin.tie(0);\n    cin >> n;\n    for (int i = 1; i <= n; ++i) cin >> A[i];\n    llong sum = 0;\n    int mx = 1e9 + 1;\n    for (int i = n; i > 0; --i) {\n        --mx;\n        mx = min(mx, A[i]);\n        if (mx <= 0) break;\n        sum += mx;\n    }\n    printf(\"%lld\\n\", sum);\n    return 0;\n}"
     ],
@@ -137,5 +137,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Chocolates.json",
     "editorial_link": "https://codeforces.com//blog/entry/66101",
-    "editorial": "It is optimal to proceed greedily from the back of the array. If we have\r\ntaken candies of the type, then we can only take candies for type . If\r\nthis value is less than zero, we take from here.Overall Complexity:\r\n"
+    "editorial": "It is optimal to proceed greedily from the back of the array. If we have\r\ntaken candies of the type, then we can only take candies for type . If\r\nthis value is less than zero, we take from here.Overall Complexity:\r\n",
+    "hint": []
 }

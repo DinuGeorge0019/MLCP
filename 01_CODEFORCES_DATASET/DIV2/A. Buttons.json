@@ -158,5 +158,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Buttons.json",
     "editorial_link": "https://codeforces.com//blog/entry/119398",
-    "editorial": "On each turn, the current player gets rid of one of the buttons\r\navailable to them. At the same time, if you press the \"common\" button,\r\nthe enemy will not be able to press it as well. Since each player wants\r\nto leave their opponent without buttons to press before they run out of\r\nthose themselves, they will click on the \"common\" buttons as long as\r\nthere is at least one available.The number of the player who clicks on\r\n(not the general) button first depends on . It can be noticed that this\r\nplayer will win if and only if they have strictly more buttons than\r\ntheir opponent.\r\n"
+    "editorial": "On each turn, the current player gets rid of one of the buttons\r\navailable to them. At the same time, if you press the \"common\" button,\r\nthe enemy will not be able to press it as well. Since each player wants\r\nto leave their opponent without buttons to press before they run out of\r\nthose themselves, they will click on the \"common\" buttons as long as\r\nthere is at least one available.The number of the player who clicks on\r\n(not the general) button first depends on . It can be noticed that this\r\nplayer will win if and only if they have strictly more buttons than\r\ntheir opponent.\r\n",
+    "hint": []
 }

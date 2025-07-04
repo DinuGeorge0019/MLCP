@@ -129,5 +129,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Ant on the Tree.json",
     "editorial_link": "https://codeforces.com//blog/entry/686",
-    "editorial": "First, Floyd pretreat the path from I to J, and save the path.\nThen get the answer.\nThe order is a1,a2...ak, K is the number of the leaves, we can assume a0 = ak+1 = 1, the root.\nthen, answer push_back the path[ai][ai+1].\n\nif the ans.size() > 2*N-1 , cout -1;\nelse cout the answer."
+    "editorial": "First, Floyd pretreat the path from I to J, and save the path.\nThen get the answer.\nThe order is a1,a2...ak, K is the number of the leaves, we can assume a0 = ak+1 = 1, the root.\nthen, answer push_back the path[ai][ai+1].\n\nif the ans.size() > 2*N-1 , cout -1;\nelse cout the answer.",
+    "hint": []
 }

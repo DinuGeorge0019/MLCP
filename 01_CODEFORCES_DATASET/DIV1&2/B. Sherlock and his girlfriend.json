@@ -142,7 +142,7 @@
         ]
     },
     "name": "B. Sherlock and his girlfriend",
-    "statement": "Sherlock has a new girlfriend (so unlike him!). Valentine\u2019s day is\r\ncoming and he wants to gift her some jewelry.He bought pieces of\r\njewelry. The -th piece has price equal to , that is, the prices of the\r\njewelry are .Watson gave Sherlock a challenge to color these jewelry\r\npieces such that two pieces don\u2019t have the same color if the price of\r\none piece is a prime divisor of the price of the other piece. Also,\r\nWatson asked him to minimize the number of different colors used.Help\r\nSherlock complete this trivial task.\r\n",
+    "statement": "Sherlock has a new girlfriend (so unlike him!). Valentine’s day is\r\ncoming and he wants to gift her some jewelry.He bought pieces of\r\njewelry. The -th piece has price equal to , that is, the prices of the\r\njewelry are .Watson gave Sherlock a challenge to color these jewelry\r\npieces such that two pieces don’t have the same color if the price of\r\none piece is a prime divisor of the price of the other piece. Also,\r\nWatson asked him to minimize the number of different colors used.Help\r\nSherlock complete this trivial task.\r\n",
     "solutions": [
         "#include<cstdio>\n#include<algorithm>\nusing namespace std;\nint w[101000], n;\nint main(){\n    int i, j;\n    scanf(\"%d\",&n);\n    for(i=2;i<=n+1;i++){\n        for(j=i+i;j<=n+1;j+=i){\n            w[j] = 1;\n        }\n    }\n    if(n<=2){\n        printf(\"1\\n\");\n        for(i=1;i<=n;i++)printf(\"%d \",1);\n        return 0;\n    }\n    printf(\"2\\n\");\n    for(i=1;i<=n;i++){\n        if(!w[i+1])printf(\"1 \");\n        else printf(\"2 \");\n    }\n}"
     ],
@@ -156,5 +156,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\B. Sherlock and his girlfriend.json",
     "editorial_link": "https://codeforces.com//blog/entry/50622",
-    "editorial": "Hint: Observe that if is prime, then only would the pieces having their\r\nprices as the multiples of would have to be of a different\r\ncolor.Editorial: We are required to color the jewelry pieces such that\r\nfor every jewelry piece having a price , all the pieces whose prices are\r\nprime divisors of should have colors different from that of the th\r\npiece. This can be achieved by simply coloring all the pieces with their\r\nprices as primes in one color, and all the other pieces in a second\r\ncolor. We calculate the Sieve of Eratosthenes upto the range of and\r\nthus, obtain the list of primes as well as non-primes.\r\n"
+    "editorial": "Hint: Observe that if is prime, then only would the pieces having their\r\nprices as the multiples of would have to be of a different\r\ncolor.Editorial: We are required to color the jewelry pieces such that\r\nfor every jewelry piece having a price , all the pieces whose prices are\r\nprime divisors of should have colors different from that of the th\r\npiece. This can be achieved by simply coloring all the pieces with their\r\nprices as primes in one color, and all the other pieces in a second\r\ncolor. We calculate the Sieve of Eratosthenes upto the range of and\r\nthus, obtain the list of primes as well as non-primes.\r\n",
+    "hint": []
 }

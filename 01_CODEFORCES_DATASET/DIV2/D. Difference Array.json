@@ -114,5 +114,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Difference Array.json",
     "editorial_link": "https://codeforces.com//blog/entry/104930",
-    "editorial": "Let's prove that the brute-force solution (considering zeros differently) can pass.\n\nDefine S=?i=1nai\n and it changes when an operation is performed.\n\nAfter sorting the array a\n and ignoring 0\n s, the fact\n\nn?1+ann?1?S?S?an(ai?1)\n\nis always true.\n\nAnd after performing one operation, S=an?a1?an\n.\n\nSo in each operation, you cost O(nlogn)\n time to sort the new array and decrease S\n by at least n?1\n.\n\nAfter the first operation, S\n is O(an)\n. The complexity is O(AlogA)\n, where A=max{n,an}\n."
+    "editorial": "Let's prove that the brute-force solution (considering zeros differently) can pass.\n\nDefine S=?i=1nai\n and it changes when an operation is performed.\n\nAfter sorting the array a\n and ignoring 0\n s, the fact\n\nn?1+ann?1?S?S?an(ai?1)\n\nis always true.\n\nAnd after performing one operation, S=an?a1?an\n.\n\nSo in each operation, you cost O(nlogn)\n time to sort the new array and decrease S\n by at least n?1\n.\n\nAfter the first operation, S\n is O(an)\n. The complexity is O(AlogA)\n, where A=max{n,an}\n.",
+    "hint": []
 }

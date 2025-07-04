@@ -132,7 +132,7 @@
     "name": "E. Prefix GCD",
     "statement": "Since Mansur is tired of making legends, there will be no legends for\r\nthis task.You are given an array of positive integer numbers a_1, a_2,\r\nldots, a_n. The elements of the array can be rearranged in any order.\r\nYou need to find the smallest possible value of the expression\r\ngcd(a_1) +\r\ngcd(a_1, a_2) +\r\nldots +\r\ngcd(a_1, a_2,\r\nldots, a_n), where\r\ngcd(a_1, a_2,\r\nldots, a_n) denotes the greatest common divisor (GCD) of a_1, a_2,\r\nldots, a_n.\r\n",
     "solutions": [
-        "#include <bits/stdc++.h>using namespace std;\u00a0typedef long long ll;using vi = vector<int>;using vvi = vector<vector<int>>;using vll = vector<ll>;using vvll = vector<vector<ll>>;\u00a0#define all(x) x.begin(), x.end()#define ckmin(a,b) a = min(a,b)#define ckmax(a,b) a = max(a,b)\u00a0void solve() {    int N;    cin >> N;    vll A(N);    for (int i=0;i<N;i++) cin >> A[i];\u00a0    ll g = A[0];    for (int i=1;i<N;i++) g = gcd(g, A[i]);\u00a0    for (int i=0;i<N;i++) A[i] /= g;    sort(all(A));\u00a0    ll ans = A[0];    vi used(N, 0);    used[0] = 1;    ll cur = A[0];    ll left = N-1;    while (cur > 1) {        int bestind = -1;        ll bestval = cur;        for (int i=0;i<N;i++) {            if (used[i]) continue;            if (gcd(cur, A[i]) < bestval) {                bestval = gcd(cur, A[i]);                bestind = i;            }        }\u00a0        ans += bestval;        cur = bestval;        used[bestind] = 1;        left--;    }    ans += left;    ans *= g;    cout << ans << \"\\n\";}\u00a0int main() {    std::ios::sync_with_stdio(false);    std::cin.tie(NULL);\u00a0    int T;    cin >> T;    for (int t=0;t<T;t++) solve();\u00a0    return 0;}"
+        "#include <bits/stdc++.h>using namespace std; typedef long long ll;using vi = vector<int>;using vvi = vector<vector<int>>;using vll = vector<ll>;using vvll = vector<vector<ll>>; #define all(x) x.begin(), x.end()#define ckmin(a,b) a = min(a,b)#define ckmax(a,b) a = max(a,b) void solve() {    int N;    cin >> N;    vll A(N);    for (int i=0;i<N;i++) cin >> A[i];     ll g = A[0];    for (int i=1;i<N;i++) g = gcd(g, A[i]);     for (int i=0;i<N;i++) A[i] /= g;    sort(all(A));     ll ans = A[0];    vi used(N, 0);    used[0] = 1;    ll cur = A[0];    ll left = N-1;    while (cur > 1) {        int bestind = -1;        ll bestval = cur;        for (int i=0;i<N;i++) {            if (used[i]) continue;            if (gcd(cur, A[i]) < bestval) {                bestval = gcd(cur, A[i]);                bestind = i;            }        }         ans += bestval;        cur = bestval;        used[bestind] = 1;        left--;    }    ans += left;    ans *= g;    cout << ans << \"\\n\";} int main() {    std::ios::sync_with_stdio(false);    std::cin.tie(NULL);     int T;    cin >> T;    for (int t=0;t<T;t++) solve();     return 0;}"
     ],
     "input": "",
     "output": "",
@@ -145,5 +145,6 @@
     ],
     "dificulty": "2200",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Prefix GCD.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Prefix GCD.json",
+    "hint": []
 }

@@ -153,5 +153,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. Luba And The Ticket.json",
     "editorial_link": "https://codeforces.com//blog/entry/53986",
-    "editorial": "Let\u00e2\u0080\u0099s iterate over all 6-digit numbers. Now we will calculate number of\r\npositions in which digit of current ticket differs from digit of input\r\nticket and call it . Then answer will be minimal value over all lucky\r\ntickets.\r\n"
+    "editorial": "Letâs iterate over all 6-digit numbers. Now we will calculate number of\r\npositions in which digit of current ticket differs from digit of input\r\nticket and call it . Then answer will be minimal value over all lucky\r\ntickets.\r\n",
+    "hint": []
 }

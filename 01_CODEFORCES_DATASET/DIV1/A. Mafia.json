@@ -99,5 +99,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Mafia.json",
     "editorial_link": "https://codeforces.com//blog/entry/9031",
-    "editorial": "In the problem you need to find out how many games you need to play in\r\norder to make all people happy. It means that each of them played as\r\nmany games as he wanted. Let the answer be games. Notice that . Then -th\r\nplayer can be game supervisor in games. If we sum up we get it\u00e2\u0080\u0099s the\r\nnumber of games in which players are ready to be supervisor. This number\r\nmust be greater or equal to our answer. Don\u00e2\u0080\u0099t forget about that\r\ncondition: .\r\n"
+    "editorial": "In the problem you need to find out how many games you need to play in\r\norder to make all people happy. It means that each of them played as\r\nmany games as he wanted. Let the answer be games. Notice that . Then -th\r\nplayer can be game supervisor in games. If we sum up we get itâs the\r\nnumber of games in which players are ready to be supervisor. This number\r\nmust be greater or equal to our answer. Donât forget about that\r\ncondition: .\r\n",
+    "hint": []
 }

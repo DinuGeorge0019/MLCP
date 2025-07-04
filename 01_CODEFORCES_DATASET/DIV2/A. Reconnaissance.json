@@ -73,7 +73,7 @@
         ]
     },
     "name": "A. Reconnaissance",
-    "statement": "According to the regulations of Berland\u2019s army, a reconnaissance unit\r\nshould consist of exactly two soldiers. Since these two soldiers\r\nshouldn\u2019t differ much, their heights can differ by at most centimeters.\r\nCaptain Bob has soldiers in his detachment. Their heights are\r\ncentimeters. Some soldiers are of the same height. Bob wants to know,\r\nhow many ways exist to form a reconnaissance unit of two soldiers from\r\nhis detachment.Ways and should be regarded as different.\r\n",
+    "statement": "According to the regulations of Berland’s army, a reconnaissance unit\r\nshould consist of exactly two soldiers. Since these two soldiers\r\nshouldn’t differ much, their heights can differ by at most centimeters.\r\nCaptain Bob has soldiers in his detachment. Their heights are\r\ncentimeters. Some soldiers are of the same height. Bob wants to know,\r\nhow many ways exist to form a reconnaissance unit of two soldiers from\r\nhis detachment.Ways and should be regarded as different.\r\n",
     "solutions": [
         "#include <cstdio>\n#include <numeric>\n#include <algorithm>\nusing namespace std;\n\nint n, d, maj[1000], sum = 0;\n\nint acc(int sum, int num) {\n\treturn sum + (upper_bound(maj, maj + n, num + d) - lower_bound(maj, maj + n, num - d)) - 1;\n}\n\nvoid main() {\n\tscanf(\"%d%d\", &n, &d);\n\tfor(int i = 0; i < n; scanf(\"%d\", maj + i++)) { }\n\tsort(maj, maj + n);\n\tprintf(\"%d\\n\", accumulate(maj, maj + n, 0, acc));\n}"
     ],
@@ -86,5 +86,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Reconnaissance.json",
     "editorial_link": "https://codeforces.com//blog/entry/720",
-    "editorial": "Iterate over all possible pairs of soldiers and count those having difference of their heights less than or equal to d."
+    "editorial": "Iterate over all possible pairs of soldiers and count those having difference of their heights less than or equal to d.",
+    "hint": []
 }

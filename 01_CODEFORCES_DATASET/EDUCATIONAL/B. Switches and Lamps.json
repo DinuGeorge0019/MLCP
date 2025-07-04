@@ -158,5 +158,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. Switches and Lamps.json",
     "editorial_link": "https://codeforces.com//blog/entry/59623",
-    "editorial": "Let\u00e2\u0080\u0099s maintain an array of size , where will be equal to the number of\r\nswitches that are connected to the -th lamp. Then answer will be \"\" if\r\nand only if there exists some switch such that for each lamp that is\r\nconnected to this switch . Otherwise the answer will be \"\".\r\n"
+    "editorial": "Letâs maintain an array of size , where will be equal to the number of\r\nswitches that are connected to the -th lamp. Then answer will be \"\" if\r\nand only if there exists some switch such that for each lamp that is\r\nconnected to this switch . Otherwise the answer will be \"\".\r\n",
+    "hint": []
 }

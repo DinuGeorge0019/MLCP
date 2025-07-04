@@ -222,5 +222,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\G. White-Black Balanced Subtrees.json",
     "editorial_link": "https://codeforces.com//blog/entry/102710",
-    "editorial": "Let\u00e2\u0080\u0099s run a dynamic programming from the leaves to the root. For each\r\nvertex store the values of the number of balanced subtrees, as well as\r\nthe number of white and black vertices in it. Then from a vertex we can\r\ncount the total number of white vertices in its subtree as well as the\r\nblack vertices in its subtree, and update our total if they are equal.\r\nRemember to include the color of the vertex itself in these counts. The\r\nanswer is the answer at the root.Therefore the problem is solved in\r\ntime.\r\n"
+    "editorial": "Letâs run a dynamic programming from the leaves to the root. For each\r\nvertex store the values of the number of balanced subtrees, as well as\r\nthe number of white and black vertices in it. Then from a vertex we can\r\ncount the total number of white vertices in its subtree as well as the\r\nblack vertices in its subtree, and update our total if they are equal.\r\nRemember to include the color of the vertex itself in these counts. The\r\nanswer is the answer at the root.Therefore the problem is solved in\r\ntime.\r\n",
+    "hint": []
 }

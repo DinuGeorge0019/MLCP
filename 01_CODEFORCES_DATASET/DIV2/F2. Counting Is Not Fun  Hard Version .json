@@ -173,5 +173,8 @@
     ],
     "dificulty": "",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\F2. Counting Is Not Fun  Hard Version .json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\F2. Counting Is Not Fun  Hard Version .json",
+    "hint": [
+        "Hint In the solution of the easy subtask, we manually enumerated the minimal balanced subsequences, each time in . You can show that most minimal balanced subsequences do not change when a new clue is added. What data structure will you choose in order to utilize this fact as much as possible?"
+    ]
 }

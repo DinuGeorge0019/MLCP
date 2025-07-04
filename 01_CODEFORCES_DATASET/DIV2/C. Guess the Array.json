@@ -130,5 +130,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Guess the Array.json",
     "editorial_link": "https://codeforces.com//blog/entry/47773",
-    "editorial": "At first let\u00e2\u0080\u0099s make three queries on sum , .After that we got a system\r\nof three equations with three unknown variables . After simple\r\ncalculating we got that . The values of and now can be simply found.\r\nAfter that we now the values of and spent on it 3 queries.Then for all\r\nfrom 4 to we need to make the query . If the next sum equals to then\r\n(recall that we already know the value of ). So we guess the array with\r\nexactly queries.\r\n"
+    "editorial": "At first letâs make three queries on sum , .After that we got a system\r\nof three equations with three unknown variables . After simple\r\ncalculating we got that . The values of and now can be simply found.\r\nAfter that we now the values of and spent on it 3 queries.Then for all\r\nfrom 4 to we need to make the query . If the next sum equals to then\r\n(recall that we already know the value of ). So we guess the array with\r\nexactly queries.\r\n",
+    "hint": []
 }

@@ -157,5 +157,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\G. Sherlock and the Encrypted Data.json",
     "editorial_link": "https://codeforces.com//blog/entry/50622",
-    "editorial": ": This problem can be solved using dynamic programming approach by\r\nmaintain dp for mask of digits appearing in the number() along with\r\nposition in the number() and mask of last bits() of the number formed\r\nupto .: Observe that only the most significant bit of the is required to\r\ncheck if the number will decrease or not. So, form a .\r\n"
+    "editorial": ": This problem can be solved using dynamic programming approach by\r\nmaintain dp for mask of digits appearing in the number() along with\r\nposition in the number() and mask of last bits() of the number formed\r\nupto .: Observe that only the most significant bit of the is required to\r\ncheck if the number will decrease or not. So, form a .\r\n",
+    "hint": []
 }

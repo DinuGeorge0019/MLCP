@@ -151,5 +151,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Yet Another Tetris Problem.json",
     "editorial_link": "https://codeforces.com//blog/entry/74714",
-    "editorial": "The answer is \"\" only if all have the same parity (i.e. all are odd or\r\nall are even). That\u00e2\u0080\u0099s because placing the block doesn\u00e2\u0080\u0099t change the\r\nparity of the element and the operation changes the parity of all\r\nelements in the array.\r\n"
+    "editorial": "The answer is \"\" only if all have the same parity (i.e. all are odd or\r\nall are even). Thatâs because placing the block doesnât change the\r\nparity of the element and the operation changes the parity of all\r\nelements in the array.\r\n",
+    "hint": []
 }

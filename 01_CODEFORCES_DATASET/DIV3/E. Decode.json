@@ -164,7 +164,7 @@
     "name": "E. Decode",
     "statement": "You are given a binary string s of length n. For each pair of integers\r\n(l, r) (1\r\nleq l\r\nleq r\r\nleq n), count the number of pairs (x, y) (l\r\nleq x\r\nleq y\r\nleq r) such that the amount of\r\nmathtt{0} equals the amount of\r\nmathtt{1} in the substring s_xs_{x+1}...s_y. Output the sum of counts\r\nover all possible (l, r) modulo 10^9+7.\r\n",
     "solutions": [
-        "/**   - dwuy -\u00a0\u3000\u3000\u3000\u3000\u3000 \uff0f\uff1e\u3000   \u30d5\u3000\u3000\u3000\u3000\u3000 | \u3000_\u3000 _|\u3000 \u3000\u3000\u3000 \uff0f`\u30df _x \u30ce\u3000\u3000 \u3000 /\u3000\u3000\u3000 \u3000 |\u3000\u3000\u3000 /\u3000  \u30fd\u3000\u3000 ?\u3000\uff0f\uffe3|\u3000\u3000 |\u3000|\u3000|\u3000| (\uffe3\u30fd\uff3f_\u30fd_)_)\u3000\uff3c\u4e8c\u3064\u00a0**/#include <bits/stdc++.h>\u00a0#define fastIO ios_base::sync_with_stdio(false); cin.tie(NULL)#define file(a) freopen(a\".inp\",\"r\",stdin); freopen(a\".out\", \"w\",stdout)#define fi first#define se second#define endl \"\\n\"#define len(s) (int)((s).size())#define MASK(k)(1LL<<(k))#define TASK \"test\"#define int long long\u00a0using namespace std;\u00a0typedef tuple<int, int, int> tpiii;typedef pair<double, double> pdd;typedef pair<int, int> pii;typedef long long ll;\u00a0const long long OO = 1e18;const int MOD = 1e9 + 7;const int INF = 1e9;const int MX = 300005;\u00a0int n, m, k, q;string s, t;int a[MX];int b[MX];\u00a0void solve(){    cin >> s;    n = len(s);    s = ' ' + s;    map<int, int> mp;    mp[0] = 1;    int sum = 0;    int ans = 0;    for(int i=1; i<=n; i++){        sum += s[i] == '0'? 1 : -1;        ans = (ans + (n - i + 1)*mp[sum])%MOD;         mp[sum] = (mp[sum] + i + 1)%MOD;    }    cout << ans << endl;}\u00a0int32_t main(){    fastIO;    //file(TASK);\u00a0    int q;    cin >> q;    while(q--){        solve();    }\u00a0    return 0;}\u00a0\u00a0\u00a0\u00a0"
+        "/**   - dwuy - 　　　　　 ／＞　   フ　　　　　 | 　_　 _|　 　　　 ／`ミ _x ノ　　 　 /　　　 　 |　　　 /　  ヽ　　 ?　／￣|　　 |　|　|　| (￣ヽ＿_ヽ_)_)　＼二つ **/#include <bits/stdc++.h> #define fastIO ios_base::sync_with_stdio(false); cin.tie(NULL)#define file(a) freopen(a\".inp\",\"r\",stdin); freopen(a\".out\", \"w\",stdout)#define fi first#define se second#define endl \"\\n\"#define len(s) (int)((s).size())#define MASK(k)(1LL<<(k))#define TASK \"test\"#define int long long using namespace std; typedef tuple<int, int, int> tpiii;typedef pair<double, double> pdd;typedef pair<int, int> pii;typedef long long ll; const long long OO = 1e18;const int MOD = 1e9 + 7;const int INF = 1e9;const int MX = 300005; int n, m, k, q;string s, t;int a[MX];int b[MX]; void solve(){    cin >> s;    n = len(s);    s = ' ' + s;    map<int, int> mp;    mp[0] = 1;    int sum = 0;    int ans = 0;    for(int i=1; i<=n; i++){        sum += s[i] == '0'? 1 : -1;        ans = (ans + (n - i + 1)*mp[sum])%MOD;         mp[sum] = (mp[sum] + i + 1)%MOD;    }    cout << ans << endl;} int32_t main(){    fastIO;    //file(TASK);     int q;    cin >> q;    while(q--){        solve();    }     return 0;}    "
     ],
     "input": "",
     "output": "",
@@ -176,5 +176,9 @@
     ],
     "dificulty": "1600",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\E. Decode.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\E. Decode.json",
+    "hint": [
+        "Hint 1 Replace all 0 with -1. Now all segments with equal 0 and 1 have zero sum.",
+        "Hint 2 Instead of counting segments inside each range. For each substring with zero sum, count segments it is a part of."
+    ]
 }

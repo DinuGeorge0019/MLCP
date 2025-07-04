@@ -162,9 +162,9 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/129686",
-    "editorial": "Let\u00e2\u0080\u0099s consider the classic knapsack problem. Let be the minimum cost\r\nrequired to achieve happiness . In the -th month, we iterate through and\r\ncheck if , and if so, we can afford to transition to and accordingly\r\nupdate .The complexity is for each set of input data.\r\n",
+    "editorial": "Letâs consider the classic knapsack problem. Let be the minimum cost\r\nrequired to achieve happiness . In the -th month, we iterate through and\r\ncheck if , and if so, we can afford to transition to and accordingly\r\nupdate .The complexity is for each set of input data.\r\n",
     "name": "E. Money Buys Happiness",
-    "statement": "Being a physicist, Charlie likes to plan his life in simple and precise\r\nterms. For the next m months, starting with no money, Charlie will work\r\nhard and earn x pounds per month. For the i-th month (1\r\nle i\r\nle m), there\u2019ll be a single opportunity of paying cost c_i pounds to\r\nobtain happiness h_i.Borrowing is not allowed. Money earned in the i-th\r\nmonth can only be spent in a later j-th month (j>i).Since physicists\r\ndon\u2019t code, help Charlie find the maximum obtainable sum of happiness.\r\n",
+    "statement": "Being a physicist, Charlie likes to plan his life in simple and precise\r\nterms. For the next m months, starting with no money, Charlie will work\r\nhard and earn x pounds per month. For the i-th month (1\r\nle i\r\nle m), there’ll be a single opportunity of paying cost c_i pounds to\r\nobtain happiness h_i.Borrowing is not allowed. Money earned in the i-th\r\nmonth can only be spent in a later j-th month (j>i).Since physicists\r\ndon’t code, help Charlie find the maximum obtainable sum of happiness.\r\n",
     "solutions": [
         "#include <iostream>#include <cmath>#include <algorithm>#include <vector>#include <chrono>#include <random>#include <map>#include <set>using namespace std;typedef long long ll;const int N = 2e5 + 10;ll c[N], h[N];ll dp[N];ll nxt_dp[N];void solve() {\tint sm = 0;\tint m, x;\tcin >> m >> x;\tfor (int i = 1; i <= m; i++) {\t\tcin >> c[i] >> h[i];\t\tsm += h[i];\t}\tfor (int i = 1; i <= sm; i++) {\t\tdp[i] = -1;\t}\tdp[0] = 0;\tfor (int i = 1; i <= m; i++) {\t\tfor (int j = 0; j <= sm; j++) {\t\t\tnxt_dp[j] = dp[j];\t\t\tif (j >= h[i] && dp[j - h[i]] != -1) {\t\t\t\tll w = dp[j - h[i]];\t\t\t\tif (w >= c[i]) {\t\t\t\t\tif (nxt_dp[j] == -1) nxt_dp[j] = w - c[i];\t\t\t\t\telse if (nxt_dp[j] < w - c[i]) nxt_dp[j] = w - c[i];\t\t\t\t} \t\t\t}\t\t}\t\tfor (int j = 0; j <= sm; j++) {\t\t\tdp[j] = nxt_dp[j];\t\t\tif (dp[j] != -1) dp[j] += x;\t\t}\t}\tfor (int j = sm; j >= 0; j--) {\t\tif (dp[j] != -1) {\t\t\tcout << j << \"\\n\";\t\t\treturn;\t\t}\t}}int main() {\tint t;\tcin >> t;\twhile (t--) {\t\tsolve();\t}}"
     ],
@@ -175,5 +175,6 @@
     ],
     "dificulty": "1800",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\E. Money Buys Happiness.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\E. Money Buys Happiness.json",
+    "hint": []
 }

@@ -157,7 +157,7 @@
         ]
     },
     "name": "B. Fedya and Array",
-    "statement": "For his birthday recently Fedya was given an array a of n integers\r\narranged in a circle, For each pair of neighboring numbers (a_1 and a_2,\r\na_2 and a_3,\r\nldots, a_{n - 1} and a_n, a_n and a_1) the absolute difference between\r\nthem is equal to 1.Let\u2019s call a an element, which is greater than both\r\nof its neighboring elements. Also call a an element, which is less than\r\nboth of its neighboring elements. Note, that elements a_1 and a_n are\r\nneighboring elements.Unfortunately, Fedya lost an array, but he\r\nremembered in it the sum of local maximums x and the sum of local\r\nminimums y.Given x and y, help Fedya find any matching array of length.\r\n",
+    "statement": "For his birthday recently Fedya was given an array a of n integers\r\narranged in a circle, For each pair of neighboring numbers (a_1 and a_2,\r\na_2 and a_3,\r\nldots, a_{n - 1} and a_n, a_n and a_1) the absolute difference between\r\nthem is equal to 1.Let’s call a an element, which is greater than both\r\nof its neighboring elements. Also call a an element, which is less than\r\nboth of its neighboring elements. Note, that elements a_1 and a_n are\r\nneighboring elements.Unfortunately, Fedya lost an array, but he\r\nremembered in it the sum of local maximums x and the sum of local\r\nminimums y.Given x and y, help Fedya find any matching array of length.\r\n",
     "solutions": [
         "#include<bits/stdC++.h>\nusing namespace std;\nint T;\nint main(){\n\tios::sync_with_stdio(0);\n\tcin>>T;\n\twhile(T--){\n\t\tint x,y;\n\t\tcin>>x>>y;\n\t\tcout<<(x-y)*2<<'\\n';\n\t\tfor(int i=y;i<x;i++)cout<<i<<' ';\n\t\tfor(int i=x;i>y;i--)cout<<i<<' ';\n\t\tcout<<'\\n';\n\t}\n}\n"
     ],
@@ -171,5 +171,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Fedya and Array.json",
     "editorial_link": "https://codeforces.com//blog/entry/112723",
-    "editorial": "Note that the local minimums and maximums will alternate, and there will\r\nbe the same number of them . Let\u00e2\u0080\u0099s call the -th local maximum by , the\r\n-th local minimum by . Without loss of generality, consider that goes\r\nbefore . To get from we need to write out numbers, to get from we need\r\nto write out numbers. Thus, The array will satisfy the condition. Code\r\n"
+    "editorial": "Note that the local minimums and maximums will alternate, and there will\r\nbe the same number of them . Letâs call the -th local maximum by , the\r\n-th local minimum by . Without loss of generality, consider that goes\r\nbefore . To get from we need to write out numbers, to get from we need\r\nto write out numbers. Thus, The array will satisfy the condition. Code\r\n",
+    "hint": []
 }

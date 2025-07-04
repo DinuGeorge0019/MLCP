@@ -160,5 +160,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Div. 7.json",
     "editorial_link": "https://codeforces.com//blog/entry/99539",
-    "editorial": "A lot of different solutions can be written in this problem. The model\r\nsolution relies on the fact that every -th integer is divisible by , and\r\nit means that there is always a way to change the last digit of (or\r\nleave it unchanged) so that the result is divisible by . So, if is\r\nalready divisible by , we just print it, otherwise we change its last\r\ndigit using some formulas or iteration on its value from to .\r\n"
+    "editorial": "A lot of different solutions can be written in this problem. The model\r\nsolution relies on the fact that every -th integer is divisible by , and\r\nit means that there is always a way to change the last digit of (or\r\nleave it unchanged) so that the result is divisible by . So, if is\r\nalready divisible by , we just print it, otherwise we change its last\r\ndigit using some formulas or iteration on its value from to .\r\n",
+    "hint": []
 }

@@ -154,5 +154,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\F. Copy or Prefix Sum.json",
     "editorial_link": "https://codeforces.com//blog/entry/87470",
-    "editorial": "SolutionFor each , you can choose either or . If , the two options\r\ncoincide and you have to avoid overcounting them.This leads to an\r\nsolution: let be a map such that corresponds to the number of ways to\r\ncreate a hybrid prefix with sum . The transitions are (if you choose ,\r\nand ), (if you choose ).Let\u00e2\u0080\u0099s try to get rid of the first layer of the\r\ndp. It turns out that the operations required are move all to calculate\r\nthe sum of all in some moment change the value of a and they can be\r\nhandled in with \"Venice technique\". is now a map such that corresponds\r\nto the number of ways to create a hybrid prefix such that . Calculate\r\nthe dp for all prefixes from left to right. if , you don\u00e2\u0080\u0099t need to\r\nchange any value of the dp; if , you have to set to the total number of\r\nhybrid arrays of length .Complexity: .\r\n"
+    "editorial": "SolutionFor each , you can choose either or . If , the two options\r\ncoincide and you have to avoid overcounting them.This leads to an\r\nsolution: let be a map such that corresponds to the number of ways to\r\ncreate a hybrid prefix with sum . The transitions are (if you choose ,\r\nand ), (if you choose ).Letâs try to get rid of the first layer of the\r\ndp. It turns out that the operations required are move all to calculate\r\nthe sum of all in some moment change the value of a and they can be\r\nhandled in with \"Venice technique\". is now a map such that corresponds\r\nto the number of ways to create a hybrid prefix such that . Calculate\r\nthe dp for all prefixes from left to right. if , you donât need to\r\nchange any value of the dp; if , you have to set to the total number of\r\nhybrid arrays of length .Complexity: .\r\n",
+    "hint": [
+        "Hint 1 Why isn't the answer ? What would you overcount?",
+        "Hint 2 Find a dp with time complexity .",
+        "Hint 3 Let be the number of hybrid prefixes of length and sum . The transitions are and . Can you optimize it to ?"
+    ]
 }

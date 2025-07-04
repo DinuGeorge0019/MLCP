@@ -110,5 +110,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Cheap Travel.json",
     "editorial_link": "https://codeforces.com//blog/entry/13758",
-    "editorial": "Solution of this problem is based on two claims: If then there is no\r\npoint to buy a ride ticket. Sometimes it is better to buy summary more\r\nride tickets for amount of rides than we need. If we receive profits\r\nbying ride tickets then number of such ones will be . For the remain\r\nrides we must choose the best variant: to buy separate ticket for each\r\nride, or to buy ride ticket and use it not fully. Complexity: Solution:\r\n7784793\r\n"
+    "editorial": "Solution of this problem is based on two claims: If then there is no\r\npoint to buy a ride ticket. Sometimes it is better to buy summary more\r\nride tickets for amount of rides than we need. If we receive profits\r\nbying ride tickets then number of such ones will be . For the remain\r\nrides we must choose the best variant: to buy separate ticket for each\r\nride, or to buy ride ticket and use it not fully. Complexity: Solution:\r\n7784793\r\n",
+    "hint": []
 }

@@ -103,5 +103,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Shoe Store.json",
     "editorial_link": "https://codeforces.com//blog/entry/4173",
-    "editorial": "Let\u00e2\u0080\u0099s sort the people by decreasing of shoes size. Observe that when\r\nconsidering the -th man we are interested in no more than 2 pairs of\r\nshoes: with size and . It allows solving with dynamics. The state will\r\nbe (the number of first unconsidered man , is pair of shoes with size\r\navailable, is pair of shoes with size + 1 available). You have 3\r\noptions: leave the -th man without shoes or sell him a pair of shoes of\r\none of suitable size (if available).\r\n"
+    "editorial": "Letâs sort the people by decreasing of shoes size. Observe that when\r\nconsidering the -th man we are interested in no more than 2 pairs of\r\nshoes: with size and . It allows solving with dynamics. The state will\r\nbe (the number of first unconsidered man , is pair of shoes with size\r\navailable, is pair of shoes with size + 1 available). You have 3\r\noptions: leave the -th man without shoes or sell him a pair of shoes of\r\none of suitable size (if available).\r\n",
+    "hint": []
 }

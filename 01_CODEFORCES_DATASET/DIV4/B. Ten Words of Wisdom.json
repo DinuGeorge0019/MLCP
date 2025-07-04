@@ -208,5 +208,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\B. Ten Words of Wisdom.json",
     "editorial_link": "https://codeforces.com//blog/entry/118466",
-    "editorial": "Let\u00e2\u0080\u0099s iterate through all responses: if it has words, ignore it.\r\nOtherwise, keep track of the maximum quality and its index, and update\r\nit as we go along. Then output the index with maximum quality. The time\r\ncomplexity is .\r\n"
+    "editorial": "Letâs iterate through all responses: if it has words, ignore it.\r\nOtherwise, keep track of the maximum quality and its index, and update\r\nit as we go along. Then output the index with maximum quality. The time\r\ncomplexity is .\r\n",
+    "hint": []
 }

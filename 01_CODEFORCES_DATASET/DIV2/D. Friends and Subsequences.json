@@ -125,5 +125,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Friends and Subsequences.json",
     "editorial_link": "https://codeforces.com//blog/entry/45912",
-    "editorial": "First of all it is easy to see that if we fix l then have . So we can just use binary search to find the smallest index rmin and biggest index rmax that satisfy the equality and add rmax?-?rmin?+?1 to our answer. To find the min and max values on a segment [l,?r] we can use Range-Minimum Query data structure."
+    "editorial": "First of all it is easy to see that if we fix l then have . So we can just use binary search to find the smallest index rmin and biggest index rmax that satisfy the equality and add rmax?-?rmin?+?1 to our answer. To find the min and max values on a segment [l,?r] we can use Range-Minimum Query data structure.",
+    "hint": []
 }

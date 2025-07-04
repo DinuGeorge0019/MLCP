@@ -174,5 +174,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. You Are So Beautiful.json",
     "editorial_link": "https://codeforces.com//blog/entry/121621",
-    "editorial": "Note that a subarray suits us if al\n is the leftmost occurrence of the number al\n in the array and ar\n is the rightmost occurrence of the number ar\n in the array. Let's create an array br\n filled with zeros and set br=1\n if ar\n is the rightmost occurrence of the number ar\n in the array (this can be done using sets or dictionaries). Now we need to consider all suitable left boundaries and see how many suitable right boundaries we have on the suffix, either by precomputing a suffix sum or by simply maintaining a variable while traversing from left to right."
+    "editorial": "Note that a subarray suits us if al\n is the leftmost occurrence of the number al\n in the array and ar\n is the rightmost occurrence of the number ar\n in the array. Let's create an array br\n filled with zeros and set br=1\n if ar\n is the rightmost occurrence of the number ar\n in the array (this can be done using sets or dictionaries). Now we need to consider all suitable left boundaries and see how many suitable right boundaries we have on the suffix, either by precomputing a suffix sum or by simply maintaining a variable while traversing from left to right.",
+    "hint": []
 }

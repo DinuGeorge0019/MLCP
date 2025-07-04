@@ -115,5 +115,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Good Triple.json",
     "editorial_link": "https://codeforces.com//blog/entry/67241",
-    "editorial": "Lemma: there are no strings without such x,k\n of length at least 9.\n\nIn fact, you just can write brute force to find all \"good\" strings and then realize that they all are small.\n\nOk, so with this you can just write some sort of \"naive\" solution, for each l\n find the largest r\n, such that l\u0085r\n is a \"good\" string, and then add n?r\n to the answer. You can do it in 9?9?n\n or in 9?n\n, as I do in my solution"
+    "editorial": "Lemma: there are no strings without such x,k\n of length at least 9.\n\nIn fact, you just can write brute force to find all \"good\" strings and then realize that they all are small.\n\nOk, so with this you can just write some sort of \"naive\" solution, for each l\n find the largest r\n, such that lr\n is a \"good\" string, and then add n?r\n to the answer. You can do it in 9?9?n\n or in 9?n\n, as I do in my solution",
+    "hint": []
 }

@@ -173,11 +173,11 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/133296",
-    "editorial": "Problem Credits: cry Analysis: cry Solution Implement the statement.\r\nIterate from to and use the .find() method in std::string in C++ (or\r\n.index() in python) to find the \u00e2\u0080\u009d character.\r\n",
+    "editorial": "Problem Credits: cry Analysis: cry Solution Implement the statement.\r\nIterate from to and use the .find() method in std::string in C++ (or\r\n.index() in python) to find the â character.\r\n",
     "name": "B. osu mania",
-    "statement": "You are playing your favorite rhythm game, osu!mania. The layout of your\r\nbeatmap consists of n rows and 4 columns. Because notes at the bottom\r\nare closer, you will process the bottommost row first and the topmost\r\nrow last. Each row will contain exactly one note, represented as a \u201d.For\r\neach note 1, 2,\r\ndots, n, in the order of processing, output the column in which the note\r\nappears.\r\n",
+    "statement": "You are playing your favorite rhythm game, osu!mania. The layout of your\r\nbeatmap consists of n rows and 4 columns. Because notes at the bottom\r\nare closer, you will process the bottommost row first and the topmost\r\nrow last. Each row will contain exactly one note, represented as a ”.For\r\neach note 1, 2,\r\ndots, n, in the order of processing, output the column in which the note\r\nappears.\r\n",
     "solutions": [
-        "#include<bits/stdc++.h>using namespace std;using ll=long long;using i128=__int128;using ull=unsigned long long;using ld=long double;using pii=pair<int,int>;using pll=pair<ll,ll>;clock_t a;const int M=998244353;const ll inf=1e17;const ld eps=1e-10;void oT(char c='.'){cout<<c<<\"Time:\"<<double(clock()-a)<<'\\n';}struct Solution{\t\tint n;vector<string>R;\tvoid Init()\t{\t\tcin>>n;R.resize(n);for(auto&k:R)cin>>k;\t\tfor(int i=n-1;i>=0;i--)\t\t{\t\t\tfor(int j=0;j<4;j++)if(R[i][j]=='#')cout<<j+1<<\" \\n\"[i==0];\t\t}\t}\tvoid Solve()\t{\u00a0\t}};void precal(){}signed main() {    ios::sync_with_stdio(0);cin.tie(0);precal();    int t=1;cin>>t;while(t--){Solution sol;sol.Init();sol.Solve();}}"
+        "#include<bits/stdc++.h>using namespace std;using ll=long long;using i128=__int128;using ull=unsigned long long;using ld=long double;using pii=pair<int,int>;using pll=pair<ll,ll>;clock_t a;const int M=998244353;const ll inf=1e17;const ld eps=1e-10;void oT(char c='.'){cout<<c<<\"Time:\"<<double(clock()-a)<<'\\n';}struct Solution{\t\tint n;vector<string>R;\tvoid Init()\t{\t\tcin>>n;R.resize(n);for(auto&k:R)cin>>k;\t\tfor(int i=n-1;i>=0;i--)\t\t{\t\t\tfor(int j=0;j<4;j++)if(R[i][j]=='#')cout<<j+1<<\" \\n\"[i==0];\t\t}\t}\tvoid Solve()\t{ \t}};void precal(){}signed main() {    ios::sync_with_stdio(0);cin.tie(0);precal();    int t=1;cin>>t;while(t--){Solution sol;sol.Init();sol.Solve();}}"
     ],
     "input": "",
     "output": "",
@@ -187,5 +187,6 @@
     ],
     "dificulty": "800",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\B. osu mania.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\B. osu mania.json",
+    "hint": []
 }

@@ -170,5 +170,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Meximization.json",
     "editorial_link": "https://codeforces.com//blog/entry/88677",
-    "editorial": "To maximize the sum of on prefixes we will use a greedy algorithm.\r\nFirstly we put all unique elements in increasing order to get maximal on\r\neach prefix. It is easy to see that replacing any two elements after\r\nthat makes both and sum of less.In the end we put all elements that are\r\nnot used in any order because will not change and will still be maximal.\r\n"
+    "editorial": "To maximize the sum of on prefixes we will use a greedy algorithm.\r\nFirstly we put all unique elements in increasing order to get maximal on\r\neach prefix. It is easy to see that replacing any two elements after\r\nthat makes both and sum of less.In the end we put all elements that are\r\nnot used in any order because will not change and will still be maximal.\r\n",
+    "hint": []
 }

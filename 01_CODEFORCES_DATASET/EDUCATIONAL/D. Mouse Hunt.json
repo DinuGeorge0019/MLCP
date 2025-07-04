@@ -173,5 +173,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\D. Mouse Hunt.json",
     "editorial_link": "https://codeforces.com//blog/entry/61311",
-    "editorial": "Mouse jumps on a cycle at some point, no matter the starting vertex,\r\nthus it\u00e2\u0080\u0099s always the most profitable to set traps on cycles. The\r\nstructure of the graph implies that there are no intersecting cycles.\r\nMoreover, mouse will visit each vertex of the cycle, so it\u00e2\u0080\u0099s enough to\r\nset exactly one trap on each cycle. The only thing left is to find the\r\ncheapest vertex of each cycle. This can be done by a simple dfs.Overall\r\ncomplexity: .\r\n"
+    "editorial": "Mouse jumps on a cycle at some point, no matter the starting vertex,\r\nthus itâs always the most profitable to set traps on cycles. The\r\nstructure of the graph implies that there are no intersecting cycles.\r\nMoreover, mouse will visit each vertex of the cycle, so itâs enough to\r\nset exactly one trap on each cycle. The only thing left is to find the\r\ncheapest vertex of each cycle. This can be done by a simple dfs.Overall\r\ncomplexity: .\r\n",
+    "hint": []
 }

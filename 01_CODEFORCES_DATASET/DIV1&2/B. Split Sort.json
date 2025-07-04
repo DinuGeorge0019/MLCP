@@ -194,5 +194,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\B. Split Sort.json",
     "editorial_link": "https://codeforces.com//blog/entry/119902",
-    "editorial": "For every such that , and we have to choose at least once for these\r\nelements to be in the correct order.It is easy to see that if we choose\r\nall such for all such exactly once in any order, we will get the\r\nidentity permutation.\r\n"
+    "editorial": "For every such that , and we have to choose at least once for these\r\nelements to be in the correct order.It is easy to see that if we choose\r\nall such for all such exactly once in any order, we will get the\r\nidentity permutation.\r\n",
+    "hint": []
 }

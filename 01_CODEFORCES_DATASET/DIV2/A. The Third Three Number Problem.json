@@ -113,5 +113,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. The Third Three Number Problem.json",
     "editorial_link": "https://codeforces.com//blog/entry/108560",
-    "editorial": "SolutionFirst and foremost, it can be proven that is always even, for\r\nall possible non-negative values of , and . ProofFirstly, and have the\r\nsame parity, since . Therefore, has the same parity as .Therefore, if is\r\neven, one possible solution is , and . In this case, . Otherwise, there\r\nare no solutions.Time complexity per testcase: .\r\n"
+    "editorial": "SolutionFirst and foremost, it can be proven that is always even, for\r\nall possible non-negative values of , and . ProofFirstly, and have the\r\nsame parity, since . Therefore, has the same parity as .Therefore, if is\r\neven, one possible solution is , and . In this case, . Otherwise, there\r\nare no solutions.Time complexity per testcase: .\r\n",
+    "hint": []
 }

@@ -127,7 +127,7 @@
     "name": "A. Split the Multiset",
     "statement": "A is a set of numbers in which there can be equal elements, and the\r\norder of the numbers does not matter. For example,\r\n{2,2,4\r\n} is a multiset.You have a multiset S. Initially, the multiset contains\r\nonly one positive integer n. That is, S=\r\n{n\r\n}. Additionally, there is a given positive integer k.In one operation,\r\nyou can select any positive integer u in S and remove one copy of u from\r\nS. Then, insert no more than k positive integers into S so that the sum\r\nof all inserted integers is equal to u.Find the minimum number of\r\noperations to make S contain n ones.\r\n",
     "solutions": [
-        "#include <bits/stdc++.h>#define pb push_back#define sz(a) ((int)a.size())#define re return#define all(a) a.begin(),a.end()#define rept(i,a,b) for(int i=(a);i<(b);i++)#define rep(i,a) rept(i,0,a)#define vi vector<int>#define pii pair<int,int>#define F first#define S second#define de(x) cout<<#x<<\"=\"<<x<<\"\\n\";#define int long long#define il inline#define db double#define ld long dbusing namespace std;const int MOD=998244353,INF=1000000000000000000;template<typename T>inline void Mx(T &a,T b){a=max(a,b);}template<typename T>inline void Mi(T &a,T b){a=min(a,b);}void FILEIO(string s){\tfreopen((s+\".in\").c_str(),\"r\",stdin);\tfreopen((s+\".out\").c_str(),\"w\",stdout);}void run(){\tint n,k;\tcin>>n>>k;\tcout<<(n-1+k-2)/(k-1)<<\"\\n\";}signed main(){\tios::sync_with_stdio(0);\tcin.tie(0);cout.tie(0);\tint T=1;\tcin>>T;\twhile(T--)\t\trun();\tre 0;}\u00a0"
+        "#include <bits/stdc++.h>#define pb push_back#define sz(a) ((int)a.size())#define re return#define all(a) a.begin(),a.end()#define rept(i,a,b) for(int i=(a);i<(b);i++)#define rep(i,a) rept(i,0,a)#define vi vector<int>#define pii pair<int,int>#define F first#define S second#define de(x) cout<<#x<<\"=\"<<x<<\"\\n\";#define int long long#define il inline#define db double#define ld long dbusing namespace std;const int MOD=998244353,INF=1000000000000000000;template<typename T>inline void Mx(T &a,T b){a=max(a,b);}template<typename T>inline void Mi(T &a,T b){a=min(a,b);}void FILEIO(string s){\tfreopen((s+\".in\").c_str(),\"r\",stdin);\tfreopen((s+\".out\").c_str(),\"w\",stdout);}void run(){\tint n,k;\tcin>>n>>k;\tcout<<(n-1+k-2)/(k-1)<<\"\\n\";}signed main(){\tios::sync_with_stdio(0);\tcin.tie(0);cout.tie(0);\tint T=1;\tcin>>T;\twhile(T--)\t\trun();\tre 0;} "
     ],
     "input": "",
     "output": "",
@@ -139,5 +139,6 @@
     ],
     "dificulty": "900",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Split the Multiset.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Split the Multiset.json",
+    "hint": []
 }

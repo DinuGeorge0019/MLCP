@@ -121,5 +121,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Lucky Tickets.json",
     "editorial_link": "https://codeforces.com//blog/entry/8418",
-    "editorial": "In this problem we can find the right amount of lucky tickets. Lets\r\nconsider amount of different numbers we can get from one four-digit\r\nticket number. It is easy to iterate all this tickets, since it amount\r\nonly . It happened that we can get almost 60 numbers from ticket on the\r\naverage. Suppose we can get number from ticket . It is clearly that\r\neither or . If we can write eight-digit ticket number who will have in\r\nthe first four digits and in the last four digits. It is clearly that\r\nsuch ticket is -lucky. This method allows us to get almost lucky tickets\r\nand it is enough.\r\n"
+    "editorial": "In this problem we can find the right amount of lucky tickets. Lets\r\nconsider amount of different numbers we can get from one four-digit\r\nticket number. It is easy to iterate all this tickets, since it amount\r\nonly . It happened that we can get almost 60 numbers from ticket on the\r\naverage. Suppose we can get number from ticket . It is clearly that\r\neither or . If we can write eight-digit ticket number who will have in\r\nthe first four digits and in the last four digits. It is clearly that\r\nsuch ticket is -lucky. This method allows us to get almost lucky tickets\r\nand it is enough.\r\n",
+    "hint": []
 }

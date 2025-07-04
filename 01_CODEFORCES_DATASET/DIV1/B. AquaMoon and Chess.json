@@ -125,5 +125,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. AquaMoon and Chess.json",
     "editorial_link": "https://codeforces.com//blog/entry/92739",
-    "editorial": "We enumerate i\n from 1\n to n\n. If position i?1\n and i\n both contain a chess and i?1\n is not in other groups, then we divide them into one group.\n\nWe can change the operation a little: Each time we can swap the two consecutive 1\n and the element to their left or right. It's easy to see this operation equals to the initial one.\n\nSo that means we can take out the groups (two consecutive 1\n) and insert them to any position of the chessboard. So let the number of groups be m\n, the number of zeros be n\n, it's easy to find that the answer is (n+mm)\n(Since inserting one group to the left of some 1\n or to the right of it are the same)."
+    "editorial": "We enumerate i\n from 1\n to n\n. If position i?1\n and i\n both contain a chess and i?1\n is not in other groups, then we divide them into one group.\n\nWe can change the operation a little: Each time we can swap the two consecutive 1\n and the element to their left or right. It's easy to see this operation equals to the initial one.\n\nSo that means we can take out the groups (two consecutive 1\n) and insert them to any position of the chessboard. So let the number of groups be m\n, the number of zeros be n\n, it's easy to find that the answer is (n+mm)\n(Since inserting one group to the left of some 1\n or to the right of it are the same).",
+    "hint": []
 }

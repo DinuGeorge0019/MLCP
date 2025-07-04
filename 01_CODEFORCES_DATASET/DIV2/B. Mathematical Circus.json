@@ -165,5 +165,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Mathematical Circus.json",
     "editorial_link": "https://codeforces.com//blog/entry/106049",
-    "editorial": "TutorialNote that from the number we only need the remainder modulo , so\r\nwe take modulo and assume that .If , then there is no answer, because\r\nthe product of the numbers in each pair must be divisible by , that is,\r\nthe product of all numbers from to must be divisible by , but the degree\r\nof occurrence of in this sum is , which is less than .If or , then we\r\nwill make all pairs of the form , where is odd. Then will be even in\r\neach pair, since and are odd, and since is also even, the product will\r\nbe divisible by . , then we will do the same splitting into pairs, but\r\nin all pairs where is not divisible by , we will swap the numbers (that\r\nis, we will make and ). Then in pairs where , is divisible by (therefore\r\nthe product too), and in the rest is divisible by (since and have a\r\nremainder modulo ).The complexity of the solution is .\r\n"
+    "editorial": "TutorialNote that from the number we only need the remainder modulo , so\r\nwe take modulo and assume that .If , then there is no answer, because\r\nthe product of the numbers in each pair must be divisible by , that is,\r\nthe product of all numbers from to must be divisible by , but the degree\r\nof occurrence of in this sum is , which is less than .If or , then we\r\nwill make all pairs of the form , where is odd. Then will be even in\r\neach pair, since and are odd, and since is also even, the product will\r\nbe divisible by . , then we will do the same splitting into pairs, but\r\nin all pairs where is not divisible by , we will swap the numbers (that\r\nis, we will make and ). Then in pairs where , is divisible by (therefore\r\nthe product too), and in the rest is divisible by (since and have a\r\nremainder modulo ).The complexity of the solution is .\r\n",
+    "hint": [
+        "Hint 1 Instead of , we can consider the remainder of dividing by 4.",
+        "Hint 2 There is no answer for the remainder 0.",
+        "Hint 3 For all other remainders, there is an answer."
+    ]
 }

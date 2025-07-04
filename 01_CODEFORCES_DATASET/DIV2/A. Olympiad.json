@@ -112,5 +112,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Olympiad.json",
     "editorial_link": "https://codeforces.com//blog/entry/58056",
-    "editorial": "Drop all participants with zero points. Then the answer is simply the\r\nnumber of distinct points among the remaining participants.\r\n"
+    "editorial": "Drop all participants with zero points. Then the answer is simply the\r\nnumber of distinct points among the remaining participants.\r\n",
+    "hint": []
 }

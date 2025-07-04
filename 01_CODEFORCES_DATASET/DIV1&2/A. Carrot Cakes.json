@@ -121,7 +121,7 @@
         ]
     },
     "name": "A. Carrot Cakes",
-    "statement": "In some game by Playrix it takes minutes for an oven to bake carrot\r\ncakes, all cakes are ready at the same moment minutes after they started\r\nbaking. Arkady needs at least cakes to complete a task, but he currently\r\ndon\u2019t have any. However, he has infinitely many ingredients and one\r\noven. Moreover, Arkady can build one more similar oven to make the\r\nprocess faster, it would take minutes to build the oven. While the new\r\noven is being built, only old one can bake cakes, after the new oven is\r\nbuilt, both ovens bake simultaneously. Arkady can\u2019t build more than one\r\noven.Determine if it is reasonable to build the second oven, i.e. will\r\nit decrease the minimum time needed to get cakes or not. If the time\r\nneeded with the second oven is the same as with one oven, then it is\r\nunreasonable.\r\n",
+    "statement": "In some game by Playrix it takes minutes for an oven to bake carrot\r\ncakes, all cakes are ready at the same moment minutes after they started\r\nbaking. Arkady needs at least cakes to complete a task, but he currently\r\ndon’t have any. However, he has infinitely many ingredients and one\r\noven. Moreover, Arkady can build one more similar oven to make the\r\nprocess faster, it would take minutes to build the oven. While the new\r\noven is being built, only old one can bake cakes, after the new oven is\r\nbuilt, both ovens bake simultaneously. Arkady can’t build more than one\r\noven.Determine if it is reasonable to build the second oven, i.e. will\r\nit decrease the minimum time needed to get cakes or not. If the time\r\nneeded with the second oven is the same as with one oven, then it is\r\nunreasonable.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n  int n, t, k, d;\n  scanf(\"%d %d %d %d\", &n, &t, &k, &d);\n  int steps = (n + k - 1) / k;\n  int if_no = steps * t;\n  int get = (if_no - 1) / t * k;\n  if (if_no - 1 > d) {\n    get += (if_no - 1 - d) / t * k;\n  }\n  puts(get >= n ? \"YES\" : \"NO\");\n  return 0;\n}\n"
     ],
@@ -135,5 +135,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\A. Carrot Cakes.json",
     "editorial_link": "https://codeforces.com/blog/entry/51947",
-    "editorial": "One of possible solutions to simply simulate described process. To make\r\nit we need two variables and . In them we will store the time when each\r\nof the ovens will become free. In the beginning equals to and equals to\r\n. After simulating the process we will get a time for which possible to\r\nmake cakes with ovens (this time equals to maximum from and ). It is\r\nonly left to compare this time with value a time for which possible to\r\nmake cakes using only one oven.\r\n"
+    "editorial": "One of possible solutions to simply simulate described process. To make\r\nit we need two variables and . In them we will store the time when each\r\nof the ovens will become free. In the beginning equals to and equals to\r\n. After simulating the process we will get a time for which possible to\r\nmake cakes with ovens (this time equals to maximum from and ). It is\r\nonly left to compare this time with value a time for which possible to\r\nmake cakes using only one oven.\r\n",
+    "hint": []
 }

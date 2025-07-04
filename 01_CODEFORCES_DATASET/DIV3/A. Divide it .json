@@ -145,5 +145,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Divide it .json",
     "editorial_link": "https://codeforces.com/blog/entry/67598",
-    "editorial": "What if the given number cannot be represented as ? It means that the\r\nanswer is because all actions we can do are: remove one power of two,\r\nremove one power of three and add one power of two, and remove one power\r\nof five and add two powers of two. So if the answer is not then it is .\r\nIf this formula isn\u00e2\u0080\u0099t pretty clear for you, you can just simulate the\r\nprocess, performing actions from third to first.\r\n"
+    "editorial": "What if the given number cannot be represented as ? It means that the\r\nanswer is because all actions we can do are: remove one power of two,\r\nremove one power of three and add one power of two, and remove one power\r\nof five and add two powers of two. So if the answer is not then it is .\r\nIf this formula isnât pretty clear for you, you can just simulate the\r\nprocess, performing actions from third to first.\r\n",
+    "hint": []
 }

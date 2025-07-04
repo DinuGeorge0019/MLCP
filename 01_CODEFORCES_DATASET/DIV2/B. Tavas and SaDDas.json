@@ -73,7 +73,7 @@
         ]
     },
     "name": "B. Tavas and SaDDas",
-    "statement": "The problem is: You are given a . are the positive integers whose\r\ndecimal representations contain only the lucky digits 4 and 7. For\r\nexample, numbers , , are lucky and , , are not.If we sort all lucky\r\nnumbers in increasing order, what\u2019s the 1-based index of ? Tavas is not\r\nas smart as SaDDas, so he asked you to do him a favor and solve this\r\nproblem so he can have his headphones back.\r\n",
+    "statement": "The problem is: You are given a . are the positive integers whose\r\ndecimal representations contain only the lucky digits 4 and 7. For\r\nexample, numbers , , are lucky and , , are not.If we sort all lucky\r\nnumbers in increasing order, what’s the 1-based index of ? Tavas is not\r\nas smart as SaDDas, so he asked you to do him a favor and solve this\r\nproblem so he can have his headphones back.\r\n",
     "solutions": [
         "#include <cstdio>\n#include <cstdlib>\n#include <cmath>\n#include <ctime>\n#include <cassert>\n#include <cstring>\n#include <algorithm>\n#include <vector>\n#include <list>\n#include <map>\n#include <set>\n#include <deque>\n#include <queue>\n#include <stack>\n#include <bitset>\n#include <functional>\n#include <numeric>\n#include <utility>\n#include <sstream>\n#include <iostream>\n#include <iomanip>\n#include <unordered_map>\n#include <unordered_set>\n#include <memory.h>\nusing namespace std;\n\nint main() {\n  int n;\n  scanf(\"%d\", &n);\n  int k = 0;\n  int l = 0;\n  while (n) {\n    const int t = n % 10;\n    if (t == 7) {\n      k |= (1 << l);\n    }\n    n /= 10;\n    l++;\n  }\n\n  k += (1 << l) - 1;\n\n  printf(\"%d\\n\", k);\n\n  return 0;\n}"
     ],
@@ -89,5 +89,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Tavas and SaDDas.json",
     "editorial_link": "https://codeforces.com//blog/entry/17401",
-    "editorial": "Sol1: Consider has digits, decimal representation of binary string , is\r\na binary string of size and its digit is 0 if and only if the digit of\r\nis . Finally, answer equals to . Time complexity: Sol2: Count the number\r\nof lucky numbers less than or equal to using bitmask (assign a binary\r\nstring to each lucky number by replacing 4s with 0 and 7s with 1). Time\r\ncomplexity: Code by PrinceOfPersia Another Code by SoroushE Another Code\r\nby Haghani Python Code by Zlobober\r\n"
+    "editorial": "Sol1: Consider has digits, decimal representation of binary string , is\r\na binary string of size and its digit is 0 if and only if the digit of\r\nis . Finally, answer equals to . Time complexity: Sol2: Count the number\r\nof lucky numbers less than or equal to using bitmask (assign a binary\r\nstring to each lucky number by replacing 4s with 0 and 7s with 1). Time\r\ncomplexity: Code by PrinceOfPersia Another Code by SoroushE Another Code\r\nby Haghani Python Code by Zlobober\r\n",
+    "hint": []
 }

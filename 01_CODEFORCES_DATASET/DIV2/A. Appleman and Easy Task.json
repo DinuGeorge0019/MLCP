@@ -90,7 +90,7 @@
         ]
     },
     "name": "A. Appleman and Easy Task",
-    "statement": "Toastman came up with a very easy task. He gives it to Appleman, but\r\nAppleman doesn\u2019t know how to solve it. Can you help him?Given a\r\ncheckerboard. Each cell of the board has either character \u201d, or\r\ncharacter \u201d. Is it true that each cell of the board has even number of\r\nadjacent cells with \u201d? Two cells of the board are adjacent if they share\r\na side.\r\n",
+    "statement": "Toastman came up with a very easy task. He gives it to Appleman, but\r\nAppleman doesn’t know how to solve it. Can you help him?Given a\r\ncheckerboard. Each cell of the board has either character ”, or\r\ncharacter ”. Is it true that each cell of the board has even number of\r\nadjacent cells with ”? Two cells of the board are adjacent if they share\r\na side.\r\n",
     "solutions": [
         "#include <cstdio>\n#ifdef _WIN32\n#define LLFORMAT \"%I64\"\n#else\n#define LLFORMAT \"%ll\"\n#endif\nconst int MAXN=105;\nint n;\nchar a[MAXN][MAXN];\nvoid init()\n{\n\tscanf(\"%d\",&n);\n\tfor (int i=0;i<n;++i) scanf(\"%s\",a[i]);\n}\nvoid solve()\n{\n\tconst int DR[4][2]={{1,0},{0,1},{-1,0},{0,-1}};\n\tint fl=1;\n\tfor (int i=0;i<n;++i)\n\t\tfor (int j=0;j<n;++j)\n\t\t{\n\t\t\tint sum=0;\n\t\t\tfor (int k=0;k<4;++k)\n\t\t\t{\n\t\t\t\tint nx=i+DR[k][0],ny=j+DR[k][1];\n\t\t\t\tif (nx>=0&&nx<n&&ny>=0&&ny<n) sum+=(a[nx][ny]=='o');\n\t\t\t}\n\t\t\tif (sum%2) fl=0;\n\t\t}\n\tif (fl) printf(\"YES\\n\");\n\telse printf(\"NO\\n\");\n}\nint main()\n{\n#ifndef ONLINE_JUDGE\n\tfreopen(\"A.in\",\"r\",stdin);\n\tfreopen(\"A.out\",\"w\",stdout);\n#endif\n\tinit();\n\tsolve();\n#ifndef ONLINE_JUDGE\n\tfclose(stdin);fclose(stdout);\n#endif\n\treturn 0;\n}\n"
     ],
@@ -104,5 +104,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Appleman and Easy Task.json",
     "editorial_link": "https://codeforces.com/blog/entry/13568",
-    "editorial": "This is a simple implementation problem. You can solve by searching\r\nadjacent cells of every cell.\r\n"
+    "editorial": "This is a simple implementation problem. You can solve by searching\r\nadjacent cells of every cell.\r\n",
+    "hint": []
 }

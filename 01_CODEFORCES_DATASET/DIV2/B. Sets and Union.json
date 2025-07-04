@@ -145,5 +145,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Sets and Union.json",
     "editorial_link": "https://codeforces.com//blog/entry/120792",
-    "editorial": "Something to saySorry for everyone who got FSTs :( We tried our best to\r\nmake pretest strong especially for this problem, but it wasn\u00e2\u0080\u0099t enough.\r\n"
+    "editorial": "Something to saySorry for everyone who got FSTs :( We tried our best to\r\nmake pretest strong especially for this problem, but it wasnât enough.\r\n",
+    "hint": [
+        "Hint 1 Denote , then . Since , and for some .",
+        "Hint 2 Given an integer , can you calculate the maximum size of , such that ?"
+    ]
 }

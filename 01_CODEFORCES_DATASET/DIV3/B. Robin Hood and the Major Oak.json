@@ -184,5 +184,10 @@
     ],
     "dificulty": "800",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Robin Hood and the Major Oak.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Robin Hood and the Major Oak.json",
+    "hint": [
+        "Hint 1 On last day only leaf grown between n-k+1 and n day will remain.",
+        "Hint 2 pow(i,i) is odd if i is odd, even if i is even.",
+        "Hint 3 We need no of odd numbers between n-k+1 and n"
+    ]
 }

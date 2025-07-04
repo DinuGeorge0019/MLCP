@@ -124,5 +124,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Pairs.json",
     "editorial_link": "https://codeforces.com//blog/entry/67241",
-    "editorial": "One of is obviously one of . For example, let\u00e2\u0080\u0099s fix who is from the\r\nfirst pair. Then you need to check that there exists some such that all\r\npairs that don\u00e2\u0080\u0099t contain , contain . For this, you can remember in the\r\narray for each value how many pairs that don\u00e2\u0080\u0099t contain contain this\r\nvalue, and then you need to check that in the array there exists some\r\nvalue that is equal to the number of pairs left.This solution\r\n"
+    "editorial": "One of is obviously one of . For example, letâs fix who is from the\r\nfirst pair. Then you need to check that there exists some such that all\r\npairs that donât contain , contain . For this, you can remember in the\r\narray for each value how many pairs that donât contain contain this\r\nvalue, and then you need to check that in the array there exists some\r\nvalue that is equal to the number of pairs left.This solution\r\n",
+    "hint": []
 }

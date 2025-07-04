@@ -164,7 +164,7 @@
         ]
     },
     "name": "B. Colourblindness",
-    "statement": "Vasya has a grid with 2 rows and n columns. He colours each cell red,\r\ngreen, or blue.Vasya is colourblind and can\u2019t distinguish green from\r\nblue. Determine if Vasya will consider the two rows of the grid to be\r\ncoloured the same.\r\n",
+    "statement": "Vasya has a grid with 2 rows and n columns. He colours each cell red,\r\ngreen, or blue.Vasya is colourblind and can’t distinguish green from\r\nblue. Determine if Vasya will consider the two rows of the grid to be\r\ncoloured the same.\r\n",
     "solutions": [
         "#include<iostream>\n //#pragma GCC optimize(3)\n#include<iostream>\n#include<climits>\n#include<cstdio>\n#include<cstring>\n#include<cmath>\n#include<ctime>\n#include<algorithm>\n#include<queue>\n#include<map>\n#include<set>\n#include<vector>\n#define int long long\n//#define double long double\nusing namespace std;\nconst int INF=LLONG_MAX/2;\nconst long long mod=1e9+7;\n//const double Pai=acos(-1);\nint T,n,L,R,sum,x,y;\nint a[1000005];\nchar s[1000005],s2[1000005];\nsigned main() {\n\tscanf(\"%d\",&T);\n\twhile(T--) {\n\t\tint fg=0;\n\t\tscanf(\"%d\",&n);\n\t\tscanf(\"%s%s\",s+1,s2+1);\n\t\tfor(int i=1;i<=n;i++) {\n\t\t\tif(s[i]=='R'&&s2[i]!='R') fg=1;\n\t\t\tif(s2[i]=='R'&&s[i]!='R') fg=1;\n\t\t}\n\t\tif(!fg) puts(\"YES\");\n\t\telse puts(\"NO\");\n\t}\n\treturn 0;\n}"
     ],
@@ -177,5 +177,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\B. Colourblindness.json",
     "editorial_link": "https://codeforces.com//blog/entry/106478",
-    "editorial": "Here are two solutions. Iterate through the string character by\r\ncharacter. If , then ; otherwise, if or , then or . If the statement is\r\nfalse for any , the answer is . Otherwise it is . Replace all with ,\r\nsince they are the same anyway. Then just check if the two strings are\r\nequal.In either case the complexity is per testcase.\r\n"
+    "editorial": "Here are two solutions. Iterate through the string character by\r\ncharacter. If , then ; otherwise, if or , then or . If the statement is\r\nfalse for any , the answer is . Otherwise it is . Replace all with ,\r\nsince they are the same anyway. Then just check if the two strings are\r\nequal.In either case the complexity is per testcase.\r\n",
+    "hint": []
 }

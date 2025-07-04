@@ -155,5 +155,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\F. Ant colony.json",
     "editorial_link": "https://codeforces.com//blog/entry/14136",
-    "editorial": "For each subsequence we must find how many queens we have. A value is\r\n\"queen\" only if is the GCD of (). Also, we must notice that the GCD of\r\n() can be only the minimum value from (). So for each query we search in\r\na data structure (a segment tree or a RMQ) the minimum value and the GCD\r\nof () and if these two values are equal then we output the answer ,\r\nwhere is the number of values in the subsequence equal to the GCD and\r\nthe minimum value. The complexity of this solution is , where is the\r\nmaximum value of .\r\n"
+    "editorial": "For each subsequence we must find how many queens we have. A value is\r\n\"queen\" only if is the GCD of (). Also, we must notice that the GCD of\r\n() can be only the minimum value from (). So for each query we search in\r\na data structure (a segment tree or a RMQ) the minimum value and the GCD\r\nof () and if these two values are equal then we output the answer ,\r\nwhere is the number of values in the subsequence equal to the GCD and\r\nthe minimum value. The complexity of this solution is , where is the\r\nmaximum value of .\r\n",
+    "hint": []
 }

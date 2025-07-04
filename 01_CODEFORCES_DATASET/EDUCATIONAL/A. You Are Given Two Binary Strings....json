@@ -136,7 +136,7 @@
         ]
     },
     "name": "A. You Are Given Two Binary Strings...",
-    "statement": "You are given two binary strings x and y, which are binary\r\nrepresentations of some two integers (let\u2019s denote these integers as\r\nf(x) and f(y)). You can choose any integer k\r\nge 0, calculate the expression s_k = f(x) + f(y)\r\ncdot 2^k and write the binary representation of s_k in (let\u2019s denote it\r\nas rev_k). For example, let x = 1010 and y = 11; you\u2019ve chosen k = 1\r\nand, since 2^1 = 10_2, so s_k = 1010_2 + 11_2\r\ncdot 10_2 = 10000_2 and rev_k = 00001.For given x and y, you need to\r\nchoose such k that rev_k is (read notes if you don\u2019t know what does\r\n\"lexicographically\" means).It\u2019s guaranteed that, with given constraints,\r\nk exists and is finite.\r\n",
+    "statement": "You are given two binary strings x and y, which are binary\r\nrepresentations of some two integers (let’s denote these integers as\r\nf(x) and f(y)). You can choose any integer k\r\nge 0, calculate the expression s_k = f(x) + f(y)\r\ncdot 2^k and write the binary representation of s_k in (let’s denote it\r\nas rev_k). For example, let x = 1010 and y = 11; you’ve chosen k = 1\r\nand, since 2^1 = 10_2, so s_k = 1010_2 + 11_2\r\ncdot 10_2 = 10000_2 and rev_k = 00001.For given x and y, you need to\r\nchoose such k that rev_k is (read notes if you don’t know what does\r\n\"lexicographically\" means).It’s guaranteed that, with given constraints,\r\nk exists and is finite.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\nchar b[101010],c[201010];\nint main(){\n\tint T;scanf(\"%d\",&T);\n\twhile(T--){\n\t\tscanf(\"%s%s\",b,c);\n\t\tint n=strlen(b),m=strlen(c);\n\t\treverse(b,b+n);reverse(c,c+m);\n\t\tint s=0;\n\t\twhile(c[s]=='0')s++;\n\t\tint s2=s;\n\t\twhile(b[s2]=='0')s2++;\n\t\tint j=s2-s;\n\t\tprintf(\"%d\\n\",j);\n\t}\n}"
     ],
@@ -150,5 +150,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. You Are Given Two Binary Strings....json",
     "editorial_link": "https://codeforces.com/blog/entry/68972",
-    "editorial": "Multiplying by power of is \"shift left\" binary operation (you, probably,\r\nshould know it). Reverse and for the simplicity and look at leftmost in\r\n(let\u00e2\u0080\u0099s denote its position as ).If you move it to in then you make the\r\nlexicographically bigger than the reverse of . So you should move it to\r\nin too. You can choose any with position .Let be the minimum position of\r\nin , such that . You must move to , otherwise the in still be present in\r\nand it will be not optimal.So, the solution is next: reverse and , find\r\n, find , print .\r\n"
+    "editorial": "Multiplying by power of is \"shift left\" binary operation (you, probably,\r\nshould know it). Reverse and for the simplicity and look at leftmost in\r\n(letâs denote its position as ).If you move it to in then you make the\r\nlexicographically bigger than the reverse of . So you should move it to\r\nin too. You can choose any with position .Let be the minimum position of\r\nin , such that . You must move to , otherwise the in still be present in\r\nand it will be not optimal.So, the solution is next: reverse and , find\r\n, find , print .\r\n",
+    "hint": []
 }

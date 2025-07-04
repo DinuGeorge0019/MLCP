@@ -181,5 +181,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. Infinite Prefixes.json",
     "editorial_link": "https://codeforces.com//blog/entry/73467",
-    "editorial": "Let\u00e2\u0080\u0099s denote a prefix of length as . We can note that each where and is\r\na concatenation. Then balance of prefix of length is equal to .Now there\r\ntwo cases: is equal to or not. If then if exist such () that then for\r\neach and answer is .Otherwise, for each such there will no more than one\r\npossible : since there are zero or one solution to the equation . The\r\nsolution exists if and only if and . So, just precalc and for each check\r\nthe equation.\r\n"
+    "editorial": "Letâs denote a prefix of length as . We can note that each where and is\r\na concatenation. Then balance of prefix of length is equal to .Now there\r\ntwo cases: is equal to or not. If then if exist such () that then for\r\neach and answer is .Otherwise, for each such there will no more than one\r\npossible : since there are zero or one solution to the equation . The\r\nsolution exists if and only if and . So, just precalc and for each check\r\nthe equation.\r\n",
+    "hint": []
 }

@@ -95,5 +95,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Elimination.json",
     "editorial_link": "https://codeforces.com//blog/entry/11730",
-    "editorial": "The first thing, that you need to mention, is that if , then the answer\r\nis equal to 0. After that you need to take at least people. There\u00e2\u0080\u0099s\r\nthree possibilities to do that: Also in this problem it is possible to\r\nwrite the solution, which check every possible combinations of the\r\nnumbers of main and elimination rounds. Solution: 6396283\r\n"
+    "editorial": "The first thing, that you need to mention, is that if , then the answer\r\nis equal to 0. After that you need to take at least people. Thereâs\r\nthree possibilities to do that: Also in this problem it is possible to\r\nwrite the solution, which check every possible combinations of the\r\nnumbers of main and elimination rounds. Solution: 6396283\r\n",
+    "hint": []
 }

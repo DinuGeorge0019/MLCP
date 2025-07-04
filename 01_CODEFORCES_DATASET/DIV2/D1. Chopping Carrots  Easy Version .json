@@ -165,5 +165,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D1. Chopping Carrots  Easy Version .json",
     "editorial_link": "https://codeforces.com//blog/entry/105008",
-    "editorial": "Let\u00e2\u0080\u0099s iterate over integers . We\u00e2\u0080\u0099ll construct an answer assuming that\r\nthe minimum value of is at least .For all , we set : the maximum value\r\nsuch that and (if we can just set )). Now, we find the value of . This\r\ngives the answer when the minimum value of is .Finally, we compute this\r\nfor all . This gives a time solution per test case.\r\n"
+    "editorial": "Letâs iterate over integers . Weâll construct an answer assuming that\r\nthe minimum value of is at least .For all , we set : the maximum value\r\nsuch that and (if we can just set )). Now, we find the value of . This\r\ngives the answer when the minimum value of is .Finally, we compute this\r\nfor all . This gives a time solution per test case.\r\n",
+    "hint": []
 }

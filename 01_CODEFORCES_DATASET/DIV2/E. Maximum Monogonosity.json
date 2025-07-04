@@ -139,5 +139,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Maximum Monogonosity.json",
     "editorial_link": "https://codeforces.com//blog/entry/119287",
-    "editorial": "TutorialLet\u00e2\u0080\u0099s call the value of a segment .Let\u00e2\u0080\u0099s write maximum value of\r\nsegments of total length that end before .The obvious way to recalc is\r\nthe following:.This works in and is too slow.Now let\u00e2\u0080\u0099s consider the\r\nfollowing: instead of getting the absolute value of segment , we\r\nconsider the maximum of the following four combinations: , , , . We can\r\nsee that this always gives us the correct answer to the absolute value,\r\nsince we check all of the possibilities.Now we can look at out dp states\r\nas a table, and notice that we recalc over the diagonal (we recalc over\r\nall states that have the same value of n1 k1). Now, for each \"diagonal\",\r\nwe maintain four maximum combinations: , and when we want to recalc\r\nstate , we just consider all of the four possibilities.\r\n"
+    "editorial": "TutorialLetâs call the value of a segment .Letâs write maximum value of\r\nsegments of total length that end before .The obvious way to recalc is\r\nthe following:.This works in and is too slow.Now letâs consider the\r\nfollowing: instead of getting the absolute value of segment , we\r\nconsider the maximum of the following four combinations: , , , . We can\r\nsee that this always gives us the correct answer to the absolute value,\r\nsince we check all of the possibilities.Now we can look at out dp states\r\nas a table, and notice that we recalc over the diagonal (we recalc over\r\nall states that have the same value of n1 k1). Now, for each \"diagonal\",\r\nwe maintain four maximum combinations: , and when we want to recalc\r\nstate , we just consider all of the four possibilities.\r\n",
+    "hint": [
+        "Hint 1 Maybe we can relax some conditions?",
+        "Hint 2 Do we really need to always correctly calculate all sums?",
+        "Hint 3 Optimize the obvious dp."
+    ]
 }

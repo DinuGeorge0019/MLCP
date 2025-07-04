@@ -109,5 +109,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Little Elephant and Bits.json",
     "editorial_link": "https://codeforces.com//blog/entry/6213",
-    "editorial": "It's pretty easy to notice that you need to delete the first (from the left) 0-digit. The only catchy case is 111...111 \u0097 here you need to delete any of 1-digits.\n"
+    "editorial": "It's pretty easy to notice that you need to delete the first (from the left) 0-digit. The only catchy case is 111...111  here you need to delete any of 1-digits.\n",
+    "hint": []
 }

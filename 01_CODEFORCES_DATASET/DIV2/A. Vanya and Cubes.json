@@ -127,5 +127,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Vanya and Cubes.json",
     "editorial_link": "https://codeforces.com/blog/entry/14957",
-    "editorial": "In fact need to do what is asked in the statement. We need to find in a\r\ncycle the maximum height , counting, how many blocks must be in -th row\r\nand adding these values to the result. Iterate until the result is not\r\ngreater than . Jury\u00e2\u0080\u0099s solution: 8924831\r\n"
+    "editorial": "In fact need to do what is asked in the statement. We need to find in a\r\ncycle the maximum height , counting, how many blocks must be in -th row\r\nand adding these values to the result. Iterate until the result is not\r\ngreater than . Juryâs solution: 8924831\r\n",
+    "hint": []
 }

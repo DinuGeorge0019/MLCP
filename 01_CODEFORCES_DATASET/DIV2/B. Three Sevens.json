@@ -145,5 +145,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Three Sevens.json",
     "editorial_link": "https://codeforces.com//blog/entry/114208",
-    "editorial": "Let\u00e2\u0080\u0099s calculate the array , where is the last day of the lottery in\r\nwhich the person participated. Then the only day when could be a winner\r\nis the day . Then on the day of , only the person with can be the\r\nwinner. It is also clear that if there are several such participants for\r\nthe day , you can choose any of them as the winner, since these\r\nparticipants cannot be winners on any other days. In total, we need to\r\ngo through all the days, if for some day there are no participants with\r\nequal to this day, then the answer is . Otherwise, we choose any\r\nparticipant with as the winner on the day of .\r\n"
+    "editorial": "Letâs calculate the array , where is the last day of the lottery in\r\nwhich the person participated. Then the only day when could be a winner\r\nis the day . Then on the day of , only the person with can be the\r\nwinner. It is also clear that if there are several such participants for\r\nthe day , you can choose any of them as the winner, since these\r\nparticipants cannot be winners on any other days. In total, we need to\r\ngo through all the days, if for some day there are no participants with\r\nequal to this day, then the answer is . Otherwise, we choose any\r\nparticipant with as the winner on the day of .\r\n",
+    "hint": [
+        "Hint 1 Let the participant with the number participate in the lottery in days . On what days could the participant be chosen as the winner so as not to break the conditions?",
+        "Hint 2 If there are several candidates for the lottery winner on the day of (who did not participate in the days from to ), does it matter which of them we choose as a winner?"
+    ]
 }

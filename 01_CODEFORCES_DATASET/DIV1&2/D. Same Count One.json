@@ -186,5 +186,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\D. Same Count One.json",
     "editorial_link": "https://codeforces.com//blog/entry/110184",
-    "editorial": "SolutionConsidering that we need to make the number of in each array the\r\nsame, we should calculate the sum of , and every array has . Because\r\nonly the same position of two different arrays can be selected for\r\nexchange each time, for a position , we traverse each array each time.\r\nIf the number of in this array is not enough, then we need to turn some\r\ninto ; If the number of in this array is more than we need, then some\r\nshould be turned into . It can be proved that as long as the total\r\nnumber of is a multiple of , the number of in each array can be made the\r\nsame through exchanges.\r\n"
+    "editorial": "SolutionConsidering that we need to make the number of in each array the\r\nsame, we should calculate the sum of , and every array has . Because\r\nonly the same position of two different arrays can be selected for\r\nexchange each time, for a position , we traverse each array each time.\r\nIf the number of in this array is not enough, then we need to turn some\r\ninto ; If the number of in this array is more than we need, then some\r\nshould be turned into . It can be proved that as long as the total\r\nnumber of is a multiple of , the number of in each array can be made the\r\nsame through exchanges.\r\n",
+    "hint": []
 }

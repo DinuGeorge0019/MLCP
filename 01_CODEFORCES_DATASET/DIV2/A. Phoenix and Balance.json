@@ -144,5 +144,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Phoenix and Balance.json",
     "editorial_link": "https://codeforces.com//blog/entry/76555",
-    "editorial": "We observe that the coin with the weight is greater than the sum of all\r\nthe other weights combined. This is true because . Therefore, the pile\r\nthat has the heaviest coin will always weigh more. To minimize the\r\nweight differences, we put the lightest coins into the pile with the\r\nheaviest coin. The answer will be .Time complexity for each test case:\r\nYou can also solve the problem in by simplifying the mathematical\r\nexpression.\r\n"
+    "editorial": "We observe that the coin with the weight is greater than the sum of all\r\nthe other weights combined. This is true because . Therefore, the pile\r\nthat has the heaviest coin will always weigh more. To minimize the\r\nweight differences, we put the lightest coins into the pile with the\r\nheaviest coin. The answer will be .Time complexity for each test case:\r\nYou can also solve the problem in by simplifying the mathematical\r\nexpression.\r\n",
+    "hint": []
 }

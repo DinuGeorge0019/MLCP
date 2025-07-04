@@ -89,5 +89,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Maxim and Matrix.json",
     "editorial_link": "https://codeforces.com//blog/entry/6398",
-    "editorial": "For fixed m, the sum in the last row will be 2^(bit_count(m+1)-1). So now if T is not power of 2, answer is 0. Else we can find number of bits that we need. And know we have stndart problem. How many numbers form 2 to n+1 have exactly P bits in binary presentation of the number. It is well known problem can be done using binomial cooficients. We will count number of numebers smaller then out number with fixed prefix.\n"
+    "editorial": "For fixed m, the sum in the last row will be 2^(bit_count(m+1)-1). So now if T is not power of 2, answer is 0. Else we can find number of bits that we need. And know we have stndart problem. How many numbers form 2 to n+1 have exactly P bits in binary presentation of the number. It is well known problem can be done using binomial cooficients. We will count number of numebers smaller then out number with fixed prefix.\n",
+    "hint": []
 }

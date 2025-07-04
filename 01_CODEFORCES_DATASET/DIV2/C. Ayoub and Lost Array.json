@@ -133,5 +133,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Ayoub and Lost Array.json",
     "editorial_link": "https://codeforces.com//blog/entry/64664",
-    "editorial": "Since we need the sum of the array to be divisible by , we don\u00e2\u0080\u0099t care\r\nabout the numbers themselves:We care about how many numbers such that or\r\nor and we count them by simple formulas.For example, let\u00e2\u0080\u0099s count the\r\nnumber of with remainder modulo , hence for some integer .Then we have ,\r\nand then .It is easy to count number of such then.After counting all\r\nnumbers we can solve the problem using dynamic programming. Let\u00e2\u0080\u0099s say\r\nthat dp[i][j] represents that the sum of the first numbers modulo is\r\nequal to . There are states and transitions and the answer will be at\r\ndp[n][0].\r\n"
+    "editorial": "Since we need the sum of the array to be divisible by , we donât care\r\nabout the numbers themselves:We care about how many numbers such that or\r\nor and we count them by simple formulas.For example, letâs count the\r\nnumber of with remainder modulo , hence for some integer .Then we have ,\r\nand then .It is easy to count number of such then.After counting all\r\nnumbers we can solve the problem using dynamic programming. Letâs say\r\nthat dp[i][j] represents that the sum of the first numbers modulo is\r\nequal to . There are states and transitions and the answer will be at\r\ndp[n][0].\r\n",
+    "hint": []
 }

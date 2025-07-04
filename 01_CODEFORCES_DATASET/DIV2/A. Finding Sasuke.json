@@ -114,7 +114,7 @@
         ]
     },
     "name": "A. Finding Sasuke",
-    "statement": "Naruto has sneaked into the Orochimaru\u2019s lair and is now looking for\r\nSasuke. There are T rooms there. Every room has a door into it, each\r\ndoor can be described by the number n of seals on it and their integer\r\nenergies a_1, a_2, ..., a_n. All energies a_i are and do not exceed 100\r\nby absolute value. Also, .In order to open a door, Naruto must find such\r\nn seals with integer energies b_1, b_2, ..., b_n that the following\r\nequality holds: a_{1}\r\ncdot b_{1} + a_{2}\r\ncdot b_{2} + ... + a_{n}\r\ncdot b_{n} = 0. All b_i must as well as a_i are, and also by absolute\r\nvalue. Please find required seals for every room there.\r\n",
+    "statement": "Naruto has sneaked into the Orochimaru’s lair and is now looking for\r\nSasuke. There are T rooms there. Every room has a door into it, each\r\ndoor can be described by the number n of seals on it and their integer\r\nenergies a_1, a_2, ..., a_n. All energies a_i are and do not exceed 100\r\nby absolute value. Also, .In order to open a door, Naruto must find such\r\nn seals with integer energies b_1, b_2, ..., b_n that the following\r\nequality holds: a_{1}\r\ncdot b_{1} + a_{2}\r\ncdot b_{2} + ... + a_{n}\r\ncdot b_{n} = 0. All b_i must as well as a_i are, and also by absolute\r\nvalue. Please find required seals for every room there.\r\n",
     "solutions": [
         "#include <iostream>\n#include <algorithm>\n#include <string>\n#include <cmath>\n#include <vector>\n#include <set>\n#include <map>\n#include <queue>\n#include <stack>\n#include <iomanip>\n#include <cassert>\n#include <cstring>\n#include <sstream>\n#include <numeric>\n#include <cstdio>\n#include <bitset>\n\nusing namespace std;\n\ntypedef long long ll;\ntypedef long double ld;\ntypedef pair <int, int> pii;\n\n#define pb push_back\n#define F first\n#define S second\n#define _sz(x) ((int)x.size())\n\nconst int N = 100 + 20;\n\nint T;\n\nint n, a[N];\n\nint main()\n{\n    ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);\n\n    cin >> T;\n\n    while (T--) {\n        cin >> n;\n        for (int i = 0; i < n; i++) {\n            cin >> a[i];\n        }\n\n        for (int i = 0; i < n; i+= 2) {\n            cout << a[i + 1] << ' ' << -a[i] << ' ';\n        }\n        cout << '\\n';\n    }\n}\n"
     ],
@@ -127,5 +127,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Finding Sasuke.json",
     "editorial_link": "https://codeforces.com//blog/entry/84056",
-    "editorial": "The following is always a valid answer: ?a2\n, a1\n, ?a4\n, a3\n, ..., ?an\n, an?1\n."
+    "editorial": "The following is always a valid answer: ?a2\n, a1\n, ?a4\n, a3\n, ..., ?an\n, an?1\n.",
+    "hint": []
 }

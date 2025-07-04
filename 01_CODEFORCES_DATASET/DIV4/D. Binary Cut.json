@@ -171,7 +171,7 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/129364",
-    "editorial": "First, note that it\u00e2\u0080\u0099s always optimal to divide the string into \"blocks\"\r\nof equal values; there is no use having two strings when we can just\r\nhave and use fewer pieces.Now note that to sort the string, we need all\r\nblocks of to come before all blocks of . The only way that two blocks\r\ncan join is if we have a block of s before a block of s, and we can have\r\nat most one such block. That is, all strings look like: So the answer is\r\nthe number of blocks, but we should subtract if a substring exists\r\n(because then we can make the center block above). The time complexity\r\nis .For example, for the string , we can use three pieces: .\r\n",
+    "editorial": "First, note that itâs always optimal to divide the string into \"blocks\"\r\nof equal values; there is no use having two strings when we can just\r\nhave and use fewer pieces.Now note that to sort the string, we need all\r\nblocks of to come before all blocks of . The only way that two blocks\r\ncan join is if we have a block of s before a block of s, and we can have\r\nat most one such block. That is, all strings look like: So the answer is\r\nthe number of blocks, but we should subtract if a substring exists\r\n(because then we can make the center block above). The time complexity\r\nis .For example, for the string , we can use three pieces: .\r\n",
     "name": "D. Binary Cut",
     "statement": "You are given a binary string^{\r\ndagger}. Please find the minimum number of pieces you need to cut it\r\ninto, so that the resulting pieces can be rearranged into a sorted\r\nbinary string. Note that: each character must lie in exactly one of the\r\npieces; the pieces must be contiguous substrings of the original string;\r\nyou must use all the pieces in the rearrangement. ^{\r\ndagger} A is a string consisting of characters\r\ntexttt{0} and\r\ntexttt{1}. A is a binary string such that all characters\r\ntexttt{0} come before all characters\r\ntexttt{1}.\r\n",
     "solutions": [
@@ -188,5 +188,6 @@
     ],
     "dificulty": "1100",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\D. Binary Cut.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\D. Binary Cut.json",
+    "hint": []
 }

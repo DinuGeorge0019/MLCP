@@ -136,5 +136,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Hit the Lottery.json",
     "editorial_link": "https://codeforces.com//blog/entry/60217",
-    "editorial": "The problem is to minimize given that It is pretty simple to see that we\r\ncan operate greedily: take as many as we can, then , then , etc.The\r\nsolutions works because each number in the sequence is a divisor of the\r\nnumber after it.\r\n"
+    "editorial": "The problem is to minimize given that It is pretty simple to see that we\r\ncan operate greedily: take as many as we can, then , then , etc.The\r\nsolutions works because each number in the sequence is a divisor of the\r\nnumber after it.\r\n",
+    "hint": []
 }

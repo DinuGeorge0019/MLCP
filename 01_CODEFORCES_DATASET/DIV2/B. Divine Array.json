@@ -154,5 +154,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Divine Array.json",
     "editorial_link": "https://codeforces.com//blog/entry/95865",
-    "editorial": "It can be shown that after at most steps of transformation, array\r\nbecomes repetitive. There is even a better lower bound: it can be shown\r\nthat after at most steps becomes repetitive, so we use either of these\r\ntwo facts to simulate the process and answer the queries.\r\n"
+    "editorial": "It can be shown that after at most steps of transformation, array\r\nbecomes repetitive. There is even a better lower bound: it can be shown\r\nthat after at most steps becomes repetitive, so we use either of these\r\ntwo facts to simulate the process and answer the queries.\r\n",
+    "hint": []
 }

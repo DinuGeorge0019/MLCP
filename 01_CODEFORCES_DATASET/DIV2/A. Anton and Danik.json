@@ -119,7 +119,7 @@
         ]
     },
     "name": "A. Anton and Danik",
-    "statement": "Anton likes to play chess, and so does his friend Danik.Once they have\r\nplayed games in a row. For each game it\u2019s known who was the winner Anton\r\nor Danik. None of the games ended with a tie.Now Anton wonders, who won\r\nmore games, he or Danik? Help him determine this.\r\n",
+    "statement": "Anton likes to play chess, and so does his friend Danik.Once they have\r\nplayed games in a row. For each game it’s known who was the winner Anton\r\nor Danik. None of the games ended with a tie.Now Anton wonders, who won\r\nmore games, he or Danik? Help him determine this.\r\n",
     "solutions": [
         "#include <iostream>\n#include <fstream>\n#include <list>\n#include <stack>\n#include <deque>\n#include <utility>\n#include <queue>\n#include <set>\n#include <map>\n#include <bitset>\n#include <vector>\n#include <cmath>\n#include <string>\n#include <algorithm>\n#include <iomanip>\n#include <ctime>\n#include <iterator>\n#include <cstdio>\n#include <cstring>\n#include <cstdlib>\n\n\nusing namespace std;\n\ntypedef long long ll;\ntypedef long double ld;\ntypedef unsigned long long ull;\n\n#define f first\n#define s second\n#define pb push_back\n#define mp make_pair\n\nconst int maxn = 100500;\nconst int inf = 2e9;\nconst double eps = 1e-8;\nconst int base = 1073676287;\n\nchar t[maxn];\n\nint main()\n{\n    srand( time( 0 ) );\n    // freopen( \"input.txt\", \"r\", stdin );\n    // freopen( \"output.txt\", \"w\", stdout );\n    // ios_base::sync_with_stdio(false);\n    int n;\n    scanf ( \"%d\\n\", &n );\n    gets( t );\n    int bal = 0;\n    for ( int j = 0; j < n; j++ )\n    \tbal += t[j] == 'A' ? 1 : -1;\n    if ( bal > 0 ) {\n    \tputs( \"Anton\" );\n    \treturn 0;\n    }\n    if ( bal < 0 ) {\n    \tputs( \"Danik\" );\n    \treturn 0;\n    }\n    puts( \"Friendship\" );\n    return 0;\n}\n"
     ],
@@ -133,5 +133,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Anton and Danik.json",
     "editorial_link": "https://codeforces.com//blog/entry/48397",
-    "editorial": "Let will be amount of characters \"\" in the string and will be amount of\r\ncharacters \"\" in the string. Then, if , we print \"\". If , we print \"\".\r\nIf , we print \"\".Time complexity is .\r\n"
+    "editorial": "Let will be amount of characters \"\" in the string and will be amount of\r\ncharacters \"\" in the string. Then, if , we print \"\". If , we print \"\".\r\nIf , we print \"\".Time complexity is .\r\n",
+    "hint": []
 }

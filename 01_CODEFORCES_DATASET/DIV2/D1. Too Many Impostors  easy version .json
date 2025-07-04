@@ -136,5 +136,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D1. Too Many Impostors  easy version .json",
     "editorial_link": "https://codeforces.com//blog/entry/97920",
-    "editorial": "Key observation: if result of query () result of query (), since\nand are common, players and have different roles. Additionally, if\nresult of query () = then player is a crewmate (and player is an\nimpostor), vice versa.The first step is to query players (), (), , (),\n().If the results of any two adjacent queries (or queries () and ()) are\ndifferent, we instantly know the roles of the two players that are only\nincluded in one query one is a crewmate, one is an impostor. Since the\nnumber of impostors and crewmates satisfy and , there must be one pair\nof adjacent queries that are different.After we know one crewmate and\none impostor (let\u00e2\u0080\u0099s call them , ), we can query these two players with\neach one of the rest of the players. If a query () (, and ) returns ,\nplayer is an impostor, else player is a crewmate.In total, queries are\nused.\n"
+    "editorial": "Key observation: if result of query () result of query (), since\nand are common, players and have different roles. Additionally, if\nresult of query () = then player is a crewmate (and player is an\nimpostor), vice versa.The first step is to query players (), (), , (),\n().If the results of any two adjacent queries (or queries () and ()) are\ndifferent, we instantly know the roles of the two players that are only\nincluded in one query one is a crewmate, one is an impostor. Since the\nnumber of impostors and crewmates satisfy and , there must be one pair\nof adjacent queries that are different.After we know one crewmate and\none impostor (letâs call them , ), we can query these two players with\neach one of the rest of the players. If a query () (, and ) returns ,\nplayer is an impostor, else player is a crewmate.In total, queries are\nused.\n",
+    "hint": [
+        "Hint 1 The weird constraint, , is crucial.",
+        "Hint 2 If you know the index of one crewmate and one impostor, how to find the roles of other players in exactly queries?",
+        "Hint 3 Query players ( ), ( ), , ( ), ( ). After that, you can surely find out the index of one crewmate and one impostor. Try to find out how."
+    ]
 }

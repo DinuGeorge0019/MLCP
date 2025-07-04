@@ -204,5 +204,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\C. Remove the Bracket.json",
     "editorial_link": "https://codeforces.com//blog/entry/112009",
-    "editorial": "tells us either or , so pickable is a consecutive range.Just consider ,\r\nremove the bracket then it turns to . When , the result is constant, so\r\nwe assume that . If does not hit the maximum, increase by and decrease\r\nby , the result will increase by and decrease by , which means decrease\r\nby , always better. So will either hit the maximum or the minimum. Thus,\r\neach number has only two ways of rewriting that might be optimal.This\r\ncan be done with DP.\r\n"
+    "editorial": "tells us either or , so pickable is a consecutive range.Just consider ,\r\nremove the bracket then it turns to . When , the result is constant, so\r\nwe assume that . If does not hit the maximum, increase by and decrease\r\nby , the result will increase by and decrease by , which means decrease\r\nby , always better. So will either hit the maximum or the minimum. Thus,\r\neach number has only two ways of rewriting that might be optimal.This\r\ncan be done with DP.\r\n",
+    "hint": []
 }

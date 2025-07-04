@@ -157,5 +157,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. PIN Codes.json",
     "editorial_link": "https://codeforces.com/blog/entry/71844?locale=en",
-    "editorial": "Group all the numbers into groups of equals PIN-Codes. Note that the\r\nsize of each such group does not exceed . Therefore, in each PIN-Code we\r\nneed to change no more than digits. If the group consists of element,\r\nthen we do nothing, otherwise, we take all the PIN-codes except one from\r\nthis group and change exactly one digit in them so that the new PIN-code\r\nbecomes unique.\r\n"
+    "editorial": "Group all the numbers into groups of equals PIN-Codes. Note that the\r\nsize of each such group does not exceed . Therefore, in each PIN-Code we\r\nneed to change no more than digits. If the group consists of element,\r\nthen we do nothing, otherwise, we take all the PIN-codes except one from\r\nthis group and change exactly one digit in them so that the new PIN-code\r\nbecomes unique.\r\n",
+    "hint": []
 }

@@ -161,5 +161,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Coins.json",
     "editorial_link": "https://codeforces.com//blog/entry/114854",
-    "editorial": "Note that coins with denomination can be replaced with coins with\r\ndenomination . So, if the answer exists, then there is also such a set\r\nof coins, where there is no more than one coin with denomination .\r\nTherefore, it is enough to iterate through the number of coins with\r\ndenomination (from to ) and check that the remaining number is\r\nnon-negative and even (i. e. it can be represented as some number of\r\ncoins with denomination ).\r\n"
+    "editorial": "Note that coins with denomination can be replaced with coins with\r\ndenomination . So, if the answer exists, then there is also such a set\r\nof coins, where there is no more than one coin with denomination .\r\nTherefore, it is enough to iterate through the number of coins with\r\ndenomination (from to ) and check that the remaining number is\r\nnon-negative and even (i. e. it can be represented as some number of\r\ncoins with denomination ).\r\n",
+    "hint": []
 }

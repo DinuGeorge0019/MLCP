@@ -124,5 +124,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Cashier.json",
     "editorial_link": "https://codeforces.com//blog/entry/62238",
-    "editorial": "There are only possible segments of time when Vasya can take breaks:\r\nbetween the consecutive clients, before the first client, and after the\r\nlast client. If the length of the -th such segment is , Vasya may take\r\nat most breaks, so we just sum those values over the possible segments.\r\nTime complexity is .\r\n"
+    "editorial": "There are only possible segments of time when Vasya can take breaks:\r\nbetween the consecutive clients, before the first client, and after the\r\nlast client. If the length of the -th such segment is , Vasya may take\r\nat most breaks, so we just sum those values over the possible segments.\r\nTime complexity is .\r\n",
+    "hint": []
 }

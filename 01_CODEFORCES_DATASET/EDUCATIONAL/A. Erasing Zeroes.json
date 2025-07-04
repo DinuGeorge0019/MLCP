@@ -184,7 +184,7 @@
         ]
     },
     "name": "A. Erasing Zeroes",
-    "statement": "You are given a string s. Each character is either or .You want all \u2019s\r\nin the string to form a contiguous subsegment. For example, if the\r\nstring is , , or , then all \u2019s form a contiguous subsegment, and if the\r\nstring is , or , then this condition is not met.You may erase some\r\n(possibly none) \u2019s from the string. What is the minimum number of \u2019s\r\nthat you have to erase?\r\n",
+    "statement": "You are given a string s. Each character is either or .You want all ’s\r\nin the string to form a contiguous subsegment. For example, if the\r\nstring is , , or , then all ’s form a contiguous subsegment, and if the\r\nstring is , or , then this condition is not met.You may erase some\r\n(possibly none) ’s from the string. What is the minimum number of ’s\r\nthat you have to erase?\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\n\n#define ll long long\n#define ar array\n\nint main() {\n\tios::sync_with_stdio(0);\n\tcin.tie(0);\n\n\tint t;\n\tcin >> t;\n\twhile(t--) {\n\t\tstring s;\n\t\tcin >> s;\n\t\tint l=0, r=s.size()-1;\n\t\twhile(l<s.size()&&s[l]=='0')\n\t\t\t++l;\n\t\twhile(~r&&s[r]=='0')\n\t\t\t--r;\n\t\tint c=0;\n\t\tfor(int i=l; i<=r; ++i)\n\t\t\tc+=s[i]!='1';\n\t\tcout << c << \"\\n\";\n\t}\n}"
     ],
@@ -198,5 +198,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Erasing Zeroes.json",
     "editorial_link": "https://codeforces.com//blog/entry/73872",
-    "editorial": "Let\u00e2\u0080\u0099s find the first and the last position of -characters (denote them\r\nas and respectively). Since the can\u00e2\u0080\u0099t delete -characters, all\r\n-characters between and will remain. So, we have to delete all\r\n-characters between and .\r\n"
+    "editorial": "Letâs find the first and the last position of -characters (denote them\r\nas and respectively). Since the canât delete -characters, all\r\n-characters between and will remain. So, we have to delete all\r\n-characters between and .\r\n",
+    "hint": []
 }

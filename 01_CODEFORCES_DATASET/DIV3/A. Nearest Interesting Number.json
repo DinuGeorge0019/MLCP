@@ -147,5 +147,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Nearest Interesting Number.json",
     "editorial_link": "https://codeforces.com//blog/entry/68003",
-    "editorial": "Even if we will iterate over all possible numbers starting from and\r\ncheck if sum of digits of the current number is divisible by , we will\r\nfind the answer very fast. The maximum possible number of iterations is\r\nno more than .\r\n"
+    "editorial": "Even if we will iterate over all possible numbers starting from and\r\ncheck if sum of digits of the current number is divisible by , we will\r\nfind the answer very fast. The maximum possible number of iterations is\r\nno more than .\r\n",
+    "hint": []
 }

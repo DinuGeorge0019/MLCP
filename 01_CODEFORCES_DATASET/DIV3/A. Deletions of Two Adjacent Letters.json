@@ -165,5 +165,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Deletions of Two Adjacent Letters.json",
     "editorial_link": "https://codeforces.com//blog/entry/100712",
-    "editorial": "There will be one character left in the end, so we have to delete all\r\nthe characters going before and after it. That is, delete some prefix\r\nand suffix. Since we always delete some substring of length , we can\r\nonly delete the prefix and suffix of even length, it means the answer is\r\nin the case when there is an odd position in with the character and\r\notherwise.\r\n"
+    "editorial": "There will be one character left in the end, so we have to delete all\r\nthe characters going before and after it. That is, delete some prefix\r\nand suffix. Since we always delete some substring of length , we can\r\nonly delete the prefix and suffix of even length, it means the answer is\r\nin the case when there is an odd position in with the character and\r\notherwise.\r\n",
+    "hint": []
 }

@@ -145,5 +145,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. String Building.json",
     "editorial_link": "https://codeforces.com//blog/entry/102181",
-    "editorial": "Every character in strings , , and has at least one character adjacent\r\nto it that is the same. So, if there is an isolated character in our\r\nstring (a character that has no neighbors equal to it), we cannot build\r\nit.It\u00e2\u0080\u0099s easy to see that in the other case, we can build the string: we\r\ncan split it into blocks of consecutive equal characters, and since\r\nthere are no isolated characters, each block will have at least\r\ncharacters, so it can be formed from strings of length and/or consisting\r\nof equal characters.So, the problem is reduced to checking if each\r\ncharacter has a neighbor equal to it.\r\n"
+    "editorial": "Every character in strings , , and has at least one character adjacent\r\nto it that is the same. So, if there is an isolated character in our\r\nstring (a character that has no neighbors equal to it), we cannot build\r\nit.Itâs easy to see that in the other case, we can build the string: we\r\ncan split it into blocks of consecutive equal characters, and since\r\nthere are no isolated characters, each block will have at least\r\ncharacters, so it can be formed from strings of length and/or consisting\r\nof equal characters.So, the problem is reduced to checking if each\r\ncharacter has a neighbor equal to it.\r\n",
+    "hint": []
 }

@@ -161,5 +161,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Divan and a Store.json",
     "editorial_link": "https://codeforces.com//blog/entry/97283",
-    "editorial": "Solution To solve this problem, let\u00e2\u0080\u0099s use the following greedy\nalgorithm.Let\u00e2\u0080\u0099s sort the prices of chocolate bars in increasing order,\nafter which we will go from left to right and take chocolates that have\na price not less than , but not more than until we run out of money.The\nnumber of chocolate bars that we took will be the answer to the\nproblem.The resulting asymptotics in time: .\n"
+    "editorial": "Solution To solve this problem, letâs use the following greedy\nalgorithm.Letâs sort the prices of chocolate bars in increasing order,\nafter which we will go from left to right and take chocolates that have\na price not less than , but not more than until we run out of money.The\nnumber of chocolate bars that we took will be the answer to the\nproblem.The resulting asymptotics in time: .\n",
+    "hint": []
 }

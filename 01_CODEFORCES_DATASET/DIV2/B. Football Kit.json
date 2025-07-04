@@ -117,5 +117,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Football Kit.json",
     "editorial_link": "https://codeforces.com//blog/entry/12310",
-    "editorial": "Count for every team number of games in home kit. For team it equals to\r\nsum of games at home and some away games with such teams which home kit\r\ncolor equals away kit color of team . To count number of such away games\r\nyou could calc array number of teams with home color kit . The solution\r\ncould be implemented in this wasy:\r\n"
+    "editorial": "Count for every team number of games in home kit. For team it equals to\r\nsum of games at home and some away games with such teams which home kit\r\ncolor equals away kit color of team . To count number of such away games\r\nyou could calc array number of teams with home color kit . The solution\r\ncould be implemented in this wasy:\r\n",
+    "hint": []
 }

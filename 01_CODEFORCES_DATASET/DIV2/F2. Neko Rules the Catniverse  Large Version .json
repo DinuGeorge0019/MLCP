@@ -130,5 +130,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\F2. Neko Rules the Catniverse  Large Version .json",
     "editorial_link": "https://codeforces.com/blog/entry/66696",
-    "editorial": "The core idea is similar to F1, however there is one crucial\r\nobservation.We can see that all DP transitions are just linear\r\ntransformations, thus we can construct a transition matrix of size ,\r\nthen use fast matrix exponentiation as a replacement of the original DP\r\ntransitions.Total complexity: .\r\n"
+    "editorial": "The core idea is similar to F1, however there is one crucial\r\nobservation.We can see that all DP transitions are just linear\r\ntransformations, thus we can construct a transition matrix of size ,\r\nthen use fast matrix exponentiation as a replacement of the original DP\r\ntransitions.Total complexity: .\r\n",
+    "hint": []
 }

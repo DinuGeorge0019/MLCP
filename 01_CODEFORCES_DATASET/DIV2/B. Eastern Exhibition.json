@@ -167,5 +167,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Eastern Exhibition.json",
     "editorial_link": "https://codeforces.com//blog/entry/87849",
-    "editorial": "SolutionAt first let\u00e2\u0080\u0099s see that the problem is not two dimensional. If\r\nwe change the coordinate the sum of distances by is not changed at all.\r\nSo we just need to calculate the number of good points on a line with\r\npoints having coordinates and then and multiply the answers.Now to\r\ncalculate the answer on a line we could use a known fact: point with the\r\nsmallest summary distance is between left and right median. So now we\r\nonly need to sort the array and find the elements on positions and and\r\nreturn their difference plus one.\r\n"
+    "editorial": "SolutionAt first letâs see that the problem is not two dimensional. If\r\nwe change the coordinate the sum of distances by is not changed at all.\r\nSo we just need to calculate the number of good points on a line with\r\npoints having coordinates and then and multiply the answers.Now to\r\ncalculate the answer on a line we could use a known fact: point with the\r\nsmallest summary distance is between left and right median. So now we\r\nonly need to sort the array and find the elements on positions and and\r\nreturn their difference plus one.\r\n",
+    "hint": [
+        "Hint1 Is problem really two dimensional?",
+        "Hint2 How to solve the problem if ?"
+    ]
 }

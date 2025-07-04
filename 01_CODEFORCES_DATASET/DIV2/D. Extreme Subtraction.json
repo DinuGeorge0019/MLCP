@@ -144,5 +144,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Extreme Subtraction.json",
     "editorial_link": "https://codeforces.com//blog/entry/84298",
-    "editorial": "The problem sounds like this check that there are increasing and\r\ndecreasing arrays, the element-wise sum of which is equal to the given\r\narray.This problem can be solved greedily. Let\u00e2\u0080\u0099s maximize each element\r\nof the decreasing array (let\u00e2\u0080\u0099s call this array , and the increasing one\r\n). Suppose initial array is and we have solved the problem on a prefix\r\nof length . Then, for the element , and must be fulfilled. Rewriting the\r\nsecond inequality and combining with the first one, we get . It is clear\r\nthat taking is best by construction.\r\n"
+    "editorial": "The problem sounds like this check that there are increasing and\r\ndecreasing arrays, the element-wise sum of which is equal to the given\r\narray.This problem can be solved greedily. Letâs maximize each element\r\nof the decreasing array (letâs call this array , and the increasing one\r\n). Suppose initial array is and we have solved the problem on a prefix\r\nof length . Then, for the element , and must be fulfilled. Rewriting the\r\nsecond inequality and combining with the first one, we get . It is clear\r\nthat taking is best by construction.\r\n",
+    "hint": []
 }

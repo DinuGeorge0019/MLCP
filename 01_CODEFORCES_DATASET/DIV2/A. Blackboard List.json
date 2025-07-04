@@ -122,5 +122,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Blackboard List.json",
     "editorial_link": "https://codeforces.com//blog/entry/116995",
-    "editorial": "Note that any negative integers on the board must have been one of the\r\noriginal two numbers, because the absolute difference between any two\r\nnumbers is nonnegative. So, if there are any negative numbers, print one\r\nof those.If there are only nonnegative integers, note that the maximum\r\nnumber remains the same after performing an operation, because for\r\nnonnegative integers , , where , we have Therefore, in this case, the\r\nmaximum number in the list must be one of the original\r\nnumbers.Complexity:\r\n"
+    "editorial": "Note that any negative integers on the board must have been one of the\r\noriginal two numbers, because the absolute difference between any two\r\nnumbers is nonnegative. So, if there are any negative numbers, print one\r\nof those.If there are only nonnegative integers, note that the maximum\r\nnumber remains the same after performing an operation, because for\r\nnonnegative integers , , where , we have Therefore, in this case, the\r\nmaximum number in the list must be one of the original\r\nnumbers.Complexity:\r\n",
+    "hint": []
 }

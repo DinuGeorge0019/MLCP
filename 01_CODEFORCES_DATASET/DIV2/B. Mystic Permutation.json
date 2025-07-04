@@ -123,5 +123,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Mystic Permutation.json",
     "editorial_link": "https://codeforces.com//blog/entry/103471",
-    "editorial": "SolutionThe exception is the last two elements. We can always take the\r\nsmallest available number for each satisfying . To do this we maintain\r\nan array of bools of already taken numbers, and then iterate over it to\r\nfind the smallest available number satisfying which is also not checked\r\nin the array, and then check it (we took it).Now consider and we want to\r\nbe lexicographically minimal while satisfying and . Let and be the last\r\ntwo unused numbers in the array of bools with . We try to take . If or ,\r\nthen we take . If isn\u00e2\u0080\u0099t valid, then is. The proof is left as an exercise\r\nto the reader.This solution runs in and can be optimized to .\r\n"
+    "editorial": "SolutionThe exception is the last two elements. We can always take the\r\nsmallest available number for each satisfying . To do this we maintain\r\nan array of bools of already taken numbers, and then iterate over it to\r\nfind the smallest available number satisfying which is also not checked\r\nin the array, and then check it (we took it).Now consider and we want to\r\nbe lexicographically minimal while satisfying and . Let and be the last\r\ntwo unused numbers in the array of bools with . We try to take . If or ,\r\nthen we take . If isnât valid, then is. The proof is left as an exercise\r\nto the reader.This solution runs in and can be optimized to .\r\n",
+    "hint": [
+        "Hint 1 When is it impossible to find such permutation?",
+        "Hint 2 It is impossible only for . In every other case, iterate over each position in order from to and take the smallest available number. What's the exception to this?"
+    ]
 }

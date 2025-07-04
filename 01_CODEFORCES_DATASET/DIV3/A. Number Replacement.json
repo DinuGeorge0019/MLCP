@@ -166,5 +166,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Number Replacement.json",
     "editorial_link": "https://codeforces.com//blog/entry/108101",
-    "editorial": "Let\u00e2\u0080\u0099s note that if , then must be equal to , since we must change the\r\nsame value to the same letter. If we check this for all pairs of and and\r\nfind no such contradictions, then the answer is \"\", otherwise \"\".We got\r\nthe solution for for one test case.\r\n"
+    "editorial": "Letâs note that if , then must be equal to , since we must change the\r\nsame value to the same letter. If we check this for all pairs of and and\r\nfind no such contradictions, then the answer is \"\", otherwise \"\".We got\r\nthe solution for for one test case.\r\n",
+    "hint": []
 }

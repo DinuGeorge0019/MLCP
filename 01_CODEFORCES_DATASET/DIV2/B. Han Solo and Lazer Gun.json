@@ -106,7 +106,7 @@
         ]
     },
     "name": "B. Han Solo and Lazer Gun",
-    "statement": "There are Imperial stormtroopers on the field. The battle field is a\r\nplane with Cartesian coordinate system. Each stormtrooper is associated\r\nwith his coordinates on this plane. Han Solo has the newest duplex lazer\r\ngun to fight these stormtroopers. It is situated at the point . In one\r\nshot it can can destroy all the stormtroopers, situated on some line\r\nthat crosses point .Your task is to determine what minimum number of\r\nshots Han Solo needs to defeat all the stormtroopers.The gun is the\r\nnewest invention, it shoots very quickly and even after a very large\r\nnumber of shots the stormtroopers don\u2019t have enough time to realize\r\nwhat\u2019s happening and change their location.\r\n",
+    "statement": "There are Imperial stormtroopers on the field. The battle field is a\r\nplane with Cartesian coordinate system. Each stormtrooper is associated\r\nwith his coordinates on this plane. Han Solo has the newest duplex lazer\r\ngun to fight these stormtroopers. It is situated at the point . In one\r\nshot it can can destroy all the stormtroopers, situated on some line\r\nthat crosses point .Your task is to determine what minimum number of\r\nshots Han Solo needs to defeat all the stormtroopers.The gun is the\r\nnewest invention, it shoots very quickly and even after a very large\r\nnumber of shots the stormtroopers don’t have enough time to realize\r\nwhat’s happening and change their location.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\n#define rep(i,a,n) for (int i=a;i<n;i++)\n#define per(i,a,n) for (int i=n-1;i>=a;i--)\n#define pb push_back\n#define mp make_pair\n#define all(x) (x).begin(),(x).end()\n#define SZ(x) ((int)(x).size())\n#define fi first\n#define se second\ntypedef vector<int> VI;\ntypedef long long ll;\ntypedef pair<int,int> PII;\nconst ll mod=1000000007;\nll powmod(ll a,ll b) {ll res=1;a%=mod;for(;b;b>>=1){if(b&1)res=res*a%mod;a=a*a%mod;}return res;}\n// head\n\n#define y0 asdfasdfsd\nconst int N=1010;\nint n,x0,y0,x[N],y[N],cnt;\nbool vis[N];\nint main() {\n\tscanf(\"%d\",&n);\n\tscanf(\"%d%d\",&x0,&y0);\n\trep(i,0,n) {\n\t\tscanf(\"%d%d\",x+i,y+i);\n\t\tx[i]-=x0; y[i]-=y0;\n\t}\n\trep(i,0,n) if (!vis[i]) {\n\t\tcnt++;\n\t\trep(j,0,n) if (!vis[j]&&x[i]*y[j]==x[j]*y[i]) vis[j]=1;\n\t}\n\tprintf(\"%d\\n\",cnt);\n}\n"
     ],
@@ -123,5 +123,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Han Solo and Lazer Gun.json",
     "editorial_link": "https://codeforces.com//blog/entry/16398",
-    "editorial": "Let's run through every point, where the stormtroopers are situated. If in current point stormtroopers are still alive, let's make a shot and destroy every stormtrooper on the same line with gun and current point.\n\nPoints (x1,?y1), (x2,?y2), (x3,?y3) are on the same line, if (x2?-?x1)(y3?-?y1)?=?(x3?-?x1)(y2?-?y1)."
+    "editorial": "Let's run through every point, where the stormtroopers are situated. If in current point stormtroopers are still alive, let's make a shot and destroy every stormtrooper on the same line with gun and current point.\n\nPoints (x1,?y1), (x2,?y2), (x3,?y3) are on the same line, if (x2?-?x1)(y3?-?y1)?=?(x3?-?x1)(y2?-?y1).",
+    "hint": []
 }

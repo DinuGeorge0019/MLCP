@@ -111,5 +111,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Vanya and Table.json",
     "editorial_link": "https://codeforces.com//blog/entry/18696",
-    "editorial": "In this problem we can get AC with many solutions: 1) With every new\r\nrectangle we will add his area to the result, so for each line we will\r\nadd to answer Time complexity . 2) We can just do all, that is written\r\nin the statement: create an array and with each new rectangle we can\r\njust increment every element inside rectangle. In the end we can just\r\nadd all elements inside this array. Time complexity C++ code\r\nWild_Hamster Java code Wild_Hamster Python code Zlobober\r\n"
+    "editorial": "In this problem we can get AC with many solutions: 1) With every new\r\nrectangle we will add his area to the result, so for each line we will\r\nadd to answer Time complexity . 2) We can just do all, that is written\r\nin the statement: create an array and with each new rectangle we can\r\njust increment every element inside rectangle. In the end we can just\r\nadd all elements inside this array. Time complexity C++ code\r\nWild_Hamster Java code Wild_Hamster Python code Zlobober\r\n",
+    "hint": []
 }

@@ -152,5 +152,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Chaya Calendar.json",
     "editorial_link": "https://codeforces.com//blog/entry/126196",
-    "editorial": "The tribe will wait for the first sign in year . They will expect the\r\nsecond event in some year , which is divisible by , this will happen\r\nafter years. Let\u00e2\u0080\u0099s maintain the number of the year in which the -th sign\r\noccurred, then the -th will occur in the year . Since this is the\r\nsmallest year number divisible by , which is strictly greater than .\r\n"
+    "editorial": "The tribe will wait for the first sign in year . They will expect the\r\nsecond event in some year , which is divisible by , this will happen\r\nafter years. Letâs maintain the number of the year in which the -th sign\r\noccurred, then the -th will occur in the year . Since this is the\r\nsmallest year number divisible by , which is strictly greater than .\r\n",
+    "hint": []
 }

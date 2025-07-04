@@ -106,7 +106,7 @@
         ]
     },
     "name": "A. Little Artem and Presents",
-    "statement": "Little Artem got stones on his birthday and now wants to give some of\r\nthem to Masha. He knows that Masha cares more about the fact of\r\nreceiving the present, rather than the value of that present, so he\r\nwants to give her stones as many times as possible. However, Masha\r\nremembers the last present she received, so Artem can\u2019t give her the\r\nsame number of stones twice in a row. For example, he can give her\r\nstones, then stone, then again stones, but he can\u2019t give her stones and\r\nthen again stones right after that.How many times can Artem give\r\npresents to Masha?\r\n",
+    "statement": "Little Artem got stones on his birthday and now wants to give some of\r\nthem to Masha. He knows that Masha cares more about the fact of\r\nreceiving the present, rather than the value of that present, so he\r\nwants to give her stones as many times as possible. However, Masha\r\nremembers the last present she received, so Artem can’t give her the\r\nsame number of stones twice in a row. For example, he can give her\r\nstones, then stone, then again stones, but he can’t give her stones and\r\nthen again stones right after that.How many times can Artem give\r\npresents to Masha?\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\n#define REP(i, n) for(int i = 0;i < n;++i)\n#define FOR(i, a, b) for(int i = a;i < b;++i)\n#define pb push_back\n#define X first\n#define Y second\nusing namespace std;\ntypedef long long int ll;\ntypedef pair<int, int> ii;\n\nint main() {\n\tint x;\n\tscanf(\"%d\", &x);\n\tprintf(\"%d\\n\", (x / 3) * 2 + int(x % 3 != 0));\n}\n\n"
     ],
@@ -119,5 +119,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Little Artem and Presents.json",
     "editorial_link": "https://codeforces.com//blog/entry/44538",
-    "editorial": "It is obvious that we need to make sequence of moves like: 1, 2, 1, 2, ...\n\nSo the answer is 2 * n / 3. After that we have either 0, 1 or 2 stones left. If we have 0, we are done, otherwise we have 1 or 2 left, so we only can give 1 more stone.\n\nFinal formula is: (2 * n) / 3 + (n % 3 != 0 ? 1 : 0);"
+    "editorial": "It is obvious that we need to make sequence of moves like: 1, 2, 1, 2, ...\n\nSo the answer is 2 * n / 3. After that we have either 0, 1 or 2 stones left. If we have 0, we are done, otherwise we have 1 or 2 left, so we only can give 1 more stone.\n\nFinal formula is: (2 * n) / 3 + (n % 3 != 0 ? 1 : 0);",
+    "hint": []
 }

@@ -155,5 +155,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\D. Fight with Monsters.json",
     "editorial_link": "https://codeforces.com//blog/entry/73627",
-    "editorial": "Let\u00e2\u0080\u0099s calculate the minimum number of secret technique uses we need to\r\nkill each of the monsters. Let the current monster has hp. Firstly, it\r\nis obvious that we can take modulo (except one case). If it becomes\r\nzero, let\u00e2\u0080\u0099s \"rollback\" it by one pair of turns. Then the number of uses\r\nof the secret technique we need is .Let\u00e2\u0080\u0099s sort all monsters by this\r\nvalue and take the \"cheapest\" set of monsters (prefix of the sorted\r\narray) with the sum of values less than or equal to .Time complexity: .\r\n"
+    "editorial": "Letâs calculate the minimum number of secret technique uses we need to\r\nkill each of the monsters. Let the current monster has hp. Firstly, it\r\nis obvious that we can take modulo (except one case). If it becomes\r\nzero, letâs \"rollback\" it by one pair of turns. Then the number of uses\r\nof the secret technique we need is .Letâs sort all monsters by this\r\nvalue and take the \"cheapest\" set of monsters (prefix of the sorted\r\narray) with the sum of values less than or equal to .Time complexity: .\r\n",
+    "hint": []
 }

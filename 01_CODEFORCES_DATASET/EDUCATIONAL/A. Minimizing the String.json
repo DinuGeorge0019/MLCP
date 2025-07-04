@@ -158,5 +158,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Minimizing the String.json",
     "editorial_link": "https://codeforces.com/blog/entry/63151",
-    "editorial": "By the definition of lexicographical comparing we can see that if we can\r\nremove one character we always have to do it. Besides, we have to remove\r\nthe character from the leftmost position such that and or from the\r\nposition if there is no such .\r\n"
+    "editorial": "By the definition of lexicographical comparing we can see that if we can\r\nremove one character we always have to do it. Besides, we have to remove\r\nthe character from the leftmost position such that and or from the\r\nposition if there is no such .\r\n",
+    "hint": []
 }

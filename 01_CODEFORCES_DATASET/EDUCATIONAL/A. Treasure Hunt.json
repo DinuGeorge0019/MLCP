@@ -208,5 +208,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Treasure Hunt.json",
     "editorial_link": "https://codeforces.com//blog/entry/52638",
-    "editorial": "Firstly, let\u00e2\u0080\u0099s approach this problem as if the steps were and . Then the\r\nanswer is if and .It\u00e2\u0080\u0099s easy to see that if the answer to this problem is\r\nthen the answer to the original one is also .Let\u00e2\u0080\u0099s return to the\r\noriginal problem and take a look at some sequence of steps. It ends in\r\nsome point . Define as and as . The parity of is the same as the parity\r\nof . It is like this because every type of move changes parity of both\r\nand .So the answer is if , and .Overall complexity: .\r\n"
+    "editorial": "Firstly, letâs approach this problem as if the steps were and . Then the\r\nanswer is if and .Itâs easy to see that if the answer to this problem is\r\nthen the answer to the original one is also .Letâs return to the\r\noriginal problem and take a look at some sequence of steps. It ends in\r\nsome point . Define as and as . The parity of is the same as the parity\r\nof . It is like this because every type of move changes parity of both\r\nand .So the answer is if , and .Overall complexity: .\r\n",
+    "hint": []
 }

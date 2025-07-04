@@ -157,5 +157,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Mocha and Hiking.json",
     "editorial_link": "https://codeforces.com//blog/entry/93898",
-    "editorial": "If , then the path is valid.If , then the path is valid.Otherwise, since\r\n, there must exists an integer () where , then the path is valid.This is\r\na step to prove that there always exists an Hamiltonian path in a\r\ntournament graph.\r\n"
+    "editorial": "If , then the path is valid.If , then the path is valid.Otherwise, since\r\n, there must exists an integer () where , then the path is valid.This is\r\na step to prove that there always exists an Hamiltonian path in a\r\ntournament graph.\r\n",
+    "hint": []
 }

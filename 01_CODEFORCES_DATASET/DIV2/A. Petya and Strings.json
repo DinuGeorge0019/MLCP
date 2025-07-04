@@ -98,7 +98,7 @@
         ]
     },
     "name": "A. Petya and Strings",
-    "statement": "Little Petya loves presents. His mum bought him two strings of the same\r\nsize for his birthday. The strings consist of uppercase and lowercase\r\nLatin letters. Now Petya wants to compare those two strings . The\r\nletters\u2019 case does not matter, that is an uppercase letter is considered\r\nequivalent to the corresponding lowercase letter. Help Petya perform the\r\ncomparison.\r\n",
+    "statement": "Little Petya loves presents. His mum bought him two strings of the same\r\nsize for his birthday. The strings consist of uppercase and lowercase\r\nLatin letters. Now Petya wants to compare those two strings . The\r\nletters’ case does not matter, that is an uppercase letter is considered\r\nequivalent to the corresponding lowercase letter. Help Petya perform the\r\ncomparison.\r\n",
     "solutions": [
         "#include <iostream>\n#include <cstdio>\n#include <cstdlib>\n#include <string>\n\nusing namespace std;\n\nstring s1,s2;\n\nint main() {\n  //freopen(\"a.in\",\"r\",stdin);\n\n  getline(cin,s1);\n  getline(cin,s2);\n  \n  for (int i=0;i<s1.size();++i) {\n    if (s1[i]>=97) s1[i]-=32;\n    if (s2[i]>=97) s2[i]-=32;\n  }\n  \n  if (s1==s2) printf(\"0\\n\");\n  else {\n    if (s1<s2) printf(\"-1\\n\");\n    else printf(\"1\\n\");\n  }\n}"
     ],
@@ -112,5 +112,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Petya and Strings.json",
     "editorial_link": "https://codeforces.com//blog/entry/2616",
-    "editorial": "In this problem one could transform all letters in both strings to lower case and then compare the strings lexicographically.\n\n"
+    "editorial": "In this problem one could transform all letters in both strings to lower case and then compare the strings lexicographically.\n\n",
+    "hint": []
 }

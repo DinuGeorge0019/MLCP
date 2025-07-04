@@ -173,11 +173,11 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/133296",
-    "editorial": "Problem Credits: Proof_by_QED Analysis: cry Solution Consider the and\r\ndirections separately and calculate the jumps we need in each direction.\r\nThe number of jumps we need in the direction is and similarily in the\r\ndirection. Now let\u00e2\u0080\u0099s try to combine them to obtain the total number of\r\njumps. Let\u00e2\u0080\u0099s consider the following cases: . In this case, there will\r\nneed to be extra jumps in the direction. While Freya performs these\r\nextra jumps, she will choose for the direction. In total, there will\r\nneed to be jumps. . We can use the same reasoning as the previous case,\r\nbut there\u00e2\u0080\u0099s a catch. Since Freya is initially facing the direction, for\r\nthe last jump, she does not need to jump in the direction. In total,\r\nthere will need to be jumps.\r\n",
+    "editorial": "Problem Credits: Proof_by_QED Analysis: cry Solution Consider the and\r\ndirections separately and calculate the jumps we need in each direction.\r\nThe number of jumps we need in the direction is and similarily in the\r\ndirection. Now letâs try to combine them to obtain the total number of\r\njumps. Letâs consider the following cases: . In this case, there will\r\nneed to be extra jumps in the direction. While Freya performs these\r\nextra jumps, she will choose for the direction. In total, there will\r\nneed to be jumps. . We can use the same reasoning as the previous case,\r\nbut thereâs a catch. Since Freya is initially facing the direction, for\r\nthe last jump, she does not need to jump in the direction. In total,\r\nthere will need to be jumps.\r\n",
     "name": "C. The Legend of Freya the Frog",
     "statement": "Freya the Frog is traveling on the 2D coordinate plane. She is currently\r\nat point (0,0) and wants to go to point (x,y). In one move, she chooses\r\nan integer d such that 0\r\nleq d\r\nleq k and jumps d spots forward in the direction she is facing.\r\nInitially, she is facing the positive x direction. After every move, she\r\nwill alternate between facing the positive x direction and the positive\r\ny direction (i.e., she will face the positive y direction on her second\r\nmove, the positive x direction on her third move, and so on). What is\r\nthe minimum amount of moves she must perform to land on point (x,y)?\r\n",
     "solutions": [
-        "#include<bits/stdc++.h>using namespace std;using ll=long long;using i128=__int128;using ull=unsigned long long;using ld=long double;using pii=pair<int,int>;using pll=pair<ll,ll>;clock_t a;const int M=998244353;const ll inf=1e17;const ld eps=1e-10;void oT(char c='.'){cout<<c<<\"Time:\"<<double(clock()-a)<<'\\n';}struct Solution{\t\tint n,x,y,k;vector<string>R;\tvoid Init()\t{\t\tcin>>x>>y>>k;\t\tx=(x+k-1)/k,y=(y+k-1)/k;\t\tcout<<max(x*2-1,y*2)<<'\\n';\t}\tvoid Solve()\t{\u00a0\t}};void precal(){}signed main() {    ios::sync_with_stdio(0);cin.tie(0);precal();    int t=1;cin>>t;while(t--){Solution sol;sol.Init();sol.Solve();}}"
+        "#include<bits/stdc++.h>using namespace std;using ll=long long;using i128=__int128;using ull=unsigned long long;using ld=long double;using pii=pair<int,int>;using pll=pair<ll,ll>;clock_t a;const int M=998244353;const ll inf=1e17;const ld eps=1e-10;void oT(char c='.'){cout<<c<<\"Time:\"<<double(clock()-a)<<'\\n';}struct Solution{\t\tint n,x,y,k;vector<string>R;\tvoid Init()\t{\t\tcin>>x>>y>>k;\t\tx=(x+k-1)/k,y=(y+k-1)/k;\t\tcout<<max(x*2-1,y*2)<<'\\n';\t}\tvoid Solve()\t{ \t}};void precal(){}signed main() {    ios::sync_with_stdio(0);cin.tie(0);precal();    int t=1;cin>>t;while(t--){Solution sol;sol.Init();sol.Solve();}}"
     ],
     "input": "",
     "output": "",
@@ -187,5 +187,6 @@
     ],
     "dificulty": "1100",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\C. The Legend of Freya the Frog.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\C. The Legend of Freya the Frog.json",
+    "hint": []
 }

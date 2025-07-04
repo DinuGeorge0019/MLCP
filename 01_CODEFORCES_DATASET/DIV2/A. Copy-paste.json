@@ -142,5 +142,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Copy-paste.json",
     "editorial_link": "https://codeforces.com//blog/entry/83036",
-    "editorial": "If we do our operation on two arbitrary integers , it is always better\r\nto copy into rather than to copy into (since a resulting pair is better\r\nthan ). Now, let\u00e2\u0080\u0099s assume that we do our operation on two integers such\r\nthat is not the minimum element of our array. If we replace with\r\nminimum, we can always achieve at least the same answer. Thus, we can\r\ntake any index such that is the array minimum and use it to increase all\r\nother values.Time complexity: or per testcase.Space complexity:\r\n"
+    "editorial": "If we do our operation on two arbitrary integers , it is always better\r\nto copy into rather than to copy into (since a resulting pair is better\r\nthan ). Now, letâs assume that we do our operation on two integers such\r\nthat is not the minimum element of our array. If we replace with\r\nminimum, we can always achieve at least the same answer. Thus, we can\r\ntake any index such that is the array minimum and use it to increase all\r\nother values.Time complexity: or per testcase.Space complexity:\r\n",
+    "hint": []
 }

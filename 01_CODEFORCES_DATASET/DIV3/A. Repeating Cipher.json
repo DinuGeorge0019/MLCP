@@ -159,5 +159,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Repeating Cipher.json",
     "editorial_link": "https://codeforces.com//blog/entry/64130",
-    "editorial": "There are many possible approaches in this problem, I will describe one\r\nof the easiest.Let\u00e2\u0080\u0099s print the initial string by the following\r\nalgorithm: firstly, init the variable . Then, while the encrypted string\r\nisn\u00e2\u0080\u0099t empty, print the first character of this string, remove first\r\ncharacters from it and increase by one.\r\n"
+    "editorial": "There are many possible approaches in this problem, I will describe one\r\nof the easiest.Letâs print the initial string by the following\r\nalgorithm: firstly, init the variable . Then, while the encrypted string\r\nisnât empty, print the first character of this string, remove first\r\ncharacters from it and increase by one.\r\n",
+    "hint": []
 }

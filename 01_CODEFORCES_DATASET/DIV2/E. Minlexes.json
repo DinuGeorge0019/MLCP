@@ -130,5 +130,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Minlexes.json",
     "editorial_link": "https://codeforces.com//blog/entry/83452",
-    "editorial": "Let\u00e2\u0080\u0099s find the answer for all suffixes, starting with the smallest in\r\nlength. is equal to an empty string. Then if (), then , and otherwise .\r\nTo quickly find minimum of two strings, they can be stored as \"binary\r\nlifts\" will be equal to the position in the string , on which the\r\ncharacter will be located, and hash from the prefix of length . Values\r\nfor can be obtained from and . To restore the answer, will be enough for\r\nus, and for simplicity we can additionally store the length of each\r\nanswer.\r\n"
+    "editorial": "Letâs find the answer for all suffixes, starting with the smallest in\r\nlength. is equal to an empty string. Then if (), then , and otherwise .\r\nTo quickly find minimum of two strings, they can be stored as \"binary\r\nlifts\" will be equal to the position in the string , on which the\r\ncharacter will be located, and hash from the prefix of length . Values\r\nfor can be obtained from and . To restore the answer, will be enough for\r\nus, and for simplicity we can additionally store the length of each\r\nanswer.\r\n",
+    "hint": []
 }

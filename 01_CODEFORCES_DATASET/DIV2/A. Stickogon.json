@@ -184,7 +184,7 @@
     "name": "A. Stickogon",
     "statement": "You are given n sticks of lengths a_1, a_2,\r\nldots, a_n. Find the maximum number of regular (equal-sided) polygons\r\nyou can construct simultaneously, such that: Each side of a polygon is\r\nformed by exactly one stick. No stick is used in more than 1 polygon.\r\nNote: Sticks cannot be broken.\r\n",
     "solutions": [
-        "/*\u5728\u53d1\u89c9\u90a3\u4e00\u5929 \u5728\u90a3\u4e00\u5929\u6f6e\u6c5b\u6cdb\u4e0a\u9ad8\u7b51\u57ce\u5899\u65f6\u95f4\u8bf7\u5c06\u4e00\u5207\u8bc1\u660e*/#include<bits/stdc++.h>using namespace std;const int maxn=500005;int n,m,T,ans,flg;int a[maxn],tot[maxn];string s;int main(){\tscanf(\"%d\",&T);\twhile(T--){\t\tans=flg=0;\t\tscanf(\"%d\",&n);\t\tfor(int i=1;i<=n;i++)\t\t\tscanf(\"%d\",&a[i]),tot[a[i]]++;\t\tfor(int i=1;i<=100;i++)\t\t\tans+=tot[i]/3,tot[i]=0;\t\tprintf(\"%d\\n\",ans);\t}\treturn 0;}"
+        "/*在发觉那一天 在那一天潮汛泛上高筑城墙时间请将一切证明*/#include<bits/stdc++.h>using namespace std;const int maxn=500005;int n,m,T,ans,flg;int a[maxn],tot[maxn];string s;int main(){\tscanf(\"%d\",&T);\twhile(T--){\t\tans=flg=0;\t\tscanf(\"%d\",&n);\t\tfor(int i=1;i<=n;i++)\t\t\tscanf(\"%d\",&a[i]),tot[a[i]]++;\t\tfor(int i=1;i<=100;i++)\t\t\tans+=tot[i]/3,tot[i]=0;\t\tprintf(\"%d\\n\",ans);\t}\treturn 0;}"
     ],
     "input": "",
     "output": "",
@@ -194,5 +194,8 @@
     ],
     "dificulty": "800",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Stickogon.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Stickogon.json",
+    "hint": [
+        "Hint 1 To create the most polygons, you should use as few sticks as possible per polygon. What polygon has the least number of sides?"
+    ]
 }

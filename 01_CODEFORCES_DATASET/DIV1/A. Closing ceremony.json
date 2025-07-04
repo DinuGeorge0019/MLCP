@@ -67,5 +67,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Closing ceremony.json",
     "editorial_link": "https://codeforces.com//blog/entry/47183",
-    "editorial": "Probably the easiest way to solve the problem is greedy. Sort people from the first line by increasing of their stamina. Give them tickets in this order, each time using the place which is furthest away from the other line. After that try to assign people from the second line to the remaining seats by sorting people by stamina and seats by the distance.\n\nThe time complexity of your solution must not exceed O((nm)2), however using std::set one can get a solution with complexity of O(nm?log(nm))."
+    "editorial": "Probably the easiest way to solve the problem is greedy. Sort people from the first line by increasing of their stamina. Give them tickets in this order, each time using the place which is furthest away from the other line. After that try to assign people from the second line to the remaining seats by sorting people by stamina and seats by the distance.\n\nThe time complexity of your solution must not exceed O((nm)2), however using std::set one can get a solution with complexity of O(nm?log(nm)).",
+    "hint": []
 }

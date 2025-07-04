@@ -155,5 +155,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. We Need the Zero.json",
     "editorial_link": "https://codeforces.com//blog/entry/114644",
-    "editorial": "Note that equals if is even, or if is odd. Then, if the length of the\r\narray is odd, you must print of the whole array. And if the length is\r\neven, we can\u00e2\u0080\u0099t change the value of the expression with our operation. It\r\nturns out that if of the whole array is , we can output any number, but\r\notherwise there is no answer.\r\n"
+    "editorial": "Note that equals if is even, or if is odd. Then, if the length of the\r\narray is odd, you must print of the whole array. And if the length is\r\neven, we canât change the value of the expression with our operation. It\r\nturns out that if of the whole array is , we can output any number, but\r\notherwise there is no answer.\r\n",
+    "hint": [
+        "Hint 1 Recall the basic properties of the operation: , , .",
+        "Hint 2 Consider the cases of even and odd array lengths."
+    ]
 }

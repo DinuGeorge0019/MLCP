@@ -168,5 +168,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\B. Reach Median.json",
     "editorial_link": "https://codeforces.com/blog/entry/61606",
-    "editorial": "For changing the median of the array, sort the given array and then the\r\nbest possible candidate for making median is the middle element, because\r\nit will be better to reduce the numbers before the middle element as\r\nthey are smaller and increase the numbers after the middle element as\r\nthey are larger.\r\n"
+    "editorial": "For changing the median of the array, sort the given array and then the\r\nbest possible candidate for making median is the middle element, because\r\nit will be better to reduce the numbers before the middle element as\r\nthey are smaller and increase the numbers after the middle element as\r\nthey are larger.\r\n",
+    "hint": []
 }

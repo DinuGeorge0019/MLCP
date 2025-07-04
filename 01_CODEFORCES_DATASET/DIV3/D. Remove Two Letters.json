@@ -201,5 +201,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\D. Remove Two Letters.json",
     "editorial_link": "https://codeforces.com//blog/entry/113477",
-    "editorial": "Consider deleting characters with numbers and , as well as characters\r\nwith numbers and . In the first case, the symbol with the number\r\nremains, in the second - . Symbols with numbers less than or more than\r\nremain in both cases. Therefore, the same strings will be obtained if\r\nthe characters with the numbers and match. Therefore, we just need to\r\ncount the number of , and subtract this value from .\r\n"
+    "editorial": "Consider deleting characters with numbers and , as well as characters\r\nwith numbers and . In the first case, the symbol with the number\r\nremains, in the second - . Symbols with numbers less than or more than\r\nremain in both cases. Therefore, the same strings will be obtained if\r\nthe characters with the numbers and match. Therefore, we just need to\r\ncount the number of , and subtract this value from .\r\n",
+    "hint": []
 }

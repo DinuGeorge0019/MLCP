@@ -170,5 +170,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\C. Cypher.json",
     "editorial_link": "https://codeforces.com//blog/entry/104786",
-    "editorial": "We will perform each move in reverse from the final sequence of the\r\ncypher. move: it increases the -th digit by . After applying the up move\r\non , it becomes . move (denoted by ): it decreases the -th digit by .\r\nAfter applying the down move on , it becomes . Now we just need to\r\nimplement the two types of moves. The time complexity is per test case.\r\n"
+    "editorial": "We will perform each move in reverse from the final sequence of the\r\ncypher. move: it increases the -th digit by . After applying the up move\r\non , it becomes . move (denoted by ): it decreases the -th digit by .\r\nAfter applying the down move on , it becomes . Now we just need to\r\nimplement the two types of moves. The time complexity is per test case.\r\n",
+    "hint": []
 }

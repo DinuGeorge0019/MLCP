@@ -132,5 +132,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Watering System.json",
     "editorial_link": "https://codeforces.com//blog/entry/59173",
-    "editorial": "It\u00e2\u0080\u0099s obvious that we should block several largest holes. Let\u00e2\u0080\u0099s first\r\nsort them. After that, let\u00e2\u0080\u0099s iterate through the number of blocked\r\nholes, maintaining the sum of sizes of non-blocked holes . With the\r\nvalue it is easy to compute if the flow from the first hole is large\r\nenough or not. Just output the number of blocked pipes at the first\r\nmoment when the flow is large enough. The complexity is .\r\n"
+    "editorial": "Itâs obvious that we should block several largest holes. Letâs first\r\nsort them. After that, letâs iterate through the number of blocked\r\nholes, maintaining the sum of sizes of non-blocked holes . With the\r\nvalue it is easy to compute if the flow from the first hole is large\r\nenough or not. Just output the number of blocked pipes at the first\r\nmoment when the flow is large enough. The complexity is .\r\n",
+    "hint": []
 }

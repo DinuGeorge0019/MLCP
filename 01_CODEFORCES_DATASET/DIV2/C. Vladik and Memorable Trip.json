@@ -121,5 +121,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Vladik and Memorable Trip.json",
     "editorial_link": "https://codeforces.com//blog/entry/52228",
-    "editorial": "Let\u00e2\u0080\u0099s precalc for each it\u00e2\u0080\u0099s and it\u00e2\u0080\u0099s leftmost and rightmost occurrences\r\nin the array respectively. Now for each range we can check, if it can be\r\na separate train carriage, just checking for each , that and are also in\r\nthis range.Now let\u00e2\u0080\u0099s define as the answer to the problem for first\r\npeople. To update we can make two transitions: Assume, that there was\r\nsuch train carriage, that finished at position . Then iterate it\u00e2\u0080\u0099s start\r\nfrom right to left, also maintaining maximal , minimal and xor of\r\ndistinct codes . If current range is ok for forming the train carriage,\r\nupdate with value . If there wasn\u00e2\u0080\u0099t such train carriage, then last\r\nelement didn\u00e2\u0080\u0099t belong to any train carriage, so we can update with value\r\n.\r\n"
+    "editorial": "Letâs precalc for each itâs and itâs leftmost and rightmost occurrences\r\nin the array respectively. Now for each range we can check, if it can be\r\na separate train carriage, just checking for each , that and are also in\r\nthis range.Now letâs define as the answer to the problem for first\r\npeople. To update we can make two transitions: Assume, that there was\r\nsuch train carriage, that finished at position . Then iterate itâs start\r\nfrom right to left, also maintaining maximal , minimal and xor of\r\ndistinct codes . If current range is ok for forming the train carriage,\r\nupdate with value . If there wasnât such train carriage, then last\r\nelement didnât belong to any train carriage, so we can update with value\r\n.\r\n",
+    "hint": [
+        "Hint 1 Let's elaborate, when a segment can become a train carriage.",
+        "Hint 2 Try to use dynamic programming on prefix."
+    ]
 }

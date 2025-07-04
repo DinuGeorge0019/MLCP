@@ -206,5 +206,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\B. Subtract Operation.json",
     "editorial_link": "https://codeforces.com//blog/entry/101211",
-    "editorial": "Note that, after deleting element , all numbers in the set are of the\r\nform , since the previous substractions are cancelled. Therefore, the\r\nfinal element will be the difference between the last element and the\r\nprevious element which was erased. So we just need to check if is the\r\ndifference of two elements in the set, which can be done by sorting and\r\nusing the double pointer technique in time.\r\n"
+    "editorial": "Note that, after deleting element , all numbers in the set are of the\r\nform , since the previous substractions are cancelled. Therefore, the\r\nfinal element will be the difference between the last element and the\r\nprevious element which was erased. So we just need to check if is the\r\ndifference of two elements in the set, which can be done by sorting and\r\nusing the double pointer technique in time.\r\n",
+    "hint": []
 }

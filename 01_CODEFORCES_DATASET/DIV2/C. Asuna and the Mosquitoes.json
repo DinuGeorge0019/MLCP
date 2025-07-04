@@ -1,1 +1,115 @@
-{"link": "https://codeforces.com//contest/2092/problem/C", "problemId": "3297795", "problem_idx": "C", "shortId": "2092C", "contest_number": "2092", "problem_submissions": {"F": [313024072], "E": [313000271, 312969707, 312983960, 312981996, 312968778, 312981677, 312983137, 312976146, 312967918, 312987199, 312966853, 312978935, 312982784, 312983310, 312990508], "D": [312985746, 312980683, 312966151, 312963806, 312979770, 312972092, 312973588, 312972934, 312975411, 312970630, 312984829, 312974754, 312973591, 312974219, 312974125], "C": [312968332, 312958283, 312951558, 312951101, 312956688, 312962577, 312960872, 312961466, 312959434, 312964501, 312963490, 312968676, 312965224, 312966318, 312958909], "B": [312954182, 312954965, 312956218, 312968439, 312955440, 312953626, 312955662, 312953860, 312954705, 312962665, 312965211, 312957241, 312955219, 312953537], "A": [312949653, 312950184, 312949676, 312949416, 312951072, 312954840, 312949917, 312948936, 312949574, 312962028, 315023921, 312963336, 312950648, 312950994, 312951265]}, "editorial_link": "https://codeforces.com//blog/entry/141023", "editorial": "", "name": "C. Asuna and the Mosquitoes", "statement": "For her birthday, each of Asuna\u2019s n admirers gifted her a tower. The\r\nheight of the tower from the i-th admirer is equal to a_i. Asuna\r\nevaluates the beauty of the received gifts as\r\nmax(a_1, a_2,\r\nldots, a_n). She can perform the following operation an arbitrary number\r\nof times (possibly, zero). Take such 1\r\nle i\r\nneq j\r\nle n that a_i + a_j is odd and a_i > 0, then decrease a_i by 1 and\r\nincrease a_j by 1. It is easy to see that the heights of the towers\r\nremain non-negative during the operations. Help Asuna find the maximum\r\npossible beauty of the gifts after any number of operations!\r\n", "solutions": [], "input": "", "output": "", "tags": ["constructive algorithms", "greedy", "math"], "dificulty": "1200", "interactive": false, "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Asuna and the Mosquitoes.json"}
+{
+    "link": "https://codeforces.com//contest/2092/problem/C",
+    "problemId": "3297795",
+    "problem_idx": "C",
+    "shortId": "2092C",
+    "contest_number": "2092",
+    "problem_submissions": {
+        "F": [
+            313024072
+        ],
+        "E": [
+            313000271,
+            312969707,
+            312983960,
+            312981996,
+            312968778,
+            312981677,
+            312983137,
+            312976146,
+            312967918,
+            312987199,
+            312966853,
+            312978935,
+            312982784,
+            312983310,
+            312990508
+        ],
+        "D": [
+            312985746,
+            312980683,
+            312966151,
+            312963806,
+            312979770,
+            312972092,
+            312973588,
+            312972934,
+            312975411,
+            312970630,
+            312984829,
+            312974754,
+            312973591,
+            312974219,
+            312974125
+        ],
+        "C": [
+            312968332,
+            312958283,
+            312951558,
+            312951101,
+            312956688,
+            312962577,
+            312960872,
+            312961466,
+            312959434,
+            312964501,
+            312963490,
+            312968676,
+            312965224,
+            312966318,
+            312958909
+        ],
+        "B": [
+            312954182,
+            312954965,
+            312956218,
+            312968439,
+            312955440,
+            312953626,
+            312955662,
+            312953860,
+            312954705,
+            312962665,
+            312965211,
+            312957241,
+            312955219,
+            312953537
+        ],
+        "A": [
+            312949653,
+            312950184,
+            312949676,
+            312949416,
+            312951072,
+            312954840,
+            312949917,
+            312948936,
+            312949574,
+            312962028,
+            315023921,
+            312963336,
+            312950648,
+            312950994,
+            312951265
+        ]
+    },
+    "editorial_link": "https://codeforces.com//blog/entry/141023",
+    "editorial": "SolutionCase 1. All numbers in have the same parity. In this case, it is\r\nimpossible to perform any operation, so the answer is .Case 2. There is\r\nat least one even and one odd number. Let be the sum of all numbers, and\r\nbe the number of odd numbers in the array. We will now prove that the\r\nanswer is . First of all, the answer cannot exceed , since the number of\r\nodd elements in the array remains unchanged after performing the\r\noperation.Secondly, we will show that is always achievable. Consider an\r\narbitrary odd number . We can then merge all even numbers into ,\r\nresulting in an array consisting of the number , odd numbers, and zeros\r\nfor the remaining elements (here denotes the sum of all even numbers in\r\nthe initial array). After this step, for each remaining odd number, we\r\ncan sacrifice one unit by transferring it to any zero element in the\r\narray and then merge the resulting even number into . It’s easy to see\r\nthat there will always be at least one zero available in the array\r\nbefore merging each odd number. Eventually, we will obtain an array\r\nconsisting of one element equal to , elements equal to one, and zeros\r\nfilling the remaining positions.Therefore, the answer in this case will\r\nbe .\r\n",
+    "name": "C. Asuna and the Mosquitoes",
+    "statement": "For her birthday, each of Asuna’s n admirers gifted her a tower. The\r\nheight of the tower from the i-th admirer is equal to a_i. Asuna\r\nevaluates the beauty of the received gifts as\r\nmax(a_1, a_2,\r\nldots, a_n). She can perform the following operation an arbitrary number\r\nof times (possibly, zero). Take such 1\r\nle i\r\nneq j\r\nle n that a_i + a_j is odd and a_i > 0, then decrease a_i by 1 and\r\nincrease a_j by 1. It is easy to see that the heights of the towers\r\nremain non-negative during the operations. Help Asuna find the maximum\r\npossible beauty of the gifts after any number of operations!\r\n",
+    "solutions": [],
+    "input": "",
+    "output": "",
+    "tags": [
+        "constructive algorithms",
+        "greedy",
+        "math"
+    ],
+    "dificulty": "1200",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Asuna and the Mosquitoes.json",
+    "hint": [
+        "Hint 1 Consider two cases: first, when all numbers have the same parity; and second, when there is at least one even and one odd number.",
+        "Hint 2 Let be the sum of all numbers, and be the number of odd numbers in the array. Then, in the second case, the answer is ."
+    ]
+}

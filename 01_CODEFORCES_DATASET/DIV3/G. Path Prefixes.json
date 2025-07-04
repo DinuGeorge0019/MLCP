@@ -184,5 +184,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\G. Path Prefixes.json",
     "editorial_link": "https://codeforces.com//blog/entry/105549",
-    "editorial": "Note that all are positive, which means that the amount on the prefix\r\nonly increases. This allows us to use binary search to find the answer\r\nfor the vertex. It remains only to learn how to quickly find the sum of\r\non the path prefix. Let\u00e2\u0080\u0099s run a depth-first search and store the prefix\r\nsums of the current path in stack: going to the vertex, add the sum to\r\nthe end of the path and delete it when exiting.\r\n"
+    "editorial": "Note that all are positive, which means that the amount on the prefix\r\nonly increases. This allows us to use binary search to find the answer\r\nfor the vertex. It remains only to learn how to quickly find the sum of\r\non the path prefix. Letâs run a depth-first search and store the prefix\r\nsums of the current path in stack: going to the vertex, add the sum to\r\nthe end of the path and delete it when exiting.\r\n",
+    "hint": []
 }

@@ -167,5 +167,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Remove Duplicates.json",
     "editorial_link": "https://codeforces.com/blog/entry/59430",
-    "editorial": "We will store integers which we already met in a set . Let\u00e2\u0080\u0099s iterate\r\nthrough the given array from the right to the left. Let the current\r\nelement is equal to . So, if does not contain in we add in a\r\nvector-answer and add in .After we considered all elements the answer\r\nsequence contains in the vector in reversed order. So we should reverse\r\nthe vector and simply print all its elements.\r\n"
+    "editorial": "We will store integers which we already met in a set . Letâs iterate\r\nthrough the given array from the right to the left. Let the current\r\nelement is equal to . So, if does not contain in we add in a\r\nvector-answer and add in .After we considered all elements the answer\r\nsequence contains in the vector in reversed order. So we should reverse\r\nthe vector and simply print all its elements.\r\n",
+    "hint": []
 }

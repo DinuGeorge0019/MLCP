@@ -182,5 +182,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Construct the String.json",
     "editorial_link": "https://codeforces.com//blog/entry/75993",
-    "editorial": "If we represent letters with digits, then the answer can be represented\r\nas . There is no substring containing more than distinct characters and\r\neach substring of length contains exactly distinct characters because of\r\nthe condition .Time complexity: .\r\n"
+    "editorial": "If we represent letters with digits, then the answer can be represented\r\nas . There is no substring containing more than distinct characters and\r\neach substring of length contains exactly distinct characters because of\r\nthe condition .Time complexity: .\r\n",
+    "hint": []
 }

@@ -191,5 +191,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Don't Try to Count.json",
     "editorial_link": "https://codeforces.com//blog/entry/121327",
-    "editorial": "Note that the answer is always not greater than . When , , the answer is\r\neither or , it is easy to see that the answer cannot be greater.This\r\nallows us to simply iterate over the number of operations, each time\r\nchecking if occurs in . The time complexity of this solution is .\r\n"
+    "editorial": "Note that the answer is always not greater than . When , , the answer is\r\neither or , it is easy to see that the answer cannot be greater.This\r\nallows us to simply iterate over the number of operations, each time\r\nchecking if occurs in . The time complexity of this solution is .\r\n",
+    "hint": []
 }

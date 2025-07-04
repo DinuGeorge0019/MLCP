@@ -120,5 +120,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Golden Plate.json",
     "editorial_link": "https://codeforces.com//blog/entry/62612",
-    "editorial": "The number of gilded cells in the first (outer) ring is the number of border cells, that is, 2(w+h)?4\n, in the second ring \u0097 the number of border cells of the center rectangle with side lengths 4 less, that is, 2(w?4+h?4)?4\n, and so on. This sum can be calculated in a single loop."
+    "editorial": "The number of gilded cells in the first (outer) ring is the number of border cells, that is, 2(w+h)?4\n, in the second ring  the number of border cells of the center rectangle with side lengths 4 less, that is, 2(w?4+h?4)?4\n, and so on. This sum can be calculated in a single loop.",
+    "hint": []
 }

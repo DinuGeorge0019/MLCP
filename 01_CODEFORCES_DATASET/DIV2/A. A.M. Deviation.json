@@ -131,5 +131,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. A.M. Deviation.json",
     "editorial_link": "https://codeforces.com//blog/entry/96866",
-    "editorial": "Applying the operation on and (irrespective of which element is\r\nincremented and which one is decremented) does not change the value of .\r\nIncrementing (or ) by and decrementing by causes the value of to\r\nincrease by . Decrementing (or ) by and incrementing by causes the value\r\nof to decrease by .This effectively means that we can add or subtract\r\nany multiple of by performing some number of operations. Also, the value\r\nof will never change modulo . Thus, If , then the minimum value of If ,\r\nthen the minimum value of If , then the minimum value of In simpler\r\nwords, if is divisible by the answer is , otherwise it is .:\r\n"
+    "editorial": "Applying the operation on and (irrespective of which element is\r\nincremented and which one is decremented) does not change the value of .\r\nIncrementing (or ) by and decrementing by causes the value of to\r\nincrease by . Decrementing (or ) by and incrementing by causes the value\r\nof to decrease by .This effectively means that we can add or subtract\r\nany multiple of by performing some number of operations. Also, the value\r\nof will never change modulo . Thus, If , then the minimum value of If ,\r\nthen the minimum value of If , then the minimum value of In simpler\r\nwords, if is divisible by the answer is , otherwise it is .:\r\n",
+    "hint": [
+        "Hint 1 What happens to the value of if you perform an operation on and ?",
+        "Hint 2 What happens if you perform an operation on and ?",
+        "Hint 3 Can we use negative values to improve the worst answer?"
+    ]
 }

@@ -93,7 +93,7 @@
         ]
     },
     "name": "A. Taymyr is calling you",
-    "statement": "Comrade Dujikov is busy choosing artists for Timofey\u2019s birthday and is\r\nrecieving calls from Taymyr from Ilia-alpinist.Ilia-alpinist calls every\r\nminutes, i.e. in minutes , , and so on. Artists come to the comrade\r\nevery minutes, i.e. in minutes , , and so on. The day is minutes long,\r\ni.e. the day consists of minutes . How many artists should be killed so\r\nthat there are no artists in the room when Ilia calls? Consider that a\r\ncall and a talk with an artist take exactly one minute.\r\n",
+    "statement": "Comrade Dujikov is busy choosing artists for Timofey’s birthday and is\r\nrecieving calls from Taymyr from Ilia-alpinist.Ilia-alpinist calls every\r\nminutes, i.e. in minutes , , and so on. Artists come to the comrade\r\nevery minutes, i.e. in minutes , , and so on. The day is minutes long,\r\ni.e. the day consists of minutes . How many artists should be killed so\r\nthat there are no artists in the room when Ilia calls? Consider that a\r\ncall and a talk with an artist take exactly one minute.\r\n",
     "solutions": [
         "//It is made by ljh2000\n#include <iostream>\n#include <cstdlib>\n#include <cstring>\n#include <cstdio>\n#include <cmath>\n#include <algorithm>\n#include <ctime>\n#include <vector>\n#include <queue>\n#include <map>\n#include <set>\n#include <string>\n#include <complex>\nusing namespace std;\n\nint vis[1000010];\n\ninline int getint(){\n    int w=0,q=0; char c=getchar(); while((c<'0'||c>'9') && c!='-') c=getchar();\n    if(c=='-') q=1,c=getchar(); while (c>='0'&&c<='9') w=w*10+c-'0',c=getchar(); return q?-w:w;\n}\n\nint main() {\n\tint n,m,z;\n\tscanf(\"%d%d%d\",&n,&m,&z);\n\tfor (int i=n;i<=z;i+=n) \n\t    vis[i]=1;\n\tint ans=0;\n\tfor (int i=m;i<=z;i+=m) \n\t    if (vis[i]) ans++;\n\tprintf(\"%d\",ans);\n\treturn 0;\n}\n"
     ],
@@ -108,5 +108,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Taymyr is calling you.json",
     "editorial_link": "https://codeforces.com//blog/entry/50205",
-    "editorial": "You can look over all minutes of the day. If both events happen on the\r\nsome minute, we increment our answer.Author\u00e2\u0080\u0099s solution:\r\nhttp://pastebin.com/jBB0fbu5\r\n"
+    "editorial": "You can look over all minutes of the day. If both events happen on the\r\nsome minute, we increment our answer.Authorâs solution:\r\nhttp://pastebin.com/jBB0fbu5\r\n",
+    "hint": []
 }

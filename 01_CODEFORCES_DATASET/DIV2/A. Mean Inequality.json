@@ -157,5 +157,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Mean Inequality.json",
     "editorial_link": "https://codeforces.com//blog/entry/91195",
-    "editorial": "The main idea is that\nwe can split the numbers into the two halves, the big half and small\nhalf, we can place the bigger half at the odd positions and the smaller\nhalf at the even positions. This works because the smallest big number\nis larger than the biggest small number. Hence, the mean of any two\nsmall numbers is smaller than any big number, and the mean of any two\nbig numbers is bigger than any small number.\n"
+    "editorial": "The main idea is that\nwe can split the numbers into the two halves, the big half and small\nhalf, we can place the bigger half at the odd positions and the smaller\nhalf at the even positions. This works because the smallest big number\nis larger than the biggest small number. Hence, the mean of any two\nsmall numbers is smaller than any big number, and the mean of any two\nbig numbers is bigger than any small number.\n",
+    "hint": [
+        "Hint 1 Notice that the array size is even length. Usually in such problems, we would split the array into equal parts. Can you figure out what those parts are?",
+        "Hint 2 We sort the array and split it into the big half and the small half."
+    ]
 }

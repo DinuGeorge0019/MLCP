@@ -158,5 +158,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. Also Try Minecraft.json",
     "editorial_link": "https://codeforces.com//blog/entry/105164",
-    "editorial": "So, the first idea that is coming into mind is prefix sums. Let\u00e2\u0080\u0099s define\r\ntwo values and . The value means the amount of fall damage when we are\r\ngoing to the right from the column to the column , and means the amount\r\nof fall damage when we are going to the left from the column to the\r\ncolumn . Then let\u00e2\u0080\u0099s build prefix sums on these two arrays. Now let be\r\nthe sum of all on a prefix (i. e. ), and be the sum of all on a prefix .\r\nThen if in a query, the answer is , otherwise (if ) the answer is .Time\r\ncomplexity: .\r\n"
+    "editorial": "So, the first idea that is coming into mind is prefix sums. Letâs define\r\ntwo values and . The value means the amount of fall damage when we are\r\ngoing to the right from the column to the column , and means the amount\r\nof fall damage when we are going to the left from the column to the\r\ncolumn . Then letâs build prefix sums on these two arrays. Now let be\r\nthe sum of all on a prefix (i. e. ), and be the sum of all on a prefix .\r\nThen if in a query, the answer is , otherwise (if ) the answer is .Time\r\ncomplexity: .\r\n",
+    "hint": []
 }

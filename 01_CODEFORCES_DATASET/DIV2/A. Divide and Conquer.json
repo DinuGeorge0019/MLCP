@@ -142,5 +142,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Divide and Conquer.json",
     "editorial_link": "https://codeforces.com//blog/entry/110169",
-    "editorial": "Solution We are assuming initial sum is odd. Suppose gives the minimum\nnumber of operations needed to change parity of .Iterate from to and\ncalculate for each .Answer is minimum among all the calculated\nvalues.Time complexity is .\n"
+    "editorial": "Solution We are assuming initial sum is odd. Suppose gives the minimum\nnumber of operations needed to change parity of .Iterate from to and\ncalculate for each .Answer is minimum among all the calculated\nvalues.Time complexity is .\n",
+    "hint": [
+        "Hint 1 If sum is even, answer is . Otherwise we need to change parity of atleast one element of .",
+        "Hint 2 It it optimal to change parity of atmost one element.",
+        "Hint 3 Answer can be atmost , as we need to divide any integer ( ) atmost times to change its parity."
+    ]
 }

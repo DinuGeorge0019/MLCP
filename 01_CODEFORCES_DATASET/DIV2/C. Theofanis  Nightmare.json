@@ -159,5 +159,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Theofanis  Nightmare.json",
     "editorial_link": "https://codeforces.com//blog/entry/122820",
-    "editorial": "Let be the suffix sum of the array (from the position to the ). sum of\r\nwhere is the leftmost element of the subarray.Definitely, and we can\r\ntake any other we want (at most once). So we start with and for every we\r\nadd if it is positive.We can easily see that this greedy works.\r\n"
+    "editorial": "Let be the suffix sum of the array (from the position to the ). sum of\r\nwhere is the leftmost element of the subarray.Definitely, and we can\r\ntake any other we want (at most once). So we start with and for every we\r\nadd if it is positive.We can easily see that this greedy works.\r\n",
+    "hint": [
+        "Hint Think of suffixes."
+    ]
 }

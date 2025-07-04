@@ -90,7 +90,7 @@
         ]
     },
     "name": "A. The Child and Homework",
-    "statement": "Once upon a time a child got a test consisting of multiple-choice\r\nquestions as homework. A multiple-choice question consists of four\r\nchoices: , , and . Each choice has a description, and the child should\r\nfind out the only one that is correct.Fortunately the child knows how to\r\nsolve such complicated test. The child will follow the algorithm: If\r\nthere is some choice whose description at least twice shorter than all\r\nother descriptions, or at least twice longer than all other\r\ndescriptions, then the child thinks the choice is great. If there is\r\nexactly one great choice then the child chooses it. Otherwise the child\r\nchooses (the child think it is the luckiest choice). You are given a\r\nmultiple-choice questions, can you predict child\u2019s choose?\r\n",
+    "statement": "Once upon a time a child got a test consisting of multiple-choice\r\nquestions as homework. A multiple-choice question consists of four\r\nchoices: , , and . Each choice has a description, and the child should\r\nfind out the only one that is correct.Fortunately the child knows how to\r\nsolve such complicated test. The child will follow the algorithm: If\r\nthere is some choice whose description at least twice shorter than all\r\nother descriptions, or at least twice longer than all other\r\ndescriptions, then the child thinks the choice is great. If there is\r\nexactly one great choice then the child chooses it. Otherwise the child\r\nchooses (the child think it is the luckiest choice). You are given a\r\nmultiple-choice questions, can you predict child’s choose?\r\n",
     "solutions": [
         "#include <cstdio>\n#include <string>\n#include <cstdlib>\n#include <cstdlib>\n#include <cstring>\n#include <iostream>\n#include <algorithm>\n#include <set>\n#include <map>\n#include <vector>\n#define rep(i, a, b) for (int i = a; i < b; ++i)\n#define dep(i, a, b) for (int i = a; i > b; --i)\nusing namespace std;\n\nchar s[10][1010];\nint len[10], rank[10], cnt;\n\nbool rk_cmp(const int &a, const int &b)\n{\n\treturn len[a] < len[b];\n}\nint main()\n{\n\trep(i, 0, 4)\n\t{\n\t\tscanf(\"%s\",s[i]+1);\n\t\tlen[i] = strlen(s[i]+1) - 2;\n\t\trank[i] = i;\n\t}\n\tsort(rank, rank+4, rk_cmp);\n\tif (len[rank[0]] * 2 <= len[rank[1]]) cnt += 1;\n\tif (len[rank[2]] * 2 <= len[rank[3]]) cnt += 2;\n\tif (cnt == 1) printf(\"%c\", rank[0]+'A');\n\telse if (cnt == 2) printf(\"%c\", rank[3]+'A');\n\telse printf(\"C\"); \n}\n"
     ],
@@ -103,5 +103,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. The Child and Homework.json",
     "editorial_link": "https://codeforces.com//blog/entry/12513",
-    "editorial": "We enumerate each choice , and then enumerate another choice , let at\r\nfirst, if choice is twice longer than let , if choice is twice shorter\r\nthan let . So is great if and only if or . If there is exactly one great\r\nchoice, output it, otherwise output C.\r\n"
+    "editorial": "We enumerate each choice , and then enumerate another choice , let at\r\nfirst, if choice is twice longer than let , if choice is twice shorter\r\nthan let . So is great if and only if or . If there is exactly one great\r\nchoice, output it, otherwise output C.\r\n",
+    "hint": []
 }

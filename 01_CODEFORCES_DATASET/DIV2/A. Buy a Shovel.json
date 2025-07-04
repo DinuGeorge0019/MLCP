@@ -141,5 +141,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Buy a Shovel.json",
     "editorial_link": "https://codeforces.com//blog/entry/47890",
-    "editorial": "In this problem we have to find the minimal possible value of such that\r\nor . It\u00e2\u0080\u0099s easy to see that this always exists and it is not greater than\r\n(because ). Let\u00e2\u0080\u0099s iterate on , and if its current value satisfies any of\r\nthe requirements, we print the answer. Time complexity: , where .\r\n"
+    "editorial": "In this problem we have to find the minimal possible value of such that\r\nor . Itâs easy to see that this always exists and it is not greater than\r\n(because ). Letâs iterate on , and if its current value satisfies any of\r\nthe requirements, we print the answer. Time complexity: , where .\r\n",
+    "hint": []
 }

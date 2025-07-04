@@ -153,5 +153,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Cinema.json",
     "editorial_link": "https://codeforces.com//blog/entry/44715",
-    "editorial": "We need to use - (let\u00e2\u0080\u0099s call it ) and calculate how many scientists\r\nknows every language (i. e. equals to the number of scientists who know\r\nthe language number ). Let\u00e2\u0080\u0099s use the pair , where we will store the\r\nnumber of\r\ntextit{very pleased} scientists and the number of\r\ntextit{almost satisfied} scientists. At first let . Now we need to\r\niterate through all movies beginning from the first. Let the current\r\nmovie has the number . Then if let\u00e2\u0080\u0099s make and update the answer with the\r\nnumber of current movie.\r\n"
+    "editorial": "We need to use - (letâs call it ) and calculate how many scientists\r\nknows every language (i. e. equals to the number of scientists who know\r\nthe language number ). Letâs use the pair , where we will store the\r\nnumber of\r\ntextit{very pleased} scientists and the number of\r\ntextit{almost satisfied} scientists. At first let . Now we need to\r\niterate through all movies beginning from the first. Let the current\r\nmovie has the number . Then if letâs make and update the answer with the\r\nnumber of current movie.\r\n",
+    "hint": []
 }

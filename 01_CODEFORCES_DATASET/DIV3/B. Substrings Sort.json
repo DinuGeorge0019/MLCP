@@ -148,5 +148,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Substrings Sort.json",
     "editorial_link": "https://codeforces.com/blog/entry/59810",
-    "editorial": "Firstly, sort all the strings by their lengths (if there are several\r\nstrings of the same length, their order does not matter because if the\r\nanswer is \"\" then all the strings of the same length should be equal).\r\nThen for each check that is a substring of . If it doesn\u00e2\u0080\u0099t hold for some\r\nthen the answer is \"\". Otherwise the answer is \"\" and the sorted array\r\nis the correct order of strings.\r\n"
+    "editorial": "Firstly, sort all the strings by their lengths (if there are several\r\nstrings of the same length, their order does not matter because if the\r\nanswer is \"\" then all the strings of the same length should be equal).\r\nThen for each check that is a substring of . If it doesnât hold for some\r\nthen the answer is \"\". Otherwise the answer is \"\" and the sorted array\r\nis the correct order of strings.\r\n",
+    "hint": []
 }

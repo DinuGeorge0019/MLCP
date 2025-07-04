@@ -155,5 +155,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. A and B.json",
     "editorial_link": "https://codeforces.com//blog/entry/72330",
-    "editorial": "Assume that . Let\u00e2\u0080\u0099s denote the minimum number of operations required to\r\nmake and equal as .There are two restrictions on : At first, , because\r\nif then will be greater than (after applying all operations); Secondly,\r\nintegers and must have the same parity, because if they have different\r\nparity, then and will have different parity (after applying all\r\noperations).It turns out that we always can make integers and equal\r\nafter applying operations. It\u00e2\u0080\u0099s true because we have to add to and the\r\nrest to . And we can get any integer from to as a sum of subset of set .\r\n"
+    "editorial": "Assume that . Letâs denote the minimum number of operations required to\r\nmake and equal as .There are two restrictions on : At first, , because\r\nif then will be greater than (after applying all operations); Secondly,\r\nintegers and must have the same parity, because if they have different\r\nparity, then and will have different parity (after applying all\r\noperations).It turns out that we always can make integers and equal\r\nafter applying operations. Itâs true because we have to add to and the\r\nrest to . And we can get any integer from to as a sum of subset of set .\r\n",
+    "hint": []
 }

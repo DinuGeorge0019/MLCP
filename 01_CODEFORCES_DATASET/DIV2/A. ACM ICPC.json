@@ -72,7 +72,7 @@
         ]
     },
     "name": "A. ACM ICPC",
-    "statement": "In a small but very proud high school it was decided to win ACM ICPC.\r\nThis goal requires to compose as many teams of three as possible, but\r\nsince there were only students who wished to participate, the decision\r\nwas to build exactly two teams.After practice competition, participant\r\nnumber got a of . is defined as sum of scores of its participants. High\r\nschool management is interested if it\u2019s possible to build two teams with\r\nequal scores. Your task is to answer that question.\r\n",
+    "statement": "In a small but very proud high school it was decided to win ACM ICPC.\r\nThis goal requires to compose as many teams of three as possible, but\r\nsince there were only students who wished to participate, the decision\r\nwas to build exactly two teams.After practice competition, participant\r\nnumber got a of . is defined as sum of scores of its participants. High\r\nschool management is interested if it’s possible to build two teams with\r\nequal scores. Your task is to answer that question.\r\n",
     "solutions": [
         "#include <iostream>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\n#define DEB 1\n#define dbg_tab(x,l) if(DEB) { cerr << #x << \":\"; for(int i=0;i<l;i++) cerr << \" \" << x[i]; cerr << endl; }\n#define dbg_vec(x) if(DEB) { cerr << #x << \":\"; for(auto y:x) cerr << \" \" << y; cerr << endl; }\n\nint t[6];\nint per[6];\n\nint main() {\n    ios_base::sync_with_stdio(0);\n    bool ok = 0;\n    for(int i = 0; i < 6; ++i) {\n        cin >> t[i];\n        per[i] = i;\n    }\n    \n    do {\n        if(t[per[0]] + t[per[1]] + t[per[2]] - t[per[3]] - t[per[4]] - t[per[5]] == 0) ok = 1;\n    } while(next_permutation(per, per + 6));\n    \n    if(ok) cout << \"YES\\n\";\n    else cout << \"NO\\n\";\n    return 0;\n}\n"
     ],
@@ -85,5 +85,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. ACM ICPC.json",
     "editorial_link": "https://codeforces.com//blog/entry/55734",
-    "editorial": "In this problem it's enough to iterate through all the triples checking whether its sum equals to the sum of remaining triple or not. Answer is \"YES\" if equality is possible and \"NO\" \u0097 otherwise."
+    "editorial": "In this problem it's enough to iterate through all the triples checking whether its sum equals to the sum of remaining triple or not. Answer is \"YES\" if equality is possible and \"NO\"  otherwise.",
+    "hint": []
 }

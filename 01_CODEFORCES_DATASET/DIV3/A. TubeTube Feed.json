@@ -194,5 +194,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. TubeTube Feed.json",
     "editorial_link": "https://codeforces.com//blog/entry/115409",
-    "editorial": "This problem can be solved by going through all the options of the video\r\nthat the Mushroom will choose to watch.Let the Mushroom choose the -th\r\nvideo. He can view it if does not exceed . Since he will have to spend a\r\nsecond scrolling the feed and watching the video.As an answer, it is\r\nenough to choose a video with the maximum entertainment value from the\r\nappropriate ones.\r\n"
+    "editorial": "This problem can be solved by going through all the options of the video\r\nthat the Mushroom will choose to watch.Let the Mushroom choose the -th\r\nvideo. He can view it if does not exceed . Since he will have to spend a\r\nsecond scrolling the feed and watching the video.As an answer, it is\r\nenough to choose a video with the maximum entertainment value from the\r\nappropriate ones.\r\n",
+    "hint": []
 }

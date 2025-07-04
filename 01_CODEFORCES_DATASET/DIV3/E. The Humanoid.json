@@ -180,5 +180,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\E. The Humanoid.json",
     "editorial_link": "https://codeforces.com//blog/entry/109254",
-    "editorial": "Let\u00e2\u0080\u0099s make two obvious remarks: If we can absorb two astronauts with ,\r\nthen we can always first absorb an astronaut with , and then an\r\nastronaut with ; If we can absorb some astronaut, it is effective for us\r\nto do it right now. Let\u00e2\u0080\u0099s sort the astronauts in increasing order.Now\r\nlet\u00e2\u0080\u0099s lock the sequence of serums we use. There are only three of them:\r\nserum can be the first, second or third.Let\u00e2\u0080\u0099s absorb the astronauts in\r\nincreasing order of their , and if we can\u00e2\u0080\u0099t, then use the next serum in\r\na locked sequence or stop.This solution works for .\r\n"
+    "editorial": "Letâs make two obvious remarks: If we can absorb two astronauts with ,\r\nthen we can always first absorb an astronaut with , and then an\r\nastronaut with ; If we can absorb some astronaut, it is effective for us\r\nto do it right now. Letâs sort the astronauts in increasing order.Now\r\nletâs lock the sequence of serums we use. There are only three of them:\r\nserum can be the first, second or third.Letâs absorb the astronauts in\r\nincreasing order of their , and if we canât, then use the next serum in\r\na locked sequence or stop.This solution works for .\r\n",
+    "hint": []
 }

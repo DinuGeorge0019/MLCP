@@ -148,5 +148,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Diverse Team.json",
     "editorial_link": "https://codeforces.com/blog/entry/59810",
-    "editorial": "Let\u00e2\u0080\u0099s write our \"unique\" function. Keep the array of the taken elements\r\n. Iterate over all elements in the array and if the current element is\r\nnot used () then add its index to the answer and set . When finished,\r\ncheck the number of distinct values (that is the size of answer array).\r\nIf it is less than , print \"\". Otherwise print \"\" and output the first\r\nelements of the answer.\r\n"
+    "editorial": "Letâs write our \"unique\" function. Keep the array of the taken elements\r\n. Iterate over all elements in the array and if the current element is\r\nnot used () then add its index to the answer and set . When finished,\r\ncheck the number of distinct values (that is the size of answer array).\r\nIf it is less than , print \"\". Otherwise print \"\" and output the first\r\nelements of the answer.\r\n",
+    "hint": []
 }

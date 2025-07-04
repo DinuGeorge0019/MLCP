@@ -105,5 +105,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Mashmokh and ACM.json",
     "editorial_link": "https://codeforces.com//blog/entry/11470",
-    "editorial": "Lets define as number of good sequences of length that ends in . Let\u00e2\u0080\u0099s\r\ndenote divisors of by . Then This yields solution which is not fast\r\nenough. But one could use the fact that the following loops run in in\r\norder to achieve which is fast enough to pass the tests.\r\n"
+    "editorial": "Lets define as number of good sequences of length that ends in . Letâs\r\ndenote divisors of by . Then This yields solution which is not fast\r\nenough. But one could use the fact that the following loops run in in\r\norder to achieve which is fast enough to pass the tests.\r\n",
+    "hint": []
 }

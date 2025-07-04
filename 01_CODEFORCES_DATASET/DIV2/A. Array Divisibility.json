@@ -151,7 +151,7 @@
     "name": "A. Array Divisibility",
     "statement": "An array of integers a_1,a_2,\r\ncdots,a_n is beautiful subject to an integer k if it satisfies the\r\nfollowing: The sum of a_{j} over all j such that j is a multiple of k\r\nand 1\r\nle j\r\nle n , itself, is a multiple of k. More formally, if\r\nsum_{k | j} a_{j} is divisible by k for all 1\r\nle j\r\nle n then the array a is beautiful subject to k. Here, the notation\r\n{k|j} means k divides j, that is, j is a multiple of k. Given n, find an\r\narray of positive nonzero integers, with each element less than or equal\r\nto 10^5 that is beautiful subject to all 1\r\nle k\r\nle n.It can be shown that an answer always exists.\r\n",
     "solutions": [
-        "// Problem: B. Corner Twist// Contest: Codeforces - Codeforces Round #956 (Div. 2) and ByteRace 2024// URL: https://mirror.codeforces.com/contest/1983/problem/B// Memory Limit: 256 MB// Time Limit: 1000 ms// // Powered by CP Editor (https://cpeditor.org)\u00a0// Author: EnucAI#include <bits/stdc++.h>\u00a0#ifdef LOCAL#include \"debug.h\"#else#define D(...) ((void)0)#endif\u00a0using ll = long long;using ull = unsigned long long;using ld = long double;using vi = std::vector<int>;using pii = std::pair<int, int>;\u00a0constexpr int inf = std::numeric_limits<int>::max() / 2;constexpr ll infll = std::numeric_limits<ll>::max() / 2;constexpr ld eps = 1e-8l;\u00a0#define all(x) (x).begin(), (x).end()#define sz(x) ((int)((x).size()))#define rep(i, j, k) for (int i = (j); i <= (k); i++)#define per(i, j, k) for (int i = (j); i >= (k); i--)#define fi first#define se second#define mp std::make_pair#define pb push_back#define ppb pop_back#define eb emplace_back\u00a0template <class X, class Y> void chkmax(X &x, const Y &y) { if (x < y) x = y; }template <class X, class Y> void chkmin(X &x, const Y &y) { if (x > y) x = y; }\u00a0int n;\u00a0void work() {  std::cin >> n;  rep(i, 1, n) std::cout << i << \" \\n\"[i == n];}\u00a0int main() {  std::cin.tie(nullptr)->sync_with_stdio(false);  int t;  std::cin >> t;  while (t--) work();}"
+        "// Problem: B. Corner Twist// Contest: Codeforces - Codeforces Round #956 (Div. 2) and ByteRace 2024// URL: https://mirror.codeforces.com/contest/1983/problem/B// Memory Limit: 256 MB// Time Limit: 1000 ms// // Powered by CP Editor (https://cpeditor.org) // Author: EnucAI#include <bits/stdc++.h> #ifdef LOCAL#include \"debug.h\"#else#define D(...) ((void)0)#endif using ll = long long;using ull = unsigned long long;using ld = long double;using vi = std::vector<int>;using pii = std::pair<int, int>; constexpr int inf = std::numeric_limits<int>::max() / 2;constexpr ll infll = std::numeric_limits<ll>::max() / 2;constexpr ld eps = 1e-8l; #define all(x) (x).begin(), (x).end()#define sz(x) ((int)((x).size()))#define rep(i, j, k) for (int i = (j); i <= (k); i++)#define per(i, j, k) for (int i = (j); i >= (k); i--)#define fi first#define se second#define mp std::make_pair#define pb push_back#define ppb pop_back#define eb emplace_back template <class X, class Y> void chkmax(X &x, const Y &y) { if (x < y) x = y; }template <class X, class Y> void chkmin(X &x, const Y &y) { if (x > y) x = y; } int n; void work() {  std::cin >> n;  rep(i, 1, n) std::cout << i << \" \\n\"[i == n];} int main() {  std::cin.tie(nullptr)->sync_with_stdio(false);  int t;  std::cin >> t;  while (t--) work();}"
     ],
     "input": "",
     "output": "",
@@ -161,5 +161,9 @@
     ],
     "dificulty": "800",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Array Divisibility.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Array Divisibility.json",
+    "hint": [
+        "Hint 1 Think simple.",
+        "Hint 2 If and both are divisible by then, will also be divisible by ."
+    ]
 }

@@ -129,5 +129,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Fix You.json",
     "editorial_link": "https://codeforces.com//blog/entry/81265",
-    "editorial": "The answer is .It\u00e2\u0080\u0099s obvious that we must change all Rs in the last\r\ncolumn and all Ds in the last row. Otherwise, anything placed in those\r\ncells will move out of the grid. We claim that doing just this is enough\r\nto make the grid functional. Indeed, for any other cell, any luggage\r\nplaced in it will eventually reach either the last row or the last\r\ncolumn, from which it will move to the counter.Time Complexity:\r\n"
+    "editorial": "The answer is .Itâs obvious that we must change all Rs in the last\r\ncolumn and all Ds in the last row. Otherwise, anything placed in those\r\ncells will move out of the grid. We claim that doing just this is enough\r\nto make the grid functional. Indeed, for any other cell, any luggage\r\nplaced in it will eventually reach either the last row or the last\r\ncolumn, from which it will move to the counter.Time Complexity:\r\n",
+    "hint": []
 }

@@ -110,5 +110,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Maximum Value.json",
     "editorial_link": "https://codeforces.com//blog/entry/14592",
-    "editorial": "Let us iterate over all different aj. Since we need to maximize , then iterate all integer x (such x divisible by aj) in range from 2aj to M, where M \u0097 doubled maximum value of the sequence. For each such x we need to find maximum ai, such ai?<?x. Limits for numbers allow to do this in time O(1) with an array. After that, update answer by value . Total time complexity is O(nlogn?+?MlogM).\n"
+    "editorial": "Let us iterate over all different aj. Since we need to maximize , then iterate all integer x (such x divisible by aj) in range from 2aj to M, where M  doubled maximum value of the sequence. For each such x we need to find maximum ai, such ai?<?x. Limits for numbers allow to do this in time O(1) with an array. After that, update answer by value . Total time complexity is O(nlogn?+?MlogM).\n",
+    "hint": []
 }

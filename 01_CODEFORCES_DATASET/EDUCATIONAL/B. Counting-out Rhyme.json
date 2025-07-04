@@ -129,5 +129,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. Counting-out Rhyme.json",
     "editorial_link": "https://codeforces.com//blog/entry/51254",
-    "editorial": "The task was just about implementing algorithm described in\r\nstatement.This is one of many possible ways of doing this. Firstly you\r\nshould notice that doing iterations in -th step is equal to doing\r\niterations (-based numbering). That is less than .Now fill array of\r\nlength with ones and create pointer to current leader. Then on -th step\r\nmove pointer to the right (from cell proceed to ) till you encounter\r\nones. When finished, write to this cell and move pointer to next cell\r\nwhich contains .Overall complexity: .\r\n"
+    "editorial": "The task was just about implementing algorithm described in\r\nstatement.This is one of many possible ways of doing this. Firstly you\r\nshould notice that doing iterations in -th step is equal to doing\r\niterations (-based numbering). That is less than .Now fill array of\r\nlength with ones and create pointer to current leader. Then on -th step\r\nmove pointer to the right (from cell proceed to ) till you encounter\r\nones. When finished, write to this cell and move pointer to next cell\r\nwhich contains .Overall complexity: .\r\n",
+    "hint": []
 }

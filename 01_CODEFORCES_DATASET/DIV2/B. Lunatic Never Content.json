@@ -132,7 +132,7 @@
         ]
     },
     "name": "B. Lunatic Never Content",
-    "statement": "You have an array a of n non-negative integers. Let\u2019s define f(a, x) =\r\n[a_1\r\nbmod x, a_2\r\nbmod x,\r\ndots, a_n\r\nbmod x] for some positive integer x. Find the biggest x, such that f(a,\r\nx) is a palindrome.Here, a\r\nbmod x is the remainder of the integer division of a by x.An array is a\r\npalindrome if it reads the same backward as forward. More formally, an\r\narray a of length n is a palindrome if for every i (1\r\nleq i\r\nleq n) a_i = a_{n - i + 1}.\r\n",
+    "statement": "You have an array a of n non-negative integers. Let’s define f(a, x) =\r\n[a_1\r\nbmod x, a_2\r\nbmod x,\r\ndots, a_n\r\nbmod x] for some positive integer x. Find the biggest x, such that f(a,\r\nx) is a palindrome.Here, a\r\nbmod x is the remainder of the integer division of a by x.An array is a\r\npalindrome if it reads the same backward as forward. More formally, an\r\narray a of length n is a palindrome if for every i (1\r\nleq i\r\nleq n) a_i = a_{n - i + 1}.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\n#define ld long double\n#define ll long long int\n#define st first\n#define nd second\n#define pb push_back\n#define pii pair<int,int>\n#define mp make_pair\n\nusing namespace std;\n\nconst int N = 1e5 + 5;\nint a[N];\nint n;\n\nvoid solve(){\n    cin >> n;\n    for(int i=1;i<=n;i++) cin >> a[i];\n    int g = 0;\n    for(int i=1;i<=n;i++){\n        int id1 = i;\n        int id2 = n + 1 - i;\n        if(id2 <= id1) break;\n        if(a[id1] == a[id2]) continue;\n        int dif = abs(a[id1] - a[id2]);\n        g = __gcd(g, dif);\n    }\n    cout << g << \"\\n\";\n}\n\nint main(){\n    ios_base::sync_with_stdio(0); cin.tie(0);\n\n    int tt = 1;\n    cin >> tt;\n    while(tt--) solve();\n\n    return 0;\n}\n"
     ],
@@ -146,5 +146,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Lunatic Never Content.json",
     "editorial_link": "https://codeforces.com//blog/entry/115892",
-    "editorial": "For the sequence to be a palindrome, it has to satisfy . In our case .\r\nWe can rewrite the palindrome equation as . Moving all the terms to the\r\nleft we get , which basically says divides .Now, how to find the biggest\r\n, which satisfies all such conditions? Greatest common divisor of\r\ncourse! We just need to calculate the of the numbers for all .This\r\nresults in a solution, since computing the gcd of numbers up to takes\r\nexactly this much time.A useful assumption here is that for any number .\r\nThis holds true for standard template library implementations. And do\r\nnot forget that this function should work correctly for negative numbers\r\ntoo. An easy trick here is to just use the absolute value of .\r\n"
+    "editorial": "For the sequence to be a palindrome, it has to satisfy . In our case .\r\nWe can rewrite the palindrome equation as . Moving all the terms to the\r\nleft we get , which basically says divides .Now, how to find the biggest\r\n, which satisfies all such conditions? Greatest common divisor of\r\ncourse! We just need to calculate the of the numbers for all .This\r\nresults in a solution, since computing the gcd of numbers up to takes\r\nexactly this much time.A useful assumption here is that for any number .\r\nThis holds true for standard template library implementations. And do\r\nnot forget that this function should work correctly for negative numbers\r\ntoo. An easy trick here is to just use the absolute value of .\r\n",
+    "hint": [
+        "Hint1 How to solve for ?",
+        "Hint2 How to solve for ?"
+    ]
 }

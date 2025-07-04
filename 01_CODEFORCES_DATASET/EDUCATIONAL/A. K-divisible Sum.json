@@ -142,5 +142,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. K-divisible Sum.json",
     "editorial_link": "https://codeforces.com//blog/entry/87356",
-    "editorial": "Let\u00e2\u0080\u0099s denote as the sum of array . From one side, since should be\r\ndivisible by then we can say . From other side, since all are positive,\r\nthen .It\u00e2\u0080\u0099s quite obvious that the smaller the smaller maximum so we need\r\nto find the smallest that . Then .Now we now that and we need to\r\nrepresent it as with maximum minimized. It\u00e2\u0080\u0099s easy to prove by\r\ncontradiction that maximum .Moreover we can always construct such array\r\nthat its sum is equal to and the maximum element is equal to .As a\r\nresult, the answer is , where .\r\n"
+    "editorial": "Letâs denote as the sum of array . From one side, since should be\r\ndivisible by then we can say . From other side, since all are positive,\r\nthen .Itâs quite obvious that the smaller the smaller maximum so we need\r\nto find the smallest that . Then .Now we now that and we need to\r\nrepresent it as with maximum minimized. Itâs easy to prove by\r\ncontradiction that maximum .Moreover we can always construct such array\r\nthat its sum is equal to and the maximum element is equal to .As a\r\nresult, the answer is , where .\r\n",
+    "hint": []
 }

@@ -184,5 +184,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\E. Klever Permutation.json",
     "editorial_link": "https://codeforces.com//blog/entry/125597",
-    "editorial": "To construct a permutation, let\u00e2\u0080\u0099s make an important observation: cannot\r\nbe equal to (i.e., they differ by at least ). Since the array can only\r\ncontain two different values, it always has the form or .Let\u00e2\u0080\u0099s construct\r\na permutation of the first form. Since , then ; since , then ; since ,\r\nthen ; since , then ; Thus, for all odd positions , it must hold that ,\r\nand for even positions, . To construct such a permutation, we will\r\niterate through all positions from to and fill the permutation in\r\npositions .\r\n"
+    "editorial": "To construct a permutation, letâs make an important observation: cannot\r\nbe equal to (i.e., they differ by at least ). Since the array can only\r\ncontain two different values, it always has the form or .Letâs construct\r\na permutation of the first form. Since , then ; since , then ; since ,\r\nthen ; since , then ; Thus, for all odd positions , it must hold that ,\r\nand for even positions, . To construct such a permutation, we will\r\niterate through all positions from to and fill the permutation in\r\npositions .\r\n",
+    "hint": []
 }

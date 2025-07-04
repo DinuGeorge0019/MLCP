@@ -163,5 +163,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C. Songs Compression.json",
     "editorial_link": "https://codeforces.com/blog/entry/60949",
-    "editorial": "If we will no compress songs, the sum of the sizes will be equal . Let\r\nit be . Now, if we will compress the -th song, how do will change? It\r\nwill decrease by . This suggests that the optimal way to compress the\r\nsongs is the compress it in non-increasing order of . Let\u00e2\u0080\u0099s create the\r\narray of size , where . Let\u00e2\u0080\u0099s sort it in non-increasing order, and then\r\niterate over all from to . If at the current step , we print and\r\nterminate the program. Otherwise we set . After all we have to check\r\nagain if then print otherwise print \"\".Time complexity is because of\r\nsorting.\r\n"
+    "editorial": "If we will no compress songs, the sum of the sizes will be equal . Let\r\nit be . Now, if we will compress the -th song, how do will change? It\r\nwill decrease by . This suggests that the optimal way to compress the\r\nsongs is the compress it in non-increasing order of . Letâs create the\r\narray of size , where . Letâs sort it in non-increasing order, and then\r\niterate over all from to . If at the current step , we print and\r\nterminate the program. Otherwise we set . After all we have to check\r\nagain if then print otherwise print \"\".Time complexity is because of\r\nsorting.\r\n",
+    "hint": []
 }

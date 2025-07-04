@@ -164,5 +164,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C. Turtle Fingers  Count the Values of k.json",
     "editorial_link": "https://codeforces.com//blog/entry/126560",
-    "editorial": "Notice that there are not so many suitable values of and (since and ).\r\nThis allows us to iterate through all suitable pairs of and and thus\r\nfind all different suitable .\r\n"
+    "editorial": "Notice that there are not so many suitable values of and (since and ).\r\nThis allows us to iterate through all suitable pairs of and and thus\r\nfind all different suitable .\r\n",
+    "hint": []
 }

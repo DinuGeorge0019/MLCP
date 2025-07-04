@@ -138,5 +138,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. City Day.json",
     "editorial_link": "https://codeforces.com/blog/entry/68812",
-    "editorial": "x\n and y\n are small, so we can explicitly check every day. Complexity O(n(x+y))\n."
+    "editorial": "x\n and y\n are small, so we can explicitly check every day. Complexity O(n(x+y))\n.",
+    "hint": []
 }

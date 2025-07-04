@@ -121,5 +121,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Vladik and Complicated Book.json",
     "editorial_link": "https://codeforces.com//blog/entry/52228",
-    "editorial": "Obviously, that all the elements in range, which are less than will go\r\nto the left of after sort. So the new position will be . Let\u00e2\u0080\u0099s find with\r\nsimple iterating through all the elements in the segment.\r\n"
+    "editorial": "Obviously, that all the elements in range, which are less than will go\r\nto the left of after sort. So the new position will be . Letâs find with\r\nsimple iterating through all the elements in the segment.\r\n",
+    "hint": [
+        "Hint Solution with complexity is too slow? Probably we should sort faster?"
+    ]
 }

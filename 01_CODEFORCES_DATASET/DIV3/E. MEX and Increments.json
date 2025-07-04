@@ -163,5 +163,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\E. MEX and Increments.json",
     "editorial_link": "https://codeforces.com//blog/entry/98159",
-    "editorial": "First, let\u00e2\u0080\u0099s sort the array. Then we will consider its elements in\r\nnon-decreasing order. To make MEX equal to , you need to increase all\r\nzeros. To make MEX at least , you first need to make MEX at least , and\r\nthen, if the number is missing in the array, you need to get it. If\r\nthere are no extra values less than , then this and all subsequent MEX\r\nvalues cannot be obtained. Otherwise, you can use the maximum of the\r\nextra array values. To do this, you can use a data structure such as a\r\nstack. If an element occurs more than once in the array, put its extra\r\noccurrences on the stack.\r\n"
+    "editorial": "First, letâs sort the array. Then we will consider its elements in\r\nnon-decreasing order. To make MEX equal to , you need to increase all\r\nzeros. To make MEX at least , you first need to make MEX at least , and\r\nthen, if the number is missing in the array, you need to get it. If\r\nthere are no extra values less than , then this and all subsequent MEX\r\nvalues cannot be obtained. Otherwise, you can use the maximum of the\r\nextra array values. To do this, you can use a data structure such as a\r\nstack. If an element occurs more than once in the array, put its extra\r\noccurrences on the stack.\r\n",
+    "hint": []
 }

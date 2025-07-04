@@ -165,5 +165,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C1. Guessing the Greatest  easy version .json",
     "editorial_link": "https://codeforces.com//blog/entry/87849",
-    "editorial": "SolutionLet\u00e2\u0080\u0099s solve for some subsegment and . Now let\u00e2\u0080\u0099s check if the max\r\nelement is in or . Let\u00e2\u0080\u0099s find the second max element in and call it .\r\nNow let\u00e2\u0080\u0099s think that is less than (for symmetrical reasons). Now if we\r\nask and second max is still it means that maximum element is in ,\r\notherwise it\u00e2\u0080\u0099s in . Now we\u00e2\u0080\u0099ve shrunk the segment by a factor of two. So\r\nthe resulting number of queries is .\r\n"
+    "editorial": "SolutionLetâs solve for some subsegment and . Now letâs check if the max\r\nelement is in or . Letâs find the second max element in and call it .\r\nNow letâs think that is less than (for symmetrical reasons). Now if we\r\nask and second max is still it means that maximum element is in ,\r\notherwise itâs in . Now weâve shrunk the segment by a factor of two. So\r\nthe resulting number of queries is .\r\n",
+    "hint": [
+        "Hint1 Binary search?",
+        "Hint2 How to check if the maximum element is in the left or the right part of the array in two queries?"
+    ]
 }

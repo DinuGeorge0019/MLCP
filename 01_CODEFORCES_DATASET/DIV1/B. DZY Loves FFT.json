@@ -110,5 +110,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. DZY Loves FFT.json",
     "editorial_link": "https://codeforces.com//blog/entry/12959",
-    "editorial": "Firstly, you should notice that , are given randomly. Then there\u00e2\u0080\u0099re many\r\nways to solve this problem, I just introduce one of them. This algorithm\r\ncan get one by one. Firstly, choose an . Then check if equals to . If\r\nnone of is the answer, just calculate by brute force. The excepted time\r\ncomplexity to calculate is around where . Just choose an to make the\r\nformula as small as possible. The worst excepted number of operations is\r\naround tens of million. check the C++ code here.\r\n"
+    "editorial": "Firstly, you should notice that , are given randomly. Then thereâre many\r\nways to solve this problem, I just introduce one of them. This algorithm\r\ncan get one by one. Firstly, choose an . Then check if equals to . If\r\nnone of is the answer, just calculate by brute force. The excepted time\r\ncomplexity to calculate is around where . Just choose an to make the\r\nformula as small as possible. The worst excepted number of operations is\r\naround tens of million. check the C++ code here.\r\n",
+    "hint": []
 }

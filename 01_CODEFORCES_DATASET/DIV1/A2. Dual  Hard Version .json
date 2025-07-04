@@ -145,5 +145,12 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A2. Dual  Hard Version .json",
     "editorial_link": "https://codeforces.com//blog/entry/118540",
-    "editorial": "If you either make everything positive or make everything\nnegative, you can win in moves by making prefix sums or suffix sums,\nrespectively. So, you have to reach one of these configurations in\nmoves.How to make everything positive? First, you create a big element\nwith the maximum absolute value (this requires moves), then you add it\nto every negative element (this requires moves). and are defined\nsimilarly in the negative case.So, one of and is (because the element\nwith the maximum absolute value at the beginning is either positive or\nnegative), and the other one is (because you can make in moves); is the\nnumber of negative elements, is the number of positive elements. So, .\nTherefore, you need additional moves. Since , , as we wanted. Now you\ncan simulate the process in both cases (positive and negative), and\nchoose one that requires moves in total.Complexity:\n"
+    "editorial": "If you either make everything positive or make everything\nnegative, you can win in moves by making prefix sums or suffix sums,\nrespectively. So, you have to reach one of these configurations in\nmoves.How to make everything positive? First, you create a big element\nwith the maximum absolute value (this requires moves), then you add it\nto every negative element (this requires moves). and are defined\nsimilarly in the negative case.So, one of and is (because the element\nwith the maximum absolute value at the beginning is either positive or\nnegative), and the other one is (because you can make in moves); is the\nnumber of negative elements, is the number of positive elements. So, .\nTherefore, you need additional moves. Since , , as we wanted. Now you\ncan simulate the process in both cases (positive and negative), and\nchoose one that requires moves in total.Complexity:\n",
+    "hint": [
+        "Hint 5 You can win in moves if all the elements are negative, but also if all the elements are positive.",
+        "Hint 6 Again, make a big positive / negative element, then use it to make everything positive / negative.",
+        "Hint 7 In how many moves can you either make everything positive or make everything negative?",
+        "Hint 8 Assume the positive elements are at least as many as the negative elements. Can you win in moves?",
+        "Hint 9 The bottleneck is making the big positive element. Is it always necessary? Can you find a better bound on the \"best\" number of moves?"
+    ]
 }

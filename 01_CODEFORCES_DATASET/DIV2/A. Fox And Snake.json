@@ -93,7 +93,7 @@
         ]
     },
     "name": "A. Fox And Snake",
-    "statement": "Fox Ciel starts to learn programming. The first task is drawing a fox!\r\nHowever, that turns out to be too hard for a beginner, so she decides to\r\ndraw a snake instead.A snake is a pattern on a by table. Denote -th cell\r\nof -th row as . The tail of the snake is located at , then it\u2019s body\r\nextends to , then goes down rows to , then goes left to and so on.Your\r\ntask is to draw this snake for Fox Ciel: the empty cells should be\r\nrepresented as dot characters (\u201d) and the snake cells should be filled\r\nwith number signs (\u201d).Consider sample tests in order to understand the\r\nsnake pattern.\r\n",
+    "statement": "Fox Ciel starts to learn programming. The first task is drawing a fox!\r\nHowever, that turns out to be too hard for a beginner, so she decides to\r\ndraw a snake instead.A snake is a pattern on a by table. Denote -th cell\r\nof -th row as . The tail of the snake is located at , then it’s body\r\nextends to , then goes down rows to , then goes left to and so on.Your\r\ntask is to draw this snake for Fox Ciel: the empty cells should be\r\nrepresented as dot characters (”) and the snake cells should be filled\r\nwith number signs (”).Consider sample tests in order to understand the\r\nsnake pattern.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n\tint n;\n\tint m;\n\tscanf(\"%d%d\", &n, &m);\n\tfor (int i = 0; i < n; ++i) {\n\t\tfor (int j = 0; j < m; ++j) {\n\t\t\tif (i % 2 == 0) {\n\t\t\t\tputchar('#');\n\t\t\t} else {\n\t\t\t\tint k = i / 2;\n\t\t\t\tif (k % 2 == 0 && j == m - 1) {\n\t\t\t\t\tputchar('#');\n\t\t\t\t} else if (k % 2 == 1 && j == 0) {\n\t\t\t\t\tputchar('#');\n\t\t\t\t} else {\n\t\t\t\t\tputchar('.');\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tputs(\"\");\n\t}\n\treturn 0;\n}\n"
     ],
@@ -106,5 +106,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Fox And Snake.json",
     "editorial_link": "https://codeforces.com//blog/entry/16173",
-    "editorial": "There are 2 different ways to solve this kind of task: First one is to\r\nsimulate the movement of the snake head, and you draw \u00e2\u0080\u009ds on the board.\r\nThe code will look like: Another way is to do some observation about the\r\nresult, you can find this pattern:\r\n"
+    "editorial": "There are 2 different ways to solve this kind of task: First one is to\r\nsimulate the movement of the snake head, and you draw âs on the board.\r\nThe code will look like: Another way is to do some observation about the\r\nresult, you can find this pattern:\r\n",
+    "hint": []
 }

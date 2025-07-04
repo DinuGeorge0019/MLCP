@@ -130,7 +130,7 @@
     "name": "D2. Reverse Card  Hard Version ",
     "statement": "You are given two positive integers n, m.Calculate the number of ordered\r\npairs (a, b) satisfying the following conditions: 1\r\nle a\r\nle n, 1\r\nle b\r\nle m; b\r\ncdot\r\ngcd(a,b) is a multiple of a+b.\r\n",
     "solutions": [
-        "#include<bits/stdc++.h>using namespace std;\u00a0#define int int64_t#define pb push_back#define pii pair<int, int>#define st first#define nd second#define sz(x) (int)(x).size()#define all(x) (x).begin(), (x).end()\u00a0int32_t main() {\tios_base::sync_with_stdio(false);\tcin.tie(NULL);\t\tint t=1;\tcin >> t;\twhile(t--) {\t\tint n, m;\t\tcin >> n >> m;\t\tint cnt = 0;\t\tfor(int i=1;i<=min(n, m);i++) {\t\t\tif(i%2==0) cnt++;\t\t}\t\tfor(int p=1;p*p<=n;p++) {\t\t\tfor(int q=1;q*q<=m;q++) {\t\t\t\tif(p==q) continue;\t\t\t\tif(__gcd(p, q)>1) continue;\t\t\t\tint sx = (p+q)/__gcd(q, p+q);\t\t\t\tint cnt1 = n/(p*sx);\t\t\t\tint cnt2 = m/(q*sx);\t\t\t\tcnt += min(cnt1, cnt2);\t\t\t\t// for(int x=sx;;x+=sx) {\t\t\t\t// \tif(x*p>n) break;\t\t\t\t// \tif(x*q>m) break;\t\t\t\t// \tcnt++;\t\t\t\t// }\t\t\t}\t\t}\t\tcout << cnt << \"\\n\";\t}}"
+        "#include<bits/stdc++.h>using namespace std; #define int int64_t#define pb push_back#define pii pair<int, int>#define st first#define nd second#define sz(x) (int)(x).size()#define all(x) (x).begin(), (x).end() int32_t main() {\tios_base::sync_with_stdio(false);\tcin.tie(NULL);\t\tint t=1;\tcin >> t;\twhile(t--) {\t\tint n, m;\t\tcin >> n >> m;\t\tint cnt = 0;\t\tfor(int i=1;i<=min(n, m);i++) {\t\t\tif(i%2==0) cnt++;\t\t}\t\tfor(int p=1;p*p<=n;p++) {\t\t\tfor(int q=1;q*q<=m;q++) {\t\t\t\tif(p==q) continue;\t\t\t\tif(__gcd(p, q)>1) continue;\t\t\t\tint sx = (p+q)/__gcd(q, p+q);\t\t\t\tint cnt1 = n/(p*sx);\t\t\t\tint cnt2 = m/(q*sx);\t\t\t\tcnt += min(cnt1, cnt2);\t\t\t\t// for(int x=sx;;x+=sx) {\t\t\t\t// \tif(x*p>n) break;\t\t\t\t// \tif(x*q>m) break;\t\t\t\t// \tcnt++;\t\t\t\t// }\t\t\t}\t\t}\t\tcout << cnt << \"\\n\";\t}}"
     ],
     "input": "",
     "output": "",
@@ -141,5 +141,6 @@
     ],
     "dificulty": "2200",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D2. Reverse Card  Hard Version .json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D2. Reverse Card  Hard Version .json",
+    "hint": []
 }

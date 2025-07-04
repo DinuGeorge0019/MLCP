@@ -96,5 +96,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Rook, Bishop and King.json",
     "editorial_link": "https://codeforces.com//blog/entry/9866",
-    "editorial": "There are two approaches to this task. The first is use BFS to find the\r\nshortest path three times. The second is to notice that:\r\n"
+    "editorial": "There are two approaches to this task. The first is use BFS to find the\r\nshortest path three times. The second is to notice that:\r\n",
+    "hint": []
 }

@@ -104,5 +104,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Tree and Queries.json",
     "editorial_link": "https://codeforces.com//blog/entry/10084",
-    "editorial": "Use binary search tree and merge\nthem by rank. Use binary search tree that supports O(n) merging to get\nO(nlogn) solution. O(n*sqrt(n)): Dfs the tree to transform the problem\nto: To solve this problem:\n"
+    "editorial": "Use binary search tree and merge\nthem by rank. Use binary search tree that supports O(n) merging to get\nO(nlogn) solution. O(n*sqrt(n)): Dfs the tree to transform the problem\nto: To solve this problem:\n",
+    "hint": []
 }

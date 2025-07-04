@@ -176,5 +176,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\F. Level Generation.json",
     "editorial_link": "https://codeforces.com/blog/entry/52991",
-    "editorial": "The best way to build a graph is to make a -edge-connected component\r\nwith vertices and connect each of the remaining vertices to it with a\r\nsingle edge. Then we will have bridges outside the component and edges\r\nin the component. So the answer for some fixed and is ; let\u00e2\u0080\u0099s denote is\r\nat .Now since is increasing, and is decreasing, there exists some such\r\nthat if , then , and if , then .Then is strictly increasing on the\r\nsegment , and strictly decreasing on the segment ; and this proves that\r\nwe can use ternary search to find its maximum.\r\n"
+    "editorial": "The best way to build a graph is to make a -edge-connected component\r\nwith vertices and connect each of the remaining vertices to it with a\r\nsingle edge. Then we will have bridges outside the component and edges\r\nin the component. So the answer for some fixed and is ; letâs denote is\r\nat .Now since is increasing, and is decreasing, there exists some such\r\nthat if , then , and if , then .Then is strictly increasing on the\r\nsegment , and strictly decreasing on the segment ; and this proves that\r\nwe can use ternary search to find its maximum.\r\n",
+    "hint": []
 }

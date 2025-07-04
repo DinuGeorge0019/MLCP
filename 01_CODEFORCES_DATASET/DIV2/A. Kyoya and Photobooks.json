@@ -115,5 +115,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Kyoya and Photobooks.json",
     "editorial_link": "https://codeforces.com//blog/entry/18842",
-    "editorial": "Solving this problem just requires us to simulate adding every character\r\nat every position at the string, and removing any duplicates. For\r\ninstance, we can use a HashSet of Strings in Java to do this (a set in\r\nC++ or Python works as well). Bonus: Prove that the number of ways is\r\nalways (length of string + 1) * 25 + 1. Example code:\r\nhttp://codeforces.com/contest/554/submission/11767578\r\n"
+    "editorial": "Solving this problem just requires us to simulate adding every character\r\nat every position at the string, and removing any duplicates. For\r\ninstance, we can use a HashSet of Strings in Java to do this (a set in\r\nC++ or Python works as well). Bonus: Prove that the number of ways is\r\nalways (length of string + 1) * 25 + 1. Example code:\r\nhttp://codeforces.com/contest/554/submission/11767578\r\n",
+    "hint": []
 }

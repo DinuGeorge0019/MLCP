@@ -261,5 +261,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Petr and Permutations.json",
     "editorial_link": "https://codeforces.com//blog/entry/59758",
-    "editorial": "Each swap change the parity of permutation. and always have different\r\nparities, so the solution is just to calculate the parity of the given\r\npermutation and check if it is equal to parity of or to parity of .To\r\ncalculate the parity you can just calculate the number of inversions\r\nwith your favorite method (Fenwick tree, Segment tree, mergesort or\r\nwhatever) in time. But it is easier to calculate the number of cycles in\r\npermutation in time.\r\n"
+    "editorial": "Each swap change the parity of permutation. and always have different\r\nparities, so the solution is just to calculate the parity of the given\r\npermutation and check if it is equal to parity of or to parity of .To\r\ncalculate the parity you can just calculate the number of inversions\r\nwith your favorite method (Fenwick tree, Segment tree, mergesort or\r\nwhatever) in time. But it is easier to calculate the number of cycles in\r\npermutation in time.\r\n",
+    "hint": []
 }

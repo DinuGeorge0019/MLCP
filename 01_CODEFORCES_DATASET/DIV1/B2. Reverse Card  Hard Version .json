@@ -169,7 +169,7 @@
     "name": "B2. Reverse Card  Hard Version ",
     "statement": "You are given two positive integers n, m.Calculate the number of ordered\r\npairs (a, b) satisfying the following conditions: 1\r\nle a\r\nle n, 1\r\nle b\r\nle m; b\r\ncdot\r\ngcd(a,b) is a multiple of a+b.\r\n",
     "solutions": [
-        "/** *    author:  tourist *    created: 30.04.2024 10:44:46**/#include <bits/stdc++.h>\u00a0using namespace std;\u00a0#ifdef LOCAL#include \"algo/debug.h\"#else#define debug(...) 42#endif\u00a0int main() {  ios::sync_with_stdio(false);  cin.tie(0);  const int M = int(4e6) + 10;  vector<int> p(M);  iota(p.begin(), p.end(), 0);  for (int i = 2; i < M; i++) {    if (p[i] == i) {      for (int j = i + i; j < M; j += i) {        if (p[j] == j) {          p[j] = i;        }      }    }  }  int tt;  cin >> tt;  while (tt--) {    int n, m;    cin >> n >> m;    int64_t ans = 0;    for (int t = 2; t <= n + m; t++) {      int r = 1;      int num = t;      while (num > 1) {        int nxt = num / p[num];        r *= p[num];        num = (p[num] == p[nxt] ? nxt / p[nxt] : nxt);      }      // 1 <= k * r <= n      int low = 1;      int high = n / r;      // 1 <= t - k * r <= m      // -m <= k * r - t <= -1      // -m + t <= k * r <= -1 + t      high = min(high, (-1 + t) / r);      low = max(low, (-m + t + r - 1) / r);      if (low <= high) {        ans += high - low + 1;      }    }    cout << ans << '\\n';  }  return 0;}"
+        "/** *    author:  tourist *    created: 30.04.2024 10:44:46**/#include <bits/stdc++.h> using namespace std; #ifdef LOCAL#include \"algo/debug.h\"#else#define debug(...) 42#endif int main() {  ios::sync_with_stdio(false);  cin.tie(0);  const int M = int(4e6) + 10;  vector<int> p(M);  iota(p.begin(), p.end(), 0);  for (int i = 2; i < M; i++) {    if (p[i] == i) {      for (int j = i + i; j < M; j += i) {        if (p[j] == j) {          p[j] = i;        }      }    }  }  int tt;  cin >> tt;  while (tt--) {    int n, m;    cin >> n >> m;    int64_t ans = 0;    for (int t = 2; t <= n + m; t++) {      int r = 1;      int num = t;      while (num > 1) {        int nxt = num / p[num];        r *= p[num];        num = (p[num] == p[nxt] ? nxt / p[nxt] : nxt);      }      // 1 <= k * r <= n      int low = 1;      int high = n / r;      // 1 <= t - k * r <= m      // -m <= k * r - t <= -1      // -m + t <= k * r <= -1 + t      high = min(high, (-1 + t) / r);      low = max(low, (-m + t + r - 1) / r);      if (low <= high) {        ans += high - low + 1;      }    }    cout << ans << '\\n';  }  return 0;}"
     ],
     "input": "",
     "output": "",
@@ -180,5 +180,10 @@
     ],
     "dificulty": "2200",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B2. Reverse Card  Hard Version .json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B2. Reverse Card  Hard Version .json",
+    "hint": [
+        "Hint 1 Denote as . Assume that and .",
+        "Hint 2 .",
+        "Hint 3 How large could and be?"
+    ]
 }

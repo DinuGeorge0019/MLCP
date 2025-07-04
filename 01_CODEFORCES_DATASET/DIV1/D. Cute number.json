@@ -124,5 +124,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\D. Cute number.json",
     "editorial_link": "https://codeforces.com//blog/entry/103493",
-    "editorial": "Solution For any integer , iff we can find satisfying , we have , which\nmeans is beautiful. Define .It is easy to find that , and there are only\nuseful because . Enumerate (), and calculate the range of in order. It\ncan be shown that the range is an interval for all . So we can solve\nthis problem in .We call a jump if . Assuming , there is no more than\njumps. We only need to enumerate jumps to calculate the ranges. We can\nuse linked list or set in C++ to maintain it.The time complexity is .\n"
+    "editorial": "Solution For any integer , iff we can find satisfying , we have , which\nmeans is beautiful. Define .It is easy to find that , and there are only\nuseful because . Enumerate (), and calculate the range of in order. It\ncan be shown that the range is an interval for all . So we can solve\nthis problem in .We call a jump if . Assuming , there is no more than\njumps. We only need to enumerate jumps to calculate the ranges. We can\nuse linked list or set in C++ to maintain it.The time complexity is .\n",
+    "hint": [
+        "Hint1 What is the range of the answer?",
+        "Hint2 How to solve it in Unable to parse markup [type=CF_MATHJAX] ?"
+    ]
 }

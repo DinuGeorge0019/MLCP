@@ -104,5 +104,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Queue.json",
     "editorial_link": "https://codeforces.com//blog/entry/3571",
-    "editorial": "Let's sort the pairs (namei, ai) by ascending of ai. If there is an index i: 0???i?<?n that ai?>?i, then answer is \"-1\". Otherwise the answer exists. We will iterate through the array of sorted pairs from left to right with supporting of vector of results res. Let on the current iteration ai?=?n?-?i, then we must transfer the current man in the position ai. It can be done in C++ with one line: res.insert(res.begin() + a[i], man); "
+    "editorial": "Let's sort the pairs (namei, ai) by ascending of ai. If there is an index i: 0???i?<?n that ai?>?i, then answer is \"-1\". Otherwise the answer exists. We will iterate through the array of sorted pairs from left to right with supporting of vector of results res. Let on the current iteration ai?=?n?-?i, then we must transfer the current man in the position ai. It can be done in C++ with one line: res.insert(res.begin() + a[i], man); ",
+    "hint": []
 }

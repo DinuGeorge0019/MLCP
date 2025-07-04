@@ -99,7 +99,7 @@
         ]
     },
     "name": "A. Vanya and Fence",
-    "statement": "Vanya and his friends are walking along the fence of height and they do\r\nnot want the guard to notice them. In order to achieve this the height\r\nof each of the friends should not exceed . If the height of some person\r\nis greater than he can bend down and then he surely won\u2019t be noticed by\r\nthe guard. The height of the -th person is equal to .Consider the width\r\nof the person walking as usual to be equal to , while the width of the\r\nbent person is equal to . Friends want to talk to each other while\r\nwalking, so they would like to walk in a single row. What is the minimum\r\nwidth of the road, such that friends can walk in a row and remain\r\nunattended by the guard?\r\n",
+    "statement": "Vanya and his friends are walking along the fence of height and they do\r\nnot want the guard to notice them. In order to achieve this the height\r\nof each of the friends should not exceed . If the height of some person\r\nis greater than he can bend down and then he surely won’t be noticed by\r\nthe guard. The height of the -th person is equal to .Consider the width\r\nof the person walking as usual to be equal to , while the width of the\r\nbent person is equal to . Friends want to talk to each other while\r\nwalking, so they would like to walk in a single row. What is the minimum\r\nwidth of the road, such that friends can walk in a row and remain\r\nunattended by the guard?\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\nusing namespace std;\n\nint n,h,x,ans;\n\nint main()\n{\n    cin>>n>>h;\n    int ans=0;\n    for(int i=1;i<=n;i++)\n    {\n        cin>>x;\n        if(x>h)\n            ans++;\n        ans++;\n    }\n    cout<<ans<<\"\\n\";\n}\n"
     ],
@@ -112,5 +112,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Vanya and Fence.json",
     "editorial_link": "https://codeforces.com//blog/entry/45181",
-    "editorial": "For each friend we can check, if his height is more than . If it is,\r\nthen his width is , else . Complexity . Code\r\n"
+    "editorial": "For each friend we can check, if his height is more than . If it is,\r\nthen his width is , else . Complexity . Code\r\n",
+    "hint": []
 }

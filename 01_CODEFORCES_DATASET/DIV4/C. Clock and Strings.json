@@ -171,7 +171,7 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/129364",
-    "editorial": "There are many ways to implement the solution, but many involve a lot of\r\ncasework. Below is the shortest solution we know of.Walk around the\r\nclock in the order , , , . If we pass by two red strings or two blue\r\nstrings in a row, the strings don\u00e2\u0080\u0099t intersect; otherwise, they do.This\r\nis because if we don\u00e2\u0080\u0099t have two red or blue in a row, then the red and\r\nblue strings alternate, so there must be an intersection.\r\n",
+    "editorial": "There are many ways to implement the solution, but many involve a lot of\r\ncasework. Below is the shortest solution we know of.Walk around the\r\nclock in the order , , , . If we pass by two red strings or two blue\r\nstrings in a row, the strings donât intersect; otherwise, they do.This\r\nis because if we donât have two red or blue in a row, then the red and\r\nblue strings alternate, so there must be an intersection.\r\n",
     "name": "C. Clock and Strings",
     "statement": "There is a clock labeled with the numbers 1 through 12 in clockwise\r\norder, as shown below. Alice and Bob have four integers a, b, c, d not\r\nmore than 12. Alice ties a red string connecting a and b, and Bob ties a\r\nblue string connecting c and d. Do the strings intersect? (The strings\r\nare straight line segments.)\r\n",
     "solutions": [
@@ -184,5 +184,6 @@
     ],
     "dificulty": "900",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\C. Clock and Strings.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV4\\C. Clock and Strings.json",
+    "hint": []
 }

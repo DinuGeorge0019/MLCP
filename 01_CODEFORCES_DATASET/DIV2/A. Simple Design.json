@@ -122,5 +122,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Simple Design.json",
     "editorial_link": "https://codeforces.com//blog/entry/121618",
-    "editorial": "Let be the answer to the problem. Note that and the problem can be\r\nsolved by brute force. We will prove this fact.If the difference between\r\ntwo numbers is greater than , then there will definitely be a sequence\r\nof numbers where only the last digit differs. Therefore, if the sum of\r\nthe digits of a number with the last digit is equal to , then there were\r\nsums of digits equal to . Here, there are exactly consecutive numbers\r\nand for each from to , there exists a number from this range that is\r\ndivisible by .\r\n"
+    "editorial": "Let be the answer to the problem. Note that and the problem can be\r\nsolved by brute force. We will prove this fact.If the difference between\r\ntwo numbers is greater than , then there will definitely be a sequence\r\nof numbers where only the last digit differs. Therefore, if the sum of\r\nthe digits of a number with the last digit is equal to , then there were\r\nsums of digits equal to . Here, there are exactly consecutive numbers\r\nand for each from to , there exists a number from this range that is\r\ndivisible by .\r\n",
+    "hint": []
 }

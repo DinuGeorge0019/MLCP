@@ -142,5 +142,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Coins.json",
     "editorial_link": "https://codeforces.com//blog/entry/63384",
-    "editorial": "Notice that using maximum value coin whenever possible will be always\r\noptimal. Hence, we can use coins of value . Now, if is not equal to ,\r\nthen we need to use one more coin of valuation . Hence, our answer can\r\nbe written as .Overall Complexity:\r\n"
+    "editorial": "Notice that using maximum value coin whenever possible will be always\r\noptimal. Hence, we can use coins of value . Now, if is not equal to ,\r\nthen we need to use one more coin of valuation . Hence, our answer can\r\nbe written as .Overall Complexity:\r\n",
+    "hint": []
 }

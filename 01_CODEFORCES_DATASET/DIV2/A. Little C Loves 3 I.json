@@ -109,5 +109,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Little C Loves 3 I.json",
     "editorial_link": "https://codeforces.com//blog/entry/61993",
-    "editorial": "This problem is set by Little C at first, and it's a problem about \"Tic-Tac-Toe\" for D2B. But after discussion with the coordinator, we thought it's just a implement problem and not so interesting. So I came up with a new problem as you saw.\n\nSolution\nIf n?-?2 is not a multiple of 3, a?=?1,?b?=?1,?c?=?n?-?2 is OK.\n\nOtherwise, a?=?1,?b?=?2,?c?=?n?-?3 is OK."
+    "editorial": "This problem is set by Little C at first, and it's a problem about \"Tic-Tac-Toe\" for D2B. But after discussion with the coordinator, we thought it's just a implement problem and not so interesting. So I came up with a new problem as you saw.\n\nSolution\nIf n?-?2 is not a multiple of 3, a?=?1,?b?=?1,?c?=?n?-?2 is OK.\n\nOtherwise, a?=?1,?b?=?2,?c?=?n?-?3 is OK.",
+    "hint": []
 }

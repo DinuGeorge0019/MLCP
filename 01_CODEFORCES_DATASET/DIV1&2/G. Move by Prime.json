@@ -157,5 +157,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\G. Move by Prime.json",
     "editorial_link": "https://codeforces.com//blog/entry/43886",
-    "editorial": "you can consider each prime number separately. Can you find the answer if there are only 1's and 2's in the input? It may be hard to try to iterate over possible placements of the median. Maybe it's better to think how many numbers we will change from 2^p to 2^{p+1}."
+    "editorial": "you can consider each prime number separately. Can you find the answer if there are only 1's and 2's in the input? It may be hard to try to iterate over possible placements of the median. Maybe it's better to think how many numbers we will change from 2^p to 2^{p+1}.",
+    "hint": []
 }

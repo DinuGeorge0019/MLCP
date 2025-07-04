@@ -96,7 +96,7 @@
         ]
     },
     "name": "A. Anastasia and pebbles",
-    "statement": "Anastasia loves going for a walk in Central Uzhlyandian Park. But she\r\nbecame uninterested in simple walking, so she began to collect\r\nUzhlyandian pebbles. At first, she decided to collect all the pebbles\r\nshe could find in the park.She has only . She can put at most pebbles in\r\neach pocket at the same time. There are different pebble types in the\r\npark, and there are pebbles of the -th type. Anastasia is very\r\nresponsible, so she never mixes pebbles of different types in same\r\npocket. However, she can put different kinds of pebbles in different\r\npockets at the same time. Unfortunately, she can\u2019t spend all her time\r\ncollecting pebbles, so she can collect pebbles from the park only once a\r\nday.Help her to find the minimum number of days needed to collect all\r\nthe pebbles of Uzhlyandian Central Park, taking into consideration that\r\nAnastasia can\u2019t place pebbles of different types in same pocket.\r\n",
+    "statement": "Anastasia loves going for a walk in Central Uzhlyandian Park. But she\r\nbecame uninterested in simple walking, so she began to collect\r\nUzhlyandian pebbles. At first, she decided to collect all the pebbles\r\nshe could find in the park.She has only . She can put at most pebbles in\r\neach pocket at the same time. There are different pebble types in the\r\npark, and there are pebbles of the -th type. Anastasia is very\r\nresponsible, so she never mixes pebbles of different types in same\r\npocket. However, she can put different kinds of pebbles in different\r\npockets at the same time. Unfortunately, she can’t spend all her time\r\ncollecting pebbles, so she can collect pebbles from the park only once a\r\nday.Help her to find the minimum number of days needed to collect all\r\nthe pebbles of Uzhlyandian Central Park, taking into consideration that\r\nAnastasia can’t place pebbles of different types in same pocket.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\nint main()\n{\n\tint n,k;\n\tscanf(\"%d%d\",&n,&k);\n\tint cnt = 0;\n\twhile(n--)\n\t{\n\t\tint x;\n\t\tscanf(\"%d\",&x);\n\t\tcnt += (x+k-1)/k;\n\t}\n\tprintf(\"%d\\n\",(cnt+1)/2);\n\treturn 0;\n}"
     ],
@@ -110,5 +110,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Anastasia and pebbles.json",
     "editorial_link": "https://codeforces.com//blog/entry/51312",
-    "editorial": "For every pebble type we can count the minimal number of pockets\r\nAnastasia need to collect all pebbles of this type. That\u00e2\u0080\u0099s easy to\r\nnotice that this number equals . So the answer for the problem is .\r\nSolution complexity is .\r\n"
+    "editorial": "For every pebble type we can count the minimal number of pockets\r\nAnastasia need to collect all pebbles of this type. Thatâs easy to\r\nnotice that this number equals . So the answer for the problem is .\r\nSolution complexity is .\r\n",
+    "hint": []
 }

@@ -218,5 +218,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\C. Double Lexicographically Minimum.json",
     "editorial_link": "https://codeforces.com//blog/entry/113321",
-    "editorial": "Let\u00e2\u0080\u0099s iterate all symbols of in order from smallest to largest and\r\nconstruct an answer .Let the current symbol be . If there are at least\r\nremaining symbols equal to , we should add them to the current prefix\r\nand suffix of and continue. If there are at most one other symbol is\r\nleft (there are and times left in ) we should add symbols , symbol and\r\nsymbols to the prefix of and break. Otherwise we should add all\r\nremaining symbols of (excluding ) to prefix of in the sorted order and\r\nafter it symbol . Time complexity: , where .\r\n"
+    "editorial": "Letâs iterate all symbols of in order from smallest to largest and\r\nconstruct an answer .Let the current symbol be . If there are at least\r\nremaining symbols equal to , we should add them to the current prefix\r\nand suffix of and continue. If there are at most one other symbol is\r\nleft (there are and times left in ) we should add symbols , symbol and\r\nsymbols to the prefix of and break. Otherwise we should add all\r\nremaining symbols of (excluding ) to prefix of in the sorted order and\r\nafter it symbol . Time complexity: , where .\r\n",
+    "hint": []
 }

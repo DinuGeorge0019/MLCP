@@ -187,5 +187,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Polycarp and the Day of Pi.json",
     "editorial_link": "https://codeforces.com//blog/entry/111948",
-    "editorial": "In the problem, you had to find the largest common prefix(LCP) of the\r\nfirst characters of the number and the string . To do this, we will go\r\nfrom the beginning and compare the characters until we find a\r\nnon-matching one, or until the string ends.\r\n"
+    "editorial": "In the problem, you had to find the largest common prefix(LCP) of the\r\nfirst characters of the number and the string . To do this, we will go\r\nfrom the beginning and compare the characters until we find a\r\nnon-matching one, or until the string ends.\r\n",
+    "hint": []
 }

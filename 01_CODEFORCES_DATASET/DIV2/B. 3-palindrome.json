@@ -122,7 +122,7 @@
         ]
     },
     "name": "B. 3-palindrome",
-    "statement": "In the beginning of the new year Keivan decided to reverse his name. He\r\ndoesn\u2019t like palindromes, so he changed Naviek to Navick.He is too\r\nselfish, so for a given he wants to obtain a string of characters, each\r\nof which is either \u201d, \u201d or \u201d, with no of length appearing in the string\r\nas a substring. For example, the strings \"\" and \"\" suit him, while the\r\nstring \"\" doesn\u2019t. He also want the number of letters \u201d in his string to\r\nbe as little as possible.\r\n",
+    "statement": "In the beginning of the new year Keivan decided to reverse his name. He\r\ndoesn’t like palindromes, so he changed Naviek to Navick.He is too\r\nselfish, so for a given he wants to obtain a string of characters, each\r\nof which is either ”, ” or ”, with no of length appearing in the string\r\nas a substring. For example, the strings \"\" and \"\" suit him, while the\r\nstring \"\" doesn’t. He also want the number of letters ” in his string to\r\nbe as little as possible.\r\n",
     "solutions": [
         "#include <iostream>\n#include <cstdio>\n#include <vector>\n#include <cstring>\n#include <map>\n#include <cstdlib>\n#include <cmath>\n#include <string>\n#include <algorithm>\n#include <set>\n#include <stack>\n#include <queue>\n#include <utility>\n#include <bitset>\n#define fi first\n#define se second\n#define mkp make_pair\n#define pb push_back\n#define rep(i,a,b) for (int i=(a);i<(b);i++)\n#define per(i,b,a) for (int i=(b)-1;i>=(a);i--)\n#define REP(i,a,b) for (int i=(a);i<=(b);i++)\n#define PER(i,b,a) for (int i=(b);i>=(a);i--)\nusing namespace std;\ntypedef long long LL;\n\nconst int INF = 0x3f3f3f3f;\n\nconst int MAXN = 1000005; // 1e6;\nint n;\nint main()\n{\n        cin>>n;\n        rep(i,0,n)\n        {\n                if (i%4==0) cout<<'a';\n                else if (i%4==1) cout<<'a';\n                else if (i%4==2) cout<<'b';\n                else if (i%4==3) cout<<'b';\n//                else cout<<'c';\n        }\n        cout<<endl;\n}\n"
     ],
@@ -135,5 +135,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. 3-palindrome.json",
     "editorial_link": "https://codeforces.com//blog/entry/51846",
-    "editorial": "The answer is constructive as follows: It is obvious there is no\r\n-palindrome as substring and the number of characters is minimum\r\npossible equal to zero.\r\n"
+    "editorial": "The answer is constructive as follows: It is obvious there is no\r\n-palindrome as substring and the number of characters is minimum\r\npossible equal to zero.\r\n",
+    "hint": [
+        "hint1 For the string shouldn't be any , . Make some examples of little sizes."
+    ]
 }

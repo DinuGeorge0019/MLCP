@@ -114,5 +114,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Puzzle Pieces.json",
     "editorial_link": "https://codeforces.com//blog/entry/76819",
-    "editorial": "If or , then we can chain the pieces together to form a solution. If ,\r\nwe can make the following solution: Any other potential solution would\r\ncontain a or a solution, which we can show is impossible.A grid has\r\nshared edges between the pieces, and each shared edge must have a blank.\r\nBut there are only blanks available as there are pieces.\r\n"
+    "editorial": "If or , then we can chain the pieces together to form a solution. If ,\r\nwe can make the following solution: Any other potential solution would\r\ncontain a or a solution, which we can show is impossible.A grid has\r\nshared edges between the pieces, and each shared edge must have a blank.\r\nBut there are only blanks available as there are pieces.\r\n",
+    "hint": []
 }

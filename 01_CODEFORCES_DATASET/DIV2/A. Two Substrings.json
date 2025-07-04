@@ -113,5 +113,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Two Substrings.json",
     "editorial_link": "https://codeforces.com/blog/entry/18329",
-    "editorial": "There are many ways to solve this problem. Author solution does the\r\nfollowing: check if substring \"AB\" goes before \"BA\", and then vice\r\nversa, if \"BA\" goes before \"AB\". You can do it in the following way:\r\nfind the first occurence of \"AB\" then check all substrings of length two\r\nto the right of it to check if substring \"BA\" also exists. Then do it\r\nvice versa. Complexity of the solution is , where is the length of the\r\ngiven string.\r\n"
+    "editorial": "There are many ways to solve this problem. Author solution does the\r\nfollowing: check if substring \"AB\" goes before \"BA\", and then vice\r\nversa, if \"BA\" goes before \"AB\". You can do it in the following way:\r\nfind the first occurence of \"AB\" then check all substrings of length two\r\nto the right of it to check if substring \"BA\" also exists. Then do it\r\nvice versa. Complexity of the solution is , where is the length of the\r\ngiven string.\r\n",
+    "hint": []
 }

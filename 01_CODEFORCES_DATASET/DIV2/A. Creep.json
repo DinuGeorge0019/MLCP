@@ -133,5 +133,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Creep.json",
     "editorial_link": "https://codeforces.com//blog/entry/103952",
-    "editorial": "Define the minimum possible creepiness of the string as . We want to\r\nshow that is equal to . Creepiness of is equal to and creepiness of is\r\nequal to so . The way to make a string with creepiness equal to :while\r\nholds, add to the end of the string. After that, add the remaining\r\ncharacter to the end of the string. Now we know . So .complexity:\r\n"
+    "editorial": "Define the minimum possible creepiness of the string as . We want to\r\nshow that is equal to . Creepiness of is equal to and creepiness of is\r\nequal to so . The way to make a string with creepiness equal to :while\r\nholds, add to the end of the string. After that, add the remaining\r\ncharacter to the end of the string. Now we know . So .complexity:\r\n",
+    "hint": []
 }

@@ -144,5 +144,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C. Yet Another Broken Keyboard.json",
     "editorial_link": "https://codeforces.com//blog/entry/72132",
-    "editorial": "Let\u00e2\u0080\u0099s replace all characters of with zeros and ones (zero if the\r\ncharacter is unavailable and one otherwise). Then we have the binary\r\nstring and we have to calculate the number of contiguous segments of\r\nthis string consisting only of ones. It can be done with two pointers\r\napproach.If we are staying at the position and its value is zero, just\r\nskip it. Otherwise, let\u00e2\u0080\u0099s find the leftmost position such that and the\r\n-th value is zero. Then we have to add to the answer the value and set\r\n.Time complexity: .\r\n"
+    "editorial": "Letâs replace all characters of with zeros and ones (zero if the\r\ncharacter is unavailable and one otherwise). Then we have the binary\r\nstring and we have to calculate the number of contiguous segments of\r\nthis string consisting only of ones. It can be done with two pointers\r\napproach.If we are staying at the position and its value is zero, just\r\nskip it. Otherwise, letâs find the leftmost position such that and the\r\n-th value is zero. Then we have to add to the answer the value and set\r\n.Time complexity: .\r\n",
+    "hint": []
 }

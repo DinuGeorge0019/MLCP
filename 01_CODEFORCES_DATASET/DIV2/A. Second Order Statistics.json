@@ -85,5 +85,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Second Order Statistics.json",
     "editorial_link": "https://codeforces.com//blog/entry/507",
-    "editorial": "In this problem one should find a minimal element from all elements, that are strictly greater, then the minimal one or report that it doesn't exist. Of course, there can be a lot of different solutions, but one of the simplest - to sort the given sequence and print the first element, that's not equal to the previous. If all elements are equal, then the required element doesn't exist."
+    "editorial": "In this problem one should find a minimal element from all elements, that are strictly greater, then the minimal one or report that it doesn't exist. Of course, there can be a lot of different solutions, but one of the simplest - to sort the given sequence and print the first element, that's not equal to the previous. If all elements are equal, then the required element doesn't exist.",
+    "hint": []
 }

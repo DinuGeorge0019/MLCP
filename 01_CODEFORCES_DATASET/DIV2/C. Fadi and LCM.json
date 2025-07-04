@@ -144,5 +144,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Fadi and LCM.json",
     "editorial_link": "https://codeforces.com//blog/entry/72950",
-    "editorial": "There will always be a solution where and are coprime. To see why, let\u00e2\u0080\u0099s\r\nprime factorize and . If they share a prime factor we can omit all its\r\noccurrences from one of them, precisely from the one that has fewer\r\noccurrences of that prime, without affecting their . Now, let\u00e2\u0080\u0099s prime\r\nfactorize . Since there will be at most distinct primes, we can\r\ndistribute them between and with a bruteforce.For an easier\r\nimplementation, you can loop over all divisors of , check if equals ,\r\nand minimize the answer with the pair .Time complexity:\r\n"
+    "editorial": "There will always be a solution where and are coprime. To see why, letâs\r\nprime factorize and . If they share a prime factor we can omit all its\r\noccurrences from one of them, precisely from the one that has fewer\r\noccurrences of that prime, without affecting their . Now, letâs prime\r\nfactorize . Since there will be at most distinct primes, we can\r\ndistribute them between and with a bruteforce.For an easier\r\nimplementation, you can loop over all divisors of , check if equals ,\r\nand minimize the answer with the pair .Time complexity:\r\n",
+    "hint": []
 }

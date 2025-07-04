@@ -144,5 +144,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Multiplicity.json",
     "editorial_link": "https://codeforces.com//blog/entry/63384",
-    "editorial": "Let\u00e2\u0080\u0099s introduce the following dynamic programming approach, , where\r\nindicates the number of ways to select a good subsequence of size from\r\nelements . Our final answer will be .Now, maintaining a 2-D dp will\r\nexceed memory limit, however notice that is calculated only on the basis\r\nof , hence mainitaining a 1-D dp will work. Also, now is updated if and\r\nonly if is a divisor of . We can find divisors of a number in .Overall\r\nComplexity : . Here, indicates maximum number of divisors possible and\r\nindicates maximum value of possible.Also, we can use sieve to compute\r\ndivisors of each number and achieve complexity of .\r\n"
+    "editorial": "Letâs introduce the following dynamic programming approach, , where\r\nindicates the number of ways to select a good subsequence of size from\r\nelements . Our final answer will be .Now, maintaining a 2-D dp will\r\nexceed memory limit, however notice that is calculated only on the basis\r\nof , hence mainitaining a 1-D dp will work. Also, now is updated if and\r\nonly if is a divisor of . We can find divisors of a number in .Overall\r\nComplexity : . Here, indicates maximum number of divisors possible and\r\nindicates maximum value of possible.Also, we can use sieve to compute\r\ndivisors of each number and achieve complexity of .\r\n",
+    "hint": []
 }

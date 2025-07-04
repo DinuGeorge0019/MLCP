@@ -130,5 +130,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Twin Permutations.json",
     "editorial_link": "https://codeforces.com//blog/entry/116527",
-    "editorial": "SolutionSince , then can be equal to . Therefore, any permutation which\r\nsatisfies is a valid answer.If , then: is a permutation; Consequently,\r\nis a valid answer.Time complexity per test case :\r\n"
+    "editorial": "SolutionSince , then can be equal to . Therefore, any permutation which\r\nsatisfies is a valid answer.If , then: is a permutation; Consequently,\r\nis a valid answer.Time complexity per test case :\r\n",
+    "hint": [
+        "Hint 1 If , then can be equal to .",
+        "Hint 2 Building on the idea from the first hint, can we build a permutation such that ?"
+    ]
 }

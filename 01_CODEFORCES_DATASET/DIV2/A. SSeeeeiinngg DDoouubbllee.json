@@ -133,5 +133,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. SSeeeeiinngg DDoouubbllee.json",
     "editorial_link": "https://codeforces.com//blog/entry/109438",
-    "editorial": "Output . It works, since each character in occurs exactly twice (once in\r\n, once in ), and the result is a palindrome.\r\n"
+    "editorial": "Output . It works, since each character in occurs exactly twice (once in\r\n, once in ), and the result is a palindrome.\r\n",
+    "hint": [
+        "Hint In a palindrome, the first and last characters are equal, the second and second last characters are equal, ..."
+    ]
 }

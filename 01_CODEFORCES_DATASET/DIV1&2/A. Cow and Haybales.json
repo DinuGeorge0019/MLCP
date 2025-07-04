@@ -182,5 +182,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\A. Cow and Haybales.json",
     "editorial_link": "https://codeforces.com//blog/entry/73953",
-    "editorial": "At any point, it is optimal to move a haybale in the closest pile from\r\npile to the left. So, for every day, we can loop through the piles from\r\nleft to right and move the first haybale we see closer. If all the\r\nhaybales are in pile at some point, we can stop early.Time Complexity:\r\n"
+    "editorial": "At any point, it is optimal to move a haybale in the closest pile from\r\npile to the left. So, for every day, we can loop through the piles from\r\nleft to right and move the first haybale we see closer. If all the\r\nhaybales are in pile at some point, we can stop early.Time Complexity:\r\n",
+    "hint": []
 }

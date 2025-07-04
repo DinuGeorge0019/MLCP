@@ -159,5 +159,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Brick Wall.json",
     "editorial_link": "https://codeforces.com//blog/entry/125300",
-    "editorial": "TutorialThe stability of the wall is the number of horizontal bricks\r\nminus the number of vertical bricks. Since a horizontal brick has a\r\nlength of at least , no more than horizontal bricks can be placed in one\r\nrow. Therefore, the answer does not exceed . On the other hand, if\r\nhorizontal bricks of length are placed in a row, and when is odd, the\r\nlast brick has a length of , then in each row there will be exactly\r\nhorizontal bricks, and there will be no vertical bricks in the wall at\r\nall. This achieves the maximum stability of . The solution is one\r\nformula, so it works in time.\r\n"
+    "editorial": "TutorialThe stability of the wall is the number of horizontal bricks\r\nminus the number of vertical bricks. Since a horizontal brick has a\r\nlength of at least , no more than horizontal bricks can be placed in one\r\nrow. Therefore, the answer does not exceed . On the other hand, if\r\nhorizontal bricks of length are placed in a row, and when is odd, the\r\nlast brick has a length of , then in each row there will be exactly\r\nhorizontal bricks, and there will be no vertical bricks in the wall at\r\nall. This achieves the maximum stability of . The solution is one\r\nformula, so it works in time.\r\n",
+    "hint": []
 }

@@ -161,5 +161,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Three Pairwise Maximums.json",
     "editorial_link": "https://codeforces.com//blog/entry/80257",
-    "editorial": "Suppose . If then the answer is , because is the overall maximum among\r\nall three integers , and and it appears in two pairs (so it should\r\nappear at most twice among , and ). Otherwise, the answer exists and it\r\ncan be , and (it is easy to see that this triple fits well).\r\n"
+    "editorial": "Suppose . If then the answer is , because is the overall maximum among\r\nall three integers , and and it appears in two pairs (so it should\r\nappear at most twice among , and ). Otherwise, the answer exists and it\r\ncan be , and (it is easy to see that this triple fits well).\r\n",
+    "hint": []
 }

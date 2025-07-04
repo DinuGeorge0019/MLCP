@@ -176,5 +176,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Regular Bracket Sequence42814.json",
     "editorial_link": "https://codeforces.com/blog/entry/65752",
-    "editorial": "For bracket sequence to be regular, it should have equal number of\r\nopening and closing brackets. So, if , then it\u00e2\u0080\u0099s impossible to construct\r\nany regular bracket sequence. is completely irrelevant to us, since\r\ninserting or removing a substring doesn\u00e2\u0080\u0099t change the status of the\r\nstring we get. Almost the same applies to , but we should have at least\r\none substring before it. So, if , but , there is no solution.In all\r\nother cases it is possible to order all strings as follows: all strings\r\n, then all strings , then all strings , then all strings .\r\n"
+    "editorial": "For bracket sequence to be regular, it should have equal number of\r\nopening and closing brackets. So, if , then itâs impossible to construct\r\nany regular bracket sequence. is completely irrelevant to us, since\r\ninserting or removing a substring doesnât change the status of the\r\nstring we get. Almost the same applies to , but we should have at least\r\none substring before it. So, if , but , there is no solution.In all\r\nother cases it is possible to order all strings as follows: all strings\r\n, then all strings , then all strings , then all strings .\r\n",
+    "hint": []
 }

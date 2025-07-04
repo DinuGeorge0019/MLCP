@@ -146,5 +146,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. Stas and the Queue at the Buffet.json",
     "editorial_link": "https://codeforces.com//blog/entry/66602",
-    "editorial": "Firstly, open the brackets: = . As you can see is not depending on , so\r\nwe can sum these values up and consider them as constants. Now we must\r\nminimize the sum of . Let\u00e2\u0080\u0099s denote two integers arrays each of length :\r\narray such that and array such that (for each from to ). Now we must\r\nsolve the following task: minimize the value if we can rearrange the\r\nelements of array as we want. To solve this problem we must sort array\r\nin non-increasing order. You can use an to prove it.Complexity is .\r\n"
+    "editorial": "Firstly, open the brackets: = . As you can see is not depending on , so\r\nwe can sum these values up and consider them as constants. Now we must\r\nminimize the sum of . Letâs denote two integers arrays each of length :\r\narray such that and array such that (for each from to ). Now we must\r\nsolve the following task: minimize the value if we can rearrange the\r\nelements of array as we want. To solve this problem we must sort array\r\nin non-increasing order. You can use an to prove it.Complexity is .\r\n",
+    "hint": []
 }

@@ -140,5 +140,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\E. Matching vs Independent Set.json",
     "editorial_link": "https://codeforces.com/blog/entry/68812",
-    "editorial": "Let's try to take edges to matching greedily in some order. If we can add an edge to the matching (both endpoints are not covered), then we take it. It is easy to see that all vertices not covered by the matching form an independent set \u0097 otherwise we would add an edge to the matching. Either matching or independent set has size at least n\n. Complexity \u0097 O(n+m)\n."
+    "editorial": "Let's try to take edges to matching greedily in some order. If we can add an edge to the matching (both endpoints are not covered), then we take it. It is easy to see that all vertices not covered by the matching form an independent set  otherwise we would add an edge to the matching. Either matching or independent set has size at least n\n. Complexity  O(n+m)\n.",
+    "hint": []
 }

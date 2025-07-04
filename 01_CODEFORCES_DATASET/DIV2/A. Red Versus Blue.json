@@ -136,5 +136,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Red Versus Blue.json",
     "editorial_link": "https://codeforces.com//blog/entry/100938",
-    "editorial": "We have \u00e2\u0080\u0099s which divide the string into regions and we have to place the\r\n\u00e2\u0080\u0099s in these regions. By the strong form of the pigeonhole principle, at\r\nleast one region must have at least \u00e2\u0080\u0099s. This gives us a lower bound on\r\nthe answer.Now, we will construct a string whose answer is exactly equal\r\nto the lower bound.We place the \u00e2\u0080\u0099s so that they are not adjacent. Then\r\nwe equally distribute the \u00e2\u0080\u0099s in the regions.Let and .We place \u00e2\u0080\u0099s in each\r\nregion and an extra in any regions. Hence, our answer for the\r\nconstruction is , which is equal to the lower bound.Importantly, , so\r\nnone of the \u00e2\u0080\u0099s will be consecutive.Time complexity: .\r\n"
+    "editorial": "We have âs which divide the string into regions and we have to place the\r\nâs in these regions. By the strong form of the pigeonhole principle, at\r\nleast one region must have at least âs. This gives us a lower bound on\r\nthe answer.Now, we will construct a string whose answer is exactly equal\r\nto the lower bound.We place the âs so that they are not adjacent. Then\r\nwe equally distribute the âs in the regions.Let and .We place âs in each\r\nregion and an extra in any regions. Hence, our answer for the\r\nconstruction is , which is equal to the lower bound.Importantly, , so\r\nnone of the âs will be consecutive.Time complexity: .\r\n",
+    "hint": [
+        "Hint 1 Is it a good idea to have consecutive B 's?",
+        "Hint 2 If you space out all the B 's, how many regions do you have to place the R 's into?",
+        "Hint 3 What is the best way of placing the R 's into regions such that the maximum number of R 's in a region is minimum?"
+    ]
 }

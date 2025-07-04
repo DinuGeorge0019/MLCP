@@ -175,5 +175,8 @@
     ],
     "dificulty": "",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\F1. Counting Is Not Fun  Easy Version .json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\F1. Counting Is Not Fun  Easy Version .json",
+    "hint": [
+        "Hint The subproblem where you find the number of different balanced bracket sequences of length is already well-known. Now recall everyone's favorite data structure to solve problems related to balanced bracket sequences — the stack !"
+    ]
 }

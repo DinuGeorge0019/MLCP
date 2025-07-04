@@ -70,7 +70,7 @@
         ]
     },
     "name": "B. Queue at the School",
-    "statement": "During the break the schoolchildren, boys and girls, formed a queue of\r\npeople in the canteen. Initially the children stood in the order they\r\nentered the canteen. However, after a while the boys started feeling\r\nawkward for standing in front of the girls in the queue and they started\r\nletting the girls move forward each second. Let\u2019s describe the process\r\nmore precisely. Let\u2019s say that the positions in the queue are\r\nsequentially numbered by integers from to , at that the person in the\r\nposition number is served first. Then, if at time a boy stands on the\r\n-th position and a girl stands on the -th position, then at time the -th\r\nposition will have a girl and the -th position will have a boy. The time\r\nis given in seconds.You\u2019ve got the initial position of the children, at\r\nthe initial moment of time. Determine the way the queue is going to look\r\nafter seconds.\r\n",
+    "statement": "During the break the schoolchildren, boys and girls, formed a queue of\r\npeople in the canteen. Initially the children stood in the order they\r\nentered the canteen. However, after a while the boys started feeling\r\nawkward for standing in front of the girls in the queue and they started\r\nletting the girls move forward each second. Let’s describe the process\r\nmore precisely. Let’s say that the positions in the queue are\r\nsequentially numbered by integers from to , at that the person in the\r\nposition number is served first. Then, if at time a boy stands on the\r\n-th position and a girl stands on the -th position, then at time the -th\r\nposition will have a girl and the -th position will have a boy. The time\r\nis given in seconds.You’ve got the initial position of the children, at\r\nthe initial moment of time. Determine the way the queue is going to look\r\nafter seconds.\r\n",
     "solutions": [
         "#include <iostream>\n#include <algorithm>\n#include <vector>\n#include <string>\n#include <map>\nusing namespace std;\n\ntypedef long long ll;\nconst int BIGINT = 0x0FFFFFFF;\nconst ll BIGLL = 0x0FFFFFFFFFFFFFFFll;\nconst int MAXN = 1005;\n\n\nint n,t;\nstring s;\n\nint main()\n{\n    cin>>n>>t;\n    cin>>s;\n\n    while(t--)\n    {\n        for(int i=0;i<n-1;i++)\n            if( s[i]=='B' && s[i+1]=='G')\n            {\n                swap(s[i],s[i+1]);\n                i++;\n            }\n    }\n\n    cout << s << '\\n';\n\n    \n    return 0;\n}"
     ],
@@ -86,5 +86,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Queue at the School.json",
     "editorial_link": "https://codeforces.com//blog/entry/6499",
-    "editorial": "In this you should realize the given process. You should times swap\r\nelements and if on the place was a girl and on the place was a boy. You\r\nshould not push some girl to the left multiple times at once. The\r\nsolution can be written using time.\r\n"
+    "editorial": "In this you should realize the given process. You should times swap\r\nelements and if on the place was a girl and on the place was a boy. You\r\nshould not push some girl to the left multiple times at once. The\r\nsolution can be written using time.\r\n",
+    "hint": []
 }

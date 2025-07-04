@@ -210,5 +210,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\B. String Typing.json",
     "editorial_link": "https://codeforces.com//blog/entry/58519",
-    "editorial": "Let\u00e2\u0080\u0099s consider as a substring of string from position to position ( is\r\nnot included). Let\u00e2\u0080\u0099s iterate over all lenghts of the copied prefix from\r\nto 0 inclusive, and then if then answer will be and iterating over\r\nsmaller lenghts is not necessary.\r\n"
+    "editorial": "Letâs consider as a substring of string from position to position ( is\r\nnot included). Letâs iterate over all lenghts of the copied prefix from\r\nto 0 inclusive, and then if then answer will be and iterating over\r\nsmaller lenghts is not necessary.\r\n",
+    "hint": []
 }

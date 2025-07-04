@@ -131,5 +131,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. A and B and Interesting Substrings.json",
     "editorial_link": "https://codeforces.com/blog/entry/16687",
-    "editorial": "In this problem you were asked to find number of substrings of given string, such that each substring starts and finishes with one and the same letter and sum of weight of letters of that substring without first and last letter is zero.\n\nSolution: Let's denote sum[i] as sum of weights of first i letters. Create 26 map?<?longlong,?int?>?'s, 1 for each letter. Suppose we are on position number i and current character's map is m. Then add m[sum[i?-?1]] to the answer and add sum[i] to the m."
+    "editorial": "In this problem you were asked to find number of substrings of given string, such that each substring starts and finishes with one and the same letter and sum of weight of letters of that substring without first and last letter is zero.\n\nSolution: Let's denote sum[i] as sum of weights of first i letters. Create 26 map?<?longlong,?int?>?'s, 1 for each letter. Suppose we are on position number i and current character's map is m. Then add m[sum[i?-?1]] to the answer and add sum[i] to the m.",
+    "hint": []
 }

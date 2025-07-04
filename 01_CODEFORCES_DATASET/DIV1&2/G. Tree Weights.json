@@ -210,5 +210,12 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1&2\\G. Tree Weights.json",
     "editorial_link": "https://codeforces.com//blog/entry/118128",
-    "editorial": "Let be the sum of the weights of the edges on the path from node to node\r\n. We know that and for all . This is a system of linear equations in\r\nvariables.As should be integers, let\u00e2\u0080\u0099s first solve this system modulo .\r\nThe term disappears, so we just have . Starting from , this uniquely\r\ndetermines , then , and so on.Now that we know , write where is the\r\nfirst bit of . We can rewrite our system of equations as which has the\r\nsame form as the original system. Thus we can repeat this process to\r\nfind (giving ), then , and so on. Note that each bit of is uniquely\r\ndetermined.If a solution exists, it satisfies for all , so it suffices\r\nto repeat this process until we have found the first bits of . Finally,\r\nwe check that these bits correspond to a valid solution where all the\r\noriginal weights are positive.The time complexity is , if the are\r\nprecomputed.Remark: This idea is related to the method of Hensel\r\nLifting.\r\n"
+    "editorial": "Let be the sum of the weights of the edges on the path from node to node\r\n. We know that and for all . This is a system of linear equations in\r\nvariables.As should be integers, letâs first solve this system modulo .\r\nThe term disappears, so we just have . Starting from , this uniquely\r\ndetermines , then , and so on.Now that we know , write where is the\r\nfirst bit of . We can rewrite our system of equations as which has the\r\nsame form as the original system. Thus we can repeat this process to\r\nfind (giving ), then , and so on. Note that each bit of is uniquely\r\ndetermined.If a solution exists, it satisfies for all , so it suffices\r\nto repeat this process until we have found the first bits of . Finally,\r\nwe check that these bits correspond to a valid solution where all the\r\noriginal weights are positive.The time complexity is , if the are\r\nprecomputed.Remark: This idea is related to the method of Hensel\r\nLifting.\r\n",
+    "hint": [
+        "Hint 1 Model the problem as a system of linear equations.",
+        "Hint 2 Let be the sum of the weights of the edges on the path from node to node . The equations are of the form .",
+        "Hint 3 The intended solution does not do anything like attempt to maintain paths/virtual trees of known weight. One easily overlooked detail that is essential to the solution is that are integers.",
+        "Hint 4 Solve the equations modulo first, so that the term disappears.",
+        "Hint 5 After solving the equations modulo , we can similarly solve modulo , , etc."
+    ]
 }

@@ -171,5 +171,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. The Miracle and the Sleeper.json",
     "editorial_link": "https://codeforces.com//blog/entry/94278",
-    "editorial": "It\u00e2\u0080\u0099s not hard to see that if , then . It can be shown that the maximal\r\npossible answer.At the same time, let the segment not contain number ,\r\nthat is, . Then we can show that the maximal answer is .Asymptotics: per\r\ntest case.\r\n"
+    "editorial": "Itâs not hard to see that if , then . It can be shown that the maximal\r\npossible answer.At the same time, let the segment not contain number ,\r\nthat is, . Then we can show that the maximal answer is .Asymptotics: per\r\ntest case.\r\n",
+    "hint": [
+        "Hint 1 Try to consider such segments where .",
+        "Hint 2 Now think about what to do if this condition is not satisfied."
+    ]
 }

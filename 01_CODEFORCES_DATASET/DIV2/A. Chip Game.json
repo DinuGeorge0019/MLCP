@@ -165,5 +165,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Chip Game.json",
     "editorial_link": "https://codeforces.com//blog/entry/106049",
-    "editorial": "Note that the game will end only when the chip is in the upper\nright corner (otherwise you can move it square to the right or up). For\nall moves, the chip will move to the right and up, which means that the\ntotal length of all moves is (the length of the move is how much the\nchip moved per turn). Since the length of any move is odd, then after\nany move of Burenka, the sum of the lengths will be odd, and after any\nmove of Tonya is even. So we can find out who made the last move in the\ngame by looking at . With , Tonya wins, otherwise Burenka.The complexity\nof the solution is .\n"
+    "editorial": "Note that the game will end only when the chip is in the upper\nright corner (otherwise you can move it square to the right or up). For\nall moves, the chip will move to the right and up, which means that the\ntotal length of all moves is (the length of the move is how much the\nchip moved per turn). Since the length of any move is odd, then after\nany move of Burenka, the sum of the lengths will be odd, and after any\nmove of Tonya is even. So we can find out who made the last move in the\ngame by looking at . With , Tonya wins, otherwise Burenka.The complexity\nof the solution is .\n",
+    "hint": [
+        "Hint 1 Try to look at the parity of .",
+        "Hint 2 The player who wins does not depend on player's strategy.",
+        "Hint 3 The only thing that the winning player depends on is the parity of ."
+    ]
 }

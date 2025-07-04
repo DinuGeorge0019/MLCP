@@ -161,5 +161,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. StORage room.json",
     "editorial_link": "https://codeforces.com//blog/entry/122820",
-    "editorial": "Solution:Initially, we set all (all bits on).You can through every ,\r\nsuch that and do and .Then we check if for all pairs. If this holds you\r\nfound the array else the answer is .Proof:Initially, all elements have\r\nall their bits set on and we remove only the bits that affect our\r\nanswer. If doesn\u00e2\u0080\u0099t have a specific bit then definitely neither nor\r\nshould have it. If has a specific bit on then we don\u00e2\u0080\u0099t have to remove\r\nanything (in the end we want at least one of and to have the bit on).\r\n"
+    "editorial": "Solution:Initially, we set all (all bits on).You can through every ,\r\nsuch that and do and .Then we check if for all pairs. If this holds you\r\nfound the array else the answer is .Proof:Initially, all elements have\r\nall their bits set on and we remove only the bits that affect our\r\nanswer. If doesnât have a specific bit then definitely neither nor\r\nshould have it. If has a specific bit on then we donât have to remove\r\nanything (in the end we want at least one of and to have the bit on).\r\n",
+    "hint": [
+        "Hint Think of each bit independently."
+    ]
 }

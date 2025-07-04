@@ -154,5 +154,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B1. TV Subscriptions  Easy Version .json",
     "editorial_link": "https://codeforces.com//blog/entry/70898",
-    "editorial": "We are looking for a segment of length d\n with the smallest number of distinct values. In small limitations one could just try all segments and count the number of distinct elements naively (for example, by sorting or with an std::set)."
+    "editorial": "We are looking for a segment of length d\n with the smallest number of distinct values. In small limitations one could just try all segments and count the number of distinct elements naively (for example, by sorting or with an std::set).",
+    "hint": []
 }

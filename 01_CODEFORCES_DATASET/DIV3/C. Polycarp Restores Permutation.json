@@ -175,5 +175,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C. Polycarp Restores Permutation.json",
     "editorial_link": "https://codeforces.com//blog/entry/66062",
-    "editorial": "Let\u00e2\u0080\u0099s . Thus, =, =, ..., =.It means that the sequence of partial sums is\r\nthe required permutation if we do to each element. The value of is\r\nunknown yet.Find such that is minimum. Thus, . Exactly this value will\r\nchange to be after you add . So, add to each element of and check that\r\nnow it is a permutation.Probably, you need to use to avoid possible\r\ninteger overflows.\r\n"
+    "editorial": "Letâs . Thus, =, =, ..., =.It means that the sequence of partial sums is\r\nthe required permutation if we do to each element. The value of is\r\nunknown yet.Find such that is minimum. Thus, . Exactly this value will\r\nchange to be after you add . So, add to each element of and check that\r\nnow it is a permutation.Probably, you need to use to avoid possible\r\ninteger overflows.\r\n",
+    "hint": []
 }

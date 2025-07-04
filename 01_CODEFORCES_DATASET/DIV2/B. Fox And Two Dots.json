@@ -106,5 +106,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Fox And Two Dots.json",
     "editorial_link": "https://codeforces.com//blog/entry/16173",
-    "editorial": "This task is essentially ask if there is a cycle in an undirected graph:\r\ntreat each cell as a node, and add an edge if two cells are neighborhood\r\nand have some color. There are lots of ways to do this, for example: Run\r\ndfs / bfs, if an edge lead you to a visited node, then there must be a\r\ncycle. For each connected component, test if , if not then there must be\r\na cycle.\r\n"
+    "editorial": "This task is essentially ask if there is a cycle in an undirected graph:\r\ntreat each cell as a node, and add an edge if two cells are neighborhood\r\nand have some color. There are lots of ways to do this, for example: Run\r\ndfs / bfs, if an edge lead you to a visited node, then there must be a\r\ncycle. For each connected component, test if , if not then there must be\r\na cycle.\r\n",
+    "hint": []
 }

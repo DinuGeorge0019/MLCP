@@ -154,5 +154,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Floor and Mod.json",
     "editorial_link": "https://codeforces.com//blog/entry/87470",
-    "editorial": "SolutionWe can notice that, if , then can be written as (). Since , we\r\nhave that . Hence .Now let\u00e2\u0080\u0099s count special pairs for any fixed (). For\r\neach , you have to count the number of such that , , . The second\r\ncondition is equivalent to .Therefore, for any fixed , the number of\r\nspecial pairs (; ) is . The result is the sum of the number of special\r\npairs for each .Complexity: .\r\n"
+    "editorial": "SolutionWe can notice that, if , then can be written as (). Since , we\r\nhave that . Hence .Now letâs count special pairs for any fixed (). For\r\neach , you have to count the number of such that , , . The second\r\ncondition is equivalent to .Therefore, for any fixed , the number of\r\nspecial pairs (; ) is . The result is the sum of the number of special\r\npairs for each .Complexity: .\r\n",
+    "hint": [
+        "Hint 1 Let . Is there an upper bound for ?",
+        "Hint 2 . For a fixed , can you count the number of special pairs such that and in ?"
+    ]
 }

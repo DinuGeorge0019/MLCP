@@ -128,5 +128,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Patchouli s Magical Talisman.json",
     "editorial_link": "https://codeforces.com//blog/entry/103493",
-    "editorial": "SolutionLet be the maximum integer satisfying .A greedy solution is to\r\nmake one integer odd integer, and plus it to other even integers. Let be\r\nthe answer of an sequence .We can find that: It can be shown that it is\r\nthe optimal strategy.We can prove that decreases by at most with one\r\noperation. For the first operation, assuming we choose and , let .\r\nObviously holds, so decreases by at most , and does not decrease. So\r\ndecreases by at most . For the second operation, assuming we choose . If\r\n, decreases by and remains unchanged. Otherwise does not change and\r\ndecreases by at most . So decreases by at most . We can draw a\r\nconclusion that decreases by at most after one operation. Since are odd\r\nintegers, the strategy is proved to be optimal.The time complexity is .\r\n"
+    "editorial": "SolutionLet be the maximum integer satisfying .A greedy solution is to\r\nmake one integer odd integer, and plus it to other even integers. Let be\r\nthe answer of an sequence .We can find that: It can be shown that it is\r\nthe optimal strategy.We can prove that decreases by at most with one\r\noperation. For the first operation, assuming we choose and , let .\r\nObviously holds, so decreases by at most , and does not decrease. So\r\ndecreases by at most . For the second operation, assuming we choose . If\r\n, decreases by and remains unchanged. Otherwise does not change and\r\ndecreases by at most . So decreases by at most . We can draw a\r\nconclusion that decreases by at most after one operation. Since are odd\r\nintegers, the strategy is proved to be optimal.The time complexity is .\r\n",
+    "hint": [
+        "Hint1 What if there is at least one odd integer?",
+        "Hint2 How to produce an odd integer?"
+    ]
 }

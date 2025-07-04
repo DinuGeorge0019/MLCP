@@ -120,5 +120,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\A. Row GCD.json",
     "editorial_link": "https://codeforces.com//blog/entry/85750",
-    "editorial": "From basic properties of GCD we know that GCD(x,y)=GCD(x?y,y)\n. The same applies for multiple arguments: GCD(x,y,z,\u0085)=GCD(x?y,y,z,\u0085)\n. Let's use this for GCD(a1+bj,\u0085,an+bj)\n and subtract a1+bj\n from all other arguments: GCD(a1+bj,\u0085,an+bj)=GCD(a1+bj,a2?a1,\u0085,an?a1)\n.\n\nIf we find G=GCD(a2?a1,\u0085,an?a1)\n, then any answer can be found as GCD(a1+bj,G)\n. Note that we have to assume that GCD of an empty set is 0\n, and GCD(x,0)=x\n for any x\n, since 0\n is the only number divisible by any other number."
+    "editorial": "From basic properties of GCD we know that GCD(x,y)=GCD(x?y,y)\n. The same applies for multiple arguments: GCD(x,y,z,)=GCD(x?y,y,z,)\n. Let's use this for GCD(a1+bj,,an+bj)\n and subtract a1+bj\n from all other arguments: GCD(a1+bj,,an+bj)=GCD(a1+bj,a2?a1,,an?a1)\n.\n\nIf we find G=GCD(a2?a1,,an?a1)\n, then any answer can be found as GCD(a1+bj,G)\n. Note that we have to assume that GCD of an empty set is 0\n, and GCD(x,0)=x\n for any x\n, since 0\n is the only number divisible by any other number.",
+    "hint": []
 }

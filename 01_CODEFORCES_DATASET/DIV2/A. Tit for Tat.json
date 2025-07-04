@@ -118,5 +118,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Tit for Tat.json",
     "editorial_link": "https://codeforces.com//blog/entry/89846",
-    "editorial": "The general approach to minimizing an array lexicographically is to try\r\nto make the first element as small as possible, then the second element,\r\nand so on. So greedily, in each operation, we\u00e2\u0080\u0099ll pick the first non-zero\r\nelement and subtract from it, and we\u00e2\u0080\u0099ll add that to the very last\r\nelement. You can make the implementation faster by doing as many\r\noperations as you can on the first non-zero element simultaneously, but\r\nit\u00e2\u0080\u0099s not necessary. Code link: https://pastebin.com/pBsychs2\r\n"
+    "editorial": "The general approach to minimizing an array lexicographically is to try\r\nto make the first element as small as possible, then the second element,\r\nand so on. So greedily, in each operation, weâll pick the first non-zero\r\nelement and subtract from it, and weâll add that to the very last\r\nelement. You can make the implementation faster by doing as many\r\noperations as you can on the first non-zero element simultaneously, but\r\nitâs not necessary. Code link: https://pastebin.com/pBsychs2\r\n",
+    "hint": []
 }

@@ -180,5 +180,9 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Rudolph and Cut the Rope .json",
     "editorial_link": "https://codeforces.com//blog/entry/118044",
-    "editorial": "In order for the candy to be on the ground, it is necessary that all the\r\nropes touch the ground. This means that the length of all ropes must be\r\ngreater than or equal to the height of the nails to which they are\r\nattached. That is, you need to cut all the ropes, the length of which is\r\nless than the height of their nail. Then the answer is equal to the\r\nnumber of elements that have .\r\n"
+    "editorial": "In order for the candy to be on the ground, it is necessary that all the\r\nropes touch the ground. This means that the length of all ropes must be\r\ngreater than or equal to the height of the nails to which they are\r\nattached. That is, you need to cut all the ropes, the length of which is\r\nless than the height of their nail. Then the answer is equal to the\r\nnumber of elements that have .\r\n",
+    "hint": [
+        "Hint 1 What if the nail with the rope is the only one?",
+        "Hint 2 How long should be rope to reach the ground?"
+    ]
 }

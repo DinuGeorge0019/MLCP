@@ -137,7 +137,7 @@
         ]
     },
     "editorial_link": "https://codeforces.com//blog/entry/134420",
-    "editorial": "SolutionFirst, let\u00e2\u0080\u0099s focus on determining how many intervals contain\r\nsome point . These intervals are the ones with and .So a point satisfies\r\n, and . It means that you have found points contained in exactly\r\nintervals (because there are possible left endpoints and possible right\r\nendpoints).Similarly, the point is contained in intervals (you have to\r\nremove interval , which you do not draw).So you can use a map that\r\nstores how many points are contained in exactly intervals, and update\r\nthe map in the positions and .Complexity:\r\n",
+    "editorial": "SolutionFirst, letâs focus on determining how many intervals contain\r\nsome point . These intervals are the ones with and .So a point satisfies\r\n, and . It means that you have found points contained in exactly\r\nintervals (because there are possible left endpoints and possible right\r\nendpoints).Similarly, the point is contained in intervals (you have to\r\nremove interval , which you do not draw).So you can use a map that\r\nstores how many points are contained in exactly intervals, and update\r\nthe map in the positions and .Complexity:\r\n",
     "name": "B. All Pairs Segments",
     "statement": "You are given n points on the x axis, at increasing positive integer\r\ncoordinates x_1 < x_2 <\r\nldots < x_n.For each pair (i, j) with 1\r\nleq i < j\r\nleq n, you draw the segment [x_i, x_j]. The segments are closed, i.e., a\r\nsegment [a, b] contains the points a, a+1,\r\nldots, b.You are given q queries. In the i-th query, you are given a\r\npositive integer k_i, and you have to determine how many points with\r\ninteger coordinates are contained in exactly k_i segments.\r\n",
     "solutions": [
@@ -151,5 +151,33 @@
     ],
     "dificulty": "1200",
     "interactive": false,
-    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. All Pairs Segments.json"
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. All Pairs Segments.json",
+    "hint": [
+        "Hint 1 Can you determine fast how many intervals contain point ?",
+        "Hint 2 The intervals that contain point are the ones with and .",
+        "Hint 3 Determine how many intervals contain: point ; points ; point ; point .",
+        "Hint 1 The answer is at most .",
+        "Hint 2 Solve the problem with .",
+        "Hint 3 When is the answer ?",
+        "Hint 4 If the answer is not , how can you buy cards?",
+        "Hint 1 When is the answer ?",
+        "Hint 2 Starting from city is equivalent to setting .",
+        "Hint 1 Solve for a fixed final depth of the leaves.",
+        "Hint 2 Which nodes are \"alive\" if all leaves are at depth at the end?",
+        "Hint 1 The optimal subsequence must contain at least one occurrence of the maximum.",
+        "Hint 2 Iterate over the minimum, in decreasing order.",
+        "Hint 3 You have some \"connected components\". How many elements can you pick from each component? How to make sure you have picked at least one occurrence of the maximum?",
+        "Hint 1 Solve for a fixed (size of the subsets).",
+        "Hint 2 is easy. Can you do something similar for other ?",
+        "Hint 3 Solve for a fixed (number of subsets).",
+        "Hint 4 If you have a solution for a fixed , note that there exists a faster solution!",
+        "Hint 1 Suppose you are given a starting city and you want to win. Find several strategies to win (if possible) and try to work with the simplest ones.",
+        "Hint 2 The valid starting cities are either zero, or all the cities in .",
+        "Hint 3 Now you have some bounds on the .",
+        "Hint 4 Fix the interval and try to find a (slow) DP.",
+        "Hint 5 Counting paths seems easier than counting arrays. Make sure that, for each array, you make exactly one path (or a number of paths which is easy to handle).",
+        "Hint 6 How many distinct states do you calculate in your DP?",
+        "Hint 1 Think, how can we use the fact that we have to perform all the operations before seeing the array.",
+        "Hint 2 Instead of just looping over to , we instead want to pass this information and get the real value later."
+    ]
 }

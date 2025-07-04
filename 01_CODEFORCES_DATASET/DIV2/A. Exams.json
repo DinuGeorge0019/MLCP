@@ -86,7 +86,7 @@
         ]
     },
     "name": "A. Exams",
-    "statement": "One day the Codeforces round author sat exams. He had exams and he\r\nneeded to get an integer from to for each exam. He will have to re-sit\r\neach failed exam, i.e. the exam that gets mark . The author would need\r\nto spend too much time and effort to make the sum of his marks strictly\r\nmore than . That could have spoilt the Codeforces round. On the other\r\nhand, if the sum of his marks is strictly less than , the author\u2019s mum\r\nwon\u2019t be pleased at all. The Codeforces authors are very smart and they\r\nalways get the mark they choose themselves. Also, the Codeforces authors\r\njust hate re-sitting exams. Help the author and find the minimum number\r\nof exams he will have to re-sit if he passes the exams in the way that\r\nmakes the sum of marks for all exams equal exactly .\r\n",
+    "statement": "One day the Codeforces round author sat exams. He had exams and he\r\nneeded to get an integer from to for each exam. He will have to re-sit\r\neach failed exam, i.e. the exam that gets mark . The author would need\r\nto spend too much time and effort to make the sum of his marks strictly\r\nmore than . That could have spoilt the Codeforces round. On the other\r\nhand, if the sum of his marks is strictly less than , the author’s mum\r\nwon’t be pleased at all. The Codeforces authors are very smart and they\r\nalways get the mark they choose themselves. Also, the Codeforces authors\r\njust hate re-sitting exams. Help the author and find the minimum number\r\nof exams he will have to re-sit if he passes the exams in the way that\r\nmakes the sum of marks for all exams equal exactly .\r\n",
     "solutions": [
         "#include<algorithm>\n#include<iostream>\n\nusing namespace std;\n\nint main() {\n  int N, K;\n  cin >> N >> K;\n  cout << max(3*N-K, 0) << endl;\n}\n"
     ],
@@ -100,5 +100,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Exams.json",
     "editorial_link": "https://codeforces.com//blog/entry/4673",
-    "editorial": "Let's notice that 2n???k???5n. If k?<?3n author has to get 2 on some exams. There are 3n?-?k such exams and that's the answer). If 3n???k author will pass all exams (answer is 0).\n"
+    "editorial": "Let's notice that 2n???k???5n. If k?<?3n author has to get 2 on some exams. There are 3n?-?k such exams and that's the answer). If 3n???k author will pass all exams (answer is 0).\n",
+    "hint": []
 }

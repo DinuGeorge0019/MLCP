@@ -116,5 +116,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\C. Prime Swaps.json",
     "editorial_link": "https://codeforces.com//blog/entry/12310",
-    "editorial": "The solution can be described by pseudo-code: Consider elements of permutation from  to  While current element  is not sutiated on position  Let the position of element  equals  Find maximum prime integer  which is less or equal than $pos   i + 1 Swap element in positions  and  It could be proved that such algorithm makes less than  swaps (for example, by implementing the algorithm) This algorithm should be implemented optimally. You should maintain positions of elements of permutation. Swap function in author's solution: "
+    "editorial": "The solution can be described by pseudo-code: Consider elements of permutation from  to  While current element  is not sutiated on position  Let the position of element  equals  Find maximum prime integer  which is less or equal than $pos   i + 1 Swap element in positions  and  It could be proved that such algorithm makes less than  swaps (for example, by implementing the algorithm) This algorithm should be implemented optimally. You should maintain positions of elements of permutation. Swap function in author's solution: ",
+    "hint": []
 }

@@ -140,7 +140,7 @@
         ]
     },
     "name": "B. Mark the Dust Sweeper",
-    "statement": "Mark is cleaning a row of n rooms. The i-th room has a nonnegative dust\r\nlevel a_i. He has a magical cleaning machine that can do the following\r\nthree-step operation. Select two indices i<j such that the dust levels\r\na_i, a_{i+1},\r\ndots, a_{j-1} are all strictly greater than 0. Set a_i to a_i-1. Set a_j\r\nto a_j+1. Mark\u2019s goal is to make a_1 = a_2 =\r\nldots = a_{n-1} = 0 so that he can nicely sweep the n-th room. Determine\r\nthe minimum number of operations needed to reach his goal.\r\n",
+    "statement": "Mark is cleaning a row of n rooms. The i-th room has a nonnegative dust\r\nlevel a_i. He has a magical cleaning machine that can do the following\r\nthree-step operation. Select two indices i<j such that the dust levels\r\na_i, a_{i+1},\r\ndots, a_{j-1} are all strictly greater than 0. Set a_i to a_i-1. Set a_j\r\nto a_j+1. Mark’s goal is to make a_1 = a_2 =\r\nldots = a_{n-1} = 0 so that he can nicely sweep the n-th room. Determine\r\nthe minimum number of operations needed to reach his goal.\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\nusing namespace std;\n#define N 200020\ntypedef long long ll;\nint n,a[N];\nvoid Solve(){\n\tcin>>n;\n\tfor(int i=1;i<=n;++i){\n\t\tcin>>a[i];\n\t}\n\tll ans=0;\n\tbool jb=0;\n\tfor(int i=1;i<n;++i){\n\t\tif(a[i]>0){\n\t\t\tjb=1;\n\t\t\tans+=a[i];\n\t\t}\n\t\telse{\n\t\t\tif(jb)++ans;\n\t\t}\n\t}\n\tcout<<ans<<'\\n';\n}\nint main(){\n\tios::sync_with_stdio(false);\n\tcin.tie(0);\n\tint T;\n\tcin>>T;\n\twhile(T--)Solve();\n\treturn 0;\n}\n\n\n"
     ],
@@ -155,5 +155,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Mark the Dust Sweeper.json",
     "editorial_link": "https://codeforces.com//blog/entry/104881",
-    "editorial": "TutorialDelete the leading zeroes in the array (i.e., the first numbers\r\nof that are zero) so that now . Let be the number of \u00e2\u0080\u0099s in . The answer\r\nis To see why, let Mark keep filling the holes (rooms with dust level )\r\nfirst by subtracting the first nonzero index and changing the first zero\r\nindex to . This takes moves to fill all zeroes in . Then, we can start\r\nmoving, from left to right, all dust to the -th room, taking\r\nmoves.Finally, we argue that this is the minimum number of moves. To\r\nthat end, we prove that each move decreases the answer by at most . We\r\nconsider two cases. If a move has , then it decreases by but does not\r\ndecrease . If , then the move doesn\u00e2\u0080\u0099t decrease and decreases by at most\r\n. Thus, we are done. The time complexity is .\r\n"
+    "editorial": "TutorialDelete the leading zeroes in the array (i.e., the first numbers\r\nof that are zero) so that now . Let be the number of âs in . The answer\r\nis To see why, let Mark keep filling the holes (rooms with dust level )\r\nfirst by subtracting the first nonzero index and changing the first zero\r\nindex to . This takes moves to fill all zeroes in . Then, we can start\r\nmoving, from left to right, all dust to the -th room, taking\r\nmoves.Finally, we argue that this is the minimum number of moves. To\r\nthat end, we prove that each move decreases the answer by at most . We\r\nconsider two cases. If a move has , then it decreases by but does not\r\ndecrease . If , then the move doesnât decrease and decreases by at most\r\n. Thus, we are done. The time complexity is .\r\n",
+    "hint": [
+        "Hint The optimal way is to fill all the zero entries first."
+    ]
 }

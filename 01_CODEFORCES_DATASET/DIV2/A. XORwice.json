@@ -114,5 +114,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. XORwice.json",
     "editorial_link": "https://codeforces.com//blog/entry/83761",
-    "editorial": "Solution Noticing the hint above we now\ndeduce = & where & is bitwise . So just printing ( ( & )) + ( ( & ))\nworks, but there\u00e2\u0080\u0099s an even nicer formula. We\u00e2\u0080\u0099ll leave it up to you to\nprove that ( ( & )) + ( ( & )) = , where is the bitwise :)\n"
+    "editorial": "Solution Noticing the hint above we now\ndeduce = & where & is bitwise . So just printing ( ( & )) + ( ( & ))\nworks, but thereâs an even nicer formula. Weâll leave it up to you to\nprove that ( ( & )) + ( ( & )) = , where is the bitwise :)\n",
+    "hint": [
+        "Hint Think about addition in base two. Say = and = . What your operation does is it modifies the bits in your numbers, so if the first bit in is and the first bit in is (as is the case above) you can make both by making that bit in . This is actually the only way you can decrease the resulting sum, so = is an answer above."
+    ]
 }

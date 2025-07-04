@@ -159,5 +159,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\B. Array Stabilization.json",
     "editorial_link": "https://codeforces.com//blog/entry/64130",
-    "editorial": "It is easy to see that we always have to remove either minimum or\r\nmaximum of the array. So we can sort the array and the answer will be .\r\nWe also can do it without sort because two minimal and two maximal\r\nelements of the array can be found in linear time.\r\n"
+    "editorial": "It is easy to see that we always have to remove either minimum or\r\nmaximum of the array. So we can sort the array and the answer will be .\r\nWe also can do it without sort because two minimal and two maximal\r\nelements of the array can be found in linear time.\r\n",
+    "hint": []
 }

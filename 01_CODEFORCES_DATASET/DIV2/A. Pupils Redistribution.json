@@ -116,5 +116,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Pupils Redistribution.json",
     "editorial_link": "https://codeforces.com//blog/entry/50724",
-    "editorial": "To solve this problem let\u00e2\u0080\u0099s use array .\nWe need to iterate through first array with academic performances and\nfor current performance let\u00e2\u0080\u0099s increase on one. In the same way we need\nto iterate through the second array and decrease on one. If after that\nat least one element of array is odd the answer is (it means that there\nare odd number of student with such performance and it is impossible to\ndivide them in two. If all elements are even the answer is the sum of\nabsolute values of array divided by 2. In the end we need to divide the\nanswer on 2 because each change will be counted twice with this way of\nfinding the answer.\n"
+    "editorial": "To solve this problem letâs use array .\nWe need to iterate through first array with academic performances and\nfor current performance letâs increase on one. In the same way we need\nto iterate through the second array and decrease on one. If after that\nat least one element of array is odd the answer is (it means that there\nare odd number of student with such performance and it is impossible to\ndivide them in two. If all elements are even the answer is the sum of\nabsolute values of array divided by 2. In the end we need to divide the\nanswer on 2 because each change will be counted twice with this way of\nfinding the answer.\n",
+    "hint": []
 }

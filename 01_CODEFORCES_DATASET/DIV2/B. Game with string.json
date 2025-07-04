@@ -97,7 +97,7 @@
         ]
     },
     "name": "B. Game with string",
-    "statement": "Two people are playing a game with a string s, consisting of lowercase\r\nlatin letters. On a player\u2019s turn, he should choose two consecutive\r\nequal letters in the string and delete them. For example, if the string\r\nis equal to \"\" than there is only one possible turn: delete \"\", so the\r\nstring will become \"\". A player not able to make a turn loses.Your task\r\nis to determine which player will win if both play optimally.\r\n",
+    "statement": "Two people are playing a game with a string s, consisting of lowercase\r\nlatin letters. On a player’s turn, he should choose two consecutive\r\nequal letters in the string and delete them. For example, if the string\r\nis equal to \"\" than there is only one possible turn: delete \"\", so the\r\nstring will become \"\". A player not able to make a turn loses.Your task\r\nis to determine which player will win if both play optimally.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\n\n#ifdef __LOCAL_DEBUG__\n# define _debug(fmt, ...) fprintf(stderr, \"\\033[94m%s: \" fmt \"\\n\\033[0m\", \\\n    __func__, ##__VA_ARGS__)\n#else \n# define _debug(...) ((void) 0)\n#endif\n#define rep(i, n) for (int i=0; i<(n); i++)\n#define Rep(i, n) for (int i=1; i<=(n); i++)\n#define range(x) begin(x), end(x)\ntypedef long long LL;\ntypedef unsigned long long ULL;\n\nint main() {\n    int cnt = 0;\n    stack<char> stk;\n    string str; cin >> str;\n    for (char ch : str) {\n        if (stk.size() and stk.top() == ch) {\n            stk.pop();\n            cnt++;\n        } else {\n            stk.push(ch);\n        }\n    }\n    if (cnt & 1) puts(\"YES\"); else puts(\"NO\");\n    return 0;\n}\n"
     ],
@@ -112,5 +112,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Game with string.json",
     "editorial_link": "https://codeforces.com//blog/entry/64722",
-    "editorial": "It can be shown that the answer does not depend on the order of\r\ndeletions. Let\u00e2\u0080\u0099s remove letters from left to right, storing a stack of\r\nletters, remaining in the left. When we process a letter, it will be\r\ndeleted together with the last letter in the stack if they are equal or\r\nwill be pushed to the stack. Let\u00e2\u0080\u0099s calculate parity of the number of\r\ndeletions during this process and determine the answer.\r\n"
+    "editorial": "It can be shown that the answer does not depend on the order of\r\ndeletions. Letâs remove letters from left to right, storing a stack of\r\nletters, remaining in the left. When we process a letter, it will be\r\ndeleted together with the last letter in the stack if they are equal or\r\nwill be pushed to the stack. Letâs calculate parity of the number of\r\ndeletions during this process and determine the answer.\r\n",
+    "hint": []
 }

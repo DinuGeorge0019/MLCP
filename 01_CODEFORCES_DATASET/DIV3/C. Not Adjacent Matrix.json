@@ -196,5 +196,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\C. Not Adjacent Matrix.json",
     "editorial_link": "https://codeforces.com//blog/entry/90342",
-    "editorial": "Note that is the only case where there is no answer.For other cases,\r\nconsider the following construction: Let\u00e2\u0080\u0099s say that the cell is white if\r\nis an even number, otherwise, we will say that the cell is black; Let\u00e2\u0080\u0099s\r\narrange the cells so that all white cells are first, and if the colors\r\nare equal, the cells will be compared lexicographically. Arrange numbers\r\nfrom to in ordered cells. For example, for , the following matrix will\r\nbe constructed:\r\n"
+    "editorial": "Note that is the only case where there is no answer.For other cases,\r\nconsider the following construction: Letâs say that the cell is white if\r\nis an even number, otherwise, we will say that the cell is black; Letâs\r\narrange the cells so that all white cells are first, and if the colors\r\nare equal, the cells will be compared lexicographically. Arrange numbers\r\nfrom to in ordered cells. For example, for , the following matrix will\r\nbe constructed:\r\n",
+    "hint": []
 }

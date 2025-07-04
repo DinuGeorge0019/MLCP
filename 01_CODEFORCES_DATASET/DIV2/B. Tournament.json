@@ -98,5 +98,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Tournament.json",
     "editorial_link": "https://codeforces.com//blog/entry/653",
-    "editorial": "To solve this problem first of all we should find such numbers A and B that occur in the input data not (n - 1) times, but (n - 2). We can notice, that winner-loser relation in this problem is transitive. This means that if X wins against Y and Y wins against Z, than X wins against Z. So to find out who is harsher A or B, let's look for such C, that the results of the match A with C and B with C are distinct. If such C exists, than the one, who wins against C should be printed first. If there is no such C, than both results of the match A versus B satisfy problem's statement."
+    "editorial": "To solve this problem first of all we should find such numbers A and B that occur in the input data not (n - 1) times, but (n - 2). We can notice, that winner-loser relation in this problem is transitive. This means that if X wins against Y and Y wins against Z, than X wins against Z. So to find out who is harsher A or B, let's look for such C, that the results of the match A with C and B with C are distinct. If such C exists, than the one, who wins against C should be printed first. If there is no such C, than both results of the match A versus B satisfy problem's statement.",
+    "hint": []
 }

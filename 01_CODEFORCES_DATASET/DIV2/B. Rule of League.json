@@ -151,5 +151,11 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Rule of League.json",
     "editorial_link": "https://codeforces.com//blog/entry/83109",
-    "editorial": "SolutionAccording to hints, and and holds in order to generate a valid\r\nresult. If so, player and player would play first. Let\u00e2\u0080\u0099s consider player\r\nwins. Then player should win games, and loses to player . Likewise,\r\nplayer wins games and loses to player . Construct the remaining result\r\nin the same way.\r\n"
+    "editorial": "SolutionAccording to hints, and and holds in order to generate a valid\r\nresult. If so, player and player would play first. Letâs consider player\r\nwins. Then player should win games, and loses to player . Likewise,\r\nplayer wins games and loses to player . Construct the remaining result\r\nin the same way.\r\n",
+    "hint": [
+        "Hint 1 Because one of player and player win games and the other win at least game, and must be true in order to generate a valid result.",
+        "Hint 2 There are one winner and one loser for every match. So the sum of winning count and the sum of losing count are same.",
+        "Hint 3 The sum of winning count is a multiple of . Therefore, the sum of losing count is also a multiple of .",
+        "Hint 4 (The sum of losing count) equals to . So is a multiple of if there is a valid result."
+    ]
 }

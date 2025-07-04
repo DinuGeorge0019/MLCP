@@ -99,5 +99,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Coat of Anticubism.json",
     "editorial_link": "https://codeforces.com//blog/entry/44622",
-    "editorial": "It is possible to make a convex polygon with given side lengths if and\r\nonly if a generalized triangle inequality holds: the length of the\r\nlongest side is less than the sum of lengths of other sides. It is\r\nimpossible to make a convex polygon from a given set, so there is a side\r\nwhich is longest than (or equals to) than sum of others. Assume it is\r\ngreater by ; then it is sufficient to add a rod of length . More, it is\r\nclear that adding any shorter length wouldn\u00e2\u0080\u0099t satisfy the inequality.\r\nThus the answer for the problem is .\r\n"
+    "editorial": "It is possible to make a convex polygon with given side lengths if and\r\nonly if a generalized triangle inequality holds: the length of the\r\nlongest side is less than the sum of lengths of other sides. It is\r\nimpossible to make a convex polygon from a given set, so there is a side\r\nwhich is longest than (or equals to) than sum of others. Assume it is\r\ngreater by ; then it is sufficient to add a rod of length . More, it is\r\nclear that adding any shorter length wouldnât satisfy the inequality.\r\nThus the answer for the problem is .\r\n",
+    "hint": []
 }

@@ -108,7 +108,7 @@
         ]
     },
     "name": "A. Search for Pretty Integers",
-    "statement": "You are given two lists of non-zero digits.Let\u2019s call an integer pretty\r\nif its (base ) representation has at least one digit from the first list\r\nand at least one digit from the second list. What is the smallest\r\npositive pretty integer?\r\n",
+    "statement": "You are given two lists of non-zero digits.Let’s call an integer pretty\r\nif its (base ) representation has at least one digit from the first list\r\nand at least one digit from the second list. What is the smallest\r\npositive pretty integer?\r\n",
     "solutions": [
         "#include<bits/stdc++.h>\nusing namespace std;\nint n,m;\nint a[100],b[100];\nint main(){\n\tcin>>n>>m;\n\tfor(int i=0;i<n;i++){\n\t\tint A;\n\t\tcin>>A;\n\t\ta[A]=1;\n\t}\n\tfor(int i=0;i<m;i++){\n\t\tint A;\n\t\tcin>>A;\n\t\tb[A]=1;\n\t}\n\tfor(int i=1;i<100;i++){\n\t\tif((a[i%10]||(i>=10&&a[i/10]))&&(b[i%10]||(i>=10&&b[i/10]))){\n\t\t\tprintf(\"%d\\n\",i);\n\t\t\tbreak;\n\t\t}\n\t}\n\treturn 0;\n}"
     ],
@@ -121,5 +121,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Search for Pretty Integers.json",
     "editorial_link": "https://codeforces.com//blog/entry/55200",
-    "editorial": "Note that the length of the answer does not exceed two because we can take one number from the first list and one number from the second lists and make up of them a pretty number. So we need to check two cases:\n\n1) Iterate through the digits from the first list and check if digit belongs to the second list too. Make up the number of this digit.\n\n2) Iterate through the numbers from the first list and from the second list. Make up the number of this two digits. There are two ways: digit from the first list, then from the second list and vice versa.\n\nThen you should choose the minimal number."
+    "editorial": "Note that the length of the answer does not exceed two because we can take one number from the first list and one number from the second lists and make up of them a pretty number. So we need to check two cases:\n\n1) Iterate through the digits from the first list and check if digit belongs to the second list too. Make up the number of this digit.\n\n2) Iterate through the numbers from the first list and from the second list. Make up the number of this two digits. There are two ways: digit from the first list, then from the second list and vice versa.\n\nThen you should choose the minimal number.",
+    "hint": []
 }

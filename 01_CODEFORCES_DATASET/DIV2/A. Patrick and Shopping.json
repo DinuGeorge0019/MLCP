@@ -99,7 +99,7 @@
         ]
     },
     "name": "A. Patrick and Shopping",
-    "statement": "Today Patrick waits for a visit from his friend Spongebob. To prepare\r\nfor the visit, Patrick needs to buy some goodies in two stores located\r\nnear his house. There is a meter long road between his house and the\r\nfirst shop and a meter long road between his house and the second shop.\r\nAlso, there is a road of length directly connecting these two shops to\r\neach other. Help Patrick calculate the minimum distance that he needs to\r\nwalk in order to go to both shops and return to his house. Patrick\r\nalways starts at his house. He should visit both shops moving only along\r\nthe three existing roads and return back to his house. He doesn\u2019t mind\r\nvisiting the same shop or passing the same road multiple times. The only\r\ngoal is to minimize the total distance traveled.\r\n",
+    "statement": "Today Patrick waits for a visit from his friend Spongebob. To prepare\r\nfor the visit, Patrick needs to buy some goodies in two stores located\r\nnear his house. There is a meter long road between his house and the\r\nfirst shop and a meter long road between his house and the second shop.\r\nAlso, there is a road of length directly connecting these two shops to\r\neach other. Help Patrick calculate the minimum distance that he needs to\r\nwalk in order to go to both shops and return to his house. Patrick\r\nalways starts at his house. He should visit both shops moving only along\r\nthe three existing roads and return back to his house. He doesn’t mind\r\nvisiting the same shop or passing the same road multiple times. The only\r\ngoal is to minimize the total distance traveled.\r\n",
     "solutions": [
         "#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n  int d1, d2, d3;\n  scanf(\"%d %d %d\", &d1, &d2, &d3);\n  printf(\"%d\\n\", min(d1 * 2 + d2 * 2, min(min(d1, d2) * 2 + d3 * 2, d1 + d2 + d3)));\n  return 0;\n}\n\n"
     ],
@@ -112,5 +112,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Patrick and Shopping.json",
     "editorial_link": "https://codeforces.com//blog/entry/21685",
-    "editorial": "Everything that you needed to do \u0097 solve some similar cases.\n\nYou need to check the following cases:\n\nHome  the first shop  the second shop  home\n\nHome  the first shop  the second shop  the first shop  home\n\nHome  the second shop  home  the first shop  home\n\nHome  the second shop  the first shop  the second shop  home"
+    "editorial": "Everything that you needed to do  solve some similar cases.\n\nYou need to check the following cases:\n\nHome  the first shop  the second shop  home\n\nHome  the first shop  the second shop  the first shop  home\n\nHome  the second shop  home  the first shop  home\n\nHome  the second shop  the first shop  the second shop  home",
+    "hint": []
 }

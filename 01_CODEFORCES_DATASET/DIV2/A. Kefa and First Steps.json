@@ -98,7 +98,7 @@
         ]
     },
     "name": "A. Kefa and First Steps",
-    "statement": "Kefa decided to make some money doing business on the Internet for\r\nexactly days. He knows that on the -th day () he makes money. Kefa loves\r\nprogress, that\u2019s why he wants to know the length of the maximum\r\nnon-decreasing subsegment in sequence . Let us remind you that the\r\nsubsegment of the sequence is its continuous fragment. A subsegment of\r\nnumbers is called non-decreasing if all numbers in it follow in the\r\nnon-decreasing order.Help Kefa cope with this task!\r\n",
+    "statement": "Kefa decided to make some money doing business on the Internet for\r\nexactly days. He knows that on the -th day () he makes money. Kefa loves\r\nprogress, that’s why he wants to know the length of the maximum\r\nnon-decreasing subsegment in sequence . Let us remind you that the\r\nsubsegment of the sequence is its continuous fragment. A subsegment of\r\nnumbers is called non-decreasing if all numbers in it follow in the\r\nnon-decreasing order.Help Kefa cope with this task!\r\n",
     "solutions": [
         "#include<iostream>\n#include<sstream>\n#include<cstdio>\n#include<cstring>\n#include<string>\n#include<cstdlib>\n#include<cmath>\n#include<cctype>\n#include<ctime>\n#include<algorithm>\n#include<iomanip>\n#include<vector>\n#include<queue>\n#include<map>\n#include<set>\n#include<cassert>\n#include<bitset>\n\nusing namespace std;\ntypedef long long LL;\nint a[200000];\nint main() {\n    int n;\n    a[0]=-1;\n    int ans=0;\n    int s=0;\n    cin>>n;\n    for(int i=1;i<=n;i++)\n    {\n        scanf(\"%d\",&a[i]);\n        if (a[i]>=a[i-1]) s++;\n        else\n        {\n            s=1;\n        }\n        ans=max(ans,s);\n    }\n    cout<<ans<<endl;\n    return 0;\n}"
     ],
@@ -113,5 +113,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Kefa and First Steps.json",
     "editorial_link": "https://codeforces.com//blog/entry/20468",
-    "editorial": "Note, that if the array has two intersecting continuous non-decreasing\r\nsubsequence, they can be combined into one. Therefore, you can just pass\r\nthe array from left to right. If the current subsequence can be\r\ncontinued using the -th element, then we do it, otherwise we start a new\r\none. The answer is the maximum subsequence of all the found ones.\r\nAsymptotics . Solution\r\n"
+    "editorial": "Note, that if the array has two intersecting continuous non-decreasing\r\nsubsequence, they can be combined into one. Therefore, you can just pass\r\nthe array from left to right. If the current subsequence can be\r\ncontinued using the -th element, then we do it, otherwise we start a new\r\none. The answer is the maximum subsequence of all the found ones.\r\nAsymptotics . Solution\r\n",
+    "hint": []
 }

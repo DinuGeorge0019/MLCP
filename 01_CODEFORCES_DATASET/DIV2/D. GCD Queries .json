@@ -142,5 +142,10 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\D. GCD Queries .json",
     "editorial_link": "https://codeforces.com//blog/entry/110169",
-    "editorial": "SolutionSo suppose we have three distinct indices , and .Let us assume\r\nand Now we have only three possibilities. In this case, cannot be . Why?\r\nand are distinct, and we have if In this case, cannot be . Why? Note and\r\ncan be atmost for any non negative integer. If , this means cannot be .\r\nThus for sure In this case, cannot be . Why? Refer to the above\r\nargument. This we can eliminate one index on using queries. We will\r\nperform this operation times. Refer to attached code for details.Time\r\ncomplexity is .\r\n"
+    "editorial": "SolutionSo suppose we have three distinct indices , and .Let us assume\r\nand Now we have only three possibilities. In this case, cannot be . Why?\r\nand are distinct, and we have if In this case, cannot be . Why? Note and\r\ncan be atmost for any non negative integer. If , this means cannot be .\r\nThus for sure In this case, cannot be . Why? Refer to the above\r\nargument. This we can eliminate one index on using queries. We will\r\nperform this operation times. Refer to attached code for details.Time\r\ncomplexity is .\r\n",
+    "hint": [
+        "Hint 1 Intended solution uses . You are allowed to guess two indices. Doesn't this hint towards something?",
+        "Hint 2 If we can eliminate elements that cannot be for sure, we are done.",
+        "Hint 3 Suppose we have three distinct indices , and . Is it possible to remove one index(say ) out of these three indices such that for sure. You are allowed to query two times."
+    ]
 }

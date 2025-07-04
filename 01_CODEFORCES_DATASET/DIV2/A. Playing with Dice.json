@@ -98,7 +98,7 @@
         ]
     },
     "name": "A. Playing with Dice",
-    "statement": "Two players are playing a game. First each of them writes an integer\r\nfrom 1 to 6, and then a dice is thrown. The player whose written number\r\ngot closer to the number on the dice wins. If both payers have the same\r\ndifference, it\u2019s a draw.The first player wrote number , the second\r\nplayer wrote number . How many ways to throw a dice are there, at which\r\nthe first player wins, or there is a draw, or the second player wins?\r\n",
+    "statement": "Two players are playing a game. First each of them writes an integer\r\nfrom 1 to 6, and then a dice is thrown. The player whose written number\r\ngot closer to the number on the dice wins. If both payers have the same\r\ndifference, it’s a draw.The first player wrote number , the second\r\nplayer wrote number . How many ways to throw a dice are there, at which\r\nthe first player wins, or there is a draw, or the second player wins?\r\n",
     "solutions": [
         "#include <algorithm>\n#include <cmath>\n#include <cstdio>\n#include <map>\n#include <queue>\n#include <set>\n#include <sstream>\n#include <string>\n#include <vector>\n\nusing namespace std;\n\nint main() {\n  int a, b;\n  scanf (\"%d %d\", &a, &b);\n  int x = 0, y = 0, z = 0;\n  for (int i = 1; i <= 6; ++i) {\n    if (abs(a - i) == abs(b - i)) ++y;\n    if (abs(a - i) < abs(b - i)) ++x;\n    if (abs(a - i) > abs(b - i)) ++z;\n  }\n  printf (\"%d %d %d\\n\", x, y, z);\n  return 0;\n}"
     ],
@@ -111,5 +111,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Playing with Dice.json",
     "editorial_link": "https://codeforces.com//blog/entry/10157",
-    "editorial": "Make three counters: for wins of both players and for a draw. Iterate\r\nover all six ways how they can throw a dice. For each way determine who\r\nwins or there is a draw and increment the corresponding counter.\r\n"
+    "editorial": "Make three counters: for wins of both players and for a draw. Iterate\r\nover all six ways how they can throw a dice. For each way determine who\r\nwins or there is a draw and increment the corresponding counter.\r\n",
+    "hint": []
 }

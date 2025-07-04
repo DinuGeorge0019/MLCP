@@ -146,5 +146,13 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\B. Earn or Unlock.json",
     "editorial_link": "https://codeforces.com//blog/entry/118540",
-    "editorial": "First, note that the order of used cards doesn\u00e2\u0080\u0099t matter. If you\nuse at least once a card that is not on the top on the deck, you can\nprove that using the cards in order (from the top) would give the same\nnumber of victory points.Let\u00e2\u0080\u0099s add cards with value at the end of the\ndeck. Then, it\u00e2\u0080\u0099s optimal to unlock cards, and use cards , getting\npoints.Let\u00e2\u0080\u0099s find the reachable . Let be a bitset that stores the\nreachable after using the first cards. Base case: . Transitions: first,\n|= << . If , you can update the answer with , but you can\u00e2\u0080\u0099t unlock any\nother card, so you have to set before transitioning to . Complexity:\n"
+    "editorial": "First, note that the order of used cards doesnât matter. If you\nuse at least once a card that is not on the top on the deck, you can\nprove that using the cards in order (from the top) would give the same\nnumber of victory points.Letâs add cards with value at the end of the\ndeck. Then, itâs optimal to unlock cards, and use cards , getting\npoints.Letâs find the reachable . Let be a bitset that stores the\nreachable after using the first cards. Base case: . Transitions: first,\n|= << . If , you can update the answer with , but you canât unlock any\nother card, so you have to set before transitioning to . Complexity:\n",
+    "hint": [
+        "Hint 1 The order of used cards doesn't matter. So, you can assume you always use the card on the top.",
+        "Hint 2 Suppose that you unlock cards in total. How many points can you get?",
+        "Hint 3 If you unlock cards, it means you end up making moves with the first cards. So, you know the total number of (cards + points) that you get.",
+        "Hint 4 If you unlock cards, the number of points is uniquely determined. It's convenient to assume that and the cards have value .",
+        "Hint 5 Now you have to determine the unlockable prefixes of cards (i.e., the values of you can reach). It looks similar to knapsack.",
+        "Hint 6 You can optimize the solution using a bitset. Be careful not to use locked cards."
+    ]
 }

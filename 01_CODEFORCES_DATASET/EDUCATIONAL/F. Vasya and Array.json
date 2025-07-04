@@ -188,5 +188,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\F. Vasya and Array.json",
     "editorial_link": "https://codeforces.com/blog/entry/63877",
-    "editorial": "Let\u00e2\u0080\u0099s try dynamic programming approach to this problem. Let be the\r\nnumber of ways to replace all with numbers from to in such a way that\r\narray is good and the last number of that array is .Let .Then initially\r\nit\u00e2\u0080\u0099s if equals to or . However, we could include incorrect states such\r\nthat segment consist of the same value. It happens when: , as we should\r\nhave at least elements; segment has all its elements either equal to or\r\n. If both of these conditions hold then you should subtract all the bad\r\nstates from . The number of them is .\r\n"
+    "editorial": "Letâs try dynamic programming approach to this problem. Let be the\r\nnumber of ways to replace all with numbers from to in such a way that\r\narray is good and the last number of that array is .Let .Then initially\r\nitâs if equals to or . However, we could include incorrect states such\r\nthat segment consist of the same value. It happens when: , as we should\r\nhave at least elements; segment has all its elements either equal to or\r\n. If both of these conditions hold then you should subtract all the bad\r\nstates from . The number of them is .\r\n",
+    "hint": []
 }

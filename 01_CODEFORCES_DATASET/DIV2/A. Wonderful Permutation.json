@@ -153,5 +153,8 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\A. Wonderful Permutation.json",
     "editorial_link": "https://codeforces.com//blog/entry/105919",
-    "editorial": "For any permutation of length , the final sum after some number of\r\noperations can\u00e2\u0080\u0099t be less than . This means that we need to apply the\r\noperation at least once for every such that and . Every time we apply\r\nit, we have to choose some index such that and . This is always possible\r\nsince initially the number of suitable is equal to the number of\r\nsuitable , and one operation decreases both the number of suitable and\r\nthe number of suitable by one. It is easy to see that in the end, the\r\nset only contains the values , which means that the sum is equal to ,\r\nwhich is the smallest sum we can get.So the answer is the the number of\r\nsuch that and .Complexity:\r\n"
+    "editorial": "For any permutation of length , the final sum after some number of\r\noperations canât be less than . This means that we need to apply the\r\noperation at least once for every such that and . Every time we apply\r\nit, we have to choose some index such that and . This is always possible\r\nsince initially the number of suitable is equal to the number of\r\nsuitable , and one operation decreases both the number of suitable and\r\nthe number of suitable by one. It is easy to see that in the end, the\r\nset only contains the values , which means that the sum is equal to ,\r\nwhich is the smallest sum we can get.So the answer is the the number of\r\nsuch that and .Complexity:\r\n",
+    "hint": [
+        "Hint The smallest possible sum is ."
+    ]
 }

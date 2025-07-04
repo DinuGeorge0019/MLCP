@@ -140,5 +140,27 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV2\\B. Fun with Even Subarrays.json",
     "editorial_link": "https://codeforces.com//blog/entry/99384",
-    "editorial": "SolutionFor simplicity, let (let be reversed). The operation transforms\r\nto select a subarray of length , so , then for all such that , set . can\r\nnot be changed with the given operation. That reduces the problem to\r\nmake all elements equal to .Let be the rightmost index such that for all\r\n, holds.The problem will be solved when .If an operation is applied with\r\n, will not change and will remain the same.The largest range with is ,\r\napplying an operation to it will lead to , so will become at least and\r\nthere is not any other range that will lead to a bigger value of .If ,\r\nit is possible to apply the operation on , after applying it and all\r\nelements will become equal.The problem can now be solved by repeatedly\r\nfinding and applying the operation on or on if . Since will become at\r\nleast in each operation but the last one, the naive implementation will\r\ntake , however, it is easy to implement it in . Code O(nlogn) Code O(n)\r\n"
+    "editorial": "SolutionFor simplicity, let (let be reversed). The operation transforms\r\nto select a subarray of length , so , then for all such that , set . can\r\nnot be changed with the given operation. That reduces the problem to\r\nmake all elements equal to .Let be the rightmost index such that for all\r\n, holds.The problem will be solved when .If an operation is applied with\r\n, will not change and will remain the same.The largest range with is ,\r\napplying an operation to it will lead to , so will become at least and\r\nthere is not any other range that will lead to a bigger value of .If ,\r\nit is possible to apply the operation on , after applying it and all\r\nelements will become equal.The problem can now be solved by repeatedly\r\nfinding and applying the operation on or on if . Since will become at\r\nleast in each operation but the last one, the naive implementation will\r\ntake , however, it is easy to implement it in . Code O(nlogn) Code O(n)\r\n",
+    "hint": [
+        "Hint 1 It is not possible to modify using the given operation.",
+        "Hint 2 Think about the leftmost such that .",
+        "Hint 1 Try to find a pairing such that",
+        "Hint 2 Try to find a pairing for by changing only a few elements from the previous pairing.",
+        "Hint 1 Focus on how to solve the problem for a fixed interval",
+        "Hint 2 Think about the numbers inside the interval as , and the other numbers as",
+        "Hint 3 Try to relate a partition into valid subarrays with an increasing sequence of the prefix sums array",
+        "Hint 4 Note that if some value ( ) appears on the prefix sums array, appears before since the absolute value of the elements is (+1 and -1)",
+        "Hint 1 Think about all occurrences of some element, what occurrences are important?",
+        "Hint 2 Think about the first and last occurrence of each element as a segment.",
+        "Hint 3 Think about the segments that at least one of its endpoints will end up with .",
+        "Hint 1 What is the size of the smallest subarray that it is possible to multiply by using some operations?",
+        "Hint 2 Let be a string such that if that element is multiplied by or otherwise, what such are reachable?",
+        "Hint 3 Think about the parity of the sum of all such that , where is the size of the smallest subarray that it is possible to multiply by using some operations",
+        "Hint 1 Burnside's lemma",
+        "Hint 2 Think about an easy way to count the number of components in a cyclic array.",
+        "Hint 3 The number of components in a cyclic array is equal to the number of adjacent positions with different values.",
+        "Hint 1 Think about the directed graph where there is an directed edge from to if and only if",
+        "Hint 2 Let us define the above graph as , make a duplicate graph from , and then add directed edges for each node of the graph . What happens in this graph?",
+        "Hint 3 Maximum Antichain"
+    ]
 }

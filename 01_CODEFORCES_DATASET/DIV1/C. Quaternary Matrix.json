@@ -1,1 +1,136 @@
-{"link": "https://codeforces.com//contest/2081/problem/C", "problemId": "3268217", "problem_idx": "C", "shortId": "2081C", "contest_number": "2081", "problem_submissions": {"B": [310774215, 310752573, 310826211, 310739558, 310740102, 310737148, 310765995, 310740246, 310740411, 310741073, 310738730, 310756764, 310764342, 310740030, 311003693, 310899344, 310756759], "G2": [310759041, 310768901], "G1": [310755673, 310759015, 310756557, 310778645, 310765573, 310772467], "D": [310740089, 310749620, 310736583, 310742447, 310756472, 310749776, 311027213, 310763231, 310761892, 310742331, 310755537, 310777318, 310776606, 310764407, 310744818, 310748246, 310836677, 310748850, 310737628, 310743454, 310762523], "F": [310771700, 310779543, 310754815, 310762358, 310891482, 312515283], "C": [310742461, 310749579, 310750103, 310749689, 310758863, 310753338, 310754039, 310753444, 310776556, 310767765, 310753226, 310756623, 310767338, 310755335, 310755677, 310757463, 310759247, 310772525], "A": [310731565, 310739375, 310732389, 310731680, 310732110, 310734146, 310732038, 310732151, 310731709, 310735423, 310732004, 310743686, 310737151, 310732535, 310735886, 310731360, 310731694, 310736792], "E": [312258360, 310770842]}, "editorial_link": "https://codeforces.com//blog/entry/140702", "editorial": "", "name": "C. Quaternary Matrix", "statement": "A matrix is called quaternary if all its elements are 0, 1, 2, or\r\n3.Ecrade calls a quaternary matrix A if the following two properties\r\nhold. The bitwise XOR of all numbers in each row of matrix A is equal to\r\n0. The bitwise XOR of all numbers in each column of matrix A is equal to\r\n0. Ecrade has a quaternary matrix of size n\r\ntimes m. He is interested in the minimum number of elements that need to\r\nbe changed for the matrix to become , and he also wants to find one of\r\nthe possible resulting matrices.However, it seems a little difficult, so\r\nplease help him!\r\n", "solutions": [], "input": "", "output": "", "tags": ["bitmasks", "constructive algorithms", "greedy", "implementation", "matrices"], "dificulty": "2700", "interactive": false, "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Quaternary Matrix.json"}
+{
+    "link": "https://codeforces.com//contest/2081/problem/C",
+    "problemId": "3268217",
+    "problem_idx": "C",
+    "shortId": "2081C",
+    "contest_number": "2081",
+    "problem_submissions": {
+        "B": [
+            310774215,
+            310752573,
+            310826211,
+            310739558,
+            310740102,
+            310737148,
+            310765995,
+            310740246,
+            310740411,
+            310741073,
+            310738730,
+            310756764,
+            310764342,
+            310740030,
+            311003693,
+            310899344,
+            310756759
+        ],
+        "G2": [
+            310759041,
+            310768901
+        ],
+        "G1": [
+            310755673,
+            310759015,
+            310756557,
+            310778645,
+            310765573,
+            310772467
+        ],
+        "D": [
+            310740089,
+            310749620,
+            310736583,
+            310742447,
+            310756472,
+            310749776,
+            311027213,
+            310763231,
+            310761892,
+            310742331,
+            310755537,
+            310777318,
+            310776606,
+            310764407,
+            310744818,
+            310748246,
+            310836677,
+            310748850,
+            310737628,
+            310743454,
+            310762523
+        ],
+        "F": [
+            310771700,
+            310779543,
+            310754815,
+            310762358,
+            310891482,
+            312515283
+        ],
+        "C": [
+            310742461,
+            310749579,
+            310750103,
+            310749689,
+            310758863,
+            310753338,
+            310754039,
+            310753444,
+            310776556,
+            310767765,
+            310753226,
+            310756623,
+            310767338,
+            310755335,
+            310755677,
+            310757463,
+            310759247,
+            310772525
+        ],
+        "A": [
+            310731565,
+            310739375,
+            310732389,
+            310731680,
+            310732110,
+            310734146,
+            310732038,
+            310732151,
+            310731709,
+            310735423,
+            310732004,
+            310743686,
+            310737151,
+            310732535,
+            310735886,
+            310731360,
+            310731694,
+            310736792
+        ],
+        "E": [
+            312258360,
+            310770842
+        ]
+    },
+    "editorial_link": "https://codeforces.com//blog/entry/140702",
+    "editorial": "SolutionThe problem can be rephrased as follows: Let the XOR sum of each\r\nrow be , and the XOR sum of each column be . In each operation, we can\r\nchoose any , , and , then let and . The goal is to determine the minimum\r\nnumber of operations required to make all and zero. Let denote the count\r\nof in , and denote the count of in . A trivial upper bound for the\r\nanswer is , which corresponds to the scenario where each operation only\r\nzeros out one of and . To reduce the number of operations, we can\r\nconsider grouping the non-zero elements in into disjoint groups where:\r\nThe XOR sum of each group is zero. Each group contains at least one\r\nelement from and one from . For such a group, we can reduce the number\r\nof operations by one, as there always exists an operation which can zero\r\nout both and . Thus, the goal is to maximize the number of such groups,\r\nand the minimum number of operations will be .Define the following group\r\ntypes: : Groups of the form , or . : Groups of the form , , , , or . :\r\nGroups of the form , , , , or . Conclusion 1: There exists an optimal\r\nsolution where all groups are of the form , , or . Brief Proof Each\r\ngroup must have size at least 2. Groups of size 2 or 3 can only be or .\r\nGroups of size 4 not conforming to (e.g., ) can be decomposed into at\r\nleast one . Larger groups can be decomposed into combinations of , , and\r\n. Conclusion 2: There exists an optimal solution where all groups share\r\nthe same structure, and so do all groups. Brief Proof Two different\r\ngroups can be decomposed into at least two or at least one and one . Two\r\ndifferent groups can be decomposed into at least two or at least two .\r\nConclusion 3: There exists an optimal solution where the elements in\r\ngroups are a subset of those in groups (e.g., if is , then can only be\r\nor ). The proof is analogous to Conclusion 2 and is left as an exercise.\r\nBased on these conclusions, the optimal strategy is: first form as many\r\ngroups as possible; then form as many groups as possible from the\r\nremaining elements; then form as many groups as possible from the\r\nremaining elements. After grouping, each group can be zeroed out with\r\none less operation. Note that the remaining ungrouped elements require\r\nindividual operations. The time complexity is .\r\n",
+    "name": "C. Quaternary Matrix",
+    "statement": "A matrix is called quaternary if all its elements are 0, 1, 2, or\r\n3.Ecrade calls a quaternary matrix A if the following two properties\r\nhold. The bitwise XOR of all numbers in each row of matrix A is equal to\r\n0. The bitwise XOR of all numbers in each column of matrix A is equal to\r\n0. Ecrade has a quaternary matrix of size n\r\ntimes m. He is interested in the minimum number of elements that need to\r\nbe changed for the matrix to become , and he also wants to find one of\r\nthe possible resulting matrices.However, it seems a little difficult, so\r\nplease help him!\r\n",
+    "solutions": [],
+    "input": "",
+    "output": "",
+    "tags": [
+        "bitmasks",
+        "constructive algorithms",
+        "greedy",
+        "implementation",
+        "matrices"
+    ],
+    "dificulty": "2700",
+    "interactive": false,
+    "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV1\\C. Quaternary Matrix.json",
+    "hint": [
+        "Hint 1 Do we really have to consider the problem on the whole matrix?",
+        "Hint 2 Use greedy algorithm and guess some possible conclusions. Can you prove them (or construct some counterexamples) ?"
+    ]
+}

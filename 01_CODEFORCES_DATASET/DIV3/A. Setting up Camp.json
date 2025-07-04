@@ -171,5 +171,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\DIV3\\A. Setting up Camp.json",
     "editorial_link": "https://codeforces.com//blog/entry/127377",
-    "editorial": "First, let\u00e2\u0080\u0099s consider introverts. Since each of them needs exactly one\r\ntent, we simply add to the answer. Then let\u00e2\u0080\u0099s consider extroverts. If\r\ntheir number is divisible by 3, we add to the answer. Otherwise, we\r\ncalculate , where denotes the remainder from dividing by . If , then\r\nthere is no answer, as it is not possible to accommodate the extroverts\r\nin the tents. Otherwise, we subtract from and add to the answer.The\r\ngeneral formula when there is an answer: .Complexity: .\r\n"
+    "editorial": "First, letâs consider introverts. Since each of them needs exactly one\r\ntent, we simply add to the answer. Then letâs consider extroverts. If\r\ntheir number is divisible by 3, we add to the answer. Otherwise, we\r\ncalculate , where denotes the remainder from dividing by . If , then\r\nthere is no answer, as it is not possible to accommodate the extroverts\r\nin the tents. Otherwise, we subtract from and add to the answer.The\r\ngeneral formula when there is an answer: .Complexity: .\r\n",
+    "hint": []
 }

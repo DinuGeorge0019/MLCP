@@ -156,5 +156,6 @@
     "interactive": false,
     "file_name": "D:\\scoala\\RESEARCH\\MLCP\\01_CODEFORCES_DATASET\\EDUCATIONAL\\A. Sum of Odd Integers.json",
     "editorial_link": "https://codeforces.com//blog/entry/75147",
-    "editorial": "First of all, notice that the sum of the first k odd integers is k^2. If\r\nk^2 > n then the answer obviously \"\". And if n\r\n"
+    "editorial": "First of all, notice that the sum of the first k odd integers is k^2. If\r\nk^2 > n then the answer obviously \"\". And if n\r\n",
+    "hint": []
 }
